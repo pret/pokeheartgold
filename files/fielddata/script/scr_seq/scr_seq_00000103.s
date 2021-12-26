@@ -17,7 +17,7 @@ scr_seq_00000103_0000001A:
 	comparevartovalue VAR_TEMP_x4003, 111
 	gotoif ne, scr_seq_00000103_00000032
 	checkflag FLAG_UNK_106
-	gotoif eq, scr_seq_00000103_0000003A
+	gotoif TRUE, scr_seq_00000103_0000003A
 scr_seq_00000103_00000032:
 	setvar VAR_TEMP_x4003, 0
 	end
@@ -32,14 +32,14 @@ scr_seq_00000103_0000004E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_117
-	gotoif eq, scr_seq_00000103_0000010D
+	gotoif TRUE, scr_seq_00000103_0000010D
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif eq, scr_seq_00000103_00000093
 	checkflag FLAG_UNK_106
-	gotoif eq, scr_seq_00000103_000000C5
+	gotoif TRUE, scr_seq_00000103_000000C5
 	checkflag FLAG_UNK_094
-	gotoif eq, scr_seq_00000103_000000B4
+	gotoif TRUE, scr_seq_00000103_000000B4
 	msgbox 1
 	waitbutton
 	closemsg
@@ -48,9 +48,9 @@ scr_seq_00000103_0000004E:
 
 scr_seq_00000103_00000093:
 	checkflag FLAG_UNK_106
-	gotoif eq, scr_seq_00000103_000000C5
+	gotoif TRUE, scr_seq_00000103_000000C5
 	checkflag FLAG_UNK_094
-	gotoif eq, scr_seq_00000103_000000B4
+	gotoif TRUE, scr_seq_00000103_000000B4
 	msgbox 0
 	waitbutton
 	closemsg
@@ -70,9 +70,9 @@ scr_seq_00000103_000000C5:
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif ne, scr_seq_00000103_000000EC
 	checkflag FLAG_UNK_109
-	gotoif eq, scr_seq_00000103_000000F7
+	gotoif TRUE, scr_seq_00000103_000000F7
 	checkflag FLAG_UNK_105
-	gotoif eq, scr_seq_00000103_00000102
+	gotoif TRUE, scr_seq_00000103_00000102
 scr_seq_00000103_000000EC:
 	msgbox 4
 	waitbutton

@@ -102,7 +102,7 @@
 #define FLAG_UNK_061                 0x61
 #define FLAG_UNK_062                 0x62
 #define FLAG_UNK_063                 0x63
-#define FLAG_UNK_064                 0x64
+#define FLAG_NURSE_NOTICED_CARD                 0x64
 #define FLAG_UNK_065                 0x65
 #define FLAG_UNK_066                 0x66
 #define FLAG_UNK_067                 0x67
@@ -285,10 +285,10 @@
 #define FLAG_UNK_118                 0x118
 #define FLAG_UNK_119                 0x119
 #define FLAG_UNK_11A                 0x11A
-#define FLAG_UNK_11B                 0x11B
-#define FLAG_UNK_11C                 0x11C
-#define FLAG_UNK_11D                 0x11D
-#define FLAG_UNK_11E                 0x11E
+#define FLAG_GOT_BAG                 0x11B
+#define FLAG_GOT_TRAINER_CARD                 0x11C
+#define FLAG_GOT_SAVE_BUTTON                 0x11D
+#define FLAG_GOT_OPTIONS_BUTTON                 0x11E
 #define FLAG_UNK_11F                 0x11F
 #define FLAG_UNK_120                 0x120
 #define FLAG_UNK_121                 0x121

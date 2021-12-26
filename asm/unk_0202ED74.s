@@ -3,35 +3,35 @@
 
 	.text
 
-	thumb_func_start SaveData_Pokegear_sizeof
-SaveData_Pokegear_sizeof: ; 0x0202ED74
+	thumb_func_start SaveData_GSPlayerMisc_sizeof
+SaveData_GSPlayerMisc_sizeof: ; 0x0202ED74
 	ldr r0, _0202ED78 ; =0x00000658
 	bx lr
 	.balign 4, 0
 _0202ED78: .word 0x00000658
-	thumb_func_end SaveData_Pokegear_sizeof
+	thumb_func_end SaveData_GSPlayerMisc_sizeof
 
-	thumb_func_start SaveData_Pokegear_get
-SaveData_Pokegear_get: ; 0x0202ED7C
+	thumb_func_start SaveData_GSPlayerMisc_get
+SaveData_GSPlayerMisc_get: ; 0x0202ED7C
 	ldr r3, _0202ED84 ; =SavArray_get
 	mov r1, #0x22
 	bx r3
 	nop
 _0202ED84: .word SavArray_get
-	thumb_func_end SaveData_Pokegear_get
+	thumb_func_end SaveData_GSPlayerMisc_get
 
-	thumb_func_start sub_0202ED88
-sub_0202ED88: ; 0x0202ED88
+	thumb_func_start SaveData_GetMomSavings
+SaveData_GetMomSavings: ; 0x0202ED88
 	push {r3, lr}
 	mov r1, #0x22
 	bl SavArray_get
-	bl sub_0202EFB8
+	bl GSPlayerMisc_GetMomSavingsAddr
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202ED88
+	thumb_func_end SaveData_GetMomSavings
 
-	thumb_func_start Pokegear_Init_internal
-Pokegear_Init_internal: ; 0x0202ED98
+	thumb_func_start InitGSPlayerMiscInternal
+InitGSPlayerMiscInternal: ; 0x0202ED98
 	push {r4, lr}
 	ldr r2, _0202EDD8 ; =0x00000658
 	mov r1, #0
@@ -67,15 +67,15 @@ _0202EDDC: .word 0xFE03FFFF
 _0202EDE0: .word 0xF9FFFFFF
 _0202EDE4: .word 0xE7FFFFFF
 _0202EDE8: .word 0x000004B8
-	thumb_func_end Pokegear_Init_internal
+	thumb_func_end InitGSPlayerMiscInternal
 
-	thumb_func_start SaveData_Pokegear_init
-SaveData_Pokegear_init: ; 0x0202EDEC
-	ldr r3, _0202EDF0 ; =Pokegear_Init_internal
+	thumb_func_start SaveData_GSPlayerMisc_init
+SaveData_GSPlayerMisc_init: ; 0x0202EDEC
+	ldr r3, _0202EDF0 ; =InitGSPlayerMiscInternal
 	bx r3
 	.balign 4, 0
-_0202EDF0: .word Pokegear_Init_internal
-	thumb_func_end SaveData_Pokegear_init
+_0202EDF0: .word InitGSPlayerMiscInternal
+	thumb_func_end SaveData_GSPlayerMisc_init
 
 	thumb_func_start sub_0202EDF4
 sub_0202EDF4: ; 0x0202EDF4
@@ -382,14 +382,14 @@ sub_0202EF9C: ; 0x0202EF9C
 _0202EFB4: .word 0x0000060C
 	thumb_func_end sub_0202EF9C
 
-	thumb_func_start sub_0202EFB8
-sub_0202EFB8: ; 0x0202EFB8
+	thumb_func_start GSPlayerMisc_GetMomSavingsAddr
+GSPlayerMisc_GetMomSavingsAddr: ; 0x0202EFB8
 	ldr r1, _0202EFC0 ; =0x000004B8
 	add r0, r0, r1
 	bx lr
 	nop
 _0202EFC0: .word 0x000004B8
-	thumb_func_end sub_0202EFB8
+	thumb_func_end GSPlayerMisc_GetMomSavingsAddr
 
 	thumb_func_start sub_0202EFC4
 sub_0202EFC4: ; 0x0202EFC4
@@ -624,8 +624,8 @@ _0202F146:
 	.balign 4, 0
 	thumb_func_end sub_0202F128
 
-	thumb_func_start sub_0202F14C
-sub_0202F14C: ; 0x0202F14C
+	thumb_func_start MomSavingsBalanceAction
+MomSavingsBalanceAction: ; 0x0202F14C
 	cmp r1, #1
 	beq _0202F15A
 	cmp r1, #2
@@ -645,7 +645,7 @@ _0202F162:
 	add r2, r3, r2
 	str r2, [r0, r1]
 	ldr r3, [r0, r1]
-	ldr r2, _0202F194 ; =0x000F423F
+	ldr r2, _0202F194 ; =999999
 	cmp r3, r2
 	bls _0202F18C
 	str r2, [r0, r1]
@@ -668,8 +668,8 @@ _0202F18C:
 	ldr r0, [r0, r1]
 	bx lr
 	.balign 4, 0
-_0202F194: .word 0x000F423F
-	thumb_func_end sub_0202F14C
+_0202F194: .word 999999
+	thumb_func_end MomSavingsBalanceAction
 
 	thumb_func_start sub_0202F198
 sub_0202F198: ; 0x0202F198

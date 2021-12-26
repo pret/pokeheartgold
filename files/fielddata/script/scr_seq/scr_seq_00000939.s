@@ -8,7 +8,7 @@
 
 scr_seq_00000939_00000006:
 	checkflag FLAG_UNK_0C7
-	gotoif eq, scr_seq_00000939_0000005A
+	gotoif TRUE, scr_seq_00000939_0000005A
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

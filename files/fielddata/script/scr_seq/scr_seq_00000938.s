@@ -26,7 +26,7 @@
 
 scr_seq_00000938_0000004E:
 	checkflag FLAG_UNK_0C9
-	gotoif eq, scr_seq_00000938_0000007F
+	gotoif TRUE, scr_seq_00000938_0000007F
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	setflag FLAG_UNK_011
@@ -64,21 +64,21 @@ scr_seq_00000938_000000BC:
 	clearflag FLAG_UNK_28B
 	clearflag FLAG_UNK_28C
 	checkflag FLAG_UNK_146
-	gotoif eq, scr_seq_00000938_000000E5
+	gotoif TRUE, scr_seq_00000938_000000E5
 	goto scr_seq_00000938_000000E9
 
 scr_seq_00000938_000000E5:
 	setflag FLAG_UNK_289
 scr_seq_00000938_000000E9:
 	checkflag FLAG_UNK_147
-	gotoif eq, scr_seq_00000938_000000FA
+	gotoif TRUE, scr_seq_00000938_000000FA
 	goto scr_seq_00000938_000000FE
 
 scr_seq_00000938_000000FA:
 	setflag FLAG_UNK_28B
 scr_seq_00000938_000000FE:
 	checkflag FLAG_UNK_148
-	gotoif eq, scr_seq_00000938_0000010F
+	gotoif TRUE, scr_seq_00000938_0000010F
 	goto scr_seq_00000938_00000113
 
 scr_seq_00000938_0000010F:
@@ -91,7 +91,7 @@ scr_seq_00000938_00000115:
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000938_000001A7
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000938_00000139
+	gotoif TRUE, scr_seq_00000938_00000139
 	goto scr_seq_00000938_000001A7
 
 scr_seq_00000938_00000139:
@@ -135,7 +135,7 @@ scr_seq_00000938_000001B1:
 	.byte 0x02, 0x00
 scr_seq_00000938_000001B3:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000938_000001C0
+	gotoif TRUE, scr_seq_00000938_000001C0
 	end
 
 scr_seq_00000938_000001C0:
@@ -165,7 +165,7 @@ scr_seq_00000938_000001F2:
 	end
 
 scr_seq_00000938_00000216:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 14
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -173,14 +173,14 @@ scr_seq_00000938_00000216:
 	msgbox 15
 	waitbutton
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setflag FLAG_UNK_2CC
 	hide_person 20
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -202,16 +202,16 @@ scr_seq_00000938_00000275:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 VAR_SPECIAL_x8002
+	get_lead_mon_index VAR_SPECIAL_x8002
 	scrcmd_480 32780, 32770, 61
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000938_0000039B
 	checkflag FLAG_UNK_ABC
-	gotoif eq, scr_seq_00000938_000003AF
+	gotoif TRUE, scr_seq_00000938_000003AF
 	comparevartovalue VAR_UNK_4094, 7
 	gotoif eq, scr_seq_00000938_00000349
 	checkflag FLAG_UNK_0D5
-	gotoif eq, scr_seq_00000938_0000032B
+	gotoif TRUE, scr_seq_00000938_0000032B
 	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000938_000002DC
@@ -310,7 +310,7 @@ scr_seq_00000938_000003C3:
 	comparevartovalue VAR_TEMP_x4002, 4
 	callif eq, scr_seq_00000938_00000466
 	checkflag FLAG_UNK_0C9
-	gotoif eq, scr_seq_00000938_0000046C
+	gotoif TRUE, scr_seq_00000938_0000046C
 	scrcmd_052
 	setvar VAR_SPECIAL_x8004, 478
 	setvar VAR_SPECIAL_x8005, 1
@@ -349,13 +349,13 @@ scr_seq_00000938_0000046C:
 
 scr_seq_00000938_0000047C:
 	checkflag FLAG_UNK_0C3
-	gotoif eq, scr_seq_00000938_00000509
+	gotoif TRUE, scr_seq_00000938_00000509
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	msgbox 2
 	faceplayer
-	scrcmd_190 0
-	scrcmd_132 3, 4
+	buffer_players_name 0
+	gender_msgbox 3, 4
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
@@ -364,8 +364,8 @@ scr_seq_00000938_0000047C:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000938_000004FA
 scr_seq_00000938_000004BB:
-	scrcmd_190 0
-	scrcmd_132 5, 6
+	buffer_players_name 0
+	gender_msgbox 5, 6
 	waitbutton
 	closemsg
 	apply_movement 10, scr_seq_00000938_00000538
@@ -417,7 +417,7 @@ scr_seq_00000938_0000054C:
 	lockall
 	faceplayer
 	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif eq, scr_seq_00000938_0000056A
+	gotoif TRUE, scr_seq_00000938_0000056A
 	msgbox 9
 	waitbutton
 	closemsg
@@ -435,7 +435,7 @@ scr_seq_00000938_00000575:
 	.byte 0x02, 0x00
 scr_seq_00000938_00000577:
 	checkflag FLAG_UNK_139
-	gotoif eq, scr_seq_00000938_00000597
+	gotoif TRUE, scr_seq_00000938_00000597
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -450,7 +450,7 @@ scr_seq_00000938_00000597:
 	scrcmd_784 0, 0
 	scrcmd_393 0, 1, 129
 	scrcmd_784 0, 1
-	scrcmd_190 2
+	buffer_players_name 2
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -518,11 +518,11 @@ scr_seq_00000938_0000068D:
 	setflag FLAG_UNK_148
 scr_seq_00000938_00000691:
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_194 1, 32772
 	msgbox 33
 	wait_fanfare
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_194 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_195 2, 32780

@@ -8,7 +8,7 @@
 
 scr_seq_00000881_00000006:
 	checkflag FLAG_UNK_0B9
-	gotoif eq, scr_seq_00000881_00000024
+	gotoif TRUE, scr_seq_00000881_00000024
 	comparevartovalue VAR_UNK_40A5, 1
 	gotoif eq, scr_seq_00000881_00000051
 	goto scr_seq_00000881_00000024

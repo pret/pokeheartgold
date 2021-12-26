@@ -35,11 +35,11 @@ scr_seq_00000071_00000025:
 	goto scr_seq_00000071_000000D8
 
 scr_seq_00000071_00000068:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 269, 0, 7, 6, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

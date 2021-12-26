@@ -16501,7 +16501,7 @@ _021EDEBA:
 	ldr r1, _021EDF00 ; =0x0001E524
 	str r0, [r4, r1]
 	ldr r0, _021EDF04 ; =0x000004A2
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x24
 	add sp, #0x10
 	pop {r4, pc}
@@ -16530,7 +16530,7 @@ ov112_021EDF08: ; 0x021EDF08
 	bl ov112_021EA838
 	cmp r0, #0
 	bne _021EDF3E
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021EDF3E
 	mov r0, #5
@@ -16676,7 +16676,7 @@ ov112_021EE044: ; 0x021EE044
 	bl sub_02020094
 	cmp r0, #0
 	bne _021EE0DC
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021EE0DC
 	add r0, r4, #0
@@ -16808,7 +16808,7 @@ ov112_021EE12C: ; 0x021EE12C
 	bl BgCommitTilemapBufferToVram
 	bl ov112_021E7464
 	ldr r0, _021EE174 ; =0x000004A1
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x2a
 	add sp, #0x10
 	pop {r4, pc}
@@ -16828,7 +16828,7 @@ ov112_021EE178: ; 0x021EE178
 	bl sub_02020094
 	cmp r0, #0
 	bne _021EE19C
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021EE19C
 	mov r0, #6
@@ -18349,7 +18349,7 @@ _021EED46:
 	mov r1, #0
 	strb r1, [r4, r0]
 	ldr r0, _021EEDF4 ; =0x000004A2
-	bl sub_02006B24
+	bl PlayFanfare
 	b _021EED82
 _021EED76:
 	add r0, r4, #0
@@ -18479,7 +18479,7 @@ ov112_021EEE4C: ; 0x021EEE4C
 	bl sub_02006B84
 	cmp r0, #0
 	bne _021EEE7E
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	add r0, r4, #0
 	bl ov112_021EA17C
 	mov r0, #2
@@ -19907,7 +19907,7 @@ _021EF968:
 	str r0, [r4, #0xc]
 	mov r0, #0x4a
 	lsl r0, r0, #4
-	bl sub_02006B24
+	bl PlayFanfare
 	ldr r0, _021EF98C ; =0x0001F374
 	mov r1, #0
 	strh r1, [r4, r0]
@@ -19932,7 +19932,7 @@ ov112_021EF994: ; 0x021EF994
 	b _021EF9BA
 _021EF9AA:
 	ldr r0, _021EF9CC ; =0x000004A1
-	bl sub_02006B24
+	bl PlayFanfare
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x2d
@@ -19991,7 +19991,7 @@ ov112_021EFA1C: ; 0x021EFA1C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _021EFA3C ; =0x000004A2
-	bl sub_02006B24
+	bl PlayFanfare
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x37
@@ -20045,7 +20045,7 @@ ov112_021EFA74: ; 0x021EFA74
 	mov r0, #0xa
 	str r0, [r4, #0xc]
 	ldr r0, _021EFA98 ; =0x000004A2
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x23
 	pop {r4, pc}
 	nop
@@ -20330,7 +20330,7 @@ ov112_021EFCB0: ; 0x021EFCB0
 	mov r0, #0xf
 	str r0, [r4, #0xc]
 	ldr r0, _021EFCD4 ; =0x000004A2
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x23
 	pop {r4, pc}
 	nop
@@ -20624,7 +20624,7 @@ ov112_021EFEEC: ; 0x021EFEEC
 	mov r0, #0x14
 	str r0, [r4, #0xc]
 	ldr r0, _021EFF10 ; =0x000004A2
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x23
 	pop {r4, pc}
 	nop
@@ -21170,7 +21170,7 @@ ov112_021F0328: ; 0x021F0328
 	b _021F034E
 _021F033E:
 	ldr r0, _021F0360 ; =0x000004A1
-	bl sub_02006B24
+	bl PlayFanfare
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x2d
@@ -21199,7 +21199,7 @@ ov112_021F0368: ; 0x021F0368
 	bl sub_02020094
 	cmp r0, #0
 	bne _021F038A
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021F038A
 	ldr r0, [r4, #0xc]

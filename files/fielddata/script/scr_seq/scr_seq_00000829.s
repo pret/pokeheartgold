@@ -66,7 +66,7 @@ scr_seq_00000829_0000008F:
 	settrainerflag 368
 	settrainerflag 369
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -95,7 +95,7 @@ scr_seq_00000829_00000136:
 
 scr_seq_00000829_00000140:
 	checkflag FLAG_UNK_182
-	gotoif lt, scr_seq_00000829_00000102
+	gotoif FALSE, scr_seq_00000829_00000102
 	msgbox 5
 	waitbutton
 	closemsg
@@ -132,7 +132,7 @@ scr_seq_00000829_0000018D:
 	lockall
 	faceplayer
 	scrcmd_294 13, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000829_000001B4
 	msgbox 8
@@ -153,11 +153,11 @@ scr_seq_00000829_000001BF:
 	play_se SEQ_SE_PL_BOWABOWA
 	apply_movement 255, scr_seq_00000829_000001FC
 	wait_movement
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 410, 0, 15, 23, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

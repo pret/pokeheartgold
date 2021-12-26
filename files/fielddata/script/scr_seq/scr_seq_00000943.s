@@ -87,9 +87,9 @@ scr_seq_00000943_00000112:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0EA
-	gotoif eq, scr_seq_00000943_0000018E
+	gotoif TRUE, scr_seq_00000943_0000018E
 	checkflag FLAG_UNK_0D1
-	gotoif eq, scr_seq_00000943_0000017D
+	gotoif TRUE, scr_seq_00000943_0000017D
 	msgbox 3
 	closemsg
 	trainer_battle 35, 0, 0, 0
@@ -125,7 +125,7 @@ scr_seq_00000943_00000188:
 
 scr_seq_00000943_0000018E:
 	checkflag FLAG_UNK_0DA
-	gotoif eq, scr_seq_00000943_000001C8
+	gotoif TRUE, scr_seq_00000943_000001C8
 	msgbox 6
 	setvar VAR_SPECIAL_x8004, 386
 	setvar VAR_SPECIAL_x8005, 1
@@ -155,11 +155,11 @@ scr_seq_00000943_000001DE:
 	play_se SEQ_SE_DP_GYURU
 	apply_movement 255, scr_seq_00000943_00000218
 	wait_movement
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 141, 0, 8, 83, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -188,7 +188,7 @@ scr_seq_00000943_00000260:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0D1
-	gotoif eq, scr_seq_00000943_00000291
+	gotoif TRUE, scr_seq_00000943_00000291
 	msgbox 0
 	scrcmd_600
 	scrcmd_783 1
@@ -211,7 +211,7 @@ scr_seq_00000943_0000029C:
 	scrcmd_609
 	lockall
 	checkflag FLAG_UNK_138
-	gotoif eq, scr_seq_00000943_00000352
+	gotoif TRUE, scr_seq_00000943_00000352
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 12
 	gotoif ne, scr_seq_00000943_000002D4
@@ -312,7 +312,7 @@ scr_seq_00000943_000003E0:
 	lockall
 	faceplayer
 	scrcmd_294 7, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000943_00000407
 	msgbox 10

@@ -79,7 +79,7 @@ scr_seq_00000195_00000098:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_121
-	gotoif eq, scr_seq_00000195_0000013F
+	gotoif TRUE, scr_seq_00000195_0000013F
 	msgbox 9
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -87,13 +87,13 @@ scr_seq_00000195_00000098:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000195_00000134
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000195_00000134
 	scrcmd_470 8

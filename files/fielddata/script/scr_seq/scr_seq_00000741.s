@@ -19,7 +19,7 @@
 
 scr_seq_00000741_00000032:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000741_00000043
+	gotoif FALSE, scr_seq_00000741_00000043
 	clearflag FLAG_UNK_189
 	end
 
@@ -40,7 +40,7 @@ scr_seq_00000741_00000075:
 	setflag FLAG_UNK_27E
 scr_seq_00000741_00000079:
 	checkflag FLAG_UNK_12C
-	gotoif eq, scr_seq_00000741_0000008E
+	gotoif TRUE, scr_seq_00000741_0000008E
 	setflag FLAG_UNK_12C
 	setvar VAR_UNK_4121, 1
 scr_seq_00000741_0000008E:
@@ -100,7 +100,7 @@ scr_seq_00000741_00000108:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_12E
-	gotoif eq, scr_seq_00000741_00000147
+	gotoif TRUE, scr_seq_00000741_00000147
 	msgbox 5
 	setvar VAR_SPECIAL_x8004, 412
 	setvar VAR_SPECIAL_x8005, 1
@@ -177,12 +177,12 @@ scr_seq_00000741_00000223:
 	wait_movement
 scr_seq_00000741_0000024A:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 69
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

@@ -29,7 +29,7 @@ scr_seq_00000124_00000046:
 	scrcmd_074 2147
 	callstd 2036
 	checkflag FLAG_UNK_0FA
-	gotoif lt, scr_seq_00000124_0000006A
+	gotoif FALSE, scr_seq_00000124_0000006A
 	msgbox 1
 	goto scr_seq_00000124_00000071
 
@@ -278,7 +278,7 @@ scr_seq_00000124_000003F0:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 500
 	gotoif lt, scr_seq_00000124_00000417
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 25
 	goto scr_seq_00000124_0000041A
 
@@ -297,7 +297,7 @@ scr_seq_00000124_00000422:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 51
 	gotoif lt, scr_seq_00000124_00000449
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 27
 	goto scr_seq_00000124_0000044C
 
@@ -316,7 +316,7 @@ scr_seq_00000124_00000454:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 150
 	gotoif lt, scr_seq_00000124_0000047B
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 29
 	goto scr_seq_00000124_0000047E
 
@@ -335,7 +335,7 @@ scr_seq_00000124_00000486:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 1000
 	gotoif lt, scr_seq_00000124_000004AD
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 31
 	goto scr_seq_00000124_000004B0
 
@@ -354,7 +354,7 @@ scr_seq_00000124_000004B8:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 10001
 	gotoif lt, scr_seq_00000124_000004DF
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 33
 	goto scr_seq_00000124_000004E2
 
@@ -373,7 +373,7 @@ scr_seq_00000124_000004EA:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 75
 	gotoif lt, scr_seq_00000124_00000511
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 35
 	goto scr_seq_00000124_00000514
 
@@ -392,8 +392,8 @@ scr_seq_00000124_0000051C:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 26
 	gotoif lt, scr_seq_00000124_00000544
-	scrcmd_190 0
-	scrcmd_132 37, 38
+	buffer_players_name 0
+	gender_msgbox 37, 38
 	goto scr_seq_00000124_00000547
 
 scr_seq_00000124_00000544:
@@ -411,7 +411,7 @@ scr_seq_00000124_0000054F:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 20001
 	gotoif lt, scr_seq_00000124_00000576
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 40
 	goto scr_seq_00000124_00000579
 
@@ -448,7 +448,7 @@ scr_seq_00000124_000005B0:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 800
 	gotoif lt, scr_seq_00000124_000005D7
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 46
 	goto scr_seq_00000124_000005DA
 
@@ -489,7 +489,7 @@ scr_seq_00000124_00000620:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 201
 	gotoif lt, scr_seq_00000124_00000647
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 48
 	goto scr_seq_00000124_0000064A
 
@@ -508,7 +508,7 @@ scr_seq_00000124_00000652:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 250
 	gotoif lt, scr_seq_00000124_00000679
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 50
 	goto scr_seq_00000124_0000067C
 
@@ -527,7 +527,7 @@ scr_seq_00000124_00000684:
 	scrcmd_724 11, 16384
 	comparevartovalue VAR_TEMP_x4000, 101
 	gotoif lt, scr_seq_00000124_000006AB
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 52
 	goto scr_seq_00000124_000006AE
 
@@ -547,7 +547,7 @@ scr_seq_00000124_000006B6:
 	scrcmd_076 19, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, scr_seq_00000124_000006E3
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 19
 	goto scr_seq_00000124_000006E6
 
@@ -568,7 +568,7 @@ scr_seq_00000124_000006F0:
 	scrcmd_076 66, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, scr_seq_00000124_0000071D
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 21
 	goto scr_seq_00000124_00000720
 
@@ -589,7 +589,7 @@ scr_seq_00000124_0000072A:
 	scrcmd_076 12, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, scr_seq_00000124_00000757
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 23
 	goto scr_seq_00000124_0000075A
 

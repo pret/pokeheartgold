@@ -30,8 +30,8 @@ scr_seq_00000034_0000002F:
 	gotoif eq, scr_seq_00000034_0000025D
 	msgbox 1
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -40,8 +40,8 @@ scr_seq_00000034_0000002F:
 	scrcmd_081 0
 	wait 15, VAR_SPECIAL_x800C
 	reset_bgm
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	show_person_at 1, 8, 1, 12, 1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 7

@@ -93,7 +93,7 @@ scr_seq_00000023_00000118:
 	callstd 2042
 	apply_movement 1, scr_seq_00000023_00000158
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	waitbutton
 	closemsg

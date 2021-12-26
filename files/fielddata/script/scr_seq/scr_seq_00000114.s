@@ -56,7 +56,7 @@ scr_seq_00000114_00000079:
 	closemsg
 	apply_movement 5, scr_seq_00000114_000003AC
 	wait_movement
-	scrcmd_132 8, 7
+	gender_msgbox 8, 7
 	closemsg
 	apply_movement 4, scr_seq_00000114_0000032C
 	wait_movement
@@ -64,16 +64,16 @@ scr_seq_00000114_00000079:
 	closemsg
 	apply_movement 5, scr_seq_00000114_000003B4
 	wait_movement
-	scrcmd_132 10, 9
+	gender_msgbox 10, 9
 	closemsg
 	apply_movement 5, scr_seq_00000114_0000038C
 	wait_movement
-	scrcmd_132 12, 11
+	gender_msgbox 12, 11
 	closemsg
 	apply_movement 5, scr_seq_00000114_000003DC
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 14, 13
+	buffer_players_name 0
+	gender_msgbox 14, 13
 	closemsg
 	scrcmd_081 0
 	play_se SEQ_SE_PL_FR03
@@ -110,41 +110,41 @@ scr_seq_00000114_00000079:
 	closemsg
 	apply_movement 5, scr_seq_00000114_000003D4
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 16, 15
+	buffer_players_name 0
+	gender_msgbox 16, 15
 	closemsg
-	scrcmd_529 VAR_TEMP_x4002
+	get_lead_mon_index VAR_TEMP_x4002
 	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 251
 	callif ne, scr_seq_00000114_000002C0
 	apply_movement 253, scr_seq_00000114_000003A4
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	scrcmd_174 6, 6, 0, 32767
-	scrcmd_175
+	fade_screen 6, 6, 0, 32767
+	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 32767
-	scrcmd_175
+	fade_screen 6, 6, 1, 32767
+	wait_fade
 	apply_movement 255, scr_seq_00000114_0000038C
 	wait_movement
 	apply_movement 5, scr_seq_00000114_000003C0
 	wait_movement
 	comparevartovalue VAR_TEMP_x4003, 1
 	gotoif ne, scr_seq_00000114_00000224
-	scrcmd_132 27, 26
+	gender_msgbox 27, 26
 	closemsg
 	goto scr_seq_00000114_0000022A
 
 scr_seq_00000114_00000224:
-	scrcmd_132 18, 17
+	gender_msgbox 18, 17
 	closemsg
 scr_seq_00000114_0000022A:
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
 	clearflag FLAG_UNK_310
 	scrcmd_176 117, 0, 16, 57, 1
-	scrcmd_174 6, 15, 1, 32767
-	scrcmd_175
+	fade_screen 6, 15, 1, 32767
+	wait_fade
 	releaseall
 	end
 
@@ -153,11 +153,11 @@ scr_seq_00000114_00000250:
 	closemsg
 	apply_movement 4, scr_seq_00000114_00000360
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	scrcmd_174 6, 6, 0, 32767
-	scrcmd_175
+	fade_screen 6, 6, 0, 32767
+	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 32767
-	scrcmd_175
+	fade_screen 6, 6, 1, 32767
+	wait_fade
 	wait_movement
 	hide_person 4
 	setflag FLAG_UNK_303
@@ -169,8 +169,8 @@ scr_seq_00000114_00000250:
 	setvar VAR_UNK_40FE, 0
 	setflag FLAG_UNK_310
 	scrcmd_176 117, 0, 16, 57, 1
-	scrcmd_174 6, 15, 1, 32767
-	scrcmd_175
+	fade_screen 6, 15, 1, 32767
+	wait_fade
 	scrcmd_747
 	releaseall
 	end
@@ -179,19 +179,19 @@ scr_seq_00000114_000002C0:
 	setvar VAR_TEMP_x4003, 1
 	apply_movement 5, scr_seq_00000114_00000304
 	wait_movement
-	scrcmd_132 23, 22
+	gender_msgbox 23, 22
 	closemsg
-	scrcmd_132 25, 24
+	gender_msgbox 25, 24
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	scrcmd_282
+	heal_party
 	scrcmd_436
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 
 scr_seq_00000114_00000302:

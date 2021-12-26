@@ -11,7 +11,7 @@ scr_seq_00000061_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_07A
-	gotoif eq, scr_seq_00000061_0000004F
+	gotoif TRUE, scr_seq_00000061_0000004F
 	msgbox 0
 	scrcmd_049
 	closemsg

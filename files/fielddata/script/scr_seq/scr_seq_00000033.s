@@ -99,7 +99,7 @@ scr_seq_00000033_0000012F:
 	apply_movement 0, scr_seq_00000033_0000028C
 scr_seq_00000033_00000144:
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000033_00000167

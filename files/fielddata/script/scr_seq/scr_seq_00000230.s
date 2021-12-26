@@ -54,8 +54,8 @@ scr_seq_00000230_0000008D:
 scr_seq_00000230_00000098:
 	msgbox 1
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 16384
 	comparevartovalue VAR_TEMP_x4000, 255
@@ -76,8 +76,8 @@ scr_seq_00000230_00000098:
 	gotoif eq, scr_seq_00000230_00000295
 	scrcmd_364 16384
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000230_00000149
@@ -100,7 +100,7 @@ scr_seq_00000230_0000017F:
 	apply_movement 255, scr_seq_00000230_000002D4
 scr_seq_00000230_00000187:
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 5
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -139,8 +139,8 @@ scr_seq_00000230_000001FC:
 
 scr_seq_00000230_00000206:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 9
 	waitbutton
 	closemsg
@@ -149,8 +149,8 @@ scr_seq_00000230_00000206:
 
 scr_seq_00000230_0000021F:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 15
 	waitbutton
 	closemsg
@@ -159,8 +159,8 @@ scr_seq_00000230_0000021F:
 
 scr_seq_00000230_00000238:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 2
 	waitbutton
 	closemsg
@@ -169,8 +169,8 @@ scr_seq_00000230_00000238:
 
 scr_seq_00000230_00000251:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 3
 	waitbutton
 	closemsg
@@ -179,11 +179,11 @@ scr_seq_00000230_00000251:
 
 scr_seq_00000230_0000026A:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 4
 	closemsg
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 6
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -194,8 +194,8 @@ scr_seq_00000230_00000293:
 	.byte 0x02, 0x00
 scr_seq_00000230_00000295:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 10
 	waitbutton
 	closemsg

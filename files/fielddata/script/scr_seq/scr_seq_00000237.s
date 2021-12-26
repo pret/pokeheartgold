@@ -30,7 +30,7 @@ scr_seq_00000237_00000057:
 	scrcmd_340 10, 15
 scr_seq_00000237_0000005D:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000237_0000006E
+	gotoif FALSE, scr_seq_00000237_0000006E
 	clearflag FLAG_UNK_189
 	end
 
@@ -71,7 +71,7 @@ scr_seq_00000237_000000DF:
 	apply_movement 255, scr_seq_00000237_00000140
 	wait_movement
 	msgbox 46
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_146 6
 	msgbox 47
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
@@ -110,7 +110,7 @@ scr_seq_00000237_0000014C:
 scr_seq_00000237_0000015C:
 	scrcmd_609
 	lockall
-	scrcmd_132 36, 41
+	gender_msgbox 36, 41
 	closemsg
 	apply_movement 10, scr_seq_00000237_00000510
 	wait_movement
@@ -120,12 +120,12 @@ scr_seq_00000237_0000015C:
 	wait_movement
 	apply_movement 10, scr_seq_00000237_00000500
 	wait_movement
-	scrcmd_132 37, 42
+	gender_msgbox 37, 42
 	closemsg
 	apply_movement 11, scr_seq_00000237_000004F8
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x8004, 368
 	gotoif ne, scr_seq_00000237_000001D4
 	apply_movement 11, scr_seq_00000237_000004C0
@@ -145,7 +145,7 @@ scr_seq_00000237_000001FF:
 	apply_movement 11, scr_seq_00000237_00000518
 scr_seq_00000237_00000207:
 	wait_movement
-	scrcmd_132 38, 43
+	gender_msgbox 38, 43
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -207,8 +207,8 @@ scr_seq_00000237_00000305:
 	apply_movement 11, scr_seq_00000237_00000508
 scr_seq_00000237_0000030D:
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 39, 44
+	buffer_players_name 0
+	gender_msgbox 39, 44
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8004, 368
 	gotoif ne, scr_seq_00000237_0000033B
@@ -228,8 +228,8 @@ scr_seq_00000237_0000035E:
 	apply_movement 12, scr_seq_00000237_000004F0
 scr_seq_00000237_0000036E:
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 40, 45
+	buffer_players_name 0
+	gender_msgbox 40, 45
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -278,15 +278,15 @@ scr_seq_00000237_000003F1:
 	gotoif ne, scr_seq_00000237_00000455
 	scrcmd_600
 scr_seq_00000237_00000455:
-	scrcmd_174 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_175
+	wait_fade
 	scrcmd_309 77
 	setvar VAR_UNK_408E, 1
 	scrcmd_176 331, 0, 3, 12, 0
 	scrcmd_582 38, 368, 411
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -502,12 +502,12 @@ scr_seq_00000237_000006C6:
 	wait_movement
 scr_seq_00000237_000006ED:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 9
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

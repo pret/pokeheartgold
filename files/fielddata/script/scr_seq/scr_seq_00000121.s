@@ -49,7 +49,7 @@ scr_seq_00000121_00000086:
 	apply_movement 3, scr_seq_00000121_00000148
 scr_seq_00000121_0000008E:
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 7
 	closemsg
 	comparevartovalue VAR_TEMP_x4001, 2
@@ -153,7 +153,7 @@ scr_seq_00000121_000001BC:
 	comparevartovalue VAR_UNK_40EB, 1
 	gotoif eq, scr_seq_00000121_00000215
 	checkflag FLAG_UNK_0F5
-	gotoif eq, scr_seq_00000121_000001E7
+	gotoif TRUE, scr_seq_00000121_000001E7
 	msgbox 0
 	waitbutton
 	closemsg
@@ -215,7 +215,7 @@ scr_seq_00000121_0000025E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0F5
-	gotoif eq, scr_seq_00000121_0000027C
+	gotoif TRUE, scr_seq_00000121_0000027C
 	msgbox 10
 	waitbutton
 	closemsg

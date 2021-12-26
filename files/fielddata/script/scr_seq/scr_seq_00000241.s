@@ -12,7 +12,7 @@ scr_seq_00000241_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_08A
-	gotoif eq, scr_seq_00000241_00000028
+	gotoif TRUE, scr_seq_00000241_00000028
 	msgbox 13
 	waitbutton
 	closemsg
@@ -53,13 +53,13 @@ scr_seq_00000241_00000056:
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000241_000000EE
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000241_000000F9
 	msgbox 3
 	scrcmd_362 7, 20, 101
 	setvar VAR_UNK_4114, 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	play_fanfare SEQ_ME_PT_SPECIAL
 	wait_fanfare
@@ -68,7 +68,7 @@ scr_seq_00000241_000000BC:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000241_00000178
 	checkflag FLAG_UNK_0B5
-	gotoif eq, scr_seq_00000241_000000E3
+	gotoif TRUE, scr_seq_00000241_000000E3
 	msgbox 6
 	waitbutton
 	closemsg

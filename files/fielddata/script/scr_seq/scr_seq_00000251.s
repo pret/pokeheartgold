@@ -30,9 +30,9 @@ scr_seq_00000251_0000004D:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_100
-	gotoif eq, scr_seq_00000251_000000A2
+	gotoif TRUE, scr_seq_00000251_000000A2
 	checkflag FLAG_UNK_0AA
-	gotoif eq, scr_seq_00000251_0000007E
+	gotoif TRUE, scr_seq_00000251_0000007E
 	msgbox 5
 	closemsg
 scr_seq_00000251_00000070:
@@ -65,9 +65,9 @@ scr_seq_00000251_000000AF:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_101
-	gotoif eq, scr_seq_00000251_000000E0
+	gotoif TRUE, scr_seq_00000251_000000E0
 	checkflag FLAG_UNK_0AA
-	gotoif eq, scr_seq_00000251_000000FA
+	gotoif TRUE, scr_seq_00000251_000000FA
 	msgbox 0
 	closemsg
 scr_seq_00000251_000000D2:
@@ -92,7 +92,7 @@ scr_seq_00000251_000000F8:
 	.byte 0x02, 0x00
 scr_seq_00000251_000000FA:
 	checkflag FLAG_UNK_100
-	gotoif lt, scr_seq_00000251_000000ED
+	gotoif FALSE, scr_seq_00000251_000000ED
 	msgbox 1
 	setvar VAR_SPECIAL_x8004, 29
 	setvar VAR_SPECIAL_x8005, 34
@@ -166,12 +166,12 @@ scr_seq_00000251_0000022C:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0AA
-	gotoif eq, scr_seq_00000251_00000354
+	gotoif TRUE, scr_seq_00000251_00000354
 	scrcmd_076 241, 11
 	msgbox 9
 	scrcmd_077
 	checkflag FLAG_UNK_0A8
-	gotoif eq, scr_seq_00000251_00000260
+	gotoif TRUE, scr_seq_00000251_00000260
 	msgbox 10
 	waitbutton
 	closemsg
@@ -198,22 +198,22 @@ scr_seq_00000251_0000028C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000251_0000036A
 	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 14
 	waitbutton
 	closemsg
 	checkflag FLAG_UNK_0B0
-	gotoif eq, scr_seq_00000251_0000033F
+	gotoif TRUE, scr_seq_00000251_0000033F
 	checkflag FLAG_UNK_0AF
-	gotoif eq, scr_seq_00000251_00000337
+	gotoif TRUE, scr_seq_00000251_00000337
 	checkflag FLAG_UNK_0AE
-	gotoif eq, scr_seq_00000251_00000328
+	gotoif TRUE, scr_seq_00000251_00000328
 	checkflag FLAG_UNK_0AD
-	gotoif eq, scr_seq_00000251_00000320
+	gotoif TRUE, scr_seq_00000251_00000320
 	checkflag FLAG_UNK_0AC
-	gotoif eq, scr_seq_00000251_00000311
+	gotoif TRUE, scr_seq_00000251_00000311
 	checkflag FLAG_UNK_0A9
-	gotoif eq, scr_seq_00000251_00000309
+	gotoif TRUE, scr_seq_00000251_00000309
 	setflag FLAG_UNK_0A9
 	releaseall
 	end
@@ -270,7 +270,7 @@ scr_seq_00000251_00000354:
 	end
 
 scr_seq_00000251_0000036A:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 18
 	waitbutton
 	closemsg
@@ -278,7 +278,7 @@ scr_seq_00000251_0000036A:
 	end
 
 scr_seq_00000251_00000378:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 19
 	waitbutton
 	closemsg

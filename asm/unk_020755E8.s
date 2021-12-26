@@ -2469,7 +2469,7 @@ _02076A06:
 	strb r0, [r4]
 	pop {r4, pc}
 _02076A24:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _02076A44
 	add r0, r4, #0
@@ -3551,12 +3551,12 @@ _02077360:
 	add r4, r0, #0
 	b _02077388
 _02077368:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	add r4, r0, #0
 	b _02077388
 _02077370:
 	ldr r0, _0207738C ; =0x000004A4
-	bl sub_02006B24
+	bl PlayFanfare
 	b _02077388
 _02077378:
 	ldr r0, _02077390 ; =0x000005E6
@@ -3565,7 +3565,7 @@ _02077378:
 _02077380:
 	mov r0, #0x4a
 	lsl r0, r0, #4
-	bl sub_02006B24
+	bl PlayFanfare
 _02077388:
 	add r0, r4, #0
 	pop {r4, pc}

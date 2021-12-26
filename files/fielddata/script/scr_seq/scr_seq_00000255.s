@@ -11,7 +11,7 @@ scr_seq_00000255_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif eq, scr_seq_00000255_00000024
+	gotoif TRUE, scr_seq_00000255_00000024
 	msgbox 0
 	waitbutton
 	closemsg

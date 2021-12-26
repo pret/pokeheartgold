@@ -90,7 +90,7 @@ scr_seq_00000029_000000FD:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_08A
-	gotoif eq, scr_seq_00000029_00000243
+	gotoif TRUE, scr_seq_00000029_00000243
 	msgbox 3
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -129,7 +129,7 @@ scr_seq_00000029_000000FD:
 	wait_se SEQ_SE_DP_PINPON
 	scrcmd_747
 	msgbox 9
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 10
 	play_fanfare SEQ_ME_KEYITEM
 	wait_fanfare
@@ -341,7 +341,7 @@ scr_seq_00000029_0000046B:
 	apply_movement 255, scr_seq_00000029_000006EC
 scr_seq_00000029_00000480:
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_191 1
 	msgbox 22
 	closemsg
@@ -722,9 +722,9 @@ scr_seq_00000029_00000966:
 	comparevartovalue VAR_UNK_4136, 0
 	gotoif ne, scr_seq_00000029_00000B86
 	checkflag FLAG_UNK_AA6
-	gotoif eq, scr_seq_00000029_000009CF
+	gotoif TRUE, scr_seq_00000029_000009CF
 	checkflag FLAG_UNK_AA5
-	gotoif eq, scr_seq_00000029_000009AF
+	gotoif TRUE, scr_seq_00000029_000009AF
 	msgbox 28
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -878,7 +878,7 @@ scr_seq_00000029_00000B75:
 	end
 
 scr_seq_00000029_00000B86:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 43
 	copyvar VAR_SPECIAL_x8002, VAR_UNK_4136
 	goto scr_seq_00000029_00000AC3

@@ -17,7 +17,7 @@
 
 scr_seq_00000232_0000002A:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000232_0000003B
+	gotoif FALSE, scr_seq_00000232_0000003B
 	clearflag FLAG_UNK_189
 	end
 
@@ -56,16 +56,16 @@ scr_seq_00000232_000000AE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 VAR_SPECIAL_x8002
+	get_lead_mon_index VAR_SPECIAL_x8002
 	scrcmd_480 32780, 32770, 63
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000232_000001D4
 	checkflag FLAG_UNK_ABC
-	gotoif eq, scr_seq_00000232_000001E8
+	gotoif TRUE, scr_seq_00000232_000001E8
 	comparevartovalue VAR_UNK_4094, 7
 	gotoif eq, scr_seq_00000232_00000182
 	checkflag FLAG_UNK_0D9
-	gotoif eq, scr_seq_00000232_00000164
+	gotoif TRUE, scr_seq_00000232_00000164
 	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 5
 	gotoif eq, scr_seq_00000232_00000115
@@ -149,7 +149,7 @@ scr_seq_00000232_000001FC:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_06E
-	gotoif eq, scr_seq_00000232_0000023B
+	gotoif TRUE, scr_seq_00000232_0000023B
 	msgbox 10
 	setvar VAR_SPECIAL_x8004, 332
 	setvar VAR_SPECIAL_x8005, 1
@@ -179,9 +179,9 @@ scr_seq_00000232_00000250:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000232_0000028C
 	checkflag FLAG_UNK_070
-	gotoif lt, scr_seq_00000232_00000297
+	gotoif FALSE, scr_seq_00000232_00000297
 	checkflag FLAG_UNK_074
-	gotoif lt, scr_seq_00000232_000002A5
+	gotoif FALSE, scr_seq_00000232_000002A5
 	msgbox 7
 scr_seq_00000232_00000284:
 	waitbutton
@@ -196,7 +196,7 @@ scr_seq_00000232_0000028C:
 scr_seq_00000232_00000295:
 	.byte 0x02, 0x00
 scr_seq_00000232_00000297:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	goto scr_seq_00000232_00000284
 
@@ -252,7 +252,7 @@ scr_seq_00000232_00000330:
 	msgbox 0
 	closemsg
 	checkflag FLAG_UNK_070
-	gotoif eq, scr_seq_00000232_000003F0
+	gotoif TRUE, scr_seq_00000232_000003F0
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
@@ -278,7 +278,7 @@ scr_seq_00000232_00000391:
 	goto scr_seq_00000232_000003BF
 
 scr_seq_00000232_000003B9:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 scr_seq_00000232_000003BF:
 	closemsg
@@ -463,12 +463,12 @@ scr_seq_00000232_000005FF:
 	wait_movement
 scr_seq_00000232_00000626:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 5
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

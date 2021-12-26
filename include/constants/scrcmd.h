@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_SCRCMD_H
 #define POKEHEARTGOLD_CONSTANTS_SCRCMD_H
 
+#include <nitro/types.h>
+#include "constants/global.h"
 #include "constants/species.h"
 #include "constants/flags.h"
 #include "constants/vars.h"

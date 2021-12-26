@@ -24,7 +24,7 @@ scr_seq_00000837_00000046:
 	clearflag FLAG_UNK_281
 	clearflag FLAG_UNK_282
 	checkflag FLAG_UNK_167
-	gotoif eq, scr_seq_00000837_00000099
+	gotoif TRUE, scr_seq_00000837_00000099
 	comparevartovalue VAR_UNK_4130, 4
 	gotoif eq, scr_seq_00000837_00000099
 	comparevartovalue VAR_UNK_4130, 1
@@ -85,7 +85,7 @@ scr_seq_00000837_0000011B:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_130
-	gotoif eq, scr_seq_00000837_0000015A
+	gotoif TRUE, scr_seq_00000837_0000015A
 	msgbox 1
 	setvar VAR_SPECIAL_x8004, 252
 	setvar VAR_SPECIAL_x8005, 1
@@ -109,7 +109,7 @@ scr_seq_00000837_00000165:
 
 scr_seq_00000837_0000016F:
 	checkflag FLAG_UNK_177
-	gotoif eq, scr_seq_00000837_000003E8
+	gotoif TRUE, scr_seq_00000837_000003E8
 	comparevartovalue VAR_UNK_4130, 3
 	gotoif eq, scr_seq_00000837_0000039B
 	play_se SEQ_SE_DP_SELECT
@@ -164,7 +164,7 @@ scr_seq_00000837_0000022C:
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8008, 3
 	gotoif eq, scr_seq_00000837_00000346
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000837_0000033B
 	comparevartovalue VAR_SPECIAL_x8004, 0
@@ -182,7 +182,7 @@ scr_seq_00000837_000002B0:
 	setvar VAR_SPECIAL_x8004, 258
 scr_seq_00000837_000002B6:
 	scrcmd_202 1, 32772, 0, 0
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 20
 	play_fanfare SEQ_ME_POKEGET
 	msgbox 21
@@ -231,15 +231,15 @@ scr_seq_00000837_00000346:
 
 scr_seq_00000837_00000351:
 	closemsg
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	subvar VAR_SPECIAL_x800C, 1
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_815 0
 	scrcmd_173 VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000837_000002F3
 	msgbox 26
@@ -300,13 +300,13 @@ scr_seq_00000837_00000415:
 	gotoif eq, scr_seq_00000837_000004EA
 	msgbox 9
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000837_000004EA
 	scrcmd_470 12

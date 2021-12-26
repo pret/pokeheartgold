@@ -18,7 +18,7 @@ scr_seq_00000913_00000022:
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000913_0000015C
 	checkflag FLAG_UNK_964
-	gotoif lt, scr_seq_00000913_0000015A
+	gotoif FALSE, scr_seq_00000913_0000015A
 	clearflag FLAG_UNK_1D9
 	scrcmd_147 38, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
@@ -126,7 +126,7 @@ scr_seq_00000913_00000162:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000913_00000235
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -160,7 +160,7 @@ scr_seq_00000913_00000202:
 
 scr_seq_00000913_0000020C:
 	checkflag FLAG_UNK_0C2
-	gotoif lt, scr_seq_00000913_000001CE
+	gotoif FALSE, scr_seq_00000913_000001CE
 	scrcmd_147 38, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000913_0000023B
@@ -177,7 +177,7 @@ scr_seq_00000913_00000235:
 
 scr_seq_00000913_0000023B:
 	checkflag FLAG_UNK_166
-	gotoif eq, scr_seq_00000913_0000036F
+	gotoif TRUE, scr_seq_00000913_0000036F
 	comparevartovalue VAR_TEMP_x4000, 77
 	gotoif eq, scr_seq_00000913_00000264
 	setvar VAR_TEMP_x4000, 77
@@ -196,13 +196,13 @@ scr_seq_00000913_00000264:
 	gotoif eq, scr_seq_00000913_0000034B
 	msgbox 9
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000913_0000034B
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -248,7 +248,7 @@ scr_seq_00000913_0000034B:
 	end
 
 scr_seq_00000913_00000356:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 14
 	waitbutton
 	closemsg
@@ -456,7 +456,7 @@ scr_seq_00000913_0000059B:
 	lockall
 	faceplayer
 	scrcmd_294 5, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000913_000005C2
 	msgbox 23

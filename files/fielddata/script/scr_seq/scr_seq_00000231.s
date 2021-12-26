@@ -72,16 +72,16 @@ scr_seq_00000231_00000119:
 	apply_movement 253, scr_seq_00000231_00000294
 scr_seq_00000231_00000138:
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 2, 3
+	buffer_players_name 0
+	gender_msgbox 2, 3
 	setvar VAR_SPECIAL_x8004, 465
 	setvar VAR_SPECIAL_x8005, 1
 	callstd 2033
-	scrcmd_132 4, 5
+	gender_msgbox 4, 5
 	closemsg
 	apply_movement 1, scr_seq_00000231_00000294
 	wait_movement
-	scrcmd_132 6, 7
+	gender_msgbox 6, 7
 	closemsg
 	apply_movement 2, scr_seq_00000231_000002A4
 	wait_movement

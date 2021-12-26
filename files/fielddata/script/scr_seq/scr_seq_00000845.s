@@ -22,21 +22,21 @@ scr_seq_00000845_0000001E:
 	wait 30, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_00000845_000000B8
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 0, 1
-	setflag FLAG_UNK_11B
+	buffer_players_name 0
+	gender_msgbox 0, 1
+	setflag FLAG_GOT_BAG
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
 	msgbox 2
-	setflag FLAG_UNK_11C
+	setflag FLAG_GOT_TRAINER_CARD
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
 	msgbox 3
-	setflag FLAG_UNK_11D
+	setflag FLAG_GOT_SAVE_BUTTON
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
 	msgbox 4
-	setflag FLAG_UNK_11E
+	setflag FLAG_GOT_OPTIONS_BUTTON
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
 	msgbox 5
@@ -83,7 +83,7 @@ scr_seq_00000845_000000DC:
 	wait 30, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_00000845_000000B8
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 33
 	closemsg
 	apply_movement 0, scr_seq_00000845_000000C8
@@ -95,11 +95,11 @@ scr_seq_00000845_000000DC:
 
 scr_seq_00000845_00000126:
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000845_0000015C
+	gotoif TRUE, scr_seq_00000845_0000015C
 	comparevartovalue VAR_UNK_4108, 4
 	gotoif ge, scr_seq_00000845_00000205
 	checkflag FLAG_GOT_STARTER
-	gotoif eq, scr_seq_00000845_00000179
+	gotoif TRUE, scr_seq_00000845_00000179
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -122,10 +122,10 @@ scr_seq_00000845_00000179:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_09C
-	gotoif eq, scr_seq_00000845_000001D4
-	scrcmd_190 0
+	gotoif TRUE, scr_seq_00000845_000001D4
+	buffer_players_name 0
 	msgbox 7
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 8
 	setflag FLAG_UNK_09C
 	play_fanfare SEQ_ME_ITEM
@@ -175,7 +175,7 @@ scr_seq_00000845_00000205:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0A7
-	gotoif eq, scr_seq_00000845_00000275
+	gotoif TRUE, scr_seq_00000845_00000275
 	scrcmd_294 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000845_00000234
@@ -183,7 +183,7 @@ scr_seq_00000845_00000205:
 	goto scr_seq_00000845_0000023A
 
 scr_seq_00000845_00000234:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 16
 scr_seq_00000845_0000023A:
 	setflag FLAG_UNK_0A7
@@ -228,13 +228,13 @@ scr_seq_00000845_00000275:
 scr_seq_00000845_000002DD:
 	.byte 0x02, 0x00
 scr_seq_00000845_000002DF:
-	scrcmd_838 1, 32780
+	bank_or_wallet_is_full 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000845_0000043A
-	scrcmd_794 32780, 1
+	check_bank_balance VAR_SPECIAL_x800C, 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000845_0000041C
-	scrcmd_793 1, 32780
+	bank_transaction 1, VAR_SPECIAL_x800C
 	scrcmd_796
 	scrcmd_747
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
@@ -246,13 +246,13 @@ scr_seq_00000845_000002DF:
 	end
 
 scr_seq_00000845_00000335:
-	scrcmd_838 0, 32780
+	bank_or_wallet_is_full 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000845_0000042B
 	hasenoughmoneyvar 32780, 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000845_00000389
-	scrcmd_793 0, 32780
+	bank_transaction 0, VAR_SPECIAL_x800C
 	scrcmd_796
 	scrcmd_747
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
@@ -280,7 +280,7 @@ scr_seq_00000845_00000398:
 	scrcmd_796
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000845_000003C2
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 17
 	setflag FLAG_UNK_986
 	goto scr_seq_00000845_000003C9
@@ -307,7 +307,7 @@ scr_seq_00000845_000003E0:
 	closemsg
 	wait 8, VAR_SPECIAL_x800C
 	play_se SEQ_SE_GS_OKOZUKAI
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 24
 	waitbutton
 	closemsg

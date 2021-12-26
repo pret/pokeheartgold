@@ -33,14 +33,14 @@ scr_seq_00000738_00000054:
 	.byte 0x02, 0x00
 scr_seq_00000738_00000056:
 	checkflag FLAG_UNK_AA8
-	gotoif eq, scr_seq_00000738_00000152
+	gotoif TRUE, scr_seq_00000738_00000152
 	msgbox 1
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000738_00000147
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000738_00000099
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -56,13 +56,13 @@ scr_seq_00000738_000000A5:
 scr_seq_00000738_000000A7:
 	msgbox 2
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32772
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_490 32772
 	comparevartovalue VAR_SPECIAL_x8004, 255
 	gotoif eq, scr_seq_00000738_00000147
@@ -121,7 +121,7 @@ scr_seq_00000738_0000016D:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000738_0000019D
 	scrcmd_146 31
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 9
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare

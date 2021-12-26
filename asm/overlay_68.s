@@ -2423,7 +2423,7 @@ _021E6CAA:
 	bl sub_02006198
 	pop {r3, pc}
 _021E6CB0:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	pop {r3, pc}
 _021E6CB6:
 	ldr r0, _021E6CD4 ; =0x000005E6
@@ -2432,7 +2432,7 @@ _021E6CB6:
 _021E6CBE:
 	mov r0, #0x4a
 	lsl r0, r0, #4
-	bl sub_02006B24
+	bl PlayFanfare
 	b _021E6CD0
 _021E6CC8:
 	ldr r0, _021E6CD4 ; =0x000005E6

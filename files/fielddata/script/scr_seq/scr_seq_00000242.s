@@ -39,11 +39,11 @@ scr_seq_00000242_00000038:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 487, 0, 40, 86, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_098 253
 	scrcmd_596 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -109,7 +109,7 @@ scr_seq_00000242_00000160:
 	setflag FLAG_UNK_1C4
 scr_seq_00000242_00000168:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000242_00000179
+	gotoif FALSE, scr_seq_00000242_00000179
 	clearflag FLAG_UNK_189
 	end
 
@@ -264,7 +264,7 @@ scr_seq_00000242_0000033F:
 	comparevartovalue VAR_UNK_4118, 1
 	gotoif ne, scr_seq_00000242_00000438
 	checkflag FLAG_UNK_1C4
-	gotoif eq, scr_seq_00000242_000003C1
+	gotoif TRUE, scr_seq_00000242_000003C1
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
@@ -301,11 +301,11 @@ scr_seq_00000242_000003C1:
 	scrcmd_604 48
 scr_seq_00000242_000003E3:
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 487, 0, 40, 86, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_098 253
 	scrcmd_596 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -408,12 +408,12 @@ scr_seq_00000242_00000546:
 	wait_movement
 scr_seq_00000242_0000056D:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 12
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

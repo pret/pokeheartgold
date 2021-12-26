@@ -11,7 +11,7 @@
 
 scr_seq_00000218_00000012:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000218_00000023
+	gotoif FALSE, scr_seq_00000218_00000023
 	clearflag FLAG_UNK_189
 	end
 
@@ -76,12 +76,12 @@ scr_seq_00000218_000000F1:
 	wait_movement
 scr_seq_00000218_00000118:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 48
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

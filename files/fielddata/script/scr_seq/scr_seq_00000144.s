@@ -75,17 +75,17 @@ scr_seq_00000144_000000B4:
 	goto scr_seq_00000144_00000115
 
 scr_seq_00000144_000000FD:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 0
 	goto scr_seq_00000144_00000121
 
 scr_seq_00000144_00000109:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	goto scr_seq_00000144_00000121
 
 scr_seq_00000144_00000115:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	goto scr_seq_00000144_00000121
 
@@ -141,17 +141,17 @@ scr_seq_00000144_0000018C:
 	goto scr_seq_00000144_000001E7
 
 scr_seq_00000144_000001CF:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 27
 	goto scr_seq_00000144_000001F3
 
 scr_seq_00000144_000001DB:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 28
 	goto scr_seq_00000144_000001F3
 
 scr_seq_00000144_000001E7:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 29
 	goto scr_seq_00000144_000001F3
 

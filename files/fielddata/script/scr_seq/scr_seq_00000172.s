@@ -12,9 +12,9 @@ scr_seq_00000172_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_135
-	gotoif eq, scr_seq_00000172_0000004D
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	gotoif TRUE, scr_seq_00000172_0000004D
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	setvar VAR_SPECIAL_x8004, 44
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C

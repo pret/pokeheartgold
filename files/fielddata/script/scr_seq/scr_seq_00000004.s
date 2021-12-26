@@ -192,7 +192,7 @@ scr_seq_00000004_000002A8:
 	scrcmd_584 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000004_00000F27
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000004_00000C10
 	msgbox 0
@@ -280,7 +280,7 @@ scr_seq_00000004_00000421:
 	.byte 0x02, 0x00
 scr_seq_00000004_00000423:
 	setvar VAR_SPECIAL_x8004, 2
-	scrcmd_356 32780
+	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif lt, scr_seq_00000004_00000440
 	goto scr_seq_00000004_000004AF
@@ -295,7 +295,7 @@ scr_seq_00000004_00000440:
 
 scr_seq_00000004_0000044D:
 	setvar VAR_SPECIAL_x8004, 3
-	scrcmd_356 32780
+	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif lt, scr_seq_00000004_0000046A
 	goto scr_seq_00000004_00000905
@@ -310,7 +310,7 @@ scr_seq_00000004_0000046A:
 
 scr_seq_00000004_00000477:
 	setvar VAR_SPECIAL_x8004, 4
-	scrcmd_356 32780
+	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif lt, scr_seq_00000004_00000494
 	goto scr_seq_00000004_00000905
@@ -491,7 +491,7 @@ scr_seq_00000004_00000776:
 	.byte 0x02, 0x00
 scr_seq_00000004_00000778:
 	scrcmd_747
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 25
 	setvar VAR_TEMP_x4005, 0
 	scrcmd_707 150, 16388
@@ -715,7 +715,7 @@ scr_seq_00000004_00000ABA:
 	scrcmd_257 96
 	closemsg
 	scrcmd_600
-	scrcmd_282
+	heal_party
 	scrcmd_815 0
 	scrcmd_446 32780
 	comparevartovalue VAR_SPECIAL_x800C, 300
@@ -821,10 +821,10 @@ scr_seq_00000004_00000C1B:
 	scrcmd_584 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000004_00000F27
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000004_00000E3A
-	scrcmd_332 VAR_TEMP_x4009
+	get_party_count VAR_TEMP_x4009
 	setvar VAR_TEMP_x400A, 0
 scr_seq_00000004_00000C4F:
 	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_x800C
@@ -899,7 +899,7 @@ scr_seq_00000004_00000D70:
 	msgbox 77
 	closemsg
 	scrcmd_600
-	scrcmd_282
+	heal_party
 	apply_movement 255, scr_seq_00000004_00000BDC
 	wait_movement
 	scrcmd_815 0
@@ -990,8 +990,8 @@ scr_seq_00000004_00000E72:
 	scrcmd_436
 	scrcmd_152
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	end
 
 scr_seq_00000004_00000E86:
@@ -1030,12 +1030,12 @@ scr_seq_00000004_00000EF4:
 	.byte 0x02, 0x00
 scr_seq_00000004_00000EF6:
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_252
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000004_00000F1C
 
 scr_seq_00000004_00000F1A:

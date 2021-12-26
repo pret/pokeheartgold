@@ -854,7 +854,7 @@ scr_seq_00000089_00000D72:
 	comparevartovalue VAR_UNK_40AC, 9
 	gotoif ge, scr_seq_00000089_00000F24
 	checkflag FLAG_UNK_0D6
-	gotoif eq, scr_seq_00000089_00000E58
+	gotoif TRUE, scr_seq_00000089_00000E58
 	msgbox 5
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -1175,12 +1175,12 @@ scr_seq_00000089_00001205:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_PL_BOWABOWA
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	wait 15, VAR_SPECIAL_x800C
 	scrcmd_176 247, 0, 50, 4, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 	.balign 4, 0

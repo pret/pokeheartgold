@@ -33,7 +33,7 @@
 
 scr_seq_00000778_0000006A:
 	checkflag FLAG_UNK_31A
-	gotoif eq, scr_seq_00000778_00000079
+	gotoif TRUE, scr_seq_00000778_00000079
 	clearflag FLAG_UNK_9A6
 scr_seq_00000778_00000079:
 	scrcmd_320
@@ -41,7 +41,7 @@ scr_seq_00000778_00000079:
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000778_0000014A
 	checkflag FLAG_UNK_14A
-	gotoif lt, scr_seq_00000778_00000144
+	gotoif FALSE, scr_seq_00000778_00000144
 	scrcmd_147 36, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000778_000000FB
@@ -70,7 +70,7 @@ scr_seq_00000778_000000F9:
 
 scr_seq_00000778_000000FB:
 	checkflag FLAG_UNK_162
-	gotoif eq, scr_seq_00000778_0000010C
+	gotoif TRUE, scr_seq_00000778_0000010C
 	setflag FLAG_UNK_2F0
 	end
 
@@ -102,7 +102,7 @@ scr_seq_00000778_0000014A:
 
 scr_seq_00000778_00000150:
 	checkflag FLAG_UNK_31A
-	gotoif eq, scr_seq_00000778_00000175
+	gotoif TRUE, scr_seq_00000778_00000175
 	scrcmd_375 0
 	scrcmd_375 1
 	scrcmd_375 2
@@ -320,7 +320,7 @@ scr_seq_00000778_00000302:
 	settrainerflag 337
 	settrainerflag 396
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -349,7 +349,7 @@ scr_seq_00000778_000003BD:
 
 scr_seq_00000778_000003C7:
 	checkflag FLAG_UNK_181
-	gotoif lt, scr_seq_00000778_00000389
+	gotoif FALSE, scr_seq_00000778_00000389
 	msgbox 5
 	waitbutton
 	closemsg
@@ -386,7 +386,7 @@ scr_seq_00000778_00000414:
 	lockall
 	faceplayer
 	scrcmd_294 10, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000778_0000043B
 	msgbox 13

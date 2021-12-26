@@ -1057,7 +1057,7 @@ _021E6100:
 	mov r1, #0x1d
 	bl ov122_021E76F4
 	ldr r0, _021E6134 ; =0x000004B4
-	bl sub_02006B24
+	bl PlayFanfare
 _021E610E:
 	ldr r0, [sp]
 	bl ov122_021E84C8
@@ -1067,7 +1067,7 @@ _021E6116:
 	bl sub_02006184
 	cmp r0, #0
 	bne _021E612E
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E612E
 	add sp, #8
@@ -1282,7 +1282,7 @@ _021E62D8:
 	cmp r0, #4
 	bne _021E6302
 	ldr r0, _021E6350 ; =0x000004B5
-	bl sub_02006B24
+	bl PlayFanfare
 	add r0, r4, #0
 	mov r1, #0x20
 	bl ov122_021E76F4
@@ -1306,7 +1306,7 @@ _021E6314:
 	bl ov122_021E7FA8
 	cmp r0, #4
 	bne _021E632C
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E6346
 	add sp, #0x14
@@ -1399,11 +1399,11 @@ _021E63C0:
 	add r0, r4, r0
 	bl ov122_021E7888
 	ldr r0, _021E6414 ; =0x000004B3
-	bl sub_02006B24
+	bl PlayFanfare
 	add r0, r5, #0
 	bl ov122_021E84C8
 _021E63E0:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E640E
 	add r0, r4, #0

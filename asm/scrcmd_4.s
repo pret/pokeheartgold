@@ -33,8 +33,8 @@ ScrCmd_658: ; 0x020483D8
 	.balign 4, 0
 	thumb_func_end ScrCmd_658
 
-	thumb_func_start ScrCmd_190
-ScrCmd_190: ; 0x02048414
+	thumb_func_start ScrCmd_BufferPlayersName
+ScrCmd_BufferPlayersName: ; 0x02048414
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -57,7 +57,7 @@ ScrCmd_190: ; 0x02048414
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_190
+	thumb_func_end ScrCmd_BufferPlayersName
 
 	thumb_func_start ScrCmd_191
 ScrCmd_191: ; 0x02048448

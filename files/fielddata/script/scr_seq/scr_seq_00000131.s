@@ -75,7 +75,7 @@ scr_seq_00000131_000000CE:
 	faceplayer
 	comparevartovalue VAR_UNK_40FB, 8
 	gotoif eq, scr_seq_00000131_00000165
-	scrcmd_529 VAR_TEMP_x4005
+	get_lead_mon_index VAR_TEMP_x4005
 	scrcmd_698 2, 16389, 16390
 	comparevartovalue VAR_TEMP_x4006, 1
 	gotoif eq, scr_seq_00000131_0000011A
@@ -93,7 +93,7 @@ scr_seq_00000131_0000011A:
 	gotoif eq, scr_seq_00000131_00000154
 	msgbox 0
 	closemsg
-	scrcmd_332 VAR_SPECIAL_x8004
+	get_party_count VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 2
 	gotoif ge, scr_seq_00000131_00000154
 	apply_movement 0, scr_seq_00000131_000002CC
@@ -409,7 +409,7 @@ scr_seq_00000131_00000545:
 	end
 
 scr_seq_00000131_00000550:
-	scrcmd_332 VAR_SPECIAL_x8004
+	get_party_count VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, scr_seq_00000131_0000056D
 	scrcmd_490 16392
@@ -417,7 +417,7 @@ scr_seq_00000131_00000550:
 	return
 
 scr_seq_00000131_0000056D:
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	comparevartovalue VAR_UNK_4102, 1
 	gotoif ne, scr_seq_00000131_000005B2
 	scrcmd_698 1, 16384, 32780
@@ -628,8 +628,8 @@ scr_seq_00000131_000008A4:
 	apply_movement 255, scr_seq_00000131_00000CE4
 scr_seq_00000131_000008AC:
 	wait 150, VAR_SPECIAL_x800C
-	scrcmd_174 6, 30, 1, 0
-	scrcmd_175
+	fade_screen 6, 30, 1, 0
+	wait_fade
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_490 32772
@@ -658,7 +658,7 @@ scr_seq_00000131_0000090F:
 	wait 2, VAR_SPECIAL_x800C
 	msgbox 25
 	scrcmd_490 16393
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_202 1, 16393, 0, 0
 	play_fanfare SEQ_ME_SHINKAOME
 	msgbox 26
@@ -706,11 +706,11 @@ scr_seq_00000131_000009B6:
 	msgbox 17
 	closemsg
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_174 6, 6, 0, 0
-	scrcmd_175
+	fade_screen 6, 6, 0, 0
+	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 0
-	scrcmd_175
+	fade_screen 6, 6, 1, 0
+	wait_fade
 	apply_movement 0, scr_seq_00000131_00000D30
 	wait_movement
 	msgbox 18
@@ -721,14 +721,14 @@ scr_seq_00000131_000009B6:
 	closemsg
 scr_seq_00000131_00000A4D:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_174 6, 6, 0, 0
-	scrcmd_175
+	fade_screen 6, 6, 0, 0
+	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 0
-	scrcmd_175
+	fade_screen 6, 6, 1, 0
+	wait_fade
 	comparevartovalue VAR_UNK_40FB, 14
 	gotoif eq, scr_seq_00000131_00000AAA
-	scrcmd_529 VAR_TEMP_x4005
+	get_lead_mon_index VAR_TEMP_x4005
 	scrcmd_698 2, 16389, 16390
 	comparevartovalue VAR_TEMP_x4006, 1
 	gotoif ne, scr_seq_00000131_00000AA0
@@ -743,63 +743,63 @@ scr_seq_00000131_00000AAA:
 	play_se SEQ_SE_DP_KAIDAN2
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif ne, scr_seq_00000131_00000AE5
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 490, 0, 9, 24, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000131_00000BAE
 
 scr_seq_00000131_00000AE5:
 	comparevartovalue VAR_UNK_403E, 7
 	gotoif ne, scr_seq_00000131_00000B1C
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 9, 24, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000131_00000BAE
 
 scr_seq_00000131_00000B1C:
 	comparevartovalue VAR_UNK_403E, 8
 	gotoif ne, scr_seq_00000131_00000B53
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 9, 24, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000131_00000BAE
 
 scr_seq_00000131_00000B53:
 	comparevartovalue VAR_UNK_403E, 9
 	gotoif ne, scr_seq_00000131_00000B8A
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 9, 24, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000131_00000BAE
 
 scr_seq_00000131_00000B8A:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 9, 24, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000131_00000BAE:
 	releaseall
 	end
 
 scr_seq_00000131_00000BB2:
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	subvar VAR_SPECIAL_x800C, 1
 	setvar VAR_TEMP_x4008, 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 VAR_SPECIAL_x800C, VAR_TEMP_x4008
 	scrcmd_819
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 
 

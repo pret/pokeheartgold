@@ -10,7 +10,7 @@
 
 scr_seq_00000058_0000000E:
 	checkflag FLAG_UNK_AB8
-	gotoif eq, scr_seq_00000058_0000003A
+	gotoif TRUE, scr_seq_00000058_0000003A
 	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_00000058_00000034
@@ -28,7 +28,7 @@ scr_seq_00000058_0000003A:
 
 scr_seq_00000058_00000040:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000058_0000004D
+	gotoif TRUE, scr_seq_00000058_0000004D
 	end
 
 scr_seq_00000058_0000004D:

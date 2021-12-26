@@ -37,25 +37,25 @@ scr_seq_00000858_0000004E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_06F
-	gotoif eq, scr_seq_00000858_00000115
-	scrcmd_190 0
-	scrcmd_132 2, 3
+	gotoif TRUE, scr_seq_00000858_00000115
+	buffer_players_name 0
+	gender_msgbox 2, 3
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000858_000000F7
 scr_seq_00000858_0000007D:
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000858_00000106
 	scrcmd_776
 	setflag FLAG_UNK_070
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	play_fanfare SEQ_ME_TAMAGO_GET
 	wait_fanfare
-	scrcmd_132 5, 6
+	gender_msgbox 5, 6
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -95,8 +95,8 @@ scr_seq_00000858_00000106:
 	end
 
 scr_seq_00000858_00000115:
-	scrcmd_190 0
-	scrcmd_132 9, 10
+	buffer_players_name 0
+	gender_msgbox 9, 10
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747

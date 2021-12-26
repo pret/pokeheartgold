@@ -74,8 +74,8 @@ scr_seq_00000147_000000DB:
 	play_se SEQ_SE_DP_TELE2
 	apply_movement 255, scr_seq_00000147_000001EC
 	wait_movement
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setvar VAR_TEMP_x4003, 1
 	scrcmd_176 16470, 0, 5, 2, 1
 	scrcmd_436
@@ -85,8 +85,8 @@ scr_seq_00000147_000000DB:
 	scrcmd_150
 	setvar VAR_UNK_4137, 1
 	scrcmd_375 255
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

@@ -48,7 +48,7 @@ scr_seq_00000090_000000B0:
 
 scr_seq_00000090_000000B2:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000090_000000BF
+	gotoif TRUE, scr_seq_00000090_000000BF
 	end
 
 scr_seq_00000090_000000BF:
@@ -94,17 +94,17 @@ scr_seq_00000090_0000012D:
 	scrcmd_604 48
 	msgbox 0
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	scrcmd_282
+	heal_party
 	scrcmd_436
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
-	scrcmd_190 0
-	scrcmd_132 1, 2
+	fade_screen 6, 1, 1, 0
+	wait_fade
+	buffer_players_name 0
+	gender_msgbox 1, 2
 	closemsg
 	apply_movement 0, scr_seq_00000090_000001B8
 	apply_movement 1, scr_seq_00000090_000001C0
@@ -266,8 +266,8 @@ scr_seq_00000090_00000360:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0D3
-	gotoif lt, scr_seq_00000090_000003A2
-	scrcmd_190 0
+	gotoif FALSE, scr_seq_00000090_000003A2
+	buffer_players_name 0
 	msgbox 21
 	closemsg
 	play_se SEQ_SE_DP_DOOR10
@@ -358,8 +358,8 @@ scr_seq_00000090_00000436:
 	gotoif eq, scr_seq_00000090_00000620
 	msgbox 8
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	show_person_at 0, 28, 1, 24, 1
 	show_person_at 1, 27, 1, 24, 3
 	scrcmd_602 0
@@ -378,13 +378,13 @@ scr_seq_00000090_00000436:
 	setflag FLAG_UNK_1F3
 	setflag FLAG_UNK_1F2
 	setflag FLAG_UNK_1E8
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	apply_movement 0, scr_seq_00000090_000006BC
 	apply_movement 1, scr_seq_00000090_000006C4
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 10, 11
+	buffer_players_name 0
+	gender_msgbox 10, 11
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -401,8 +401,8 @@ scr_seq_00000090_00000436:
 	apply_movement 0, scr_seq_00000090_000006FC
 	apply_movement 1, scr_seq_00000090_0000072C
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 12, 13
+	buffer_players_name 0
+	gender_msgbox 12, 13
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -571,9 +571,9 @@ scr_seq_00000090_00000770:
 	gotoif eq, scr_seq_00000090_000007D0
 	setflag FLAG_UNK_0CB
 	checkflag FLAG_UNK_0CC
-	gotoif lt, scr_seq_00000090_000007D0
+	gotoif FALSE, scr_seq_00000090_000007D0
 	checkflag FLAG_UNK_0CD
-	gotoif lt, scr_seq_00000090_000007D0
+	gotoif FALSE, scr_seq_00000090_000007D0
 	goto scr_seq_00000090_000008A2
 
 scr_seq_00000090_000007D0:
@@ -596,9 +596,9 @@ scr_seq_00000090_000007D4:
 	gotoif eq, scr_seq_00000090_00000834
 	setflag FLAG_UNK_0CC
 	checkflag FLAG_UNK_0CB
-	gotoif lt, scr_seq_00000090_00000834
+	gotoif FALSE, scr_seq_00000090_00000834
 	checkflag FLAG_UNK_0CD
-	gotoif lt, scr_seq_00000090_00000834
+	gotoif FALSE, scr_seq_00000090_00000834
 	goto scr_seq_00000090_000008A2
 
 scr_seq_00000090_00000834:
@@ -621,9 +621,9 @@ scr_seq_00000090_00000838:
 	gotoif eq, scr_seq_00000090_00000898
 	setflag FLAG_UNK_0CD
 	checkflag FLAG_UNK_0CB
-	gotoif lt, scr_seq_00000090_00000898
+	gotoif FALSE, scr_seq_00000090_00000898
 	checkflag FLAG_UNK_0CC
-	gotoif lt, scr_seq_00000090_00000898
+	gotoif FALSE, scr_seq_00000090_00000898
 	goto scr_seq_00000090_000008A2
 
 scr_seq_00000090_00000898:
@@ -669,8 +669,8 @@ scr_seq_00000090_000008F0:
 	closemsg
 	apply_movement 0, scr_seq_00000090_00000A18
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 18, 19
+	buffer_players_name 0
+	gender_msgbox 18, 19
 	closemsg
 	apply_movement 0, scr_seq_00000090_00000A20
 	apply_movement 1, scr_seq_00000090_00000A2C
@@ -795,11 +795,11 @@ scr_seq_00000090_00000AAC:
 scr_seq_00000090_00000AB8:
 	releaseall
 	checkflag FLAG_UNK_0CB
-	gotoif lt, scr_seq_00000090_00000AE4
+	gotoif FALSE, scr_seq_00000090_00000AE4
 	checkflag FLAG_UNK_0CC
-	gotoif lt, scr_seq_00000090_00000AE4
+	gotoif FALSE, scr_seq_00000090_00000AE4
 	checkflag FLAG_UNK_0CD
-	gotoif lt, scr_seq_00000090_00000AE4
+	gotoif FALSE, scr_seq_00000090_00000AE4
 	msgbox 23
 	closemsg
 	releaseall

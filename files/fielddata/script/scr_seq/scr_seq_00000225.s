@@ -38,16 +38,16 @@ scr_seq_00000225_00000064:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 VAR_SPECIAL_x8002
+	get_lead_mon_index VAR_SPECIAL_x8002
 	scrcmd_480 32780, 32770, 60
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000225_0000018A
 	checkflag FLAG_UNK_ABC
-	gotoif eq, scr_seq_00000225_0000019E
+	gotoif TRUE, scr_seq_00000225_0000019E
 	comparevartovalue VAR_UNK_4094, 7
 	gotoif eq, scr_seq_00000225_00000138
 	checkflag FLAG_UNK_0D8
-	gotoif eq, scr_seq_00000225_0000011A
+	gotoif TRUE, scr_seq_00000225_0000011A
 	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, scr_seq_00000225_000000CB
@@ -136,7 +136,7 @@ scr_seq_00000225_000001B2:
 	apply_movement 6, scr_seq_00000225_000005D8
 	wait_movement
 	callstd 2029
-	scrcmd_132 17, 18
+	gender_msgbox 17, 18
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	scrcmd_099 7
@@ -189,8 +189,8 @@ scr_seq_00000225_000002B8:
 scr_seq_00000225_000002D5:
 	wait_movement
 	scrcmd_098 7
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	get_player_gender VAR_TEMP_x4002
@@ -310,11 +310,11 @@ scr_seq_00000225_000004DC:
 	apply_movement 6, scr_seq_00000225_0000064C
 	apply_movement 7, scr_seq_00000225_00000654
 	wait_movement
-	scrcmd_132 3, 4
+	gender_msgbox 3, 4
 	setvar VAR_SPECIAL_x8004, 4
 	setvar VAR_SPECIAL_x8005, 5
 	callstd 2033
-	scrcmd_132 7, 8
+	gender_msgbox 7, 8
 	closemsg
 	apply_movement 6, scr_seq_00000225_00000928
 	apply_movement 7, scr_seq_00000225_0000093C

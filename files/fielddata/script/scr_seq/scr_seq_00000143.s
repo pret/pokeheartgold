@@ -123,12 +123,12 @@ scr_seq_00000143_000001EF:
 scr_seq_00000143_0000021E:
 	msgbox 6
 	scrcmd_049
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_465 4, VAR_SPECIAL_x800C
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000143_00000579
 	comparevartovalue VAR_SPECIAL_x800C, 2
@@ -265,7 +265,7 @@ scr_seq_00000143_00000528:
 	gotoif ne, scr_seq_00000143_00000287
 	scrcmd_747
 	scrcmd_465 5, VAR_SPECIAL_x8004
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_465 2, VAR_SPECIAL_x8004, 1
 	msgbox 9
 	waitbutton

@@ -11,8 +11,8 @@ scr_seq_00000844_0000000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	waitbutton
 	closemsg
 	releaseall

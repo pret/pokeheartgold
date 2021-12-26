@@ -11,18 +11,18 @@ scr_seq_00000846_0000000A:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_DP_PC_ON
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 0
 	closemsg
 	scrcmd_377 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000846_0000004B
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_376
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

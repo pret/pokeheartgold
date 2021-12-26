@@ -39,8 +39,8 @@ scr_seq_00000798_0000006D:
 	apply_movement 5, scr_seq_00000798_0000012C
 	apply_movement 6, scr_seq_00000798_00000138
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 12, 13
+	buffer_players_name 0
+	gender_msgbox 12, 13
 	closemsg
 	apply_movement 5, scr_seq_00000798_00000140
 	apply_movement 6, scr_seq_00000798_00000148
@@ -52,8 +52,8 @@ scr_seq_00000798_0000006D:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
-	scrcmd_132 14, 15
+	buffer_players_name 0
+	gender_msgbox 14, 15
 	closemsg
 	apply_movement 5, scr_seq_00000798_0000015C
 	apply_movement 6, scr_seq_00000798_0000016C
@@ -129,37 +129,37 @@ scr_seq_00000798_00000198:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000798_00000245
 	checkflag FLAG_UNK_143
-	gotoif eq, scr_seq_00000798_000001ED
+	gotoif TRUE, scr_seq_00000798_000001ED
 	msgbox 1
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_425 0
 	scrcmd_150
 	setflag FLAG_UNK_143
 	scrcmd_515 25
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000798_000001ED:
 	scrcmd_424 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000798_00000245
 	checkflag FLAG_UNK_144
-	gotoif eq, scr_seq_00000798_0000023A
+	gotoif TRUE, scr_seq_00000798_0000023A
 	msgbox 2
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_425 1
 	scrcmd_150
 	setflag FLAG_UNK_144
 	scrcmd_515 26
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000798_0000023A:
 	msgbox 3
 	waitbutton

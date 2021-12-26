@@ -43,10 +43,10 @@ scr_seq_00000841_0000005C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000841_000000E9
 	checkflag FLAG_UNK_118
-	gotoif eq, scr_seq_00000841_000000BD
+	gotoif TRUE, scr_seq_00000841_000000BD
 	call scr_seq_00000841_0000014D
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	closemsg
 	call scr_seq_00000841_000001DB
 	msgbox 2
@@ -59,8 +59,8 @@ scr_seq_00000841_0000005C:
 scr_seq_00000841_000000BD:
 	setflag FLAG_UNK_119
 	call scr_seq_00000841_0000014D
-	scrcmd_190 0
-	scrcmd_132 3, 4
+	buffer_players_name 0
+	gender_msgbox 3, 4
 	closemsg
 	call scr_seq_00000841_000001DB
 	msgbox 5
@@ -89,8 +89,8 @@ scr_seq_00000841_000000E9:
 
 scr_seq_00000841_00000125:
 	call scr_seq_00000841_0000014D
-	scrcmd_190 0
-	scrcmd_132 9, 10
+	buffer_players_name 0
+	gender_msgbox 9, 10
 	closemsg
 	call scr_seq_00000841_000001DB
 	msgbox 11
@@ -319,7 +319,7 @@ scr_seq_00000841_000003F3:
 
 scr_seq_00000841_00000406:
 	checkflag FLAG_UNK_2FB
-	gotoif eq, scr_seq_00000841_00000431
+	gotoif TRUE, scr_seq_00000841_00000431
 	comparevartovalue VAR_UNK_40FF, 2
 	gotoif eq, scr_seq_00000841_00000433
 	play_se SEQ_SE_DP_SELECT

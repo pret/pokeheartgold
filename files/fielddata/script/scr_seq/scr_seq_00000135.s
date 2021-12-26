@@ -11,7 +11,7 @@
 
 scr_seq_00000135_00000012:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000135_0000001F
+	gotoif TRUE, scr_seq_00000135_0000001F
 	end
 
 scr_seq_00000135_0000001F:

@@ -63,7 +63,7 @@ scr_seq_00000743_0000006B:
 	setflag FLAG_UNK_30F
 	setvar VAR_UNK_4096, 1
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -78,7 +78,7 @@ scr_seq_00000743_000000F0:
 	gotoif eq, scr_seq_00000743_00000127
 	callstd 2033
 	setflag FLAG_UNK_17E
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	waitbutton
 	closemsg
@@ -93,7 +93,7 @@ scr_seq_00000743_00000127:
 
 scr_seq_00000743_00000131:
 	checkflag FLAG_UNK_17E
-	gotoif lt, scr_seq_00000743_000000F0
+	gotoif FALSE, scr_seq_00000743_000000F0
 	msgbox 5
 	waitbutton
 	closemsg
@@ -134,7 +134,7 @@ scr_seq_00000743_00000191:
 	scrcmd_609
 	lockall
 	checkflag FLAG_UNK_13A
-	gotoif eq, scr_seq_00000743_0000037D
+	gotoif TRUE, scr_seq_00000743_0000037D
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000743_000001C9
@@ -346,7 +346,7 @@ scr_seq_00000743_00000480:
 	lockall
 	faceplayer
 	scrcmd_294 15, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000743_000004A7
 	msgbox 9

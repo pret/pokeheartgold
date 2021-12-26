@@ -58,11 +58,11 @@ scr_seq_00000015_000000AB:
 
 scr_seq_00000015_000000B1:
 	checkflag FLAG_UNK_13B
-	callif eq, scr_seq_00000015_000000D4
+	callif TRUE, scr_seq_00000015_000000D4
 	checkflag FLAG_UNK_13D
-	callif eq, scr_seq_00000015_000000E2
+	callif TRUE, scr_seq_00000015_000000E2
 	checkflag FLAG_UNK_13E
-	callif eq, scr_seq_00000015_000000F0
+	callif TRUE, scr_seq_00000015_000000F0
 	end
 
 scr_seq_00000015_000000D4:
@@ -100,7 +100,7 @@ scr_seq_00000015_000000FE:
 	setflag FLAG_UNK_140
 	setflag FLAG_UNK_13C
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -115,7 +115,7 @@ scr_seq_00000015_00000175:
 	gotoif eq, scr_seq_00000015_000001AC
 	callstd 2033
 	setflag FLAG_UNK_17D
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	waitbutton
 	closemsg
@@ -130,7 +130,7 @@ scr_seq_00000015_000001AC:
 
 scr_seq_00000015_000001B6:
 	checkflag FLAG_UNK_17D
-	gotoif lt, scr_seq_00000015_00000175
+	gotoif FALSE, scr_seq_00000015_00000175
 	msgbox 5
 	waitbutton
 	closemsg
@@ -147,7 +147,7 @@ scr_seq_00000015_000001D2:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_13B
-	gotoif eq, scr_seq_00000015_0000021A
+	gotoif TRUE, scr_seq_00000015_0000021A
 	msgbox 6
 	closemsg
 	trainer_battle 689, 0, 0, 0
@@ -174,7 +174,7 @@ scr_seq_00000015_00000225:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_13C
-	gotoif eq, scr_seq_00000015_0000028C
+	gotoif TRUE, scr_seq_00000015_0000028C
 	msgbox 9
 	closemsg
 	trainer_battle 690, 0, 0, 0
@@ -209,7 +209,7 @@ scr_seq_00000015_00000297:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_13D
-	gotoif eq, scr_seq_00000015_000002DF
+	gotoif TRUE, scr_seq_00000015_000002DF
 	msgbox 12
 	closemsg
 	trainer_battle 691, 0, 0, 0
@@ -236,7 +236,7 @@ scr_seq_00000015_000002EA:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_13E
-	gotoif eq, scr_seq_00000015_00000332
+	gotoif TRUE, scr_seq_00000015_00000332
 	msgbox 15
 	closemsg
 	trainer_battle 692, 0, 0, 0
@@ -263,7 +263,7 @@ scr_seq_00000015_0000033D:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_13F
-	gotoif eq, scr_seq_00000015_000003A4
+	gotoif TRUE, scr_seq_00000015_000003A4
 	msgbox 18
 	closemsg
 	trainer_battle 693, 0, 0, 0
@@ -298,7 +298,7 @@ scr_seq_00000015_000003AF:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_140
-	gotoif eq, scr_seq_00000015_00000416
+	gotoif TRUE, scr_seq_00000015_00000416
 	msgbox 21
 	closemsg
 	trainer_battle 694, 0, 0, 0

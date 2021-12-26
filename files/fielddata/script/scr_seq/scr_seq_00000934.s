@@ -32,7 +32,7 @@ scr_seq_00000934_0000003B:
 	lockall
 	faceplayer
 	scrcmd_294 6, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000934_00000062
 	msgbox 2

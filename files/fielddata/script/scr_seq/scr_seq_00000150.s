@@ -20,7 +20,7 @@ scr_seq_00000150_00000006:
 	gotoif eq, scr_seq_00000150_00000088
 	scrcmd_624 32768
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_626 1, 32768
 	msgbox 1
 	closemsg

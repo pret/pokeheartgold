@@ -118,7 +118,7 @@ scr_seq_00000075_00000177:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -134,11 +134,11 @@ scr_seq_00000075_000001A3:
 	closemsg
 	releaseall
 	setvar VAR_UNK_414B, 3
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 265, 0, 11, 6, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	end
 
 scr_seq_00000075_000001D3:
@@ -149,11 +149,11 @@ scr_seq_00000075_000001D3:
 	closemsg
 	call scr_seq_00000075_000004C5
 	setvar VAR_UNK_414D, 2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 266, 0, 3, 6, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -211,7 +211,7 @@ scr_seq_00000075_000002D3:
 	gotoif eq, scr_seq_00000075_0000030F
 	setvar VAR_TEMP_x4009, 1
 	call scr_seq_00000075_00000216
-	scrcmd_190 4
+	buffer_players_name 4
 	msgbox 15
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -228,7 +228,7 @@ scr_seq_00000075_0000030F:
 scr_seq_00000075_0000031A:
 	scrcmd_412 50, 16393, 0
 	setvar VAR_UNK_4151, 2
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 17
 	closemsg
 	releaseall
@@ -378,11 +378,11 @@ scr_seq_00000075_000004E5:
 	call scr_seq_00000075_00000480
 	apply_movement 0, scr_seq_00000075_000006D8
 	wait_movement
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 271, 0, 8, 4, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

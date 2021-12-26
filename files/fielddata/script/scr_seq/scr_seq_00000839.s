@@ -9,7 +9,7 @@
 scr_seq_00000839_00000006:
 	scrcmd_609
 	lockall
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
 	gotoif ne, scr_seq_00000839_0000018C
@@ -44,22 +44,22 @@ scr_seq_00000839_00000066:
 scr_seq_00000839_0000008C:
 	setvar VAR_SPECIAL_x8004, 0
 	call scr_seq_00000839_000000F4
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 402, 0, 3, 3, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
 scr_seq_00000839_000000C0:
 	setvar VAR_SPECIAL_x8004, 1
 	call scr_seq_00000839_000000F4
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 403, 0, 7, 3, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -144,22 +144,22 @@ scr_seq_00000839_000001C5:
 scr_seq_00000839_000001F0:
 	setvar VAR_SPECIAL_x8004, 0
 	call scr_seq_00000839_000000FE
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 403, 0, 7, 3, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
 scr_seq_00000839_00000224:
 	setvar VAR_SPECIAL_x8004, 1
 	call scr_seq_00000839_000000FE
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 402, 0, 3, 3, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 	.balign 4, 0

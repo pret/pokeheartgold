@@ -21,12 +21,12 @@ scr_seq_00000910_00000016:
 	wait_movement
 	msgbox 40
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 0, 0
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setvar VAR_TEMP_x4001, 2
 	releaseall
 	end
@@ -587,7 +587,7 @@ scr_seq_00000910_000009C9:
 	goto scr_seq_00000910_000009D5
 
 scr_seq_00000910_000009D5:
-	scrcmd_332 VAR_SPECIAL_x8005
+	get_party_count VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif ne, scr_seq_00000910_000009F3
 	msgbox 6
@@ -644,7 +644,7 @@ scr_seq_00000910_00000AB1:
 	msgbox 4
 	play_se SEQ_SE_DP_REGI
 	scrcmd_137 16386, 15, 0, 0, 0, 32780
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_202 1, 16386, 0, 0
 	msgbox 8
 	comparevartovalue VAR_TEMP_x4002, 63

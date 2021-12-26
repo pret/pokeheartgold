@@ -348,7 +348,7 @@ _021E799A:
 	str r0, [r5, #0x38]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -12507,7 +12507,7 @@ ov101_Radio_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x24]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
@@ -12695,7 +12695,7 @@ ov101_021ED980: ; 0x021ED980
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -18422,7 +18422,7 @@ ov101_021F0694: ; 0x021F0694
 	str r0, [sp, #0x20]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x24]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	str r0, [sp, #0x24]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x34]
@@ -22886,7 +22886,7 @@ _021F2870:
 	mov r1, #0
 	ldr r0, [r5, #0x20]
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	str r0, [r4, #0x44]
 	mov r0, #0
 	str r0, [sp]
@@ -24374,7 +24374,7 @@ _021F3376:
 _021F339E:
 	add r0, sp, #8
 	ldrh r0, [r0]
-	bl sub_02006B24
+	bl PlayFanfare
 	lsl r2, r7, #0x18
 	ldr r1, [r5, #0x4c]
 	add r0, r5, #0
@@ -24395,7 +24395,7 @@ _021F33C0:
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
 _021F33CE:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	beq _021F33DC
 	add sp, #0xc
@@ -24419,7 +24419,7 @@ _021F33F8:
 	ldr r0, [r4, #4]
 	cmp r0, #0xff
 	bne _021F340C
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	beq _021F340C
 	add sp, #0xc
@@ -25657,7 +25657,7 @@ ov101_021F3D34: ; 0x021F3D34
 	add r5, r0, #0
 	ldr r0, [r5, #0x1c]
 	mov r4, #0
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	bl sub_0202EE70
 	add r6, r0, #0
 	mov r1, #1

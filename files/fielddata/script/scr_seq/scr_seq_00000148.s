@@ -12,7 +12,7 @@ scr_seq_00000148_0000000A:
 	goto scr_seq_00000148_00000019
 
 scr_seq_00000148_00000013:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 57
 scr_seq_00000148_00000019:
 	scrcmd_247
@@ -31,7 +31,7 @@ scr_seq_00000148_00000019:
 
 scr_seq_00000148_0000005E:
 	checkflag FLAG_UNK_987
-	gotoif eq, scr_seq_00000148_000000AF
+	gotoif TRUE, scr_seq_00000148_000000AF
 	scrcmd_746
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 18, 255, 0
@@ -70,7 +70,7 @@ scr_seq_00000148_000000EB:
 	msgbox 20
 	scrcmd_248 0, 32780, 32768
 	play_fanfare VAR_SPECIAL_x8000
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait_fanfare
 	scrcmd_423 32780
@@ -95,7 +95,7 @@ scr_seq_00000148_00000142:
 	msgbox 20
 	scrcmd_248 1, 32780, 32768
 	play_fanfare VAR_SPECIAL_x8000
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait_fanfare
 	scrcmd_424 32780

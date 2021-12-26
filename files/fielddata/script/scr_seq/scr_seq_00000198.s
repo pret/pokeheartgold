@@ -16,7 +16,7 @@ scr_seq_00000198_00000012:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0F9
-	gotoif eq, scr_seq_00000198_00000030
+	gotoif TRUE, scr_seq_00000198_00000030
 	msgbox 0
 scr_seq_00000198_00000028:
 	waitbutton

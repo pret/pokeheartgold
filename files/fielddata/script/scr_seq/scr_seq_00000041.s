@@ -13,14 +13,14 @@ scr_seq_00000041_00000012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_713 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	checkflag FLAG_UNK_978
-	gotoif eq, scr_seq_00000041_00000046
+	gotoif TRUE, scr_seq_00000041_00000046
 	releaseall
 	end
 
@@ -56,11 +56,11 @@ scr_seq_00000041_000000BC:
 	comparevartovalue VAR_UNK_40EC, 1
 	gotoif ge, scr_seq_00000041_00000107
 	play_se SEQ_SE_GS_RAKKA01
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 25, 42, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setvar VAR_UNK_40DE, 1
 	addvar VAR_UNK_40EC, 1
 	releaseall
@@ -69,11 +69,11 @@ scr_seq_00000041_000000BC:
 scr_seq_00000041_00000107:
 	setflag FLAG_UNK_235
 	play_se SEQ_SE_GS_RAKKA01
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 25, 42, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setvar VAR_UNK_40DE, 1
 	addvar VAR_UNK_40EC, 1
 	releaseall
@@ -105,29 +105,29 @@ scr_seq_00000041_00000189:
 	gotoif ge, scr_seq_00000041_000001D5
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif eq, scr_seq_00000041_000001FF
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 25, 42, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000041_000001D1:
 	releaseall
 	end
 
 scr_seq_00000041_000001D5:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 25, 42, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000041_000001D1
 
 scr_seq_00000041_000001FF:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 490, 0, 25, 42, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000041_000001D1
 
 scr_seq_00000041_00000229:
@@ -160,7 +160,7 @@ scr_seq_00000041_00000253:
 	scrcmd_183 32768
 	wait 2, VAR_SPECIAL_x8004
 	checkflag FLAG_UNK_21D
-	gotoif eq, scr_seq_00000041_000002A9
+	gotoif TRUE, scr_seq_00000041_000002A9
 	scrcmd_561 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement 255, scr_seq_00000041_000002BC

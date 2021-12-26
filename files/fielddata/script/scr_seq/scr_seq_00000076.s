@@ -46,7 +46,7 @@
 
 scr_seq_00000076_0000009E:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000076_000000AF
+	gotoif FALSE, scr_seq_00000076_000000AF
 	clearflag FLAG_UNK_189
 	end
 
@@ -120,12 +120,12 @@ scr_seq_00000076_000001A8:
 	wait_movement
 scr_seq_00000076_000001CF:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 31
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -1022,12 +1022,12 @@ scr_seq_00000076_00000FAE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_649
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -1105,11 +1105,11 @@ scr_seq_00000076_00001072:
 	apply_movement 255, scr_seq_00000076_000010B0
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 276, 0, 25, 9, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -1126,11 +1126,11 @@ scr_seq_00000076_000010B8:
 	apply_movement 255, scr_seq_00000076_000010F4
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 277, 0, 21, 9, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -1145,11 +1145,11 @@ scr_seq_00000076_000010FC:
 	apply_movement 255, scr_seq_00000076_00001138
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 278, 0, 1, 6, 3
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -1164,11 +1164,11 @@ scr_seq_00000076_00001140:
 	apply_movement 255, scr_seq_00000076_0000117C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 275, 0, 1, 7, 3
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

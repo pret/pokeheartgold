@@ -88,7 +88,7 @@ scr_seq_00000032_000000E8:
 
 scr_seq_00000032_000000F0:
 	checkflag FLAG_UNK_091
-	gotoif eq, scr_seq_00000032_0000013D
+	gotoif TRUE, scr_seq_00000032_0000013D
 	msgbox 2
 	setvar VAR_SPECIAL_x8004, 213
 	setvar VAR_SPECIAL_x8005, 1

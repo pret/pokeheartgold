@@ -106,29 +106,29 @@ scr_seq_00000046_0000017E:
 	gotoif ge, scr_seq_00000046_000001C4
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif eq, scr_seq_00000046_000001EE
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 5, 24, 32780
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000046_000001C0:
 	releaseall
 	end
 
 scr_seq_00000046_000001C4:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 5, 24, 32780
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000046_000001C0
 
 scr_seq_00000046_000001EE:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 490, 0, 5, 24, 32780
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000046_000001C0
 
 

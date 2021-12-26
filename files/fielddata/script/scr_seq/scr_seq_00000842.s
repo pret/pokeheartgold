@@ -26,7 +26,7 @@
 scr_seq_00000842_0000004A:
 	scrcmd_144 16416
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000842_0000005F
+	gotoif FALSE, scr_seq_00000842_0000005F
 	clearflag FLAG_UNK_189
 	end
 
@@ -86,7 +86,7 @@ scr_seq_00000842_00000128:
 	msgbox 14
 	closemsg
 	checkflag FLAG_GOT_STARTER
-	gotoif lt, scr_seq_00000842_00000166
+	gotoif FALSE, scr_seq_00000842_00000166
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000842_00000153
 	goto scr_seq_00000842_000001BA
@@ -246,8 +246,8 @@ scr_seq_00000842_0000032A:
 	goto scr_seq_00000842_00000347
 
 scr_seq_00000842_00000340:
-	scrcmd_190 0
-	scrcmd_132 6, 7
+	buffer_players_name 0
+	gender_msgbox 6, 7
 scr_seq_00000842_00000347:
 	waitbutton
 	closemsg
@@ -258,11 +258,11 @@ scr_seq_00000842_0000034F:
 	scrcmd_609
 	lockall
 	checkflag FLAG_UNK_09C
-	gotoif eq, scr_seq_00000842_0000075A
+	gotoif TRUE, scr_seq_00000842_0000075A
 	apply_movement 1, scr_seq_00000842_000009B8
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 1, 2
+	buffer_players_name 0
+	gender_msgbox 1, 2
 	wait 20, VAR_SPECIAL_x800C
 	closemsg
 	apply_movement 255, scr_seq_00000842_000009D4
@@ -545,7 +545,7 @@ scr_seq_00000842_00000892:
 	wait_movement
 	msgbox 18
 	scrcmd_146 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 19
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -1081,7 +1081,7 @@ scr_seq_00000842_00000EC0:
 	.short 14, 2
 	.short 254, 0
 scr_seq_00000842_00000ED4:
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -1105,9 +1105,9 @@ scr_seq_00000842_00000EEC:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_845 1, 0
-	scrcmd_132 15, 16
+	gender_msgbox 15, 16
 	closemsg
 	apply_movement 4, scr_seq_00000842_00001000
 	apply_movement 3, scr_seq_00000842_00001014
@@ -1205,11 +1205,11 @@ scr_seq_00000842_00001054:
 	scrcmd_600
 scr_seq_00000842_00001078:
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 62, 0, 12, 6, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_582 60, 688, 393
 	setvar VAR_UNK_407C, 1
@@ -1281,12 +1281,12 @@ scr_seq_00000842_0000119B:
 	wait_movement
 scr_seq_00000842_000011C2:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 0
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -1368,7 +1368,7 @@ scr_seq_00000842_000012A0:
 	wait_movement
 	comparevartovalue VAR_TEMP_x4007, 0
 	gotoif ne, scr_seq_00000842_000012F1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 21
 	closemsg
 scr_seq_00000842_000012F1:
@@ -1543,8 +1543,8 @@ scr_seq_00000842_00001510:
 	lockall
 	apply_movement 8, scr_seq_00000842_00001644
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 27, 28
+	buffer_players_name 0
+	gender_msgbox 27, 28
 	closemsg
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_602 0
@@ -1581,8 +1581,8 @@ scr_seq_00000842_000015AB:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
-	scrcmd_132 29, 30
+	buffer_players_name 0
+	gender_msgbox 29, 30
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8005, 398
 	gotoif ne, scr_seq_00000842_000015E3
@@ -1669,7 +1669,7 @@ scr_seq_00000842_000016A8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_132 25, 26
+	gender_msgbox 25, 26
 	waitbutton
 	closemsg
 	releaseall
@@ -1687,7 +1687,7 @@ scr_seq_00000842_000016BC:
 	wait_movement
 	apply_movement 8, scr_seq_00000842_00001700
 	wait_movement
-	scrcmd_132 31, 32
+	gender_msgbox 31, 32
 	waitbutton
 	closemsg
 	releaseall
@@ -1721,7 +1721,7 @@ scr_seq_00000842_0000171D:
 	end
 
 scr_seq_00000842_00001734:
-	scrcmd_190 0
+	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

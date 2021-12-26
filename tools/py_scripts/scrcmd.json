@@ -823,7 +823,7 @@
       ]
     },
     {
-      "name": "scrcmd_132",
+      "name": "gender_msgbox",
       "args": [
         1,
         1
@@ -907,7 +907,7 @@
       ]
     },
     {
-      "name": "scrcmd_143",
+      "name": "name_rival",
       "args": [
         "var"
       ]
@@ -1080,7 +1080,7 @@
       ]
     },
     {
-      "name": "scrcmd_174",
+      "name": "fade_screen",
       "args": [
         2,
         2,
@@ -1089,7 +1089,7 @@
       ]
     },
     {
-      "name": "scrcmd_175",
+      "name": "wait_fade",
       "args": []
     },
     {
@@ -1163,9 +1163,9 @@
       ]
     },
     {
-      "name": "scrcmd_187",
+      "name": "get_trcard_stars",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1179,7 +1179,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_190",
+      "name": "buffer_players_name",
       "args": [
         1
       ]
@@ -1749,7 +1749,7 @@
       ]
     },
     {
-      "name": "scrcmd_282",
+      "name": "heal_party",
       "args": []
     },
     {
@@ -2005,7 +2005,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_332",
+      "name": "get_party_count",
       "args": [
         "var"
       ]
@@ -2163,9 +2163,9 @@
       ]
     },
     {
-      "name": "scrcmd_356",
+      "name": "party_count_not_egg",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3041,9 +3041,9 @@
       "args": []
     },
     {
-      "name": "scrcmd_487",
+      "name": "pokecen_anim",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3334,7 +3334,7 @@
       ]
     },
     {
-      "name": "scrcmd_529",
+      "name": "get_lead_mon_index",
       "args": [
         "var"
       ]
@@ -4966,16 +4966,16 @@
       "args": []
     },
     {
-      "name": "scrcmd_793",
+      "name": "bank_transaction",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_794",
+      "name": "check_bank_balance",
       "args": [
-        2,
+        "var",
         4
       ]
     },
@@ -5223,10 +5223,10 @@
       ]
     },
     {
-      "name": "scrcmd_838",
+      "name": "bank_or_wallet_is_full",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {

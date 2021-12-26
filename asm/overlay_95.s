@@ -1479,12 +1479,12 @@ _021E648C:
 	cmp r0, #0
 	bne _021E6586
 	ldr r0, _021E659C ; =0x000004A4
-	bl sub_02006B24
+	bl PlayFanfare
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]
 _021E64A0:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E6586
 	ldr r0, [r4, #0x60]
@@ -1760,12 +1760,12 @@ _021E66DE:
 	cmp r0, #0
 	bne _021E67D8
 	ldr r0, _021E67EC ; =0x000004A4
-	bl sub_02006B24
+	bl PlayFanfare
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]
 _021E66F2:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E67D8
 	ldr r0, [r4, #0x60]

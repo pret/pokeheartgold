@@ -255,7 +255,7 @@ scr_seq_00000866_00000380:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_07B
-	gotoif eq, scr_seq_00000866_0000039C
+	gotoif TRUE, scr_seq_00000866_0000039C
 	msgbox 18
 	goto scr_seq_00000866_0000039F
 
@@ -272,7 +272,7 @@ scr_seq_00000866_000003A7:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_07B
-	gotoif eq, scr_seq_00000866_000003C3
+	gotoif TRUE, scr_seq_00000866_000003C3
 	msgbox 5
 	goto scr_seq_00000866_0000039F
 

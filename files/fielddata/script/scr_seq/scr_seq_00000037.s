@@ -41,7 +41,7 @@ scr_seq_00000037_00000080:
 
 scr_seq_00000037_000000A2:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000037_000000B3
+	gotoif FALSE, scr_seq_00000037_000000B3
 	clearflag FLAG_UNK_189
 	end
 
@@ -123,12 +123,12 @@ scr_seq_00000037_000001D8:
 	wait_movement
 scr_seq_00000037_000001FF:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 3
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -189,7 +189,7 @@ scr_seq_00000037_000002A8:
 scr_seq_00000037_000002B8:
 	scrcmd_609
 	lockall
-	scrcmd_529 VAR_TEMP_x4005
+	get_lead_mon_index VAR_TEMP_x4005
 	scrcmd_698 2, 16389, 16390
 	comparevartovalue VAR_TEMP_x4006, 0
 	gotoif eq, scr_seq_00000037_000002DA
@@ -278,49 +278,49 @@ scr_seq_00000037_000003EA:
 	play_se SEQ_SE_DP_KAIDAN2
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif ne, scr_seq_00000037_00000467
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 490, 0, 15, 24, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000037_00000530
 
 scr_seq_00000037_00000467:
 	comparevartovalue VAR_UNK_403E, 7
 	gotoif ne, scr_seq_00000037_0000049E
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000037_00000530
 
 scr_seq_00000037_0000049E:
 	comparevartovalue VAR_UNK_403E, 8
 	gotoif ne, scr_seq_00000037_000004D5
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000037_00000530
 
 scr_seq_00000037_000004D5:
 	comparevartovalue VAR_UNK_403E, 9
 	gotoif ne, scr_seq_00000037_0000050C
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000037_00000530
 
 scr_seq_00000037_0000050C:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 15, 24, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000037_00000530:
 	releaseall
 	end

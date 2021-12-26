@@ -15,7 +15,7 @@ scr_seq_00000948_00000016:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_001
-	gotoif eq, scr_seq_00000948_00000036
+	gotoif TRUE, scr_seq_00000948_00000036
 	msgbox 0
 	setflag FLAG_UNK_001
 	goto scr_seq_00000948_00000036
@@ -37,13 +37,13 @@ scr_seq_00000948_0000005D:
 	goto scr_seq_00000948_00000068
 
 scr_seq_00000948_00000068:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32770
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8002, 255
 	gotoif eq, scr_seq_00000948_0000014A
 	get_partymon_species VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
@@ -54,13 +54,13 @@ scr_seq_00000948_00000068:
 	gotoif eq, scr_seq_00000948_0000013F
 	msgbox 6
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_394 32770
 	scrcmd_395 32769
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8001, 255
 	gotoif eq, scr_seq_00000948_0000005D
 	scrcmd_399 0, 32770, 32769
@@ -106,20 +106,20 @@ scr_seq_00000948_00000155:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_15E
-	gotoif lt, scr_seq_00000948_00000238
+	gotoif FALSE, scr_seq_00000948_00000238
 	hasitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000948_0000022D
 	msgbox 10
 	msgbox 12
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32773
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8005, 255
 	gotoif eq, scr_seq_00000948_0000022D
 	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -130,17 +130,17 @@ scr_seq_00000948_00000155:
 	gotoif eq, scr_seq_00000948_00000222
 	msgbox 13
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_467 32773
 	scrcmd_469 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000948_0000022D
 	takeitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_x800C
-	scrcmd_190 3
+	buffer_players_name 3
 	msgbox 25
 	waitbutton
 	closemsg
@@ -181,7 +181,7 @@ scr_seq_00000948_00000252:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_186
-	gotoif eq, scr_seq_00000948_00000287
+	gotoif TRUE, scr_seq_00000948_00000287
 	setflag FLAG_UNK_186
 	msgbox 26
 	scrcmd_746
@@ -244,7 +244,7 @@ scr_seq_00000948_000002E1:
 	end
 
 scr_seq_00000948_000002EC:
-	scrcmd_332 VAR_TEMP_x4000
+	get_party_count VAR_TEMP_x4000
 scr_seq_00000948_000002F0:
 	subvar VAR_TEMP_x4000, 1
 	get_partymon_species VAR_TEMP_x4000, VAR_SPECIAL_x800C
@@ -269,13 +269,13 @@ scr_seq_00000948_00000346:
 scr_seq_00000948_00000359:
 	msgbox 30
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000948_000002A5
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
@@ -297,13 +297,13 @@ scr_seq_00000948_00000359:
 	goto scr_seq_00000948_000003EF
 
 scr_seq_00000948_000003EF:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_468 32768, 434
 	scrcmd_469 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000948_000002A5
 	msgbox 42
@@ -330,7 +330,7 @@ scr_seq_00000948_0000045D:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_187
-	gotoif eq, scr_seq_00000948_00000490
+	gotoif TRUE, scr_seq_00000948_00000490
 	setflag FLAG_UNK_187
 	msgbox 43
 	scrcmd_746
@@ -350,13 +350,13 @@ scr_seq_00000948_00000490:
 scr_seq_00000948_000004AC:
 	msgbox 45
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000948_000006EE
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
@@ -408,13 +408,13 @@ scr_seq_00000948_00000599:
 
 scr_seq_00000948_000005BB:
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_468 32768, 32771
 	scrcmd_469 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000948_000006EE
 	scrcmd_747

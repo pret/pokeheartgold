@@ -1563,7 +1563,7 @@ _021E644C:
 	ldr r2, [r2]
 	bl ov85_021E71EC
 	ldr r0, _021E6470 ; =0x000004A1
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x26
 	str r0, [r5]
 	mov r0, #0
@@ -1583,7 +1583,7 @@ ov85_021E6474: ; 0x021E6474
 	str r0, [r4, #0xc]
 	b _021E6494
 _021E6484:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E6494
 	mov r0, #0
@@ -1651,7 +1651,7 @@ _021E64E4:
 	bl Bag_AddItem
 	add r4, r0, #0
 	ldr r0, _021E6528 ; =0x000004A1
-	bl sub_02006B24
+	bl PlayFanfare
 	cmp r4, #1
 	bne _021E6516
 	mov r0, #0x28
@@ -1679,7 +1679,7 @@ ov85_021E652C: ; 0x021E652C
 	str r0, [r4, #0xc]
 	b _021E654C
 _021E653C:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E654C
 	mov r0, #0
@@ -1702,7 +1702,7 @@ ov85_021E6550: ; 0x021E6550
 	str r0, [r4, #0xc]
 	b _021E6578
 _021E6560:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _021E6578
 	mov r0, #0

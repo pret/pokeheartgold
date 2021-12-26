@@ -4381,7 +4381,7 @@ _02092D34:
 	cmp r0, #3
 	bne _02092D52
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	add r1, sp, #8
 	ldrb r1, [r1, #6]
 	bl sub_0202F050
@@ -4450,10 +4450,10 @@ sub_02092D98: ; 0x02092D98
 	strh r0, [r4, #0x12]
 	ldr r0, [r5, #0xc]
 	str r0, [r4, #0x38]
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x38]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	str r0, [r4, #0x34]
 	str r5, [r4, #0x3c]
 	add r0, r4, #0
@@ -4845,7 +4845,7 @@ sub_02093070: ; 0x02093070
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	mov r1, #9
 	bl sub_0202EEE4
 	cmp r0, #0xff
@@ -4893,7 +4893,7 @@ sub_020930C4: ; 0x020930C4
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	mov r1, #2
 	bl sub_0202EEE4
 	cmp r0, #0xff
@@ -4971,7 +4971,7 @@ sub_0209316C: ; 0x0209316C
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	mov r1, #6
 	bl sub_0202EEE4
 	cmp r0, #0xff
@@ -5034,7 +5034,7 @@ _020931D0:
 	ldrh r2, [r4, #4]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	str r0, [sp]
 	add r0, r5, #0
 	add r7, r7, #1
@@ -5107,7 +5107,7 @@ _0209326A:
 	ldrb r2, [r5, #2]
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -5123,7 +5123,7 @@ sub_020932A4: ; 0x020932A4
 	add r0, r4, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	add r1, r5, #0
 	bl sub_0202F0E8
 	cmp r0, #0
@@ -13558,7 +13558,7 @@ sub_0209730C: ; 0x0209730C
 	sub sp, #0xb0
 	add r4, r0, #0
 	str r1, [sp, #4]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
 	bl sub_0202F57C

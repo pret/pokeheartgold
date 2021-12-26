@@ -859,7 +859,7 @@ scr_seq_00000953_00000D52:
 	.byte 0x02, 0x00
 scr_seq_00000953_00000D54:
 	scrcmd_461 4, 32772, 32773
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8005, 1

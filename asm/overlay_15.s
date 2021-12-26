@@ -11558,7 +11558,7 @@ _021FEFE0:
 	bl sub_02006198
 	pop {r3, pc}
 _021FEFE6:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	pop {r3, pc}
 _021FEFEC:
 	ldr r0, _021FF000 ; =0x0000060C

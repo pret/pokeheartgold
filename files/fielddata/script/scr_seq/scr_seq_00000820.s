@@ -10,7 +10,7 @@
 
 scr_seq_00000820_0000000E:
 	checkflag FLAG_UNK_0E4
-	gotoif eq, scr_seq_00000820_00000023
+	gotoif TRUE, scr_seq_00000820_00000023
 	scrcmd_375 3
 	scrcmd_375 4
 	end
@@ -47,7 +47,7 @@ scr_seq_00000820_00000068:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0E4
-	gotoif eq, scr_seq_00000820_000000D1
+	gotoif TRUE, scr_seq_00000820_000000D1
 	msgbox 0
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8

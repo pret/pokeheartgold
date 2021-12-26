@@ -14,7 +14,7 @@
 
 scr_seq_00000874_0000001E:
 	checkflag FLAG_UNK_07B
-	gotoif eq, scr_seq_00000874_0000002F
+	gotoif TRUE, scr_seq_00000874_0000002F
 	setflag FLAG_UNK_1AB
 	end
 
@@ -28,7 +28,7 @@ scr_seq_00000874_00000035:
 	setvar VAR_UNK_4080, 3
 	apply_movement 0, scr_seq_00000874_000002B0
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	setvar VAR_SPECIAL_x8004, 492
 	setvar VAR_SPECIAL_x8005, 1
@@ -41,11 +41,11 @@ scr_seq_00000874_0000006B:
 	.byte 0x02, 0x00
 scr_seq_00000874_0000006D:
 	checkflag FLAG_UNK_07C
-	gotoif eq, scr_seq_00000874_0000011A
+	gotoif TRUE, scr_seq_00000874_0000011A
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 0
 	scrcmd_049
 	closemsg
@@ -103,12 +103,12 @@ scr_seq_00000874_0000011A:
 	wait_movement
 	msgbox 4
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_739
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_735 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000874_00000189
@@ -128,8 +128,8 @@ scr_seq_00000874_00000190:
 
 scr_seq_00000874_000001A5:
 	checkflag FLAG_UNK_AA2
-	gotoif eq, scr_seq_00000874_00000204
-	scrcmd_190 0
+	gotoif TRUE, scr_seq_00000874_00000204
+	buffer_players_name 0
 	msgbox 8
 	scrcmd_737 32772
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
@@ -186,7 +186,7 @@ scr_seq_00000874_0000024A:
 	end
 
 scr_seq_00000874_0000026E:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 16
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -255,7 +255,7 @@ scr_seq_00000874_00000314:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_077
-	gotoif eq, scr_seq_00000874_00000332
+	gotoif TRUE, scr_seq_00000874_00000332
 	msgbox 11
 	waitbutton
 	closemsg
@@ -264,7 +264,7 @@ scr_seq_00000874_00000314:
 
 scr_seq_00000874_00000332:
 	checkflag FLAG_UNK_07B
-	gotoif eq, scr_seq_00000874_00000348
+	gotoif TRUE, scr_seq_00000874_00000348
 	msgbox 12
 	waitbutton
 	closemsg
@@ -276,7 +276,7 @@ scr_seq_00000874_00000348:
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_00000874_000002A2
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000874_00000371
+	gotoif TRUE, scr_seq_00000874_00000371
 	msgbox 13
 	waitbutton
 	closemsg

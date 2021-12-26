@@ -33,7 +33,7 @@ scr_seq_00000060_00000021:
 	end
 
 scr_seq_00000060_00000047:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	waitbutton
 	closemsg
@@ -52,8 +52,8 @@ scr_seq_00000060_00000055:
 	gotoif eq, scr_seq_00000060_00000193
 	msgbox 2
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	hide_person 1
 	hide_person 2
 	hide_person 3
@@ -62,8 +62,8 @@ scr_seq_00000060_00000055:
 	wait 20, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	show_person_at 7, 36, 0, 7, 2
 	scrcmd_602 0
 	scrcmd_603
@@ -83,7 +83,7 @@ scr_seq_00000060_00000107:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 0
 	closemsg
 	clearflag FLAG_UNK_19E
@@ -96,11 +96,11 @@ scr_seq_00000060_00000107:
 	setvar VAR_UNK_409E, 1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 164, 0, 4, 5, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setflag FLAG_UNK_1AA
 	setflag FLAG_UNK_1D5
 	setflag FLAG_UNK_1AC

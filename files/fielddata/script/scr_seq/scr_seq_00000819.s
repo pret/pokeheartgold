@@ -30,7 +30,7 @@ scr_seq_00000819_00000026:
 	comparevartovalue VAR_UNK_40FC, 1
 	gotoif le, scr_seq_00000819_000000AC
 	checkflag FLAG_UNK_AA9
-	gotoif eq, scr_seq_00000819_000000AC
+	gotoif TRUE, scr_seq_00000819_000000AC
 	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000819_0000008B

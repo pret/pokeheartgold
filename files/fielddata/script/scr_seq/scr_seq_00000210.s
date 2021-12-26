@@ -9,7 +9,7 @@
 
 scr_seq_00000210_0000000A:
 	checkflag FLAG_UNK_149
-	gotoif eq, scr_seq_00000210_00000017
+	gotoif TRUE, scr_seq_00000210_00000017
 	end
 
 scr_seq_00000210_00000017:

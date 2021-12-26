@@ -30,7 +30,7 @@ scr_seq_00000134_00000040:
 
 scr_seq_00000134_0000004A:
 	checkflag FLAG_UNK_18B
-	gotoif eq, scr_seq_00000134_0000007C
+	gotoif TRUE, scr_seq_00000134_0000007C
 	hasitem ITEM_BLUE_ORB, 1, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ge, scr_seq_00000134_00000072
@@ -48,7 +48,7 @@ scr_seq_00000134_0000007C:
 
 scr_seq_00000134_0000007E:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000134_0000008B
+	gotoif TRUE, scr_seq_00000134_0000008B
 	end
 
 scr_seq_00000134_0000008B:

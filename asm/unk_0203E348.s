@@ -2685,8 +2685,8 @@ _0203F6DC:
 	.balign 4, 0
 	thumb_func_end NamingScreen_SetName
 
-	thumb_func_start sub_0203F6E0
-sub_0203F6E0: ; 0x0203F6E0
+	thumb_func_start CreateNamingScreen
+CreateNamingScreen: ; 0x0203F6E0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r0, [sp, #8]
@@ -2782,7 +2782,7 @@ _0203F79C:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0203F7AC: .word sub_0203F580
-	thumb_func_end sub_0203F6E0
+	thumb_func_end CreateNamingScreen
 
 	thumb_func_start sub_0203F7B0
 sub_0203F7B0: ; 0x0203F7B0

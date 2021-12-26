@@ -36,7 +36,7 @@ scr_seq_00000930_00000065:
 	comparevartovalue VAR_UNK_4077, 5
 	gotoif eq, scr_seq_00000930_00000117
 	checkflag FLAG_UNK_163
-	gotoif eq, scr_seq_00000930_0000010C
+	gotoif TRUE, scr_seq_00000930_0000010C
 	msgbox 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -80,7 +80,7 @@ scr_seq_00000930_0000010C:
 
 scr_seq_00000930_00000117:
 	checkflag FLAG_UNK_163
-	gotoif eq, scr_seq_00000930_00000147
+	gotoif TRUE, scr_seq_00000930_00000147
 	msgbox 3
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -121,7 +121,7 @@ scr_seq_00000930_000001A3:
 	scrcmd_602 1
 	scrcmd_604 48
 	checkflag FLAG_UNK_163
-	gotoif eq, scr_seq_00000930_0000026D
+	gotoif TRUE, scr_seq_00000930_0000026D
 	msgbox 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -217,7 +217,7 @@ scr_seq_00000930_000002DC:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0C9
-	gotoif eq, scr_seq_00000930_000002FA
+	gotoif TRUE, scr_seq_00000930_000002FA
 	msgbox 14
 	waitbutton
 	closemsg

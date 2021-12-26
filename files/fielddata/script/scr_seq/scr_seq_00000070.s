@@ -47,8 +47,8 @@ scr_seq_00000070_0000009E:
 	return
 
 scr_seq_00000070_000000A6:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_412 43, 0, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	gotoif eq, scr_seq_00000070_00000200
@@ -61,8 +61,8 @@ scr_seq_00000070_000000A6:
 	end
 
 scr_seq_00000070_000000E9:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_436
 	scrcmd_627 6
 	scrcmd_150
@@ -70,11 +70,11 @@ scr_seq_00000070_000000E9:
 	end
 
 scr_seq_00000070_0000010A:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 271, 0, 8, 2, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

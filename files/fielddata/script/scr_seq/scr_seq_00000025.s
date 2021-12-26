@@ -59,7 +59,7 @@ scr_seq_00000025_000000C4:
 
 scr_seq_00000025_000000E3:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000025_000000F4
+	gotoif FALSE, scr_seq_00000025_000000F4
 	clearflag FLAG_UNK_189
 	end
 
@@ -92,7 +92,7 @@ scr_seq_00000025_00000162:
 	clearflag FLAG_UNK_996
 scr_seq_00000025_0000016E:
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000025_0000017F
+	gotoif TRUE, scr_seq_00000025_0000017F
 	setflag FLAG_UNK_288
 	end
 
@@ -235,7 +235,7 @@ scr_seq_00000025_000002A0:
 	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif eq, scr_seq_00000025_000002C7
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 84
 	waitbutton
 	closemsg
@@ -243,7 +243,7 @@ scr_seq_00000025_000002A0:
 	end
 
 scr_seq_00000025_000002C7:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 85
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -256,13 +256,13 @@ scr_seq_00000025_000002C7:
 	msgbox 86
 	closemsg
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 7
 	faceplayer
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	msgbox 87
 	waitbutton
@@ -289,7 +289,7 @@ scr_seq_00000025_00000341:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_10E
-	gotoif eq, scr_seq_00000025_00000380
+	gotoif TRUE, scr_seq_00000025_00000380
 	msgbox 2
 	setvar VAR_SPECIAL_x8004, 217
 	setvar VAR_SPECIAL_x8005, 1
@@ -366,12 +366,12 @@ scr_seq_00000025_0000045C:
 	wait_movement
 scr_seq_00000025_00000483:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 16
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -475,12 +475,12 @@ scr_seq_00000025_000005EF:
 	wait_movement
 scr_seq_00000025_00000616:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 17
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

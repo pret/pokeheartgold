@@ -10570,7 +10570,7 @@ _0207DB9E:
 	bl sub_02006198
 	pop {r3, pc}
 _0207DBA4:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	pop {r3, pc}
 _0207DBAA:
 	ldr r0, _0207DBC8 ; =0x000005E6
@@ -10579,7 +10579,7 @@ _0207DBAA:
 _0207DBB2:
 	mov r0, #0x4a
 	lsl r0, r0, #4
-	bl sub_02006B24
+	bl PlayFanfare
 	b _0207DBC4
 _0207DBBC:
 	ldr r0, _0207DBC8 ; =0x000005E6

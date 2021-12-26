@@ -25,7 +25,7 @@ scr_seq_00000038_00000020:
 	comparevartovalue VAR_UNK_40EC, 1
 	gotoif ge, scr_seq_00000038_0000008A
 	checkflag FLAG_UNK_10F
-	gotoif eq, scr_seq_00000038_00000081
+	gotoif TRUE, scr_seq_00000038_00000081
 	msgbox 0
 	setflag FLAG_UNK_10F
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -224,7 +224,7 @@ scr_seq_00000038_0000033C:
 	goto scr_seq_00000038_00000366
 
 scr_seq_00000038_00000345:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 16
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare

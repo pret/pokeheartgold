@@ -17,7 +17,7 @@
 
 scr_seq_00000812_0000002A:
 	checkflag FLAG_UNK_9CD
-	gotoif eq, scr_seq_00000812_0000003B
+	gotoif TRUE, scr_seq_00000812_0000003B
 	setvar VAR_UNK_4123, 2000
 scr_seq_00000812_0000003B:
 	clearflag FLAG_UNK_999
@@ -34,7 +34,7 @@ scr_seq_00000812_00000052:
 scr_seq_00000812_00000062:
 	comparevartovalue VAR_UNK_4123, 2000
 	gotoif eq, scr_seq_00000812_00000079
-	scrcmd_190 1
+	buffer_players_name 1
 	scrcmd_198 2, 16675
 	return
 
@@ -48,10 +48,10 @@ scr_seq_00000812_00000083:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_136
-	gotoif eq, scr_seq_00000812_0000019B
+	gotoif TRUE, scr_seq_00000812_0000019B
 	setflag FLAG_UNK_136
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
@@ -120,8 +120,8 @@ scr_seq_00000812_00000190:
 	end
 
 scr_seq_00000812_0000019B:
-	scrcmd_190 0
-	scrcmd_132 8, 9
+	buffer_players_name 0
+	gender_msgbox 8, 9
 	goto scr_seq_00000812_000001A8
 
 scr_seq_00000812_000001A8:
@@ -142,8 +142,8 @@ scr_seq_00000812_000001A8:
 
 scr_seq_00000812_000001FB:
 	call scr_seq_00000812_00000062
-	scrcmd_190 0
-	scrcmd_132 10, 11
+	buffer_players_name 0
+	gender_msgbox 10, 11
 	closemsg
 	apply_movement 6, scr_seq_00000812_00000280
 	wait_movement
@@ -151,11 +151,11 @@ scr_seq_00000812_000001FB:
 	apply_movement 255, scr_seq_00000812_00000294
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 109, 0, 24, 47, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_098 253
 	scrcmd_606
 	apply_movement 253, scr_seq_00000812_000002A0
@@ -309,7 +309,7 @@ scr_seq_00000812_00000403:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, scr_seq_00000812_00000444
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -338,7 +338,7 @@ scr_seq_00000812_00000444:
 	end
 
 scr_seq_00000812_0000044F:
-	scrcmd_190 0
+	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

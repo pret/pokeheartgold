@@ -33,7 +33,7 @@ scr_seq_00000917_00000034:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_AB9
-	gotoif lt, scr_seq_00000917_00000050
+	gotoif FALSE, scr_seq_00000917_00000050
 	msgbox 4
 	goto scr_seq_00000917_000000E3
 

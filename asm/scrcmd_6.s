@@ -295,14 +295,14 @@ ScrCmd_PlayFanfare: ; 0x02049304
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl VarGet
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_PlayFanfare
 
-	thumb_func_start ScrCmd_079
-ScrCmd_079: ; 0x02049320
+	thumb_func_start ScrCmd_WaitFanfare
+ScrCmd_WaitFanfare: ; 0x02049320
 	push {r3, lr}
 	ldr r1, _0204932C ; =sub_02049330
 	bl SetupNativeScript
@@ -310,12 +310,12 @@ ScrCmd_079: ; 0x02049320
 	pop {r3, pc}
 	.balign 4, 0
 _0204932C: .word sub_02049330
-	thumb_func_end ScrCmd_079
+	thumb_func_end ScrCmd_WaitFanfare
 
 	thumb_func_start sub_02049330
 sub_02049330: ; 0x02049330
 	push {r3, lr}
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _0204933E
 	mov r0, #1

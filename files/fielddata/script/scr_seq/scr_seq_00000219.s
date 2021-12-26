@@ -13,15 +13,15 @@ scr_seq_00000219_0000000A:
 	faceplayer
 	msgbox 0
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	scrcmd_282
+	heal_party
 	scrcmd_436
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 1
 	waitbutton
 	closemsg

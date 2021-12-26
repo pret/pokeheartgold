@@ -787,7 +787,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_132 arg0, arg1
+	.macro gender_msgbox arg0, arg1
 	.short 132
 	.byte \arg0
 	.byte \arg1
@@ -860,7 +860,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_143 arg0
+	.macro name_rival arg0
 	.short 143
 	.short \arg0
 	.endm
@@ -1013,7 +1013,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_174 arg0, arg1, arg2, arg3
+	.macro fade_screen arg0, arg1, arg2, arg3
 	.short 174
 	.short \arg0
 	.short \arg1
@@ -1021,7 +1021,7 @@
 	.short \arg3
 	.endm
 
-	.macro scrcmd_175
+	.macro wait_fade
 	.short 175
 	.endm
 
@@ -1085,7 +1085,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_187 arg0
+	.macro get_trcard_stars arg0
 	.short 187
 	.short \arg0
 	.endm
@@ -1099,7 +1099,7 @@
 	.short 189
 	.endm
 
-	.macro scrcmd_190 arg0
+	.macro buffer_players_name arg0
 	.short 190
 	.byte \arg0
 	.endm
@@ -1593,7 +1593,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_282
+	.macro heal_party
 	.short 282
 	.endm
 
@@ -1825,7 +1825,7 @@
 	.short 331
 	.endm
 
-	.macro scrcmd_332 arg0
+	.macro get_party_count arg0
 	.short 332
 	.short \arg0
 	.endm
@@ -1963,7 +1963,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_356 arg0
+	.macro party_count_not_egg arg0
 	.short 356
 	.short \arg0
 	.endm
@@ -2705,7 +2705,7 @@
 	.short 486
 	.endm
 
-	.macro scrcmd_487 arg0
+	.macro pokecen_anim arg0
 	.short 487
 	.short \arg0
 	.endm
@@ -2946,7 +2946,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_529 arg0
+	.macro get_lead_mon_index arg0
 	.short 529
 	.short \arg0
 	.endm
@@ -4379,13 +4379,13 @@
 	.short 792
 	.endm
 
-	.macro scrcmd_793 arg0, arg1
+	.macro bank_transaction arg0, arg1
 	.short 793
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_794 arg0, arg1
+	.macro check_bank_balance arg0, arg1
 	.short 794
 	.short \arg0
 	.word \arg1
@@ -4603,7 +4603,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_838 arg0, arg1
+	.macro bank_or_wallet_is_full arg0, arg1
 	.short 838
 	.short \arg0
 	.short \arg1

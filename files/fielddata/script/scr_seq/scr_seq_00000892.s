@@ -13,8 +13,8 @@ scr_seq_00000892_0000000E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_095
-	gotoif eq, scr_seq_00000892_000000E9
-	scrcmd_190 0
+	gotoif TRUE, scr_seq_00000892_000000E9
+	buffer_players_name 0
 	msgbox 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -26,13 +26,13 @@ scr_seq_00000892_0000000E:
 	end
 
 scr_seq_00000892_0000004B:
-	scrcmd_332 VAR_SPECIAL_x8005
+	get_party_count VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif eq, scr_seq_00000892_000000DE
 	msgbox 1
 	scrcmd_137 133, 5, 0, 0, 0, 32780
 	setflag FLAG_UNK_095
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
@@ -46,11 +46,11 @@ scr_seq_00000892_0000004B:
 scr_seq_00000892_000000A0:
 	closemsg
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000892_000000C6:
 	msgbox 3
 	waitbutton
@@ -126,7 +126,7 @@ scr_seq_00000892_00000152:
 	end
 
 scr_seq_00000892_00000179:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 13
 	scrcmd_146 9
 	play_fanfare SEQ_ME_POKEGEAR_REGIST

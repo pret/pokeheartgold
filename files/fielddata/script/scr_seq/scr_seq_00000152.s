@@ -36,13 +36,13 @@ scr_seq_00000152_00000031:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
-	scrcmd_132 9, 10
+	buffer_players_name 0
+	gender_msgbox 9, 10
 	closemsg
 	apply_movement 1, scr_seq_00000152_00000110
 	wait_movement
 	scrcmd_477 1, 32780
-	scrcmd_190 0
+	buffer_players_name 0
 	play_fanfare SEQ_ME_ITEM
 	msgbox 11
 	wait_fanfare
@@ -109,7 +109,7 @@ scr_seq_00000152_00000138:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_964
-	gotoif lt, scr_seq_00000152_00000361
+	gotoif FALSE, scr_seq_00000152_00000361
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, scr_seq_00000152_00000356
 	scrcmd_386 VAR_TEMP_x4001
@@ -124,7 +124,7 @@ scr_seq_00000152_00000138:
 	gotoif eq, scr_seq_00000152_000002F9
 	apply_movement 255, scr_seq_00000152_0000036C
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	closemsg
 	apply_movement 0, scr_seq_00000152_000003F4
@@ -232,7 +232,7 @@ scr_seq_00000152_000002EE:
 scr_seq_00000152_000002F9:
 	apply_movement 255, scr_seq_00000152_00000378
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	closemsg
 	apply_movement 0, scr_seq_00000152_000003F4

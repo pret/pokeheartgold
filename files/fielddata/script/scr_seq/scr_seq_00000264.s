@@ -158,8 +158,8 @@ scr_seq_00000264_00000221:
 	end
 
 scr_seq_00000264_00000229:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	call scr_seq_00000264_0000023F
 	return
@@ -167,7 +167,7 @@ scr_seq_00000264_00000229:
 scr_seq_00000264_0000023F:
 	scrcmd_631 32769, 32768, 32771
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 	.balign 4, 0

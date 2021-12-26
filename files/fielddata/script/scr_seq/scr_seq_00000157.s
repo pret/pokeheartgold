@@ -40,9 +40,9 @@ scr_seq_00000157_00000050:
 
 scr_seq_00000157_0000005B:
 	checkflag FLAG_UNK_ABB
-	gotoif eq, scr_seq_00000157_00000084
+	gotoif TRUE, scr_seq_00000157_00000084
 	checkflag FLAG_UNK_092
-	gotoif eq, scr_seq_00000157_00000084
+	gotoif TRUE, scr_seq_00000157_00000084
 	scrcmd_294 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_00000157_0000008F
@@ -208,17 +208,17 @@ scr_seq_00000157_000002FD:
 	apply_movement 1, scr_seq_00000157_00000350
 scr_seq_00000157_00000305:
 	wait_movement
-	scrcmd_132 3, 2
+	gender_msgbox 3, 2
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setvar VAR_UNK_40CB, 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	hide_person 1
 	setflag FLAG_UNK_217
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

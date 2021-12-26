@@ -13,13 +13,13 @@
 
 scr_seq_00000112_0000001A:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000112_0000002B
+	gotoif FALSE, scr_seq_00000112_0000002B
 	clearflag FLAG_UNK_189
 	end
 
 scr_seq_00000112_0000002B:
 	checkflag FLAG_UNK_0EA
-	gotoif eq, scr_seq_00000112_0000003C
+	gotoif TRUE, scr_seq_00000112_0000003C
 	goto scr_seq_00000112_0000005A
 
 scr_seq_00000112_0000003C:
@@ -36,7 +36,7 @@ scr_seq_00000112_00000064:
 	clearflag FLAG_UNK_27E
 scr_seq_00000112_00000068:
 	checkflag FLAG_UNK_0DC
-	gotoif eq, scr_seq_00000112_00000075
+	gotoif TRUE, scr_seq_00000112_00000075
 	end
 
 scr_seq_00000112_00000075:
@@ -119,7 +119,7 @@ scr_seq_00000112_0000019C:
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000112_00000310
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 6
 	closemsg
 	show_person_at 3, 6, 0, 21, 0
@@ -147,7 +147,7 @@ scr_seq_00000112_0000019C:
 	apply_movement 0, scr_seq_00000112_000003FC
 	wait_movement
 	msgbox 15
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 16
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -308,11 +308,11 @@ scr_seq_00000112_00000458:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0DD
-	gotoif eq, scr_seq_00000112_0000053D
+	gotoif TRUE, scr_seq_00000112_0000053D
 	checkflag FLAG_UNK_0DC
-	gotoif eq, scr_seq_00000112_0000052E
+	gotoif TRUE, scr_seq_00000112_0000052E
 	checkflag FLAG_UNK_0DA
-	gotoif eq, scr_seq_00000112_000004A6
+	gotoif TRUE, scr_seq_00000112_000004A6
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000112_0000049B
@@ -329,20 +329,20 @@ scr_seq_00000112_0000049E:
 
 scr_seq_00000112_000004A6:
 	msgbox 26
-	scrcmd_332 VAR_SPECIAL_x8005
+	get_party_count VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif ne, scr_seq_00000112_000004C3
 	msgbox 28
 	goto scr_seq_00000112_00000548
 
 scr_seq_00000112_000004C3:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 27
 	play_fanfare SEQ_ME_SHINKAOME
 	wait_fanfare
 	scrcmd_137 147, 15, 0, 0, 0, 32780
 	checkflag FLAG_UNK_0DB
-	gotoif eq, scr_seq_00000112_000004F0
+	gotoif TRUE, scr_seq_00000112_000004F0
 	scrcmd_139 32773, 0, 245
 scr_seq_00000112_000004F0:
 	msgbox 32
@@ -355,11 +355,11 @@ scr_seq_00000112_000004F0:
 
 scr_seq_00000112_0000050E:
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000112_0000052E:
 	setflag FLAG_UNK_0DC
 	msgbox 29
@@ -456,12 +456,12 @@ scr_seq_00000112_0000063D:
 	wait_movement
 scr_seq_00000112_00000664:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 46
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

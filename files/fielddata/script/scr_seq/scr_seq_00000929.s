@@ -12,7 +12,7 @@ scr_seq_00000929_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0A3
-	gotoif eq, scr_seq_00000929_00000078
+	gotoif TRUE, scr_seq_00000929_00000078
 	msgbox 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C

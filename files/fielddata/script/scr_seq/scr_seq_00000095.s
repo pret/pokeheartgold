@@ -20,18 +20,18 @@ scr_seq_00000095_00000012:
 	scrcmd_375 16
 	scrcmd_375 17
 	checkflag FLAG_UNK_096
-	gotoif eq, scr_seq_00000095_00000059
+	gotoif TRUE, scr_seq_00000095_00000059
 	checkflag FLAG_UNK_097
-	gotoif eq, scr_seq_00000095_000001BE
+	gotoif TRUE, scr_seq_00000095_000001BE
 	checkflag FLAG_UNK_098
-	gotoif eq, scr_seq_00000095_00000207
+	gotoif TRUE, scr_seq_00000095_00000207
 	end
 
 scr_seq_00000095_00000059:
 	checkflag FLAG_UNK_097
-	gotoif eq, scr_seq_00000095_000000B3
+	gotoif TRUE, scr_seq_00000095_000000B3
 	checkflag FLAG_UNK_098
-	gotoif eq, scr_seq_00000095_0000013E
+	gotoif TRUE, scr_seq_00000095_0000013E
 	scrcmd_109 0, 9
 	show_person_at 1, 19, 0, 16, 1
 	show_person_at 7, 19, 0, 18, 0
@@ -42,7 +42,7 @@ scr_seq_00000095_00000059:
 
 scr_seq_00000095_000000B3:
 	checkflag FLAG_UNK_098
-	gotoif eq, scr_seq_00000095_000002BF
+	gotoif TRUE, scr_seq_00000095_000002BF
 	scrcmd_109 0, 9
 	show_person_at 1, 19, 0, 16, 1
 	show_person_at 7, 19, 0, 18, 0
@@ -72,7 +72,7 @@ scr_seq_00000095_0000013E:
 
 scr_seq_00000095_000001BE:
 	checkflag FLAG_UNK_098
-	gotoif eq, scr_seq_00000095_00000245
+	gotoif TRUE, scr_seq_00000095_00000245
 	show_person_at 2, 3, 0, 14, 2
 	show_person_at 6, 1, 0, 14, 0
 	show_person_at 12, 1, 0, 13, 0
@@ -122,7 +122,7 @@ scr_seq_00000095_000002BF:
 
 scr_seq_00000095_0000037B:
 	checkflag FLAG_UNK_096
-	gotoif eq, scr_seq_00000095_000003C9
+	gotoif TRUE, scr_seq_00000095_000003C9
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	msgbox 0
@@ -168,7 +168,7 @@ scr_seq_00000095_00000416:
 
 scr_seq_00000095_0000041C:
 	checkflag FLAG_UNK_097
-	gotoif eq, scr_seq_00000095_000003C9
+	gotoif TRUE, scr_seq_00000095_000003C9
 	scrcmd_622 4, 16384
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_00000095_00000440
@@ -194,7 +194,7 @@ scr_seq_00000095_00000446:
 
 scr_seq_00000095_00000483:
 	checkflag FLAG_UNK_098
-	gotoif eq, scr_seq_00000095_000003C9
+	gotoif TRUE, scr_seq_00000095_000003C9
 	scrcmd_622 4, 16384
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_00000095_000004A7

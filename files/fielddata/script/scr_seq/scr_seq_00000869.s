@@ -28,7 +28,7 @@ scr_seq_00000869_00000046:
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000869_000000CD
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000869_0000006C
+	gotoif TRUE, scr_seq_00000869_0000006C
 	clearflag FLAG_UNK_2EA
 	end
 
@@ -75,7 +75,7 @@ scr_seq_00000869_000000D3:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000869_00000174
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -113,7 +113,7 @@ scr_seq_00000869_00000174:
 
 scr_seq_00000869_0000017A:
 	checkflag FLAG_UNK_07F
-	gotoif lt, scr_seq_00000869_00000136
+	gotoif FALSE, scr_seq_00000869_00000136
 	msgbox 6
 	waitbutton
 	closemsg

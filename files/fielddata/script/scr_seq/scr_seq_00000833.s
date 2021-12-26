@@ -11,7 +11,7 @@ scr_seq_00000833_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_12F
-	gotoif eq, scr_seq_00000833_00000045
+	gotoif TRUE, scr_seq_00000833_00000045
 	msgbox 0
 	setvar VAR_SPECIAL_x8004, 356
 	setvar VAR_SPECIAL_x8005, 1

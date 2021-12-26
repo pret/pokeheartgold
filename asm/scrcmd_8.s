@@ -177,7 +177,7 @@ _02049B94:
 	ldr r0, [r4, #0x74]
 	mov r1, #5
 	mov r3, #7
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}

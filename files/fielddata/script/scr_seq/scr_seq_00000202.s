@@ -13,7 +13,7 @@
 
 scr_seq_00000202_0000001A:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000202_0000002B
+	gotoif FALSE, scr_seq_00000202_0000002B
 	clearflag FLAG_UNK_189
 	end
 
@@ -85,12 +85,12 @@ scr_seq_00000202_0000011C:
 	wait_movement
 scr_seq_00000202_00000143:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 60
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -283,7 +283,7 @@ scr_seq_00000202_000003D2:
 	apply_movement 12, scr_seq_00000202_0000057C
 	apply_movement 255, scr_seq_00000202_0000056C
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 6
 	waitbutton
 	closemsg
@@ -412,7 +412,7 @@ scr_seq_00000202_0000057C:
 	.short 3, 1
 	.short 254, 0
 scr_seq_00000202_00000598:
-	scrcmd_190 0
+	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -423,7 +423,7 @@ scr_seq_00000202_00000598:
 	end
 
 scr_seq_00000202_000005AE:
-	scrcmd_190 0
+	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -438,12 +438,12 @@ scr_seq_00000202_000005C4:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_15C
-	gotoif eq, scr_seq_00000202_00000658
+	gotoif TRUE, scr_seq_00000202_00000658
 	msgbox 0
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000202_00000602
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 113
 	gotoif eq, scr_seq_00000202_0000060D
@@ -481,7 +481,7 @@ scr_seq_00000202_00000658:
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000202_00000680
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 113
 	gotoif eq, scr_seq_00000202_0000068B

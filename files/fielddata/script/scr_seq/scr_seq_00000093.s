@@ -63,18 +63,18 @@ scr_seq_00000093_000000EE:
 	apply_movement 255, scr_seq_00000093_00000218
 	wait_movement
 scr_seq_00000093_00000100:
-	scrcmd_190 0
-	scrcmd_132 6, 9
+	buffer_players_name 0
+	gender_msgbox 6, 9
 	closemsg
 	apply_movement 2, scr_seq_00000093_000001D0
 	apply_movement 3, scr_seq_00000093_000001E0
 	wait_movement
-	scrcmd_132 7, 10
+	gender_msgbox 7, 10
 	setvar VAR_SPECIAL_x8004, 435
 	setvar VAR_SPECIAL_x8005, 1
 	callstd 2033
 	call scr_seq_00000093_00000354
-	scrcmd_132 8, 11
+	gender_msgbox 8, 11
 	closemsg
 	apply_movement 2, scr_seq_00000093_000001F0
 	apply_movement 3, scr_seq_00000093_00000204
@@ -180,14 +180,14 @@ scr_seq_00000093_00000228:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
-	scrcmd_132 6, 9
-	scrcmd_132 7, 10
+	buffer_players_name 0
+	gender_msgbox 6, 9
+	gender_msgbox 7, 10
 	setvar VAR_SPECIAL_x8004, 435
 	setvar VAR_SPECIAL_x8005, 1
 	callstd 2033
 	call scr_seq_00000093_00000354
-	scrcmd_132 8, 11
+	gender_msgbox 8, 11
 	closemsg
 	apply_movement 2, scr_seq_00000093_00000328
 	apply_movement 3, scr_seq_00000093_0000033C

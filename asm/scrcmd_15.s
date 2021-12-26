@@ -984,8 +984,8 @@ ScrCmd_496: ; 0x0204D8A0
 	.balign 4, 0
 	thumb_func_end ScrCmd_496
 
-	thumb_func_start ScrCmd_529
-ScrCmd_529: ; 0x0204D8C8
+	thumb_func_start ScrCmd_PartySelectMon
+ScrCmd_PartySelectMon: ; 0x0204D8C8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -1003,7 +1003,7 @@ ScrCmd_529: ; 0x0204D8C8
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_529
+	thumb_func_end ScrCmd_PartySelectMon
 
 	thumb_func_start ScrCmd_497
 ScrCmd_497: ; 0x0204D8F0
@@ -1053,8 +1053,8 @@ ScrCmd_497: ; 0x0204D8F0
 	.balign 4, 0
 	thumb_func_end ScrCmd_497
 
-	thumb_func_start ScrCmd_332
-ScrCmd_332: ; 0x0204D95C
+	thumb_func_start ScrCmd_GetPartyCount
+ScrCmd_GetPartyCount: ; 0x0204D95C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -1073,10 +1073,10 @@ ScrCmd_332: ; 0x0204D95C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_332
+	thumb_func_end ScrCmd_GetPartyCount
 
-	thumb_func_start ScrCmd_356
-ScrCmd_356: ; 0x0204D988
+	thumb_func_start ScrCmd_PartyCountNotEgg
+ScrCmd_PartyCountNotEgg: ; 0x0204D988
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -1117,7 +1117,7 @@ _0204D9D6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_356
+	thumb_func_end ScrCmd_PartyCountNotEgg
 
 	thumb_func_start ScrCmd_357
 ScrCmd_357: ; 0x0204D9E0

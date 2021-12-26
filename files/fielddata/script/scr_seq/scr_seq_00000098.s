@@ -11,9 +11,9 @@ scr_seq_00000098_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_10C
-	gotoif eq, scr_seq_00000098_00000097
+	gotoif TRUE, scr_seq_00000098_00000097
 	checkflag FLAG_UNK_10D
-	gotoif eq, scr_seq_00000098_00000046
+	gotoif TRUE, scr_seq_00000098_00000046
 	msgbox 0
 	closemsg
 	trainer_battle 158, 0, 0, 0
@@ -23,14 +23,14 @@ scr_seq_00000098_00000006:
 	setflag FLAG_UNK_10D
 scr_seq_00000098_00000046:
 	msgbox 1
-	scrcmd_332 VAR_SPECIAL_x8005
+	get_party_count VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif ne, scr_seq_00000098_00000063
 	msgbox 4
 	goto scr_seq_00000098_000000D2
 
 scr_seq_00000098_00000063:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
@@ -52,11 +52,11 @@ scr_seq_00000098_00000097:
 
 scr_seq_00000098_000000A6:
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 
 scr_seq_00000098_000000CC:

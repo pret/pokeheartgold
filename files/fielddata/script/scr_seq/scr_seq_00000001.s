@@ -89,12 +89,12 @@ scr_seq_00000001_0000009D:
 scr_seq_00000001_000000AE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_157
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 	.balign 4, 0

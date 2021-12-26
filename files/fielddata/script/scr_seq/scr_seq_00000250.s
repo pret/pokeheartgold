@@ -12,7 +12,7 @@ scr_seq_00000250_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0AA
-	gotoif eq, scr_seq_00000250_0000002C
+	gotoif TRUE, scr_seq_00000250_0000002C
 	setflag FLAG_UNK_0A8
 	msgbox 0
 	waitbutton
@@ -104,7 +104,7 @@ scr_seq_00000250_0000013A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0AA
-	gotoif eq, scr_seq_00000250_00000158
+	gotoif TRUE, scr_seq_00000250_00000158
 	msgbox 7
 	waitbutton
 	closemsg
@@ -113,7 +113,7 @@ scr_seq_00000250_0000013A:
 
 scr_seq_00000250_00000158:
 	checkflag FLAG_UNK_0AB
-	gotoif eq, scr_seq_00000250_00000197
+	gotoif TRUE, scr_seq_00000250_00000197
 	msgbox 8
 	scrcmd_049
 	setvar VAR_SPECIAL_x8004, 410

@@ -12670,8 +12670,8 @@ _0224BB0E:
 _0224BB14: .word 0x000007E6
 	thumb_func_end ov02_0224BAE4
 
-	thumb_func_start ov02_0224BB18
-ov02_0224BB18: ; 0x0224BB18
+	thumb_func_start PokecenterAnimCreate
+PokecenterAnimCreate: ; 0x0224BB18
 	push {r4, r5, r6, lr}
 	sub sp, #0x20
 	add r6, r1, #0
@@ -12716,7 +12716,7 @@ ov02_0224BB18: ; 0x0224BB18
 	add r0, r1, r0
 	str r0, [r4, #8]
 	ldr r0, [r5, #0x10]
-	ldr r1, _0224BB8C ; =ov02_0224BB90
+	ldr r1, _0224BB8C ; =PokecenterAnimRun
 	bl sub_02050530
 	add sp, #0x20
 	pop {r4, r5, r6, pc}
@@ -12725,11 +12725,11 @@ _0224BB84:
 	add sp, #0x20
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0224BB8C: .word ov02_0224BB90
-	thumb_func_end ov02_0224BB18
+_0224BB8C: .word PokecenterAnimRun
+	thumb_func_end PokecenterAnimCreate
 
-	thumb_func_start ov02_0224BB90
-ov02_0224BB90: ; 0x0224BB90
+	thumb_func_start PokecenterAnimRun
+PokecenterAnimRun: ; 0x0224BB90
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	add r4, r0, #0
@@ -12892,7 +12892,7 @@ _0224BC98:
 	ldr r1, [r1, r3]
 	add r0, r0, r1
 	str r0, [sp, #0x30]
-	ldr r0, _0224BDE0 ; =0x000005FD
+	ldr r0, _0224BDE0 ; =SEQ_SE_DP_BOWA
 	bl PlaySE
 	ldr r0, [r6, #0x54]
 	add r6, #0x9c
@@ -12954,8 +12954,8 @@ _0224BD42:
 	mov r1, #0x20
 	mov r2, #0
 	bl ov01_021E8E70
-	ldr r0, _0224BDE4 ; =0x0000049F
-	bl sub_02006B24
+	ldr r0, _0224BDE4 ; =SEQ_ME_ASA
+	bl PlayFanfare
 	ldrb r0, [r4, #0xf]
 	add r0, r0, #1
 	strb r0, [r4, #0xf]
@@ -12971,7 +12971,7 @@ _0224BD64:
 	bl ov01_021E8F10
 	cmp r0, #0
 	beq _0224BDCC
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _0224BDCC
 	ldr r0, [r6, #0x54]
@@ -13017,9 +13017,9 @@ _0224BDCC:
 _0224BDD4: .word ov02_02253D90
 _0224BDD8: .word ov02_02253D94
 _0224BDDC: .word ov02_02253D98
-_0224BDE0: .word 0x000005FD
-_0224BDE4: .word 0x0000049F
-	thumb_func_end ov02_0224BB90
+_0224BDE0: .word SEQ_SE_DP_BOWA
+_0224BDE4: .word SEQ_ME_ASA
+	thumb_func_end PokecenterAnimRun
 
 	thumb_func_start ov02_0224BDE8
 ov02_0224BDE8: ; 0x0224BDE8
@@ -15250,7 +15250,7 @@ _0224CEBA:
 	ldr r1, [r1, r3]
 	add r0, r0, r1
 	str r0, [sp, #0x2c]
-	ldr r0, _0224CFD4 ; =0x000005FD
+	ldr r0, _0224CFD4 ; =SEQ_SE_DP_BOWA
 	bl PlaySE
 	ldr r0, [r6, #0x54]
 	add r6, #0x9c
@@ -15357,7 +15357,7 @@ _0224CFC0:
 _0224CFC8: .word ov02_02253DD8
 _0224CFCC: .word ov02_02253DDC
 _0224CFD0: .word ov02_02253DE0
-_0224CFD4: .word 0x000005FD
+_0224CFD4: .word SEQ_SE_DP_BOWA
 	thumb_func_end ov02_0224CE28
 
 	thumb_func_start ov02_0224CFD8
@@ -22264,7 +22264,7 @@ _02250336:
 	mov r2, #3
 	bl ov02_0224FC08
 	ldr r0, _02250490 ; =0x000004A7
-	bl sub_02006B24
+	bl PlayFanfare
 	b _02250372
 _02250364:
 	mov r1, #0x12
@@ -22345,7 +22345,7 @@ _022503BA:
 	mov r2, #1
 	bl ov02_0224FC08
 	ldr r0, _02250490 ; =0x000004A7
-	bl sub_02006B24
+	bl PlayFanfare
 	b _02250412
 _02250404:
 	mov r1, #0x12
@@ -22369,7 +22369,7 @@ _02250418:
 	bl sub_0205B624
 	cmp r0, #1
 	bne _0225047E
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _0225047E
 	ldr r0, _0225049C ; =gMain

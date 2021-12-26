@@ -60,7 +60,7 @@ scr_seq_00000146_000000AD:
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	msgbox 1
 	closemsg
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_000000EC
@@ -91,7 +91,7 @@ scr_seq_00000146_00000126:
 
 scr_seq_00000146_00000143:
 	scrcmd_598 1
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_0000025B
 	scrcmd_076 16384, 0
@@ -115,7 +115,7 @@ scr_seq_00000146_0000018A:
 	msgbox 1
 	closemsg
 	scrcmd_727 32772
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_000001C1
@@ -146,7 +146,7 @@ scr_seq_00000146_000001FB:
 
 scr_seq_00000146_00000218:
 	scrcmd_598 1
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_0000025B
 	scrcmd_076 16384, 0
@@ -211,7 +211,7 @@ scr_seq_00000146_000002E6:
 	msgbox 5
 	closemsg
 	scrcmd_727 32773
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_0000031F
@@ -246,7 +246,7 @@ scr_seq_00000146_00000365:
 scr_seq_00000146_00000382:
 	setvar VAR_SPECIAL_x8007, 1
 	scrcmd_598 1
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_000004D0
 	scrcmd_076 16384, 0
@@ -272,7 +272,7 @@ scr_seq_00000146_000003D9:
 	msgbox 5
 	closemsg
 	scrcmd_727 32772
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_00000416
@@ -307,7 +307,7 @@ scr_seq_00000146_0000045C:
 scr_seq_00000146_00000479:
 	scrcmd_598 1
 	setvar VAR_SPECIAL_x8007, 1
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_000004D0
 	scrcmd_076 16384, 0
@@ -384,7 +384,7 @@ scr_seq_00000146_00000573:
 	msgbox 11
 	closemsg
 	scrcmd_727 32773
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_000005AF
@@ -410,7 +410,7 @@ scr_seq_00000146_000005DD:
 	goto scr_seq_00000146_0000060E
 
 scr_seq_00000146_000005F4:
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_00000715
 	scrcmd_076 16384, 0
@@ -445,7 +445,7 @@ scr_seq_00000146_00000648:
 	msgbox 11
 	closemsg
 	scrcmd_727 32772
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_00000678
@@ -471,7 +471,7 @@ scr_seq_00000146_000006A6:
 	goto scr_seq_00000146_000006D7
 
 scr_seq_00000146_000006BD:
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_00000715
 	scrcmd_076 16384, 0
@@ -623,7 +623,7 @@ scr_seq_00000146_00000873:
 	msgbox 28
 	closemsg
 	scrcmd_727 32773
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_000008A4
@@ -649,7 +649,7 @@ scr_seq_00000146_000008D2:
 	goto scr_seq_00000146_00000909
 
 scr_seq_00000146_000008E9:
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_0000091A
 	scrcmd_076 16384, 0
@@ -825,7 +825,7 @@ scr_seq_00000146_00000AD1:
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	msgbox 33
 	closemsg
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_00000B10
@@ -859,7 +859,7 @@ scr_seq_00000146_00000B67:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000146_00000BA0
 	scrcmd_598 1
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_00000CC5
 	scrcmd_076 16384, 0
@@ -889,7 +889,7 @@ scr_seq_00000146_00000BCF:
 	msgbox 33
 	closemsg
 	scrcmd_727 32772
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	scrcmd_730 32774
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_00000146_00000C06
@@ -923,7 +923,7 @@ scr_seq_00000146_00000C5D:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000146_00000C96
 	scrcmd_598 1
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_00000146_00000CC5
 	scrcmd_076 16384, 0

@@ -342,7 +342,7 @@ scr_seq_00000928_000004B5:
 	end
 
 scr_seq_00000928_000004C0:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 9
 	waitbutton
 	closemsg
@@ -398,7 +398,7 @@ scr_seq_00000928_00000580:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0A2
-	gotoif eq, scr_seq_00000928_0000059E
+	gotoif TRUE, scr_seq_00000928_0000059E
 	msgbox 25
 	waitbutton
 	closemsg
@@ -550,9 +550,9 @@ scr_seq_00000928_000006FB:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000928_00000724
+	gotoif TRUE, scr_seq_00000928_00000724
 	checkflag FLAG_UNK_109
-	gotoif eq, scr_seq_00000928_00000724
+	gotoif TRUE, scr_seq_00000928_00000724
 	msgbox 19
 	waitbutton
 	closemsg
@@ -571,9 +571,9 @@ scr_seq_00000928_0000072F:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000928_00000758
+	gotoif TRUE, scr_seq_00000928_00000758
 	checkflag FLAG_UNK_109
-	gotoif eq, scr_seq_00000928_00000758
+	gotoif TRUE, scr_seq_00000928_00000758
 	msgbox 19
 	waitbutton
 	closemsg
@@ -593,9 +593,9 @@ scr_seq_00000928_00000763:
 	faceplayer
 	setvar VAR_SPECIAL_x8000, 77
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000928_00000868
+	gotoif TRUE, scr_seq_00000928_00000868
 	checkflag FLAG_UNK_109
-	gotoif eq, scr_seq_00000928_00000868
+	gotoif TRUE, scr_seq_00000928_00000868
 	msgbox 13
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x8004
@@ -664,7 +664,7 @@ scr_seq_00000928_0000085C:
 	.short 33, 1
 	.short 254, 0
 scr_seq_00000928_00000868:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 42
 	waitbutton
 	closemsg
@@ -677,9 +677,9 @@ scr_seq_00000928_0000087A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000928_000008A3
+	gotoif TRUE, scr_seq_00000928_000008A3
 	checkflag FLAG_UNK_109
-	gotoif eq, scr_seq_00000928_000008A3
+	gotoif TRUE, scr_seq_00000928_000008A3
 	msgbox 19
 	waitbutton
 	closemsg
@@ -698,9 +698,9 @@ scr_seq_00000928_000008AE:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000928_000008D7
+	gotoif TRUE, scr_seq_00000928_000008D7
 	checkflag FLAG_UNK_109
-	gotoif eq, scr_seq_00000928_000008D7
+	gotoif TRUE, scr_seq_00000928_000008D7
 	msgbox 19
 	waitbutton
 	closemsg
@@ -844,7 +844,7 @@ scr_seq_00000928_00000B05:
 	closemsg
 	apply_movement 10, scr_seq_00000928_00000BE4
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000928_00000B2A
 	msgbox 23

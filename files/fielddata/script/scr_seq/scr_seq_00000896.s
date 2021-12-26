@@ -11,13 +11,13 @@
 
 scr_seq_00000896_00000012:
 	checkflag FLAG_UNK_15D
-	gotoif eq, scr_seq_00000896_00000058
+	gotoif TRUE, scr_seq_00000896_00000058
 	checkflag FLAG_UNK_0B5
-	gotoif lt, scr_seq_00000896_00000058
+	gotoif FALSE, scr_seq_00000896_00000058
 	scrcmd_688 16384, 492
 	comparevartovalue VAR_TEMP_x4000, 255
 	gotoif eq, scr_seq_00000896_00000058
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 492
 	gotoif ne, scr_seq_00000896_00000058
@@ -110,7 +110,7 @@ scr_seq_00000896_0000014C:
 	.short 254, 0
 scr_seq_00000896_00000154:
 	checkflag FLAG_UNK_0B5
-	gotoif eq, scr_seq_00000896_000001E5
+	gotoif TRUE, scr_seq_00000896_000001E5
 	scrcmd_294 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000896_00000185
@@ -281,11 +281,11 @@ scr_seq_00000896_000003B5:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_15D
-	gotoif eq, scr_seq_00000896_000003FD
+	gotoif TRUE, scr_seq_00000896_000003FD
 	scrcmd_688 32780, 492
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000896_000003F2
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 492
 	gotoif eq, scr_seq_00000896_00000432
@@ -300,7 +300,7 @@ scr_seq_00000896_000003FD:
 	scrcmd_688 32780, 492
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000896_000003F2
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 492
 	gotoif ne, scr_seq_00000896_000003F2

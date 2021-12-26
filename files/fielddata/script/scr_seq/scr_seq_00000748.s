@@ -25,7 +25,7 @@ scr_seq_00000748_00000012:
 	scrcmd_604 48
 	msgbox 8
 	checkflag FLAG_UNK_176
-	gotoif eq, scr_seq_00000748_00000063
+	gotoif TRUE, scr_seq_00000748_00000063
 	msgbox 9
 	setflag FLAG_UNK_25B
 	dummy_486
@@ -64,7 +64,7 @@ scr_seq_00000748_00000091:
 	gotoif eq, scr_seq_00000748_000000ED
 	scrcmd_747
 	scrcmd_600
-	scrcmd_282
+	heal_party
 	msgbox 2
 	closemsg
 	apply_movement 255, scr_seq_00000748_0000017C

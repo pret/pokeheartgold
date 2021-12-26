@@ -13,11 +13,11 @@ scr_seq_00000894_00000006:
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 197, 0, 3, 3, 3
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_606
 	scrcmd_602 0

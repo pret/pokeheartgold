@@ -37983,7 +37983,7 @@ ov96_021F7E74: ; 0x021F7E74
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	str r0, [sp, #0x18]
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	add r0, r6, #0
 	bl ov96_021E5EE8
 	cmp r0, #1
@@ -38496,7 +38496,7 @@ _021F825C:
 	cmp r0, #0
 	bne _021F8280
 	ldr r0, _021F82E0 ; =0x000004B9
-	bl sub_02006B24
+	bl PlayFanfare
 	str r7, [r4, #0x60]
 _021F8280:
 	add r6, r6, #1

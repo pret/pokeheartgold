@@ -1762,7 +1762,7 @@
 .public ScrCmd_076
 .public ScrCmd_077
 .public ScrCmd_PlayFanfare
-.public ScrCmd_079
+.public ScrCmd_WaitFanfare
 .public ScrCmd_PlayBGM
 .public ScrCmd_081
 .public ScrCmd_ResetBGM
@@ -1815,7 +1815,7 @@
 .public ScrCmd_ItemIsTMOrHM
 .public ScrCmd_GetItemPocket
 .public ScrCmd_SetStarterChoice
-.public ScrCmd_132
+.public ScrCmd_GenderMsgbox
 .public ScrCmd_133
 .public ScrCmd_134
 .public ScrCmd_135
@@ -1826,7 +1826,7 @@
 .public ScrCmd_140
 .public ScrCmd_141
 .public ScrCmd_142
-.public ScrCmd_143
+.public ScrCmd_NameRival
 .public ScrCmd_144
 .public ScrCmd_RegisterPokegearCard
 .public ScrCmd_146
@@ -1857,8 +1857,8 @@
 .public ScrCmd_171
 .public ScrCmd_172
 .public ScrCmd_173
-.public ScrCmd_174
-.public ScrCmd_175
+.public ScrCmd_FadeScreen
+.public ScrCmd_WaitFade
 .public ScrCmd_176
 .public ScrCmd_177
 .public ScrCmd_178
@@ -1870,10 +1870,10 @@
 .public ScrCmd_184
 .public ScrCmd_185
 .public ScrCmd_186
-.public ScrCmd_187
+.public ScrCmd_GetTrcardStars
 .public ScrCmd_188
 .public ScrCmd_189
-.public ScrCmd_190
+.public ScrCmd_BufferPlayersName
 .public ScrCmd_191
 .public ScrCmd_192
 .public ScrCmd_193
@@ -1965,7 +1965,7 @@
 .public ScrCmd_279
 .public ScrCmd_280
 .public ScrCmd_GetPlayerGender
-.public ScrCmd_282
+.public ScrCmd_HealParty
 .public ScrCmd_283
 .public ScrCmd_284
 .public ScrCmd_285
@@ -2015,7 +2015,7 @@
 .public ScrCmd_329
 .public ScrCmd_330
 .public ScrCmd_331
-.public ScrCmd_332
+.public ScrCmd_GetPartyCount
 .public ScrCmd_333
 .public ScrCmd_334
 .public ScrCmd_335
@@ -2039,7 +2039,7 @@
 .public ScrCmd_353
 .public ScrCmd_GetPartyMonSpecies
 .public ScrCmd_PartymonIsMine
-.public ScrCmd_356
+.public ScrCmd_PartyCountNotEgg
 .public ScrCmd_357
 .public ScrCmd_358
 .public ScrCmd_359
@@ -2167,7 +2167,7 @@
 .public ScrCmd_483
 .public ScrCmd_484
 .public ScrCmd_485
-.public ScrCmd_487
+.public ScrCmd_PokeCenAnim
 .public ScrCmd_488
 .public ScrCmd_489
 .public ScrCmd_490
@@ -2209,7 +2209,7 @@
 .public ScrCmd_526
 .public ScrCmd_527
 .public ScrCmd_528
-.public ScrCmd_529
+.public ScrCmd_PartySelectMon
 .public ScrCmd_530
 .public ScrCmd_531
 .public ScrCmd_532
@@ -2473,8 +2473,8 @@
 .public ScrCmd_790
 .public ScrCmd_791
 .public ScrCmd_792
-.public ScrCmd_793
-.public ScrCmd_794
+.public ScrCmd_BankTransaction
+.public ScrCmd_CheckBankBalance
 .public ScrCmd_795
 .public ScrCmd_796
 .public ScrCmd_797
@@ -2518,7 +2518,7 @@
 .public ScrCmd_835
 .public ScrCmd_836
 .public ScrCmd_837
-.public ScrCmd_838
+.public ScrCmd_BankOrWalletIsFull
 .public ScrCmd_839
 .public ScrCmd_840
 .public ScrCmd_841
@@ -5926,8 +5926,8 @@
 .public ov02_0224BA70
 .public ov02_0224BAA8
 .public ov02_0224BAE4
-.public ov02_0224BB18
-.public ov02_0224BB90
+.public PokecenterAnimCreate
+.public PokecenterAnimRun
 .public ov02_0224BDE8
 .public ov02_0224BE24
 .public ov02_0224BF58
@@ -26256,9 +26256,9 @@
 .public sub_02006300
 .public sub_02006360
 .public sub_02006920
-.public sub_02006B24
+.public PlayFanfare
 .public sub_02006B84
-.public sub_02006BCC
+.public IsFanfarePlaying
 .public sub_02006D04
 .public sub_02006DB8
 .public sub_02006E3C
@@ -27532,10 +27532,10 @@
 .public sub_0202ED48
 .public sub_0202ED58
 .public sub_0202ED68
-.public SaveData_Pokegear_sizeof
-.public SaveData_Pokegear_get
-.public sub_0202ED88
-.public SaveData_Pokegear_init
+.public SaveData_GSPlayerMisc_sizeof
+.public SaveData_GSPlayerMisc_get
+.public SaveData_GetMomSavings
+.public SaveData_GSPlayerMisc_init
 .public sub_0202EDF4
 .public sub_0202EDF8
 .public sub_0202EDFC
@@ -27562,7 +27562,7 @@
 .public sub_0202F0E8
 .public sub_0202F100
 .public sub_0202F128
-.public sub_0202F14C
+.public MomSavingsBalanceAction
 .public sub_0202F198
 .public sub_0202F1B4
 .public sub_0202F1C4
@@ -28266,7 +28266,7 @@
 .public sub_0203F4F8
 .public sub_0203F53C
 .public sub_0203F570
-.public sub_0203F6E0
+.public CreateNamingScreen
 .public sub_0203F7B0
 .public sub_0203F7F4
 .public sub_0203F808

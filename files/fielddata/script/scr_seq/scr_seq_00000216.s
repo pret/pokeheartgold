@@ -17,7 +17,7 @@
 
 scr_seq_00000216_0000002A:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000216_0000003B
+	gotoif FALSE, scr_seq_00000216_0000003B
 	clearflag FLAG_UNK_189
 	end
 
@@ -86,7 +86,7 @@ scr_seq_00000216_0000011B:
 
 scr_seq_00000216_00000121:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000216_0000012E
+	gotoif TRUE, scr_seq_00000216_0000012E
 	end
 
 scr_seq_00000216_0000012E:
@@ -291,7 +291,7 @@ scr_seq_00000216_000003D3:
 	end
 
 scr_seq_00000216_000003F7:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -299,14 +299,14 @@ scr_seq_00000216_000003F7:
 	msgbox 3
 	waitbutton
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setflag FLAG_UNK_2CD
 	hide_person 15
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -343,13 +343,13 @@ scr_seq_00000216_00000456:
 	msgbox 7
 	closemsg
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 84
 	faceplayer
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	msgbox 8
 	waitbutton
@@ -383,7 +383,7 @@ scr_seq_00000216_000004FB:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_122
-	gotoif eq, scr_seq_00000216_00000558
+	gotoif TRUE, scr_seq_00000216_00000558
 	msgbox 11
 	setvar VAR_SPECIAL_x8004, 92
 	setvar VAR_SPECIAL_x8005, 1
@@ -555,11 +555,11 @@ scr_seq_00000216_000006DE:
 	callif eq, scr_seq_00000216_000007B0
 	comparevartovalue VAR_TEMP_x4002, 5
 	gotoif eq, scr_seq_00000216_000007B6
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 18
 	closemsg
 	checkflag FLAG_UNK_2B2
-	gotoif eq, scr_seq_00000216_00000766
+	gotoif TRUE, scr_seq_00000216_00000766
 	goto scr_seq_00000216_00000786
 
 scr_seq_00000216_00000766:
@@ -595,11 +595,11 @@ scr_seq_00000216_000007B6:
 	wait 20, VAR_SPECIAL_x8004
 	apply_movement 255, scr_seq_00000216_000007EC
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 19
 	closemsg
 	checkflag FLAG_UNK_2B2
-	gotoif eq, scr_seq_00000216_00000766
+	gotoif TRUE, scr_seq_00000216_00000766
 	goto scr_seq_00000216_00000786
 
 scr_seq_00000216_000007DF:

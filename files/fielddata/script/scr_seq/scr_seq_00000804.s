@@ -15,7 +15,7 @@ scr_seq_00000804_00000016:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_172
-	gotoif eq, scr_seq_00000804_0000004D
+	gotoif TRUE, scr_seq_00000804_0000004D
 	setflag FLAG_UNK_172
 	msgbox 2
 	scrcmd_746
@@ -40,13 +40,13 @@ scr_seq_00000804_0000006B:
 	.byte 0x02, 0x00
 scr_seq_00000804_0000006D:
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000804_000000F2
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
@@ -508,7 +508,7 @@ scr_seq_00000804_00000889:
 	goto scr_seq_00000804_00000895
 
 scr_seq_00000804_00000895:
-	scrcmd_332 VAR_SPECIAL_x8005
+	get_party_count VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif ne, scr_seq_00000804_000008B3
 	msgbox 15
@@ -549,7 +549,7 @@ scr_seq_00000804_00000930:
 	msgbox 13
 	play_se SEQ_SE_DP_REGI
 	scrcmd_137 16386, 15, 0, 0, 0, 32780
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_202 1, 16386, 0, 0
 	msgbox 17
 	comparevartovalue VAR_TEMP_x4002, 122

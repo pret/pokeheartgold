@@ -12,7 +12,7 @@ scr_seq_00000158_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0ED
-	gotoif lt, scr_seq_00000158_00000112
+	gotoif FALSE, scr_seq_00000158_00000112
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000158_0000009D
@@ -160,15 +160,15 @@ scr_seq_00000158_000001F0:
 	wait_movement
 	msgbox 0
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	scrcmd_282
+	heal_party
 	scrcmd_436
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 1
 	closemsg
 	scrcmd_729 VAR_TEMP_x4002
@@ -193,7 +193,7 @@ scr_seq_00000158_00000268:
 
 scr_seq_00000158_00000279:
 	checkflag FLAG_UNK_0EB
-	gotoif eq, scr_seq_00000158_000002AD
+	gotoif TRUE, scr_seq_00000158_000002AD
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	setflag FLAG_UNK_0EB

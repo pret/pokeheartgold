@@ -11125,12 +11125,12 @@ _0223CF34:
 	add r4, r0, #0
 	b _0223CF5C
 _0223CF3C:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	add r4, r0, #0
 	b _0223CF5C
 _0223CF44:
 	ldr r0, _0223CF60 ; =0x000004A3
-	bl sub_02006B24
+	bl PlayFanfare
 	b _0223CF5C
 _0223CF4C:
 	ldr r0, _0223CF64 ; =0x000005E6
@@ -11139,7 +11139,7 @@ _0223CF4C:
 _0223CF54:
 	mov r0, #0x4a
 	lsl r0, r0, #4
-	bl sub_02006B24
+	bl PlayFanfare
 _0223CF5C:
 	add r0, r4, #0
 	pop {r4, pc}

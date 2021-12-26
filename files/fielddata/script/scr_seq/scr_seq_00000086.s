@@ -147,8 +147,8 @@ scr_seq_00000086_000001EE:
 scr_seq_00000086_000001F0:
 	msgbox 7
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_637 4, 16712, 32780
 	scrcmd_639 16386, 16389, 16390
 	comparevartovalue VAR_TEMP_x4002, 255
@@ -156,8 +156,8 @@ scr_seq_00000086_000001F0:
 	scrcmd_815 0
 scr_seq_00000086_00000222:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, scr_seq_00000086_00000126
 	scrcmd_690 16386, 32780
@@ -194,7 +194,7 @@ scr_seq_00000086_000002AE:
 	comparevartovalue VAR_UNK_4148, 1
 	callif eq, scr_seq_00000086_0000046A
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_282
+	heal_party
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -357,8 +357,8 @@ scr_seq_00000086_000004CB:
 scr_seq_00000086_000004FC:
 	.byte 0x02, 0x00
 scr_seq_00000086_000004FE:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_815 0
 	comparevartovalue VAR_UNK_4148, 0
 	callif eq, scr_seq_00000086_000005BF
@@ -372,8 +372,8 @@ scr_seq_00000086_000004FE:
 	comparevartovalue VAR_UNK_4148, 2
 	callif eq, scr_seq_00000086_0000055F
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_682 1
 	end
 
@@ -574,7 +574,7 @@ scr_seq_00000086_00000788:
 
 scr_seq_00000086_0000078E:
 	msgbox 35
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 37
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -583,7 +583,7 @@ scr_seq_00000086_0000078E:
 
 scr_seq_00000086_000007A5:
 	msgbox 35
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 36
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare

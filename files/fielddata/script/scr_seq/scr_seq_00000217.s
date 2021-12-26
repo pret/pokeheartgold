@@ -11,7 +11,7 @@ scr_seq_00000217_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_14E
-	gotoif eq, scr_seq_00000217_00000020
+	gotoif TRUE, scr_seq_00000217_00000020
 	msgbox 0
 	setflag FLAG_UNK_14E
 scr_seq_00000217_00000020:
@@ -98,13 +98,13 @@ scr_seq_00000217_00000125:
 	gotoif eq, scr_seq_00000217_0000048D
 	msgbox 12
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000217_0000048D
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001

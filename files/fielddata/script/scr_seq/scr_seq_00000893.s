@@ -16,7 +16,7 @@
 scr_seq_00000893_00000022:
 	scrcmd_582 76, 348, 350
 	checkflag FLAG_UNK_118
-	gotoif eq, scr_seq_00000893_00000037
+	gotoif TRUE, scr_seq_00000893_00000037
 	end
 
 scr_seq_00000893_00000037:
@@ -25,7 +25,7 @@ scr_seq_00000893_00000037:
 
 scr_seq_00000893_0000003F:
 	checkflag FLAG_UNK_118
-	gotoif eq, scr_seq_00000893_0000004C
+	gotoif TRUE, scr_seq_00000893_0000004C
 	end
 
 scr_seq_00000893_0000004C:
@@ -37,7 +37,7 @@ scr_seq_00000893_0000005A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_118
-	gotoif eq, scr_seq_00000893_00000078
+	gotoif TRUE, scr_seq_00000893_00000078
 	msgbox 0
 	waitbutton
 	closemsg
@@ -74,7 +74,7 @@ scr_seq_00000893_000000B4:
 	apply_movement 255, scr_seq_00000893_0000013C
 	wait_movement
 	checkflag FLAG_UNK_123
-	gotoif eq, scr_seq_00000893_00000118
+	gotoif TRUE, scr_seq_00000893_00000118
 	msgbox 1
 	closemsg
 	setflag FLAG_UNK_123

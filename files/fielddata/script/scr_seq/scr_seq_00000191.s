@@ -14,7 +14,7 @@
 
 scr_seq_00000191_0000001E:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000191_0000002B
+	gotoif TRUE, scr_seq_00000191_0000002B
 	end
 
 scr_seq_00000191_0000002B:
@@ -31,7 +31,7 @@ scr_seq_00000191_00000039:
 
 scr_seq_00000191_00000052:
 	checkflag FLAG_UNK_14A
-	gotoif lt, scr_seq_00000191_000000BF
+	gotoif FALSE, scr_seq_00000191_000000BF
 	scrcmd_147 36, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000191_000000BF
@@ -71,7 +71,7 @@ scr_seq_00000191_000000C1:
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000191_00000197
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 25
 	gotoif ne, scr_seq_00000191_00000197
@@ -89,7 +89,7 @@ scr_seq_00000191_00000114:
 	end
 
 scr_seq_00000191_00000138:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -98,14 +98,14 @@ scr_seq_00000191_00000148:
 	msgbox 2
 	waitbutton
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setflag FLAG_UNK_264
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -134,7 +134,7 @@ scr_seq_00000191_000001A2:
 	scrcmd_609
 	lockall
 	checkflag FLAG_UNK_118
-	gotoif eq, scr_seq_00000191_00000209
+	gotoif TRUE, scr_seq_00000191_00000209
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000191_000001D5
@@ -144,11 +144,11 @@ scr_seq_00000191_000001A2:
 	scrcmd_600
 scr_seq_00000191_000001D5:
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 489, 0, 7, 20, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_582 18, 1423, 185
 	releaseall
 	end
@@ -163,11 +163,11 @@ scr_seq_00000191_00000209:
 	scrcmd_600
 scr_seq_00000191_0000022D:
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 467, 0, 7, 20, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_582 18, 1423, 185
 	releaseall
 	end

@@ -13,7 +13,7 @@
 
 scr_seq_00000111_0000001A:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000111_0000002B
+	gotoif FALSE, scr_seq_00000111_0000002B
 	clearflag FLAG_UNK_189
 	end
 
@@ -235,8 +235,8 @@ scr_seq_00000111_00000318:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0E2
-	gotoif eq, scr_seq_00000111_00000340
-	scrcmd_190 0
+	gotoif TRUE, scr_seq_00000111_00000340
+	buffer_players_name 0
 	scrcmd_191 1
 	msgbox 7
 	waitbutton
@@ -274,7 +274,7 @@ scr_seq_00000111_00000379:
 	end
 
 scr_seq_00000111_0000039D:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 10
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -282,14 +282,14 @@ scr_seq_00000111_0000039D:
 	msgbox 11
 	waitbutton
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setflag FLAG_UNK_209
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -320,13 +320,13 @@ scr_seq_00000111_000003FC:
 	msgbox 30
 	closemsg
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 83
 	faceplayer
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	msgbox 31
 	waitbutton
@@ -381,8 +381,8 @@ scr_seq_00000111_000004B2:
 	apply_movement 12, scr_seq_00000111_00000704
 	apply_movement 253, scr_seq_00000111_000006C8
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 15, 16
+	buffer_players_name 0
+	gender_msgbox 15, 16
 	apply_movement 9, scr_seq_00000111_00000680
 	wait_movement
 	scrcmd_191 1
@@ -390,10 +390,10 @@ scr_seq_00000111_000004B2:
 	msgbox 18
 	apply_movement 9, scr_seq_00000111_0000073C
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_191 1
 	msgbox 19
-	scrcmd_132 20, 21
+	gender_msgbox 20, 21
 	apply_movement 12, scr_seq_00000111_00000718
 	wait_movement
 	msgbox 22
@@ -403,7 +403,7 @@ scr_seq_00000111_000004B2:
 	apply_movement 12, scr_seq_00000111_00000758
 	apply_movement 255, scr_seq_00000111_00000764
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 24
 	closemsg
 	apply_movement 9, scr_seq_00000111_00000770
@@ -427,13 +427,13 @@ scr_seq_00000111_000005D1:
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000111_0000066C
-	scrcmd_190 0
-	scrcmd_132 25, 26
+	buffer_players_name 0
+	gender_msgbox 25, 26
 	closemsg
 	apply_movement 11, scr_seq_00000111_000006F4
 	wait_movement
 	hide_person 11
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 27
 	closemsg
 	apply_movement 12, scr_seq_00000111_00000720
@@ -442,17 +442,17 @@ scr_seq_00000111_000005D1:
 	apply_movement 9, scr_seq_00000111_00000778
 	apply_movement 255, scr_seq_00000111_00000780
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_191 1
 	msgbox 28
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	hide_person 9
 	hide_person 10
 	wait 20, VAR_SPECIAL_x8004
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	apply_movement 253, scr_seq_00000111_000006DC
 	wait_movement
 	setvar VAR_UNK_40FC, 2

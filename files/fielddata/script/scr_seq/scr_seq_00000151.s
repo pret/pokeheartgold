@@ -35,11 +35,11 @@
 	scrdef_end
 
 scr_seq_00000151_00000076:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 96, 0, 46, 50, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 
 scr_seq_00000151_0000009C:
@@ -96,7 +96,7 @@ scr_seq_00000151_000000FD:
 
 scr_seq_00000151_00000114:
 	checkflag FLAG_UNK_AA7
-	gotoif eq, scr_seq_00000151_000002A6
+	gotoif TRUE, scr_seq_00000151_000002A6
 	scrcmd_484 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_00000151_00000139
@@ -134,18 +134,18 @@ scr_seq_00000151_0000018E:
 	scrcmd_507 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000151_000001B0
-	scrcmd_332 VAR_SPECIAL_x8004
+	get_party_count VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif eq, scr_seq_00000151_000002B1
 scr_seq_00000151_000001B0:
 	scrcmd_357 32773, 6
 	comparevartovalue VAR_SPECIAL_x8005, 1
 	gotoif ne, scr_seq_00000151_000001D4
-	scrcmd_332 VAR_SPECIAL_x8004
+	get_party_count VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, scr_seq_00000151_0000021A
 scr_seq_00000151_000001D4:
-	scrcmd_529 VAR_SPECIAL_x800C
+	get_lead_mon_index VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	msgbox 10
 	scrcmd_746
@@ -161,7 +161,7 @@ scr_seq_00000151_000001FE:
 scr_seq_00000151_00000200:
 	fade_out_bgm 0, 10
 	play_bgm SEQ_GS_TAIKAIMAE
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 13
 	setflag FLAG_UNK_15F
 	goto scr_seq_00000151_00000224
@@ -170,7 +170,7 @@ scr_seq_00000151_0000021A:
 	fade_out_bgm 0, 10
 	play_bgm SEQ_GS_TAIKAIMAE
 scr_seq_00000151_00000224:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 14
 	msgbox 15
 	setflag FLAG_UNK_993
@@ -222,7 +222,7 @@ scr_seq_00000151_000002B1:
 scr_seq_00000151_000002BA:
 	.byte 0x02, 0x00
 scr_seq_00000151_000002BC:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 20
 	hasspaceforitem VAR_UNK_4058, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -314,7 +314,7 @@ scr_seq_00000151_000003E3:
 	play_fanfare SEQ_ME_MUSHITORI1
 	wait_fanfare
 	msgbox 32
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_194 3, 16385
 	setvar VAR_SPECIAL_x8004, 37
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x4000
@@ -328,12 +328,12 @@ scr_seq_00000151_000003E3:
 	goto scr_seq_00000151_0000043B
 
 scr_seq_00000151_0000042F:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 45
 	copyvar VAR_UNK_4058, VAR_TEMP_x4001
 scr_seq_00000151_0000043B:
 	checkflag FLAG_UNK_15F
-	callif eq, scr_seq_00000151_000004F6
+	callif TRUE, scr_seq_00000151_000004F6
 	msgbox 42
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, scr_seq_00000151_0000045E
@@ -349,11 +349,11 @@ scr_seq_00000151_0000045E:
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000151_0000049E
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 255, VAR_SPECIAL_x800C
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000151_0000049E:
 	scrcmd_788 5, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -419,7 +419,7 @@ scr_seq_00000151_0000054C:
 
 scr_seq_00000151_0000055F:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_00000581
+	gotoif TRUE, scr_seq_00000151_00000581
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -452,7 +452,7 @@ scr_seq_00000151_00000594:
 
 scr_seq_00000151_000005A7:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_000005C9
+	gotoif TRUE, scr_seq_00000151_000005C9
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -485,7 +485,7 @@ scr_seq_00000151_000005DC:
 
 scr_seq_00000151_000005EF:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_00000611
+	gotoif TRUE, scr_seq_00000151_00000611
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -518,7 +518,7 @@ scr_seq_00000151_00000624:
 
 scr_seq_00000151_00000637:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_00000659
+	gotoif TRUE, scr_seq_00000151_00000659
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -551,7 +551,7 @@ scr_seq_00000151_0000066C:
 
 scr_seq_00000151_0000067F:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_000006A1
+	gotoif TRUE, scr_seq_00000151_000006A1
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -584,7 +584,7 @@ scr_seq_00000151_000006B4:
 
 scr_seq_00000151_000006C7:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_000006E9
+	gotoif TRUE, scr_seq_00000151_000006E9
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -617,7 +617,7 @@ scr_seq_00000151_000006FC:
 
 scr_seq_00000151_0000070F:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_00000731
+	gotoif TRUE, scr_seq_00000151_00000731
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -650,7 +650,7 @@ scr_seq_00000151_00000744:
 
 scr_seq_00000151_00000757:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_00000779
+	gotoif TRUE, scr_seq_00000151_00000779
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -683,7 +683,7 @@ scr_seq_00000151_0000078C:
 
 scr_seq_00000151_0000079F:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_000007C1
+	gotoif TRUE, scr_seq_00000151_000007C1
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -716,7 +716,7 @@ scr_seq_00000151_000007D4:
 
 scr_seq_00000151_000007E7:
 	checkflag FLAG_UNK_141
-	gotoif eq, scr_seq_00000151_00000809
+	gotoif TRUE, scr_seq_00000151_00000809
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

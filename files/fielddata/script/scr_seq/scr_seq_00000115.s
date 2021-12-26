@@ -12,7 +12,7 @@ scr_seq_00000115_0000000A:
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000115_00000047
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000115_00000030
+	gotoif TRUE, scr_seq_00000115_00000030
 	goto scr_seq_00000115_00000047
 
 scr_seq_00000115_0000002E:
@@ -46,7 +46,7 @@ scr_seq_00000115_00000065:
 	end
 
 scr_seq_00000115_00000089:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -54,14 +54,14 @@ scr_seq_00000115_00000089:
 	msgbox 2
 	waitbutton
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setflag FLAG_UNK_263
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

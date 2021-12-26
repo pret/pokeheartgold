@@ -12,7 +12,7 @@ scr_seq_00000947_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0D0
-	gotoif eq, scr_seq_00000947_000000CA
+	gotoif TRUE, scr_seq_00000947_000000CA
 	msgbox 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -23,13 +23,13 @@ scr_seq_00000947_0000000A:
 
 scr_seq_00000947_0000003B:
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000947_000000BF
 	scrcmd_470 3
@@ -76,7 +76,7 @@ scr_seq_00000947_000000D5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 VAR_SPECIAL_x8000
+	get_lead_mon_index VAR_SPECIAL_x8000
 	scrcmd_480 32780, 32768, 24
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000947_00000199
@@ -88,7 +88,7 @@ scr_seq_00000947_000000D5:
 	msgbox 6
 	scrcmd_481 32768, 24
 	play_fanfare SEQ_ME_ITEM
-	scrcmd_190 1
+	buffer_players_name 1
 	msgbox 7
 	wait_fanfare
 	scrcmd_193 0, 32768

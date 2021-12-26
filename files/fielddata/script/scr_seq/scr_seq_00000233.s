@@ -19,7 +19,7 @@ scr_seq_00000233_0000001E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_075
-	gotoif eq, scr_seq_00000233_0000008C
+	gotoif TRUE, scr_seq_00000233_0000008C
 	msgbox 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -69,7 +69,7 @@ scr_seq_00000233_000000AC:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_174
-	gotoif eq, scr_seq_00000233_00000121
+	gotoif TRUE, scr_seq_00000233_00000121
 	msgbox 7
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C

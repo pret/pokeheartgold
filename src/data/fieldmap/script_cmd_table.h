@@ -79,7 +79,7 @@ extern BOOL ScrCmd_WaitSE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_076(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_077(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayFanfare(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_079(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitFanfare(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayBGM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_081(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ResetBGM(SCRIPTCONTEXT *ctx);
@@ -132,7 +132,7 @@ extern BOOL ScrCmd_HasItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ItemIsTMOrHM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetItemPocket(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetStarterChoice(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_132(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GenderMsgbox(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_133(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_134(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_135(SCRIPTCONTEXT *ctx);
@@ -143,7 +143,7 @@ extern BOOL ScrCmd_139(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_140(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_141(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_142(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_143(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NameRival(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_144(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_146(SCRIPTCONTEXT *ctx);
@@ -174,8 +174,8 @@ extern BOOL ScrCmd_170(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_171(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_172(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_173(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_174(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_175(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FadeScreen(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitFade(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_176(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_177(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_178(SCRIPTCONTEXT *ctx);
@@ -187,10 +187,10 @@ extern BOOL ScrCmd_183(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_184(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_185(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_186(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_187(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetTrcardStars(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_188(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_189(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_190(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferPlayersName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_191(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_192(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_193(SCRIPTCONTEXT *ctx);
@@ -282,7 +282,7 @@ extern BOOL ScrCmd_278(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_279(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_280(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_282(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HealParty(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_283(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_284(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_285(SCRIPTCONTEXT *ctx);
@@ -332,7 +332,7 @@ extern BOOL ScrCmd_328(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_329(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_330(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_331(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_332(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartyCount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_333(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_334(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_335(SCRIPTCONTEXT *ctx);
@@ -356,7 +356,7 @@ extern BOOL ScrCmd_352(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_353(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_356(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartyCountNotEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_357(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_358(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_359(SCRIPTCONTEXT *ctx);
@@ -487,7 +487,7 @@ extern BOOL ScrCmd_483(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_484(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_485(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Dummy(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_487(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PokeCenAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_488(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_489(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_490(SCRIPTCONTEXT *ctx);
@@ -529,7 +529,7 @@ extern BOOL ScrCmd_525(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_526(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_527(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_528(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_529(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartySelectMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_530(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_531(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_532(SCRIPTCONTEXT *ctx);
@@ -793,8 +793,8 @@ extern BOOL ScrCmd_789(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_790(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_791(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_792(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_793(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_794(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BankTransaction(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckBankBalance(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_795(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_796(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_797(SCRIPTCONTEXT *ctx);
@@ -838,7 +838,7 @@ extern BOOL ScrCmd_834(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_835(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_836(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_837(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_838(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BankOrWalletIsFull(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_839(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_840(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_841(SCRIPTCONTEXT *ctx);
@@ -934,7 +934,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_076,
     ScrCmd_077,
     ScrCmd_PlayFanfare,
-    ScrCmd_079,
+    ScrCmd_WaitFanfare,
     ScrCmd_PlayBGM,
     ScrCmd_081,
     ScrCmd_ResetBGM,
@@ -987,7 +987,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_ItemIsTMOrHM,
     ScrCmd_GetItemPocket,
     ScrCmd_SetStarterChoice,
-    ScrCmd_132,
+    ScrCmd_GenderMsgbox,
     ScrCmd_133,
     ScrCmd_134,
     ScrCmd_135,
@@ -998,7 +998,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_140,
     ScrCmd_141,
     ScrCmd_142,
-    ScrCmd_143,
+    ScrCmd_NameRival,
     ScrCmd_144,
     ScrCmd_RegisterPokegearCard,
     ScrCmd_146,
@@ -1029,8 +1029,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_171,
     ScrCmd_172,
     ScrCmd_173,
-    ScrCmd_174,
-    ScrCmd_175,
+    ScrCmd_FadeScreen,
+    ScrCmd_WaitFade,
     ScrCmd_176,
     ScrCmd_177,
     ScrCmd_178,
@@ -1042,10 +1042,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_184,
     ScrCmd_185,
     ScrCmd_186,
-    ScrCmd_187,
+    ScrCmd_GetTrcardStars,
     ScrCmd_188,
     ScrCmd_189,
-    ScrCmd_190,
+    ScrCmd_BufferPlayersName,
     ScrCmd_191,
     ScrCmd_192,
     ScrCmd_193,
@@ -1137,7 +1137,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_279,
     ScrCmd_280,
     ScrCmd_GetPlayerGender,
-    ScrCmd_282,
+    ScrCmd_HealParty,
     ScrCmd_283,
     ScrCmd_284,
     ScrCmd_285,
@@ -1187,7 +1187,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_329,
     ScrCmd_330,
     ScrCmd_331,
-    ScrCmd_332,
+    ScrCmd_GetPartyCount,
     ScrCmd_333,
     ScrCmd_334,
     ScrCmd_335,
@@ -1211,7 +1211,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_353,
     ScrCmd_GetPartyMonSpecies,
     ScrCmd_PartymonIsMine,
-    ScrCmd_356,
+    ScrCmd_PartyCountNotEgg,
     ScrCmd_357,
     ScrCmd_358,
     ScrCmd_359,
@@ -1342,7 +1342,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_484,
     ScrCmd_485,
     ScrCmd_Dummy,
-    ScrCmd_487,
+    ScrCmd_PokeCenAnim,
     ScrCmd_488,
     ScrCmd_489,
     ScrCmd_490,
@@ -1384,7 +1384,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_526,
     ScrCmd_527,
     ScrCmd_528,
-    ScrCmd_529,
+    ScrCmd_PartySelectMon,
     ScrCmd_530,
     ScrCmd_531,
     ScrCmd_532,
@@ -1648,8 +1648,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_790,
     ScrCmd_791,
     ScrCmd_792,
-    ScrCmd_793,
-    ScrCmd_794,
+    ScrCmd_BankTransaction,
+    ScrCmd_CheckBankBalance,
     ScrCmd_795,
     ScrCmd_796,
     ScrCmd_797,
@@ -1693,7 +1693,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_835,
     ScrCmd_836,
     ScrCmd_837,
-    ScrCmd_838,
+    ScrCmd_BankOrWalletIsFull,
     ScrCmd_839,
     ScrCmd_840,
     ScrCmd_841,

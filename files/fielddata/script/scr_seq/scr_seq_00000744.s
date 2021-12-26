@@ -19,7 +19,7 @@ scr_seq_00000744_0000001E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_129
-	gotoif lt, scr_seq_00000744_0000003C
+	gotoif FALSE, scr_seq_00000744_0000003C
 	msgbox 1
 	waitbutton
 	closemsg

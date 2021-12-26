@@ -62,12 +62,12 @@ scr_seq_00000803_000000BE:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_000000F5
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 0, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_000000F5:
 	releaseall
 	end
@@ -78,12 +78,12 @@ scr_seq_00000803_000000F9:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_00000130
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 1, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_00000130:
 	releaseall
 	end
@@ -94,12 +94,12 @@ scr_seq_00000803_00000134:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_0000016B
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 2, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_0000016B:
 	releaseall
 	end
@@ -110,12 +110,12 @@ scr_seq_00000803_0000016F:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_000001A6
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 3, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_000001A6:
 	releaseall
 	end
@@ -126,12 +126,12 @@ scr_seq_00000803_000001AA:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_000001E1
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 4, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_000001E1:
 	releaseall
 	end
@@ -142,12 +142,12 @@ scr_seq_00000803_000001E5:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_0000021C
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 5, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_0000021C:
 	releaseall
 	end
@@ -158,12 +158,12 @@ scr_seq_00000803_00000220:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_00000257
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 6, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_00000257:
 	releaseall
 	end
@@ -174,12 +174,12 @@ scr_seq_00000803_0000025B:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_00000292
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 7, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_00000292:
 	releaseall
 	end
@@ -190,12 +190,12 @@ scr_seq_00000803_00000296:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_000002CD
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 8, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_000002CD:
 	releaseall
 	end
@@ -206,12 +206,12 @@ scr_seq_00000803_000002D1:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_00000308
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 9, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_00000308:
 	releaseall
 	end
@@ -222,12 +222,12 @@ scr_seq_00000803_0000030C:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_00000343
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 10, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_00000343:
 	releaseall
 	end
@@ -238,12 +238,12 @@ scr_seq_00000803_00000347:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_0000037E
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 11, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_0000037E:
 	releaseall
 	end
@@ -256,12 +256,12 @@ scr_seq_00000803_00000382:
 	gotoif eq, scr_seq_00000803_000003BE
 	msgbox 20
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 12, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_000003BE:
 	releaseall
 	end
@@ -272,12 +272,12 @@ scr_seq_00000803_000003C2:
 	call scr_seq_00000803_00000062
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000803_000003F9
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 13, 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000803_000003F9:
 	releaseall
 	end
@@ -380,7 +380,7 @@ scr_seq_00000803_00000543:
 	faceplayer
 	scrcmd_784 3, 0
 	checkflag FLAG_UNK_17C
-	gotoif eq, scr_seq_00000803_0000059B
+	gotoif TRUE, scr_seq_00000803_0000059B
 	msgbox 11
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -390,7 +390,7 @@ scr_seq_00000803_00000543:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000803_000005B9
 	scrcmd_120 18
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 12
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare

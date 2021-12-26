@@ -10,7 +10,7 @@
 
 scr_seq_00000024_0000000E:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000024_0000001B
+	gotoif TRUE, scr_seq_00000024_0000001B
 	end
 
 scr_seq_00000024_0000001B:
@@ -104,7 +104,7 @@ scr_seq_00000024_00000191:
 	apply_movement 255, scr_seq_00000024_000002D8
 scr_seq_00000024_000001A1:
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	closemsg
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005

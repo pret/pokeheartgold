@@ -12,7 +12,7 @@ scr_seq_00000206_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_ABA
-	gotoif eq, scr_seq_00000206_00000068
+	gotoif TRUE, scr_seq_00000206_00000068
 	scrcmd_540 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000206_0000007E

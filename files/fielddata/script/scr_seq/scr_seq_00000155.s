@@ -11,7 +11,7 @@
 
 scr_seq_00000155_00000012:
 	checkflag FLAG_UNK_168
-	gotoif eq, scr_seq_00000155_00000021
+	gotoif TRUE, scr_seq_00000155_00000021
 	setflag FLAG_UNK_998
 scr_seq_00000155_00000021:
 	scrcmd_804 2
@@ -63,7 +63,7 @@ scr_seq_00000155_000000A4:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0EB
-	gotoif eq, scr_seq_00000155_00000144
+	gotoif TRUE, scr_seq_00000155_00000144
 	msgbox 0
 	closemsg
 	scrcmd_602 0

@@ -14,7 +14,7 @@ scr_seq_00000132_00000012:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_09E
-	gotoif eq, scr_seq_00000132_0000002E
+	gotoif TRUE, scr_seq_00000132_0000002E
 	msgbox 0
 	closemsg
 	setflag FLAG_UNK_09E
@@ -198,7 +198,7 @@ scr_seq_00000132_00000234:
 	comparevartovalue VAR_UNK_40FB, 13
 	gotoif ge, scr_seq_00000132_0000026E
 	checkflag FLAG_UNK_09D
-	gotoif eq, scr_seq_00000132_00000263
+	gotoif TRUE, scr_seq_00000132_00000263
 	msgbox 7
 	waitbutton
 	closemsg
@@ -249,11 +249,11 @@ scr_seq_00000132_000002D2:
 	clearflag FLAG_UNK_2DD
 	clearflag FLAG_UNK_2DB
 scr_seq_00000132_000002E4:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 60, 0, 695, 397, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

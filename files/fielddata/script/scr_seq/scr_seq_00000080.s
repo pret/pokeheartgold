@@ -31,9 +31,9 @@ scr_seq_00000080_0000003E:
 	closemsg
 	call scr_seq_00000080_00000333
 	checkflag FLAG_UNK_176
-	gotoif eq, scr_seq_00000080_00000077
+	gotoif TRUE, scr_seq_00000080_00000077
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	play_fanfare SEQ_ME_ITEM
 	msgbox 2
 	wait_fanfare

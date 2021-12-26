@@ -12,7 +12,7 @@ scr_seq_00000865_0000000A:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_1C2
-	gotoif eq, scr_seq_00000865_00000026
+	gotoif TRUE, scr_seq_00000865_00000026
 	msgbox 0
 	goto scr_seq_00000865_00000029
 

@@ -148,10 +148,10 @@ scr_seq_00000164_000001E1:
 	scrcmd_584 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000164_000004EC
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000164_0000031B
-	scrcmd_332 VAR_TEMP_x4009
+	get_party_count VAR_TEMP_x4009
 	setvar VAR_TEMP_x400A, 0
 scr_seq_00000164_00000215:
 	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_x800C
@@ -266,7 +266,7 @@ scr_seq_00000164_00000356:
 	msgbox 10
 	closemsg
 	scrcmd_600
-	scrcmd_282
+	heal_party
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_815 0
 	apply_movement 255, scr_seq_00000164_00000474
@@ -304,8 +304,8 @@ scr_seq_00000164_000003E8:
 	return
 
 scr_seq_00000164_000003F3:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_436
 	scrcmd_565 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -317,8 +317,8 @@ scr_seq_00000164_0000041A:
 	scrcmd_152
 scr_seq_00000164_0000041C:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_307 0, 0, 8, 2, 77
 	call scr_seq_00000164_000003E0
 	apply_movement 255, scr_seq_00000164_000004A8
@@ -411,7 +411,7 @@ scr_seq_00000164_00000521:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_187 32780
+	get_trcard_stars VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000164_00000709
 	scrcmd_691 32780
@@ -473,7 +473,7 @@ scr_seq_00000164_000005D7:
 	msgbox 20
 	closemsg
 	scrcmd_600
-	scrcmd_282
+	heal_party
 	scrcmd_815 0
 	apply_movement 255, scr_seq_00000164_00000474
 	wait_movement
@@ -492,11 +492,11 @@ scr_seq_00000164_000005D7:
 	wait_movement
 	call scr_seq_00000164_000003E8
 	setvar VAR_TEMP_x4003, 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 516, 0, 20, 11, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

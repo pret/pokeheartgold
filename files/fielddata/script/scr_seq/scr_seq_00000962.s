@@ -31,16 +31,16 @@ scr_seq_00000962_0000004B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 VAR_SPECIAL_x8002
+	get_lead_mon_index VAR_SPECIAL_x8002
 	scrcmd_480 32780, 32770, 59
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000962_00000171
 	checkflag FLAG_UNK_ABC
-	gotoif eq, scr_seq_00000962_00000185
+	gotoif TRUE, scr_seq_00000962_00000185
 	comparevartovalue VAR_UNK_4094, 7
 	gotoif eq, scr_seq_00000962_0000011F
 	checkflag FLAG_UNK_0D7
-	gotoif eq, scr_seq_00000962_00000101
+	gotoif TRUE, scr_seq_00000962_00000101
 	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000962_000000B2

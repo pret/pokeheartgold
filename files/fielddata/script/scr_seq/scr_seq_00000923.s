@@ -27,7 +27,7 @@ scr_seq_00000923_00000022:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 0
 	msgbox 1
 	closemsg

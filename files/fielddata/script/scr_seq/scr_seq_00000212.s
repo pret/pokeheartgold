@@ -12,7 +12,7 @@
 
 scr_seq_00000212_00000016:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000212_00000027
+	gotoif FALSE, scr_seq_00000212_00000027
 	clearflag FLAG_UNK_189
 	end
 
@@ -56,26 +56,26 @@ scr_seq_00000212_00000099:
 	wait_movement
 	apply_movement 3, scr_seq_00000212_000002CC
 	wait_movement
-	scrcmd_132 12, 11
+	gender_msgbox 12, 11
 	closemsg
 	apply_movement 3, scr_seq_00000212_000002E0
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 14, 13
+	buffer_players_name 0
+	gender_msgbox 14, 13
 	closemsg
 	apply_movement 3, scr_seq_00000212_000002FC
 	wait_movement
-	scrcmd_132 16, 15
+	gender_msgbox 16, 15
 	closemsg
 	apply_movement 3, scr_seq_00000212_00000304
 	apply_movement 255, scr_seq_00000212_000003D0
 	wait_movement
-	scrcmd_132 18, 17
+	gender_msgbox 18, 17
 	closemsg
 	apply_movement 3, scr_seq_00000212_00000338
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 20, 19
+	buffer_players_name 0
+	gender_msgbox 20, 19
 	closemsg
 	apply_movement 255, scr_seq_00000212_000003A0
 	apply_movement 3, scr_seq_00000212_00000310
@@ -152,21 +152,21 @@ scr_seq_00000212_00000099:
 	hide_person 2
 	setflag FLAG_UNK_301
 	callstd 2032
-	scrcmd_132 22, 21
+	gender_msgbox 22, 21
 	closemsg
 	fade_out_bgm 20, 30
 	apply_movement 253, scr_seq_00000212_00000350
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	scrcmd_174 6, 6, 0, 32767
-	scrcmd_175
+	fade_screen 6, 6, 0, 32767
+	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 32767
-	scrcmd_175
+	fade_screen 6, 6, 1, 32767
+	wait_fade
 	apply_movement 255, scr_seq_00000212_000003C4
 	apply_movement 3, scr_seq_00000212_00000320
 	wait_movement
-	scrcmd_132 24, 23
+	gender_msgbox 24, 23
 	closemsg
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
@@ -174,8 +174,8 @@ scr_seq_00000212_00000099:
 	clearflag FLAG_UNK_303
 	clearflag FLAG_UNK_311
 	scrcmd_176 298, 0, 6, 8, 1
-	scrcmd_174 6, 15, 1, 32767
-	scrcmd_175
+	fade_screen 6, 15, 1, 32767
+	wait_fade
 	releaseall
 	end
 
@@ -381,12 +381,12 @@ scr_seq_00000212_00000523:
 	wait_movement
 scr_seq_00000212_0000054A:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 71
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

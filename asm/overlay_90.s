@@ -6548,7 +6548,7 @@ ov90_0225B954: ; 0x0225B954
 	cmp r0, #0
 	bne _0225B970
 	ldr r0, _0225B974 ; =0x000004BF
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0x66
 	mov r1, #1
 	lsl r0, r0, #4
@@ -6568,7 +6568,7 @@ ov90_0225B978: ; 0x0225B978
 	ldr r0, [r4, r0]
 	cmp r0, #1
 	bne _0225B996
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _0225B996
 	mov r0, #0x66

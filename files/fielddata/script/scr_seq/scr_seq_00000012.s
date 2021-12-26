@@ -45,7 +45,7 @@ scr_seq_00000012_00000085:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	play_se SEQ_SE_DP_PINPON
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	play_bgm SEQ_SILENCE_DUNGEON
 	play_fanfare SEQ_ME_ITEM
@@ -140,14 +140,14 @@ scr_seq_00000012_00000180:
 	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000012_000001B9
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0
 	return
 
 scr_seq_00000012_000001B9:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 3
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0
@@ -160,10 +160,10 @@ scr_seq_00000012_000001C9:
 
 scr_seq_00000012_000001D4:
 	scrcmd_508 1
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 479, 0, 7, 7, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 	.balign 4, 0

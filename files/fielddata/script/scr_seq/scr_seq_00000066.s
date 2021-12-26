@@ -16,7 +16,7 @@ scr_seq_00000066_00000016:
 
 scr_seq_00000066_0000001E:
 	checkflag FLAG_UNK_1D8
-	gotoif eq, scr_seq_00000066_0000002D
+	gotoif TRUE, scr_seq_00000066_0000002D
 	scrcmd_375 4
 scr_seq_00000066_0000002D:
 	end
@@ -26,7 +26,7 @@ scr_seq_00000066_0000002F:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0B9
-	gotoif eq, scr_seq_00000066_000000B5
+	gotoif TRUE, scr_seq_00000066_000000B5
 	comparevartovalue VAR_UNK_40A5, 0
 	gotoif eq, scr_seq_00000066_00000062
 	msgbox 1
@@ -67,7 +67,7 @@ scr_seq_00000066_000000B5:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000066_0000017F
 	takeitem ITEM_SECRETPOTION, 1, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 3
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare

@@ -63,12 +63,12 @@ scr_seq_00000161_00000098:
 	lockall
 	apply_movement 4, scr_seq_00000161_00000110
 	wait_movement
-	scrcmd_132 2, 3
+	gender_msgbox 2, 3
 	closemsg
 	apply_movement 0, scr_seq_00000161_00000118
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 4, 5
+	buffer_players_name 0
+	gender_msgbox 4, 5
 	setvar VAR_SPECIAL_x8004, 233
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C

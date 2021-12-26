@@ -2078,7 +2078,7 @@ scr_seq_00000141_00001830:
 
 scr_seq_00000141_00001862:
 	wait_fanfare
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_194 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
@@ -2166,7 +2166,7 @@ scr_seq_00000141_0000197A:
 scr_seq_00000141_0000198B:
 	.byte 0x02, 0x00
 scr_seq_00000141_0000198D:
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_843 1, 32772
 	scrcmd_196 2, 32772
 	msgbox 6
@@ -2175,7 +2175,7 @@ scr_seq_00000141_0000198D:
 scr_seq_00000141_000019A3:
 	.byte 0x02, 0x00
 scr_seq_00000141_000019A5:
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_843 1, 32772
 	msgbox 3
 	goto scr_seq_00000141_00001862

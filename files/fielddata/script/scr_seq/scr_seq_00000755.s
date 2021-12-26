@@ -75,7 +75,7 @@ scr_seq_00000755_00000102:
 	.byte 0x02, 0x00
 scr_seq_00000755_00000104:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000755_00000115
+	gotoif FALSE, scr_seq_00000755_00000115
 	clearflag FLAG_UNK_189
 	end
 
@@ -113,7 +113,7 @@ scr_seq_00000755_0000015A:
 	faceplayer
 	scrcmd_784 2, 0
 	checkflag FLAG_UNK_001
-	gotoif eq, scr_seq_00000755_00000530
+	gotoif TRUE, scr_seq_00000755_00000530
 	comparevartovalue VAR_UNK_407F, 0
 	gotoif ne, scr_seq_00000755_00000550
 	msgbox 1
@@ -353,7 +353,7 @@ scr_seq_00000755_0000054E:
 scr_seq_00000755_00000550:
 	scrcmd_202 0, 16511, 0, 0
 	msgbox 4
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif ne, scr_seq_00000755_00000575
 	msgbox 5
@@ -361,7 +361,7 @@ scr_seq_00000755_00000550:
 
 scr_seq_00000755_00000575:
 	scrcmd_202 1, 16511, 0, 0
-	scrcmd_190 0
+	buffer_players_name 0
 	play_fanfare SEQ_ME_POKEGET
 	msgbox 8
 	wait_fanfare
@@ -375,17 +375,17 @@ scr_seq_00000755_00000575:
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000755_00000600
-	scrcmd_332 VAR_TEMP_x4000
+	get_party_count VAR_TEMP_x4000
 	subvar VAR_TEMP_x4000, 1
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000755_000005E8
 	scrcmd_420 50
 scr_seq_00000755_000005E8:
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_784 2, 1
 	releaseall
 	end
@@ -446,12 +446,12 @@ scr_seq_00000755_000006AC:
 	wait_movement
 scr_seq_00000755_000006D3:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 65
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -577,15 +577,15 @@ scr_seq_00000755_00000870:
 	scrcmd_604 48
 	apply_movement 255, scr_seq_00000755_000009A4
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 17
 	closemsg
 	apply_movement 0, scr_seq_00000755_000009D0
 	wait_movement
 	msgbox 18
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_099 6
 	show_person_at 6, 25, 0, 7, 1
@@ -599,8 +599,8 @@ scr_seq_00000755_00000870:
 	apply_movement 253, scr_seq_00000755_000009F0
 	wait_movement
 scr_seq_00000755_000008F1:
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	wait 10, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_00000755_000009D0
 	wait_movement

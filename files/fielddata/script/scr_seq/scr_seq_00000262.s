@@ -41,12 +41,12 @@ scr_seq_00000262_0000006A:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000262_000000B5
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_717 32780
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000262_000000B7
 	scrcmd_718 0, 32780
@@ -71,12 +71,12 @@ scr_seq_00000262_000000BD:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000262_00000112
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_720 32769
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 7
 	waitbutton
 scr_seq_00000262_00000112:
@@ -90,19 +90,19 @@ scr_seq_00000262_0000011A:
 	scrcmd_447 1, 0
 	comparevartovalue VAR_UNK_40E3, 3
 	gotoif ne, scr_seq_00000262_00000155
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 173, 0, 19, 2, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000262_00000179
 
 scr_seq_00000262_00000155:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 173, 0, 5, 2, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000262_00000179:
 	setvar VAR_UNK_40E3, 2
 	return

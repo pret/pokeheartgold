@@ -171,7 +171,7 @@ sub_02055508: ; 0x02055508
 	add r0, r5, #0
 	bl sub_020556B8
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	add r1, r4, #0
 	bl sub_0202F294
 	cmp r6, #0

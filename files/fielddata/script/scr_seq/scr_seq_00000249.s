@@ -15,7 +15,7 @@
 
 scr_seq_00000249_00000022:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000249_00000033
+	gotoif FALSE, scr_seq_00000249_00000033
 	clearflag FLAG_UNK_189
 	end
 
@@ -43,7 +43,7 @@ scr_seq_00000249_00000087:
 	setflag FLAG_UNK_226
 scr_seq_00000249_0000008B:
 	checkflag FLAG_UNK_162
-	gotoif lt, scr_seq_00000249_000000E3
+	gotoif FALSE, scr_seq_00000249_000000E3
 	scrcmd_142 36, 16385
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000249_000000E3
@@ -112,7 +112,7 @@ scr_seq_00000249_00000156:
 scr_seq_00000249_00000173:
 	msgbox 6
 	scrcmd_146 24
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 8
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -244,12 +244,12 @@ scr_seq_00000249_0000032B:
 	wait_movement
 scr_seq_00000249_00000352:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 28
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -328,13 +328,13 @@ scr_seq_00000249_0000041C:
 	msgbox 11
 	closemsg
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 80
 	faceplayer
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	msgbox 12
 	waitbutton

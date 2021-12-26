@@ -20,12 +20,12 @@ scr_seq_00000806_00000012:
 	wait_movement
 	msgbox 12
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_780 0, 0
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setvar VAR_TEMP_x4001, 2
 	releaseall
 	end

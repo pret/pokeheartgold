@@ -12,14 +12,14 @@ scr_seq_00000045_0000000E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_713 3
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	checkflag FLAG_UNK_97A
-	gotoif eq, scr_seq_00000045_00000042
+	gotoif TRUE, scr_seq_00000045_00000042
 	releaseall
 	end
 
@@ -55,11 +55,11 @@ scr_seq_00000045_000000B8:
 	comparevartovalue VAR_UNK_40EC, 1
 	gotoif ge, scr_seq_00000045_00000103
 	play_se SEQ_SE_GS_RAKKA01
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 5, 24, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setvar VAR_UNK_40E0, 1
 	addvar VAR_UNK_40EC, 1
 	releaseall
@@ -68,11 +68,11 @@ scr_seq_00000045_000000B8:
 scr_seq_00000045_00000103:
 	setflag FLAG_UNK_235
 	play_se SEQ_SE_GS_RAKKA01
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 5, 24, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setvar VAR_UNK_40E0, 1
 	addvar VAR_UNK_40EC, 1
 	releaseall
@@ -104,29 +104,29 @@ scr_seq_00000045_00000185:
 	gotoif ge, scr_seq_00000045_000001D1
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif eq, scr_seq_00000045_000001FB
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 315, 0, 5, 24, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000045_000001CD:
 	releaseall
 	end
 
 scr_seq_00000045_000001D1:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 492, 0, 5, 24, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000045_000001CD
 
 scr_seq_00000045_000001FB:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 490, 0, 5, 24, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000045_000001CD
 
 scr_seq_00000045_00000225:

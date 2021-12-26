@@ -9760,7 +9760,7 @@ _0224B5DE:
 	add r0, #0x5c
 	bl CopyWindowToVram
 	ldr r0, _0224B6EC ; =0x000004A4
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r0, #1
@@ -9868,7 +9868,7 @@ ov71_0224B6F0: ; 0x0224B6F0
 	add r4, r1, #0
 	cmp r0, #0
 	beq _0224B702
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	str r0, [r5, #0xc]
 _0224B702:
 	ldr r0, [r5, #8]

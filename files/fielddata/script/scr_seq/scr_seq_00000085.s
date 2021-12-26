@@ -53,7 +53,7 @@ scr_seq_00000085_000000A6:
 scr_seq_00000085_000000B5:
 	scrcmd_380 16391, 100
 	checkflag FLAG_UNK_234
-	callif lt, scr_seq_00000085_000000D5
+	callif FALSE, scr_seq_00000085_000000D5
 	comparevartovalue VAR_TEMP_x4007, 30
 	gotoif lt, scr_seq_00000085_000000DF
 	end
@@ -65,7 +65,7 @@ scr_seq_00000085_000000D5:
 
 scr_seq_00000085_000000DF:
 	checkflag FLAG_UNK_AA1
-	gotoif lt, scr_seq_00000085_000000EC
+	gotoif FALSE, scr_seq_00000085_000000EC
 	end
 
 scr_seq_00000085_000000EC:
@@ -280,8 +280,8 @@ scr_seq_00000085_0000039F:
 scr_seq_00000085_000003A1:
 	msgbox 33
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_633 4, 16710, 32780
 	scrcmd_635 16386, 16389
 	comparevartovalue VAR_TEMP_x4002, 255
@@ -289,8 +289,8 @@ scr_seq_00000085_000003A1:
 	scrcmd_815 0
 scr_seq_00000085_000003D1:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, scr_seq_00000085_000002F5
 	scrcmd_690 16386, 32780
@@ -362,7 +362,7 @@ scr_seq_00000085_000004E0:
 	comparevartovalue VAR_UNK_4146, 1
 	callif eq, scr_seq_00000085_0000066C
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_282
+	heal_party
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -491,8 +491,8 @@ scr_seq_00000085_00000689:
 scr_seq_00000085_000006BA:
 	.byte 0x02, 0x00
 scr_seq_00000085_000006BC:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_815 0
 	comparevartovalue VAR_UNK_4146, 0
 	callif eq, scr_seq_00000085_0000077D
@@ -506,8 +506,8 @@ scr_seq_00000085_000006BC:
 	comparevartovalue VAR_UNK_4146, 2
 	callif eq, scr_seq_00000085_0000071D
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_682 1
 	end
 
@@ -714,7 +714,7 @@ scr_seq_00000085_00000960:
 
 scr_seq_00000085_00000966:
 	msgbox 13
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 15
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -723,7 +723,7 @@ scr_seq_00000085_00000966:
 
 scr_seq_00000085_0000097D:
 	msgbox 13
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 14
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -836,7 +836,7 @@ scr_seq_00000085_00000A77:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0FE
-	gotoif lt, scr_seq_00000085_00000AFF
+	gotoif FALSE, scr_seq_00000085_00000AFF
 	scrcmd_692 1, 2, 3, 4, VAR_UNK_4054, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000085_00000AD5
@@ -844,7 +844,7 @@ scr_seq_00000085_00000A77:
 	gotoif eq, scr_seq_00000085_00000AE0
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_00000085_00000AF1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 69
 	msgbox 70
 	play_fanfare SEQ_ME_BPGET
@@ -861,7 +861,7 @@ scr_seq_00000085_00000AD5:
 scr_seq_00000085_00000ADE:
 	.byte 0x02, 0x00
 scr_seq_00000085_00000AE0:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 73
 	msgbox 71
 	goto scr_seq_00000085_00000B0E
@@ -870,7 +870,7 @@ scr_seq_00000085_00000AEF:
 	.byte 0x02
 	.byte 0x00
 scr_seq_00000085_00000AF1:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 74
 	goto scr_seq_00000085_00000B0E
 
@@ -901,7 +901,7 @@ scr_seq_00000085_00000B16:
 scr_seq_00000085_00000B35:
 	.byte 0x02, 0x00
 scr_seq_00000085_00000B37:
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_693 32773
 	comparevartovalue VAR_SPECIAL_x8005, 475
 	gotoif ge, scr_seq_00000085_00000BBE
@@ -999,7 +999,7 @@ scr_seq_00000085_00000C29:
 scr_seq_00000085_00000C48:
 	.byte 0x02, 0x00
 scr_seq_00000085_00000C4A:
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_693 32773
 	comparevartovalue VAR_SPECIAL_x8005, 475
 	gotoif ge, scr_seq_00000085_00000CD1
@@ -1089,7 +1089,7 @@ scr_seq_00000085_00000D3C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_190 0
+	buffer_players_name 0
 	copyvar VAR_TEMP_x4001, VAR_OBJ_1
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_00000085_00000D90

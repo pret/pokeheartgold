@@ -1752,8 +1752,8 @@ sub_02006AF4: ; 0x02006AF4
 	.balign 4, 0
 	thumb_func_end sub_02006AF4
 
-	thumb_func_start sub_02006B24
-sub_02006B24: ; 0x02006B24
+	thumb_func_start PlayFanfare
+PlayFanfare: ; 0x02006B24
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1793,7 +1793,7 @@ _02006B4E:
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02006B24
+	thumb_func_end PlayFanfare
 
 	thumb_func_start sub_02006B84
 sub_02006B84: ; 0x02006B84
@@ -1835,8 +1835,8 @@ sub_02006BB0: ; 0x02006BB0
 	pop {r4, pc}
 	thumb_func_end sub_02006BB0
 
-	thumb_func_start sub_02006BCC
-sub_02006BCC: ; 0x02006BCC
+	thumb_func_start IsFanfarePlaying
+IsFanfarePlaying: ; 0x02006BCC
 	push {r3, lr}
 	mov r0, #0xe
 	bl GF_SdatGetAttrPtr
@@ -1860,7 +1860,7 @@ _02006BF8:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02006BCC
+	thumb_func_end IsFanfarePlaying
 
 	thumb_func_start sub_02006C04
 sub_02006C04: ; 0x02006C04

@@ -216,7 +216,7 @@ scr_seq_00000167_0000028F:
 	scrcmd_189
 	wait_movement
 	play_fanfare SEQ_ME_PT_NEW
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 8
 	wait_fanfare
 	wait 30, VAR_SPECIAL_x800C
@@ -230,8 +230,8 @@ scr_seq_00000167_0000028F:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_309 77
 	call scr_seq_00000167_00000766
 	scrcmd_188 1
@@ -239,8 +239,8 @@ scr_seq_00000167_0000028F:
 	apply_movement 255, scr_seq_00000167_00000934
 	wait_movement
 	scrcmd_784 3, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -257,7 +257,7 @@ scr_seq_00000167_0000028F:
 	call scr_seq_00000167_00000540
 	call scr_seq_00000167_00000464
 	msgbox 19
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_198 1, 32769
 	scrcmd_198 2, 32770
 	msgbox 46
@@ -274,15 +274,15 @@ scr_seq_00000167_0000028F:
 	comparevartovalue VAR_UNK_40E2, 3
 	callif eq, scr_seq_00000167_00000607
 	checkflag FLAG_UNK_2D5
-	callif eq, scr_seq_00000167_0000063E
+	callif TRUE, scr_seq_00000167_0000063E
 	checkflag FLAG_UNK_2D6
-	callif eq, scr_seq_00000167_00000657
+	callif TRUE, scr_seq_00000167_00000657
 	checkflag FLAG_UNK_2D7
-	callif eq, scr_seq_00000167_00000670
+	callif TRUE, scr_seq_00000167_00000670
 	checkflag FLAG_UNK_2D8
-	callif eq, scr_seq_00000167_00000689
+	callif TRUE, scr_seq_00000167_00000689
 	checkflag FLAG_UNK_2D9
-	callif eq, scr_seq_00000167_000006A2
+	callif TRUE, scr_seq_00000167_000006A2
 	msgbox 10
 	waitbutton
 	closemsg
@@ -409,7 +409,7 @@ scr_seq_00000167_000005CA:
 	scrcmd_198 2, 16393
 	msgbox 22
 	scrcmd_122 16393
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_198 2, 16393
 	msgbox 20
 	play_fanfare SEQ_ME_ITEM
@@ -419,33 +419,33 @@ scr_seq_00000167_000005CA:
 
 scr_seq_00000167_000005ED:
 	checkflag FLAG_UNK_0EF
-	callif eq, scr_seq_00000167_00000614
+	callif TRUE, scr_seq_00000167_00000614
 	return
 
 scr_seq_00000167_000005FA:
 	checkflag FLAG_UNK_0F0
-	callif eq, scr_seq_00000167_00000622
+	callif TRUE, scr_seq_00000167_00000622
 	return
 
 scr_seq_00000167_00000607:
 	checkflag FLAG_UNK_0F1
-	callif eq, scr_seq_00000167_00000630
+	callif TRUE, scr_seq_00000167_00000630
 	return
 
 scr_seq_00000167_00000614:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 23
 	setvar VAR_UNK_40E2, 2
 	return
 
 scr_seq_00000167_00000622:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 24
 	setvar VAR_UNK_40E2, 3
 	return
 
 scr_seq_00000167_00000630:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 25
 	setvar VAR_UNK_40E2, 4
 	return
@@ -696,7 +696,7 @@ scr_seq_00000167_000009A6:
 	scrcmd_751 345, 255, 4
 	scrcmd_751 346, 255, 6
 	checkflag FLAG_UNK_2B3
-	callif lt, scr_seq_00000167_00000B93
+	callif FALSE, scr_seq_00000167_00000B93
 	scrcmd_751 13, 255, 7
 	scrcmd_752
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
@@ -786,7 +786,7 @@ scr_seq_00000167_00000AE1:
 	scrcmd_751 345, 255, 3
 	scrcmd_751 346, 255, 4
 	checkflag FLAG_UNK_2B3
-	callif lt, scr_seq_00000167_00000B93
+	callif FALSE, scr_seq_00000167_00000B93
 	scrcmd_751 12, 255, 6
 	scrcmd_752
 	copyvar VAR_TEMP_x400B, VAR_SPECIAL_x800C
@@ -940,7 +940,7 @@ scr_seq_00000167_00000CE3:
 	scrcmd_189
 	wait_movement
 	play_fanfare SEQ_ME_PT_NEW
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 35
 	wait 30, VAR_SPECIAL_x8004
 	wait_fanfare
@@ -979,8 +979,8 @@ scr_seq_00000167_00000DD7:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_309 77
 	scrcmd_257 239
 	call scr_seq_00000167_00000766
@@ -990,8 +990,8 @@ scr_seq_00000167_00000DD7:
 	apply_movement 255, scr_seq_00000167_00000934
 	wait_movement
 	scrcmd_784 3, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -1014,7 +1014,7 @@ scr_seq_00000167_00000DD7:
 	wait_movement
 	call scr_seq_00000167_00000464
 	msgbox 19
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_198 1, 32769
 	scrcmd_198 2, 32770
 	comparevartovalue VAR_SPECIAL_x8000, 10
@@ -1038,15 +1038,15 @@ scr_seq_00000167_00000EB8:
 	comparevartovalue VAR_UNK_40E2, 3
 	callif eq, scr_seq_00000167_00000607
 	checkflag FLAG_UNK_2D5
-	callif eq, scr_seq_00000167_0000063E
+	callif TRUE, scr_seq_00000167_0000063E
 	checkflag FLAG_UNK_2D6
-	callif eq, scr_seq_00000167_00000657
+	callif TRUE, scr_seq_00000167_00000657
 	checkflag FLAG_UNK_2D7
-	callif eq, scr_seq_00000167_00000670
+	callif TRUE, scr_seq_00000167_00000670
 	checkflag FLAG_UNK_2D8
-	callif eq, scr_seq_00000167_00000689
+	callif TRUE, scr_seq_00000167_00000689
 	checkflag FLAG_UNK_2D9
-	callif eq, scr_seq_00000167_000006A2
+	callif TRUE, scr_seq_00000167_000006A2
 	msgbox 10
 	waitbutton
 	closemsg
@@ -1070,7 +1070,7 @@ scr_seq_00000167_00000F68:
 	msgbox 34
 scr_seq_00000167_00000F76:
 	scrcmd_122 16393
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_198 2, 16393
 	msgbox 20
 	play_fanfare SEQ_ME_ITEM

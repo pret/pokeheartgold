@@ -38,7 +38,7 @@ scr_seq_00000096_00000071:
 	scrcmd_375 33
 	scrcmd_375 34
 	checkflag FLAG_UNK_09B
-	gotoif eq, scr_seq_00000096_00000096
+	gotoif TRUE, scr_seq_00000096_00000096
 	end
 
 scr_seq_00000096_00000096:
@@ -293,7 +293,7 @@ scr_seq_00000096_0000058F:
 
 scr_seq_00000096_00000595:
 	checkflag FLAG_UNK_09B
-	gotoif eq, scr_seq_00000096_000005CA
+	gotoif TRUE, scr_seq_00000096_000005CA
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06

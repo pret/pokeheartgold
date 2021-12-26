@@ -166,8 +166,8 @@ scr_seq_00000030_0000016A:
 scr_seq_00000030_000001B5:
 	comparevartovalue VAR_UNK_4115, 2
 	gotoif lt, scr_seq_00000030_000001CF
-	scrcmd_190 0
-	scrcmd_132 12, 13
+	buffer_players_name 0
+	gender_msgbox 12, 13
 	goto scr_seq_00000030_000001D2
 
 scr_seq_00000030_000001CF:
@@ -175,7 +175,7 @@ scr_seq_00000030_000001CF:
 scr_seq_00000030_000001D2:
 	closemsg
 	checkflag FLAG_UNK_AB6
-	gotoif eq, scr_seq_00000030_000001EA
+	gotoif TRUE, scr_seq_00000030_000001EA
 	msgbox 28
 	waitbutton
 	closemsg
@@ -184,26 +184,26 @@ scr_seq_00000030_000001D2:
 
 scr_seq_00000030_000001EA:
 	checkflag FLAG_UNK_AA3
-	gotoif eq, scr_seq_00000030_00000547
+	gotoif TRUE, scr_seq_00000030_00000547
 	msgbox 14
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000030_00000552
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_UNK_4115, 2
 	gotoif lt, scr_seq_00000030_00000227
-	scrcmd_132 17, 18
+	gender_msgbox 17, 18
 	goto scr_seq_00000030_0000022B
 
 scr_seq_00000030_00000227:
-	scrcmd_132 15, 16
+	gender_msgbox 15, 16
 scr_seq_00000030_0000022B:
 	closemsg
 	apply_movement 9, scr_seq_00000030_00000620
 	wait_movement
-	scrcmd_132 20, 21
+	gender_msgbox 20, 21
 	closemsg
 	scrcmd_386 VAR_TEMP_x4000
 	scrcmd_729 VAR_TEMP_x4002
@@ -267,7 +267,7 @@ scr_seq_00000030_0000033F:
 	gotoif ge, scr_seq_00000030_00000387
 	apply_movement 9, scr_seq_00000030_00000628
 	wait_movement
-	scrcmd_132 24, 25
+	gender_msgbox 24, 25
 	closemsg
 	scrcmd_146 8
 	msgbox 26

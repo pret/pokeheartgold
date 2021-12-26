@@ -17,7 +17,7 @@ scr_seq_00000007_00000006:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_191 1
 	msgbox 0
 	closemsg
@@ -40,7 +40,7 @@ scr_seq_00000007_0000007D:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000007_000000C9
 	callstd 2070
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_191 1
 	msgbox 1
 	closemsg

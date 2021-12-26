@@ -11,7 +11,7 @@ scr_seq_00000800_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_158
-	gotoif eq, scr_seq_00000800_00000071
+	gotoif TRUE, scr_seq_00000800_00000071
 	msgbox 0
 	scrcmd_379 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3

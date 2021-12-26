@@ -11,9 +11,9 @@ scr_seq_00000940_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif eq, scr_seq_00000940_0000003A
+	gotoif TRUE, scr_seq_00000940_0000003A
 	checkflag FLAG_UNK_0C8
-	gotoif eq, scr_seq_00000940_0000002F
+	gotoif TRUE, scr_seq_00000940_0000002F
 	msgbox 0
 	waitbutton
 	closemsg
@@ -38,13 +38,13 @@ scr_seq_00000940_0000003A:
 scr_seq_00000940_0000005A:
 	msgbox 3
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32770
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8002, 255
 	gotoif ne, scr_seq_00000940_00000095
 	msgbox 10

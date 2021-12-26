@@ -51,8 +51,8 @@ scr_seq_00000091_0000007A:
 	apply_movement 5, scr_seq_00000091_000000FC
 	apply_movement 6, scr_seq_00000091_0000010C
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	closemsg
 	apply_movement 5, scr_seq_00000091_00000124
 	apply_movement 6, scr_seq_00000091_0000012C
@@ -262,7 +262,7 @@ scr_seq_00000091_00000331:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 4
 	closemsg
 	apply_movement 18, scr_seq_00000091_0000044C
@@ -413,7 +413,7 @@ scr_seq_00000091_00000514:
 	gotoif lt, scr_seq_00000091_00000561
 	checktrainerflag 222
 	gotoif lt, scr_seq_00000091_00000561
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 12
 	closemsg
 	play_se SEQ_SE_DP_DOOR10

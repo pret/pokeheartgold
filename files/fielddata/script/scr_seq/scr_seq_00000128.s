@@ -56,7 +56,7 @@ scr_seq_00000128_000000A8:
 	apply_movement 0, scr_seq_00000128_00000164
 	wait_movement
 	wait 15, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	closemsg
 	apply_movement 0, scr_seq_00000128_0000016C
@@ -72,7 +72,7 @@ scr_seq_00000128_000000A8:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 3
 	closemsg
 	apply_movement 0, scr_seq_00000128_00000188
@@ -134,7 +134,7 @@ scr_seq_00000128_000001A4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 6
 	waitbutton
 	closemsg
@@ -147,12 +147,12 @@ scr_seq_00000128_000001BA:
 	faceplayer
 	msgbox 7
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_712 3
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

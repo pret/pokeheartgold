@@ -18,24 +18,24 @@ scr_seq_00000107_00000006:
 	gotoif eq, scr_seq_00000107_00000098
 	msgbox 1
 	wait 30, VAR_SPECIAL_x800C
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	hide_person 0
 	setflag FLAG_UNK_25F
 	setvar VAR_UNK_40FD, 1
 	comparevartovalue VAR_UNK_4131, 0
 	callif eq, scr_seq_00000107_0000009E
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	call scr_seq_00000107_000000B2
 	wait 60, VAR_SPECIAL_x800C
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_163 1
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -52,7 +52,7 @@ scr_seq_00000107_0000009E:
 	return
 
 scr_seq_00000107_000000B2:
-	scrcmd_332 VAR_SPECIAL_x8004
+	get_party_count VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 0
 scr_seq_00000107_000000BC:
 	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C

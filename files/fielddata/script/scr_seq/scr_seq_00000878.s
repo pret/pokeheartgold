@@ -39,7 +39,7 @@ scr_seq_00000878_00000056:
 	goto scr_seq_00000878_000000E4
 
 scr_seq_00000878_0000005C:
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000878_00000079
 	goto scr_seq_00000878_0000007F
@@ -51,7 +51,7 @@ scr_seq_00000878_00000079:
 
 scr_seq_00000878_0000007F:
 	msgbox 4
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 5
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
@@ -68,11 +68,11 @@ scr_seq_00000878_0000007F:
 scr_seq_00000878_000000BC:
 	closemsg
 	scrcmd_815 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 1, VAR_SPECIAL_x800C
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000878_000000E0:
 	releaseall
 	end
@@ -98,7 +98,7 @@ scr_seq_00000878_000000EF:
 	end
 
 scr_seq_00000878_00000115:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 3
 	waitbutton
 	closemsg

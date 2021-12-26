@@ -43,7 +43,7 @@ scr_seq_00000110_0000007C:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 0
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
@@ -217,11 +217,11 @@ scr_seq_00000110_000002EF:
 scr_seq_00000110_000002FF:
 	wait_movement
 	play_se SEQ_SE_GS_RAKKA01
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 178, 0, 16384, 16385, 32780
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

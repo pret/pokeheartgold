@@ -600,11 +600,11 @@ scr_seq_00000010_00000825:
 	callstd 2001
 	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_194 1, 32772
 	msgbox 2
 	wait_fanfare
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_194 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_195 2, 32780

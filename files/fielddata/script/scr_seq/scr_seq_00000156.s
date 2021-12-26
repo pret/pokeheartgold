@@ -16,7 +16,7 @@
 
 scr_seq_00000156_00000026:
 	checkflag FLAG_UNK_0EB
-	gotoif lt, scr_seq_00000156_00000031
+	gotoif FALSE, scr_seq_00000156_00000031
 scr_seq_00000156_00000031:
 	end
 
@@ -86,7 +86,7 @@ scr_seq_00000156_000000E5:
 
 scr_seq_00000156_000000EB:
 	checkflag FLAG_UNK_0EB
-	gotoif eq, scr_seq_00000156_00000101
+	gotoif TRUE, scr_seq_00000156_00000101
 	msgbox 0
 	waitbutton
 	closemsg
@@ -114,7 +114,7 @@ scr_seq_00000156_0000012D:
 
 scr_seq_00000156_00000138:
 	checkflag FLAG_UNK_0EB
-	gotoif eq, scr_seq_00000156_0000014E
+	gotoif TRUE, scr_seq_00000156_0000014E
 	msgbox 1
 	waitbutton
 	closemsg

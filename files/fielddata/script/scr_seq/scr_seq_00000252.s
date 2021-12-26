@@ -196,7 +196,7 @@ scr_seq_00000252_00000230:
 	closemsg
 	apply_movement 12, scr_seq_00000252_00000334
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 8
 	closemsg
 	apply_movement 12, scr_seq_00000252_00000348

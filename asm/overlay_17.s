@@ -897,7 +897,7 @@ _02202288:
 	mov r3, #0
 	bl ov17_02202944
 	ldr r0, _0220231C ; =0x000004A9
-	bl sub_02006B24
+	bl PlayFanfare
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
@@ -906,7 +906,7 @@ _02202288:
 	strh r0, [r4]
 	b _02202316
 _022022B4:
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _02202316
 	add r2, r4, #0

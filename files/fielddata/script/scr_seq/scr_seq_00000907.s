@@ -101,7 +101,7 @@ scr_seq_00000907_00000120:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000907_000003C4
 	checkflag FLAG_UNK_112
-	gotoif eq, scr_seq_00000907_00000354
+	gotoif TRUE, scr_seq_00000907_00000354
 	setflag FLAG_UNK_112
 	msgbox 0
 scr_seq_00000907_0000014B:
@@ -166,7 +166,7 @@ scr_seq_00000907_0000021C:
 scr_seq_00000907_00000225:
 	.byte 0x02, 0x00
 scr_seq_00000907_00000227:
-	scrcmd_356 32780
+	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif lt, scr_seq_00000907_00000240
 	goto scr_seq_00000907_0000035F
@@ -187,7 +187,7 @@ scr_seq_00000907_0000024D:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000907_00000343
 	scrcmd_747
-	scrcmd_282
+	heal_party
 	setvar VAR_UNK_4133, 6
 	msgbox 7
 	closemsg
@@ -206,8 +206,8 @@ scr_seq_00000907_0000024D:
 	apply_movement 255, scr_seq_00000907_000003BC
 	wait_movement
 	call scr_seq_00000907_000000FD
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_579
 	scrcmd_815 0
 	scrcmd_166 32780
@@ -216,16 +216,16 @@ scr_seq_00000907_0000024D:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000907_00000314
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	call scr_seq_00000907_000000A7
 	releaseall
 	end
 
 scr_seq_00000907_00000314:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	call scr_seq_00000907_000000A7
 	goto scr_seq_00000907_00000343
 
@@ -255,7 +255,7 @@ scr_seq_00000907_00000354:
 scr_seq_00000907_0000035D:
 	.byte 0x02, 0x00
 scr_seq_00000907_0000035F:
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000907_00000378
 	goto scr_seq_00000907_0000024D
@@ -578,8 +578,8 @@ scr_seq_00000907_00000687:
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000907_000006D1
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_681 32772
 	comparevartovalue VAR_SPECIAL_x8004, 0

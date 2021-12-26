@@ -17,9 +17,9 @@ scr_seq_00000775_0000001E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_11F
-	gotoif eq, scr_seq_00000775_00000069
+	gotoif TRUE, scr_seq_00000775_00000069
 	checkflag FLAG_UNK_118
-	gotoif eq, scr_seq_00000775_00000047
+	gotoif TRUE, scr_seq_00000775_00000047
 	msgbox 3
 	waitbutton
 	closemsg
@@ -27,14 +27,14 @@ scr_seq_00000775_0000001E:
 	end
 
 scr_seq_00000775_00000047:
-	scrcmd_190 0
-	scrcmd_132 4, 5
+	buffer_players_name 0
+	gender_msgbox 4, 5
 	msgbox 6
 	play_fanfare SEQ_ME_KEYITEM
 	wait_fanfare
 	setflag FLAG_UNK_11F
 	checkflag FLAG_UNK_08A
-	gotoif eq, scr_seq_00000775_00000069
+	gotoif TRUE, scr_seq_00000775_00000069
 	register_pokegear_card 2
 scr_seq_00000775_00000069:
 	msgbox 7
@@ -48,7 +48,7 @@ scr_seq_00000775_00000074:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_11F
-	gotoif eq, scr_seq_00000775_00000092
+	gotoif TRUE, scr_seq_00000775_00000092
 	msgbox 8
 	waitbutton
 	closemsg

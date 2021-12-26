@@ -29,7 +29,7 @@ scr_seq_00000941_00000046:
 	setvar VAR_UNK_40C4, 2
 scr_seq_00000941_0000005D:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000941_0000006E
+	gotoif FALSE, scr_seq_00000941_0000006E
 	clearflag FLAG_UNK_189
 	end
 
@@ -72,16 +72,16 @@ scr_seq_00000941_000000E3:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 VAR_SPECIAL_x8002
+	get_lead_mon_index VAR_SPECIAL_x8002
 	scrcmd_480 32780, 32770, 64
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000941_00000209
 	checkflag FLAG_UNK_ABC
-	gotoif eq, scr_seq_00000941_0000021D
+	gotoif TRUE, scr_seq_00000941_0000021D
 	comparevartovalue VAR_UNK_4094, 7
 	gotoif eq, scr_seq_00000941_000001B7
 	checkflag FLAG_UNK_0D4
-	gotoif eq, scr_seq_00000941_00000199
+	gotoif TRUE, scr_seq_00000941_00000199
 	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000941_0000014A
@@ -175,7 +175,7 @@ scr_seq_00000941_00000244:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0D1
-	gotoif eq, scr_seq_00000941_00000262
+	gotoif TRUE, scr_seq_00000941_00000262
 	msgbox 1
 	waitbutton
 	closemsg
@@ -274,12 +274,12 @@ scr_seq_00000941_00000360:
 	wait_movement
 scr_seq_00000941_00000387:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 44
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2

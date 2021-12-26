@@ -12,7 +12,7 @@ scr_seq_00000963_0000000E:
 	comparevartovalue VAR_UNK_40E5, 1
 	gotoif ge, scr_seq_00000963_00000036
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000963_00000028
+	gotoif TRUE, scr_seq_00000963_00000028
 	end
 
 scr_seq_00000963_00000028:
@@ -27,9 +27,9 @@ scr_seq_00000963_0000003E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	checkflag FLAG_UNK_0FB
-	gotoif eq, scr_seq_00000963_000000BE
+	gotoif TRUE, scr_seq_00000963_000000BE
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000963_000000B1
+	gotoif TRUE, scr_seq_00000963_000000B1
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
 	gotoif ne, scr_seq_00000963_00000079
@@ -90,7 +90,7 @@ scr_seq_00000963_000000EC:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000963_00000108
+	gotoif TRUE, scr_seq_00000963_00000108
 	msgbox 3
 	goto scr_seq_00000963_0000010B
 

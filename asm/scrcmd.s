@@ -127,7 +127,7 @@ gScriptCmdTable:
 	.word ScrCmd_076                                    ; 076
 	.word ScrCmd_077                                    ; 077
 	.word ScrCmd_PlayFanfare                                    ; 078
-	.word ScrCmd_079                                    ; 079
+	.word ScrCmd_WaitFanfare                                    ; 079
 	.word ScrCmd_PlayBGM                                    ; 080
 	.word ScrCmd_081                                    ; 081
 	.word ScrCmd_ResetBGM                                    ; 082
@@ -180,7 +180,7 @@ gScriptCmdTable:
 	.word ScrCmd_ItemIsTMOrHM                           ; 129
 	.word ScrCmd_GetItemPocket                          ; 130
 	.word ScrCmd_SetStarterChoice                                    ; 131
-	.word ScrCmd_132                                    ; 132
+	.word ScrCmd_GenderMsgbox                                    ; 132
 	.word ScrCmd_133                                    ; 133
 	.word ScrCmd_134                                    ; 134
 	.word ScrCmd_135                                    ; 135
@@ -191,7 +191,7 @@ gScriptCmdTable:
 	.word ScrCmd_140                                    ; 140
 	.word ScrCmd_141                                    ; 141
 	.word ScrCmd_142                                    ; 142
-	.word ScrCmd_143                                    ; 143
+	.word ScrCmd_NameRival                                    ; 143
 	.word ScrCmd_144                                    ; 144
 	.word ScrCmd_RegisterPokegearCard                                    ; 145
 	.word ScrCmd_146                                    ; 146
@@ -222,8 +222,8 @@ gScriptCmdTable:
 	.word ScrCmd_171                                    ; 171
 	.word ScrCmd_172                                    ; 172
 	.word ScrCmd_173                                    ; 173
-	.word ScrCmd_174                                    ; 174
-	.word ScrCmd_175                                    ; 175
+	.word ScrCmd_FadeScreen                                    ; 174
+	.word ScrCmd_WaitFade                                    ; 175
 	.word ScrCmd_176                                    ; 176
 	.word ScrCmd_177                                    ; 177
 	.word ScrCmd_178                                    ; 178
@@ -235,10 +235,10 @@ gScriptCmdTable:
 	.word ScrCmd_184                                    ; 184
 	.word ScrCmd_185                                    ; 185
 	.word ScrCmd_186                                    ; 186
-	.word ScrCmd_187                                    ; 187
+	.word ScrCmd_GetTrcardStars                                    ; 187
 	.word ScrCmd_188                                    ; 188
 	.word ScrCmd_189                                    ; 189
-	.word ScrCmd_190                                    ; 190
+	.word ScrCmd_BufferPlayersName                                    ; 190
 	.word ScrCmd_191                                    ; 191
 	.word ScrCmd_192                                    ; 192
 	.word ScrCmd_193                                    ; 193
@@ -330,7 +330,7 @@ gScriptCmdTable:
 	.word ScrCmd_279                                    ; 279
 	.word ScrCmd_280                                    ; 280
 	.word ScrCmd_GetPlayerGender                                    ; 281
-	.word ScrCmd_282                                    ; 282
+	.word ScrCmd_HealParty                                    ; 282
 	.word ScrCmd_283                                    ; 283
 	.word ScrCmd_284                                    ; 284
 	.word ScrCmd_285                                    ; 285
@@ -380,7 +380,7 @@ gScriptCmdTable:
 	.word ScrCmd_329                                    ; 329
 	.word ScrCmd_330                                    ; 330
 	.word ScrCmd_331                                    ; 331
-	.word ScrCmd_332                                    ; 332
+	.word ScrCmd_GetPartyCount                                    ; 332
 	.word ScrCmd_333                                    ; 333
 	.word ScrCmd_334                                    ; 334
 	.word ScrCmd_335                                    ; 335
@@ -404,7 +404,7 @@ gScriptCmdTable:
 	.word ScrCmd_353                                    ; 353
 	.word ScrCmd_GetPartyMonSpecies                                    ; 354
 	.word ScrCmd_PartymonIsMine                                    ; 355
-	.word ScrCmd_356                                    ; 356
+	.word ScrCmd_PartyCountNotEgg                                    ; 356
 	.word ScrCmd_357                                    ; 357
 	.word ScrCmd_358                                    ; 358
 	.word ScrCmd_359                                    ; 359
@@ -535,7 +535,7 @@ gScriptCmdTable:
 	.word ScrCmd_484                                    ; 484
 	.word ScrCmd_485                                    ; 485
 	.word ScrCmd_Dummy                                  ; 486
-	.word ScrCmd_487                                    ; 487
+	.word ScrCmd_PokeCenAnim                                    ; 487
 	.word ScrCmd_488                                    ; 488
 	.word ScrCmd_489                                    ; 489
 	.word ScrCmd_490                                    ; 490
@@ -577,7 +577,7 @@ gScriptCmdTable:
 	.word ScrCmd_526                                    ; 526
 	.word ScrCmd_527                                    ; 527
 	.word ScrCmd_528                                    ; 528
-	.word ScrCmd_529                                    ; 529
+	.word ScrCmd_PartySelectMon                                    ; 529
 	.word ScrCmd_530                                    ; 530
 	.word ScrCmd_531                                    ; 531
 	.word ScrCmd_532                                    ; 532
@@ -841,8 +841,8 @@ gScriptCmdTable:
 	.word ScrCmd_790                                    ; 790
 	.word ScrCmd_791                                    ; 791
 	.word ScrCmd_792                                    ; 792
-	.word ScrCmd_793                                    ; 793
-	.word ScrCmd_794                                    ; 794
+	.word ScrCmd_BankTransaction                                    ; 793
+	.word ScrCmd_CheckBankBalance                                    ; 794
 	.word ScrCmd_795                                    ; 795
 	.word ScrCmd_796                                    ; 796
 	.word ScrCmd_797                                    ; 797
@@ -886,7 +886,7 @@ gScriptCmdTable:
 	.word ScrCmd_835                                    ; 835
 	.word ScrCmd_836                                    ; 836
 	.word ScrCmd_837                                    ; 837
-	.word ScrCmd_838                                    ; 838
+	.word ScrCmd_BankOrWalletIsFull                                    ; 838
 	.word ScrCmd_839                                    ; 839
 	.word ScrCmd_840                                    ; 840
 	.word ScrCmd_841                                    ; 841
@@ -6304,15 +6304,15 @@ ScrCmd_172: ; 0x020431B4
 	ldr r0, [r4, #0x74]
 	add r2, r1, #0
 	mov r3, #7
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
 	thumb_func_end ScrCmd_172
 
-	thumb_func_start ScrCmd_143
-ScrCmd_143: ; 0x020431E4
+	thumb_func_start ScrCmd_NameRival
+ScrCmd_NameRival: ; 0x020431E4
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -6329,12 +6329,12 @@ ScrCmd_143: ; 0x020431E4
 	ldr r0, [r4, #0x74]
 	mov r1, #3
 	mov r3, #7
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_143
+	thumb_func_end ScrCmd_NameRival
 
 	thumb_func_start ScrCmd_173
 ScrCmd_173: ; 0x02043214
@@ -6396,7 +6396,7 @@ _0204325C:
 	ldr r0, [r4, #0x74]
 	mov r1, #1
 	mov r3, #0xa
-	bl sub_0203F6E0
+	bl CreateNamingScreen
 	mov r0, #1
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
@@ -6574,8 +6574,8 @@ ScrCmd_494: ; 0x020433BC
 	.balign 4, 0
 	thumb_func_end ScrCmd_494
 
-	thumb_func_start ScrCmd_174
-ScrCmd_174: ; 0x02043400
+	thumb_func_start ScrCmd_FadeScreen
+ScrCmd_FadeScreen: ; 0x02043400
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -6605,10 +6605,10 @@ ScrCmd_174: ; 0x02043400
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_174
+	thumb_func_end ScrCmd_FadeScreen
 
-	thumb_func_start ScrCmd_175
-ScrCmd_175: ; 0x02043448
+	thumb_func_start ScrCmd_WaitFade
+ScrCmd_WaitFade: ; 0x02043448
 	push {r3, lr}
 	ldr r1, _02043454 ; =sub_02043458
 	bl SetupNativeScript
@@ -6616,7 +6616,7 @@ ScrCmd_175: ; 0x02043448
 	pop {r3, pc}
 	.balign 4, 0
 _02043454: .word sub_02043458
-	thumb_func_end ScrCmd_175
+	thumb_func_end ScrCmd_WaitFade
 
 	thumb_func_start sub_02043458
 sub_02043458: ; 0x02043458
@@ -7164,8 +7164,8 @@ ScrCmd_186: ; 0x02043884
 	pop {r3, pc}
 	thumb_func_end ScrCmd_186
 
-	thumb_func_start ScrCmd_187
-ScrCmd_187: ; 0x0204389C
+	thumb_func_start ScrCmd_GetTrcardStars
+ScrCmd_GetTrcardStars: ; 0x0204389C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -7183,7 +7183,7 @@ ScrCmd_187: ; 0x0204389C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_187
+	thumb_func_end ScrCmd_GetTrcardStars
 
 	thumb_func_start ScrCmd_188
 ScrCmd_188: ; 0x020438C4
@@ -8901,8 +8901,8 @@ ScrCmd_GetPlayerGender: ; 0x020445F8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_GetPlayerGender
 
-	thumb_func_start ScrCmd_282
-ScrCmd_282: ; 0x02044628
+	thumb_func_start ScrCmd_HealParty
+ScrCmd_HealParty: ; 0x02044628
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
 	bl sub_0205064C
@@ -8912,7 +8912,7 @@ ScrCmd_282: ; 0x02044628
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_282
+	thumb_func_end ScrCmd_HealParty
 
 	thumb_func_start ScrCmd_283
 ScrCmd_283: ; 0x02044640
@@ -10895,8 +10895,8 @@ ScrCmd_485: ; 0x02045568
 	pop {r4, pc}
 	thumb_func_end ScrCmd_485
 
-	thumb_func_start ScrCmd_487
-ScrCmd_487: ; 0x02045588
+	thumb_func_start ScrCmd_PokeCenAnim
+ScrCmd_PokeCenAnim: ; 0x02045588
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -10910,11 +10910,11 @@ ScrCmd_487: ; 0x02045588
 	lsl r1, r1, #0x18
 	ldr r0, [r4]
 	lsr r1, r1, #0x18
-	bl ov02_0224BB18
+	bl PokecenterAnimCreate
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_487
+	thumb_func_end ScrCmd_PokeCenAnim
 
 	thumb_func_start ScrCmd_488
 ScrCmd_488: ; 0x020455B0
@@ -14196,7 +14196,7 @@ ScrCmd_RegisterPokegearCard: ; 0x02046F6C
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]
@@ -14233,7 +14233,7 @@ ScrCmd_804: ; 0x02046FAC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	ldrb r1, [r4]
 	bl sub_0202EE58
 	mov r0, #0
@@ -14247,7 +14247,7 @@ ScrCmd_146: ; 0x02046FC8
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -14273,7 +14273,7 @@ ScrCmd_147: ; 0x02046FFC
 	add r0, #0x80
 	ldr r0, [r0]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl SaveData_Pokegear_get
+	bl SaveData_GSPlayerMisc_get
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -14532,7 +14532,7 @@ ScrCmd_462: ; 0x0204720C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #0
@@ -14594,7 +14594,7 @@ ScrCmd_614: ; 0x0204727C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	ldrb r1, [r4]
 	add r5, r0, #0
 	bl sub_0202F128
@@ -14636,7 +14636,7 @@ ScrCmd_149: ; 0x020472E8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	ldrb r1, [r4]
 	bl sub_0202F050
 	mov r0, #0
@@ -15483,24 +15483,24 @@ sub_02047914: ; 0x02047914
 	bl PlayerProfile_GetMoney
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	cmp r6, #0
 	beq _0204793E
 	cmp r6, #1
 	beq _0204794A
 	b _02047956
 _0204793E:
-	ldr r1, _02047960 ; =0x000F423F
+	ldr r1, _02047960 ; =999999
 	sub r7, r1, r0
 	cmp r4, r7
 	bhi _0204795A
 	add r7, r4, #0
 	b _0204795A
 _0204794A:
-	ldr r1, _02047960 ; =0x000F423F
+	ldr r1, _02047960 ; =999999
 	sub r7, r1, r4
 	cmp r0, r7
 	bhi _0204795A
@@ -15512,11 +15512,11 @@ _0204795A:
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02047960: .word 0x000F423F
+_02047960: .word 999999
 	thumb_func_end sub_02047914
 
-	thumb_func_start ScrCmd_793
-ScrCmd_793: ; 0x02047964
+	thumb_func_start ScrCmd_BankTransaction
+ScrCmd_BankTransaction: ; 0x02047964
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -15565,7 +15565,7 @@ ScrCmd_793: ; 0x02047964
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020479D0: .word sub_020479D4
-	thumb_func_end ScrCmd_793
+	thumb_func_end ScrCmd_BankTransaction
 
 	thumb_func_start sub_020479D4
 sub_020479D4: ; 0x020479D4
@@ -15616,11 +15616,11 @@ _02047A26:
 	add r1, r6, #0
 	bl PlayerProfile_SubMoney
 	add r0, r5, #0
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	ldr r2, [r4]
 	mov r1, #2
 	ldr r2, [r2, #4]
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	b _02047A66
 _02047A44:
 	add r0, r5, #0
@@ -15628,11 +15628,11 @@ _02047A44:
 	add r1, r6, #0
 	bl PlayerProfile_AddMoney
 	add r0, r5, #0
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	ldr r2, [r4]
 	mov r1, #3
 	ldr r2, [r2, #4]
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	b _02047A66
 _02047A62:
 	bl GF_AssertFail
@@ -15649,8 +15649,8 @@ _02047A6A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020479D4
 
-	thumb_func_start ScrCmd_838
-ScrCmd_838: ; 0x02047A7C
+	thumb_func_start ScrCmd_BankOrWalletIsFull
+ScrCmd_BankOrWalletIsFull: ; 0x02047A7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -15668,11 +15668,11 @@ ScrCmd_838: ; 0x02047A7C
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
-	ldr r1, _02047AE4 ; =0x000F423F
+	bl MomSavingsBalanceAction
+	ldr r1, _02047AE4 ; =999999
 	cmp r0, r1
 	bne _02047ABC
 	mov r0, #1
@@ -15688,7 +15688,7 @@ _02047AC2:
 	ldr r0, [r0, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetMoney
-	ldr r1, _02047AE4 ; =0x000F423F
+	ldr r1, _02047AE4 ; =999999
 	cmp r0, r1
 	bne _02047ADC
 	mov r0, #1
@@ -15701,8 +15701,8 @@ _02047AE0:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02047AE4: .word 0x000F423F
-	thumb_func_end ScrCmd_838
+_02047AE4: .word 999999
+	thumb_func_end ScrCmd_BankOrWalletIsFull
 
 	thumb_func_start ScrCmd_753
 ScrCmd_753: ; 0x02047AE8
@@ -15985,8 +15985,8 @@ _02047CB4:
 _02047CB8: .word _020FACB0
 	thumb_func_end ScrCmd_784
 
-	thumb_func_start ScrCmd_794
-ScrCmd_794: ; 0x02047CBC
+	thumb_func_start ScrCmd_CheckBankBalance
+ScrCmd_CheckBankBalance: ; 0x02047CBC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -16002,10 +16002,10 @@ ScrCmd_794: ; 0x02047CBC
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	cmp r0, r6
 	blo _02047CF4
 	mov r0, #1
@@ -16016,7 +16016,7 @@ _02047CF6:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_794
+	thumb_func_end ScrCmd_CheckBankBalance
 
 	thumb_func_start ScrCmd_798
 ScrCmd_798: ; 0x02047CFC

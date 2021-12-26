@@ -20,32 +20,32 @@ scr_seq_00000238_0000000A:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_190 0
-	scrcmd_132 0, 10
+	buffer_players_name 0
+	gender_msgbox 0, 10
 	closemsg
-	scrcmd_132 1, 11
+	gender_msgbox 1, 11
 	closemsg
 	apply_movement 1, scr_seq_00000238_00000138
 	wait_movement
-	scrcmd_132 2, 12
+	gender_msgbox 2, 12
 	closemsg
-	scrcmd_132 3, 13
+	gender_msgbox 3, 13
 	closemsg
 	apply_movement 1, scr_seq_00000238_00000164
 	wait_movement
-	scrcmd_132 4, 14
+	gender_msgbox 4, 14
 	closemsg
 	apply_movement 1, scr_seq_00000238_0000016C
 	apply_movement 2, scr_seq_00000238_00000184
 	wait_movement
-	scrcmd_132 5, 15
+	gender_msgbox 5, 15
 	closemsg
 	apply_movement 1, scr_seq_00000238_00000198
 	apply_movement 2, scr_seq_00000238_000001A8
 	wait_movement
 	apply_movement 255, scr_seq_00000238_00000190
 	wait_movement
-	scrcmd_132 6, 16
+	gender_msgbox 6, 16
 	closemsg
 	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -56,18 +56,18 @@ scr_seq_00000238_0000000A:
 scr_seq_00000238_000000C6:
 	scrcmd_146 3
 scr_seq_00000238_000000CA:
-	scrcmd_190 0
-	scrcmd_132 7, 17
+	buffer_players_name 0
+	gender_msgbox 7, 17
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	apply_movement 1, scr_seq_00000238_000001BC
 	wait_movement
-	scrcmd_132 8, 18
+	gender_msgbox 8, 18
 	closemsg
 	apply_movement 1, scr_seq_00000238_000001C4
 	apply_movement 2, scr_seq_00000238_000001CC
 	wait_movement
-	scrcmd_132 9, 19
+	gender_msgbox 9, 19
 	closemsg
 	apply_movement 1, scr_seq_00000238_000001D4
 	apply_movement 2, scr_seq_00000238_000001E8

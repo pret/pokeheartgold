@@ -28,8 +28,8 @@ scr_seq_00000265_0000000A:
 	end
 
 scr_seq_00000265_00000057:
-	scrcmd_190 0
-	scrcmd_132 13, 14
+	buffer_players_name 0
+	gender_msgbox 13, 14
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
@@ -82,7 +82,7 @@ scr_seq_00000265_000000EB:
 
 scr_seq_00000265_000000F6:
 	scrcmd_747
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif ne, scr_seq_00000265_00000114
 	msgbox 4
@@ -92,7 +92,7 @@ scr_seq_00000265_000000F6:
 	end
 
 scr_seq_00000265_00000114:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 5
 	play_fanfare SEQ_ME_TAMAGO_GET
 	wait_fanfare
@@ -221,7 +221,7 @@ scr_seq_00000265_00000232:
 	end
 
 scr_seq_00000265_00000290:
-	scrcmd_356 32780
+	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000265_000003FB
 	scrcmd_358 32780
@@ -230,8 +230,8 @@ scr_seq_00000265_00000290:
 	msgbox 22
 	closemsg
 	scrcmd_114
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 scr_seq_00000265_000002CB:
 	scrcmd_551 32780
@@ -283,8 +283,8 @@ scr_seq_00000265_00000374:
 scr_seq_00000265_0000038B:
 	scrcmd_150
 	scrcmd_113 20, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 
 scr_seq_00000265_000003A1:
@@ -390,7 +390,7 @@ scr_seq_00000265_00000455:
 	goto scr_seq_00000265_000003CE
 
 scr_seq_00000265_00000498:
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000265_000005DC
 	scrcmd_313 32780
@@ -437,18 +437,18 @@ scr_seq_00000265_00000544:
 
 scr_seq_00000265_00000566:
 	scrcmd_361 32770, 32769
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_715
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	submoneyvar 32772
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	msgbox 34
 	scrcmd_076 32770, 0
-	scrcmd_190 1
+	buffer_players_name 1
 	msgbox 35
 	scrcmd_077
 	scrcmd_313 32780

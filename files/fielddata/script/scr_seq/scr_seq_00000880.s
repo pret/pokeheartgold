@@ -11,11 +11,11 @@ scr_seq_00000880_00000006:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0C1
-	gotoif eq, scr_seq_00000880_00000037
+	gotoif TRUE, scr_seq_00000880_00000037
 	checkflag FLAG_UNK_0BF
-	gotoif lt, scr_seq_00000880_00000042
+	gotoif FALSE, scr_seq_00000880_00000042
 	checkflag FLAG_UNK_ABD
-	gotoif eq, scr_seq_00000880_000000A2
+	gotoif TRUE, scr_seq_00000880_000000A2
 	goto scr_seq_00000880_000000AD
 
 scr_seq_00000880_00000035:
@@ -39,7 +39,7 @@ scr_seq_00000880_00000042:
 	goto scr_seq_00000880_0000003A
 
 scr_seq_00000880_00000063:
-	scrcmd_332 VAR_SPECIAL_x800C
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif ne, scr_seq_00000880_0000007D
 	msgbox 3
@@ -48,7 +48,7 @@ scr_seq_00000880_00000063:
 scr_seq_00000880_0000007D:
 	scrcmd_362 6, 20, 75
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_PT_SPECIAL
 	wait_fanfare
@@ -71,8 +71,8 @@ scr_seq_00000880_000000AD:
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000880_000001AA
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_349
 	scrcmd_351 16384
@@ -128,8 +128,8 @@ scr_seq_00000880_00000198:
 	.byte 0x02, 0x00
 scr_seq_00000880_0000019A:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	return
 
 scr_seq_00000880_000001AA:

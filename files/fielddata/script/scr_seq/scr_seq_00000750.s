@@ -21,7 +21,7 @@
 
 scr_seq_00000750_0000003A:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000750_0000004B
+	gotoif FALSE, scr_seq_00000750_0000004B
 	clearflag FLAG_UNK_189
 	end
 
@@ -49,12 +49,12 @@ scr_seq_00000750_0000007B:
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000750_000000A5
 	checkflag FLAG_UNK_094
-	gotoif eq, scr_seq_00000750_00000108
+	gotoif TRUE, scr_seq_00000750_00000108
 	goto scr_seq_00000750_000000B0
 
 scr_seq_00000750_000000A5:
 	checkflag FLAG_UNK_093
-	gotoif eq, scr_seq_00000750_00000108
+	gotoif TRUE, scr_seq_00000750_00000108
 scr_seq_00000750_000000B0:
 	msgbox 2
 	scrcmd_495 VAR_SPECIAL_x800C
@@ -135,12 +135,12 @@ scr_seq_00000750_000001B7:
 	wait_movement
 scr_seq_00000750_000001DE:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 66
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -283,7 +283,7 @@ scr_seq_00000750_00000371:
 
 scr_seq_00000750_0000037F:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000750_0000038C
+	gotoif TRUE, scr_seq_00000750_0000038C
 	end
 
 scr_seq_00000750_0000038C:

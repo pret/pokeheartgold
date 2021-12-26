@@ -73,7 +73,7 @@ scr_seq_00000256_000000ED:
 
 scr_seq_00000256_000000FD:
 	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif eq, scr_seq_00000256_00000110
+	gotoif TRUE, scr_seq_00000256_00000110
 	setvar VAR_UNK_410F, 0
 	end
 
@@ -153,7 +153,7 @@ scr_seq_00000256_000001C7:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0CE
-	gotoif eq, scr_seq_00000256_00000208
+	gotoif TRUE, scr_seq_00000256_00000208
 	msgbox 4
 	setvar VAR_SPECIAL_x8004, 363
 	setvar VAR_SPECIAL_x8005, 1

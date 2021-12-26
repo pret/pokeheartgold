@@ -224,7 +224,7 @@ scr_seq_00000227_000002A2:
 
 scr_seq_00000227_000002B7:
 	checkflag FLAG_UNK_06B
-	gotoif eq, scr_seq_00000227_000002D5
+	gotoif TRUE, scr_seq_00000227_000002D5
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

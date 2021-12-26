@@ -18,9 +18,9 @@ scr_seq_00000782_00000022:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0F8
-	gotoif lt, scr_seq_00000782_00000044
-	scrcmd_190 0
-	scrcmd_132 4, 5
+	gotoif FALSE, scr_seq_00000782_00000044
+	buffer_players_name 0
+	gender_msgbox 4, 5
 	waitbutton
 	closemsg
 	releaseall
@@ -82,9 +82,9 @@ scr_seq_00000782_000000BC:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000782_00000141
 	checkflag FLAG_UNK_119
-	gotoif eq, scr_seq_00000782_00000116
+	gotoif TRUE, scr_seq_00000782_00000116
 	checkflag FLAG_UNK_118
-	gotoif eq, scr_seq_00000782_0000010B
+	gotoif TRUE, scr_seq_00000782_0000010B
 	msgbox 9
 	waitbutton
 	closemsg
@@ -142,7 +142,7 @@ scr_seq_00000782_0000015F:
 
 scr_seq_00000782_0000017A:
 	checkflag FLAG_UNK_2FC
-	gotoif eq, scr_seq_00000782_00000198
+	gotoif TRUE, scr_seq_00000782_00000198
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

@@ -4070,7 +4070,7 @@ ov01_021E7A08: ; 0x021E7A08
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -19567,10 +19567,10 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -20263,8 +20263,8 @@ ScrCmd_047: ; 0x021EF3E0
 _021EF418: .word ov01_021EF348
 	thumb_func_end ScrCmd_047
 
-	thumb_func_start ScrCmd_132
-ScrCmd_132: ; 0x021EF41C
+	thumb_func_start ScrCmd_GenderMsgbox
+ScrCmd_GenderMsgbox: ; 0x021EF41C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -20312,7 +20312,7 @@ _021EF474:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF484: .word ov01_021EF348
-	thumb_func_end ScrCmd_132
+	thumb_func_end ScrCmd_GenderMsgbox
 
 	thumb_func_start ScrCmd_455
 ScrCmd_455: ; 0x021EF488
@@ -61221,7 +61221,7 @@ ScrCmd_811: ; 0x022024B8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0
 	add r2, r6, #0
 	bl sub_0202F224
@@ -61237,7 +61237,7 @@ ScrCmd_812: ; 0x022024FC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	bl sub_0202F1F4
 	mov r0, #0
 	pop {r3, pc}

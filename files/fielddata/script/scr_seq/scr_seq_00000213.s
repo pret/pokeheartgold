@@ -16,11 +16,11 @@
 
 scr_seq_00000213_00000026:
 	checkflag FLAG_UNK_12C
-	gotoif lt, scr_seq_00000213_0000003D
+	gotoif FALSE, scr_seq_00000213_0000003D
 	show_person_at 2, 15, 0, 8, 1
 scr_seq_00000213_0000003D:
 	checkflag FLAG_UNK_12B
-	gotoif lt, scr_seq_00000213_00000054
+	gotoif FALSE, scr_seq_00000213_00000054
 	show_person_at 1, 7, 0, 8, 1
 scr_seq_00000213_00000054:
 	end
@@ -28,7 +28,7 @@ scr_seq_00000213_00000054:
 scr_seq_00000213_00000056:
 	setflag FLAG_UNK_9D1
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000213_0000006B
+	gotoif FALSE, scr_seq_00000213_0000006B
 	clearflag FLAG_UNK_189
 	end
 
@@ -245,7 +245,7 @@ scr_seq_00000213_000002E8:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_12C
-	gotoif eq, scr_seq_00000213_00000306
+	gotoif TRUE, scr_seq_00000213_00000306
 	msgbox 4
 	waitbutton
 	closemsg
@@ -377,7 +377,7 @@ scr_seq_00000213_0000047C:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_12B
-	gotoif eq, scr_seq_00000213_0000049A
+	gotoif TRUE, scr_seq_00000213_0000049A
 	msgbox 1
 	waitbutton
 	closemsg
@@ -412,7 +412,7 @@ scr_seq_00000213_000004D0:
 	end
 
 scr_seq_00000213_000004F4:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 8
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -420,14 +420,14 @@ scr_seq_00000213_000004F4:
 	msgbox 9
 	waitbutton
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setflag FLAG_UNK_270
 	hide_person 3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -458,13 +458,13 @@ scr_seq_00000213_00000553:
 	msgbox 13
 	closemsg
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 70
 	faceplayer
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	msgbox 14
 	waitbutton

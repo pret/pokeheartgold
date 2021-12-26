@@ -25,7 +25,7 @@ scr_seq_00000081_00000035:
 
 scr_seq_00000081_00000043:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000081_00000054
+	gotoif FALSE, scr_seq_00000081_00000054
 	clearflag FLAG_UNK_189
 	end
 
@@ -228,12 +228,12 @@ scr_seq_00000081_00000303:
 	wait_movement
 scr_seq_00000081_0000032A:
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 29
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	scrcmd_438 2, VAR_SPECIAL_x800C
 	scrcmd_440 VAR_SPECIAL_x800C, 2
@@ -298,7 +298,7 @@ scr_seq_00000081_000003E4:
 	.short 254, 0
 scr_seq_00000081_000003F4:
 	checkflag FLAG_UNK_150
-	gotoif eq, scr_seq_00000081_00000421
+	gotoif TRUE, scr_seq_00000081_00000421
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	msgbox 4

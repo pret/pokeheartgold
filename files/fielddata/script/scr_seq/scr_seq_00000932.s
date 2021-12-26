@@ -9,7 +9,7 @@
 
 scr_seq_00000932_0000000A:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000932_0000001B
+	gotoif FALSE, scr_seq_00000932_0000001B
 	clearflag FLAG_UNK_189
 	end
 
@@ -18,7 +18,7 @@ scr_seq_00000932_0000001B:
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_00000932_000000B8
 	checkflag FLAG_UNK_964
-	gotoif lt, scr_seq_00000932_000000B2
+	gotoif FALSE, scr_seq_00000932_000000B2
 	scrcmd_147 39, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000932_000000B2
@@ -85,7 +85,7 @@ scr_seq_00000932_000000BE:
 	gotoif ne, scr_seq_00000932_0000012F
 	setvar VAR_UNK_4077, 1
 scr_seq_00000932_0000012F:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -110,7 +110,7 @@ scr_seq_00000932_00000172:
 
 scr_seq_00000932_00000178:
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000932_00000198
+	gotoif TRUE, scr_seq_00000932_00000198
 	msgbox 5
 	waitbutton
 	closemsg
@@ -136,13 +136,13 @@ scr_seq_00000932_00000198:
 	msgbox 7
 	closemsg
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 40
 	faceplayer
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	msgbox 8
 	waitbutton

@@ -16,7 +16,7 @@ scr_seq_00000175_00000016:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_00000050
@@ -25,8 +25,8 @@ scr_seq_00000175_00000016:
 
 scr_seq_00000175_00000050:
 	scrcmd_518 3
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
@@ -46,8 +46,8 @@ scr_seq_00000175_000000A2:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_00000175_000000B2:
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000175_000000BE:
 	scrcmd_076 386, 0
 	msgbox 2
@@ -59,7 +59,7 @@ scr_seq_00000175_000000CD:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_00000107
@@ -68,8 +68,8 @@ scr_seq_00000175_000000CD:
 
 scr_seq_00000175_00000107:
 	scrcmd_518 2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
@@ -95,8 +95,8 @@ scr_seq_00000175_00000170:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_00000175_00000180:
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000175_0000018C:
 	scrcmd_076 386, 0
 	msgbox 3
@@ -108,7 +108,7 @@ scr_seq_00000175_0000019B:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_000001D5
@@ -117,8 +117,8 @@ scr_seq_00000175_0000019B:
 
 scr_seq_00000175_000001D5:
 	scrcmd_518 1
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
@@ -131,8 +131,8 @@ scr_seq_00000175_000001D5:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_00000175_00000220:
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000175_0000022C:
 	scrcmd_076 386, 0
 	msgbox 4
@@ -144,7 +144,7 @@ scr_seq_00000175_0000023B:
 	scrcmd_517 386, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000175_000002DF
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 386
 	gotoif eq, scr_seq_00000175_00000275
@@ -153,8 +153,8 @@ scr_seq_00000175_0000023B:
 
 scr_seq_00000175_00000275:
 	scrcmd_518 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
@@ -167,8 +167,8 @@ scr_seq_00000175_00000275:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_00000175_000002C0:
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 scr_seq_00000175_000002CC:
 	scrcmd_076 386, 0
 	msgbox 5

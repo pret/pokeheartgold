@@ -329,14 +329,14 @@ scr_seq_00000166_000003B4:
 scr_seq_00000166_000003CB:
 	.byte 0x02, 0x00
 scr_seq_00000166_000003CD:
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_048 66
 	goto scr_seq_00000166_000003E9
 
 scr_seq_00000166_000003D9:
 	.byte 0x02, 0x00
 scr_seq_00000166_000003DB:
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_048 67
 	goto scr_seq_00000166_000003E9
 
@@ -552,8 +552,8 @@ scr_seq_00000166_0000081D:
 	msgbox 175
 	msgbox 176
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 scr_seq_00000166_00000837:
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -563,8 +563,8 @@ scr_seq_00000166_00000837:
 
 scr_seq_00000166_0000084F:
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, scr_seq_00000166_00000810
 	goto scr_seq_00000166_00000339

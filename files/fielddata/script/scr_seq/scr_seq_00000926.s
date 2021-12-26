@@ -11,7 +11,7 @@
 
 scr_seq_00000926_00000012:
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000926_0000001F
+	gotoif TRUE, scr_seq_00000926_0000001F
 	end
 
 scr_seq_00000926_0000001F:
@@ -23,7 +23,7 @@ scr_seq_00000926_0000002D:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000926_000000E8
+	gotoif TRUE, scr_seq_00000926_000000E8
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, scr_seq_00000926_000000C9
 	scrcmd_386 VAR_TEMP_x4001
@@ -103,9 +103,9 @@ scr_seq_00000926_00000114:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000926_00000162
+	gotoif TRUE, scr_seq_00000926_00000162
 	checkflag FLAG_UNK_103
-	gotoif eq, scr_seq_00000926_00000157
+	gotoif TRUE, scr_seq_00000926_00000157
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000926_0000014C

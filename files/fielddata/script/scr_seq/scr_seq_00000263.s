@@ -13,7 +13,7 @@ scr_seq_00000263_00000006:
 	scrcmd_784 3, 0
 	scrcmd_116 1, 21, 1
 	checkflag FLAG_UNK_0FF
-	gotoif eq, scr_seq_00000263_00000038
+	gotoif TRUE, scr_seq_00000263_00000038
 	setflag FLAG_UNK_0FF
 	scrcmd_198 0, 1
 	msgbox 15
@@ -57,8 +57,8 @@ scr_seq_00000263_00000097:
 	scrcmd_556 1
 	scrcmd_118 1
 	msgbox 10
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_815 0
 	scrcmd_117
 	closemsg
@@ -68,8 +68,8 @@ scr_seq_00000263_00000097:
 	scrcmd_651 2, 16388, 16389
 	scrcmd_650
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	setvar VAR_SPECIAL_x8000, 0
 	call scr_seq_00000263_0000019D
 	comparevartovalue VAR_SPECIAL_x8000, 0

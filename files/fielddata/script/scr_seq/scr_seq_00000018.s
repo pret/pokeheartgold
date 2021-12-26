@@ -11,7 +11,7 @@
 scr_seq_00000018_0000000E:
 	clearflag FLAG_UNK_1A3
 	checkflag FLAG_UNK_078
-	gotoif eq, scr_seq_00000018_0000001F
+	gotoif TRUE, scr_seq_00000018_0000001F
 	end
 
 scr_seq_00000018_0000001F:
@@ -107,7 +107,7 @@ scr_seq_00000018_0000013C:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_076
-	gotoif eq, scr_seq_00000018_00000197
+	gotoif TRUE, scr_seq_00000018_00000197
 	msgbox 3
 	closemsg
 	trainer_battle 290, 0, 0, 0

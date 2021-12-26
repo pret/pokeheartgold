@@ -105,7 +105,7 @@ scr_seq_00000031_000000F5:
 
 scr_seq_00000031_00000100:
 	checkflag FLAG_UNK_08F
-	gotoif eq, scr_seq_00000031_0000014D
+	gotoif TRUE, scr_seq_00000031_0000014D
 	msgbox 5
 	setvar VAR_SPECIAL_x8004, 338
 	setvar VAR_SPECIAL_x8005, 1
@@ -152,7 +152,7 @@ scr_seq_00000031_0000017E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_090
-	gotoif eq, scr_seq_00000031_000001E2
+	gotoif TRUE, scr_seq_00000031_000001E2
 	msgbox 11
 	closemsg
 	getitemquantity 475, 32780
@@ -165,7 +165,7 @@ scr_seq_00000031_0000017E:
 	end
 
 scr_seq_00000031_000001B4:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 12
 	closemsg
 	apply_movement 7, scr_seq_00000031_000001F0

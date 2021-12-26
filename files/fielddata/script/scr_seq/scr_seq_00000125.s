@@ -21,7 +21,7 @@
 
 scr_seq_00000125_0000003A:
 	checkflag FLAG_UNK_0EF
-	gotoif eq, scr_seq_00000125_0000004D
+	gotoif TRUE, scr_seq_00000125_0000004D
 	setvar VAR_TEMP_x400B, 0
 	end
 
@@ -52,7 +52,7 @@ scr_seq_00000125_00000089:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0EF
-	gotoif eq, scr_seq_00000125_000000A7
+	gotoif TRUE, scr_seq_00000125_000000A7
 	msgbox 1
 	waitbutton
 	closemsg
@@ -136,15 +136,15 @@ scr_seq_00000125_00000141:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 6
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_712 0
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

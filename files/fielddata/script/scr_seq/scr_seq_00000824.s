@@ -64,8 +64,8 @@ scr_seq_00000824_000000AE:
 	scrcmd_604 48
 	apply_movement 0, scr_seq_00000824_000002C0
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8
 	gotoif lt, scr_seq_00000824_000000E8
@@ -78,8 +78,8 @@ scr_seq_00000824_000000F0:
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000824_00000290
-	scrcmd_190 0
-	scrcmd_132 2, 3
+	buffer_players_name 0
+	gender_msgbox 2, 3
 	closemsg
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KI_GASYAN
@@ -118,8 +118,8 @@ scr_seq_00000824_000001A1:
 	apply_movement 1, scr_seq_00000824_00000348
 	apply_movement 2, scr_seq_00000824_00000350
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 6, 7
+	buffer_players_name 0
+	gender_msgbox 6, 7
 	closemsg
 	apply_movement 2, scr_seq_00000824_00000360
 	wait_movement
@@ -127,8 +127,8 @@ scr_seq_00000824_000001A1:
 	apply_movement 0, scr_seq_00000824_00000368
 	apply_movement 255, scr_seq_00000824_00000378
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 9, 10
+	buffer_players_name 0
+	gender_msgbox 9, 10
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -154,15 +154,15 @@ scr_seq_00000824_00000234:
 	scrcmd_049
 	closemsg
 	checkflag FLAG_UNK_964
-	gotoif eq, scr_seq_00000824_00000268
+	gotoif TRUE, scr_seq_00000824_00000268
 	clearflag FLAG_UNK_251
 	setvar VAR_UNK_411A, 1
 scr_seq_00000824_00000268:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 306, 0, 6, 22, 0
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

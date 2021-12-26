@@ -60,11 +60,11 @@ scr_seq_00000245_00000088:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 487, 0, 75, 39, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_098 253
 	scrcmd_596 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -104,7 +104,7 @@ scr_seq_00000245_00000138:
 	comparevartovalue VAR_UNK_4118, 1
 	gotoif ne, scr_seq_00000245_00000231
 	checkflag FLAG_UNK_1C4
-	gotoif eq, scr_seq_00000245_000001BA
+	gotoif TRUE, scr_seq_00000245_000001BA
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
@@ -141,11 +141,11 @@ scr_seq_00000245_000001BA:
 	scrcmd_604 48
 scr_seq_00000245_000001DC:
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 487, 0, 75, 39, 2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_098 253
 	scrcmd_596 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1

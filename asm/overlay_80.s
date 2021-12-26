@@ -23673,7 +23673,7 @@ _022353E2:
 ov80_022353E8: ; 0x022353E8
 	push {r3, lr}
 	bl ov80_0222AC58
-	bl sub_02006B24
+	bl PlayFanfare
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -23693,7 +23693,7 @@ _02235404: .word ov80_02235408
 	thumb_func_start ov80_02235408
 ov80_02235408: ; 0x02235408
 	push {r3, lr}
-	bl sub_02006BCC
+	bl IsFanfarePlaying
 	cmp r0, #0
 	bne _02235416
 	mov r0, #1

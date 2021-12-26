@@ -81,7 +81,7 @@ scr_seq_00000859_000000AD:
 	setflag FLAG_UNK_0F4
 	setflag FLAG_UNK_193
 	msgbox 1
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
@@ -111,7 +111,7 @@ scr_seq_00000859_0000015E:
 
 scr_seq_00000859_00000168:
 	checkflag FLAG_UNK_073
-	gotoif lt, scr_seq_00000859_00000126
+	gotoif FALSE, scr_seq_00000859_00000126
 	msgbox 5
 	waitbutton
 	closemsg
@@ -158,7 +158,7 @@ scr_seq_00000859_000001C8:
 	lockall
 	faceplayer
 	scrcmd_294 0, VAR_SPECIAL_x800C
-	scrcmd_190 0
+	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000859_000001EF
 	msgbox 9

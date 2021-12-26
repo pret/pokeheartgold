@@ -12,7 +12,7 @@
 
 scr_seq_00000221_00000016:
 	checkflag FLAG_UNK_168
-	gotoif eq, scr_seq_00000221_00000026
+	gotoif TRUE, scr_seq_00000221_00000026
 	scrcmd_804 1
 	end
 

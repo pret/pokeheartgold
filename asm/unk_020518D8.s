@@ -719,10 +719,10 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	ldr r1, _02051EFC ; =0x000F423F
 	cmp r0, r1
 	bhs _02051EA8
@@ -1263,7 +1263,7 @@ sub_0205230C: ; 0x0205230C
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_0202ED88
+	bl SaveData_GetMomSavings
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_02066794
@@ -1282,7 +1282,7 @@ sub_0205230C: ; 0x0205230C
 	mov r1, #0
 	ldr r0, [sp, #4]
 	add r2, r1, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	add r5, r0, #0
 	cmp r4, #0
 	ble _02052378
@@ -1298,7 +1298,7 @@ _02052362:
 	ldr r0, [sp, #4]
 	mov r1, #2
 	add r2, r4, #0
-	bl sub_0202F14C
+	bl MomSavingsBalanceAction
 	add r1, r0, #0
 	b _0205237A
 _02052378:

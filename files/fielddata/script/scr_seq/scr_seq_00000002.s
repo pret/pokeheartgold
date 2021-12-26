@@ -43,16 +43,16 @@ scr_seq_00000002_0000005C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000002_00000352
 scr_seq_00000002_0000008A:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_117
 	scrcmd_349
 	scrcmd_351 32769
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8001, 255
 	gotoif eq, scr_seq_00000002_00000352
 	get_partymon_species VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
@@ -156,8 +156,8 @@ scr_seq_00000002_00000241:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000002_000003A4
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_117
 	scrcmd_352 1, 32769, 32771
@@ -165,8 +165,8 @@ scr_seq_00000002_00000241:
 	scrcmd_490 32774
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif eq, scr_seq_00000002_000003A4
 	scrcmd_490 32774

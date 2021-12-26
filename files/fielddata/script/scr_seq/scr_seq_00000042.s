@@ -21,7 +21,7 @@ scr_seq_00000042_0000002A:
 	goto scr_seq_00000042_0000009D
 
 scr_seq_00000042_0000003D:
-	scrcmd_529 VAR_TEMP_x4005
+	get_lead_mon_index VAR_TEMP_x4005
 	comparevartovalue VAR_UNK_4102, 1
 	gotoif eq, scr_seq_00000042_00000061
 	comparevartovalue VAR_UNK_4102, 2
@@ -61,9 +61,9 @@ scr_seq_00000042_000000A7:
 	scrcmd_561 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
 	checkflag FLAG_UNK_111
-	gotoif eq, scr_seq_00000042_0000016F
+	gotoif TRUE, scr_seq_00000042_0000016F
 	checkflag FLAG_UNK_110
-	gotoif eq, scr_seq_00000042_0000016F
+	gotoif TRUE, scr_seq_00000042_0000016F
 	wait 5, VAR_SPECIAL_x800C
 	apply_movement 3, scr_seq_00000042_00000194
 	apply_movement 4, scr_seq_00000042_00000194
@@ -155,32 +155,32 @@ scr_seq_00000042_000001D4:
 	closemsg
 	fade_out_bgm 0, 30
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_174 6, 6, 0, 0
-	scrcmd_175
+	fade_screen 6, 6, 0, 0
+	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 0
-	scrcmd_175
+	fade_screen 6, 6, 1, 0
+	wait_fade
 	scrcmd_074 2305
 	apply_movement 7, scr_seq_00000042_000002E4
 	wait_movement
 	msgbox 8
 	closemsg
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_174 6, 6, 0, 0
-	scrcmd_175
+	fade_screen 6, 6, 0, 0
+	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 0
-	scrcmd_175
+	fade_screen 6, 6, 1, 0
+	wait_fade
 	scrcmd_074 2305
 	setvar VAR_UNK_40FB, 3
 	setflag FLAG_UNK_2E6
 	setflag FLAG_UNK_2E7
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 522, 0, 16, 24, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -279,20 +279,20 @@ scr_seq_00000042_000003A0:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_174 6, 6, 0, 0
-	scrcmd_175
+	fade_screen 6, 6, 0, 0
+	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 0
-	scrcmd_175
+	fade_screen 6, 6, 1, 0
+	wait_fade
 	scrcmd_074 2305
 	apply_movement 255, scr_seq_00000042_00000468
 	wait_movement
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_174 6, 6, 0, 0
-	scrcmd_175
+	fade_screen 6, 6, 0, 0
+	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_174 6, 6, 1, 0
-	scrcmd_175
+	fade_screen 6, 6, 1, 0
+	wait_fade
 	scrcmd_074 2305
 	setvar VAR_UNK_40FB, 12
 	setvar VAR_UNK_4104, 1
@@ -300,11 +300,11 @@ scr_seq_00000042_000003A0:
 	setflag FLAG_UNK_2DD
 	setflag FLAG_UNK_2DB
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_176 522, 0, 16, 24, 1
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 

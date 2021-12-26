@@ -13,14 +13,14 @@ scr_seq_00000019_0000000E:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_116
-	gotoif eq, scr_seq_00000019_00000053
+	gotoif TRUE, scr_seq_00000019_00000053
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif eq, scr_seq_00000019_00000048
 	checkflag FLAG_UNK_108
-	gotoif eq, scr_seq_00000019_0000005E
+	gotoif TRUE, scr_seq_00000019_0000005E
 	checkflag FLAG_UNK_105
-	gotoif eq, scr_seq_00000019_00000069
+	gotoif TRUE, scr_seq_00000019_00000069
 scr_seq_00000019_00000048:
 	msgbox 3
 	waitbutton
@@ -68,7 +68,7 @@ scr_seq_00000019_0000009F:
 	comparevartovalue VAR_TEMP_x400A, 2
 	callif eq, scr_seq_00000019_00000192
 	checkflag FLAG_UNK_093
-	gotoif eq, scr_seq_00000019_0000028E
+	gotoif TRUE, scr_seq_00000019_0000028E
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56

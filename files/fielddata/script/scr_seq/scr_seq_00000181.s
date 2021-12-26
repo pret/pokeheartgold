@@ -18,7 +18,7 @@ scr_seq_00000181_00000012:
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_00000181_000000BE
 	checkflag FLAG_UNK_164
-	gotoif eq, scr_seq_00000181_000000D8
+	gotoif TRUE, scr_seq_00000181_000000D8
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_00000181_0000006E
 	hasitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_x800C
@@ -45,7 +45,7 @@ scr_seq_00000181_0000006E:
 	hasspaceforitem ITEM_TM64, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000181_000000F4
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 3
 	takeitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_x800C
 	msgbox 4

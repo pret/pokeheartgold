@@ -81,8 +81,8 @@ scr_seq_00000088_00000119:
 	apply_movement 7, scr_seq_00000088_0000022C
 	apply_movement 8, scr_seq_00000088_000002C0
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 5, 6
+	buffer_players_name 0
+	gender_msgbox 5, 6
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -108,8 +108,8 @@ scr_seq_00000088_00000119:
 	apply_movement 2, scr_seq_00000088_0000029C
 	apply_movement 3, scr_seq_00000088_0000029C
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 8, 9
+	buffer_players_name 0
+	gender_msgbox 8, 9
 	closemsg
 	apply_movement 7, scr_seq_00000088_000002A4
 	wait_movement

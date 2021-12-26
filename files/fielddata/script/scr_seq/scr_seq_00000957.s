@@ -118,8 +118,8 @@ scr_seq_00000957_000001A1:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 1
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_160
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -129,7 +129,7 @@ scr_seq_00000957_000001A1:
 scr_seq_00000957_000001EB:
 	.byte 0x02, 0x00
 scr_seq_00000957_000001ED:
-	scrcmd_356 32780
+	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif lt, scr_seq_00000957_00000264
 	scrcmd_271 0, 3
@@ -147,8 +147,8 @@ scr_seq_00000957_0000021B:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 3
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_161
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -182,12 +182,12 @@ scr_seq_00000957_000002A6:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 2
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_350
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 202
 	scrcmd_257 102
 	closemsg
@@ -224,8 +224,8 @@ scr_seq_00000957_00000353:
 	scrcmd_348 30
 	scrcmd_257 4
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_159
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -248,8 +248,8 @@ scr_seq_00000957_000003B3:
 	scrcmd_348 30
 	scrcmd_257 5
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_162
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -278,8 +278,8 @@ scr_seq_00000957_00000435:
 	scrcmd_348 30
 	scrcmd_257 6
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_629
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -331,11 +331,11 @@ scr_seq_00000957_000004AF:
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_159
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0
 	goto scr_seq_00000957_00000478
 
 scr_seq_00000957_00000526:
@@ -365,11 +365,11 @@ scr_seq_00000957_00000528:
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_629
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0
 	goto scr_seq_00000957_00000478
 
 scr_seq_00000957_000005C1:
@@ -402,11 +402,11 @@ scr_seq_00000957_000005DB:
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_162
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0
 	goto scr_seq_00000957_00000478
 
 scr_seq_00000957_00000652:
@@ -596,8 +596,8 @@ scr_seq_00000957_00000863:
 	scrcmd_257 1
 	closemsg
 	scrcmd_261 5
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_160
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -619,7 +619,7 @@ scr_seq_00000957_000008DB:
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000957_00000952
-	scrcmd_356 32780
+	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif lt, scr_seq_00000957_00000963
 	scrcmd_271 1, 0
@@ -632,8 +632,8 @@ scr_seq_00000957_000008DB:
 	scrcmd_257 3
 	closemsg
 	scrcmd_261 7
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_161
 	scrcmd_150
 	scrcmd_261 11
@@ -676,12 +676,12 @@ scr_seq_00000957_00000974:
 	scrcmd_257 2
 	closemsg
 	scrcmd_261 6
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_350
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	msgbox 202
 	scrcmd_257 102
 	closemsg
@@ -728,8 +728,8 @@ scr_seq_00000957_00000A44:
 	scrcmd_257 5
 	closemsg
 	scrcmd_261 2
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_162
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -756,8 +756,8 @@ scr_seq_00000957_00000AA2:
 	scrcmd_257 6
 	closemsg
 	scrcmd_261 13
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_629
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -781,8 +781,8 @@ scr_seq_00000957_00000B11:
 	scrcmd_257 4
 	closemsg
 	scrcmd_261 1
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_159
 	scrcmd_150
 	call scr_seq_00000957_00000BDA
@@ -837,7 +837,7 @@ scr_seq_00000957_00000BCE:
 	.byte 0x01, 0x00, 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 scr_seq_00000957_00000BDA:
 	scrcmd_265
-	scrcmd_174 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0
 	return
 
 scr_seq_00000957_00000BE8:
@@ -871,11 +871,11 @@ scr_seq_00000957_00000C1D:
 scr_seq_00000957_00000C1F:
 	scrcmd_262
 	checkflag FLAG_UNK_069
-	callif eq, scr_seq_00000957_00000C87
+	callif TRUE, scr_seq_00000957_00000C87
 	scrcmd_746
 scr_seq_00000957_00000C2E:
 	checkflag FLAG_UNK_069
-	callif lt, scr_seq_00000957_00000C8C
+	callif FALSE, scr_seq_00000957_00000C8C
 	setflag FLAG_UNK_069
 	scrcmd_749 21, 11, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 11, 255, 0

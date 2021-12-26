@@ -165,8 +165,8 @@ scr_seq_00000838_00000252:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	msgbox 11
 	scrcmd_675 32768, 0, 0, 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_676 32768, 32772
 	comparevartovalue VAR_SPECIAL_x8004, 1
@@ -189,8 +189,8 @@ scr_seq_00000838_000002C1:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 403, 0, 32774, 32775, 32780
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	scrcmd_490 16395
 	comparevartovalue VAR_TEMP_x400A, 1
 	callif eq, scr_seq_00000838_000007BA
@@ -225,14 +225,14 @@ scr_seq_00000838_00000328:
 
 scr_seq_00000838_00000332:
 	msgbox 7
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000838_000003AC
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
@@ -267,14 +267,14 @@ scr_seq_00000838_000003BE:
 	.byte 0x02, 0x00
 scr_seq_00000838_000003C0:
 	msgbox 7
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_00000838_0000073D
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
@@ -332,7 +332,7 @@ scr_seq_00000838_000004CA:
 	.byte 0x02, 0x00
 scr_seq_00000838_000004CC:
 	scrcmd_490 16389
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
 	gotoif ne, scr_seq_00000838_0000050C
@@ -353,7 +353,7 @@ scr_seq_00000838_0000051A:
 	.byte 0x02, 0x00
 scr_seq_00000838_0000051C:
 	scrcmd_490 16391
-	scrcmd_529 VAR_TEMP_x4000
+	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
 	gotoif ne, scr_seq_00000838_00000564
@@ -379,14 +379,14 @@ scr_seq_00000838_00000564:
 scr_seq_00000838_00000588:
 	.byte 0x02, 0x00
 scr_seq_00000838_0000058A:
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_352 1, 32768, 32769
 	scrcmd_353 1, 32770
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x8002, 4
 	gotoif eq, scr_seq_00000838_00000628
 	scrcmd_398 32780, 32768, 32770
@@ -438,8 +438,8 @@ scr_seq_00000838_0000066F:
 	.byte 0x00
 scr_seq_00000838_00000671:
 	scrcmd_675 32768, 32770, 32769, 32772
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	callif eq, scr_seq_00000838_000006D2

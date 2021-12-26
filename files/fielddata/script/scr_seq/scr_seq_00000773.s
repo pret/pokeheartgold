@@ -24,13 +24,13 @@ scr_seq_00000773_0000002E:
 	msgbox 1
 	scrcmd_049
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_349
 	scrcmd_351 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000773_000000B3
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -77,11 +77,11 @@ scr_seq_00000773_000000D9:
 	msgbox 3
 	closemsg
 	setvar VAR_SPECIAL_x800C, 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_173 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000773_0000011F
 	bufferpartymonnick 0, VAR_SPECIAL_x8005

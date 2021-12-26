@@ -10,7 +10,7 @@
 
 scr_seq_00000005_0000000E:
 	checkflag FLAG_UNK_189
-	gotoif lt, scr_seq_00000005_0000001F
+	gotoif FALSE, scr_seq_00000005_0000001F
 	clearflag FLAG_UNK_189
 	end
 
@@ -103,7 +103,7 @@ scr_seq_00000005_00000133:
 	end
 
 scr_seq_00000005_00000157:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 2
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -111,14 +111,14 @@ scr_seq_00000005_00000157:
 	msgbox 3
 	waitbutton
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	setflag FLAG_UNK_262
 	hide_person 1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	releaseall
 	end
 
@@ -141,21 +141,21 @@ scr_seq_00000005_000001B6:
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif ne, scr_seq_00000005_000001D8
 	checkflag FLAG_UNK_165
-	gotoif lt, scr_seq_00000005_00000292
+	gotoif FALSE, scr_seq_00000005_00000292
 	goto scr_seq_00000005_0000020E
 
 scr_seq_00000005_000001D8:
 	comparevartovalue VAR_SPECIAL_x8004, 4
 	gotoif ne, scr_seq_00000005_000001F6
 	checkflag FLAG_UNK_165
-	gotoif lt, scr_seq_00000005_00000292
+	gotoif FALSE, scr_seq_00000005_00000292
 	goto scr_seq_00000005_0000020E
 
 scr_seq_00000005_000001F6:
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif ne, scr_seq_00000005_0000020E
 	checkflag FLAG_UNK_165
-	gotoif lt, scr_seq_00000005_00000292
+	gotoif FALSE, scr_seq_00000005_00000292
 scr_seq_00000005_0000020E:
 	comparevartovalue VAR_TEMP_x4000, 55
 	gotoif eq, scr_seq_00000005_00000357
@@ -171,13 +171,13 @@ scr_seq_00000005_0000020E:
 	msgbox 7
 	closemsg
 	setflag FLAG_UNK_189
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_615 86
 	faceplayer
 	lockall
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	clearflag FLAG_UNK_189
 	msgbox 8
 	waitbutton
@@ -206,8 +206,8 @@ scr_seq_00000005_00000292:
 	goto scr_seq_00000005_000002AF
 
 scr_seq_00000005_000002A8:
-	scrcmd_190 0
-	scrcmd_132 11, 12
+	buffer_players_name 0
+	gender_msgbox 11, 12
 scr_seq_00000005_000002AF:
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
@@ -216,13 +216,13 @@ scr_seq_00000005_000002AF:
 	gotoif eq, scr_seq_00000005_00000346
 	msgbox 13
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_00000005_00000346
 	scrcmd_470 11

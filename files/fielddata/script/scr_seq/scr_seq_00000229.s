@@ -26,8 +26,8 @@ scr_seq_00000229_0000002F:
 	apply_movement 1, scr_seq_00000229_0000041C
 	apply_movement 0, scr_seq_00000229_000003B4
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 0, 1
+	buffer_players_name 0
+	gender_msgbox 0, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -47,14 +47,14 @@ scr_seq_00000229_0000002F:
 	msgbox 3
 	msgbox 4
 	closemsg
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	scrcmd_081 0
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	scrcmd_282
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	heal_party
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	goto scr_seq_00000229_000002E8
 
 scr_seq_00000229_000000CD:
@@ -69,9 +69,9 @@ scr_seq_00000229_000000CF:
 	gotoif ge, scr_seq_00000229_000002CD
 scr_seq_00000229_000000F1:
 	checkflag FLAG_UNK_06C
-	gotoif eq, scr_seq_00000229_0000019F
+	gotoif TRUE, scr_seq_00000229_0000019F
 	checkflag FLAG_UNK_0C9
-	gotoif eq, scr_seq_00000229_0000012A
+	gotoif TRUE, scr_seq_00000229_0000012A
 	comparevartovalue VAR_UNK_4107, 2
 	gotoif ge, scr_seq_00000229_0000011F
 	msgbox 5
@@ -88,8 +88,8 @@ scr_seq_00000229_0000011F:
 	end
 
 scr_seq_00000229_0000012A:
-	scrcmd_190 0
-	scrcmd_132 16, 17
+	buffer_players_name 0
+	gender_msgbox 16, 17
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
@@ -125,7 +125,7 @@ scr_seq_00000229_00000194:
 
 scr_seq_00000229_0000019F:
 	checkflag FLAG_UNK_107
-	gotoif lt, scr_seq_00000229_0000011F
+	gotoif FALSE, scr_seq_00000229_0000011F
 	msgbox 7
 	closemsg
 	scrcmd_386 VAR_TEMP_x4000
@@ -178,8 +178,8 @@ scr_seq_00000229_00000234:
 	wait_movement
 	apply_movement 0, scr_seq_00000229_000002D8
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 21, 22
+	buffer_players_name 0
+	gender_msgbox 21, 22
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
@@ -194,7 +194,7 @@ scr_seq_00000229_00000234:
 	closemsg
 	apply_movement 0, scr_seq_00000229_000003E4
 	wait_movement
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_00000229_000002B0
@@ -232,8 +232,8 @@ scr_seq_00000229_000002E8:
 	wait_movement
 	apply_movement 255, scr_seq_00000229_00000414
 	wait_movement
-	scrcmd_190 0
-	scrcmd_132 8, 9
+	buffer_players_name 0
+	gender_msgbox 8, 9
 	closemsg
 	apply_movement 1, scr_seq_00000229_00000438
 	wait_movement
@@ -242,16 +242,16 @@ scr_seq_00000229_000002E8:
 	apply_movement 1, scr_seq_00000229_00000444
 	wait_movement
 	msgbox 11
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 12
 	scrcmd_291
 	setflag FLAG_UNK_06B
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	scrcmd_573
-	scrcmd_132 13, 14
+	gender_msgbox 13, 14
 	closemsg
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 15
 	scrcmd_146 2
 	play_fanfare SEQ_ME_POKEGEAR_REGIST

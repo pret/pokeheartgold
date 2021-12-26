@@ -79,6 +79,7 @@ class NormalScriptParser(ScriptParserBase):
         self.lines = {}
         self.movement_scripts = set()
         self.header_end = 0
+        self.pc_history = []
     
     def parse_header(self):
         for i in range(0, len(self.raw), 4):
@@ -112,7 +113,11 @@ class NormalScriptParser(ScriptParserBase):
             case 'condition':
                 value = self.raw[pc]
                 pc += 1
-                return ['lt', 'eq', 'gt', 'le', 'ge', 'ne'][value], pc
+                if len(self.pc_history) >= 2 and value < 2 and self.lines[self.pc_history[-2]][0] == 'checkflag':
+                    conds = ['FALSE', 'TRUE']
+                else:
+                    conds = ['lt', 'eq', 'gt', 'le', 'ge', 'ne']
+                return conds[value], pc
             case 'var' | 'flag':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
@@ -127,10 +132,11 @@ class NormalScriptParser(ScriptParserBase):
     def parse_script(self, pc: int):
         if self.labels[pc]:
             return
+        self.pc_history.clear()
         while pc < len(self.raw):
             if pc in self.labels:
                 self.labels[pc] = True
-            prev_pc = pc
+            self.pc_history.append(pc)
             cmd_i = int.from_bytes(self.raw[pc:pc + 2], 'little')
             if cmd_i >= len(self.commands):
                 warnings.warn(f'script parser hit illegal command {cmd_i} at position {pc}')
@@ -151,10 +157,10 @@ class NormalScriptParser(ScriptParserBase):
                         arg, pc = self.get_arg(size, pc)
                         args.append(arg)
             except (ValueError, KeyError):
-                warnings.warn(f'script parser hit illegal command args to {cmd_i} at position {prev_pc} '
+                warnings.warn(f'script parser hit illegal command args to {cmd_i} at position {self.pc_history[-1]} '
                               f'(arg {len(args)}, last good arg: {None if not args else args[-1]})')
                 break
-            self.lines[prev_pc] = (name, args, pc)
+            self.lines[self.pc_history[-1]] = (name, args, pc)
             if cmd_struct.get('is_abs_branch'):
                 break
         
@@ -335,9 +341,6 @@ def main():
                 raise e
         else:
             break
-    # if cls is NormalScriptParser:
-    #     with open(os.path.splitext(args.scrfile.name)[0] + '.h', 'w') as hfile:
-    #         print(parser.make_header(), file=hfile, end='')
 
 
 if __name__ == '__main__':

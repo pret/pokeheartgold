@@ -26,24 +26,24 @@ scr_seq_00000860_00000026:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_00000860_0000021D
 	scrcmd_815 0
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_493 32780, 32768, 32769
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000860_0000021F
 	msgbox 13
-	scrcmd_174 6, 1, 0, 0
-	scrcmd_175
+	fade_screen 6, 1, 0, 0
+	wait_fade
 	closemsg
 	scrcmd_815 0
 	scrcmd_493 32780, 32770, 32771
 	scrcmd_150
-	scrcmd_174 6, 1, 1, 0
-	scrcmd_175
+	fade_screen 6, 1, 1, 0
+	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_00000860_0000021F
 	scrcmd_498 32780, 32768, 32769, 32770, 32771
@@ -65,39 +65,39 @@ scr_seq_00000860_000000DD:
 	gotoif eq, scr_seq_00000860_00000191
 scr_seq_00000860_0000011D:
 	checkflag FLAG_UNK_159
-	gotoif eq, scr_seq_00000860_00000212
-	scrcmd_332 VAR_SPECIAL_x800C
+	gotoif TRUE, scr_seq_00000860_00000212
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000860_00000207
 	setflag FLAG_UNK_159
 	msgbox 18
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_202 1, 179, 0, 0
 	scrcmd_138 179, 14
 	goto scr_seq_00000860_000001CB
 
 scr_seq_00000860_00000157:
 	checkflag FLAG_UNK_15A
-	gotoif eq, scr_seq_00000860_00000212
-	scrcmd_332 VAR_SPECIAL_x800C
+	gotoif TRUE, scr_seq_00000860_00000212
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000860_00000207
 	setflag FLAG_UNK_15A
 	msgbox 18
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_202 1, 194, 0, 0
 	scrcmd_138 194, 14
 	goto scr_seq_00000860_000001CB
 
 scr_seq_00000860_00000191:
 	checkflag FLAG_UNK_15B
-	gotoif eq, scr_seq_00000860_00000212
-	scrcmd_332 VAR_SPECIAL_x800C
+	gotoif TRUE, scr_seq_00000860_00000212
+	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_00000860_00000207
 	setflag FLAG_UNK_15B
 	msgbox 18
-	scrcmd_190 0
+	buffer_players_name 0
 	scrcmd_202 1, 218, 0, 0
 	scrcmd_138 218, 14
 	goto scr_seq_00000860_000001CB
@@ -168,7 +168,7 @@ scr_seq_00000860_00000264:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_2C5
-	gotoif eq, scr_seq_00000860_00000280
+	gotoif TRUE, scr_seq_00000860_00000280
 	msgbox 21
 	goto scr_seq_00000860_0000028C
 

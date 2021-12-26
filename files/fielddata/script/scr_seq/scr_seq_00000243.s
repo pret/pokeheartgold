@@ -30,7 +30,7 @@ scr_seq_00000243_0000004D:
 
 scr_seq_00000243_0000004F:
 	checkflag FLAG_UNK_0A4
-	gotoif eq, scr_seq_00000243_0000005C
+	gotoif TRUE, scr_seq_00000243_0000005C
 	end
 
 scr_seq_00000243_0000005C:
@@ -43,7 +43,7 @@ scr_seq_00000243_0000006A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	checkflag FLAG_UNK_1D0
-	gotoif lt, scr_seq_00000243_00000261
+	gotoif FALSE, scr_seq_00000243_00000261
 	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_00000243_0000009A
@@ -70,7 +70,7 @@ scr_seq_00000243_000000B9:
 	end
 
 scr_seq_00000243_000000E0:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -191,7 +191,7 @@ scr_seq_00000243_00000261:
 	end
 
 scr_seq_00000243_00000296:
-	scrcmd_190 0
+	buffer_players_name 0
 	msgbox 1
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -278,16 +278,16 @@ scr_seq_00000243_000003BC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_529 VAR_SPECIAL_x8002
+	get_lead_mon_index VAR_SPECIAL_x8002
 	scrcmd_480 32780, 32770, 62
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_00000243_000004E2
 	checkflag FLAG_UNK_ABC
-	gotoif eq, scr_seq_00000243_000004F6
+	gotoif TRUE, scr_seq_00000243_000004F6
 	comparevartovalue VAR_UNK_4094, 7
 	gotoif eq, scr_seq_00000243_00000490
 	checkflag FLAG_UNK_0B1
-	gotoif eq, scr_seq_00000243_00000472
+	gotoif TRUE, scr_seq_00000243_00000472
 	scrcmd_484 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	gotoif eq, scr_seq_00000243_00000423
@@ -417,7 +417,7 @@ scr_seq_00000243_00000592:
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_1C2
-	gotoif eq, scr_seq_00000243_000005AE
+	gotoif TRUE, scr_seq_00000243_000005AE
 	msgbox 7
 	goto scr_seq_00000243_000005B1
 
