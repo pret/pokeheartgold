@@ -95,7 +95,7 @@ XMAP              := $(NEF).xMAP
 EXCCFLAGS         := -Cpp_exceptions off
 
 MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -ipa file -interworking -inline on,noauto
-MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i $(WORK_DIR) -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -DSDK_ASM
+MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -DSDK_ASM
 MWLDFLAGS         := -w off -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 

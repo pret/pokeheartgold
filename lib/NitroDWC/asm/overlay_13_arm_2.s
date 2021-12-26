@@ -26867,14 +26867,14 @@ _0223CA9C:
 	add r0, r0, #0x1b000
 	ldr r0, [r0, #0x140]
 	mov r3, r4
-	bl ov13_0221F6B0
+	bl MB_Init
 	cmp r0, #0
 	beq _0223CB08
 	bl OS_Terminate
 _0223CB08:
 	mov r0, #0x100
 	mov r1, #1
-	bl ov13_0221F904
+	bl MB_SetParentCommParam
 	ldr r0, _0223CB30 ; =ov13_0223D124
 	bl MB_CommSetParentStateCallback
 	mov r0, #1
@@ -26894,7 +26894,7 @@ ov13_0223CB34: ; 0x0223CB34
 	mov r0, #2
 	bl ov13_0223D448
 	mov r0, r4
-	bl ov13_0221FC54
+	bl MB_StartParentFromIdle
 	cmp r0, #0
 	beq _0223CB64
 	mov r0, #7
@@ -27009,7 +27009,7 @@ ov13_0223CC50: ; 0x0223CC50
 	strh r1, [r2, #0xc]
 	bl OS_RestoreInterrupts
 	mov r0, r4
-	bl ov13_0221FD8C
+	bl MB_DisconnectChild
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0223CCEC: .word ov13_0224F5BC
@@ -27054,7 +27054,7 @@ ov13_0223CCF0: ; 0x0223CCF0
 	strh r1, [r2, #0xc]
 	bl OS_RestoreInterrupts
 	mov r0, r4
-	bl ov13_0221FD8C
+	bl MB_DisconnectChild
 	ldmia sp!, {r3, r4, r5, pc}
 _0223CD8C:
 	bl OS_DisableInterrupts
@@ -27114,7 +27114,7 @@ ov13_0223CDC8: ; 0x0223CDC8
 	strh r1, [r2, #0xc]
 	bl OS_RestoreInterrupts
 	mov r0, r4
-	bl ov13_0221FD8C
+	bl MB_DisconnectChild
 	ldmia sp!, {r3, r4, r5, pc}
 _0223CE64:
 	bl OS_DisableInterrupts
@@ -27183,7 +27183,7 @@ _0223CEB8:
 	strh r1, [r2, #0xc]
 	bl OS_RestoreInterrupts
 	mov r0, r5
-	bl ov13_0221FD8C
+	bl MB_DisconnectChild
 	b _0223CF64
 _0223CF5C:
 	mov r0, r5
@@ -27282,7 +27282,7 @@ _0223D000:
 	strh r1, [r2, #0xc]
 	bl OS_RestoreInterrupts
 	mov r0, r7
-	bl ov13_0221FD8C
+	bl MB_DisconnectChild
 _0223D0A8:
 	add r0, r7, #1
 	mov r0, r0, lsl #0x10
@@ -27307,7 +27307,7 @@ ov13_0223D0E0: ; 0x0223D0E0
 	stmdb sp!, {r3, lr}
 	mov r0, #6
 	bl ov13_0223D448
-	bl ov13_0221FD50
+	bl MB_End
 	ldmia sp!, {r3, pc}
 	arm_func_end ov13_0223D0E0
 
@@ -27322,7 +27322,7 @@ ov13_0223D0F4: ; 0x0223D0F4
 	ldreqh r0, [r2, #0xc]
 	cmpeq r1, r0
 	ldmneia sp!, {r3, pc}
-	bl ov13_0221FD50
+	bl MB_End
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _0223D120: .word ov13_0224F5BC
@@ -29228,7 +29228,7 @@ _0223E944:
 	movlo r0, #0
 	ldmloia sp!, {r3, pc}
 _0223E970:
-	bl ov13_0221FD50
+	bl MB_End
 	ldr r0, _0223E9D4 ; =ov13_0224F5C8
 	mov r3, #0x10
 	ldr r1, [r0]
@@ -29443,7 +29443,7 @@ _0223EC24:
 	bl ov13_0223F350
 	ldmia sp!, {r3, pc}
 _0223EC40:
-	bl ov13_0221FD50
+	bl MB_End
 	ldr r0, _0223EE50 ; =ov13_0224F5C8
 	mov r3, #0
 	ldr r2, [r0]

@@ -532,7 +532,7 @@ MBi_CommParentRecvDataPerChild: ; 0x0221C164
 	add r1, sp, #0x20
 	mov r2, r6
 	add r0, r0, #0xa
-	bl ov13_022206EC
+	bl MBi_SetRecvBufferFromChild
 	ldr r1, _0221C63C ; =mbc
 	ldrb r7, [sp, #0x20]
 	ldr r2, [r1]
@@ -1240,7 +1240,7 @@ _0221CB8C:
 	mov r2, #0
 	mov r3, #4
 	str r5, [r6, #0x14]
-	bl ov13_02220428
+	bl MBi_SetTask
 _0221CBC0:
 	add sp, sp, #0x18
 	mov r0, #0x15
@@ -1571,7 +1571,7 @@ _0221CFF8:
 	blo _0221D070
 	mov r0, r5
 	mov r6, r5
-	bl ov13_02220134
+	bl MBi_InitCache
 	mov r0, #3
 	str r0, [sp]
 	mov r0, r6
@@ -3737,8 +3737,8 @@ _0221EDA4: .word ov13_0224598C
 _0221EDA8: .word 0x000032C8
 	arm_func_end MBi_ParentCallback
 
-	arm_func_start ov13_0221EDAC
-ov13_0221EDAC: ; 0x0221EDAC
+	arm_func_start MBi_ChildPortCallback
+MBi_ChildPortCallback: ; 0x0221EDAC
 	stmdb sp!, {r3, lr}
 	mov r1, r0
 	ldrh r0, [r1, #2]
@@ -3770,10 +3770,10 @@ _0221EE00:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _0221EE18: .word ov13_0224CF40
-	arm_func_end ov13_0221EDAC
+	arm_func_end MBi_ChildPortCallback
 
-	arm_func_start ov13_0221EE1C
-ov13_0221EE1C: ; 0x0221EE1C
+	arm_func_start MBi_ChildCallback
+MBi_ChildCallback: ; 0x0221EE1C
 	stmdb sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
 	sub sp, sp, #0x1c
 	mov r6, r0
@@ -3828,7 +3828,7 @@ _0221EED8:
 	mov r0, #0x15
 	blx r2
 	ldr r3, _0221F638 ; =ov13_0224598C
-	ldr r0, _0221F63C ; =ov13_0221EE1C
+	ldr r0, _0221F63C ; =MBi_ChildCallback
 	ldrh r1, [r3, #4]
 	str r1, [sp]
 	ldrh r1, [r3, #6]
@@ -3872,7 +3872,7 @@ _0221EF38:
 	strb r1, [r0, #0x2c]
 	strb r1, [r0, #0x2d]
 	str r2, [r4, #0x5e4]
-	ldr r0, _0221F63C ; =ov13_0221EE1C
+	ldr r0, _0221F63C ; =MBi_ChildCallback
 	ldr r1, _0221F640 ; =ov13_0224CF60
 	str r2, [r4, #0x5e8]
 	bl WM_StartScan
@@ -4031,9 +4031,9 @@ _0221F1A0:
 	bl changeScanChannel
 	cmp r0, #0
 	bne _0221F1E0
-	bl ov13_0221FCBC
+	bl MBi_CommEnd
 _0221F1E0:
-	ldr r0, _0221F63C ; =ov13_0221EE1C
+	ldr r0, _0221F63C ; =MBi_ChildCallback
 	ldr r1, _0221F640 ; =ov13_0224CF60
 	bl WM_StartScan
 	mov r1, r0
@@ -4057,9 +4057,9 @@ _0221F200:
 	bl changeScanChannel
 	cmp r0, #0
 	bne _0221F240
-	bl ov13_0221FCBC
+	bl MBi_CommEnd
 _0221F240:
-	ldr r0, _0221F63C ; =ov13_0221EE1C
+	ldr r0, _0221F63C ; =MBi_ChildCallback
 	ldr r1, _0221F640 ; =ov13_0224CF60
 	bl WM_StartScan
 	mov r1, r0
@@ -4087,7 +4087,7 @@ _0221F278:
 _0221F29C:
 	ldr r1, [r4, #0x520]
 	mov r2, #0
-	ldr r0, _0221F63C ; =ov13_0221EE1C
+	ldr r0, _0221F63C ; =MBi_ChildCallback
 	mov r3, #1
 	str r2, [sp]
 	bl WM_StartConnectEx
@@ -4142,7 +4142,7 @@ _0221F350:
 	ldr r2, [r4, #0x51c]
 	mov r0, #6
 	blx r2
-	ldr r1, _0221F644 ; =ov13_0221EDAC
+	ldr r1, _0221F644 ; =MBi_ChildPortCallback
 	add r3, r4, #0x500
 	mov r0, #1
 	mov r2, #0
@@ -4171,7 +4171,7 @@ _0221F350:
 	str r0, [sp, #0x18]
 	ldrh r2, [r1, #0x1a]
 	ldr r1, [r4, #0x504]
-	ldr r0, _0221F63C ; =ov13_0221EE1C
+	ldr r0, _0221F63C ; =MBi_ChildCallback
 	add r3, r4, #0x40
 	bl WM_StartMPEx
 	mov r1, r0
@@ -4282,7 +4282,7 @@ _0221F564:
 	mov r2, #0
 	strh r2, [r0, #0x2a]
 	ldr r1, [r1, #8]
-	ldr r0, _0221F63C ; =ov13_0221EE1C
+	ldr r0, _0221F63C ; =MBi_ChildCallback
 	add r1, r1, #0x500
 	strh r2, [r1, #0x28]
 	bl WM_End
@@ -4340,13 +4340,13 @@ _0221F61C:
 	.balign 4, 0
 _0221F634: .word ov13_0224CF40
 _0221F638: .word ov13_0224598C
-_0221F63C: .word ov13_0221EE1C
+_0221F63C: .word MBi_ChildCallback
 _0221F640: .word ov13_0224CF60
-_0221F644: .word ov13_0221EDAC
-	arm_func_end ov13_0221EE1C
+_0221F644: .word MBi_ChildPortCallback
+	arm_func_end MBi_ChildCallback
 
-	arm_func_start ov13_0221F648
-ov13_0221F648: ; 0x0221F648
+	arm_func_start MBi_GetBeaconPeriodDispersion
+MBi_GetBeaconPeriodDispersion: ; 0x0221F648
 	stmdb sp!, {r3, lr}
 	sub sp, sp, #8
 	add r0, sp, #0
@@ -4375,10 +4375,10 @@ _0221F664:
 	.balign 4, 0
 _0221F6A8: .word 0x027FFC3C
 _0221F6AC: .word 0xCCCCCCCD
-	arm_func_end ov13_0221F648
+	arm_func_end MBi_GetBeaconPeriodDispersion
 
-	arm_func_start ov13_0221F6B0
-ov13_0221F6B0: ; 0x0221F6B0
+	arm_func_start MB_Init
+MB_Init: ; 0x0221F6B0
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r4, _0221F888 ; =ov13_0224CF40
 	mov sb, r1
@@ -4486,7 +4486,7 @@ _0221F7FC:
 	strh r2, [r4, #0x14]
 	str r8, [r4, #8]
 	strh r7, [r4, #0xc]
-	bl ov13_0221F648
+	bl MBi_GetBeaconPeriodDispersion
 	add r0, r0, #0xc8
 	strh r0, [r4, #0x18]
 	mov r0, #0xf
@@ -4507,10 +4507,10 @@ _0221F7FC:
 _0221F888: .word ov13_0224CF40
 _0221F88C: .word 0x0000FFFF
 _0221F890: .word ov13_0224598C
-	arm_func_end ov13_0221F6B0
+	arm_func_end MB_Init
 
-	arm_func_start ov13_0221F894
-ov13_0221F894: ; 0x0221F894
+	arm_func_start MBi_IsCommSizeValid
+MBi_IsCommSizeValid: ; 0x0221F894
 	ldr r3, _0221F8FC ; =0x000001FE
 	cmp r0, r3
 	bhi _0221F8A8
@@ -4544,10 +4544,10 @@ _0221F8C8:
 	.balign 4, 0
 _0221F8FC: .word 0x000001FE
 _0221F900: .word 0x000015E0
-	arm_func_end ov13_0221F894
+	arm_func_end MBi_IsCommSizeValid
 
-	arm_func_start ov13_0221F904
-ov13_0221F904: ; 0x0221F904
+	arm_func_start MB_SetParentCommParam
+MB_SetParentCommParam: ; 0x0221F904
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	mov r4, r1
@@ -4565,7 +4565,7 @@ _0221F938:
 	mov r0, r5
 	mov r2, r4
 	mov r1, #8
-	bl ov13_0221F894
+	bl MBi_IsCommSizeValid
 	cmp r0, #0
 	bne _0221F960
 	mov r0, r6
@@ -4589,10 +4589,10 @@ _0221F960:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _0221F998: .word ov13_0224CF40
-	arm_func_end ov13_0221F904
+	arm_func_end MB_SetParentCommParam
 
-	arm_func_start ov13_0221F99C
-ov13_0221F99C: ; 0x0221F99C
+	arm_func_start MBi_StartCommon
+MBi_StartCommon: ; 0x0221F99C
 	stmdb sp!, {r4, lr}
 	ldr r2, _0221FA6C ; =ov13_0224CF40
 	mov r3, #0
@@ -4609,7 +4609,7 @@ ov13_0221F99C: ; 0x0221F99C
 	ldr r1, [r2, #8]
 	add r1, r1, #0x500
 	strh r3, [r1, #0x48]
-	bl ov13_0221FF18
+	bl MBi_SetMaxScanTime
 	ldr r4, _0221FA6C ; =ov13_0224CF40
 	ldr r0, [r4, #0xc]
 	add r0, r0, #0x1000
@@ -4649,10 +4649,10 @@ _0221FA44:
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _0221FA6C: .word ov13_0224CF40
-	arm_func_end ov13_0221F99C
+	arm_func_end MBi_StartCommon
 
-	arm_func_start ov13_0221FA70
-ov13_0221FA70: ; 0x0221FA70
+	arm_func_start MBi_StartParentCore
+MBi_StartParentCore: ; 0x0221FA70
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
@@ -4684,12 +4684,12 @@ ov13_0221FA70: ; 0x0221FA70
 	ldr r0, [r1, #8]
 	add r0, r0, #0x500
 	ldrh r0, [r0, #2]
-	bl ov13_022205D4
+	bl MBi_SetChildMPMaxSize
 	ldr r0, _0221FC40 ; =ov13_0224CF40
 	ldr r0, [r0, #0xc]
 	add r0, r0, #0x138
 	add r0, r0, #0x1400
-	bl ov13_02220604
+	bl MBi_SetParentPieceBuffer
 	mov r5, #0
 	ldr r2, _0221FC40 ; =ov13_0224CF40
 	mov r0, r5
@@ -4757,7 +4757,7 @@ _0221FB14:
 	mov r1, r1, lsl #1
 	strh r1, [r0, #0x1a]
 	bl MB_InitSendGameInfoStatus
-	bl ov13_0221F99C
+	bl MBi_StartCommon
 	mov r5, r0
 	mov r0, r4
 	bl OS_RestoreInterrupts
@@ -4776,12 +4776,12 @@ _0221FC44: .word 0x000069C0
 _0221FC48: .word 0x00005D40
 _0221FC4C: .word MBi_CommParentCallback
 _0221FC50: .word MBi_ParentCallback
-	arm_func_end ov13_0221FA70
+	arm_func_end MBi_StartParentCore
 
-	arm_func_start ov13_0221FC54
-ov13_0221FC54: ; 0x0221FC54
+	arm_func_start MB_StartParentFromIdle
+MB_StartParentFromIdle: ; 0x0221FC54
 	ldr r1, _0221FC70 ; =ov13_0224CF40
-	ldr ip, _0221FC74 ; =ov13_0221FA70
+	ldr ip, _0221FC74 ; =MBi_StartParentCore
 	ldr r1, [r1, #0xc]
 	mov r2, #1
 	add r1, r1, #0x1000
@@ -4789,11 +4789,11 @@ ov13_0221FC54: ; 0x0221FC54
 	bx ip
 	.balign 4, 0
 _0221FC70: .word ov13_0224CF40
-_0221FC74: .word ov13_0221FA70
-	arm_func_end ov13_0221FC54
+_0221FC74: .word MBi_StartParentCore
+	arm_func_end MB_StartParentFromIdle
 
-	arm_func_start ov13_0221FC78
-ov13_0221FC78: ; 0x0221FC78
+	arm_func_start MBi_CallReset
+MBi_CallReset: ; 0x0221FC78
 	stmdb sp!, {r4, lr}
 	ldr r0, _0221FCAC ; =ov13_0224CF40
 	ldr r0, [r0, #8]
@@ -4809,18 +4809,18 @@ ov13_0221FC78: ; 0x0221FC78
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _0221FCAC: .word ov13_0224CF40
-	arm_func_end ov13_0221FC78
+	arm_func_end MBi_CallReset
 
-	arm_func_start ov13_0221FCB0
-ov13_0221FCB0: ; 0x0221FCB0
-	ldr ip, _0221FCB8 ; =ov13_0221FC78
+	arm_func_start MBi_OnReset
+MBi_OnReset: ; 0x0221FCB0
+	ldr ip, _0221FCB8 ; =MBi_CallReset
 	bx ip
 	.balign 4, 0
-_0221FCB8: .word ov13_0221FC78
-	arm_func_end ov13_0221FCB0
+_0221FCB8: .word MBi_CallReset
+	arm_func_end MBi_OnReset
 
-	arm_func_start ov13_0221FCBC
-ov13_0221FCBC: ; 0x0221FCBC
+	arm_func_start MBi_CommEnd
+MBi_CommEnd: ; 0x0221FCBC
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, #1
 	bl OS_DisableInterrupts
@@ -4847,12 +4847,12 @@ _0221FCEC:
 	bl MBi_IsTaskAvailable
 	cmp r0, #0
 	beq _0221FD30
-	ldr r0, _0221FD4C ; =ov13_0221FCB0
-	bl ov13_0222058C
+	ldr r0, _0221FD4C ; =MBi_OnReset
+	bl MBi_EndTaskThread
 	mov r5, #0
 	b _0221FD38
 _0221FD30:
-	bl ov13_0221FC78
+	bl MBi_CallReset
 	mov r5, r0
 _0221FD38:
 	mov r0, r4
@@ -4861,11 +4861,11 @@ _0221FD38:
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0221FD48: .word ov13_0224CF40
-_0221FD4C: .word ov13_0221FCB0
-	arm_func_end ov13_0221FCBC
+_0221FD4C: .word MBi_OnReset
+	arm_func_end MBi_CommEnd
 
-	arm_func_start ov13_0221FD50
-ov13_0221FD50: ; 0x0221FD50
+	arm_func_start MB_End
+MB_End: ; 0x0221FD50
 	stmdb sp!, {r4, lr}
 	bl OS_DisableInterrupts
 	ldr r1, _0221FD88 ; =ov13_0224CF40
@@ -4877,16 +4877,16 @@ ov13_0221FD50: ; 0x0221FD50
 	bne _0221FD78
 	bl OS_Terminate
 _0221FD78:
-	bl ov13_0221FCBC
+	bl MBi_CommEnd
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _0221FD88: .word ov13_0224CF40
-	arm_func_end ov13_0221FD50
+	arm_func_end MB_End
 
-	arm_func_start ov13_0221FD8C
-ov13_0221FD8C: ; 0x0221FD8C
+	arm_func_start MB_DisconnectChild
+MB_DisconnectChild: ; 0x0221FD8C
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r5, r0
 	ldr r0, _0221FF0C ; =MBi_ParentCallback
@@ -4989,19 +4989,19 @@ _0221FEF0:
 _0221FF0C: .word MBi_ParentCallback
 _0221FF10: .word ov13_0224CF40
 _0221FF14: .word 0x000005D4
-	arm_func_end ov13_0221FD8C
+	arm_func_end MB_DisconnectChild
 
-	arm_func_start ov13_0221FF18
-ov13_0221FF18: ; 0x0221FF18
+	arm_func_start MBi_SetMaxScanTime
+MBi_SetMaxScanTime: ; 0x0221FF18
 	ldr r1, _0221FF24 ; =ov13_0224CF40
 	strh r0, [r1, #0x26]
 	bx lr
 	.balign 4, 0
 _0221FF24: .word ov13_0224CF40
-	arm_func_end ov13_0221FF18
+	arm_func_end MBi_SetMaxScanTime
 
-	arm_func_start ov13_0221FF28
-ov13_0221FF28: ; 0x0221FF28
+	arm_func_start MBi_SetMPData
+MBi_SetMPData: ; 0x0221FF28
 	stmdb sp!, {r3, r4, lr}
 	sub sp, sp, #0xc
 	ldrh r4, [sp, #0x18]
@@ -5021,7 +5021,7 @@ ov13_0221FF28: ; 0x0221FF28
 	mov r0, r4
 	add sp, sp, #0xc
 	ldmia sp!, {r3, r4, pc}
-	arm_func_end ov13_0221FF28
+	arm_func_end MBi_SetMPData
 
 	arm_func_start MBi_SendMP
 MBi_SendMP: ; 0x0221FF74
@@ -5055,7 +5055,7 @@ _0221FFC8:
 	str r4, [sp]
 	ldr r0, [r5, #0x508]
 	mov r3, r3, lsr #0x10
-	bl ov13_0221FF28
+	bl MBi_SetMPData
 	cmp r0, #2
 	bne _02220004
 	ldr r1, _0222004C ; =ov13_0224CF40
@@ -5067,10 +5067,10 @@ _02220004:
 	moveq r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 _02220010:
-	ldr r0, _02220050 ; =ov13_0221EE1C
+	ldr r0, _02220050 ; =MBi_ChildCallback
 	mov r3, #0
 	str r4, [sp]
-	bl ov13_0221FF28
+	bl MBi_SetMPData
 	cmp r0, #2
 	bne _02220038
 	ldr r1, _0222004C ; =ov13_0224CF40
@@ -5086,7 +5086,7 @@ _02220044:
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0222004C: .word ov13_0224CF40
-_02220050: .word ov13_0221EE1C
+_02220050: .word MBi_ChildCallback
 	arm_func_end MBi_SendMP
 
 	arm_func_start MBi_GetGgid
@@ -5170,15 +5170,15 @@ MBi_CheckWmErrcode: ; 0x022200FC
 _02220130: .word ov13_0224CF40
 	arm_func_end MBi_CheckWmErrcode
 
-	arm_func_start ov13_02220134
-ov13_02220134: ; 0x02220134
+	arm_func_start MBi_InitCache
+MBi_InitCache: ; 0x02220134
 	ldr ip, _02220144 ; =MI_CpuFill8
 	mov r1, #0
 	mov r2, #0x70
 	bx ip
 	.balign 4, 0
 _02220144: .word MI_CpuFill8
-	arm_func_end ov13_02220134
+	arm_func_end MBi_InitCache
 
 	arm_func_start MBi_AttachCacheBuffer
 MBi_AttachCacheBuffer: ; 0x02220148
@@ -5259,8 +5259,8 @@ _02220238:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	arm_func_end MBi_ReadFromCache
 
-	arm_func_start ov13_02220248
-ov13_02220248: ; 0x02220248
+	arm_func_start MBi_TaskThread
+MBi_TaskThread: ; 0x02220248
 	stmdb sp!, {r3, r4, r5, r6, r7, lr}
 	mov r7, r0
 _02220250:
@@ -5339,7 +5339,7 @@ _02220340:
 _02220358:
 	bl OS_ExitThread
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
-	arm_func_end ov13_02220248
+	arm_func_end MBi_TaskThread
 
 	arm_func_start MBi_InitTaskThread
 MBi_InitTaskThread: ; 0x02220360
@@ -5361,7 +5361,7 @@ MBi_InitTaskThread: ; 0x02220360
 	bic ip, r0, #3
 	add r3, r5, #0xe4
 	str lr, [r5, #0xc0]
-	ldr r1, _022203DC ; =ov13_02220248
+	ldr r1, _022203DC ; =MBi_TaskThread
 	mov r0, r5
 	mov r2, r5
 	add r3, r3, ip
@@ -5376,7 +5376,7 @@ _022203C8:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _022203D8: .word ov13_0224CF80
-_022203DC: .word ov13_02220248
+_022203DC: .word MBi_TaskThread
 	arm_func_end MBi_InitTaskThread
 
 	arm_func_start MBi_IsTaskAvailable
@@ -5411,8 +5411,8 @@ MBi_IsTaskBusy: ; 0x02220410
 	bx lr
 	arm_func_end MBi_IsTaskBusy
 
-	arm_func_start ov13_02220428
-ov13_02220428: ; 0x02220428
+	arm_func_start MBi_SetTask
+MBi_SetTask: ; 0x02220428
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	ldr r4, _02220588 ; =ov13_0224CF80
 	mov sb, r0
@@ -5514,10 +5514,10 @@ _0222057C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.balign 4, 0
 _02220588: .word ov13_0224CF80
-	arm_func_end ov13_02220428
+	arm_func_end MBi_SetTask
 
-	arm_func_start ov13_0222058C
-ov13_0222058C: ; 0x0222058C
+	arm_func_start MBi_EndTaskThread
+MBi_EndTaskThread: ; 0x0222058C
 	stmdb sp!, {r3, r4, r5, lr}
 	mov r5, r0
 	bl OS_DisableInterrupts
@@ -5531,17 +5531,17 @@ ov13_0222058C: ; 0x0222058C
 	mov r2, r5
 	mov r3, r1
 	add r0, r0, #0xc4
-	bl ov13_02220428
+	bl MBi_SetTask
 _022205C4:
 	mov r0, r4
 	bl OS_RestoreInterrupts
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _022205D0: .word ov13_0224CF80
-	arm_func_end ov13_0222058C
+	arm_func_end MBi_EndTaskThread
 
-	arm_func_start ov13_022205D4
-ov13_022205D4: ; 0x022205D4
+	arm_func_start MBi_SetChildMPMaxSize
+MBi_SetChildMPMaxSize: ; 0x022205D4
 	stmdb sp!, {r3, lr}
 	ldr r2, _02220600 ; =ov13_0224CF84
 	sub r1, r0, #2
@@ -5555,10 +5555,10 @@ ov13_022205D4: ; 0x022205D4
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02220600: .word ov13_0224CF84
-	arm_func_end ov13_022205D4
+	arm_func_end MBi_SetChildMPMaxSize
 
-	arm_func_start ov13_02220604
-ov13_02220604: ; 0x02220604
+	arm_func_start MBi_SetParentPieceBuffer
+MBi_SetParentPieceBuffer: ; 0x02220604
 	ldr r3, _0222061C ; =ov13_0224CF84
 	ldr ip, _02220620 ; =MI_CpuFill8
 	mov r1, #0
@@ -5568,7 +5568,7 @@ ov13_02220604: ; 0x02220604
 	.balign 4, 0
 _0222061C: .word ov13_0224CF84
 _02220620: .word MI_CpuFill8
-	arm_func_end ov13_02220604
+	arm_func_end MBi_SetParentPieceBuffer
 
 	arm_func_start MBi_ClearParentPieceBuffer
 MBi_ClearParentPieceBuffer: ; 0x02220624
@@ -5633,8 +5633,8 @@ _022206E4:
 	bx lr
 	arm_func_end MBi_MakeParentSendBuffer
 
-	arm_func_start ov13_022206EC
-ov13_022206EC: ; 0x022206EC
+	arm_func_start MBi_SetRecvBufferFromChild
+MBi_SetRecvBufferFromChild: ; 0x022206EC
 	stmdb sp!, {r4, r5, r6, lr}
 	mov r6, r0
 	ldrb r0, [r6]
@@ -5650,7 +5650,7 @@ ov13_022206EC: ; 0x022206EC
 	b _022207F4
 _02220720:
 	mov r0, r4
-	bl ov13_02220894
+	bl IsGetAllRequestData
 	cmp r0, #0
 	beq _02220744
 	ldr r0, _02220804 ; =ov13_0224CF84
@@ -5672,7 +5672,7 @@ _02220744:
 	bl MI_CpuCopy8
 	mov r0, r5
 	mov r1, r4
-	bl ov13_02220808
+	bl MBi_ReceiveRequestDataPiece
 	mov r4, r0
 	b _022207FC
 _02220784:
@@ -5713,10 +5713,10 @@ _022207FC:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _02220804: .word ov13_0224CF84
-	arm_func_end ov13_022206EC
+	arm_func_end MBi_SetRecvBufferFromChild
 
-	arm_func_start ov13_02220808
-ov13_02220808: ; 0x02220808
+	arm_func_start MBi_ReceiveRequestDataPiece
+MBi_ReceiveRequestDataPiece: ; 0x02220808
 	stmdb sp!, {r4, r5, r6, lr}
 	ldr r2, _02220890 ; =ov13_0224CF84
 	mov r6, r1
@@ -5743,7 +5743,7 @@ ov13_02220808: ; 0x02220808
 	ldr r2, [r3, r4, lsl #2]
 	orr r1, r2, r1, lsl r5
 	str r1, [r3, r4, lsl #2]
-	bl ov13_02220894
+	bl IsGetAllRequestData
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, r5, r6, pc}
@@ -5753,10 +5753,10 @@ ov13_02220808: ; 0x02220808
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _02220890: .word ov13_0224CF84
-	arm_func_end ov13_02220808
+	arm_func_end MBi_ReceiveRequestDataPiece
 
-	arm_func_start ov13_02220894
-ov13_02220894: ; 0x02220894
+	arm_func_start IsGetAllRequestData
+IsGetAllRequestData: ; 0x02220894
 	ldr r1, _022208E4 ; =ov13_0224CF84
 	mov r2, #0
 	ldr ip, [r1, #0xc]
@@ -5781,7 +5781,7 @@ _022208DC:
 	bx lr
 	.balign 4, 0
 _022208E4: .word ov13_0224CF84
-	arm_func_end ov13_02220894
+	arm_func_end IsGetAllRequestData
 
 	.rodata
 
