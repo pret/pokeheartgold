@@ -4,11 +4,11 @@
 #define MAILMSG_BANK_NONE           (0xFFFF)
 #define MAILMSG_FIELDS_MAX          (2)
 
-#include "msgdata/msg/msg_00000294.h"
-#include "msgdata/msg/msg_00000296.h"
-#include "msgdata/msg/msg_00000292.h"
-#include "msgdata/msg/msg_00000293.h"
-#include "msgdata/msg/msg_00000295.h"
+#include "msgdata/msg/msg_0294.h"
+#include "msgdata/msg/msg_0296.h"
+#include "msgdata/msg/msg_0292.h"
+#include "msgdata/msg/msg_0293.h"
+#include "msgdata/msg/msg_0295.h"
 
 typedef struct MailMessage {
     u16 msg_bank;

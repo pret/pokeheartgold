@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0293_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello!\n{STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0293_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I love {STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0293_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I love {STRVAR_1 28, 0, 0}!\nI love {STRVAR_1 28, 1, 0}, too!</language>
+	</row>
+	<row id="msg_0293_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This {STRVAR_1 28, 0, 0} is\n{STRVAR_1 28, 1, 0}, isn’t it?</language>
+	</row>
+	<row id="msg_0293_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I can do anything for\n{STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0293_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This {STRVAR_1 28, 0, 0} is\n{STRVAR_1 28, 1, 0}!</language>
+	</row>
+	<row id="msg_0293_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0} is the real\n{STRVAR_1 28, 1, 0}!</language>
+	</row>
+	<row id="msg_0293_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It might be {STRVAR_1 28, 0, 0}...</language>
+	</row>
+	<row id="msg_0293_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s only {STRVAR_1 28, 0, 0}\nleft!</language>
+	</row>
+	<row id="msg_0293_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s {STRVAR_1 28, 0, 0}!\nIt’s {STRVAR_1 28, 1, 0}!</language>
+	</row>
+	<row id="msg_0293_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I prefer {STRVAR_1 28, 0, 0}\nafter all!</language>
+	</row>
+	<row id="msg_0293_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is {STRVAR_1 28, 0, 0}\n{STRVAR_1 28, 1, 0}?</language>
+	</row>
+	<row id="msg_0293_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you like {STRVAR_1 28, 0, 0}?</language>
+	</row>
+	<row id="msg_0293_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What do you think of\n{STRVAR_1 28, 0, 0}?</language>
+	</row>
+	<row id="msg_0293_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0} is so\n{STRVAR_1 28, 1, 0}!</language>
+	</row>
+	<row id="msg_0293_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0} are\n{STRVAR_1 28, 1, 0}!</language>
+	</row>
+	<row id="msg_0293_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0}, right?</language>
+	</row>
+	<row id="msg_0293_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you know {STRVAR_1 28, 0, 0}?\nIt’s {STRVAR_1 28, 1, 0}!</language>
+	</row>
+	<row id="msg_0293_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Excuse me...\nIt’s {STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0293_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0}, right?\n{STRVAR_1 28, 1, 0}!</language>
+	</row>
+</body>

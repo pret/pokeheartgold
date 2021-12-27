@@ -107,7 +107,7 @@ Note: Docker may not run at a full performance if its underlying Linux kernel is
 
 #### After updating from upstream
 
-This repository is still in a volatile state, and several files may be moved around or renamed. If you pull from upstream and experience errors rebuilding, try the following troubleshooting steps, **one line at a time** until you get the message `build/heartgold.us/pokeheartgold.us.nds: OK`:
+This repository is still in a volatile state, and several files may be moved around or renamed. If you pull from upstream and experience errors rebuilding, try the following troubleshooting steps, **one line at a time** until you get the non_npc_msg `build/heartgold.us/pokeheartgold.us.nds: OK`:
 
 ```shell
 make tidy compare

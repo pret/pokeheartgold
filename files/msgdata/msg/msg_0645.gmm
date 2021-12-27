@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0645_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Janine</language>
+	</row>
+	<row id="msg_0645_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sorry? I’m afraid I can’t hear you very\nwell. Must be a bad connection.\rCan you call again from somewhere else?</language>
+	</row>
+	<row id="msg_0645_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, hello, hello...\nOh, hello, what are you up to?\fI’m just fine, thanks!\r</language>
+	</row>
+	<row id="msg_0645_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Many of the Gym Leaders are much\nstronger than I am. We’ve just got to\fwork harder!</language>
+	</row>
+	<row id="msg_0645_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My schedule’s fairly open on Monday\nafternoons. Would you mind calling\fme back then?</language>
+	</row>
+	<row id="msg_0645_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I can hear you clearly now.\nSay, my schedule just opened up.\fWould you like to meet for\fa battle or something? {YESNO 0}</language>
+	</row>
+	<row id="msg_0645_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Super!\nI’m burning up, ready to fight!\rI’ll be waiting for you at the\nFighting Dojo in Saffron City!</language>
+	</row>
+	<row id="msg_0645_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, I getcha...\nYou’re afraid to face me...\fNah, that’s not true, right?</language>
+	</row>
+	<row id="msg_0645_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re sure you want to meet me for\na battle?\rDon’t you have kind of a full schedule,\nwith other appointments?</language>
+	</row>
+	<row id="msg_0645_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m waiting for you at the Fighting Dojo\nin Saffron City!\fCome on! Move like the wind!</language>
+	</row>
+	<row id="msg_0645_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is Janine.\nHow are you doing?\r</language>
+	</row>
+	<row id="msg_0645_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Remember, you promised to meet me at\nthe Fighting Dojo in Saffron City.\fI’m ready whenever you are...like, now!</language>
+	</row>
+	<row id="msg_0645_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, can I talk to you about my dad?\nOnly if you want to hear, though.\rSeriously? I might talk your ear off\nif I’m not careful!</language>
+	</row>
+	<row id="msg_0645_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">See, I’ve been training with my dad\nsince I was little--to be a Gym Leader.\rI haven’t even considered taking any\nother path, really.\rIt’s my dream to someday become a\nbetter Gym Leader than Dad!</language>
+	</row>
+	<row id="msg_0645_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Falkner in Violet City...\nHe’s talking about his dad all the time!\rSeriously, he’s such a daddy’s boy,\nhe needs to become his own person\fsometime, you know?\rWhat do you mean, I should talk?\fHa ha--mind your own business!</language>
+	</row>
+</body>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0646_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Erika</language>
+	</row>
+	<row id="msg_0646_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pardon? I can’t hear you very well...\nWe must have a bad connection.\rTry calling again from somewhere else!</language>
+	</row>
+	<row id="msg_0646_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello...\nOh, hiya, what’s up?\fThings are sweet over here!\r</language>
+	</row>
+	<row id="msg_0646_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s a lot of Gym Leaders who are\nway stronger than me.\fWe’ve both got to work harder!</language>
+	</row>
+	<row id="msg_0646_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My schedule’s fairly open on Sunday\nmornings.\rTry calling me then, OK?</language>
+	</row>
+	<row id="msg_0646_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ve got some free time right now.\nWould you like to meet for a\fbattle or something? {YESNO 0}</language>
+	</row>
+	<row id="msg_0646_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yay, I’m happy! I’ve got another thing\nto look forward to now.\rI’ll be waiting at the Fighting Dojo in\nSaffron City.</language>
+	</row>
+	<row id="msg_0646_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, I see...</language>
+	</row>
+	<row id="msg_0646_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh?\nWait, didn’t you already make enough\fother appointments before you called?</language>
+	</row>
+	<row id="msg_0646_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ll be waiting at the Fighting Dojo in\nSaffron City. Please don’t forget!</language>
+	</row>
+	<row id="msg_0646_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This is Erika.\nHow are you?\r</language>
+	</row>
+	<row id="msg_0646_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m waiting at the Fighting Dojo in\nSaffron City...\fYou haven’t forgotten, have you?</language>
+	</row>
+	<row id="msg_0646_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you like plants?\nPlants are such delicate things.\rThe amount of water,\nthe condition of the soil,\fthe temperature differences,\fthe changing weather...\fAll those little things we don’t think\fabout can have such a huge effect.</language>
+	</row>
+	<row id="msg_0646_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you like telling fortunes?\rMe...\nI don’t really like the kind where you\fpull off flower petals...\rOh, but it’s not that I dislike the\nfortune-teller in Lavender Town.</language>
+	</row>
+	<row id="msg_0646_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What do you do on your days off?\rI like to tend to the plants in my Gym,\ntransplanting them and dusting\foff the flowers and leaves with a brush.\fIt keeps me pretty busy...</language>
+	</row>
+</body>

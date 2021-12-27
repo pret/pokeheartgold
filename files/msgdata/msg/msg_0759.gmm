@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0759_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battling</language>
+	</row>
+	<row id="msg_0759_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Psychic</language>
+	</row>
+	<row id="msg_0759_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grass type</language>
+	</row>
+	<row id="msg_0759_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trade</language>
+	</row>
+	<row id="msg_0759_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No</language>
+	</row>
+	<row id="msg_0759_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Department store</language>
+	</row>
+	<row id="msg_0759_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HP</language>
+	</row>
+	<row id="msg_0759_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">At home</language>
+	</row>
+	<row id="msg_0759_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fallen asleep</language>
+	</row>
+	<row id="msg_0759_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poison</language>
+	</row>
+	<row id="msg_0759_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Paralysis</language>
+	</row>
+	<row id="msg_0759_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Antidote</language>
+	</row>
+	<row id="msg_0759_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In tall grass</language>
+	</row>
+	<row id="msg_0759_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">During the day</language>
+	</row>
+	<row id="msg_0759_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Schoolmates</language>
+	</row>
+	<row id="msg_0759_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Protein</language>
+	</row>
+	<row id="msg_0759_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MIME JR.</language>
+	</row>
+	<row id="msg_0759_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Accuracy</language>
+	</row>
+	<row id="msg_0759_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No</language>
+	</row>
+	<row id="msg_0759_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fresh Water</language>
+	</row>
+	<row id="msg_0759_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Choice Specs</language>
+	</row>
+	<row id="msg_0759_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nugget</language>
+	</row>
+	<row id="msg_0759_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">One from an Egg</language>
+	</row>
+	<row id="msg_0759_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cute &amp; charming</language>
+	</row>
+	<row id="msg_0759_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Family</language>
+	</row>
+	<row id="msg_0759_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Go get captured</language>
+	</row>
+	<row id="msg_0759_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Losing to a friend</language>
+	</row>
+	<row id="msg_0759_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Town music</language>
+	</row>
+	<row id="msg_0759_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Use sometimes</language>
+	</row>
+	<row id="msg_0759_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Packed tight</language>
+	</row>
+	<row id="msg_0759_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quite different</language>
+	</row>
+	<row id="msg_0759_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mostly Berries</language>
+	</row>
+	<row id="msg_0759_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Known somewhat</language>
+	</row>
+	<row id="msg_0759_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Running</language>
+	</row>
+	<row id="msg_0759_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Special Attacks</language>
+	</row>
+	<row id="msg_0759_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Footprint</language>
+	</row>
+	<row id="msg_0759_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bug Pokémon</language>
+	</row>
+	<row id="msg_0759_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Save it</language>
+	</row>
+	<row id="msg_0759_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The hero</language>
+	</row>
+	<row id="msg_0759_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Defense stats</language>
+	</row>
+	<row id="msg_0759_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No</language>
+	</row>
+	<row id="msg_0759_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Thinglike names</language>
+	</row>
+	<row id="msg_0759_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fly</language>
+	</row>
+	<row id="msg_0759_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon Center</language>
+	</row>
+	<row id="msg_0759_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No</language>
+	</row>
+	<row id="msg_0759_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Surf</language>
+	</row>
+	<row id="msg_0759_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No</language>
+	</row>
+	<row id="msg_0759_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Type</language>
+	</row>
+	<row id="msg_0759_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cool moves!</language>
+	</row>
+	<row id="msg_0759_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">High level</language>
+	</row>
+</body>

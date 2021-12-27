@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0435_00000" index="0">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0435_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Please come again!</language>
+	</row>
+	<row id="msg_0435_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is that right?\nWell, come back anytime!</language>
+	</row>
+	<row id="msg_0435_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Come back again!</language>
+	</row>
+	<row id="msg_0435_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is that right?\nWell, come back anytime!\fHee hee!</language>
+	</row>
+	<row id="msg_0435_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Come back anytime!\nWell, not in the evening. We’re closed.</language>
+	</row>
+	<row id="msg_0435_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is there anything else I may do\nfor you? {YESNO 0}</language>
+	</row>
+	<row id="msg_0435_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you need anything else? {YESNO 0}</language>
+	</row>
+	<row id="msg_0435_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you need anything else?\nAnything at all? {YESNO 0}</language>
+	</row>
+	<row id="msg_0435_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you need anything else?\nHee hee! {YESNO 0}</language>
+	</row>
+	<row id="msg_0435_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you want anything else? {YESNO 0}</language>
+	</row>
+	<row id="msg_0435_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You don’t have enough money.</language>
+	</row>
+	<row id="msg_0435_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}? Certainly.\nHow many would you like?</language>
+	</row>
+	<row id="msg_0435_00013" index="13">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0435_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">For {STRVAR_1 51, 0, 0}, that will\nbe ${STRVAR_1 55, 1, 0}, please.</language>
+	</row>
+	<row id="msg_0435_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Here you are!\nThank you!{WAIT 1}\rYou put away the {STRVAR_1 8, 0, 0}\nin the {STRVAR_1 27, 1, 0} Pocket.</language>
+	</row>
+	<row id="msg_0435_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You don’t have enough room.</language>
+	</row>
+	<row id="msg_0435_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+	<row id="msg_0435_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">${STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0435_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 53, 0, 0}P</language>
+	</row>
+	<row id="msg_0435_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You also get a Premier Ball as\nan added bonus.</language>
+	</row>
+	<row id="msg_0435_00021" index="21">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0435_00022" index="22">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0435_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You placed the {STRVAR_1 10, 0, 0}\nin the Seal Case. {WAIT 1}</language>
+	</row>
+	<row id="msg_0435_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Seal Case is full.\nYou have no more room for Seals.</language>
+	</row>
+	<row id="msg_0435_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t buy any more today!</language>
+	</row>
+	<row id="msg_0435_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You already have this!</language>
+	</row>
+	<row id="msg_0435_00027" index="27">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0435_00028" index="28">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0435_00029" index="29">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0435_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Money</language>
+	</row>
+	<row id="msg_0435_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">${STRVAR_1 55, 0, 0}</language>
+	</row>
+	<row id="msg_0435_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 55, 0, 0}P</language>
+	</row>
+	<row id="msg_0435_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Athlete Pts.</language>
+	</row>
+	<row id="msg_0435_00034" index="34">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0435_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In Bag:</language>
+	</row>
+	<row id="msg_0435_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0435_00037" index="37">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0435_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">${STRVAR_1 55, 0, 0}</language>
+	</row>
+	<row id="msg_0435_00039" index="39">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0435_00040" index="40">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0435_00041" index="41">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0435_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BUY</language>
+	</row>
+	<row id="msg_0435_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}</language>
+	</row>
+	<row id="msg_0435_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 50, 0, 0}</language>
+	</row>
+	<row id="msg_0435_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 50, 1, 0}</language>
+	</row>
+	<row id="msg_0435_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like\n{STRVAR_1 8, 0, 0}?</language>
+	</row>
+	<row id="msg_0435_00047" index="47">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0435_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You don’t have enough points!</language>
+	</row>
+	<row id="msg_0435_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right, here you go.\nCome back anytime! {WAIT 1}</language>
+	</row>
+</body>

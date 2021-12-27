@@ -314,13 +314,13 @@
 	.short \src
 	.endm
 
-	; Print message in field window from current map message bank
-	.macro message msg_id
+	; Print non_npc_msg in field window from current map non_npc_msg bank
+	.macro non_npc_msg msg_id
 	.short 44
 	.byte \msg_id
 	.endm
 
-	.macro msgbox a
+	.macro npc_msg a
 	.short 45
 	.byte \a
 	.endm

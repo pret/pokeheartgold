@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0686_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hillary</language>
+	</row>
+	<row id="msg_0686_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’d love to do some more battle\npreparation and review with you...\rThat’s it!\nHow about exchanging phone numbers\fwith me? {YESNO 0}</language>
+	</row>
+	<row id="msg_0686_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right, I’m looking forward to talking\nto you again. I’ll be sure to give you a\fcall if anything comes up!</language>
+	</row>
+	<row id="msg_0686_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, you should listen when Teachers\nare talking to you!</language>
+	</row>
+	<row id="msg_0686_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you change your mind about\nexchanging phone numbers? {YESNO 0}</language>
+	</row>
+	<row id="msg_0686_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know, I’m pretty sure I just\ncaught a glimpse of you...\rIf you’re nearby, you shouldn’t talk\nover the phone. You should talk\fto me in person.</language>
+	</row>
+	<row id="msg_0686_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey!\rYou got yet another zero on a test!\nYou don’t pay attention to anything\fI’m saying in class, do you?\fDo you honestly think you can beat a\fGym Leader with that kind of...\rHuh?\rYou’re not Travis...\rOh my goodness! I’m so sorry!</language>
+	</row>
+	<row id="msg_0686_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know, I usually use {STRVAR_1 0, 10, 0}.\rDon’t you enjoy battling using your\nbest-loved Pokémon?\rBut it gets kind of lonely to just keep\nusing the same Pokémon over and over.\rSometimes I like to walk along with\nPokémon that I’ve just caught.\rThat can also be a lot of fun, you know?</language>
+	</row>
+	<row id="msg_0686_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The other day, I was battling\n{STRVAR_1 0, 11, 0} on Route 15. People\fstopped to watch, and soon there was\fthis huge crowd gathered!\fI got so nervous...\rYou know, I’m used to talking in front\nof a class of kids...\fbut Pokémon battles are something else.\rI just can’t get comfortable battling in\nfront of a crowd!</language>
+	</row>
+	<row id="msg_0686_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know...\nThis is just between us, right?\rThe other day, I was trying to catch a\n{STRVAR_1 0, 11, 0}.\rI made a mistake and accidentally\nthrew out the wrong Poké Ball, and the\fPokémon got away.\rIt’s a good thing none of my students\nwere watching. But still, I was really\fembarrassed.</language>
+	</row>
+	<row id="msg_0686_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">By the way, you’d like to prepare for\nPokémon battles and do some review,\fwouldn’t you?\rWe should have another Pokémon battle!\rI’m always on {STRVAR_1 4, 3, 0}.\nI’ll be waiting for you there!</language>
+	</row>
+	<row id="msg_0686_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey! Do you remember you made plans\nwith me?\rWe said we were going to meet on\n{STRVAR_1 4, 3, 0} and have a Pokémon\fbattle, right? Don’t forget!</language>
+	</row>
+	<row id="msg_0686_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s right... If you ask me which is\ncuter, my students or Pokémon,\fI’ll have a hard time making\fthat decision.\rCome to think of it, for a lot of kids,\ntheir first Pokémon is the cutest one in\fthe world in their young eyes.\rAnd there’s nothing that can be said to\nchange that opinion.</language>
+	</row>
+</body>

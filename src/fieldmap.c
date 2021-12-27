@@ -24,36 +24,36 @@ struct HiddenItemData {
 #include "data/fieldmap.h"
 
 const struct ScriptBankMapping sScriptBankMapping[30] = {
-    {10490, NARC_scr_seq_scr_seq_00000263_bin, NARC_msg_msg_00000433_bin},
-    {10450, NARC_scr_seq_scr_seq_00000264_bin,  NARC_msg_msg_00000019_bin},
-    {10440, NARC_scr_seq_scr_seq_00000002_bin, NARC_msg_msg_00000748_bin},
-    {10400, NARC_scr_seq_scr_seq_00000151_bin, NARC_msg_msg_00000246_bin},
-    {10350, NARC_scr_seq_scr_seq_00000952_bin, NARC_msg_msg_00000726_bin},
-    {10300, NARC_scr_seq_scr_seq_00000734_bin, NARC_msg_msg_00000444_bin},
-    {10200, NARC_scr_seq_scr_seq_00000144_bin, NARC_msg_msg_00000209_bin},
-    {10150, NARC_scr_seq_scr_seq_00000955_bin, NARC_msg_msg_00000732_bin},
-    {10100, NARC_scr_seq_scr_seq_00000954_bin, NARC_msg_msg_00000733_bin},
-    {10000, NARC_scr_seq_scr_seq_00000146_bin, NARC_msg_msg_00000211_bin},
-    { 9950, NARC_scr_seq_scr_seq_00000148_bin, NARC_msg_msg_00000666_bin},
-    { 9900, NARC_scr_seq_scr_seq_00000136_bin,  NARC_msg_msg_00000040_bin},
-    { 9850, NARC_scr_seq_scr_seq_00000167_bin, NARC_msg_msg_00000312_bin},
-    { 9800, NARC_scr_seq_scr_seq_00000166_bin,  NARC_msg_msg_00000043_bin},
-    { 9700, NARC_scr_seq_scr_seq_00000163_bin, NARC_msg_msg_00000266_bin},
-    { 9600, NARC_scr_seq_scr_seq_00000149_bin,  NARC_msg_msg_00000040_bin},
-    { 9500, NARC_scr_seq_scr_seq_00000265_bin, NARC_msg_msg_00000439_bin},
-    { 9300, NARC_scr_seq_scr_seq_00000143_bin, NARC_msg_msg_00000204_bin},
-    { 9200, NARC_scr_seq_scr_seq_00000164_bin, NARC_msg_msg_00000267_bin},
-    { 9100, NARC_scr_seq_scr_seq_00000000_bin,  NARC_msg_msg_00000014_bin},
-    { 9000, NARC_scr_seq_scr_seq_00000004_bin,  NARC_msg_msg_00000046_bin},
-    { 8900, NARC_scr_seq_scr_seq_00000165_bin, NARC_msg_msg_00000268_bin},
-    { 8800, NARC_scr_seq_scr_seq_00000262_bin, NARC_msg_msg_00000427_bin},
-    { 8000, NARC_scr_seq_scr_seq_00000145_bin, NARC_msg_msg_00000210_bin},
-    { 7000, NARC_scr_seq_scr_seq_00000141_bin, NARC_msg_msg_00000199_bin},
-    { 5000, NARC_scr_seq_scr_seq_00000953_bin,  NARC_msg_msg_00000040_bin},
-    { 3000, NARC_scr_seq_scr_seq_00000953_bin,  NARC_msg_msg_00000040_bin},
-    { 2800, NARC_scr_seq_scr_seq_00000150_bin,  NARC_msg_msg_00000023_bin},
-    { 2500, NARC_scr_seq_scr_seq_00000001_bin,  NARC_msg_msg_00000020_bin},
-    { 2000, NARC_scr_seq_scr_seq_00000003_bin,  NARC_msg_msg_00000040_bin},
+    {10490, NARC_scr_seq_scr_seq_0263_bin, NARC_msg_msg_0433_bin},
+    {10450, NARC_scr_seq_scr_seq_0264_bin,  NARC_msg_msg_0019_bin},
+    {10440, NARC_scr_seq_scr_seq_0002_bin, NARC_msg_msg_0748_bin},
+    {10400, NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin},
+    {10350, NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin},
+    {10300, NARC_scr_seq_scr_seq_0734_bin, NARC_msg_msg_0444_bin},
+    {10200, NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin},
+    {10150, NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin},
+    {10100, NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin},
+    {10000, NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin},
+    { 9950, NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin},
+    { 9900, NARC_scr_seq_scr_seq_0136_bin,  NARC_msg_msg_0040_bin},
+    { 9850, NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin},
+    { 9800, NARC_scr_seq_scr_seq_0166_bin,  NARC_msg_msg_0043_bin},
+    { 9700, NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin},
+    { 9600, NARC_scr_seq_scr_seq_0149_bin,  NARC_msg_msg_0040_bin},
+    { 9500, NARC_scr_seq_scr_seq_0265_bin, NARC_msg_msg_0439_bin},
+    { 9300, NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin},
+    { 9200, NARC_scr_seq_scr_seq_0164_bin, NARC_msg_msg_0267_bin},
+    { 9100, NARC_scr_seq_scr_seq_0000_bin,  NARC_msg_msg_0014_bin},
+    { 9000, NARC_scr_seq_scr_seq_0004_bin,  NARC_msg_msg_0046_bin},
+    { 8900, NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
+    { 8800, NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin},
+    { 8000, NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin},
+    { 7000, NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
+    { 5000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
+    { 3000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
+    { 2800, NARC_scr_seq_scr_seq_0150_bin,  NARC_msg_msg_0023_bin},
+    { 2500, NARC_scr_seq_scr_seq_0001_bin,  NARC_msg_msg_0020_bin},
+    { 2000, NARC_scr_seq_scr_seq_0003_bin,  NARC_msg_msg_0040_bin},
 };
 
 #define HEAP_ID_FIELDMAP                  11
@@ -199,7 +199,7 @@ u16 LoadScriptsAndMessagesByMapId(UnkSavStruct80 *fsys, SCRIPTCONTEXT *ctx, u16 
         LoadScriptsAndMessagesForCurrentMap(fsys, ctx);
         return mapId - 1;
     } else {
-        LoadScriptsAndMessagesParameterized(fsys, ctx, NARC_scr_seq_scr_seq_00000140_bin, NARC_msg_msg_00000184_bin);
+        LoadScriptsAndMessagesParameterized(fsys, ctx, NARC_scr_seq_scr_seq_0140_bin, NARC_msg_msg_0184_bin);
         return 0;
     }
 }

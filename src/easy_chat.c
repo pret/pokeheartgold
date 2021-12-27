@@ -9,17 +9,17 @@
 #include "constants/moves.h"
 #include "constants/abilities.h"
 
-#include "msgdata/msg/msg_00000237.h"
-#include "msgdata/msg/msg_00000751.h"
-#include "msgdata/msg/msg_00000735.h"
-#include "msgdata/msg/msg_00000721.h"
-#include "msgdata/msg/msg_00000285.h"
-#include "msgdata/msg/msg_00000286.h"
-#include "msgdata/msg/msg_00000287.h"
-#include "msgdata/msg/msg_00000288.h"
-#include "msgdata/msg/msg_00000289.h"
-#include "msgdata/msg/msg_00000290.h"
-#include "msgdata/msg/msg_00000291.h"
+#include "msgdata/msg/msg_0237.h"
+#include "msgdata/msg/msg_0751.h"
+#include "msgdata/msg/msg_0735.h"
+#include "msgdata/msg/msg_0721.h"
+#include "msgdata/msg/msg_0285.h"
+#include "msgdata/msg/msg_0286.h"
+#include "msgdata/msg/msg_0287.h"
+#include "msgdata/msg/msg_0288.h"
+#include "msgdata/msg/msg_0289.h"
+#include "msgdata/msg/msg_0290.h"
+#include "msgdata/msg/msg_0291.h"
 
 static const u16 sNarcMsgCounts[EC_GROUP_MAX] = {
     EC_WORDS_POKEMON_COUNT,
@@ -36,26 +36,26 @@ static const u16 sNarcMsgCounts[EC_GROUP_MAX] = {
 };
 
 static const u16 sNarcMsgBanks[EC_GROUP_MAX] = {
-    NARC_msg_msg_00000237_bin,
-    NARC_msg_msg_00000751_bin,
-    NARC_msg_msg_00000735_bin,
-    NARC_msg_msg_00000721_bin,
-    NARC_msg_msg_00000285_bin,
-    NARC_msg_msg_00000286_bin,
-    NARC_msg_msg_00000287_bin,
-    NARC_msg_msg_00000288_bin,
-    NARC_msg_msg_00000289_bin,
-    NARC_msg_msg_00000290_bin,
-    NARC_msg_msg_00000291_bin,
+    NARC_msg_msg_0237_bin,
+    NARC_msg_msg_0751_bin,
+    NARC_msg_msg_0735_bin,
+    NARC_msg_msg_0721_bin,
+    NARC_msg_msg_0285_bin,
+    NARC_msg_msg_0286_bin,
+    NARC_msg_msg_0287_bin,
+    NARC_msg_msg_0288_bin,
+    NARC_msg_msg_0289_bin,
+    NARC_msg_msg_0290_bin,
+    NARC_msg_msg_0291_bin,
 };
 
 static const u8 sLanguageToGreetingMap[6][2] = {
-    { LANGUAGE_JAPANESE, msg_00000287_konnichiwa },
-    { LANGUAGE_ENGLISH,  msg_00000287_hello },
-    { LANGUAGE_FRENCH,   msg_00000287_bonjour},
-    { LANGUAGE_ITALIAN,  msg_00000287_ciao },
-    { LANGUAGE_GERMAN,   msg_00000287_hallo },
-    { LANGUAGE_SPANISH,  msg_00000287_hola },
+    { LANGUAGE_JAPANESE, msg_0287_konnichiwa },
+    { LANGUAGE_ENGLISH,  msg_0287_hello },
+    { LANGUAGE_FRENCH,   msg_0287_bonjour},
+    { LANGUAGE_ITALIAN,  msg_0287_ciao },
+    { LANGUAGE_GERMAN,   msg_0287_hallo },
+    { LANGUAGE_SPANISH,  msg_0287_hola },
 };
 
 // Several easy chat words are identical in

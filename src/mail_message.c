@@ -7,11 +7,11 @@
 #include "string_control_code.h"
 
 const u16 _020F60E0[] = {
-    NARC_msg_msg_00000294_bin,
-    NARC_msg_msg_00000296_bin,
-    NARC_msg_msg_00000292_bin,
-    NARC_msg_msg_00000293_bin,
-    NARC_msg_msg_00000295_bin,
+    NARC_msg_msg_0294_bin,
+    NARC_msg_msg_0296_bin,
+    NARC_msg_msg_0292_bin,
+    NARC_msg_msg_0293_bin,
+    NARC_msg_msg_0295_bin,
 };
 
 u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no);

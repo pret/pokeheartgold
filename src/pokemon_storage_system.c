@@ -1,7 +1,7 @@
 #include "pokemon_storage_system.h"
 #include "msgdata.h"
 #include "pokemon.h"
-#include "msgdata/msg/msg_00000024.h"
+#include "msgdata/msg/msg_0024.h"
 
 void PCStorage_InitializeBoxes(PC_STORAGE *storage);
 BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE *storage, u32 boxno, BOXMON *boxmon);
@@ -35,10 +35,10 @@ void PCStorage_InitializeBoxes(PC_STORAGE *storage) {
 
     storage->unlockedWallpapers = 0;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000024_bin, 0);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0024_bin, 0);
     if (msgData != NULL) {
         for (i = 0; i < NUM_BOXES; i++) {
-            ReadMsgDataIntoU16Array(msgData, i + msg_00000024_00006, storage->box_names[i]);
+            ReadMsgDataIntoU16Array(msgData, i + msg_0024_00006, storage->box_names[i]);
         }
         DestroyMsgData(msgData);
     }

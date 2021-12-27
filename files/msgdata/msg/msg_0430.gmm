@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0430_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Place the {STRVAR_1 8, 0, 0}?</language>
+	</row>
+	<row id="msg_0430_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Placed the {STRVAR_1 8, 0, 0}.</language>
+	</row>
+	<row id="msg_0430_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are {STRVAR_1 51, 0, 0} left to place.</language>
+	</row>
+	<row id="msg_0430_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cannot place any more.</language>
+	</row>
+	<row id="msg_0430_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No open spaces left.</language>
+	</row>
+	<row id="msg_0430_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cannot place on land.</language>
+	</row>
+	<row id="msg_0430_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cannot place on the waterside.</language>
+	</row>
+	<row id="msg_0430_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cannot place any more.</language>
+	</row>
+	<row id="msg_0430_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Return</language>
+	</row>
+	<row id="msg_0430_00009" index="9">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0430_00010" index="10">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0430_00011" index="11">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0430_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 50, 0, 0}/{STRVAR_1 50, 1, 0}</language>
+	</row>
+	<row id="msg_0430_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}</language>
+	</row>
+	<row id="msg_0430_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Shrubbery</language>
+	</row>
+	<row id="msg_0430_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Red Flower</language>
+	</row>
+	<row id="msg_0430_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">White Flower</language>
+	</row>
+	<row id="msg_0430_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tree</language>
+	</row>
+	<row id="msg_0430_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stump</language>
+	</row>
+	<row id="msg_0430_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Branches</language>
+	</row>
+	<row id="msg_0430_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Small Rock</language>
+	</row>
+	<row id="msg_0430_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Big Rock</language>
+	</row>
+	<row id="msg_0430_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mossy Rock</language>
+	</row>
+	<row id="msg_0430_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Puddle</language>
+	</row>
+	<row id="msg_0430_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fountain</language>
+	</row>
+	<row id="msg_0430_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water Hole</language>
+	</row>
+	<row id="msg_0430_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bench</language>
+	</row>
+	<row id="msg_0430_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Short Fence1</language>
+	</row>
+	<row id="msg_0430_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Short Fence2</language>
+	</row>
+	<row id="msg_0430_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Long Fence1</language>
+	</row>
+	<row id="msg_0430_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Long Fence2</language>
+	</row>
+	<row id="msg_0430_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Signboard</language>
+	</row>
+	<row id="msg_0430_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Statue</language>
+	</row>
+	<row id="msg_0430_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Flag</language>
+	</row>
+	<row id="msg_0430_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Outside Lamp</language>
+	</row>
+	<row id="msg_0430_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Guidepost(R)</language>
+	</row>
+	<row id="msg_0430_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Guidepost(L)</language>
+	</row>
+	<row id="msg_0430_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trash Can</language>
+	</row>
+	<row id="msg_0430_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A thick tuft of grass.\nThe Pokémon on the\nPlains seem to like it.</language>
+	</row>
+	<row id="msg_0430_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very intensely colored flower.\nThe Pokémon on the\nPlains seem to like it.</language>
+	</row>
+	<row id="msg_0430_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A very tenderly colored flower.\nThe Pokémon on the\nPlains seem to like it.</language>
+	</row>
+	<row id="msg_0430_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A somewhat short tree.\nThe Pokémon in the\nForest seem to like it.</language>
+	</row>
+	<row id="msg_0430_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A remainder from a tree that was\ncut down. The Pokémon in the\nForest seem to like it.</language>
+	</row>
+	<row id="msg_0430_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A pile of broken branches.\nThe Pokémon in the\nForest seem to like it.</language>
+	</row>
+	<row id="msg_0430_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A smallish round rock.\nThe Pokémon in the\nrocky Areas seem to like it.</language>
+	</row>
+	<row id="msg_0430_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A big, scraggy rock.\nThe Pokémon in the\nrocky Areas seem to like it.</language>
+	</row>
+	<row id="msg_0430_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A mossy rock.\nThe Pokémon in the\nrocky Areas seem to like it.</language>
+	</row>
+	<row id="msg_0430_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Water collected on the ground.\nThe Pokémon by the\nwater seem to like it.</language>
+	</row>
+	<row id="msg_0430_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can place it using Surf.\nThe Pokémon by the\nwater seem to like it.</language>
+	</row>
+	<row id="msg_0430_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cool, delicious drinking\nwater. The Pokémon by the\nwater seem to like it.</language>
+	</row>
+	<row id="msg_0430_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A long and thin bench.\nThe kind you would find in\nany park or rest area.</language>
+	</row>
+	<row id="msg_0430_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A short, horizontal fence.\nIf you used a few of these, you could\nprobably enclose a lake or flower patch.</language>
+	</row>
+	<row id="msg_0430_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A short, vertical fence.\nIf you used a few of these, you could\nprobably enclose a lake or flower patch.</language>
+	</row>
+	<row id="msg_0430_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A long, horizontal fence.\nIf you used a few of these, you could\nprobably enclose a lake or flower patch.</language>
+	</row>
+	<row id="msg_0430_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A long, vertical fence.\nIf you used a few of these, you could\nprobably enclose a lake or flower patch.</language>
+	</row>
+	<row id="msg_0430_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A signboard made of wood. If you\nplanted a stake in the ground, you\ncould post this sign on it.</language>
+	</row>
+	<row id="msg_0430_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A stone statue made in your image.\nIf you placed this, you could really\nget the sense of being a great hero.</language>
+	</row>
+	<row id="msg_0430_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your own flag that you drew. If you\nplaced this, you could really get the\nsense of being the ruler of the land.</language>
+	</row>
+	<row id="msg_0430_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An electric light that illuminates the\nArea. If placed in the darkness, it could\ncreate a beautiful path of light.</language>
+	</row>
+	<row id="msg_0430_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A sign pointing right. Any person who\nsees this would naturally want to go find\nout what it could be pointing to.</language>
+	</row>
+	<row id="msg_0430_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A sign pointing left. Any person who\nsees this would naturally want to go find\nout what it could be pointing to.</language>
+	</row>
+	<row id="msg_0430_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A trash can for disposing of litter.\nIf you have any litter, be sure to\nthrow it away or take it with you.</language>
+	</row>
+</body>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0679_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Kay &amp; Tia</language>
+	</row>
+	<row id="msg_0679_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You had fun battling us, right?\rSo how about we exchange phone\nnumbers, and that way if we want to\fbattle again, we can just give each\fother a call? {YESNO 0}</language>
+	</row>
+	<row id="msg_0679_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right, now you’ve got our number\nand we have yours.</language>
+	</row>
+	<row id="msg_0679_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh? But... Oh well.</language>
+	</row>
+	<row id="msg_0679_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you decide you wanted to trade\nnumbers after all? {YESNO 0}</language>
+	</row>
+	<row id="msg_0679_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right, here you go!\nIt’s an Oval Stone.\r</language>
+	</row>
+	<row id="msg_0679_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh?\nWait, aren’t you nearby?\rDo you just really like talking on the\nphone or something? What an odd hobby.</language>
+	</row>
+	<row id="msg_0679_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Our {STRVAR_1 0, 10, 0} is much stronger now!\rWe were battling a {STRVAR_1 0, 11, 0}\nrecently and it was over before we\fknew it!\rOh yeah, by the way, this is Tia.</language>
+	</row>
+	<row id="msg_0679_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Our {STRVAR_1 0, 10, 0} is much stronger now!\rWe were battling a {STRVAR_1 0, 11, 0}\nrecently and it was over before we\fknew it!\rOh yeah, by the way, this is Kay.</language>
+	</row>
+	<row id="msg_0679_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Earlier we saw a {STRVAR_1 0, 11, 0} on\nRoute 15. Didn’t we, Tia?\rYeah, then suddenly a {STRVAR_1 0, 11, 0}\ncame out of nowhere. Didn’t it, Kay?\rYeah, and we were so surprised we just\nran away. Didn’t we, Tia?\rI keep thinking about it, Kay, and\nI think that since we have Pokémon,\fwe should have just battled, right?\rIs it hard to tell who’s who when you’re\ntalking to both of us on the phone?</language>
+	</row>
+	<row id="msg_0679_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We should have another battle, just\nthe three of us.\rWe’re on {STRVAR_1 4, 3, 0}, so come on\nover when you get the chance.</language>
+	</row>
+	<row id="msg_0679_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Didn’t we make plans to have\nanother battle?\rWe’re waiting on {STRVAR_1 4, 3, 0}, so\ndon’t forget, OK?</language>
+	</row>
+	<row id="msg_0679_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Well, since we’re on the phone, how\nabout we give you a quiz?\r...\rSo, who’s speaking right now? Kay or\nTia?\r...\n...\f...\f...\fThe correct answer is...\rEleanor from the Pokémon Fan club,\nwho’s standing next to the twins!</language>
+	</row>
+	<row id="msg_0679_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, Tia found an Oval Stone.\rWe’ll give it to you if you come find us\non {STRVAR_1 4, 3, 0}. Got it?</language>
+	</row>
+	<row id="msg_0679_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We’re waiting on {STRVAR_1 4, 3, 0}.\nWe’ll give you an Oval Stone...</language>
+	</row>
+</body>

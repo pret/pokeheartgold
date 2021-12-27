@@ -92,9 +92,9 @@ u8 sub_0207791C(BAG_VIEW *bagView);
 /*
  * BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, u32 heap_id)
  *
- * Some key items, when used, only print a message.
+ * Some key items, when used, only print a non_npc_msg.
  * If the selected item is one of these, formats the
- * message into dest and returns TRUE. Otherwise,
+ * non_npc_msg into dest and returns TRUE. Otherwise,
  * returns FALSE and leaves dest untouched.
  *
  * @param saveData:    Persistent game state
@@ -102,7 +102,7 @@ u8 sub_0207791C(BAG_VIEW *bagView);
  * @param itemId:      ID of item to check
  * @param heap_id:     Heap in which to allocate temp buffers
  *
- * @returns: TRUE if message formatted, else FALSE
+ * @returns: TRUE if non_npc_msg formatted, else FALSE
  */
 BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, u32 heap_id);
 
@@ -110,7 +110,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
  * void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u32 unused, enum ItemUseError code, u32 heap_id)
  *
  * If you can't use the item for whatever reason, this
- * routine is called to format the message.
+ * routine is called to format the non_npc_msg.
  * In the default case, it's just Oak telling you off.
  * There are special messages for Cycling Road and when
  * you have an NPC companion.
@@ -119,7 +119,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
  *                        name in Oak's admonishment
  * @param dest:           Pointer to output STRING
  * @param itemId:         Unused
- * @param code:           Which message to output
+ * @param code:           Which non_npc_msg to output
  * @param heap_id:        Heap to allocate temp buffers from
  */
 void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, u32 heap_id);

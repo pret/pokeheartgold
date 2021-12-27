@@ -109,7 +109,7 @@ class NormalScriptParser(ScriptParserBase):
                     self.labels[value] = (size != 'script')
                 else:
                     self.labels[value] |= (size != 'script')
-                return f'{self.prefix}_{value:08X}', pc
+                return f'{self.prefix}_{value:04X}', pc
             case 'condition':
                 value = self.raw[pc]
                 pc += 1
@@ -208,7 +208,7 @@ class NormalScriptParser(ScriptParserBase):
         labels = sorted({x for x in self.labels if pc <= x < nextpc} | {pc, nextpc})
         for x, y in zip(labels[:-1], labels[1:]):
             if x in labels:
-                s += f'\n{self.prefix}_{x:08X}:\n'
+                s += f'\n{self.prefix}_{x:04X}:\n'
             s += self.make_gap_internal(x, y)
         return s
 
@@ -219,7 +219,7 @@ class NormalScriptParser(ScriptParserBase):
         s += '\t.include "asm/macros/script.inc"\n\n'
         s += '\t.rodata\n\n'
         for i, addr in enumerate(self.exported):
-            s += f'\tscrdef {self.prefix}_{addr:08X} ; {i:03d}\n'
+            s += f'\tscrdef {self.prefix}_{addr:04X} ; {i:03d}\n'
         s += '\tscrdef_end\n\n'
         if not self.lines:
             s += self.make_gap(self.header_end, len(self.raw))
@@ -232,7 +232,7 @@ class NormalScriptParser(ScriptParserBase):
                 if pc != nextpc:
                     args = list(args)
                     if pc in self.labels:
-                        s += f'{self.prefix}_{pc:08X}:\n'
+                        s += f'{self.prefix}_{pc:04X}:\n'
                     if args:
                         s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
                     else:

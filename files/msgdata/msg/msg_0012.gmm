@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0012_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">4\n3\n2\n1\n0</language>
+	</row>
+	<row id="msg_0012_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">9\n8\n7\n6\n5</language>
+	</row>
+	<row id="msg_0012_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">cc</language>
+	</row>
+	<row id="msg_0012_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Press the WOBBUFFET pump and pop\nballoons together!</language>
+	</row>
+	<row id="msg_0012_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">0</language>
+	</row>
+	<row id="msg_0012_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1</language>
+	</row>
+	<row id="msg_0012_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">2</language>
+	</row>
+	<row id="msg_0012_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">3</language>
+	</row>
+	<row id="msg_0012_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">4</language>
+	</row>
+	<row id="msg_0012_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">5</language>
+	</row>
+	<row id="msg_0012_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">6</language>
+	</row>
+	<row id="msg_0012_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">7</language>
+	</row>
+	<row id="msg_0012_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">8</language>
+	</row>
+	<row id="msg_0012_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">9</language>
+	</row>
+</body>

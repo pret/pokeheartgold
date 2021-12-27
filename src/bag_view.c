@@ -10,8 +10,8 @@
 #include "msgfmt.h"
 #include "constants/items.h"
 
-#include "msgdata/msg/msg_00000010.h"
-#include "msgdata/msg/msg_00000040.h"
+#include "msgdata/msg/msg_0010.h"
+#include "msgdata/msg/msg_0040.h"
 
 BAG_VIEW *BagView_New(u8 heap_id) {
     BAG_VIEW *ret = AllocFromHeap(heap_id, sizeof(BAG_VIEW));
@@ -108,23 +108,23 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
     STRING *fmtStr;
     MSGFMT *msgFmt;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
     msgFmt = ScrStrBufs_new(heap_id);
 
     if (itemId == ITEM_NONE) {
-        fmtStr = NewString_ReadMsgData(msgData, msg_00000010_00102);
+        fmtStr = NewString_ReadMsgData(msgData, msg_0010_00102);
     } else if (itemId == ITEM_POINT_CARD) {
-        fmtStr = NewString_ReadMsgData(msgData, msg_00000010_00100);
+        fmtStr = NewString_ReadMsgData(msgData, msg_0010_00100);
         BufferIntegerAsString(msgFmt, 0, get_num_battle_points(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else if (itemId == ITEM_SEAL_CASE) {
-        fmtStr = NewString_ReadMsgData(msgData, msg_00000010_00095);
+        fmtStr = NewString_ReadMsgData(msgData, msg_0010_00095);
         BufferIntegerAsString(msgFmt, 0, get_num_seals(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else if (itemId == ITEM_FASHION_CASE) {
-        fmtStr = NewString_ReadMsgData(msgData, msg_00000010_00096);
+        fmtStr = NewString_ReadMsgData(msgData, msg_0010_00096);
         BufferIntegerAsString(msgFmt, 0, get_num_fashion_accessories(saveData), 3, STRCONVMODE_LEFT_ALIGN, TRUE);
         BufferIntegerAsString(msgFmt, 1, get_num_fashion_backgrounds(saveData), 2, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else if (itemId == ITEM_COIN_CASE) {
-        fmtStr = NewString_ReadMsgData(msgData, msg_00000010_00058);
+        fmtStr = NewString_ReadMsgData(msgData, msg_0010_00058);
         BufferIntegerAsString(msgFmt, 0, get_num_coins(saveData), 5, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else {
         ScrStrBufs_delete(msgFmt);
@@ -144,20 +144,20 @@ void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 item
     switch (code) {
     case ITEMUSEERROR_NODISMOUNT:
         // You can't dismount your Bike here.
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
-        ReadMsgDataIntoString(msgData, msg_00000010_00057, dest);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
+        ReadMsgDataIntoString(msgData, msg_0010_00057, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOFOLLOWER:
         // Can't be used when you have someone with you!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
-        ReadMsgDataIntoString(msgData, msg_00000010_00118, dest);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
+        ReadMsgDataIntoString(msgData, msg_0010_00118, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOTNOW:
         // You can't be doing that now!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000010_bin, heap_id);
-        ReadMsgDataIntoString(msgData, msg_00000010_00119, dest);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
+        ReadMsgDataIntoString(msgData, msg_0010_00119, dest);
         DestroyMsgData(msgData);
         break;
     default:
@@ -166,9 +166,9 @@ void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 item
         MSGFMT *msgFmt;
         STRING *string;
 
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000040_bin, heap_id);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heap_id);
         msgFmt = ScrStrBufs_new(heap_id);
-        string = NewString_ReadMsgData(msgData, msg_00000040_00037);
+        string = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(msgFmt, 0, playerProfile);
         StringExpandPlaceholders(msgFmt, dest, string);
         String_dtor(string);

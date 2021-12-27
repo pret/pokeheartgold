@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0286_opponent" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OPPONENT</language>
+	</row>
+	<row id="msg_0286_i" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I</language>
+	</row>
+	<row id="msg_0286_you" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YOU</language>
+	</row>
+	<row id="msg_0286_mother" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOTHER</language>
+	</row>
+	<row id="msg_0286_grandfather" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRANDFATHER</language>
+	</row>
+	<row id="msg_0286_uncle" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">UNCLE</language>
+	</row>
+	<row id="msg_0286_father" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FATHER</language>
+	</row>
+	<row id="msg_0286_boy" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BOY</language>
+	</row>
+	<row id="msg_0286_adult" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ADULT</language>
+	</row>
+	<row id="msg_0286_brother" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BROTHER</language>
+	</row>
+	<row id="msg_0286_sister" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SISTER</language>
+	</row>
+	<row id="msg_0286_grandmother" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GRANDMOTHER</language>
+	</row>
+	<row id="msg_0286_aunt" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">AUNT</language>
+	</row>
+	<row id="msg_0286_parent" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PARENT</language>
+	</row>
+	<row id="msg_0286_old_man" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OLD MAN</language>
+	</row>
+	<row id="msg_0286_me" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ME</language>
+	</row>
+	<row id="msg_0286_girl" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIRL</language>
+	</row>
+	<row id="msg_0286_gal" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GAL</language>
+	</row>
+	<row id="msg_0286_family" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FAMILY</language>
+	</row>
+	<row id="msg_0286_her" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HER</language>
+	</row>
+	<row id="msg_0286_him" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HIM</language>
+	</row>
+	<row id="msg_0286_you_2" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">YOU</language>
+	</row>
+	<row id="msg_0286_siblings" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SIBLINGS</language>
+	</row>
+	<row id="msg_0286_kids" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KIDS</language>
+	</row>
+	<row id="msg_0286_mr_" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MR.</language>
+	</row>
+	<row id="msg_0286_ms_" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MS.</language>
+	</row>
+	<row id="msg_0286_myself" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MYSELF</language>
+	</row>
+	<row id="msg_0286_who" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WHO</language>
+	</row>
+	<row id="msg_0286_friend" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FRIEND</language>
+	</row>
+	<row id="msg_0286_ally" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ALLY</language>
+	</row>
+	<row id="msg_0286_person" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PERSON</language>
+	</row>
+	<row id="msg_0286_kids_2" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">KIDS</language>
+	</row>
+	<row id="msg_0286_i_2" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I</language>
+	</row>
+	<row id="msg_0286_everyone" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">EVERYONE</language>
+	</row>
+	<row id="msg_0286_rival" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RIVAL</language>
+	</row>
+	<row id="msg_0286_i_3" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I</language>
+	</row>
+	<row id="msg_0286_i_4" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I</language>
+	</row>
+	<row id="msg_0286_baby" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BABY</language>
+	</row>
+</body>

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0174_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Start debug</language>
+	</row>
+	<row id="msg_0174_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Select Name</language>
+	</row>
+	<row id="msg_0174_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Continue</language>
+	</row>
+	<row id="msg_0174_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Opening</language>
+	</row>
+	<row id="msg_0174_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sound test</language>
+	</row>
+	<row id="msg_0174_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon graphics</language>
+	</row>
+	<row id="msg_0174_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Back</language>
+	</row>
+	<row id="msg_0174_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Debug Fight</language>
+	</row>
+	<row id="msg_0174_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wi-Fi settings</language>
+	</row>
+	<row id="msg_0174_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wi-Fi Test</language>
+	</row>
+	<row id="msg_0174_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trainer graphics</language>
+	</row>
+	<row id="msg_0174_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Save data corrupted</language>
+	</row>
+	<row id="msg_0174_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Modify RTC</language>
+	</row>
+	<row id="msg_0174_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 0, 0} {STRVAR_1 51, 1, 0} Time: {STRVAR_1 51, 2, 0}:{STRVAR_1 51, 3, 0}</language>
+	</row>
+	<row id="msg_0174_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ダンジョンカットイン</language>
+	</row>
+	<row id="msg_0174_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＰＨＣつうしんテスト</language>
+	</row>
+	<row id="msg_0174_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Destroy the outside saved file</language>
+	</row>
+	<row id="msg_0174_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ＮＰＴコンティニュ－</language>
+	</row>
+	<row id="msg_0174_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Font Viewer</language>
+	</row>
+	<row id="msg_0174_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SYSTEM (CARD)</language>
+	</row>
+	<row id="msg_0174_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TALK (CARD)</language>
+	</row>
+	<row id="msg_0174_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BUTTON (CARD)</language>
+	</row>
+	<row id="msg_0174_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TOUCH (CARD)</language>
+	</row>
+	<row id="msg_0174_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PHC (CARD)</language>
+	</row>
+	<row id="msg_0174_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SYSTEM (MEMORY)</language>
+	</row>
+	<row id="msg_0174_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TALK (MEMORY)</language>
+	</row>
+	<row id="msg_0174_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Specify ID</language>
+	</row>
+</body>

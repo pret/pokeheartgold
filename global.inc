@@ -1728,7 +1728,7 @@
 .public Save_DressupData_get
 .public Save_FrontierData_get
 .public ScheduleBgTilemapBufferTransfer
-.public ScrCmd_MsgBox
+.public ScrCmd_NPCMsg
 .public ScrCmd_046
 .public ScrCmd_047
 .public ScrCmd_048
@@ -2563,7 +2563,7 @@
 .public ScrCmd_LoadByte
 .public ScrCmd_LoadByteFromAddr
 .public ScrCmd_LoadWord
-.public ScrCmd_Message
+.public ScrCmd_NonNPCMsg
 .public ScrCmd_Nop
 .public ScrCmd_ObjectGoTo
 .public ScrCmd_RestartCurrentScript

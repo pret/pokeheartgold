@@ -1,0 +1,1258 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0309_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Welcome to the Pokéathlon!\rToday’s event--\nthe {STRVAR_4 1, 0, 0}!\rWho will shine brightest today?\nLet’s meet the competitors!\r</language>
+	</row>
+	<row id="msg_0309_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team {STRVAR_1 3, 0, 0}: {STRVAR_1 1, 1, 0},\n{STRVAR_1 1, 2, 0}, and {STRVAR_1 1, 3, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right, we’re ready!\nAim for the top! Let’s\r{ALN_CENTER}{SIZE 200}POKéATHLON!\r</language>
+	</row>
+	<row id="msg_0309_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Great job, athletes!\rWhich team fought the hardest?\nWe’ve got the results!\rBut first...\nwho’s overflowing with fighting spirit?\r</language>
+	</row>
+	<row id="msg_0309_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Challenge Bonus for\nPokémon and Team!\r</language>
+	</row>
+	<row id="msg_0309_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 1, 0} points for Team {STRVAR_1 3, 0, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Continuing on, the individual prizes...\r</language>
+	</row>
+	<row id="msg_0309_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The No-Miss Bonus!\r</language>
+	</row>
+	<row id="msg_0309_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team {STRVAR_1 3, 0, 0}’s {STRVAR_1 0, 1, 0}!</language>
+	</row>
+	<row id="msg_0309_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There wasn’t one this time.\r</language>
+	</row>
+	<row id="msg_0309_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s all!\r</language>
+	</row>
+	<row id="msg_0309_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Moving on...\nthe points leader!\r</language>
+	</row>
+	<row id="msg_0309_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team {STRVAR_1 3, 0, 0}’s {STRVAR_1 0, 1, 0}!</language>
+	</row>
+	<row id="msg_0309_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s all!\r</language>
+	</row>
+	<row id="msg_0309_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Next up...\nthe prize for effort!\r</language>
+	</row>
+	<row id="msg_0309_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon that jumped the most...\r</language>
+	</row>
+	<row id="msg_0309_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon that hit the most...\r</language>
+	</row>
+	<row id="msg_0309_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon that failed the most...\r</language>
+	</row>
+	<row id="msg_0309_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon that dashed the most...\r</language>
+	</row>
+	<row id="msg_0309_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Pokémon that missed collecting\nthe most points...\r</language>
+	</row>
+	<row id="msg_0309_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team {STRVAR_1 3, 0, 0}’s {STRVAR_1 0, 1, 0}!</language>
+	</row>
+	<row id="msg_0309_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s all!\r</language>
+	</row>
+	<row id="msg_0309_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Finally...\nwe’ll add up the event points!\r</language>
+	</row>
+	<row id="msg_0309_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Event {STRVAR_1 50, 0, 0}!</language>
+	</row>
+	<row id="msg_0309_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What? We have a tie!?\nWell, we settle ties by a drawing!\rNo, no, hmm...\n...\r...\nGot it!\r</language>
+	</row>
+	<row id="msg_0309_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The overall winner, with {STRVAR_1 52, 0, 0} points...\r</language>
+	</row>
+	<row id="msg_0309_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Team {STRVAR_1 3, 0, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team {STRVAR_1 3, 0, 0} was awarded\nthe {STRVAR_4 3, 1, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team {STRVAR_1 3, 0, 0} was awarded\n{STRVAR_4 3, 1, 0} and {STRVAR_4 3, 2, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team {STRVAR_1 3, 0, 0} beat its personal\nbest at the {STRVAR_4 1, 1, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You did well on the\n{STRVAR_4 1, 0, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Congratulations!\nThat was a wonderful Performance!\rKeep aiming to be the top Pokéathlete!\rThat is...\nPokéathlon\r{ALN_CENTER}{SIZE 200}FOREVER!\r</language>
+	</row>
+	<row id="msg_0309_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Joined {STRVAR_1 55, 1, 0} times!\nA new name in Pokéathletes!\r</language>
+	</row>
+	<row id="msg_0309_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Joined {STRVAR_1 55, 1, 0} times!\nA Pokéathlete shooting star!\r</language>
+	</row>
+	<row id="msg_0309_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Joined {STRVAR_1 55, 1, 0} times!\nA Pokéathlete supernova!\r</language>
+	</row>
+	<row id="msg_0309_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Joined {STRVAR_1 55, 1, 0} times!\nA Pokéathlete galaxy-sized explosion!\r</language>
+	</row>
+	<row id="msg_0309_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aim for the championship!\nOn a Pokéathlon shooting star!\r</language>
+	</row>
+	<row id="msg_0309_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Overall victory, {STRVAR_1 55, 1, 0} times!\nThe Pokéathlon is yours!\r</language>
+	</row>
+	<row id="msg_0309_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Overall victory, {STRVAR_1 55, 1, 0} times!\nTomorrow, seize the Pokéathlon!\r</language>
+	</row>
+	<row id="msg_0309_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Overall victory, {STRVAR_1 55, 1, 0} times!\nThe Pokéathlon is mine!\r</language>
+	</row>
+	<row id="msg_0309_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you try your best and don’t fail...\nyou’re sure to do better!\r</language>
+	</row>
+	<row id="msg_0309_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Last Place, {STRVAR_1 55, 1, 0} times!\nThat’s all right. I’ll keep trying!\r</language>
+	</row>
+	<row id="msg_0309_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Last Place, {STRVAR_1 55, 1, 0} times!\nThat doesn’t matter at all!\r</language>
+	</row>
+	<row id="msg_0309_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Last Place, {STRVAR_1 55, 1, 0} times!\nNobody’s seen my back yet!\r</language>
+	</row>
+	<row id="msg_0309_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aim for number one!\nIt starts today!\r</language>
+	</row>
+	<row id="msg_0309_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">First Place, {STRVAR_1 55, 1, 0} times!\nAll right! Will you come with me?\r</language>
+	</row>
+	<row id="msg_0309_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">First Place, {STRVAR_1 55, 1, 0} times!\nWere you still really counting this time?\r</language>
+	</row>
+	<row id="msg_0309_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">First Place, {STRVAR_1 55, 1, 0} times!\nDon’t tell me, another First Place?!\r</language>
+	</row>
+	<row id="msg_0309_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t worry about failure!\nFalling down is not the end!\r</language>
+	</row>
+	<row id="msg_0309_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Last Place, {STRVAR_1 55, 1, 0} times!\nFall down seven times. Get up eight!\r</language>
+	</row>
+	<row id="msg_0309_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Last Place, {STRVAR_1 55, 1, 0} times!\nThat’s my distinguishing feature!\r</language>
+	</row>
+	<row id="msg_0309_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Last Place, {STRVAR_1 55, 1, 0} times!\nThis record is what I’m famous for!\r</language>
+	</row>
+	<row id="msg_0309_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Winning with true strength?\nOr just winning with luck?!\r</language>
+	</row>
+	<row id="msg_0309_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Closing-ceremony bonus awards.\nLucky {STRVAR_1 55, 1, 0} times?!\r</language>
+	</row>
+	<row id="msg_0309_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Closing-ceremony bonus awards.\n{STRVAR_1 55, 1, 0} times. That’s true strength!\r</language>
+	</row>
+	<row id="msg_0309_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Closing-ceremony bonus awards.\n{STRVAR_1 55, 1, 0} times. Luck and true strength!\r</language>
+	</row>
+	<row id="msg_0309_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Always giving instructions to Pokémon!\nHowl for heaps of championships!\r</language>
+	</row>
+	<row id="msg_0309_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Will that teamwork be enough to\nchange history?\r</language>
+	</row>
+	<row id="msg_0309_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Look at this! This teamwork! It’s\namazing! You can feel the friendship!\r</language>
+	</row>
+	<row id="msg_0309_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">That’s right. We can read\neach other’s minds!\r</language>
+	</row>
+	<row id="msg_0309_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It doesn’t end when you fall! As long\nas there’s a championship!\r</language>
+	</row>
+	<row id="msg_0309_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Failed {STRVAR_1 55, 1, 0} times! Only the number\nof times you’ve fainted has increased!\r</language>
+	</row>
+	<row id="msg_0309_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Failed {STRVAR_1 55, 1, 0} times!\nFailure is just a shortcut to success!\r</language>
+	</row>
+	<row id="msg_0309_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Failed {STRVAR_1 55, 1, 0} times!\nFailure is the source of success!\r</language>
+	</row>
+	<row id="msg_0309_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Always aim sky high!\nAim for anything in the sky!\r</language>
+	</row>
+	<row id="msg_0309_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fly high!\nYou can fly anywhere!\r</language>
+	</row>
+	<row id="msg_0309_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s a tomorrow only you can see.\nLeap for it!\r</language>
+	</row>
+	<row id="msg_0309_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The other side of the sky is a glittery\ntomorrow! You were born to catch it!\r</language>
+	</row>
+	<row id="msg_0309_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Those points and these points--let’s go\nget ’em!\r</language>
+	</row>
+	<row id="msg_0309_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">One point isn’t useless! It’s the\nshortcut to success!\r</language>
+	</row>
+	<row id="msg_0309_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t overlook one point! Always be\nlooking one step ahead!\r</language>
+	</row>
+	<row id="msg_0309_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right! The Pokéathlon Point King!\nAll points are mine!\r</language>
+	</row>
+	<row id="msg_0309_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Take that! And that! I’ll tackle\nanything that comes my way!\r</language>
+	</row>
+	<row id="msg_0309_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right all right! The tackle fiend!\nThe number of times: {STRVAR_1 55, 1, 0}!\r</language>
+	</row>
+	<row id="msg_0309_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Strike for victory!\n{STRVAR_1 55, 1, 0} times, that is!\r</language>
+	</row>
+	<row id="msg_0309_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nothing can stand in my way!\nTackled {STRVAR_1 55, 1, 0} times!\r</language>
+	</row>
+	<row id="msg_0309_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Why did you fall down so far?! Is there\na hole over there or something?\r</language>
+	</row>
+	<row id="msg_0309_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">To fall from such heights!\nThat thrilling feeling has got me!\r</language>
+	</row>
+	<row id="msg_0309_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Pokéathlete that fights even on the\nedge of the ring! Truly serious!\r</language>
+	</row>
+	<row id="msg_0309_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s always a last stand!\nThat’s why I’m always serious!\r</language>
+	</row>
+	<row id="msg_0309_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Such running ability! Dash around the\nPokéathlon!\r</language>
+	</row>
+	<row id="msg_0309_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Run! Seize victory!\nGo for it! Seize tomorrow!\r</language>
+	</row>
+	<row id="msg_0309_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Think you can keep up?\nFast...faster...the fastest!\r</language>
+	</row>
+	<row id="msg_0309_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Running as fast as lightning!\nCan your eyes keep up?!\r</language>
+	</row>
+	<row id="msg_0309_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Strength isn’t everything! Strategy is\nanother important factor to success!\r</language>
+	</row>
+	<row id="msg_0309_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everything comes down to brains!\nYou can manipulate the world!\r</language>
+	</row>
+	<row id="msg_0309_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Always be prepared! That strategy\ncan be overturned!\r</language>
+	</row>
+	<row id="msg_0309_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you know everything about Pokémon,\nyou can get the best Performance!\r</language>
+	</row>
+	<row id="msg_0309_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re not alone!\nEveryone is here competing against you!\r</language>
+	</row>
+	<row id="msg_0309_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re always competing against\neveryone! That’s true strength!\r</language>
+	</row>
+	<row id="msg_0309_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’ll get stronger by fighting others,\nso use their strength to fight!\r</language>
+	</row>
+	<row id="msg_0309_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Within you are many friends, and\nmany Pokémon!\r</language>
+	</row>
+	<row id="msg_0309_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When you fight a true warrior, victory\nis within your grasp!\r</language>
+	</row>
+	<row id="msg_0309_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Outside are many strong Pokémon!\nThey’ve come to compete!\r</language>
+	</row>
+	<row id="msg_0309_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t lose to them! You’ve won too\nmany times!\r</language>
+	</row>
+	<row id="msg_0309_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aim to be a stronger Pokéathlete!\nThen you’ll win more!\r</language>
+	</row>
+	<row id="msg_0309_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your total losses prove your strength!\nThey show when you’ve faced a warrior!\r</language>
+	</row>
+	<row id="msg_0309_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There are many strong people out\nthere. You know that more than anyone!\r</language>
+	</row>
+	<row id="msg_0309_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Always compete with someone!\nAnd share in that competition!\r</language>
+	</row>
+	<row id="msg_0309_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I don’t worry about winning or losing,\njust that I compete against the best!\r</language>
+	</row>
+	<row id="msg_0309_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Leave Hurdles to me! I’m a Pokéathlete\nthat loves Hurdles more than anything!\r</language>
+	</row>
+	<row id="msg_0309_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s no Hurdle I can’t jump! Watch\nmy beautiful footwork!\r</language>
+	</row>
+	<row id="msg_0309_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I can climb over any obstacle, I can\njump any Hurdle!\r</language>
+	</row>
+	<row id="msg_0309_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hurdles are not obstacles! You can\njust run around them!\r</language>
+	</row>
+	<row id="msg_0309_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I was born to snatch Pennants! I am\nthe ruler of this beach!\r</language>
+	</row>
+	<row id="msg_0309_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When you see Pennants, you think of me!\nI am a Pennant-capturing hero!\r</language>
+	</row>
+	<row id="msg_0309_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The sandy beach is my field!\nI run about it freely!\r</language>
+	</row>
+	<row id="msg_0309_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s no Pennant I can’t capture!\nI’ll even capture the championship!\r</language>
+	</row>
+	<row id="msg_0309_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Push! Push! Push!\nPush it aside!\r</language>
+	</row>
+	<row id="msg_0309_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s nothing I can’t push! I’ll push\nyou out of the Circle to be alone!\r</language>
+	</row>
+	<row id="msg_0309_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m in a whole new dimension when it\ncomes to pushing! I was born to push!\r</language>
+	</row>
+	<row id="msg_0309_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What’s with the intimidation you might\nfeel? I can push without touching!\r</language>
+	</row>
+	<row id="msg_0309_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Smash! Crash! Shatter!\nI was born to smash Blocks!\r</language>
+	</row>
+	<row id="msg_0309_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s nothing I can’t smash! I am the\nPokéathlon Destruction King!\r</language>
+	</row>
+	<row id="msg_0309_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s a huge wall over there I’m\nsure! It’s just there for me to smash!\r</language>
+	</row>
+	<row id="msg_0309_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Keep breaking Blocks...and you’ll\nnotice the mountain over there.\r</language>
+	</row>
+	<row id="msg_0309_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My body just automatically catches any\nDiscs that come my way!\r</language>
+	</row>
+	<row id="msg_0309_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ve come to catch Discs and catch the\nPokéathlon!\r</language>
+	</row>
+	<row id="msg_0309_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Disc you caught is tomorrow’s\nshooting star!\r</language>
+	</row>
+	<row id="msg_0309_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bring it on. I’ll catch it! I’ll catch\nany Disc that comes my way!\r</language>
+	</row>
+	<row id="msg_0309_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The jump was like the wind!\nThe form was like a cloud!\r</language>
+	</row>
+	<row id="msg_0309_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jump high to the sky!\nThe form is weightless!\r</language>
+	</row>
+	<row id="msg_0309_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Pokéathlete that can read the\nflow of the wind and control the air.\r</language>
+	</row>
+	<row id="msg_0309_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s no border between the ground\nand the sky within me!\r</language>
+	</row>
+	<row id="msg_0309_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s no one who can stop me!\nI was born to run!\r</language>
+	</row>
+	<row id="msg_0309_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ve never seen strength like this!\nJust running all day long!\r</language>
+	</row>
+	<row id="msg_0309_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Once I get moving, I can’t stop!\nI’m in a perpetual Pokéathlon!\r</language>
+	</row>
+	<row id="msg_0309_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My engine is friendship, and my motor\nis victory!\r</language>
+	</row>
+	<row id="msg_0309_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There’s no chance! I’ll knock down all\nPokémon competition!\r</language>
+	</row>
+	<row id="msg_0309_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Getting in the Ring is the end! Fight to\nbe the last Pokémon standing!\r</language>
+	</row>
+	<row id="msg_0309_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ruler of the Ring!\nEnter another’s Ring at your own risk!\r</language>
+	</row>
+	<row id="msg_0309_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What exactly are you anyway?\nThat’s what the Ring will tell you!\r</language>
+	</row>
+	<row id="msg_0309_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Throwing Snow is the best in the world!\nWith that kind of accuracy, you can win!\r</language>
+	</row>
+	<row id="msg_0309_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The Snowballs we’re throwing are\nrolled-up balls of friendship!\r</language>
+	</row>
+	<row id="msg_0309_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Such rapid-fire throwing! Who’s that\nSnowball for?!\r</language>
+	</row>
+	<row id="msg_0309_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I don’t know where it will leap from\nnext! The Snowballs seem to split!\r</language>
+	</row>
+	<row id="msg_0309_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">No one can stop this ball! It will hit\nany Goal I aim for!\r</language>
+	</row>
+	<row id="msg_0309_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Use that wonderful teamwork and make\nthe Goal!\r</language>
+	</row>
+	<row id="msg_0309_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Such splendid footwork!\nAim for success!\r</language>
+	</row>
+	<row id="msg_0309_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Live with the ball.\nLive inside the ball!\r</language>
+	</row>
+	<row id="msg_0309_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Give the points as a gift to them. It’s\nthe embodiment of fair play.\r</language>
+	</row>
+	<row id="msg_0309_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Smile even when you miss! The\nPokéathlon isn’t just about winning!\r</language>
+	</row>
+	<row id="msg_0309_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You don’t hesitate to aim for your\nown Goal!\r</language>
+	</row>
+	<row id="msg_0309_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t fight over who rolled the ball\ninto your Goal! It’s your friendship!\r</language>
+	</row>
+	<row id="msg_0309_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Why do you stand out like that? Winning\nis not the only thing in the Pokéathlon.\r</language>
+	</row>
+	<row id="msg_0309_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Here it is! What you’ve all been waiting\nfor! Autographs after the competition!\r</language>
+	</row>
+	<row id="msg_0309_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If you want to see me win, I’ll show you\njust how I win!\r</language>
+	</row>
+	<row id="msg_0309_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When I do my best and win, I make\neveryone happy!\r</language>
+	</row>
+	<row id="msg_0309_00148" index="148">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0309_00149" index="149">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0309_00150" index="150">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語"></language>
+	</row>
+	<row id="msg_0309_00151" index="151">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0309_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 50, 0, 0}/6 Rounds</language>
+	</row>
+	<row id="msg_0309_00153" index="153">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0309_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English"> Next {STRVAR_1 1, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00155" index="155">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0309_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}.{STRVAR_1 51, 1, 0} Seconds</language>
+	</row>
+	<row id="msg_0309_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Pieces</language>
+	</row>
+	<row id="msg_0309_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 51, 0, 0}.{STRVAR_1 50, 1, 0} Laps</language>
+	</row>
+	<row id="msg_0309_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Hurdle Dash</language>
+	</row>
+	<row id="msg_0309_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Pennant Capture</language>
+	</row>
+	<row id="msg_0309_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Circle Push</language>
+	</row>
+	<row id="msg_0309_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Block Smash</language>
+	</row>
+	<row id="msg_0309_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Disc Catch</language>
+	</row>
+	<row id="msg_0309_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Lamp Jump</language>
+	</row>
+	<row id="msg_0309_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Relay Run</language>
+	</row>
+	<row id="msg_0309_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Ring Drop</language>
+	</row>
+	<row id="msg_0309_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Snow Throw</language>
+	</row>
+	<row id="msg_0309_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{SIZE 200}Goal Roll</language>
+	</row>
+	<row id="msg_0309_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Best Record</language>
+	</row>
+	<row id="msg_0309_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}.{STRVAR_1 51, 1, 0} Seconds</language>
+	</row>
+	<row id="msg_0309_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Pieces</language>
+	</row>
+	<row id="msg_0309_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 51, 0, 0}.{STRVAR_1 50, 1, 0} Laps</language>
+	</row>
+	<row id="msg_0309_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Track Dome</language>
+	</row>
+	<row id="msg_0309_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Beach Dome</language>
+	</row>
+	<row id="msg_0309_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Fight Dome</language>
+	</row>
+	<row id="msg_0309_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Fight Dome</language>
+	</row>
+	<row id="msg_0309_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Beach Dome</language>
+	</row>
+	<row id="msg_0309_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Jump Dome</language>
+	</row>
+	<row id="msg_0309_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Clay Dome</language>
+	</row>
+	<row id="msg_0309_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Fight Dome</language>
+	</row>
+	<row id="msg_0309_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Snow Dome</language>
+	</row>
+	<row id="msg_0309_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Place: Field Dome</language>
+	</row>
+	<row id="msg_0309_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Event Rules</language>
+	</row>
+	<row id="msg_0309_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aim for the Goal and jump! Run!</language>
+	</row>
+	<row id="msg_0309_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Run, collect Pennants, and return!</language>
+	</row>
+	<row id="msg_0309_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Get in the Circle!</language>
+	</row>
+	<row id="msg_0309_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Break lots of Blocks!</language>
+	</row>
+	<row id="msg_0309_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Catch the flying Discs!</language>
+	</row>
+	<row id="msg_0309_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jump and aim for the lit Lamps!</language>
+	</row>
+	<row id="msg_0309_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Run a Relay with Pokémon! Run!</language>
+	</row>
+	<row id="msg_0309_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Push your rivals out of the Ring!</language>
+	</row>
+	<row id="msg_0309_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hit as many Pokémon as you can!</language>
+	</row>
+	<row id="msg_0309_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Get the ball in an opponent’s Goal!</language>
+	</row>
+	<row id="msg_0309_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Controls</language>
+	</row>
+	<row id="msg_0309_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Touch the Pokémon to jump!\nControl three Pokémon at the\nsame time. Jump the Hurdles!</language>
+	</row>
+	<row id="msg_0309_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In Hurdle Dash, you race against time to\nthe finish line. Jump over the Hurdles\nand be first to finish. Points are given\nbased on how many seconds it took all\nthree Pokémon to reach the finish line.\n\nSpeed: Running Speed\nJump: Jump Length</language>
+	</row>
+	<row id="msg_0309_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Touch the Pokémon to jump!\nJump to clear the Hurdles!\n\nControl three Pokémon at the same\ntime and finish before\neveryone else!</language>
+	</row>
+	<row id="msg_0309_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Slide the stylus over a\nPokémon to move it! Hit others\nfrom behind to take Pennants!</language>
+	</row>
+	<row id="msg_0309_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In Pennant Capture, your three Pokémon\nrun in turns to bring back Pennants.\nUp to nine Pennants can be held at\none time. Strike your opponents from\nbehind to steal their Pennants.\n\nSkill: Ease of Movement\nSpeed: Running Speed</language>
+	</row>
+	<row id="msg_0309_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Slide your stylus over your Pokémon\nquickly to move it!\nThe farther you slide, the more it moves!\n\nBe quicker than anyone else to\ngather as many Pennants as you\ncan and bring them back!</language>
+	</row>
+	<row id="msg_0309_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Use the stylus to move your\nPokémon around! Control\nthree Pokémon at once!</language>
+	</row>
+	<row id="msg_0309_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Circle Push is an event where you push\nyour opponent. If you are inside a Circle\nafter the timer has counted down,\nyou are awarded points. The number\nwritten in the Circle is the number of\npoints you will receive.\n\nPower: Push Power\nStamina: Ability to Keep Pushing</language>
+	</row>
+	<row id="msg_0309_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Use the stylus to move your\nPokémon around!\n\nControl three Pokémon at once and\naim for the Circle with the\nmost points!</language>
+	</row>
+	<row id="msg_0309_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Touch the Blocks to strike!\nTouch the Switch button to\nswitch to the next Pokémon!</language>
+	</row>
+	<row id="msg_0309_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Block Smash is simply an event where you\nsmash Blocks. Switch out your Pokémon\nas each becomes tired. You receive\npoints according to how many Blocks\nyou smash.\n\nPower: Destructive Power\nStamina: Ability to Keep Going</language>
+	</row>
+	<row id="msg_0309_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Touch the Blocks to smash them!\nThere’s a barrage of Blocks. Smash as\nmany as you can!\n\nTouch the Switch button to switch\nto the next Pokémon!</language>
+	</row>
+	<row id="msg_0309_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Use the stylus to move\nthree Pokémon around.\n2) Touch to jump and catch!</language>
+	</row>
+	<row id="msg_0309_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Disc Catch is an event where you control\nyour three Pokémon at the same time and\njump to catch Discs that come flying\nfrom the sea. The farther back in the\nstage that you catch the Discs, the\nmore points you get.\n\nJump: Jump Height\nPower: Push Power</language>
+	</row>
+	<row id="msg_0309_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Use the stylus to move your Pokémon\naround. Control three Pokémon at once.\nPush your opponents out of the way to\ncatch the Discs!\n\n2) Touch your Pokémon lightly to\njump! Catch as many Discs\nas you can!</language>
+	</row>
+	<row id="msg_0309_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quickly pull the Pokémon\ndown to jump!</language>
+	</row>
+	<row id="msg_0309_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In Lamp Jump, you control your three\nPokémon as they try to jump and touch\nthe Lamps as they light. Try to touch as\nmany Lamps as you can in one jump.\n\nJump: Jump Height\nSkill: Ability to Jump Sideways</language>
+	</row>
+	<row id="msg_0309_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quickly pull the three Pokémon down and\nwatch them jump!\n\nPull them diagonally to have them\njump to the side!</language>
+	</row>
+	<row id="msg_0309_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quickly flick to dash! Flick as\nfast as you can to go faster!\nSwitch when you’re tired!</language>
+	</row>
+	<row id="msg_0309_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Relay Run is an event where you move from\nPokémon to Pokémon, trying to run\nas far as you can. Switch your Pokémon\nwhen they’re tired. Points will be\nawarded based only on the distance run.\n\nStamina: Endurance\nSpeed: Running Speed</language>
+	</row>
+	<row id="msg_0309_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quickly flick the stylus to the right to\nget your Pokémon to dash!\n\nThe more you flick to the right, the\nfaster your Pokémon will go!\n\nTouch the Switch button to\nswitch to the next Pokémon!</language>
+	</row>
+	<row id="msg_0309_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Use the stylus to move.\n2) Quickly flick to tackle!\n3) Lightly touch to jump!</language>
+	</row>
+	<row id="msg_0309_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ring Drop is an event where you push\nyour opponent. You get points each time\nyou push your opponent out of the Ring.\nIf you push the Switch button in your\ncorner, you can switch Pokémon.\n\nStamina: Ability to Resist Pushing\nPower: Tackle Strength</language>
+	</row>
+	<row id="msg_0309_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Use the stylus to move your Pokémon!\n\n2) Quickly flick the stylus to tackle!\nBlow your opponent away!\n\n3) Lightly touch your\nPokémon to get them to jump!\nYour Pokémon can stomp on others!</language>
+	</row>
+	<row id="msg_0309_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Quickly flick upward on\nyour Pokémon to throw Snow!\n2) Touch to hoard more Snow!</language>
+	</row>
+	<row id="msg_0309_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In Snow Throw, you control three of your\nPokémon at the same time and hit your\nopponents with Snowballs. You’ll receive\npoints no matter who you hit on your\nopponent’s team.\n\nSkill: Throwing Accuracy\nPower: Snowball Strength</language>
+	</row>
+	<row id="msg_0309_00235" index="235">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Flick upward on your Pokémon to\nthrow a Snowball!\n\n2) When holding a Snowball, touch the\nPokémon to make the Snowball bigger!\n\nBigger Snowballs can make your\nopponent faint on impact!</language>
+	</row>
+	<row id="msg_0309_00236" index="236">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Control three Pokémon! Use\nthe stylus to move around!\n2) Flick quickly to dash!</language>
+	</row>
+	<row id="msg_0309_00237" index="237">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">In Goal Roll, you try to get the ball into\nyour opponent’s Goal. It doesn’t matter\nwhich of their Goals--you’ll earn points.\nBut if the ball ends up in your own Goal,\nyou’ll lose points.\n\nSkill: Rolling Length\nPower: Rolling Strength</language>
+	</row>
+	<row id="msg_0309_00238" index="238">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">1) Control three Pokémon at once. Use\nthe stylus to move your Pokémon!\n\n2) Flick quickly with the stylus to\ndash! If you’re dashing, then\nyou can shoot for the Goal!</language>
+	</row>
+	<row id="msg_0309_00239" index="239">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Event {STRVAR_1 50, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00240" index="240">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Details</language>
+	</row>
+	<row id="msg_0309_00241" index="241">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Rules</language>
+	</row>
+	<row id="msg_0309_00242" index="242">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}More</language>
+	</row>
+	<row id="msg_0309_00243" index="243">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Back</language>
+	</row>
+	<row id="msg_0309_00244" index="244">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}About Rules</language>
+	</row>
+	<row id="msg_0309_00245" index="245">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}About Controls</language>
+	</row>
+	<row id="msg_0309_00246" index="246">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right! Results of the first event!?\r</language>
+	</row>
+	<row id="msg_0309_00247" index="247">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So exciting! How was the second event?!\r</language>
+	</row>
+	<row id="msg_0309_00248" index="248">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The end! How was the third event?!\r</language>
+	</row>
+	<row id="msg_0309_00249" index="249">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right! Results of the first event!?\r</language>
+	</row>
+	<row id="msg_0309_00250" index="250">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">So exciting! How was the second event?!\r</language>
+	</row>
+	<row id="msg_0309_00251" index="251">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s not over yet! The third event!?\r</language>
+	</row>
+	<row id="msg_0309_00252" index="252">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The end! How was the fourth event?!\r</language>
+	</row>
+	<row id="msg_0309_00253" index="253">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{SIZE 200}Team {STRVAR_1 3, 0, 0}!{SIZE 100}\rCongratulations on First Place!\r</language>
+	</row>
+	<row id="msg_0309_00254" index="254">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This...\nwas a very close competition!\r</language>
+	</row>
+	<row id="msg_0309_00255" index="255">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This event’s results will be determined\nby points!\r</language>
+	</row>
+	<row id="msg_0309_00256" index="256">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aim to score the most points in the next\ncompetition as well!\r</language>
+	</row>
+	<row id="msg_0309_00257" index="257">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s only just begun!\nGet ready for the next competition!\r</language>
+	</row>
+	<row id="msg_0309_00258" index="258">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What kind of competition will we see in\nthe next event?!\r</language>
+	</row>
+	<row id="msg_0309_00259" index="259">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Are they still trying to judge others’\npotential? Can’t wait for the next one!\r</language>
+	</row>
+	<row id="msg_0309_00260" index="260">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The first event is finished!\nFrom here on out, it’s for real!\r</language>
+	</row>
+	<row id="msg_0309_00261" index="261">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Suddenly, it’s the final event! Will the\ntables be turned this time?!\r</language>
+	</row>
+	<row id="msg_0309_00262" index="262">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Next is the final event!\nDo your best!\r</language>
+	</row>
+	<row id="msg_0309_00263" index="263">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Suddenly, we’re at the final event!\nVictory could be in anyone’s grasp!\r</language>
+	</row>
+	<row id="msg_0309_00264" index="264">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everything comes down to the final\nevent! Give it all you’ve got!\r</language>
+	</row>
+	<row id="msg_0309_00265" index="265">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everyone in the stadium’s excited! This\nis the final event!\r</language>
+	</row>
+	<row id="msg_0309_00266" index="266">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00267" index="267">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Will it be what we expect?!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00268" index="268">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everyone gave it their best!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00269" index="269">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which team is number one?!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00270" index="270">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which team will take the championship?!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00271" index="271">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aim for the highest point total in the\nnext event!\r</language>
+	</row>
+	<row id="msg_0309_00272" index="272">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s only just begun!\nGet ready for the next competition!\r</language>
+	</row>
+	<row id="msg_0309_00273" index="273">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What kind of competition will we see in\nthe next event?!\r</language>
+	</row>
+	<row id="msg_0309_00274" index="274">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Are they still trying to judge others’\npotential? Can’t wait for the next one!\r</language>
+	</row>
+	<row id="msg_0309_00275" index="275">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The first event is finished!\nFrom here on out, it’s for real!\r</language>
+	</row>
+	<row id="msg_0309_00276" index="276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It’s just the second event!\nWhat kind of drama awaits?\r</language>
+	</row>
+	<row id="msg_0309_00277" index="277">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you have any strength left?\nThe third event is about to start!\r</language>
+	</row>
+	<row id="msg_0309_00278" index="278">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">We haven’t seen competition yet!\nNext is the third event!\r</language>
+	</row>
+	<row id="msg_0309_00279" index="279">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The last-place team still has a chance!\nThis is the third event!\r</language>
+	</row>
+	<row id="msg_0309_00280" index="280">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The stadium is full of suspense! Here\ncomes the third event!\r</language>
+	</row>
+	<row id="msg_0309_00281" index="281">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Suddenly, it’s the final event! Will the\ntables be turned this time?!\r</language>
+	</row>
+	<row id="msg_0309_00282" index="282">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Next is the final event!\nDo your best!\r</language>
+	</row>
+	<row id="msg_0309_00283" index="283">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Suddenly, we’re at the final event!\nVictory could be in anyone’s hands!\r</language>
+	</row>
+	<row id="msg_0309_00284" index="284">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everything comes down to the final\nevent! Give it all you’ve got!\r</language>
+	</row>
+	<row id="msg_0309_00285" index="285">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everyone in the stadium’s excited! This\nis the final event!\r</language>
+	</row>
+	<row id="msg_0309_00286" index="286">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">All right!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00287" index="287">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Will it be what we expect?!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00288" index="288">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Everyone gave it their best!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00289" index="289">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which team is number one?!\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00290" index="290">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Which team will take the championship?\nI’ll announce the final results!\r</language>
+	</row>
+	<row id="msg_0309_00291" index="291">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total Time: {STRVAR_1 52, 0, 0}.{STRVAR_1 51, 1, 0} Seconds</language>
+	</row>
+	<row id="msg_0309_00292" index="292">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total: {STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00293" index="293">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00294" index="294">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total Pieces: {STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00295" index="295">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00296" index="296">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00297" index="297">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total Distance: {STRVAR_1 51, 0, 0}.{STRVAR_1 50, 1, 0} Laps</language>
+	</row>
+	<row id="msg_0309_00298" index="298">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00299" index="299">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total: {STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00300" index="300">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Total: {STRVAR_1 52, 0, 0} Points</language>
+	</row>
+	<row id="msg_0309_00301" index="301">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pcs.</language>
+	</row>
+	<row id="msg_0309_00302" index="302">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0309_00303" index="303">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Results Announcement</language>
+	</row>
+	<row id="msg_0309_00304" index="304">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Points</language>
+	</row>
+	<row id="msg_0309_00305" index="305">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Laps</language>
+	</row>
+	<row id="msg_0309_00306" index="306">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}{STRVAR_1 3, 0, 0}</language>
+	</row>
+	<row id="msg_0309_00307" index="307">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}+1</language>
+	</row>
+	<row id="msg_0309_00308" index="308">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}+2</language>
+	</row>
+	<row id="msg_0309_00309" index="309">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}-1</language>
+	</row>
+	<row id="msg_0309_00310" index="310">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Waiting for everyone’s selection...</language>
+	</row>
+	<row id="msg_0309_00311" index="311">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{ALN_CENTER}Second\n{ALN_CENTER}Wind!</language>
+	</row>
+</body>

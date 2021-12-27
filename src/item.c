@@ -767,13 +767,13 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id) {
 }
 
 void GetItemNameIntoString(STRING *dest, u16 itemId, HeapID heap_id) {
-    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000222_bin, heap_id);
+    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0222_bin, heap_id);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
 
 void GetItemDescIntoString(STRING *dest, u16 itemId, HeapID heap_id) {
-    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000221_bin, heap_id);
+    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0221_bin, heap_id);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
@@ -1022,7 +1022,7 @@ STRING *GetNutName(u16 berryId, HeapID heap_id) {
     if (berryId != 0) {
         berryId--;
     }
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000251_bin, heap_id);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0251_bin, heap_id);
     ret = NewString_ReadMsgData(msgData, berryId);
     DestroyMsgData(msgData);
     return ret;

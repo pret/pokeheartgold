@@ -1,0 +1,943 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0279_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mystery Zone</language>
+	</row>
+	<row id="msg_0279_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Twinleaf Town</language>
+	</row>
+	<row id="msg_0279_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sandgem Town</language>
+	</row>
+	<row id="msg_0279_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Floaroma Town</language>
+	</row>
+	<row id="msg_0279_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Solaceon Town</language>
+	</row>
+	<row id="msg_0279_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Celestic Town</language>
+	</row>
+	<row id="msg_0279_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jubilife City</language>
+	</row>
+	<row id="msg_0279_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Canalave City</language>
+	</row>
+	<row id="msg_0279_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oreburgh City</language>
+	</row>
+	<row id="msg_0279_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eterna City</language>
+	</row>
+	<row id="msg_0279_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hearthome City</language>
+	</row>
+	<row id="msg_0279_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pastoria City</language>
+	</row>
+	<row id="msg_0279_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Veilstone City</language>
+	</row>
+	<row id="msg_0279_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sunyshore City</language>
+	</row>
+	<row id="msg_0279_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snowpoint City</language>
+	</row>
+	<row id="msg_0279_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon League</language>
+	</row>
+	<row id="msg_0279_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 201</language>
+	</row>
+	<row id="msg_0279_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 202</language>
+	</row>
+	<row id="msg_0279_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 203</language>
+	</row>
+	<row id="msg_0279_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 204</language>
+	</row>
+	<row id="msg_0279_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 205</language>
+	</row>
+	<row id="msg_0279_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 206</language>
+	</row>
+	<row id="msg_0279_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 207</language>
+	</row>
+	<row id="msg_0279_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 208</language>
+	</row>
+	<row id="msg_0279_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 209</language>
+	</row>
+	<row id="msg_0279_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 210</language>
+	</row>
+	<row id="msg_0279_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 211</language>
+	</row>
+	<row id="msg_0279_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 212</language>
+	</row>
+	<row id="msg_0279_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 213</language>
+	</row>
+	<row id="msg_0279_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 214</language>
+	</row>
+	<row id="msg_0279_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 215</language>
+	</row>
+	<row id="msg_0279_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 216</language>
+	</row>
+	<row id="msg_0279_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 217</language>
+	</row>
+	<row id="msg_0279_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 218</language>
+	</row>
+	<row id="msg_0279_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 219</language>
+	</row>
+	<row id="msg_0279_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 220</language>
+	</row>
+	<row id="msg_0279_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 221</language>
+	</row>
+	<row id="msg_0279_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 222</language>
+	</row>
+	<row id="msg_0279_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 223</language>
+	</row>
+	<row id="msg_0279_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 224</language>
+	</row>
+	<row id="msg_0279_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 225</language>
+	</row>
+	<row id="msg_0279_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 226</language>
+	</row>
+	<row id="msg_0279_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 227</language>
+	</row>
+	<row id="msg_0279_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 228</language>
+	</row>
+	<row id="msg_0279_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 229</language>
+	</row>
+	<row id="msg_0279_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 230</language>
+	</row>
+	<row id="msg_0279_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oreburgh Mine</language>
+	</row>
+	<row id="msg_0279_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Valley Windworks</language>
+	</row>
+	<row id="msg_0279_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Eterna Forest</language>
+	</row>
+	<row id="msg_0279_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fuego Ironworks</language>
+	</row>
+	<row id="msg_0279_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mt. Coronet</language>
+	</row>
+	<row id="msg_0279_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spear Pillar</language>
+	</row>
+	<row id="msg_0279_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Great Marsh</language>
+	</row>
+	<row id="msg_0279_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Solaceon Ruins</language>
+	</row>
+	<row id="msg_0279_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Victory Road</language>
+	</row>
+	<row id="msg_0279_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pal Park</language>
+	</row>
+	<row id="msg_0279_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Amity Square</language>
+	</row>
+	<row id="msg_0279_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ravaged Path</language>
+	</row>
+	<row id="msg_0279_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Floaroma Meadow</language>
+	</row>
+	<row id="msg_0279_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oreburgh Gate</language>
+	</row>
+	<row id="msg_0279_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fullmoon Island</language>
+	</row>
+	<row id="msg_0279_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sendoff Spring</language>
+	</row>
+	<row id="msg_0279_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Turnback Cave</language>
+	</row>
+	<row id="msg_0279_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flower Paradise</language>
+	</row>
+	<row id="msg_0279_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Snowpoint Temple</language>
+	</row>
+	<row id="msg_0279_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wayward Cave</language>
+	</row>
+	<row id="msg_0279_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ruin Maniac Cave</language>
+	</row>
+	<row id="msg_0279_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Maniac Tunnel</language>
+	</row>
+	<row id="msg_0279_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trophy Garden</language>
+	</row>
+	<row id="msg_0279_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Iron Island</language>
+	</row>
+	<row id="msg_0279_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Old Chateau</language>
+	</row>
+	<row id="msg_0279_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Galactic HQ</language>
+	</row>
+	<row id="msg_0279_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Verity Lakefront</language>
+	</row>
+	<row id="msg_0279_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Valor Lakefront</language>
+	</row>
+	<row id="msg_0279_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Acuity Lakefront</language>
+	</row>
+	<row id="msg_0279_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Spring Path</language>
+	</row>
+	<row id="msg_0279_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lake Verity</language>
+	</row>
+	<row id="msg_0279_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lake Valor</language>
+	</row>
+	<row id="msg_0279_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lake Acuity</language>
+	</row>
+	<row id="msg_0279_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Newmoon Island</language>
+	</row>
+	<row id="msg_0279_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Tower</language>
+	</row>
+	<row id="msg_0279_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fight Area</language>
+	</row>
+	<row id="msg_0279_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Survival Area</language>
+	</row>
+	<row id="msg_0279_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Resort Area</language>
+	</row>
+	<row id="msg_0279_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stark Mountain</language>
+	</row>
+	<row id="msg_0279_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seabreak Path</language>
+	</row>
+	<row id="msg_0279_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hall of Origin</language>
+	</row>
+	<row id="msg_0279_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Verity Cavern</language>
+	</row>
+	<row id="msg_0279_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Valor Cavern</language>
+	</row>
+	<row id="msg_0279_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Acuity Cavern</language>
+	</row>
+	<row id="msg_0279_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Jubilife TV</language>
+	</row>
+	<row id="msg_0279_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokétch Co.</language>
+	</row>
+	<row id="msg_0279_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GTS</language>
+	</row>
+	<row id="msg_0279_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trainers’ School</language>
+	</row>
+	<row id="msg_0279_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mining Museum</language>
+	</row>
+	<row id="msg_0279_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Flower Shop</language>
+	</row>
+	<row id="msg_0279_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cycle Shop</language>
+	</row>
+	<row id="msg_0279_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Contest Hall</language>
+	</row>
+	<row id="msg_0279_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poffin House</language>
+	</row>
+	<row id="msg_0279_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Foreign Building</language>
+	</row>
+	<row id="msg_0279_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon Day Care</language>
+	</row>
+	<row id="msg_0279_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Veilstone Store</language>
+	</row>
+	<row id="msg_0279_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Game Corner</language>
+	</row>
+	<row id="msg_0279_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Canalave Library</language>
+	</row>
+	<row id="msg_0279_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vista Lighthouse</language>
+	</row>
+	<row id="msg_0279_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sunyshore Market</language>
+	</row>
+	<row id="msg_0279_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokémon Mansion</language>
+	</row>
+	<row id="msg_0279_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Footstep House</language>
+	</row>
+	<row id="msg_0279_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Café</language>
+	</row>
+	<row id="msg_0279_00109" index="109">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Grand Lake</language>
+	</row>
+	<row id="msg_0279_00110" index="110">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Restaurant</language>
+	</row>
+	<row id="msg_0279_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Park</language>
+	</row>
+	<row id="msg_0279_00112" index="112">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Frontier</language>
+	</row>
+	<row id="msg_0279_00113" index="113">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Factory</language>
+	</row>
+	<row id="msg_0279_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Castle</language>
+	</row>
+	<row id="msg_0279_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Arcade</language>
+	</row>
+	<row id="msg_0279_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Hall</language>
+	</row>
+	<row id="msg_0279_00117" index="117">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Distortion World</language>
+	</row>
+	<row id="msg_0279_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Global Terminal</language>
+	</row>
+	<row id="msg_0279_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Villa</language>
+	</row>
+	<row id="msg_0279_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battleground</language>
+	</row>
+	<row id="msg_0279_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ROTOM’s Room</language>
+	</row>
+	<row id="msg_0279_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">T.G. Eterna Bldg</language>
+	</row>
+	<row id="msg_0279_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Iron Ruins</language>
+	</row>
+	<row id="msg_0279_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Iceberg Ruins</language>
+	</row>
+	<row id="msg_0279_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Peak Ruins</language>
+	</row>
+	<row id="msg_0279_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">New Bark Town</language>
+	</row>
+	<row id="msg_0279_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cherrygrove City</language>
+	</row>
+	<row id="msg_0279_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Violet City</language>
+	</row>
+	<row id="msg_0279_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Azalea Town</language>
+	</row>
+	<row id="msg_0279_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cianwood City</language>
+	</row>
+	<row id="msg_0279_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Goldenrod City</language>
+	</row>
+	<row id="msg_0279_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Olivine City</language>
+	</row>
+	<row id="msg_0279_00133" index="133">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ecruteak City</language>
+	</row>
+	<row id="msg_0279_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mahogany Town</language>
+	</row>
+	<row id="msg_0279_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lake of Rage</language>
+	</row>
+	<row id="msg_0279_00136" index="136">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blackthorn City</language>
+	</row>
+	<row id="msg_0279_00137" index="137">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mt. Silver</language>
+	</row>
+	<row id="msg_0279_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pallet Town</language>
+	</row>
+	<row id="msg_0279_00139" index="139">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Viridian City</language>
+	</row>
+	<row id="msg_0279_00140" index="140">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pewter City</language>
+	</row>
+	<row id="msg_0279_00141" index="141">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cerulean City</language>
+	</row>
+	<row id="msg_0279_00142" index="142">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lavender Town</language>
+	</row>
+	<row id="msg_0279_00143" index="143">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Vermilion City</language>
+	</row>
+	<row id="msg_0279_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Celadon City</language>
+	</row>
+	<row id="msg_0279_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Fuchsia City</language>
+	</row>
+	<row id="msg_0279_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cinnabar Island</language>
+	</row>
+	<row id="msg_0279_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Indigo Plateau</language>
+	</row>
+	<row id="msg_0279_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saffron City</language>
+	</row>
+	<row id="msg_0279_00149" index="149">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 1</language>
+	</row>
+	<row id="msg_0279_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 2</language>
+	</row>
+	<row id="msg_0279_00151" index="151">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 3</language>
+	</row>
+	<row id="msg_0279_00152" index="152">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 4</language>
+	</row>
+	<row id="msg_0279_00153" index="153">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 5</language>
+	</row>
+	<row id="msg_0279_00154" index="154">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 6</language>
+	</row>
+	<row id="msg_0279_00155" index="155">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 7</language>
+	</row>
+	<row id="msg_0279_00156" index="156">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 8</language>
+	</row>
+	<row id="msg_0279_00157" index="157">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 9</language>
+	</row>
+	<row id="msg_0279_00158" index="158">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 10</language>
+	</row>
+	<row id="msg_0279_00159" index="159">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 11</language>
+	</row>
+	<row id="msg_0279_00160" index="160">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 12</language>
+	</row>
+	<row id="msg_0279_00161" index="161">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 13</language>
+	</row>
+	<row id="msg_0279_00162" index="162">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 14</language>
+	</row>
+	<row id="msg_0279_00163" index="163">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 15</language>
+	</row>
+	<row id="msg_0279_00164" index="164">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 16</language>
+	</row>
+	<row id="msg_0279_00165" index="165">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 17</language>
+	</row>
+	<row id="msg_0279_00166" index="166">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 18</language>
+	</row>
+	<row id="msg_0279_00167" index="167">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 19</language>
+	</row>
+	<row id="msg_0279_00168" index="168">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 20</language>
+	</row>
+	<row id="msg_0279_00169" index="169">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 21</language>
+	</row>
+	<row id="msg_0279_00170" index="170">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 22</language>
+	</row>
+	<row id="msg_0279_00171" index="171">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 23</language>
+	</row>
+	<row id="msg_0279_00172" index="172">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 24</language>
+	</row>
+	<row id="msg_0279_00173" index="173">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 25</language>
+	</row>
+	<row id="msg_0279_00174" index="174">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 26</language>
+	</row>
+	<row id="msg_0279_00175" index="175">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 27</language>
+	</row>
+	<row id="msg_0279_00176" index="176">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 28</language>
+	</row>
+	<row id="msg_0279_00177" index="177">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 29</language>
+	</row>
+	<row id="msg_0279_00178" index="178">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 30</language>
+	</row>
+	<row id="msg_0279_00179" index="179">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 31</language>
+	</row>
+	<row id="msg_0279_00180" index="180">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 32</language>
+	</row>
+	<row id="msg_0279_00181" index="181">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 33</language>
+	</row>
+	<row id="msg_0279_00182" index="182">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 34</language>
+	</row>
+	<row id="msg_0279_00183" index="183">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 35</language>
+	</row>
+	<row id="msg_0279_00184" index="184">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 36</language>
+	</row>
+	<row id="msg_0279_00185" index="185">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 37</language>
+	</row>
+	<row id="msg_0279_00186" index="186">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 38</language>
+	</row>
+	<row id="msg_0279_00187" index="187">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 39</language>
+	</row>
+	<row id="msg_0279_00188" index="188">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 40</language>
+	</row>
+	<row id="msg_0279_00189" index="189">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 41</language>
+	</row>
+	<row id="msg_0279_00190" index="190">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 42</language>
+	</row>
+	<row id="msg_0279_00191" index="191">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 43</language>
+	</row>
+	<row id="msg_0279_00192" index="192">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 44</language>
+	</row>
+	<row id="msg_0279_00193" index="193">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 45</language>
+	</row>
+	<row id="msg_0279_00194" index="194">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 46</language>
+	</row>
+	<row id="msg_0279_00195" index="195">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 47</language>
+	</row>
+	<row id="msg_0279_00196" index="196">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Route 48</language>
+	</row>
+	<row id="msg_0279_00197" index="197">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DIGLETT’s Cave</language>
+	</row>
+	<row id="msg_0279_00198" index="198">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mt. Moon</language>
+	</row>
+	<row id="msg_0279_00199" index="199">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cerulean Cave</language>
+	</row>
+	<row id="msg_0279_00200" index="200">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rock Tunnel</language>
+	</row>
+	<row id="msg_0279_00201" index="201">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Power Plant</language>
+	</row>
+	<row id="msg_0279_00202" index="202">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Safari Zone</language>
+	</row>
+	<row id="msg_0279_00203" index="203">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seafoam Islands</language>
+	</row>
+	<row id="msg_0279_00204" index="204">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sprout Tower</language>
+	</row>
+	<row id="msg_0279_00205" index="205">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bell Tower</language>
+	</row>
+	<row id="msg_0279_00206" index="206">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Burned Tower</language>
+	</row>
+	<row id="msg_0279_00207" index="207">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">National Park</language>
+	</row>
+	<row id="msg_0279_00208" index="208">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Radio Tower</language>
+	</row>
+	<row id="msg_0279_00209" index="209">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ruins of Alph</language>
+	</row>
+	<row id="msg_0279_00210" index="210">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Union Cave</language>
+	</row>
+	<row id="msg_0279_00211" index="211">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SLOWPOKE Well</language>
+	</row>
+	<row id="msg_0279_00212" index="212">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Lighthouse</language>
+	</row>
+	<row id="msg_0279_00213" index="213">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Team Rocket HQ</language>
+	</row>
+	<row id="msg_0279_00214" index="214">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ilex Forest</language>
+	</row>
+	<row id="msg_0279_00215" index="215">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Goldenrod Tunnel</language>
+	</row>
+	<row id="msg_0279_00216" index="216">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mt. Mortar</language>
+	</row>
+	<row id="msg_0279_00217" index="217">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Ice Path</language>
+	</row>
+	<row id="msg_0279_00218" index="218">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whirl Islands</language>
+	</row>
+	<row id="msg_0279_00219" index="219">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mt. Silver Cave</language>
+	</row>
+	<row id="msg_0279_00220" index="220">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dark Cave</language>
+	</row>
+	<row id="msg_0279_00221" index="221">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Victory Road</language>
+	</row>
+	<row id="msg_0279_00222" index="222">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dragon’s Den</language>
+	</row>
+	<row id="msg_0279_00223" index="223">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tohjo Falls</language>
+	</row>
+	<row id="msg_0279_00224" index="224">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Viridian Forest</language>
+	</row>
+	<row id="msg_0279_00225" index="225">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokéathlon Dome</language>
+	</row>
+	<row id="msg_0279_00226" index="226">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">S.S. Aqua</language>
+	</row>
+	<row id="msg_0279_00227" index="227">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Safari Zone Gate</language>
+	</row>
+	<row id="msg_0279_00228" index="228">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cliff Cave</language>
+	</row>
+	<row id="msg_0279_00229" index="229">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Frontier Access</language>
+	</row>
+	<row id="msg_0279_00230" index="230">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Bellchime Trail</language>
+	</row>
+	<row id="msg_0279_00231" index="231">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sinjoh Ruins</language>
+	</row>
+	<row id="msg_0279_00232" index="232">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Embedded Tower</language>
+	</row>
+	<row id="msg_0279_00233" index="233">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Pokéwalker</language>
+	</row>
+	<row id="msg_0279_00234" index="234">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cliff Edge Gate</language>
+	</row>
+</body>

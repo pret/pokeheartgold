@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0778_00000" index="0">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Connecting to Nintendo Wi-Fi\nConnection... Please wait a moment...</language>
+	</row>
+	<row id="msg_0778_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is seeking someone\nto battle.</language>
+	</row>
+	<row id="msg_0778_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is seeking someone\nto trade with.</language>
+	</row>
+	<row id="msg_0778_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is seeking someone to\ncook with.</language>
+	</row>
+	<row id="msg_0778_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is seeking participants\nfor the Battle Frontier.</language>
+	</row>
+	<row id="msg_0778_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is seeking participants\nfor {STRVAR_3 0, 1, 0}.</language>
+	</row>
+	<row id="msg_0778_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is on standby.</language>
+	</row>
+	<row id="msg_0778_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">What would you like to seek?</language>
+	</row>
+	<row id="msg_0778_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seeking participants...</language>
+	</row>
+	<row id="msg_0778_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Suspend your invitation?</language>
+	</row>
+	<row id="msg_0778_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} contacted you!</language>
+	</row>
+	<row id="msg_0778_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like to log out of\nNintendo WFC?</language>
+	</row>
+	<row id="msg_0778_00013" index="13">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} invites you for\na voice chat!</language>
+	</row>
+	<row id="msg_0778_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} appears to be busy...</language>
+	</row>
+	<row id="msg_0778_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t connect with\n{STRVAR_1 3, 0, 0}.</language>
+	</row>
+	<row id="msg_0778_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Communicating with {STRVAR_1 3, 0, 0}...</language>
+	</row>
+	<row id="msg_0778_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} failed to respond...</language>
+	</row>
+	<row id="msg_0778_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} ended the voice chat.</language>
+	</row>
+	<row id="msg_0778_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like to end\nthis voice chat?</language>
+	</row>
+	<row id="msg_0778_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Nintendo Wi-Fi Connection</language>
+	</row>
+	<row id="msg_0778_00022" index="22">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00023" index="23">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0778_00024" index="24">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0778_00025" index="25">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00026" index="26">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IN BATTLE</language>
+	</row>
+	<row id="msg_0778_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRADE</language>
+	</row>
+	<row id="msg_0778_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRADING...</language>
+	</row>
+	<row id="msg_0778_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COOK</language>
+	</row>
+	<row id="msg_0778_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">COOKING...</language>
+	</row>
+	<row id="msg_0778_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE FRONTIER</language>
+	</row>
+	<row id="msg_0778_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IN CHALLENGE...</language>
+	</row>
+	<row id="msg_0778_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PLAZA GAMES</language>
+	</row>
+	<row id="msg_0778_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">IN PLAY...</language>
+	</row>
+	<row id="msg_0778_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">VOICE CHAT</language>
+	</row>
+	<row id="msg_0778_00037" index="37">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00038" index="38">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">APPLY</language>
+	</row>
+	<row id="msg_0778_00040" index="40">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0778_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+	<row id="msg_0778_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GROUP</language>
+	</row>
+	<row id="msg_0778_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE RECORD</language>
+	</row>
+	<row id="msg_0778_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">W: {STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">L: {STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POKéMON TRADES</language>
+	</row>
+	<row id="msg_0778_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POFFIN SESSIONS</language>
+	</row>
+	<row id="msg_0778_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DATE LAST PLAYED</language>
+	</row>
+	<row id="msg_0778_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE TOWER</language>
+	</row>
+	<row id="msg_0778_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE FACTORY</language>
+	</row>
+	<row id="msg_0778_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE CASTLE</language>
+	</row>
+	<row id="msg_0778_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE HALL</language>
+	</row>
+	<row id="msg_0778_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BATTLE ARCADE</language>
+	</row>
+	<row id="msg_0778_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PREV</language>
+	</row>
+	<row id="msg_0778_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CURRENT</language>
+	</row>
+	<row id="msg_0778_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RECORD</language>
+	</row>
+	<row id="msg_0778_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LEVEL 50</language>
+	</row>
+	<row id="msg_0778_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">OPEN LEVEL</language>
+	</row>
+	<row id="msg_0778_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">RENTAL/TRADE</language>
+	</row>
+	<row id="msg_0778_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CASTLE POINTS</language>
+	</row>
+	<row id="msg_0778_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 0, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WIN STREAK: {STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 53, 0, 0} CP</language>
+	</row>
+	<row id="msg_0778_00068" index="68">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WIN STREAK: {STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00069" index="69">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GAMES CLEARED: {STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00070" index="70">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PLAZA GAMES PLAYED</language>
+	</row>
+	<row id="msg_0778_00071" index="71">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_3 0, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00072" index="72">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00073" index="73">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CLOSE</language>
+	</row>
+	<row id="msg_0778_00074" index="74">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, {STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00075" index="75">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} wants to join you!</language>
+	</row>
+	<row id="msg_0778_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like to have another\nbattle against {STRVAR_1 3, 0, 0}?</language>
+	</row>
+	<row id="msg_0778_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Would you like to do another\ntrade with {STRVAR_1 3, 0, 0}?</language>
+	</row>
+	<row id="msg_0778_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Standing by...</language>
+	</row>
+	<row id="msg_0778_00080" index="80">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0778_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is in a battle.</language>
+	</row>
+	<row id="msg_0778_00082" index="82">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is trading.</language>
+	</row>
+	<row id="msg_0778_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is cooking.</language>
+	</row>
+	<row id="msg_0778_00084" index="84">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is in a Battle Frontier\nchallenge.</language>
+	</row>
+	<row id="msg_0778_00085" index="85">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is playing a Plaza Game.</language>
+	</row>
+	<row id="msg_0778_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} is having a voice chat.</language>
+	</row>
+	<row id="msg_0778_00087" index="87">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00088" index="88">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Reconnect to Nintendo WFC?</language>
+	</row>
+	<row id="msg_0778_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You need at least two Pokémon\nif you want to trade!</language>
+	</row>
+	<row id="msg_0778_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Voice chat was turned ON.\r</language>
+	</row>
+	<row id="msg_0778_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Voice chat was turned OFF.\r</language>
+	</row>
+	<row id="msg_0778_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">???</language>
+	</row>
+	<row id="msg_0778_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SINGLE BATTLE</language>
+	</row>
+	<row id="msg_0778_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DOUBLE BATTLE</language>
+	</row>
+	<row id="msg_0778_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FREE SINGLE</language>
+	</row>
+	<row id="msg_0778_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LV. 50 SINGLE</language>
+	</row>
+	<row id="msg_0778_00097" index="97">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LV. 100 SINGLE</language>
+	</row>
+	<row id="msg_0778_00098" index="98">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FREE DOUBLE</language>
+	</row>
+	<row id="msg_0778_00099" index="99">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LV. 50 DOUBLE</language>
+	</row>
+	<row id="msg_0778_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">LV. 100 DOUBLE</language>
+	</row>
+	<row id="msg_0778_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your friend ended the communication\nbattle.</language>
+	</row>
+	<row id="msg_0778_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Communicating. Please stand by...</language>
+	</row>
+	<row id="msg_0778_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t have a Double Battle\nif you only have one Pokémon...</language>
+	</row>
+	<row id="msg_0778_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You don’t have any Berries...</language>
+	</row>
+	<row id="msg_0778_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Poffin Case is full.</language>
+	</row>
+	<row id="msg_0778_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t cook Berries if you don’t\nhave a Poffin Case.</language>
+	</row>
+	<row id="msg_0778_00107" index="107">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When the group is ready:\nA Button: Proceed   B Button: Cancel</language>
+	</row>
+	<row id="msg_0778_00108" index="108">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Someone wishes to join.\nAccept this Trainer as a member?</language>
+	</row>
+	<row id="msg_0778_00109" index="109">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0778_00110" index="110">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0778_00111" index="111">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Are these members OK?</language>
+	</row>
+	<row id="msg_0778_00112" index="112">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0778_00113" index="113">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0778_00114" index="114">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Awaiting {STRVAR_1 3, 0, 0}’s response...</language>
+	</row>
+	<row id="msg_0778_00115" index="115">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} approved your\nmember-registration request.</language>
+	</row>
+	<row id="msg_0778_00116" index="116">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} turned down your\nmember-registration request...\r</language>
+	</row>
+	<row id="msg_0778_00117" index="117">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A member had to drop out.\nPlease register from the start again.\r</language>
+	</row>
+	<row id="msg_0778_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">There aren’t enough members.\r</language>
+	</row>
+	<row id="msg_0778_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Stop looking for members?</language>
+	</row>
+	<row id="msg_0778_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If the leader drops out, the group will\nbe disbanded. Is that OK?</language>
+	</row>
+	<row id="msg_0778_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The member invitations will be canceled.</language>
+	</row>
+	<row id="msg_0778_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Awaiting other members.</language>
+	</row>
+	<row id="msg_0778_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is it OK to turn on the Voice Chat?</language>
+	</row>
+	<row id="msg_0778_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is it OK to turn off the Voice Chat?</language>
+	</row>
+	<row id="msg_0778_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seeking Poffin cooks!</language>
+	</row>
+	<row id="msg_0778_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seeking {STRVAR_3 0, 0, 0} players!</language>
+	</row>
+	<row id="msg_0778_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Voice Chat ON/OFF: X Button</language>
+	</row>
+	<row id="msg_0778_00129" index="129">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00130" index="130">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ID {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0778_00131" index="131">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}\nID {STRVAR_1 54, 1, 0}</language>
+	</row>
+	<row id="msg_0778_00132" index="132">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The leader appears busy.\nPlease apply again.\r</language>
+	</row>
+	<row id="msg_0778_00133" index="133">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00134" index="134">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Voice chat will be turned ON while\nyou play with this friend.\rWould you like to respond to this\nfriend’s invitation?</language>
+	</row>
+	<row id="msg_0778_00135" index="135">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Voice chat will be turned OFF while\nyou play with this friend.\rWould you like to respond to this\nfriend’s invitation?</language>
+	</row>
+	<row id="msg_0778_00136" index="136">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00137" index="137">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00138" index="138">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Waiting for the other player to\ndecide. Please wait...</language>
+	</row>
+	<row id="msg_0778_00139" index="139">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00140" index="140">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00141" index="141">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00142" index="142">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00143" index="143">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0778_00144" index="144">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WALKABOUT</language>
+	</row>
+	<row id="msg_0778_00145" index="145">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MULTI BATTLE</language>
+	</row>
+	<row id="msg_0778_00146" index="146">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">2BITADPCM</language>
+	</row>
+	<row id="msg_0778_00147" index="147">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">3BITADPCM</language>
+	</row>
+	<row id="msg_0778_00148" index="148">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">4BITADPCM</language>
+	</row>
+	<row id="msg_0778_00149" index="149">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0778_00150" index="150">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}</language>
+	</row>
+</body>

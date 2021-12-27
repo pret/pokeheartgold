@@ -1,0 +1,586 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0010_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">USE</language>
+	</row>
+	<row id="msg_0010_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TRASH</language>
+	</row>
+	<row id="msg_0010_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">REGISTER</language>
+	</row>
+	<row id="msg_0010_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">GIVE</language>
+	</row>
+	<row id="msg_0010_00004" index="4">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0010_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CONFIRM</language>
+	</row>
+	<row id="msg_0010_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WALK</language>
+	</row>
+	<row id="msg_0010_00007" index="7">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CANCEL</language>
+	</row>
+	<row id="msg_0010_00009" index="9">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00010" index="10">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00011" index="11">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0010_00012" index="12">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0010_00013" index="13">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00014" index="14">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0010_00015" index="15">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0010_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CHECK</language>
+	</row>
+	<row id="msg_0010_00017" index="17">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0010_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">DESELECT</language>
+	</row>
+	<row id="msg_0010_00019" index="19">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00020" index="20">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0010_00021" index="21">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}</language>
+	</row>
+	<row id="msg_0010_00023" index="23">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00024" index="24">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0010_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">---</language>
+	</row>
+	<row id="msg_0010_00026" index="26">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00027" index="27">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00028" index="28">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0010_00029" index="29">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0010_00030" index="30">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00031" index="31">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00032" index="32">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0010_00033" index="33">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00034" index="34">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0010_00035" index="35">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00036" index="36">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00037" index="37">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00038" index="38">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXX</language>
+	</row>
+	<row id="msg_0010_00039" index="39">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">X</language>
+	</row>
+	<row id="msg_0010_00040" index="40">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0010_00041" index="41">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0010_00042" index="42">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The {STRVAR_1 8, 0, 0} item is selected.</language>
+	</row>
+	<row id="msg_0010_00044" index="44">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00045" index="45">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Move the {STRVAR_1 8, 0, 0}.</language>
+	</row>
+	<row id="msg_0010_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The {STRVAR_1 8, 0, 0} can’t be held.</language>
+	</row>
+	<row id="msg_0010_00048" index="48">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00049" index="49">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00050" index="50">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00051" index="51">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00052" index="52">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Throw away how many\n{STRVAR_1 8, 0, 0}(s)?</language>
+	</row>
+	<row id="msg_0010_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Threw away {STRVAR_1 51, 1, 0} {STRVAR_1 8, 0, 0}.</language>
+	</row>
+	<row id="msg_0010_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Is it OK to throw away\n{STRVAR_1 52, 1, 0} {STRVAR_1 8, 0, 0}?</language>
+	</row>
+	<row id="msg_0010_00056" index="56">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t dismount your Bike here.</language>
+	</row>
+	<row id="msg_0010_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Your Coins: {STRVAR_1 54, 0, 0}</language>
+	</row>
+	<row id="msg_0010_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Booted up a TM.{WAIT 3}{WAIT 4}\n</language>
+	</row>
+	<row id="msg_0010_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Booted up an HM.{WAIT 3}{WAIT 4}\n</language>
+	</row>
+	<row id="msg_0010_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">It contained\n{STRVAR_1 6, 0, 0}.\rTeach {STRVAR_1 6, 0, 0}\nto a Pokémon?</language>
+	</row>
+	<row id="msg_0010_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} used the\n{STRVAR_1 8, 1, 0}.</language>
+	</row>
+	<row id="msg_0010_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Since a Repel’s effects still linger,\nyou can’t use this now.</language>
+	</row>
+	<row id="msg_0010_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} used the\n{STRVAR_1 8, 1, 0}.\rWild Pokémon will be lured.</language>
+	</row>
+	<row id="msg_0010_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0} used the\n{STRVAR_1 8, 1, 0}.\rWild Pokémon will be repelled.</language>
+	</row>
+	<row id="msg_0010_00066" index="66">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00067" index="67">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00068" index="68">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00069" index="69">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00070" index="70">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00071" index="71">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0010_00072" index="72">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00073" index="73">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00074" index="74">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00075" index="75">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">MOVE</language>
+	</row>
+	<row id="msg_0010_00076" index="76">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}? Oh, no.\nI can’t buy that.</language>
+	</row>
+	<row id="msg_0010_00077" index="77">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 8, 0, 0}? \nHow many will you sell?</language>
+	</row>
+	<row id="msg_0010_00078" index="78">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I can pay ${STRVAR_1 55, 0, 0}.\nWould that be OK?</language>
+	</row>
+	<row id="msg_0010_00079" index="79">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Turned over the {STRVAR_1 8, 0, 0}\nand received ${STRVAR_1 55, 1, 0}.</language>
+	</row>
+	<row id="msg_0010_00080" index="80">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Money</language>
+	</row>
+	<row id="msg_0010_00081" index="81">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">${STRVAR_1 55, 0, 0}</language>
+	</row>
+	<row id="msg_0010_00082" index="82">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXX</language>
+	</row>
+	<row id="msg_0010_00083" index="83">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">+${STRVAR_1 55, 0, 0}</language>
+	</row>
+	<row id="msg_0010_00084" index="84">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XX</language>
+	</row>
+	<row id="msg_0010_00085" index="85">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00086" index="86">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SELL</language>
+	</row>
+	<row id="msg_0010_00087" index="87">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">x{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0010_00088" index="88">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXX</language>
+	</row>
+	<row id="msg_0010_00089" index="89">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">PP</language>
+	</row>
+	<row id="msg_0010_00090" index="90">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">POWER</language>
+	</row>
+	<row id="msg_0010_00091" index="91">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ACCURACY</language>
+	</row>
+	<row id="msg_0010_00092" index="92">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">CATEGORY</language>
+	</row>
+	<row id="msg_0010_00093" index="93">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 51, 0, 0}</language>
+	</row>
+	<row id="msg_0010_00094" index="94">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 52, 0, 0}</language>
+	</row>
+	<row id="msg_0010_00095" index="95">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Seals: {STRVAR_1 53, 0, 0}</language>
+	</row>
+	<row id="msg_0010_00096" index="96">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Accessories: {STRVAR_1 52, 0, 0}\nBackdrops: {STRVAR_1 51, 1, 0}</language>
+	</row>
+	<row id="msg_0010_00097" index="97">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00098" index="98">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00099" index="99">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXX</language>
+	</row>
+	<row id="msg_0010_00100" index="100">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Saved Battle Points:\n{STRVAR_1 53, 0, 0} BP</language>
+	</row>
+	<row id="msg_0010_00101" index="101">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TYPE</language>
+	</row>
+	<row id="msg_0010_00102" index="102">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A Key Item in the Bag can be assigned\nto this button for instant use.</language>
+	</row>
+	<row id="msg_0010_00103" index="103">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can only register up to two items\nto buttons!</language>
+	</row>
+	<row id="msg_0010_00104" index="104">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Turned on the power for\nGB Sounds!</language>
+	</row>
+	<row id="msg_0010_00105" index="105">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Turned off the power for\nGB Sounds!</language>
+	</row>
+	<row id="msg_0010_00106" index="106">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Can’t use the {STRVAR_1 8, 0, 0}.</language>
+	</row>
+	<row id="msg_0010_00107" index="107">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00108" index="108">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00109" index="109">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00110" index="110">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00111" index="111">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00112" index="112">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00113" index="113">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00114" index="114">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00115" index="115">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXX</language>
+	</row>
+	<row id="msg_0010_00116" index="116">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00117" index="117">
+		<attribute name="window_context_name">garbage</attribute>
+		<language name="English"></language>
+		<language name="日本語">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</language>
+	</row>
+	<row id="msg_0010_00118" index="118">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Can’t be used when you have someone\nwith you!</language>
+	</row>
+	<row id="msg_0010_00119" index="119">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You can’t be doing that now!</language>
+	</row>
+	<row id="msg_0010_00120" index="120">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Item Pocket\nFor items that will be useful during your\nadventure.</language>
+	</row>
+	<row id="msg_0010_00121" index="121">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Medicine Pocket\nFor items to regain your Pokémon’s\nHP and PP.</language>
+	</row>
+	<row id="msg_0010_00122" index="122">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Poké Ball Pocket\nFor all different types of Poké Balls.</language>
+	</row>
+	<row id="msg_0010_00123" index="123">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">TMs &amp; HMs Pocket\nFor all different types of TMs and HMs.</language>
+	</row>
+	<row id="msg_0010_00124" index="124">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Berry Pocket\nFor sorting and storing different\nBerries.</language>
+	</row>
+	<row id="msg_0010_00125" index="125">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Mail Pocket\nFor sorting and storing vibrant\nstationery.</language>
+	</row>
+	<row id="msg_0010_00126" index="126">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Items Pocket\nFor items that are useful during battle.</language>
+	</row>
+	<row id="msg_0010_00127" index="127">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Key Items Pocket\nFor items that are indispensable for\nyour adventure.</language>
+	</row>
+	<row id="msg_0010_00128" index="128">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">STOP</language>
+	</row>
+</body>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0647_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Blue</language>
+	</row>
+	<row id="msg_0647_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wha... I can’t make out what you’re\nsaying! This connection is no good!\rCall from somewhere better, OK?</language>
+	</row>
+	<row id="msg_0647_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello...\nWhatever... Don’t worry about me.\fI’m doing peachy over here!\r</language>
+	</row>
+	<row id="msg_0647_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Are there any Gym Leaders you haven’t\nbattled yet?\fMake your move! Show some initiative!</language>
+	</row>
+	<row id="msg_0647_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">If it’s not Sunday night, then I’m not\navailable. Call then or forget about it!</language>
+	</row>
+	<row id="msg_0647_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I was just looking for something\nto do!\fWanna battle me again? {YESNO 0}</language>
+	</row>
+	<row id="msg_0647_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whatever!\nI won’t lose to you again, got that?\rI’ll be waiting at the Fighting Dojo in\nSaffron City.</language>
+	</row>
+	<row id="msg_0647_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Whatever. Sounds like you’re pretty\nbusy yourself.</language>
+	</row>
+	<row id="msg_0647_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wha...?\nOh, c’mon... Haven’t you made plans\fwith enough other people?</language>
+	</row>
+	<row id="msg_0647_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m waiting at the Fighting Dojo in\nSaffron City.\fC’mon, show a little initiative here!</language>
+	</row>
+	<row id="msg_0647_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’m Blue.\r</language>
+	</row>
+	<row id="msg_0647_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Remember we made plans to battle at\nthe Fighting Dojo in Saffron City?\fWha...! Did you seriously forget?\fC’mon, I don’t have all day!</language>
+	</row>
+	<row id="msg_0647_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">When I look at Pokémon, I get a strange\nfeeling--you ever get that?\rThere’s round ones, square ones, flying\nones, swimming ones, flaming ones,\ffreezing ones, shiny ones, dark ones--\fthere are so many different types, and\fyet, they’re all Pokémon.\rI mean, like Pokémon, there’s not\njust one type of person, either...\rBut it’s still kind of strange when you\nthink about it.</language>
+	</row>
+	<row id="msg_0647_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Anyway, you’re really something.\rTraveling all by yourself, visiting all\nthese different Gyms you find and\fbeating them all...\rWell, you’re not really alone...\nYou’ve got Pokémon with you!</language>
+	</row>
+	<row id="msg_0647_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Man, this guy called Red brought\nme down in a heartbeat.\rI haven’t seen him in a long time...\nI wonder where he is and what he’s\fup to...\rCome to think of it, you look a little bit\nlike Red. Yeah, you do.\rJust...\nJust a little bit. Whatever...</language>
+	</row>
+</body>

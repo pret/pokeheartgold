@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0292_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You win...\n{STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0292_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0} was the one\nthing I wanted to avoid...</language>
+	</row>
+	<row id="msg_0292_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Waaah!\n{STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0292_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I want to go home with\n{STRVAR_1 28, 0, 0}...</language>
+	</row>
+	<row id="msg_0292_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0}!\n{STRVAR_1 28, 1, 0}!</language>
+	</row>
+	<row id="msg_0292_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Could it be...?\n{STRVAR_1 28, 0, 0}...?</language>
+	</row>
+	<row id="msg_0292_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0}!\nHow awful!</language>
+	</row>
+	<row id="msg_0292_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I was confident about\n{STRVAR_1 28, 0, 0}, too.</language>
+	</row>
+	<row id="msg_0292_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You’re {STRVAR_1 28, 0, 0},\naren’t you?</language>
+	</row>
+	<row id="msg_0292_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0}!\nCan’t be anything else but.</language>
+	</row>
+	<row id="msg_0292_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I feel so helplessly angry...\nIt’s {STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0292_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 28, 0, 0} makes me sad...</language>
+	</row>
+	<row id="msg_0292_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I feel sorry for\n{STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0292_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The way I feel now is\n{STRVAR_1 28, 0, 0}...</language>
+	</row>
+	<row id="msg_0292_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I lost, but I won at\n{STRVAR_1 28, 0, 0}!</language>
+	</row>
+	<row id="msg_0292_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I would’ve won if this\nwere {STRVAR_1 28, 0, 0}...</language>
+	</row>
+	<row id="msg_0292_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My head’s filled with only\n{STRVAR_1 28, 0, 0} now!</language>
+	</row>
+	<row id="msg_0292_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The way I lost...\nIt’s like {STRVAR_1 28, 0, 0}...</language>
+	</row>
+	<row id="msg_0292_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Isn’t {STRVAR_1 28, 0, 0}\n{STRVAR_1 28, 1, 0}?</language>
+	</row>
+	<row id="msg_0292_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Aww... That’s really\n{STRVAR_1 28, 0, 0}...</language>
+	</row>
+</body>

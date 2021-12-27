@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0707_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Tanner</language>
+	</row>
+	<row id="msg_0707_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, how about we exchange phone\nnumbers before we eat?{YESNO 0}</language>
+	</row>
+	<row id="msg_0707_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I’ve always got my Pokégear in reach,\nso if you give me a call, I’ll answer\fpretty quick!\n</language>
+	</row>
+	<row id="msg_0707_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Don’t worry!\rI’m a really nice Camper...</language>
+	</row>
+	<row id="msg_0707_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Did you decide you’d like to trade\nnumbers with me after all?{YESNO 0}</language>
+	</row>
+	<row id="msg_0707_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Yeah! Hey, here you are!\rI’ve been holding on to this just for\nyou. Don’t be shy--go ahead and\ftake it. It’s a present!\r</language>
+	</row>
+	<row id="msg_0707_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hm? Oh, you’re just around the corner?\rIf you’re that close, why bother with\na phone call? Humph!</language>
+	</row>
+	<row id="msg_0707_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">You know, it’s perfectly fine to be all\naffectionate to your Pokémon and let\fthem live in your house.\rBut I prefer to go out camping with my\nconstant companion, {STRVAR_1 0, 10, 0},\fwhich is why it’s so strong!\rThat reminds me--we knocked out a wild\n{STRVAR_1 0, 11, 0}, whammo! Just like that,\fthe other day. You should’ve seen it...</language>
+	</row>
+	<row id="msg_0707_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">About all this training your Pokémon\njust so you can catch stronger\fwild Pokémon...\rIt’s not a good idea to be throwing\nPoké Balls around recklessly, trying to\fcatch any old thing.\rYou need to build up a close connection\nwith your Pokémon.\rMy relationship with my {STRVAR_1 0, 10, 0} is\na perfect example.\r...Well, I say that, but the other day\nwe had a wild {STRVAR_1 0, 11, 0} just barely\fget away from us.\rNo matter how much I’d rather not think\nabout it, I can’t let the thoughts go...</language>
+	</row>
+	<row id="msg_0707_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hear me out! Earlier, we met a wild\n{STRVAR_1 0, 11, 0}!\rIt kind of jumped out as we were on the\nway home from a camping excursion!\fI was so surprised!\rI guess it goes to show you shouldn’t\nlet your guard down when you’re out\fin nature!</language>
+	</row>
+	<row id="msg_0707_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I was getting ready to cook up some\nchow, and I started thinking about you.\rBefore I sit down to eat, would you like\nto battle again?\rI’m on {STRVAR_1 4, 3, 0}, so bring your\nbest Pokémon!</language>
+	</row>
+	<row id="msg_0707_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Huh? What’s going on? Did you get lost\nor something?\rStay calm... I am right smack on\n{STRVAR_1 4, 3, 0}, so you should\fhave no trouble finding me!</language>
+	</row>
+	<row id="msg_0707_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Do you know the difference between\ngoing on a picnic and camping?\rIt’s a song, of course!\rWhen you’re going on a picnic, you sing a\nhappy, upbeat little tune as you hike\fover hills and fields.\rWhen you’re camping, you sing quiet,\nmournful songs of grief and loss while\fsitting and staring at the campfire.\rWhat? You don’t believe me?\rThen we should go camping sometime\nand sit around the fire and see what\fkind of melodies you feel like singing!</language>
+	</row>
+	<row id="msg_0707_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Recently, I was digging a fire pit in the\nground so I could cook supper, and\fI found an unusual item!\rApparently this thing is called a\nSun Stone.\rI’ll give it to you. I’m waiting on\n{STRVAR_1 4, 3, 0}!</language>
+	</row>
+	<row id="msg_0707_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">I still have that Sun Stone I said I’d\ngive you!\rI’m waiting on {STRVAR_1 4, 3, 0}, so\ncome and get it as soon as you can!</language>
+	</row>
+</body>

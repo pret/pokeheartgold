@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0161_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Overlay</language>
+	</row>
+	<row id="msg_0161_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Test</language>
+	</row>
+	<row id="msg_0161_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Acting</language>
+	</row>
+	<row id="msg_0161_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Visual</language>
+	</row>
+	<row id="msg_0161_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Up to Visual evaluation</language>
+	</row>
+	<row id="msg_0161_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dance</language>
+	</row>
+	<row id="msg_0161_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dance: Get a turn as a Main Dancer</language>
+	</row>
+	<row id="msg_0161_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dance: Won’t get a turn as a Main Dancer</language>
+	</row>
+	<row id="msg_0161_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Link Contest</language>
+	</row>
+	<row id="msg_0161_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Paticles</language>
+	</row>
+	<row id="msg_0161_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Result Annoucement</language>
+	</row>
+	<row id="msg_0161_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dance: without limitaion</language>
+	</row>
+	<row id="msg_0161_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Coolness Master ON</language>
+	</row>
+	<row id="msg_0161_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Coolness Master OFF</language>
+	</row>
+	<row id="msg_0161_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Beauty Master ON</language>
+	</row>
+	<row id="msg_0161_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Beauty Master OFF</language>
+	</row>
+	<row id="msg_0161_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cuteness Master ON</language>
+	</row>
+	<row id="msg_0161_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Cuteness Master OFF</language>
+	</row>
+	<row id="msg_0161_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Smartness Master ON</language>
+	</row>
+	<row id="msg_0161_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Smartness Master OFF</language>
+	</row>
+	<row id="msg_0161_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Toughness Master ON</language>
+	</row>
+	<row id="msg_0161_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Toughness Master OFF</language>
+	</row>
+	<row id="msg_0161_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Outside saving</language>
+	</row>
+	<row id="msg_0161_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Outside loading</language>
+	</row>
+	<row id="msg_0161_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Script Test</language>
+	</row>
+	<row id="msg_0161_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Capture</language>
+	</row>
+	<row id="msg_0161_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Clear an initialized-outside-saving flag</language>
+	</row>
+	<row id="msg_0161_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Wobbuffet Pop(alone)</language>
+	</row>
+	<row id="msg_0161_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Update all the Dress-up data at GDS</language>
+	</row>
+	<row id="msg_0161_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Recorder at GDS</language>
+	</row>
+	<row id="msg_0161_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Footprint Stamps</language>
+	</row>
+	<row id="msg_0161_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rank:Normal</language>
+	</row>
+	<row id="msg_0161_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rank:Great</language>
+	</row>
+	<row id="msg_0161_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rank:Ultra</language>
+	</row>
+	<row id="msg_0161_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Rank:Master</language>
+	</row>
+	<row id="msg_0161_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Category:Cool</language>
+	</row>
+	<row id="msg_0161_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Category:Beauty</language>
+	</row>
+	<row id="msg_0161_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Category:Cute</language>
+	</row>
+	<row id="msg_0161_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Category:Smart</language>
+	</row>
+	<row id="msg_0161_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Category:Tough</language>
+	</row>
+	<row id="msg_0161_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Video</language>
+	</row>
+	<row id="msg_0161_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Battle Video Ranking</language>
+	</row>
+	<row id="msg_0161_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Trainer Ranking</language>
+	</row>
+	<row id="msg_0161_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Dress-up</language>
+	</row>
+	<row id="msg_0161_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Box data</language>
+	</row>
+	<row id="msg_0161_00045" index="45">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sending {STRVAR_1 0, 0, 0}...　{STRVAR_1 50, 1, 0}</language>
+	</row>
+	<row id="msg_0161_00046" index="46">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">An error occurred.</language>
+	</row>
+	<row id="msg_0161_00047" index="47">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My Video: Destroy the current data</language>
+	</row>
+	<row id="msg_0161_00048" index="48">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My Video: Destroy the mirror data</language>
+	</row>
+	<row id="msg_0161_00049" index="49">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My Video: Change the current key</language>
+	</row>
+	<row id="msg_0161_00050" index="50">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">My Video: Change the mirror key</language>
+	</row>
+	<row id="msg_0161_00051" index="51">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 1: Destroy the current data</language>
+	</row>
+	<row id="msg_0161_00052" index="52">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 1: Destroy the mirror data</language>
+	</row>
+	<row id="msg_0161_00053" index="53">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 1: Change the current key</language>
+	</row>
+	<row id="msg_0161_00054" index="54">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 1: Change the mirror key</language>
+	</row>
+	<row id="msg_0161_00055" index="55">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 2: Destroy the current data</language>
+	</row>
+	<row id="msg_0161_00056" index="56">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 2: Destroy the mirror data</language>
+	</row>
+	<row id="msg_0161_00057" index="57">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 2: Change the current key</language>
+	</row>
+	<row id="msg_0161_00058" index="58">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 2: Change the mirror key</language>
+	</row>
+	<row id="msg_0161_00059" index="59">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 3: Destroy the current data</language>
+	</row>
+	<row id="msg_0161_00060" index="60">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 3: Destroy the mirror data</language>
+	</row>
+	<row id="msg_0161_00061" index="61">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 3: Change the current key</language>
+	</row>
+	<row id="msg_0161_00062" index="62">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 3: Change the mirror key</language>
+	</row>
+	<row id="msg_0161_00063" index="63">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Video 3: Destroy the current data</language>
+	</row>
+	<row id="msg_0161_00064" index="64">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hall: Destroy the mirror data</language>
+	</row>
+	<row id="msg_0161_00065" index="65">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hall: Change the current key</language>
+	</row>
+	<row id="msg_0161_00066" index="66">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hall: Change the mirror key</language>
+	</row>
+	<row id="msg_0161_00067" index="67">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Desroy the regular saved file</language>
+	</row>
+</body>

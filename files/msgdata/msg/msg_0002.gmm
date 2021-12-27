@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0002_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Quit</language>
+	</row>
+	<row id="msg_0002_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Pokémon hides on the\nseafloor and watches the\nshore with eyes on its back.</language>
+	</row>
+	<row id="msg_0002_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Pokémon knew no fear\nand flew as it pleased\nthrough the skies long ago.</language>
+	</row>
+	<row id="msg_0002_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A ten-legged Pokémon that\nswims on the bottom of the\nsea and eats plankton.</language>
+	</row>
+	<row id="msg_0002_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">This Pokémon, with feathers\nof seven colors, flies through\nthe sky, according to legend.</language>
+	</row>
+	<row id="msg_0002_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Are you sure you would like to quit?</language>
+	</row>
+</body>

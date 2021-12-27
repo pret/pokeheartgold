@@ -19788,8 +19788,8 @@ ov01_021EF034: ; 0x021EF034
 	.balign 4, 0
 	thumb_func_end ov01_021EF034
 
-	thumb_func_start ScrCmd_Message
-ScrCmd_Message: ; 0x021EF050
+	thumb_func_start ScrCmd_NonNPCMsg
+ScrCmd_NonNPCMsg: ; 0x021EF050
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
@@ -19799,7 +19799,7 @@ ScrCmd_Message: ; 0x021EF050
 	bl ovFieldMain_ShowMessageInField
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_Message
+	thumb_func_end ScrCmd_NonNPCMsg
 
 	thumb_func_start ScrCmd_438
 ScrCmd_438: ; 0x021EF064
@@ -20133,8 +20133,8 @@ ScrCmd_527: ; 0x021EF2E0
 _021EF318: .word ov01_021EF348
 	thumb_func_end ScrCmd_527
 
-	thumb_func_start ScrCmd_MsgBox
-ScrCmd_MsgBox: ; 0x021EF31C
+	thumb_func_start ScrCmd_NPCMsg
+ScrCmd_NPCMsg: ; 0x021EF31C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20155,7 +20155,7 @@ ScrCmd_MsgBox: ; 0x021EF31C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF344: .word ov01_021EF348
-	thumb_func_end ScrCmd_MsgBox
+	thumb_func_end ScrCmd_NPCMsg
 
 	thumb_func_start ov01_021EF348
 ov01_021EF348: ; 0x021EF348

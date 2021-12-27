@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0716_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Prof. Elm</language>
+	</row>
+	<row id="msg_0716_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rWhat’s wrong?\nIf you’re nearby, you should come talk\fin person!</language>
+	</row>
+	<row id="msg_0716_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rWhat’s wrong?\nIf you’re nearby, you should come talk\fto me in person!</language>
+	</row>
+	<row id="msg_0716_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rTry not to overdo it.\nBe sure to heal your Pokémon if they\fare hurt.</language>
+	</row>
+	<row id="msg_0716_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rTry not to overdo it.\nBe sure to heal your Pokémon if they\fare hurt.</language>
+	</row>
+	<row id="msg_0716_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, {STRVAR_1 3, 0, 0}...\rI just stepped away for a second...\nHow could...?</language>
+	</row>
+	<row id="msg_0716_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Oh, {STRVAR_1 3, 0, 0}...\rI just stepped away for a second...\nHow could...?</language>
+	</row>
+	<row id="msg_0716_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rWe’re checking the Egg now. It does\nappear to be a Pokémon Egg.\rWe’ll do a few more tests!</language>
+	</row>
+	<row id="msg_0716_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rWe’re checking the Egg now. It does\nappear to be a Pokémon Egg.\rWe’ll do a few more tests!</language>
+	</row>
+	<row id="msg_0716_00009" index="9">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rDid you see my assistant? He’s at the\nPoké Mart in Violet City.\rHe’s got something very important, so\nbe sure to pick it up!</language>
+	</row>
+	<row id="msg_0716_00010" index="10">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rDid you see my assistant? He’s at the\nPoké Mart in Violet City.\rHe’s got something very important, so\nbe sure to pick it up!</language>
+	</row>
+	<row id="msg_0716_00011" index="11">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rHow’s the Egg? Has anything changed?\rIf anything happens, please call.</language>
+	</row>
+	<row id="msg_0716_00012" index="12">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rHow’s the Egg? Has anything changed?\rIf anything happens, please call.</language>
+	</row>
+	<row id="msg_0716_00013" index="13">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, {STRVAR_1 3, 0, 0}, this is great news!\nA Pokémon hatched from that Egg!\rI knew that giving that Egg to you,\n{STRVAR_1 3, 0, 0}, was the right thing to\fdo. I just knew it!\rYou should come here and show me what\nkind of Pokémon it is!</language>
+	</row>
+	<row id="msg_0716_00014" index="14">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hey, {STRVAR_1 3, 0, 0}, this is great news!\nA Pokémon hatched from that Egg!\rI knew that giving that Egg to you,\n{STRVAR_1 3, 0, 0}, was the right thing to\fdo. I just knew it!\rYou should come here and show me what\nkind of Pokémon it is!</language>
+	</row>
+	<row id="msg_0716_00015" index="15">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI just made a new discovery.\rThe time it takes for an Egg to hatch\ndepends on the Pokémon.</language>
+	</row>
+	<row id="msg_0716_00016" index="16">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI just made a new discovery.\rThe time it takes for an Egg to hatch\ndepends on the Pokémon.</language>
+	</row>
+	<row id="msg_0716_00017" index="17">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rIt’s still a mystery what kinds of moves\nhatched Pokémon have.\rWe’re investigating that now.</language>
+	</row>
+	<row id="msg_0716_00018" index="18">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rIt’s still a mystery what kinds of moves\nhatched Pokémon have.\rWe’re investigating that now.</language>
+	</row>
+	<row id="msg_0716_00019" index="19">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rThere’s something strange on\nthe radio.\rIs something happening in Goldenrod?</language>
+	</row>
+	<row id="msg_0716_00020" index="20">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rThere’s something strange on\nthe radio.\rIs something happening in Goldenrod?</language>
+	</row>
+	<row id="msg_0716_00021" index="21">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, is this {STRVAR_1 3, 0, 0}?\rJust one more Badge to go before you\ncollect all the Johto Badges!\rBlackthorn’s Gym Leader is said to be a\npretty powerful Dragon Tamer!</language>
+	</row>
+	<row id="msg_0716_00022" index="22">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, is this {STRVAR_1 3, 0, 0}?\rJust one more Badge to go before you\ncollect all the Johto Badges!\rBlackthorn’s Gym Leader is said to be a\npretty powerful Dragon Tamer!</language>
+	</row>
+	<row id="msg_0716_00023" index="23">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\nYou seem to be doing well.\rYou’ve done so well, I have nothing to\nworry about for you.\rI think you could do anything you try!</language>
+	</row>
+	<row id="msg_0716_00024" index="24">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\nYou seem to be doing well.\rYou’ve done so well, I have nothing to\nworry about for you.\rI think you could do anything you try!</language>
+	</row>
+	<row id="msg_0716_00025" index="25">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you from\nProfessor Oak.\rCould you swing by my Lab?\nSee you later!</language>
+	</row>
+	<row id="msg_0716_00026" index="26">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you from\nProfessor Oak.\rCould you swing by my Lab?\nSee you later!</language>
+	</row>
+	<row id="msg_0716_00027" index="27">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rThere are so many different ways that\nPokémon evolve, aren’t there?!\rSome Pokémon don’t even evolve until\nthey meet certain conditions first!</language>
+	</row>
+	<row id="msg_0716_00028" index="28">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rThere are so many different ways that\nPokémon evolve, aren’t there?!\rSome Pokémon don’t even evolve until\nthey meet certain conditions first!</language>
+	</row>
+	<row id="msg_0716_00029" index="29">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI expect that there are some Pokémon\nin the Kanto region that I don’t know.\rThere are probably also methods of\nevolution that I’m not familiar with yet.\rI should use that perspective and\ndiscover what I can!</language>
+	</row>
+	<row id="msg_0716_00030" index="30">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI expect that there are some Pokémon\nin the Kanto region that I don’t know.\rThere are probably also methods of\nevolution that I’m not familiar with yet.\rI should use that perspective and\ndiscover what I can!</language>
+	</row>
+	<row id="msg_0716_00031" index="31">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rIt seems that Pokémon that have been\ninfected with Pokérus level up better.\fWe’re not quite sure why...</language>
+	</row>
+	<row id="msg_0716_00032" index="32">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rIt seems that Pokémon that have been\ninfected with Pokérus level up better.\fWe’re not quite sure why...</language>
+	</row>
+	<row id="msg_0716_00033" index="33">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">H-hello? {STRVAR_1 3, 0, 0}?\rIt’s a disaster!\nUh, um, it’s just terrible!\rWhat should I do?\nIt... Oh, no...\rPlease get back here now!</language>
+	</row>
+	<row id="msg_0716_00034" index="34">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">H-hello? {STRVAR_1 3, 0, 0}?\rIt’s a disaster!\nUh, um, it’s just terrible!\rWhat should I do?\nIt... Oh, no...\rPlease get back here now!</language>
+	</row>
+	<row id="msg_0716_00035" index="35">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\nWe’ve discovered something!\rThe details are...well, I can’t really\nsay anything, but we want you to carry\fthat Egg!\rMy assistant is at the Poké Mart in\nViolet City. Could you go meet him and\fpick up that Egg?</language>
+	</row>
+	<row id="msg_0716_00036" index="36">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\nWe’ve discovered something!\rThe details are...well, I can’t really\nsay anything, but we want you to carry\fthat Egg!\rMy assistant is at the Poké Mart in\nViolet City. Could you go meet him and\fpick up that Egg?</language>
+	</row>
+	<row id="msg_0716_00037" index="37">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}, how are things going?\rI called because something weird is\nhappening with the radio broadcasts.\rThey were talking about Team Rocket.\r{STRVAR_1 3, 0, 0}, do you know anything\nabout it?\rMaybe Team Rocket has returned.\nNo, that just can’t be true.\rSorry to bug you. Take care!</language>
+	</row>
+	<row id="msg_0716_00038" index="38">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 3, 0, 0}, how are things going?\rI called because something weird is\nhappening with the radio broadcasts.\rThey were talking about Team Rocket.\r{STRVAR_1 3, 0, 0}, do you know anything\nabout it?\rMaybe Team Rocket has returned.\nNo, that just can’t be true.\rSorry to bug you. Take care!</language>
+	</row>
+	<row id="msg_0716_00039" index="39">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\nHow’s it going?\rI’ve gotten hold of something neat.\nSwing by my Lab and pick it up!\rSee you later!</language>
+	</row>
+	<row id="msg_0716_00040" index="40">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\nHow’s it going?\rI’ve gotten hold of something neat.\nSwing by my Lab and pick it up!\rSee you later!</language>
+	</row>
+	<row id="msg_0716_00041" index="41">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you.\nCould you swing by my Lab?\rSee you later!</language>
+	</row>
+	<row id="msg_0716_00042" index="42">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI have something here for you.\nCould you swing by my Lab?\rSee you later!</language>
+	</row>
+	<row id="msg_0716_00043" index="43">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI discovered an odd thing.\nApparently there’s something called\fPokérus that infects Pokémon.\rYes, it’s like a virus, so it’s\ncalled Pokérus.\rIt multiplies fast and infects other\nPokémon, too. But that’s all.\rIt doesn’t seem to do anything, and\nit goes away over time.\rI guess it’s nothing to worry\nabout. Bye!</language>
+	</row>
+	<row id="msg_0716_00044" index="44">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Hello, {STRVAR_1 3, 0, 0}?\rI discovered an odd thing.\nApparently there’s something called\fPokérus that infects Pokémon.\rYes, it’s like a virus, so it’s\ncalled Pokérus.\rIt multiplies fast and infects other\nPokémon, too. But that’s all.\rIt doesn’t seem to do anything, and\nit goes away over time.\rI guess it’s nothing to worry\nabout. Bye!</language>
+	</row>
+</body>

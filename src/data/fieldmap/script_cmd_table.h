@@ -44,8 +44,8 @@ extern BOOL ScrCmd_SubVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CopyVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetOrCopyVar(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_Message(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_MsgBox(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NonNPCMsg(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NPCMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_046(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_047(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_048(SCRIPTCONTEXT *ctx);
@@ -899,8 +899,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_SetVar,
     ScrCmd_CopyVar,
     ScrCmd_SetOrCopyVar,
-    ScrCmd_Message,
-    ScrCmd_MsgBox,
+    ScrCmd_NonNPCMsg,
+    ScrCmd_NPCMsg,
     ScrCmd_046,
     ScrCmd_047,
     ScrCmd_048,

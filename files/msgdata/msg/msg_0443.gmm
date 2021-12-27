@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<body language="English">
+	<row id="msg_0443_00000" index="0">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HP</language>
+	</row>
+	<row id="msg_0443_00001" index="1">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Attack</language>
+	</row>
+	<row id="msg_0443_00002" index="2">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Defense</language>
+	</row>
+	<row id="msg_0443_00003" index="3">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Speed</language>
+	</row>
+	<row id="msg_0443_00004" index="4">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sp. Atk</language>
+	</row>
+	<row id="msg_0443_00005" index="5">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Sp. Def</language>
+	</row>
+	<row id="msg_0443_00006" index="6">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">accuracy</language>
+	</row>
+	<row id="msg_0443_00007" index="7">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">evasiveness</language>
+	</row>
+	<row id="msg_0443_00008" index="8">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Max. HP</language>
+	</row>
+</body>

@@ -17,7 +17,7 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID 
     int i;
     STRING *string;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_00000729_bin, heap_id);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, heap_id);
     rivalName = Sav2_Misc_RivalName_const_get(Sav2_Misc_const_get(saveData));
     for (i = 0; i < 4; i++) {
         if (battleSetup->trainer_idxs[i] != 0) {
@@ -104,7 +104,7 @@ void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID
     while (rdbuf[0] != trTblSize) {
         NARC_ReadFromMember(trTblNarc, 0, rdbuf[0], 4, &rdbuf[1]);
         if (rdbuf[1] == trainer_idx && rdbuf[2] == msg_id) {
-            ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, NARC_msg_msg_00000728_bin, (u32)(rdbuf[0] / 4), heap_id, str);
+            ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, NARC_msg_msg_0728_bin, (u32)(rdbuf[0] / 4), heap_id, str);
             break;
         }
         rdbuf[0] += 4;

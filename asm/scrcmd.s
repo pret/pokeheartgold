@@ -92,16 +92,16 @@ gScriptCmdTable:
 	.word ScrCmd_SetVar                                 ; 041
 	.word ScrCmd_CopyVar                                ; 042
 	.word ScrCmd_SetOrCopyVar                           ; 043
-	.word ScrCmd_Message                                ; 044
-	.word ScrCmd_MsgBox                                    ; 045
+	.word ScrCmd_NonNPCMsg                              ; 044
+	.word ScrCmd_NPCMsg                                 ; 045
 	.word ScrCmd_046                                    ; 046
 	.word ScrCmd_047                                    ; 047
 	.word ScrCmd_048                                    ; 048
 	.word ScrCmd_049                                    ; 049
-	.word ScrCmd_WaitButton                                    ; 050
+	.word ScrCmd_WaitButton                             ; 050
 	.word ScrCmd_051                                    ; 051
 	.word ScrCmd_052                                    ; 052
-	.word ScrCmd_CloseMsg                                    ; 053
+	.word ScrCmd_CloseMsg                               ; 053
 	.word ScrCmd_054                                    ; 054
 	.word ScrCmd_055                                    ; 055
 	.word ScrCmd_056                                    ; 056
@@ -121,40 +121,40 @@ gScriptCmdTable:
 	.word ScrCmd_070                                    ; 070
 	.word ScrCmd_071                                    ; 071
 	.word ScrCmd_072                                    ; 072
-	.word ScrCmd_PlaySE                                    ; 073
+	.word ScrCmd_PlaySE                                 ; 073
 	.word ScrCmd_074                                    ; 074
-	.word ScrCmd_WaitSE                                    ; 075
+	.word ScrCmd_WaitSE                                 ; 075
 	.word ScrCmd_076                                    ; 076
 	.word ScrCmd_077                                    ; 077
-	.word ScrCmd_PlayFanfare                                    ; 078
-	.word ScrCmd_WaitFanfare                                    ; 079
-	.word ScrCmd_PlayBGM                                    ; 080
+	.word ScrCmd_PlayFanfare                            ; 078
+	.word ScrCmd_WaitFanfare                            ; 079
+	.word ScrCmd_PlayBGM                                ; 080
 	.word ScrCmd_081                                    ; 081
-	.word ScrCmd_ResetBGM                                    ; 082
+	.word ScrCmd_ResetBGM                               ; 082
 	.word ScrCmd_083                                    ; 083
-	.word ScrCmd_FadeOutBGM                                    ; 084
+	.word ScrCmd_FadeOutBGM                             ; 084
 	.word ScrCmd_085                                    ; 085
 	.word ScrCmd_086                                    ; 086
-	.word ScrCmd_TempBGM                                    ; 087
+	.word ScrCmd_TempBGM                                ; 087
 	.word ScrCmd_088                                    ; 088
 	.word ScrCmd_089                                    ; 089
 	.word ScrCmd_090                                    ; 090
 	.word ScrCmd_091                                    ; 091
 	.word ScrCmd_092                                    ; 092
 	.word ScrCmd_093                                    ; 093
-	.word ScrCmd_ApplyMovement                                    ; 094
-	.word ScrCmd_WaitMovement                                    ; 095
-	.word ScrCmd_LockAll                                    ; 096
-	.word ScrCmd_ReleaseAll                                    ; 097
+	.word ScrCmd_ApplyMovement                          ; 094
+	.word ScrCmd_WaitMovement                           ; 095
+	.word ScrCmd_LockAll                                ; 096
+	.word ScrCmd_ReleaseAll                             ; 097
 	.word ScrCmd_098                                    ; 098
 	.word ScrCmd_099                                    ; 099
 	.word ScrCmd_100                                    ; 100
-	.word ScrCmd_HidePerson                                    ; 101
+	.word ScrCmd_HidePerson                             ; 101
 	.word ScrCmd_102                                    ; 102
 	.word ScrCmd_103                                    ; 103
-	.word ScrCmd_FacePlayer                                    ; 104
-	.word ScrCmd_GetPlayerCoords                                    ; 105
-	.word ScrCmd_GetPersonCoords                                    ; 106
+	.word ScrCmd_FacePlayer                             ; 104
+	.word ScrCmd_GetPlayerCoords                        ; 105
+	.word ScrCmd_GetPersonCoords                        ; 106
 	.word ScrCmd_107                                    ; 107
 	.word ScrCmd_108                                    ; 108
 	.word ScrCmd_109                                    ; 109
@@ -179,8 +179,8 @@ gScriptCmdTable:
 	.word ScrCmd_HasItem                                ; 128
 	.word ScrCmd_ItemIsTMOrHM                           ; 129
 	.word ScrCmd_GetItemPocket                          ; 130
-	.word ScrCmd_SetStarterChoice                                    ; 131
-	.word ScrCmd_GenderMsgbox                                    ; 132
+	.word ScrCmd_SetStarterChoice                       ; 131
+	.word ScrCmd_GenderMsgbox                           ; 132
 	.word ScrCmd_133                                    ; 133
 	.word ScrCmd_134                                    ; 134
 	.word ScrCmd_135                                    ; 135
@@ -191,9 +191,9 @@ gScriptCmdTable:
 	.word ScrCmd_140                                    ; 140
 	.word ScrCmd_141                                    ; 141
 	.word ScrCmd_142                                    ; 142
-	.word ScrCmd_NameRival                                    ; 143
+	.word ScrCmd_NameRival                              ; 143
 	.word ScrCmd_144                                    ; 144
-	.word ScrCmd_RegisterPokegearCard                                    ; 145
+	.word ScrCmd_RegisterPokegearCard                   ; 145
 	.word ScrCmd_146                                    ; 146
 	.word ScrCmd_147                                    ; 147
 	.word ScrCmd_148                                    ; 148
@@ -222,8 +222,8 @@ gScriptCmdTable:
 	.word ScrCmd_171                                    ; 171
 	.word ScrCmd_172                                    ; 172
 	.word ScrCmd_173                                    ; 173
-	.word ScrCmd_FadeScreen                                    ; 174
-	.word ScrCmd_WaitFade                                    ; 175
+	.word ScrCmd_FadeScreen                             ; 174
+	.word ScrCmd_WaitFade                               ; 175
 	.word ScrCmd_176                                    ; 176
 	.word ScrCmd_177                                    ; 177
 	.word ScrCmd_178                                    ; 178
@@ -235,10 +235,10 @@ gScriptCmdTable:
 	.word ScrCmd_184                                    ; 184
 	.word ScrCmd_185                                    ; 185
 	.word ScrCmd_186                                    ; 186
-	.word ScrCmd_GetTrcardStars                                    ; 187
+	.word ScrCmd_GetTrcardStars                         ; 187
 	.word ScrCmd_188                                    ; 188
 	.word ScrCmd_189                                    ; 189
-	.word ScrCmd_BufferPlayersName                                    ; 190
+	.word ScrCmd_BufferPlayersName                      ; 190
 	.word ScrCmd_191                                    ; 191
 	.word ScrCmd_192                                    ; 192
 	.word ScrCmd_193                                    ; 193
@@ -247,21 +247,21 @@ gScriptCmdTable:
 	.word ScrCmd_196                                    ; 196
 	.word ScrCmd_197                                    ; 197
 	.word ScrCmd_198                                    ; 198
-	.word ScrCmd_BufferPartyMonNick                                    ; 199
+	.word ScrCmd_BufferPartyMonNick                     ; 199
 	.word ScrCmd_200                                    ; 200
 	.word ScrCmd_201                                    ; 201
 	.word ScrCmd_202                                    ; 202
 	.word ScrCmd_203                                    ; 203
 	.word ScrCmd_204                                    ; 204
 	.word ScrCmd_205                                    ; 205
-	.word ScrCmd_GetStarterChoice                                    ; 206
+	.word ScrCmd_GetStarterChoice                       ; 206
 	.word ScrCmd_207                                    ; 207
 	.word ScrCmd_208                                    ; 208
 	.word ScrCmd_209                                    ; 209
 	.word ScrCmd_210                                    ; 210
 	.word ScrCmd_211                                    ; 211
 	.word ScrCmd_212                                    ; 212
-	.word ScrCmd_TrainerBattle                                    ; 213
+	.word ScrCmd_TrainerBattle                          ; 213
 	.word ScrCmd_214                                    ; 214
 	.word ScrCmd_215                                    ; 215
 	.word ScrCmd_216                                    ; 216
@@ -329,8 +329,8 @@ gScriptCmdTable:
 	.word ScrCmd_278                                    ; 278
 	.word ScrCmd_279                                    ; 279
 	.word ScrCmd_280                                    ; 280
-	.word ScrCmd_GetPlayerGender                                    ; 281
-	.word ScrCmd_HealParty                                    ; 282
+	.word ScrCmd_GetPlayerGender                        ; 281
+	.word ScrCmd_HealParty                              ; 282
 	.word ScrCmd_283                                    ; 283
 	.word ScrCmd_284                                    ; 284
 	.word ScrCmd_285                                    ; 285
@@ -380,14 +380,14 @@ gScriptCmdTable:
 	.word ScrCmd_329                                    ; 329
 	.word ScrCmd_330                                    ; 330
 	.word ScrCmd_331                                    ; 331
-	.word ScrCmd_GetPartyCount                                    ; 332
+	.word ScrCmd_GetPartyCount                          ; 332
 	.word ScrCmd_333                                    ; 333
 	.word ScrCmd_334                                    ; 334
 	.word ScrCmd_335                                    ; 335
 	.word ScrCmd_336                                    ; 336
 	.word ScrCmd_337                                    ; 337
 	.word ScrCmd_338                                    ; 338
-	.word ScrCmd_ShowPersonAt                                    ; 339
+	.word ScrCmd_ShowPersonAt                           ; 339
 	.word ScrCmd_340                                    ; 340
 	.word ScrCmd_341                                    ; 341
 	.word ScrCmd_342                                    ; 342
@@ -402,9 +402,9 @@ gScriptCmdTable:
 	.word ScrCmd_351                                    ; 351
 	.word ScrCmd_352                                    ; 352
 	.word ScrCmd_353                                    ; 353
-	.word ScrCmd_GetPartyMonSpecies                                    ; 354
-	.word ScrCmd_PartymonIsMine                                    ; 355
-	.word ScrCmd_PartyCountNotEgg                                    ; 356
+	.word ScrCmd_GetPartyMonSpecies                     ; 354
+	.word ScrCmd_PartymonIsMine                         ; 355
+	.word ScrCmd_PartyCountNotEgg                       ; 356
 	.word ScrCmd_357                                    ; 357
 	.word ScrCmd_358                                    ; 358
 	.word ScrCmd_359                                    ; 359
@@ -487,7 +487,7 @@ gScriptCmdTable:
 	.word ScrCmd_436                                    ; 436
 	.word ScrCmd_DebugWatch                             ; 437
 	.word ScrCmd_438                                    ; 438
-	.word ScrCmd_MessageExtern                                    ; 439
+	.word ScrCmd_MessageExtern                          ; 439
 	.word ScrCmd_440                                    ; 440
 	.word ScrCmd_441                                    ; 441
 	.word ScrCmd_442                                    ; 442
@@ -535,7 +535,7 @@ gScriptCmdTable:
 	.word ScrCmd_484                                    ; 484
 	.word ScrCmd_485                                    ; 485
 	.word ScrCmd_Dummy                                  ; 486
-	.word ScrCmd_PokeCenAnim                                    ; 487
+	.word ScrCmd_PokeCenAnim                            ; 487
 	.word ScrCmd_488                                    ; 488
 	.word ScrCmd_489                                    ; 489
 	.word ScrCmd_490                                    ; 490
@@ -577,11 +577,11 @@ gScriptCmdTable:
 	.word ScrCmd_526                                    ; 526
 	.word ScrCmd_527                                    ; 527
 	.word ScrCmd_528                                    ; 528
-	.word ScrCmd_PartySelectMon                                    ; 529
+	.word ScrCmd_PartySelectMon                         ; 529
 	.word ScrCmd_530                                    ; 530
 	.word ScrCmd_531                                    ; 531
 	.word ScrCmd_532                                    ; 532
-	.word ScrCmd_CheckGiveCoins                                    ; 533
+	.word ScrCmd_CheckGiveCoins                         ; 533
 	.word ScrCmd_534                                    ; 534
 	.word ScrCmd_535                                    ; 535
 	.word ScrCmd_536                                    ; 536
@@ -796,7 +796,7 @@ gScriptCmdTable:
 	.word ScrCmd_745                                    ; 745
 	.word ScrCmd_746                                    ; 746
 	.word ScrCmd_747                                    ; 747
-	.word ScrCmd_GetMenuChoice                                    ; 748
+	.word ScrCmd_GetMenuChoice                          ; 748
 	.word ScrCmd_749                                    ; 749
 	.word ScrCmd_750                                    ; 750
 	.word ScrCmd_751                                    ; 751
@@ -841,8 +841,8 @@ gScriptCmdTable:
 	.word ScrCmd_790                                    ; 790
 	.word ScrCmd_791                                    ; 791
 	.word ScrCmd_792                                    ; 792
-	.word ScrCmd_BankTransaction                                    ; 793
-	.word ScrCmd_CheckBankBalance                                    ; 794
+	.word ScrCmd_BankTransaction                        ; 793
+	.word ScrCmd_CheckBankBalance                       ; 794
 	.word ScrCmd_795                                    ; 795
 	.word ScrCmd_796                                    ; 796
 	.word ScrCmd_797                                    ; 797
@@ -875,7 +875,7 @@ gScriptCmdTable:
 	.word ScrCmd_824                                    ; 824
 	.word ScrCmd_825                                    ; 825
 	.word ScrCmd_826                                    ; 826
-	.word ScrCmd_GetPartymonForme                                    ; 827
+	.word ScrCmd_GetPartymonForme                       ; 827
 	.word ScrCmd_828                                    ; 828
 	.word ScrCmd_829                                    ; 829
 	.word ScrCmd_830                                    ; 830
@@ -886,7 +886,7 @@ gScriptCmdTable:
 	.word ScrCmd_835                                    ; 835
 	.word ScrCmd_836                                    ; 836
 	.word ScrCmd_837                                    ; 837
-	.word ScrCmd_BankOrWalletIsFull                                    ; 838
+	.word ScrCmd_BankOrWalletIsFull                     ; 838
 	.word ScrCmd_839                                    ; 839
 	.word ScrCmd_840                                    ; 840
 	.word ScrCmd_841                                    ; 841
