@@ -85,8 +85,8 @@ vct_decode_adpcm_32: ; 0x020B03F0
 	ldmlsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	ldr lr, _020B0538 ; =0x00007FFF
-	ldr ip, _020B053C ; =_02108FF4
-	ldr r5, _020B0540 ; =_02109004
+	ldr ip, _020B053C ; =cAdpcmIndexTable4
+	ldr r5, _020B0540 ; =cAdpcmStepSizeTable
 	rsb r4, r4, #0
 _020B0414:
 	ldrb r7, [r3, #2]
@@ -170,8 +170,8 @@ _020B050C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020B0538: .word 0x00007FFF
-_020B053C: .word _02108FF4
-_020B0540: .word _02109004
+_020B053C: .word cAdpcmIndexTable4
+_020B0540: .word cAdpcmStepSizeTable
 	arm_func_end vct_decode_adpcm_32
 
 	arm_func_start vct_encode_adpcm_32
@@ -182,7 +182,7 @@ vct_encode_adpcm_32: ; 0x020B0544
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov ip, #0x8000
 	rsb ip, ip, #0
-	ldr lr, _020B06C8 ; =_02109004
+	ldr lr, _020B06C8 ; =cAdpcmStepSizeTable
 	mov r2, ip, lsr #0x11
 _020B0564:
 	ldrb r6, [r3, #2]
@@ -212,7 +212,7 @@ _020B0564:
 	tst r5, #8
 	rsbne sl, sl, #0
 	add sb, r7, sl
-	ldr r7, _020B06CC ; =_02108FF4
+	ldr r7, _020B06CC ; =cAdpcmIndexTable4
 	cmp sb, ip
 	movlt sb, ip
 	cmp sb, ip, lsr #17
@@ -253,7 +253,7 @@ _020B05FC:
 	tst r6, #8
 	rsbne fp, fp, #0
 	add sl, sb, fp
-	ldr sb, _020B06CC ; =_02108FF4
+	ldr sb, _020B06CC ; =cAdpcmIndexTable4
 	cmp sl, ip
 	movlt sl, ip
 	cmp sl, ip, lsr #17
@@ -277,8 +277,8 @@ _020B06A4:
 	blo _020B0564
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B06C8: .word _02109004
-_020B06CC: .word _02108FF4
+_020B06C8: .word cAdpcmStepSizeTable
+_020B06CC: .word cAdpcmIndexTable4
 	arm_func_end vct_encode_adpcm_32
 
 	arm_func_start vct_decode_adpcm_24
@@ -295,7 +295,7 @@ vct_decode_adpcm_24: ; 0x020B06D0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	ldr lr, _020B0B58 ; =0x00007FFF
-	ldr r5, _020B0B5C ; =_02109004
+	ldr r5, _020B0B5C ; =cAdpcmStepSizeTable
 	rsb r4, r4, #0
 _020B0708:
 	ldrb r7, [r3, #2]
@@ -325,7 +325,7 @@ _020B0760:
 	cmp r8, lr
 	movgt r8, lr
 _020B076C:
-	ldr r6, _020B0B60 ; =_02108FEC
+	ldr r6, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r6, [r6, sb]
 	adds r7, r7, r6
 	movmi r7, #0
@@ -362,7 +362,7 @@ _020B07E8:
 	cmp r8, lr
 	movgt r8, lr
 _020B07F4:
-	ldr r6, _020B0B60 ; =_02108FEC
+	ldr r6, _020B0B60 ; =cAdpcmIndexTable3
 	and sb, sb, #7
 	ldrsb r6, [r6, sb]
 	adds r7, r7, r6
@@ -399,7 +399,7 @@ _020B0870:
 	cmp r7, lr
 	movgt r7, lr
 _020B087C:
-	ldr sb, _020B0B60 ; =_02108FEC
+	ldr sb, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r8, [sb, r8]
 	adds r6, r6, r8
 	movmi r6, #0
@@ -434,7 +434,7 @@ _020B08EC:
 	movgt r7, lr
 _020B08F8:
 	and sb, r8, #7
-	ldr r8, _020B0B60 ; =_02108FEC
+	ldr r8, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r8, [r8, sb]
 	adds r6, r6, r8
 	movmi r6, #0
@@ -469,7 +469,7 @@ _020B096C:
 	movgt r7, lr
 _020B0978:
 	and sb, r8, #7
-	ldr r8, _020B0B60 ; =_02108FEC
+	ldr r8, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r8, [r8, sb]
 	adds r6, r6, r8
 	movmi r6, #0
@@ -505,7 +505,7 @@ _020B09F4:
 	cmp r6, lr
 	movgt r6, lr
 _020B0A00:
-	ldr r8, _020B0B60 ; =_02108FEC
+	ldr r8, _020B0B60 ; =cAdpcmIndexTable3
 	ldrsb r7, [r8, r7]
 	adds r2, r2, r7
 	movmi r2, #0
@@ -539,7 +539,7 @@ _020B0A70:
 	cmp r6, lr
 	movgt r6, lr
 _020B0A7C:
-	ldr r7, _020B0B60 ; =_02108FEC
+	ldr r7, _020B0B60 ; =cAdpcmIndexTable3
 	and r8, sb, #7
 	ldrsb r7, [r7, r8]
 	adds r2, r2, r7
@@ -573,7 +573,7 @@ _020B0AEC:
 	cmp r6, lr
 	movgt r6, lr
 _020B0AF8:
-	ldr r7, _020B0B60 ; =_02108FEC
+	ldr r7, _020B0B60 ; =cAdpcmIndexTable3
 	and r8, ip, #7
 	ldrsb r7, [r7, r8]
 	adds r2, r2, r7
@@ -600,8 +600,8 @@ _020B0B18:
 	.align 2, 0
 _020B0B54: .word 0xAAAAAAAB
 _020B0B58: .word 0x00007FFF
-_020B0B5C: .word _02109004
-_020B0B60: .word _02108FEC
+_020B0B5C: .word cAdpcmStepSizeTable
+_020B0B60: .word cAdpcmIndexTable3
 	arm_func_end vct_decode_adpcm_24
 
 	arm_func_start vct_encode_adpcm_24
@@ -616,8 +616,8 @@ vct_encode_adpcm_24: ; 0x020B0B64
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r6, #0x8000
 	rsb r6, r6, #0
-	ldr r7, _020B1068 ; =_02109004
-	ldr r4, _020B106C ; =_02108FEC
+	ldr r7, _020B1068 ; =cAdpcmStepSizeTable
+	ldr r4, _020B106C ; =cAdpcmIndexTable3
 	mov r5, r6, lsr #0x11
 _020B0B98:
 	ldrsh r2, [r3]
@@ -937,8 +937,8 @@ _020B102C:
 	add sp, sp, #8
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B1068: .word _02109004
-_020B106C: .word _02108FEC
+_020B1068: .word cAdpcmStepSizeTable
+_020B106C: .word cAdpcmIndexTable3
 	arm_func_end vct_encode_adpcm_24
 
 	arm_func_start vct_decode_adpcm_16
@@ -949,8 +949,8 @@ vct_decode_adpcm_16: ; 0x020B1070
 	ldmlsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	ldr lr, _020B127C ; =0x00007FFF
-	ldr ip, _020B1280 ; =_02108FE8
-	ldr r6, _020B1284 ; =_02109004
+	ldr ip, _020B1280 ; =cAdpcmIndexTable2
+	ldr r6, _020B1284 ; =cAdpcmStepSizeTable
 	rsb r4, r4, #0
 	mov r5, r7
 _020B1098:
@@ -1089,8 +1089,8 @@ _020B1250:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020B127C: .word 0x00007FFF
-_020B1280: .word _02108FE8
-_020B1284: .word _02109004
+_020B1280: .word cAdpcmIndexTable2
+_020B1284: .word cAdpcmStepSizeTable
 	arm_func_end vct_decode_adpcm_16
 
 	arm_func_start vct_encode_adpcm_16
@@ -1102,8 +1102,8 @@ vct_encode_adpcm_16: ; 0x020B1288
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	mov r4, #0x8000
 	rsb r4, r4, #0
-	ldr r5, _020B14B0 ; =_02109004
-	ldr ip, _020B14B4 ; =_02108FE8
+	ldr r5, _020B14B0 ; =cAdpcmStepSizeTable
+	ldr ip, _020B14B4 ; =cAdpcmIndexTable2
 	mov lr, r4, lsr #0x11
 _020B12B0:
 	ldrb r7, [r3, #2]
@@ -1239,8 +1239,8 @@ _020B1488:
 	blo _020B12B0
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
-_020B14B0: .word _02109004
-_020B14B4: .word _02108FE8
+_020B14B0: .word cAdpcmStepSizeTable
+_020B14B4: .word cAdpcmIndexTable2
 	arm_func_end vct_encode_adpcm_16
 
 	arm_func_start vct_decode_adpcm
@@ -1313,7 +1313,7 @@ vct_init_audio: ; 0x020B1584
 	stmdb sp!, {r3, r4, r5, r6, r7, r8, sb, lr}
 	bl OS_GetTickLo
 	ldr r2, _020B1668 ; =_021D6040
-	ldr r1, _020B166C ; =_021108D8
+	ldr r1, _020B166C ; =sEnableVAD
 	mov r3, #1
 	str r3, [r1]
 	strh r0, [r2]
@@ -1371,7 +1371,7 @@ _020B1650:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	.align 2, 0
 _020B1668: .word _021D6040
-_020B166C: .word _021108D8
+_020B166C: .word sEnableVAD
 _020B1670: .word __vct
 _020B1674: .word sCodecInfo
 _020B1678: .word sAudioSession
@@ -1895,7 +1895,7 @@ _020B1D68: .word _021D6040
 	arm_func_start VCT_EnableVAD
 VCT_EnableVAD: ; 0x020B1D6C
 	stmdb sp!, {r4, lr}
-	ldr r1, _020B1D94 ; =_021108D8
+	ldr r1, _020B1D94 ; =sEnableVAD
 	mov r4, r0
 	str r4, [r1]
 	bl VCT_ResetVAD
@@ -1905,7 +1905,7 @@ VCT_EnableVAD: ; 0x020B1D6C
 	streq r1, [r0, #8]
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020B1D94: .word _021108D8
+_020B1D94: .word sEnableVAD
 _020B1D98: .word _021D6040
 	arm_func_end VCT_EnableVAD
 
@@ -1969,7 +1969,7 @@ _020B1E34:
 	mov r2, r7
 	bl vct_process_fir
 _020B1E68:
-	ldr r0, _020B201C ; =_021108D8
+	ldr r0, _020B201C ; =sEnableVAD
 	strb r8, [r5, #5]
 	ldr r0, [r0]
 	cmp r0, #0
@@ -2000,7 +2000,7 @@ _020B1ECC:
 	orr r0, r0, #0x80
 	strb r0, [r5, #5]
 _020B1ED8:
-	ldr r0, _020B201C ; =_021108D8
+	ldr r0, _020B201C ; =sEnableVAD
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _020B1F0C
@@ -2088,7 +2088,7 @@ _020B200C: .word _021D6040
 _020B2010: .word sSendInfo
 _020B2014: .word 0x040002B0
 _020B2018: .word 0x040002B4
-_020B201C: .word _021108D8
+_020B201C: .word sEnableVAD
 _020B2020: .word sAdpcmState
 _020B2024: .word __vct
 	arm_func_end vct_prepare_send_buffer
@@ -2317,7 +2317,7 @@ _020B232C:
 	cmp r0, #2
 	bne _020B2360
 	ldr r3, [r1, #0xf10]
-	ldr r0, _020B23EC ; =_021090C2
+	ldr r0, _020B23EC ; =sTransceiverBalance
 	add r2, r3, #1
 	str r2, [r1, #0xf10]
 	ldr r1, [r1, #0xf14]
@@ -2365,7 +2365,7 @@ _020B23DC:
 	.align 2, 0
 _020B23E4: .word _021D6040
 _020B23E8: .word __vct
-_020B23EC: .word _021090C2
+_020B23EC: .word sTransceiverBalance
 	arm_func_end vct_flush_send_buffer
 
 	arm_func_start vct_init_decoder
@@ -2593,7 +2593,7 @@ vct_encode_g711_ulaw: ; 0x020B2684
 	cmp r2, #0
 	ldmlsia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	ldr ip, _020B2728 ; =0x00001FDF
-	ldr r3, _020B272C ; =_021108DC
+	ldr r3, _020B272C ; =ulaw_segment
 	mov lr, #0xff
 	mov r4, #0x7f
 _020B26A4:
@@ -2635,7 +2635,7 @@ _020B2714:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.align 2, 0
 _020B2728: .word 0x00001FDF
-_020B272C: .word _021108DC
+_020B272C: .word ulaw_segment
 	arm_func_end vct_encode_g711_ulaw
 
 	arm_func_start vct_decode_g711_ulaw
@@ -3698,7 +3698,7 @@ vct_check_timeout: ; 0x020B34C4
 	cmp r5, #0
 	cmpeq r4, #0
 	ldmeqia sp!, {r3, r4, r5, pc}
-	ldr r2, _020B3568 ; =_021108FC
+	ldr r2, _020B3568 ; =sTransceiverLimit
 	subs r4, r0, r4
 	ldr lr, [r2]
 	ldr r0, [r2, #4]
@@ -3724,7 +3724,7 @@ vct_check_timeout: ; 0x020B34C4
 	.align 2, 0
 _020B3560: .word __vct
 _020B3564: .word _021D6F90
-_020B3568: .word _021108FC
+_020B3568: .word sTransceiverLimit
 _020B356C: .word _021D6FCC
 	arm_func_end vct_check_timeout
 
@@ -3998,7 +3998,7 @@ vct_dispatch_session: ; 0x020B3890
 	str r2, [r1, #8]
 _020B38C4:
 	ldrb r1, [r0, #6]
-	ldr r0, _020B3934 ; =_021090D8
+	ldr r0, _020B3934 ; =sRequestEvent
 	ldrb r0, [r0, r1]
 	bx lr
 _020B38D4:
@@ -4023,15 +4023,15 @@ _020B3910:
 	movne r0, #0xc
 	bx lr
 _020B3920:
-	ldr r0, _020B3938 ; =_021090E0
+	ldr r0, _020B3938 ; =sResponseEvent
 	ldrb r0, [r0, r2]
 	bx lr
 _020B392C:
 	mov r0, #0xc
 	bx lr
 	.align 2, 0
-_020B3934: .word _021090D8
-_020B3938: .word _021090E0
+_020B3934: .word sRequestEvent
+_020B3938: .word sResponseEvent
 	arm_func_end vct_dispatch_session
 
 	arm_func_start vct_build_ssp_header
@@ -4079,9 +4079,9 @@ _020B39B0:
 	ldr r2, [r4, #0xc]
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
-	ldreq r1, _020B3A54 ; =_021091AE
+	ldreq r1, _020B3A54 ; =sRecvState
 	mov r0, #0xb
-	ldrne r1, _020B3A58 ; =_021090E8
+	ldrne r1, _020B3A58 ; =sTransRecvState
 	mla r0, r2, r0, r1
 	ldrsb r5, [r3, r0]
 	mvn r1, #2
@@ -4117,8 +4117,8 @@ _020B3A4C:
 	ldmia sp!, {r3, r4, r5, pc}
 	.align 2, 0
 _020B3A50: .word __vct
-_020B3A54: .word _021091AE
-_020B3A58: .word _021090E8
+_020B3A54: .word sRecvState
+_020B3A58: .word sTransRecvState
 	arm_func_end vct_check_recv_state
 
 	arm_func_start vct_check_multisession
@@ -4168,9 +4168,9 @@ _020B3ACC:
 	ldr r3, [r0, #0xc]
 	ldr r1, [r1, #0x10]
 	cmp r1, #1
-	ldreq r2, _020B3B28 ; =_0210912A
+	ldreq r2, _020B3B28 ; =sSendState
 	mov r1, #0xb
-	ldrne r2, _020B3B2C ; =_0210916C
+	ldrne r2, _020B3B2C ; =sTransSendState
 	mla r1, r3, r1, r2
 	ldrsb r2, [ip, r1]
 	mvn r1, #0
@@ -4185,8 +4185,8 @@ _020B3ACC:
 	bx lr
 	.align 2, 0
 _020B3B24: .word __vct
-_020B3B28: .word _0210912A
-_020B3B2C: .word _0210916C
+_020B3B28: .word sSendState
+_020B3B2C: .word sTransSendState
 	arm_func_end vct_check_send_state
 
 	arm_func_start vct_find_session
@@ -4674,7 +4674,7 @@ _020B4168:
 	ldr r1, _020B41A0 ; =_021D6FEC
 	mov r2, #0
 	str r2, [r1, #4]
-	ldr r0, _020B41A4 ; =_02110904
+	ldr r0, _020B41A4 ; =sVADInfo
 	str r2, [r1]
 	str r2, [r0]
 	str r2, [r0, #4]
@@ -4683,7 +4683,7 @@ _020B4168:
 	.align 2, 0
 _020B419C: .word E2scales
 _020B41A0: .word _021D6FEC
-_020B41A4: .word _02110904
+_020B41A4: .word sVADInfo
 	arm_func_end VCT_ResetVAD
 
 	arm_func_start VCT_GetVADInfo
@@ -4691,23 +4691,23 @@ VCT_GetVADInfo: ; 0x020B41A8
 	stmdb sp!, {r3, lr}
 	movs r1, r0
 	ldmeqia sp!, {r3, pc}
-	ldr r0, _020B41C4 ; =_02110904
+	ldr r0, _020B41C4 ; =sVADInfo
 	mov r2, #0x10
 	bl MI_CpuCopy8
 	ldmia sp!, {r3, pc}
 	.align 2, 0
-_020B41C4: .word _02110904
+_020B41C4: .word sVADInfo
 	arm_func_end VCT_GetVADInfo
 
 	arm_func_start VCTi_GetVADStatus
 VCTi_GetVADStatus: ; 0x020B41C8
 	stmdb sp!, {r4, lr}
-	ldr r3, _020B4394 ; =_02110904
+	ldr r3, _020B4394 ; =sVADInfo
 	mov ip, r1, lsr #8
 	str ip, [r3, #4]
 	cmp r2, #0
 	strneb ip, [r2]
-	ldr r2, _020B4394 ; =_02110904
+	ldr r2, _020B4394 ; =sVADInfo
 	ldr r2, [r2]
 	cmp r2, #0
 	bne _020B42DC
@@ -4760,7 +4760,7 @@ _020B427C:
 	add r1, r1, r1, lsl #1
 	mov r1, r1, lsr #1
 	str r1, [r2]
-	ldr r1, _020B4394 ; =_02110904
+	ldr r1, _020B4394 ; =sVADInfo
 	str r3, [r2, #4]
 	mov lr, #1
 	str lr, [r1]
@@ -4808,7 +4808,7 @@ _020B4328:
 	cmp r2, r0
 	bhi _020B4380
 	ldr r2, [r1, #8]
-	ldr r0, _020B4394 ; =_02110904
+	ldr r0, _020B4394 ; =sVADInfo
 	add r3, r2, #1
 	str r3, [r1, #8]
 	ldr r2, [r0, #8]
@@ -4829,7 +4829,7 @@ _020B438C:
 	mov r0, lr
 	ldmia sp!, {r4, pc}
 	.align 2, 0
-_020B4394: .word _02110904
+_020B4394: .word sVADInfo
 _020B4398: .word E2scales
 _020B439C: .word 0x040002B0
 _020B43A0: .word 0x040002B4
@@ -4839,7 +4839,7 @@ _020B43A4: .word _021D6FEC
 	arm_func_start vct_init_vad
 vct_init_vad: ; 0x020B43A8
 	mov r2, #0xf
-	ldr r1, _020B43C8 ; =_02110904
+	ldr r1, _020B43C8 ; =sVADInfo
 	mov r0, #0x44
 	smulbb r0, r2, r0
 	str r2, [r1, #8]
@@ -4847,7 +4847,7 @@ vct_init_vad: ; 0x020B43A8
 	str r0, [r1, #0xc]
 	bx ip
 	.align 2, 0
-_020B43C8: .word _02110904
+_020B43C8: .word sVADInfo
 _020B43CC: .word VCT_ResetVAD
 	arm_func_end vct_init_vad
 
@@ -5418,16 +5418,16 @@ _020B4B64: .word _021D848C
 
 	.rodata
 
-_02108FE8:
+cAdpcmIndexTable2:
 	.byte 0xFF, 0x01, 0xFF, 0x01
 
-_02108FEC:
+cAdpcmIndexTable3:
 	.byte 0xFF, 0xFF, 0x01, 0x02
 	.byte 0xFF, 0xFF, 0x01, 0x02
-_02108FF4:
+cAdpcmIndexTable4:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x02, 0x04, 0x06, 0x08, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0x02, 0x04, 0x06, 0x08
-_02109004:
+cAdpcmStepSizeTable:
 	.byte 0x07, 0x00, 0x08, 0x00, 0x09, 0x00, 0x0A, 0x00, 0x0B, 0x00, 0x0C, 0x00
 	.byte 0x0D, 0x00, 0x0E, 0x00, 0x10, 0x00, 0x11, 0x00, 0x13, 0x00, 0x15, 0x00, 0x17, 0x00, 0x19, 0x00
 	.byte 0x1C, 0x00, 0x1F, 0x00, 0x22, 0x00, 0x25, 0x00, 0x29, 0x00, 0x2D, 0x00, 0x32, 0x00, 0x37, 0x00
@@ -5445,38 +5445,38 @@ sCodecInfo:
 	.byte 0x08, 0x00, 0x08, 0x00, 0x02, 0x04, 0x03, 0x04
 	.byte 0x04, 0x04
 
-_021090C2:
+sTransceiverBalance:
 	.byte 0x01, 0x00, 0x00, 0x01, 0x01, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x01, 0x02
 	.byte 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x03, 0x00
 
-_021090D8:
+sRequestEvent:
 	.byte 0x01, 0x08, 0x04, 0x0A, 0x00, 0x00, 0x00, 0x00
 
-_021090E0:
+sResponseEvent:
 	.byte 0x07, 0x0C, 0x02, 0x03, 0x09, 0x02, 0x00, 0x00
 
-_021090E8:
+sTransRecvState:
 	.byte 0xFE, 0xFE, 0xFE, 0x03, 0xFF, 0xFF, 0x00, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFD, 0xFF, 0x02, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xFE, 0xFE
 	.byte 0xFE, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0x00, 0xFE, 0xFD, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE
 	.byte 0xFE, 0xFE, 0xFD, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF
 
-_0210912A:
+sSendState:
 	.byte 0x01, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0x05, 0xFE, 0xFE, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0xFE, 0x05, 0xFE, 0xFE, 0xFE, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0x02, 0x00, 0x00, 0x00, 0xFE
 	.byte 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0x00, 0x00, 0xFE, 0xFE, 0x00, 0xFE
 
-_0210916C:
+sTransSendState:
 	.byte 0xFE, 0xFE, 0xFE, 0x01
 	.byte 0xFF, 0xFE, 0x00, 0x00, 0x00, 0xFE, 0xFE, 0xFE, 0x05, 0x05, 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE
 	.byte 0xFE, 0xFE, 0xFE, 0x05, 0xFE, 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE
 	.byte 0xFE, 0xFF, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x03, 0x00, 0x00
 	.byte 0x00, 0xFE, 0x00, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x00, 0x00, 0xFE, 0xFE, 0x00, 0xFE
 
-_021091AE:
+sRecvState:
 	.byte 0x04, 0xFE
 	.byte 0xFE, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE, 0xFE, 0xFE, 0xFE, 0xFF, 0x02, 0x00
 	.byte 0x00, 0x00, 0xFF, 0x00, 0xFE, 0x05, 0x05, 0xFE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFE
@@ -5486,16 +5486,16 @@ _021091AE:
 
 	.data
 
-_021108D8:
+sEnableVAD:
 	.byte 0x01, 0x00, 0x00, 0x00
-_021108DC:
+ulaw_segment:
 	.byte 0x3F, 0x00, 0x00, 0x00
 	.byte 0x7F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x01, 0x00, 0x00, 0xFF, 0x03, 0x00, 0x00
 	.byte 0xFF, 0x07, 0x00, 0x00, 0xFF, 0x0F, 0x00, 0x00, 0xFF, 0x1F, 0x00, 0x00
-_021108FC:
+sTransceiverLimit:
 	.byte 0xF7, 0xB5, 0xEF, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-_02110904:
+sVADInfo:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
 	.byte 0xFC, 0x03, 0x00, 0x00
 sImpulseResponse:
