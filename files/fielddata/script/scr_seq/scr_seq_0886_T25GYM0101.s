@@ -86,7 +86,7 @@ scr_seq_0886_T25GYM0101_010C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 2, VAR_SPECIAL_x800C
+	check_badge 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0886_T25GYM0101_0202
 	checkflag FLAG_UNK_0B7
@@ -95,15 +95,15 @@ scr_seq_0886_T25GYM0101_010C:
 	gotoif eq, scr_seq_0886_T25GYM0101_017D
 	npc_msg 0
 	closemsg
-	trainer_battle 30, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_WHITNEY, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0886_T25GYM0101_0218
-	settrainerflag 22
-	settrainerflag 71
-	settrainerflag 5
-	settrainerflag 70
-	scrcmd_515 22
+	settrainerflag TRAINER_LASS_CARRIE
+	settrainerflag TRAINER_LASS_CATHY
+	settrainerflag TRAINER_BEAUTY_VICTORIA
+	settrainerflag TRAINER_BEAUTY_SAMANTHA
+	add_special_game_stat 22
 	show_person_at 1, 13, 0, 15, 0
 scr_seq_0886_T25GYM0101_017D:
 	npc_msg 2
@@ -123,7 +123,7 @@ scr_seq_0886_T25GYM0101_01A0:
 	npc_msg 4
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	scrcmd_295 2
+	give_badge 2
 	setvar VAR_UNK_410A, 2
 	clearflag FLAG_UNK_084
 	setflag FLAG_UNK_998
@@ -143,7 +143,7 @@ scr_seq_0886_T25GYM0101_01C4:
 	end
 
 scr_seq_0886_T25GYM0101_01F8:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -158,7 +158,7 @@ scr_seq_0886_T25GYM0101_0202:
 	end
 
 scr_seq_0886_T25GYM0101_0218:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -203,7 +203,7 @@ scr_seq_0886_T25GYM0101_0284:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 2, VAR_SPECIAL_x800C
+	check_badge 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0886_T25GYM0101_02AA
 	npc_msg 10
@@ -223,7 +223,7 @@ scr_seq_0886_T25GYM0101_02B5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 2, VAR_SPECIAL_x800C
+	check_badge 2, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0886_T25GYM0101_02DC

@@ -65,7 +65,7 @@ scr_seq_0930_T28_00EC:
 	goto scr_seq_0930_T28_014C
 
 scr_seq_0930_T28_00F7:
-	callstd 2009
+	callstd std_bag_is_full
 	goto scr_seq_0930_T28_014C
 
 scr_seq_0930_T28_0101:

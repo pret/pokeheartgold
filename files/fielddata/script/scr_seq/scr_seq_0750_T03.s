@@ -437,7 +437,7 @@ scr_seq_0750_T03_055A:
 scr_seq_0750_T03_0579:
 	.byte 0x02, 0x00
 scr_seq_0750_T03_057B:
-	scrcmd_219
+	white_out
 	goto scr_seq_0750_T03_0649
 
 scr_seq_0750_T03_0583:

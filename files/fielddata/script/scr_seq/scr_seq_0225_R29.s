@@ -16,7 +16,7 @@
 
 scr_seq_0225_R29_0026:
 	scrcmd_144 16417
-	scrcmd_294 0, VAR_TEMP_x4000
+	check_badge 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0225_R29_0043
 	setflag FLAG_UNK_207
@@ -83,7 +83,7 @@ scr_seq_0225_R29_011A:
 	end
 
 scr_seq_0225_R29_012E:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

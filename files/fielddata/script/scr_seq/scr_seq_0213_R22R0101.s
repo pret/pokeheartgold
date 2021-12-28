@@ -36,7 +36,7 @@ scr_seq_0213_R22R0101_006B:
 	scrcmd_147 26, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0213_R22R0101_00DF
-	scrcmd_294 12, VAR_TEMP_x4002
+	check_badge 12, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, scr_seq_0213_R22R0101_009D
 	goto scr_seq_0213_R22R0101_012C

@@ -76,7 +76,7 @@ scr_seq_0962_W40_0101:
 	end
 
 scr_seq_0962_W40_0115:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

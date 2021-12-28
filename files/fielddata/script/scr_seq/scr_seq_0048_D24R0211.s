@@ -17,7 +17,7 @@ scr_seq_0048_D24R0211_0016:
 	end
 
 scr_seq_0048_D24R0211_0027:
-	scrcmd_294 2, VAR_TEMP_x4000
+	check_badge 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0048_D24R0211_0065
 	get_weekday VAR_TEMP_x4000

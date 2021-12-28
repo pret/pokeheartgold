@@ -52,7 +52,7 @@ scr_seq_0233_R32PC0101_008C:
 	end
 
 scr_seq_0233_R32PC0101_0097:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -96,7 +96,7 @@ scr_seq_0233_R32PC0101_00E3:
 	end
 
 scr_seq_0233_R32PC0101_0117:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

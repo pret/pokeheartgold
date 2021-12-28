@@ -414,7 +414,7 @@ scr_seq_0167_05CA:
 	npc_msg 20
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	scrcmd_515 13
+	add_special_game_stat 13
 	return
 
 scr_seq_0167_05ED:
@@ -1061,7 +1061,7 @@ scr_seq_0167_0F43:
 	setvar VAR_TEMP_x4009, 500
 	scrcmd_198 2, 16393
 	npc_msg 22
-	scrcmd_515 18
+	add_special_game_stat 18
 	goto scr_seq_0167_0F76
 
 scr_seq_0167_0F68:

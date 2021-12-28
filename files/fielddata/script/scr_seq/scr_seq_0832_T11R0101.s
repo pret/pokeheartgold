@@ -178,8 +178,8 @@ scr_seq_0832_T11R0101_0264:
 	faceplayer
 	npc_msg 8
 	closemsg
-	trainer_battle 714, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_WHITNEY_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_02C1
 	npc_msg 9
@@ -198,7 +198,7 @@ scr_seq_0832_T11R0101_0264:
 	end
 
 scr_seq_0832_T11R0101_02C1:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -208,8 +208,8 @@ scr_seq_0832_T11R0101_02C7:
 	faceplayer
 	npc_msg 30
 	closemsg
-	trainer_battle 724, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_JANINE_JANINE_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_0324
 	npc_msg 31
@@ -228,7 +228,7 @@ scr_seq_0832_T11R0101_02C7:
 	end
 
 scr_seq_0832_T11R0101_0324:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -238,8 +238,8 @@ scr_seq_0832_T11R0101_032A:
 	faceplayer
 	npc_msg 18
 	closemsg
-	trainer_battle 719, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_CLAIR_CLAIR_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_0387
 	npc_msg 19
@@ -258,7 +258,7 @@ scr_seq_0832_T11R0101_032A:
 	end
 
 scr_seq_0832_T11R0101_0387:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -268,8 +268,8 @@ scr_seq_0832_T11R0101_038D:
 	faceplayer
 	npc_msg 24
 	closemsg
-	trainer_battle 723, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_ERIKA_ERIKA_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_03EA
 	npc_msg 25
@@ -288,7 +288,7 @@ scr_seq_0832_T11R0101_038D:
 	end
 
 scr_seq_0832_T11R0101_03EA:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -298,8 +298,8 @@ scr_seq_0832_T11R0101_03F0:
 	faceplayer
 	npc_msg 26
 	closemsg
-	trainer_battle 721, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_MISTY_MISTY_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_044D
 	npc_msg 27
@@ -318,7 +318,7 @@ scr_seq_0832_T11R0101_03F0:
 	end
 
 scr_seq_0832_T11R0101_044D:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -328,8 +328,8 @@ scr_seq_0832_T11R0101_0453:
 	faceplayer
 	npc_msg 32
 	closemsg
-	trainer_battle 726, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_BLAINE_BLAINE_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_04B0
 	npc_msg 33
@@ -348,7 +348,7 @@ scr_seq_0832_T11R0101_0453:
 	end
 
 scr_seq_0832_T11R0101_04B0:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -358,8 +358,8 @@ scr_seq_0832_T11R0101_04B6:
 	faceplayer
 	npc_msg 34
 	closemsg
-	trainer_battle 727, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_BLUE_BLUE_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_0513
 	npc_msg 35
@@ -378,7 +378,7 @@ scr_seq_0832_T11R0101_04B6:
 	end
 
 scr_seq_0832_T11R0101_0513:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -388,8 +388,8 @@ scr_seq_0832_T11R0101_0519:
 	faceplayer
 	npc_msg 10
 	closemsg
-	trainer_battle 718, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_CHUCK_CHUCK_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_0576
 	npc_msg 11
@@ -408,7 +408,7 @@ scr_seq_0832_T11R0101_0519:
 	end
 
 scr_seq_0832_T11R0101_0576:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -418,8 +418,8 @@ scr_seq_0832_T11R0101_057C:
 	faceplayer
 	npc_msg 28
 	closemsg
-	trainer_battle 720, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_BROCK_BROCK_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_05D9
 	npc_msg 29
@@ -438,7 +438,7 @@ scr_seq_0832_T11R0101_057C:
 	end
 
 scr_seq_0832_T11R0101_05D9:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -448,8 +448,8 @@ scr_seq_0832_T11R0101_05DF:
 	faceplayer
 	npc_msg 6
 	closemsg
-	trainer_battle 713, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_BUGSY_BUGSY_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_063C
 	npc_msg 7
@@ -468,7 +468,7 @@ scr_seq_0832_T11R0101_05DF:
 	end
 
 scr_seq_0832_T11R0101_063C:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -478,8 +478,8 @@ scr_seq_0832_T11R0101_0642:
 	faceplayer
 	npc_msg 22
 	closemsg
-	trainer_battle 725, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_SABRINA_SABRINA_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_069F
 	npc_msg 23
@@ -498,7 +498,7 @@ scr_seq_0832_T11R0101_0642:
 	end
 
 scr_seq_0832_T11R0101_069F:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -508,8 +508,8 @@ scr_seq_0832_T11R0101_06A5:
 	faceplayer
 	npc_msg 4
 	closemsg
-	trainer_battle 712, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_FALKNER_FALKNER_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_0702
 	npc_msg 5
@@ -528,7 +528,7 @@ scr_seq_0832_T11R0101_06A5:
 	end
 
 scr_seq_0832_T11R0101_0702:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -538,8 +538,8 @@ scr_seq_0832_T11R0101_0708:
 	faceplayer
 	npc_msg 20
 	closemsg
-	trainer_battle 722, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_LT_SURGE_LT__SURGE_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_0765
 	npc_msg 21
@@ -558,7 +558,7 @@ scr_seq_0832_T11R0101_0708:
 	end
 
 scr_seq_0832_T11R0101_0765:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -568,8 +568,8 @@ scr_seq_0832_T11R0101_076B:
 	faceplayer
 	npc_msg 14
 	closemsg
-	trainer_battle 715, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_MORTY_MORTY_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_07C8
 	npc_msg 15
@@ -588,7 +588,7 @@ scr_seq_0832_T11R0101_076B:
 	end
 
 scr_seq_0832_T11R0101_07C8:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -598,8 +598,8 @@ scr_seq_0832_T11R0101_07CE:
 	faceplayer
 	npc_msg 12
 	closemsg
-	trainer_battle 717, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_JASMINE_JASMINE_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_082B
 	npc_msg 13
@@ -618,7 +618,7 @@ scr_seq_0832_T11R0101_07CE:
 	end
 
 scr_seq_0832_T11R0101_082B:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -628,8 +628,8 @@ scr_seq_0832_T11R0101_0831:
 	faceplayer
 	npc_msg 16
 	closemsg
-	trainer_battle 716, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_PRYCE_PRYCE_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0832_T11R0101_088E
 	npc_msg 17
@@ -648,7 +648,7 @@ scr_seq_0832_T11R0101_0831:
 	end
 
 scr_seq_0832_T11R0101_088E:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

@@ -386,8 +386,8 @@ scr_seq_0029_D23R0101_0540:
 	wait_movement
 	npc_msg 23
 	closemsg
-	trainer_battle 185, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_3, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0029_D23R0101_0655
 	npc_msg 24
@@ -450,7 +450,7 @@ scr_seq_0029_D23R0101_0625:
 
 scr_seq_0029_D23R0101_0655:
 	setvar VAR_UNK_4077, 2
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

@@ -70,8 +70,8 @@ scr_seq_0215_R24_00BC:
 	play_bgm SEQ_GS_EYE_ROCKET
 	npc_msg 0
 	closemsg
-	trainer_battle 353, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_24, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0215_R24_014A
 	npc_msg 2
@@ -99,7 +99,7 @@ scr_seq_0215_R24_00BC:
 	end
 
 scr_seq_0215_R24_014A:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

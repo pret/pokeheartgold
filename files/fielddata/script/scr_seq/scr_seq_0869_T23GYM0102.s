@@ -65,13 +65,13 @@ scr_seq_0869_T23GYM0102_00D3:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 1, VAR_SPECIAL_x800C
+	check_badge 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0869_T23GYM0102_017A
 	npc_msg 0
 	closemsg
-	trainer_battle 21, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_BUGSY_BUGSY, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0869_T23GYM0102_0174
 	npc_msg 1
@@ -79,12 +79,12 @@ scr_seq_0869_T23GYM0102_00D3:
 	npc_msg 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	scrcmd_295 1
-	settrainerflag 68
-	settrainerflag 67
-	settrainerflag 69
-	settrainerflag 10
-	scrcmd_515 22
+	give_badge 1
+	settrainerflag TRAINER_BUG_CATCHER_AL
+	settrainerflag TRAINER_BUG_CATCHER_BENNY
+	settrainerflag TRAINER_BUG_CATCHER_JOSH
+	settrainerflag TRAINER_TWINS_AMY_AND_MIMI
+	add_special_game_stat 22
 	npc_msg 3
 scr_seq_0869_T23GYM0102_0136:
 	setvar VAR_SPECIAL_x8004, 416
@@ -101,13 +101,13 @@ scr_seq_0869_T23GYM0102_0136:
 	end
 
 scr_seq_0869_T23GYM0102_016A:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
 scr_seq_0869_T23GYM0102_0174:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

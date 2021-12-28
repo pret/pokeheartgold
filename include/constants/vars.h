@@ -128,7 +128,7 @@
 #define VAR_UNK_4071                 0x4071
 #define VAR_UNK_4072                 0x4072
 #define VAR_UNK_4073                 0x4073
-#define VAR_UNK_4074                 0x4074
+#define VAR_SCENE_VIOLET_CITY_OW                 0x4074
 #define VAR_UNK_4075                 0x4075
 #define VAR_UNK_4076                 0x4076
 #define VAR_UNK_4077                 0x4077

@@ -29,7 +29,7 @@ scr_seq_0860_T22PC0101_0026:
 	fade_screen 6, 1, 0, 0
 	wait_fade
 	closemsg
-	scrcmd_493 32780, 32768, 32769
+	prompt_easy_chat VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	scrcmd_150
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -40,13 +40,13 @@ scr_seq_0860_T22PC0101_0026:
 	wait_fade
 	closemsg
 	scrcmd_815 0
-	scrcmd_493 32780, 32770, 32771
+	prompt_easy_chat VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	scrcmd_150
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0860_T22PC0101_021F
-	scrcmd_498 32780, 32768, 32769, 32770, 32771
+	primo_password_check_1 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0860_T22PC0101_00DD
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -54,7 +54,7 @@ scr_seq_0860_T22PC0101_0026:
 	goto scr_seq_0860_T22PC0101_022A
 
 scr_seq_0860_T22PC0101_00DD:
-	scrcmd_499 32780, 32768, 32769, 32770, 32771
+	primo_password_check_2 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0860_T22PC0101_0212
 	comparevartovalue VAR_SPECIAL_x800C, 8
@@ -72,8 +72,8 @@ scr_seq_0860_T22PC0101_011D:
 	setflag FLAG_UNK_159
 	npc_msg 18
 	buffer_players_name 0
-	scrcmd_202 1, 179, 0, 0
-	scrcmd_138 179, 14
+	buffer_species_name_custom 1, SPECIES_MAREEP, 0, 0
+	give_egg SPECIES_MAREEP, 14
 	goto scr_seq_0860_T22PC0101_01CB
 
 scr_seq_0860_T22PC0101_0157:
@@ -85,8 +85,8 @@ scr_seq_0860_T22PC0101_0157:
 	setflag FLAG_UNK_15A
 	npc_msg 18
 	buffer_players_name 0
-	scrcmd_202 1, 194, 0, 0
-	scrcmd_138 194, 14
+	buffer_species_name_custom 1, SPECIES_WOOPER, 0, 0
+	give_egg SPECIES_WOOPER, 14
 	goto scr_seq_0860_T22PC0101_01CB
 
 scr_seq_0860_T22PC0101_0191:
@@ -98,8 +98,8 @@ scr_seq_0860_T22PC0101_0191:
 	setflag FLAG_UNK_15B
 	npc_msg 18
 	buffer_players_name 0
-	scrcmd_202 1, 218, 0, 0
-	scrcmd_138 218, 14
+	buffer_species_name_custom 1, SPECIES_SLUGMA, 0, 0
+	give_egg SPECIES_SLUGMA, 14
 	goto scr_seq_0860_T22PC0101_01CB
 
 scr_seq_0860_T22PC0101_01CB:

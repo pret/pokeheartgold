@@ -84,7 +84,7 @@ scr_seq_0940_T29R0201_0101:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0940_T29R0201_0137
-	callstd 2009
+	callstd std_bag_is_full
 	goto scr_seq_0940_T29R0201_0148
 
 scr_seq_0940_T29R0201_0137:

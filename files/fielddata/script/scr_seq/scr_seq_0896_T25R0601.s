@@ -61,7 +61,7 @@ scr_seq_0896_T25R0601_005A:
 	end
 
 scr_seq_0896_T25R0601_00EA:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	setvar VAR_UNK_4082, 0
@@ -111,7 +111,7 @@ scr_seq_0896_T25R0601_014C:
 scr_seq_0896_T25R0601_0154:
 	checkflag FLAG_UNK_0B5
 	gotoif TRUE, scr_seq_0896_T25R0601_01E5
-	scrcmd_294 2, VAR_TEMP_x4000
+	check_badge 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0896_T25R0601_0185
 	play_se SEQ_SE_DP_SELECT
@@ -149,7 +149,7 @@ scr_seq_0896_T25R0601_01D0:
 	end
 
 scr_seq_0896_T25R0601_01DB:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -353,7 +353,7 @@ scr_seq_0896_T25R0601_049E:
 	end
 
 scr_seq_0896_T25R0601_04DD:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	setvar VAR_UNK_4082, 0

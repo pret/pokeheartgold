@@ -22,7 +22,7 @@ scr_seq_0015_D11R0106_002A:
 	scrcmd_147 30, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0015_D11R0106_008A
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0015_D11R0106_0069
 	clearflag FLAG_UNK_2F5
@@ -81,21 +81,21 @@ scr_seq_0015_D11R0106_00FE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 14, VAR_SPECIAL_x800C
+	check_badge 14, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0015_D11R0106_01B6
 	npc_msg 0
 	closemsg
-	trainer_battle 259, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_BLAINE_BLAINE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0015_D11R0106_01CC
-	scrcmd_295 14
+	give_badge 14
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_265
 	setflag FLAG_UNK_299
 	clearflag FLAG_UNK_29A
-	scrcmd_515 22
+	add_special_game_stat 22
 	setflag FLAG_UNK_13F
 	setflag FLAG_UNK_140
 	setflag FLAG_UNK_13C
@@ -123,7 +123,7 @@ scr_seq_0015_D11R0106_0175:
 	end
 
 scr_seq_0015_D11R0106_01AC:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -138,7 +138,7 @@ scr_seq_0015_D11R0106_01B6:
 	end
 
 scr_seq_0015_D11R0106_01CC:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -150,8 +150,8 @@ scr_seq_0015_D11R0106_01D2:
 	gotoif TRUE, scr_seq_0015_D11R0106_021A
 	npc_msg 6
 	closemsg
-	trainer_battle 689, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SUPER_NERD_CARY, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0015_D11R0106_01CC
 	npc_msg 8
@@ -177,8 +177,8 @@ scr_seq_0015_D11R0106_0225:
 	gotoif TRUE, scr_seq_0015_D11R0106_028C
 	npc_msg 9
 	closemsg
-	trainer_battle 690, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SUPER_NERD_WALDO, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0015_D11R0106_01CC
 	npc_msg 11
@@ -212,8 +212,8 @@ scr_seq_0015_D11R0106_0297:
 	gotoif TRUE, scr_seq_0015_D11R0106_02DF
 	npc_msg 12
 	closemsg
-	trainer_battle 691, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SUPER_NERD_MERLE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0015_D11R0106_01CC
 	npc_msg 14
@@ -239,8 +239,8 @@ scr_seq_0015_D11R0106_02EA:
 	gotoif TRUE, scr_seq_0015_D11R0106_0332
 	npc_msg 15
 	closemsg
-	trainer_battle 692, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SCIENTIST_GS_LOWELL, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0015_D11R0106_01CC
 	npc_msg 17
@@ -266,8 +266,8 @@ scr_seq_0015_D11R0106_033D:
 	gotoif TRUE, scr_seq_0015_D11R0106_03A4
 	npc_msg 18
 	closemsg
-	trainer_battle 693, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SCIENTIST_GS_LINDEN, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0015_D11R0106_01CC
 	npc_msg 20
@@ -301,8 +301,8 @@ scr_seq_0015_D11R0106_03AF:
 	gotoif TRUE, scr_seq_0015_D11R0106_0416
 	npc_msg 21
 	closemsg
-	trainer_battle 694, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SCIENTIST_GS_DANIEL, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0015_D11R0106_01CC
 	npc_msg 23
@@ -379,7 +379,7 @@ scr_seq_0015_D11R0106_0490:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 14, VAR_SPECIAL_x800C
+	check_badge 14, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0015_D11R0106_04B6
 	npc_msg 24

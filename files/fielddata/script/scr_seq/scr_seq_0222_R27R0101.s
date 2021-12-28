@@ -40,7 +40,7 @@ scr_seq_0222_R27R0101_006A:
 	end
 
 scr_seq_0222_R27R0101_0075:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

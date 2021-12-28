@@ -41,7 +41,7 @@ scr_seq_0815_T09_007B:
 	scrcmd_147 30, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0815_T09_00CC
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0815_T09_00A9
 	goto scr_seq_0815_T09_0102

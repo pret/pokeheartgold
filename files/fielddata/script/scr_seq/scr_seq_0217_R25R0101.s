@@ -306,7 +306,7 @@ scr_seq_0217_R25R0101_0452:
 	goto scr_seq_0217_R25R0101_0490
 
 scr_seq_0217_R25R0101_047A:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

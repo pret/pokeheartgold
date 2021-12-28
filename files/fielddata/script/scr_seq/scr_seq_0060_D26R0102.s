@@ -46,8 +46,8 @@ scr_seq_0060_D26R0102_0055:
 	faceplayer
 	npc_msg 1
 	closemsg
-	trainer_battle 486, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_EXECUTIVE_PROTON_PROTON, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0060_D26R0102_0193
 	npc_msg 2
@@ -112,7 +112,7 @@ scr_seq_0060_D26R0102_0107:
 	end
 
 scr_seq_0060_D26R0102_0193:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

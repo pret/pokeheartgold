@@ -49,7 +49,7 @@ scr_seq_0785_T07_0095:
 	scrcmd_147 28, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0785_T07_015E
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0785_T07_00C3
 	goto scr_seq_0785_T07_0198

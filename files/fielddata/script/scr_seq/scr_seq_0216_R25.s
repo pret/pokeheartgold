@@ -27,7 +27,7 @@ scr_seq_0216_R25_003B:
 	clearflag FLAG_UNK_2B2
 	setflag FLAG_UNK_2A2
 scr_seq_0216_R25_0050:
-	scrcmd_294 15, VAR_TEMP_x4000
+	check_badge 15, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0216_R25_011B
 	comparevartovalue VAR_UNK_4089, 1
@@ -394,8 +394,8 @@ scr_seq_0216_R25_04FB:
 	setflag FLAG_UNK_122
 	npc_msg 13
 	closemsg
-	trainer_battle 361, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_ACE_TRAINER_M_KEVIN, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0216_R25_056D
 scr_seq_0216_R25_0558:
@@ -406,13 +406,13 @@ scr_seq_0216_R25_0558:
 	end
 
 scr_seq_0216_R25_0563:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
 scr_seq_0216_R25_056D:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -545,7 +545,7 @@ scr_seq_0216_R25_06DE:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 245, 40, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0216_R25_07AA
 	scrcmd_683 16386
@@ -583,7 +583,7 @@ scr_seq_0216_R25_07A6:
 	end
 
 scr_seq_0216_R25_07AA:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

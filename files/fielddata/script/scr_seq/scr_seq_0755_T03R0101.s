@@ -351,7 +351,7 @@ scr_seq_0755_T03R0101_053F:
 scr_seq_0755_T03R0101_054E:
 	.byte 0x02, 0x00
 scr_seq_0755_T03R0101_0550:
-	scrcmd_202 0, 16511, 0, 0
+	buffer_species_name_custom 0, VAR_UNK_407F, 0, 0
 	npc_msg 4
 	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
@@ -360,7 +360,7 @@ scr_seq_0755_T03R0101_0550:
 	goto scr_seq_0755_T03R0101_05FC
 
 scr_seq_0755_T03R0101_0575:
-	scrcmd_202 1, 16511, 0, 0
+	buffer_species_name_custom 1, VAR_UNK_407F, 0, 0
 	buffer_players_name 0
 	play_fanfare SEQ_ME_POKEGET
 	npc_msg 8

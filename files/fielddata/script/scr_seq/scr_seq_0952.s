@@ -125,7 +125,7 @@ scr_seq_0952_0118:
 	closemsg
 	scrcmd_784 4, 1
 	scrcmd_808 16384
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	callif eq, scr_seq_0952_0191
 	setflagvar VAR_TEMP_x4001

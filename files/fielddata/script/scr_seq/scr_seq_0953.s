@@ -760,7 +760,7 @@ scr_seq_0953_0B92:
 	callif eq, scr_seq_0953_0E57
 	comparevartovalue VAR_SPECIAL_x8001, 54
 	callif eq, scr_seq_0953_0E57
-	checktrainerflag 32772
+	checktrainerflag VAR_SPECIAL_x8004
 	gotoif eq, scr_seq_0953_0C9C
 	scrcmd_217 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -785,23 +785,23 @@ scr_seq_0953_0C2F:
 	closemsg
 	scrcmd_454
 	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_0D99
 	copyvar VAR_TEMP_x4012, VAR_SPECIAL_x8004
 	scrcmd_212 32774
-	checktrainerflag 32774
+	checktrainerflag VAR_SPECIAL_x8006
 	gotoif eq, scr_seq_0953_0C7F
 	scrcmd_317 1
 	call scr_seq_0953_0D9F
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	callif eq, scr_seq_0953_0DCF
-	settrainerflag 16402
+	settrainerflag VAR_TEMP_x4012
 	releaseall
 	end
 
 scr_seq_0953_0C7F:
-	settrainerflag 16402
+	settrainerflag VAR_TEMP_x4012
 	scrcmd_462 16400
 	scrcmd_613 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -866,7 +866,7 @@ scr_seq_0953_0D54:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0953_0D8F
-	callstd 2009
+	callstd std_bag_is_full
 	goto scr_seq_0953_0D93
 
 scr_seq_0953_0D8F:
@@ -877,7 +877,7 @@ scr_seq_0953_0D93:
 	end
 
 scr_seq_0953_0D99:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -1007,12 +1007,12 @@ scr_seq_0953_0F0A:
 	scrcmd_214 32772, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1176
 	scrcmd_171 0, 32780
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	settrainerflag 32772
+	settrainerflag VAR_SPECIAL_x8004
 	scrcmd_317 0
 	call scr_seq_0953_0D9F
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -1050,15 +1050,15 @@ scr_seq_0953_0FC7:
 	scrcmd_214 32773, 7
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1176
 	scrcmd_171 0, 32780
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	settrainerflag 32772
+	settrainerflag VAR_SPECIAL_x8004
 	scrcmd_171 1, 32780
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	settrainerflag 32773
+	settrainerflag VAR_SPECIAL_x8005
 	call scr_seq_0953_0D9F
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	callif eq, scr_seq_0953_0DCF
@@ -1102,15 +1102,15 @@ scr_seq_0953_10A8:
 	scrcmd_214 32773, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1176
 	scrcmd_171 0, 32780
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	settrainerflag 32772
+	settrainerflag VAR_SPECIAL_x8004
 	scrcmd_171 1, 32780
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	settrainerflag 32773
+	settrainerflag VAR_SPECIAL_x8005
 	call scr_seq_0953_0D9F
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	callif eq, scr_seq_0953_0DCF
@@ -1130,7 +1130,7 @@ scr_seq_0953_1161:
 	return
 
 scr_seq_0953_1176:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 	.balign 4, 0

@@ -94,7 +94,7 @@ scr_seq_0021_D17R0110_0103:
 
 scr_seq_0021_D17R0110_0167:
 	clearflag FLAG_UNK_242
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

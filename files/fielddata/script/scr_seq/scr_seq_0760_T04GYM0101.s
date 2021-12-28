@@ -17,7 +17,7 @@ scr_seq_0760_T04GYM0101_0022:
 	scrcmd_142 29, 16385
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0760_T04GYM0101_00ED
-	scrcmd_294 15, VAR_TEMP_x4000
+	check_badge 15, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0760_T04GYM0101_00E5
 	comparevartovalue VAR_UNK_4089, 1
@@ -194,7 +194,7 @@ scr_seq_0760_T04GYM0101_0231:
 	end
 
 scr_seq_0760_T04GYM0101_027C:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -203,23 +203,23 @@ scr_seq_0760_T04GYM0101_0286:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 9, VAR_SPECIAL_x800C
+	check_badge 9, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0760_T04GYM0101_0348
 	npc_msg 8
 	closemsg
-	trainer_battle 254, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_MISTY_MISTY, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0760_T04GYM0101_035E
-	scrcmd_295 9
+	give_badge 9
 	addvar VAR_UNK_4135, 1
-	scrcmd_515 22
-	settrainerflag 297
-	settrainerflag 298
-	settrainerflag 678
-	settrainerflag 676
-	settrainerflag 677
+	add_special_game_stat 22
+	settrainerflag TRAINER_SWIMMER_F_DIANA
+	settrainerflag TRAINER_SWIMMER_F_BRIANA
+	settrainerflag TRAINER_SWIMMER_F_JOY
+	settrainerflag TRAINER_SAILOR_PARKER
+	settrainerflag TRAINER_SAILOR_EDDIE
 	npc_msg 9
 	buffer_players_name 0
 	npc_msg 10
@@ -247,7 +247,7 @@ scr_seq_0760_T04GYM0101_0307:
 	end
 
 scr_seq_0760_T04GYM0101_033E:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -262,7 +262,7 @@ scr_seq_0760_T04GYM0101_0348:
 	end
 
 scr_seq_0760_T04GYM0101_035E:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -277,7 +277,7 @@ scr_seq_0760_T04GYM0101_0370:
 	faceplayer
 	comparevartovalue VAR_UNK_4088, 2
 	gotoif ne, scr_seq_0760_T04GYM0101_03AD
-	scrcmd_294 9, VAR_SPECIAL_x800C
+	check_badge 9, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0760_T04GYM0101_03A4
@@ -299,7 +299,7 @@ scr_seq_0760_T04GYM0101_03B6:
 	faceplayer
 	comparevartovalue VAR_UNK_4088, 2
 	gotoif ne, scr_seq_0760_T04GYM0101_03F3
-	scrcmd_294 9, VAR_SPECIAL_x800C
+	check_badge 9, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0760_T04GYM0101_03EA
@@ -323,7 +323,7 @@ scr_seq_0760_T04GYM0101_03FE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 9, VAR_SPECIAL_x800C
+	check_badge 9, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0760_T04GYM0101_0424
 	npc_msg 14

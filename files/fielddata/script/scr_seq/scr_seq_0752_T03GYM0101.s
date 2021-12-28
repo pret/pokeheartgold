@@ -16,7 +16,7 @@ scr_seq_0752_T03GYM0101_0012:
 	scrcmd_147 33, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0752_T03GYM0101_00A4
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0752_T03GYM0101_0053
 	goto scr_seq_0752_T03GYM0101_00F5
@@ -85,20 +85,20 @@ scr_seq_0752_T03GYM0101_0101:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 8, VAR_SPECIAL_x800C
+	check_badge 8, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0752_T03GYM0101_0195
 	npc_msg 0
 	closemsg
-	trainer_battle 253, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_BROCK_BROCK, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0752_T03GYM0101_01B8
-	scrcmd_295 8
+	give_badge 8
 	addvar VAR_UNK_4135, 1
-	scrcmd_515 22
-	settrainerflag 308
-	settrainerflag 685
+	add_special_game_stat 22
+	settrainerflag TRAINER_CAMPER_JERRY
+	settrainerflag TRAINER_HIKER_EDWIN
 	npc_msg 1
 	buffer_players_name 0
 	npc_msg 2
@@ -127,13 +127,13 @@ scr_seq_0752_T03GYM0101_0195:
 	end
 
 scr_seq_0752_T03GYM0101_01AE:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
 scr_seq_0752_T03GYM0101_01B8:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -141,7 +141,7 @@ scr_seq_0752_T03GYM0101_01BE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 8, VAR_SPECIAL_x800C
+	check_badge 8, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0752_T03GYM0101_01E4
 	npc_msg 6
@@ -161,7 +161,7 @@ scr_seq_0752_T03GYM0101_01EF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 8, VAR_SPECIAL_x800C
+	check_badge 8, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0752_T03GYM0101_0216

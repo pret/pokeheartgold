@@ -29,7 +29,7 @@ scr_seq_0926_T27R0201_002D:
 	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0926_T27R0201_00D4
-	scrcmd_294 3, VAR_SPECIAL_x800C
+	check_badge 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0926_T27R0201_0096
 	scrcmd_495 VAR_SPECIAL_x800C

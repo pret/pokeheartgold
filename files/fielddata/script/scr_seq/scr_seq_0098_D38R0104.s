@@ -16,8 +16,8 @@ scr_seq_0098_D38R0104_0006:
 	gotoif TRUE, scr_seq_0098_D38R0104_0046
 	npc_msg 0
 	closemsg
-	trainer_battle 158, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_BLACK_BELT_KIYO, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0098_D38R0104_00CC
 	setflag FLAG_UNK_10D
@@ -60,7 +60,7 @@ scr_seq_0098_D38R0104_00A6:
 	return
 
 scr_seq_0098_D38R0104_00CC:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

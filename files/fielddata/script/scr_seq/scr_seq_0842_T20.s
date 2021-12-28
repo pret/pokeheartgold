@@ -32,7 +32,7 @@ scr_seq_0842_T20_004A:
 
 scr_seq_0842_T20_005F:
 	setvar VAR_TEMP_x4007, 0
-	scrcmd_294 2, VAR_TEMP_x4002
+	check_badge 2, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, scr_seq_0842_T20_0089
 	get_weekday VAR_TEMP_x4000

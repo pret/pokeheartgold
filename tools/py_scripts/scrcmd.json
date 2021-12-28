@@ -236,19 +236,19 @@
     {
       "name": "settrainerflag",
       "args": [
-        2
+        "trainer"
       ]
     },
     {
       "name": "cleartrainerflag",
       "args": [
-        2
+        "trainer"
       ]
     },
     {
       "name": "checktrainerflag",
       "args": [
-        2
+        "trainer"
       ]
     },
     {
@@ -870,10 +870,10 @@
       ]
     },
     {
-      "name": "scrcmd_138",
+      "name": "give_egg",
       "args": [
-        2,
-        2
+        "species",
+        "var"
       ]
     },
     {
@@ -1259,10 +1259,10 @@
       ]
     },
     {
-      "name": "scrcmd_202",
+      "name": "buffer_species_name_custom",
       "args": [
         1,
-        2,
+        "species",
         2,
         1
       ]
@@ -1335,7 +1335,7 @@
     {
       "name": "trainer_battle",
       "args": [
-        "var",
+        "trainer",
         "var",
         1,
         1
@@ -1377,11 +1377,11 @@
       ]
     },
     {
-      "name": "scrcmd_219",
+      "name": "white_out",
       "args": []
     },
     {
-      "name": "scrcmd_220",
+      "name": "check_battle_won",
       "args": [
         "var"
       ]
@@ -1808,22 +1808,22 @@
       "args": []
     },
     {
-      "name": "scrcmd_294",
+      "name": "check_badge",
       "args": [
-        2,
+        "var",
         "var"
       ]
     },
     {
-      "name": "scrcmd_295",
+      "name": "give_badge",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_296",
+      "name": "count_badges",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3104,11 +3104,11 @@
       ]
     },
     {
-      "name": "scrcmd_493",
+      "name": "prompt_easy_chat",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -3139,23 +3139,23 @@
       ]
     },
     {
-      "name": "scrcmd_498",
+      "name": "primo_password_check_1",
       "args": [
-        2,
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_499",
+      "name": "primo_password_check_2",
       "args": [
-        2,
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -3246,7 +3246,7 @@
       ]
     },
     {
-      "name": "scrcmd_515",
+      "name": "add_special_game_stat",
       "args": [
         2
       ]
@@ -4862,7 +4862,7 @@
       ]
     },
     {
-      "name": "scrcmd_776",
+      "name": "give_togepi_egg",
       "args": []
     },
     {

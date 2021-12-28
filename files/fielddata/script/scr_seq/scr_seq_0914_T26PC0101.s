@@ -16,7 +16,7 @@ scr_seq_0914_T26PC0101_0016:
 	end
 
 scr_seq_0914_T26PC0101_0022:
-	checktrainerflag 728
+	checktrainerflag TRAINER_BEAUTY_CHARLOTTE
 	gotoif eq, scr_seq_0914_T26PC0101_00E6
 	comparevartovalue VAR_TEMP_x4007, 77
 	gotoif eq, scr_seq_0914_T26PC0101_00C4
@@ -45,11 +45,11 @@ scr_seq_0914_T26PC0101_0082:
 	gotoif eq, scr_seq_0914_T26PC0101_00D5
 	npc_msg 5
 	closemsg
-	trainer_battle 728, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_BEAUTY_CHARLOTTE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0914_T26PC0101_00E0
-	settrainerflag 728
+	settrainerflag TRAINER_BEAUTY_CHARLOTTE
 	npc_msg 6
 	waitbutton
 	closemsg
@@ -71,7 +71,7 @@ scr_seq_0914_T26PC0101_00D5:
 	end
 
 scr_seq_0914_T26PC0101_00E0:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

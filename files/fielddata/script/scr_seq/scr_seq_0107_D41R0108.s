@@ -12,8 +12,8 @@ scr_seq_0107_D41R0108_0006:
 	faceplayer
 	npc_msg 0
 	closemsg
-	trainer_battle 260, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_PKMN_TRAINER_RED_RED, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0107_D41R0108_0098
 	npc_msg 1
@@ -40,7 +40,7 @@ scr_seq_0107_D41R0108_0006:
 	end
 
 scr_seq_0107_D41R0108_0098:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

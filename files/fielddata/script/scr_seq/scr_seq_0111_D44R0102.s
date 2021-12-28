@@ -424,7 +424,7 @@ scr_seq_0111_D44R0102_05AC:
 scr_seq_0111_D44R0102_05C8:
 	scrcmd_562 735, 733, 734, 1
 scr_seq_0111_D44R0102_05D1:
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0111_D44R0102_066C
 	buffer_players_name 0
@@ -461,7 +461,7 @@ scr_seq_0111_D44R0102_05D1:
 	end
 
 scr_seq_0111_D44R0102_066C:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

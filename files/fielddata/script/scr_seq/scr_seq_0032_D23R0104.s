@@ -147,7 +147,7 @@ scr_seq_0032_D23R0104_0184:
 	end
 
 scr_seq_0032_D23R0104_018C:
-	checktrainerflag 200
+	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_4
 	gotoif eq, scr_seq_0032_D23R0104_01F6
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -164,11 +164,11 @@ scr_seq_0032_D23R0104_01C7:
 	wait_movement
 	npc_msg 13
 	closemsg
-	trainer_battle 200, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_TEAM_ROCKET_F_GRUNT_4, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0032_D23R0104_0209
-	settrainerflag 200
+	settrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_4
 	npc_msg 14
 	waitbutton
 	closemsg
@@ -186,7 +186,7 @@ scr_seq_0032_D23R0104_01F6:
 	end
 
 scr_seq_0032_D23R0104_0209:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

@@ -35,7 +35,7 @@ scr_seq_0237_R34_005D:
 	end
 
 scr_seq_0237_R34_006E:
-	scrcmd_294 2, VAR_TEMP_x4000
+	check_badge 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0237_R34_009F
 	get_weekday VAR_TEMP_x4000
@@ -594,8 +594,8 @@ scr_seq_0237_R34_07E1:
 	wait_movement
 	npc_msg 19
 	closemsg
-	trainer_battle 120, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_ACE_TRAINER_F_IRENE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0237_R34_0912
 	apply_movement 5, scr_seq_0237_R34_094C
@@ -610,8 +610,8 @@ scr_seq_0237_R34_07E1:
 	wait_movement
 	npc_msg 24
 	closemsg
-	trainer_battle 417, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_ACE_TRAINER_F_JENN, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0237_R34_0912
 	apply_movement 6, scr_seq_0237_R34_0954
@@ -639,8 +639,8 @@ scr_seq_0237_R34_087D:
 	wait_movement
 	npc_msg 24
 	closemsg
-	trainer_battle 417, 120, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_ACE_TRAINER_F_JENN, 120, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0237_R34_0912
 	apply_movement 5, scr_seq_0237_R34_094C
@@ -662,7 +662,7 @@ scr_seq_0237_R34_0908:
 	end
 
 scr_seq_0237_R34_0912:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -708,8 +708,8 @@ scr_seq_0237_R34_095C:
 	npc_msg 28
 	closemsg
 	scrcmd_081 0
-	trainer_battle 118, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_ACE_TRAINER_F_KATE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0237_R34_0912
 	setvar VAR_UNK_4097, 2
@@ -737,7 +737,7 @@ scr_seq_0237_R34_09EC:
 	end
 
 scr_seq_0237_R34_09EE:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	goto scr_seq_0237_R34_09D5
 

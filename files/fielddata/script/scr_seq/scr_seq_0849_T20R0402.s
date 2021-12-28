@@ -21,7 +21,7 @@ scr_seq_0849_T20R0402_0027:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0849_T20R0402_006D
 	buffer_players_name 0

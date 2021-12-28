@@ -601,7 +601,7 @@ scr_seq_0122_D49_07CB:
 	end
 
 scr_seq_0122_D49_07D6:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

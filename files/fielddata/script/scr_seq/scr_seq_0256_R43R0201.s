@@ -171,7 +171,7 @@ scr_seq_0256_R43R0201_0208:
 	end
 
 scr_seq_0256_R43R0201_0213:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

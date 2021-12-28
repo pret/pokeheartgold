@@ -186,7 +186,7 @@ gScriptCmdTable:
 	.word ScrCmd_135                                    ; 135
 	.word ScrCmd_136                                    ; 136
 	.word ScrCmd_137                                    ; 137
-	.word ScrCmd_138                                    ; 138
+	.word ScrCmd_GiveEgg                                    ; 138
 	.word ScrCmd_139                                    ; 139
 	.word ScrCmd_140                                    ; 140
 	.word ScrCmd_141                                    ; 141
@@ -250,7 +250,7 @@ gScriptCmdTable:
 	.word ScrCmd_BufferPartyMonNick                     ; 199
 	.word ScrCmd_200                                    ; 200
 	.word ScrCmd_201                                    ; 201
-	.word ScrCmd_202                                    ; 202
+	.word ScrCmd_BufferSpeciesNameCustom                                    ; 202
 	.word ScrCmd_203                                    ; 203
 	.word ScrCmd_204                                    ; 204
 	.word ScrCmd_205                                    ; 205
@@ -267,8 +267,8 @@ gScriptCmdTable:
 	.word ScrCmd_216                                    ; 216
 	.word ScrCmd_217                                    ; 217
 	.word ScrCmd_218                                    ; 218
-	.word ScrCmd_219                                    ; 219
-	.word ScrCmd_220                                    ; 220
+	.word ScrCmd_WhiteOut                                    ; 219
+	.word ScrCmd_CheckBattleWon                                    ; 220
 	.word ScrCmd_221                                    ; 221
 	.word ScrCmd_222                                    ; 222
 	.word ScrCmd_223                                    ; 223
@@ -342,9 +342,9 @@ gScriptCmdTable:
 	.word ScrCmd_291                                    ; 291
 	.word ScrCmd_292                                    ; 292
 	.word ScrCmd_293                                    ; 293
-	.word ScrCmd_294                                    ; 294
-	.word ScrCmd_295                                    ; 295
-	.word ScrCmd_296                                    ; 296
+	.word ScrCmd_CheckBadge                                    ; 294
+	.word ScrCmd_GiveBadge                                    ; 295
+	.word ScrCmd_CountBadges                                    ; 296
 	.word ScrCmd_297                                    ; 297
 	.word ScrCmd_298                                    ; 298
 	.word ScrCmd_299                                    ; 299
@@ -541,13 +541,13 @@ gScriptCmdTable:
 	.word ScrCmd_490                                    ; 490
 	.word ScrCmd_491                                    ; 491
 	.word ScrCmd_492                                    ; 492
-	.word ScrCmd_493                                    ; 493
+	.word ScrCmd_PromptEasyChat                                    ; 493
 	.word ScrCmd_494                                    ; 494
 	.word ScrCmd_495                                    ; 495
 	.word ScrCmd_496                                    ; 496
 	.word ScrCmd_497                                    ; 497
-	.word ScrCmd_498                                    ; 498
-	.word ScrCmd_499                                    ; 499
+	.word ScrCmd_PrimoPasswordCheck1                                    ; 498
+	.word ScrCmd_PrimoPasswordCheck2                                    ; 499
 	.word ScrCmd_500                                    ; 500
 	.word ScrCmd_501                                    ; 501
 	.word ScrCmd_502                                    ; 502
@@ -563,7 +563,7 @@ gScriptCmdTable:
 	.word ScrCmd_512                                    ; 512
 	.word ScrCmd_513                                    ; 513
 	.word ScrCmd_514                                    ; 514
-	.word ScrCmd_515                                    ; 515
+	.word ScrCmd_AddSpecialGameStat                                    ; 515
 	.word ScrCmd_516                                    ; 516
 	.word ScrCmd_517                                    ; 517
 	.word ScrCmd_518                                    ; 518
@@ -824,7 +824,7 @@ gScriptCmdTable:
 	.word ScrCmd_773                                    ; 773
 	.word ScrCmd_774                                    ; 774
 	.word ScrCmd_775                                    ; 775
-	.word ScrCmd_776                                    ; 776
+	.word ScrCmd_GiveTogepiEgg                                    ; 776
 	.word ScrCmd_777                                    ; 777
 	.word ScrCmd_778                                    ; 778
 	.word ScrCmd_779                                    ; 779
@@ -6497,8 +6497,8 @@ ScrCmd_492: ; 0x020432FC
 _02043358: .word 0x0000FFFF
 	thumb_func_end ScrCmd_492
 
-	thumb_func_start ScrCmd_493
-ScrCmd_493: ; 0x0204335C
+	thumb_func_start ScrCmd_PromptEasyChat
+ScrCmd_PromptEasyChat: ; 0x0204335C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -6540,7 +6540,7 @@ ScrCmd_493: ; 0x0204335C
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _020433B8: .word 0x0000FFFF
-	thumb_func_end ScrCmd_493
+	thumb_func_end ScrCmd_PromptEasyChat
 
 	thumb_func_start ScrCmd_494
 ScrCmd_494: ; 0x020433BC
@@ -10963,8 +10963,8 @@ ScrCmd_495: ; 0x020455F0
 	.balign 4, 0
 	thumb_func_end ScrCmd_495
 
-	thumb_func_start ScrCmd_498
-ScrCmd_498: ; 0x0204560C
+	thumb_func_start ScrCmd_PrimoPasswordCheck1
+ScrCmd_PrimoPasswordCheck1: ; 0x0204560C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -11055,10 +11055,10 @@ _020456CE:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_498
+	thumb_func_end ScrCmd_PrimoPasswordCheck1
 
-	thumb_func_start ScrCmd_499
-ScrCmd_499: ; 0x020456D8
+	thumb_func_start ScrCmd_PrimoPasswordCheck2
+ScrCmd_PrimoPasswordCheck2: ; 0x020456D8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -11130,7 +11130,7 @@ _02045778:
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_499
+	thumb_func_end ScrCmd_PrimoPasswordCheck2
 
 	thumb_func_start ScrCmd_500
 ScrCmd_500: ; 0x02045780
@@ -11311,8 +11311,8 @@ ScrCmd_514: ; 0x020458A4
 	.balign 4, 0
 	thumb_func_end ScrCmd_514
 
-	thumb_func_start ScrCmd_515
-ScrCmd_515: ; 0x020458CC
+	thumb_func_start ScrCmd_AddSpecialGameStat
+ScrCmd_AddSpecialGameStat: ; 0x020458CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -11326,7 +11326,7 @@ ScrCmd_515: ; 0x020458CC
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_515
+	thumb_func_end ScrCmd_AddSpecialGameStat
 
 	thumb_func_start ScrCmd_517
 ScrCmd_517: ; 0x020458EC

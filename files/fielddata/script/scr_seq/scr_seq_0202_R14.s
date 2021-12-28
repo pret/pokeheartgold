@@ -294,7 +294,7 @@ scr_seq_0202_R14_03D2:
 	clearflag FLAG_UNK_2AC
 	setvar VAR_UNK_4086, 0
 	setflag FLAG_UNK_14D
-	scrcmd_294 9, VAR_SPECIAL_x800C
+	check_badge 9, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0202_R14_0449
 	clearflag FLAG_UNK_2A1
@@ -472,7 +472,7 @@ scr_seq_0202_R14_060D:
 	end
 
 scr_seq_0202_R14_064E:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

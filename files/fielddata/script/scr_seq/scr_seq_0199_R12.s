@@ -194,7 +194,7 @@ scr_seq_0199_R12_0268:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 143, 50, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0199_R12_02AE
 	scrcmd_683 16389
@@ -205,7 +205,7 @@ scr_seq_0199_R12_0268:
 	end
 
 scr_seq_0199_R12_02AE:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

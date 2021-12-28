@@ -31,7 +31,7 @@ scr_seq_0146_004E:
 	scrcmd_141 32780, 15
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_009E
-	scrcmd_294 1, VAR_SPECIAL_x800C
+	check_badge 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_009E
 	npc_msg 0
@@ -184,7 +184,7 @@ scr_seq_0146_0281:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_02D7
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_02D7
 	npc_msg 3
@@ -354,7 +354,7 @@ scr_seq_0146_051C:
 	scrcmd_141 32780, 70
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0564
-	scrcmd_294 2, VAR_SPECIAL_x800C
+	check_badge 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0564
 	npc_msg 7
@@ -516,7 +516,7 @@ scr_seq_0146_0738:
 	scrcmd_141 32780, 431
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0797
-	scrcmd_294 15, VAR_SPECIAL_x800C
+	check_badge 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0797
 	scrcmd_299 32780
@@ -692,7 +692,7 @@ scr_seq_0146_0949:
 	scrcmd_141 32780, 127
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0997
-	scrcmd_294 7, VAR_SPECIAL_x800C
+	check_badge 7, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0997
 	npc_msg 24
@@ -743,7 +743,7 @@ scr_seq_0146_09E6:
 	scrcmd_141 32780, 250
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0A34
-	scrcmd_294 6, VAR_SPECIAL_x800C
+	check_badge 6, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0A34
 	npc_msg 29
@@ -977,7 +977,7 @@ scr_seq_0146_0D2A:
 	end
 
 scr_seq_0146_0D2C:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	end
 	.balign 4, 0

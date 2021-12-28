@@ -22,7 +22,7 @@ scr_seq_0792_T07R0104_002F:
 	scrcmd_147 18, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0792_T07R0104_0082
-	scrcmd_294 12, VAR_TEMP_x4000
+	check_badge 12, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0792_T07R0104_005B
 	goto scr_seq_0792_T07R0104_00C2

@@ -19,7 +19,7 @@ scr_seq_0859_T22GYM0101_001A:
 	scrcmd_147 18, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0859_T22GYM0101_007E
-	scrcmd_294 12, VAR_TEMP_x4001
+	check_badge 12, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0859_T22GYM0101_005B
 	goto scr_seq_0859_T22GYM0101_00A1
@@ -62,20 +62,20 @@ scr_seq_0859_T22GYM0101_00AD:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0859_T22GYM0101_0168
 	npc_msg 0
 	closemsg
-	trainer_battle 20, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_FALKNER_FALKNER, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0859_T22GYM0101_017E
-	scrcmd_295 0
-	scrcmd_515 22
-	settrainerflag 29
-	settrainerflag 50
-	setvar VAR_UNK_4074, 1
+	give_badge 0
+	add_special_game_stat 22
+	settrainerflag TRAINER_BIRD_KEEPER_GS_ROD
+	settrainerflag TRAINER_BIRD_KEEPER_GS_ABE
+	setvar VAR_SCENE_VIOLET_CITY_OW, 1
 	setflag FLAG_UNK_192
 	setvar VAR_UNK_4108, 6
 	setflag FLAG_UNK_0F4
@@ -104,7 +104,7 @@ scr_seq_0859_T22GYM0101_0126:
 	end
 
 scr_seq_0859_T22GYM0101_015E:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -119,7 +119,7 @@ scr_seq_0859_T22GYM0101_0168:
 	end
 
 scr_seq_0859_T22GYM0101_017E:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -127,7 +127,7 @@ scr_seq_0859_T22GYM0101_0184:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0859_T22GYM0101_01AA
 	npc_msg 7
@@ -157,7 +157,7 @@ scr_seq_0859_T22GYM0101_01C8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0859_T22GYM0101_01EF

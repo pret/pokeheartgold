@@ -322,7 +322,7 @@ scr_seq_0085_D32R0401_044A:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0085_D32R0401_04D8
 	scrcmd_633 2, 16710, 32780
-	scrcmd_202 0, 32780, 0, 0
+	buffer_species_name_custom 0, VAR_SPECIAL_x800C, 0, 0
 	comparevartovar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	gotoif eq, scr_seq_0085_D32R0401_04D8
 	goto scr_seq_0085_D32R0401_0484
@@ -330,7 +330,7 @@ scr_seq_0085_D32R0401_044A:
 scr_seq_0085_D32R0401_0482:
 	.byte 0x02, 0x00
 scr_seq_0085_D32R0401_0484:
-	scrcmd_202 1, 16385, 0, 0
+	buffer_species_name_custom 1, VAR_TEMP_x4001, 0, 0
 	npc_msg 34
 	scrcmd_746
 	scrcmd_749 1, 1, 1, 1, VAR_SPECIAL_x800C

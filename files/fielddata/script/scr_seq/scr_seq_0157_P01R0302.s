@@ -43,7 +43,7 @@ scr_seq_0157_P01R0302_005B:
 	gotoif TRUE, scr_seq_0157_P01R0302_0084
 	checkflag FLAG_UNK_092
 	gotoif TRUE, scr_seq_0157_P01R0302_0084
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0157_P01R0302_008F
 scr_seq_0157_P01R0302_0084:

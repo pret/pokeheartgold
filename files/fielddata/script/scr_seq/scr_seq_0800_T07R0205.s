@@ -41,7 +41,7 @@ scr_seq_0800_T07R0205_0071:
 	end
 
 scr_seq_0800_T07R0205_007C:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

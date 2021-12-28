@@ -86,8 +86,8 @@ scr_seq_0114_D45R0102_0079:
 	npc_msg 3
 	closemsg
 	setvar VAR_UNK_40FE, 3
-	trainer_battle 700, 0, 1, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_ROCKET_BOSS_GIOVANNI, 0, 1, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0114_D45R0102_0250
 	setvar VAR_UNK_40FE, 4

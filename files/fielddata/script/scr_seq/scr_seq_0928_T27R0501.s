@@ -210,8 +210,8 @@ scr_seq_0928_T27R0501_02FC:
 	npc_msg 5
 	closemsg
 	setvar VAR_TEMP_x4009, 222
-	trainer_battle 601, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_26, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0928_T27R0501_040C
 	npc_msg 6
@@ -269,7 +269,7 @@ scr_seq_0928_T27R0501_03F2:
 	end
 
 scr_seq_0928_T27R0501_040C:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -413,7 +413,7 @@ scr_seq_0928_T27R0501_059E:
 	end
 
 scr_seq_0928_T27R0501_05A9:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -750,8 +750,8 @@ scr_seq_0928_T27R0501_0944:
 	npc_msg 45
 	closemsg
 	wait 10, VAR_SPECIAL_x800C
-	trainer_battle 162, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_KIMONO_GIRL_ZUKI, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0928_T27R0501_0BC9
 	apply_movement 10, scr_seq_0928_T27R0501_0C0C
@@ -762,8 +762,8 @@ scr_seq_0928_T27R0501_0944:
 	wait_movement
 	npc_msg 15
 	closemsg
-	trainer_battle 160, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_KIMONO_GIRL_NAOKO, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0928_T27R0501_0BC9
 	apply_movement 4, scr_seq_0928_T27R0501_0C48
@@ -774,8 +774,8 @@ scr_seq_0928_T27R0501_0944:
 	wait_movement
 	npc_msg 16
 	closemsg
-	trainer_battle 164, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_KIMONO_GIRL_MIKI, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0928_T27R0501_0BC9
 	apply_movement 8, scr_seq_0928_T27R0501_0C84
@@ -786,8 +786,8 @@ scr_seq_0928_T27R0501_0944:
 	wait_movement
 	npc_msg 17
 	closemsg
-	trainer_battle 161, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_KIMONO_GIRL_SAYO, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0928_T27R0501_0BC9
 	apply_movement 5, scr_seq_0928_T27R0501_0CBC
@@ -798,8 +798,8 @@ scr_seq_0928_T27R0501_0944:
 	wait_movement
 	npc_msg 18
 	closemsg
-	trainer_battle 163, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_KIMONO_GIRL_KUNI, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0928_T27R0501_0BC9
 	apply_movement 7, scr_seq_0928_T27R0501_0CF8
@@ -894,7 +894,7 @@ scr_seq_0928_T27R0501_0BC7:
 	return
 
 scr_seq_0928_T27R0501_0BC9:
-	scrcmd_219
+	white_out
 	call scr_seq_0928_T27R0501_0BB0
 	end
 

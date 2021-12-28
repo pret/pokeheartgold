@@ -88,7 +88,7 @@ scr_seq_0878_T24PC0101_00EF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 4, VAR_SPECIAL_x800C
+	check_badge 4, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0878_T24PC0101_0115
 	npc_msg 2

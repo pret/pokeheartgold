@@ -15,9 +15,9 @@
 	scrdef_end
 
 scr_seq_0091_D35R0104_0026:
-	checktrainerflag 404
+	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_5
 	gotoif lt, scr_seq_0091_D35R0104_004F
-	checktrainerflag 222
+	checktrainerflag TRAINER_TEAM_ROCKET_GRUNT_19
 	gotoif lt, scr_seq_0091_D35R0104_004F
 	comparevartovalue VAR_UNK_40AC, 3
 	gotoif ge, scr_seq_0091_D35R0104_004F
@@ -279,8 +279,8 @@ scr_seq_0091_D35R0104_0331:
 	wait_movement
 	npc_msg 6
 	closemsg
-	trainer_battle 488, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL_2, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0091_D35R0104_0405
 	npc_msg 7
@@ -312,7 +312,7 @@ scr_seq_0091_D35R0104_0331:
 	end
 
 scr_seq_0091_D35R0104_0405:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -409,9 +409,9 @@ scr_seq_0091_D35R0104_0514:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checktrainerflag 404
+	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_5
 	gotoif lt, scr_seq_0091_D35R0104_0561
-	checktrainerflag 222
+	checktrainerflag TRAINER_TEAM_ROCKET_GRUNT_19
 	gotoif lt, scr_seq_0091_D35R0104_0561
 	buffer_players_name 0
 	npc_msg 12

@@ -110,8 +110,8 @@ scr_seq_0018_D15R0103_013C:
 	gotoif TRUE, scr_seq_0018_D15R0103_0197
 	npc_msg 3
 	closemsg
-	trainer_battle 290, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_ELDER_LI, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0018_D15R0103_01A2
 	npc_msg 4
@@ -135,7 +135,7 @@ scr_seq_0018_D15R0103_0197:
 	end
 
 scr_seq_0018_D15R0103_01A2:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 	.balign 4, 0

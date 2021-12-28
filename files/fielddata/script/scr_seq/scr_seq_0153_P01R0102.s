@@ -32,7 +32,7 @@ scr_seq_0153_P01R0102_0054:
 	scrcmd_147 35, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0153_P01R0102_0097
-	scrcmd_294 13, VAR_TEMP_x4000
+	check_badge 13, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0153_P01R0102_0080
 	goto scr_seq_0153_P01R0102_00C1

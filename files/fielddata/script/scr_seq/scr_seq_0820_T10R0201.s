@@ -52,13 +52,13 @@ scr_seq_0820_T10R0201_0068:
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8
 	gotoif lt, scr_seq_0820_T10R0201_009B
-	trainer_battle 702, 0, 0, 0
+	trainer_battle TRAINER_ELITE_FOUR_WILL_WILL_2, 0, 0, 0
 	goto scr_seq_0820_T10R0201_00A3
 
 scr_seq_0820_T10R0201_009B:
-	trainer_battle 245, 0, 0, 0
+	trainer_battle TRAINER_ELITE_FOUR_WILL_WILL, 0, 0, 0
 scr_seq_0820_T10R0201_00A3:
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0820_T10R0201_00DC
 	setflag FLAG_UNK_0E4
@@ -79,7 +79,7 @@ scr_seq_0820_T10R0201_00D1:
 	end
 
 scr_seq_0820_T10R0201_00DC:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 	.balign 4, 0

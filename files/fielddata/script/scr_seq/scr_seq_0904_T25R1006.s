@@ -623,7 +623,7 @@ scr_seq_0904_T25R1006_08A9:
 	goto scr_seq_0904_T25R1006_08BE
 
 scr_seq_0904_T25R1006_08B2:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	scrcmd_114
 	releaseall

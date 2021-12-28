@@ -343,7 +343,7 @@ scr_seq_0843_T20R0101_049D:
 	end
 
 scr_seq_0843_T20R0101_04A1:
-	scrcmd_294 15, VAR_TEMP_x4003
+	check_badge 15, VAR_TEMP_x4003
 	comparevartovalue VAR_TEMP_x4003, 1
 	gotoif eq, scr_seq_0843_T20R0101_0550
 	checkflag FLAG_UNK_0F2
@@ -352,7 +352,7 @@ scr_seq_0843_T20R0101_04A1:
 	gotoif TRUE, scr_seq_0843_T20R0101_051B
 	checkflag FLAG_UNK_109
 	gotoif TRUE, scr_seq_0843_T20R0101_051B
-	scrcmd_294 7, VAR_TEMP_x4002
+	check_badge 7, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0843_T20R0101_0510
 	comparevartovalue VAR_TEMP_x400F, 1
@@ -473,7 +473,7 @@ scr_seq_0843_T20R0101_0637:
 scr_seq_0843_T20R0101_064A:
 	.byte 0x61, 0x00, 0x02, 0x00
 scr_seq_0843_T20R0101_064E:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -589,7 +589,7 @@ scr_seq_0843_T20R0101_07FD:
 	end
 
 scr_seq_0843_T20R0101_0805:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -889,7 +889,7 @@ scr_seq_0843_T20R0101_0B6C:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0843_T20R0101_0BEF
-	callstd 2009
+	callstd std_bag_is_full
 	goto scr_seq_0843_T20R0101_0BF3
 
 scr_seq_0843_T20R0101_0BEF:

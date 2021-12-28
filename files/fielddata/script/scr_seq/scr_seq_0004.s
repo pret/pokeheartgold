@@ -497,63 +497,63 @@ scr_seq_0004_0778:
 	scrcmd_707 150, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_07AA
-	scrcmd_202 0, 150, 0, 0
+	buffer_species_name_custom 0, SPECIES_MEWTWO, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_07AA:
 	scrcmd_707 249, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_07CE
-	scrcmd_202 0, 249, 0, 0
+	buffer_species_name_custom 0, SPECIES_LUGIA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_07CE:
 	scrcmd_707 250, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_07F2
-	scrcmd_202 0, 250, 0, 0
+	buffer_species_name_custom 0, SPECIES_HO_OH, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_07F2:
 	scrcmd_707 382, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_0816
-	scrcmd_202 0, 382, 0, 0
+	buffer_species_name_custom 0, SPECIES_KYOGRE, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_0816:
 	scrcmd_707 383, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_083A
-	scrcmd_202 0, 383, 0, 0
+	buffer_species_name_custom 0, SPECIES_GROUDON, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_083A:
 	scrcmd_707 384, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_085E
-	scrcmd_202 0, 384, 0, 0
+	buffer_species_name_custom 0, SPECIES_RAYQUAZA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_085E:
 	scrcmd_707 483, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_0882
-	scrcmd_202 0, 483, 0, 0
+	buffer_species_name_custom 0, SPECIES_DIALGA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_0882:
 	scrcmd_707 484, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_08A6
-	scrcmd_202 0, 484, 0, 0
+	buffer_species_name_custom 0, SPECIES_PALKIA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_08A6:
 	scrcmd_707 487, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_08CA
-	scrcmd_202 0, 487, 0, 0
+	buffer_species_name_custom 0, SPECIES_GIRATINA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_08CA:

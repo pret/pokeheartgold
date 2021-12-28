@@ -11883,7 +11883,7 @@ ov80_0222F6E0: ; 0x0222F6E0
 	ldr r0, _0222F704 ; =0x000004FC
 	ldr r5, [r4, r0]
 	ldr r0, [r5, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	str r0, [r4, #0x14]
 	add r0, r5, #0
 	bl sub_02051BF8
@@ -14641,7 +14641,7 @@ ov80_02230CE8: ; 0x02230CE8
 	lsl r0, r0, #8
 	ldr r5, [r4, r0]
 	ldr r0, [r5, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	str r0, [r4, #0x14]
 	add r0, r5, #0
 	bl sub_02051BF8
@@ -16729,7 +16729,7 @@ _02231D84:
 	bl sub_02074740
 _02231DA8:
 	ldr r0, [r5, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02051BF8
@@ -19956,7 +19956,7 @@ ov80_02233770: ; 0x02233770
 	strb r0, [r6, #0x1d]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	str r0, [r6, #0x28]
 	ldrb r0, [r6, #0x13]
 	cmp r0, #0x1b
@@ -24033,7 +24033,7 @@ ov80_02235674: ; 0x02235674
 	lsl r0, r0, #4
 	ldr r5, [r4, r0]
 	ldr r0, [r5, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	ldr r1, _022356A8 ; =0x000008CC
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]

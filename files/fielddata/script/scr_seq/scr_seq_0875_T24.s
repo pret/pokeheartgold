@@ -52,7 +52,7 @@ scr_seq_0875_T24_004E:
 	end
 
 scr_seq_0875_T24_00B8:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -135,8 +135,8 @@ scr_seq_0875_T24_013E:
 	npc_msg 15
 	scrcmd_049
 	closemsg
-	trainer_battle 498, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_MYSTERY_MAN_EUSINE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0875_T24_0227
 	buffer_players_name 0
@@ -156,7 +156,7 @@ scr_seq_0875_T24_0227:
 	setflag FLAG_UNK_1E2
 	clearflag FLAG_UNK_29E
 	setvar VAR_UNK_4092, 1
-	scrcmd_219
+	white_out
 	releaseall
 scr_seq_0875_T24_023D:
 	end

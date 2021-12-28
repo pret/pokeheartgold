@@ -132,7 +132,7 @@ scr_seq_0230_R31_01F1:
 	end
 
 scr_seq_0230_R31_01FC:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

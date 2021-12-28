@@ -24,8 +24,8 @@ scr_seq_0034_D23R0106_002F:
 	faceplayer
 	npc_msg 0
 	closemsg
-	trainer_battle 485, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_EXECUTIVE_ARCHER_ARCHER, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0034_D23R0106_025D
 	npc_msg 1
@@ -150,7 +150,7 @@ scr_seq_0034_D23R0106_0241:
 	end
 
 scr_seq_0034_D23R0106_025D:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

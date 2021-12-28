@@ -539,17 +539,17 @@ ScrCmd_218: ; 0x02049894
 	.balign 4, 0
 	thumb_func_end ScrCmd_218
 
-	thumb_func_start ScrCmd_219
-ScrCmd_219: ; 0x020498C8
+	thumb_func_start ScrCmd_WhiteOut
+ScrCmd_WhiteOut: ; 0x020498C8
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
 	bl sub_0205297C
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_219
+	thumb_func_end ScrCmd_WhiteOut
 
-	thumb_func_start ScrCmd_220
-ScrCmd_220: ; 0x020498D4
+	thumb_func_start ScrCmd_CheckBattleWon
+ScrCmd_CheckBattleWon: ; 0x020498D4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -565,12 +565,12 @@ ScrCmd_220: ; 0x020498D4
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02052554
+	bl IsBattleResultWin
 	strh r0, [r5]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_220
+	thumb_func_end ScrCmd_CheckBattleWon
 
 	thumb_func_start ScrCmd_221
 ScrCmd_221: ; 0x02049904

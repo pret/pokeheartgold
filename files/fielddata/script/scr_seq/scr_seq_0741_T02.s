@@ -117,7 +117,7 @@ scr_seq_0741_T02_0147:
 	end
 
 scr_seq_0741_T02_0152:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

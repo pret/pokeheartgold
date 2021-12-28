@@ -107,7 +107,7 @@ scr_seq_0104_D40R0107_013A:
 
 scr_seq_0104_D40R0107_019E:
 	clearflag FLAG_UNK_243
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

@@ -36,7 +36,7 @@ scr_seq_0092_D36R0101_005E:
 	goto scr_seq_0092_D36R0101_00C3
 
 scr_seq_0092_D36R0101_0077:
-	scrcmd_294 2, VAR_TEMP_x4000
+	check_badge 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0092_D36R0101_00B5
 	get_weekday VAR_TEMP_x4000
@@ -1300,7 +1300,7 @@ scr_seq_0092_D36R0101_11F2:
 	end
 
 scr_seq_0092_D36R0101_11FD:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -1354,7 +1354,7 @@ scr_seq_0092_D36R0101_12BE:
 	end
 
 scr_seq_0092_D36R0101_12C9:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

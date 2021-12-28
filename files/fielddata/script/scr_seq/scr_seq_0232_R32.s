@@ -22,7 +22,7 @@ scr_seq_0232_R32_002A:
 	end
 
 scr_seq_0232_R32_003B:
-	scrcmd_294 2, VAR_TEMP_x4000
+	check_badge 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0232_R32_0079
 	get_weekday VAR_TEMP_x4000
@@ -101,7 +101,7 @@ scr_seq_0232_R32_0164:
 	end
 
 scr_seq_0232_R32_0178:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -166,7 +166,7 @@ scr_seq_0232_R32_023B:
 	end
 
 scr_seq_0232_R32_0246:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -175,7 +175,7 @@ scr_seq_0232_R32_0250:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0232_R32_028C
 	checkflag FLAG_UNK_070
@@ -271,7 +271,7 @@ scr_seq_0232_R32_0391:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0232_R32_03B9
 	npc_msg 4

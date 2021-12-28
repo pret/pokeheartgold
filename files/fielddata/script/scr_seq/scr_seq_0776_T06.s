@@ -190,7 +190,7 @@ scr_seq_0776_T06_020A:
 	end
 
 scr_seq_0776_T06_0241:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

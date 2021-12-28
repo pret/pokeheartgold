@@ -26,7 +26,7 @@ scr_seq_0857_T22_003E:
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 1
 	callstd 2039
-	setvar VAR_UNK_4074, 2
+	setvar VAR_SCENE_VIOLET_CITY_OW, 2
 	clearflag FLAG_UNK_197
 	setflag FLAG_UNK_246
 	end
@@ -57,7 +57,7 @@ scr_seq_0857_T22_0068:
 	hide_person 7
 	setflag FLAG_UNK_238
 	releaseall
-	setvar VAR_UNK_4074, 4
+	setvar VAR_SCENE_VIOLET_CITY_OW, 4
 	end
 
 

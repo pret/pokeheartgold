@@ -24,19 +24,19 @@ scr_seq_0007_D02R0101_0006:
 	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_0007_D02R0101_005A
-	trainer_battle 286, 0, 0, 0
+	trainer_battle TRAINER_RIVAL_SILVER_15, 0, 0, 0
 	goto scr_seq_0007_D02R0101_007D
 
 scr_seq_0007_D02R0101_005A:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_0007_D02R0101_0075
-	trainer_battle 287, 0, 0, 0
+	trainer_battle TRAINER_RIVAL_SILVER_16, 0, 0, 0
 	goto scr_seq_0007_D02R0101_007D
 
 scr_seq_0007_D02R0101_0075:
-	trainer_battle 285, 0, 0, 0
+	trainer_battle TRAINER_RIVAL_SILVER_14, 0, 0, 0
 scr_seq_0007_D02R0101_007D:
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0007_D02R0101_00C9
 	callstd std_play_rival_outro_music
@@ -56,7 +56,7 @@ scr_seq_0007_D02R0101_007D:
 	end
 
 scr_seq_0007_D02R0101_00C9:
-	scrcmd_219
+	white_out
 	end
 
 scr_seq_0007_D02R0101_00CD:

@@ -597,13 +597,13 @@ scr_seq_0740_T01R0301_084A:
 	setflag FLAG_UNK_300
 scr_seq_0740_T01R0301_0852:
 	buffer_players_name 0
-	scrcmd_202 1, 32772, 0, 0
+	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
 	npc_msg 46
 	npc_msg 48
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
 	scrcmd_137 32772, 5, 0, 0, 0, 32780
-	scrcmd_202 1, 32772, 0, 0
+	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
 	npc_msg 49
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C

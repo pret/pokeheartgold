@@ -247,7 +247,7 @@ scr_seq_0938_T29_032B:
 	end
 
 scr_seq_0938_T29_033F:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -301,7 +301,7 @@ scr_seq_0938_T29_03C3:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 130, 30, 1
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0938_T29_0456
 	scrcmd_683 16386
@@ -326,12 +326,12 @@ scr_seq_0938_T29_0452:
 	end
 
 scr_seq_0938_T29_0456:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
 scr_seq_0938_T29_045C:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

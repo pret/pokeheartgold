@@ -88,7 +88,7 @@ scr_seq_0161_P01R0306_00E2:
 	end
 
 scr_seq_0161_P01R0306_0103:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	goto scr_seq_0161_P01R0306_00E2
 

@@ -137,8 +137,8 @@ scr_seq_0033_D23R0105_01DA:
 	wait_movement
 	npc_msg 3
 	closemsg
-	trainer_battle 487, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0033_D23R0105_021D
 	npc_msg 4
@@ -152,7 +152,7 @@ scr_seq_0033_D23R0105_01DA:
 	end
 
 scr_seq_0033_D23R0105_021D:
-	scrcmd_219
+	white_out
 	clearflag FLAG_UNK_2C6
 	setflag FLAG_UNK_2C7
 	releaseall

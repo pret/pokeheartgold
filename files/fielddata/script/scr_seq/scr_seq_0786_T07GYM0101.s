@@ -15,7 +15,7 @@ scr_seq_0786_T07GYM0101_000E:
 	scrcmd_147 28, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0786_T07GYM0101_00DE
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0786_T07GYM0101_004F
 	goto scr_seq_0786_T07GYM0101_0101
@@ -93,22 +93,22 @@ scr_seq_0786_T07GYM0101_010D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 11, VAR_SPECIAL_x800C
+	check_badge 11, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0786_T07GYM0101_01A5
 	npc_msg 0
 	closemsg
-	trainer_battle 256, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_ERIKA_ERIKA, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0786_T07GYM0101_01BB
-	scrcmd_295 11
+	give_badge 11
 	addvar VAR_UNK_4135, 1
-	scrcmd_515 22
-	settrainerflag 326
-	settrainerflag 356
-	settrainerflag 336
-	settrainerflag 346
+	add_special_game_stat 22
+	settrainerflag TRAINER_TWINS_JO_AND_ZOE
+	settrainerflag TRAINER_LASS_MICHELLE
+	settrainerflag TRAINER_PICNICKER_TANYA
+	settrainerflag TRAINER_BEAUTY_JULIA
 	npc_msg 1
 	buffer_players_name 0
 	npc_msg 2
@@ -135,12 +135,12 @@ scr_seq_0786_T07GYM0101_01A5:
 	end
 
 scr_seq_0786_T07GYM0101_01BB:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
 scr_seq_0786_T07GYM0101_01C1:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -149,7 +149,7 @@ scr_seq_0786_T07GYM0101_01CB:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 11, VAR_SPECIAL_x800C
+	check_badge 11, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0786_T07GYM0101_01F2

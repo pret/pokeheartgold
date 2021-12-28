@@ -69,13 +69,13 @@ scr_seq_0824_T10R0601_00AE:
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8
 	gotoif lt, scr_seq_0824_T10R0601_00E8
-	trainer_battle 701, 0, 0, 0
+	trainer_battle TRAINER_CHAMPION_LANCE_2, 0, 0, 0
 	goto scr_seq_0824_T10R0601_00F0
 
 scr_seq_0824_T10R0601_00E8:
-	trainer_battle 244, 0, 0, 0
+	trainer_battle TRAINER_CHAMPION_LANCE, 0, 0, 0
 scr_seq_0824_T10R0601_00F0:
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0824_T10R0601_0290
 	buffer_players_name 0
@@ -167,7 +167,7 @@ scr_seq_0824_T10R0601_0268:
 	end
 
 scr_seq_0824_T10R0601_0290:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

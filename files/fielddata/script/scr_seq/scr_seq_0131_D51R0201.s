@@ -659,7 +659,7 @@ scr_seq_0131_D51R0201_090F:
 	npc_msg 25
 	scrcmd_490 16393
 	buffer_players_name 0
-	scrcmd_202 1, 16393, 0, 0
+	buffer_species_name_custom 1, VAR_TEMP_x4009, 0, 0
 	play_fanfare SEQ_ME_SHINKAOME
 	npc_msg 26
 	wait_fanfare

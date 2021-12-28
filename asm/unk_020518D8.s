@@ -1538,8 +1538,8 @@ sub_02052544: ; 0x02052544
 	bx lr
 	thumb_func_end sub_02052544
 
-	thumb_func_start sub_02052554
-sub_02052554: ; 0x02052554
+	thumb_func_start IsBattleResultWin
+IsBattleResultWin: ; 0x02052554
 	cmp r0, #2
 	beq _0205255C
 	cmp r0, #3
@@ -1550,7 +1550,7 @@ _0205255C:
 _02052560:
 	mov r0, #1
 	bx lr
-	thumb_func_end sub_02052554
+	thumb_func_end IsBattleResultWin
 
 	thumb_func_start sub_02052564
 sub_02052564: ; 0x02052564

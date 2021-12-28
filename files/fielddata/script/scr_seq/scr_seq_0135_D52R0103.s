@@ -80,7 +80,7 @@ scr_seq_0135_D52R0103_00C0:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 384, 50, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0135_D52R0103_0142
 	scrcmd_683 16386
@@ -103,7 +103,7 @@ scr_seq_0135_D52R0103_0134:
 	end
 
 scr_seq_0135_D52R0103_0142:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 	.balign 4, 0

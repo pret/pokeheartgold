@@ -36,7 +36,7 @@ scr_seq_0825_T10R0701_0010:
 	scrcmd_604 48
 	party_count_not_egg VAR_SPECIAL_x800C
 	scrcmd_514 32780
-	scrcmd_515 23
+	add_special_game_stat 23
 	fade_screen 6, 1, 0, 0
 	wait_fade
 	call scr_seq_0825_T10R0701_01B4
@@ -146,7 +146,7 @@ scr_seq_0825_T10R0701_01E7:
 	return
 
 scr_seq_0825_T10R0701_01ED:
-	scrcmd_294 15, VAR_SPECIAL_x800C
+	check_badge 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0825_T10R0701_0204
 	clearflag FLAG_UNK_297

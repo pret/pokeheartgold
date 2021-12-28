@@ -151,7 +151,7 @@ scr_seq_0112_D44R0103_019C:
 	npc_msg 16
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	scrcmd_295 7
+	give_badge 7
 	npc_msg 17
 	apply_movement 0, scr_seq_0112_D44R0103_0408
 	apply_movement 255, scr_seq_0112_D44R0103_0418

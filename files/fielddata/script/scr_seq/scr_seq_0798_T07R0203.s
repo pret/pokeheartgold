@@ -139,7 +139,7 @@ scr_seq_0798_T07R0203_0198:
 	scrcmd_425 0
 	scrcmd_150
 	setflag FLAG_UNK_143
-	scrcmd_515 25
+	add_special_game_stat 25
 	fade_screen 6, 1, 1, 0
 	wait_fade
 scr_seq_0798_T07R0203_01ED:
@@ -157,7 +157,7 @@ scr_seq_0798_T07R0203_01ED:
 	scrcmd_425 1
 	scrcmd_150
 	setflag FLAG_UNK_144
-	scrcmd_515 26
+	add_special_game_stat 26
 	fade_screen 6, 1, 1, 0
 	wait_fade
 scr_seq_0798_T07R0203_023A:
@@ -178,7 +178,7 @@ scr_seq_0798_T07R0203_0250:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 15, VAR_SPECIAL_x800C
+	check_badge 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0798_T07R0203_0276
 	npc_msg 7

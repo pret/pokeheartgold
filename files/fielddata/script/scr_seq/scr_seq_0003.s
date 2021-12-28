@@ -1119,7 +1119,7 @@ scr_seq_0003_0ED8:
 	npc_msg 44
 	call scr_seq_0003_0F89
 	call scr_seq_0003_0216
-	scrcmd_294 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0003_0F49
 	npc_msg 45

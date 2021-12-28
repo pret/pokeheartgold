@@ -297,18 +297,18 @@ scr_seq_0778_T06GYM0101_0302:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 10, VAR_SPECIAL_x800C
+	check_badge 10, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0778_T06GYM0101_03C7
 	npc_msg 0
 	closemsg
-	trainer_battle 255, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_LT_SURGE_LT__SURGE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0778_T06GYM0101_03DD
-	scrcmd_295 10
+	give_badge 10
 	addvar VAR_UNK_4135, 1
-	scrcmd_515 22
+	add_special_game_stat 22
 	setflag FLAG_UNK_31A
 	hide_person 0
 	hide_person 1
@@ -316,9 +316,9 @@ scr_seq_0778_T06GYM0101_0302:
 	hide_person 3
 	hide_person 4
 	hide_person 5
-	settrainerflag 232
-	settrainerflag 337
-	settrainerflag 396
+	settrainerflag TRAINER_GUITARIST_VINCENT
+	settrainerflag TRAINER_GENTLEMAN_GREGORY
+	settrainerflag TRAINER_JUGGLER_HORTON
 	npc_msg 1
 	buffer_players_name 0
 	npc_msg 2
@@ -342,7 +342,7 @@ scr_seq_0778_T06GYM0101_0389:
 	end
 
 scr_seq_0778_T06GYM0101_03BD:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -357,7 +357,7 @@ scr_seq_0778_T06GYM0101_03C7:
 	end
 
 scr_seq_0778_T06GYM0101_03DD:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -365,7 +365,7 @@ scr_seq_0778_T06GYM0101_03E3:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 10, VAR_SPECIAL_x800C
+	check_badge 10, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0778_T06GYM0101_0409
 	npc_msg 6
@@ -385,7 +385,7 @@ scr_seq_0778_T06GYM0101_0414:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 10, VAR_SPECIAL_x800C
+	check_badge 10, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0778_T06GYM0101_043B

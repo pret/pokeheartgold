@@ -72,7 +72,7 @@ scr_seq_0873_T23R0201_00AA:
 	end
 
 scr_seq_0873_T23R0201_00B5:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

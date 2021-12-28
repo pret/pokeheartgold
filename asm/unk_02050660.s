@@ -107,7 +107,7 @@ _02050704:
 	bl VarSet
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	pop {r4, pc}
 	nop
 _02050720: .word 0x00004013
@@ -804,7 +804,7 @@ _02050C8A:
 	bl sub_020930C4
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	cmp r0, #0
 	bne _02050CBE
 	add r0, r4, #0
@@ -1127,7 +1127,7 @@ _02050F4A:
 	bl sub_02050724
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x14]
-	bl sub_02052554
+	bl IsBattleResultWin
 	cmp r0, #0
 	bne _02050F74
 	add r0, r5, #0

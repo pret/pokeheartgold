@@ -159,10 +159,10 @@ scr_seq_0075_D31R0207_01D3:
 
 scr_seq_0075_D31R0207_0216:
 	scrcmd_413 16393, 0, 32772, 32773
-	scrcmd_202 0, 32772, 0, 0
+	buffer_species_name_custom 0, VAR_SPECIAL_x8004, 0, 0
 	scrcmd_197 1, 32773
 	scrcmd_413 16393, 1, 32772, 32773
-	scrcmd_202 2, 32772, 0, 0
+	buffer_species_name_custom 2, VAR_SPECIAL_x8004, 0, 0
 	scrcmd_197 3, 32773
 	return
 

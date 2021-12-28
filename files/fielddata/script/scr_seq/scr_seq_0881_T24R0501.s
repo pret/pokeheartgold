@@ -50,7 +50,7 @@ scr_seq_0881_T24R0501_0051:
 	end
 
 scr_seq_0881_T24R0501_009C:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

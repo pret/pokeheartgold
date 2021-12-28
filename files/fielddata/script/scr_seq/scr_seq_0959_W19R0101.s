@@ -10,7 +10,7 @@ scr_seq_0959_W19R0101_0006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 14, VAR_SPECIAL_x800C
+	check_badge 14, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0959_W19R0101_002C
 	npc_msg 0

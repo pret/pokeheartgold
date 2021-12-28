@@ -1,3 +1,4 @@
+#include "constants/scrcmd.h"
 	.rodata
 	.option alignment off
 
@@ -8,7 +9,7 @@
 	.byte 0
 
 scr_seq_0482_R34_hdr_000B:
-	.short 16526, 2, 2
+	.short VAR_UNK_408E, 2, 2
 	.short 0
 
 	.balign 4, 0

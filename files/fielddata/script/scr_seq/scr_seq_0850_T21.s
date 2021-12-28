@@ -23,7 +23,7 @@ scr_seq_0850_T21_002E:
 	end
 
 scr_seq_0850_T21_003F:
-	scrcmd_294 2, VAR_TEMP_x4000
+	check_badge 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0850_T21_007D
 	get_weekday VAR_TEMP_x4000
@@ -512,19 +512,19 @@ scr_seq_0850_T21_06B4:
 	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_0850_T21_070C
-	trainer_battle 496, 0, 1, 0
+	trainer_battle TRAINER_PASSERBY_BOY_2, 0, 1, 0
 	goto scr_seq_0850_T21_072F
 
 scr_seq_0850_T21_070C:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_0850_T21_0727
-	trainer_battle 497, 0, 1, 0
+	trainer_battle TRAINER_PASSERBY_BOY_3, 0, 1, 0
 	goto scr_seq_0850_T21_072F
 
 scr_seq_0850_T21_0727:
-	trainer_battle 495, 0, 1, 0
+	trainer_battle TRAINER_PASSERBY_BOY, 0, 1, 0
 scr_seq_0850_T21_072F:
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	callstd std_play_rival_outro_music
 	npc_msg 14
 	closemsg

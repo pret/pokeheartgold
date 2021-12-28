@@ -77,8 +77,8 @@ ScrCmd_293: ; 0x0204E684
 	.balign 4, 0
 	thumb_func_end ScrCmd_293
 
-	thumb_func_start ScrCmd_294
-ScrCmd_294: ; 0x0204E6A0
+	thumb_func_start ScrCmd_CheckBadge
+ScrCmd_CheckBadge: ; 0x0204E6A0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -109,10 +109,10 @@ _0204E6D2:
 	strh r0, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_294
+	thumb_func_end ScrCmd_CheckBadge
 
-	thumb_func_start ScrCmd_295
-ScrCmd_295: ; 0x0204E6E8
+	thumb_func_start ScrCmd_GiveBadge
+ScrCmd_GiveBadge: ; 0x0204E6E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -135,7 +135,7 @@ _0204E706:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_295
+	thumb_func_end ScrCmd_GiveBadge
 
 	thumb_func_start ScrCmd_297
 ScrCmd_297: ; 0x0204E71C
@@ -159,8 +159,8 @@ ScrCmd_297: ; 0x0204E71C
 	.balign 4, 0
 	thumb_func_end ScrCmd_297
 
-	thumb_func_start ScrCmd_296
-ScrCmd_296: ; 0x0204E748
+	thumb_func_start ScrCmd_CountBadges
+ScrCmd_CountBadges: ; 0x0204E748
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -179,7 +179,7 @@ ScrCmd_296: ; 0x0204E748
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_296
+	thumb_func_end ScrCmd_CountBadges
 
 	thumb_func_start ScrCmd_298
 ScrCmd_298: ; 0x0204E774

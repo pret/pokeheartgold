@@ -46,7 +46,7 @@ scr_seq_0918_T26R0601_0079:
 	end
 
 scr_seq_0918_T26R0601_0084:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

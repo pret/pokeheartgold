@@ -49,7 +49,7 @@ scr_seq_0858_T22FS0101_007D:
 	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0858_T22FS0101_0106
-	scrcmd_776
+	give_togepi_egg
 	setflag FLAG_UNK_070
 	buffer_players_name 0
 	npc_msg 4
@@ -72,7 +72,7 @@ scr_seq_0858_T22FS0101_00CD:
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_197
 	releaseall
-	setvar VAR_UNK_4074, 3
+	setvar VAR_SCENE_VIOLET_CITY_OW, 3
 	clearflag FLAG_UNK_238
 	clearflag FLAG_UNK_246
 	setvar VAR_UNK_4108, 7

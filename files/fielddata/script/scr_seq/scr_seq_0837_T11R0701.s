@@ -102,7 +102,7 @@ scr_seq_0837_T11R0701_015A:
 	end
 
 scr_seq_0837_T11R0701_0165:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -181,7 +181,7 @@ scr_seq_0837_T11R0701_0297:
 scr_seq_0837_T11R0701_02B0:
 	setvar VAR_SPECIAL_x8004, 258
 scr_seq_0837_T11R0701_02B6:
-	scrcmd_202 1, 32772, 0, 0
+	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
 	buffer_players_name 0
 	npc_msg 20
 	play_fanfare SEQ_ME_POKEGET

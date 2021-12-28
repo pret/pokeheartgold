@@ -29,8 +29,8 @@ scr_seq_0158_P01R0303_000A:
 	scrcmd_604 48
 	npc_msg 5
 	closemsg
-	trainer_battle 238, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0158_P01R0303_010C
 	npc_msg 6
@@ -57,8 +57,8 @@ scr_seq_0158_P01R0303_009D:
 	scrcmd_604 48
 	npc_msg 5
 	closemsg
-	trainer_battle 238, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0158_P01R0303_010C
 	npc_msg 6
@@ -72,7 +72,7 @@ scr_seq_0158_P01R0303_009D:
 	end
 
 scr_seq_0158_P01R0303_010C:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

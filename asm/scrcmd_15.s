@@ -209,8 +209,8 @@ _0204D242:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_PartymonIsMine
 
-	thumb_func_start ScrCmd_138
-ScrCmd_138: ; 0x0204D248
+	thumb_func_start ScrCmd_GiveEgg
+ScrCmd_GiveEgg: ; 0x0204D248
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -267,7 +267,7 @@ _0204D2C8:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_138
+	thumb_func_end ScrCmd_GiveEgg
 
 	thumb_func_start ScrCmd_139
 ScrCmd_139: ; 0x0204D2D0

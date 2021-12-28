@@ -18,7 +18,7 @@ scr_seq_0005_D01R0101_001F:
 	scrcmd_147 33, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0005_D01R0101_009E
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0005_D01R0101_004D
 	goto scr_seq_0005_D01R0101_0102

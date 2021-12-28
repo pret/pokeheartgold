@@ -138,7 +138,7 @@ extern BOOL ScrCmd_134(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_135(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_136(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_137(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_138(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_139(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_140(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_141(SCRIPTCONTEXT *ctx);
@@ -202,7 +202,7 @@ extern BOOL ScrCmd_198(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPartyMonNick(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_200(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_201(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_202(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferSpeciesNameCustom(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_203(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_204(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_205(SCRIPTCONTEXT *ctx);
@@ -219,8 +219,8 @@ extern BOOL ScrCmd_215(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_216(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_217(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_218(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_219(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_220(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WhiteOut(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckBattleWon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_221(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_222(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_223(SCRIPTCONTEXT *ctx);
@@ -294,9 +294,9 @@ extern BOOL ScrCmd_290(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_291(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_292(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_293(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_294(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_295(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_296(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckBadge(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveBadge(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountBadges(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_297(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_298(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_299(SCRIPTCONTEXT *ctx);
@@ -493,13 +493,13 @@ extern BOOL ScrCmd_489(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_490(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_491(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_492(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_493(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_494(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_495(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_496(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_497(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_498(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_499(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PrimoPasswordCheck2(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_500(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_501(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_502(SCRIPTCONTEXT *ctx);
@@ -515,7 +515,7 @@ extern BOOL ScrCmd_511(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_512(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_513(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_514(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_515(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AddSpecialGameStat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_516(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_517(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_518(SCRIPTCONTEXT *ctx);
@@ -776,7 +776,7 @@ extern BOOL ScrCmd_772(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_773(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_774(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_775(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_776(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_777(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_778(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_779(SCRIPTCONTEXT *ctx);
@@ -993,7 +993,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_135,
     ScrCmd_136,
     ScrCmd_137,
-    ScrCmd_138,
+    ScrCmd_GiveEgg,
     ScrCmd_139,
     ScrCmd_140,
     ScrCmd_141,
@@ -1057,7 +1057,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferPartyMonNick,
     ScrCmd_200,
     ScrCmd_201,
-    ScrCmd_202,
+    ScrCmd_BufferSpeciesNameCustom,
     ScrCmd_203,
     ScrCmd_204,
     ScrCmd_205,
@@ -1074,8 +1074,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_216,
     ScrCmd_217,
     ScrCmd_218,
-    ScrCmd_219,
-    ScrCmd_220,
+    ScrCmd_WhiteOut,
+    ScrCmd_CheckBattleWon,
     ScrCmd_221,
     ScrCmd_222,
     ScrCmd_223,
@@ -1149,9 +1149,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_291,
     ScrCmd_292,
     ScrCmd_293,
-    ScrCmd_294,
-    ScrCmd_295,
-    ScrCmd_296,
+    ScrCmd_CheckBadge,
+    ScrCmd_GiveBadge,
+    ScrCmd_CountBadges,
     ScrCmd_297,
     ScrCmd_298,
     ScrCmd_299,
@@ -1348,13 +1348,13 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_490,
     ScrCmd_491,
     ScrCmd_492,
-    ScrCmd_493,
+    ScrCmd_PromptEasyChat,
     ScrCmd_494,
     ScrCmd_495,
     ScrCmd_496,
     ScrCmd_497,
-    ScrCmd_498,
-    ScrCmd_499,
+    ScrCmd_PrimoPasswordCheck1,
+    ScrCmd_PrimoPasswordCheck2,
     ScrCmd_500,
     ScrCmd_501,
     ScrCmd_502,
@@ -1370,7 +1370,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_512,
     ScrCmd_513,
     ScrCmd_514,
-    ScrCmd_515,
+    ScrCmd_AddSpecialGameStat,
     ScrCmd_516,
     ScrCmd_517,
     ScrCmd_518,
@@ -1631,7 +1631,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_773,
     ScrCmd_774,
     ScrCmd_775,
-    ScrCmd_776,
+    ScrCmd_GiveTogepiEgg,
     ScrCmd_777,
     ScrCmd_778,
     ScrCmd_779,

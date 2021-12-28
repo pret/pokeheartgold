@@ -812,7 +812,7 @@ scr_seq_0123_D49R0101_0A2F:
 
 scr_seq_0123_D49R0101_0A35:
 	scrcmd_747
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	comparevartovalue VAR_TEMP_x4005, 0
 	gotoif ne, scr_seq_0123_D49R0101_0A52
@@ -971,7 +971,7 @@ scr_seq_0123_D49R0101_0C09:
 scr_seq_0123_D49R0101_0C40:
 	.byte 0x02, 0x00
 scr_seq_0123_D49R0101_0C42:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

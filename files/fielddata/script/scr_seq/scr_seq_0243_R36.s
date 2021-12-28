@@ -98,7 +98,7 @@ scr_seq_0243_R36_012C:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 185, 20, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0243_R36_0255
 	scrcmd_683 16385
@@ -167,7 +167,7 @@ scr_seq_0243_R36_0251:
 	end
 
 scr_seq_0243_R36_0255:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -218,7 +218,7 @@ scr_seq_0243_R36_02E2:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 185, 20, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0243_R36_0255
 	scrcmd_683 16385
@@ -323,7 +323,7 @@ scr_seq_0243_R36_0472:
 	end
 
 scr_seq_0243_R36_0486:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

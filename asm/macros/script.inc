@@ -828,7 +828,7 @@
 	.short \arg5
 	.endm
 
-	.macro scrcmd_138 arg0, arg1
+	.macro give_egg arg0, arg1
 	.short 138
 	.short \arg0
 	.short \arg1
@@ -1167,7 +1167,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_202 arg0, arg1, arg2, arg3
+	.macro buffer_species_name_custom arg0, arg1, arg2, arg3
 	.short 202
 	.byte \arg0
 	.short \arg1
@@ -1268,11 +1268,11 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_219
+	.macro white_out
 	.short 219
 	.endm
 
-	.macro scrcmd_220 arg0
+	.macro check_battle_won arg0
 	.short 220
 	.short \arg0
 	.endm
@@ -1647,18 +1647,18 @@
 	.short 293
 	.endm
 
-	.macro scrcmd_294 arg0, arg1
+	.macro check_badge arg0, arg1
 	.short 294
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_295 arg0
+	.macro give_badge arg0
 	.short 295
 	.short \arg0
 	.endm
 
-	.macro scrcmd_296 arg0
+	.macro count_badges arg0
 	.short 296
 	.short \arg0
 	.endm
@@ -2746,7 +2746,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_493 arg0, arg1, arg2
+	.macro prompt_easy_chat arg0, arg1, arg2
 	.short 493
 	.short \arg0
 	.short \arg1
@@ -2776,7 +2776,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_498 arg0, arg1, arg2, arg3, arg4
+	.macro primo_password_check_1 arg0, arg1, arg2, arg3, arg4
 	.short 498
 	.short \arg0
 	.short \arg1
@@ -2785,7 +2785,7 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_499 arg0, arg1, arg2, arg3, arg4
+	.macro primo_password_check_2 arg0, arg1, arg2, arg3, arg4
 	.short 499
 	.short \arg0
 	.short \arg1
@@ -2870,7 +2870,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_515 arg0
+	.macro add_special_game_stat arg0
 	.short 515
 	.short \arg0
 	.endm
@@ -4288,7 +4288,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_776
+	.macro give_togepi_egg
 	.short 776
 	.endm
 

@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_FLAGS_H
 #define POKEHEARTGOLD_CONSTANTS_FLAGS_H
 
+#include "constants/trainers.h"
+
 #define FLAG_NOTHING                         0
 
 #define FLAG_UNK_001                 0x1
@@ -2921,6 +2923,7 @@
 #define NUM_HIDDEN_ITEMS                231
 
 #define TRAINER_FLAG_BASE              1360
+#define FLAG_TRAINER(tr)               (TRAINER_FLAG_BASE+(tr))
 
 #define DAILY_FLAG_BASE                2720
 #define NUM_DAILY_FLAGS                 192

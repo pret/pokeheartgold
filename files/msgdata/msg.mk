@@ -1,6 +1,6 @@
 
 MSGDATA_MSG_DIR := files/msgdata/msg
-MSGFILE_GMM := $(sort $(wildcard $(MSGDATA_MSG_DIR)/*.gmm))
+MSGFILE_GMM := $(sort $(wildcard $(MSGDATA_MSG_DIR)/*.gmm) $(TRNAME_GMM))
 MSGFILE_BIN := $(patsubst %.gmm,%.bin,$(MSGFILE_GMM))
 MSGFILE_H := $(patsubst %.gmm,%.h,$(MSGFILE_GMM))
 

@@ -145,7 +145,7 @@ scr_seq_0794_T07R0106_01F0:
 	goto scr_seq_0794_T07R0106_0205
 
 scr_seq_0794_T07R0106_01F9:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	scrcmd_114
 	releaseall

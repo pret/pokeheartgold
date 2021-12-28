@@ -72,6 +72,7 @@ class NormalScriptParser(ScriptParserBase):
             'sound': parse_c_header(os.path.join(header_path, 'include/constants/sndseq.h'), 'SEQ_'),
             'ribbon': parse_c_header(os.path.join(header_path, 'include/constants/ribbon.h'), 'RIBBON_'),
             'stdscr': parse_c_header(os.path.join(header_path, 'include/constants/std_script.h'), 'std_'),
+            'trainer': parse_c_header(os.path.join(header_path, 'include/constants/trainers.h'), 'TRAINER_')
         }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
         self.commands_d = {x['name']: x for x in self.commands}
@@ -124,7 +125,7 @@ class NormalScriptParser(ScriptParserBase):
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants[size].get(value, value), pc
-            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr':
+            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants['var'].get(value, self.constants[size].get(value, value)), pc
@@ -258,6 +259,8 @@ class NormalScriptParser(ScriptParserBase):
 class SpecialScriptParser(ScriptParserBase):
     def __init__(self, raw: bytes, prefix='_EV'):
         super().__init__(raw, prefix)
+        header_path = os.path.join(os.path.dirname(__file__), '../..')
+        self.vars = parse_c_header(os.path.join(header_path, 'include/constants/vars.h'), 'VAR_')
         self.table: list[tuple[int, int, int]] = []
         self.init_offset: int = -1
         self.init_vars: list[tuple[int, int, int]] = []
@@ -295,7 +298,7 @@ class SpecialScriptParser(ScriptParserBase):
     def __str__(self):
         if not self.is_parsed:
             return repr(self)
-        s = '\t.rodata\n\t.option alignment off\n\n'
+        s = '#include "constants/scrcmd.h"\n\t.rodata\n\t.option alignment off\n\n'
         for kind, val1, val2 in self.table:
             if kind == 1:
                 s += f'\t.byte 1\n\t.word {self.prefix}_{self.init_offset:04X}-.-4\n'
@@ -305,7 +308,7 @@ class SpecialScriptParser(ScriptParserBase):
         if self.init_offset != -1:
             s += f'{self.prefix}_{self.init_offset:04X}:\n'
             for flex1, flex2, script in self.init_vars:
-                s += f'\t.short {flex1}, {flex2}, {script}\n'
+                s += f'\t.short {self.vars.get(flex1, flex1)}, {self.vars.get(flex2, flex2)}, {script}\n'
             s += '\t.short 0\n\n'
         s += '\t.balign 4, 0\n'
         return s

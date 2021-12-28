@@ -60721,8 +60721,8 @@ _022020C4:
 	.balign 4, 0
 	thumb_func_end ScrCmd_770
 
-	thumb_func_start ScrCmd_776
-ScrCmd_776: ; 0x022020CC
+	thumb_func_start ScrCmd_GiveTogepiEgg
+ScrCmd_GiveTogepiEgg: ; 0x022020CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r0, #0x80
@@ -60822,7 +60822,7 @@ _02202138:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022021A8: .word 0x00000146
-	thumb_func_end ScrCmd_776
+	thumb_func_end ScrCmd_GiveTogepiEgg
 
 	thumb_func_start ScrCmd_777
 ScrCmd_777: ; 0x022021AC

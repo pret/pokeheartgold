@@ -92,16 +92,16 @@ scr_seq_0943_T30GYM0101_0112:
 	gotoif TRUE, scr_seq_0943_T30GYM0101_017D
 	npc_msg 3
 	closemsg
-	trainer_battle 35, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_CLAIR_CLAIR, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0943_T30GYM0101_0188
-	settrainerflag 110
-	settrainerflag 112
-	settrainerflag 111
-	settrainerflag 119
-	settrainerflag 117
-	scrcmd_515 22
+	settrainerflag TRAINER_ACE_TRAINER_M_PAULO
+	settrainerflag TRAINER_ACE_TRAINER_M_CODY
+	settrainerflag TRAINER_ACE_TRAINER_M_MIKE
+	settrainerflag TRAINER_ACE_TRAINER_F_FRAN
+	settrainerflag TRAINER_ACE_TRAINER_F_LOLA
+	add_special_game_stat 22
 	setflag FLAG_UNK_0D1
 	setflag FLAG_UNK_202
 	clearflag FLAG_UNK_203
@@ -119,7 +119,7 @@ scr_seq_0943_T30GYM0101_017D:
 	end
 
 scr_seq_0943_T30GYM0101_0188:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -311,7 +311,7 @@ scr_seq_0943_T30GYM0101_03E0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 7, VAR_SPECIAL_x800C
+	check_badge 7, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0943_T30GYM0101_0407

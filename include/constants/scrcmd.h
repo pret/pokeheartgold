@@ -12,6 +12,7 @@
 #include "constants/ribbon.h"
 #include "constants/pokemon.h"
 #include "constants/std_script.h"
+#include "constants/trainers.h"
 
 #ifdef PM_ASM
 #define lt    0

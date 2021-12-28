@@ -109,19 +109,19 @@ scr_seq_0819_T10R0101_00EF:
 	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
 	gotoif ne, scr_seq_0819_T10R0101_016E
-	trainer_battle 490, 0, 0, 0
+	trainer_battle TRAINER_RIVAL_SILVER_20, 0, 0, 0
 	goto scr_seq_0819_T10R0101_0191
 
 scr_seq_0819_T10R0101_016E:
 	comparevartovalue VAR_SPECIAL_x800C, 155
 	gotoif ne, scr_seq_0819_T10R0101_0189
-	trainer_battle 491, 0, 0, 0
+	trainer_battle TRAINER_RIVAL_SILVER_21, 0, 0, 0
 	goto scr_seq_0819_T10R0101_0191
 
 scr_seq_0819_T10R0101_0189:
-	trainer_battle 489, 0, 0, 0
+	trainer_battle TRAINER_RIVAL_SILVER_19, 0, 0, 0
 scr_seq_0819_T10R0101_0191:
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0819_T10R0101_01CE
 	callstd std_play_rival_outro_music
@@ -140,7 +140,7 @@ scr_seq_0819_T10R0101_0191:
 scr_seq_0819_T10R0101_01CE:
 	hide_person 5
 	setflag FLAG_UNK_250
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

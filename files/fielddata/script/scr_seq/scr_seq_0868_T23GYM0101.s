@@ -11,7 +11,7 @@ scr_seq_0868_T23GYM0101_000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 1, VAR_SPECIAL_x800C
+	check_badge 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0868_T23GYM0101_0030
 	npc_msg 0
@@ -31,7 +31,7 @@ scr_seq_0868_T23GYM0101_003B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 1, VAR_SPECIAL_x800C
+	check_badge 1, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0868_T23GYM0101_0062

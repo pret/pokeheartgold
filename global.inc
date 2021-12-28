@@ -1821,7 +1821,7 @@
 .public ScrCmd_135
 .public ScrCmd_136
 .public ScrCmd_137
-.public ScrCmd_138
+.public ScrCmd_GiveEgg
 .public ScrCmd_139
 .public ScrCmd_140
 .public ScrCmd_141
@@ -1885,7 +1885,7 @@
 .public ScrCmd_BufferPartyMonNick
 .public ScrCmd_200
 .public ScrCmd_201
-.public ScrCmd_202
+.public ScrCmd_BufferSpeciesNameCustom
 .public ScrCmd_203
 .public ScrCmd_204
 .public ScrCmd_205
@@ -1902,8 +1902,8 @@
 .public ScrCmd_216
 .public ScrCmd_217
 .public ScrCmd_218
-.public ScrCmd_219
-.public ScrCmd_220
+.public ScrCmd_WhiteOut
+.public ScrCmd_CheckBattleWon
 .public ScrCmd_221
 .public ScrCmd_222
 .public ScrCmd_223
@@ -1977,9 +1977,9 @@
 .public ScrCmd_291
 .public ScrCmd_292
 .public ScrCmd_293
-.public ScrCmd_294
-.public ScrCmd_295
-.public ScrCmd_296
+.public ScrCmd_CheckBadge
+.public ScrCmd_GiveBadge
+.public ScrCmd_CountBadges
 .public ScrCmd_297
 .public ScrCmd_298
 .public ScrCmd_299
@@ -2173,13 +2173,13 @@
 .public ScrCmd_490
 .public ScrCmd_491
 .public ScrCmd_492
-.public ScrCmd_493
+.public ScrCmd_PromptEasyChat
 .public ScrCmd_494
 .public ScrCmd_495
 .public ScrCmd_496
 .public ScrCmd_497
-.public ScrCmd_498
-.public ScrCmd_499
+.public ScrCmd_PrimoPasswordCheck1
+.public ScrCmd_PrimoPasswordCheck2
 .public ScrCmd_500
 .public ScrCmd_501
 .public ScrCmd_502
@@ -2195,7 +2195,7 @@
 .public ScrCmd_512
 .public ScrCmd_513
 .public ScrCmd_514
-.public ScrCmd_515
+.public ScrCmd_AddSpecialGameStat
 .public ScrCmd_516
 .public ScrCmd_517
 .public ScrCmd_518
@@ -2456,7 +2456,7 @@
 .public ScrCmd_773
 .public ScrCmd_774
 .public ScrCmd_775
-.public ScrCmd_776
+.public ScrCmd_GiveTogepiEgg
 .public ScrCmd_777
 .public ScrCmd_778
 .public ScrCmd_779
@@ -28399,7 +28399,7 @@
 .public sub_0205239C
 .public sub_02052444
 .public sub_02052544
-.public sub_02052554
+.public IsBattleResultWin
 .public sub_02052564
 .public sub_02052574
 .public sub_02052580

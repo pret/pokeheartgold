@@ -28,7 +28,7 @@ scr_seq_0150_0006:
 	npc_msg 3
 	wait_fanfare
 	scrcmd_625 32768, 1, 32780
-	scrcmd_515 1
+	add_special_game_stat 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0150_007D
 	npc_msg 4

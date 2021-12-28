@@ -101,19 +101,19 @@ scr_seq_0922_T27GYM0101_0138:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 3, VAR_SPECIAL_x800C
+	check_badge 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0922_T27GYM0101_01D9
 	npc_msg 0
 	closemsg
-	trainer_battle 31, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_MORTY_MORTY, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0922_T27GYM0101_01EF
 	npc_msg 1
-	scrcmd_295 3
+	give_badge 3
 	addvar VAR_UNK_4134, 1
-	scrcmd_515 22
+	add_special_game_stat 22
 	setflag FLAG_UNK_998
 	buffer_players_name 0
 	npc_msg 2
@@ -137,7 +137,7 @@ scr_seq_0922_T27GYM0101_019B:
 	end
 
 scr_seq_0922_T27GYM0101_01CF:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -152,7 +152,7 @@ scr_seq_0922_T27GYM0101_01D9:
 	end
 
 scr_seq_0922_T27GYM0101_01EF:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -196,7 +196,7 @@ scr_seq_0922_T27GYM0101_0278:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 3, VAR_SPECIAL_x800C
+	check_badge 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0922_T27GYM0101_029E
 	npc_msg 7
@@ -217,7 +217,7 @@ scr_seq_0922_T27GYM0101_02AC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 3, VAR_SPECIAL_x800C
+	check_badge 3, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0922_T27GYM0101_02D3

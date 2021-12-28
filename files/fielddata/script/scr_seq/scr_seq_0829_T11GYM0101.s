@@ -17,7 +17,7 @@ scr_seq_0829_T11GYM0101_0016:
 	scrcmd_147 35, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0829_T11GYM0101_006C
-	scrcmd_294 13, VAR_TEMP_x4000
+	check_badge 13, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0829_T11GYM0101_0055
 	goto scr_seq_0829_T11GYM0101_0083
@@ -48,23 +48,23 @@ scr_seq_0829_T11GYM0101_008F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 13, VAR_SPECIAL_x800C
+	check_badge 13, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0829_T11GYM0101_0140
 	npc_msg 0
 	closemsg
-	trainer_battle 258, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_SABRINA_SABRINA, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0829_T11GYM0101_0156
-	scrcmd_295 13
+	give_badge 13
 	addvar VAR_UNK_4135, 1
-	scrcmd_515 22
+	add_special_game_stat 22
 	setflag FLAG_UNK_998
-	settrainerflag 230
-	settrainerflag 415
-	settrainerflag 368
-	settrainerflag 369
+	settrainerflag TRAINER_PSYCHIC_M_FRANKLIN
+	settrainerflag TRAINER_PSYCHIC_M_JARED
+	settrainerflag TRAINER_MEDIUM_REBECCA
+	settrainerflag TRAINER_MEDIUM_DARCY
 	npc_msg 1
 	buffer_players_name 0
 	npc_msg 2
@@ -88,7 +88,7 @@ scr_seq_0829_T11GYM0101_0102:
 	end
 
 scr_seq_0829_T11GYM0101_0136:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -103,7 +103,7 @@ scr_seq_0829_T11GYM0101_0140:
 	end
 
 scr_seq_0829_T11GYM0101_0156:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -111,7 +111,7 @@ scr_seq_0829_T11GYM0101_015C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 13, VAR_SPECIAL_x800C
+	check_badge 13, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0829_T11GYM0101_0182
 	npc_msg 6
@@ -131,7 +131,7 @@ scr_seq_0829_T11GYM0101_018D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 13, VAR_SPECIAL_x800C
+	check_badge 13, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0829_T11GYM0101_01B4

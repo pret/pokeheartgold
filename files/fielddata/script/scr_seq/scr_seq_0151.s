@@ -341,7 +341,7 @@ scr_seq_0151_043B:
 	goto scr_seq_0151_04B5
 
 scr_seq_0151_045E:
-	scrcmd_202 1, 16386, 2, 1
+	buffer_species_name_custom 1, VAR_TEMP_x4002, 2, 1
 	npc_msg 43
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C

@@ -24,7 +24,7 @@ scr_seq_0191_R10_002B:
 	end
 
 scr_seq_0191_R10_0039:
-	scrcmd_294 15, VAR_TEMP_x4004
+	check_badge 15, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif eq, scr_seq_0191_R10_0052
 	goto scr_seq_0191_R10_00BF
@@ -181,7 +181,7 @@ scr_seq_0191_R10_0261:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 145, 50, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0191_R10_02B3
 	scrcmd_683 16386
@@ -194,7 +194,7 @@ scr_seq_0191_R10_02AF:
 	end
 
 scr_seq_0191_R10_02B3:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

@@ -399,7 +399,7 @@ scr_seq_0030_D23R0102_0525:
 scr_seq_0030_D23R0102_0537:
 	.byte 0x02, 0x00
 scr_seq_0030_D23R0102_0539:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	goto scr_seq_0030_D23R0102_0450
 

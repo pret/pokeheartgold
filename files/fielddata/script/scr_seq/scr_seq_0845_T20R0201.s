@@ -176,7 +176,7 @@ scr_seq_0845_T20R0201_0205:
 	faceplayer
 	checkflag FLAG_UNK_0A7
 	gotoif TRUE, scr_seq_0845_T20R0201_0275
-	scrcmd_294 0, VAR_TEMP_x4000
+	check_badge 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_0845_T20R0201_0234
 	npc_msg 15

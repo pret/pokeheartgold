@@ -353,7 +353,7 @@ scr_seq_0090_D35R0103_0436:
 	apply_movement 7, scr_seq_0090_D35R0103_06A0
 	wait_movement
 	scrcmd_562 675, 479, 499, 1
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0090_D35R0103_0620
 	npc_msg 8
@@ -423,7 +423,7 @@ scr_seq_0090_D35R0103_0436:
 	end
 
 scr_seq_0090_D35R0103_0620:
-	scrcmd_219
+	white_out
 	setflag FLAG_UNK_1F3
 	setflag FLAG_UNK_1E5
 	releaseall
@@ -563,7 +563,7 @@ scr_seq_0090_D35R0103_0770:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 101, 23, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0090_D35R0103_089C
 	scrcmd_221 16384, 0
@@ -588,7 +588,7 @@ scr_seq_0090_D35R0103_07D4:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 101, 23, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0090_D35R0103_089C
 	scrcmd_221 16384, 0
@@ -613,7 +613,7 @@ scr_seq_0090_D35R0103_0838:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 101, 23, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_220 VAR_SPECIAL_x800C
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0090_D35R0103_089C
 	scrcmd_221 16384, 0
@@ -631,7 +631,7 @@ scr_seq_0090_D35R0103_0898:
 	end
 
 scr_seq_0090_D35R0103_089C:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 

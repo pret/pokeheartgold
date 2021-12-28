@@ -596,7 +596,7 @@ scr_seq_0910_T25SP0101_09D5:
 	goto scr_seq_0910_T25SP0101_0C26
 
 scr_seq_0910_T25SP0101_09F3:
-	scrcmd_202 1, 16386, 0, 0
+	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 7
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -645,7 +645,7 @@ scr_seq_0910_T25SP0101_0AB1:
 	play_se SEQ_SE_DP_REGI
 	scrcmd_137 16386, 15, 0, 0, 0, 32780
 	buffer_players_name 0
-	scrcmd_202 1, 16386, 0, 0
+	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 8
 	comparevartovalue VAR_TEMP_x4002, 63
 	gotoif ne, scr_seq_0910_T25SP0101_0AEB

@@ -70,7 +70,7 @@ scr_seq_0246_R37_00E9:
 	end
 
 scr_seq_0246_R37_00FD:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end

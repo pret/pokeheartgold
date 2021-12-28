@@ -52,7 +52,7 @@ scr_seq_0913_T26GYM0101_009D:
 	scrcmd_147 28, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_015A
-	scrcmd_294 15, VAR_TEMP_x4002
+	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_00CB
 	goto scr_seq_0913_T26GYM0101_015A
@@ -116,13 +116,13 @@ scr_seq_0913_T26GYM0101_0162:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, VAR_SPECIAL_x800C
+	check_badge 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_020C
 	npc_msg 0
 	closemsg
-	trainer_battle 33, 0, 0, 0
-	scrcmd_220 VAR_SPECIAL_x800C
+	trainer_battle TRAINER_LEADER_JASMINE_JASMINE, 0, 0, 0
+	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0913_T26GYM0101_0235
 	npc_msg 1
@@ -130,9 +130,9 @@ scr_seq_0913_T26GYM0101_0162:
 	npc_msg 2
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	scrcmd_295 5
+	give_badge 5
 	addvar VAR_UNK_4134, 1
-	scrcmd_515 22
+	add_special_game_stat 22
 	comparevartovalue VAR_UNK_4134, 3
 	gotoif ne, scr_seq_0913_T26GYM0101_01CB
 	setvar VAR_UNK_4077, 1
@@ -153,7 +153,7 @@ scr_seq_0913_T26GYM0101_01CE:
 	end
 
 scr_seq_0913_T26GYM0101_0202:
-	callstd 2009
+	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
@@ -171,7 +171,7 @@ scr_seq_0913_T26GYM0101_020C:
 	end
 
 scr_seq_0913_T26GYM0101_0235:
-	scrcmd_219
+	white_out
 	releaseall
 	end
 
@@ -384,7 +384,7 @@ scr_seq_0913_T26GYM0101_04D0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, VAR_SPECIAL_x800C
+	check_badge 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0913_T26GYM0101_04F4
 	npc_msg 20
@@ -406,7 +406,7 @@ scr_seq_0913_T26GYM0101_0512:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, VAR_SPECIAL_x800C
+	check_badge 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0913_T26GYM0101_0536
 	npc_msg 22
@@ -428,7 +428,7 @@ scr_seq_0913_T26GYM0101_0554:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, VAR_SPECIAL_x800C
+	check_badge 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_0590
 	comparevartovalue VAR_UNK_410E, 0
@@ -455,7 +455,7 @@ scr_seq_0913_T26GYM0101_059B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_294 5, VAR_SPECIAL_x800C
+	check_badge 5, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0913_T26GYM0101_05C2
