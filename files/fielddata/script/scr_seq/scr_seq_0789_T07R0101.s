@@ -3,13 +3,13 @@
 
 	.rodata
 
-	scrdef scr_seq_0789_0012 ; 000
-	scrdef scr_seq_0789_0025 ; 001
-	scrdef scr_seq_0789_0038 ; 002
-	scrdef scr_seq_0789_004B ; 003
+	scrdef scr_seq_0789_T07R0101_0012 ; 000
+	scrdef scr_seq_0789_T07R0101_0025 ; 001
+	scrdef scr_seq_0789_T07R0101_0038 ; 002
+	scrdef scr_seq_0789_T07R0101_004B ; 003
 	scrdef_end
 
-scr_seq_0789_0012:
+scr_seq_0789_T07R0101_0012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -19,7 +19,7 @@ scr_seq_0789_0012:
 	releaseall
 	end
 
-scr_seq_0789_0025:
+scr_seq_0789_T07R0101_0025:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -29,7 +29,7 @@ scr_seq_0789_0025:
 	releaseall
 	end
 
-scr_seq_0789_0038:
+scr_seq_0789_T07R0101_0038:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -39,7 +39,7 @@ scr_seq_0789_0038:
 	releaseall
 	end
 
-scr_seq_0789_004B:
+scr_seq_0789_T07R0101_004B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 3

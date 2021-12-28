@@ -135,7 +135,7 @@
     {
       "name": "callstd",
       "args": [
-        2
+        "stdscr"
       ]
     },
     {
@@ -287,13 +287,13 @@
       ]
     },
     {
-      "name": "message",
+      "name": "non_npc_msg",
       "args": [
         1
       ]
     },
     {
-      "name": "msgbox",
+      "name": "npc_msg",
       "args": [
         1
       ]
@@ -1197,10 +1197,10 @@
       ]
     },
     {
-      "name": "scrcmd_193",
+      "name": "buffer_mon_species_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -2708,21 +2708,21 @@
       ]
     },
     {
-      "name": "scrcmd_438",
+      "name": "get_std_msg_naix",
       "args": [
         "var",
         "var"
       ]
     },
     {
-      "name": "message_extern",
+      "name": "non_npc_msg_extern",
       "args": [
         "var",
         "var"
       ]
     },
     {
-      "name": "scrcmd_440",
+      "name": "msgbox_extern",
       "args": [
         "var",
         "var"
@@ -2996,18 +2996,18 @@
       ]
     },
     {
-      "name": "scrcmd_480",
+      "name": "mon_has_ribbon",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "ribbon"
       ]
     },
     {
-      "name": "scrcmd_481",
+      "name": "give_ribbon",
       "args": [
-        2,
-        2
+        "var",
+        "ribbon"
       ]
     },
     {
@@ -3025,7 +3025,7 @@
       ]
     },
     {
-      "name": "scrcmd_484",
+      "name": "get_weekday",
       "args": [
         "var"
       ]

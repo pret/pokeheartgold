@@ -3,96 +3,96 @@
 
 	.rodata
 
-	scrdef scr_seq_0805_00E8 ; 000
-	scrdef scr_seq_0805_0087 ; 001
-	scrdef scr_seq_0805_00A2 ; 002
-	scrdef scr_seq_0805_00BD ; 003
-	scrdef scr_seq_0805_0044 ; 004
-	scrdef scr_seq_0805_001E ; 005
-	scrdef scr_seq_0805_00FB ; 006
+	scrdef scr_seq_0805_T07R0701_00E8 ; 000
+	scrdef scr_seq_0805_T07R0701_0087 ; 001
+	scrdef scr_seq_0805_T07R0701_00A2 ; 002
+	scrdef scr_seq_0805_T07R0701_00BD ; 003
+	scrdef scr_seq_0805_T07R0701_0044 ; 004
+	scrdef scr_seq_0805_T07R0701_001E ; 005
+	scrdef scr_seq_0805_T07R0701_00FB ; 006
 	scrdef_end
 
-scr_seq_0805_001E:
+scr_seq_0805_T07R0701_001E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	npc_msg 6
 	closemsg
-	apply_movement 3, scr_seq_0805_003C
+	apply_movement 3, scr_seq_0805_T07R0701_003C
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_0039:
+scr_seq_0805_T07R0701_0039:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0805_003C:
+scr_seq_0805_T07R0701_003C:
 	.short 35, 1
 	.short 254, 0
-scr_seq_0805_0044:
+scr_seq_0805_T07R0701_0044:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0805_0074
+	gotoif eq, scr_seq_0805_T07R0701_0074
 	npc_msg 4
 	closemsg
-	apply_movement 1, scr_seq_0805_00D8
+	apply_movement 1, scr_seq_0805_T07R0701_00D8
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_0074:
+scr_seq_0805_T07R0701_0074:
 	npc_msg 5
 	closemsg
-	apply_movement 1, scr_seq_0805_00D8
+	apply_movement 1, scr_seq_0805_T07R0701_00D8
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_0087:
+scr_seq_0805_T07R0701_0087:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	npc_msg 1
 	closemsg
-	apply_movement 5, scr_seq_0805_00E0
+	apply_movement 5, scr_seq_0805_T07R0701_00E0
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_00A2:
+scr_seq_0805_T07R0701_00A2:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	npc_msg 2
 	closemsg
-	apply_movement 4, scr_seq_0805_00E0
+	apply_movement 4, scr_seq_0805_T07R0701_00E0
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_00BD:
+scr_seq_0805_T07R0701_00BD:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	npc_msg 3
 	closemsg
-	apply_movement 2, scr_seq_0805_00D8
+	apply_movement 2, scr_seq_0805_T07R0701_00D8
 	wait_movement
 	releaseall
 	end
 
 
-scr_seq_0805_00D8:
+scr_seq_0805_T07R0701_00D8:
 	.short 33, 1
 	.short 254, 0
 
-scr_seq_0805_00E0:
+scr_seq_0805_T07R0701_00E0:
 	.short 32, 1
 	.short 254, 0
-scr_seq_0805_00E8:
+scr_seq_0805_T07R0701_00E8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -102,7 +102,7 @@ scr_seq_0805_00E8:
 	releaseall
 	end
 
-scr_seq_0805_00FB:
+scr_seq_0805_T07R0701_00FB:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 7

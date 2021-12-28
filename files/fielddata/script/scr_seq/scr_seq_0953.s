@@ -860,7 +860,7 @@ scr_seq_0953_0D52:
 scr_seq_0953_0D54:
 	scrcmd_461 4, 32772, 32773
 	buffer_players_name 0
-	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -896,14 +896,14 @@ scr_seq_0953_0DC7:
 
 scr_seq_0953_0DCF:
 	scrcmd_461 0, 32772, 32773
-	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	goto scr_seq_0953_0DF9
 
 scr_seq_0953_0DE2:
 	.byte 0x02, 0x00
 scr_seq_0953_0DE4:
 	scrcmd_461 3, 32772, 32773
-	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	goto scr_seq_0953_0DF9
 
 scr_seq_0953_0DF7:
@@ -924,7 +924,7 @@ scr_seq_0953_0DF9:
 scr_seq_0953_0E28:
 	scrcmd_461 2, 32772, 32773
 scr_seq_0953_0E2F:
-	scrcmd_440 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	waitbutton
 	closemsg
 	return

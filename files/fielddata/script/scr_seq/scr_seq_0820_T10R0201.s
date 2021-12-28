@@ -3,28 +3,28 @@
 
 	.rodata
 
-	scrdef scr_seq_0820_0025 ; 000
-	scrdef scr_seq_0820_0068 ; 001
-	scrdef scr_seq_0820_000E ; 002
+	scrdef scr_seq_0820_T10R0201_0025 ; 000
+	scrdef scr_seq_0820_T10R0201_0068 ; 001
+	scrdef scr_seq_0820_T10R0201_000E ; 002
 	scrdef_end
 
-scr_seq_0820_000E:
+scr_seq_0820_T10R0201_000E:
 	checkflag FLAG_UNK_0E4
-	gotoif TRUE, scr_seq_0820_0023
+	gotoif TRUE, scr_seq_0820_T10R0201_0023
 	scrcmd_375 3
 	scrcmd_375 4
 	end
 
-scr_seq_0820_0023:
+scr_seq_0820_T10R0201_0023:
 	end
 
-scr_seq_0820_0025:
+scr_seq_0820_T10R0201_0025:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0820_0060
+	apply_movement 255, scr_seq_0820_T10R0201_0060
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -36,31 +36,31 @@ scr_seq_0820_0025:
 	releaseall
 	end
 
-scr_seq_0820_005D:
+scr_seq_0820_T10R0201_005D:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0820_0060:
+scr_seq_0820_T10R0201_0060:
 	.short 12, 6
 	.short 254, 0
-scr_seq_0820_0068:
+scr_seq_0820_T10R0201_0068:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0E4
-	gotoif TRUE, scr_seq_0820_00D1
+	gotoif TRUE, scr_seq_0820_T10R0201_00D1
 	npc_msg 0
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8
-	gotoif lt, scr_seq_0820_009B
+	gotoif lt, scr_seq_0820_T10R0201_009B
 	trainer_battle 702, 0, 0, 0
-	goto scr_seq_0820_00A3
+	goto scr_seq_0820_T10R0201_00A3
 
-scr_seq_0820_009B:
+scr_seq_0820_T10R0201_009B:
 	trainer_battle 245, 0, 0, 0
-scr_seq_0820_00A3:
+scr_seq_0820_T10R0201_00A3:
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0820_00DC
+	gotoif eq, scr_seq_0820_T10R0201_00DC
 	setflag FLAG_UNK_0E4
 	npc_msg 1
 	closemsg
@@ -71,14 +71,14 @@ scr_seq_0820_00A3:
 	releaseall
 	end
 
-scr_seq_0820_00D1:
+scr_seq_0820_T10R0201_00D1:
 	npc_msg 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0820_00DC:
+scr_seq_0820_T10R0201_00DC:
 	scrcmd_219
 	releaseall
 	end

@@ -3,15 +3,15 @@
 
 	.rodata
 
-	scrdef scr_seq_0799_0012 ; 000
-	scrdef scr_seq_0799_000A ; 001
+	scrdef scr_seq_0799_T07R0204_0012 ; 000
+	scrdef scr_seq_0799_T07R0204_000A ; 001
 	scrdef_end
 
-scr_seq_0799_000A:
+scr_seq_0799_T07R0204_000A:
 	setvar VAR_UNK_4125, 0
 	end
 
-scr_seq_0799_0012:
+scr_seq_0799_T07R0204_0012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

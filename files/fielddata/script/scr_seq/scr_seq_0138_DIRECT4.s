@@ -3,13 +3,13 @@
 
 	.rodata
 
-	scrdef scr_seq_0138_0006 ; 000
+	scrdef scr_seq_0138_DIRECT4_0006 ; 000
 	scrdef_end
 
-scr_seq_0138_0006:
+scr_seq_0138_DIRECT4_0006:
 	scrcmd_284
 	end
 
-scr_seq_0138_000A:
+scr_seq_0138_DIRECT4_000A:
 	.byte 0x02, 0x00
 	.balign 4, 0

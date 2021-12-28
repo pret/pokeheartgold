@@ -241,7 +241,7 @@ gScriptCmdTable:
 	.word ScrCmd_BufferPlayersName                      ; 190
 	.word ScrCmd_191                                    ; 191
 	.word ScrCmd_192                                    ; 192
-	.word ScrCmd_193                                    ; 193
+	.word ScrCmd_BufferMonSpeciesName                                    ; 193
 	.word ScrCmd_194                                    ; 194
 	.word ScrCmd_195                                    ; 195
 	.word ScrCmd_196                                    ; 196
@@ -486,9 +486,9 @@ gScriptCmdTable:
 	.word ScrCmd_435                                    ; 435
 	.word ScrCmd_436                                    ; 436
 	.word ScrCmd_DebugWatch                             ; 437
-	.word ScrCmd_438                                    ; 438
-	.word ScrCmd_MessageExtern                          ; 439
-	.word ScrCmd_440                                    ; 440
+	.word ScrCmd_GetStdMsgNaix                                    ; 438
+	.word ScrCmd_NonNpcMsgExtern                          ; 439
+	.word ScrCmd_MsgboxExtern                                    ; 440
 	.word ScrCmd_441                                    ; 441
 	.word ScrCmd_442                                    ; 442
 	.word ScrCmd_443                                    ; 443
@@ -528,11 +528,11 @@ gScriptCmdTable:
 	.word ScrCmd_477                                    ; 477
 	.word ScrCmd_478                                    ; 478
 	.word ScrCmd_479                                    ; 479
-	.word ScrCmd_480                                    ; 480
-	.word ScrCmd_481                                    ; 481
+	.word ScrCmd_MonHasRibbon                                    ; 480
+	.word ScrCmd_GiveRibbon                                    ; 481
 	.word ScrCmd_482                                    ; 482
 	.word ScrCmd_483                                    ; 483
-	.word ScrCmd_484                                    ; 484
+	.word ScrCmd_GetWeekday                                    ; 484
 	.word ScrCmd_485                                    ; 485
 	.word ScrCmd_Dummy                                  ; 486
 	.word ScrCmd_PokeCenAnim                            ; 487
@@ -10857,8 +10857,8 @@ ScrCmd_483: ; 0x020454A4
 	.balign 4, 0
 	thumb_func_end ScrCmd_483
 
-	thumb_func_start ScrCmd_484
-ScrCmd_484: ; 0x02045540
+	thumb_func_start ScrCmd_GetWeekday
+ScrCmd_GetWeekday: ; 0x02045540
 	push {r4, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -10876,7 +10876,7 @@ ScrCmd_484: ; 0x02045540
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_484
+	thumb_func_end ScrCmd_GetWeekday
 
 	thumb_func_start ScrCmd_485
 ScrCmd_485: ; 0x02045568

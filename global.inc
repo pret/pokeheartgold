@@ -1876,7 +1876,7 @@
 .public ScrCmd_BufferPlayersName
 .public ScrCmd_191
 .public ScrCmd_192
-.public ScrCmd_193
+.public ScrCmd_BufferMonSpeciesName
 .public ScrCmd_194
 .public ScrCmd_195
 .public ScrCmd_196
@@ -2119,9 +2119,9 @@
 .public ScrCmd_434
 .public ScrCmd_435
 .public ScrCmd_436
-.public ScrCmd_438
-.public ScrCmd_MessageExtern
-.public ScrCmd_440
+.public ScrCmd_GetStdMsgNaix
+.public ScrCmd_NonNpcMsgExtern
+.public ScrCmd_MsgboxExtern
 .public ScrCmd_441
 .public ScrCmd_442
 .public ScrCmd_443
@@ -2161,11 +2161,11 @@
 .public ScrCmd_477
 .public ScrCmd_478
 .public ScrCmd_479
-.public ScrCmd_480
-.public ScrCmd_481
+.public ScrCmd_MonHasRibbon
+.public ScrCmd_GiveRibbon
 .public ScrCmd_482
 .public ScrCmd_483
-.public ScrCmd_484
+.public ScrCmd_GetWeekday
 .public ScrCmd_485
 .public ScrCmd_PokeCenAnim
 .public ScrCmd_488

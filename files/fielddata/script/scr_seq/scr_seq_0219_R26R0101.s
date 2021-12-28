@@ -3,11 +3,11 @@
 
 	.rodata
 
-	scrdef scr_seq_0219_000A ; 000
-	scrdef scr_seq_0219_0046 ; 001
+	scrdef scr_seq_0219_R26R0101_000A ; 000
+	scrdef scr_seq_0219_R26R0101_0046 ; 001
 	scrdef_end
 
-scr_seq_0219_000A:
+scr_seq_0219_R26R0101_000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -28,7 +28,7 @@ scr_seq_0219_000A:
 	releaseall
 	end
 
-scr_seq_0219_0046:
+scr_seq_0219_R26R0101_0046:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

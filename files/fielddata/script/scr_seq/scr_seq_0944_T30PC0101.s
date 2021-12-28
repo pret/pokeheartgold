@@ -3,18 +3,18 @@
 
 	.rodata
 
-	scrdef scr_seq_0944_0012 ; 000
-	scrdef scr_seq_0944_001E ; 001
-	scrdef scr_seq_0944_0031 ; 002
-	scrdef scr_seq_0944_0044 ; 003
+	scrdef scr_seq_0944_T30PC0101_0012 ; 000
+	scrdef scr_seq_0944_T30PC0101_001E ; 001
+	scrdef scr_seq_0944_T30PC0101_0031 ; 002
+	scrdef scr_seq_0944_T30PC0101_0044 ; 003
 	scrdef_end
 
-scr_seq_0944_0012:
+scr_seq_0944_T30PC0101_0012:
 	setvar VAR_SPECIAL_x8007, 3
 	callstd 2002
 	end
 
-scr_seq_0944_001E:
+scr_seq_0944_T30PC0101_001E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -24,7 +24,7 @@ scr_seq_0944_001E:
 	releaseall
 	end
 
-scr_seq_0944_0031:
+scr_seq_0944_T30PC0101_0031:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -34,7 +34,7 @@ scr_seq_0944_0031:
 	releaseall
 	end
 
-scr_seq_0944_0044:
+scr_seq_0944_T30PC0101_0044:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

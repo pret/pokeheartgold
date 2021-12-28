@@ -3,11 +3,11 @@
 
 	.rodata
 
-	scrdef scr_seq_0739_000A ; 000
-	scrdef scr_seq_0739_001B ; 001
+	scrdef scr_seq_0739_T01R0202_000A ; 000
+	scrdef scr_seq_0739_T01R0202_001B ; 001
 	scrdef_end
 
-scr_seq_0739_000A:
+scr_seq_0739_T01R0202_000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 0
@@ -16,7 +16,7 @@ scr_seq_0739_000A:
 	releaseall
 	end
 
-scr_seq_0739_001B:
+scr_seq_0739_T01R0202_001B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 1

@@ -3,24 +3,24 @@
 
 	.rodata
 
-	scrdef scr_seq_0916_0006 ; 000
+	scrdef scr_seq_0916_T26R0301_0006 ; 000
 	scrdef_end
 
-scr_seq_0916_0006:
+scr_seq_0916_T26R0301_0006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0BE
-	gotoif TRUE, scr_seq_0916_00B3
+	gotoif TRUE, scr_seq_0916_T26R0301_00B3
 	npc_msg 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0916_0037
-	goto scr_seq_0916_00A8
+	gotoif eq, scr_seq_0916_T26R0301_0037
+	goto scr_seq_0916_T26R0301_00A8
 
-scr_seq_0916_0037:
+scr_seq_0916_T26R0301_0037:
 	closemsg
 	fade_screen 6, 1, 0, 0
 	wait_fade
@@ -30,13 +30,13 @@ scr_seq_0916_0037:
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, scr_seq_0916_00A8
+	gotoif eq, scr_seq_0916_T26R0301_00A8
 	scrcmd_470 2
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
 	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	gotoif ne, scr_seq_0916_009B
+	gotoif ne, scr_seq_0916_T26R0301_009B
 	scrcmd_473 32772
 	scrcmd_474
 	setflag FLAG_UNK_0BE
@@ -46,7 +46,7 @@ scr_seq_0916_0037:
 	releaseall
 	end
 
-scr_seq_0916_009B:
+scr_seq_0916_T26R0301_009B:
 	scrcmd_474
 	npc_msg 2
 	waitbutton
@@ -54,14 +54,14 @@ scr_seq_0916_009B:
 	releaseall
 	end
 
-scr_seq_0916_00A8:
+scr_seq_0916_T26R0301_00A8:
 	npc_msg 3
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0916_00B3:
+scr_seq_0916_T26R0301_00B3:
 	npc_msg 4
 	waitbutton
 	closemsg

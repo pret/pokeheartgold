@@ -3,10 +3,10 @@
 
 	.rodata
 
-	scrdef scr_seq_0113_0006 ; 000
+	scrdef scr_seq_0113_D45R0101_0006 ; 000
 	scrdef_end
 
-scr_seq_0113_0006:
+scr_seq_0113_D45R0101_0006:
 	scrcmd_375 0
 	end
 	.balign 4, 0

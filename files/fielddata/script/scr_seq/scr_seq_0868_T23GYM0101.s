@@ -3,44 +3,44 @@
 
 	.rodata
 
-	scrdef scr_seq_0868_000A ; 000
-	scrdef scr_seq_0868_003B ; 001
+	scrdef scr_seq_0868_T23GYM0101_000A ; 000
+	scrdef scr_seq_0868_T23GYM0101_003B ; 001
 	scrdef_end
 
-scr_seq_0868_000A:
+scr_seq_0868_T23GYM0101_000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_294 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0868_0030
+	gotoif eq, scr_seq_0868_T23GYM0101_0030
 	npc_msg 0
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0868_0030:
+scr_seq_0868_T23GYM0101_0030:
 	npc_msg 1
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0868_003B:
+scr_seq_0868_T23GYM0101_003B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_294 1, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0868_0062
+	gotoif ne, scr_seq_0868_T23GYM0101_0062
 	npc_msg 2
-	goto scr_seq_0868_0065
+	goto scr_seq_0868_T23GYM0101_0065
 
-scr_seq_0868_0062:
+scr_seq_0868_T23GYM0101_0062:
 	npc_msg 3
-scr_seq_0868_0065:
+scr_seq_0868_T23GYM0101_0065:
 	waitbutton
 	closemsg
 	releaseall

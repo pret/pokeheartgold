@@ -3,35 +3,35 @@
 
 	.rodata
 
-	scrdef scr_seq_0211_00A9 ; 000
-	scrdef scr_seq_0211_0012 ; 001
-	scrdef scr_seq_0211_0024 ; 002
-	scrdef scr_seq_0211_0094 ; 003
+	scrdef scr_seq_0211_R18R0101_00A9 ; 000
+	scrdef scr_seq_0211_R18R0101_0012 ; 001
+	scrdef scr_seq_0211_R18R0101_0024 ; 002
+	scrdef scr_seq_0211_R18R0101_0094 ; 003
 	scrdef_end
 
-scr_seq_0211_0012:
+scr_seq_0211_R18R0101_0012:
 	checkflag FLAG_UNK_149
-	gotoif TRUE, scr_seq_0211_001F
+	gotoif TRUE, scr_seq_0211_R18R0101_001F
 	end
 
-scr_seq_0211_001F:
+scr_seq_0211_R18R0101_001F:
 	scrcmd_186 1
 	end
 
-scr_seq_0211_0024:
+scr_seq_0211_R18R0101_0024:
 	scrcmd_609
 	lockall
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0211_006A
-	apply_movement 255, scr_seq_0211_0084
+	gotoif eq, scr_seq_0211_R18R0101_006A
+	apply_movement 255, scr_seq_0211_R18R0101_0084
 	wait_movement
 	npc_msg 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0211_008C
+	apply_movement 255, scr_seq_0211_R18R0101_008C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -39,7 +39,7 @@ scr_seq_0211_0024:
 	releaseall
 	end
 
-scr_seq_0211_006A:
+scr_seq_0211_R18R0101_006A:
 	scrcmd_186 1
 	setvar VAR_UNK_4129, 1
 	setvar VAR_UNK_412A, 1
@@ -47,24 +47,24 @@ scr_seq_0211_006A:
 	releaseall
 	end
 
-scr_seq_0211_0081:
+scr_seq_0211_R18R0101_0081:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0211_0084:
+scr_seq_0211_R18R0101_0084:
 	.short 32, 1
 	.short 254, 0
 
-scr_seq_0211_008C:
+scr_seq_0211_R18R0101_008C:
 	.short 15, 1
 	.short 254, 0
-scr_seq_0211_0094:
+scr_seq_0211_R18R0101_0094:
 	scrcmd_186 0
 	setvar VAR_UNK_4129, 0
 	setvar VAR_UNK_412A, 0
 	clearflag FLAG_UNK_149
 	end
 
-scr_seq_0211_00A9:
+scr_seq_0211_R18R0101_00A9:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

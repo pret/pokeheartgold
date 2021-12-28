@@ -3,22 +3,22 @@
 
 	.rodata
 
-	scrdef scr_seq_0908_0036 ; 000
-	scrdef scr_seq_0908_0049 ; 001
-	scrdef scr_seq_0908_005C ; 002
-	scrdef scr_seq_0908_006F ; 003
-	scrdef scr_seq_0908_0082 ; 004
-	scrdef scr_seq_0908_0095 ; 005
-	scrdef scr_seq_0908_00A8 ; 006
-	scrdef scr_seq_0908_00BB ; 007
-	scrdef scr_seq_0908_00CE ; 008
-	scrdef scr_seq_0908_00E1 ; 009
-	scrdef scr_seq_0908_00F2 ; 010
-	scrdef scr_seq_0908_0103 ; 011
-	scrdef scr_seq_0908_019E ; 012
+	scrdef scr_seq_0908_T25R1202_0036 ; 000
+	scrdef scr_seq_0908_T25R1202_0049 ; 001
+	scrdef scr_seq_0908_T25R1202_005C ; 002
+	scrdef scr_seq_0908_T25R1202_006F ; 003
+	scrdef scr_seq_0908_T25R1202_0082 ; 004
+	scrdef scr_seq_0908_T25R1202_0095 ; 005
+	scrdef scr_seq_0908_T25R1202_00A8 ; 006
+	scrdef scr_seq_0908_T25R1202_00BB ; 007
+	scrdef scr_seq_0908_T25R1202_00CE ; 008
+	scrdef scr_seq_0908_T25R1202_00E1 ; 009
+	scrdef scr_seq_0908_T25R1202_00F2 ; 010
+	scrdef scr_seq_0908_T25R1202_0103 ; 011
+	scrdef scr_seq_0908_T25R1202_019E ; 012
 	scrdef_end
 
-scr_seq_0908_0036:
+scr_seq_0908_T25R1202_0036:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -28,7 +28,7 @@ scr_seq_0908_0036:
 	releaseall
 	end
 
-scr_seq_0908_0049:
+scr_seq_0908_T25R1202_0049:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -38,7 +38,7 @@ scr_seq_0908_0049:
 	releaseall
 	end
 
-scr_seq_0908_005C:
+scr_seq_0908_T25R1202_005C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -48,7 +48,7 @@ scr_seq_0908_005C:
 	releaseall
 	end
 
-scr_seq_0908_006F:
+scr_seq_0908_T25R1202_006F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -58,7 +58,7 @@ scr_seq_0908_006F:
 	releaseall
 	end
 
-scr_seq_0908_0082:
+scr_seq_0908_T25R1202_0082:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -68,7 +68,7 @@ scr_seq_0908_0082:
 	releaseall
 	end
 
-scr_seq_0908_0095:
+scr_seq_0908_T25R1202_0095:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -78,7 +78,7 @@ scr_seq_0908_0095:
 	releaseall
 	end
 
-scr_seq_0908_00A8:
+scr_seq_0908_T25R1202_00A8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -88,7 +88,7 @@ scr_seq_0908_00A8:
 	releaseall
 	end
 
-scr_seq_0908_00BB:
+scr_seq_0908_T25R1202_00BB:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -98,7 +98,7 @@ scr_seq_0908_00BB:
 	releaseall
 	end
 
-scr_seq_0908_00CE:
+scr_seq_0908_T25R1202_00CE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -108,7 +108,7 @@ scr_seq_0908_00CE:
 	releaseall
 	end
 
-scr_seq_0908_00E1:
+scr_seq_0908_T25R1202_00E1:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 9
@@ -117,7 +117,7 @@ scr_seq_0908_00E1:
 	releaseall
 	end
 
-scr_seq_0908_00F2:
+scr_seq_0908_T25R1202_00F2:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 10
@@ -126,15 +126,15 @@ scr_seq_0908_00F2:
 	releaseall
 	end
 
-scr_seq_0908_0103:
+scr_seq_0908_T25R1202_0103:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8005, 6
-	goto scr_seq_0908_0117
+	goto scr_seq_0908_T25R1202_0117
 
-scr_seq_0908_0115:
+scr_seq_0908_T25R1202_0115:
 	.byte 0x02, 0x00
-scr_seq_0908_0117:
+scr_seq_0908_T25R1202_0117:
 	npc_msg 13
 	scrcmd_746
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
@@ -144,46 +144,46 @@ scr_seq_0908_0117:
 	scrcmd_752
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0908_016E
+	gotoif eq, scr_seq_0908_T25R1202_016E
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0908_0193
-	goto scr_seq_0908_0166
+	gotoif eq, scr_seq_0908_T25R1202_0193
+	goto scr_seq_0908_T25R1202_0166
 
-scr_seq_0908_0164:
+scr_seq_0908_T25R1202_0164:
 	.byte 0x02, 0x00
-scr_seq_0908_0166:
+scr_seq_0908_T25R1202_0166:
 	scrcmd_747
-scr_seq_0908_0168:
+scr_seq_0908_T25R1202_0168:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0908_016E:
+scr_seq_0908_T25R1202_016E:
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0908_0168
+	gotoif eq, scr_seq_0908_T25R1202_0168
 	closemsg
 	scrcmd_815 0
 	callstd 2046
 	releaseall
 	end
 
-scr_seq_0908_0193:
+scr_seq_0908_T25R1202_0193:
 	npc_msg 14
-	goto scr_seq_0908_0117
+	goto scr_seq_0908_T25R1202_0117
 
-scr_seq_0908_019C:
+scr_seq_0908_T25R1202_019C:
 	.byte 0x02, 0x00
-scr_seq_0908_019E:
+scr_seq_0908_T25R1202_019E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8005, 5
-	goto scr_seq_0908_01B2
+	goto scr_seq_0908_T25R1202_01B2
 
-scr_seq_0908_01B0:
+scr_seq_0908_T25R1202_01B0:
 	.byte 0x02, 0x00
-scr_seq_0908_01B2:
+scr_seq_0908_T25R1202_01B2:
 	npc_msg 11
 	scrcmd_746
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
@@ -193,36 +193,36 @@ scr_seq_0908_01B2:
 	scrcmd_752
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0908_0209
+	gotoif eq, scr_seq_0908_T25R1202_0209
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0908_022E
-	goto scr_seq_0908_0201
+	gotoif eq, scr_seq_0908_T25R1202_022E
+	goto scr_seq_0908_T25R1202_0201
 
-scr_seq_0908_01FF:
+scr_seq_0908_T25R1202_01FF:
 	.byte 0x02
 	.byte 0x00
-scr_seq_0908_0201:
+scr_seq_0908_T25R1202_0201:
 	scrcmd_747
-scr_seq_0908_0203:
+scr_seq_0908_T25R1202_0203:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0908_0209:
+scr_seq_0908_T25R1202_0209:
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0908_0203
+	gotoif eq, scr_seq_0908_T25R1202_0203
 	closemsg
 	scrcmd_815 0
 	callstd 2046
 	releaseall
 	end
 
-scr_seq_0908_022E:
+scr_seq_0908_T25R1202_022E:
 	npc_msg 12
-	goto scr_seq_0908_01B2
+	goto scr_seq_0908_T25R1202_01B2
 
-scr_seq_0908_0237:
+scr_seq_0908_T25R1202_0237:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00
 	.balign 4, 0

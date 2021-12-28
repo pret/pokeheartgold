@@ -193,7 +193,7 @@ extern BOOL ScrCmd_189(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPlayersName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_191(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_192(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_193(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferMonSpeciesName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_194(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_195(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_196(SCRIPTCONTEXT *ctx);
@@ -438,9 +438,9 @@ extern BOOL ScrCmd_434(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_435(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_436(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DebugWatch(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_438(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_MessageExtern(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_440(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetStdMsgNaix(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NonNpcMsgExtern(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MsgboxExtern(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_441(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_442(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_443(SCRIPTCONTEXT *ctx);
@@ -480,11 +480,11 @@ extern BOOL ScrCmd_476(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_477(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_478(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_479(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_480(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_481(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonHasRibbon(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_482(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_483(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_484(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetWeekday(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_485(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Dummy(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PokeCenAnim(SCRIPTCONTEXT *ctx);
@@ -1048,7 +1048,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferPlayersName,
     ScrCmd_191,
     ScrCmd_192,
-    ScrCmd_193,
+    ScrCmd_BufferMonSpeciesName,
     ScrCmd_194,
     ScrCmd_195,
     ScrCmd_196,
@@ -1293,9 +1293,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_435,
     ScrCmd_436,
     ScrCmd_DebugWatch,
-    ScrCmd_438,
-    ScrCmd_MessageExtern,
-    ScrCmd_440,
+    ScrCmd_GetStdMsgNaix,
+    ScrCmd_NonNpcMsgExtern,
+    ScrCmd_MsgboxExtern,
     ScrCmd_441,
     ScrCmd_442,
     ScrCmd_443,
@@ -1335,11 +1335,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_477,
     ScrCmd_478,
     ScrCmd_479,
-    ScrCmd_480,
-    ScrCmd_481,
+    ScrCmd_MonHasRibbon,
+    ScrCmd_GiveRibbon,
     ScrCmd_482,
     ScrCmd_483,
-    ScrCmd_484,
+    ScrCmd_GetWeekday,
     ScrCmd_485,
     ScrCmd_Dummy,
     ScrCmd_PokeCenAnim,

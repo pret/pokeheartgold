@@ -95,7 +95,7 @@ scr_seq_0144_0121:
 	gotoif eq, scr_seq_0144_0157
 	play_fanfare SEQ_ME_ITEM
 	scrcmd_489 5, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
-	scrcmd_440 VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
+	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	wait_fanfare
 	npc_msg 20
 	waitbutton
@@ -104,7 +104,7 @@ scr_seq_0144_0121:
 
 scr_seq_0144_0157:
 	scrcmd_489 6, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
-	scrcmd_440 VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
+	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	waitbutton
 	goto scr_seq_0144_0178
 
@@ -160,7 +160,7 @@ scr_seq_0144_01F3:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0144_0222
-	callstd 2033
+	callstd std_give_item_verbose
 	scrcmd_812
 	scrcmd_149 12
 	npc_msg 20

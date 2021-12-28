@@ -60,8 +60,8 @@ int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no) {
     case TRATTR_ITEM4:
         result = trainer.items[attr_no - TRATTR_ITEM1];
         break;
-    case TRATTR_UNKC:
-        result = trainer.unk_C;
+    case TRATTR_AIFLAGS:
+        result = trainer.ai_flags;
         break;
     case TRATTR_DOUBLEBTL:
         result = trainer.doubleBattle;

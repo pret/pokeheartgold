@@ -3,29 +3,29 @@
 
 	.rodata
 
-	scrdef scr_seq_0832_0894 ; 000
-	scrdef scr_seq_0832_08BD ; 001
-	scrdef scr_seq_0832_08D0 ; 002
-	scrdef scr_seq_0832_0052 ; 003
-	scrdef scr_seq_0832_0264 ; 004
-	scrdef scr_seq_0832_02C7 ; 005
-	scrdef scr_seq_0832_032A ; 006
-	scrdef scr_seq_0832_038D ; 007
-	scrdef scr_seq_0832_03F0 ; 008
-	scrdef scr_seq_0832_0453 ; 009
-	scrdef scr_seq_0832_04B6 ; 010
-	scrdef scr_seq_0832_0519 ; 011
-	scrdef scr_seq_0832_057C ; 012
-	scrdef scr_seq_0832_05DF ; 013
-	scrdef scr_seq_0832_0642 ; 014
-	scrdef scr_seq_0832_06A5 ; 015
-	scrdef scr_seq_0832_0708 ; 016
-	scrdef scr_seq_0832_076B ; 017
-	scrdef scr_seq_0832_07CE ; 018
-	scrdef scr_seq_0832_0831 ; 019
+	scrdef scr_seq_0832_T11R0101_0894 ; 000
+	scrdef scr_seq_0832_T11R0101_08BD ; 001
+	scrdef scr_seq_0832_T11R0101_08D0 ; 002
+	scrdef scr_seq_0832_T11R0101_0052 ; 003
+	scrdef scr_seq_0832_T11R0101_0264 ; 004
+	scrdef scr_seq_0832_T11R0101_02C7 ; 005
+	scrdef scr_seq_0832_T11R0101_032A ; 006
+	scrdef scr_seq_0832_T11R0101_038D ; 007
+	scrdef scr_seq_0832_T11R0101_03F0 ; 008
+	scrdef scr_seq_0832_T11R0101_0453 ; 009
+	scrdef scr_seq_0832_T11R0101_04B6 ; 010
+	scrdef scr_seq_0832_T11R0101_0519 ; 011
+	scrdef scr_seq_0832_T11R0101_057C ; 012
+	scrdef scr_seq_0832_T11R0101_05DF ; 013
+	scrdef scr_seq_0832_T11R0101_0642 ; 014
+	scrdef scr_seq_0832_T11R0101_06A5 ; 015
+	scrdef scr_seq_0832_T11R0101_0708 ; 016
+	scrdef scr_seq_0832_T11R0101_076B ; 017
+	scrdef scr_seq_0832_T11R0101_07CE ; 018
+	scrdef scr_seq_0832_T11R0101_0831 ; 019
 	scrdef_end
 
-scr_seq_0832_0052:
+scr_seq_0832_T11R0101_0052:
 	scrcmd_142 17, 16384
 	scrcmd_142 26, 16385
 	scrcmd_142 27, 16386
@@ -43,136 +43,136 @@ scr_seq_0832_0052:
 	scrcmd_142 38, 16398
 	scrcmd_142 39, 16399
 	comparevartovalue VAR_TEMP_x4003, 0
-	gotoif ne, scr_seq_0832_00C9
+	gotoif ne, scr_seq_0832_T11R0101_00C9
 	setflag FLAG_UNK_2B8
-	goto scr_seq_0832_00CD
+	goto scr_seq_0832_T11R0101_00CD
 
-scr_seq_0832_00C9:
+scr_seq_0832_T11R0101_00C9:
 	clearflag FLAG_UNK_2B8
-scr_seq_0832_00CD:
+scr_seq_0832_T11R0101_00CD:
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0832_00E4
+	gotoif ne, scr_seq_0832_T11R0101_00E4
 	setflag FLAG_UNK_2B5
-	goto scr_seq_0832_00E8
+	goto scr_seq_0832_T11R0101_00E8
 
-scr_seq_0832_00E4:
+scr_seq_0832_T11R0101_00E4:
 	clearflag FLAG_UNK_2B5
-scr_seq_0832_00E8:
+scr_seq_0832_T11R0101_00E8:
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0832_00FF
+	gotoif ne, scr_seq_0832_T11R0101_00FF
 	setflag FLAG_UNK_2B6
-	goto scr_seq_0832_0103
+	goto scr_seq_0832_T11R0101_0103
 
-scr_seq_0832_00FF:
+scr_seq_0832_T11R0101_00FF:
 	clearflag FLAG_UNK_2B6
-scr_seq_0832_0103:
+scr_seq_0832_T11R0101_0103:
 	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, scr_seq_0832_011A
+	gotoif ne, scr_seq_0832_T11R0101_011A
 	setflag FLAG_UNK_2B7
-	goto scr_seq_0832_011E
+	goto scr_seq_0832_T11R0101_011E
 
-scr_seq_0832_011A:
+scr_seq_0832_T11R0101_011A:
 	clearflag FLAG_UNK_2B7
-scr_seq_0832_011E:
+scr_seq_0832_T11R0101_011E:
 	comparevartovalue VAR_TEMP_x4004, 0
-	gotoif ne, scr_seq_0832_0135
+	gotoif ne, scr_seq_0832_T11R0101_0135
 	setflag FLAG_UNK_2B9
-	goto scr_seq_0832_0139
+	goto scr_seq_0832_T11R0101_0139
 
-scr_seq_0832_0135:
+scr_seq_0832_T11R0101_0135:
 	clearflag FLAG_UNK_2B9
-scr_seq_0832_0139:
+scr_seq_0832_T11R0101_0139:
 	comparevartovalue VAR_TEMP_x4005, 0
-	gotoif ne, scr_seq_0832_0150
+	gotoif ne, scr_seq_0832_T11R0101_0150
 	setflag FLAG_UNK_2BA
-	goto scr_seq_0832_0154
+	goto scr_seq_0832_T11R0101_0154
 
-scr_seq_0832_0150:
+scr_seq_0832_T11R0101_0150:
 	clearflag FLAG_UNK_2BA
-scr_seq_0832_0154:
+scr_seq_0832_T11R0101_0154:
 	comparevartovalue VAR_TEMP_x4006, 0
-	gotoif ne, scr_seq_0832_016B
+	gotoif ne, scr_seq_0832_T11R0101_016B
 	setflag FLAG_UNK_2BB
-	goto scr_seq_0832_016F
+	goto scr_seq_0832_T11R0101_016F
 
-scr_seq_0832_016B:
+scr_seq_0832_T11R0101_016B:
 	clearflag FLAG_UNK_2BB
-scr_seq_0832_016F:
+scr_seq_0832_T11R0101_016F:
 	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, scr_seq_0832_0186
+	gotoif ne, scr_seq_0832_T11R0101_0186
 	setflag FLAG_UNK_2BC
-	goto scr_seq_0832_018A
+	goto scr_seq_0832_T11R0101_018A
 
-scr_seq_0832_0186:
+scr_seq_0832_T11R0101_0186:
 	clearflag FLAG_UNK_2BC
-scr_seq_0832_018A:
+scr_seq_0832_T11R0101_018A:
 	comparevartovalue VAR_TEMP_x4008, 0
-	gotoif ne, scr_seq_0832_01A1
+	gotoif ne, scr_seq_0832_T11R0101_01A1
 	setflag FLAG_UNK_2BD
-	goto scr_seq_0832_01A5
+	goto scr_seq_0832_T11R0101_01A5
 
-scr_seq_0832_01A1:
+scr_seq_0832_T11R0101_01A1:
 	clearflag FLAG_UNK_2BD
-scr_seq_0832_01A5:
+scr_seq_0832_T11R0101_01A5:
 	comparevartovalue VAR_TEMP_x4009, 0
-	gotoif ne, scr_seq_0832_01BC
+	gotoif ne, scr_seq_0832_T11R0101_01BC
 	setflag FLAG_UNK_2BE
-	goto scr_seq_0832_01C0
+	goto scr_seq_0832_T11R0101_01C0
 
-scr_seq_0832_01BC:
+scr_seq_0832_T11R0101_01BC:
 	clearflag FLAG_UNK_2BE
-scr_seq_0832_01C0:
+scr_seq_0832_T11R0101_01C0:
 	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, scr_seq_0832_01D7
+	gotoif ne, scr_seq_0832_T11R0101_01D7
 	setflag FLAG_UNK_2BF
-	goto scr_seq_0832_01DB
+	goto scr_seq_0832_T11R0101_01DB
 
-scr_seq_0832_01D7:
+scr_seq_0832_T11R0101_01D7:
 	clearflag FLAG_UNK_2BF
-scr_seq_0832_01DB:
+scr_seq_0832_T11R0101_01DB:
 	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, scr_seq_0832_01F2
+	gotoif ne, scr_seq_0832_T11R0101_01F2
 	setflag FLAG_UNK_2C0
-	goto scr_seq_0832_01F6
+	goto scr_seq_0832_T11R0101_01F6
 
-scr_seq_0832_01F2:
+scr_seq_0832_T11R0101_01F2:
 	clearflag FLAG_UNK_2C0
-scr_seq_0832_01F6:
+scr_seq_0832_T11R0101_01F6:
 	comparevartovalue VAR_TEMP_x400C, 0
-	gotoif ne, scr_seq_0832_020D
+	gotoif ne, scr_seq_0832_T11R0101_020D
 	setflag FLAG_UNK_2C1
-	goto scr_seq_0832_0211
+	goto scr_seq_0832_T11R0101_0211
 
-scr_seq_0832_020D:
+scr_seq_0832_T11R0101_020D:
 	clearflag FLAG_UNK_2C1
-scr_seq_0832_0211:
+scr_seq_0832_T11R0101_0211:
 	comparevartovalue VAR_TEMP_x400D, 0
-	gotoif ne, scr_seq_0832_0228
+	gotoif ne, scr_seq_0832_T11R0101_0228
 	setflag FLAG_UNK_2C2
-	goto scr_seq_0832_022C
+	goto scr_seq_0832_T11R0101_022C
 
-scr_seq_0832_0228:
+scr_seq_0832_T11R0101_0228:
 	clearflag FLAG_UNK_2C2
-scr_seq_0832_022C:
+scr_seq_0832_T11R0101_022C:
 	comparevartovalue VAR_TEMP_x400E, 0
-	gotoif ne, scr_seq_0832_0243
+	gotoif ne, scr_seq_0832_T11R0101_0243
 	setflag FLAG_UNK_2C3
-	goto scr_seq_0832_0247
+	goto scr_seq_0832_T11R0101_0247
 
-scr_seq_0832_0243:
+scr_seq_0832_T11R0101_0243:
 	clearflag FLAG_UNK_2C3
-scr_seq_0832_0247:
+scr_seq_0832_T11R0101_0247:
 	comparevartovalue VAR_TEMP_x400F, 0
-	gotoif ne, scr_seq_0832_025E
+	gotoif ne, scr_seq_0832_T11R0101_025E
 	setflag FLAG_UNK_2C4
-	goto scr_seq_0832_0262
+	goto scr_seq_0832_T11R0101_0262
 
-scr_seq_0832_025E:
+scr_seq_0832_T11R0101_025E:
 	clearflag FLAG_UNK_2C4
-scr_seq_0832_0262:
+scr_seq_0832_T11R0101_0262:
 	end
 
-scr_seq_0832_0264:
+scr_seq_0832_T11R0101_0264:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -181,7 +181,7 @@ scr_seq_0832_0264:
 	trainer_battle 714, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_02C1
+	gotoif eq, scr_seq_0832_T11R0101_02C1
 	npc_msg 9
 	waitbutton
 	closemsg
@@ -197,12 +197,12 @@ scr_seq_0832_0264:
 	releaseall
 	end
 
-scr_seq_0832_02C1:
+scr_seq_0832_T11R0101_02C1:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_02C7:
+scr_seq_0832_T11R0101_02C7:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -211,7 +211,7 @@ scr_seq_0832_02C7:
 	trainer_battle 724, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_0324
+	gotoif eq, scr_seq_0832_T11R0101_0324
 	npc_msg 31
 	waitbutton
 	closemsg
@@ -227,12 +227,12 @@ scr_seq_0832_02C7:
 	releaseall
 	end
 
-scr_seq_0832_0324:
+scr_seq_0832_T11R0101_0324:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_032A:
+scr_seq_0832_T11R0101_032A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -241,7 +241,7 @@ scr_seq_0832_032A:
 	trainer_battle 719, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_0387
+	gotoif eq, scr_seq_0832_T11R0101_0387
 	npc_msg 19
 	waitbutton
 	closemsg
@@ -257,12 +257,12 @@ scr_seq_0832_032A:
 	releaseall
 	end
 
-scr_seq_0832_0387:
+scr_seq_0832_T11R0101_0387:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_038D:
+scr_seq_0832_T11R0101_038D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -271,7 +271,7 @@ scr_seq_0832_038D:
 	trainer_battle 723, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_03EA
+	gotoif eq, scr_seq_0832_T11R0101_03EA
 	npc_msg 25
 	waitbutton
 	closemsg
@@ -287,12 +287,12 @@ scr_seq_0832_038D:
 	releaseall
 	end
 
-scr_seq_0832_03EA:
+scr_seq_0832_T11R0101_03EA:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_03F0:
+scr_seq_0832_T11R0101_03F0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -301,7 +301,7 @@ scr_seq_0832_03F0:
 	trainer_battle 721, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_044D
+	gotoif eq, scr_seq_0832_T11R0101_044D
 	npc_msg 27
 	waitbutton
 	closemsg
@@ -317,12 +317,12 @@ scr_seq_0832_03F0:
 	releaseall
 	end
 
-scr_seq_0832_044D:
+scr_seq_0832_T11R0101_044D:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_0453:
+scr_seq_0832_T11R0101_0453:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -331,7 +331,7 @@ scr_seq_0832_0453:
 	trainer_battle 726, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_04B0
+	gotoif eq, scr_seq_0832_T11R0101_04B0
 	npc_msg 33
 	waitbutton
 	closemsg
@@ -347,12 +347,12 @@ scr_seq_0832_0453:
 	releaseall
 	end
 
-scr_seq_0832_04B0:
+scr_seq_0832_T11R0101_04B0:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_04B6:
+scr_seq_0832_T11R0101_04B6:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -361,7 +361,7 @@ scr_seq_0832_04B6:
 	trainer_battle 727, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_0513
+	gotoif eq, scr_seq_0832_T11R0101_0513
 	npc_msg 35
 	waitbutton
 	closemsg
@@ -377,12 +377,12 @@ scr_seq_0832_04B6:
 	releaseall
 	end
 
-scr_seq_0832_0513:
+scr_seq_0832_T11R0101_0513:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_0519:
+scr_seq_0832_T11R0101_0519:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -391,7 +391,7 @@ scr_seq_0832_0519:
 	trainer_battle 718, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_0576
+	gotoif eq, scr_seq_0832_T11R0101_0576
 	npc_msg 11
 	waitbutton
 	closemsg
@@ -407,12 +407,12 @@ scr_seq_0832_0519:
 	releaseall
 	end
 
-scr_seq_0832_0576:
+scr_seq_0832_T11R0101_0576:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_057C:
+scr_seq_0832_T11R0101_057C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -421,7 +421,7 @@ scr_seq_0832_057C:
 	trainer_battle 720, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_05D9
+	gotoif eq, scr_seq_0832_T11R0101_05D9
 	npc_msg 29
 	waitbutton
 	closemsg
@@ -437,12 +437,12 @@ scr_seq_0832_057C:
 	releaseall
 	end
 
-scr_seq_0832_05D9:
+scr_seq_0832_T11R0101_05D9:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_05DF:
+scr_seq_0832_T11R0101_05DF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -451,7 +451,7 @@ scr_seq_0832_05DF:
 	trainer_battle 713, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_063C
+	gotoif eq, scr_seq_0832_T11R0101_063C
 	npc_msg 7
 	waitbutton
 	closemsg
@@ -467,12 +467,12 @@ scr_seq_0832_05DF:
 	releaseall
 	end
 
-scr_seq_0832_063C:
+scr_seq_0832_T11R0101_063C:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_0642:
+scr_seq_0832_T11R0101_0642:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -481,7 +481,7 @@ scr_seq_0832_0642:
 	trainer_battle 725, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_069F
+	gotoif eq, scr_seq_0832_T11R0101_069F
 	npc_msg 23
 	waitbutton
 	closemsg
@@ -497,12 +497,12 @@ scr_seq_0832_0642:
 	releaseall
 	end
 
-scr_seq_0832_069F:
+scr_seq_0832_T11R0101_069F:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_06A5:
+scr_seq_0832_T11R0101_06A5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -511,7 +511,7 @@ scr_seq_0832_06A5:
 	trainer_battle 712, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_0702
+	gotoif eq, scr_seq_0832_T11R0101_0702
 	npc_msg 5
 	waitbutton
 	closemsg
@@ -527,12 +527,12 @@ scr_seq_0832_06A5:
 	releaseall
 	end
 
-scr_seq_0832_0702:
+scr_seq_0832_T11R0101_0702:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_0708:
+scr_seq_0832_T11R0101_0708:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -541,7 +541,7 @@ scr_seq_0832_0708:
 	trainer_battle 722, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_0765
+	gotoif eq, scr_seq_0832_T11R0101_0765
 	npc_msg 21
 	waitbutton
 	closemsg
@@ -557,12 +557,12 @@ scr_seq_0832_0708:
 	releaseall
 	end
 
-scr_seq_0832_0765:
+scr_seq_0832_T11R0101_0765:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_076B:
+scr_seq_0832_T11R0101_076B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -571,7 +571,7 @@ scr_seq_0832_076B:
 	trainer_battle 715, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_07C8
+	gotoif eq, scr_seq_0832_T11R0101_07C8
 	npc_msg 15
 	waitbutton
 	closemsg
@@ -587,12 +587,12 @@ scr_seq_0832_076B:
 	releaseall
 	end
 
-scr_seq_0832_07C8:
+scr_seq_0832_T11R0101_07C8:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_07CE:
+scr_seq_0832_T11R0101_07CE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -601,7 +601,7 @@ scr_seq_0832_07CE:
 	trainer_battle 717, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_082B
+	gotoif eq, scr_seq_0832_T11R0101_082B
 	npc_msg 13
 	waitbutton
 	closemsg
@@ -617,12 +617,12 @@ scr_seq_0832_07CE:
 	releaseall
 	end
 
-scr_seq_0832_082B:
+scr_seq_0832_T11R0101_082B:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_0831:
+scr_seq_0832_T11R0101_0831:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -631,7 +631,7 @@ scr_seq_0832_0831:
 	trainer_battle 716, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0832_088E
+	gotoif eq, scr_seq_0832_T11R0101_088E
 	npc_msg 17
 	waitbutton
 	closemsg
@@ -647,31 +647,31 @@ scr_seq_0832_0831:
 	releaseall
 	end
 
-scr_seq_0832_088E:
+scr_seq_0832_T11R0101_088E:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0832_0894:
+scr_seq_0832_T11R0101_0894:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_10D
-	gotoif TRUE, scr_seq_0832_08B2
+	gotoif TRUE, scr_seq_0832_T11R0101_08B2
 	npc_msg 0
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0832_08B2:
+scr_seq_0832_T11R0101_08B2:
 	npc_msg 1
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0832_08BD:
+scr_seq_0832_T11R0101_08BD:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -681,7 +681,7 @@ scr_seq_0832_08BD:
 	releaseall
 	end
 
-scr_seq_0832_08D0:
+scr_seq_0832_T11R0101_08D0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

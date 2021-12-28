@@ -3,16 +3,16 @@
 
 	.rodata
 
-	scrdef scr_seq_0235_0012 ; 000
-	scrdef scr_seq_0235_0014 ; 001
-	scrdef scr_seq_0235_0027 ; 002
-	scrdef scr_seq_0235_003A ; 003
+	scrdef scr_seq_0235_R32R0101_0012 ; 000
+	scrdef scr_seq_0235_R32R0101_0014 ; 001
+	scrdef scr_seq_0235_R32R0101_0027 ; 002
+	scrdef scr_seq_0235_R32R0101_003A ; 003
 	scrdef_end
 
-scr_seq_0235_0012:
+scr_seq_0235_R32R0101_0012:
 	end
 
-scr_seq_0235_0014:
+scr_seq_0235_R32R0101_0014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -22,7 +22,7 @@ scr_seq_0235_0014:
 	releaseall
 	end
 
-scr_seq_0235_0027:
+scr_seq_0235_R32R0101_0027:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -32,7 +32,7 @@ scr_seq_0235_0027:
 	releaseall
 	end
 
-scr_seq_0235_003A:
+scr_seq_0235_R32R0101_003A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

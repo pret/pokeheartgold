@@ -3,11 +3,11 @@
 
 	.rodata
 
-	scrdef scr_seq_0897_000A ; 000
-	scrdef scr_seq_0897_001D ; 001
+	scrdef scr_seq_0897_T25R0801_000A ; 000
+	scrdef scr_seq_0897_T25R0801_001D ; 001
 	scrdef_end
 
-scr_seq_0897_000A:
+scr_seq_0897_T25R0801_000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -17,7 +17,7 @@ scr_seq_0897_000A:
 	releaseall
 	end
 
-scr_seq_0897_001D:
+scr_seq_0897_T25R0801_001D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

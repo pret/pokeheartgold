@@ -3,23 +3,23 @@
 
 	.rodata
 
-	scrdef scr_seq_0964_002E ; 000
-	scrdef scr_seq_0964_0030 ; 001
-	scrdef scr_seq_0964_0043 ; 002
-	scrdef scr_seq_0964_0056 ; 003
-	scrdef scr_seq_0964_0069 ; 004
-	scrdef scr_seq_0964_007C ; 005
-	scrdef scr_seq_0964_008F ; 006
-	scrdef scr_seq_0964_00A2 ; 007
-	scrdef scr_seq_0964_00B5 ; 008
-	scrdef scr_seq_0964_00C8 ; 009
-	scrdef scr_seq_0964_00DB ; 010
+	scrdef scr_seq_0964_W41_002E ; 000
+	scrdef scr_seq_0964_W41_0030 ; 001
+	scrdef scr_seq_0964_W41_0043 ; 002
+	scrdef scr_seq_0964_W41_0056 ; 003
+	scrdef scr_seq_0964_W41_0069 ; 004
+	scrdef scr_seq_0964_W41_007C ; 005
+	scrdef scr_seq_0964_W41_008F ; 006
+	scrdef scr_seq_0964_W41_00A2 ; 007
+	scrdef scr_seq_0964_W41_00B5 ; 008
+	scrdef scr_seq_0964_W41_00C8 ; 009
+	scrdef scr_seq_0964_W41_00DB ; 010
 	scrdef_end
 
-scr_seq_0964_002E:
+scr_seq_0964_W41_002E:
 	end
 
-scr_seq_0964_0030:
+scr_seq_0964_W41_0030:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -29,7 +29,7 @@ scr_seq_0964_0030:
 	releaseall
 	end
 
-scr_seq_0964_0043:
+scr_seq_0964_W41_0043:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -39,7 +39,7 @@ scr_seq_0964_0043:
 	releaseall
 	end
 
-scr_seq_0964_0056:
+scr_seq_0964_W41_0056:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -49,7 +49,7 @@ scr_seq_0964_0056:
 	releaseall
 	end
 
-scr_seq_0964_0069:
+scr_seq_0964_W41_0069:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -59,7 +59,7 @@ scr_seq_0964_0069:
 	releaseall
 	end
 
-scr_seq_0964_007C:
+scr_seq_0964_W41_007C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -69,7 +69,7 @@ scr_seq_0964_007C:
 	releaseall
 	end
 
-scr_seq_0964_008F:
+scr_seq_0964_W41_008F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -79,7 +79,7 @@ scr_seq_0964_008F:
 	releaseall
 	end
 
-scr_seq_0964_00A2:
+scr_seq_0964_W41_00A2:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -89,7 +89,7 @@ scr_seq_0964_00A2:
 	releaseall
 	end
 
-scr_seq_0964_00B5:
+scr_seq_0964_W41_00B5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -99,7 +99,7 @@ scr_seq_0964_00B5:
 	releaseall
 	end
 
-scr_seq_0964_00C8:
+scr_seq_0964_W41_00C8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -109,7 +109,7 @@ scr_seq_0964_00C8:
 	releaseall
 	end
 
-scr_seq_0964_00DB:
+scr_seq_0964_W41_00DB:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

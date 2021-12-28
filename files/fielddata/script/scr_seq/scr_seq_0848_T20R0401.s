@@ -3,17 +3,17 @@
 
 	.rodata
 
-	scrdef scr_seq_0848_0006 ; 000
+	scrdef scr_seq_0848_T20R0401_0006 ; 000
 	scrdef_end
 
-scr_seq_0848_0006:
+scr_seq_0848_T20R0401_0006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_2E5
-	gotoif TRUE, scr_seq_0848_0035
+	gotoif TRUE, scr_seq_0848_T20R0401_0035
 	comparevartovalue VAR_UNK_4108, 1
-	gotoif ge, scr_seq_0848_0044
+	gotoif ge, scr_seq_0848_T20R0401_0044
 	buffer_players_name 0
 	gender_msgbox 0, 1
 	waitbutton
@@ -21,7 +21,7 @@ scr_seq_0848_0006:
 	releaseall
 	end
 
-scr_seq_0848_0035:
+scr_seq_0848_T20R0401_0035:
 	buffer_players_name 0
 	gender_msgbox 2, 3
 	waitbutton
@@ -29,7 +29,7 @@ scr_seq_0848_0035:
 	releaseall
 	end
 
-scr_seq_0848_0044:
+scr_seq_0848_T20R0401_0044:
 	buffer_players_name 0
 	gender_msgbox 4, 5
 	waitbutton

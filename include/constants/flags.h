@@ -218,7 +218,7 @@
 #define FLAG_UNK_0D5                 0xD5
 #define FLAG_UNK_0D6                 0xD6
 #define FLAG_UNK_0D7                 0xD7
-#define FLAG_UNK_0D8                 0xD8
+#define FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY                 0xD8
 #define FLAG_UNK_0D9                 0xD9
 #define FLAG_UNK_0DA                 0xDA
 #define FLAG_UNK_0DB                 0xDB
@@ -2750,7 +2750,7 @@
 #define FLAG_UNK_AB9                 0xAB9
 #define FLAG_UNK_ABA                 0xABA
 #define FLAG_UNK_ABB                 0xABB
-#define FLAG_UNK_ABC                 0xABC
+#define FLAG_GOT_SHOCK_RIBBON                 0xABC
 #define FLAG_UNK_ABD                 0xABD
 #define FLAG_UNK_ABE                 0xABE
 #define FLAG_UNK_ABF                 0xABF

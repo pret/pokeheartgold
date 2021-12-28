@@ -3,11 +3,11 @@
 
 	.rodata
 
-	scrdef scr_seq_0960_000A ; 000
-	scrdef scr_seq_0960_001F ; 001
+	scrdef scr_seq_0960_W20_000A ; 000
+	scrdef scr_seq_0960_W20_001F ; 001
 	scrdef_end
 
-scr_seq_0960_000A:
+scr_seq_0960_W20_000A:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -15,7 +15,7 @@ scr_seq_0960_000A:
 	callstd 2000
 	end
 
-scr_seq_0960_001F:
+scr_seq_0960_W20_001F:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

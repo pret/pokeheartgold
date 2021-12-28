@@ -3,93 +3,93 @@
 
 	.rodata
 
-	scrdef scr_seq_0252_001A ; 000
-	scrdef scr_seq_0252_0230 ; 001
-	scrdef scr_seq_0252_0350 ; 002
-	scrdef scr_seq_0252_0367 ; 003
-	scrdef scr_seq_0252_037C ; 004
-	scrdef scr_seq_0252_0391 ; 005
+	scrdef scr_seq_0252_R42_001A ; 000
+	scrdef scr_seq_0252_R42_0230 ; 001
+	scrdef scr_seq_0252_R42_0350 ; 002
+	scrdef scr_seq_0252_R42_0367 ; 003
+	scrdef scr_seq_0252_R42_037C ; 004
+	scrdef scr_seq_0252_R42_0391 ; 005
 	scrdef_end
 
-scr_seq_0252_001A:
+scr_seq_0252_R42_001A:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0252_017C
+	apply_movement 255, scr_seq_0252_R42_017C
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_29D
 	scrcmd_100 10
 	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif ne, scr_seq_0252_0051
-	apply_movement 10, scr_seq_0252_0198
-	goto scr_seq_0252_00AA
+	gotoif ne, scr_seq_0252_R42_0051
+	apply_movement 10, scr_seq_0252_R42_0198
+	goto scr_seq_0252_R42_00AA
 
-scr_seq_0252_0051:
+scr_seq_0252_R42_0051:
 	comparevartovalue VAR_SPECIAL_x8001, 173
-	gotoif ne, scr_seq_0252_006C
-	apply_movement 10, scr_seq_0252_01A4
-	goto scr_seq_0252_00AA
+	gotoif ne, scr_seq_0252_R42_006C
+	apply_movement 10, scr_seq_0252_R42_01A4
+	goto scr_seq_0252_R42_00AA
 
-scr_seq_0252_006C:
+scr_seq_0252_R42_006C:
 	comparevartovalue VAR_SPECIAL_x8001, 174
-	gotoif ne, scr_seq_0252_0087
-	apply_movement 10, scr_seq_0252_01B0
-	goto scr_seq_0252_00AA
+	gotoif ne, scr_seq_0252_R42_0087
+	apply_movement 10, scr_seq_0252_R42_01B0
+	goto scr_seq_0252_R42_00AA
 
-scr_seq_0252_0087:
+scr_seq_0252_R42_0087:
 	comparevartovalue VAR_SPECIAL_x8001, 175
-	gotoif ne, scr_seq_0252_00A2
-	apply_movement 10, scr_seq_0252_01BC
-	goto scr_seq_0252_00AA
+	gotoif ne, scr_seq_0252_R42_00A2
+	apply_movement 10, scr_seq_0252_R42_01BC
+	goto scr_seq_0252_R42_00AA
 
-scr_seq_0252_00A2:
-	apply_movement 10, scr_seq_0252_01C8
-scr_seq_0252_00AA:
+scr_seq_0252_R42_00A2:
+	apply_movement 10, scr_seq_0252_R42_01C8
+scr_seq_0252_R42_00AA:
 	wait_movement
 	play_se SEQ_SE_DP_WALL_HIT2
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	apply_movement 255, scr_seq_0252_0184
+	apply_movement 255, scr_seq_0252_R42_0184
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg 5
 	closemsg
-	apply_movement 10, scr_seq_0252_01D4
+	apply_movement 10, scr_seq_0252_R42_01D4
 	wait_movement
 	setvar VAR_SPECIAL_x8004, 423
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2033
+	callstd std_give_item_verbose
 	npc_msg 6
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif ne, scr_seq_0252_010D
-	apply_movement 10, scr_seq_0252_01DC
-	goto scr_seq_0252_0166
+	gotoif ne, scr_seq_0252_R42_010D
+	apply_movement 10, scr_seq_0252_R42_01DC
+	goto scr_seq_0252_R42_0166
 
-scr_seq_0252_010D:
+scr_seq_0252_R42_010D:
 	comparevartovalue VAR_SPECIAL_x8001, 173
-	gotoif ne, scr_seq_0252_0128
-	apply_movement 10, scr_seq_0252_01F0
-	goto scr_seq_0252_0166
+	gotoif ne, scr_seq_0252_R42_0128
+	apply_movement 10, scr_seq_0252_R42_01F0
+	goto scr_seq_0252_R42_0166
 
-scr_seq_0252_0128:
+scr_seq_0252_R42_0128:
 	comparevartovalue VAR_SPECIAL_x8001, 174
-	gotoif ne, scr_seq_0252_0143
-	apply_movement 10, scr_seq_0252_0204
-	goto scr_seq_0252_0166
+	gotoif ne, scr_seq_0252_R42_0143
+	apply_movement 10, scr_seq_0252_R42_0204
+	goto scr_seq_0252_R42_0166
 
-scr_seq_0252_0143:
+scr_seq_0252_R42_0143:
 	comparevartovalue VAR_SPECIAL_x8001, 175
-	gotoif ne, scr_seq_0252_015E
-	apply_movement 10, scr_seq_0252_0210
-	goto scr_seq_0252_0166
+	gotoif ne, scr_seq_0252_R42_015E
+	apply_movement 10, scr_seq_0252_R42_0210
+	goto scr_seq_0252_R42_0166
 
-scr_seq_0252_015E:
-	apply_movement 10, scr_seq_0252_0224
-scr_seq_0252_0166:
+scr_seq_0252_R42_015E:
+	apply_movement 10, scr_seq_0252_R42_0224
+scr_seq_0252_R42_0166:
 	wait_movement
 	setflag FLAG_UNK_29D
 	hide_person 10
@@ -97,80 +97,80 @@ scr_seq_0252_0166:
 	releaseall
 	end
 
-scr_seq_0252_017A:
+scr_seq_0252_R42_017A:
 	.byte 0x00, 0x00
 
-scr_seq_0252_017C:
+scr_seq_0252_R42_017C:
 	.short 75, 1
 	.short 254, 0
 
-scr_seq_0252_0184:
+scr_seq_0252_R42_0184:
 	.short 3, 1
 	.short 71, 1
 	.short 58, 1
 	.short 72, 1
 	.short 254, 0
 
-scr_seq_0252_0198:
+scr_seq_0252_R42_0198:
 	.short 17, 1
 	.short 18, 1
 	.short 254, 0
 
-scr_seq_0252_01A4:
+scr_seq_0252_R42_01A4:
 	.short 17, 2
 	.short 18, 1
 	.short 254, 0
 
-scr_seq_0252_01B0:
+scr_seq_0252_R42_01B0:
 	.short 17, 3
 	.short 18, 1
 	.short 254, 0
 
-scr_seq_0252_01BC:
+scr_seq_0252_R42_01BC:
 	.short 17, 4
 	.short 18, 1
 	.short 254, 0
 
-scr_seq_0252_01C8:
+scr_seq_0252_R42_01C8:
 	.short 17, 5
 	.short 18, 1
 	.short 254, 0
 
-scr_seq_0252_01D4:
+scr_seq_0252_R42_01D4:
 	.short 14, 2
 	.short 254, 0
 
-scr_seq_0252_01DC:
+scr_seq_0252_R42_01DC:
 	.short 13, 1
 	.short 14, 5
 	.short 13, 2
 	.short 14, 5
 	.short 254, 0
 
-scr_seq_0252_01F0:
+scr_seq_0252_R42_01F0:
 	.short 13, 1
 	.short 14, 5
 	.short 13, 1
 	.short 14, 5
 	.short 254, 0
 
-scr_seq_0252_0204:
+scr_seq_0252_R42_0204:
 	.short 13, 1
 	.short 14, 10
 	.short 254, 0
 
-scr_seq_0252_0210:
+scr_seq_0252_R42_0210:
 	.short 13, 1
 	.short 14, 4
 	.short 12, 1
 	.short 14, 5
 	.short 254, 0
 
-scr_seq_0252_0224:
+scr_seq_0252_R42_0224:
 	.short 12, 1
 	.short 14, 10
 	.short 254, 0
-scr_seq_0252_0230:
+scr_seq_0252_R42_0230:
 	scrcmd_609
 	lockall
 	scrcmd_076 245, 0
@@ -181,8 +181,8 @@ scr_seq_0252_0230:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	apply_movement 11, scr_seq_0252_02EC
-	apply_movement 255, scr_seq_0252_0308
+	apply_movement 11, scr_seq_0252_R42_02EC
+	apply_movement 255, scr_seq_0252_R42_0308
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -190,20 +190,20 @@ scr_seq_0252_0230:
 	clearflag FLAG_UNK_2A3
 	scrcmd_100 12
 	callstd 2042
-	apply_movement 12, scr_seq_0252_0324
+	apply_movement 12, scr_seq_0252_R42_0324
 	wait_movement
 	npc_msg 7
 	closemsg
-	apply_movement 12, scr_seq_0252_0334
+	apply_movement 12, scr_seq_0252_R42_0334
 	wait_movement
 	buffer_players_name 0
 	npc_msg 8
 	closemsg
-	apply_movement 12, scr_seq_0252_0348
+	apply_movement 12, scr_seq_0252_R42_0348
 	wait_movement
 	npc_msg 9
 	closemsg
-	apply_movement 12, scr_seq_0252_0340
+	apply_movement 12, scr_seq_0252_R42_0340
 	wait_movement
 	callstd 2043
 	hide_person 11
@@ -217,10 +217,10 @@ scr_seq_0252_0230:
 	releaseall
 	end
 
-scr_seq_0252_02EA:
+scr_seq_0252_R42_02EA:
 	.byte 0x00, 0x00
 
-scr_seq_0252_02EC:
+scr_seq_0252_R42_02EC:
 	.short 62, 3
 	.short 22, 2
 	.short 58, 1
@@ -229,7 +229,7 @@ scr_seq_0252_02EC:
 	.short 112, 1
 	.short 254, 0
 
-scr_seq_0252_0308:
+scr_seq_0252_R42_0308:
 	.short 75, 1
 	.short 71, 1
 	.short 16, 4
@@ -238,25 +238,25 @@ scr_seq_0252_0308:
 	.short 15, 1
 	.short 254, 0
 
-scr_seq_0252_0324:
+scr_seq_0252_R42_0324:
 	.short 15, 4
 	.short 12, 3
 	.short 15, 6
 	.short 254, 0
 
-scr_seq_0252_0334:
+scr_seq_0252_R42_0334:
 	.short 12, 1
 	.short 2, 1
 	.short 254, 0
 
-scr_seq_0252_0340:
+scr_seq_0252_R42_0340:
 	.short 15, 9
 	.short 254, 0
 
-scr_seq_0252_0348:
+scr_seq_0252_R42_0348:
 	.short 15, 1
 	.short 254, 0
-scr_seq_0252_0350:
+scr_seq_0252_R42_0350:
 	scrcmd_055 0, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -264,7 +264,7 @@ scr_seq_0252_0350:
 	callstd 2000
 	end
 
-scr_seq_0252_0367:
+scr_seq_0252_R42_0367:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -272,7 +272,7 @@ scr_seq_0252_0367:
 	callstd 2000
 	end
 
-scr_seq_0252_037C:
+scr_seq_0252_R42_037C:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -280,7 +280,7 @@ scr_seq_0252_037C:
 	callstd 2000
 	end
 
-scr_seq_0252_0391:
+scr_seq_0252_R42_0391:
 	scrcmd_055 3, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058

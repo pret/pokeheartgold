@@ -8,10 +8,10 @@
 	.byte 3
 	.short 22, 0
 	.byte 1
-	.word scr_seq_0346_0015-.-4
+	.word scr_seq_0346_D32R0401_hdr_0015-.-4
 	.byte 0
 
-scr_seq_0346_0015:
+scr_seq_0346_D32R0401_hdr_0015:
 	.short 16709, 1, 4
 	.short 16709, 2, 2
 	.short 16709, 3, 5

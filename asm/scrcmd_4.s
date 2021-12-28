@@ -99,8 +99,8 @@ ScrCmd_192: ; 0x0204846C
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_192
 
-	thumb_func_start ScrCmd_193
-ScrCmd_193: ; 0x02048490
+	thumb_func_start ScrCmd_BufferMonSpeciesName
+ScrCmd_BufferMonSpeciesName: ; 0x02048490
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -131,7 +131,7 @@ ScrCmd_193: ; 0x02048490
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_193
+	thumb_func_end ScrCmd_BufferMonSpeciesName
 
 	thumb_func_start ScrCmd_668
 ScrCmd_668: ; 0x020484D8

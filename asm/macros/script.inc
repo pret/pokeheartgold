@@ -1114,7 +1114,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_193 arg0, arg1
+	.macro buffer_mon_species_name arg0, arg1
 	.short 193
 	.byte \arg0
 	.short \arg1
@@ -2431,19 +2431,19 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_438 arg0, arg1
+	.macro get_std_msg_naix arg0, arg1
 	.short 438
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro message_extern arg0, arg1
+	.macro non_npc_msg_extern arg0, arg1
 	.short 439
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_440 arg0, arg1
+	.macro msgbox_extern arg0, arg1
 	.short 440
 	.short \arg0
 	.short \arg1
@@ -2666,14 +2666,14 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_480 arg0, arg1, arg2
+	.macro mon_has_ribbon arg0, arg1, arg2
 	.short 480
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_481 arg0, arg1
+	.macro give_ribbon arg0, arg1
 	.short 481
 	.short \arg0
 	.short \arg1
@@ -2691,7 +2691,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_484 arg0
+	.macro get_weekday arg0
 	.short 484
 	.short \arg0
 	.endm

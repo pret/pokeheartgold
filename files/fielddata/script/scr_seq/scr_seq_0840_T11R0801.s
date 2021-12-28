@@ -3,12 +3,12 @@
 
 	.rodata
 
-	scrdef scr_seq_0840_000E ; 000
-	scrdef scr_seq_0840_0021 ; 001
-	scrdef scr_seq_0840_004A ; 002
+	scrdef scr_seq_0840_T11R0801_000E ; 000
+	scrdef scr_seq_0840_T11R0801_0021 ; 001
+	scrdef scr_seq_0840_T11R0801_004A ; 002
 	scrdef_end
 
-scr_seq_0840_000E:
+scr_seq_0840_T11R0801_000E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -18,26 +18,26 @@ scr_seq_0840_000E:
 	releaseall
 	end
 
-scr_seq_0840_0021:
+scr_seq_0840_T11R0801_0021:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0840_003F
+	gotoif TRUE, scr_seq_0840_T11R0801_003F
 	npc_msg 1
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0840_003F:
+scr_seq_0840_T11R0801_003F:
 	npc_msg 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0840_004A:
+scr_seq_0840_T11R0801_004A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

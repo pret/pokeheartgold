@@ -27,7 +27,7 @@ scr_seq_0164_001A:
 	npc_msg 1
 	setvar VAR_SPECIAL_x8004, 437
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2033
+	callstd std_give_item_verbose
 	goto scr_seq_0164_005C
 
 scr_seq_0164_005A:

@@ -3,11 +3,11 @@
 
 	.rodata
 
-	scrdef scr_seq_0188_000A ; 000
-	scrdef scr_seq_0188_001B ; 001
+	scrdef scr_seq_0188_R08_000A ; 000
+	scrdef scr_seq_0188_R08_001B ; 001
 	scrdef_end
 
-scr_seq_0188_000A:
+scr_seq_0188_R08_000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 0
@@ -16,7 +16,7 @@ scr_seq_0188_000A:
 	releaseall
 	end
 
-scr_seq_0188_001B:
+scr_seq_0188_R08_001B:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

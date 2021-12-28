@@ -3,9 +3,9 @@
 
 	.rodata
 
-	scrdef scr_seq_0831_0006 ; 000
+	scrdef scr_seq_0831_T11PC0102_0006 ; 000
 	scrdef_end
 
-scr_seq_0831_0006:
+scr_seq_0831_T11PC0102_0006:
 	end
 	.balign 4, 0

@@ -3,28 +3,28 @@
 
 	.rodata
 
-	scrdef scr_seq_0229_00CF ; 000
-	scrdef scr_seq_0229_002F ; 001
-	scrdef scr_seq_0229_0234 ; 002
-	scrdef scr_seq_0229_0012 ; 003
+	scrdef scr_seq_0229_R30R0201_00CF ; 000
+	scrdef scr_seq_0229_R30R0201_002F ; 001
+	scrdef scr_seq_0229_R30R0201_0234 ; 002
+	scrdef scr_seq_0229_R30R0201_0012 ; 003
 	scrdef_end
 
-scr_seq_0229_0012:
+scr_seq_0229_R30R0201_0012:
 	comparevartovalue VAR_UNK_40F9, 1
-	gotoif eq, scr_seq_0229_0021
+	gotoif eq, scr_seq_0229_R30R0201_0021
 	end
 
-scr_seq_0229_0021:
+scr_seq_0229_R30R0201_0021:
 	show_person_at 0, 5, 0, 6, 3
 	end
 
-scr_seq_0229_002F:
+scr_seq_0229_R30R0201_002F:
 	scrcmd_609
 	lockall
-	apply_movement 0, scr_seq_0229_03AC
+	apply_movement 0, scr_seq_0229_R30R0201_03AC
 	wait_movement
-	apply_movement 1, scr_seq_0229_041C
-	apply_movement 0, scr_seq_0229_03B4
+	apply_movement 1, scr_seq_0229_R30R0201_041C
+	apply_movement 0, scr_seq_0229_R30R0201_03B4
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 0, 1
@@ -32,18 +32,18 @@ scr_seq_0229_002F:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 0, scr_seq_0229_03C4
-	apply_movement 255, scr_seq_0229_0404
+	apply_movement 0, scr_seq_0229_R30R0201_03C4
+	apply_movement 255, scr_seq_0229_R30R0201_0404
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0229_03E4
+	apply_movement 0, scr_seq_0229_R30R0201_03E4
 	wait_movement
 	npc_msg 2
 	setvar VAR_SPECIAL_x8004, 484
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2033
+	callstd std_give_item_verbose
 	npc_msg 3
 	npc_msg 4
 	closemsg
@@ -55,52 +55,52 @@ scr_seq_0229_002F:
 	heal_party
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	goto scr_seq_0229_02E8
+	goto scr_seq_0229_R30R0201_02E8
 
-scr_seq_0229_00CD:
+scr_seq_0229_R30R0201_00CD:
 	.byte 0x02, 0x00
-scr_seq_0229_00CF:
+scr_seq_0229_R30R0201_00CF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40F9, 4
-	gotoif ge, scr_seq_0229_00F1
+	gotoif ge, scr_seq_0229_R30R0201_00F1
 	comparevartovalue VAR_UNK_40F9, 2
-	gotoif ge, scr_seq_0229_02CD
-scr_seq_0229_00F1:
+	gotoif ge, scr_seq_0229_R30R0201_02CD
+scr_seq_0229_R30R0201_00F1:
 	checkflag FLAG_UNK_06C
-	gotoif TRUE, scr_seq_0229_019F
+	gotoif TRUE, scr_seq_0229_R30R0201_019F
 	checkflag FLAG_UNK_0C9
-	gotoif TRUE, scr_seq_0229_012A
+	gotoif TRUE, scr_seq_0229_R30R0201_012A
 	comparevartovalue VAR_UNK_4107, 2
-	gotoif ge, scr_seq_0229_011F
+	gotoif ge, scr_seq_0229_R30R0201_011F
 	npc_msg 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_011F:
+scr_seq_0229_R30R0201_011F:
 	npc_msg 6
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_012A:
+scr_seq_0229_R30R0201_012A:
 	buffer_players_name 0
 	gender_msgbox 16, 17
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0229_0189
+	gotoif eq, scr_seq_0229_R30R0201_0189
 	setvar VAR_SPECIAL_x8004, 216
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0229_0194
-	callstd 2033
+	gotoif eq, scr_seq_0229_R30R0201_0194
+	callstd std_give_item_verbose
 	closemsg
 	setflag FLAG_UNK_06C
 	setvar VAR_SPECIAL_x8004, 478
@@ -109,74 +109,74 @@ scr_seq_0229_012A:
 	releaseall
 	end
 
-scr_seq_0229_0189:
+scr_seq_0229_R30R0201_0189:
 	npc_msg 20
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_0194:
+scr_seq_0229_R30R0201_0194:
 	npc_msg 19
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_019F:
+scr_seq_0229_R30R0201_019F:
 	checkflag FLAG_UNK_107
-	gotoif FALSE, scr_seq_0229_011F
+	gotoif FALSE, scr_seq_0229_R30R0201_011F
 	npc_msg 7
 	closemsg
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0229_01CE
-	apply_movement 0, scr_seq_0229_01F8
-	goto scr_seq_0229_01F1
+	gotoif ne, scr_seq_0229_R30R0201_01CE
+	apply_movement 0, scr_seq_0229_R30R0201_01F8
+	goto scr_seq_0229_R30R0201_01F1
 
-scr_seq_0229_01CE:
+scr_seq_0229_R30R0201_01CE:
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0229_01E9
-	apply_movement 0, scr_seq_0229_020C
-	goto scr_seq_0229_01F1
+	gotoif ne, scr_seq_0229_R30R0201_01E9
+	apply_movement 0, scr_seq_0229_R30R0201_020C
+	goto scr_seq_0229_R30R0201_01F1
 
-scr_seq_0229_01E9:
-	apply_movement 0, scr_seq_0229_0220
-scr_seq_0229_01F1:
+scr_seq_0229_R30R0201_01E9:
+	apply_movement 0, scr_seq_0229_R30R0201_0220
+scr_seq_0229_R30R0201_01F1:
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0229_01F7:
+scr_seq_0229_R30R0201_01F7:
 	.byte 0x00
 
-scr_seq_0229_01F8:
+scr_seq_0229_R30R0201_01F8:
 	.short 1, 3
 	.short 2, 3
 	.short 0, 3
 	.short 3, 3
 	.short 254, 0
 
-scr_seq_0229_020C:
+scr_seq_0229_R30R0201_020C:
 	.short 1, 3
 	.short 3, 3
 	.short 0, 3
 	.short 2, 3
 	.short 254, 0
 
-scr_seq_0229_0220:
+scr_seq_0229_R30R0201_0220:
 	.short 3, 3
 	.short 0, 3
 	.short 2, 3
 	.short 1, 3
 	.short 254, 0
-scr_seq_0229_0234:
+scr_seq_0229_R30R0201_0234:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40F9, 2
-	apply_movement 0, scr_seq_0229_03AC
+	apply_movement 0, scr_seq_0229_R30R0201_03AC
 	wait_movement
-	apply_movement 0, scr_seq_0229_02D8
+	apply_movement 0, scr_seq_0229_R30R0201_02D8
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 21, 22
@@ -184,28 +184,28 @@ scr_seq_0229_0234:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 0, scr_seq_0229_03C4
-	apply_movement 255, scr_seq_0229_0404
+	apply_movement 0, scr_seq_0229_R30R0201_03C4
+	apply_movement 255, scr_seq_0229_R30R0201_0404
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg 23
 	closemsg
-	apply_movement 0, scr_seq_0229_03E4
+	apply_movement 0, scr_seq_0229_R30R0201_03E4
 	wait_movement
 	buffer_players_name 0
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, scr_seq_0229_02B0
+	gotoif ne, scr_seq_0229_R30R0201_02B0
 	setvar VAR_SPECIAL_x8004, 535
-	goto scr_seq_0229_02B6
+	goto scr_seq_0229_R30R0201_02B6
 
-scr_seq_0229_02B0:
+scr_seq_0229_R30R0201_02B0:
 	setvar VAR_SPECIAL_x8004, 534
-scr_seq_0229_02B6:
+scr_seq_0229_R30R0201_02B6:
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2033
+	callstd std_give_item_verbose
 	closemsg
 	npc_msg 26
 	waitbutton
@@ -213,7 +213,7 @@ scr_seq_0229_02B6:
 	releaseall
 	end
 
-scr_seq_0229_02CD:
+scr_seq_0229_R30R0201_02CD:
 	npc_msg 27
 	waitbutton
 	closemsg
@@ -221,25 +221,25 @@ scr_seq_0229_02CD:
 	end
 
 
-scr_seq_0229_02D8:
+scr_seq_0229_R30R0201_02D8:
 	.short 13, 1
 	.short 14, 1
 	.short 13, 1
 	.short 254, 0
-scr_seq_0229_02E8:
+scr_seq_0229_R30R0201_02E8:
 	play_bgm SEQ_GS_OHKIDO
-	apply_movement 1, scr_seq_0229_0424
+	apply_movement 1, scr_seq_0229_R30R0201_0424
 	wait_movement
-	apply_movement 255, scr_seq_0229_0414
+	apply_movement 255, scr_seq_0229_R30R0201_0414
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 8, 9
 	closemsg
-	apply_movement 1, scr_seq_0229_0438
+	apply_movement 1, scr_seq_0229_R30R0201_0438
 	wait_movement
 	npc_msg 10
 	closemsg
-	apply_movement 1, scr_seq_0229_0444
+	apply_movement 1, scr_seq_0229_R30R0201_0444
 	wait_movement
 	npc_msg 11
 	buffer_players_name 0
@@ -257,7 +257,7 @@ scr_seq_0229_02E8:
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	closemsg
-	apply_movement 1, scr_seq_0229_0450
+	apply_movement 1, scr_seq_0229_R30R0201_0450
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 1
@@ -279,20 +279,20 @@ scr_seq_0229_02E8:
 	setvar VAR_UNK_408C, 2
 	end
 
-scr_seq_0229_03AB:
+scr_seq_0229_R30R0201_03AB:
 	.byte 0x00
 
-scr_seq_0229_03AC:
+scr_seq_0229_R30R0201_03AC:
 	.short 75, 1
 	.short 254, 0
 
-scr_seq_0229_03B4:
+scr_seq_0229_R30R0201_03B4:
 	.short 17, 1
 	.short 18, 5
 	.short 33, 1
 	.short 254, 0
 
-scr_seq_0229_03C4:
+scr_seq_0229_R30R0201_03C4:
 	.short 15, 1
 	.short 12, 3
 	.short 33, 1
@@ -300,7 +300,7 @@ scr_seq_0229_03C4:
 	.byte 0x20, 0x00, 0x01, 0x00, 0x23, 0x00, 0x01, 0x00, 0x22, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 
-scr_seq_0229_03E4:
+scr_seq_0229_R30R0201_03E4:
 	.short 18, 3
 	.short 16, 1
 	.short 63, 1
@@ -310,38 +310,38 @@ scr_seq_0229_03E4:
 	.short 29, 1
 	.short 254, 0
 
-scr_seq_0229_0404:
+scr_seq_0229_R30R0201_0404:
 	.short 12, 1
 	.short 15, 1
 	.short 12, 2
 	.short 254, 0
 
-scr_seq_0229_0414:
+scr_seq_0229_R30R0201_0414:
 	.short 34, 1
 	.short 254, 0
 
-scr_seq_0229_041C:
+scr_seq_0229_R30R0201_041C:
 	.short 34, 1
 	.short 254, 0
 
-scr_seq_0229_0424:
+scr_seq_0229_R30R0201_0424:
 	.short 9, 1
 	.short 10, 4
 	.short 8, 2
 	.short 31, 1
 	.short 254, 0
 
-scr_seq_0229_0438:
+scr_seq_0229_R30R0201_0438:
 	.short 9, 1
 	.short 31, 1
 	.short 254, 0
 
-scr_seq_0229_0444:
+scr_seq_0229_R30R0201_0444:
 	.short 8, 1
 	.short 31, 1
 	.short 254, 0
 
-scr_seq_0229_0450:
+scr_seq_0229_R30R0201_0450:
 	.short 9, 3
 	.short 63, 1
 	.short 254, 0

@@ -3,10 +3,10 @@
 
 	.rodata
 
-	scrdef scr_seq_0220_0006 ; 000
+	scrdef scr_seq_0220_R26R0201_0006 ; 000
 	scrdef_end
 
-scr_seq_0220_0006:
+scr_seq_0220_R26R0201_0006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -16,18 +16,18 @@ scr_seq_0220_0006:
 	scrcmd_747
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0220_0049
+	gotoif eq, scr_seq_0220_R26R0201_0049
 	npc_msg 1
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0220_0049
+	gotoif eq, scr_seq_0220_R26R0201_0049
 	npc_msg 2
 	waitbutton
 	closemsg
-scr_seq_0220_0049:
+scr_seq_0220_R26R0201_0049:
 	releaseall
 	end
 	.balign 4, 0

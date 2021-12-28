@@ -4,10 +4,10 @@
 	.byte 2
 	.short 1, 0
 	.byte 1
-	.word scr_seq_0331_000B-.-4
+	.word scr_seq_0331_D31R0202_hdr_000B-.-4
 	.byte 0
 
-scr_seq_0331_000B:
+scr_seq_0331_D31R0202_hdr_000B:
 	.short 16717, 1, 2
 	.short 16717, 2, 3
 	.short 16717, 3, 4

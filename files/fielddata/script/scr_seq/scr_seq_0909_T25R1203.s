@@ -3,21 +3,21 @@
 
 	.rodata
 
-	scrdef scr_seq_0909_0032 ; 000
-	scrdef scr_seq_0909_0045 ; 001
-	scrdef scr_seq_0909_0058 ; 002
-	scrdef scr_seq_0909_006B ; 003
-	scrdef scr_seq_0909_007E ; 004
-	scrdef scr_seq_0909_0091 ; 005
-	scrdef scr_seq_0909_00A4 ; 006
-	scrdef scr_seq_0909_00B7 ; 007
-	scrdef scr_seq_0909_00CA ; 008
-	scrdef scr_seq_0909_00DD ; 009
-	scrdef scr_seq_0909_00EE ; 010
-	scrdef scr_seq_0909_00FF ; 011
+	scrdef scr_seq_0909_T25R1203_0032 ; 000
+	scrdef scr_seq_0909_T25R1203_0045 ; 001
+	scrdef scr_seq_0909_T25R1203_0058 ; 002
+	scrdef scr_seq_0909_T25R1203_006B ; 003
+	scrdef scr_seq_0909_T25R1203_007E ; 004
+	scrdef scr_seq_0909_T25R1203_0091 ; 005
+	scrdef scr_seq_0909_T25R1203_00A4 ; 006
+	scrdef scr_seq_0909_T25R1203_00B7 ; 007
+	scrdef scr_seq_0909_T25R1203_00CA ; 008
+	scrdef scr_seq_0909_T25R1203_00DD ; 009
+	scrdef scr_seq_0909_T25R1203_00EE ; 010
+	scrdef scr_seq_0909_T25R1203_00FF ; 011
 	scrdef_end
 
-scr_seq_0909_0032:
+scr_seq_0909_T25R1203_0032:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -27,7 +27,7 @@ scr_seq_0909_0032:
 	releaseall
 	end
 
-scr_seq_0909_0045:
+scr_seq_0909_T25R1203_0045:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -37,7 +37,7 @@ scr_seq_0909_0045:
 	releaseall
 	end
 
-scr_seq_0909_0058:
+scr_seq_0909_T25R1203_0058:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -47,7 +47,7 @@ scr_seq_0909_0058:
 	releaseall
 	end
 
-scr_seq_0909_006B:
+scr_seq_0909_T25R1203_006B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -57,7 +57,7 @@ scr_seq_0909_006B:
 	releaseall
 	end
 
-scr_seq_0909_007E:
+scr_seq_0909_T25R1203_007E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -67,7 +67,7 @@ scr_seq_0909_007E:
 	releaseall
 	end
 
-scr_seq_0909_0091:
+scr_seq_0909_T25R1203_0091:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -77,7 +77,7 @@ scr_seq_0909_0091:
 	releaseall
 	end
 
-scr_seq_0909_00A4:
+scr_seq_0909_T25R1203_00A4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -87,7 +87,7 @@ scr_seq_0909_00A4:
 	releaseall
 	end
 
-scr_seq_0909_00B7:
+scr_seq_0909_T25R1203_00B7:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -97,7 +97,7 @@ scr_seq_0909_00B7:
 	releaseall
 	end
 
-scr_seq_0909_00CA:
+scr_seq_0909_T25R1203_00CA:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -107,7 +107,7 @@ scr_seq_0909_00CA:
 	releaseall
 	end
 
-scr_seq_0909_00DD:
+scr_seq_0909_T25R1203_00DD:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 9
@@ -116,7 +116,7 @@ scr_seq_0909_00DD:
 	releaseall
 	end
 
-scr_seq_0909_00EE:
+scr_seq_0909_T25R1203_00EE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 10
@@ -125,15 +125,15 @@ scr_seq_0909_00EE:
 	releaseall
 	end
 
-scr_seq_0909_00FF:
+scr_seq_0909_T25R1203_00FF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0909_0113
+	goto scr_seq_0909_T25R1203_0113
 
-scr_seq_0909_0111:
+scr_seq_0909_T25R1203_0111:
 	.byte 0x02, 0x00
-scr_seq_0909_0113:
+scr_seq_0909_T25R1203_0113:
 	npc_msg 11
 	scrcmd_746
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
@@ -143,35 +143,35 @@ scr_seq_0909_0113:
 	scrcmd_752
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0909_016A
+	gotoif eq, scr_seq_0909_T25R1203_016A
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0909_018F
-	goto scr_seq_0909_0162
+	gotoif eq, scr_seq_0909_T25R1203_018F
+	goto scr_seq_0909_T25R1203_0162
 
-scr_seq_0909_0160:
+scr_seq_0909_T25R1203_0160:
 	.byte 0x02, 0x00
-scr_seq_0909_0162:
+scr_seq_0909_T25R1203_0162:
 	scrcmd_747
-scr_seq_0909_0164:
+scr_seq_0909_T25R1203_0164:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_016A:
+scr_seq_0909_T25R1203_016A:
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0909_0164
+	gotoif eq, scr_seq_0909_T25R1203_0164
 	closemsg
 	scrcmd_815 0
 	callstd 2046
 	releaseall
 	end
 
-scr_seq_0909_018F:
+scr_seq_0909_T25R1203_018F:
 	npc_msg 12
-	goto scr_seq_0909_0113
+	goto scr_seq_0909_T25R1203_0113
 
-scr_seq_0909_0198:
+scr_seq_0909_T25R1203_0198:
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

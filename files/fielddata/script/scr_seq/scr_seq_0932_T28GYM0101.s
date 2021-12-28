@@ -3,75 +3,75 @@
 
 	.rodata
 
-	scrdef scr_seq_0932_00BE ; 000
-	scrdef scr_seq_0932_000A ; 001
+	scrdef scr_seq_0932_T28GYM0101_00BE ; 000
+	scrdef scr_seq_0932_T28GYM0101_000A ; 001
 	scrdef_end
 
-scr_seq_0932_000A:
+scr_seq_0932_T28GYM0101_000A:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0932_001B
+	gotoif FALSE, scr_seq_0932_T28GYM0101_001B
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0932_001B:
+scr_seq_0932_T28GYM0101_001B:
 	scrcmd_142 39, 16385
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0932_00B8
+	gotoif ne, scr_seq_0932_T28GYM0101_00B8
 	checkflag FLAG_UNK_964
-	gotoif FALSE, scr_seq_0932_00B2
+	gotoif FALSE, scr_seq_0932_T28GYM0101_00B2
 	scrcmd_147 39, 16385
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0932_00B2
+	gotoif eq, scr_seq_0932_T28GYM0101_00B2
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0932_0067
+	gotoif ne, scr_seq_0932_T28GYM0101_0067
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_00B0
+	goto scr_seq_0932_T28GYM0101_00B0
 
-scr_seq_0932_0067:
+scr_seq_0932_T28GYM0101_0067:
 	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, scr_seq_0932_007E
+	gotoif ne, scr_seq_0932_T28GYM0101_007E
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_00B0
+	goto scr_seq_0932_T28GYM0101_00B0
 
-scr_seq_0932_007E:
+scr_seq_0932_T28GYM0101_007E:
 	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, scr_seq_0932_0095
+	gotoif ne, scr_seq_0932_T28GYM0101_0095
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_00B0
+	goto scr_seq_0932_T28GYM0101_00B0
 
-scr_seq_0932_0095:
+scr_seq_0932_T28GYM0101_0095:
 	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, scr_seq_0932_00AC
+	gotoif ne, scr_seq_0932_T28GYM0101_00AC
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_00B0
+	goto scr_seq_0932_T28GYM0101_00B0
 
-scr_seq_0932_00AC:
+scr_seq_0932_T28GYM0101_00AC:
 	clearflag FLAG_UNK_2EE
-scr_seq_0932_00B0:
+scr_seq_0932_T28GYM0101_00B0:
 	end
 
-scr_seq_0932_00B2:
+scr_seq_0932_T28GYM0101_00B2:
 	clearflag FLAG_UNK_2EE
 	end
 
-scr_seq_0932_00B8:
+scr_seq_0932_T28GYM0101_00B8:
 	setflag FLAG_UNK_2EE
 	end
 
-scr_seq_0932_00BE:
+scr_seq_0932_T28GYM0101_00BE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_294 6, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0932_0178
+	gotoif eq, scr_seq_0932_T28GYM0101_0178
 	npc_msg 0
 	closemsg
 	trainer_battle 32, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0932_0172
+	gotoif eq, scr_seq_0932_T28GYM0101_0172
 	settrainerflag 482
 	settrainerflag 484
 	settrainerflag 481
@@ -82,9 +82,9 @@ scr_seq_0932_00BE:
 	addvar VAR_UNK_4134, 1
 	scrcmd_515 22
 	comparevartovalue VAR_UNK_4134, 3
-	gotoif ne, scr_seq_0932_012F
+	gotoif ne, scr_seq_0932_T28GYM0101_012F
 	setvar VAR_UNK_4077, 1
-scr_seq_0932_012F:
+scr_seq_0932_T28GYM0101_012F:
 	buffer_players_name 0
 	npc_msg 2
 	play_fanfare SEQ_ME_BADGE
@@ -94,8 +94,8 @@ scr_seq_0932_012F:
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0932_018E
-	callstd 2033
+	gotoif eq, scr_seq_0932_T28GYM0101_018E
+	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D2
 	npc_msg 4
 	waitbutton
@@ -103,36 +103,36 @@ scr_seq_0932_012F:
 	releaseall
 	end
 
-scr_seq_0932_0172:
+scr_seq_0932_T28GYM0101_0172:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0932_0178:
+scr_seq_0932_T28GYM0101_0178:
 	checkflag FLAG_UNK_964
-	gotoif TRUE, scr_seq_0932_0198
+	gotoif TRUE, scr_seq_0932_T28GYM0101_0198
 	npc_msg 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_018E:
+scr_seq_0932_T28GYM0101_018E:
 	callstd 2009
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_0198:
+scr_seq_0932_T28GYM0101_0198:
 	npc_msg 6
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0932_01F9
+	gotoif eq, scr_seq_0932_T28GYM0101_01F9
 	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0932_0204
+	gotoif eq, scr_seq_0932_T28GYM0101_0204
 	npc_msg 7
 	closemsg
 	setflag FLAG_UNK_189
@@ -150,14 +150,14 @@ scr_seq_0932_0198:
 	releaseall
 	end
 
-scr_seq_0932_01F9:
+scr_seq_0932_T28GYM0101_01F9:
 	npc_msg 9
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_0204:
+scr_seq_0932_T28GYM0101_0204:
 	npc_msg 10
 	waitbutton
 	closemsg

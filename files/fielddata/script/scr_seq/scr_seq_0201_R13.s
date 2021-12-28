@@ -3,12 +3,12 @@
 
 	.rodata
 
-	scrdef scr_seq_0201_000E ; 000
-	scrdef scr_seq_0201_0023 ; 001
-	scrdef scr_seq_0201_003A ; 002
+	scrdef scr_seq_0201_R13_000E ; 000
+	scrdef scr_seq_0201_R13_0023 ; 001
+	scrdef scr_seq_0201_R13_003A ; 002
 	scrdef_end
 
-scr_seq_0201_000E:
+scr_seq_0201_R13_000E:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -16,7 +16,7 @@ scr_seq_0201_000E:
 	callstd 2000
 	end
 
-scr_seq_0201_0023:
+scr_seq_0201_R13_0023:
 	scrcmd_055 1, 1, 10, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -24,7 +24,7 @@ scr_seq_0201_0023:
 	callstd 2000
 	end
 
-scr_seq_0201_003A:
+scr_seq_0201_R13_003A:
 	scrcmd_055 2, 1, 14, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058

@@ -3,56 +3,56 @@
 
 	.rodata
 
-	scrdef scr_seq_0021_00C5 ; 000
-	scrdef scr_seq_0021_06E6 ; 001
-	scrdef scr_seq_0021_001E ; 002
-	scrdef scr_seq_0021_0039 ; 003
-	scrdef scr_seq_0021_0940 ; 004
-	scrdef scr_seq_0021_0045 ; 005
-	scrdef scr_seq_0021_0177 ; 006
+	scrdef scr_seq_0021_D17R0110_00C5 ; 000
+	scrdef scr_seq_0021_D17R0110_06E6 ; 001
+	scrdef scr_seq_0021_D17R0110_001E ; 002
+	scrdef scr_seq_0021_D17R0110_0039 ; 003
+	scrdef scr_seq_0021_D17R0110_0940 ; 004
+	scrdef scr_seq_0021_D17R0110_0045 ; 005
+	scrdef scr_seq_0021_D17R0110_0177 ; 006
 	scrdef_end
 
-scr_seq_0021_001E:
+scr_seq_0021_D17R0110_001E:
 	checkflag FLAG_UNK_0A4
-	gotoif TRUE, scr_seq_0021_002B
+	gotoif TRUE, scr_seq_0021_D17R0110_002B
 	end
 
-scr_seq_0021_002B:
+scr_seq_0021_D17R0110_002B:
 	setflag FLAG_UNK_242
 	hide_person 5
 	clearflag FLAG_UNK_0A4
 	end
 
-scr_seq_0021_0039:
+scr_seq_0021_D17R0110_0039:
 	setvar VAR_TEMP_x4003, 111
 	setflag FLAG_UNK_105
 	end
 
-scr_seq_0021_0045:
+scr_seq_0021_D17R0110_0045:
 	comparevartovalue VAR_TEMP_x400B, 123
-	gotoif ne, scr_seq_0021_005C
+	gotoif ne, scr_seq_0021_D17R0110_005C
 	scrcmd_074 2153
 	setvar VAR_TEMP_x400B, 0
-scr_seq_0021_005C:
+scr_seq_0021_D17R0110_005C:
 	checkflag FLAG_UNK_108
-	gotoif TRUE, scr_seq_0021_00C3
+	gotoif TRUE, scr_seq_0021_D17R0110_00C3
 	checkflag FLAG_UNK_10A
-	gotoif FALSE, scr_seq_0021_00C3
+	gotoif FALSE, scr_seq_0021_D17R0110_00C3
 	comparevartovalue VAR_TEMP_x4003, 111
-	gotoif ne, scr_seq_0021_00BB
+	gotoif ne, scr_seq_0021_D17R0110_00BB
 	show_person_at 0, 16, 1, 18, 0
 	show_person_at 1, 12, 1, 18, 0
 	show_person_at 2, 12, 1, 12, 1
 	show_person_at 3, 18, 1, 18, 0
 	show_person_at 4, 18, 1, 12, 1
-scr_seq_0021_00BB:
+scr_seq_0021_D17R0110_00BB:
 	setvar VAR_TEMP_x4003, 0
 	end
 
-scr_seq_0021_00C3:
+scr_seq_0021_D17R0110_00C3:
 	end
 
-scr_seq_0021_00C5:
+scr_seq_0021_D17R0110_00C5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -63,23 +63,23 @@ scr_seq_0021_00C5:
 	closemsg
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, scr_seq_0021_00FD
+	gotoif ne, scr_seq_0021_D17R0110_00FD
 	setvar VAR_SPECIAL_x8004, 45
-	goto scr_seq_0021_0103
+	goto scr_seq_0021_D17R0110_0103
 
-scr_seq_0021_00FD:
+scr_seq_0021_D17R0110_00FD:
 	setvar VAR_SPECIAL_x8004, 70
-scr_seq_0021_0103:
+scr_seq_0021_D17R0110_0103:
 	setflag FLAG_UNK_0A4
 	scrcmd_589 16394, 32772, 0
 	clearflag FLAG_UNK_0A4
 	scrcmd_683 16389
 	comparevartovalue VAR_TEMP_x4005, 2
-	gotoif eq, scr_seq_0021_0167
+	gotoif eq, scr_seq_0021_D17R0110_0167
 	comparevartovalue VAR_TEMP_x4005, 3
-	gotoif eq, scr_seq_0021_0167
+	gotoif eq, scr_seq_0021_D17R0110_0167
 	comparevartovalue VAR_TEMP_x4005, 4
-	callif eq, scr_seq_0021_0171
+	callif eq, scr_seq_0021_D17R0110_0171
 	releaseall
 	setflag FLAG_UNK_108
 	setvar VAR_UNK_4081, 3
@@ -92,21 +92,21 @@ scr_seq_0021_0103:
 	clearflag FLAG_UNK_241
 	end
 
-scr_seq_0021_0167:
+scr_seq_0021_D17R0110_0167:
 	clearflag FLAG_UNK_242
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0021_0171:
+scr_seq_0021_D17R0110_0171:
 	setflag FLAG_UNK_116
 	return
 
-scr_seq_0021_0177:
+scr_seq_0021_D17R0110_0177:
 	scrcmd_609
 	lockall
 	scrcmd_805
-	apply_movement 0, scr_seq_0021_0790
+	apply_movement 0, scr_seq_0021_D17R0110_0790
 	wait_movement
 	npc_msg 0
 	closemsg
@@ -119,38 +119,38 @@ scr_seq_0021_0177:
 	fade_screen 4, 4, 1, 32767
 	wait_fade
 	wait_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	apply_movement 0, scr_seq_0021_0754
-	apply_movement 1, scr_seq_0021_0760
-	apply_movement 2, scr_seq_0021_076C
-	apply_movement 3, scr_seq_0021_0778
-	apply_movement 4, scr_seq_0021_0784
+	apply_movement 0, scr_seq_0021_D17R0110_0754
+	apply_movement 1, scr_seq_0021_D17R0110_0760
+	apply_movement 2, scr_seq_0021_D17R0110_076C
+	apply_movement 3, scr_seq_0021_D17R0110_0778
+	apply_movement 4, scr_seq_0021_D17R0110_0784
 	wait_movement
 	wait 16, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_0790
-	apply_movement 1, scr_seq_0021_0790
-	apply_movement 2, scr_seq_0021_0790
-	apply_movement 3, scr_seq_0021_0790
-	apply_movement 4, scr_seq_0021_0790
+	apply_movement 0, scr_seq_0021_D17R0110_0790
+	apply_movement 1, scr_seq_0021_D17R0110_0790
+	apply_movement 2, scr_seq_0021_D17R0110_0790
+	apply_movement 3, scr_seq_0021_D17R0110_0790
+	apply_movement 4, scr_seq_0021_D17R0110_0790
 	wait_movement
 	wait 16, VAR_SPECIAL_x800C
 	scrcmd_081 0
 	temp_bgm SEQ_GS_E_MAIKO_MAI
 	wait 18, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_07A0
-	apply_movement 1, scr_seq_0021_07A0
-	apply_movement 2, scr_seq_0021_07A0
-	apply_movement 3, scr_seq_0021_07A0
-	apply_movement 4, scr_seq_0021_07A0
+	apply_movement 0, scr_seq_0021_D17R0110_07A0
+	apply_movement 1, scr_seq_0021_D17R0110_07A0
+	apply_movement 2, scr_seq_0021_D17R0110_07A0
+	apply_movement 3, scr_seq_0021_D17R0110_07A0
+	apply_movement 4, scr_seq_0021_D17R0110_07A0
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 67, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_07A0
-	apply_movement 1, scr_seq_0021_07A0
-	apply_movement 2, scr_seq_0021_07A0
-	apply_movement 3, scr_seq_0021_07A0
-	apply_movement 4, scr_seq_0021_07A0
+	apply_movement 0, scr_seq_0021_D17R0110_07A0
+	apply_movement 1, scr_seq_0021_D17R0110_07A0
+	apply_movement 2, scr_seq_0021_D17R0110_07A0
+	apply_movement 3, scr_seq_0021_D17R0110_07A0
+	apply_movement 4, scr_seq_0021_D17R0110_07A0
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
@@ -159,65 +159,65 @@ scr_seq_0021_0177:
 	scrcmd_765
 	wait_fade
 	wait 4, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_0914
-	apply_movement 1, scr_seq_0021_0904
-	apply_movement 2, scr_seq_0021_091C
-	apply_movement 3, scr_seq_0021_0914
-	apply_movement 4, scr_seq_0021_090C
+	apply_movement 0, scr_seq_0021_D17R0110_0914
+	apply_movement 1, scr_seq_0021_D17R0110_0904
+	apply_movement 2, scr_seq_0021_D17R0110_091C
+	apply_movement 3, scr_seq_0021_D17R0110_0914
+	apply_movement 4, scr_seq_0021_D17R0110_090C
 	wait_movement
-	apply_movement 0, scr_seq_0021_080C
-	apply_movement 1, scr_seq_0021_07C4
-	apply_movement 2, scr_seq_0021_0830
-	apply_movement 3, scr_seq_0021_080C
-	apply_movement 4, scr_seq_0021_07E8
+	apply_movement 0, scr_seq_0021_D17R0110_080C
+	apply_movement 1, scr_seq_0021_D17R0110_07C4
+	apply_movement 2, scr_seq_0021_D17R0110_0830
+	apply_movement 3, scr_seq_0021_D17R0110_080C
+	apply_movement 4, scr_seq_0021_D17R0110_07E8
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 32, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_0904
-	apply_movement 1, scr_seq_0021_0904
-	apply_movement 2, scr_seq_0021_091C
-	apply_movement 3, scr_seq_0021_0914
-	apply_movement 4, scr_seq_0021_090C
+	apply_movement 0, scr_seq_0021_D17R0110_0904
+	apply_movement 1, scr_seq_0021_D17R0110_0904
+	apply_movement 2, scr_seq_0021_D17R0110_091C
+	apply_movement 3, scr_seq_0021_D17R0110_0914
+	apply_movement 4, scr_seq_0021_D17R0110_090C
 	wait_movement
-	apply_movement 0, scr_seq_0021_07C4
-	apply_movement 1, scr_seq_0021_07C4
-	apply_movement 2, scr_seq_0021_0830
-	apply_movement 3, scr_seq_0021_080C
-	apply_movement 4, scr_seq_0021_07E8
+	apply_movement 0, scr_seq_0021_D17R0110_07C4
+	apply_movement 1, scr_seq_0021_D17R0110_07C4
+	apply_movement 2, scr_seq_0021_D17R0110_0830
+	apply_movement 3, scr_seq_0021_D17R0110_080C
+	apply_movement 4, scr_seq_0021_D17R0110_07E8
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 33, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_0904
-	apply_movement 1, scr_seq_0021_0904
-	apply_movement 2, scr_seq_0021_091C
-	apply_movement 3, scr_seq_0021_0914
-	apply_movement 4, scr_seq_0021_090C
+	apply_movement 0, scr_seq_0021_D17R0110_0904
+	apply_movement 1, scr_seq_0021_D17R0110_0904
+	apply_movement 2, scr_seq_0021_D17R0110_091C
+	apply_movement 3, scr_seq_0021_D17R0110_0914
+	apply_movement 4, scr_seq_0021_D17R0110_090C
 	wait_movement
-	apply_movement 0, scr_seq_0021_07C4
-	apply_movement 1, scr_seq_0021_0854
-	apply_movement 2, scr_seq_0021_08D8
-	apply_movement 3, scr_seq_0021_08AC
-	apply_movement 4, scr_seq_0021_0880
+	apply_movement 0, scr_seq_0021_D17R0110_07C4
+	apply_movement 1, scr_seq_0021_D17R0110_0854
+	apply_movement 2, scr_seq_0021_D17R0110_08D8
+	apply_movement 3, scr_seq_0021_D17R0110_08AC
+	apply_movement 4, scr_seq_0021_D17R0110_0880
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	wait 32, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_091C
-	apply_movement 1, scr_seq_0021_091C
-	apply_movement 2, scr_seq_0021_090C
-	apply_movement 3, scr_seq_0021_0904
-	apply_movement 4, scr_seq_0021_0914
+	apply_movement 0, scr_seq_0021_D17R0110_091C
+	apply_movement 1, scr_seq_0021_D17R0110_091C
+	apply_movement 2, scr_seq_0021_D17R0110_090C
+	apply_movement 3, scr_seq_0021_D17R0110_0904
+	apply_movement 4, scr_seq_0021_D17R0110_0914
 	wait_movement
-	apply_movement 0, scr_seq_0021_0830
-	apply_movement 1, scr_seq_0021_0830
-	apply_movement 2, scr_seq_0021_07E8
-	apply_movement 3, scr_seq_0021_07C4
-	apply_movement 4, scr_seq_0021_080C
+	apply_movement 0, scr_seq_0021_D17R0110_0830
+	apply_movement 1, scr_seq_0021_D17R0110_0830
+	apply_movement 2, scr_seq_0021_D17R0110_07E8
+	apply_movement 3, scr_seq_0021_D17R0110_07C4
+	apply_movement 4, scr_seq_0021_D17R0110_080C
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
@@ -225,33 +225,33 @@ scr_seq_0021_0177:
 	scrcmd_766
 	scrcmd_762 0
 	wait 32, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_091C
-	apply_movement 1, scr_seq_0021_091C
-	apply_movement 2, scr_seq_0021_090C
-	apply_movement 3, scr_seq_0021_0904
-	apply_movement 4, scr_seq_0021_0914
+	apply_movement 0, scr_seq_0021_D17R0110_091C
+	apply_movement 1, scr_seq_0021_D17R0110_091C
+	apply_movement 2, scr_seq_0021_D17R0110_090C
+	apply_movement 3, scr_seq_0021_D17R0110_0904
+	apply_movement 4, scr_seq_0021_D17R0110_0914
 	wait_movement
-	apply_movement 0, scr_seq_0021_0830
-	apply_movement 1, scr_seq_0021_0830
-	apply_movement 2, scr_seq_0021_07E8
-	apply_movement 3, scr_seq_0021_07C4
-	apply_movement 4, scr_seq_0021_080C
+	apply_movement 0, scr_seq_0021_D17R0110_0830
+	apply_movement 1, scr_seq_0021_D17R0110_0830
+	apply_movement 2, scr_seq_0021_D17R0110_07E8
+	apply_movement 3, scr_seq_0021_D17R0110_07C4
+	apply_movement 4, scr_seq_0021_D17R0110_080C
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
 	wait 32, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_090C
-	apply_movement 1, scr_seq_0021_091C
-	apply_movement 2, scr_seq_0021_090C
-	apply_movement 3, scr_seq_0021_0904
-	apply_movement 4, scr_seq_0021_0914
+	apply_movement 0, scr_seq_0021_D17R0110_090C
+	apply_movement 1, scr_seq_0021_D17R0110_091C
+	apply_movement 2, scr_seq_0021_D17R0110_090C
+	apply_movement 3, scr_seq_0021_D17R0110_0904
+	apply_movement 4, scr_seq_0021_D17R0110_0914
 	wait_movement
-	apply_movement 0, scr_seq_0021_07E8
-	apply_movement 1, scr_seq_0021_0830
-	apply_movement 2, scr_seq_0021_07E8
-	apply_movement 3, scr_seq_0021_07C4
-	apply_movement 4, scr_seq_0021_080C
+	apply_movement 0, scr_seq_0021_D17R0110_07E8
+	apply_movement 1, scr_seq_0021_D17R0110_0830
+	apply_movement 2, scr_seq_0021_D17R0110_07E8
+	apply_movement 3, scr_seq_0021_D17R0110_07C4
+	apply_movement 4, scr_seq_0021_D17R0110_080C
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
@@ -287,22 +287,22 @@ scr_seq_0021_0177:
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	wait 22, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_07C4
-	apply_movement 1, scr_seq_0021_07C4
-	apply_movement 2, scr_seq_0021_07E8
-	apply_movement 3, scr_seq_0021_07C4
-	apply_movement 4, scr_seq_0021_07E8
+	apply_movement 0, scr_seq_0021_D17R0110_07C4
+	apply_movement 1, scr_seq_0021_D17R0110_07C4
+	apply_movement 2, scr_seq_0021_D17R0110_07E8
+	apply_movement 3, scr_seq_0021_D17R0110_07C4
+	apply_movement 4, scr_seq_0021_D17R0110_07E8
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
 	wait 32, VAR_SPECIAL_x800C
 	wait 34, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0021_07C4
-	apply_movement 1, scr_seq_0021_07C4
-	apply_movement 2, scr_seq_0021_07E8
-	apply_movement 3, scr_seq_0021_07C4
-	apply_movement 4, scr_seq_0021_07E8
+	apply_movement 0, scr_seq_0021_D17R0110_07C4
+	apply_movement 1, scr_seq_0021_D17R0110_07C4
+	apply_movement 2, scr_seq_0021_D17R0110_07E8
+	apply_movement 3, scr_seq_0021_D17R0110_07C4
+	apply_movement 4, scr_seq_0021_D17R0110_07E8
 	wait 12, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
@@ -325,99 +325,99 @@ scr_seq_0021_0177:
 	wait 20, VAR_SPECIAL_x800C
 	scrcmd_764
 	scrcmd_081 30
-	apply_movement 0, scr_seq_0021_0798
+	apply_movement 0, scr_seq_0021_D17R0110_0798
 	wait_movement
 	scrcmd_726
 	buffer_players_name 0
 	npc_msg 2
 	closemsg
-	apply_movement 0, scr_seq_0021_0790
+	apply_movement 0, scr_seq_0021_D17R0110_0790
 	wait_movement
 	buffer_players_name 0
 	npc_msg 3
 	closemsg
-	apply_movement 0, scr_seq_0021_092C
+	apply_movement 0, scr_seq_0021_D17R0110_092C
 	wait_movement
 	releaseall
 	setflag FLAG_UNK_10A
 	setvar VAR_UNK_40FA, 2
 	end
 
-scr_seq_0021_06E6:
+scr_seq_0021_D17R0110_06E6:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif TRUE, scr_seq_0021_0704
+	gotoif TRUE, scr_seq_0021_D17R0110_0704
 	npc_msg 1
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0021_0704:
+scr_seq_0021_D17R0110_0704:
 	comparevartovalue VAR_TEMP_x4005, 5
-	gotoif ne, scr_seq_0021_071A
+	gotoif ne, scr_seq_0021_D17R0110_071A
 	npc_msg 8
-	goto scr_seq_0021_0749
+	goto scr_seq_0021_D17R0110_0749
 
-scr_seq_0021_071A:
+scr_seq_0021_D17R0110_071A:
 	comparevartovalue VAR_TEMP_x4005, 6
-	gotoif ne, scr_seq_0021_0730
+	gotoif ne, scr_seq_0021_D17R0110_0730
 	npc_msg 8
-	goto scr_seq_0021_0749
+	goto scr_seq_0021_D17R0110_0749
 
-scr_seq_0021_0730:
+scr_seq_0021_D17R0110_0730:
 	comparevartovalue VAR_TEMP_x4005, 4
-	gotoif ne, scr_seq_0021_0746
+	gotoif ne, scr_seq_0021_D17R0110_0746
 	npc_msg 6
-	goto scr_seq_0021_0749
+	goto scr_seq_0021_D17R0110_0749
 
-scr_seq_0021_0746:
+scr_seq_0021_D17R0110_0746:
 	npc_msg 7
-scr_seq_0021_0749:
+scr_seq_0021_D17R0110_0749:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0021_0751:
+scr_seq_0021_D17R0110_0751:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0021_0754:
+scr_seq_0021_D17R0110_0754:
 	.short 63, 6
 	.short 12, 1
 	.short 254, 0
 
-scr_seq_0021_0760:
+scr_seq_0021_D17R0110_0760:
 	.short 63, 5
 	.short 14, 2
 	.short 254, 0
 
-scr_seq_0021_076C:
+scr_seq_0021_D17R0110_076C:
 	.short 14, 1
 	.short 12, 6
 	.short 254, 0
 
-scr_seq_0021_0778:
+scr_seq_0021_D17R0110_0778:
 	.short 63, 5
 	.short 15, 2
 	.short 254, 0
 
-scr_seq_0021_0784:
+scr_seq_0021_D17R0110_0784:
 	.short 15, 1
 	.short 12, 6
 	.short 254, 0
 
-scr_seq_0021_0790:
+scr_seq_0021_D17R0110_0790:
 	.short 33, 1
 	.short 254, 0
 
-scr_seq_0021_0798:
+scr_seq_0021_D17R0110_0798:
 	.short 32, 1
 	.short 254, 0
 
-scr_seq_0021_07A0:
+scr_seq_0021_D17R0110_07A0:
 	.short 2, 1
 	.short 61, 1
 	.short 0, 1
@@ -428,7 +428,7 @@ scr_seq_0021_07A0:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_07C4:
+scr_seq_0021_D17R0110_07C4:
 	.short 3, 1
 	.short 61, 1
 	.short 1, 1
@@ -439,7 +439,7 @@ scr_seq_0021_07C4:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_07E8:
+scr_seq_0021_D17R0110_07E8:
 	.short 2, 1
 	.short 61, 1
 	.short 0, 1
@@ -450,7 +450,7 @@ scr_seq_0021_07E8:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_080C:
+scr_seq_0021_D17R0110_080C:
 	.short 0, 1
 	.short 61, 1
 	.short 3, 1
@@ -461,7 +461,7 @@ scr_seq_0021_080C:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_0830:
+scr_seq_0021_D17R0110_0830:
 	.short 1, 1
 	.short 61, 1
 	.short 2, 1
@@ -472,7 +472,7 @@ scr_seq_0021_0830:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_0854:
+scr_seq_0021_D17R0110_0854:
 	.short 3, 1
 	.short 61, 1
 	.short 1, 1
@@ -485,7 +485,7 @@ scr_seq_0021_0854:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_0880:
+scr_seq_0021_D17R0110_0880:
 	.short 2, 1
 	.short 61, 1
 	.short 0, 1
@@ -498,7 +498,7 @@ scr_seq_0021_0880:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_08AC:
+scr_seq_0021_D17R0110_08AC:
 	.short 0, 1
 	.short 61, 1
 	.short 3, 1
@@ -511,7 +511,7 @@ scr_seq_0021_08AC:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_08D8:
+scr_seq_0021_D17R0110_08D8:
 	.short 1, 1
 	.short 61, 1
 	.short 2, 1
@@ -524,42 +524,42 @@ scr_seq_0021_08D8:
 	.short 61, 1
 	.short 254, 0
 
-scr_seq_0021_0904:
+scr_seq_0021_D17R0110_0904:
 	.short 8, 2
 	.short 254, 0
 
-scr_seq_0021_090C:
+scr_seq_0021_D17R0110_090C:
 	.short 9, 2
 	.short 254, 0
 
-scr_seq_0021_0914:
+scr_seq_0021_D17R0110_0914:
 	.short 10, 2
 	.short 254, 0
 
-scr_seq_0021_091C:
+scr_seq_0021_D17R0110_091C:
 	.short 11, 2
 	.short 254, 0
 	.byte 0x09, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
-scr_seq_0021_092C:
+scr_seq_0021_D17R0110_092C:
 	.short 2, 1
 	.short 71, 1
 	.short 11, 1
 	.short 72, 1
 	.short 254, 0
-scr_seq_0021_0940:
+scr_seq_0021_D17R0110_0940:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_108
-	gotoif TRUE, scr_seq_0021_095E
+	gotoif TRUE, scr_seq_0021_D17R0110_095E
 	npc_msg 1
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0021_095E:
+scr_seq_0021_D17R0110_095E:
 	npc_msg 5
 	waitbutton
 	closemsg

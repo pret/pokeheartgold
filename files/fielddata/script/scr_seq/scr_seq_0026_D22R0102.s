@@ -3,22 +3,22 @@
 
 	.rodata
 
-	scrdef scr_seq_0026_00E0 ; 000
-	scrdef scr_seq_0026_00F5 ; 001
-	scrdef scr_seq_0026_010A ; 002
-	scrdef scr_seq_0026_0036 ; 003
-	scrdef scr_seq_0026_0047 ; 004
-	scrdef scr_seq_0026_0058 ; 005
-	scrdef scr_seq_0026_0069 ; 006
-	scrdef scr_seq_0026_007A ; 007
-	scrdef scr_seq_0026_008B ; 008
-	scrdef scr_seq_0026_009C ; 009
-	scrdef scr_seq_0026_00AD ; 010
-	scrdef scr_seq_0026_00BE ; 011
-	scrdef scr_seq_0026_00CF ; 012
+	scrdef scr_seq_0026_D22R0102_00E0 ; 000
+	scrdef scr_seq_0026_D22R0102_00F5 ; 001
+	scrdef scr_seq_0026_D22R0102_010A ; 002
+	scrdef scr_seq_0026_D22R0102_0036 ; 003
+	scrdef scr_seq_0026_D22R0102_0047 ; 004
+	scrdef scr_seq_0026_D22R0102_0058 ; 005
+	scrdef scr_seq_0026_D22R0102_0069 ; 006
+	scrdef scr_seq_0026_D22R0102_007A ; 007
+	scrdef scr_seq_0026_D22R0102_008B ; 008
+	scrdef scr_seq_0026_D22R0102_009C ; 009
+	scrdef scr_seq_0026_D22R0102_00AD ; 010
+	scrdef scr_seq_0026_D22R0102_00BE ; 011
+	scrdef scr_seq_0026_D22R0102_00CF ; 012
 	scrdef_end
 
-scr_seq_0026_0036:
+scr_seq_0026_D22R0102_0036:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 3
@@ -27,7 +27,7 @@ scr_seq_0026_0036:
 	releaseall
 	end
 
-scr_seq_0026_0047:
+scr_seq_0026_D22R0102_0047:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 6
@@ -36,7 +36,7 @@ scr_seq_0026_0047:
 	releaseall
 	end
 
-scr_seq_0026_0058:
+scr_seq_0026_D22R0102_0058:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 9
@@ -45,7 +45,7 @@ scr_seq_0026_0058:
 	releaseall
 	end
 
-scr_seq_0026_0069:
+scr_seq_0026_D22R0102_0069:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 12
@@ -54,7 +54,7 @@ scr_seq_0026_0069:
 	releaseall
 	end
 
-scr_seq_0026_007A:
+scr_seq_0026_D22R0102_007A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 15
@@ -63,7 +63,7 @@ scr_seq_0026_007A:
 	releaseall
 	end
 
-scr_seq_0026_008B:
+scr_seq_0026_D22R0102_008B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 18
@@ -72,7 +72,7 @@ scr_seq_0026_008B:
 	releaseall
 	end
 
-scr_seq_0026_009C:
+scr_seq_0026_D22R0102_009C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 21
@@ -81,7 +81,7 @@ scr_seq_0026_009C:
 	releaseall
 	end
 
-scr_seq_0026_00AD:
+scr_seq_0026_D22R0102_00AD:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 24
@@ -90,7 +90,7 @@ scr_seq_0026_00AD:
 	releaseall
 	end
 
-scr_seq_0026_00BE:
+scr_seq_0026_D22R0102_00BE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 27
@@ -99,7 +99,7 @@ scr_seq_0026_00BE:
 	releaseall
 	end
 
-scr_seq_0026_00CF:
+scr_seq_0026_D22R0102_00CF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 30
@@ -108,7 +108,7 @@ scr_seq_0026_00CF:
 	releaseall
 	end
 
-scr_seq_0026_00E0:
+scr_seq_0026_D22R0102_00E0:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -116,7 +116,7 @@ scr_seq_0026_00E0:
 	callstd 2000
 	end
 
-scr_seq_0026_00F5:
+scr_seq_0026_D22R0102_00F5:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -124,7 +124,7 @@ scr_seq_0026_00F5:
 	callstd 2000
 	end
 
-scr_seq_0026_010A:
+scr_seq_0026_D22R0102_010A:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058

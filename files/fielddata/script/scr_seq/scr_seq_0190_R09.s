@@ -3,10 +3,10 @@
 
 	.rodata
 
-	scrdef scr_seq_0190_0006 ; 000
+	scrdef scr_seq_0190_R09_0006 ; 000
 	scrdef_end
 
-scr_seq_0190_0006:
+scr_seq_0190_R09_0006:
 	scrcmd_055 0, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058

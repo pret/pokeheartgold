@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<body language="English">{% set i=0 %}
+## for trainer in trainers
+	<row id="msg_0729_{{ fmtInt( i, 5, 2 ) }}" index="{{ i }}">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{{ trainer.name }}</language>
+	</row>{% set i=i+1 %}
+## endfor
+</body>

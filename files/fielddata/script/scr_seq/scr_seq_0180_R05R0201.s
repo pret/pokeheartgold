@@ -3,10 +3,10 @@
 
 	.rodata
 
-	scrdef scr_seq_0180_0006 ; 000
+	scrdef scr_seq_0180_R05R0201_0006 ; 000
 	scrdef_end
 
-scr_seq_0180_0006:
+scr_seq_0180_R05R0201_0006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

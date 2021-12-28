@@ -3,18 +3,18 @@
 
 	.rodata
 
-	scrdef scr_seq_0192_0012 ; 000
-	scrdef scr_seq_0192_001E ; 001
-	scrdef scr_seq_0192_0031 ; 002
-	scrdef scr_seq_0192_0062 ; 003
+	scrdef scr_seq_0192_R10PC0101_0012 ; 000
+	scrdef scr_seq_0192_R10PC0101_001E ; 001
+	scrdef scr_seq_0192_R10PC0101_0031 ; 002
+	scrdef scr_seq_0192_R10PC0101_0062 ; 003
 	scrdef_end
 
-scr_seq_0192_0012:
+scr_seq_0192_R10PC0101_0012:
 	setvar VAR_SPECIAL_x8007, 0
 	callstd 2002
 	end
 
-scr_seq_0192_001E:
+scr_seq_0192_R10PC0101_001E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -24,9 +24,9 @@ scr_seq_0192_001E:
 	releaseall
 	end
 
-scr_seq_0192_0031:
+scr_seq_0192_R10PC0101_0031:
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0192_004F
+	gotoif TRUE, scr_seq_0192_R10PC0101_004F
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -36,7 +36,7 @@ scr_seq_0192_0031:
 	releaseall
 	end
 
-scr_seq_0192_004F:
+scr_seq_0192_R10PC0101_004F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -46,7 +46,7 @@ scr_seq_0192_004F:
 	releaseall
 	end
 
-scr_seq_0192_0062:
+scr_seq_0192_R10PC0101_0062:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

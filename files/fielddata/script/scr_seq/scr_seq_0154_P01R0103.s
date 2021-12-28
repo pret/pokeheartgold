@@ -3,85 +3,85 @@
 
 	.rodata
 
-	scrdef scr_seq_0154_0029 ; 000
-	scrdef scr_seq_0154_000E ; 001
-	scrdef scr_seq_0154_01F8 ; 002
+	scrdef scr_seq_0154_P01R0103_0029 ; 000
+	scrdef scr_seq_0154_P01R0103_000E ; 001
+	scrdef scr_seq_0154_P01R0103_01F8 ; 002
 	scrdef_end
 
-scr_seq_0154_000E:
+scr_seq_0154_P01R0103_000E:
 	scrcmd_445 16384
 	comparevartovalue VAR_TEMP_x4000, 387
-	gotoif eq, scr_seq_0154_0021
+	gotoif eq, scr_seq_0154_P01R0103_0021
 	end
 
-scr_seq_0154_0021:
+scr_seq_0154_P01R0103_0021:
 	scrcmd_341 0, 1
 	end
 
-scr_seq_0154_0029:
+scr_seq_0154_P01R0103_0029:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, scr_seq_0154_014D
+	gotoif ge, scr_seq_0154_P01R0103_014D
 	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif eq, scr_seq_0154_0158
-	scrcmd_484 VAR_SPECIAL_x800C
+	gotoif eq, scr_seq_0154_P01R0103_0158
+	get_weekday VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0154_006C
-	goto scr_seq_0154_00EF
+	gotoif ne, scr_seq_0154_P01R0103_006C
+	goto scr_seq_0154_P01R0103_00EF
 
-scr_seq_0154_0066:
+scr_seq_0154_P01R0103_0066:
 	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
-scr_seq_0154_006C:
+scr_seq_0154_P01R0103_006C:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0154_0085
-	goto scr_seq_0154_0142
+	gotoif ne, scr_seq_0154_P01R0103_0085
+	goto scr_seq_0154_P01R0103_0142
 
-scr_seq_0154_007F:
+scr_seq_0154_P01R0103_007F:
 	.byte 0x16
 	.byte 0x00, 0x6a, 0x00, 0x00, 0x00
-scr_seq_0154_0085:
+scr_seq_0154_P01R0103_0085:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0154_009E
-	goto scr_seq_0154_0142
+	gotoif ne, scr_seq_0154_P01R0103_009E
+	goto scr_seq_0154_P01R0103_0142
 
-scr_seq_0154_0098:
+scr_seq_0154_P01R0103_0098:
 	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
-scr_seq_0154_009E:
+scr_seq_0154_P01R0103_009E:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0154_00B7
-	goto scr_seq_0154_00EF
+	gotoif ne, scr_seq_0154_P01R0103_00B7
+	goto scr_seq_0154_P01R0103_00EF
 
-scr_seq_0154_00B1:
+scr_seq_0154_P01R0103_00B1:
 	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
-scr_seq_0154_00B7:
+scr_seq_0154_P01R0103_00B7:
 	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif ne, scr_seq_0154_00D0
-	goto scr_seq_0154_0142
+	gotoif ne, scr_seq_0154_P01R0103_00D0
+	goto scr_seq_0154_P01R0103_0142
 
-scr_seq_0154_00CA:
+scr_seq_0154_P01R0103_00CA:
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
-scr_seq_0154_00D0:
+scr_seq_0154_P01R0103_00D0:
 	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif ne, scr_seq_0154_00E9
-	goto scr_seq_0154_0142
+	gotoif ne, scr_seq_0154_P01R0103_00E9
+	goto scr_seq_0154_P01R0103_0142
 
-scr_seq_0154_00E3:
+scr_seq_0154_P01R0103_00E3:
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
-scr_seq_0154_00E9:
-	goto scr_seq_0154_0142
+scr_seq_0154_P01R0103_00E9:
+	goto scr_seq_0154_P01R0103_0142
 
-scr_seq_0154_00EF:
+scr_seq_0154_P01R0103_00EF:
 	npc_msg 0
 	closemsg
-	apply_movement 0, scr_seq_0154_0190
+	apply_movement 0, scr_seq_0154_P01R0103_0190
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0154_01B0
+	apply_movement 255, scr_seq_0154_P01R0103_01B0
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -96,40 +96,40 @@ scr_seq_0154_00EF:
 	releaseall
 	end
 
-scr_seq_0154_0142:
+scr_seq_0154_P01R0103_0142:
 	npc_msg 1
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0154_014D:
+scr_seq_0154_P01R0103_014D:
 	npc_msg 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0154_0158:
-	apply_movement 0, scr_seq_0154_01B8
+scr_seq_0154_P01R0103_0158:
+	apply_movement 0, scr_seq_0154_P01R0103_01B8
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0154_01D8
+	apply_movement 255, scr_seq_0154_P01R0103_01D8
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0154_01E4
+	apply_movement 0, scr_seq_0154_P01R0103_01E4
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0154_018E:
+scr_seq_0154_P01R0103_018E:
 	.byte 0x00, 0x00
 
-scr_seq_0154_0190:
+scr_seq_0154_P01R0103_0190:
 	.short 71, 1
 	.short 13, 1
 	.short 72, 1
@@ -139,11 +139,11 @@ scr_seq_0154_0190:
 	.short 72, 1
 	.short 254, 0
 
-scr_seq_0154_01B0:
+scr_seq_0154_P01R0103_01B0:
 	.short 13, 2
 	.short 254, 0
 
-scr_seq_0154_01B8:
+scr_seq_0154_P01R0103_01B8:
 	.short 71, 1
 	.short 12, 1
 	.short 72, 1
@@ -153,18 +153,18 @@ scr_seq_0154_01B8:
 	.short 72, 1
 	.short 254, 0
 
-scr_seq_0154_01D8:
+scr_seq_0154_P01R0103_01D8:
 	.short 63, 1
 	.short 12, 4
 	.short 254, 0
 
-scr_seq_0154_01E4:
+scr_seq_0154_P01R0103_01E4:
 	.short 14, 1
 	.short 1, 2
 	.short 13, 1
 	.short 32, 1
 	.short 254, 0
-scr_seq_0154_01F8:
+scr_seq_0154_P01R0103_01F8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

@@ -3,12 +3,12 @@
 
 	.rodata
 
-	scrdef scr_seq_0060_000E ; 000
-	scrdef scr_seq_0060_0021 ; 001
-	scrdef scr_seq_0060_0055 ; 002
+	scrdef scr_seq_0060_D26R0102_000E ; 000
+	scrdef scr_seq_0060_D26R0102_0021 ; 001
+	scrdef scr_seq_0060_D26R0102_0055 ; 002
 	scrdef_end
 
-scr_seq_0060_000E:
+scr_seq_0060_D26R0102_000E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -18,7 +18,7 @@ scr_seq_0060_000E:
 	releaseall
 	end
 
-scr_seq_0060_0021:
+scr_seq_0060_D26R0102_0021:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -27,12 +27,12 @@ scr_seq_0060_0021:
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0060_0047
+	gotoif eq, scr_seq_0060_D26R0102_0047
 	closemsg
 	releaseall
 	end
 
-scr_seq_0060_0047:
+scr_seq_0060_D26R0102_0047:
 	buffer_players_name 0
 	npc_msg 4
 	waitbutton
@@ -40,7 +40,7 @@ scr_seq_0060_0047:
 	releaseall
 	end
 
-scr_seq_0060_0055:
+scr_seq_0060_D26R0102_0055:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -49,7 +49,7 @@ scr_seq_0060_0055:
 	trainer_battle 486, 0, 0, 0
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0060_0193
+	gotoif eq, scr_seq_0060_D26R0102_0193
 	npc_msg 2
 	closemsg
 	fade_screen 6, 1, 0, 0
@@ -70,15 +70,15 @@ scr_seq_0060_0055:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0060_00F7
-	apply_movement 7, scr_seq_0060_019C
-	apply_movement 255, scr_seq_0060_01C0
-	goto scr_seq_0060_0107
+	gotoif ne, scr_seq_0060_D26R0102_00F7
+	apply_movement 7, scr_seq_0060_D26R0102_019C
+	apply_movement 255, scr_seq_0060_D26R0102_01C0
+	goto scr_seq_0060_D26R0102_0107
 
-scr_seq_0060_00F7:
-	apply_movement 7, scr_seq_0060_019C
-	apply_movement 255, scr_seq_0060_01DC
-scr_seq_0060_0107:
+scr_seq_0060_D26R0102_00F7:
+	apply_movement 7, scr_seq_0060_D26R0102_019C
+	apply_movement 255, scr_seq_0060_D26R0102_01DC
+scr_seq_0060_D26R0102_0107:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -111,15 +111,15 @@ scr_seq_0060_0107:
 	releaseall
 	end
 
-scr_seq_0060_0193:
+scr_seq_0060_D26R0102_0193:
 	scrcmd_219
 	releaseall
 	end
 
-scr_seq_0060_0199:
+scr_seq_0060_D26R0102_0199:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0060_019C:
+scr_seq_0060_D26R0102_019C:
 	.short 14, 2
 	.short 13, 2
 	.short 14, 3
@@ -130,7 +130,7 @@ scr_seq_0060_019C:
 	.short 2, 1
 	.short 254, 0
 
-scr_seq_0060_01C0:
+scr_seq_0060_D26R0102_01C0:
 	.short 15, 2
 	.short 0, 1
 	.short 63, 6
@@ -139,7 +139,7 @@ scr_seq_0060_01C0:
 	.short 3, 1
 	.short 254, 0
 
-scr_seq_0060_01DC:
+scr_seq_0060_D26R0102_01DC:
 	.short 13, 1
 	.short 15, 1
 	.short 0, 1

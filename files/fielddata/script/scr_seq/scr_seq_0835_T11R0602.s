@@ -3,13 +3,13 @@
 
 	.rodata
 
-	scrdef scr_seq_0835_0006 ; 000
+	scrdef scr_seq_0835_T11R0602_0006 ; 000
 	scrdef_end
 
-scr_seq_0835_0006:
+scr_seq_0835_T11R0602_0006:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0835_0088
+	apply_movement 255, scr_seq_0835_T11R0602_0088
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0
@@ -22,7 +22,7 @@ scr_seq_0835_0006:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0835_0094
+	apply_movement 255, scr_seq_0835_T11R0602_0094
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -32,7 +32,7 @@ scr_seq_0835_0006:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0835_00A0
+	apply_movement 255, scr_seq_0835_T11R0602_00A0
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -40,20 +40,20 @@ scr_seq_0835_0006:
 	releaseall
 	end
 
-scr_seq_0835_0087:
+scr_seq_0835_T11R0602_0087:
 	.byte 0x00
 
-scr_seq_0835_0088:
+scr_seq_0835_T11R0602_0088:
 	.short 13, 3
 	.short 15, 7
 	.short 254, 0
 
-scr_seq_0835_0094:
+scr_seq_0835_T11R0602_0094:
 	.short 15, 11
 	.short 13, 4
 	.short 254, 0
 
-scr_seq_0835_00A0:
+scr_seq_0835_T11R0602_00A0:
 	.short 13, 2
 	.short 254, 0
 	.byte 0x02, 0x00, 0x00, 0x00

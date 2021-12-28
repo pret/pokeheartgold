@@ -2,12 +2,12 @@
 	.option alignment off
 
 	.byte 1
-	.word scr_seq_0474_000B-.-4
+	.word scr_seq_0474_R30R0201_hdr_000B-.-4
 	.byte 3
 	.short 4, 0
 	.byte 0
 
-scr_seq_0474_000B:
+scr_seq_0474_R30R0201_hdr_000B:
 	.short 16633, 1, 3
 	.short 16647, 0, 2
 	.short 0

@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_TRAINER_DATA_H
 #define POKEHEARTGOLD_TRAINER_DATA_H
 
+#ifndef PM_ASM
 #include "pm_string.h"
 #include "mail_message.h"
 #include "pokemon_types_def.h"
@@ -15,7 +16,7 @@ typedef enum TrainerAttr {
     TRATTR_ITEM2,
     TRATTR_ITEM3,
     TRATTR_ITEM4,
-    TRATTR_UNKC,
+    TRATTR_AIFLAGS,
     TRATTR_DOUBLEBTL,
 } TrainerAttr;
 
@@ -24,6 +25,15 @@ typedef enum TrainerGender {
     TRAINER_FEMALE,
     TRAINER_DOUBLE,
 } TrainerGender;
+#endif //PM_ASM
+
+#define TRPOKE_GENDER_OVERRIDE_OFF          0
+#define TRPOKE_GENDER_OVERRIDE_MALE         1
+#define TRPOKE_GENDER_OVERRIDE_FEMALE       2
+
+#define TRPOKE_ABILITY_OVERRIDE_OFF         0
+#define TRPOKE_ABILITY_OVERRIDE_FIRST       1
+#define TRPOKE_ABILITY_OVERRIDE_SECOND      2
 
 #define TRTYPE_MOVES_F                      (0)
 #define TRTYPE_ITEM_F                       (1)
@@ -33,6 +43,7 @@ typedef enum TrainerGender {
 #define TRTYPE_MON_ITEM       ((0<<TRTYPE_MOVES_F)|(1<<TRTYPE_ITEM_F))
 #define TRTYPE_MON_ITEM_MOVES ((1<<TRTYPE_MOVES_F)|(1<<TRTYPE_ITEM_F))
 
+#ifndef PM_ASM
 typedef struct TrainerMonSpecies {
     // IV scale parameter
     u8 difficulty;
@@ -90,10 +101,10 @@ typedef union TrainerMon {
 typedef struct TrainerData {
     u8 trainerType;
     u8 trainerClass;
-    u8 unk_2;
+    u8 unk_2; // unused
     u8 npoke;
     u16 items[4];
-    u32 unk_C;
+    u32 ai_flags;
     u32 doubleBattle;
     u16 name[OT_NAME_LENGTH + 1];
     // Used in the Frontier
@@ -112,5 +123,6 @@ typedef struct BattleSetupStruct {
 void TrainerData_ReadTrData(u32 trno, TRAINER *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);
 int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no);
+#endif //PM_ASM
 
 #endif //POKEHEARTGOLD_TRAINER_DATA_H

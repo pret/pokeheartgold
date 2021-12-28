@@ -69,7 +69,9 @@ class NormalScriptParser(ScriptParserBase):
             'species': parse_c_header(os.path.join(header_path, 'include/constants/species.h'), 'SPECIES_'),
             'item': parse_c_header(os.path.join(header_path, 'include/constants/items.h'), 'ITEM_'),
             'move': parse_c_header(os.path.join(header_path, 'include/constants/moves.h'), 'MOVE_'),
-            'sound': parse_c_header(os.path.join(header_path, 'include/constants/sndseq.h'), 'SEQ_')
+            'sound': parse_c_header(os.path.join(header_path, 'include/constants/sndseq.h'), 'SEQ_'),
+            'ribbon': parse_c_header(os.path.join(header_path, 'include/constants/ribbon.h'), 'RIBBON_'),
+            'stdscr': parse_c_header(os.path.join(header_path, 'include/constants/std_script.h'), 'std_'),
         }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
         self.commands_d = {x['name']: x for x in self.commands}
@@ -122,7 +124,7 @@ class NormalScriptParser(ScriptParserBase):
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants[size].get(value, value), pc
-            case 'species' | 'item' | 'move' | 'sound':
+            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants['var'].get(value, self.constants[size].get(value, value)), pc

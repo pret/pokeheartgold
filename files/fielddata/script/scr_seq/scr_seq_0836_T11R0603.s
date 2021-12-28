@@ -3,13 +3,13 @@
 
 	.rodata
 
-	scrdef scr_seq_0836_0006 ; 000
+	scrdef scr_seq_0836_T11R0603_0006 ; 000
 	scrdef_end
 
-scr_seq_0836_0006:
+scr_seq_0836_T11R0603_0006:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0836_0038
+	apply_movement 255, scr_seq_0836_T11R0603_0038
 	wait_movement
 	play_se SEQ_SE_GS_N_LINEAR
 	wait 40, VAR_SPECIAL_x8004
@@ -19,10 +19,10 @@ scr_seq_0836_0006:
 	releaseall
 	end
 
-scr_seq_0836_0036:
+scr_seq_0836_T11R0603_0036:
 	.byte 0x00, 0x00
 
-scr_seq_0836_0038:
+scr_seq_0836_T11R0603_0038:
 	.short 14, 7
 	.short 12, 2
 	.short 254, 0

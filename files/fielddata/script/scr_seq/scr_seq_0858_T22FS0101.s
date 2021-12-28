@@ -3,14 +3,14 @@
 
 	.rodata
 
-	scrdef scr_seq_0858_0016 ; 000
-	scrdef scr_seq_0858_0032 ; 001
-	scrdef scr_seq_0858_004E ; 002
-	scrdef scr_seq_0858_015C ; 003
-	scrdef scr_seq_0858_016F ; 004
+	scrdef scr_seq_0858_T22FS0101_0016 ; 000
+	scrdef scr_seq_0858_T22FS0101_0032 ; 001
+	scrdef scr_seq_0858_T22FS0101_004E ; 002
+	scrdef scr_seq_0858_T22FS0101_015C ; 003
+	scrdef scr_seq_0858_T22FS0101_016F ; 004
 	scrdef_end
 
-scr_seq_0858_0016:
+scr_seq_0858_T22FS0101_0016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -21,7 +21,7 @@ scr_seq_0858_0016:
 	releaseall
 	end
 
-scr_seq_0858_0032:
+scr_seq_0858_T22FS0101_0032:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -32,23 +32,23 @@ scr_seq_0858_0032:
 	releaseall
 	end
 
-scr_seq_0858_004E:
+scr_seq_0858_T22FS0101_004E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_06F
-	gotoif TRUE, scr_seq_0858_0115
+	gotoif TRUE, scr_seq_0858_T22FS0101_0115
 	buffer_players_name 0
 	gender_msgbox 2, 3
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0858_00F7
-scr_seq_0858_007D:
+	gotoif eq, scr_seq_0858_T22FS0101_00F7
+scr_seq_0858_T22FS0101_007D:
 	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, scr_seq_0858_0106
+	gotoif eq, scr_seq_0858_T22FS0101_0106
 	scrcmd_776
 	setflag FLAG_UNK_070
 	buffer_players_name 0
@@ -59,13 +59,13 @@ scr_seq_0858_007D:
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0858_00C5
-	apply_movement 4, scr_seq_0858_014C
-	goto scr_seq_0858_00CD
+	gotoif ne, scr_seq_0858_T22FS0101_00C5
+	apply_movement 4, scr_seq_0858_T22FS0101_014C
+	goto scr_seq_0858_T22FS0101_00CD
 
-scr_seq_0858_00C5:
-	apply_movement 4, scr_seq_0858_0140
-scr_seq_0858_00CD:
+scr_seq_0858_T22FS0101_00C5:
+	apply_movement 4, scr_seq_0858_T22FS0101_0140
+scr_seq_0858_T22FS0101_00CD:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 4
@@ -78,7 +78,7 @@ scr_seq_0858_00CD:
 	setvar VAR_UNK_4108, 7
 	end
 
-scr_seq_0858_00F7:
+scr_seq_0858_T22FS0101_00F7:
 	npc_msg 8
 	waitbutton
 	closemsg
@@ -86,7 +86,7 @@ scr_seq_0858_00F7:
 	setflag FLAG_UNK_06F
 	end
 
-scr_seq_0858_0106:
+scr_seq_0858_T22FS0101_0106:
 	npc_msg 7
 	waitbutton
 	closemsg
@@ -94,30 +94,30 @@ scr_seq_0858_0106:
 	setflag FLAG_UNK_06F
 	end
 
-scr_seq_0858_0115:
+scr_seq_0858_T22FS0101_0115:
 	buffer_players_name 0
 	gender_msgbox 9, 10
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0858_007D
+	gotoif eq, scr_seq_0858_T22FS0101_007D
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0858_00F7
+	gotoif eq, scr_seq_0858_T22FS0101_00F7
 	end
 
 
-scr_seq_0858_0140:
+scr_seq_0858_T22FS0101_0140:
 	.short 14, 2
 	.short 13, 3
 	.short 254, 0
 
-scr_seq_0858_014C:
+scr_seq_0858_T22FS0101_014C:
 	.short 13, 2
 	.short 14, 2
 	.short 13, 1
 	.short 254, 0
-scr_seq_0858_015C:
+scr_seq_0858_T22FS0101_015C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -127,7 +127,7 @@ scr_seq_0858_015C:
 	releaseall
 	end
 
-scr_seq_0858_016F:
+scr_seq_0858_T22FS0101_016F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

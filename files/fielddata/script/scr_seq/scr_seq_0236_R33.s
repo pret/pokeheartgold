@@ -3,11 +3,11 @@
 
 	.rodata
 
-	scrdef scr_seq_0236_000A ; 000
-	scrdef scr_seq_0236_001D ; 001
+	scrdef scr_seq_0236_R33_000A ; 000
+	scrdef scr_seq_0236_R33_001D ; 001
 	scrdef_end
 
-scr_seq_0236_000A:
+scr_seq_0236_R33_000A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -17,7 +17,7 @@ scr_seq_0236_000A:
 	releaseall
 	end
 
-scr_seq_0236_001D:
+scr_seq_0236_R33_001D:
 	scrcmd_055 1, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058

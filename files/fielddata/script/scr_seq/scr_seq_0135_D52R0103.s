@@ -3,38 +3,38 @@
 
 	.rodata
 
-	scrdef scr_seq_0135_00C0 ; 000
-	scrdef scr_seq_0135_003E ; 001
-	scrdef scr_seq_0135_0012 ; 002
-	scrdef scr_seq_0135_0029 ; 003
+	scrdef scr_seq_0135_D52R0103_00C0 ; 000
+	scrdef scr_seq_0135_D52R0103_003E ; 001
+	scrdef scr_seq_0135_D52R0103_0012 ; 002
+	scrdef scr_seq_0135_D52R0103_0029 ; 003
 	scrdef_end
 
-scr_seq_0135_0012:
+scr_seq_0135_D52R0103_0012:
 	checkflag FLAG_UNK_0A4
-	gotoif TRUE, scr_seq_0135_001F
+	gotoif TRUE, scr_seq_0135_D52R0103_001F
 	end
 
-scr_seq_0135_001F:
+scr_seq_0135_D52R0103_001F:
 	setflag FLAG_UNK_2D2
 	hide_person 0
 	end
 
-scr_seq_0135_0029:
+scr_seq_0135_D52R0103_0029:
 	comparevartovalue VAR_UNK_40F9, 7
-	gotoif ge, scr_seq_0135_003C
+	gotoif ge, scr_seq_0135_D52R0103_003C
 	clearflag FLAG_UNK_2D2
 	end
 
-scr_seq_0135_003C:
+scr_seq_0135_D52R0103_003C:
 	end
 
-scr_seq_0135_003E:
+scr_seq_0135_D52R0103_003E:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0135_00B4
+	apply_movement 255, scr_seq_0135_D52R0103_00B4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -44,7 +44,7 @@ scr_seq_0135_003E:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0135_00B4
+	apply_movement 255, scr_seq_0135_D52R0103_00B4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -60,14 +60,14 @@ scr_seq_0135_003E:
 	releaseall
 	end
 
-scr_seq_0135_00B1:
+scr_seq_0135_D52R0103_00B1:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0135_00B4:
+scr_seq_0135_D52R0103_00B4:
 	.short 12, 8
 	.short 63, 2
 	.short 254, 0
-scr_seq_0135_00C0:
+scr_seq_0135_D52R0103_00C0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -82,13 +82,13 @@ scr_seq_0135_00C0:
 	clearflag FLAG_UNK_0A4
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0135_0142
+	gotoif eq, scr_seq_0135_D52R0103_0142
 	scrcmd_683 16386
 	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, scr_seq_0135_0123
+	gotoif eq, scr_seq_0135_D52R0103_0123
 	comparevartovalue VAR_TEMP_x4002, 4
-	gotoif eq, scr_seq_0135_0134
-scr_seq_0135_0123:
+	gotoif eq, scr_seq_0135_D52R0103_0134
+scr_seq_0135_D52R0103_0123:
 	npc_msg 1
 	waitbutton
 	closemsg
@@ -96,13 +96,13 @@ scr_seq_0135_0123:
 	releaseall
 	end
 
-scr_seq_0135_0134:
+scr_seq_0135_D52R0103_0134:
 	setvar VAR_UNK_40F9, 7
 	setflag FLAG_UNK_17B
 	releaseall
 	end
 
-scr_seq_0135_0142:
+scr_seq_0135_D52R0103_0142:
 	scrcmd_219
 	releaseall
 	end

@@ -97,7 +97,7 @@ scr_seq_0151_00FD:
 scr_seq_0151_0114:
 	checkflag FLAG_UNK_AA7
 	gotoif TRUE, scr_seq_0151_02A6
-	scrcmd_484 VAR_TEMP_x4000
+	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_0151_0139
 	npc_msg 4
@@ -324,7 +324,7 @@ scr_seq_0151_03E3:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0151_042F
-	callstd 2033
+	callstd std_give_item_verbose
 	goto scr_seq_0151_043B
 
 scr_seq_0151_042F:

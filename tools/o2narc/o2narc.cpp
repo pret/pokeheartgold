@@ -1,150 +1,75 @@
 #include <iostream>
 #include <fstream>
-#include <getopt.h>
+#include <string>
 #include <cstring>
 #include <vector>
+#include <algorithm>
 #include "elf.h"
 #include "Narc.h"
 
 using namespace std;
 
-static Elf32_Sym NullSym { 0 };
-
-static Elf32_Shdr NullShdr { 0 };
-
-class Symtab : public vector<Elf32_Sym> {
+class command_error : public exception {
+    const char *_what;
 public:
-    char * strtab;
-    Symtab() : strtab(nullptr) {}
-    Elf32_Sym & operator[](const char * name) {
-        for (auto& value : *this) {
-            if (strcmp(strtab + value.st_name, name) == 0)
-                return value;
-        }
-        return NullSym;
-    }
+    explicit command_error(const char *s) {_what = s;}
+    explicit command_error(const string &s) {_what = s.c_str();}
+    const char *what() const noexcept override { return _what; }
 };
 
-class ShdrTab : public vector<Elf32_Shdr> {
+class elf_exception : public exception {
+    const char *_what;
 public:
-    char * shstrtab;
-    ShdrTab() : shstrtab(nullptr) {}
-    Elf32_Shdr & operator[](const int idx) {
-        return data()[idx];
-    }
-    Elf32_Shdr & operator[](const char * name) {
-        for (auto& value : *this) {
-            if (strcmp(shstrtab + value.sh_name, name) == 0)
-                return value;
-        }
-        return NullShdr;
-    }
+    explicit elf_exception(const char *s) {_what = s;}
+    explicit elf_exception(const string &s) {_what = s.c_str();}
+    const char *what() const noexcept override { return _what; }
 };
+
+#define ELF_ASSERT(expr) do {if(!(expr)) {throw elf_exception("ELF_ASSERT(" #expr ") failed");}} while (0)
 
 class Elf {
     fstream handle;
-    Elf32_Ehdr ehdr;
-    Elf32_Phdr * phdr;
-    uint32_t symnum;
+    Elf32_Ehdr ehdr {};
+    vector<Elf32_Shdr> shdr;
+    vector<Elf32_Sym> sym;
+    char *strtab = nullptr;
+    char *shstrtab = nullptr;
 public:
-    ShdrTab shdr;
-    Symtab symtab;
-    Elf(const char * filename) {
-        // Read the ELF header
-        phdr = nullptr;
-        handle.open(filename, ios_base::in | ios_base::binary);
-        if (!handle.good()) {
-            cerr << "ERROR: Unable to open file '" << filename << "' for reading" << endl;
-            exit(1);
-        }
-        handle.read((char *)&ehdr, sizeof(ehdr));
-        if (memcmp(ehdr.e_ident, ELFMAG, SELFMAG) != 0) {
-            handle.close();
-            cerr << "ERROR: Opened file is not a valid ELF" << endl;
-            exit(1);
-        }
-
-        // Read the section headers
-        shdr.resize(ehdr.e_shnum);
-        handle.seekg(ehdr.e_shoff);
-        handle.read((char *)shdr.data(), ehdr.e_shnum * ehdr.e_shentsize);
-
-        // Read the program headers
-        phdr = new Elf32_Phdr [ehdr.e_phnum];
-        handle.seekg(ehdr.e_phoff);
-        handle.read((char *)phdr, ehdr.e_phnum * ehdr.e_phentsize);
-
-        // Read the section string table
-        shdr.shstrtab = new char[shdr[ehdr.e_shstrndx].sh_size];
-        handle.seekg(shdr[ehdr.e_shstrndx].sh_offset);
-        handle.read(shdr.shstrtab, shdr[ehdr.e_shstrndx].sh_size);
-
-        // Read the symbol table
-        for (int i = 0; i < ehdr.e_shnum; i++) {
-            switch (shdr[i].sh_type)
-            {
-            case SHT_SYMTAB:
-                if (!symtab.empty()) {
-                    handle.close();
-                    cerr << "ERROR: double symtab" << endl;
-                    exit(1);
-                }
-                symnum = shdr[i].sh_size / sizeof(Elf32_Sym);
-                symtab.resize(symnum);
-                handle.seekg(shdr[i].sh_offset);
-                handle.read((char *)symtab.data(), shdr[i].sh_size);
-                break;
-            case SHT_STRTAB:
-                if (i == ehdr.e_shstrndx)
-                    break;
-                if (symtab.strtab != nullptr) {
-                    handle.close();
-                    cerr << "ERROR: double strtab" << endl;
-                    exit(1);
-                }
-                symtab.strtab = new char[shdr[i].sh_size];
-                handle.seekg(shdr[i].sh_offset);
-                handle.read(symtab.strtab, shdr[i].sh_size);
-                break;
-            }
-        }
+    Elf() = default;
+    explicit Elf(const string &filename, ios::openmode openmode = ios::in | ios::binary);
+    void open(const string &filename, ios::openmode openmode = ios::in | ios::binary);
+    ~Elf();
+    bool is_open() const {
+        return handle.is_open();
     }
+    Elf32_Shdr &GetSectionHeader(const char *name);
+    Elf32_Shdr &GetSectionHeader(const string &name) { return GetSectionHeader(name.c_str()); }
+    bool HasSection(const char *name);
+    bool HasSection(const string &name) { return HasSection(name.c_str()); }
+    Elf32_Sym &GetSymbol(const char *name);
+    Elf32_Sym &GetSymbol(const string &name) { return GetSymbol(name.c_str()); }
+    bool HasSymbol(const char *name);
+    bool HasSymbol(const string &name) { return HasSymbol(name.c_str()); }
+    void *ReadSectionData(const Elf32_Shdr &sec);
+    void *ReadSymbolData(const Elf32_Sym &symbol);
+    template <typename T> void ReadSectionData(const Elf32_Shdr &sec, T *dest);
+    template <typename T> void ReadSymbolData(const Elf32_Sym &symbol, T *dest);
+    vector<Elf32_Shdr>& sections() { return shdr; }
+    vector<Elf32_Sym>& symbols() { return sym; }
+    const char *GetSymbolName(const Elf32_Sym &symbol) const { return strtab + symbol.st_name; }
+    const char *GetSectionName(const Elf32_Shdr &sec) const { return shstrtab + sec.sh_name; }
+};
 
-    void operator ~() {
-        delete[] symtab.strtab;
-        delete[] shdr.shstrtab;
-        delete[] phdr;
-    }
-
-    void * read(Elf32_Sym & sym) {
-        // Reads the value of a symbol
-        if (sym.st_size == 0)
-            return nullptr;
-        if (shdr.empty())
-            return nullptr;
-        Elf32_Shdr & sec = shdr[sym.st_shndx];
-        size_t size = (sym.st_size + 3) & ~3;
-        off_t off = sym.st_value - sec.sh_addr + sec.sh_offset;
-        auto ret = new char[size];
-        handle.seekg(off);
-        handle.read(ret, sym.st_size);
-        if (sym.st_size & 3)
-            memset(ret + sym.st_size, 0, size - sym.st_size);
-        return ret;
-    }
-
-    void * read(Elf32_Shdr & sec) {
-        // Reads the contents of an ELF section
-        if (sec.sh_size == 0)
-            return nullptr;
-        size_t size = (sec.sh_size + 3) & ~3;
-        auto ret = new char[size];
-        handle.seekg(sec.sh_offset);
-        handle.read(ret, sec.sh_size);
-        if (sec.sh_size & 3)
-            memset(ret + sec.sh_size, 0, size - sec.sh_size);
-        return ret;
-    }
+class Options {
+    vector<string> posargs;
+    bool flatten;
+    bool naix;
+    char padval = '\xFF';
+    Elf objfile;
+    ofstream narcfile;
+public:
+    Options(int argc, char ** argv);
+    int main();
 };
 
 static inline void usage() {
@@ -160,167 +85,232 @@ static inline void usage() {
 }
 
 int main(int argc, char ** argv) {
-    // CLI arguments
-    int flatten = 0;
-    int naix = 0;
-    char padding = '\xFF';
-    static option options [] {
-        { "flatten", no_argument, &flatten, 1 },
-        { "padding", required_argument, nullptr, 'p' },
-        { "naix", no_argument, &naix, 1 },
-        { nullptr, 0, nullptr, 0 }
-    };
-    int opt_index;
-    int c;
-    while ((c = getopt_long(argc, argv, "fnp:", options, &opt_index)) != -1)
-    {
-        switch (c) {
-        case 'f':
-            flatten = 1;
-            break;
-        case 'p':
-            padding = static_cast<char>(strtol(optarg, NULL, 0));
-            break;
-        case 'n':
-            naix = 1;
-            break;
-        default:
-            exit(EXIT_FAILURE);
-        }
-    }
-    argv += optind;
-    argc -= optind;
-    if (argc < 2) {
+    try {
+        Options options(argc, argv);
+        return options.main();
+    } catch (const command_error &e) {
         usage();
-        cerr << "Insufficient arguments: missing " << (argc == 0 ? "infile, " : "") << "outfile" << endl;
+        cerr << e.what() << endl;
+        return 1;
+    } catch (const elf_exception &e) {
+        cerr << e.what() << endl;
+        return 1;
+    } catch (const exception &e) {
+        cerr << "Unhandled exception: " << e.what() << endl;
         return 1;
     }
-    if (argc > 2) {
-        usage();
-        cerr << "Excess arguments: first unrecognized '" << argv[2] << "'" << endl;
-        return 1;
-    }
-    char * infname = argv[0];
-    char * outfname = argv[1];
+}
 
-    // Read the ELF file
-    Elf elf(infname);
-    // .rodata contains the data
-    Elf32_Shdr & rodata_sec = elf.shdr[".rodata"];
-    char * _rodata = (char *)elf.read(rodata_sec);
-    if (_rodata == nullptr) {
-        cerr << "ERROR: Missing required section .rodata" << endl;
-        exit(1);
-    }
+Elf::Elf(const string &filename, ios::openmode openmode) {
+    open(filename, openmode);
+}
 
-    fstream ofile;
-    ofile.open(outfname, ios_base::out | ios_base::binary);
-    if (!ofile.good()) {
-        cerr << "ERROR: Unable to open '" << outfname << "' for writing" << endl;
-        exit(1);
-    }
-
-    if (!flatten) // then build the NARC chunks
-    {
-        // .data contains the size table
-        Elf32_Shdr & data_sec = elf.shdr[".data"];
-        auto * _data = (uint32_t *)elf.read(data_sec);
-
-        if (_data == nullptr) {
-            cerr << "ERROR: Missing required section .data" << endl;
-            exit(1);
+void Elf::open(const string &filename, ios::openmode openmode) {
+    handle.open(filename, openmode);
+    ELF_ASSERT(handle.good());
+    handle.read((char *)&ehdr, sizeof(Elf32_Ehdr));
+    ELF_ASSERT(memcmp(ehdr.e_ident, ELFMAG, SELFMAG) == 0);
+    ELF_ASSERT(ehdr.e_ident[EI_CLASS] == ELFCLASS32);
+    ELF_ASSERT(ehdr.e_ident[EI_DATA] == ELFDATA2LSB);
+    ELF_ASSERT(ehdr.e_ident[EI_VERSION] == EV_CURRENT);
+    ELF_ASSERT(ehdr.e_ehsize == sizeof(Elf32_Ehdr));
+    shdr.resize(ehdr.e_shnum);
+    handle.seekg(ehdr.e_shoff);
+    handle.read((char *)shdr.data(), static_cast<streamsize>(ehdr.e_shnum * sizeof(Elf32_Shdr)));
+    for (const auto & sec : shdr) {
+        switch (sec.sh_type) {
+        case SHT_STRTAB: {
+            char *&_strtab = (&sec - shdr.data() == ehdr.e_shstrndx) ? shstrtab : strtab;
+            ELF_ASSERT(_strtab == nullptr);
+            _strtab = new char[sec.sh_size];
+            handle.seekg(sec.sh_offset);
+            handle.read(_strtab, sec.sh_size);
+            break;
         }
-
-        uint16_t count;
-        size_t narc_size;
-        size_t size_aln;
-        size_t size = *_data;
-
-        if (data_sec.sh_size == sizeof(uint32_t))
-        {
-            size_aln = (size + 3) & ~3;
-            count = rodata_sec.sh_size / size_aln;
+        case SHT_SYMTAB:
+            ELF_ASSERT(sym.empty());
+            sym.resize(sec.sh_size / sizeof(Elf32_Sym));
+            handle.seekg(sec.sh_offset);
+            handle.read((char *)sym.data(), sec.sh_size);
+            break;
         }
-        else
-        {
-            size_aln = -1u;
-            count = data_sec.sh_size / sizeof(uint32_t);
-        }
-        // NARC header: 16
-        // FATB header: 12 + 8 * count
-        // FNTB header: 8
-        // GMIF header: 8 + data_sym.st_size
-        narc_size = (
-            sizeof(NarcHeader) +
-            sizeof(FileAllocationTable) + sizeof(FileAllocationTableEntry) * count +
-            sizeof(FileNameTable) + sizeof(FileNameTableEntry) +
-            sizeof(FileImages) + (rodata_sec.sh_size + 3) & ~3
-        );
+    }
+}
 
-        NarcHeader header{
-            .Id = *(uint32_t *) "NARC",
-            .ByteOrderMark = 0xFFFE,
-            .Version = 0x100,
-            .FileSize = static_cast<uint32_t>(narc_size),
-            .ChunkSize = sizeof(NarcHeader),
-            .ChunkCount = 3
-        };
-        FileAllocationTable fat{
-            .Id = *(uint32_t *) "BTAF",
-            .ChunkSize = static_cast<uint32_t>(sizeof(FileAllocationTable) + sizeof(FileAllocationTableEntry) * count),
-            .FileCount = count,
-            .Reserved = 0
-        };
-        auto fat_entries = new FileAllocationTableEntry[count];
-        for (int i = 0; i < count; i++)
-        {
-            // Each element of the size array corresponds to
-            // a NARC member
-            if (data_sec.sh_size > sizeof(uint32_t)) {
-                size = _data[i];
-                size_aln = (size + 3) & ~3;
+Elf::~Elf() {
+    delete[] strtab;
+    delete[] shstrtab;
+}
+
+Elf32_Shdr &Elf::GetSectionHeader(const char *name) {
+    return *find_if(shdr.begin(), shdr.end(), [=](const Elf32_Shdr &sec) {
+        return strcmp(shstrtab + sec.sh_name, name) == 0;
+    } );
+}
+
+bool Elf::HasSection(const char *name) {
+    return any_of(shdr.begin(), shdr.end(), [=](const Elf32_Shdr &sec) {
+        return strcmp(shstrtab + sec.sh_name, name) == 0;
+    } );
+}
+
+Elf32_Sym &Elf::GetSymbol(const char *name) {
+    return *find_if(sym.begin(), sym.end(), [=](const Elf32_Sym &symbol) {
+        return strcmp(strtab + symbol.st_name, name) == 0;
+    });
+}
+
+bool Elf::HasSymbol(const char *name) {
+    return any_of(sym.begin(), sym.end(), [=](const Elf32_Sym &symbol) {
+        return strcmp(strtab + symbol.st_name, name) == 0;
+    });
+}
+
+void *Elf::ReadSectionData(const Elf32_Shdr &sec) {
+    if (sec.sh_size == 0) {
+        return nullptr;
+    }
+    auto ret = new char[sec.sh_size];
+    ReadSectionData(sec, ret);
+    return ret;
+}
+
+void *Elf::ReadSymbolData(const Elf32_Sym &symbol) {
+    if (symbol.st_size == 0) {
+        return nullptr;
+    }
+    auto ret = new char[symbol.st_size];
+    ReadSymbolData(symbol, ret);
+    return ret;
+}
+
+template<typename T>
+void Elf::ReadSectionData(const Elf32_Shdr &sec, T *dest) {
+    handle.seekg(sec.sh_offset);
+    handle.read((char *)dest, sec.sh_size);
+}
+
+template<typename T>
+void Elf::ReadSymbolData(const Elf32_Sym &symbol, T *dest) {
+    handle.seekg(symbol.st_value - shdr[symbol.st_shndx].sh_addr + shdr[symbol.st_shndx].sh_offset);
+    handle.read((char *)dest, symbol.st_size);
+}
+
+Options::Options(int argc, char **argv) {
+    for (int i = 1; i < argc; i++) {
+        string arg{argv[i]};
+        if (arg == "-f" || arg == "--flatten") {
+            flatten = true;
+        } else if (arg == "-p" || arg == "--padding") {
+            int padval_i = stoi(argv[++i]);
+            if (padval_i < 0 || padval_i > 255) {
+                throw command_error(string{"invalid 8-bit value "} + argv[i] + " for " + arg);
             }
-            fat_entries[i].Start = i == 0 ? 0 : (fat_entries[i - 1].End + 3) & ~3;
-            fat_entries[i].End = fat_entries[i].Start + _data[data_sec.sh_size == sizeof(uint32_t) ? 0 : i];
-            // Padding
-            for (int j = size; j < size_aln; j++)
-            {
-                _rodata[fat_entries[i].Start + j] = padding;
+            padval = static_cast<char>(padval_i);
+        } else if (arg == "-n" || arg == "--naix") {
+            naix = true;
+        } else if (arg[0] == '-') {
+            throw command_error("unrecognized option flag: " + arg);
+        } else if (posargs.size() >= 2) {
+            throw command_error("unrecognized positional argument: " + arg);
+        } else {
+            posargs.emplace_back(arg);
+        }
+    }
+    if (posargs.size() < 2) {
+        throw command_error("missing positional arg");
+    }
+    objfile.open(posargs[0], ios::in | ios::binary);
+    narcfile.open(posargs[1], ios::out | ios::binary);
+}
+
+int Options::main() {
+    ELF_ASSERT(objfile.HasSection(".rodata"));
+
+    vector<uint32_t> sizes;
+    vector<unsigned char> rodata(objfile.GetSectionHeader(".rodata").sh_size);
+    objfile.ReadSectionData(objfile.GetSectionHeader(".rodata"), rodata.data());
+    // Determine what O file we're dealing with
+    if (objfile.HasSymbol("__size")) {
+        uint32_t size = objfile.GetSymbol("__size").st_size;
+        if (size == sizeof(uint32_t)) {
+            objfile.ReadSymbolData(objfile.GetSymbol("__size"), &size);
+            sizes.resize((rodata.size() + size - 1) / size);
+            fill(sizes.begin(), sizes.end(), size);
+        } else {
+            sizes.resize(objfile.GetSymbol("__size").st_size / sizeof(uint32_t));
+            objfile.ReadSymbolData(objfile.GetSymbol("__size"), sizes.data());
+        }
+    } else {
+        auto pred = [&](const Elf32_Sym &sym) {
+            return sym.st_size != 0
+                   && strcmp(objfile.GetSectionName(objfile.sections()[sym.st_shndx]), ".rodata") == 0
+                   && strcmp(objfile.GetSymbolName(sym), "__size") != 0
+                   && strcmp(objfile.GetSymbolName(sym), "__data") != 0
+                   && strcmp(objfile.GetSymbolName(sym), ".rodata") != 0;
+        };
+        sizes.resize(count_if(objfile.symbols().begin(), objfile.symbols().end(), pred));
+        ELF_ASSERT(!sizes.empty());
+        int t = 0;
+        for (const auto &sym : objfile.symbols()) {
+            if (pred(sym)) {
+                sizes[t++] = sym.st_size;
             }
         }
-        // These NARCs have empty FNTs
-        FileNameTable fnt{
-            .Id = *(uint32_t *) "BTNF",
-            .ChunkSize = static_cast<uint32_t>(sizeof(FileNameTable) + sizeof(FileNameTableEntry))
-        };
-        FileNameTableEntry fnt_entry{
-            .Offset = 4,
-            .FirstFileId = 0,
-            .Utility = 1
-        };
-        FileImages fimg{
-            .Id = *(uint32_t *) "GMIF",
-            .ChunkSize = static_cast<uint32_t>(sizeof(FileImages) + (rodata_sec.sh_size + 3) & ~3)
-        };
+    }
 
-        ofile.write((char *) &header, sizeof(header));
-        ofile.write((char *) &fat, sizeof(fat));
-        ofile.write((char *) fat_entries, sizeof(FileAllocationTableEntry) * count);
-        ofile.write((char *) &fnt, sizeof(fnt));
-        ofile.write((char *) &fnt_entry, sizeof(fnt_entry));
-        ofile.write((char *) &fimg, sizeof(fimg));
-        // Cleanup
-        delete[] fat_entries;
-        delete[] _data;
+    uint32_t end = 0;
+    for (auto & size : sizes) {
+        end += size;
+        uint32_t pad_end = (end + 3) & ~3;
+        memset(&rodata[end], padval, pad_end - end);
+        end = pad_end;
     }
-    // NARC members are contiguous in memory
-    ofile.write(_rodata, rodata_sec.sh_size);
-    if (!flatten && (rodata_sec.sh_size & 3)) {
-        for (int i = rodata_sec.sh_size & 3; i < 4; i++)
-            ofile.put(padding);
+
+    if (!flatten) {
+        FileImages fimg(rodata);
+        FileNameTableEntry fntent;
+        FileNameTable fnt;
+        vector<FileAllocationTableEntry> fatent = FileAllocationTableEntry::_make(sizes);
+        FileAllocationTable fat(fatent);
+        NarcHeader narc(fat, fnt, fimg);
+        narcfile.write((char *)&narc, sizeof(narc));
+        narcfile.write((char *)&fat, sizeof(fat));
+        narcfile.write((char *)fatent.data(), fatent.size() * sizeof(FileAllocationTableEntry));
+        narcfile.write((char *)&fnt, sizeof(fnt));
+        narcfile.write((char *)&fntent, sizeof(fntent));
+        narcfile.write((char *)&fimg, sizeof(fimg));
     }
-    // Cleanup
-    delete[] _rodata;
-    ofile.close();
+    narcfile.write((char *)rodata.data(), rodata.size());
+    if (naix) {
+        string naixname = posargs[1].substr(0, posargs[1].find_last_of('.')) + ".naix";
+        string stem = naixname.substr(naixname.find_last_of('/') + 1, naixname.find_last_of('.') - naixname.find_last_of('/') - 1);
+        string stem_upper = stem;
+        for (auto &c : stem_upper) { c = toupper(c); }
+        ofstream naixfile(naixname);
+        naixfile << "/*\n"
+                    " * THIS FILE WAS AUTOMATICALLY\n"
+                    " *  GENERATED BY tools/o2narc\n"
+                    " *      DO NOT MODIFY!!!\n"
+                    " */\n"
+                    "\n"
+                    "#ifndef NARC_" << stem_upper << "_NAIX_\n"
+                                                     "#define NARC_" << stem_upper << "_NAIX_\n"
+                                                                                      "\n"
+                                                                                      "enum {\n";
+        char num_buf[9] = "00000000";
+        for (int i = 0; i < sizes.size(); i++) {
+            naixfile << "    NARC_" << stem << "_" << stem << "_" << num_buf << " = " << i << "," << endl;
+            for (int k = 7; k >= 0; k--) {
+                num_buf[k]++;
+                if (num_buf[k] > '9') {
+                    num_buf[k] = '0';
+                } else {
+                    break;
+                }
+            }
+        }
+        naixfile << "};\n\n#endif //NARC_" << stem_upper << "_NAIX_\n";
+    }
     return 0;
 }

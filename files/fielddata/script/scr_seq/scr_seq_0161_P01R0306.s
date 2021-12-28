@@ -3,69 +3,69 @@
 
 	.rodata
 
-	scrdef scr_seq_0161_0046 ; 000
-	scrdef scr_seq_0161_0012 ; 001
-	scrdef scr_seq_0161_0120 ; 002
-	scrdef scr_seq_0161_0098 ; 003
+	scrdef scr_seq_0161_P01R0306_0046 ; 000
+	scrdef scr_seq_0161_P01R0306_0012 ; 001
+	scrdef scr_seq_0161_P01R0306_0120 ; 002
+	scrdef scr_seq_0161_P01R0306_0098 ; 003
 	scrdef_end
 
-scr_seq_0161_0012:
+scr_seq_0161_P01R0306_0012:
 	comparevartovalue VAR_UNK_40CB, 7
-	gotoif ge, scr_seq_0161_003C
+	gotoif ge, scr_seq_0161_P01R0306_003C
 	comparevartovalue VAR_UNK_40CB, 4
-	gotoif gt, scr_seq_0161_0036
+	gotoif gt, scr_seq_0161_P01R0306_0036
 	setflag FLAG_UNK_218
-	goto scr_seq_0161_003A
+	goto scr_seq_0161_P01R0306_003A
 
-scr_seq_0161_0036:
+scr_seq_0161_P01R0306_0036:
 	clearflag FLAG_UNK_218
-scr_seq_0161_003A:
+scr_seq_0161_P01R0306_003A:
 	end
 
-scr_seq_0161_003C:
+scr_seq_0161_P01R0306_003C:
 	setflag FLAG_UNK_216
 	setflag FLAG_UNK_218
 	end
 
-scr_seq_0161_0046:
+scr_seq_0161_P01R0306_0046:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40CB, 3
-	gotoif gt, scr_seq_0161_006E
-	apply_movement 0, scr_seq_0161_0090
+	gotoif gt, scr_seq_0161_P01R0306_006E
+	apply_movement 0, scr_seq_0161_P01R0306_0090
 	wait_movement
 	npc_msg 1
-	goto scr_seq_0161_0087
+	goto scr_seq_0161_P01R0306_0087
 
-scr_seq_0161_006E:
+scr_seq_0161_P01R0306_006E:
 	comparevartovalue VAR_UNK_40CB, 4
-	gotoif ne, scr_seq_0161_0084
+	gotoif ne, scr_seq_0161_P01R0306_0084
 	npc_msg 0
-	goto scr_seq_0161_0087
+	goto scr_seq_0161_P01R0306_0087
 
-scr_seq_0161_0084:
+scr_seq_0161_P01R0306_0084:
 	npc_msg 7
-scr_seq_0161_0087:
+scr_seq_0161_P01R0306_0087:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0161_008F:
+scr_seq_0161_P01R0306_008F:
 	.byte 0x00
 
-scr_seq_0161_0090:
+scr_seq_0161_P01R0306_0090:
 	.short 49, 2
 	.short 254, 0
-scr_seq_0161_0098:
+scr_seq_0161_P01R0306_0098:
 	scrcmd_609
 	lockall
-	apply_movement 4, scr_seq_0161_0110
+	apply_movement 4, scr_seq_0161_P01R0306_0110
 	wait_movement
 	gender_msgbox 2, 3
 	closemsg
-	apply_movement 0, scr_seq_0161_0118
+	apply_movement 0, scr_seq_0161_P01R0306_0118
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox 4, 5
@@ -73,9 +73,9 @@ scr_seq_0161_0098:
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0161_0103
-	callstd 2033
-scr_seq_0161_00E2:
+	gotoif eq, scr_seq_0161_P01R0306_0103
+	callstd std_give_item_verbose
+scr_seq_0161_P01R0306_00E2:
 	setvar VAR_UNK_40CB, 6
 	setflag FLAG_UNK_22A
 	play_se SEQ_SE_DP_PINPON
@@ -87,22 +87,22 @@ scr_seq_0161_00E2:
 	releaseall
 	end
 
-scr_seq_0161_0103:
+scr_seq_0161_P01R0306_0103:
 	callstd 2009
 	closemsg
-	goto scr_seq_0161_00E2
+	goto scr_seq_0161_P01R0306_00E2
 
-scr_seq_0161_010F:
+scr_seq_0161_P01R0306_010F:
 	.byte 0x00
 
-scr_seq_0161_0110:
+scr_seq_0161_P01R0306_0110:
 	.short 51, 3
 	.short 254, 0
 
-scr_seq_0161_0118:
+scr_seq_0161_P01R0306_0118:
 	.short 9, 1
 	.short 254, 0
-scr_seq_0161_0120:
+scr_seq_0161_P01R0306_0120:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

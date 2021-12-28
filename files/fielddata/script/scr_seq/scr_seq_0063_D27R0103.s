@@ -3,13 +3,13 @@
 
 	.rodata
 
-	scrdef scr_seq_0063_000A ; 000
-	scrdef scr_seq_0063_0040 ; 001
+	scrdef scr_seq_0063_D27R0103_000A ; 000
+	scrdef scr_seq_0063_D27R0103_0040 ; 001
 	scrdef_end
 
-scr_seq_0063_000A:
+scr_seq_0063_D27R0103_000A:
 	play_se SEQ_SE_GS_RAKKA01
-	apply_movement 255, scr_seq_0063_0038
+	apply_movement 255, scr_seq_0063_D27R0103_0038
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_374 255
 	wait_movement
@@ -19,13 +19,13 @@ scr_seq_0063_000A:
 	end
 
 
-scr_seq_0063_0038:
+scr_seq_0063_D27R0103_0038:
 	.short 68, 1
 	.short 254, 0
-scr_seq_0063_0040:
+scr_seq_0063_D27R0103_0040:
 	comparevartovalue VAR_UNK_40A7, 1
-	gotoif ne, scr_seq_0063_0051
+	gotoif ne, scr_seq_0063_D27R0103_0051
 	scrcmd_375 255
-scr_seq_0063_0051:
+scr_seq_0063_D27R0103_0051:
 	end
 	.balign 4, 0

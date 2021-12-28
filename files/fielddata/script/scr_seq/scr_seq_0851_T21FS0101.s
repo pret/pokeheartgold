@@ -3,13 +3,13 @@
 
 	.rodata
 
-	scrdef scr_seq_0851_0012 ; 000
-	scrdef scr_seq_0851_0073 ; 001
-	scrdef scr_seq_0851_004A ; 002
-	scrdef scr_seq_0851_002E ; 003
+	scrdef scr_seq_0851_T21FS0101_0012 ; 000
+	scrdef scr_seq_0851_T21FS0101_0073 ; 001
+	scrdef scr_seq_0851_T21FS0101_004A ; 002
+	scrdef scr_seq_0851_T21FS0101_002E ; 003
 	scrdef_end
 
-scr_seq_0851_0012:
+scr_seq_0851_T21FS0101_0012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -20,7 +20,7 @@ scr_seq_0851_0012:
 	releaseall
 	end
 
-scr_seq_0851_002E:
+scr_seq_0851_T21FS0101_002E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -31,24 +31,24 @@ scr_seq_0851_002E:
 	releaseall
 	end
 
-scr_seq_0851_004A:
+scr_seq_0851_T21FS0101_004A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4108, 4
-	gotoif lt, scr_seq_0851_0068
+	gotoif lt, scr_seq_0851_T21FS0101_0068
 	npc_msg 1
-	goto scr_seq_0851_006B
+	goto scr_seq_0851_T21FS0101_006B
 
-scr_seq_0851_0068:
+scr_seq_0851_T21FS0101_0068:
 	npc_msg 0
-scr_seq_0851_006B:
+scr_seq_0851_T21FS0101_006B:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0851_0073:
+scr_seq_0851_T21FS0101_0073:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

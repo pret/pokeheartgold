@@ -3,40 +3,40 @@
 
 	.rodata
 
-	scrdef scr_seq_0058_0057 ; 000
-	scrdef scr_seq_0058_0040 ; 001
-	scrdef scr_seq_0058_000E ; 002
+	scrdef scr_seq_0058_D25R0103_0057 ; 000
+	scrdef scr_seq_0058_D25R0103_0040 ; 001
+	scrdef scr_seq_0058_D25R0103_000E ; 002
 	scrdef_end
 
-scr_seq_0058_000E:
+scr_seq_0058_D25R0103_000E:
 	checkflag FLAG_UNK_AB8
-	gotoif TRUE, scr_seq_0058_003A
-	scrcmd_484 VAR_TEMP_x4000
+	gotoif TRUE, scr_seq_0058_D25R0103_003A
+	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0058_0034
+	gotoif ne, scr_seq_0058_D25R0103_0034
 	clearflag FLAG_UNK_30A
-	goto scr_seq_0058_0038
+	goto scr_seq_0058_D25R0103_0038
 
-scr_seq_0058_0034:
+scr_seq_0058_D25R0103_0034:
 	setflag FLAG_UNK_30A
-scr_seq_0058_0038:
+scr_seq_0058_D25R0103_0038:
 	end
 
-scr_seq_0058_003A:
+scr_seq_0058_D25R0103_003A:
 	setflag FLAG_UNK_30A
 	end
 
-scr_seq_0058_0040:
+scr_seq_0058_D25R0103_0040:
 	checkflag FLAG_UNK_0A4
-	gotoif TRUE, scr_seq_0058_004D
+	gotoif TRUE, scr_seq_0058_D25R0103_004D
 	end
 
-scr_seq_0058_004D:
+scr_seq_0058_D25R0103_004D:
 	setflag FLAG_UNK_30A
 	hide_person 3
 	end
 
-scr_seq_0058_0057:
+scr_seq_0058_D25R0103_0057:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -47,12 +47,12 @@ scr_seq_0058_0057:
 	clearflag FLAG_UNK_0A4
 	scrcmd_220 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0058_008F
+	gotoif eq, scr_seq_0058_D25R0103_008F
 	setflag FLAG_UNK_AB8
 	releaseall
 	end
 
-scr_seq_0058_008F:
+scr_seq_0058_D25R0103_008F:
 	scrcmd_219
 	releaseall
 	end

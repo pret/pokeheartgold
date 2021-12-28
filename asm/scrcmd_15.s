@@ -2157,8 +2157,8 @@ _0204E250:
 	.balign 4, 0
 	thumb_func_end ScrCmd_479
 
-	thumb_func_start ScrCmd_480
-ScrCmd_480: ; 0x0204E26C
+	thumb_func_start ScrCmd_MonHasRibbon
+ScrCmd_MonHasRibbon: ; 0x0204E26C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -2203,10 +2203,10 @@ ScrCmd_480: ; 0x0204E26C
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_480
+	thumb_func_end ScrCmd_MonHasRibbon
 
-	thumb_func_start ScrCmd_481
-ScrCmd_481: ; 0x0204E2D8
+	thumb_func_start ScrCmd_GiveRibbon
+ScrCmd_GiveRibbon: ; 0x0204E2D8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -2247,7 +2247,7 @@ ScrCmd_481: ; 0x0204E2D8
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_481
+	thumb_func_end ScrCmd_GiveRibbon
 
 	thumb_func_start ScrCmd_584
 ScrCmd_584: ; 0x0204E338

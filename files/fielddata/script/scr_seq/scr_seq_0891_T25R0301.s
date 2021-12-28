@@ -3,12 +3,12 @@
 
 	.rodata
 
-	scrdef scr_seq_0891_000E ; 000
-	scrdef scr_seq_0891_00AE ; 001
-	scrdef scr_seq_0891_00C1 ; 002
+	scrdef scr_seq_0891_T25R0301_000E ; 000
+	scrdef scr_seq_0891_T25R0301_00AE ; 001
+	scrdef scr_seq_0891_T25R0301_00C1 ; 002
 	scrdef_end
 
-scr_seq_0891_000E:
+scr_seq_0891_T25R0301_000E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -16,62 +16,62 @@ scr_seq_0891_000E:
 	npc_msg 0
 	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 250
-	gotoif ge, scr_seq_0891_006C
+	gotoif ge, scr_seq_0891_T25R0301_006C
 	comparevartovalue VAR_SPECIAL_x800C, 200
-	gotoif ge, scr_seq_0891_0077
+	gotoif ge, scr_seq_0891_T25R0301_0077
 	comparevartovalue VAR_SPECIAL_x800C, 150
-	gotoif ge, scr_seq_0891_0082
+	gotoif ge, scr_seq_0891_T25R0301_0082
 	comparevartovalue VAR_SPECIAL_x800C, 100
-	gotoif ge, scr_seq_0891_008D
+	gotoif ge, scr_seq_0891_T25R0301_008D
 	comparevartovalue VAR_SPECIAL_x800C, 50
-	gotoif ge, scr_seq_0891_0098
-	goto scr_seq_0891_00A3
+	gotoif ge, scr_seq_0891_T25R0301_0098
+	goto scr_seq_0891_T25R0301_00A3
 
-scr_seq_0891_006A:
+scr_seq_0891_T25R0301_006A:
 	.byte 0x02, 0x00
-scr_seq_0891_006C:
+scr_seq_0891_T25R0301_006C:
 	npc_msg 1
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_0077:
+scr_seq_0891_T25R0301_0077:
 	npc_msg 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_0082:
+scr_seq_0891_T25R0301_0082:
 	npc_msg 3
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_008D:
+scr_seq_0891_T25R0301_008D:
 	npc_msg 4
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_0098:
+scr_seq_0891_T25R0301_0098:
 	npc_msg 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_00A3:
+scr_seq_0891_T25R0301_00A3:
 	npc_msg 6
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_00AE:
+scr_seq_0891_T25R0301_00AE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -81,7 +81,7 @@ scr_seq_0891_00AE:
 	releaseall
 	end
 
-scr_seq_0891_00C1:
+scr_seq_0891_T25R0301_00C1:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

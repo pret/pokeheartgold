@@ -19801,8 +19801,8 @@ ScrCmd_NonNPCMsg: ; 0x021EF050
 	pop {r3, pc}
 	thumb_func_end ScrCmd_NonNPCMsg
 
-	thumb_func_start ScrCmd_438
-ScrCmd_438: ; 0x021EF064
+	thumb_func_start ScrCmd_GetStdMsgNaix
+ScrCmd_GetStdMsgNaix: ; 0x021EF064
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19832,10 +19832,10 @@ _021EF098:
 	pop {r3, r4, r5, pc}
 	nop
 _021EF0A0: .word ov01_022067C8
-	thumb_func_end ScrCmd_438
+	thumb_func_end ScrCmd_GetStdMsgNaix
 
-	thumb_func_start ScrCmd_MessageExtern
-ScrCmd_MessageExtern: ; 0x021EF0A4
+	thumb_func_start ScrCmd_NonNpcMsgExtern
+ScrCmd_NonNpcMsgExtern: ; 0x021EF0A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -19867,10 +19867,10 @@ ScrCmd_MessageExtern: ; 0x021EF0A4
 	bl DestroyMsgData
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_MessageExtern
+	thumb_func_end ScrCmd_NonNpcMsgExtern
 
-	thumb_func_start ScrCmd_440
-ScrCmd_440: ; 0x021EF0F0
+	thumb_func_start ScrCmd_MsgboxExtern
+ScrCmd_MsgboxExtern: ; 0x021EF0F0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -19912,7 +19912,7 @@ ScrCmd_440: ; 0x021EF0F0
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021EF150: .word ov01_021EF348
-	thumb_func_end ScrCmd_440
+	thumb_func_end ScrCmd_MsgboxExtern
 
 	thumb_func_start ScrCmd_441
 ScrCmd_441: ; 0x021EF154
@@ -69530,7 +69530,10 @@ ov01_0220675C: ; 0x0220675C
 	.byte 0x30, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00
 
 ov01_022067C8: ; 0x022067C8
-	.byte 0xF0, 0x02, 0xD3, 0x00, 0x1E, 0x00, 0xB3, 0x01
+	.short 0x02F0
+	.short 0x00D3
+	.short 0x001E
+	.short 0x01B3
 	.byte 0xFF, 0xFB, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 
 ov01_022067E0: ; 0x022067E0

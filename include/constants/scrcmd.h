@@ -9,6 +9,9 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/sndseq.h"
+#include "constants/ribbon.h"
+#include "constants/pokemon.h"
+#include "constants/std_script.h"
 
 #ifdef PM_ASM
 #define lt    0

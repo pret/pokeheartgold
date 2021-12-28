@@ -3,122 +3,122 @@
 
 	.rodata
 
-	scrdef scr_seq_0025_0341 ; 000
-	scrdef scr_seq_0025_0694 ; 001
-	scrdef scr_seq_0025_06A9 ; 002
-	scrdef scr_seq_0025_06BE ; 003
-	scrdef scr_seq_0025_06D3 ; 004
-	scrdef scr_seq_0025_06E6 ; 005
-	scrdef scr_seq_0025_06F9 ; 006
-	scrdef scr_seq_0025_070C ; 007
-	scrdef scr_seq_0025_071F ; 008
-	scrdef scr_seq_0025_0732 ; 009
-	scrdef scr_seq_0025_0745 ; 010
-	scrdef scr_seq_0025_006E ; 011
-	scrdef scr_seq_0025_01CF ; 012
-	scrdef scr_seq_0025_01E2 ; 013
-	scrdef scr_seq_0025_01F5 ; 014
-	scrdef scr_seq_0025_0208 ; 015
-	scrdef scr_seq_0025_021B ; 016
-	scrdef scr_seq_0025_022E ; 017
-	scrdef scr_seq_0025_0241 ; 018
-	scrdef scr_seq_0025_0254 ; 019
-	scrdef scr_seq_0025_0267 ; 020
-	scrdef scr_seq_0025_027A ; 021
-	scrdef scr_seq_0025_028D ; 022
-	scrdef scr_seq_0025_0395 ; 023
-	scrdef scr_seq_0025_0528 ; 024
-	scrdef scr_seq_0025_00E3 ; 025
-	scrdef scr_seq_0025_02A0 ; 026
+	scrdef scr_seq_0025_D22R0101_0341 ; 000
+	scrdef scr_seq_0025_D22R0101_0694 ; 001
+	scrdef scr_seq_0025_D22R0101_06A9 ; 002
+	scrdef scr_seq_0025_D22R0101_06BE ; 003
+	scrdef scr_seq_0025_D22R0101_06D3 ; 004
+	scrdef scr_seq_0025_D22R0101_06E6 ; 005
+	scrdef scr_seq_0025_D22R0101_06F9 ; 006
+	scrdef scr_seq_0025_D22R0101_070C ; 007
+	scrdef scr_seq_0025_D22R0101_071F ; 008
+	scrdef scr_seq_0025_D22R0101_0732 ; 009
+	scrdef scr_seq_0025_D22R0101_0745 ; 010
+	scrdef scr_seq_0025_D22R0101_006E ; 011
+	scrdef scr_seq_0025_D22R0101_01CF ; 012
+	scrdef scr_seq_0025_D22R0101_01E2 ; 013
+	scrdef scr_seq_0025_D22R0101_01F5 ; 014
+	scrdef scr_seq_0025_D22R0101_0208 ; 015
+	scrdef scr_seq_0025_D22R0101_021B ; 016
+	scrdef scr_seq_0025_D22R0101_022E ; 017
+	scrdef scr_seq_0025_D22R0101_0241 ; 018
+	scrdef scr_seq_0025_D22R0101_0254 ; 019
+	scrdef scr_seq_0025_D22R0101_0267 ; 020
+	scrdef scr_seq_0025_D22R0101_027A ; 021
+	scrdef scr_seq_0025_D22R0101_028D ; 022
+	scrdef scr_seq_0025_D22R0101_0395 ; 023
+	scrdef scr_seq_0025_D22R0101_0528 ; 024
+	scrdef scr_seq_0025_D22R0101_00E3 ; 025
+	scrdef scr_seq_0025_D22R0101_02A0 ; 026
 	scrdef_end
 
-scr_seq_0025_006E:
+scr_seq_0025_D22R0101_006E:
 	comparevartovalue VAR_UNK_40F7, 1
-	callif eq, scr_seq_0025_007D
+	callif eq, scr_seq_0025_D22R0101_007D
 	end
 
-scr_seq_0025_007D:
+scr_seq_0025_D22R0101_007D:
 	show_person_at 20, 51, 0, 48, 1
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 10
 	setvar VAR_TEMP_x4002, 48
 	scrcmd_784 1, 0
-scr_seq_0025_009F:
+scr_seq_0025_D22R0101_009F:
 	scrcmd_790 16384, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif ne, scr_seq_0025_00C4
+	gotoif ne, scr_seq_0025_D22R0101_00C4
 	show_person_at VAR_TEMP_x4001, VAR_TEMP_x4002, 0, 50, 0
 	addvar VAR_TEMP_x4002, 2
-scr_seq_0025_00C4:
+scr_seq_0025_D22R0101_00C4:
 	addvar VAR_TEMP_x4000, 1
 	addvar VAR_TEMP_x4001, 1
 	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif lt, scr_seq_0025_009F
+	gotoif lt, scr_seq_0025_D22R0101_009F
 	scrcmd_784 1, 1
 	return
 
-scr_seq_0025_00E3:
+scr_seq_0025_D22R0101_00E3:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0025_00F4
+	gotoif FALSE, scr_seq_0025_D22R0101_00F4
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0025_00F4:
+scr_seq_0025_D22R0101_00F4:
 	comparevartovalue VAR_UNK_40F7, 1
-	gotoif eq, scr_seq_0025_0162
-	scrcmd_484 VAR_TEMP_x4000
+	gotoif eq, scr_seq_0025_D22R0101_0162
+	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0025_0154
+	gotoif eq, scr_seq_0025_D22R0101_0154
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, scr_seq_0025_0154
+	gotoif eq, scr_seq_0025_D22R0101_0154
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, scr_seq_0025_0162
+	gotoif eq, scr_seq_0025_D22R0101_0162
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, scr_seq_0025_0162
+	gotoif eq, scr_seq_0025_D22R0101_0162
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, scr_seq_0025_0162
+	gotoif eq, scr_seq_0025_D22R0101_0162
 	setflag FLAG_UNK_27E
 	clearflag FLAG_UNK_27F
-	goto scr_seq_0025_016E
+	goto scr_seq_0025_D22R0101_016E
 
-scr_seq_0025_0154:
+scr_seq_0025_D22R0101_0154:
 	clearflag FLAG_UNK_27E
 	setflag FLAG_UNK_27F
-	goto scr_seq_0025_016E
+	goto scr_seq_0025_D22R0101_016E
 
-scr_seq_0025_0162:
+scr_seq_0025_D22R0101_0162:
 	setflag FLAG_UNK_27E
 	setflag FLAG_UNK_27F
 	clearflag FLAG_UNK_996
-scr_seq_0025_016E:
+scr_seq_0025_D22R0101_016E:
 	checkflag FLAG_UNK_964
-	gotoif TRUE, scr_seq_0025_017F
+	gotoif TRUE, scr_seq_0025_D22R0101_017F
 	setflag FLAG_UNK_288
 	end
 
-scr_seq_0025_017F:
+scr_seq_0025_D22R0101_017F:
 	scrcmd_142 34, 16385
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0025_01C9
-	scrcmd_484 VAR_TEMP_x4000
+	gotoif ne, scr_seq_0025_D22R0101_01C9
+	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0025_01C3
+	gotoif eq, scr_seq_0025_D22R0101_01C3
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, scr_seq_0025_01C3
+	gotoif eq, scr_seq_0025_D22R0101_01C3
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, scr_seq_0025_01C3
+	gotoif eq, scr_seq_0025_D22R0101_01C3
 	setflag FLAG_UNK_288
 	end
 
-scr_seq_0025_01C3:
+scr_seq_0025_D22R0101_01C3:
 	clearflag FLAG_UNK_288
 	end
 
-scr_seq_0025_01C9:
+scr_seq_0025_D22R0101_01C9:
 	setflag FLAG_UNK_288
 	end
 
-scr_seq_0025_01CF:
+scr_seq_0025_D22R0101_01CF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -128,7 +128,7 @@ scr_seq_0025_01CF:
 	releaseall
 	end
 
-scr_seq_0025_01E2:
+scr_seq_0025_D22R0101_01E2:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -138,7 +138,7 @@ scr_seq_0025_01E2:
 	releaseall
 	end
 
-scr_seq_0025_01F5:
+scr_seq_0025_D22R0101_01F5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -148,7 +148,7 @@ scr_seq_0025_01F5:
 	releaseall
 	end
 
-scr_seq_0025_0208:
+scr_seq_0025_D22R0101_0208:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -158,7 +158,7 @@ scr_seq_0025_0208:
 	releaseall
 	end
 
-scr_seq_0025_021B:
+scr_seq_0025_D22R0101_021B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -168,7 +168,7 @@ scr_seq_0025_021B:
 	releaseall
 	end
 
-scr_seq_0025_022E:
+scr_seq_0025_D22R0101_022E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -178,7 +178,7 @@ scr_seq_0025_022E:
 	releaseall
 	end
 
-scr_seq_0025_0241:
+scr_seq_0025_D22R0101_0241:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -188,7 +188,7 @@ scr_seq_0025_0241:
 	releaseall
 	end
 
-scr_seq_0025_0254:
+scr_seq_0025_D22R0101_0254:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -198,7 +198,7 @@ scr_seq_0025_0254:
 	releaseall
 	end
 
-scr_seq_0025_0267:
+scr_seq_0025_D22R0101_0267:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -208,7 +208,7 @@ scr_seq_0025_0267:
 	releaseall
 	end
 
-scr_seq_0025_027A:
+scr_seq_0025_D22R0101_027A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -218,7 +218,7 @@ scr_seq_0025_027A:
 	releaseall
 	end
 
-scr_seq_0025_028D:
+scr_seq_0025_D22R0101_028D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -228,13 +228,13 @@ scr_seq_0025_028D:
 	releaseall
 	end
 
-scr_seq_0025_02A0:
+scr_seq_0025_D22R0101_02A0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_484 VAR_TEMP_x4000
+	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, scr_seq_0025_02C7
+	gotoif eq, scr_seq_0025_D22R0101_02C7
 	buffer_players_name 0
 	npc_msg 84
 	waitbutton
@@ -242,17 +242,17 @@ scr_seq_0025_02A0:
 	releaseall
 	end
 
-scr_seq_0025_02C7:
+scr_seq_0025_D22R0101_02C7:
 	buffer_players_name 0
 	npc_msg 85
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0025_032B
+	gotoif eq, scr_seq_0025_D22R0101_032B
 	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0025_0336
+	gotoif eq, scr_seq_0025_D22R0101_0336
 	npc_msg 86
 	closemsg
 	setflag FLAG_UNK_189
@@ -270,101 +270,101 @@ scr_seq_0025_02C7:
 	releaseall
 	end
 
-scr_seq_0025_032B:
+scr_seq_0025_D22R0101_032B:
 	npc_msg 88
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0025_0336:
+scr_seq_0025_D22R0101_0336:
 	npc_msg 89
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0025_0341:
+scr_seq_0025_D22R0101_0341:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_10E
-	gotoif TRUE, scr_seq_0025_0380
+	gotoif TRUE, scr_seq_0025_D22R0101_0380
 	npc_msg 2
 	setvar VAR_SPECIAL_x8004, 217
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0025_038B
-	callstd 2033
+	gotoif eq, scr_seq_0025_D22R0101_038B
+	callstd std_give_item_verbose
 	setflag FLAG_UNK_10E
-scr_seq_0025_0380:
+scr_seq_0025_D22R0101_0380:
 	npc_msg 4
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0025_038B:
+scr_seq_0025_D22R0101_038B:
 	callstd 2009
 	closemsg
 	releaseall
 	end
 
-scr_seq_0025_0395:
+scr_seq_0025_D22R0101_0395:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0025_0650
+	gotoif eq, scr_seq_0025_D22R0101_0650
 	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0025_0664
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 1
+	gotoif eq, scr_seq_0025_D22R0101_0664
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0025_040E
-	apply_movement 255, scr_seq_0025_04C0
-	apply_movement 26, scr_seq_0025_050C
-	goto scr_seq_0025_045C
+	gotoif ne, scr_seq_0025_D22R0101_040E
+	apply_movement 255, scr_seq_0025_D22R0101_04C0
+	apply_movement 26, scr_seq_0025_D22R0101_050C
+	goto scr_seq_0025_D22R0101_045C
 
-scr_seq_0025_040E:
+scr_seq_0025_D22R0101_040E:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0025_0429
-	apply_movement 255, scr_seq_0025_04D8
-	goto scr_seq_0025_045C
+	gotoif ne, scr_seq_0025_D22R0101_0429
+	apply_movement 255, scr_seq_0025_D22R0101_04D8
+	goto scr_seq_0025_D22R0101_045C
 
-scr_seq_0025_0429:
+scr_seq_0025_D22R0101_0429:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0025_044C
-	apply_movement 255, scr_seq_0025_04F8
-	apply_movement 26, scr_seq_0025_050C
-	goto scr_seq_0025_045C
+	gotoif ne, scr_seq_0025_D22R0101_044C
+	apply_movement 255, scr_seq_0025_D22R0101_04F8
+	apply_movement 26, scr_seq_0025_D22R0101_050C
+	goto scr_seq_0025_D22R0101_045C
 
-scr_seq_0025_044C:
-	apply_movement 255, scr_seq_0025_04E4
-	apply_movement 26, scr_seq_0025_050C
-scr_seq_0025_045C:
+scr_seq_0025_D22R0101_044C:
+	apply_movement 255, scr_seq_0025_D22R0101_04E4
+	apply_movement 26, scr_seq_0025_D22R0101_050C
+scr_seq_0025_D22R0101_045C:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0025_0483
-	apply_movement 253, scr_seq_0025_0518
+	gotoif ne, scr_seq_0025_D22R0101_0483
+	apply_movement 253, scr_seq_0025_D22R0101_0518
 	wait_movement
-scr_seq_0025_0483:
+scr_seq_0025_D22R0101_0483:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
@@ -373,17 +373,17 @@ scr_seq_0025_0483:
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	clearflag FLAG_UNK_189
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0025_04BD:
+scr_seq_0025_D22R0101_04BD:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0025_04C0:
+scr_seq_0025_D22R0101_04C0:
 	.short 15, 1
 	.short 12, 2
 	.short 14, 1
@@ -391,89 +391,89 @@ scr_seq_0025_04C0:
 	.short 33, 1
 	.short 254, 0
 
-scr_seq_0025_04D8:
+scr_seq_0025_D22R0101_04D8:
 	.short 12, 3
 	.short 33, 1
 	.short 254, 0
 
-scr_seq_0025_04E4:
+scr_seq_0025_D22R0101_04E4:
 	.short 12, 1
 	.short 14, 1
 	.short 12, 3
 	.short 33, 1
 	.short 254, 0
 
-scr_seq_0025_04F8:
+scr_seq_0025_D22R0101_04F8:
 	.short 12, 1
 	.short 15, 1
 	.short 12, 3
 	.short 33, 1
 	.short 254, 0
 
-scr_seq_0025_050C:
+scr_seq_0025_D22R0101_050C:
 	.short 63, 1
 	.short 32, 1
 	.short 254, 0
 
-scr_seq_0025_0518:
+scr_seq_0025_D22R0101_0518:
 	.short 15, 1
 	.short 12, 1
 	.short 1, 1
 	.short 254, 0
-scr_seq_0025_0528:
+scr_seq_0025_D22R0101_0528:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 0
 	scrcmd_746
 	getmenuchoice VAR_SPECIAL_x800C
 	scrcmd_747
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0025_0650
+	gotoif eq, scr_seq_0025_D22R0101_0650
 	scrcmd_618 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0025_0664
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 1
+	gotoif eq, scr_seq_0025_D22R0101_0664
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0025_05A1
-	apply_movement 255, scr_seq_0025_04C0
-	apply_movement 27, scr_seq_0025_050C
-	goto scr_seq_0025_05EF
+	gotoif ne, scr_seq_0025_D22R0101_05A1
+	apply_movement 255, scr_seq_0025_D22R0101_04C0
+	apply_movement 27, scr_seq_0025_D22R0101_050C
+	goto scr_seq_0025_D22R0101_05EF
 
-scr_seq_0025_05A1:
+scr_seq_0025_D22R0101_05A1:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0025_05BC
-	apply_movement 255, scr_seq_0025_04D8
-	goto scr_seq_0025_05EF
+	gotoif ne, scr_seq_0025_D22R0101_05BC
+	apply_movement 255, scr_seq_0025_D22R0101_04D8
+	goto scr_seq_0025_D22R0101_05EF
 
-scr_seq_0025_05BC:
+scr_seq_0025_D22R0101_05BC:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0025_05DF
-	apply_movement 255, scr_seq_0025_0678
-	apply_movement 27, scr_seq_0025_050C
-	goto scr_seq_0025_05EF
+	gotoif ne, scr_seq_0025_D22R0101_05DF
+	apply_movement 255, scr_seq_0025_D22R0101_0678
+	apply_movement 27, scr_seq_0025_D22R0101_050C
+	goto scr_seq_0025_D22R0101_05EF
 
-scr_seq_0025_05DF:
-	apply_movement 255, scr_seq_0025_04E4
-	apply_movement 27, scr_seq_0025_050C
-scr_seq_0025_05EF:
+scr_seq_0025_D22R0101_05DF:
+	apply_movement 255, scr_seq_0025_D22R0101_04E4
+	apply_movement 27, scr_seq_0025_D22R0101_050C
+scr_seq_0025_D22R0101_05EF:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0025_0616
-	apply_movement 253, scr_seq_0025_0518
+	gotoif ne, scr_seq_0025_D22R0101_0616
+	apply_movement 253, scr_seq_0025_D22R0101_0518
 	wait_movement
-scr_seq_0025_0616:
+scr_seq_0025_D22R0101_0616:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
@@ -482,31 +482,31 @@ scr_seq_0025_0616:
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	clearflag FLAG_UNK_189
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0025_0650:
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 5
+scr_seq_0025_D22R0101_0650:
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0025_0664:
-	scrcmd_438 2, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 3
+scr_seq_0025_D22R0101_0664:
+	get_std_msg_naix 2, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 
-scr_seq_0025_0678:
+scr_seq_0025_D22R0101_0678:
 	.short 13, 1
 	.short 15, 2
 	.short 12, 2
@@ -514,7 +514,7 @@ scr_seq_0025_0678:
 	.short 12, 2
 	.short 33, 1
 	.short 254, 0
-scr_seq_0025_0694:
+scr_seq_0025_D22R0101_0694:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -522,7 +522,7 @@ scr_seq_0025_0694:
 	callstd 2000
 	end
 
-scr_seq_0025_06A9:
+scr_seq_0025_D22R0101_06A9:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -530,7 +530,7 @@ scr_seq_0025_06A9:
 	callstd 2000
 	end
 
-scr_seq_0025_06BE:
+scr_seq_0025_D22R0101_06BE:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -538,7 +538,7 @@ scr_seq_0025_06BE:
 	callstd 2000
 	end
 
-scr_seq_0025_06D3:
+scr_seq_0025_D22R0101_06D3:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -548,7 +548,7 @@ scr_seq_0025_06D3:
 	releaseall
 	end
 
-scr_seq_0025_06E6:
+scr_seq_0025_D22R0101_06E6:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -558,7 +558,7 @@ scr_seq_0025_06E6:
 	releaseall
 	end
 
-scr_seq_0025_06F9:
+scr_seq_0025_D22R0101_06F9:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -568,7 +568,7 @@ scr_seq_0025_06F9:
 	releaseall
 	end
 
-scr_seq_0025_070C:
+scr_seq_0025_D22R0101_070C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -578,7 +578,7 @@ scr_seq_0025_070C:
 	releaseall
 	end
 
-scr_seq_0025_071F:
+scr_seq_0025_D22R0101_071F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -588,7 +588,7 @@ scr_seq_0025_071F:
 	releaseall
 	end
 
-scr_seq_0025_0732:
+scr_seq_0025_D22R0101_0732:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -598,7 +598,7 @@ scr_seq_0025_0732:
 	releaseall
 	end
 
-scr_seq_0025_0745:
+scr_seq_0025_D22R0101_0745:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -610,6 +610,6 @@ scr_seq_0025_0745:
 	releaseall
 	end
 
-scr_seq_0025_0760:
+scr_seq_0025_D22R0101_0760:
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

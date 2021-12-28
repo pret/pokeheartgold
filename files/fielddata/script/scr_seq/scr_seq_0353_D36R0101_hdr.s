@@ -6,10 +6,10 @@
 	.byte 3
 	.short 22, 0
 	.byte 1
-	.word scr_seq_0353_0010-.-4
+	.word scr_seq_0353_D36R0101_hdr_0010-.-4
 	.byte 0
 
-scr_seq_0353_0010:
+scr_seq_0353_D36R0101_hdr_0010:
 	.short 16638, 4, 23
 	.short 0
 

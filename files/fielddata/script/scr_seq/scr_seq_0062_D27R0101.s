@@ -3,16 +3,16 @@
 
 	.rodata
 
-	scrdef scr_seq_0062_0016 ; 000
-	scrdef scr_seq_0062_0029 ; 001
-	scrdef scr_seq_0062_000E ; 002
+	scrdef scr_seq_0062_D27R0101_0016 ; 000
+	scrdef scr_seq_0062_D27R0101_0029 ; 001
+	scrdef scr_seq_0062_D27R0101_000E ; 002
 	scrdef_end
 
-scr_seq_0062_000E:
+scr_seq_0062_D27R0101_000E:
 	setvar VAR_UNK_4125, 0
 	end
 
-scr_seq_0062_0016:
+scr_seq_0062_D27R0101_0016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -22,7 +22,7 @@ scr_seq_0062_0016:
 	releaseall
 	end
 
-scr_seq_0062_0029:
+scr_seq_0062_D27R0101_0029:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

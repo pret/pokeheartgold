@@ -1615,16 +1615,16 @@ scr_seq_0003_14C5:
 	.byte 0x02, 0x00
 scr_seq_0003_14C7:
 	scrcmd_747
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 1
 	waitbutton
 	closemsg
 	endstd
 	end
 
 scr_seq_0003_14DD:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 6
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 6
 	scrcmd_054
 	goto scr_seq_0003_145E
 
@@ -1673,8 +1673,8 @@ scr_seq_0003_1564:
 	gotoif TRUE, scr_seq_0003_1630
 	checkflag FLAG_UNK_18A
 	gotoif TRUE, scr_seq_0003_1654
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 1
 scr_seq_0003_159E:
 	waitbutton
 	closemsg
@@ -1690,8 +1690,8 @@ scr_seq_0003_15A6:
 	gotoif TRUE, scr_seq_0003_1642
 	checkflag FLAG_UNK_18A
 	gotoif TRUE, scr_seq_0003_1666
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 6
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 6
 scr_seq_0003_15DE:
 	scrcmd_054
 	goto scr_seq_0003_14FB
@@ -1699,43 +1699,43 @@ scr_seq_0003_15DE:
 scr_seq_0003_15E6:
 	.byte 0x02, 0x00
 scr_seq_0003_15E8:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 2
 	goto scr_seq_0003_159E
 
 scr_seq_0003_15FA:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 7
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 7
 	goto scr_seq_0003_15DE
 
 scr_seq_0003_160C:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 3
 	goto scr_seq_0003_159E
 
 scr_seq_0003_161E:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 8
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 8
 	goto scr_seq_0003_15DE
 
 scr_seq_0003_1630:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 4
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 4
 	goto scr_seq_0003_159E
 
 scr_seq_0003_1642:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 9
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 9
 	goto scr_seq_0003_15DE
 
 scr_seq_0003_1654:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 5
 	goto scr_seq_0003_159E
 
 scr_seq_0003_1666:
-	scrcmd_438 3, VAR_SPECIAL_x800C
-	scrcmd_440 VAR_SPECIAL_x800C, 10
+	get_std_msg_naix 3, VAR_SPECIAL_x800C
+	msgbox_extern VAR_SPECIAL_x800C, 10
 	goto scr_seq_0003_15DE
 
 scr_seq_0003_1678:

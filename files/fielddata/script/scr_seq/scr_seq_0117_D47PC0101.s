@@ -3,17 +3,17 @@
 
 	.rodata
 
-	scrdef scr_seq_0117_000E ; 000
-	scrdef scr_seq_0117_001A ; 001
-	scrdef scr_seq_0117_002D ; 002
+	scrdef scr_seq_0117_D47PC0101_000E ; 000
+	scrdef scr_seq_0117_D47PC0101_001A ; 001
+	scrdef scr_seq_0117_D47PC0101_002D ; 002
 	scrdef_end
 
-scr_seq_0117_000E:
+scr_seq_0117_D47PC0101_000E:
 	setvar VAR_SPECIAL_x8007, 0
 	callstd 2002
 	end
 
-scr_seq_0117_001A:
+scr_seq_0117_D47PC0101_001A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -23,7 +23,7 @@ scr_seq_0117_001A:
 	releaseall
 	end
 
-scr_seq_0117_002D:
+scr_seq_0117_D47PC0101_002D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
