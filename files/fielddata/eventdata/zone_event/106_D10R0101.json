@@ -5,7 +5,7 @@
       "ovid": 333,
       "mvt": 16,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 6,
       "dirn": 2,
       "eye": 0,
@@ -44,7 +44,7 @@
       "h": 1,
       "z": 0,
       "val": 1,
-      "var": 16676
+      "var": "VAR_UNK_4124"
     }
   ]
 }

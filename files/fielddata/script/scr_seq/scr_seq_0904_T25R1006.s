@@ -93,9 +93,9 @@ scr_seq_0904_T25R1006_0123:
 	faceplayer
 	scrcmd_113 20, 2
 	npc_msg 10
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0904_T25R1006_0156
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -423,9 +423,9 @@ scr_seq_0904_T25R1006_05CC:
 	gotoif ge, scr_seq_0904_T25R1006_066F
 	npc_msg 25
 scr_seq_0904_T25R1006_05F7:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0904_T25R1006_061B
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -437,7 +437,7 @@ scr_seq_0904_T25R1006_061B:
 	npc_msg 26
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 17
+	register_gear_number 17
 	npc_msg 27
 	waitbutton
 	closemsg
@@ -468,9 +468,9 @@ scr_seq_0904_T25R1006_0678:
 	.byte 0x02, 0x00
 scr_seq_0904_T25R1006_067A:
 	npc_msg 30
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0904_T25R1006_06DB
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -524,14 +524,14 @@ scr_seq_0904_T25R1006_0702:
 	goto scr_seq_0904_T25R1006_0717
 
 scr_seq_0904_T25R1006_0717:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
 	scrcmd_751 209, 255, 0
 	scrcmd_751 210, 255, 1
 	scrcmd_751 211, 255, 2
 	scrcmd_751 212, 255, 3
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0904_T25R1006_077B
@@ -597,9 +597,9 @@ scr_seq_0904_T25R1006_07D5:
 	comparevartovalue VAR_SPECIAL_x8000, 2
 	callif eq, scr_seq_0904_T25R1006_07CD
 	scrcmd_115
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	play_se SEQ_SE_DP_JIHANKI
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	npc_msg 6
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
@@ -608,7 +608,7 @@ scr_seq_0904_T25R1006_07D5:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0904_T25R1006_08A0
 	play_se SEQ_SE_DP_JIHANKI
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	npc_msg 7
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

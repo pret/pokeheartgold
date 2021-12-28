@@ -38,7 +38,7 @@ scr_seq_0002_005C:
 	setvar VAR_SPECIAL_x8004, 4
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0002_0352
@@ -82,7 +82,7 @@ scr_seq_0002_011F:
 
 scr_seq_0002_0125:
 	setvar VAR_SPECIAL_x8004, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_490 32768
 	scrcmd_490 32769
 	scrcmd_490 32770
@@ -152,7 +152,7 @@ scr_seq_0002_0241:
 	setvar VAR_SPECIAL_x8004, 8
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0002_03A4
@@ -174,7 +174,7 @@ scr_seq_0002_0241:
 	setvar VAR_SPECIAL_x8004, 9
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0002_03A4
@@ -226,7 +226,7 @@ scr_seq_0002_037E:
 scr_seq_0002_0381:
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_117
 	scrcmd_784 3, 1
 	endstd
@@ -236,7 +236,7 @@ scr_seq_0002_0391:
 	npc_msg 40
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_117
 	scrcmd_784 3, 1
 	endstd
@@ -246,9 +246,9 @@ scr_seq_0002_03A4:
 	setvar VAR_SPECIAL_x8004, 10
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0002_0241
 	setvar VAR_SPECIAL_x8004, 11

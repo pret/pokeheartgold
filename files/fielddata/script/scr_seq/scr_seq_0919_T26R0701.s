@@ -109,9 +109,9 @@ scr_seq_0919_T26R0701_0113:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0919_T26R0701_025E
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -231,9 +231,9 @@ scr_seq_0919_T26R0701_02DC:
 	gotoif ge, scr_seq_0919_T26R0701_037F
 	npc_msg 4
 scr_seq_0919_T26R0701_0307:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0919_T26R0701_032B
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -245,7 +245,7 @@ scr_seq_0919_T26R0701_032B:
 	npc_msg 5
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 38
+	register_gear_number 38
 	npc_msg 6
 	waitbutton
 	closemsg
@@ -276,9 +276,9 @@ scr_seq_0919_T26R0701_0388:
 	.byte 0x02, 0x00
 scr_seq_0919_T26R0701_038A:
 	npc_msg 9
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0919_T26R0701_03EB
 	scrcmd_618 VAR_SPECIAL_x800C

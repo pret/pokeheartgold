@@ -21,7 +21,7 @@ scr_seq_0227_R30_002E:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 0
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_UNK_408C, 3
 	end
 
@@ -62,7 +62,7 @@ scr_seq_0227_R30_00A0:
 	scrcmd_310 77
 	scrcmd_308 77
 	clearflag FLAG_UNK_24F
-	scrcmd_100 13
+	show_person 13
 	apply_movement 13, scr_seq_0227_R30_01B0
 	wait_movement
 	scrcmd_311 77
@@ -184,7 +184,7 @@ scr_seq_0227_R30_0237:
 	setvar VAR_SPECIAL_x8004, 0
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 0
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_UNK_4095, 0
 	setflag FLAG_UNK_0A7
 	releaseall

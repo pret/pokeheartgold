@@ -80,7 +80,7 @@ scr_seq_0920_T27_00DC:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_23F
-	scrcmd_100 6
+	show_person 6
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
@@ -178,9 +178,9 @@ scr_seq_0920_T27_020F:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0920_T27_0314
 	scrcmd_618 VAR_SPECIAL_x800C

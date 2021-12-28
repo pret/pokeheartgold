@@ -92,7 +92,7 @@ scr_seq_0029_D23R0101_00FD:
 	checkflag FLAG_UNK_08A
 	gotoif TRUE, scr_seq_0029_D23R0101_0243
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0029_D23R0101_0221
@@ -127,7 +127,7 @@ scr_seq_0029_D23R0101_00FD:
 	wait 30, VAR_SPECIAL_x800C
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 9
 	buffer_players_name 0
 	npc_msg 10
@@ -160,7 +160,7 @@ scr_seq_0029_D23R0101_0221:
 	npc_msg 13
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -170,7 +170,7 @@ scr_seq_0029_D23R0101_022E:
 	npc_msg 12
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -291,7 +291,7 @@ scr_seq_0029_D23R0101_036C:
 scr_seq_0029_D23R0101_0384:
 	scrcmd_609
 	lockall
-	show_person_at 5, 13, 1, 6, 3
+	move_person 5, 13, 1, 6, 3
 	callstd std_play_rival_intro_music
 	get_person_coords 6, VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 5
@@ -726,18 +726,18 @@ scr_seq_0029_D23R0101_0966:
 	checkflag FLAG_UNK_AA5
 	gotoif TRUE, scr_seq_0029_D23R0101_09AF
 	npc_msg 28
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0029_D23R0101_09E5
 	goto scr_seq_0029_D23R0101_09DA
 
 scr_seq_0029_D23R0101_09AF:
 	npc_msg 45
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0029_D23R0101_09E5
 	goto scr_seq_0029_D23R0101_09DA

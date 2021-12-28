@@ -22,9 +22,9 @@ scr_seq_0165_0035:
 	.byte 0x02, 0x00
 scr_seq_0165_0037:
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0165_005E
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -70,9 +70,9 @@ scr_seq_0165_00D5:
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg 3
 	npc_msg 4
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0165_005E
 	comparevartovalue VAR_SPECIAL_x800C, 1

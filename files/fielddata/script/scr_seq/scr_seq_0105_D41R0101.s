@@ -31,9 +31,9 @@ scr_seq_0105_D41R0101_003C:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0105_D41R0101_0164
 	scrcmd_618 VAR_SPECIAL_x800C

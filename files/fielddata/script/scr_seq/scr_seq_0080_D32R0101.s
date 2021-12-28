@@ -41,7 +41,7 @@ scr_seq_0080_D32R0101_003E:
 scr_seq_0080_D32R0101_0077:
 	npc_msg 3
 	call scr_seq_0080_D32R0101_00A6
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 10
 	waitbutton
 	closemsg
@@ -59,7 +59,7 @@ scr_seq_0080_D32R0101_008D:
 scr_seq_0080_D32R0101_00A4:
 	.byte 0x02, 0x00
 scr_seq_0080_D32R0101_00A6:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 451, 255, 0
 	scrcmd_751 452, 255, 1
@@ -82,7 +82,7 @@ scr_seq_0080_D32R0101_00A6:
 	return
 
 scr_seq_0080_D32R0101_012B:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 10
 	waitbutton
 	closemsg
@@ -129,9 +129,9 @@ scr_seq_0080_D32R0101_017E:
 	lockall
 	faceplayer
 	npc_msg 17
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0080_D32R0101_01AD
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -161,9 +161,9 @@ scr_seq_0080_D32R0101_01CB:
 	lockall
 	faceplayer
 	npc_msg 20
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0080_D32R0101_01FA
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -193,9 +193,9 @@ scr_seq_0080_D32R0101_0218:
 	lockall
 	faceplayer
 	npc_msg 23
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0080_D32R0101_0247
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -225,9 +225,9 @@ scr_seq_0080_D32R0101_0265:
 	lockall
 	faceplayer
 	npc_msg 26
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0080_D32R0101_0294
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -257,9 +257,9 @@ scr_seq_0080_D32R0101_02B2:
 	lockall
 	faceplayer
 	npc_msg 29
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0080_D32R0101_02E1
 	comparevartovalue VAR_SPECIAL_x800C, 1

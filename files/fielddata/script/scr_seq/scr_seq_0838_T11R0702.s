@@ -109,7 +109,7 @@ scr_seq_0838_T11R0702_0107:
 	scrcmd_674 32771, 32780
 	comparevartovalue VAR_SPECIAL_x8003, 1
 	gotoif ge, scr_seq_0838_T11R0702_01E5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0838_T11R0702_073D
@@ -136,7 +136,7 @@ scr_seq_0838_T11R0702_0189:
 scr_seq_0838_T11R0702_01E3:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_01E5:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 15, 255, 0
 	scrcmd_751 14, 255, 1
@@ -200,27 +200,27 @@ scr_seq_0838_T11R0702_02FE:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_0300:
 	clearflag FLAG_UNK_283
-	scrcmd_100 0
+	show_person 0
 	return
 
 scr_seq_0838_T11R0702_030A:
 	clearflag FLAG_UNK_285
-	scrcmd_100 2
+	show_person 2
 	return
 
 scr_seq_0838_T11R0702_0314:
 	clearflag FLAG_UNK_284
-	scrcmd_100 3
+	show_person 3
 	return
 
 scr_seq_0838_T11R0702_031E:
 	clearflag FLAG_UNK_286
-	scrcmd_100 1
+	show_person 1
 	return
 
 scr_seq_0838_T11R0702_0328:
 	clearflag FLAG_UNK_287
-	scrcmd_100 4
+	show_person 4
 	return
 
 scr_seq_0838_T11R0702_0332:
@@ -255,7 +255,7 @@ scr_seq_0838_T11R0702_039F:
 scr_seq_0838_T11R0702_03AA:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_03AC:
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -619,7 +619,7 @@ scr_seq_0838_T11R0702_083A:
 	comparevartovalue VAR_SPECIAL_x8003, 0
 	gotoif eq, scr_seq_0838_T11R0702_088D
 	npc_msg 13
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 14, 255, 0
 	scrcmd_751 19, 255, 1
@@ -640,7 +640,7 @@ scr_seq_0838_T11R0702_088D:
 scr_seq_0838_T11R0702_089A:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_089C:
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	releaseall
 	end

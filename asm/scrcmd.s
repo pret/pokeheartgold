@@ -148,7 +148,7 @@ gScriptCmdTable:
 	.word ScrCmd_ReleaseAll                             ; 097
 	.word ScrCmd_098                                    ; 098
 	.word ScrCmd_099                                    ; 099
-	.word ScrCmd_100                                    ; 100
+	.word ScrCmd_ShowPerson                                    ; 100
 	.word ScrCmd_HidePerson                             ; 101
 	.word ScrCmd_102                                    ; 102
 	.word ScrCmd_103                                    ; 103
@@ -194,7 +194,7 @@ gScriptCmdTable:
 	.word ScrCmd_NameRival                              ; 143
 	.word ScrCmd_144                                    ; 144
 	.word ScrCmd_RegisterPokegearCard                   ; 145
-	.word ScrCmd_146                                    ; 146
+	.word ScrCmd_RegisterGearNumber                                    ; 146
 	.word ScrCmd_147                                    ; 147
 	.word ScrCmd_148                                    ; 148
 	.word ScrCmd_149                                    ; 149
@@ -221,7 +221,7 @@ gScriptCmdTable:
 	.word ScrCmd_170                                    ; 170
 	.word ScrCmd_171                                    ; 171
 	.word ScrCmd_172                                    ; 172
-	.word ScrCmd_173                                    ; 173
+	.word ScrCmd_NicknameInput                                    ; 173
 	.word ScrCmd_FadeScreen                             ; 174
 	.word ScrCmd_WaitFade                               ; 175
 	.word ScrCmd_176                                    ; 176
@@ -242,9 +242,9 @@ gScriptCmdTable:
 	.word ScrCmd_191                                    ; 191
 	.word ScrCmd_192                                    ; 192
 	.word ScrCmd_BufferMonSpeciesName                                    ; 193
-	.word ScrCmd_194                                    ; 194
-	.word ScrCmd_195                                    ; 195
-	.word ScrCmd_196                                    ; 196
+	.word ScrCmd_BufferItemName                                    ; 194
+	.word ScrCmd_BufferPocketName                                    ; 195
+	.word ScrCmd_BufferTMHMMoveName                                    ; 196
 	.word ScrCmd_197                                    ; 197
 	.word ScrCmd_198                                    ; 198
 	.word ScrCmd_BufferPartyMonNick                     ; 199
@@ -341,7 +341,7 @@ gScriptCmdTable:
 	.word ScrCmd_290                                    ; 290
 	.word ScrCmd_291                                    ; 291
 	.word ScrCmd_292                                    ; 292
-	.word ScrCmd_293                                    ; 293
+	.word ScrCmd_GiveRunningShoes                                    ; 293
 	.word ScrCmd_CheckBadge                                    ; 294
 	.word ScrCmd_GiveBadge                                    ; 295
 	.word ScrCmd_CountBadges                                    ; 296
@@ -387,7 +387,7 @@ gScriptCmdTable:
 	.word ScrCmd_336                                    ; 336
 	.word ScrCmd_337                                    ; 337
 	.word ScrCmd_338                                    ; 338
-	.word ScrCmd_ShowPersonAt                           ; 339
+	.word ScrCmd_MovePerson                           ; 339
 	.word ScrCmd_340                                    ; 340
 	.word ScrCmd_341                                    ; 341
 	.word ScrCmd_342                                    ; 342
@@ -478,8 +478,8 @@ gScriptCmdTable:
 	.word ScrCmd_427                                    ; 427
 	.word ScrCmd_428                                    ; 428
 	.word ScrCmd_CountFossils                           ; 429
-	.word ScrCmd_430                                    ; 430
-	.word ScrCmd_431                                    ; 431
+	.word ScrCmd_SetPhoneCall                                    ; 430
+	.word ScrCmd_RunPhoneCall                                    ; 431
 	.word ScrCmd_GetFossilPokemon                       ; 432
 	.word ScrCmd_GetFossilMinimumAmount                 ; 433
 	.word ScrCmd_434                                    ; 434
@@ -716,7 +716,7 @@ gScriptCmdTable:
 	.word ScrCmd_665                                    ; 665
 	.word ScrCmd_666                                    ; 666
 	.word ScrCmd_667                                    ; 667
-	.word ScrCmd_668                                    ; 668
+	.word ScrCmd_BufferTypeName                                    ; 668
 	.word ScrCmd_GetItemQuantity                        ; 669
 	.word ScrCmd_670                                    ; 670
 	.word ScrCmd_671                                    ; 671
@@ -794,8 +794,8 @@ gScriptCmdTable:
 	.word ScrCmd_743                                    ; 743
 	.word ScrCmd_744                                    ; 744
 	.word ScrCmd_745                                    ; 745
-	.word ScrCmd_746                                    ; 746
-	.word ScrCmd_747                                    ; 747
+	.word ScrCmd_TouchscreenMenuHide                                    ; 746
+	.word ScrCmd_TouchscreenMenuShow                                    ; 747
 	.word ScrCmd_GetMenuChoice                          ; 748
 	.word ScrCmd_749                                    ; 749
 	.word ScrCmd_750                                    ; 750
@@ -891,7 +891,7 @@ gScriptCmdTable:
 	.word ScrCmd_840                                    ; 840
 	.word ScrCmd_841                                    ; 841
 	.word ScrCmd_842                                    ; 842
-	.word ScrCmd_843                                    ; 843
+	.word ScrCmd_BufferItemNameIndef                                    ; 843
 	.word ScrCmd_844                                    ; 844
 	.word ScrCmd_845                                    ; 845
 	.word ScrCmd_846                                    ; 846
@@ -4001,8 +4001,8 @@ _02041FB4:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_099
 
-	thumb_func_start ScrCmd_100
-ScrCmd_100: ; 0x02041FB8
+	thumb_func_start ScrCmd_ShowPerson
+ScrCmd_ShowPerson: ; 0x02041FB8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -4034,7 +4034,7 @@ _02041FFA:
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ScrCmd_100
+	thumb_func_end ScrCmd_ShowPerson
 
 	thumb_func_start ScrCmd_HidePerson
 ScrCmd_HidePerson: ; 0x02042000
@@ -6336,8 +6336,8 @@ ScrCmd_NameRival: ; 0x020431E4
 	.balign 4, 0
 	thumb_func_end ScrCmd_NameRival
 
-	thumb_func_start ScrCmd_173
-ScrCmd_173: ; 0x02043214
+	thumb_func_start ScrCmd_NicknameInput
+ScrCmd_NicknameInput: ; 0x02043214
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	add r4, r0, #0
@@ -6401,7 +6401,7 @@ _0204325C:
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_173
+	thumb_func_end ScrCmd_NicknameInput
 
 	thumb_func_start ScrCmd_629
 ScrCmd_629: ; 0x020432A0
@@ -9047,8 +9047,8 @@ ScrCmd_338: ; 0x020446EC
 	.balign 4, 0
 	thumb_func_end ScrCmd_338
 
-	thumb_func_start ScrCmd_ShowPersonAt
-ScrCmd_ShowPersonAt: ; 0x0204473C
+	thumb_func_start ScrCmd_MovePerson
+ScrCmd_MovePerson: ; 0x0204473C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -9108,7 +9108,7 @@ ScrCmd_ShowPersonAt: ; 0x0204473C
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_ShowPersonAt
+	thumb_func_end ScrCmd_MovePerson
 
 	thumb_func_start ScrCmd_340
 ScrCmd_340: ; 0x020447CC
@@ -14240,8 +14240,8 @@ ScrCmd_804: ; 0x02046FAC
 	pop {r4, pc}
 	thumb_func_end ScrCmd_804
 
-	thumb_func_start ScrCmd_146
-ScrCmd_146: ; 0x02046FC8
+	thumb_func_start ScrCmd_RegisterGearNumber
+ScrCmd_RegisterGearNumber: ; 0x02046FC8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14260,11 +14260,11 @@ ScrCmd_146: ; 0x02046FC8
 	cmp r1, #0x4b
 	bhs _02046FF8
 	add r0, r4, #0
-	bl sub_0202EF18
+	bl RegisterPhoneNumberInPokeGear
 _02046FF8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_146
+	thumb_func_end ScrCmd_RegisterGearNumber
 
 	thumb_func_start ScrCmd_147
 ScrCmd_147: ; 0x02046FFC
@@ -14295,7 +14295,7 @@ ScrCmd_147: ; 0x02046FFC
 	bhs _02047056
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0202EEE4
+	bl GSPlayerMisc_IsGearNumberRegistered
 	strh r0, [r4]
 	ldrh r0, [r4]
 	cmp r0, #0xff
@@ -14316,8 +14316,8 @@ _0204705A:
 	.balign 4, 0
 	thumb_func_end ScrCmd_147
 
-	thumb_func_start ScrCmd_430
-ScrCmd_430: ; 0x02047060
+	thumb_func_start ScrCmd_SetPhoneCall
+ScrCmd_SetPhoneCall: ; 0x02047060
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -14381,10 +14381,10 @@ ScrCmd_430: ; 0x02047060
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_430
+	thumb_func_end ScrCmd_SetPhoneCall
 
-	thumb_func_start ScrCmd_431
-ScrCmd_431: ; 0x020470F4
+	thumb_func_start ScrCmd_RunPhoneCall
+ScrCmd_RunPhoneCall: ; 0x020470F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14404,7 +14404,7 @@ ScrCmd_431: ; 0x020470F4
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0204711C: .word sub_02042974
-	thumb_func_end ScrCmd_431
+	thumb_func_end ScrCmd_RunPhoneCall
 
 	thumb_func_start ScrCmd_460
 ScrCmd_460: ; 0x02047120
@@ -15157,8 +15157,8 @@ ScrCmd_734: ; 0x0204769C
 	.balign 4, 0
 	thumb_func_end ScrCmd_734
 
-	thumb_func_start ScrCmd_746
-ScrCmd_746: ; 0x020476B4
+	thumb_func_start ScrCmd_TouchscreenMenuHide
+ScrCmd_TouchscreenMenuHide: ; 0x020476B4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -15183,7 +15183,7 @@ _020476CA:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _020476E4: .word sub_020476E8
-	thumb_func_end ScrCmd_746
+	thumb_func_end ScrCmd_TouchscreenMenuHide
 
 	thumb_func_start sub_020476E8
 sub_020476E8: ; 0x020476E8
@@ -15213,8 +15213,8 @@ _02047716:
 	.balign 4, 0
 	thumb_func_end sub_020476E8
 
-	thumb_func_start ScrCmd_747
-ScrCmd_747: ; 0x0204771C
+	thumb_func_start ScrCmd_TouchscreenMenuShow
+ScrCmd_TouchscreenMenuShow: ; 0x0204771C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -15232,7 +15232,7 @@ ScrCmd_747: ; 0x0204771C
 	pop {r3, r4, r5, pc}
 	nop
 _02047740: .word sub_02047744
-	thumb_func_end ScrCmd_747
+	thumb_func_end ScrCmd_TouchscreenMenuShow
 
 	thumb_func_start sub_02047744
 sub_02047744: ; 0x02047744

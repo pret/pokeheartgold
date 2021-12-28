@@ -134,9 +134,9 @@ scr_seq_0094_D37R0102_01BC:
 	gotoif TRUE, scr_seq_0094_D37R0102_0331
 	scrcmd_113 20, 2
 	npc_msg 10
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_01F5
 	goto scr_seq_0094_D37R0102_030C
@@ -253,9 +253,9 @@ scr_seq_0094_D37R0102_033C:
 	gotoif TRUE, scr_seq_0094_D37R0102_04BD
 	scrcmd_113 20, 2
 	npc_msg 17
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_0375
 	goto scr_seq_0094_D37R0102_0498
@@ -390,7 +390,7 @@ scr_seq_0094_D37R0102_04E8:
 	setvar VAR_TEMP_x4006, 0
 	setvar VAR_TEMP_x4007, 0
 scr_seq_0094_D37R0102_0522:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 445, 255, 0
 	scrcmd_751 446, 255, 1
@@ -453,7 +453,7 @@ scr_seq_0094_D37R0102_063F:
 	goto scr_seq_0094_D37R0102_0664
 
 scr_seq_0094_D37R0102_0664:
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	scrcmd_198 1, 32774
 	npc_msg 2
 	getmenuchoice VAR_SPECIAL_x800C
@@ -521,9 +521,9 @@ scr_seq_0094_D37R0102_0796:
 scr_seq_0094_D37R0102_07C6:
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 1, 32780
+	buffer_pocket_name 1, 32780
 	npc_msg 3
 	npc_msg 4
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
@@ -571,7 +571,7 @@ scr_seq_0094_D37R0102_087D:
 	goto scr_seq_0094_D37R0102_0522
 
 scr_seq_0094_D37R0102_0886:
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_114
 	npc_msg 9
 	waitbutton
@@ -856,9 +856,9 @@ scr_seq_0094_D37R0102_0C1F:
 
 scr_seq_0094_D37R0102_0C28:
 	npc_msg 41
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_0C4F
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -870,9 +870,9 @@ scr_seq_0094_D37R0102_0C4F:
 	goto scr_seq_0094_D37R0102_0C7C
 
 scr_seq_0094_D37R0102_0C58:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_0C28
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -880,9 +880,9 @@ scr_seq_0094_D37R0102_0C58:
 	end
 
 scr_seq_0094_D37R0102_0C7C:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_0CA0
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -1029,9 +1029,9 @@ scr_seq_0094_D37R0102_0EDA:
 	lockall
 	faceplayer
 	npc_msg 29
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_0F05
 	npc_msg 34
@@ -1130,7 +1130,7 @@ scr_seq_0094_D37R0102_1010:
 scr_seq_0094_D37R0102_102C:
 	scrcmd_609
 	lockall
-	callstd 2067
+	callstd std_play_kimono_girl_music
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 31
 	gotoif ne, scr_seq_0094_D37R0102_1055
@@ -1159,7 +1159,7 @@ scr_seq_0094_D37R0102_109C:
 	wait_movement
 	hide_person 12
 	setflag FLAG_UNK_237
-	callstd 2068
+	callstd std_fade_end_kimono_girl_music
 	releaseall
 	setvar VAR_UNK_40E7, 3
 	end
@@ -1436,9 +1436,9 @@ scr_seq_0094_D37R0102_1456:
 	gotoif eq, scr_seq_0094_D37R0102_1521
 scr_seq_0094_D37R0102_1480:
 	npc_msg 57
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0094_D37R0102_1530
 	hasenoughmoneyimmediate 32780, 100

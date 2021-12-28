@@ -105,9 +105,9 @@ scr_seq_0877_T24GYM0101_0115:
 
 scr_seq_0877_T24GYM0101_0135:
 	npc_msg 10
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0877_T24GYM0101_0153
 	closemsg

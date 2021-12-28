@@ -100,7 +100,7 @@ scr_seq_0075_D31R0207_0142:
 	return
 
 scr_seq_0075_D31R0207_0148:
-	show_person_at 0, 8, 0, 3, 1
+	move_person 0, 8, 0, 3, 1
 	end
 
 scr_seq_0075_D31R0207_0156:
@@ -120,9 +120,9 @@ scr_seq_0075_D31R0207_0177:
 	faceplayer
 	buffer_players_name 0
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0075_D31R0207_01A3
 	npc_msg 0
@@ -180,9 +180,9 @@ scr_seq_0075_D31R0207_0246:
 	scrcmd_846 2, VAR_SPECIAL_x8004, 0, 0
 	scrcmd_197 3, 32773
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0075_D31R0207_02B2
 scr_seq_0075_D31R0207_02A7:
@@ -213,9 +213,9 @@ scr_seq_0075_D31R0207_02D3:
 	call scr_seq_0075_D31R0207_0216
 	buffer_players_name 4
 	npc_msg 15
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0075_D31R0207_031A
 scr_seq_0075_D31R0207_030F:
@@ -246,9 +246,9 @@ scr_seq_0075_D31R0207_033E:
 	setvar VAR_TEMP_x4009, 2
 	call scr_seq_0075_D31R0207_0216
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0075_D31R0207_0382
 scr_seq_0075_D31R0207_0377:
@@ -278,9 +278,9 @@ scr_seq_0075_D31R0207_03A3:
 	setvar VAR_TEMP_x4009, 3
 	call scr_seq_0075_D31R0207_0216
 	npc_msg 12
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0075_D31R0207_03E7
 scr_seq_0075_D31R0207_03DC:
@@ -310,9 +310,9 @@ scr_seq_0075_D31R0207_0408:
 	setvar VAR_TEMP_x4009, 4
 	call scr_seq_0075_D31R0207_0216
 	npc_msg 9
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0075_D31R0207_044C
 scr_seq_0075_D31R0207_0441:

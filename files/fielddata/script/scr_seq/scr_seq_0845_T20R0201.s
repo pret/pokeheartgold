@@ -18,7 +18,7 @@ scr_seq_0845_T20R0201_001E:
 	apply_movement 255, scr_seq_0845_T20R0201_00A4
 	apply_movement 0, scr_seq_0845_T20R0201_00B0
 	wait_movement
-	callstd 2036
+	callstd std_play_mom_music
 	wait 30, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_0845_T20R0201_00B8
 	wait_movement
@@ -44,8 +44,8 @@ scr_seq_0845_T20R0201_001E:
 	wait 15, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_0845_T20R0201_00C8
 	wait_movement
-	callstd 2038
-	setvar VAR_UNK_4106, 1
+	callstd std_fade_end_mom_music
+	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 1
 	releaseall
 	end
 
@@ -79,7 +79,7 @@ scr_seq_0845_T20R0201_00DC:
 	apply_movement 255, scr_seq_0845_T20R0201_00A4
 	apply_movement 0, scr_seq_0845_T20R0201_00B0
 	wait_movement
-	callstd 2036
+	callstd std_play_mom_music
 	wait 30, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_0845_T20R0201_00B8
 	wait_movement
@@ -88,15 +88,15 @@ scr_seq_0845_T20R0201_00DC:
 	closemsg
 	apply_movement 0, scr_seq_0845_T20R0201_00C8
 	wait_movement
-	callstd 2038
-	setvar VAR_UNK_4106, 4
+	callstd std_fade_end_mom_music
+	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 4
 	releaseall
 	end
 
 scr_seq_0845_T20R0201_0126:
 	checkflag FLAG_UNK_964
 	gotoif TRUE, scr_seq_0845_T20R0201_015C
-	comparevartovalue VAR_UNK_4108, 4
+	comparevartovalue VAR_SCENE_ELMS_LAB, 4
 	gotoif ge, scr_seq_0845_T20R0201_0205
 	checkflag FLAG_GOT_STARTER
 	gotoif TRUE, scr_seq_0845_T20R0201_0179
@@ -121,20 +121,20 @@ scr_seq_0845_T20R0201_0179:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_09C
+	checkflag FLAG_GOT_POKEGEAR
 	gotoif TRUE, scr_seq_0845_T20R0201_01D4
 	buffer_players_name 0
 	npc_msg 7
 	buffer_players_name 0
 	npc_msg 8
-	setflag FLAG_UNK_09C
+	setflag FLAG_GOT_POKEGEAR
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	npc_msg 9
 	npc_msg 10
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0845_T20R0201_01C6
 	npc_msg 11
@@ -188,9 +188,9 @@ scr_seq_0845_T20R0201_0234:
 scr_seq_0845_T20R0201_023A:
 	setflag FLAG_UNK_0A7
 	setvar VAR_UNK_4095, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0845_T20R0201_0266
 	npc_msg 17
@@ -209,7 +209,7 @@ scr_seq_0845_T20R0201_026D:
 scr_seq_0845_T20R0201_0275:
 	npc_msg 20
 	scrcmd_795 1, 1
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 29, 255, 0
 	scrcmd_751 30, 255, 1
@@ -236,7 +236,7 @@ scr_seq_0845_T20R0201_02DF:
 	gotoif eq, scr_seq_0845_T20R0201_041C
 	bank_transaction 1, VAR_SPECIAL_x800C
 	scrcmd_796
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0845_T20R0201_03E0
@@ -254,7 +254,7 @@ scr_seq_0845_T20R0201_0335:
 	gotoif eq, scr_seq_0845_T20R0201_0389
 	bank_transaction 0, VAR_SPECIAL_x800C
 	scrcmd_796
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0845_T20R0201_03FA
@@ -264,7 +264,7 @@ scr_seq_0845_T20R0201_0335:
 	end
 
 scr_seq_0845_T20R0201_0389:
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_796
 	npc_msg 26
 	waitbutton
@@ -274,9 +274,9 @@ scr_seq_0845_T20R0201_0389:
 
 scr_seq_0845_T20R0201_0398:
 	npc_msg 25
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_796
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0845_T20R0201_03C2
@@ -296,7 +296,7 @@ scr_seq_0845_T20R0201_03C9:
 
 scr_seq_0845_T20R0201_03D1:
 	scrcmd_796
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 21
 	waitbutton
 	closemsg
@@ -332,7 +332,7 @@ scr_seq_0845_T20R0201_0411:
 	end
 
 scr_seq_0845_T20R0201_041C:
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_796
 	npc_msg 22
 	waitbutton
@@ -341,7 +341,7 @@ scr_seq_0845_T20R0201_041C:
 	end
 
 scr_seq_0845_T20R0201_042B:
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_796
 	npc_msg 27
 	waitbutton
@@ -350,7 +350,7 @@ scr_seq_0845_T20R0201_042B:
 	end
 
 scr_seq_0845_T20R0201_043A:
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_796
 	npc_msg 28
 	waitbutton

@@ -17,11 +17,11 @@
 scr_seq_0213_R22R0101_0026:
 	checkflag FLAG_UNK_12C
 	gotoif FALSE, scr_seq_0213_R22R0101_003D
-	show_person_at 2, 15, 0, 8, 1
+	move_person 2, 15, 0, 8, 1
 scr_seq_0213_R22R0101_003D:
 	checkflag FLAG_UNK_12B
 	gotoif FALSE, scr_seq_0213_R22R0101_0054
-	show_person_at 1, 7, 0, 8, 1
+	move_person 1, 7, 0, 8, 1
 scr_seq_0213_R22R0101_0054:
 	end
 
@@ -402,9 +402,9 @@ scr_seq_0213_R22R0101_04A5:
 	gotoif ge, scr_seq_0213_R22R0101_0548
 	npc_msg 7
 scr_seq_0213_R22R0101_04D0:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0213_R22R0101_04F4
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -416,7 +416,7 @@ scr_seq_0213_R22R0101_04F4:
 	npc_msg 8
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 26
+	register_gear_number 26
 	npc_msg 9
 	waitbutton
 	closemsg
@@ -447,9 +447,9 @@ scr_seq_0213_R22R0101_0551:
 	.byte 0x02, 0x00
 scr_seq_0213_R22R0101_0553:
 	npc_msg 12
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0213_R22R0101_05B4
 	scrcmd_618 VAR_SPECIAL_x800C

@@ -18,7 +18,7 @@ scr_seq_0110_D43R0103_001E:
 	apply_movement 255, scr_seq_0110_D43R0103_0168
 	wait_movement
 	clearflag FLAG_UNK_20A
-	scrcmd_100 0
+	show_person 0
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 37

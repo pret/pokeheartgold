@@ -53,7 +53,7 @@ scr_seq_0795_T07R0107_009A:
 scr_seq_0795_T07R0107_00A4:
 	scrcmd_242 20, 1, 16659, 16659
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 121, 255, 6
 	scrcmd_751 120, 255, 0
@@ -63,7 +63,7 @@ scr_seq_0795_T07R0107_00A4:
 	scrcmd_751 116, 255, 4
 	scrcmd_751 126, 255, 7
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 6
 	gotoif eq, scr_seq_0795_T07R0107_052D

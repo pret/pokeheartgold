@@ -54,11 +54,11 @@ scr_seq_0104_D40R0107_0093:
 	gotoif FALSE, scr_seq_0104_D40R0107_00FA
 	comparevartovalue VAR_TEMP_x4003, 111
 	gotoif ne, scr_seq_0104_D40R0107_00FA
-	show_person_at 4, 16, 1, 32, 0
-	show_person_at 2, 13, 1, 33, 0
-	show_person_at 3, 13, 1, 27, 0
-	show_person_at 0, 19, 1, 33, 0
-	show_person_at 1, 19, 1, 27, 0
+	move_person 4, 16, 1, 32, 0
+	move_person 2, 13, 1, 33, 0
+	move_person 3, 13, 1, 27, 0
+	move_person 0, 19, 1, 33, 0
+	move_person 1, 19, 1, 27, 0
 	setvar VAR_TEMP_x4003, 0
 	end
 
@@ -96,8 +96,8 @@ scr_seq_0104_D40R0107_013A:
 	releaseall
 	setflag FLAG_UNK_109
 	setvar VAR_UNK_4081, 3
-	setflag FLAG_UNK_1A2
-	setflag FLAG_UNK_1A1
+	setflag FLAG_HIDE_NEW_BARK_FRIEND
+	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_UNK_2E8
 	clearflag FLAG_UNK_2E5
 	setflag FLAG_UNK_245
@@ -404,23 +404,23 @@ scr_seq_0104_D40R0107_01AE:
 	fade_screen 6, 1, 0, 0
 	wait_fade
 	clearflag FLAG_UNK_243
-	scrcmd_100 5
+	show_person 5
 	scrcmd_375 5
-	scrcmd_100 6
-	scrcmd_100 7
-	scrcmd_100 8
-	scrcmd_100 9
-	scrcmd_100 10
+	show_person 6
+	show_person 7
+	show_person 8
+	show_person 9
+	show_person 10
 	scrcmd_099 4
 	scrcmd_099 2
 	scrcmd_099 3
 	scrcmd_099 0
 	scrcmd_099 1
-	show_person_at 4, 16, 1, 33, 0
-	show_person_at 2, 13, 1, 33, 0
-	show_person_at 3, 13, 1, 27, 0
-	show_person_at 0, 19, 1, 33, 0
-	show_person_at 1, 19, 1, 27, 0
+	move_person 4, 16, 1, 33, 0
+	move_person 2, 13, 1, 33, 0
+	move_person 3, 13, 1, 27, 0
+	move_person 0, 19, 1, 33, 0
+	move_person 1, 19, 1, 27, 0
 	scrcmd_773 1
 	scrcmd_767
 	fade_screen 6, 1, 1, 0

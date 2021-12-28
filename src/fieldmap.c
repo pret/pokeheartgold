@@ -47,7 +47,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     { 9000, NARC_scr_seq_scr_seq_0004_bin,  NARC_msg_msg_0046_bin},
     { 8900, NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
     { 8800, NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin},
-    { 8000, NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin},
+    { 8000, NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
     { 7000, NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
     { 5000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
     { 3000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},

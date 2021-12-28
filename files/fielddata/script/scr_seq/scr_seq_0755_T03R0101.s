@@ -153,7 +153,7 @@ scr_seq_0755_T03R0101_019B:
 	setvar VAR_TEMP_x4005, 0
 	setvar VAR_TEMP_x4006, 0
 	setvar VAR_TEMP_x4007, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
 scr_seq_0755_T03R0101_0263:
 	comparevartovalue VAR_SPECIAL_x8005, 0
@@ -202,7 +202,7 @@ scr_seq_0755_T03R0101_034C:
 	gotoif ne, scr_seq_0755_T03R0101_0263
 	scrcmd_751 45, 255, 32772
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_0755_T03R0101_053F
 	comparevartovalue VAR_SPECIAL_x8000, 0
@@ -222,11 +222,11 @@ scr_seq_0755_T03R0101_034C:
 	getfossilpokemon VAR_UNK_407F, VAR_SPECIAL_x8002
 	comparevartovalue VAR_UNK_407F, 0
 	gotoif eq, scr_seq_0755_T03R0101_053F
-	scrcmd_194 0, 32770
+	buffer_item_name 0, 32770
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0755_T03R0101_053F
 	takeitem VAR_SPECIAL_x8002, 1, VAR_SPECIAL_x800C
@@ -325,11 +325,11 @@ scr_seq_0755_T03R0101_04EF:
 
 scr_seq_0755_T03R0101_04F7:
 	getfossilminimumamount VAR_SPECIAL_x8002, VAR_SPECIAL_x8004, 1
-	scrcmd_194 0, 32770
+	buffer_item_name 0, 32770
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0755_T03R0101_053F
 	getfossilpokemon VAR_UNK_407F, VAR_SPECIAL_x8002
@@ -369,9 +369,9 @@ scr_seq_0755_T03R0101_0575:
 	scrcmd_420 116
 	setvar VAR_UNK_407F, 0
 	npc_msg 9
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0755_T03R0101_0600
@@ -379,7 +379,7 @@ scr_seq_0755_T03R0101_0575:
 	subvar VAR_TEMP_x4000, 1
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_TEMP_x4000, VAR_SPECIAL_x800C
+	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0755_T03R0101_05E8
 	scrcmd_420 50
@@ -404,9 +404,9 @@ scr_seq_0755_T03R0101_0608:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0755_T03R0101_070D
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -533,7 +533,7 @@ scr_seq_0755_T03R0101_07BF:
 scr_seq_0755_T03R0101_07C1:
 	scrcmd_490 16515
 	scrcmd_344 0, 0
-	show_person_at 6, 26, 0, 7, 1
+	move_person 6, 26, 0, 7, 1
 	goto scr_seq_0755_T03R0101_07BF
 
 scr_seq_0755_T03R0101_07DD:
@@ -588,7 +588,7 @@ scr_seq_0755_T03R0101_0870:
 	wait_fade
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_099 6
-	show_person_at 6, 25, 0, 7, 1
+	move_person 6, 25, 0, 7, 1
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_098 6
 	comparevartovalue VAR_TEMP_x4001, 6

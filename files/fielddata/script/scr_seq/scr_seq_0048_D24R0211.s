@@ -47,7 +47,7 @@ scr_seq_0048_D24R0211_0071:
 scr_seq_0048_D24R0211_0082:
 	scrcmd_609
 	lockall
-	show_person_at 0, 25, 0, 30, 0
+	move_person 0, 25, 0, 30, 0
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -114,9 +114,9 @@ scr_seq_0048_D24R0211_0168:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0048_D24R0211_0290
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -237,9 +237,9 @@ scr_seq_0048_D24R0211_0320:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0048_D24R0211_0290
 	scrcmd_618 VAR_SPECIAL_x800C

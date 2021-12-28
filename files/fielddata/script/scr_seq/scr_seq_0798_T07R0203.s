@@ -20,15 +20,15 @@
 	scrdef_end
 
 scr_seq_0798_T07R0203_003A:
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 	setvar VAR_UNK_4125, 0
 	end
 
 scr_seq_0798_T07R0203_0046:
 	comparevartovalue VAR_UNK_412C, 0
 	gotoif ne, scr_seq_0798_T07R0203_006B
-	show_person_at 5, 12, 0, 6, 2
-	show_person_at 6, 13, 0, 6, 2
+	move_person 5, 12, 0, 6, 2
+	move_person 6, 13, 0, 6, 2
 scr_seq_0798_T07R0203_006B:
 	end
 
@@ -67,10 +67,10 @@ scr_seq_0798_T07R0203_006D:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	callstd 2030
+	callstd std_fade_end_friend_music
 	setvar VAR_UNK_412C, 1
-	show_person_at 5, 29, 0, 29, 2
-	show_person_at 6, 29, 0, 29, 2
+	move_person 5, 29, 0, 29, 2
+	move_person 6, 29, 0, 29, 2
 	releaseall
 	end
 

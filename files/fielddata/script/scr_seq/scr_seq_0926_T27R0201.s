@@ -15,7 +15,7 @@ scr_seq_0926_T27R0201_0012:
 	end
 
 scr_seq_0926_T27R0201_001F:
-	show_person_at 0, 16, 0, 8, 2
+	move_person 0, 16, 0, 8, 2
 	end
 
 scr_seq_0926_T27R0201_002D:

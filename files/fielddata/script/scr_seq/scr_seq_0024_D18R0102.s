@@ -78,7 +78,7 @@ scr_seq_0024_D18R0102_00E2:
 	wait 15, VAR_SPECIAL_x800C
 	clearflag FLAG_UNK_1C8
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_100 3
+	show_person 3
 	scrcmd_098 3
 	wait_se SEQ_SE_DP_KAIDAN2
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005

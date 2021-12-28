@@ -13,9 +13,9 @@ scr_seq_0916_T26R0301_0006:
 	checkflag FLAG_UNK_0BE
 	gotoif TRUE, scr_seq_0916_T26R0301_00B3
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0916_T26R0301_0037
 	goto scr_seq_0916_T26R0301_00A8

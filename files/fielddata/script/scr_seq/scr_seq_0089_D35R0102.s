@@ -66,73 +66,73 @@ scr_seq_0089_D35R0102_00DC:
 	callif ge, scr_seq_0089_D35R0102_025D
 	comparevartovalue VAR_UNK_40AD, 2
 	gotoif ne, scr_seq_0089_D35R0102_0108
-	show_person_at 0, 44, 0, 3, 2
+	move_person 0, 44, 0, 3, 2
 	goto scr_seq_0089_D35R0102_0133
 
 scr_seq_0089_D35R0102_0108:
 	comparevartovalue VAR_UNK_40AD, 1
 	gotoif ne, scr_seq_0089_D35R0102_0127
-	show_person_at 0, 44, 0, 3, 1
+	move_person 0, 44, 0, 3, 1
 	goto scr_seq_0089_D35R0102_0133
 
 scr_seq_0089_D35R0102_0127:
-	show_person_at 0, 44, 0, 3, 0
+	move_person 0, 44, 0, 3, 0
 scr_seq_0089_D35R0102_0133:
 	comparevartovalue VAR_UNK_40AE, 2
 	gotoif ne, scr_seq_0089_D35R0102_0152
-	show_person_at 2, 18, 0, 3, 2
+	move_person 2, 18, 0, 3, 2
 	goto scr_seq_0089_D35R0102_017D
 
 scr_seq_0089_D35R0102_0152:
 	comparevartovalue VAR_UNK_40AE, 1
 	gotoif ne, scr_seq_0089_D35R0102_0171
-	show_person_at 2, 18, 0, 3, 1
+	move_person 2, 18, 0, 3, 1
 	goto scr_seq_0089_D35R0102_017D
 
 scr_seq_0089_D35R0102_0171:
-	show_person_at 2, 18, 0, 3, 0
+	move_person 2, 18, 0, 3, 0
 scr_seq_0089_D35R0102_017D:
 	comparevartovalue VAR_UNK_40AF, 2
 	gotoif ne, scr_seq_0089_D35R0102_019C
-	show_person_at 3, 44, 0, 10, 2
+	move_person 3, 44, 0, 10, 2
 	goto scr_seq_0089_D35R0102_01C7
 
 scr_seq_0089_D35R0102_019C:
 	comparevartovalue VAR_UNK_40AF, 1
 	gotoif ne, scr_seq_0089_D35R0102_01BB
-	show_person_at 3, 44, 0, 10, 1
+	move_person 3, 44, 0, 10, 1
 	goto scr_seq_0089_D35R0102_01C7
 
 scr_seq_0089_D35R0102_01BB:
-	show_person_at 3, 44, 0, 10, 0
+	move_person 3, 44, 0, 10, 0
 scr_seq_0089_D35R0102_01C7:
 	comparevartovalue VAR_UNK_40B0, 2
 	gotoif ne, scr_seq_0089_D35R0102_01E6
-	show_person_at 4, 44, 0, 28, 2
+	move_person 4, 44, 0, 28, 2
 	goto scr_seq_0089_D35R0102_0211
 
 scr_seq_0089_D35R0102_01E6:
 	comparevartovalue VAR_UNK_40B0, 1
 	gotoif ne, scr_seq_0089_D35R0102_0205
-	show_person_at 4, 44, 0, 28, 1
+	move_person 4, 44, 0, 28, 1
 	goto scr_seq_0089_D35R0102_0211
 
 scr_seq_0089_D35R0102_0205:
-	show_person_at 4, 44, 0, 28, 0
+	move_person 4, 44, 0, 28, 0
 scr_seq_0089_D35R0102_0211:
 	comparevartovalue VAR_UNK_40B1, 2
 	gotoif ne, scr_seq_0089_D35R0102_0230
-	show_person_at 5, 18, 0, 28, 2
+	move_person 5, 18, 0, 28, 2
 	goto scr_seq_0089_D35R0102_025B
 
 scr_seq_0089_D35R0102_0230:
 	comparevartovalue VAR_UNK_40B1, 1
 	gotoif ne, scr_seq_0089_D35R0102_024F
-	show_person_at 5, 18, 0, 28, 1
+	move_person 5, 18, 0, 28, 1
 	goto scr_seq_0089_D35R0102_025B
 
 scr_seq_0089_D35R0102_024F:
-	show_person_at 5, 18, 0, 28, 0
+	move_person 5, 18, 0, 28, 0
 scr_seq_0089_D35R0102_025B:
 	end
 
@@ -170,8 +170,8 @@ scr_seq_0089_D35R0102_02C4:
 scr_seq_0089_D35R0102_02D0:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0460
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -184,7 +184,7 @@ scr_seq_0089_D35R0102_02D0:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_0490
 	wait_movement
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 3
+	move_person 1, 33, 0, VAR_TEMP_x4001, 3
 	apply_movement 1, scr_seq_0089_D35R0102_0460
 	wait_movement
 	npc_msg 1
@@ -200,8 +200,8 @@ scr_seq_0089_D35R0102_02D0:
 scr_seq_0089_D35R0102_036C:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_046C
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -214,7 +214,7 @@ scr_seq_0089_D35R0102_036C:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_0490
 	wait_movement
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 3
+	move_person 1, 33, 0, VAR_TEMP_x4001, 3
 	apply_movement 1, scr_seq_0089_D35R0102_046C
 	wait_movement
 	npc_msg 1
@@ -226,7 +226,7 @@ scr_seq_0089_D35R0102_036C:
 	apply_movement 1, scr_seq_0089_D35R0102_0490
 	wait_movement
 scr_seq_0089_D35R0102_0402:
-	show_person_at 1, 37, 0, 0, 2
+	move_person 1, 37, 0, 0, 2
 	setflag FLAG_UNK_1E8
 	setvar VAR_UNK_40AD, 2
 	apply_movement 0, scr_seq_0089_D35R0102_049C
@@ -315,8 +315,8 @@ scr_seq_0089_D35R0102_04F7:
 scr_seq_0089_D35R0102_0503:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0668
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -329,7 +329,7 @@ scr_seq_0089_D35R0102_0503:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06C8
 	wait_movement
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0668
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -347,8 +347,8 @@ scr_seq_0089_D35R0102_0503:
 scr_seq_0089_D35R0102_05A9:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0674
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -361,7 +361,7 @@ scr_seq_0089_D35R0102_05A9:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06C8
 	wait_movement
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0674
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -469,8 +469,8 @@ scr_seq_0089_D35R0102_073B:
 scr_seq_0089_D35R0102_0747:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0680
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -483,7 +483,7 @@ scr_seq_0089_D35R0102_0747:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06D4
 	wait_movement
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0680
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -501,8 +501,8 @@ scr_seq_0089_D35R0102_0747:
 scr_seq_0089_D35R0102_07ED:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_068C
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -515,7 +515,7 @@ scr_seq_0089_D35R0102_07ED:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06D4
 	wait_movement
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_068C
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -561,8 +561,8 @@ scr_seq_0089_D35R0102_08EC:
 scr_seq_0089_D35R0102_08F8:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0698
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -575,7 +575,7 @@ scr_seq_0089_D35R0102_08F8:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06E0
 	wait_movement
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_0698
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -593,8 +593,8 @@ scr_seq_0089_D35R0102_08F8:
 scr_seq_0089_D35R0102_099E:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_06A4
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -607,7 +607,7 @@ scr_seq_0089_D35R0102_099E:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06E0
 	wait_movement
-	show_person_at 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_06A4
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -652,8 +652,8 @@ scr_seq_0089_D35R0102_0A99:
 scr_seq_0089_D35R0102_0AA5:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_06B0
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -666,7 +666,7 @@ scr_seq_0089_D35R0102_0AA5:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06EC
 	wait_movement
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_06B0
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0478
@@ -684,8 +684,8 @@ scr_seq_0089_D35R0102_0AA5:
 scr_seq_0089_D35R0102_0B4B:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	scrcmd_100 1
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	show_person 1
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_06BC
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -698,7 +698,7 @@ scr_seq_0089_D35R0102_0B4B:
 	gotoif eq, scr_seq_0089_D35R0102_0C03
 	apply_movement 1, scr_seq_0089_D35R0102_06EC
 	wait_movement
-	show_person_at 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement 1, scr_seq_0089_D35R0102_06BC
 	wait_movement
 	apply_movement 255, scr_seq_0089_D35R0102_0484
@@ -856,9 +856,9 @@ scr_seq_0089_D35R0102_0D72:
 	checkflag FLAG_UNK_0D6
 	gotoif TRUE, scr_seq_0089_D35R0102_0E58
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0089_D35R0102_0DB7
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -902,9 +902,9 @@ scr_seq_0089_D35R0102_0E4D:
 
 scr_seq_0089_D35R0102_0E58:
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0089_D35R0102_0E7D
 	comparevartovalue VAR_SPECIAL_x800C, 1

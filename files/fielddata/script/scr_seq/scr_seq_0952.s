@@ -113,10 +113,10 @@ scr_seq_0952_0118:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0952_0186
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0952_0186
 	scrcmd_784 4, 0

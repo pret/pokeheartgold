@@ -105,7 +105,7 @@ scr_seq_0907_T25R1201_0120:
 	setflag FLAG_UNK_112
 	npc_msg 0
 scr_seq_0907_T25R1201_014B:
-	scrcmd_746
+	touchscreen_menu_hide
 scr_seq_0907_T25R1201_014D:
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 131, 255, 0
@@ -176,7 +176,7 @@ scr_seq_0907_T25R1201_023E:
 scr_seq_0907_T25R1201_0240:
 	npc_msg 9
 	waitbutton
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	releaseall
 	end
@@ -186,7 +186,7 @@ scr_seq_0907_T25R1201_024D:
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0907_T25R1201_0343
-	scrcmd_747
+	touchscreen_menu_show
 	heal_party
 	setvar VAR_UNK_4133, 6
 	npc_msg 7
@@ -233,7 +233,7 @@ scr_seq_0907_T25R1201_032E:
 	.byte 0x02, 0x00
 scr_seq_0907_T25R1201_0330:
 	setvar VAR_UNK_4133, 0
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 6
 	waitbutton
 	closemsg
@@ -272,7 +272,7 @@ scr_seq_0907_T25R1201_038F:
 	.byte 0x02
 	.byte 0x00
 scr_seq_0907_T25R1201_0391:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 8
 	waitbutton
 	closemsg
@@ -395,7 +395,7 @@ scr_seq_0907_T25R1201_047A:
 	.byte 0x02, 0x00
 scr_seq_0907_T25R1201_047C:
 	npc_msg 31
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 33, 255, 0
 	scrcmd_751 34, 255, 1
@@ -411,7 +411,7 @@ scr_seq_0907_T25R1201_047C:
 scr_seq_0907_T25R1201_04C9:
 	.byte 0x02, 0x00
 scr_seq_0907_T25R1201_04CB:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0907_T25R1201_04CD:
 	closemsg
 	releaseall
@@ -444,7 +444,7 @@ scr_seq_0907_T25R1201_0515:
 	.byte 0x02, 0x00
 scr_seq_0907_T25R1201_0517:
 	npc_msg 29
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 33, 255, 0
 	scrcmd_751 34, 255, 1
@@ -460,7 +460,7 @@ scr_seq_0907_T25R1201_0517:
 scr_seq_0907_T25R1201_0564:
 	.byte 0x02, 0x00
 scr_seq_0907_T25R1201_0566:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0907_T25R1201_0568:
 	closemsg
 	releaseall
@@ -516,9 +516,9 @@ scr_seq_0907_T25R1201_05C4:
 	gotoif eq, scr_seq_0907_T25R1201_064D
 	buffer_mon_species_name 0, 0
 	npc_msg 18
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0907_T25R1201_062D
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -547,9 +547,9 @@ scr_seq_0907_T25R1201_0648:
 	.byte 0x02, 0x00, 0x2d, 0x00, 0x12
 scr_seq_0907_T25R1201_064D:
 	npc_msg 19
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0907_T25R1201_062D
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -573,9 +573,9 @@ scr_seq_0907_T25R1201_0687:
 	lockall
 	faceplayer
 	npc_msg 24
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0907_T25R1201_06D1
 	fade_screen 6, 1, 0, 0

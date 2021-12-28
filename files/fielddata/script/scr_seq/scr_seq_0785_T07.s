@@ -331,9 +331,9 @@ scr_seq_0785_T07_03AA:
 	buffer_players_name 0
 	npc_msg 19
 scr_seq_0785_T07_03BE:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0785_T07_03E2
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -345,7 +345,7 @@ scr_seq_0785_T07_03E2:
 	npc_msg 20
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 28
+	register_gear_number 28
 	npc_msg 21
 	waitbutton
 	closemsg
@@ -391,9 +391,9 @@ scr_seq_0785_T07_046C:
 	lockall
 	faceplayer
 	npc_msg 24
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0785_T07_04D5
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -453,9 +453,9 @@ scr_seq_0785_T07_0513:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0785_T07_063B
 	scrcmd_618 VAR_SPECIAL_x800C

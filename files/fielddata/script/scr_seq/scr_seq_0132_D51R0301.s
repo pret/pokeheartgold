@@ -225,9 +225,9 @@ scr_seq_0132_D51R0301_0279:
 	lockall
 	faceplayer
 	npc_msg 10
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0132_D51R0301_02A6
 	comparevartovalue VAR_SPECIAL_x800C, 1

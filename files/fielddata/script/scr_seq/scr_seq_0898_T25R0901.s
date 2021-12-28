@@ -11,9 +11,9 @@ scr_seq_0898_T25R0901_0006:
 	lockall
 	faceplayer
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0898_T25R0901_002E
 	goto scr_seq_0898_T25R0901_00B3
@@ -42,9 +42,9 @@ scr_seq_0898_T25R0901_002E:
 	gotoif eq, scr_seq_0898_T25R0901_00C9
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0898_T25R0901_00D9
 	goto scr_seq_0898_T25R0901_00B3
@@ -79,7 +79,7 @@ scr_seq_0898_T25R0901_00D9:
 	setvar VAR_SPECIAL_x800C, 0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 1

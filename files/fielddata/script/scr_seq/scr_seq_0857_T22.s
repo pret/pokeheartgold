@@ -25,16 +25,16 @@ scr_seq_0857_T22_003E:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 1
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_SCENE_VIOLET_CITY_OW, 2
-	clearflag FLAG_UNK_197
-	setflag FLAG_UNK_246
+	clearflag FLAG_HIDE_VIOLET_SHOP_KIMONO_GIRL
+	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	end
 
 scr_seq_0857_T22_0068:
 	scrcmd_609
 	lockall
-	callstd 2067
+	callstd std_play_kimono_girl_music
 	apply_movement 7, scr_seq_0857_T22_00CC
 	wait_movement
 	npc_msg 13
@@ -53,9 +53,9 @@ scr_seq_0857_T22_0068:
 	closemsg
 	apply_movement 7, scr_seq_0857_T22_00F4
 	wait_movement
-	callstd 2068
+	callstd std_fade_end_kimono_girl_music
 	hide_person 7
-	setflag FLAG_UNK_238
+	setflag FLAG_HIDE_VIOLET_KIMONO_GIRL
 	releaseall
 	setvar VAR_SCENE_VIOLET_CITY_OW, 4
 	end
@@ -138,9 +138,9 @@ scr_seq_0857_T22_01B8:
 scr_seq_0857_T22_01C0:
 	wait_movement
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0857_T22_01E9
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -509,7 +509,7 @@ scr_seq_0857_T22_068C:
 scr_seq_0857_T22_06BC:
 	npc_msg 18
 scr_seq_0857_T22_06BF:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8000, 1
 	gotoif ne, scr_seq_0857_T22_06DE
@@ -529,7 +529,7 @@ scr_seq_0857_T22_0708:
 scr_seq_0857_T22_071D:
 	scrcmd_751 126, 255, 4
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0857_T22_0769

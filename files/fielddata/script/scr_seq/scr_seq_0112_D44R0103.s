@@ -58,71 +58,71 @@ scr_seq_0112_D44R0103_007B:
 scr_seq_0112_D44R0103_00A0:
 	setvar VAR_SPECIAL_x8004, 0
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
 	scrcmd_751 280, 255, 0
 	scrcmd_751 281, 255, 1
 	scrcmd_751 282, 255, 0
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
 	npc_msg 9
 scr_seq_0112_D44R0103_00DF:
 	setvar VAR_SPECIAL_x8004, 1
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
 	scrcmd_751 283, 255, 0
 	scrcmd_751 284, 255, 0
 	scrcmd_751 285, 255, 1
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
 	npc_msg 9
 scr_seq_0112_D44R0103_011E:
 	setvar VAR_SPECIAL_x8004, 2
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
 	scrcmd_751 286, 255, 1
 	scrcmd_751 287, 255, 0
 	scrcmd_751 288, 255, 0
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
 	npc_msg 9
 scr_seq_0112_D44R0103_015D:
 	setvar VAR_SPECIAL_x8004, 3
 	npc_msg 4
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
 	scrcmd_751 289, 255, 0
 	scrcmd_751 290, 255, 1
 	scrcmd_751 291, 255, 0
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
 	npc_msg 9
 scr_seq_0112_D44R0103_019C:
 	setvar VAR_SPECIAL_x8004, 4
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
 	scrcmd_751 292, 255, 1
 	scrcmd_751 293, 255, 0
 	scrcmd_751 294, 255, 0
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
 	buffer_players_name 0
 	npc_msg 6
 	closemsg
-	show_person_at 3, 6, 0, 21, 0
+	move_person 3, 6, 0, 21, 0
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
@@ -188,8 +188,8 @@ scr_seq_0112_D44R0103_02D6:
 	setflag FLAG_UNK_2E5
 	setvar VAR_UNK_40C3, 1
 	setvar VAR_UNK_407B, 1
-	setvar VAR_UNK_4108, 8
-	clearflag FLAG_UNK_1A6
+	setvar VAR_SCENE_ELMS_LAB, 8
+	clearflag FLAG_HIDE_ELMS_LAB_FRIEND
 	setvar VAR_UNK_4081, 1
 	end
 
@@ -346,9 +346,9 @@ scr_seq_0112_D44R0103_04C3:
 	scrcmd_139 32773, 0, 245
 scr_seq_0112_D44R0103_04F0:
 	npc_msg 32
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0112_D44R0103_050E
 	goto scr_seq_0112_D44R0103_052E
@@ -357,7 +357,7 @@ scr_seq_0112_D44R0103_050E:
 	closemsg
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0
 	wait_fade
 scr_seq_0112_D44R0103_052E:
@@ -407,9 +407,9 @@ scr_seq_0112_D44R0103_0576:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_069E
 	scrcmd_618 VAR_SPECIAL_x800C

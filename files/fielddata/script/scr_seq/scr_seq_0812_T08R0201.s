@@ -52,9 +52,9 @@ scr_seq_0812_T08R0201_0083:
 	setflag FLAG_UNK_136
 	buffer_players_name 0
 	gender_msgbox 0, 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0812_T08R0201_00C5
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -78,14 +78,14 @@ scr_seq_0812_T08R0201_00E0:
 	goto scr_seq_0812_T08R0201_00E9
 
 scr_seq_0812_T08R0201_00E9:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 194, 255, 0
 	scrcmd_751 195, 255, 1
 	scrcmd_751 196, 255, 2
 	scrcmd_751 198, 255, 4
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0812_T08R0201_00CE
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -96,9 +96,9 @@ scr_seq_0812_T08R0201_00E9:
 
 scr_seq_0812_T08R0201_0144:
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0812_T08R0201_0190
 scr_seq_0812_T08R0201_015C:
@@ -125,13 +125,13 @@ scr_seq_0812_T08R0201_019B:
 	goto scr_seq_0812_T08R0201_01A8
 
 scr_seq_0812_T08R0201_01A8:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 199, 255, 0
 	scrcmd_751 200, 255, 1
 	scrcmd_751 201, 255, 2
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0812_T08R0201_015C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -243,15 +243,15 @@ scr_seq_0812_T08R0201_0339:
 
 scr_seq_0812_T08R0201_034E:
 	npc_msg 19
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0812_T08R0201_0391
 	npc_msg 24
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0812_T08R0201_0384
 	goto scr_seq_0812_T08R0201_034E

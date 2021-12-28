@@ -20,7 +20,7 @@ scr_seq_0081_D32R0102_0026:
 	end
 
 scr_seq_0081_D32R0102_0035:
-	show_person_at 0, 17, 1, 25, 2
+	move_person 0, 17, 1, 25, 2
 	end
 
 scr_seq_0081_D32R0102_0043:
@@ -66,7 +66,7 @@ scr_seq_0081_D32R0102_00A9:
 	lockall
 	npc_msg 0
 	closemsg
-	show_person_at 0, 14, 1, 36, 0
+	move_person 0, 14, 1, 36, 0
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8004, 12
 	gotoif ne, scr_seq_0081_D32R0102_00E7
@@ -179,9 +179,9 @@ scr_seq_0081_D32R0102_023C:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0081_D32R0102_0364
 	scrcmd_618 VAR_SPECIAL_x800C

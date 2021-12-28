@@ -104,7 +104,7 @@ scr_seq_0886_T25GYM0101_010C:
 	settrainerflag TRAINER_BEAUTY_VICTORIA
 	settrainerflag TRAINER_BEAUTY_SAMANTHA
 	add_special_game_stat 22
-	show_person_at 1, 13, 0, 15, 0
+	move_person 1, 13, 0, 15, 0
 scr_seq_0886_T25GYM0101_017D:
 	npc_msg 2
 	waitbutton

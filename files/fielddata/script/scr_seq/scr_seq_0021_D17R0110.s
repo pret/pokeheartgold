@@ -40,11 +40,11 @@ scr_seq_0021_D17R0110_005C:
 	gotoif FALSE, scr_seq_0021_D17R0110_00C3
 	comparevartovalue VAR_TEMP_x4003, 111
 	gotoif ne, scr_seq_0021_D17R0110_00BB
-	show_person_at 0, 16, 1, 18, 0
-	show_person_at 1, 12, 1, 18, 0
-	show_person_at 2, 12, 1, 12, 1
-	show_person_at 3, 18, 1, 18, 0
-	show_person_at 4, 18, 1, 12, 1
+	move_person 0, 16, 1, 18, 0
+	move_person 1, 12, 1, 18, 0
+	move_person 2, 12, 1, 12, 1
+	move_person 3, 18, 1, 18, 0
+	move_person 4, 18, 1, 12, 1
 scr_seq_0021_D17R0110_00BB:
 	setvar VAR_TEMP_x4003, 0
 	end
@@ -83,8 +83,8 @@ scr_seq_0021_D17R0110_0103:
 	releaseall
 	setflag FLAG_UNK_108
 	setvar VAR_UNK_4081, 3
-	setflag FLAG_UNK_1A2
-	setflag FLAG_UNK_1A1
+	setflag FLAG_HIDE_NEW_BARK_FRIEND
+	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_UNK_2E8
 	clearflag FLAG_UNK_2E5
 	setflag FLAG_UNK_244
@@ -272,11 +272,11 @@ scr_seq_0021_D17R0110_0177:
 	scrcmd_099 2
 	scrcmd_099 3
 	scrcmd_099 4
-	show_person_at 0, 15, 1, 18, 0
-	show_person_at 1, 12, 1, 18, 0
-	show_person_at 2, 12, 1, 12, 1
-	show_person_at 3, 18, 1, 18, 0
-	show_person_at 4, 18, 1, 12, 1
+	move_person 0, 15, 1, 18, 0
+	move_person 1, 12, 1, 18, 0
+	move_person 2, 12, 1, 12, 1
+	move_person 3, 18, 1, 18, 0
+	move_person 4, 18, 1, 12, 1
 	wait 86, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
@@ -317,7 +317,7 @@ scr_seq_0021_D17R0110_0177:
 	wait_fade
 	scrcmd_773 0
 	clearflag FLAG_UNK_242
-	scrcmd_100 5
+	show_person 5
 	scrcmd_375 5
 	wait 6, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 32767

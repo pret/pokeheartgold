@@ -299,7 +299,7 @@ scr_seq_0803_T07R0401_03FD:
 scr_seq_0803_T07R0401_0428:
 	scrcmd_784 3, 0
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
 	scrcmd_113 20, 7
 scr_seq_0803_T07R0401_043E:
@@ -367,7 +367,7 @@ scr_seq_0803_T07R0401_052E:
 scr_seq_0803_T07R0401_0531:
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_117
 	scrcmd_114
 	scrcmd_784 3, 1

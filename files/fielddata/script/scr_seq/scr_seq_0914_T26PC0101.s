@@ -38,9 +38,9 @@ scr_seq_0914_T26PC0101_007D:
 	wait_movement
 	npc_msg 4
 scr_seq_0914_T26PC0101_0082:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0914_T26PC0101_00D5
 	npc_msg 5

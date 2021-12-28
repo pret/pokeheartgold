@@ -33,15 +33,15 @@ scr_seq_0128_D49R0107_0058:
 	get_player_gender VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_0128_D49R0107_007B
-	show_person_at 2, 28, 0, 28, 0
+	move_person 2, 28, 0, 28, 0
 	goto scr_seq_0128_D49R0107_0087
 
 scr_seq_0128_D49R0107_007B:
-	show_person_at 1, 28, 0, 28, 0
+	move_person 1, 28, 0, 28, 0
 scr_seq_0128_D49R0107_0087:
 	comparevartovalue VAR_TEMP_x400E, 1
 	gotoif ne, scr_seq_0128_D49R0107_00A6
-	show_person_at 0, 9, 0, 9, 1
+	move_person 0, 9, 0, 9, 1
 	setvar VAR_TEMP_x400E, 0
 scr_seq_0128_D49R0107_00A6:
 	end

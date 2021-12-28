@@ -30,7 +30,7 @@ scr_seq_0263_0046:
 	.byte 0x02, 0x00
 scr_seq_0263_0048:
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 2, 255, 0
 	scrcmd_751 3, 255, 1
@@ -88,14 +88,14 @@ scr_seq_0263_0097:
 scr_seq_0263_015C:
 	.byte 0x02, 0x00
 scr_seq_0263_015E:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 14
 	goto scr_seq_0263_0183
 
 scr_seq_0263_0169:
 	.byte 0x02, 0x00
 scr_seq_0263_016B:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 5
 	goto scr_seq_0263_0183
 
@@ -144,7 +144,7 @@ scr_seq_0263_01D7:
 scr_seq_0263_01D9:
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif gt, scr_seq_0263_01F1
-	scrcmd_194 0, 16384
+	buffer_item_name 0, 16384
 	goto scr_seq_0263_01F6
 
 scr_seq_0263_01F1:
@@ -164,7 +164,7 @@ scr_seq_0263_01F6:
 scr_seq_0263_0225:
 	comparevartovalue VAR_TEMP_x4003, 1
 	gotoif gt, scr_seq_0263_023D
-	scrcmd_194 0, 16386
+	buffer_item_name 0, 16386
 	goto scr_seq_0263_0242
 
 scr_seq_0263_023D:
@@ -184,7 +184,7 @@ scr_seq_0263_0242:
 scr_seq_0263_0271:
 	comparevartovalue VAR_TEMP_x4005, 1
 	gotoif gt, scr_seq_0263_0289
-	scrcmd_194 0, 16388
+	buffer_item_name 0, 16388
 	goto scr_seq_0263_028E
 
 scr_seq_0263_0289:

@@ -29,7 +29,7 @@ scr_seq_0167_0027:
 scr_seq_0167_003E:
 	.byte 0x02, 0x00
 scr_seq_0167_0040:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 271, 255, 0
 	scrcmd_751 11, 255, 1
@@ -46,7 +46,7 @@ scr_seq_0167_008A:
 	.byte 0x02, 0x00
 scr_seq_0167_008C:
 	npc_msg 11
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, scr_seq_0167_00B4
@@ -131,7 +131,7 @@ scr_seq_0167_01A7:
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif lt, scr_seq_0167_07E6
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 273, 255, 0
 	scrcmd_751 274, 255, 1
@@ -190,7 +190,7 @@ scr_seq_0167_028D:
 scr_seq_0167_028F:
 	scrcmd_745 3, 32768
 	npc_msg 4
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0167_01A7
@@ -541,7 +541,7 @@ scr_seq_0167_07D7:
 	return
 
 scr_seq_0167_07D9:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0167_07DB:
 	npc_msg 10
 	waitbutton
@@ -550,7 +550,7 @@ scr_seq_0167_07DB:
 	end
 
 scr_seq_0167_07E6:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 37
 	waitbutton
 	closemsg
@@ -670,7 +670,7 @@ scr_seq_0167_093C:
 	setvar VAR_TEMP_x400A, 2
 	npc_msg 26
 scr_seq_0167_095A:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 271, 255, 0
 	scrcmd_751 11, 255, 1
@@ -687,7 +687,7 @@ scr_seq_0167_09A4:
 	.byte 0x02, 0x00
 scr_seq_0167_09A6:
 	npc_msg 11
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 272, 255, 0
 	scrcmd_751 342, 255, 1
@@ -778,7 +778,7 @@ scr_seq_0167_0ADF:
 scr_seq_0167_0AE1:
 	setvar VAR_TEMP_x400A, 2
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 342, 255, 0
 	scrcmd_751 343, 255, 1
@@ -849,7 +849,7 @@ scr_seq_0167_0BE3:
 scr_seq_0167_0BF5:
 	.byte 0x02, 0x00
 scr_seq_0167_0BF7:
-	scrcmd_746
+	touchscreen_menu_hide
 	npc_msg 27
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 14, 255, 0
@@ -901,7 +901,7 @@ scr_seq_0167_0CD0:
 	.byte 0x02, 0x00
 scr_seq_0167_0CD2:
 	scrcmd_283
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 29
 	waitbutton
 	closemsg

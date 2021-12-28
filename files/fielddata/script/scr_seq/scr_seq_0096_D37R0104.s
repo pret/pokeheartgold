@@ -42,9 +42,9 @@ scr_seq_0096_D37R0104_0071:
 	end
 
 scr_seq_0096_D37R0104_0096:
-	show_person_at 26, 18, 0, 14, 0
-	show_person_at 27, 24, 0, 14, 0
-	show_person_at 34, 24, 0, 14, 0
+	move_person 26, 18, 0, 14, 0
+	move_person 27, 24, 0, 14, 0
+	move_person 34, 24, 0, 14, 0
 	end
 
 scr_seq_0096_D37R0104_00BC:
@@ -352,7 +352,7 @@ scr_seq_0096_D37R0104_061C:
 	scrcmd_609
 	lockall
 	callstd std_play_rival_intro_music
-	show_person_at 28, 28, 0, 4, 2
+	move_person 28, 28, 0, 4, 2
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

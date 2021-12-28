@@ -4847,7 +4847,7 @@ sub_02093070: ; 0x02093070
 	ldr r0, [r4, #0xc]
 	bl SaveData_GSPlayerMisc_get
 	mov r1, #9
-	bl sub_0202EEE4
+	bl GSPlayerMisc_IsGearNumberRegistered
 	cmp r0, #0xff
 	bne _02093088
 	mov r0, #0
@@ -4895,7 +4895,7 @@ sub_020930C4: ; 0x020930C4
 	ldr r0, [r5, #0xc]
 	bl SaveData_GSPlayerMisc_get
 	mov r1, #2
-	bl sub_0202EEE4
+	bl GSPlayerMisc_IsGearNumberRegistered
 	cmp r0, #0xff
 	bne _020930F0
 	mov r0, #0
@@ -4973,7 +4973,7 @@ sub_0209316C: ; 0x0209316C
 	ldr r0, [r5, #0xc]
 	bl SaveData_GSPlayerMisc_get
 	mov r1, #6
-	bl sub_0202EEE4
+	bl GSPlayerMisc_IsGearNumberRegistered
 	cmp r0, #0xff
 	bne _0209318C
 	mov r0, #0

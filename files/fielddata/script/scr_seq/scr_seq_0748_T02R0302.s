@@ -51,9 +51,9 @@ scr_seq_0748_T02R0302_0080:
 	wait_movement
 	npc_msg 0
 scr_seq_0748_T02R0302_0091:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0748_T02R0302_00ED
 	scrcmd_783 1
@@ -62,7 +62,7 @@ scr_seq_0748_T02R0302_0091:
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0748_T02R0302_00ED
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_600
 	heal_party
 	npc_msg 2
@@ -101,9 +101,9 @@ scr_seq_0748_T02R0302_0128:
 	scrcmd_609
 	lockall
 	npc_msg 4
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0748_T02R0302_0168
 	npc_msg 5

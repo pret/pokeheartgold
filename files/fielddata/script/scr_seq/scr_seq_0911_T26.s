@@ -29,7 +29,7 @@ scr_seq_0911_T26_0057:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 2
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_UNK_4134, 5
 	end
 
@@ -39,7 +39,7 @@ scr_seq_0911_T26_0075:
 	setvar VAR_SPECIAL_x8004, 24
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 0
-	callstd 2039
+	callstd std_phone_call
 	setflag FLAG_UNK_249
 	setvar VAR_UNK_40A5, 3
 	end
@@ -82,7 +82,7 @@ scr_seq_0911_T26_00F6:
 	scrcmd_310 77
 	scrcmd_308 77
 	clearflag FLAG_UNK_1D6
-	scrcmd_100 3
+	show_person 3
 	apply_movement 3, scr_seq_0911_T26_02B4
 	wait_movement
 	scrcmd_311 77
@@ -288,9 +288,9 @@ scr_seq_0911_T26_03F4:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0911_T26_051C
 	scrcmd_618 VAR_SPECIAL_x800C

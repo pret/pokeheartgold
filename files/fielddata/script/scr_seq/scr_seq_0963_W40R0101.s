@@ -16,7 +16,7 @@ scr_seq_0963_W40R0101_000E:
 	end
 
 scr_seq_0963_W40R0101_0028:
-	show_person_at 0, 3, 0, 3, 0
+	move_person 0, 3, 0, 3, 0
 	end
 
 scr_seq_0963_W40R0101_0036:

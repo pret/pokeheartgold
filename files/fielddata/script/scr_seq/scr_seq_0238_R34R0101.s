@@ -50,11 +50,11 @@ scr_seq_0238_R34R0101_000A:
 	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0238_R34R0101_00C6
-	scrcmd_146 4
+	register_gear_number 4
 	goto scr_seq_0238_R34R0101_00CA
 
 scr_seq_0238_R34R0101_00C6:
-	scrcmd_146 3
+	register_gear_number 3
 scr_seq_0238_R34R0101_00CA:
 	buffer_players_name 0
 	gender_msgbox 7, 17

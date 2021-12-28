@@ -27,7 +27,7 @@ scr_seq_0124_D49R0102_0046:
 	lockall
 	faceplayer
 	scrcmd_074 2147
-	callstd 2036
+	callstd std_play_mom_music
 	checkflag FLAG_UNK_0FA
 	gotoif FALSE, scr_seq_0124_D49R0102_006A
 	npc_msg 1
@@ -38,7 +38,7 @@ scr_seq_0124_D49R0102_006A:
 	setflag FLAG_UNK_0FA
 scr_seq_0124_D49R0102_0071:
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 272, 255, 0
 	scrcmd_751 296, 255, 1
@@ -58,7 +58,7 @@ scr_seq_0124_D49R0102_00D3:
 	.byte 0x02, 0x00
 scr_seq_0124_D49R0102_00D5:
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 308, 255, 0
 	scrcmd_751 309, 255, 1
@@ -85,7 +85,7 @@ scr_seq_0124_D49R0102_0164:
 	.byte 0x02, 0x00
 scr_seq_0124_D49R0102_0166:
 	setvar VAR_TEMP_x4007, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 298, 255, 0
 	scrcmd_751 299, 255, 1
@@ -98,7 +98,7 @@ scr_seq_0124_D49R0102_019E:
 	.byte 0x02, 0x00
 scr_seq_0124_D49R0102_01A0:
 	setvar VAR_TEMP_x4007, 1
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 301, 255, 3
 	scrcmd_751 300, 255, 2
@@ -111,7 +111,7 @@ scr_seq_0124_D49R0102_01D8:
 	.byte 0x02, 0x00
 scr_seq_0124_D49R0102_01DA:
 	setvar VAR_TEMP_x4007, 2
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 306, 255, 8
 	scrcmd_751 307, 255, 9
@@ -124,7 +124,7 @@ scr_seq_0124_D49R0102_0212:
 	.byte 0x02, 0x00
 scr_seq_0124_D49R0102_0214:
 	setvar VAR_TEMP_x4007, 3
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 305, 255, 7
 	scrcmd_751 304, 255, 6
@@ -137,7 +137,7 @@ scr_seq_0124_D49R0102_024C:
 	.byte 0x02, 0x00
 scr_seq_0124_D49R0102_024E:
 	setvar VAR_TEMP_x4007, 4
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 303, 255, 5
 	scrcmd_751 302, 255, 4
@@ -264,7 +264,7 @@ scr_seq_0124_D49R0102_03DB:
 	npc_msg 16
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_081 0
 	reset_bgm
 	scrcmd_726

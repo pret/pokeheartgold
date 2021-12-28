@@ -65,7 +65,7 @@ scr_seq_0866_T23_0092:
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 462
 	gotoif ne, scr_seq_0866_T23_00E5
-	show_person_at 9, 404, 0, 463, 2
+	move_person 9, 404, 0, 463, 2
 	apply_movement 9, scr_seq_0866_T23_028C
 	apply_movement 255, scr_seq_0866_T23_02AC
 	goto scr_seq_0866_T23_018E
@@ -73,7 +73,7 @@ scr_seq_0866_T23_0092:
 scr_seq_0866_T23_00E5:
 	comparevartovalue VAR_SPECIAL_x8005, 463
 	gotoif ne, scr_seq_0866_T23_0114
-	show_person_at 9, 404, 0, 464, 2
+	move_person 9, 404, 0, 464, 2
 	apply_movement 9, scr_seq_0866_T23_028C
 	apply_movement 255, scr_seq_0866_T23_02AC
 	goto scr_seq_0866_T23_018E
@@ -81,7 +81,7 @@ scr_seq_0866_T23_00E5:
 scr_seq_0866_T23_0114:
 	comparevartovalue VAR_SPECIAL_x8005, 464
 	gotoif ne, scr_seq_0866_T23_0143
-	show_person_at 9, 404, 0, 463, 2
+	move_person 9, 404, 0, 463, 2
 	apply_movement 9, scr_seq_0866_T23_0298
 	apply_movement 255, scr_seq_0866_T23_02C0
 	goto scr_seq_0866_T23_018E
@@ -89,13 +89,13 @@ scr_seq_0866_T23_0114:
 scr_seq_0866_T23_0143:
 	comparevartovalue VAR_SPECIAL_x8005, 465
 	gotoif ne, scr_seq_0866_T23_0172
-	show_person_at 9, 404, 0, 464, 2
+	move_person 9, 404, 0, 464, 2
 	apply_movement 9, scr_seq_0866_T23_0298
 	apply_movement 255, scr_seq_0866_T23_02C0
 	goto scr_seq_0866_T23_018E
 
 scr_seq_0866_T23_0172:
-	show_person_at 9, 404, 0, 465, 2
+	move_person 9, 404, 0, 465, 2
 	apply_movement 9, scr_seq_0866_T23_0298
 	apply_movement 255, scr_seq_0866_T23_02C0
 scr_seq_0866_T23_018E:
@@ -221,7 +221,7 @@ scr_seq_0866_T23_02FC:
 	closemsg
 	apply_movement 13, scr_seq_0866_T23_0358
 	wait_movement
-	show_person_at 13, 23, 0, 16, 3
+	move_person 13, 23, 0, 16, 3
 	apply_movement 12, scr_seq_0866_T23_0374
 	wait_movement
 	hide_person 13

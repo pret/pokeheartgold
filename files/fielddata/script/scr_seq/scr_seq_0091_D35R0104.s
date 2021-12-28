@@ -31,8 +31,8 @@ scr_seq_0091_D35R0104_0051:
 	end
 
 scr_seq_0091_D35R0104_0060:
-	show_person_at 10, 22, 0, 15, 0
-	show_person_at 11, 22, 0, 15, 0
+	move_person 10, 22, 0, 15, 0
+	move_person 11, 22, 0, 15, 0
 	end
 
 scr_seq_0091_D35R0104_007A:
@@ -155,7 +155,7 @@ scr_seq_0091_D35R0104_01C3:
 	wait_movement
 	callstd std_play_rival_intro_music
 	clearflag FLAG_UNK_1FD
-	scrcmd_100 7
+	show_person 7
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 17
 	gotoif ne, scr_seq_0091_D35R0104_01FE
@@ -272,7 +272,7 @@ scr_seq_0091_D35R0104_0331:
 	apply_movement 18, scr_seq_0091_D35R0104_0458
 	wait_movement
 	clearflag FLAG_UNK_1F4
-	scrcmd_100 8
+	show_person 8
 	setflag FLAG_UNK_280
 	hide_person 18
 	apply_movement 8, scr_seq_0091_D35R0104_047C

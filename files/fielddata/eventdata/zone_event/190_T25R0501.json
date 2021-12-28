@@ -15,7 +15,7 @@
       "ovid": 34,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 1,
       "dirn": 1,
       "eye": 0,
@@ -61,7 +61,7 @@
       "h": 3,
       "z": 0,
       "val": 2,
-      "var": 16394
+      "var": "VAR_TEMP_x400A"
     },
     {
       "scr": 3,
@@ -71,7 +71,7 @@
       "h": 3,
       "z": 0,
       "val": 2,
-      "var": 16394
+      "var": "VAR_TEMP_x400A"
     },
     {
       "scr": 3,
@@ -81,7 +81,7 @@
       "h": 3,
       "z": 0,
       "val": 2,
-      "var": 16394
+      "var": "VAR_TEMP_x400A"
     },
     {
       "scr": 4,
@@ -91,7 +91,7 @@
       "h": 2,
       "z": 0,
       "val": 3,
-      "var": 16394
+      "var": "VAR_TEMP_x400A"
     },
     {
       "scr": 2,
@@ -101,7 +101,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16651
+      "var": "VAR_UNK_410B"
     },
     {
       "scr": 4,
@@ -111,7 +111,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16394
+      "var": "VAR_TEMP_x400A"
     }
   ]
 }

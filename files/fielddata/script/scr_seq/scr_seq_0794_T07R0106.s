@@ -46,14 +46,14 @@ scr_seq_0794_T07R0106_0049:
 	goto scr_seq_0794_T07R0106_005E
 
 scr_seq_0794_T07R0106_005E:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
 	scrcmd_751 209, 255, 0
 	scrcmd_751 210, 255, 1
 	scrcmd_751 211, 255, 2
 	scrcmd_751 212, 255, 3
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0794_T07R0106_00C2
@@ -119,9 +119,9 @@ scr_seq_0794_T07R0106_011C:
 	comparevartovalue VAR_SPECIAL_x8000, 2
 	callif eq, scr_seq_0794_T07R0106_0114
 	scrcmd_115
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	play_se SEQ_SE_DP_JIHANKI
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	npc_msg 4
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
@@ -130,7 +130,7 @@ scr_seq_0794_T07R0106_011C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0794_T07R0106_01E7
 	play_se SEQ_SE_DP_JIHANKI
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	npc_msg 5
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

@@ -60,9 +60,9 @@ scr_seq_0243_R36_009A:
 
 scr_seq_0243_R36_00B9:
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0243_R36_00E0
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -181,9 +181,9 @@ scr_seq_0243_R36_0261:
 	apply_movement 4, scr_seq_0243_R36_038C
 	wait_movement
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0243_R36_0296
 	comparevartovalue VAR_SPECIAL_x800C, 1

@@ -36,9 +36,9 @@ scr_seq_0202_R14_0055:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0202_R14_017D
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -159,7 +159,7 @@ scr_seq_0202_R14_0210:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_2A5
-	scrcmd_100 12
+	show_person 12
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

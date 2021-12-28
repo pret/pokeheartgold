@@ -14,9 +14,9 @@ scr_seq_0929_T27R0801_000A:
 	checkflag FLAG_UNK_0A3
 	gotoif TRUE, scr_seq_0929_T27R0801_0078
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0929_T27R0801_0044
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -60,9 +60,9 @@ scr_seq_0929_T27R0801_0098:
 	lockall
 	faceplayer
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0929_T27R0801_00C7
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -71,9 +71,9 @@ scr_seq_0929_T27R0801_0098:
 
 scr_seq_0929_T27R0801_00C7:
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0929_T27R0801_00EE
 	comparevartovalue VAR_SPECIAL_x800C, 1

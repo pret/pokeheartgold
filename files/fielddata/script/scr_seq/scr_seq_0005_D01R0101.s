@@ -93,9 +93,9 @@ scr_seq_0005_D01R0101_0108:
 	gotoif ge, scr_seq_0005_D01R0101_01AB
 	npc_msg 1
 scr_seq_0005_D01R0101_0133:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0005_D01R0101_0157
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -107,7 +107,7 @@ scr_seq_0005_D01R0101_0157:
 	npc_msg 2
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 33
+	register_gear_number 33
 	npc_msg 3
 	waitbutton
 	closemsg
@@ -160,9 +160,9 @@ scr_seq_0005_D01R0101_020E:
 	comparevartovalue VAR_TEMP_x4000, 55
 	gotoif eq, scr_seq_0005_D01R0101_0357
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0005_D01R0101_027C
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -209,9 +209,9 @@ scr_seq_0005_D01R0101_02A8:
 	buffer_players_name 0
 	gender_msgbox 11, 12
 scr_seq_0005_D01R0101_02AF:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0005_D01R0101_0346
 	npc_msg 13

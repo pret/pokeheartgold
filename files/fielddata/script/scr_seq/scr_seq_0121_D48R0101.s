@@ -31,7 +31,7 @@ scr_seq_0121_D48R0101_0046:
 	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 2
 	gotoif eq, scr_seq_0121_D48R0101_0065
-	show_person_at 3, 19, 0, 40, 1
+	move_person 3, 19, 0, 40, 1
 	end
 
 scr_seq_0121_D48R0101_0065:
@@ -162,9 +162,9 @@ scr_seq_0121_D48R0101_01BC:
 
 scr_seq_0121_D48R0101_01E7:
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0121_D48R0101_020A
 	npc_msg 3

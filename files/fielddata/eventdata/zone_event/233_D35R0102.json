@@ -23,7 +23,7 @@
       "ovid": 287,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 2,
       "dirn": 0,
       "eye": 0,
@@ -41,7 +41,7 @@
       "ovid": 222,
       "mvt": 0,
       "type": 0,
-      "flag": 488,
+      "flag": "FLAG_UNK_1E8",
       "scr": 3,
       "dirn": 3,
       "eye": 0,
@@ -59,7 +59,7 @@
       "ovid": 287,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 10,
       "dirn": 0,
       "eye": 0,
@@ -77,7 +77,7 @@
       "ovid": 287,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 11,
       "dirn": 0,
       "eye": 0,
@@ -95,7 +95,7 @@
       "ovid": 287,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 12,
       "dirn": 0,
       "eye": 0,
@@ -113,7 +113,7 @@
       "ovid": 287,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 13,
       "dirn": 0,
       "eye": 0,
@@ -131,7 +131,7 @@
       "ovid": 222,
       "mvt": 0,
       "type": 1,
-      "flag": 498,
+      "flag": "FLAG_UNK_1F2",
       "scr": 3215,
       "dirn": 3,
       "eye": 4,
@@ -149,7 +149,7 @@
       "ovid": 29,
       "mvt": 0,
       "type": 1,
-      "flag": 498,
+      "flag": "FLAG_UNK_1F2",
       "scr": 3469,
       "dirn": 2,
       "eye": 4,
@@ -167,7 +167,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1102,
+      "flag": "FLAG_UNK_44E",
       "scr": 7133,
       "dirn": 0,
       "eye": 0,
@@ -185,7 +185,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1103,
+      "flag": "FLAG_UNK_44F",
       "scr": 7134,
       "dirn": 0,
       "eye": 0,
@@ -203,7 +203,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1104,
+      "flag": "FLAG_UNK_450",
       "scr": 7135,
       "dirn": 0,
       "eye": 0,
@@ -242,7 +242,7 @@
       "h": 2,
       "z": 0,
       "val": 0,
-      "var": 16557
+      "var": "VAR_UNK_40AD"
     },
     {
       "scr": 6,
@@ -252,7 +252,7 @@
       "h": 2,
       "z": 0,
       "val": 0,
-      "var": 16558
+      "var": "VAR_UNK_40AE"
     },
     {
       "scr": 7,
@@ -262,7 +262,7 @@
       "h": 2,
       "z": 0,
       "val": 0,
-      "var": 16559
+      "var": "VAR_UNK_40AF"
     },
     {
       "scr": 8,
@@ -272,7 +272,7 @@
       "h": 2,
       "z": 0,
       "val": 0,
-      "var": 16560
+      "var": "VAR_UNK_40B0"
     },
     {
       "scr": 9,
@@ -282,7 +282,7 @@
       "h": 2,
       "z": 0,
       "val": 0,
-      "var": 16561
+      "var": "VAR_UNK_40B1"
     },
     {
       "scr": 14,
@@ -292,7 +292,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16562
+      "var": "VAR_UNK_40B2"
     },
     {
       "scr": 15,
@@ -302,7 +302,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16563
+      "var": "VAR_UNK_40B3"
     },
     {
       "scr": 16,
@@ -312,7 +312,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16564
+      "var": "VAR_UNK_40B4"
     },
     {
       "scr": 17,
@@ -322,7 +322,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16565
+      "var": "VAR_UNK_40B5"
     },
     {
       "scr": 18,
@@ -332,7 +332,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16566
+      "var": "VAR_UNK_40B6"
     },
     {
       "scr": 19,
@@ -342,7 +342,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16567
+      "var": "VAR_UNK_40B7"
     },
     {
       "scr": 20,
@@ -352,7 +352,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16568
+      "var": "VAR_UNK_40B8"
     },
     {
       "scr": 21,
@@ -362,7 +362,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16569
+      "var": "VAR_UNK_40B9"
     },
     {
       "scr": 22,
@@ -372,7 +372,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16570
+      "var": "VAR_UNK_40BA"
     },
     {
       "scr": 23,
@@ -382,7 +382,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16571
+      "var": "VAR_UNK_40BB"
     },
     {
       "scr": 24,
@@ -392,7 +392,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16572
+      "var": "VAR_UNK_40BC"
     },
     {
       "scr": 25,
@@ -402,7 +402,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16573
+      "var": "VAR_UNK_40BD"
     },
     {
       "scr": 26,
@@ -412,7 +412,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16574
+      "var": "VAR_UNK_40BE"
     },
     {
       "scr": 27,
@@ -422,7 +422,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16575
+      "var": "VAR_UNK_40BF"
     },
     {
       "scr": 28,
@@ -432,7 +432,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16576
+      "var": "VAR_UNK_40C0"
     },
     {
       "scr": 29,
@@ -442,7 +442,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16577
+      "var": "VAR_UNK_40C1"
     },
     {
       "scr": 30,
@@ -452,7 +452,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16578
+      "var": "VAR_UNK_40C2"
     }
   ]
 }

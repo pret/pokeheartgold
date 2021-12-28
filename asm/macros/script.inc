@@ -609,7 +609,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_100 arg0
+	.macro show_person arg0
 	.short 100
 	.short \arg0
 	.endm
@@ -875,7 +875,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_146 arg0
+	.macro register_gear_number arg0
 	.short 146
 	.short \arg0
 	.endm
@@ -1007,7 +1007,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_173 arg0, arg1
+	.macro nickname_input arg0, arg1
 	.short 173
 	.short \arg0
 	.short \arg1
@@ -1120,19 +1120,19 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_194 arg0, arg1
+	.macro buffer_item_name arg0, arg1
 	.short 194
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_195 arg0, arg1
+	.macro buffer_pocket_name arg0, arg1
 	.short 195
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_196 arg0, arg1
+	.macro buffer_tmhm_move_name arg0, arg1
 	.short 196
 	.byte \arg0
 	.short \arg1
@@ -1643,7 +1643,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_293
+	.macro give_running_shoes
 	.short 293
 	.endm
 
@@ -1866,7 +1866,7 @@
 	.short \arg2
 	.endm
 
-	.macro show_person_at arg0, arg1, arg2, arg3, arg4
+	.macro move_person arg0, arg1, arg2, arg3, arg4
 	.short 339
 	.short \arg0
 	.short \arg1
@@ -2386,14 +2386,14 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_430 arg0, arg1, arg2
+	.macro set_phone_call arg0, arg1, arg2
 	.short 430
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_431
+	.macro run_phone_call
 	.short 431
 	.endm
 
@@ -3714,7 +3714,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_668 arg0, arg1
+	.macro buffer_type_name arg0, arg1
 	.short 668
 	.byte \arg0
 	.short \arg1
@@ -4142,11 +4142,11 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_746
+	.macro touchscreen_menu_hide
 	.short 746
 	.endm
 
-	.macro scrcmd_747
+	.macro touchscreen_menu_show
 	.short 747
 	.endm
 
@@ -4630,7 +4630,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_843 arg0, arg1
+	.macro buffer_item_name_indef arg0, arg1
 	.short 843
 	.byte \arg0
 	.short \arg1

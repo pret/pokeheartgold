@@ -176,9 +176,9 @@ scr_seq_0874_T23R0501_022D:
 	wait_movement
 	npc_msg 15
 scr_seq_0874_T23R0501_024A:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0874_T23R0501_026E
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -190,7 +190,7 @@ scr_seq_0874_T23R0501_026E:
 	npc_msg 16
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 5
+	register_gear_number 5
 	npc_msg 17
 	waitbutton
 	closemsg

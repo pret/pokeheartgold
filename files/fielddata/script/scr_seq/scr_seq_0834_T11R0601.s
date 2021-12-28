@@ -42,7 +42,7 @@ scr_seq_0834_T11R0601_0080:
 	end
 
 scr_seq_0834_T11R0601_008D:
-	show_person_at 0, 12, 0, 7, 3
+	move_person 0, 12, 0, 7, 3
 	end
 
 scr_seq_0834_T11R0601_009B:
@@ -138,9 +138,9 @@ scr_seq_0834_T11R0601_018C:
 	lockall
 	faceplayer
 	npc_msg 12
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0834_T11R0601_024F
 	npc_msg 14

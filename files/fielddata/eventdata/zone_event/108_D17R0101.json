@@ -5,7 +5,7 @@
       "ovid": 220,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 1,
       "dirn": 1,
       "eye": 0,
@@ -51,7 +51,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16627
+      "var": "VAR_UNK_40F3"
     },
     {
       "scr": 2,
@@ -61,7 +61,7 @@
       "h": 4,
       "z": 0,
       "val": 0,
-      "var": 16627
+      "var": "VAR_UNK_40F3"
     }
   ]
 }

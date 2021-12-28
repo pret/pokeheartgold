@@ -37,9 +37,9 @@ scr_seq_0181_R05R0202_005F:
 	wait_movement
 scr_seq_0181_R05R0202_006E:
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0181_R05R0202_00E3
 	hasspaceforitem ITEM_TM64, 1, VAR_SPECIAL_x800C

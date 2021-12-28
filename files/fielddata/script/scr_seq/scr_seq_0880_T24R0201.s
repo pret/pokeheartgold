@@ -30,9 +30,9 @@ scr_seq_0880_T24R0201_003A:
 
 scr_seq_0880_T24R0201_0042:
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0880_T24R0201_0063
 	npc_msg 4
@@ -66,9 +66,9 @@ scr_seq_0880_T24R0201_00AB:
 	.byte 0x02, 0x00
 scr_seq_0880_T24R0201_00AD:
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0880_T24R0201_01AA
 	fade_screen 6, 1, 0, 0

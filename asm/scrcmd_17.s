@@ -62,8 +62,8 @@ ScrCmd_292: ; 0x0204E654
 	.balign 4, 0
 	thumb_func_end ScrCmd_292
 
-	thumb_func_start ScrCmd_293
-ScrCmd_293: ; 0x0204E684
+	thumb_func_start ScrCmd_GiveRunningShoes
+ScrCmd_GiveRunningShoes: ; 0x0204E684
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -75,7 +75,7 @@ ScrCmd_293: ; 0x0204E684
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_293
+	thumb_func_end ScrCmd_GiveRunningShoes
 
 	thumb_func_start ScrCmd_CheckBadge
 ScrCmd_CheckBadge: ; 0x0204E6A0

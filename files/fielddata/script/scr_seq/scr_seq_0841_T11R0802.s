@@ -74,7 +74,7 @@ scr_seq_0841_T11R0802_00E9:
 	takeitem ITEM_LOST_ITEM, 1, VAR_SPECIAL_x800C
 	npc_msg 6
 	clearflag FLAG_UNK_2FB
-	scrcmd_100 1
+	show_person 1
 	setvar VAR_SPECIAL_x8004, 480
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -117,7 +117,7 @@ scr_seq_0841_T11R0802_0187:
 	apply_movement 0, scr_seq_0841_T11R0802_0294
 scr_seq_0841_T11R0802_018F:
 	wait_movement
-	scrcmd_100 3
+	show_person 3
 	hide_person 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0841_T11R0802_01B4
@@ -153,7 +153,7 @@ scr_seq_0841_T11R0802_0215:
 	apply_movement 3, scr_seq_0841_T11R0802_0294
 scr_seq_0841_T11R0802_021D:
 	wait_movement
-	scrcmd_100 0
+	show_person 0
 	hide_person 3
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0841_T11R0802_0242

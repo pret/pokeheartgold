@@ -107,7 +107,7 @@ scr_seq_0099_D39R0101_0128:
 scr_seq_0099_D39R0101_0130:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	callstd 2067
+	callstd std_play_kimono_girl_music
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0099_D39R0101_0157
@@ -121,15 +121,15 @@ scr_seq_0099_D39R0101_0157:
 	waitbutton
 	closemsg
 	releaseall
-	callstd 2068
+	callstd std_fade_end_kimono_girl_music
 	end
 
 scr_seq_0099_D39R0101_0169:
 	buffer_players_name 0
 	npc_msg 4
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0099_D39R0101_0193
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -152,7 +152,7 @@ scr_seq_0099_D39R0101_0193:
 	hide_person 2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	callstd 2068
+	callstd std_fade_end_kimono_girl_music
 	setflag FLAG_UNK_239
 	setvar VAR_UNK_40E8, 1
 	apply_movement 241, scr_seq_0099_D39R0101_024C
@@ -163,9 +163,9 @@ scr_seq_0099_D39R0101_0193:
 
 scr_seq_0099_D39R0101_01F3:
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0099_D39R0101_0193
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -203,9 +203,9 @@ scr_seq_0099_D39R0101_025C:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0099_D39R0101_0384
 	scrcmd_618 VAR_SPECIAL_x800C

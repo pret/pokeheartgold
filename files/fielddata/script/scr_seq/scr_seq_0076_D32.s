@@ -71,9 +71,9 @@ scr_seq_0076_D32_00E1:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0076_D32_0209
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -408,7 +408,7 @@ scr_seq_0076_D32_042B:
 	scrcmd_784 3, 0
 	scrcmd_116 1, 21, 1
 	npc_msg 21
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -700,7 +700,7 @@ scr_seq_0076_D32_09DB:
 	goto scr_seq_0076_D32_09F3
 
 scr_seq_0076_D32_09F3:
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	scrcmd_198 1, 32774
 	npc_msg 23
 	getmenuchoice VAR_SPECIAL_x800C
@@ -720,9 +720,9 @@ scr_seq_0076_D32_0A24:
 	scrcmd_556 32774
 	scrcmd_118 1
 	play_se SEQ_SE_DP_REGI
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 1, 32780
+	buffer_pocket_name 1, 32780
 	npc_msg 26
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8000, 0
@@ -768,7 +768,7 @@ scr_seq_0076_D32_0AFC:
 
 scr_seq_0076_D32_0B02:
 	scrcmd_117
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 22
 	waitbutton
 	closemsg
@@ -784,7 +784,7 @@ scr_seq_0076_D32_0B15:
 	scrcmd_784 3, 0
 	scrcmd_116 1, 21, 1
 	npc_msg 21
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0076_D32_0B02
@@ -990,7 +990,7 @@ scr_seq_0076_D32_0F22:
 	goto scr_seq_0076_D32_0F40
 
 scr_seq_0076_D32_0F40:
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	scrcmd_197 1, 32769
 	scrcmd_198 2, 32774
 	npc_msg 24

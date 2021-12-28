@@ -91,9 +91,9 @@ scr_seq_0217_R25R0101_011F:
 
 scr_seq_0217_R25R0101_0125:
 	npc_msg 11
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0217_R25R0101_048D
 	npc_msg 12

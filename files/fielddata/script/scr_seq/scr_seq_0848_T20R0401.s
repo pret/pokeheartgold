@@ -12,7 +12,7 @@ scr_seq_0848_T20R0401_0006:
 	faceplayer
 	checkflag FLAG_UNK_2E5
 	gotoif TRUE, scr_seq_0848_T20R0401_0035
-	comparevartovalue VAR_UNK_4108, 1
+	comparevartovalue VAR_SCENE_ELMS_LAB, 1
 	gotoif ge, scr_seq_0848_T20R0401_0044
 	buffer_players_name 0
 	gender_msgbox 0, 1

@@ -96,28 +96,28 @@ scr_seq_0809_T08GYM0101_012E:
 
 scr_seq_0809_T08GYM0101_0130:
 	clearflag FLAG_UNK_266
-	scrcmd_100 1
+	show_person 1
 	setflag FLAG_UNK_26A
 	hide_person 8
 	return
 
 scr_seq_0809_T08GYM0101_0142:
 	clearflag FLAG_UNK_267
-	scrcmd_100 5
+	show_person 5
 	setflag FLAG_UNK_26B
 	hide_person 7
 	return
 
 scr_seq_0809_T08GYM0101_0154:
 	clearflag FLAG_UNK_268
-	scrcmd_100 4
+	show_person 4
 	setflag FLAG_UNK_26C
 	hide_person 9
 	return
 
 scr_seq_0809_T08GYM0101_0166:
 	clearflag FLAG_UNK_269
-	scrcmd_100 0
+	show_person 0
 	setflag FLAG_UNK_26D
 	hide_person 6
 	return
@@ -151,7 +151,7 @@ scr_seq_0809_T08GYM0101_01E0:
 scr_seq_0809_T08GYM0101_01E8:
 	wait_movement
 	clearflag FLAG_UNK_266
-	scrcmd_100 1
+	show_person 1
 	setflag FLAG_UNK_26A
 	hide_person 8
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -225,7 +225,7 @@ scr_seq_0809_T08GYM0101_02F8:
 scr_seq_0809_T08GYM0101_0300:
 	wait_movement
 	clearflag FLAG_UNK_267
-	scrcmd_100 5
+	show_person 5
 	setflag FLAG_UNK_26B
 	hide_person 7
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -301,7 +301,7 @@ scr_seq_0809_T08GYM0101_0415:
 scr_seq_0809_T08GYM0101_041D:
 	wait_movement
 	clearflag FLAG_UNK_268
-	scrcmd_100 4
+	show_person 4
 	setflag FLAG_UNK_26C
 	hide_person 9
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -377,7 +377,7 @@ scr_seq_0809_T08GYM0101_0532:
 scr_seq_0809_T08GYM0101_053A:
 	wait_movement
 	clearflag FLAG_UNK_269
-	scrcmd_100 0
+	show_person 0
 	setflag FLAG_UNK_26D
 	hide_person 6
 	comparevartovalue VAR_SPECIAL_x800C, 0

@@ -21,7 +21,7 @@ scr_seq_0824_T10R0601_000E:
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_210
-	scrcmd_100 3
+	show_person 3
 	setvar VAR_UNK_40C8, 1
 	releaseall
 	end
@@ -84,8 +84,8 @@ scr_seq_0824_T10R0601_00F0:
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KI_GASYAN
 	hide_person 4
-	show_person_at 2, 6, 0, 20, 0
-	show_person_at 1, 6, 0, 17, 0
+	move_person 2, 6, 0, 20, 0
+	move_person 1, 6, 0, 17, 0
 	wait 30, VAR_SPECIAL_x8004
 	scrcmd_081 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO

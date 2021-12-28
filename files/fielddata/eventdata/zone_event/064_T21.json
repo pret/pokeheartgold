@@ -39,7 +39,7 @@
       "ovid": 330,
       "mvt": 15,
       "type": 0,
-      "flag": 408,
+      "flag": "FLAG_HIDE_CHERRYGROVE_GUIDE_GENT",
       "scr": 1,
       "dirn": 1,
       "eye": 0,
@@ -57,7 +57,7 @@
       "ovid": 146,
       "mvt": 3,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 8,
       "dirn": 2,
       "eye": 0,
@@ -75,7 +75,7 @@
       "ovid": 325,
       "mvt": 5,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 9,
       "dirn": 3,
       "eye": 0,
@@ -93,7 +93,7 @@
       "ovid": 332,
       "mvt": 17,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 5,
       "dirn": 3,
       "eye": 0,
@@ -111,7 +111,7 @@
       "ovid": 148,
       "mvt": 0,
       "type": 0,
-      "flag": 412,
+      "flag": "FLAG_HIDE_CHERRYGROVE_RIVAL",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -129,7 +129,7 @@
       "ovid": 328,
       "mvt": 14,
       "type": 0,
-      "flag": 638,
+      "flag": "FLAG_UNK_27E",
       "scr": 10,
       "dirn": 0,
       "eye": 0,
@@ -189,7 +189,7 @@
       "h": 4,
       "z": 0,
       "val": 0,
-      "var": 16499
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
     },
     {
       "scr": 4,
@@ -199,7 +199,7 @@
       "h": 4,
       "z": 0,
       "val": 3,
-      "var": 16499
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
     },
     {
       "scr": 3,
@@ -209,7 +209,7 @@
       "h": 1,
       "z": 0,
       "val": 1,
-      "var": 16499
+      "var": "VAR_SCENE_CHERRYGROVE_CITY_OW"
     }
   ]
 }

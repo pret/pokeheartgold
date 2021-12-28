@@ -41,9 +41,9 @@ scr_seq_0807_T08_0069:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0807_T08_014B
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -148,7 +148,7 @@ scr_seq_0807_T08_01B0:
 scr_seq_0807_T08_01E0:
 	npc_msg 8
 scr_seq_0807_T08_01E3:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8000, 1
 	gotoif ne, scr_seq_0807_T08_0202
@@ -168,7 +168,7 @@ scr_seq_0807_T08_022C:
 scr_seq_0807_T08_0241:
 	scrcmd_751 126, 255, 4
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0807_T08_028D

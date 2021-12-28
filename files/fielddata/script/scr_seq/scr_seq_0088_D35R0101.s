@@ -28,23 +28,23 @@ scr_seq_0088_D35R0101_002A:
 	end
 
 scr_seq_0088_D35R0101_005F:
-	show_person_at 4, 8, 0, 7, 2
+	move_person 4, 8, 0, 7, 2
 	end
 
 scr_seq_0088_D35R0101_006D:
-	show_person_at 4, 10, 0, 7, 2
-	show_person_at 5, 4, 0, 3, 1
-	show_person_at 0, 9, 0, 3, 1
-	show_person_at 1, 8, 0, 3, 1
-	show_person_at 2, 9, 0, 4, 1
-	show_person_at 3, 8, 0, 4, 1
+	move_person 4, 10, 0, 7, 2
+	move_person 5, 4, 0, 3, 1
+	move_person 0, 9, 0, 3, 1
+	move_person 1, 8, 0, 3, 1
+	move_person 2, 9, 0, 4, 1
+	move_person 3, 8, 0, 4, 1
 	end
 
 scr_seq_0088_D35R0101_00B7:
-	show_person_at 0, 9, 0, 3, 1
-	show_person_at 1, 8, 0, 3, 1
-	show_person_at 2, 9, 0, 4, 1
-	show_person_at 3, 8, 0, 4, 1
+	move_person 0, 9, 0, 3, 1
+	move_person 1, 8, 0, 3, 1
+	move_person 2, 9, 0, 4, 1
+	move_person 3, 8, 0, 4, 1
 	end
 
 scr_seq_0088_D35R0101_00E9:

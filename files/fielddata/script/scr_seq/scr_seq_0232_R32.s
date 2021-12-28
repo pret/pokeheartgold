@@ -392,9 +392,9 @@ scr_seq_0232_R32_0504:
 	lockall
 	faceplayer
 	npc_msg 14
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0232_R32_052D
 	npc_msg 15
@@ -414,9 +414,9 @@ scr_seq_0232_R32_0538:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0232_R32_0660
 	scrcmd_618 VAR_SPECIAL_x800C

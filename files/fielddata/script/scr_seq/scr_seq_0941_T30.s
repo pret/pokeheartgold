@@ -64,7 +64,7 @@ scr_seq_0941_T30_00C5:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 3
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_UNK_407B, 2
 	end
 
@@ -232,9 +232,9 @@ scr_seq_0941_T30_02BC:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0941_T30_03C1
 	scrcmd_618 VAR_SPECIAL_x800C

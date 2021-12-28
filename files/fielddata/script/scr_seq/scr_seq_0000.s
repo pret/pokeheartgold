@@ -22,9 +22,9 @@ scr_seq_0000_0021:
 	scrcmd_609
 	lockall
 	npc_msg 9
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0000_0050
 	comparevartovalue VAR_SPECIAL_x800C, 1

@@ -141,9 +141,9 @@ scr_seq_0740_T01R0301_01F2:
 	buffer_players_name 0
 	gender_msgbox 4, 5
 	npc_msg 28
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_0256
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -491,7 +491,7 @@ scr_seq_0740_T01R0301_066B:
 	scrcmd_076 1, 0
 	npc_msg 45
 	scrcmd_077
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_096C
@@ -528,7 +528,7 @@ scr_seq_0740_T01R0301_0719:
 	scrcmd_076 7, 0
 	npc_msg 44
 	scrcmd_077
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_096C
@@ -565,7 +565,7 @@ scr_seq_0740_T01R0301_07C7:
 	scrcmd_076 4, 0
 	npc_msg 43
 	scrcmd_077
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_096C
@@ -605,12 +605,12 @@ scr_seq_0740_T01R0301_0852:
 	scrcmd_137 32772, 5, 0, 0, 0, 32780
 	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
 	npc_msg 49
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	callif eq, scr_seq_0740_T01R0301_0929
-	scrcmd_747
+	touchscreen_menu_show
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 8
 	gotoif eq, scr_seq_0740_T01R0301_0908
@@ -653,10 +653,10 @@ scr_seq_0740_T01R0301_0929:
 	setvar VAR_TEMP_x4000, 0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_SPECIAL_x8005, VAR_TEMP_x4000
+	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_746
+	touchscreen_menu_hide
 	bufferpartymonnick 1, VAR_SPECIAL_x8005
 	npc_msg 50
 	getmenuchoice VAR_SPECIAL_x800C
@@ -670,7 +670,7 @@ scr_seq_0740_T01R0301_096C:
 	npc_msg 47
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 scr_seq_0740_T01R0301_0979:
 	end
@@ -687,7 +687,7 @@ scr_seq_0740_T01R0301_097D:
 	end
 
 scr_seq_0740_T01R0301_098B:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 51
 	waitbutton
 	closemsg

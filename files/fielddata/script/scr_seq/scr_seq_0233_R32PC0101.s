@@ -21,9 +21,9 @@ scr_seq_0233_R32PC0101_001E:
 	checkflag FLAG_UNK_075
 	gotoif TRUE, scr_seq_0233_R32PC0101_008C
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0233_R32PC0101_0058
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -71,9 +71,9 @@ scr_seq_0233_R32PC0101_00AC:
 	checkflag FLAG_UNK_174
 	gotoif TRUE, scr_seq_0233_R32PC0101_0121
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0233_R32PC0101_00E0
 	npc_msg 8

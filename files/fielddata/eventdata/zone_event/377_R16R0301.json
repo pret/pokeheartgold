@@ -5,7 +5,7 @@
       "ovid": 86,
       "mvt": 0,
       "type": 0,
-      "flag": 16,
+      "flag": "FLAG_UNK_010",
       "scr": 10000,
       "dirn": 0,
       "eye": 0,

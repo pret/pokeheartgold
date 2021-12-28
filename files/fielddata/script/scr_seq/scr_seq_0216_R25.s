@@ -281,9 +281,9 @@ scr_seq_0216_R25_03A8:
 	gotoif ge, scr_seq_0216_R25_044B
 	npc_msg 1
 scr_seq_0216_R25_03D3:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0216_R25_03F7
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -295,7 +295,7 @@ scr_seq_0216_R25_03F7:
 	npc_msg 2
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 29
+	register_gear_number 29
 	npc_msg 3
 	waitbutton
 	closemsg
@@ -332,9 +332,9 @@ scr_seq_0216_R25_0456:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0216_R25_04DA
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0216_R25_04E5
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -421,7 +421,7 @@ scr_seq_0216_R25_0573:
 	lockall
 	setflag FLAG_UNK_2AC
 	clearflag FLAG_UNK_2A2
-	scrcmd_100 13
+	show_person 13
 	apply_movement 255, scr_seq_0216_R25_0648
 	wait_movement
 	scrcmd_076 245, 0

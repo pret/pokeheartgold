@@ -19,7 +19,7 @@
 	scrdef_end
 
 scr_seq_0237_R34_0036:
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 	scrcmd_388 16384
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0237_R34_0057
@@ -72,11 +72,11 @@ scr_seq_0237_R34_00DF:
 	wait_movement
 	npc_msg 46
 	buffer_players_name 0
-	scrcmd_146 6
+	register_gear_number 6
 	npc_msg 47
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 7
+	register_gear_number 7
 	npc_msg 48
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -453,9 +453,9 @@ scr_seq_0237_R34_05FF:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0237_R34_0727
 	scrcmd_618 VAR_SPECIAL_x800C

@@ -37,7 +37,7 @@ scr_seq_0262_0062:
 
 scr_seq_0262_006A:
 	npc_msg 4
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0262_00B5
@@ -55,7 +55,7 @@ scr_seq_0262_006A:
 scr_seq_0262_00B5:
 	closemsg
 scr_seq_0262_00B7:
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -67,7 +67,7 @@ scr_seq_0262_00BD:
 	gotoif eq, scr_seq_0262_0114
 	scrcmd_718 0, 32768
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0262_0112
@@ -82,7 +82,7 @@ scr_seq_0262_00BD:
 scr_seq_0262_0112:
 	closemsg
 scr_seq_0262_0114:
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -146,9 +146,9 @@ scr_seq_0262_01D2:
 	scrcmd_609
 	lockall
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0262_01FA

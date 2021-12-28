@@ -27,8 +27,8 @@ scr_seq_0090_D35R0103_003E:
 	end
 
 scr_seq_0090_D35R0103_004F:
-	show_person_at 5, 29, 0, 22, 0
-	show_person_at 6, 29, 0, 22, 0
+	move_person 5, 29, 0, 22, 0
+	move_person 6, 29, 0, 22, 0
 	comparevartovalue VAR_UNK_40AC, 10
 	gotoif ge, scr_seq_0090_D35R0103_00B0
 	comparevartovalue VAR_UNK_40A9, 4
@@ -39,8 +39,8 @@ scr_seq_0090_D35R0103_0083:
 	comparevartovalue VAR_TEMP_x4007, 0
 	gotoif ne, scr_seq_0090_D35R0103_00B0
 	setvar VAR_TEMP_x4007, 77
-	show_person_at 0, 39, 0, 18, 0
-	show_person_at 1, 40, 0, 18, 0
+	move_person 0, 39, 0, 18, 0
+	move_person 1, 40, 0, 18, 0
 	end
 
 scr_seq_0090_D35R0103_00B0:
@@ -181,7 +181,7 @@ scr_seq_0090_D35R0103_0238:
 	hide_person 17
 	setflag FLAG_UNK_24D
 	clearflag FLAG_UNK_252
-	scrcmd_100 18
+	show_person 18
 	releaseall
 	end
 
@@ -304,10 +304,10 @@ scr_seq_0090_D35R0103_03C4:
 	wait_movement
 	closemsg
 	clearflag FLAG_UNK_1F3
-	scrcmd_100 8
-	scrcmd_100 7
-	show_person_at 8, 32, 1, 30, 3
-	show_person_at 7, 30, 1, 30, 0
+	show_person 8
+	show_person 7
+	move_person 8, 32, 1, 30, 3
+	move_person 7, 30, 1, 30, 0
 	scrcmd_081 0
 	play_bgm SEQ_GS_EYE_ROCKET
 	scrcmd_602 0
@@ -333,10 +333,10 @@ scr_seq_0090_D35R0103_0436:
 	npc_msg 4
 	closemsg
 	clearflag FLAG_UNK_1E5
-	scrcmd_100 0
-	scrcmd_100 1
-	show_person_at 0, 20, 1, 25, 3
-	show_person_at 1, 19, 1, 25, 0
+	show_person 0
+	show_person 1
+	move_person 0, 20, 1, 25, 3
+	move_person 1, 19, 1, 25, 0
 	apply_movement 0, scr_seq_0090_D35R0103_067C
 	apply_movement 1, scr_seq_0090_D35R0103_0684
 	wait_movement
@@ -360,8 +360,8 @@ scr_seq_0090_D35R0103_0436:
 	closemsg
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	show_person_at 0, 28, 1, 24, 1
-	show_person_at 1, 27, 1, 24, 3
+	move_person 0, 28, 1, 24, 1
+	move_person 1, 27, 1, 24, 3
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -414,8 +414,8 @@ scr_seq_0090_D35R0103_0436:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	show_person_at 0, 39, 0, 18, 0
-	show_person_at 1, 40, 0, 18, 0
+	move_person 0, 39, 0, 18, 0
+	move_person 1, 40, 0, 18, 0
 	releaseall
 	setvar VAR_UNK_40AC, 9
 	setvar VAR_UNK_40A9, 4

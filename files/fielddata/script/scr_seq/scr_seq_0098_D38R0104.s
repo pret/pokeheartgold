@@ -36,12 +36,12 @@ scr_seq_0098_D38R0104_0063:
 	wait_fanfare
 	scrcmd_137 236, 10, 0, 0, 0, 32780
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	callif eq, scr_seq_0098_D38R0104_00A6
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0098_D38R0104_0097:
 	setflag FLAG_UNK_10C
 	npc_msg 3
@@ -54,7 +54,7 @@ scr_seq_0098_D38R0104_00A6:
 	setvar VAR_TEMP_x4000, 0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_SPECIAL_x8005, VAR_TEMP_x4000
+	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	return

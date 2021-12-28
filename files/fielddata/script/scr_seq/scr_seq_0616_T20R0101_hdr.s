@@ -10,8 +10,8 @@
 
 scr_seq_0616_T20R0101_hdr_000B:
 	.short VAR_UNK_40FC, 2, 16
-	.short VAR_UNK_4108, 3, 3
-	.short VAR_UNK_4108, 8, 15
+	.short VAR_SCENE_ELMS_LAB, 3, 3
+	.short VAR_SCENE_ELMS_LAB, 8, 15
 	.short 0
 
 	.balign 4, 0

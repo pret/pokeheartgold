@@ -23,7 +23,7 @@ scr_seq_0103_D40R0104_0032:
 	end
 
 scr_seq_0103_D40R0104_003A:
-	show_person_at 0, 34, 1, 29, 3
+	move_person 0, 34, 1, 29, 3
 	setvar VAR_TEMP_x4003, 0
 	end
 

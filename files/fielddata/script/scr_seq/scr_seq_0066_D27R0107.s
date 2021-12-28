@@ -61,9 +61,9 @@ scr_seq_0066_D27R0107_0062:
 
 scr_seq_0066_D27R0107_00B5:
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0066_D27R0107_017F
 	takeitem ITEM_SECRETPOTION, 1, VAR_SPECIAL_x800C

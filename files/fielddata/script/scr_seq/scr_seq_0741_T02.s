@@ -50,7 +50,7 @@ scr_seq_0741_T02_0090:
 	setvar VAR_SPECIAL_x8004, 2
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 0
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_UNK_4096, 2
 	end
 
@@ -59,9 +59,9 @@ scr_seq_0741_T02_00AE:
 	lockall
 	faceplayer
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0741_T02_00D7
 	npc_msg 1
@@ -128,9 +128,9 @@ scr_seq_0741_T02_015C:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0741_T02_0284
 	scrcmd_618 VAR_SPECIAL_x800C

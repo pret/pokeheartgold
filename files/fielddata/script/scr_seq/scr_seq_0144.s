@@ -170,7 +170,7 @@ scr_seq_0144_01F3:
 	end
 
 scr_seq_0144_0222:
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	npc_msg 5
 	waitbutton
 	closemsg

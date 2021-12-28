@@ -42,7 +42,7 @@ scr_seq_0034_D23R0106_002F:
 	reset_bgm
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	show_person_at 1, 8, 1, 12, 1
+	move_person 1, 8, 1, 12, 1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, scr_seq_0034_D23R0106_00C1

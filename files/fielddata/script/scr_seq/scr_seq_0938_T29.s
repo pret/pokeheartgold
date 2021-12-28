@@ -142,8 +142,8 @@ scr_seq_0938_T29_01C0:
 	setflag FLAG_UNK_1E3
 	hide_person 3
 	clearflag FLAG_UNK_1E4
-	scrcmd_100 8
-	scrcmd_100 10
+	show_person 8
+	show_person 10
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -155,9 +155,9 @@ scr_seq_0938_T29_01DA:
 	gotoif ge, scr_seq_0938_T29_026A
 	npc_msg 13
 scr_seq_0938_T29_01F2:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0938_T29_0216
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -169,7 +169,7 @@ scr_seq_0938_T29_0216:
 	npc_msg 14
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 39
+	register_gear_number 39
 	npc_msg 15
 	waitbutton
 	closemsg
@@ -356,9 +356,9 @@ scr_seq_0938_T29_047C:
 	faceplayer
 	buffer_players_name 0
 	gender_msgbox 3, 4
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0938_T29_04BB
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -394,9 +394,9 @@ scr_seq_0938_T29_0509:
 	lockall
 	faceplayer
 	npc_msg 8
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0938_T29_04BB
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -519,13 +519,13 @@ scr_seq_0938_T29_068D:
 scr_seq_0938_T29_0691:
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	npc_msg 33
 	wait_fanfare
 	buffer_players_name 0
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	npc_msg 34
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 1
@@ -535,7 +535,7 @@ scr_seq_0938_T29_06C4:
 	end
 
 scr_seq_0938_T29_06CA:
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	npc_msg 35
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0

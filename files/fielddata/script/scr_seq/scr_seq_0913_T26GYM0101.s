@@ -189,9 +189,9 @@ scr_seq_0913_T26GYM0101_023B:
 
 scr_seq_0913_T26GYM0101_0264:
 	npc_msg 8
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_034B
 	npc_msg 9
@@ -223,9 +223,9 @@ scr_seq_0913_T26GYM0101_0264:
 scr_seq_0913_T26GYM0101_030E:
 	bufferpartymonnick 1, VAR_SPECIAL_x8004
 	npc_msg 13
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_034B
 	closemsg

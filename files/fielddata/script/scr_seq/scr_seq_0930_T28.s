@@ -25,7 +25,7 @@ scr_seq_0930_T28_0047:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 2
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_UNK_4134, 5
 	end
 
@@ -38,9 +38,9 @@ scr_seq_0930_T28_0065:
 	checkflag FLAG_UNK_163
 	gotoif TRUE, scr_seq_0930_T28_010C
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0930_T28_0101
 scr_seq_0930_T28_009D:
@@ -82,9 +82,9 @@ scr_seq_0930_T28_0117:
 	checkflag FLAG_UNK_163
 	gotoif TRUE, scr_seq_0930_T28_0147
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0930_T28_009D
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -123,9 +123,9 @@ scr_seq_0930_T28_01A3:
 	checkflag FLAG_UNK_163
 	gotoif TRUE, scr_seq_0930_T28_026D
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0930_T28_01DF
 	comparevartovalue VAR_SPECIAL_x800C, 1

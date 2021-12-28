@@ -202,7 +202,7 @@ scr_seq_0004_02DB:
 	.byte 0x02, 0x00
 scr_seq_0004_02DD:
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 166, 255, 0
 	scrcmd_751 167, 255, 1
@@ -229,7 +229,7 @@ scr_seq_0004_034C:
 	npc_msg 29
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -289,7 +289,7 @@ scr_seq_0004_0440:
 	npc_msg 10
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -304,7 +304,7 @@ scr_seq_0004_046A:
 	npc_msg 141
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -319,7 +319,7 @@ scr_seq_0004_0494:
 	npc_msg 140
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -490,7 +490,7 @@ scr_seq_0004_0763:
 scr_seq_0004_0776:
 	.byte 0x02, 0x00
 scr_seq_0004_0778:
-	scrcmd_747
+	touchscreen_menu_show
 	buffer_players_name 0
 	npc_msg 25
 	setvar VAR_TEMP_x4005, 0
@@ -565,7 +565,7 @@ scr_seq_0004_08CA:
 scr_seq_0004_08E0:
 	npc_msg 28
 scr_seq_0004_08E3:
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0004_0682
 
 scr_seq_0004_08EB:
@@ -587,7 +587,7 @@ scr_seq_0004_0905:
 scr_seq_0004_0922:
 	.byte 0x02, 0x00
 scr_seq_0004_0924:
-	scrcmd_746
+	touchscreen_menu_hide
 scr_seq_0004_0926:
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	callif eq, scr_seq_0004_09BE
@@ -642,14 +642,14 @@ scr_seq_0004_0A15:
 	.byte 0x02, 0x00
 scr_seq_0004_0A17:
 	scrcmd_283
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0004_0926
 
 scr_seq_0004_0A21:
 	.byte 0x02, 0x00
 scr_seq_0004_0A23:
 	scrcmd_283
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 30
 	waitbutton
 	closemsg
@@ -661,7 +661,7 @@ scr_seq_0004_0A32:
 	npc_msg 29
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -684,7 +684,7 @@ scr_seq_0004_0A8E:
 	.byte 0x02, 0x00
 scr_seq_0004_0A90:
 	scrcmd_283
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0004_0926
 
 scr_seq_0004_0A9A:
@@ -694,7 +694,7 @@ scr_seq_0004_0A9C:
 	npc_msg 30
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -703,7 +703,7 @@ scr_seq_0004_0AAB:
 	npc_msg 29
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -848,7 +848,7 @@ scr_seq_0004_0C9A:
 	.byte 0x02, 0x00
 scr_seq_0004_0C9C:
 	npc_msg 71
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 42, 255, 0
 	scrcmd_751 11, 255, 1

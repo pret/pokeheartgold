@@ -14,7 +14,7 @@ scr_seq_0890_T25R0201_000A:
 	checkflag FLAG_UNK_089
 	gotoif TRUE, scr_seq_0890_T25R0201_0081
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0890_T25R0201_0042
@@ -37,7 +37,7 @@ scr_seq_0890_T25R0201_0065:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_089
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -52,7 +52,7 @@ scr_seq_0890_T25R0201_008C:
 	npc_msg 4
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 

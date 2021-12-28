@@ -1783,7 +1783,7 @@
 .public ScrCmd_ReleaseAll
 .public ScrCmd_098
 .public ScrCmd_099
-.public ScrCmd_100
+.public ScrCmd_ShowPerson
 .public ScrCmd_HidePerson
 .public ScrCmd_102
 .public ScrCmd_103
@@ -1829,7 +1829,7 @@
 .public ScrCmd_NameRival
 .public ScrCmd_144
 .public ScrCmd_RegisterPokegearCard
-.public ScrCmd_146
+.public ScrCmd_RegisterGearNumber
 .public ScrCmd_147
 .public ScrCmd_148
 .public ScrCmd_149
@@ -1856,7 +1856,7 @@
 .public ScrCmd_170
 .public ScrCmd_171
 .public ScrCmd_172
-.public ScrCmd_173
+.public ScrCmd_NicknameInput
 .public ScrCmd_FadeScreen
 .public ScrCmd_WaitFade
 .public ScrCmd_176
@@ -1877,9 +1877,9 @@
 .public ScrCmd_191
 .public ScrCmd_192
 .public ScrCmd_BufferMonSpeciesName
-.public ScrCmd_194
-.public ScrCmd_195
-.public ScrCmd_196
+.public ScrCmd_BufferItemName
+.public ScrCmd_BufferPocketName
+.public ScrCmd_BufferTMHMMoveName
 .public ScrCmd_197
 .public ScrCmd_198
 .public ScrCmd_BufferPartyMonNick
@@ -1976,7 +1976,7 @@
 .public ScrCmd_290
 .public ScrCmd_291
 .public ScrCmd_292
-.public ScrCmd_293
+.public ScrCmd_GiveRunningShoes
 .public ScrCmd_CheckBadge
 .public ScrCmd_GiveBadge
 .public ScrCmd_CountBadges
@@ -2022,7 +2022,7 @@
 .public ScrCmd_336
 .public ScrCmd_337
 .public ScrCmd_338
-.public ScrCmd_ShowPersonAt
+.public ScrCmd_MovePerson
 .public ScrCmd_340
 .public ScrCmd_341
 .public ScrCmd_342
@@ -2112,8 +2112,8 @@
 .public ScrCmd_426
 .public ScrCmd_427
 .public ScrCmd_428
-.public ScrCmd_430
-.public ScrCmd_431
+.public ScrCmd_SetPhoneCall
+.public ScrCmd_RunPhoneCall
 .public ScrCmd_GetFossilPokemon
 .public ScrCmd_GetFossilMinimumAmount
 .public ScrCmd_434
@@ -2348,7 +2348,7 @@
 .public ScrCmd_665
 .public ScrCmd_666
 .public ScrCmd_667
-.public ScrCmd_668
+.public ScrCmd_BufferTypeName
 .public ScrCmd_GetItemQuantity
 .public ScrCmd_670
 .public ScrCmd_671
@@ -2426,8 +2426,8 @@
 .public ScrCmd_743
 .public ScrCmd_744
 .public ScrCmd_745
-.public ScrCmd_746
-.public ScrCmd_747
+.public ScrCmd_TouchscreenMenuHide
+.public ScrCmd_TouchscreenMenuShow
 .public ScrCmd_GetMenuChoice
 .public ScrCmd_749
 .public ScrCmd_750
@@ -2523,7 +2523,7 @@
 .public ScrCmd_840
 .public ScrCmd_841
 .public ScrCmd_842
-.public ScrCmd_843
+.public ScrCmd_BufferItemNameIndef
 .public ScrCmd_844
 .public ScrCmd_845
 .public ScrCmd_846
@@ -27550,11 +27550,11 @@
 .public sub_0202EEA8
 .public sub_0202EEAC
 .public sub_0202EEB4
-.public sub_0202EEC0
-.public sub_0202EEE4
-.public sub_0202EF18
-.public sub_0202EF44
-.public sub_0202EF70
+.public GSPlayerMisc_FindEmptyGearPhonebookSlot
+.public GSPlayerMisc_IsGearNumberRegistered
+.public RegisterPhoneNumberInPokeGear
+.public GSPlayerMisc_AllocAndCopyPhonebook
+.public GSPlayerMisc_SetPhonebookFromBuffer
 .public sub_0202F01C
 .public sub_0202F050
 .public sub_0202F08C

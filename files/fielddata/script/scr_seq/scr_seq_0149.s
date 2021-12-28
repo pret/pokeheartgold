@@ -7,13 +7,13 @@
 	scrdef_end
 
 scr_seq_0149_0006:
-	setflag FLAG_UNK_19D
+	setflag FLAG_HIDE_ELMS_LAB_ELM
 	setflag FLAG_UNK_1A4
 	setflag FLAG_UNK_1A5
 	setflag FLAG_UNK_1A0
-	setflag FLAG_UNK_1A2
-	setflag FLAG_UNK_1A6
-	setflag FLAG_UNK_19C
+	setflag FLAG_HIDE_NEW_BARK_FRIEND
+	setflag FLAG_HIDE_ELMS_LAB_FRIEND
+	setflag FLAG_HIDE_CHERRYGROVE_RIVAL
 	setflag FLAG_UNK_1AB
 	setflag FLAG_UNK_1AF
 	setflag FLAG_UNK_1AD
@@ -56,8 +56,8 @@ scr_seq_0149_0006:
 	setflag FLAG_UNK_235
 	setflag FLAG_UNK_22F
 	setflag FLAG_UNK_237
-	setflag FLAG_UNK_197
-	setflag FLAG_UNK_238
+	setflag FLAG_HIDE_VIOLET_SHOP_KIMONO_GIRL
+	setflag FLAG_HIDE_VIOLET_KIMONO_GIRL
 	setflag FLAG_UNK_23C
 	setflag FLAG_UNK_240
 	setflag FLAG_UNK_23E
@@ -103,7 +103,7 @@ scr_seq_0149_0006:
 	setflag FLAG_UNK_2A5
 	setflag FLAG_UNK_2A1
 	setflag FLAG_UNK_2A2
-	setflag FLAG_UNK_2A6
+	setflag FLAG_HIDE_NEW_BARK_RIVAL
 	setflag FLAG_UNK_2A9
 	setflag FLAG_UNK_2AA
 	setflag FLAG_UNK_2AB

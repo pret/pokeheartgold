@@ -96,7 +96,7 @@ scr_seq_0003_0122:
 	setvar VAR_SPECIAL_x8004, 0
 scr_seq_0003_0175:
 	scrcmd_046 VAR_SPECIAL_x8004
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0003_01AA
@@ -107,7 +107,7 @@ scr_seq_0003_0175:
 scr_seq_0003_019B:
 	npc_msg 3
 	waitbutton
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	releaseall
 	endstd
@@ -191,7 +191,7 @@ scr_seq_0003_02B2:
 	npc_msg 3
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	endstd
 	end
@@ -271,7 +271,7 @@ scr_seq_0003_03D4:
 	npc_msg 10
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	endstd
 	end
@@ -283,9 +283,9 @@ scr_seq_0003_03E3:
 	npc_msg 4
 	buffer_players_name 0
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0003_0445
 	npc_msg 9
@@ -298,9 +298,9 @@ scr_seq_0003_03E3:
 scr_seq_0003_041D:
 	buffer_players_name 0
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0003_0445
 	npc_msg 9
@@ -477,7 +477,7 @@ scr_seq_0003_0632:
 scr_seq_0003_0646:
 	scrcmd_593
 	npc_msg 13
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0003_0740
@@ -494,7 +494,7 @@ scr_seq_0003_0646:
 
 scr_seq_0003_0698:
 	scrcmd_594
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 20
 	scrcmd_049
 	setvar VAR_SPECIAL_x800C, 0
@@ -548,7 +548,7 @@ scr_seq_0003_071D:
 
 scr_seq_0003_0740:
 	scrcmd_594
-	scrcmd_747
+	touchscreen_menu_show
 	setvar VAR_SPECIAL_x800C, 0
 	return
 
@@ -556,7 +556,7 @@ scr_seq_0003_074C:
 	npc_msg 18
 	scrcmd_049
 	scrcmd_594
-	scrcmd_747
+	touchscreen_menu_show
 	return
 
 scr_seq_0003_0757:
@@ -672,14 +672,14 @@ scr_seq_0003_085F:
 
 scr_seq_0003_0892:
 	buffer_players_name 0
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	npc_msg 28
 	goto scr_seq_0003_08C9
 
 scr_seq_0003_08A3:
 	comparevartovalue VAR_SPECIAL_x8005, 1
 	gotoif gt, scr_seq_0003_08BB
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	goto scr_seq_0003_08C0
 
 scr_seq_0003_08BB:
@@ -693,7 +693,7 @@ scr_seq_0003_08C9:
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x8005, 1
 	gotoif gt, scr_seq_0003_08E6
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	goto scr_seq_0003_08EB
 
 scr_seq_0003_08E6:
@@ -721,42 +721,42 @@ scr_seq_0003_08EB:
 
 scr_seq_0003_0961:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_0972:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_0983:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_0994:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09A5:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09B6:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09C7:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09D8:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09E9:
@@ -779,7 +779,7 @@ scr_seq_0003_09FC:
 	call scr_seq_0003_0A18
 	buffer_players_name 0
 	npc_msg 33
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0003_0A2E
 
 scr_seq_0003_0A18:
@@ -1043,7 +1043,7 @@ scr_seq_0003_0DF0:
 	closemsg
 	play_se SEQ_SE_DP_PC_LOGOFF
 	call scr_seq_0003_0A23
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -1360,7 +1360,7 @@ scr_seq_0003_11A1:
 	lockall
 	faceplayer
 	npc_msg 103
-	scrcmd_746
+	touchscreen_menu_hide
 scr_seq_0003_11AE:
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 112, 255, 0
@@ -1400,7 +1400,7 @@ scr_seq_0003_126A:
 scr_seq_0003_126D:
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -1506,7 +1506,7 @@ scr_seq_0003_1342:
 	end
 
 scr_seq_0003_1352:
-	scrcmd_430 32772, 32773, 32774
+	set_phone_call VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	call scr_seq_0003_136C
 	endstd
 	end
@@ -1522,7 +1522,7 @@ scr_seq_0003_136C:
 	wait_se SEQ_SE_GS_PHONE0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_431
+	run_phone_call
 	scrcmd_150
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -1586,7 +1586,7 @@ scr_seq_0003_1456:
 scr_seq_0003_145C:
 	.byte 0x02, 0x00
 scr_seq_0003_145E:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 321, 255, 0
 	scrcmd_751 322, 255, 1
@@ -1614,7 +1614,7 @@ scr_seq_0003_14BD:
 scr_seq_0003_14C5:
 	.byte 0x02, 0x00
 scr_seq_0003_14C7:
-	scrcmd_747
+	touchscreen_menu_show
 	get_std_msg_naix 3, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	waitbutton
@@ -1636,7 +1636,7 @@ scr_seq_0003_14F3:
 scr_seq_0003_14F9:
 	.byte 0x02, 0x00
 scr_seq_0003_14FB:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 321, 255, 0
 	scrcmd_751 322, 255, 1
@@ -1664,7 +1664,7 @@ scr_seq_0003_155A:
 scr_seq_0003_1562:
 	.byte 0x02, 0x00
 scr_seq_0003_1564:
-	scrcmd_747
+	touchscreen_menu_show
 	checkflag FLAG_UNK_16F
 	gotoif TRUE, scr_seq_0003_15E8
 	checkflag FLAG_UNK_170
@@ -1739,7 +1739,7 @@ scr_seq_0003_1666:
 	goto scr_seq_0003_15DE
 
 scr_seq_0003_1678:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 321, 255, 0
 	scrcmd_751 324, 255, 1
@@ -1760,17 +1760,17 @@ scr_seq_0003_16CB:
 	end
 
 scr_seq_0003_16D1:
-	scrcmd_747
+	touchscreen_menu_show
 	endstd
 	end
 
 scr_seq_0003_16D7:
-	scrcmd_747
+	touchscreen_menu_show
 	endstd
 	end
 
 scr_seq_0003_16DD:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 321, 255, 0
 	scrcmd_751 324, 255, 1
@@ -1791,12 +1791,12 @@ scr_seq_0003_1730:
 	end
 
 scr_seq_0003_1736:
-	scrcmd_747
+	touchscreen_menu_show
 	endstd
 	end
 
 scr_seq_0003_173C:
-	scrcmd_747
+	touchscreen_menu_show
 	endstd
 	end
 

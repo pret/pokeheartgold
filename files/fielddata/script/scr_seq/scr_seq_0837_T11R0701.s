@@ -66,7 +66,7 @@ scr_seq_0837_T11R0701_00E0:
 	gotoif ne, scr_seq_0837_T11R0701_0106
 	comparevartovalue VAR_UNK_4130, 3
 	gotoif gt, scr_seq_0837_T11R0701_0106
-	show_person_at 2, 22, 0, 8, 0
+	move_person 2, 22, 0, 8, 0
 scr_seq_0837_T11R0701_0106:
 	end
 
@@ -153,14 +153,14 @@ scr_seq_0837_T11R0701_0227:
 	wait_movement
 	npc_msg 16
 scr_seq_0837_T11R0701_022C:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x8004
 	scrcmd_751 17, 255, 0
 	scrcmd_751 18, 255, 1
 	scrcmd_751 19, 255, 2
 	scrcmd_751 27, 255, 3
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8008, 3
 	gotoif eq, scr_seq_0837_T11R0701_0346
@@ -188,12 +188,12 @@ scr_seq_0837_T11R0701_02B6:
 	npc_msg 21
 	wait_fanfare
 	scrcmd_137 32772, 5, 0, 0, 0, 32780
-	scrcmd_746
+	touchscreen_menu_hide
 	npc_msg 25
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0837_T11R0701_0351
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0837_T11R0701_02F3:
 	npc_msg 22
 	closemsg
@@ -237,7 +237,7 @@ scr_seq_0837_T11R0701_0351:
 	fade_screen 6, 1, 0, 0
 	wait_fade
 	scrcmd_815 0
-	scrcmd_173 VAR_SPECIAL_x800C, VAR_TEMP_x4000
+	nickname_input VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	comparevartovalue VAR_TEMP_x4000, 1
@@ -293,9 +293,9 @@ scr_seq_0837_T11R0701_040C:
 	npc_msg 7
 	setvar VAR_TEMP_x400A, 77
 scr_seq_0837_T11R0701_0415:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0837_T11R0701_04EA
 	npc_msg 9

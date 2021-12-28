@@ -182,9 +182,9 @@ scr_seq_0251_R39R0201_0260:
 	npc_msg 10
 	scrcmd_049
 	npc_msg 13
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0251_R39R0201_028C
 	comparevartovalue VAR_SPECIAL_x800C, 1

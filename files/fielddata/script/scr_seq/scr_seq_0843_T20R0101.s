@@ -22,31 +22,31 @@
 	scrdef_end
 
 scr_seq_0843_T20R0101_0042:
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 	checkflag FLAG_ELM_RECEIVED_EMAIL
 	gotoif TRUE, scr_seq_0843_T20R0101_00B8
-	comparevartovalue VAR_UNK_4108, 0
+	comparevartovalue VAR_SCENE_ELMS_LAB, 0
 	gotoif ne, scr_seq_0843_T20R0101_0070
-	show_person_at 0, 4, 0, 5, 1
+	move_person 0, 4, 0, 5, 1
 	goto scr_seq_0843_T20R0101_00B4
 
 scr_seq_0843_T20R0101_0070:
-	comparevartovalue VAR_UNK_4108, 3
+	comparevartovalue VAR_SCENE_ELMS_LAB, 3
 	gotoif ne, scr_seq_0843_T20R0101_008F
-	show_person_at 0, 4, 0, 5, 1
+	move_person 0, 4, 0, 5, 1
 	goto scr_seq_0843_T20R0101_00B4
 
 scr_seq_0843_T20R0101_008F:
-	comparevartovalue VAR_UNK_4108, 8
+	comparevartovalue VAR_SCENE_ELMS_LAB, 8
 	gotoif ne, scr_seq_0843_T20R0101_00B4
-	show_person_at 0, 4, 0, 5, 1
-	show_person_at 3, 7, 0, 12, 3
+	move_person 0, 4, 0, 5, 1
+	move_person 3, 7, 0, 12, 3
 scr_seq_0843_T20R0101_00B4:
 	scrcmd_621
 	end
 
 scr_seq_0843_T20R0101_00B8:
-	show_person_at 0, 4, 0, 5, 3
+	move_person 0, 4, 0, 5, 3
 	goto scr_seq_0843_T20R0101_00B4
 
 scr_seq_0843_T20R0101_00CA:
@@ -173,14 +173,14 @@ scr_seq_0843_T20R0101_0224:
 	npc_msg 7
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	scrcmd_746
+	touchscreen_menu_hide
 	buffer_mon_species_name 1, 0
 	npc_msg 8
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	callif eq, scr_seq_0843_T20R0101_02EE
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -202,8 +202,8 @@ scr_seq_0843_T20R0101_0224:
 	gender_msgbox 12, 13
 	waitbutton
 	closemsg
-	setvar VAR_UNK_4108, 1
-	setvar VAR_UNK_4072, 1
+	setvar VAR_SCENE_ELMS_LAB, 1
+	setvar VAR_SCENE_NEW_BARK_TOWN_OW, 1
 	clearflag FLAG_ELM_RECEIVED_EMAIL
 	releaseall
 	end
@@ -212,10 +212,10 @@ scr_seq_0843_T20R0101_02EE:
 	setvar VAR_TEMP_x4000, 0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 0, VAR_TEMP_x4000
+	nickname_input 0, VAR_TEMP_x4000
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_746
+	touchscreen_menu_hide
 	bufferpartymonnick 1, 0
 	npc_msg 9
 	getmenuchoice VAR_SPECIAL_x800C
@@ -296,9 +296,9 @@ scr_seq_0843_T20R0101_03F5:
 	gotoif TRUE, scr_seq_0843_T20R0101_04A1
 	checkflag FLAG_UNK_983
 	gotoif TRUE, scr_seq_0843_T20R0101_055F
-	comparevartovalue VAR_UNK_4108, 9
+	comparevartovalue VAR_SCENE_ELMS_LAB, 9
 	gotoif ge, scr_seq_0843_T20R0101_04A1
-	comparevartovalue VAR_UNK_4108, 0
+	comparevartovalue VAR_SCENE_ELMS_LAB, 0
 	gotoif ne, scr_seq_0843_T20R0101_043C
 	npc_msg 5
 	waitbutton
@@ -308,7 +308,7 @@ scr_seq_0843_T20R0101_03F5:
 	goto scr_seq_0843_T20R0101_049D
 
 scr_seq_0843_T20R0101_043C:
-	comparevartovalue VAR_UNK_4108, 2
+	comparevartovalue VAR_SCENE_ELMS_LAB, 2
 	gotoif gt, scr_seq_0843_T20R0101_045A
 	buffer_players_name 0
 	gender_msgbox 12, 13
@@ -317,7 +317,7 @@ scr_seq_0843_T20R0101_043C:
 	goto scr_seq_0843_T20R0101_049D
 
 scr_seq_0843_T20R0101_045A:
-	comparevartovalue VAR_UNK_4108, 5
+	comparevartovalue VAR_SCENE_ELMS_LAB, 5
 	gotoif gt, scr_seq_0843_T20R0101_0474
 	npc_msg 40
 	waitbutton
@@ -325,7 +325,7 @@ scr_seq_0843_T20R0101_045A:
 	goto scr_seq_0843_T20R0101_049D
 
 scr_seq_0843_T20R0101_0474:
-	comparevartovalue VAR_UNK_4108, 6
+	comparevartovalue VAR_SCENE_ELMS_LAB, 6
 	gotoif ne, scr_seq_0843_T20R0101_0492
 	buffer_players_name 0
 	gender_msgbox 42, 43
@@ -521,7 +521,7 @@ scr_seq_0843_T20R0101_06D4:
 	setvar VAR_SPECIAL_x8005, 5
 	callstd 2008
 	closemsg
-	setvar VAR_UNK_4108, 2
+	setvar VAR_SCENE_ELMS_LAB, 2
 	npc_msg 21
 	closemsg
 	comparevartovalue VAR_TEMP_x4000, 3
@@ -556,26 +556,26 @@ scr_seq_0843_T20R0101_0787:
 	faceplayer
 	comparevartovalue VAR_UNK_40FC, 3
 	gotoif eq, scr_seq_0843_T20R0101_080F
-	comparevartovalue VAR_UNK_4108, 0
+	comparevartovalue VAR_SCENE_ELMS_LAB, 0
 	gotoif ne, scr_seq_0843_T20R0101_07B2
 	npc_msg 18
 	goto scr_seq_0843_T20R0101_07FD
 
 scr_seq_0843_T20R0101_07B2:
-	comparevartovalue VAR_UNK_4108, 2
+	comparevartovalue VAR_SCENE_ELMS_LAB, 2
 	gotoif ne, scr_seq_0843_T20R0101_07C8
 	npc_msg 22
 	goto scr_seq_0843_T20R0101_07FD
 
 scr_seq_0843_T20R0101_07C8:
-	comparevartovalue VAR_UNK_4108, 4
+	comparevartovalue VAR_SCENE_ELMS_LAB, 4
 	gotoif ne, scr_seq_0843_T20R0101_07E4
 	npc_msg 41
-	setvar VAR_UNK_4108, 5
+	setvar VAR_SCENE_ELMS_LAB, 5
 	goto scr_seq_0843_T20R0101_07FD
 
 scr_seq_0843_T20R0101_07E4:
-	comparevartovalue VAR_UNK_4108, 6
+	comparevartovalue VAR_SCENE_ELMS_LAB, 6
 	gotoif ne, scr_seq_0843_T20R0101_07FA
 	npc_msg 55
 	goto scr_seq_0843_T20R0101_07FD
@@ -664,9 +664,9 @@ scr_seq_0843_T20R0101_0894:
 	wait_movement
 	npc_msg 23
 	closemsg
-	clearflag FLAG_UNK_1A6
+	clearflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_100 3
+	show_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
 	apply_movement 3, scr_seq_0843_T20R0101_0ADC
@@ -678,7 +678,7 @@ scr_seq_0843_T20R0101_0894:
 	wait_movement
 	npc_msg 26
 	closemsg
-	callstd 2030
+	callstd std_fade_end_friend_music
 scr_seq_0843_T20R0101_0904:
 	fade_screen 6, 1, 0, 0
 	wait_fade
@@ -691,9 +691,9 @@ scr_seq_0843_T20R0101_0904:
 	wait_movement
 	scrcmd_191 1
 	npc_msg 27
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0843_T20R0101_0A59
 	closemsg
@@ -716,8 +716,8 @@ scr_seq_0843_T20R0101_0904:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_UNK_19D
-	setflag FLAG_UNK_1A6
+	setflag FLAG_HIDE_ELMS_LAB_ELM
+	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	setflag FLAG_UNK_079
 	apply_movement 255, scr_seq_0843_T20R0101_0A74
 	wait_movement
@@ -748,12 +748,12 @@ scr_seq_0843_T20R0101_0904:
 	wait_movement
 	setflag FLAG_UNK_196
 	clearflag FLAG_UNK_199
-	setvar VAR_UNK_4108, 4
+	setvar VAR_SCENE_ELMS_LAB, 4
 	setvar VAR_UNK_408B, 1
 	clearflag FLAG_UNK_1A4
 	clearflag FLAG_UNK_1A5
 	setvar VAR_UNK_4107, 2
-	setvar VAR_UNK_4072, 3
+	setvar VAR_SCENE_NEW_BARK_TOWN_OW, 3
 	clearflag FLAG_UNK_194
 	setvar VAR_UNK_4095, 1
 	releaseall
@@ -909,7 +909,7 @@ scr_seq_0843_T20R0101_0BF3:
 	apply_movement 3, scr_seq_0843_T20R0101_0CC4
 	wait_movement
 	hide_person 3
-	setflag FLAG_UNK_1A6
+	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement 0, scr_seq_0843_T20R0101_0B2C
@@ -919,7 +919,7 @@ scr_seq_0843_T20R0101_0BF3:
 	waitbutton
 	closemsg
 	releaseall
-	setvar VAR_UNK_4108, 9
+	setvar VAR_SCENE_ELMS_LAB, 9
 	setvar VAR_UNK_4079, 3
 	setflag FLAG_UNK_23B
 	clearflag FLAG_UNK_2E8
@@ -1296,9 +1296,9 @@ scr_seq_0843_T20R0101_10B2:
 	checkflag FLAG_GOT_STARTER
 	gotoif FALSE, scr_seq_0843_T20R0101_1107
 	npc_msg 92
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0843_T20R0101_1103

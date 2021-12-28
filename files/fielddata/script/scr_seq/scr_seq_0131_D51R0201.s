@@ -386,9 +386,9 @@ scr_seq_0131_D51R0201_0512:
 	.byte 0x02, 0x00
 scr_seq_0131_D51R0201_0514:
 	scrcmd_490 16393
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0131_D51R0201_063E
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -609,7 +609,7 @@ scr_seq_0131_D51R0201_0833:
 	comparevartovalue VAR_UNK_40FB, 14
 	gotoif eq, scr_seq_0131_D51R0201_086E
 	scrcmd_099 0
-	show_person_at 0, 16, 1, 28, 0
+	move_person 0, 16, 1, 28, 0
 	wait 5, VAR_SPECIAL_x800C
 	scrcmd_098 0
 scr_seq_0131_D51R0201_086E:
@@ -686,7 +686,7 @@ scr_seq_0131_D51R0201_09A2:
 	scrcmd_137 487, 1, 112, 1, 26, 32780
 	setvar VAR_UNK_4103, 3
 scr_seq_0131_D51R0201_09B6:
-	scrcmd_746
+	touchscreen_menu_hide
 	npc_msg 32
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
@@ -796,7 +796,7 @@ scr_seq_0131_D51R0201_0BB2:
 	setvar VAR_TEMP_x4008, 0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_SPECIAL_x800C, VAR_TEMP_x4008
+	nickname_input VAR_SPECIAL_x800C, VAR_TEMP_x4008
 	scrcmd_819
 	fade_screen 6, 1, 1, 0
 	wait_fade

@@ -24,13 +24,13 @@ scr_seq_0119_D47R0101_0032:
 	apply_movement 4, scr_seq_0119_D47R0101_01EC
 	wait_movement
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0119_D47R0101_0062
 	scrcmd_447 1, 0
 scr_seq_0119_D47R0101_0062:
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0119_D47R0101_00BD
@@ -157,9 +157,9 @@ scr_seq_0119_D47R0101_0208:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg 29
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_025B
 scr_seq_0119_D47R0101_024A:
@@ -172,9 +172,9 @@ scr_seq_0119_D47R0101_024A:
 
 scr_seq_0119_D47R0101_025B:
 	npc_msg 31
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_025B
 	goto scr_seq_0119_D47R0101_024A
@@ -412,7 +412,7 @@ scr_seq_0119_D47R0101_058F:
 	npc_msg 44
 scr_seq_0119_D47R0101_0599:
 	npc_msg 45
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_0683
@@ -468,7 +468,7 @@ scr_seq_0119_D47R0101_067A:
 	goto scr_seq_0119_D47R0101_05AF
 
 scr_seq_0119_D47R0101_0683:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 53
 	waitbutton
 	closemsg
@@ -487,9 +487,9 @@ scr_seq_0119_D47R0101_0690:
 scr_seq_0119_D47R0101_06AE:
 	npc_msg 14
 scr_seq_0119_D47R0101_06B1:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_06E7
 	setvar VAR_SPECIAL_x8004, 30
@@ -529,9 +529,9 @@ scr_seq_0119_D47R0101_0728:
 	npc_msg 0
 scr_seq_0119_D47R0101_0736:
 	scrcmd_113 20, 2
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_0846
 	scrcmd_507 32780
@@ -667,7 +667,7 @@ scr_seq_0119_D47R0101_08D8:
 	comparevartovalue VAR_UNK_4057, 3
 	gotoif eq, scr_seq_0119_D47R0101_09DC
 	npc_msg 19
-	scrcmd_746
+	touchscreen_menu_hide
 scr_seq_0119_D47R0101_0919:
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 457, 255, 0
@@ -713,7 +713,7 @@ scr_seq_0119_D47R0101_09C6:
 	goto scr_seq_0119_D47R0101_0919
 
 scr_seq_0119_D47R0101_09CF:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 26
 	waitbutton
 	closemsg
@@ -746,7 +746,7 @@ scr_seq_0119_D47R0101_09FC:
 scr_seq_0119_D47R0101_0A26:
 	npc_msg 66
 scr_seq_0119_D47R0101_0A29:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -760,7 +760,7 @@ scr_seq_0119_D47R0101_0A29:
 scr_seq_0119_D47R0101_0A5B:
 	.byte 0x02, 0x00
 scr_seq_0119_D47R0101_0A5D:
-	scrcmd_746
+	touchscreen_menu_hide
 	npc_msg 71
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 14, 255, 0
@@ -796,7 +796,7 @@ scr_seq_0119_D47R0101_0B03:
 	.byte 0x02, 0x00
 scr_seq_0119_D47R0101_0B05:
 	scrcmd_283
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0119_D47R0101_0A5D
 
 scr_seq_0119_D47R0101_0B0F:
@@ -804,7 +804,7 @@ scr_seq_0119_D47R0101_0B0F:
 	.byte 0x00
 scr_seq_0119_D47R0101_0B11:
 	scrcmd_283
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 87
 	waitbutton
 	closemsg
@@ -816,7 +816,7 @@ scr_seq_0119_D47R0101_0B20:
 	npc_msg 85
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -840,7 +840,7 @@ scr_seq_0119_D47R0101_0B86:
 	.byte 0x02, 0x00
 scr_seq_0119_D47R0101_0B88:
 	scrcmd_283
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0119_D47R0101_0A5D
 
 scr_seq_0119_D47R0101_0B92:
@@ -850,7 +850,7 @@ scr_seq_0119_D47R0101_0B94:
 	npc_msg 87
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -859,7 +859,7 @@ scr_seq_0119_D47R0101_0BA3:
 	npc_msg 85
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -871,7 +871,7 @@ scr_seq_0119_D47R0101_0BB2:
 	scrcmd_283
 	setvar VAR_TEMP_x4000, 0
 	scrcmd_823 16384
-	scrcmd_746
+	touchscreen_menu_hide
 	npc_msg 82
 	npc_msg 88
 	scrcmd_345
@@ -883,7 +883,7 @@ scr_seq_0119_D47R0101_0BB2:
 	wait_se SEQ_SE_DP_SAVE
 	npc_msg 83
 	setvar VAR_UNK_4133, 0
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	releaseall
 	end
@@ -892,7 +892,7 @@ scr_seq_0119_D47R0101_0BFC:
 	npc_msg 85
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -943,9 +943,9 @@ scr_seq_0119_D47R0101_0C84:
 
 scr_seq_0119_D47R0101_0C8F:
 	scrcmd_113 20, 2
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_0D9F
 	scrcmd_507 32780
@@ -1069,9 +1069,9 @@ scr_seq_0119_D47R0101_0E13:
 scr_seq_0119_D47R0101_0E45:
 	npc_msg 94
 scr_seq_0119_D47R0101_0E48:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_0E68
 	npc_msg 95

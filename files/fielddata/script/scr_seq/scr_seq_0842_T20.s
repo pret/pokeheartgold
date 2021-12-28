@@ -24,7 +24,7 @@
 	scrdef_end
 
 scr_seq_0842_T20_004A:
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 	checkflag FLAG_UNK_189
 	gotoif FALSE, scr_seq_0842_T20_005F
 	clearflag FLAG_UNK_189
@@ -47,17 +47,17 @@ scr_seq_0842_T20_008F:
 	end
 
 scr_seq_0842_T20_0095:
-	comparevartovalue VAR_UNK_4072, 1
+	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 1
 	gotoif eq, scr_seq_0842_T20_00A4
 	end
 
 scr_seq_0842_T20_00A4:
-	clearflag FLAG_UNK_1A2
-	scrcmd_100 4
-	clearflag FLAG_UNK_1A1
-	scrcmd_100 3
-	show_person_at 4, 686, 0, 396, 2
-	show_person_at 3, 685, 0, 396, 1
+	clearflag FLAG_HIDE_NEW_BARK_FRIEND
+	show_person 4
+	clearflag FLAG_HIDE_NEW_BARK_MARILL
+	show_person 3
+	move_person 4, 686, 0, 396, 2
+	move_person 3, 685, 0, 396, 1
 	end
 
 scr_seq_0842_T20_00CE:
@@ -222,19 +222,19 @@ scr_seq_0842_T20_02E0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4072, 0
+	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 0
 	gotoif ne, scr_seq_0842_T20_02FE
 	npc_msg 9
 	goto scr_seq_0842_T20_0347
 
 scr_seq_0842_T20_02FE:
-	comparevartovalue VAR_UNK_4072, 1
+	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 1
 	gotoif ne, scr_seq_0842_T20_0314
 	npc_msg 5
 	goto scr_seq_0842_T20_0347
 
 scr_seq_0842_T20_0314:
-	comparevartovalue VAR_UNK_4072, 2
+	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 2
 	gotoif ne, scr_seq_0842_T20_032A
 	npc_msg 5
 	goto scr_seq_0842_T20_0347
@@ -257,7 +257,7 @@ scr_seq_0842_T20_0347:
 scr_seq_0842_T20_034F:
 	scrcmd_609
 	lockall
-	checkflag FLAG_UNK_09C
+	checkflag FLAG_GOT_POKEGEAR
 	gotoif TRUE, scr_seq_0842_T20_075A
 	apply_movement 1, scr_seq_0842_T20_09B8
 	wait_movement
@@ -267,7 +267,7 @@ scr_seq_0842_T20_034F:
 	closemsg
 	apply_movement 255, scr_seq_0842_T20_09D4
 	wait_movement
-	comparevartovalue VAR_UNK_4072, 2
+	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 2
 	gotoif eq, scr_seq_0842_T20_054E
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 396
@@ -483,8 +483,8 @@ scr_seq_0842_T20_075A:
 	scrcmd_307 21, 12, 12, 9, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	scrcmd_100 5
-	show_person_at 5, 684, 0, 393, 1
+	show_person 5
+	move_person 5, 684, 0, 393, 1
 	apply_movement 5, scr_seq_0842_T20_0D08
 	wait_movement
 	scrcmd_311 77
@@ -544,7 +544,7 @@ scr_seq_0842_T20_0875:
 scr_seq_0842_T20_0892:
 	wait_movement
 	npc_msg 18
-	scrcmd_146 1
+	register_gear_number 1
 	buffer_players_name 0
 	npc_msg 19
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
@@ -990,8 +990,8 @@ scr_seq_0842_T20_0D80:
 	apply_movement 3, scr_seq_0842_T20_0E08
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	clearflag FLAG_UNK_1A2
-	scrcmd_100 4
+	clearflag FLAG_HIDE_NEW_BARK_FRIEND
+	show_person 4
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
 	apply_movement 4, scr_seq_0842_T20_0EA4
@@ -1006,12 +1006,12 @@ scr_seq_0842_T20_0D80:
 	apply_movement 4, scr_seq_0842_T20_0EC0
 	apply_movement 3, scr_seq_0842_T20_0E68
 	wait_movement
-	callstd 2030
-	setvar VAR_UNK_4106, 2
+	callstd std_fade_end_friend_music
+	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 2
 	hide_person 3
 	hide_person 4
-	setflag FLAG_UNK_1A1
-	setflag FLAG_UNK_1A2
+	setflag FLAG_HIDE_NEW_BARK_MARILL
+	setflag FLAG_HIDE_NEW_BARK_FRIEND
 	releaseall
 	end
 
@@ -1118,10 +1118,10 @@ scr_seq_0842_T20_0EEC:
 	wait_movement
 	hide_person 3
 	hide_person 4
-	setflag FLAG_UNK_1A1
-	setflag FLAG_UNK_1A2
-	callstd 2030
-	setvar VAR_UNK_4072, 2
+	setflag FLAG_HIDE_NEW_BARK_MARILL
+	setflag FLAG_HIDE_NEW_BARK_FRIEND
+	callstd std_fade_end_friend_music
+	setvar VAR_SCENE_NEW_BARK_TOWN_OW, 2
 	releaseall
 	end
 
@@ -1232,9 +1232,9 @@ scr_seq_0842_T20_10D4:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0842_T20_11FC
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -1361,8 +1361,8 @@ scr_seq_0842_T20_12A0:
 	scrcmd_310 77
 	scrcmd_308 77
 	play_se SEQ_SE_DP_KAIDAN2
-	clearflag FLAG_UNK_2A6
-	scrcmd_100 7
+	clearflag FLAG_HIDE_NEW_BARK_RIVAL
+	show_person 7
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement 7, scr_seq_0842_T20_1478
 	wait_movement
@@ -1445,7 +1445,7 @@ scr_seq_0842_T20_1411:
 	scrcmd_308 77
 	apply_movement 7, scr_seq_0842_T20_1500
 	wait_movement
-	setflag FLAG_UNK_2A6
+	setflag FLAG_HIDE_NEW_BARK_RIVAL
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 7
 	wait_se SEQ_SE_DP_KAIDAN2

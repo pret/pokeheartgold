@@ -81,9 +81,9 @@ scr_seq_0195_R10R0201_0098:
 	checkflag FLAG_UNK_121
 	gotoif TRUE, scr_seq_0195_R10R0201_013F
 	npc_msg 9
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0195_R10R0201_0134
 	closemsg

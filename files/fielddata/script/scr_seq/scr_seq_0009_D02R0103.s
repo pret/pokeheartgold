@@ -13,14 +13,14 @@ scr_seq_0009_D02R0103_000E:
 	scrcmd_379 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif ne, scr_seq_0009_D02R0103_003D
-	show_person_at 0, 18, 0, 10, 1
+	move_person 0, 18, 0, 10, 1
 	scrcmd_342 2, 20, 3
 	goto scr_seq_0009_D02R0103_005E
 
 scr_seq_0009_D02R0103_003D:
 	comparevartovalue VAR_TEMP_x4001, 4
 	gotoif ne, scr_seq_0009_D02R0103_005E
-	show_person_at 0, 18, 0, 10, 1
+	move_person 0, 18, 0, 10, 1
 	scrcmd_342 2, 20, 3
 scr_seq_0009_D02R0103_005E:
 	end

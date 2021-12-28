@@ -128,9 +128,9 @@ scr_seq_0806_T07SP0101_0184:
 scr_seq_0806_T07SP0101_019A:
 	npc_msg 9
 scr_seq_0806_T07SP0101_019D:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0806_T07SP0101_01D4
 	npc_msg 3

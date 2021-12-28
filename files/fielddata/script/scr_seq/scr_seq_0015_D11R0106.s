@@ -66,15 +66,15 @@ scr_seq_0015_D11R0106_00B1:
 	end
 
 scr_seq_0015_D11R0106_00D4:
-	show_person_at 5, 21, 0, 14, 2
+	move_person 5, 21, 0, 14, 2
 	return
 
 scr_seq_0015_D11R0106_00E2:
-	show_person_at 7, 9, 0, 13, 0
+	move_person 7, 9, 0, 13, 0
 	return
 
 scr_seq_0015_D11R0106_00F0:
-	show_person_at 2, 15, 0, 16, 1
+	move_person 2, 15, 0, 16, 1
 	return
 
 scr_seq_0015_D11R0106_00FE:

@@ -56,10 +56,10 @@ InitGSPlayerMiscInternal: ; 0x0202ED98
 	and r0, r1
 	str r0, [r4, #4]
 	add r0, r4, #0
-	bl sub_0202EF9C
+	bl GSPlayerMisc_PhonebookInit
 	ldr r0, _0202EDE8 ; =0x000004B8
 	add r0, r4, r0
-	bl sub_0202EFE8
+	bl MomsSavingsInit
 	pop {r4, pc}
 	.balign 4, 0
 _0202EDD8: .word 0x00000658
@@ -239,8 +239,8 @@ sub_0202EEB4: ; 0x0202EEB4
 	.balign 4, 0
 	thumb_func_end sub_0202EEB4
 
-	thumb_func_start sub_0202EEC0
-sub_0202EEC0: ; 0x0202EEC0
+	thumb_func_start GSPlayerMisc_FindEmptyGearPhonebookSlot
+GSPlayerMisc_FindEmptyGearPhonebookSlot: ; 0x0202EEC0
 	ldr r2, _0202EEE0 ; =0x0000060C
 	mov r3, #0
 _0202EEC4:
@@ -260,10 +260,10 @@ _0202EED0:
 	bx lr
 	nop
 _0202EEE0: .word 0x0000060C
-	thumb_func_end sub_0202EEC0
+	thumb_func_end GSPlayerMisc_FindEmptyGearPhonebookSlot
 
-	thumb_func_start sub_0202EEE4
-sub_0202EEE4: ; 0x0202EEE4
+	thumb_func_start GSPlayerMisc_IsGearNumberRegistered
+GSPlayerMisc_IsGearNumberRegistered: ; 0x0202EEE4
 	push {r3, r4}
 	ldr r3, _0202EF14 ; =0x0000060C
 	mov r4, #0
@@ -292,10 +292,10 @@ _0202EF02:
 	bx lr
 	nop
 _0202EF14: .word 0x0000060C
-	thumb_func_end sub_0202EEE4
+	thumb_func_end GSPlayerMisc_IsGearNumberRegistered
 
-	thumb_func_start sub_0202EF18
-sub_0202EF18: ; 0x0202EF18
+	thumb_func_start RegisterPhoneNumberInPokeGear
+RegisterPhoneNumberInPokeGear: ; 0x0202EF18
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -304,11 +304,11 @@ sub_0202EF18: ; 0x0202EF18
 	bl GF_AssertFail
 	pop {r3, r4, r5, pc}
 _0202EF28:
-	bl sub_0202EEE4
+	bl GSPlayerMisc_IsGearNumberRegistered
 	cmp r0, #0xff
 	bne _0202EF3C
 	add r0, r5, #0
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	add r1, r5, r0
 	ldr r0, _0202EF40 ; =0x0000060C
 	strb r4, [r1, r0]
@@ -316,14 +316,14 @@ _0202EF3C:
 	pop {r3, r4, r5, pc}
 	nop
 _0202EF40: .word 0x0000060C
-	thumb_func_end sub_0202EF18
+	thumb_func_end RegisterPhoneNumberInPokeGear
 
-	thumb_func_start sub_0202EF44
-sub_0202EF44: ; 0x0202EF44
+	thumb_func_start GSPlayerMisc_AllocAndCopyPhonebook
+GSPlayerMisc_AllocAndCopyPhonebook: ; 0x0202EF44
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -338,10 +338,10 @@ sub_0202EF44: ; 0x0202EF44
 	pop {r4, r5, r6, pc}
 	nop
 _0202EF6C: .word 0x0000060C
-	thumb_func_end sub_0202EF44
+	thumb_func_end GSPlayerMisc_AllocAndCopyPhonebook
 
-	thumb_func_start sub_0202EF70
-sub_0202EF70: ; 0x0202EF70
+	thumb_func_start GSPlayerMisc_SetPhonebookFromBuffer
+GSPlayerMisc_SetPhonebookFromBuffer: ; 0x0202EF70
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, _0202EF98 ; =0x0000060C
@@ -363,10 +363,10 @@ _0202EF8A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0202EF98: .word 0x0000060C
-	thumb_func_end sub_0202EF70
+	thumb_func_end GSPlayerMisc_SetPhonebookFromBuffer
 
-	thumb_func_start sub_0202EF9C
-sub_0202EF9C: ; 0x0202EF9C
+	thumb_func_start GSPlayerMisc_PhonebookInit
+GSPlayerMisc_PhonebookInit: ; 0x0202EF9C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0202EFB4 ; =0x0000060C
@@ -380,7 +380,7 @@ sub_0202EF9C: ; 0x0202EF9C
 	pop {r4, pc}
 	.balign 4, 0
 _0202EFB4: .word 0x0000060C
-	thumb_func_end sub_0202EF9C
+	thumb_func_end GSPlayerMisc_PhonebookInit
 
 	thumb_func_start GSPlayerMisc_GetMomSavingsAddr
 GSPlayerMisc_GetMomSavingsAddr: ; 0x0202EFB8
@@ -413,8 +413,8 @@ sub_0202EFC4: ; 0x0202EFC4
 	.balign 4, 0
 	thumb_func_end sub_0202EFC4
 
-	thumb_func_start sub_0202EFE8
-sub_0202EFE8: ; 0x0202EFE8
+	thumb_func_start MomsSavingsInit
+MomsSavingsInit: ; 0x0202EFE8
 	push {r4, r5, r6, lr}
 	mov r2, #0x55
 	mov r1, #0
@@ -440,7 +440,7 @@ _0202EFFA:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0202F018: .word 0x00000146
-	thumb_func_end sub_0202EFE8
+	thumb_func_end MomsSavingsInit
 
 	thumb_func_start sub_0202F01C
 sub_0202F01C: ; 0x0202F01C

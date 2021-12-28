@@ -41,9 +41,9 @@ scr_seq_0212_R22_0064:
 	end
 
 scr_seq_0212_R22_0073:
-	show_person_at 1, 947, 1, 266, 2
-	show_person_at 2, 950, 1, 266, 2
-	show_person_at 3, 952, 1, 280, 3
+	move_person 1, 947, 1, 266, 2
+	move_person 2, 950, 1, 266, 2
+	move_person 3, 952, 1, 280, 3
 	end
 
 scr_seq_0212_R22_0099:
@@ -332,9 +332,9 @@ scr_seq_0212_R22_045C:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0212_R22_0584
 	scrcmd_618 VAR_SPECIAL_x800C

@@ -16,9 +16,9 @@ scr_seq_0892_T25R0401_000E:
 	gotoif TRUE, scr_seq_0892_T25R0401_00E9
 	buffer_players_name 0
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0892_T25R0401_004B
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -37,7 +37,7 @@ scr_seq_0892_T25R0401_004B:
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0892_T25R0401_00A0
@@ -48,14 +48,14 @@ scr_seq_0892_T25R0401_00A0:
 	setvar VAR_TEMP_x4000, 0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_SPECIAL_x8005, VAR_TEMP_x4000
+	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
 	fade_screen 6, 1, 1, 0
 	wait_fade
 scr_seq_0892_T25R0401_00C6:
 	npc_msg 3
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -116,9 +116,9 @@ scr_seq_0892_T25R0401_011F:
 
 scr_seq_0892_T25R0401_0152:
 	npc_msg 12
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0892_T25R0401_0179
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -128,7 +128,7 @@ scr_seq_0892_T25R0401_0152:
 scr_seq_0892_T25R0401_0179:
 	buffer_players_name 0
 	npc_msg 13
-	scrcmd_146 9
+	register_gear_number 9
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	waitbutton

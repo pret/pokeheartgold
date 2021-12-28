@@ -136,7 +136,7 @@ scr_seq_0908_T25R1202_0115:
 	.byte 0x02, 0x00
 scr_seq_0908_T25R1202_0117:
 	npc_msg 13
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 15, 255, 0
 	scrcmd_751 16, 255, 1
@@ -152,7 +152,7 @@ scr_seq_0908_T25R1202_0117:
 scr_seq_0908_T25R1202_0164:
 	.byte 0x02, 0x00
 scr_seq_0908_T25R1202_0166:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0908_T25R1202_0168:
 	closemsg
 	releaseall
@@ -185,7 +185,7 @@ scr_seq_0908_T25R1202_01B0:
 	.byte 0x02, 0x00
 scr_seq_0908_T25R1202_01B2:
 	npc_msg 11
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 15, 255, 0
 	scrcmd_751 16, 255, 1
@@ -202,7 +202,7 @@ scr_seq_0908_T25R1202_01FF:
 	.byte 0x02
 	.byte 0x00
 scr_seq_0908_T25R1202_0201:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0908_T25R1202_0203:
 	closemsg
 	releaseall

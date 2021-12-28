@@ -7,8 +7,8 @@
 	.byte 0
 
 scr_seq_0618_T20R0201_hdr_0006:
-	.short VAR_UNK_4106, 3, 7
-	.short VAR_UNK_4106, 0, 1
+	.short VAR_SCENE_PLAYERS_HOUSE_1F, 3, 7
+	.short VAR_SCENE_PLAYERS_HOUSE_1F, 0, 1
 	.short 0
 
 	.balign 4, 0

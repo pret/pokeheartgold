@@ -360,13 +360,13 @@ _021E799A:
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EF44
+	bl GSPlayerMisc_AllocAndCopyPhonebook
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	mov r2, #0x13
 	lsl r2, r2, #4
 	strb r0, [r5, r2]
@@ -12707,13 +12707,13 @@ ov101_021ED980: ; 0x021ED980
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EF44
+	bl GSPlayerMisc_AllocAndCopyPhonebook
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	mov r2, #0x13
 	lsl r2, r2, #4
 	strb r0, [r4, r2]
@@ -16688,13 +16688,13 @@ ov101_021EF96C: ; 0x021EF96C
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EF44
+	bl GSPlayerMisc_AllocAndCopyPhonebook
 	add r1, r4, #0
 	add r1, #0xd0
 	str r0, [r1]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	add r1, r4, #0
 	add r1, #0xcd
 	strb r0, [r1]
@@ -19326,7 +19326,7 @@ _021F0DD6:
 	ldrb r2, [r2]
 	ldr r0, [r0, #0x28]
 	ldr r1, [r1]
-	bl sub_0202EF70
+	bl GSPlayerMisc_SetPhonebookFromBuffer
 	add r2, r4, #0
 	add r2, #0xcd
 	add r0, r4, #0

@@ -32,9 +32,9 @@ scr_seq_0032_D23R0104_0056:
 scr_seq_0032_D23R0104_0058:
 	comparevartovalue VAR_UNK_4077, 4
 	gotoif ne, scr_seq_0032_D23R0104_0089
-	show_person_at 4, 18, 1, 12, 3
-	show_person_at 5, 19, 1, 12, 1
-	show_person_at 7, 20, 1, 12, 1
+	move_person 4, 18, 1, 12, 3
+	move_person 5, 19, 1, 12, 1
+	move_person 7, 20, 1, 12, 1
 scr_seq_0032_D23R0104_0089:
 	end
 

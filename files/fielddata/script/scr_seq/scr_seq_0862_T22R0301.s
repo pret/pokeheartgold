@@ -40,9 +40,9 @@ scr_seq_0862_T22R0301_007F:
 scr_seq_0862_T22R0301_0087:
 	wait_movement
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0862_T22R0301_00B0
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -51,9 +51,9 @@ scr_seq_0862_T22R0301_0087:
 
 scr_seq_0862_T22R0301_00B0:
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0862_T22R0301_00D7
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -62,9 +62,9 @@ scr_seq_0862_T22R0301_00B0:
 
 scr_seq_0862_T22R0301_00D7:
 	npc_msg 2
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0862_T22R0301_00FE
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -73,9 +73,9 @@ scr_seq_0862_T22R0301_00D7:
 
 scr_seq_0862_T22R0301_00FE:
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0862_T22R0301_0125
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -84,9 +84,9 @@ scr_seq_0862_T22R0301_00FE:
 
 scr_seq_0862_T22R0301_0125:
 	npc_msg 4
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0862_T22R0301_014C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -164,7 +164,7 @@ scr_seq_0862_T22R0301_0205:
 	.byte 0x02, 0x00
 scr_seq_0862_T22R0301_0207:
 	npc_msg 13
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 24, 255, 1
 	scrcmd_751 25, 255, 2
@@ -173,7 +173,7 @@ scr_seq_0862_T22R0301_0207:
 	scrcmd_751 28, 255, 5
 	scrcmd_751 29, 255, 0
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0862_T22R0301_0264
 	npc_msg 14
@@ -235,23 +235,23 @@ scr_seq_0862_T22R0301_02ED:
 	lockall
 	faceplayer
 	npc_msg 19
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0862_T22R0301_0353
 	npc_msg 20
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0862_T22R0301_0353
 	npc_msg 21
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0862_T22R0301_0353
 	npc_msg 22
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	apply_movement 1, scr_seq_0862_T22R0301_035C
 	wait_movement
 	npc_msg 23
@@ -262,7 +262,7 @@ scr_seq_0862_T22R0301_02ED:
 
 scr_seq_0862_T22R0301_0353:
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 

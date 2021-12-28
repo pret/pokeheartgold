@@ -135,7 +135,7 @@ scr_seq_0909_T25R1203_0111:
 	.byte 0x02, 0x00
 scr_seq_0909_T25R1203_0113:
 	npc_msg 11
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 13, 255, 0
 	scrcmd_751 14, 255, 1
@@ -151,7 +151,7 @@ scr_seq_0909_T25R1203_0113:
 scr_seq_0909_T25R1203_0160:
 	.byte 0x02, 0x00
 scr_seq_0909_T25R1203_0162:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0909_T25R1203_0164:
 	closemsg
 	releaseall

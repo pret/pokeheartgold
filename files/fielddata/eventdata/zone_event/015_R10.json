@@ -31,7 +31,7 @@
       "ovid": 368,
       "mvt": 3,
       "type": 0,
-      "flag": 612,
+      "flag": "FLAG_UNK_264",
       "scr": 3,
       "dirn": 1,
       "eye": 0,
@@ -49,7 +49,7 @@
       "ovid": 1025,
       "mvt": 15,
       "type": 0,
-      "flag": 663,
+      "flag": "FLAG_UNK_297",
       "scr": 4,
       "dirn": 1,
       "eye": 0,
@@ -95,7 +95,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16516
+      "var": "VAR_UNK_4084"
     }
   ]
 }

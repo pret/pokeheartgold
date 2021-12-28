@@ -15,7 +15,7 @@
       "ovid": 84,
       "mvt": 0,
       "type": 0,
-      "flag": 490,
+      "flag": "FLAG_UNK_1EA",
       "scr": 10002,
       "dirn": 0,
       "eye": 0,
@@ -33,7 +33,7 @@
       "ovid": 84,
       "mvt": 0,
       "type": 0,
-      "flag": 491,
+      "flag": "FLAG_UNK_1EB",
       "scr": 10002,
       "dirn": 0,
       "eye": 0,
@@ -51,7 +51,7 @@
       "ovid": 84,
       "mvt": 0,
       "type": 0,
-      "flag": 492,
+      "flag": "FLAG_UNK_1EC",
       "scr": 10002,
       "dirn": 0,
       "eye": 0,
@@ -69,7 +69,7 @@
       "ovid": 84,
       "mvt": 0,
       "type": 0,
-      "flag": 493,
+      "flag": "FLAG_UNK_1ED",
       "scr": 10002,
       "dirn": 0,
       "eye": 0,
@@ -87,7 +87,7 @@
       "ovid": 84,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 10002,
       "dirn": 0,
       "eye": 0,
@@ -105,7 +105,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1209,
+      "flag": "FLAG_UNK_4B9",
       "scr": 7156,
       "dirn": 0,
       "eye": 0,
@@ -172,7 +172,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16554
+      "var": "VAR_UNK_40AA"
     },
     {
       "scr": 2,
@@ -182,7 +182,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16554
+      "var": "VAR_UNK_40AA"
     },
     {
       "scr": 3,
@@ -192,7 +192,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16554
+      "var": "VAR_UNK_40AA"
     },
     {
       "scr": 4,
@@ -202,7 +202,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16554
+      "var": "VAR_UNK_40AA"
     }
   ]
 }

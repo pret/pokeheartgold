@@ -81,9 +81,9 @@ scr_seq_0903_T25R1005_00BA:
 	checkflag FLAG_UNK_08D
 	gotoif TRUE, scr_seq_0903_T25R1005_0172
 	npc_msg 9
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0903_T25R1005_00F6
 	goto scr_seq_0903_T25R1005_0167

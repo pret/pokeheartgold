@@ -19,12 +19,12 @@ scr_seq_0148_0019:
 	scrcmd_477 2, 16384
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0148_005E
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 17, 255, 0
 	scrcmd_751 16, 255, 1
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0148_00EB
 	goto scr_seq_0148_00DA
@@ -32,13 +32,13 @@ scr_seq_0148_0019:
 scr_seq_0148_005E:
 	checkflag FLAG_UNK_987
 	gotoif TRUE, scr_seq_0148_00AF
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 18, 255, 0
 	scrcmd_751 19, 255, 1
 	scrcmd_751 16, 255, 2
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0148_00EB
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -46,12 +46,12 @@ scr_seq_0148_005E:
 	goto scr_seq_0148_00DA
 
 scr_seq_0148_00AF:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 19, 255, 0
 	scrcmd_751 16, 255, 1
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0148_0142
 scr_seq_0148_00DA:

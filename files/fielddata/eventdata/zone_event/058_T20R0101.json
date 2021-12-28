@@ -95,7 +95,7 @@
       "ovid": 99,
       "mvt": 0,
       "type": 0,
-      "flag": 401,
+      "flag": "FLAG_HIDE_ELMS_LAB_AIDE",
       "scr": 1,
       "dirn": 1,
       "eye": 0,
@@ -113,7 +113,7 @@
       "ovid": 34,
       "mvt": 0,
       "type": 0,
-      "flag": 413,
+      "flag": "FLAG_HIDE_ELMS_LAB_ELM",
       "scr": 0,
       "dirn": 3,
       "eye": 0,
@@ -131,7 +131,7 @@
       "ovid": 29,
       "mvt": 0,
       "type": 0,
-      "flag": 582,
+      "flag": "FLAG_HIDE_ELMS_LAB_OFFICER",
       "scr": 2,
       "dirn": 2,
       "eye": 0,
@@ -149,7 +149,7 @@
       "ovid": 101,
       "mvt": 0,
       "type": 0,
-      "flag": 422,
+      "flag": "FLAG_HIDE_ELMS_LAB_FRIEND",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -181,7 +181,7 @@
       "h": 1,
       "z": 0,
       "val": 1,
-      "var": 16648
+      "var": "VAR_SCENE_ELMS_LAB"
     },
     {
       "scr": 12,
@@ -191,7 +191,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16648
+      "var": "VAR_SCENE_ELMS_LAB"
     }
   ]
 }

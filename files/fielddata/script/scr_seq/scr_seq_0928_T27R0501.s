@@ -29,33 +29,33 @@ scr_seq_0928_T27R0501_0046:
 scr_seq_0928_T27R0501_0057:
 	comparevartovalue VAR_UNK_410C, 0
 	gotoif ne, scr_seq_0928_T27R0501_007C
-	show_person_at 9, 6, 0, 6, 3
-	show_person_at 6, 8, 0, 6, 2
+	move_person 9, 6, 0, 6, 3
+	move_person 6, 8, 0, 6, 2
 scr_seq_0928_T27R0501_007C:
 	comparevartovalue VAR_TEMP_x4009, 222
 	gotoif ne, scr_seq_0928_T27R0501_0110
-	show_person_at 9, 29, 0, 29, 1
+	move_person 9, 29, 0, 29, 1
 	scrcmd_375 9
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_0928_T27R0501_00BC
-	show_person_at 12, 7, 0, 6, 1
+	move_person 12, 7, 0, 6, 1
 	goto scr_seq_0928_T27R0501_0106
 
 scr_seq_0928_T27R0501_00BC:
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_0928_T27R0501_00DB
-	show_person_at 12, 7, 0, 6, 0
+	move_person 12, 7, 0, 6, 0
 	goto scr_seq_0928_T27R0501_0106
 
 scr_seq_0928_T27R0501_00DB:
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_0928_T27R0501_00FA
-	show_person_at 12, 7, 0, 6, 3
+	move_person 12, 7, 0, 6, 3
 	goto scr_seq_0928_T27R0501_0106
 
 scr_seq_0928_T27R0501_00FA:
-	show_person_at 12, 7, 0, 6, 2
+	move_person 12, 7, 0, 6, 2
 scr_seq_0928_T27R0501_0106:
 	scrcmd_374 12
 	setvar VAR_TEMP_x4009, 0
@@ -64,7 +64,7 @@ scr_seq_0928_T27R0501_0110:
 	gotoif eq, scr_seq_0928_T27R0501_0136
 	comparevartovalue VAR_UNK_410C, 3
 	gotoif ne, scr_seq_0928_T27R0501_0136
-	show_person_at 6, 7, 0, 6, 1
+	move_person 6, 7, 0, 6, 1
 scr_seq_0928_T27R0501_0136:
 	end
 
@@ -597,9 +597,9 @@ scr_seq_0928_T27R0501_0763:
 	checkflag FLAG_UNK_109
 	gotoif TRUE, scr_seq_0928_T27R0501_0868
 	npc_msg 13
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x8004
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, scr_seq_0928_T27R0501_0BD3
 	closemsg
@@ -736,9 +736,9 @@ scr_seq_0928_T27R0501_08E2:
 scr_seq_0928_T27R0501_092A:
 	npc_msg 12
 scr_seq_0928_T27R0501_092D:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x8004
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, scr_seq_0928_T27R0501_0BD3
 	closemsg
@@ -827,7 +827,7 @@ scr_seq_0928_T27R0501_0AB8:
 	scrcmd_561 0, 2, 10, 6
 	wait_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_240
-	scrcmd_100 11
+	show_person 11
 	apply_movement 11, scr_seq_0928_T27R0501_0D10
 	wait_movement
 	apply_movement 10, scr_seq_0928_T27R0501_0BEC

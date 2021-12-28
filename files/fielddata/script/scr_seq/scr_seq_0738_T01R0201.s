@@ -35,9 +35,9 @@ scr_seq_0738_T01R0201_0056:
 	checkflag FLAG_UNK_AA8
 	gotoif TRUE, scr_seq_0738_T01R0201_0152
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0738_T01R0201_0147
 	get_party_count VAR_SPECIAL_x800C
@@ -115,12 +115,12 @@ scr_seq_0738_T01R0201_015D:
 	gotoif ge, scr_seq_0738_T01R0201_01AE
 	npc_msg 8
 scr_seq_0738_T01R0201_016D:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0738_T01R0201_019D
-	scrcmd_146 31
+	register_gear_number 31
 	buffer_players_name 0
 	npc_msg 9
 	play_fanfare SEQ_ME_POKEGEAR_REGIST

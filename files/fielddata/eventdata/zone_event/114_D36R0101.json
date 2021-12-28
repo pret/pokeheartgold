@@ -95,7 +95,7 @@
       "ovid": 1017,
       "mvt": 17,
       "type": 0,
-      "flag": 423,
+      "flag": "FLAG_UNK_1A7",
       "scr": 2,
       "dirn": 3,
       "eye": 0,
@@ -113,7 +113,7 @@
       "ovid": 332,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 3,
       "dirn": 0,
       "eye": 0,
@@ -131,7 +131,7 @@
       "ovid": 1017,
       "mvt": 15,
       "type": 0,
-      "flag": 424,
+      "flag": "FLAG_UNK_1A8",
       "scr": 6,
       "dirn": 1,
       "eye": 0,
@@ -149,7 +149,7 @@
       "ovid": 146,
       "mvt": 15,
       "type": 0,
-      "flag": 429,
+      "flag": "FLAG_UNK_1AD",
       "scr": 11,
       "dirn": 1,
       "eye": 0,
@@ -167,7 +167,7 @@
       "ovid": 344,
       "mvt": 14,
       "type": 0,
-      "flag": 431,
+      "flag": "FLAG_UNK_1AF",
       "scr": 12,
       "dirn": 0,
       "eye": 0,
@@ -185,7 +185,7 @@
       "ovid": 86,
       "mvt": 0,
       "type": 0,
-      "flag": 16,
+      "flag": "FLAG_UNK_010",
       "scr": 10000,
       "dirn": 0,
       "eye": 0,
@@ -203,7 +203,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1077,
+      "flag": "FLAG_UNK_435",
       "scr": 7043,
       "dirn": 0,
       "eye": 0,
@@ -221,7 +221,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1084,
+      "flag": "FLAG_UNK_43C",
       "scr": 7044,
       "dirn": 0,
       "eye": 0,
@@ -239,7 +239,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1085,
+      "flag": "FLAG_UNK_43D",
       "scr": 7045,
       "dirn": 0,
       "eye": 0,
@@ -257,7 +257,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1086,
+      "flag": "FLAG_UNK_43E",
       "scr": 7046,
       "dirn": 0,
       "eye": 0,
@@ -275,7 +275,7 @@
       "ovid": 1017,
       "mvt": 15,
       "type": 0,
-      "flag": 467,
+      "flag": "FLAG_UNK_1D3",
       "scr": 15,
       "dirn": 1,
       "eye": 0,
@@ -293,7 +293,7 @@
       "ovid": 1017,
       "mvt": 15,
       "type": 0,
-      "flag": 468,
+      "flag": "FLAG_UNK_1D4",
       "scr": 15,
       "dirn": 1,
       "eye": 0,
@@ -311,7 +311,7 @@
       "ovid": 232,
       "mvt": 2,
       "type": 0,
-      "flag": 573,
+      "flag": "FLAG_UNK_23D",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -329,7 +329,7 @@
       "ovid": 328,
       "mvt": 14,
       "type": 0,
-      "flag": 638,
+      "flag": "FLAG_UNK_27E",
       "scr": 19,
       "dirn": 0,
       "eye": 0,
@@ -347,7 +347,7 @@
       "ovid": 1046,
       "mvt": 0,
       "type": 0,
-      "flag": 667,
+      "flag": "FLAG_UNK_29B",
       "scr": 20,
       "dirn": 1,
       "eye": 0,
@@ -365,7 +365,7 @@
       "ovid": 330,
       "mvt": 0,
       "type": 0,
-      "flag": 668,
+      "flag": "FLAG_UNK_29C",
       "scr": 21,
       "dirn": 1,
       "eye": 0,
@@ -383,7 +383,7 @@
       "ovid": 101,
       "mvt": 0,
       "type": 0,
-      "flag": 784,
+      "flag": "FLAG_UNK_310",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -401,7 +401,7 @@
       "ovid": 1032,
       "mvt": 0,
       "type": 0,
-      "flag": 784,
+      "flag": "FLAG_UNK_310",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -468,7 +468,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16537
+      "var": "VAR_UNK_4099"
     },
     {
       "scr": 5,
@@ -478,7 +478,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16539
+      "var": "VAR_UNK_409B"
     },
     {
       "scr": 9,
@@ -488,7 +488,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16541
+      "var": "VAR_UNK_409D"
     },
     {
       "scr": 7,
@@ -498,7 +498,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16538
+      "var": "VAR_UNK_409A"
     },
     {
       "scr": 8,
@@ -508,7 +508,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16540
+      "var": "VAR_UNK_409C"
     },
     {
       "scr": 10,
@@ -518,7 +518,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16542
+      "var": "VAR_UNK_409E"
     },
     {
       "scr": 16,
@@ -528,7 +528,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16617
+      "var": "VAR_UNK_40E9"
     },
     {
       "scr": 17,
@@ -538,7 +538,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16618
+      "var": "VAR_UNK_40EA"
     },
     {
       "scr": 18,
@@ -548,7 +548,7 @@
       "h": 2,
       "z": 0,
       "val": 1,
-      "var": 16628
+      "var": "VAR_UNK_40F4"
     }
   ]
 }

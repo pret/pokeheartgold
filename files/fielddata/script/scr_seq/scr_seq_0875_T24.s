@@ -87,7 +87,7 @@ scr_seq_0875_T24_0111:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 2
-	callstd 2039
+	callstd std_phone_call
 	setvar VAR_UNK_4134, 5
 	releaseall
 	end
@@ -126,7 +126,7 @@ scr_seq_0875_T24_013E:
 	setflag FLAG_UNK_1E1
 	addvar VAR_UNK_4076, 1
 	clearflag FLAG_UNK_1E2
-	scrcmd_100 6
+	show_person 6
 	callstd 2042
 	apply_movement 6, scr_seq_0875_T24_0358
 	apply_movement 255, scr_seq_0875_T24_036C
@@ -191,9 +191,9 @@ scr_seq_0875_T24_0276:
 	gotoif ge, scr_seq_0875_T24_02E9
 	npc_msg 7
 scr_seq_0875_T24_0299:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0875_T24_02BD
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -205,7 +205,7 @@ scr_seq_0875_T24_02BD:
 	npc_msg 8
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 32
+	register_gear_number 32
 scr_seq_0875_T24_02CD:
 	npc_msg 9
 	waitbutton
@@ -288,9 +288,9 @@ scr_seq_0875_T24_038E:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0875_T24_047B
 	scrcmd_618 VAR_SPECIAL_x800C

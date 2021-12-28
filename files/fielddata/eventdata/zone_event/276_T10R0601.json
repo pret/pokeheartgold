@@ -5,7 +5,7 @@
       "ovid": 364,
       "mvt": 15,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -23,7 +23,7 @@
       "ovid": 366,
       "mvt": 15,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -41,7 +41,7 @@
       "ovid": 389,
       "mvt": 15,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -59,7 +59,7 @@
       "ovid": 289,
       "mvt": 0,
       "type": 0,
-      "flag": 528,
+      "flag": "FLAG_UNK_210",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -77,7 +77,7 @@
       "ovid": 290,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -116,7 +116,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16583
+      "var": "VAR_UNK_40C7"
     }
   ]
 }

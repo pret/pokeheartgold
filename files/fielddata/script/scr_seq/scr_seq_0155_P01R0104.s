@@ -26,7 +26,7 @@ scr_seq_0155_P01R0104_0036:
 	end
 
 scr_seq_0155_P01R0104_0045:
-	show_person_at 0, 24, 0, 19, 2
+	move_person 0, 24, 0, 19, 2
 	end
 
 scr_seq_0155_P01R0104_0053:

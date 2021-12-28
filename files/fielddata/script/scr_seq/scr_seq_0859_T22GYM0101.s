@@ -77,7 +77,7 @@ scr_seq_0859_T22GYM0101_00AD:
 	settrainerflag TRAINER_BIRD_KEEPER_GS_ABE
 	setvar VAR_SCENE_VIOLET_CITY_OW, 1
 	setflag FLAG_UNK_192
-	setvar VAR_UNK_4108, 6
+	setvar VAR_SCENE_ELMS_LAB, 6
 	setflag FLAG_UNK_0F4
 	setflag FLAG_UNK_193
 	npc_msg 1

@@ -23,9 +23,9 @@ scr_seq_0060_D26R0102_0021:
 	lockall
 	faceplayer
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0060_D26R0102_0047
 	closemsg
@@ -64,7 +64,7 @@ scr_seq_0060_D26R0102_0055:
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	show_person_at 7, 36, 0, 7, 2
+	move_person 7, 36, 0, 7, 2
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

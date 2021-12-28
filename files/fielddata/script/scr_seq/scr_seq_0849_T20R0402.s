@@ -13,7 +13,7 @@
 scr_seq_0849_T20R0402_0016:
 	checkflag FLAG_UNK_2E5
 	gotoif TRUE, scr_seq_0849_T20R0402_0025
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 scr_seq_0849_T20R0402_0025:
 	end
 

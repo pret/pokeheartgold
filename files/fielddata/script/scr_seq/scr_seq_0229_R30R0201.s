@@ -15,7 +15,7 @@ scr_seq_0229_R30R0201_0012:
 	end
 
 scr_seq_0229_R30R0201_0021:
-	show_person_at 0, 5, 0, 6, 3
+	move_person 0, 5, 0, 6, 3
 	end
 
 scr_seq_0229_R30R0201_002F:
@@ -90,9 +90,9 @@ scr_seq_0229_R30R0201_011F:
 scr_seq_0229_R30R0201_012A:
 	buffer_players_name 0
 	gender_msgbox 16, 17
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0229_R30R0201_0189
 	setvar VAR_SPECIAL_x8004, 216
@@ -253,7 +253,7 @@ scr_seq_0229_R30R0201_02E8:
 	closemsg
 	buffer_players_name 0
 	npc_msg 15
-	scrcmd_146 2
+	register_gear_number 2
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	closemsg
@@ -272,10 +272,10 @@ scr_seq_0229_R30R0201_02E8:
 	setflag FLAG_UNK_316
 	clearflag FLAG_UNK_315
 	setflag FLAG_UNK_190
-	setvar VAR_UNK_4073, 3
-	clearflag FLAG_UNK_19C
-	setvar VAR_UNK_4108, 3
-	clearflag FLAG_UNK_19D
+	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 3
+	clearflag FLAG_HIDE_CHERRYGROVE_RIVAL
+	setvar VAR_SCENE_ELMS_LAB, 3
+	clearflag FLAG_HIDE_ELMS_LAB_ELM
 	setvar VAR_UNK_408C, 2
 	end
 

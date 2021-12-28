@@ -81,9 +81,9 @@ scr_seq_0037_D24R0101_0134:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0037_D24R0101_0239
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -207,7 +207,7 @@ scr_seq_0037_D24R0101_02EE:
 	scrcmd_310 77
 	scrcmd_308 77
 	clearflag FLAG_UNK_2E6
-	scrcmd_100 9
+	show_person 9
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77

@@ -199,7 +199,7 @@ scr_seq_0776_T06_024B:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_2A4
-	scrcmd_100 16
+	show_person 16
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 1334
 	gotoif ne, scr_seq_0776_T06_0270
@@ -404,7 +404,7 @@ scr_seq_0776_T06_050C:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_2B4
-	scrcmd_100 17
+	show_person 17
 	apply_movement 255, scr_seq_0776_T06_040C
 	wait_movement
 	scrcmd_076 245, 0
@@ -603,9 +603,9 @@ scr_seq_0776_T06_076A:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0776_T06_086F
 	scrcmd_618 VAR_SPECIAL_x800C

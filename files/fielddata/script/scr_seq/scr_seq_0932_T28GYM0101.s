@@ -125,9 +125,9 @@ scr_seq_0932_T28GYM0101_018E:
 
 scr_seq_0932_T28GYM0101_0198:
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0932_T28GYM0101_01F9
 	scrcmd_618 VAR_SPECIAL_x800C

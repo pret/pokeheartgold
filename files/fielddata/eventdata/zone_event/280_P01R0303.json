@@ -5,7 +5,7 @@
       "ovid": 348,
       "mvt": 0,
       "type": 0,
-      "flag": 538,
+      "flag": "FLAG_UNK_21A",
       "scr": 1,
       "dirn": 1,
       "eye": 0,
@@ -23,7 +23,7 @@
       "ovid": 341,
       "mvt": 0,
       "type": 1,
-      "flag": 555,
+      "flag": "FLAG_UNK_22B",
       "scr": 3230,
       "dirn": 3,
       "eye": 4,
@@ -41,7 +41,7 @@
       "ovid": 218,
       "mvt": 0,
       "type": 1,
-      "flag": 556,
+      "flag": "FLAG_UNK_22C",
       "scr": 3283,
       "dirn": 0,
       "eye": 3,
@@ -80,7 +80,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": 16658
+      "var": "VAR_UNK_4112"
     }
   ]
 }

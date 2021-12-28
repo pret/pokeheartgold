@@ -14,9 +14,9 @@ scr_seq_0947_T30R0301_000A:
 	checkflag FLAG_UNK_0D0
 	gotoif TRUE, scr_seq_0947_T30R0301_00CA
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0947_T30R0301_003B
 	goto scr_seq_0947_T30R0301_00BF

@@ -57,9 +57,9 @@ scr_seq_0802_T07R0207_00A9:
 
 scr_seq_0802_T07R0207_00B3:
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0802_T07R0207_0150
 	npc_msg 3
@@ -71,9 +71,9 @@ scr_seq_0802_T07R0207_00B3:
 
 scr_seq_0802_T07R0207_00EE:
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0802_T07R0207_0150
 	npc_msg 4

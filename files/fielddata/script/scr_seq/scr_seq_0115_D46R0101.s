@@ -36,9 +36,9 @@ scr_seq_0115_D46R0101_004D:
 	gotoif ge, scr_seq_0115_D46R0101_00DD
 	npc_msg 0
 scr_seq_0115_D46R0101_0065:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0115_D46R0101_0089
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -50,7 +50,7 @@ scr_seq_0115_D46R0101_0089:
 	npc_msg 1
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 34
+	register_gear_number 34
 	npc_msg 2
 	waitbutton
 	closemsg

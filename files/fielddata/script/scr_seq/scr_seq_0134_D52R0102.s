@@ -88,7 +88,7 @@ scr_seq_0134_D52R0102_00FB:
 	setvar VAR_UNK_40F9, 4
 	setflag FLAG_UNK_17A
 	clearflag FLAG_UNK_2D4
-	scrcmd_100 1
+	show_person 1
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

@@ -9,7 +9,7 @@
 	scrdef_end
 
 scr_seq_0231_R31R0101_000E:
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 	end
 
 scr_seq_0231_R31R0101_0014:
@@ -19,8 +19,8 @@ scr_seq_0231_R31R0101_0014:
 	apply_movement 2, scr_seq_0231_R31R0101_028C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	show_person_at 1, 10, 1, 7, 2
-	show_person_at 2, 10, 1, 7, 2
+	move_person 1, 10, 1, 7, 2
+	move_person 2, 10, 1, 7, 2
 	apply_movement 1, scr_seq_0231_R31R0101_0284
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -133,9 +133,9 @@ scr_seq_0231_R31R0101_0253:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	show_person_at 1, 12, 0, 28, 0
-	show_person_at 2, 12, 0, 28, 0
-	callstd 2030
+	move_person 1, 12, 0, 28, 0
+	move_person 2, 12, 0, 28, 0
+	callstd std_fade_end_friend_music
 	releaseall
 	setvar VAR_UNK_4132, 1
 	end

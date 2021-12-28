@@ -38,7 +38,7 @@ scr_seq_0025_D22R0101_006E:
 	end
 
 scr_seq_0025_D22R0101_007D:
-	show_person_at 20, 51, 0, 48, 1
+	move_person 20, 51, 0, 48, 1
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 10
 	setvar VAR_TEMP_x4002, 48
@@ -47,7 +47,7 @@ scr_seq_0025_D22R0101_009F:
 	scrcmd_790 16384, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0025_D22R0101_00C4
-	show_person_at VAR_TEMP_x4001, VAR_TEMP_x4002, 0, 50, 0
+	move_person VAR_TEMP_x4001, VAR_TEMP_x4002, 0, 50, 0
 	addvar VAR_TEMP_x4002, 2
 scr_seq_0025_D22R0101_00C4:
 	addvar VAR_TEMP_x4000, 1
@@ -245,9 +245,9 @@ scr_seq_0025_D22R0101_02A0:
 scr_seq_0025_D22R0101_02C7:
 	buffer_players_name 0
 	npc_msg 85
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_032B
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -317,9 +317,9 @@ scr_seq_0025_D22R0101_0395:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_0650
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -426,9 +426,9 @@ scr_seq_0025_D22R0101_0528:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_0650
 	scrcmd_618 VAR_SPECIAL_x800C

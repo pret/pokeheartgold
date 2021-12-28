@@ -38,7 +38,7 @@ scr_seq_0030_D23R0102_0068:
 scr_seq_0030_D23R0102_006A:
 	comparevartovalue VAR_UNK_4077, 5
 	gotoif ne, scr_seq_0030_D23R0102_0083
-	show_person_at 3, 2, 1, 7, 3
+	move_person 3, 2, 1, 7, 3
 scr_seq_0030_D23R0102_0083:
 	end
 
@@ -186,9 +186,9 @@ scr_seq_0030_D23R0102_01EA:
 	checkflag FLAG_UNK_AA3
 	gotoif TRUE, scr_seq_0030_D23R0102_0547
 	npc_msg 14
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0030_D23R0102_0552
 	buffer_players_name 0
@@ -236,7 +236,7 @@ scr_seq_0030_D23R0102_02B8:
 	wait_movement
 scr_seq_0030_D23R0102_02BA:
 	scrcmd_821 32768, 32769
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 0, VAR_SPECIAL_x800C
 	scrcmd_751 32768, 255, 0
 	addvar VAR_SPECIAL_x8000, 1
@@ -244,7 +244,7 @@ scr_seq_0030_D23R0102_02BA:
 	addvar VAR_SPECIAL_x8000, 1
 	scrcmd_751 32768, 255, 2
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	setflag FLAG_UNK_102
 	setflag FLAG_UNK_AA3
 	apply_movement 9, scr_seq_0030_D23R0102_0628
@@ -269,7 +269,7 @@ scr_seq_0030_D23R0102_033F:
 	wait_movement
 	gender_msgbox 24, 25
 	closemsg
-	scrcmd_146 8
+	register_gear_number 8
 	npc_msg 26
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
@@ -312,7 +312,7 @@ scr_seq_0030_D23R0102_03F5:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_198 0, 16698
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	npc_msg 35
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

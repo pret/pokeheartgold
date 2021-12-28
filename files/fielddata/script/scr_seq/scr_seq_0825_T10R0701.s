@@ -43,7 +43,7 @@ scr_seq_0825_T10R0701_0010:
 	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0825_T10R0701_009A
-	setvar VAR_UNK_4106, 3
+	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 3
 scr_seq_0825_T10R0701_009A:
 	setflag FLAG_UNK_97E
 	clearflag FLAG_UNK_2CC

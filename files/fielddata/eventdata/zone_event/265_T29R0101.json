@@ -5,7 +5,7 @@
       "ovid": 332,
       "mvt": 17,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 1,
       "dirn": 3,
       "eye": 0,

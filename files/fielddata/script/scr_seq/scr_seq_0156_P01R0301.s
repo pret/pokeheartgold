@@ -159,29 +159,29 @@ scr_seq_0156_P01R0301_01A0:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 22
 	gotoif ne, scr_seq_0156_P01R0301_01D3
-	show_person_at 3, 31, 0, VAR_TEMP_x4001, 2
+	move_person 3, 31, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_0156_P01R0301_023C
 
 scr_seq_0156_P01R0301_01D3:
 	comparevartovalue VAR_TEMP_x4000, 23
 	gotoif ne, scr_seq_0156_P01R0301_01F2
-	show_person_at 3, 32, 0, VAR_TEMP_x4001, 2
+	move_person 3, 32, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_0156_P01R0301_023C
 
 scr_seq_0156_P01R0301_01F2:
 	comparevartovalue VAR_TEMP_x4000, 24
 	gotoif ne, scr_seq_0156_P01R0301_0211
-	show_person_at 3, 33, 0, VAR_TEMP_x4001, 2
+	move_person 3, 33, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_0156_P01R0301_023C
 
 scr_seq_0156_P01R0301_0211:
 	comparevartovalue VAR_TEMP_x4000, 25
 	gotoif ne, scr_seq_0156_P01R0301_0230
-	show_person_at 3, 34, 0, VAR_TEMP_x4001, 2
+	move_person 3, 34, 0, VAR_TEMP_x4001, 2
 	goto scr_seq_0156_P01R0301_023C
 
 scr_seq_0156_P01R0301_0230:
-	show_person_at 3, 35, 0, VAR_TEMP_x4001, 2
+	move_person 3, 35, 0, VAR_TEMP_x4001, 2
 scr_seq_0156_P01R0301_023C:
 	apply_movement 3, scr_seq_0156_P01R0301_0288
 	apply_movement 255, scr_seq_0156_P01R0301_02A0

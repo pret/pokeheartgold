@@ -71,7 +71,7 @@
       "ovid": 364,
       "mvt": 0,
       "type": 0,
-      "flag": 485,
+      "flag": "FLAG_UNK_1E5",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -89,7 +89,7 @@
       "ovid": 1028,
       "mvt": 0,
       "type": 0,
-      "flag": 485,
+      "flag": "FLAG_UNK_1E5",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -107,7 +107,7 @@
       "ovid": 222,
       "mvt": 0,
       "type": 1,
-      "flag": 498,
+      "flag": "FLAG_UNK_1F2",
       "scr": 3219,
       "dirn": 2,
       "eye": 5,
@@ -125,7 +125,7 @@
       "ovid": 222,
       "mvt": 0,
       "type": 1,
-      "flag": 498,
+      "flag": "FLAG_UNK_1F2",
       "scr": 3217,
       "dirn": 1,
       "eye": 5,
@@ -143,7 +143,7 @@
       "ovid": 222,
       "mvt": 0,
       "type": 1,
-      "flag": 498,
+      "flag": "FLAG_UNK_1F2",
       "scr": 3218,
       "dirn": 1,
       "eye": 3,
@@ -161,7 +161,7 @@
       "ovid": 257,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 2,
       "dirn": 0,
       "eye": 0,
@@ -179,7 +179,7 @@
       "ovid": 257,
       "mvt": 0,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 2,
       "dirn": 0,
       "eye": 0,
@@ -197,7 +197,7 @@
       "ovid": 222,
       "mvt": 0,
       "type": 0,
-      "flag": 499,
+      "flag": "FLAG_UNK_1F3",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -215,7 +215,7 @@
       "ovid": 223,
       "mvt": 0,
       "type": 0,
-      "flag": 499,
+      "flag": "FLAG_UNK_1F3",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -233,7 +233,7 @@
       "ovid": 1019,
       "mvt": 0,
       "type": 0,
-      "flag": 501,
+      "flag": "FLAG_UNK_1F5",
       "scr": 5,
       "dirn": 0,
       "eye": 0,
@@ -251,7 +251,7 @@
       "ovid": 1019,
       "mvt": 0,
       "type": 0,
-      "flag": 502,
+      "flag": "FLAG_UNK_1F6",
       "scr": 6,
       "dirn": 0,
       "eye": 0,
@@ -269,7 +269,7 @@
       "ovid": 1019,
       "mvt": 0,
       "type": 0,
-      "flag": 503,
+      "flag": "FLAG_UNK_1F7",
       "scr": 7,
       "dirn": 0,
       "eye": 0,
@@ -287,7 +287,7 @@
       "ovid": 1019,
       "mvt": 0,
       "type": 0,
-      "flag": 501,
+      "flag": "FLAG_UNK_1F5",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -305,7 +305,7 @@
       "ovid": 1019,
       "mvt": 0,
       "type": 0,
-      "flag": 502,
+      "flag": "FLAG_UNK_1F6",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -323,7 +323,7 @@
       "ovid": 1019,
       "mvt": 0,
       "type": 0,
-      "flag": 503,
+      "flag": "FLAG_UNK_1F7",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -341,7 +341,7 @@
       "ovid": 87,
       "mvt": 0,
       "type": 0,
-      "flag": 1105,
+      "flag": "FLAG_UNK_451",
       "scr": 7136,
       "dirn": 0,
       "eye": 0,
@@ -359,7 +359,7 @@
       "ovid": 1034,
       "mvt": 0,
       "type": 0,
-      "flag": 587,
+      "flag": "FLAG_UNK_24B",
       "scr": 0,
       "dirn": 2,
       "eye": 3,
@@ -377,7 +377,7 @@
       "ovid": 1034,
       "mvt": 0,
       "type": 0,
-      "flag": 589,
+      "flag": "FLAG_UNK_24D",
       "scr": 0,
       "dirn": 3,
       "eye": 3,
@@ -395,7 +395,7 @@
       "ovid": 1034,
       "mvt": 0,
       "type": 0,
-      "flag": 594,
+      "flag": "FLAG_UNK_252",
       "scr": 0,
       "dirn": 0,
       "eye": 3,
@@ -455,7 +455,7 @@
       "h": 1,
       "z": 0,
       "val": 8,
-      "var": 16556
+      "var": "VAR_UNK_40AC"
     },
     {
       "scr": 9,
@@ -465,7 +465,7 @@
       "h": 1,
       "z": 0,
       "val": 9,
-      "var": 16556
+      "var": "VAR_UNK_40AC"
     },
     {
       "scr": 10,
@@ -475,7 +475,7 @@
       "h": 3,
       "z": 0,
       "val": 9,
-      "var": 16556
+      "var": "VAR_UNK_40AC"
     },
     {
       "scr": 12,
@@ -485,7 +485,7 @@
       "h": 1,
       "z": 0,
       "val": 7,
-      "var": 16556
+      "var": "VAR_UNK_40AC"
     },
     {
       "scr": 13,
@@ -495,7 +495,7 @@
       "h": 2,
       "z": 0,
       "val": 2,
-      "var": 16553
+      "var": "VAR_UNK_40A9"
     },
     {
       "scr": 14,
@@ -505,7 +505,7 @@
       "h": 2,
       "z": 0,
       "val": 4,
-      "var": 16556
+      "var": "VAR_UNK_40AC"
     },
     {
       "scr": 15,
@@ -515,7 +515,7 @@
       "h": 2,
       "z": 0,
       "val": 6,
-      "var": 16556
+      "var": "VAR_UNK_40AC"
     }
   ]
 }

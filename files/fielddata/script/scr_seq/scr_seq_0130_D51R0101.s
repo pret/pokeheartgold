@@ -15,7 +15,7 @@ scr_seq_0130_D51R0101_0012:
 	end
 
 scr_seq_0130_D51R0101_0021:
-	show_person_at 0, 13, 1, 28, 0
+	move_person 0, 13, 1, 28, 0
 	end
 
 scr_seq_0130_D51R0101_002F:
@@ -33,7 +33,7 @@ scr_seq_0130_D51R0101_002F:
 	closemsg
 	apply_movement 0, scr_seq_0130_D51R0101_00A8
 	wait_movement
-	show_person_at 0, 13, 1, 28, 0
+	move_person 0, 13, 1, 28, 0
 	setvar VAR_UNK_40FB, 5
 	releaseall
 	end

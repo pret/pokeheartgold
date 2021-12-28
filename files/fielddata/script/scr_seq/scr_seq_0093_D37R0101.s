@@ -10,7 +10,7 @@
 	scrdef_end
 
 scr_seq_0093_D37R0101_0012:
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 	end
 
 scr_seq_0093_D37R0101_0018:
@@ -20,10 +20,10 @@ scr_seq_0093_D37R0101_0018:
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif eq, scr_seq_0093_D37R0101_0228
 	clearflag FLAG_UNK_2C8
-	scrcmd_100 3
+	show_person 3
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, scr_seq_0093_D37R0101_0050
-	show_person_at 3, 9, 0, 25, 2
+	move_person 3, 9, 0, 25, 2
 scr_seq_0093_D37R0101_0050:
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement 3, scr_seq_0093_D37R0101_0174
@@ -40,10 +40,10 @@ scr_seq_0093_D37R0101_0050:
 	scrcmd_602 1
 	scrcmd_604 48
 	clearflag FLAG_UNK_2C8
-	scrcmd_100 2
+	show_person 2
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, scr_seq_0093_D37R0101_00AB
-	show_person_at 2, 9, 0, 25, 2
+	move_person 2, 9, 0, 25, 2
 scr_seq_0093_D37R0101_00AB:
 	play_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
@@ -84,7 +84,7 @@ scr_seq_0093_D37R0101_0100:
 	hide_person 2
 	hide_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
-	callstd 2030
+	callstd std_fade_end_friend_music
 	setvar VAR_UNK_40F8, 1
 	setflag FLAG_UNK_14C
 	releaseall
@@ -157,12 +157,12 @@ scr_seq_0093_D37R0101_0220:
 	.short 254, 0
 scr_seq_0093_D37R0101_0228:
 	clearflag FLAG_UNK_2C8
-	scrcmd_100 2
+	show_person 2
 	clearflag FLAG_UNK_2C8
-	scrcmd_100 3
+	show_person 3
 	scrcmd_098 3
 	callstd std_play_friend_music
-	show_person_at 2, 25, 0, 9, 0
+	move_person 2, 25, 0, 9, 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement 255, scr_seq_0093_D37R0101_0220
@@ -174,7 +174,7 @@ scr_seq_0093_D37R0101_0228:
 	apply_movement 255, scr_seq_0093_D37R0101_0310
 	apply_movement 2, scr_seq_0093_D37R0101_0318
 	wait 8, VAR_SPECIAL_x800C
-	show_person_at 3, 25, 0, 9, 0
+	move_person 3, 25, 0, 9, 0
 	apply_movement 3, scr_seq_0093_D37R0101_0320
 	wait_movement
 	scrcmd_603
@@ -197,7 +197,7 @@ scr_seq_0093_D37R0101_0228:
 	hide_person 2
 	hide_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
-	callstd 2030
+	callstd std_fade_end_friend_music
 	setvar VAR_UNK_40F8, 1
 	setflag FLAG_UNK_14C
 	releaseall

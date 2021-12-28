@@ -133,8 +133,8 @@ ScrCmd_BufferMonSpeciesName: ; 0x02048490
 	.balign 4, 0
 	thumb_func_end ScrCmd_BufferMonSpeciesName
 
-	thumb_func_start ScrCmd_668
-ScrCmd_668: ; 0x020484D8
+	thumb_func_start ScrCmd_BufferTypeName
+ScrCmd_BufferTypeName: ; 0x020484D8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -159,10 +159,10 @@ ScrCmd_668: ; 0x020484D8
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_668
+	thumb_func_end ScrCmd_BufferTypeName
 
-	thumb_func_start ScrCmd_194
-ScrCmd_194: ; 0x02048510
+	thumb_func_start ScrCmd_BufferItemName
+ScrCmd_BufferItemName: ; 0x02048510
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -187,10 +187,10 @@ ScrCmd_194: ; 0x02048510
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_194
+	thumb_func_end ScrCmd_BufferItemName
 
-	thumb_func_start ScrCmd_195
-ScrCmd_195: ; 0x02048548
+	thumb_func_start ScrCmd_BufferPocketName
+ScrCmd_BufferPocketName: ; 0x02048548
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -215,10 +215,10 @@ ScrCmd_195: ; 0x02048548
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_195
+	thumb_func_end ScrCmd_BufferPocketName
 
-	thumb_func_start ScrCmd_196
-ScrCmd_196: ; 0x02048580
+	thumb_func_start ScrCmd_BufferTMHMMoveName
+ScrCmd_BufferTMHMMoveName: ; 0x02048580
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -244,7 +244,7 @@ ScrCmd_196: ; 0x02048580
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_196
+	thumb_func_end ScrCmd_BufferTMHMMoveName
 
 	thumb_func_start ScrCmd_197
 ScrCmd_197: ; 0x020485BC
@@ -1116,8 +1116,8 @@ ScrCmd_626: ; 0x02048C80
 	.balign 4, 0
 	thumb_func_end ScrCmd_626
 
-	thumb_func_start ScrCmd_843
-ScrCmd_843: ; 0x02048CBC
+	thumb_func_start ScrCmd_BufferItemNameIndef
+ScrCmd_BufferItemNameIndef: ; 0x02048CBC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1142,7 +1142,7 @@ ScrCmd_843: ; 0x02048CBC
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_843
+	thumb_func_end ScrCmd_BufferItemNameIndef
 
 	thumb_func_start ScrCmd_844
 ScrCmd_844: ; 0x02048CF4

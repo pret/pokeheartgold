@@ -29,7 +29,7 @@ scr_seq_0893_T25R0501_003F:
 	end
 
 scr_seq_0893_T25R0501_004C:
-	show_person_at 0, 4, 0, 6, 3
+	move_person 0, 4, 0, 6, 3
 	end
 
 scr_seq_0893_T25R0501_005A:

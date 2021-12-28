@@ -2079,7 +2079,7 @@ scr_seq_0141_1830:
 scr_seq_0141_1862:
 	wait_fanfare
 	buffer_players_name 0
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 7
@@ -2102,35 +2102,35 @@ scr_seq_0141_1862:
 
 scr_seq_0141_18E2:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_18F3:
 	.byte 0x02, 0x00
 scr_seq_0141_18F5:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_1906:
 	.byte 0x02, 0x00
 scr_seq_0141_1908:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_1919:
 	.byte 0x02, 0x00
 scr_seq_0141_191B:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_192C:
 	.byte 0x02, 0x00
 scr_seq_0141_192E:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_193F:
@@ -2138,21 +2138,21 @@ scr_seq_0141_193F:
 	.byte 0x00
 scr_seq_0141_1941:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_1952:
 	.byte 0x02, 0x00
 scr_seq_0141_1954:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_1965:
 	.byte 0x02, 0x00
 scr_seq_0141_1967:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	goto scr_seq_0141_197A
 
 scr_seq_0141_1978:
@@ -2167,8 +2167,8 @@ scr_seq_0141_198B:
 	.byte 0x02, 0x00
 scr_seq_0141_198D:
 	buffer_players_name 0
-	scrcmd_843 1, 32772
-	scrcmd_196 2, 32772
+	buffer_item_name_indef 1, 32772
+	buffer_tmhm_move_name 2, 32772
 	npc_msg 6
 	goto scr_seq_0141_1862
 
@@ -2176,14 +2176,14 @@ scr_seq_0141_19A3:
 	.byte 0x02, 0x00
 scr_seq_0141_19A5:
 	buffer_players_name 0
-	scrcmd_843 1, 32772
+	buffer_item_name_indef 1, 32772
 	npc_msg 3
 	goto scr_seq_0141_1862
 
 scr_seq_0141_19B6:
 	.byte 0x02, 0x00
 scr_seq_0141_19B8:
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	npc_msg 4
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0

@@ -25881,12 +25881,12 @@ ov02_02251FDC: ; 0x02251FDC
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x30]
-	bl sub_0202EEC0
+	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #8]
 	mov r1, #4
 	ldr r0, [r0, #0x30]
-	bl sub_0202EF44
+	bl GSPlayerMisc_AllocAndCopyPhonebook
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	mov r0, #4
@@ -26174,7 +26174,7 @@ _0225223A:
 	bne _02252268
 	ldr r0, [r7, #0x30]
 	mov r1, #6
-	bl sub_0202EEE4
+	bl GSPlayerMisc_IsGearNumberRegistered
 	cmp r0, #0xff
 	beq _02252276
 	b _02252270

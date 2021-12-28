@@ -126,8 +126,8 @@
 #define VAR_UNK_406F                 0x406F
 #define VAR_UNK_4070                 0x4070
 #define VAR_UNK_4071                 0x4071
-#define VAR_UNK_4072                 0x4072
-#define VAR_UNK_4073                 0x4073
+#define VAR_SCENE_NEW_BARK_TOWN_OW                 0x4072
+#define VAR_SCENE_CHERRYGROVE_CITY_OW                 0x4073
 #define VAR_SCENE_VIOLET_CITY_OW                 0x4074
 #define VAR_UNK_4075                 0x4075
 #define VAR_UNK_4076                 0x4076
@@ -274,9 +274,9 @@
 #define VAR_UNK_4103                 0x4103
 #define VAR_UNK_4104                 0x4104
 #define VAR_UNK_4105                 0x4105
-#define VAR_UNK_4106                 0x4106
+#define VAR_SCENE_PLAYERS_HOUSE_1F                 0x4106
 #define VAR_UNK_4107                 0x4107
-#define VAR_UNK_4108                 0x4108
+#define VAR_SCENE_ELMS_LAB                 0x4108
 #define VAR_UNK_4109                 0x4109
 #define VAR_UNK_410A                 0x410A
 #define VAR_UNK_410B                 0x410B

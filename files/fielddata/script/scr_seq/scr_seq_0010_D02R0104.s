@@ -163,7 +163,7 @@ scr_seq_0010_D02R0104_0143:
 	apply_movement 4, scr_seq_0010_D02R0104_0744
 	apply_movement 5, scr_seq_0010_D02R0104_0760
 	wait_movement
-	scrcmd_100 6
+	show_person 6
 	apply_movement 3, scr_seq_0010_D02R0104_077C
 	apply_movement 5, scr_seq_0010_D02R0104_0798
 	wait_movement
@@ -601,13 +601,13 @@ scr_seq_0010_D02R0104_0825:
 	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	npc_msg 2
 	wait_fanfare
 	buffer_players_name 0
-	scrcmd_194 1, 32772
+	buffer_item_name 1, 32772
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_195 2, 32780
+	buffer_pocket_name 2, 32780
 	npc_msg 3
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 1
@@ -617,7 +617,7 @@ scr_seq_0010_D02R0104_0860:
 	end
 
 scr_seq_0010_D02R0104_0866:
-	scrcmd_194 0, 32772
+	buffer_item_name 0, 32772
 	npc_msg 4
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0

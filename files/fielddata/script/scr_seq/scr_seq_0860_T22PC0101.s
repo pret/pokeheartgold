@@ -21,7 +21,7 @@ scr_seq_0860_T22PC0101_0026:
 	lockall
 	faceplayer
 	npc_msg 12
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0860_T22PC0101_021D
@@ -131,7 +131,7 @@ scr_seq_0860_T22PC0101_0212:
 	goto scr_seq_0860_T22PC0101_0235
 
 scr_seq_0860_T22PC0101_021D:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0860_T22PC0101_021F:
 	npc_msg 15
 	waitbutton
@@ -179,7 +179,7 @@ scr_seq_0860_T22PC0101_0280:
 
 scr_seq_0860_T22PC0101_028C:
 	npc_msg 22
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_287
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 53, 255, 0
@@ -204,7 +204,7 @@ scr_seq_0860_T22PC0101_028C:
 	goto scr_seq_0860_T22PC0101_028C
 
 scr_seq_0860_T22PC0101_0313:
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_849 0, 32773
 	npc_msg 24
 	setflag FLAG_UNK_2C5
@@ -213,7 +213,7 @@ scr_seq_0860_T22PC0101_0313:
 	goto scr_seq_0860_T22PC0101_0333
 
 scr_seq_0860_T22PC0101_0331:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0860_T22PC0101_0333:
 	npc_msg 25
 	waitbutton

@@ -57,11 +57,11 @@ scr_seq_0878_T24PC0101_007F:
 	wait_fanfare
 	scrcmd_137 72, 15, 0, 0, 0, 32780
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0878_T24PC0101_00BC
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	goto scr_seq_0878_T24PC0101_00E0
 
@@ -70,7 +70,7 @@ scr_seq_0878_T24PC0101_00BC:
 	scrcmd_815 0
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 1, VAR_SPECIAL_x800C
+	nickname_input 1, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0
 	wait_fade
 scr_seq_0878_T24PC0101_00E0:

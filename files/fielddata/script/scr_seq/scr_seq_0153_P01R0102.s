@@ -18,7 +18,7 @@ scr_seq_0153_P01R0102_001E:
 	end
 
 scr_seq_0153_P01R0102_002D:
-	show_person_at 0, 28, 0, 22, 2
+	move_person 0, 28, 0, 22, 2
 	end
 
 scr_seq_0153_P01R0102_003B:
@@ -212,9 +212,9 @@ scr_seq_0153_P01R0102_0274:
 	gotoif ge, scr_seq_0153_P01R0102_0317
 	npc_msg 4
 scr_seq_0153_P01R0102_029F:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0153_P01R0102_02C3
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -226,7 +226,7 @@ scr_seq_0153_P01R0102_02C3:
 	npc_msg 5
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	scrcmd_146 35
+	register_gear_number 35
 	npc_msg 6
 	waitbutton
 	closemsg
@@ -257,9 +257,9 @@ scr_seq_0153_P01R0102_0320:
 	.byte 0x02, 0x00
 scr_seq_0153_P01R0102_0322:
 	npc_msg 9
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0153_P01R0102_0383
 	scrcmd_618 VAR_SPECIAL_x800C

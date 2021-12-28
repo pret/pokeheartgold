@@ -909,16 +909,16 @@ scr_seq_0953_0DE4:
 scr_seq_0953_0DF7:
 	.byte 0x02, 0x00
 scr_seq_0953_0DF9:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0953_0E28
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	npc_msg 101
 	scrcmd_461 1, 32772, 32773
-	scrcmd_146 16400
+	register_gear_number 16400
 	goto scr_seq_0953_0E2F
 
 scr_seq_0953_0E28:

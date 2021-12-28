@@ -92,8 +92,8 @@ scr_seq_0819_T10R0101_00EF:
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_250
-	scrcmd_100 5
-	show_person_at 5, VAR_SPECIAL_x8000, 0, 23, 0
+	show_person 5
+	move_person 5, VAR_SPECIAL_x8000, 0, 23, 0
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -230,7 +230,7 @@ scr_seq_0819_T10R0101_02C0:
 	lockall
 	faceplayer
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 scr_seq_0819_T10R0101_02CD:
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 8, 255, 0
@@ -283,7 +283,7 @@ scr_seq_0819_T10R0101_037A:
 	closemsg
 	scrcmd_378 4, 32780
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0819_T10R0101_02CD
 
 scr_seq_0819_T10R0101_03CF:
@@ -313,7 +313,7 @@ scr_seq_0819_T10R0101_03F1:
 	closemsg
 	scrcmd_378 3, 32780
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0819_T10R0101_02CD
 
 scr_seq_0819_T10R0101_0456:
@@ -348,7 +348,7 @@ scr_seq_0819_T10R0101_04B0:
 	closemsg
 	scrcmd_378 1, 32780
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0819_T10R0101_02CD
 
 scr_seq_0819_T10R0101_0505:
@@ -379,11 +379,11 @@ scr_seq_0819_T10R0101_0527:
 	closemsg
 	scrcmd_378 0, 32780
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	goto scr_seq_0819_T10R0101_02CD
 
 scr_seq_0819_T10R0101_058C:
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	releaseall
 	end

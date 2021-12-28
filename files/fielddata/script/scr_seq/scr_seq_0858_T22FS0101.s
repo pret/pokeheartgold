@@ -40,9 +40,9 @@ scr_seq_0858_T22FS0101_004E:
 	gotoif TRUE, scr_seq_0858_T22FS0101_0115
 	buffer_players_name 0
 	gender_msgbox 2, 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0858_T22FS0101_00F7
 scr_seq_0858_T22FS0101_007D:
@@ -70,12 +70,12 @@ scr_seq_0858_T22FS0101_00CD:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 4
 	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_UNK_197
+	setflag FLAG_HIDE_VIOLET_SHOP_KIMONO_GIRL
 	releaseall
 	setvar VAR_SCENE_VIOLET_CITY_OW, 3
-	clearflag FLAG_UNK_238
-	clearflag FLAG_UNK_246
-	setvar VAR_UNK_4108, 7
+	clearflag FLAG_HIDE_VIOLET_KIMONO_GIRL
+	clearflag FLAG_HIDE_ELMS_LAB_OFFICER
+	setvar VAR_SCENE_ELMS_LAB, 7
 	end
 
 scr_seq_0858_T22FS0101_00F7:
@@ -97,9 +97,9 @@ scr_seq_0858_T22FS0101_0106:
 scr_seq_0858_T22FS0101_0115:
 	buffer_players_name 0
 	gender_msgbox 9, 10
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0858_T22FS0101_007D
 	comparevartovalue VAR_SPECIAL_x800C, 1

@@ -618,7 +618,7 @@
       ]
     },
     {
-      "name": "scrcmd_100",
+      "name": "show_person",
       "args": [
         2
       ]
@@ -915,7 +915,7 @@
     {
       "name": "scrcmd_144",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -925,9 +925,9 @@
       ]
     },
     {
-      "name": "scrcmd_146",
+      "name": "register_gear_number",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1073,7 +1073,7 @@
       ]
     },
     {
-      "name": "scrcmd_173",
+      "name": "nickname_input",
       "args": [
         "var",
         "var"
@@ -1204,24 +1204,24 @@
       ]
     },
     {
-      "name": "scrcmd_194",
+      "name": "buffer_item_name",
       "args": [
         1,
-        2
+        "item"
       ]
     },
     {
-      "name": "scrcmd_195",
+      "name": "buffer_pocket_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_196",
+      "name": "buffer_tmhm_move_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -1804,7 +1804,7 @@
       ]
     },
     {
-      "name": "scrcmd_293",
+      "name": "give_running_shoes",
       "args": []
     },
     {
@@ -2053,7 +2053,7 @@
       ]
     },
     {
-      "name": "show_person_at",
+      "name": "move_person",
       "args": [
         "var",
         "var",
@@ -2657,15 +2657,15 @@
       ]
     },
     {
-      "name": "scrcmd_430",
+      "name": "set_phone_call",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_431",
+      "name": "run_phone_call",
       "args": []
     },
     {
@@ -4212,7 +4212,7 @@
       ]
     },
     {
-      "name": "scrcmd_668",
+      "name": "buffer_type_name",
       "args": [
         1,
         2
@@ -4703,11 +4703,11 @@
       ]
     },
     {
-      "name": "scrcmd_746",
+      "name": "touchscreen_menu_hide",
       "args": []
     },
     {
-      "name": "scrcmd_747",
+      "name": "touchscreen_menu_show",
       "args": []
     },
     {
@@ -5255,10 +5255,10 @@
       ]
     },
     {
-      "name": "scrcmd_843",
+      "name": "buffer_item_name_indef",
       "args": [
         1,
-        2
+        "item"
       ]
     },
     {

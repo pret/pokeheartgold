@@ -61,8 +61,8 @@ scr_seq_0123_D49R0101_00AB:
 scr_seq_0123_D49R0101_00B3:
 	wait_movement
 	clearflag FLAG_UNK_227
-	scrcmd_100 1
-	show_person_at 1, 23, 0, 20, 0
+	show_person 1
+	move_person 1, 23, 0, 20, 0
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, scr_seq_0123_D49R0101_00EC
 	apply_movement 1, scr_seq_0123_D49R0101_0248
@@ -260,7 +260,7 @@ scr_seq_0123_D49R0101_0350:
 	gotoif eq, scr_seq_0123_D49R0101_0400
 	npc_msg 49
 scr_seq_0123_D49R0101_0377:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 325, 255, 0
 	scrcmd_751 324, 255, 1
@@ -284,14 +284,14 @@ scr_seq_0123_D49R0101_03C7:
 scr_seq_0123_D49R0101_03D5:
 	.byte 0x02, 0x00
 scr_seq_0123_D49R0101_03D7:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 52
 	goto scr_seq_0123_D49R0101_0377
 
 scr_seq_0123_D49R0101_03E2:
 	.byte 0x02, 0x00
 scr_seq_0123_D49R0101_03E4:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 51
 	waitbutton
 	closemsg
@@ -326,7 +326,7 @@ scr_seq_0123_D49R0101_040B:
 	gotoif FALSE, scr_seq_0123_D49R0101_0529
 	npc_msg 54
 scr_seq_0123_D49R0101_0443:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 325, 255, 0
 	scrcmd_751 324, 255, 1
@@ -362,7 +362,7 @@ scr_seq_0123_D49R0101_0493:
 scr_seq_0123_D49R0101_04E6:
 	.byte 0x02, 0x00
 scr_seq_0123_D49R0101_04E8:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 55
 	scrcmd_724 12, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 100
@@ -380,7 +380,7 @@ scr_seq_0123_D49R0101_0511:
 scr_seq_0123_D49R0101_051A:
 	.byte 0x02, 0x00
 scr_seq_0123_D49R0101_051C:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 51
 	waitbutton
 	closemsg
@@ -600,7 +600,7 @@ scr_seq_0123_D49R0101_06D8:
 	lockall
 	scrcmd_784 3, 0
 	npc_msg 85
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
 	scrcmd_751 337, 255, 0
 	scrcmd_751 338, 255, 1
@@ -621,7 +621,7 @@ scr_seq_0123_D49R0101_072E:
 	goto scr_seq_0123_D49R0101_0A7F
 
 scr_seq_0123_D49R0101_0748:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 91
 	waitbutton
 	closemsg
@@ -631,7 +631,7 @@ scr_seq_0123_D49R0101_0748:
 
 scr_seq_0123_D49R0101_0759:
 	npc_msg 86
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
 	scrcmd_751 209, 255, 0
 	scrcmd_751 210, 255, 1
@@ -645,7 +645,7 @@ scr_seq_0123_D49R0101_0759:
 	gotoif eq, scr_seq_0123_D49R0101_07CC
 	comparevartovalue VAR_SPECIAL_x8008, 2
 	gotoif eq, scr_seq_0123_D49R0101_07D8
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 91
 	goto scr_seq_0123_D49R0101_0A5C
 
@@ -767,9 +767,9 @@ scr_seq_0123_D49R0101_097D:
 	gotoif ne, scr_seq_0123_D49R0101_098D
 	scrcmd_118 2
 scr_seq_0123_D49R0101_098D:
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	play_se SEQ_SE_DP_JIHANKI
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	npc_msg 87
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
@@ -778,7 +778,7 @@ scr_seq_0123_D49R0101_098D:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0123_D49R0101_09E6
 	play_se SEQ_SE_DP_JIHANKI
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	npc_msg 88
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -797,7 +797,7 @@ scr_seq_0123_D49R0101_09FF:
 scr_seq_0123_D49R0101_0A05:
 	.byte 0x02, 0x00
 scr_seq_0123_D49R0101_0A07:
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_TEMP_x4005, 0
 	gotoif ne, scr_seq_0123_D49R0101_0A1F
 	npc_msg 89
@@ -811,7 +811,7 @@ scr_seq_0123_D49R0101_0A2F:
 	goto scr_seq_0123_D49R0101_0A5C
 
 scr_seq_0123_D49R0101_0A35:
-	scrcmd_747
+	touchscreen_menu_show
 	callstd std_bag_is_full
 	closemsg
 	comparevartovalue VAR_TEMP_x4005, 0
@@ -843,7 +843,7 @@ scr_seq_0123_D49R0101_0A77:
 
 scr_seq_0123_D49R0101_0A7F:
 	npc_msg 86
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
 	scrcmd_751 339, 255, 0
 	scrcmd_751 340, 255, 1
@@ -857,7 +857,7 @@ scr_seq_0123_D49R0101_0A7F:
 	gotoif eq, scr_seq_0123_D49R0101_07CC
 	comparevartovalue VAR_SPECIAL_x8008, 2
 	gotoif eq, scr_seq_0123_D49R0101_07D8
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 91
 	goto scr_seq_0123_D49R0101_0A5C
 
@@ -870,7 +870,7 @@ scr_seq_0123_D49R0101_0AE8:
 	npc_msg 92
 scr_seq_0123_D49R0101_0AF3:
 	npc_msg 93
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 94, 255, 0
 	scrcmd_751 95, 255, 1
@@ -920,7 +920,7 @@ scr_seq_0123_D49R0101_0B81:
 scr_seq_0123_D49R0101_0BA3:
 	.byte 0x02, 0x00
 scr_seq_0123_D49R0101_0BA5:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 101
 	waitbutton
 	closemsg
@@ -934,9 +934,9 @@ scr_seq_0123_D49R0101_0BB2:
 	checkflag FLAG_UNK_152
 	gotoif TRUE, scr_seq_0123_D49R0101_0C4C
 	npc_msg 103
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0123_D49R0101_0BFE
 	npc_msg 105

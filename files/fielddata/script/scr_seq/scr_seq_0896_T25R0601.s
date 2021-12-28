@@ -160,7 +160,7 @@ scr_seq_0896_T25R0601_01E5:
 	faceplayer
 	npc_msg 3
 	npc_msg 8
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_113 20, 2
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 213, 470, 0
@@ -207,7 +207,7 @@ scr_seq_0896_T25R0601_0276:
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
 	giveitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	scrcmd_194 0, 32769
+	buffer_item_name 0, 32769
 	npc_msg 11
 	npc_msg 9
 	goto scr_seq_0896_T25R0601_031F
@@ -215,7 +215,7 @@ scr_seq_0896_T25R0601_0276:
 scr_seq_0896_T25R0601_031F:
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_114
 	releaseall
 	end

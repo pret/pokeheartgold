@@ -28,9 +28,9 @@ scr_seq_0782_T06R0301_0022:
 
 scr_seq_0782_T06R0301_0044:
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0782_T06R0301_009E
 	npc_msg 1

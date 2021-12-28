@@ -139,7 +139,7 @@ scr_seq_0264_01EC:
 	.byte 0x02, 0x00
 scr_seq_0264_01EE:
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	return
 
 scr_seq_0264_01F5:
@@ -153,7 +153,7 @@ scr_seq_0264_01F5:
 
 scr_seq_0264_0221:
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 

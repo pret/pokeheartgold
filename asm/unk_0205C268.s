@@ -5570,7 +5570,7 @@ sub_0205EB2C: ; 0x0205EB2C
 	bl sub_0205F9F0
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0205EF70
+	bl ResolveObjectGfxId
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_0205F258
@@ -6075,8 +6075,8 @@ sub_0205EF6C: ; 0x0205EF6C
 	.balign 4, 0
 	thumb_func_end sub_0205EF6C
 
-	thumb_func_start sub_0205EF70
-sub_0205EF70: ; 0x0205EF70
+	thumb_func_start ResolveObjectGfxId
+ResolveObjectGfxId: ; 0x0205EF70
 	push {r3, lr}
 	cmp r1, #0x65
 	blt _0205EF86
@@ -6091,7 +6091,7 @@ _0205EF86:
 	add r0, r1, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205EF70
+	thumb_func_end ResolveObjectGfxId
 
 	thumb_func_start sub_0205EF8C
 sub_0205EF8C: ; 0x0205EF8C

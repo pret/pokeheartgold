@@ -31,7 +31,7 @@ scr_seq_0821_T10R0301_0025:
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_20C
-	scrcmd_100 1
+	show_person 1
 	setvar VAR_TEMP_x4001, 1
 	releaseall
 	end

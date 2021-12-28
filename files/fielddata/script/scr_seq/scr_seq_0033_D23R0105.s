@@ -118,7 +118,7 @@ scr_seq_0033_D23R0105_018A:
 	wait_movement
 	setflag FLAG_UNK_2C6
 	clearflag FLAG_UNK_2C7
-	scrcmd_100 2
+	show_person 2
 	hide_person 0
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, scr_seq_0033_D23R0105_01B7

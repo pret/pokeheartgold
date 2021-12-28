@@ -18,9 +18,9 @@ scr_seq_0864_T22R0601_0010:
 	checkflag FLAG_UNK_071
 	gotoif TRUE, scr_seq_0864_T22R0601_00BD
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0864_T22R0601_0041
 	goto scr_seq_0864_T22R0601_00B2

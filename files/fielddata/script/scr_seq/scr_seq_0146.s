@@ -35,9 +35,9 @@ scr_seq_0146_004E:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_009E
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_00AD
 	closemsg
@@ -188,9 +188,9 @@ scr_seq_0146_0281:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_02D7
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_02E6
 	closemsg
@@ -358,9 +358,9 @@ scr_seq_0146_051C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0564
 	npc_msg 7
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0573
 	closemsg
@@ -523,9 +523,9 @@ scr_seq_0146_0738:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0146_07A6
 	npc_msg 20
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_07B5
 	closemsg
@@ -577,9 +577,9 @@ scr_seq_0146_07ED:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0146_0826
 	npc_msg 14
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0833
 	closemsg
@@ -696,9 +696,9 @@ scr_seq_0146_0949:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0997
 	npc_msg 24
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_09A6
 	closemsg
@@ -747,9 +747,9 @@ scr_seq_0146_09E6:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0A34
 	npc_msg 29
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0A43
 	closemsg
@@ -799,9 +799,9 @@ scr_seq_0146_0A85:
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0AC2
 	npc_msg 32
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0AD1
 	closemsg
@@ -965,7 +965,7 @@ scr_seq_0146_0CEB:
 	gotoif eq, scr_seq_0146_0D2A
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_843 1, 32772
+	buffer_item_name_indef 1, 32772
 	scrcmd_851 1
 	npc_msg 6
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C

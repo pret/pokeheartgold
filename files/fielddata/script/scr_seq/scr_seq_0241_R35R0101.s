@@ -21,9 +21,9 @@ scr_seq_0241_R35R0101_000A:
 
 scr_seq_0241_R35R0101_0028:
 	npc_msg 14
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0241_R35R0101_004B
 	npc_msg 15
@@ -48,9 +48,9 @@ scr_seq_0241_R35R0101_0056:
 	comparevartovalue VAR_UNK_4114, 2
 	gotoif ge, scr_seq_0241_R35R0101_0104
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0241_R35R0101_00EE
 	get_party_count VAR_SPECIAL_x800C

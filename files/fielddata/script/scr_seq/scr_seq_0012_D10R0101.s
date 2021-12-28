@@ -60,9 +60,9 @@ scr_seq_0012_D10R0101_00B1:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0012_D10R0101_00D5
@@ -132,9 +132,9 @@ scr_seq_0012_D10R0101_0178:
 	.short 254, 0
 scr_seq_0012_D10R0101_0180:
 	npc_msg 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0012_D10R0101_01C9
 	get_player_gender VAR_SPECIAL_x800C

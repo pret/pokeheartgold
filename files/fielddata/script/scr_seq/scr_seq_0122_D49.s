@@ -716,13 +716,13 @@ scr_seq_0122_D49_08BB:
 	gotoif FALSE, scr_seq_0122_D49_093E
 	npc_msg 25
 scr_seq_0122_D49_08D1:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 326, 255, 0
 	scrcmd_751 327, 255, 1
 	scrcmd_751 157, 255, 2
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0122_D49_091D
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -829,13 +829,13 @@ scr_seq_0122_D49_0A1D:
 	wait_movement
 	npc_msg 33
 scr_seq_0122_D49_0A3A:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 328, 255, 0
 	scrcmd_751 329, 255, 1
 	scrcmd_751 44, 255, 2
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, scr_seq_0122_D49_0AD6
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -973,9 +973,9 @@ scr_seq_0122_D49_0BFC:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0122_D49_0E44
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -1042,9 +1042,9 @@ scr_seq_0122_D49_0D24:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0122_D49_0E44
 	scrcmd_618 VAR_SPECIAL_x800C

@@ -33,91 +33,91 @@ scr_seq_0095_D37R0103_0059:
 	checkflag FLAG_UNK_098
 	gotoif TRUE, scr_seq_0095_D37R0103_013E
 	scrcmd_109 0, 9
-	show_person_at 1, 19, 0, 16, 1
-	show_person_at 7, 19, 0, 18, 0
-	show_person_at 9, 19, 0, 17, 0
-	show_person_at 10, 20, 0, 17, 0
-	show_person_at 11, 20, 0, 18, 0
+	move_person 1, 19, 0, 16, 1
+	move_person 7, 19, 0, 18, 0
+	move_person 9, 19, 0, 17, 0
+	move_person 10, 20, 0, 17, 0
+	move_person 11, 20, 0, 18, 0
 	end
 
 scr_seq_0095_D37R0103_00B3:
 	checkflag FLAG_UNK_098
 	gotoif TRUE, scr_seq_0095_D37R0103_02BF
 	scrcmd_109 0, 9
-	show_person_at 1, 19, 0, 16, 1
-	show_person_at 7, 19, 0, 18, 0
-	show_person_at 9, 19, 0, 17, 0
-	show_person_at 10, 20, 0, 17, 0
-	show_person_at 11, 20, 0, 18, 0
-	show_person_at 2, 3, 0, 14, 2
-	show_person_at 6, 1, 0, 14, 0
-	show_person_at 12, 1, 0, 13, 0
-	show_person_at 13, 2, 0, 13, 0
-	show_person_at 14, 2, 0, 14, 0
+	move_person 1, 19, 0, 16, 1
+	move_person 7, 19, 0, 18, 0
+	move_person 9, 19, 0, 17, 0
+	move_person 10, 20, 0, 17, 0
+	move_person 11, 20, 0, 18, 0
+	move_person 2, 3, 0, 14, 2
+	move_person 6, 1, 0, 14, 0
+	move_person 12, 1, 0, 13, 0
+	move_person 13, 2, 0, 13, 0
+	move_person 14, 2, 0, 14, 0
 	end
 
 scr_seq_0095_D37R0103_013E:
 	scrcmd_109 0, 9
-	show_person_at 1, 19, 0, 16, 1
-	show_person_at 7, 19, 0, 18, 0
-	show_person_at 9, 19, 0, 17, 0
-	show_person_at 10, 20, 0, 17, 0
-	show_person_at 11, 20, 0, 18, 0
-	show_person_at 3, 7, 0, 17, 3
-	show_person_at 5, 8, 0, 18, 0
-	show_person_at 15, 8, 0, 17, 0
-	show_person_at 16, 9, 0, 17, 0
-	show_person_at 17, 9, 0, 18, 0
+	move_person 1, 19, 0, 16, 1
+	move_person 7, 19, 0, 18, 0
+	move_person 9, 19, 0, 17, 0
+	move_person 10, 20, 0, 17, 0
+	move_person 11, 20, 0, 18, 0
+	move_person 3, 7, 0, 17, 3
+	move_person 5, 8, 0, 18, 0
+	move_person 15, 8, 0, 17, 0
+	move_person 16, 9, 0, 17, 0
+	move_person 17, 9, 0, 18, 0
 	end
 
 scr_seq_0095_D37R0103_01BE:
 	checkflag FLAG_UNK_098
 	gotoif TRUE, scr_seq_0095_D37R0103_0245
-	show_person_at 2, 3, 0, 14, 2
-	show_person_at 6, 1, 0, 14, 0
-	show_person_at 12, 1, 0, 13, 0
-	show_person_at 13, 2, 0, 13, 0
-	show_person_at 14, 2, 0, 14, 0
+	move_person 2, 3, 0, 14, 2
+	move_person 6, 1, 0, 14, 0
+	move_person 12, 1, 0, 13, 0
+	move_person 13, 2, 0, 13, 0
+	move_person 14, 2, 0, 14, 0
 	end
 
 scr_seq_0095_D37R0103_0207:
-	show_person_at 3, 7, 0, 17, 3
-	show_person_at 5, 8, 0, 18, 0
-	show_person_at 15, 8, 0, 17, 0
-	show_person_at 16, 9, 0, 17, 0
-	show_person_at 17, 9, 0, 18, 0
+	move_person 3, 7, 0, 17, 3
+	move_person 5, 8, 0, 18, 0
+	move_person 15, 8, 0, 17, 0
+	move_person 16, 9, 0, 17, 0
+	move_person 17, 9, 0, 18, 0
 	end
 
 scr_seq_0095_D37R0103_0245:
-	show_person_at 2, 3, 0, 14, 2
-	show_person_at 6, 1, 0, 14, 0
-	show_person_at 12, 1, 0, 13, 0
-	show_person_at 13, 2, 0, 13, 0
-	show_person_at 14, 2, 0, 14, 0
-	show_person_at 3, 7, 0, 17, 3
-	show_person_at 5, 8, 0, 18, 0
-	show_person_at 15, 8, 0, 17, 0
-	show_person_at 16, 9, 0, 17, 0
-	show_person_at 17, 9, 0, 18, 0
+	move_person 2, 3, 0, 14, 2
+	move_person 6, 1, 0, 14, 0
+	move_person 12, 1, 0, 13, 0
+	move_person 13, 2, 0, 13, 0
+	move_person 14, 2, 0, 14, 0
+	move_person 3, 7, 0, 17, 3
+	move_person 5, 8, 0, 18, 0
+	move_person 15, 8, 0, 17, 0
+	move_person 16, 9, 0, 17, 0
+	move_person 17, 9, 0, 18, 0
 	end
 
 scr_seq_0095_D37R0103_02BF:
 	scrcmd_109 0, 9
-	show_person_at 1, 19, 0, 16, 1
-	show_person_at 7, 19, 0, 18, 0
-	show_person_at 9, 19, 0, 17, 0
-	show_person_at 10, 20, 0, 17, 0
-	show_person_at 11, 20, 0, 18, 0
-	show_person_at 2, 3, 0, 14, 2
-	show_person_at 6, 1, 0, 14, 0
-	show_person_at 12, 1, 0, 13, 0
-	show_person_at 13, 2, 0, 13, 0
-	show_person_at 14, 2, 0, 14, 0
-	show_person_at 3, 7, 0, 17, 3
-	show_person_at 5, 8, 0, 18, 0
-	show_person_at 15, 8, 0, 17, 0
-	show_person_at 16, 9, 0, 17, 0
-	show_person_at 17, 9, 0, 18, 0
+	move_person 1, 19, 0, 16, 1
+	move_person 7, 19, 0, 18, 0
+	move_person 9, 19, 0, 17, 0
+	move_person 10, 20, 0, 17, 0
+	move_person 11, 20, 0, 18, 0
+	move_person 2, 3, 0, 14, 2
+	move_person 6, 1, 0, 14, 0
+	move_person 12, 1, 0, 13, 0
+	move_person 13, 2, 0, 13, 0
+	move_person 14, 2, 0, 14, 0
+	move_person 3, 7, 0, 17, 3
+	move_person 5, 8, 0, 18, 0
+	move_person 15, 8, 0, 17, 0
+	move_person 16, 9, 0, 17, 0
+	move_person 17, 9, 0, 18, 0
 	end
 
 scr_seq_0095_D37R0103_037B:

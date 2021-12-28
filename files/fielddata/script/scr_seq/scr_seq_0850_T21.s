@@ -48,7 +48,7 @@ scr_seq_0850_T21_008B:
 	scrcmd_098 0
 	apply_movement 0, scr_seq_0850_T21_0350
 	wait_movement
-	callstd 2037
+	callstd std_play_follow_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 397
 	gotoif ne, scr_seq_0850_T21_00BE
@@ -185,7 +185,7 @@ scr_seq_0850_T21_0228:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg 6
-	scrcmd_293
+	give_running_shoes
 	buffer_players_name 0
 	npc_msg 7
 	play_fanfare SEQ_ME_ITEM
@@ -204,12 +204,12 @@ scr_seq_0850_T21_0228:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 0
 	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_UNK_198
+	setflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	callstd 2038
-	setvar VAR_UNK_4073, 1
+	callstd std_fade_end_mom_music
+	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 1
 	end
 
 
@@ -418,12 +418,12 @@ scr_seq_0850_T21_0590:
 	lockall
 	apply_movement 255, scr_seq_0850_T21_0680
 	wait_movement
-	callstd 2037
-	clearflag FLAG_UNK_198
-	scrcmd_100 0
+	callstd std_play_follow_music
+	clearflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
+	show_person 0
 	scrcmd_098 0
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	show_person_at 0, VAR_TEMP_x4000, 1, 394, 0
+	move_person 0, VAR_TEMP_x4000, 1, 394, 0
 	comparevartovalue VAR_TEMP_x4000, 549
 	gotoif ne, scr_seq_0850_T21_05DB
 	apply_movement 0, scr_seq_0850_T21_068C
@@ -464,13 +464,13 @@ scr_seq_0850_T21_063E:
 	closemsg
 	apply_movement 0, scr_seq_0850_T21_06AC
 	wait_movement
-	callstd 2038
+	callstd std_fade_end_mom_music
 	scrcmd_099 0
 	hide_person 0
-	setflag FLAG_UNK_198
+	setflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
 	register_pokegear_card 1
 	releaseall
-	setvar VAR_UNK_4073, 2
+	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 2
 	end
 
 scr_seq_0850_T21_067E:
@@ -504,7 +504,7 @@ scr_seq_0850_T21_06B4:
 	wait_movement
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	show_person_at 4, 583, 0, VAR_TEMP_x4001, 2
+	move_person 4, 583, 0, VAR_TEMP_x4001, 2
 	apply_movement 4, scr_seq_0850_T21_0808
 	wait_movement
 	npc_msg 13
@@ -569,10 +569,10 @@ scr_seq_0850_T21_07D4:
 scr_seq_0850_T21_07E4:
 	wait_movement
 	hide_person 4
-	setflag FLAG_UNK_19C
+	setflag FLAG_HIDE_CHERRYGROVE_RIVAL
 	callstd 2071
 	releaseall
-	setvar VAR_UNK_4073, 4
+	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 4
 	setflag FLAG_MET_PASSERBY_BOY
 	end
 
@@ -675,9 +675,9 @@ scr_seq_0850_T21_0919:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0850_T21_0A41
 	scrcmd_618 VAR_SPECIAL_x800C

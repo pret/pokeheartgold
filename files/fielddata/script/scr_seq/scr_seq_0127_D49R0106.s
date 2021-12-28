@@ -27,7 +27,7 @@ scr_seq_0127_D49R0106_0039:
 scr_seq_0127_D49R0106_0041:
 	comparevartovalue VAR_TEMP_x400D, 1
 	gotoif ne, scr_seq_0127_D49R0106_0060
-	show_person_at 0, 6, 1, 3, 3
+	move_person 0, 6, 1, 3, 3
 	setvar VAR_TEMP_x400D, 0
 scr_seq_0127_D49R0106_0060:
 	end
@@ -66,13 +66,13 @@ scr_seq_0127_D49R0106_009E:
 	lockall
 	faceplayer
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0127_D49R0106_03AC
 scr_seq_0127_D49R0106_00BC:
 	npc_msg 6
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 308, 255, 0
 	scrcmd_751 309, 255, 1
@@ -99,7 +99,7 @@ scr_seq_0127_D49R0106_014B:
 	.byte 0x02, 0x00
 scr_seq_0127_D49R0106_014D:
 	setvar VAR_TEMP_x4007, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 298, 255, 0
 	scrcmd_751 299, 255, 1
@@ -112,7 +112,7 @@ scr_seq_0127_D49R0106_0185:
 	.byte 0x02, 0x00
 scr_seq_0127_D49R0106_0187:
 	setvar VAR_TEMP_x4007, 1
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 301, 255, 3
 	scrcmd_751 300, 255, 2
@@ -126,7 +126,7 @@ scr_seq_0127_D49R0106_01BF:
 	.byte 0x00
 scr_seq_0127_D49R0106_01C1:
 	setvar VAR_TEMP_x4007, 2
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 306, 255, 8
 	scrcmd_751 307, 255, 9
@@ -139,7 +139,7 @@ scr_seq_0127_D49R0106_01F9:
 	.byte 0x02, 0x00
 scr_seq_0127_D49R0106_01FB:
 	setvar VAR_TEMP_x4007, 3
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 305, 255, 7
 	scrcmd_751 304, 255, 6
@@ -152,7 +152,7 @@ scr_seq_0127_D49R0106_0233:
 	.byte 0x02, 0x00
 scr_seq_0127_D49R0106_0235:
 	setvar VAR_TEMP_x4007, 4
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 303, 255, 5
 	scrcmd_751 302, 255, 4
@@ -268,7 +268,7 @@ scr_seq_0127_D49R0106_03AC:
 	npc_msg 18
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 

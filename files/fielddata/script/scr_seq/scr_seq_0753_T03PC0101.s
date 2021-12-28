@@ -22,9 +22,9 @@ scr_seq_0753_T03PC0101_0022:
 	checkflag FLAG_UNK_133
 	gotoif TRUE, scr_seq_0753_T03PC0101_00C9
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0753_T03PC0101_00BE
 	closemsg

@@ -29,7 +29,7 @@
 	scrdef_end
 
 scr_seq_0092_D36R0101_005E:
-	scrcmd_144 16416
+	scrcmd_144 VAR_OBJ_0
 	checkflag FLAG_UNK_189
 	gotoif FALSE, scr_seq_0092_D36R0101_0077
 	clearflag FLAG_UNK_189
@@ -98,13 +98,13 @@ scr_seq_0092_D36R0101_0153:
 	end
 
 scr_seq_0092_D36R0101_016F:
-	show_person_at 15, 15, 0, 58, 1
-	show_person_at 14, 15, 0, 59, 3
+	move_person 15, 15, 0, 58, 1
+	move_person 14, 15, 0, 59, 3
 	return
 
 scr_seq_0092_D36R0101_0189:
-	show_person_at 16, 15, 0, 58, 1
-	show_person_at 17, 11, 0, 58, 3
+	move_person 16, 15, 0, 58, 1
+	move_person 17, 11, 0, 58, 3
 	return
 
 scr_seq_0092_D36R0101_01A3:
@@ -1062,7 +1062,7 @@ scr_seq_0092_D36R0101_0EE8:
 	lockall
 	faceplayer
 	npc_msg 11
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0092_D36R0101_1086
@@ -1096,7 +1096,7 @@ scr_seq_0092_D36R0101_0F84:
 	scrcmd_396 32770, 32774
 	comparevartovalue VAR_SPECIAL_x8002, 3
 	gotoif le, scr_seq_0092_D36R0101_1041
-	scrcmd_746
+	touchscreen_menu_hide
 scr_seq_0092_D36R0101_0F99:
 	bufferpartymonnick 0, VAR_SPECIAL_x8006
 	npc_msg 17
@@ -1115,7 +1115,7 @@ scr_seq_0092_D36R0101_0F99:
 	gotoif eq, scr_seq_0092_D36R0101_10AB
 	scrcmd_399 1, 32774, 32769
 	npc_msg 18
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0092_D36R0101_10C7
@@ -1146,7 +1146,7 @@ scr_seq_0092_D36R0101_1041:
 	npc_msg 22
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -1154,7 +1154,7 @@ scr_seq_0092_D36R0101_1079:
 	npc_msg 22
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -1162,7 +1162,7 @@ scr_seq_0092_D36R0101_1086:
 	npc_msg 13
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -1170,7 +1170,7 @@ scr_seq_0092_D36R0101_1093:
 	npc_msg 13
 	waitbutton
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 
@@ -1181,7 +1181,7 @@ scr_seq_0092_D36R0101_10A0:
 
 scr_seq_0092_D36R0101_10AB:
 	npc_msg 19
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0092_D36R0101_0F99
@@ -1307,7 +1307,7 @@ scr_seq_0092_D36R0101_11FD:
 
 scr_seq_0092_D36R0101_1207:
 	clearflag FLAG_UNK_1AF
-	scrcmd_100 4
+	show_person 4
 	clearflag FLAG_UNK_1D4
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, 0
@@ -1383,7 +1383,7 @@ scr_seq_0092_D36R0101_12F8:
 scr_seq_0092_D36R0101_1304:
 	scrcmd_609
 	lockall
-	callstd 2067
+	callstd std_play_kimono_girl_music
 	apply_movement 12, scr_seq_0092_D36R0101_1478
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
@@ -1401,9 +1401,9 @@ scr_seq_0092_D36R0101_133F:
 	apply_movement 12, scr_seq_0092_D36R0101_14A4
 	wait_movement
 	npc_msg 30
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0092_D36R0101_1371
 	npc_msg 31
@@ -1466,7 +1466,7 @@ scr_seq_0092_D36R0101_142D:
 	wait_movement
 	hide_person 12
 	setflag FLAG_UNK_23D
-	callstd 2068
+	callstd std_fade_end_kimono_girl_music
 	scrcmd_099 253
 	apply_movement 253, scr_seq_0092_D36R0101_1584
 	wait_movement
@@ -1588,9 +1588,9 @@ scr_seq_0092_D36R0101_15AC:
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0092_D36R0101_16D8
 	scrcmd_618 VAR_SPECIAL_x800C
@@ -1757,7 +1757,7 @@ scr_seq_0092_D36R0101_1816:
 	lockall
 	scrcmd_081 0
 	clearflag FLAG_UNK_29B
-	scrcmd_100 14
+	show_person 14
 	apply_movement 14, scr_seq_0092_D36R0101_1C44
 	wait_movement
 	scrcmd_076 172, 0
@@ -1786,7 +1786,7 @@ scr_seq_0092_D36R0101_1816:
 	apply_movement 253, scr_seq_0092_D36R0101_1D2C
 	wait_movement
 	clearflag FLAG_UNK_29C
-	scrcmd_100 15
+	show_person 15
 	apply_movement 15, scr_seq_0092_D36R0101_1DE0
 	apply_movement 14, scr_seq_0092_D36R0101_1D48
 	apply_movement 253, scr_seq_0092_D36R0101_1DA4
@@ -1901,7 +1901,7 @@ scr_seq_0092_D36R0101_1A51:
 	play_fanfare SEQ_ME_SHINKAOME
 	npc_msg 40
 	wait_fanfare
-	scrcmd_746
+	touchscreen_menu_hide
 	npc_msg 45
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -1913,7 +1913,7 @@ scr_seq_0092_D36R0101_1A51:
 	scrcmd_490 16393
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 VAR_TEMP_x4009, VAR_TEMP_x400A
+	nickname_input VAR_TEMP_x4009, VAR_TEMP_x400A
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	comparevartovalue VAR_TEMP_x400A, 1
@@ -1923,7 +1923,7 @@ scr_seq_0092_D36R0101_1A51:
 scr_seq_0092_D36R0101_1AC5:
 	npc_msg 51
 	closemsg
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_TEMP_x4005, 3
 	gotoif ne, scr_seq_0092_D36R0101_1AE7
 	apply_movement 15, scr_seq_0092_D36R0101_1E64
@@ -2308,10 +2308,10 @@ scr_seq_0092_D36R0101_1F48:
 	wait_movement
 	fade_out_bgm 0, 30
 	callstd std_play_friend_music
-	scrcmd_746
+	touchscreen_menu_hide
 	clearflag FLAG_UNK_310
-	scrcmd_100 16
-	scrcmd_100 17
+	show_person 16
+	show_person 17
 	apply_movement 16, scr_seq_0092_D36R0101_2054
 	apply_movement 17, scr_seq_0092_D36R0101_2060
 	wait_movement
@@ -2320,7 +2320,7 @@ scr_seq_0092_D36R0101_1F48:
 	buffer_players_name 0
 	gender_msgbox 57, 56
 	closemsg
-	callstd 2030
+	callstd std_fade_end_friend_music
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	fade_screen 6, 6, 0, 32767
 	wait_fade
@@ -2429,8 +2429,8 @@ scr_seq_0092_D36R0101_20A0:
 	apply_movement 16, scr_seq_0092_D36R0101_21AC
 	apply_movement 17, scr_seq_0092_D36R0101_21C4
 	wait_movement
-	callstd 2030
-	scrcmd_747
+	callstd std_fade_end_friend_music
+	touchscreen_menu_show
 	setvar VAR_UNK_40FE, 5
 	hide_person 16
 	hide_person 17

@@ -35,13 +35,13 @@ scr_seq_0250_R39R0101_002C:
 scr_seq_0250_R39R0101_0058:
 	scrcmd_113 20, 2
 	npc_msg 1
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_751 12, 255, 1
 	scrcmd_751 13, 255, 2
 	scrcmd_751 14, 255, 3
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_0250_R39R0101_0111
 	comparevartovalue VAR_SPECIAL_x800C, 1

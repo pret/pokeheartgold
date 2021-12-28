@@ -22,13 +22,13 @@ scr_seq_0114_D45R0102_0014:
 	end
 
 scr_seq_0114_D45R0102_003D:
-	show_person_at 4, 6, 1, 4, 0
-	show_person_at 5, 5, 1, 8, 1
+	move_person 4, 6, 1, 4, 0
+	move_person 5, 5, 1, 8, 1
 	end
 
 scr_seq_0114_D45R0102_0057:
-	show_person_at 4, 6, 1, 6, 1
-	show_person_at 5, 5, 1, 7, 0
+	move_person 4, 6, 1, 6, 1
+	move_person 5, 5, 1, 7, 0
 	scrcmd_375 253
 	scrcmd_606
 	end
@@ -171,7 +171,7 @@ scr_seq_0114_D45R0102_0250:
 	scrcmd_176 117, 0, 16, 57, 1
 	fade_screen 6, 15, 1, 32767
 	wait_fade
-	scrcmd_747
+	touchscreen_menu_show
 	releaseall
 	end
 

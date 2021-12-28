@@ -1,5 +1,7 @@
 {{ doNotModifyHeader }}
 #include "constants/maps.h"
+#include "constants/flags.h"
+#include "constants/vars.h"
 
 	.rodata
 
@@ -42,10 +44,10 @@
 ## if exists("warps")
 	.word {{ length(warps) }}
 ## for warp in warps
-	.short {{ warp.x }},
-	.short {{ warp.y }},
-	.short {{ warp.header }},
-	.short {{ warp.anchor }},
+	.short {{ warp.x }}
+	.short {{ warp.y }}
+	.short {{ warp.header }}
+	.short {{ warp.anchor }}
 	.word {{ warp.height }}
 ## endfor
 ## else
@@ -54,13 +56,13 @@
 ## if exists("coords")
 	.word {{ length(coords) }}
 ## for coord in coords
-	.short {{ coord.scr }},
-	.short {{ coord.x }},
-	.short {{ coord.y }},
-	.short {{ coord.w }},
-	.short {{ coord.h }},
-	.short {{ coord.z }},
-	.short {{ coord.val }},
+	.short {{ coord.scr }}
+	.short {{ coord.x }}
+	.short {{ coord.y }}
+	.short {{ coord.w }}
+	.short {{ coord.h }}
+	.short {{ coord.z }}
+	.short {{ coord.val }}
 	.short {{ coord.var }}
 ## endfor
 ## else

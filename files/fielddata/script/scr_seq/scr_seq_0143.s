@@ -41,7 +41,7 @@ scr_seq_0143_0073:
 	goto scr_seq_0143_008C
 
 scr_seq_0143_008C:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x8004
 	scrcmd_751 11, 255, 1
 	scrcmd_751 13, 255, 3
@@ -50,7 +50,7 @@ scr_seq_0143_008C:
 	goto scr_seq_0143_00E2
 
 scr_seq_0143_00B6:
-	scrcmd_746
+	touchscreen_menu_hide
 	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x8004
 	scrcmd_751 11, 255, 1
 	scrcmd_751 12, 255, 2
@@ -110,14 +110,14 @@ scr_seq_0143_01E7:
 	return
 
 scr_seq_0143_01EF:
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_465 0, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0143_021E
 	npc_msg 5
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0143_0579
 scr_seq_0143_021E:
@@ -201,7 +201,7 @@ scr_seq_0143_039A:
 scr_seq_0143_03D4:
 	scrcmd_751 25, 255, 6
 	scrcmd_752
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif eq, scr_seq_0143_0579
 	comparevartovalue VAR_SPECIAL_x8004, 65534
@@ -259,11 +259,11 @@ scr_seq_0143_0528:
 	scrcmd_465 2, VAR_SPECIAL_x8004, 0
 	scrcmd_465 3, VAR_SPECIAL_x8004, 1
 	npc_msg 8
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0143_0287
-	scrcmd_747
+	touchscreen_menu_show
 	scrcmd_465 5, VAR_SPECIAL_x8004
 	buffer_players_name 0
 	scrcmd_465 2, VAR_SPECIAL_x8004, 1
@@ -272,12 +272,12 @@ scr_seq_0143_0528:
 	goto scr_seq_0143_057E
 
 scr_seq_0143_056C:
-	scrcmd_747
+	touchscreen_menu_show
 	npc_msg 10
 	goto scr_seq_0143_0073
 
 scr_seq_0143_0577:
-	scrcmd_747
+	touchscreen_menu_show
 scr_seq_0143_0579:
 	npc_msg 4
 	waitbutton

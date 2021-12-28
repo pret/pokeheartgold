@@ -18,7 +18,7 @@ scr_seq_0252_R42_001A:
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_29D
-	scrcmd_100 10
+	show_person 10
 	comparevartovalue VAR_SPECIAL_x8001, 172
 	gotoif ne, scr_seq_0252_R42_0051
 	apply_movement 10, scr_seq_0252_R42_0198
@@ -188,7 +188,7 @@ scr_seq_0252_R42_0230:
 	scrcmd_602 1
 	scrcmd_604 48
 	clearflag FLAG_UNK_2A3
-	scrcmd_100 12
+	show_person 12
 	callstd 2042
 	apply_movement 12, scr_seq_0252_R42_0324
 	wait_movement

@@ -73,9 +73,9 @@ scr_seq_0151_00CE:
 	lockall
 	scrcmd_789 0
 	npc_msg 3
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0151_00F9
@@ -120,9 +120,9 @@ scr_seq_0151_0165:
 	goto scr_seq_0151_0260
 
 scr_seq_0151_016E:
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0151_018E
 	npc_msg 17
@@ -148,9 +148,9 @@ scr_seq_0151_01D4:
 	get_lead_mon_index VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 10
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0151_0200
 	npc_msg 28
@@ -246,9 +246,9 @@ scr_seq_0151_02FC:
 scr_seq_0151_0307:
 	scrcmd_789 0
 	npc_msg 23
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0151_032B
 	npc_msg 26
@@ -315,7 +315,7 @@ scr_seq_0151_03E3:
 	wait_fanfare
 	npc_msg 32
 	buffer_players_name 0
-	scrcmd_194 3, 16385
+	buffer_item_name 3, 16385
 	setvar VAR_SPECIAL_x8004, 37
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x4000
 	scrcmd_046 VAR_SPECIAL_x8004
@@ -343,15 +343,15 @@ scr_seq_0151_043B:
 scr_seq_0151_045E:
 	buffer_species_name_custom 1, VAR_TEMP_x4002, 2, 1
 	npc_msg 43
-	scrcmd_746
+	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	scrcmd_747
+	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0151_049E
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_173 255, VAR_SPECIAL_x800C
+	nickname_input 255, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0
 	wait_fade
 scr_seq_0151_049E:

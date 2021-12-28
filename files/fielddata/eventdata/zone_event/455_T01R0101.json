@@ -23,7 +23,7 @@
       "ovid": 393,
       "mvt": 14,
       "type": 0,
-      "flag": 0,
+      "flag": "FLAG_NOTHING",
       "scr": 1,
       "dirn": 0,
       "eye": 0,
