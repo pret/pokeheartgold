@@ -272,7 +272,7 @@ scr_seq_0874_T23R0501_0332:
 	end
 
 scr_seq_0874_T23R0501_0348:
-	scrcmd_147 5, 16385
+	scrcmd_147 5, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_0874_T23R0501_02A2
 	checkflag FLAG_UNK_964

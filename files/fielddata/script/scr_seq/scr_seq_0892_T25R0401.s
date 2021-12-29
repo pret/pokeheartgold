@@ -103,7 +103,7 @@ scr_seq_0892_T25R0401_011F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 9, 16385
+	scrcmd_147 9, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0892_T25R0401_019C
 	comparevartovalue VAR_UNK_410D, 1

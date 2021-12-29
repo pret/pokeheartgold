@@ -1579,7 +1579,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_279
+	.macro overworld_white_out
 	.short 279
 	.endm
 
@@ -1968,7 +1968,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_357 arg0, arg1
+	.macro count_alive_mons arg0, arg1
 	.short 357
 	.short \arg0
 	.short \arg1
@@ -2416,7 +2416,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_435 arg0, arg1
+	.macro survive_poisoning arg0, arg1
 	.short 435
 	.short \arg0
 	.short \arg1
@@ -2561,7 +2561,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_461 arg0, arg1, arg2
+	.macro get_phone_contact_msg_ids arg0, arg1, arg2
 	.short 461
 	.byte \arg0
 	.short \arg1
@@ -3395,12 +3395,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_613 arg0
+	.macro get_phone_contact_random_gift_berry arg0
 	.short 613
 	.short \arg0
 	.endm
 
-	.macro scrcmd_614 arg0
+	.macro get_phone_contact_gift_item arg0
 	.short 614
 	.short \arg0
 	.endm

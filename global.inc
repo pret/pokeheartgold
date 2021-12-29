@@ -1733,7 +1733,7 @@
 .public ScrCmd_047
 .public ScrCmd_048
 .public ScrCmd_049
-.public ScrCmd_WaitButton
+.public ScrCmd_049
 .public ScrCmd_051
 .public ScrCmd_052
 .public ScrCmd_CloseMsg
@@ -1962,7 +1962,7 @@
 .public ScrCmd_276
 .public ScrCmd_277
 .public ScrCmd_278
-.public ScrCmd_279
+.public ScrCmd_OverworldWhiteOut
 .public ScrCmd_280
 .public ScrCmd_GetPlayerGender
 .public ScrCmd_HealParty
@@ -2040,7 +2040,7 @@
 .public ScrCmd_GetPartyMonSpecies
 .public ScrCmd_PartymonIsMine
 .public ScrCmd_PartyCountNotEgg
-.public ScrCmd_357
+.public ScrCmd_CountAliveMons
 .public ScrCmd_358
 .public ScrCmd_359
 .public ScrCmd_SubMoneyVar
@@ -2117,7 +2117,7 @@
 .public ScrCmd_GetFossilPokemon
 .public ScrCmd_GetFossilMinimumAmount
 .public ScrCmd_434
-.public ScrCmd_435
+.public ScrCmd_SurvivePoisoning
 .public ScrCmd_436
 .public ScrCmd_GetStdMsgNaix
 .public ScrCmd_NonNpcMsgExtern
@@ -2142,7 +2142,7 @@
 .public ScrCmd_458
 .public ScrCmd_459
 .public ScrCmd_460
-.public ScrCmd_461
+.public ScrCmd_GetPhoneContactMsgIds
 .public ScrCmd_462
 .public ScrCmd_463
 .public ScrCmd_464
@@ -2293,8 +2293,8 @@
 .public ScrCmd_610
 .public ScrCmd_611
 .public ScrCmd_612
-.public ScrCmd_613
-.public ScrCmd_614
+.public ScrCmd_GetPhoneContactRandomGiftBerry
+.public ScrCmd_GetPhoneContactGiftItem
 .public ScrCmd_615
 .public ScrCmd_616
 .public ScrCmd_617
@@ -27560,8 +27560,8 @@
 .public sub_0202F08C
 .public PhoneRematches_SetSeeking
 .public PhoneRematches_IsSeeking
-.public sub_0202F100
-.public sub_0202F128
+.public PhoneRematches_GiftItemIdSet
+.public PhoneRematches_GiftItemIdGet
 .public MomSavingsBalanceAction
 .public sub_0202F198
 .public sub_0202F1B4
@@ -29081,9 +29081,9 @@
 .public sub_020665F8
 .public sub_02066604
 .public sub_02066614
-.public sub_02066624
-.public sub_02066634
-.public sub_02066644
+.public ScriptState_SetHealAfterBattleFlag
+.public ScriptState_ClearHealAfterBattleFlag
+.public ScriptState_CheckHealAfterBattleFlag
 .public sub_02066654
 .public sub_02066664
 .public sub_02066674

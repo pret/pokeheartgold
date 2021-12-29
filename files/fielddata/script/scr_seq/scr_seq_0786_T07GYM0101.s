@@ -12,7 +12,7 @@ scr_seq_0786_T07GYM0101_000E:
 	get_phone_book_rematch 28, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0786_T07GYM0101_0107
-	scrcmd_147 28, 16385
+	scrcmd_147 28, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0786_T07GYM0101_00DE
 	check_badge 15, VAR_TEMP_x4002

@@ -13,5 +13,6 @@
 #define std_play_kimono_girl_music      2067
 #define std_fade_end_kimono_girl_music  2068
 #define std_play_rival_outro_music      2070
+#define std_fade_end_rival_outro_music  2071
 
 #endif //POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H

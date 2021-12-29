@@ -49,7 +49,7 @@ scr_seq_0018_D15R0103_0025:
 	wait_movement
 	hide_person 6
 	setflag FLAG_UNK_078
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	apply_movement 241, scr_seq_0018_D15R0103_00C8
 	wait_movement
 	scrcmd_103

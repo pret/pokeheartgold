@@ -18,7 +18,7 @@ scr_seq_0922_T27GYM0101_001A:
 	gotoif ne, scr_seq_0922_T27GYM0101_00AC
 	checkflag FLAG_UNK_964
 	gotoif FALSE, scr_seq_0922_T27GYM0101_00A6
-	scrcmd_147 37, 16385
+	scrcmd_147 37, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0922_T27GYM0101_0085
 	get_weekday VAR_TEMP_x4000

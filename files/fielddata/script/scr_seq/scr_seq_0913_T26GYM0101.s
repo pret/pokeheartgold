@@ -20,7 +20,7 @@ scr_seq_0913_T26GYM0101_0022:
 	checkflag FLAG_UNK_964
 	gotoif FALSE, scr_seq_0913_T26GYM0101_015A
 	clearflag FLAG_UNK_1D9
-	scrcmd_147 38, 16385
+	scrcmd_147 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_007A
 	scrcmd_522 16384
@@ -49,7 +49,7 @@ scr_seq_0913_T26GYM0101_009B:
 	end
 
 scr_seq_0913_T26GYM0101_009D:
-	scrcmd_147 28, 16385
+	scrcmd_147 28, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_015A
 	check_badge 15, VAR_TEMP_x4002
@@ -161,7 +161,7 @@ scr_seq_0913_T26GYM0101_0202:
 scr_seq_0913_T26GYM0101_020C:
 	checkflag FLAG_UNK_0C2
 	gotoif FALSE, scr_seq_0913_T26GYM0101_01CE
-	scrcmd_147 38, 16385
+	scrcmd_147 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0913_T26GYM0101_023B
 	npc_msg 6

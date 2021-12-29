@@ -18810,17 +18810,82 @@ _02108434:
 	.word _02108424, sub_02095A7C, sub_02095AF8
 	.word _0210841C, sub_02095B04, sub_02095B88
 sPhoneMessageGmm:
-	.short 0x0298, 0x02CC
-	.short 0x029A, 0x0296, 0x0297, 0x0283, 0x0295, 0x0294, 0x0281, 0x0299
-	.short 0x02A3, 0x02C8, 0x02A8, 0x02AC, 0x02C7, 0x0282, 0x02C2, 0x0284
-	.short 0x0288, 0x02C0, 0x02AD, 0x02B0, 0x02C9, 0x02CA, 0x029B, 0x02B3
-	.short 0x0285, 0x0289, 0x0286, 0x028A, 0x028B, 0x0287, 0x0290, 0x0291
-	.short 0x0292, 0x028F, 0x028C, 0x028D, 0x028E, 0x0293, 0x02A2, 0x02C1
-	.short 0x02A5, 0x02BA, 0x02B8, 0x02C4, 0x02A0, 0x02B2, 0x029F, 0x02B7
-	.short 0x02B1, 0x02BC, 0x02B5, 0x02B6, 0x029D, 0x02A4, 0x02CB, 0x02BF
-	.short 0x02C6, 0x029E, 0x02B4, 0x02A9, 0x02B9, 0x02AF, 0x02BE, 0x02BB
-	.short 0x02C3, 0x02AA, 0x02A1, 0x02AE, 0x02AB, 0x02A7, 0x02BD, 0x02C5
-	.short 0x02A6
+	.short 664
+	.short 716
+	.short 666
+	.short 662
+	.short 663
+	.short 643
+	.short 661
+	.short 660
+	.short 641
+	.short 665
+	.short 675
+	.short 712
+	.short 680
+	.short 684
+	.short 711
+	.short 642
+	.short 706
+	.short 644
+	.short 648
+	.short 704
+	.short 685
+	.short 688
+	.short 713
+	.short 714
+	.short 667
+	.short 691
+	.short 645
+	.short 649
+	.short 646
+	.short 650
+	.short 651
+	.short 647
+	.short 656
+	.short 657
+	.short 658
+	.short 655
+	.short 652
+	.short 653
+	.short 654
+	.short 659
+	.short 674
+	.short 705
+	.short 677
+	.short 698
+	.short 696
+	.short 708
+	.short 672
+	.short 690
+	.short 671
+	.short 695
+	.short 689
+	.short 700
+	.short 693
+	.short 694
+	.short 669
+	.short 676
+	.short 715
+	.short 703
+	.short 710
+	.short 670
+	.short 692
+	.short 681
+	.short 697
+	.short 687
+	.short 702
+	.short 699
+	.short 707
+	.short 682
+	.short 673
+	.short 686
+	.short 683
+	.short 679
+	.short 701
+	.short 709
+	.short 678
+
 	.balign 4, 0
 _02108514:
 	.word SPECIES_CHIKORITA

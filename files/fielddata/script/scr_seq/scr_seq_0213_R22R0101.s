@@ -33,7 +33,7 @@ scr_seq_0213_R22R0101_0056:
 	end
 
 scr_seq_0213_R22R0101_006B:
-	scrcmd_147 26, 16385
+	scrcmd_147 26, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0213_R22R0101_00DF
 	check_badge 12, VAR_TEMP_x4002
@@ -395,7 +395,7 @@ scr_seq_0213_R22R0101_04A5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 26, 16385
+	scrcmd_147 26, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0213_R22R0101_0553
 	comparevartovalue VAR_TEMP_x4005, 1

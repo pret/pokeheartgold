@@ -40,7 +40,7 @@ scr_seq_0111_D44R0102_0062:
 scr_seq_0111_D44R0102_0079:
 	setflag FLAG_UNK_20F
 scr_seq_0111_D44R0102_007D:
-	scrcmd_147 27, 16385
+	scrcmd_147 27, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0111_D44R0102_00F6
 	scrcmd_522 16384
@@ -257,7 +257,7 @@ scr_seq_0111_D44R0102_034E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 27, 16385
+	scrcmd_147 27, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0111_D44R0102_03FC
 	comparevartovalue VAR_TEMP_x4002, 1

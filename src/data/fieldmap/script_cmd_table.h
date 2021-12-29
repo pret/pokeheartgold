@@ -50,7 +50,7 @@ extern BOOL ScrCmd_046(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_047(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_048(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_049(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_WaitButton(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_049(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_051(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_052(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT *ctx);
@@ -279,7 +279,7 @@ extern BOOL ScrCmd_275(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_276(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_277(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_278(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_279(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_OverworldWhiteOut(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_280(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HealParty(SCRIPTCONTEXT *ctx);
@@ -357,7 +357,7 @@ extern BOOL ScrCmd_353(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartyCountNotEgg(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_357(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountAliveMons(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_358(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_359(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT *ctx);
@@ -435,7 +435,7 @@ extern BOOL ScrCmd_RunPhoneCall(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetFossilPokemon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetFossilMinimumAmount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_434(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_435(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SurvivePoisoning(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_436(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DebugWatch(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetStdMsgNaix(SCRIPTCONTEXT *ctx);
@@ -461,7 +461,7 @@ extern BOOL ScrCmd_457(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_458(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_459(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_460(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_461(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_462(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_463(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_464(SCRIPTCONTEXT *ctx);
@@ -613,8 +613,8 @@ extern BOOL ScrCmd_609(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_610(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_611(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_612(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_613(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_614(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPhoneContactRandomGiftBerry(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPhoneContactGiftItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_615(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_616(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_617(SCRIPTCONTEXT *ctx);
@@ -905,7 +905,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_047,
     ScrCmd_048,
     ScrCmd_049,
-    ScrCmd_WaitButton,
+    ScrCmd_049,
     ScrCmd_051,
     ScrCmd_052,
     ScrCmd_CloseMsg,
@@ -1134,7 +1134,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_276,
     ScrCmd_277,
     ScrCmd_278,
-    ScrCmd_279,
+    ScrCmd_OverworldWhiteOut,
     ScrCmd_280,
     ScrCmd_GetPlayerGender,
     ScrCmd_HealParty,
@@ -1212,7 +1212,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetPartyMonSpecies,
     ScrCmd_PartymonIsMine,
     ScrCmd_PartyCountNotEgg,
-    ScrCmd_357,
+    ScrCmd_CountAliveMons,
     ScrCmd_358,
     ScrCmd_359,
     ScrCmd_SubMoneyVar,
@@ -1290,7 +1290,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetFossilPokemon,
     ScrCmd_GetFossilMinimumAmount,
     ScrCmd_434,
-    ScrCmd_435,
+    ScrCmd_SurvivePoisoning,
     ScrCmd_436,
     ScrCmd_DebugWatch,
     ScrCmd_GetStdMsgNaix,
@@ -1316,7 +1316,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_458,
     ScrCmd_459,
     ScrCmd_460,
-    ScrCmd_461,
+    ScrCmd_GetPhoneContactMsgIds,
     ScrCmd_462,
     ScrCmd_463,
     ScrCmd_464,
@@ -1468,8 +1468,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_610,
     ScrCmd_611,
     ScrCmd_612,
-    ScrCmd_613,
-    ScrCmd_614,
+    ScrCmd_GetPhoneContactRandomGiftBerry,
+    ScrCmd_GetPhoneContactGiftItem,
     ScrCmd_615,
     ScrCmd_616,
     ScrCmd_617,

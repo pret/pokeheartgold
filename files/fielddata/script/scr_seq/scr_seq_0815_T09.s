@@ -38,7 +38,7 @@ scr_seq_0815_T09_0038:
 scr_seq_0815_T09_0077:
 	setflag FLAG_UNK_25A
 scr_seq_0815_T09_007B:
-	scrcmd_147 30, 16385
+	scrcmd_147 30, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0815_T09_00CC
 	check_badge 15, VAR_TEMP_x4002
@@ -275,7 +275,7 @@ scr_seq_0815_T09_037B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 30, 16385
+	scrcmd_147 30, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0815_T09_0429
 	comparevartovalue VAR_TEMP_x4004, 1

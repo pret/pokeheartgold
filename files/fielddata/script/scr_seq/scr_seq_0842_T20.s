@@ -1199,7 +1199,7 @@ scr_seq_0842_T20_1054:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0842_T20_1078
-	scrcmd_596 32780
+	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0842_T20_1078
 	scrcmd_600

@@ -32,7 +32,7 @@ scr_seq_0191_R10_0039:
 scr_seq_0191_R10_0052:
 	checkflag FLAG_UNK_14A
 	gotoif FALSE, scr_seq_0191_R10_00BF
-	scrcmd_147 36, 16385
+	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0191_R10_00BF
 	scrcmd_522 16384
@@ -65,7 +65,7 @@ scr_seq_0191_R10_00C1:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 36, 16385
+	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0191_R10_0148
 	scrcmd_184 32780
@@ -138,7 +138,7 @@ scr_seq_0191_R10_01A2:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0191_R10_01D5
-	scrcmd_596 32780
+	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0191_R10_01D5
 	scrcmd_600
@@ -157,7 +157,7 @@ scr_seq_0191_R10_0209:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0191_R10_022D
-	scrcmd_596 32780
+	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0191_R10_022D
 	scrcmd_600

@@ -47,7 +47,7 @@ scr_seq_0007_D02R0101_007D:
 	apply_movement 0, scr_seq_0007_D02R0101_00E8
 	wait_movement
 	hide_person 0
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	setflag FLAG_UNK_25C
 	clearflag FLAG_UNK_2E0
 	setvar VAR_UNK_40FC, 1

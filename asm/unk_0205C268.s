@@ -19288,7 +19288,7 @@ sub_020649B8: ; 0x020649B8
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	ldrh r1, [r5, #8]
 	mov r2, #1
 	lsl r0, r0, #0x10
@@ -22988,35 +22988,35 @@ _0206661C: .word sub_020665AC
 _02066620: .word 0x00000964
 	thumb_func_end sub_02066614
 
-	thumb_func_start sub_02066624
-sub_02066624: ; 0x02066624
+	thumb_func_start ScriptState_SetHealAfterBattleFlag
+ScriptState_SetHealAfterBattleFlag: ; 0x02066624
 	ldr r3, _0206662C ; =sub_0206659C
 	ldr r1, _02066630 ; =0x00000961
 	bx r3
 	nop
 _0206662C: .word sub_0206659C
 _02066630: .word 0x00000961
-	thumb_func_end sub_02066624
+	thumb_func_end ScriptState_SetHealAfterBattleFlag
 
-	thumb_func_start sub_02066634
-sub_02066634: ; 0x02066634
+	thumb_func_start ScriptState_ClearHealAfterBattleFlag
+ScriptState_ClearHealAfterBattleFlag: ; 0x02066634
 	ldr r3, _0206663C ; =sub_020665A4
 	ldr r1, _02066640 ; =0x00000961
 	bx r3
 	nop
 _0206663C: .word sub_020665A4
 _02066640: .word 0x00000961
-	thumb_func_end sub_02066634
+	thumb_func_end ScriptState_ClearHealAfterBattleFlag
 
-	thumb_func_start sub_02066644
-sub_02066644: ; 0x02066644
+	thumb_func_start ScriptState_CheckHealAfterBattleFlag
+ScriptState_CheckHealAfterBattleFlag: ; 0x02066644
 	ldr r3, _0206664C ; =sub_020665AC
 	ldr r1, _02066650 ; =0x00000961
 	bx r3
 	nop
 _0206664C: .word sub_020665AC
 _02066650: .word 0x00000961
-	thumb_func_end sub_02066644
+	thumb_func_end ScriptState_CheckHealAfterBattleFlag
 
 	thumb_func_start sub_02066654
 sub_02066654: ; 0x02066654
@@ -26039,7 +26039,7 @@ sub_02067BD0: ; 0x02067BD0
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	add r4, r0, #0
-	bl sub_02066634
+	bl ScriptState_ClearHealAfterBattleFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02066AC0
@@ -26614,7 +26614,7 @@ _02068040:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #1
 	bne _02068054
 	mov r0, #3
@@ -26728,7 +26728,7 @@ _02068122:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #1
 	bne _02068136
 	mov r0, #3
@@ -27115,7 +27115,7 @@ _02068402:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #1
 	bne _02068416
 	mov r0, #3
@@ -27309,7 +27309,7 @@ _02068574:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #1
 	bne _02068588
 	mov r0, #3
@@ -27449,7 +27449,7 @@ _0206868E:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #1
 	bne _020686A2
 	mov r0, #3

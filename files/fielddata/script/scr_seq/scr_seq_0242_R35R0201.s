@@ -45,7 +45,7 @@ scr_seq_0242_R35R0201_0038:
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	scrcmd_098 253
-	scrcmd_596 32780
+	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0242_R35R0201_00C2
 	scrcmd_606
@@ -307,7 +307,7 @@ scr_seq_0242_R35R0201_03E3:
 	fade_screen 6, 1, 1, 0
 	wait_fade
 	scrcmd_098 253
-	scrcmd_596 32780
+	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0242_R35R0201_0428
 	scrcmd_606

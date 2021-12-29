@@ -87,7 +87,7 @@ scr_seq_0938_T29_0113:
 	end
 
 scr_seq_0938_T29_0115:
-	scrcmd_147 39, 16385
+	scrcmd_147 39, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0938_T29_01A7
 	checkflag FLAG_UNK_964

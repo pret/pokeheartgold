@@ -19,7 +19,7 @@ scr_seq_0792_T07R0104_001E:
 	end
 
 scr_seq_0792_T07R0104_002F:
-	scrcmd_147 18, 16385
+	scrcmd_147 18, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0792_T07R0104_0082
 	check_badge 12, VAR_TEMP_x4000
@@ -127,7 +127,7 @@ scr_seq_0792_T07R0104_0189:
 	end
 
 scr_seq_0792_T07R0104_019A:
-	scrcmd_147 18, 16385
+	scrcmd_147 18, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0792_T07R0104_01CD
 	comparevartovalue VAR_TEMP_x4004, 1

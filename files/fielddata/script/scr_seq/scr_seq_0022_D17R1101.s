@@ -19,7 +19,7 @@ scr_seq_0022_D17R1101_001B:
 	get_phone_book_rematch 37, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0022_D17R1101_00A5
-	scrcmd_147 37, 16385
+	scrcmd_147 37, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0022_D17R1101_0084
 	get_weekday VAR_TEMP_x4000
@@ -59,7 +59,7 @@ scr_seq_0022_D17R1101_00AB:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 37, 16385
+	scrcmd_147 37, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0022_D17R1101_0159
 	comparevartovalue VAR_TEMP_x4002, 1

@@ -231,7 +231,7 @@ _02050800:
 _0205080A:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #0
 	beq _02050822
 	ldr r0, [r5, #0xc]
@@ -818,7 +818,7 @@ _02050C8A:
 _02050CBE:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #0
 	beq _02050CD6
 	ldr r0, [r5, #0xc]

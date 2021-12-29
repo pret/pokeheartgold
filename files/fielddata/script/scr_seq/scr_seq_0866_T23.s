@@ -155,7 +155,7 @@ scr_seq_0866_T23_026F:
 scr_seq_0866_T23_0277:
 	wait_movement
 	hide_person 9
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	releaseall
 	end
 

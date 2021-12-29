@@ -85,7 +85,7 @@ scr_seq_0110_D43R0103_0142:
 	wait_movement
 	setflag FLAG_UNK_20A
 	hide_person 0
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	setvar VAR_UNK_40C5, 1
 	releaseall
 	end

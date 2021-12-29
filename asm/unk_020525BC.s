@@ -55,8 +55,8 @@ _02052604: .word _020FC534
 _02052608: .word 0x00007FFF
 	thumb_func_end sub_020525BC
 
-	thumb_func_start sub_0205260C
-sub_0205260C: ; 0x0205260C
+	thumb_func_start _draw_scurry_message_screen
+_draw_scurry_message_screen: ; 0x0205260C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -116,16 +116,16 @@ _02052622:
 	bne _020526A8
 	mov r2, #0
 	add r0, r4, #0
-	mov r1, #4
+	mov r1, #4 ; scurried back home
 	add r3, r2, #0
-	bl sub_020527D0
+	bl _print_message
 	b _020526B4
 _020526A8:
 	mov r2, #0
 	add r0, r4, #0
-	mov r1, #3
+	mov r1, #3 ; scurried to a Pokemon Center
 	add r3, r2, #0
-	bl sub_020527D0
+	bl _print_message
 _020526B4:
 	add r0, r4, #0
 	add r0, #0xc
@@ -139,7 +139,7 @@ _020526B4:
 _020526C8: .word 0x00007FFF
 _020526CC: .word _020FC51C
 _020526D0: .word sub_020526D4
-	thumb_func_end sub_0205260C
+	thumb_func_end _draw_scurry_message_screen
 
 	thumb_func_start sub_020526D4
 sub_020526D4: ; 0x020526D4
@@ -262,8 +262,8 @@ _020527C8: .word gMain
 _020527CC: .word gMain + 0x40
 	thumb_func_end sub_020526D4
 
-	thumb_func_start sub_020527D0
-sub_020527D0: ; 0x020527D0
+	thumb_func_start _print_message
+_print_message: ; 0x020527D0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -323,7 +323,7 @@ sub_020527D0: ; 0x020527D0
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02052854: .word 0x00010200
-	thumb_func_end sub_020527D0
+	thumb_func_end _print_message
 
 	thumb_func_start sub_02052858
 sub_02052858: ; 0x02052858
@@ -407,7 +407,7 @@ _020528F2:
 	bl SetBrightness
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0205260C
+	bl _draw_scurry_message_screen
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

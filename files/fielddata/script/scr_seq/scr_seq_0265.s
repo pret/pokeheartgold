@@ -251,7 +251,7 @@ scr_seq_0265_02F4:
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0265_03B1
-	scrcmd_357 32780, 32768
+	count_alive_mons VAR_SPECIAL_x800C, 32768
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0265_040A
 	scrcmd_373 32768

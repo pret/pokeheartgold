@@ -37,7 +37,7 @@ scr_seq_0216_R25_0050:
 	get_phone_book_rematch 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0216_R25_0115
-	scrcmd_147 29, 16385
+	scrcmd_147 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0216_R25_00DD
 	scrcmd_522 16384
@@ -274,7 +274,7 @@ scr_seq_0216_R25_03A8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 29, 16385
+	scrcmd_147 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0216_R25_0456
 	comparevartovalue VAR_TEMP_x4002, 1

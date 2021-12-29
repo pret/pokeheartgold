@@ -273,7 +273,7 @@ scr_seq_0237_R34_03F1:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_596 32780
+	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0237_R34_0455
 	scrcmd_600
@@ -575,7 +575,7 @@ scr_seq_0237_R34_07A8:
 scr_seq_0237_R34_07B8:
 	scrcmd_609
 	lockall
-	scrcmd_357 16387, 6
+	count_alive_mons VAR_TEMP_x4003, 6
 	comparevartovalue VAR_TEMP_x4003, 1
 	gotoif ne, scr_seq_0237_R34_07DB
 	goto scr_seq_0237_R34_07E1

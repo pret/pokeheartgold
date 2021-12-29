@@ -77,6 +77,7 @@ jobs:
 
       - name: Post error zip
         if: ${{ job.status == 'failure' }}
+        uses: actions/upload-artifact@v2
         with:
           name: pokeheartgold-failure-${{ github.run_id }}.zip
           path: pokeheartgold-failure-${{ github.run_id }}.zip

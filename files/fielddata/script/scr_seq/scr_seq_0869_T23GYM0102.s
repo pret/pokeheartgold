@@ -33,7 +33,7 @@ scr_seq_0869_T23GYM0102_0046:
 	end
 
 scr_seq_0869_T23GYM0102_006C:
-	scrcmd_147 34, 16385
+	scrcmd_147 34, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0869_T23GYM0102_0096
 	get_weekday VAR_TEMP_x4002

@@ -133,7 +133,7 @@ scr_seq_0819_T10R0101_0191:
 	setvar VAR_UNK_4119, 0
 	setflag FLAG_UNK_AA9
 	hide_person 5
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	releaseall
 	end
 

@@ -184,7 +184,7 @@ scr_seq_0875_T24_026B:
 	end
 
 scr_seq_0875_T24_0276:
-	scrcmd_147 32, 16385
+	scrcmd_147 32, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0875_T24_02CD
 	comparevartovalue VAR_TEMP_x4002, 1

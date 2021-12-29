@@ -24,7 +24,7 @@ scr_seq_0738_T01R0201_001F:
 	end
 
 scr_seq_0738_T01R0201_003B:
-	scrcmd_147 31, 16385
+	scrcmd_147 31, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0738_T01R0201_001F
 	goto scr_seq_0738_T01R0201_015D

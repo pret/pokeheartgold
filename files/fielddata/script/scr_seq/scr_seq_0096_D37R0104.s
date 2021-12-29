@@ -391,7 +391,7 @@ scr_seq_0096_D37R0104_06A0:
 	apply_movement 28, scr_seq_0096_D37R0104_0700
 	wait_movement
 	hide_person 28
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	releaseall
 	end
 

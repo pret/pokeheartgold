@@ -576,8 +576,8 @@ _0202F0F6:
 	pop {r3, pc}
 	thumb_func_end PhoneRematches_IsSeeking
 
-	thumb_func_start sub_0202F100
-sub_0202F100: ; 0x0202F100
+	thumb_func_start PhoneRematches_GiftItemIdSet
+PhoneRematches_GiftItemIdSet: ; 0x0202F100
 	push {r3, lr}
 	cmp r1, #0x4b
 	blo _0202F10C
@@ -599,10 +599,10 @@ _0202F120:
 	orr r0, r1
 	strh r0, [r3]
 	pop {r3, pc}
-	thumb_func_end sub_0202F100
+	thumb_func_end PhoneRematches_GiftItemIdSet
 
-	thumb_func_start sub_0202F128
-sub_0202F128: ; 0x0202F128
+	thumb_func_start PhoneRematches_GiftItemIdGet
+PhoneRematches_GiftItemIdGet: ; 0x0202F128
 	push {r3, lr}
 	cmp r1, #0x4b
 	blo _0202F136
@@ -622,7 +622,7 @@ _0202F146:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202F128
+	thumb_func_end PhoneRematches_GiftItemIdGet
 
 	thumb_func_start MomSavingsBalanceAction
 MomSavingsBalanceAction: ; 0x0202F14C
@@ -848,7 +848,7 @@ sub_0202F294: ; 0x0202F294
 	strb r3, [r5, r2]
 	mov r1, #0x10
 	mov r2, #0
-	bl sub_0202F100
+	bl PhoneRematches_GiftItemIdSet
 	add r0, r5, #0
 	mov r1, #0x10
 	mov r2, #0

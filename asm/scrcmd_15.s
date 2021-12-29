@@ -474,8 +474,8 @@ _0204D484: .word 0x00000006
 _0204D488: .word 0x00000000
 	thumb_func_end ScrCmd_AnyMonHasMove
 
-	thumb_func_start ScrCmd_435
-ScrCmd_435: ; 0x0204D48C
+	thumb_func_start ScrCmd_SurvivePoisoning
+ScrCmd_SurvivePoisoning: ; 0x0204D48C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -503,7 +503,7 @@ ScrCmd_435: ; 0x0204D48C
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_435
+	thumb_func_end ScrCmd_SurvivePoisoning
 
 	thumb_func_start ScrCmd_434
 ScrCmd_434: ; 0x0204D4D0
@@ -1119,8 +1119,8 @@ _0204D9D6:
 	.balign 4, 0
 	thumb_func_end ScrCmd_PartyCountNotEgg
 
-	thumb_func_start ScrCmd_357
-ScrCmd_357: ; 0x0204D9E0
+	thumb_func_start ScrCmd_CountAliveMons
+ScrCmd_CountAliveMons: ; 0x0204D9E0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -1182,7 +1182,7 @@ _0204DA5C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_357
+	thumb_func_end ScrCmd_CountAliveMons
 
 	thumb_func_start ScrCmd_358
 ScrCmd_358: ; 0x0204DA68

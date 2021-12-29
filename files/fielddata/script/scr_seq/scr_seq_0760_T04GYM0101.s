@@ -24,7 +24,7 @@ scr_seq_0760_T04GYM0101_0022:
 	gotoif eq, scr_seq_0760_T04GYM0101_00E7
 	comparevartovalue VAR_UNK_4089, 2
 	gotoif eq, scr_seq_0760_T04GYM0101_00E7
-	scrcmd_147 29, 16385
+	scrcmd_147 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0760_T04GYM0101_00AD
 	scrcmd_522 16384

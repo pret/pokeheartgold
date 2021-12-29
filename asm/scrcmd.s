@@ -149,7 +149,7 @@ gScriptCmdTable:
 	.word ScrCmd_ReleaseAll                             ; 097
 	.word ScrCmd_098                                    ; 098
 	.word ScrCmd_099                                    ; 099
-	.word ScrCmd_ShowPerson                                    ; 100
+	.word ScrCmd_ShowPerson                             ; 100
 	.word ScrCmd_HidePerson                             ; 101
 	.word ScrCmd_102                                    ; 102
 	.word ScrCmd_103                                    ; 103
@@ -186,16 +186,16 @@ gScriptCmdTable:
 	.word ScrCmd_134                                    ; 134
 	.word ScrCmd_135                                    ; 135
 	.word ScrCmd_136                                    ; 136
-	.word ScrCmd_GiveMon                                    ; 137
-	.word ScrCmd_GiveEgg                                    ; 138
-	.word ScrCmd_SetMonMove                                    ; 139
-	.word ScrCmd_MonHasMove                                    ; 140
-	.word ScrCmd_AnyMonHasMove                                    ; 141
-	.word ScrCmd_GetPhoneBookRematch                                    ; 142
+	.word ScrCmd_GiveMon                                ; 137
+	.word ScrCmd_GiveEgg                                ; 138
+	.word ScrCmd_SetMonMove                             ; 139
+	.word ScrCmd_MonHasMove                             ; 140
+	.word ScrCmd_AnyMonHasMove                          ; 141
+	.word ScrCmd_GetPhoneBookRematch                    ; 142
 	.word ScrCmd_NameRival                              ; 143
-	.word ScrCmd_GetFriendSprite                                    ; 144
+	.word ScrCmd_GetFriendSprite                        ; 144
 	.word ScrCmd_RegisterPokegearCard                   ; 145
-	.word ScrCmd_RegisterGearNumber                                    ; 146
+	.word ScrCmd_RegisterGearNumber                     ; 146
 	.word ScrCmd_147                                    ; 147
 	.word ScrCmd_148                                    ; 148
 	.word ScrCmd_149                                    ; 149
@@ -222,7 +222,7 @@ gScriptCmdTable:
 	.word ScrCmd_170                                    ; 170
 	.word ScrCmd_171                                    ; 171
 	.word ScrCmd_172                                    ; 172
-	.word ScrCmd_NicknameInput                                    ; 173
+	.word ScrCmd_NicknameInput                          ; 173
 	.word ScrCmd_FadeScreen                             ; 174
 	.word ScrCmd_WaitFade                               ; 175
 	.word ScrCmd_176                                    ; 176
@@ -242,16 +242,16 @@ gScriptCmdTable:
 	.word ScrCmd_BufferPlayersName                      ; 190
 	.word ScrCmd_191                                    ; 191
 	.word ScrCmd_192                                    ; 192
-	.word ScrCmd_BufferMonSpeciesName                                    ; 193
-	.word ScrCmd_BufferItemName                                    ; 194
-	.word ScrCmd_BufferPocketName                                    ; 195
-	.word ScrCmd_BufferTMHMMoveName                                    ; 196
+	.word ScrCmd_BufferMonSpeciesName                   ; 193
+	.word ScrCmd_BufferItemName                         ; 194
+	.word ScrCmd_BufferPocketName                       ; 195
+	.word ScrCmd_BufferTMHMMoveName                     ; 196
 	.word ScrCmd_197                                    ; 197
 	.word ScrCmd_198                                    ; 198
 	.word ScrCmd_BufferPartyMonNick                     ; 199
 	.word ScrCmd_200                                    ; 200
 	.word ScrCmd_201                                    ; 201
-	.word ScrCmd_BufferSpeciesNameCustom                                    ; 202
+	.word ScrCmd_BufferSpeciesNameCustom                ; 202
 	.word ScrCmd_203                                    ; 203
 	.word ScrCmd_204                                    ; 204
 	.word ScrCmd_205                                    ; 205
@@ -268,8 +268,8 @@ gScriptCmdTable:
 	.word ScrCmd_216                                    ; 216
 	.word ScrCmd_217                                    ; 217
 	.word ScrCmd_218                                    ; 218
-	.word ScrCmd_WhiteOut                                    ; 219
-	.word ScrCmd_CheckBattleWon                                    ; 220
+	.word ScrCmd_WhiteOut                               ; 219
+	.word ScrCmd_CheckBattleWon                         ; 220
 	.word ScrCmd_221                                    ; 221
 	.word ScrCmd_222                                    ; 222
 	.word ScrCmd_223                                    ; 223
@@ -328,7 +328,7 @@ gScriptCmdTable:
 	.word ScrCmd_276                                    ; 276
 	.word ScrCmd_277                                    ; 277
 	.word ScrCmd_278                                    ; 278
-	.word ScrCmd_279                                    ; 279
+	.word ScrCmd_OverworldWhiteOut                                    ; 279
 	.word ScrCmd_280                                    ; 280
 	.word ScrCmd_GetPlayerGender                        ; 281
 	.word ScrCmd_HealParty                              ; 282
@@ -342,10 +342,10 @@ gScriptCmdTable:
 	.word ScrCmd_290                                    ; 290
 	.word ScrCmd_291                                    ; 291
 	.word ScrCmd_292                                    ; 292
-	.word ScrCmd_GiveRunningShoes                                    ; 293
-	.word ScrCmd_CheckBadge                                    ; 294
-	.word ScrCmd_GiveBadge                                    ; 295
-	.word ScrCmd_CountBadges                                    ; 296
+	.word ScrCmd_GiveRunningShoes                       ; 293
+	.word ScrCmd_CheckBadge                             ; 294
+	.word ScrCmd_GiveBadge                              ; 295
+	.word ScrCmd_CountBadges                            ; 296
 	.word ScrCmd_297                                    ; 297
 	.word ScrCmd_298                                    ; 298
 	.word ScrCmd_299                                    ; 299
@@ -406,7 +406,7 @@ gScriptCmdTable:
 	.word ScrCmd_GetPartyMonSpecies                     ; 354
 	.word ScrCmd_PartymonIsMine                         ; 355
 	.word ScrCmd_PartyCountNotEgg                       ; 356
-	.word ScrCmd_357                                    ; 357
+	.word ScrCmd_CountAliveMons                                    ; 357
 	.word ScrCmd_358                                    ; 358
 	.word ScrCmd_359                                    ; 359
 	.word ScrCmd_SubMoneyVar                            ; 360
@@ -479,17 +479,17 @@ gScriptCmdTable:
 	.word ScrCmd_427                                    ; 427
 	.word ScrCmd_428                                    ; 428
 	.word ScrCmd_CountFossils                           ; 429
-	.word ScrCmd_SetPhoneCall                                    ; 430
-	.word ScrCmd_RunPhoneCall                                    ; 431
+	.word ScrCmd_SetPhoneCall                           ; 430
+	.word ScrCmd_RunPhoneCall                           ; 431
 	.word ScrCmd_GetFossilPokemon                       ; 432
 	.word ScrCmd_GetFossilMinimumAmount                 ; 433
 	.word ScrCmd_434                                    ; 434
-	.word ScrCmd_435                                    ; 435
+	.word ScrCmd_SurvivePoisoning                                    ; 435
 	.word ScrCmd_436                                    ; 436
 	.word ScrCmd_DebugWatch                             ; 437
-	.word ScrCmd_GetStdMsgNaix                                    ; 438
-	.word ScrCmd_NonNpcMsgExtern                          ; 439
-	.word ScrCmd_MsgboxExtern                                    ; 440
+	.word ScrCmd_GetStdMsgNaix                          ; 438
+	.word ScrCmd_NonNpcMsgExtern                        ; 439
+	.word ScrCmd_MsgboxExtern                           ; 440
 	.word ScrCmd_441                                    ; 441
 	.word ScrCmd_442                                    ; 442
 	.word ScrCmd_443                                    ; 443
@@ -510,7 +510,7 @@ gScriptCmdTable:
 	.word ScrCmd_458                                    ; 458
 	.word ScrCmd_459                                    ; 459
 	.word ScrCmd_460                                    ; 460
-	.word ScrCmd_461                                    ; 461
+	.word ScrCmd_GetPhoneContactMsgIds                                    ; 461
 	.word ScrCmd_462                                    ; 462
 	.word ScrCmd_463                                    ; 463
 	.word ScrCmd_464                                    ; 464
@@ -529,11 +529,11 @@ gScriptCmdTable:
 	.word ScrCmd_477                                    ; 477
 	.word ScrCmd_478                                    ; 478
 	.word ScrCmd_479                                    ; 479
-	.word ScrCmd_MonHasRibbon                                    ; 480
-	.word ScrCmd_GiveRibbon                                    ; 481
+	.word ScrCmd_MonHasRibbon                           ; 480
+	.word ScrCmd_GiveRibbon                             ; 481
 	.word ScrCmd_482                                    ; 482
 	.word ScrCmd_483                                    ; 483
-	.word ScrCmd_GetWeekday                                    ; 484
+	.word ScrCmd_GetWeekday                             ; 484
 	.word ScrCmd_485                                    ; 485
 	.word ScrCmd_Dummy                                  ; 486
 	.word ScrCmd_PokeCenAnim                            ; 487
@@ -542,13 +542,13 @@ gScriptCmdTable:
 	.word ScrCmd_490                                    ; 490
 	.word ScrCmd_491                                    ; 491
 	.word ScrCmd_492                                    ; 492
-	.word ScrCmd_PromptEasyChat                                    ; 493
+	.word ScrCmd_PromptEasyChat                         ; 493
 	.word ScrCmd_494                                    ; 494
 	.word ScrCmd_495                                    ; 495
 	.word ScrCmd_496                                    ; 496
 	.word ScrCmd_497                                    ; 497
-	.word ScrCmd_PrimoPasswordCheck1                                    ; 498
-	.word ScrCmd_PrimoPasswordCheck2                                    ; 499
+	.word ScrCmd_PrimoPasswordCheck1                    ; 498
+	.word ScrCmd_PrimoPasswordCheck2                    ; 499
 	.word ScrCmd_500                                    ; 500
 	.word ScrCmd_501                                    ; 501
 	.word ScrCmd_502                                    ; 502
@@ -556,7 +556,7 @@ gScriptCmdTable:
 	.word ScrCmd_504                                    ; 504
 	.word ScrCmd_505                                    ; 505
 	.word ScrCmd_506                                    ; 506
-	.word ScrCmd_CountPCEmptySpace                                    ; 507
+	.word ScrCmd_CountPCEmptySpace                      ; 507
 	.word ScrCmd_508                                    ; 508
 	.word ScrCmd_509                                    ; 509
 	.word ScrCmd_510                                    ; 510
@@ -564,7 +564,7 @@ gScriptCmdTable:
 	.word ScrCmd_512                                    ; 512
 	.word ScrCmd_513                                    ; 513
 	.word ScrCmd_514                                    ; 514
-	.word ScrCmd_AddSpecialGameStat                                    ; 515
+	.word ScrCmd_AddSpecialGameStat                     ; 515
 	.word ScrCmd_516                                    ; 516
 	.word ScrCmd_517                                    ; 517
 	.word ScrCmd_518                                    ; 518
@@ -662,8 +662,8 @@ gScriptCmdTable:
 	.word ScrCmd_610                                    ; 610
 	.word ScrCmd_611                                    ; 611
 	.word ScrCmd_612                                    ; 612
-	.word ScrCmd_613                                    ; 613
-	.word ScrCmd_614                                    ; 614
+	.word ScrCmd_GetPhoneContactRandomGiftBerry                                    ; 613
+	.word ScrCmd_GetPhoneContactGiftItem                                    ; 614
 	.word ScrCmd_615                                    ; 615
 	.word ScrCmd_616                                    ; 616
 	.word ScrCmd_617                                    ; 617
@@ -717,7 +717,7 @@ gScriptCmdTable:
 	.word ScrCmd_665                                    ; 665
 	.word ScrCmd_666                                    ; 666
 	.word ScrCmd_667                                    ; 667
-	.word ScrCmd_BufferTypeName                                    ; 668
+	.word ScrCmd_BufferTypeName                         ; 668
 	.word ScrCmd_GetItemQuantity                        ; 669
 	.word ScrCmd_670                                    ; 670
 	.word ScrCmd_671                                    ; 671
@@ -795,8 +795,8 @@ gScriptCmdTable:
 	.word ScrCmd_743                                    ; 743
 	.word ScrCmd_744                                    ; 744
 	.word ScrCmd_745                                    ; 745
-	.word ScrCmd_TouchscreenMenuHide                                    ; 746
-	.word ScrCmd_TouchscreenMenuShow                                    ; 747
+	.word ScrCmd_TouchscreenMenuHide                    ; 746
+	.word ScrCmd_TouchscreenMenuShow                    ; 747
 	.word ScrCmd_GetMenuChoice                          ; 748
 	.word ScrCmd_749                                    ; 749
 	.word ScrCmd_750                                    ; 750
@@ -825,7 +825,7 @@ gScriptCmdTable:
 	.word ScrCmd_773                                    ; 773
 	.word ScrCmd_774                                    ; 774
 	.word ScrCmd_775                                    ; 775
-	.word ScrCmd_GiveTogepiEgg                                    ; 776
+	.word ScrCmd_GiveTogepiEgg                          ; 776
 	.word ScrCmd_777                                    ; 777
 	.word ScrCmd_778                                    ; 778
 	.word ScrCmd_779                                    ; 779
@@ -892,7 +892,7 @@ gScriptCmdTable:
 	.word ScrCmd_840                                    ; 840
 	.word ScrCmd_841                                    ; 841
 	.word ScrCmd_842                                    ; 842
-	.word ScrCmd_BufferItemNameIndef                                    ; 843
+	.word ScrCmd_BufferItemNameIndef                    ; 843
 	.word ScrCmd_844                                    ; 844
 	.word ScrCmd_845                                    ; 845
 	.word ScrCmd_846                                    ; 846
@@ -8848,14 +8848,14 @@ ScrCmd_289: ; 0x0204458C
 	.balign 4, 0
 	thumb_func_end ScrCmd_289
 
-	thumb_func_start ScrCmd_279
-ScrCmd_279: ; 0x020445C0
+	thumb_func_start ScrCmd_OverworldWhiteOut
+ScrCmd_OverworldWhiteOut: ; 0x020445C0
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
 	bl sub_0205297C
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_279
+	thumb_func_end ScrCmd_OverworldWhiteOut
 
 	thumb_func_start ScrCmd_280
 ScrCmd_280: ; 0x020445CC
@@ -14440,8 +14440,8 @@ ScrCmd_460: ; 0x02047120
 	.balign 4, 0
 	thumb_func_end ScrCmd_460
 
-	thumb_func_start ScrCmd_461
-ScrCmd_461: ; 0x02047168
+	thumb_func_start ScrCmd_GetPhoneContactMsgIds
+ScrCmd_GetPhoneContactMsgIds: ; 0x02047168
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14483,7 +14483,7 @@ ScrCmd_461: ; 0x02047168
 	bne _020471CE
 	mov r0, #0
 	strh r0, [r4]
-	mov r0, #1
+	mov r0, #1 ; error hang?
 	pop {r3, r4, r5, r6, r7, pc}
 _020471CE:
 	cmp r6, #4
@@ -14517,7 +14517,7 @@ _02047200:
 _02047208:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_461
+	thumb_func_end ScrCmd_GetPhoneContactMsgIds
 
 	thumb_func_start ScrCmd_462
 ScrCmd_462: ; 0x0204720C
@@ -14543,8 +14543,8 @@ ScrCmd_462: ; 0x0204720C
 	.balign 4, 0
 	thumb_func_end ScrCmd_462
 
-	thumb_func_start ScrCmd_613
-ScrCmd_613: ; 0x0204723C
+	thumb_func_start ScrCmd_GetPhoneContactRandomGiftBerry
+ScrCmd_GetPhoneContactRandomGiftBerry: ; 0x0204723C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -14573,10 +14573,10 @@ _02047276:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_613
+	thumb_func_end ScrCmd_GetPhoneContactRandomGiftBerry
 
-	thumb_func_start ScrCmd_614
-ScrCmd_614: ; 0x0204727C
+	thumb_func_start ScrCmd_GetPhoneContactGiftItem
+ScrCmd_GetPhoneContactGiftItem: ; 0x0204727C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -14598,15 +14598,15 @@ ScrCmd_614: ; 0x0204727C
 	bl SaveData_GetPhoneRematches
 	ldrb r1, [r4]
 	add r5, r0, #0
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	strh r0, [r6]
 	ldrb r1, [r4]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0202F100
+	bl PhoneRematches_GiftItemIdSet
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_614
+	thumb_func_end ScrCmd_GetPhoneContactGiftItem
 
 	thumb_func_start ScrCmd_148
 ScrCmd_148: ; 0x020472C4

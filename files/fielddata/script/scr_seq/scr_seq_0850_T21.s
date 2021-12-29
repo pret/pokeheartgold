@@ -570,7 +570,7 @@ scr_seq_0850_T21_07E4:
 	wait_movement
 	hide_person 4
 	setflag FLAG_HIDE_CHERRYGROVE_RIVAL
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	releaseall
 	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 4
 	setflag FLAG_MET_PASSERBY_BOY

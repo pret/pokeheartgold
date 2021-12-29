@@ -418,7 +418,7 @@ scr_seq_0003_0584:
 	get_party_count VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 0
 scr_seq_0003_0592:
-	scrcmd_435 32780, 32773
+	survive_poisoning VAR_SPECIAL_x800C, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0003_05AD
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
@@ -427,7 +427,7 @@ scr_seq_0003_05AD:
 	addvar VAR_SPECIAL_x8005, 1
 	comparevartovar VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	gotoif ne, scr_seq_0003_0592
-	scrcmd_357 32780, 6
+	count_alive_mons VAR_SPECIAL_x800C, 6
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0003_05F5
 	closemsg
@@ -451,13 +451,13 @@ scr_seq_0003_05F5:
 	fade_screen 6, 1, 0, 0
 	wait_fade
 	scrcmd_436
-	scrcmd_279
+	overworld_white_out
 	end
 
 scr_seq_0003_0617:
 	clearflag FLAG_UNK_020
 	call scr_seq_0003_0646
-	scrcmd_347 32780
+	scrcmd_347 VAR_SPECIAL_x800C
 	closemsg
 	end
 

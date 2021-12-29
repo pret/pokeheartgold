@@ -46,7 +46,7 @@ scr_seq_0785_T07_007A:
 scr_seq_0785_T07_0091:
 	setflag FLAG_HIDE_CAMERON
 scr_seq_0785_T07_0095:
-	scrcmd_147 28, 16385
+	scrcmd_147 28, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0785_T07_015E
 	check_badge 15, VAR_TEMP_x4002
@@ -268,7 +268,7 @@ scr_seq_0785_T07_02C0:
 	end
 
 scr_seq_0785_T07_02D5:
-	scrcmd_147 28, 16385
+	scrcmd_147 28, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0785_T07_046C
 	comparevartovalue VAR_TEMP_x4005, 2

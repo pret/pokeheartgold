@@ -19,7 +19,7 @@ scr_seq_0015_D11R0106_002A:
 	get_phone_book_rematch 30, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0015_D11R0106_00AB
-	scrcmd_147 30, 16385
+	scrcmd_147 30, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0015_D11R0106_008A
 	check_badge 15, VAR_TEMP_x4002

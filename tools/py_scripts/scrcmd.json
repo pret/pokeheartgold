@@ -677,7 +677,7 @@
     {
       "name": "scrcmd_109",
       "args": [
-        2,
+        "var",
         2
       ]
     },
@@ -933,8 +933,8 @@
     {
       "name": "scrcmd_147",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -1050,20 +1050,20 @@
       "name": "scrcmd_169",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_170",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_171",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -1329,7 +1329,7 @@
     {
       "name": "scrcmd_212",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1344,36 +1344,36 @@
     {
       "name": "scrcmd_214",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_215",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_216",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_217",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_218",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1396,7 +1396,7 @@
     {
       "name": "scrcmd_222",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1733,7 +1733,7 @@
       ]
     },
     {
-      "name": "scrcmd_279",
+      "name": "overworld_white_out",
       "args": []
     },
     {
@@ -2110,7 +2110,7 @@
     {
       "name": "scrcmd_347",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2169,9 +2169,9 @@
       ]
     },
     {
-      "name": "scrcmd_357",
+      "name": "count_alive_mons",
       "args": [
-        2,
+        "var",
         2
       ]
     },
@@ -2691,10 +2691,10 @@
       ]
     },
     {
-      "name": "scrcmd_435",
+      "name": "survive_poisoning",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2850,22 +2850,22 @@
     {
       "name": "scrcmd_460",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_461",
+      "name": "get_phone_contact_msg_ids",
       "args": [
         1,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_462",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3634,8 +3634,8 @@
     {
       "name": "scrcmd_574",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -3845,15 +3845,15 @@
       ]
     },
     {
-      "name": "scrcmd_613",
+      "name": "get_phone_contact_random_gift_berry",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_614",
+      "name": "get_phone_contact_gift_item",
       "args": [
-        2
+        "var"
       ]
     },
     {

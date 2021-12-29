@@ -749,9 +749,9 @@ scr_seq_0953_0B92:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_212 32772
-	scrcmd_460 32772, 16400
-	scrcmd_574 32769, 32781
+	scrcmd_212 VAR_SPECIAL_x8004
+	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
+	scrcmd_574 VAR_SPECIAL_x8001, VAR_SPECIAL_x800D
 	comparevartovalue VAR_SPECIAL_x8001, 51
 	callif eq, scr_seq_0953_0E57
 	comparevartovalue VAR_SPECIAL_x8001, 52
@@ -762,10 +762,10 @@ scr_seq_0953_0B92:
 	callif eq, scr_seq_0953_0E57
 	checktrainerflag VAR_SPECIAL_x8004
 	gotoif eq, scr_seq_0953_0C9C
-	scrcmd_217 32780
+	scrcmd_217 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0953_0C13
-	scrcmd_222 32780
+	scrcmd_222 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_0E3B
 	goto scr_seq_0953_0C13
@@ -773,10 +773,10 @@ scr_seq_0953_0B92:
 scr_seq_0953_0C11:
 	.byte 0x02, 0x00
 scr_seq_0953_0C13:
-	scrcmd_218 32772
+	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_052
-	scrcmd_215 32768, 32769, 32770
-	scrcmd_214 32772, 32768
+	scrcmd_215 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	goto scr_seq_0953_0C2F
 
 scr_seq_0953_0C2D:
@@ -789,7 +789,7 @@ scr_seq_0953_0C2F:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_0D99
 	copyvar VAR_TEMP_x4012, VAR_SPECIAL_x8004
-	scrcmd_212 32774
+	scrcmd_212 VAR_SPECIAL_x8006
 	checktrainerflag VAR_SPECIAL_x8006
 	gotoif eq, scr_seq_0953_0C7F
 	scrcmd_317 1
@@ -802,8 +802,8 @@ scr_seq_0953_0C2F:
 
 scr_seq_0953_0C7F:
 	settrainerflag VAR_TEMP_x4012
-	scrcmd_462 16400
-	scrcmd_613 32780
+	scrcmd_462 VAR_TEMP_x4010
+	get_phone_contact_random_gift_berry VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0953_0D54
 	releaseall
@@ -815,7 +815,7 @@ scr_seq_0953_0C9C:
 	get_phone_book_rematch VAR_TEMP_x4010, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0953_0D02
-	scrcmd_614 32780
+	get_phone_contact_gift_item VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0953_0D54
 	call scr_seq_0953_0D9F
@@ -823,8 +823,8 @@ scr_seq_0953_0C9C:
 	gotoif eq, scr_seq_0953_0CF8
 scr_seq_0953_0CE0:
 	scrcmd_052
-	scrcmd_215 32768, 32769, 32770
-	scrcmd_214 32772, 32769
+	scrcmd_215 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	waitbutton
 	closemsg
 	releaseall
@@ -837,10 +837,10 @@ scr_seq_0953_0CF8:
 
 scr_seq_0953_0D02:
 	copyvar VAR_SPECIAL_x8007, VAR_SPECIAL_x800C
-	scrcmd_217 32780
+	scrcmd_217 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0953_0D32
-	scrcmd_222 32780
+	scrcmd_222 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_0E3B
 	goto scr_seq_0953_0D32
@@ -848,17 +848,17 @@ scr_seq_0953_0D02:
 scr_seq_0953_0D30:
 	.byte 0x02, 0x00
 scr_seq_0953_0D32:
-	scrcmd_218 32772
+	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_052
-	scrcmd_216 32768, 32769, 32770
-	scrcmd_214 32772, 32768
+	scrcmd_216 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8007
 	goto scr_seq_0953_0C2F
 
 scr_seq_0953_0D52:
 	.byte 0x02, 0x00
 scr_seq_0953_0D54:
-	scrcmd_461 4, 32772, 32773
+	get_phone_contact_msg_ids 4, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_players_name 0
 	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -884,7 +884,7 @@ scr_seq_0953_0D99:
 scr_seq_0953_0D9F:
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif eq, scr_seq_0953_0DC7
-	scrcmd_147 16400, 32780
+	scrcmd_147 VAR_TEMP_x4010, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0953_0DC7
 	setvar VAR_SPECIAL_x800C, 1
@@ -895,14 +895,14 @@ scr_seq_0953_0DC7:
 	return
 
 scr_seq_0953_0DCF:
-	scrcmd_461 0, 32772, 32773
+	get_phone_contact_msg_ids 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	goto scr_seq_0953_0DF9
 
 scr_seq_0953_0DE2:
 	.byte 0x02, 0x00
 scr_seq_0953_0DE4:
-	scrcmd_461 3, 32772, 32773
+	get_phone_contact_msg_ids 3, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	goto scr_seq_0953_0DF9
 
@@ -917,12 +917,12 @@ scr_seq_0953_0DF9:
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	npc_msg 101
-	scrcmd_461 1, 32772, 32773
+	get_phone_contact_msg_ids 1, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	register_gear_number VAR_TEMP_x4010
 	goto scr_seq_0953_0E2F
 
 scr_seq_0953_0E28:
-	scrcmd_461 2, 32772, 32773
+	get_phone_contact_msg_ids 2, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 scr_seq_0953_0E2F:
 	msgbox_extern VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	waitbutton
@@ -930,10 +930,10 @@ scr_seq_0953_0E2F:
 	return
 
 scr_seq_0953_0E3B:
-	scrcmd_212 32772
+	scrcmd_212 VAR_SPECIAL_x8004
 	scrcmd_052
-	scrcmd_215 32768, 32769, 32770
-	scrcmd_214 32772, 32770
+	scrcmd_215 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8002
 	scrcmd_049
 	closemsg
 	releaseall
@@ -954,19 +954,19 @@ scr_seq_0953_0E57:
 	return
 
 scr_seq_0953_0E9B:
-	scrcmd_109 32781, 15
+	scrcmd_109 VAR_SPECIAL_x800D, 15
 	return
 
 scr_seq_0953_0EA3:
-	scrcmd_109 32781, 14
+	scrcmd_109 VAR_SPECIAL_x800D, 14
 	return
 
 scr_seq_0953_0EAB:
-	scrcmd_109 32781, 17
+	scrcmd_109 VAR_SPECIAL_x800D, 17
 	return
 
 scr_seq_0953_0EB3:
-	scrcmd_109 32781, 16
+	scrcmd_109 VAR_SPECIAL_x800D, 16
 	return
 
 scr_seq_0953_0EBB:
@@ -983,7 +983,7 @@ scr_seq_0953_0EC4:
 	gotoif ne, scr_seq_0953_0EDD
 	scrcmd_099 253
 scr_seq_0953_0EDD:
-	scrcmd_170 32780
+	scrcmd_170 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_0F0A
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -993,24 +993,24 @@ scr_seq_0953_0EDD:
 	end
 
 scr_seq_0953_0F0A:
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_460 32772, 16400
-	scrcmd_218 32772
+	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
+	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_315
 	scrcmd_168 0
 	call scr_seq_0953_0F87
 	scrcmd_316
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 32772, 0
+	scrcmd_214 VAR_SPECIAL_x8004, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1176
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
 	scrcmd_317 0
@@ -1021,42 +1021,42 @@ scr_seq_0953_0F0A:
 	end
 
 scr_seq_0953_0F87:
-	scrcmd_169 0, 32780
+	scrcmd_169 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_0F87
 	return
 
 scr_seq_0953_0F9C:
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_460 32772, 16400
+	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif ne, scr_seq_0953_0FC7
-	scrcmd_171 1, 32780
-	scrcmd_460 32780, 16400
+	scrcmd_171 1, VAR_SPECIAL_x800C
+	scrcmd_460 VAR_SPECIAL_x800C, VAR_TEMP_x4010
 scr_seq_0953_0FC7:
-	scrcmd_218 32772
+	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_168 0
 	scrcmd_168 1
 	call scr_seq_0953_1055
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 32772, 3
+	scrcmd_214 VAR_SPECIAL_x8004, 3
 	closemsg
-	scrcmd_171 1, 32780
+	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 32773, 7
+	scrcmd_214 VAR_SPECIAL_x8005, 7
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1176
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
-	scrcmd_171 1, 32780
+	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8005
 	call scr_seq_0953_0D9F
@@ -1066,49 +1066,49 @@ scr_seq_0953_0FC7:
 	end
 
 scr_seq_0953_1055:
-	scrcmd_169 0, 32780
+	scrcmd_169 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1055
-	scrcmd_169 1, 32780
+	scrcmd_169 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1055
 	return
 
 scr_seq_0953_107D:
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_460 32772, 16400
+	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif ne, scr_seq_0953_10A8
-	scrcmd_171 1, 32780
-	scrcmd_460 32780, 16400
+	scrcmd_171 1, VAR_SPECIAL_x800C
+	scrcmd_460 VAR_SPECIAL_x800C, VAR_TEMP_x4010
 scr_seq_0953_10A8:
-	scrcmd_218 32772
+	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_168 0
 	call scr_seq_0953_114C
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 32772, 0
+	scrcmd_214 VAR_SPECIAL_x8004, 0
 	closemsg
-	scrcmd_171 1, 32780
+	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_218 32773
+	scrcmd_218 VAR_SPECIAL_x8005
 	scrcmd_168 1
 	call scr_seq_0953_1161
-	scrcmd_171 1, 32780
+	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 32773, 0
+	scrcmd_214 VAR_SPECIAL_x8005, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1176
-	scrcmd_171 0, 32780
+	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
-	scrcmd_171 1, 32780
+	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8005
 	call scr_seq_0953_0D9F
@@ -1118,13 +1118,13 @@ scr_seq_0953_10A8:
 	end
 
 scr_seq_0953_114C:
-	scrcmd_169 0, 32780
+	scrcmd_169 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_114C
 	return
 
 scr_seq_0953_1161:
-	scrcmd_169 1, 32780
+	scrcmd_169 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0953_1161
 	return

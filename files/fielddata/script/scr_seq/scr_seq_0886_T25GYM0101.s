@@ -16,7 +16,7 @@ scr_seq_0886_T25GYM0101_0016:
 	gotoif ne, scr_seq_0886_T25GYM0101_0106
 	checkflag FLAG_UNK_964
 	gotoif FALSE, scr_seq_0886_T25GYM0101_0100
-	scrcmd_147 17, 16385
+	scrcmd_147 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0886_T25GYM0101_00AF
 	scrcmd_522 16384

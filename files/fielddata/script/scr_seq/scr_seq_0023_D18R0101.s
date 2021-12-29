@@ -50,7 +50,7 @@ scr_seq_0023_D18R0101_006E:
 	scrcmd_602 1
 	scrcmd_604 48
 	hide_person 0
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	setflag FLAG_UNK_1C6
 	setvar VAR_UNK_40A6, 1
 	releaseall

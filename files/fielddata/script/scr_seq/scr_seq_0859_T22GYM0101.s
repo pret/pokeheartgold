@@ -16,7 +16,7 @@ scr_seq_0859_T22GYM0101_001A:
 	get_phone_book_rematch 18, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0859_T22GYM0101_00A7
-	scrcmd_147 18, 16385
+	scrcmd_147 18, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0859_T22GYM0101_007E
 	check_badge 12, VAR_TEMP_x4001

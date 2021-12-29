@@ -52,7 +52,7 @@ scr_seq_0920_T27_007A:
 	apply_movement 255, scr_seq_0920_T27_00D0
 	wait_movement
 	scrcmd_098 253
-	scrcmd_596 32780
+	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0920_T27_00B6
 	scrcmd_606

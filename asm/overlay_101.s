@@ -6515,7 +6515,7 @@ _021EA9E0:
 	lsl r0, r0, #2
 	ldrb r1, [r1, r4]
 	ldr r0, [r5, r0]
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	cmp r0, #0
 	beq _021EA9FA
 	mov r0, #1
@@ -22094,7 +22094,7 @@ _021F229C:
 _021F22B0:
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r4, #0x20]
-	bl sub_0202F100
+	bl PhoneRematches_GiftItemIdSet
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _021F22BC:
@@ -23475,7 +23475,7 @@ ov101_021F2CB8: ; 0x021F2CB8
 _021F2CD2:
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	cmp r0, #0
 	beq _021F2CE2
 	mov r0, #0
@@ -23596,7 +23596,7 @@ ov101_021F2D90: ; 0x021F2D90
 _021F2DB0:
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F128
+	bl PhoneRematches_GiftItemIdGet
 	cmp r0, #0
 	bne _021F2DC0
 	mov r0, #0

@@ -30,7 +30,7 @@ scr_seq_0919_T26R0701_004A:
 scr_seq_0919_T26R0701_004E:
 	checkflag FLAG_UNK_964
 	gotoif FALSE, scr_seq_0919_T26R0701_00C3
-	scrcmd_147 38, 16385
+	scrcmd_147 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0919_T26R0701_008F
 	scrcmd_522 16384
@@ -224,7 +224,7 @@ scr_seq_0919_T26R0701_02DC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 38, 16385
+	scrcmd_147 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0919_T26R0701_038A
 	comparevartovalue VAR_TEMP_x4004, 1

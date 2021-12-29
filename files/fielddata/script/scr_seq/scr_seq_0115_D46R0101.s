@@ -8,7 +8,7 @@
 	scrdef_end
 
 scr_seq_0115_D46R0101_000A:
-	scrcmd_147 34, 16385
+	scrcmd_147 34, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0115_D46R0101_0047
 	checkflag FLAG_UNK_964

@@ -22,7 +22,7 @@ scr_seq_0943_T30GYM0101_001A:
 	end
 
 scr_seq_0943_T30GYM0101_0044:
-	scrcmd_147 27, 16385
+	scrcmd_147 27, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0943_T30GYM0101_00BD
 	scrcmd_522 16384

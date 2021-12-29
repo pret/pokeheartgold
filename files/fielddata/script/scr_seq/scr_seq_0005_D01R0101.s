@@ -15,7 +15,7 @@ scr_seq_0005_D01R0101_000E:
 	end
 
 scr_seq_0005_D01R0101_001F:
-	scrcmd_147 33, 16385
+	scrcmd_147 33, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0005_D01R0101_009E
 	check_badge 15, VAR_TEMP_x4002
@@ -86,7 +86,7 @@ scr_seq_0005_D01R0101_0108:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 33, 16385
+	scrcmd_147 33, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0005_D01R0101_01B6
 	comparevartovalue VAR_TEMP_x4003, 1

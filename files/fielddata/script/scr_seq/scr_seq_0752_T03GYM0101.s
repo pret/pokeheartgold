@@ -13,7 +13,7 @@ scr_seq_0752_T03GYM0101_0012:
 	get_phone_book_rematch 33, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0752_T03GYM0101_00FB
-	scrcmd_147 33, 16385
+	scrcmd_147 33, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0752_T03GYM0101_00A4
 	check_badge 15, VAR_TEMP_x4002

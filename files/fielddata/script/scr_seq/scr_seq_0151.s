@@ -138,7 +138,7 @@ scr_seq_0151_018E:
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif eq, scr_seq_0151_02B1
 scr_seq_0151_01B0:
-	scrcmd_357 32773, 6
+	count_alive_mons VAR_SPECIAL_x8005, 6
 	comparevartovalue VAR_SPECIAL_x8005, 1
 	gotoif ne, scr_seq_0151_01D4
 	get_party_count VAR_SPECIAL_x8004
@@ -388,7 +388,7 @@ scr_seq_0151_04FD:
 	setvar VAR_SPECIAL_x8005, 10
 	setvar VAR_SPECIAL_x8006, 627
 scr_seq_0151_050F:
-	scrcmd_109 32773, 2
+	scrcmd_109 VAR_SPECIAL_x8005, 2
 	clearflagvar VAR_SPECIAL_x8006
 	addvar VAR_SPECIAL_x8004, 1
 	addvar VAR_SPECIAL_x8005, 1

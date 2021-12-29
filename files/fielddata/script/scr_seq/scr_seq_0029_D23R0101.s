@@ -441,7 +441,7 @@ scr_seq_0029_D23R0101_0625:
 	apply_movement 5, scr_seq_0029_D23R0101_0938
 	wait_movement
 	hide_person 5
-	callstd 2071
+	callstd std_fade_end_rival_outro_music
 	releaseall
 	setvar VAR_UNK_4077, 4
 	setflag FLAG_UNK_1BD

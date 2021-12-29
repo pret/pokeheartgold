@@ -2258,7 +2258,7 @@ _021E6B12:
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #1
 	bne _021E6B36
 	mov r6, #1

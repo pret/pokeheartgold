@@ -281,7 +281,7 @@ ScrCmd_TrainerBattle: ; 0x02049648
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066644
+	bl ScriptState_CheckHealAfterBattleFlag
 	cmp r0, #1
 	bne _020496BE
 	ldr r0, [r7, #0xc]

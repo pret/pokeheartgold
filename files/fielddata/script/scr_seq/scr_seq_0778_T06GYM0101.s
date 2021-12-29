@@ -42,7 +42,7 @@ scr_seq_0778_T06GYM0101_0079:
 	gotoif ne, scr_seq_0778_T06GYM0101_014A
 	checkflag FLAG_UNK_14A
 	gotoif FALSE, scr_seq_0778_T06GYM0101_0144
-	scrcmd_147 36, 16385
+	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0778_T06GYM0101_00FB
 	scrcmd_522 16384
