@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 347,
+      "ovid": "SPRITE_FISHING_2",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -62,7 +62,7 @@
     },
     {
       "id": 1,
-      "ovid": 377,
+      "ovid": "SPRITE_MANIA",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -80,7 +80,7 @@
     },
     {
       "id": 2,
-      "ovid": 333,
+      "ovid": "SPRITE_MOUNT_2",
       "mvt": 6,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -98,7 +98,7 @@
     },
     {
       "id": 3,
-      "ovid": 262,
+      "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -116,7 +116,7 @@
     },
     {
       "id": 4,
-      "ovid": 262,
+      "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -134,7 +134,7 @@
     },
     {
       "id": 5,
-      "ovid": 262,
+      "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -152,7 +152,7 @@
     },
     {
       "id": 6,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_494",
@@ -170,7 +170,7 @@
     },
     {
       "id": 7,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4A9",
@@ -188,7 +188,7 @@
     },
     {
       "id": 8,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_505",
@@ -206,7 +206,7 @@
     },
     {
       "id": 9,
-      "ovid": 86,
+      "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
@@ -224,7 +224,7 @@
     },
     {
       "id": 10,
-      "ovid": 333,
+      "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_29D",
@@ -242,7 +242,7 @@
     },
     {
       "id": 11,
-      "ovid": 1039,
+      "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_29E",
@@ -260,7 +260,7 @@
     },
     {
       "id": 12,
-      "ovid": 382,
+      "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2A3",

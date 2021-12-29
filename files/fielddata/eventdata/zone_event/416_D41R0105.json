@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 1026,
+      "ovid": "SPRITE_TSURE_POKE_605",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_307",

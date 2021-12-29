@@ -204,7 +204,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 325,
+      "ovid": "SPRITE_GSWOMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -222,7 +222,7 @@
     },
     {
       "id": 1,
-      "ovid": 331,
+      "ovid": "SPRITE_GSOLDWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -240,7 +240,7 @@
     },
     {
       "id": 2,
-      "ovid": 330,
+      "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -258,7 +258,7 @@
     },
     {
       "id": 3,
-      "ovid": 316,
+      "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -276,7 +276,7 @@
     },
     {
       "id": 4,
-      "ovid": 146,
+      "ovid": "SPRITE_GSBOY1",
       "mvt": 6,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -294,7 +294,7 @@
     },
     {
       "id": 5,
-      "ovid": 315,
+      "ovid": "SPRITE_GSBABYBOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -312,7 +312,7 @@
     },
     {
       "id": 6,
-      "ovid": 35,
+      "ovid": "SPRITE_IDOL",
       "mvt": 10,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -330,7 +330,7 @@
     },
     {
       "id": 7,
-      "ovid": 31,
+      "ovid": "SPRITE_BADMAN",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -348,7 +348,7 @@
     },
     {
       "id": 8,
-      "ovid": 344,
+      "ovid": "SPRITE_GSFIGHTER",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -366,7 +366,7 @@
     },
     {
       "id": 9,
-      "ovid": 284,
+      "ovid": "SPRITE_BFSW2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -384,7 +384,7 @@
     },
     {
       "id": 10,
-      "ovid": 284,
+      "ovid": "SPRITE_BFSW2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -402,7 +402,7 @@
     },
     {
       "id": 11,
-      "ovid": 284,
+      "ovid": "SPRITE_BFSW2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -420,7 +420,7 @@
     },
     {
       "id": 12,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -438,7 +438,7 @@
     },
     {
       "id": 13,
-      "ovid": 332,
+      "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -456,7 +456,7 @@
     },
     {
       "id": 14,
-      "ovid": 341,
+      "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -474,7 +474,7 @@
     },
     {
       "id": 15,
-      "ovid": 315,
+      "ovid": "SPRITE_GSBABYBOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -492,7 +492,7 @@
     },
     {
       "id": 16,
-      "ovid": 323,
+      "ovid": "SPRITE_GSMAN2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -510,7 +510,7 @@
     },
     {
       "id": 17,
-      "ovid": 42,
+      "ovid": "SPRITE_COWGIRL",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -528,7 +528,7 @@
     },
     {
       "id": 18,
-      "ovid": 347,
+      "ovid": "SPRITE_FISHING_2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -546,7 +546,7 @@
     },
     {
       "id": 19,
-      "ovid": 346,
+      "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -564,7 +564,7 @@
     },
     {
       "id": 20,
-      "ovid": 325,
+      "ovid": "SPRITE_GSWOMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -582,7 +582,7 @@
     },
     {
       "id": 21,
-      "ovid": 325,
+      "ovid": "SPRITE_GSWOMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -600,7 +600,7 @@
     },
     {
       "id": 22,
-      "ovid": 324,
+      "ovid": "SPRITE_GSMAN3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -618,7 +618,7 @@
     },
     {
       "id": 23,
-      "ovid": 347,
+      "ovid": "SPRITE_FISHING_2",
       "mvt": 10,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -636,7 +636,7 @@
     },
     {
       "id": 24,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",

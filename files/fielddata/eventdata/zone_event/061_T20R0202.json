@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 376,
+      "ovid": "SPRITE_STOROPHY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2AA",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 350,
+      "ovid": "SPRITE_GTOROPHY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2AB",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 379,
+      "ovid": "SPRITE_BTOROPHY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2A9",

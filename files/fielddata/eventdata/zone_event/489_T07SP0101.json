@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 386,
+      "ovid": "SPRITE_SUIT",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -62,7 +62,7 @@
     },
     {
       "id": 1,
-      "ovid": 168,
+      "ovid": "SPRITE_SUNGLASSES",
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",

@@ -457,6 +457,7 @@ include files/poketool/personal/growtbl.mk
 include files/poketool/trainer/trainer.mk
 include files/fielddata/mapmatrix/map_matrix.mk
 include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
+include files/data/mmodel/mmodel.mk
 
 include graphics_files_rules.mk
 

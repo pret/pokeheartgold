@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 148,
+      "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_RIVAL",
@@ -62,7 +62,7 @@
     },
     {
       "id": 1,
-      "ovid": 325,
+      "ovid": "SPRITE_GSWOMAN1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -80,7 +80,7 @@
     },
     {
       "id": 2,
-      "ovid": 332,
+      "ovid": "SPRITE_GSBIGMAN",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -98,7 +98,7 @@
     },
     {
       "id": 3,
-      "ovid": 1032,
+      "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_MARILL",
@@ -116,7 +116,7 @@
     },
     {
       "id": 4,
-      "ovid": 101,
+      "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIEND",
@@ -134,7 +134,7 @@
     },
     {
       "id": 5,
-      "ovid": 99,
+      "ovid": "SPRITE_DOCTOR",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -152,7 +152,7 @@
     },
     {
       "id": 6,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
@@ -170,7 +170,7 @@
     },
     {
       "id": 7,
-      "ovid": 365,
+      "ovid": "SPRITE_GSMAMA",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_MOM",
@@ -188,7 +188,7 @@
     },
     {
       "id": 8,
-      "ovid": 101,
+      "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIEND_2",
@@ -206,7 +206,7 @@
     },
     {
       "id": 9,
-      "ovid": 1032,
+      "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIEND_2",
@@ -269,7 +269,7 @@
       "h": 7,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_407E"
+      "var": "VAR_SCENE_NEW_BARK_WEST_EXIT"
     },
     {
       "scr": 11,
@@ -289,7 +289,7 @@
       "h": 5,
       "z": 0,
       "val": 1,
-      "var": "VAR_UNK_4081"
+      "var": "VAR_SCENE_NEW_BARK_EAST_EXIT"
     },
     {
       "scr": 13,
@@ -299,7 +299,7 @@
       "h": 5,
       "z": 0,
       "val": 2,
-      "var": "VAR_UNK_4081"
+      "var": "VAR_SCENE_NEW_BARK_EAST_EXIT"
     }
   ]
 }

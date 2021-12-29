@@ -923,7 +923,7 @@ scr_seq_0843_T20R0101_0BF3:
 	setvar VAR_UNK_4079, 3
 	setflag FLAG_UNK_23B
 	clearflag FLAG_HIDE_NEW_BARK_FRIEND_2
-	setvar VAR_UNK_4081, 2
+	setvar VAR_SCENE_NEW_BARK_EAST_EXIT, 2
 	setvar VAR_UNK_407B, 2
 	end
 

@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 334,
+      "ovid": "SPRITE_SHOPM1_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -20,7 +20,7 @@
     },
     {
       "id": 1,
-      "ovid": 334,
+      "ovid": "SPRITE_SHOPM1_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -38,7 +38,7 @@
     },
     {
       "id": 2,
-      "ovid": 367,
+      "ovid": "SPRITE_GSDSBOY",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -56,7 +56,7 @@
     },
     {
       "id": 3,
-      "ovid": 333,
+      "ovid": "SPRITE_MOUNT_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -74,7 +74,7 @@
     },
     {
       "id": 4,
-      "ovid": 193,
+      "ovid": "SPRITE_DELIVERY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2A7",
@@ -92,7 +92,7 @@
     },
     {
       "id": 5,
-      "ovid": 299,
+      "ovid": "SPRITE_DELIVERY2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2A8",

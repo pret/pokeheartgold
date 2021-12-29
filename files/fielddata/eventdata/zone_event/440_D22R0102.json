@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_479",
@@ -62,7 +62,7 @@
     },
     {
       "id": 1,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_478",
@@ -80,7 +80,7 @@
     },
     {
       "id": 2,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_273",
@@ -98,7 +98,7 @@
     },
     {
       "id": 3,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_274",
@@ -116,7 +116,7 @@
     },
     {
       "id": 4,
-      "ovid": 327,
+      "ovid": "SPRITE_GSWOMAN3",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_275",
@@ -134,7 +134,7 @@
     },
     {
       "id": 5,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_276",
@@ -152,7 +152,7 @@
     },
     {
       "id": 6,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_277",
@@ -170,7 +170,7 @@
     },
     {
       "id": 7,
-      "ovid": 345,
+      "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_278",
@@ -188,7 +188,7 @@
     },
     {
       "id": 8,
-      "ovid": 346,
+      "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_279",
@@ -206,7 +206,7 @@
     },
     {
       "id": 9,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_27A",
@@ -224,7 +224,7 @@
     },
     {
       "id": 10,
-      "ovid": 317,
+      "ovid": "SPRITE_GSBOY2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_27B",
@@ -242,7 +242,7 @@
     },
     {
       "id": 11,
-      "ovid": 146,
+      "ovid": "SPRITE_GSBOY1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_27C",
@@ -260,7 +260,7 @@
     },
     {
       "id": 12,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_506",

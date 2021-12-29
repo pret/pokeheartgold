@@ -28,7 +28,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 1003,
+      "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_26E",
@@ -46,7 +46,7 @@
     },
     {
       "id": 1,
-      "ovid": 1003,
+      "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_26E",
@@ -64,7 +64,7 @@
     },
     {
       "id": 2,
-      "ovid": 1003,
+      "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_26E",
@@ -82,7 +82,7 @@
     },
     {
       "id": 3,
-      "ovid": 1003,
+      "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_UNK_26E",
@@ -100,7 +100,7 @@
     },
     {
       "id": 4,
-      "ovid": 1003,
+      "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_26E",
@@ -118,7 +118,7 @@
     },
     {
       "id": 5,
-      "ovid": 1003,
+      "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_UNK_26E",
@@ -136,7 +136,7 @@
     },
     {
       "id": 6,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_298",

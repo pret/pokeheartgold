@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_48A",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_489",

@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 6,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -74,7 +74,7 @@
     },
     {
       "id": 3,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 20,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -128,7 +128,7 @@
     },
     {
       "id": 6,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -146,7 +146,7 @@
     },
     {
       "id": 7,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -164,7 +164,7 @@
     },
     {
       "id": 8,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 5,
       "type": 4,
       "flag": "FLAG_NOTHING",
@@ -182,7 +182,7 @@
     },
     {
       "id": 9,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -200,7 +200,7 @@
     },
     {
       "id": 10,
-      "ovid": 229,
+      "ovid": "SPRITE_GANG",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",

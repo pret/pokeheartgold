@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",

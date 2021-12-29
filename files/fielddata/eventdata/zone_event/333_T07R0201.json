@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 331,
+      "ovid": "SPRITE_GSOLDWOMAN1",
       "mvt": 8,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 1008,
+      "ovid": "SPRITE_TSURE_POKE_587",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -48,7 +48,7 @@
     },
     {
       "id": 2,
-      "ovid": 1003,
+      "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -66,7 +66,7 @@
     },
     {
       "id": 3,
-      "ovid": 1000,
+      "ovid": "SPRITE_TSURE_POKE_579",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",

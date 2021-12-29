@@ -28,7 +28,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4F4",
@@ -46,7 +46,7 @@
     },
     {
       "id": 1,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4F5",
@@ -64,7 +64,7 @@
     },
     {
       "id": 2,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4F6",
@@ -82,7 +82,7 @@
     },
     {
       "id": 3,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4F7",
@@ -100,7 +100,7 @@
     },
     {
       "id": 4,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4F8",
@@ -118,7 +118,7 @@
     },
     {
       "id": 5,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
@@ -136,7 +136,7 @@
     },
     {
       "id": 6,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_011",
@@ -154,7 +154,7 @@
     },
     {
       "id": 7,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_012",
@@ -172,7 +172,7 @@
     },
     {
       "id": 8,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_013",
@@ -190,7 +190,7 @@
     },
     {
       "id": 9,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_014",
@@ -208,7 +208,7 @@
     },
     {
       "id": 10,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_015",
@@ -226,7 +226,7 @@
     },
     {
       "id": 11,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_01A",
@@ -244,7 +244,7 @@
     },
     {
       "id": 12,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_017",
@@ -262,7 +262,7 @@
     },
     {
       "id": 13,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_018",
@@ -280,7 +280,7 @@
     },
     {
       "id": 14,
-      "ovid": 1029,
+      "ovid": "SPRITE_TSURE_POKE_608",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_305",
@@ -298,7 +298,7 @@
     },
     {
       "id": 15,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_016",

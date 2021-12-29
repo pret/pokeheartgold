@@ -1,3 +1,4 @@
+#include "constants/sprites.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -14176,12 +14177,12 @@ ScrCmd_GetFriendSprite: ; 0x02046F34
 	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
-	cmp r0, #0
+	cmp r0, #0 ; MALE
 	beq _02046F62
-	mov r0, #0
+	mov r0, #SPRITE_HERO
 	b _02046F64
 _02046F62:
-	mov r0, #0x61
+	mov r0, #SPRITE_HEROINE
 _02046F64:
 	strh r0, [r4]
 	mov r0, #1

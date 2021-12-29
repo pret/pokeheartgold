@@ -60,7 +60,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 353,
+      "ovid": "SPRITE_GSLEADER2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_263",
@@ -78,7 +78,7 @@
     },
     {
       "id": 1,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4D2",
@@ -96,7 +96,7 @@
     },
     {
       "id": 2,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4D3",
@@ -114,7 +114,7 @@
     },
     {
       "id": 3,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4D5",
@@ -132,7 +132,7 @@
     },
     {
       "id": 4,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4D6",
@@ -150,7 +150,7 @@
     },
     {
       "id": 5,
-      "ovid": 86,
+      "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
@@ -168,7 +168,7 @@
     },
     {
       "id": 6,
-      "ovid": 86,
+      "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_011",
@@ -186,7 +186,7 @@
     },
     {
       "id": 7,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -204,7 +204,7 @@
     },
     {
       "id": 8,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -222,7 +222,7 @@
     },
     {
       "id": 9,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -240,7 +240,7 @@
     },
     {
       "id": 10,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 41,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -258,7 +258,7 @@
     },
     {
       "id": 11,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",

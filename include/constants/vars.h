@@ -138,10 +138,10 @@
 #define VAR_UNK_407B                 0x407B
 #define VAR_UNK_407C                 0x407C
 #define VAR_UNK_407D                 0x407D
-#define VAR_UNK_407E                 0x407E
+#define VAR_SCENE_NEW_BARK_WEST_EXIT                 0x407E
 #define VAR_UNK_407F                 0x407F
 #define VAR_UNK_4080                 0x4080
-#define VAR_UNK_4081                 0x4081
+#define VAR_SCENE_NEW_BARK_EAST_EXIT                 0x4081
 #define VAR_UNK_4082                 0x4082
 #define VAR_UNK_4083                 0x4083
 #define VAR_UNK_4084                 0x4084

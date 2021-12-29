@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 337,
+      "ovid": "SPRITE_PCWOMAN3",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",

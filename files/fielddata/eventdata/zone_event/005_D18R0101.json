@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 148,
+      "ovid": "SPRITE_GSRIVEL",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_1C6",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 382,
+      "ovid": "SPRITE_MINAKI",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_1C7",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 355,
+      "ovid": "SPRITE_GSLEADER4",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_1CC",
@@ -74,7 +74,7 @@
     },
     {
       "id": 3,
-      "ovid": 227,
+      "ovid": "SPRITE_FIRE",
       "mvt": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "ovid": 227,
+      "ovid": "SPRITE_FIRE",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "ovid": 1039,
+      "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1E0",
@@ -128,7 +128,7 @@
     },
     {
       "id": 6,
-      "ovid": 1037,
+      "ovid": "SPRITE_TSURE_POKE_616",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1DE",
@@ -146,7 +146,7 @@
     },
     {
       "id": 7,
-      "ovid": 1038,
+      "ovid": "SPRITE_TSURE_POKE_617",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1DF",
@@ -164,7 +164,7 @@
     },
     {
       "id": 8,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
@@ -182,7 +182,7 @@
     },
     {
       "id": 9,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_011",
@@ -200,7 +200,7 @@
     },
     {
       "id": 10,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_012",
@@ -218,7 +218,7 @@
     },
     {
       "id": 11,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_431",
@@ -236,7 +236,7 @@
     },
     {
       "id": 12,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_50B",
@@ -254,7 +254,7 @@
     },
     {
       "id": 13,
-      "ovid": 1039,
+      "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_30E",

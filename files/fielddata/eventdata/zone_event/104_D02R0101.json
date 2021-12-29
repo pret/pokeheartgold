@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 148,
+      "ovid": "SPRITE_GSRIVEL",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_25C",

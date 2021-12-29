@@ -6485,14 +6485,14 @@ sub_0205F1E4: ; 0x0205F1E4
 	bx lr
 	thumb_func_end sub_0205F1E4
 
-	thumb_func_start sub_0205F1EC
-sub_0205F1EC: ; 0x0205F1EC
+	thumb_func_start FldObjSys_SetMModelNarc
+FldObjSys_SetMModelNarc: ; 0x0205F1EC
 	str r1, [r0, #0x14]
 	bx lr
-	thumb_func_end sub_0205F1EC
+	thumb_func_end FldObjSys_SetMModelNarc
 
-	thumb_func_start sub_0205F1F0
-sub_0205F1F0: ; 0x0205F1F0
+	thumb_func_start FldObjSys_GetMModelNarc
+FldObjSys_GetMModelNarc: ; 0x0205F1F0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
@@ -6503,7 +6503,7 @@ _0205F1FE:
 	ldr r0, [r4, #0x14]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205F1F0
+	thumb_func_end FldObjSys_GetMModelNarc
 
 	thumb_func_start sub_0205F204
 sub_0205F204: ; 0x0205F204
@@ -8432,7 +8432,7 @@ sub_0205FB34: ; 0x0205FB34
 	thumb_func_start sub_0205FB38
 sub_0205FB38: ; 0x0205FB38
 	push {r3, lr}
-	bl ov01_021F92DC
+	bl GetObjectEventGfxInfoPtr
 	cmp r0, #0
 	bne _0205FB46
 	mov r0, #0

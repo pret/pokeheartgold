@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 286,
+      "ovid": "SPRITE_WIFISF",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

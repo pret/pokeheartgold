@@ -1,5 +1,7 @@
-
 MSGDATA_MSG_DIR := files/msgdata/msg
+
+# TRNAME_GMM is autogenned from json
+TRNAME_GMM 	:= $(MSGDATA_MSG_DIR)/msg_0729.gmm
 MSGFILE_GMM := $(sort $(wildcard $(MSGDATA_MSG_DIR)/*.gmm) $(TRNAME_GMM))
 MSGFILE_BIN := $(patsubst %.gmm,%.bin,$(MSGFILE_GMM))
 MSGFILE_H := $(patsubst %.gmm,%.h,$(MSGFILE_GMM))

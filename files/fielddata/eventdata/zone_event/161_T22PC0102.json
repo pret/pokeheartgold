@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 286,
+      "ovid": "SPRITE_WIFISF",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -20,7 +20,7 @@
     },
     {
       "id": 1,
-      "ovid": 336,
+      "ovid": "SPRITE_PCWOMAN2",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -38,7 +38,7 @@
     },
     {
       "id": 2,
-      "ovid": 336,
+      "ovid": "SPRITE_PCWOMAN2",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",

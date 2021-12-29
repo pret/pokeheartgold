@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 347,
+      "ovid": "SPRITE_FISHING_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

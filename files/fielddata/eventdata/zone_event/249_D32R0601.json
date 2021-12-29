@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 282,
+      "ovid": "SPRITE_BFSM",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 283,
+      "ovid": "SPRITE_BFSW1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -48,7 +48,7 @@
     },
     {
       "id": 2,
-      "ovid": 351,
+      "ovid": "SPRITE_MYSTERY_2",
       "mvt": 6,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -66,7 +66,7 @@
     },
     {
       "id": 3,
-      "ovid": 326,
+      "ovid": "SPRITE_GSWOMAN2",
       "mvt": 9,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -84,7 +84,7 @@
     },
     {
       "id": 4,
-      "ovid": 345,
+      "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 7,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -102,7 +102,7 @@
     },
     {
       "id": 5,
-      "ovid": 326,
+      "ovid": "SPRITE_GSWOMAN2",
       "mvt": 6,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -120,7 +120,7 @@
     },
     {
       "id": 6,
-      "ovid": 40,
+      "ovid": "SPRITE_WORKMAN",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -138,7 +138,7 @@
     },
     {
       "id": 7,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -156,7 +156,7 @@
     },
     {
       "id": 8,
-      "ovid": 316,
+      "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -174,7 +174,7 @@
     },
     {
       "id": 9,
-      "ovid": 327,
+      "ovid": "SPRITE_GSWOMAN3",
       "mvt": 7,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -192,7 +192,7 @@
     },
     {
       "id": 10,
-      "ovid": 333,
+      "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -210,7 +210,7 @@
     },
     {
       "id": 11,
-      "ovid": 333,
+      "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

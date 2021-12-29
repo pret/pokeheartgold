@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 86,
+      "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",

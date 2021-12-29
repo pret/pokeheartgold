@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 29,
+      "ovid": "SPRITE_ASSISTANTM",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_1B7",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 222,
+      "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_1B7",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 221,
+      "ovid": "SPRITE_ROCKETW",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_1B7",
@@ -74,7 +74,7 @@
     },
     {
       "id": 3,
-      "ovid": 294,
+      "ovid": "SPRITE_RKANBUM3",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_1B7",
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "ovid": 389,
+      "ovid": "SPRITE_KURUMI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "ovid": 1008,
+      "ovid": "SPRITE_TSURE_POKE_587",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -128,7 +128,7 @@
     },
     {
       "id": 6,
-      "ovid": 332,
+      "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
@@ -146,7 +146,7 @@
     },
     {
       "id": 7,
-      "ovid": 323,
+      "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -164,7 +164,7 @@
     },
     {
       "id": 8,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_441",

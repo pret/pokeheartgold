@@ -52,7 +52,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 336,
+      "ovid": "SPRITE_PCWOMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -70,7 +70,7 @@
     },
     {
       "id": 1,
-      "ovid": 336,
+      "ovid": "SPRITE_PCWOMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -88,7 +88,7 @@
     },
     {
       "id": 2,
-      "ovid": 332,
+      "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -106,7 +106,7 @@
     },
     {
       "id": 3,
-      "ovid": 1018,
+      "ovid": "SPRITE_TSURE_POKE_597",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -124,7 +124,7 @@
     },
     {
       "id": 4,
-      "ovid": 401,
+      "ovid": "SPRITE_SIGNPOKEGEAR",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D8",
@@ -142,7 +142,7 @@
     },
     {
       "id": 5,
-      "ovid": 402,
+      "ovid": "SPRITE_SIGNBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D9",

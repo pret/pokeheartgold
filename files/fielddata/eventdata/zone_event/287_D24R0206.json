@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 291,
+      "ovid": "SPRITE_BABYBOY1_12",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_21F",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 292,
+      "ovid": "SPRITE_BABYBOY1_13",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_220",

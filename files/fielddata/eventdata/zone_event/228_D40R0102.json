@@ -36,7 +36,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 84,
+      "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -54,7 +54,7 @@
     },
     {
       "id": 1,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_48B",
@@ -72,7 +72,7 @@
     },
     {
       "id": 2,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_48C",
@@ -90,7 +90,7 @@
     },
     {
       "id": 3,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_48D",
@@ -108,7 +108,7 @@
     },
     {
       "id": 4,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_48E",
@@ -126,7 +126,7 @@
     },
     {
       "id": 5,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_48F",

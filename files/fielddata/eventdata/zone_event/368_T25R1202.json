@@ -84,7 +84,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 320,
+      "ovid": "SPRITE_GSGIRL2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -102,7 +102,7 @@
     },
     {
       "id": 1,
-      "ovid": 316,
+      "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -120,7 +120,7 @@
     },
     {
       "id": 2,
-      "ovid": 329,
+      "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -138,7 +138,7 @@
     },
     {
       "id": 3,
-      "ovid": 325,
+      "ovid": "SPRITE_GSWOMAN1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -156,7 +156,7 @@
     },
     {
       "id": 4,
-      "ovid": 319,
+      "ovid": "SPRITE_GSGIRL1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -174,7 +174,7 @@
     },
     {
       "id": 5,
-      "ovid": 331,
+      "ovid": "SPRITE_GSOLDWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -192,7 +192,7 @@
     },
     {
       "id": 6,
-      "ovid": 333,
+      "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -210,7 +210,7 @@
     },
     {
       "id": 7,
-      "ovid": 326,
+      "ovid": "SPRITE_GSWOMAN2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -228,7 +228,7 @@
     },
     {
       "id": 8,
-      "ovid": 351,
+      "ovid": "SPRITE_MYSTERY_2",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",

@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 349,
+      "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 84,
+      "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 222,
+      "ovid": "SPRITE_ROCKETM",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_UNK_1A9",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 222,
+      "ovid": "SPRITE_ROCKETM",
       "mvt": 17,
       "type": 1,
       "flag": "FLAG_UNK_1A9",
@@ -74,7 +74,7 @@
     },
     {
       "id": 3,
-      "ovid": 221,
+      "ovid": "SPRITE_ROCKETW",
       "mvt": 16,
       "type": 1,
       "flag": "FLAG_UNK_1A9",
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "ovid": 294,
+      "ovid": "SPRITE_RKANBUM3",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1A9",
@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "ovid": 414,
+      "ovid": "SPRITE_YADON",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1D5",
@@ -128,7 +128,7 @@
     },
     {
       "id": 6,
-      "ovid": 414,
+      "ovid": "SPRITE_YADON",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1D5",
@@ -146,7 +146,7 @@
     },
     {
       "id": 7,
-      "ovid": 233,
+      "ovid": "SPRITE_GANTETSU",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1AA",
@@ -164,7 +164,7 @@
     },
     {
       "id": 8,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_433",

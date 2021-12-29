@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 318,
+      "ovid": "SPRITE_GSBOY3",
       "mvt": 8,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 86,
+      "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
@@ -48,7 +48,7 @@
     },
     {
       "id": 2,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4D0",
@@ -66,7 +66,7 @@
     },
     {
       "id": 3,
-      "ovid": 262,
+      "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

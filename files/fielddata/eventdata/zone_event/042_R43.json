@@ -28,7 +28,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 345,
+      "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -46,7 +46,7 @@
     },
     {
       "id": 1,
-      "ovid": 346,
+      "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -64,7 +64,7 @@
     },
     {
       "id": 2,
-      "ovid": 377,
+      "ovid": "SPRITE_MANIA",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -82,7 +82,7 @@
     },
     {
       "id": 3,
-      "ovid": 377,
+      "ovid": "SPRITE_MANIA",
       "mvt": 4,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -100,7 +100,7 @@
     },
     {
       "id": 4,
-      "ovid": 377,
+      "ovid": "SPRITE_MANIA",
       "mvt": 5,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -118,7 +118,7 @@
     },
     {
       "id": 5,
-      "ovid": 347,
+      "ovid": "SPRITE_FISHING_2",
       "mvt": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -136,7 +136,7 @@
     },
     {
       "id": 6,
-      "ovid": 262,
+      "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -154,7 +154,7 @@
     },
     {
       "id": 7,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4AE",
@@ -172,7 +172,7 @@
     },
     {
       "id": 8,
-      "ovid": 86,
+      "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",

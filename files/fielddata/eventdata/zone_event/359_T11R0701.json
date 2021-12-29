@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 427,
+      "ovid": "SPRITE_GSWOMAN6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_282",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 34,
+      "ovid": "SPRITE_POLICEMAN",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_281",
@@ -48,7 +48,7 @@
     },
     {
       "id": 2,
-      "ovid": 421,
+      "ovid": "SPRITE_DAIGO",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2FA",

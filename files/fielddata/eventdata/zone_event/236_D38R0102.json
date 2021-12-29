@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 84,
+      "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
@@ -62,7 +62,7 @@
     },
     {
       "id": 1,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_497",
@@ -80,7 +80,7 @@
     },
     {
       "id": 2,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_498",
@@ -98,7 +98,7 @@
     },
     {
       "id": 3,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_499",
@@ -116,7 +116,7 @@
     },
     {
       "id": 4,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_49A",
@@ -134,7 +134,7 @@
     },
     {
       "id": 5,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_49B",
@@ -152,7 +152,7 @@
     },
     {
       "id": 6,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_49C",
@@ -170,7 +170,7 @@
     },
     {
       "id": 7,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_49D",
@@ -188,7 +188,7 @@
     },
     {
       "id": 8,
-      "ovid": 377,
+      "ovid": "SPRITE_MANIA",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -206,7 +206,7 @@
     },
     {
       "id": 9,
-      "ovid": 338,
+      "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 2,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -224,7 +224,7 @@
     },
     {
       "id": 10,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4AA",
@@ -242,7 +242,7 @@
     },
     {
       "id": 11,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4AB",

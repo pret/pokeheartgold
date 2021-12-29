@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 427,
+      "ovid": "SPRITE_GSWOMAN6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 341,
+      "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -48,7 +48,7 @@
     },
     {
       "id": 2,
-      "ovid": 329,
+      "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -66,7 +66,7 @@
     },
     {
       "id": 3,
-      "ovid": 146,
+      "ovid": "SPRITE_GSBOY1",
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -84,7 +84,7 @@
     },
     {
       "id": 4,
-      "ovid": 299,
+      "ovid": "SPRITE_DELIVERY2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2A8",
@@ -102,7 +102,7 @@
     },
     {
       "id": 5,
-      "ovid": 193,
+      "ovid": "SPRITE_DELIVERY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2A7",

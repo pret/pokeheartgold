@@ -52,7 +52,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 317,
+      "ovid": "SPRITE_GSBOY2",
       "mvt": 2,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -70,7 +70,7 @@
     },
     {
       "id": 1,
-      "ovid": 346,
+      "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -88,7 +88,7 @@
     },
     {
       "id": 2,
-      "ovid": 317,
+      "ovid": "SPRITE_GSBOY2",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -106,7 +106,7 @@
     },
     {
       "id": 3,
-      "ovid": 34,
+      "ovid": "SPRITE_POLICEMAN",
       "mvt": 16,
       "type": 1,
       "flag": "FLAG_UNK_1D2",
@@ -124,7 +124,7 @@
     },
     {
       "id": 4,
-      "ovid": 345,
+      "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -142,7 +142,7 @@
     },
     {
       "id": 5,
-      "ovid": 327,
+      "ovid": "SPRITE_GSWOMAN3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -160,7 +160,7 @@
     },
     {
       "id": 6,
-      "ovid": 327,
+      "ovid": "SPRITE_GSWOMAN3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -178,7 +178,7 @@
     },
     {
       "id": 7,
-      "ovid": 327,
+      "ovid": "SPRITE_GSWOMAN3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -196,7 +196,7 @@
     },
     {
       "id": 8,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_43F",
@@ -214,7 +214,7 @@
     },
     {
       "id": 9,
-      "ovid": 34,
+      "ovid": "SPRITE_POLICEMAN",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_1D1",
@@ -232,7 +232,7 @@
     },
     {
       "id": 10,
-      "ovid": 330,
+      "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -250,7 +250,7 @@
     },
     {
       "id": 11,
-      "ovid": 101,
+      "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_22D",
@@ -268,7 +268,7 @@
     },
     {
       "id": 12,
-      "ovid": 1032,
+      "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_22D",
@@ -286,7 +286,7 @@
     },
     {
       "id": 13,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 16,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -304,7 +304,7 @@
     },
     {
       "id": 14,
-      "ovid": 87,
+      "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_4FA",
@@ -322,7 +322,7 @@
     },
     {
       "id": 15,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",

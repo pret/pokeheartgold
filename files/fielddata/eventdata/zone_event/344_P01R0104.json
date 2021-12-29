@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 348,
+      "ovid": "SPRITE_SEAMAN_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

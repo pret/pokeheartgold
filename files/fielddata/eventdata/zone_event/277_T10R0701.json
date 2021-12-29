@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 364,
+      "ovid": "SPRITE_WATARU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

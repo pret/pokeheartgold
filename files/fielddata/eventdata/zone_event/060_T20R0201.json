@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 365,
+      "ovid": "SPRITE_GSMAMA",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

@@ -68,7 +68,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 329,
+      "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -86,7 +86,7 @@
     },
     {
       "id": 1,
-      "ovid": 146,
+      "ovid": "SPRITE_GSBOY1",
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -104,7 +104,7 @@
     },
     {
       "id": 2,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -122,7 +122,7 @@
     },
     {
       "id": 3,
-      "ovid": 319,
+      "ovid": "SPRITE_GSGIRL1",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -140,7 +140,7 @@
     },
     {
       "id": 4,
-      "ovid": 329,
+      "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -158,7 +158,7 @@
     },
     {
       "id": 5,
-      "ovid": 1039,
+      "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1E1",
@@ -176,7 +176,7 @@
     },
     {
       "id": 6,
-      "ovid": 382,
+      "ovid": "SPRITE_MINAKI",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_1E2",
@@ -194,7 +194,7 @@
     },
     {
       "id": 7,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
@@ -212,7 +212,7 @@
     },
     {
       "id": 8,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_011",
@@ -230,7 +230,7 @@
     },
     {
       "id": 9,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_013",
@@ -248,7 +248,7 @@
     },
     {
       "id": 10,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_014",
@@ -266,7 +266,7 @@
     },
     {
       "id": 11,
-      "ovid": 85,
+      "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_015",

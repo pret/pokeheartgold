@@ -100,7 +100,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 335,
+      "ovid": "SPRITE_PCWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -118,7 +118,7 @@
     },
     {
       "id": 1,
-      "ovid": 354,
+      "ovid": "SPRITE_GSLEADER3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_227",
@@ -136,7 +136,7 @@
     },
     {
       "id": 2,
-      "ovid": 335,
+      "ovid": "SPRITE_PCWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -154,7 +154,7 @@
     },
     {
       "id": 3,
-      "ovid": 335,
+      "ovid": "SPRITE_PCWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -172,7 +172,7 @@
     },
     {
       "id": 4,
-      "ovid": 335,
+      "ovid": "SPRITE_PCWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -190,7 +190,7 @@
     },
     {
       "id": 5,
-      "ovid": 146,
+      "ovid": "SPRITE_GSBOY1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -208,7 +208,7 @@
     },
     {
       "id": 6,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -226,7 +226,7 @@
     },
     {
       "id": 7,
-      "ovid": 325,
+      "ovid": "SPRITE_GSWOMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -244,7 +244,7 @@
     },
     {
       "id": 8,
-      "ovid": 322,
+      "ovid": "SPRITE_GSMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -262,7 +262,7 @@
     },
     {
       "id": 9,
-      "ovid": 332,
+      "ovid": "SPRITE_GSBIGMAN",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -280,7 +280,7 @@
     },
     {
       "id": 10,
-      "ovid": 335,
+      "ovid": "SPRITE_PCWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2B3",
@@ -298,7 +298,7 @@
     },
     {
       "id": 11,
-      "ovid": 330,
+      "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -316,7 +316,7 @@
     },
     {
       "id": 12,
-      "ovid": 323,
+      "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

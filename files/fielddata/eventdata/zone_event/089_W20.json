@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 342,
+      "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -62,7 +62,7 @@
     },
     {
       "id": 1,
-      "ovid": 345,
+      "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -80,7 +80,7 @@
     },
     {
       "id": 2,
-      "ovid": 346,
+      "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -98,7 +98,7 @@
     },
     {
       "id": 3,
-      "ovid": 346,
+      "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 4,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -116,7 +116,7 @@
     },
     {
       "id": 4,
-      "ovid": 323,
+      "ovid": "SPRITE_GSMAN2",
       "mvt": 6,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -134,7 +134,7 @@
     },
     {
       "id": 5,
-      "ovid": 323,
+      "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -152,7 +152,7 @@
     },
     {
       "id": 6,
-      "ovid": 343,
+      "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 10,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -170,7 +170,7 @@
     },
     {
       "id": 7,
-      "ovid": 343,
+      "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 20,
       "type": 4,
       "flag": "FLAG_NOTHING",
@@ -188,7 +188,7 @@
     },
     {
       "id": 8,
-      "ovid": 342,
+      "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 4,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -206,7 +206,7 @@
     },
     {
       "id": 9,
-      "ovid": 342,
+      "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 9,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -224,7 +224,7 @@
     },
     {
       "id": 10,
-      "ovid": 343,
+      "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_NOTHING",
@@ -242,7 +242,7 @@
     },
     {
       "id": 11,
-      "ovid": 343,
+      "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 5,
       "type": 1,
       "flag": "FLAG_NOTHING",

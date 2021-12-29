@@ -44,7 +44,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 317,
+      "ovid": "SPRITE_GSBOY2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -62,7 +62,7 @@
     },
     {
       "id": 1,
-      "ovid": 394,
+      "ovid": "SPRITE_COUNTERM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1C3",
@@ -80,7 +80,7 @@
     },
     {
       "id": 2,
-      "ovid": 40,
+      "ovid": "SPRITE_WORKMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_224",
@@ -98,7 +98,7 @@
     },
     {
       "id": 3,
-      "ovid": 394,
+      "ovid": "SPRITE_COUNTERM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_223",
@@ -116,7 +116,7 @@
     },
     {
       "id": 4,
-      "ovid": 344,
+      "ovid": "SPRITE_GSFIGHTER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_223",
@@ -134,7 +134,7 @@
     },
     {
       "id": 5,
-      "ovid": 319,
+      "ovid": "SPRITE_GSGIRL1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_223",
@@ -152,7 +152,7 @@
     },
     {
       "id": 6,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
@@ -170,7 +170,7 @@
     },
     {
       "id": 7,
-      "ovid": 394,
+      "ovid": "SPRITE_COUNTERM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1C4",

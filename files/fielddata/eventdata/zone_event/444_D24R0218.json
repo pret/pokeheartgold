@@ -244,7 +244,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 386,
+      "ovid": "SPRITE_SUIT",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2E7",

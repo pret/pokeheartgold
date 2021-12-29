@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 331,
+      "ovid": "SPRITE_GSOLDWOMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_241",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 322,
+      "ovid": "SPRITE_GSMAN1",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_UNK_241",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 341,
+      "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_241",
@@ -74,7 +74,7 @@
     },
     {
       "id": 3,
-      "ovid": 1010,
+      "ovid": "SPRITE_TSURE_POKE_589",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_241",
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23C",
@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23C",
@@ -128,7 +128,7 @@
     },
     {
       "id": 6,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23B",
@@ -146,7 +146,7 @@
     },
     {
       "id": 7,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23C",
@@ -164,7 +164,7 @@
     },
     {
       "id": 8,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23C",
@@ -182,7 +182,7 @@
     },
     {
       "id": 9,
-      "ovid": 222,
+      "ovid": "SPRITE_ROCKETM",
       "mvt": 19,
       "type": 0,
       "flag": "FLAG_UNK_23A",
@@ -200,7 +200,7 @@
     },
     {
       "id": 10,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23C",
@@ -218,7 +218,7 @@
     },
     {
       "id": 11,
-      "ovid": 316,
+      "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_240",
@@ -236,7 +236,7 @@
     },
     {
       "id": 12,
-      "ovid": 222,
+      "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23A",

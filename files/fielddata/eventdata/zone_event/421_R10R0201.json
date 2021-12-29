@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 34,
+      "ovid": "SPRITE_POLICEMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 338,
+      "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 338,
+      "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -74,7 +74,7 @@
     },
     {
       "id": 3,
-      "ovid": 34,
+      "ovid": "SPRITE_POLICEMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "ovid": 338,
+      "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "ovid": 338,
+      "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -128,7 +128,7 @@
     },
     {
       "id": 6,
-      "ovid": 332,
+      "ovid": "SPRITE_GSBIGMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",

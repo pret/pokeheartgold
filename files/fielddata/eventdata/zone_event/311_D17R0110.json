@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
@@ -20,7 +20,7 @@
     },
     {
       "id": 1,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
@@ -38,7 +38,7 @@
     },
     {
       "id": 2,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
@@ -56,7 +56,7 @@
     },
     {
       "id": 3,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
@@ -74,7 +74,7 @@
     },
     {
       "id": 4,
-      "ovid": 232,
+      "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
@@ -92,7 +92,7 @@
     },
     {
       "id": 5,
-      "ovid": 425,
+      "ovid": "SPRITE_HOU_OBJ01",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_242",

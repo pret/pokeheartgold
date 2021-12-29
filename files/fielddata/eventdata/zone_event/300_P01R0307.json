@@ -2,7 +2,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 316,
+      "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_UNK_219",
@@ -20,7 +20,7 @@
     },
     {
       "id": 1,
-      "ovid": 348,
+      "ovid": "SPRITE_SEAMAN_2",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_22A",
@@ -38,7 +38,7 @@
     },
     {
       "id": 2,
-      "ovid": 346,
+      "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 3,
       "type": 1,
       "flag": "FLAG_UNK_22A",
@@ -56,7 +56,7 @@
     },
     {
       "id": 3,
-      "ovid": 348,
+      "ovid": "SPRITE_SEAMAN_2",
       "mvt": 15,
       "type": 1,
       "flag": "FLAG_UNK_22A",
@@ -74,7 +74,7 @@
     },
     {
       "id": 4,
-      "ovid": 378,
+      "ovid": "SPRITE_JUGGRER",
       "mvt": 14,
       "type": 1,
       "flag": "FLAG_UNK_22A",
@@ -92,7 +92,7 @@
     },
     {
       "id": 5,
-      "ovid": 347,
+      "ovid": "SPRITE_FISHING_2",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
@@ -110,7 +110,7 @@
     },
     {
       "id": 6,
-      "ovid": 348,
+      "ovid": "SPRITE_SEAMAN_2",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
@@ -128,7 +128,7 @@
     },
     {
       "id": 7,
-      "ovid": 344,
+      "ovid": "SPRITE_GSFIGHTER",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_22B",
@@ -146,7 +146,7 @@
     },
     {
       "id": 8,
-      "ovid": 348,
+      "ovid": "SPRITE_SEAMAN_2",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
@@ -164,7 +164,7 @@
     },
     {
       "id": 9,
-      "ovid": 146,
+      "ovid": "SPRITE_GSBOY1",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
@@ -182,7 +182,7 @@
     },
     {
       "id": 10,
-      "ovid": 146,
+      "ovid": "SPRITE_GSBOY1",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",
@@ -200,7 +200,7 @@
     },
     {
       "id": 11,
-      "ovid": 329,
+      "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 0,
       "type": 1,
       "flag": "FLAG_UNK_22C",

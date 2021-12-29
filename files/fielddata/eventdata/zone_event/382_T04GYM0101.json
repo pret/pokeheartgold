@@ -20,7 +20,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 168,
+      "ovid": "SPRITE_SUNGLASSES",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_253",
@@ -38,7 +38,7 @@
     },
     {
       "id": 1,
-      "ovid": 343,
+      "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 20,
       "type": 1,
       "flag": "FLAG_UNK_253",
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "ovid": 343,
+      "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 20,
       "type": 4,
       "flag": "FLAG_UNK_253",
@@ -74,7 +74,7 @@
     },
     {
       "id": 3,
-      "ovid": 343,
+      "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 20,
       "type": 1,
       "flag": "FLAG_UNK_253",
@@ -92,7 +92,7 @@
     },
     {
       "id": 4,
-      "ovid": 348,
+      "ovid": "SPRITE_SEAMAN_2",
       "mvt": 8,
       "type": 1,
       "flag": "FLAG_UNK_253",
@@ -110,7 +110,7 @@
     },
     {
       "id": 5,
-      "ovid": 348,
+      "ovid": "SPRITE_SEAMAN_2",
       "mvt": 5,
       "type": 1,
       "flag": "FLAG_UNK_253",
@@ -128,7 +128,7 @@
     },
     {
       "id": 6,
-      "ovid": 370,
+      "ovid": "SPRITE_GSLEADER11",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_253",
@@ -146,7 +146,7 @@
     },
     {
       "id": 7,
-      "ovid": 222,
+      "ovid": "SPRITE_ROCKETM",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_254",
@@ -164,7 +164,7 @@
     },
     {
       "id": 8,
-      "ovid": 349,
+      "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_257",
@@ -182,7 +182,7 @@
     },
     {
       "id": 9,
-      "ovid": 349,
+      "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_257",

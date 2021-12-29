@@ -240,7 +240,7 @@ scr_seq_0842_T20_0314:
 	goto scr_seq_0842_T20_0347
 
 scr_seq_0842_T20_032A:
-	comparevartovalue VAR_UNK_407E, 1
+	comparevartovalue VAR_SCENE_NEW_BARK_WEST_EXIT, 1
 	gotoif ne, scr_seq_0842_T20_0340
 	npc_msg 0
 	goto scr_seq_0842_T20_0347
@@ -605,7 +605,7 @@ scr_seq_0842_T20_0981:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	setvar VAR_UNK_407E, 1
+	setvar VAR_SCENE_NEW_BARK_WEST_EXIT, 1
 	releaseall
 	end
 

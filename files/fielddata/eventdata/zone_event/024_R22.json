@@ -12,7 +12,7 @@
   "objects": [
     {
       "id": 0,
-      "ovid": 328,
+      "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "ovid": 385,
+      "ovid": "SPRITE_SAKAKI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_301",
@@ -48,7 +48,7 @@
     },
     {
       "id": 2,
-      "ovid": 148,
+      "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_301",
@@ -66,7 +66,7 @@
     },
     {
       "id": 3,
-      "ovid": 101,
+      "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_302",

@@ -13,6 +13,7 @@
 #include "constants/pokemon.h"
 #include "constants/std_script.h"
 #include "constants/trainers.h"
+#include "constants/sprites.h"
 
 #ifdef PM_ASM
 #define lt    0

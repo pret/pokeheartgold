@@ -82,7 +82,7 @@ scr_seq_0021_D17R0110_0103:
 	callif eq, scr_seq_0021_D17R0110_0171
 	releaseall
 	setflag FLAG_UNK_108
-	setvar VAR_UNK_4081, 3
+	setvar VAR_SCENE_NEW_BARK_EAST_EXIT, 3
 	setflag FLAG_HIDE_NEW_BARK_FRIEND
 	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_HIDE_NEW_BARK_FRIEND_2

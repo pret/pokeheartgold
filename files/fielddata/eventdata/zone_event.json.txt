@@ -2,6 +2,7 @@
 #include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/vars.h"
+#include "constants/sprites.h"
 
 	.rodata
 
