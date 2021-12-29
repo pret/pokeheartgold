@@ -33,11 +33,11 @@ scr_seq_0232_R32_003B:
 	comparevartovalue VAR_TEMP_x4000, 6
 	gotoif eq, scr_seq_0232_R32_0083
 scr_seq_0232_R32_0079:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0232_R32_008D
 
 scr_seq_0232_R32_0083:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	goto scr_seq_0232_R32_008D
 
 scr_seq_0232_R32_008D:

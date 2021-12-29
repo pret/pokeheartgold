@@ -131,7 +131,7 @@ scr_seq_0151_016E:
 scr_seq_0151_018C:
 	.byte 0x02, 0x00
 scr_seq_0151_018E:
-	scrcmd_507 32780
+	count_pc_empty_space VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0151_01B0
 	get_party_count VAR_SPECIAL_x8004
@@ -315,7 +315,7 @@ scr_seq_0151_03E3:
 	wait_fanfare
 	npc_msg 32
 	buffer_players_name 0
-	buffer_item_name 3, 16385
+	buffer_item_name 3, VAR_TEMP_x4001
 	setvar VAR_SPECIAL_x8004, 37
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x4000
 	scrcmd_046 VAR_SPECIAL_x8004

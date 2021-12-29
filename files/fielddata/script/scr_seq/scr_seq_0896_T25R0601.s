@@ -207,7 +207,7 @@ scr_seq_0896_T25R0601_0276:
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
 	giveitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg 11
 	npc_msg 9
 	goto scr_seq_0896_T25R0601_031F

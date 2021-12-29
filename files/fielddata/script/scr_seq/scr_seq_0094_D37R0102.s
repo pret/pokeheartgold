@@ -453,7 +453,7 @@ scr_seq_0094_D37R0102_063F:
 	goto scr_seq_0094_D37R0102_0664
 
 scr_seq_0094_D37R0102_0664:
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	scrcmd_198 1, 32774
 	npc_msg 2
 	getmenuchoice VAR_SPECIAL_x800C
@@ -521,9 +521,9 @@ scr_seq_0094_D37R0102_0796:
 scr_seq_0094_D37R0102_07C6:
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, 32780
+	buffer_pocket_name 1, VAR_SPECIAL_x800C
 	npc_msg 3
 	npc_msg 4
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C

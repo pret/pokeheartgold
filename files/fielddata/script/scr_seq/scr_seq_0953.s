@@ -812,7 +812,7 @@ scr_seq_0953_0C7F:
 scr_seq_0953_0C9C:
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif eq, scr_seq_0953_0CE0
-	scrcmd_142 16400, 32780
+	get_phone_book_rematch VAR_TEMP_x4010, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0953_0D02
 	scrcmd_614 32780
@@ -918,7 +918,7 @@ scr_seq_0953_0DF9:
 	wait_fanfare
 	npc_msg 101
 	scrcmd_461 1, 32772, 32773
-	register_gear_number 16400
+	register_gear_number VAR_TEMP_x4010
 	goto scr_seq_0953_0E2F
 
 scr_seq_0953_0E28:

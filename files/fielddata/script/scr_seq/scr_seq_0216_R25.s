@@ -34,7 +34,7 @@ scr_seq_0216_R25_0050:
 	gotoif eq, scr_seq_0216_R25_011B
 	comparevartovalue VAR_UNK_4089, 2
 	gotoif eq, scr_seq_0216_R25_011B
-	scrcmd_142 29, 16385
+	get_phone_book_rematch 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0216_R25_0115
 	scrcmd_147 29, 16385

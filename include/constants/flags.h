@@ -404,8 +404,8 @@
 #define FLAG_UNK_18D                 0x18D
 #define FLAG_UNK_18E                 0x18E
 #define FLAG_UNK_18F                 0x18F
-#define FLAG_UNK_190                 0x190
-#define FLAG_HIDE_ELMS_LAB_AIDE                 0x191
+#define FLAG_HIDE_NEW_BARK_RIVAL                 0x190
+#define FLAG_HIDE_ELMS_LAB_ELM                 0x191
 #define FLAG_UNK_192                 0x192
 #define FLAG_UNK_193                 0x193
 #define FLAG_UNK_194                 0x194
@@ -417,7 +417,7 @@
 #define FLAG_UNK_19A                 0x19A
 #define FLAG_UNK_19B                 0x19B
 #define FLAG_HIDE_CHERRYGROVE_RIVAL                 0x19C
-#define FLAG_HIDE_ELMS_LAB_ELM                 0x19D
+#define FLAG_HIDE_ELMS_LAB_OFFICER                 0x19D
 #define FLAG_UNK_19E                 0x19E
 #define FLAG_UNK_19F                 0x19F
 #define FLAG_UNK_1A0                 0x1A0
@@ -586,7 +586,7 @@
 #define FLAG_UNK_243                 0x243
 #define FLAG_UNK_244                 0x244
 #define FLAG_UNK_245                 0x245
-#define FLAG_HIDE_ELMS_LAB_OFFICER                 0x246
+#define FLAG_HIDE_ELMS_LAB_AIDE                 0x246
 #define FLAG_UNK_247                 0x247
 #define FLAG_UNK_248                 0x248
 #define FLAG_UNK_249                 0x249
@@ -642,7 +642,7 @@
 #define FLAG_UNK_27B                 0x27B
 #define FLAG_UNK_27C                 0x27C
 #define FLAG_UNK_27D                 0x27D
-#define FLAG_UNK_27E                 0x27E
+#define FLAG_HIDE_CAMERON                 0x27E
 #define FLAG_UNK_27F                 0x27F
 #define FLAG_UNK_280                 0x280
 #define FLAG_UNK_281                 0x281
@@ -682,7 +682,7 @@
 #define FLAG_UNK_2A3                 0x2A3
 #define FLAG_UNK_2A4                 0x2A4
 #define FLAG_UNK_2A5                 0x2A5
-#define FLAG_HIDE_NEW_BARK_RIVAL                 0x2A6
+#define FLAG_HIDE_NEW_BARK_MOM                 0x2A6
 #define FLAG_UNK_2A7                 0x2A7
 #define FLAG_UNK_2A8                 0x2A8
 #define FLAG_UNK_2A9                 0x2A9
@@ -748,7 +748,7 @@
 #define FLAG_UNK_2E5                 0x2E5
 #define FLAG_UNK_2E6                 0x2E6
 #define FLAG_UNK_2E7                 0x2E7
-#define FLAG_UNK_2E8                 0x2E8
+#define FLAG_HIDE_NEW_BARK_FRIEND_2                 0x2E8
 #define FLAG_UNK_2E9                 0x2E9
 #define FLAG_UNK_2EA                 0x2EA
 #define FLAG_UNK_2EB                 0x2EB

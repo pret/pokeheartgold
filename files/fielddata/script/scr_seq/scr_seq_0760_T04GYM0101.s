@@ -14,7 +14,7 @@
 	scrdef_end
 
 scr_seq_0760_T04GYM0101_0022:
-	scrcmd_142 29, 16385
+	get_phone_book_rematch 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0760_T04GYM0101_00ED
 	check_badge 15, VAR_TEMP_x4000

@@ -519,13 +519,13 @@ scr_seq_0938_T29_068D:
 scr_seq_0938_T29_0691:
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg 33
 	wait_fanfare
 	buffer_players_name 0
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	npc_msg 34
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 1
@@ -535,7 +535,7 @@ scr_seq_0938_T29_06C4:
 	end
 
 scr_seq_0938_T29_06CA:
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 35
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0

@@ -312,7 +312,7 @@ scr_seq_0030_D23R0102_03F5:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_198 0, 16698
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg 35
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

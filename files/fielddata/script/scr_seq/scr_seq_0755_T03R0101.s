@@ -85,11 +85,11 @@ scr_seq_0755_T03R0101_0115:
 	gotoif eq, scr_seq_0755_T03R0101_0139
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0755_T03R0101_0139
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	end
 
 scr_seq_0755_T03R0101_0139:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	end
 
 scr_seq_0755_T03R0101_013F:
@@ -222,7 +222,7 @@ scr_seq_0755_T03R0101_034C:
 	getfossilpokemon VAR_UNK_407F, VAR_SPECIAL_x8002
 	comparevartovalue VAR_UNK_407F, 0
 	gotoif eq, scr_seq_0755_T03R0101_053F
-	buffer_item_name 0, 32770
+	buffer_item_name 0, VAR_SPECIAL_x8002
 	npc_msg 7
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -325,7 +325,7 @@ scr_seq_0755_T03R0101_04EF:
 
 scr_seq_0755_T03R0101_04F7:
 	getfossilminimumamount VAR_SPECIAL_x8002, VAR_SPECIAL_x8004, 1
-	buffer_item_name 0, 32770
+	buffer_item_name 0, VAR_SPECIAL_x8002
 	npc_msg 7
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -365,7 +365,7 @@ scr_seq_0755_T03R0101_0575:
 	play_fanfare SEQ_ME_POKEGET
 	npc_msg 8
 	wait_fanfare
-	scrcmd_137 16511, 20, 0, 0, 0, 32780
+	give_mon VAR_UNK_407F, 20, 0, 0, 0, VAR_SPECIAL_x800C
 	scrcmd_420 116
 	setvar VAR_UNK_407F, 0
 	npc_msg 9

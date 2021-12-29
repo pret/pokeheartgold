@@ -103,7 +103,7 @@ scr_seq_0812_T08R0201_0144:
 	gotoif eq, scr_seq_0812_T08R0201_0190
 scr_seq_0812_T08R0201_015C:
 	setvar VAR_SPECIAL_x800C, 0
-	scrcmd_507 32780
+	count_pc_empty_space VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif lt, scr_seq_0812_T08R0201_0274
 	setvar VAR_SPECIAL_x800C, 0

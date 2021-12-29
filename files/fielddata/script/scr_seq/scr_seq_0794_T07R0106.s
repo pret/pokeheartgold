@@ -119,9 +119,9 @@ scr_seq_0794_T07R0106_011C:
 	comparevartovalue VAR_SPECIAL_x8000, 2
 	callif eq, scr_seq_0794_T07R0106_0114
 	scrcmd_115
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg 4
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
@@ -130,7 +130,7 @@ scr_seq_0794_T07R0106_011C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0794_T07R0106_01E7
 	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg 5
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

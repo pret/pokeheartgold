@@ -9,7 +9,7 @@
 	scrdef_end
 
 scr_seq_0786_T07GYM0101_000E:
-	scrcmd_142 28, 16385
+	get_phone_book_rematch 28, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0786_T07GYM0101_0107
 	scrcmd_147 28, 16385

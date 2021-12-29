@@ -74,7 +74,7 @@ scr_seq_0858_T22FS0101_00CD:
 	releaseall
 	setvar VAR_SCENE_VIOLET_CITY_OW, 3
 	clearflag FLAG_HIDE_VIOLET_KIMONO_GIRL
-	clearflag FLAG_HIDE_ELMS_LAB_OFFICER
+	clearflag FLAG_HIDE_ELMS_LAB_AIDE
 	setvar VAR_SCENE_ELMS_LAB, 7
 	end
 

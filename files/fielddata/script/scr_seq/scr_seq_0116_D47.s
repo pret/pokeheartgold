@@ -34,11 +34,11 @@ scr_seq_0116_D47_0057:
 	gotoif eq, scr_seq_0116_D47_007B
 	comparevartovalue VAR_TEMP_x4000, 4
 	gotoif eq, scr_seq_0116_D47_007B
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	end
 
 scr_seq_0116_D47_007B:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	end
 
 scr_seq_0116_D47_0081:

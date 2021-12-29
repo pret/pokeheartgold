@@ -56,11 +56,11 @@ scr_seq_0076_D32_00AF:
 	gotoif eq, scr_seq_0076_D32_00D7
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif eq, scr_seq_0076_D32_00D7
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0076_D32_00DB
 
 scr_seq_0076_D32_00D7:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 scr_seq_0076_D32_00DB:
 	setflag FLAG_UNK_234
 	end
@@ -700,7 +700,7 @@ scr_seq_0076_D32_09DB:
 	goto scr_seq_0076_D32_09F3
 
 scr_seq_0076_D32_09F3:
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	scrcmd_198 1, 32774
 	npc_msg 23
 	getmenuchoice VAR_SPECIAL_x800C
@@ -720,9 +720,9 @@ scr_seq_0076_D32_0A24:
 	scrcmd_556 32774
 	scrcmd_118 1
 	play_se SEQ_SE_DP_REGI
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, 32780
+	buffer_pocket_name 1, VAR_SPECIAL_x800C
 	npc_msg 26
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8000, 0
@@ -990,7 +990,7 @@ scr_seq_0076_D32_0F22:
 	goto scr_seq_0076_D32_0F40
 
 scr_seq_0076_D32_0F40:
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	scrcmd_197 1, 32769
 	scrcmd_198 2, 32774
 	npc_msg 24

@@ -47,17 +47,17 @@ scr_seq_0122_D49_0073:
 	gotoif eq, scr_seq_0122_D49_00CC
 	comparevartovalue VAR_UNK_40DB, 0
 	gotoif eq, scr_seq_0122_D49_00CC
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	clearflag FLAG_UNK_27F
 	end
 
 scr_seq_0122_D49_00C2:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	setflag FLAG_UNK_27F
 	end
 
 scr_seq_0122_D49_00CC:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	setflag FLAG_UNK_27F
 	end
 

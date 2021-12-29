@@ -534,7 +534,7 @@ scr_seq_0119_D47R0101_0736:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_0846
-	scrcmd_507 32780
+	count_pc_empty_space VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0119_D47R0101_0773
 	get_party_count VAR_SPECIAL_x8004
@@ -948,7 +948,7 @@ scr_seq_0119_D47R0101_0C8F:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_0D9F
-	scrcmd_507 32780
+	count_pc_empty_space VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0119_D47R0101_0CCC
 	get_party_count VAR_SPECIAL_x8004

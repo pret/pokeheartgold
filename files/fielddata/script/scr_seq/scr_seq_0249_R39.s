@@ -25,11 +25,11 @@ scr_seq_0249_R39_0033:
 	gotoif eq, scr_seq_0249_R39_005B
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0249_R39_005B
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0249_R39_005F
 
 scr_seq_0249_R39_005B:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 scr_seq_0249_R39_005F:
 	scrcmd_379 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
@@ -44,7 +44,7 @@ scr_seq_0249_R39_0087:
 scr_seq_0249_R39_008B:
 	checkflag FLAG_UNK_162
 	gotoif FALSE, scr_seq_0249_R39_00E3
-	scrcmd_142 36, 16385
+	get_phone_book_rematch 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0249_R39_00E3
 	get_weekday VAR_TEMP_x4000

@@ -301,19 +301,19 @@ scr_seq_0838_T11R0702_0427:
 scr_seq_0838_T11R0702_0432:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_0434:
-	scrcmd_140 32780, 315, 32768
+	mon_has_move VAR_SPECIAL_x800C, MOVE_OVERHEAT, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0838_T11R0702_04BE
-	scrcmd_140 32780, 59, 32768
+	mon_has_move VAR_SPECIAL_x800C, MOVE_BLIZZARD, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0838_T11R0702_04BE
-	scrcmd_140 32780, 56, 32768
+	mon_has_move VAR_SPECIAL_x800C, MOVE_HYDRO_PUMP, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0838_T11R0702_04BE
-	scrcmd_140 32780, 403, 32768
+	mon_has_move VAR_SPECIAL_x800C, MOVE_AIR_SLASH, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0838_T11R0702_04BE
-	scrcmd_140 32780, 437, 32768
+	mon_has_move VAR_SPECIAL_x800C, MOVE_LEAF_STORM, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0838_T11R0702_04BE
 	scrcmd_396 32780, 32768

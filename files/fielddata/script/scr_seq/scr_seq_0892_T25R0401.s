@@ -30,7 +30,7 @@ scr_seq_0892_T25R0401_004B:
 	comparevartovalue VAR_SPECIAL_x8005, 6
 	gotoif eq, scr_seq_0892_T25R0401_00DE
 	npc_msg 1
-	scrcmd_137 133, 5, 0, 0, 0, 32780
+	give_mon SPECIES_EEVEE, 5, 0, 0, 0, VAR_SPECIAL_x800C
 	setflag FLAG_UNK_095
 	buffer_players_name 0
 	npc_msg 2

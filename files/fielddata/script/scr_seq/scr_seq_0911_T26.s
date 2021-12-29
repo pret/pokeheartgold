@@ -54,17 +54,17 @@ scr_seq_0911_T26_00B2:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, scr_seq_0911_T26_00CD
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	goto scr_seq_0911_T26_00E8
 
 scr_seq_0911_T26_00CD:
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_0911_T26_00E4
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	goto scr_seq_0911_T26_00E8
 
 scr_seq_0911_T26_00E4:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 scr_seq_0911_T26_00E8:
 	end
 

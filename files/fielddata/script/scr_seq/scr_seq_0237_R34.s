@@ -19,7 +19,7 @@
 	scrdef_end
 
 scr_seq_0237_R34_0036:
-	scrcmd_144 VAR_OBJ_0
+	get_friend_sprite VAR_OBJ_0
 	scrcmd_388 16384
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0237_R34_0057
@@ -44,11 +44,11 @@ scr_seq_0237_R34_006E:
 	comparevartovalue VAR_TEMP_x4000, 4
 	gotoif eq, scr_seq_0237_R34_00A9
 scr_seq_0237_R34_009F:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0237_R34_00AD
 
 scr_seq_0237_R34_00A9:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 scr_seq_0237_R34_00AD:
 	scrcmd_379 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3

@@ -28,7 +28,7 @@ scr_seq_0857_T22_003E:
 	callstd std_phone_call
 	setvar VAR_SCENE_VIOLET_CITY_OW, 2
 	clearflag FLAG_HIDE_VIOLET_SHOP_KIMONO_GIRL
-	setflag FLAG_HIDE_ELMS_LAB_OFFICER
+	setflag FLAG_HIDE_ELMS_LAB_AIDE
 	end
 
 scr_seq_0857_T22_0068:

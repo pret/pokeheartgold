@@ -601,13 +601,13 @@ scr_seq_0010_D02R0104_0825:
 	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg 2
 	wait_fanfare
 	buffer_players_name 0
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	npc_msg 3
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 1
@@ -617,7 +617,7 @@ scr_seq_0010_D02R0104_0860:
 	end
 
 scr_seq_0010_D02R0104_0866:
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 4
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0

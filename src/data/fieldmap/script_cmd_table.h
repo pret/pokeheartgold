@@ -137,14 +137,14 @@ extern BOOL ScrCmd_133(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_134(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_135(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_136(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_137(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveEgg(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_139(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_140(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_141(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_142(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetMonMove(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MonHasMove(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AnyMonHasMove(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPhoneBookRematch(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NameRival(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_144(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_147(SCRIPTCONTEXT *ctx);
@@ -507,7 +507,7 @@ extern BOOL ScrCmd_503(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_504(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_505(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_506(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_507(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountPCEmptySpace(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_508(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_509(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_510(SCRIPTCONTEXT *ctx);
@@ -992,14 +992,14 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_134,
     ScrCmd_135,
     ScrCmd_136,
-    ScrCmd_137,
+    ScrCmd_GiveMon,
     ScrCmd_GiveEgg,
-    ScrCmd_139,
-    ScrCmd_140,
-    ScrCmd_141,
-    ScrCmd_142,
+    ScrCmd_SetMonMove,
+    ScrCmd_MonHasMove,
+    ScrCmd_AnyMonHasMove,
+    ScrCmd_GetPhoneBookRematch,
     ScrCmd_NameRival,
-    ScrCmd_144,
+    ScrCmd_GetFriendSprite,
     ScrCmd_RegisterPokegearCard,
     ScrCmd_RegisterGearNumber,
     ScrCmd_147,
@@ -1362,7 +1362,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_504,
     ScrCmd_505,
     ScrCmd_506,
-    ScrCmd_507,
+    ScrCmd_CountPCEmptySpace,
     ScrCmd_508,
     ScrCmd_509,
     ScrCmd_510,

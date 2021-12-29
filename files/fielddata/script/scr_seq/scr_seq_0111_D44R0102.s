@@ -73,7 +73,7 @@ scr_seq_0111_D44R0102_00F4:
 	end
 
 scr_seq_0111_D44R0102_00F6:
-	scrcmd_142 27, 16385
+	get_phone_book_rematch 27, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0111_D44R0102_0158
 	scrcmd_522 16384

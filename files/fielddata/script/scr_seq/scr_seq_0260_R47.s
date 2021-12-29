@@ -45,7 +45,7 @@ scr_seq_0260_R47_009F:
 scr_seq_0260_R47_00B0:
 	.byte 0x02, 0x00
 scr_seq_0260_R47_00B2:
-	scrcmd_142 32, 16385
+	get_phone_book_rematch 32, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0260_R47_00E6
 	get_weekday VAR_TEMP_x4002

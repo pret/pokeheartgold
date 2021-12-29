@@ -672,14 +672,14 @@ scr_seq_0003_085F:
 
 scr_seq_0003_0892:
 	buffer_players_name 0
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg 28
 	goto scr_seq_0003_08C9
 
 scr_seq_0003_08A3:
 	comparevartovalue VAR_SPECIAL_x8005, 1
 	gotoif gt, scr_seq_0003_08BB
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	goto scr_seq_0003_08C0
 
 scr_seq_0003_08BB:
@@ -693,7 +693,7 @@ scr_seq_0003_08C9:
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x8005, 1
 	gotoif gt, scr_seq_0003_08E6
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	goto scr_seq_0003_08EB
 
 scr_seq_0003_08E6:
@@ -721,42 +721,42 @@ scr_seq_0003_08EB:
 
 scr_seq_0003_0961:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_0972:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_0983:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_0994:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09A5:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09B6:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09C7:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09D8:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0003_09E9
 
 scr_seq_0003_09E9:

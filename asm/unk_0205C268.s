@@ -23088,8 +23088,8 @@ _020666BC: .word sub_020665AC
 _020666C0: .word 0x00000969
 	thumb_func_end sub_020666B4
 
-	thumb_func_start sub_020666C4
-sub_020666C4: ; 0x020666C4
+	thumb_func_start EventFlagCheck_RematchGroup
+EventFlagCheck_RematchGroup: ; 0x020666C4
 	ldr r2, _020666D0 ; =0x0000097B
 	ldr r3, _020666D4 ; =sub_020665AC
 	add r1, r1, r2
@@ -23099,7 +23099,7 @@ sub_020666C4: ; 0x020666C4
 	.balign 4, 0
 _020666D0: .word 0x0000097B
 _020666D4: .word sub_020665AC
-	thumb_func_end sub_020666C4
+	thumb_func_end EventFlagCheck_RematchGroup
 
 	thumb_func_start sub_020666D8
 sub_020666D8: ; 0x020666D8

@@ -290,7 +290,7 @@ scr_seq_0145_0440:
 scr_seq_0145_046E:
 	wait_fanfare
 	buffer_players_name 0
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 7
@@ -313,7 +313,7 @@ scr_seq_0145_046E:
 
 scr_seq_0145_04EE:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_04FF:
@@ -321,49 +321,49 @@ scr_seq_0145_04FF:
 	.byte 0x00
 scr_seq_0145_0501:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_0512:
 	.byte 0x02, 0x00
 scr_seq_0145_0514:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_0525:
 	.byte 0x02, 0x00
 scr_seq_0145_0527:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_0538:
 	.byte 0x02, 0x00
 scr_seq_0145_053A:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_054B:
 	.byte 0x02, 0x00
 scr_seq_0145_054D:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_055E:
 	.byte 0x02, 0x00
 scr_seq_0145_0560:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_0571:
 	.byte 0x02, 0x00
 scr_seq_0145_0573:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, 32780
+	buffer_pocket_name 2, VAR_SPECIAL_x800C
 	goto scr_seq_0145_0586
 
 scr_seq_0145_0584:
@@ -379,8 +379,8 @@ scr_seq_0145_059B:
 	.byte 0x02, 0x00
 scr_seq_0145_059D:
 	buffer_players_name 0
-	buffer_item_name_indef 1, 32772
-	buffer_tmhm_move_name 2, 32772
+	buffer_item_name_indef 1, VAR_SPECIAL_x8004
+	buffer_tmhm_move_name 2, VAR_SPECIAL_x8004
 	npc_msg 6
 	goto scr_seq_0145_046E
 
@@ -388,14 +388,14 @@ scr_seq_0145_05B3:
 	.byte 0x02, 0x00
 scr_seq_0145_05B5:
 	buffer_players_name 0
-	buffer_item_name_indef 1, 32772
+	buffer_item_name_indef 1, VAR_SPECIAL_x8004
 	npc_msg 3
 	goto scr_seq_0145_046E
 
 scr_seq_0145_05C6:
 	.byte 0x02, 0x00
 scr_seq_0145_05C8:
-	buffer_item_name 0, 32772
+	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg 4
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0

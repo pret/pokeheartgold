@@ -45,7 +45,7 @@ scr_seq_0153_P01R0102_0080:
 	end
 
 scr_seq_0153_P01R0102_0097:
-	scrcmd_142 35, 16385
+	get_phone_book_rematch 35, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0153_P01R0102_00C1
 	get_weekday VAR_TEMP_x4000

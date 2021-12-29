@@ -348,7 +348,7 @@ _021E799A:
 	str r0, [r5, #0x38]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -6502,7 +6502,7 @@ _021EA9AA:
 	ldr r1, [r5, #0x10]
 	add r3, r7, #0
 	ldr r1, [r1, #0x24]
-	bl sub_020932A4
+	bl PhoneBookTrainerGetRematchInfo
 	cmp r0, #0
 	beq _021EA9E0
 	mov r0, #1
@@ -12695,7 +12695,7 @@ ov101_021ED980: ; 0x021ED980
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -18422,7 +18422,7 @@ ov101_021F0694: ; 0x021F0694
 	str r0, [sp, #0x20]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	str r0, [sp, #0x24]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x34]
@@ -21598,7 +21598,7 @@ ov101_021F1EE8: ; 0x021F1EE8
 	mov r1, #0
 _021F1EF2:
 	add r0, r1, #0
-	bl sub_02095FEC
+	bl GetPhoneMessageGmm
 	add r2, r0, #0
 	ldr r3, [r5]
 	mov r0, #0
@@ -21884,7 +21884,7 @@ ov101_021F2110: ; 0x021F2110
 	add r4, r0, #0
 	add r0, #0xa0
 	ldrb r0, [r0]
-	bl sub_02095FEC
+	bl GetPhoneMessageGmm
 	add r2, r0, #0
 	ldr r3, [r4]
 	mov r0, #0
@@ -22068,7 +22068,7 @@ _021F2276:
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r4, #0x20]
 	mov r2, #1
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _021F2284:
@@ -23467,7 +23467,7 @@ ov101_021F2CB8: ; 0x021F2CB8
 	add r4, r1, #0
 	ldrb r1, [r6, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	beq _021F2CD2
 	mov r0, #0
@@ -23565,7 +23565,7 @@ _021F2D62:
 _021F2D78:
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	bne _021F2D88
 	mov r0, #0
@@ -24620,7 +24620,7 @@ _021F3568:
 	beq _021F3584
 	ldr r0, [r5, #0x20]
 	mov r1, #0x10
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	bne _021F3584
 	mov r0, #0x57
@@ -24646,7 +24646,7 @@ _021F359C:
 	ldr r0, [r5, #0x20]
 	mov r1, #0x10
 	mov r2, #1
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 _021F35B2:
 	add r4, #0x23
 	ldrb r0, [r4]
@@ -25868,7 +25868,7 @@ _021F3ED2:
 	strb r1, [r0]
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r2, [r1]
@@ -26043,7 +26043,7 @@ _021F4014:
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r5, #0x20]
 	mov r2, #1
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 	b _021F405A
 _021F4036:
 	ldr r1, [r5, #0x4c]
@@ -26147,7 +26147,7 @@ ov101_021F40E8: ; 0x021F40E8
 	beq _021F40FE
 	ldr r0, [r0, #0x20]
 	mov r1, #0x12
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	beq _021F40FE
 	add r4, r4, #1

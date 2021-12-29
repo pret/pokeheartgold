@@ -26,22 +26,22 @@
 	scrdef_end
 
 scr_seq_0832_T11R0101_0052:
-	scrcmd_142 17, 16384
-	scrcmd_142 26, 16385
-	scrcmd_142 27, 16386
-	scrcmd_142 28, 16387
-	scrcmd_142 29, 16388
-	scrcmd_142 30, 16389
-	scrcmd_142 31, 16390
-	scrcmd_142 32, 16391
-	scrcmd_142 33, 16392
-	scrcmd_142 34, 16393
-	scrcmd_142 35, 16394
-	scrcmd_142 18, 16395
-	scrcmd_142 36, 16396
-	scrcmd_142 37, 16397
-	scrcmd_142 38, 16398
-	scrcmd_142 39, 16399
+	get_phone_book_rematch 17, VAR_TEMP_x4000
+	get_phone_book_rematch 26, VAR_TEMP_x4001
+	get_phone_book_rematch 27, VAR_TEMP_x4002
+	get_phone_book_rematch 28, VAR_TEMP_x4003
+	get_phone_book_rematch 29, VAR_TEMP_x4004
+	get_phone_book_rematch 30, VAR_TEMP_x4005
+	get_phone_book_rematch 31, VAR_TEMP_x4006
+	get_phone_book_rematch 32, VAR_TEMP_x4007
+	get_phone_book_rematch 33, VAR_TEMP_x4008
+	get_phone_book_rematch 34, VAR_TEMP_x4009
+	get_phone_book_rematch 35, VAR_TEMP_x400A
+	get_phone_book_rematch 18, VAR_TEMP_x400B
+	get_phone_book_rematch 36, VAR_TEMP_x400C
+	get_phone_book_rematch 37, VAR_TEMP_x400D
+	get_phone_book_rematch 38, VAR_TEMP_x400E
+	get_phone_book_rematch 39, VAR_TEMP_x400F
 	comparevartovalue VAR_TEMP_x4003, 0
 	gotoif ne, scr_seq_0832_T11R0101_00C9
 	setflag FLAG_UNK_2B8

@@ -29,11 +29,11 @@ scr_seq_0112_D44R0103_003C:
 	comparevartovalue VAR_TEMP_x4000, 4
 	gotoif eq, scr_seq_0112_D44R0103_0064
 scr_seq_0112_D44R0103_005A:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0112_D44R0103_0068
 
 scr_seq_0112_D44R0103_0064:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 scr_seq_0112_D44R0103_0068:
 	checkflag FLAG_UNK_0DC
 	gotoif TRUE, scr_seq_0112_D44R0103_0075
@@ -340,10 +340,10 @@ scr_seq_0112_D44R0103_04C3:
 	npc_msg 27
 	play_fanfare SEQ_ME_SHINKAOME
 	wait_fanfare
-	scrcmd_137 147, 15, 0, 0, 0, 32780
+	give_mon SPECIES_DRATINI, 15, 0, 0, 0, VAR_SPECIAL_x800C
 	checkflag FLAG_UNK_0DB
 	gotoif TRUE, scr_seq_0112_D44R0103_04F0
-	scrcmd_139 32773, 0, 245
+	set_mon_move VAR_SPECIAL_x8005, 0, MOVE_EXTREME_SPEED
 scr_seq_0112_D44R0103_04F0:
 	npc_msg 32
 	touchscreen_menu_hide

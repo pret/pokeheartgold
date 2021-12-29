@@ -24,7 +24,7 @@
 	scrdef_end
 
 scr_seq_0842_T20_004A:
-	scrcmd_144 VAR_OBJ_0
+	get_friend_sprite VAR_OBJ_0
 	checkflag FLAG_UNK_189
 	gotoif FALSE, scr_seq_0842_T20_005F
 	clearflag FLAG_UNK_189
@@ -39,11 +39,11 @@ scr_seq_0842_T20_005F:
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif eq, scr_seq_0842_T20_008F
 scr_seq_0842_T20_0089:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	end
 
 scr_seq_0842_T20_008F:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	end
 
 scr_seq_0842_T20_0095:
@@ -1361,7 +1361,7 @@ scr_seq_0842_T20_12A0:
 	scrcmd_310 77
 	scrcmd_308 77
 	play_se SEQ_SE_DP_KAIDAN2
-	clearflag FLAG_HIDE_NEW_BARK_RIVAL
+	clearflag FLAG_HIDE_NEW_BARK_MOM
 	show_person 7
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement 7, scr_seq_0842_T20_1478
@@ -1445,7 +1445,7 @@ scr_seq_0842_T20_1411:
 	scrcmd_308 77
 	apply_movement 7, scr_seq_0842_T20_1500
 	wait_movement
-	setflag FLAG_HIDE_NEW_BARK_RIVAL
+	setflag FLAG_HIDE_NEW_BARK_MOM
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 7
 	wait_se SEQ_SE_DP_KAIDAN2

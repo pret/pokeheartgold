@@ -4381,7 +4381,7 @@ _02092D34:
 	cmp r0, #3
 	bne _02092D52
 	ldr r0, [r5, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	add r1, sp, #8
 	ldrb r1, [r1, #6]
 	bl sub_0202F050
@@ -4453,7 +4453,7 @@ sub_02092D98: ; 0x02092D98
 	bl SaveData_GSPlayerMisc_get
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x38]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	str r0, [r4, #0x34]
 	str r5, [r4, #0x3c]
 	add r0, r4, #0
@@ -5115,17 +5115,17 @@ _0209329C: .word 0x00000BB8
 _020932A0: .word _02108340
 	thumb_func_end sub_0209322C
 
-	thumb_func_start sub_020932A4
-sub_020932A4: ; 0x020932A4
+	thumb_func_start PhoneBookTrainerGetRematchInfo
+PhoneBookTrainerGetRematchInfo: ; 0x020932A4
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	add r1, r5, #0
-	bl sub_0202F0E8
+	bl PhoneRematches_IsSeeking
 	cmp r0, #0
 	bne _020932C2
 	mov r0, #0
@@ -5144,9 +5144,9 @@ _020932CE:
 	add r1, r2, r1
 	ldrh r1, [r1, #4]
 	add r0, r4, #0
-	bl ov26_022598C0
+	bl TryGetRematchTrainerIdByBaseTrainerId
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_020932A4
+	thumb_func_end PhoneBookTrainerGetRematchInfo
 
 	thumb_func_start sub_020932E0
 sub_020932E0: ; 0x020932E0
@@ -10909,15 +10909,15 @@ _02095FD4:
 	.balign 4, 0
 	thumb_func_end LoadPhoneBookEntryI
 
-	thumb_func_start sub_02095FEC
-sub_02095FEC: ; 0x02095FEC
+	thumb_func_start GetPhoneMessageGmm
+GetPhoneMessageGmm: ; 0x02095FEC
 	lsl r1, r0, #1
-	ldr r0, _02095FF4 ; =_0210847C
+	ldr r0, _02095FF4 ; =sPhoneMessageGmm
 	ldrh r0, [r0, r1]
 	bx lr
 	.balign 4, 0
-_02095FF4: .word _0210847C
-	thumb_func_end sub_02095FEC
+_02095FF4: .word sPhoneMessageGmm
+	thumb_func_end GetPhoneMessageGmm
 
 	thumb_func_start sub_02095FF8
 sub_02095FF8: ; 0x02095FF8
@@ -13558,7 +13558,7 @@ sub_0209730C: ; 0x0209730C
 	sub sp, #0xb0
 	add r4, r0, #0
 	str r1, [sp, #4]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
 	bl sub_0202F57C
@@ -14225,7 +14225,7 @@ sub_02097810: ; 0x02097810
 	str r7, [r4, #4]
 	add r0, r5, #0
 	strb r6, [r4]
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	cmp r0, #4
 	bhi _02097852
 	add r0, r0, r0
@@ -14467,7 +14467,7 @@ sub_020979EC: ; 0x020979EC
 	str r7, [r4, #4]
 	add r0, r5, #0
 	strb r6, [r4]
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	cmp r0, #4
 	bhi _02097A2E
 	add r0, r0, r0
@@ -14737,7 +14737,7 @@ _02097BF6:
 	mov r0, #0
 	str r0, [r4, #0x50]
 	add r0, r5, #0
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	cmp r0, #4
 	bhi _02097C36
 	add r0, r0, r0
@@ -18809,7 +18809,7 @@ _02108434:
 	.word _02108420, sub_02095A34, sub_02095A78
 	.word _02108424, sub_02095A7C, sub_02095AF8
 	.word _0210841C, sub_02095B04, sub_02095B88
-_0210847C:
+sPhoneMessageGmm:
 	.short 0x0298, 0x02CC
 	.short 0x029A, 0x0296, 0x0297, 0x0283, 0x0295, 0x0294, 0x0281, 0x0299
 	.short 0x02A3, 0x02C8, 0x02A8, 0x02AC, 0x02C7, 0x0282, 0x02C2, 0x0284

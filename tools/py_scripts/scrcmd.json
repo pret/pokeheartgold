@@ -859,14 +859,14 @@
       ]
     },
     {
-      "name": "scrcmd_137",
+      "name": "give_mon",
       "args": [
-        2,
-        2,
-        2,
-        2,
-        2,
-        2
+        "species",
+        "var",
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -877,33 +877,33 @@
       ]
     },
     {
-      "name": "scrcmd_139",
+      "name": "set_mon_move",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "move"
       ]
     },
     {
-      "name": "scrcmd_140",
+      "name": "mon_has_move",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "move",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_141",
+      "name": "any_mon_has_move",
       "args": [
-        2,
-        2
+        "var",
+        "move"
       ]
     },
     {
-      "name": "scrcmd_142",
+      "name": "get_phone_book_rematch",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -913,7 +913,7 @@
       ]
     },
     {
-      "name": "scrcmd_144",
+      "name": "get_friend_sprite",
       "args": [
         "var"
       ]
@@ -3203,9 +3203,9 @@
       ]
     },
     {
-      "name": "scrcmd_507",
+      "name": "count_pc_empty_space",
       "args": [
-        2
+        "var"
       ]
     },
     {

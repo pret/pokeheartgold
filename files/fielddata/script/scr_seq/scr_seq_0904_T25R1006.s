@@ -22,7 +22,7 @@ scr_seq_0904_T25R1006_0022:
 scr_seq_0904_T25R1006_0033:
 	checkflag FLAG_UNK_964
 	gotoif FALSE, scr_seq_0904_T25R1006_011D
-	scrcmd_142 17, 16385
+	get_phone_book_rematch 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0904_T25R1006_011D
 	scrcmd_147 17, 16385
@@ -597,9 +597,9 @@ scr_seq_0904_T25R1006_07D5:
 	comparevartovalue VAR_SPECIAL_x8000, 2
 	callif eq, scr_seq_0904_T25R1006_07CD
 	scrcmd_115
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg 6
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
@@ -608,7 +608,7 @@ scr_seq_0904_T25R1006_07D5:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0904_T25R1006_08A0
 	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg 7
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

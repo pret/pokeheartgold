@@ -28,7 +28,7 @@ scr_seq_0878_T24PC0101_0031:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_507 32780
+	count_pc_empty_space VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 540
 	gotoif ne, scr_seq_0878_T24PC0101_0056
 	goto scr_seq_0878_T24PC0101_005C
@@ -55,7 +55,7 @@ scr_seq_0878_T24PC0101_007F:
 	npc_msg 5
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	scrcmd_137 72, 15, 0, 0, 0, 32780
+	give_mon SPECIES_TENTACOOL, 15, 0, 0, 0, VAR_SPECIAL_x800C
 	npc_msg 6
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C

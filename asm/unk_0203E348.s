@@ -2250,7 +2250,7 @@ _0203F354:
 	mov r0, #1
 	str r0, [r4, #0x54]
 	add r0, r5, #0
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	cmp r0, #4
 	bhi _0203F394
 	add r0, r0, r0

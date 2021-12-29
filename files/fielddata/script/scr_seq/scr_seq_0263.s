@@ -144,7 +144,7 @@ scr_seq_0263_01D7:
 scr_seq_0263_01D9:
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif gt, scr_seq_0263_01F1
-	buffer_item_name 0, 16384
+	buffer_item_name 0, VAR_TEMP_x4000
 	goto scr_seq_0263_01F6
 
 scr_seq_0263_01F1:
@@ -164,7 +164,7 @@ scr_seq_0263_01F6:
 scr_seq_0263_0225:
 	comparevartovalue VAR_TEMP_x4003, 1
 	gotoif gt, scr_seq_0263_023D
-	buffer_item_name 0, 16386
+	buffer_item_name 0, VAR_TEMP_x4002
 	goto scr_seq_0263_0242
 
 scr_seq_0263_023D:
@@ -184,7 +184,7 @@ scr_seq_0263_0242:
 scr_seq_0263_0271:
 	comparevartovalue VAR_TEMP_x4005, 1
 	gotoif gt, scr_seq_0263_0289
-	buffer_item_name 0, 16388
+	buffer_item_name 0, VAR_TEMP_x4004
 	goto scr_seq_0263_028E
 
 scr_seq_0263_0289:

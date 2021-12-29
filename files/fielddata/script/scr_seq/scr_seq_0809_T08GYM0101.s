@@ -16,7 +16,7 @@
 
 scr_seq_0809_T08GYM0101_0026:
 	scrcmd_330
-	scrcmd_142 26, 16385
+	get_phone_book_rematch 26, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0809_T08GYM0101_00EF
 	scrcmd_147 26, 16385

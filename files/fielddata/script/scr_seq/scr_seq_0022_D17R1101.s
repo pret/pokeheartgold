@@ -16,7 +16,7 @@ scr_seq_0022_D17R1101_000A:
 scr_seq_0022_D17R1101_001B:
 	checkflag FLAG_UNK_964
 	gotoif FALSE, scr_seq_0022_D17R1101_00A5
-	scrcmd_142 37, 16385
+	get_phone_book_rematch 37, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0022_D17R1101_00A5
 	scrcmd_147 37, 16385

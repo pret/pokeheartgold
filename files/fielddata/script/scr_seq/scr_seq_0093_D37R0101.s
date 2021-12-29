@@ -10,7 +10,7 @@
 	scrdef_end
 
 scr_seq_0093_D37R0101_0012:
-	scrcmd_144 VAR_OBJ_0
+	get_friend_sprite VAR_OBJ_0
 	end
 
 scr_seq_0093_D37R0101_0018:

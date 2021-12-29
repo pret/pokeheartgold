@@ -85,7 +85,7 @@ scr_seq_0021_D17R0110_0103:
 	setvar VAR_UNK_4081, 3
 	setflag FLAG_HIDE_NEW_BARK_FRIEND
 	setflag FLAG_HIDE_NEW_BARK_MARILL
-	setflag FLAG_UNK_2E8
+	setflag FLAG_HIDE_NEW_BARK_FRIEND_2
 	clearflag FLAG_UNK_2E5
 	setflag FLAG_UNK_244
 	clearflag FLAG_UNK_23C

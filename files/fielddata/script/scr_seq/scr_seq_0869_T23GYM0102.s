@@ -24,7 +24,7 @@
 
 scr_seq_0869_T23GYM0102_0046:
 	scrcmd_326
-	scrcmd_142 34, 16385
+	get_phone_book_rematch 34, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0869_T23GYM0102_00CD
 	checkflag FLAG_UNK_964

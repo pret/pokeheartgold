@@ -7,7 +7,7 @@
 	scrdef_end
 
 scr_seq_0149_0006:
-	setflag FLAG_HIDE_ELMS_LAB_ELM
+	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_UNK_1A4
 	setflag FLAG_UNK_1A5
 	setflag FLAG_UNK_1A0
@@ -103,7 +103,7 @@ scr_seq_0149_0006:
 	setflag FLAG_UNK_2A5
 	setflag FLAG_UNK_2A1
 	setflag FLAG_UNK_2A2
-	setflag FLAG_HIDE_NEW_BARK_RIVAL
+	setflag FLAG_HIDE_NEW_BARK_MOM
 	setflag FLAG_UNK_2A9
 	setflag FLAG_UNK_2AA
 	setflag FLAG_UNK_2AB
@@ -129,7 +129,7 @@ scr_seq_0149_0006:
 	setflag FLAG_UNK_2E4
 	setflag FLAG_UNK_2E6
 	setflag FLAG_UNK_2E7
-	setflag FLAG_UNK_2E8
+	setflag FLAG_HIDE_NEW_BARK_FRIEND_2
 	setflag FLAG_UNK_2F9
 	setflag FLAG_UNK_2FC
 	setflag FLAG_UNK_2FD

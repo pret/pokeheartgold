@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_0886_T25GYM0101_0016:
-	scrcmd_142 17, 16385
+	get_phone_book_rematch 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0886_T25GYM0101_0106
 	checkflag FLAG_UNK_964

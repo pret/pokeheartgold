@@ -818,7 +818,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_137 arg0, arg1, arg2, arg3, arg4, arg5
+	.macro give_mon arg0, arg1, arg2, arg3, arg4, arg5
 	.short 137
 	.short \arg0
 	.short \arg1
@@ -834,27 +834,27 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_139 arg0, arg1, arg2
+	.macro set_mon_move arg0, arg1, arg2
 	.short 139
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_140 arg0, arg1, arg2
+	.macro mon_has_move arg0, arg1, arg2
 	.short 140
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_141 arg0, arg1
+	.macro any_mon_has_move arg0, arg1
 	.short 141
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_142 arg0, arg1
+	.macro get_phone_book_rematch arg0, arg1
 	.short 142
 	.short \arg0
 	.short \arg1
@@ -865,7 +865,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_144 arg0
+	.macro get_friend_sprite arg0
 	.short 144
 	.short \arg0
 	.endm
@@ -2832,7 +2832,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_507 arg0
+	.macro count_pc_empty_space arg0
 	.short 507
 	.short \arg0
 	.endm

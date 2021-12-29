@@ -330,7 +330,7 @@ sub_02051AAC: ; 0x02051AAC
 	ldr r1, [r4, r1]
 	bl Options_copy
 	add r0, r5, #0
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -606,7 +606,7 @@ _02051D76:
 	add r1, r6, #0
 	bl sub_02052504
 	add r0, r6, #0
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -719,7 +719,7 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction
@@ -922,7 +922,7 @@ _02052004:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [sp]
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1150,7 +1150,7 @@ _020521F6:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [sp]
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	mov r1, #0x57
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1263,7 +1263,7 @@ sub_0205230C: ; 0x0205230C
 	bl SavArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_02066794

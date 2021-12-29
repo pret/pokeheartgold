@@ -171,7 +171,7 @@ sub_02055508: ; 0x02055508
 	add r0, r5, #0
 	bl sub_020556B8
 	ldr r0, [r5, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	add r1, r4, #0
 	bl sub_0202F294
 	cmp r6, #0
@@ -214,25 +214,25 @@ sub_020555B4: ; 0x020555B4
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020555B4
 
-	thumb_func_start sub_020555E0
-sub_020555E0: ; 0x020555E0
+	thumb_func_start Field_GetTImeOfDay
+Field_GetTImeOfDay: ; 0x020555E0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Sav2_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayByHour
 	pop {r3, pc}
-	thumb_func_end sub_020555E0
+	thumb_func_end Field_GetTImeOfDay
 
-	thumb_func_start sub_020555F0
-sub_020555F0: ; 0x020555F0
+	thumb_func_start Field_GetTimeOfDayWildParam
+Field_GetTimeOfDayWildParam: ; 0x020555F0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Sav2_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayWildParamByHour
 	pop {r3, pc}
-	thumb_func_end sub_020555F0
+	thumb_func_end Field_GetTimeOfDayWildParam
 
 	thumb_func_start sub_02055600
 sub_02055600: ; 0x02055600

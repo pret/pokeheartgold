@@ -20,15 +20,15 @@ SaveData_GSPlayerMisc_get: ; 0x0202ED7C
 _0202ED84: .word SavArray_get
 	thumb_func_end SaveData_GSPlayerMisc_get
 
-	thumb_func_start SaveData_GetMomSavings
-SaveData_GetMomSavings: ; 0x0202ED88
+	thumb_func_start SaveData_GetPhoneRematches
+SaveData_GetPhoneRematches: ; 0x0202ED88
 	push {r3, lr}
 	mov r1, #0x22
 	bl SavArray_get
 	bl GSPlayerMisc_GetMomSavingsAddr
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end SaveData_GetMomSavings
+	thumb_func_end SaveData_GetPhoneRematches
 
 	thumb_func_start InitGSPlayerMiscInternal
 InitGSPlayerMiscInternal: ; 0x0202ED98
@@ -538,8 +538,8 @@ _0202F09A:
 _0202F0C0: .word 0x0000014E
 	thumb_func_end sub_0202F08C
 
-	thumb_func_start sub_0202F0C4
-sub_0202F0C4: ; 0x0202F0C4
+	thumb_func_start PhoneRematches_SetSeeking
+PhoneRematches_SetSeeking: ; 0x0202F0C4
 	push {r4, lr}
 	cmp r1, #0x4b
 	blo _0202F0D0
@@ -558,10 +558,10 @@ _0202F0D0:
 	strh r1, [r0, r3]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202F0C4
+	thumb_func_end PhoneRematches_SetSeeking
 
-	thumb_func_start sub_0202F0E8
-sub_0202F0E8: ; 0x0202F0E8
+	thumb_func_start PhoneRematches_IsSeeking
+PhoneRematches_IsSeeking: ; 0x0202F0E8
 	push {r3, lr}
 	cmp r1, #0x4b
 	blo _0202F0F6
@@ -574,7 +574,7 @@ _0202F0F6:
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
 	pop {r3, pc}
-	thumb_func_end sub_0202F0E8
+	thumb_func_end PhoneRematches_IsSeeking
 
 	thumb_func_start sub_0202F100
 sub_0202F100: ; 0x0202F100
@@ -852,7 +852,7 @@ sub_0202F294: ; 0x0202F294
 	add r0, r5, #0
 	mov r1, #0x10
 	mov r2, #0
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 	cmp r4, #0
 	ble _0202F2DA
 	ldr r2, _0202F2FC ; =0x00000146

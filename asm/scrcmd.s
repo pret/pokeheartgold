@@ -185,14 +185,14 @@ gScriptCmdTable:
 	.word ScrCmd_134                                    ; 134
 	.word ScrCmd_135                                    ; 135
 	.word ScrCmd_136                                    ; 136
-	.word ScrCmd_137                                    ; 137
+	.word ScrCmd_GiveMon                                    ; 137
 	.word ScrCmd_GiveEgg                                    ; 138
-	.word ScrCmd_139                                    ; 139
-	.word ScrCmd_140                                    ; 140
-	.word ScrCmd_141                                    ; 141
-	.word ScrCmd_142                                    ; 142
+	.word ScrCmd_SetMonMove                                    ; 139
+	.word ScrCmd_MonHasMove                                    ; 140
+	.word ScrCmd_AnyMonHasMove                                    ; 141
+	.word ScrCmd_GetPhoneBookRematch                                    ; 142
 	.word ScrCmd_NameRival                              ; 143
-	.word ScrCmd_144                                    ; 144
+	.word ScrCmd_GetFriendSprite                                    ; 144
 	.word ScrCmd_RegisterPokegearCard                   ; 145
 	.word ScrCmd_RegisterGearNumber                                    ; 146
 	.word ScrCmd_147                                    ; 147
@@ -555,7 +555,7 @@ gScriptCmdTable:
 	.word ScrCmd_504                                    ; 504
 	.word ScrCmd_505                                    ; 505
 	.word ScrCmd_506                                    ; 506
-	.word ScrCmd_507                                    ; 507
+	.word ScrCmd_CountPCEmptySpace                                    ; 507
 	.word ScrCmd_508                                    ; 508
 	.word ScrCmd_509                                    ; 509
 	.word ScrCmd_510                                    ; 510
@@ -5111,8 +5111,8 @@ _020428C4:
 _020428D4: .word sub_020429F8
 	thumb_func_end ScrCmd_352
 
-	thumb_func_start ScrCmd_142
-ScrCmd_142: ; 0x020428D8
+	thumb_func_start ScrCmd_GetPhoneBookRematch
+ScrCmd_GetPhoneBookRematch: ; 0x020428D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -5139,7 +5139,7 @@ ScrCmd_142: ; 0x020428D8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020555F0
+	bl Field_GetTimeOfDayWildParam
 	add r3, r0, #0
 	add r5, #0x80
 	ldr r1, [r5]
@@ -5149,7 +5149,7 @@ ScrCmd_142: ; 0x020428D8
 	lsr r0, r0, #0x18
 	add r2, r7, #0
 	lsr r3, r3, #0x18
-	bl sub_020932A4
+	bl PhoneBookTrainerGetRematchInfo
 	strh r0, [r6]
 	ldr r0, _02042944 ; =SDK_OVERLAY_OVY_26_ID
 	bl UnloadOverlayByID
@@ -5159,7 +5159,7 @@ ScrCmd_142: ; 0x020428D8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02042944: .word SDK_OVERLAY_OVY_26_ID
-	thumb_func_end ScrCmd_142
+	thumb_func_end ScrCmd_GetPhoneBookRematch
 
 	thumb_func_start ScrCmd_684
 ScrCmd_684: ; 0x02042948
@@ -9884,7 +9884,7 @@ ScrCmd_379: ; 0x02044D68
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -11234,8 +11234,8 @@ ScrCmd_687: ; 0x02045818
 	.balign 4, 0
 	thumb_func_end ScrCmd_687
 
-	thumb_func_start ScrCmd_507
-ScrCmd_507: ; 0x0204583C
+	thumb_func_start ScrCmd_CountPCEmptySpace
+ScrCmd_CountPCEmptySpace: ; 0x0204583C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -11254,7 +11254,7 @@ ScrCmd_507: ; 0x0204583C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_507
+	thumb_func_end ScrCmd_CountPCEmptySpace
 
 	thumb_func_start ScrCmd_512
 ScrCmd_512: ; 0x02045868
@@ -14160,8 +14160,8 @@ ScrCmd_611: ; 0x02046E9C
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_611
 
-	thumb_func_start ScrCmd_144
-ScrCmd_144: ; 0x02046F34
+	thumb_func_start ScrCmd_GetFriendSprite
+ScrCmd_GetFriendSprite: ; 0x02046F34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -14187,7 +14187,7 @@ _02046F64:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_144
+	thumb_func_end ScrCmd_GetFriendSprite
 
 	thumb_func_start ScrCmd_RegisterPokegearCard
 ScrCmd_RegisterPokegearCard: ; 0x02046F6C
@@ -14474,7 +14474,7 @@ ScrCmd_461: ; 0x02047168
 	bl sub_02092E10
 	add r5, r0, #0
 	ldrb r0, [r5]
-	bl sub_02095FEC
+	bl GetPhoneMessageGmm
 	ldr r1, [sp]
 	strh r0, [r1]
 	ldrb r0, [r5]
@@ -14532,11 +14532,11 @@ ScrCmd_462: ; 0x0204720C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0202F0C4
+	bl PhoneRematches_SetSeeking
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14594,7 +14594,7 @@ ScrCmd_614: ; 0x0204727C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	ldrb r1, [r4]
 	add r5, r0, #0
 	bl sub_0202F128
@@ -14636,7 +14636,7 @@ ScrCmd_149: ; 0x020472E8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	ldrb r1, [r4]
 	bl sub_0202F050
 	mov r0, #0
@@ -15483,7 +15483,7 @@ sub_02047914: ; 0x02047914
 	bl PlayerProfile_GetMoney
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction
@@ -15616,7 +15616,7 @@ _02047A26:
 	add r1, r6, #0
 	bl PlayerProfile_SubMoney
 	add r0, r5, #0
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	ldr r2, [r4]
 	mov r1, #2
 	ldr r2, [r2, #4]
@@ -15628,7 +15628,7 @@ _02047A44:
 	add r1, r6, #0
 	bl PlayerProfile_AddMoney
 	add r0, r5, #0
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	ldr r2, [r4]
 	mov r1, #3
 	ldr r2, [r2, #4]
@@ -15668,7 +15668,7 @@ ScrCmd_BankOrWalletIsFull: ; 0x02047A7C
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction
@@ -16002,7 +16002,7 @@ ScrCmd_CheckBankBalance: ; 0x02047CBC
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction

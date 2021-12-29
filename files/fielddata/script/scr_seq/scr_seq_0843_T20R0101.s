@@ -22,7 +22,7 @@
 	scrdef_end
 
 scr_seq_0843_T20R0101_0042:
-	scrcmd_144 VAR_OBJ_0
+	get_friend_sprite VAR_OBJ_0
 	checkflag FLAG_ELM_RECEIVED_EMAIL
 	gotoif TRUE, scr_seq_0843_T20R0101_00B8
 	comparevartovalue VAR_SCENE_ELMS_LAB, 0
@@ -716,7 +716,7 @@ scr_seq_0843_T20R0101_0904:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_HIDE_ELMS_LAB_ELM
+	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	setflag FLAG_UNK_079
 	apply_movement 255, scr_seq_0843_T20R0101_0A74
@@ -922,7 +922,7 @@ scr_seq_0843_T20R0101_0BF3:
 	setvar VAR_SCENE_ELMS_LAB, 9
 	setvar VAR_UNK_4079, 3
 	setflag FLAG_UNK_23B
-	clearflag FLAG_UNK_2E8
+	clearflag FLAG_HIDE_NEW_BARK_FRIEND_2
 	setvar VAR_UNK_4081, 2
 	setvar VAR_UNK_407B, 2
 	end

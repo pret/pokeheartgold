@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_137
-ScrCmd_137: ; 0x0204D088
+	thumb_func_start ScrCmd_GiveMon
+ScrCmd_GiveMon: ; 0x0204D088
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r0, #0
@@ -91,7 +91,7 @@ ScrCmd_137: ; 0x0204D088
 	mov r0, #0
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_137
+	thumb_func_end ScrCmd_GiveMon
 
 	thumb_func_start ScrCmd_364
 ScrCmd_364: ; 0x0204D154
@@ -269,8 +269,8 @@ _0204D2C8:
 	.balign 4, 0
 	thumb_func_end ScrCmd_GiveEgg
 
-	thumb_func_start ScrCmd_139
-ScrCmd_139: ; 0x0204D2D0
+	thumb_func_start ScrCmd_SetMonMove
+ScrCmd_SetMonMove: ; 0x0204D2D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -307,10 +307,10 @@ ScrCmd_139: ; 0x0204D2D0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_139
+	thumb_func_end ScrCmd_SetMonMove
 
-	thumb_func_start ScrCmd_140
-ScrCmd_140: ; 0x0204D328
+	thumb_func_start ScrCmd_MonHasMove
+ScrCmd_MonHasMove: ; 0x0204D328
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -383,10 +383,10 @@ _0204D3C6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_140
+	thumb_func_end ScrCmd_MonHasMove
 
-	thumb_func_start ScrCmd_141
-ScrCmd_141: ; 0x0204D3CC
+	thumb_func_start ScrCmd_AnyMonHasMove
+ScrCmd_AnyMonHasMove: ; 0x0204D3CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -472,7 +472,7 @@ _0204D47C:
 	nop
 _0204D484: .word 0x00000006
 _0204D488: .word 0x00000000
-	thumb_func_end ScrCmd_141
+	thumb_func_end ScrCmd_AnyMonHasMove
 
 	thumb_func_start ScrCmd_435
 ScrCmd_435: ; 0x0204D48C

@@ -22,11 +22,11 @@ scr_seq_0919_T26R0701_002F:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, scr_seq_0919_T26R0701_004A
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0919_T26R0701_004E
 
 scr_seq_0919_T26R0701_004A:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 scr_seq_0919_T26R0701_004E:
 	checkflag FLAG_UNK_964
 	gotoif FALSE, scr_seq_0919_T26R0701_00C3
@@ -46,7 +46,7 @@ scr_seq_0919_T26R0701_008D:
 	end
 
 scr_seq_0919_T26R0701_008F:
-	scrcmd_142 38, 16385
+	get_phone_book_rematch 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0919_T26R0701_00C3
 	scrcmd_522 16384

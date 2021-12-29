@@ -20519,7 +20519,7 @@ ov02_0224F644: ; 0x0224F644
 ov02_0224F64C: ; 0x0224F64C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_020555E0
+	bl Field_GetTImeOfDay
 	cmp r0, #4
 	bhi _0224F68C
 	add r0, r0, r0
@@ -25675,8 +25675,8 @@ _02251E70:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov02_02251E44
 
-	thumb_func_start ov02_02251E74
-ov02_02251E74: ; 0x02251E74
+	thumb_func_start GetPhoneBookEntryName
+GetPhoneBookEntryName: ; 0x02251E74
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	ldrb r1, [r0]
@@ -25693,7 +25693,7 @@ _02251E86:
 	add r5, r0, #0
 	b _02251EB2
 _02251E92:
-	bl sub_02095FEC
+	bl GetPhoneMessageGmm
 	add r2, r0, #0
 	mov r0, #1
 	mov r1, #0x1b
@@ -25709,7 +25709,7 @@ _02251EB2:
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov02_02251E74
+	thumb_func_end GetPhoneBookEntryName
 
 	thumb_func_start ov02_02251EB8
 ov02_02251EB8: ; 0x02251EB8

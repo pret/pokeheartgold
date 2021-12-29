@@ -34,7 +34,7 @@ scr_seq_0098_D38R0104_0063:
 	npc_msg 2
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	scrcmd_137 236, 10, 0, 0, 0, 32780
+	give_mon SPECIES_TYROGUE, 10, 0, 0, 0, VAR_SPECIAL_x800C
 	npc_msg 5
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C

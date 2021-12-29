@@ -61,11 +61,11 @@ scr_seq_0037_D24R0101_00C6:
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0037_D24R0101_010E
 scr_seq_0037_D24R0101_0104:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0037_D24R0101_0112
 
 scr_seq_0037_D24R0101_010E:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 scr_seq_0037_D24R0101_0112:
 	comparevartovalue VAR_UNK_403E, 7
 	gotoif ge, scr_seq_0037_D24R0101_005E

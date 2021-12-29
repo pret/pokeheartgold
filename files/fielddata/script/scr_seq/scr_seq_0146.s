@@ -28,7 +28,7 @@ scr_seq_0146_004E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_141 32780, 15
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_CUT
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_009E
 	check_badge 1, VAR_SPECIAL_x800C
@@ -54,7 +54,7 @@ scr_seq_0146_009E:
 scr_seq_0146_00AB:
 	.byte 0x02, 0x00
 scr_seq_0146_00AD:
-	scrcmd_141 32780, 15
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_CUT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_727 32773
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
@@ -180,7 +180,7 @@ scr_seq_0146_0281:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_141 32780, 249
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_ROCK_SMASH
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_02D7
@@ -351,7 +351,7 @@ scr_seq_0146_04F6:
 	goto scr_seq_0146_093D
 
 scr_seq_0146_051C:
-	scrcmd_141 32780, 70
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_STRENGTH
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0564
 	check_badge 2, VAR_SPECIAL_x800C
@@ -378,7 +378,7 @@ scr_seq_0146_0571:
 	.byte 0x02, 0x00
 scr_seq_0146_0573:
 	scrcmd_400 1
-	scrcmd_141 32780, 70
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_STRENGTH
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 11
@@ -513,7 +513,7 @@ scr_seq_0146_0736:
 scr_seq_0146_0738:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_141 32780, 431
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_ROCK_CLIMB
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0797
 	check_badge 15, VAR_SPECIAL_x800C
@@ -550,7 +550,7 @@ scr_seq_0146_07A6:
 scr_seq_0146_07B3:
 	.byte 0x02, 0x00
 scr_seq_0146_07B5:
-	scrcmd_141 32780, 431
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_ROCK_CLIMB
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 21
@@ -594,7 +594,7 @@ scr_seq_0146_0826:
 	goto scr_seq_0146_0941
 
 scr_seq_0146_0833:
-	scrcmd_141 32780, 57
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_SURF
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 15
@@ -689,7 +689,7 @@ scr_seq_0146_0945:
 scr_seq_0146_0949:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_141 32780, 127
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WATERFALL
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0997
 	check_badge 7, VAR_SPECIAL_x800C
@@ -715,7 +715,7 @@ scr_seq_0146_0997:
 scr_seq_0146_09A4:
 	.byte 0x02, 0x00
 scr_seq_0146_09A6:
-	scrcmd_141 32780, 127
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WATERFALL
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 25
@@ -740,7 +740,7 @@ scr_seq_0146_09C8:
 scr_seq_0146_09E6:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_141 32780, 250
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WHIRLPOOL
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0A34
 	check_badge 6, VAR_SPECIAL_x800C
@@ -766,7 +766,7 @@ scr_seq_0146_0A34:
 scr_seq_0146_0A41:
 	.byte 0x02, 0x00
 scr_seq_0146_0A43:
-	scrcmd_141 32780, 250
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WHIRLPOOL
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 30
@@ -795,7 +795,7 @@ scr_seq_0146_0A85:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_141 32780, 29
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_HEADBUTT
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0AC2
 	npc_msg 32
@@ -819,7 +819,7 @@ scr_seq_0146_0ACF:
 	.byte 0x02
 	.byte 0x00
 scr_seq_0146_0AD1:
-	scrcmd_141 32780, 29
+	any_mon_has_move VAR_SPECIAL_x800C, MOVE_HEADBUTT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_727 32773
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
@@ -965,7 +965,7 @@ scr_seq_0146_0CEB:
 	gotoif eq, scr_seq_0146_0D2A
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8005, 1
-	buffer_item_name_indef 1, 32772
+	buffer_item_name_indef 1, VAR_SPECIAL_x8004
 	scrcmd_851 1
 	npc_msg 6
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C

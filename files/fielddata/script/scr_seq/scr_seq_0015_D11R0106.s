@@ -16,7 +16,7 @@
 	scrdef_end
 
 scr_seq_0015_D11R0106_002A:
-	scrcmd_142 30, 16385
+	get_phone_book_rematch 30, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0015_D11R0106_00AB
 	scrcmd_147 30, 16385

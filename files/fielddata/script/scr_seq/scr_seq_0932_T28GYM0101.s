@@ -14,7 +14,7 @@ scr_seq_0932_T28GYM0101_000A:
 	end
 
 scr_seq_0932_T28GYM0101_001B:
-	scrcmd_142 39, 16385
+	get_phone_book_rematch 39, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0932_T28GYM0101_00B8
 	checkflag FLAG_UNK_964

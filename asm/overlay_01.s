@@ -4070,7 +4070,7 @@ ov01_021E7A08: ; 0x021E7A08
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -19567,7 +19567,7 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r1, #0
 	bl MomSavingsBalanceAction
@@ -61221,7 +61221,7 @@ ScrCmd_811: ; 0x022024B8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, r6, #0
 	bl sub_0202F224
@@ -61237,7 +61237,7 @@ ScrCmd_812: ; 0x022024FC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	bl sub_0202F1F4
 	mov r0, #0
 	pop {r3, pc}
@@ -69530,10 +69530,10 @@ ov01_0220675C: ; 0x0220675C
 	.byte 0x30, 0x00, 0x00, 0x00, 0x32, 0x00, 0x00, 0x00
 
 ov01_022067C8: ; 0x022067C8
-	.short 0x02F0
-	.short 0x00D3
-	.short 0x001E
-	.short 0x01B3
+	.short 0x02F0 ; NARC_msg_msg_0752_bin
+	.short 0x00D3 ; NARC_msg_msg_0211_bin
+	.short 0x001E ; NARC_msg_msg_0030_bin
+	.short 0x01B3 ; NARC_msg_msg_0435_bin
 	.byte 0xFF, 0xFB, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 
 ov01_022067E0: ; 0x022067E0

@@ -186,7 +186,7 @@ scr_seq_0157_P01R0302_029C:
 	end
 
 scr_seq_0157_P01R0302_02C3:
-	buffer_item_name 1, 32772
+	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg 8
 	waitbutton
 	closemsg

@@ -24,7 +24,7 @@ scr_seq_0815_T09_0027:
 
 scr_seq_0815_T09_0038:
 	setflag FLAG_UNK_25A
-	scrcmd_142 31, 16385
+	get_phone_book_rematch 31, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0815_T09_007B
 	comparevartovalue VAR_UNK_40FD, 0
@@ -62,7 +62,7 @@ scr_seq_0815_T09_00CA:
 	end
 
 scr_seq_0815_T09_00CC:
-	scrcmd_142 30, 16385
+	get_phone_book_rematch 30, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0815_T09_0102
 	get_weekday VAR_TEMP_x4002

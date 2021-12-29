@@ -29,7 +29,7 @@
 	scrdef_end
 
 scr_seq_0092_D36R0101_005E:
-	scrcmd_144 VAR_OBJ_0
+	get_friend_sprite VAR_OBJ_0
 	checkflag FLAG_UNK_189
 	gotoif FALSE, scr_seq_0092_D36R0101_0077
 	clearflag FLAG_UNK_189
@@ -47,11 +47,11 @@ scr_seq_0092_D36R0101_0077:
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0092_D36R0101_00BF
 scr_seq_0092_D36R0101_00B5:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	goto scr_seq_0092_D36R0101_00C3
 
 scr_seq_0092_D36R0101_00BF:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 scr_seq_0092_D36R0101_00C3:
 	checkflag FLAG_UNK_07B
 	gotoif TRUE, scr_seq_0092_D36R0101_00D0
@@ -1082,7 +1082,7 @@ scr_seq_0092_D36R0101_0F0B:
 	setorcopyvar VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8005, 0
 	gotoif eq, scr_seq_0092_D36R0101_10A0
-	scrcmd_140 32780, 29, 32774
+	mon_has_move VAR_SPECIAL_x800C, MOVE_HEADBUTT, VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0092_D36R0101_10E1
 	scrcmd_656 32774, 32780
@@ -1119,7 +1119,7 @@ scr_seq_0092_D36R0101_0F99:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0092_D36R0101_10C7
-	scrcmd_139 32774, 32769, 29
+	set_mon_move VAR_SPECIAL_x8006, VAR_SPECIAL_x8001, MOVE_HEADBUTT
 	npc_msg 20
 	play_se SEQ_SE_DP_KON
 	wait_se SEQ_SE_DP_KON
@@ -1135,7 +1135,7 @@ scr_seq_0092_D36R0101_0F99:
 
 scr_seq_0092_D36R0101_1041:
 	bufferpartymonnick 0, VAR_SPECIAL_x8006
-	scrcmd_139 32774, 32770, 29
+	set_mon_move VAR_SPECIAL_x8006, VAR_SPECIAL_x8002, MOVE_HEADBUTT
 	npc_msg 21
 	wait 30, VAR_SPECIAL_x800C
 	npc_msg 26

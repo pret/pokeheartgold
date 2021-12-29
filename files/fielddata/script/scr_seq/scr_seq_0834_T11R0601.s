@@ -27,7 +27,7 @@ scr_seq_0834_T11R0601_0045:
 	scrcmd_147 36, 16385
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_0834_T11R0601_007E
-	scrcmd_142 36, 16385
+	get_phone_book_rematch 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0834_T11R0601_007E
 	checkflag FLAG_UNK_162

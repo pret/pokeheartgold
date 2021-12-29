@@ -13,7 +13,7 @@
 scr_seq_0743_T02GYM0101_0016:
 	scrcmd_331
 	setvar VAR_UNK_4127, 0
-	scrcmd_142 31, 16385
+	get_phone_book_rematch 31, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0743_T02GYM0101_0065
 	comparevartovalue VAR_UNK_40FD, 0

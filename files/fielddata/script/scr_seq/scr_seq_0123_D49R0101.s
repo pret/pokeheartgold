@@ -767,9 +767,9 @@ scr_seq_0123_D49R0101_097D:
 	gotoif ne, scr_seq_0123_D49R0101_098D
 	scrcmd_118 2
 scr_seq_0123_D49R0101_098D:
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg 87
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
@@ -778,7 +778,7 @@ scr_seq_0123_D49R0101_098D:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0123_D49R0101_09E6
 	play_se SEQ_SE_DP_JIHANKI
-	buffer_item_name 0, 32769
+	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg 88
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

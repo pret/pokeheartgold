@@ -20,7 +20,7 @@
 	scrdef_end
 
 scr_seq_0798_T07R0203_003A:
-	scrcmd_144 VAR_OBJ_0
+	get_friend_sprite VAR_OBJ_0
 	setvar VAR_UNK_4125, 0
 	end
 

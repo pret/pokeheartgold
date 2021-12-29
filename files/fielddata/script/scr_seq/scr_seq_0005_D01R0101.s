@@ -51,7 +51,7 @@ scr_seq_0005_D01R0101_009C:
 	end
 
 scr_seq_0005_D01R0101_009E:
-	scrcmd_142 33, 16385
+	get_phone_book_rematch 33, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0005_D01R0101_0102
 	scrcmd_522 16384
@@ -233,7 +233,7 @@ scr_seq_0005_D01R0101_02AF:
 	gotoif ne, scr_seq_0005_D01R0101_0339
 	scrcmd_473 32772
 	scrcmd_474
-	scrcmd_139 32772, 0, 422
+	set_mon_move VAR_SPECIAL_x8004, 0, MOVE_THUNDER_FANG
 	setflag FLAG_UNK_165
 	setvar VAR_TEMP_x4000, 55
 	npc_msg 16

@@ -671,19 +671,19 @@ scr_seq_0131_D51R0201_090F:
 	scrcmd_490 16393
 	comparevartovalue VAR_TEMP_x4009, 483
 	gotoif ne, scr_seq_0131_D51R0201_097B
-	scrcmd_137 483, 1, 135, 0, 0, 32780
+	give_mon SPECIES_DIALGA, 1, 135, 0, 0, VAR_SPECIAL_x800C
 	setvar VAR_UNK_4103, 1
 	goto scr_seq_0131_D51R0201_09B6
 
 scr_seq_0131_D51R0201_097B:
 	comparevartovalue VAR_TEMP_x4009, 484
 	gotoif ne, scr_seq_0131_D51R0201_09A2
-	scrcmd_137 484, 1, 136, 0, 0, 32780
+	give_mon SPECIES_PALKIA, 1, 136, 0, 0, VAR_SPECIAL_x800C
 	setvar VAR_UNK_4103, 2
 	goto scr_seq_0131_D51R0201_09B6
 
 scr_seq_0131_D51R0201_09A2:
-	scrcmd_137 487, 1, 112, 1, 26, 32780
+	give_mon SPECIES_GIRATINA, 1, 112, 1, 26, VAR_SPECIAL_x800C
 	setvar VAR_UNK_4103, 3
 scr_seq_0131_D51R0201_09B6:
 	touchscreen_menu_hide

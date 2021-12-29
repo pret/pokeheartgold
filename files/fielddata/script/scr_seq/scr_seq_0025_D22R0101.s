@@ -77,17 +77,17 @@ scr_seq_0025_D22R0101_00F4:
 	gotoif eq, scr_seq_0025_D22R0101_0162
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif eq, scr_seq_0025_D22R0101_0162
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	clearflag FLAG_UNK_27F
 	goto scr_seq_0025_D22R0101_016E
 
 scr_seq_0025_D22R0101_0154:
-	clearflag FLAG_UNK_27E
+	clearflag FLAG_HIDE_CAMERON
 	setflag FLAG_UNK_27F
 	goto scr_seq_0025_D22R0101_016E
 
 scr_seq_0025_D22R0101_0162:
-	setflag FLAG_UNK_27E
+	setflag FLAG_HIDE_CAMERON
 	setflag FLAG_UNK_27F
 	clearflag FLAG_UNK_996
 scr_seq_0025_D22R0101_016E:
@@ -97,7 +97,7 @@ scr_seq_0025_D22R0101_016E:
 	end
 
 scr_seq_0025_D22R0101_017F:
-	scrcmd_142 34, 16385
+	get_phone_book_rematch 34, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0025_D22R0101_01C9
 	get_weekday VAR_TEMP_x4000

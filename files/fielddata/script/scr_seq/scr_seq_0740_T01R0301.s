@@ -602,7 +602,7 @@ scr_seq_0740_T01R0301_0852:
 	npc_msg 48
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	scrcmd_137 32772, 5, 0, 0, 0, 32780
+	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_x800C
 	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
 	npc_msg 49
 	touchscreen_menu_hide

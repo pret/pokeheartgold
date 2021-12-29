@@ -263,7 +263,7 @@ scr_seq_0907_T25R1201_035F:
 scr_seq_0907_T25R1201_0376:
 	.byte 0x02, 0x00
 scr_seq_0907_T25R1201_0378:
-	scrcmd_507 32780
+	count_pc_empty_space VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0907_T25R1201_0391
 	goto scr_seq_0907_T25R1201_024D

@@ -3810,7 +3810,7 @@ ov27_0225BDFC: ; 0x0225BDFC
 	bne _0225BEAA
 	ldr r0, [r5, #4]
 	mov r1, #8
-	bl ov02_02251E74
+	bl GetPhoneBookEntryName
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0

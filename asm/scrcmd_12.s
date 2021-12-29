@@ -17,7 +17,7 @@ ScrCmd_813: ; 0x0204C83C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl SaveData_GetMomSavings
+	bl SaveData_GetPhoneRematches
 	mov r1, #0
 	add r2, sp, #0
 	bl sub_0202F224
