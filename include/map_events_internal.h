@@ -27,8 +27,7 @@ typedef struct OBJECT_EVENT {
     u16 yrange;
     s16 x;
     s16 y;
-    s16 z;
-    u16 unk1E;
+    s32 z;
 } OBJECT_EVENT;
 
 typedef struct WARP_EVENT {
