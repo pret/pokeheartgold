@@ -115,7 +115,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
-      "scr": 10001,
+      "scr": "std_field_rock_smash",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

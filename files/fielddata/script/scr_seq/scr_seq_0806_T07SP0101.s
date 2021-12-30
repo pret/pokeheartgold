@@ -20,11 +20,11 @@ scr_seq_0806_T07SP0101_0012:
 	wait_movement
 	npc_msg 12
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 0, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_TEMP_x4001, 2
 	releaseall

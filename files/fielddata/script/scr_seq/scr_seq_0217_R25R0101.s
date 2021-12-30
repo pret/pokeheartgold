@@ -98,12 +98,12 @@ scr_seq_0217_R25R0101_0125:
 	gotoif eq, scr_seq_0217_R25R0101_048D
 	npc_msg 12
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_0217_R25R0101_048D

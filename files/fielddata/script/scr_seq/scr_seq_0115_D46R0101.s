@@ -11,7 +11,7 @@ scr_seq_0115_D46R0101_000A:
 	scrcmd_147 34, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0115_D46R0101_0047
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0115_D46R0101_0030
 	goto scr_seq_0115_D46R0101_0047
 
@@ -54,13 +54,13 @@ scr_seq_0115_D46R0101_0089:
 	npc_msg 2
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_263
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

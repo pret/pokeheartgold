@@ -46,10 +46,10 @@ scr_seq_0892_T25R0401_004B:
 scr_seq_0892_T25R0401_00A0:
 	closemsg
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0892_T25R0401_00C6:
 	npc_msg 3

@@ -54,7 +54,7 @@ scr_seq_0230_R31_008D:
 scr_seq_0230_R31_0098:
 	npc_msg 1
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 16384
@@ -76,7 +76,7 @@ scr_seq_0230_R31_0098:
 	gotoif eq, scr_seq_0230_R31_0295
 	scrcmd_364 16384
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -139,7 +139,7 @@ scr_seq_0230_R31_01FC:
 
 scr_seq_0230_R31_0206:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 9
 	waitbutton
@@ -149,7 +149,7 @@ scr_seq_0230_R31_0206:
 
 scr_seq_0230_R31_021F:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 15
 	waitbutton
@@ -159,7 +159,7 @@ scr_seq_0230_R31_021F:
 
 scr_seq_0230_R31_0238:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 2
 	waitbutton
@@ -169,7 +169,7 @@ scr_seq_0230_R31_0238:
 
 scr_seq_0230_R31_0251:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 3
 	waitbutton
@@ -179,7 +179,7 @@ scr_seq_0230_R31_0251:
 
 scr_seq_0230_R31_026A:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 4
 	closemsg
@@ -194,7 +194,7 @@ scr_seq_0230_R31_0293:
 	.byte 0x02, 0x00
 scr_seq_0230_R31_0295:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 10
 	waitbutton

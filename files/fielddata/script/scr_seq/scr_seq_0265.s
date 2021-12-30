@@ -12,7 +12,7 @@ scr_seq_0265_000A:
 	lockall
 	faceplayer
 	scrcmd_312
-	scrcmd_313 32780
+	scrcmd_313 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0265_0094
 	comparevartovalue VAR_SPECIAL_x800C, 2
@@ -200,7 +200,7 @@ scr_seq_0265_0232:
 	lockall
 	faceplayer
 	scrcmd_113 20, 2
-	scrcmd_313 32780
+	scrcmd_313 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0265_042E
 	comparevartovalue VAR_SPECIAL_x800C, 2
@@ -230,7 +230,7 @@ scr_seq_0265_0290:
 	npc_msg 22
 	closemsg
 	scrcmd_114
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 scr_seq_0265_02CB:
@@ -245,33 +245,33 @@ scr_seq_0265_02CB:
 scr_seq_0265_02F4:
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_0265_03C6
-	scrcmd_690 32768, 32780
+	scrcmd_690 VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0265_03A1
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0265_03B1
-	count_alive_mons VAR_SPECIAL_x800C, 32768
+	count_alive_mons VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0265_040A
-	scrcmd_373 32768
+	scrcmd_373 VAR_SPECIAL_x8000
 	call scr_seq_0265_038B
-	scrcmd_372 32769
+	scrcmd_372 VAR_SPECIAL_x8001
 	setflag FLAG_UNK_068
-	scrcmd_313 32780
+	scrcmd_313 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, scr_seq_0265_0363
 	goto scr_seq_0265_0374
 
 scr_seq_0265_0363:
-	scrcmd_076 32769, 0
+	scrcmd_076 VAR_SPECIAL_x8001, 0
 	npc_msg 23
 	scrcmd_077
 	goto scr_seq_0265_03DB
 
 scr_seq_0265_0374:
 	touchscreen_menu_show
-	scrcmd_076 32769, 0
+	scrcmd_076 VAR_SPECIAL_x8001, 0
 	npc_msg 41
 	waitbutton
 	closemsg
@@ -283,7 +283,7 @@ scr_seq_0265_0374:
 scr_seq_0265_038B:
 	scrcmd_150
 	scrcmd_113 20, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 
@@ -393,7 +393,7 @@ scr_seq_0265_0498:
 	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0265_05DC
-	scrcmd_313 32780
+	scrcmd_313 VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8001, 0
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, scr_seq_0265_0520
@@ -424,7 +424,7 @@ scr_seq_0265_0520:
 	goto scr_seq_0265_03CE
 
 scr_seq_0265_0544:
-	hasenoughmoneyvar 32780, 32772
+	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0265_0566
 	touchscreen_menu_show
@@ -437,21 +437,21 @@ scr_seq_0265_0544:
 
 scr_seq_0265_0566:
 	scrcmd_361 32770, 32769
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_715
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	submoneyvar 32772
+	submoneyvar VAR_SPECIAL_x8004
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg 34
-	scrcmd_076 32770, 0
+	scrcmd_076 VAR_SPECIAL_x8002, 0
 	buffer_players_name 1
 	npc_msg 35
 	scrcmd_077
-	scrcmd_313 32780
+	scrcmd_313 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, scr_seq_0265_05BE
 	touchscreen_menu_show

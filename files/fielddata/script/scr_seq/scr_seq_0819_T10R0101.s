@@ -103,7 +103,7 @@ scr_seq_0819_T10R0101_00EF:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 3
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
@@ -125,7 +125,7 @@ scr_seq_0819_T10R0101_0191:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0819_T10R0101_01CE
 	callstd std_play_rival_outro_music
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 4
 	closemsg
 	apply_movement 5, scr_seq_0819_T10R0101_0210

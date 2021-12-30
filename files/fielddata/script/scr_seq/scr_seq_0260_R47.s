@@ -38,7 +38,7 @@ scr_seq_0260_R47_0067:
 	end
 
 scr_seq_0260_R47_009F:
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0260_R47_00B2
 	goto scr_seq_0260_R47_00E6
 
@@ -185,12 +185,12 @@ scr_seq_0260_R47_024C:
 	npc_msg 6
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 91
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg 7

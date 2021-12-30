@@ -123,11 +123,11 @@ scr_seq_0143_01EF:
 scr_seq_0143_021E:
 	npc_msg 6
 	scrcmd_049
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_465 4, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_0579

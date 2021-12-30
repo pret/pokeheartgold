@@ -94,7 +94,7 @@ scr_seq_0845_T20R0201_00DC:
 	end
 
 scr_seq_0845_T20R0201_0126:
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0845_T20R0201_015C
 	comparevartovalue VAR_SCENE_ELMS_LAB, 4
 	gotoif ge, scr_seq_0845_T20R0201_0205
@@ -249,7 +249,7 @@ scr_seq_0845_T20R0201_0335:
 	bank_or_wallet_is_full 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0845_T20R0201_042B
-	hasenoughmoneyvar 32780, 1
+	hasenoughmoneyvar VAR_SPECIAL_x800C, 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0845_T20R0201_0389
 	bank_transaction 0, VAR_SPECIAL_x800C

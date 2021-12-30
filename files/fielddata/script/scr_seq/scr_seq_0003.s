@@ -81,7 +81,7 @@ scr_seq_0003_0122:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_590 VAR_SPECIAL_x800C
+	get_trcard_stars VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	gotoif ge, scr_seq_0003_03E3
 	setvar VAR_SPECIAL_x8004, 0
@@ -114,7 +114,7 @@ scr_seq_0003_019B:
 	end
 
 scr_seq_0003_01AA:
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_0003_01C5
 	scrcmd_188 2048
@@ -127,7 +127,7 @@ scr_seq_0003_01C9:
 	apply_movement 255, scr_seq_0003_0460
 	wait_movement
 	scrcmd_599
-	scrcmd_590 VAR_SPECIAL_x800C
+	get_trcard_stars VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	callif ge, scr_seq_0003_0211
 	comparevartovalue VAR_SPECIAL_x800C, 4
@@ -162,7 +162,7 @@ scr_seq_0003_023A:
 	npc_msg 2
 	apply_movement 255, scr_seq_0003_0468
 	wait_movement
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_0003_026F
 	scrcmd_188 1024
@@ -176,12 +176,12 @@ scr_seq_0003_0273:
 	comparevartovar VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	gotoif eq, scr_seq_0003_02B2
 	wait 15, VAR_SPECIAL_x800A
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
 	npc_msg 102
@@ -200,7 +200,7 @@ scr_seq_0003_02CB:
 	npc_msg 8
 	apply_movement 255, scr_seq_0003_0468
 	wait_movement
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_0003_02F3
 	scrcmd_188 1024
@@ -214,12 +214,12 @@ scr_seq_0003_02F7:
 	comparevartovar VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	gotoif eq, scr_seq_0003_0336
 	wait 15, VAR_SPECIAL_x800A
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
 	npc_msg 102
@@ -244,7 +244,7 @@ scr_seq_0003_0364:
 	scrcmd_148 1, 0
 	apply_movement 255, scr_seq_0003_0468
 	wait_movement
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_0003_0391
 	scrcmd_188 1024
@@ -258,12 +258,12 @@ scr_seq_0003_0395:
 	comparevartovar VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	gotoif eq, scr_seq_0003_03D4
 	wait 15, VAR_SPECIAL_x800A
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	bufferpartymonnick 0, VAR_SPECIAL_x8009
 	npc_msg 102
@@ -330,14 +330,14 @@ scr_seq_0003_0468:
 	step 104, 1
 	step_end
 scr_seq_0003_0470:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_436
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	endstd
 	end
@@ -435,10 +435,10 @@ scr_seq_0003_05AD:
 	end
 
 scr_seq_0003_05D9:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_049
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	end
 
@@ -448,7 +448,7 @@ scr_seq_0003_05F5:
 	scrcmd_049
 	closemsg
 	fade_out_bgm 0, 10
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_436
 	overworld_white_out
@@ -803,9 +803,9 @@ scr_seq_0003_0A2E:
 	checkflag FLAG_UNK_976
 	callif TRUE, scr_seq_0003_0A82
 	menu_item_add 63, 255, 1
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0003_0A8C
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, scr_seq_0003_0AD1
 	goto scr_seq_0003_0AD1
 
@@ -916,7 +916,7 @@ scr_seq_0003_0C01:
 	non_npc_msg 34
 	call scr_seq_0003_0B17
 	call scr_seq_0003_0A18
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	goto scr_seq_0003_0B53
 
 scr_seq_0003_0C23:
@@ -984,7 +984,7 @@ scr_seq_0003_0D18:
 	non_npc_msg 34
 	call scr_seq_0003_0CA7
 	call scr_seq_0003_0A18
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	goto scr_seq_0003_0C39
 
 scr_seq_0003_0D3A:
@@ -1005,7 +1005,7 @@ scr_seq_0003_0D64:
 	non_npc_msg 34
 	call scr_seq_0003_0CA7
 	call scr_seq_0003_0A18
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	goto scr_seq_0003_0C39
 
 scr_seq_0003_0D86:
@@ -1020,7 +1020,7 @@ scr_seq_0003_0D98:
 	non_npc_msg 34
 	call scr_seq_0003_0CA7
 	call scr_seq_0003_0A18
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	goto scr_seq_0003_0C39
 
 scr_seq_0003_0DBA:
@@ -1049,21 +1049,21 @@ scr_seq_0003_0DF0:
 
 scr_seq_0003_0E02:
 	call scr_seq_0003_0A18
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 
 scr_seq_0003_0E16:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_309 90
 	return
 
 scr_seq_0003_0E27:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_156
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	end
 
@@ -1078,17 +1078,17 @@ scr_seq_0003_0E4A:
 	apply_movement 255, scr_seq_0003_1054
 	apply_movement 0, scr_seq_0003_105C
 	wait_movement
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	buffer_players_name 0
 	npc_msg 41
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 42
 	waitbutton
@@ -1102,9 +1102,9 @@ scr_seq_0003_0E9F:
 scr_seq_0003_0EA9:
 	scrcmd_609
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_0003_0ED4
 	scrcmd_188 2048
@@ -1125,7 +1125,7 @@ scr_seq_0003_0ED8:
 	npc_msg 45
 	apply_movement 255, scr_seq_0003_0468
 	wait_movement
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_0003_0F2E
 	scrcmd_188 1024
@@ -1146,7 +1146,7 @@ scr_seq_0003_0F32:
 scr_seq_0003_0F49:
 	apply_movement 255, scr_seq_0003_0468
 	wait_movement
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, scr_seq_0003_0F6E
 	scrcmd_188 1024
@@ -1246,11 +1246,11 @@ scr_seq_0003_107C:
 scr_seq_0003_1084:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_450
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1337,11 +1337,11 @@ scr_seq_0003_1165:
 	lockall
 	npc_msg 62
 	scrcmd_049
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_369
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1374,14 +1374,14 @@ scr_seq_0003_11AE:
 	setvar VAR_SPECIAL_x8004, 104
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_046 VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	setvar VAR_SPECIAL_x8000, 2
 	addvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	scrcmd_492 VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0003_1277
@@ -1520,11 +1520,11 @@ scr_seq_0003_136C:
 	wait_se SEQ_SE_GS_PHONE0
 	play_se SEQ_SE_GS_PHONE0
 	wait_se SEQ_SE_GS_PHONE0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	run_phone_call
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 
@@ -1560,7 +1560,7 @@ scr_seq_0003_13FA:
 	end
 
 scr_seq_0003_1407:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_166 32780
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -1568,14 +1568,14 @@ scr_seq_0003_1407:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0003_1444
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	endstd
 	end
 
 scr_seq_0003_1444:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	endstd
 	end
@@ -1803,12 +1803,12 @@ scr_seq_0003_173C:
 scr_seq_0003_1742:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_727 32773
+	scrcmd_727 VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg 99
 	closemsg
 	scrcmd_806
-	scrcmd_727 32773
+	scrcmd_727 VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg 100
 	scrcmd_049

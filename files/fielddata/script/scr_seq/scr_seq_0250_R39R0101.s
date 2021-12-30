@@ -48,7 +48,7 @@ scr_seq_0250_R39R0101_0058:
 	callif eq, scr_seq_0250_R39R0101_011E
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	callif eq, scr_seq_0250_R39R0101_012C
-	hasenoughmoneyvar 32780, 16385
+	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0250_R39R0101_00F7
 	setvar VAR_SPECIAL_x8004, 33
@@ -56,7 +56,7 @@ scr_seq_0250_R39R0101_0058:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0250_R39R0101_0104
-	submoneyvar 16385
+	submoneyvar VAR_TEMP_x4001
 	scrcmd_115
 	npc_msg 2
 	callstd std_give_item_verbose

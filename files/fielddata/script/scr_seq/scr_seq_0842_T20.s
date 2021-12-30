@@ -1205,10 +1205,10 @@ scr_seq_0842_T20_1054:
 	scrcmd_600
 scr_seq_0842_T20_1078:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 62, 0, 12, 6, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_582 60, 688, 393
@@ -1218,7 +1218,7 @@ scr_seq_0842_T20_1078:
 scr_seq_0842_T20_10B4:
 	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_0842_T20_10BC:
-	scrcmd_192 0
+	buffer_friends_name 0
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -1281,11 +1281,11 @@ scr_seq_0842_T20_119B:
 	wait_movement
 scr_seq_0842_T20_11C2:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 0
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

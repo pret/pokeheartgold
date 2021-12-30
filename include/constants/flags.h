@@ -2406,9 +2406,9 @@
 #define FLAG_UNK_95F                 0x95F
 #define FLAG_UNK_960                 0x960
 #define FLAG_HEAL_AFTER_BATTLE                 0x961
-#define FLAG_UNK_962                 0x962
+#define FLAG_STRENGTH_ACTIVE                 0x962
 #define FLAG_UNK_963                 0x963
-#define FLAG_UNK_964                 0x964
+#define FLAG_GAME_CLEAR                 0x964
 #define FLAG_UNK_965                 0x965
 #define FLAG_UNK_966                 0x966
 #define FLAG_UNK_967                 0x967

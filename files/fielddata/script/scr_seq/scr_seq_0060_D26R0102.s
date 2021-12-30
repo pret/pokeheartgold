@@ -52,7 +52,7 @@ scr_seq_0060_D26R0102_0055:
 	gotoif eq, scr_seq_0060_D26R0102_0193
 	npc_msg 2
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	hide_person 1
 	hide_person 2
@@ -62,7 +62,7 @@ scr_seq_0060_D26R0102_0055:
 	wait 20, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	move_person 7, 36, 0, 7, 2
 	scrcmd_602 0
@@ -96,10 +96,10 @@ scr_seq_0060_D26R0102_0107:
 	setvar VAR_UNK_409E, 1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 164, 0, 4, 5, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setflag FLAG_UNK_1AA
 	setflag FLAG_UNK_1D5

@@ -1,3 +1,4 @@
+import collections
 import json
 import os
 import typing
@@ -5,9 +6,13 @@ import warnings
 import enum
 import abc
 import re
+from xml.etree import ElementTree
+import csv
 
 from typing import Union, BinaryIO, TextIO, Optional
 import argparse
+
+project_root = os.path.realpath(os.path.join(os.path.dirname(__file__), '../..'))
 
 
 def parse_c_header(filename: str, prefix='') -> dict[int, str]:
@@ -58,21 +63,20 @@ class ScriptParserBase(abc.ABC):
     
     
 class NormalScriptParser(ScriptParserBase):
-    def __init__(self, raw: bytes, prefix='_EV'):
+    def __init__(self, raw: bytes, events: str, gmm: str, prefix='_EV'):
         super().__init__(raw, prefix)
         with open(os.path.join(os.path.dirname(__file__), 'scrcmd.json')) as jsonfp:
             scrcmds = json.load(jsonfp)
-        header_path = os.path.join(os.path.dirname(__file__), '../..')
         self.constants = {
-            'var': parse_c_header(os.path.join(header_path, 'include/constants/vars.h'), 'VAR_'),
-            'flag': parse_c_header(os.path.join(header_path, 'include/constants/flags.h'), 'FLAG_'),
-            'species': parse_c_header(os.path.join(header_path, 'include/constants/species.h'), 'SPECIES_'),
-            'item': parse_c_header(os.path.join(header_path, 'include/constants/items.h'), 'ITEM_'),
-            'move': parse_c_header(os.path.join(header_path, 'include/constants/moves.h'), 'MOVE_'),
-            'sound': parse_c_header(os.path.join(header_path, 'include/constants/sndseq.h'), 'SEQ_'),
-            'ribbon': parse_c_header(os.path.join(header_path, 'include/constants/ribbon.h'), 'RIBBON_'),
-            'stdscr': parse_c_header(os.path.join(header_path, 'include/constants/std_script.h'), 'std_'),
-            'trainer': parse_c_header(os.path.join(header_path, 'include/constants/trainers.h'), 'TRAINER_')
+            'var': parse_c_header(os.path.join(project_root, 'include/constants/vars.h'), 'VAR_'),
+            'flag': parse_c_header(os.path.join(project_root, 'include/constants/flags.h'), 'FLAG_'),
+            'species': parse_c_header(os.path.join(project_root, 'include/constants/species.h'), 'SPECIES_'),
+            'item': parse_c_header(os.path.join(project_root, 'include/constants/items.h'), 'ITEM_'),
+            'move': parse_c_header(os.path.join(project_root, 'include/constants/moves.h'), 'MOVE_'),
+            'sound': parse_c_header(os.path.join(project_root, 'include/constants/sndseq.h'), 'SEQ_'),
+            'ribbon': parse_c_header(os.path.join(project_root, 'include/constants/ribbon.h'), 'RIBBON_'),
+            'stdscr': parse_c_header(os.path.join(project_root, 'include/constants/std_script.h'), 'std_'),
+            'trainer': parse_c_header(os.path.join(project_root, 'include/constants/trainers.h'), 'TRAINER_')
         }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
         self.commands_d = {x['name']: x for x in self.commands}
@@ -83,6 +87,24 @@ class NormalScriptParser(ScriptParserBase):
         self.movement_scripts = set()
         self.header_end = 0
         self.pc_history = []
+
+        self.objects = []
+        self.messages = []
+
+        seen_objects = collections.Counter()
+        if events:
+            with open(events) as fp:
+                events_dict = json.load(fp)
+            for obj in events_dict.get('objects', []):
+                assert obj['id'] == len(self.objects)
+                sprite = obj['ovid'].replace('SPRITE_', '').lower()
+                obj_name = f'obj_{prefix}_{sprite}'
+                seen_objects[obj_name] += 1
+                if seen_objects[obj_name] > 1:
+                    obj_name = f'{obj_name}_{seen_objects[obj_name]}'
+                self.objects.append(obj_name)
+        if gmm:
+            self.messages = [row.get('id') for row in ElementTree.parse(gmm).iter('row')]
     
     def parse_header(self):
         for i in range(0, len(self.raw), 4):
@@ -100,6 +122,30 @@ class NormalScriptParser(ScriptParserBase):
             assert size in [1, 2, 4]
             return int.from_bytes(self.raw[pc:pc + size], 'little'), pc + size
         match size:
+            case 'object':
+                value = int.from_bytes(self.raw[pc:pc + 2], 'little')
+                pc += 2
+                if value in self.constants['vars']:
+                    return self.constants['vars'][value], pc
+                assert value < len(self.objects)
+                return self.objects[value], pc
+            case 'message':
+                value = int.from_bytes(self.raw[pc:pc + 2], 'little')
+                pc += 2
+                if value in self.constants['vars']:
+                    return self.constants['vars'][value], pc
+                assert value < len(self.messages)
+                return self.messages[value], pc
+            case 'bool1' | 'bool2' | 'bool4':
+                size = int(size[-1])
+                value = int.from_bytes(self.raw[pc:pc + size], 'little')
+                pc += size
+                return ['FALSE', 'TRUE'][value], pc
+            case 'hex1' | 'hex2' | 'hex4':
+                size = int(size[-1])
+                value = int.from_bytes(self.raw[pc:pc + size], 'little')
+                pc += size
+                return (f'0x{{:0{size}X}}').format(value), pc
             case 'addr' | 'script' | 'movement':
                 value = int.from_bytes(self.raw[pc:pc + 4], 'little')
                 pc += 4
@@ -315,38 +361,30 @@ class SpecialScriptParser(ScriptParserBase):
         return s
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('binfile', type=argparse.FileType('rb'))
-    parser.add_argument('scrfile', type=argparse.FileType('w'), nargs='?')
-    parser.add_argument('name', nargs='?')
-    parser.add_argument('--mode', type=ScriptType.convert, default=ScriptType.normal)
-    args = parser.parse_args(namespace=Namespace())
-
-    if args.scrfile is None:
-        scrfname = os.path.splitext(args.binfile.name)[0] + '.s'
-        args.scrfile = argparse.FileType('w')(scrfname)
-    if args.name is None:
-        args.name = os.path.splitext(os.path.basename(args.binfile.name))[0]
-    if args.mode is ScriptType.normal:
-        cls = NormalScriptParser
-    elif args.mode is ScriptType.special:
-        cls = SpecialScriptParser
+def parse_map(events, scripts, header, gmm):
+    if events:
+        events = os.path.join(project_root, events)
+    scripts = os.path.join(project_root, scripts)
+    scripts_bin = os.path.splitext(scripts)[0] + '.bin'
+    if header:
+        header = os.path.join(project_root, header)
+        header_bin = os.path.splitext(header)[0] + '.bin'
     else:
-        raise TypeError(args.mode)
-    data = args.binfile.read()
-    while True:
-        try:
-            parser = cls(data, args.name).parse_all()
-            print(parser, file=args.scrfile, end='')
-        except Exception as e:
-            if cls is NormalScriptParser:
-                cls = SpecialScriptParser
-            else:
-                print(f'Error with {args.binfile.name}')
-                raise e
-        else:
-            break
+        header_bin = None
+    gmm = os.path.join(project_root, gmm)
+    scr_pref = os.path.splitext(os.path.basename(scripts))[0]
+
+    with open(scripts_bin, 'rb') as fp, open(scripts, 'wt') as ofp:
+        print(NormalScriptParser(fp.read(), events, gmm, prefix=scr_pref), file=ofp, end='')
+    if header:
+        with open(header_bin, 'rb') as fp, open(header, 'wt') as ofp:
+            print(SpecialScriptParser(fp.read(), prefix=scr_pref), file=ofp, end='')
+
+
+def main():
+    with open(os.path.join(os.path.dirname(__file__), 'event_mapping.csv')) as fp:
+        for row in csv.reader(fp):
+            parse_map(*row)
 
 
 if __name__ == '__main__':

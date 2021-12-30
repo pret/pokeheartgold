@@ -59,10 +59,10 @@ scr_seq_0049_D24R0212_00D8:
 	wait_movement
 scr_seq_0049_D24R0212_00DA:
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 313, 0, 11, 7, 32780
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

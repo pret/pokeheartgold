@@ -242,10 +242,10 @@ scr_seq_0092_D36R0101_0346:
 	gotoif TRUE, scr_seq_0092_D36R0101_1207
 	clearflag FLAG_UNK_1D3
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 117, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg 1
@@ -628,10 +628,10 @@ scr_seq_0092_D36R0101_08DF:
 	gotoif TRUE, scr_seq_0092_D36R0101_1207
 	clearflag FLAG_UNK_1D3
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 117, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg 1
@@ -1069,12 +1069,12 @@ scr_seq_0092_D36R0101_0EE8:
 	npc_msg 14
 	closemsg
 scr_seq_0092_D36R0101_0F0B:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0092_D36R0101_1093
@@ -1104,12 +1104,12 @@ scr_seq_0092_D36R0101_0F99:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0092_D36R0101_10C7
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_352 1, 32774, 29
 	scrcmd_353 1, 32769
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8001, 4
 	gotoif eq, scr_seq_0092_D36R0101_10AB
@@ -1130,7 +1130,7 @@ scr_seq_0092_D36R0101_0F99:
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
 	wait 16, VAR_SPECIAL_x800C
-	scrcmd_076 32773, 0
+	scrcmd_076 VAR_SPECIAL_x8005, 0
 	goto scr_seq_0092_D36R0101_1079
 
 scr_seq_0092_D36R0101_1041:
@@ -1142,7 +1142,7 @@ scr_seq_0092_D36R0101_1041:
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
 	wait 32, VAR_SPECIAL_x800C
-	scrcmd_076 32773, 0
+	scrcmd_076 VAR_SPECIAL_x8005, 0
 	npc_msg 22
 	waitbutton
 	closemsg
@@ -1310,10 +1310,10 @@ scr_seq_0092_D36R0101_1207:
 	show_person 4
 	clearflag FLAG_UNK_1D4
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 117, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg 2
@@ -1638,11 +1638,11 @@ scr_seq_0092_D36R0101_1677:
 	wait_movement
 scr_seq_0092_D36R0101_169E:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 8
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -1911,10 +1911,10 @@ scr_seq_0092_D36R0101_1A51:
 	subvar VAR_TEMP_x4009, 1
 	setvar VAR_TEMP_x400A, 0
 	scrcmd_490 16393
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_TEMP_x4009, VAR_TEMP_x400A
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_TEMP_x400A, 1
 	gotoif eq, scr_seq_0092_D36R0101_1AC5
@@ -2322,10 +2322,10 @@ scr_seq_0092_D36R0101_1F48:
 	closemsg
 	callstd std_fade_end_friend_music
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 32767
+	fade_screen 6, 6, 0, 0x7FFF
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 32767
+	fade_screen 6, 6, 1, 0x7FFF
 	wait_fade
 	apply_movement 255, scr_seq_0092_D36R0101_2014
 	apply_movement 16, scr_seq_0092_D36R0101_208C
@@ -2339,7 +2339,7 @@ scr_seq_0092_D36R0101_1F48:
 	clearflag FLAG_UNK_302
 	setflag FLAG_UNK_310
 	scrcmd_176 27, 0, 954, 280, 1
-	fade_screen 6, 15, 1, 32767
+	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
 	releaseall
 	end

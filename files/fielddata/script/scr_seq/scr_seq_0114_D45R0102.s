@@ -120,10 +120,10 @@ scr_seq_0114_D45R0102_0079:
 	apply_movement 253, scr_seq_0114_D45R0102_03A4
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 32767
+	fade_screen 6, 6, 0, 0x7FFF
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 32767
+	fade_screen 6, 6, 1, 0x7FFF
 	wait_fade
 	apply_movement 255, scr_seq_0114_D45R0102_038C
 	wait_movement
@@ -143,7 +143,7 @@ scr_seq_0114_D45R0102_022A:
 	scrcmd_810
 	clearflag FLAG_UNK_310
 	scrcmd_176 117, 0, 16, 57, 1
-	fade_screen 6, 15, 1, 32767
+	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
 	releaseall
 	end
@@ -153,10 +153,10 @@ scr_seq_0114_D45R0102_0250:
 	closemsg
 	apply_movement 4, scr_seq_0114_D45R0102_0360
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 32767
+	fade_screen 6, 6, 0, 0x7FFF
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 32767
+	fade_screen 6, 6, 1, 0x7FFF
 	wait_fade
 	wait_movement
 	hide_person 4
@@ -169,7 +169,7 @@ scr_seq_0114_D45R0102_0250:
 	setvar VAR_UNK_40FE, 0
 	setflag FLAG_UNK_310
 	scrcmd_176 117, 0, 16, 57, 1
-	fade_screen 6, 15, 1, 32767
+	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
 	touchscreen_menu_show
 	releaseall
@@ -183,14 +183,14 @@ scr_seq_0114_D45R0102_02C0:
 	closemsg
 	gender_msgbox 25, 24
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 

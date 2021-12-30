@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_658
-ScrCmd_658: ; 0x020483D8
+	thumb_func_start ScrCmd_BufferStatName
+ScrCmd_BufferStatName: ; 0x020483D8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -31,7 +31,7 @@ ScrCmd_658: ; 0x020483D8
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_658
+	thumb_func_end ScrCmd_BufferStatName
 
 	thumb_func_start ScrCmd_BufferPlayersName
 ScrCmd_BufferPlayersName: ; 0x02048414
@@ -59,8 +59,8 @@ ScrCmd_BufferPlayersName: ; 0x02048414
 	.balign 4, 0
 	thumb_func_end ScrCmd_BufferPlayersName
 
-	thumb_func_start ScrCmd_191
-ScrCmd_191: ; 0x02048448
+	thumb_func_start ScrCmd_BufferRivalsName
+ScrCmd_BufferRivalsName: ; 0x02048448
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -77,10 +77,10 @@ ScrCmd_191: ; 0x02048448
 	bl BufferRivalsName
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_191
+	thumb_func_end ScrCmd_BufferRivalsName
 
-	thumb_func_start ScrCmd_192
-ScrCmd_192: ; 0x0204846C
+	thumb_func_start ScrCmd_BufferFriendsName
+ScrCmd_BufferFriendsName: ; 0x0204846C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -97,7 +97,7 @@ ScrCmd_192: ; 0x0204846C
 	bl BufferFriendsName
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_192
+	thumb_func_end ScrCmd_BufferFriendsName
 
 	thumb_func_start ScrCmd_BufferMonSpeciesName
 ScrCmd_BufferMonSpeciesName: ; 0x02048490
@@ -539,8 +539,8 @@ ScrCmd_BufferPlayerUnionAvatarClassName: ; 0x020487CC
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_BufferPlayerUnionAvatarClassName
 
-	thumb_func_start ScrCmd_BufferSpeciesNameCustom
-ScrCmd_BufferSpeciesNameCustom: ; 0x02048818
+	thumb_func_start ScrCmd_BufferSpeciesName
+ScrCmd_BufferSpeciesName: ; 0x02048818
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -586,7 +586,7 @@ ScrCmd_BufferSpeciesNameCustom: ; 0x02048818
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_BufferSpeciesNameCustom
+	thumb_func_end ScrCmd_BufferSpeciesName
 
 	thumb_func_start _get_species_name
 _get_species_name: ; 0x02048880

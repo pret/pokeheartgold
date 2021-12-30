@@ -151,12 +151,12 @@ scr_seq_0094_D37R0102_01F5:
 	scrcmd_049
 	closemsg
 	scrcmd_114
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0094_D37R0102_0319
@@ -170,12 +170,12 @@ scr_seq_0094_D37R0102_01F5:
 	npc_msg 12
 	scrcmd_049
 	closemsg
-	fade_screen 6, 1, 0, 32767
+	fade_screen 6, 1, 0, 0x7FFF
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	scrcmd_114
-	fade_screen 6, 1, 1, 32767
+	fade_screen 6, 1, 1, 0x7FFF
 	wait_fade
 	npc_msg 13
 	scrcmd_049
@@ -270,12 +270,12 @@ scr_seq_0094_D37R0102_0375:
 	scrcmd_049
 	closemsg
 	scrcmd_114
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0094_D37R0102_04A5
@@ -289,12 +289,12 @@ scr_seq_0094_D37R0102_0375:
 	npc_msg 19
 	scrcmd_049
 	closemsg
-	fade_screen 6, 1, 0, 32767
+	fade_screen 6, 1, 0, 0x7FFF
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	scrcmd_114
-	fade_screen 6, 1, 1, 32767
+	fade_screen 6, 1, 1, 0x7FFF
 	wait_fade
 	npc_msg 20
 	scrcmd_049
@@ -690,7 +690,7 @@ scr_seq_0094_D37R0102_0A71:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_188 1024
 	scrcmd_189
@@ -699,7 +699,7 @@ scr_seq_0094_D37R0102_0A71:
 	wait 24, VAR_SPECIAL_x800C
 	play_se SEQ_SE_DP_CARD2
 	wait_se SEQ_SE_DP_CARD2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_UNK_4077, 3
 	npc_msg 37
@@ -904,12 +904,12 @@ scr_seq_0094_D37R0102_0CC0:
 scr_seq_0094_D37R0102_0CCC:
 	npc_msg 42
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 16386
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, scr_seq_0094_D37R0102_0DDA
@@ -941,11 +941,11 @@ scr_seq_0094_D37R0102_0D55:
 
 scr_seq_0094_D37R0102_0D5B:
 	setflag FLAG_UNK_08C
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_154 16386, 32773, 32775
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8006, 0
 	gotoif eq, scr_seq_0094_D37R0102_0DAA
@@ -984,11 +984,11 @@ scr_seq_0094_D37R0102_0DE5:
 	goto scr_seq_0094_D37R0102_0CCC
 
 scr_seq_0094_D37R0102_0DEE:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_492 0, VAR_SPECIAL_x800C, VAR_SPECIAL_x8004
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_0E35
@@ -1046,7 +1046,7 @@ scr_seq_0094_D37R0102_0F05:
 	gotoif eq, scr_seq_0094_D37R0102_0FDA
 	npc_msg 30
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_188 1024
 	scrcmd_189
@@ -1068,11 +1068,11 @@ scr_seq_0094_D37R0102_0F05:
 	lock 253
 	wait_movement
 scr_seq_0094_D37R0102_0F79:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 31
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 10
 	lockall
@@ -1087,7 +1087,7 @@ scr_seq_0094_D37R0102_0F79:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 32
 	waitbutton
@@ -1258,11 +1258,11 @@ scr_seq_0094_D37R0102_11AC:
 	scrcmd_255 0, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 0, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1273,11 +1273,11 @@ scr_seq_0094_D37R0102_11E9:
 	scrcmd_255 1, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 1, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1288,11 +1288,11 @@ scr_seq_0094_D37R0102_1226:
 	scrcmd_255 2, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 2, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1303,11 +1303,11 @@ scr_seq_0094_D37R0102_1263:
 	scrcmd_255 3, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 3, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1318,11 +1318,11 @@ scr_seq_0094_D37R0102_12A0:
 	scrcmd_255 4, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 4, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1333,11 +1333,11 @@ scr_seq_0094_D37R0102_12DD:
 	scrcmd_255 5, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 5, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1348,11 +1348,11 @@ scr_seq_0094_D37R0102_131A:
 	scrcmd_255 6, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 6, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1363,11 +1363,11 @@ scr_seq_0094_D37R0102_1357:
 	scrcmd_255 7, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 7, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1378,11 +1378,11 @@ scr_seq_0094_D37R0102_1394:
 	scrcmd_255 8, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 8, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1393,11 +1393,11 @@ scr_seq_0094_D37R0102_13D1:
 	scrcmd_255 9, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 9, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -1408,11 +1408,11 @@ scr_seq_0094_D37R0102_140E:
 	scrcmd_255 10, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0094_D37R0102_144B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_155 10, 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

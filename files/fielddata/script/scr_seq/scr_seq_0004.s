@@ -192,7 +192,7 @@ scr_seq_0004_02A8:
 	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0004_0F27
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_0004_0C10
 	npc_msg 0
@@ -497,63 +497,63 @@ scr_seq_0004_0778:
 	scrcmd_707 150, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_07AA
-	buffer_species_name_custom 0, SPECIES_MEWTWO, 0, 0
+	buffer_species_name 0, SPECIES_MEWTWO, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_07AA:
 	scrcmd_707 249, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_07CE
-	buffer_species_name_custom 0, SPECIES_LUGIA, 0, 0
+	buffer_species_name 0, SPECIES_LUGIA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_07CE:
 	scrcmd_707 250, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_07F2
-	buffer_species_name_custom 0, SPECIES_HO_OH, 0, 0
+	buffer_species_name 0, SPECIES_HO_OH, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_07F2:
 	scrcmd_707 382, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_0816
-	buffer_species_name_custom 0, SPECIES_KYOGRE, 0, 0
+	buffer_species_name 0, SPECIES_KYOGRE, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_0816:
 	scrcmd_707 383, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_083A
-	buffer_species_name_custom 0, SPECIES_GROUDON, 0, 0
+	buffer_species_name 0, SPECIES_GROUDON, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_083A:
 	scrcmd_707 384, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_085E
-	buffer_species_name_custom 0, SPECIES_RAYQUAZA, 0, 0
+	buffer_species_name 0, SPECIES_RAYQUAZA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_085E:
 	scrcmd_707 483, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_0882
-	buffer_species_name_custom 0, SPECIES_DIALGA, 0, 0
+	buffer_species_name 0, SPECIES_DIALGA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_0882:
 	scrcmd_707 484, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_08A6
-	buffer_species_name_custom 0, SPECIES_PALKIA, 0, 0
+	buffer_species_name 0, SPECIES_PALKIA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_08A6:
 	scrcmd_707 487, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, scr_seq_0004_08CA
-	buffer_species_name_custom 0, SPECIES_GIRATINA, 0, 0
+	buffer_species_name 0, SPECIES_GIRATINA, 0, 0
 	npc_msg 26
 	setvar VAR_TEMP_x4005, 1
 scr_seq_0004_08CA:
@@ -821,7 +821,7 @@ scr_seq_0004_0C1B:
 	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0004_0F27
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_0004_0E3A
 	get_party_count VAR_TEMP_x4009
@@ -990,7 +990,7 @@ scr_seq_0004_0E72:
 	scrcmd_436
 	scrcmd_152
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	end
 
@@ -1030,11 +1030,11 @@ scr_seq_0004_0EF4:
 	.byte 0x02, 0x00
 scr_seq_0004_0EF6:
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_252
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0004_0F1C
 

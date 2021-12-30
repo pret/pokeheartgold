@@ -25,7 +25,7 @@ scr_seq_0175_R03_0016:
 
 scr_seq_0175_R03_0050:
 	scrcmd_518 3
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -46,7 +46,7 @@ scr_seq_0175_R03_00A2:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_0175_R03_00B2:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0175_R03_00BE:
 	scrcmd_076 386, 0
@@ -68,7 +68,7 @@ scr_seq_0175_R03_00CD:
 
 scr_seq_0175_R03_0107:
 	scrcmd_518 2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -95,7 +95,7 @@ scr_seq_0175_R03_0170:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_0175_R03_0180:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0175_R03_018C:
 	scrcmd_076 386, 0
@@ -117,7 +117,7 @@ scr_seq_0175_R03_019B:
 
 scr_seq_0175_R03_01D5:
 	scrcmd_518 1
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -131,7 +131,7 @@ scr_seq_0175_R03_01D5:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_0175_R03_0220:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0175_R03_022C:
 	scrcmd_076 386, 0
@@ -153,7 +153,7 @@ scr_seq_0175_R03_023B:
 
 scr_seq_0175_R03_0275:
 	scrcmd_518 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -167,7 +167,7 @@ scr_seq_0175_R03_0275:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 scr_seq_0175_R03_02C0:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0175_R03_02CC:
 	scrcmd_076 386, 0

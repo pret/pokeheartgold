@@ -111,13 +111,13 @@ scr_seq_0005_D01R0101_0157:
 	npc_msg 3
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_262
 	hide_person 1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -171,12 +171,12 @@ scr_seq_0005_D01R0101_020E:
 	npc_msg 7
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 86
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg 8
@@ -216,12 +216,12 @@ scr_seq_0005_D01R0101_02AF:
 	gotoif eq, scr_seq_0005_D01R0101_0346
 	npc_msg 13
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0005_D01R0101_0346

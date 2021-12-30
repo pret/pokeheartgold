@@ -67,11 +67,11 @@ scr_seq_0065_D27R0106_00C6:
 	wait_movement
 scr_seq_0065_D27R0106_00ED:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 27
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

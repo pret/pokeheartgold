@@ -68,10 +68,10 @@ scr_seq_0878_T24PC0101_007F:
 scr_seq_0878_T24PC0101_00BC:
 	closemsg
 	scrcmd_815 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input 1, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0878_T24PC0101_00E0:
 	releaseall

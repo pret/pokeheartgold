@@ -20,7 +20,7 @@ scr_seq_0904_T25R1006_0022:
 	end
 
 scr_seq_0904_T25R1006_0033:
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, scr_seq_0904_T25R1006_011D
 	get_phone_book_rematch 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
@@ -441,13 +441,13 @@ scr_seq_0904_T25R1006_061B:
 	npc_msg 27
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_26F
 	hide_person 3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -479,12 +479,12 @@ scr_seq_0904_T25R1006_067A:
 	npc_msg 31
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 15
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg 32

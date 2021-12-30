@@ -1175,11 +1175,11 @@ scr_seq_0089_D35R0102_1205:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_PL_BOWABOWA
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
 	scrcmd_176 247, 0, 50, 4, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

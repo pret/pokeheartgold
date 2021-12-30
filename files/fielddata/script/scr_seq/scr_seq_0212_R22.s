@@ -90,7 +90,7 @@ scr_seq_0212_R22_0099:
 	fade_out_bgm 0, 30
 	apply_movement 2, scr_seq_0212_R22_03F4
 	wait_movement
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 2
 	closemsg
 	apply_movement 1, scr_seq_0212_R22_0438
@@ -99,7 +99,7 @@ scr_seq_0212_R22_0099:
 	closemsg
 	apply_movement 2, scr_seq_0212_R22_03FC
 	wait_movement
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 3
 	closemsg
 	apply_movement 1, scr_seq_0212_R22_0444
@@ -108,7 +108,7 @@ scr_seq_0212_R22_0099:
 	closemsg
 	apply_movement 2, scr_seq_0212_R22_03F4
 	wait_movement
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 4
 	closemsg
 	apply_movement 1, scr_seq_0212_R22_044C
@@ -119,7 +119,7 @@ scr_seq_0212_R22_0099:
 	wait_movement
 	apply_movement 2, scr_seq_0212_R22_03F4
 	wait_movement
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 5
 	closemsg
 	apply_movement 2, scr_seq_0212_R22_03F4
@@ -131,7 +131,7 @@ scr_seq_0212_R22_0099:
 	apply_movement 2, scr_seq_0212_R22_0404
 	wait_movement
 	scrcmd_103
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 7
 	closemsg
 	scrcmd_602 0
@@ -158,10 +158,10 @@ scr_seq_0212_R22_0099:
 	apply_movement 253, scr_seq_0212_R22_0350
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 32767
+	fade_screen 6, 6, 0, 0x7FFF
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 32767
+	fade_screen 6, 6, 1, 0x7FFF
 	wait_fade
 	apply_movement 255, scr_seq_0212_R22_03C4
 	apply_movement 3, scr_seq_0212_R22_0320
@@ -174,7 +174,7 @@ scr_seq_0212_R22_0099:
 	clearflag FLAG_UNK_303
 	clearflag FLAG_UNK_311
 	scrcmd_176 298, 0, 6, 8, 1
-	fade_screen 6, 15, 1, 32767
+	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
 	releaseall
 	end
@@ -381,11 +381,11 @@ scr_seq_0212_R22_0523:
 	wait_movement
 scr_seq_0212_R22_054A:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 71
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

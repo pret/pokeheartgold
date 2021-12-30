@@ -16,7 +16,7 @@ scr_seq_0922_T27GYM0101_001A:
 	get_phone_book_rematch 37, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0922_T27GYM0101_00AC
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, scr_seq_0922_T27GYM0101_00A6
 	scrcmd_147 37, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
@@ -69,10 +69,10 @@ scr_seq_0922_T27GYM0101_00B2:
 	apply_movement 255, scr_seq_0922_T27GYM0101_0128
 	wait_movement
 	setvar VAR_UNK_4079, 1
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 78, 7, 376, 182, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -162,10 +162,10 @@ scr_seq_0922_T27GYM0101_01F5:
 	play_se SEQ_SE_DP_GYURU
 	apply_movement 255, scr_seq_0922_T27GYM0101_0230
 	wait_movement
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 80, 0, 16, 49, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

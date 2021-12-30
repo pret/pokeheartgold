@@ -103,11 +103,11 @@ scr_seq_0874_T23R0501_011A:
 	wait_movement
 	npc_msg 4
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_739
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_735 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -275,7 +275,7 @@ scr_seq_0874_T23R0501_0348:
 	scrcmd_147 5, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, scr_seq_0874_T23R0501_02A2
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0874_T23R0501_0371
 	npc_msg 13
 	waitbutton

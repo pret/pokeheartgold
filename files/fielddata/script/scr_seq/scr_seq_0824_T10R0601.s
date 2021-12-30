@@ -153,15 +153,15 @@ scr_seq_0824_T10R0601_0234:
 	wait_movement
 	scrcmd_049
 	closemsg
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0824_T10R0601_0268
 	clearflag FLAG_UNK_251
 	setvar VAR_UNK_411A, 1
 scr_seq_0824_T10R0601_0268:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 306, 0, 6, 22, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

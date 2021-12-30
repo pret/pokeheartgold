@@ -77,7 +77,7 @@ scr_seq_0849_T20R0402_00B1:
 
 scr_seq_0849_T20R0402_00E4:
 	buffer_players_name 0
-	scrcmd_727 32780
+	scrcmd_727 VAR_SPECIAL_x800C
 	bufferpartymonnick 1, VAR_SPECIAL_x800C
 	gender_msgbox 15, 16
 	closemsg
@@ -90,11 +90,11 @@ scr_seq_0849_T20R0402_00FC:
 	gender_msgbox 11, 12
 	closemsg
 scr_seq_0849_T20R0402_010D:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_425 2
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	gender_msgbox 13, 14
 	waitbutton

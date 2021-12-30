@@ -276,15 +276,15 @@ scr_seq_0069_D31R0201_0383:
 	comparevartovalue VAR_SPECIAL_x8008, 2
 	gotoif eq, scr_seq_0069_D31R0201_0553
 	scrcmd_412 53, 0, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 53, 1, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 53, 2, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 43, 0, 32780
@@ -306,19 +306,19 @@ scr_seq_0069_D31R0201_042F:
 	comparevartovalue VAR_SPECIAL_x8008, 2
 	gotoif eq, scr_seq_0069_D31R0201_0553
 	scrcmd_412 53, 0, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 53, 1, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 53, 2, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 53, 3, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 43, 0, 32780
@@ -364,7 +364,7 @@ scr_seq_0069_D31R0201_0553:
 scr_seq_0069_D31R0201_055E:
 	.byte 0x02, 0x00
 scr_seq_0069_D31R0201_0560:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_412 30, 0, 0
@@ -374,7 +374,7 @@ scr_seq_0069_D31R0201_0560:
 	scrcmd_815 0
 scr_seq_0069_D31R0201_058F:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 
@@ -557,10 +557,10 @@ scr_seq_0069_D31R0201_0817:
 
 scr_seq_0069_D31R0201_0829:
 	scrcmd_420 59
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 266, 0, 3, 6, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -703,7 +703,7 @@ scr_seq_0069_D31R0201_0A42:
 	return
 
 scr_seq_0069_D31R0201_0A52:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_166 16384
 	scrcmd_412 16, 16385, 16384
@@ -713,7 +713,7 @@ scr_seq_0069_D31R0201_0A52:
 	scrcmd_815 0
 scr_seq_0069_D31R0201_0A81:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	return
@@ -754,7 +754,7 @@ scr_seq_0069_D31R0201_0ADF:
 	npc_msg 56
 	call scr_seq_0069_D31R0201_0817
 	scrcmd_348 30
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_412 2, 0, 0
@@ -773,7 +773,7 @@ scr_seq_0069_D31R0201_0B46:
 	gotoif ne, scr_seq_0069_D31R0201_085B
 	scrcmd_418 32772, 32773
 	buffer_int 0, VAR_SPECIAL_x8004
-	scrcmd_541 1, 32773, 2, 3
+	scrcmd_541 1, VAR_SPECIAL_x8005, 2, 3
 	npc_msg 52
 	scrcmd_049
 	goto scr_seq_0069_D31R0201_0860
@@ -871,11 +871,11 @@ scr_seq_0069_D31R0201_0C7D:
 	comparevartovalue VAR_SPECIAL_x8008, 2
 	gotoif eq, scr_seq_0069_D31R0201_0553
 	scrcmd_412 53, 0, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	scrcmd_412 53, 1, 32780
-	scrcmd_690 32780, 32780
+	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0069_D31R0201_14C8
 	comparevartovalue VAR_TEMP_x4001, 1
@@ -1073,7 +1073,7 @@ scr_seq_0069_D31R0201_0FB7:
 scr_seq_0069_D31R0201_0FB9:
 	scrcmd_609
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	call scr_seq_0069_D31R0201_0807
 	scrcmd_412 100, 0, 32780
@@ -1404,11 +1404,11 @@ scr_seq_0069_D31R0201_13F9:
 	end
 
 scr_seq_0069_D31R0201_1404:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_408 32768, 32769
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	return
@@ -1518,14 +1518,14 @@ scr_seq_0069_D31R0201_14DC:
 scr_seq_0069_D31R0201_1504:
 	.byte 0x02, 0x00
 scr_seq_0069_D31R0201_1506:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_349
 	scrcmd_351 32780
 	scrcmd_150
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_0069_D31R0201_1645

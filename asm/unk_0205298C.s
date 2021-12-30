@@ -435,7 +435,7 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	bl sub_0203B964
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl sub_02066614
+	bl CheckGameClearFlag
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -451,11 +451,11 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	bl PlayerProfile_GetTrainerGender
 	str r0, [r5, #0x10]
 	add r0, r6, #0
-	bl sub_02066614
+	bl CheckGameClearFlag
 	str r0, [r5, #0x14]
 	add r0, r6, #0
 	str r7, [r5, #0x3c]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	bne _02052D3A
 	add r0, r4, #0
@@ -470,7 +470,7 @@ _02052D3A:
 	add r0, r6, #0
 	bl sub_020667E0
 	add r0, r6, #0
-	bl sub_02066604
+	bl SetGameClearFlag
 	ldr r0, [sp, #4]
 	bl PlayerProfile_SetGameClearFlag
 	ldr r0, [r5, #0x3c]

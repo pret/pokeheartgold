@@ -165,7 +165,7 @@ scr_seq_0838_T11R0702_0252:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 11
 	scrcmd_675 32768, 0, 0, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_676 32768, 32772
@@ -189,7 +189,7 @@ scr_seq_0838_T11R0702_02C1:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 403, 0, 32774, 32775, 32780
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_490 16395
 	comparevartovalue VAR_TEMP_x400A, 1
@@ -225,13 +225,13 @@ scr_seq_0838_T11R0702_0328:
 
 scr_seq_0838_T11R0702_0332:
 	npc_msg 7
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_0838_T11R0702_03AC
@@ -267,13 +267,13 @@ scr_seq_0838_T11R0702_03BE:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_03C0:
 	npc_msg 7
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_0838_T11R0702_073D
@@ -379,13 +379,13 @@ scr_seq_0838_T11R0702_0564:
 scr_seq_0838_T11R0702_0588:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_058A:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_352 1, 32768, 32769
 	scrcmd_353 1, 32770
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8002, 4
 	gotoif eq, scr_seq_0838_T11R0702_0628
@@ -438,7 +438,7 @@ scr_seq_0838_T11R0702_066F:
 	.byte 0x00
 scr_seq_0838_T11R0702_0671:
 	scrcmd_675 32768, 32770, 32769, 32772
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8004, 1

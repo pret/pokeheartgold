@@ -87,11 +87,11 @@ scr_seq_0906_T25R1101_0102:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0139
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 0, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0139:
 	releaseall
@@ -130,11 +130,11 @@ scr_seq_0906_T25R1101_0199:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_01D0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 1, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_01D0:
 	releaseall
@@ -146,11 +146,11 @@ scr_seq_0906_T25R1101_01D4:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_020B
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 2, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_020B:
 	releaseall
@@ -162,11 +162,11 @@ scr_seq_0906_T25R1101_020F:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0246
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 3, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0246:
 	releaseall
@@ -178,11 +178,11 @@ scr_seq_0906_T25R1101_024A:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0281
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 4, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0281:
 	releaseall
@@ -194,11 +194,11 @@ scr_seq_0906_T25R1101_0285:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_02BC
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 5, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_02BC:
 	releaseall
@@ -210,11 +210,11 @@ scr_seq_0906_T25R1101_02C0:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_02F7
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 6, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_02F7:
 	releaseall
@@ -226,11 +226,11 @@ scr_seq_0906_T25R1101_02FB:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0332
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 7, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0332:
 	releaseall
@@ -242,11 +242,11 @@ scr_seq_0906_T25R1101_0336:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_036D
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 8, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_036D:
 	releaseall
@@ -258,11 +258,11 @@ scr_seq_0906_T25R1101_0371:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_03A8
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 9, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_03A8:
 	releaseall
@@ -274,11 +274,11 @@ scr_seq_0906_T25R1101_03AC:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_03E3
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 10, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_03E3:
 	releaseall
@@ -290,11 +290,11 @@ scr_seq_0906_T25R1101_03E7:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_041E
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 11, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_041E:
 	releaseall
@@ -306,11 +306,11 @@ scr_seq_0906_T25R1101_0422:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0459
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 21, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0459:
 	releaseall
@@ -322,11 +322,11 @@ scr_seq_0906_T25R1101_045D:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0494
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 12, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0494:
 	releaseall
@@ -338,11 +338,11 @@ scr_seq_0906_T25R1101_0498:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_04CF
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 13, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_04CF:
 	releaseall
@@ -354,11 +354,11 @@ scr_seq_0906_T25R1101_04D3:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_050A
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 14, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_050A:
 	releaseall
@@ -370,11 +370,11 @@ scr_seq_0906_T25R1101_050E:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0545
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 15, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0545:
 	releaseall
@@ -386,11 +386,11 @@ scr_seq_0906_T25R1101_0549:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0580
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 16, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0580:
 	releaseall
@@ -402,11 +402,11 @@ scr_seq_0906_T25R1101_0584:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_05BB
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 17, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_05BB:
 	releaseall
@@ -418,11 +418,11 @@ scr_seq_0906_T25R1101_05BF:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_05F6
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 18, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_05F6:
 	releaseall
@@ -434,11 +434,11 @@ scr_seq_0906_T25R1101_05FA:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_0631
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 19, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_0631:
 	releaseall
@@ -450,11 +450,11 @@ scr_seq_0906_T25R1101_0635:
 	call scr_seq_0906_T25R1101_013D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, scr_seq_0906_T25R1101_066C
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 20, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0906_T25R1101_066C:
 	releaseall
@@ -1005,7 +1005,7 @@ scr_seq_0906_T25R1101_0FB7:
 	goto scr_seq_0906_T25R1101_1208
 
 scr_seq_0906_T25R1101_0FD5:
-	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
+	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 14
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -1054,7 +1054,7 @@ scr_seq_0906_T25R1101_1093:
 	play_se SEQ_SE_DP_REGI
 	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
+	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 15
 	comparevartovalue VAR_TEMP_x4002, 63
 	gotoif ne, scr_seq_0906_T25R1101_10CD

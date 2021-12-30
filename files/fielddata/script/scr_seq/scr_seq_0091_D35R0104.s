@@ -179,7 +179,7 @@ scr_seq_0091_D35R0104_0221:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 3
 	closemsg
 	scrcmd_602 0

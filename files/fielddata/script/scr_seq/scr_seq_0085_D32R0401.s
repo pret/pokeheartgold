@@ -280,7 +280,7 @@ scr_seq_0085_D32R0401_039F:
 scr_seq_0085_D32R0401_03A1:
 	npc_msg 33
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_633 4, 16710, 32780
 	scrcmd_635 16386, 16389
@@ -289,11 +289,11 @@ scr_seq_0085_D32R0401_03A1:
 	scrcmd_815 0
 scr_seq_0085_D32R0401_03D1:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, scr_seq_0085_D32R0401_02F5
-	scrcmd_690 16386, 32780
+	scrcmd_690 VAR_TEMP_x4002, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0085_D32R0401_07B9
 	comparevartovalue VAR_UNK_4146, 1
@@ -303,7 +303,7 @@ scr_seq_0085_D32R0401_03D1:
 scr_seq_0085_D32R0401_0412:
 	.byte 0x02, 0x00
 scr_seq_0085_D32R0401_0414:
-	scrcmd_690 16389, 32780
+	scrcmd_690 VAR_TEMP_x4005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0085_D32R0401_07B9
 	goto scr_seq_0085_D32R0401_042F
@@ -322,7 +322,7 @@ scr_seq_0085_D32R0401_044A:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0085_D32R0401_04D8
 	scrcmd_633 2, 16710, 32780
-	buffer_species_name_custom 0, VAR_SPECIAL_x800C, 0, 0
+	buffer_species_name 0, VAR_SPECIAL_x800C, 0, 0
 	comparevartovar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	gotoif eq, scr_seq_0085_D32R0401_04D8
 	goto scr_seq_0085_D32R0401_0484
@@ -330,7 +330,7 @@ scr_seq_0085_D32R0401_044A:
 scr_seq_0085_D32R0401_0482:
 	.byte 0x02, 0x00
 scr_seq_0085_D32R0401_0484:
-	buffer_species_name_custom 1, VAR_TEMP_x4001, 0, 0
+	buffer_species_name 1, VAR_TEMP_x4001, 0, 0
 	npc_msg 34
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 1, 1, VAR_SPECIAL_x800C
@@ -491,7 +491,7 @@ scr_seq_0085_D32R0401_0689:
 scr_seq_0085_D32R0401_06BA:
 	.byte 0x02, 0x00
 scr_seq_0085_D32R0401_06BC:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_815 0
 	comparevartovalue VAR_UNK_4146, 0
@@ -506,7 +506,7 @@ scr_seq_0085_D32R0401_06BC:
 	comparevartovalue VAR_UNK_4146, 2
 	callif eq, scr_seq_0085_D32R0401_071D
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_682 1
 	end

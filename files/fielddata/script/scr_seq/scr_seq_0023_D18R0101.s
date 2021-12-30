@@ -15,7 +15,7 @@ scr_seq_0023_D18R0101_0012:
 	callstd std_play_rival_intro_music
 	apply_movement 0, scr_seq_0023_D18R0101_00D0
 	wait_movement
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 0
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
@@ -37,7 +37,7 @@ scr_seq_0023_D18R0101_006E:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0023_D18R0101_00C7
 	callstd std_play_rival_outro_music
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 1
 	closemsg
 	scrcmd_602 0

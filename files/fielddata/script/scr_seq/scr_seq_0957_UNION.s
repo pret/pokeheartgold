@@ -118,7 +118,7 @@ scr_seq_0957_UNION_01A1:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 1
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_160
 	scrcmd_150
@@ -147,7 +147,7 @@ scr_seq_0957_UNION_021B:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 3
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_161
 	scrcmd_150
@@ -182,11 +182,11 @@ scr_seq_0957_UNION_02A6:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 2
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_350
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 202
 	scrcmd_257 102
@@ -224,7 +224,7 @@ scr_seq_0957_UNION_0353:
 	scrcmd_348 30
 	scrcmd_257 4
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_159
 	scrcmd_150
@@ -248,7 +248,7 @@ scr_seq_0957_UNION_03B3:
 	scrcmd_348 30
 	scrcmd_257 5
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_162
 	scrcmd_150
@@ -278,7 +278,7 @@ scr_seq_0957_UNION_0435:
 	scrcmd_348 30
 	scrcmd_257 6
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_629
 	scrcmd_150
@@ -331,11 +331,11 @@ scr_seq_0957_UNION_04AF:
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_159
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	goto scr_seq_0957_UNION_0478
 
 scr_seq_0957_UNION_0526:
@@ -365,11 +365,11 @@ scr_seq_0957_UNION_0528:
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_629
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	goto scr_seq_0957_UNION_0478
 
 scr_seq_0957_UNION_05C1:
@@ -402,11 +402,11 @@ scr_seq_0957_UNION_05DB:
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_162
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	goto scr_seq_0957_UNION_0478
 
 scr_seq_0957_UNION_0652:
@@ -596,7 +596,7 @@ scr_seq_0957_UNION_0863:
 	scrcmd_257 1
 	closemsg
 	scrcmd_261 5
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_160
 	scrcmd_150
@@ -632,7 +632,7 @@ scr_seq_0957_UNION_08DB:
 	scrcmd_257 3
 	closemsg
 	scrcmd_261 7
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_161
 	scrcmd_150
@@ -676,11 +676,11 @@ scr_seq_0957_UNION_0974:
 	scrcmd_257 2
 	closemsg
 	scrcmd_261 6
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_350
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 202
 	scrcmd_257 102
@@ -728,7 +728,7 @@ scr_seq_0957_UNION_0A44:
 	scrcmd_257 5
 	closemsg
 	scrcmd_261 2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_162
 	scrcmd_150
@@ -756,7 +756,7 @@ scr_seq_0957_UNION_0AA2:
 	scrcmd_257 6
 	closemsg
 	scrcmd_261 13
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_629
 	scrcmd_150
@@ -781,7 +781,7 @@ scr_seq_0957_UNION_0B11:
 	scrcmd_257 4
 	closemsg
 	scrcmd_261 1
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_159
 	scrcmd_150
@@ -837,7 +837,7 @@ scr_seq_0957_UNION_0BCE:
 	.byte 0x01, 0x00, 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 scr_seq_0957_UNION_0BDA:
 	scrcmd_265
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	return
 
 scr_seq_0957_UNION_0BE8:

@@ -35,9 +35,9 @@ scr_seq_0825_T10R0701_0010:
 	scrcmd_602 1
 	scrcmd_604 48
 	party_count_not_egg VAR_SPECIAL_x800C
-	scrcmd_514 32780
+	hall_of_fame_anim VAR_SPECIAL_x800C
 	add_special_game_stat 23
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	call scr_seq_0825_T10R0701_01B4
 	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
@@ -89,9 +89,9 @@ scr_seq_0825_T10R0701_0133:
 	callif eq, scr_seq_0825_T10R0701_0280
 	comparevartovalue VAR_UNK_4048, 2
 	callif eq, scr_seq_0825_T10R0701_028B
-	scrcmd_163 0
+	hof_credits 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -114,7 +114,7 @@ scr_seq_0825_T10R0701_01A8:
 	step 12, 4
 	step_end
 scr_seq_0825_T10R0701_01B4:
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0825_T10R0701_01C3
 	setflag FLAG_UNK_998
 scr_seq_0825_T10R0701_01C3:

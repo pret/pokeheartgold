@@ -210,10 +210,10 @@ scr_seq_0843_T20R0101_0224:
 
 scr_seq_0843_T20R0101_02EE:
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input 0, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	touchscreen_menu_hide
 	bufferpartymonnick 1, 0
@@ -278,7 +278,7 @@ scr_seq_0843_T20R0101_039C:
 	faceplayer
 	checkflag FLAG_UNK_0F2
 	gotoif TRUE, scr_seq_0843_T20R0101_03BA
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0843_T20R0101_0526
 scr_seq_0843_T20R0101_03BA:
 	get_party_count VAR_SPECIAL_x800C
@@ -680,16 +680,16 @@ scr_seq_0843_T20R0101_0894:
 	closemsg
 	callstd std_fade_end_friend_music
 scr_seq_0843_T20R0101_0904:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	name_rival VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0843_T20R0101_0904
 	apply_movement 1, scr_seq_0843_T20R0101_0A7C
 	wait_movement
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 27
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -1302,14 +1302,14 @@ scr_seq_0843_T20R0101_10B2:
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0843_T20R0101_1103
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	heal_party
 	scrcmd_436
 	scrcmd_150
 	wait_fanfare
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0843_T20R0101_1103:
 	releaseall

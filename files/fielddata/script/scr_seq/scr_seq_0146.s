@@ -28,7 +28,7 @@ scr_seq_0146_004E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_CUT
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_CUT
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_009E
 	check_badge 1, VAR_SPECIAL_x800C
@@ -54,39 +54,39 @@ scr_seq_0146_009E:
 scr_seq_0146_00AB:
 	.byte 0x02, 0x00
 scr_seq_0146_00AD:
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_CUT
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_CUT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_727 32773
+	scrcmd_727 VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 1
 	closemsg
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_00EC
-	scrcmd_183 32772
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0165
 
 scr_seq_0146_00EC:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0109
-	scrcmd_183 32772
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0165
 
 scr_seq_0146_0109:
 	comparevartovar VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	gotoif eq, scr_seq_0146_0126
-	scrcmd_183 32772
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0165
 
 scr_seq_0146_0126:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_0143
-	scrcmd_183 32772
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0165
 
 scr_seq_0146_0143:
@@ -94,9 +94,9 @@ scr_seq_0146_0143:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_025B
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
-	scrcmd_560 3, 32773
+	scrcmd_560 3, VAR_SPECIAL_x8005
 scr_seq_0146_0165:
 	wait 7, VAR_SPECIAL_x800C
 	hide_person VAR_SPECIAL_x800D
@@ -114,34 +114,34 @@ scr_seq_0146_018A:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 1
 	closemsg
-	scrcmd_727 32772
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	scrcmd_727 VAR_SPECIAL_x8004
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_01C1
-	scrcmd_183 32768
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_023A
 
 scr_seq_0146_01C1:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_01DE
-	scrcmd_183 32768
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_023A
 
 scr_seq_0146_01DE:
 	comparevartovar VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	gotoif eq, scr_seq_0146_01FB
-	scrcmd_183 32768
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_023A
 
 scr_seq_0146_01FB:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_0218
-	scrcmd_183 32772
-	scrcmd_560 0, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 0, VAR_SPECIAL_x8005
 	goto scr_seq_0146_023A
 
 scr_seq_0146_0218:
@@ -149,9 +149,9 @@ scr_seq_0146_0218:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_025B
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
-	scrcmd_560 3, 32773
+	scrcmd_560 3, VAR_SPECIAL_x8005
 scr_seq_0146_023A:
 	wait 7, VAR_SPECIAL_x800C
 	hide_person VAR_SPECIAL_x800D
@@ -164,7 +164,7 @@ scr_seq_0146_0244:
 
 scr_seq_0146_025B:
 	scrcmd_732 20
-	scrcmd_733 12, 32780
+	scrcmd_733 12, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_027C
 	scrcmd_734 2
@@ -180,7 +180,7 @@ scr_seq_0146_0281:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_ROCK_SMASH
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_ROCK_SMASH
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_02D7
@@ -210,37 +210,37 @@ scr_seq_0146_02E6:
 	bufferpartymonnick 0, VAR_SPECIAL_x8004
 	npc_msg 5
 	closemsg
-	scrcmd_727 32773
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	scrcmd_727 VAR_SPECIAL_x8005
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_031F
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_183 32772
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_03AA
 
 scr_seq_0146_031F:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0342
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_183 32772
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_03AA
 
 scr_seq_0146_0342:
 	comparevartovar VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	gotoif eq, scr_seq_0146_0365
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_183 32772
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_03AA
 
 scr_seq_0146_0365:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_0382
-	scrcmd_183 32772
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_03AA
 
 scr_seq_0146_0382:
@@ -249,9 +249,9 @@ scr_seq_0146_0382:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_04D0
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
-	scrcmd_560 2, 32773
+	scrcmd_560 2, VAR_SPECIAL_x8005
 scr_seq_0146_03AA:
 	wait 10, VAR_SPECIAL_x800C
 	hide_person VAR_SPECIAL_x800D
@@ -271,37 +271,37 @@ scr_seq_0146_03D9:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 5
 	closemsg
-	scrcmd_727 32772
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	scrcmd_727 VAR_SPECIAL_x8004
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_0416
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_183 32768
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_04A1
 
 scr_seq_0146_0416:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0439
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_183 32768
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_04A1
 
 scr_seq_0146_0439:
 	comparevartovar VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	gotoif eq, scr_seq_0146_045C
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_183 32768
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_04A1
 
 scr_seq_0146_045C:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_0479
-	scrcmd_183 32772
-	scrcmd_560 1, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 1, VAR_SPECIAL_x8005
 	goto scr_seq_0146_04A1
 
 scr_seq_0146_0479:
@@ -310,9 +310,9 @@ scr_seq_0146_0479:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_04D0
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
-	scrcmd_560 2, 32773
+	scrcmd_560 2, VAR_SPECIAL_x8005
 scr_seq_0146_04A1:
 	wait 10, VAR_SPECIAL_x800C
 	hide_person VAR_SPECIAL_x800D
@@ -328,7 +328,7 @@ scr_seq_0146_04CE:
 	.byte 0x02, 0x00
 scr_seq_0146_04D0:
 	scrcmd_732 20
-	scrcmd_733 1, 32780
+	scrcmd_733 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_04F1
 	scrcmd_734 2
@@ -344,14 +344,14 @@ scr_seq_0146_04F6:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_400 2, VAR_SPECIAL_x800C
+	strength_flag_action 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_051C
 	call scr_seq_0146_061D
 	goto scr_seq_0146_093D
 
 scr_seq_0146_051C:
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_STRENGTH
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_STRENGTH
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0564
 	check_badge 2, VAR_SPECIAL_x800C
@@ -377,43 +377,43 @@ scr_seq_0146_0564:
 scr_seq_0146_0571:
 	.byte 0x02, 0x00
 scr_seq_0146_0573:
-	scrcmd_400 1
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_STRENGTH
+	strength_flag_action 1
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_STRENGTH
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 11
 	closemsg
-	scrcmd_727 32773
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	scrcmd_727 VAR_SPECIAL_x8005
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_05AF
-	scrcmd_183 32772
+	scrcmd_183 VAR_SPECIAL_x8004
 	goto scr_seq_0146_060E
 
 scr_seq_0146_05AF:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_05C6
-	scrcmd_183 32772
+	scrcmd_183 VAR_SPECIAL_x8004
 	goto scr_seq_0146_060E
 
 scr_seq_0146_05C6:
 	comparevartovar VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	gotoif eq, scr_seq_0146_05DD
-	scrcmd_183 32772
+	scrcmd_183 VAR_SPECIAL_x8004
 	goto scr_seq_0146_060E
 
 scr_seq_0146_05DD:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_05F4
-	scrcmd_183 32772
+	scrcmd_183 VAR_SPECIAL_x8004
 	goto scr_seq_0146_060E
 
 scr_seq_0146_05F4:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_0715
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
 	scrcmd_731
 scr_seq_0146_060E:
@@ -433,48 +433,48 @@ scr_seq_0146_061D:
 scr_seq_0146_0626:
 	scrcmd_609
 	lockall
-	scrcmd_400 2, VAR_SPECIAL_x800C
+	strength_flag_action 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0648
 	call scr_seq_0146_061D
 	goto scr_seq_0146_0945
 
 scr_seq_0146_0648:
-	scrcmd_400 1
+	strength_flag_action 1
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 11
 	closemsg
-	scrcmd_727 32772
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	scrcmd_727 VAR_SPECIAL_x8004
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_0678
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_06D7
 
 scr_seq_0146_0678:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_068F
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_06D7
 
 scr_seq_0146_068F:
 	comparevartovar VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	gotoif eq, scr_seq_0146_06A6
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_06D7
 
 scr_seq_0146_06A6:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_06BD
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_06D7
 
 scr_seq_0146_06BD:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_0715
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
 	scrcmd_731
 scr_seq_0146_06D7:
@@ -498,7 +498,7 @@ scr_seq_0146_06E6:
 	end
 
 scr_seq_0146_0715:
-	scrcmd_733 0, 32780
+	scrcmd_733 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0733
 	scrcmd_734 2
@@ -513,13 +513,13 @@ scr_seq_0146_0736:
 scr_seq_0146_0738:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_ROCK_CLIMB
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_ROCK_CLIMB
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0797
 	check_badge 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0146_0797
-	scrcmd_299 32780
+	check_escort_mode VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0146_07A6
 	npc_msg 20
@@ -550,12 +550,12 @@ scr_seq_0146_07A6:
 scr_seq_0146_07B3:
 	.byte 0x02, 0x00
 scr_seq_0146_07B5:
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_ROCK_CLIMB
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_ROCK_CLIMB
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 21
 	closemsg
-	scrcmd_177 32772
+	rock_climb VAR_SPECIAL_x8004
 	goto scr_seq_0146_0941
 
 scr_seq_0146_07D5:
@@ -566,14 +566,14 @@ scr_seq_0146_07D7:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 21
 	closemsg
-	scrcmd_177 32768
+	rock_climb VAR_SPECIAL_x8000
 	releaseall
 	end
 
 scr_seq_0146_07ED:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_299 32780
+	check_escort_mode VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0146_0826
 	npc_msg 14
@@ -594,12 +594,12 @@ scr_seq_0146_0826:
 	goto scr_seq_0146_0941
 
 scr_seq_0146_0833:
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_SURF
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_SURF
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 15
 	closemsg
-	scrcmd_178 32772
+	surf VAR_SPECIAL_x8004
 	goto scr_seq_0146_0941
 
 scr_seq_0146_0853:
@@ -611,7 +611,7 @@ scr_seq_0146_0855:
 	npc_msg 15
 	closemsg
 	release 255
-	scrcmd_178 32768
+	surf VAR_SPECIAL_x8000
 	lock 255
 	releaseall
 	end
@@ -622,37 +622,37 @@ scr_seq_0146_0873:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 28
 	closemsg
-	scrcmd_727 32773
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	scrcmd_727 VAR_SPECIAL_x8005
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_08A4
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_0909
 
 scr_seq_0146_08A4:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_08BB
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_0909
 
 scr_seq_0146_08BB:
 	comparevartovar VAR_SPECIAL_x8000, VAR_SPECIAL_x8005
 	gotoif eq, scr_seq_0146_08D2
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_0909
 
 scr_seq_0146_08D2:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_08E9
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	goto scr_seq_0146_0909
 
 scr_seq_0146_08E9:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_091A
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
 	scrcmd_728 16, 2
 	scrcmd_728 16, 2
@@ -662,7 +662,7 @@ scr_seq_0146_0909:
 	goto scr_seq_0146_0945
 
 scr_seq_0146_091A:
-	scrcmd_733 14, 32780
+	scrcmd_733 14, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0938
 	scrcmd_734 2
@@ -689,7 +689,7 @@ scr_seq_0146_0945:
 scr_seq_0146_0949:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WATERFALL
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_WATERFALL
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0997
 	check_badge 7, VAR_SPECIAL_x800C
@@ -715,12 +715,12 @@ scr_seq_0146_0997:
 scr_seq_0146_09A4:
 	.byte 0x02, 0x00
 scr_seq_0146_09A6:
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WATERFALL
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_WATERFALL
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 25
 	closemsg
-	scrcmd_179 32772
+	waterfall VAR_SPECIAL_x8004
 	goto scr_seq_0146_0941
 
 scr_seq_0146_09C6:
@@ -732,7 +732,7 @@ scr_seq_0146_09C8:
 	npc_msg 25
 	closemsg
 	release 255
-	scrcmd_179 32768
+	waterfall VAR_SPECIAL_x8000
 	lock 255
 	releaseall
 	end
@@ -740,7 +740,7 @@ scr_seq_0146_09C8:
 scr_seq_0146_09E6:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WHIRLPOOL
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_WHIRLPOOL
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0A34
 	check_badge 6, VAR_SPECIAL_x800C
@@ -766,12 +766,12 @@ scr_seq_0146_0A34:
 scr_seq_0146_0A41:
 	.byte 0x02, 0x00
 scr_seq_0146_0A43:
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_WHIRLPOOL
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_WHIRLPOOL
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 30
 	closemsg
-	scrcmd_182 32772
+	whirlpool VAR_SPECIAL_x8004
 	goto scr_seq_0146_0941
 
 scr_seq_0146_0A63:
@@ -783,7 +783,7 @@ scr_seq_0146_0A65:
 	npc_msg 30
 	closemsg
 	release 255
-	scrcmd_182 32768
+	whirlpool VAR_SPECIAL_x8000
 	lock 255
 	releaseall
 	end
@@ -795,7 +795,7 @@ scr_seq_0146_0A85:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_HEADBUTT
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_HEADBUTT
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, scr_seq_0146_0AC2
 	npc_msg 32
@@ -819,39 +819,39 @@ scr_seq_0146_0ACF:
 	.byte 0x02
 	.byte 0x00
 scr_seq_0146_0AD1:
-	any_mon_has_move VAR_SPECIAL_x800C, MOVE_HEADBUTT
+	get_party_slot_with_move VAR_SPECIAL_x800C, MOVE_HEADBUTT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_727 32773
+	scrcmd_727 VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
 	npc_msg 33
 	closemsg
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_0B10
-	scrcmd_183 32772
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0BAE
 
 scr_seq_0146_0B10:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0B2D
-	scrcmd_183 32772
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0BAE
 
 scr_seq_0146_0B2D:
 	comparevartovar VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	gotoif eq, scr_seq_0146_0B4A
-	scrcmd_183 32772
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0BAE
 
 scr_seq_0146_0B4A:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_0B67
-	scrcmd_183 32772
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0BAE
 
 scr_seq_0146_0B67:
@@ -862,16 +862,16 @@ scr_seq_0146_0B67:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_0CC5
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
-	scrcmd_560 5, 32773
+	scrcmd_560 5, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0BAE
 
 scr_seq_0146_0BA0:
 	scrcmd_600
 	scrcmd_606
-	scrcmd_183 32772
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 4, VAR_SPECIAL_x8005
 scr_seq_0146_0BAE:
 	wait 7, VAR_SPECIAL_x800C
 scr_seq_0146_0BB4:
@@ -888,34 +888,34 @@ scr_seq_0146_0BCF:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 33
 	closemsg
-	scrcmd_727 32772
-	get_trcard_stars VAR_SPECIAL_x800C
-	scrcmd_730 32774
+	scrcmd_727 VAR_SPECIAL_x8004
+	get_player_state VAR_SPECIAL_x800C
+	scrcmd_730 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, scr_seq_0146_0C06
-	scrcmd_183 32768
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0CA4
 
 scr_seq_0146_0C06:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0C23
-	scrcmd_183 32768
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0CA4
 
 scr_seq_0146_0C23:
 	comparevartovar VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	gotoif eq, scr_seq_0146_0C40
-	scrcmd_183 32768
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8000
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0CA4
 
 scr_seq_0146_0C40:
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif ne, scr_seq_0146_0C5D
-	scrcmd_183 32772
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 4, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0CA4
 
 scr_seq_0146_0C5D:
@@ -926,16 +926,16 @@ scr_seq_0146_0C5D:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call scr_seq_0146_0CC5
-	scrcmd_076 16384, 0
+	scrcmd_076 VAR_TEMP_x4000, 0
 	scrcmd_077
-	scrcmd_560 5, 32773
+	scrcmd_560 5, VAR_SPECIAL_x8005
 	goto scr_seq_0146_0CA4
 
 scr_seq_0146_0C96:
 	scrcmd_600
 	scrcmd_606
-	scrcmd_183 32772
-	scrcmd_560 4, 32773
+	scrcmd_183 VAR_SPECIAL_x8004
+	scrcmd_560 4, VAR_SPECIAL_x8005
 scr_seq_0146_0CA4:
 	wait 7, VAR_SPECIAL_x800C
 scr_seq_0146_0CAA:
@@ -948,7 +948,7 @@ scr_seq_0146_0CAA:
 
 scr_seq_0146_0CC5:
 	scrcmd_732 20
-	scrcmd_733 0, 32780
+	scrcmd_733 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0146_0CE6
 	scrcmd_734 2

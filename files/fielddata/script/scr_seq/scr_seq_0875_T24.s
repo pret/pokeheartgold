@@ -165,7 +165,7 @@ scr_seq_0875_T24_023F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0875_T24_0276
 	checkflag FLAG_UNK_0BB
 	gotoif TRUE, scr_seq_0875_T24_026B
@@ -327,11 +327,11 @@ scr_seq_0875_T24_0422:
 	apply_movement 253, scr_seq_0875_T24_04D0
 	wait_movement
 scr_seq_0875_T24_0449:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 35
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 8

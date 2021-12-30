@@ -38,12 +38,12 @@ scr_seq_0940_T29R0201_003A:
 scr_seq_0940_T29R0201_005A:
 	npc_msg 3
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32770
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8002, 255
 	gotoif ne, scr_seq_0940_T29R0201_0095

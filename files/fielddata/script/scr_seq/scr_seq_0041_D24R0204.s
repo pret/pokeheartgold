@@ -13,11 +13,11 @@ scr_seq_0041_D24R0204_0012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_713 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	checkflag FLAG_UNK_978
 	gotoif TRUE, scr_seq_0041_D24R0204_0046
@@ -56,10 +56,10 @@ scr_seq_0041_D24R0204_00BC:
 	comparevartovalue VAR_UNK_40EC, 1
 	gotoif ge, scr_seq_0041_D24R0204_0107
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 25, 42, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_UNK_40DE, 1
 	addvar VAR_UNK_40EC, 1
@@ -69,10 +69,10 @@ scr_seq_0041_D24R0204_00BC:
 scr_seq_0041_D24R0204_0107:
 	setflag FLAG_UNK_235
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 25, 42, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_UNK_40DE, 1
 	addvar VAR_UNK_40EC, 1
@@ -105,28 +105,28 @@ scr_seq_0041_D24R0204_0189:
 	gotoif ge, scr_seq_0041_D24R0204_01D5
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif eq, scr_seq_0041_D24R0204_01FF
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 25, 42, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0041_D24R0204_01D1:
 	releaseall
 	end
 
 scr_seq_0041_D24R0204_01D5:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 492, 0, 25, 42, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0041_D24R0204_01D1
 
 scr_seq_0041_D24R0204_01FF:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 490, 0, 25, 42, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0041_D24R0204_01D1
 
@@ -157,7 +157,7 @@ scr_seq_0041_D24R0204_0253:
 	get_std_msg_naix 1, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 28
 	closemsg
-	scrcmd_183 32768
+	scrcmd_183 VAR_SPECIAL_x8000
 	wait 2, VAR_SPECIAL_x8004
 	checkflag FLAG_UNK_21D
 	gotoif TRUE, scr_seq_0041_D24R0204_02A9

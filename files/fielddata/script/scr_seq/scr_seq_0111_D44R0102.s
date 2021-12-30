@@ -237,7 +237,7 @@ scr_seq_0111_D44R0102_0318:
 	checkflag FLAG_UNK_0E2
 	gotoif TRUE, scr_seq_0111_D44R0102_0340
 	buffer_players_name 0
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 7
 	waitbutton
 	closemsg
@@ -246,7 +246,7 @@ scr_seq_0111_D44R0102_0318:
 	end
 
 scr_seq_0111_D44R0102_0340:
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 8
 	waitbutton
 	closemsg
@@ -282,13 +282,13 @@ scr_seq_0111_D44R0102_039D:
 	npc_msg 11
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_209
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -320,12 +320,12 @@ scr_seq_0111_D44R0102_03FC:
 	npc_msg 30
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 83
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg 31
@@ -369,7 +369,7 @@ scr_seq_0111_D44R0102_04B2:
 	scrcmd_602 1
 	scrcmd_604 48
 	callstd std_play_rival_intro_music
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 14
 	closemsg
 	move_person 11, 28, 0, 34, 1
@@ -385,19 +385,19 @@ scr_seq_0111_D44R0102_04B2:
 	gender_msgbox 15, 16
 	apply_movement 9, scr_seq_0111_D44R0102_0680
 	wait_movement
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 17
 	npc_msg 18
 	apply_movement 9, scr_seq_0111_D44R0102_073C
 	wait_movement
 	buffer_players_name 0
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 19
 	gender_msgbox 20, 21
 	apply_movement 12, scr_seq_0111_D44R0102_0718
 	wait_movement
 	npc_msg 22
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 23
 	apply_movement 9, scr_seq_0111_D44R0102_0744
 	apply_movement 12, scr_seq_0111_D44R0102_0758
@@ -443,15 +443,15 @@ scr_seq_0111_D44R0102_05D1:
 	apply_movement 255, scr_seq_0111_D44R0102_0780
 	wait_movement
 	buffer_players_name 0
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 28
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	hide_person 9
 	hide_person 10
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	apply_movement 253, scr_seq_0111_D44R0102_06DC
 	wait_movement

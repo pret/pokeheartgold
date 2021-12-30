@@ -121,7 +121,7 @@ scr_seq_0911_T26_01AC:
 	apply_movement 3, scr_seq_0911_T26_0318
 scr_seq_0911_T26_01C1:
 	wait_movement
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 0
 	closemsg
 	comparevartovalue VAR_TEMP_x4001, 239
@@ -337,11 +337,11 @@ scr_seq_0911_T26_04BB:
 	wait_movement
 scr_seq_0911_T26_04E2:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 23
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

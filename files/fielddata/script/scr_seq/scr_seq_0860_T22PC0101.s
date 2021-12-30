@@ -26,23 +26,23 @@ scr_seq_0860_T22PC0101_0026:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0860_T22PC0101_021D
 	scrcmd_815 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	prompt_easy_chat VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0860_T22PC0101_021F
 	npc_msg 13
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_815 0
 	prompt_easy_chat VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0860_T22PC0101_021F
@@ -72,7 +72,7 @@ scr_seq_0860_T22PC0101_011D:
 	setflag FLAG_UNK_159
 	npc_msg 18
 	buffer_players_name 0
-	buffer_species_name_custom 1, SPECIES_MAREEP, 0, 0
+	buffer_species_name 1, SPECIES_MAREEP, 0, 0
 	give_egg SPECIES_MAREEP, 14
 	goto scr_seq_0860_T22PC0101_01CB
 
@@ -85,7 +85,7 @@ scr_seq_0860_T22PC0101_0157:
 	setflag FLAG_UNK_15A
 	npc_msg 18
 	buffer_players_name 0
-	buffer_species_name_custom 1, SPECIES_WOOPER, 0, 0
+	buffer_species_name 1, SPECIES_WOOPER, 0, 0
 	give_egg SPECIES_WOOPER, 14
 	goto scr_seq_0860_T22PC0101_01CB
 
@@ -98,7 +98,7 @@ scr_seq_0860_T22PC0101_0191:
 	setflag FLAG_UNK_15B
 	npc_msg 18
 	buffer_players_name 0
-	buffer_species_name_custom 1, SPECIES_SLUGMA, 0, 0
+	buffer_species_name 1, SPECIES_SLUGMA, 0, 0
 	give_egg SPECIES_SLUGMA, 14
 	goto scr_seq_0860_T22PC0101_01CB
 

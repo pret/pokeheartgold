@@ -206,7 +206,7 @@ scr_seq_0907_T25R1201_024D:
 	apply_movement 255, scr_seq_0907_T25R1201_03BC
 	wait_movement
 	call scr_seq_0907_T25R1201_00FD
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_579
 	scrcmd_815 0
@@ -216,7 +216,7 @@ scr_seq_0907_T25R1201_024D:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0907_T25R1201_0314
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	call scr_seq_0907_T25R1201_00A7
 	releaseall
@@ -224,7 +224,7 @@ scr_seq_0907_T25R1201_024D:
 
 scr_seq_0907_T25R1201_0314:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	call scr_seq_0907_T25R1201_00A7
 	goto scr_seq_0907_T25R1201_0343
@@ -578,7 +578,7 @@ scr_seq_0907_T25R1201_0687:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0907_T25R1201_06D1
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_681 32772

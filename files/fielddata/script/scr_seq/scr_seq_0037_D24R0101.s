@@ -123,11 +123,11 @@ scr_seq_0037_D24R0101_01D8:
 	wait_movement
 scr_seq_0037_D24R0101_01FF:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 3
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -278,48 +278,48 @@ scr_seq_0037_D24R0101_03EA:
 	play_se SEQ_SE_DP_KAIDAN2
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif ne, scr_seq_0037_D24R0101_0467
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 490, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0037_D24R0101_0530
 
 scr_seq_0037_D24R0101_0467:
 	comparevartovalue VAR_UNK_403E, 7
 	gotoif ne, scr_seq_0037_D24R0101_049E
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0037_D24R0101_0530
 
 scr_seq_0037_D24R0101_049E:
 	comparevartovalue VAR_UNK_403E, 8
 	gotoif ne, scr_seq_0037_D24R0101_04D5
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0037_D24R0101_0530
 
 scr_seq_0037_D24R0101_04D5:
 	comparevartovalue VAR_UNK_403E, 9
 	gotoif ne, scr_seq_0037_D24R0101_050C
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0037_D24R0101_0530
 
 scr_seq_0037_D24R0101_050C:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0037_D24R0101_0530:
 	releaseall

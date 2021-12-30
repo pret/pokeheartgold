@@ -2799,7 +2799,7 @@ sub_0203F7B0: ; 0x0203F7B0
 	str r1, [r4, r0]
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066614
+	bl CheckGameClearFlag
 	ldr r1, _0203F7EC ; =0x00000678
 	mov r2, #0
 	str r0, [r4, r1]

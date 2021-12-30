@@ -28,7 +28,7 @@ scr_seq_0919_T26R0701_002F:
 scr_seq_0919_T26R0701_004A:
 	setflag FLAG_HIDE_CAMERON
 scr_seq_0919_T26R0701_004E:
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, scr_seq_0919_T26R0701_00C3
 	scrcmd_147 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
@@ -151,11 +151,11 @@ scr_seq_0919_T26R0701_01B7:
 	wait_movement
 scr_seq_0919_T26R0701_01DE:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 25
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -249,13 +249,13 @@ scr_seq_0919_T26R0701_032B:
 	npc_msg 6
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_2CB
 	hide_person 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -287,12 +287,12 @@ scr_seq_0919_T26R0701_038A:
 	npc_msg 10
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 89
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg 11

@@ -98,13 +98,13 @@ scr_seq_0191_R10_0148:
 	npc_msg 2
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_264
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -144,10 +144,10 @@ scr_seq_0191_R10_01A2:
 	scrcmd_600
 scr_seq_0191_R10_01D5:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 489, 0, 7, 20, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_582 18, 1423, 185
 	releaseall
@@ -163,10 +163,10 @@ scr_seq_0191_R10_0209:
 	scrcmd_600
 scr_seq_0191_R10_022D:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 467, 0, 7, 20, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_582 18, 1423, 185
 	releaseall

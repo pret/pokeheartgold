@@ -314,20 +314,23 @@
 	.short \src
 	.endm
 
-	; Print non_npc_msg in field window from current map non_npc_msg bank
+	; Print non_npc_msg in field window from current map message bank
 	.macro non_npc_msg msg_id
 	.short 44
 	.byte \msg_id
 	.endm
 
-	.macro npc_msg a
+	; NPC dialogue window
+	.macro npc_msg msg_id
 	.short 45
-	.byte \a
+	.byte \msg_id
 	.endm
 
-	.macro scrcmd_046 arg0
+	; Not sure what to call this but it
+	; is also a message printer
+	.macro scrcmd_046 msg_id
 	.short 46
-	.short \arg0
+	.short \msg_id
 	.endm
 
 	.macro scrcmd_047 arg0
@@ -340,6 +343,7 @@
 	.byte \arg0
 	.endm
 
+	; These are both waitbutton commands
 	.macro scrcmd_049
 	.short 49
 	.endm
@@ -504,18 +508,18 @@
 	.short 77
 	.endm
 
-	.macro play_fanfare arg0
+	.macro play_fanfare fanfare
 	.short 78
-	.short \arg0
+	.short \fanfare
 	.endm
 
 	.macro wait_fanfare
 	.short 79
 	.endm
 
-	.macro play_bgm arg0
+	.macro play_bgm bgm
 	.short 80
-	.short \arg0
+	.short \bgm
 	.endm
 
 	.macro scrcmd_081 arg0
@@ -532,10 +536,12 @@
 	.short \arg0
 	.endm
 
-	.macro fade_out_bgm arg0, arg1
+	; Fade out the music to the target level
+	; in the designated number of frames
+	.macro fade_out_bgm target, frames
 	.short 84
-	.short \arg0
-	.short \arg1
+	.short \target
+	.short \frames
 	.endm
 
 	.macro scrcmd_085 arg0
@@ -848,7 +854,7 @@
 	.short \arg2
 	.endm
 
-	.macro any_mon_has_move arg0, arg1
+	.macro get_party_slot_with_move arg0, arg1
 	.short 141
 	.short \arg0
 	.short \arg1
@@ -956,7 +962,7 @@
 	.short 162
 	.endm
 
-	.macro scrcmd_163 arg0
+	.macro hof_credits arg0
 	.short 163
 	.short \arg0
 	.endm
@@ -1013,12 +1019,12 @@
 	.short \arg1
 	.endm
 
-	.macro fade_screen arg0, arg1, arg2, arg3
+	.macro fade_screen arg0, speed, direction, color
 	.short 174
 	.short \arg0
-	.short \arg1
-	.short \arg2
-	.short \arg3
+	.short \speed
+	.short \direction
+	.short \color
 	.endm
 
 	.macro wait_fade
@@ -1034,17 +1040,17 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_177 arg0
+	.macro rock_climb arg0
 	.short 177
 	.short \arg0
 	.endm
 
-	.macro scrcmd_178 arg0
+	.macro surf arg0
 	.short 178
 	.short \arg0
 	.endm
 
-	.macro scrcmd_179 arg0
+	.macro waterfall arg0
 	.short 179
 	.short \arg0
 	.endm
@@ -1060,7 +1066,7 @@
 	.short 181
 	.endm
 
-	.macro scrcmd_182 arg0
+	.macro whirlpool arg0
 	.short 182
 	.short \arg0
 	.endm
@@ -1085,9 +1091,13 @@
 	.byte \arg0
 	.endm
 
-	.macro get_trcard_stars arg0
+	; Get the player's overworld state.
+	; Used in some places to determine whether
+	; the player is masquerading as a member
+	; of Team Rocket.
+	.macro get_player_state var
 	.short 187
-	.short \arg0
+	.short \var
 	.endm
 
 	.macro scrcmd_188 arg0
@@ -1099,124 +1109,147 @@
 	.short 189
 	.endm
 
-	.macro buffer_players_name arg0
+	; In the buffer_XXX commands, the maximum
+	; acceptable value for the slot arg is 7.
+	; This sets the message format placeholder
+	; to whatever is buffered.
+	.macro buffer_players_name slot
 	.short 190
-	.byte \arg0
+	.byte \slot
 	.endm
 
-	.macro scrcmd_191 arg0
+	; If you use this before naming your rival,
+	; this will be an empty string.
+	.macro buffer_rivals_name slot
 	.short 191
-	.byte \arg0
+	.byte \slot
 	.endm
 
-	.macro scrcmd_192 arg0
+	.macro buffer_friends_name slot
 	.short 192
-	.byte \arg0
+	.byte \slot
 	.endm
 
-	.macro buffer_mon_species_name arg0, arg1
+	; For these commands, the additional argument
+	; is a flex arg, meaning it can be a literal
+	; or a variable.
+	.macro buffer_mon_species_name slot, party_pos
 	.short 193
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \party_pos
 	.endm
 
-	.macro buffer_item_name arg0, arg1
+	.macro buffer_item_name slot, item
 	.short 194
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \item
 	.endm
 
-	.macro buffer_pocket_name arg0, arg1
+	.macro buffer_pocket_name slot, pocket
 	.short 195
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \pocket
 	.endm
 
-	.macro buffer_tmhm_move_name arg0, arg1
+	.macro buffer_tmhm_move_name slot, tmhm
 	.short 196
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \tmhm
 	.endm
 
-	.macro buffer_move_name arg0, arg1
+	.macro buffer_move_name slot, move
 	.short 197
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \move
 	.endm
 
-	.macro buffer_int arg0, arg1
+	.macro buffer_int slot, value
 	.short 198
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \value
 	.endm
 
-	.macro bufferpartymonnick arg0, arg1
+	.macro bufferpartymonnick slot, party_pos
 	.short 199
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \party_pos
 	.endm
 
-	.macro buffer_trainer_class_name arg0, arg1
+	.macro buffer_trainer_class_name slot, trcls
 	.short 200
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \trcls
 	.endm
 
-	.macro buffer_player_union_avatar_class_name arg0
+	.macro buffer_player_union_avatar_class_name slot
 	.short 201
-	.byte \arg0
+	.byte \slot
 	.endm
 
-	.macro buffer_species_name_custom arg0, arg1, arg2, arg3
+	; The other two args here are unused
+	.macro buffer_species_name slot, species, arg2, arg3
 	.short 202
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \species
 	.short \arg2
 	.byte \arg3
 	.endm
 
-	.macro buffer_starter_species_name arg0
+	.macro buffer_starter_species_name slot
 	.short 203
-	.byte \arg0
+	.byte \slot
 	.endm
 
-	.macro buffer_dppt_rival_starter_species_name arg0
+	; These two commands are leftover from Platinum.
+	; As such, they are configured to check for the
+	; Sinnoh starters instead of the Johto starters.
+	; Since the player will never start with any of
+	; Turtwig, Chimchar, or Piplup, this command
+	; will always return TURTWIG, and the following
+	; CHIMCHAR.
+	; These commands are unused in HGSS.
+	.macro buffer_dppt_rival_starter_species_name slot
 	.short 204
-	.byte \arg0
+	.byte \slot
 	.endm
 
-	.macro buffer_dppt_friend_starter_species_name arg0
+	.macro buffer_dppt_friend_starter_species_name slot
 	.short 205
-	.byte \arg0
+	.byte \slot
 	.endm
 
-	.macro get_starter_choice arg0
+	; Gets your starter species into the indicated
+	; variable. Used to calculate which rival
+	; party to use.
+	.macro get_starter_choice var
 	.short 206
-	.short \arg0
+	.short \var
 	.endm
 
-	.macro buffer_decoration_name arg0, arg1
+	.macro buffer_decoration_name slot, deco
 	.short 207
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \deco
 	.endm
 
-	.macro scrcmd_208 arg0, arg1
+	; Dummy
+	.macro scrcmd_208 slot, unk
 	.short 208
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \unk
 	.endm
 
-	.macro scrcmd_209 arg0, arg1
+	; Dummy
+	.macro scrcmd_209 slot, unk
 	.short 209
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \unk
 	.endm
 
-	.macro buffer_map_sec_name arg0, arg1
+	.macro buffer_map_sec_name slot, location
 	.short 210
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \location
 	.endm
 
 	.macro scrcmd_211 arg0, arg1
@@ -1230,9 +1263,9 @@
 	.short \arg0
 	.endm
 
-	.macro trainer_battle arg0, arg1, arg2, arg3
+	.macro trainer_battle trainer, arg1, arg2, arg3
 	.short 213
-	.short \arg0
+	.short \trainer
 	.short \arg1
 	.byte \arg2
 	.byte \arg3
@@ -1272,9 +1305,10 @@
 	.short 219
 	.endm
 
-	.macro check_battle_won arg0
+	; Is this loss?
+	.macro check_battle_won var
 	.short 220
-	.short \arg0
+	.short \var
 	.endm
 
 	.macro scrcmd_221 arg0, arg1
@@ -1400,35 +1434,40 @@
 	.short \arg3
 	.endm
 
-	.macro count_johto_dex_seen arg0
+	.macro count_johto_dex_seen var
 	.short 243
-	.short \arg0
+	.short \var
 	.endm
 
-	.macro count_johto_dex_owned arg0
+	.macro count_johto_dex_owned var
 	.short 244
-	.short \arg0
+	.short \var
 	.endm
 
-	.macro count_national_dex_seen arg0
+	.macro count_national_dex_seen var
 	.short 245
-	.short \arg0
+	.short \var
 	.endm
 
-	.macro count_national_dex_owned arg0
+	.macro count_national_dex_owned var
 	.short 246
-	.short \arg0
+	.short \var
 	.endm
 
+	; Dummy
 	.macro scrcmd_247
 	.short 247
 	.endm
 
-	.macro get_dex_eval_result arg0, arg1, arg2
+	; The actual Pokedex evaluation.
+	; national: 0 = Johto dex, 1 = National dex
+	; msg: Variable to return the message ID
+	; fanfare: Variable to return the fanfare ID
+	.macro get_dex_eval_result national, msg, fanfare
 	.short 248
-	.byte \arg0
-	.short \arg1
-	.short \arg2
+	.byte \national
+	.short \msg
+	.short \fanfare
 	.endm
 
 	.macro scrcmd_249 arg0, arg1
@@ -1579,6 +1618,9 @@
 	.short \arg0
 	.endm
 
+	; Used with poison faint, but due to overworld
+	; poison mechanics in gen 4, this is
+	; never reached.
 	.macro overworld_white_out
 	.short 279
 	.endm
@@ -1588,9 +1630,10 @@
 	.short \arg0
 	.endm
 
-	.macro get_player_gender arg0
+	; Are you a boy? Or are you a girl?
+	.macro get_player_gender var
 	.short 281
-	.short \arg0
+	.short \var
 	.endm
 
 	.macro heal_party
@@ -1647,20 +1690,25 @@
 	.short 293
 	.endm
 
-	.macro check_badge arg0, arg1
+	.macro check_badge badge, var
 	.short 294
-	.short \arg0
-	.short \arg1
+	.short \badge
+	.short \var
 	.endm
 
-	.macro give_badge arg0
+	.macro give_badge badge
 	.short 295
-	.short \arg0
+	.short \badge
 	.endm
 
-	.macro count_badges arg0
+	; This command is never used because it is
+	; assumed that you cannot get the 8th badge
+	; before the other 7, or the 16th before the
+	; other 15. This assumption does not account
+	; for tweaking.
+	.macro count_badges var
 	.short 296
-	.short \arg0
+	.short \var
 	.endm
 
 	.macro scrcmd_297 arg0
@@ -1672,7 +1720,7 @@
 	.short 298
 	.endm
 
-	.macro scrcmd_299 arg0
+	.macro check_escort_mode arg0
 	.short 299
 	.short \arg0
 	.endm
@@ -1825,9 +1873,9 @@
 	.short 331
 	.endm
 
-	.macro get_party_count arg0
+	.macro get_party_count var
 	.short 332
-	.short \arg0
+	.short \var
 	.endm
 
 	.macro scrcmd_333 arg0
@@ -1846,17 +1894,17 @@
 	.short \arg1
 	.endm
 
-	.macro buffer_berry_name arg0, arg1, arg2
+	.macro buffer_berry_name slot, item, quantity
 	.short 336
-	.byte \arg0
-	.short \arg1
-	.short \arg2
+	.byte \slot
+	.short \item
+	.short \quantity
 	.endm
 
-	.macro buffer_nature_name arg0, arg1
+	.macro buffer_nature_name slot, nature
 	.short 337
-	.byte \arg0
-	.short \arg1
+	.byte \slot
+	.short \nature
 	.endm
 
 	.macro scrcmd_338 arg0, arg1, arg2
@@ -1866,13 +1914,13 @@
 	.short \arg2
 	.endm
 
-	.macro move_person arg0, arg1, arg2, arg3, arg4
+	.macro move_person person, x, z, y, facing
 	.short 339
-	.short \arg0
-	.short \arg1
-	.short \arg2
-	.short \arg3
-	.short \arg4
+	.short \person
+	.short \x
+	.short \z
+	.short \y
+	.short \facing
 	.endm
 
 	.macro scrcmd_340 arg0, arg1
@@ -1951,27 +1999,30 @@
 	.short \arg1
 	.endm
 
-	.macro get_partymon_species arg0, arg1
+	.macro get_partymon_species slot, var
 	.short 354
-	.short \arg0
-	.short \arg1
+	.short \slot
+	.short \var
 	.endm
 
-	.macro partymon_is_mine arg0, arg1
+	.macro partymon_is_mine slot, var
 	.short 355
-	.short \arg0
-	.short \arg1
+	.short \slot
+	.short \var
 	.endm
 
-	.macro party_count_not_egg arg0
+	.macro party_count_not_egg var
 	.short 356
-	.short \arg0
+	.short \var
 	.endm
 
-	.macro count_alive_mons arg0, arg1
+	; Count Pokemon that are not fainted.
+	; If except is set, exclude that slot
+	; from the tally. Use 6 to disable.
+	.macro count_alive_mons var, except=PARTY_SIZE
 	.short 357
-	.short \arg0
-	.short \arg1
+	.short \var
+	.short \except
 	.endm
 
 	.macro scrcmd_358 arg0
@@ -1984,9 +2035,9 @@
 	.short \arg0
 	.endm
 
-	.macro submoneyvar arg0
+	.macro submoneyvar var
 	.short 360
-	.short \arg0
+	.short \var
 	.endm
 
 	.macro scrcmd_361 arg0, arg1
@@ -2028,10 +2079,10 @@
 	.short \arg1
 	.endm
 
-	.macro hasenoughmoneyvar arg0, arg1
+	.macro hasenoughmoneyvar var, amount
 	.short 368
-	.short \arg0
-	.short \arg1
+	.short \var
+	.short \amount
 	.endm
 
 	.macro scrcmd_369
@@ -2202,18 +2253,21 @@
 	.short \arg2
 	.endm
 
-	.macro buffer_party_mon_move_name arg0, arg1, arg2
+	.macro buffer_party_mon_move_name slot, party_pos, move_pos
 	.short 399
-	.byte \arg0
-	.short \arg1
-	.short \arg2
+	.byte \slot
+	.short \party_pos
+	.short \move_pos
 	.endm
 
-	.macro scrcmd_400 arg0, arg1=0
+	; action = 0: Deactivate strength
+	; action = 1: Activate strength
+	; action = 2: Check whether strength is active
+	.macro strength_flag_action action, var=0
 	.short 400
-	.byte \arg0
-	.if \arg0 == 2
-	.short \arg1
+	.byte \action
+	.if \action == 2
+	.short \var
 	.endif
 	.endm
 
@@ -2865,9 +2919,11 @@
 	.short 513
 	.endm
 
-	.macro scrcmd_514 arg0
+	; Animate placing the balls on the machine
+	; for the Hall of Fame
+	.macro hall_of_fame_anim num
 	.short 514
-	.short \arg0
+	.short \num
 	.endm
 
 	.macro add_special_game_stat arg0
@@ -3285,7 +3341,7 @@
 	.byte \arg2
 	.endm
 
-	.macro scrcmd_590 arg0
+	.macro get_trcard_stars arg0
 	.short 590
 	.short \arg0
 	.endm
@@ -3657,7 +3713,7 @@
 	.short \arg3
 	.endm
 
-	.macro scrcmd_658 arg0, arg1
+	.macro buffer_stat_name arg0, arg1
 	.short 658
 	.byte \arg0
 	.short \arg1

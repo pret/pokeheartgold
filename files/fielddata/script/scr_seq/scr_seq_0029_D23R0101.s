@@ -312,7 +312,7 @@ scr_seq_0029_D23R0101_03D0:
 	apply_movement 6, scr_seq_0029_D23R0101_06A8
 scr_seq_0029_D23R0101_03FA:
 	wait_movement
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 21
 	closemsg
 	apply_movement 5, scr_seq_0029_D23R0101_0664
@@ -342,7 +342,7 @@ scr_seq_0029_D23R0101_046B:
 scr_seq_0029_D23R0101_0480:
 	wait_movement
 	buffer_players_name 0
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 22
 	closemsg
 	comparevartovalue VAR_TEMP_x4001, 5
@@ -435,7 +435,7 @@ scr_seq_0029_D23R0101_0610:
 	apply_movement 255, scr_seq_0029_D23R0101_06F4
 scr_seq_0029_D23R0101_0625:
 	wait_movement
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 25
 	closemsg
 	apply_movement 5, scr_seq_0029_D23R0101_0938
@@ -762,7 +762,7 @@ scr_seq_0029_D23R0101_09E5:
 	setflag FLAG_UNK_AA5
 	npc_msg 31
 	scrcmd_503 32768
-	scrcmd_541 0, 32768, 2, 5
+	scrcmd_541 0, VAR_SPECIAL_x8000, 2, 5
 	npc_msg 32
 	scrcmd_504 32769, 32770, 32771, 32768
 	comparevartovalue VAR_SPECIAL_x8002, 0

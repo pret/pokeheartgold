@@ -17,7 +17,7 @@ scr_seq_0932_T28GYM0101_001B:
 	get_phone_book_rematch 39, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0932_T28GYM0101_00B8
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, scr_seq_0932_T28GYM0101_00B2
 	scrcmd_147 39, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
@@ -109,7 +109,7 @@ scr_seq_0932_T28GYM0101_0172:
 	end
 
 scr_seq_0932_T28GYM0101_0178:
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0932_T28GYM0101_0198
 	npc_msg 5
 	waitbutton
@@ -136,12 +136,12 @@ scr_seq_0932_T28GYM0101_0198:
 	npc_msg 7
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 40
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg 8

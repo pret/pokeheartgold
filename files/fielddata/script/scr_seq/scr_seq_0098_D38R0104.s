@@ -52,10 +52,10 @@ scr_seq_0098_D38R0104_0097:
 
 scr_seq_0098_D38R0104_00A6:
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 

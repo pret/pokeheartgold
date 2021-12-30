@@ -17,7 +17,7 @@ scr_seq_0913_T26GYM0101_0022:
 	get_phone_book_rematch 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, scr_seq_0913_T26GYM0101_015C
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, scr_seq_0913_T26GYM0101_015A
 	clearflag FLAG_UNK_1D9
 	scrcmd_147 38, VAR_TEMP_x4001
@@ -196,12 +196,12 @@ scr_seq_0913_T26GYM0101_0264:
 	gotoif eq, scr_seq_0913_T26GYM0101_034B
 	npc_msg 9
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0913_T26GYM0101_034B

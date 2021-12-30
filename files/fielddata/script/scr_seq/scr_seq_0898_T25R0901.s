@@ -24,12 +24,12 @@ scr_seq_0898_T25R0901_002E:
 	npc_msg 1
 	scrcmd_049
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0898_T25R0901_00B3
@@ -77,10 +77,10 @@ scr_seq_0898_T25R0901_00D9:
 	npc_msg 3
 	closemsg
 	setvar VAR_SPECIAL_x800C, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0898_T25R0901_011F

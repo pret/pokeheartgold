@@ -355,10 +355,10 @@ scr_seq_0112_D44R0103_04F0:
 
 scr_seq_0112_D44R0103_050E:
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0112_D44R0103_052E:
 	setflag FLAG_UNK_0DC
@@ -456,11 +456,11 @@ scr_seq_0112_D44R0103_063D:
 	wait_movement
 scr_seq_0112_D44R0103_0664:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 46
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

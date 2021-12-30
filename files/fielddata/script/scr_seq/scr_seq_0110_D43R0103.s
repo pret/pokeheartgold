@@ -217,10 +217,10 @@ scr_seq_0110_D43R0103_02EF:
 scr_seq_0110_D43R0103_02FF:
 	wait_movement
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 178, 0, 16384, 16385, 32780
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

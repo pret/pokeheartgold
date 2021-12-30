@@ -35,10 +35,10 @@
 	scrdef_end
 
 scr_seq_0151_0076:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 96, 0, 46, 50, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 
@@ -341,7 +341,7 @@ scr_seq_0151_043B:
 	goto scr_seq_0151_04B5
 
 scr_seq_0151_045E:
-	buffer_species_name_custom 1, VAR_TEMP_x4002, 2, 1
+	buffer_species_name 1, VAR_TEMP_x4002, 2, 1
 	npc_msg 43
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -349,10 +349,10 @@ scr_seq_0151_045E:
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0151_049E
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input 255, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0151_049E:
 	scrcmd_788 5, 32780

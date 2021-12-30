@@ -552,7 +552,7 @@ scr_seq_0166_081D:
 	npc_msg 175
 	npc_msg 176
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 scr_seq_0166_0837:
@@ -563,7 +563,7 @@ scr_seq_0166_0837:
 
 scr_seq_0166_084F:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, scr_seq_0166_0810

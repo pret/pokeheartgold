@@ -39,10 +39,10 @@ scr_seq_0242_R35R0201_0038:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 487, 0, 40, 86, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
@@ -301,10 +301,10 @@ scr_seq_0242_R35R0201_03C1:
 	scrcmd_604 48
 scr_seq_0242_R35R0201_03E3:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 487, 0, 40, 86, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
@@ -408,11 +408,11 @@ scr_seq_0242_R35R0201_0546:
 	wait_movement
 scr_seq_0242_R35R0201_056D:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 12
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

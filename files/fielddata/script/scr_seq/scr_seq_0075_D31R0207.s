@@ -134,10 +134,10 @@ scr_seq_0075_D31R0207_01A3:
 	closemsg
 	releaseall
 	setvar VAR_UNK_414B, 3
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 265, 0, 11, 6, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	end
 
@@ -149,20 +149,20 @@ scr_seq_0075_D31R0207_01D3:
 	closemsg
 	call scr_seq_0075_D31R0207_04C5
 	setvar VAR_UNK_414D, 2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 266, 0, 3, 6, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
 
 scr_seq_0075_D31R0207_0216:
 	scrcmd_413 16393, 0, 32772, 32773
-	buffer_species_name_custom 0, VAR_SPECIAL_x8004, 0, 0
+	buffer_species_name 0, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 1, VAR_SPECIAL_x8005
 	scrcmd_413 16393, 1, 32772, 32773
-	buffer_species_name_custom 2, VAR_SPECIAL_x8004, 0, 0
+	buffer_species_name 2, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 3, VAR_SPECIAL_x8005
 	return
 
@@ -378,10 +378,10 @@ scr_seq_0075_D31R0207_04E5:
 	call scr_seq_0075_D31R0207_0480
 	apply_movement 0, scr_seq_0075_D31R0207_06D8
 	wait_movement
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 271, 0, 8, 4, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

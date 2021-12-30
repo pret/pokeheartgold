@@ -23,4 +23,24 @@
 
 #define std_pokedex_evaluation          9951
 
+#define std_field_cut                  10000
+#define std_field_rock_smash           10001
+#define std_field_strength             10002
+#define std_field_rock_climb           10003
+#define std_field_surf                 10004
+#define std_field_waterfall            10005
+#define std_field_flash                10006
+#define std_menu_cut                   10007
+#define std_menu_rock_smash            10008
+#define std_menu_strength              10009
+#define std_menu_rock_climb            10010
+#define std_menu_surf                  10011
+#define std_menu_waterfall             10012
+#define std_menu_flash                 10013
+#define std_field_headbutt             10014
+#define std_boulder_fell_down          10015
+#define std_field_whirlpool            10016
+#define std_menu_whirlpool             10017
+#define std_menu_headbutt              10018
+
 #endif //POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H

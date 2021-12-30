@@ -150,7 +150,7 @@ scr_seq_0087_D32R0601_01FA:
 scr_seq_0087_D32R0601_01FC:
 	npc_msg 7
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_643 4, 16713, 32780
 	scrcmd_645 16386, 16389, 16390
@@ -159,19 +159,19 @@ scr_seq_0087_D32R0601_01FC:
 	scrcmd_815 0
 scr_seq_0087_D32R0601_022E:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, scr_seq_0087_D32R0601_0132
-	scrcmd_690 16386, 32780
+	scrcmd_690 VAR_TEMP_x4002, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0087_D32R0601_0607
-	scrcmd_690 16389, 32780
+	scrcmd_690 VAR_TEMP_x4005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0087_D32R0601_0607
 	comparevartovalue VAR_UNK_4149, 2
 	gotoif eq, scr_seq_0087_D32R0601_028F
-	scrcmd_690 16390, 32780
+	scrcmd_690 VAR_TEMP_x4006, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0087_D32R0601_0607
 scr_seq_0087_D32R0601_028F:
@@ -361,7 +361,7 @@ scr_seq_0087_D32R0601_04D7:
 scr_seq_0087_D32R0601_0508:
 	.byte 0x02, 0x00
 scr_seq_0087_D32R0601_050A:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_815 0
 	comparevartovalue VAR_UNK_4149, 0
@@ -376,7 +376,7 @@ scr_seq_0087_D32R0601_050A:
 	comparevartovalue VAR_UNK_4149, 2
 	callif eq, scr_seq_0087_D32R0601_056B
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_682 1
 	end

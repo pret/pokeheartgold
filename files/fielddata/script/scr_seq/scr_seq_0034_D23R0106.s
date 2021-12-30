@@ -30,7 +30,7 @@ scr_seq_0034_D23R0106_002F:
 	gotoif eq, scr_seq_0034_D23R0106_025D
 	npc_msg 1
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	hide_person 0
 	play_se SEQ_SE_DP_KAIDAN2
@@ -40,7 +40,7 @@ scr_seq_0034_D23R0106_002F:
 	scrcmd_081 0
 	wait 15, VAR_SPECIAL_x800C
 	reset_bgm
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	move_person 1, 8, 1, 12, 1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001

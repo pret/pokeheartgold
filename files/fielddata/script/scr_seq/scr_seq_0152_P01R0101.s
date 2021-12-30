@@ -108,7 +108,7 @@ scr_seq_0152_P01R0101_0138:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, scr_seq_0152_P01R0101_0361
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, scr_seq_0152_P01R0101_0356

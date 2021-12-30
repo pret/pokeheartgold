@@ -11,7 +11,7 @@
 scr_seq_0963_W40R0101_000E:
 	comparevartovalue VAR_UNK_40E5, 1
 	gotoif ge, scr_seq_0963_W40R0101_0036
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0963_W40R0101_0028
 	end
 
@@ -28,7 +28,7 @@ scr_seq_0963_W40R0101_003E:
 	lockall
 	checkflag FLAG_UNK_0FB
 	gotoif TRUE, scr_seq_0963_W40R0101_00BE
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0963_W40R0101_00B1
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
@@ -89,7 +89,7 @@ scr_seq_0963_W40R0101_00EC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0963_W40R0101_0108
 	npc_msg 3
 	goto scr_seq_0963_W40R0101_010B

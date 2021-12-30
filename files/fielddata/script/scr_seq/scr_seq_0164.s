@@ -148,7 +148,7 @@ scr_seq_0164_01E1:
 	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0164_04EC
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_0164_031B
 	get_party_count VAR_TEMP_x4009
@@ -304,7 +304,7 @@ scr_seq_0164_03E8:
 	return
 
 scr_seq_0164_03F3:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_436
 	scrcmd_565 32780
@@ -317,7 +317,7 @@ scr_seq_0164_041A:
 	scrcmd_152
 scr_seq_0164_041C:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_307 0, 0, 8, 2, 77
 	call scr_seq_0164_03E0
@@ -411,7 +411,7 @@ scr_seq_0164_0521:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_trcard_stars VAR_SPECIAL_x800C
+	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, scr_seq_0164_0709
 	scrcmd_691 32780
@@ -492,10 +492,10 @@ scr_seq_0164_05D7:
 	wait_movement
 	call scr_seq_0164_03E8
 	setvar VAR_TEMP_x4003, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 516, 0, 20, 11, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

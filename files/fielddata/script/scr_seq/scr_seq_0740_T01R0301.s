@@ -151,12 +151,12 @@ scr_seq_0740_T01R0301_01F2:
 	gotoif eq, scr_seq_0740_T01R0301_0261
 	npc_msg 29
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 90
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 30
 	waitbutton
@@ -597,13 +597,13 @@ scr_seq_0740_T01R0301_084A:
 	setflag FLAG_UNK_300
 scr_seq_0740_T01R0301_0852:
 	buffer_players_name 0
-	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
+	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0
 	npc_msg 46
 	npc_msg 48
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
 	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_x800C
-	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
+	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0
 	npc_msg 49
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -651,10 +651,10 @@ scr_seq_0740_T01R0301_0912:
 
 scr_seq_0740_T01R0301_0929:
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	touchscreen_menu_hide
 	bufferpartymonnick 1, VAR_SPECIAL_x8005
@@ -679,7 +679,7 @@ scr_seq_0740_T01R0301_097B:
 	end
 
 scr_seq_0740_T01R0301_097D:
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 54
 	waitbutton
 	closemsg

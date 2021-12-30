@@ -490,7 +490,7 @@
     {
       "name": "scrcmd_076",
       "args": [
-        2,
+        "var",
         2
       ]
     },
@@ -893,7 +893,7 @@
       ]
     },
     {
-      "name": "any_mon_has_move",
+      "name": "get_party_slot_with_move",
       "args": [
         "var",
         "move"
@@ -1014,7 +1014,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_163",
+      "name": "hof_credits",
       "args": [
         2
       ]
@@ -1085,7 +1085,7 @@
         2,
         2,
         2,
-        2
+        "hex2"
       ]
     },
     {
@@ -1103,21 +1103,21 @@
       ]
     },
     {
-      "name": "scrcmd_177",
+      "name": "rock_climb",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_178",
+      "name": "surf",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_179",
+      "name": "waterfall",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1133,15 +1133,15 @@
       "args": []
     },
     {
-      "name": "scrcmd_182",
+      "name": "whirlpool",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_183",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1163,7 +1163,7 @@
       ]
     },
     {
-      "name": "get_trcard_stars",
+      "name": "get_player_state",
       "args": [
         "var"
       ]
@@ -1185,13 +1185,13 @@
       ]
     },
     {
-      "name": "scrcmd_191",
+      "name": "buffer_rivals_name",
       "args": [
         1
       ]
     },
     {
-      "name": "scrcmd_192",
+      "name": "buffer_friends_name",
       "args": [
         1
       ]
@@ -1259,7 +1259,7 @@
       ]
     },
     {
-      "name": "buffer_species_name_custom",
+      "name": "buffer_species_name",
       "args": [
         1,
         "species",
@@ -1837,9 +1837,9 @@
       "args": []
     },
     {
-      "name": "scrcmd_299",
+      "name": "check_escort_mode",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1915,7 +1915,7 @@
     {
       "name": "scrcmd_313",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2172,7 +2172,7 @@
       "name": "count_alive_mons",
       "args": [
         "var",
-        2
+        "var"
       ]
     },
     {
@@ -2190,7 +2190,7 @@
     {
       "name": "submoneyvar",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2240,8 +2240,8 @@
     {
       "name": "hasenoughmoneyvar",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2264,13 +2264,13 @@
     {
       "name": "scrcmd_372",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_373",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2449,7 +2449,7 @@
       ]
     },
     {
-      "name": "scrcmd_400",
+      "name": "strength_flag_action",
       "args": [
         1
       ],
@@ -3240,9 +3240,9 @@
       "args": []
     },
     {
-      "name": "scrcmd_514",
+      "name": "hall_of_fame_anim",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3414,7 +3414,7 @@
       "name": "scrcmd_541",
       "args": [
         1,
-        2,
+        "var",
         1,
         1
       ]
@@ -3538,7 +3538,7 @@
       "name": "scrcmd_560",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -3724,7 +3724,7 @@
       ]
     },
     {
-      "name": "scrcmd_590",
+      "name": "get_trcard_stars",
       "args": [
         "var"
       ]
@@ -4146,10 +4146,10 @@
       ]
     },
     {
-      "name": "scrcmd_658",
+      "name": "buffer_stat_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -4362,8 +4362,8 @@
     {
       "name": "scrcmd_690",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4590,7 +4590,7 @@
     {
       "name": "scrcmd_727",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4609,7 +4609,7 @@
     {
       "name": "scrcmd_730",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4626,7 +4626,7 @@
       "name": "scrcmd_733",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {

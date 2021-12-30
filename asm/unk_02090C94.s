@@ -34,7 +34,7 @@ sub_02090C94: ; 0x02090C94
 	str r0, [r4, #0x10]
 	add r0, r6, #0
 	bl SavArray_Flags_get
-	bl sub_02066614
+	bl CheckGameClearFlag
 	strb r0, [r4, #4]
 	mov r1, #0
 	strb r1, [r4, #5]

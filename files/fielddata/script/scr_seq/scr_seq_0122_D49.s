@@ -840,18 +840,18 @@ scr_seq_0122_D49_0A3A:
 	gotoif eq, scr_seq_0122_D49_0AD6
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0122_D49_0AF6
-	hasenoughmoneyvar 32780, 32769
+	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0122_D49_0AEB
 	npc_msg 34
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_114
 	scrcmd_740 32768, 32771
 	scrcmd_150
 	scrcmd_113 21, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8003, 0
 	gotoif ne, scr_seq_0122_D49_0AD0
@@ -859,7 +859,7 @@ scr_seq_0122_D49_0A3A:
 	goto scr_seq_0122_D49_0AD9
 
 scr_seq_0122_D49_0AD0:
-	submoneyvar 32769
+	submoneyvar VAR_SPECIAL_x8001
 	scrcmd_115
 scr_seq_0122_D49_0AD6:
 	npc_msg 35
@@ -1022,11 +1022,11 @@ scr_seq_0122_D49_0CC3:
 	wait_movement
 scr_seq_0122_D49_0CEA:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 13
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -1090,11 +1090,11 @@ scr_seq_0122_D49_0DEB:
 	apply_movement 253, scr_seq_0122_D49_0EC4
 	wait_movement
 scr_seq_0122_D49_0E12:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 14
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 2

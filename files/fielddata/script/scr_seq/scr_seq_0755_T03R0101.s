@@ -351,7 +351,7 @@ scr_seq_0755_T03R0101_053F:
 scr_seq_0755_T03R0101_054E:
 	.byte 0x02, 0x00
 scr_seq_0755_T03R0101_0550:
-	buffer_species_name_custom 0, VAR_UNK_407F, 0, 0
+	buffer_species_name 0, VAR_UNK_407F, 0, 0
 	npc_msg 4
 	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
@@ -360,7 +360,7 @@ scr_seq_0755_T03R0101_0550:
 	goto scr_seq_0755_T03R0101_05FC
 
 scr_seq_0755_T03R0101_0575:
-	buffer_species_name_custom 1, VAR_UNK_407F, 0, 0
+	buffer_species_name 1, VAR_UNK_407F, 0, 0
 	buffer_players_name 0
 	play_fanfare SEQ_ME_POKEGET
 	npc_msg 8
@@ -377,14 +377,14 @@ scr_seq_0755_T03R0101_0575:
 	gotoif eq, scr_seq_0755_T03R0101_0600
 	get_party_count VAR_TEMP_x4000
 	subvar VAR_TEMP_x4000, 1
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0755_T03R0101_05E8
 	scrcmd_420 50
 scr_seq_0755_T03R0101_05E8:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_784 2, 1
 	releaseall
@@ -446,11 +446,11 @@ scr_seq_0755_T03R0101_06AC:
 	wait_movement
 scr_seq_0755_T03R0101_06D3:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 65
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -584,7 +584,7 @@ scr_seq_0755_T03R0101_0870:
 	wait_movement
 	npc_msg 18
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	wait 30, VAR_SPECIAL_x800C
 	release 6
@@ -599,7 +599,7 @@ scr_seq_0755_T03R0101_0870:
 	apply_movement 253, scr_seq_0755_T03R0101_09F0
 	wait_movement
 scr_seq_0755_T03R0101_08F1:
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait 10, VAR_SPECIAL_x800C
 	apply_movement 0, scr_seq_0755_T03R0101_09D0

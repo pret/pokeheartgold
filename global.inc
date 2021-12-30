@@ -1824,7 +1824,7 @@
 .public ScrCmd_GiveEgg
 .public ScrCmd_SetMonMove
 .public ScrCmd_MonHasMove
-.public ScrCmd_AnyMonHasMove
+.public ScrCmd_GetPartySlotWithMove
 .public ScrCmd_GetPhoneBookRematch
 .public ScrCmd_NameRival
 .public ScrCmd_GetFriendSprite
@@ -1846,7 +1846,7 @@
 .public ScrCmd_160
 .public ScrCmd_161
 .public ScrCmd_162
-.public ScrCmd_163
+.public ScrCmd_HOF_Credits
 .public ScrCmd_164
 .public ScrCmd_165
 .public ScrCmd_166
@@ -1870,12 +1870,12 @@
 .public ScrCmd_184
 .public ScrCmd_185
 .public ScrCmd_186
-.public ScrCmd_GetTrcardStars
+.public ScrCmd_GetPlayerState
 .public ScrCmd_188
 .public ScrCmd_189
 .public ScrCmd_BufferPlayersName
-.public ScrCmd_191
-.public ScrCmd_192
+.public ScrCmd_BufferRivalsName
+.public ScrCmd_BufferFriendsName
 .public ScrCmd_BufferMonSpeciesName
 .public ScrCmd_BufferItemName
 .public ScrCmd_BufferPocketName
@@ -1885,7 +1885,7 @@
 .public ScrCmd_BufferPartyMonNick
 .public ScrCmd_BufferTrainerClassName
 .public ScrCmd_BufferPlayerUnionAvatarClassName
-.public ScrCmd_BufferSpeciesNameCustom
+.public ScrCmd_BufferSpeciesName
 .public ScrCmd_BufferStarterSpeciesName
 .public ScrCmd_BufferDPPtRivalStarterSpeciesName
 .public ScrCmd_BufferDPPtFriendStarterSpeciesName
@@ -2083,7 +2083,7 @@
 .public ScrCmd_397
 .public ScrCmd_398
 .public ScrCmd_BufferPartyMonMoveName
-.public ScrCmd_400
+.public ScrCmd_StrengthFlagAction
 .public ScrCmd_401
 .public ScrCmd_402
 .public ScrCmd_403
@@ -2194,7 +2194,7 @@
 .public ScrCmd_511
 .public ScrCmd_512
 .public ScrCmd_513
-.public ScrCmd_514
+.public ScrCmd_HallOfFameAnim
 .public ScrCmd_AddSpecialGameStat
 .public ScrCmd_BufferFashionName
 .public ScrCmd_517
@@ -2270,7 +2270,7 @@
 .public ScrCmd_587
 .public ScrCmd_588
 .public ScrCmd_589
-.public ScrCmd_590
+.public ScrCmd_GetTrcardStars
 .public ScrCmd_591
 .public ScrCmd_592
 .public ScrCmd_593
@@ -2338,7 +2338,7 @@
 .public ScrCmd_655
 .public ScrCmd_656
 .public ScrCmd_657
-.public ScrCmd_658
+.public ScrCmd_BufferStatName
 .public ScrCmd_659
 .public ScrCmd_BufferTrainerName
 .public ScrCmd_661
@@ -29079,8 +29079,8 @@
 .public sub_02066420
 .public sub_020665EC
 .public sub_020665F8
-.public sub_02066604
-.public sub_02066614
+.public SetGameClearFlag
+.public CheckGameClearFlag
 .public ScriptState_SetHealAfterBattleFlag
 .public ScriptState_ClearHealAfterBattleFlag
 .public ScriptState_CheckHealAfterBattleFlag
@@ -29109,7 +29109,7 @@
 .public sub_02066880
 .public sub_02066890
 .public sub_020668A0
-.public sub_020668C0
+.public StrengthFlagAction
 .public sub_020668D0
 .public sub_020668E0
 .public sub_020668F0

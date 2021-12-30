@@ -153,10 +153,10 @@ scr_seq_0829_T11GYM0101_01BF:
 	play_se SEQ_SE_PL_BOWABOWA
 	apply_movement 255, scr_seq_0829_T11GYM0101_01FC
 	wait_movement
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 410, 0, 15, 23, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

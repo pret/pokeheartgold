@@ -71,7 +71,7 @@ scr_seq_0880_T24R0201_00AD:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0880_T24R0201_01AA
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_349
@@ -128,7 +128,7 @@ scr_seq_0880_T24R0201_0198:
 	.byte 0x02, 0x00
 scr_seq_0880_T24R0201_019A:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 

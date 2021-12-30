@@ -34,13 +34,13 @@ scr_seq_0018_D15R0103_0025:
 	closemsg
 	wait 15, VAR_SPECIAL_x800C
 	callstd std_play_rival_outro_music
-	scrcmd_191 0
+	buffer_rivals_name 0
 	apply_movement 6, scr_seq_0018_D15R0103_00D8
 	wait_movement
 	npc_msg 1
 	closemsg
 	wait 15, VAR_SPECIAL_x800C
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 2
 	scrcmd_049
 	closemsg

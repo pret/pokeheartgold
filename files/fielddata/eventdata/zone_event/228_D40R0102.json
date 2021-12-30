@@ -40,7 +40,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 10002,
+      "scr": "std_field_strength",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

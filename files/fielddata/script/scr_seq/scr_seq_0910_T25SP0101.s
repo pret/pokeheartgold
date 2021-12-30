@@ -21,11 +21,11 @@ scr_seq_0910_T25SP0101_0016:
 	wait_movement
 	npc_msg 40
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_780 0, 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_TEMP_x4001, 2
 	releaseall
@@ -596,7 +596,7 @@ scr_seq_0910_T25SP0101_09D5:
 	goto scr_seq_0910_T25SP0101_0C26
 
 scr_seq_0910_T25SP0101_09F3:
-	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
+	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 7
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -645,7 +645,7 @@ scr_seq_0910_T25SP0101_0AB1:
 	play_se SEQ_SE_DP_REGI
 	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
+	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 8
 	comparevartovalue VAR_TEMP_x4002, 63
 	gotoif ne, scr_seq_0910_T25SP0101_0AEB

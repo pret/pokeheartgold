@@ -74,7 +74,7 @@ scr_seq_0147_HIROBA_00DB:
 	play_se SEQ_SE_DP_TELE2
 	apply_movement 255, scr_seq_0147_HIROBA_01EC
 	wait_movement
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setvar VAR_TEMP_x4003, 1
 	scrcmd_176 16470, 0, 5, 2, 1
@@ -85,7 +85,7 @@ scr_seq_0147_HIROBA_00DB:
 	scrcmd_150
 	setvar VAR_UNK_4137, 1
 	scrcmd_375 255
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

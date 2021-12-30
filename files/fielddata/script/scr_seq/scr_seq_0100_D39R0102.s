@@ -68,10 +68,10 @@ scr_seq_0100_D39R0102_00D9:
 scr_seq_0100_D39R0102_00E9:
 	wait_movement
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 238, 0, 16384, 16385, 32780
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

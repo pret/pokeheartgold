@@ -160,10 +160,10 @@ scr_seq_0012_D10R0101_01C9:
 
 scr_seq_0012_D10R0101_01D4:
 	scrcmd_508 1
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 479, 0, 7, 7, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 	.balign 4, 0

@@ -39,7 +39,7 @@ scr_seq_0812_T08R0201_0062:
 	return
 
 scr_seq_0812_T08R0201_0079:
-	scrcmd_191 1
+	buffer_rivals_name 1
 	buffer_int 2, VAR_UNK_4123
 	return
 
@@ -151,10 +151,10 @@ scr_seq_0812_T08R0201_01FB:
 	apply_movement 255, scr_seq_0812_T08R0201_0294
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 109, 0, 24, 47, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_606

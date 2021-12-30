@@ -124,11 +124,11 @@ scr_seq_0126_D49R0105_0117:
 	buffer_players_name 0
 	npc_msg 6
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_712 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

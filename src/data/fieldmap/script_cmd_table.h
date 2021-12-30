@@ -141,7 +141,7 @@ extern BOOL ScrCmd_GiveMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetMonMove(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MonHasMove(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_AnyMonHasMove(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartySlotWithMove(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneBookRematch(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NameRival(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx);
@@ -163,7 +163,7 @@ extern BOOL ScrCmd_159(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_160(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_161(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_162(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_163(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HOF_Credits(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_164(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_165(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_166(SCRIPTCONTEXT *ctx);
@@ -187,12 +187,12 @@ extern BOOL ScrCmd_183(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_184(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_185(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_186(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_GetTrcardStars(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPlayerState(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_188(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_189(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPlayersName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_191(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_192(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferRivalsName(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferFriendsName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferMonSpeciesName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferItemName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPocketName(SCRIPTCONTEXT *ctx);
@@ -202,7 +202,7 @@ extern BOOL ScrCmd_BufferInt(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPartyMonNick(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTrainerClassName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPlayerUnionAvatarClassName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_BufferSpeciesNameCustom(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferSpeciesName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferStarterSpeciesName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(SCRIPTCONTEXT *ctx);
@@ -400,7 +400,7 @@ extern BOOL ScrCmd_396(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_397(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_398(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_400(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_StrengthFlagAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_401(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_402(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_403(SCRIPTCONTEXT *ctx);
@@ -514,7 +514,7 @@ extern BOOL ScrCmd_510(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_511(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_512(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_513(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_514(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_HallOfFameAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AddSpecialGameStat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferFashionName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_517(SCRIPTCONTEXT *ctx);
@@ -590,7 +590,7 @@ extern BOOL ScrCmd_586(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_587(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_588(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_589(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_590(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetTrcardStars(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_591(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_592(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_593(SCRIPTCONTEXT *ctx);
@@ -658,7 +658,7 @@ extern BOOL ScrCmd_654(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_655(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_656(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_657(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_658(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferStatName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_659(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTrainerName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_661(SCRIPTCONTEXT *ctx);
@@ -996,7 +996,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GiveEgg,
     ScrCmd_SetMonMove,
     ScrCmd_MonHasMove,
-    ScrCmd_AnyMonHasMove,
+    ScrCmd_GetPartySlotWithMove,
     ScrCmd_GetPhoneBookRematch,
     ScrCmd_NameRival,
     ScrCmd_GetFriendSprite,
@@ -1018,7 +1018,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_160,
     ScrCmd_161,
     ScrCmd_162,
-    ScrCmd_163,
+    ScrCmd_HOF_Credits,
     ScrCmd_164,
     ScrCmd_165,
     ScrCmd_166,
@@ -1042,12 +1042,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_184,
     ScrCmd_185,
     ScrCmd_186,
-    ScrCmd_GetTrcardStars,
+    ScrCmd_GetPlayerState,
     ScrCmd_188,
     ScrCmd_189,
     ScrCmd_BufferPlayersName,
-    ScrCmd_191,
-    ScrCmd_192,
+    ScrCmd_BufferRivalsName,
+    ScrCmd_BufferFriendsName,
     ScrCmd_BufferMonSpeciesName,
     ScrCmd_BufferItemName,
     ScrCmd_BufferPocketName,
@@ -1057,7 +1057,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferPartyMonNick,
     ScrCmd_BufferTrainerClassName,
     ScrCmd_BufferPlayerUnionAvatarClassName,
-    ScrCmd_BufferSpeciesNameCustom,
+    ScrCmd_BufferSpeciesName,
     ScrCmd_BufferStarterSpeciesName,
     ScrCmd_BufferDPPtRivalStarterSpeciesName,
     ScrCmd_BufferDPPtFriendStarterSpeciesName,
@@ -1255,7 +1255,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_397,
     ScrCmd_398,
     ScrCmd_BufferPartyMonMoveName,
-    ScrCmd_400,
+    ScrCmd_StrengthFlagAction,
     ScrCmd_401,
     ScrCmd_402,
     ScrCmd_403,
@@ -1369,7 +1369,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_511,
     ScrCmd_512,
     ScrCmd_513,
-    ScrCmd_514,
+    ScrCmd_HallOfFameAnim,
     ScrCmd_AddSpecialGameStat,
     ScrCmd_BufferFashionName,
     ScrCmd_517,
@@ -1445,7 +1445,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_587,
     ScrCmd_588,
     ScrCmd_589,
-    ScrCmd_590,
+    ScrCmd_GetTrcardStars,
     ScrCmd_591,
     ScrCmd_592,
     ScrCmd_593,
@@ -1513,7 +1513,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_655,
     ScrCmd_656,
     ScrCmd_657,
-    ScrCmd_658,
+    ScrCmd_BufferStatName,
     ScrCmd_659,
     ScrCmd_BufferTrainerName,
     ScrCmd_661,

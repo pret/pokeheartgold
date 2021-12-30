@@ -2313,7 +2313,7 @@ _021E6B94:
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #2
-	bl sub_020668C0
+	bl StrengthFlagAction
 	cmp r0, #0
 	beq _021E6BB6
 	mov r0, #1

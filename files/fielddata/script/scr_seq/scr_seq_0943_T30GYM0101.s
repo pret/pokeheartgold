@@ -155,10 +155,10 @@ scr_seq_0943_T30GYM0101_01DE:
 	play_se SEQ_SE_DP_GYURU
 	apply_movement 255, scr_seq_0943_T30GYM0101_0218
 	wait_movement
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 141, 0, 8, 83, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

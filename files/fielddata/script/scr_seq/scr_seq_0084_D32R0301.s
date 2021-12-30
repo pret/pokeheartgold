@@ -290,7 +290,7 @@ scr_seq_0084_D32R0301_03A1:
 scr_seq_0084_D32R0301_03D2:
 	.byte 0x02, 0x00
 scr_seq_0084_D32R0301_03D4:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_815 0
 	comparevartovalue VAR_UNK_4143, 0
@@ -305,7 +305,7 @@ scr_seq_0084_D32R0301_03D4:
 	comparevartovalue VAR_UNK_4143, 2
 	callif eq, scr_seq_0084_D32R0301_0435
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_682 1
 	end

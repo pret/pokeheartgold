@@ -57,7 +57,7 @@ scr_seq_0263_0097:
 	scrcmd_556 1
 	scrcmd_118 1
 	npc_msg 10
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_815 0
 	scrcmd_117
@@ -68,7 +68,7 @@ scr_seq_0263_0097:
 	scrcmd_651 2, 16388, 16389
 	scrcmd_650
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_SPECIAL_x8000, 0
 	call scr_seq_0263_019D

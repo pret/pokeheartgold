@@ -12,11 +12,11 @@ scr_seq_0045_D24R0208_000E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_713 3
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	checkflag FLAG_UNK_97A
 	gotoif TRUE, scr_seq_0045_D24R0208_0042
@@ -55,10 +55,10 @@ scr_seq_0045_D24R0208_00B8:
 	comparevartovalue VAR_UNK_40EC, 1
 	gotoif ge, scr_seq_0045_D24R0208_0103
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_UNK_40E0, 1
 	addvar VAR_UNK_40EC, 1
@@ -68,10 +68,10 @@ scr_seq_0045_D24R0208_00B8:
 scr_seq_0045_D24R0208_0103:
 	setflag FLAG_UNK_235
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	setvar VAR_UNK_40E0, 1
 	addvar VAR_UNK_40EC, 1
@@ -104,28 +104,28 @@ scr_seq_0045_D24R0208_0185:
 	gotoif ge, scr_seq_0045_D24R0208_01D1
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif eq, scr_seq_0045_D24R0208_01FB
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0045_D24R0208_01CD:
 	releaseall
 	end
 
 scr_seq_0045_D24R0208_01D1:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 492, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0045_D24R0208_01CD
 
 scr_seq_0045_D24R0208_01FB:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 490, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0045_D24R0208_01CD
 

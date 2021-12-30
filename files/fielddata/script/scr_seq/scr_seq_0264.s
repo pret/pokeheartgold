@@ -158,7 +158,7 @@ scr_seq_0264_0221:
 	end
 
 scr_seq_0264_0229:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	call scr_seq_0264_023F
@@ -167,7 +167,7 @@ scr_seq_0264_0229:
 scr_seq_0264_023F:
 	scrcmd_631 32769, 32768, 32771
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	return
 	.balign 4, 0

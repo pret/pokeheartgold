@@ -56,12 +56,12 @@ scr_seq_0738_T01R0201_00A5:
 scr_seq_0738_T01R0201_00A7:
 	npc_msg 2
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32772
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_490 32772
 	comparevartovalue VAR_SPECIAL_x8004, 255

@@ -100,7 +100,7 @@ scr_seq_0866_T23_0172:
 	apply_movement 255, scr_seq_0866_T23_02C0
 scr_seq_0866_T23_018E:
 	wait_movement
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 1
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
@@ -122,7 +122,7 @@ scr_seq_0866_T23_01DA:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0866_T23_0285
 	callstd std_play_rival_outro_music
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 2
 	closemsg
 	setvar VAR_UNK_4075, 2

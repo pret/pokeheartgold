@@ -44,10 +44,10 @@ scr_seq_0839_T11R0703_0066:
 scr_seq_0839_T11R0703_008C:
 	setvar VAR_SPECIAL_x8004, 0
 	call scr_seq_0839_T11R0703_00F4
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 402, 0, 3, 3, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -55,10 +55,10 @@ scr_seq_0839_T11R0703_008C:
 scr_seq_0839_T11R0703_00C0:
 	setvar VAR_SPECIAL_x8004, 1
 	call scr_seq_0839_T11R0703_00F4
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 403, 0, 7, 3, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -144,10 +144,10 @@ scr_seq_0839_T11R0703_01C5:
 scr_seq_0839_T11R0703_01F0:
 	setvar VAR_SPECIAL_x8004, 0
 	call scr_seq_0839_T11R0703_00FE
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 403, 0, 7, 3, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
@@ -155,10 +155,10 @@ scr_seq_0839_T11R0703_01F0:
 scr_seq_0839_T11R0703_0224:
 	setvar VAR_SPECIAL_x8004, 1
 	call scr_seq_0839_T11R0703_00FE
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 402, 0, 3, 3, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

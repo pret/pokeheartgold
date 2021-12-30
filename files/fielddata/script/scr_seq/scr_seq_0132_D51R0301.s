@@ -249,10 +249,10 @@ scr_seq_0132_D51R0301_02D2:
 	clearflag FLAG_UNK_2DD
 	clearflag FLAG_UNK_2DB
 scr_seq_0132_D51R0301_02E4:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 60, 0, 695, 397, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end

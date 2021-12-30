@@ -106,28 +106,28 @@ scr_seq_0047_D24R0210_017E:
 	gotoif ge, scr_seq_0047_D24R0210_01C4
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif eq, scr_seq_0047_D24R0210_01EE
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 25, 42, 32780
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 scr_seq_0047_D24R0210_01C0:
 	releaseall
 	end
 
 scr_seq_0047_D24R0210_01C4:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 492, 0, 25, 42, 32780
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0047_D24R0210_01C0
 
 scr_seq_0047_D24R0210_01EE:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 490, 0, 25, 42, 32780
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto scr_seq_0047_D24R0210_01C0
 

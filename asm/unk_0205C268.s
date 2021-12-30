@@ -22969,25 +22969,25 @@ sub_020665F8: ; 0x020665F8
 _02066600: .word CheckScriptFlag
 	thumb_func_end sub_020665F8
 
-	thumb_func_start sub_02066604
-sub_02066604: ; 0x02066604
+	thumb_func_start SetGameClearFlag
+SetGameClearFlag: ; 0x02066604
 	ldr r3, _0206660C ; =SetScriptFlag
 	ldr r1, _02066610 ; =0x00000964
 	bx r3
 	nop
 _0206660C: .word SetScriptFlag
 _02066610: .word 0x00000964
-	thumb_func_end sub_02066604
+	thumb_func_end SetGameClearFlag
 
-	thumb_func_start sub_02066614
-sub_02066614: ; 0x02066614
+	thumb_func_start CheckGameClearFlag
+CheckGameClearFlag: ; 0x02066614
 	ldr r3, _0206661C ; =CheckScriptFlag
 	ldr r1, _02066620 ; =0x00000964
 	bx r3
 	nop
 _0206661C: .word CheckScriptFlag
 _02066620: .word 0x00000964
-	thumb_func_end sub_02066614
+	thumb_func_end CheckGameClearFlag
 
 	thumb_func_start ScriptState_SetHealAfterBattleFlag
 ScriptState_SetHealAfterBattleFlag: ; 0x02066624
@@ -23387,15 +23387,15 @@ _020668B8: .word ClearScriptFlag
 _020668BC: .word 0x00000972
 	thumb_func_end sub_020668B0
 
-	thumb_func_start sub_020668C0
-sub_020668C0: ; 0x020668C0
+	thumb_func_start StrengthFlagAction
+StrengthFlagAction: ; 0x020668C0
 	ldr r3, _020668C8 ; =FlagAction
 	ldr r2, _020668CC ; =0x00000962
 	bx r3
 	nop
 _020668C8: .word FlagAction
 _020668CC: .word 0x00000962
-	thumb_func_end sub_020668C0
+	thumb_func_end StrengthFlagAction
 
 	thumb_func_start sub_020668D0
 sub_020668D0: ; 0x020668D0
@@ -25891,7 +25891,7 @@ sub_02067A88: ; 0x02067A88
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #0
-	bl sub_020668C0
+	bl StrengthFlagAction
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]
@@ -25939,7 +25939,7 @@ sub_02067AE4: ; 0x02067AE4
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #0
-	bl sub_020668C0
+	bl StrengthFlagAction
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]

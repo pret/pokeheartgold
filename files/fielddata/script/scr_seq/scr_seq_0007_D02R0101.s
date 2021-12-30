@@ -18,7 +18,7 @@ scr_seq_0007_D02R0101_0006:
 	scrcmd_602 1
 	scrcmd_604 48
 	buffer_players_name 0
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 0
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
@@ -41,7 +41,7 @@ scr_seq_0007_D02R0101_007D:
 	gotoif eq, scr_seq_0007_D02R0101_00C9
 	callstd std_play_rival_outro_music
 	buffer_players_name 0
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 1
 	closemsg
 	apply_movement 0, scr_seq_0007_D02R0101_00E8

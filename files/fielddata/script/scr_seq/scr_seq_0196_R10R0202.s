@@ -42,10 +42,10 @@ scr_seq_0196_R10R0202_0071:
 	apply_movement 6, scr_seq_0196_R10R0202_0108
 	wait_movement
 	wait_se SEQ_SE_GS_W012
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 467, 0, 13, 7, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg 15
 	apply_movement 6, scr_seq_0196_R10R0202_0120
@@ -185,12 +185,12 @@ scr_seq_0196_R10R0202_0231:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0196_R10R0202_02CD
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0196_R10R0202_02CD

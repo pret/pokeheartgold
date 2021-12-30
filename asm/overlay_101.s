@@ -23228,7 +23228,7 @@ _021F2B04:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F2B0C:
 	ldr r0, [r5, #0x28]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	bne _021F2B1A
 	mov r0, #0x12
@@ -25305,7 +25305,7 @@ ov101_021F3AA4: ; 0x021F3AA4
 	mov r0, #0
 	strh r0, [r4, #0x20]
 	ldr r0, [r5, #0x28]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r1, [r1]
@@ -26508,7 +26508,7 @@ _021F4398:
 	pop {r4, r5, r6, pc}
 _021F43A8:
 	ldr r0, [r5, #0x28]
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	beq _021F43CE
 	ldr r0, [r5, #0x28]

@@ -13,10 +13,10 @@ scr_seq_0894_T25R0502_0006:
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 197, 0, 3, 3, 3
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_606

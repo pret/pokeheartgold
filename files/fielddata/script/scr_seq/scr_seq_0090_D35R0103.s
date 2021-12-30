@@ -94,14 +94,14 @@ scr_seq_0090_D35R0103_012D:
 	scrcmd_604 48
 	npc_msg 0
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	buffer_players_name 0
 	gender_msgbox 1, 2
@@ -358,7 +358,7 @@ scr_seq_0090_D35R0103_0436:
 	gotoif eq, scr_seq_0090_D35R0103_0620
 	npc_msg 8
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	move_person 0, 28, 1, 24, 1
 	move_person 1, 27, 1, 24, 3
@@ -378,7 +378,7 @@ scr_seq_0090_D35R0103_0436:
 	setflag FLAG_UNK_1F3
 	setflag FLAG_UNK_1F2
 	setflag FLAG_UNK_1E8
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	apply_movement 0, scr_seq_0090_D35R0103_06BC
 	apply_movement 1, scr_seq_0090_D35R0103_06C4

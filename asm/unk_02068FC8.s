@@ -87,7 +87,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl sub_02055640
 	ldr r0, [r6, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066614
+	bl CheckGameClearFlag
 	add r1, sp, #0x78
 	str r1, [sp]
 	ldr r1, [sp, #0x14]
@@ -258,7 +258,7 @@ sub_020691E8: ; 0x020691E8
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r4, #0
-	bl sub_02066614
+	bl CheckGameClearFlag
 	cmp r0, #0
 	beq _02069216
 	add r0, r4, #1

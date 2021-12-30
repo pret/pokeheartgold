@@ -181,7 +181,7 @@ scr_seq_0837_T11R0701_0297:
 scr_seq_0837_T11R0701_02B0:
 	setvar VAR_SPECIAL_x8004, 258
 scr_seq_0837_T11R0701_02B6:
-	buffer_species_name_custom 1, VAR_SPECIAL_x8004, 0, 0
+	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0
 	buffer_players_name 0
 	npc_msg 20
 	play_fanfare SEQ_ME_POKEGET
@@ -234,11 +234,11 @@ scr_seq_0837_T11R0701_0351:
 	get_party_count VAR_SPECIAL_x800C
 	subvar VAR_SPECIAL_x800C, 1
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_815 0
 	nickname_input VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0837_T11R0701_02F3
@@ -300,12 +300,12 @@ scr_seq_0837_T11R0701_0415:
 	gotoif eq, scr_seq_0837_T11R0701_04EA
 	npc_msg 9
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
 	scrcmd_351 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, scr_seq_0837_T11R0701_04EA

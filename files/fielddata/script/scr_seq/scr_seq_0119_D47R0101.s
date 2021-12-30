@@ -37,10 +37,10 @@ scr_seq_0119_D47R0101_0062:
 	apply_movement 255, scr_seq_0119_D47R0101_01B4
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 357, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_606
@@ -572,10 +572,10 @@ scr_seq_0119_D47R0101_0773:
 	scrcmd_447 0, 0
 	scrcmd_240 173, 1, 5, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 357, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_606
@@ -986,10 +986,10 @@ scr_seq_0119_D47R0101_0CCC:
 	scrcmd_447 0, 1
 	scrcmd_240 173, 2, 19, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 357, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_606
@@ -1110,11 +1110,11 @@ scr_seq_0119_D47R0101_0E7E:
 	npc_msg 27
 	closemsg
 	clearflag FLAG_UNK_99D
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_716
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	checkflag FLAG_UNK_99D
 	gotoif TRUE, scr_seq_0119_D47R0101_0EFC

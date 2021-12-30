@@ -70,7 +70,7 @@ scr_seq_0104_D40R0107_00FC:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x400A, 249
-	scrcmd_076 16394, 0
+	scrcmd_076 VAR_TEMP_x400A, 0
 	npc_msg 4
 	scrcmd_077
 	closemsg
@@ -126,12 +126,12 @@ scr_seq_0104_D40R0107_01AE:
 	npc_msg 0
 	closemsg
 	scrcmd_074 2143
-	fade_screen 4, 4, 0, 32767
+	fade_screen 4, 4, 0, 0x7FFF
 	wait_fade
 	scrcmd_755
 	scrcmd_757
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_RU
-	fade_screen 4, 4, 1, 32767
+	fade_screen 4, 4, 1, 0x7FFF
 	wait_fade
 	wait_se SEQ_SE_GS_SUZUSYUTUGEN_RU
 	apply_movement 4, scr_seq_0104_D40R0107_096C
@@ -170,7 +170,7 @@ scr_seq_0104_D40R0107_01AE:
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	fade_screen 4, 6, 1, 32767
+	fade_screen 4, 6, 1, 0x7FFF
 	scrcmd_765
 	wait_fade
 	wait 6, VAR_SPECIAL_x800C
@@ -274,10 +274,10 @@ scr_seq_0104_D40R0107_01AE:
 	wait 41, VAR_SPECIAL_x800C
 	scrcmd_763
 	wait 16, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_761 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	apply_movement 4, scr_seq_0104_D40R0107_0A00
 	apply_movement 2, scr_seq_0104_D40R0107_0A24
@@ -310,10 +310,10 @@ scr_seq_0104_D40R0107_01AE:
 	apply_movement 3, scr_seq_0104_D40R0107_0B1C
 	apply_movement 0, scr_seq_0104_D40R0107_0B24
 	apply_movement 1, scr_seq_0104_D40R0107_0B34
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_761 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait_movement
 	apply_movement 4, scr_seq_0104_D40R0107_0A48
@@ -401,7 +401,7 @@ scr_seq_0104_D40R0107_01AE:
 	wait 26, VAR_SPECIAL_x800C
 	scrcmd_756
 	setvar VAR_TEMP_x400B, 123
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	clearflag FLAG_UNK_243
 	show_person 5
@@ -423,7 +423,7 @@ scr_seq_0104_D40R0107_01AE:
 	move_person 1, 19, 1, 27, 0
 	scrcmd_773 1
 	scrcmd_767
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	wait 59, VAR_SPECIAL_x800C
 	scrcmd_764

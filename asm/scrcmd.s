@@ -190,7 +190,7 @@ gScriptCmdTable:
 	.word ScrCmd_GiveEgg                                ; 138
 	.word ScrCmd_SetMonMove                             ; 139
 	.word ScrCmd_MonHasMove                             ; 140
-	.word ScrCmd_AnyMonHasMove                          ; 141
+	.word ScrCmd_GetPartySlotWithMove                          ; 141
 	.word ScrCmd_GetPhoneBookRematch                    ; 142
 	.word ScrCmd_NameRival                              ; 143
 	.word ScrCmd_GetFriendSprite                        ; 144
@@ -212,7 +212,7 @@ gScriptCmdTable:
 	.word ScrCmd_160                                    ; 160
 	.word ScrCmd_161                                    ; 161
 	.word ScrCmd_162                                    ; 162
-	.word ScrCmd_163                                    ; 163
+	.word ScrCmd_HOF_Credits                                    ; 163
 	.word ScrCmd_164                                    ; 164
 	.word ScrCmd_165                                    ; 165
 	.word ScrCmd_166                                    ; 166
@@ -236,12 +236,12 @@ gScriptCmdTable:
 	.word ScrCmd_184                                    ; 184
 	.word ScrCmd_185                                    ; 185
 	.word ScrCmd_186                                    ; 186
-	.word ScrCmd_GetTrcardStars                         ; 187
+	.word ScrCmd_GetPlayerState                         ; 187
 	.word ScrCmd_188                                    ; 188
 	.word ScrCmd_189                                    ; 189
 	.word ScrCmd_BufferPlayersName                      ; 190
-	.word ScrCmd_191                                    ; 191
-	.word ScrCmd_192                                    ; 192
+	.word ScrCmd_BufferRivalsName                                    ; 191
+	.word ScrCmd_BufferFriendsName                                    ; 192
 	.word ScrCmd_BufferMonSpeciesName                   ; 193
 	.word ScrCmd_BufferItemName                         ; 194
 	.word ScrCmd_BufferPocketName                       ; 195
@@ -251,7 +251,7 @@ gScriptCmdTable:
 	.word ScrCmd_BufferPartyMonNick                     ; 199
 	.word ScrCmd_BufferTrainerClassName                                    ; 200
 	.word ScrCmd_BufferPlayerUnionAvatarClassName                                    ; 201
-	.word ScrCmd_BufferSpeciesNameCustom                ; 202
+	.word ScrCmd_BufferSpeciesName                ; 202
 	.word ScrCmd_BufferStarterSpeciesName                                    ; 203
 	.word ScrCmd_BufferDPPtRivalStarterSpeciesName                                    ; 204
 	.word ScrCmd_BufferDPPtFriendStarterSpeciesName                                    ; 205
@@ -449,7 +449,7 @@ gScriptCmdTable:
 	.word ScrCmd_397                                    ; 397
 	.word ScrCmd_398                                    ; 398
 	.word ScrCmd_BufferPartyMonMoveName                                    ; 399
-	.word ScrCmd_400                                    ; 400
+	.word ScrCmd_StrengthFlagAction                                    ; 400
 	.word ScrCmd_401                                    ; 401
 	.word ScrCmd_402                                    ; 402
 	.word ScrCmd_403                                    ; 403
@@ -563,7 +563,7 @@ gScriptCmdTable:
 	.word ScrCmd_511                                    ; 511
 	.word ScrCmd_512                                    ; 512
 	.word ScrCmd_513                                    ; 513
-	.word ScrCmd_514                                    ; 514
+	.word ScrCmd_HallOfFameAnim                                    ; 514
 	.word ScrCmd_AddSpecialGameStat                     ; 515
 	.word ScrCmd_BufferFashionName                                    ; 516
 	.word ScrCmd_517                                    ; 517
@@ -639,7 +639,7 @@ gScriptCmdTable:
 	.word ScrCmd_587                                    ; 587
 	.word ScrCmd_588                                    ; 588
 	.word ScrCmd_589                                    ; 589
-	.word ScrCmd_590                                    ; 590
+	.word ScrCmd_GetTrcardStars                                    ; 590
 	.word ScrCmd_591                                    ; 591
 	.word ScrCmd_592                                    ; 592
 	.word ScrCmd_593                                    ; 593
@@ -707,7 +707,7 @@ gScriptCmdTable:
 	.word ScrCmd_655                                    ; 655
 	.word ScrCmd_656                                    ; 656
 	.word ScrCmd_657                                    ; 657
-	.word ScrCmd_658                                    ; 658
+	.word ScrCmd_BufferStatName                                    ; 658
 	.word ScrCmd_659                                    ; 659
 	.word ScrCmd_BufferTrainerName                                    ; 660
 	.word ScrCmd_661                                    ; 661
@@ -6027,8 +6027,8 @@ ScrCmd_162: ; 0x02042F98
 _02042FC0: .word sub_02042974
 	thumb_func_end ScrCmd_162
 
-	thumb_func_start ScrCmd_163
-ScrCmd_163: ; 0x02042FC4
+	thumb_func_start ScrCmd_HOF_Credits
+ScrCmd_HOF_Credits: ; 0x02042FC4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -6039,7 +6039,7 @@ ScrCmd_163: ; 0x02042FC4
 	bl Special_EnterHallOfFame
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_163
+	thumb_func_end ScrCmd_HOF_Credits
 
 	thumb_func_start ScrCmd_164
 ScrCmd_164: ; 0x02042FDC
@@ -7165,8 +7165,8 @@ ScrCmd_186: ; 0x02043884
 	pop {r3, pc}
 	thumb_func_end ScrCmd_186
 
-	thumb_func_start ScrCmd_GetTrcardStars
-ScrCmd_GetTrcardStars: ; 0x0204389C
+	thumb_func_start ScrCmd_GetPlayerState
+ScrCmd_GetPlayerState: ; 0x0204389C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -7184,7 +7184,7 @@ ScrCmd_GetTrcardStars: ; 0x0204389C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_GetTrcardStars
+	thumb_func_end ScrCmd_GetPlayerState
 
 	thumb_func_start ScrCmd_188
 ScrCmd_188: ; 0x020438C4
@@ -11291,8 +11291,8 @@ ScrCmd_513: ; 0x0204588C
 	.balign 4, 0
 	thumb_func_end ScrCmd_513
 
-	thumb_func_start ScrCmd_514
-ScrCmd_514: ; 0x020458A4
+	thumb_func_start ScrCmd_HallOfFameAnim
+ScrCmd_HallOfFameAnim: ; 0x020458A4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -11310,7 +11310,7 @@ ScrCmd_514: ; 0x020458A4
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_514
+	thumb_func_end ScrCmd_HallOfFameAnim
 
 	thumb_func_start ScrCmd_AddSpecialGameStat
 ScrCmd_AddSpecialGameStat: ; 0x020458CC
@@ -12686,8 +12686,8 @@ _02046390:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_583
 
-	thumb_func_start ScrCmd_590
-ScrCmd_590: ; 0x0204639C
+	thumb_func_start ScrCmd_GetTrcardStars
+ScrCmd_GetTrcardStars: ; 0x0204639C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -12705,7 +12705,7 @@ ScrCmd_590: ; 0x0204639C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_590
+	thumb_func_end ScrCmd_GetTrcardStars
 
 	thumb_func_start ScrCmd_593
 ScrCmd_593: ; 0x020463C4

@@ -362,7 +362,7 @@ scr_seq_0096_D37R0104_061C:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 0
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
@@ -384,7 +384,7 @@ scr_seq_0096_D37R0104_06A0:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0096_D37R0104_06D9
 	callstd std_play_rival_outro_music
-	scrcmd_191 0
+	buffer_rivals_name 0
 	npc_msg 1
 	closemsg
 	setvar VAR_UNK_40A0, 1

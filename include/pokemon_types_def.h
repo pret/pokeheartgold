@@ -237,8 +237,6 @@ struct Evolution {
 };
 #define MAX_EVOS_PER_POKE      7
 
-#define PARTY_SIZE 6
-
 typedef struct PARTY {
     int maxCount;
     int curCount;

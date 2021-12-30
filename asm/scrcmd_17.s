@@ -348,7 +348,7 @@ ScrCmd_305: ; 0x0204E88C
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066614
+	bl CheckGameClearFlag
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -362,13 +362,13 @@ ScrCmd_306: ; 0x0204E8B8
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066604
+	bl SetGameClearFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_306
 
-	thumb_func_start ScrCmd_400
-ScrCmd_400: ; 0x0204E8CC
+	thumb_func_start ScrCmd_StrengthFlagAction
+ScrCmd_StrengthFlagAction: ; 0x0204E8CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -389,11 +389,11 @@ ScrCmd_400: ; 0x0204E8CC
 	b _0204E920
 _0204E8F2:
 	mov r1, #1
-	bl sub_020668C0
+	bl StrengthFlagAction
 	b _0204E924
 _0204E8FA:
 	mov r1, #0
-	bl sub_020668C0
+	bl StrengthFlagAction
 	b _0204E924
 _0204E902:
 	add r0, r5, #0
@@ -405,7 +405,7 @@ _0204E902:
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_020668C0
+	bl StrengthFlagAction
 	strh r0, [r5]
 	b _0204E924
 _0204E920:
@@ -413,7 +413,7 @@ _0204E920:
 _0204E924:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_400
+	thumb_func_end ScrCmd_StrengthFlagAction
 
 	thumb_func_start ScrCmd_401
 ScrCmd_401: ; 0x0204E928

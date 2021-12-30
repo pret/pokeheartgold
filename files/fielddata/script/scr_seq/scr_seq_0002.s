@@ -43,7 +43,7 @@ scr_seq_0002_005C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, scr_seq_0002_0352
 scr_seq_0002_008A:
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_117
@@ -51,7 +51,7 @@ scr_seq_0002_008A:
 	scrcmd_351 32769
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8001, 255
 	gotoif eq, scr_seq_0002_0352
@@ -156,7 +156,7 @@ scr_seq_0002_0241:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0002_03A4
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
 	scrcmd_117
@@ -165,7 +165,7 @@ scr_seq_0002_0241:
 	scrcmd_490 32774
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif eq, scr_seq_0002_03A4

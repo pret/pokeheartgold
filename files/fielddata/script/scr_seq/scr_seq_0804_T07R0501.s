@@ -40,12 +40,12 @@ scr_seq_0804_T07R0501_006B:
 	.byte 0x02, 0x00
 scr_seq_0804_T07R0501_006D:
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
 	scrcmd_351 32768
 	scrcmd_150
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, scr_seq_0804_T07R0501_00F2
@@ -517,7 +517,7 @@ scr_seq_0804_T07R0501_0895:
 	goto scr_seq_0804_T07R0501_0A52
 
 scr_seq_0804_T07R0501_08B3:
-	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
+	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 16
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -550,7 +550,7 @@ scr_seq_0804_T07R0501_0930:
 	play_se SEQ_SE_DP_REGI
 	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	buffer_species_name_custom 1, VAR_TEMP_x4002, 0, 0
+	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg 17
 	comparevartovalue VAR_TEMP_x4002, 122
 	gotoif ne, scr_seq_0804_T07R0501_096A

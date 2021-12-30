@@ -385,8 +385,8 @@ _0204D3C6:
 	.balign 4, 0
 	thumb_func_end ScrCmd_MonHasMove
 
-	thumb_func_start ScrCmd_AnyMonHasMove
-ScrCmd_AnyMonHasMove: ; 0x0204D3CC
+	thumb_func_start ScrCmd_GetPartySlotWithMove
+ScrCmd_GetPartySlotWithMove: ; 0x0204D3CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -472,7 +472,7 @@ _0204D47C:
 	nop
 _0204D484: .word 0x00000006
 _0204D488: .word 0x00000000
-	thumb_func_end ScrCmd_AnyMonHasMove
+	thumb_func_end ScrCmd_GetPartySlotWithMove
 
 	thumb_func_start ScrCmd_SurvivePoisoning
 ScrCmd_SurvivePoisoning: ; 0x0204D48C

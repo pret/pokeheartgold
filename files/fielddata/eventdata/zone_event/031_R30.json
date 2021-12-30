@@ -90,7 +90,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_010",
-      "scr": 10000,
+      "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

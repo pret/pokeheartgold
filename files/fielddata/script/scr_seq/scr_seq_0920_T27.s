@@ -93,13 +93,13 @@ scr_seq_0920_T27_00DC:
 	play_se SEQ_SE_DP_WALL_HIT2
 	npc_msg 16
 	wait 30, VAR_SPECIAL_x800C
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 17
 	closemsg
 	apply_movement 6, scr_seq_0920_T27_01C4
 	wait_movement
 	buffer_players_name 0
-	scrcmd_191 1
+	buffer_rivals_name 1
 	npc_msg 18
 	closemsg
 	play_se SEQ_SE_DP_WALL_HIT2
@@ -220,11 +220,11 @@ scr_seq_0920_T27_02B3:
 	wait_movement
 scr_seq_0920_T27_02DA:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 19
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -342,7 +342,7 @@ scr_seq_0920_T27_0422:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0920_T27_0440
 	npc_msg 0
 	waitbutton
@@ -378,7 +378,7 @@ scr_seq_0920_T27_0474:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_964
+	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, scr_seq_0920_T27_04A8
 	comparevartovalue VAR_UNK_40A1, 0
 	gotoif ne, scr_seq_0920_T27_049D

@@ -135,11 +135,11 @@ scr_seq_0750_T03_01B7:
 	wait_movement
 scr_seq_0750_T03_01DE:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 66
 	lockall
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -386,13 +386,13 @@ scr_seq_0750_T03_0488:
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, scr_seq_0750_T03_04C8
 	setvar VAR_TEMP_x400A, 381
-	scrcmd_076 16394, 0
+	scrcmd_076 VAR_TEMP_x400A, 0
 	npc_msg 10
 	goto scr_seq_0750_T03_04D7
 
 scr_seq_0750_T03_04C8:
 	setvar VAR_TEMP_x400A, 380
-	scrcmd_076 16394, 0
+	scrcmd_076 VAR_TEMP_x400A, 0
 	npc_msg 11
 scr_seq_0750_T03_04D7:
 	scrcmd_077

@@ -60,10 +60,10 @@ scr_seq_0245_R36R0201_0088:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 487, 0, 75, 39, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
@@ -141,10 +141,10 @@ scr_seq_0245_R36R0201_01BA:
 	scrcmd_604 48
 scr_seq_0245_R36R0201_01DC:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 487, 0, 75, 39, 2
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C

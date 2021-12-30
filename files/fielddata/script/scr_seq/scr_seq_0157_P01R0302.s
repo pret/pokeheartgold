@@ -210,14 +210,14 @@ scr_seq_0157_P01R0302_0305:
 	wait_movement
 	gender_msgbox 3, 2
 	closemsg
-	fade_screen 6, 1, 0, 0
+	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setvar VAR_UNK_40CB, 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	hide_person 1
 	setflag FLAG_UNK_217
-	fade_screen 6, 1, 1, 0
+	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall
 	end
