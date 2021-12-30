@@ -45,16 +45,16 @@ scr_seq_0227_R30_0050:
 
 
 scr_seq_0227_R30_0088:
-	.short 48, 3
-	.short 254, 0
+	step 48, 3
+	step_end
 
 scr_seq_0227_R30_0090:
-	.short 49, 2
-	.short 254, 0
+	step 49, 2
+	step_end
 
 scr_seq_0227_R30_0098:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0227_R30_00A0:
 	scrcmd_609
 	lockall
@@ -125,49 +125,49 @@ scr_seq_0227_R30_0148:
 
 
 scr_seq_0227_R30_01B0:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0227_R30_01B8:
-	.short 12, 1
-	.short 69, 1
-	.short 254, 0
+	step 12, 1
+	step 69, 1
+	step_end
 
 scr_seq_0227_R30_01C4:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0227_R30_01CC:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0227_R30_01D4:
-	.short 13, 2
-	.short 34, 1
-	.short 63, 2
-	.short 14, 2
-	.short 254, 0
+	step 13, 2
+	step 34, 1
+	step 63, 2
+	step 14, 2
+	step_end
 
 scr_seq_0227_R30_01E8:
-	.short 13, 2
-	.short 34, 1
-	.short 63, 2
-	.short 14, 3
-	.short 254, 0
+	step 13, 2
+	step 34, 1
+	step 63, 2
+	step 14, 3
+	step_end
 
 scr_seq_0227_R30_01FC:
-	.short 13, 2
-	.short 34, 1
-	.short 63, 2
-	.short 14, 4
-	.short 254, 0
+	step 13, 2
+	step 34, 1
+	step 63, 2
+	step 14, 4
+	step_end
 
 scr_seq_0227_R30_0210:
-	.short 13, 2
-	.short 34, 1
-	.short 63, 2
-	.short 14, 5
-	.short 254, 0
+	step 13, 2
+	step 34, 1
+	step 63, 2
+	step 14, 5
+	step_end
 scr_seq_0227_R30_0224:
 	play_se SEQ_SE_DP_SELECT
 	lockall

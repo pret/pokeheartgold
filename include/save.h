@@ -39,7 +39,7 @@
 #define SAVE_UNK_33              33
 #define SAVE_UNK_34              34
 #define SAVE_UNK_35              35
-#define SAVE_UNK_36              36
+#define SAVE_PHOTO_ALBUM         36
 #define SAVE_UNK_37              37
 #define SAVE_UNK_38              38
 #define SAVE_POKEWALKER          39

@@ -606,21 +606,21 @@
       "args": []
     },
     {
-      "name": "scrcmd_098",
+      "name": "lock",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_099",
+      "name": "release",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "show_person",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1225,17 +1225,17 @@
       ]
     },
     {
-      "name": "scrcmd_197",
+      "name": "buffer_move_name",
       "args": [
         1,
-        2
+        "move"
       ]
     },
     {
-      "name": "scrcmd_198",
+      "name": "buffer_int",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -1246,14 +1246,14 @@
       ]
     },
     {
-      "name": "scrcmd_200",
+      "name": "buffer_trainer_class_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_201",
+      "name": "buffer_player_union_avatar_class_name",
       "args": [
         1
       ]
@@ -1268,19 +1268,19 @@
       ]
     },
     {
-      "name": "scrcmd_203",
+      "name": "buffer_starter_species_name",
       "args": [
         1
       ]
     },
     {
-      "name": "scrcmd_204",
+      "name": "buffer_dppt_rival_starter_species_name",
       "args": [
         1
       ]
     },
     {
-      "name": "scrcmd_205",
+      "name": "buffer_dppt_friend_starter_species_name",
       "args": [
         1
       ]
@@ -1292,31 +1292,31 @@
       ]
     },
     {
-      "name": "scrcmd_207",
+      "name": "buffer_decoration_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_208",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_209",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_210",
+      "name": "buffer_map_sec_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -1527,27 +1527,27 @@
       ]
     },
     {
-      "name": "scrcmd_243",
+      "name": "count_johto_dex_seen",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_244",
+      "name": "count_johto_dex_owned",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_245",
+      "name": "count_national_dex_seen",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_246",
+      "name": "count_national_dex_owned",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1555,11 +1555,11 @@
       "args": []
     },
     {
-      "name": "scrcmd_248",
+      "name": "get_dex_eval_result",
       "args": [
         1,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -1777,8 +1777,8 @@
     {
       "name": "scrcmd_288",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2030,18 +2030,18 @@
       ]
     },
     {
-      "name": "scrcmd_336",
+      "name": "buffer_berry_name",
       "args": [
         1,
-        2,
-        2
+        "item",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_337",
+      "name": "buffer_nature_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -2282,7 +2282,7 @@
     {
       "name": "scrcmd_375",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2441,11 +2441,11 @@
       ]
     },
     {
-      "name": "scrcmd_399",
+      "name": "buffer_party_mon_move_name",
       "args": [
         1,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2613,15 +2613,15 @@
       ]
     },
     {
-      "name": "scrcmd_423",
+      "name": "check_johto_dex_complete",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_424",
+      "name": "check_national_dex_complete",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2770,7 +2770,7 @@
     {
       "name": "scrcmd_446",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2976,10 +2976,10 @@
       "args": []
     },
     {
-      "name": "scrcmd_477",
+      "name": "nat_dex_flag_action",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -3011,10 +3011,10 @@
       ]
     },
     {
-      "name": "scrcmd_482",
+      "name": "buffer_ribbon_name",
       "args": [
         1,
-        2
+        "ribbon"
       ]
     },
     {
@@ -3252,10 +3252,10 @@
       ]
     },
     {
-      "name": "scrcmd_516",
+      "name": "buffer_fashion_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -3664,10 +3664,10 @@
       "args": []
     },
     {
-      "name": "scrcmd_580",
+      "name": "buffer_seal_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -3692,7 +3692,7 @@
     {
       "name": "scrcmd_584",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3857,7 +3857,7 @@
       ]
     },
     {
-      "name": "scrcmd_615",
+      "name": "cameron_photo",
       "args": [
         2
       ]
@@ -3873,7 +3873,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_618",
+      "name": "photo_album_is_full",
       "args": [
         "var"
       ]
@@ -3922,10 +3922,10 @@
       ]
     },
     {
-      "name": "scrcmd_626",
+      "name": "buffer_apricorn_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -4160,10 +4160,10 @@
       ]
     },
     {
-      "name": "scrcmd_660",
+      "name": "buffer_trainer_name",
       "args": [
         1,
-        2
+        "trainer"
       ]
     },
     {
@@ -4717,7 +4717,7 @@
       ]
     },
     {
-      "name": "scrcmd_749",
+      "name": "menu_init_std_gmm",
       "args": [
         1,
         1,
@@ -4727,7 +4727,7 @@
       ]
     },
     {
-      "name": "scrcmd_750",
+      "name": "menu_init",
       "args": [
         1,
         1,
@@ -4737,7 +4737,7 @@
       ]
     },
     {
-      "name": "scrcmd_751",
+      "name": "menu_item_add",
       "args": [
         2,
         2,
@@ -4745,7 +4745,7 @@
       ]
     },
     {
-      "name": "scrcmd_752",
+      "name": "menu_exec",
       "args": []
     },
     {
@@ -5238,8 +5238,8 @@
     {
       "name": "scrcmd_840",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -5262,21 +5262,21 @@
       ]
     },
     {
-      "name": "scrcmd_844",
+      "name": "buffer_item_name_plural",
       "args": [
         1,
-        2
+        "item"
       ]
     },
     {
-      "name": "scrcmd_845",
+      "name": "buffer_party_mon_species_name_indef",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_846",
+      "name": "buffer_species_name_indef",
       "args": [
         1,
         "species",
@@ -5285,34 +5285,34 @@
       ]
     },
     {
-      "name": "scrcmd_847",
+      "name": "buffer_dppt_friend_starter_species_name_indef",
       "args": [
         1
       ]
     },
     {
-      "name": "scrcmd_848",
+      "name": "buffer_fashion_name_indef",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_849",
+      "name": "buffer_trainer_class_name_indef",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_850",
+      "name": "buffer_seal_name_plural",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_851",
+      "name": "capitalize",
       "args": [
         1
       ]

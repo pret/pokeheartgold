@@ -98,21 +98,21 @@ scr_seq_0825_T10R0701_0133:
 
 
 scr_seq_0825_T10R0701_0188:
-	.short 12, 14
-	.short 3, 2
-	.short 254, 0
+	step 12, 14
+	step 3, 2
+	step_end
 
 scr_seq_0825_T10R0701_0194:
-	.short 12, 12
-	.short 3, 2
-	.short 15, 1
-	.short 2, 2
-	.short 254, 0
+	step 12, 12
+	step 3, 2
+	step 15, 1
+	step 2, 2
+	step_end
 
 scr_seq_0825_T10R0701_01A8:
-	.short 0, 2
-	.short 12, 4
-	.short 254, 0
+	step 0, 2
+	step 12, 4
+	step_end
 scr_seq_0825_T10R0701_01B4:
 	checkflag FLAG_UNK_964
 	gotoif TRUE, scr_seq_0825_T10R0701_01C3

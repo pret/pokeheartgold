@@ -391,14 +391,14 @@ scr_seq_0094_D37R0102_04E8:
 	setvar VAR_TEMP_x4007, 0
 scr_seq_0094_D37R0102_0522:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 445, 255, 0
-	scrcmd_751 446, 255, 1
-	scrcmd_751 447, 255, 2
-	scrcmd_751 448, 255, 3
-	scrcmd_751 449, 255, 4
-	scrcmd_751 450, 255, 7
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 445, 255, 0
+	menu_item_add 446, 255, 1
+	menu_item_add 447, 255, 2
+	menu_item_add 448, 255, 3
+	menu_item_add 449, 255, 4
+	menu_item_add 450, 255, 7
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0094_D37R0102_05AB
@@ -454,7 +454,7 @@ scr_seq_0094_D37R0102_063F:
 
 scr_seq_0094_D37R0102_0664:
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	scrcmd_198 1, 32774
+	buffer_int 1, VAR_SPECIAL_x8006
 	npc_msg 2
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -712,112 +712,112 @@ scr_seq_0094_D37R0102_0AC1:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0094_D37R0102_0AC4:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0094_D37R0102_0ACC:
-	.short 61, 1
-	.short 254, 0
+	step 61, 1
+	step_end
 
 scr_seq_0094_D37R0102_0AD4:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0094_D37R0102_0ADC:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0094_D37R0102_0AE4:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0094_D37R0102_0AEC:
-	.short 13, 4
-	.short 254, 0
+	step 13, 4
+	step_end
 
 scr_seq_0094_D37R0102_0AF4:
-	.short 13, 5
-	.short 254, 0
+	step 13, 5
+	step_end
 
 scr_seq_0094_D37R0102_0AFC:
-	.short 13, 6
-	.short 254, 0
+	step 13, 6
+	step_end
 
 scr_seq_0094_D37R0102_0B04:
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B10:
-	.short 12, 1
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B20:
-	.short 12, 2
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 2
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B30:
-	.short 12, 3
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 3
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B40:
-	.short 12, 4
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 4
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B50:
-	.short 12, 5
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 5
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B60:
-	.short 12, 6
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 6
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B70:
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B7C:
-	.short 12, 2
-	.short 35, 1
-	.short 254, 0
+	step 12, 2
+	step 35, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B88:
-	.short 12, 3
-	.short 35, 1
-	.short 254, 0
+	step 12, 3
+	step 35, 1
+	step_end
 
 scr_seq_0094_D37R0102_0B94:
-	.short 12, 4
-	.short 35, 1
-	.short 254, 0
+	step 12, 4
+	step 35, 1
+	step_end
 
 scr_seq_0094_D37R0102_0BA0:
-	.short 12, 5
-	.short 35, 1
-	.short 254, 0
+	step 12, 5
+	step 35, 1
+	step_end
 
 scr_seq_0094_D37R0102_0BAC:
-	.short 12, 6
-	.short 35, 1
-	.short 254, 0
+	step 12, 6
+	step 35, 1
+	step_end
 
 scr_seq_0094_D37R0102_0BB8:
-	.short 12, 7
-	.short 35, 1
-	.short 254, 0
+	step 12, 7
+	step 35, 1
+	step_end
 scr_seq_0094_D37R0102_0BC4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1041,7 +1041,7 @@ scr_seq_0094_D37R0102_0EDA:
 	end
 
 scr_seq_0094_D37R0102_0F05:
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0094_D37R0102_0FDA
 	npc_msg 30
@@ -1063,9 +1063,9 @@ scr_seq_0094_D37R0102_0F05:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0094_D37R0102_0F79
-	scrcmd_099 253
+	release 253
 	apply_movement 253, scr_seq_0094_D37R0102_0FF8
-	scrcmd_098 253
+	lock 253
 	wait_movement
 scr_seq_0094_D37R0102_0F79:
 	fade_screen 6, 1, 1, 0
@@ -1074,7 +1074,7 @@ scr_seq_0094_D37R0102_0F79:
 	closemsg
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 10
+	cameron_photo 10
 	lockall
 	scrcmd_188 1
 	scrcmd_189
@@ -1106,25 +1106,25 @@ scr_seq_0094_D37R0102_0FE5:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0094_D37R0102_0FE8:
-	.short 20, 3
-	.short 22, 2
-	.short 1, 1
-	.short 254, 0
+	step 20, 3
+	step 22, 2
+	step 1, 1
+	step_end
 
 scr_seq_0094_D37R0102_0FF8:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0094_D37R0102_1000:
-	.short 21, 2
-	.short 22, 4
-	.short 0, 1
-	.short 254, 0
+	step 21, 2
+	step 22, 4
+	step 0, 1
+	step_end
 
 scr_seq_0094_D37R0102_1010:
-	.short 21, 3
-	.short 23, 2
-	.short 254, 0
+	step 21, 3
+	step 23, 2
+	step_end
 	.byte 0x14, 0x00, 0x02, 0x00
 	.byte 0x17, 0x00, 0x04, 0x00, 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_0094_D37R0102_102C:
@@ -1166,53 +1166,53 @@ scr_seq_0094_D37R0102_109C:
 
 
 scr_seq_0094_D37R0102_10B4:
-	.short 75, 1
-	.short 34, 1
-	.short 63, 1
-	.short 14, 2
-	.short 254, 0
+	step 75, 1
+	step 34, 1
+	step 63, 1
+	step 14, 2
+	step_end
 
 scr_seq_0094_D37R0102_10C8:
-	.short 75, 1
-	.short 34, 1
-	.short 63, 1
-	.short 14, 1
-	.short 13, 1
-	.short 14, 1
-	.short 254, 0
+	step 75, 1
+	step 34, 1
+	step 63, 1
+	step 14, 1
+	step 13, 1
+	step 14, 1
+	step_end
 
 scr_seq_0094_D37R0102_10E4:
-	.short 75, 1
-	.short 65, 1
-	.short 254, 0
+	step 75, 1
+	step 65, 1
+	step_end
 
 scr_seq_0094_D37R0102_10F0:
-	.short 13, 1
-	.short 14, 3
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 14, 7
-	.short 254, 0
+	step 13, 1
+	step 14, 3
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 14, 7
+	step_end
 
 scr_seq_0094_D37R0102_1120:
-	.short 12, 1
-	.short 14, 3
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 14, 7
-	.short 254, 0
+	step 12, 1
+	step 14, 3
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 14, 7
+	step_end
 scr_seq_0094_D37R0102_1150:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1250,8 +1250,8 @@ scr_seq_0094_D37R0102_11A3:
 	.byte 0x00
 
 scr_seq_0094_D37R0102_11A4:
-	.short 15, 2
-	.short 254, 0
+	step 15, 2
+	step_end
 scr_seq_0094_D37R0102_11AC:
 	play_se SEQ_SE_DP_SELECT
 	lockall

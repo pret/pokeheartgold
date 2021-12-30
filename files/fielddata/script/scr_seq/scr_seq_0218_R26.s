@@ -39,7 +39,7 @@ scr_seq_0218_R26_004D:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0218_R26_0152
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0218_R26_0166
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -78,7 +78,7 @@ scr_seq_0218_R26_0118:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 48
+	cameron_photo 48
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -110,35 +110,35 @@ scr_seq_0218_R26_017A:
 	.byte 0x00, 0x00
 
 scr_seq_0218_R26_017C:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0218_R26_0194:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0218_R26_01A0:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0218_R26_01B4:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0218_R26_01C0:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0218_R26_01D0:
 	scrcmd_056 2, 0
 	scrcmd_057 3

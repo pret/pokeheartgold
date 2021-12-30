@@ -124,8 +124,8 @@ scr_seq_0849_T20R0402_0182:
 	setvar VAR_SPECIAL_x8005, 1
 scr_seq_0849_T20R0402_0188:
 	buffer_players_name 0
-	scrcmd_198 1, 32772
-	scrcmd_198 2, 32773
+	buffer_int 1, VAR_SPECIAL_x8004
+	buffer_int 2, VAR_SPECIAL_x8005
 	gender_msgbox 9, 10
 	waitbutton
 	closemsg

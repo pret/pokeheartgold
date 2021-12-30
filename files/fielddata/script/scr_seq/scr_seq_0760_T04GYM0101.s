@@ -130,38 +130,38 @@ scr_seq_0760_T04GYM0101_01C5:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0760_T04GYM0101_01C8:
-	.short 21, 5
-	.short 254, 0
+	step 21, 5
+	step_end
 
 scr_seq_0760_T04GYM0101_01D0:
-	.short 71, 1
-	.short 56, 1
-	.short 63, 2
-	.short 17, 2
-	.short 254, 0
+	step 71, 1
+	step 56, 1
+	step 63, 2
+	step 17, 2
+	step_end
 
 scr_seq_0760_T04GYM0101_01E4:
-	.short 75, 1
-	.short 71, 1
-	.short 12, 2
-	.short 254, 0
+	step 75, 1
+	step 71, 1
+	step 12, 2
+	step_end
 
 scr_seq_0760_T04GYM0101_01F4:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0760_T04GYM0101_01FC:
-	.short 17, 1
-	.short 254, 0
+	step 17, 1
+	step_end
 
 scr_seq_0760_T04GYM0101_0204:
-	.short 18, 1
-	.short 3, 1
-	.short 254, 0
+	step 18, 1
+	step 3, 1
+	step_end
 
 scr_seq_0760_T04GYM0101_0210:
-	.short 18, 1
-	.short 254, 0
+	step 18, 1
+	step_end
 scr_seq_0760_T04GYM0101_0218:
 	scrcmd_814
 	checkflag FLAG_UNK_257

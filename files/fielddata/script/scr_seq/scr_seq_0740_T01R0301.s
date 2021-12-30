@@ -62,27 +62,27 @@ scr_seq_0740_T01R0301_006B:
 
 
 scr_seq_0740_T01R0301_00C8:
-	.short 12, 5
-	.short 254, 0
+	step 12, 5
+	step_end
 
 scr_seq_0740_T01R0301_00D0:
-	.short 63, 2
-	.short 12, 3
-	.short 14, 2
-	.short 254, 0
+	step 63, 2
+	step 12, 3
+	step 14, 2
+	step_end
 
 scr_seq_0740_T01R0301_00E0:
-	.short 0, 1
-	.short 63, 4
-	.short 1, 1
-	.short 63, 3
-	.short 254, 0
+	step 0, 1
+	step 63, 4
+	step 1, 1
+	step 63, 3
+	step_end
 
 scr_seq_0740_T01R0301_00F4:
-	.short 12, 1
-	.short 14, 3
-	.short 3, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 3
+	step 3, 1
+	step_end
 scr_seq_0740_T01R0301_0104:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -122,12 +122,12 @@ scr_seq_0740_T01R0301_01AB:
 scr_seq_0740_T01R0301_01B2:
 	checkflag FLAG_UNK_988
 	gotoif TRUE, scr_seq_0740_T01R0301_01F2
-	callstd 9951
+	callstd std_pokedex_evaluation
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0740_T01R0301_01EC
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_01EC
-	scrcmd_424 32780
+	check_national_dex_complete VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_01F0
 scr_seq_0740_T01R0301_01EC:
@@ -146,14 +146,14 @@ scr_seq_0740_T01R0301_01F2:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_0256
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0740_T01R0301_0261
 	npc_msg 29
 	closemsg
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 90
+	cameron_photo 90
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0
@@ -377,40 +377,40 @@ scr_seq_0740_T01R0301_04D1:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0740_T01R0301_04D4:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 	.byte 0x20, 0x00, 0x01, 0x00, 0x08, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x21, 0x00, 0x01, 0x00
 	.byte 0x3f, 0x00, 0x04, 0x00, 0x09, 0x00, 0x02, 0x00, 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0740_T01R0301_0500:
-	.short 33, 1
-	.short 63, 1
-	.short 254, 0
+	step 33, 1
+	step 63, 1
+	step_end
 	.byte 0x23, 0x00, 0x01, 0x00
 	.byte 0x0b, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x22, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x04, 0x00
 	.byte 0x0a, 0x00, 0x02, 0x00, 0x22, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0740_T01R0301_052C:
-	.short 34, 1
-	.short 63, 1
-	.short 254, 0
+	step 34, 1
+	step 63, 1
+	step_end
 	.byte 0x22, 0x00, 0x01, 0x00, 0x0a, 0x00, 0x02, 0x00
 	.byte 0x3f, 0x00, 0x04, 0x00, 0x23, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x0b, 0x00, 0x02, 0x00
 	.byte 0x23, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0740_T01R0301_0558:
-	.short 35, 1
-	.short 63, 1
-	.short 254, 0
+	step 35, 1
+	step 63, 1
+	step_end
 	.byte 0x21, 0x00, 0x01, 0x00, 0x09, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x04, 0x00
 	.byte 0x20, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x08, 0x00, 0x02, 0x00, 0x20, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0740_T01R0301_0584:
-	.short 32, 1
-	.short 63, 1
-	.short 254, 0
+	step 32, 1
+	step 63, 1
+	step_end
 scr_seq_0740_T01R0301_0590:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -696,29 +696,29 @@ scr_seq_0740_T01R0301_098B:
 
 
 scr_seq_0740_T01R0301_0998:
-	.short 13, 1
-	.short 14, 3
-	.short 254, 0
+	step 13, 1
+	step 14, 3
+	step_end
 
 scr_seq_0740_T01R0301_09A4:
-	.short 13, 1
-	.short 14, 2
-	.short 254, 0
+	step 13, 1
+	step 14, 2
+	step_end
 
 scr_seq_0740_T01R0301_09B0:
-	.short 13, 1
-	.short 14, 1
-	.short 254, 0
+	step 13, 1
+	step 14, 1
+	step_end
 
 scr_seq_0740_T01R0301_09BC:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0740_T01R0301_09C4:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 
 scr_seq_0740_T01R0301_09CC:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 	.balign 4, 0

@@ -58,50 +58,50 @@ scr_seq_0018_D15R0103_0025:
 
 
 scr_seq_0018_D15R0103_00B4:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0018_D15R0103_00C0:
-	.short 12, 5
-	.short 254, 0
+	step 12, 5
+	step_end
 
 scr_seq_0018_D15R0103_00C8:
-	.short 13, 5
-	.short 254, 0
+	step 13, 5
+	step_end
 
 scr_seq_0018_D15R0103_00D0:
-	.short 33, 2
-	.short 254, 0
+	step 33, 2
+	step_end
 
 scr_seq_0018_D15R0103_00D8:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0018_D15R0103_00E0:
-	.short 2, 4
-	.short 0, 4
-	.short 3, 4
-	.short 1, 4
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 254, 0
+	step 2, 4
+	step 0, 4
+	step 3, 4
+	step 1, 4
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step_end
 scr_seq_0018_D15R0103_013C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

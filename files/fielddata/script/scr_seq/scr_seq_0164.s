@@ -35,10 +35,10 @@ scr_seq_0164_005A:
 scr_seq_0164_005C:
 	npc_msg 2
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 156, 255, 0
-	scrcmd_751 157, 255, 1
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 156, 255, 0
+	menu_item_add 157, 255, 1
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -52,10 +52,10 @@ scr_seq_0164_00A3:
 scr_seq_0164_00A5:
 	npc_msg 3
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 158, 255, 0
-	scrcmd_751 157, 255, 1
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 158, 255, 0
+	menu_item_add 157, 255, 1
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -78,13 +78,13 @@ scr_seq_0164_00FF:
 	.byte 0x00
 
 scr_seq_0164_0100:
-	.short 32, 1
-	.short 63, 2
-	.short 12, 4
-	.short 14, 1
-	.short 0, 1
-	.short 63, 2
-	.short 254, 0
+	step 32, 1
+	step 63, 2
+	step 12, 4
+	step 14, 1
+	step 0, 1
+	step 63, 2
+	step_end
 scr_seq_0164_011C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -109,10 +109,10 @@ scr_seq_0164_0144:
 scr_seq_0164_014F:
 	npc_msg 6
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 156, 255, 0
-	scrcmd_751 157, 255, 1
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 156, 255, 0
+	menu_item_add 157, 255, 1
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -126,10 +126,10 @@ scr_seq_0164_0196:
 scr_seq_0164_0198:
 	npc_msg 3
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 158, 255, 0
-	scrcmd_751 157, 255, 1
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 158, 255, 0
+	menu_item_add 157, 255, 1
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -145,7 +145,7 @@ scr_seq_0164_01E1:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 32780
+	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0164_04EC
 	get_trcard_stars VAR_SPECIAL_x800C
@@ -177,11 +177,11 @@ scr_seq_0164_0262:
 	npc_msg 7
 scr_seq_0164_0265:
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 14, 255, 0
-	scrcmd_751 15, 255, 1
-	scrcmd_751 16, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 14, 255, 0
+	menu_item_add 15, 255, 1
+	menu_item_add 16, 255, 2
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -337,53 +337,53 @@ scr_seq_0164_0472:
 	.byte 0x00, 0x00
 
 scr_seq_0164_0474:
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0164_0480:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0164_0488:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0164_0490:
-	.short 12, 1
-	.short 69, 1
-	.short 254, 0
+	step 12, 1
+	step 69, 1
+	step_end
 
 scr_seq_0164_049C:
-	.short 12, 2
-	.short 69, 1
-	.short 254, 0
+	step 12, 2
+	step 69, 1
+	step_end
 
 scr_seq_0164_04A8:
-	.short 1, 1
-	.short 70, 1
-	.short 13, 2
-	.short 254, 0
+	step 1, 1
+	step 70, 1
+	step 13, 2
+	step_end
 	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0164_04C0:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0164_04C8:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0164_04D0:
-	.short 12, 1
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0164_04E0:
-	.short 12, 1
-	.short 69, 1
-	.short 254, 0
+	step 12, 1
+	step 69, 1
+	step_end
 scr_seq_0164_04EC:
 	callstd 9016
 	waitbutton
@@ -417,7 +417,7 @@ scr_seq_0164_0521:
 	scrcmd_691 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0164_0560
-	scrcmd_446 16470
+	scrcmd_446 VAR_UNK_4056
 	copyvar VAR_UNK_4055, VAR_SPECIAL_x800D
 	npc_msg 18
 	goto scr_seq_0164_056B
@@ -432,11 +432,11 @@ scr_seq_0164_0569:
 	.byte 0x02, 0x00
 scr_seq_0164_056B:
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 23, 255, 0
-	scrcmd_751 24, 255, 1
-	scrcmd_751 25, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 23, 255, 0
+	menu_item_add 24, 255, 1
+	menu_item_add 25, 255, 2
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0

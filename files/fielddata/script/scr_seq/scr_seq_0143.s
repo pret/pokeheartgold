@@ -42,21 +42,21 @@ scr_seq_0143_0073:
 
 scr_seq_0143_008C:
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x8004
-	scrcmd_751 11, 255, 1
-	scrcmd_751 13, 255, 3
-	scrcmd_751 14, 255, 4
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8004
+	menu_item_add 11, 255, 1
+	menu_item_add 13, 255, 3
+	menu_item_add 14, 255, 4
+	menu_exec
 	goto scr_seq_0143_00E2
 
 scr_seq_0143_00B6:
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x8004
-	scrcmd_751 11, 255, 1
-	scrcmd_751 12, 255, 2
-	scrcmd_751 13, 255, 3
-	scrcmd_751 14, 255, 4
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8004
+	menu_item_add 11, 255, 1
+	menu_item_add 12, 255, 2
+	menu_item_add 13, 255, 3
+	menu_item_add 14, 255, 4
+	menu_exec
 scr_seq_0143_00E2:
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8008, 1
@@ -147,7 +147,7 @@ scr_seq_0143_027C:
 
 scr_seq_0143_0287:
 	npc_msg 3
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x8004
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8004
 	scrcmd_465 7, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0143_0400
@@ -161,7 +161,7 @@ scr_seq_0143_02B2:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_02EC
 	scrcmd_465 2, 0, 0
-	scrcmd_751 15, 255, 0
+	menu_item_add 15, 255, 0
 scr_seq_0143_02EC:
 	scrcmd_465 0, 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -170,7 +170,7 @@ scr_seq_0143_02EC:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_0326
 	scrcmd_465 2, 2, 1
-	scrcmd_751 16, 255, 2
+	menu_item_add 16, 255, 2
 scr_seq_0143_0326:
 	scrcmd_465 0, 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -179,7 +179,7 @@ scr_seq_0143_0326:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_0360
 	scrcmd_465 2, 3, 2
-	scrcmd_751 17, 255, 3
+	menu_item_add 17, 255, 3
 scr_seq_0143_0360:
 	scrcmd_465 0, 4, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -188,7 +188,7 @@ scr_seq_0143_0360:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_039A
 	scrcmd_465 2, 4, 3
-	scrcmd_751 18, 255, 4
+	menu_item_add 18, 255, 4
 scr_seq_0143_039A:
 	scrcmd_465 0, 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -197,10 +197,10 @@ scr_seq_0143_039A:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_03D4
 	scrcmd_465 2, 5, 4
-	scrcmd_751 19, 255, 5
+	menu_item_add 19, 255, 5
 scr_seq_0143_03D4:
-	scrcmd_751 25, 255, 6
-	scrcmd_752
+	menu_item_add 25, 255, 6
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x8004, 6
 	gotoif eq, scr_seq_0143_0579
@@ -216,7 +216,7 @@ scr_seq_0143_0400:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_043A
 	scrcmd_465 2, 0, 0
-	scrcmd_751 20, 255, 0
+	menu_item_add 20, 255, 0
 scr_seq_0143_043A:
 	scrcmd_465 0, 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -225,7 +225,7 @@ scr_seq_0143_043A:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_0474
 	scrcmd_465 2, 2, 1
-	scrcmd_751 21, 255, 2
+	menu_item_add 21, 255, 2
 scr_seq_0143_0474:
 	scrcmd_465 0, 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -234,7 +234,7 @@ scr_seq_0143_0474:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_04AE
 	scrcmd_465 2, 3, 2
-	scrcmd_751 22, 255, 3
+	menu_item_add 22, 255, 3
 scr_seq_0143_04AE:
 	scrcmd_465 0, 4, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -243,7 +243,7 @@ scr_seq_0143_04AE:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_04E8
 	scrcmd_465 2, 4, 3
-	scrcmd_751 23, 255, 4
+	menu_item_add 23, 255, 4
 scr_seq_0143_04E8:
 	scrcmd_465 0, 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -252,7 +252,7 @@ scr_seq_0143_04E8:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0143_03D4
 	scrcmd_465 2, 5, 4
-	scrcmd_751 24, 255, 5
+	menu_item_add 24, 255, 5
 	goto scr_seq_0143_03D4
 
 scr_seq_0143_0528:

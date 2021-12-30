@@ -101,82 +101,82 @@ scr_seq_0252_R42_017A:
 	.byte 0x00, 0x00
 
 scr_seq_0252_R42_017C:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0252_R42_0184:
-	.short 3, 1
-	.short 71, 1
-	.short 58, 1
-	.short 72, 1
-	.short 254, 0
+	step 3, 1
+	step 71, 1
+	step 58, 1
+	step 72, 1
+	step_end
 
 scr_seq_0252_R42_0198:
-	.short 17, 1
-	.short 18, 1
-	.short 254, 0
+	step 17, 1
+	step 18, 1
+	step_end
 
 scr_seq_0252_R42_01A4:
-	.short 17, 2
-	.short 18, 1
-	.short 254, 0
+	step 17, 2
+	step 18, 1
+	step_end
 
 scr_seq_0252_R42_01B0:
-	.short 17, 3
-	.short 18, 1
-	.short 254, 0
+	step 17, 3
+	step 18, 1
+	step_end
 
 scr_seq_0252_R42_01BC:
-	.short 17, 4
-	.short 18, 1
-	.short 254, 0
+	step 17, 4
+	step 18, 1
+	step_end
 
 scr_seq_0252_R42_01C8:
-	.short 17, 5
-	.short 18, 1
-	.short 254, 0
+	step 17, 5
+	step 18, 1
+	step_end
 
 scr_seq_0252_R42_01D4:
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step_end
 
 scr_seq_0252_R42_01DC:
-	.short 13, 1
-	.short 14, 5
-	.short 13, 2
-	.short 14, 5
-	.short 254, 0
+	step 13, 1
+	step 14, 5
+	step 13, 2
+	step 14, 5
+	step_end
 
 scr_seq_0252_R42_01F0:
-	.short 13, 1
-	.short 14, 5
-	.short 13, 1
-	.short 14, 5
-	.short 254, 0
+	step 13, 1
+	step 14, 5
+	step 13, 1
+	step 14, 5
+	step_end
 
 scr_seq_0252_R42_0204:
-	.short 13, 1
-	.short 14, 10
-	.short 254, 0
+	step 13, 1
+	step 14, 10
+	step_end
 
 scr_seq_0252_R42_0210:
-	.short 13, 1
-	.short 14, 4
-	.short 12, 1
-	.short 14, 5
-	.short 254, 0
+	step 13, 1
+	step 14, 4
+	step 12, 1
+	step 14, 5
+	step_end
 
 scr_seq_0252_R42_0224:
-	.short 12, 1
-	.short 14, 10
-	.short 254, 0
+	step 12, 1
+	step 14, 10
+	step_end
 scr_seq_0252_R42_0230:
 	scrcmd_609
 	lockall
 	scrcmd_076 245, 0
-	scrcmd_099 11
+	release 11
 	scrcmd_523 11, 2, 90, 2, 0
-	scrcmd_098 11
+	lock 11
 	scrcmd_077
 	scrcmd_602 0
 	scrcmd_603
@@ -221,41 +221,41 @@ scr_seq_0252_R42_02EA:
 	.byte 0x00, 0x00
 
 scr_seq_0252_R42_02EC:
-	.short 62, 3
-	.short 22, 2
-	.short 58, 1
-	.short 22, 2
-	.short 56, 2
-	.short 112, 1
-	.short 254, 0
+	step 62, 3
+	step 22, 2
+	step 58, 1
+	step 22, 2
+	step 56, 2
+	step 112, 1
+	step_end
 
 scr_seq_0252_R42_0308:
-	.short 75, 1
-	.short 71, 1
-	.short 16, 4
-	.short 72, 1
-	.short 65, 1
-	.short 15, 1
-	.short 254, 0
+	step 75, 1
+	step 71, 1
+	step 16, 4
+	step 72, 1
+	step 65, 1
+	step 15, 1
+	step_end
 
 scr_seq_0252_R42_0324:
-	.short 15, 4
-	.short 12, 3
-	.short 15, 6
-	.short 254, 0
+	step 15, 4
+	step 12, 3
+	step 15, 6
+	step_end
 
 scr_seq_0252_R42_0334:
-	.short 12, 1
-	.short 2, 1
-	.short 254, 0
+	step 12, 1
+	step 2, 1
+	step_end
 
 scr_seq_0252_R42_0340:
-	.short 15, 9
-	.short 254, 0
+	step 15, 9
+	step_end
 
 scr_seq_0252_R42_0348:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 scr_seq_0252_R42_0350:
 	scrcmd_055 0, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3

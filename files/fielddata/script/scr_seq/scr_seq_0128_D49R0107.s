@@ -87,7 +87,7 @@ scr_seq_0128_D49R0107_00A8:
 	wait_movement
 	releaseall
 	setvar VAR_UNK_40D3, 1
-	scrcmd_477 2, 16384
+	nat_dex_flag_action 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	callif eq, scr_seq_0128_D49R0107_0154
 	end
@@ -100,36 +100,36 @@ scr_seq_0128_D49R0107_015A:
 	.byte 0x00, 0x00
 
 scr_seq_0128_D49R0107_015C:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0128_D49R0107_0164:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0128_D49R0107_016C:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0128_D49R0107_0174:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0128_D49R0107_0180:
-	.short 12, 3
-	.short 254, 0
+	step 12, 3
+	step_end
 
 scr_seq_0128_D49R0107_0188:
-	.short 8, 1
-	.short 254, 0
+	step 8, 1
+	step_end
 
 scr_seq_0128_D49R0107_0190:
-	.short 34, 1
-	.short 71, 1
-	.short 11, 2
-	.short 72, 1
-	.short 254, 0
+	step 34, 1
+	step 71, 1
+	step 11, 2
+	step 72, 1
+	step_end
 scr_seq_0128_D49R0107_01A4:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -35,12 +35,12 @@ scr_seq_0812_T08R0201_0062:
 	comparevartovalue VAR_UNK_4123, 2000
 	gotoif eq, scr_seq_0812_T08R0201_0079
 	buffer_players_name 1
-	scrcmd_198 2, 16675
+	buffer_int 2, VAR_UNK_4123
 	return
 
 scr_seq_0812_T08R0201_0079:
 	scrcmd_191 1
-	scrcmd_198 2, 16675
+	buffer_int 2, VAR_UNK_4123
 	return
 
 scr_seq_0812_T08R0201_0083:
@@ -79,12 +79,12 @@ scr_seq_0812_T08R0201_00E0:
 
 scr_seq_0812_T08R0201_00E9:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 194, 255, 0
-	scrcmd_751 195, 255, 1
-	scrcmd_751 196, 255, 2
-	scrcmd_751 198, 255, 4
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 194, 255, 0
+	menu_item_add 195, 255, 1
+	menu_item_add 196, 255, 2
+	menu_item_add 198, 255, 4
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0812_T08R0201_00CE
@@ -126,11 +126,11 @@ scr_seq_0812_T08R0201_019B:
 
 scr_seq_0812_T08R0201_01A8:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 199, 255, 0
-	scrcmd_751 200, 255, 1
-	scrcmd_751 201, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 199, 255, 0
+	menu_item_add 200, 255, 1
+	menu_item_add 201, 255, 2
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0812_T08R0201_015C
@@ -156,11 +156,11 @@ scr_seq_0812_T08R0201_01FB:
 	scrcmd_176 109, 0, 24, 47, 0
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_606
 	apply_movement 253, scr_seq_0812_T08R0201_02A0
 	wait_movement
-	scrcmd_099 253
+	release 253
 	releaseall
 	end
 
@@ -186,20 +186,20 @@ scr_seq_0812_T08R0201_027F:
 	.byte 0x00
 
 scr_seq_0812_T08R0201_0280:
-	.short 36, 1
-	.short 12, 2
-	.short 15, 1
-	.short 38, 1
-	.short 254, 0
+	step 36, 1
+	step 12, 2
+	step 15, 1
+	step 38, 1
+	step_end
 
 scr_seq_0812_T08R0201_0294:
-	.short 12, 5
-	.short 69, 1
-	.short 254, 0
+	step 12, 5
+	step 69, 1
+	step_end
 
 scr_seq_0812_T08R0201_02A0:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 scr_seq_0812_T08R0201_02A8:
 	scrcmd_609
 	lockall
@@ -220,13 +220,13 @@ scr_seq_0812_T08R0201_02CC:
 	apply_movement 6, scr_seq_0812_T08R0201_03C8
 	wait_movement
 	scrcmd_511 0, 32780
-	scrcmd_198 0, 32780
+	buffer_int 0, VAR_SPECIAL_x800C
 	scrcmd_511 1, 32780
-	scrcmd_198 1, 32780
+	buffer_int 1, VAR_SPECIAL_x800C
 	scrcmd_511 2, 32780
-	scrcmd_198 2, 32780
+	buffer_int 2, VAR_SPECIAL_x800C
 	scrcmd_511 3, 32780
-	scrcmd_198 3, 32780
+	buffer_int 3, VAR_SPECIAL_x800C
 	npc_msg 16
 	scrcmd_511 3, 32780
 	comparevartovar VAR_SPECIAL_x800C, VAR_UNK_4123
@@ -282,27 +282,27 @@ scr_seq_0812_T08R0201_03BB:
 	.byte 0x00
 
 scr_seq_0812_T08R0201_03BC:
-	.short 14, 1
-	.short 13, 2
-	.short 254, 0
+	step 14, 1
+	step 13, 2
+	step_end
 
 scr_seq_0812_T08R0201_03C8:
-	.short 63, 2
-	.short 34, 1
-	.short 254, 0
+	step 63, 2
+	step 34, 1
+	step_end
 
 scr_seq_0812_T08R0201_03D4:
-	.short 13, 5
-	.short 254, 0
+	step 13, 5
+	step_end
 
 scr_seq_0812_T08R0201_03DC:
-	.short 13, 2
-	.short 39, 1
-	.short 254, 0
+	step 13, 2
+	step 39, 1
+	step_end
 
 scr_seq_0812_T08R0201_03E8:
-	.short 13, 4
-	.short 254, 0
+	step 13, 4
+	step_end
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x19, 0x32, 0x00, 0x35, 0x00, 0x61
 	.byte 0x00, 0x02, 0x00
 scr_seq_0812_T08R0201_0403:

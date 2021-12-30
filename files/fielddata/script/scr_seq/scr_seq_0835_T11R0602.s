@@ -44,17 +44,17 @@ scr_seq_0835_T11R0602_0087:
 	.byte 0x00
 
 scr_seq_0835_T11R0602_0088:
-	.short 13, 3
-	.short 15, 7
-	.short 254, 0
+	step 13, 3
+	step 15, 7
+	step_end
 
 scr_seq_0835_T11R0602_0094:
-	.short 15, 11
-	.short 13, 4
-	.short 254, 0
+	step 15, 11
+	step 13, 4
+	step_end
 
 scr_seq_0835_T11R0602_00A0:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

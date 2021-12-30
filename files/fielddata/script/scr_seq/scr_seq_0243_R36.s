@@ -236,44 +236,44 @@ scr_seq_0243_R36_033E:
 	.byte 0x24, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0243_R36_0360:
-	.short 12, 3
-	.short 3, 1
-	.short 254, 0
+	step 12, 3
+	step 3, 1
+	step_end
 	.byte 0x3f, 0x00, 0x01, 0x00
 	.byte 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0243_R36_0378:
-	.short 14, 10
-	.short 254, 0
+	step 14, 10
+	step_end
 
 scr_seq_0243_R36_0380:
-	.short 13, 2
-	.short 14, 10
-	.short 254, 0
+	step 13, 2
+	step 14, 10
+	step_end
 
 scr_seq_0243_R36_038C:
-	.short 32, 3
-	.short 254, 0
+	step 32, 3
+	step_end
 
 scr_seq_0243_R36_0394:
-	.short 36, 6
-	.short 254, 0
+	step 36, 6
+	step_end
 
 scr_seq_0243_R36_039C:
-	.short 30, 4
-	.short 254, 0
+	step 30, 4
+	step_end
 
 scr_seq_0243_R36_03A4:
-	.short 28, 4
-	.short 254, 0
+	step 28, 4
+	step_end
 
 scr_seq_0243_R36_03AC:
-	.short 29, 4
-	.short 254, 0
+	step 29, 4
+	step_end
 
 scr_seq_0243_R36_03B4:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 scr_seq_0243_R36_03BC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -388,8 +388,8 @@ scr_seq_0243_R36_053B:
 	.byte 0x00
 
 scr_seq_0243_R36_053C:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 scr_seq_0243_R36_0544:
 	play_se SEQ_SE_DP_SELECT
 	lockall

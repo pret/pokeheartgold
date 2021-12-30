@@ -42,27 +42,27 @@ scr_seq_0130_D51R0101_007B:
 	.byte 0x00
 
 scr_seq_0130_D51R0101_007C:
-	.short 32, 1
-	.short 75, 1
-	.short 63, 1
-	.short 12, 3
-	.short 34, 1
-	.short 254, 0
+	step 32, 1
+	step 75, 1
+	step 63, 1
+	step 12, 3
+	step 34, 1
+	step_end
 
 scr_seq_0130_D51R0101_0094:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0130_D51R0101_009C:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0130_D51R0101_00A8:
-	.short 13, 4
-	.short 14, 1
-	.short 13, 4
-	.short 254, 0
+	step 13, 4
+	step 14, 1
+	step 13, 4
+	step_end
 scr_seq_0130_D51R0101_00B8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -89,13 +89,13 @@ scr_seq_0130_D51R0101_0105:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0130_D51R0101_0108:
-	.short 15, 7
-	.short 12, 2
-	.short 254, 0
+	step 15, 7
+	step 12, 2
+	step_end
 
 scr_seq_0130_D51R0101_0114:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 scr_seq_0130_D51R0101_011C:
 	scrcmd_056 2, 0
 	scrcmd_057 3

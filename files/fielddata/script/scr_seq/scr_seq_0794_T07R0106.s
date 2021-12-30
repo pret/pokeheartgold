@@ -47,12 +47,12 @@ scr_seq_0794_T07R0106_0049:
 
 scr_seq_0794_T07R0106_005E:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
-	scrcmd_751 209, 255, 0
-	scrcmd_751 210, 255, 1
-	scrcmd_751 211, 255, 2
-	scrcmd_751 212, 255, 3
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
+	menu_item_add 209, 255, 0
+	menu_item_add 210, 255, 1
+	menu_item_add 211, 255, 2
+	menu_item_add 212, 255, 3
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0

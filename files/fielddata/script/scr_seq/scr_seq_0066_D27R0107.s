@@ -129,58 +129,58 @@ scr_seq_0066_D27R0107_019F:
 	.byte 0x00
 
 scr_seq_0066_D27R0107_01A0:
-	.short 30, 1
-	.short 254, 0
+	step 30, 1
+	step_end
 
 scr_seq_0066_D27R0107_01A8:
-	.short 50, 3
-	.short 254, 0
+	step 50, 3
+	step_end
 
 scr_seq_0066_D27R0107_01B0:
-	.short 31, 1
-	.short 254, 0
+	step 31, 1
+	step_end
 
 scr_seq_0066_D27R0107_01B8:
-	.short 63, 1
-	.short 13, 3
-	.short 15, 1
-	.short 33, 1
-	.short 65, 1
-	.short 254, 0
+	step 63, 1
+	step 13, 3
+	step 15, 1
+	step 33, 1
+	step 65, 1
+	step_end
 
 scr_seq_0066_D27R0107_01D0:
-	.short 2, 1
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 63, 3
-	.short 62, 1
-	.short 33, 1
-	.short 254, 0
+	step 2, 1
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step 63, 3
+	step 62, 1
+	step 33, 1
+	step_end
 
 scr_seq_0066_D27R0107_01F0:
-	.short 14, 1
-	.short 12, 3
-	.short 35, 1
-	.short 254, 0
+	step 14, 1
+	step 12, 3
+	step 35, 1
+	step_end
 
 scr_seq_0066_D27R0107_0200:
-	.short 63, 1
-	.short 13, 1
-	.short 15, 2
-	.short 33, 1
-	.short 13, 1
-	.short 254, 0
+	step 63, 1
+	step 13, 1
+	step 15, 2
+	step 33, 1
+	step 13, 1
+	step_end
 
 scr_seq_0066_D27R0107_0218:
-	.short 0, 1
-	.short 71, 1
-	.short 13, 1
-	.short 72, 1
-	.short 63, 2
-	.short 62, 1
-	.short 35, 1
-	.short 254, 0
+	step 0, 1
+	step 71, 1
+	step 13, 1
+	step 72, 1
+	step 63, 2
+	step 62, 1
+	step 35, 1
+	step_end
 	.byte 0x0a, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_0066_D27R0107_0240:
 	play_se SEQ_SE_DP_SELECT

@@ -172,116 +172,116 @@ scr_seq_0911_T26_029C:
 
 
 scr_seq_0911_T26_02B4:
-	.short 13, 1
-	.short 64, 1
-	.short 254, 0
+	step 13, 1
+	step 64, 1
+	step_end
 
 scr_seq_0911_T26_02C0:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0911_T26_02CC:
-	.short 1, 2
-	.short 15, 2
-	.short 64, 1
-	.short 254, 0
+	step 1, 2
+	step 15, 2
+	step 64, 1
+	step_end
 
 scr_seq_0911_T26_02DC:
-	.short 13, 1
-	.short 1, 2
-	.short 15, 2
-	.short 64, 1
-	.short 254, 0
+	step 13, 1
+	step 1, 2
+	step 15, 2
+	step 64, 1
+	step_end
 
 scr_seq_0911_T26_02F0:
-	.short 13, 2
-	.short 1, 2
-	.short 15, 2
-	.short 64, 1
-	.short 254, 0
+	step 13, 2
+	step 1, 2
+	step 15, 2
+	step 64, 1
+	step_end
 
 scr_seq_0911_T26_0304:
-	.short 13, 3
-	.short 1, 2
-	.short 15, 2
-	.short 64, 1
-	.short 254, 0
+	step 13, 3
+	step 1, 2
+	step 15, 2
+	step 64, 1
+	step_end
 
 scr_seq_0911_T26_0318:
-	.short 13, 4
-	.short 1, 2
-	.short 15, 2
-	.short 64, 1
-	.short 254, 0
+	step 13, 4
+	step 1, 2
+	step 15, 2
+	step 64, 1
+	step_end
 
 scr_seq_0911_T26_032C:
-	.short 15, 6
-	.short 0, 2
-	.short 12, 10
-	.short 254, 0
+	step 15, 6
+	step 0, 2
+	step 12, 10
+	step_end
 
 scr_seq_0911_T26_033C:
-	.short 15, 6
-	.short 0, 2
-	.short 12, 11
-	.short 254, 0
+	step 15, 6
+	step 0, 2
+	step 12, 11
+	step_end
 
 scr_seq_0911_T26_034C:
-	.short 15, 6
-	.short 0, 2
-	.short 12, 12
-	.short 254, 0
+	step 15, 6
+	step 0, 2
+	step 12, 12
+	step_end
 
 scr_seq_0911_T26_035C:
-	.short 15, 6
-	.short 0, 2
-	.short 12, 13
-	.short 254, 0
+	step 15, 6
+	step 0, 2
+	step 12, 13
+	step_end
 
 scr_seq_0911_T26_036C:
-	.short 15, 6
-	.short 0, 2
-	.short 12, 14
-	.short 254, 0
+	step 15, 6
+	step 0, 2
+	step 12, 14
+	step_end
 
 scr_seq_0911_T26_037C:
-	.short 0, 2
-	.short 71, 1
-	.short 77, 1
-	.short 72, 1
-	.short 64, 1
-	.short 35, 1
-	.short 64, 1
-	.short 32, 1
-	.short 254, 0
+	step 0, 2
+	step 71, 1
+	step 77, 1
+	step 72, 1
+	step 64, 1
+	step 35, 1
+	step 64, 1
+	step 32, 1
+	step_end
 
 scr_seq_0911_T26_03A0:
-	.short 1, 2
-	.short 71, 1
-	.short 76, 1
-	.short 72, 1
-	.short 64, 1
-	.short 35, 1
-	.short 64, 1
-	.short 32, 1
-	.short 254, 0
+	step 1, 2
+	step 71, 1
+	step 76, 1
+	step 72, 1
+	step 64, 1
+	step 35, 1
+	step 64, 1
+	step 32, 1
+	step_end
 
 scr_seq_0911_T26_03C4:
-	.short 0, 2
-	.short 71, 1
-	.short 77, 1
-	.short 72, 1
-	.short 66, 2
-	.short 34, 1
-	.short 254, 0
+	step 0, 2
+	step 71, 1
+	step 77, 1
+	step 72, 1
+	step 66, 2
+	step 34, 1
+	step_end
 
 scr_seq_0911_T26_03E0:
-	.short 1, 2
-	.short 71, 1
-	.short 76, 1
-	.short 72, 1
-	.short 254, 0
+	step 1, 2
+	step 71, 1
+	step 76, 1
+	step 72, 1
+	step_end
 scr_seq_0911_T26_03F4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -293,7 +293,7 @@ scr_seq_0911_T26_03F4:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0911_T26_051C
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0911_T26_0530
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -339,7 +339,7 @@ scr_seq_0911_T26_04E2:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 23
+	cameron_photo 23
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -369,42 +369,42 @@ scr_seq_0911_T26_0530:
 
 
 scr_seq_0911_T26_0544:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0911_T26_055C:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0911_T26_0568:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0911_T26_057C:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0911_T26_0590:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0911_T26_059C:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0911_T26_05AC:
 	scrcmd_056 2, 0
 	scrcmd_057 3

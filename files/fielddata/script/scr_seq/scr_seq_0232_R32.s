@@ -327,66 +327,66 @@ scr_seq_0232_R32_0468:
 
 
 scr_seq_0232_R32_046C:
-	.short 2, 1
-	.short 75, 1
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step_end
 
 scr_seq_0232_R32_0478:
-	.short 14, 2
-	.short 12, 1
-	.short 254, 0
+	step 14, 2
+	step 12, 1
+	step_end
 
 scr_seq_0232_R32_0484:
-	.short 62, 1
-	.short 14, 1
-	.short 12, 1
-	.short 254, 0
+	step 62, 1
+	step 14, 1
+	step 12, 1
+	step_end
 
 scr_seq_0232_R32_0494:
-	.short 63, 1
-	.short 12, 2
-	.short 1, 1
-	.short 254, 0
+	step 63, 1
+	step 12, 2
+	step 1, 1
+	step_end
 
 scr_seq_0232_R32_04A4:
-	.short 62, 1
-	.short 12, 2
-	.short 1, 1
-	.short 254, 0
+	step 62, 1
+	step 12, 2
+	step 1, 1
+	step_end
 
 scr_seq_0232_R32_04B4:
-	.short 13, 1
-	.short 15, 2
-	.short 2, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 2
+	step 2, 1
+	step_end
 
 scr_seq_0232_R32_04C4:
-	.short 13, 1
-	.short 15, 1
-	.short 2, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 1
+	step 2, 1
+	step_end
 
 scr_seq_0232_R32_04D4:
-	.short 14, 1
-	.short 254, 0
+	step 14, 1
+	step_end
 
 scr_seq_0232_R32_04DC:
-	.short 62, 1
-	.short 254, 0
+	step 62, 1
+	step_end
 
 scr_seq_0232_R32_04E4:
-	.short 63, 1
-	.short 3, 1
-	.short 254, 0
+	step 63, 1
+	step 3, 1
+	step_end
 
 scr_seq_0232_R32_04F0:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0232_R32_04F8:
-	.short 15, 1
-	.short 2, 1
-	.short 254, 0
+	step 15, 1
+	step 2, 1
+	step_end
 scr_seq_0232_R32_0504:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -419,7 +419,7 @@ scr_seq_0232_R32_0538:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0232_R32_0660
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0232_R32_0674
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -465,7 +465,7 @@ scr_seq_0232_R32_0626:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 5
+	cameron_photo 5
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -495,42 +495,42 @@ scr_seq_0232_R32_0674:
 
 
 scr_seq_0232_R32_0688:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0232_R32_06A0:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0232_R32_06AC:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0232_R32_06C0:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0232_R32_06D4:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0232_R32_06E0:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0232_R32_06F0:
 	scrcmd_055 18, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3

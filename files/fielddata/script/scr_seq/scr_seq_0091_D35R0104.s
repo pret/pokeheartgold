@@ -68,36 +68,36 @@ scr_seq_0091_D35R0104_00E9:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0091_D35R0104_00EC:
-	.short 14, 1
-	.short 254, 0
+	step 14, 1
+	step_end
 
 scr_seq_0091_D35R0104_00F4:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0091_D35R0104_00FC:
-	.short 33, 1
-	.short 13, 3
-	.short 15, 3
-	.short 254, 0
+	step 33, 1
+	step 13, 3
+	step 15, 3
+	step_end
 
 scr_seq_0091_D35R0104_010C:
-	.short 63, 1
-	.short 61, 1
-	.short 14, 1
-	.short 13, 3
-	.short 15, 2
-	.short 254, 0
+	step 63, 1
+	step 61, 1
+	step 14, 1
+	step 13, 3
+	step 15, 2
+	step_end
 
 scr_seq_0091_D35R0104_0124:
-	.short 14, 9
-	.short 254, 0
+	step 14, 9
+	step_end
 
 scr_seq_0091_D35R0104_012C:
-	.short 61, 1
-	.short 15, 1
-	.short 14, 9
-	.short 254, 0
+	step 61, 1
+	step 15, 1
+	step 14, 9
+	step_end
 scr_seq_0091_D35R0104_013C:
 	scrcmd_609
 	lockall
@@ -125,19 +125,19 @@ scr_seq_0091_D35R0104_018B:
 	.byte 0x00
 
 scr_seq_0091_D35R0104_018C:
-	.short 51, 2
-	.short 254, 0
+	step 51, 2
+	step_end
 
 scr_seq_0091_D35R0104_0194:
-	.short 1, 1
-	.short 49, 1
-	.short 17, 10
-	.short 254, 0
+	step 1, 1
+	step 49, 1
+	step 17, 10
+	step_end
 
 scr_seq_0091_D35R0104_01A4:
-	.short 63, 1
-	.short 33, 1
-	.short 254, 0
+	step 63, 1
+	step 33, 1
+	step_end
 scr_seq_0091_D35R0104_01B0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -204,42 +204,42 @@ scr_seq_0091_D35R0104_028D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0091_D35R0104_0290:
-	.short 13, 9
-	.short 15, 2
-	.short 254, 0
+	step 13, 9
+	step 15, 2
+	step_end
 
 scr_seq_0091_D35R0104_029C:
-	.short 13, 10
-	.short 15, 2
-	.short 254, 0
+	step 13, 10
+	step 15, 2
+	step_end
 
 scr_seq_0091_D35R0104_02A8:
-	.short 13, 11
-	.short 15, 2
-	.short 254, 0
+	step 13, 11
+	step 15, 2
+	step_end
 
 scr_seq_0091_D35R0104_02B4:
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step_end
 
 scr_seq_0091_D35R0104_02BC:
-	.short 19, 1
-	.short 254, 0
+	step 19, 1
+	step_end
 
 scr_seq_0091_D35R0104_02C4:
-	.short 71, 1
-	.short 19, 1
-	.short 55, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 19, 1
+	step 55, 1
+	step 72, 1
+	step_end
 
 scr_seq_0091_D35R0104_02D8:
-	.short 40, 1
-	.short 42, 1
-	.short 63, 1
-	.short 14, 2
-	.short 12, 9
-	.short 254, 0
+	step 40, 1
+	step 42, 1
+	step 63, 1
+	step 14, 2
+	step 12, 9
+	step_end
 scr_seq_0091_D35R0104_02F0:
 	scrcmd_609
 	lockall
@@ -320,89 +320,89 @@ scr_seq_0091_D35R0104_040B:
 	.byte 0x00
 
 scr_seq_0091_D35R0104_040C:
-	.short 12, 5
-	.short 14, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 5
+	step 14, 1
+	step 34, 1
+	step_end
 
 scr_seq_0091_D35R0104_041C:
-	.short 12, 5
-	.short 14, 2
-	.short 34, 1
-	.short 254, 0
+	step 12, 5
+	step 14, 2
+	step 34, 1
+	step_end
 
 scr_seq_0091_D35R0104_042C:
-	.short 63, 3
-	.short 1, 1
-	.short 63, 3
-	.short 13, 3
-	.short 254, 0
+	step 63, 3
+	step 1, 1
+	step 63, 3
+	step 13, 3
+	step_end
 
 scr_seq_0091_D35R0104_0440:
-	.short 63, 4
-	.short 35, 1
-	.short 254, 0
+	step 63, 4
+	step 35, 1
+	step_end
 
 scr_seq_0091_D35R0104_044C:
-	.short 75, 1
-	.short 63, 2
-	.short 254, 0
+	step 75, 1
+	step 63, 2
+	step_end
 
 scr_seq_0091_D35R0104_0458:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step_end
 
 scr_seq_0091_D35R0104_047C:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step_end
 	.byte 0x0f, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0091_D35R0104_04A8:
-	.short 71, 1
-	.short 10, 1
-	.short 72, 1
-	.short 63, 1
-	.short 17, 5
-	.short 71, 1
-	.short 52, 1
-	.short 72, 1
-	.short 17, 1
-	.short 19, 3
-	.short 17, 5
-	.short 18, 7
-	.short 16, 12
-	.short 18, 4
-	.short 254, 0
+	step 71, 1
+	step 10, 1
+	step 72, 1
+	step 63, 1
+	step 17, 5
+	step 71, 1
+	step 52, 1
+	step 72, 1
+	step 17, 1
+	step 19, 3
+	step 17, 5
+	step 18, 7
+	step 16, 12
+	step 18, 4
+	step_end
 
 scr_seq_0091_D35R0104_04E4:
-	.short 13, 3
-	.short 15, 2
-	.short 51, 2
-	.short 254, 0
+	step 13, 3
+	step 15, 2
+	step 51, 2
+	step_end
 
 scr_seq_0091_D35R0104_04F4:
-	.short 1, 1
-	.short 17, 1
-	.short 19, 2
-	.short 17, 9
-	.short 18, 7
-	.short 16, 13
-	.short 18, 5
-	.short 254, 0
+	step 1, 1
+	step 17, 1
+	step 19, 2
+	step 17, 9
+	step 18, 7
+	step 16, 13
+	step 18, 5
+	step_end
 scr_seq_0091_D35R0104_0514:
 	comparevartovalue VAR_UNK_40AC, 4
 	gotoif ge, scr_seq_0091_D35R0104_055F
@@ -433,8 +433,8 @@ scr_seq_0091_D35R0104_0561:
 
 
 scr_seq_0091_D35R0104_056C:
-	.short 14, 3
-	.short 254, 0
+	step 14, 3
+	step_end
 scr_seq_0091_D35R0104_0574:
 	play_se SEQ_SE_DP_SELECT
 	lockall

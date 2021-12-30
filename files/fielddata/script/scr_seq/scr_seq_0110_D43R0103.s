@@ -99,65 +99,65 @@ scr_seq_0110_D43R0103_015A:
 
 
 scr_seq_0110_D43R0103_0168:
-	.short 75, 1
-	.short 63, 2
-	.short 1, 2
-	.short 254, 0
+	step 75, 1
+	step 63, 2
+	step 1, 2
+	step_end
 
 scr_seq_0110_D43R0103_0178:
-	.short 9, 1
-	.short 254, 0
+	step 9, 1
+	step_end
 
 scr_seq_0110_D43R0103_0180:
-	.short 16, 3
-	.short 3, 2
-	.short 19, 4
-	.short 0, 2
-	.short 16, 3
-	.short 254, 0
+	step 16, 3
+	step 3, 2
+	step 19, 4
+	step 0, 2
+	step 16, 3
+	step_end
 
 scr_seq_0110_D43R0103_0198:
-	.short 16, 3
-	.short 3, 2
-	.short 19, 5
-	.short 0, 2
-	.short 16, 3
-	.short 254, 0
+	step 16, 3
+	step 3, 2
+	step 19, 5
+	step 0, 2
+	step 16, 3
+	step_end
 
 scr_seq_0110_D43R0103_01B0:
-	.short 16, 3
-	.short 3, 2
-	.short 19, 6
-	.short 0, 2
-	.short 16, 3
-	.short 254, 0
+	step 16, 3
+	step 3, 2
+	step 19, 6
+	step 0, 2
+	step 16, 3
+	step_end
 
 scr_seq_0110_D43R0103_01C8:
-	.short 1, 2
-	.short 13, 2
-	.short 2, 2
-	.short 14, 5
-	.short 1, 2
-	.short 13, 7
-	.short 254, 0
+	step 1, 2
+	step 13, 2
+	step 2, 2
+	step 14, 5
+	step 1, 2
+	step 13, 7
+	step_end
 
 scr_seq_0110_D43R0103_01E4:
-	.short 1, 2
-	.short 13, 2
-	.short 2, 2
-	.short 14, 6
-	.short 1, 2
-	.short 13, 7
-	.short 254, 0
+	step 1, 2
+	step 13, 2
+	step 2, 2
+	step 14, 6
+	step 1, 2
+	step 13, 7
+	step_end
 
 scr_seq_0110_D43R0103_0200:
-	.short 1, 2
-	.short 13, 2
-	.short 2, 2
-	.short 14, 7
-	.short 1, 2
-	.short 13, 7
-	.short 254, 0
+	step 1, 2
+	step 13, 2
+	step 2, 2
+	step 14, 7
+	step 1, 2
+	step 13, 7
+	step_end
 scr_seq_0110_D43R0103_021C:
 	end
 
@@ -229,46 +229,46 @@ scr_seq_0110_D43R0103_032D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0110_D43R0103_0330:
-	.short 40, 4
-	.short 69, 1
-	.short 254, 0
+	step 40, 4
+	step 69, 1
+	step_end
 
 scr_seq_0110_D43R0103_033C:
-	.short 62, 3
-	.short 20, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 20, 1
+	step 69, 1
+	step_end
 
 scr_seq_0110_D43R0103_034C:
-	.short 41, 4
-	.short 69, 1
-	.short 254, 0
+	step 41, 4
+	step 69, 1
+	step_end
 
 scr_seq_0110_D43R0103_0358:
-	.short 62, 3
-	.short 21, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 21, 1
+	step 69, 1
+	step_end
 
 scr_seq_0110_D43R0103_0368:
-	.short 42, 4
-	.short 69, 1
-	.short 254, 0
+	step 42, 4
+	step 69, 1
+	step_end
 
 scr_seq_0110_D43R0103_0374:
-	.short 62, 3
-	.short 22, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 22, 1
+	step 69, 1
+	step_end
 
 scr_seq_0110_D43R0103_0384:
-	.short 43, 4
-	.short 69, 1
-	.short 254, 0
+	step 43, 4
+	step 69, 1
+	step_end
 
 scr_seq_0110_D43R0103_0390:
-	.short 62, 3
-	.short 23, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 23, 1
+	step 69, 1
+	step_end
 	.balign 4, 0

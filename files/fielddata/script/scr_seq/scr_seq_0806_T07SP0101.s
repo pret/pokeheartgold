@@ -39,16 +39,16 @@ scr_seq_0806_T07SP0101_0066:
 
 
 scr_seq_0806_T07SP0101_007C:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0806_T07SP0101_0084:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 
 scr_seq_0806_T07SP0101_008C:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 scr_seq_0806_T07SP0101_0094:
 	play_se SEQ_SE_DP_SELECT
 	lockall

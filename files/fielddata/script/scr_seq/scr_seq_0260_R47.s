@@ -155,20 +155,20 @@ scr_seq_0260_R47_022A:
 	.byte 0x00, 0x00
 
 scr_seq_0260_R47_022C:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0260_R47_0234:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0260_R47_023C:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0260_R47_0244:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 scr_seq_0260_R47_024C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -179,7 +179,7 @@ scr_seq_0260_R47_024C:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0260_R47_02B5
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0260_R47_02C0
 	npc_msg 6
@@ -187,7 +187,7 @@ scr_seq_0260_R47_024C:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 91
+	cameron_photo 91
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0

@@ -70,20 +70,20 @@ scr_seq_0196_R10R0202_00F5:
 	.byte 0x14, 0x00, 0xd9, 0x07, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x00
 
 scr_seq_0196_R10R0202_0100:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0196_R10R0202_0108:
-	.short 34, 1
-	.short 61, 1
-	.short 34, 1
-	.short 61, 1
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step 61, 1
+	step 34, 1
+	step 61, 1
+	step 34, 1
+	step_end
 
 scr_seq_0196_R10R0202_0120:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 scr_seq_0196_R10R0202_0128:
 	scrcmd_609
 	lockall
@@ -115,44 +115,44 @@ scr_seq_0196_R10R0202_0128:
 
 
 scr_seq_0196_R10R0202_0198:
-	.short 75, 1
-	.short 13, 1
-	.short 15, 2
-	.short 12, 3
-	.short 15, 5
-	.short 12, 2
-	.short 254, 0
+	step 75, 1
+	step 13, 1
+	step 15, 2
+	step 12, 3
+	step 15, 5
+	step 12, 2
+	step_end
 
 scr_seq_0196_R10R0202_01B4:
-	.short 66, 2
-	.short 12, 1
-	.short 1, 1
-	.short 65, 1
-	.short 3, 1
-	.short 254, 0
+	step 66, 2
+	step 12, 1
+	step 1, 1
+	step 65, 1
+	step 3, 1
+	step_end
 
 scr_seq_0196_R10R0202_01CC:
-	.short 66, 4
-	.short 1, 1
-	.short 254, 0
+	step 66, 4
+	step 1, 1
+	step_end
 
 scr_seq_0196_R10R0202_01D8:
-	.short 13, 2
-	.short 14, 5
-	.short 0, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 5
+	step 0, 1
+	step_end
 
 scr_seq_0196_R10R0202_01E8:
-	.short 13, 3
-	.short 14, 2
-	.short 12, 1
-	.short 33, 1
-	.short 254, 0
+	step 13, 3
+	step 14, 2
+	step 12, 1
+	step 33, 1
+	step_end
 
 scr_seq_0196_R10R0202_01FC:
-	.short 63, 7
-	.short 1, 1
-	.short 254, 0
+	step 63, 7
+	step 1, 1
+	step_end
 scr_seq_0196_R10R0202_0208:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -70,44 +70,44 @@ scr_seq_0896_T25R0601_00EA:
 
 
 scr_seq_0896_T25R0601_00FC:
-	.short 12, 1
-	.short 63, 1
-	.short 254, 0
+	step 12, 1
+	step 63, 1
+	step_end
 
 scr_seq_0896_T25R0601_0108:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0896_T25R0601_0110:
-	.short 63, 1
-	.short 2, 1
-	.short 75, 1
-	.short 254, 0
+	step 63, 1
+	step 2, 1
+	step 75, 1
+	step_end
 
 scr_seq_0896_T25R0601_0120:
-	.short 13, 1
-	.short 14, 1
-	.short 254, 0
+	step 13, 1
+	step 14, 1
+	step_end
 
 scr_seq_0896_T25R0601_012C:
-	.short 38, 4
-	.short 254, 0
+	step 38, 4
+	step_end
 
 scr_seq_0896_T25R0601_0134:
-	.short 37, 4
-	.short 254, 0
+	step 37, 4
+	step_end
 
 scr_seq_0896_T25R0601_013C:
-	.short 36, 4
-	.short 254, 0
+	step 36, 4
+	step_end
 
 scr_seq_0896_T25R0601_0144:
-	.short 39, 4
-	.short 254, 0
+	step 39, 4
+	step_end
 
 scr_seq_0896_T25R0601_014C:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 scr_seq_0896_T25R0601_0154:
 	checkflag FLAG_UNK_0B5
 	gotoif TRUE, scr_seq_0896_T25R0601_01E5
@@ -162,13 +162,13 @@ scr_seq_0896_T25R0601_01E5:
 	npc_msg 8
 	touchscreen_menu_hide
 	scrcmd_113 20, 2
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 213, 470, 0
-	scrcmd_751 214, 472, 1
-	scrcmd_751 215, 471, 2
-	scrcmd_751 216, 473, 3
-	scrcmd_751 217, 474, 4
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 213, 470, 0
+	menu_item_add 214, 472, 1
+	menu_item_add 215, 471, 2
+	menu_item_add 216, 473, 3
+	menu_item_add 217, 474, 4
+	menu_exec
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -364,6 +364,6 @@ scr_seq_0896_T25R0601_04EF:
 	.byte 0x00
 
 scr_seq_0896_T25R0601_04F0:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 	.balign 4, 0

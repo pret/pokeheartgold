@@ -63,22 +63,22 @@ scr_seq_0221_R27_00A5:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0221_R27_00A8:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0221_R27_00B0:
-	.short 14, 4
-	.short 254, 0
+	step 14, 4
+	step_end
 
 scr_seq_0221_R27_00B8:
-	.short 13, 1
-	.short 14, 4
-	.short 254, 0
+	step 13, 1
+	step 14, 4
+	step_end
 
 scr_seq_0221_R27_00C4:
-	.short 12, 1
-	.short 14, 4
-	.short 254, 0
+	step 12, 1
+	step 14, 4
+	step_end
 scr_seq_0221_R27_00D0:
 	scrcmd_056 2, 0
 	scrcmd_057 3

@@ -51,12 +51,12 @@ scr_seq_0207_R16R0201_0081:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0207_R16R0201_0084:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0207_R16R0201_008C:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 scr_seq_0207_R16R0201_0094:
 	scrcmd_186 0
 	setvar VAR_UNK_4129, 0

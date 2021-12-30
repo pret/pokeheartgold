@@ -426,80 +426,80 @@ scr_seq_0809_T08GYM0101_05E2:
 	.byte 0x00, 0x00
 
 scr_seq_0809_T08GYM0101_05E4:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0809_T08GYM0101_0604:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0809_T08GYM0101_0620:
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0809_T08GYM0101_0638:
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0809_T08GYM0101_065C:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step_end
 
 scr_seq_0809_T08GYM0101_0680:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step_end
 
 scr_seq_0809_T08GYM0101_0698:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0809_T08GYM0101_06B4:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 scr_seq_0809_T08GYM0101_06D4:
 	play_se SEQ_SE_DP_SELECT
 	lockall

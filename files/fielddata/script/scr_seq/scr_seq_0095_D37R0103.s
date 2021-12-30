@@ -233,14 +233,14 @@ scr_seq_0095_D37R0103_0503:
 	.byte 0x00
 
 scr_seq_0095_D37R0103_0504:
-	.short 9, 2
-	.short 254, 0
+	step 9, 2
+	step_end
 
 scr_seq_0095_D37R0103_050C:
-	.short 10, 2
-	.short 254, 0
+	step 10, 2
+	step_end
 
 scr_seq_0095_D37R0103_0514:
-	.short 11, 2
-	.short 254, 0
+	step 11, 2
+	step_end
 	.balign 4, 0

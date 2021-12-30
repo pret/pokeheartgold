@@ -16,7 +16,7 @@ scr_seq_0078_D32PC0101_0016:
 
 scr_seq_0078_D32PC0101_001E:
 	setvar VAR_SPECIAL_x8007, 0
-	callstd 2002
+	callstd std_nurse_joy
 	end
 
 scr_seq_0078_D32PC0101_002A:

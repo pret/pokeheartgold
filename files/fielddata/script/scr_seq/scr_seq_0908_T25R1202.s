@@ -137,11 +137,11 @@ scr_seq_0908_T25R1202_0115:
 scr_seq_0908_T25R1202_0117:
 	npc_msg 13
 	touchscreen_menu_hide
-	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 15, 255, 0
-	scrcmd_751 16, 255, 1
-	scrcmd_751 17, 255, 2
-	scrcmd_752
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 15, 255, 0
+	menu_item_add 16, 255, 1
+	menu_item_add 17, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0908_T25R1202_016E
@@ -186,11 +186,11 @@ scr_seq_0908_T25R1202_01B0:
 scr_seq_0908_T25R1202_01B2:
 	npc_msg 11
 	touchscreen_menu_hide
-	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 15, 255, 0
-	scrcmd_751 16, 255, 1
-	scrcmd_751 17, 255, 2
-	scrcmd_752
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 15, 255, 0
+	menu_item_add 16, 255, 1
+	menu_item_add 17, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0908_T25R1202_0209

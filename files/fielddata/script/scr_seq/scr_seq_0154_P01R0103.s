@@ -130,40 +130,40 @@ scr_seq_0154_P01R0103_018E:
 	.byte 0x00, 0x00
 
 scr_seq_0154_P01R0103_0190:
-	.short 71, 1
-	.short 13, 1
-	.short 72, 1
-	.short 2, 2
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 13, 1
+	step 72, 1
+	step 2, 2
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step_end
 
 scr_seq_0154_P01R0103_01B0:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0154_P01R0103_01B8:
-	.short 71, 1
-	.short 12, 1
-	.short 72, 1
-	.short 2, 2
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 12, 1
+	step 72, 1
+	step 2, 2
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step_end
 
 scr_seq_0154_P01R0103_01D8:
-	.short 63, 1
-	.short 12, 4
-	.short 254, 0
+	step 63, 1
+	step 12, 4
+	step_end
 
 scr_seq_0154_P01R0103_01E4:
-	.short 14, 1
-	.short 1, 2
-	.short 13, 1
-	.short 32, 1
-	.short 254, 0
+	step 14, 1
+	step 1, 2
+	step 13, 1
+	step 32, 1
+	step_end
 scr_seq_0154_P01R0103_01F8:
 	play_se SEQ_SE_DP_SELECT
 	lockall

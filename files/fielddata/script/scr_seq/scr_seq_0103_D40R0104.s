@@ -120,16 +120,16 @@ scr_seq_0103_D40R0104_014A:
 
 
 scr_seq_0103_D40R0104_0154:
-	.short 1, 1
-	.short 71, 1
-	.short 12, 1
-	.short 72, 1
-	.short 254, 0
+	step 1, 1
+	step 71, 1
+	step 12, 1
+	step 72, 1
+	step_end
 
 scr_seq_0103_D40R0104_0168:
-	.short 3, 1
-	.short 71, 1
-	.short 14, 1
-	.short 72, 1
-	.short 254, 0
+	step 3, 1
+	step 71, 1
+	step 14, 1
+	step 72, 1
+	step_end
 	.balign 4, 0

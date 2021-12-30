@@ -45,17 +45,17 @@ scr_seq_0894_T25R0502_008B:
 	.byte 0x00
 
 scr_seq_0894_T25R0502_008C:
-	.short 13, 3
-	.short 14, 8
-	.short 254, 0
+	step 13, 3
+	step 14, 8
+	step_end
 
 scr_seq_0894_T25R0502_0098:
-	.short 15, 3
-	.short 13, 3
-	.short 254, 0
+	step 15, 3
+	step 13, 3
+	step_end
 
 scr_seq_0894_T25R0502_00A4:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

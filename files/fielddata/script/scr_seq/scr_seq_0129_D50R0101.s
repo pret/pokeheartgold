@@ -8,7 +8,7 @@
 	scrdef_end
 
 scr_seq_0129_D50R0101_000A:
-	scrcmd_477 2, 16384
+	nat_dex_flag_action 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0129_D50R0101_0064
 	move_person 1, 30, 1, 30, 0

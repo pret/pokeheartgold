@@ -120,7 +120,7 @@ scr_seq_0904_T25R1006_0156:
 
 scr_seq_0904_T25R1006_01AD:
 	play_se SEQ_SE_GS_KUJI_ATARI
-	scrcmd_198 0, 3
+	buffer_int 0, 3
 	npc_msg 12
 	scrcmd_380 32780, 70
 	comparevartovalue VAR_SPECIAL_x800C, 60
@@ -184,7 +184,7 @@ scr_seq_0904_T25R1006_0294:
 
 scr_seq_0904_T25R1006_02B5:
 	play_se SEQ_SE_GS_KUJI_ATARI
-	scrcmd_198 0, 2
+	buffer_int 0, 2
 	npc_msg 12
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -243,7 +243,7 @@ scr_seq_0904_T25R1006_038B:
 
 scr_seq_0904_T25R1006_03AC:
 	play_se SEQ_SE_GS_KUJI_OOATARI
-	scrcmd_198 0, 1
+	buffer_int 0, 1
 	npc_msg 12
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -473,7 +473,7 @@ scr_seq_0904_T25R1006_067A:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0904_T25R1006_06DB
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0904_T25R1006_06E6
 	npc_msg 31
@@ -481,7 +481,7 @@ scr_seq_0904_T25R1006_067A:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 15
+	cameron_photo 15
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0
@@ -525,12 +525,12 @@ scr_seq_0904_T25R1006_0702:
 
 scr_seq_0904_T25R1006_0717:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
-	scrcmd_751 209, 255, 0
-	scrcmd_751 210, 255, 1
-	scrcmd_751 211, 255, 2
-	scrcmd_751 212, 255, 3
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
+	menu_item_add 209, 255, 0
+	menu_item_add 210, 255, 1
+	menu_item_add 211, 255, 2
+	menu_item_add 212, 255, 3
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0

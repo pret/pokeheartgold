@@ -130,7 +130,7 @@ scr_seq_0932_T28GYM0101_0198:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0932_T28GYM0101_01F9
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0932_T28GYM0101_0204
 	npc_msg 7
@@ -138,7 +138,7 @@ scr_seq_0932_T28GYM0101_0198:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 40
+	cameron_photo 40
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0

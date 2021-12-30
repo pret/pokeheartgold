@@ -23,8 +23,8 @@ scr_seq_0836_T11R0603_0036:
 	.byte 0x00, 0x00
 
 scr_seq_0836_T11R0603_0038:
-	.short 14, 7
-	.short 12, 2
-	.short 254, 0
+	step 14, 7
+	step 12, 2
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

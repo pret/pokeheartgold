@@ -85,10 +85,10 @@ scr_seq_0815_T09_0108:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_099 253
+	release 253
 	apply_movement 253, scr_seq_0815_T09_02FC
 	wait_movement
-	scrcmd_098 253
+	lock 253
 	comparevartovalue VAR_UNK_40FD, 0
 	gotoif ne, scr_seq_0815_T09_0304
 	checkflag FLAG_UNK_128
@@ -110,7 +110,7 @@ scr_seq_0815_T09_016A:
 scr_seq_0815_T09_016F:
 	comparevartovalue VAR_UNK_4135, 7
 	gotoif ge, scr_seq_0815_T09_018C
-	scrcmd_198 0, 16693
+	buffer_int 0, VAR_UNK_4135
 	npc_msg 4
 	waitbutton
 	closemsg
@@ -173,63 +173,63 @@ scr_seq_0815_T09_0265:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0815_T09_0268:
-	.short 35, 1
-	.short 63, 2
-	.short 32, 1
-	.short 63, 2
-	.short 33, 1
-	.short 254, 0
+	step 35, 1
+	step 63, 2
+	step 32, 1
+	step 63, 2
+	step 33, 1
+	step_end
 
 scr_seq_0815_T09_0280:
-	.short 32, 1
-	.short 63, 2
-	.short 35, 1
-	.short 63, 2
-	.short 34, 1
-	.short 254, 0
+	step 32, 1
+	step 63, 2
+	step 35, 1
+	step 63, 2
+	step 34, 1
+	step_end
 
 scr_seq_0815_T09_0298:
-	.short 14, 1
-	.short 13, 1
-	.short 254, 0
+	step 14, 1
+	step 13, 1
+	step_end
 
 scr_seq_0815_T09_02A4:
-	.short 13, 1
-	.short 14, 1
-	.short 254, 0
+	step 13, 1
+	step 14, 1
+	step_end
 
 scr_seq_0815_T09_02B0:
-	.short 13, 2
-	.short 14, 2
-	.short 13, 8
-	.short 254, 0
+	step 13, 2
+	step 14, 2
+	step 13, 8
+	step_end
 
 scr_seq_0815_T09_02C0:
-	.short 13, 1
-	.short 13, 2
-	.short 14, 2
-	.short 13, 7
-	.short 254, 0
+	step 13, 1
+	step 13, 2
+	step 14, 2
+	step 13, 7
+	step_end
 
 scr_seq_0815_T09_02D4:
-	.short 13, 1
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0815_T09_02E4:
-	.short 14, 1
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 14, 1
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0815_T09_02F4:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0815_T09_02FC:
-	.short 60, 1
-	.short 254, 0
+	step 60, 1
+	step_end
 scr_seq_0815_T09_0304:
 	npc_msg 5
 	touchscreen_menu_hide
@@ -237,7 +237,7 @@ scr_seq_0815_T09_0304:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0815_T09_0365
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0815_T09_0370
 	npc_msg 6
@@ -245,7 +245,7 @@ scr_seq_0815_T09_0304:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 92
+	cameron_photo 92
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0
@@ -332,7 +332,7 @@ scr_seq_0815_T09_0429:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0815_T09_048A
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0815_T09_0495
 	npc_msg 16
@@ -340,7 +340,7 @@ scr_seq_0815_T09_0429:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 85
+	cameron_photo 85
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0

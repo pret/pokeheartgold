@@ -76,7 +76,7 @@ scr_seq_0076_D32_00E1:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0076_D32_0209
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0076_D32_021D
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -122,7 +122,7 @@ scr_seq_0076_D32_01CF:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 31
+	cameron_photo 31
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -154,42 +154,42 @@ scr_seq_0076_D32_0231:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0076_D32_0234:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0076_D32_024C:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0076_D32_0258:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0076_D32_026C:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0076_D32_0280:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0076_D32_028C:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0076_D32_029C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -415,13 +415,13 @@ scr_seq_0076_D32_042B:
 	gotoif eq, scr_seq_0076_D32_0B02
 scr_seq_0076_D32_045C:
 	npc_msg 31
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 347, 255, 0
-	scrcmd_751 348, 255, 1
-	scrcmd_751 349, 255, 2
-	scrcmd_751 350, 255, 3
-	scrcmd_751 439, 255, 4
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 347, 255, 0
+	menu_item_add 348, 255, 1
+	menu_item_add 349, 255, 2
+	menu_item_add 350, 255, 3
+	menu_item_add 439, 255, 4
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_04D1
@@ -435,16 +435,16 @@ scr_seq_0076_D32_045C:
 
 scr_seq_0076_D32_04D1:
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 354, 396, 0
-	scrcmd_751 355, 397, 1
-	scrcmd_751 356, 398, 2
-	scrcmd_751 357, 399, 3
-	scrcmd_751 358, 400, 4
-	scrcmd_751 359, 401, 5
-	scrcmd_751 379, 402, 6
-	scrcmd_751 440, 438, 7
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 354, 396, 0
+	menu_item_add 355, 397, 1
+	menu_item_add 356, 398, 2
+	menu_item_add 357, 399, 3
+	menu_item_add 358, 400, 4
+	menu_item_add 359, 401, 5
+	menu_item_add 379, 402, 6
+	menu_item_add 440, 438, 7
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_0588
@@ -506,15 +506,15 @@ scr_seq_0076_D32_0618:
 
 scr_seq_0076_D32_0630:
 	setvar VAR_SPECIAL_x8007, 1
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 360, 403, 0
-	scrcmd_751 361, 404, 1
-	scrcmd_751 362, 405, 2
-	scrcmd_751 363, 406, 3
-	scrcmd_751 364, 407, 4
-	scrcmd_751 365, 408, 5
-	scrcmd_751 440, 438, 6
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 360, 403, 0
+	menu_item_add 361, 404, 1
+	menu_item_add 362, 405, 2
+	menu_item_add 363, 406, 3
+	menu_item_add 364, 407, 4
+	menu_item_add 365, 408, 5
+	menu_item_add 440, 438, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_06D2
@@ -568,16 +568,16 @@ scr_seq_0076_D32_074A:
 
 scr_seq_0076_D32_0762:
 	setvar VAR_SPECIAL_x8007, 2
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 366, 409, 0
-	scrcmd_751 367, 410, 1
-	scrcmd_751 368, 411, 2
-	scrcmd_751 369, 412, 3
-	scrcmd_751 370, 413, 4
-	scrcmd_751 372, 415, 5
-	scrcmd_751 375, 418, 6
-	scrcmd_751 440, 438, 7
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 366, 409, 0
+	menu_item_add 367, 410, 1
+	menu_item_add 368, 411, 2
+	menu_item_add 369, 412, 3
+	menu_item_add 370, 413, 4
+	menu_item_add 372, 415, 5
+	menu_item_add 375, 418, 6
+	menu_item_add 440, 438, 7
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_0819
@@ -639,15 +639,15 @@ scr_seq_0076_D32_08A9:
 
 scr_seq_0076_D32_08C1:
 	setvar VAR_SPECIAL_x8007, 3
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 371, 414, 0
-	scrcmd_751 376, 419, 1
-	scrcmd_751 373, 416, 2
-	scrcmd_751 374, 417, 3
-	scrcmd_751 377, 420, 4
-	scrcmd_751 378, 421, 5
-	scrcmd_751 440, 438, 7
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 371, 414, 0
+	menu_item_add 376, 419, 1
+	menu_item_add 373, 416, 2
+	menu_item_add 374, 417, 3
+	menu_item_add 377, 420, 4
+	menu_item_add 378, 421, 5
+	menu_item_add 440, 438, 7
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_0963
@@ -701,7 +701,7 @@ scr_seq_0076_D32_09DB:
 
 scr_seq_0076_D32_09F3:
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	scrcmd_198 1, 32774
+	buffer_int 1, VAR_SPECIAL_x8006
 	npc_msg 23
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -790,12 +790,12 @@ scr_seq_0076_D32_0B15:
 	gotoif eq, scr_seq_0076_D32_0B02
 scr_seq_0076_D32_0B44:
 	npc_msg 30
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 351, 255, 0
-	scrcmd_751 352, 255, 1
-	scrcmd_751 353, 255, 2
-	scrcmd_751 439, 255, 4
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 351, 255, 0
+	menu_item_add 352, 255, 1
+	menu_item_add 353, 255, 2
+	menu_item_add 439, 255, 4
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_0BA4
@@ -807,15 +807,15 @@ scr_seq_0076_D32_0B44:
 
 scr_seq_0076_D32_0BA4:
 	setvar VAR_SPECIAL_x8007, 0
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 380, 422, 0
-	scrcmd_751 381, 423, 1
-	scrcmd_751 382, 424, 2
-	scrcmd_751 383, 425, 3
-	scrcmd_751 384, 426, 4
-	scrcmd_751 385, 427, 5
-	scrcmd_751 440, 438, 6
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 380, 422, 0
+	menu_item_add 381, 423, 1
+	menu_item_add 382, 424, 2
+	menu_item_add 383, 425, 3
+	menu_item_add 384, 426, 4
+	menu_item_add 385, 427, 5
+	menu_item_add 440, 438, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_0C46
@@ -875,13 +875,13 @@ scr_seq_0076_D32_0CDC:
 
 scr_seq_0076_D32_0CFA:
 	setvar VAR_SPECIAL_x8007, 1
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 386, 428, 0
-	scrcmd_751 387, 429, 1
-	scrcmd_751 388, 430, 2
-	scrcmd_751 389, 431, 3
-	scrcmd_751 440, 438, 4
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 386, 428, 0
+	menu_item_add 387, 429, 1
+	menu_item_add 388, 430, 2
+	menu_item_add 389, 431, 3
+	menu_item_add 440, 438, 4
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_0D72
@@ -923,15 +923,15 @@ scr_seq_0076_D32_0DCC:
 
 scr_seq_0076_D32_0DEA:
 	setvar VAR_SPECIAL_x8007, 2
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 390, 432, 0
-	scrcmd_751 391, 433, 1
-	scrcmd_751 392, 434, 2
-	scrcmd_751 393, 435, 3
-	scrcmd_751 394, 436, 4
-	scrcmd_751 395, 437, 5
-	scrcmd_751 440, 438, 6
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 390, 432, 0
+	menu_item_add 391, 433, 1
+	menu_item_add 392, 434, 2
+	menu_item_add 393, 435, 3
+	menu_item_add 394, 436, 4
+	menu_item_add 395, 437, 5
+	menu_item_add 440, 438, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0076_D32_0E8C
@@ -991,8 +991,8 @@ scr_seq_0076_D32_0F22:
 
 scr_seq_0076_D32_0F40:
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	scrcmd_197 1, 32769
-	scrcmd_198 2, 32774
+	buffer_move_name 1, VAR_SPECIAL_x8001
+	buffer_int 2, VAR_SPECIAL_x8006
 	npc_msg 24
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -1117,8 +1117,8 @@ scr_seq_0076_D32_10AE:
 	.byte 0x00, 0x00
 
 scr_seq_0076_D32_10B0:
-	.short 18, 5
-	.short 254, 0
+	step 18, 5
+	step_end
 scr_seq_0076_D32_10B8:
 	scrcmd_609
 	lockall
@@ -1136,8 +1136,8 @@ scr_seq_0076_D32_10B8:
 
 
 scr_seq_0076_D32_10F4:
-	.short 18, 6
-	.short 254, 0
+	step 18, 6
+	step_end
 scr_seq_0076_D32_10FC:
 	scrcmd_609
 	lockall
@@ -1155,8 +1155,8 @@ scr_seq_0076_D32_10FC:
 
 
 scr_seq_0076_D32_1138:
-	.short 19, 5
-	.short 254, 0
+	step 19, 5
+	step_end
 scr_seq_0076_D32_1140:
 	scrcmd_609
 	lockall
@@ -1174,8 +1174,8 @@ scr_seq_0076_D32_1140:
 
 
 scr_seq_0076_D32_117C:
-	.short 19, 6
-	.short 254, 0
+	step 19, 6
+	step_end
 scr_seq_0076_D32_1184:
 	end
 	.balign 4, 0

@@ -47,7 +47,7 @@ scr_seq_0802_T07R0207_0088:
 	goto scr_seq_0802_T07R0207_00B3
 
 scr_seq_0802_T07R0207_0098:
-	scrcmd_198 0, 0
+	buffer_int 0, 0
 	call scr_seq_0802_T07R0207_00A9
 	goto scr_seq_0802_T07R0207_00EE
 
@@ -108,13 +108,13 @@ scr_seq_0802_T07R0207_016D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0802_T07R0207_0170:
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 12, 2
+	step 33, 1
+	step_end
 
 scr_seq_0802_T07R0207_017C:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 	.balign 4, 0

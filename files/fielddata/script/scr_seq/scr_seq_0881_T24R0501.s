@@ -59,6 +59,6 @@ scr_seq_0881_T24R0501_00A6:
 	.byte 0x00, 0x00
 
 scr_seq_0881_T24R0501_00A8:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 	.balign 4, 0

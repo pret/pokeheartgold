@@ -144,7 +144,7 @@ scr_seq_0002_021E:
 
 scr_seq_0002_0224:
 	bufferpartymonnick 0, VAR_SPECIAL_x8001
-	scrcmd_197 1, 32771
+	buffer_move_name 1, VAR_SPECIAL_x8003
 	scrcmd_396 32774, 32769
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif lt, scr_seq_0002_0328
@@ -170,7 +170,7 @@ scr_seq_0002_0241:
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif eq, scr_seq_0002_03A4
 	scrcmd_490 32774
-	scrcmd_399 2, 32769, 32774
+	buffer_party_mon_move_name 2, VAR_SPECIAL_x8001, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8004, 9
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
@@ -195,12 +195,12 @@ scr_seq_0002_0303:
 	play_se SEQ_SE_DP_KON
 	wait_se SEQ_SE_DP_KON
 	wait 30, VAR_SPECIAL_x800C
-	scrcmd_399 1, 32769, 32774
+	buffer_party_mon_move_name 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8004, 13
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004
 scr_seq_0002_0328:
-	scrcmd_197 1, 32771
+	buffer_move_name 1, VAR_SPECIAL_x8003
 	setvar VAR_SPECIAL_x8004, 14
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	scrcmd_046 VAR_SPECIAL_x8004

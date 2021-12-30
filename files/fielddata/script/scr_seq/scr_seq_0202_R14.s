@@ -41,7 +41,7 @@ scr_seq_0202_R14_0055:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0202_R14_017D
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0202_R14_0191
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -87,7 +87,7 @@ scr_seq_0202_R14_0143:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 60
+	cameron_photo 60
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -119,42 +119,42 @@ scr_seq_0202_R14_01A5:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0202_R14_01A8:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0202_R14_01C0:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0202_R14_01CC:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0202_R14_01E0:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0202_R14_01F4:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0202_R14_0200:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0202_R14_0210:
 	scrcmd_609
 	lockall
@@ -187,9 +187,9 @@ scr_seq_0202_R14_0272:
 	wait_movement
 scr_seq_0202_R14_027C:
 	scrcmd_076 245, 0
-	scrcmd_099 11
+	release 11
 	scrcmd_523 11, 2, 90, 2, 0
-	scrcmd_098 11
+	lock 11
 	scrcmd_077
 	comparevartovalue VAR_TEMP_x4000, 1358
 	gotoif ne, scr_seq_0202_R14_02B1
@@ -307,110 +307,110 @@ scr_seq_0202_R14_044D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0202_R14_0450:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 	.byte 0x3e, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00, 0x3e, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x3e, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x01, 0x00
 	.byte 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0202_R14_0488:
-	.short 20, 2
-	.short 52, 1
-	.short 56, 1
-	.short 20, 2
-	.short 52, 1
-	.short 56, 2
-	.short 20, 2
-	.short 52, 1
-	.short 254, 0
+	step 20, 2
+	step 52, 1
+	step 56, 1
+	step 20, 2
+	step 52, 1
+	step 56, 2
+	step 20, 2
+	step 52, 1
+	step_end
 
 scr_seq_0202_R14_04AC:
-	.short 13, 1
-	.short 15, 3
-	.short 13, 2
-	.short 3, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 3
+	step 13, 2
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_04C0:
-	.short 15, 3
-	.short 13, 2
-	.short 3, 1
-	.short 254, 0
+	step 15, 3
+	step 13, 2
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_04D0:
-	.short 15, 3
-	.short 13, 1
-	.short 3, 1
-	.short 254, 0
+	step 15, 3
+	step 13, 1
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_04E0:
-	.short 15, 3
-	.short 254, 0
+	step 15, 3
+	step_end
 
 scr_seq_0202_R14_04E8:
-	.short 15, 3
-	.short 12, 1
-	.short 3, 1
-	.short 254, 0
+	step 15, 3
+	step 12, 1
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_04F8:
-	.short 15, 3
-	.short 12, 2
-	.short 3, 1
-	.short 254, 0
+	step 15, 3
+	step 12, 2
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_0508:
-	.short 12, 1
-	.short 15, 3
-	.short 12, 2
-	.short 3, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 3
+	step 12, 2
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_051C:
-	.short 13, 1
-	.short 15, 2
-	.short 13, 2
-	.short 3, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 2
+	step 13, 2
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_0530:
-	.short 12, 1
-	.short 15, 2
-	.short 12, 2
-	.short 3, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 2
+	step 12, 2
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_0544:
-	.short 13, 3
-	.short 3, 1
-	.short 254, 0
+	step 13, 3
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_0550:
-	.short 12, 3
-	.short 3, 1
-	.short 254, 0
+	step 12, 3
+	step 3, 1
+	step_end
 
 scr_seq_0202_R14_055C:
-	.short 63, 1
-	.short 0, 1
-	.short 12, 1
-	.short 254, 0
+	step 63, 1
+	step 0, 1
+	step 12, 1
+	step_end
 
 scr_seq_0202_R14_056C:
-	.short 65, 5
-	.short 2, 1
-	.short 254, 0
+	step 65, 5
+	step 2, 1
+	step_end
 	.byte 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0202_R14_057C:
-	.short 16, 11
-	.short 12, 2
-	.short 4, 1
-	.short 63, 3
-	.short 9, 1
-	.short 3, 1
-	.short 254, 0
+	step 16, 11
+	step 12, 2
+	step 4, 1
+	step 63, 3
+	step 9, 1
+	step 3, 1
+	step_end
 scr_seq_0202_R14_0598:
 	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
@@ -503,7 +503,7 @@ scr_seq_0202_R14_0696:
 	.byte 0x00, 0x00
 
 scr_seq_0202_R14_0698:
-	.short 75, 1
-	.short 62, 1
-	.short 254, 0
+	step 75, 1
+	step 62, 1
+	step_end
 	.balign 4, 0

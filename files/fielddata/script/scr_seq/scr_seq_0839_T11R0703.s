@@ -96,26 +96,26 @@ scr_seq_0839_T11R0703_0152:
 	.byte 0x00, 0x00
 
 scr_seq_0839_T11R0703_0154:
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 12, 2
+	step 33, 1
+	step_end
 
 scr_seq_0839_T11R0703_0160:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 
 scr_seq_0839_T11R0703_0170:
-	.short 1, 1
-	.short 13, 1
-	.short 45, 3
-	.short 254, 0
+	step 1, 1
+	step 13, 1
+	step 45, 3
+	step_end
 
 scr_seq_0839_T11R0703_0180:
-	.short 13, 2
-	.short 33, 1
-	.short 254, 0
+	step 13, 2
+	step 33, 1
+	step_end
 scr_seq_0839_T11R0703_018C:
 	scrcmd_602 0
 	scrcmd_603

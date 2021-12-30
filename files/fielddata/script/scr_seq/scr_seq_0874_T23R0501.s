@@ -215,39 +215,39 @@ scr_seq_0874_T23R0501_02AB:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00
 
 scr_seq_0874_T23R0501_02B0:
-	.short 65, 1
-	.short 37, 1
-	.short 254, 0
+	step 65, 1
+	step 37, 1
+	step_end
 
 scr_seq_0874_T23R0501_02BC:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0874_T23R0501_02C8:
-	.short 18, 1
-	.short 65, 1
-	.short 254, 0
+	step 18, 1
+	step 65, 1
+	step_end
 
 scr_seq_0874_T23R0501_02D4:
-	.short 39, 1
-	.short 3, 1
-	.short 254, 0
+	step 39, 1
+	step 3, 1
+	step_end
 
 scr_seq_0874_T23R0501_02E0:
-	.short 17, 5
-	.short 254, 0
+	step 17, 5
+	step_end
 
 scr_seq_0874_T23R0501_02E8:
-	.short 18, 1
-	.short 17, 2
-	.short 19, 1
-	.short 17, 3
-	.short 254, 0
+	step 18, 1
+	step 17, 2
+	step 19, 1
+	step 17, 3
+	step_end
 
 scr_seq_0874_T23R0501_02FC:
-	.short 14, 1
-	.short 254, 0
+	step 14, 1
+	step_end
 	.byte 0x27, 0x00, 0x01, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x26, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 scr_seq_0874_T23R0501_0314:

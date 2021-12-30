@@ -76,13 +76,13 @@ scr_seq_0035_D23R0107_00F3:
 	.byte 0x00
 
 scr_seq_0035_D23R0107_00F4:
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 12, 2
+	step 33, 1
+	step_end
 
 scr_seq_0035_D23R0107_0100:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 	.balign 4, 0

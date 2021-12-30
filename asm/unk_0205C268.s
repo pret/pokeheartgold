@@ -1,4 +1,5 @@
 #include "constants/sndseq.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -22891,32 +22892,32 @@ _02066596:
 	.balign 4, 0
 	thumb_func_end sub_020664D8
 
-	thumb_func_start sub_0206659C
-sub_0206659C: ; 0x0206659C
+	thumb_func_start SetScriptFlag
+SetScriptFlag: ; 0x0206659C
 	ldr r3, _020665A0 ; =SetFlagInArray
 	bx r3
 	.balign 4, 0
 _020665A0: .word SetFlagInArray
-	thumb_func_end sub_0206659C
+	thumb_func_end SetScriptFlag
 
-	thumb_func_start sub_020665A4
-sub_020665A4: ; 0x020665A4
+	thumb_func_start ClearScriptFlag
+ClearScriptFlag: ; 0x020665A4
 	ldr r3, _020665A8 ; =ClearFlagInArray
 	bx r3
 	.balign 4, 0
 _020665A8: .word ClearFlagInArray
-	thumb_func_end sub_020665A4
+	thumb_func_end ClearScriptFlag
 
-	thumb_func_start sub_020665AC
-sub_020665AC: ; 0x020665AC
+	thumb_func_start CheckScriptFlag
+CheckScriptFlag: ; 0x020665AC
 	ldr r3, _020665B0 ; =CheckFlagInArray
 	bx r3
 	.balign 4, 0
 _020665B0: .word CheckFlagInArray
-	thumb_func_end sub_020665AC
+	thumb_func_end CheckScriptFlag
 
-	thumb_func_start sub_020665B4
-sub_020665B4: ; 0x020665B4
+	thumb_func_start FlagAction
+FlagAction: ; 0x020665B4
 	push {r3, lr}
 	cmp r1, #0
 	beq _020665CE
@@ -22928,17 +22929,17 @@ sub_020665B4: ; 0x020665B4
 _020665C4:
 	lsl r1, r2, #0x10
 	lsr r1, r1, #0x10
-	bl sub_0206659C
+	bl SetScriptFlag
 	b _020665E6
 _020665CE:
 	lsl r1, r2, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020665A4
+	bl ClearScriptFlag
 	b _020665E6
 _020665D8:
 	lsl r1, r2, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020665AC
+	bl CheckScriptFlag
 	pop {r3, pc}
 _020665E2:
 	bl GF_AssertFail
@@ -22946,159 +22947,159 @@ _020665E6:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020665B4
+	thumb_func_end FlagAction
 
 	thumb_func_start sub_020665EC
 sub_020665EC: ; 0x020665EC
-	ldr r3, _020665F4 ; =sub_0206659C
+	ldr r3, _020665F4 ; =SetScriptFlag
 	mov r1, #0x96
 	lsl r1, r1, #4
 	bx r3
 	.balign 4, 0
-_020665F4: .word sub_0206659C
+_020665F4: .word SetScriptFlag
 	thumb_func_end sub_020665EC
 
 	thumb_func_start sub_020665F8
 sub_020665F8: ; 0x020665F8
-	ldr r3, _02066600 ; =sub_020665AC
+	ldr r3, _02066600 ; =CheckScriptFlag
 	mov r1, #0x96
 	lsl r1, r1, #4
 	bx r3
 	.balign 4, 0
-_02066600: .word sub_020665AC
+_02066600: .word CheckScriptFlag
 	thumb_func_end sub_020665F8
 
 	thumb_func_start sub_02066604
 sub_02066604: ; 0x02066604
-	ldr r3, _0206660C ; =sub_0206659C
+	ldr r3, _0206660C ; =SetScriptFlag
 	ldr r1, _02066610 ; =0x00000964
 	bx r3
 	nop
-_0206660C: .word sub_0206659C
+_0206660C: .word SetScriptFlag
 _02066610: .word 0x00000964
 	thumb_func_end sub_02066604
 
 	thumb_func_start sub_02066614
 sub_02066614: ; 0x02066614
-	ldr r3, _0206661C ; =sub_020665AC
+	ldr r3, _0206661C ; =CheckScriptFlag
 	ldr r1, _02066620 ; =0x00000964
 	bx r3
 	nop
-_0206661C: .word sub_020665AC
+_0206661C: .word CheckScriptFlag
 _02066620: .word 0x00000964
 	thumb_func_end sub_02066614
 
 	thumb_func_start ScriptState_SetHealAfterBattleFlag
 ScriptState_SetHealAfterBattleFlag: ; 0x02066624
-	ldr r3, _0206662C ; =sub_0206659C
+	ldr r3, _0206662C ; =SetScriptFlag
 	ldr r1, _02066630 ; =0x00000961
 	bx r3
 	nop
-_0206662C: .word sub_0206659C
+_0206662C: .word SetScriptFlag
 _02066630: .word 0x00000961
 	thumb_func_end ScriptState_SetHealAfterBattleFlag
 
 	thumb_func_start ScriptState_ClearHealAfterBattleFlag
 ScriptState_ClearHealAfterBattleFlag: ; 0x02066634
-	ldr r3, _0206663C ; =sub_020665A4
+	ldr r3, _0206663C ; =ClearScriptFlag
 	ldr r1, _02066640 ; =0x00000961
 	bx r3
 	nop
-_0206663C: .word sub_020665A4
+_0206663C: .word ClearScriptFlag
 _02066640: .word 0x00000961
 	thumb_func_end ScriptState_ClearHealAfterBattleFlag
 
 	thumb_func_start ScriptState_CheckHealAfterBattleFlag
 ScriptState_CheckHealAfterBattleFlag: ; 0x02066644
-	ldr r3, _0206664C ; =sub_020665AC
+	ldr r3, _0206664C ; =CheckScriptFlag
 	ldr r1, _02066650 ; =0x00000961
 	bx r3
 	nop
-_0206664C: .word sub_020665AC
+_0206664C: .word CheckScriptFlag
 _02066650: .word 0x00000961
 	thumb_func_end ScriptState_CheckHealAfterBattleFlag
 
 	thumb_func_start sub_02066654
 sub_02066654: ; 0x02066654
-	ldr r3, _0206665C ; =sub_0206659C
+	ldr r3, _0206665C ; =SetScriptFlag
 	ldr r1, _02066660 ; =0x0000099C
 	bx r3
 	nop
-_0206665C: .word sub_0206659C
+_0206665C: .word SetScriptFlag
 _02066660: .word 0x0000099C
 	thumb_func_end sub_02066654
 
 	thumb_func_start sub_02066664
 sub_02066664: ; 0x02066664
-	ldr r3, _0206666C ; =sub_0206659C
+	ldr r3, _0206666C ; =SetScriptFlag
 	ldr r1, _02066670 ; =0x00000965
 	bx r3
 	nop
-_0206666C: .word sub_0206659C
+_0206666C: .word SetScriptFlag
 _02066670: .word 0x00000965
 	thumb_func_end sub_02066664
 
 	thumb_func_start sub_02066674
 sub_02066674: ; 0x02066674
-	ldr r3, _0206667C ; =sub_020665A4
+	ldr r3, _0206667C ; =ClearScriptFlag
 	ldr r1, _02066680 ; =0x00000965
 	bx r3
 	nop
-_0206667C: .word sub_020665A4
+_0206667C: .word ClearScriptFlag
 _02066680: .word 0x00000965
 	thumb_func_end sub_02066674
 
 	thumb_func_start sub_02066684
 sub_02066684: ; 0x02066684
-	ldr r3, _0206668C ; =sub_020665AC
+	ldr r3, _0206668C ; =CheckScriptFlag
 	ldr r1, _02066690 ; =0x00000965
 	bx r3
 	nop
-_0206668C: .word sub_020665AC
+_0206668C: .word CheckScriptFlag
 _02066690: .word 0x00000965
 	thumb_func_end sub_02066684
 
 	thumb_func_start sub_02066694
 sub_02066694: ; 0x02066694
-	ldr r3, _0206669C ; =sub_0206659C
+	ldr r3, _0206669C ; =SetScriptFlag
 	ldr r1, _020666A0 ; =0x00000969
 	bx r3
 	nop
-_0206669C: .word sub_0206659C
+_0206669C: .word SetScriptFlag
 _020666A0: .word 0x00000969
 	thumb_func_end sub_02066694
 
 	thumb_func_start sub_020666A4
 sub_020666A4: ; 0x020666A4
-	ldr r3, _020666AC ; =sub_020665A4
+	ldr r3, _020666AC ; =ClearScriptFlag
 	ldr r1, _020666B0 ; =0x00000969
 	bx r3
 	nop
-_020666AC: .word sub_020665A4
+_020666AC: .word ClearScriptFlag
 _020666B0: .word 0x00000969
 	thumb_func_end sub_020666A4
 
 	thumb_func_start sub_020666B4
 sub_020666B4: ; 0x020666B4
-	ldr r3, _020666BC ; =sub_020665AC
+	ldr r3, _020666BC ; =CheckScriptFlag
 	ldr r1, _020666C0 ; =0x00000969
 	bx r3
 	nop
-_020666BC: .word sub_020665AC
+_020666BC: .word CheckScriptFlag
 _020666C0: .word 0x00000969
 	thumb_func_end sub_020666B4
 
 	thumb_func_start EventFlagCheck_RematchGroup
 EventFlagCheck_RematchGroup: ; 0x020666C4
 	ldr r2, _020666D0 ; =0x0000097B
-	ldr r3, _020666D4 ; =sub_020665AC
+	ldr r3, _020666D4 ; =CheckScriptFlag
 	add r1, r1, r2
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	bx r3
 	.balign 4, 0
 _020666D0: .word 0x0000097B
-_020666D4: .word sub_020665AC
+_020666D4: .word CheckScriptFlag
 	thumb_func_end EventFlagCheck_RematchGroup
 
 	thumb_func_start sub_020666D8
@@ -23119,19 +23120,19 @@ _020666EA: ; jump table
 	.short _0206670A - _020666EA - 2 ; case 3
 _020666F2:
 	ldr r1, _02066714 ; =0x00000977
-	bl sub_0206659C
+	bl SetScriptFlag
 	pop {r3, pc}
 _020666FA:
 	ldr r1, _02066718 ; =0x00000978
-	bl sub_0206659C
+	bl SetScriptFlag
 	pop {r3, pc}
 _02066702:
 	ldr r1, _0206671C ; =0x00000979
-	bl sub_0206659C
+	bl SetScriptFlag
 	pop {r3, pc}
 _0206670A:
 	ldr r1, _02066720 ; =0x0000097A
-	bl sub_0206659C
+	bl SetScriptFlag
 _02066710:
 	pop {r3, pc}
 	nop
@@ -23160,22 +23161,22 @@ _02066738: ; jump table
 	.short _0206675E - _02066738 - 2 ; case 3
 _02066740:
 	ldr r1, _0206676C ; =0x00000977
-	bl sub_020665AC
+	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _0206674A:
 	ldr r1, _02066770 ; =0x00000978
-	bl sub_020665AC
+	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _02066754:
 	ldr r1, _02066774 ; =0x00000979
-	bl sub_020665AC
+	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _0206675E:
 	ldr r1, _02066778 ; =0x0000097A
-	bl sub_020665AC
+	bl CheckScriptFlag
 	add r2, r0, #0
 _02066766:
 	add r0, r2, #0
@@ -23193,10 +23194,10 @@ sub_0206677C: ; 0x0206677C
 	cmp r1, #0
 	ldr r1, _02066790 ; =0x00000986
 	beq _0206678A
-	bl sub_0206659C
+	bl SetScriptFlag
 	pop {r3, pc}
 _0206678A:
-	bl sub_020665A4
+	bl ClearScriptFlag
 	pop {r3, pc}
 	.balign 4, 0
 _02066790: .word 0x00000986
@@ -23204,11 +23205,11 @@ _02066790: .word 0x00000986
 
 	thumb_func_start sub_02066794
 sub_02066794: ; 0x02066794
-	ldr r3, _0206679C ; =sub_020665AC
+	ldr r3, _0206679C ; =CheckScriptFlag
 	ldr r1, _020667A0 ; =0x00000986
 	bx r3
 	nop
-_0206679C: .word sub_020665AC
+_0206679C: .word CheckScriptFlag
 _020667A0: .word 0x00000986
 	thumb_func_end sub_02066794
 
@@ -23225,7 +23226,7 @@ _020667AE:
 	bne _020667CC
 	ldrh r1, [r5, #2]
 	add r0, r7, #0
-	bl sub_020665AC
+	bl CheckScriptFlag
 	cmp r0, #0
 	beq _020667CC
 	mov r0, #6
@@ -23248,211 +23249,211 @@ _020667DC: .word _020FE454 + 4
 
 	thumb_func_start sub_020667E0
 sub_020667E0: ; 0x020667E0
-	ldr r3, _020667E8 ; =sub_0206659C
+	ldr r3, _020667E8 ; =SetScriptFlag
 	ldr r1, _020667EC ; =0x00000966
 	bx r3
 	nop
-_020667E8: .word sub_0206659C
+_020667E8: .word SetScriptFlag
 _020667EC: .word 0x00000966
 	thumb_func_end sub_020667E0
 
 	thumb_func_start sub_020667F0
 sub_020667F0: ; 0x020667F0
-	ldr r3, _020667F8 ; =sub_020665A4
+	ldr r3, _020667F8 ; =ClearScriptFlag
 	ldr r1, _020667FC ; =0x00000966
 	bx r3
 	nop
-_020667F8: .word sub_020665A4
+_020667F8: .word ClearScriptFlag
 _020667FC: .word 0x00000966
 	thumb_func_end sub_020667F0
 
 	thumb_func_start sub_02066800
 sub_02066800: ; 0x02066800
-	ldr r3, _02066808 ; =sub_020665AC
+	ldr r3, _02066808 ; =CheckScriptFlag
 	ldr r1, _0206680C ; =0x00000966
 	bx r3
 	nop
-_02066808: .word sub_020665AC
+_02066808: .word CheckScriptFlag
 _0206680C: .word 0x00000966
 	thumb_func_end sub_02066800
 
 	thumb_func_start sub_02066810
 sub_02066810: ; 0x02066810
-	ldr r3, _02066818 ; =sub_020665AC
+	ldr r3, _02066818 ; =CheckScriptFlag
 	ldr r1, _0206681C ; =0x00000976
 	bx r3
 	nop
-_02066818: .word sub_020665AC
+_02066818: .word CheckScriptFlag
 _0206681C: .word 0x00000976
 	thumb_func_end sub_02066810
 
 	thumb_func_start sub_02066820
 sub_02066820: ; 0x02066820
-	ldr r3, _02066828 ; =sub_0206659C
+	ldr r3, _02066828 ; =SetScriptFlag
 	ldr r1, _0206682C ; =0x00000975
 	bx r3
 	nop
-_02066828: .word sub_0206659C
+_02066828: .word SetScriptFlag
 _0206682C: .word 0x00000975
 	thumb_func_end sub_02066820
 
 	thumb_func_start sub_02066830
 sub_02066830: ; 0x02066830
-	ldr r3, _02066838 ; =sub_020665A4
+	ldr r3, _02066838 ; =ClearScriptFlag
 	ldr r1, _0206683C ; =0x00000975
 	bx r3
 	nop
-_02066838: .word sub_020665A4
+_02066838: .word ClearScriptFlag
 _0206683C: .word 0x00000975
 	thumb_func_end sub_02066830
 
 	thumb_func_start sub_02066840
 sub_02066840: ; 0x02066840
-	ldr r3, _02066848 ; =sub_0206659C
+	ldr r3, _02066848 ; =SetScriptFlag
 	ldr r1, _0206684C ; =0x00000967
 	bx r3
 	nop
-_02066848: .word sub_0206659C
+_02066848: .word SetScriptFlag
 _0206684C: .word 0x00000967
 	thumb_func_end sub_02066840
 
 	thumb_func_start sub_02066850
 sub_02066850: ; 0x02066850
-	ldr r3, _02066858 ; =sub_020665A4
+	ldr r3, _02066858 ; =ClearScriptFlag
 	ldr r1, _0206685C ; =0x00000967
 	bx r3
 	nop
-_02066858: .word sub_020665A4
+_02066858: .word ClearScriptFlag
 _0206685C: .word 0x00000967
 	thumb_func_end sub_02066850
 
 	thumb_func_start sub_02066860
 sub_02066860: ; 0x02066860
-	ldr r3, _02066868 ; =sub_020665AC
+	ldr r3, _02066868 ; =CheckScriptFlag
 	ldr r1, _0206686C ; =0x00000967
 	bx r3
 	nop
-_02066868: .word sub_020665AC
+_02066868: .word CheckScriptFlag
 _0206686C: .word 0x00000967
 	thumb_func_end sub_02066860
 
 	thumb_func_start sub_02066870
 sub_02066870: ; 0x02066870
-	ldr r3, _02066878 ; =sub_020665AC
+	ldr r3, _02066878 ; =CheckScriptFlag
 	ldr r1, _0206687C ; =0x00000996
 	bx r3
 	nop
-_02066878: .word sub_020665AC
+_02066878: .word CheckScriptFlag
 _0206687C: .word 0x00000996
 	thumb_func_end sub_02066870
 
 	thumb_func_start sub_02066880
 sub_02066880: ; 0x02066880
-	ldr r3, _02066888 ; =sub_0206659C
+	ldr r3, _02066888 ; =SetScriptFlag
 	ldr r1, _0206688C ; =0x00000971
 	bx r3
 	nop
-_02066888: .word sub_0206659C
+_02066888: .word SetScriptFlag
 _0206688C: .word 0x00000971
 	thumb_func_end sub_02066880
 
 	thumb_func_start sub_02066890
 sub_02066890: ; 0x02066890
-	ldr r3, _02066898 ; =sub_020665A4
+	ldr r3, _02066898 ; =ClearScriptFlag
 	ldr r1, _0206689C ; =0x00000971
 	bx r3
 	nop
-_02066898: .word sub_020665A4
+_02066898: .word ClearScriptFlag
 _0206689C: .word 0x00000971
 	thumb_func_end sub_02066890
 
 	thumb_func_start sub_020668A0
 sub_020668A0: ; 0x020668A0
-	ldr r3, _020668A8 ; =sub_020665AC
+	ldr r3, _020668A8 ; =CheckScriptFlag
 	ldr r1, _020668AC ; =0x00000971
 	bx r3
 	nop
-_020668A8: .word sub_020665AC
+_020668A8: .word CheckScriptFlag
 _020668AC: .word 0x00000971
 	thumb_func_end sub_020668A0
 
 	thumb_func_start sub_020668B0
 sub_020668B0: ; 0x020668B0
-	ldr r3, _020668B8 ; =sub_020665A4
+	ldr r3, _020668B8 ; =ClearScriptFlag
 	ldr r1, _020668BC ; =0x00000972
 	bx r3
 	nop
-_020668B8: .word sub_020665A4
+_020668B8: .word ClearScriptFlag
 _020668BC: .word 0x00000972
 	thumb_func_end sub_020668B0
 
 	thumb_func_start sub_020668C0
 sub_020668C0: ; 0x020668C0
-	ldr r3, _020668C8 ; =sub_020665B4
+	ldr r3, _020668C8 ; =FlagAction
 	ldr r2, _020668CC ; =0x00000962
 	bx r3
 	nop
-_020668C8: .word sub_020665B4
+_020668C8: .word FlagAction
 _020668CC: .word 0x00000962
 	thumb_func_end sub_020668C0
 
 	thumb_func_start sub_020668D0
 sub_020668D0: ; 0x020668D0
-	ldr r3, _020668D8 ; =sub_0206659C
+	ldr r3, _020668D8 ; =SetScriptFlag
 	ldr r1, _020668DC ; =0x00000973
 	bx r3
 	nop
-_020668D8: .word sub_0206659C
+_020668D8: .word SetScriptFlag
 _020668DC: .word 0x00000973
 	thumb_func_end sub_020668D0
 
 	thumb_func_start sub_020668E0
 sub_020668E0: ; 0x020668E0
-	ldr r3, _020668E8 ; =sub_020665A4
+	ldr r3, _020668E8 ; =ClearScriptFlag
 	ldr r1, _020668EC ; =0x00000973
 	bx r3
 	nop
-_020668E8: .word sub_020665A4
+_020668E8: .word ClearScriptFlag
 _020668EC: .word 0x00000973
 	thumb_func_end sub_020668E0
 
 	thumb_func_start sub_020668F0
 sub_020668F0: ; 0x020668F0
-	ldr r3, _020668F8 ; =sub_020665AC
+	ldr r3, _020668F8 ; =CheckScriptFlag
 	ldr r1, _020668FC ; =0x00000973
 	bx r3
 	nop
-_020668F8: .word sub_020665AC
+_020668F8: .word CheckScriptFlag
 _020668FC: .word 0x00000973
 	thumb_func_end sub_020668F0
 
 	thumb_func_start sub_02066900
 sub_02066900: ; 0x02066900
-	ldr r3, _02066908 ; =sub_0206659C
+	ldr r3, _02066908 ; =SetScriptFlag
 	ldr r1, _0206690C ; =0x00000974
 	bx r3
 	nop
-_02066908: .word sub_0206659C
+_02066908: .word SetScriptFlag
 _0206690C: .word 0x00000974
 	thumb_func_end sub_02066900
 
 	thumb_func_start sub_02066910
 sub_02066910: ; 0x02066910
-	ldr r3, _02066918 ; =sub_020665A4
+	ldr r3, _02066918 ; =ClearScriptFlag
 	ldr r1, _0206691C ; =0x00000974
 	bx r3
 	nop
-_02066918: .word sub_020665A4
+_02066918: .word ClearScriptFlag
 _0206691C: .word 0x00000974
 	thumb_func_end sub_02066910
 
 	thumb_func_start sub_02066920
 sub_02066920: ; 0x02066920
-	ldr r3, _02066928 ; =sub_020665AC
+	ldr r3, _02066928 ; =CheckScriptFlag
 	ldr r1, _0206692C ; =0x00000974
 	bx r3
 	nop
-_02066928: .word sub_020665AC
+_02066928: .word CheckScriptFlag
 _0206692C: .word 0x00000974
 	thumb_func_end sub_02066920
 
@@ -23471,45 +23472,45 @@ _02066940:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, r2
-	bl sub_020665B4
+	bl FlagAction
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02066930
 
 	thumb_func_start sub_02066950
 sub_02066950: ; 0x02066950
-	ldr r3, _02066958 ; =sub_0206659C
+	ldr r3, _02066958 ; =SetScriptFlag
 	mov r1, #0x97
 	lsl r1, r1, #4
 	bx r3
 	.balign 4, 0
-_02066958: .word sub_0206659C
+_02066958: .word SetScriptFlag
 	thumb_func_end sub_02066950
 
 	thumb_func_start sub_0206695C
 sub_0206695C: ; 0x0206695C
-	ldr r3, _02066964 ; =sub_020665AC
+	ldr r3, _02066964 ; =CheckScriptFlag
 	mov r1, #0x6a
 	bx r3
 	nop
-_02066964: .word sub_020665AC
+_02066964: .word CheckScriptFlag
 	thumb_func_end sub_0206695C
 
 	thumb_func_start sub_02066968
 sub_02066968: ; 0x02066968
-	ldr r3, _02066970 ; =sub_020665AC
+	ldr r3, _02066970 ; =CheckScriptFlag
 	mov r1, #0x9c
 	bx r3
 	nop
-_02066970: .word sub_020665AC
+_02066970: .word CheckScriptFlag
 	thumb_func_end sub_02066968
 
 	thumb_func_start sub_02066974
 sub_02066974: ; 0x02066974
-	ldr r3, _0206697C ; =sub_020665AC
+	ldr r3, _0206697C ; =CheckScriptFlag
 	mov r1, #0x6b
 	bx r3
 	nop
-_0206697C: .word sub_020665AC
+_0206697C: .word CheckScriptFlag
 	thumb_func_end sub_02066974
 
 	thumb_func_start sub_02066980
@@ -23526,7 +23527,7 @@ _0206698E:
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020665AC
+	bl CheckScriptFlag
 	pop {r3, r4, r5, pc}
 	nop
 _020669A0: .word 0x0000011B
@@ -23534,11 +23535,11 @@ _020669A0: .word 0x0000011B
 
 	thumb_func_start sub_020669A4
 sub_020669A4: ; 0x020669A4
-	ldr r3, _020669AC ; =sub_020665AC
+	ldr r3, _020669AC ; =CheckScriptFlag
 	ldr r1, _020669B0 ; =0x0000096A
 	bx r3
 	nop
-_020669AC: .word sub_020665AC
+_020669AC: .word CheckScriptFlag
 _020669B0: .word 0x0000096A
 	thumb_func_end sub_020669A4
 
@@ -23554,7 +23555,7 @@ _020669BE:
 	add r1, r1, r2
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020665AC
+	bl CheckScriptFlag
 	pop {r3, pc}
 	.balign 4, 0
 _020669CC: .word 0x0000096B
@@ -23562,99 +23563,99 @@ _020669CC: .word 0x0000096B
 
 	thumb_func_start sub_020669D0
 sub_020669D0: ; 0x020669D0
-	ldr r3, _020669D8 ; =sub_020665AC
+	ldr r3, _020669D8 ; =CheckScriptFlag
 	ldr r1, _020669DC ; =0x00000981
 	bx r3
 	nop
-_020669D8: .word sub_020665AC
+_020669D8: .word CheckScriptFlag
 _020669DC: .word 0x00000981
 	thumb_func_end sub_020669D0
 
 	thumb_func_start sub_020669E0
 sub_020669E0: ; 0x020669E0
-	ldr r3, _020669E8 ; =sub_020665AC
+	ldr r3, _020669E8 ; =CheckScriptFlag
 	ldr r1, _020669EC ; =0x000009A6
 	bx r3
 	nop
-_020669E8: .word sub_020665AC
+_020669E8: .word CheckScriptFlag
 _020669EC: .word 0x000009A6
 	thumb_func_end sub_020669E0
 
 	thumb_func_start sub_020669F0
 sub_020669F0: ; 0x020669F0
-	ldr r3, _020669F8 ; =sub_020665AC
+	ldr r3, _020669F8 ; =CheckScriptFlag
 	ldr r1, _020669FC ; =0x00000982
 	bx r3
 	nop
-_020669F8: .word sub_020665AC
+_020669F8: .word CheckScriptFlag
 _020669FC: .word 0x00000982
 	thumb_func_end sub_020669F0
 
 	thumb_func_start sub_02066A00
 sub_02066A00: ; 0x02066A00
-	ldr r3, _02066A08 ; =sub_020665AC
+	ldr r3, _02066A08 ; =CheckScriptFlag
 	mov r1, #0x9a
 	bx r3
 	nop
-_02066A08: .word sub_020665AC
+_02066A08: .word CheckScriptFlag
 	thumb_func_end sub_02066A00
 
 	thumb_func_start sub_02066A0C
 sub_02066A0C: ; 0x02066A0C
-	ldr r3, _02066A14 ; =sub_020665AC
+	ldr r3, _02066A14 ; =CheckScriptFlag
 	ldr r1, _02066A18 ; =0x00000997
 	bx r3
 	nop
-_02066A14: .word sub_020665AC
+_02066A14: .word CheckScriptFlag
 _02066A18: .word 0x00000997
 	thumb_func_end sub_02066A0C
 
 	thumb_func_start sub_02066A1C
 sub_02066A1C: ; 0x02066A1C
-	ldr r3, _02066A24 ; =sub_0206659C
+	ldr r3, _02066A24 ; =SetScriptFlag
 	ldr r1, _02066A28 ; =0x0000099A
 	bx r3
 	nop
-_02066A24: .word sub_0206659C
+_02066A24: .word SetScriptFlag
 _02066A28: .word 0x0000099A
 	thumb_func_end sub_02066A1C
 
 	thumb_func_start sub_02066A2C
 sub_02066A2C: ; 0x02066A2C
-	ldr r3, _02066A34 ; =sub_020665A4
+	ldr r3, _02066A34 ; =ClearScriptFlag
 	ldr r1, _02066A38 ; =0x0000099A
 	bx r3
 	nop
-_02066A34: .word sub_020665A4
+_02066A34: .word ClearScriptFlag
 _02066A38: .word 0x0000099A
 	thumb_func_end sub_02066A2C
 
 	thumb_func_start sub_02066A3C
 sub_02066A3C: ; 0x02066A3C
-	ldr r3, _02066A44 ; =sub_020665AC
+	ldr r3, _02066A44 ; =CheckScriptFlag
 	ldr r1, _02066A48 ; =0x0000099A
 	bx r3
 	nop
-_02066A44: .word sub_020665AC
+_02066A44: .word CheckScriptFlag
 _02066A48: .word 0x0000099A
 	thumb_func_end sub_02066A3C
 
 	thumb_func_start sub_02066A4C
 sub_02066A4C: ; 0x02066A4C
-	ldr r3, _02066A54 ; =sub_020665AC
+	ldr r3, _02066A54 ; =CheckScriptFlag
 	mov r1, #0xf9
 	bx r3
 	nop
-_02066A54: .word sub_020665AC
+_02066A54: .word CheckScriptFlag
 	thumb_func_end sub_02066A4C
 
 	thumb_func_start sub_02066A58
 sub_02066A58: ; 0x02066A58
-	ldr r3, _02066A60 ; =sub_020665AC
+	ldr r3, _02066A60 ; =CheckScriptFlag
 	mov r1, #0xca
 	bx r3
 	nop
-_02066A60: .word sub_020665AC
+_02066A60: .word CheckScriptFlag
 	thumb_func_end sub_02066A58
 
 	thumb_func_start sub_02066A64
@@ -23663,10 +23664,10 @@ sub_02066A64: ; 0x02066A64
 	cmp r1, #0
 	ldr r1, _02066A78 ; =0x0000099D
 	beq _02066A72
-	bl sub_0206659C
+	bl SetScriptFlag
 	pop {r3, pc}
 _02066A72:
-	bl sub_020665A4
+	bl ClearScriptFlag
 	pop {r3, pc}
 	.balign 4, 0
 _02066A78: .word 0x0000099D
@@ -23757,51 +23758,53 @@ _02066AF8: .word GetScriptVar
 _02066AFC: .word 0x00004030
 	thumb_func_end GetStarterFromScriptState
 
-	thumb_func_start sub_02066B00
-sub_02066B00: ; 0x02066B00
+	thumb_func_start DPPtLeftover_GetRivalSpecies
+DPPtLeftover_GetRivalSpecies: ; 0x02066B00
+	; This will always return Turtwig
 	push {r3, lr}
 	ldr r1, _02066B20 ; =0x00004030
 	bl GetScriptVar
-	ldr r2, _02066B24 ; =0x00000183
+	ldr r2, _02066B24 ; =SPECIES_TURTWIG
 	cmp r0, r2
 	bne _02066B12
-	add r2, r2, #3
+	add r2, r2, #3 ; SPECIES_CHIMCHAR
 	b _02066B1A
 _02066B12:
-	add r1, r2, #3
+	add r1, r2, #3 ; SPECIES_CHIMCHAR
 	cmp r0, r1
 	bne _02066B1A
-	add r2, r2, #6
+	add r2, r2, #6 ; SPECIES_PIPLUP
 _02066B1A:
 	add r0, r2, #0
 	pop {r3, pc}
 	nop
 _02066B20: .word 0x00004030
-_02066B24: .word 0x00000183
-	thumb_func_end sub_02066B00
+_02066B24: .word SPECIES_TURTWIG
+	thumb_func_end DPPtLeftover_GetRivalSpecies
 
-	thumb_func_start sub_02066B28
-sub_02066B28: ; 0x02066B28
+	thumb_func_start DPPtLeftover_GetFriendStarterSpecies
+DPPtLeftover_GetFriendStarterSpecies: ; 0x02066B28
+	; This will always return Chimchar
 	push {r3, lr}
 	ldr r1, _02066B48 ; =0x00004030
 	bl GetScriptVar
-	ldr r2, _02066B4C ; =0x00000183
+	ldr r2, _02066B4C ; =SPECIES_TURTWIG
 	cmp r0, r2
 	bne _02066B3A
-	add r2, r2, #6
+	add r2, r2, #6 ; SPECIES_PIPLUP
 	b _02066B42
 _02066B3A:
-	add r1, r2, #3
+	add r1, r2, #3 ; SPECIES_CHIMCHAR
 	cmp r0, r1
 	beq _02066B42
-	add r2, r2, #3
+	add r2, r2, #3 ; SPECIES_CHIMCHAR
 _02066B42:
 	add r0, r2, #0
 	pop {r3, pc}
 	nop
 _02066B48: .word 0x00004030
-_02066B4C: .word 0x00000183
-	thumb_func_end sub_02066B28
+_02066B4C: .word SPECIES_TURTWIG
+	thumb_func_end DPPtLeftover_GetFriendStarterSpecies
 
 	thumb_func_start sub_02066B50
 sub_02066B50: ; 0x02066B50

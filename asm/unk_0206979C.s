@@ -2175,8 +2175,8 @@ _0206A790:
 	.balign 4, 0
 	thumb_func_end sub_0206A694
 
-	thumb_func_start sub_0206A798
-sub_0206A798: ; 0x0206A798
+	thumb_func_start FieldSys_TakePhoto
+FieldSys_TakePhoto: ; 0x0206A798
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r5, r0, #0
@@ -2222,8 +2222,8 @@ sub_0206A798: ; 0x0206A798
 _0206A7FE:
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202FA64
-	bl sub_0202FA88
+	bl Save_PhotoAlbum_get
+	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	cmp r0, #0xff
 	beq _0206A858
 	mov r1, #1
@@ -2264,7 +2264,7 @@ _0206A858:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206A85C: .word sub_0206B270
-	thumb_func_end sub_0206A798
+	thumb_func_end FieldSys_TakePhoto
 
 	thumb_func_start sub_0206A860
 sub_0206A860: ; 0x0206A860
@@ -2298,7 +2298,7 @@ sub_0206A860: ; 0x0206A860
 	add r0, #0x9a
 	strh r1, [r0]
 	ldr r0, [r5, #0xc]
-	bl sub_0202FA64
+	bl Save_PhotoAlbum_get
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -2322,7 +2322,7 @@ sub_0206A8C0: ; 0x0206A8C0
 	add r0, #0xb8
 	strb r1, [r4, #4]
 	ldr r0, [r0]
-	bl sub_0202FAB0
+	bl PhotoAlbum_GetNumSaved
 	strb r0, [r4, #5]
 	pop {r4, pc}
 	.balign 4, 0
@@ -2494,7 +2494,7 @@ sub_0206A9E8: ; 0x0206A9E8
 	ldrb r2, [r4, #0xa]
 	ldr r0, [r0]
 	add r1, #0xc
-	bl sub_0202FB14
+	bl PhotoAlbum_SetPhotoByIndex
 	add r0, r4, #0
 	add r0, #0x50
 	ldrh r0, [r0]
@@ -3293,7 +3293,7 @@ sub_0206B014: ; 0x0206B014
 	bl SavArray_PlayerParty_get
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0202FB98
+	bl Photo_init
 	add r0, sp, #0x2c
 	bl GF_RTC_CopyDate
 	ldr r0, [sp, #0x34]
@@ -4060,9 +4060,9 @@ _0206B652:
 	beq _0206B6EA
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202FA64
+	bl Save_PhotoAlbum_get
 	add r5, r0, #0
-	bl sub_0202FA88
+	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	add r6, r0, #0
 	add r0, sp, #0x20
 	bl GF_RTC_CopyDate
@@ -4093,7 +4093,7 @@ _0206B652:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x44
-	bl sub_0202FAF0
+	bl PhotoAlbum_GetPhotoByIndex
 	add r0, r4, #0
 	add r0, #0xca
 	ldrb r0, [r0]

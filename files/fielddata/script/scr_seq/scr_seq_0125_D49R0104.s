@@ -96,8 +96,8 @@ scr_seq_0125_D49R0104_00EF:
 	.byte 0x00
 
 scr_seq_0125_D49R0104_00F0:
-	.short 48, 2
-	.short 254, 0
+	step 48, 2
+	step_end
 scr_seq_0125_D49R0104_00F8:
 	play_se SEQ_SE_DP_SELECT
 	lockall

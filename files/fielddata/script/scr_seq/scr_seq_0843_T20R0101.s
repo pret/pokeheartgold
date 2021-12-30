@@ -113,46 +113,46 @@ scr_seq_0843_T20R0101_0197:
 
 
 scr_seq_0843_T20R0101_01BC:
-	.short 12, 2
-	.short 15, 1
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 15, 1
+	step 12, 1
+	step_end
 
 scr_seq_0843_T20R0101_01CC:
-	.short 12, 3
-	.short 254, 0
+	step 12, 3
+	step_end
 
 scr_seq_0843_T20R0101_01D4:
-	.short 12, 2
-	.short 14, 1
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 14, 1
+	step 12, 1
+	step_end
 
 scr_seq_0843_T20R0101_01E4:
-	.short 12, 2
-	.short 14, 2
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 14, 2
+	step 12, 1
+	step_end
 
 scr_seq_0843_T20R0101_01F4:
-	.short 75, 1
-	.short 12, 1
-	.short 65, 1
-	.short 254, 0
+	step 75, 1
+	step 12, 1
+	step 65, 1
+	step_end
 
 scr_seq_0843_T20R0101_0204:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0843_T20R0101_020C:
-	.short 1, 1
-	.short 75, 1
-	.short 33, 2
-	.short 254, 0
+	step 1, 1
+	step 75, 1
+	step 33, 2
+	step_end
 
 scr_seq_0843_T20R0101_021C:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 scr_seq_0843_T20R0101_0224:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -251,27 +251,27 @@ scr_seq_0843_T20R0101_035D:
 
 
 scr_seq_0843_T20R0101_0368:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0843_T20R0101_0370:
-	.short 13, 2
-	.short 14, 4
-	.short 32, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 4
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0380:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0388:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0390:
-	.short 65, 1
-	.short 33, 1
-	.short 254, 0
+	step 65, 1
+	step 33, 1
+	step_end
 scr_seq_0843_T20R0101_039C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -480,9 +480,9 @@ scr_seq_0843_T20R0101_064E:
 
 
 scr_seq_0843_T20R0101_0658:
-	.short 75, 1
-	.short 62, 1
-	.short 254, 0
+	step 75, 1
+	step 62, 1
+	step_end
 scr_seq_0843_T20R0101_0664:
 	scrcmd_609
 	lockall
@@ -605,50 +605,50 @@ scr_seq_0843_T20R0101_081A:
 	.byte 0x00, 0x00
 
 scr_seq_0843_T20R0101_081C:
-	.short 75, 1
-	.short 78, 6
-	.short 32, 1
-	.short 254, 0
+	step 75, 1
+	step 78, 6
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_082C:
-	.short 75, 1
-	.short 78, 5
-	.short 32, 1
-	.short 254, 0
+	step 75, 1
+	step 78, 5
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_083C:
-	.short 75, 1
-	.short 78, 4
-	.short 32, 1
-	.short 254, 0
+	step 75, 1
+	step 78, 4
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_084C:
-	.short 75, 1
-	.short 78, 3
-	.short 32, 1
-	.short 254, 0
+	step 75, 1
+	step 78, 3
+	step 32, 1
+	step_end
 	.byte 0x03, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0843_T20R0101_0864:
-	.short 79, 6
-	.short 34, 1
-	.short 254, 0
+	step 79, 6
+	step 34, 1
+	step_end
 
 scr_seq_0843_T20R0101_0870:
-	.short 79, 5
-	.short 34, 1
-	.short 254, 0
+	step 79, 5
+	step 34, 1
+	step_end
 
 scr_seq_0843_T20R0101_087C:
-	.short 79, 4
-	.short 34, 1
-	.short 254, 0
+	step 79, 4
+	step 34, 1
+	step_end
 
 scr_seq_0843_T20R0101_0888:
-	.short 79, 3
-	.short 34, 1
-	.short 254, 0
+	step 79, 3
+	step 34, 1
+	step_end
 scr_seq_0843_T20R0101_0894:
 	scrcmd_609
 	lockall
@@ -768,99 +768,99 @@ scr_seq_0843_T20R0101_0A64:
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0843_T20R0101_0A68:
-	.short 76, 8
-	.short 2, 1
-	.short 254, 0
+	step 76, 8
+	step 2, 1
+	step_end
 
 scr_seq_0843_T20R0101_0A74:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 
 scr_seq_0843_T20R0101_0A7C:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0843_T20R0101_0A84:
-	.short 63, 4
-	.short 33, 1
-	.short 254, 0
+	step 63, 4
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0A90:
-	.short 75, 1
-	.short 60, 1
-	.short 1, 1
-	.short 63, 2
-	.short 3, 1
-	.short 63, 2
-	.short 1, 1
-	.short 63, 2
-	.short 3, 1
-	.short 63, 2
-	.short 254, 0
+	step 75, 1
+	step 60, 1
+	step 1, 1
+	step 63, 2
+	step 3, 1
+	step 63, 2
+	step 1, 1
+	step 63, 2
+	step 3, 1
+	step 63, 2
+	step_end
 
 scr_seq_0843_T20R0101_0ABC:
-	.short 1, 1
-	.short 62, 1
-	.short 13, 6
-	.short 3, 1
-	.short 15, 1
-	.short 1, 1
-	.short 13, 2
-	.short 254, 0
+	step 1, 1
+	step 62, 1
+	step 13, 6
+	step 3, 1
+	step 15, 1
+	step 1, 1
+	step 13, 2
+	step_end
 
 scr_seq_0843_T20R0101_0ADC:
-	.short 16, 6
-	.short 18, 1
-	.short 48, 2
-	.short 254, 0
+	step 16, 6
+	step 18, 1
+	step 48, 2
+	step_end
 
 scr_seq_0843_T20R0101_0AEC:
-	.short 2, 1
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 66, 1
-	.short 1, 1
-	.short 254, 0
+	step 2, 1
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step 66, 1
+	step 1, 1
+	step_end
 
 scr_seq_0843_T20R0101_0B08:
-	.short 14, 1
-	.short 12, 2
-	.short 35, 1
-	.short 254, 0
+	step 14, 1
+	step 12, 2
+	step 35, 1
+	step_end
 
 scr_seq_0843_T20R0101_0B18:
-	.short 1, 1
-	.short 13, 6
-	.short 15, 1
-	.short 13, 2
-	.short 254, 0
+	step 1, 1
+	step 13, 6
+	step 15, 1
+	step 13, 2
+	step_end
 
 scr_seq_0843_T20R0101_0B2C:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0B34:
-	.short 49, 1
-	.short 71, 1
-	.short 80, 1
-	.short 72, 1
-	.short 254, 0
+	step 49, 1
+	step 71, 1
+	step 80, 1
+	step 72, 1
+	step_end
 
 scr_seq_0843_T20R0101_0B48:
-	.short 77, 1
-	.short 254, 0
+	step 77, 1
+	step_end
 
 scr_seq_0843_T20R0101_0B50:
-	.short 0, 1
-	.short 8, 1
-	.short 64, 1
-	.short 1, 1
-	.short 254, 0
+	step 0, 1
+	step 8, 1
+	step 64, 1
+	step 1, 1
+	step_end
 
 scr_seq_0843_T20R0101_0B64:
-	.short 77, 1
-	.short 254, 0
+	step 77, 1
+	step_end
 scr_seq_0843_T20R0101_0B6C:
 	scrcmd_609
 	lockall
@@ -931,45 +931,45 @@ scr_seq_0843_T20R0101_0C75:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0843_T20R0101_0C78:
-	.short 2, 1
-	.short 75, 1
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step_end
 
 scr_seq_0843_T20R0101_0C84:
-	.short 78, 3
-	.short 33, 1
-	.short 254, 0
+	step 78, 3
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0C90:
-	.short 12, 5
-	.short 15, 1
-	.short 12, 1
-	.short 34, 1
-	.short 254, 0
+	step 12, 5
+	step 15, 1
+	step 12, 1
+	step 34, 1
+	step_end
 
 scr_seq_0843_T20R0101_0CA4:
-	.short 12, 7
-	.short 254, 0
+	step 12, 7
+	step_end
 
 scr_seq_0843_T20R0101_0CAC:
-	.short 13, 1
-	.short 34, 1
-	.short 254, 0
+	step 13, 1
+	step 34, 1
+	step_end
 
 scr_seq_0843_T20R0101_0CB8:
-	.short 63, 1
-	.short 35, 1
-	.short 254, 0
+	step 63, 1
+	step 35, 1
+	step_end
 
 scr_seq_0843_T20R0101_0CC4:
-	.short 77, 3
-	.short 78, 1
-	.short 77, 4
-	.short 254, 0
+	step 77, 3
+	step 78, 1
+	step 77, 4
+	step_end
 
 scr_seq_0843_T20R0101_0CD4:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0843_T20R0101_0CDC:
 	comparevartovalue VAR_TEMP_x4006, 1
 	gotoif eq, scr_seq_0843_T20R0101_0DD2
@@ -1094,113 +1094,113 @@ scr_seq_0843_T20R0101_0EB6:
 	.byte 0x00, 0x00
 
 scr_seq_0843_T20R0101_0EB8:
-	.short 13, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 1
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0EC4:
-	.short 13, 2
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 2
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0ED4:
-	.short 13, 2
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 1
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0EE4:
-	.short 14, 1
-	.short 13, 3
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 14, 1
+	step 13, 3
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0EF8:
-	.short 15, 1
-	.short 13, 3
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 15, 1
+	step 13, 3
+	step 14, 1
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F0C:
-	.short 15, 1
-	.short 13, 1
-	.short 32, 1
-	.short 254, 0
+	step 15, 1
+	step 13, 1
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F1C:
-	.short 13, 1
-	.short 15, 2
-	.short 12, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 2
+	step 12, 1
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F30:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F38:
-	.short 49, 1
-	.short 65, 1
-	.short 48, 1
-	.short 254, 0
+	step 49, 1
+	step 65, 1
+	step 48, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F48:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F50:
-	.short 13, 1
-	.short 15, 1
-	.short 33, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 1
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F60:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0843_T20R0101_0F6C:
-	.short 12, 1
-	.short 14, 2
-	.short 32, 1
-	.short 63, 2
-	.short 71, 1
-	.short 11, 1
-	.short 32, 1
-	.short 10, 1
-	.short 72, 1
-	.short 63, 2
-	.short 254, 0
+	step 12, 1
+	step 14, 2
+	step 32, 1
+	step 63, 2
+	step 71, 1
+	step 11, 1
+	step 32, 1
+	step 10, 1
+	step 72, 1
+	step 63, 2
+	step_end
 
 scr_seq_0843_T20R0101_0F98:
-	.short 12, 1
-	.short 63, 2
-	.short 71, 1
-	.short 11, 1
-	.short 32, 1
-	.short 10, 1
-	.short 72, 1
-	.short 63, 2
-	.short 254, 0
+	step 12, 1
+	step 63, 2
+	step 71, 1
+	step 11, 1
+	step 32, 1
+	step 10, 1
+	step 72, 1
+	step 63, 2
+	step_end
 
 scr_seq_0843_T20R0101_0FBC:
-	.short 12, 1
-	.short 14, 1
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0FCC:
-	.short 13, 1
-	.short 15, 2
-	.short 33, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 2
+	step 33, 1
+	step_end
 
 scr_seq_0843_T20R0101_0FDC:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 scr_seq_0843_T20R0101_0FE4:
 	scrcmd_382 VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 220
@@ -1338,13 +1338,13 @@ scr_seq_0843_T20R0101_1112:
 
 
 scr_seq_0843_T20R0101_113C:
-	.short 14, 5
-	.short 13, 1
-	.short 254, 0
+	step 14, 5
+	step 13, 1
+	step_end
 
 scr_seq_0843_T20R0101_1148:
-	.short 12, 1
-	.short 15, 5
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 5
+	step 33, 1
+	step_end
 	.balign 4, 0

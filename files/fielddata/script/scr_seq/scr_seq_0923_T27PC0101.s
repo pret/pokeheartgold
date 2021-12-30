@@ -12,7 +12,7 @@
 
 scr_seq_0923_T27PC0101_0016:
 	setvar VAR_SPECIAL_x8007, 0
-	callstd 2002
+	callstd std_nurse_joy
 	end
 
 scr_seq_0923_T27PC0101_0022:
@@ -46,30 +46,30 @@ scr_seq_0923_T27PC0101_0083:
 	.byte 0x00
 
 scr_seq_0923_T27PC0101_0084:
-	.short 13, 4
-	.short 15, 6
-	.short 12, 2
-	.short 62, 12
-	.short 1, 1
-	.short 62, 4
-	.short 254, 0
+	step 13, 4
+	step 15, 6
+	step 12, 2
+	step 62, 12
+	step 1, 1
+	step 62, 4
+	step_end
 
 scr_seq_0923_T27PC0101_00A0:
-	.short 62, 20
-	.short 12, 4
-	.short 254, 0
+	step 62, 20
+	step 12, 4
+	step_end
 
 scr_seq_0923_T27PC0101_00AC:
-	.short 15, 1
-	.short 13, 4
-	.short 14, 1
-	.short 13, 2
-	.short 254, 0
+	step 15, 1
+	step 13, 4
+	step 14, 1
+	step 13, 2
+	step_end
 
 scr_seq_0923_T27PC0101_00C0:
-	.short 62, 6
-	.short 1, 1
-	.short 254, 0
+	step 62, 6
+	step 1, 1
+	step_end
 scr_seq_0923_T27PC0101_00CC:
 	play_se SEQ_SE_DP_SELECT
 	lockall

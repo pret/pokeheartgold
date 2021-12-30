@@ -104,11 +104,11 @@ scr_seq_0804_T07R0501_0120:
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
 scr_seq_0804_T07R0501_0138:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 21, 255, 0
-	scrcmd_751 22, 255, 1
-	scrcmd_751 20, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 21, 255, 0
+	menu_item_add 22, 255, 1
+	menu_item_add 20, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0804_T07R0501_0180
@@ -117,15 +117,15 @@ scr_seq_0804_T07R0501_0138:
 	goto scr_seq_0804_T07R0501_0A43
 
 scr_seq_0804_T07R0501_0180:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 23, 255, 0
-	scrcmd_751 24, 255, 1
-	scrcmd_751 25, 255, 2
-	scrcmd_751 26, 255, 3
-	scrcmd_751 27, 255, 4
-	scrcmd_751 28, 255, 5
-	scrcmd_751 20, 255, 6
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 23, 255, 0
+	menu_item_add 24, 255, 1
+	menu_item_add 25, 255, 2
+	menu_item_add 26, 255, 3
+	menu_item_add 27, 255, 4
+	menu_item_add 28, 255, 5
+	menu_item_add 20, 255, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0804_T07R0501_028E
@@ -142,13 +142,13 @@ scr_seq_0804_T07R0501_0180:
 	goto scr_seq_0804_T07R0501_0138
 
 scr_seq_0804_T07R0501_021C:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 29, 255, 0
-	scrcmd_751 30, 255, 1
-	scrcmd_751 31, 255, 2
-	scrcmd_751 32, 255, 3
-	scrcmd_751 20, 255, 4
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 29, 255, 0
+	menu_item_add 30, 255, 1
+	menu_item_add 31, 255, 2
+	menu_item_add 32, 255, 3
+	menu_item_add 20, 255, 4
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0804_T07R0501_05D0
@@ -480,12 +480,12 @@ scr_seq_0804_T07R0501_07FC:
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
 scr_seq_0804_T07R0501_0814:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 33, 255, 0
-	scrcmd_751 34, 255, 1
-	scrcmd_751 35, 255, 2
-	scrcmd_751 20, 255, 3
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 33, 255, 0
+	menu_item_add 34, 255, 1
+	menu_item_add 35, 255, 2
+	menu_item_add 20, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0804_T07R0501_0871

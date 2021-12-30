@@ -30,8 +30,8 @@ scr_seq_0101_D39R0103_004F:
 	.byte 0x00
 
 scr_seq_0101_D39R0103_0050:
-	.short 68, 1
-	.short 254, 0
+	step 68, 1
+	step_end
 scr_seq_0101_D39R0103_0058:
 	play_se SEQ_SE_DP_SELECT
 	lockall

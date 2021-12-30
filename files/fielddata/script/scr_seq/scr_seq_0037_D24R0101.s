@@ -86,7 +86,7 @@ scr_seq_0037_D24R0101_0134:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0037_D24R0101_0239
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0037_D24R0101_024D
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -125,7 +125,7 @@ scr_seq_0037_D24R0101_01FF:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 3
+	cameron_photo 3
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -157,35 +157,35 @@ scr_seq_0037_D24R0101_0261:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0037_D24R0101_0264:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0037_D24R0101_027C:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0037_D24R0101_0288:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0037_D24R0101_029C:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0037_D24R0101_02A8:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0037_D24R0101_02B8:
 	scrcmd_609
 	lockall
@@ -327,100 +327,100 @@ scr_seq_0037_D24R0101_0530:
 
 
 scr_seq_0037_D24R0101_0534:
-	.short 62, 1
-	.short 17, 3
-	.short 71, 1
-	.short 20, 1
-	.short 72, 1
-	.short 254, 0
+	step 62, 1
+	step 17, 3
+	step 71, 1
+	step 20, 1
+	step 72, 1
+	step_end
 
 scr_seq_0037_D24R0101_054C:
-	.short 17, 1
-	.short 254, 0
+	step 17, 1
+	step_end
 
 scr_seq_0037_D24R0101_0554:
-	.short 38, 1
-	.short 75, 1
-	.short 63, 1
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 254, 0
+	step 38, 1
+	step 75, 1
+	step 63, 1
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step_end
 
 scr_seq_0037_D24R0101_0570:
-	.short 75, 1
-	.short 63, 1
-	.short 15, 1
-	.short 37, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 15, 1
+	step 37, 1
+	step_end
 
 scr_seq_0037_D24R0101_0584:
-	.short 15, 1
-	.short 14, 2
-	.short 63, 1
-	.short 15, 2
-	.short 39, 1
-	.short 14, 1
-	.short 37, 1
-	.short 254, 0
+	step 15, 1
+	step 14, 2
+	step 63, 1
+	step 15, 2
+	step 39, 1
+	step 14, 1
+	step 37, 1
+	step_end
 
 scr_seq_0037_D24R0101_05A4:
-	.short 75, 1
-	.short 63, 1
-	.short 37, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 37, 1
+	step_end
 
 scr_seq_0037_D24R0101_05B4:
-	.short 14, 1
-	.short 13, 1
-	.short 37, 1
-	.short 254, 0
+	step 14, 1
+	step 13, 1
+	step 37, 1
+	step_end
 
 scr_seq_0037_D24R0101_05C4:
-	.short 71, 1
-	.short 57, 1
-	.short 17, 2
-	.short 72, 1
-	.short 32, 1
-	.short 254, 0
+	step 71, 1
+	step 57, 1
+	step 17, 2
+	step 72, 1
+	step 32, 1
+	step_end
 
 scr_seq_0037_D24R0101_05DC:
-	.short 71, 1
-	.short 18, 1
-	.short 72, 1
-	.short 63, 2
-	.short 33, 1
-	.short 254, 0
+	step 71, 1
+	step 18, 1
+	step 72, 1
+	step 63, 2
+	step 33, 1
+	step_end
 
 scr_seq_0037_D24R0101_05F4:
-	.short 50, 1
-	.short 63, 3
-	.short 33, 1
-	.short 254, 0
+	step 50, 1
+	step 63, 3
+	step 33, 1
+	step_end
 
 scr_seq_0037_D24R0101_0604:
-	.short 71, 1
-	.short 17, 5
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 17, 5
+	step 72, 1
+	step_end
 
 scr_seq_0037_D24R0101_0614:
-	.short 13, 3
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 3
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0037_D24R0101_0624:
-	.short 13, 4
-	.short 32, 1
-	.short 254, 0
+	step 13, 4
+	step 32, 1
+	step_end
 
 scr_seq_0037_D24R0101_0630:
-	.short 63, 2
-	.short 12, 1
-	.short 15, 1
-	.short 12, 1
-	.short 254, 0
+	step 63, 2
+	step 12, 1
+	step 15, 1
+	step 12, 1
+	step_end
 scr_seq_0037_D24R0101_0644:
 	scrcmd_056 2, 0
 	scrcmd_057 3

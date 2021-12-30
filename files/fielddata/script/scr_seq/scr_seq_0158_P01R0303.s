@@ -87,72 +87,72 @@ scr_seq_0158_P01R0303_011D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0158_P01R0303_0120:
-	.short 75, 1
-	.short 63, 1
-	.short 3, 2
-	.short 2, 2
-	.short 3, 2
-	.short 71, 1
-	.short 58, 1
-	.short 72, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 3, 2
+	step 2, 2
+	step 3, 2
+	step 71, 1
+	step 58, 1
+	step 72, 1
+	step_end
 
 scr_seq_0158_P01R0303_0144:
-	.short 0, 2
-	.short 16, 2
-	.short 3, 2
-	.short 19, 4
-	.short 1, 2
-	.short 17, 1
-	.short 254, 0
+	step 0, 2
+	step 16, 2
+	step 3, 2
+	step 19, 4
+	step 1, 2
+	step 17, 1
+	step_end
 
 scr_seq_0158_P01R0303_0160:
-	.short 0, 2
-	.short 16, 7
-	.short 254, 0
+	step 0, 2
+	step 16, 7
+	step_end
 
 scr_seq_0158_P01R0303_016C:
-	.short 75, 1
-	.short 63, 1
-	.short 2, 2
-	.short 3, 2
-	.short 2, 2
-	.short 71, 1
-	.short 59, 1
-	.short 72, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 2, 2
+	step 3, 2
+	step 2, 2
+	step 71, 1
+	step 59, 1
+	step 72, 1
+	step_end
 
 scr_seq_0158_P01R0303_0190:
-	.short 0, 2
-	.short 16, 2
-	.short 2, 2
-	.short 18, 4
-	.short 1, 2
-	.short 17, 1
-	.short 254, 0
+	step 0, 2
+	step 16, 2
+	step 2, 2
+	step 18, 4
+	step 1, 2
+	step 17, 1
+	step_end
 
 scr_seq_0158_P01R0303_01AC:
-	.short 0, 2
-	.short 16, 3
-	.short 3, 2
-	.short 19, 4
-	.short 0, 2
-	.short 16, 4
-	.short 254, 0
+	step 0, 2
+	step 16, 3
+	step 3, 2
+	step 19, 4
+	step 0, 2
+	step 16, 4
+	step_end
 
 scr_seq_0158_P01R0303_01C8:
-	.short 65, 1
-	.short 3, 2
-	.short 15, 1
-	.short 0, 2
-	.short 254, 0
+	step 65, 1
+	step 3, 2
+	step 15, 1
+	step 0, 2
+	step_end
 
 scr_seq_0158_P01R0303_01DC:
-	.short 65, 1
-	.short 2, 2
-	.short 14, 1
-	.short 0, 2
-	.short 254, 0
+	step 65, 1
+	step 2, 2
+	step 14, 1
+	step 0, 2
+	step_end
 scr_seq_0158_P01R0303_01F0:
 	scrcmd_609
 	lockall
@@ -215,13 +215,13 @@ scr_seq_0158_P01R0303_02B1:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0158_P01R0303_02B4:
-	.short 1, 2
-	.short 65, 1
-	.short 75, 1
-	.short 254, 0
+	step 1, 2
+	step 65, 1
+	step 75, 1
+	step_end
 
 scr_seq_0158_P01R0303_02C4:
-	.short 3, 2
-	.short 55, 1
-	.short 254, 0
+	step 3, 2
+	step 55, 1
+	step_end
 	.balign 4, 0

@@ -86,28 +86,28 @@ scr_seq_0048_D24R0211_011E:
 	.byte 0x00, 0x00
 
 scr_seq_0048_D24R0211_0120:
-	.short 62, 1
-	.short 15, 1
-	.short 1, 1
-	.short 75, 1
-	.short 15, 1
-	.short 13, 2
-	.short 14, 2
-	.short 0, 1
-	.short 254, 0
+	step 62, 1
+	step 15, 1
+	step 1, 1
+	step 75, 1
+	step 15, 1
+	step 13, 2
+	step 14, 2
+	step 0, 1
+	step_end
 
 scr_seq_0048_D24R0211_0144:
-	.short 63, 4
-	.short 16, 4
-	.short 19, 1
-	.short 16, 6
-	.short 18, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 4
+	step 16, 4
+	step 19, 1
+	step 16, 6
+	step 18, 1
+	step 32, 1
+	step_end
 
 scr_seq_0048_D24R0211_0160:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 scr_seq_0048_D24R0211_0168:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -119,7 +119,7 @@ scr_seq_0048_D24R0211_0168:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0048_D24R0211_0290
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0048_D24R0211_02A4
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -165,7 +165,7 @@ scr_seq_0048_D24R0211_0256:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 4
+	cameron_photo 4
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -195,42 +195,42 @@ scr_seq_0048_D24R0211_02A4:
 
 
 scr_seq_0048_D24R0211_02B8:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0048_D24R0211_02D0:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0048_D24R0211_02DC:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0048_D24R0211_02F0:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0048_D24R0211_0304:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0048_D24R0211_0310:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0048_D24R0211_0320:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -242,7 +242,7 @@ scr_seq_0048_D24R0211_0320:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0048_D24R0211_0290
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0048_D24R0211_02A4
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -288,7 +288,7 @@ scr_seq_0048_D24R0211_040E:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 4
+	cameron_photo 4
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade

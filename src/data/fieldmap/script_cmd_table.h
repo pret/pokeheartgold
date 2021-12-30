@@ -197,20 +197,20 @@ extern BOOL ScrCmd_BufferMonSpeciesName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferItemName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPocketName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTMHMMoveName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_197(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_198(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferMoveName(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferInt(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPartyMonNick(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_200(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_201(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferTrainerClassName(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferPlayerUnionAvatarClassName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferSpeciesNameCustom(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_203(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_204(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_205(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferStarterSpeciesName(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetStarterChoice(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_207(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDecorationName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_208(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_209(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_210(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferMapSecName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_211(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_212(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx);
@@ -243,12 +243,12 @@ extern BOOL ScrCmd_239(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_240(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_241(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_242(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_243(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_244(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_245(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_246(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountJohtoDexSeen(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountJohtoDexOwned(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountNationalDexSeen(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountNationalDexOwned(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_247(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_248(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_249(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_250(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_251(SCRIPTCONTEXT *ctx);
@@ -336,8 +336,8 @@ extern BOOL ScrCmd_GetPartyCount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_333(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_334(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_335(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_336(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_337(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferBerryName(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferNatureName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_338(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MovePerson(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_340(SCRIPTCONTEXT *ctx);
@@ -399,7 +399,7 @@ extern BOOL ScrCmd_395(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_396(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_397(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_398(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_399(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_400(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_401(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_402(SCRIPTCONTEXT *ctx);
@@ -423,8 +423,8 @@ extern BOOL ScrCmd_419(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_420(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_421(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_422(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_423(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_424(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckJohtoDexComplete(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckNationalDexComplete(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_425(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_426(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_427(SCRIPTCONTEXT *ctx);
@@ -477,12 +477,12 @@ extern BOOL ScrCmd_473(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_474(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_475(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_476(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_477(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NatDexFlagAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_478(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_479(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MonHasRibbon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_482(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferRibbonName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_483(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetWeekday(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_485(SCRIPTCONTEXT *ctx);
@@ -516,7 +516,7 @@ extern BOOL ScrCmd_512(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_513(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_514(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AddSpecialGameStat(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_516(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferFashionName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_517(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_518(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_519(SCRIPTCONTEXT *ctx);
@@ -580,7 +580,7 @@ extern BOOL ScrCmd_576(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_577(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_578(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_579(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_580(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferSealName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_581(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_582(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_583(SCRIPTCONTEXT *ctx);
@@ -615,10 +615,10 @@ extern BOOL ScrCmd_611(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_612(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactRandomGiftBerry(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactGiftItem(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_615(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CameronPhoto(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_616(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_617(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_618(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_619(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_620(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_621(SCRIPTCONTEXT *ctx);
@@ -626,7 +626,7 @@ extern BOOL ScrCmd_622(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_623(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_624(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_625(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_626(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferApricornName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_627(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_628(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_629(SCRIPTCONTEXT *ctx);
@@ -660,7 +660,7 @@ extern BOOL ScrCmd_656(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_657(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_658(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_659(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_660(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferTrainerName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_661(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_662(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_663(SCRIPTCONTEXT *ctx);
@@ -749,10 +749,10 @@ extern BOOL ScrCmd_745(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TouchscreenMenuHide(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TouchscreenMenuShow(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetMenuChoice(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_749(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_750(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_751(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_752(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MenuInitStdGmm(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MenuInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MenuItemAdd(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MenuExec(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_753(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_754(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_755(SCRIPTCONTEXT *ctx);
@@ -844,14 +844,14 @@ extern BOOL ScrCmd_840(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_841(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_842(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferItemNameIndef(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_844(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_845(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_846(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_847(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_848(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_849(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_850(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_851(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferItemNamePlural(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferPartyMonSpeciesNameIndef(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferSpeciesNameIndef(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferFashionNameIndef(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferTrainerClassNameIndef(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferSealNamePlural(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Capitalize(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_852(SCRIPTCONTEXT *ctx);
 
 const ScrCmdFunc gScriptCmdTable[] = {
@@ -1052,20 +1052,20 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferItemName,
     ScrCmd_BufferPocketName,
     ScrCmd_BufferTMHMMoveName,
-    ScrCmd_197,
-    ScrCmd_198,
+    ScrCmd_BufferMoveName,
+    ScrCmd_BufferInt,
     ScrCmd_BufferPartyMonNick,
-    ScrCmd_200,
-    ScrCmd_201,
+    ScrCmd_BufferTrainerClassName,
+    ScrCmd_BufferPlayerUnionAvatarClassName,
     ScrCmd_BufferSpeciesNameCustom,
-    ScrCmd_203,
-    ScrCmd_204,
-    ScrCmd_205,
+    ScrCmd_BufferStarterSpeciesName,
+    ScrCmd_BufferDPPtRivalStarterSpeciesName,
+    ScrCmd_BufferDPPtFriendStarterSpeciesName,
     ScrCmd_GetStarterChoice,
-    ScrCmd_207,
+    ScrCmd_BufferDecorationName,
     ScrCmd_208,
     ScrCmd_209,
-    ScrCmd_210,
+    ScrCmd_BufferMapSecName,
     ScrCmd_211,
     ScrCmd_212,
     ScrCmd_TrainerBattle,
@@ -1098,12 +1098,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_240,
     ScrCmd_241,
     ScrCmd_242,
-    ScrCmd_243,
-    ScrCmd_244,
-    ScrCmd_245,
-    ScrCmd_246,
+    ScrCmd_CountJohtoDexSeen,
+    ScrCmd_CountJohtoDexOwned,
+    ScrCmd_CountNationalDexSeen,
+    ScrCmd_CountNationalDexOwned,
     ScrCmd_247,
-    ScrCmd_248,
+    ScrCmd_GetDexEvalResult,
     ScrCmd_249,
     ScrCmd_250,
     ScrCmd_251,
@@ -1191,8 +1191,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_333,
     ScrCmd_334,
     ScrCmd_335,
-    ScrCmd_336,
-    ScrCmd_337,
+    ScrCmd_BufferBerryName,
+    ScrCmd_BufferNatureName,
     ScrCmd_338,
     ScrCmd_MovePerson,
     ScrCmd_340,
@@ -1254,7 +1254,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_396,
     ScrCmd_397,
     ScrCmd_398,
-    ScrCmd_399,
+    ScrCmd_BufferPartyMonMoveName,
     ScrCmd_400,
     ScrCmd_401,
     ScrCmd_402,
@@ -1278,8 +1278,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_420,
     ScrCmd_421,
     ScrCmd_422,
-    ScrCmd_423,
-    ScrCmd_424,
+    ScrCmd_CheckJohtoDexComplete,
+    ScrCmd_CheckNationalDexComplete,
     ScrCmd_425,
     ScrCmd_426,
     ScrCmd_427,
@@ -1332,12 +1332,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_474,
     ScrCmd_475,
     ScrCmd_476,
-    ScrCmd_477,
+    ScrCmd_NatDexFlagAction,
     ScrCmd_478,
     ScrCmd_479,
     ScrCmd_MonHasRibbon,
     ScrCmd_GiveRibbon,
-    ScrCmd_482,
+    ScrCmd_BufferRibbonName,
     ScrCmd_483,
     ScrCmd_GetWeekday,
     ScrCmd_485,
@@ -1371,7 +1371,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_513,
     ScrCmd_514,
     ScrCmd_AddSpecialGameStat,
-    ScrCmd_516,
+    ScrCmd_BufferFashionName,
     ScrCmd_517,
     ScrCmd_518,
     ScrCmd_519,
@@ -1435,7 +1435,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_577,
     ScrCmd_578,
     ScrCmd_579,
-    ScrCmd_580,
+    ScrCmd_BufferSealName,
     ScrCmd_581,
     ScrCmd_582,
     ScrCmd_583,
@@ -1470,10 +1470,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_612,
     ScrCmd_GetPhoneContactRandomGiftBerry,
     ScrCmd_GetPhoneContactGiftItem,
-    ScrCmd_615,
+    ScrCmd_CameronPhoto,
     ScrCmd_616,
     ScrCmd_617,
-    ScrCmd_618,
+    ScrCmd_PhotoAlbumIsFull,
     ScrCmd_619,
     ScrCmd_620,
     ScrCmd_621,
@@ -1481,7 +1481,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_623,
     ScrCmd_624,
     ScrCmd_625,
-    ScrCmd_626,
+    ScrCmd_BufferApricornName,
     ScrCmd_627,
     ScrCmd_628,
     ScrCmd_629,
@@ -1515,7 +1515,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_657,
     ScrCmd_658,
     ScrCmd_659,
-    ScrCmd_660,
+    ScrCmd_BufferTrainerName,
     ScrCmd_661,
     ScrCmd_662,
     ScrCmd_663,
@@ -1604,10 +1604,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_TouchscreenMenuHide,
     ScrCmd_TouchscreenMenuShow,
     ScrCmd_GetMenuChoice,
-    ScrCmd_749,
-    ScrCmd_750,
-    ScrCmd_751,
-    ScrCmd_752,
+    ScrCmd_MenuInitStdGmm,
+    ScrCmd_MenuInit,
+    ScrCmd_MenuItemAdd,
+    ScrCmd_MenuExec,
     ScrCmd_753,
     ScrCmd_754,
     ScrCmd_755,
@@ -1699,14 +1699,14 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_841,
     ScrCmd_842,
     ScrCmd_BufferItemNameIndef,
-    ScrCmd_844,
-    ScrCmd_845,
-    ScrCmd_846,
-    ScrCmd_847,
-    ScrCmd_848,
-    ScrCmd_849,
-    ScrCmd_850,
-    ScrCmd_851,
+    ScrCmd_BufferItemNamePlural,
+    ScrCmd_BufferPartyMonSpeciesNameIndef,
+    ScrCmd_BufferSpeciesNameIndef,
+    ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef,
+    ScrCmd_BufferFashionNameIndef,
+    ScrCmd_BufferTrainerClassNameIndef,
+    ScrCmd_BufferSealNamePlural,
+    ScrCmd_Capitalize,
     ScrCmd_852,
 };
 const u32 sNumScriptCmds = NELEMS(gScriptCmdTable);

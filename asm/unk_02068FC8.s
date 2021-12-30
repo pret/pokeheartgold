@@ -267,7 +267,7 @@ sub_020691E8: ; 0x020691E8
 _02069216:
 	add r0, r7, #0
 	bl Sav2_Pokedex_get
-	bl sub_02029F48
+	bl Pokedex_NationalDexIsComplete
 	cmp r0, #0
 	beq _0206922A
 	add r0, r4, #1

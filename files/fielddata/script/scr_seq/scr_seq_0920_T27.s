@@ -51,7 +51,7 @@ scr_seq_0920_T27_007A:
 	scrcmd_308 1
 	apply_movement 255, scr_seq_0920_T27_00D0
 	wait_movement
-	scrcmd_098 253
+	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0920_T27_00B6
@@ -61,7 +61,7 @@ scr_seq_0920_T27_007A:
 scr_seq_0920_T27_00B6:
 	scrcmd_607
 scr_seq_0920_T27_00B8:
-	scrcmd_099 253
+	release 253
 	setvar VAR_UNK_4079, 0
 	scrcmd_311 1
 	scrcmd_308 1
@@ -73,9 +73,9 @@ scr_seq_0920_T27_00CF:
 	.byte 0x00
 
 scr_seq_0920_T27_00D0:
-	.short 17, 2
-	.short 63, 1
-	.short 254, 0
+	step 17, 2
+	step 63, 1
+	step_end
 scr_seq_0920_T27_00DC:
 	scrcmd_609
 	lockall
@@ -128,40 +128,40 @@ scr_seq_0920_T27_0194:
 	.byte 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0920_T27_019C:
-	.short 71, 1
-	.short 17, 1
-	.short 36, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 17, 1
+	step 36, 1
+	step 72, 1
+	step_end
 
 scr_seq_0920_T27_01B0:
-	.short 0, 1
-	.short 71, 1
-	.short 17, 1
-	.short 72, 1
-	.short 254, 0
+	step 0, 1
+	step 71, 1
+	step 17, 1
+	step 72, 1
+	step_end
 
 scr_seq_0920_T27_01C4:
-	.short 75, 1
-	.short 63, 1
-	.short 33, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 33, 1
+	step_end
 
 scr_seq_0920_T27_01D4:
-	.short 17, 1
-	.short 37, 1
-	.short 254, 0
+	step 17, 1
+	step 37, 1
+	step_end
 
 scr_seq_0920_T27_01E0:
-	.short 10, 3
-	.short 63, 3
-	.short 18, 6
-	.short 254, 0
+	step 10, 3
+	step 63, 3
+	step 18, 6
+	step_end
 
 scr_seq_0920_T27_01F0:
-	.short 63, 3
-	.short 34, 1
-	.short 254, 0
+	step 63, 3
+	step 34, 1
+	step_end
 scr_seq_0920_T27_01FC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -183,7 +183,7 @@ scr_seq_0920_T27_020F:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0920_T27_0314
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0920_T27_0328
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -222,7 +222,7 @@ scr_seq_0920_T27_02DA:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 19
+	cameron_photo 19
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -252,35 +252,35 @@ scr_seq_0920_T27_0328:
 
 
 scr_seq_0920_T27_033C:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0920_T27_0354:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0920_T27_0360:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0920_T27_0374:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0920_T27_0380:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0920_T27_0390:
 	scrcmd_055 11, 0, 18, VAR_SPECIAL_x800C
 	scrcmd_057 3

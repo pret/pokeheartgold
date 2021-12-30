@@ -126,87 +126,87 @@ scr_seq_0088_D35R0101_0213:
 	.byte 0x00
 
 scr_seq_0088_D35R0101_0214:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0088_D35R0101_021C:
-	.short 71, 1
-	.short 23, 2
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 23, 2
+	step 72, 1
+	step_end
 
 scr_seq_0088_D35R0101_022C:
-	.short 63, 3
-	.short 1, 2
-	.short 13, 1
-	.short 63, 5
-	.short 254, 0
+	step 63, 3
+	step 1, 2
+	step 13, 1
+	step 63, 5
+	step_end
 
 scr_seq_0088_D35R0101_0240:
-	.short 0, 2
-	.short 12, 4
-	.short 3, 2
-	.short 15, 1
-	.short 0, 2
-	.short 63, 5
-	.short 254, 0
+	step 0, 2
+	step 12, 4
+	step 3, 2
+	step 15, 1
+	step 0, 2
+	step 63, 5
+	step_end
 
 scr_seq_0088_D35R0101_025C:
-	.short 63, 1
-	.short 12, 4
-	.short 254, 0
+	step 63, 1
+	step 12, 4
+	step_end
 
 scr_seq_0088_D35R0101_0268:
-	.short 75, 1
-	.short 63, 1
-	.short 71, 1
-	.short 22, 2
-	.short 72, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 71, 1
+	step 22, 2
+	step 72, 1
+	step_end
 
 scr_seq_0088_D35R0101_0280:
-	.short 12, 1
-	.short 3, 2
-	.short 63, 2
-	.short 254, 0
+	step 12, 1
+	step 3, 2
+	step 63, 2
+	step_end
 
 scr_seq_0088_D35R0101_0290:
-	.short 3, 2
-	.short 75, 1
-	.short 254, 0
+	step 3, 2
+	step 75, 1
+	step_end
 
 scr_seq_0088_D35R0101_029C:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 
 scr_seq_0088_D35R0101_02A4:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 
 scr_seq_0088_D35R0101_02AC:
-	.short 23, 2
-	.short 71, 1
-	.short 22, 2
-	.short 72, 1
-	.short 254, 0
+	step 23, 2
+	step 71, 1
+	step 22, 2
+	step 72, 1
+	step_end
 
 scr_seq_0088_D35R0101_02C0:
-	.short 63, 3
-	.short 1, 2
-	.short 254, 0
+	step 63, 3
+	step 1, 2
+	step_end
 
 scr_seq_0088_D35R0101_02CC:
-	.short 63, 3
-	.short 0, 2
-	.short 12, 2
-	.short 254, 0
+	step 63, 3
+	step 0, 2
+	step 12, 2
+	step_end
 
 scr_seq_0088_D35R0101_02DC:
-	.short 63, 3
-	.short 12, 2
-	.short 3, 2
-	.short 15, 1
-	.short 254, 0
+	step 63, 3
+	step 12, 2
+	step 3, 2
+	step 15, 1
+	step_end
 scr_seq_0088_D35R0101_02F0:
 	end
 

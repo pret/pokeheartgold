@@ -128,15 +128,15 @@ scr_seq_0251_R39R0201_01C2:
 	scrcmd_134 32772, 32768
 	scrcmd_134 32773, 32769
 	scrcmd_134 32774, 32770
-	scrcmd_850 0, 32772
+	buffer_seal_name_plural 0, VAR_SPECIAL_x8004
 	npc_msg 20
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	scrcmd_850 0, 32773
+	buffer_seal_name_plural 0, VAR_SPECIAL_x8005
 	npc_msg 20
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	scrcmd_850 0, 32774
+	buffer_seal_name_plural 0, VAR_SPECIAL_x8006
 	npc_msg 20
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -155,12 +155,12 @@ scr_seq_0251_R39R0201_0217:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00
 
 scr_seq_0251_R39R0201_021C:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0251_R39R0201_0224:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 scr_seq_0251_R39R0201_022C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

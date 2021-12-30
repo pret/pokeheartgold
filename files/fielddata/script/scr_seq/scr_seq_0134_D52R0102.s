@@ -137,36 +137,36 @@ scr_seq_0134_D52R0102_01A3:
 	.byte 0x00
 
 scr_seq_0134_D52R0102_01A4:
-	.short 12, 8
-	.short 32, 1
-	.short 254, 0
+	step 12, 8
+	step 32, 1
+	step_end
 
 scr_seq_0134_D52R0102_01B0:
-	.short 33, 1
-	.short 13, 1
-	.short 254, 0
+	step 33, 1
+	step 13, 1
+	step_end
 
 scr_seq_0134_D52R0102_01BC:
-	.short 12, 10
-	.short 32, 1
-	.short 254, 0
+	step 12, 10
+	step 32, 1
+	step_end
 
 scr_seq_0134_D52R0102_01C8:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0134_D52R0102_01D0:
-	.short 33, 1
-	.short 9, 2
-	.short 32, 1
-	.short 254, 0
+	step 33, 1
+	step 9, 2
+	step 32, 1
+	step_end
 
 scr_seq_0134_D52R0102_01E0:
-	.short 12, 2
-	.short 32, 1
-	.short 254, 0
+	step 12, 2
+	step 32, 1
+	step_end
 
 scr_seq_0134_D52R0102_01EC:
-	.short 13, 8
-	.short 254, 0
+	step 13, 8
+	step_end
 	.balign 4, 0

@@ -90,6 +90,6 @@ scr_seq_0181_R05R0202_00FF:
 	.byte 0x00
 
 scr_seq_0181_R05R0202_0100:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 	.balign 4, 0

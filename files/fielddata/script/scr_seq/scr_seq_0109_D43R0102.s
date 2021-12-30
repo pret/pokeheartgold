@@ -28,6 +28,6 @@ scr_seq_0109_D43R0102_0045:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0109_D43R0102_0048:
-	.short 68, 1
-	.short 254, 0
+	step 68, 1
+	step_end
 	.balign 4, 0

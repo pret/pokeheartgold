@@ -15,14 +15,14 @@ scr_seq_0263_0006:
 	checkflag FLAG_UNK_0FF
 	gotoif TRUE, scr_seq_0263_0038
 	setflag FLAG_UNK_0FF
-	scrcmd_198 0, 1
+	buffer_int 0, 1
 	npc_msg 15
 	goto scr_seq_0263_0048
 
 scr_seq_0263_0036:
 	.byte 0x02, 0x00
 scr_seq_0263_0038:
-	scrcmd_198 0, 1
+	buffer_int 0, 1
 	npc_msg 0
 	goto scr_seq_0263_0048
 
@@ -31,11 +31,11 @@ scr_seq_0263_0046:
 scr_seq_0263_0048:
 	npc_msg 1
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 2, 255, 0
-	scrcmd_751 3, 255, 1
-	scrcmd_751 4, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 2, 255, 0
+	menu_item_add 3, 255, 1
+	menu_item_add 4, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0263_0097
@@ -46,7 +46,7 @@ scr_seq_0263_0048:
 scr_seq_0263_0095:
 	.byte 0x02, 0x00
 scr_seq_0263_0097:
-	scrcmd_198 2, 1
+	buffer_int 2, 1
 	npc_msg 7
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -74,7 +74,7 @@ scr_seq_0263_0097:
 	call scr_seq_0263_019D
 	comparevartovalue VAR_SPECIAL_x8000, 0
 	gotoif eq, scr_seq_0263_01CE
-	scrcmd_198 0, 32768
+	buffer_int 0, VAR_SPECIAL_x8000
 	npc_msg 11
 	comparevartovalue VAR_TEMP_x4001, 0
 	callif ne, scr_seq_0263_01D9
@@ -148,9 +148,9 @@ scr_seq_0263_01D9:
 	goto scr_seq_0263_01F6
 
 scr_seq_0263_01F1:
-	scrcmd_844 0, 16384
+	buffer_item_name_plural 0, VAR_TEMP_x4000
 scr_seq_0263_01F6:
-	scrcmd_198 1, 16385
+	buffer_int 1, VAR_TEMP_x4001
 	hasspaceforitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0263_02BD
@@ -168,9 +168,9 @@ scr_seq_0263_0225:
 	goto scr_seq_0263_0242
 
 scr_seq_0263_023D:
-	scrcmd_844 0, 16386
+	buffer_item_name_plural 0, VAR_TEMP_x4002
 scr_seq_0263_0242:
-	scrcmd_198 1, 16387
+	buffer_int 1, VAR_TEMP_x4003
 	hasspaceforitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0263_02BD
@@ -188,9 +188,9 @@ scr_seq_0263_0271:
 	goto scr_seq_0263_028E
 
 scr_seq_0263_0289:
-	scrcmd_844 0, 16388
+	buffer_item_name_plural 0, VAR_TEMP_x4004
 scr_seq_0263_028E:
-	scrcmd_198 1, 16389
+	buffer_int 1, VAR_TEMP_x4005
 	hasspaceforitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0263_02BD

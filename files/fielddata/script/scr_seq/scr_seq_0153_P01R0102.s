@@ -80,13 +80,13 @@ scr_seq_0153_P01R0102_0101:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0153_P01R0102_0104:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0153_P01R0102_010C:
-	.short 14, 1
-	.short 33, 1
-	.short 254, 0
+	step 14, 1
+	step 33, 1
+	step_end
 scr_seq_0153_P01R0102_0118:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -109,8 +109,8 @@ scr_seq_0153_P01R0102_0129:
 
 
 scr_seq_0153_P01R0102_0144:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0153_P01R0102_014C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -169,38 +169,38 @@ scr_seq_0153_P01R0102_0211:
 
 
 scr_seq_0153_P01R0102_021C:
-	.short 2, 1
-	.short 14, 1
-	.short 35, 1
-	.short 254, 0
+	step 2, 1
+	step 14, 1
+	step 35, 1
+	step_end
 
 scr_seq_0153_P01R0102_022C:
-	.short 3, 1
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 3, 1
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0153_P01R0102_023C:
-	.short 3, 1
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 3, 1
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0153_P01R0102_024C:
-	.short 14, 1
-	.short 0, 1
-	.short 12, 2
-	.short 254, 0
+	step 14, 1
+	step 0, 1
+	step 12, 2
+	step_end
 
 scr_seq_0153_P01R0102_025C:
-	.short 15, 1
-	.short 0, 1
-	.short 12, 2
-	.short 254, 0
+	step 15, 1
+	step 0, 1
+	step 12, 2
+	step_end
 
 scr_seq_0153_P01R0102_026C:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 scr_seq_0153_P01R0102_0274:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -262,7 +262,7 @@ scr_seq_0153_P01R0102_0322:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0153_P01R0102_0383
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0153_P01R0102_038E
 	npc_msg 10
@@ -270,7 +270,7 @@ scr_seq_0153_P01R0102_0322:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 88
+	cameron_photo 88
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0

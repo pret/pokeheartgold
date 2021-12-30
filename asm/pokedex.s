@@ -1,45 +1,54 @@
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.rodata
 
 _020F6764:
-	.byte 0x97, 0x00, 0xFB, 0x00
+	.short SPECIES_MEW
+	.short SPECIES_CELEBI
 _020F6768:
-	.byte 0x97, 0x00, 0xFB, 0x00, 0x81, 0x01, 0x82, 0x01
-	.byte 0xE9, 0x01, 0xEA, 0x01, 0xEB, 0x01, 0xEC, 0x01, 0xED, 0x01, 0x00, 0x00
+	.short SPECIES_MEW
+	.short SPECIES_CELEBI
+	.short SPECIES_JIRACHI
+	.short SPECIES_DEOXYS
+	.short SPECIES_PHIONE
+	.short SPECIES_MANAPHY
+	.short SPECIES_DARKRAI
+	.short SPECIES_SHAYMIN
+	.short SPECIES_ARCEUS
 
 	.text
 
-	thumb_func_start sub_020293E0
-sub_020293E0: ; 0x020293E0
+	thumb_func_start Save_Pokedex_sizeof
+Save_Pokedex_sizeof: ; 0x020293E0
 	mov r0, #0xd
 	lsl r0, r0, #6
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020293E0
+	thumb_func_end Save_Pokedex_sizeof
 
-	thumb_func_start sub_020293E8
-sub_020293E8: ; 0x020293E8
+	thumb_func_start Pokedex_new
+Pokedex_new: ; 0x020293E8
 	push {r4, lr}
 	mov r1, #0xd
 	lsl r1, r1, #6
 	bl AllocFromHeap
 	add r4, r0, #0
-	bl sub_02029D98
+	bl Save_Pokedex_init
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_020293E8
+	thumb_func_end Pokedex_new
 
-	thumb_func_start sub_020293FC
-sub_020293FC: ; 0x020293FC
+	thumb_func_start Pokedex_copy
+Pokedex_copy: ; 0x020293FC
 	ldr r3, _02029404 ; =MI_CpuCopy8
 	mov r2, #0xd
 	lsl r2, r2, #6
 	bx r3
 	.balign 4, 0
 _02029404: .word MI_CpuCopy8
-	thumb_func_end sub_020293FC
+	thumb_func_end Pokedex_copy
 
 ; Was inlined in Diamond, not anymore
 	thumb_func_start DexSpeciesIsInvalid
@@ -1376,8 +1385,8 @@ _02029D32:
 	.balign 4, 0
 	thumb_func_end sub_02029D0C
 
-	thumb_func_start sub_02029D50
-sub_02029D50: ; 0x02029D50
+	thumb_func_start SpeciesIsNotNationalMythical
+SpeciesIsNotNationalMythical: ; 0x02029D50
 	push {r4, r5}
 	mov r3, #0
 	ldr r5, _02029D70 ; =_020F6768
@@ -1398,10 +1407,10 @@ _02029D62:
 	bx lr
 	.balign 4, 0
 _02029D70: .word _020F6768
-	thumb_func_end sub_02029D50
+	thumb_func_end SpeciesIsNotNationalMythical
 
-	thumb_func_start sub_02029D74
-sub_02029D74: ; 0x02029D74
+	thumb_func_start SpeciesIsNotJohtoMythical
+SpeciesIsNotJohtoMythical: ; 0x02029D74
 	push {r4, r5}
 	mov r3, #0
 	ldr r5, _02029D94 ; =_020F6764
@@ -1422,10 +1431,10 @@ _02029D86:
 	bx lr
 	.balign 4, 0
 _02029D94: .word _020F6764
-	thumb_func_end sub_02029D74
+	thumb_func_end SpeciesIsNotJohtoMythical
 
-	thumb_func_start sub_02029D98
-sub_02029D98: ; 0x02029D98
+	thumb_func_start Save_Pokedex_init
+Save_Pokedex_init: ; 0x02029D98
 	push {r4, lr}
 	mov r2, #0xd
 	mov r1, #0
@@ -1479,10 +1488,10 @@ sub_02029D98: ; 0x02029D98
 	.balign 4, 0
 _02029E04: .word 0xBEEFCAFE
 _02029E08: .word 0x00000337
-	thumb_func_end sub_02029D98
+	thumb_func_end Save_Pokedex_init
 
-	thumb_func_start sub_02029E0C
-sub_02029E0C: ; 0x02029E0C
+	thumb_func_start Pokedex_CountNationalDexOwned
+Pokedex_CountNationalDexOwned: ; 0x02029E0C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r1, [r6]
@@ -1512,10 +1521,10 @@ _02029E32:
 	nop
 _02029E40: .word 0xBEEFCAFE
 _02029E44: .word 0x000001ED
-	thumb_func_end sub_02029E0C
+	thumb_func_end Pokedex_CountNationalDexOwned
 
-	thumb_func_start sub_02029E48
-sub_02029E48: ; 0x02029E48
+	thumb_func_start Pokedex_CountNationalDexSeen
+Pokedex_CountNationalDexSeen: ; 0x02029E48
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r1, [r6]
@@ -1545,7 +1554,7 @@ _02029E6E:
 	nop
 _02029E7C: .word 0xBEEFCAFE
 _02029E80: .word 0x000001ED
-	thumb_func_end sub_02029E48
+	thumb_func_end Pokedex_CountNationalDexSeen
 
 	thumb_func_start sub_02029E84
 sub_02029E84: ; 0x02029E84
@@ -1555,16 +1564,16 @@ sub_02029E84: ; 0x02029E84
 	cmp r0, #0
 	beq _02029E98
 	add r0, r4, #0
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 	pop {r4, pc}
 _02029E98:
 	add r0, r4, #0
-	bl sub_02029EA0
+	bl Pokedex_CountJohtoDexOwned
 	pop {r4, pc}
 	thumb_func_end sub_02029E84
 
-	thumb_func_start sub_02029EA0
-sub_02029EA0: ; 0x02029EA0
+	thumb_func_start Pokedex_CountJohtoDexOwned
+Pokedex_CountJohtoDexOwned: ; 0x02029EA0
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	ldr r1, [r7]
@@ -1604,10 +1613,10 @@ _02029ED4:
 	nop
 _02029EEC: .word 0xBEEFCAFE
 _02029EF0: .word 0x000001ED
-	thumb_func_end sub_02029EA0
+	thumb_func_end Pokedex_CountJohtoDexOwned
 
-	thumb_func_start sub_02029EF4
-sub_02029EF4: ; 0x02029EF4
+	thumb_func_start Pokedex_CountJohtoDexSeen
+Pokedex_CountJohtoDexSeen: ; 0x02029EF4
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	ldr r1, [r7]
@@ -1647,12 +1656,12 @@ _02029F28:
 	nop
 _02029F40: .word 0xBEEFCAFE
 _02029F44: .word 0x000001ED
-	thumb_func_end sub_02029EF4
+	thumb_func_end Pokedex_CountJohtoDexSeen
 
-	thumb_func_start sub_02029F48
-sub_02029F48: ; 0x02029F48
+	thumb_func_start Pokedex_NationalDexIsComplete
+Pokedex_NationalDexIsComplete: ; 0x02029F48
 	push {r3, lr}
-	bl sub_02029F74
+	bl Pokedex_CountNationalOwned_ExcludeMythical
 	mov r1, #0x79
 	lsl r1, r1, #2
 	cmp r0, r1
@@ -1663,12 +1672,12 @@ _02029F5A:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02029F48
+	thumb_func_end Pokedex_NationalDexIsComplete
 
-	thumb_func_start sub_02029F60
-sub_02029F60: ; 0x02029F60
+	thumb_func_start Pokedex_JohtoDexIsComplete
+Pokedex_JohtoDexIsComplete: ; 0x02029F60
 	push {r3, lr}
-	bl sub_02029FAC
+	bl Pokedex_CountJohtoOwned_ExcludeMythical
 	cmp r0, #0xfe
 	blo _02029F6E
 	mov r0, #1
@@ -1677,10 +1686,10 @@ _02029F6E:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02029F60
+	thumb_func_end Pokedex_JohtoDexIsComplete
 
-	thumb_func_start sub_02029F74
-sub_02029F74: ; 0x02029F74
+	thumb_func_start Pokedex_CountNationalOwned_ExcludeMythical
+Pokedex_CountNationalOwned_ExcludeMythical: ; 0x02029F74
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, _02029FA8 ; =0x000001ED
 	add r6, r0, #0
@@ -1695,7 +1704,7 @@ _02029F7E:
 	bne _02029F9E
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02029D50
+	bl SpeciesIsNotNationalMythical
 	cmp r0, #1
 	bne _02029F9E
 	add r0, r5, #1
@@ -1709,10 +1718,10 @@ _02029F9E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02029FA8: .word 0x000001ED
-	thumb_func_end sub_02029F74
+	thumb_func_end Pokedex_CountNationalOwned_ExcludeMythical
 
-	thumb_func_start sub_02029FAC
-sub_02029FAC: ; 0x02029FAC
+	thumb_func_start Pokedex_CountJohtoOwned_ExcludeMythical
+Pokedex_CountJohtoOwned_ExcludeMythical: ; 0x02029FAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	bl LoadSpeciesToJohtoDexNoLUT
@@ -1730,7 +1739,7 @@ _02029FBA:
 	cmp r0, #0
 	beq _02029FDE
 	add r0, r4, #0
-	bl sub_02029D74
+	bl SpeciesIsNotJohtoMythical
 	cmp r0, #1
 	bne _02029FDE
 	add r0, r5, #1
@@ -1749,7 +1758,7 @@ _02029FDE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02029FF4: .word 0x000001ED
-	thumb_func_end sub_02029FAC
+	thumb_func_end Pokedex_CountJohtoOwned_ExcludeMythical
 
 	thumb_func_start Pokedex_CheckMonCaughtFlag
 Pokedex_CheckMonCaughtFlag: ; 0x02029FF8

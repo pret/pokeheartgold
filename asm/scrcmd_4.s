@@ -246,8 +246,8 @@ ScrCmd_BufferTMHMMoveName: ; 0x02048580
 	.balign 4, 0
 	thumb_func_end ScrCmd_BufferTMHMMoveName
 
-	thumb_func_start ScrCmd_197
-ScrCmd_197: ; 0x020485BC
+	thumb_func_start ScrCmd_BufferMoveName
+ScrCmd_BufferMoveName: ; 0x020485BC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -272,10 +272,10 @@ ScrCmd_197: ; 0x020485BC
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_197
+	thumb_func_end ScrCmd_BufferMoveName
 
-	thumb_func_start ScrCmd_198
-ScrCmd_198: ; 0x020485F4
+	thumb_func_start ScrCmd_BufferInt
+ScrCmd_BufferInt: ; 0x020485F4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -307,7 +307,7 @@ ScrCmd_198: ; 0x020485F4
 	mov r0, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_198
+	thumb_func_end ScrCmd_BufferInt
 
 	thumb_func_start ScrCmd_541
 ScrCmd_541: ; 0x0204863C
@@ -476,8 +476,8 @@ ScrCmd_506: ; 0x02048738
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_506
 
-	thumb_func_start ScrCmd_200
-ScrCmd_200: ; 0x02048794
+	thumb_func_start ScrCmd_BufferTrainerClassName
+ScrCmd_BufferTrainerClassName: ; 0x02048794
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -502,10 +502,10 @@ ScrCmd_200: ; 0x02048794
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_200
+	thumb_func_end ScrCmd_BufferTrainerClassName
 
-	thumb_func_start ScrCmd_201
-ScrCmd_201: ; 0x020487CC
+	thumb_func_start ScrCmd_BufferPlayerUnionAvatarClassName
+ScrCmd_BufferPlayerUnionAvatarClassName: ; 0x020487CC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r0, #0x80
@@ -537,7 +537,7 @@ ScrCmd_201: ; 0x020487CC
 	bl BufferTrainerClassNameWithArticle
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_201
+	thumb_func_end ScrCmd_BufferPlayerUnionAvatarClassName
 
 	thumb_func_start ScrCmd_BufferSpeciesNameCustom
 ScrCmd_BufferSpeciesNameCustom: ; 0x02048818
@@ -570,7 +570,7 @@ ScrCmd_BufferSpeciesNameCustom: ; 0x02048818
 	ldrb r5, [r1]
 	add r0, r6, #0
 	mov r1, #4
-	bl sub_02048880
+	bl _get_species_name
 	add r6, r0, #0
 	str r5, [sp]
 	mov r0, #2
@@ -588,8 +588,8 @@ ScrCmd_BufferSpeciesNameCustom: ; 0x02048818
 	.balign 4, 0
 	thumb_func_end ScrCmd_BufferSpeciesNameCustom
 
-	thumb_func_start sub_02048880
-sub_02048880: ; 0x02048880
+	thumb_func_start _get_species_name
+_get_species_name: ; 0x02048880
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r3, r1, #0
@@ -605,10 +605,10 @@ sub_02048880: ; 0x02048880
 	bl DestroyMsgData
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02048880
+	thumb_func_end _get_species_name
 
-	thumb_func_start ScrCmd_203
-ScrCmd_203: ; 0x020488A4
+	thumb_func_start ScrCmd_BufferStarterSpeciesName
+ScrCmd_BufferStarterSpeciesName: ; 0x020488A4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -627,7 +627,7 @@ ScrCmd_203: ; 0x020488A4
 	bl SavArray_Flags_get
 	bl GetStarterFromScriptState
 	mov r1, #4
-	bl sub_02048880
+	bl _get_species_name
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -643,10 +643,10 @@ ScrCmd_203: ; 0x020488A4
 	mov r0, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_203
+	thumb_func_end ScrCmd_BufferStarterSpeciesName
 
-	thumb_func_start ScrCmd_204
-ScrCmd_204: ; 0x020488F4
+	thumb_func_start ScrCmd_BufferDPPtRivalStarterSpeciesName
+ScrCmd_BufferDPPtRivalStarterSpeciesName: ; 0x020488F4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -663,9 +663,9 @@ ScrCmd_204: ; 0x020488F4
 	ldrb r5, [r1]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066B00
+	bl DPPtLeftover_GetRivalSpecies
 	mov r1, #4
-	bl sub_02048880
+	bl _get_species_name
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -681,10 +681,10 @@ ScrCmd_204: ; 0x020488F4
 	mov r0, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_204
+	thumb_func_end ScrCmd_BufferDPPtRivalStarterSpeciesName
 
-	thumb_func_start ScrCmd_205
-ScrCmd_205: ; 0x02048944
+	thumb_func_start ScrCmd_BufferDPPtFriendStarterSpeciesName
+ScrCmd_BufferDPPtFriendStarterSpeciesName: ; 0x02048944
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -701,9 +701,9 @@ ScrCmd_205: ; 0x02048944
 	ldrb r5, [r1]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066B28
+	bl DPPtLeftover_GetFriendStarterSpecies
 	mov r1, #4
-	bl sub_02048880
+	bl _get_species_name
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -719,10 +719,10 @@ ScrCmd_205: ; 0x02048944
 	mov r0, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_205
+	thumb_func_end ScrCmd_BufferDPPtFriendStarterSpeciesName
 
-	thumb_func_start ScrCmd_207
-ScrCmd_207: ; 0x02048994
+	thumb_func_start ScrCmd_BufferDecorationName
+ScrCmd_BufferDecorationName: ; 0x02048994
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -747,7 +747,7 @@ ScrCmd_207: ; 0x02048994
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_207
+	thumb_func_end ScrCmd_BufferDecorationName
 
 	thumb_func_start ScrCmd_208
 ScrCmd_208: ; 0x020489CC
@@ -791,8 +791,8 @@ ScrCmd_209: ; 0x020489F4
 	pop {r4, pc}
 	thumb_func_end ScrCmd_209
 
-	thumb_func_start ScrCmd_210
-ScrCmd_210: ; 0x02048A1C
+	thumb_func_start ScrCmd_BufferMapSecName
+ScrCmd_BufferMapSecName: ; 0x02048A1C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -834,10 +834,10 @@ ScrCmd_210: ; 0x02048A1C
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_210
+	thumb_func_end ScrCmd_BufferMapSecName
 
-	thumb_func_start ScrCmd_336
-ScrCmd_336: ; 0x02048A7C
+	thumb_func_start ScrCmd_BufferBerryName
+ScrCmd_BufferBerryName: ; 0x02048A7C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -892,10 +892,10 @@ _02048AD4:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_336
+	thumb_func_end ScrCmd_BufferBerryName
 
-	thumb_func_start ScrCmd_337
-ScrCmd_337: ; 0x02048AF4
+	thumb_func_start ScrCmd_BufferNatureName
+ScrCmd_BufferNatureName: ; 0x02048AF4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -920,10 +920,10 @@ ScrCmd_337: ; 0x02048AF4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_337
+	thumb_func_end ScrCmd_BufferNatureName
 
-	thumb_func_start ScrCmd_516
-ScrCmd_516: ; 0x02048B2C
+	thumb_func_start ScrCmd_BufferFashionName
+ScrCmd_BufferFashionName: ; 0x02048B2C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -948,10 +948,10 @@ ScrCmd_516: ; 0x02048B2C
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_516
+	thumb_func_end ScrCmd_BufferFashionName
 
-	thumb_func_start ScrCmd_399
-ScrCmd_399: ; 0x02048B64
+	thumb_func_start ScrCmd_BufferPartyMonMoveName
+ScrCmd_BufferPartyMonMoveName: ; 0x02048B64
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -995,10 +995,10 @@ ScrCmd_399: ; 0x02048B64
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_399
+	thumb_func_end ScrCmd_BufferPartyMonMoveName
 
-	thumb_func_start ScrCmd_482
-ScrCmd_482: ; 0x02048BCC
+	thumb_func_start ScrCmd_BufferRibbonName
+ScrCmd_BufferRibbonName: ; 0x02048BCC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1028,10 +1028,10 @@ ScrCmd_482: ; 0x02048BCC
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_482
+	thumb_func_end ScrCmd_BufferRibbonName
 
-	thumb_func_start ScrCmd_580
-ScrCmd_580: ; 0x02048C10
+	thumb_func_start ScrCmd_BufferSealName
+ScrCmd_BufferSealName: ; 0x02048C10
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1056,10 +1056,10 @@ ScrCmd_580: ; 0x02048C10
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_580
+	thumb_func_end ScrCmd_BufferSealName
 
-	thumb_func_start ScrCmd_660
-ScrCmd_660: ; 0x02048C48
+	thumb_func_start ScrCmd_BufferTrainerName
+ScrCmd_BufferTrainerName: ; 0x02048C48
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1084,10 +1084,10 @@ ScrCmd_660: ; 0x02048C48
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_660
+	thumb_func_end ScrCmd_BufferTrainerName
 
-	thumb_func_start ScrCmd_626
-ScrCmd_626: ; 0x02048C80
+	thumb_func_start ScrCmd_BufferApricornName
+ScrCmd_BufferApricornName: ; 0x02048C80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1114,7 +1114,7 @@ ScrCmd_626: ; 0x02048C80
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_626
+	thumb_func_end ScrCmd_BufferApricornName
 
 	thumb_func_start ScrCmd_BufferItemNameIndef
 ScrCmd_BufferItemNameIndef: ; 0x02048CBC
@@ -1144,8 +1144,8 @@ ScrCmd_BufferItemNameIndef: ; 0x02048CBC
 	.balign 4, 0
 	thumb_func_end ScrCmd_BufferItemNameIndef
 
-	thumb_func_start ScrCmd_844
-ScrCmd_844: ; 0x02048CF4
+	thumb_func_start ScrCmd_BufferItemNamePlural
+ScrCmd_BufferItemNamePlural: ; 0x02048CF4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1170,10 +1170,10 @@ ScrCmd_844: ; 0x02048CF4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_844
+	thumb_func_end ScrCmd_BufferItemNamePlural
 
-	thumb_func_start ScrCmd_845
-ScrCmd_845: ; 0x02048D2C
+	thumb_func_start ScrCmd_BufferPartyMonSpeciesNameIndef
+ScrCmd_BufferPartyMonSpeciesNameIndef: ; 0x02048D2C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1204,10 +1204,10 @@ ScrCmd_845: ; 0x02048D2C
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_845
+	thumb_func_end ScrCmd_BufferPartyMonSpeciesNameIndef
 
-	thumb_func_start ScrCmd_846
-ScrCmd_846: ; 0x02048D74
+	thumb_func_start ScrCmd_BufferSpeciesNameIndef
+ScrCmd_BufferSpeciesNameIndef: ; 0x02048D74
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1239,10 +1239,10 @@ ScrCmd_846: ; 0x02048D74
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_846
+	thumb_func_end ScrCmd_BufferSpeciesNameIndef
 
-	thumb_func_start ScrCmd_847
-ScrCmd_847: ; 0x02048DBC
+	thumb_func_start ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef
+ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef: ; 0x02048DBC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1258,17 +1258,17 @@ ScrCmd_847: ; 0x02048DBC
 	ldrb r4, [r1]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066B28
+	bl DPPtLeftover_GetFriendStarterSpecies
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r4, #0
 	bl BufferSpeciesNameWithArticle
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_847
+	thumb_func_end ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef
 
-	thumb_func_start ScrCmd_848
-ScrCmd_848: ; 0x02048DF0
+	thumb_func_start ScrCmd_BufferFashionNameIndef
+ScrCmd_BufferFashionNameIndef: ; 0x02048DF0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1293,10 +1293,10 @@ ScrCmd_848: ; 0x02048DF0
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_848
+	thumb_func_end ScrCmd_BufferFashionNameIndef
 
-	thumb_func_start ScrCmd_849
-ScrCmd_849: ; 0x02048E28
+	thumb_func_start ScrCmd_BufferTrainerClassNameIndef
+ScrCmd_BufferTrainerClassNameIndef: ; 0x02048E28
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1321,10 +1321,10 @@ ScrCmd_849: ; 0x02048E28
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_849
+	thumb_func_end ScrCmd_BufferTrainerClassNameIndef
 
-	thumb_func_start ScrCmd_850
-ScrCmd_850: ; 0x02048E60
+	thumb_func_start ScrCmd_BufferSealNamePlural
+ScrCmd_BufferSealNamePlural: ; 0x02048E60
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -1349,10 +1349,10 @@ ScrCmd_850: ; 0x02048E60
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_850
+	thumb_func_end ScrCmd_BufferSealNamePlural
 
-	thumb_func_start ScrCmd_851
-ScrCmd_851: ; 0x02048E98
+	thumb_func_start ScrCmd_Capitalize
+ScrCmd_Capitalize: ; 0x02048E98
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -1367,4 +1367,4 @@ ScrCmd_851: ; 0x02048E98
 	bl ScrStrBufs_UpperFirstChar
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_851
+	thumb_func_end ScrCmd_Capitalize

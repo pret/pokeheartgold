@@ -116,7 +116,7 @@ scr_seq_0022_D17R1101_0159:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0022_D17R1101_01BA
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0022_D17R1101_01C5
 	npc_msg 6
@@ -124,7 +124,7 @@ scr_seq_0022_D17R1101_0159:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 20
+	cameron_photo 20
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0

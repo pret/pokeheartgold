@@ -54,15 +54,15 @@ scr_seq_0795_T07R0107_00A4:
 	scrcmd_242 20, 1, 16659, 16659
 	npc_msg 0
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 121, 255, 6
-	scrcmd_751 120, 255, 0
-	scrcmd_751 119, 255, 1
-	scrcmd_751 118, 255, 2
-	scrcmd_751 117, 255, 3
-	scrcmd_751 116, 255, 4
-	scrcmd_751 126, 255, 7
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 121, 255, 6
+	menu_item_add 120, 255, 0
+	menu_item_add 119, 255, 1
+	menu_item_add 118, 255, 2
+	menu_item_add 117, 255, 3
+	menu_item_add 116, 255, 4
+	menu_item_add 126, 255, 7
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 6
@@ -430,6 +430,6 @@ scr_seq_0795_T07R0107_06F5:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0795_T07R0107_06F8:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 	.balign 4, 0

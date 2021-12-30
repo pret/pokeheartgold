@@ -62,45 +62,45 @@ scr_seq_0857_T22_0068:
 
 
 scr_seq_0857_T22_00CC:
-	.short 75, 1
-	.short 14, 5
-	.short 12, 1
-	.short 254, 0
+	step 75, 1
+	step 14, 5
+	step 12, 1
+	step_end
 
 scr_seq_0857_T22_00DC:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0857_T22_00E4:
-	.short 71, 1
-	.short 9, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 9, 1
+	step 72, 1
+	step_end
 
 scr_seq_0857_T22_00F4:
-	.short 13, 2
-	.short 14, 1
-	.short 13, 7
-	.short 254, 0
+	step 13, 2
+	step 14, 1
+	step 13, 7
+	step_end
 
 scr_seq_0857_T22_0104:
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 254, 0
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step_end
 scr_seq_0857_T22_0148:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -269,229 +269,229 @@ scr_seq_0857_T22_0386:
 	.byte 0x00, 0x00
 
 scr_seq_0857_T22_0388:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step_end
 
 scr_seq_0857_T22_03AC:
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0857_T22_03D0:
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0857_T22_03F4:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step_end
 
 scr_seq_0857_T22_0418:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0857_T22_0440:
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0857_T22_0460:
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0857_T22_0484:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0857_T22_04B0:
-	.short 17, 8
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 19, 21
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 16, 1
-	.short 33, 1
-	.short 254, 0
+	step 17, 8
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 19, 21
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 16, 1
+	step 33, 1
+	step_end
 
 scr_seq_0857_T22_04FC:
-	.short 18, 2
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 17, 3
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 19, 2
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 17, 5
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 19, 21
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 16, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 18, 2
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 17, 3
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 19, 2
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 17, 5
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 19, 21
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 16, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0857_T22_05EC:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0857_T22_05F4:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0857_T22_05FC:
-	.short 63, 1
-	.short 90, 1
-	.short 89, 8
-	.short 35, 1
-	.short 62, 1
-	.short 91, 21
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 90, 1
+	step 89, 8
+	step 35, 1
+	step 62, 1
+	step 91, 21
+	step 32, 1
+	step_end
 
 scr_seq_0857_T22_061C:
-	.short 63, 1
-	.short 91, 1
-	.short 89, 8
-	.short 35, 1
-	.short 62, 1
-	.short 91, 21
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 91, 1
+	step 89, 8
+	step 35, 1
+	step 62, 1
+	step 91, 21
+	step 32, 1
+	step_end
 
 scr_seq_0857_T22_063C:
-	.short 17, 1
-	.short 19, 1
-	.short 38, 1
-	.short 63, 2
-	.short 37, 1
-	.short 63, 2
-	.short 18, 1
-	.short 89, 6
-	.short 35, 1
-	.short 62, 1
-	.short 91, 21
-	.short 32, 1
-	.short 254, 0
+	step 17, 1
+	step 19, 1
+	step 38, 1
+	step 63, 2
+	step 37, 1
+	step 63, 2
+	step 18, 1
+	step 89, 6
+	step 35, 1
+	step 62, 1
+	step 91, 21
+	step 32, 1
+	step_end
 
 scr_seq_0857_T22_0670:
-	.short 63, 1
-	.short 89, 9
-	.short 35, 1
-	.short 62, 1
-	.short 91, 21
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 89, 9
+	step 35, 1
+	step 62, 1
+	step 91, 21
+	step 32, 1
+	step_end
 scr_seq_0857_T22_068C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -510,25 +510,25 @@ scr_seq_0857_T22_06BC:
 	npc_msg 18
 scr_seq_0857_T22_06BF:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8000, 1
 	gotoif ne, scr_seq_0857_T22_06DE
-	scrcmd_751 205, 255, 0
+	menu_item_add 205, 255, 0
 scr_seq_0857_T22_06DE:
 	comparevartovalue VAR_SPECIAL_x8001, 1
 	gotoif ne, scr_seq_0857_T22_06F3
-	scrcmd_751 206, 255, 1
+	menu_item_add 206, 255, 1
 scr_seq_0857_T22_06F3:
 	comparevartovalue VAR_SPECIAL_x8002, 1
 	gotoif ne, scr_seq_0857_T22_0708
-	scrcmd_751 207, 255, 2
+	menu_item_add 207, 255, 2
 scr_seq_0857_T22_0708:
 	comparevartovalue VAR_SPECIAL_x8003, 1
 	gotoif ne, scr_seq_0857_T22_071D
-	scrcmd_751 208, 255, 3
+	menu_item_add 208, 255, 3
 scr_seq_0857_T22_071D:
-	scrcmd_751 126, 255, 4
-	scrcmd_752
+	menu_item_add 126, 255, 4
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -738,61 +738,61 @@ scr_seq_0857_T22_0B27:
 	.byte 0x00
 
 scr_seq_0857_T22_0B28:
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step_end
 
 scr_seq_0857_T22_0B6C:
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 254, 0
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step_end
 
 scr_seq_0857_T22_0BB0:
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 254, 0
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step_end
 scr_seq_0857_T22_0BF4:
 	end
 

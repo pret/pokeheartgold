@@ -150,7 +150,7 @@ scr_seq_0792_T07R0104_01CD:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0792_T07R0104_0236
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0792_T07R0104_0241
 	npc_msg 11
@@ -158,7 +158,7 @@ scr_seq_0792_T07R0104_01CD:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 2
+	cameron_photo 2
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0
@@ -198,16 +198,16 @@ scr_seq_0792_T07R0104_024C:
 
 
 scr_seq_0792_T07R0104_026C:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0792_T07R0104_0274:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0792_T07R0104_027C:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 scr_seq_0792_T07R0104_0284:
 	play_se SEQ_SE_DP_SELECT
 	lockall

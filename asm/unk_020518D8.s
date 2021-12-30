@@ -117,7 +117,7 @@ _0205193C:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl sub_020293E8
+	bl Pokedex_new
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -682,7 +682,7 @@ _02051E14:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl sub_020293FC
+	bl Pokedex_copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #8]
@@ -905,7 +905,7 @@ _02052004:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0xc]
 	ldr r1, [r5, r1]
-	bl sub_020293FC
+	bl Pokedex_copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #4]
@@ -1133,7 +1133,7 @@ _020521F6:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x18]
 	ldr r1, [r5, r1]
-	bl sub_020293FC
+	bl Pokedex_copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
@@ -1362,7 +1362,7 @@ sub_0205239C: ; 0x0205239C
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #4]
-	bl sub_020293FC
+	bl Pokedex_copy
 	ldr r0, [r4, #0xc]
 	mov r6, #0
 	bl SavArray_Flags_get
@@ -1413,7 +1413,7 @@ sub_02052444: ; 0x02052444
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020293FC
+	bl Pokedex_copy
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02052444
 

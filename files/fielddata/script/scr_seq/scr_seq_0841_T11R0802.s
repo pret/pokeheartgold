@@ -176,63 +176,63 @@ scr_seq_0841_T11R0802_0269:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0841_T11R0802_026C:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0841_T11R0802_0274:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0841_T11R0802_0294:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0841_T11R0802_02B0:
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0841_T11R0802_02C8:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step_end
 
 scr_seq_0841_T11R0802_02EC:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step_end
 
 scr_seq_0841_T11R0802_0304:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 scr_seq_0841_T11R0802_0320:
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, scr_seq_0841_T11R0802_03A3
@@ -283,20 +283,20 @@ scr_seq_0841_T11R0802_03BE:
 	.byte 0x00, 0x00
 
 scr_seq_0841_T11R0802_03C0:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 
 scr_seq_0841_T11R0802_03C8:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0841_T11R0802_03D0:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 
 scr_seq_0841_T11R0802_03D8:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 scr_seq_0841_T11R0802_03E0:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -21,7 +21,7 @@ scr_seq_0150_0006:
 	scrcmd_624 32768
 	setvar VAR_SPECIAL_x8005, 1
 	buffer_players_name 0
-	scrcmd_626 1, 32768
+	buffer_apricorn_name 1, VAR_SPECIAL_x8000
 	npc_msg 1
 	closemsg
 	play_fanfare SEQ_ME_ITEM

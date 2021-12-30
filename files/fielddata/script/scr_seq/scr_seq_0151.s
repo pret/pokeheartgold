@@ -401,12 +401,12 @@ scr_seq_0151_053A:
 	.byte 0x00, 0x00
 
 scr_seq_0151_053C:
-	.short 15, 5
-	.short 254, 0
+	step 15, 5
+	step_end
 
 scr_seq_0151_0544:
-	.short 14, 5
-	.short 254, 0
+	step 14, 5
+	step_end
 scr_seq_0151_054C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

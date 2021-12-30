@@ -60,14 +60,14 @@ scr_seq_0080_D32R0101_00A4:
 	.byte 0x02, 0x00
 scr_seq_0080_D32R0101_00A6:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 451, 255, 0
-	scrcmd_751 452, 255, 1
-	scrcmd_751 453, 255, 2
-	scrcmd_751 454, 255, 3
-	scrcmd_751 455, 255, 4
-	scrcmd_751 456, 255, 5
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 451, 255, 0
+	menu_item_add 452, 255, 1
+	menu_item_add 453, 255, 2
+	menu_item_add 454, 255, 3
+	menu_item_add 455, 255, 4
+	menu_item_add 456, 255, 5
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0080_D32R0101_0138
@@ -315,21 +315,21 @@ scr_seq_0080_D32R0101_0383:
 	.byte 0x00
 
 scr_seq_0080_D32R0101_0384:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0080_D32R0101_038C:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0080_D32R0101_0394:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 
 scr_seq_0080_D32R0101_039C:
-	.short 12, 3
-	.short 34, 1
-	.short 254, 0
+	step 12, 3
+	step 34, 1
+	step_end
 scr_seq_0080_D32R0101_03A8:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -100,33 +100,33 @@ scr_seq_0053_D24R0216_009F:
 
 
 scr_seq_0053_D24R0216_0178:
-	.short 14, 4
-	.short 35, 1
-	.short 254, 0
+	step 14, 4
+	step 35, 1
+	step_end
 
 scr_seq_0053_D24R0216_0184:
-	.short 75, 1
-	.short 63, 1
-	.short 16, 3
-	.short 32, 1
-	.short 18, 2
-	.short 32, 1
-	.short 71, 1
-	.short 10, 1
-	.short 72, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 16, 3
+	step 32, 1
+	step 18, 2
+	step 32, 1
+	step 71, 1
+	step 10, 1
+	step 72, 1
+	step_end
 
 scr_seq_0053_D24R0216_01AC:
-	.short 35, 1
-	.short 63, 1
-	.short 34, 1
-	.short 63, 1
-	.short 33, 1
-	.short 254, 0
+	step 35, 1
+	step 63, 1
+	step 34, 1
+	step 63, 1
+	step 33, 1
+	step_end
 
 scr_seq_0053_D24R0216_01C4:
-	.short 14, 4
-	.short 254, 0
+	step 14, 4
+	step_end
 scr_seq_0053_D24R0216_01CC:
 	scrcmd_609
 	lockall
@@ -157,28 +157,28 @@ scr_seq_0053_D24R0216_01CC:
 
 
 scr_seq_0053_D24R0216_0230:
-	.short 63, 1
-	.short 34, 1
-	.short 75, 1
-	.short 63, 1
-	.short 18, 3
-	.short 254, 0
+	step 63, 1
+	step 34, 1
+	step 75, 1
+	step 63, 1
+	step 18, 3
+	step_end
 
 scr_seq_0053_D24R0216_0248:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0053_D24R0216_0250:
-	.short 15, 10
-	.short 254, 0
+	step 15, 10
+	step_end
 
 scr_seq_0053_D24R0216_0258:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0053_D24R0216_0260:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 scr_seq_0053_D24R0216_0268:
 	scrcmd_609
 	lockall
@@ -222,17 +222,17 @@ scr_seq_0053_D24R0216_0268:
 
 
 scr_seq_0053_D24R0216_0324:
-	.short 14, 1
-	.short 13, 1
-	.short 254, 0
+	step 14, 1
+	step 13, 1
+	step_end
 
 scr_seq_0053_D24R0216_0330:
-	.short 35, 1
-	.short 63, 1
-	.short 34, 1
-	.short 63, 1
-	.short 33, 1
-	.short 254, 0
+	step 35, 1
+	step 63, 1
+	step 34, 1
+	step 63, 1
+	step 33, 1
+	step_end
 scr_seq_0053_D24R0216_0348:
 	scrcmd_609
 	lockall
@@ -257,8 +257,8 @@ scr_seq_0053_D24R0216_0389:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0053_D24R0216_038C:
-	.short 68, 1
-	.short 254, 0
+	step 68, 1
+	step_end
 scr_seq_0053_D24R0216_0394:
 	play_se SEQ_SE_DP_SELECT
 	lockall

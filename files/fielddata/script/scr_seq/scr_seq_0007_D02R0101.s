@@ -63,18 +63,18 @@ scr_seq_0007_D02R0101_00CD:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0007_D02R0101_00D0:
-	.short 75, 1
-	.short 14, 4
-	.short 254, 0
+	step 75, 1
+	step 14, 4
+	step_end
 
 scr_seq_0007_D02R0101_00DC:
-	.short 63, 4
-	.short 15, 1
-	.short 254, 0
+	step 63, 4
+	step 15, 1
+	step_end
 
 scr_seq_0007_D02R0101_00E8:
-	.short 19, 5
-	.short 17, 9
-	.short 254, 0
+	step 19, 5
+	step 17, 9
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

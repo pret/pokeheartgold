@@ -54,21 +54,21 @@ scr_seq_0917_T26R0501_0071:
 
 scr_seq_0917_T26R0501_008F:
 	setflag FLAG_UNK_AB9
-	scrcmd_580 0, 32768
+	buffer_seal_name 0, VAR_SPECIAL_x8000
 	npc_msg 6
 	play_fanfare SEQ_ME_ITEM
 	npc_msg 11
 	wait_fanfare
 	comparevartovalue VAR_SPECIAL_x8001, 0
 	gotoif eq, scr_seq_0917_T26R0501_00EB
-	scrcmd_580 0, 32769
+	buffer_seal_name 0, VAR_SPECIAL_x8001
 	npc_msg 7
 	play_fanfare SEQ_ME_ITEM
 	npc_msg 11
 	wait_fanfare
 	comparevartovalue VAR_SPECIAL_x8002, 0
 	gotoif eq, scr_seq_0917_T26R0501_00EB
-	scrcmd_580 0, 32770
+	buffer_seal_name 0, VAR_SPECIAL_x8002
 	npc_msg 8
 	play_fanfare SEQ_ME_ITEM
 	npc_msg 11

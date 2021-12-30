@@ -57,9 +57,9 @@ scr_seq_0084_D32R0301_009A:
 	callif eq, scr_seq_0084_D32R0301_0586
 	comparevartovalue VAR_TEMP_x4004, 1
 	callif eq, scr_seq_0084_D32R0301_05A5
-	scrcmd_751 19, 255, 2
-	scrcmd_751 20, 255, 3
-	scrcmd_752
+	menu_item_add 19, 255, 2
+	menu_item_add 20, 255, 3
+	menu_exec
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0084_D32R0301_013F
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -115,11 +115,11 @@ scr_seq_0084_D32R0301_0167:
 	.byte 0x02, 0x00
 scr_seq_0084_D32R0301_0169:
 	npc_msg 7
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 21, 255, 0
-	scrcmd_751 22, 255, 1
-	scrcmd_751 23, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 21, 255, 0
+	menu_item_add 22, 255, 1
+	menu_item_add 23, 255, 2
+	menu_exec
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0084_D32R0301_01B2
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -167,11 +167,11 @@ scr_seq_0084_D32R0301_0224:
 scr_seq_0084_D32R0301_0226:
 	npc_msg 24
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 14, 255, 0
-	scrcmd_751 15, 255, 1
-	scrcmd_751 5, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 14, 255, 0
+	menu_item_add 15, 255, 1
+	menu_item_add 5, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0084_D32R0301_0277
@@ -365,62 +365,62 @@ scr_seq_0084_D32R0301_04D1:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0084_D32R0301_04D4:
-	.short 12, 3
-	.short 15, 1
-	.short 12, 4
-	.short 69, 1
-	.short 254, 0
+	step 12, 3
+	step 15, 1
+	step 12, 4
+	step 69, 1
+	step_end
 
 scr_seq_0084_D32R0301_04E8:
-	.short 12, 3
-	.short 14, 1
-	.short 12, 4
-	.short 69, 1
-	.short 254, 0
+	step 12, 3
+	step 14, 1
+	step 12, 4
+	step 69, 1
+	step_end
 
 scr_seq_0084_D32R0301_04FC:
-	.short 12, 2
-	.short 15, 1
-	.short 12, 4
-	.short 69, 1
-	.short 254, 0
+	step 12, 2
+	step 15, 1
+	step 12, 4
+	step 69, 1
+	step_end
 
 scr_seq_0084_D32R0301_0510:
-	.short 12, 2
-	.short 14, 1
-	.short 12, 4
-	.short 69, 1
-	.short 254, 0
+	step 12, 2
+	step 14, 1
+	step 12, 4
+	step 69, 1
+	step_end
 
 scr_seq_0084_D32R0301_0524:
-	.short 21, 3
-	.short 22, 1
-	.short 21, 4
-	.short 0, 1
-	.short 70, 1
-	.short 254, 0
+	step 21, 3
+	step 22, 1
+	step 21, 4
+	step 0, 1
+	step 70, 1
+	step_end
 
 scr_seq_0084_D32R0301_053C:
-	.short 21, 3
-	.short 23, 1
-	.short 21, 4
-	.short 0, 1
-	.short 70, 1
-	.short 254, 0
+	step 21, 3
+	step 23, 1
+	step 21, 4
+	step 0, 1
+	step 70, 1
+	step_end
 
 scr_seq_0084_D32R0301_0554:
-	.short 21, 2
-	.short 22, 1
-	.short 21, 4
-	.short 70, 1
-	.short 254, 0
+	step 21, 2
+	step 22, 1
+	step 21, 4
+	step 70, 1
+	step_end
 
 scr_seq_0084_D32R0301_0568:
-	.short 21, 2
-	.short 23, 1
-	.short 21, 4
-	.short 70, 1
-	.short 254, 0
+	step 21, 2
+	step 23, 1
+	step 21, 4
+	step 70, 1
+	step_end
 scr_seq_0084_D32R0301_057C:
 	npc_msg 0
 	return
@@ -432,16 +432,16 @@ scr_seq_0084_D32R0301_0581:
 scr_seq_0084_D32R0301_0586:
 	npc_msg 1
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 16, 255, 0
-	scrcmd_751 17, 255, 1
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 16, 255, 0
+	menu_item_add 17, 255, 1
 	return
 
 scr_seq_0084_D32R0301_05A5:
 	npc_msg 4
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 18, 255, 4
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 18, 255, 4
 	return
 
 scr_seq_0084_D32R0301_05BC:

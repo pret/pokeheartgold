@@ -210,20 +210,20 @@ scr_seq_0230_R31_02BA:
 	.byte 0x02, 0x00
 
 scr_seq_0230_R31_02BC:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0230_R31_02C4:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0230_R31_02CC:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0230_R31_02D4:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 scr_seq_0230_R31_02DC:
 	scrcmd_055 13, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3

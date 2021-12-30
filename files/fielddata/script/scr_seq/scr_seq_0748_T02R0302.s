@@ -40,10 +40,10 @@ scr_seq_0748_T02R0302_006C:
 	.byte 0x61, 0x00, 0x02, 0x00
 
 scr_seq_0748_T02R0302_0070:
-	.short 14, 2
-	.short 13, 1
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step 13, 1
+	step 14, 2
+	step_end
 scr_seq_0748_T02R0302_0080:
 	scrcmd_609
 	lockall
@@ -95,8 +95,8 @@ scr_seq_0748_T02R0302_011D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0748_T02R0302_0120:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 scr_seq_0748_T02R0302_0128:
 	scrcmd_609
 	lockall
@@ -129,10 +129,10 @@ scr_seq_0748_T02R0302_017B:
 	.byte 0x00
 
 scr_seq_0748_T02R0302_017C:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0748_T02R0302_0184:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 	.balign 4, 0

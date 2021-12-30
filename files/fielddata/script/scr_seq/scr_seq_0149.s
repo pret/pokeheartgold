@@ -146,7 +146,7 @@ scr_seq_0149_0006:
 	setflag FLAG_UNK_302
 	setflag FLAG_UNK_311
 	setflag FLAG_UNK_2CC
-	setflag FLAG_UNK_315
+	setflag FLAG_HIDE_COMM_CLUB_RECEPTIONISTS
 	setflag FLAG_UNK_317
 	setflag FLAG_UNK_308
 	setflag FLAG_UNK_319

@@ -95,57 +95,57 @@ scr_seq_0121_D48R0101_012F:
 	.byte 0x00
 
 scr_seq_0121_D48R0101_0130:
-	.short 35, 1
-	.short 63, 1
-	.short 15, 2
-	.short 13, 1
-	.short 15, 1
-	.short 254, 0
+	step 35, 1
+	step 63, 1
+	step 15, 2
+	step 13, 1
+	step 15, 1
+	step_end
 
 scr_seq_0121_D48R0101_0148:
-	.short 33, 1
-	.short 63, 1
-	.short 13, 3
-	.short 14, 1
-	.short 13, 1
-	.short 254, 0
+	step 33, 1
+	step 63, 1
+	step 13, 3
+	step 14, 1
+	step 13, 1
+	step_end
 
 scr_seq_0121_D48R0101_0160:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0121_D48R0101_016C:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0121_D48R0101_0178:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0121_D48R0101_0180:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0121_D48R0101_0188:
-	.short 63, 1
-	.short 15, 2
-	.short 254, 0
+	step 63, 1
+	step 15, 2
+	step_end
 
 scr_seq_0121_D48R0101_0194:
-	.short 63, 1
-	.short 12, 4
-	.short 15, 2
-	.short 12, 9
-	.short 254, 0
+	step 63, 1
+	step 12, 4
+	step 15, 2
+	step 12, 9
+	step_end
 
 scr_seq_0121_D48R0101_01A8:
-	.short 71, 1
-	.short 12, 1
-	.short 72, 1
-	.short 33, 1
-	.short 254, 0
+	step 71, 1
+	step 12, 1
+	step 72, 1
+	step 33, 1
+	step_end
 scr_seq_0121_D48R0101_01BC:
 	play_se SEQ_SE_DP_SELECT
 	lockall

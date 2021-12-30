@@ -599,12 +599,12 @@
 	.short 97
 	.endm
 
-	.macro scrcmd_098 arg0
+	.macro lock arg0
 	.short 98
 	.short \arg0
 	.endm
 
-	.macro scrcmd_099 arg0
+	.macro release arg0
 	.short 99
 	.short \arg0
 	.endm
@@ -1138,13 +1138,13 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_197 arg0, arg1
+	.macro buffer_move_name arg0, arg1
 	.short 197
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_198 arg0, arg1
+	.macro buffer_int arg0, arg1
 	.short 198
 	.byte \arg0
 	.short \arg1
@@ -1156,13 +1156,13 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_200 arg0, arg1
+	.macro buffer_trainer_class_name arg0, arg1
 	.short 200
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_201 arg0
+	.macro buffer_player_union_avatar_class_name arg0
 	.short 201
 	.byte \arg0
 	.endm
@@ -1175,17 +1175,17 @@
 	.byte \arg3
 	.endm
 
-	.macro scrcmd_203 arg0
+	.macro buffer_starter_species_name arg0
 	.short 203
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_204 arg0
+	.macro buffer_dppt_rival_starter_species_name arg0
 	.short 204
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_205 arg0
+	.macro buffer_dppt_friend_starter_species_name arg0
 	.short 205
 	.byte \arg0
 	.endm
@@ -1195,7 +1195,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_207 arg0, arg1
+	.macro buffer_decoration_name arg0, arg1
 	.short 207
 	.byte \arg0
 	.short \arg1
@@ -1213,7 +1213,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_210 arg0, arg1
+	.macro buffer_map_sec_name arg0, arg1
 	.short 210
 	.byte \arg0
 	.short \arg1
@@ -1400,22 +1400,22 @@
 	.short \arg3
 	.endm
 
-	.macro scrcmd_243 arg0
+	.macro count_johto_dex_seen arg0
 	.short 243
 	.short \arg0
 	.endm
 
-	.macro scrcmd_244 arg0
+	.macro count_johto_dex_owned arg0
 	.short 244
 	.short \arg0
 	.endm
 
-	.macro scrcmd_245 arg0
+	.macro count_national_dex_seen arg0
 	.short 245
 	.short \arg0
 	.endm
 
-	.macro scrcmd_246 arg0
+	.macro count_national_dex_owned arg0
 	.short 246
 	.short \arg0
 	.endm
@@ -1424,7 +1424,7 @@
 	.short 247
 	.endm
 
-	.macro scrcmd_248 arg0, arg1, arg2
+	.macro get_dex_eval_result arg0, arg1, arg2
 	.short 248
 	.byte \arg0
 	.short \arg1
@@ -1846,14 +1846,14 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_336 arg0, arg1, arg2
+	.macro buffer_berry_name arg0, arg1, arg2
 	.short 336
 	.byte \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_337 arg0, arg1
+	.macro buffer_nature_name arg0, arg1
 	.short 337
 	.byte \arg0
 	.short \arg1
@@ -2202,7 +2202,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_399 arg0, arg1, arg2
+	.macro buffer_party_mon_move_name arg0, arg1, arg2
 	.short 399
 	.byte \arg0
 	.short \arg1
@@ -2349,12 +2349,12 @@
 	.byte \arg3
 	.endm
 
-	.macro scrcmd_423 arg0
+	.macro check_johto_dex_complete arg0
 	.short 423
 	.short \arg0
 	.endm
 
-	.macro scrcmd_424 arg0
+	.macro check_national_dex_complete arg0
 	.short 424
 	.short \arg0
 	.endm
@@ -2649,7 +2649,7 @@
 	.short 476
 	.endm
 
-	.macro scrcmd_477 arg0, arg1
+	.macro nat_dex_flag_action arg0, arg1
 	.short 477
 	.byte \arg0
 	.short \arg1
@@ -2679,7 +2679,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_482 arg0, arg1
+	.macro buffer_ribbon_name arg0, arg1
 	.short 482
 	.byte \arg0
 	.short \arg1
@@ -2875,7 +2875,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_516 arg0, arg1
+	.macro buffer_fashion_name arg0, arg1
 	.short 516
 	.byte \arg0
 	.short \arg1
@@ -3232,7 +3232,7 @@
 	.short 579
 	.endm
 
-	.macro scrcmd_580 arg0, arg1
+	.macro buffer_seal_name arg0, arg1
 	.short 580
 	.byte \arg0
 	.short \arg1
@@ -3405,7 +3405,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_615 arg0
+	.macro cameron_photo arg0
 	.short 615
 	.short \arg0
 	.endm
@@ -3419,7 +3419,7 @@
 	.short 617
 	.endm
 
-	.macro scrcmd_618 arg0
+	.macro photo_album_is_full arg0
 	.short 618
 	.short \arg0
 	.endm
@@ -3461,7 +3461,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_626 arg0, arg1
+	.macro buffer_apricorn_name arg0, arg1
 	.short 626
 	.byte \arg0
 	.short \arg1
@@ -3669,7 +3669,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_660 arg0, arg1
+	.macro buffer_trainer_name arg0, arg1
 	.short 660
 	.byte \arg0
 	.short \arg1
@@ -4155,7 +4155,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_749 arg0, arg1, arg2, arg3, arg4
+	.macro menu_init_std_gmm arg0, arg1, arg2, arg3, arg4
 	.short 749
 	.byte \arg0
 	.byte \arg1
@@ -4164,7 +4164,7 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_750 arg0, arg1, arg2, arg3, arg4
+	.macro menu_init arg0, arg1, arg2, arg3, arg4
 	.short 750
 	.byte \arg0
 	.byte \arg1
@@ -4173,14 +4173,14 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_751 arg0, arg1, arg2
+	.macro menu_item_add arg0, arg1, arg2
 	.short 751
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_752
+	.macro menu_exec
 	.short 752
 	.endm
 
@@ -4636,19 +4636,19 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_844 arg0, arg1
+	.macro buffer_item_name_plural arg0, arg1
 	.short 844
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_845 arg0, arg1
+	.macro buffer_party_mon_species_name_indef arg0, arg1
 	.short 845
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_846 arg0, arg1, arg2, arg3
+	.macro buffer_species_name_indef arg0, arg1, arg2, arg3
 	.short 846
 	.byte \arg0
 	.short \arg1
@@ -4656,30 +4656,30 @@
 	.byte \arg3
 	.endm
 
-	.macro scrcmd_847 arg0
+	.macro buffer_dppt_friend_starter_species_name_indef arg0
 	.short 847
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_848 arg0, arg1
+	.macro buffer_fashion_name_indef arg0, arg1
 	.short 848
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_849 arg0, arg1
+	.macro buffer_trainer_class_name_indef arg0, arg1
 	.short 849
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_850 arg0, arg1
+	.macro buffer_seal_name_plural arg0, arg1
 	.short 850
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_851 arg0
+	.macro capitalize arg0
 	.short 851
 	.byte \arg0
 	.endm
@@ -4688,6 +4688,17 @@
 	.short 852
 	.byte \arg0
 	.byte \arg1
+	.endm
+
+	; Movement commands
+
+	.macro step type, length
+	.short \type
+	.short \length
+	.endm
+
+	.macro step_end
+	.short 254, 0
 	.endm
 
 	.endif ; ASM_SCRIPT_INC

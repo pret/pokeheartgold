@@ -81,22 +81,22 @@ scr_seq_0922_T27GYM0101_0105:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0922_T27GYM0101_0108:
-	.short 75, 1
-	.short 13, 3
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 13, 3
+	step 63, 1
+	step_end
 
 scr_seq_0922_T27GYM0101_0118:
-	.short 9, 1
-	.short 71, 1
-	.short 12, 1
-	.short 254, 0
+	step 9, 1
+	step 71, 1
+	step 12, 1
+	step_end
 
 scr_seq_0922_T27GYM0101_0128:
-	.short 63, 1
-	.short 13, 1
-	.short 63, 1
-	.short 254, 0
+	step 63, 1
+	step 13, 1
+	step 63, 1
+	step_end
 scr_seq_0922_T27GYM0101_0138:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -174,24 +174,24 @@ scr_seq_0922_T27GYM0101_022F:
 	.byte 0x00
 
 scr_seq_0922_T27GYM0101_0230:
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 1
-	.short 69, 0
-	.short 254, 0
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 1
+	step 69, 0
+	step_end
 scr_seq_0922_T27GYM0101_0278:
 	play_se SEQ_SE_DP_SELECT
 	lockall

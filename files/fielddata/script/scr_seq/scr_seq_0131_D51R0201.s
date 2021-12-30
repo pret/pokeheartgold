@@ -64,8 +64,8 @@ scr_seq_0131_D51R0201_00C1:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0131_D51R0201_00C4:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 scr_seq_0131_D51R0201_00CC:
 	end
 
@@ -202,110 +202,110 @@ scr_seq_0131_D51R0201_024A:
 
 
 scr_seq_0131_D51R0201_02B4:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_02BC:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0131_D51R0201_02C4:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0131_D51R0201_02CC:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0131_D51R0201_02D4:
-	.short 14, 1
-	.short 35, 1
-	.short 254, 0
+	step 14, 1
+	step 35, 1
+	step_end
 
 scr_seq_0131_D51R0201_02E0:
-	.short 15, 1
-	.short 34, 1
-	.short 254, 0
+	step 15, 1
+	step 34, 1
+	step_end
 
 scr_seq_0131_D51R0201_02EC:
-	.short 65, 1
-	.short 15, 1
-	.short 12, 3
-	.short 15, 1
-	.short 12, 2
-	.short 34, 1
-	.short 254, 0
+	step 65, 1
+	step 15, 1
+	step 12, 3
+	step 15, 1
+	step 12, 2
+	step 34, 1
+	step_end
 
 scr_seq_0131_D51R0201_0308:
-	.short 65, 1
-	.short 14, 1
-	.short 12, 3
-	.short 15, 1
-	.short 12, 2
-	.short 34, 1
-	.short 254, 0
+	step 65, 1
+	step 14, 1
+	step 12, 3
+	step 15, 1
+	step 12, 2
+	step 34, 1
+	step_end
 
 scr_seq_0131_D51R0201_0324:
-	.short 15, 3
-	.short 13, 1
-	.short 34, 1
-	.short 254, 0
+	step 15, 3
+	step 13, 1
+	step 34, 1
+	step_end
 
 scr_seq_0131_D51R0201_0334:
-	.short 13, 1
-	.short 14, 8
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 13, 1
+	step 14, 8
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0131_D51R0201_0348:
-	.short 12, 3
-	.short 15, 2
-	.short 12, 3
-	.short 15, 2
-	.short 12, 1
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 15, 2
+	step 12, 3
+	step 15, 2
+	step 12, 1
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0364:
-	.short 13, 3
-	.short 33, 1
-	.short 254, 0
+	step 13, 3
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0370:
-	.short 15, 1
-	.short 13, 6
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 15, 1
+	step 13, 6
+	step 14, 1
+	step 32, 1
+	step_end
 	.byte 0x21, 0x00, 0x01, 0x00, 0x0d, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0131_D51R0201_0390:
-	.short 12, 6
-	.short 65, 1
-	.short 35, 1
-	.short 254, 0
+	step 12, 6
+	step 65, 1
+	step 35, 1
+	step_end
 
 scr_seq_0131_D51R0201_03A0:
-	.short 15, 1
-	.short 12, 5
-	.short 65, 1
-	.short 35, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 5
+	step 65, 1
+	step 35, 1
+	step_end
 
 scr_seq_0131_D51R0201_03B4:
-	.short 14, 1
-	.short 12, 5
-	.short 65, 1
-	.short 35, 1
-	.short 254, 0
+	step 14, 1
+	step 12, 5
+	step 65, 1
+	step 35, 1
+	step_end
 
 scr_seq_0131_D51R0201_03C8:
-	.short 63, 2
-	.short 35, 1
-	.short 63, 3
-	.short 35, 1
-	.short 254, 0
+	step 63, 2
+	step 35, 1
+	step 63, 3
+	step 35, 1
+	step_end
 scr_seq_0131_D51R0201_03DC:
 	scrcmd_609
 	lockall
@@ -608,10 +608,10 @@ scr_seq_0131_D51R0201_0833:
 	scrcmd_773 2
 	comparevartovalue VAR_UNK_40FB, 14
 	gotoif eq, scr_seq_0131_D51R0201_086E
-	scrcmd_099 0
+	release 0
 	move_person 0, 16, 1, 28, 0
 	wait 5, VAR_SPECIAL_x800C
-	scrcmd_098 0
+	lock 0
 scr_seq_0131_D51R0201_086E:
 	comparevartovalue VAR_TEMP_x4009, 483
 	gotoif ne, scr_seq_0131_D51R0201_0889
@@ -804,149 +804,149 @@ scr_seq_0131_D51R0201_0BB2:
 
 
 scr_seq_0131_D51R0201_0BE4:
-	.short 11, 4
-	.short 8, 4
-	.short 33, 1
-	.short 254, 0
+	step 11, 4
+	step 8, 4
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0BF4:
-	.short 8, 2
-	.short 11, 5
-	.short 8, 1
-	.short 33, 1
-	.short 254, 0
+	step 8, 2
+	step 11, 5
+	step 8, 1
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C08:
-	.short 11, 3
-	.short 8, 3
-	.short 33, 1
-	.short 254, 0
+	step 11, 3
+	step 8, 3
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C18:
-	.short 11, 4
-	.short 8, 2
-	.short 33, 1
-	.short 254, 0
+	step 11, 4
+	step 8, 2
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C28:
-	.short 11, 4
-	.short 8, 3
-	.short 254, 0
+	step 11, 4
+	step 8, 3
+	step_end
 
 scr_seq_0131_D51R0201_0C34:
-	.short 10, 4
-	.short 8, 4
-	.short 33, 1
-	.short 254, 0
+	step 10, 4
+	step 8, 4
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C44:
-	.short 10, 3
-	.short 8, 3
-	.short 33, 1
-	.short 254, 0
+	step 10, 3
+	step 8, 3
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C54:
-	.short 8, 2
-	.short 10, 5
-	.short 8, 1
-	.short 33, 1
-	.short 254, 0
+	step 8, 2
+	step 10, 5
+	step 8, 1
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C68:
-	.short 10, 4
-	.short 8, 2
-	.short 33, 1
-	.short 254, 0
+	step 10, 4
+	step 8, 2
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C78:
-	.short 10, 4
-	.short 8, 3
-	.short 254, 0
+	step 10, 4
+	step 8, 3
+	step_end
 
 scr_seq_0131_D51R0201_0C84:
-	.short 9, 3
-	.short 33, 1
-	.short 254, 0
+	step 9, 3
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0C90:
-	.short 9, 4
-	.short 11, 1
-	.short 33, 1
-	.short 254, 0
+	step 9, 4
+	step 11, 1
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0CA0:
-	.short 9, 4
-	.short 10, 1
-	.short 33, 1
-	.short 254, 0
+	step 9, 4
+	step 10, 1
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0CB0:
-	.short 11, 1
-	.short 9, 5
-	.short 10, 1
-	.short 33, 1
-	.short 254, 0
+	step 11, 1
+	step 9, 5
+	step 10, 1
+	step 33, 1
+	step_end
 
 scr_seq_0131_D51R0201_0CC4:
-	.short 9, 4
-	.short 254, 0
+	step 9, 4
+	step_end
 
 scr_seq_0131_D51R0201_0CCC:
-	.short 23, 4
-	.short 0, 1
-	.short 254, 0
+	step 23, 4
+	step 0, 1
+	step_end
 
 scr_seq_0131_D51R0201_0CD8:
-	.short 22, 4
-	.short 0, 1
-	.short 254, 0
+	step 22, 4
+	step 0, 1
+	step_end
 
 scr_seq_0131_D51R0201_0CE4:
-	.short 13, 7
-	.short 0, 1
-	.short 254, 0
+	step 13, 7
+	step 0, 1
+	step_end
 
 scr_seq_0131_D51R0201_0CF0:
-	.short 12, 3
-	.short 254, 0
+	step 12, 3
+	step_end
 
 scr_seq_0131_D51R0201_0CF8:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0131_D51R0201_0D00:
-	.short 65, 2
-	.short 13, 2
-	.short 254, 0
+	step 65, 2
+	step 13, 2
+	step_end
 
 scr_seq_0131_D51R0201_0D0C:
-	.short 63, 1
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 63, 1
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0131_D51R0201_0D1C:
-	.short 65, 2
-	.short 13, 4
-	.short 254, 0
+	step 65, 2
+	step 13, 4
+	step_end
 
 scr_seq_0131_D51R0201_0D28:
-	.short 12, 9
-	.short 254, 0
+	step 12, 9
+	step_end
 
 scr_seq_0131_D51R0201_0D30:
-	.short 3, 1
-	.short 63, 3
-	.short 2, 1
-	.short 63, 3
-	.short 254, 0
+	step 3, 1
+	step 63, 3
+	step 2, 1
+	step 63, 3
+	step_end
 
 scr_seq_0131_D51R0201_0D44:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0131_D51R0201_0D4C:
-	.short 63, 1
-	.short 33, 1
-	.short 254, 0
+	step 63, 1
+	step 33, 1
+	step_end
 	.balign 4, 0

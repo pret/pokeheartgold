@@ -45,7 +45,7 @@ scr_seq_0850_T21_0089:
 	end
 
 scr_seq_0850_T21_008B:
-	scrcmd_098 0
+	lock 0
 	apply_movement 0, scr_seq_0850_T21_0350
 	wait_movement
 	callstd std_play_follow_music
@@ -199,8 +199,8 @@ scr_seq_0850_T21_0228:
 	scrcmd_308 77
 	apply_movement 0, scr_seq_0850_T21_0580
 	wait_movement
-	scrcmd_099 0
-	scrcmd_099 253
+	release 0
+	release 253
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 0
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -214,204 +214,204 @@ scr_seq_0850_T21_0228:
 
 
 scr_seq_0850_T21_0350:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0850_T21_0358:
-	.short 62, 1
-	.short 254, 0
+	step 62, 1
+	step_end
 
 scr_seq_0850_T21_0360:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0850_T21_0368:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0850_T21_0370:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0850_T21_0378:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0850_T21_0380:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0850_T21_0388:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0850_T21_0390:
-	.short 18, 2
-	.short 16, 2
-	.short 75, 1
-	.short 37, 1
-	.short 17, 3
-	.short 19, 1
-	.short 254, 0
+	step 18, 2
+	step 16, 2
+	step 75, 1
+	step 37, 1
+	step 17, 3
+	step 19, 1
+	step_end
 
 scr_seq_0850_T21_03AC:
-	.short 18, 2
-	.short 16, 3
-	.short 63, 1
-	.short 37, 1
-	.short 66, 1
-	.short 75, 1
-	.short 17, 4
-	.short 19, 1
-	.short 254, 0
+	step 18, 2
+	step 16, 3
+	step 63, 1
+	step 37, 1
+	step 66, 1
+	step 75, 1
+	step 17, 4
+	step 19, 1
+	step_end
 
 scr_seq_0850_T21_03D0:
-	.short 18, 2
-	.short 16, 4
-	.short 63, 1
-	.short 37, 1
-	.short 66, 1
-	.short 75, 1
-	.short 17, 5
-	.short 19, 1
-	.short 254, 0
+	step 18, 2
+	step 16, 4
+	step 63, 1
+	step 37, 1
+	step 66, 1
+	step 75, 1
+	step 17, 5
+	step 19, 1
+	step_end
 
 scr_seq_0850_T21_03F4:
-	.short 18, 2
-	.short 16, 4
-	.short 63, 1
-	.short 37, 1
-	.short 66, 1
-	.short 75, 1
-	.short 17, 5
-	.short 19, 1
-	.short 254, 0
+	step 18, 2
+	step 16, 4
+	step 63, 1
+	step 37, 1
+	step 66, 1
+	step 75, 1
+	step 17, 5
+	step 19, 1
+	step_end
 
 scr_seq_0850_T21_0418:
-	.short 18, 1
-	.short 16, 3
-	.short 37, 1
-	.short 62, 4
-	.short 36, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 3
+	step 37, 1
+	step 62, 4
+	step 36, 1
+	step_end
 
 scr_seq_0850_T21_0430:
-	.short 18, 1
-	.short 16, 4
-	.short 37, 1
-	.short 62, 5
-	.short 36, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 4
+	step 37, 1
+	step 62, 5
+	step 36, 1
+	step_end
 
 scr_seq_0850_T21_0448:
-	.short 18, 1
-	.short 16, 5
-	.short 37, 1
-	.short 62, 6
-	.short 36, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 5
+	step 37, 1
+	step 62, 6
+	step 36, 1
+	step_end
 
 scr_seq_0850_T21_0460:
-	.short 18, 1
-	.short 16, 6
-	.short 37, 1
-	.short 62, 9
-	.short 36, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 6
+	step 37, 1
+	step 62, 9
+	step 36, 1
+	step_end
 
 scr_seq_0850_T21_0478:
-	.short 14, 2
-	.short 12, 2
-	.short 63, 1
-	.short 254, 0
+	step 14, 2
+	step 12, 2
+	step 63, 1
+	step_end
 
 scr_seq_0850_T21_0488:
-	.short 14, 2
-	.short 12, 3
-	.short 63, 1
-	.short 254, 0
+	step 14, 2
+	step 12, 3
+	step 63, 1
+	step_end
 
 scr_seq_0850_T21_0498:
-	.short 14, 2
-	.short 12, 4
-	.short 63, 1
-	.short 254, 0
+	step 14, 2
+	step 12, 4
+	step 63, 1
+	step_end
 
 scr_seq_0850_T21_04A8:
-	.short 14, 2
-	.short 12, 5
-	.short 63, 1
-	.short 254, 0
+	step 14, 2
+	step 12, 5
+	step 63, 1
+	step_end
 
 scr_seq_0850_T21_04B8:
-	.short 18, 9
-	.short 39, 1
-	.short 62, 7
-	.short 36, 1
-	.short 254, 0
+	step 18, 9
+	step 39, 1
+	step 62, 7
+	step 36, 1
+	step_end
 
 scr_seq_0850_T21_04CC:
-	.short 12, 1
-	.short 14, 8
-	.short 63, 2
-	.short 32, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 8
+	step 63, 2
+	step 32, 1
+	step_end
 
 scr_seq_0850_T21_04E0:
-	.short 18, 6
-	.short 16, 2
-	.short 18, 1
-	.short 39, 1
-	.short 62, 7
-	.short 36, 1
-	.short 254, 0
+	step 18, 6
+	step 16, 2
+	step 18, 1
+	step 39, 1
+	step 62, 7
+	step 36, 1
+	step_end
 
 scr_seq_0850_T21_04FC:
-	.short 14, 7
-	.short 12, 2
-	.short 63, 1
-	.short 254, 0
+	step 14, 7
+	step 12, 2
+	step 63, 1
+	step_end
 
 scr_seq_0850_T21_050C:
-	.short 17, 2
-	.short 18, 6
-	.short 17, 8
-	.short 14, 6
-	.short 36, 1
-	.short 62, 17
-	.short 38, 1
-	.short 254, 0
+	step 17, 2
+	step 18, 6
+	step 17, 8
+	step 14, 6
+	step 36, 1
+	step 62, 17
+	step 38, 1
+	step_end
 
 scr_seq_0850_T21_052C:
-	.short 14, 1
-	.short 13, 2
-	.short 14, 6
-	.short 13, 7
-	.short 14, 6
-	.short 63, 2
-	.short 34, 1
-	.short 254, 0
+	step 14, 1
+	step 13, 2
+	step 14, 6
+	step 13, 7
+	step 14, 6
+	step 63, 2
+	step 34, 1
+	step_end
 
 scr_seq_0850_T21_054C:
-	.short 19, 16
-	.short 38, 1
-	.short 62, 6
-	.short 17, 2
-	.short 19, 6
-	.short 38, 1
-	.short 254, 0
+	step 19, 16
+	step 38, 1
+	step 62, 6
+	step 17, 2
+	step 19, 6
+	step 38, 1
+	step_end
 
 scr_seq_0850_T21_0568:
-	.short 62, 1
-	.short 13, 1
-	.short 15, 16
-	.short 13, 2
-	.short 15, 5
-	.short 254, 0
+	step 62, 1
+	step 13, 1
+	step 15, 16
+	step 13, 2
+	step 15, 5
+	step_end
 
 scr_seq_0850_T21_0580:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 	.byte 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_0850_T21_0590:
 	scrcmd_609
@@ -421,7 +421,7 @@ scr_seq_0850_T21_0590:
 	callstd std_play_follow_music
 	clearflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
 	show_person 0
-	scrcmd_098 0
+	lock 0
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	move_person 0, VAR_TEMP_x4000, 1, 394, 0
 	comparevartovalue VAR_TEMP_x4000, 549
@@ -465,7 +465,7 @@ scr_seq_0850_T21_063E:
 	apply_movement 0, scr_seq_0850_T21_06AC
 	wait_movement
 	callstd std_fade_end_mom_music
-	scrcmd_099 0
+	release 0
 	hide_person 0
 	setflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
 	register_pokegear_card 1
@@ -477,25 +477,25 @@ scr_seq_0850_T21_067E:
 	.byte 0x00, 0x00
 
 scr_seq_0850_T21_0680:
-	.short 75, 1
-	.short 37, 1
-	.short 254, 0
+	step 75, 1
+	step 37, 1
+	step_end
 
 scr_seq_0850_T21_068C:
-	.short 18, 1
-	.short 16, 9
-	.short 35, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 9
+	step 35, 1
+	step_end
 
 scr_seq_0850_T21_069C:
-	.short 19, 1
-	.short 16, 9
-	.short 34, 1
-	.short 254, 0
+	step 19, 1
+	step 16, 9
+	step 34, 1
+	step_end
 
 scr_seq_0850_T21_06AC:
-	.short 17, 9
-	.short 254, 0
+	step 17, 9
+	step_end
 scr_seq_0850_T21_06B4:
 	scrcmd_609
 	lockall
@@ -580,67 +580,67 @@ scr_seq_0850_T21_0800:
 	.byte 0xdb, 0x00, 0x61, 0x00, 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0850_T21_0808:
-	.short 14, 7
-	.short 254, 0
+	step 14, 7
+	step_end
 
 scr_seq_0850_T21_0810:
-	.short 14, 6
-	.short 75, 1
-	.short 37, 1
-	.short 63, 1
-	.short 36, 1
-	.short 63, 1
-	.short 37, 1
-	.short 63, 1
-	.short 35, 1
-	.short 63, 1
-	.short 15, 5
-	.short 33, 1
-	.short 254, 0
+	step 14, 6
+	step 75, 1
+	step 37, 1
+	step 63, 1
+	step 36, 1
+	step 63, 1
+	step 37, 1
+	step 63, 1
+	step 35, 1
+	step 63, 1
+	step 15, 5
+	step 33, 1
+	step_end
 
 scr_seq_0850_T21_0844:
-	.short 14, 6
-	.short 75, 1
-	.short 37, 1
-	.short 63, 1
-	.short 36, 1
-	.short 63, 1
-	.short 37, 1
-	.short 63, 1
-	.short 35, 1
-	.short 63, 1
-	.short 15, 5
-	.short 32, 1
-	.short 254, 0
+	step 14, 6
+	step 75, 1
+	step 37, 1
+	step 63, 1
+	step 36, 1
+	step 63, 1
+	step 37, 1
+	step 63, 1
+	step 35, 1
+	step 63, 1
+	step 15, 5
+	step 32, 1
+	step_end
 
 scr_seq_0850_T21_0878:
-	.short 14, 11
-	.short 254, 0
+	step 14, 11
+	step_end
 
 scr_seq_0850_T21_0880:
-	.short 14, 5
-	.short 12, 1
-	.short 14, 6
-	.short 254, 0
+	step 14, 5
+	step 12, 1
+	step 14, 6
+	step_end
 
 scr_seq_0850_T21_0890:
-	.short 0, 1
-	.short 71, 1
-	.short 17, 1
-	.short 72, 1
-	.short 254, 0
+	step 0, 1
+	step 71, 1
+	step 17, 1
+	step 72, 1
+	step_end
 
 scr_seq_0850_T21_08A4:
-	.short 1, 1
-	.short 71, 1
-	.short 16, 1
-	.short 72, 1
-	.short 254, 0
+	step 1, 1
+	step 71, 1
+	step 16, 1
+	step 72, 1
+	step_end
 
 scr_seq_0850_T21_08B8:
-	.short 63, 2
-	.short 34, 1
-	.short 254, 0
+	step 63, 2
+	step 34, 1
+	step_end
 scr_seq_0850_T21_08C4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -680,7 +680,7 @@ scr_seq_0850_T21_0919:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0850_T21_0A41
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0850_T21_0A55
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -726,7 +726,7 @@ scr_seq_0850_T21_0A07:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 1
+	cameron_photo 1
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -758,44 +758,44 @@ scr_seq_0850_T21_0A69:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0850_T21_0A6C:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0850_T21_0A84:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0850_T21_0A90:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0850_T21_0AA4:
-	.short 13, 1
-	.short 15, 2
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 2
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0850_T21_0AC0:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0850_T21_0ACC:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0850_T21_0ADC:
 	scrcmd_056 2, 0
 	scrcmd_057 3

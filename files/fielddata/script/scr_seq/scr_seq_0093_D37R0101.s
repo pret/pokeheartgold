@@ -94,73 +94,73 @@ scr_seq_0093_D37R0101_0173:
 	.byte 0x00
 
 scr_seq_0093_D37R0101_0174:
-	.short 78, 1
-	.short 39, 1
-	.short 50, 2
-	.short 18, 3
-	.short 0, 1
-	.short 60, 1
-	.short 3, 1
-	.short 60, 1
-	.short 1, 1
-	.short 60, 1
-	.short 2, 1
-	.short 60, 1
-	.short 0, 1
-	.short 60, 1
-	.short 3, 1
-	.short 60, 1
-	.short 1, 1
-	.short 254, 0
+	step 78, 1
+	step 39, 1
+	step 50, 2
+	step 18, 3
+	step 0, 1
+	step 60, 1
+	step 3, 1
+	step 60, 1
+	step 1, 1
+	step 60, 1
+	step 2, 1
+	step 60, 1
+	step 0, 1
+	step 60, 1
+	step 3, 1
+	step 60, 1
+	step 1, 1
+	step_end
 
 scr_seq_0093_D37R0101_01BC:
-	.short 12, 3
-	.short 254, 0
+	step 12, 3
+	step_end
 
 scr_seq_0093_D37R0101_01C4:
-	.short 14, 1
-	.short 75, 1
-	.short 254, 0
+	step 14, 1
+	step 75, 1
+	step_end
 
 scr_seq_0093_D37R0101_01D0:
-	.short 14, 1
-	.short 13, 2
-	.short 14, 1
-	.short 254, 0
+	step 14, 1
+	step 13, 2
+	step 14, 1
+	step_end
 
 scr_seq_0093_D37R0101_01E0:
-	.short 63, 3
-	.short 15, 1
-	.short 13, 1
-	.short 254, 0
+	step 63, 3
+	step 15, 1
+	step 13, 1
+	step_end
 
 scr_seq_0093_D37R0101_01F0:
-	.short 13, 2
-	.short 14, 1
-	.short 13, 1
-	.short 69, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 1
+	step 13, 1
+	step 69, 1
+	step_end
 
 scr_seq_0093_D37R0101_0204:
-	.short 13, 3
-	.short 14, 1
-	.short 13, 1
-	.short 69, 1
-	.short 254, 0
+	step 13, 3
+	step 14, 1
+	step 13, 1
+	step 69, 1
+	step_end
 
 scr_seq_0093_D37R0101_0218:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0093_D37R0101_0220:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 scr_seq_0093_D37R0101_0228:
 	clearflag FLAG_UNK_2C8
 	show_person 2
 	clearflag FLAG_UNK_2C8
 	show_person 3
-	scrcmd_098 3
+	lock 3
 	callstd std_play_friend_music
 	move_person 2, 25, 0, 9, 0
 	play_se SEQ_SE_DP_KAIDAN2
@@ -207,35 +207,35 @@ scr_seq_0093_D37R0101_0305:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0093_D37R0101_0308:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0093_D37R0101_0310:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0093_D37R0101_0318:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0093_D37R0101_0320:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0093_D37R0101_0328:
-	.short 15, 1
-	.short 12, 4
-	.short 14, 2
-	.short 69, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 4
+	step 14, 2
+	step 69, 1
+	step_end
 
 scr_seq_0093_D37R0101_033C:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 4
-	.short 14, 2
-	.short 69, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 4
+	step 14, 2
+	step 69, 1
+	step_end
 scr_seq_0093_D37R0101_0354:
 	call scr_seq_0093_D37R0101_03A8
 	call scr_seq_0093_D37R0101_03A8

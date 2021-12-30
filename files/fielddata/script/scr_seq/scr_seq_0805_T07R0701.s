@@ -27,8 +27,8 @@ scr_seq_0805_T07R0701_0039:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0805_T07R0701_003C:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 scr_seq_0805_T07R0701_0044:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -86,12 +86,12 @@ scr_seq_0805_T07R0701_00BD:
 
 
 scr_seq_0805_T07R0701_00D8:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0805_T07R0701_00E0:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0805_T07R0701_00E8:
 	play_se SEQ_SE_DP_SELECT
 	lockall

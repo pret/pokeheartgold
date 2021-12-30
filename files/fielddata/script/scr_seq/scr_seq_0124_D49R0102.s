@@ -39,12 +39,12 @@ scr_seq_0124_D49R0102_006A:
 scr_seq_0124_D49R0102_0071:
 	npc_msg 2
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 272, 255, 0
-	scrcmd_751 296, 255, 1
-	scrcmd_751 297, 255, 2
-	scrcmd_751 12, 255, 3
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 272, 255, 0
+	menu_item_add 296, 255, 1
+	menu_item_add 297, 255, 2
+	menu_item_add 12, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0124_D49R0102_03C5
@@ -59,14 +59,14 @@ scr_seq_0124_D49R0102_00D3:
 scr_seq_0124_D49R0102_00D5:
 	npc_msg 3
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 308, 255, 0
-	scrcmd_751 309, 255, 1
-	scrcmd_751 310, 255, 2
-	scrcmd_751 311, 255, 3
-	scrcmd_751 312, 255, 4
-	scrcmd_751 13, 255, 5
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 308, 255, 0
+	menu_item_add 309, 255, 1
+	menu_item_add 310, 255, 2
+	menu_item_add 311, 255, 3
+	menu_item_add 312, 255, 4
+	menu_item_add 13, 255, 5
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 5
 	gotoif eq, scr_seq_0124_D49R0102_0071
@@ -86,12 +86,12 @@ scr_seq_0124_D49R0102_0164:
 scr_seq_0124_D49R0102_0166:
 	setvar VAR_TEMP_x4007, 0
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 298, 255, 0
-	scrcmd_751 299, 255, 1
-	scrcmd_751 304, 255, 6
-	scrcmd_751 13, 255, 10
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 298, 255, 0
+	menu_item_add 299, 255, 1
+	menu_item_add 304, 255, 6
+	menu_item_add 13, 255, 10
+	menu_exec
 	goto scr_seq_0124_D49R0102_0288
 
 scr_seq_0124_D49R0102_019E:
@@ -99,12 +99,12 @@ scr_seq_0124_D49R0102_019E:
 scr_seq_0124_D49R0102_01A0:
 	setvar VAR_TEMP_x4007, 1
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 301, 255, 3
-	scrcmd_751 300, 255, 2
-	scrcmd_751 307, 255, 9
-	scrcmd_751 13, 255, 10
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 301, 255, 3
+	menu_item_add 300, 255, 2
+	menu_item_add 307, 255, 9
+	menu_item_add 13, 255, 10
+	menu_exec
 	goto scr_seq_0124_D49R0102_0288
 
 scr_seq_0124_D49R0102_01D8:
@@ -112,12 +112,12 @@ scr_seq_0124_D49R0102_01D8:
 scr_seq_0124_D49R0102_01DA:
 	setvar VAR_TEMP_x4007, 2
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 306, 255, 8
-	scrcmd_751 307, 255, 9
-	scrcmd_751 299, 255, 1
-	scrcmd_751 13, 255, 10
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 306, 255, 8
+	menu_item_add 307, 255, 9
+	menu_item_add 299, 255, 1
+	menu_item_add 13, 255, 10
+	menu_exec
 	goto scr_seq_0124_D49R0102_0288
 
 scr_seq_0124_D49R0102_0212:
@@ -125,12 +125,12 @@ scr_seq_0124_D49R0102_0212:
 scr_seq_0124_D49R0102_0214:
 	setvar VAR_TEMP_x4007, 3
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 305, 255, 7
-	scrcmd_751 304, 255, 6
-	scrcmd_751 301, 255, 3
-	scrcmd_751 13, 255, 10
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 305, 255, 7
+	menu_item_add 304, 255, 6
+	menu_item_add 301, 255, 3
+	menu_item_add 13, 255, 10
+	menu_exec
 	goto scr_seq_0124_D49R0102_0288
 
 scr_seq_0124_D49R0102_024C:
@@ -138,12 +138,12 @@ scr_seq_0124_D49R0102_024C:
 scr_seq_0124_D49R0102_024E:
 	setvar VAR_TEMP_x4007, 4
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 303, 255, 5
-	scrcmd_751 302, 255, 4
-	scrcmd_751 298, 255, 0
-	scrcmd_751 13, 255, 10
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 303, 255, 5
+	menu_item_add 302, 255, 4
+	menu_item_add 298, 255, 0
+	menu_item_add 13, 255, 10
+	menu_exec
 	goto scr_seq_0124_D49R0102_0288
 
 scr_seq_0124_D49R0102_0286:
@@ -476,12 +476,12 @@ scr_seq_0124_D49R0102_060F:
 	.byte 0x00
 
 scr_seq_0124_D49R0102_0610:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0124_D49R0102_0618:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0124_D49R0102_0620:
 	play_se SEQ_SE_DP_SELECT
 	lockall

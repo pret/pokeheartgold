@@ -4887,7 +4887,7 @@ sub_020930C4: ; 0x020930C4
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get

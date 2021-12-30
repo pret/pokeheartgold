@@ -49,12 +49,12 @@ scr_seq_0135_D52R0103_003E:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_099 0
+	release 0
 	scrcmd_523 0, 8, 90, 3, 0
 	scrcmd_076 384, 0
 	npc_msg 0
 	scrcmd_077
-	scrcmd_098 0
+	lock 0
 	closemsg
 	setvar VAR_UNK_40F9, 6
 	releaseall
@@ -64,14 +64,14 @@ scr_seq_0135_D52R0103_00B1:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0135_D52R0103_00B4:
-	.short 12, 8
-	.short 63, 2
-	.short 254, 0
+	step 12, 8
+	step 63, 2
+	step_end
 scr_seq_0135_D52R0103_00C0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_099 0
+	release 0
 	scrcmd_523 0, 8, 90, 3, 0
 	scrcmd_076 384, 0
 	npc_msg 0

@@ -215,112 +215,112 @@ scr_seq_0019_D17R0101_02D5:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0019_D17R0101_02D8:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0019_D17R0101_02E0:
-	.short 3, 1
-	.short 75, 1
-	.short 254, 0
+	step 3, 1
+	step 75, 1
+	step_end
 
 scr_seq_0019_D17R0101_02EC:
-	.short 13, 2
-	.short 14, 1
-	.short 13, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 1
+	step 13, 1
+	step_end
 
 scr_seq_0019_D17R0101_02FC:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0019_D17R0101_0304:
-	.short 13, 2
-	.short 15, 1
-	.short 13, 1
-	.short 254, 0
+	step 13, 2
+	step 15, 1
+	step 13, 1
+	step_end
 
 scr_seq_0019_D17R0101_0314:
-	.short 12, 1
-	.short 15, 2
-	.short 15, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 2
+	step 15, 1
+	step_end
 
 scr_seq_0019_D17R0101_0324:
-	.short 15, 3
-	.short 254, 0
+	step 15, 3
+	step_end
 
 scr_seq_0019_D17R0101_032C:
-	.short 13, 1
-	.short 15, 3
-	.short 254, 0
+	step 13, 1
+	step 15, 3
+	step_end
 
 scr_seq_0019_D17R0101_0338:
-	.short 13, 2
-	.short 15, 3
-	.short 254, 0
+	step 13, 2
+	step 15, 3
+	step_end
 
 scr_seq_0019_D17R0101_0344:
-	.short 71, 1
-	.short 13, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 13, 1
+	step 72, 1
+	step_end
 
 scr_seq_0019_D17R0101_0354:
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step_end
 
 scr_seq_0019_D17R0101_0364:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 2
+	step 33, 1
+	step_end
 
 scr_seq_0019_D17R0101_0378:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0019_D17R0101_0384:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 2
+	step 33, 1
+	step_end
 
 scr_seq_0019_D17R0101_0398:
-	.short 14, 4
-	.short 13, 1
-	.short 254, 0
+	step 14, 4
+	step 13, 1
+	step_end
 
 scr_seq_0019_D17R0101_03A4:
-	.short 14, 4
-	.short 33, 1
-	.short 254, 0
+	step 14, 4
+	step 33, 1
+	step_end
 
 scr_seq_0019_D17R0101_03B0:
-	.short 14, 4
-	.short 12, 1
-	.short 33, 1
-	.short 254, 0
+	step 14, 4
+	step 12, 1
+	step 33, 1
+	step_end
 
 scr_seq_0019_D17R0101_03C0:
-	.short 14, 4
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 14, 4
+	step 12, 2
+	step 33, 1
+	step_end
 
 scr_seq_0019_D17R0101_03D0:
-	.short 71, 1
-	.short 4, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 4, 1
+	step 72, 1
+	step_end
 
 scr_seq_0019_D17R0101_03E0:
-	.short 71, 1
-	.short 6, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 6, 1
+	step 72, 1
+	step_end
 	.balign 4, 0

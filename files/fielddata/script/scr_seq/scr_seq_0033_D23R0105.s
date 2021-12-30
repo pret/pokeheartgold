@@ -172,95 +172,95 @@ scr_seq_0033_D23R0105_023E:
 	.byte 0x00, 0x00
 
 scr_seq_0033_D23R0105_0240:
-	.short 2, 1
-	.short 75, 1
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step_end
 
 scr_seq_0033_D23R0105_024C:
-	.short 3, 1
-	.short 75, 1
-	.short 254, 0
+	step 3, 1
+	step 75, 1
+	step_end
 
 scr_seq_0033_D23R0105_0258:
-	.short 1, 1
-	.short 75, 1
-	.short 254, 0
+	step 1, 1
+	step 75, 1
+	step_end
 
 scr_seq_0033_D23R0105_0264:
-	.short 71, 1
-	.short 19, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 19, 1
+	step 72, 1
+	step_end
 
 scr_seq_0033_D23R0105_0274:
-	.short 71, 1
-	.short 18, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 18, 1
+	step 72, 1
+	step_end
 
 scr_seq_0033_D23R0105_0284:
-	.short 18, 1
-	.short 254, 0
+	step 18, 1
+	step_end
 
 scr_seq_0033_D23R0105_028C:
-	.short 19, 1
-	.short 254, 0
+	step 19, 1
+	step_end
 
 scr_seq_0033_D23R0105_0294:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0033_D23R0105_02B0:
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0033_D23R0105_02C8:
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 	.byte 0x03, 0x00, 0x01, 0x00
 	.byte 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00
 	.byte 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0033_D23R0105_0310:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step_end
 
 scr_seq_0033_D23R0105_0328:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0033_D23R0105_0344:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 	.balign 4, 0

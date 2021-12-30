@@ -111,48 +111,48 @@ scr_seq_0862_T22R0301_0162:
 	.byte 0x00, 0x00
 
 scr_seq_0862_T22R0301_0164:
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 254, 0
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step_end
 
 scr_seq_0862_T22R0301_0188:
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 254, 0
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step_end
 
 scr_seq_0862_T22R0301_01AC:
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 254, 0
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step_end
 
 scr_seq_0862_T22R0301_01D0:
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 254, 0
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step_end
 scr_seq_0862_T22R0301_01F4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -165,14 +165,14 @@ scr_seq_0862_T22R0301_0205:
 scr_seq_0862_T22R0301_0207:
 	npc_msg 13
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 24, 255, 1
-	scrcmd_751 25, 255, 2
-	scrcmd_751 26, 255, 3
-	scrcmd_751 27, 255, 4
-	scrcmd_751 28, 255, 5
-	scrcmd_751 29, 255, 0
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 24, 255, 1
+	menu_item_add 25, 255, 2
+	menu_item_add 26, 255, 3
+	menu_item_add 27, 255, 4
+	menu_item_add 28, 255, 5
+	menu_item_add 29, 255, 0
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0862_T22R0301_0264
@@ -270,8 +270,8 @@ scr_seq_0862_T22R0301_035B:
 	.byte 0x00
 
 scr_seq_0862_T22R0301_035C:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0862_T22R0301_0364:
 	play_se SEQ_SE_DP_SELECT
 	lockall

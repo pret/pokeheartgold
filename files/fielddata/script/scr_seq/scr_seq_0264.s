@@ -143,12 +143,12 @@ scr_seq_0264_01EE:
 	return
 
 scr_seq_0264_01F5:
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x8001
-	scrcmd_751 1, 255, 0
-	scrcmd_751 2, 255, 1
-	scrcmd_751 3, 255, 2
-	scrcmd_751 4, 255, 3
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8001
+	menu_item_add 1, 255, 0
+	menu_item_add 2, 255, 1
+	menu_item_add 3, 255, 2
+	menu_item_add 4, 255, 3
+	menu_exec
 	return
 
 scr_seq_0264_0221:

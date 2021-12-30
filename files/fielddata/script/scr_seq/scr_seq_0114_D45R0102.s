@@ -198,91 +198,91 @@ scr_seq_0114_D45R0102_0302:
 	.byte 0x00, 0x00
 
 scr_seq_0114_D45R0102_0304:
-	.short 35, 1
-	.short 75, 1
-	.short 63, 1
-	.short 19, 1
-	.short 32, 1
-	.short 254, 0
+	step 35, 1
+	step 75, 1
+	step 63, 1
+	step 19, 1
+	step 32, 1
+	step_end
 
 scr_seq_0114_D45R0102_031C:
-	.short 75, 1
-	.short 63, 1
-	.short 33, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 33, 1
+	step_end
 
 scr_seq_0114_D45R0102_032C:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 	.byte 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0114_D45R0102_033C:
-	.short 71, 1
-	.short 8, 1
-	.short 72, 1
-	.short 11, 2
-	.short 254, 0
+	step 71, 1
+	step 8, 1
+	step 72, 1
+	step 11, 2
+	step_end
 
 scr_seq_0114_D45R0102_0350:
-	.short 13, 4
-	.short 14, 2
-	.short 13, 2
-	.short 254, 0
+	step 13, 4
+	step 14, 2
+	step 13, 2
+	step_end
 
 scr_seq_0114_D45R0102_0360:
-	.short 11, 2
-	.short 9, 3
-	.short 10, 2
-	.short 9, 2
-	.short 254, 0
+	step 11, 2
+	step 9, 3
+	step 10, 2
+	step 9, 2
+	step_end
 
 scr_seq_0114_D45R0102_0374:
-	.short 32, 1
-	.short 12, 1
-	.short 254, 0
+	step 32, 1
+	step 12, 1
+	step_end
 
 scr_seq_0114_D45R0102_0380:
-	.short 63, 3
-	.short 13, 1
-	.short 254, 0
+	step 63, 3
+	step 13, 1
+	step_end
 
 scr_seq_0114_D45R0102_038C:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0114_D45R0102_0398:
-	.short 15, 1
-	.short 12, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step_end
 
 scr_seq_0114_D45R0102_03A4:
-	.short 49, 1
-	.short 254, 0
+	step 49, 1
+	step_end
 
 scr_seq_0114_D45R0102_03AC:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0114_D45R0102_03B4:
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0114_D45R0102_03C0:
-	.short 34, 1
-	.short 63, 1
-	.short 35, 1
-	.short 63, 1
-	.short 254, 0
+	step 34, 1
+	step 63, 1
+	step 35, 1
+	step 63, 1
+	step_end
 
 scr_seq_0114_D45R0102_03D4:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0114_D45R0102_03DC:
-	.short 39, 4
-	.short 254, 0
+	step 39, 4
+	step_end
 scr_seq_0114_D45R0102_03E4:
 	play_se SEQ_SE_DP_SELECT
 	lockall

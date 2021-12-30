@@ -134,15 +134,15 @@ scr_seq_0043_D24R0206_0229:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0043_D24R0206_022C:
-	.short 40, 4
-	.short 69, 1
-	.short 254, 0
+	step 40, 4
+	step 69, 1
+	step_end
 
 scr_seq_0043_D24R0206_0238:
-	.short 62, 3
-	.short 20, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 20, 1
+	step 69, 1
+	step_end
 scr_seq_0043_D24R0206_0248:
 	scrcmd_609
 	lockall
@@ -178,6 +178,6 @@ scr_seq_0043_D24R0206_02A3:
 	.byte 0x00
 
 scr_seq_0043_D24R0206_02A4:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 	.balign 4, 0

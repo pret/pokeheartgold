@@ -186,386 +186,386 @@ scr_seq_0010_D02R0104_032D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0010_D02R0104_0330:
-	.short 76, 2
-	.short 254, 0
+	step 76, 2
+	step_end
 
 scr_seq_0010_D02R0104_0338:
-	.short 65, 1
-	.short 77, 2
-	.short 254, 0
+	step 65, 1
+	step 77, 2
+	step_end
 
 scr_seq_0010_D02R0104_0344:
-	.short 32, 5
-	.short 35, 1
-	.short 254, 0
+	step 32, 5
+	step 35, 1
+	step_end
 
 scr_seq_0010_D02R0104_0350:
-	.short 34, 5
-	.short 32, 1
-	.short 254, 0
+	step 34, 5
+	step 32, 1
+	step_end
 
 scr_seq_0010_D02R0104_035C:
-	.short 33, 5
-	.short 34, 1
-	.short 254, 0
+	step 33, 5
+	step 34, 1
+	step_end
 
 scr_seq_0010_D02R0104_0368:
-	.short 35, 5
-	.short 33, 1
-	.short 254, 0
+	step 35, 5
+	step 33, 1
+	step_end
 
 scr_seq_0010_D02R0104_0374:
-	.short 34, 6
-	.short 254, 0
+	step 34, 6
+	step_end
 
 scr_seq_0010_D02R0104_037C:
-	.short 35, 6
-	.short 254, 0
+	step 35, 6
+	step_end
 
 scr_seq_0010_D02R0104_0384:
-	.short 35, 6
-	.short 15, 1
-	.short 59, 1
-	.short 254, 0
+	step 35, 6
+	step 15, 1
+	step 59, 1
+	step_end
 
 scr_seq_0010_D02R0104_0394:
-	.short 32, 6
-	.short 12, 1
-	.short 56, 1
-	.short 254, 0
+	step 32, 6
+	step 12, 1
+	step 56, 1
+	step_end
 
 scr_seq_0010_D02R0104_03A4:
-	.short 34, 6
-	.short 14, 1
-	.short 58, 1
-	.short 254, 0
+	step 34, 6
+	step 14, 1
+	step 58, 1
+	step_end
 
 scr_seq_0010_D02R0104_03B4:
-	.short 33, 6
-	.short 13, 1
-	.short 57, 1
-	.short 254, 0
+	step 33, 6
+	step 13, 1
+	step 57, 1
+	step_end
 
 scr_seq_0010_D02R0104_03C4:
-	.short 34, 8
-	.short 254, 0
+	step 34, 8
+	step_end
 
 scr_seq_0010_D02R0104_03CC:
-	.short 35, 8
-	.short 254, 0
+	step 35, 8
+	step_end
 
 scr_seq_0010_D02R0104_03D4:
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 12, 4
-	.short 56, 1
-	.short 254, 0
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 12, 4
+	step 56, 1
+	step_end
 
 scr_seq_0010_D02R0104_03F0:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 14, 4
-	.short 58, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 14, 4
+	step 58, 1
+	step_end
 
 scr_seq_0010_D02R0104_040C:
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 13, 4
-	.short 57, 1
-	.short 254, 0
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 13, 4
+	step 57, 1
+	step_end
 
 scr_seq_0010_D02R0104_0428:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 15, 4
-	.short 59, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 15, 4
+	step 59, 1
+	step_end
 
 scr_seq_0010_D02R0104_0444:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step_end
 
 scr_seq_0010_D02R0104_0468:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step_end
 
 scr_seq_0010_D02R0104_048C:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 14, 4
-	.short 58, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 14, 4
+	step 58, 1
+	step_end
 
 scr_seq_0010_D02R0104_04A8:
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 13, 4
-	.short 57, 1
-	.short 254, 0
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 13, 4
+	step 57, 1
+	step_end
 
 scr_seq_0010_D02R0104_04C4:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 15, 4
-	.short 59, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 15, 4
+	step 59, 1
+	step_end
 
 scr_seq_0010_D02R0104_04E0:
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 12, 4
-	.short 56, 1
-	.short 254, 0
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 12, 4
+	step 56, 1
+	step_end
 
 scr_seq_0010_D02R0104_04FC:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step_end
 
 scr_seq_0010_D02R0104_0520:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step_end
 
 scr_seq_0010_D02R0104_0544:
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 13, 4
-	.short 57, 1
-	.short 254, 0
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 13, 4
+	step 57, 1
+	step_end
 
 scr_seq_0010_D02R0104_0560:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 15, 4
-	.short 59, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 15, 4
+	step 59, 1
+	step_end
 
 scr_seq_0010_D02R0104_057C:
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 12, 4
-	.short 56, 1
-	.short 254, 0
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 12, 4
+	step 56, 1
+	step_end
 
 scr_seq_0010_D02R0104_0598:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 14, 4
-	.short 58, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 14, 4
+	step 58, 1
+	step_end
 
 scr_seq_0010_D02R0104_05B4:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step_end
 
 scr_seq_0010_D02R0104_05D8:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step_end
 
 scr_seq_0010_D02R0104_05FC:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 75, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 75, 1
+	step_end
 
 scr_seq_0010_D02R0104_0614:
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 12, 2
-	.short 56, 1
-	.short 254, 0
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 12, 2
+	step 56, 1
+	step_end
 
 scr_seq_0010_D02R0104_0630:
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 14, 2
-	.short 58, 1
-	.short 254, 0
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 14, 2
+	step 58, 1
+	step_end
 
 scr_seq_0010_D02R0104_064C:
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 13, 2
-	.short 57, 1
-	.short 254, 0
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 13, 2
+	step 57, 1
+	step_end
 
 scr_seq_0010_D02R0104_0668:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step_end
 
 scr_seq_0010_D02R0104_068C:
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 35, 1
-	.short 32, 1
-	.short 34, 1
-	.short 33, 1
-	.short 254, 0
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step 35, 1
+	step 32, 1
+	step 34, 1
+	step 33, 1
+	step_end
 
 scr_seq_0010_D02R0104_06B0:
-	.short 48, 3
-	.short 19, 6
-	.short 16, 3
-	.short 19, 3
-	.short 17, 3
-	.short 19, 1
-	.short 59, 1
-	.short 19, 2
-	.short 254, 0
+	step 48, 3
+	step 19, 6
+	step 16, 3
+	step 19, 3
+	step 17, 3
+	step 19, 1
+	step 59, 1
+	step 19, 2
+	step_end
 
 scr_seq_0010_D02R0104_06D4:
-	.short 33, 1
-	.short 75, 1
-	.short 17, 1
-	.short 19, 3
-	.short 17, 2
-	.short 19, 1
-	.short 59, 1
-	.short 19, 2
-	.short 254, 0
+	step 33, 1
+	step 75, 1
+	step 17, 1
+	step 19, 3
+	step 17, 2
+	step 19, 1
+	step 59, 1
+	step 19, 2
+	step_end
 
 scr_seq_0010_D02R0104_06F8:
-	.short 33, 1
-	.short 75, 1
-	.short 19, 4
-	.short 17, 3
-	.short 19, 3
-	.short 17, 2
-	.short 19, 1
-	.short 59, 1
-	.short 19, 2
-	.short 254, 0
+	step 33, 1
+	step 75, 1
+	step 19, 4
+	step 17, 3
+	step 19, 3
+	step 17, 2
+	step 19, 1
+	step 59, 1
+	step 19, 2
+	step_end
 
 scr_seq_0010_D02R0104_0720:
-	.short 33, 1
-	.short 75, 1
-	.short 17, 2
-	.short 19, 6
-	.short 16, 3
-	.short 19, 2
-	.short 17, 3
-	.short 50, 2
-	.short 254, 0
+	step 33, 1
+	step 75, 1
+	step 17, 2
+	step 19, 6
+	step 16, 3
+	step 19, 2
+	step 17, 3
+	step 50, 2
+	step_end
 
 scr_seq_0010_D02R0104_0744:
-	.short 33, 1
-	.short 75, 1
-	.short 17, 2
-	.short 19, 2
-	.short 59, 1
-	.short 19, 3
-	.short 254, 0
+	step 33, 1
+	step 75, 1
+	step 17, 2
+	step 19, 2
+	step 59, 1
+	step 19, 3
+	step_end
 
 scr_seq_0010_D02R0104_0760:
-	.short 33, 1
-	.short 75, 1
-	.short 15, 2
-	.short 13, 3
-	.short 15, 5
-	.short 51, 2
-	.short 254, 0
+	step 33, 1
+	step 75, 1
+	step 15, 2
+	step 13, 3
+	step 15, 5
+	step 51, 2
+	step_end
 
 scr_seq_0010_D02R0104_077C:
-	.short 38, 2
-	.short 36, 4
-	.short 48, 2
-	.short 19, 2
-	.short 59, 1
-	.short 19, 3
-	.short 254, 0
+	step 38, 2
+	step 36, 4
+	step 48, 2
+	step 19, 2
+	step 59, 1
+	step 19, 3
+	step_end
 
 scr_seq_0010_D02R0104_0798:
-	.short 15, 1
-	.short 12, 3
-	.short 15, 3
-	.short 13, 3
-	.short 15, 1
-	.short 59, 1
-	.short 15, 3
-	.short 254, 0
+	step 15, 1
+	step 12, 3
+	step 15, 3
+	step 13, 3
+	step 15, 1
+	step 59, 1
+	step 15, 3
+	step_end
 	.byte 0x46, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_0010_D02R0104_07C0:
 	scrcmd_056 2, 0

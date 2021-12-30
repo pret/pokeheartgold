@@ -137,11 +137,11 @@ scr_seq_0838_T11R0702_01E3:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_01E5:
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 15, 255, 0
-	scrcmd_751 14, 255, 1
-	scrcmd_751 16, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 15, 255, 0
+	menu_item_add 14, 255, 1
+	menu_item_add 16, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0838_T11R0702_0189
@@ -338,10 +338,10 @@ scr_seq_0838_T11R0702_04CC:
 	gotoif ne, scr_seq_0838_T11R0702_050C
 	comparevartovar VAR_TEMP_x4000, VAR_SPECIAL_x8000
 	gotoif ne, scr_seq_0838_T11R0702_0506
-	scrcmd_099 253
+	release 253
 	apply_movement 253, scr_seq_0838_T11R0702_06F0
 	wait_movement
-	scrcmd_098 253
+	lock 253
 scr_seq_0838_T11R0702_0506:
 	setvar VAR_TEMP_x400A, 1
 scr_seq_0838_T11R0702_050C:
@@ -361,15 +361,15 @@ scr_seq_0838_T11R0702_051C:
 	scrcmd_490 32768
 	comparevartovar VAR_TEMP_x4000, VAR_SPECIAL_x8000
 	gotoif ne, scr_seq_0838_T11R0702_055E
-	scrcmd_099 253
+	release 253
 	apply_movement 253, scr_seq_0838_T11R0702_06F0
 	wait_movement
-	scrcmd_098 253
+	lock 253
 scr_seq_0838_T11R0702_055E:
 	setvar VAR_TEMP_x400A, 1
 scr_seq_0838_T11R0702_0564:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
-	scrcmd_197 1, 32769
+	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg 0
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -390,21 +390,21 @@ scr_seq_0838_T11R0702_058A:
 	comparevartovalue VAR_SPECIAL_x8002, 4
 	gotoif eq, scr_seq_0838_T11R0702_0628
 	scrcmd_398 32780, 32768, 32770
-	scrcmd_197 1, 32780
+	buffer_move_name 1, VAR_SPECIAL_x800C
 	npc_msg 3
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0838_T11R0702_0649
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	scrcmd_398 32780, 32768, 32770
-	scrcmd_197 1, 32780
+	buffer_move_name 1, VAR_SPECIAL_x800C
 	npc_msg 4
 	play_se SEQ_SE_DP_KON
 	wait_se SEQ_SE_DP_KON
 	wait 30, VAR_SPECIAL_x800C
 	npc_msg 5
 	wait 32, VAR_SPECIAL_x800C
-	scrcmd_197 1, 32769
+	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg 6
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
@@ -414,7 +414,7 @@ scr_seq_0838_T11R0702_058A:
 scr_seq_0838_T11R0702_0626:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_0628:
-	scrcmd_197 1, 32769
+	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg 1
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -425,7 +425,7 @@ scr_seq_0838_T11R0702_0647:
 	.byte 0x02, 0x00
 scr_seq_0838_T11R0702_0649:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
-	scrcmd_197 1, 32769
+	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg 2
 	waitbutton
 	comparevartovalue VAR_TEMP_x400A, 1
@@ -477,9 +477,9 @@ scr_seq_0838_T11R0702_06EA:
 
 
 scr_seq_0838_T11R0702_06F0:
-	.short 45, 2
-	.short 69, 1
-	.short 254, 0
+	step 45, 2
+	step 69, 1
+	step_end
 scr_seq_0838_T11R0702_06FC:
 	setvar VAR_SPECIAL_x8001, 315
 	return
@@ -564,18 +564,18 @@ scr_seq_0838_T11R0702_07B3:
 	return
 
 scr_seq_0838_T11R0702_07BA:
-	scrcmd_099 253
+	release 253
 	apply_movement 253, scr_seq_0838_T11R0702_07D0
 	wait_movement
-	scrcmd_098 253
+	lock 253
 	return
 
 scr_seq_0838_T11R0702_07CE:
 	.byte 0x00, 0x00
 
 scr_seq_0838_T11R0702_07D0:
-	.short 70, 1
-	.short 254, 0
+	step 70, 1
+	step_end
 scr_seq_0838_T11R0702_07D8:
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	callif eq, scr_seq_0838_T11R0702_0821
@@ -620,10 +620,10 @@ scr_seq_0838_T11R0702_083A:
 	gotoif eq, scr_seq_0838_T11R0702_088D
 	npc_msg 13
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 14, 255, 0
-	scrcmd_751 19, 255, 1
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 14, 255, 0
+	menu_item_add 19, 255, 1
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0838_T11R0702_0231

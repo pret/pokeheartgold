@@ -65,7 +65,7 @@ scr_seq_0245_R36R0201_0088:
 	scrcmd_176 487, 0, 75, 39, 2
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0245_R36R0201_010A
@@ -77,7 +77,7 @@ scr_seq_0245_R36R0201_010A:
 scr_seq_0245_R36R0201_010C:
 	apply_movement 253, scr_seq_0245_R36R0201_0130
 	wait_movement
-	scrcmd_099 253
+	release 253
 scr_seq_0245_R36R0201_011A:
 	releaseall
 	end
@@ -86,16 +86,16 @@ scr_seq_0245_R36R0201_011E:
 	.byte 0x00, 0x00
 
 scr_seq_0245_R36R0201_0120:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 
 scr_seq_0245_R36R0201_0128:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0245_R36R0201_0130:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 scr_seq_0245_R36R0201_0138:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -146,7 +146,7 @@ scr_seq_0245_R36R0201_01DC:
 	scrcmd_176 487, 0, 75, 39, 2
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0245_R36R0201_0221
@@ -158,7 +158,7 @@ scr_seq_0245_R36R0201_0221:
 scr_seq_0245_R36R0201_0223:
 	apply_movement 253, scr_seq_0245_R36R0201_0130
 	wait_movement
-	scrcmd_099 253
+	release 253
 scr_seq_0245_R36R0201_0231:
 	releaseall
 	end
@@ -167,22 +167,22 @@ scr_seq_0245_R36R0201_0235:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0245_R36R0201_0238:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 
 scr_seq_0245_R36R0201_0240:
-	.short 13, 1
-	.short 14, 1
-	.short 254, 0
+	step 13, 1
+	step 14, 1
+	step_end
 
 scr_seq_0245_R36R0201_024C:
-	.short 15, 1
-	.short 13, 2
-	.short 14, 2
-	.short 254, 0
+	step 15, 1
+	step 13, 2
+	step 14, 2
+	step_end
 
 scr_seq_0245_R36R0201_025C:
-	.short 13, 1
-	.short 14, 4
-	.short 254, 0
+	step 13, 1
+	step 14, 4
+	step_end
 	.balign 4, 0

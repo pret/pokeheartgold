@@ -56,8 +56,8 @@ scr_seq_0161_P01R0306_008F:
 	.byte 0x00
 
 scr_seq_0161_P01R0306_0090:
-	.short 49, 2
-	.short 254, 0
+	step 49, 2
+	step_end
 scr_seq_0161_P01R0306_0098:
 	scrcmd_609
 	lockall
@@ -96,12 +96,12 @@ scr_seq_0161_P01R0306_010F:
 	.byte 0x00
 
 scr_seq_0161_P01R0306_0110:
-	.short 51, 3
-	.short 254, 0
+	step 51, 3
+	step_end
 
 scr_seq_0161_P01R0306_0118:
-	.short 9, 1
-	.short 254, 0
+	step 9, 1
+	step_end
 scr_seq_0161_P01R0306_0120:
 	play_se SEQ_SE_DP_SELECT
 	lockall

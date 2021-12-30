@@ -405,13 +405,13 @@ scr_seq_0938_T29_0509:
 
 
 scr_seq_0938_T29_0538:
-	.short 34, 1
-	.short 50, 2
-	.short 254, 0
+	step 34, 1
+	step 50, 2
+	step_end
 
 scr_seq_0938_T29_0544:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 scr_seq_0938_T29_054C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

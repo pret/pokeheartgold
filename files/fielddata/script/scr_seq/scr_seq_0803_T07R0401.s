@@ -303,11 +303,11 @@ scr_seq_0803_T07R0401_0428:
 	scrcmd_116 0, 20, 2
 	scrcmd_113 20, 7
 scr_seq_0803_T07R0401_043E:
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 127, 255, 0
-	scrcmd_751 128, 255, 1
-	scrcmd_751 129, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 127, 255, 0
+	menu_item_add 128, 255, 1
+	menu_item_add 129, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0803_T07R0401_048B

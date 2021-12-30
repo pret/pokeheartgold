@@ -108,15 +108,15 @@ scr_seq_0858_T22FS0101_0115:
 
 
 scr_seq_0858_T22FS0101_0140:
-	.short 14, 2
-	.short 13, 3
-	.short 254, 0
+	step 14, 2
+	step 13, 3
+	step_end
 
 scr_seq_0858_T22FS0101_014C:
-	.short 13, 2
-	.short 14, 2
-	.short 13, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 2
+	step 13, 1
+	step_end
 scr_seq_0858_T22FS0101_015C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

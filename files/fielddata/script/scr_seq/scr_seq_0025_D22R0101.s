@@ -250,7 +250,7 @@ scr_seq_0025_D22R0101_02C7:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_032B
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_0336
 	npc_msg 86
@@ -258,7 +258,7 @@ scr_seq_0025_D22R0101_02C7:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 7
+	cameron_photo 7
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0
@@ -322,7 +322,7 @@ scr_seq_0025_D22R0101_0395:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_0650
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_0664
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -368,7 +368,7 @@ scr_seq_0025_D22R0101_0483:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 16
+	cameron_photo 16
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -384,42 +384,42 @@ scr_seq_0025_D22R0101_04BD:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0025_D22R0101_04C0:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0025_D22R0101_04D8:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0025_D22R0101_04E4:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0025_D22R0101_04F8:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0025_D22R0101_050C:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0025_D22R0101_0518:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0025_D22R0101_0528:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -431,7 +431,7 @@ scr_seq_0025_D22R0101_0528:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_0650
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0025_D22R0101_0664
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -477,7 +477,7 @@ scr_seq_0025_D22R0101_0616:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 17
+	cameron_photo 17
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -507,13 +507,13 @@ scr_seq_0025_D22R0101_0664:
 
 
 scr_seq_0025_D22R0101_0678:
-	.short 13, 1
-	.short 15, 2
-	.short 12, 2
-	.short 14, 1
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 13, 1
+	step 15, 2
+	step 12, 2
+	step 14, 1
+	step 12, 2
+	step 33, 1
+	step_end
 scr_seq_0025_D22R0101_0694:
 	scrcmd_056 2, 0
 	scrcmd_057 3

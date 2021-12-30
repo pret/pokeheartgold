@@ -71,20 +71,20 @@ scr_seq_0963_W40R0101_00C9:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0963_W40R0101_00CC:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0963_W40R0101_00D4:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0963_W40R0101_00DC:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0963_W40R0101_00E4:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 scr_seq_0963_W40R0101_00EC:
 	play_se SEQ_SE_DP_SELECT
 	lockall

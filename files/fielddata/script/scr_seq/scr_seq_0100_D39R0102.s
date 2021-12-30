@@ -80,46 +80,46 @@ scr_seq_0100_D39R0102_0117:
 	.byte 0x00
 
 scr_seq_0100_D39R0102_0118:
-	.short 40, 4
-	.short 69, 1
-	.short 254, 0
+	step 40, 4
+	step 69, 1
+	step_end
 
 scr_seq_0100_D39R0102_0124:
-	.short 62, 3
-	.short 20, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 20, 1
+	step 69, 1
+	step_end
 
 scr_seq_0100_D39R0102_0134:
-	.short 41, 4
-	.short 69, 1
-	.short 254, 0
+	step 41, 4
+	step 69, 1
+	step_end
 
 scr_seq_0100_D39R0102_0140:
-	.short 62, 3
-	.short 21, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 21, 1
+	step 69, 1
+	step_end
 
 scr_seq_0100_D39R0102_0150:
-	.short 42, 4
-	.short 69, 1
-	.short 254, 0
+	step 42, 4
+	step 69, 1
+	step_end
 
 scr_seq_0100_D39R0102_015C:
-	.short 62, 3
-	.short 22, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 22, 1
+	step 69, 1
+	step_end
 
 scr_seq_0100_D39R0102_016C:
-	.short 43, 4
-	.short 69, 1
-	.short 254, 0
+	step 43, 4
+	step 69, 1
+	step_end
 
 scr_seq_0100_D39R0102_0178:
-	.short 62, 3
-	.short 23, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 23, 1
+	step 69, 1
+	step_end
 	.balign 4, 0

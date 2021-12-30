@@ -192,71 +192,71 @@ scr_seq_0962_W40_02B2:
 
 
 scr_seq_0962_W40_02B8:
-	.short 71, 1
-	.short 12, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 12, 1
+	step 72, 1
+	step_end
 
 scr_seq_0962_W40_02C8:
-	.short 75, 1
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step_end
 
 scr_seq_0962_W40_02D4:
-	.short 16, 5
-	.short 32, 2
-	.short 254, 0
+	step 16, 5
+	step 32, 2
+	step_end
 
 scr_seq_0962_W40_02E0:
-	.short 16, 2
-	.short 19, 1
-	.short 16, 3
-	.short 32, 2
-	.short 254, 0
+	step 16, 2
+	step 19, 1
+	step 16, 3
+	step 32, 2
+	step_end
 
 scr_seq_0962_W40_02F4:
-	.short 16, 2
-	.short 19, 2
-	.short 16, 3
-	.short 32, 2
-	.short 254, 0
+	step 16, 2
+	step 19, 2
+	step 16, 3
+	step 32, 2
+	step_end
 
 scr_seq_0962_W40_0308:
-	.short 16, 2
-	.short 19, 3
-	.short 16, 3
-	.short 32, 2
-	.short 254, 0
+	step 16, 2
+	step 19, 3
+	step 16, 3
+	step 32, 2
+	step_end
 
 scr_seq_0962_W40_031C:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0962_W40_0324:
-	.short 17, 6
-	.short 32, 1
-	.short 254, 0
+	step 17, 6
+	step 32, 1
+	step_end
 
 scr_seq_0962_W40_0330:
-	.short 17, 3
-	.short 18, 1
-	.short 17, 3
-	.short 32, 1
-	.short 254, 0
+	step 17, 3
+	step 18, 1
+	step 17, 3
+	step 32, 1
+	step_end
 
 scr_seq_0962_W40_0344:
-	.short 17, 3
-	.short 18, 2
-	.short 17, 3
-	.short 32, 1
-	.short 254, 0
+	step 17, 3
+	step 18, 2
+	step 17, 3
+	step 32, 1
+	step_end
 
 scr_seq_0962_W40_0358:
-	.short 17, 3
-	.short 18, 3
-	.short 17, 3
-	.short 32, 1
-	.short 254, 0
+	step 17, 3
+	step 18, 3
+	step 17, 3
+	step 32, 1
+	step_end
 scr_seq_0962_W40_036C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

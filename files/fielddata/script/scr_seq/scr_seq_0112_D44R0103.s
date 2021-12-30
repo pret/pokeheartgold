@@ -59,11 +59,11 @@ scr_seq_0112_D44R0103_00A0:
 	setvar VAR_SPECIAL_x8004, 0
 	npc_msg 1
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
-	scrcmd_751 280, 255, 0
-	scrcmd_751 281, 255, 1
-	scrcmd_751 282, 255, 0
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_item_add 280, 255, 0
+	menu_item_add 281, 255, 1
+	menu_item_add 282, 255, 0
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
@@ -72,11 +72,11 @@ scr_seq_0112_D44R0103_00DF:
 	setvar VAR_SPECIAL_x8004, 1
 	npc_msg 2
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
-	scrcmd_751 283, 255, 0
-	scrcmd_751 284, 255, 0
-	scrcmd_751 285, 255, 1
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_item_add 283, 255, 0
+	menu_item_add 284, 255, 0
+	menu_item_add 285, 255, 1
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
@@ -85,11 +85,11 @@ scr_seq_0112_D44R0103_011E:
 	setvar VAR_SPECIAL_x8004, 2
 	npc_msg 3
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
-	scrcmd_751 286, 255, 1
-	scrcmd_751 287, 255, 0
-	scrcmd_751 288, 255, 0
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_item_add 286, 255, 1
+	menu_item_add 287, 255, 0
+	menu_item_add 288, 255, 0
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
@@ -98,11 +98,11 @@ scr_seq_0112_D44R0103_015D:
 	setvar VAR_SPECIAL_x8004, 3
 	npc_msg 4
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
-	scrcmd_751 289, 255, 0
-	scrcmd_751 290, 255, 1
-	scrcmd_751 291, 255, 0
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_item_add 289, 255, 0
+	menu_item_add 290, 255, 1
+	menu_item_add 291, 255, 0
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
@@ -111,11 +111,11 @@ scr_seq_0112_D44R0103_019C:
 	setvar VAR_SPECIAL_x8004, 4
 	npc_msg 5
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 0, VAR_SPECIAL_x800C
-	scrcmd_751 292, 255, 1
-	scrcmd_751 293, 255, 0
-	scrcmd_751 294, 255, 0
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_item_add 292, 255, 1
+	menu_item_add 293, 255, 0
+	menu_item_add 294, 255, 0
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_0310
@@ -215,94 +215,94 @@ scr_seq_0112_D44R0103_0310:
 
 
 scr_seq_0112_D44R0103_0370:
-	.short 12, 8
-	.short 254, 0
+	step 12, 8
+	step_end
 
 scr_seq_0112_D44R0103_0378:
-	.short 63, 2
-	.short 3, 1
-	.short 63, 2
-	.short 254, 0
+	step 63, 2
+	step 3, 1
+	step 63, 2
+	step_end
 
 scr_seq_0112_D44R0103_0388:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0112_D44R0103_0390:
-	.short 63, 1
-	.short 75, 1
-	.short 1, 1
-	.short 63, 8
-	.short 2, 1
-	.short 254, 0
+	step 63, 1
+	step 75, 1
+	step 1, 1
+	step 63, 8
+	step 2, 1
+	step_end
 
 scr_seq_0112_D44R0103_03A8:
-	.short 63, 4
-	.short 12, 8
-	.short 14, 1
-	.short 12, 2
-	.short 3, 1
-	.short 254, 0
+	step 63, 4
+	step 12, 8
+	step 14, 1
+	step 12, 2
+	step 3, 1
+	step_end
 
 scr_seq_0112_D44R0103_03C0:
-	.short 63, 1
-	.short 71, 1
-	.short 18, 1
-	.short 254, 0
+	step 63, 1
+	step 71, 1
+	step 18, 1
+	step_end
 
 scr_seq_0112_D44R0103_03D0:
-	.short 63, 1
-	.short 10, 1
-	.short 254, 0
+	step 63, 1
+	step 10, 1
+	step_end
 
 scr_seq_0112_D44R0103_03DC:
-	.short 63, 1
-	.short 9, 1
-	.short 10, 1
-	.short 254, 0
+	step 63, 1
+	step 9, 1
+	step 10, 1
+	step_end
 
 scr_seq_0112_D44R0103_03EC:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0112_D44R0103_03F4:
-	.short 15, 2
-	.short 254, 0
+	step 15, 2
+	step_end
 
 scr_seq_0112_D44R0103_03FC:
-	.short 63, 2
-	.short 3, 1
-	.short 254, 0
+	step 63, 2
+	step 3, 1
+	step_end
 
 scr_seq_0112_D44R0103_0408:
-	.short 8, 1
-	.short 11, 1
-	.short 1, 1
-	.short 254, 0
+	step 8, 1
+	step 11, 1
+	step 1, 1
+	step_end
 
 scr_seq_0112_D44R0103_0418:
-	.short 65, 2
-	.short 0, 1
-	.short 254, 0
+	step 65, 2
+	step 0, 1
+	step_end
 
 scr_seq_0112_D44R0103_0424:
-	.short 72, 1
-	.short 65, 2
-	.short 0, 1
-	.short 254, 0
+	step 72, 1
+	step 65, 2
+	step 0, 1
+	step_end
 
 scr_seq_0112_D44R0103_0434:
-	.short 71, 1
-	.short 13, 1
-	.short 72, 1
-	.short 21, 3
-	.short 23, 1
-	.short 21, 4
-	.short 254, 0
+	step 71, 1
+	step 13, 1
+	step 72, 1
+	step 21, 3
+	step 23, 1
+	step 21, 4
+	step_end
 
 scr_seq_0112_D44R0103_0450:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 scr_seq_0112_D44R0103_0458:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -412,7 +412,7 @@ scr_seq_0112_D44R0103_0576:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_069E
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0112_D44R0103_06B2
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -458,7 +458,7 @@ scr_seq_0112_D44R0103_0664:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 46
+	cameron_photo 46
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -490,40 +490,40 @@ scr_seq_0112_D44R0103_06C6:
 	.byte 0x00, 0x00
 
 scr_seq_0112_D44R0103_06C8:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0112_D44R0103_06E0:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0112_D44R0103_06EC:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0112_D44R0103_0700:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0112_D44R0103_0714:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0112_D44R0103_0720:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 	.balign 4, 0

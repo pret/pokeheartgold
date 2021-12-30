@@ -184,14 +184,15 @@ class NormalScriptParser(ScriptParserBase):
                 pc += 1
             while pc < nextpc:
                 cmd = int.from_bytes(self.raw[pc:pc + 2], 'little')
-                is_end = cmd == 254
+                if cmd == 254:
+                    s += '\tstep_end\n'
+                    pc += 4
+                    break
                 if cmd < len(self.movement_cmds):
                     cmd = self.movement_cmds[cmd]
                 duration = int.from_bytes(self.raw[pc + 2:pc + 4], 'little')
-                s += f'\t.short {cmd}, {duration}\n'
+                s += f'\tstep {cmd}, {duration}\n'
                 pc += 4
-                if is_end:
-                    break
             if pc == nextpc:
                 return s
         if pc & 15:

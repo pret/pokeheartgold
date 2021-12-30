@@ -1423,7 +1423,7 @@ _022384D6:
 	lsl r1, r1, #4
 	ldr r0, [r4, #0x60]
 	ldr r1, [r7, r1]
-	bl sub_020293FC
+	bl Pokedex_copy
 	ldr r0, [r4, #0x60]
 	bl FreeToHeap
 	mov r0, #0x45
@@ -2089,14 +2089,14 @@ _02238AB8:
 	ldr r1, [r4, #0x58]
 	bl Sav2_Bag_copy
 	mov r0, #5
-	bl sub_020293E8
+	bl Pokedex_new
 	str r0, [r4, #0x60]
 	mov r1, #0x11
 	ldr r0, [sp, #4]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	ldr r1, [r4, #0x60]
-	bl sub_020293FC
+	bl Pokedex_copy
 	mov r1, #0x45
 	lsl r1, r1, #2
 	ldr r0, [sp, #4]

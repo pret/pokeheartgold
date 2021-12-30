@@ -30,11 +30,11 @@ scr_seq_0167_003E:
 	.byte 0x02, 0x00
 scr_seq_0167_0040:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 271, 255, 0
-	scrcmd_751 11, 255, 1
-	scrcmd_751 12, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 271, 255, 0
+	menu_item_add 11, 255, 1
+	menu_item_add 12, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0167_01A7
@@ -47,22 +47,22 @@ scr_seq_0167_008A:
 scr_seq_0167_008C:
 	npc_msg 11
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, scr_seq_0167_00B4
-	scrcmd_751 272, 255, 0
+	menu_item_add 272, 255, 0
 	goto scr_seq_0167_00BC
 
 scr_seq_0167_00B4:
-	scrcmd_751 278, 255, 7
+	menu_item_add 278, 255, 7
 scr_seq_0167_00BC:
-	scrcmd_751 273, 255, 1
-	scrcmd_751 274, 255, 2
-	scrcmd_751 277, 255, 3
-	scrcmd_751 275, 255, 4
-	scrcmd_751 276, 255, 5
-	scrcmd_751 13, 255, 6
-	scrcmd_752
+	menu_item_add 273, 255, 1
+	menu_item_add 274, 255, 2
+	menu_item_add 277, 255, 3
+	menu_item_add 275, 255, 4
+	menu_item_add 276, 255, 5
+	menu_item_add 13, 255, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0167_015A
@@ -132,14 +132,14 @@ scr_seq_0167_01A7:
 	gotoif lt, scr_seq_0167_07E6
 	npc_msg 3
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 273, 255, 0
-	scrcmd_751 274, 255, 1
-	scrcmd_751 277, 255, 4
-	scrcmd_751 275, 255, 2
-	scrcmd_751 276, 255, 3
-	scrcmd_751 13, 255, 5
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 273, 255, 0
+	menu_item_add 274, 255, 1
+	menu_item_add 277, 255, 4
+	menu_item_add 275, 255, 2
+	menu_item_add 276, 255, 3
+	menu_item_add 13, 255, 5
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0167_0249
@@ -258,8 +258,8 @@ scr_seq_0167_028F:
 	call scr_seq_0167_0464
 	npc_msg 19
 	buffer_players_name 0
-	scrcmd_198 1, 32769
-	scrcmd_198 2, 32770
+	buffer_int 1, VAR_SPECIAL_x8001
+	buffer_int 2, VAR_SPECIAL_x8002
 	npc_msg 46
 	npc_msg 20
 	play_fanfare SEQ_ME_ITEM
@@ -406,11 +406,11 @@ scr_seq_0167_05AB:
 scr_seq_0167_05C4:
 	setvar VAR_TEMP_x4009, 300
 scr_seq_0167_05CA:
-	scrcmd_198 2, 16393
+	buffer_int 2, VAR_TEMP_x4009
 	npc_msg 22
 	scrcmd_122 16393
 	buffer_players_name 0
-	scrcmd_198 2, 16393
+	buffer_int 2, VAR_TEMP_x4009
 	npc_msg 20
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -563,104 +563,104 @@ scr_seq_0167_07F3:
 	.byte 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0167_0814:
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 14, 1
+	step 32, 1
+	step_end
 
 scr_seq_0167_0820:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0167_0828:
-	.short 32, 1
-	.short 12, 1
-	.short 15, 1
-	.short 12, 1
-	.short 254, 0
+	step 32, 1
+	step 12, 1
+	step 15, 1
+	step 12, 1
+	step_end
 
 scr_seq_0167_083C:
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0167_0848:
-	.short 0, 1
-	.short 60, 1
-	.short 3, 1
-	.short 60, 1
-	.short 1, 1
-	.short 60, 1
-	.short 2, 1
-	.short 60, 1
-	.short 0, 1
-	.short 60, 1
-	.short 3, 1
-	.short 60, 1
-	.short 1, 1
-	.short 60, 1
-	.short 2, 1
-	.short 60, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 2, 1
-	.short 0, 1
-	.short 3, 1
-	.short 1, 1
-	.short 63, 1
-	.short 254, 0
+	step 0, 1
+	step 60, 1
+	step 3, 1
+	step 60, 1
+	step 1, 1
+	step 60, 1
+	step 2, 1
+	step 60, 1
+	step 0, 1
+	step 60, 1
+	step 3, 1
+	step 60, 1
+	step 1, 1
+	step 60, 1
+	step 2, 1
+	step 60, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 63, 1
+	step_end
 
 scr_seq_0167_08DC:
-	.short 13, 1
-	.short 14, 1
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step 14, 1
+	step 13, 1
+	step_end
 
 scr_seq_0167_08EC:
-	.short 13, 2
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 2
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0167_08FC:
-	.short 13, 2
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 1
+	step 32, 1
+	step_end
 
 scr_seq_0167_090C:
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step_end
 
 scr_seq_0167_0914:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0167_091C:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0167_0924:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 	.byte 0x20, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0167_0934:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 scr_seq_0167_093C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -671,11 +671,11 @@ scr_seq_0167_093C:
 	npc_msg 26
 scr_seq_0167_095A:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 271, 255, 0
-	scrcmd_751 11, 255, 1
-	scrcmd_751 12, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 271, 255, 0
+	menu_item_add 11, 255, 1
+	menu_item_add 12, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0167_0AB1
@@ -688,17 +688,17 @@ scr_seq_0167_09A4:
 scr_seq_0167_09A6:
 	npc_msg 11
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 272, 255, 0
-	scrcmd_751 342, 255, 1
-	scrcmd_751 343, 255, 2
-	scrcmd_751 344, 255, 3
-	scrcmd_751 345, 255, 4
-	scrcmd_751 346, 255, 6
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 272, 255, 0
+	menu_item_add 342, 255, 1
+	menu_item_add 343, 255, 2
+	menu_item_add 344, 255, 3
+	menu_item_add 345, 255, 4
+	menu_item_add 346, 255, 6
 	checkflag FLAG_UNK_2B3
 	callif FALSE, scr_seq_0167_0B93
-	scrcmd_751 13, 255, 7
-	scrcmd_752
+	menu_item_add 13, 255, 7
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0167_0A64
@@ -779,16 +779,16 @@ scr_seq_0167_0AE1:
 	setvar VAR_TEMP_x400A, 2
 	npc_msg 3
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 342, 255, 0
-	scrcmd_751 343, 255, 1
-	scrcmd_751 344, 255, 2
-	scrcmd_751 345, 255, 3
-	scrcmd_751 346, 255, 4
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 342, 255, 0
+	menu_item_add 343, 255, 1
+	menu_item_add 344, 255, 2
+	menu_item_add 345, 255, 3
+	menu_item_add 346, 255, 4
 	checkflag FLAG_UNK_2B3
 	callif FALSE, scr_seq_0167_0B93
-	scrcmd_751 12, 255, 6
-	scrcmd_752
+	menu_item_add 12, 255, 6
+	menu_exec
 	copyvar VAR_TEMP_x400B, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -808,7 +808,7 @@ scr_seq_0167_0AE1:
 scr_seq_0167_0B91:
 	.byte 0x02, 0x00
 scr_seq_0167_0B93:
-	scrcmd_751 279, 255, 5
+	menu_item_add 279, 255, 5
 	return
 
 scr_seq_0167_0B9D:
@@ -851,11 +851,11 @@ scr_seq_0167_0BF5:
 scr_seq_0167_0BF7:
 	touchscreen_menu_hide
 	npc_msg 27
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 14, 255, 0
-	scrcmd_751 15, 255, 1
-	scrcmd_751 13, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 14, 255, 0
+	menu_item_add 15, 255, 1
+	menu_item_add 13, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0167_0C48
@@ -1015,8 +1015,8 @@ scr_seq_0167_0DD7:
 	call scr_seq_0167_0464
 	npc_msg 19
 	buffer_players_name 0
-	scrcmd_198 1, 32769
-	scrcmd_198 2, 32770
+	buffer_int 1, VAR_SPECIAL_x8001
+	buffer_int 2, VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x8000, 10
 	gotoif lt, scr_seq_0167_0EB5
 	npc_msg 47
@@ -1059,19 +1059,19 @@ scr_seq_0167_0F43:
 	comparevartovalue VAR_SPECIAL_x8003, 0
 	gotoif ne, scr_seq_0167_0F68
 	setvar VAR_TEMP_x4009, 500
-	scrcmd_198 2, 16393
+	buffer_int 2, VAR_TEMP_x4009
 	npc_msg 22
 	add_special_game_stat 18
 	goto scr_seq_0167_0F76
 
 scr_seq_0167_0F68:
 	setvar VAR_TEMP_x4009, 200
-	scrcmd_198 2, 16393
+	buffer_int 2, VAR_TEMP_x4009
 	npc_msg 34
 scr_seq_0167_0F76:
 	scrcmd_122 16393
 	buffer_players_name 0
-	scrcmd_198 2, 16393
+	buffer_int 2, VAR_TEMP_x4009
 	npc_msg 20
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -1100,12 +1100,12 @@ scr_seq_0167_0FD1:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0167_0FD4:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0167_0FDC:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 scr_seq_0167_0FE4:
 	npc_msg 38
 	waitbutton

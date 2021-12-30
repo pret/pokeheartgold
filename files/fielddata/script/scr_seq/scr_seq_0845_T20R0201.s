@@ -53,26 +53,26 @@ scr_seq_0845_T20R0201_00A3:
 	.byte 0x00
 
 scr_seq_0845_T20R0201_00A4:
-	.short 62, 1
-	.short 33, 1
-	.short 254, 0
+	step 62, 1
+	step 33, 1
+	step_end
 
 scr_seq_0845_T20R0201_00B0:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0845_T20R0201_00B8:
-	.short 12, 2
-	.short 14, 3
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 14, 3
+	step 12, 1
+	step_end
 
 scr_seq_0845_T20R0201_00C8:
-	.short 33, 1
-	.short 13, 3
-	.short 15, 3
-	.short 32, 1
-	.short 254, 0
+	step 33, 1
+	step 13, 3
+	step 15, 3
+	step 32, 1
+	step_end
 scr_seq_0845_T20R0201_00DC:
 	scrcmd_609
 	lockall
@@ -210,12 +210,12 @@ scr_seq_0845_T20R0201_0275:
 	npc_msg 20
 	scrcmd_795 1, 1
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 29, 255, 0
-	scrcmd_751 30, 255, 1
-	scrcmd_751 31, 255, 2
-	scrcmd_751 32, 255, 3
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 29, 255, 0
+	menu_item_add 30, 255, 1
+	menu_item_add 31, 255, 2
+	menu_item_add 32, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0845_T20R0201_02DF

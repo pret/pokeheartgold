@@ -26,7 +26,7 @@ _020F64C4:
 	.word 0x00000003, 0x00000000, Sav2_Bag_sizeof, Sav2_Bag_init
 	.word 0x00000004, 0x00000000, SavArray_Flags_sizeof, SavArray_Flags_init
 	.word 0x00000005, 0x00000000, sub_0203B91C, sub_0203B938
-	.word 0x00000006, 0x00000000, sub_020293E0, sub_02029D98
+	.word 0x00000006, 0x00000000, Save_Pokedex_sizeof, Save_Pokedex_init
 	.word 0x00000007, 0x00000000, Sav2_Daycare_sizeof, Sav2_Daycare_init
 	.word 0x00000008, 0x00000000, sub_0202AEC0, sub_0202AED4
 	.word 0x00000009, 0x00000000, Sav2_Misc_sizeof, Sav2_Misc_init
@@ -56,7 +56,7 @@ _020F64C4:
 	.word 0x00000021, 0x00000000, sub_0202ED18, sub_0202ED1C
 	.word 0x00000022, 0x00000000, SaveData_GSPlayerMisc_sizeof, SaveData_GSPlayerMisc_init
 	.word 0x00000023, 0x00000000, sub_0202F574, sub_0202F588
-	.word 0x00000024, 0x00000000, sub_0202FA5C, sub_0202FA70
+	.word 0x00000024, 0x00000000, Save_PhotoAlbum_sizeof, Save_PhotoAlbum_init
 	.word 0x00000025, 0x00000000, sub_02031904, sub_0203190C
 	.word 0x00000026, 0x00000000, sub_02031B0C, sub_02031B54
 	.word 0x00000027, 0x00000000, Pokewalker_sizeof, Pokewalker_init

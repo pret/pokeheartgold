@@ -35,12 +35,12 @@ scr_seq_0064_D27R0105_006F:
 	.byte 0x00
 
 scr_seq_0064_D27R0105_0070:
-	.short 19, 1
-	.short 69, 1
-	.short 254, 0
+	step 19, 1
+	step 69, 1
+	step_end
 
 scr_seq_0064_D27R0105_007C:
-	.short 19, 1
-	.short 69, 1
-	.short 254, 0
+	step 19, 1
+	step 69, 1
+	step_end
 	.balign 4, 0

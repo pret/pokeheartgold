@@ -246,20 +246,20 @@ gScriptCmdTable:
 	.word ScrCmd_BufferItemName                         ; 194
 	.word ScrCmd_BufferPocketName                       ; 195
 	.word ScrCmd_BufferTMHMMoveName                     ; 196
-	.word ScrCmd_197                                    ; 197
-	.word ScrCmd_198                                    ; 198
+	.word ScrCmd_BufferMoveName                                    ; 197
+	.word ScrCmd_BufferInt                                    ; 198
 	.word ScrCmd_BufferPartyMonNick                     ; 199
-	.word ScrCmd_200                                    ; 200
-	.word ScrCmd_201                                    ; 201
+	.word ScrCmd_BufferTrainerClassName                                    ; 200
+	.word ScrCmd_BufferPlayerUnionAvatarClassName                                    ; 201
 	.word ScrCmd_BufferSpeciesNameCustom                ; 202
-	.word ScrCmd_203                                    ; 203
-	.word ScrCmd_204                                    ; 204
-	.word ScrCmd_205                                    ; 205
+	.word ScrCmd_BufferStarterSpeciesName                                    ; 203
+	.word ScrCmd_BufferDPPtRivalStarterSpeciesName                                    ; 204
+	.word ScrCmd_BufferDPPtFriendStarterSpeciesName                                    ; 205
 	.word ScrCmd_GetStarterChoice                       ; 206
-	.word ScrCmd_207                                    ; 207
+	.word ScrCmd_BufferDecorationName                                    ; 207
 	.word ScrCmd_208                                    ; 208
 	.word ScrCmd_209                                    ; 209
-	.word ScrCmd_210                                    ; 210
+	.word ScrCmd_BufferMapSecName                                    ; 210
 	.word ScrCmd_211                                    ; 211
 	.word ScrCmd_212                                    ; 212
 	.word ScrCmd_TrainerBattle                          ; 213
@@ -292,12 +292,12 @@ gScriptCmdTable:
 	.word ScrCmd_240                                    ; 240
 	.word ScrCmd_241                                    ; 241
 	.word ScrCmd_242                                    ; 242
-	.word ScrCmd_243                                    ; 243
-	.word ScrCmd_244                                    ; 244
-	.word ScrCmd_245                                    ; 245
-	.word ScrCmd_246                                    ; 246
+	.word ScrCmd_CountJohtoDexSeen                                    ; 243
+	.word ScrCmd_CountJohtoDexOwned                                    ; 244
+	.word ScrCmd_CountNationalDexSeen                                    ; 245
+	.word ScrCmd_CountNationalDexOwned                                    ; 246
 	.word ScrCmd_247                                    ; 247
-	.word ScrCmd_248                                    ; 248
+	.word ScrCmd_GetDexEvalResult                                    ; 248
 	.word ScrCmd_249                                    ; 249
 	.word ScrCmd_250                                    ; 250
 	.word ScrCmd_251                                    ; 251
@@ -385,8 +385,8 @@ gScriptCmdTable:
 	.word ScrCmd_333                                    ; 333
 	.word ScrCmd_334                                    ; 334
 	.word ScrCmd_335                                    ; 335
-	.word ScrCmd_336                                    ; 336
-	.word ScrCmd_337                                    ; 337
+	.word ScrCmd_BufferBerryName                                    ; 336
+	.word ScrCmd_BufferNatureName                                    ; 337
 	.word ScrCmd_338                                    ; 338
 	.word ScrCmd_MovePerson                           ; 339
 	.word ScrCmd_340                                    ; 340
@@ -448,7 +448,7 @@ gScriptCmdTable:
 	.word ScrCmd_396                                    ; 396
 	.word ScrCmd_397                                    ; 397
 	.word ScrCmd_398                                    ; 398
-	.word ScrCmd_399                                    ; 399
+	.word ScrCmd_BufferPartyMonMoveName                                    ; 399
 	.word ScrCmd_400                                    ; 400
 	.word ScrCmd_401                                    ; 401
 	.word ScrCmd_402                                    ; 402
@@ -472,8 +472,8 @@ gScriptCmdTable:
 	.word ScrCmd_420                                    ; 420
 	.word ScrCmd_421                                    ; 421
 	.word ScrCmd_422                                    ; 422
-	.word ScrCmd_423                                    ; 423
-	.word ScrCmd_424                                    ; 424
+	.word ScrCmd_CheckJohtoDexComplete                                    ; 423
+	.word ScrCmd_CheckNationalDexComplete                                    ; 424
 	.word ScrCmd_425                                    ; 425
 	.word ScrCmd_426                                    ; 426
 	.word ScrCmd_427                                    ; 427
@@ -526,12 +526,12 @@ gScriptCmdTable:
 	.word ScrCmd_474                                    ; 474
 	.word ScrCmd_475                                    ; 475
 	.word ScrCmd_476                                    ; 476
-	.word ScrCmd_477                                    ; 477
+	.word ScrCmd_NatDexFlagAction                                    ; 477
 	.word ScrCmd_478                                    ; 478
 	.word ScrCmd_479                                    ; 479
 	.word ScrCmd_MonHasRibbon                           ; 480
 	.word ScrCmd_GiveRibbon                             ; 481
-	.word ScrCmd_482                                    ; 482
+	.word ScrCmd_BufferRibbonName                                    ; 482
 	.word ScrCmd_483                                    ; 483
 	.word ScrCmd_GetWeekday                             ; 484
 	.word ScrCmd_485                                    ; 485
@@ -565,7 +565,7 @@ gScriptCmdTable:
 	.word ScrCmd_513                                    ; 513
 	.word ScrCmd_514                                    ; 514
 	.word ScrCmd_AddSpecialGameStat                     ; 515
-	.word ScrCmd_516                                    ; 516
+	.word ScrCmd_BufferFashionName                                    ; 516
 	.word ScrCmd_517                                    ; 517
 	.word ScrCmd_518                                    ; 518
 	.word ScrCmd_519                                    ; 519
@@ -629,7 +629,7 @@ gScriptCmdTable:
 	.word ScrCmd_577                                    ; 577
 	.word ScrCmd_578                                    ; 578
 	.word ScrCmd_579                                    ; 579
-	.word ScrCmd_580                                    ; 580
+	.word ScrCmd_BufferSealName                                    ; 580
 	.word ScrCmd_581                                    ; 581
 	.word ScrCmd_582                                    ; 582
 	.word ScrCmd_583                                    ; 583
@@ -662,12 +662,12 @@ gScriptCmdTable:
 	.word ScrCmd_610                                    ; 610
 	.word ScrCmd_611                                    ; 611
 	.word ScrCmd_612                                    ; 612
-	.word ScrCmd_GetPhoneContactRandomGiftBerry                                    ; 613
-	.word ScrCmd_GetPhoneContactGiftItem                                    ; 614
-	.word ScrCmd_615                                    ; 615
+	.word ScrCmd_GetPhoneContactRandomGiftBerry         ; 613
+	.word ScrCmd_GetPhoneContactGiftItem                ; 614
+	.word ScrCmd_CameronPhoto                           ; 615
 	.word ScrCmd_616                                    ; 616
 	.word ScrCmd_617                                    ; 617
-	.word ScrCmd_618                                    ; 618
+	.word ScrCmd_PhotoAlbumIsFull                       ; 618
 	.word ScrCmd_619                                    ; 619
 	.word ScrCmd_620                                    ; 620
 	.word ScrCmd_621                                    ; 621
@@ -675,7 +675,7 @@ gScriptCmdTable:
 	.word ScrCmd_623                                    ; 623
 	.word ScrCmd_624                                    ; 624
 	.word ScrCmd_625                                    ; 625
-	.word ScrCmd_626                                    ; 626
+	.word ScrCmd_BufferApricornName                                    ; 626
 	.word ScrCmd_627                                    ; 627
 	.word ScrCmd_628                                    ; 628
 	.word ScrCmd_629                                    ; 629
@@ -709,7 +709,7 @@ gScriptCmdTable:
 	.word ScrCmd_657                                    ; 657
 	.word ScrCmd_658                                    ; 658
 	.word ScrCmd_659                                    ; 659
-	.word ScrCmd_660                                    ; 660
+	.word ScrCmd_BufferTrainerName                                    ; 660
 	.word ScrCmd_661                                    ; 661
 	.word ScrCmd_662                                    ; 662
 	.word ScrCmd_663                                    ; 663
@@ -798,10 +798,10 @@ gScriptCmdTable:
 	.word ScrCmd_TouchscreenMenuHide                    ; 746
 	.word ScrCmd_TouchscreenMenuShow                    ; 747
 	.word ScrCmd_GetMenuChoice                          ; 748
-	.word ScrCmd_749                                    ; 749
-	.word ScrCmd_750                                    ; 750
-	.word ScrCmd_751                                    ; 751
-	.word ScrCmd_752                                    ; 752
+	.word ScrCmd_MenuInitStdGmm                         ; 749
+	.word ScrCmd_MenuInit                               ; 750
+	.word ScrCmd_MenuItemAdd                            ; 751
+	.word ScrCmd_MenuExec                               ; 752
 	.word ScrCmd_753                                    ; 753
 	.word ScrCmd_754                                    ; 754
 	.word ScrCmd_755                                    ; 755
@@ -893,14 +893,14 @@ gScriptCmdTable:
 	.word ScrCmd_841                                    ; 841
 	.word ScrCmd_842                                    ; 842
 	.word ScrCmd_BufferItemNameIndef                    ; 843
-	.word ScrCmd_844                                    ; 844
-	.word ScrCmd_845                                    ; 845
-	.word ScrCmd_846                                    ; 846
-	.word ScrCmd_847                                    ; 847
-	.word ScrCmd_848                                    ; 848
-	.word ScrCmd_849                                    ; 849
-	.word ScrCmd_850                                    ; 850
-	.word ScrCmd_851                                    ; 851
+	.word ScrCmd_BufferItemNamePlural                                    ; 844
+	.word ScrCmd_BufferPartyMonSpeciesNameIndef                                    ; 845
+	.word ScrCmd_BufferSpeciesNameIndef                                    ; 846
+	.word ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef                                    ; 847
+	.word ScrCmd_BufferFashionNameIndef                                    ; 848
+	.word ScrCmd_BufferTrainerClassNameIndef                                    ; 849
+	.word ScrCmd_BufferSealNamePlural                                    ; 850
+	.word ScrCmd_Capitalize                                    ; 851
 	.word ScrCmd_852                                    ; 852
 gScriptCmdTable_end:
 
@@ -7676,8 +7676,8 @@ ScrCmd_242: ; 0x02043C54
 	.balign 4, 0
 	thumb_func_end ScrCmd_242
 
-	thumb_func_start ScrCmd_243
-ScrCmd_243: ; 0x02043CB4
+	thumb_func_start ScrCmd_CountJohtoDexSeen
+ScrCmd_CountJohtoDexSeen: ; 0x02043CB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -7693,15 +7693,15 @@ ScrCmd_243: ; 0x02043CB4
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029EF4
+	bl Pokedex_CountJohtoDexSeen
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_243
+	thumb_func_end ScrCmd_CountJohtoDexSeen
 
-	thumb_func_start ScrCmd_244
-ScrCmd_244: ; 0x02043CE4
+	thumb_func_start ScrCmd_CountJohtoDexOwned
+ScrCmd_CountJohtoDexOwned: ; 0x02043CE4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -7717,15 +7717,15 @@ ScrCmd_244: ; 0x02043CE4
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029EA0
+	bl Pokedex_CountJohtoDexOwned
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_244
+	thumb_func_end ScrCmd_CountJohtoDexOwned
 
-	thumb_func_start ScrCmd_245
-ScrCmd_245: ; 0x02043D14
+	thumb_func_start ScrCmd_CountNationalDexSeen
+ScrCmd_CountNationalDexSeen: ; 0x02043D14
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -7741,15 +7741,15 @@ ScrCmd_245: ; 0x02043D14
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029E48
+	bl Pokedex_CountNationalDexSeen
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_245
+	thumb_func_end ScrCmd_CountNationalDexSeen
 
-	thumb_func_start ScrCmd_246
-ScrCmd_246: ; 0x02043D44
+	thumb_func_start ScrCmd_CountNationalDexOwned
+ScrCmd_CountNationalDexOwned: ; 0x02043D44
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -7765,12 +7765,12 @@ ScrCmd_246: ; 0x02043D44
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_246
+	thumb_func_end ScrCmd_CountNationalDexOwned
 
 	thumb_func_start ScrCmd_247
 ScrCmd_247: ; 0x02043D74
@@ -7778,8 +7778,8 @@ ScrCmd_247: ; 0x02043D74
 	bx lr
 	thumb_func_end ScrCmd_247
 
-	thumb_func_start ScrCmd_248
-ScrCmd_248: ; 0x02043D78
+	thumb_func_start ScrCmd_GetDexEvalResult
+ScrCmd_GetDexEvalResult: ; 0x02043D78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -7815,7 +7815,7 @@ ScrCmd_248: ; 0x02043D78
 	cmp r6, #0
 	bne _02043DE6
 	add r0, r7, #0
-	bl sub_02029FAC
+	bl Pokedex_CountJohtoOwned_ExcludeMythical
 	add r6, r0, #0
 	ldr r0, [sp]
 	bl PlayerProfile_GetTrainerGender
@@ -7828,7 +7828,7 @@ ScrCmd_248: ; 0x02043D78
 	b _02043E02
 _02043DE6:
 	add r0, r7, #0
-	bl sub_02029F74
+	bl Pokedex_CountNationalOwned_ExcludeMythical
 	add r6, r0, #0
 	ldr r0, [sp]
 	bl PlayerProfile_GetTrainerGender
@@ -7842,7 +7842,7 @@ _02043E02:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_248
+	thumb_func_end ScrCmd_GetDexEvalResult
 
 	thumb_func_start ScrCmd_249
 ScrCmd_249: ; 0x02043E08
@@ -10116,8 +10116,8 @@ ScrCmd_407: ; 0x02044F30
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_407
 
-	thumb_func_start ScrCmd_423
-ScrCmd_423: ; 0x02044F74
+	thumb_func_start ScrCmd_CheckJohtoDexComplete
+ScrCmd_CheckJohtoDexComplete: ; 0x02044F74
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -10135,7 +10135,7 @@ ScrCmd_423: ; 0x02044F74
 	mov r0, #0
 	strh r0, [r4]
 	add r0, r5, #0
-	bl sub_02029F60
+	bl Pokedex_JohtoDexIsComplete
 	cmp r0, #1
 	bne _02044FA8
 	mov r0, #1
@@ -10143,10 +10143,10 @@ ScrCmd_423: ; 0x02044F74
 _02044FA8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_423
+	thumb_func_end ScrCmd_CheckJohtoDexComplete
 
-	thumb_func_start ScrCmd_424
-ScrCmd_424: ; 0x02044FAC
+	thumb_func_start ScrCmd_CheckNationalDexComplete
+ScrCmd_CheckNationalDexComplete: ; 0x02044FAC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -10164,7 +10164,7 @@ ScrCmd_424: ; 0x02044FAC
 	mov r0, #0
 	strh r0, [r4]
 	add r0, r5, #0
-	bl sub_02029F48
+	bl Pokedex_NationalDexIsComplete
 	cmp r0, #1
 	bne _02044FE0
 	mov r0, #1
@@ -10172,7 +10172,7 @@ ScrCmd_424: ; 0x02044FAC
 _02044FE0:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_424
+	thumb_func_end ScrCmd_CheckNationalDexComplete
 
 	thumb_func_start ScrCmd_425
 ScrCmd_425: ; 0x02044FE4
@@ -10740,8 +10740,8 @@ ScrCmd_476: ; 0x0204542C
 	pop {r3, pc}
 	thumb_func_end ScrCmd_476
 
-	thumb_func_start ScrCmd_477
-ScrCmd_477: ; 0x02045440
+	thumb_func_start ScrCmd_NatDexFlagAction
+ScrCmd_NatDexFlagAction: ; 0x02045440
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -10786,7 +10786,7 @@ _0204549C:
 _020454A0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_477
+	thumb_func_end ScrCmd_NatDexFlagAction
 
 	thumb_func_start ScrCmd_483
 ScrCmd_483: ; 0x020454A4
@@ -14644,19 +14644,19 @@ ScrCmd_149: ; 0x020472E8
 	pop {r4, pc}
 	thumb_func_end ScrCmd_149
 
-	thumb_func_start ScrCmd_615
-ScrCmd_615: ; 0x02047304
+	thumb_func_start ScrCmd_CameronPhoto
+ScrCmd_CameronPhoto: ; 0x02047304
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_0206A798
+	bl FieldSys_TakePhoto
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_615
+	thumb_func_end ScrCmd_CameronPhoto
 
 	thumb_func_start ScrCmd_616
 ScrCmd_616: ; 0x0204731C
@@ -14672,8 +14672,8 @@ ScrCmd_616: ; 0x0204731C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202FA64
-	bl sub_0202FAB0
+	bl Save_PhotoAlbum_get
+	bl PhotoAlbum_GetNumSaved
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -15331,8 +15331,8 @@ _020477F4:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020477C0
 
-	thumb_func_start ScrCmd_749
-ScrCmd_749: ; 0x020477F8
+	thumb_func_start ScrCmd_MenuInitStdGmm
+ScrCmd_MenuInitStdGmm: ; 0x020477F8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -15345,10 +15345,10 @@ ScrCmd_749: ; 0x020477F8
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_749
+	thumb_func_end ScrCmd_MenuInitStdGmm
 
-	thumb_func_start ScrCmd_750
-ScrCmd_750: ; 0x02047814
+	thumb_func_start ScrCmd_MenuInit
+ScrCmd_MenuInit: ; 0x02047814
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -15361,10 +15361,10 @@ ScrCmd_750: ; 0x02047814
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_750
+	thumb_func_end ScrCmd_MenuInit
 
-	thumb_func_start ScrCmd_751
-ScrCmd_751: ; 0x02047830
+	thumb_func_start ScrCmd_MenuItemAdd
+ScrCmd_MenuItemAdd: ; 0x02047830
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -15401,10 +15401,10 @@ ScrCmd_751: ; 0x02047830
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_751
+	thumb_func_end ScrCmd_MenuItemAdd
 
-	thumb_func_start ScrCmd_752
-ScrCmd_752: ; 0x02047888
+	thumb_func_start ScrCmd_MenuExec
+ScrCmd_MenuExec: ; 0x02047888
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -15434,7 +15434,7 @@ ScrCmd_752: ; 0x02047888
 	nop
 _020478C8: .word sub_02047908
 _020478CC: .word sub_020478D0
-	thumb_func_end ScrCmd_752
+	thumb_func_end ScrCmd_MenuExec
 
 	thumb_func_start sub_020478D0
 sub_020478D0: ; 0x020478D0

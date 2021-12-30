@@ -228,20 +228,20 @@ ov109_021E5A70: ; 0x021E5A70
 	strb r0, [r5, #0x1c]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl sub_0202FA64
+	bl Save_PhotoAlbum_get
 	mov r1, #0x7b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	ldr r1, [r5]
-	bl sub_0202FB38
+	bl PhotoAlbum_LoadAllInUsePhotos
 	add r1, r5, #0
 	add r1, #0xc8
 	str r0, [r1]
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0202FAB0
+	bl PhotoAlbum_GetNumSaved
 	add r1, r5, #0
 	add r1, #0xc4
 	strb r0, [r1]
@@ -618,7 +618,7 @@ _021E5D6E:
 	ldr r0, [r5, r6]
 	ldr r1, [r1]
 	add r2, r4, #0
-	bl sub_0202FAF0
+	bl PhotoAlbum_GetPhotoByIndex
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -638,7 +638,7 @@ _021E5D8E:
 _021E5D9C:
 	ldr r0, [r5, r6]
 	add r1, r4, #0
-	bl sub_0202FADC
+	bl PhotoAlbum_DeletePhotoByIndex
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

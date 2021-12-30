@@ -20,8 +20,8 @@ scr_seq_0063_D27R0103_000A:
 
 
 scr_seq_0063_D27R0103_0038:
-	.short 68, 1
-	.short 254, 0
+	step 68, 1
+	step_end
 scr_seq_0063_D27R0103_0040:
 	comparevartovalue VAR_UNK_40A7, 1
 	gotoif ne, scr_seq_0063_D27R0103_0051

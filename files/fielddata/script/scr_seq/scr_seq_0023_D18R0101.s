@@ -65,28 +65,28 @@ scr_seq_0023_D18R0101_00CD:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0023_D18R0101_00D0:
-	.short 1, 1
-	.short 75, 1
-	.short 13, 4
-	.short 14, 1
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step 75, 1
+	step 13, 4
+	step 14, 1
+	step 1, 1
+	step_end
 
 scr_seq_0023_D18R0101_00E8:
-	.short 13, 2
-	.short 15, 1
-	.short 2, 1
-	.short 254, 0
+	step 13, 2
+	step 15, 1
+	step 2, 1
+	step_end
 
 scr_seq_0023_D18R0101_00F8:
-	.short 13, 3
-	.short 14, 1
-	.short 13, 1
-	.short 14, 3
-	.short 13, 1
-	.short 14, 4
-	.short 13, 3
-	.short 254, 0
+	step 13, 3
+	step 14, 1
+	step 13, 1
+	step 14, 3
+	step 13, 1
+	step 14, 4
+	step 13, 3
+	step_end
 scr_seq_0023_D18R0101_0118:
 	scrcmd_609
 	lockall
@@ -116,10 +116,10 @@ scr_seq_0023_D18R0101_0155:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0023_D18R0101_0158:
-	.short 2, 1
-	.short 75, 1
-	.short 14, 3
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step 14, 3
+	step_end
 scr_seq_0023_D18R0101_0168:
 	play_se SEQ_SE_DP_SELECT
 	lockall

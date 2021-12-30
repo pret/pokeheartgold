@@ -44,7 +44,7 @@ scr_seq_0242_R35R0201_0038:
 	scrcmd_176 487, 0, 40, 86, 0
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0242_R35R0201_00C2
@@ -56,7 +56,7 @@ scr_seq_0242_R35R0201_00C2:
 scr_seq_0242_R35R0201_00C4:
 	apply_movement 253, scr_seq_0242_R35R0201_00E8
 	wait_movement
-	scrcmd_099 253
+	release 253
 scr_seq_0242_R35R0201_00D2:
 	releaseall
 	end
@@ -65,16 +65,16 @@ scr_seq_0242_R35R0201_00D6:
 	.byte 0x00, 0x00
 
 scr_seq_0242_R35R0201_00D8:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 
 scr_seq_0242_R35R0201_00E0:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0242_R35R0201_00E8:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 scr_seq_0242_R35R0201_00F0:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_UNK_4118, 1
@@ -190,62 +190,62 @@ scr_seq_0242_R35R0201_0296:
 
 
 scr_seq_0242_R35R0201_029C:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0242_R35R0201_02A4:
-	.short 18, 1
-	.short 16, 2
-	.short 39, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 2
+	step 39, 1
+	step_end
 
 scr_seq_0242_R35R0201_02B4:
-	.short 18, 1
-	.short 16, 1
-	.short 39, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 1
+	step 39, 1
+	step_end
 
 scr_seq_0242_R35R0201_02C4:
-	.short 18, 1
-	.short 17, 1
-	.short 39, 1
-	.short 254, 0
+	step 18, 1
+	step 17, 1
+	step 39, 1
+	step_end
 
 scr_seq_0242_R35R0201_02D4:
-	.short 18, 1
-	.short 17, 2
-	.short 39, 1
-	.short 254, 0
+	step 18, 1
+	step 17, 2
+	step 39, 1
+	step_end
 
 scr_seq_0242_R35R0201_02E4:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 
 scr_seq_0242_R35R0201_02EC:
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step_end
 
 scr_seq_0242_R35R0201_02FC:
-	.short 13, 2
-	.short 35, 1
-	.short 254, 0
+	step 13, 2
+	step 35, 1
+	step_end
 
 scr_seq_0242_R35R0201_0308:
-	.short 13, 1
-	.short 35, 1
-	.short 254, 0
+	step 13, 1
+	step 35, 1
+	step_end
 
 scr_seq_0242_R35R0201_0314:
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0242_R35R0201_0320:
-	.short 12, 2
-	.short 35, 1
-	.short 254, 0
+	step 12, 2
+	step 35, 1
+	step_end
 scr_seq_0242_R35R0201_032C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -306,7 +306,7 @@ scr_seq_0242_R35R0201_03E3:
 	scrcmd_176 487, 0, 40, 86, 0
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0242_R35R0201_0428
@@ -318,31 +318,31 @@ scr_seq_0242_R35R0201_0428:
 scr_seq_0242_R35R0201_042A:
 	apply_movement 253, scr_seq_0242_R35R0201_00E8
 	wait_movement
-	scrcmd_099 253
+	release 253
 scr_seq_0242_R35R0201_0438:
 	releaseall
 	end
 
 
 scr_seq_0242_R35R0201_043C:
-	.short 15, 1
-	.short 12, 2
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step_end
 
 scr_seq_0242_R35R0201_0448:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0242_R35R0201_0450:
-	.short 13, 1
-	.short 15, 2
-	.short 12, 2
-	.short 254, 0
+	step 13, 1
+	step 15, 2
+	step 12, 2
+	step_end
 
 scr_seq_0242_R35R0201_0460:
-	.short 15, 2
-	.short 12, 2
-	.short 254, 0
+	step 15, 2
+	step 12, 2
+	step_end
 scr_seq_0242_R35R0201_046C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -364,7 +364,7 @@ scr_seq_0242_R35R0201_047F:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0242_R35R0201_05A7
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0242_R35R0201_05BB
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -410,7 +410,7 @@ scr_seq_0242_R35R0201_056D:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 12
+	cameron_photo 12
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -442,42 +442,42 @@ scr_seq_0242_R35R0201_05CF:
 	.byte 0x00
 
 scr_seq_0242_R35R0201_05D0:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0242_R35R0201_05E8:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0242_R35R0201_05F4:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0242_R35R0201_0608:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0242_R35R0201_061C:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0242_R35R0201_0628:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0242_R35R0201_0638:
 	play_se SEQ_SE_DP_SELECT
 	lockall

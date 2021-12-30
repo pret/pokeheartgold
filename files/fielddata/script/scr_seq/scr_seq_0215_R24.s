@@ -42,26 +42,26 @@ scr_seq_0215_R24_0078:
 
 
 scr_seq_0215_R24_0084:
-	.short 75, 1
-	.short 18, 3
-	.short 254, 0
+	step 75, 1
+	step 18, 3
+	step_end
 
 scr_seq_0215_R24_0090:
-	.short 0, 1
-	.short 75, 1
-	.short 18, 3
-	.short 254, 0
+	step 0, 1
+	step 75, 1
+	step 18, 3
+	step_end
 
 scr_seq_0215_R24_00A0:
-	.short 65, 3
-	.short 1, 1
-	.short 254, 0
+	step 65, 3
+	step 1, 1
+	step_end
 
 scr_seq_0215_R24_00AC:
-	.short 65, 3
-	.short 17, 1
-	.short 0, 1
-	.short 254, 0
+	step 65, 3
+	step 17, 1
+	step 0, 1
+	step_end
 scr_seq_0215_R24_00BC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -105,29 +105,29 @@ scr_seq_0215_R24_014A:
 
 
 scr_seq_0215_R24_0150:
-	.short 19, 1
-	.short 17, 10
-	.short 254, 0
+	step 19, 1
+	step 17, 10
+	step_end
 
 scr_seq_0215_R24_015C:
-	.short 71, 1
-	.short 19, 1
-	.short 72, 1
-	.short 1, 1
-	.short 254, 0
+	step 71, 1
+	step 19, 1
+	step 72, 1
+	step 1, 1
+	step_end
 
 scr_seq_0215_R24_0170:
-	.short 62, 12
-	.short 2, 1
-	.short 254, 0
+	step 62, 12
+	step 2, 1
+	step_end
 
 scr_seq_0215_R24_017C:
-	.short 62, 1
-	.short 1, 1
-	.short 62, 10
-	.short 12, 1
-	.short 2, 1
-	.short 254, 0
+	step 62, 1
+	step 1, 1
+	step 62, 10
+	step 12, 1
+	step 2, 1
+	step_end
 scr_seq_0215_R24_0194:
 	play_se SEQ_SE_DP_SELECT
 	lockall

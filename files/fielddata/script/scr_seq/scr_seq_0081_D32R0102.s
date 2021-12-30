@@ -119,60 +119,60 @@ scr_seq_0081_D32R0102_019A:
 	.byte 0x00, 0x00
 
 scr_seq_0081_D32R0102_019C:
-	.short 18, 1
-	.short 16, 5
-	.short 76, 2
-	.short 12, 1
-	.short 34, 1
-	.short 254, 0
+	step 18, 1
+	step 16, 5
+	step 76, 2
+	step 12, 1
+	step 34, 1
+	step_end
 
 scr_seq_0081_D32R0102_01B4:
-	.short 16, 5
-	.short 76, 2
-	.short 12, 1
-	.short 34, 1
-	.short 254, 0
+	step 16, 5
+	step 76, 2
+	step 12, 1
+	step 34, 1
+	step_end
 
 scr_seq_0081_D32R0102_01C8:
-	.short 15, 1
-	.short 16, 5
-	.short 76, 2
-	.short 12, 1
-	.short 34, 1
-	.short 254, 0
+	step 15, 1
+	step 16, 5
+	step 76, 2
+	step 12, 1
+	step 34, 1
+	step_end
 
 scr_seq_0081_D32R0102_01E0:
-	.short 16, 5
-	.short 76, 2
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 16, 5
+	step 76, 2
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0081_D32R0102_01F4:
-	.short 15, 1
-	.short 16, 5
-	.short 76, 2
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 15, 1
+	step 16, 5
+	step 76, 2
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0081_D32R0102_020C:
-	.short 19, 2
-	.short 16, 5
-	.short 76, 2
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 19, 2
+	step 16, 5
+	step 76, 2
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0081_D32R0102_0224:
-	.short 63, 5
-	.short 35, 1
-	.short 254, 0
+	step 63, 5
+	step 35, 1
+	step_end
 
 scr_seq_0081_D32R0102_0230:
-	.short 63, 5
-	.short 34, 1
-	.short 254, 0
+	step 63, 5
+	step 34, 1
+	step_end
 scr_seq_0081_D32R0102_023C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -184,7 +184,7 @@ scr_seq_0081_D32R0102_023C:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0081_D32R0102_0364
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0081_D32R0102_0378
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -230,7 +230,7 @@ scr_seq_0081_D32R0102_032A:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 29
+	cameron_photo 29
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -260,42 +260,42 @@ scr_seq_0081_D32R0102_0378:
 
 
 scr_seq_0081_D32R0102_038C:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0081_D32R0102_03A4:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0081_D32R0102_03B0:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0081_D32R0102_03C4:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0081_D32R0102_03D8:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0081_D32R0102_03E4:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0081_D32R0102_03F4:
 	checkflag FLAG_UNK_150
 	gotoif TRUE, scr_seq_0081_D32R0102_0421
@@ -323,12 +323,12 @@ scr_seq_0081_D32R0102_042E:
 
 
 scr_seq_0081_D32R0102_043C:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0081_D32R0102_0444:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 scr_seq_0081_D32R0102_044C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -128,25 +128,25 @@ scr_seq_0070_D31R0202_01AE:
 	.byte 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0070_D31R0202_01C4:
-	.short 12, 2
-	.short 1, 1
-	.short 254, 0
+	step 12, 2
+	step 1, 1
+	step_end
 
 scr_seq_0070_D31R0202_01D0:
-	.short 13, 1
-	.short 2, 1
-	.short 14, 1
-	.short 1, 1
-	.short 13, 1
-	.short 69, 1
-	.short 254, 0
+	step 13, 1
+	step 2, 1
+	step 14, 1
+	step 1, 1
+	step 13, 1
+	step 69, 1
+	step_end
 
 scr_seq_0070_D31R0202_01EC:
-	.short 63, 2
-	.short 61, 1
-	.short 13, 2
-	.short 69, 1
-	.short 254, 0
+	step 63, 2
+	step 61, 1
+	step 13, 2
+	step 69, 1
+	step_end
 scr_seq_0070_D31R0202_0200:
 	scrcmd_436
 	scrcmd_627 5

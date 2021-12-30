@@ -267,11 +267,11 @@ scr_seq_0021_D17R0110_0177:
 	wait 20, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
-	scrcmd_099 0
-	scrcmd_099 1
-	scrcmd_099 2
-	scrcmd_099 3
-	scrcmd_099 4
+	release 0
+	release 1
+	release 2
+	release 3
+	release 4
 	move_person 0, 15, 1, 18, 0
 	move_person 1, 12, 1, 18, 0
 	move_person 2, 12, 1, 12, 1
@@ -385,168 +385,168 @@ scr_seq_0021_D17R0110_0751:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0021_D17R0110_0754:
-	.short 63, 6
-	.short 12, 1
-	.short 254, 0
+	step 63, 6
+	step 12, 1
+	step_end
 
 scr_seq_0021_D17R0110_0760:
-	.short 63, 5
-	.short 14, 2
-	.short 254, 0
+	step 63, 5
+	step 14, 2
+	step_end
 
 scr_seq_0021_D17R0110_076C:
-	.short 14, 1
-	.short 12, 6
-	.short 254, 0
+	step 14, 1
+	step 12, 6
+	step_end
 
 scr_seq_0021_D17R0110_0778:
-	.short 63, 5
-	.short 15, 2
-	.short 254, 0
+	step 63, 5
+	step 15, 2
+	step_end
 
 scr_seq_0021_D17R0110_0784:
-	.short 15, 1
-	.short 12, 6
-	.short 254, 0
+	step 15, 1
+	step 12, 6
+	step_end
 
 scr_seq_0021_D17R0110_0790:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0021_D17R0110_0798:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0021_D17R0110_07A0:
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 254, 0
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_07C4:
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 254, 0
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_07E8:
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 254, 0
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_080C:
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 254, 0
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_0830:
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 254, 0
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_0854:
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 254, 0
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_0880:
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 254, 0
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_08AC:
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 254, 0
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_08D8:
-	.short 1, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 254, 0
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step_end
 
 scr_seq_0021_D17R0110_0904:
-	.short 8, 2
-	.short 254, 0
+	step 8, 2
+	step_end
 
 scr_seq_0021_D17R0110_090C:
-	.short 9, 2
-	.short 254, 0
+	step 9, 2
+	step_end
 
 scr_seq_0021_D17R0110_0914:
-	.short 10, 2
-	.short 254, 0
+	step 10, 2
+	step_end
 
 scr_seq_0021_D17R0110_091C:
-	.short 11, 2
-	.short 254, 0
+	step 11, 2
+	step_end
 	.byte 0x09, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0021_D17R0110_092C:
-	.short 2, 1
-	.short 71, 1
-	.short 11, 1
-	.short 72, 1
-	.short 254, 0
+	step 2, 1
+	step 71, 1
+	step 11, 1
+	step 72, 1
+	step_end
 scr_seq_0021_D17R0110_0940:
 	play_se SEQ_SE_DP_SELECT
 	lockall

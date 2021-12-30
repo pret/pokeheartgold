@@ -165,22 +165,22 @@ scr_seq_0829_T11GYM0101_01FB:
 	.byte 0x00
 
 scr_seq_0829_T11GYM0101_01FC:
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 2
-	.short 1, 2
-	.short 2, 2
-	.short 0, 2
-	.short 3, 1
-	.short 69, 0
-	.short 254, 0
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 2
+	step 1, 2
+	step 2, 2
+	step 0, 2
+	step 3, 1
+	step 69, 0
+	step_end
 	.balign 4, 0

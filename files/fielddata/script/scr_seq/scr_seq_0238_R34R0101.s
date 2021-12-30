@@ -86,90 +86,90 @@ scr_seq_0238_R34R0101_0137:
 	.byte 0x00
 
 scr_seq_0238_R34R0101_0138:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0238_R34R0101_0140:
-	.short 63, 1
-	.short 12, 3
-	.short 254, 0
+	step 63, 1
+	step 12, 3
+	step_end
 
 scr_seq_0238_R34R0101_014C:
-	.short 16, 3
-	.short 48, 2
-	.short 254, 0
+	step 16, 3
+	step 48, 2
+	step_end
 
 scr_seq_0238_R34R0101_0158:
-	.short 63, 1
-	.short 12, 3
-	.short 254, 0
+	step 63, 1
+	step 12, 3
+	step_end
 
 scr_seq_0238_R34R0101_0164:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0238_R34R0101_016C:
-	.short 14, 1
-	.short 13, 3
-	.short 63, 1
-	.short 75, 1
-	.short 32, 1
-	.short 254, 0
+	step 14, 1
+	step 13, 3
+	step 63, 1
+	step 75, 1
+	step 32, 1
+	step_end
 
 scr_seq_0238_R34R0101_0184:
-	.short 14, 2
-	.short 13, 2
-	.short 254, 0
+	step 14, 2
+	step 13, 2
+	step_end
 
 scr_seq_0238_R34R0101_0190:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0238_R34R0101_0198:
-	.short 63, 1
-	.short 12, 1
-	.short 35, 1
-	.short 254, 0
+	step 63, 1
+	step 12, 1
+	step 35, 1
+	step_end
 
 scr_seq_0238_R34R0101_01A8:
-	.short 35, 1
-	.short 71, 1
-	.short 54, 1
-	.short 72, 1
-	.short 254, 0
+	step 35, 1
+	step 71, 1
+	step 54, 1
+	step 72, 1
+	step_end
 
 scr_seq_0238_R34R0101_01BC:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0238_R34R0101_01C4:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0238_R34R0101_01CC:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0238_R34R0101_01D4:
-	.short 13, 2
-	.short 15, 1
-	.short 13, 1
-	.short 69, 1
-	.short 254, 0
+	step 13, 2
+	step 15, 1
+	step 13, 1
+	step 69, 1
+	step_end
 
 scr_seq_0238_R34R0101_01E8:
-	.short 63, 1
-	.short 48, 2
-	.short 63, 1
-	.short 17, 3
-	.short 19, 2
-	.short 37, 1
-	.short 254, 0
+	step 63, 1
+	step 48, 2
+	step 63, 1
+	step 17, 3
+	step 19, 2
+	step 37, 1
+	step_end
 
 scr_seq_0238_R34R0101_0204:
-	.short 63, 2
-	.short 33, 1
-	.short 254, 0
+	step 63, 2
+	step 33, 1
+	step_end
 scr_seq_0238_R34R0101_0210:
 	scrcmd_715
 	end

@@ -24016,7 +24016,7 @@ _021F30CC:
 	ldrb r1, [r4, #0x19]
 	cmp r1, #0
 	beq _021F30F4
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 	mov r1, #0x32
 	bl _s32_div_f
 	lsl r0, r0, #0x10
@@ -24116,7 +24116,7 @@ _021F3166:
 	add r0, #0x4d
 	strb r1, [r0]
 	add r0, r6, #0
-	bl sub_02029F60
+	bl Pokedex_JohtoDexIsComplete
 	add r1, r4, #0
 	add r1, #0x4d
 	lsl r0, r0, #0x18
@@ -24131,7 +24131,7 @@ _021F3166:
 	add r0, #0x4d
 	strb r1, [r0]
 	add r0, r6, #0
-	bl sub_02029F48
+	bl Pokedex_NationalDexIsComplete
 	add r1, r4, #0
 	add r1, #0x4d
 	lsl r0, r0, #0x18
@@ -24284,16 +24284,16 @@ _021F32D0:
 	lsr r0, r0, #0x1f
 	ldr r0, [r4, #0x50]
 	bne _021F32EC
-	bl sub_02029EF4
+	bl Pokedex_CountJohtoDexSeen
 	add r7, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_02029EA0
+	bl Pokedex_CountJohtoDexOwned
 	b _021F32F8
 _021F32EC:
-	bl sub_02029E48
+	bl Pokedex_CountNationalDexSeen
 	add r7, r0, #0
 	ldr r0, [r4, #0x50]
-	bl sub_02029E0C
+	bl Pokedex_CountNationalDexOwned
 _021F32F8:
 	add r6, r0, #0
 	mov r0, #0
@@ -24335,7 +24335,7 @@ _021F333C:
 	lsr r0, r0, #0x1f
 	ldr r0, [r4, #0x50]
 	bne _021F3376
-	bl sub_02029FAC
+	bl Pokedex_CountJohtoOwned_ExcludeMythical
 	add r1, r5, #0
 	add r1, #0x36
 	ldrb r1, [r1]
@@ -24354,7 +24354,7 @@ _021F333C:
 	mov r6, #1
 	b _021F339E
 _021F3376:
-	bl sub_02029F74
+	bl Pokedex_CountNationalOwned_ExcludeMythical
 	add r1, r5, #0
 	add r1, #0x36
 	ldrb r1, [r1]

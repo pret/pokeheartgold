@@ -79,7 +79,7 @@ scr_seq_0859_T22GYM0101_00AD:
 	setflag FLAG_UNK_192
 	setvar VAR_SCENE_ELMS_LAB, 6
 	setflag FLAG_UNK_0F4
-	setflag FLAG_UNK_193
+	setflag FLAG_HIDE_WIFI_CLUB_CLOSED_LADY
 	npc_msg 1
 	buffer_players_name 0
 	npc_msg 2

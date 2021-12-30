@@ -194,12 +194,12 @@ scr_seq_0032_D23R0104_020F:
 	.byte 0x00
 
 scr_seq_0032_D23R0104_0210:
-	.short 75, 1
-	.short 35, 1
-	.short 254, 0
+	step 75, 1
+	step 35, 1
+	step_end
 
 scr_seq_0032_D23R0104_021C:
-	.short 75, 1
-	.short 33, 1
-	.short 254, 0
+	step 75, 1
+	step 33, 1
+	step_end
 	.balign 4, 0

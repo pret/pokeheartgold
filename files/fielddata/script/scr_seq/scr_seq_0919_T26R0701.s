@@ -114,7 +114,7 @@ scr_seq_0919_T26R0701_0113:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0919_T26R0701_025E
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0919_T26R0701_0272
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -153,7 +153,7 @@ scr_seq_0919_T26R0701_01DE:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 25
+	cameron_photo 25
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -191,35 +191,35 @@ scr_seq_0919_T26R0701_0286:
 	.byte 0x00, 0x00
 
 scr_seq_0919_T26R0701_0288:
-	.short 15, 1
-	.short 12, 2
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0919_T26R0701_02A0:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0919_T26R0701_02AC:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0919_T26R0701_02C0:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0919_T26R0701_02CC:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0919_T26R0701_02DC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -281,7 +281,7 @@ scr_seq_0919_T26R0701_038A:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0919_T26R0701_03EB
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0919_T26R0701_03F6
 	npc_msg 10
@@ -289,7 +289,7 @@ scr_seq_0919_T26R0701_038A:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 89
+	cameron_photo 89
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0

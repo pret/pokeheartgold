@@ -209,7 +209,7 @@ scr_seq_0030_D23R0102_022B:
 	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, scr_seq_0030_D23R0102_0295
-	scrcmd_099 253
+	release 253
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, scr_seq_0030_D23R0102_0279
 	apply_movement 255, scr_seq_0030_D23R0102_05CC
@@ -221,7 +221,7 @@ scr_seq_0030_D23R0102_0279:
 	apply_movement 253, scr_seq_0030_D23R0102_0600
 scr_seq_0030_D23R0102_0289:
 	wait_movement
-	scrcmd_098 253
+	lock 253
 	goto scr_seq_0030_D23R0102_02BA
 
 scr_seq_0030_D23R0102_0295:
@@ -237,13 +237,13 @@ scr_seq_0030_D23R0102_02B8:
 scr_seq_0030_D23R0102_02BA:
 	scrcmd_821 32768, 32769
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 0, VAR_SPECIAL_x800C
-	scrcmd_751 32768, 255, 0
+	menu_init 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_item_add 32768, 255, 0
 	addvar VAR_SPECIAL_x8000, 1
-	scrcmd_751 32768, 255, 1
+	menu_item_add 32768, 255, 1
 	addvar VAR_SPECIAL_x8000, 1
-	scrcmd_751 32768, 255, 2
-	scrcmd_752
+	menu_item_add 32768, 255, 2
+	menu_exec
 	touchscreen_menu_show
 	setflag FLAG_UNK_102
 	setflag FLAG_UNK_AA3
@@ -311,7 +311,7 @@ scr_seq_0030_D23R0102_03F5:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_198 0, 16698
+	buffer_int 0, VAR_UNK_413A
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg 35
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -450,7 +450,7 @@ scr_seq_0030_D23R0102_057B:
 	end
 
 scr_seq_0030_D23R0102_05B0:
-	scrcmd_198 0, 16698
+	buffer_int 0, VAR_UNK_413A
 	npc_msg 34
 	waitbutton
 	closemsg
@@ -468,64 +468,64 @@ scr_seq_0030_D23R0102_05CB:
 	.byte 0x00
 
 scr_seq_0030_D23R0102_05CC:
-	.short 1, 1
-	.short 13, 2
-	.short 14, 1
-	.short 34, 1
-	.short 254, 0
+	step 1, 1
+	step 13, 2
+	step 14, 1
+	step 34, 1
+	step_end
 
 scr_seq_0030_D23R0102_05E0:
-	.short 13, 2
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 1
+	step 32, 1
+	step_end
 
 scr_seq_0030_D23R0102_05F0:
-	.short 1, 1
-	.short 13, 1
-	.short 34, 1
-	.short 254, 0
+	step 1, 1
+	step 13, 1
+	step 34, 1
+	step_end
 
 scr_seq_0030_D23R0102_0600:
-	.short 13, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 1
+	step 32, 1
+	step_end
 
 scr_seq_0030_D23R0102_060C:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0030_D23R0102_0614:
-	.short 13, 1
-	.short 14, 2
-	.short 254, 0
+	step 13, 1
+	step 14, 2
+	step_end
 
 scr_seq_0030_D23R0102_0620:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0030_D23R0102_0628:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0030_D23R0102_0630:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0030_D23R0102_0638:
-	.short 0, 1
-	.short 12, 1
-	.short 34, 1
-	.short 254, 0
+	step 0, 1
+	step 12, 1
+	step 34, 1
+	step_end
 
 scr_seq_0030_D23R0102_0648:
-	.short 13, 2
-	.short 15, 3
-	.short 254, 0
+	step 13, 2
+	step 15, 3
+	step_end
 
 scr_seq_0030_D23R0102_0654:
-	.short 14, 3
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 14, 3
+	step 12, 2
+	step 33, 1
+	step_end
 	.balign 4, 0

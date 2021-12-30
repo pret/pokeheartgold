@@ -51,12 +51,12 @@ scr_seq_0211_R18R0101_0081:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0211_R18R0101_0084:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 
 scr_seq_0211_R18R0101_008C:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 scr_seq_0211_R18R0101_0094:
 	scrcmd_186 0
 	setvar VAR_UNK_4129, 0

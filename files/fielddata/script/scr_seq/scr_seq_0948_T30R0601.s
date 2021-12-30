@@ -63,7 +63,7 @@ scr_seq_0948_T30R0601_0068:
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8001, 255
 	gotoif eq, scr_seq_0948_T30R0601_005D
-	scrcmd_399 0, 32770, 32769
+	buffer_party_mon_move_name 0, VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	npc_msg 7
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -229,7 +229,7 @@ scr_seq_0948_T30R0601_02C6:
 	end
 
 scr_seq_0948_T30R0601_02D1:
-	scrcmd_197 0, 434
+	buffer_move_name 0, MOVE_DRACO_METEOR
 	npc_msg 34
 	waitbutton
 	closemsg

@@ -248,99 +248,99 @@ scr_seq_0743_T02GYM0101_037D:
 
 
 scr_seq_0743_T02GYM0101_0394:
-	.short 2, 1
-	.short 75, 1
-	.short 14, 5
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step 14, 5
+	step_end
 
 scr_seq_0743_T02GYM0101_03A4:
-	.short 2, 1
-	.short 75, 1
-	.short 14, 4
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step 14, 4
+	step_end
 
 scr_seq_0743_T02GYM0101_03B4:
-	.short 2, 1
-	.short 75, 1
-	.short 14, 3
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step 14, 3
+	step_end
 
 scr_seq_0743_T02GYM0101_03C4:
-	.short 2, 1
-	.short 75, 1
-	.short 14, 2
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step 14, 2
+	step_end
 
 scr_seq_0743_T02GYM0101_03D4:
-	.short 2, 1
-	.short 75, 1
-	.short 14, 1
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step 14, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_03E4:
-	.short 2, 1
-	.short 75, 1
-	.short 254, 0
+	step 2, 1
+	step 75, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_03F0:
-	.short 3, 1
-	.short 75, 1
-	.short 254, 0
+	step 3, 1
+	step 75, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_03FC:
-	.short 3, 1
-	.short 75, 1
-	.short 15, 1
-	.short 254, 0
+	step 3, 1
+	step 75, 1
+	step 15, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_040C:
-	.short 65, 2
-	.short 3, 1
-	.short 254, 0
+	step 65, 2
+	step 3, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_0418:
-	.short 63, 2
-	.short 3, 1
-	.short 254, 0
+	step 63, 2
+	step 3, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_0424:
-	.short 63, 2
-	.short 2, 1
-	.short 254, 0
+	step 63, 2
+	step 2, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_0430:
-	.short 15, 5
-	.short 1, 1
-	.short 254, 0
+	step 15, 5
+	step 1, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_043C:
-	.short 15, 4
-	.short 1, 1
-	.short 254, 0
+	step 15, 4
+	step 1, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_0448:
-	.short 15, 3
-	.short 1, 1
-	.short 254, 0
+	step 15, 3
+	step 1, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_0454:
-	.short 15, 2
-	.short 1, 1
-	.short 254, 0
+	step 15, 2
+	step 1, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_0460:
-	.short 15, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 1, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_046C:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0743_T02GYM0101_0474:
-	.short 14, 1
-	.short 1, 1
-	.short 254, 0
+	step 14, 1
+	step 1, 1
+	step_end
 scr_seq_0743_T02GYM0101_0480:
 	play_se SEQ_SE_DP_SELECT
 	lockall

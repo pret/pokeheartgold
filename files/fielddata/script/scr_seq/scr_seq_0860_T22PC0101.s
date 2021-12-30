@@ -13,7 +13,7 @@
 
 scr_seq_0860_T22PC0101_001A:
 	setvar VAR_SPECIAL_x8007, 3
-	callstd 2002
+	callstd std_nurse_joy
 	end
 
 scr_seq_0860_T22PC0101_0026:
@@ -151,18 +151,18 @@ scr_seq_0860_T22PC0101_023B:
 	.byte 0x00
 
 scr_seq_0860_T22PC0101_023C:
-	.short 63, 1
-	.short 32, 1
-	.short 63, 2
-	.short 33, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step 63, 2
+	step 33, 1
+	step_end
 
 scr_seq_0860_T22PC0101_0250:
-	.short 63, 1
-	.short 32, 1
-	.short 63, 2
-	.short 35, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step 63, 2
+	step 35, 1
+	step_end
 scr_seq_0860_T22PC0101_0264:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -173,7 +173,7 @@ scr_seq_0860_T22PC0101_0264:
 	goto scr_seq_0860_T22PC0101_028C
 
 scr_seq_0860_T22PC0101_0280:
-	scrcmd_201 0
+	buffer_player_union_avatar_class_name 0
 	npc_msg 26
 	goto scr_seq_0860_T22PC0101_028C
 
@@ -181,22 +181,22 @@ scr_seq_0860_T22PC0101_028C:
 	npc_msg 22
 	touchscreen_menu_hide
 	scrcmd_287
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 53, 255, 0
-	scrcmd_751 54, 255, 1
-	scrcmd_751 55, 255, 2
-	scrcmd_751 56, 255, 3
-	scrcmd_751 44, 255, 4
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 53, 255, 0
+	menu_item_add 54, 255, 1
+	menu_item_add 55, 255, 2
+	menu_item_add 56, 255, 3
+	menu_item_add 44, 255, 4
+	menu_exec
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 4
 	gotoif eq, scr_seq_0860_T22PC0101_0331
 	comparevartovalue VAR_SPECIAL_x8008, 65534
 	gotoif eq, scr_seq_0860_T22PC0101_0331
-	scrcmd_288 32772, 32773
-	scrcmd_849 0, 32773
-	scrcmd_851 0
+	scrcmd_288 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
+	capitalize 0
 	npc_msg 23
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -205,7 +205,7 @@ scr_seq_0860_T22PC0101_028C:
 
 scr_seq_0860_T22PC0101_0313:
 	touchscreen_menu_show
-	scrcmd_849 0, 32773
+	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
 	npc_msg 24
 	setflag FLAG_UNK_2C5
 	scrcmd_558 32772, 32773

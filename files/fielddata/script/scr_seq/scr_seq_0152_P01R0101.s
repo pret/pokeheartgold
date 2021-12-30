@@ -41,7 +41,7 @@ scr_seq_0152_P01R0101_0031:
 	closemsg
 	apply_movement 1, scr_seq_0152_P01R0101_0110
 	wait_movement
-	scrcmd_477 1, 32780
+	nat_dex_flag_action 1, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	play_fanfare SEQ_ME_ITEM
 	npc_msg 11
@@ -73,37 +73,37 @@ scr_seq_0152_P01R0101_00DE:
 
 
 scr_seq_0152_P01R0101_00E4:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0152_P01R0101_00EC:
-	.short 63, 1
-	.short 14, 3
-	.short 12, 1
-	.short 34, 1
-	.short 254, 0
+	step 63, 1
+	step 14, 3
+	step 12, 1
+	step 34, 1
+	step_end
 
 scr_seq_0152_P01R0101_0100:
-	.short 63, 3
-	.short 13, 3
-	.short 35, 1
-	.short 254, 0
+	step 63, 3
+	step 13, 3
+	step 35, 1
+	step_end
 
 scr_seq_0152_P01R0101_0110:
-	.short 34, 1
-	.short 63, 2
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step 63, 2
+	step 34, 1
+	step_end
 
 scr_seq_0152_P01R0101_0120:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0152_P01R0101_0128:
-	.short 12, 2
-	.short 14, 1
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 14, 1
+	step 12, 1
+	step_end
 scr_seq_0152_P01R0101_0138:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -275,56 +275,56 @@ scr_seq_0152_P01R0101_0361:
 
 
 scr_seq_0152_P01R0101_036C:
-	.short 35, 1
-	.short 1, 2
-	.short 254, 0
+	step 35, 1
+	step 1, 2
+	step_end
 
 scr_seq_0152_P01R0101_0378:
-	.short 50, 1
-	.short 51, 1
-	.short 1, 2
-	.short 75, 1
-	.short 254, 0
+	step 50, 1
+	step 51, 1
+	step 1, 2
+	step 75, 1
+	step_end
 
 scr_seq_0152_P01R0101_038C:
-	.short 71, 1
-	.short 13, 1
-	.short 72, 1
-	.short 2, 2
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 13, 1
+	step 72, 1
+	step 2, 2
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step_end
 
 scr_seq_0152_P01R0101_03AC:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0152_P01R0101_03B4:
-	.short 71, 1
-	.short 12, 1
-	.short 72, 1
-	.short 2, 2
-	.short 71, 1
-	.short 15, 1
-	.short 72, 1
-	.short 254, 0
+	step 71, 1
+	step 12, 1
+	step 72, 1
+	step 2, 2
+	step 71, 1
+	step 15, 1
+	step 72, 1
+	step_end
 
 scr_seq_0152_P01R0101_03D4:
-	.short 63, 1
-	.short 12, 4
-	.short 254, 0
+	step 63, 1
+	step 12, 4
+	step_end
 
 scr_seq_0152_P01R0101_03E0:
-	.short 14, 1
-	.short 1, 2
-	.short 13, 1
-	.short 32, 1
-	.short 254, 0
+	step 14, 1
+	step 1, 2
+	step 13, 1
+	step 32, 1
+	step_end
 
 scr_seq_0152_P01R0101_03F4:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0152_P01R0101_03FC:
 	play_se SEQ_SE_DP_SELECT
 	lockall

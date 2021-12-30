@@ -66,8 +66,8 @@ scr_seq_0893_T25R0501_00A9:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0893_T25R0501_00AC:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 scr_seq_0893_T25R0501_00B4:
 	scrcmd_609
 	lockall
@@ -114,12 +114,12 @@ scr_seq_0893_T25R0501_013A:
 	.byte 0x00, 0x00
 
 scr_seq_0893_T25R0501_013C:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0893_T25R0501_0144:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 scr_seq_0893_T25R0501_014C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

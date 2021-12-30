@@ -226,14 +226,14 @@ scr_seq_0157_P01R0302_033F:
 	.byte 0x00
 
 scr_seq_0157_P01R0302_0340:
-	.short 75, 1
-	.short 63, 1
-	.short 0, 2
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 0, 2
+	step_end
 
 scr_seq_0157_P01R0302_0350:
-	.short 75, 1
-	.short 63, 1
-	.short 3, 2
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 3, 2
+	step_end
 	.balign 4, 0

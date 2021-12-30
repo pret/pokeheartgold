@@ -16,9 +16,9 @@ scr_seq_0224_R28R0101_000E:
 
 
 scr_seq_0224_R28R0101_0020:
-	.short 1, 1
-	.short 75, 1
-	.short 254, 0
+	step 1, 1
+	step 75, 1
+	step_end
 scr_seq_0224_R28R0101_002C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -95,24 +95,24 @@ scr_seq_0224_R28R0101_013F:
 	.byte 0x00
 
 scr_seq_0224_R28R0101_0140:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0224_R28R0101_014C:
-	.short 63, 1
-	.short 34, 1
-	.short 254, 0
+	step 63, 1
+	step 34, 1
+	step_end
 
 scr_seq_0224_R28R0101_0158:
-	.short 63, 1
-	.short 35, 1
-	.short 254, 0
+	step 63, 1
+	step 35, 1
+	step_end
 
 scr_seq_0224_R28R0101_0164:
-	.short 63, 1
-	.short 33, 1
-	.short 254, 0
+	step 63, 1
+	step 33, 1
+	step_end
 scr_seq_0224_R28R0101_0170:
 	scrcmd_076 22, 0
 	play_se SEQ_SE_DP_SELECT

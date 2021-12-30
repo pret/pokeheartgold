@@ -86,18 +86,18 @@ scr_seq_0907_T25R1201_00FD:
 
 
 scr_seq_0907_T25R1201_0108:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0907_T25R1201_0118:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 scr_seq_0907_T25R1201_0120:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 32780
+	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0907_T25R1201_03C4
 	checkflag FLAG_UNK_112
@@ -107,11 +107,11 @@ scr_seq_0907_T25R1201_0120:
 scr_seq_0907_T25R1201_014B:
 	touchscreen_menu_hide
 scr_seq_0907_T25R1201_014D:
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 131, 255, 0
-	scrcmd_751 130, 255, 1
-	scrcmd_751 132, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 131, 255, 0
+	menu_item_add 130, 255, 1
+	menu_item_add 132, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0907_T25R1201_0227
@@ -130,11 +130,11 @@ scr_seq_0907_T25R1201_01A4:
 scr_seq_0907_T25R1201_01AD:
 	.byte 0x02, 0x00
 scr_seq_0907_T25R1201_01AF:
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 133, 255, 0
-	scrcmd_751 134, 255, 1
-	scrcmd_751 135, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 133, 255, 0
+	menu_item_add 134, 255, 1
+	menu_item_add 135, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0907_T25R1201_0206
@@ -283,21 +283,21 @@ scr_seq_0907_T25R1201_039E:
 	.byte 0x00, 0x00
 
 scr_seq_0907_T25R1201_03A0:
-	.short 15, 1
-	.short 32, 1
-	.short 254, 0
+	step 15, 1
+	step 32, 1
+	step_end
 
 scr_seq_0907_T25R1201_03AC:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0907_T25R1201_03B4:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0907_T25R1201_03BC:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 scr_seq_0907_T25R1201_03C4:
 	callstd 9016
 	waitbutton
@@ -396,11 +396,11 @@ scr_seq_0907_T25R1201_047A:
 scr_seq_0907_T25R1201_047C:
 	npc_msg 31
 	touchscreen_menu_hide
-	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 33, 255, 0
-	scrcmd_751 34, 255, 1
-	scrcmd_751 35, 255, 2
-	scrcmd_752
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 33, 255, 0
+	menu_item_add 34, 255, 1
+	menu_item_add 35, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0907_T25R1201_04D3
@@ -445,11 +445,11 @@ scr_seq_0907_T25R1201_0515:
 scr_seq_0907_T25R1201_0517:
 	npc_msg 29
 	touchscreen_menu_hide
-	scrcmd_750 21, 11, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 33, 255, 0
-	scrcmd_751 34, 255, 1
-	scrcmd_751 35, 255, 2
-	scrcmd_752
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 33, 255, 0
+	menu_item_add 34, 255, 1
+	menu_item_add 35, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0907_T25R1201_056E
@@ -507,7 +507,7 @@ scr_seq_0907_T25R1201_05C4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 32780
+	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0907_T25R1201_0622
 	setvar VAR_SPECIAL_x8000, 0

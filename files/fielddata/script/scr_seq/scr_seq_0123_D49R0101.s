@@ -37,16 +37,16 @@ scr_seq_0123_D49R0101_0068:
 	.byte 0x22, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0123_D49R0101_0070:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0123_D49R0101_0078:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 
 scr_seq_0123_D49R0101_0080:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 scr_seq_0123_D49R0101_0088:
 	scrcmd_609
 	lockall
@@ -141,114 +141,114 @@ scr_seq_0123_D49R0101_01FD:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0123_D49R0101_0200:
-	.short 71, 1
-	.short 55, 1
-	.short 72, 1
-	.short 65, 2
-	.short 18, 1
-	.short 254, 0
+	step 71, 1
+	step 55, 1
+	step 72, 1
+	step 65, 2
+	step 18, 1
+	step_end
 
 scr_seq_0123_D49R0101_0218:
-	.short 71, 1
-	.short 53, 1
-	.short 72, 1
-	.short 65, 2
-	.short 16, 1
-	.short 254, 0
+	step 71, 1
+	step 53, 1
+	step 72, 1
+	step 65, 2
+	step 16, 1
+	step_end
 
 scr_seq_0123_D49R0101_0230:
-	.short 75, 1
-	.short 33, 1
-	.short 254, 0
+	step 75, 1
+	step 33, 1
+	step_end
 
 scr_seq_0123_D49R0101_023C:
-	.short 75, 1
-	.short 33, 1
-	.short 254, 0
+	step 75, 1
+	step 33, 1
+	step_end
 
 scr_seq_0123_D49R0101_0248:
-	.short 23, 1
-	.short 76, 10
-	.short 34, 1
-	.short 254, 0
+	step 23, 1
+	step 76, 10
+	step 34, 1
+	step_end
 
 scr_seq_0123_D49R0101_0258:
-	.short 76, 9
-	.short 254, 0
+	step 76, 9
+	step_end
 
 scr_seq_0123_D49R0101_0260:
-	.short 61, 1
-	.short 63, 8
-	.short 35, 1
-	.short 254, 0
+	step 61, 1
+	step 63, 8
+	step 35, 1
+	step_end
 
 scr_seq_0123_D49R0101_0270:
-	.short 33, 1
-	.short 63, 1
-	.short 32, 1
-	.short 63, 1
-	.short 19, 6
-	.short 16, 6
-	.short 14, 1
-	.short 69, 1
-	.short 65, 2
-	.short 3, 1
-	.short 70, 1
-	.short 15, 1
-	.short 17, 6
-	.short 18, 6
-	.short 254, 0
+	step 33, 1
+	step 63, 1
+	step 32, 1
+	step 63, 1
+	step 19, 6
+	step 16, 6
+	step 14, 1
+	step 69, 1
+	step 65, 2
+	step 3, 1
+	step 70, 1
+	step 15, 1
+	step 17, 6
+	step 18, 6
+	step_end
 
 scr_seq_0123_D49R0101_02AC:
-	.short 19, 7
-	.short 33, 1
-	.short 63, 1
-	.short 32, 1
-	.short 63, 1
-	.short 16, 7
-	.short 14, 1
-	.short 69, 1
-	.short 65, 2
-	.short 3, 1
-	.short 70, 1
-	.short 15, 1
-	.short 17, 6
-	.short 18, 6
-	.short 254, 0
+	step 19, 7
+	step 33, 1
+	step 63, 1
+	step 32, 1
+	step 63, 1
+	step 16, 7
+	step 14, 1
+	step 69, 1
+	step 65, 2
+	step 3, 1
+	step 70, 1
+	step 15, 1
+	step 17, 6
+	step 18, 6
+	step_end
 
 scr_seq_0123_D49R0101_02E8:
-	.short 19, 7
-	.short 33, 1
-	.short 63, 1
-	.short 32, 1
-	.short 63, 1
-	.short 16, 7
-	.short 14, 1
-	.short 69, 1
-	.short 65, 2
-	.short 3, 1
-	.short 70, 1
-	.short 15, 1
-	.short 17, 7
-	.short 18, 7
-	.short 32, 1
-	.short 254, 0
+	step 19, 7
+	step 33, 1
+	step 63, 1
+	step 32, 1
+	step 63, 1
+	step 16, 7
+	step 14, 1
+	step 69, 1
+	step 65, 2
+	step 3, 1
+	step 70, 1
+	step 15, 1
+	step 17, 7
+	step 18, 7
+	step 32, 1
+	step_end
 
 scr_seq_0123_D49R0101_0328:
-	.short 77, 2
-	.short 78, 1
-	.short 77, 8
-	.short 254, 0
+	step 77, 2
+	step 78, 1
+	step 77, 8
+	step_end
 
 scr_seq_0123_D49R0101_0338:
-	.short 77, 1
-	.short 78, 1
-	.short 77, 9
-	.short 254, 0
+	step 77, 1
+	step 78, 1
+	step 77, 9
+	step_end
 
 scr_seq_0123_D49R0101_0348:
-	.short 77, 9
-	.short 254, 0
+	step 77, 9
+	step_end
 scr_seq_0123_D49R0101_0350:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -261,11 +261,11 @@ scr_seq_0123_D49R0101_0350:
 	npc_msg 49
 scr_seq_0123_D49R0101_0377:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 325, 255, 0
-	scrcmd_751 324, 255, 1
-	scrcmd_751 323, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 325, 255, 0
+	menu_item_add 324, 255, 1
+	menu_item_add 323, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0123_D49R0101_03C7
@@ -327,11 +327,11 @@ scr_seq_0123_D49R0101_040B:
 	npc_msg 54
 scr_seq_0123_D49R0101_0443:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 325, 255, 0
-	scrcmd_751 324, 255, 1
-	scrcmd_751 323, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 325, 255, 0
+	menu_item_add 324, 255, 1
+	menu_item_add 323, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0123_D49R0101_0493
@@ -371,7 +371,7 @@ scr_seq_0123_D49R0101_04E8:
 	goto scr_seq_0123_D49R0101_0511
 
 scr_seq_0123_D49R0101_0509:
-	scrcmd_198 0, 32780
+	buffer_int 0, VAR_SPECIAL_x800C
 	npc_msg 56
 scr_seq_0123_D49R0101_0511:
 	npc_msg 58
@@ -601,11 +601,11 @@ scr_seq_0123_D49R0101_06D8:
 	scrcmd_784 3, 0
 	npc_msg 85
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
-	scrcmd_751 337, 255, 0
-	scrcmd_751 338, 255, 1
-	scrcmd_751 12, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
+	menu_item_add 337, 255, 0
+	menu_item_add 338, 255, 1
+	menu_item_add 12, 255, 2
+	menu_exec
 	copyvar VAR_TEMP_x4005, VAR_SPECIAL_x8000
 	comparevartovalue VAR_TEMP_x4005, 0
 	gotoif ne, scr_seq_0123_D49R0101_072E
@@ -632,12 +632,12 @@ scr_seq_0123_D49R0101_0748:
 scr_seq_0123_D49R0101_0759:
 	npc_msg 86
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
-	scrcmd_751 209, 255, 0
-	scrcmd_751 210, 255, 1
-	scrcmd_751 211, 255, 2
-	scrcmd_751 212, 255, 3
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
+	menu_item_add 209, 255, 0
+	menu_item_add 210, 255, 1
+	menu_item_add 211, 255, 2
+	menu_item_add 212, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0123_D49R0101_07C0
@@ -844,12 +844,12 @@ scr_seq_0123_D49R0101_0A77:
 scr_seq_0123_D49R0101_0A7F:
 	npc_msg 86
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8000
-	scrcmd_751 339, 255, 0
-	scrcmd_751 340, 255, 1
-	scrcmd_751 341, 255, 2
-	scrcmd_751 212, 255, 3
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
+	menu_item_add 339, 255, 0
+	menu_item_add 340, 255, 1
+	menu_item_add 341, 255, 2
+	menu_item_add 212, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0123_D49R0101_07C0
@@ -871,12 +871,12 @@ scr_seq_0123_D49R0101_0AE8:
 scr_seq_0123_D49R0101_0AF3:
 	npc_msg 93
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 94, 255, 0
-	scrcmd_751 95, 255, 1
-	scrcmd_751 96, 255, 2
-	scrcmd_751 97, 255, 3
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 94, 255, 0
+	menu_item_add 95, 255, 1
+	menu_item_add 96, 255, 2
+	menu_item_add 97, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0123_D49R0101_0B57

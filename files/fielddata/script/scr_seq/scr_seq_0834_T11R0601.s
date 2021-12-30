@@ -79,8 +79,8 @@ scr_seq_0834_T11R0601_00EA:
 	.byte 0x00, 0x00
 
 scr_seq_0834_T11R0601_00EC:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 scr_seq_0834_T11R0601_00F4:
 	scrcmd_609
 	lockall
@@ -127,12 +127,12 @@ scr_seq_0834_T11R0601_017A:
 	.byte 0x00, 0x00
 
 scr_seq_0834_T11R0601_017C:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0834_T11R0601_0184:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 scr_seq_0834_T11R0601_018C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -199,13 +199,13 @@ scr_seq_0834_T11R0601_025A:
 	.byte 0x00, 0x00
 
 scr_seq_0834_T11R0601_025C:
-	.short 78, 5
-	.short 77, 10
-	.short 254, 0
+	step 78, 5
+	step 77, 10
+	step_end
 
 scr_seq_0834_T11R0601_0268:
-	.short 77, 10
-	.short 254, 0
+	step 77, 10
+	step_end
 scr_seq_0834_T11R0601_0270:
 	play_se SEQ_SE_DP_SELECT
 	lockall

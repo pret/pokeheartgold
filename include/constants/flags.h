@@ -407,7 +407,7 @@
 #define FLAG_HIDE_NEW_BARK_RIVAL                 0x190
 #define FLAG_HIDE_ELMS_LAB_ELM                 0x191
 #define FLAG_UNK_192                 0x192
-#define FLAG_UNK_193                 0x193
+#define FLAG_HIDE_WIFI_CLUB_CLOSED_LADY                 0x193
 #define FLAG_UNK_194                 0x194
 #define FLAG_UNK_195                 0x195
 #define FLAG_UNK_196                 0x196
@@ -793,8 +793,8 @@
 #define FLAG_UNK_312                 0x312
 #define FLAG_UNK_313                 0x313
 #define FLAG_UNK_314                 0x314
-#define FLAG_UNK_315                 0x315
-#define FLAG_UNK_316                 0x316
+#define FLAG_HIDE_COMM_CLUB_RECEPTIONISTS                 0x315
+#define FLAG_HIDE_COMM_CLUB_CLOSED_LADIES                 0x316
 #define FLAG_UNK_317                 0x317
 #define FLAG_UNK_318                 0x318
 #define FLAG_UNK_319                 0x319
@@ -2443,7 +2443,7 @@
 #define FLAG_UNK_984                 0x984
 #define FLAG_UNK_985                 0x985
 #define FLAG_UNK_986                 0x986
-#define FLAG_UNK_987                 0x987
+#define FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION                 0x987
 #define FLAG_UNK_988                 0x988
 #define FLAG_UNK_989                 0x989
 #define FLAG_UNK_98A                 0x98A

@@ -175,43 +175,43 @@ scr_seq_0930_T28_026D:
 
 
 scr_seq_0930_T28_0278:
-	.short 1, 1
-	.short 75, 1
-	.short 254, 0
+	step 1, 1
+	step 75, 1
+	step_end
 
 scr_seq_0930_T28_0284:
-	.short 19, 1
-	.short 17, 1
-	.short 18, 1
-	.short 254, 0
+	step 19, 1
+	step 17, 1
+	step 18, 1
+	step_end
 
 scr_seq_0930_T28_0294:
-	.short 62, 2
-	.short 18, 1
-	.short 3, 1
-	.short 254, 0
+	step 62, 2
+	step 18, 1
+	step 3, 1
+	step_end
 
 scr_seq_0930_T28_02A4:
-	.short 19, 1
-	.short 17, 2
-	.short 18, 1
-	.short 254, 0
+	step 19, 1
+	step 17, 2
+	step 18, 1
+	step_end
 
 scr_seq_0930_T28_02B4:
-	.short 62, 3
-	.short 18, 1
-	.short 3, 1
-	.short 254, 0
+	step 62, 3
+	step 18, 1
+	step 3, 1
+	step_end
 
 scr_seq_0930_T28_02C4:
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 12, 1
+	step 1, 1
+	step_end
 
 scr_seq_0930_T28_02D0:
-	.short 12, 2
-	.short 1, 1
-	.short 254, 0
+	step 12, 2
+	step 1, 1
+	step_end
 scr_seq_0930_T28_02DC:
 	play_se SEQ_SE_DP_SELECT
 	lockall

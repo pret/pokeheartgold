@@ -310,44 +310,44 @@ scr_seq_0096_D37R0104_05CA:
 
 
 scr_seq_0096_D37R0104_05CC:
-	.short 15, 2
-	.short 254, 0
+	step 15, 2
+	step_end
 
 scr_seq_0096_D37R0104_05D4:
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step_end
 
 scr_seq_0096_D37R0104_05DC:
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step_end
 
 scr_seq_0096_D37R0104_05E4:
-	.short 15, 2
-	.short 254, 0
+	step 15, 2
+	step_end
 
 scr_seq_0096_D37R0104_05EC:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0096_D37R0104_05F4:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0096_D37R0104_05FC:
-	.short 12, 2
-	.short 254, 0
+	step 12, 2
+	step_end
 
 scr_seq_0096_D37R0104_0604:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0096_D37R0104_060C:
-	.short 15, 2
-	.short 254, 0
+	step 15, 2
+	step_end
 
 scr_seq_0096_D37R0104_0614:
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step_end
 scr_seq_0096_D37R0104_061C:
 	scrcmd_609
 	lockall
@@ -404,20 +404,20 @@ scr_seq_0096_D37R0104_06DF:
 	.byte 0x00
 
 scr_seq_0096_D37R0104_06E0:
-	.short 62, 6
-	.short 14, 3
-	.short 13, 1
-	.short 14, 4
-	.short 254, 0
+	step 62, 6
+	step 14, 3
+	step 13, 1
+	step 14, 4
+	step_end
 
 scr_seq_0096_D37R0104_06F4:
-	.short 75, 1
-	.short 15, 1
-	.short 254, 0
+	step 75, 1
+	step 15, 1
+	step_end
 
 scr_seq_0096_D37R0104_0700:
-	.short 15, 4
-	.short 12, 1
-	.short 15, 4
-	.short 254, 0
+	step 15, 4
+	step 12, 1
+	step 15, 4
+	step_end
 	.balign 4, 0

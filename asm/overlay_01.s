@@ -17028,8 +17028,8 @@ ov01_021EDAFC: ; 0x021EDAFC
 	cmp r1, #0
 	bne _021EDB2A
 	mov r0, #1
-	mov r1, #0x1b
-	mov r2, #0xbf
+	mov r1, #0x1b ; msgdata/msg.narc
+	mov r2, #0xbf ; msg_0191.gmm
 	mov r3, #4
 	bl NewMsgDataFromNarc
 	add r1, r6, #0
@@ -60982,8 +60982,8 @@ _02202276:
 _02202304: .word ov01_022093BA
 	thumb_func_end ScrCmd_778
 
-	thumb_func_start ScrCmd_618
-ScrCmd_618: ; 0x02202308
+	thumb_func_start ScrCmd_PhotoAlbumIsFull
+ScrCmd_PhotoAlbumIsFull: ; 0x02202308
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -60996,8 +60996,8 @@ ScrCmd_618: ; 0x02202308
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202FA64
-	bl sub_0202FAB0
+	bl Save_PhotoAlbum_get
+	bl PhotoAlbum_GetNumSaved
 	cmp r0, #0x24
 	blo _02202334
 	mov r0, #1
@@ -61008,7 +61008,7 @@ _02202336:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_618
+	thumb_func_end ScrCmd_PhotoAlbumIsFull
 
 	thumb_func_start ScrCmd_779
 ScrCmd_779: ; 0x0220233C

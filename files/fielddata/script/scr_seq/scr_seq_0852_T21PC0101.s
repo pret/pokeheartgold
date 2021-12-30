@@ -13,7 +13,7 @@
 
 scr_seq_0852_T21PC0101_001A:
 	setvar VAR_SPECIAL_x8007, 0
-	callstd 2002
+	callstd std_nurse_joy
 	end
 
 scr_seq_0852_T21PC0101_0026:

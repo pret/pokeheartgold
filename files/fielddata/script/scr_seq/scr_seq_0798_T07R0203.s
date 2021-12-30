@@ -78,54 +78,54 @@ scr_seq_0798_T07R0203_012B:
 	.byte 0x00
 
 scr_seq_0798_T07R0203_012C:
-	.short 14, 4
-	.short 75, 1
-	.short 254, 0
+	step 14, 4
+	step 75, 1
+	step_end
 
 scr_seq_0798_T07R0203_0138:
-	.short 14, 4
-	.short 254, 0
+	step 14, 4
+	step_end
 
 scr_seq_0798_T07R0203_0140:
-	.short 14, 4
-	.short 254, 0
+	step 14, 4
+	step_end
 
 scr_seq_0798_T07R0203_0148:
-	.short 14, 4
-	.short 254, 0
+	step 14, 4
+	step_end
 
 scr_seq_0798_T07R0203_0150:
-	.short 13, 3
-	.short 35, 1
-	.short 254, 0
+	step 13, 3
+	step 35, 1
+	step_end
 
 scr_seq_0798_T07R0203_015C:
-	.short 12, 2
-	.short 14, 1
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 14, 1
+	step 12, 1
+	step_end
 
 scr_seq_0798_T07R0203_016C:
-	.short 14, 1
-	.short 12, 2
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 14, 1
+	step 12, 2
+	step 14, 1
+	step 32, 1
+	step_end
 
 scr_seq_0798_T07R0203_0180:
-	.short 12, 1
-	.short 69, 1
-	.short 254, 0
+	step 12, 1
+	step 69, 1
+	step_end
 
 scr_seq_0798_T07R0203_018C:
-	.short 12, 2
-	.short 69, 1
-	.short 254, 0
+	step 12, 2
+	step 69, 1
+	step_end
 scr_seq_0798_T07R0203_0198:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_423 32780
+	check_johto_dex_complete VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0798_T07R0203_0245
 	checkflag FLAG_UNK_143
@@ -143,7 +143,7 @@ scr_seq_0798_T07R0203_0198:
 	fade_screen 6, 1, 1, 0
 	wait_fade
 scr_seq_0798_T07R0203_01ED:
-	scrcmd_424 32780
+	check_national_dex_complete VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0798_T07R0203_0245
 	checkflag FLAG_UNK_144

@@ -40,16 +40,16 @@ scr_seq_0910_T25SP0101_006A:
 
 
 scr_seq_0910_T25SP0101_0080:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0910_T25SP0101_0088:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 
 scr_seq_0910_T25SP0101_0090:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 scr_seq_0910_T25SP0101_0098:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -153,11 +153,11 @@ scr_seq_0910_T25SP0101_01D4:
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
 scr_seq_0910_T25SP0101_01EC:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 12, 255, 0
-	scrcmd_751 13, 255, 1
-	scrcmd_751 11, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 12, 255, 0
+	menu_item_add 13, 255, 1
+	menu_item_add 11, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0910_T25SP0101_0234
@@ -166,15 +166,15 @@ scr_seq_0910_T25SP0101_01EC:
 	goto scr_seq_0910_T25SP0101_0C17
 
 scr_seq_0910_T25SP0101_0234:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 14, 255, 0
-	scrcmd_751 15, 255, 1
-	scrcmd_751 16, 255, 2
-	scrcmd_751 17, 255, 3
-	scrcmd_751 18, 255, 4
-	scrcmd_751 19, 255, 5
-	scrcmd_751 11, 255, 6
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 14, 255, 0
+	menu_item_add 15, 255, 1
+	menu_item_add 16, 255, 2
+	menu_item_add 17, 255, 3
+	menu_item_add 18, 255, 4
+	menu_item_add 19, 255, 5
+	menu_item_add 11, 255, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0910_T25SP0101_0342
@@ -191,13 +191,13 @@ scr_seq_0910_T25SP0101_0234:
 	goto scr_seq_0910_T25SP0101_01EC
 
 scr_seq_0910_T25SP0101_02D0:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 20, 255, 0
-	scrcmd_751 21, 255, 1
-	scrcmd_751 22, 255, 2
-	scrcmd_751 23, 255, 3
-	scrcmd_751 11, 255, 4
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 20, 255, 0
+	menu_item_add 21, 255, 1
+	menu_item_add 22, 255, 2
+	menu_item_add 23, 255, 3
+	menu_item_add 11, 255, 4
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0910_T25SP0101_0684
@@ -539,12 +539,12 @@ scr_seq_0910_T25SP0101_08E5:
 	goto scr_seq_0910_T25SP0101_0948
 
 scr_seq_0910_T25SP0101_08EB:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 24, 255, 0
-	scrcmd_751 25, 255, 1
-	scrcmd_751 26, 255, 2
-	scrcmd_751 11, 255, 3
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 24, 255, 0
+	menu_item_add 25, 255, 1
+	menu_item_add 26, 255, 2
+	menu_item_add 11, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0910_T25SP0101_09A5
@@ -555,12 +555,12 @@ scr_seq_0910_T25SP0101_08EB:
 	goto scr_seq_0910_T25SP0101_0C17
 
 scr_seq_0910_T25SP0101_0948:
-	scrcmd_750 1, 1, 0, 1, VAR_TEMP_x4000
-	scrcmd_751 24, 255, 0
-	scrcmd_751 27, 255, 1
-	scrcmd_751 26, 255, 2
-	scrcmd_751 11, 255, 3
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
+	menu_item_add 24, 255, 0
+	menu_item_add 27, 255, 1
+	menu_item_add 26, 255, 2
+	menu_item_add 11, 255, 3
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0910_T25SP0101_09A5

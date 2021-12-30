@@ -71,37 +71,37 @@ scr_seq_0049_D24R0212_0106:
 	.byte 0x00, 0x00
 
 scr_seq_0049_D24R0212_0108:
-	.short 40, 4
-	.short 69, 1
-	.short 254, 0
+	step 40, 4
+	step 69, 1
+	step_end
 
 scr_seq_0049_D24R0212_0114:
-	.short 62, 3
-	.short 20, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 20, 1
+	step 69, 1
+	step_end
 
 scr_seq_0049_D24R0212_0124:
-	.short 42, 4
-	.short 69, 1
-	.short 254, 0
+	step 42, 4
+	step 69, 1
+	step_end
 
 scr_seq_0049_D24R0212_0130:
-	.short 62, 3
-	.short 22, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 22, 1
+	step 69, 1
+	step_end
 
 scr_seq_0049_D24R0212_0140:
-	.short 43, 4
-	.short 69, 1
-	.short 254, 0
+	step 43, 4
+	step 69, 1
+	step_end
 
 scr_seq_0049_D24R0212_014C:
-	.short 62, 3
-	.short 23, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 3
+	step 23, 1
+	step 69, 1
+	step_end
 scr_seq_0049_D24R0212_015C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

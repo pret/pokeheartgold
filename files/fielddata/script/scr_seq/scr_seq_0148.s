@@ -16,28 +16,28 @@ scr_seq_0148_0013:
 	npc_msg 57
 scr_seq_0148_0019:
 	scrcmd_247
-	scrcmd_477 2, 16384
+	nat_dex_flag_action 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, scr_seq_0148_005E
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 17, 255, 0
-	scrcmd_751 16, 255, 1
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 17, 255, 0
+	menu_item_add 16, 255, 1
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0148_00EB
 	goto scr_seq_0148_00DA
 
 scr_seq_0148_005E:
-	checkflag FLAG_UNK_987
+	checkflag FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
 	gotoif TRUE, scr_seq_0148_00AF
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 18, 255, 0
-	scrcmd_751 19, 255, 1
-	scrcmd_751 16, 255, 2
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 18, 255, 0
+	menu_item_add 19, 255, 1
+	menu_item_add 16, 255, 2
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0148_00EB
@@ -47,10 +47,10 @@ scr_seq_0148_005E:
 
 scr_seq_0148_00AF:
 	touchscreen_menu_hide
-	scrcmd_750 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 19, 255, 0
-	scrcmd_751 16, 255, 1
-	scrcmd_752
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 19, 255, 0
+	menu_item_add 16, 255, 1
+	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0148_0142
@@ -63,20 +63,20 @@ scr_seq_0148_00DA:
 	end
 
 scr_seq_0148_00EB:
-	scrcmd_243 32772
-	scrcmd_244 32773
-	scrcmd_198 5, 32772
-	scrcmd_198 6, 32773
+	count_johto_dex_seen VAR_SPECIAL_x8004
+	count_johto_dex_owned VAR_SPECIAL_x8005
+	buffer_int 5, VAR_SPECIAL_x8004
+	buffer_int 6, VAR_SPECIAL_x8005
 	npc_msg 20
-	scrcmd_248 0, 32780, 32768
+	get_dex_eval_result 0, VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	play_fanfare VAR_SPECIAL_x8000
 	buffer_players_name 0
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait_fanfare
-	scrcmd_423 32780
+	check_johto_dex_complete VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0148_012F
-	setflag FLAG_UNK_987
+	setflag FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
 	goto scr_seq_0148_0132
 
 scr_seq_0148_012F:
@@ -88,17 +88,17 @@ scr_seq_0148_0132:
 	goto scr_seq_0148_0189
 
 scr_seq_0148_0142:
-	scrcmd_245 32772
-	scrcmd_246 32773
-	scrcmd_198 5, 32772
-	scrcmd_198 6, 32773
+	count_national_dex_seen VAR_SPECIAL_x8004
+	count_national_dex_owned VAR_SPECIAL_x8005
+	buffer_int 5, VAR_SPECIAL_x8004
+	buffer_int 6, VAR_SPECIAL_x8005
 	npc_msg 20
-	scrcmd_248 1, 32780, 32768
+	get_dex_eval_result 1, VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	play_fanfare VAR_SPECIAL_x8000
 	buffer_players_name 0
 	scrcmd_046 VAR_SPECIAL_x800C
 	wait_fanfare
-	scrcmd_424 32780
+	check_national_dex_complete VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0148_0183
 	npc_msg 21

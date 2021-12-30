@@ -610,9 +610,9 @@ scr_seq_0146_0855:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 15
 	closemsg
-	scrcmd_099 255
+	release 255
 	scrcmd_178 32768
-	scrcmd_098 255
+	lock 255
 	releaseall
 	end
 
@@ -731,9 +731,9 @@ scr_seq_0146_09C8:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 25
 	closemsg
-	scrcmd_099 255
+	release 255
 	scrcmd_179 32768
-	scrcmd_098 255
+	lock 255
 	releaseall
 	end
 
@@ -782,9 +782,9 @@ scr_seq_0146_0A65:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg 30
 	closemsg
-	scrcmd_099 255
+	release 255
 	scrcmd_182 32768
-	scrcmd_098 255
+	lock 255
 	releaseall
 	end
 
@@ -966,7 +966,7 @@ scr_seq_0146_0CEB:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8005, 1
 	buffer_item_name_indef 1, VAR_SPECIAL_x8004
-	scrcmd_851 1
+	capitalize 1
 	npc_msg 6
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

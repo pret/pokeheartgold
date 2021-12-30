@@ -973,15 +973,15 @@ scr_seq_0953_0EBB:
 	.byte 0x00
 
 scr_seq_0953_0EBC:
-	.short 101, 1
-	.short 254, 0
+	step 101, 1
+	step_end
 scr_seq_0953_0EC4:
 	scrcmd_603
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, scr_seq_0953_0EDD
-	scrcmd_099 253
+	release 253
 scr_seq_0953_0EDD:
 	scrcmd_170 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

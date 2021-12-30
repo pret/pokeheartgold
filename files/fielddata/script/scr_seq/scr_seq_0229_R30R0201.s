@@ -151,25 +151,25 @@ scr_seq_0229_R30R0201_01F7:
 	.byte 0x00
 
 scr_seq_0229_R30R0201_01F8:
-	.short 1, 3
-	.short 2, 3
-	.short 0, 3
-	.short 3, 3
-	.short 254, 0
+	step 1, 3
+	step 2, 3
+	step 0, 3
+	step 3, 3
+	step_end
 
 scr_seq_0229_R30R0201_020C:
-	.short 1, 3
-	.short 3, 3
-	.short 0, 3
-	.short 2, 3
-	.short 254, 0
+	step 1, 3
+	step 3, 3
+	step 0, 3
+	step 2, 3
+	step_end
 
 scr_seq_0229_R30R0201_0220:
-	.short 3, 3
-	.short 0, 3
-	.short 2, 3
-	.short 1, 3
-	.short 254, 0
+	step 3, 3
+	step 0, 3
+	step 2, 3
+	step 1, 3
+	step_end
 scr_seq_0229_R30R0201_0234:
 	scrcmd_609
 	lockall
@@ -222,10 +222,10 @@ scr_seq_0229_R30R0201_02CD:
 
 
 scr_seq_0229_R30R0201_02D8:
-	.short 13, 1
-	.short 14, 1
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step 14, 1
+	step 13, 1
+	step_end
 scr_seq_0229_R30R0201_02E8:
 	play_bgm SEQ_GS_OHKIDO
 	apply_movement 1, scr_seq_0229_R30R0201_0424
@@ -269,8 +269,8 @@ scr_seq_0229_R30R0201_02E8:
 	setvar VAR_UNK_4107, 1
 	scrcmd_280 2
 	setflag FLAG_UNK_195
-	setflag FLAG_UNK_316
-	clearflag FLAG_UNK_315
+	setflag FLAG_HIDE_COMM_CLUB_CLOSED_LADIES
+	clearflag FLAG_HIDE_COMM_CLUB_RECEPTIONISTS
 	setflag FLAG_HIDE_NEW_BARK_RIVAL
 	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 3
 	clearflag FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -283,66 +283,66 @@ scr_seq_0229_R30R0201_03AB:
 	.byte 0x00
 
 scr_seq_0229_R30R0201_03AC:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0229_R30R0201_03B4:
-	.short 17, 1
-	.short 18, 5
-	.short 33, 1
-	.short 254, 0
+	step 17, 1
+	step 18, 5
+	step 33, 1
+	step_end
 
 scr_seq_0229_R30R0201_03C4:
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 	.byte 0x20, 0x00, 0x01, 0x00, 0x23, 0x00, 0x01, 0x00, 0x22, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0229_R30R0201_03E4:
-	.short 18, 3
-	.short 16, 1
-	.short 63, 1
-	.short 24, 1
-	.short 9, 1
-	.short 11, 3
-	.short 29, 1
-	.short 254, 0
+	step 18, 3
+	step 16, 1
+	step 63, 1
+	step 24, 1
+	step 9, 1
+	step 11, 3
+	step 29, 1
+	step_end
 
 scr_seq_0229_R30R0201_0404:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 2
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 2
+	step_end
 
 scr_seq_0229_R30R0201_0414:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0229_R30R0201_041C:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0229_R30R0201_0424:
-	.short 9, 1
-	.short 10, 4
-	.short 8, 2
-	.short 31, 1
-	.short 254, 0
+	step 9, 1
+	step 10, 4
+	step 8, 2
+	step 31, 1
+	step_end
 
 scr_seq_0229_R30R0201_0438:
-	.short 9, 1
-	.short 31, 1
-	.short 254, 0
+	step 9, 1
+	step 31, 1
+	step_end
 
 scr_seq_0229_R30R0201_0444:
-	.short 8, 1
-	.short 31, 1
-	.short 254, 0
+	step 8, 1
+	step 31, 1
+	step_end
 
 scr_seq_0229_R30R0201_0450:
-	.short 9, 3
-	.short 63, 1
-	.short 254, 0
+	step 9, 3
+	step 63, 1
+	step_end
 	.balign 4, 0

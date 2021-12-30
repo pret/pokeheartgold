@@ -398,13 +398,13 @@ scr_seq_0265_0498:
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, scr_seq_0265_0520
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x8001
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8001
 	scrcmd_385 0, 1, 2, 0
-	scrcmd_751 136, 255, 0
+	menu_item_add 136, 255, 0
 	scrcmd_385 0, 1, 2, 1
-	scrcmd_751 137, 255, 1
-	scrcmd_751 138, 255, 2
-	scrcmd_752
+	menu_item_add 137, 255, 1
+	menu_item_add 138, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0265_0520

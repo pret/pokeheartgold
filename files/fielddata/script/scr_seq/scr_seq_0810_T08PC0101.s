@@ -11,7 +11,7 @@
 
 scr_seq_0810_T08PC0101_0012:
 	setvar VAR_SPECIAL_x8007, 0
-	callstd 2002
+	callstd std_nurse_joy
 	end
 
 scr_seq_0810_T08PC0101_001E:
@@ -62,35 +62,35 @@ scr_seq_0810_T08PC0101_0091:
 
 
 scr_seq_0810_T08PC0101_009C:
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step_end
 
 scr_seq_0810_T08PC0101_00C0:
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 254, 0
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step_end
 
 scr_seq_0810_T08PC0101_00E4:
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 254, 0
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step_end
 	.balign 4, 0

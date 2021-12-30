@@ -23,19 +23,19 @@ scr_seq_0024_D18R0102_0029:
 	scrcmd_609
 	lockall
 	scrcmd_076 243, 0
-	scrcmd_099 2
+	release 2
 	scrcmd_523 2, 2, 90, 2, 0
-	scrcmd_098 2
+	lock 2
 	scrcmd_077
 	scrcmd_076 244, 0
-	scrcmd_099 1
+	release 1
 	scrcmd_523 1, 2, 90, 2, 0
-	scrcmd_098 1
+	lock 1
 	scrcmd_077
 	scrcmd_076 245, 0
-	scrcmd_099 0
+	release 0
 	scrcmd_523 0, 2, 90, 2, 0
-	scrcmd_098 0
+	lock 0
 	scrcmd_077
 	apply_movement 2, scr_seq_0024_D18R0102_0224
 	wait_movement
@@ -79,7 +79,7 @@ scr_seq_0024_D18R0102_00E2:
 	clearflag FLAG_UNK_1C8
 	play_se SEQ_SE_DP_KAIDAN2
 	show_person 3
-	scrcmd_098 3
+	lock 3
 	wait_se SEQ_SE_DP_KAIDAN2
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 16
@@ -140,89 +140,89 @@ scr_seq_0024_D18R0102_0222:
 	.byte 0x00, 0x00
 
 scr_seq_0024_D18R0102_0224:
-	.short 105, 1
-	.short 69, 1
-	.short 254, 0
+	step 105, 1
+	step 69, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_0234:
-	.short 106, 1
-	.short 69, 1
-	.short 254, 0
+	step 106, 1
+	step 69, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_0244:
-	.short 107, 1
-	.short 3, 1
-	.short 254, 0
+	step 107, 1
+	step 3, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_0254:
-	.short 62, 6
-	.short 108, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 6
+	step 108, 1
+	step 69, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_0268:
-	.short 109, 1
-	.short 3, 1
-	.short 254, 0
+	step 109, 1
+	step 3, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_0278:
-	.short 62, 6
-	.short 110, 1
-	.short 69, 1
-	.short 254, 0
+	step 62, 6
+	step 110, 1
+	step 69, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_028C:
-	.short 14, 1
-	.short 1, 1
-	.short 254, 0
+	step 14, 1
+	step 1, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_029C:
-	.short 17, 1
-	.short 18, 3
-	.short 1, 1
-	.short 254, 0
+	step 17, 1
+	step 18, 3
+	step 1, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_02B0:
-	.short 18, 5
-	.short 17, 1
-	.short 1, 1
-	.short 254, 0
+	step 18, 5
+	step 17, 1
+	step 1, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_02C4:
-	.short 18, 1
-	.short 0, 1
-	.short 254, 0
+	step 18, 1
+	step 0, 1
+	step_end
 
 scr_seq_0024_D18R0102_02D0:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0024_D18R0102_02D8:
-	.short 62, 6
-	.short 2, 1
-	.short 254, 0
+	step 62, 6
+	step 2, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_02E8:
-	.short 19, 4
-	.short 16, 1
-	.short 254, 0
+	step 19, 4
+	step 16, 1
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
 scr_seq_0024_D18R0102_02F8:
-	.short 16, 1
-	.short 19, 5
-	.short 0, 1
-	.short 254, 0
+	step 16, 1
+	step 19, 5
+	step 0, 1
+	step_end
 	.byte 0x02, 0x00
 scr_seq_0024_D18R0102_030A:
 	play_se SEQ_SE_DP_SELECT

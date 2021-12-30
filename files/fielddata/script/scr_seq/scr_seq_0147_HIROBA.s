@@ -92,92 +92,92 @@ scr_seq_0147_HIROBA_00DB:
 
 
 scr_seq_0147_HIROBA_014C:
-	.short 12, 7
-	.short 14, 11
-	.short 254, 0
+	step 12, 7
+	step 14, 11
+	step_end
 
 scr_seq_0147_HIROBA_0158:
-	.short 12, 7
-	.short 14, 9
-	.short 254, 0
+	step 12, 7
+	step 14, 9
+	step_end
 
 scr_seq_0147_HIROBA_0164:
-	.short 12, 7
-	.short 14, 7
-	.short 254, 0
+	step 12, 7
+	step 14, 7
+	step_end
 
 scr_seq_0147_HIROBA_0170:
-	.short 12, 7
-	.short 14, 5
-	.short 254, 0
+	step 12, 7
+	step 14, 5
+	step_end
 
 scr_seq_0147_HIROBA_017C:
-	.short 12, 7
-	.short 14, 3
-	.short 254, 0
+	step 12, 7
+	step 14, 3
+	step_end
 
 scr_seq_0147_HIROBA_0188:
-	.short 12, 1
-	.short 2, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 0, 1
-	.short 61, 1
-	.short 2, 1
-	.short 61, 1
-	.short 1, 1
-	.short 61, 1
-	.short 3, 1
-	.short 61, 1
-	.short 0, 1
-	.short 254, 0
+	step 12, 1
+	step 2, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 0, 1
+	step 61, 1
+	step 2, 1
+	step 61, 1
+	step 1, 1
+	step 61, 1
+	step 3, 1
+	step 61, 1
+	step 0, 1
+	step_end
 
 scr_seq_0147_HIROBA_01EC:
-	.short 67, 1
-	.short 254, 0
+	step 67, 1
+	step_end
 
 scr_seq_0147_HIROBA_01F4:
-	.short 12, 6
-	.short 14, 12
-	.short 35, 1
-	.short 254, 0
+	step 12, 6
+	step 14, 12
+	step 35, 1
+	step_end
 
 scr_seq_0147_HIROBA_0204:
-	.short 12, 6
-	.short 14, 10
-	.short 35, 1
-	.short 254, 0
+	step 12, 6
+	step 14, 10
+	step 35, 1
+	step_end
 
 scr_seq_0147_HIROBA_0214:
-	.short 12, 6
-	.short 14, 8
-	.short 35, 1
-	.short 254, 0
+	step 12, 6
+	step 14, 8
+	step 35, 1
+	step_end
 
 scr_seq_0147_HIROBA_0224:
-	.short 12, 6
-	.short 14, 6
-	.short 35, 1
-	.short 254, 0
+	step 12, 6
+	step 14, 6
+	step 35, 1
+	step_end
 
 scr_seq_0147_HIROBA_0234:
-	.short 12, 6
-	.short 14, 4
-	.short 35, 1
-	.short 254, 0
+	step 12, 6
+	step 14, 4
+	step 35, 1
+	step_end
 
 scr_seq_0147_HIROBA_0244:
-	.short 32, 1
-	.short 254, 0
+	step 32, 1
+	step_end
 	.balign 4, 0

@@ -332,49 +332,49 @@ scr_seq_0015_D11R0106_0421:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0015_D11R0106_0424:
-	.short 15, 1
-	.short 2, 1
-	.short 254, 0
+	step 15, 1
+	step 2, 1
+	step_end
 
 scr_seq_0015_D11R0106_0430:
-	.short 13, 1
-	.short 0, 1
-	.short 254, 0
+	step 13, 1
+	step 0, 1
+	step_end
 
 scr_seq_0015_D11R0106_043C:
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 12, 1
+	step 1, 1
+	step_end
 
 scr_seq_0015_D11R0106_0448:
-	.short 13, 1
-	.short 0, 1
-	.short 254, 0
+	step 13, 1
+	step 0, 1
+	step_end
 
 scr_seq_0015_D11R0106_0454:
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 12, 1
+	step 1, 1
+	step_end
 
 scr_seq_0015_D11R0106_0460:
-	.short 14, 1
-	.short 3, 1
-	.short 254, 0
+	step 14, 1
+	step 3, 1
+	step_end
 
 scr_seq_0015_D11R0106_046C:
-	.short 15, 1
-	.short 2, 1
-	.short 254, 0
+	step 15, 1
+	step 2, 1
+	step_end
 
 scr_seq_0015_D11R0106_0478:
-	.short 14, 1
-	.short 3, 1
-	.short 254, 0
+	step 14, 1
+	step 3, 1
+	step_end
 
 scr_seq_0015_D11R0106_0484:
-	.short 15, 1
-	.short 2, 1
-	.short 254, 0
+	step 15, 1
+	step 2, 1
+	step_end
 scr_seq_0015_D11R0106_0490:
 	play_se SEQ_SE_DP_SELECT
 	lockall

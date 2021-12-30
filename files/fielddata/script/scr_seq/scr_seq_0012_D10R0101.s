@@ -103,8 +103,8 @@ scr_seq_0012_D10R0101_0132:
 	.byte 0x00, 0x00
 
 scr_seq_0012_D10R0101_0134:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 scr_seq_0012_D10R0101_013C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -128,8 +128,8 @@ scr_seq_0012_D10R0101_0177:
 	.byte 0x00
 
 scr_seq_0012_D10R0101_0178:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 scr_seq_0012_D10R0101_0180:
 	npc_msg 0
 	touchscreen_menu_hide

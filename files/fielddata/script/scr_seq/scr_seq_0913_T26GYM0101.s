@@ -312,28 +312,28 @@ scr_seq_0913_T26GYM0101_040A:
 	.byte 0x00, 0x00
 
 scr_seq_0913_T26GYM0101_040C:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0913_T26GYM0101_0414:
-	.short 15, 1
-	.short 254, 0
+	step 15, 1
+	step_end
 
 scr_seq_0913_T26GYM0101_041C:
-	.short 15, 2
-	.short 254, 0
+	step 15, 2
+	step_end
 
 scr_seq_0913_T26GYM0101_0424:
-	.short 15, 3
-	.short 254, 0
+	step 15, 3
+	step_end
 
 scr_seq_0913_T26GYM0101_042C:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0913_T26GYM0101_0434:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 scr_seq_0913_T26GYM0101_043C:
 	scrcmd_609
 	lockall
@@ -370,16 +370,16 @@ scr_seq_0913_T26GYM0101_04B6:
 	.byte 0x00, 0x00
 
 scr_seq_0913_T26GYM0101_04B8:
-	.short 14, 3
-	.short 254, 0
+	step 14, 3
+	step_end
 
 scr_seq_0913_T26GYM0101_04C0:
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step_end
 
 scr_seq_0913_T26GYM0101_04C8:
-	.short 14, 1
-	.short 254, 0
+	step 14, 1
+	step_end
 scr_seq_0913_T26GYM0101_04D0:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -189,10 +189,10 @@ scr_seq_0031_D23R0103_01ED:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0031_D23R0103_01F0:
-	.short 14, 2
-	.short 254, 0
+	step 14, 2
+	step_end
 
 scr_seq_0031_D23R0103_01F8:
-	.short 15, 2
-	.short 254, 0
+	step 15, 2
+	step_end
 	.balign 4, 0

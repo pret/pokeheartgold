@@ -175,101 +175,101 @@ scr_seq_0216_R25_0299:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0216_R25_029C:
-	.short 63, 1
-	.short 2, 1
-	.short 66, 2
-	.short 0, 1
-	.short 254, 0
+	step 63, 1
+	step 2, 1
+	step 66, 2
+	step 0, 1
+	step_end
 
 scr_seq_0216_R25_02B0:
-	.short 66, 1
-	.short 0, 1
-	.short 75, 1
-	.short 16, 5
-	.short 18, 5
-	.short 17, 8
-	.short 254, 0
+	step 66, 1
+	step 0, 1
+	step 75, 1
+	step 16, 5
+	step 18, 5
+	step 17, 8
+	step_end
 
 scr_seq_0216_R25_02CC:
-	.short 66, 1
-	.short 0, 1
-	.short 75, 1
-	.short 16, 5
-	.short 18, 5
-	.short 17, 8
-	.short 254, 0
+	step 66, 1
+	step 0, 1
+	step 75, 1
+	step 16, 5
+	step 18, 5
+	step 17, 8
+	step_end
 
 scr_seq_0216_R25_02E8:
-	.short 66, 1
-	.short 0, 1
-	.short 75, 1
-	.short 16, 6
-	.short 18, 5
-	.short 17, 9
-	.short 254, 0
+	step 66, 1
+	step 0, 1
+	step 75, 1
+	step 16, 6
+	step 18, 5
+	step 17, 9
+	step_end
 
 scr_seq_0216_R25_0304:
-	.short 65, 6
-	.short 1, 1
-	.short 254, 0
+	step 65, 6
+	step 1, 1
+	step_end
 
 scr_seq_0216_R25_0310:
-	.short 65, 6
-	.short 0, 1
-	.short 63, 1
-	.short 2, 1
-	.short 63, 1
-	.short 1, 1
-	.short 254, 0
+	step 65, 6
+	step 0, 1
+	step 63, 1
+	step 2, 1
+	step 63, 1
+	step 1, 1
+	step_end
 
 scr_seq_0216_R25_032C:
-	.short 12, 7
-	.short 14, 2
-	.short 254, 0
+	step 12, 7
+	step 14, 2
+	step_end
 
 scr_seq_0216_R25_0338:
-	.short 12, 6
-	.short 14, 2
-	.short 254, 0
+	step 12, 6
+	step 14, 2
+	step_end
 
 scr_seq_0216_R25_0344:
-	.short 12, 5
-	.short 14, 2
-	.short 254, 0
+	step 12, 5
+	step 14, 2
+	step_end
 
 scr_seq_0216_R25_0350:
-	.short 65, 3
-	.short 3, 1
-	.short 254, 0
+	step 65, 3
+	step 3, 1
+	step_end
 
 scr_seq_0216_R25_035C:
-	.short 13, 1
-	.short 14, 11
-	.short 254, 0
+	step 13, 1
+	step 14, 11
+	step_end
 
 scr_seq_0216_R25_0368:
-	.short 13, 1
-	.short 14, 11
-	.short 254, 0
+	step 13, 1
+	step 14, 11
+	step_end
 
 scr_seq_0216_R25_0374:
-	.short 12, 1
-	.short 14, 11
-	.short 254, 0
+	step 12, 1
+	step 14, 11
+	step_end
 
 scr_seq_0216_R25_0380:
-	.short 63, 1
-	.short 1, 1
-	.short 63, 1
-	.short 2, 1
-	.short 254, 0
+	step 63, 1
+	step 1, 1
+	step 63, 1
+	step 2, 1
+	step_end
 
 scr_seq_0216_R25_0394:
-	.short 63, 1
-	.short 0, 1
-	.short 62, 1
-	.short 2, 1
-	.short 254, 0
+	step 63, 1
+	step 0, 1
+	step 62, 1
+	step 2, 1
+	step_end
 scr_seq_0216_R25_03A8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -337,7 +337,7 @@ scr_seq_0216_R25_0456:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0216_R25_04E5
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0216_R25_04F0
 	npc_msg 7
@@ -345,7 +345,7 @@ scr_seq_0216_R25_0456:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 84
+	cameron_photo 84
 	faceplayer
 	lockall
 	fade_screen 6, 1, 1, 0
@@ -425,9 +425,9 @@ scr_seq_0216_R25_0573:
 	apply_movement 255, scr_seq_0216_R25_0648
 	wait_movement
 	scrcmd_076 245, 0
-	scrcmd_099 12
+	release 12
 	scrcmd_523 12, 2, 90, 2, 0
-	scrcmd_098 12
+	lock 12
 	scrcmd_077
 	scrcmd_602 0
 	scrcmd_603
@@ -472,49 +472,49 @@ scr_seq_0216_R25_0645:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0216_R25_0648:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0216_R25_0650:
-	.short 15, 3
-	.short 0, 1
-	.short 254, 0
+	step 15, 3
+	step 0, 1
+	step_end
 
 scr_seq_0216_R25_065C:
-	.short 15, 1
-	.short 12, 1
-	.short 15, 2
-	.short 0, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 15, 2
+	step 0, 1
+	step_end
 
 scr_seq_0216_R25_0670:
-	.short 15, 1
-	.short 12, 2
-	.short 15, 2
-	.short 0, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step 15, 2
+	step 0, 1
+	step_end
 
 scr_seq_0216_R25_0684:
-	.short 65, 1
-	.short 0, 1
-	.short 254, 0
+	step 65, 1
+	step 0, 1
+	step_end
 
 scr_seq_0216_R25_0690:
-	.short 63, 2
-	.short 1, 1
-	.short 254, 0
+	step 63, 2
+	step 1, 1
+	step_end
 
 scr_seq_0216_R25_069C:
-	.short 19, 8
-	.short 15, 3
-	.short 7, 1
-	.short 0, 1
-	.short 254, 0
+	step 19, 8
+	step 15, 3
+	step 7, 1
+	step 0, 1
+	step_end
 
 scr_seq_0216_R25_06B0:
-	.short 15, 1
-	.short 12, 2
-	.short 254, 0
+	step 15, 1
+	step 12, 2
+	step_end
 scr_seq_0216_R25_06BC:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -538,9 +538,9 @@ scr_seq_0216_R25_06DE:
 	lockall
 	faceplayer
 	scrcmd_076 245, 0
-	scrcmd_099 12
+	release 12
 	scrcmd_523 12, 2, 90, 2, 0
-	scrcmd_098 12
+	lock 12
 	scrcmd_077
 	setflag FLAG_UNK_0A4
 	scrcmd_589 245, 40, 0
@@ -607,17 +607,17 @@ scr_seq_0216_R25_07DF:
 	.byte 0x01, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0216_R25_07EC:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0216_R25_07F4:
-	.short 63, 2
-	.short 2, 1
-	.short 254, 0
+	step 63, 2
+	step 2, 1
+	step_end
 
 scr_seq_0216_R25_0800:
-	.short 14, 11
-	.short 254, 0
+	step 14, 11
+	step_end
 scr_seq_0216_R25_0808:
 	scrcmd_056 2, 0
 	scrcmd_057 3

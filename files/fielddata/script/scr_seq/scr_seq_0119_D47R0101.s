@@ -42,11 +42,11 @@ scr_seq_0119_D47R0101_0062:
 	scrcmd_176 357, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_606
 	apply_movement 253, scr_seq_0119_D47R0101_0200
 	wait_movement
-	scrcmd_099 253
+	release 253
 	releaseall
 	end
 
@@ -113,37 +113,37 @@ scr_seq_0119_D47R0101_01B2:
 	.byte 0x00, 0x00
 
 scr_seq_0119_D47R0101_01B4:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0119_D47R0101_01BC:
-	.short 13, 2
-	.short 14, 1
-	.short 32, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 1
+	step 32, 1
+	step_end
 	.byte 0x0d, 0x00, 0x04, 0x00
 	.byte 0x0e, 0x00, 0x01, 0x00, 0x20, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0119_D47R0101_01DC:
-	.short 13, 1
-	.short 254, 0
+	step 13, 1
+	step_end
 
 scr_seq_0119_D47R0101_01E4:
-	.short 13, 2
-	.short 254, 0
+	step 13, 2
+	step_end
 
 scr_seq_0119_D47R0101_01EC:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0119_D47R0101_01F4:
-	.short 63, 1
-	.short 1, 1
-	.short 254, 0
+	step 63, 1
+	step 1, 1
+	step_end
 
 scr_seq_0119_D47R0101_0200:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 scr_seq_0119_D47R0101_0208:
 	scrcmd_609
 	lockall
@@ -225,87 +225,87 @@ scr_seq_0119_D47R0101_030E:
 	.byte 0x00, 0x00
 
 scr_seq_0119_D47R0101_0310:
-	.short 1, 1
-	.short 75, 1
-	.short 65, 1
-	.short 14, 1
-	.short 254, 0
+	step 1, 1
+	step 75, 1
+	step 65, 1
+	step 14, 1
+	step_end
 
 scr_seq_0119_D47R0101_0324:
-	.short 12, 2
-	.short 15, 3
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 15, 3
+	step 12, 1
+	step_end
 
 scr_seq_0119_D47R0101_0334:
-	.short 13, 2
-	.short 14, 2
-	.short 13, 1
-	.short 75, 1
-	.short 0, 1
-	.short 254, 0
+	step 13, 2
+	step 14, 2
+	step 13, 1
+	step 75, 1
+	step 0, 1
+	step_end
 
 scr_seq_0119_D47R0101_034C:
-	.short 14, 2
-	.short 12, 4
-	.short 15, 4
-	.short 1, 1
-	.short 254, 0
+	step 14, 2
+	step 12, 4
+	step 15, 4
+	step 1, 1
+	step_end
 
 scr_seq_0119_D47R0101_0360:
-	.short 12, 4
-	.short 15, 2
-	.short 1, 1
-	.short 254, 0
+	step 12, 4
+	step 15, 2
+	step 1, 1
+	step_end
 
 scr_seq_0119_D47R0101_0370:
-	.short 13, 2
-	.short 15, 1
-	.short 13, 2
-	.short 2, 1
-	.short 254, 0
+	step 13, 2
+	step 15, 1
+	step 13, 2
+	step 2, 1
+	step_end
 	.byte 0x0f, 0x00, 0x01, 0x00, 0x41, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.byte 0x41, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.byte 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
 scr_seq_0119_D47R0101_03B8:
-	.short 65, 1
-	.short 12, 3
-	.short 3, 1
-	.short 254, 0
+	step 65, 1
+	step 12, 3
+	step 3, 1
+	step_end
 
 scr_seq_0119_D47R0101_03C8:
-	.short 12, 2
-	.short 15, 4
-	.short 12, 1
-	.short 254, 0
+	step 12, 2
+	step 15, 4
+	step 12, 1
+	step_end
 
 scr_seq_0119_D47R0101_03D8:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0119_D47R0101_03E0:
-	.short 65, 1
-	.short 0, 1
-	.short 65, 1
-	.short 13, 1
-	.short 0, 1
-	.short 254, 0
+	step 65, 1
+	step 0, 1
+	step 65, 1
+	step 13, 1
+	step 0, 1
+	step_end
 
 scr_seq_0119_D47R0101_03F8:
-	.short 15, 1
-	.short 0, 1
-	.short 254, 0
+	step 15, 1
+	step 0, 1
+	step_end
 
 scr_seq_0119_D47R0101_0404:
-	.short 12, 1
-	.short 254, 0
+	step 12, 1
+	step_end
 
 scr_seq_0119_D47R0101_040C:
-	.short 65, 3
-	.short 3, 1
-	.short 254, 0
+	step 65, 3
+	step 3, 1
+	step_end
 	.byte 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x0c, 0x00, 0x03, 0x00, 0x03, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_0119_D47R0101_042C:
@@ -417,15 +417,15 @@ scr_seq_0119_D47R0101_0599:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_0683
 scr_seq_0119_D47R0101_05AF:
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 463, 255, 0
-	scrcmd_751 464, 255, 1
-	scrcmd_751 465, 255, 2
-	scrcmd_751 466, 255, 3
-	scrcmd_751 467, 255, 4
-	scrcmd_751 468, 255, 5
-	scrcmd_751 469, 255, 6
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 463, 255, 0
+	menu_item_add 464, 255, 1
+	menu_item_add 465, 255, 2
+	menu_item_add 466, 255, 3
+	menu_item_add 467, 255, 4
+	menu_item_add 468, 255, 5
+	menu_item_add 469, 255, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0119_D47R0101_064D
@@ -493,9 +493,9 @@ scr_seq_0119_D47R0101_06B1:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0119_D47R0101_06E7
 	setvar VAR_SPECIAL_x8004, 30
-	scrcmd_198 1, 32772
+	buffer_int 1, VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 1000
-	scrcmd_198 2, 32773
+	buffer_int 2, VAR_SPECIAL_x8005
 	npc_msg 16
 	waitbutton
 	closemsg
@@ -519,13 +519,13 @@ scr_seq_0119_D47R0101_0707:
 	comparevartovalue VAR_UNK_4057, 6
 	gotoif lt, scr_seq_0119_D47R0101_0728
 	setvar VAR_SPECIAL_x800C, 500
-	scrcmd_198 1, 32780
+	buffer_int 1, VAR_SPECIAL_x800C
 	npc_msg 1
 	goto scr_seq_0119_D47R0101_0736
 
 scr_seq_0119_D47R0101_0728:
 	setvar VAR_SPECIAL_x800C, 500
-	scrcmd_198 1, 32780
+	buffer_int 1, VAR_SPECIAL_x800C
 	npc_msg 0
 scr_seq_0119_D47R0101_0736:
 	scrcmd_113 20, 2
@@ -545,7 +545,7 @@ scr_seq_0119_D47R0101_0773:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0119_D47R0101_0876
 	setvar VAR_SPECIAL_x800C, 500
-	scrcmd_198 1, 32780
+	buffer_int 1, VAR_SPECIAL_x800C
 	npc_msg 2
 	play_se SEQ_SE_DP_REGI
 	submoneyimmediate 500
@@ -553,7 +553,7 @@ scr_seq_0119_D47R0101_0773:
 	npc_msg 4
 	buffer_players_name 0
 	setvar VAR_SPECIAL_x800C, 30
-	scrcmd_198 1, 32780
+	buffer_int 1, VAR_SPECIAL_x800C
 	npc_msg 5
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -577,11 +577,11 @@ scr_seq_0119_D47R0101_0773:
 	scrcmd_176 357, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_606
 	apply_movement 253, scr_seq_0119_D47R0101_0200
 	wait_movement
-	scrcmd_099 253
+	release 253
 	releaseall
 	end
 
@@ -647,13 +647,13 @@ scr_seq_0119_D47R0101_08C2:
 	.byte 0x00, 0x00
 
 scr_seq_0119_D47R0101_08C4:
-	.short 15, 1
-	.short 0, 1
-	.short 254, 0
+	step 15, 1
+	step 0, 1
+	step_end
 
 scr_seq_0119_D47R0101_08D0:
-	.short 12, 4
-	.short 254, 0
+	step 12, 4
+	step_end
 scr_seq_0119_D47R0101_08D8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -669,14 +669,14 @@ scr_seq_0119_D47R0101_08D8:
 	npc_msg 19
 	touchscreen_menu_hide
 scr_seq_0119_D47R0101_0919:
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 457, 255, 0
-	scrcmd_751 458, 255, 1
-	scrcmd_751 459, 255, 2
-	scrcmd_751 460, 255, 3
-	scrcmd_751 461, 255, 4
-	scrcmd_751 462, 255, 5
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 457, 255, 0
+	menu_item_add 458, 255, 1
+	menu_item_add 459, 255, 2
+	menu_item_add 460, 255, 3
+	menu_item_add 461, 255, 4
+	menu_item_add 462, 255, 5
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0119_D47R0101_09A2
@@ -735,7 +735,7 @@ scr_seq_0119_D47R0101_09E7:
 	gotoif eq, scr_seq_0119_D47R0101_0C21
 scr_seq_0119_D47R0101_09FC:
 	scrcmd_247
-	scrcmd_477 2, 16384
+	nat_dex_flag_action 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0119_D47R0101_0DF2
 	comparevartovalue VAR_UNK_4057, 6
@@ -762,11 +762,11 @@ scr_seq_0119_D47R0101_0A5B:
 scr_seq_0119_D47R0101_0A5D:
 	touchscreen_menu_hide
 	npc_msg 71
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 14, 255, 0
-	scrcmd_751 15, 255, 1
-	scrcmd_751 5, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 14, 255, 0
+	menu_item_add 15, 255, 1
+	menu_item_add 5, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0119_D47R0101_0AAC
@@ -923,7 +923,7 @@ scr_seq_0119_D47R0101_0C37:
 	gotoif eq, scr_seq_0119_D47R0101_0DFD
 scr_seq_0119_D47R0101_0C4C:
 	scrcmd_247
-	scrcmd_477 2, 16384
+	nat_dex_flag_action 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0119_D47R0101_0DF2
 	scrcmd_824 16384
@@ -959,7 +959,7 @@ scr_seq_0119_D47R0101_0CCC:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0119_D47R0101_0DCF
 	setvar VAR_SPECIAL_x800C, 500
-	scrcmd_198 1, 32780
+	buffer_int 1, VAR_SPECIAL_x800C
 	npc_msg 55
 	play_se SEQ_SE_DP_REGI
 	submoneyimmediate 500
@@ -967,7 +967,7 @@ scr_seq_0119_D47R0101_0CCC:
 	npc_msg 57
 	buffer_players_name 0
 	setvar VAR_SPECIAL_x800C, 30
-	scrcmd_198 1, 32780
+	buffer_int 1, VAR_SPECIAL_x800C
 	npc_msg 58
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -991,11 +991,11 @@ scr_seq_0119_D47R0101_0CCC:
 	scrcmd_176 357, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0
 	wait_fade
-	scrcmd_098 253
+	lock 253
 	scrcmd_606
 	apply_movement 253, scr_seq_0119_D47R0101_0200
 	wait_movement
-	scrcmd_099 253
+	release 253
 	releaseall
 	end
 
@@ -1058,7 +1058,7 @@ scr_seq_0119_D47R0101_0E13:
 	lockall
 	faceplayer
 	scrcmd_247
-	scrcmd_477 2, 16384
+	nat_dex_flag_action 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, scr_seq_0119_D47R0101_0E73
 	comparevartovalue VAR_UNK_4057, 6

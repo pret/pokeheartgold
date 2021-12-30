@@ -352,7 +352,7 @@ scr_seq_0957_UNION_0528:
 	scrcmd_359 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, scr_seq_0957_UNION_0698
-	scrcmd_584 32780
+	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0957_UNION_0682
 	scrcmd_274 32772, 32780
@@ -877,11 +877,11 @@ scr_seq_0957_UNION_0C2E:
 	checkflag FLAG_UNK_069
 	callif FALSE, scr_seq_0957_UNION_0C8C
 	setflag FLAG_UNK_069
-	scrcmd_749 21, 11, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 11, 255, 0
-	scrcmd_751 169, 255, 1
-	scrcmd_751 24, 255, 2
-	scrcmd_752
+	menu_init_std_gmm 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 11, 255, 0
+	menu_item_add 169, 255, 1
+	menu_item_add 24, 255, 2
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0957_UNION_0CAF
@@ -917,15 +917,15 @@ scr_seq_0957_UNION_0CA5:
 
 scr_seq_0957_UNION_0CAF:
 	npc_msg 159
-	scrcmd_749 24, 3, 0, 1, VAR_SPECIAL_x800C
-	scrcmd_751 52, 255, 0
-	scrcmd_751 23, 255, 1
-	scrcmd_751 142, 255, 2
-	scrcmd_751 59, 255, 3
-	scrcmd_751 170, 255, 4
-	scrcmd_751 141, 255, 5
-	scrcmd_751 13, 255, 6
-	scrcmd_752
+	menu_init_std_gmm 24, 3, 0, 1, VAR_SPECIAL_x800C
+	menu_item_add 52, 255, 0
+	menu_item_add 23, 255, 1
+	menu_item_add 142, 255, 2
+	menu_item_add 59, 255, 3
+	menu_item_add 170, 255, 4
+	menu_item_add 141, 255, 5
+	menu_item_add 13, 255, 6
+	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
 	gotoif eq, scr_seq_0957_UNION_0D50

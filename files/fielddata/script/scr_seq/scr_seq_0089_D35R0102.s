@@ -238,59 +238,59 @@ scr_seq_0089_D35R0102_0426:
 	.byte 0x00, 0x00
 
 scr_seq_0089_D35R0102_0428:
-	.short 75, 1
-	.short 63, 2
-	.short 3, 2
-	.short 63, 1
-	.short 2, 2
-	.short 63, 1
-	.short 3, 2
-	.short 63, 1
-	.short 0, 2
-	.short 63, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 2
+	step 3, 2
+	step 63, 1
+	step 2, 2
+	step 63, 1
+	step 3, 2
+	step 63, 1
+	step 0, 2
+	step 63, 1
+	step_end
 
 scr_seq_0089_D35R0102_0454:
-	.short 75, 1
-	.short 63, 2
-	.short 254, 0
+	step 75, 1
+	step 63, 2
+	step_end
 
 scr_seq_0089_D35R0102_0460:
-	.short 23, 11
-	.short 0, 2
-	.short 254, 0
+	step 23, 11
+	step 0, 2
+	step_end
 
 scr_seq_0089_D35R0102_046C:
-	.short 23, 11
-	.short 1, 2
-	.short 254, 0
+	step 23, 11
+	step 1, 2
+	step_end
 
 scr_seq_0089_D35R0102_0478:
-	.short 1, 2
-	.short 63, 2
-	.short 254, 0
+	step 1, 2
+	step 63, 2
+	step_end
 
 scr_seq_0089_D35R0102_0484:
-	.short 0, 2
-	.short 63, 2
-	.short 254, 0
+	step 0, 2
+	step 63, 2
+	step_end
 
 scr_seq_0089_D35R0102_0490:
-	.short 2, 2
-	.short 22, 10
-	.short 254, 0
+	step 2, 2
+	step 22, 10
+	step_end
 
 scr_seq_0089_D35R0102_049C:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 
 scr_seq_0089_D35R0102_04A4:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0089_D35R0102_04AC:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 scr_seq_0089_D35R0102_04B4:
 	scrcmd_609
 	lockall
@@ -387,64 +387,64 @@ scr_seq_0089_D35R0102_0665:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0089_D35R0102_0668:
-	.short 22, 9
-	.short 0, 2
-	.short 254, 0
+	step 22, 9
+	step 0, 2
+	step_end
 
 scr_seq_0089_D35R0102_0674:
-	.short 22, 9
-	.short 1, 2
-	.short 254, 0
+	step 22, 9
+	step 1, 2
+	step_end
 
 scr_seq_0089_D35R0102_0680:
-	.short 23, 11
-	.short 0, 2
-	.short 254, 0
+	step 23, 11
+	step 0, 2
+	step_end
 
 scr_seq_0089_D35R0102_068C:
-	.short 23, 11
-	.short 1, 2
-	.short 254, 0
+	step 23, 11
+	step 1, 2
+	step_end
 
 scr_seq_0089_D35R0102_0698:
-	.short 23, 11
-	.short 0, 2
-	.short 254, 0
+	step 23, 11
+	step 0, 2
+	step_end
 
 scr_seq_0089_D35R0102_06A4:
-	.short 23, 11
-	.short 1, 2
-	.short 254, 0
+	step 23, 11
+	step 1, 2
+	step_end
 
 scr_seq_0089_D35R0102_06B0:
-	.short 22, 9
-	.short 0, 2
-	.short 254, 0
+	step 22, 9
+	step 0, 2
+	step_end
 
 scr_seq_0089_D35R0102_06BC:
-	.short 22, 9
-	.short 1, 2
-	.short 254, 0
+	step 22, 9
+	step 1, 2
+	step_end
 
 scr_seq_0089_D35R0102_06C8:
-	.short 3, 2
-	.short 23, 10
-	.short 254, 0
+	step 3, 2
+	step 23, 10
+	step_end
 
 scr_seq_0089_D35R0102_06D4:
-	.short 2, 2
-	.short 22, 10
-	.short 254, 0
+	step 2, 2
+	step 22, 10
+	step_end
 
 scr_seq_0089_D35R0102_06E0:
-	.short 2, 2
-	.short 22, 10
-	.short 254, 0
+	step 2, 2
+	step 22, 10
+	step_end
 
 scr_seq_0089_D35R0102_06EC:
-	.short 3, 2
-	.short 23, 10
-	.short 254, 0
+	step 3, 2
+	step 23, 10
+	step_end
 scr_seq_0089_D35R0102_06F8:
 	scrcmd_609
 	lockall

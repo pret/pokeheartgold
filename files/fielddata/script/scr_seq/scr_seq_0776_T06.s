@@ -115,25 +115,25 @@ scr_seq_0776_T06_016A:
 	.byte 0x00, 0x00
 
 scr_seq_0776_T06_016C:
-	.short 75, 1
-	.short 63, 1
-	.short 14, 4
-	.short 34, 1
-	.short 254, 0
+	step 75, 1
+	step 63, 1
+	step 14, 4
+	step 34, 1
+	step_end
 
 scr_seq_0776_T06_0180:
-	.short 34, 1
-	.short 254, 0
+	step 34, 1
+	step_end
 
 scr_seq_0776_T06_0188:
-	.short 15, 10
-	.short 254, 0
+	step 15, 10
+	step_end
 
 scr_seq_0776_T06_0190:
-	.short 65, 4
-	.short 13, 1
-	.short 35, 1
-	.short 254, 0
+	step 65, 4
+	step 13, 1
+	step 35, 1
+	step_end
 scr_seq_0776_T06_01A0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -209,9 +209,9 @@ scr_seq_0776_T06_0270:
 	apply_movement 255, scr_seq_0776_T06_040C
 	wait_movement
 	scrcmd_076 245, 0
-	scrcmd_099 15
+	release 15
 	scrcmd_523 15, 2, 90, 2, 0
-	scrcmd_098 15
+	lock 15
 	scrcmd_077
 	callstd 2042
 	scrcmd_602 0
@@ -271,9 +271,9 @@ scr_seq_0776_T06_037F:
 	apply_movement 15, scr_seq_0776_T06_0458
 	wait_movement
 	scrcmd_076 245, 0
-	scrcmd_099 15
+	release 15
 	scrcmd_523 15, 2, 90, 2, 0
-	scrcmd_098 15
+	lock 15
 	scrcmd_077
 	callstd 2042
 	apply_movement 15, scr_seq_0776_T06_0438
@@ -298,108 +298,108 @@ scr_seq_0776_T06_0409:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0776_T06_040C:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0776_T06_0414:
-	.short 62, 9
-	.short 112, 1
-	.short 254, 0
+	step 62, 9
+	step 112, 1
+	step_end
 
 scr_seq_0776_T06_0420:
-	.short 62, 11
-	.short 112, 1
-	.short 254, 0
+	step 62, 11
+	step 112, 1
+	step_end
 
 scr_seq_0776_T06_042C:
-	.short 62, 13
-	.short 112, 1
-	.short 254, 0
+	step 62, 13
+	step 112, 1
+	step_end
 
 scr_seq_0776_T06_0438:
-	.short 62, 4
-	.short 21, 2
-	.short 53, 1
-	.short 57, 1
-	.short 21, 2
-	.short 53, 1
-	.short 57, 2
-	.short 254, 0
+	step 62, 4
+	step 21, 2
+	step 53, 1
+	step 57, 1
+	step 21, 2
+	step 53, 1
+	step 57, 2
+	step_end
 
 scr_seq_0776_T06_0458:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0776_T06_0460:
-	.short 15, 2
-	.short 12, 2
-	.short 15, 1
-	.short 254, 0
+	step 15, 2
+	step 12, 2
+	step 15, 1
+	step_end
 
 scr_seq_0776_T06_0470:
-	.short 15, 2
-	.short 12, 3
-	.short 15, 1
-	.short 254, 0
+	step 15, 2
+	step 12, 3
+	step 15, 1
+	step_end
 
 scr_seq_0776_T06_0480:
-	.short 15, 2
-	.short 12, 4
-	.short 15, 1
-	.short 254, 0
+	step 15, 2
+	step 12, 4
+	step 15, 1
+	step_end
 
 scr_seq_0776_T06_0490:
-	.short 63, 1
-	.short 17, 6
-	.short 19, 1
-	.short 254, 0
+	step 63, 1
+	step 17, 6
+	step 19, 1
+	step_end
 
 scr_seq_0776_T06_04A0:
-	.short 62, 3
-	.short 17, 6
-	.short 19, 1
-	.short 254, 0
+	step 62, 3
+	step 17, 6
+	step 19, 1
+	step_end
 
 scr_seq_0776_T06_04B0:
-	.short 62, 5
-	.short 17, 6
-	.short 19, 1
-	.short 254, 0
+	step 62, 5
+	step 17, 6
+	step 19, 1
+	step_end
 
 scr_seq_0776_T06_04C0:
-	.short 62, 2
-	.short 19, 1
-	.short 17, 2
-	.short 254, 0
+	step 62, 2
+	step 19, 1
+	step 17, 2
+	step_end
 
 scr_seq_0776_T06_04D0:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0776_T06_04D8:
-	.short 3, 1
-	.short 254, 0
+	step 3, 1
+	step_end
 
 scr_seq_0776_T06_04E0:
-	.short 49, 3
-	.short 254, 0
+	step 49, 3
+	step_end
 
 scr_seq_0776_T06_04E8:
-	.short 12, 8
-	.short 254, 0
+	step 12, 8
+	step_end
 
 scr_seq_0776_T06_04F0:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 
 scr_seq_0776_T06_04F8:
-	.short 62, 4
-	.short 1, 1
-	.short 254, 0
+	step 62, 4
+	step 1, 1
+	step_end
 
 scr_seq_0776_T06_0504:
-	.short 2, 1
-	.short 254, 0
+	step 2, 1
+	step_end
 scr_seq_0776_T06_050C:
 	scrcmd_609
 	lockall
@@ -408,9 +408,9 @@ scr_seq_0776_T06_050C:
 	apply_movement 255, scr_seq_0776_T06_040C
 	wait_movement
 	scrcmd_076 245, 0
-	scrcmd_099 15
+	release 15
 	scrcmd_523 15, 2, 90, 2, 0
-	scrcmd_098 15
+	lock 15
 	scrcmd_077
 	callstd 2042
 	scrcmd_602 0
@@ -469,60 +469,60 @@ scr_seq_0776_T06_062F:
 	.byte 0x00
 
 scr_seq_0776_T06_0630:
-	.short 13, 4
-	.short 15, 2
-	.short 254, 0
+	step 13, 4
+	step 15, 2
+	step_end
 
 scr_seq_0776_T06_063C:
-	.short 13, 4
-	.short 15, 1
-	.short 254, 0
+	step 13, 4
+	step 15, 1
+	step_end
 
 scr_seq_0776_T06_0648:
-	.short 13, 4
-	.short 3, 1
-	.short 254, 0
+	step 13, 4
+	step 3, 1
+	step_end
 
 scr_seq_0776_T06_0654:
-	.short 63, 1
-	.short 19, 7
-	.short 16, 3
-	.short 19, 1
-	.short 254, 0
+	step 63, 1
+	step 19, 7
+	step 16, 3
+	step 19, 1
+	step_end
 
 scr_seq_0776_T06_0668:
-	.short 63, 2
-	.short 19, 7
-	.short 16, 3
-	.short 19, 1
-	.short 254, 0
+	step 63, 2
+	step 19, 7
+	step 16, 3
+	step 19, 1
+	step_end
 
 scr_seq_0776_T06_067C:
-	.short 63, 3
-	.short 19, 7
-	.short 16, 3
-	.short 19, 1
-	.short 254, 0
+	step 63, 3
+	step 19, 7
+	step 16, 3
+	step 19, 1
+	step_end
 
 scr_seq_0776_T06_0690:
-	.short 0, 1
-	.short 254, 0
+	step 0, 1
+	step_end
 
 scr_seq_0776_T06_0698:
-	.short 14, 2
-	.short 12, 13
-	.short 254, 0
+	step 14, 2
+	step 12, 13
+	step_end
 
 scr_seq_0776_T06_06A4:
-	.short 1, 1
-	.short 254, 0
+	step 1, 1
+	step_end
 
 scr_seq_0776_T06_06AC:
-	.short 63, 2
-	.short 2, 1
-	.short 63, 1
-	.short 0, 1
-	.short 254, 0
+	step 63, 2
+	step 2, 1
+	step 63, 1
+	step 0, 1
+	step_end
 scr_seq_0776_T06_06C0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -608,7 +608,7 @@ scr_seq_0776_T06_076A:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0776_T06_086F
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0776_T06_0883
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -647,7 +647,7 @@ scr_seq_0776_T06_0835:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 50
+	cameron_photo 50
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -679,32 +679,32 @@ scr_seq_0776_T06_0897:
 	.byte 0x00
 
 scr_seq_0776_T06_0898:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0776_T06_08A4:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0776_T06_08B8:
-	.short 12, 1
-	.short 15, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 15, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0776_T06_08CC:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0776_T06_08D8:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 	.balign 4, 0

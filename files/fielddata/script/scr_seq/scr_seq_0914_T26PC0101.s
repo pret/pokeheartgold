@@ -12,7 +12,7 @@
 
 scr_seq_0914_T26PC0101_0016:
 	setvar VAR_SPECIAL_x8007, 0
-	callstd 2002
+	callstd std_nurse_joy
 	end
 
 scr_seq_0914_T26PC0101_0022:
@@ -89,12 +89,12 @@ scr_seq_0914_T26PC0101_00F9:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0914_T26PC0101_00FC:
-	.short 35, 1
-	.short 254, 0
+	step 35, 1
+	step_end
 
 scr_seq_0914_T26PC0101_0104:
-	.short 33, 1
-	.short 254, 0
+	step 33, 1
+	step_end
 scr_seq_0914_T26PC0101_010C:
 	play_se SEQ_SE_DP_SELECT
 	lockall

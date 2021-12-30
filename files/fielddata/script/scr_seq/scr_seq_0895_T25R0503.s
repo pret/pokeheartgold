@@ -23,8 +23,8 @@ scr_seq_0895_T25R0503_0036:
 	.byte 0x00, 0x00
 
 scr_seq_0895_T25R0503_0038:
-	.short 15, 7
-	.short 12, 2
-	.short 254, 0
+	step 15, 7
+	step 12, 2
+	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

@@ -168,48 +168,48 @@ scr_seq_0866_T23_028B:
 	.byte 0x00
 
 scr_seq_0866_T23_028C:
-	.short 14, 9
-	.short 0, 1
-	.short 254, 0
+	step 14, 9
+	step 0, 1
+	step_end
 
 scr_seq_0866_T23_0298:
-	.short 14, 9
-	.short 1, 1
-	.short 254, 0
+	step 14, 9
+	step 1, 1
+	step_end
 
 scr_seq_0866_T23_02A4:
-	.short 75, 1
-	.short 254, 0
+	step 75, 1
+	step_end
 
 scr_seq_0866_T23_02AC:
-	.short 3, 1
-	.short 62, 6
-	.short 63, 7
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 62, 6
+	step 63, 7
+	step 1, 1
+	step_end
 
 scr_seq_0866_T23_02C0:
-	.short 3, 1
-	.short 62, 6
-	.short 63, 7
-	.short 0, 1
-	.short 254, 0
+	step 3, 1
+	step 62, 6
+	step 63, 7
+	step 0, 1
+	step_end
 
 scr_seq_0866_T23_02D4:
-	.short 14, 3
-	.short 254, 0
+	step 14, 3
+	step_end
 
 scr_seq_0866_T23_02DC:
-	.short 14, 1
-	.short 12, 1
-	.short 14, 2
-	.short 254, 0
+	step 14, 1
+	step 12, 1
+	step 14, 2
+	step_end
 
 scr_seq_0866_T23_02EC:
-	.short 14, 1
-	.short 12, 2
-	.short 14, 2
-	.short 254, 0
+	step 14, 1
+	step 12, 2
+	step 14, 2
+	step_end
 scr_seq_0866_T23_02FC:
 	scrcmd_609
 	lockall
@@ -234,22 +234,22 @@ scr_seq_0866_T23_02FC:
 
 
 scr_seq_0866_T23_0350:
-	.short 34, 2
-	.short 254, 0
+	step 34, 2
+	step_end
 
 scr_seq_0866_T23_0358:
-	.short 71, 1
-	.short 22, 1
-	.short 63, 2
-	.short 10, 2
-	.short 72, 1
-	.short 18, 9
-	.short 254, 0
+	step 71, 1
+	step 22, 1
+	step 63, 2
+	step 10, 2
+	step 72, 1
+	step 18, 9
+	step_end
 
 scr_seq_0866_T23_0374:
-	.short 12, 2
-	.short 33, 1
-	.short 254, 0
+	step 12, 2
+	step 33, 1
+	step_end
 scr_seq_0866_T23_0380:
 	play_se SEQ_SE_DP_SELECT
 	lockall

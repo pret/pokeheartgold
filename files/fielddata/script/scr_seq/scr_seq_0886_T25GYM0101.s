@@ -186,19 +186,19 @@ scr_seq_0886_T25GYM0101_025F:
 	.byte 0x00
 
 scr_seq_0886_T25GYM0101_0260:
-	.short 75, 1
-	.short 12, 3
-	.short 254, 0
+	step 75, 1
+	step 12, 3
+	step_end
 
 scr_seq_0886_T25GYM0101_026C:
-	.short 13, 3
-	.short 32, 1
-	.short 254, 0
+	step 13, 3
+	step 32, 1
+	step_end
 
 scr_seq_0886_T25GYM0101_0278:
-	.short 63, 1
-	.short 12, 1
-	.short 254, 0
+	step 63, 1
+	step 12, 1
+	step_end
 scr_seq_0886_T25GYM0101_0284:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -40,8 +40,8 @@ scr_seq_0821_T10R0301_005D:
 	.byte 0x00, 0x00, 0x00
 
 scr_seq_0821_T10R0301_0060:
-	.short 12, 6
-	.short 254, 0
+	step 12, 6
+	step_end
 scr_seq_0821_T10R0301_0068:
 	play_se SEQ_SE_DP_SELECT
 	lockall

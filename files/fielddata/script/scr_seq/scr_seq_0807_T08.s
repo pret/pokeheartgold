@@ -46,7 +46,7 @@ scr_seq_0807_T08_0069:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0807_T08_014B
-	scrcmd_618 VAR_SPECIAL_x800C
+	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, scr_seq_0807_T08_015F
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -78,7 +78,7 @@ scr_seq_0807_T08_0111:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0
 	wait_fade
-	scrcmd_615 62
+	cameron_photo 62
 	lockall
 	fade_screen 6, 1, 1, 0
 	wait_fade
@@ -110,27 +110,27 @@ scr_seq_0807_T08_0173:
 	.byte 0x00
 
 scr_seq_0807_T08_0174:
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0807_T08_0180:
-	.short 12, 1
-	.short 14, 1
-	.short 12, 3
-	.short 33, 1
-	.short 254, 0
+	step 12, 1
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
 
 scr_seq_0807_T08_0194:
-	.short 63, 1
-	.short 32, 1
-	.short 254, 0
+	step 63, 1
+	step 32, 1
+	step_end
 
 scr_seq_0807_T08_01A0:
-	.short 15, 1
-	.short 12, 1
-	.short 1, 1
-	.short 254, 0
+	step 15, 1
+	step 12, 1
+	step 1, 1
+	step_end
 scr_seq_0807_T08_01B0:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -149,25 +149,25 @@ scr_seq_0807_T08_01E0:
 	npc_msg 8
 scr_seq_0807_T08_01E3:
 	touchscreen_menu_hide
-	scrcmd_749 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8000, 1
 	gotoif ne, scr_seq_0807_T08_0202
-	scrcmd_751 205, 255, 0
+	menu_item_add 205, 255, 0
 scr_seq_0807_T08_0202:
 	comparevartovalue VAR_SPECIAL_x8001, 1
 	gotoif ne, scr_seq_0807_T08_0217
-	scrcmd_751 206, 255, 1
+	menu_item_add 206, 255, 1
 scr_seq_0807_T08_0217:
 	comparevartovalue VAR_SPECIAL_x8002, 1
 	gotoif ne, scr_seq_0807_T08_022C
-	scrcmd_751 207, 255, 2
+	menu_item_add 207, 255, 2
 scr_seq_0807_T08_022C:
 	comparevartovalue VAR_SPECIAL_x8003, 1
 	gotoif ne, scr_seq_0807_T08_0241
-	scrcmd_751 208, 255, 3
+	menu_item_add 208, 255, 3
 scr_seq_0807_T08_0241:
-	scrcmd_751 126, 255, 4
-	scrcmd_752
+	menu_item_add 126, 255, 4
+	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
@@ -377,61 +377,61 @@ scr_seq_0807_T08_064B:
 	.byte 0x00
 
 scr_seq_0807_T08_064C:
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 254, 0
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step_end
 
 scr_seq_0807_T08_0690:
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 254, 0
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step_end
 
 scr_seq_0807_T08_06D4:
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 1, 1
-	.short 3, 1
-	.short 0, 1
-	.short 2, 1
-	.short 254, 0
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step 1, 1
+	step 3, 1
+	step 0, 1
+	step 2, 1
+	step_end
 scr_seq_0807_T08_0718:
 	play_se SEQ_SE_DP_SELECT
 	lockall

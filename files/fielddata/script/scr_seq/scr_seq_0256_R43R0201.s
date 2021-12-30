@@ -84,60 +84,60 @@ scr_seq_0256_R43R0201_0112:
 	.byte 0x00, 0x00
 
 scr_seq_0256_R43R0201_0114:
-	.short 75, 1
-	.short 21, 3
-	.short 23, 2
-	.short 1, 1
-	.short 254, 0
+	step 75, 1
+	step 21, 3
+	step 23, 2
+	step 1, 1
+	step_end
 
 scr_seq_0256_R43R0201_0128:
-	.short 63, 6
-	.short 1, 1
-	.short 75, 1
-	.short 21, 3
-	.short 22, 1
-	.short 1, 1
-	.short 254, 0
+	step 63, 6
+	step 1, 1
+	step 75, 1
+	step 21, 3
+	step 22, 1
+	step 1, 1
+	step_end
 
 scr_seq_0256_R43R0201_0144:
-	.short 62, 3
-	.short 22, 2
-	.short 20, 3
-	.short 1, 1
-	.short 254, 0
+	step 62, 3
+	step 22, 2
+	step 20, 3
+	step 1, 1
+	step_end
 
 scr_seq_0256_R43R0201_0158:
-	.short 23, 1
-	.short 20, 3
-	.short 254, 0
+	step 23, 1
+	step 20, 3
+	step_end
 
 scr_seq_0256_R43R0201_0164:
-	.short 63, 6
-	.short 0, 1
-	.short 75, 1
-	.short 20, 4
-	.short 23, 1
-	.short 0, 1
-	.short 254, 0
+	step 63, 6
+	step 0, 1
+	step 75, 1
+	step 20, 4
+	step 23, 1
+	step 0, 1
+	step_end
 
 scr_seq_0256_R43R0201_0180:
-	.short 75, 1
-	.short 20, 4
-	.short 22, 2
-	.short 0, 1
-	.short 254, 0
+	step 75, 1
+	step 20, 4
+	step 22, 2
+	step 0, 1
+	step_end
 
 scr_seq_0256_R43R0201_0194:
-	.short 62, 3
-	.short 22, 1
-	.short 21, 4
-	.short 254, 0
+	step 62, 3
+	step 22, 1
+	step 21, 4
+	step_end
 
 scr_seq_0256_R43R0201_01A4:
-	.short 23, 2
-	.short 21, 4
-	.short 0, 1
-	.short 254, 0
+	step 23, 2
+	step 21, 4
+	step 0, 1
+	step_end
 scr_seq_0256_R43R0201_01B4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
