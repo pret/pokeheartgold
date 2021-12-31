@@ -120,8 +120,8 @@ _018A:
 	wait_movement
 	setflag FLAG_UNK_2C6
 	clearflag FLAG_UNK_2C7
-	show_person 2
-	hide_person 0
+	show_person obj_D23R0105_rkanbum2
+	hide_person obj_D23R0105_gsgentleman
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _01B7
 	apply_movement obj_D23R0105_rkanbum2, _0328

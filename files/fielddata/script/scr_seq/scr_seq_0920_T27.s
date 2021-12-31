@@ -53,7 +53,7 @@ scr_seq_T27_012:
 	scrcmd_308 1
 	apply_movement obj_player, _00D0
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _00B6
@@ -63,7 +63,7 @@ scr_seq_T27_012:
 _00B6:
 	scrcmd_607
 _00B8:
-	release 253
+	release obj_partner_poke
 	setvar VAR_UNK_4079, 0
 	scrcmd_311 1
 	scrcmd_308 1
@@ -80,7 +80,7 @@ scr_seq_T27_005:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_23F
-	show_person 6
+	show_person obj_T27_gsrivel
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
@@ -115,7 +115,7 @@ scr_seq_T27_005:
 	apply_movement obj_T27_gsrivel, _01E0
 	apply_movement obj_player, _01F0
 	wait_movement
-	hide_person 6
+	hide_person obj_T27_gsrivel
 	setflag FLAG_UNK_23F
 	releaseall
 	setvar VAR_UNK_4079, 4
@@ -214,7 +214,7 @@ _02B3:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _02DA
-	apply_movement 253, _0380
+	apply_movement obj_partner_poke, _0380
 	wait_movement
 _02DA:
 	setflag FLAG_UNK_189

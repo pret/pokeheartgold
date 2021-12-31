@@ -149,7 +149,7 @@ _01B7:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _01DE
-	apply_movement 253, _02CC
+	apply_movement obj_partner_poke, _02CC
 	wait_movement
 _01DE:
 	setflag FLAG_UNK_189
@@ -250,7 +250,7 @@ _032B:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_2CB
-	hide_person 4
+	hide_person obj_T26R0701_gsleader6
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00

@@ -282,12 +282,12 @@ scr_seq_T06GYM0101_023:
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
 	setflag FLAG_UNK_31A
-	hide_person 0
-	hide_person 1
-	hide_person 2
-	hide_person 3
-	hide_person 4
-	hide_person 5
+	hide_person obj_T06GYM0101_stop
+	hide_person obj_T06GYM0101_stop_2
+	hide_person obj_T06GYM0101_stop_3
+	hide_person obj_T06GYM0101_stop_4
+	hide_person obj_T06GYM0101_stop_5
+	hide_person obj_T06GYM0101_stop_6
 	settrainerflag TRAINER_GUITARIST_VINCENT
 	settrainerflag TRAINER_GENTLEMAN_GREGORY
 	settrainerflag TRAINER_JUGGLER_HORTON

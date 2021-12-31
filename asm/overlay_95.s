@@ -1475,7 +1475,7 @@ _021E643C:
 	str r0, [r4, #0x60]
 	b _021E6586
 _021E648C:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021E6586
 	ldr r0, _021E659C ; =0x000004A4
@@ -1756,7 +1756,7 @@ _021E66D8:
 	bl GF_AssertFail
 	b _021E67D8
 _021E66DE:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021E67D8
 	ldr r0, _021E67EC ; =0x000004A4

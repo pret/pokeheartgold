@@ -31,7 +31,7 @@ _0042:
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _0298
 	wait_movement
-	hide_person 1
+	hide_person obj_D24R0208_babyboy1_13
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_111
 	setflag FLAG_UNK_222
@@ -50,7 +50,7 @@ _0096:
 
 _00A6:
 	apply_movement obj_player, _0228
-	apply_movement 253, _0234
+	apply_movement obj_partner_poke, _0234
 	wait_movement
 _00B8:
 	setvar VAR_UNK_40CE, 1
@@ -97,7 +97,7 @@ _0163:
 
 _0173:
 	apply_movement obj_player, _0228
-	apply_movement 253, _0234
+	apply_movement obj_partner_poke, _0234
 	wait_movement
 _0185:
 	setvar VAR_UNK_40CE, 1
@@ -161,7 +161,7 @@ _0268:
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _0298
 	wait_movement
-	hide_person 0
+	hide_person obj_D24R0208_babyboy1_12
 	setflag FLAG_UNK_221
 	play_se SEQ_SE_DP_UG_008
 	releaseall

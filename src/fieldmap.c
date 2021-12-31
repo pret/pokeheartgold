@@ -34,8 +34,8 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     {10200, NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin},
     {10150, NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin},
     {10100, NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin},
-    {10000, NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin},
-    { 9950, NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin},
+    {_std_field_move, NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin},
+    { _std_dex_evaluation, NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin},
     { 9900, NARC_scr_seq_scr_seq_0136_bin,  NARC_msg_msg_0040_bin},
     { 9850, NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin},
     { 9800, NARC_scr_seq_scr_seq_0166_bin,  NARC_msg_msg_0043_bin},
@@ -45,15 +45,15 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     { 9300, NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin},
     { 9200, NARC_scr_seq_scr_seq_0164_bin, NARC_msg_msg_0267_bin},
     { 9100, NARC_scr_seq_scr_seq_0000_bin,  NARC_msg_msg_0014_bin},
-    { 9000, NARC_scr_seq_scr_seq_0004_bin,  NARC_msg_msg_0046_bin},
-    { 8900, NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
+    { _std_communication, NARC_scr_seq_scr_seq_0004_bin,  NARC_msg_msg_0046_bin},
+    { _std_chatot, NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
     { 8800, NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin},
-    { 8000, NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
+    { _std_hidden_item, NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
     { 7000, NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
     { 5000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
     { 3000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
-    { 2800, NARC_scr_seq_scr_seq_0150_bin,  NARC_msg_msg_0023_bin},
-    { 2500, NARC_scr_seq_scr_seq_0001_bin,  NARC_msg_msg_0020_bin},
+    { _std_apricorn_tree, NARC_scr_seq_scr_seq_0150_bin,  NARC_msg_msg_0023_bin},
+    { _std_bookshelves, NARC_scr_seq_scr_seq_0001_bin,  NARC_msg_msg_0020_bin},
     { _std_misc, NARC_scr_seq_scr_seq_0003_bin,  NARC_msg_msg_0040_bin},
 };
 

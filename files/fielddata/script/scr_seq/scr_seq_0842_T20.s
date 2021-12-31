@@ -55,9 +55,9 @@ scr_seq_T20_009:
 
 _00A4:
 	clearflag FLAG_HIDE_NEW_BARK_FRIEND
-	show_person 4
+	show_person obj_T20_var_1
 	clearflag FLAG_HIDE_NEW_BARK_MARILL
-	show_person 3
+	show_person obj_T20_tsure_poke_611
 	move_person 4, 686, 0, 396, 2
 	move_person 3, 685, 0, 396, 1
 	end
@@ -111,7 +111,7 @@ _017F:
 
 _0192:
 	apply_movement obj_T20_gsrivel, _0264
-	apply_movement 253, _0224
+	apply_movement obj_partner_poke, _0224
 	apply_movement obj_player, _0288
 	wait_movement
 	apply_movement obj_T20_gsrivel, _0274
@@ -121,7 +121,7 @@ _0192:
 
 _01BA:
 	apply_movement obj_T20_gsrivel, _02A0
-	apply_movement 253, _0234
+	apply_movement obj_partner_poke, _0234
 	apply_movement obj_player, _02B8
 	wait_movement
 	apply_movement obj_T20_gsrivel, _0274
@@ -479,7 +479,7 @@ _075A:
 	scrcmd_307 21, 12, 12, 9, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	show_person 5
+	show_person obj_T20_doctor
 	move_person 5, 684, 0, 393, 1
 	apply_movement obj_T20_doctor, _0D08
 	wait_movement
@@ -597,7 +597,7 @@ _0981:
 	scrcmd_308 77
 	apply_movement obj_T20_doctor, _0D10
 	wait_movement
-	hide_person 5
+	hide_person obj_T20_doctor
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
@@ -985,7 +985,7 @@ scr_seq_T20_003:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	clearflag FLAG_HIDE_NEW_BARK_FRIEND
-	show_person 4
+	show_person obj_T20_var_1
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
 	apply_movement obj_T20_var_1, _0EA4
@@ -1002,8 +1002,8 @@ scr_seq_T20_003:
 	wait_movement
 	callstd std_fade_end_friend_music
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 2
-	hide_person 3
-	hide_person 4
+	hide_person obj_T20_tsure_poke_611
+	hide_person obj_T20_var_1
 	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_HIDE_NEW_BARK_FRIEND
 	releaseall
@@ -1108,8 +1108,8 @@ scr_seq_T20_008:
 	apply_movement obj_T20_var_1, _1044
 	apply_movement obj_T20_tsure_poke_611, _104C
 	wait_movement
-	hide_person 3
-	hide_person 4
+	hide_person obj_T20_tsure_poke_611
+	hide_person obj_T20_var_1
 	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_HIDE_NEW_BARK_FRIEND
 	callstd std_fade_end_friend_music
@@ -1267,7 +1267,7 @@ _119B:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _11C2
-	apply_movement 253, _1290
+	apply_movement obj_partner_poke, _1290
 	wait_movement
 _11C2:
 	setflag FLAG_UNK_189
@@ -1350,7 +1350,7 @@ scr_seq_T20_011:
 	scrcmd_308 77
 	play_se SEQ_SE_DP_KAIDAN2
 	clearflag FLAG_HIDE_NEW_BARK_MOM
-	show_person 7
+	show_person obj_T20_gsmama
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_T20_gsmama, _1478
 	wait_movement
@@ -1435,7 +1435,7 @@ _1411:
 	wait_movement
 	setflag FLAG_HIDE_NEW_BARK_MOM
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 7
+	hide_person obj_T20_gsmama
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_311 77
 	scrcmd_308 77
@@ -1663,9 +1663,9 @@ scr_seq_T20_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 183, 0
+	play_cry SPECIES_MARILL, 0
 	npc_msg msg_0542_T20_00033
-	scrcmd_077
+	wait_cry
 	closemsg
 	apply_movement obj_T20_tsure_poke_611_2, _16F4
 	wait_movement

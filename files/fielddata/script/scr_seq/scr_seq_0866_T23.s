@@ -49,9 +49,9 @@ scr_seq_T23_001:
 	lockall
 	faceplayer
 	npc_msg msg_0564_T23_00009
-	scrcmd_076 79, 0
+	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0564_T23_00010
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -157,7 +157,7 @@ _026F:
 	apply_movement obj_T23_gsrivel, _02EC
 _0277:
 	wait_movement
-	hide_person 9
+	hide_person obj_T23_gsrivel
 	callstd std_fade_end_rival_outro_music
 	releaseall
 	end
@@ -225,7 +225,7 @@ scr_seq_T23_003:
 	move_person 13, 23, 0, 16, 3
 	apply_movement obj_T23_rocketm_3, _0374
 	wait_movement
-	hide_person 13
+	hide_person obj_T23_gsmiddleman1_2
 	setflag FLAG_UNK_272
 	setflag FLAG_UNK_271
 	clearflag FLAG_UNK_19F

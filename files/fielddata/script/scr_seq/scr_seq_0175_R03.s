@@ -51,7 +51,7 @@ _00B2:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 _00BE:
-	scrcmd_076 386, 0
+	play_cry SPECIES_DEOXYS, 0
 	npc_msg msg_0326_R03_00002
 	goto _02D5
 
@@ -100,7 +100,7 @@ _0180:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 _018C:
-	scrcmd_076 386, 0
+	play_cry SPECIES_DEOXYS, 0
 	npc_msg msg_0326_R03_00003
 	goto _02D5
 
@@ -136,7 +136,7 @@ _0220:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 _022C:
-	scrcmd_076 386, 0
+	play_cry SPECIES_DEOXYS, 0
 	npc_msg msg_0326_R03_00004
 	goto _02D5
 
@@ -172,11 +172,11 @@ _02C0:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 _02CC:
-	scrcmd_076 386, 0
+	play_cry SPECIES_DEOXYS, 0
 	npc_msg msg_0326_R03_00005
 _02D5:
 	waitbutton
-	scrcmd_077
+	wait_cry
 	closemsg
 	releaseall
 	end

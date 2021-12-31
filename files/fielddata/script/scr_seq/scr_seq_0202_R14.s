@@ -83,7 +83,7 @@ _011C:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0143
-	apply_movement 253, _0200
+	apply_movement obj_partner_poke, _0200
 	wait_movement
 _0143:
 	setflag FLAG_UNK_189
@@ -159,7 +159,7 @@ scr_seq_R14_002:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_2A5
-	show_person 12
+	show_person obj_R14_minaki
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -184,11 +184,11 @@ _0272:
 	apply_movement obj_player, _0450
 	wait_movement
 _027C:
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_R14_tsure_poke_618
 	scrcmd_523 11, 2, 90, 2, 0
 	lock obj_R14_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	comparevartovalue VAR_TEMP_x4000, 1358
 	gotoif ne, _02B1
 	goto _02D0
@@ -282,7 +282,7 @@ _03D2:
 	waitbutton
 	closemsg
 	callstd 2043
-	hide_person 11
+	hide_person obj_R14_tsure_poke_618
 	setflag FLAG_UNK_2A0
 	setflag FLAG_UNK_2A5
 	clearflag FLAG_UNK_2AC

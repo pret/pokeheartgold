@@ -59,7 +59,7 @@ _00A7:
 	wait_movement
 _00B1:
 	releaseall
-	hide_person 0
+	hide_person obj_T23R0501_gantetsu
 	wait_fanfare
 	setflag FLAG_UNK_077
 	setflag FLAG_UNK_19E
@@ -284,9 +284,9 @@ scr_seq_T23R0501_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 79, 0
+	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0571_T23R0501_00020
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

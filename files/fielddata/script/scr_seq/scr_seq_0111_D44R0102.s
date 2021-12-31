@@ -182,7 +182,7 @@ _0287:
 	apply_movement obj_player, _0310
 _0297:
 	wait_movement
-	hide_person 0
+	hide_person obj_D44R0102_gsleader8
 	setvar VAR_UNK_40C4, 2
 	releaseall
 	end
@@ -285,7 +285,7 @@ _039D:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_209
-	hide_person 0
+	hide_person obj_D44R0102_gsleader8
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00
@@ -377,7 +377,7 @@ _04B2:
 	apply_movement obj_player, _06A8
 	apply_movement obj_D44R0102_wataru, _06E4
 	apply_movement obj_D44R0102_gsleader8_2, _0704
-	apply_movement 253, _06C8
+	apply_movement obj_partner_poke, _06C8
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0129_D44R0102_00015, msg_0129_D44R0102_00016
@@ -430,13 +430,13 @@ _05D1:
 	closemsg
 	apply_movement obj_D44R0102_wataru, _06F4
 	wait_movement
-	hide_person 11
+	hide_person obj_D44R0102_wataru
 	buffer_players_name 0
 	npc_msg msg_0129_D44R0102_00027
 	closemsg
 	apply_movement obj_D44R0102_gsleader8_2, _0720
 	wait_movement
-	hide_person 12
+	hide_person obj_D44R0102_gsleader8_2
 	apply_movement obj_D44R0102_gsrivel_2, _0778
 	apply_movement obj_player, _0780
 	wait_movement
@@ -446,12 +446,12 @@ _05D1:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	hide_person 9
-	hide_person 10
+	hide_person obj_D44R0102_gsrivel_2
+	hide_person obj_D44R0102_var_1
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	apply_movement 253, _06DC
+	apply_movement obj_partner_poke, _06DC
 	wait_movement
 	setvar VAR_UNK_40FC, 2
 	setvar VAR_UNK_4119, 1

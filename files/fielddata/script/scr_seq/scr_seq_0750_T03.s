@@ -133,7 +133,7 @@ _01B7:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _01DE
-	apply_movement 253, _0280
+	apply_movement obj_partner_poke, _0280
 	wait_movement
 _01DE:
 	setflag FLAG_UNK_189
@@ -291,12 +291,12 @@ _038C:
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _03AB
 	setflag FLAG_UNK_30D
-	hide_person 9
+	hide_person obj_T03_tsure_poke_621
 	goto _03B3
 
 _03AB:
 	setflag FLAG_UNK_312
-	hide_person 10
+	hide_person obj_T03_tsure_poke_620
 _03B3:
 	end
 
@@ -384,16 +384,16 @@ scr_seq_T03_010:
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _04C8
 	setvar VAR_TEMP_x400A, 381
-	scrcmd_076 VAR_TEMP_x400A, 0
+	play_cry VAR_TEMP_x400A, 0
 	npc_msg msg_0460_T03_00010
 	goto _04D7
 
 _04C8:
 	setvar VAR_TEMP_x400A, 380
-	scrcmd_076 VAR_TEMP_x400A, 0
+	play_cry VAR_TEMP_x400A, 0
 	npc_msg msg_0460_T03_00011
 _04D7:
-	scrcmd_077
+	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
 	scrcmd_589 16394, 40, 0
@@ -482,7 +482,7 @@ _061F:
 	closemsg
 	apply_movement obj_T03_daigo, _0480
 	wait_movement
-	hide_person 8
+	hide_person obj_T03_daigo
 	comparevartovalue VAR_UNK_4130, 4
 	callif eq, _064D
 _0649:

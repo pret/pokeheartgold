@@ -392,7 +392,7 @@ _06A0:
 	setvar VAR_UNK_40A0, 1
 	apply_movement obj_D37R0104_gsrivel, _0700
 	wait_movement
-	hide_person 28
+	hide_person obj_D37R0104_gsrivel
 	callstd std_fade_end_rival_outro_music
 	releaseall
 	end

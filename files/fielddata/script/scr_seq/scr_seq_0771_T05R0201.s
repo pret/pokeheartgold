@@ -33,7 +33,7 @@ scr_seq_T05R0201_001:
 	end
 
 scr_seq_T05R0201_002:
-	scrcmd_076 54, 0
+	play_cry SPECIES_PSYDUCK, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -41,11 +41,11 @@ scr_seq_T05R0201_002:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_077
+	wait_cry
 	end
 
 scr_seq_T05R0201_003:
-	scrcmd_076 33, 0
+	play_cry SPECIES_NIDORINO, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -53,11 +53,11 @@ scr_seq_T05R0201_003:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_077
+	wait_cry
 	end
 
 scr_seq_T05R0201_004:
-	scrcmd_076 16, 0
+	play_cry SPECIES_PIDGEY, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -65,6 +65,6 @@ scr_seq_T05R0201_004:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_077
+	wait_cry
 	end
 	.balign 4, 0

@@ -86,9 +86,9 @@ scr_seq_D49R0104_003:
 	closemsg
 	apply_movement obj_D49R0104_tsure_poke_575, _00F0
 	wait_movement
-	scrcmd_076 19, 0
+	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0140_D49R0104_00011
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -112,9 +112,9 @@ scr_seq_D49R0104_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 19, 0
+	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0140_D49R0104_00010
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -124,9 +124,9 @@ scr_seq_D49R0104_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 41, 0
+	play_cry SPECIES_ZUBAT, 0
 	npc_msg msg_0140_D49R0104_00012
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

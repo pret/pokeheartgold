@@ -85,10 +85,10 @@ scr_seq_T09_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	release 253
-	apply_movement 253, _02FC
+	release obj_partner_poke
+	apply_movement obj_partner_poke, _02FC
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 	comparevartovalue VAR_UNK_40FD, 0
 	gotoif ne, _0304
 	checkflag FLAG_UNK_128
@@ -126,7 +126,7 @@ _018C:
 	gotoif ne, _01C7
 	comparevartovalue VAR_SPECIAL_x8004, 1035
 	gotoif ne, _01C1
-	apply_movement 253, _02D4
+	apply_movement obj_partner_poke, _02D4
 	wait_movement
 _01C1:
 	goto _01DE
@@ -134,7 +134,7 @@ _01C1:
 _01C7:
 	comparevartovalue VAR_SPECIAL_x8005, 495
 	gotoif ne, _01DE
-	apply_movement 253, _02E4
+	apply_movement obj_partner_poke, _02E4
 	wait_movement
 _01DE:
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -152,16 +152,16 @@ _0201:
 	gotoif ne, _0233
 	apply_movement obj_T09_gsleader16, _02B0
 	apply_movement obj_player, _02F4
-	apply_movement 253, _02F4
+	apply_movement obj_partner_poke, _02F4
 	goto _024B
 
 _0233:
 	apply_movement obj_T09_gsleader16, _02C0
 	apply_movement obj_player, _02F4
-	apply_movement 253, _02F4
+	apply_movement obj_partner_poke, _02F4
 _024B:
 	wait_movement
-	hide_person 0
+	hide_person obj_T09_gsleader16
 	setflag FLAG_UNK_25A
 	setflag FLAG_UNK_129
 	setflag FLAG_UNK_2F8
@@ -301,7 +301,7 @@ _03CA:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_27D
-	hide_person 1
+	hide_person obj_T09_gsleader15
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00

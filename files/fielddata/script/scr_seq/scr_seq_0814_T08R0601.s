@@ -25,9 +25,9 @@ scr_seq_T08R0601_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 190, 0
+	play_cry SPECIES_AIPOM, 0
 	npc_msg msg_0518_T08R0601_00001
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -37,9 +37,9 @@ scr_seq_T08R0601_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 190, 0
+	play_cry SPECIES_AIPOM, 0
 	npc_msg msg_0518_T08R0601_00002
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -49,9 +49,9 @@ scr_seq_T08R0601_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 190, 0
+	play_cry SPECIES_AIPOM, 0
 	npc_msg msg_0518_T08R0601_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

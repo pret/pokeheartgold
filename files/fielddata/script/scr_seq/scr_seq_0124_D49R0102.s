@@ -502,7 +502,7 @@ scr_seq_D49R0102_014:
 	lockall
 	faceplayer
 	scrcmd_724 11, 16384
-	scrcmd_076 19, 0
+	play_cry SPECIES_RATTATA, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, _06E3
 	buffer_players_name 0
@@ -512,7 +512,7 @@ scr_seq_D49R0102_014:
 _06E3:
 	npc_msg msg_0139_D49R0102_00018
 _06E6:
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -523,7 +523,7 @@ scr_seq_D49R0102_015:
 	lockall
 	faceplayer
 	scrcmd_724 11, 16384
-	scrcmd_076 66, 0
+	play_cry SPECIES_MACHOP, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, _071D
 	buffer_players_name 0
@@ -533,7 +533,7 @@ scr_seq_D49R0102_015:
 _071D:
 	npc_msg msg_0139_D49R0102_00020
 _0720:
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -544,7 +544,7 @@ scr_seq_D49R0102_016:
 	lockall
 	faceplayer
 	scrcmd_724 11, 16384
-	scrcmd_076 12, 0
+	play_cry SPECIES_BUTTERFREE, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, _0757
 	buffer_players_name 0
@@ -554,7 +554,7 @@ scr_seq_D49R0102_016:
 _0757:
 	npc_msg msg_0139_D49R0102_00022
 _075A:
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

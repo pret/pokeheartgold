@@ -21,7 +21,7 @@ scr_seq_R10_004:
 
 _002B:
 	setflag FLAG_UNK_297
-	hide_person 1
+	hide_person obj_R10_tsure_poke_604
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -103,7 +103,7 @@ _0148:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_264
-	hide_person 0
+	hide_person obj_R10_gsleader9
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00
@@ -176,8 +176,8 @@ scr_seq_R10_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 145, 0
-	scrcmd_077
+	play_cry SPECIES_ZAPDOS, 0
+	wait_cry
 	setflag FLAG_UNK_0A4
 	scrcmd_589 145, 50, 0
 	clearflag FLAG_UNK_0A4

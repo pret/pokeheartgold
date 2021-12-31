@@ -114,7 +114,7 @@ _0164:
 	step 33, 1
 	step_end
 scr_seq_R28R0101_001:
-	scrcmd_076 22, 0
+	play_cry SPECIES_FEAROW, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -122,6 +122,6 @@ scr_seq_R28R0101_001:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_077
+	wait_cry
 	end
 	.balign 4, 0

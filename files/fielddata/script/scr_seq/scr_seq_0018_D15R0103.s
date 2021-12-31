@@ -49,7 +49,7 @@ scr_seq_D15R0103_001:
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_D15R0103_gsrivel, _00E0
 	wait_movement
-	hide_person 6
+	hide_person obj_D15R0103_gsrivel
 	setflag FLAG_UNK_078
 	callstd std_fade_end_rival_outro_music
 	apply_movement 241, _00C8

@@ -94,30 +94,30 @@ _012E:
 
 _0130:
 	clearflag FLAG_UNK_266
-	show_person 1
+	show_person obj_T08GYM0101_gsgirl1
 	setflag FLAG_UNK_26A
-	hide_person 8
+	hide_person obj_T08GYM0101_gsleader13_4
 	return
 
 _0142:
 	clearflag FLAG_UNK_267
-	show_person 5
+	show_person obj_T08GYM0101_campboy_2
 	setflag FLAG_UNK_26B
-	hide_person 7
+	hide_person obj_T08GYM0101_gsleader13_3
 	return
 
 _0154:
 	clearflag FLAG_UNK_268
-	show_person 4
+	show_person obj_T08GYM0101_gsgirl1_2
 	setflag FLAG_UNK_26C
-	hide_person 9
+	hide_person obj_T08GYM0101_gsleader13_5
 	return
 
 _0166:
 	clearflag FLAG_UNK_269
-	show_person 0
+	show_person obj_T08GYM0101_picnicgirl_2
 	setflag FLAG_UNK_26D
-	hide_person 6
+	hide_person obj_T08GYM0101_gsleader13_2
 	return
 
 scr_seq_T08GYM0101_003:
@@ -149,9 +149,9 @@ _01E0:
 _01E8:
 	wait_movement
 	clearflag FLAG_UNK_266
-	show_person 1
+	show_person obj_T08GYM0101_gsgirl1
 	setflag FLAG_UNK_26A
-	hide_person 8
+	hide_person obj_T08GYM0101_gsleader13_4
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0215
 	apply_movement obj_T08GYM0101_gsgirl1, _0698
@@ -223,9 +223,9 @@ _02F8:
 _0300:
 	wait_movement
 	clearflag FLAG_UNK_267
-	show_person 5
+	show_person obj_T08GYM0101_campboy_2
 	setflag FLAG_UNK_26B
-	hide_person 7
+	hide_person obj_T08GYM0101_gsleader13_3
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _032D
 	apply_movement obj_T08GYM0101_campboy_2, _0698
@@ -299,9 +299,9 @@ _0415:
 _041D:
 	wait_movement
 	clearflag FLAG_UNK_268
-	show_person 4
+	show_person obj_T08GYM0101_gsgirl1_2
 	setflag FLAG_UNK_26C
-	hide_person 9
+	hide_person obj_T08GYM0101_gsleader13_5
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _044A
 	apply_movement obj_T08GYM0101_gsgirl1_2, _0698
@@ -375,9 +375,9 @@ _0532:
 _053A:
 	wait_movement
 	clearflag FLAG_UNK_269
-	show_person 0
+	show_person obj_T08GYM0101_picnicgirl_2
 	setflag FLAG_UNK_26D
-	hide_person 6
+	hide_person obj_T08GYM0101_gsleader13_2
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0567
 	apply_movement obj_T08GYM0101_picnicgirl_2, _0698

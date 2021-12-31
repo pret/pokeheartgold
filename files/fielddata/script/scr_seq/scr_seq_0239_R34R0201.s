@@ -44,9 +44,9 @@ scr_seq_R34R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 12, 0
+	play_cry SPECIES_BUTTERFREE, 0
 	npc_msg msg_0386_R34R0201_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

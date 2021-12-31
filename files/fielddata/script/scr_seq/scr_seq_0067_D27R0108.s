@@ -27,7 +27,7 @@ _002A:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 253, _0100
+	apply_movement obj_partner_poke, _0100
 	wait_movement
 	goto _0062
 

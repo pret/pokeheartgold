@@ -49,7 +49,7 @@ scr_seq_D52R0102_002:
 
 _008B:
 	setflag FLAG_UNK_2D1
-	hide_person 0
+	hide_person obj_D52R0102_tsure_poke_622
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -57,9 +57,9 @@ scr_seq_D52R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 382, 0
+	play_cry SPECIES_KYOGRE, 0
 	npc_msg msg_0149_D52R0102_00000
-	scrcmd_077
+	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
 	scrcmd_589 382, 50, 0
@@ -84,7 +84,7 @@ _00FB:
 	setvar VAR_UNK_40F9, 4
 	setflag FLAG_UNK_17A
 	clearflag FLAG_UNK_2D4
-	show_person 1
+	show_person obj_D52R0102_mount_2
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -118,7 +118,7 @@ _0156:
 	closemsg
 	apply_movement obj_D52R0102_mount_2, _01EC
 	wait_movement
-	hide_person 1
+	hide_person obj_D52R0102_mount_2
 	setflag FLAG_UNK_2D4
 	setflag FLAG_UNK_2CF
 	releaseall

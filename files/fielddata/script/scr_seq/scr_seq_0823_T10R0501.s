@@ -33,7 +33,7 @@ scr_seq_T10R0501_000:
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_20E
-	show_person 1
+	show_person obj_T10R0501_babyboy1_11
 	setvar VAR_TEMP_x4001, 1
 	releaseall
 	end
@@ -66,9 +66,9 @@ _00A6:
 	npc_msg msg_0526_T10R0501_00001
 	closemsg
 	play_se SEQ_SE_DP_KI_GASYAN
-	hide_person 2
-	hide_person 3
-	hide_person 4
+	hide_person obj_T10R0501_leag_door2
+	hide_person obj_T10R0501_leag_door2_2
+	hide_person obj_T10R0501_leag_door2_3
 	releaseall
 	end
 

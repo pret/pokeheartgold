@@ -25,8 +25,9 @@
 #define ne    5
 #endif
 
-#define obj_player 255
-#define SCRDEF_END 0xFD13
+#define obj_partner_poke           253
+#define obj_player                 255
+#define SCRDEF_END              0xFD13
 
 #ifndef PM_ASM
 

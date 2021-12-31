@@ -828,8 +828,8 @@ _02006356:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02006300
 
-	thumb_func_start sub_02006360
-sub_02006360: ; 0x02006360
+	thumb_func_start IsCryFinished
+IsCryFinished: ; 0x02006360
 	push {r3, r4, r5, lr}
 	mov r0, #0x10
 	bl GF_SdatGetAttrPtr
@@ -859,7 +859,7 @@ _0200639A:
 	bl GF_SndPlayerCountPlayingSeqByPlayerNo
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02006360
+	thumb_func_end IsCryFinished
 
 	thumb_func_start PlayCryEx
 PlayCryEx: ; 0x020063A4
@@ -1449,7 +1449,7 @@ _020068B0:
 	ldr r0, [r5]
 	sub r0, r0, #1
 	str r0, [r5]
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _020068C2
 	mov r0, #0

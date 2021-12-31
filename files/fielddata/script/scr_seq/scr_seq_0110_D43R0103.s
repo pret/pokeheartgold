@@ -20,7 +20,7 @@ scr_seq_D43R0103_000:
 	apply_movement obj_player, _0168
 	wait_movement
 	clearflag FLAG_UNK_20A
-	show_person 0
+	show_person obj_D43R0103_gsrivel
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 37
@@ -86,14 +86,14 @@ _013A:
 _0142:
 	wait_movement
 	setflag FLAG_UNK_20A
-	hide_person 0
+	hide_person obj_D43R0103_gsrivel
 	callstd std_fade_end_rival_outro_music
 	setvar VAR_UNK_40C5, 1
 	releaseall
 	end
 
 _015A:
-	hide_person 0
+	hide_person obj_D43R0103_gsrivel
 	setflag FLAG_UNK_20A
 	white_out
 	releaseall
@@ -196,26 +196,26 @@ _0278:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _02A9
 	apply_movement obj_player, _0330
-	apply_movement 253, _033C
+	apply_movement obj_partner_poke, _033C
 	goto _02FF
 
 _02A9:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _02CC
 	apply_movement obj_player, _034C
-	apply_movement 253, _0358
+	apply_movement obj_partner_poke, _0358
 	goto _02FF
 
 _02CC:
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _02EF
 	apply_movement obj_player, _0384
-	apply_movement 253, _0390
+	apply_movement obj_partner_poke, _0390
 	goto _02FF
 
 _02EF:
 	apply_movement obj_player, _0368
-	apply_movement 253, _0374
+	apply_movement obj_partner_poke, _0374
 _02FF:
 	wait_movement
 	play_se SEQ_SE_GS_RAKKA01

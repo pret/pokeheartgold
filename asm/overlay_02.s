@@ -13867,7 +13867,7 @@ _0224C45C:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0224C482
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	beq _0224C46E
 	mov r5, #0
@@ -14090,7 +14090,7 @@ _0224C608:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0224C62E
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	beq _0224C61A
 	mov r5, #0

@@ -119,7 +119,7 @@ _01D8:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _01FF
-	apply_movement 253, _02A8
+	apply_movement obj_partner_poke, _02A8
 	wait_movement
 _01FF:
 	setflag FLAG_UNK_189
@@ -205,7 +205,7 @@ _02EE:
 	scrcmd_310 77
 	scrcmd_308 77
 	clearflag FLAG_UNK_2E6
-	show_person 9
+	show_person obj_D24R0101_suit
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
@@ -214,17 +214,17 @@ _02EE:
 	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif ne, _0350
-	apply_movement 253, _05DC
+	apply_movement obj_partner_poke, _05DC
 	goto _0373
 
 _0350:
 	comparevartovalue VAR_TEMP_x4001, 2
 	gotoif ne, _036B
-	apply_movement 253, _05F4
+	apply_movement obj_partner_poke, _05F4
 	goto _0373
 
 _036B:
-	apply_movement 253, _0604
+	apply_movement obj_partner_poke, _0604
 _0373:
 	wait_movement
 	npc_msg msg_0072_D24R0101_00001
@@ -232,17 +232,17 @@ _0373:
 	apply_movement obj_D24R0101_suit, _054C
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif ne, _039D
-	apply_movement 253, _0614
+	apply_movement obj_partner_poke, _0614
 	goto _03C0
 
 _039D:
 	comparevartovalue VAR_TEMP_x4001, 2
 	gotoif ne, _03B8
-	apply_movement 253, _0624
+	apply_movement obj_partner_poke, _0624
 	goto _03C0
 
 _03B8:
-	apply_movement 253, _0630
+	apply_movement obj_partner_poke, _0630
 _03C0:
 	wait_movement
 	npc_msg msg_0072_D24R0101_00002

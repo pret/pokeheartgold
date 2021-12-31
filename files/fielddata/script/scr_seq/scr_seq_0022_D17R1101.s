@@ -89,7 +89,7 @@ _00FA:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_2CA
-	hide_person 0
+	hide_person obj_D17R1101_gsleader4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00

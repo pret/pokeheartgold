@@ -258,7 +258,7 @@ _02E8:
 	apply_movement obj_R30R0201_ookido, _0450
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 1
+	hide_person obj_R30R0201_ookido
 	wait_se SEQ_SE_DP_DOOR
 	fade_out_bgm 0, 30
 	scrcmd_081 0

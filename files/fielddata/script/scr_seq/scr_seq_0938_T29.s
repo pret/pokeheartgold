@@ -138,10 +138,10 @@ scr_seq_T29_002:
 
 _01C0:
 	setflag FLAG_UNK_1E3
-	hide_person 3
+	hide_person obj_T29_rgyaradosu
 	clearflag FLAG_UNK_1E4
-	show_person 8
-	show_person 10
+	show_person obj_T29_wataru
+	show_person obj_T29_tsure_poke_607
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -174,7 +174,7 @@ _0216:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_2CC
-	hide_person 20
+	hide_person obj_T29_gsleader7
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00
@@ -290,9 +290,9 @@ scr_seq_T29_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 130, 0
+	play_cry SPECIES_GYARADOS, 0
 	npc_msg msg_0626_T29_00000
-	scrcmd_077
+	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
 	scrcmd_589 130, 30, 1
@@ -338,8 +338,8 @@ _0466:
 
 _046C:
 	clearflag FLAG_UNK_1E4
-	hide_person 8
-	hide_person 10
+	hide_person obj_T29_wataru
+	hide_person obj_T29_tsure_poke_607
 	releaseall
 	end
 
@@ -370,8 +370,8 @@ _04BB:
 	wait_movement
 	scrcmd_775 8, 10
 	setflag FLAG_UNK_1E4
-	hide_person 8
-	hide_person 10
+	hide_person obj_T29_wataru
+	hide_person obj_T29_tsure_poke_607
 	clearflag FLAG_UNK_1F8
 	setvar VAR_UNK_40A8, 1
 	releaseall
@@ -533,7 +533,7 @@ scr_seq_T29_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 149, 0
+	play_cry SPECIES_DRAGONITE, 0
 	npc_msg msg_0626_T29_00001
 	waitbutton
 	closemsg

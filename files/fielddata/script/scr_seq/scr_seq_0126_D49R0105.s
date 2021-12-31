@@ -111,9 +111,9 @@ scr_seq_D49R0105_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 147, 0
+	play_cry SPECIES_DRATINI, 0
 	npc_msg msg_0141_D49R0105_00015
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

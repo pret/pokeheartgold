@@ -157,9 +157,9 @@ scr_seq_R39R0201_002:
 	faceplayer
 	checkflag FLAG_UNK_0AA
 	gotoif TRUE, _0354
-	scrcmd_076 241, 11
+	play_cry SPECIES_MILTANK, 11
 	npc_msg msg_0398_R39R0201_00009
-	scrcmd_077
+	wait_cry
 	checkflag FLAG_UNK_0A8
 	gotoif TRUE, _0260
 	npc_msg msg_0398_R39R0201_00010
@@ -250,9 +250,9 @@ _033F:
 	end
 
 _0354:
-	scrcmd_076 241, 0
+	play_cry SPECIES_MILTANK, 0
 	npc_msg msg_0398_R39R0201_00011
-	scrcmd_077
+	wait_cry
 	npc_msg msg_0398_R39R0201_00012
 	waitbutton
 	closemsg
@@ -279,9 +279,9 @@ scr_seq_R39R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 241, 0
+	play_cry SPECIES_MILTANK, 0
 	npc_msg msg_0398_R39R0201_00011
-	scrcmd_077
+	wait_cry
 	npc_msg msg_0398_R39R0201_00012
 	waitbutton
 	closemsg

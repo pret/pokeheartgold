@@ -7,6 +7,15 @@ SCRIPT_OBJS := $(SCRIPT_SRCS:%.s=%.o)
 SCRIPT_BINS := $(SCRIPT_SRCS:%.s=%.bin)
 SCRIPT_HEADS := $(SCRIPT_SRCS:%.s=%.h)
 
+# Scripts now depend on msgdata
+MSGDATA_MSG_DIR := files/msgdata/msg
+
+define script_find_gmm_h
+$(1): files/$(shell grep -m1 "msgdata/msg/.*\.h" $(1:%.bin=%.s) | cut -d'"' -f2)
+endef
+
+$(foreach binfile,$(SCRIPT_BINS),$(eval $(call script_find_gmm_h,$(binfile))))
+
 ifneq (1,0)
 $(SCRIPT_BINS): MWASFLAGS += -DPM_ASM
 ifeq ($(NODEP),)
@@ -15,6 +24,7 @@ $(SCRIPT_DEPS):
 
 $(SCRIPT_BINS): %.bin: %.s
 $(SCRIPT_BINS): %.bin: %.s %.d
+	@echo $(MAP_STEM)
 	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
 	@$(call fixdep,$*.d)
 	@$(SED) -i 's/\.o/.bin/' $*.d
@@ -23,6 +33,7 @@ $(SCRIPT_BINS): %.bin: %.s %.d
 include $(wildcard $(SCRIPT_DEPS))
 else
 $(SCRIPT_BINS): %.bin: %.s
+	@echo $(MAP_STEM)
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
 	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
 endif

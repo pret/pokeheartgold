@@ -20,7 +20,7 @@ scr_seq_R42_000:
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_29D
-	show_person 10
+	show_person obj_R42_mount_2_2
 	comparevartovalue VAR_SPECIAL_x8001, 172
 	gotoif ne, _0051
 	apply_movement obj_R42_mount_2_2, _0198
@@ -94,7 +94,7 @@ _015E:
 _0166:
 	wait_movement
 	setflag FLAG_UNK_29D
-	hide_person 10
+	hide_person obj_R42_mount_2_2
 	setvar VAR_UNK_4091, 1
 	releaseall
 	end
@@ -173,11 +173,11 @@ _0224:
 scr_seq_R42_001:
 	scrcmd_609
 	lockall
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_R42_tsure_poke_618
 	scrcmd_523 11, 2, 90, 2, 0
 	lock obj_R42_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
@@ -188,7 +188,7 @@ scr_seq_R42_001:
 	scrcmd_602 1
 	scrcmd_604 48
 	clearflag FLAG_UNK_2A3
-	show_person 12
+	show_person obj_R42_minaki
 	callstd 2042
 	apply_movement obj_R42_minaki, _0324
 	wait_movement
@@ -206,8 +206,8 @@ scr_seq_R42_001:
 	apply_movement obj_R42_minaki, _0340
 	wait_movement
 	callstd 2043
-	hide_person 11
-	hide_person 12
+	hide_person obj_R42_tsure_poke_618
+	hide_person obj_R42_minaki
 	setflag FLAG_UNK_29E
 	setflag FLAG_UNK_2A3
 	setvar VAR_UNK_4092, 0

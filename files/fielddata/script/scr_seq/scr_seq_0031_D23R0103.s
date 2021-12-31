@@ -175,8 +175,8 @@ _01B4:
 	wait_movement
 	releaseall
 	setflag FLAG_UNK_1BF
-	hide_person 7
-	hide_person 8
+	hide_person obj_D23R0103_babyboy1_9
+	hide_person obj_D23R0103_babyboy1_9_2
 	setflag FLAG_UNK_090
 	end
 

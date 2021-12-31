@@ -17,28 +17,28 @@ scr_seq_D18R0102_002:
 
 _001B:
 	setflag FLAG_UNK_30E
-	hide_person 12
+	hide_person obj_D18R0102_tsure_poke_618_2
 	clearflag FLAG_UNK_0A4
 	end
 
 scr_seq_D18R0102_000:
 	scrcmd_609
 	lockall
-	scrcmd_076 243, 0
+	play_cry SPECIES_RAIKOU, 0
 	release obj_D18R0102_tsure_poke_616
 	scrcmd_523 2, 2, 90, 2, 0
 	lock obj_D18R0102_tsure_poke_616
-	scrcmd_077
-	scrcmd_076 244, 0
+	wait_cry
+	play_cry SPECIES_ENTEI, 0
 	release obj_D18R0102_tsure_poke_617
 	scrcmd_523 1, 2, 90, 2, 0
 	lock obj_D18R0102_tsure_poke_617
-	scrcmd_077
-	scrcmd_076 245, 0
+	wait_cry
+	play_cry SPECIES_SUICUNE, 0
 	release obj_D18R0102_tsure_poke_618
 	scrcmd_523 0, 2, 90, 2, 0
 	lock obj_D18R0102_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	apply_movement obj_D18R0102_tsure_poke_616, _0224
 	wait_movement
 	apply_movement obj_D18R0102_tsure_poke_617, _0234
@@ -48,17 +48,17 @@ scr_seq_D18R0102_000:
 	gotoif ne, _00C8
 	apply_movement obj_D18R0102_tsure_poke_618, _0244
 	wait_movement
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	apply_movement obj_D18R0102_tsure_poke_618, _0254
-	scrcmd_077
+	wait_cry
 	goto _00E2
 
 _00C8:
 	apply_movement obj_D18R0102_tsure_poke_618, _0268
 	wait_movement
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	apply_movement obj_D18R0102_tsure_poke_618, _0278
-	scrcmd_077
+	wait_cry
 _00E2:
 	wait_movement
 	scrcmd_602 0
@@ -72,15 +72,15 @@ _00E2:
 	setflag FLAG_UNK_1C9
 	setflag FLAG_UNK_1CA
 	setflag FLAG_UNK_1CB
-	hide_person 2
-	hide_person 1
-	hide_person 0
+	hide_person obj_D18R0102_tsure_poke_616
+	hide_person obj_D18R0102_tsure_poke_617
+	hide_person obj_D18R0102_tsure_poke_618
 	scrcmd_464 0
 	scrcmd_464 1
 	wait 15, VAR_SPECIAL_x800C
 	clearflag FLAG_UNK_1C8
 	play_se SEQ_SE_DP_KAIDAN2
-	show_person 3
+	show_person obj_D18R0102_minaki
 	lock obj_D18R0102_minaki
 	wait_se SEQ_SE_DP_KAIDAN2
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
@@ -121,7 +121,7 @@ _01D4:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait 2, VAR_SPECIAL_x800C
-	hide_person 3
+	hide_person obj_D18R0102_minaki
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_1C8
 	setflag FLAG_UNK_1C7
@@ -228,8 +228,8 @@ scr_seq_D18R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 245, 0
-	scrcmd_077
+	play_cry SPECIES_SUICUNE, 0
+	wait_cry
 	setflag FLAG_UNK_0A4
 	scrcmd_589 245, 40, 0
 	clearflag FLAG_UNK_0A4

@@ -77,9 +77,9 @@ scr_seq_T10R0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 63, 0
+	play_cry SPECIES_ABRA, 0
 	npc_msg msg_0522_T10R0101_00002
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -94,7 +94,7 @@ scr_seq_T10R0101_006:
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_250
-	show_person 5
+	show_person obj_T10R0101_gsrivel
 	move_person 5, VAR_SPECIAL_x8000, 0, 23, 0
 	scrcmd_602 0
 	scrcmd_603
@@ -134,13 +134,13 @@ _0191:
 	wait_movement
 	setvar VAR_UNK_4119, 0
 	setflag FLAG_UNK_AA9
-	hide_person 5
+	hide_person obj_T10R0101_gsrivel
 	callstd std_fade_end_rival_outro_music
 	releaseall
 	end
 
 _01CE:
-	hide_person 5
+	hide_person obj_T10R0101_gsrivel
 	setflag FLAG_UNK_250
 	white_out
 	releaseall

@@ -40,7 +40,7 @@ scr_seq_P01R0303_000:
 	apply_movement obj_P01R0303_seaman_2, _0160
 	wait_movement
 	setvar VAR_UNK_40CB, 3
-	hide_person 0
+	hide_person obj_P01R0303_seaman_2
 	setflag FLAG_UNK_21A
 	releaseall
 	end
@@ -68,7 +68,7 @@ _009D:
 	apply_movement obj_P01R0303_seaman_2, _01AC
 	wait_movement
 	setvar VAR_UNK_40CB, 3
-	hide_person 0
+	hide_person obj_P01R0303_seaman_2
 	setflag FLAG_UNK_21A
 	releaseall
 	end

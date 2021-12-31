@@ -230,8 +230,8 @@ _0204929C:
 	pop {r3, pc}
 	thumb_func_end sub_02049288
 
-	thumb_func_start ScrCmd_076
-ScrCmd_076: ; 0x020492A0
+	thumb_func_start ScrCmd_PlayCry
+ScrCmd_PlayCry: ; 0x020492A0
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -259,23 +259,23 @@ ScrCmd_076: ; 0x020492A0
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_076
+	thumb_func_end ScrCmd_PlayCry
 
-	thumb_func_start ScrCmd_077
-ScrCmd_077: ; 0x020492E0
+	thumb_func_start ScrCmd_WaitCry
+ScrCmd_WaitCry: ; 0x020492E0
 	push {r3, lr}
-	ldr r1, _020492EC ; =sub_020492F0
+	ldr r1, _020492EC ; =ScrNative_WaitCry
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_020492EC: .word sub_020492F0
-	thumb_func_end ScrCmd_077
+_020492EC: .word ScrNative_WaitCry
+	thumb_func_end ScrCmd_WaitCry
 
-	thumb_func_start sub_020492F0
-sub_020492F0: ; 0x020492F0
+	thumb_func_start ScrNative_WaitCry
+ScrNative_WaitCry: ; 0x020492F0
 	push {r3, lr}
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _020492FE
 	mov r0, #1
@@ -284,7 +284,7 @@ _020492FE:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020492F0
+	thumb_func_end ScrNative_WaitCry
 
 	thumb_func_start ScrCmd_PlayFanfare
 ScrCmd_PlayFanfare: ; 0x02049304
@@ -304,16 +304,16 @@ ScrCmd_PlayFanfare: ; 0x02049304
 	thumb_func_start ScrCmd_WaitFanfare
 ScrCmd_WaitFanfare: ; 0x02049320
 	push {r3, lr}
-	ldr r1, _0204932C ; =sub_02049330
+	ldr r1, _0204932C ; =ScrNative_WaitFanfare
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_0204932C: .word sub_02049330
+_0204932C: .word ScrNative_WaitFanfare
 	thumb_func_end ScrCmd_WaitFanfare
 
-	thumb_func_start sub_02049330
-sub_02049330: ; 0x02049330
+	thumb_func_start ScrNative_WaitFanfare
+ScrNative_WaitFanfare: ; 0x02049330
 	push {r3, lr}
 	bl IsFanfarePlaying
 	cmp r0, #0
@@ -324,10 +324,10 @@ _0204933E:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02049330
+	thumb_func_end ScrNative_WaitFanfare
 
-	thumb_func_start ScrCmd_089
-ScrCmd_089: ; 0x02049344
+	thumb_func_start ScrCmd_ChatotHasCry
+ScrCmd_ChatotHasCry: ; 0x02049344
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -353,10 +353,10 @@ _02049374:
 	strh r0, [r4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_089
+	thumb_func_end ScrCmd_ChatotHasCry
 
-	thumb_func_start ScrCmd_090
-ScrCmd_090: ; 0x0204937C
+	thumb_func_start ScrCmd_ChatotStartRecording
+ScrCmd_ChatotStartRecording: ; 0x0204937C
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -382,19 +382,19 @@ _020493AC:
 	strh r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_090
+	thumb_func_end ScrCmd_ChatotStartRecording
 
-	thumb_func_start ScrCmd_091
-ScrCmd_091: ; 0x020493B4
+	thumb_func_start ScrCmd_ChatotStopRecording
+ScrCmd_ChatotStopRecording: ; 0x020493B4
 	push {r3, lr}
 	bl Chatot_stopRecording
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_091
+	thumb_func_end ScrCmd_ChatotStopRecording
 
-	thumb_func_start ScrCmd_092
-ScrCmd_092: ; 0x020493C0
+	thumb_func_start ScrCmd_ChatotSaveRecording
+ScrCmd_ChatotSaveRecording: ; 0x020493C0
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -403,7 +403,7 @@ ScrCmd_092: ; 0x020493C0
 	bl Chatot_saveRecording
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_092
+	thumb_func_end ScrCmd_ChatotSaveRecording
 
 	thumb_func_start ScrCmd_093
 ScrCmd_093: ; 0x020493D4

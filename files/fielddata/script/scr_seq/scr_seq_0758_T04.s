@@ -84,8 +84,8 @@ scr_seq_T04_003:
 	lockall
 	faceplayer
 	npc_msg msg_0467_T04_00003
-	scrcmd_076 80, 0
-	scrcmd_077
+	play_cry SPECIES_SLOWBRO, 0
+	wait_cry
 	npc_msg msg_0467_T04_00004
 	waitbutton
 	closemsg
@@ -233,7 +233,7 @@ _0294:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _02BB
-	apply_movement 253, _0378
+	apply_movement obj_partner_poke, _0378
 	wait_movement
 _02BB:
 	setflag FLAG_UNK_189

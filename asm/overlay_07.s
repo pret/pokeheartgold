@@ -7982,7 +7982,7 @@ ov07_0221F81C: ; 0x0221F81C
 ov07_0221F880: ; 0x0221F880
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _0221F8A4
 	ldr r0, [r4, #0x18]

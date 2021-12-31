@@ -20,7 +20,7 @@ scr_seq_T30R0201_000:
 	end
 
 scr_seq_T30R0201_001:
-	scrcmd_076 147, 0
+	play_cry SPECIES_DRATINI, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -28,6 +28,6 @@ scr_seq_T30R0201_001:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_077
+	wait_cry
 	end
 	.balign 4, 0

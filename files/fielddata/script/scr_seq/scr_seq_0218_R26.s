@@ -74,7 +74,7 @@ _00F1:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0118
-	apply_movement 253, _01C0
+	apply_movement obj_partner_poke, _01C0
 	wait_movement
 _0118:
 	setflag FLAG_UNK_189

@@ -43,9 +43,9 @@ scr_seq_T11R0801_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 242, 0
+	play_cry SPECIES_BLISSEY, 0
 	npc_msg msg_0540_T11R0801_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

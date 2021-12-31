@@ -498,13 +498,13 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_076 arg0, arg1
+	.macro play_cry arg0, arg1
 	.short 76
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_077
+	.macro wait_cry
 	.short 77
 	.endm
 
@@ -565,21 +565,21 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_089 arg0
+	.macro chatot_has_cry arg0
 	.short 89
 	.short \arg0
 	.endm
 
-	.macro scrcmd_090 arg0
+	.macro chatot_start_recording arg0
 	.short 90
 	.short \arg0
 	.endm
 
-	.macro scrcmd_091
+	.macro chatot_stop_recording
 	.short 91
 	.endm
 
-	.macro scrcmd_092
+	.macro chatot_save_recording
 	.short 92
 	.endm
 
@@ -3500,17 +3500,17 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_623 arg0
+	.macro check_apricorn_tree arg0
 	.short 623
 	.short \arg0
 	.endm
 
-	.macro scrcmd_624 arg0
+	.macro apricorn_tree_get_apricorn arg0
 	.short 624
 	.short \arg0
 	.endm
 
-	.macro scrcmd_625 arg0, arg1, arg2
+	.macro give_apricorn_from_tree arg0, arg1, arg2
 	.short 625
 	.short \arg0
 	.short \arg1

@@ -71,7 +71,7 @@ _0119:
 	apply_movement obj_player, _0294
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ne, _0138
-	apply_movement 253, _0294
+	apply_movement obj_partner_poke, _0294
 _0138:
 	wait_movement
 	buffer_players_name 0
@@ -130,7 +130,7 @@ _0230:
 	apply_movement obj_player, _029C
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ne, _0253
-	apply_movement 253, _029C
+	apply_movement obj_partner_poke, _029C
 _0253:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2

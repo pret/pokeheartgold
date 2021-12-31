@@ -44,11 +44,11 @@ _0062:
 	scrcmd_176 357, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_606
-	apply_movement 253, _0200
+	apply_movement obj_partner_poke, _0200
 	wait_movement
-	release 253
+	release obj_partner_poke
 	releaseall
 	end
 
@@ -569,11 +569,11 @@ _0773:
 	scrcmd_176 357, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_606
-	apply_movement 253, _0200
+	apply_movement obj_partner_poke, _0200
 	wait_movement
-	release 253
+	release obj_partner_poke
 	releaseall
 	end
 
@@ -965,11 +965,11 @@ _0CCC:
 	scrcmd_176 357, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_606
-	apply_movement 253, _0200
+	apply_movement obj_partner_poke, _0200
 	wait_movement
-	release 253
+	release obj_partner_poke
 	releaseall
 	end
 

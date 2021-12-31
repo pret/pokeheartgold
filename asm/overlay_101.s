@@ -24502,9 +24502,9 @@ _021F3486:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F3494:
 	ldr r0, [r5, #0x1c]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r6, r0, #0
-	bl sub_02031BD0
+	bl ApricornBox_GetKurtQuantity
 	add r7, r0, #0
 	bne _021F34A8
 	mov r2, #5
@@ -24519,7 +24519,7 @@ _021F34A8:
 	b _021F34DE
 _021F34B8:
 	add r0, r6, #0
-	bl sub_02031BD4
+	bl ApricornBox_GetKurtBall
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa

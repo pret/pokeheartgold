@@ -76,8 +76,8 @@ extern BOOL ScrCmd_072(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlaySE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_074(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitSE(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_076(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_077(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayCry(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WaitCry(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayFanfare(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitFanfare(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayBGM(SCRIPTCONTEXT *ctx);
@@ -89,10 +89,10 @@ extern BOOL ScrCmd_085(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_086(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TempBGM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_088(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_089(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_090(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_091(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_092(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ChatotHasCry(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ChatotStartRecording(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ChatotStopRecording(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ChatotSaveRecording(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_093(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ApplyMovement(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitMovement(SCRIPTCONTEXT *ctx);
@@ -623,9 +623,9 @@ extern BOOL ScrCmd_619(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_620(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_621(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_622(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_623(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_624(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_625(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckApricornTree(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveApricornFromTree(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferApricornName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_627(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_628(SCRIPTCONTEXT *ctx);
@@ -931,8 +931,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PlaySE,
     ScrCmd_074,
     ScrCmd_WaitSE,
-    ScrCmd_076,
-    ScrCmd_077,
+    ScrCmd_PlayCry,
+    ScrCmd_WaitCry,
     ScrCmd_PlayFanfare,
     ScrCmd_WaitFanfare,
     ScrCmd_PlayBGM,
@@ -944,10 +944,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_086,
     ScrCmd_TempBGM,
     ScrCmd_088,
-    ScrCmd_089,
-    ScrCmd_090,
-    ScrCmd_091,
-    ScrCmd_092,
+    ScrCmd_ChatotHasCry,
+    ScrCmd_ChatotStartRecording,
+    ScrCmd_ChatotStopRecording,
+    ScrCmd_ChatotSaveRecording,
     ScrCmd_093,
     ScrCmd_ApplyMovement,
     ScrCmd_WaitMovement,
@@ -1478,9 +1478,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_620,
     ScrCmd_621,
     ScrCmd_622,
-    ScrCmd_623,
-    ScrCmd_624,
-    ScrCmd_625,
+    ScrCmd_CheckApricornTree,
+    ScrCmd_ApricornTreeGetApricorn,
+    ScrCmd_GiveApricornFromTree,
     ScrCmd_BufferApricornName,
     ScrCmd_627,
     ScrCmd_628,

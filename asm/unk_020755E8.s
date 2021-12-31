@@ -1376,7 +1376,7 @@ _020760CE:
 	bl sub_02020094
 	cmp r0, #0
 	bne _02076132
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _02076132
 	ldr r0, [r4, #0x44]
@@ -1738,7 +1738,7 @@ _0207639A:
 	strb r0, [r4]
 	pop {r4, pc}
 _020763FC:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _020764F4
 	ldr r0, [r4, #0x44]
@@ -2658,7 +2658,7 @@ _02076B56:
 	strb r0, [r4]
 	pop {r4, pc}
 _02076BB8:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _02076C76
 	ldr r0, [r4, #0x44]

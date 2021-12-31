@@ -83,9 +83,9 @@ scr_seq_T23R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 83, 0
+	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0570_T23R0201_00008
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

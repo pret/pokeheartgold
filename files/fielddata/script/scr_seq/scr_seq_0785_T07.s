@@ -135,9 +135,9 @@ scr_seq_T07_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 62, 0
+	play_cry SPECIES_POLIWRATH, 0
 	npc_msg msg_0491_T07_00001
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -346,8 +346,8 @@ _03E2:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_25D
-	hide_person 9
-	hide_person 10
+	hide_person obj_T07_gsleader12
+	hide_person obj_T07_gsleader6
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00
@@ -488,7 +488,7 @@ _05DA:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0601
-	apply_movement 253, _06BC
+	apply_movement obj_partner_poke, _06BC
 	wait_movement
 _0601:
 	setflag FLAG_UNK_189

@@ -57,7 +57,7 @@ scr_seq_P01R0101_002:
 	closemsg
 	apply_movement obj_P01R0101_ookido, _0128
 	wait_movement
-	hide_person 1
+	hide_person obj_P01R0101_ookido
 	setflag FLAG_UNK_251
 	setvar VAR_UNK_411A, 0
 	fade_out_bgm 0, 30

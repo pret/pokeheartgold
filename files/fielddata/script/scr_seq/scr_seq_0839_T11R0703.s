@@ -23,10 +23,10 @@ scr_seq_T11R0703_000:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 253, _0170
+	apply_movement obj_partner_poke, _0170
 	wait_movement
-	scrcmd_076 479, 0
-	scrcmd_077
+	play_cry SPECIES_ROTOM, 0
+	wait_cry
 	npc_msg msg_0539_T11R0703_00000
 	closemsg
 	goto _0066
@@ -126,7 +126,7 @@ _018C:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _01C5
-	apply_movement 253, _0160
+	apply_movement obj_partner_poke, _0160
 	wait_movement
 _01C5:
 	npc_msg msg_0539_T11R0703_00001

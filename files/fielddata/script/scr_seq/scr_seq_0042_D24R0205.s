@@ -82,13 +82,13 @@ scr_seq_D24R0205_000:
 	apply_movement obj_D24R0205_gsassistantm_3, _01CC
 	apply_movement obj_D24R0205_gsassistantm_4, _01CC
 	wait_movement
-	hide_person 3
-	hide_person 4
-	hide_person 5
-	hide_person 6
-	hide_person 1
-	hide_person 0
-	hide_person 2
+	hide_person obj_D24R0205_gsassistantm
+	hide_person obj_D24R0205_gsassistantm_2
+	hide_person obj_D24R0205_gsassistantm_3
+	hide_person obj_D24R0205_gsassistantm_4
+	hide_person obj_D24R0205_gsbigman
+	hide_person obj_D24R0205_gswoman1
+	hide_person obj_D24R0205_gsoldman1
 	setflag FLAG_UNK_235
 	setflag FLAG_UNK_236
 	setflag FLAG_UNK_110
@@ -237,7 +237,7 @@ scr_seq_D24R0205_007:
 	closemsg
 	apply_movement obj_D24R0205_suit, _0388
 	wait_movement
-	hide_person 7
+	hide_person obj_D24R0205_suit
 	setflag FLAG_UNK_2E7
 	setvar VAR_UNK_40FB, 10
 	releaseall

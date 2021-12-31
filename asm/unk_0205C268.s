@@ -26209,7 +26209,7 @@ _02067CF2:
 	strh r0, [r4, #4]
 	b _02067DE4
 _02067D1E:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _02067DE4
 	ldrh r0, [r4, #4]

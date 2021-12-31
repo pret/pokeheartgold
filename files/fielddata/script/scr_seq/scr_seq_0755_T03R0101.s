@@ -432,7 +432,7 @@ _06AC:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _06D3
-	apply_movement 253, _077C
+	apply_movement obj_partner_poke, _077C
 	wait_movement
 _06D3:
 	setflag FLAG_UNK_189
@@ -582,7 +582,7 @@ _0870:
 	scrcmd_729 VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 0
 	gotoif eq, _08F1
-	apply_movement 253, _09F0
+	apply_movement obj_partner_poke, _09F0
 	wait_movement
 _08F1:
 	fade_screen 6, 1, 1, 0x00
@@ -608,7 +608,7 @@ _08F1:
 	apply_movement obj_T03R0101_daigo, _09C0
 	wait_movement
 	setvar VAR_UNK_4083, 2
-	hide_person 6
+	hide_person obj_T03R0101_daigo
 _0963:
 	releaseall
 	end

@@ -88,7 +88,7 @@ _0117:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2CE
-	hide_person 3
+	hide_person obj_D48R0101_gsleader5
 	setvar VAR_UNK_40F9, 3
 	releaseall
 	end

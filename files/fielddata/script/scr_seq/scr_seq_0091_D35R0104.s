@@ -59,8 +59,8 @@ scr_seq_D35R0104_001:
 	apply_movement obj_D35R0104_wataru, _0124
 	apply_movement obj_D35R0104_tsure_poke_607, _012C
 	wait_movement
-	hide_person 5
-	hide_person 6
+	hide_person obj_D35R0104_wataru
+	hide_person obj_D35R0104_tsure_poke_607
 	setflag FLAG_UNK_1E6
 	releaseall
 	setvar VAR_UNK_40AC, 1
@@ -115,7 +115,7 @@ scr_seq_D35R0104_007:
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 6
-	hide_person 16
+	hide_person obj_D35R0104_tsure_poke_613_2
 	setflag FLAG_UNK_24C
 	clearflag FLAG_UNK_24D
 	releaseall
@@ -153,7 +153,7 @@ scr_seq_D35R0104_002:
 	wait_movement
 	callstd std_play_rival_intro_music
 	clearflag FLAG_UNK_1FD
-	show_person 7
+	show_person obj_D35R0104_gsrivel
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 17
 	gotoif ne, _01FE
@@ -192,7 +192,7 @@ _0221:
 	apply_movement obj_D35R0104_gsrivel, _02D8
 	wait_movement
 	callstd 2032
-	hide_person 7
+	hide_person obj_D35R0104_gsrivel
 	setflag FLAG_UNK_1FD
 	releaseall
 	setvar VAR_UNK_40AC, 3
@@ -268,9 +268,9 @@ _0331:
 	apply_movement obj_D35R0104_sakaki, _0458
 	wait_movement
 	clearflag FLAG_UNK_1F4
-	show_person 8
+	show_person obj_D35R0104_rkanbum2
 	setflag FLAG_UNK_280
-	hide_person 18
+	hide_person obj_D35R0104_sakaki
 	apply_movement obj_D35R0104_rkanbum2, _047C
 	wait_movement
 	npc_msg msg_0114_D35R0104_00006
@@ -283,7 +283,7 @@ _0331:
 	closemsg
 	apply_movement obj_D35R0104_rkanbum2, _04A8
 	wait_movement
-	hide_person 8
+	hide_person obj_D35R0104_rkanbum2
 	setflag FLAG_UNK_1F4
 	apply_movement obj_D35R0104_tsure_poke_613, _04E4
 	wait_movement
@@ -301,7 +301,7 @@ _0331:
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 4
-	hide_person 9
+	hide_person obj_D35R0104_tsure_poke_613
 	setflag FLAG_UNK_24A
 	clearflag FLAG_UNK_24B
 	releaseall

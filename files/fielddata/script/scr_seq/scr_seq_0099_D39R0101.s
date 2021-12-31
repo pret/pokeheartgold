@@ -149,7 +149,7 @@ _0193:
 	closemsg
 	apply_movement obj_D39R0101_dancer, _023C
 	wait_movement
-	hide_person 2
+	hide_person obj_D39R0101_dancer
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_fade_end_kimono_girl_music
@@ -246,7 +246,7 @@ _0323:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _034A
-	apply_movement 253, _0404
+	apply_movement obj_partner_poke, _0404
 	wait_movement
 _034A:
 	setflag FLAG_UNK_189

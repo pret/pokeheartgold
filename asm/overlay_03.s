@@ -5908,7 +5908,7 @@ ov03_02256D34: ; 0x02256D34
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	mov r1, #0x96
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -7457,7 +7457,7 @@ _02257994:
 	add r0, #0x73
 	ldr r0, [r2, r0]
 	sub r1, r1, r3
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	pop {r4, pc}
 _022579AE:
 	mov r1, #0x93
@@ -7859,7 +7859,7 @@ _02257CCA:
 	sub r2, #0x9e
 	ldr r0, [r4, r0]
 	sub r1, r1, r2
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	cmp r0, #0x63
 	bne _02257D26
 	mov r0, #0xa6
@@ -8045,7 +8045,7 @@ ov03_02257E34: ; 0x02257E34
 	ldr r0, [r3, r0]
 	sub r1, r1, r2
 	mov r2, #1
-	bl sub_02031B68
+	bl ApricornBox_GiveApricorn
 	pop {r3, pc}
 _02257E54:
 	mov r1, #0x93

@@ -21,7 +21,7 @@ scr_seq_D17R0110_002:
 
 _002B:
 	setflag FLAG_UNK_242
-	hide_person 5
+	hide_person obj_D17R0110_hou_obj01
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -59,9 +59,9 @@ scr_seq_D17R0110_000:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x400A, 250
-	scrcmd_076 VAR_TEMP_x400A, 0
+	play_cry VAR_TEMP_x400A, 0
 	npc_msg msg_0058_D17R0110_00004
-	scrcmd_077
+	wait_cry
 	closemsg
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
@@ -319,7 +319,7 @@ scr_seq_D17R0110_006:
 	wait_fade
 	scrcmd_773 0
 	clearflag FLAG_UNK_242
-	show_person 5
+	show_person obj_D17R0110_hou_obj01
 	scrcmd_375 5
 	wait 6, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x7FFF

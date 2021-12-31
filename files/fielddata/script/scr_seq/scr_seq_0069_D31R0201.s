@@ -1315,7 +1315,7 @@ scr_seq_D31R0201_008:
 	end
 
 scr_seq_D31R0201_020:
-	scrcmd_076 25, 0
+	play_cry SPECIES_PIKACHU, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

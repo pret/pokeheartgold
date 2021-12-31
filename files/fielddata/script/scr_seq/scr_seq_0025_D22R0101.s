@@ -364,7 +364,7 @@ _045C:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0483
-	apply_movement 253, _0518
+	apply_movement obj_partner_poke, _0518
 	wait_movement
 _0483:
 	setflag FLAG_UNK_189
@@ -471,7 +471,7 @@ _05EF:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0616
-	apply_movement 253, _0518
+	apply_movement obj_partner_poke, _0518
 	wait_movement
 _0616:
 	setflag FLAG_UNK_189
@@ -603,8 +603,8 @@ scr_seq_D22R0101_010:
 	lockall
 	faceplayer
 	npc_msg msg_0062_D22R0101_00008
-	scrcmd_076 53, 0
-	scrcmd_077
+	play_cry SPECIES_PERSIAN, 0
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

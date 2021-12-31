@@ -37,7 +37,7 @@ scr_seq_R36_010:
 
 _005C:
 	setflag FLAG_UNK_1C2
-	hide_person 4
+	hide_person obj_R36_usokky
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -151,7 +151,7 @@ _0225:
 	apply_movement obj_R36_gsgirl1_2, _0380
 	wait_movement
 _022F:
-	hide_person 5
+	hide_person obj_R36_gsgirl1_2
 	setflag FLAG_UNK_1CF
 	clearflag FLAG_UNK_1D0
 	releaseall

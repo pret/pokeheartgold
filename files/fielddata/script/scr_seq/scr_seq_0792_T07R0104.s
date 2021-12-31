@@ -111,8 +111,8 @@ _013F:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_260
-	hide_person 3
-	hide_person 4
+	hide_person obj_T07R0104_gsleader1
+	hide_person obj_T07R0104_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00

@@ -212,7 +212,7 @@ ov59_02237E94: ; 0x02237E94
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	str r0, [r5, #0x10]
 	add r0, r5, #0
 	bl ov59_02238768
@@ -644,7 +644,7 @@ _022381DA:
 	add r4, #0x4e
 	ldrb r1, [r1]
 	ldrb r2, [r4]
-	bl sub_02031BB8
+	bl ApricornBox_SetKurtApricorn
 	mov r0, #1
 	pop {r4, pc}
 _022381FE:
@@ -1386,7 +1386,7 @@ ov59_02238768: ; 0x02238768
 _022387BA:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	add r1, r5, r4
 	add r4, r4, #1
 	strb r0, [r1, #0x1a]
@@ -5809,7 +5809,7 @@ ov59_0223A9E4: ; 0x0223A9E4
 	add r1, #0x4c
 	strb r0, [r1]
 	ldr r0, [r5, #8]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	str r0, [r5, #0x14]
 	ldr r1, [r5, #4]
 	add r2, r5, #0

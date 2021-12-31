@@ -18,7 +18,7 @@ scr_seq_D52R0103_002:
 
 _001F:
 	setflag FLAG_UNK_2D2
-	hide_person 0
+	hide_person obj_D52R0103_tsure_poke_624
 	end
 
 scr_seq_D52R0103_003:
@@ -41,8 +41,8 @@ scr_seq_D52R0103_001:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_076 384, 0
-	scrcmd_077
+	play_cry SPECIES_RAYQUAZA, 0
+	wait_cry
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -53,9 +53,9 @@ scr_seq_D52R0103_001:
 	scrcmd_604 48
 	release obj_D52R0103_tsure_poke_624
 	scrcmd_523 0, 8, 90, 3, 0
-	scrcmd_076 384, 0
+	play_cry SPECIES_RAYQUAZA, 0
 	npc_msg msg_0150_D52R0103_00000
-	scrcmd_077
+	wait_cry
 	lock obj_D52R0103_tsure_poke_624
 	closemsg
 	setvar VAR_UNK_40F9, 6
@@ -73,9 +73,9 @@ scr_seq_D52R0103_000:
 	faceplayer
 	release obj_D52R0103_tsure_poke_624
 	scrcmd_523 0, 8, 90, 3, 0
-	scrcmd_076 384, 0
+	play_cry SPECIES_RAYQUAZA, 0
 	npc_msg msg_0150_D52R0103_00000
-	scrcmd_077
+	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
 	scrcmd_589 384, 50, 0

@@ -261,7 +261,7 @@ _03EA:
 	apply_movement obj_T27R0501_rocketm_2, _0478
 _03F2:
 	wait_movement
-	hide_person 12
+	hide_person obj_T27R0501_rocketm_2
 	setflag FLAG_UNK_23A
 	releaseall
 	setvar VAR_UNK_410C, 2
@@ -446,9 +446,9 @@ scr_seq_T27R0501_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 54, 0
+	play_cry SPECIES_PSYDUCK, 0
 	npc_msg msg_0618_T27R0501_00030
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -819,7 +819,7 @@ _0AB8:
 	scrcmd_561 0, 2, 10, 6
 	wait_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_240
-	show_person 11
+	show_person obj_T27R0501_gsbabygirl1
 	apply_movement obj_T27R0501_gsbabygirl1, _0D10
 	wait_movement
 	apply_movement obj_T27R0501_dancer_6, _0BEC
@@ -853,12 +853,12 @@ _0B2D:
 	apply_movement obj_T27R0501_dancer_5, _0D58
 	apply_movement obj_T27R0501_gsbabygirl1, _0D64
 	wait_movement
-	hide_person 4
-	hide_person 5
-	hide_person 10
-	hide_person 7
-	hide_person 8
-	hide_person 11
+	hide_person obj_T27R0501_dancer
+	hide_person obj_T27R0501_dancer_2
+	hide_person obj_T27R0501_dancer_6
+	hide_person obj_T27R0501_dancer_4
+	hide_person obj_T27R0501_dancer_5
+	hide_person obj_T27R0501_gsbabygirl1
 	setflag FLAG_UNK_23C
 	setflag FLAG_UNK_240
 	call _0BB0

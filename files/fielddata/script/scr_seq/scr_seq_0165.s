@@ -14,8 +14,8 @@ scr_seq_0165_000:
 	scrcmd_839 1
 	wait 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
-	scrcmd_547 32768
-	scrcmd_089 32780
+	scrcmd_547 VAR_SPECIAL_x8000
+	chatot_has_cry VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0037
 	goto _005E
@@ -38,23 +38,23 @@ _005E:
 	wait 80, VAR_SPECIAL_x800C
 	scrcmd_346
 	npc_msg msg_0268_00001
-	scrcmd_090 32780
+	chatot_start_recording VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_085 10
 	wait 10, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8004, 0
 	gotoif eq, _00D5
-	scrcmd_091
+	chatot_stop_recording
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_092
+	chatot_save_recording
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_548
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0268_00002
-	scrcmd_549 32780
-	scrcmd_076 441, 0
-	scrcmd_077
+	scrcmd_549 VAR_SPECIAL_x800C
+	play_cry SPECIES_CHATOT, 0
+	wait_cry
 	goto _00C9
 	.byte 0x02, 0x00
 _00C9:

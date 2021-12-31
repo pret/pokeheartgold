@@ -219,9 +219,9 @@ _04AD:
 scr_seq_D37R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_076 67, 0
+	play_cry SPECIES_MACHOKE, 0
 	npc_msg msg_0118_D37R0103_00002
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

@@ -56,10 +56,10 @@ scr_seq_D26R0102_002:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	hide_person 1
-	hide_person 2
-	hide_person 3
-	hide_person 4
+	hide_person obj_D26R0102_rocketm
+	hide_person obj_D26R0102_rocketm_2
+	hide_person obj_D26R0102_rocketw
+	hide_person obj_D26R0102_rkanbum3
 	setflag FLAG_UNK_1A9
 	wait 20, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KAIDAN2

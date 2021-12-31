@@ -56,7 +56,7 @@ scr_seq_T22_004:
 	apply_movement obj_T22_dancer, _00F4
 	wait_movement
 	callstd std_fade_end_kimono_girl_music
-	hide_person 7
+	hide_person obj_T22_dancer
 	setflag FLAG_HIDE_VIOLET_KIMONO_GIRL
 	releaseall
 	setvar VAR_SCENE_VIOLET_CITY_OW, 4
@@ -251,7 +251,7 @@ _0343:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	hide_person 2
+	hide_person obj_T22_gsbigman
 	setflag FLAG_UNK_19A
 	clearflag FLAG_UNK_19B
 	releaseall

@@ -125,8 +125,8 @@ gScriptCmdTable:
 	.word ScrCmd_PlaySE                                 ; 073
 	.word ScrCmd_074                                    ; 074
 	.word ScrCmd_WaitSE                                 ; 075
-	.word ScrCmd_076                                    ; 076
-	.word ScrCmd_077                                    ; 077
+	.word ScrCmd_PlayCry                                    ; 076
+	.word ScrCmd_WaitCry                                    ; 077
 	.word ScrCmd_PlayFanfare                            ; 078
 	.word ScrCmd_WaitFanfare                            ; 079
 	.word ScrCmd_PlayBGM                                ; 080
@@ -138,10 +138,10 @@ gScriptCmdTable:
 	.word ScrCmd_086                                    ; 086
 	.word ScrCmd_TempBGM                                ; 087
 	.word ScrCmd_088                                    ; 088
-	.word ScrCmd_089                                    ; 089
-	.word ScrCmd_090                                    ; 090
-	.word ScrCmd_091                                    ; 091
-	.word ScrCmd_092                                    ; 092
+	.word ScrCmd_ChatotHasCry                                    ; 089
+	.word ScrCmd_ChatotStartRecording                                    ; 090
+	.word ScrCmd_ChatotStopRecording                                    ; 091
+	.word ScrCmd_ChatotSaveRecording                                    ; 092
 	.word ScrCmd_093                                    ; 093
 	.word ScrCmd_ApplyMovement                          ; 094
 	.word ScrCmd_WaitMovement                           ; 095
@@ -672,9 +672,9 @@ gScriptCmdTable:
 	.word ScrCmd_620                                    ; 620
 	.word ScrCmd_621                                    ; 621
 	.word ScrCmd_622                                    ; 622
-	.word ScrCmd_623                                    ; 623
-	.word ScrCmd_624                                    ; 624
-	.word ScrCmd_625                                    ; 625
+	.word ScrCmd_CheckApricornTree                                    ; 623
+	.word ScrCmd_ApricornTreeGetApricorn                                    ; 624
+	.word ScrCmd_GiveApricornFromTree                                    ; 625
 	.word ScrCmd_BufferApricornName                                    ; 626
 	.word ScrCmd_627                                    ; 627
 	.word ScrCmd_628                                    ; 628

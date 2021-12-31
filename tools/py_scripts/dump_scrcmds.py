@@ -17,10 +17,12 @@ import argparse
 project_root = os.path.realpath(os.path.join(os.path.dirname(__file__), '../..'))
 
 
-def parse_c_header(filename: str, prefix='') -> dict[int, str]:
+def parse_c_header(filename: str, prefix='', as_list=False) -> typing.Union[list[tuple[int, str]], dict[int, str]]:
     with open(filename) as fp:
         data = fp.read()
     pat = re.compile(rf'#define\s+({prefix}\w+)\s+(\d+|0x[0-9a-fA-F]+)\n')
+    if as_list:
+        return [(int(m[2], 0), m[1]) for m in pat.finditer(data)]
     return {int(m[2], 0): m[1] for m in pat.finditer(data)}
 
 
@@ -47,7 +49,8 @@ class Namespace(argparse.Namespace):
 
 
 class ScriptParserBase(abc.ABC):
-    def __init__(self, raw: bytes, prefix='_EV'):
+    def __init__(self, header: str, raw: bytes, prefix='_EV'):
+        self.c_header = header
         self.raw = raw
         self.prefix = prefix
         self.is_parsed = False
@@ -65,8 +68,8 @@ class ScriptParserBase(abc.ABC):
     
     
 class NormalScriptParser(ScriptParserBase):
-    def __init__(self, raw: bytes, events: str, gmm: str, prefix='_EV'):
-        super().__init__(raw, prefix)
+    def __init__(self, header: str, raw: bytes, events: str, gmm: str, prefix='_EV'):
+        super().__init__(header, raw, prefix)
         with open(os.path.join(os.path.dirname(__file__), 'scrcmd.json')) as jsonfp:
             scrcmds = json.load(jsonfp)
         self.constants = {
@@ -90,22 +93,25 @@ class NormalScriptParser(ScriptParserBase):
         self.header_end = 0
         self.pc_history = []
 
-        self.objects = []
         self.messages = []
-        self.c_header = None
 
         seen_objects = collections.Counter()
         obj_prefix = prefix.replace('scr_seq', 'obj')
-        if events:
-            with open(events) as fp:
-                events_dict = json.load(fp)
-            for obj in events_dict.get('objects', []):
-                sprite = obj['ovid'].replace('SPRITE_', '').lower()
-                obj_name = f'{obj_prefix}_{sprite}'
-                seen_objects[obj_name] += 1
-                if seen_objects[obj_name] > 1:
-                    obj_name = f'{obj_name}_{seen_objects[obj_name]}'
-                self.objects.append((obj['id'], obj_name))
+        try:
+            self.objects = parse_c_header(os.path.join(project_root, 'files', header), 'obj_', as_list=True)
+        except FileNotFoundError:
+            self.objects = []
+            if events:
+                with open(events) as fp:
+                    events_dict = json.load(fp)
+                for obj in events_dict.get('objects', []):
+                    sprite = obj['ovid'].replace('SPRITE_', '').lower()
+                    obj_name = f'{obj_prefix}_{sprite}'
+                    seen_objects[obj_name] += 1
+                    if seen_objects[obj_name] > 1:
+                        obj_name = f'{obj_name}_{seen_objects[obj_name]}'
+                    self.objects.append((obj['id'], obj_name))
+        self.objects.append((253, 'obj_partner_poke'))
         self.objects.append((255, 'obj_player'))
         if gmm:
             self.messages = [row.get('id') for row in ElementTree.parse(gmm).iter('row')]
@@ -144,7 +150,7 @@ class NormalScriptParser(ScriptParserBase):
                     if size == 2 and value in self.constants['var']:
                         return self.constants['var'][value], pc
                     return self.get_object(value), pc
-                except:
+                except Exception:
                     traceback.print_exc()
                     exit(1)
             case 'message':
@@ -347,14 +353,13 @@ class NormalScriptParser(ScriptParserBase):
 
 
 class SpecialScriptParser(ScriptParserBase):
-    def __init__(self, raw: bytes, prefix='_EV'):
-        super().__init__(raw, prefix)
+    def __init__(self, header: str, raw: bytes, prefix='_EV'):
+        super().__init__(header, raw, prefix)
         header_path = os.path.join(os.path.dirname(__file__), '../..')
         self.vars = parse_c_header(os.path.join(header_path, 'include/constants/vars.h'), 'VAR_')
         self.table: list[tuple[int, int, int]] = []
         self.init_offset: int = -1
         self.init_vars: list[tuple[int, int, int]] = []
-        self.c_header = None
 
     def parse_all(self):
         i = 0
@@ -426,17 +431,15 @@ def parse_map(events, scripts, header, gmm):
     c_header = os.path.relpath(c_header_abs, os.path.join(project_root, 'files'))
     if header:
         with open(header_bin, 'rb') as fp:
-            parser = SpecialScriptParser(fp.read(), prefix=scr_pref).parse_all()
-        parser.c_header = c_header
+            parser = SpecialScriptParser(c_header, fp.read(), prefix=scr_pref).parse_all()
         with open(header, 'wt') as ofp:
             print(parser, file=ofp, end='')
     with open(scripts_bin, 'rb') as fp:
-        parser = NormalScriptParser(fp.read(), events, gmm, prefix=scr_pref).parse_all()
-    parser.c_header = c_header
+        parser = NormalScriptParser(c_header, fp.read(), events, gmm, prefix=scr_pref).parse_all()
     with open(scripts, 'wt') as ofp:
         print(parser, file=ofp, end='')
-    with open(c_header_abs, 'wt') as ofp:
-        print(parser.make_header(), file=ofp, end='')
+    # with open(c_header_abs, 'wt') as ofp:
+    #     print(parser.make_header(), file=ofp, end='')
 
 
 def main():

@@ -33,7 +33,7 @@ scr_seq_P01R0307_001:
 	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, _006B
-	apply_movement 253, _0114
+	apply_movement obj_partner_poke, _0114
 _006B:
 	apply_movement obj_player, _0104
 	wait_movement
@@ -48,7 +48,7 @@ _0088:
 	apply_movement obj_P01R0307_seaman_2, _00E4
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, _00A5
-	apply_movement 253, _0114
+	apply_movement obj_partner_poke, _0114
 _00A5:
 	apply_movement obj_player, _0104
 	wait_movement

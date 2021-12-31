@@ -102,7 +102,7 @@ _010B:
 
 _0116:
 	npc_msg msg_0488_T06R0301_00011
-	hide_person 5
+	hide_person obj_T06R0301_mono_pip
 	setflag FLAG_UNK_2FC
 	setvar VAR_SPECIAL_x8004, 479
 	setvar VAR_SPECIAL_x8005, 1
@@ -134,9 +134,9 @@ scr_seq_T06R0301_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 153, 0
+	play_cry SPECIES_BAYLEEF, 0
 	npc_msg msg_0488_T06R0301_00016
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

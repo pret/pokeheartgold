@@ -446,7 +446,7 @@ _061B:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_26F
-	hide_person 3
+	hide_person obj_T25R1006_gsleader3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00

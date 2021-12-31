@@ -93,7 +93,7 @@ scr_seq_R25_008:
 
 _012E:
 	setflag FLAG_UNK_2A1
-	hide_person 12
+	hide_person obj_R25_tsure_poke_618
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -162,8 +162,8 @@ _0261:
 	apply_movement obj_player, _0394
 _0271:
 	wait_movement
-	hide_person 9
-	hide_person 8
+	hide_person obj_R25_gsman1
+	hide_person obj_R25_gsleader11
 	scrcmd_081 1113
 	play_bgm SEQ_GS_R_12_24
 	setflag FLAG_UNK_309
@@ -302,7 +302,7 @@ _03F7:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_2CD
-	hide_person 15
+	hide_person obj_R25_gsleader11_2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00
@@ -419,14 +419,14 @@ scr_seq_R25_004:
 	lockall
 	setflag FLAG_UNK_2AC
 	clearflag FLAG_UNK_2A2
-	show_person 13
+	show_person obj_R25_minaki
 	apply_movement obj_player, _0648
 	wait_movement
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_R25_tsure_poke_618
 	scrcmd_523 12, 2, 90, 2, 0
 	lock obj_R25_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -533,11 +533,11 @@ scr_seq_R25_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_R25_tsure_poke_618
 	scrcmd_523 12, 2, 90, 2, 0
 	lock obj_R25_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	setflag FLAG_UNK_0A4
 	scrcmd_589 245, 40, 0
 	clearflag FLAG_UNK_0A4
@@ -562,7 +562,7 @@ _0766:
 	apply_movement obj_player, _07F4
 	apply_movement obj_R25_minaki, _0800
 	wait_movement
-	hide_person 13
+	hide_person obj_R25_minaki
 	setflag FLAG_UNK_2A2
 	goto _07A0
 
@@ -570,7 +570,7 @@ _0786:
 	apply_movement obj_player, _07F4
 	apply_movement obj_R25_minaki_2, _0800
 	wait_movement
-	hide_person 14
+	hide_person obj_R25_minaki_2
 	setflag FLAG_UNK_2B2
 _07A0:
 	setvar VAR_UNK_4089, 3

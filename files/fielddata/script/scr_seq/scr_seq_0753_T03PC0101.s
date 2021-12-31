@@ -90,9 +90,9 @@ scr_seq_T03PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 39, 0
+	play_cry SPECIES_JIGGLYPUFF, 0
 	npc_msg msg_0463_T03PC0101_00001
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

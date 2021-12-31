@@ -177,7 +177,7 @@ sub_02055508: ; 0x02055508
 	cmp r6, #0
 	bne _0205559E
 	ldr r0, [r5, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r1, r4, #0
 	bl sub_02031CCC
 	ldr r0, [r5, #0xc]
@@ -491,8 +491,8 @@ sub_020557A0: ; 0x020557A0
 	.balign 4, 0
 	thumb_func_end sub_020557A0
 
-	thumb_func_start sub_020557C0
-sub_020557C0: ; 0x020557C0
+	thumb_func_start FieldSys_ApricornTree_GetApricorn
+FieldSys_ApricornTree_GetApricorn: ; 0x020557C0
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
@@ -506,4 +506,4 @@ sub_020557C0: ; 0x020557C0
 	bl sub_0202AE4C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_020557C0
+	thumb_func_end FieldSys_ApricornTree_GetApricorn

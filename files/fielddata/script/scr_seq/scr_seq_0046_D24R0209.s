@@ -78,26 +78,26 @@ _00FF:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0126
 	apply_movement obj_player, _0218
-	apply_movement 253, _0224
+	apply_movement obj_partner_poke, _0224
 	goto _017C
 
 _0126:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0149
 	apply_movement obj_player, _0234
-	apply_movement 253, _0240
+	apply_movement obj_partner_poke, _0240
 	goto _017C
 
 _0149:
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _016C
 	apply_movement obj_player, _0250
-	apply_movement 253, _025C
+	apply_movement obj_partner_poke, _025C
 	goto _017C
 
 _016C:
 	apply_movement obj_player, _026C
-	apply_movement 253, _0278
+	apply_movement obj_partner_poke, _0278
 _017C:
 	wait_movement
 _017E:

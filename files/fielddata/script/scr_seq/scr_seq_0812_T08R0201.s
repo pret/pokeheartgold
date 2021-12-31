@@ -158,11 +158,11 @@ _01FB:
 	scrcmd_176 109, 0, 24, 47, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_606
-	apply_movement 253, _02A0
+	apply_movement obj_partner_poke, _02A0
 	wait_movement
-	release 253
+	release obj_partner_poke
 	releaseall
 	end
 

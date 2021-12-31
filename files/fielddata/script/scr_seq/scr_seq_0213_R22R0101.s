@@ -415,7 +415,7 @@ _04F4:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setflag FLAG_UNK_270
-	hide_person 3
+	hide_person obj_R22R0101_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00

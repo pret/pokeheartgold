@@ -82,7 +82,7 @@ scr_seq_T26_001:
 	scrcmd_310 77
 	scrcmd_308 77
 	clearflag FLAG_UNK_1D6
-	show_person 3
+	show_person obj_T26_gsrivel
 	apply_movement obj_T26_gsrivel, _02B4
 	wait_movement
 	scrcmd_311 77
@@ -128,7 +128,7 @@ _01C1:
 	gotoif ne, _01F6
 	apply_movement obj_T26_gsrivel, _032C
 	apply_movement obj_player, _037C
-	apply_movement 253, _03C4
+	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _01F6:
@@ -136,7 +136,7 @@ _01F6:
 	gotoif ne, _0221
 	apply_movement obj_T26_gsrivel, _033C
 	apply_movement obj_player, _037C
-	apply_movement 253, _03C4
+	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _0221:
@@ -144,7 +144,7 @@ _0221:
 	gotoif ne, _024C
 	apply_movement obj_T26_gsrivel, _034C
 	apply_movement obj_player, _037C
-	apply_movement 253, _03C4
+	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _024C:
@@ -152,7 +152,7 @@ _024C:
 	gotoif ne, _0277
 	apply_movement obj_T26_gsrivel, _035C
 	apply_movement obj_player, _037C
-	apply_movement 253, _03C4
+	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _0277:
@@ -160,11 +160,11 @@ _0277:
 	gotoif ne, _029C
 	apply_movement obj_T26_gsrivel, _036C
 	apply_movement obj_player, _03A0
-	apply_movement 253, _03E0
+	apply_movement obj_partner_poke, _03E0
 _029C:
 	wait_movement
 	setvar VAR_UNK_4078, 1
-	hide_person 3
+	hide_person obj_T26_gsrivel
 	setflag FLAG_UNK_1D6
 	callstd 2032
 	releaseall
@@ -333,7 +333,7 @@ _04BB:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _04E2
-	apply_movement 253, _059C
+	apply_movement obj_partner_poke, _059C
 	wait_movement
 _04E2:
 	setflag FLAG_UNK_189

@@ -219,12 +219,12 @@ _0342:
 _0346:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_076 83, 0
+	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0115_D36R0101_00003
 	closemsg
 	apply_movement obj_D36R0101_tsure_poke_596, _0E58
 	wait_movement
-	hide_person 0
+	hide_person obj_D36R0101_tsure_poke_596
 	npc_msg msg_0115_D36R0101_00037
 	waitbutton
 	closemsg
@@ -581,12 +581,12 @@ _08A4:
 _08DF:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_076 83, 0
+	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0115_D36R0101_00003
 	closemsg
 	apply_movement obj_D36R0101_tsure_poke_596_2, _0E60
 	wait_movement
-	hide_person 2
+	hide_person obj_D36R0101_tsure_poke_596_2
 	npc_msg msg_0115_D36R0101_00037
 	waitbutton
 	closemsg
@@ -1078,7 +1078,7 @@ _0F99:
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
 	wait 16, VAR_SPECIAL_x800C
-	scrcmd_076 VAR_SPECIAL_x8005, 0
+	play_cry VAR_SPECIAL_x8005, 0
 	goto _1079
 
 _1041:
@@ -1090,7 +1090,7 @@ _1041:
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
 	wait 32, VAR_SPECIAL_x800C
-	scrcmd_076 VAR_SPECIAL_x8005, 0
+	play_cry VAR_SPECIAL_x8005, 0
 	npc_msg msg_0115_D36R0101_00022
 	waitbutton
 	closemsg
@@ -1253,7 +1253,7 @@ _11FD:
 
 _1207:
 	clearflag FLAG_UNK_1AF
-	show_person 4
+	show_person obj_D36R0101_gsfighter
 	clearflag FLAG_UNK_1D4
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, 0x00
@@ -1306,7 +1306,7 @@ _12C9:
 	end
 
 scr_seq_D36R0101_014:
-	scrcmd_076 83, 0
+	play_cry SPECIES_FARFETCHD, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -1365,33 +1365,33 @@ _1374:
 	gotoif eq, _13D5
 	comparevartovalue VAR_TEMP_x4001, 51
 	gotoif eq, _13D5
-	release 253
+	release obj_partner_poke
 	comparevartovalue VAR_SPECIAL_x8004, 40
 	gotoif ne, _13C1
 	apply_movement obj_player, _14E8
-	apply_movement 253, _14FC
+	apply_movement obj_partner_poke, _14FC
 	goto _13C9
 
 _13C1:
-	apply_movement 253, _1518
+	apply_movement obj_partner_poke, _1518
 _13C9:
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 	goto _140A
 
 _13D5:
-	release 253
+	release obj_partner_poke
 	comparevartovalue VAR_SPECIAL_x8004, 40
 	gotoif ne, _13FC
 	apply_movement obj_player, _14E8
-	apply_movement 253, _1538
+	apply_movement obj_partner_poke, _1538
 	goto _1404
 
 _13FC:
-	apply_movement 253, _1550
+	apply_movement obj_partner_poke, _1550
 _1404:
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 _140A:
 	comparevartovalue VAR_SPECIAL_x8004, 40
 	gotoif ne, _1425
@@ -1410,13 +1410,13 @@ _142D:
 	closemsg
 	apply_movement obj_D36R0101_dancer, _159C
 	wait_movement
-	hide_person 12
+	hide_person obj_D36R0101_dancer
 	setflag FLAG_UNK_23D
 	callstd std_fade_end_kimono_girl_music
-	release 253
-	apply_movement 253, _1584
+	release obj_partner_poke
+	apply_movement obj_partner_poke, _1584
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 	releaseall
 	setvar VAR_UNK_40E9, 1
 	end
@@ -1578,7 +1578,7 @@ _1677:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _169E
-	apply_movement 253, _1758
+	apply_movement obj_partner_poke, _1758
 	wait_movement
 _169E:
 	setflag FLAG_UNK_189
@@ -1697,11 +1697,11 @@ _1816:
 	lockall
 	scrcmd_081 0
 	clearflag FLAG_UNK_29B
-	show_person 14
+	show_person obj_D36R0101_tsure_poke_625
 	apply_movement obj_D36R0101_tsure_poke_625, _1C44
 	wait_movement
-	scrcmd_076 172, 0
-	scrcmd_077
+	play_cry SPECIES_PICHU, 0
+	wait_cry
 	apply_movement obj_player, _1C58
 	wait_movement
 	callstd 2065
@@ -1716,20 +1716,20 @@ _1816:
 	scrcmd_604 48
 	npc_msg msg_0115_D36R0101_00038
 	closemsg
-	apply_movement 253, _1CB4
+	apply_movement obj_partner_poke, _1CB4
 	wait_movement
 	apply_movement obj_D36R0101_tsure_poke_625, _1CC4
 	wait_movement
-	apply_movement 253, _1CF8
+	apply_movement obj_partner_poke, _1CF8
 	wait_movement
 	apply_movement obj_D36R0101_tsure_poke_625, _1D08
-	apply_movement 253, _1D2C
+	apply_movement obj_partner_poke, _1D2C
 	wait_movement
 	clearflag FLAG_UNK_29C
-	show_person 15
+	show_person obj_D36R0101_gsoldman1
 	apply_movement obj_D36R0101_gsoldman1, _1DE0
 	apply_movement obj_D36R0101_tsure_poke_625, _1D48
-	apply_movement 253, _1DA4
+	apply_movement obj_partner_poke, _1DA4
 	wait_movement
 	apply_movement obj_player, _1E88
 	wait_movement
@@ -1746,15 +1746,15 @@ _1816:
 	npc_msg msg_0115_D36R0101_00048
 	closemsg
 	apply_movement obj_D36R0101_tsure_poke_625, _1E20
-	apply_movement 253, _1E2C
+	apply_movement obj_partner_poke, _1E2C
 	wait_movement
 	npc_msg msg_0115_D36R0101_00049
 	closemsg
-	apply_movement 253, _1E38
+	apply_movement obj_partner_poke, _1E38
 	wait_movement
 	apply_movement obj_D36R0101_tsure_poke_625, _1E40
 	wait_movement
-	apply_movement 253, _1E48
+	apply_movement obj_partner_poke, _1E48
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
@@ -1765,9 +1765,9 @@ _1816:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg msg_0115_D36R0101_00039
-	scrcmd_076 172, 0
+	play_cry SPECIES_PICHU, 0
 	npc_msg msg_0115_D36R0101_00043
-	scrcmd_077
+	wait_cry
 	closemsg
 	call _1987
 	comparevartovalue VAR_SPECIAL_x8004, 1
@@ -1836,7 +1836,7 @@ _1A34:
 	callstd 2066
 _1A51:
 	scrcmd_778
-	hide_person 14
+	hide_person obj_D36R0101_tsure_poke_625
 	setvar VAR_UNK_412B, 2
 	play_fanfare SEQ_ME_SHINKAOME
 	npc_msg msg_0115_D36R0101_00040
@@ -1873,7 +1873,7 @@ _1AE7:
 	apply_movement obj_D36R0101_gsoldman1, _1E50
 _1AEF:
 	wait_movement
-	hide_person 15
+	hide_person obj_D36R0101_gsoldman1
 	setflag FLAG_UNK_29C
 	return
 
@@ -1908,9 +1908,9 @@ _1B5F:
 	apply_movement obj_D36R0101_tsure_poke_625, _1F00
 _1B67:
 	wait_movement
-	scrcmd_076 172, 0
+	play_cry SPECIES_PICHU, 0
 	npc_msg msg_0115_D36R0101_00043
-	scrcmd_077
+	wait_cry
 	closemsg
 	call _1987
 	comparevartovalue VAR_SPECIAL_x8004, 1
@@ -2242,14 +2242,14 @@ _1F48:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	apply_movement 253, _2038
+	apply_movement obj_partner_poke, _2038
 	wait_movement
 	fade_out_bgm 0, 30
 	callstd std_play_friend_music
 	touchscreen_menu_hide
 	clearflag FLAG_UNK_310
-	show_person 16
-	show_person 17
+	show_person obj_D36R0101_var_1
+	show_person obj_D36R0101_tsure_poke_611
 	apply_movement obj_D36R0101_var_1, _2054
 	apply_movement obj_D36R0101_tsure_poke_611, _2060
 	wait_movement
@@ -2368,8 +2368,8 @@ scr_seq_D36R0101_022:
 	callstd std_fade_end_friend_music
 	touchscreen_menu_show
 	setvar VAR_UNK_40FE, 5
-	hide_person 16
-	hide_person 17
+	hide_person obj_D36R0101_var_1
+	hide_person obj_D36R0101_tsure_poke_611
 	setflag FLAG_UNK_310
 	releaseall
 	end

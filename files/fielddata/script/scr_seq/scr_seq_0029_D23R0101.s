@@ -151,7 +151,7 @@ scr_seq_D23R0101_002:
 	wait 24, VAR_SPECIAL_x800C
 	apply_movement obj_player, _036C
 	wait_movement
-	hide_person 7
+	hide_person obj_D23R0101_gsleader3
 	setflag FLAG_UNK_318
 	releaseall
 	end
@@ -407,7 +407,7 @@ _05AF:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	hide_person 6
+	hide_person obj_D23R0101_rocketm
 	callstd std_play_rival_outro_music
 	comparevartovalue VAR_TEMP_x4001, 5
 	gotoif ne, _05DE
@@ -436,7 +436,7 @@ _0625:
 	closemsg
 	apply_movement obj_D23R0101_gsrivel, _0938
 	wait_movement
-	hide_person 5
+	hide_person obj_D23R0101_gsrivel
 	callstd std_fade_end_rival_outro_music
 	releaseall
 	setvar VAR_UNK_4077, 4

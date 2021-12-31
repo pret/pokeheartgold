@@ -23,7 +23,7 @@ scr_seq_D41R0108_000:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	hide_person 0
+	hide_person obj_D41R0108_red
 	setflag FLAG_UNK_25F
 	setvar VAR_UNK_40FD, 1
 	comparevartovalue VAR_UNK_4131, 0

@@ -188,7 +188,7 @@ _023C:
 	closemsg
 	apply_movement obj_P01R0301_gsgentleman, _02C0
 	wait_movement
-	hide_person 3
+	hide_person obj_P01R0301_gsgentleman
 	setflag FLAG_UNK_215
 	setvar VAR_UNK_40CB, 2
 	scrcmd_074 2133

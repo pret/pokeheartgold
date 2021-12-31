@@ -61,7 +61,7 @@ _00AB:
 _00B3:
 	wait_movement
 	clearflag FLAG_UNK_227
-	show_person 1
+	show_person obj_D49R0101_gsleader3
 	move_person 1, 23, 0, 20, 0
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, _00EC
@@ -131,7 +131,7 @@ _01D9:
 _01E1:
 	apply_movement obj_player, _0078
 	wait_movement
-	hide_person 1
+	hide_person obj_D49R0101_gsleader3
 	setflag FLAG_UNK_227
 	releaseall
 	setvar VAR_UNK_40E2, 1

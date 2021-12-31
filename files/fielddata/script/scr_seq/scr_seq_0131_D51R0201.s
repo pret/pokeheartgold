@@ -501,26 +501,26 @@ _06AA:
 _06B0:
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _06D3
-	apply_movement 253, _0BE4
+	apply_movement obj_partner_poke, _0BE4
 	apply_movement 241, _0C28
 	goto _0729
 
 _06D3:
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif ne, _06F6
-	apply_movement 253, _0BF4
+	apply_movement obj_partner_poke, _0BF4
 	apply_movement 241, _0C28
 	goto _0729
 
 _06F6:
 	comparevartovalue VAR_TEMP_x4002, 2
 	gotoif ne, _0719
-	apply_movement 253, _0C08
+	apply_movement obj_partner_poke, _0C08
 	apply_movement 241, _0C28
 	goto _0729
 
 _0719:
-	apply_movement 253, _0C18
+	apply_movement obj_partner_poke, _0C18
 	apply_movement 241, _0C28
 _0729:
 	wait_movement
@@ -529,26 +529,26 @@ _0729:
 _0731:
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _0754
-	apply_movement 253, _0C34
+	apply_movement obj_partner_poke, _0C34
 	apply_movement 241, _0C78
 	goto _07AA
 
 _0754:
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif ne, _0777
-	apply_movement 253, _0C44
+	apply_movement obj_partner_poke, _0C44
 	apply_movement 241, _0C78
 	goto _07AA
 
 _0777:
 	comparevartovalue VAR_TEMP_x4002, 2
 	gotoif ne, _079A
-	apply_movement 253, _0C54
+	apply_movement obj_partner_poke, _0C54
 	apply_movement 241, _0C78
 	goto _07AA
 
 _079A:
-	apply_movement 253, _0C68
+	apply_movement obj_partner_poke, _0C68
 	apply_movement 241, _0C78
 _07AA:
 	wait_movement
@@ -557,26 +557,26 @@ _07AA:
 _07B2:
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _07D5
-	apply_movement 253, _0C84
+	apply_movement obj_partner_poke, _0C84
 	apply_movement 241, _0CC4
 	goto _082B
 
 _07D5:
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif ne, _07F8
-	apply_movement 253, _0C90
+	apply_movement obj_partner_poke, _0C90
 	apply_movement 241, _0CC4
 	goto _082B
 
 _07F8:
 	comparevartovalue VAR_TEMP_x4002, 2
 	gotoif ne, _081B
-	apply_movement 253, _0CA0
+	apply_movement obj_partner_poke, _0CA0
 	apply_movement 241, _0CC4
 	goto _082B
 
 _081B:
-	apply_movement 253, _0CB0
+	apply_movement obj_partner_poke, _0CB0
 	apply_movement 241, _0CC4
 _082B:
 	wait_movement
@@ -679,7 +679,7 @@ _09B6:
 	gotoif eq, _0A4D
 	apply_movement obj_D51R0201_champion, _0D28
 	apply_movement obj_player, _0D00
-	apply_movement 253, _0D1C
+	apply_movement obj_partner_poke, _0D1C
 	wait_movement
 	npc_msg msg_0146_D51R0201_00016
 	closemsg

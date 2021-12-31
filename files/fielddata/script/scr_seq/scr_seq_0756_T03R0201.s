@@ -21,9 +21,9 @@ scr_seq_T03R0201_000:
 scr_seq_T03R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_076 32, 0
+	play_cry SPECIES_NIDORAN_M, 0
 	npc_msg msg_0465_T03R0201_00001
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

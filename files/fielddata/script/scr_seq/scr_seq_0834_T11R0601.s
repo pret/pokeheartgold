@@ -173,7 +173,7 @@ _022C:
 	apply_movement obj_T11R0601_gsleader9, _0268
 _0234:
 	wait_movement
-	hide_person 4
+	hide_person obj_T11R0601_gsleader9
 	setflag FLAG_UNK_2F7
 	releaseall
 	end

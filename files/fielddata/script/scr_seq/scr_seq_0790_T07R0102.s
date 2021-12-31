@@ -115,7 +115,7 @@ _0186:
 	apply_movement obj_T07R0102_leader3, _0238
 _018E:
 	wait_movement
-	hide_person 5
+	hide_person obj_T07R0102_leader3
 	setflag FLAG_UNK_313
 	clearflag FLAG_UNK_2DF
 	releaseall
@@ -128,10 +128,10 @@ _01A0:
 	get_person_coords 253, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 5
 	gotoif ne, _01D8
-	release 253
-	apply_movement 253, _0264
+	release obj_partner_poke
+	apply_movement obj_partner_poke, _0264
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 _01D8:
 	return
 
@@ -246,7 +246,7 @@ _033B:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0362
-	apply_movement 253, _041C
+	apply_movement obj_partner_poke, _041C
 	wait_movement
 _0362:
 	setflag FLAG_UNK_189

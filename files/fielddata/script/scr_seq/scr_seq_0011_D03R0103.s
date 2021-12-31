@@ -16,7 +16,7 @@ scr_seq_D03R0103_001:
 
 _0017:
 	setflag FLAG_UNK_305
-	hide_person 14
+	hide_person obj_D03R0103_tsure_poke_608
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -24,8 +24,8 @@ scr_seq_D03R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 150, 0
-	scrcmd_077
+	play_cry SPECIES_MEWTWO, 0
+	wait_cry
 	setflag FLAG_UNK_0A4
 	scrcmd_589 150, 70, 0
 	clearflag FLAG_UNK_0A4

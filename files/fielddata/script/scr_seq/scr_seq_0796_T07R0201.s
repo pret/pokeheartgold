@@ -31,9 +31,9 @@ scr_seq_T07R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 52, 0
+	play_cry SPECIES_MEOWTH, 0
 	npc_msg msg_0501_T07R0201_00001
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -43,9 +43,9 @@ scr_seq_T07R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 35, 0
+	play_cry SPECIES_CLEFAIRY, 0
 	npc_msg msg_0501_T07R0201_00002
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -55,9 +55,9 @@ scr_seq_T07R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 29, 0
+	play_cry SPECIES_NIDORAN_F, 0
 	npc_msg msg_0501_T07R0201_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

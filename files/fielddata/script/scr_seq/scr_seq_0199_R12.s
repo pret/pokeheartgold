@@ -41,10 +41,10 @@ scr_seq_R12_004:
 
 _006D:
 	setflag FLAG_UNK_31B
-	hide_person 15
-	hide_person 16
-	hide_person 17
-	hide_person 18
+	hide_person obj_R12_kabigon
+	hide_person obj_R12_gsbabyboy1
+	hide_person obj_R12_gsbabyboy1_2
+	hide_person obj_R12_gsbabyboy1_3
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -102,7 +102,7 @@ _0150:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0177
-	apply_movement 253, _0234
+	apply_movement obj_partner_poke, _0234
 	wait_movement
 _0177:
 	setflag FLAG_UNK_189
@@ -187,9 +187,9 @@ scr_seq_R12_005:
 	end
 
 _0268:
-	scrcmd_076 143, 0
+	play_cry SPECIES_SNORLAX, 0
 	npc_msg msg_0348_R12_00003
-	scrcmd_077
+	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
 	scrcmd_589 143, 50, 0

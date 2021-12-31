@@ -46,7 +46,7 @@ scr_seq_R35R0201_010:
 	scrcmd_176 487, 0, 40, 86, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _00C2
@@ -56,9 +56,9 @@ scr_seq_R35R0201_010:
 _00C2:
 	scrcmd_607
 _00C4:
-	apply_movement 253, _00E8
+	apply_movement obj_partner_poke, _00E8
 	wait_movement
-	release 253
+	release obj_partner_poke
 _00D2:
 	releaseall
 	end
@@ -306,7 +306,7 @@ _03E3:
 	scrcmd_176 487, 0, 40, 86, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0428
@@ -316,9 +316,9 @@ _03E3:
 _0428:
 	scrcmd_607
 _042A:
-	apply_movement 253, _00E8
+	apply_movement obj_partner_poke, _00E8
 	wait_movement
-	release 253
+	release obj_partner_poke
 _0438:
 	releaseall
 	end
@@ -404,7 +404,7 @@ _0546:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _056D
-	apply_movement 253, _0628
+	apply_movement obj_partner_poke, _0628
 	wait_movement
 _056D:
 	setflag FLAG_UNK_189

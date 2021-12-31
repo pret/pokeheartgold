@@ -1057,9 +1057,9 @@ _0F05:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0F79
-	release 253
-	apply_movement 253, _0FF8
-	lock 253
+	release obj_partner_poke
+	apply_movement obj_partner_poke, _0FF8
+	lock obj_partner_poke
 	wait_movement
 _0F79:
 	fade_screen 6, 1, 1, 0x00
@@ -1149,7 +1149,7 @@ _1094:
 	apply_movement obj_D37R0102_dancer, _1120
 _109C:
 	wait_movement
-	hide_person 12
+	hide_person obj_D37R0102_dancer
 	setflag FLAG_UNK_237
 	callstd std_fade_end_kimono_girl_music
 	releaseall

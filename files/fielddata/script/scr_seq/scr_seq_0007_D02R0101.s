@@ -48,7 +48,7 @@ _007D:
 	closemsg
 	apply_movement obj_D02R0101_gsrivel, _00E8
 	wait_movement
-	hide_person 0
+	hide_person obj_D02R0101_gsrivel
 	callstd std_fade_end_rival_outro_music
 	setflag FLAG_UNK_25C
 	clearflag FLAG_UNK_2E0

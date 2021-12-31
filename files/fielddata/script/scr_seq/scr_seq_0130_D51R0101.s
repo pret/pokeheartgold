@@ -76,7 +76,7 @@ scr_seq_D51R0101_001:
 	scrcmd_308 77
 	apply_movement obj_D51R0101_mount_2, _0114
 	wait_movement
-	hide_person 0
+	hide_person obj_D51R0101_mount_2
 	setflag FLAG_UNK_2DB
 	scrcmd_311 77
 	scrcmd_308 77

@@ -58,7 +58,7 @@ _020F64C4:
 	.word 0x00000023, 0x00000000, sub_0202F574, sub_0202F588
 	.word 0x00000024, 0x00000000, Save_PhotoAlbum_sizeof, Save_PhotoAlbum_init
 	.word 0x00000025, 0x00000000, sub_02031904, sub_0203190C
-	.word 0x00000026, 0x00000000, sub_02031B0C, sub_02031B54
+	.word 0x00000026, 0x00000000, Save_ApricornBox_sizeof, Save_ApricornBox_init
 	.word 0x00000027, 0x00000000, Pokewalker_sizeof, Pokewalker_init
 	.word 0x00000028, 0x00000000, sub_02032774, sub_02032788
 	.word 0x00000029, 0x00000001, PCStorage_sizeof, PCStorage_init

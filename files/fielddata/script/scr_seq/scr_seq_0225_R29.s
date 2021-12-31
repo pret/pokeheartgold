@@ -131,8 +131,8 @@ _019E:
 scr_seq_R29_001:
 	scrcmd_609
 	lockall
-	scrcmd_076 183, 0
-	scrcmd_077
+	play_cry SPECIES_MARILL, 0
+	wait_cry
 	apply_movement obj_R29_tsure_poke_611, _05C4
 	wait_movement
 	apply_movement obj_R29_var_2, _05D8
@@ -321,8 +321,8 @@ _04DC:
 	apply_movement obj_R29_var_2, _0928
 	apply_movement obj_R29_tsure_poke_611, _093C
 	wait_movement
-	hide_person 6
-	hide_person 7
+	hide_person obj_R29_var_2
+	hide_person obj_R29_tsure_poke_611
 	setflag FLAG_UNK_1A4
 	setflag FLAG_UNK_1A5
 	setvar VAR_UNK_408B, 0

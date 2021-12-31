@@ -209,7 +209,7 @@ _0317:
 	apply_movement obj_T11R0701_daigo, _03CC
 _031F:
 	wait_movement
-	hide_person 2
+	hide_person obj_T11R0701_daigo
 	setflag FLAG_UNK_2FA
 	setflag FLAG_UNK_177
 	setvar VAR_UNK_4130, 4
@@ -342,7 +342,7 @@ _04CE:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	hide_person 2
+	hide_person obj_T11R0701_daigo
 	setflag FLAG_UNK_2FA
 	setvar VAR_UNK_4130, 7
 	releaseall

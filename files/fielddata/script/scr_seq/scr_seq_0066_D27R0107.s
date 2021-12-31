@@ -51,8 +51,8 @@ _0062:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_DOOR
-	hide_person 4
-	hide_person 0
+	hide_person obj_D27R0107_stop
+	hide_person obj_D27R0107_babyboy1_8
 	wait_se SEQ_SE_DP_DOOR
 	apply_movement obj_D27R0107_gsleader6, _01F0
 	wait_movement
@@ -81,15 +81,15 @@ _00B5:
 	closemsg
 	apply_movement obj_D27R0107_tsure_poke_610, _01A0
 	wait_movement
-	scrcmd_076 181, 0
+	play_cry SPECIES_AMPHAROS, 0
 	npc_msg msg_0094_D27R0107_00006
-	scrcmd_077
+	wait_cry
 	closemsg
 	scrcmd_459
 	apply_movement obj_D27R0107_tsure_poke_610, _01A8
 	wait_movement
-	scrcmd_076 181, 0
-	scrcmd_077
+	play_cry SPECIES_AMPHAROS, 0
+	wait_cry
 	npc_msg msg_0094_D27R0107_00007
 	closemsg
 	scrcmd_602 0
@@ -101,7 +101,7 @@ _00B5:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	hide_person 1
+	hide_person obj_D27R0107_gsleader6
 	releaseall
 	setflag FLAG_UNK_96A
 	setvar VAR_UNK_40A5, 2
@@ -122,8 +122,8 @@ _017F:
 	wait_movement
 	npc_msg msg_0094_D27R0107_00009
 	closemsg
-	scrcmd_076 181, 12
-	scrcmd_077
+	play_cry SPECIES_AMPHAROS, 12
+	wait_cry
 	releaseall
 	end
 	.byte 0x00
@@ -188,15 +188,15 @@ scr_seq_D27R0107_001:
 	faceplayer
 	comparevartovalue VAR_UNK_40A5, 2
 	gotoif lt, _0266
-	scrcmd_076 181, 0
+	play_cry SPECIES_AMPHAROS, 0
 	npc_msg msg_0094_D27R0107_00012
-	scrcmd_077
+	wait_cry
 	goto _0274
 
 _0266:
-	scrcmd_076 181, 12
+	play_cry SPECIES_AMPHAROS, 12
 	npc_msg msg_0094_D27R0107_00010
-	scrcmd_077
+	wait_cry
 	npc_msg msg_0094_D27R0107_00011
 _0274:
 	waitbutton

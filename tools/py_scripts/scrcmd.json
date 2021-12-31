@@ -488,14 +488,14 @@
       ]
     },
     {
-      "name": "scrcmd_076",
+      "name": "play_cry",
       "args": [
-        "var",
+        "species",
         2
       ]
     },
     {
-      "name": "scrcmd_077",
+      "name": "wait_cry",
       "args": []
     },
     {
@@ -563,23 +563,23 @@
       ]
     },
     {
-      "name": "scrcmd_089",
+      "name": "chatot_has_cry",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_090",
+      "name": "chatot_start_recording",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_091",
+      "name": "chatot_stop_recording",
       "args": []
     },
     {
-      "name": "scrcmd_092",
+      "name": "chatot_save_recording",
       "args": []
     },
     {
@@ -620,13 +620,13 @@
     {
       "name": "show_person",
       "args": [
-        "var"
+        "object2"
       ]
     },
     {
       "name": "hide_person",
       "args": [
-        "var"
+        "object2"
       ]
     },
     {
@@ -3456,7 +3456,7 @@
     {
       "name": "scrcmd_547",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3466,7 +3466,7 @@
     {
       "name": "scrcmd_549",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3517,7 +3517,7 @@
       "name": "scrcmd_557",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -3902,23 +3902,23 @@
       ]
     },
     {
-      "name": "scrcmd_623",
+      "name": "check_apricorn_tree",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_624",
+      "name": "apricorn_tree_get_apricorn",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_625",
+      "name": "give_apricorn_from_tree",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -4093,8 +4093,8 @@
       "name": "scrcmd_651",
       "args": [
         2,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {

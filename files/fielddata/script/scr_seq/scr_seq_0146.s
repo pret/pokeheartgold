@@ -92,8 +92,8 @@ _0143:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _025B
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_560 3, VAR_SPECIAL_x8005
 _0165:
 	wait 7, VAR_SPECIAL_x800C
@@ -145,8 +145,8 @@ _0218:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _025B
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_560 3, VAR_SPECIAL_x8005
 _023A:
 	wait 7, VAR_SPECIAL_x800C
@@ -241,8 +241,8 @@ _0382:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _04D0
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_560 2, VAR_SPECIAL_x8005
 _03AA:
 	wait 10, VAR_SPECIAL_x800C
@@ -300,8 +300,8 @@ _0479:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _04D0
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_560 2, VAR_SPECIAL_x8005
 _04A1:
 	wait 10, VAR_SPECIAL_x800C
@@ -397,8 +397,8 @@ _05F4:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0715
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_731
 _060E:
 	npc_msg msg_0211_00012
@@ -456,8 +456,8 @@ _06BD:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0715
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_731
 _06D7:
 	npc_msg msg_0211_00012
@@ -620,8 +620,8 @@ _08E9:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _091A
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_728 16, 2
 	scrcmd_728 16, 2
 _0909:
@@ -814,8 +814,8 @@ _0B67:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0CC5
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_560 5, VAR_SPECIAL_x8005
 	goto _0BAE
 
@@ -878,8 +878,8 @@ _0C5D:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4000
 	call _0CC5
-	scrcmd_076 VAR_TEMP_x4000, 0
-	scrcmd_077
+	play_cry VAR_TEMP_x4000, 0
+	wait_cry
 	scrcmd_560 5, VAR_SPECIAL_x8005
 	goto _0CA4
 

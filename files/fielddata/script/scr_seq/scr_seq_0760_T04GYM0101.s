@@ -104,7 +104,7 @@ scr_seq_T04GYM0101_004:
 _0159:
 	apply_movement obj_T04GYM0101_rocketm, _01FC
 	apply_movement obj_player, _0204
-	apply_movement 253, _0210
+	apply_movement obj_partner_poke, _0210
 	wait_movement
 	goto _018B
 
@@ -114,7 +114,7 @@ _0179:
 	wait_movement
 _018B:
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 7
+	hide_person obj_T04GYM0101_rocketm
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_081 1112
 	play_bgm SEQ_GS_GYM
@@ -185,8 +185,8 @@ scr_seq_T04GYM0101_005:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _027C
 	callstd 2008
-	hide_person 8
-	hide_person 9
+	hide_person obj_T04GYM0101_stop
+	hide_person obj_T04GYM0101_stop_2
 	setflag FLAG_UNK_257
 	setvar VAR_UNK_4087, 4
 	closemsg

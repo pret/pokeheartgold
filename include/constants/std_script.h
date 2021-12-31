@@ -1,6 +1,11 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H
 #define POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H
 
+// The _std_XXX constants are group thresholds for
+// use in fieldmap.c (sScriptBankMapping).
+// The std_XXX constants (no leading underscore)
+// are for use in event scripts.
+
 #define _std_misc                       2000
 #define std_nurse_joy                   2002
 #define std_bag_is_full                 2009
@@ -20,12 +25,22 @@
 
 #define _std_bookshelves                2500
 
+#define _std_apricorn_tree              2800
+
+#define _std_hidden_item                8000
+
+#define _std_chatot                     8900
+
+#define _std_communication              9000
 #define std_wireless_colosseum          9001
 #define std_union_room                  9003
 #define std_trainer_card_explain        9017
 
-#define std_pokedex_evaluation          9951
+#define _std_dex_evaluation             9950
+#define std_via_pc_evaluate_dex         9950
+#define std_in_person_evaluate_dex      9951
 
+#define _std_field_move                10000
 #define std_field_cut                  10000
 #define std_field_rock_smash           10001
 #define std_field_strength             10002
@@ -45,5 +60,8 @@
 #define std_field_whirlpool            10016
 #define std_menu_whirlpool             10017
 #define std_menu_headbutt              10018
+
+#define _std_scratch_card              10490
+#define std_scratch_card               10490
 
 #endif //POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H

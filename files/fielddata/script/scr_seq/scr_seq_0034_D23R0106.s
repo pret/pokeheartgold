@@ -34,7 +34,7 @@ scr_seq_D23R0106_001:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	hide_person 0
+	hide_person obj_D23R0106_rkanbum
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	clearflag FLAG_UNK_99B
@@ -131,7 +131,7 @@ _01E5:
 	play_se SEQ_SE_DP_DOOR10
 	wait_se SEQ_SE_DP_DOOR10
 	wait 8, VAR_SPECIAL_x800C
-	hide_person 1
+	hide_person obj_D23R0106_gsgentleman
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	releaseall
@@ -161,7 +161,7 @@ _0263:
 	comparevartovalue VAR_SPECIAL_x8004, 7
 	gotoif ne, _0286
 	wait 112, VAR_SPECIAL_x800C
-	apply_movement 253, _02DC
+	apply_movement obj_partner_poke, _02DC
 _0286:
 	return
 

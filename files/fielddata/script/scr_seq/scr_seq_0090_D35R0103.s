@@ -60,8 +60,8 @@ _00BF:
 	comparevartovalue VAR_TEMP_x400A, 1
 	gotoif ne, _00F4
 	setflag FLAG_UNK_96B
-	hide_person 9
-	hide_person 12
+	hide_person obj_D35R0103_tsure_poke_598
+	hide_person obj_D35R0103_tsure_poke_598_4
 	setflag FLAG_UNK_1F5
 	goto _0127
 
@@ -69,15 +69,15 @@ _00F4:
 	comparevartovalue VAR_TEMP_x400A, 2
 	gotoif ne, _0117
 	setflag FLAG_UNK_96C
-	hide_person 10
-	hide_person 13
+	hide_person obj_D35R0103_tsure_poke_598_2
+	hide_person obj_D35R0103_tsure_poke_598_5
 	setflag FLAG_UNK_1F6
 	goto _0127
 
 _0117:
 	setflag FLAG_UNK_96D
-	hide_person 11
-	hide_person 14
+	hide_person obj_D35R0103_tsure_poke_598_3
+	hide_person obj_D35R0103_tsure_poke_598_6
 	setflag FLAG_UNK_1F7
 _0127:
 	clearflag FLAG_UNK_0A4
@@ -111,8 +111,8 @@ scr_seq_D35R0103_000:
 	apply_movement obj_D35R0103_wataru, _01B8
 	apply_movement obj_D35R0103_tsure_poke_607, _01C0
 	wait_movement
-	hide_person 0
-	hide_person 1
+	hide_person obj_D35R0103_wataru
+	hide_person obj_D35R0103_tsure_poke_607
 	setflag FLAG_UNK_1E5
 	releaseall
 	setvar VAR_UNK_40A9, 1
@@ -148,7 +148,7 @@ scr_seq_D35R0103_013:
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 5
-	hide_person 16
+	hide_person obj_D35R0103_tsure_poke_613
 	setflag FLAG_UNK_24B
 	clearflag FLAG_UNK_24C
 	releaseall
@@ -176,10 +176,10 @@ scr_seq_D35R0103_014:
 	apply_movement obj_D35R0103_tsure_poke_613_2, _0278
 	wait_movement
 	setvar VAR_UNK_40AC, 7
-	hide_person 17
+	hide_person obj_D35R0103_tsure_poke_613_2
 	setflag FLAG_UNK_24D
 	clearflag FLAG_UNK_252
-	show_person 18
+	show_person obj_D35R0103_tsure_poke_613_3
 	releaseall
 	end
 	.byte 0x00
@@ -217,7 +217,7 @@ _02D7:
 _02DF:
 	wait_movement
 	setvar VAR_UNK_40AC, 8
-	hide_person 18
+	hide_person obj_D35R0103_tsure_poke_613_3
 	setflag FLAG_UNK_252
 	setvar VAR_UNK_40A9, 3
 	setflag FLAG_UNK_24B
@@ -294,8 +294,8 @@ scr_seq_D35R0103_003:
 	wait_movement
 	closemsg
 	clearflag FLAG_UNK_1F3
-	show_person 8
-	show_person 7
+	show_person obj_D35R0103_rkanbuw
+	show_person obj_D35R0103_rocketm_4
 	move_person 8, 32, 1, 30, 3
 	move_person 7, 30, 1, 30, 0
 	scrcmd_081 0
@@ -323,8 +323,8 @@ _0436:
 	npc_msg msg_0113_D35R0103_00004
 	closemsg
 	clearflag FLAG_UNK_1E5
-	show_person 0
-	show_person 1
+	show_person obj_D35R0103_wataru
+	show_person obj_D35R0103_tsure_poke_607
 	move_person 0, 20, 1, 25, 3
 	move_person 1, 19, 1, 25, 0
 	apply_movement obj_D35R0103_wataru, _067C
@@ -333,8 +333,8 @@ _0436:
 	npc_msg msg_0113_D35R0103_00005
 	closemsg
 	apply_movement obj_D35R0103_tsure_poke_607, _0690
-	scrcmd_076 149, 0
-	scrcmd_077
+	play_cry SPECIES_DRAGONITE, 0
+	wait_cry
 	apply_movement obj_D35R0103_rkanbuw, _0648
 	wait_movement
 	npc_msg msg_0113_D35R0103_00006
@@ -360,11 +360,11 @@ _0436:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	hide_person 8
-	hide_person 7
-	hide_person 3
-	hide_person 4
-	hide_person 2
+	hide_person obj_D35R0103_rkanbuw
+	hide_person obj_D35R0103_rocketm_4
+	hide_person obj_D35R0103_rocketm_2
+	hide_person obj_D35R0103_rocketm_3
+	hide_person obj_D35R0103_rocketm
 	setflag FLAG_UNK_1F3
 	setflag FLAG_UNK_1F2
 	setflag FLAG_UNK_1E8
@@ -386,8 +386,8 @@ _0436:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_076 149, 0
-	scrcmd_077
+	play_cry SPECIES_DRAGONITE, 0
+	wait_cry
 	apply_movement obj_D35R0103_wataru, _06FC
 	apply_movement obj_D35R0103_tsure_poke_607, _072C
 	wait_movement
@@ -663,8 +663,8 @@ _08F0:
 	apply_movement obj_D35R0103_wataru, _0A20
 	apply_movement obj_D35R0103_tsure_poke_607, _0A2C
 	wait_movement
-	hide_person 0
-	hide_person 1
+	hide_person obj_D35R0103_wataru
+	hide_person obj_D35R0103_tsure_poke_607
 	setflag FLAG_UNK_1E5
 	releaseall
 	scrcmd_074 2141

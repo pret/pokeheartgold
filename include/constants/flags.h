@@ -259,7 +259,7 @@
 #define FLAG_UNK_0FC                 0xFC
 #define FLAG_UNK_0FD                 0xFD
 #define FLAG_UNK_0FE                 0xFE
-#define FLAG_UNK_0FF                 0xFF
+#define FLAG_GOT_SCRATCH_CARD_INFO                 0xFF
 #define FLAG_UNK_100                 0x100
 #define FLAG_UNK_101                 0x101
 #define FLAG_UNK_102                 0x102

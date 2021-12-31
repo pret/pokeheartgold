@@ -664,7 +664,7 @@ scr_seq_T20R0101_002:
 	closemsg
 	clearflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
-	show_person 3
+	show_person obj_T20R0101_var_1
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
 	apply_movement obj_T20R0101_var_1, _0ADC
@@ -701,7 +701,7 @@ _0904:
 	apply_movement obj_T20R0101_policeman, _0ABC
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 1
+	hide_person obj_T20R0101_policeman
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_T20R0101_var_1, _0B08
 	wait_movement
@@ -712,7 +712,7 @@ _0904:
 	wait_movement
 	setflag FLAG_UNK_2E5
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 3
+	hide_person obj_T20R0101_var_1
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
@@ -904,7 +904,7 @@ _0BF3:
 	closemsg
 	apply_movement obj_T20R0101_var_1, _0CC4
 	wait_movement
-	hide_person 3
+	hide_person obj_T20R0101_var_1
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -978,7 +978,7 @@ _0CDC:
 	closemsg
 	apply_movement obj_T20R0101_doctor, _0F50
 	wait_movement
-	apply_movement 253, _0F38
+	apply_movement obj_partner_poke, _0F38
 	wait_movement
 	npc_msg msg_0543_T20R0101_00076
 	closemsg
@@ -1046,7 +1046,7 @@ _0DE3:
 	gotoif ne, _0E27
 	apply_movement obj_player, _0EB8
 	wait_movement
-	apply_movement 253, _0F0C
+	apply_movement obj_partner_poke, _0F0C
 	goto _0EA8
 
 _0E27:
@@ -1054,7 +1054,7 @@ _0E27:
 	gotoif ne, _0E4C
 	apply_movement obj_player, _0EC4
 	wait_movement
-	apply_movement 253, _0F1C
+	apply_movement obj_partner_poke, _0F1C
 	goto _0EA8
 
 _0E4C:
@@ -1062,7 +1062,7 @@ _0E4C:
 	gotoif ne, _0E71
 	apply_movement obj_player, _0ED4
 	wait_movement
-	apply_movement 253, _0F30
+	apply_movement obj_partner_poke, _0F30
 	goto _0EA8
 
 _0E71:
@@ -1070,13 +1070,13 @@ _0E71:
 	gotoif ne, _0E96
 	apply_movement obj_player, _0EF8
 	wait_movement
-	apply_movement 253, _0F30
+	apply_movement obj_partner_poke, _0F30
 	goto _0EA8
 
 _0E96:
 	apply_movement obj_player, _0EE4
 	wait_movement
-	apply_movement 253, _0F1C
+	apply_movement obj_partner_poke, _0F1C
 _0EA8:
 	wait_movement
 	scrcmd_603

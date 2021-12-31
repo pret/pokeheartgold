@@ -104,7 +104,7 @@ _013F:
 	apply_movement obj_T06_daigo, _0188
 	wait_movement
 	setvar VAR_UNK_4130, 2
-	hide_person 18
+	hide_person obj_T06_daigo
 	setflag FLAG_UNK_2FD
 	releaseall
 	end
@@ -195,7 +195,7 @@ scr_seq_T06_011:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_2A4
-	show_person 16
+	show_person obj_T06_minaki
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 1334
 	gotoif ne, _0270
@@ -204,11 +204,11 @@ scr_seq_T06_011:
 _0270:
 	apply_movement obj_player, _040C
 	wait_movement
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_T06_tsure_poke_618
 	scrcmd_523 15, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	callstd 2042
 	scrcmd_602 0
 	scrcmd_603
@@ -250,8 +250,8 @@ _0318:
 	wait_movement
 _034D:
 	callstd 2043
-	hide_person 16
-	hide_person 15
+	hide_person obj_T06_minaki
+	hide_person obj_T06_tsure_poke_618
 	setflag FLAG_UNK_2A4
 	setflag FLAG_UNK_2B4
 	setflag FLAG_UNK_29F
@@ -266,11 +266,11 @@ _037F:
 	apply_movement obj_player, _040C
 	apply_movement obj_T06_tsure_poke_618, _0458
 	wait_movement
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_T06_tsure_poke_618
 	scrcmd_523 15, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	callstd 2042
 	apply_movement obj_T06_tsure_poke_618, _0438
 	apply_movement obj_T06_minaki, _04C0
@@ -398,14 +398,14 @@ scr_seq_T06_012:
 	scrcmd_609
 	lockall
 	clearflag FLAG_UNK_2B4
-	show_person 17
+	show_person obj_T06_minaki_2
 	apply_movement obj_player, _040C
 	wait_movement
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_T06_tsure_poke_618
 	scrcmd_523 15, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	callstd 2042
 	scrcmd_602 0
 	scrcmd_603
@@ -447,8 +447,8 @@ _05C0:
 	apply_movement obj_player, _06AC
 	wait_movement
 	callstd 2043
-	hide_person 17
-	hide_person 15
+	hide_person obj_T06_minaki_2
+	hide_person obj_T06_tsure_poke_618
 	setflag FLAG_UNK_2A4
 	setflag FLAG_UNK_2B4
 	setflag FLAG_UNK_29F
@@ -549,9 +549,9 @@ scr_seq_T06_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 66, 0
+	play_cry SPECIES_MACHOP, 0
 	npc_msg msg_0483_T06_00002
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -633,7 +633,7 @@ _080E:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0835
-	apply_movement 253, _08D8
+	apply_movement obj_partner_poke, _08D8
 	wait_movement
 _0835:
 	setflag FLAG_UNK_189

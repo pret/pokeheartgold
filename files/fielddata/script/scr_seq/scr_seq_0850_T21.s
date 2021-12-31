@@ -202,9 +202,9 @@ _0228:
 	apply_movement obj_T21_gsoldman1, _0580
 	wait_movement
 	release obj_T21_gsoldman1
-	release 253
+	release obj_partner_poke
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 0
+	hide_person obj_T21_gsoldman1
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
 	scrcmd_311 77
@@ -422,7 +422,7 @@ scr_seq_T21_002:
 	wait_movement
 	callstd std_play_follow_music
 	clearflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
-	show_person 0
+	show_person obj_T21_gsoldman1
 	lock obj_T21_gsoldman1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	move_person 0, VAR_TEMP_x4000, 1, 394, 0
@@ -468,7 +468,7 @@ _063E:
 	wait_movement
 	callstd std_fade_end_mom_music
 	release obj_T21_gsoldman1
-	hide_person 0
+	hide_person obj_T21_gsoldman1
 	setflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
 	register_pokegear_card 1
 	releaseall
@@ -568,7 +568,7 @@ _07D4:
 	apply_movement obj_player, _08B8
 _07E4:
 	wait_movement
-	hide_person 4
+	hide_person obj_T21_gsrivel
 	setflag FLAG_HIDE_CHERRYGROVE_RIVAL
 	callstd std_fade_end_rival_outro_music
 	releaseall
@@ -718,7 +718,7 @@ _09E0:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0A07
-	apply_movement 253, _0ACC
+	apply_movement obj_partner_poke, _0ACC
 	wait_movement
 _0A07:
 	setflag FLAG_UNK_189

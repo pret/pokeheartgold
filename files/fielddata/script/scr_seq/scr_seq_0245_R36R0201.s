@@ -67,7 +67,7 @@ scr_seq_R36R0201_002:
 	scrcmd_176 487, 0, 75, 39, 2
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _010A
@@ -77,9 +77,9 @@ scr_seq_R36R0201_002:
 _010A:
 	scrcmd_607
 _010C:
-	apply_movement 253, _0130
+	apply_movement obj_partner_poke, _0130
 	wait_movement
-	release 253
+	release obj_partner_poke
 _011A:
 	releaseall
 	end
@@ -146,7 +146,7 @@ _01DC:
 	scrcmd_176 487, 0, 75, 39, 2
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	lock 253
+	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0221
@@ -156,9 +156,9 @@ _01DC:
 _0221:
 	scrcmd_607
 _0223:
-	apply_movement 253, _0130
+	apply_movement obj_partner_poke, _0130
 	wait_movement
-	release 253
+	release obj_partner_poke
 _0231:
 	releaseall
 	end

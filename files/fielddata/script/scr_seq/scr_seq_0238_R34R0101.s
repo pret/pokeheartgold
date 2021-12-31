@@ -76,8 +76,8 @@ _00CA:
 	apply_movement obj_player, _0204
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 1
-	hide_person 2
+	hide_person obj_R34R0101_var_1
+	hide_person obj_R34R0101_tsure_poke_611
 	wait_se SEQ_SE_DP_KAIDAN2
 	setvar VAR_UNK_408E, 2
 	setflag FLAG_UNK_22D

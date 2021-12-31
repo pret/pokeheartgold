@@ -35,9 +35,9 @@ scr_seq_T04R0301_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 115, 0
+	play_cry SPECIES_KANGASKHAN, 0
 	npc_msg msg_0473_T04R0301_00002
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -47,9 +47,9 @@ scr_seq_T04R0301_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 41, 0
+	play_cry SPECIES_ZUBAT, 0
 	npc_msg msg_0473_T04R0301_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

@@ -75,9 +75,9 @@ scr_seq_R39_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 241, 0
+	play_cry SPECIES_MILTANK, 0
 	npc_msg msg_0396_R39_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -136,7 +136,7 @@ _01C7:
 	apply_movement obj_R39_gsgentleman, _0254
 _01CF:
 	wait_movement
-	hide_person 8
+	hide_person obj_R39_gsgentleman
 	setflag FLAG_UNK_228
 	releaseall
 	setvar VAR_UNK_408F, 1
@@ -240,7 +240,7 @@ _032B:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0352
-	apply_movement 253, _040C
+	apply_movement obj_partner_poke, _040C
 	wait_movement
 _0352:
 	setflag FLAG_UNK_189

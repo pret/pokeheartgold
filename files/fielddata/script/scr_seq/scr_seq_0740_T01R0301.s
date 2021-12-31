@@ -124,7 +124,7 @@ _01AB:
 _01B2:
 	checkflag FLAG_UNK_988
 	gotoif TRUE, _01F2
-	callstd std_pokedex_evaluation
+	callstd std_in_person_evaluate_dex
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _01EC
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -472,9 +472,9 @@ _0663:
 _066B:
 	wait_movement
 	scrcmd_452 1, 0
-	scrcmd_076 1, 0
+	play_cry SPECIES_BULBASAUR, 0
 	npc_msg msg_0451_T01R0301_00045
-	scrcmd_077
+	wait_cry
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -509,9 +509,9 @@ _0711:
 _0719:
 	wait_movement
 	scrcmd_452 7, 0
-	scrcmd_076 7, 0
+	play_cry SPECIES_SQUIRTLE, 0
 	npc_msg msg_0451_T01R0301_00044
-	scrcmd_077
+	wait_cry
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -546,9 +546,9 @@ _07BF:
 _07C7:
 	wait_movement
 	scrcmd_452 4, 0
-	scrcmd_076 4, 0
+	play_cry SPECIES_CHARMANDER, 0
 	npc_msg msg_0451_T01R0301_00043
-	scrcmd_077
+	wait_cry
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -565,19 +565,19 @@ _0801:
 	gotoif eq, _098B
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif ne, _082F
-	hide_person 6
+	hide_person obj_T01R0301_monstarball_3
 	setflag FLAG_UNK_2FE
 	goto _0852
 
 _082F:
 	comparevartovalue VAR_SPECIAL_x8004, 7
 	gotoif ne, _084A
-	hide_person 5
+	hide_person obj_T01R0301_monstarball_2
 	setflag FLAG_UNK_2FF
 	goto _0852
 
 _084A:
-	hide_person 4
+	hide_person obj_T01R0301_monstarball
 	setflag FLAG_UNK_300
 _0852:
 	buffer_players_name 0

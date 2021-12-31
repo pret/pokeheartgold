@@ -23,7 +23,7 @@ scr_seq_T10R0601_001:
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_210
-	show_person 3
+	show_person obj_T10R0601_babyboy1_11
 	setvar VAR_UNK_40C8, 1
 	releaseall
 	end
@@ -83,7 +83,7 @@ _00F0:
 	closemsg
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KI_GASYAN
-	hide_person 4
+	hide_person obj_T10R0601_leag_door2
 	move_person 2, 6, 0, 20, 0
 	move_person 1, 6, 0, 17, 0
 	wait 30, VAR_SPECIAL_x8004
@@ -97,17 +97,17 @@ _00F0:
 	gotoif eq, _01A1
 	comparevartovalue VAR_TEMP_x4000, 5
 	gotoif ne, _017C
-	apply_movement 253, _02F8
+	apply_movement obj_partner_poke, _02F8
 	goto _019F
 
 _017C:
 	comparevartovalue VAR_TEMP_x4000, 6
 	gotoif ne, _0197
-	apply_movement 253, _0308
+	apply_movement obj_partner_poke, _0308
 	goto _019F
 
 _0197:
-	apply_movement 253, _0320
+	apply_movement obj_partner_poke, _0320
 _019F:
 	wait_movement
 _01A1:
@@ -142,7 +142,7 @@ _01A1:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0234
-	apply_movement 253, _03A4
+	apply_movement obj_partner_poke, _03A4
 	wait_movement
 _0234:
 	play_se SEQ_SE_DP_KAIDAN2

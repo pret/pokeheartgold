@@ -123,9 +123,9 @@ scr_seq_D23R0104_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 52, 0
+	play_cry SPECIES_MEOWTH, 0
 	npc_msg msg_0068_D23R0104_00007
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

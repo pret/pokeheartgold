@@ -29,7 +29,7 @@ _0041:
 scr_seq_T11R0802_005:
 	comparevartovalue VAR_TEMP_x400B, 0
 	gotoif ne, _005A
-	hide_person 3
+	hide_person obj_T11R0802_var_1
 	setvar VAR_TEMP_x400B, 1
 _005A:
 	end
@@ -76,7 +76,7 @@ _00E9:
 	takeitem ITEM_LOST_ITEM, 1, VAR_SPECIAL_x800C
 	npc_msg msg_0541_T11R0802_00006
 	clearflag FLAG_UNK_2FB
-	show_person 1
+	show_person obj_T11R0802_mono_pip
 	setvar VAR_SPECIAL_x8004, 480
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -119,8 +119,8 @@ _0187:
 	apply_movement obj_T11R0802_gsgirl1, _0294
 _018F:
 	wait_movement
-	show_person 3
-	hide_person 0
+	show_person obj_T11R0802_var_1
+	hide_person obj_T11R0802_gsgirl1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01B4
 	apply_movement obj_T11R0802_var_1, _0304
@@ -155,8 +155,8 @@ _0215:
 	apply_movement obj_T11R0802_var_1, _0294
 _021D:
 	wait_movement
-	show_person 0
-	hide_person 3
+	show_person obj_T11R0802_gsgirl1
+	hide_person obj_T11R0802_var_1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0242
 	apply_movement obj_T11R0802_gsgirl1, _0304
@@ -271,9 +271,9 @@ _03A3:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 354, 0
+	play_cry SPECIES_BANETTE, 0
 	npc_msg msg_0541_T11R0802_00013
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

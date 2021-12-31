@@ -41,7 +41,7 @@ scr_seq_T25R0601_003:
 	scrcmd_604 48
 	apply_movement obj_T25R0601_gsgirl1, _0120
 	apply_movement obj_player, _0108
-	apply_movement 253, _014C
+	apply_movement obj_partner_poke, _014C
 	wait_movement
 	npc_msg msg_0589_T25R0601_00005
 	closemsg

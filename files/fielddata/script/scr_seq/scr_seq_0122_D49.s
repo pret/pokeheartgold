@@ -217,16 +217,16 @@ _033E:
 	apply_movement obj_D49_thlonowner, _06DC
 	apply_movement obj_D49_tsure_poke_590, _06E4
 	wait_movement
-	hide_person 0
+	hide_person obj_D49_thlonowner
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_D49_tsure_poke_590, _041C
 	wait_movement
-	scrcmd_076 62, 0
-	scrcmd_077
+	play_cry SPECIES_POLIWRATH, 0
+	wait_cry
 	apply_movement obj_D49_tsure_poke_590, _06E4
 	wait_movement
-	hide_person 1
+	hide_person obj_D49_tsure_poke_590
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_311 77
@@ -527,9 +527,9 @@ scr_seq_D49_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 43, 0
+	play_cry SPECIES_ODDISH, 0
 	npc_msg msg_0137_D49_00008
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -549,9 +549,9 @@ scr_seq_D49_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 52, 0
+	play_cry SPECIES_MEOWTH, 0
 	npc_msg msg_0137_D49_00010
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -610,9 +610,9 @@ scr_seq_D49_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 16, 0
+	play_cry SPECIES_PIDGEY, 0
 	npc_msg msg_0137_D49_00016
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -632,9 +632,9 @@ scr_seq_D49_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 80, 0
+	play_cry SPECIES_SLOWBRO, 0
 	npc_msg msg_0137_D49_00018
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -654,9 +654,9 @@ scr_seq_D49_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 66, 0
+	play_cry SPECIES_MACHOP, 0
 	npc_msg msg_0137_D49_00020
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -676,9 +676,9 @@ scr_seq_D49_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 79, 0
+	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0137_D49_00022
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -688,9 +688,9 @@ scr_seq_D49_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 83, 0
+	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0137_D49_00023
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -700,9 +700,9 @@ scr_seq_D49_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 54, 0
+	play_cry SPECIES_PSYDUCK, 0
 	npc_msg msg_0137_D49_00024
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -1000,7 +1000,7 @@ _0CC3:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0CEA
-	apply_movement 253, _0EC4
+	apply_movement obj_partner_poke, _0EC4
 	wait_movement
 _0CEA:
 	setflag FLAG_UNK_189
@@ -1069,7 +1069,7 @@ _0DEB:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0E12
-	apply_movement 253, _0EC4
+	apply_movement obj_partner_poke, _0EC4
 	wait_movement
 _0E12:
 	fade_screen 6, 1, 0, 0x00

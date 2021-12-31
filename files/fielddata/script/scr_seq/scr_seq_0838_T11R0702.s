@@ -180,27 +180,27 @@ _02C1:
 	.byte 0x02, 0x00
 _0300:
 	clearflag FLAG_UNK_283
-	show_person 0
+	show_person obj_T11R0702_rotomf
 	return
 
 _030A:
 	clearflag FLAG_UNK_285
-	show_person 2
+	show_person obj_T11R0702_rotomi
 	return
 
 _0314:
 	clearflag FLAG_UNK_284
-	show_person 3
+	show_person obj_T11R0702_rotomw
 	return
 
 _031E:
 	clearflag FLAG_UNK_286
-	show_person 1
+	show_person obj_T11R0702_rotoms
 	return
 
 _0328:
 	clearflag FLAG_UNK_287
-	show_person 4
+	show_person obj_T11R0702_rotomg
 	return
 
 _0332:
@@ -302,10 +302,10 @@ _04CC:
 	gotoif ne, _050C
 	comparevartovar VAR_TEMP_x4000, VAR_SPECIAL_x8000
 	gotoif ne, _0506
-	release 253
-	apply_movement 253, _06F0
+	release obj_partner_poke
+	apply_movement obj_partner_poke, _06F0
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 _0506:
 	setvar VAR_TEMP_x400A, 1
 _050C:
@@ -323,10 +323,10 @@ _051C:
 	scrcmd_490 32768
 	comparevartovar VAR_TEMP_x4000, VAR_SPECIAL_x8000
 	gotoif ne, _055E
-	release 253
-	apply_movement 253, _06F0
+	release obj_partner_poke
+	apply_movement obj_partner_poke, _06F0
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 _055E:
 	setvar VAR_TEMP_x400A, 1
 _0564:
@@ -408,23 +408,23 @@ _0671:
 	goto _02C1
 	.byte 0x02, 0x00
 _06D2:
-	hide_person 0
+	hide_person obj_T11R0702_rotomf
 	return
 
 _06D8:
-	hide_person 1
+	hide_person obj_T11R0702_rotoms
 	return
 
 _06DE:
-	hide_person 2
+	hide_person obj_T11R0702_rotomi
 	return
 
 _06E4:
-	hide_person 3
+	hide_person obj_T11R0702_rotomw
 	return
 
 _06EA:
-	hide_person 4
+	hide_person obj_T11R0702_rotomg
 	return
 
 
@@ -514,10 +514,10 @@ _07B3:
 	return
 
 _07BA:
-	release 253
-	apply_movement 253, _07D0
+	release obj_partner_poke
+	apply_movement obj_partner_poke, _07D0
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 	return
 	.byte 0x00, 0x00
 

@@ -70,7 +70,7 @@ _00C5:
 _00CD:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	hide_person 4
+	hide_person obj_T22FS0101_assistantm
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_HIDE_VIOLET_SHOP_KIMONO_GIRL
 	releaseall

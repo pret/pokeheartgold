@@ -35,9 +35,9 @@ scr_seq_T02R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 21, 0
+	play_cry SPECIES_SPEAROW, 0
 	npc_msg msg_0456_T02R0201_00002
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -47,9 +47,9 @@ scr_seq_T02R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 19, 0
+	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0456_T02R0201_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

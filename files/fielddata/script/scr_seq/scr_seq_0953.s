@@ -1707,7 +1707,7 @@ scr_seq_0953_739:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0EDD
-	release 253
+	release obj_partner_poke
 _0EDD:
 	scrcmd_170 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

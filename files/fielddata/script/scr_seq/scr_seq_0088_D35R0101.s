@@ -115,10 +115,10 @@ scr_seq_D35R0101_006:
 	closemsg
 	apply_movement obj_D35R0101_wataru, _02A4
 	wait_movement
-	hide_person 7
+	hide_person obj_D35R0101_wataru
 	apply_movement obj_D35R0101_tsure_poke_607, _02DC
 	wait_movement
-	hide_person 8
+	hide_person obj_D35R0101_tsure_poke_607
 	setflag FLAG_UNK_1F8
 	setvar VAR_UNK_40A8, 2
 	releaseall

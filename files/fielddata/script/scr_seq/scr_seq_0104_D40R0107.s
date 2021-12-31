@@ -27,12 +27,12 @@ scr_seq_D40R0107_002:
 
 _003B:
 	setflag FLAG_UNK_243
-	hide_person 5
-	hide_person 6
-	hide_person 7
-	hide_person 8
-	hide_person 9
-	hide_person 10
+	hide_person obj_D40R0107_lug_obj01
+	hide_person obj_D40R0107_stop
+	hide_person obj_D40R0107_stop_2
+	hide_person obj_D40R0107_stop_3
+	hide_person obj_D40R0107_stop_4
+	hide_person obj_D40R0107_stop_5
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -72,9 +72,9 @@ scr_seq_D40R0107_000:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x400A, 249
-	scrcmd_076 VAR_TEMP_x400A, 0
+	play_cry VAR_TEMP_x400A, 0
 	npc_msg msg_0125_D40R0107_00004
-	scrcmd_077
+	wait_cry
 	closemsg
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
@@ -406,13 +406,13 @@ scr_seq_D40R0107_005:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	clearflag FLAG_UNK_243
-	show_person 5
+	show_person obj_D40R0107_lug_obj01
 	scrcmd_375 5
-	show_person 6
-	show_person 7
-	show_person 8
-	show_person 9
-	show_person 10
+	show_person obj_D40R0107_stop
+	show_person obj_D40R0107_stop_2
+	show_person obj_D40R0107_stop_3
+	show_person obj_D40R0107_stop_4
+	show_person obj_D40R0107_stop_5
 	release obj_D40R0107_dancer_5
 	release obj_D40R0107_dancer_3
 	release obj_D40R0107_dancer_4

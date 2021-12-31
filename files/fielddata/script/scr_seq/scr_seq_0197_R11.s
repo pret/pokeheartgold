@@ -20,10 +20,10 @@ scr_seq_R11_001:
 
 _002A:
 	setflag FLAG_UNK_261
-	hide_person 4
-	hide_person 8
-	hide_person 7
-	hide_person 9
+	hide_person obj_R11_kabigon
+	hide_person obj_R11_gsbabyboy1_2
+	hide_person obj_R11_gsbabyboy1
+	hide_person obj_R11_gsbabyboy1_3
 	clearflag FLAG_UNK_0A4
 	end
 
@@ -43,9 +43,9 @@ scr_seq_R11_000:
 	end
 
 _006A:
-	scrcmd_076 143, 0
+	play_cry SPECIES_SNORLAX, 0
 	npc_msg msg_0346_R11_00003
-	scrcmd_077
+	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
 	scrcmd_589 143, 50, 0

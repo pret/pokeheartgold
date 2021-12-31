@@ -17,10 +17,10 @@ scr_seq_0150_000:
 	hasitem ITEM_APRICORN_BOX, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0099
-	scrcmd_623 32780
+	check_apricorn_tree VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0088
-	scrcmd_624 32768
+	apricorn_tree_get_apricorn VAR_SPECIAL_x8000
 	setvar VAR_SPECIAL_x8005, 1
 	buffer_players_name 0
 	buffer_apricorn_name 1, VAR_SPECIAL_x8000
@@ -29,7 +29,7 @@ scr_seq_0150_000:
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0023_00003
 	wait_fanfare
-	scrcmd_625 32768, 1, 32780
+	give_apricorn_from_tree VAR_SPECIAL_x8000, 1, VAR_SPECIAL_x800C
 	add_special_game_stat 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _007D

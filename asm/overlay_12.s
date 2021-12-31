@@ -83722,7 +83722,7 @@ _0226020C:
 	add r0, #0x66
 	strb r1, [r0]
 _0226024C:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	beq _02260256
 _02260254:

@@ -256,18 +256,18 @@ _02F4:
 	goto _0374
 
 _0363:
-	scrcmd_076 VAR_SPECIAL_x8001, 0
+	play_cry VAR_SPECIAL_x8001, 0
 	npc_msg msg_0439_00023
-	scrcmd_077
+	wait_cry
 	goto _03DB
 
 _0374:
 	touchscreen_menu_show
-	scrcmd_076 VAR_SPECIAL_x8001, 0
+	play_cry VAR_SPECIAL_x8001, 0
 	npc_msg msg_0439_00041
 	waitbutton
 	closemsg
-	scrcmd_077
+	wait_cry
 	scrcmd_114
 	releaseall
 	end
@@ -437,10 +437,10 @@ _0566:
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0439_00034
-	scrcmd_076 VAR_SPECIAL_x8002, 0
+	play_cry VAR_SPECIAL_x8002, 0
 	buffer_players_name 1
 	npc_msg msg_0439_00035
-	scrcmd_077
+	wait_cry
 	scrcmd_313 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, _05BE

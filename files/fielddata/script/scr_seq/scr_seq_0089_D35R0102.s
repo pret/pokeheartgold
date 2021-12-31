@@ -170,7 +170,7 @@ _02C4:
 _02D0:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0460
 	wait_movement
@@ -200,7 +200,7 @@ _02D0:
 _036C:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _046C
 	wait_movement
@@ -311,7 +311,7 @@ _04F7:
 _0503:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0668
 	wait_movement
@@ -343,7 +343,7 @@ _0503:
 _05A9:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0674
 	wait_movement
@@ -371,7 +371,7 @@ _05A9:
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
 _0649:
-	hide_person 1
+	hide_person obj_D35R0102_rocketm
 	setflag FLAG_UNK_1E8
 	setvar VAR_UNK_40AE, 2
 	apply_movement obj_D35R0102_aji_peru_2, _049C
@@ -461,7 +461,7 @@ _073B:
 _0747:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0680
 	wait_movement
@@ -493,7 +493,7 @@ _0747:
 _07ED:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _068C
 	wait_movement
@@ -521,7 +521,7 @@ _07ED:
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
 _088D:
-	hide_person 1
+	hide_person obj_D35R0102_rocketm
 	setflag FLAG_UNK_1E8
 	setvar VAR_UNK_40AF, 2
 	apply_movement obj_D35R0102_aji_peru_3, _049C
@@ -551,7 +551,7 @@ _08EC:
 _08F8:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0698
 	wait_movement
@@ -583,7 +583,7 @@ _08F8:
 _099E:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06A4
 	wait_movement
@@ -611,7 +611,7 @@ _099E:
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
 _0A3E:
-	hide_person 1
+	hide_person obj_D35R0102_rocketm
 	setvar VAR_UNK_40B0, 2
 	apply_movement obj_D35R0102_aji_peru_4, _049C
 	wait_movement
@@ -640,7 +640,7 @@ _0A99:
 _0AA5:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06B0
 	wait_movement
@@ -672,7 +672,7 @@ _0AA5:
 _0B4B:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
-	show_person 1
+	show_person obj_D35R0102_rocketm
 	move_person 1, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06BC
 	wait_movement
@@ -700,7 +700,7 @@ _0B4B:
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
 _0BEB:
-	hide_person 1
+	hide_person obj_D35R0102_rocketm
 	setvar VAR_UNK_40B1, 2
 	apply_movement obj_D35R0102_aji_peru_5, _049C
 	wait_movement

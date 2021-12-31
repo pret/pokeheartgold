@@ -71,12 +71,12 @@ _00E2:
 	comparevartovalue VAR_UNK_40F6, 1
 	gotoif eq, _0141
 	setflag FLAG_UNK_26E
-	hide_person 0
-	hide_person 1
-	hide_person 2
-	hide_person 3
-	hide_person 4
-	hide_person 5
+	hide_person obj_D02R0104_tsure_poke_582
+	hide_person obj_D02R0104_tsure_poke_582_2
+	hide_person obj_D02R0104_tsure_poke_582_3
+	hide_person obj_D02R0104_tsure_poke_582_4
+	hide_person obj_D02R0104_tsure_poke_582_5
+	hide_person obj_D02R0104_tsure_poke_582_6
 	setvar VAR_UNK_40F6, 1
 	end
 
@@ -109,7 +109,7 @@ scr_seq_D02R0104_002:
 	apply_movement obj_D02R0104_tsure_poke_582_5, _0374
 	apply_movement obj_D02R0104_tsure_poke_582_6, _037C
 	wait_movement
-	scrcmd_076 35, 0
+	play_cry SPECIES_CLEFAIRY, 0
 	apply_movement obj_D02R0104_tsure_poke_582, _0384
 	apply_movement obj_D02R0104_tsure_poke_582_2, _0394
 	apply_movement obj_D02R0104_tsure_poke_582_3, _03A4
@@ -117,7 +117,7 @@ scr_seq_D02R0104_002:
 	apply_movement obj_D02R0104_tsure_poke_582_5, _03C4
 	apply_movement obj_D02R0104_tsure_poke_582_6, _03CC
 	wait_movement
-	scrcmd_076 35, 0
+	play_cry SPECIES_CLEFAIRY, 0
 	apply_movement obj_D02R0104_tsure_poke_582, _03D4
 	apply_movement obj_D02R0104_tsure_poke_582_2, _03F0
 	apply_movement obj_D02R0104_tsure_poke_582_3, _040C
@@ -125,7 +125,7 @@ scr_seq_D02R0104_002:
 	apply_movement obj_D02R0104_tsure_poke_582_5, _0444
 	apply_movement obj_D02R0104_tsure_poke_582_6, _0468
 	wait_movement
-	scrcmd_076 35, 0
+	play_cry SPECIES_CLEFAIRY, 0
 	apply_movement obj_D02R0104_tsure_poke_582, _048C
 	apply_movement obj_D02R0104_tsure_poke_582_2, _04A8
 	apply_movement obj_D02R0104_tsure_poke_582_3, _04C4
@@ -133,7 +133,7 @@ scr_seq_D02R0104_002:
 	apply_movement obj_D02R0104_tsure_poke_582_5, _04FC
 	apply_movement obj_D02R0104_tsure_poke_582_6, _0520
 	wait_movement
-	scrcmd_076 35, 0
+	play_cry SPECIES_CLEFAIRY, 0
 	apply_movement obj_D02R0104_tsure_poke_582, _0544
 	apply_movement obj_D02R0104_tsure_poke_582_2, _0560
 	apply_movement obj_D02R0104_tsure_poke_582_3, _057C
@@ -141,7 +141,7 @@ scr_seq_D02R0104_002:
 	apply_movement obj_D02R0104_tsure_poke_582_5, _05B4
 	apply_movement obj_D02R0104_tsure_poke_582_6, _05D8
 	wait_movement
-	scrcmd_076 35, 0
+	play_cry SPECIES_CLEFAIRY, 0
 	apply_movement obj_D02R0104_tsure_poke_582, _05FC
 	apply_movement obj_D02R0104_tsure_poke_582_2, _0614
 	apply_movement obj_D02R0104_tsure_poke_582_3, _0630
@@ -149,7 +149,7 @@ scr_seq_D02R0104_002:
 	apply_movement obj_D02R0104_tsure_poke_582_5, _0668
 	apply_movement obj_D02R0104_tsure_poke_582_6, _068C
 	wait_movement
-	scrcmd_076 35, 0
+	play_cry SPECIES_CLEFAIRY, 0
 	apply_movement obj_D02R0104_tsure_poke_582, _06B0
 	apply_movement obj_D02R0104_tsure_poke_582_2, _06D4
 	apply_movement obj_D02R0104_tsure_poke_582_3, _06F8
@@ -157,16 +157,16 @@ scr_seq_D02R0104_002:
 	apply_movement obj_D02R0104_tsure_poke_582_5, _0744
 	apply_movement obj_D02R0104_tsure_poke_582_6, _0760
 	wait_movement
-	show_person 6
+	show_person obj_D02R0104_monstarball
 	apply_movement obj_D02R0104_tsure_poke_582_4, _077C
 	apply_movement obj_D02R0104_tsure_poke_582_6, _0798
 	wait_movement
-	hide_person 0
-	hide_person 1
-	hide_person 2
-	hide_person 3
-	hide_person 4
-	hide_person 5
+	hide_person obj_D02R0104_tsure_poke_582
+	hide_person obj_D02R0104_tsure_poke_582_2
+	hide_person obj_D02R0104_tsure_poke_582_3
+	hide_person obj_D02R0104_tsure_poke_582_4
+	hide_person obj_D02R0104_tsure_poke_582_5
+	hide_person obj_D02R0104_tsure_poke_582_6
 	setflag FLAG_UNK_26E
 	setvar VAR_UNK_40F6, 1
 	setflag FLAG_UNK_AB5

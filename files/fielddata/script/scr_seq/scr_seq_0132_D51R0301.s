@@ -107,7 +107,7 @@ _0107:
 _0167:
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2DD
-	hide_person 0
+	hide_person obj_D51R0301_champion
 	clearflag FLAG_UNK_2DC
 	wait_se SEQ_SE_DP_KAIDAN2
 	setvar VAR_UNK_40FB, 7
@@ -295,9 +295,9 @@ scr_seq_D51R0301_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 63, 0
+	play_cry SPECIES_ABRA, 0
 	npc_msg msg_0147_D51R0301_00013
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

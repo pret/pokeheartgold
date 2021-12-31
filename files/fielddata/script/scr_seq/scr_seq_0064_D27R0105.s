@@ -16,7 +16,7 @@ scr_seq_D27R0105_000:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0039
 	apply_movement obj_player, _0070
-	apply_movement 253, _007C
+	apply_movement obj_partner_poke, _007C
 	wait_movement
 	goto _0043
 

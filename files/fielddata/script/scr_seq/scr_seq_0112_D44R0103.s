@@ -166,7 +166,7 @@ _019C:
 	closemsg
 	apply_movement obj_D44R0103_gsleader8, _0434
 	wait_movement
-	hide_person 3
+	hide_person obj_D44R0103_gsleader8
 	callstd 2045
 	wait_fanfare
 	apply_movement obj_D44R0103_chourou, _0450
@@ -454,7 +454,7 @@ _063D:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0664
-	apply_movement 253, _0720
+	apply_movement obj_partner_poke, _0720
 	wait_movement
 _0664:
 	setflag FLAG_UNK_189

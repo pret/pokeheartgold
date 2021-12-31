@@ -47,7 +47,7 @@ scr_seq_D45R0102_001:
 	apply_movement obj_player, _0374
 	apply_movement obj_D45R0102_var_1, _03AC
 	wait_movement
-	apply_movement 253, _0398
+	apply_movement obj_partner_poke, _0398
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -99,7 +99,7 @@ scr_seq_D45R0102_001:
 	closemsg
 	apply_movement obj_D45R0102_sakaki, _0350
 	wait_movement
-	hide_person 4
+	hide_person obj_D45R0102_sakaki
 	setflag FLAG_UNK_303
 	apply_movement obj_player, _0380
 	apply_movement obj_D45R0102_var_1, _0380
@@ -119,7 +119,7 @@ scr_seq_D45R0102_001:
 	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 251
 	callif ne, _02C0
-	apply_movement 253, _03A4
+	apply_movement obj_partner_poke, _03A4
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	fade_screen 6, 6, 0, 0x7FFF
@@ -161,7 +161,7 @@ _0250:
 	fade_screen 6, 6, 1, 0x7FFF
 	wait_fade
 	wait_movement
-	hide_person 4
+	hide_person obj_D45R0102_sakaki
 	setflag FLAG_UNK_303
 	npc_msg msg_0131_D45R0102_00019
 	closemsg

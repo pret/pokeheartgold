@@ -4146,7 +4146,7 @@ ov01_021E7A98: ; 0x021E7A98
 	bl GameStats_GetCapped
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r1, r4, #0
 	bl sub_02032058
 	pop {r3, r4, r5, pc}
@@ -26497,7 +26497,7 @@ _021F21D2:
 	str r0, [r4]
 	b _021F2324
 _021F21FC:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021F221C
 	add r0, r5, #0
@@ -27159,7 +27159,7 @@ ov01_021F2734: ; 0x021F2734
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	beq _021F2746
 	mov r0, #0
@@ -60201,8 +60201,8 @@ ScrCmd_735: ; 0x02201C70
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
-	bl sub_02031BD0
+	bl Save_ApricornBox_get
+	bl ApricornBox_GetKurtQuantity
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -60215,10 +60215,10 @@ ScrCmd_736: ; 0x02201C9C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	mov r1, #0
 	add r2, r1, #0
-	bl sub_02031BB8
+	bl ApricornBox_SetKurtApricorn
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_736
@@ -60237,8 +60237,8 @@ ScrCmd_737: ; 0x02201CB4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
-	bl sub_02031BD4
+	bl Save_ApricornBox_get
+	bl ApricornBox_GetKurtBall
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -60260,13 +60260,13 @@ ScrCmd_738: ; 0x02201CE0
 	ldr r0, [r4]
 	mov r5, #0
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r6, r0, #0
 	add r4, r5, #0
 _02201D06:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02031BA4
+	bl ApricornBox_CountApricorn
 	add r4, r4, #1
 	add r5, r5, r0
 	cmp r4, #7
@@ -60348,7 +60348,7 @@ ScrCmd_741: ; 0x02201DA4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	add r0, #0x80
@@ -65921,8 +65921,8 @@ ov01_02204834: ; 0x02204834
 _0220483C: .word ov01_022095EC
 	thumb_func_end ov01_02204834
 
-	thumb_func_start ov01_02204840
-ov01_02204840: ; 0x02204840
+	thumb_func_start FieldSys_CheckApricornTree
+FieldSys_CheckApricornTree: ; 0x02204840
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -65945,7 +65945,7 @@ ov01_02204840: ; 0x02204840
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02204870: .word ov01_02204874
-	thumb_func_end ov01_02204840
+	thumb_func_end FieldSys_CheckApricornTree
 
 	thumb_func_start ov01_02204874
 ov01_02204874: ; 0x02204874

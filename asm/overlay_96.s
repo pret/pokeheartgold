@@ -3686,7 +3686,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r7, r0, #0
 	mov r0, #0x7e
 	lsl r0, r0, #2
@@ -3833,7 +3833,7 @@ ov96_021E7544: ; 0x021E7544
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02031B14
+	bl Save_ApricornBox_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov96_021E5D34
@@ -14163,7 +14163,7 @@ _021EC25A:
 	bl ov96_021EAD78
 	cmp r0, #0
 	bne _021EC294
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021EC294
 	add r0, r4, #0

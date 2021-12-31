@@ -61,7 +61,7 @@ _00B5:
 	end
 
 _00D5:
-	hide_person 12
+	hide_person obj_D32R0401_var_2
 	setflag FLAG_UNK_234
 	return
 
@@ -96,7 +96,7 @@ _0139:
 _0147:
 	clearflag FLAG_UNK_234
 	call _017D
-	show_person 12
+	show_person obj_D32R0401_var_2
 	end
 
 scr_seq_D32R0401_015:
@@ -703,9 +703,9 @@ scr_seq_D32R0401_009:
 	lockall
 	faceplayer
 	wait_se SEQ_SE_DP_SELECT
-	scrcmd_076 80, 0
+	play_cry SPECIES_SLOWBRO, 0
 	npc_msg msg_0108_D32R0401_00062
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

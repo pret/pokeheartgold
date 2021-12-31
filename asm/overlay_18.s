@@ -38093,7 +38093,7 @@ _021F8A66:
 	strh r1, [r4, r0]
 	b _021F8AA0
 _021F8A8A:
-	bl sub_02006360
+	bl IsCryFinished
 	cmp r0, #0
 	bne _021F8AA0
 	mov r0, #0x95

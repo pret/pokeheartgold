@@ -150,14 +150,14 @@ scr_seq_R22_003:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	hide_person 1
-	hide_person 2
+	hide_person obj_R22_sakaki
+	hide_person obj_R22_gsrivel
 	setflag FLAG_UNK_301
 	callstd 2032
 	gender_msgbox msg_0360_R22_00022, msg_0360_R22_00021
 	closemsg
 	fade_out_bgm 20, 30
-	apply_movement 253, _0350
+	apply_movement obj_partner_poke, _0350
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	fade_screen 6, 6, 0, 0x7FFF
@@ -377,7 +377,7 @@ _0523:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _054A
-	apply_movement 253, _0604
+	apply_movement obj_partner_poke, _0604
 	wait_movement
 _054A:
 	setflag FLAG_UNK_189

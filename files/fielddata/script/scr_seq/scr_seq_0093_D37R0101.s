@@ -22,7 +22,7 @@ scr_seq_D37R0101_002:
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif eq, _0228
 	clearflag FLAG_UNK_2C8
-	show_person 3
+	show_person obj_D37R0101_tsure_poke_611
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, _0050
 	move_person 3, 9, 0, 25, 2
@@ -31,8 +31,8 @@ _0050:
 	apply_movement obj_D37R0101_tsure_poke_611, _0174
 	wait_movement
 	wait 8, VAR_SPECIAL_x800C
-	scrcmd_076 183, 0
-	scrcmd_077
+	play_cry SPECIES_MARILL, 0
+	wait_cry
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -42,7 +42,7 @@ _0050:
 	scrcmd_602 1
 	scrcmd_604 48
 	clearflag FLAG_UNK_2C8
-	show_person 2
+	show_person obj_D37R0101_var_1
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, _00AB
 	move_person 2, 9, 0, 25, 2
@@ -56,7 +56,7 @@ _00AB:
 	gotoif eq, _00EE
 	apply_movement obj_D37R0101_tsure_poke_611, _0218
 	apply_movement obj_player, _0218
-	apply_movement 253, _0218
+	apply_movement obj_partner_poke, _0218
 	wait_movement
 	goto _0100
 
@@ -83,8 +83,8 @@ _0100:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2C8
-	hide_person 2
-	hide_person 3
+	hide_person obj_D37R0101_var_1
+	hide_person obj_D37R0101_tsure_poke_611
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_fade_end_friend_music
 	setvar VAR_UNK_40F8, 1
@@ -157,9 +157,9 @@ _0220:
 	step_end
 _0228:
 	clearflag FLAG_UNK_2C8
-	show_person 2
+	show_person obj_D37R0101_var_1
 	clearflag FLAG_UNK_2C8
-	show_person 3
+	show_person obj_D37R0101_tsure_poke_611
 	lock obj_D37R0101_tsure_poke_611
 	callstd std_play_friend_music
 	move_person 2, 25, 0, 9, 0
@@ -194,8 +194,8 @@ _0228:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2C8
-	hide_person 2
-	hide_person 3
+	hide_person obj_D37R0101_var_1
+	hide_person obj_D37R0101_tsure_poke_611
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_fade_end_friend_music
 	setvar VAR_UNK_40F8, 1

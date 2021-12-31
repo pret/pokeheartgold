@@ -151,7 +151,7 @@ scr_seq_D24R0218_002:
 	closemsg
 	apply_movement obj_D24R0218_suit, _0250
 	wait_movement
-	hide_person 0
+	hide_person obj_D24R0218_suit
 	setflag FLAG_UNK_2E7
 	setvar VAR_UNK_40FB, 10
 	releaseall

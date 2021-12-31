@@ -64,7 +64,7 @@ scr_seq_R30_002:
 	scrcmd_310 77
 	scrcmd_308 77
 	clearflag FLAG_UNK_24F
-	show_person 13
+	show_person obj_R30_gsmiddleman1
 	apply_movement obj_R30_gsmiddleman1, _01B0
 	wait_movement
 	scrcmd_311 77
@@ -118,7 +118,7 @@ _0148:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	hide_person 13
+	hide_person obj_R30_gsmiddleman1
 	setflag FLAG_UNK_24F
 	releaseall
 	setflag FLAG_UNK_06D

@@ -78,9 +78,9 @@ scr_seq_D23R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 39, 0
+	play_cry SPECIES_JIGGLYPUFF, 0
 	npc_msg msg_0066_D23R0102_00003
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -211,19 +211,19 @@ _022B:
 	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, _0295
-	release 253
+	release obj_partner_poke
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _0279
 	apply_movement obj_player, _05CC
-	apply_movement 253, _05E0
+	apply_movement obj_partner_poke, _05E0
 	goto _0289
 
 _0279:
 	apply_movement obj_player, _05F0
-	apply_movement 253, _0600
+	apply_movement obj_partner_poke, _0600
 _0289:
 	wait_movement
-	lock 253
+	lock obj_partner_poke
 	goto _02BA
 
 _0295:

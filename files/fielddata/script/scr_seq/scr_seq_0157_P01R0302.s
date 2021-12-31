@@ -217,7 +217,7 @@ _0305:
 	setvar VAR_UNK_40CB, 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	hide_person 1
+	hide_person obj_P01R0302_gsbabygirl1
 	setflag FLAG_UNK_217
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

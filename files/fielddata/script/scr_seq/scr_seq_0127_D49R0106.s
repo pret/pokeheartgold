@@ -264,9 +264,9 @@ _0416:
 	apply_movement obj_D49R0106_tsure_poke_597, _0444
 _041E:
 	wait_movement
-	scrcmd_076 85, 0
+	play_cry SPECIES_DODRIO, 0
 	npc_msg msg_0142_D49R0106_00024
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall

@@ -87,9 +87,9 @@ scr_seq_D47_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 39, 0
+	play_cry SPECIES_JIGGLYPUFF, 0
 	npc_msg msg_0133_D47_00006
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -148,9 +148,9 @@ scr_seq_D47_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 12, 0
+	play_cry SPECIES_BUTTERFREE, 0
 	npc_msg msg_0133_D47_00011
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -170,9 +170,9 @@ scr_seq_D47_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 79, 0
+	play_cry SPECIES_SLOWPOKE, 0
 	npc_msg msg_0133_D47_00013
-	scrcmd_077
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
@@ -247,7 +247,7 @@ _02A6:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _02CD
-	apply_movement 253, _0388
+	apply_movement obj_partner_poke, _0388
 	wait_movement
 _02CD:
 	setflag FLAG_UNK_189

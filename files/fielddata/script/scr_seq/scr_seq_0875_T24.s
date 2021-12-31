@@ -100,11 +100,11 @@ scr_seq_T24_002:
 	lockall
 	apply_movement obj_player, _0310
 	wait_movement
-	scrcmd_076 245, 0
+	play_cry SPECIES_SUICUNE, 0
 	release obj_T24_tsure_poke_618
 	scrcmd_523 5, 2, 90, 2, 0
 	lock obj_T24_tsure_poke_618
-	scrcmd_077
+	wait_cry
 	apply_movement obj_T24_tsure_poke_618, _02F4
 	wait_movement
 	apply_movement obj_T24_tsure_poke_618, _0338
@@ -120,11 +120,11 @@ scr_seq_T24_002:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	hide_person 5
+	hide_person obj_T24_tsure_poke_618
 	setflag FLAG_UNK_1E1
 	addvar VAR_UNK_4076, 1
 	clearflag FLAG_UNK_1E2
-	show_person 6
+	show_person obj_T24_minaki
 	callstd 2042
 	apply_movement obj_T24_minaki, _0358
 	apply_movement obj_player, _036C
@@ -142,7 +142,7 @@ scr_seq_T24_002:
 	closemsg
 	apply_movement obj_T24_minaki, _037C
 	wait_movement
-	hide_person 6
+	hide_person obj_T24_minaki
 	setflag FLAG_UNK_1E2
 	clearflag FLAG_UNK_29E
 	setvar VAR_UNK_4092, 1
@@ -150,7 +150,7 @@ scr_seq_T24_002:
 	end
 
 _0227:
-	hide_person 6
+	hide_person obj_T24_minaki
 	setflag FLAG_UNK_1E2
 	clearflag FLAG_UNK_29E
 	setvar VAR_UNK_4092, 1
@@ -320,7 +320,7 @@ _0422:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0449
-	apply_movement 253, _04D0
+	apply_movement obj_partner_poke, _04D0
 	wait_movement
 _0449:
 	fade_screen 6, 1, 0, 0x00

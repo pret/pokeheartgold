@@ -96,7 +96,7 @@ _0147:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 253, _0218
+	apply_movement obj_partner_poke, _0218
 	wait_movement
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00

@@ -92,7 +92,7 @@ scr_seq_R24_002:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	hide_person 2
+	hide_person obj_R24_rocketm
 	setflag FLAG_UNK_255
 	clearflag FLAG_UNK_257
 	play_bgm SEQ_GS_R_12_24

@@ -35,15 +35,15 @@ scr_seq_D25R0103_001:
 
 _004D:
 	setflag FLAG_UNK_30A
-	hide_person 3
+	hide_person obj_D25R0103_rapurasu
 	end
 
 scr_seq_D25R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_076 131, 0
-	scrcmd_077
+	play_cry SPECIES_LAPRAS, 0
+	wait_cry
 	setflag FLAG_UNK_0A4
 	scrcmd_589 131, 20, 0
 	clearflag FLAG_UNK_0A4

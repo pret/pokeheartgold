@@ -14,9 +14,9 @@ scr_seq_0263_000:
 	faceplayer
 	scrcmd_784 3, 0
 	scrcmd_116 1, 21, 1
-	checkflag FLAG_UNK_0FF
+	checkflag FLAG_GOT_SCRATCH_CARD_INFO
 	gotoif TRUE, _0038
-	setflag FLAG_UNK_0FF
+	setflag FLAG_GOT_SCRATCH_CARD_INFO
 	buffer_int 0, 1
 	npc_msg msg_0433_00015
 	goto _0048

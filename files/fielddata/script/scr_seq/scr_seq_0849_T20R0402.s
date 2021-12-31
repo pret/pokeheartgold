@@ -139,8 +139,8 @@ scr_seq_T20R0402_001:
 	lockall
 	faceplayer
 	npc_msg msg_0549_T20R0402_00004
-	scrcmd_076 183, 0
-	scrcmd_077
+	play_cry SPECIES_MARILL, 0
+	wait_cry
 	waitbutton
 	closemsg
 	releaseall
