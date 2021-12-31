@@ -1,50 +1,52 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D02R0101.h"
+#include "msgdata/msg/msg_0049_D02R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0007_D02R0101_0006 ; 000
+	scrdef scr_seq_D02R0101_000
 	scrdef_end
 
-scr_seq_0007_D02R0101_0006:
+scr_seq_D02R0101_000:
 	callstd std_play_rival_intro_music
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 0, scr_seq_0007_D02R0101_00D0
-	apply_movement 255, scr_seq_0007_D02R0101_00DC
+	apply_movement obj_D02R0101_gsrivel, _00D0
+	apply_movement obj_player, _00DC
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	buffer_players_name 0
 	buffer_rivals_name 1
-	npc_msg 0
+	npc_msg msg_0049_D02R0101_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, scr_seq_0007_D02R0101_005A
+	gotoif ne, _005A
 	trainer_battle TRAINER_RIVAL_SILVER_15, 0, 0, 0
-	goto scr_seq_0007_D02R0101_007D
+	goto _007D
 
-scr_seq_0007_D02R0101_005A:
+_005A:
 	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, scr_seq_0007_D02R0101_0075
+	gotoif ne, _0075
 	trainer_battle TRAINER_RIVAL_SILVER_16, 0, 0, 0
-	goto scr_seq_0007_D02R0101_007D
+	goto _007D
 
-scr_seq_0007_D02R0101_0075:
+_0075:
 	trainer_battle TRAINER_RIVAL_SILVER_14, 0, 0, 0
-scr_seq_0007_D02R0101_007D:
+_007D:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0007_D02R0101_00C9
+	gotoif eq, _00C9
 	callstd std_play_rival_outro_music
 	buffer_players_name 0
 	buffer_rivals_name 1
-	npc_msg 1
+	npc_msg msg_0049_D02R0101_00001
 	closemsg
-	apply_movement 0, scr_seq_0007_D02R0101_00E8
+	apply_movement obj_D02R0101_gsrivel, _00E8
 	wait_movement
 	hide_person 0
 	callstd std_fade_end_rival_outro_music
@@ -55,24 +57,22 @@ scr_seq_0007_D02R0101_007D:
 	setflag FLAG_UNK_0E3
 	end
 
-scr_seq_0007_D02R0101_00C9:
+_00C9:
 	white_out
 	end
-
-scr_seq_0007_D02R0101_00CD:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0007_D02R0101_00D0:
+_00D0:
 	step 75, 1
 	step 14, 4
 	step_end
 
-scr_seq_0007_D02R0101_00DC:
+_00DC:
 	step 63, 4
 	step 15, 1
 	step_end
 
-scr_seq_0007_D02R0101_00E8:
+_00E8:
 	step 19, 5
 	step 17, 9
 	step_end

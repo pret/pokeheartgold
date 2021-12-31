@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D42R0101.h",
   "bgs": [
     {
       "scr": 8016,
@@ -27,7 +28,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D42R0101_sunglasses",
       "ovid": "SPRITE_SUNGLASSES",
       "mvt": 2,
       "type": 0,
@@ -44,7 +45,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D42R0101_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -61,7 +62,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D42R0101_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

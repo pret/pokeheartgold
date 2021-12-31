@@ -1,26 +1,28 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T26R0301.h"
+#include "msgdata/msg/msg_0608_T26R0301.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0916_T26R0301_0006 ; 000
+	scrdef scr_seq_T26R0301_000
 	scrdef_end
 
-scr_seq_0916_T26R0301_0006:
+scr_seq_T26R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0BE
-	gotoif TRUE, scr_seq_0916_T26R0301_00B3
-	npc_msg 0
+	gotoif TRUE, _00B3
+	npc_msg msg_0608_T26R0301_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0916_T26R0301_0037
-	goto scr_seq_0916_T26R0301_00A8
+	gotoif eq, _0037
+	goto _00A8
 
-scr_seq_0916_T26R0301_0037:
+_0037:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -30,39 +32,39 @@ scr_seq_0916_T26R0301_0037:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, scr_seq_0916_T26R0301_00A8
+	gotoif eq, _00A8
 	scrcmd_470 2
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
 	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	gotoif ne, scr_seq_0916_T26R0301_009B
+	gotoif ne, _009B
 	scrcmd_473 32772
 	scrcmd_474
 	setflag FLAG_UNK_0BE
-	npc_msg 1
+	npc_msg msg_0608_T26R0301_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0916_T26R0301_009B:
+_009B:
 	scrcmd_474
-	npc_msg 2
+	npc_msg msg_0608_T26R0301_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0916_T26R0301_00A8:
-	npc_msg 3
+_00A8:
+	npc_msg msg_0608_T26R0301_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0916_T26R0301_00B3:
-	npc_msg 4
+_00B3:
+	npc_msg msg_0608_T26R0301_00004
 	waitbutton
 	closemsg
 	releaseall

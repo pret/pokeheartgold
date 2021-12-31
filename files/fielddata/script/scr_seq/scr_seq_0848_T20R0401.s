@@ -1,37 +1,39 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T20R0401.h"
+#include "msgdata/msg/msg_0548_T20R0401.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0848_T20R0401_0006 ; 000
+	scrdef scr_seq_T20R0401_000
 	scrdef_end
 
-scr_seq_0848_T20R0401_0006:
+scr_seq_T20R0401_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_2E5
-	gotoif TRUE, scr_seq_0848_T20R0401_0035
+	gotoif TRUE, _0035
 	comparevartovalue VAR_SCENE_ELMS_LAB, 1
-	gotoif ge, scr_seq_0848_T20R0401_0044
+	gotoif ge, _0044
 	buffer_players_name 0
-	gender_msgbox 0, 1
+	gender_msgbox msg_0548_T20R0401_00000, msg_0548_T20R0401_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0848_T20R0401_0035:
+_0035:
 	buffer_players_name 0
-	gender_msgbox 2, 3
+	gender_msgbox msg_0548_T20R0401_00002, msg_0548_T20R0401_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0848_T20R0401_0044:
+_0044:
 	buffer_players_name 0
-	gender_msgbox 4, 5
+	gender_msgbox msg_0548_T20R0401_00004, msg_0548_T20R0401_00005
 	waitbutton
 	closemsg
 	releaseall

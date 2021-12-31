@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_T01R0101.h",
   "bgs": [
     {
       "scr": 2,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T01R0101_redmama",
       "ovid": "SPRITE_REDMAMA",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T01R0101_001",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

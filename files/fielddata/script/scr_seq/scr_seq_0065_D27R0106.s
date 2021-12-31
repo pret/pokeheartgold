@@ -1,32 +1,34 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D27R0106.h"
+#include "msgdata/msg/msg_0003_EVERYWHERE.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0065_D27R0106_0045 ; 000
-	scrdef scr_seq_0065_D27R0106_000A ; 001
+	scrdef scr_seq_D27R0106_000
+	scrdef scr_seq_D27R0106_001
 	scrdef_end
 
-scr_seq_0065_D27R0106_000A:
+scr_seq_D27R0106_001:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0065_D27R0106_001B
+	gotoif FALSE, _001B
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0065_D27R0106_001B:
+_001B:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, scr_seq_0065_D27R0106_003F
+	gotoif eq, _003F
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif eq, scr_seq_0065_D27R0106_003F
+	gotoif eq, _003F
 	setflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0065_D27R0106_003F:
+_003F:
 	clearflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0065_D27R0106_0045:
+scr_seq_D27R0106_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -36,10 +38,10 @@ scr_seq_0065_D27R0106_0045:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0065_D27R0106_0127
+	gotoif eq, _0127
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0065_D27R0106_013B
+	gotoif eq, _013B
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -48,24 +50,24 @@ scr_seq_0065_D27R0106_0045:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0065_D27R0106_00B6
-	apply_movement 255, scr_seq_0065_D27R0106_0150
-	goto scr_seq_0065_D27R0106_00C6
+	gotoif ne, _00B6
+	apply_movement obj_player, _0150
+	goto _00C6
 
-scr_seq_0065_D27R0106_00B6:
-	apply_movement 255, scr_seq_0065_D27R0106_015C
-	apply_movement 3, scr_seq_0065_D27R0106_0170
-scr_seq_0065_D27R0106_00C6:
+_00B6:
+	apply_movement obj_player, _015C
+	apply_movement obj_D27R0106_gsmiddleman1, _0170
+_00C6:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0065_D27R0106_00ED
-	apply_movement 253, scr_seq_0065_D27R0106_017C
+	gotoif ne, _00ED
+	apply_movement 253, _017C
 	wait_movement
-scr_seq_0065_D27R0106_00ED:
+_00ED:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -81,7 +83,7 @@ scr_seq_0065_D27R0106_00ED:
 	releaseall
 	end
 
-scr_seq_0065_D27R0106_0127:
+_0127:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -89,35 +91,33 @@ scr_seq_0065_D27R0106_0127:
 	releaseall
 	end
 
-scr_seq_0065_D27R0106_013B:
+_013B:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0065_D27R0106_014F:
 	.byte 0x00
 
-scr_seq_0065_D27R0106_0150:
+_0150:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0065_D27R0106_015C:
+_015C:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0065_D27R0106_0170:
+_0170:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0065_D27R0106_017C:
+_017C:
 	step 15, 1
 	step 12, 1
 	step 1, 1

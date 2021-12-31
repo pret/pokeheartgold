@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R09.h",
   "bgs": [
     {
       "scr": 1,
@@ -19,7 +20,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R09_campboy_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 0,
       "type": 1,
@@ -36,7 +37,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R09_picnicgirl_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 1,
@@ -53,7 +54,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R09_campboy_2_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 0,
       "type": 1,
@@ -70,7 +71,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R09_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 1,
@@ -87,7 +88,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R09_mount_2_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 5,
       "type": 1,
@@ -104,7 +105,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R09_picnicgirl_2_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 1,
@@ -121,7 +122,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R09_tree",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -138,7 +139,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_R09_tree_2",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -155,7 +156,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_R09_tree_3",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -172,7 +173,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_R09_tree_4",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -189,7 +190,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_R09_tree_5",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -206,7 +207,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_R09_tree_6",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -223,7 +224,7 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_R09_tree_7",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -240,7 +241,7 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_R09_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -257,7 +258,7 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_R09_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -274,7 +275,7 @@
       "z": 0
     },
     {
-      "id": 15,
+      "id": "obj_R09_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -291,7 +292,7 @@
       "z": 0
     },
     {
-      "id": 16,
+      "id": "obj_R09_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

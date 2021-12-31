@@ -1,124 +1,124 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R28R0101.h"
+#include "msgdata/msg/msg_0372_R28R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0224_R28R0101_002C ; 000
-	scrdef scr_seq_0224_R28R0101_0170 ; 001
-	scrdef scr_seq_0224_R28R0101_000E ; 002
+	scrdef scr_seq_R28R0101_000
+	scrdef scr_seq_R28R0101_001
+	scrdef scr_seq_R28R0101_002
 	scrdef_end
 
-scr_seq_0224_R28R0101_000E:
-	apply_movement 0, scr_seq_0224_R28R0101_0020
+scr_seq_R28R0101_002:
+	apply_movement obj_R28R0101_gsgirl1, _0020
 	wait_movement
 	setvar VAR_UNK_4126, 1
 	end
 
 
-scr_seq_0224_R28R0101_0020:
+_0020:
 	step 1, 1
 	step 75, 1
 	step_end
-scr_seq_0224_R28R0101_002C:
+scr_seq_R28R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_137
-	gotoif TRUE, scr_seq_0224_R28R0101_012A
+	gotoif TRUE, _012A
 	faceplayer
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0224_R28R0101_0060
-	apply_movement 0, scr_seq_0224_R28R0101_0140
-	goto scr_seq_0224_R28R0101_009E
+	gotoif ne, _0060
+	apply_movement obj_R28R0101_gsgirl1, _0140
+	goto _009E
 
-scr_seq_0224_R28R0101_0060:
+_0060:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0224_R28R0101_007B
-	apply_movement 0, scr_seq_0224_R28R0101_014C
-	goto scr_seq_0224_R28R0101_009E
+	gotoif ne, _007B
+	apply_movement obj_R28R0101_gsgirl1, _014C
+	goto _009E
 
-scr_seq_0224_R28R0101_007B:
+_007B:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0224_R28R0101_0096
-	apply_movement 0, scr_seq_0224_R28R0101_0158
-	goto scr_seq_0224_R28R0101_009E
+	gotoif ne, _0096
+	apply_movement obj_R28R0101_gsgirl1, _0158
+	goto _009E
 
-scr_seq_0224_R28R0101_0096:
-	apply_movement 0, scr_seq_0224_R28R0101_0164
-scr_seq_0224_R28R0101_009E:
+_0096:
+	apply_movement obj_R28R0101_gsgirl1, _0164
+_009E:
 	wait_movement
-	npc_msg 0
+	npc_msg msg_0372_R28R0101_00000
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0224_R28R0101_00BE
-	apply_movement 0, scr_seq_0224_R28R0101_0164
-	goto scr_seq_0224_R28R0101_00FC
+	gotoif ne, _00BE
+	apply_movement obj_R28R0101_gsgirl1, _0164
+	goto _00FC
 
-scr_seq_0224_R28R0101_00BE:
+_00BE:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0224_R28R0101_00D9
-	apply_movement 0, scr_seq_0224_R28R0101_0158
-	goto scr_seq_0224_R28R0101_00FC
+	gotoif ne, _00D9
+	apply_movement obj_R28R0101_gsgirl1, _0158
+	goto _00FC
 
-scr_seq_0224_R28R0101_00D9:
+_00D9:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0224_R28R0101_00F4
-	apply_movement 0, scr_seq_0224_R28R0101_014C
-	goto scr_seq_0224_R28R0101_00FC
+	gotoif ne, _00F4
+	apply_movement obj_R28R0101_gsgirl1, _014C
+	goto _00FC
 
-scr_seq_0224_R28R0101_00F4:
-	apply_movement 0, scr_seq_0224_R28R0101_0140
-scr_seq_0224_R28R0101_00FC:
+_00F4:
+	apply_movement obj_R28R0101_gsgirl1, _0140
+_00FC:
 	wait_movement
-	npc_msg 1
+	npc_msg msg_0372_R28R0101_00001
 	setvar VAR_SPECIAL_x8004, 374
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0224_R28R0101_0135
+	gotoif eq, _0135
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_137
-scr_seq_0224_R28R0101_012A:
-	npc_msg 2
+_012A:
+	npc_msg msg_0372_R28R0101_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0224_R28R0101_0135:
+_0135:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
-
-scr_seq_0224_R28R0101_013F:
 	.byte 0x00
 
-scr_seq_0224_R28R0101_0140:
+_0140:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0224_R28R0101_014C:
+_014C:
 	step 63, 1
 	step 34, 1
 	step_end
 
-scr_seq_0224_R28R0101_0158:
+_0158:
 	step 63, 1
 	step 35, 1
 	step_end
 
-scr_seq_0224_R28R0101_0164:
+_0164:
 	step 63, 1
 	step 33, 1
 	step_end
-scr_seq_0224_R28R0101_0170:
+scr_seq_R28R0101_001:
 	scrcmd_076 22, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0372_R28R0101_00003
 	waitbutton
 	closemsg
 	releaseall

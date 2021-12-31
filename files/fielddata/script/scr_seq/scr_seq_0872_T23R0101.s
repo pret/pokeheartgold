@@ -1,31 +1,33 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T23R0101.h"
+#include "msgdata/msg/msg_0569_T23R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0872_T23R0101_000E ; 000
-	scrdef scr_seq_0872_T23R0101_0010 ; 001
-	scrdef scr_seq_0872_T23R0101_0023 ; 002
+	scrdef scr_seq_T23R0101_000
+	scrdef scr_seq_T23R0101_001
+	scrdef scr_seq_T23R0101_002
 	scrdef_end
 
-scr_seq_0872_T23R0101_000E:
+scr_seq_T23R0101_000:
 	end
 
-scr_seq_0872_T23R0101_0010:
+scr_seq_T23R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0569_T23R0101_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0872_T23R0101_0023:
+scr_seq_T23R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0569_T23R0101_00001
 	waitbutton
 	closemsg
 	releaseall

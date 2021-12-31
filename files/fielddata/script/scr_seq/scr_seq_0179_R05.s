@@ -1,23 +1,25 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R05.h"
+#include "msgdata/msg/msg_0329_R05.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0179_R05_000A ; 000
-	scrdef scr_seq_0179_R05_001D ; 001
+	scrdef scr_seq_R05_000
+	scrdef scr_seq_R05_001
 	scrdef_end
 
-scr_seq_0179_R05_000A:
+scr_seq_R05_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0329_R05_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0179_R05_001D:
+scr_seq_R05_001:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

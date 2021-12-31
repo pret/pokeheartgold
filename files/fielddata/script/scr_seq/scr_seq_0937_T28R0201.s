@@ -1,39 +1,41 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T28R0201.h"
+#include "msgdata/msg/msg_0625_T28R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0937_T28R0201_000A ; 000
-	scrdef scr_seq_0937_T28R0201_001D ; 001
+	scrdef scr_seq_T28R0201_000
+	scrdef scr_seq_T28R0201_001
 	scrdef_end
 
-scr_seq_0937_T28R0201_000A:
+scr_seq_T28R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0625_T28R0201_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0937_T28R0201_001D:
+scr_seq_T28R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0C6
-	gotoif TRUE, scr_seq_0937_T28R0201_003B
+	gotoif TRUE, _003B
 	checkflag FLAG_UNK_0C5
-	gotoif TRUE, scr_seq_0937_T28R0201_0046
-scr_seq_0937_T28R0201_003B:
-	npc_msg 1
+	gotoif TRUE, _0046
+_003B:
+	npc_msg msg_0625_T28R0201_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0937_T28R0201_0046:
-	npc_msg 2
+_0046:
+	npc_msg msg_0625_T28R0201_00002
 	waitbutton
 	closemsg
 	releaseall

@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T02R0302.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T02R0302_gswoman6",
       "ovid": "SPRITE_GSWOMAN6",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_T02R0302_000",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T02R0302_gsman3",
       "ovid": "SPRITE_GSMAN3",
       "mvt": 0,
       "type": 0,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T02R0302_var_2",
       "ovid": "SPRITE_VAR_2",
       "mvt": 2,
       "type": 0,
@@ -52,7 +53,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T02R0302_var_3",
       "ovid": "SPRITE_VAR_3",
       "mvt": 0,
       "type": 0,
@@ -69,7 +70,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T02R0302_var_4",
       "ovid": "SPRITE_VAR_4",
       "mvt": 0,
       "type": 0,
@@ -86,7 +87,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T02R0302_var_5",
       "ovid": "SPRITE_VAR_5",
       "mvt": 5,
       "type": 0,
@@ -103,7 +104,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_T02R0302_var_6",
       "ovid": "SPRITE_VAR_6",
       "mvt": 2,
       "type": 0,
@@ -120,7 +121,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_T02R0302_var_7",
       "ovid": "SPRITE_VAR_7",
       "mvt": 0,
       "type": 0,
@@ -137,7 +138,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_T02R0302_var_8",
       "ovid": "SPRITE_VAR_8",
       "mvt": 0,
       "type": 0,
@@ -154,7 +155,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_T02R0302_var_9",
       "ovid": "SPRITE_VAR_9",
       "mvt": 0,
       "type": 0,
@@ -171,7 +172,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_T02R0302_var_10",
       "ovid": "SPRITE_VAR_10",
       "mvt": 2,
       "type": 0,
@@ -188,7 +189,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_T02R0302_var_11",
       "ovid": "SPRITE_VAR_11",
       "mvt": 9,
       "type": 0,
@@ -216,7 +217,7 @@
   ],
   "coords": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_T02R0302_001",
       "x": 7,
       "y": 4,
       "w": 1,
@@ -226,7 +227,7 @@
       "var": "VAR_UNK_412E"
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_T02R0302_002",
       "x": 7,
       "y": 4,
       "w": 1,

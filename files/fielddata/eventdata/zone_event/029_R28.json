@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R28.h",
   "bgs": [
     {
       "scr": 8115,
@@ -19,7 +20,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R28_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -36,7 +37,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R28_tree",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,

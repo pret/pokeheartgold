@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R48.h",
   "bgs": [
     {
       "scr": 3,
@@ -11,7 +12,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R48_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -28,12 +29,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R48_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R48_001",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -45,7 +46,7 @@
       "z": 0
     },
     {
-      "id": 0,
+      "id": "obj_R48_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 2,
       "type": 0,
@@ -62,7 +63,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_R48_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 16,
       "type": 0,
@@ -79,7 +80,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_R48_tsure_poke_594",
       "ovid": "SPRITE_TSURE_POKE_594",
       "mvt": 16,
       "type": 0,
@@ -96,7 +97,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R48_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 15,
       "type": 0,

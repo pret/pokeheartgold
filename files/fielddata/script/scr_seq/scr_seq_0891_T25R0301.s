@@ -1,91 +1,91 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25R0301.h"
+#include "msgdata/msg/msg_0585_T25R0301.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0891_T25R0301_000E ; 000
-	scrdef scr_seq_0891_T25R0301_00AE ; 001
-	scrdef scr_seq_0891_T25R0301_00C1 ; 002
+	scrdef scr_seq_T25R0301_000
+	scrdef scr_seq_T25R0301_001
+	scrdef scr_seq_T25R0301_002
 	scrdef_end
 
-scr_seq_0891_T25R0301_000E:
+scr_seq_T25R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8000
-	npc_msg 0
+	npc_msg msg_0585_T25R0301_00000
 	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 250
-	gotoif ge, scr_seq_0891_T25R0301_006C
+	gotoif ge, _006C
 	comparevartovalue VAR_SPECIAL_x800C, 200
-	gotoif ge, scr_seq_0891_T25R0301_0077
+	gotoif ge, _0077
 	comparevartovalue VAR_SPECIAL_x800C, 150
-	gotoif ge, scr_seq_0891_T25R0301_0082
+	gotoif ge, _0082
 	comparevartovalue VAR_SPECIAL_x800C, 100
-	gotoif ge, scr_seq_0891_T25R0301_008D
+	gotoif ge, _008D
 	comparevartovalue VAR_SPECIAL_x800C, 50
-	gotoif ge, scr_seq_0891_T25R0301_0098
-	goto scr_seq_0891_T25R0301_00A3
-
-scr_seq_0891_T25R0301_006A:
+	gotoif ge, _0098
+	goto _00A3
 	.byte 0x02, 0x00
-scr_seq_0891_T25R0301_006C:
-	npc_msg 1
+_006C:
+	npc_msg msg_0585_T25R0301_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_T25R0301_0077:
-	npc_msg 2
+_0077:
+	npc_msg msg_0585_T25R0301_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_T25R0301_0082:
-	npc_msg 3
+_0082:
+	npc_msg msg_0585_T25R0301_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_T25R0301_008D:
-	npc_msg 4
+_008D:
+	npc_msg msg_0585_T25R0301_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_T25R0301_0098:
-	npc_msg 5
+_0098:
+	npc_msg msg_0585_T25R0301_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_T25R0301_00A3:
-	npc_msg 6
+_00A3:
+	npc_msg msg_0585_T25R0301_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_T25R0301_00AE:
+scr_seq_T25R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0585_T25R0301_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0891_T25R0301_00C1:
+scr_seq_T25R0301_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0585_T25R0301_00008
 	waitbutton
 	closemsg
 	releaseall

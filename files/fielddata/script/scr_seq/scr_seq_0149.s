@@ -1,12 +1,14 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0149.h"
+#include "msgdata/msg/msg_0040.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0149_0006 ; 000
+	scrdef scr_seq_0149_000
 	scrdef_end
 
-scr_seq_0149_0006:
+scr_seq_0149_000:
 	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_UNK_1A4
 	setflag FLAG_UNK_1A5

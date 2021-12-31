@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_D17R0110.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D17R0110_dancer",
       "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D17R0110_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D17R0110_dancer_2",
       "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
-      "scr": 5,
+      "scr": "_EV_scr_seq_D17R0110_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -35,12 +36,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D17R0110_dancer_3",
       "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
-      "scr": 5,
+      "scr": "_EV_scr_seq_D17R0110_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -52,12 +53,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D17R0110_dancer_4",
       "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
-      "scr": 5,
+      "scr": "_EV_scr_seq_D17R0110_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -69,12 +70,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D17R0110_dancer_5",
       "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_244",
-      "scr": 5,
+      "scr": "_EV_scr_seq_D17R0110_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -86,12 +87,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D17R0110_hou_obj01",
       "ovid": "SPRITE_HOU_OBJ01",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_242",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D17R0110_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

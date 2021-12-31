@@ -1,50 +1,52 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D18R0101.h"
+#include "msgdata/msg/msg_0060_D18R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0023_D18R0101_0118 ; 000
-	scrdef scr_seq_0023_D18R0101_0142 ; 001
-	scrdef scr_seq_0023_D18R0101_0168 ; 002
-	scrdef scr_seq_0023_D18R0101_0012 ; 003
+	scrdef scr_seq_D18R0101_000
+	scrdef scr_seq_D18R0101_001
+	scrdef scr_seq_D18R0101_002
+	scrdef scr_seq_D18R0101_003
 	scrdef_end
 
-scr_seq_0023_D18R0101_0012:
+scr_seq_D18R0101_003:
 	scrcmd_609
 	lockall
 	callstd std_play_rival_intro_music
-	apply_movement 0, scr_seq_0023_D18R0101_00D0
+	apply_movement obj_D18R0101_gsrivel, _00D0
 	wait_movement
 	buffer_rivals_name 0
-	npc_msg 0
+	npc_msg msg_0060_D18R0101_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, scr_seq_0023_D18R0101_004B
+	gotoif ne, _004B
 	trainer_battle TRAINER_RIVAL_SILVER_8, 0, 0, 0
-	goto scr_seq_0023_D18R0101_006E
+	goto _006E
 
-scr_seq_0023_D18R0101_004B:
+_004B:
 	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, scr_seq_0023_D18R0101_0066
+	gotoif ne, _0066
 	trainer_battle TRAINER_RIVAL_SILVER_11, 0, 0, 0
-	goto scr_seq_0023_D18R0101_006E
+	goto _006E
 
-scr_seq_0023_D18R0101_0066:
+_0066:
 	trainer_battle TRAINER_RIVAL_SILVER_4, 0, 0, 0
-scr_seq_0023_D18R0101_006E:
+_006E:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0023_D18R0101_00C7
+	gotoif eq, _00C7
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
-	npc_msg 1
+	npc_msg msg_0060_D18R0101_00001
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	apply_movement 255, scr_seq_0023_D18R0101_00E8
-	apply_movement 0, scr_seq_0023_D18R0101_00F8
+	apply_movement obj_player, _00E8
+	apply_movement obj_D18R0101_gsrivel, _00F8
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -56,15 +58,13 @@ scr_seq_0023_D18R0101_006E:
 	releaseall
 	end
 
-scr_seq_0023_D18R0101_00C7:
+_00C7:
 	white_out
 	releaseall
 	end
-
-scr_seq_0023_D18R0101_00CD:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0023_D18R0101_00D0:
+_00D0:
 	step 1, 1
 	step 75, 1
 	step 13, 4
@@ -72,13 +72,13 @@ scr_seq_0023_D18R0101_00D0:
 	step 1, 1
 	step_end
 
-scr_seq_0023_D18R0101_00E8:
+_00E8:
 	step 13, 2
 	step 15, 1
 	step 2, 1
 	step_end
 
-scr_seq_0023_D18R0101_00F8:
+_00F8:
 	step 13, 3
 	step 14, 1
 	step 13, 1
@@ -87,14 +87,14 @@ scr_seq_0023_D18R0101_00F8:
 	step 14, 4
 	step 13, 3
 	step_end
-scr_seq_0023_D18R0101_0118:
+scr_seq_D18R0101_000:
 	scrcmd_609
 	lockall
 	callstd 2042
-	apply_movement 1, scr_seq_0023_D18R0101_0158
+	apply_movement obj_D18R0101_minaki, _0158
 	wait_movement
 	buffer_players_name 0
-	npc_msg 2
+	npc_msg msg_0060_D18R0101_00002
 	waitbutton
 	closemsg
 	callstd 2043
@@ -102,29 +102,27 @@ scr_seq_0023_D18R0101_0118:
 	releaseall
 	end
 
-scr_seq_0023_D18R0101_0142:
+scr_seq_D18R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0060_D18R0101_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0023_D18R0101_0155:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0023_D18R0101_0158:
+_0158:
 	step 2, 1
 	step 75, 1
 	step 14, 3
 	step_end
-scr_seq_0023_D18R0101_0168:
+scr_seq_D18R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg msg_0060_D18R0101_00004
 	waitbutton
 	closemsg
 	releaseall

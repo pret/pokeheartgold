@@ -1,140 +1,140 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25R1203.h"
+#include "msgdata/msg/msg_0602_T25R1203.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0909_T25R1203_0032 ; 000
-	scrdef scr_seq_0909_T25R1203_0045 ; 001
-	scrdef scr_seq_0909_T25R1203_0058 ; 002
-	scrdef scr_seq_0909_T25R1203_006B ; 003
-	scrdef scr_seq_0909_T25R1203_007E ; 004
-	scrdef scr_seq_0909_T25R1203_0091 ; 005
-	scrdef scr_seq_0909_T25R1203_00A4 ; 006
-	scrdef scr_seq_0909_T25R1203_00B7 ; 007
-	scrdef scr_seq_0909_T25R1203_00CA ; 008
-	scrdef scr_seq_0909_T25R1203_00DD ; 009
-	scrdef scr_seq_0909_T25R1203_00EE ; 010
-	scrdef scr_seq_0909_T25R1203_00FF ; 011
+	scrdef scr_seq_T25R1203_000
+	scrdef scr_seq_T25R1203_001
+	scrdef scr_seq_T25R1203_002
+	scrdef scr_seq_T25R1203_003
+	scrdef scr_seq_T25R1203_004
+	scrdef scr_seq_T25R1203_005
+	scrdef scr_seq_T25R1203_006
+	scrdef scr_seq_T25R1203_007
+	scrdef scr_seq_T25R1203_008
+	scrdef scr_seq_T25R1203_009
+	scrdef scr_seq_T25R1203_010
+	scrdef scr_seq_T25R1203_011
 	scrdef_end
 
-scr_seq_0909_T25R1203_0032:
+scr_seq_T25R1203_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0602_T25R1203_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_0045:
+scr_seq_T25R1203_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0602_T25R1203_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_0058:
+scr_seq_T25R1203_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0602_T25R1203_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_006B:
+scr_seq_T25R1203_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0602_T25R1203_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_007E:
+scr_seq_T25R1203_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg msg_0602_T25R1203_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_0091:
+scr_seq_T25R1203_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg msg_0602_T25R1203_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_00A4:
+scr_seq_T25R1203_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 6
+	npc_msg msg_0602_T25R1203_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_00B7:
+scr_seq_T25R1203_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0602_T25R1203_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_00CA:
+scr_seq_T25R1203_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0602_T25R1203_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_00DD:
+scr_seq_T25R1203_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 9
+	npc_msg msg_0602_T25R1203_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_00EE:
+scr_seq_T25R1203_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 10
+	npc_msg msg_0602_T25R1203_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_00FF:
+scr_seq_T25R1203_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0909_T25R1203_0113
-
-scr_seq_0909_T25R1203_0111:
+	goto _0113
 	.byte 0x02, 0x00
-scr_seq_0909_T25R1203_0113:
-	npc_msg 11
+_0113:
+	npc_msg msg_0602_T25R1203_00011
 	touchscreen_menu_hide
 	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 13, 255, 0
@@ -143,35 +143,31 @@ scr_seq_0909_T25R1203_0113:
 	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0909_T25R1203_016A
+	gotoif eq, _016A
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0909_T25R1203_018F
-	goto scr_seq_0909_T25R1203_0162
-
-scr_seq_0909_T25R1203_0160:
+	gotoif eq, _018F
+	goto _0162
 	.byte 0x02, 0x00
-scr_seq_0909_T25R1203_0162:
+_0162:
 	touchscreen_menu_show
-scr_seq_0909_T25R1203_0164:
+_0164:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_016A:
+_016A:
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0909_T25R1203_0164
+	gotoif eq, _0164
 	closemsg
 	scrcmd_815 0
 	callstd 2046
 	releaseall
 	end
 
-scr_seq_0909_T25R1203_018F:
-	npc_msg 12
-	goto scr_seq_0909_T25R1203_0113
-
-scr_seq_0909_T25R1203_0198:
+_018F:
+	npc_msg msg_0602_T25R1203_00012
+	goto _0113
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

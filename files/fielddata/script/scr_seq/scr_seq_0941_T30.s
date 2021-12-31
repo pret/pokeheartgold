@@ -1,66 +1,68 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T30.h"
+#include "msgdata/msg/msg_0629_T30.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0941_T30_0231 ; 000
-	scrdef scr_seq_0941_T30_0244 ; 001
-	scrdef scr_seq_0941_T30_026D ; 002
-	scrdef scr_seq_0941_T30_0280 ; 003
-	scrdef scr_seq_0941_T30_0293 ; 004
-	scrdef scr_seq_0941_T30_0046 ; 005
-	scrdef scr_seq_0941_T30_00E3 ; 006
-	scrdef scr_seq_0941_T30_00C5 ; 007
-	scrdef scr_seq_0941_T30_0440 ; 008
-	scrdef scr_seq_0941_T30_0457 ; 009
-	scrdef scr_seq_0941_T30_046C ; 010
-	scrdef scr_seq_0941_T30_0481 ; 011
-	scrdef scr_seq_0941_T30_0496 ; 012
-	scrdef scr_seq_0941_T30_04AB ; 013
-	scrdef scr_seq_0941_T30_04BE ; 014
-	scrdef scr_seq_0941_T30_04D1 ; 015
-	scrdef scr_seq_0941_T30_02BC ; 016
+	scrdef scr_seq_T30_000
+	scrdef scr_seq_T30_001
+	scrdef scr_seq_T30_002
+	scrdef scr_seq_T30_003
+	scrdef scr_seq_T30_004
+	scrdef scr_seq_T30_005
+	scrdef scr_seq_T30_006
+	scrdef scr_seq_T30_007
+	scrdef scr_seq_T30_008
+	scrdef scr_seq_T30_009
+	scrdef scr_seq_T30_010
+	scrdef scr_seq_T30_011
+	scrdef scr_seq_T30_012
+	scrdef scr_seq_T30_013
+	scrdef scr_seq_T30_014
+	scrdef scr_seq_T30_015
+	scrdef scr_seq_T30_016
 	scrdef_end
 
-scr_seq_0941_T30_0046:
+scr_seq_T30_005:
 	comparevartovalue VAR_UNK_40C4, 1
-	gotoif ne, scr_seq_0941_T30_005D
+	gotoif ne, _005D
 	setflag FLAG_UNK_209
 	setvar VAR_UNK_40C4, 2
-scr_seq_0941_T30_005D:
+_005D:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0941_T30_006E
+	gotoif FALSE, _006E
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0941_T30_006E:
+_006E:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0941_T30_0089
+	gotoif ne, _0089
 	clearflag FLAG_HIDE_CAMERON
-	goto scr_seq_0941_T30_00A4
+	goto _00A4
 
-scr_seq_0941_T30_0089:
+_0089:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0941_T30_00A0
+	gotoif ne, _00A0
 	clearflag FLAG_HIDE_CAMERON
-	goto scr_seq_0941_T30_00A4
+	goto _00A4
 
-scr_seq_0941_T30_00A0:
+_00A0:
 	setflag FLAG_HIDE_CAMERON
-scr_seq_0941_T30_00A4:
+_00A4:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0941_T30_00BF
+	gotoif ne, _00BF
 	clearflag FLAG_UNK_204
-	goto scr_seq_0941_T30_00C3
+	goto _00C3
 
-scr_seq_0941_T30_00BF:
+_00BF:
 	setflag FLAG_UNK_204
-scr_seq_0941_T30_00C3:
+_00C3:
 	end
 
-scr_seq_0941_T30_00C5:
+scr_seq_T30_007:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 3
@@ -68,47 +70,47 @@ scr_seq_0941_T30_00C5:
 	setvar VAR_UNK_407B, 2
 	end
 
-scr_seq_0941_T30_00E3:
+scr_seq_T30_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
 	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_SNOOZE
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0941_T30_0209
+	gotoif eq, _0209
 	checkflag FLAG_GOT_SHOCK_RIBBON
-	gotoif TRUE, scr_seq_0941_T30_021D
+	gotoif TRUE, _021D
 	comparevartovalue VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	gotoif eq, scr_seq_0941_T30_01B7
+	gotoif eq, _01B7
 	checkflag FLAG_UNK_0D4
-	gotoif TRUE, scr_seq_0941_T30_0199
+	gotoif TRUE, _0199
 	get_weekday VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, scr_seq_0941_T30_014A
+	gotoif eq, _014A
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 23
-	goto scr_seq_0941_T30_0191
+	goto _0191
 
-scr_seq_0941_T30_014A:
+_014A:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 20
 	setvar VAR_SPECIAL_x8004, 237
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0941_T30_01AD
+	gotoif eq, _01AD
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D4
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 21
-scr_seq_0941_T30_0191:
+_0191:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_0199:
+_0199:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 22
 	waitbutton
@@ -116,21 +118,21 @@ scr_seq_0941_T30_0199:
 	releaseall
 	end
 
-scr_seq_0941_T30_01AD:
+_01AD:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_01B7:
+_01B7:
 	get_weekday VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, scr_seq_0941_T30_01DA
+	gotoif eq, _01DA
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 23
-	goto scr_seq_0941_T30_0191
+	goto _0191
 
-scr_seq_0941_T30_01DA:
+_01DA:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 48
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
@@ -144,7 +146,7 @@ scr_seq_0941_T30_01DA:
 	releaseall
 	end
 
-scr_seq_0941_T30_0209:
+_0209:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 49
 	waitbutton
@@ -152,7 +154,7 @@ scr_seq_0941_T30_0209:
 	releaseall
 	end
 
-scr_seq_0941_T30_021D:
+_021D:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 51
 	waitbutton
@@ -160,73 +162,73 @@ scr_seq_0941_T30_021D:
 	releaseall
 	end
 
-scr_seq_0941_T30_0231:
+scr_seq_T30_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0629_T30_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_0244:
+scr_seq_T30_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0D1
-	gotoif TRUE, scr_seq_0941_T30_0262
-	npc_msg 1
+	gotoif TRUE, _0262
+	npc_msg msg_0629_T30_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_0262:
-	npc_msg 2
+_0262:
+	npc_msg msg_0629_T30_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_026D:
+scr_seq_T30_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0629_T30_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_0280:
+scr_seq_T30_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg msg_0629_T30_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_0293:
+scr_seq_T30_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, scr_seq_0941_T30_02B1
-	npc_msg 5
-	goto scr_seq_0941_T30_02B4
+	gotoif ne, _02B1
+	npc_msg msg_0629_T30_00005
+	goto _02B4
 
-scr_seq_0941_T30_02B1:
-	npc_msg 6
-scr_seq_0941_T30_02B4:
+_02B1:
+	npc_msg msg_0629_T30_00006
+_02B4:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_02BC:
+scr_seq_T30_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -236,10 +238,10 @@ scr_seq_0941_T30_02BC:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0941_T30_03C1
+	gotoif eq, _03C1
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0941_T30_03D5
+	gotoif eq, _03D5
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -248,31 +250,31 @@ scr_seq_0941_T30_02BC:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0941_T30_0335
-	apply_movement 255, scr_seq_0941_T30_03EC
-	apply_movement 9, scr_seq_0941_T30_0424
-	goto scr_seq_0941_T30_0360
+	gotoif ne, _0335
+	apply_movement obj_player, _03EC
+	apply_movement obj_T30_gsmiddleman1, _0424
+	goto _0360
 
-scr_seq_0941_T30_0335:
+_0335:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0941_T30_0350
-	apply_movement 255, scr_seq_0941_T30_0404
-	goto scr_seq_0941_T30_0360
+	gotoif ne, _0350
+	apply_movement obj_player, _0404
+	goto _0360
 
-scr_seq_0941_T30_0350:
-	apply_movement 255, scr_seq_0941_T30_0410
-	apply_movement 9, scr_seq_0941_T30_0424
-scr_seq_0941_T30_0360:
+_0350:
+	apply_movement obj_player, _0410
+	apply_movement obj_T30_gsmiddleman1, _0424
+_0360:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0941_T30_0387
-	apply_movement 253, scr_seq_0941_T30_0430
+	gotoif ne, _0387
+	apply_movement 253, _0430
 	wait_movement
-scr_seq_0941_T30_0387:
+_0387:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -288,7 +290,7 @@ scr_seq_0941_T30_0387:
 	releaseall
 	end
 
-scr_seq_0941_T30_03C1:
+_03C1:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -296,18 +298,16 @@ scr_seq_0941_T30_03C1:
 	releaseall
 	end
 
-scr_seq_0941_T30_03D5:
+_03D5:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0941_T30_03E9:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0941_T30_03EC:
+_03EC:
 	step 14, 1
 	step 12, 2
 	step 15, 1
@@ -315,29 +315,29 @@ scr_seq_0941_T30_03EC:
 	step 33, 1
 	step_end
 
-scr_seq_0941_T30_0404:
+_0404:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0941_T30_0410:
+_0410:
 	step 12, 1
 	step 15, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0941_T30_0424:
+_0424:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0941_T30_0430:
+_0430:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0941_T30_0440:
+scr_seq_T30_008:
 	scrcmd_055 10, 0, 20, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -345,7 +345,7 @@ scr_seq_0941_T30_0440:
 	callstd 2000
 	end
 
-scr_seq_0941_T30_0457:
+scr_seq_T30_009:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -353,7 +353,7 @@ scr_seq_0941_T30_0457:
 	callstd 2000
 	end
 
-scr_seq_0941_T30_046C:
+scr_seq_T30_010:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -361,7 +361,7 @@ scr_seq_0941_T30_046C:
 	callstd 2000
 	end
 
-scr_seq_0941_T30_0481:
+scr_seq_T30_011:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -369,7 +369,7 @@ scr_seq_0941_T30_0481:
 	callstd 2000
 	end
 
-scr_seq_0941_T30_0496:
+scr_seq_T30_012:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -377,31 +377,31 @@ scr_seq_0941_T30_0496:
 	callstd 2000
 	end
 
-scr_seq_0941_T30_04AB:
+scr_seq_T30_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0629_T30_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_04BE:
+scr_seq_T30_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0629_T30_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0941_T30_04D1:
+scr_seq_T30_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 9
+	npc_msg msg_0629_T30_00009
 	waitbutton
 	closemsg
 	releaseall

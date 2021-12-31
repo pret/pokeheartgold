@@ -1,27 +1,29 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D27R0105.h"
+#include "msgdata/msg/msg_0003_EVERYWHERE.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0064_D27R0105_0006 ; 000
+	scrdef scr_seq_D27R0105_000
 	scrdef_end
 
-scr_seq_0064_D27R0105_0006:
+scr_seq_D27R0105_000:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40A7, 1
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0064_D27R0105_0039
-	apply_movement 255, scr_seq_0064_D27R0105_0070
-	apply_movement 253, scr_seq_0064_D27R0105_007C
+	gotoif eq, _0039
+	apply_movement obj_player, _0070
+	apply_movement 253, _007C
 	wait_movement
-	goto scr_seq_0064_D27R0105_0043
+	goto _0043
 
-scr_seq_0064_D27R0105_0039:
-	apply_movement 255, scr_seq_0064_D27R0105_0070
+_0039:
+	apply_movement obj_player, _0070
 	wait_movement
-scr_seq_0064_D27R0105_0043:
+_0043:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -30,16 +32,14 @@ scr_seq_0064_D27R0105_0043:
 	wait_fade
 	releaseall
 	end
-
-scr_seq_0064_D27R0105_006F:
 	.byte 0x00
 
-scr_seq_0064_D27R0105_0070:
+_0070:
 	step 19, 1
 	step 69, 1
 	step_end
 
-scr_seq_0064_D27R0105_007C:
+_007C:
 	step 19, 1
 	step 69, 1
 	step_end

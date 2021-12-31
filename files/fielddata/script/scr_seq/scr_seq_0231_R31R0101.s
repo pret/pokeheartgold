@@ -1,135 +1,137 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R31R0101.h"
+#include "msgdata/msg/msg_0379_R31R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0231_R31R0101_0014 ; 000
-	scrdef scr_seq_0231_R31R0101_000E ; 001
-	scrdef scr_seq_0231_R31R0101_048C ; 002
+	scrdef scr_seq_R31R0101_000
+	scrdef scr_seq_R31R0101_001
+	scrdef scr_seq_R31R0101_002
 	scrdef_end
 
-scr_seq_0231_R31R0101_000E:
+scr_seq_R31R0101_001:
 	get_friend_sprite VAR_OBJ_0
 	end
 
-scr_seq_0231_R31R0101_0014:
+scr_seq_R31R0101_000:
 	scrcmd_609
 	lockall
 	callstd std_play_friend_music
-	apply_movement 2, scr_seq_0231_R31R0101_028C
+	apply_movement obj_R31R0101_tsure_poke_611, _028C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	move_person 1, 10, 1, 7, 2
 	move_person 2, 10, 1, 7, 2
-	apply_movement 1, scr_seq_0231_R31R0101_0284
+	apply_movement obj_R31R0101_var_1, _0284
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, scr_seq_0231_R31R0101_00C3
+	gotoif ne, _00C3
 	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, scr_seq_0231_R31R0101_008A
-	apply_movement 1, scr_seq_0231_R31R0101_02AC
-	apply_movement 2, scr_seq_0231_R31R0101_02FC
-	goto scr_seq_0231_R31R0101_00BD
+	gotoif ne, _008A
+	apply_movement obj_R31R0101_var_1, _02AC
+	apply_movement obj_R31R0101_tsure_poke_611, _02FC
+	goto _00BD
 
-scr_seq_0231_R31R0101_008A:
+_008A:
 	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, scr_seq_0231_R31R0101_00AD
-	apply_movement 1, scr_seq_0231_R31R0101_02BC
-	apply_movement 2, scr_seq_0231_R31R0101_0314
-	goto scr_seq_0231_R31R0101_00BD
+	gotoif ne, _00AD
+	apply_movement obj_R31R0101_var_1, _02BC
+	apply_movement obj_R31R0101_tsure_poke_611, _0314
+	goto _00BD
 
-scr_seq_0231_R31R0101_00AD:
-	apply_movement 1, scr_seq_0231_R31R0101_02C4
-	apply_movement 2, scr_seq_0231_R31R0101_0324
-scr_seq_0231_R31R0101_00BD:
-	goto scr_seq_0231_R31R0101_0119
+_00AD:
+	apply_movement obj_R31R0101_var_1, _02C4
+	apply_movement obj_R31R0101_tsure_poke_611, _0324
+_00BD:
+	goto _0119
 
-scr_seq_0231_R31R0101_00C3:
+_00C3:
 	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, scr_seq_0231_R31R0101_00E6
-	apply_movement 1, scr_seq_0231_R31R0101_02D4
-	apply_movement 2, scr_seq_0231_R31R0101_033C
-	goto scr_seq_0231_R31R0101_0119
+	gotoif ne, _00E6
+	apply_movement obj_R31R0101_var_1, _02D4
+	apply_movement obj_R31R0101_tsure_poke_611, _033C
+	goto _0119
 
-scr_seq_0231_R31R0101_00E6:
+_00E6:
 	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, scr_seq_0231_R31R0101_0109
-	apply_movement 1, scr_seq_0231_R31R0101_02E4
-	apply_movement 2, scr_seq_0231_R31R0101_0354
-	goto scr_seq_0231_R31R0101_0119
+	gotoif ne, _0109
+	apply_movement obj_R31R0101_var_1, _02E4
+	apply_movement obj_R31R0101_tsure_poke_611, _0354
+	goto _0119
 
-scr_seq_0231_R31R0101_0109:
-	apply_movement 1, scr_seq_0231_R31R0101_02EC
-	apply_movement 2, scr_seq_0231_R31R0101_0364
-scr_seq_0231_R31R0101_0119:
+_0109:
+	apply_movement obj_R31R0101_var_1, _02EC
+	apply_movement obj_R31R0101_tsure_poke_611, _0364
+_0119:
 	wait_movement
-	apply_movement 255, scr_seq_0231_R31R0101_0294
+	apply_movement obj_player, _0294
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, scr_seq_0231_R31R0101_0138
-	apply_movement 253, scr_seq_0231_R31R0101_0294
-scr_seq_0231_R31R0101_0138:
+	gotoif ne, _0138
+	apply_movement 253, _0294
+_0138:
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 2, 3
+	gender_msgbox msg_0379_R31R0101_00002, msg_0379_R31R0101_00003
 	setvar VAR_SPECIAL_x8004, 465
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	gender_msgbox 4, 5
+	gender_msgbox msg_0379_R31R0101_00004, msg_0379_R31R0101_00005
 	closemsg
-	apply_movement 1, scr_seq_0231_R31R0101_0294
+	apply_movement obj_R31R0101_var_1, _0294
 	wait_movement
-	gender_msgbox 6, 7
+	gender_msgbox msg_0379_R31R0101_00006, msg_0379_R31R0101_00007
 	closemsg
-	apply_movement 2, scr_seq_0231_R31R0101_02A4
+	apply_movement obj_R31R0101_tsure_poke_611, _02A4
 	wait_movement
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, scr_seq_0231_R31R0101_01DA
+	gotoif ne, _01DA
 	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, scr_seq_0231_R31R0101_01A1
-	apply_movement 1, scr_seq_0231_R31R0101_037C
-	apply_movement 2, scr_seq_0231_R31R0101_03EC
-	goto scr_seq_0231_R31R0101_01D4
+	gotoif ne, _01A1
+	apply_movement obj_R31R0101_var_1, _037C
+	apply_movement obj_R31R0101_tsure_poke_611, _03EC
+	goto _01D4
 
-scr_seq_0231_R31R0101_01A1:
+_01A1:
 	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, scr_seq_0231_R31R0101_01C4
-	apply_movement 1, scr_seq_0231_R31R0101_038C
-	apply_movement 2, scr_seq_0231_R31R0101_0404
-	goto scr_seq_0231_R31R0101_01D4
+	gotoif ne, _01C4
+	apply_movement obj_R31R0101_var_1, _038C
+	apply_movement obj_R31R0101_tsure_poke_611, _0404
+	goto _01D4
 
-scr_seq_0231_R31R0101_01C4:
-	apply_movement 1, scr_seq_0231_R31R0101_03A4
-	apply_movement 2, scr_seq_0231_R31R0101_0424
-scr_seq_0231_R31R0101_01D4:
-	goto scr_seq_0231_R31R0101_0230
+_01C4:
+	apply_movement obj_R31R0101_var_1, _03A4
+	apply_movement obj_R31R0101_tsure_poke_611, _0424
+_01D4:
+	goto _0230
 
-scr_seq_0231_R31R0101_01DA:
+_01DA:
 	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, scr_seq_0231_R31R0101_01FD
-	apply_movement 1, scr_seq_0231_R31R0101_03B4
-	apply_movement 2, scr_seq_0231_R31R0101_043C
-	goto scr_seq_0231_R31R0101_0230
+	gotoif ne, _01FD
+	apply_movement obj_R31R0101_var_1, _03B4
+	apply_movement obj_R31R0101_tsure_poke_611, _043C
+	goto _0230
 
-scr_seq_0231_R31R0101_01FD:
+_01FD:
 	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, scr_seq_0231_R31R0101_0220
-	apply_movement 1, scr_seq_0231_R31R0101_03C4
-	apply_movement 2, scr_seq_0231_R31R0101_0454
-	goto scr_seq_0231_R31R0101_0230
+	gotoif ne, _0220
+	apply_movement obj_R31R0101_var_1, _03C4
+	apply_movement obj_R31R0101_tsure_poke_611, _0454
+	goto _0230
 
-scr_seq_0231_R31R0101_0220:
-	apply_movement 1, scr_seq_0231_R31R0101_03DC
-	apply_movement 2, scr_seq_0231_R31R0101_0474
-scr_seq_0231_R31R0101_0230:
+_0220:
+	apply_movement obj_R31R0101_var_1, _03DC
+	apply_movement obj_R31R0101_tsure_poke_611, _0474
+_0230:
 	wait 16, VAR_SPECIAL_x800C
-	apply_movement 255, scr_seq_0231_R31R0101_029C
+	apply_movement obj_player, _029C
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, scr_seq_0231_R31R0101_0253
-	apply_movement 253, scr_seq_0231_R31R0101_029C
-scr_seq_0231_R31R0101_0253:
+	gotoif ne, _0253
+	apply_movement 253, _029C
+_0253:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -139,63 +141,61 @@ scr_seq_0231_R31R0101_0253:
 	releaseall
 	setvar VAR_UNK_4132, 1
 	end
-
-scr_seq_0231_R31R0101_0283:
 	.byte 0x00
 
-scr_seq_0231_R31R0101_0284:
+_0284:
 	step 75, 1
 	step_end
 
-scr_seq_0231_R31R0101_028C:
+_028C:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_0294:
+_0294:
 	step 35, 1
 	step_end
 
-scr_seq_0231_R31R0101_029C:
+_029C:
 	step 38, 1
 	step_end
 
-scr_seq_0231_R31R0101_02A4:
+_02A4:
 	step 50, 2
 	step_end
 
-scr_seq_0231_R31R0101_02AC:
+_02AC:
 	step 14, 2
 	step 12, 1
 	step 14, 1
 	step_end
 
-scr_seq_0231_R31R0101_02BC:
+_02BC:
 	step 14, 3
 	step_end
 
-scr_seq_0231_R31R0101_02C4:
+_02C4:
 	step 14, 2
 	step 13, 1
 	step 14, 1
 	step_end
 
-scr_seq_0231_R31R0101_02D4:
+_02D4:
 	step 14, 2
 	step 12, 1
 	step 14, 2
 	step_end
 
-scr_seq_0231_R31R0101_02E4:
+_02E4:
 	step 14, 4
 	step_end
 
-scr_seq_0231_R31R0101_02EC:
+_02EC:
 	step 14, 2
 	step 13, 1
 	step 14, 2
 	step_end
 
-scr_seq_0231_R31R0101_02FC:
+_02FC:
 	step 63, 1
 	step 70, 1
 	step 14, 2
@@ -203,13 +203,13 @@ scr_seq_0231_R31R0101_02FC:
 	step 34, 1
 	step_end
 
-scr_seq_0231_R31R0101_0314:
+_0314:
 	step 63, 1
 	step 70, 1
 	step 14, 2
 	step_end
 
-scr_seq_0231_R31R0101_0324:
+_0324:
 	step 63, 1
 	step 70, 1
 	step 14, 2
@@ -217,7 +217,7 @@ scr_seq_0231_R31R0101_0324:
 	step 34, 1
 	step_end
 
-scr_seq_0231_R31R0101_033C:
+_033C:
 	step 63, 1
 	step 70, 1
 	step 14, 2
@@ -225,13 +225,13 @@ scr_seq_0231_R31R0101_033C:
 	step 14, 1
 	step_end
 
-scr_seq_0231_R31R0101_0354:
+_0354:
 	step 63, 1
 	step 70, 1
 	step 14, 3
 	step_end
 
-scr_seq_0231_R31R0101_0364:
+_0364:
 	step 63, 1
 	step 70, 1
 	step 14, 2
@@ -239,13 +239,13 @@ scr_seq_0231_R31R0101_0364:
 	step 14, 1
 	step_end
 
-scr_seq_0231_R31R0101_037C:
+_037C:
 	step 89, 1
 	step 90, 6
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_038C:
+_038C:
 	step 89, 1
 	step 90, 4
 	step 88, 1
@@ -253,19 +253,19 @@ scr_seq_0231_R31R0101_038C:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_03A4:
+_03A4:
 	step 88, 1
 	step 90, 6
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_03B4:
+_03B4:
 	step 89, 1
 	step 90, 5
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_03C4:
+_03C4:
 	step 89, 1
 	step 90, 3
 	step 88, 1
@@ -273,13 +273,13 @@ scr_seq_0231_R31R0101_03C4:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_03DC:
+_03DC:
 	step 88, 1
 	step 90, 5
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_03EC:
+_03EC:
 	step 61, 1
 	step 18, 1
 	step 17, 1
@@ -287,7 +287,7 @@ scr_seq_0231_R31R0101_03EC:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_0404:
+_0404:
 	step 61, 1
 	step 18, 1
 	step 17, 1
@@ -297,7 +297,7 @@ scr_seq_0231_R31R0101_0404:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_0424:
+_0424:
 	step 61, 1
 	step 18, 1
 	step 16, 1
@@ -305,7 +305,7 @@ scr_seq_0231_R31R0101_0424:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_043C:
+_043C:
 	step 61, 1
 	step 18, 1
 	step 17, 1
@@ -313,7 +313,7 @@ scr_seq_0231_R31R0101_043C:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_0454:
+_0454:
 	step 61, 1
 	step 18, 1
 	step 17, 1
@@ -323,18 +323,18 @@ scr_seq_0231_R31R0101_0454:
 	step 69, 1
 	step_end
 
-scr_seq_0231_R31R0101_0474:
+_0474:
 	step 61, 1
 	step 18, 1
 	step 16, 1
 	step 18, 5
 	step 69, 1
 	step_end
-scr_seq_0231_R31R0101_048C:
+scr_seq_R31R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0379_R31R0101_00000
 	waitbutton
 	closemsg
 	releaseall

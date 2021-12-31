@@ -1,55 +1,57 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T02GYM0101.h"
+#include "msgdata/msg/msg_0454_T02GYM0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0743_T02GYM0101_006B ; 000
-	scrdef scr_seq_0743_T02GYM0101_014D ; 001
-	scrdef scr_seq_0743_T02GYM0101_0016 ; 002
-	scrdef scr_seq_0743_T02GYM0101_0191 ; 003
-	scrdef scr_seq_0743_T02GYM0101_0480 ; 004
+	scrdef scr_seq_T02GYM0101_000
+	scrdef scr_seq_T02GYM0101_001
+	scrdef scr_seq_T02GYM0101_002
+	scrdef scr_seq_T02GYM0101_003
+	scrdef scr_seq_T02GYM0101_004
 	scrdef_end
 
-scr_seq_0743_T02GYM0101_0016:
+scr_seq_T02GYM0101_002:
 	scrcmd_331
 	setvar VAR_UNK_4127, 0
 	get_phone_book_rematch 31, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0743_T02GYM0101_0065
+	gotoif ne, _0065
 	comparevartovalue VAR_UNK_40FD, 0
-	gotoif eq, scr_seq_0743_T02GYM0101_005F
+	gotoif eq, _005F
 	get_weekday VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 5
-	gotoif ne, scr_seq_0743_T02GYM0101_0059
+	gotoif ne, _0059
 	setflag FLAG_UNK_2F6
-	goto scr_seq_0743_T02GYM0101_005D
+	goto _005D
 
-scr_seq_0743_T02GYM0101_0059:
+_0059:
 	clearflag FLAG_UNK_2F6
-scr_seq_0743_T02GYM0101_005D:
+_005D:
 	end
 
-scr_seq_0743_T02GYM0101_005F:
+_005F:
 	clearflag FLAG_UNK_2F6
 	end
 
-scr_seq_0743_T02GYM0101_0065:
+_0065:
 	setflag FLAG_UNK_2F6
 	end
 
-scr_seq_0743_T02GYM0101_006B:
+scr_seq_T02GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0743_T02GYM0101_0131
-	npc_msg 0
+	gotoif eq, _0131
+	npc_msg msg_0454_T02GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_BLUE_BLUE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0743_T02GYM0101_0147
+	gotoif eq, _0147
 	give_badge 15
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_998
@@ -62,57 +64,57 @@ scr_seq_0743_T02GYM0101_006B:
 	clearflag FLAG_UNK_297
 	setflag FLAG_UNK_30F
 	setvar VAR_UNK_4096, 1
-	npc_msg 1
+	npc_msg msg_0454_T02GYM0101_00001
 	buffer_players_name 0
-	npc_msg 2
+	npc_msg msg_0454_T02GYM0101_00002
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	npc_msg 3
-	goto scr_seq_0743_T02GYM0101_00F0
+	npc_msg msg_0454_T02GYM0101_00003
+	goto _00F0
 
-scr_seq_0743_T02GYM0101_00F0:
+_00F0:
 	setvar VAR_SPECIAL_x8004, 419
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0743_T02GYM0101_0127
+	gotoif eq, _0127
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_17E
 	buffer_players_name 0
-	npc_msg 4
+	npc_msg msg_0454_T02GYM0101_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0743_T02GYM0101_0127:
+_0127:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0743_T02GYM0101_0131:
+_0131:
 	checkflag FLAG_UNK_17E
-	gotoif FALSE, scr_seq_0743_T02GYM0101_00F0
-	npc_msg 5
+	gotoif FALSE, _00F0
+	npc_msg msg_0454_T02GYM0101_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0743_T02GYM0101_0147:
+_0147:
 	white_out
 	releaseall
 	end
 
-scr_seq_0743_T02GYM0101_014D:
+scr_seq_T02GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0743_T02GYM0101_0186
-	npc_msg 6
+	gotoif eq, _0186
+	npc_msg msg_0454_T02GYM0101_00006
 	scrcmd_600
 	scrcmd_783 1
 	scrcmd_607
@@ -123,121 +125,121 @@ scr_seq_0743_T02GYM0101_014D:
 	releaseall
 	end
 
-scr_seq_0743_T02GYM0101_0186:
-	npc_msg 7
+_0186:
+	npc_msg msg_0454_T02GYM0101_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0743_T02GYM0101_0191:
+scr_seq_T02GYM0101_003:
 	scrcmd_609
 	lockall
 	checkflag FLAG_UNK_13A
-	gotoif TRUE, scr_seq_0743_T02GYM0101_037D
+	gotoif TRUE, _037D
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, scr_seq_0743_T02GYM0101_01C9
-	apply_movement 4, scr_seq_0743_T02GYM0101_0394
-	apply_movement 255, scr_seq_0743_T02GYM0101_040C
-	goto scr_seq_0743_T02GYM0101_02AB
+	gotoif ne, _01C9
+	apply_movement obj_T02GYM0101_sunglasses, _0394
+	apply_movement obj_player, _040C
+	goto _02AB
 
-scr_seq_0743_T02GYM0101_01C9:
+_01C9:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0743_T02GYM0101_01EC
-	apply_movement 4, scr_seq_0743_T02GYM0101_03A4
-	apply_movement 255, scr_seq_0743_T02GYM0101_040C
-	goto scr_seq_0743_T02GYM0101_02AB
+	gotoif ne, _01EC
+	apply_movement obj_T02GYM0101_sunglasses, _03A4
+	apply_movement obj_player, _040C
+	goto _02AB
 
-scr_seq_0743_T02GYM0101_01EC:
+_01EC:
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0743_T02GYM0101_020F
-	apply_movement 4, scr_seq_0743_T02GYM0101_03B4
-	apply_movement 255, scr_seq_0743_T02GYM0101_040C
-	goto scr_seq_0743_T02GYM0101_02AB
+	gotoif ne, _020F
+	apply_movement obj_T02GYM0101_sunglasses, _03B4
+	apply_movement obj_player, _040C
+	goto _02AB
 
-scr_seq_0743_T02GYM0101_020F:
+_020F:
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, scr_seq_0743_T02GYM0101_0232
-	apply_movement 4, scr_seq_0743_T02GYM0101_03C4
-	apply_movement 255, scr_seq_0743_T02GYM0101_0418
-	goto scr_seq_0743_T02GYM0101_02AB
+	gotoif ne, _0232
+	apply_movement obj_T02GYM0101_sunglasses, _03C4
+	apply_movement obj_player, _0418
+	goto _02AB
 
-scr_seq_0743_T02GYM0101_0232:
+_0232:
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0743_T02GYM0101_0255
-	apply_movement 4, scr_seq_0743_T02GYM0101_03D4
-	apply_movement 255, scr_seq_0743_T02GYM0101_0418
-	goto scr_seq_0743_T02GYM0101_02AB
+	gotoif ne, _0255
+	apply_movement obj_T02GYM0101_sunglasses, _03D4
+	apply_movement obj_player, _0418
+	goto _02AB
 
-scr_seq_0743_T02GYM0101_0255:
+_0255:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0743_T02GYM0101_0278
-	apply_movement 4, scr_seq_0743_T02GYM0101_03E4
-	apply_movement 255, scr_seq_0743_T02GYM0101_0418
-	goto scr_seq_0743_T02GYM0101_02AB
+	gotoif ne, _0278
+	apply_movement obj_T02GYM0101_sunglasses, _03E4
+	apply_movement obj_player, _0418
+	goto _02AB
 
-scr_seq_0743_T02GYM0101_0278:
+_0278:
 	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, scr_seq_0743_T02GYM0101_029B
-	apply_movement 4, scr_seq_0743_T02GYM0101_03F0
-	apply_movement 255, scr_seq_0743_T02GYM0101_0424
-	goto scr_seq_0743_T02GYM0101_02AB
+	gotoif ne, _029B
+	apply_movement obj_T02GYM0101_sunglasses, _03F0
+	apply_movement obj_player, _0424
+	goto _02AB
 
-scr_seq_0743_T02GYM0101_029B:
-	apply_movement 4, scr_seq_0743_T02GYM0101_03FC
-	apply_movement 255, scr_seq_0743_T02GYM0101_0424
-scr_seq_0743_T02GYM0101_02AB:
+_029B:
+	apply_movement obj_T02GYM0101_sunglasses, _03FC
+	apply_movement obj_player, _0424
+_02AB:
 	wait_movement
-	npc_msg 8
+	npc_msg msg_0454_T02GYM0101_00008
 	closemsg
 	setflag FLAG_UNK_13A
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, scr_seq_0743_T02GYM0101_02D1
-	apply_movement 4, scr_seq_0743_T02GYM0101_0430
-	goto scr_seq_0743_T02GYM0101_037B
+	gotoif ne, _02D1
+	apply_movement obj_T02GYM0101_sunglasses, _0430
+	goto _037B
 
-scr_seq_0743_T02GYM0101_02D1:
+_02D1:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0743_T02GYM0101_02EC
-	apply_movement 4, scr_seq_0743_T02GYM0101_043C
-	goto scr_seq_0743_T02GYM0101_037B
+	gotoif ne, _02EC
+	apply_movement obj_T02GYM0101_sunglasses, _043C
+	goto _037B
 
-scr_seq_0743_T02GYM0101_02EC:
+_02EC:
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0743_T02GYM0101_0307
-	apply_movement 4, scr_seq_0743_T02GYM0101_0448
-	goto scr_seq_0743_T02GYM0101_037B
+	gotoif ne, _0307
+	apply_movement obj_T02GYM0101_sunglasses, _0448
+	goto _037B
 
-scr_seq_0743_T02GYM0101_0307:
+_0307:
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, scr_seq_0743_T02GYM0101_0322
-	apply_movement 4, scr_seq_0743_T02GYM0101_0454
-	goto scr_seq_0743_T02GYM0101_037B
+	gotoif ne, _0322
+	apply_movement obj_T02GYM0101_sunglasses, _0454
+	goto _037B
 
-scr_seq_0743_T02GYM0101_0322:
+_0322:
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0743_T02GYM0101_033D
-	apply_movement 4, scr_seq_0743_T02GYM0101_0460
-	goto scr_seq_0743_T02GYM0101_037B
+	gotoif ne, _033D
+	apply_movement obj_T02GYM0101_sunglasses, _0460
+	goto _037B
 
-scr_seq_0743_T02GYM0101_033D:
+_033D:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0743_T02GYM0101_0358
-	apply_movement 4, scr_seq_0743_T02GYM0101_046C
-	goto scr_seq_0743_T02GYM0101_037B
+	gotoif ne, _0358
+	apply_movement obj_T02GYM0101_sunglasses, _046C
+	goto _037B
 
-scr_seq_0743_T02GYM0101_0358:
+_0358:
 	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, scr_seq_0743_T02GYM0101_0373
-	apply_movement 4, scr_seq_0743_T02GYM0101_046C
-	goto scr_seq_0743_T02GYM0101_037B
+	gotoif ne, _0373
+	apply_movement obj_T02GYM0101_sunglasses, _046C
+	goto _037B
 
-scr_seq_0743_T02GYM0101_0373:
-	apply_movement 4, scr_seq_0743_T02GYM0101_0474
-scr_seq_0743_T02GYM0101_037B:
+_0373:
+	apply_movement obj_T02GYM0101_sunglasses, _0474
+_037B:
 	wait_movement
-scr_seq_0743_T02GYM0101_037D:
+_037D:
 	scrcmd_600
 	scrcmd_783 1
 	scrcmd_607
@@ -247,114 +249,114 @@ scr_seq_0743_T02GYM0101_037D:
 	end
 
 
-scr_seq_0743_T02GYM0101_0394:
+_0394:
 	step 2, 1
 	step 75, 1
 	step 14, 5
 	step_end
 
-scr_seq_0743_T02GYM0101_03A4:
+_03A4:
 	step 2, 1
 	step 75, 1
 	step 14, 4
 	step_end
 
-scr_seq_0743_T02GYM0101_03B4:
+_03B4:
 	step 2, 1
 	step 75, 1
 	step 14, 3
 	step_end
 
-scr_seq_0743_T02GYM0101_03C4:
+_03C4:
 	step 2, 1
 	step 75, 1
 	step 14, 2
 	step_end
 
-scr_seq_0743_T02GYM0101_03D4:
+_03D4:
 	step 2, 1
 	step 75, 1
 	step 14, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_03E4:
+_03E4:
 	step 2, 1
 	step 75, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_03F0:
+_03F0:
 	step 3, 1
 	step 75, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_03FC:
+_03FC:
 	step 3, 1
 	step 75, 1
 	step 15, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_040C:
+_040C:
 	step 65, 2
 	step 3, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_0418:
+_0418:
 	step 63, 2
 	step 3, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_0424:
+_0424:
 	step 63, 2
 	step 2, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_0430:
+_0430:
 	step 15, 5
 	step 1, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_043C:
+_043C:
 	step 15, 4
 	step 1, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_0448:
+_0448:
 	step 15, 3
 	step 1, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_0454:
+_0454:
 	step 15, 2
 	step 1, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_0460:
+_0460:
 	step 15, 1
 	step 1, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_046C:
+_046C:
 	step 1, 1
 	step_end
 
-scr_seq_0743_T02GYM0101_0474:
+_0474:
 	step 14, 1
 	step 1, 1
 	step_end
-scr_seq_0743_T02GYM0101_0480:
+scr_seq_T02GYM0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 15, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0743_T02GYM0101_04A7
-	npc_msg 9
-	goto scr_seq_0743_T02GYM0101_04AA
+	gotoif ne, _04A7
+	npc_msg msg_0454_T02GYM0101_00009
+	goto _04AA
 
-scr_seq_0743_T02GYM0101_04A7:
-	npc_msg 10
-scr_seq_0743_T02GYM0101_04AA:
+_04A7:
+	npc_msg msg_0454_T02GYM0101_00010
+_04AA:
 	waitbutton
 	closemsg
 	releaseall

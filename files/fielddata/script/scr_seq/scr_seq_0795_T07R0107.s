@@ -1,58 +1,60 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T07R0107.h"
+#include "msgdata/msg/msg_0500_T07R0107.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0795_T07R0107_0006 ; 000
+	scrdef scr_seq_T07R0107_000
 	scrdef_end
 
-scr_seq_0795_T07R0107_0006:
+scr_seq_T07R0107_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_241 16659
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
 	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, scr_seq_0795_T07R0107_0068
+	gotoif eq, _0068
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0795_T07R0107_0072
+	gotoif eq, _0072
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0795_T07R0107_007C
+	gotoif eq, _007C
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0795_T07R0107_0086
+	gotoif eq, _0086
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0795_T07R0107_0090
+	gotoif eq, _0090
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0795_T07R0107_009A
+	gotoif eq, _009A
 	end
 
-scr_seq_0795_T07R0107_0068:
+_0068:
 	scrcmd_852 0, 6
-	goto scr_seq_0795_T07R0107_00A4
+	goto _00A4
 
-scr_seq_0795_T07R0107_0072:
+_0072:
 	scrcmd_852 0, 5
-	goto scr_seq_0795_T07R0107_00A4
+	goto _00A4
 
-scr_seq_0795_T07R0107_007C:
+_007C:
 	scrcmd_852 0, 4
-	goto scr_seq_0795_T07R0107_00A4
+	goto _00A4
 
-scr_seq_0795_T07R0107_0086:
+_0086:
 	scrcmd_852 0, 3
-	goto scr_seq_0795_T07R0107_00A4
+	goto _00A4
 
-scr_seq_0795_T07R0107_0090:
+_0090:
 	scrcmd_852 0, 2
-	goto scr_seq_0795_T07R0107_00A4
+	goto _00A4
 
-scr_seq_0795_T07R0107_009A:
+_009A:
 	scrcmd_852 0, 1
-	goto scr_seq_0795_T07R0107_00A4
+	goto _00A4
 
-scr_seq_0795_T07R0107_00A4:
+_00A4:
 	scrcmd_242 20, 1, 16659, 16659
-	npc_msg 0
+	npc_msg msg_0500_T07R0107_00000
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 121, 255, 6
@@ -66,370 +68,356 @@ scr_seq_0795_T07R0107_00A4:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, scr_seq_0795_T07R0107_052D
+	gotoif eq, _052D
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0795_T07R0107_0467
+	gotoif eq, _0467
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0795_T07R0107_03A1
+	gotoif eq, _03A1
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0795_T07R0107_02DB
+	gotoif eq, _02DB
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0795_T07R0107_0215
+	gotoif eq, _0215
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0795_T07R0107_014F
-	goto scr_seq_0795_T07R0107_06DE
+	gotoif eq, _014F
+	goto _06DE
 
-scr_seq_0795_T07R0107_014F:
+_014F:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 370, 2, 5, 3, 1
 	comparevartovalue VAR_UNK_4113, 0
-	gotoif eq, scr_seq_0795_T07R0107_06C7
+	gotoif eq, _06C7
 	comparevartovalue VAR_UNK_4113, 0
-	callif gt, scr_seq_0795_T07R0107_05FE
+	callif gt, _05FE
 	comparevartovalue VAR_UNK_4113, 0
-	callif lt, scr_seq_0795_T07R0107_05F3
+	callif lt, _05F3
 	comparevartovalue VAR_UNK_4113, 1
-	gotoif ne, scr_seq_0795_T07R0107_01A5
+	gotoif ne, _01A5
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_0203
+	goto _0203
 
-scr_seq_0795_T07R0107_01A5:
+_01A5:
 	comparevartovalue VAR_UNK_4113, 2
-	gotoif ne, scr_seq_0795_T07R0107_01BE
+	gotoif ne, _01BE
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0795_T07R0107_0203
+	goto _0203
 
-scr_seq_0795_T07R0107_01BE:
+_01BE:
 	comparevartovalue VAR_UNK_4113, 3
-	gotoif ne, scr_seq_0795_T07R0107_01D7
+	gotoif ne, _01D7
 	setvar VAR_SPECIAL_x8005, 3
-	goto scr_seq_0795_T07R0107_0203
+	goto _0203
 
-scr_seq_0795_T07R0107_01D7:
+_01D7:
 	comparevartovalue VAR_UNK_4113, 4
-	gotoif ne, scr_seq_0795_T07R0107_01F0
+	gotoif ne, _01F0
 	setvar VAR_SPECIAL_x8005, 4
-	goto scr_seq_0795_T07R0107_0203
+	goto _0203
 
-scr_seq_0795_T07R0107_01F0:
+_01F0:
 	comparevartovalue VAR_UNK_4113, 5
-	gotoif ne, scr_seq_0795_T07R0107_0203
+	gotoif ne, _0203
 	setvar VAR_SPECIAL_x8005, 5
-scr_seq_0795_T07R0107_0203:
-	call scr_seq_0795_T07R0107_0609
+_0203:
+	call _0609
 	setvar VAR_UNK_4113, 0
-	goto scr_seq_0795_T07R0107_0627
+	goto _0627
 
-scr_seq_0795_T07R0107_0215:
+_0215:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 371, 2, 19, 3, 1
 	comparevartovalue VAR_UNK_4113, 1
-	gotoif eq, scr_seq_0795_T07R0107_06C7
+	gotoif eq, _06C7
 	comparevartovalue VAR_UNK_4113, 1
-	callif gt, scr_seq_0795_T07R0107_05FE
+	callif gt, _05FE
 	comparevartovalue VAR_UNK_4113, 1
-	callif lt, scr_seq_0795_T07R0107_05F3
+	callif lt, _05F3
 	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, scr_seq_0795_T07R0107_026B
+	gotoif ne, _026B
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_02C9
+	goto _02C9
 
-scr_seq_0795_T07R0107_026B:
+_026B:
 	comparevartovalue VAR_UNK_4113, 2
-	gotoif ne, scr_seq_0795_T07R0107_0284
+	gotoif ne, _0284
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_02C9
+	goto _02C9
 
-scr_seq_0795_T07R0107_0284:
+_0284:
 	comparevartovalue VAR_UNK_4113, 3
-	gotoif ne, scr_seq_0795_T07R0107_029D
+	gotoif ne, _029D
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0795_T07R0107_02C9
+	goto _02C9
 
-scr_seq_0795_T07R0107_029D:
+_029D:
 	comparevartovalue VAR_UNK_4113, 4
-	gotoif ne, scr_seq_0795_T07R0107_02B6
+	gotoif ne, _02B6
 	setvar VAR_SPECIAL_x8005, 3
-	goto scr_seq_0795_T07R0107_02C9
+	goto _02C9
 
-scr_seq_0795_T07R0107_02B6:
+_02B6:
 	comparevartovalue VAR_UNK_4113, 5
-	gotoif ne, scr_seq_0795_T07R0107_02C9
+	gotoif ne, _02C9
 	setvar VAR_SPECIAL_x8005, 4
-scr_seq_0795_T07R0107_02C9:
-	call scr_seq_0795_T07R0107_0609
+_02C9:
+	call _0609
 	setvar VAR_UNK_4113, 1
-	goto scr_seq_0795_T07R0107_0627
+	goto _0627
 
-scr_seq_0795_T07R0107_02DB:
+_02DB:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 372, 2, 19, 3, 1
 	comparevartovalue VAR_UNK_4113, 2
-	gotoif eq, scr_seq_0795_T07R0107_06C7
+	gotoif eq, _06C7
 	comparevartovalue VAR_UNK_4113, 2
-	callif gt, scr_seq_0795_T07R0107_05FE
+	callif gt, _05FE
 	comparevartovalue VAR_UNK_4113, 2
-	callif lt, scr_seq_0795_T07R0107_05F3
+	callif lt, _05F3
 	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, scr_seq_0795_T07R0107_0331
+	gotoif ne, _0331
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0795_T07R0107_038F
+	goto _038F
 
-scr_seq_0795_T07R0107_0331:
+_0331:
 	comparevartovalue VAR_UNK_4113, 1
-	gotoif ne, scr_seq_0795_T07R0107_034A
+	gotoif ne, _034A
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_038F
+	goto _038F
 
-scr_seq_0795_T07R0107_034A:
+_034A:
 	comparevartovalue VAR_UNK_4113, 3
-	gotoif ne, scr_seq_0795_T07R0107_0363
+	gotoif ne, _0363
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_038F
+	goto _038F
 
-scr_seq_0795_T07R0107_0363:
+_0363:
 	comparevartovalue VAR_UNK_4113, 4
-	gotoif ne, scr_seq_0795_T07R0107_037C
+	gotoif ne, _037C
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0795_T07R0107_038F
+	goto _038F
 
-scr_seq_0795_T07R0107_037C:
+_037C:
 	comparevartovalue VAR_UNK_4113, 5
-	gotoif ne, scr_seq_0795_T07R0107_038F
+	gotoif ne, _038F
 	setvar VAR_SPECIAL_x8005, 3
-scr_seq_0795_T07R0107_038F:
-	call scr_seq_0795_T07R0107_0609
+_038F:
+	call _0609
 	setvar VAR_UNK_4113, 2
-	goto scr_seq_0795_T07R0107_0627
+	goto _0627
 
-scr_seq_0795_T07R0107_03A1:
+_03A1:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 373, 2, 19, 3, 1
 	comparevartovalue VAR_UNK_4113, 3
-	gotoif eq, scr_seq_0795_T07R0107_06C7
+	gotoif eq, _06C7
 	comparevartovalue VAR_UNK_4113, 3
-	callif gt, scr_seq_0795_T07R0107_05FE
+	callif gt, _05FE
 	comparevartovalue VAR_UNK_4113, 3
-	callif lt, scr_seq_0795_T07R0107_05F3
+	callif lt, _05F3
 	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, scr_seq_0795_T07R0107_03F7
+	gotoif ne, _03F7
 	setvar VAR_SPECIAL_x8005, 3
-	goto scr_seq_0795_T07R0107_0455
+	goto _0455
 
-scr_seq_0795_T07R0107_03F7:
+_03F7:
 	comparevartovalue VAR_UNK_4113, 1
-	gotoif ne, scr_seq_0795_T07R0107_0410
+	gotoif ne, _0410
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0795_T07R0107_0455
+	goto _0455
 
-scr_seq_0795_T07R0107_0410:
+_0410:
 	comparevartovalue VAR_UNK_4113, 2
-	gotoif ne, scr_seq_0795_T07R0107_0429
+	gotoif ne, _0429
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_0455
+	goto _0455
 
-scr_seq_0795_T07R0107_0429:
+_0429:
 	comparevartovalue VAR_UNK_4113, 4
-	gotoif ne, scr_seq_0795_T07R0107_0442
+	gotoif ne, _0442
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_0455
+	goto _0455
 
-scr_seq_0795_T07R0107_0442:
+_0442:
 	comparevartovalue VAR_UNK_4113, 5
-	gotoif ne, scr_seq_0795_T07R0107_0455
+	gotoif ne, _0455
 	setvar VAR_SPECIAL_x8005, 2
-scr_seq_0795_T07R0107_0455:
-	call scr_seq_0795_T07R0107_0609
+_0455:
+	call _0609
 	setvar VAR_UNK_4113, 3
-	goto scr_seq_0795_T07R0107_0627
+	goto _0627
 
-scr_seq_0795_T07R0107_0467:
+_0467:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 374, 2, 19, 3, 1
 	comparevartovalue VAR_UNK_4113, 4
-	gotoif eq, scr_seq_0795_T07R0107_06C7
+	gotoif eq, _06C7
 	comparevartovalue VAR_UNK_4113, 4
-	callif gt, scr_seq_0795_T07R0107_05FE
+	callif gt, _05FE
 	comparevartovalue VAR_UNK_4113, 4
-	callif lt, scr_seq_0795_T07R0107_05F3
+	callif lt, _05F3
 	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, scr_seq_0795_T07R0107_04BD
+	gotoif ne, _04BD
 	setvar VAR_SPECIAL_x8005, 4
-	goto scr_seq_0795_T07R0107_051B
+	goto _051B
 
-scr_seq_0795_T07R0107_04BD:
+_04BD:
 	comparevartovalue VAR_UNK_4113, 1
-	gotoif ne, scr_seq_0795_T07R0107_04D6
+	gotoif ne, _04D6
 	setvar VAR_SPECIAL_x8005, 3
-	goto scr_seq_0795_T07R0107_051B
+	goto _051B
 
-scr_seq_0795_T07R0107_04D6:
+_04D6:
 	comparevartovalue VAR_UNK_4113, 2
-	gotoif ne, scr_seq_0795_T07R0107_04EF
+	gotoif ne, _04EF
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0795_T07R0107_051B
+	goto _051B
 
-scr_seq_0795_T07R0107_04EF:
+_04EF:
 	comparevartovalue VAR_UNK_4113, 3
-	gotoif ne, scr_seq_0795_T07R0107_0508
+	gotoif ne, _0508
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0795_T07R0107_051B
+	goto _051B
 
-scr_seq_0795_T07R0107_0508:
+_0508:
 	comparevartovalue VAR_UNK_4113, 5
-	gotoif ne, scr_seq_0795_T07R0107_051B
+	gotoif ne, _051B
 	setvar VAR_SPECIAL_x8005, 1
-scr_seq_0795_T07R0107_051B:
-	call scr_seq_0795_T07R0107_0609
+_051B:
+	call _0609
 	setvar VAR_UNK_4113, 4
-	goto scr_seq_0795_T07R0107_0627
+	goto _0627
 
-scr_seq_0795_T07R0107_052D:
+_052D:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 375, 1, 19, 3, 1
 	comparevartovalue VAR_UNK_4113, 5
-	gotoif eq, scr_seq_0795_T07R0107_06C7
+	gotoif eq, _06C7
 	comparevartovalue VAR_UNK_4113, 5
-	callif gt, scr_seq_0795_T07R0107_05FE
+	callif gt, _05FE
 	comparevartovalue VAR_UNK_4113, 5
-	callif lt, scr_seq_0795_T07R0107_05F3
+	callif lt, _05F3
 	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, scr_seq_0795_T07R0107_0583
+	gotoif ne, _0583
 	setvar VAR_SPECIAL_x8005, 5
-	goto scr_seq_0795_T07R0107_05E1
+	goto _05E1
 
-scr_seq_0795_T07R0107_0583:
+_0583:
 	comparevartovalue VAR_UNK_4113, 1
-	gotoif ne, scr_seq_0795_T07R0107_059C
+	gotoif ne, _059C
 	setvar VAR_SPECIAL_x8005, 4
-	goto scr_seq_0795_T07R0107_05E1
+	goto _05E1
 
-scr_seq_0795_T07R0107_059C:
+_059C:
 	comparevartovalue VAR_UNK_4113, 2
-	gotoif ne, scr_seq_0795_T07R0107_05B5
+	gotoif ne, _05B5
 	setvar VAR_SPECIAL_x8005, 3
-	goto scr_seq_0795_T07R0107_05E1
+	goto _05E1
 
-scr_seq_0795_T07R0107_05B5:
+_05B5:
 	comparevartovalue VAR_UNK_4113, 3
-	gotoif ne, scr_seq_0795_T07R0107_05CE
+	gotoif ne, _05CE
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0795_T07R0107_05E1
+	goto _05E1
 
-scr_seq_0795_T07R0107_05CE:
+_05CE:
 	comparevartovalue VAR_UNK_4113, 4
-	gotoif ne, scr_seq_0795_T07R0107_05E1
+	gotoif ne, _05E1
 	setvar VAR_SPECIAL_x8005, 1
-scr_seq_0795_T07R0107_05E1:
-	call scr_seq_0795_T07R0107_0609
+_05E1:
+	call _0609
 	setvar VAR_UNK_4113, 5
-	goto scr_seq_0795_T07R0107_0627
+	goto _0627
 
-scr_seq_0795_T07R0107_05F3:
-	npc_msg 2
+_05F3:
+	npc_msg msg_0500_T07R0107_00002
 	setvar VAR_SPECIAL_x8004, 0
 	return
 
-scr_seq_0795_T07R0107_05FE:
-	npc_msg 3
+_05FE:
+	npc_msg msg_0500_T07R0107_00003
 	setvar VAR_SPECIAL_x8004, 1
 	return
 
-scr_seq_0795_T07R0107_0609:
+_0609:
 	setvar VAR_UNK_4113, 65535
 	closemsg
-	apply_movement 0, scr_seq_0795_T07R0107_06F8
+	apply_movement obj_T07R0107_gswoman6, _06F8
 	wait_movement
 	wait_se SEQ_SE_DP_SELECT
 	scrcmd_488 32772, 32773
 	return
 
-scr_seq_0795_T07R0107_0627:
+_0627:
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
 	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, scr_seq_0795_T07R0107_067D
+	gotoif eq, _067D
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0795_T07R0107_0688
+	gotoif eq, _0688
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0795_T07R0107_0693
+	gotoif eq, _0693
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0795_T07R0107_069E
+	gotoif eq, _069E
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0795_T07R0107_06A9
+	gotoif eq, _06A9
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0795_T07R0107_06B4
+	gotoif eq, _06B4
 	end
 
-scr_seq_0795_T07R0107_067D:
-	npc_msg 10
-	goto scr_seq_0795_T07R0107_06BF
-
-scr_seq_0795_T07R0107_0686:
+_067D:
+	npc_msg msg_0500_T07R0107_00010
+	goto _06BF
 	.byte 0x02, 0x00
-scr_seq_0795_T07R0107_0688:
-	npc_msg 9
-	goto scr_seq_0795_T07R0107_06BF
-
-scr_seq_0795_T07R0107_0691:
+_0688:
+	npc_msg msg_0500_T07R0107_00009
+	goto _06BF
 	.byte 0x02, 0x00
-scr_seq_0795_T07R0107_0693:
-	npc_msg 8
-	goto scr_seq_0795_T07R0107_06BF
-
-scr_seq_0795_T07R0107_069C:
+_0693:
+	npc_msg msg_0500_T07R0107_00008
+	goto _06BF
 	.byte 0x02, 0x00
-scr_seq_0795_T07R0107_069E:
-	npc_msg 7
-	goto scr_seq_0795_T07R0107_06BF
-
-scr_seq_0795_T07R0107_06A7:
+_069E:
+	npc_msg msg_0500_T07R0107_00007
+	goto _06BF
 	.byte 0x02, 0x00
-scr_seq_0795_T07R0107_06A9:
-	npc_msg 6
-	goto scr_seq_0795_T07R0107_06BF
-
-scr_seq_0795_T07R0107_06B2:
+_06A9:
+	npc_msg msg_0500_T07R0107_00006
+	goto _06BF
 	.byte 0x02, 0x00
-scr_seq_0795_T07R0107_06B4:
-	npc_msg 5
-	goto scr_seq_0795_T07R0107_06BF
-
-scr_seq_0795_T07R0107_06BD:
+_06B4:
+	npc_msg msg_0500_T07R0107_00005
+	goto _06BF
 	.byte 0x02, 0x00
-scr_seq_0795_T07R0107_06BF:
+_06BF:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0795_T07R0107_06C7:
+_06C7:
 	setvar VAR_UNK_4113, 65535
 	wait 1, VAR_SPECIAL_x800C
-	npc_msg 4
+	npc_msg msg_0500_T07R0107_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0795_T07R0107_06DE:
+_06DE:
 	setvar VAR_UNK_4113, 65535
 	wait 1, VAR_SPECIAL_x800C
-	npc_msg 1
+	npc_msg msg_0500_T07R0107_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0795_T07R0107_06F5:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0795_T07R0107_06F8:
+_06F8:
 	step 33, 1
 	step_end
 	.balign 4, 0

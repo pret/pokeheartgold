@@ -1,118 +1,118 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T07R0207.h"
+#include "msgdata/msg/msg_0507_T07R0207.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0802_T07R0207_0006 ; 000
+	scrdef scr_seq_T07R0207_000
 	scrdef_end
 
-scr_seq_0802_T07R0207_0006:
+scr_seq_T07R0207_000:
 	scrcmd_609
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0802_T07R0207_0058
+	gotoif eq, _0058
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0802_T07R0207_002A
+	gotoif eq, _002A
 	end
 
-scr_seq_0802_T07R0207_002A:
+_002A:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0802_T07R0207_0170
+	apply_movement obj_player, _0170
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 253, scr_seq_0802_T07R0207_017C
+	apply_movement 253, _017C
 	wait_movement
-	goto scr_seq_0802_T07R0207_0062
+	goto _0062
 
-scr_seq_0802_T07R0207_0058:
-	apply_movement 255, scr_seq_0802_T07R0207_0170
+_0058:
+	apply_movement obj_player, _0170
 	wait_movement
-scr_seq_0802_T07R0207_0062:
+_0062:
 	scrcmd_241 16659
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0802_T07R0207_0088
+	gotoif eq, _0088
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0802_T07R0207_0098
+	gotoif eq, _0098
 	end
 
-scr_seq_0802_T07R0207_0088:
+_0088:
 	scrcmd_852 0, 2
-	call scr_seq_0802_T07R0207_00A9
-	goto scr_seq_0802_T07R0207_00B3
+	call _00A9
+	goto _00B3
 
-scr_seq_0802_T07R0207_0098:
+_0098:
 	buffer_int 0, 0
-	call scr_seq_0802_T07R0207_00A9
-	goto scr_seq_0802_T07R0207_00EE
+	call _00A9
+	goto _00EE
 
-scr_seq_0802_T07R0207_00A9:
+_00A9:
 	scrcmd_242 20, 1, 16659, 16659
 	return
 
-scr_seq_0802_T07R0207_00B3:
-	npc_msg 0
+_00B3:
+	npc_msg msg_0507_T07R0207_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0802_T07R0207_0150
-	npc_msg 3
+	gotoif eq, _0150
+	npc_msg msg_0507_T07R0207_00003
 	closemsg
 	setvar VAR_UNK_4113, 65535
 	scrcmd_240 379, 2, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 0
-	goto scr_seq_0802_T07R0207_0129
+	goto _0129
 
-scr_seq_0802_T07R0207_00EE:
-	npc_msg 1
+_00EE:
+	npc_msg msg_0507_T07R0207_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0802_T07R0207_0150
-	npc_msg 4
+	gotoif eq, _0150
+	npc_msg msg_0507_T07R0207_00004
 	closemsg
 	setvar VAR_UNK_4113, 65535
 	scrcmd_240 377, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 1
-	goto scr_seq_0802_T07R0207_0129
+	goto _0129
 
-scr_seq_0802_T07R0207_0129:
+_0129:
 	wait_se SEQ_SE_DP_SELECT
 	scrcmd_488 32772, 2
 	scrcmd_241 16659
 	comparevartovalue VAR_UNK_4113, 1
-	gotoif ne, scr_seq_0802_T07R0207_014D
-	npc_msg 6
-	goto scr_seq_0802_T07R0207_0150
+	gotoif ne, _014D
+	npc_msg msg_0507_T07R0207_00006
+	goto _0150
 
-scr_seq_0802_T07R0207_014D:
-	npc_msg 5
-scr_seq_0802_T07R0207_0150:
+_014D:
+	npc_msg msg_0507_T07R0207_00005
+_0150:
 	setvar VAR_UNK_4113, 65535
 	wait 1, VAR_SPECIAL_x800C
-	npc_msg 2
+	npc_msg msg_0507_T07R0207_00002
 	waitbutton
 	closemsg
 	setvar VAR_UNK_4125, 1
 	releaseall
 	end
-
-scr_seq_0802_T07R0207_016D:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0802_T07R0207_0170:
+_0170:
 	step 12, 2
 	step 33, 1
 	step_end
 
-scr_seq_0802_T07R0207_017C:
+_017C:
 	step 15, 1
 	step 12, 1
 	step 1, 1

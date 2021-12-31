@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T07R0401.h",
   "bgs": [
     {
-      "scr": 10,
+      "scr": "_EV_scr_seq_T07R0401_010",
       "type": 0,
       "x": 4,
       "y": 6,
@@ -9,7 +10,7 @@
       "dir": 2
     },
     {
-      "scr": 23,
+      "scr": "_EV_scr_seq_T07R0401_023",
       "type": 0,
       "x": 17,
       "y": 8,
@@ -17,7 +18,7 @@
       "dir": 2
     },
     {
-      "scr": 9,
+      "scr": "_EV_scr_seq_T07R0401_009",
       "type": 0,
       "x": 5,
       "y": 14,
@@ -25,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 9,
+      "scr": "_EV_scr_seq_T07R0401_009",
       "type": 0,
       "x": 15,
       "y": 14,
@@ -33,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 14,
+      "scr": "_EV_scr_seq_T07R0401_014",
       "type": 0,
       "x": 3,
       "y": 10,
@@ -41,7 +42,7 @@
       "dir": 1
     },
     {
-      "scr": 13,
+      "scr": "_EV_scr_seq_T07R0401_013",
       "type": 0,
       "x": 3,
       "y": 9,
@@ -49,7 +50,7 @@
       "dir": 1
     },
     {
-      "scr": 12,
+      "scr": "_EV_scr_seq_T07R0401_012",
       "type": 0,
       "x": 3,
       "y": 7,
@@ -57,7 +58,7 @@
       "dir": 1
     },
     {
-      "scr": 11,
+      "scr": "_EV_scr_seq_T07R0401_011",
       "type": 0,
       "x": 3,
       "y": 6,
@@ -65,7 +66,7 @@
       "dir": 1
     },
     {
-      "scr": 20,
+      "scr": "_EV_scr_seq_T07R0401_020",
       "type": 0,
       "x": 16,
       "y": 10,
@@ -73,7 +74,7 @@
       "dir": 1
     },
     {
-      "scr": 19,
+      "scr": "_EV_scr_seq_T07R0401_019",
       "type": 0,
       "x": 16,
       "y": 8,
@@ -81,7 +82,7 @@
       "dir": 1
     },
     {
-      "scr": 18,
+      "scr": "_EV_scr_seq_T07R0401_018",
       "type": 0,
       "x": 16,
       "y": 7,
@@ -89,7 +90,7 @@
       "dir": 1
     },
     {
-      "scr": 17,
+      "scr": "_EV_scr_seq_T07R0401_017",
       "type": 0,
       "x": 4,
       "y": 10,
@@ -97,7 +98,7 @@
       "dir": 2
     },
     {
-      "scr": 16,
+      "scr": "_EV_scr_seq_T07R0401_016",
       "type": 0,
       "x": 4,
       "y": 8,
@@ -105,7 +106,7 @@
       "dir": 2
     },
     {
-      "scr": 15,
+      "scr": "_EV_scr_seq_T07R0401_015",
       "type": 0,
       "x": 4,
       "y": 7,
@@ -121,7 +122,7 @@
       "dir": 2
     },
     {
-      "scr": 22,
+      "scr": "_EV_scr_seq_T07R0401_022",
       "type": 0,
       "x": 17,
       "y": 7,
@@ -129,7 +130,7 @@
       "dir": 2
     },
     {
-      "scr": 21,
+      "scr": "_EV_scr_seq_T07R0401_021",
       "type": 0,
       "x": 17,
       "y": 6,
@@ -139,12 +140,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T07R0401_shopm1_2",
       "ovid": "SPRITE_SHOPM1_2",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T07R0401_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -156,12 +157,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T07R0401_gswoman6",
       "ovid": "SPRITE_GSWOMAN6",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T07R0401_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -173,12 +174,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T07R0401_sunglasses",
       "ovid": "SPRITE_SUNGLASSES",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_T07R0401_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -190,12 +191,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T07R0401_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T07R0401_006",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -207,12 +208,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T07R0401_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 8,
+      "scr": "_EV_scr_seq_T07R0401_008",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -224,12 +225,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T07R0401_fishing_2",
       "ovid": "SPRITE_FISHING_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T07R0401_005",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -241,12 +242,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_T07R0401_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T07R0401_003",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -258,12 +259,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_T07R0401_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T07R0401_004",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

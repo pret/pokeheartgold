@@ -1,64 +1,64 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D32R0101.h"
+#include "msgdata/msg/msg_0103_D32R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0080_D32R0101_003E ; 000
-	scrdef scr_seq_0080_D32R0101_008D ; 001
-	scrdef scr_seq_0080_D32R0101_017E ; 002
-	scrdef scr_seq_0080_D32R0101_01CB ; 003
-	scrdef scr_seq_0080_D32R0101_0218 ; 004
-	scrdef scr_seq_0080_D32R0101_0265 ; 005
-	scrdef scr_seq_0080_D32R0101_02B2 ; 006
-	scrdef scr_seq_0080_D32R0101_03A8 ; 007
-	scrdef scr_seq_0080_D32R0101_03BB ; 008
-	scrdef scr_seq_0080_D32R0101_03CE ; 009
-	scrdef scr_seq_0080_D32R0101_03E1 ; 010
-	scrdef scr_seq_0080_D32R0101_0032 ; 011
+	scrdef scr_seq_D32R0101_000
+	scrdef scr_seq_D32R0101_001
+	scrdef scr_seq_D32R0101_002
+	scrdef scr_seq_D32R0101_003
+	scrdef scr_seq_D32R0101_004
+	scrdef scr_seq_D32R0101_005
+	scrdef scr_seq_D32R0101_006
+	scrdef scr_seq_D32R0101_007
+	scrdef scr_seq_D32R0101_008
+	scrdef scr_seq_D32R0101_009
+	scrdef scr_seq_D32R0101_010
+	scrdef scr_seq_D32R0101_011
 	scrdef_end
 
-scr_seq_0080_D32R0101_0032:
+scr_seq_D32R0101_011:
 	setflag FLAG_UNK_9CB
 	setvar VAR_UNK_40E5, 2
 	end
 
-scr_seq_0080_D32R0101_003E:
+scr_seq_D32R0101_000:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40E6, 1
-	call scr_seq_0080_D32R0101_02FF
-	npc_msg 0
+	call _02FF
+	npc_msg msg_0103_D32R0101_00000
 	closemsg
-	call scr_seq_0080_D32R0101_0333
+	call _0333
 	checkflag FLAG_UNK_176
-	gotoif TRUE, scr_seq_0080_D32R0101_0077
-	npc_msg 1
+	gotoif TRUE, _0077
+	npc_msg msg_0103_D32R0101_00001
 	buffer_players_name 0
 	play_fanfare SEQ_ME_ITEM
-	npc_msg 2
+	npc_msg msg_0103_D32R0101_00002
 	wait_fanfare
 	setflag FLAG_UNK_176
-scr_seq_0080_D32R0101_0077:
-	npc_msg 3
-	call scr_seq_0080_D32R0101_00A6
+_0077:
+	npc_msg msg_0103_D32R0101_00003
+	call _00A6
 	touchscreen_menu_show
-	npc_msg 10
+	npc_msg msg_0103_D32R0101_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_008D:
+scr_seq_D32R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
-	call scr_seq_0080_D32R0101_00A6
-	goto scr_seq_0080_D32R0101_012B
-
-scr_seq_0080_D32R0101_00A4:
+	npc_msg msg_0103_D32R0101_00004
+	call _00A6
+	goto _012B
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_00A6:
+_00A6:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 451, 255, 0
@@ -70,301 +70,269 @@ scr_seq_0080_D32R0101_00A6:
 	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0080_D32R0101_0138
+	gotoif eq, _0138
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0080_D32R0101_0170
+	gotoif eq, _0170
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0080_D32R0101_0146
+	gotoif eq, _0146
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0080_D32R0101_0154
+	gotoif eq, _0154
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0080_D32R0101_0162
+	gotoif eq, _0162
 	return
 
-scr_seq_0080_D32R0101_012B:
+_012B:
 	touchscreen_menu_show
-	npc_msg 10
+	npc_msg msg_0103_D32R0101_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_0138:
-	npc_msg 5
-	npc_msg 4
-	goto scr_seq_0080_D32R0101_00A6
-
-scr_seq_0080_D32R0101_0144:
+_0138:
+	npc_msg msg_0103_D32R0101_00005
+	npc_msg msg_0103_D32R0101_00004
+	goto _00A6
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_0146:
-	npc_msg 7
-	npc_msg 4
-	goto scr_seq_0080_D32R0101_00A6
-
-scr_seq_0080_D32R0101_0152:
+_0146:
+	npc_msg msg_0103_D32R0101_00007
+	npc_msg msg_0103_D32R0101_00004
+	goto _00A6
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_0154:
-	npc_msg 8
-	npc_msg 4
-	goto scr_seq_0080_D32R0101_00A6
-
-scr_seq_0080_D32R0101_0160:
+_0154:
+	npc_msg msg_0103_D32R0101_00008
+	npc_msg msg_0103_D32R0101_00004
+	goto _00A6
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_0162:
-	npc_msg 9
-	npc_msg 4
-	goto scr_seq_0080_D32R0101_00A6
-
-scr_seq_0080_D32R0101_016E:
+_0162:
+	npc_msg msg_0103_D32R0101_00009
+	npc_msg msg_0103_D32R0101_00004
+	goto _00A6
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_0170:
-	npc_msg 6
-	npc_msg 4
-	goto scr_seq_0080_D32R0101_00A6
-
-scr_seq_0080_D32R0101_017C:
+_0170:
+	npc_msg msg_0103_D32R0101_00006
+	npc_msg msg_0103_D32R0101_00004
+	goto _00A6
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_017E:
+scr_seq_D32R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 17
+	npc_msg msg_0103_D32R0101_00017
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0080_D32R0101_01AD
+	gotoif eq, _01AD
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0080_D32R0101_01B8
+	gotoif eq, _01B8
 	end
 
-scr_seq_0080_D32R0101_01AD:
-	npc_msg 18
-	goto scr_seq_0080_D32R0101_01B8
-
-scr_seq_0080_D32R0101_01B6:
+_01AD:
+	npc_msg msg_0103_D32R0101_00018
+	goto _01B8
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_01B8:
-	npc_msg 19
-	goto scr_seq_0080_D32R0101_01C3
-
-scr_seq_0080_D32R0101_01C1:
+_01B8:
+	npc_msg msg_0103_D32R0101_00019
+	goto _01C3
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_01C3:
+_01C3:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_01CB:
+scr_seq_D32R0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 20
+	npc_msg msg_0103_D32R0101_00020
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0080_D32R0101_01FA
+	gotoif eq, _01FA
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0080_D32R0101_0205
+	gotoif eq, _0205
 	end
 
-scr_seq_0080_D32R0101_01FA:
-	npc_msg 21
-	goto scr_seq_0080_D32R0101_0205
-
-scr_seq_0080_D32R0101_0203:
+_01FA:
+	npc_msg msg_0103_D32R0101_00021
+	goto _0205
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_0205:
-	npc_msg 22
-	goto scr_seq_0080_D32R0101_0210
-
-scr_seq_0080_D32R0101_020E:
+_0205:
+	npc_msg msg_0103_D32R0101_00022
+	goto _0210
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_0210:
+_0210:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_0218:
+scr_seq_D32R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 23
+	npc_msg msg_0103_D32R0101_00023
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0080_D32R0101_0247
+	gotoif eq, _0247
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0080_D32R0101_0252
+	gotoif eq, _0252
 	end
 
-scr_seq_0080_D32R0101_0247:
-	npc_msg 24
-	goto scr_seq_0080_D32R0101_0252
-
-scr_seq_0080_D32R0101_0250:
+_0247:
+	npc_msg msg_0103_D32R0101_00024
+	goto _0252
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_0252:
-	npc_msg 25
-	goto scr_seq_0080_D32R0101_025D
-
-scr_seq_0080_D32R0101_025B:
+_0252:
+	npc_msg msg_0103_D32R0101_00025
+	goto _025D
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_025D:
+_025D:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_0265:
+scr_seq_D32R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 26
+	npc_msg msg_0103_D32R0101_00026
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0080_D32R0101_0294
+	gotoif eq, _0294
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0080_D32R0101_029F
+	gotoif eq, _029F
 	end
 
-scr_seq_0080_D32R0101_0294:
-	npc_msg 27
-	goto scr_seq_0080_D32R0101_029F
-
-scr_seq_0080_D32R0101_029D:
+_0294:
+	npc_msg msg_0103_D32R0101_00027
+	goto _029F
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_029F:
-	npc_msg 28
-	goto scr_seq_0080_D32R0101_02AA
-
-scr_seq_0080_D32R0101_02A8:
+_029F:
+	npc_msg msg_0103_D32R0101_00028
+	goto _02AA
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_02AA:
+_02AA:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_02B2:
+scr_seq_D32R0101_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 29
+	npc_msg msg_0103_D32R0101_00029
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0080_D32R0101_02E1
+	gotoif eq, _02E1
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0080_D32R0101_02EC
+	gotoif eq, _02EC
 	end
 
-scr_seq_0080_D32R0101_02E1:
-	npc_msg 30
-	goto scr_seq_0080_D32R0101_02EC
-
-scr_seq_0080_D32R0101_02EA:
+_02E1:
+	npc_msg msg_0103_D32R0101_00030
+	goto _02EC
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_02EC:
-	npc_msg 31
-	goto scr_seq_0080_D32R0101_02F7
-
-scr_seq_0080_D32R0101_02F5:
+_02EC:
+	npc_msg msg_0103_D32R0101_00031
+	goto _02F7
 	.byte 0x02, 0x00
-scr_seq_0080_D32R0101_02F7:
+_02F7:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_02FF:
-	apply_movement 3, scr_seq_0080_D32R0101_0384
-	apply_movement 4, scr_seq_0080_D32R0101_0384
-	apply_movement 5, scr_seq_0080_D32R0101_0384
-	apply_movement 6, scr_seq_0080_D32R0101_0384
-	apply_movement 7, scr_seq_0080_D32R0101_0384
-	apply_movement 8, scr_seq_0080_D32R0101_0384
+_02FF:
+	apply_movement obj_D32R0101_bfsw2, _0384
+	apply_movement obj_D32R0101_bfsw2_2, _0384
+	apply_movement obj_D32R0101_bfsw2_3, _0384
+	apply_movement obj_D32R0101_bfsw2_4, _0384
+	apply_movement obj_D32R0101_bfsw2_5, _0384
+	apply_movement obj_D32R0101_bfsw2_6, _0384
 	wait_movement
 	return
 
-scr_seq_0080_D32R0101_0333:
+_0333:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 3, scr_seq_0080_D32R0101_038C
-	apply_movement 4, scr_seq_0080_D32R0101_038C
-	apply_movement 5, scr_seq_0080_D32R0101_038C
-	apply_movement 6, scr_seq_0080_D32R0101_0394
-	apply_movement 7, scr_seq_0080_D32R0101_0394
-	apply_movement 8, scr_seq_0080_D32R0101_0394
-	apply_movement 255, scr_seq_0080_D32R0101_039C
+	apply_movement obj_D32R0101_bfsw2, _038C
+	apply_movement obj_D32R0101_bfsw2_2, _038C
+	apply_movement obj_D32R0101_bfsw2_3, _038C
+	apply_movement obj_D32R0101_bfsw2_4, _0394
+	apply_movement obj_D32R0101_bfsw2_5, _0394
+	apply_movement obj_D32R0101_bfsw2_6, _0394
+	apply_movement obj_player, _039C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	return
-
-scr_seq_0080_D32R0101_0383:
 	.byte 0x00
 
-scr_seq_0080_D32R0101_0384:
+_0384:
 	step 1, 1
 	step_end
 
-scr_seq_0080_D32R0101_038C:
+_038C:
 	step 3, 1
 	step_end
 
-scr_seq_0080_D32R0101_0394:
+_0394:
 	step 2, 1
 	step_end
 
-scr_seq_0080_D32R0101_039C:
+_039C:
 	step 12, 3
 	step 34, 1
 	step_end
-scr_seq_0080_D32R0101_03A8:
+scr_seq_D32R0101_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 32
+	npc_msg msg_0103_D32R0101_00032
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_03BB:
+scr_seq_D32R0101_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 33
+	npc_msg msg_0103_D32R0101_00033
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_03CE:
+scr_seq_D32R0101_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 34
+	npc_msg msg_0103_D32R0101_00034
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0080_D32R0101_03E1:
+scr_seq_D32R0101_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 35
+	npc_msg msg_0103_D32R0101_00035
 	waitbutton
 	closemsg
 	releaseall

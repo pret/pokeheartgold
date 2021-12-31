@@ -1,91 +1,93 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R24.h"
+#include "msgdata/msg/msg_0362_R24.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0215_R24_0194 ; 000
-	scrdef scr_seq_0215_R24_01E7 ; 001
-	scrdef scr_seq_0215_R24_00BC ; 002
-	scrdef scr_seq_0215_R24_002D ; 003
-	scrdef scr_seq_0215_R24_0016 ; 004
+	scrdef scr_seq_R24_000
+	scrdef scr_seq_R24_001
+	scrdef scr_seq_R24_002
+	scrdef scr_seq_R24_003
+	scrdef scr_seq_R24_004
 	scrdef_end
 
-scr_seq_0215_R24_0016:
+scr_seq_R24_004:
 	comparevartovalue VAR_UNK_4087, 2
-	gotoif eq, scr_seq_0215_R24_0025
+	gotoif eq, _0025
 	end
 
-scr_seq_0215_R24_0025:
+_0025:
 	setvar VAR_UNK_4087, 1
 	end
 
-scr_seq_0215_R24_002D:
+scr_seq_R24_003:
 	scrcmd_609
 	lockall
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0215_R24_0060
-	apply_movement 2, scr_seq_0215_R24_0084
-	apply_movement 0, scr_seq_0215_R24_00A0
-	apply_movement 1, scr_seq_0215_R24_00AC
-	goto scr_seq_0215_R24_0078
+	gotoif ne, _0060
+	apply_movement obj_R24_rocketm, _0084
+	apply_movement obj_R24_gsman1, _00A0
+	apply_movement obj_R24_gswoman2, _00AC
+	goto _0078
 
-scr_seq_0215_R24_0060:
-	apply_movement 2, scr_seq_0215_R24_0090
-	apply_movement 0, scr_seq_0215_R24_00A0
-	apply_movement 1, scr_seq_0215_R24_00AC
-scr_seq_0215_R24_0078:
+_0060:
+	apply_movement obj_R24_rocketm, _0090
+	apply_movement obj_R24_gsman1, _00A0
+	apply_movement obj_R24_gswoman2, _00AC
+_0078:
 	wait_movement
 	setvar VAR_UNK_4087, 2
 	releaseall
 	end
 
 
-scr_seq_0215_R24_0084:
+_0084:
 	step 75, 1
 	step 18, 3
 	step_end
 
-scr_seq_0215_R24_0090:
+_0090:
 	step 0, 1
 	step 75, 1
 	step 18, 3
 	step_end
 
-scr_seq_0215_R24_00A0:
+_00A0:
 	step 65, 3
 	step 1, 1
 	step_end
 
-scr_seq_0215_R24_00AC:
+_00AC:
 	step 65, 3
 	step 17, 1
 	step 0, 1
 	step_end
-scr_seq_0215_R24_00BC:
+scr_seq_R24_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_081 1061
 	play_bgm SEQ_GS_EYE_ROCKET
-	npc_msg 0
+	npc_msg msg_0362_R24_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_24, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0215_R24_014A
-	npc_msg 2
+	gotoif eq, _014A
+	npc_msg msg_0362_R24_00002
 	closemsg
 	fade_out_bgm 0, 30
-	npc_msg 3
+	npc_msg msg_0362_R24_00003
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	apply_movement 2, scr_seq_0215_R24_0150
-	apply_movement 255, scr_seq_0215_R24_015C
-	apply_movement 0, scr_seq_0215_R24_0170
-	apply_movement 1, scr_seq_0215_R24_017C
+	apply_movement obj_R24_rocketm, _0150
+	apply_movement obj_player, _015C
+	apply_movement obj_R24_gsman1, _0170
+	apply_movement obj_R24_gswoman2, _017C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -98,96 +100,88 @@ scr_seq_0215_R24_00BC:
 	releaseall
 	end
 
-scr_seq_0215_R24_014A:
+_014A:
 	white_out
 	releaseall
 	end
 
 
-scr_seq_0215_R24_0150:
+_0150:
 	step 19, 1
 	step 17, 10
 	step_end
 
-scr_seq_0215_R24_015C:
+_015C:
 	step 71, 1
 	step 19, 1
 	step 72, 1
 	step 1, 1
 	step_end
 
-scr_seq_0215_R24_0170:
+_0170:
 	step 62, 12
 	step 2, 1
 	step_end
 
-scr_seq_0215_R24_017C:
+_017C:
 	step 62, 1
 	step 1, 1
 	step 62, 10
 	step 12, 1
 	step 2, 1
 	step_end
-scr_seq_0215_R24_0194:
+scr_seq_R24_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	comparevartovalue VAR_UNK_4087, 2
-	gotoif ne, scr_seq_0215_R24_01B3
-	goto scr_seq_0215_R24_01DC
-
-scr_seq_0215_R24_01AD:
+	gotoif ne, _01B3
+	goto _01DC
 	.byte 0x16, 0x00, 0x29
 	.byte 0x00, 0x00, 0x00
-scr_seq_0215_R24_01B3:
+_01B3:
 	comparevartovalue VAR_UNK_4087, 3
-	gotoif ne, scr_seq_0215_R24_01D1
+	gotoif ne, _01D1
 	faceplayer
-	npc_msg 5
-	goto scr_seq_0215_R24_01DF
-
-scr_seq_0215_R24_01CB:
+	npc_msg msg_0362_R24_00005
+	goto _01DF
 	.byte 0x16, 0x00, 0x0b, 0x00, 0x00
 	.byte 0x00
-scr_seq_0215_R24_01D1:
+_01D1:
 	faceplayer
-	npc_msg 6
-	goto scr_seq_0215_R24_01DF
+	npc_msg msg_0362_R24_00006
+	goto _01DF
 
-scr_seq_0215_R24_01DC:
-	npc_msg 4
-scr_seq_0215_R24_01DF:
+_01DC:
+	npc_msg msg_0362_R24_00004
+_01DF:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0215_R24_01E7:
+scr_seq_R24_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	comparevartovalue VAR_UNK_4087, 2
-	gotoif ne, scr_seq_0215_R24_0206
-	goto scr_seq_0215_R24_022F
-
-scr_seq_0215_R24_0200:
+	gotoif ne, _0206
+	goto _022F
 	.byte 0x16, 0x00, 0x29, 0x00, 0x00, 0x00
-scr_seq_0215_R24_0206:
+_0206:
 	comparevartovalue VAR_UNK_4087, 3
-	gotoif ne, scr_seq_0215_R24_0224
+	gotoif ne, _0224
 	faceplayer
-	npc_msg 8
-	goto scr_seq_0215_R24_0232
-
-scr_seq_0215_R24_021E:
+	npc_msg msg_0362_R24_00008
+	goto _0232
 	.byte 0x16, 0x00
 	.byte 0x0b, 0x00, 0x00, 0x00
-scr_seq_0215_R24_0224:
+_0224:
 	faceplayer
-	npc_msg 9
-	goto scr_seq_0215_R24_0232
+	npc_msg msg_0362_R24_00009
+	goto _0232
 
-scr_seq_0215_R24_022F:
-	npc_msg 7
-scr_seq_0215_R24_0232:
+_022F:
+	npc_msg msg_0362_R24_00007
+_0232:
 	waitbutton
 	closemsg
 	releaseall

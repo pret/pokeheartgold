@@ -1,12 +1,13 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T28.h"
 	.rodata
 	.option alignment off
 
 	.byte 1
-	.word scr_seq_0703_T28_hdr_0006-.-4
+	.word scr_seq_T28_map_scripts_2-.-4
 	.byte 0
 
-scr_seq_0703_T28_hdr_0006:
+scr_seq_T28_map_scripts_2:
 	.short VAR_UNK_4134, 4, 6
 	.short 0
 

@@ -1,12 +1,14 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R10R0101.h"
+#include "msgdata/msg/msg_0343_R10R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0194_R10R0101_0006 ; 000
+	scrdef scr_seq_R10R0101_000
 	scrdef_end
 
-scr_seq_0194_R10R0101_0006:
+scr_seq_R10R0101_000:
 	scrcmd_055 0, 1, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058

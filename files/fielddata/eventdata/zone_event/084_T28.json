@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T28.h",
   "bgs": [
     {
-      "scr": 7,
+      "scr": "_EV_scr_seq_T28_007",
       "type": 1,
       "x": 516,
       "y": 172,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8,
+      "scr": "_EV_scr_seq_T28_008",
       "type": 1,
       "x": 526,
       "y": 174,
@@ -27,12 +28,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T28_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_205",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T28_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -44,12 +45,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T28_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T28_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -61,12 +62,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T28_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1F9",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T28_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -78,12 +79,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T28_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1E7",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T28_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -141,7 +142,7 @@
   ],
   "coords": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_T28_002",
       "x": 540,
       "y": 176,
       "w": 1,

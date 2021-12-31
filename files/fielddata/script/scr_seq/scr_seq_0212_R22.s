@@ -1,149 +1,151 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R22.h"
+#include "msgdata/msg/msg_0360_R22.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0212_R22_045C ; 000
-	scrdef scr_seq_0212_R22_0016 ; 001
-	scrdef scr_seq_0212_R22_0614 ; 002
-	scrdef scr_seq_0212_R22_0099 ; 003
-	scrdef scr_seq_0212_R22_0064 ; 004
+	scrdef scr_seq_R22_000
+	scrdef scr_seq_R22_001
+	scrdef scr_seq_R22_002
+	scrdef scr_seq_R22_003
+	scrdef scr_seq_R22_004
 	scrdef_end
 
-scr_seq_0212_R22_0016:
+scr_seq_R22_001:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0212_R22_0027
+	gotoif FALSE, _0027
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0212_R22_0027:
+_0027:
 	comparevartovalue VAR_UNK_40FE, 1
-	gotoif eq, scr_seq_0212_R22_005E
+	gotoif eq, _005E
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, scr_seq_0212_R22_0058
+	gotoif eq, _0058
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, scr_seq_0212_R22_0058
+	gotoif eq, _0058
 	setflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0212_R22_0058:
+_0058:
 	clearflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0212_R22_005E:
+_005E:
 	setflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0212_R22_0064:
+scr_seq_R22_004:
 	comparevartovalue VAR_UNK_40FE, 1
-	gotoif eq, scr_seq_0212_R22_0073
+	gotoif eq, _0073
 	end
 
-scr_seq_0212_R22_0073:
+_0073:
 	move_person 1, 947, 1, 266, 2
 	move_person 2, 950, 1, 266, 2
 	move_person 3, 952, 1, 280, 3
 	end
 
-scr_seq_0212_R22_0099:
+scr_seq_R22_003:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0212_R22_037C
+	apply_movement obj_player, _037C
 	wait_movement
-	apply_movement 3, scr_seq_0212_R22_02CC
+	apply_movement obj_R22_var_1, _02CC
 	wait_movement
-	gender_msgbox 12, 11
+	gender_msgbox msg_0360_R22_00012, msg_0360_R22_00011
 	closemsg
-	apply_movement 3, scr_seq_0212_R22_02E0
+	apply_movement obj_R22_var_1, _02E0
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 14, 13
+	gender_msgbox msg_0360_R22_00014, msg_0360_R22_00013
 	closemsg
-	apply_movement 3, scr_seq_0212_R22_02FC
+	apply_movement obj_R22_var_1, _02FC
 	wait_movement
-	gender_msgbox 16, 15
+	gender_msgbox msg_0360_R22_00016, msg_0360_R22_00015
 	closemsg
-	apply_movement 3, scr_seq_0212_R22_0304
-	apply_movement 255, scr_seq_0212_R22_03D0
+	apply_movement obj_R22_var_1, _0304
+	apply_movement obj_player, _03D0
 	wait_movement
-	gender_msgbox 18, 17
+	gender_msgbox msg_0360_R22_00018, msg_0360_R22_00017
 	closemsg
-	apply_movement 3, scr_seq_0212_R22_0338
+	apply_movement obj_R22_var_1, _0338
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 20, 19
+	gender_msgbox msg_0360_R22_00020, msg_0360_R22_00019
 	closemsg
-	apply_movement 255, scr_seq_0212_R22_03A0
-	apply_movement 3, scr_seq_0212_R22_0310
+	apply_movement obj_player, _03A0
+	apply_movement obj_R22_var_1, _0310
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	apply_movement 241, scr_seq_0212_R22_03DC
+	apply_movement 241, _03DC
 	wait_movement
 	fade_out_bgm 0, 30
-	apply_movement 2, scr_seq_0212_R22_03F4
+	apply_movement obj_R22_gsrivel, _03F4
 	wait_movement
 	buffer_rivals_name 0
-	npc_msg 2
+	npc_msg msg_0360_R22_00002
 	closemsg
-	apply_movement 1, scr_seq_0212_R22_0438
+	apply_movement obj_R22_sakaki, _0438
 	wait_movement
-	npc_msg 8
+	npc_msg msg_0360_R22_00008
 	closemsg
-	apply_movement 2, scr_seq_0212_R22_03FC
+	apply_movement obj_R22_gsrivel, _03FC
 	wait_movement
 	buffer_rivals_name 0
-	npc_msg 3
+	npc_msg msg_0360_R22_00003
 	closemsg
-	apply_movement 1, scr_seq_0212_R22_0444
+	apply_movement obj_R22_sakaki, _0444
 	wait_movement
-	npc_msg 9
+	npc_msg msg_0360_R22_00009
 	closemsg
-	apply_movement 2, scr_seq_0212_R22_03F4
+	apply_movement obj_R22_gsrivel, _03F4
 	wait_movement
 	buffer_rivals_name 0
-	npc_msg 4
+	npc_msg msg_0360_R22_00004
 	closemsg
-	apply_movement 1, scr_seq_0212_R22_044C
+	apply_movement obj_R22_sakaki, _044C
 	wait_movement
-	npc_msg 10
+	npc_msg msg_0360_R22_00010
 	closemsg
-	apply_movement 1, scr_seq_0212_R22_0454
+	apply_movement obj_R22_sakaki, _0454
 	wait_movement
-	apply_movement 2, scr_seq_0212_R22_03F4
+	apply_movement obj_R22_gsrivel, _03F4
 	wait_movement
 	buffer_rivals_name 0
-	npc_msg 5
+	npc_msg msg_0360_R22_00005
 	closemsg
-	apply_movement 2, scr_seq_0212_R22_03F4
+	apply_movement obj_R22_gsrivel, _03F4
 	wait_movement
-	npc_msg 6
+	npc_msg msg_0360_R22_00006
 	closemsg
 	callstd std_play_rival_intro_music
-	apply_movement 241, scr_seq_0212_R22_03E8
-	apply_movement 2, scr_seq_0212_R22_0404
+	apply_movement 241, _03E8
+	apply_movement obj_R22_gsrivel, _0404
 	wait_movement
 	scrcmd_103
 	buffer_rivals_name 0
-	npc_msg 7
+	npc_msg msg_0360_R22_00007
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	apply_movement 2, scr_seq_0212_R22_0420
+	apply_movement obj_R22_gsrivel, _0420
 	play_se SEQ_SE_DP_WALL_HIT2
-	apply_movement 255, scr_seq_0212_R22_03B0
-	apply_movement 3, scr_seq_0212_R22_03D0
+	apply_movement obj_player, _03B0
+	apply_movement obj_R22_var_1, _03D0
 	wait_movement
-	apply_movement 2, scr_seq_0212_R22_042C
-	apply_movement 255, scr_seq_0212_R22_03D0
+	apply_movement obj_R22_gsrivel, _042C
+	apply_movement obj_player, _03D0
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -152,10 +154,10 @@ scr_seq_0212_R22_0099:
 	hide_person 2
 	setflag FLAG_UNK_301
 	callstd 2032
-	gender_msgbox 22, 21
+	gender_msgbox msg_0360_R22_00022, msg_0360_R22_00021
 	closemsg
 	fade_out_bgm 20, 30
-	apply_movement 253, scr_seq_0212_R22_0350
+	apply_movement 253, _0350
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	fade_screen 6, 6, 0, 0x7FFF
@@ -163,10 +165,10 @@ scr_seq_0212_R22_0099:
 	wait 15, VAR_SPECIAL_x800C
 	fade_screen 6, 6, 1, 0x7FFF
 	wait_fade
-	apply_movement 255, scr_seq_0212_R22_03C4
-	apply_movement 3, scr_seq_0212_R22_0320
+	apply_movement obj_player, _03C4
+	apply_movement obj_R22_var_1, _0320
 	wait_movement
-	gender_msgbox 24, 23
+	gender_msgbox msg_0360_R22_00024, msg_0360_R22_00023
 	closemsg
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
@@ -178,18 +180,16 @@ scr_seq_0212_R22_0099:
 	wait_fade
 	releaseall
 	end
-
-scr_seq_0212_R22_02C9:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0212_R22_02CC:
+_02CC:
 	step 75, 1
 	step 63, 1
 	step 35, 1
 	step 65, 1
 	step_end
 
-scr_seq_0212_R22_02E0:
+_02E0:
 	step 16, 2
 	step 63, 1
 	step 34, 1
@@ -198,22 +198,22 @@ scr_seq_0212_R22_02E0:
 	step 65, 1
 	step_end
 
-scr_seq_0212_R22_02FC:
+_02FC:
 	step 13, 1
 	step_end
 
-scr_seq_0212_R22_0304:
+_0304:
 	step 13, 1
 	step 35, 1
 	step_end
 
-scr_seq_0212_R22_0310:
+_0310:
 	step 12, 2
 	step 14, 2
 	step 12, 1
 	step_end
 
-scr_seq_0212_R22_0320:
+_0320:
 	step 34, 1
 	step 65, 1
 	step 35, 1
@@ -221,7 +221,7 @@ scr_seq_0212_R22_0320:
 	step 33, 1
 	step_end
 
-scr_seq_0212_R22_0338:
+_0338:
 	step 75, 1
 	step 63, 1
 	step 12, 2
@@ -229,7 +229,7 @@ scr_seq_0212_R22_0338:
 	step 12, 2
 	step_end
 
-scr_seq_0212_R22_0350:
+_0350:
 	step 1, 1
 	step 57, 1
 	step 71, 1
@@ -239,7 +239,7 @@ scr_seq_0212_R22_0350:
 	.byte 0x47, 0x00, 0x01, 0x00, 0x13, 0x00, 0x02, 0x00
 	.byte 0x48, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
-scr_seq_0212_R22_037C:
+_037C:
 	step 32, 1
 	step 12, 1
 	step 63, 1
@@ -250,48 +250,48 @@ scr_seq_0212_R22_037C:
 	step 32, 1
 	step_end
 
-scr_seq_0212_R22_03A0:
+_03A0:
 	step 12, 5
 	step 14, 2
 	step 12, 2
 	step_end
 
-scr_seq_0212_R22_03B0:
+_03B0:
 	step 62, 1
 	step 71, 1
 	step 53, 1
 	step 72, 1
 	step_end
 
-scr_seq_0212_R22_03C4:
+_03C4:
 	step 75, 1
 	step 63, 1
 	step_end
 
-scr_seq_0212_R22_03D0:
+_03D0:
 	step 65, 1
 	step 33, 1
 	step_end
 
-scr_seq_0212_R22_03DC:
+_03DC:
 	step 12, 5
 	step 14, 2
 	step_end
 
-scr_seq_0212_R22_03E8:
+_03E8:
 	step 19, 2
 	step 17, 4
 	step_end
 
-scr_seq_0212_R22_03F4:
+_03F4:
 	step 14, 1
 	step_end
 
-scr_seq_0212_R22_03FC:
+_03FC:
 	step 34, 1
 	step_end
 
-scr_seq_0212_R22_0404:
+_0404:
 	step 66, 1
 	step 19, 6
 	step 17, 4
@@ -300,33 +300,33 @@ scr_seq_0212_R22_0404:
 	step 63, 1
 	step_end
 
-scr_seq_0212_R22_0420:
+_0420:
 	step 17, 2
 	step 65, 1
 	step_end
 
-scr_seq_0212_R22_042C:
+_042C:
 	step 19, 1
 	step 17, 8
 	step_end
 
-scr_seq_0212_R22_0438:
+_0438:
 	step 35, 1
 	step 63, 1
 	step_end
 
-scr_seq_0212_R22_0444:
+_0444:
 	step 35, 1
 	step_end
 
-scr_seq_0212_R22_044C:
+_044C:
 	step 34, 1
 	step_end
 
-scr_seq_0212_R22_0454:
+_0454:
 	step 14, 6
 	step_end
-scr_seq_0212_R22_045C:
+scr_seq_R22_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -336,10 +336,10 @@ scr_seq_0212_R22_045C:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0212_R22_0584
+	gotoif eq, _0584
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0212_R22_0598
+	gotoif eq, _0598
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -348,38 +348,38 @@ scr_seq_0212_R22_045C:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0212_R22_04D5
-	apply_movement 255, scr_seq_0212_R22_05AC
-	apply_movement 0, scr_seq_0212_R22_05F8
-	goto scr_seq_0212_R22_0523
+	gotoif ne, _04D5
+	apply_movement obj_player, _05AC
+	apply_movement obj_R22_gsmiddleman1, _05F8
+	goto _0523
 
-scr_seq_0212_R22_04D5:
+_04D5:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0212_R22_04F0
-	apply_movement 255, scr_seq_0212_R22_05C4
-	goto scr_seq_0212_R22_0523
+	gotoif ne, _04F0
+	apply_movement obj_player, _05C4
+	goto _0523
 
-scr_seq_0212_R22_04F0:
+_04F0:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0212_R22_0513
-	apply_movement 255, scr_seq_0212_R22_05E4
-	apply_movement 0, scr_seq_0212_R22_05F8
-	goto scr_seq_0212_R22_0523
+	gotoif ne, _0513
+	apply_movement obj_player, _05E4
+	apply_movement obj_R22_gsmiddleman1, _05F8
+	goto _0523
 
-scr_seq_0212_R22_0513:
-	apply_movement 255, scr_seq_0212_R22_05D0
-	apply_movement 0, scr_seq_0212_R22_05F8
-scr_seq_0212_R22_0523:
+_0513:
+	apply_movement obj_player, _05D0
+	apply_movement obj_R22_gsmiddleman1, _05F8
+_0523:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0212_R22_054A
-	apply_movement 253, scr_seq_0212_R22_0604
+	gotoif ne, _054A
+	apply_movement 253, _0604
 	wait_movement
-scr_seq_0212_R22_054A:
+_054A:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -395,7 +395,7 @@ scr_seq_0212_R22_054A:
 	releaseall
 	end
 
-scr_seq_0212_R22_0584:
+_0584:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -403,7 +403,7 @@ scr_seq_0212_R22_0584:
 	releaseall
 	end
 
-scr_seq_0212_R22_0598:
+_0598:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
@@ -412,7 +412,7 @@ scr_seq_0212_R22_0598:
 	end
 
 
-scr_seq_0212_R22_05AC:
+_05AC:
 	step 15, 1
 	step 12, 2
 	step 14, 1
@@ -420,36 +420,36 @@ scr_seq_0212_R22_05AC:
 	step 33, 1
 	step_end
 
-scr_seq_0212_R22_05C4:
+_05C4:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0212_R22_05D0:
+_05D0:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0212_R22_05E4:
+_05E4:
 	step 12, 1
 	step 15, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0212_R22_05F8:
+_05F8:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0212_R22_0604:
+_0604:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0212_R22_0614:
+scr_seq_R22_002:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

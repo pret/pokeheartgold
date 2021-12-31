@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T22.h",
   "bgs": [
     {
-      "scr": 8,
+      "scr": "_EV_scr_seq_T22_008",
       "type": 1,
       "x": 491,
       "y": 257,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 9,
+      "scr": "_EV_scr_seq_T22_009",
       "type": 1,
       "x": 488,
       "y": 263,
@@ -17,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 10,
+      "scr": "_EV_scr_seq_T22_010",
       "type": 1,
       "x": 475,
       "y": 257,
@@ -25,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 11,
+      "scr": "_EV_scr_seq_T22_011",
       "type": 1,
       "x": 485,
       "y": 230,
@@ -51,12 +52,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T22_gsgirl3",
       "ovid": "SPRITE_GSGIRL3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 12,
+      "scr": "_EV_scr_seq_T22_012",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -68,12 +69,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T22_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 13,
+      "scr": "_EV_scr_seq_T22_013",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -85,12 +86,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T22_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_19A",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T22_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -102,12 +103,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T22_gsoldwoman1",
       "ovid": "SPRITE_GSOLDWOMAN1",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 14,
+      "scr": "_EV_scr_seq_T22_014",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -119,7 +120,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T22_gsboy2",
       "ovid": "SPRITE_GSBOY2",
       "mvt": 2,
       "type": 0,
@@ -136,7 +137,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T22_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -153,7 +154,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_T22_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -170,12 +171,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_T22_dancer",
       "ovid": "SPRITE_DANCER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_VIOLET_KIMONO_GIRL",
-      "scr": 0,
+      "scr": "_EV_scr_seq_T22_000",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -187,7 +188,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_T22_bonguri",
       "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
@@ -204,7 +205,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_T22_breakrock",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -221,12 +222,12 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_T22_juggrer",
       "ovid": "SPRITE_JUGGRER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T22_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -238,12 +239,12 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_T22_gswoman3",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T22_006",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -255,12 +256,12 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_T22_gsbabyboy1",
       "ovid": "SPRITE_GSBABYBOY1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_T22_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -353,7 +354,7 @@
   ],
   "coords": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T22_003",
       "x": 486,
       "y": 234,
       "w": 3,

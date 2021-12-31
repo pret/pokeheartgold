@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D26R0101.h",
   "bgs": [
     {
       "scr": 8027,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D26R0101_gantetsu",
       "ovid": "SPRITE_GANTETSU",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1AA",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D26R0101_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -28,12 +29,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D26R0101_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D26R0101_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

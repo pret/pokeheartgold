@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T08R0401.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T08R0401_middlewoman1_2",
       "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T08R0401_001",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T08R0401_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 4,
       "type": 0,

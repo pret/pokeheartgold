@@ -1,175 +1,177 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D23R0103.h"
+#include "msgdata/msg/msg_0067_D23R0103.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0031_D23R0103_0022 ; 000
-	scrdef scr_seq_0031_D23R0103_0054 ; 001
-	scrdef scr_seq_0031_D23R0103_0067 ; 002
-	scrdef scr_seq_0031_D23R0103_007A ; 003
-	scrdef scr_seq_0031_D23R0103_00A3 ; 004
-	scrdef scr_seq_0031_D23R0103_00B6 ; 005
-	scrdef scr_seq_0031_D23R0103_0158 ; 006
-	scrdef scr_seq_0031_D23R0103_017E ; 007
+	scrdef scr_seq_D23R0103_000
+	scrdef scr_seq_D23R0103_001
+	scrdef scr_seq_D23R0103_002
+	scrdef scr_seq_D23R0103_003
+	scrdef scr_seq_D23R0103_004
+	scrdef scr_seq_D23R0103_005
+	scrdef scr_seq_D23R0103_006
+	scrdef scr_seq_D23R0103_007
 	scrdef_end
 
-scr_seq_0031_D23R0103_0022:
+scr_seq_D23R0103_000:
 	setflag FLAG_UNK_1B7
 	setflag FLAG_UNK_1B8
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0031_D23R0103_0041
+	gotoif ne, _0041
 	clearflag FLAG_UNK_1B7
-	goto scr_seq_0031_D23R0103_0052
+	goto _0052
 
-scr_seq_0031_D23R0103_0041:
+_0041:
 	comparevartovalue VAR_UNK_4077, 5
-	gotoif ne, scr_seq_0031_D23R0103_0052
+	gotoif ne, _0052
 	clearflag FLAG_UNK_1B8
-scr_seq_0031_D23R0103_0052:
+_0052:
 	end
 
-scr_seq_0031_D23R0103_0054:
+scr_seq_D23R0103_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 15
+	npc_msg msg_0067_D23R0103_00015
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_0067:
+scr_seq_D23R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 16
+	npc_msg msg_0067_D23R0103_00016
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_007A:
+scr_seq_D23R0103_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0031_D23R0103_0098
-	npc_msg 1
-	goto scr_seq_0031_D23R0103_009B
+	gotoif ne, _0098
+	npc_msg msg_0067_D23R0103_00001
+	goto _009B
 
-scr_seq_0031_D23R0103_0098:
-	npc_msg 2
-scr_seq_0031_D23R0103_009B:
+_0098:
+	npc_msg msg_0067_D23R0103_00002
+_009B:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_00A3:
+scr_seq_D23R0103_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0067_D23R0103_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_00B6:
+scr_seq_D23R0103_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0031_D23R0103_00E7
+	gotoif ne, _00E7
 	getitemquantity 476, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0031_D23R0103_00F5
-	npc_msg 3
-	goto scr_seq_0031_D23R0103_00ED
+	gotoif ne, _00F5
+	npc_msg msg_0067_D23R0103_00003
+	goto _00ED
 
-scr_seq_0031_D23R0103_00E7:
-	goto scr_seq_0031_D23R0103_0100
+_00E7:
+	goto _0100
 
-scr_seq_0031_D23R0103_00ED:
+_00ED:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_00F5:
-	npc_msg 4
+_00F5:
+	npc_msg msg_0067_D23R0103_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_0100:
+_0100:
 	checkflag FLAG_UNK_08F
-	gotoif TRUE, scr_seq_0031_D23R0103_014D
-	npc_msg 5
+	gotoif TRUE, _014D
+	npc_msg msg_0067_D23R0103_00005
 	setvar VAR_SPECIAL_x8004, 338
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0031_D23R0103_0142
+	gotoif eq, _0142
 	callstd std_give_item_verbose
-	npc_msg 7
+	npc_msg msg_0067_D23R0103_00007
 	waitbutton
 	closemsg
 	releaseall
 	setflag FLAG_UNK_08F
 	end
 
-scr_seq_0031_D23R0103_0142:
-	npc_msg 8
+_0142:
+	npc_msg msg_0067_D23R0103_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_014D:
-	npc_msg 9
+_014D:
+	npc_msg msg_0067_D23R0103_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_0158:
+scr_seq_D23R0103_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	getitemquantity 475, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0031_D23R0103_01B4
-	npc_msg 10
+	gotoif ne, _01B4
+	npc_msg msg_0067_D23R0103_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_017E:
+scr_seq_D23R0103_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_090
-	gotoif TRUE, scr_seq_0031_D23R0103_01E2
-	npc_msg 11
+	gotoif TRUE, _01E2
+	npc_msg msg_0067_D23R0103_00011
 	closemsg
 	getitemquantity 475, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0031_D23R0103_01B4
-	npc_msg 13
+	gotoif ne, _01B4
+	npc_msg msg_0067_D23R0103_00013
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0031_D23R0103_01B4:
+_01B4:
 	buffer_players_name 0
-	npc_msg 12
+	npc_msg msg_0067_D23R0103_00012
 	closemsg
-	apply_movement 7, scr_seq_0031_D23R0103_01F0
-	apply_movement 8, scr_seq_0031_D23R0103_01F8
+	apply_movement obj_D23R0103_babyboy1_9, _01F0
+	apply_movement obj_D23R0103_babyboy1_9_2, _01F8
 	wait_movement
 	releaseall
 	setflag FLAG_UNK_1BF
@@ -178,21 +180,19 @@ scr_seq_0031_D23R0103_01B4:
 	setflag FLAG_UNK_090
 	end
 
-scr_seq_0031_D23R0103_01E2:
-	npc_msg 14
+_01E2:
+	npc_msg msg_0067_D23R0103_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0031_D23R0103_01ED:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0031_D23R0103_01F0:
+_01F0:
 	step 14, 2
 	step_end
 
-scr_seq_0031_D23R0103_01F8:
+_01F8:
 	step 15, 2
 	step_end
 	.balign 4, 0

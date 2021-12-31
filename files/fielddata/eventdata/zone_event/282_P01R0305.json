@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_P01R0305.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_P01R0305_fire",
       "ovid": "SPRITE_FIRE",
       "mvt": 18,
       "type": 1,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_P01R0305_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 0,
       "type": 1,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_P01R0305_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 1,
@@ -52,7 +53,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_P01R0305_gsboy3",
       "ovid": "SPRITE_GSBOY3",
       "mvt": 0,
       "type": 1,

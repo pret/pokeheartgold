@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D24R0208.h",
   "bgs": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_D24R0208_001",
       "type": 0,
       "x": 6,
       "y": 6,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D24R0208_babyboy1_12",
       "ovid": "SPRITE_BABYBOY1_12",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_221",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D24R0208_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -28,12 +29,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D24R0208_babyboy1_13",
       "ovid": "SPRITE_BABYBOY1_13",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_222",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D24R0208_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

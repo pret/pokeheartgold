@@ -1,29 +1,31 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_UNION.h"
+#include "msgdata/msg/msg_0738_UNION.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0957_UNION_0022 ; 000
-	scrdef scr_seq_0957_UNION_0024 ; 001
-	scrdef scr_seq_0957_UNION_0026 ; 002
-	scrdef scr_seq_0957_UNION_002A ; 003
-	scrdef scr_seq_0957_UNION_07C8 ; 004
-	scrdef scr_seq_0957_UNION_0BE8 ; 005
-	scrdef scr_seq_0957_UNION_0BFB ; 006
-	scrdef scr_seq_0957_UNION_0C0D ; 007
+	scrdef scr_seq_UNION_000
+	scrdef scr_seq_UNION_001
+	scrdef scr_seq_UNION_002
+	scrdef scr_seq_UNION_003
+	scrdef scr_seq_UNION_004
+	scrdef scr_seq_UNION_005
+	scrdef scr_seq_UNION_006
+	scrdef scr_seq_UNION_007
 	scrdef_end
 
-scr_seq_0957_UNION_0022:
+scr_seq_UNION_000:
 	end
 
-scr_seq_0957_UNION_0024:
+scr_seq_UNION_001:
 	end
 
-scr_seq_0957_UNION_0026:
+scr_seq_UNION_002:
 	scrcmd_270
 	end
 
-scr_seq_0957_UNION_002A:
+scr_seq_UNION_003:
 	play_se SEQ_SE_DP_SELECT
 	scrcmd_609
 	lockall
@@ -31,47 +33,41 @@ scr_seq_0957_UNION_002A:
 	scrcmd_268 32780
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, scr_seq_0957_UNION_0499
+	gotoif eq, _0499
 	scrcmd_264 0
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, scr_seq_0957_UNION_04AF
+	gotoif eq, _04AF
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0957_UNION_05DB
+	gotoif eq, _05DB
 	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, scr_seq_0957_UNION_0528
+	gotoif eq, _0528
 	scrcmd_274 32772, 32780
 	scrcmd_268 32780
 	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, scr_seq_0957_UNION_0499
-	npc_msg 199
+	gotoif eq, _0499
+	npc_msg msg_0738_UNION_00199
 	scrcmd_269 32780
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0957_UNION_07CC
+	gotoif eq, _07CC
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0957_UNION_0488
-	goto scr_seq_0957_UNION_00BC
-
-scr_seq_0957_UNION_00BA:
+	gotoif eq, _0488
+	goto _00BC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_00BC:
+_00BC:
 	scrcmd_257 100
 	scrcmd_267 2, 32780
 	scrcmd_592 32780
-	goto scr_seq_0957_UNION_00EC
-
-scr_seq_0957_UNION_00D0:
+	goto _00EC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_00D2:
+_00D2:
 	scrcmd_257 100
 	scrcmd_261 11
 	scrcmd_267 22, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_00EC
-
-scr_seq_0957_UNION_00EA:
+	non_npc_msg_var VAR_SPECIAL_x800C
+	goto _00EC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_00EC:
+_00EC:
 	scrcmd_064 31, 3, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_841 1
 	scrcmd_066 168, 0
@@ -84,37 +80,35 @@ scr_seq_0957_UNION_00EC:
 	scrcmd_585
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0957_UNION_0184
+	gotoif eq, _0184
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0957_UNION_0336
+	gotoif eq, _0336
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0957_UNION_0276
+	gotoif eq, _0276
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0957_UNION_01ED
+	gotoif eq, _01ED
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0957_UNION_0396
+	gotoif eq, _0396
 	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, scr_seq_0957_UNION_03F6
+	gotoif eq, _03F6
 	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, scr_seq_0957_UNION_07A0
+	gotoif eq, _07A0
 	scrcmd_271 0, 7
-	goto scr_seq_0957_UNION_0784
-
-scr_seq_0957_UNION_0182:
+	goto _0784
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0184:
+_0184:
 	scrcmd_271 0, 1
 	scrcmd_267 9, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_01A1
-	scrcmd_046 VAR_SPECIAL_x800C
-scr_seq_0957_UNION_01A1:
+	gotoif eq, _01A1
+	non_npc_msg_var VAR_SPECIAL_x800C
+_01A1:
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_06AE
+	gotoif eq, _06AE
 	scrcmd_261 5
 	scrcmd_267 1, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 1
 	closemsg
@@ -122,28 +116,26 @@ scr_seq_0957_UNION_01A1:
 	wait_fade
 	scrcmd_160
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
-	non_npc_msg 16
-	goto scr_seq_0957_UNION_00D2
-
-scr_seq_0957_UNION_01EB:
+	call _0BDA
+	non_npc_msg msg_0738_UNION_00016
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_01ED:
+_01ED:
 	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, scr_seq_0957_UNION_0264
+	gotoif lt, _0264
 	scrcmd_271 0, 3
 	scrcmd_267 9, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_021B
-	scrcmd_046 VAR_SPECIAL_x800C
-scr_seq_0957_UNION_021B:
+	gotoif eq, _021B
+	non_npc_msg_var VAR_SPECIAL_x800C
+_021B:
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_06F6
+	gotoif eq, _06F6
 	scrcmd_261 7
 	scrcmd_267 1, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 3
 	closemsg
@@ -151,34 +143,30 @@ scr_seq_0957_UNION_021B:
 	wait_fade
 	scrcmd_161
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_00D2
-
-scr_seq_0957_UNION_0262:
+	call _0BDA
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0264:
+_0264:
 	scrcmd_267 20, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_00D2
-
-scr_seq_0957_UNION_0274:
+	non_npc_msg_var VAR_SPECIAL_x800C
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0276:
+_0276:
 	scrcmd_434 32780, 30
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, scr_seq_0957_UNION_0324
+	gotoif lt, _0324
 	scrcmd_271 0, 2
 	scrcmd_267 9, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_02A6
-	scrcmd_046 VAR_SPECIAL_x800C
-scr_seq_0957_UNION_02A6:
+	gotoif eq, _02A6
+	non_npc_msg_var VAR_SPECIAL_x800C
+_02A6:
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_06DE
+	gotoif eq, _06DE
 	scrcmd_261 6
 	scrcmd_267 1, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 2
 	closemsg
@@ -188,39 +176,35 @@ scr_seq_0957_UNION_02A6:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	npc_msg 202
+	npc_msg msg_0738_UNION_00202
 	scrcmd_257 102
 	closemsg
 	scrcmd_586 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0B8B
+	gotoif eq, _0B8B
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, scr_seq_0957_UNION_0B8B
+	gotoif eq, _0B8B
 	scrcmd_230
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_00D2
-
-scr_seq_0957_UNION_0322:
+	call _0BDA
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0324:
+_0324:
 	scrcmd_267 19, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_00D2
-
-scr_seq_0957_UNION_0334:
+	non_npc_msg_var VAR_SPECIAL_x800C
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0336:
+_0336:
 	scrcmd_271 0, 4
 	scrcmd_267 9, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_0353
-	scrcmd_046 VAR_SPECIAL_x800C
-scr_seq_0957_UNION_0353:
+	gotoif eq, _0353
+	non_npc_msg_var VAR_SPECIAL_x800C
+_0353:
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_06C6
+	gotoif eq, _06C6
 	scrcmd_267 1, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	scrcmd_348 30
 	scrcmd_257 4
 	closemsg
@@ -228,23 +212,21 @@ scr_seq_0957_UNION_0353:
 	wait_fade
 	scrcmd_159
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_0478
-
-scr_seq_0957_UNION_0394:
+	call _0BDA
+	goto _0478
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0396:
+_0396:
 	scrcmd_271 0, 5
 	scrcmd_267 9, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_03B3
-	scrcmd_046 VAR_SPECIAL_x800C
-scr_seq_0957_UNION_03B3:
+	gotoif eq, _03B3
+	non_npc_msg_var VAR_SPECIAL_x800C
+_03B3:
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_0726
+	gotoif eq, _0726
 	scrcmd_267 1, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	scrcmd_348 30
 	scrcmd_257 5
 	closemsg
@@ -252,29 +234,27 @@ scr_seq_0957_UNION_03B3:
 	wait_fade
 	scrcmd_162
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_0478
-
-scr_seq_0957_UNION_03F4:
+	call _0BDA
+	goto _0478
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_03F6:
+_03F6:
 	scrcmd_359 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_074F
+	gotoif eq, _074F
 	scrcmd_630 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_0761
+	gotoif eq, _0761
 	scrcmd_271 0, 6
 	scrcmd_267 9, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_0435
-	scrcmd_046 VAR_SPECIAL_x800C
-scr_seq_0957_UNION_0435:
+	gotoif eq, _0435
+	non_npc_msg_var VAR_SPECIAL_x800C
+_0435:
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_076C
+	gotoif eq, _076C
 	scrcmd_267 1, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	scrcmd_348 30
 	scrcmd_257 6
 	closemsg
@@ -282,53 +262,49 @@ scr_seq_0957_UNION_0435:
 	wait_fade
 	scrcmd_629
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_0478
-
-scr_seq_0957_UNION_0476:
+	call _0BDA
+	goto _0478
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0478:
+_0478:
 	releaseall
 	end
-
-scr_seq_0957_UNION_047C:
 	.byte 0x0f, 0x01, 0x00, 0x00
 	.byte 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
-scr_seq_0957_UNION_0488:
-	npc_msg 38
+_0488:
+	npc_msg msg_0738_UNION_00038
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	scrcmd_263
 	releaseall
 	end
 
-scr_seq_0957_UNION_0499:
+_0499:
 	scrcmd_262
 	scrcmd_267 0, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	scrcmd_049
 	closemsg
 	scrcmd_263
 	releaseall
 	end
 
-scr_seq_0957_UNION_04AF:
+_04AF:
 	scrcmd_262
 	scrcmd_267 10, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_05C3
+	gotoif eq, _05C3
 	scrcmd_274 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, scr_seq_0957_UNION_0488
+	gotoif eq, _0488
 	scrcmd_269 32780
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, scr_seq_0957_UNION_0488
+	gotoif eq, _0488
 	scrcmd_267 13, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	fade_screen 6, 1, 0, 0x00
@@ -336,33 +312,31 @@ scr_seq_0957_UNION_04AF:
 	scrcmd_159
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
-	goto scr_seq_0957_UNION_0478
-
-scr_seq_0957_UNION_0526:
+	goto _0478
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0528:
+_0528:
 	scrcmd_262
 	scrcmd_267 12, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_066C
+	gotoif eq, _066C
 	scrcmd_359 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_0698
+	gotoif eq, _0698
 	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0682
+	gotoif eq, _0682
 	scrcmd_274 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, scr_seq_0957_UNION_0488
+	gotoif eq, _0488
 	scrcmd_269 32780
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, scr_seq_0957_UNION_0488
+	gotoif eq, _0488
 	scrcmd_267 15, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	fade_screen 6, 1, 0, 0x00
@@ -370,36 +344,34 @@ scr_seq_0957_UNION_0528:
 	scrcmd_629
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
-	goto scr_seq_0957_UNION_0478
-
-scr_seq_0957_UNION_05C1:
+	goto _0478
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_05C3:
+_05C3:
 	scrcmd_267 16, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_263
 	closemsg
 	releaseall
 	end
 
-scr_seq_0957_UNION_05DB:
+_05DB:
 	scrcmd_262
 	scrcmd_267 11, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0654
+	gotoif eq, _0654
 	scrcmd_274 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, scr_seq_0957_UNION_0488
+	gotoif eq, _0488
 	scrcmd_269 32780
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, scr_seq_0957_UNION_0488
+	gotoif eq, _0488
 	scrcmd_267 14, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	fade_screen 6, 1, 0, 0x00
@@ -407,117 +379,97 @@ scr_seq_0957_UNION_05DB:
 	scrcmd_162
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
-	goto scr_seq_0957_UNION_0478
-
-scr_seq_0957_UNION_0652:
+	goto _0478
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0654:
+_0654:
 	scrcmd_267 17, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	scrcmd_263
 	releaseall
 	end
 
-scr_seq_0957_UNION_066C:
+_066C:
 	scrcmd_267 18, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	releaseall
 	end
 
-scr_seq_0957_UNION_0682:
+_0682:
 	scrcmd_267 26, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	releaseall
 	end
 
-scr_seq_0957_UNION_0698:
+_0698:
 	scrcmd_267 21, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
 	releaseall
 	end
 
-scr_seq_0957_UNION_06AE:
+_06AE:
 	scrcmd_267 3, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_07BC
-
-scr_seq_0957_UNION_06C4:
+	goto _07BC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_06C6:
+_06C6:
 	scrcmd_267 4, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_07BC
-
-scr_seq_0957_UNION_06DC:
+	goto _07BC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_06DE:
+_06DE:
 	scrcmd_267 5, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_07BC
-
-scr_seq_0957_UNION_06F4:
+	goto _07BC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_06F6:
+_06F6:
 	scrcmd_267 6, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_07BC
-
-scr_seq_0957_UNION_070C:
+	goto _07BC
 	.byte 0x02, 0x00, 0x0b, 0x01
 	.byte 0x07, 0x00, 0x0c, 0x80, 0x2e, 0x00, 0x0c, 0x80, 0x03, 0x00, 0x1e, 0x00, 0x0c, 0x80, 0x16, 0x00
 	.byte 0x98, 0x00, 0x00, 0x00, 0x02, 0x00
-scr_seq_0957_UNION_0726:
+_0726:
 	scrcmd_267 8, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_07BC
-
-scr_seq_0957_UNION_073C:
+	goto _07BC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_073E:
+_073E:
 	scrcmd_271 1, 1
-	npc_msg 36
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_074D:
+	npc_msg msg_0738_UNION_00036
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_074F:
+_074F:
 	scrcmd_267 21, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_00D2
-
-scr_seq_0957_UNION_075F:
+	non_npc_msg_var VAR_SPECIAL_x800C
+	goto _00D2
 	.byte 0x02
 	.byte 0x00
-scr_seq_0957_UNION_0761:
-	npc_msg 218
-	goto scr_seq_0957_UNION_00D2
-
-scr_seq_0957_UNION_076A:
+_0761:
+	npc_msg msg_0738_UNION_00218
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_076C:
+_076C:
 	scrcmd_267 8, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_07BC
-
-scr_seq_0957_UNION_0782:
+	goto _07BC
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0784:
+_0784:
 	scrcmd_267 23, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 101
 	closemsg
@@ -525,9 +477,9 @@ scr_seq_0957_UNION_0784:
 	releaseall
 	end
 
-scr_seq_0957_UNION_07A0:
+_07A0:
 	scrcmd_267 24, 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 101
 	closemsg
@@ -535,63 +487,61 @@ scr_seq_0957_UNION_07A0:
 	releaseall
 	end
 
-scr_seq_0957_UNION_07BC:
+_07BC:
 	scrcmd_257 101
 	closemsg
 	scrcmd_266
 	releaseall
 	end
 
-scr_seq_0957_UNION_07C8:
+scr_seq_UNION_004:
 	scrcmd_609
 	lockall
-scr_seq_0957_UNION_07CC:
+_07CC:
 	play_se SEQ_SE_DP_BUTTON9
 	scrcmd_264 1
 	scrcmd_592 7
 	scrcmd_348 30
-	goto scr_seq_0957_UNION_07E4
-
-scr_seq_0957_UNION_07E2:
+	goto _07E4
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_07E4:
-	npc_msg 9
+_07E4:
+	npc_msg msg_0738_UNION_00009
 	scrcmd_257 100
 	scrcmd_261 11
 	scrcmd_273 32780
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0957_UNION_0863
+	gotoif eq, _0863
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0957_UNION_0B11
+	gotoif eq, _0B11
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0957_UNION_0974
+	gotoif eq, _0974
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0957_UNION_08DB
+	gotoif eq, _08DB
 	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, scr_seq_0957_UNION_0A44
+	gotoif eq, _0A44
 	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, scr_seq_0957_UNION_0AA2
+	gotoif eq, _0AA2
 	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, scr_seq_0957_UNION_0BA0
+	gotoif eq, _0BA0
 	comparevartovalue VAR_SPECIAL_x8008, 8
-	gotoif eq, scr_seq_0957_UNION_0BB1
+	gotoif eq, _0BB1
 	end
 
-scr_seq_0957_UNION_0863:
-	npc_msg 11
+_0863:
+	npc_msg msg_0738_UNION_00011
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_08CA
+	gotoif eq, _08CA
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_0B80
+	gotoif eq, _0B80
 	scrcmd_576 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 1
 	closemsg
@@ -600,34 +550,30 @@ scr_seq_0957_UNION_0863:
 	wait_fade
 	scrcmd_160
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_07E4
-
-scr_seq_0957_UNION_08C8:
+	call _0BDA
+	goto _07E4
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_08CA:
+_08CA:
 	scrcmd_271 1, 1
-	npc_msg 17
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_08D9:
+	npc_msg msg_0738_UNION_00017
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_08DB:
-	npc_msg 26
+_08DB:
+	npc_msg msg_0738_UNION_00026
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0952
+	gotoif eq, _0952
 	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, scr_seq_0957_UNION_0963
+	gotoif lt, _0963
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_0BA0
-	npc_msg 27
+	gotoif eq, _0BA0
+	npc_msg msg_0738_UNION_00027
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 3
 	closemsg
@@ -637,41 +583,35 @@ scr_seq_0957_UNION_08DB:
 	scrcmd_161
 	scrcmd_150
 	scrcmd_261 11
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_07E4
-
-scr_seq_0957_UNION_0950:
+	call _0BDA
+	goto _07E4
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0952:
+_0952:
 	scrcmd_271 1, 1
-	npc_msg 20
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0961:
+	npc_msg msg_0738_UNION_00020
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0963:
+_0963:
 	scrcmd_271 1, 1
-	npc_msg 29
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0972:
+	npc_msg msg_0738_UNION_00029
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0974:
-	npc_msg 21
+_0974:
+	npc_msg msg_0738_UNION_00021
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0A22
+	gotoif eq, _0A22
 	scrcmd_434 32780, 30
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, scr_seq_0957_UNION_0A33
+	gotoif lt, _0A33
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_0BA0
-	npc_msg 22
+	gotoif eq, _0BA0
+	npc_msg msg_0738_UNION_00022
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 2
 	closemsg
@@ -682,48 +622,42 @@ scr_seq_0957_UNION_0974:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	npc_msg 202
+	npc_msg msg_0738_UNION_00202
 	scrcmd_257 102
 	closemsg
 	scrcmd_586 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0B8B
+	gotoif eq, _0B8B
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, scr_seq_0957_UNION_0B8B
+	gotoif eq, _0B8B
 	scrcmd_230
 	scrcmd_261 11
-	call scr_seq_0957_UNION_0BDA
-	goto scr_seq_0957_UNION_07E4
-
-scr_seq_0957_UNION_0A20:
+	call _0BDA
+	goto _07E4
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0A22:
+_0A22:
 	scrcmd_271 1, 1
-	npc_msg 23
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0A31:
+	npc_msg msg_0738_UNION_00023
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0A33:
+_0A33:
 	scrcmd_271 1, 1
-	npc_msg 24
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0A42:
+	npc_msg msg_0738_UNION_00024
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0A44:
-	npc_msg 30
+_0A44:
+	npc_msg msg_0738_UNION_00030
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0A22
+	gotoif eq, _0A22
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_0BA0
-	npc_msg 31
+	gotoif eq, _0BA0
+	npc_msg msg_0738_UNION_00031
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 5
 	closemsg
@@ -732,26 +666,26 @@ scr_seq_0957_UNION_0A44:
 	wait_fade
 	scrcmd_162
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
+	call _0BDA
 	releaseall
 	end
 
-scr_seq_0957_UNION_0AA2:
-	npc_msg 33
+_0AA2:
+	npc_msg msg_0738_UNION_00033
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0A22
+	gotoif eq, _0A22
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_359 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0957_UNION_073E
+	gotoif eq, _073E
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_0BA0
-	npc_msg 34
+	gotoif eq, _0BA0
+	npc_msg msg_0738_UNION_00034
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 6
 	closemsg
@@ -760,23 +694,23 @@ scr_seq_0957_UNION_0AA2:
 	wait_fade
 	scrcmd_629
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
+	call _0BDA
 	releaseall
 	end
 
-scr_seq_0957_UNION_0B11:
-	npc_msg 18
+_0B11:
+	npc_msg msg_0738_UNION_00018
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0957_UNION_0B6F
+	gotoif eq, _0B6F
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, scr_seq_0957_UNION_0BA0
-	npc_msg 19
+	gotoif eq, _0BA0
+	npc_msg msg_0738_UNION_00019
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 4
 	closemsg
@@ -785,97 +719,81 @@ scr_seq_0957_UNION_0B11:
 	wait_fade
 	scrcmd_159
 	scrcmd_150
-	call scr_seq_0957_UNION_0BDA
+	call _0BDA
 	releaseall
 	end
 
-scr_seq_0957_UNION_0B6F:
+_0B6F:
 	scrcmd_271 1, 1
-	npc_msg 28
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0B7E:
+	npc_msg msg_0738_UNION_00028
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0B80:
-	npc_msg 35
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0B89:
+_0B80:
+	npc_msg msg_0738_UNION_00035
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0B8B:
+_0B8B:
 	scrcmd_261 11
-	npc_msg 25
+	npc_msg msg_0738_UNION_00025
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0B9E:
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0BA0:
-	npc_msg 8
+_0BA0:
+	npc_msg msg_0738_UNION_00008
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0BAF:
+	goto _0BC2
 	.byte 0x02
 	.byte 0x00
-scr_seq_0957_UNION_0BB1:
-	npc_msg 10
+_0BB1:
+	npc_msg msg_0738_UNION_00010
 	wait 30, VAR_SPECIAL_x800C
-	goto scr_seq_0957_UNION_0BC2
-
-scr_seq_0957_UNION_0BC0:
+	goto _0BC2
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0BC2:
+_0BC2:
 	scrcmd_257 101
 	closemsg
 	scrcmd_266
 	releaseall
 	end
-
-scr_seq_0957_UNION_0BCE:
 	.byte 0x0f, 0x01
 	.byte 0x01, 0x00, 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
-scr_seq_0957_UNION_0BDA:
+_0BDA:
 	scrcmd_265
 	fade_screen 6, 1, 1, 0x00
 	return
 
-scr_seq_0957_UNION_0BE8:
+scr_seq_UNION_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 207
+	npc_msg msg_0738_UNION_00207
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0957_UNION_0BFB:
+scr_seq_UNION_006:
 	play_se SEQ_SE_DP_SELECT
 	scrcmd_609
 	lockall
 	faceplayer
-	goto scr_seq_0957_UNION_0499
-
-scr_seq_0957_UNION_0C0B:
+	goto _0499
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0C0D:
+scr_seq_UNION_007:
 	play_se SEQ_SE_DP_SELECT
 	scrcmd_609
 	lockall
 	faceplayer
-	goto scr_seq_0957_UNION_0C1F
-
-scr_seq_0957_UNION_0C1D:
+	goto _0C1F
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0C1F:
+_0C1F:
 	scrcmd_262
 	checkflag FLAG_UNK_069
-	callif TRUE, scr_seq_0957_UNION_0C87
+	callif TRUE, _0C87
 	touchscreen_menu_hide
-scr_seq_0957_UNION_0C2E:
+_0C2E:
 	checkflag FLAG_UNK_069
-	callif FALSE, scr_seq_0957_UNION_0C8C
+	callif FALSE, _0C8C
 	setflag FLAG_UNK_069
 	menu_init_std_gmm 21, 11, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 11, 255, 0
@@ -884,39 +802,35 @@ scr_seq_0957_UNION_0C2E:
 	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0957_UNION_0CAF
+	gotoif eq, _0CAF
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0957_UNION_0C91
-	goto scr_seq_0957_UNION_0CA5
-
-scr_seq_0957_UNION_0C85:
+	gotoif eq, _0C91
+	goto _0CA5
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0C87:
-	npc_msg 158
+_0C87:
+	npc_msg msg_0738_UNION_00158
 	return
 
-scr_seq_0957_UNION_0C8C:
-	npc_msg 157
+_0C8C:
+	npc_msg msg_0738_UNION_00157
 	return
 
-scr_seq_0957_UNION_0C91:
+_0C91:
 	touchscreen_menu_show
 	scrcmd_260 32780
-	scrcmd_046 VAR_SPECIAL_x800C
+	non_npc_msg_var VAR_SPECIAL_x800C
 	touchscreen_menu_hide
-	goto scr_seq_0957_UNION_0C2E
-
-scr_seq_0957_UNION_0CA3:
+	goto _0C2E
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0CA5:
+_0CA5:
 	touchscreen_menu_show
 	scrcmd_263
 	closemsg
 	releaseall
 	end
 
-scr_seq_0957_UNION_0CAF:
-	npc_msg 159
+_0CAF:
+	npc_msg msg_0738_UNION_00159
 	menu_init_std_gmm 24, 3, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 52, 255, 0
 	menu_item_add 23, 255, 1
@@ -928,68 +842,54 @@ scr_seq_0957_UNION_0CAF:
 	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0957_UNION_0D50
+	gotoif eq, _0D50
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0957_UNION_0D5F
+	gotoif eq, _0D5F
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0957_UNION_0D6E
+	gotoif eq, _0D6E
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0957_UNION_0D7D
+	gotoif eq, _0D7D
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0957_UNION_0D8C
+	gotoif eq, _0D8C
 	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, scr_seq_0957_UNION_0D9B
-	goto scr_seq_0957_UNION_0C2E
-
-scr_seq_0957_UNION_0D4E:
+	gotoif eq, _0D9B
+	goto _0C2E
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0D50:
+_0D50:
 	touchscreen_menu_show
-	npc_msg 160
+	npc_msg msg_0738_UNION_00160
 	touchscreen_menu_hide
-	goto scr_seq_0957_UNION_0CAF
-
-scr_seq_0957_UNION_0D5D:
+	goto _0CAF
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0D5F:
+_0D5F:
 	touchscreen_menu_show
-	npc_msg 161
+	npc_msg msg_0738_UNION_00161
 	touchscreen_menu_hide
-	goto scr_seq_0957_UNION_0CAF
-
-scr_seq_0957_UNION_0D6C:
+	goto _0CAF
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0D6E:
+_0D6E:
 	touchscreen_menu_show
-	npc_msg 162
+	npc_msg msg_0738_UNION_00162
 	touchscreen_menu_hide
-	goto scr_seq_0957_UNION_0CAF
-
-scr_seq_0957_UNION_0D7B:
+	goto _0CAF
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0D7D:
+_0D7D:
 	touchscreen_menu_show
-	npc_msg 164
+	npc_msg msg_0738_UNION_00164
 	touchscreen_menu_hide
-	goto scr_seq_0957_UNION_0CAF
-
-scr_seq_0957_UNION_0D8A:
+	goto _0CAF
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0D8C:
+_0D8C:
 	touchscreen_menu_show
-	npc_msg 165
+	npc_msg msg_0738_UNION_00165
 	touchscreen_menu_hide
-	goto scr_seq_0957_UNION_0CAF
-
-scr_seq_0957_UNION_0D99:
+	goto _0CAF
 	.byte 0x02, 0x00
-scr_seq_0957_UNION_0D9B:
+_0D9B:
 	touchscreen_menu_show
-	npc_msg 163
+	npc_msg msg_0738_UNION_00163
 	touchscreen_menu_hide
-	goto scr_seq_0957_UNION_0CAF
-
-scr_seq_0957_UNION_0DA8:
+	goto _0CAF
 	.byte 0x02, 0x00, 0x16, 0x00, 0x7e, 0xfe, 0xff, 0xff
 	.byte 0x02, 0x00, 0x00, 0x00
 	.balign 4, 0

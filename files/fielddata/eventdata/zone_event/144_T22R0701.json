@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T22R0701.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T22R0701_counterm",
       "ovid": "SPRITE_COUNTERM",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T22R0701_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T22R0701_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 5,
       "type": 0,

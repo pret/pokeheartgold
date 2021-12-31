@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R45.h",
   "bgs": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_R45_001",
       "type": 1,
       "x": 664,
       "y": 199,
@@ -35,7 +36,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R45_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 16,
       "type": 1,
@@ -52,7 +53,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R45_gsman3",
       "ovid": "SPRITE_GSMAN3",
       "mvt": 17,
       "type": 1,
@@ -69,7 +70,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R45_mount_2_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 14,
       "type": 1,
@@ -86,7 +87,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R45_gswoman3",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 5,
       "type": 1,
@@ -103,7 +104,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R45_gsfighter",
       "ovid": "SPRITE_GSFIGHTER",
       "mvt": 2,
       "type": 1,
@@ -120,7 +121,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R45_mount_2_3",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 16,
       "type": 1,
@@ -137,7 +138,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R45_mount_2_4",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 17,
       "type": 1,
@@ -154,7 +155,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_R45_bonguri",
       "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
@@ -171,7 +172,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_R45_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -188,7 +189,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_R45_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -205,7 +206,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_R45_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -222,7 +223,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_R45_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -239,7 +240,7 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_R45_monstarball_5",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -256,12 +257,12 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_R45_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_R45_004",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -273,12 +274,12 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_R45_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 2,
+      "scr": "_EV_scr_seq_R45_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T25GYM0101.h",
   "bgs": [
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25GYM0101_004",
       "type": 0,
       "x": 2,
       "y": 24,
@@ -9,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25GYM0101_004",
       "type": 0,
       "x": 8,
       "y": 24,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T25GYM0101_gsleader3",
       "ovid": "SPRITE_GSLEADER3",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_2EC",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T25GYM0101_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -36,7 +37,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T25GYM0101_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 16,
       "type": 1,
@@ -53,7 +54,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T25GYM0101_gsgirl1_2",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 17,
       "type": 1,
@@ -70,7 +71,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T25GYM0101_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 17,
       "type": 1,
@@ -87,7 +88,7 @@
       "z": 196608
     },
     {
-      "id": 4,
+      "id": "obj_T25GYM0101_gswoman2_2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 16,
       "type": 1,
@@ -104,12 +105,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T25GYM0101_sunglasses",
       "ovid": "SPRITE_SUNGLASSES",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T25GYM0101_003",
       "dirn": 1,
       "eye": 2,
       "unk10": 0,
@@ -132,7 +133,7 @@
   ],
   "coords": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_T25GYM0101_002",
       "x": 13,
       "y": 11,
       "w": 1,

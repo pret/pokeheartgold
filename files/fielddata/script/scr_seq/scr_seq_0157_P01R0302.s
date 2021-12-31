@@ -1,183 +1,185 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_P01R0302.h"
+#include "msgdata/msg/msg_0260_P01R0302.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0157_P01R0302_0023 ; 000
-	scrdef scr_seq_0157_P01R0302_02D3 ; 001
-	scrdef scr_seq_0157_P01R0302_000E ; 002
+	scrdef scr_seq_P01R0302_000
+	scrdef scr_seq_P01R0302_001
+	scrdef scr_seq_P01R0302_002
 	scrdef_end
 
-scr_seq_0157_P01R0302_000E:
+scr_seq_P01R0302_002:
 	comparevartovalue VAR_UNK_40CB, 4
-	gotoif ge, scr_seq_0157_P01R0302_001D
+	gotoif ge, _001D
 	end
 
-scr_seq_0157_P01R0302_001D:
+_001D:
 	setflag FLAG_UNK_217
 	end
 
-scr_seq_0157_P01R0302_0023:
+scr_seq_P01R0302_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40CB, 6
-	gotoif ge, scr_seq_0157_P01R0302_005B
+	gotoif ge, _005B
 	comparevartovalue VAR_UNK_40CB, 4
-	gotoif eq, scr_seq_0157_P01R0302_0050
-	npc_msg 4
+	gotoif eq, _0050
+	npc_msg msg_0260_P01R0302_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0157_P01R0302_0050:
-	npc_msg 5
+_0050:
+	npc_msg msg_0260_P01R0302_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0157_P01R0302_005B:
+_005B:
 	checkflag FLAG_UNK_ABB
-	gotoif TRUE, scr_seq_0157_P01R0302_0084
+	gotoif TRUE, _0084
 	checkflag FLAG_UNK_092
-	gotoif TRUE, scr_seq_0157_P01R0302_0084
+	gotoif TRUE, _0084
 	check_badge 15, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif eq, scr_seq_0157_P01R0302_008F
-scr_seq_0157_P01R0302_0084:
-	npc_msg 6
+	gotoif eq, _008F
+_0084:
+	npc_msg msg_0260_P01R0302_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0157_P01R0302_008F:
-	npc_msg 7
+_008F:
+	npc_msg msg_0260_P01R0302_00007
 	closemsg
 	comparevartovalue VAR_UNK_4101, 0
-	gotoif ne, scr_seq_0157_P01R0302_00B3
+	gotoif ne, _00B3
 	setvar VAR_SPECIAL_x8004, 298
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_00B3:
+_00B3:
 	comparevartovalue VAR_UNK_4101, 1
-	gotoif ne, scr_seq_0157_P01R0302_00D2
+	gotoif ne, _00D2
 	setvar VAR_SPECIAL_x8004, 299
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_00D2:
+_00D2:
 	comparevartovalue VAR_UNK_4101, 2
-	gotoif ne, scr_seq_0157_P01R0302_00F1
+	gotoif ne, _00F1
 	setvar VAR_SPECIAL_x8004, 300
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_00F1:
+_00F1:
 	comparevartovalue VAR_UNK_4101, 3
-	gotoif ne, scr_seq_0157_P01R0302_0110
+	gotoif ne, _0110
 	setvar VAR_SPECIAL_x8004, 301
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_0110:
+_0110:
 	comparevartovalue VAR_UNK_4101, 4
-	gotoif ne, scr_seq_0157_P01R0302_012F
+	gotoif ne, _012F
 	setvar VAR_SPECIAL_x8004, 302
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_012F:
+_012F:
 	comparevartovalue VAR_UNK_4101, 5
-	gotoif ne, scr_seq_0157_P01R0302_014E
+	gotoif ne, _014E
 	setvar VAR_SPECIAL_x8004, 303
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_014E:
+_014E:
 	comparevartovalue VAR_UNK_4101, 6
-	gotoif ne, scr_seq_0157_P01R0302_016D
+	gotoif ne, _016D
 	setvar VAR_SPECIAL_x8004, 304
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_016D:
+_016D:
 	comparevartovalue VAR_UNK_4101, 7
-	gotoif ne, scr_seq_0157_P01R0302_018C
+	gotoif ne, _018C
 	setvar VAR_SPECIAL_x8004, 305
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_018C:
+_018C:
 	comparevartovalue VAR_UNK_4101, 8
-	gotoif ne, scr_seq_0157_P01R0302_01AB
+	gotoif ne, _01AB
 	setvar VAR_SPECIAL_x8004, 306
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_01AB:
+_01AB:
 	comparevartovalue VAR_UNK_4101, 9
-	gotoif ne, scr_seq_0157_P01R0302_01CA
+	gotoif ne, _01CA
 	setvar VAR_SPECIAL_x8004, 307
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_01CA:
+_01CA:
 	comparevartovalue VAR_UNK_4101, 10
-	gotoif ne, scr_seq_0157_P01R0302_01E9
+	gotoif ne, _01E9
 	setvar VAR_SPECIAL_x8004, 308
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_01E9:
+_01E9:
 	comparevartovalue VAR_UNK_4101, 11
-	gotoif ne, scr_seq_0157_P01R0302_0208
+	gotoif ne, _0208
 	setvar VAR_SPECIAL_x8004, 309
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_0208:
+_0208:
 	comparevartovalue VAR_UNK_4101, 12
-	gotoif ne, scr_seq_0157_P01R0302_0227
+	gotoif ne, _0227
 	setvar VAR_SPECIAL_x8004, 310
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_0227:
+_0227:
 	comparevartovalue VAR_UNK_4101, 13
-	gotoif ne, scr_seq_0157_P01R0302_0246
+	gotoif ne, _0246
 	setvar VAR_SPECIAL_x8004, 311
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_0246:
+_0246:
 	comparevartovalue VAR_UNK_4101, 14
-	gotoif ne, scr_seq_0157_P01R0302_0265
+	gotoif ne, _0265
 	setvar VAR_SPECIAL_x8004, 312
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_0265:
+_0265:
 	comparevartovalue VAR_UNK_4101, 15
-	gotoif ne, scr_seq_0157_P01R0302_0284
+	gotoif ne, _0284
 	setvar VAR_SPECIAL_x8004, 313
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_0296
+	goto _0296
 
-scr_seq_0157_P01R0302_0284:
+_0284:
 	setvar VAR_SPECIAL_x8004, 92
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0157_P01R0302_029C
+	goto _029C
 
-scr_seq_0157_P01R0302_0296:
+_0296:
 	addvar VAR_UNK_4101, 1
-scr_seq_0157_P01R0302_029C:
+_029C:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0157_P01R0302_02C3
+	gotoif eq, _02C3
 	callstd 2008
 	setflag FLAG_UNK_ABB
 	setflag FLAG_UNK_092
@@ -185,30 +187,30 @@ scr_seq_0157_P01R0302_029C:
 	releaseall
 	end
 
-scr_seq_0157_P01R0302_02C3:
+_02C3:
 	buffer_item_name 1, VAR_SPECIAL_x8004
-	npc_msg 8
+	npc_msg msg_0260_P01R0302_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0157_P01R0302_02D3:
+scr_seq_P01R0302_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 0
+	npc_msg msg_0260_P01R0302_00000
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0157_P01R0302_02FD
-	apply_movement 1, scr_seq_0157_P01R0302_0340
-	goto scr_seq_0157_P01R0302_0305
+	gotoif ne, _02FD
+	apply_movement obj_P01R0302_gsbabygirl1, _0340
+	goto _0305
 
-scr_seq_0157_P01R0302_02FD:
-	apply_movement 1, scr_seq_0157_P01R0302_0350
-scr_seq_0157_P01R0302_0305:
+_02FD:
+	apply_movement obj_P01R0302_gsbabygirl1, _0350
+_0305:
 	wait_movement
-	gender_msgbox 3, 2
+	gender_msgbox msg_0260_P01R0302_00003, msg_0260_P01R0302_00002
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -221,17 +223,15 @@ scr_seq_0157_P01R0302_0305:
 	wait_fade
 	releaseall
 	end
-
-scr_seq_0157_P01R0302_033F:
 	.byte 0x00
 
-scr_seq_0157_P01R0302_0340:
+_0340:
 	step 75, 1
 	step 63, 1
 	step 0, 2
 	step_end
 
-scr_seq_0157_P01R0302_0350:
+_0350:
 	step 75, 1
 	step 63, 1
 	step 3, 2

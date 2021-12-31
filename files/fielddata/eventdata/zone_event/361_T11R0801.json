@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T11R0801.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T11R0801_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T11R0801_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T11R0801_middlewoman1_2",
       "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T11R0801_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T11R0801_tsure_poke_615",
       "ovid": "SPRITE_TSURE_POKE_615",
       "mvt": 2,
       "type": 0,

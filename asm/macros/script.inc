@@ -328,12 +328,12 @@
 
 	; Not sure what to call this but it
 	; is also a message printer
-	.macro scrcmd_046 msg_id
+	.macro non_npc_msg_var msg_id
 	.short 46
 	.short \msg_id
 	.endm
 
-	.macro scrcmd_047 arg0
+	.macro npc_msg_var arg0
 	.short 47
 	.short \arg0
 	.endm

@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D35R0101.h",
   "bgs": [
     {
       "scr": 10,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D35R0101_babyboy1_10",
       "ovid": "SPRITE_BABYBOY1_10",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D35R0101_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -28,12 +29,12 @@
       "z": 65536
     },
     {
-      "id": 1,
+      "id": "obj_D35R0101_stop",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D35R0101_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -45,12 +46,12 @@
       "z": 65536
     },
     {
-      "id": 2,
+      "id": "obj_D35R0101_stop_2",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D35R0101_001",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -62,12 +63,12 @@
       "z": 65536
     },
     {
-      "id": 3,
+      "id": "obj_D35R0101_stop_3",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D35R0101_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -79,12 +80,12 @@
       "z": 65536
     },
     {
-      "id": 4,
+      "id": "obj_D35R0101_gsfighter",
       "ovid": "SPRITE_GSFIGHTER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F2",
-      "scr": 4,
+      "scr": "_EV_scr_seq_D35R0101_004",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -96,12 +97,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D35R0101_sunglasses",
       "ovid": "SPRITE_SUNGLASSES",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F2",
-      "scr": 3,
+      "scr": "_EV_scr_seq_D35R0101_003",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -113,12 +114,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_D35R0101_gsoldwoman1",
       "ovid": "SPRITE_GSOLDWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1E7",
-      "scr": 5,
+      "scr": "_EV_scr_seq_D35R0101_005",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -130,12 +131,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_D35R0101_wataru",
       "ovid": "SPRITE_WATARU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F8",
-      "scr": 6,
+      "scr": "_EV_scr_seq_D35R0101_006",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -147,12 +148,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_D35R0101_tsure_poke_607",
       "ovid": "SPRITE_TSURE_POKE_607",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F8",
-      "scr": 8,
+      "scr": "_EV_scr_seq_D35R0101_008",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,

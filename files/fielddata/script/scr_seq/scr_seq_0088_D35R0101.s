@@ -1,37 +1,39 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D35R0101.h"
+#include "msgdata/msg/msg_0111_D35R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0088_D35R0101_02F0 ; 000
-	scrdef scr_seq_0088_D35R0101_002A ; 001
-	scrdef scr_seq_0088_D35R0101_02F4 ; 002
-	scrdef scr_seq_0088_D35R0101_0327 ; 003
-	scrdef scr_seq_0088_D35R0101_035C ; 004
-	scrdef scr_seq_0088_D35R0101_035A ; 005
-	scrdef scr_seq_0088_D35R0101_0119 ; 006
-	scrdef scr_seq_0088_D35R0101_02F2 ; 007
-	scrdef scr_seq_0088_D35R0101_00E9 ; 008
-	scrdef scr_seq_0088_D35R0101_037F ; 009
+	scrdef scr_seq_D35R0101_000
+	scrdef scr_seq_D35R0101_001
+	scrdef scr_seq_D35R0101_002
+	scrdef scr_seq_D35R0101_003
+	scrdef scr_seq_D35R0101_004
+	scrdef scr_seq_D35R0101_005
+	scrdef scr_seq_D35R0101_006
+	scrdef scr_seq_D35R0101_007
+	scrdef scr_seq_D35R0101_008
+	scrdef scr_seq_D35R0101_009
 	scrdef_end
 
-scr_seq_0088_D35R0101_002A:
+scr_seq_D35R0101_001:
 	scrcmd_375 1
 	scrcmd_375 2
 	scrcmd_375 3
 	comparevartovalue VAR_UNK_40AC, 9
-	gotoif ge, scr_seq_0088_D35R0101_00B7
+	gotoif ge, _00B7
 	comparevartovalue VAR_UNK_40A8, 2
-	gotoif ge, scr_seq_0088_D35R0101_006D
+	gotoif ge, _006D
 	comparevartovalue VAR_UNK_40A8, 1
-	gotoif eq, scr_seq_0088_D35R0101_005F
+	gotoif eq, _005F
 	end
 
-scr_seq_0088_D35R0101_005F:
+_005F:
 	move_person 4, 8, 0, 7, 2
 	end
 
-scr_seq_0088_D35R0101_006D:
+_006D:
 	move_person 4, 10, 0, 7, 2
 	move_person 5, 4, 0, 3, 1
 	move_person 0, 9, 0, 3, 1
@@ -40,109 +42,107 @@ scr_seq_0088_D35R0101_006D:
 	move_person 3, 8, 0, 4, 1
 	end
 
-scr_seq_0088_D35R0101_00B7:
+_00B7:
 	move_person 0, 9, 0, 3, 1
 	move_person 1, 8, 0, 3, 1
 	move_person 2, 9, 0, 4, 1
 	move_person 3, 8, 0, 4, 1
 	end
 
-scr_seq_0088_D35R0101_00E9:
+scr_seq_D35R0101_008:
 	comparevartovalue VAR_UNK_40AC, 3
-	gotoif eq, scr_seq_0088_D35R0101_010F
+	gotoif eq, _010F
 	comparevartovalue VAR_UNK_40AC, 8
-	gotoif eq, scr_seq_0088_D35R0101_0105
+	gotoif eq, _0105
 	end
 
-scr_seq_0088_D35R0101_0105:
+_0105:
 	setflag FLAG_UNK_1E5
 	setflag FLAG_UNK_1F3
 	end
 
-scr_seq_0088_D35R0101_010F:
+_010F:
 	clearflag FLAG_UNK_280
 	setflag FLAG_UNK_1F4
 	end
 
-scr_seq_0088_D35R0101_0119:
+scr_seq_D35R0101_006:
 	scrcmd_081 0
 	play_bgm SEQ_GS_D_AJITO
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0088_D35R0101_0214
+	apply_movement obj_player, _0214
 	wait_movement
-	npc_msg 4
+	npc_msg msg_0111_D35R0101_00004
 	closemsg
 	play_se SEQ_SE_GS_ZUTUKI
-	apply_movement 8, scr_seq_0088_D35R0101_02AC
+	apply_movement obj_D35R0101_tsure_poke_607, _02AC
 	wait_se SEQ_SE_GS_PRESSHIT
-	apply_movement 4, scr_seq_0088_D35R0101_021C
+	apply_movement obj_D35R0101_gsfighter, _021C
 	wait_movement
-	apply_movement 7, scr_seq_0088_D35R0101_022C
-	apply_movement 8, scr_seq_0088_D35R0101_02C0
+	apply_movement obj_D35R0101_wataru, _022C
+	apply_movement obj_D35R0101_tsure_poke_607, _02C0
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 5, 6
+	gender_msgbox msg_0111_D35R0101_00005, msg_0111_D35R0101_00006
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 7, scr_seq_0088_D35R0101_0240
-	apply_movement 255, scr_seq_0088_D35R0101_025C
-	apply_movement 8, scr_seq_0088_D35R0101_02CC
+	apply_movement obj_D35R0101_wataru, _0240
+	apply_movement obj_player, _025C
+	apply_movement obj_D35R0101_tsure_poke_607, _02CC
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 5, scr_seq_0088_D35R0101_0268
+	apply_movement obj_D35R0101_sunglasses, _0268
 	wait_movement
-	apply_movement 7, scr_seq_0088_D35R0101_0280
+	apply_movement obj_D35R0101_wataru, _0280
 	wait_movement
-	npc_msg 7
+	npc_msg msg_0111_D35R0101_00007
 	closemsg
-	apply_movement 5, scr_seq_0088_D35R0101_0290
+	apply_movement obj_D35R0101_sunglasses, _0290
 	wait_movement
 	play_se SEQ_SE_DP_UG_023
-	apply_movement 0, scr_seq_0088_D35R0101_029C
-	apply_movement 1, scr_seq_0088_D35R0101_029C
-	apply_movement 2, scr_seq_0088_D35R0101_029C
-	apply_movement 3, scr_seq_0088_D35R0101_029C
+	apply_movement obj_D35R0101_babyboy1_10, _029C
+	apply_movement obj_D35R0101_stop, _029C
+	apply_movement obj_D35R0101_stop_2, _029C
+	apply_movement obj_D35R0101_stop_3, _029C
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 8, 9
+	gender_msgbox msg_0111_D35R0101_00008, msg_0111_D35R0101_00009
 	closemsg
-	apply_movement 7, scr_seq_0088_D35R0101_02A4
+	apply_movement obj_D35R0101_wataru, _02A4
 	wait_movement
 	hide_person 7
-	apply_movement 8, scr_seq_0088_D35R0101_02DC
+	apply_movement obj_D35R0101_tsure_poke_607, _02DC
 	wait_movement
 	hide_person 8
 	setflag FLAG_UNK_1F8
 	setvar VAR_UNK_40A8, 2
 	releaseall
 	end
-
-scr_seq_0088_D35R0101_0213:
 	.byte 0x00
 
-scr_seq_0088_D35R0101_0214:
+_0214:
 	step 75, 1
 	step_end
 
-scr_seq_0088_D35R0101_021C:
+_021C:
 	step 71, 1
 	step 23, 2
 	step 72, 1
 	step_end
 
-scr_seq_0088_D35R0101_022C:
+_022C:
 	step 63, 3
 	step 1, 2
 	step 13, 1
 	step 63, 5
 	step_end
 
-scr_seq_0088_D35R0101_0240:
+_0240:
 	step 0, 2
 	step 12, 4
 	step 3, 2
@@ -151,12 +151,12 @@ scr_seq_0088_D35R0101_0240:
 	step 63, 5
 	step_end
 
-scr_seq_0088_D35R0101_025C:
+_025C:
 	step 63, 1
 	step 12, 4
 	step_end
 
-scr_seq_0088_D35R0101_0268:
+_0268:
 	step 75, 1
 	step 63, 1
 	step 71, 1
@@ -164,106 +164,106 @@ scr_seq_0088_D35R0101_0268:
 	step 72, 1
 	step_end
 
-scr_seq_0088_D35R0101_0280:
+_0280:
 	step 12, 1
 	step 3, 2
 	step 63, 2
 	step_end
 
-scr_seq_0088_D35R0101_0290:
+_0290:
 	step 3, 2
 	step 75, 1
 	step_end
 
-scr_seq_0088_D35R0101_029C:
+_029C:
 	step 15, 1
 	step_end
 
-scr_seq_0088_D35R0101_02A4:
+_02A4:
 	step 15, 1
 	step_end
 
-scr_seq_0088_D35R0101_02AC:
+_02AC:
 	step 23, 2
 	step 71, 1
 	step 22, 2
 	step 72, 1
 	step_end
 
-scr_seq_0088_D35R0101_02C0:
+_02C0:
 	step 63, 3
 	step 1, 2
 	step_end
 
-scr_seq_0088_D35R0101_02CC:
+_02CC:
 	step 63, 3
 	step 0, 2
 	step 12, 2
 	step_end
 
-scr_seq_0088_D35R0101_02DC:
+_02DC:
 	step 63, 3
 	step 12, 2
 	step 3, 2
 	step 15, 1
 	step_end
-scr_seq_0088_D35R0101_02F0:
+scr_seq_D35R0101_000:
 	end
 
-scr_seq_0088_D35R0101_02F2:
+scr_seq_D35R0101_007:
 	end
 
-scr_seq_0088_D35R0101_02F4:
+scr_seq_D35R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40A8, 2
-	gotoif ge, scr_seq_0088_D35R0101_031C
-	npc_msg 0
+	gotoif ge, _031C
+	npc_msg msg_0111_D35R0101_00000
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 28
 	callstd 2052
 	releaseall
 	end
 
-scr_seq_0088_D35R0101_031C:
-	npc_msg 1
+_031C:
+	npc_msg msg_0111_D35R0101_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0088_D35R0101_0327:
+scr_seq_D35R0101_003:
 	comparevartovalue VAR_UNK_40A8, 2
-	gotoif ge, scr_seq_0088_D35R0101_0347
+	gotoif ge, _0347
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0111_D35R0101_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0088_D35R0101_0347:
+_0347:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0111_D35R0101_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0088_D35R0101_035A:
+scr_seq_D35R0101_005:
 	end
 
-scr_seq_0088_D35R0101_035C:
+scr_seq_D35R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	setflag FLAG_UNK_171
-	npc_msg 10
+	npc_msg msg_0111_D35R0101_00010
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 29
 	callstd 2052
@@ -271,139 +271,139 @@ scr_seq_0088_D35R0101_035C:
 	releaseall
 	end
 
-scr_seq_0088_D35R0101_037F:
+scr_seq_D35R0101_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40AC, 10
-	gotoif ge, scr_seq_0088_D35R0101_039D
-	npc_msg 15
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ge, _039D
+	npc_msg msg_0111_D35R0101_00015
+	goto _0552
 
-scr_seq_0088_D35R0101_039D:
+_039D:
 	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, scr_seq_0088_D35R0101_03B3
-	npc_msg 14
-	goto scr_seq_0088_D35R0101_03E5
+	gotoif ne, _03B3
+	npc_msg msg_0111_D35R0101_00014
+	goto _03E5
 
-scr_seq_0088_D35R0101_03B3:
+_03B3:
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0088_D35R0101_03C9
-	npc_msg 14
-	goto scr_seq_0088_D35R0101_03E5
+	gotoif ne, _03C9
+	npc_msg msg_0111_D35R0101_00014
+	goto _03E5
 
-scr_seq_0088_D35R0101_03C9:
+_03C9:
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0088_D35R0101_03DF
-	npc_msg 14
-	goto scr_seq_0088_D35R0101_03E5
+	gotoif ne, _03DF
+	npc_msg msg_0111_D35R0101_00014
+	goto _03E5
 
-scr_seq_0088_D35R0101_03DF:
-	goto scr_seq_0088_D35R0101_03EB
+_03DF:
+	goto _03EB
 
-scr_seq_0088_D35R0101_03E5:
-	goto scr_seq_0088_D35R0101_0552
+_03E5:
+	goto _0552
 
-scr_seq_0088_D35R0101_03EB:
+_03EB:
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0088_D35R0101_0405
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _0405
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_0405:
+_0405:
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, scr_seq_0088_D35R0101_041B
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _041B
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_041B:
+_041B:
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0088_D35R0101_0431
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _0431
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_0431:
+_0431:
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, scr_seq_0088_D35R0101_0447
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _0447
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_0447:
+_0447:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0088_D35R0101_045D
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _045D
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_045D:
+_045D:
 	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, scr_seq_0088_D35R0101_0473
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _0473
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_0473:
+_0473:
 	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, scr_seq_0088_D35R0101_0489
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _0489
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_0489:
+_0489:
 	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif ne, scr_seq_0088_D35R0101_049F
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _049F
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_049F:
+_049F:
 	comparevartovalue VAR_TEMP_x4000, 12
-	gotoif ne, scr_seq_0088_D35R0101_04B5
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _04B5
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_04B5:
+_04B5:
 	comparevartovalue VAR_TEMP_x4000, 13
-	gotoif ne, scr_seq_0088_D35R0101_04CB
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _04CB
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_04CB:
+_04CB:
 	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, scr_seq_0088_D35R0101_04E1
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _04E1
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_04E1:
+_04E1:
 	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, scr_seq_0088_D35R0101_04F7
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _04F7
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_04F7:
+_04F7:
 	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, scr_seq_0088_D35R0101_050D
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _050D
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_050D:
+_050D:
 	comparevartovalue VAR_TEMP_x4000, 19
-	gotoif ne, scr_seq_0088_D35R0101_0523
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _0523
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_0523:
+_0523:
 	comparevartovalue VAR_TEMP_x4000, 21
-	gotoif ne, scr_seq_0088_D35R0101_0539
-	npc_msg 11
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _0539
+	npc_msg msg_0111_D35R0101_00011
+	goto _0552
 
-scr_seq_0088_D35R0101_0539:
+_0539:
 	comparevartovalue VAR_TEMP_x4000, 22
-	gotoif ne, scr_seq_0088_D35R0101_054F
-	npc_msg 12
-	goto scr_seq_0088_D35R0101_0552
+	gotoif ne, _054F
+	npc_msg msg_0111_D35R0101_00012
+	goto _0552
 
-scr_seq_0088_D35R0101_054F:
-	npc_msg 13
-scr_seq_0088_D35R0101_0552:
+_054F:
+	npc_msg msg_0111_D35R0101_00013
+_0552:
 	waitbutton
 	closemsg
 	releaseall

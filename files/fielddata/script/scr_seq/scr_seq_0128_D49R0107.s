@@ -1,151 +1,151 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D49R0107.h"
+#include "msgdata/msg/msg_0143_D49R0107.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0128_D49R0107_01A4 ; 000
-	scrdef scr_seq_0128_D49R0107_01BA ; 001
-	scrdef scr_seq_0128_D49R0107_01E8 ; 002
-	scrdef scr_seq_0128_D49R0107_01FB ; 003
-	scrdef scr_seq_0128_D49R0107_020E ; 004
-	scrdef scr_seq_0128_D49R0107_00A8 ; 005
-	scrdef scr_seq_0128_D49R0107_0043 ; 006
-	scrdef scr_seq_0128_D49R0107_0022 ; 007
+	scrdef scr_seq_D49R0107_000
+	scrdef scr_seq_D49R0107_001
+	scrdef scr_seq_D49R0107_002
+	scrdef scr_seq_D49R0107_003
+	scrdef scr_seq_D49R0107_004
+	scrdef scr_seq_D49R0107_005
+	scrdef scr_seq_D49R0107_006
+	scrdef scr_seq_D49R0107_007
 	scrdef_end
 
-scr_seq_0128_D49R0107_0022:
+scr_seq_D49R0107_007:
 	comparevartovalue VAR_UNK_40D3, 1
-	gotoif ne, scr_seq_0128_D49R0107_003B
+	gotoif ne, _003B
 	setvar VAR_TEMP_x400E, 1
-	goto scr_seq_0128_D49R0107_0041
+	goto _0041
 
-scr_seq_0128_D49R0107_003B:
+_003B:
 	setvar VAR_TEMP_x400E, 0
-scr_seq_0128_D49R0107_0041:
+_0041:
 	end
 
-scr_seq_0128_D49R0107_0043:
+scr_seq_D49R0107_006:
 	comparevartovalue VAR_TEMP_x400F, 0
-	gotoif ne, scr_seq_0128_D49R0107_0058
+	gotoif ne, _0058
 	scrcmd_744
 	setvar VAR_TEMP_x400F, 1
-scr_seq_0128_D49R0107_0058:
+_0058:
 	get_player_gender VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0128_D49R0107_007B
+	gotoif ne, _007B
 	move_person 2, 28, 0, 28, 0
-	goto scr_seq_0128_D49R0107_0087
+	goto _0087
 
-scr_seq_0128_D49R0107_007B:
+_007B:
 	move_person 1, 28, 0, 28, 0
-scr_seq_0128_D49R0107_0087:
+_0087:
 	comparevartovalue VAR_TEMP_x400E, 1
-	gotoif ne, scr_seq_0128_D49R0107_00A6
+	gotoif ne, _00A6
 	move_person 0, 9, 0, 9, 1
 	setvar VAR_TEMP_x400E, 0
-scr_seq_0128_D49R0107_00A6:
+_00A6:
 	end
 
-scr_seq_0128_D49R0107_00A8:
+scr_seq_D49R0107_005:
 	scrcmd_609
 	lockall
-	apply_movement 0, scr_seq_0128_D49R0107_015C
+	apply_movement obj_D49R0107_thlonowner, _015C
 	wait_movement
-	npc_msg 0
+	npc_msg msg_0143_D49R0107_00000
 	closemsg
-	apply_movement 0, scr_seq_0128_D49R0107_0164
+	apply_movement obj_D49R0107_thlonowner, _0164
 	wait_movement
 	wait 15, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	npc_msg 1
+	npc_msg msg_0143_D49R0107_00001
 	closemsg
-	apply_movement 0, scr_seq_0128_D49R0107_016C
+	apply_movement obj_D49R0107_thlonowner, _016C
 	wait_movement
-	npc_msg 2
+	npc_msg msg_0143_D49R0107_00002
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 0, scr_seq_0128_D49R0107_0174
-	apply_movement 255, scr_seq_0128_D49R0107_0180
+	apply_movement obj_D49R0107_thlonowner, _0174
+	apply_movement obj_player, _0180
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	buffer_players_name 0
-	npc_msg 3
+	npc_msg msg_0143_D49R0107_00003
 	closemsg
-	apply_movement 0, scr_seq_0128_D49R0107_0188
+	apply_movement obj_D49R0107_thlonowner, _0188
 	wait_movement
-	npc_msg 4
+	npc_msg msg_0143_D49R0107_00004
 	closemsg
-	apply_movement 0, scr_seq_0128_D49R0107_0164
+	apply_movement obj_D49R0107_thlonowner, _0164
 	wait_movement
-	npc_msg 5
+	npc_msg msg_0143_D49R0107_00005
 	closemsg
-	apply_movement 0, scr_seq_0128_D49R0107_0190
+	apply_movement obj_D49R0107_thlonowner, _0190
 	wait_movement
 	releaseall
 	setvar VAR_UNK_40D3, 1
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
-	callif eq, scr_seq_0128_D49R0107_0154
+	callif eq, _0154
 	end
 
-scr_seq_0128_D49R0107_0154:
+_0154:
 	clearflag FLAG_UNK_2B3
 	return
-
-scr_seq_0128_D49R0107_015A:
 	.byte 0x00, 0x00
 
-scr_seq_0128_D49R0107_015C:
+_015C:
 	step 75, 1
 	step_end
 
-scr_seq_0128_D49R0107_0164:
+_0164:
 	step 33, 1
 	step_end
 
-scr_seq_0128_D49R0107_016C:
+_016C:
 	step 13, 3
 	step_end
 
-scr_seq_0128_D49R0107_0174:
+_0174:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0128_D49R0107_0180:
+_0180:
 	step 12, 3
 	step_end
 
-scr_seq_0128_D49R0107_0188:
+_0188:
 	step 8, 1
 	step_end
 
-scr_seq_0128_D49R0107_0190:
+_0190:
 	step 34, 1
 	step 71, 1
 	step 11, 2
 	step 72, 1
 	step_end
-scr_seq_0128_D49R0107_01A4:
+scr_seq_D49R0107_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	buffer_players_name 0
-	npc_msg 6
+	npc_msg msg_0143_D49R0107_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0128_D49R0107_01BA:
+scr_seq_D49R0107_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0143_D49R0107_00007
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -156,31 +156,31 @@ scr_seq_0128_D49R0107_01BA:
 	releaseall
 	end
 
-scr_seq_0128_D49R0107_01E8:
+scr_seq_D49R0107_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0143_D49R0107_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0128_D49R0107_01FB:
+scr_seq_D49R0107_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0143_D49R0107_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0128_D49R0107_020E:
+scr_seq_D49R0107_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0143_D49R0107_00008
 	waitbutton
 	closemsg
 	releaseall

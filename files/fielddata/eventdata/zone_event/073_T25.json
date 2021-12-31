@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T25.h",
   "bgs": [
     {
-      "scr": 20,
+      "scr": "_EV_scr_seq_T25_020",
       "type": 1,
       "x": 350,
       "y": 350,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 21,
+      "scr": "_EV_scr_seq_T25_021",
       "type": 1,
       "x": 340,
       "y": 350,
@@ -17,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 22,
+      "scr": "_EV_scr_seq_T25_022",
       "type": 1,
       "x": 362,
       "y": 334,
@@ -25,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 23,
+      "scr": "_EV_scr_seq_T25_023",
       "type": 1,
       "x": 362,
       "y": 356,
@@ -33,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 24,
+      "scr": "_EV_scr_seq_T25_024",
       "type": 1,
       "x": 368,
       "y": 375,
@@ -41,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 25,
+      "scr": "_EV_scr_seq_T25_025",
       "type": 1,
       "x": 353,
       "y": 361,
@@ -49,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 26,
+      "scr": "_EV_scr_seq_T25_026",
       "type": 1,
       "x": 355,
       "y": 334,
@@ -57,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": 27,
+      "scr": "_EV_scr_seq_T25_027",
       "type": 1,
       "x": 346,
       "y": 336,
@@ -65,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": 28,
+      "scr": "_EV_scr_seq_T25_028",
       "type": 1,
       "x": 349,
       "y": 375,
@@ -73,7 +74,7 @@
       "dir": 4
     },
     {
-      "scr": 29,
+      "scr": "_EV_scr_seq_T25_029",
       "type": 1,
       "x": 314,
       "y": 350,
@@ -81,7 +82,7 @@
       "dir": 4
     },
     {
-      "scr": 30,
+      "scr": "_EV_scr_seq_T25_030",
       "type": 1,
       "x": 373,
       "y": 333,
@@ -99,12 +100,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T25_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T25_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -116,12 +117,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T25_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
-      "scr": 7,
+      "scr": "_EV_scr_seq_T25_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -133,12 +134,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T25_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T25_005",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -150,12 +151,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T25_gsboy1_2",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -167,12 +168,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T25_rocketm",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_1B9",
-      "scr": 8,
+      "scr": "_EV_scr_seq_T25_008",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -184,12 +185,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T25_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T25_006",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -201,12 +202,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_T25_gswoman2_2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T25_002",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -218,12 +219,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_T25_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_UNK_1B8",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T25_001",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -235,12 +236,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_T25_rocketm_2",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1BB",
-      "scr": 15,
+      "scr": "_EV_scr_seq_T25_015",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -252,12 +253,12 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_T25_rocketm_3",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1BB",
-      "scr": 16,
+      "scr": "_EV_scr_seq_T25_016",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -269,12 +270,12 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_T25_rocketm_4",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B7",
-      "scr": 13,
+      "scr": "_EV_scr_seq_T25_013",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -286,12 +287,12 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_T25_rocketm_5",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B7",
-      "scr": 14,
+      "scr": "_EV_scr_seq_T25_014",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -303,12 +304,12 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_T25_rocketm_6",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B7",
-      "scr": 9,
+      "scr": "_EV_scr_seq_T25_009",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -320,12 +321,12 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_T25_rocketm_7",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B7",
-      "scr": 12,
+      "scr": "_EV_scr_seq_T25_012",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -337,12 +338,12 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_T25_rocketm_8",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1BA",
-      "scr": 11,
+      "scr": "_EV_scr_seq_T25_011",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -354,12 +355,12 @@
       "z": 0
     },
     {
-      "id": 15,
+      "id": "obj_T25_rocketm_9",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1BB",
-      "scr": 0,
+      "scr": "_EV_scr_seq_T25_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -371,12 +372,12 @@
       "z": 0
     },
     {
-      "id": 16,
+      "id": "obj_T25_rocketm_10",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B7",
-      "scr": 17,
+      "scr": "_EV_scr_seq_T25_017",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -388,12 +389,12 @@
       "z": 0
     },
     {
-      "id": 17,
+      "id": "obj_T25_rocketm_11",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1BA",
-      "scr": 10,
+      "scr": "_EV_scr_seq_T25_010",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -405,12 +406,12 @@
       "z": 0
     },
     {
-      "id": 18,
+      "id": "obj_T25_rocketm_12",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B7",
-      "scr": 32,
+      "scr": "_EV_scr_seq_T25_032",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -422,12 +423,12 @@
       "z": 0
     },
     {
-      "id": 19,
+      "id": "obj_T25_gswoman2_3",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1B7",
-      "scr": 31,
+      "scr": "_EV_scr_seq_T25_031",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -439,7 +440,7 @@
       "z": 0
     },
     {
-      "id": 20,
+      "id": "obj_T25_gswoman2_4",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 0,
       "type": 0,
@@ -579,7 +580,7 @@
   ],
   "coords": [
     {
-      "scr": 18,
+      "scr": "_EV_scr_seq_T25_018",
       "x": 354,
       "y": 376,
       "w": 10,

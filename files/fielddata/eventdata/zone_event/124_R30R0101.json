@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R30R0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R30R0101_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 15,
       "type": 0,

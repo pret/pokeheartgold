@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_HIROBA.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_HIROBA_wifisf",
       "ovid": "SPRITE_WIFISF",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_HIROBA_000",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

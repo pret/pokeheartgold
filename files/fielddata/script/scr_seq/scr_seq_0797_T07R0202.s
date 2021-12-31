@@ -1,30 +1,32 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T07R0202.h"
+#include "msgdata/msg/msg_0502_T07R0202.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0797_T07R0202_0016 ; 000
-	scrdef scr_seq_0797_T07R0202_000E ; 001
-	scrdef scr_seq_0797_T07R0202_0027 ; 002
+	scrdef scr_seq_T07R0202_000
+	scrdef scr_seq_T07R0202_001
+	scrdef scr_seq_T07R0202_002
 	scrdef_end
 
-scr_seq_0797_T07R0202_000E:
+scr_seq_T07R0202_001:
 	setvar VAR_UNK_4125, 0
 	end
 
-scr_seq_0797_T07R0202_0016:
+scr_seq_T07R0202_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 0
+	npc_msg msg_0502_T07R0202_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0797_T07R0202_0027:
+scr_seq_T07R0202_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 1
+	npc_msg msg_0502_T07R0202_00001
 	waitbutton
 	closemsg
 	releaseall

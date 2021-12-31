@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T25R1005.h",
   "bgs": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_T25R1005_005",
       "type": 0,
       "x": 17,
       "y": 2,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T25R1005_shopm1_2",
       "ovid": "SPRITE_SHOPM1_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T25R1005_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -28,12 +29,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T25R1005_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T25R1005_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -45,12 +46,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T25R1005_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25R1005_004",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -62,12 +63,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T25R1005_gsgirl3",
       "ovid": "SPRITE_GSGIRL3",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T25R1005_003",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -79,7 +80,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T25R1005_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 0,
       "type": 0,

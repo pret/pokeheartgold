@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_D52R0102.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D52R0102_tsure_poke_622",
       "ovid": "SPRITE_TSURE_POKE_622",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D1",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D52R0102_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D52R0102_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D4",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D52R0102_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

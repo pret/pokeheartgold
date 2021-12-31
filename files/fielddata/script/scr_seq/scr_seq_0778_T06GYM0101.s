@@ -1,108 +1,110 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T06GYM0101.h"
+#include "msgdata/msg/msg_0485_T06GYM0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0778_T06GYM0101_0177 ; 000
-	scrdef scr_seq_0778_T06GYM0101_0184 ; 001
-	scrdef scr_seq_0778_T06GYM0101_0191 ; 002
-	scrdef scr_seq_0778_T06GYM0101_019E ; 003
-	scrdef scr_seq_0778_T06GYM0101_01AB ; 004
-	scrdef scr_seq_0778_T06GYM0101_01B8 ; 005
-	scrdef scr_seq_0778_T06GYM0101_01C5 ; 006
-	scrdef scr_seq_0778_T06GYM0101_01D2 ; 007
-	scrdef scr_seq_0778_T06GYM0101_01DF ; 008
-	scrdef scr_seq_0778_T06GYM0101_01EC ; 009
-	scrdef scr_seq_0778_T06GYM0101_01F9 ; 010
-	scrdef scr_seq_0778_T06GYM0101_0206 ; 011
-	scrdef scr_seq_0778_T06GYM0101_0213 ; 012
-	scrdef scr_seq_0778_T06GYM0101_0220 ; 013
-	scrdef scr_seq_0778_T06GYM0101_022D ; 014
-	scrdef scr_seq_0778_T06GYM0101_02F6 ; 015
-	scrdef scr_seq_0778_T06GYM0101_02F8 ; 016
-	scrdef scr_seq_0778_T06GYM0101_02FA ; 017
-	scrdef scr_seq_0778_T06GYM0101_02FC ; 018
-	scrdef scr_seq_0778_T06GYM0101_02FE ; 019
-	scrdef scr_seq_0778_T06GYM0101_0300 ; 020
-	scrdef scr_seq_0778_T06GYM0101_006A ; 021
-	scrdef scr_seq_0778_T06GYM0101_0150 ; 022
-	scrdef scr_seq_0778_T06GYM0101_0302 ; 023
-	scrdef scr_seq_0778_T06GYM0101_03E3 ; 024
-	scrdef scr_seq_0778_T06GYM0101_0414 ; 025
+	scrdef scr_seq_T06GYM0101_000
+	scrdef scr_seq_T06GYM0101_001
+	scrdef scr_seq_T06GYM0101_002
+	scrdef scr_seq_T06GYM0101_003
+	scrdef scr_seq_T06GYM0101_004
+	scrdef scr_seq_T06GYM0101_005
+	scrdef scr_seq_T06GYM0101_006
+	scrdef scr_seq_T06GYM0101_007
+	scrdef scr_seq_T06GYM0101_008
+	scrdef scr_seq_T06GYM0101_009
+	scrdef scr_seq_T06GYM0101_010
+	scrdef scr_seq_T06GYM0101_011
+	scrdef scr_seq_T06GYM0101_012
+	scrdef scr_seq_T06GYM0101_013
+	scrdef scr_seq_T06GYM0101_014
+	scrdef scr_seq_T06GYM0101_015
+	scrdef scr_seq_T06GYM0101_016
+	scrdef scr_seq_T06GYM0101_017
+	scrdef scr_seq_T06GYM0101_018
+	scrdef scr_seq_T06GYM0101_019
+	scrdef scr_seq_T06GYM0101_020
+	scrdef scr_seq_T06GYM0101_021
+	scrdef scr_seq_T06GYM0101_022
+	scrdef scr_seq_T06GYM0101_023
+	scrdef scr_seq_T06GYM0101_024
+	scrdef scr_seq_T06GYM0101_025
 	scrdef_end
 
-scr_seq_0778_T06GYM0101_006A:
+scr_seq_T06GYM0101_021:
 	checkflag FLAG_UNK_31A
-	gotoif TRUE, scr_seq_0778_T06GYM0101_0079
+	gotoif TRUE, _0079
 	clearflag FLAG_UNK_9A6
-scr_seq_0778_T06GYM0101_0079:
+_0079:
 	scrcmd_320
 	get_phone_book_rematch 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0778_T06GYM0101_014A
+	gotoif ne, _014A
 	checkflag FLAG_UNK_14A
-	gotoif FALSE, scr_seq_0778_T06GYM0101_0144
+	gotoif FALSE, _0144
 	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0778_T06GYM0101_00FB
+	gotoif eq, _00FB
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, scr_seq_0778_T06GYM0101_00C7
+	gotoif ne, _00C7
 	setflag FLAG_UNK_2F0
-	goto scr_seq_0778_T06GYM0101_00F9
+	goto _00F9
 
-scr_seq_0778_T06GYM0101_00C7:
+_00C7:
 	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif ne, scr_seq_0778_T06GYM0101_00DE
+	gotoif ne, _00DE
 	setflag FLAG_UNK_2F0
-	goto scr_seq_0778_T06GYM0101_00F9
+	goto _00F9
 
-scr_seq_0778_T06GYM0101_00DE:
+_00DE:
 	comparevartovalue VAR_TEMP_x4000, 11
-	gotoif ne, scr_seq_0778_T06GYM0101_00F5
+	gotoif ne, _00F5
 	setflag FLAG_UNK_2F0
-	goto scr_seq_0778_T06GYM0101_00F9
+	goto _00F9
 
-scr_seq_0778_T06GYM0101_00F5:
+_00F5:
 	clearflag FLAG_UNK_2F0
-scr_seq_0778_T06GYM0101_00F9:
+_00F9:
 	end
 
-scr_seq_0778_T06GYM0101_00FB:
+_00FB:
 	checkflag FLAG_UNK_162
-	gotoif TRUE, scr_seq_0778_T06GYM0101_010C
+	gotoif TRUE, _010C
 	setflag FLAG_UNK_2F0
 	end
 
-scr_seq_0778_T06GYM0101_010C:
+_010C:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0778_T06GYM0101_0127
+	gotoif ne, _0127
 	setflag FLAG_UNK_2F0
-	goto scr_seq_0778_T06GYM0101_0142
+	goto _0142
 
-scr_seq_0778_T06GYM0101_0127:
+_0127:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0778_T06GYM0101_013E
+	gotoif ne, _013E
 	setflag FLAG_UNK_2F0
-	goto scr_seq_0778_T06GYM0101_0142
+	goto _0142
 
-scr_seq_0778_T06GYM0101_013E:
+_013E:
 	clearflag FLAG_UNK_2F0
-scr_seq_0778_T06GYM0101_0142:
+_0142:
 	end
 
-scr_seq_0778_T06GYM0101_0144:
+_0144:
 	clearflag FLAG_UNK_2F0
 	end
 
-scr_seq_0778_T06GYM0101_014A:
+_014A:
 	setflag FLAG_UNK_2F0
 	end
 
-scr_seq_0778_T06GYM0101_0150:
+scr_seq_T06GYM0101_022:
 	checkflag FLAG_UNK_31A
-	gotoif TRUE, scr_seq_0778_T06GYM0101_0175
+	gotoif TRUE, _0175
 	scrcmd_375 0
 	scrcmd_375 1
 	scrcmd_375 2
@@ -111,154 +113,124 @@ scr_seq_0778_T06GYM0101_0150:
 	scrcmd_375 5
 	end
 
-scr_seq_0778_T06GYM0101_0175:
+_0175:
 	end
 
-scr_seq_0778_T06GYM0101_0177:
+scr_seq_T06GYM0101_000:
 	scrcmd_322 0, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_0182:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_0184:
+scr_seq_T06GYM0101_001:
 	scrcmd_322 1, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_018F:
+	goto _023A
 	.byte 0x02
 	.byte 0x00
-scr_seq_0778_T06GYM0101_0191:
+scr_seq_T06GYM0101_002:
 	scrcmd_322 2, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_019C:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_019E:
+scr_seq_T06GYM0101_003:
 	scrcmd_322 3, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_01A9:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_01AB:
+scr_seq_T06GYM0101_004:
 	scrcmd_322 4, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_01B6:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_01B8:
+scr_seq_T06GYM0101_005:
 	scrcmd_322 5, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_01C3:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_01C5:
+scr_seq_T06GYM0101_006:
 	scrcmd_322 6, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_01D0:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_01D2:
+scr_seq_T06GYM0101_007:
 	scrcmd_322 7, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_01DD:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_01DF:
+scr_seq_T06GYM0101_008:
 	scrcmd_322 8, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_01EA:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_01EC:
+scr_seq_T06GYM0101_009:
 	scrcmd_322 9, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_01F7:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_01F9:
+scr_seq_T06GYM0101_010:
 	scrcmd_322 10, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_0204:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_0206:
+scr_seq_T06GYM0101_011:
 	scrcmd_322 11, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_0211:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_0213:
+scr_seq_T06GYM0101_012:
 	scrcmd_322 12, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_021E:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_0220:
+scr_seq_T06GYM0101_013:
 	scrcmd_322 13, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_022B:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_022D:
+scr_seq_T06GYM0101_014:
 	scrcmd_322 14, 32780
-	goto scr_seq_0778_T06GYM0101_023A
-
-scr_seq_0778_T06GYM0101_0238:
+	goto _023A
 	.byte 0x02, 0x00
-scr_seq_0778_T06GYM0101_023A:
+_023A:
 	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, scr_seq_0778_T06GYM0101_027D
+	gotoif eq, _027D
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, scr_seq_0778_T06GYM0101_02AA
+	gotoif eq, _02AA
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0778_T06GYM0101_028E
+	gotoif eq, _028E
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0778_T06GYM0101_02CE
+	gotoif eq, _02CE
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0778_T06GYM0101_02E5
+	gotoif eq, _02E5
 	end
 
-scr_seq_0778_T06GYM0101_027D:
+_027D:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 8
+	npc_msg msg_0485_T06GYM0101_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_028E:
+_028E:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 9
+	npc_msg msg_0485_T06GYM0101_00009
 	waitbutton
 	closemsg
 	scrcmd_321 0, 0
-	npc_msg 11
+	npc_msg msg_0485_T06GYM0101_00011
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_02AA:
+_02AA:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 9
+	npc_msg msg_0485_T06GYM0101_00009
 	waitbutton
 	closemsg
 	scrcmd_321 1, 0
 	setflag FLAG_UNK_9A6
 	scrcmd_074 2150
-	npc_msg 12
+	npc_msg msg_0485_T06GYM0101_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_02CE:
+_02CE:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 10
+	npc_msg msg_0485_T06GYM0101_00010
 	waitbutton
 	closemsg
 	scrcmd_321 0, 1
@@ -266,46 +238,46 @@ scr_seq_0778_T06GYM0101_02CE:
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_02E5:
+_02E5:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 8
+	npc_msg msg_0485_T06GYM0101_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_02F6:
+scr_seq_T06GYM0101_015:
 	end
 
-scr_seq_0778_T06GYM0101_02F8:
+scr_seq_T06GYM0101_016:
 	end
 
-scr_seq_0778_T06GYM0101_02FA:
+scr_seq_T06GYM0101_017:
 	end
 
-scr_seq_0778_T06GYM0101_02FC:
+scr_seq_T06GYM0101_018:
 	end
 
-scr_seq_0778_T06GYM0101_02FE:
+scr_seq_T06GYM0101_019:
 	end
 
-scr_seq_0778_T06GYM0101_0300:
+scr_seq_T06GYM0101_020:
 	end
 
-scr_seq_0778_T06GYM0101_0302:
+scr_seq_T06GYM0101_023:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 10, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0778_T06GYM0101_03C7
-	npc_msg 0
+	gotoif eq, _03C7
+	npc_msg msg_0485_T06GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_LT_SURGE_LT__SURGE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0778_T06GYM0101_03DD
+	gotoif eq, _03DD
 	give_badge 10
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
@@ -319,82 +291,82 @@ scr_seq_0778_T06GYM0101_0302:
 	settrainerflag TRAINER_GUITARIST_VINCENT
 	settrainerflag TRAINER_GENTLEMAN_GREGORY
 	settrainerflag TRAINER_JUGGLER_HORTON
-	npc_msg 1
+	npc_msg msg_0485_T06GYM0101_00001
 	buffer_players_name 0
-	npc_msg 2
+	npc_msg msg_0485_T06GYM0101_00002
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	npc_msg 3
-	goto scr_seq_0778_T06GYM0101_0389
+	npc_msg msg_0485_T06GYM0101_00003
+	goto _0389
 
-scr_seq_0778_T06GYM0101_0389:
+_0389:
 	setvar VAR_SPECIAL_x8004, 361
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0778_T06GYM0101_03BD
+	gotoif eq, _03BD
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_181
-	npc_msg 4
+	npc_msg msg_0485_T06GYM0101_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_03BD:
+_03BD:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_03C7:
+_03C7:
 	checkflag FLAG_UNK_181
-	gotoif FALSE, scr_seq_0778_T06GYM0101_0389
-	npc_msg 5
+	gotoif FALSE, _0389
+	npc_msg msg_0485_T06GYM0101_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_03DD:
+_03DD:
 	white_out
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_03E3:
+scr_seq_T06GYM0101_024:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 10, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0778_T06GYM0101_0409
-	npc_msg 6
+	gotoif eq, _0409
+	npc_msg msg_0485_T06GYM0101_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_0409:
-	npc_msg 7
+_0409:
+	npc_msg msg_0485_T06GYM0101_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0778_T06GYM0101_0414:
+scr_seq_T06GYM0101_025:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 10, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0778_T06GYM0101_043B
-	npc_msg 13
-	goto scr_seq_0778_T06GYM0101_043E
+	gotoif ne, _043B
+	npc_msg msg_0485_T06GYM0101_00013
+	goto _043E
 
-scr_seq_0778_T06GYM0101_043B:
-	npc_msg 14
-scr_seq_0778_T06GYM0101_043E:
+_043B:
+	npc_msg msg_0485_T06GYM0101_00014
+_043E:
 	waitbutton
 	closemsg
 	releaseall

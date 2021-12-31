@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D35R0102.h",
   "bgs": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_D35R0102_005",
       "type": 0,
       "x": 37,
       "y": 21,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D35R0102_aji_peru",
       "ovid": "SPRITE_AJI_PERU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D35R0102_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -36,12 +37,12 @@
       "z": 131072
     },
     {
-      "id": 1,
+      "id": "obj_D35R0102_rocketm",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1E8",
-      "scr": 3,
+      "scr": "_EV_scr_seq_D35R0102_003",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -53,12 +54,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D35R0102_aji_peru_2",
       "ovid": "SPRITE_AJI_PERU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 10,
+      "scr": "_EV_scr_seq_D35R0102_010",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -70,12 +71,12 @@
       "z": 131072
     },
     {
-      "id": 3,
+      "id": "obj_D35R0102_aji_peru_3",
       "ovid": "SPRITE_AJI_PERU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 11,
+      "scr": "_EV_scr_seq_D35R0102_011",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -87,12 +88,12 @@
       "z": 131072
     },
     {
-      "id": 4,
+      "id": "obj_D35R0102_aji_peru_4",
       "ovid": "SPRITE_AJI_PERU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 12,
+      "scr": "_EV_scr_seq_D35R0102_012",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -104,12 +105,12 @@
       "z": 131072
     },
     {
-      "id": 5,
+      "id": "obj_D35R0102_aji_peru_5",
       "ovid": "SPRITE_AJI_PERU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 13,
+      "scr": "_EV_scr_seq_D35R0102_013",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -121,7 +122,7 @@
       "z": 131072
     },
     {
-      "id": 6,
+      "id": "obj_D35R0102_rocketm_2",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 0,
       "type": 1,
@@ -138,7 +139,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_D35R0102_assistantm",
       "ovid": "SPRITE_ASSISTANTM",
       "mvt": 0,
       "type": 1,
@@ -155,7 +156,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_D35R0102_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -172,7 +173,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_D35R0102_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -189,7 +190,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_D35R0102_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -224,7 +225,7 @@
   ],
   "coords": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_D35R0102_001",
       "x": 44,
       "y": 4,
       "w": 1,
@@ -234,7 +235,7 @@
       "var": "VAR_UNK_40AD"
     },
     {
-      "scr": 6,
+      "scr": "_EV_scr_seq_D35R0102_006",
       "x": 18,
       "y": 4,
       "w": 1,
@@ -244,7 +245,7 @@
       "var": "VAR_UNK_40AE"
     },
     {
-      "scr": 7,
+      "scr": "_EV_scr_seq_D35R0102_007",
       "x": 44,
       "y": 11,
       "w": 1,
@@ -254,7 +255,7 @@
       "var": "VAR_UNK_40AF"
     },
     {
-      "scr": 8,
+      "scr": "_EV_scr_seq_D35R0102_008",
       "x": 44,
       "y": 29,
       "w": 1,
@@ -264,7 +265,7 @@
       "var": "VAR_UNK_40B0"
     },
     {
-      "scr": 9,
+      "scr": "_EV_scr_seq_D35R0102_009",
       "x": 18,
       "y": 29,
       "w": 1,
@@ -274,7 +275,7 @@
       "var": "VAR_UNK_40B1"
     },
     {
-      "scr": 14,
+      "scr": "_EV_scr_seq_D35R0102_014",
       "x": 12,
       "y": 17,
       "w": 1,
@@ -284,7 +285,7 @@
       "var": "VAR_UNK_40B2"
     },
     {
-      "scr": 15,
+      "scr": "_EV_scr_seq_D35R0102_015",
       "x": 13,
       "y": 16,
       "w": 1,
@@ -294,7 +295,7 @@
       "var": "VAR_UNK_40B3"
     },
     {
-      "scr": 16,
+      "scr": "_EV_scr_seq_D35R0102_016",
       "x": 15,
       "y": 16,
       "w": 1,
@@ -304,7 +305,7 @@
       "var": "VAR_UNK_40B4"
     },
     {
-      "scr": 17,
+      "scr": "_EV_scr_seq_D35R0102_017",
       "x": 16,
       "y": 16,
       "w": 1,
@@ -314,7 +315,7 @@
       "var": "VAR_UNK_40B5"
     },
     {
-      "scr": 18,
+      "scr": "_EV_scr_seq_D35R0102_018",
       "x": 11,
       "y": 18,
       "w": 1,
@@ -324,7 +325,7 @@
       "var": "VAR_UNK_40B6"
     },
     {
-      "scr": 19,
+      "scr": "_EV_scr_seq_D35R0102_019",
       "x": 16,
       "y": 17,
       "w": 1,
@@ -334,7 +335,7 @@
       "var": "VAR_UNK_40B7"
     },
     {
-      "scr": 20,
+      "scr": "_EV_scr_seq_D35R0102_020",
       "x": 14,
       "y": 18,
       "w": 1,
@@ -344,7 +345,7 @@
       "var": "VAR_UNK_40B8"
     },
     {
-      "scr": 21,
+      "scr": "_EV_scr_seq_D35R0102_021",
       "x": 15,
       "y": 18,
       "w": 1,
@@ -354,7 +355,7 @@
       "var": "VAR_UNK_40B9"
     },
     {
-      "scr": 22,
+      "scr": "_EV_scr_seq_D35R0102_022",
       "x": 15,
       "y": 20,
       "w": 1,
@@ -364,7 +365,7 @@
       "var": "VAR_UNK_40BA"
     },
     {
-      "scr": 23,
+      "scr": "_EV_scr_seq_D35R0102_023",
       "x": 13,
       "y": 19,
       "w": 1,
@@ -374,7 +375,7 @@
       "var": "VAR_UNK_40BB"
     },
     {
-      "scr": 24,
+      "scr": "_EV_scr_seq_D35R0102_024",
       "x": 14,
       "y": 21,
       "w": 1,
@@ -384,7 +385,7 @@
       "var": "VAR_UNK_40BC"
     },
     {
-      "scr": 25,
+      "scr": "_EV_scr_seq_D35R0102_025",
       "x": 12,
       "y": 21,
       "w": 1,
@@ -394,7 +395,7 @@
       "var": "VAR_UNK_40BD"
     },
     {
-      "scr": 26,
+      "scr": "_EV_scr_seq_D35R0102_026",
       "x": 11,
       "y": 22,
       "w": 1,
@@ -404,7 +405,7 @@
       "var": "VAR_UNK_40BE"
     },
     {
-      "scr": 27,
+      "scr": "_EV_scr_seq_D35R0102_027",
       "x": 13,
       "y": 21,
       "w": 1,
@@ -414,7 +415,7 @@
       "var": "VAR_UNK_40BF"
     },
     {
-      "scr": 28,
+      "scr": "_EV_scr_seq_D35R0102_028",
       "x": 14,
       "y": 22,
       "w": 1,
@@ -424,7 +425,7 @@
       "var": "VAR_UNK_40C0"
     },
     {
-      "scr": 29,
+      "scr": "_EV_scr_seq_D35R0102_029",
       "x": 16,
       "y": 22,
       "w": 1,
@@ -434,7 +435,7 @@
       "var": "VAR_UNK_40C1"
     },
     {
-      "scr": 30,
+      "scr": "_EV_scr_seq_D35R0102_030",
       "x": 16,
       "y": 28,
       "w": 1,

@@ -1,16 +1,18 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25R1004.h"
+#include "msgdata/msg/msg_0595_T25R1004.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0902_T25R1004_0016 ; 000
-	scrdef scr_seq_0902_T25R1004_0032 ; 001
-	scrdef scr_seq_0902_T25R1004_005B ; 002
-	scrdef scr_seq_0902_T25R1004_0084 ; 003
-	scrdef scr_seq_0902_T25R1004_00AD ; 004
+	scrdef scr_seq_T25R1004_000
+	scrdef scr_seq_T25R1004_001
+	scrdef scr_seq_T25R1004_002
+	scrdef scr_seq_T25R1004_003
+	scrdef scr_seq_T25R1004_004
 	scrdef_end
 
-scr_seq_0902_T25R1004_0016:
+scr_seq_T25R1004_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -21,61 +23,61 @@ scr_seq_0902_T25R1004_0016:
 	releaseall
 	end
 
-scr_seq_0902_T25R1004_0032:
+scr_seq_T25R1004_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0902_T25R1004_0050
-	npc_msg 1
-	goto scr_seq_0902_T25R1004_0053
+	gotoif ne, _0050
+	npc_msg msg_0595_T25R1004_00001
+	goto _0053
 
-scr_seq_0902_T25R1004_0050:
-	npc_msg 0
-scr_seq_0902_T25R1004_0053:
+_0050:
+	npc_msg msg_0595_T25R1004_00000
+_0053:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0902_T25R1004_005B:
+scr_seq_T25R1004_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0902_T25R1004_0079
-	npc_msg 3
-	goto scr_seq_0902_T25R1004_007C
+	gotoif ne, _0079
+	npc_msg msg_0595_T25R1004_00003
+	goto _007C
 
-scr_seq_0902_T25R1004_0079:
-	npc_msg 2
-scr_seq_0902_T25R1004_007C:
+_0079:
+	npc_msg msg_0595_T25R1004_00002
+_007C:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0902_T25R1004_0084:
+scr_seq_T25R1004_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0902_T25R1004_00A2
-	npc_msg 5
-	goto scr_seq_0902_T25R1004_00A5
+	gotoif ne, _00A2
+	npc_msg msg_0595_T25R1004_00005
+	goto _00A5
 
-scr_seq_0902_T25R1004_00A2:
-	npc_msg 4
-scr_seq_0902_T25R1004_00A5:
+_00A2:
+	npc_msg msg_0595_T25R1004_00004
+_00A5:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0902_T25R1004_00AD:
+scr_seq_T25R1004_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 6
+	npc_msg msg_0595_T25R1004_00006
 	waitbutton
 	closemsg
 	releaseall

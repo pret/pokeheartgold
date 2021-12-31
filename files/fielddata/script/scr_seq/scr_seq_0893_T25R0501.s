@@ -1,94 +1,94 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25R0501.h"
+#include "msgdata/msg/msg_0587_T25R0501.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0893_T25R0501_005A ; 000
-	scrdef scr_seq_0893_T25R0501_00B4 ; 001
-	scrdef scr_seq_0893_T25R0501_015D ; 002
-	scrdef scr_seq_0893_T25R0501_015F ; 003
-	scrdef scr_seq_0893_T25R0501_0161 ; 004
-	scrdef scr_seq_0893_T25R0501_003F ; 005
-	scrdef scr_seq_0893_T25R0501_0022 ; 006
-	scrdef scr_seq_0893_T25R0501_014C ; 007
+	scrdef scr_seq_T25R0501_000
+	scrdef scr_seq_T25R0501_001
+	scrdef scr_seq_T25R0501_002
+	scrdef scr_seq_T25R0501_003
+	scrdef scr_seq_T25R0501_004
+	scrdef scr_seq_T25R0501_005
+	scrdef scr_seq_T25R0501_006
+	scrdef scr_seq_T25R0501_007
 	scrdef_end
 
-scr_seq_0893_T25R0501_0022:
+scr_seq_T25R0501_006:
 	scrcmd_582 76, 348, 350
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0893_T25R0501_0037
+	gotoif TRUE, _0037
 	end
 
-scr_seq_0893_T25R0501_0037:
+_0037:
 	setvar VAR_UNK_410B, 0
 	end
 
-scr_seq_0893_T25R0501_003F:
+scr_seq_T25R0501_005:
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0893_T25R0501_004C
+	gotoif TRUE, _004C
 	end
 
-scr_seq_0893_T25R0501_004C:
+_004C:
 	move_person 0, 4, 0, 6, 3
 	end
 
-scr_seq_0893_T25R0501_005A:
+scr_seq_T25R0501_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0893_T25R0501_0078
-	npc_msg 0
+	gotoif TRUE, _0078
+	npc_msg msg_0587_T25R0501_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0893_T25R0501_0078:
+_0078:
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0893_T25R0501_0096
-	npc_msg 5
+	gotoif ne, _0096
+	npc_msg msg_0587_T25R0501_00005
 	waitbutton
 	closemsg
-	goto scr_seq_0893_T25R0501_00A5
+	goto _00A5
 
-scr_seq_0893_T25R0501_0096:
-	npc_msg 7
+_0096:
+	npc_msg msg_0587_T25R0501_00007
 	closemsg
-	apply_movement 0, scr_seq_0893_T25R0501_00AC
+	apply_movement obj_T25R0501_policeman, _00AC
 	wait_movement
-scr_seq_0893_T25R0501_00A5:
+_00A5:
 	releaseall
 	end
-
-scr_seq_0893_T25R0501_00A9:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0893_T25R0501_00AC:
+_00AC:
 	step 3, 1
 	step_end
-scr_seq_0893_T25R0501_00B4:
+scr_seq_T25R0501_001:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0893_T25R0501_013C
+	apply_movement obj_player, _013C
 	wait_movement
 	checkflag FLAG_UNK_123
-	gotoif TRUE, scr_seq_0893_T25R0501_0118
-	npc_msg 1
+	gotoif TRUE, _0118
+	npc_msg msg_0587_T25R0501_00001
 	closemsg
 	setflag FLAG_UNK_123
-scr_seq_0893_T25R0501_00D6:
+_00D6:
 	wait 50, VAR_SPECIAL_x8004
 	hasitem ITEM_PASS, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0893_T25R0501_0123
-	npc_msg 2
+	gotoif ge, _0123
+	npc_msg msg_0587_T25R0501_00002
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0893_T25R0501_0144
+	apply_movement obj_player, _0144
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -96,45 +96,43 @@ scr_seq_0893_T25R0501_00D6:
 	releaseall
 	end
 
-scr_seq_0893_T25R0501_0118:
-	npc_msg 3
+_0118:
+	npc_msg msg_0587_T25R0501_00003
 	closemsg
-	goto scr_seq_0893_T25R0501_00D6
+	goto _00D6
 
-scr_seq_0893_T25R0501_0123:
-	npc_msg 4
+_0123:
+	npc_msg msg_0587_T25R0501_00004
 	waitbutton
 	closemsg
 	setvar VAR_UNK_410B, 1
 	setvar VAR_UNK_411E, 1
 	releaseall
 	end
-
-scr_seq_0893_T25R0501_013A:
 	.byte 0x00, 0x00
 
-scr_seq_0893_T25R0501_013C:
+_013C:
 	step 34, 1
 	step_end
 
-scr_seq_0893_T25R0501_0144:
+_0144:
 	step 13, 2
 	step_end
-scr_seq_0893_T25R0501_014C:
+scr_seq_T25R0501_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 9
+	npc_msg msg_0587_T25R0501_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0893_T25R0501_015D:
+scr_seq_T25R0501_002:
 	end
 
-scr_seq_0893_T25R0501_015F:
+scr_seq_T25R0501_003:
 	end
 
-scr_seq_0893_T25R0501_0161:
+scr_seq_T25R0501_004:
 	end
 	.balign 4, 0

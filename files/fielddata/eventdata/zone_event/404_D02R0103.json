@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D02R0103.h",
   "bgs": [
     {
       "scr": 8196,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_D02R0103_001",
       "type": 1,
       "x": 22,
       "y": 10,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D02R0103_stop",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D02R0103_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

@@ -1,92 +1,94 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0001.h"
+#include "msgdata/msg/msg_0020.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0001_0026 ; 000
-	scrdef scr_seq_0001_0037 ; 001
-	scrdef scr_seq_0001_0048 ; 002
-	scrdef scr_seq_0001_0059 ; 003
-	scrdef scr_seq_0001_006A ; 004
-	scrdef scr_seq_0001_007B ; 005
-	scrdef scr_seq_0001_008C ; 006
-	scrdef scr_seq_0001_009D ; 007
-	scrdef scr_seq_0001_00AE ; 008
+	scrdef scr_seq_0001_000
+	scrdef scr_seq_0001_001
+	scrdef scr_seq_0001_002
+	scrdef scr_seq_0001_003
+	scrdef scr_seq_0001_004
+	scrdef scr_seq_0001_005
+	scrdef scr_seq_0001_006
+	scrdef scr_seq_0001_007
+	scrdef scr_seq_0001_008
 	scrdef_end
 
-scr_seq_0001_0026:
+scr_seq_0001_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 0
+	npc_msg msg_0020_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_0037:
+scr_seq_0001_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 1
+	npc_msg msg_0020_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_0048:
+scr_seq_0001_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 2
+	npc_msg msg_0020_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_0059:
+scr_seq_0001_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 3
+	npc_msg msg_0020_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_006A:
+scr_seq_0001_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 4
+	npc_msg msg_0020_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_007B:
+scr_seq_0001_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 5
+	npc_msg msg_0020_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_008C:
+scr_seq_0001_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 6
+	npc_msg msg_0020_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_009D:
+scr_seq_0001_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 7
+	npc_msg msg_0020_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0001_00AE:
+scr_seq_0001_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	fade_screen 6, 1, 0, 0x00

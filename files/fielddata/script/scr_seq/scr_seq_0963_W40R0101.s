@@ -1,102 +1,102 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_W40R0101.h"
+#include "msgdata/msg/msg_0745_W40R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0963_W40R0101_003E ; 000
-	scrdef scr_seq_0963_W40R0101_000E ; 001
-	scrdef scr_seq_0963_W40R0101_00EC ; 002
+	scrdef scr_seq_W40R0101_000
+	scrdef scr_seq_W40R0101_001
+	scrdef scr_seq_W40R0101_002
 	scrdef_end
 
-scr_seq_0963_W40R0101_000E:
+scr_seq_W40R0101_001:
 	comparevartovalue VAR_UNK_40E5, 1
-	gotoif ge, scr_seq_0963_W40R0101_0036
+	gotoif ge, _0036
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0963_W40R0101_0028
+	gotoif TRUE, _0028
 	end
 
-scr_seq_0963_W40R0101_0028:
+_0028:
 	move_person 0, 3, 0, 3, 0
 	end
 
-scr_seq_0963_W40R0101_0036:
+_0036:
 	setvar VAR_UNK_40E5, 2
 	end
 
-scr_seq_0963_W40R0101_003E:
+scr_seq_W40R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	checkflag FLAG_UNK_0FB
-	gotoif TRUE, scr_seq_0963_W40R0101_00BE
+	gotoif TRUE, _00BE
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0963_W40R0101_00B1
+	gotoif TRUE, _00B1
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0963_W40R0101_0079
-	apply_movement 0, scr_seq_0963_W40R0101_00E4
-	goto scr_seq_0963_W40R0101_009C
+	gotoif ne, _0079
+	apply_movement obj_W40R0101_gsmiddleman1, _00E4
+	goto _009C
 
-scr_seq_0963_W40R0101_0079:
+_0079:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0963_W40R0101_0094
-	apply_movement 0, scr_seq_0963_W40R0101_00DC
-	goto scr_seq_0963_W40R0101_009C
+	gotoif ne, _0094
+	apply_movement obj_W40R0101_gsmiddleman1, _00DC
+	goto _009C
 
-scr_seq_0963_W40R0101_0094:
-	apply_movement 0, scr_seq_0963_W40R0101_00D4
-scr_seq_0963_W40R0101_009C:
+_0094:
+	apply_movement obj_W40R0101_gsmiddleman1, _00D4
+_009C:
 	wait_movement
-	npc_msg 0
+	npc_msg msg_0745_W40R0101_00000
 	closemsg
-	apply_movement 0, scr_seq_0963_W40R0101_00CC
+	apply_movement obj_W40R0101_gsmiddleman1, _00CC
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0963_W40R0101_00B1:
-	npc_msg 1
+_00B1:
+	npc_msg msg_0745_W40R0101_00001
 	closemsg
 	releaseall
 	setflag FLAG_UNK_0FB
 	end
 
-scr_seq_0963_W40R0101_00BE:
-	npc_msg 2
+_00BE:
+	npc_msg msg_0745_W40R0101_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0963_W40R0101_00C9:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0963_W40R0101_00CC:
+_00CC:
 	step 32, 1
 	step_end
 
-scr_seq_0963_W40R0101_00D4:
+_00D4:
 	step 33, 1
 	step_end
 
-scr_seq_0963_W40R0101_00DC:
+_00DC:
 	step 35, 1
 	step_end
 
-scr_seq_0963_W40R0101_00E4:
+_00E4:
 	step 34, 1
 	step_end
-scr_seq_0963_W40R0101_00EC:
+scr_seq_W40R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0963_W40R0101_0108
-	npc_msg 3
-	goto scr_seq_0963_W40R0101_010B
+	gotoif TRUE, _0108
+	npc_msg msg_0745_W40R0101_00003
+	goto _010B
 
-scr_seq_0963_W40R0101_0108:
-	npc_msg 4
-scr_seq_0963_W40R0101_010B:
+_0108:
+	npc_msg msg_0745_W40R0101_00004
+_010B:
 	waitbutton
 	closemsg
 	releaseall

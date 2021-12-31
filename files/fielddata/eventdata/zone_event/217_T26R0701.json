@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T26R0701.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T26R0701_fishing_2",
       "ovid": "SPRITE_FISHING_2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T26R0701_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T26R0701_seaman_2",
       "ovid": "SPRITE_SEAMAN_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T26R0701_001",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -35,12 +36,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T26R0701_seaman_2_2",
       "ovid": "SPRITE_SEAMAN_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T26R0701_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -52,12 +53,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T26R0701_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T26R0701_004",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -69,12 +70,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T26R0701_gsleader6",
       "ovid": "SPRITE_GSLEADER6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2CB",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T26R0701_006",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -86,7 +87,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T26R0701_seaman_2_3",
       "ovid": "SPRITE_SEAMAN_2",
       "mvt": 0,
       "type": 0,

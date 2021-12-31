@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_T25R0501.h",
   "bgs": [
     {
       "scr": 8,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T25R0501_policeman",
       "ovid": "SPRITE_POLICEMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T25R0501_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -53,7 +54,7 @@
   ],
   "coords": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_T25R0501_005",
       "x": 4,
       "y": 3,
       "w": 2,
@@ -63,7 +64,7 @@
       "var": "VAR_TEMP_x400A"
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T25R0501_003",
       "x": 4,
       "y": 9,
       "w": 2,
@@ -73,7 +74,7 @@
       "var": "VAR_TEMP_x400A"
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T25R0501_003",
       "x": 6,
       "y": 11,
       "w": 3,
@@ -83,7 +84,7 @@
       "var": "VAR_TEMP_x400A"
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25R0501_004",
       "x": 6,
       "y": 4,
       "w": 1,
@@ -93,7 +94,7 @@
       "var": "VAR_TEMP_x400A"
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_T25R0501_002",
       "x": 6,
       "y": 6,
       "w": 1,
@@ -103,7 +104,7 @@
       "var": "VAR_UNK_410B"
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25R0501_004",
       "x": 6,
       "y": 7,
       "w": 1,

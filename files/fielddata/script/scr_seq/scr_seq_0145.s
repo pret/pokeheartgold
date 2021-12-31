@@ -1,406 +1,639 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0145.h"
+#include "msgdata/msg/msg_0210.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0145_0402 ; 000
-	scrdef scr_seq_0145_0402 ; 001
-	scrdef scr_seq_0145_0402 ; 002
-	scrdef scr_seq_0145_0402 ; 003
-	scrdef scr_seq_0145_0402 ; 004
-	scrdef scr_seq_0145_0402 ; 005
-	scrdef scr_seq_0145_0402 ; 006
-	scrdef scr_seq_0145_0402 ; 007
-	scrdef scr_seq_0145_0402 ; 008
-	scrdef scr_seq_0145_0402 ; 009
-	scrdef scr_seq_0145_0402 ; 010
-	scrdef scr_seq_0145_0402 ; 011
-	scrdef scr_seq_0145_0402 ; 012
-	scrdef scr_seq_0145_0402 ; 013
-	scrdef scr_seq_0145_0402 ; 014
-	scrdef scr_seq_0145_0402 ; 015
-	scrdef scr_seq_0145_0402 ; 016
-	scrdef scr_seq_0145_0402 ; 017
-	scrdef scr_seq_0145_0402 ; 018
-	scrdef scr_seq_0145_0402 ; 019
-	scrdef scr_seq_0145_0402 ; 020
-	scrdef scr_seq_0145_0402 ; 021
-	scrdef scr_seq_0145_0402 ; 022
-	scrdef scr_seq_0145_0402 ; 023
-	scrdef scr_seq_0145_0402 ; 024
-	scrdef scr_seq_0145_0402 ; 025
-	scrdef scr_seq_0145_0402 ; 026
-	scrdef scr_seq_0145_0402 ; 027
-	scrdef scr_seq_0145_0402 ; 028
-	scrdef scr_seq_0145_0402 ; 029
-	scrdef scr_seq_0145_0402 ; 030
-	scrdef scr_seq_0145_0402 ; 031
-	scrdef scr_seq_0145_0402 ; 032
-	scrdef scr_seq_0145_0402 ; 033
-	scrdef scr_seq_0145_0402 ; 034
-	scrdef scr_seq_0145_0402 ; 035
-	scrdef scr_seq_0145_0402 ; 036
-	scrdef scr_seq_0145_0402 ; 037
-	scrdef scr_seq_0145_0402 ; 038
-	scrdef scr_seq_0145_0402 ; 039
-	scrdef scr_seq_0145_0402 ; 040
-	scrdef scr_seq_0145_0402 ; 041
-	scrdef scr_seq_0145_0402 ; 042
-	scrdef scr_seq_0145_0402 ; 043
-	scrdef scr_seq_0145_0402 ; 044
-	scrdef scr_seq_0145_0402 ; 045
-	scrdef scr_seq_0145_0402 ; 046
-	scrdef scr_seq_0145_0402 ; 047
-	scrdef scr_seq_0145_0402 ; 048
-	scrdef scr_seq_0145_0402 ; 049
-	scrdef scr_seq_0145_0402 ; 050
-	scrdef scr_seq_0145_0402 ; 051
-	scrdef scr_seq_0145_0402 ; 052
-	scrdef scr_seq_0145_0402 ; 053
-	scrdef scr_seq_0145_0402 ; 054
-	scrdef scr_seq_0145_0402 ; 055
-	scrdef scr_seq_0145_0402 ; 056
-	scrdef scr_seq_0145_0402 ; 057
-	scrdef scr_seq_0145_0402 ; 058
-	scrdef scr_seq_0145_0402 ; 059
-	scrdef scr_seq_0145_0402 ; 060
-	scrdef scr_seq_0145_0402 ; 061
-	scrdef scr_seq_0145_0402 ; 062
-	scrdef scr_seq_0145_0402 ; 063
-	scrdef scr_seq_0145_0402 ; 064
-	scrdef scr_seq_0145_0402 ; 065
-	scrdef scr_seq_0145_0402 ; 066
-	scrdef scr_seq_0145_0402 ; 067
-	scrdef scr_seq_0145_0402 ; 068
-	scrdef scr_seq_0145_0402 ; 069
-	scrdef scr_seq_0145_0402 ; 070
-	scrdef scr_seq_0145_0402 ; 071
-	scrdef scr_seq_0145_0402 ; 072
-	scrdef scr_seq_0145_0402 ; 073
-	scrdef scr_seq_0145_0402 ; 074
-	scrdef scr_seq_0145_0402 ; 075
-	scrdef scr_seq_0145_0402 ; 076
-	scrdef scr_seq_0145_0402 ; 077
-	scrdef scr_seq_0145_0402 ; 078
-	scrdef scr_seq_0145_0402 ; 079
-	scrdef scr_seq_0145_0402 ; 080
-	scrdef scr_seq_0145_0402 ; 081
-	scrdef scr_seq_0145_0402 ; 082
-	scrdef scr_seq_0145_0402 ; 083
-	scrdef scr_seq_0145_0402 ; 084
-	scrdef scr_seq_0145_0402 ; 085
-	scrdef scr_seq_0145_0402 ; 086
-	scrdef scr_seq_0145_0402 ; 087
-	scrdef scr_seq_0145_0402 ; 088
-	scrdef scr_seq_0145_0402 ; 089
-	scrdef scr_seq_0145_0402 ; 090
-	scrdef scr_seq_0145_0402 ; 091
-	scrdef scr_seq_0145_0402 ; 092
-	scrdef scr_seq_0145_0402 ; 093
-	scrdef scr_seq_0145_0402 ; 094
-	scrdef scr_seq_0145_0402 ; 095
-	scrdef scr_seq_0145_0402 ; 096
-	scrdef scr_seq_0145_0402 ; 097
-	scrdef scr_seq_0145_0402 ; 098
-	scrdef scr_seq_0145_0402 ; 099
-	scrdef scr_seq_0145_0402 ; 100
-	scrdef scr_seq_0145_0402 ; 101
-	scrdef scr_seq_0145_0402 ; 102
-	scrdef scr_seq_0145_0402 ; 103
-	scrdef scr_seq_0145_0402 ; 104
-	scrdef scr_seq_0145_0402 ; 105
-	scrdef scr_seq_0145_0402 ; 106
-	scrdef scr_seq_0145_0402 ; 107
-	scrdef scr_seq_0145_0402 ; 108
-	scrdef scr_seq_0145_0402 ; 109
-	scrdef scr_seq_0145_0402 ; 110
-	scrdef scr_seq_0145_0402 ; 111
-	scrdef scr_seq_0145_0402 ; 112
-	scrdef scr_seq_0145_0402 ; 113
-	scrdef scr_seq_0145_0402 ; 114
-	scrdef scr_seq_0145_0402 ; 115
-	scrdef scr_seq_0145_0402 ; 116
-	scrdef scr_seq_0145_0402 ; 117
-	scrdef scr_seq_0145_0402 ; 118
-	scrdef scr_seq_0145_0402 ; 119
-	scrdef scr_seq_0145_0402 ; 120
-	scrdef scr_seq_0145_0402 ; 121
-	scrdef scr_seq_0145_0402 ; 122
-	scrdef scr_seq_0145_0402 ; 123
-	scrdef scr_seq_0145_0402 ; 124
-	scrdef scr_seq_0145_0402 ; 125
-	scrdef scr_seq_0145_0402 ; 126
-	scrdef scr_seq_0145_0402 ; 127
-	scrdef scr_seq_0145_0402 ; 128
-	scrdef scr_seq_0145_0402 ; 129
-	scrdef scr_seq_0145_0402 ; 130
-	scrdef scr_seq_0145_0402 ; 131
-	scrdef scr_seq_0145_0402 ; 132
-	scrdef scr_seq_0145_0402 ; 133
-	scrdef scr_seq_0145_0402 ; 134
-	scrdef scr_seq_0145_0402 ; 135
-	scrdef scr_seq_0145_0402 ; 136
-	scrdef scr_seq_0145_0402 ; 137
-	scrdef scr_seq_0145_0402 ; 138
-	scrdef scr_seq_0145_0402 ; 139
-	scrdef scr_seq_0145_0402 ; 140
-	scrdef scr_seq_0145_0402 ; 141
-	scrdef scr_seq_0145_0402 ; 142
-	scrdef scr_seq_0145_0402 ; 143
-	scrdef scr_seq_0145_0402 ; 144
-	scrdef scr_seq_0145_0402 ; 145
-	scrdef scr_seq_0145_0402 ; 146
-	scrdef scr_seq_0145_0402 ; 147
-	scrdef scr_seq_0145_0402 ; 148
-	scrdef scr_seq_0145_0402 ; 149
-	scrdef scr_seq_0145_0402 ; 150
-	scrdef scr_seq_0145_0402 ; 151
-	scrdef scr_seq_0145_0402 ; 152
-	scrdef scr_seq_0145_0402 ; 153
-	scrdef scr_seq_0145_0402 ; 154
-	scrdef scr_seq_0145_0402 ; 155
-	scrdef scr_seq_0145_0402 ; 156
-	scrdef scr_seq_0145_0402 ; 157
-	scrdef scr_seq_0145_0402 ; 158
-	scrdef scr_seq_0145_0402 ; 159
-	scrdef scr_seq_0145_0402 ; 160
-	scrdef scr_seq_0145_0402 ; 161
-	scrdef scr_seq_0145_0402 ; 162
-	scrdef scr_seq_0145_0402 ; 163
-	scrdef scr_seq_0145_0402 ; 164
-	scrdef scr_seq_0145_0402 ; 165
-	scrdef scr_seq_0145_0402 ; 166
-	scrdef scr_seq_0145_0402 ; 167
-	scrdef scr_seq_0145_0402 ; 168
-	scrdef scr_seq_0145_0402 ; 169
-	scrdef scr_seq_0145_0402 ; 170
-	scrdef scr_seq_0145_0402 ; 171
-	scrdef scr_seq_0145_0402 ; 172
-	scrdef scr_seq_0145_0402 ; 173
-	scrdef scr_seq_0145_0402 ; 174
-	scrdef scr_seq_0145_0402 ; 175
-	scrdef scr_seq_0145_0402 ; 176
-	scrdef scr_seq_0145_0402 ; 177
-	scrdef scr_seq_0145_0402 ; 178
-	scrdef scr_seq_0145_0402 ; 179
-	scrdef scr_seq_0145_0402 ; 180
-	scrdef scr_seq_0145_0402 ; 181
-	scrdef scr_seq_0145_0402 ; 182
-	scrdef scr_seq_0145_0402 ; 183
-	scrdef scr_seq_0145_0402 ; 184
-	scrdef scr_seq_0145_0402 ; 185
-	scrdef scr_seq_0145_0402 ; 186
-	scrdef scr_seq_0145_0402 ; 187
-	scrdef scr_seq_0145_0402 ; 188
-	scrdef scr_seq_0145_0402 ; 189
-	scrdef scr_seq_0145_0402 ; 190
-	scrdef scr_seq_0145_0402 ; 191
-	scrdef scr_seq_0145_0402 ; 192
-	scrdef scr_seq_0145_0402 ; 193
-	scrdef scr_seq_0145_0402 ; 194
-	scrdef scr_seq_0145_0402 ; 195
-	scrdef scr_seq_0145_0402 ; 196
-	scrdef scr_seq_0145_0402 ; 197
-	scrdef scr_seq_0145_0402 ; 198
-	scrdef scr_seq_0145_0402 ; 199
-	scrdef scr_seq_0145_0402 ; 200
-	scrdef scr_seq_0145_0402 ; 201
-	scrdef scr_seq_0145_0402 ; 202
-	scrdef scr_seq_0145_0402 ; 203
-	scrdef scr_seq_0145_0402 ; 204
-	scrdef scr_seq_0145_0402 ; 205
-	scrdef scr_seq_0145_0402 ; 206
-	scrdef scr_seq_0145_0402 ; 207
-	scrdef scr_seq_0145_0402 ; 208
-	scrdef scr_seq_0145_0402 ; 209
-	scrdef scr_seq_0145_0402 ; 210
-	scrdef scr_seq_0145_0402 ; 211
-	scrdef scr_seq_0145_0402 ; 212
-	scrdef scr_seq_0145_0402 ; 213
-	scrdef scr_seq_0145_0402 ; 214
-	scrdef scr_seq_0145_0402 ; 215
-	scrdef scr_seq_0145_0402 ; 216
-	scrdef scr_seq_0145_0402 ; 217
-	scrdef scr_seq_0145_0402 ; 218
-	scrdef scr_seq_0145_0402 ; 219
-	scrdef scr_seq_0145_0402 ; 220
-	scrdef scr_seq_0145_0402 ; 221
-	scrdef scr_seq_0145_0402 ; 222
-	scrdef scr_seq_0145_0402 ; 223
-	scrdef scr_seq_0145_0402 ; 224
-	scrdef scr_seq_0145_0402 ; 225
-	scrdef scr_seq_0145_0402 ; 226
-	scrdef scr_seq_0145_0402 ; 227
-	scrdef scr_seq_0145_0402 ; 228
-	scrdef scr_seq_0145_0402 ; 229
-	scrdef scr_seq_0145_0402 ; 230
-	scrdef scr_seq_0145_0402 ; 231
-	scrdef scr_seq_0145_0402 ; 232
-	scrdef scr_seq_0145_0402 ; 233
-	scrdef scr_seq_0145_0402 ; 234
-	scrdef scr_seq_0145_0402 ; 235
-	scrdef scr_seq_0145_0402 ; 236
-	scrdef scr_seq_0145_0402 ; 237
-	scrdef scr_seq_0145_0402 ; 238
-	scrdef scr_seq_0145_0402 ; 239
-	scrdef scr_seq_0145_0402 ; 240
-	scrdef scr_seq_0145_0402 ; 241
-	scrdef scr_seq_0145_0402 ; 242
-	scrdef scr_seq_0145_0402 ; 243
-	scrdef scr_seq_0145_0402 ; 244
-	scrdef scr_seq_0145_0402 ; 245
-	scrdef scr_seq_0145_0402 ; 246
-	scrdef scr_seq_0145_0402 ; 247
-	scrdef scr_seq_0145_0402 ; 248
-	scrdef scr_seq_0145_0402 ; 249
-	scrdef scr_seq_0145_0402 ; 250
-	scrdef scr_seq_0145_0402 ; 251
-	scrdef scr_seq_0145_0402 ; 252
-	scrdef scr_seq_0145_0402 ; 253
-	scrdef scr_seq_0145_0402 ; 254
-	scrdef scr_seq_0145_0402 ; 255
+	scrdef scr_seq_0145_000
+	scrdef scr_seq_0145_001
+	scrdef scr_seq_0145_002
+	scrdef scr_seq_0145_003
+	scrdef scr_seq_0145_004
+	scrdef scr_seq_0145_005
+	scrdef scr_seq_0145_006
+	scrdef scr_seq_0145_007
+	scrdef scr_seq_0145_008
+	scrdef scr_seq_0145_009
+	scrdef scr_seq_0145_010
+	scrdef scr_seq_0145_011
+	scrdef scr_seq_0145_012
+	scrdef scr_seq_0145_013
+	scrdef scr_seq_0145_014
+	scrdef scr_seq_0145_015
+	scrdef scr_seq_0145_016
+	scrdef scr_seq_0145_017
+	scrdef scr_seq_0145_018
+	scrdef scr_seq_0145_019
+	scrdef scr_seq_0145_020
+	scrdef scr_seq_0145_021
+	scrdef scr_seq_0145_022
+	scrdef scr_seq_0145_023
+	scrdef scr_seq_0145_024
+	scrdef scr_seq_0145_025
+	scrdef scr_seq_0145_026
+	scrdef scr_seq_0145_027
+	scrdef scr_seq_0145_028
+	scrdef scr_seq_0145_029
+	scrdef scr_seq_0145_030
+	scrdef scr_seq_0145_031
+	scrdef scr_seq_0145_032
+	scrdef scr_seq_0145_033
+	scrdef scr_seq_0145_034
+	scrdef scr_seq_0145_035
+	scrdef scr_seq_0145_036
+	scrdef scr_seq_0145_037
+	scrdef scr_seq_0145_038
+	scrdef scr_seq_0145_039
+	scrdef scr_seq_0145_040
+	scrdef scr_seq_0145_041
+	scrdef scr_seq_0145_042
+	scrdef scr_seq_0145_043
+	scrdef scr_seq_0145_044
+	scrdef scr_seq_0145_045
+	scrdef scr_seq_0145_046
+	scrdef scr_seq_0145_047
+	scrdef scr_seq_0145_048
+	scrdef scr_seq_0145_049
+	scrdef scr_seq_0145_050
+	scrdef scr_seq_0145_051
+	scrdef scr_seq_0145_052
+	scrdef scr_seq_0145_053
+	scrdef scr_seq_0145_054
+	scrdef scr_seq_0145_055
+	scrdef scr_seq_0145_056
+	scrdef scr_seq_0145_057
+	scrdef scr_seq_0145_058
+	scrdef scr_seq_0145_059
+	scrdef scr_seq_0145_060
+	scrdef scr_seq_0145_061
+	scrdef scr_seq_0145_062
+	scrdef scr_seq_0145_063
+	scrdef scr_seq_0145_064
+	scrdef scr_seq_0145_065
+	scrdef scr_seq_0145_066
+	scrdef scr_seq_0145_067
+	scrdef scr_seq_0145_068
+	scrdef scr_seq_0145_069
+	scrdef scr_seq_0145_070
+	scrdef scr_seq_0145_071
+	scrdef scr_seq_0145_072
+	scrdef scr_seq_0145_073
+	scrdef scr_seq_0145_074
+	scrdef scr_seq_0145_075
+	scrdef scr_seq_0145_076
+	scrdef scr_seq_0145_077
+	scrdef scr_seq_0145_078
+	scrdef scr_seq_0145_079
+	scrdef scr_seq_0145_080
+	scrdef scr_seq_0145_081
+	scrdef scr_seq_0145_082
+	scrdef scr_seq_0145_083
+	scrdef scr_seq_0145_084
+	scrdef scr_seq_0145_085
+	scrdef scr_seq_0145_086
+	scrdef scr_seq_0145_087
+	scrdef scr_seq_0145_088
+	scrdef scr_seq_0145_089
+	scrdef scr_seq_0145_090
+	scrdef scr_seq_0145_091
+	scrdef scr_seq_0145_092
+	scrdef scr_seq_0145_093
+	scrdef scr_seq_0145_094
+	scrdef scr_seq_0145_095
+	scrdef scr_seq_0145_096
+	scrdef scr_seq_0145_097
+	scrdef scr_seq_0145_098
+	scrdef scr_seq_0145_099
+	scrdef scr_seq_0145_100
+	scrdef scr_seq_0145_101
+	scrdef scr_seq_0145_102
+	scrdef scr_seq_0145_103
+	scrdef scr_seq_0145_104
+	scrdef scr_seq_0145_105
+	scrdef scr_seq_0145_106
+	scrdef scr_seq_0145_107
+	scrdef scr_seq_0145_108
+	scrdef scr_seq_0145_109
+	scrdef scr_seq_0145_110
+	scrdef scr_seq_0145_111
+	scrdef scr_seq_0145_112
+	scrdef scr_seq_0145_113
+	scrdef scr_seq_0145_114
+	scrdef scr_seq_0145_115
+	scrdef scr_seq_0145_116
+	scrdef scr_seq_0145_117
+	scrdef scr_seq_0145_118
+	scrdef scr_seq_0145_119
+	scrdef scr_seq_0145_120
+	scrdef scr_seq_0145_121
+	scrdef scr_seq_0145_122
+	scrdef scr_seq_0145_123
+	scrdef scr_seq_0145_124
+	scrdef scr_seq_0145_125
+	scrdef scr_seq_0145_126
+	scrdef scr_seq_0145_127
+	scrdef scr_seq_0145_128
+	scrdef scr_seq_0145_129
+	scrdef scr_seq_0145_130
+	scrdef scr_seq_0145_131
+	scrdef scr_seq_0145_132
+	scrdef scr_seq_0145_133
+	scrdef scr_seq_0145_134
+	scrdef scr_seq_0145_135
+	scrdef scr_seq_0145_136
+	scrdef scr_seq_0145_137
+	scrdef scr_seq_0145_138
+	scrdef scr_seq_0145_139
+	scrdef scr_seq_0145_140
+	scrdef scr_seq_0145_141
+	scrdef scr_seq_0145_142
+	scrdef scr_seq_0145_143
+	scrdef scr_seq_0145_144
+	scrdef scr_seq_0145_145
+	scrdef scr_seq_0145_146
+	scrdef scr_seq_0145_147
+	scrdef scr_seq_0145_148
+	scrdef scr_seq_0145_149
+	scrdef scr_seq_0145_150
+	scrdef scr_seq_0145_151
+	scrdef scr_seq_0145_152
+	scrdef scr_seq_0145_153
+	scrdef scr_seq_0145_154
+	scrdef scr_seq_0145_155
+	scrdef scr_seq_0145_156
+	scrdef scr_seq_0145_157
+	scrdef scr_seq_0145_158
+	scrdef scr_seq_0145_159
+	scrdef scr_seq_0145_160
+	scrdef scr_seq_0145_161
+	scrdef scr_seq_0145_162
+	scrdef scr_seq_0145_163
+	scrdef scr_seq_0145_164
+	scrdef scr_seq_0145_165
+	scrdef scr_seq_0145_166
+	scrdef scr_seq_0145_167
+	scrdef scr_seq_0145_168
+	scrdef scr_seq_0145_169
+	scrdef scr_seq_0145_170
+	scrdef scr_seq_0145_171
+	scrdef scr_seq_0145_172
+	scrdef scr_seq_0145_173
+	scrdef scr_seq_0145_174
+	scrdef scr_seq_0145_175
+	scrdef scr_seq_0145_176
+	scrdef scr_seq_0145_177
+	scrdef scr_seq_0145_178
+	scrdef scr_seq_0145_179
+	scrdef scr_seq_0145_180
+	scrdef scr_seq_0145_181
+	scrdef scr_seq_0145_182
+	scrdef scr_seq_0145_183
+	scrdef scr_seq_0145_184
+	scrdef scr_seq_0145_185
+	scrdef scr_seq_0145_186
+	scrdef scr_seq_0145_187
+	scrdef scr_seq_0145_188
+	scrdef scr_seq_0145_189
+	scrdef scr_seq_0145_190
+	scrdef scr_seq_0145_191
+	scrdef scr_seq_0145_192
+	scrdef scr_seq_0145_193
+	scrdef scr_seq_0145_194
+	scrdef scr_seq_0145_195
+	scrdef scr_seq_0145_196
+	scrdef scr_seq_0145_197
+	scrdef scr_seq_0145_198
+	scrdef scr_seq_0145_199
+	scrdef scr_seq_0145_200
+	scrdef scr_seq_0145_201
+	scrdef scr_seq_0145_202
+	scrdef scr_seq_0145_203
+	scrdef scr_seq_0145_204
+	scrdef scr_seq_0145_205
+	scrdef scr_seq_0145_206
+	scrdef scr_seq_0145_207
+	scrdef scr_seq_0145_208
+	scrdef scr_seq_0145_209
+	scrdef scr_seq_0145_210
+	scrdef scr_seq_0145_211
+	scrdef scr_seq_0145_212
+	scrdef scr_seq_0145_213
+	scrdef scr_seq_0145_214
+	scrdef scr_seq_0145_215
+	scrdef scr_seq_0145_216
+	scrdef scr_seq_0145_217
+	scrdef scr_seq_0145_218
+	scrdef scr_seq_0145_219
+	scrdef scr_seq_0145_220
+	scrdef scr_seq_0145_221
+	scrdef scr_seq_0145_222
+	scrdef scr_seq_0145_223
+	scrdef scr_seq_0145_224
+	scrdef scr_seq_0145_225
+	scrdef scr_seq_0145_226
+	scrdef scr_seq_0145_227
+	scrdef scr_seq_0145_228
+	scrdef scr_seq_0145_229
+	scrdef scr_seq_0145_230
+	scrdef scr_seq_0145_231
+	scrdef scr_seq_0145_232
+	scrdef scr_seq_0145_233
+	scrdef scr_seq_0145_234
+	scrdef scr_seq_0145_235
+	scrdef scr_seq_0145_236
+	scrdef scr_seq_0145_237
+	scrdef scr_seq_0145_238
+	scrdef scr_seq_0145_239
+	scrdef scr_seq_0145_240
+	scrdef scr_seq_0145_241
+	scrdef scr_seq_0145_242
+	scrdef scr_seq_0145_243
+	scrdef scr_seq_0145_244
+	scrdef scr_seq_0145_245
+	scrdef scr_seq_0145_246
+	scrdef scr_seq_0145_247
+	scrdef scr_seq_0145_248
+	scrdef scr_seq_0145_249
+	scrdef scr_seq_0145_250
+	scrdef scr_seq_0145_251
+	scrdef scr_seq_0145_252
+	scrdef scr_seq_0145_253
+	scrdef scr_seq_0145_254
+	scrdef scr_seq_0145_255
 	scrdef_end
 
-scr_seq_0145_0402:
+scr_seq_0145_000:
+scr_seq_0145_001:
+scr_seq_0145_002:
+scr_seq_0145_003:
+scr_seq_0145_004:
+scr_seq_0145_005:
+scr_seq_0145_006:
+scr_seq_0145_007:
+scr_seq_0145_008:
+scr_seq_0145_009:
+scr_seq_0145_010:
+scr_seq_0145_011:
+scr_seq_0145_012:
+scr_seq_0145_013:
+scr_seq_0145_014:
+scr_seq_0145_015:
+scr_seq_0145_016:
+scr_seq_0145_017:
+scr_seq_0145_018:
+scr_seq_0145_019:
+scr_seq_0145_020:
+scr_seq_0145_021:
+scr_seq_0145_022:
+scr_seq_0145_023:
+scr_seq_0145_024:
+scr_seq_0145_025:
+scr_seq_0145_026:
+scr_seq_0145_027:
+scr_seq_0145_028:
+scr_seq_0145_029:
+scr_seq_0145_030:
+scr_seq_0145_031:
+scr_seq_0145_032:
+scr_seq_0145_033:
+scr_seq_0145_034:
+scr_seq_0145_035:
+scr_seq_0145_036:
+scr_seq_0145_037:
+scr_seq_0145_038:
+scr_seq_0145_039:
+scr_seq_0145_040:
+scr_seq_0145_041:
+scr_seq_0145_042:
+scr_seq_0145_043:
+scr_seq_0145_044:
+scr_seq_0145_045:
+scr_seq_0145_046:
+scr_seq_0145_047:
+scr_seq_0145_048:
+scr_seq_0145_049:
+scr_seq_0145_050:
+scr_seq_0145_051:
+scr_seq_0145_052:
+scr_seq_0145_053:
+scr_seq_0145_054:
+scr_seq_0145_055:
+scr_seq_0145_056:
+scr_seq_0145_057:
+scr_seq_0145_058:
+scr_seq_0145_059:
+scr_seq_0145_060:
+scr_seq_0145_061:
+scr_seq_0145_062:
+scr_seq_0145_063:
+scr_seq_0145_064:
+scr_seq_0145_065:
+scr_seq_0145_066:
+scr_seq_0145_067:
+scr_seq_0145_068:
+scr_seq_0145_069:
+scr_seq_0145_070:
+scr_seq_0145_071:
+scr_seq_0145_072:
+scr_seq_0145_073:
+scr_seq_0145_074:
+scr_seq_0145_075:
+scr_seq_0145_076:
+scr_seq_0145_077:
+scr_seq_0145_078:
+scr_seq_0145_079:
+scr_seq_0145_080:
+scr_seq_0145_081:
+scr_seq_0145_082:
+scr_seq_0145_083:
+scr_seq_0145_084:
+scr_seq_0145_085:
+scr_seq_0145_086:
+scr_seq_0145_087:
+scr_seq_0145_088:
+scr_seq_0145_089:
+scr_seq_0145_090:
+scr_seq_0145_091:
+scr_seq_0145_092:
+scr_seq_0145_093:
+scr_seq_0145_094:
+scr_seq_0145_095:
+scr_seq_0145_096:
+scr_seq_0145_097:
+scr_seq_0145_098:
+scr_seq_0145_099:
+scr_seq_0145_100:
+scr_seq_0145_101:
+scr_seq_0145_102:
+scr_seq_0145_103:
+scr_seq_0145_104:
+scr_seq_0145_105:
+scr_seq_0145_106:
+scr_seq_0145_107:
+scr_seq_0145_108:
+scr_seq_0145_109:
+scr_seq_0145_110:
+scr_seq_0145_111:
+scr_seq_0145_112:
+scr_seq_0145_113:
+scr_seq_0145_114:
+scr_seq_0145_115:
+scr_seq_0145_116:
+scr_seq_0145_117:
+scr_seq_0145_118:
+scr_seq_0145_119:
+scr_seq_0145_120:
+scr_seq_0145_121:
+scr_seq_0145_122:
+scr_seq_0145_123:
+scr_seq_0145_124:
+scr_seq_0145_125:
+scr_seq_0145_126:
+scr_seq_0145_127:
+scr_seq_0145_128:
+scr_seq_0145_129:
+scr_seq_0145_130:
+scr_seq_0145_131:
+scr_seq_0145_132:
+scr_seq_0145_133:
+scr_seq_0145_134:
+scr_seq_0145_135:
+scr_seq_0145_136:
+scr_seq_0145_137:
+scr_seq_0145_138:
+scr_seq_0145_139:
+scr_seq_0145_140:
+scr_seq_0145_141:
+scr_seq_0145_142:
+scr_seq_0145_143:
+scr_seq_0145_144:
+scr_seq_0145_145:
+scr_seq_0145_146:
+scr_seq_0145_147:
+scr_seq_0145_148:
+scr_seq_0145_149:
+scr_seq_0145_150:
+scr_seq_0145_151:
+scr_seq_0145_152:
+scr_seq_0145_153:
+scr_seq_0145_154:
+scr_seq_0145_155:
+scr_seq_0145_156:
+scr_seq_0145_157:
+scr_seq_0145_158:
+scr_seq_0145_159:
+scr_seq_0145_160:
+scr_seq_0145_161:
+scr_seq_0145_162:
+scr_seq_0145_163:
+scr_seq_0145_164:
+scr_seq_0145_165:
+scr_seq_0145_166:
+scr_seq_0145_167:
+scr_seq_0145_168:
+scr_seq_0145_169:
+scr_seq_0145_170:
+scr_seq_0145_171:
+scr_seq_0145_172:
+scr_seq_0145_173:
+scr_seq_0145_174:
+scr_seq_0145_175:
+scr_seq_0145_176:
+scr_seq_0145_177:
+scr_seq_0145_178:
+scr_seq_0145_179:
+scr_seq_0145_180:
+scr_seq_0145_181:
+scr_seq_0145_182:
+scr_seq_0145_183:
+scr_seq_0145_184:
+scr_seq_0145_185:
+scr_seq_0145_186:
+scr_seq_0145_187:
+scr_seq_0145_188:
+scr_seq_0145_189:
+scr_seq_0145_190:
+scr_seq_0145_191:
+scr_seq_0145_192:
+scr_seq_0145_193:
+scr_seq_0145_194:
+scr_seq_0145_195:
+scr_seq_0145_196:
+scr_seq_0145_197:
+scr_seq_0145_198:
+scr_seq_0145_199:
+scr_seq_0145_200:
+scr_seq_0145_201:
+scr_seq_0145_202:
+scr_seq_0145_203:
+scr_seq_0145_204:
+scr_seq_0145_205:
+scr_seq_0145_206:
+scr_seq_0145_207:
+scr_seq_0145_208:
+scr_seq_0145_209:
+scr_seq_0145_210:
+scr_seq_0145_211:
+scr_seq_0145_212:
+scr_seq_0145_213:
+scr_seq_0145_214:
+scr_seq_0145_215:
+scr_seq_0145_216:
+scr_seq_0145_217:
+scr_seq_0145_218:
+scr_seq_0145_219:
+scr_seq_0145_220:
+scr_seq_0145_221:
+scr_seq_0145_222:
+scr_seq_0145_223:
+scr_seq_0145_224:
+scr_seq_0145_225:
+scr_seq_0145_226:
+scr_seq_0145_227:
+scr_seq_0145_228:
+scr_seq_0145_229:
+scr_seq_0145_230:
+scr_seq_0145_231:
+scr_seq_0145_232:
+scr_seq_0145_233:
+scr_seq_0145_234:
+scr_seq_0145_235:
+scr_seq_0145_236:
+scr_seq_0145_237:
+scr_seq_0145_238:
+scr_seq_0145_239:
+scr_seq_0145_240:
+scr_seq_0145_241:
+scr_seq_0145_242:
+scr_seq_0145_243:
+scr_seq_0145_244:
+scr_seq_0145_245:
+scr_seq_0145_246:
+scr_seq_0145_247:
+scr_seq_0145_248:
+scr_seq_0145_249:
+scr_seq_0145_250:
+scr_seq_0145_251:
+scr_seq_0145_252:
+scr_seq_0145_253:
+scr_seq_0145_254:
+scr_seq_0145_255:
 	wait_se SEQ_SE_DP_SELECT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8001
 	copyvar VAR_SPECIAL_x8006, VAR_SPECIAL_x8002
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0145_0440
+	gotoif eq, _0440
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0145_05C8
+	gotoif eq, _05C8
 	end
 
-scr_seq_0145_043C:
+_043C:
 	closemsg
 	end
 
-scr_seq_0145_0440:
+_0440:
 	callstd 2001
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0145_059D
+	gotoif eq, _059D
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0145_05B5
+	gotoif eq, _05B5
 	end
 
-scr_seq_0145_046E:
+_046E:
 	wait_fanfare
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, scr_seq_0145_0501
+	gotoif eq, _0501
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0145_04EE
+	gotoif eq, _04EE
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0145_054D
+	gotoif eq, _054D
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0145_053A
+	gotoif eq, _053A
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0145_0560
+	gotoif eq, _0560
 	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, scr_seq_0145_0573
+	gotoif eq, _0573
 	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, scr_seq_0145_0527
+	gotoif eq, _0527
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0145_0514
+	gotoif eq, _0514
 	end
 
-scr_seq_0145_04EE:
+_04EE:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_04FF:
+	goto _0586
 	.byte 0x02
 	.byte 0x00
-scr_seq_0145_0501:
+_0501:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_0512:
+	goto _0586
 	.byte 0x02, 0x00
-scr_seq_0145_0514:
+_0514:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_0525:
+	goto _0586
 	.byte 0x02, 0x00
-scr_seq_0145_0527:
+_0527:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_0538:
+	goto _0586
 	.byte 0x02, 0x00
-scr_seq_0145_053A:
+_053A:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_054B:
+	goto _0586
 	.byte 0x02, 0x00
-scr_seq_0145_054D:
+_054D:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_055E:
+	goto _0586
 	.byte 0x02, 0x00
-scr_seq_0145_0560:
+_0560:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_0571:
+	goto _0586
 	.byte 0x02, 0x00
-scr_seq_0145_0573:
+_0573:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0145_0586
-
-scr_seq_0145_0584:
+	goto _0586
 	.byte 0x02, 0x00
-scr_seq_0145_0586:
+_0586:
 	setflagvar VAR_SPECIAL_x8006
-	npc_msg 9
+	npc_msg msg_0210_00009
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 1
-	goto scr_seq_0145_043C
-
-scr_seq_0145_059B:
+	goto _043C
 	.byte 0x02, 0x00
-scr_seq_0145_059D:
+_059D:
 	buffer_players_name 0
 	buffer_item_name_indef 1, VAR_SPECIAL_x8004
 	buffer_tmhm_move_name 2, VAR_SPECIAL_x8004
-	npc_msg 6
-	goto scr_seq_0145_046E
-
-scr_seq_0145_05B3:
+	npc_msg msg_0210_00006
+	goto _046E
 	.byte 0x02, 0x00
-scr_seq_0145_05B5:
+_05B5:
 	buffer_players_name 0
 	buffer_item_name_indef 1, VAR_SPECIAL_x8004
-	npc_msg 3
-	goto scr_seq_0145_046E
-
-scr_seq_0145_05C6:
+	npc_msg msg_0210_00003
+	goto _046E
 	.byte 0x02, 0x00
-scr_seq_0145_05C8:
+_05C8:
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg 4
+	npc_msg msg_0210_00004
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0
-	goto scr_seq_0145_043C
-
-scr_seq_0145_05DE:
+	goto _043C
 	.byte 0x02, 0x00
 	.balign 4, 0

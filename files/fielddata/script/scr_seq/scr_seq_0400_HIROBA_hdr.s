@@ -1,12 +1,13 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_HIROBA.h"
 	.rodata
 	.option alignment off
 
 	.byte 1
-	.word scr_seq_0400_HIROBA_hdr_0006-.-4
+	.word scr_seq_HIROBA_map_scripts_2-.-4
 	.byte 0
 
-scr_seq_0400_HIROBA_hdr_0006:
+scr_seq_HIROBA_map_scripts_2:
 	.short VAR_TEMP_x4003, 0, 1
 	.short 0
 

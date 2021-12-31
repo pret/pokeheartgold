@@ -1,87 +1,77 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_P01R0103.h"
+#include "msgdata/msg/msg_0257_P01R0103.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0154_P01R0103_0029 ; 000
-	scrdef scr_seq_0154_P01R0103_000E ; 001
-	scrdef scr_seq_0154_P01R0103_01F8 ; 002
+	scrdef scr_seq_P01R0103_000
+	scrdef scr_seq_P01R0103_001
+	scrdef scr_seq_P01R0103_002
 	scrdef_end
 
-scr_seq_0154_P01R0103_000E:
+scr_seq_P01R0103_001:
 	scrcmd_445 16384
 	comparevartovalue VAR_TEMP_x4000, 387
-	gotoif eq, scr_seq_0154_P01R0103_0021
+	gotoif eq, _0021
 	end
 
-scr_seq_0154_P01R0103_0021:
+_0021:
 	scrcmd_341 0, 1
 	end
 
-scr_seq_0154_P01R0103_0029:
+scr_seq_P01R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, scr_seq_0154_P01R0103_014D
+	gotoif ge, _014D
 	scrcmd_386 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif eq, scr_seq_0154_P01R0103_0158
+	gotoif eq, _0158
 	get_weekday VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0154_P01R0103_006C
-	goto scr_seq_0154_P01R0103_00EF
-
-scr_seq_0154_P01R0103_0066:
+	gotoif ne, _006C
+	goto _00EF
 	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
-scr_seq_0154_P01R0103_006C:
+_006C:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0154_P01R0103_0085
-	goto scr_seq_0154_P01R0103_0142
-
-scr_seq_0154_P01R0103_007F:
+	gotoif ne, _0085
+	goto _0142
 	.byte 0x16
 	.byte 0x00, 0x6a, 0x00, 0x00, 0x00
-scr_seq_0154_P01R0103_0085:
+_0085:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0154_P01R0103_009E
-	goto scr_seq_0154_P01R0103_0142
-
-scr_seq_0154_P01R0103_0098:
+	gotoif ne, _009E
+	goto _0142
 	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
-scr_seq_0154_P01R0103_009E:
+_009E:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0154_P01R0103_00B7
-	goto scr_seq_0154_P01R0103_00EF
-
-scr_seq_0154_P01R0103_00B1:
+	gotoif ne, _00B7
+	goto _00EF
 	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
-scr_seq_0154_P01R0103_00B7:
+_00B7:
 	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif ne, scr_seq_0154_P01R0103_00D0
-	goto scr_seq_0154_P01R0103_0142
-
-scr_seq_0154_P01R0103_00CA:
+	gotoif ne, _00D0
+	goto _0142
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
-scr_seq_0154_P01R0103_00D0:
+_00D0:
 	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif ne, scr_seq_0154_P01R0103_00E9
-	goto scr_seq_0154_P01R0103_0142
-
-scr_seq_0154_P01R0103_00E3:
+	gotoif ne, _00E9
+	goto _0142
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
-scr_seq_0154_P01R0103_00E9:
-	goto scr_seq_0154_P01R0103_0142
+_00E9:
+	goto _0142
 
-scr_seq_0154_P01R0103_00EF:
-	npc_msg 0
+_00EF:
+	npc_msg msg_0257_P01R0103_00000
 	closemsg
-	apply_movement 0, scr_seq_0154_P01R0103_0190
+	apply_movement obj_P01R0103_seaman_2, _0190
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0154_P01R0103_01B0
+	apply_movement obj_player, _01B0
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -96,40 +86,38 @@ scr_seq_0154_P01R0103_00EF:
 	releaseall
 	end
 
-scr_seq_0154_P01R0103_0142:
-	npc_msg 1
+_0142:
+	npc_msg msg_0257_P01R0103_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0154_P01R0103_014D:
-	npc_msg 2
+_014D:
+	npc_msg msg_0257_P01R0103_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0154_P01R0103_0158:
-	apply_movement 0, scr_seq_0154_P01R0103_01B8
+_0158:
+	apply_movement obj_P01R0103_seaman_2, _01B8
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0154_P01R0103_01D8
+	apply_movement obj_player, _01D8
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0154_P01R0103_01E4
+	apply_movement obj_P01R0103_seaman_2, _01E4
 	wait_movement
 	releaseall
 	end
-
-scr_seq_0154_P01R0103_018E:
 	.byte 0x00, 0x00
 
-scr_seq_0154_P01R0103_0190:
+_0190:
 	step 71, 1
 	step 13, 1
 	step 72, 1
@@ -139,11 +127,11 @@ scr_seq_0154_P01R0103_0190:
 	step 72, 1
 	step_end
 
-scr_seq_0154_P01R0103_01B0:
+_01B0:
 	step 13, 2
 	step_end
 
-scr_seq_0154_P01R0103_01B8:
+_01B8:
 	step 71, 1
 	step 12, 1
 	step 72, 1
@@ -153,22 +141,22 @@ scr_seq_0154_P01R0103_01B8:
 	step 72, 1
 	step_end
 
-scr_seq_0154_P01R0103_01D8:
+_01D8:
 	step 63, 1
 	step 12, 4
 	step_end
 
-scr_seq_0154_P01R0103_01E4:
+_01E4:
 	step 14, 1
 	step 1, 2
 	step 13, 1
 	step 32, 1
 	step_end
-scr_seq_0154_P01R0103_01F8:
+scr_seq_P01R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0257_P01R0103_00003
 	waitbutton
 	closemsg
 	releaseall

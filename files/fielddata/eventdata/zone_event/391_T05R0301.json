@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T05R0301.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T05R0301_middlewoman1_2",
       "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 17,
       "type": 0,

@@ -1,20 +1,22 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T10R0601.h"
+#include "msgdata/msg/msg_0527_T10R0601.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0824_T10R0601_005C ; 000
-	scrdef scr_seq_0824_T10R0601_000E ; 001
-	scrdef scr_seq_0824_T10R0601_0050 ; 002
+	scrdef scr_seq_T10R0601_000
+	scrdef scr_seq_T10R0601_001
+	scrdef scr_seq_T10R0601_002
 	scrdef_end
 
-scr_seq_0824_T10R0601_000E:
+scr_seq_T10R0601_001:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0824_T10R0601_0048
+	apply_movement obj_player, _0048
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -25,19 +27,17 @@ scr_seq_0824_T10R0601_000E:
 	setvar VAR_UNK_40C8, 1
 	releaseall
 	end
-
-scr_seq_0824_T10R0601_0046:
 	.byte 0x00, 0x00
 
-scr_seq_0824_T10R0601_0048:
+_0048:
 	step 12, 6
 	step_end
-scr_seq_0824_T10R0601_0050:
+scr_seq_T10R0601_002:
 	setflag FLAG_UNK_210
 	setvar VAR_UNK_40C8, 0
 	end
 
-scr_seq_0824_T10R0601_005C:
+scr_seq_T10R0601_000:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
@@ -45,41 +45,41 @@ scr_seq_0824_T10R0601_005C:
 	scrcmd_604 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0824_T10R0601_008B
-	apply_movement 255, scr_seq_0824_T10R0601_0298
-	goto scr_seq_0824_T10R0601_00AE
+	gotoif ne, _008B
+	apply_movement obj_player, _0298
+	goto _00AE
 
-scr_seq_0824_T10R0601_008B:
+_008B:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0824_T10R0601_00A6
-	apply_movement 255, scr_seq_0824_T10R0601_02A8
-	goto scr_seq_0824_T10R0601_00AE
+	gotoif ne, _00A6
+	apply_movement obj_player, _02A8
+	goto _00AE
 
-scr_seq_0824_T10R0601_00A6:
-	apply_movement 255, scr_seq_0824_T10R0601_02B0
-scr_seq_0824_T10R0601_00AE:
+_00A6:
+	apply_movement obj_player, _02B0
+_00AE:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0824_T10R0601_02C0
+	apply_movement obj_T10R0601_wataru, _02C0
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 0, 1
+	gender_msgbox msg_0527_T10R0601_00000, msg_0527_T10R0601_00001
 	closemsg
 	comparevartovalue VAR_UNK_4135, 8
-	gotoif lt, scr_seq_0824_T10R0601_00E8
+	gotoif lt, _00E8
 	trainer_battle TRAINER_CHAMPION_LANCE_2, 0, 0, 0
-	goto scr_seq_0824_T10R0601_00F0
+	goto _00F0
 
-scr_seq_0824_T10R0601_00E8:
+_00E8:
 	trainer_battle TRAINER_CHAMPION_LANCE, 0, 0, 0
-scr_seq_0824_T10R0601_00F0:
+_00F0:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0824_T10R0601_0290
+	gotoif eq, _0290
 	buffer_players_name 0
-	gender_msgbox 2, 3
+	gender_msgbox msg_0527_T10R0601_00002, msg_0527_T10R0601_00003
 	closemsg
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KI_GASYAN
@@ -89,75 +89,75 @@ scr_seq_0824_T10R0601_00F0:
 	wait 30, VAR_SPECIAL_x8004
 	scrcmd_081 0
 	play_bgm SEQ_GS_EYE_J_SHOUJO
-	apply_movement 0, scr_seq_0824_T10R0601_02C8
-	apply_movement 255, scr_seq_0824_T10R0601_02E0
+	apply_movement obj_T10R0601_wataru, _02C8
+	apply_movement obj_player, _02E0
 	wait_movement
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0824_T10R0601_01A1
+	gotoif eq, _01A1
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0824_T10R0601_017C
-	apply_movement 253, scr_seq_0824_T10R0601_02F8
-	goto scr_seq_0824_T10R0601_019F
+	gotoif ne, _017C
+	apply_movement 253, _02F8
+	goto _019F
 
-scr_seq_0824_T10R0601_017C:
+_017C:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0824_T10R0601_0197
-	apply_movement 253, scr_seq_0824_T10R0601_0308
-	goto scr_seq_0824_T10R0601_019F
+	gotoif ne, _0197
+	apply_movement 253, _0308
+	goto _019F
 
-scr_seq_0824_T10R0601_0197:
-	apply_movement 253, scr_seq_0824_T10R0601_0320
-scr_seq_0824_T10R0601_019F:
+_0197:
+	apply_movement 253, _0320
+_019F:
 	wait_movement
-scr_seq_0824_T10R0601_01A1:
-	apply_movement 2, scr_seq_0824_T10R0601_0338
+_01A1:
+	apply_movement obj_T10R0601_kurumi, _0338
 	wait_movement
-	npc_msg 5
+	npc_msg msg_0527_T10R0601_00005
 	closemsg
-	apply_movement 1, scr_seq_0824_T10R0601_0348
-	apply_movement 2, scr_seq_0824_T10R0601_0350
+	apply_movement obj_T10R0601_ookido, _0348
+	apply_movement obj_T10R0601_kurumi, _0350
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 6, 7
+	gender_msgbox msg_0527_T10R0601_00006, msg_0527_T10R0601_00007
 	closemsg
-	apply_movement 2, scr_seq_0824_T10R0601_0360
+	apply_movement obj_T10R0601_kurumi, _0360
 	wait_movement
-	npc_msg 8
-	apply_movement 0, scr_seq_0824_T10R0601_0368
-	apply_movement 255, scr_seq_0824_T10R0601_0378
+	npc_msg msg_0527_T10R0601_00008
+	apply_movement obj_T10R0601_wataru, _0368
+	apply_movement obj_player, _0378
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 9, 10
+	gender_msgbox msg_0527_T10R0601_00009, msg_0527_T10R0601_00010
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 0, scr_seq_0824_T10R0601_0384
-	apply_movement 255, scr_seq_0824_T10R0601_0394
+	apply_movement obj_T10R0601_wataru, _0384
+	apply_movement obj_player, _0394
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0824_T10R0601_0234
-	apply_movement 253, scr_seq_0824_T10R0601_03A4
+	gotoif eq, _0234
+	apply_movement 253, _03A4
 	wait_movement
-scr_seq_0824_T10R0601_0234:
+_0234:
 	play_se SEQ_SE_DP_KAIDAN2
-	apply_movement 2, scr_seq_0824_T10R0601_03AC
+	apply_movement obj_T10R0601_kurumi, _03AC
 	wait_movement
-	npc_msg 11
-	apply_movement 2, scr_seq_0824_T10R0601_03BC
+	npc_msg msg_0527_T10R0601_00011
+	apply_movement obj_T10R0601_kurumi, _03BC
 	wait_movement
 	scrcmd_049
 	closemsg
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0824_T10R0601_0268
+	gotoif TRUE, _0268
 	clearflag FLAG_UNK_251
 	setvar VAR_UNK_411A, 1
-scr_seq_0824_T10R0601_0268:
+_0268:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 306, 0, 6, 22, 0
@@ -166,35 +166,33 @@ scr_seq_0824_T10R0601_0268:
 	releaseall
 	end
 
-scr_seq_0824_T10R0601_0290:
+_0290:
 	white_out
 	releaseall
 	end
-
-scr_seq_0824_T10R0601_0296:
 	.byte 0x00, 0x00
 
-scr_seq_0824_T10R0601_0298:
+_0298:
 	step 12, 2
 	step 15, 1
 	step 32, 1
 	step_end
 
-scr_seq_0824_T10R0601_02A8:
+_02A8:
 	step 12, 2
 	step_end
 
-scr_seq_0824_T10R0601_02B0:
+_02B0:
 	step 12, 2
 	step 14, 1
 	step 32, 1
 	step_end
 
-scr_seq_0824_T10R0601_02C0:
+_02C0:
 	step 33, 1
 	step_end
 
-scr_seq_0824_T10R0601_02C8:
+_02C8:
 	step 1, 1
 	step 75, 0
 	step 71, 1
@@ -202,7 +200,7 @@ scr_seq_0824_T10R0601_02C8:
 	step 72, 1
 	step_end
 
-scr_seq_0824_T10R0601_02E0:
+_02E0:
 	step 1, 1
 	step 63, 4
 	step 71, 1
@@ -210,13 +208,13 @@ scr_seq_0824_T10R0601_02E0:
 	step 72, 1
 	step_end
 
-scr_seq_0824_T10R0601_02F8:
+_02F8:
 	step 16, 3
 	step 19, 1
 	step 33, 1
 	step_end
 
-scr_seq_0824_T10R0601_0308:
+_0308:
 	step 16, 2
 	step 18, 1
 	step 16, 2
@@ -224,7 +222,7 @@ scr_seq_0824_T10R0601_0308:
 	step 33, 1
 	step_end
 
-scr_seq_0824_T10R0601_0320:
+_0320:
 	step 16, 1
 	step 19, 1
 	step 16, 2
@@ -232,60 +230,60 @@ scr_seq_0824_T10R0601_0320:
 	step 33, 1
 	step_end
 
-scr_seq_0824_T10R0601_0338:
+_0338:
 	step 16, 12
 	step 1, 1
 	step 37, 3
 	step_end
 
-scr_seq_0824_T10R0601_0348:
+_0348:
 	step 12, 8
 	step_end
 
-scr_seq_0824_T10R0601_0350:
+_0350:
 	step 63, 6
 	step 14, 1
 	step 0, 1
 	step_end
 
-scr_seq_0824_T10R0601_0360:
+_0360:
 	step 36, 4
 	step_end
 
-scr_seq_0824_T10R0601_0368:
+_0368:
 	step 12, 2
 	step 14, 1
 	step 1, 1
 	step_end
 
-scr_seq_0824_T10R0601_0378:
+_0378:
 	step 63, 3
 	step 0, 1
 	step_end
 
-scr_seq_0824_T10R0601_0384:
+_0384:
 	step 62, 1
 	step 12, 2
 	step 69, 1
 	step_end
 
-scr_seq_0824_T10R0601_0394:
+_0394:
 	step 12, 2
 	step 12, 2
 	step 69, 1
 	step_end
 
-scr_seq_0824_T10R0601_03A4:
+_03A4:
 	step 69, 1
 	step_end
 
-scr_seq_0824_T10R0601_03AC:
+_03AC:
 	step 16, 4
 	step 75, 0
 	step 63, 2
 	step_end
 
-scr_seq_0824_T10R0601_03BC:
+_03BC:
 	step 19, 1
 	step 18, 2
 	step 19, 2

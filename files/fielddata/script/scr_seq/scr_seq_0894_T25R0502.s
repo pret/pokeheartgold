@@ -1,15 +1,17 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25R0502.h"
+#include "msgdata/msg/msg_0588_T25R0502.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0894_T25R0502_0006 ; 000
+	scrdef scr_seq_T25R0502_000
 	scrdef_end
 
-scr_seq_0894_T25R0502_0006:
+scr_seq_T25R0502_000:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0894_T25R0502_008C
+	apply_movement obj_player, _008C
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
 	play_se SEQ_SE_DP_KAIDAN2
@@ -23,38 +25,36 @@ scr_seq_0894_T25R0502_0006:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0894_T25R0502_0098
+	apply_movement obj_player, _0098
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	npc_msg 0
+	npc_msg msg_0588_T25R0502_00000
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0894_T25R0502_00A4
+	apply_movement obj_player, _00A4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	releaseall
 	end
-
-scr_seq_0894_T25R0502_008B:
 	.byte 0x00
 
-scr_seq_0894_T25R0502_008C:
+_008C:
 	step 13, 3
 	step 14, 8
 	step_end
 
-scr_seq_0894_T25R0502_0098:
+_0098:
 	step 15, 3
 	step 13, 3
 	step_end
 
-scr_seq_0894_T25R0502_00A4:
+_00A4:
 	step 13, 2
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00

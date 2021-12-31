@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_R24.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R24_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R24_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 196608
     },
     {
-      "id": 1,
+      "id": "obj_R24_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_R24_002",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -35,12 +36,12 @@
       "z": 196608
     },
     {
-      "id": 2,
+      "id": "obj_R24_rocketm",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_255",
-      "scr": 3,
+      "scr": "_EV_scr_seq_R24_003",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -54,7 +55,7 @@
   ],
   "coords": [
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_R24_004",
       "x": 1325,
       "y": 76,
       "w": 4,

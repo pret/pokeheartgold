@@ -1,24 +1,26 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0166.h"
+#include "msgdata/msg/msg_0043.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0166_0036 ; 000
-	scrdef scr_seq_0166_004E ; 001
-	scrdef scr_seq_0166_0050 ; 002
-	scrdef scr_seq_0166_0054 ; 003
-	scrdef scr_seq_0166_0068 ; 004
-	scrdef scr_seq_0166_0070 ; 005
-	scrdef scr_seq_0166_0083 ; 006
-	scrdef scr_seq_0166_00A2 ; 007
-	scrdef scr_seq_0166_0590 ; 008
-	scrdef scr_seq_0166_0590 ; 009
-	scrdef scr_seq_0166_0590 ; 010
-	scrdef scr_seq_0166_0590 ; 011
-	scrdef scr_seq_0166_0AA2 ; 012
+	scrdef scr_seq_0166_000
+	scrdef scr_seq_0166_001
+	scrdef scr_seq_0166_002
+	scrdef scr_seq_0166_003
+	scrdef scr_seq_0166_004
+	scrdef scr_seq_0166_005
+	scrdef scr_seq_0166_006
+	scrdef scr_seq_0166_007
+	scrdef scr_seq_0166_008
+	scrdef scr_seq_0166_009
+	scrdef scr_seq_0166_010
+	scrdef scr_seq_0166_011
+	scrdef scr_seq_0166_012
 	scrdef_end
 
-scr_seq_0166_0036:
+scr_seq_0166_000:
 	scrcmd_609
 	lockall
 	setvar VAR_SPECIAL_x800C, 7
@@ -27,73 +29,65 @@ scr_seq_0166_0036:
 	releaseall
 	end
 
-scr_seq_0166_004E:
+scr_seq_0166_001:
 	end
 
-scr_seq_0166_0050:
+scr_seq_0166_002:
 	end
 
-scr_seq_0166_0052:
+_0052:
 	return
 
-scr_seq_0166_0054:
+scr_seq_0166_003:
 	scrcmd_521
-	call scr_seq_0166_0064
-	call scr_seq_0166_0052
+	call _0064
+	call _0052
 	end
 
-scr_seq_0166_0064:
+_0064:
 	return
-
-scr_seq_0166_0066:
 	.byte 0x1b, 0x00
-scr_seq_0166_0068:
+scr_seq_0166_004:
 	end
-
-scr_seq_0166_006A:
 	.byte 0x77, 0x01, 0xff, 0x00, 0x1b, 0x00
-scr_seq_0166_0070:
+scr_seq_0166_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0043_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0166_0083:
+scr_seq_0166_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4003, 0
 	setvar VAR_SPECIAL_x8007, 2
-	npc_msg 3
-	goto scr_seq_0166_00C1
-
-scr_seq_0166_00A0:
+	npc_msg msg_0043_00003
+	goto _00C1
 	.byte 0x02, 0x00
-scr_seq_0166_00A2:
+scr_seq_0166_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4003, 1
 	setvar VAR_SPECIAL_x8007, 2
-	npc_msg 7
-	goto scr_seq_0166_00C1
-
-scr_seq_0166_00BF:
+	npc_msg msg_0043_00007
+	goto _00C1
 	.byte 0x02
 	.byte 0x00
-scr_seq_0166_00C1:
+_00C1:
 	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif eq, scr_seq_0166_00D7
-	npc_msg 4
-	goto scr_seq_0166_00DA
+	gotoif eq, _00D7
+	npc_msg msg_0043_00004
+	goto _00DA
 
-scr_seq_0166_00D7:
-	npc_msg 12
-scr_seq_0166_00DA:
+_00D7:
+	npc_msg msg_0043_00012
+_00DA:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 8, 0
 	scrcmd_066 9, 1
@@ -101,42 +95,36 @@ scr_seq_0166_00DA:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_012F
+	gotoif eq, _012F
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_0137
-	goto scr_seq_0166_0118
-
-scr_seq_0166_0116:
+	gotoif eq, _0137
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0166_0118:
+_0118:
 	scrcmd_283
 	setvar VAR_UNK_4133, 0
 	clearflag FLAG_UNK_966
-	npc_msg 11
+	npc_msg msg_0043_00011
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0166_012F:
-	goto scr_seq_0166_0254
-
-scr_seq_0166_0135:
+_012F:
+	goto _0254
 	.byte 0x02, 0x00
-scr_seq_0166_0137:
+_0137:
 	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif eq, scr_seq_0166_014C
-	goto scr_seq_0166_0155
-
-scr_seq_0166_014A:
+	gotoif eq, _014C
+	goto _0155
 	.byte 0x02, 0x00
-scr_seq_0166_014C:
-	npc_msg 13
-	goto scr_seq_0166_00C1
+_014C:
+	npc_msg msg_0043_00013
+	goto _00C1
 
-scr_seq_0166_0155:
-	npc_msg 5
-scr_seq_0166_0158:
+_0155:
+	npc_msg msg_0043_00005
+_0158:
 	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 96, 0
 	scrcmd_066 97, 1
@@ -145,35 +133,27 @@ scr_seq_0166_0158:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_01A7
+	gotoif eq, _01A7
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_01AF
+	gotoif eq, _01AF
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_01BA
-	goto scr_seq_0166_00C1
-
-scr_seq_0166_01A5:
+	gotoif eq, _01BA
+	goto _00C1
 	.byte 0x02, 0x00
-scr_seq_0166_01A7:
-	goto scr_seq_0166_01C8
-
-scr_seq_0166_01AD:
+_01A7:
+	goto _01C8
 	.byte 0x02, 0x00
-scr_seq_0166_01AF:
-	npc_msg 18
-	goto scr_seq_0166_0155
-
-scr_seq_0166_01B8:
+_01AF:
+	npc_msg msg_0043_00018
+	goto _0155
 	.byte 0x02, 0x00
-scr_seq_0166_01BA:
-	npc_msg 19
-	goto scr_seq_0166_0155
-
-scr_seq_0166_01C3:
+_01BA:
+	npc_msg msg_0043_00019
+	goto _0155
 	.byte 0x02, 0x00
-scr_seq_0166_01C5:
-	npc_msg 117
-scr_seq_0166_01C8:
+_01C5:
+	npc_msg msg_0043_00117
+_01C8:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 36, 0
 	scrcmd_066 37, 1
@@ -183,43 +163,33 @@ scr_seq_0166_01C8:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_0228
+	gotoif eq, _0228
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_0233
+	gotoif eq, _0233
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_023E
+	gotoif eq, _023E
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0166_0249
-	goto scr_seq_0166_0158
-
-scr_seq_0166_0226:
+	gotoif eq, _0249
+	goto _0158
 	.byte 0x02, 0x00
-scr_seq_0166_0228:
-	npc_msg 14
-	goto scr_seq_0166_01C5
-
-scr_seq_0166_0231:
+_0228:
+	npc_msg msg_0043_00014
+	goto _01C5
 	.byte 0x02, 0x00
-scr_seq_0166_0233:
-	npc_msg 15
-	goto scr_seq_0166_01C5
-
-scr_seq_0166_023C:
+_0233:
+	npc_msg msg_0043_00015
+	goto _01C5
 	.byte 0x02, 0x00
-scr_seq_0166_023E:
-	npc_msg 16
-	goto scr_seq_0166_01C5
-
-scr_seq_0166_0247:
+_023E:
+	npc_msg msg_0043_00016
+	goto _01C5
 	.byte 0x02, 0x00
-scr_seq_0166_0249:
-	npc_msg 17
-	goto scr_seq_0166_01C5
-
-scr_seq_0166_0252:
+_0249:
+	npc_msg msg_0043_00017
+	goto _01C5
 	.byte 0x02, 0x00
-scr_seq_0166_0254:
-	npc_msg 219
+_0254:
+	npc_msg msg_0043_00219
 	scrcmd_064 18, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 14, 0
 	scrcmd_066 15, 1
@@ -227,137 +197,109 @@ scr_seq_0166_0254:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_0295
+	gotoif eq, _0295
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_02E7
-	goto scr_seq_0166_0118
-
-scr_seq_0166_0293:
+	gotoif eq, _02E7
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0166_0295:
-	npc_msg 212
+_0295:
+	npc_msg msg_0043_00212
 	scrcmd_063 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0166_0254
+	gotoif eq, _0254
 	closemsg
 	scrcmd_226 8, 32773, 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0166_02D7
+	gotoif eq, _02D7
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0166_02DF
-	goto scr_seq_0166_0339
-
-scr_seq_0166_02D5:
+	gotoif eq, _02DF
+	goto _0339
 	.byte 0x02, 0x00
-scr_seq_0166_02D7:
-	goto scr_seq_0166_0254
-
-scr_seq_0166_02DD:
+_02D7:
+	goto _0254
 	.byte 0x02, 0x00
-scr_seq_0166_02DF:
-	goto scr_seq_0166_0254
-
-scr_seq_0166_02E5:
+_02DF:
+	goto _0254
 	.byte 0x02, 0x00
-scr_seq_0166_02E7:
-	npc_msg 212
+_02E7:
+	npc_msg msg_0043_00212
 	scrcmd_063 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0166_0254
+	gotoif eq, _0254
 	closemsg
 	scrcmd_227 8, 32773, 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0166_0329
+	gotoif eq, _0329
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0166_0331
-	goto scr_seq_0166_0339
-
-scr_seq_0166_0327:
+	gotoif eq, _0331
+	goto _0339
 	.byte 0x02, 0x00
-scr_seq_0166_0329:
-	goto scr_seq_0166_0254
-
-scr_seq_0166_032F:
+_0329:
+	goto _0254
 	.byte 0x02
 	.byte 0x00
-scr_seq_0166_0331:
+_0331:
 	scrcmd_283
 	closemsg
 	releaseall
 	end
 
-scr_seq_0166_0339:
+_0339:
 	scrcmd_234 32772, 32773, 32775, 16386
 	scrcmd_232 25
 	scrcmd_233 25
 	comparevartovalue VAR_TEMP_x4003, 0
-	gotoif eq, scr_seq_0166_038D
+	gotoif eq, _038D
 	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif eq, scr_seq_0166_0395
+	gotoif eq, _0395
 	comparevartovalue VAR_TEMP_x4003, 2
-	gotoif eq, scr_seq_0166_03A7
+	gotoif eq, _03A7
 	end
-
-scr_seq_0166_0374:
 	.byte 0xec, 0x00, 0x0c, 0x80, 0x27, 0x00, 0x0c, 0x80, 0x01, 0x00, 0x2d, 0x00
 	.byte 0xb1, 0xec, 0x00, 0x0c, 0x80, 0x35, 0x00, 0x16, 0x00, 0xbe, 0xff, 0xff, 0xff
-scr_seq_0166_038D:
-	goto scr_seq_0166_03B4
-
-scr_seq_0166_0393:
+_038D:
+	goto _03B4
 	.byte 0x02, 0x00
-scr_seq_0166_0395:
+_0395:
 	setflag FLAG_UNK_966
 	setvar VAR_UNK_4133, 5
-	goto scr_seq_0166_03B4
-
-scr_seq_0166_03A5:
+	goto _03B4
 	.byte 0x02, 0x00
-scr_seq_0166_03A7:
-	scrcmd_048 211
+_03A7:
+	scrcmd_048 msg_0043_00211
 	closemsg
-	goto scr_seq_0166_03B4
-
-scr_seq_0166_03B2:
+	goto _03B4
 	.byte 0x02, 0x00
-scr_seq_0166_03B4:
+_03B4:
 	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0166_03CD
-	goto scr_seq_0166_03DB
-
-scr_seq_0166_03CB:
+	gotoif eq, _03CD
+	goto _03DB
 	.byte 0x02, 0x00
-scr_seq_0166_03CD:
+_03CD:
 	buffer_players_name 0
-	scrcmd_048 66
-	goto scr_seq_0166_03E9
-
-scr_seq_0166_03D9:
+	scrcmd_048 msg_0043_00066
+	goto _03E9
 	.byte 0x02, 0x00
-scr_seq_0166_03DB:
+_03DB:
 	buffer_players_name 0
-	scrcmd_048 67
-	goto scr_seq_0166_03E9
-
-scr_seq_0166_03E7:
+	scrcmd_048 msg_0043_00067
+	goto _03E9
 	.byte 0x02, 0x00
-scr_seq_0166_03E9:
-	scrcmd_048 68
+_03E9:
+	scrcmd_048 msg_0043_00068
 	scrcmd_232 26
 	scrcmd_233 26
 	closemsg
-	goto scr_seq_0166_03FE
-
-scr_seq_0166_03FC:
+	goto _03FE
 	.byte 0x02, 0x00
-scr_seq_0166_03FE:
+_03FE:
 	scrcmd_232 4
 	scrcmd_233 4
 	scrcmd_257 239
 	scrcmd_611 1, 0, 32768, 32780, 32769, 32770, 32771
 	scrcmd_237
-	scrcmd_048 78
+	scrcmd_048 msg_0043_00078
 	closemsg
 	scrcmd_232 24
 	scrcmd_233 24
@@ -366,13 +308,11 @@ scr_seq_0166_03FE:
 	scrcmd_235 16386
 	clearflag FLAG_UNK_966
 	setvar VAR_UNK_4133, 0
-	goto scr_seq_0166_0443
+	goto _0443
 
-scr_seq_0166_0443:
+_0443:
 	releaseall
 	end
-
-scr_seq_0166_0447:
 	.byte 0x49, 0x00, 0x44, 0x06, 0x11, 0x00, 0x0c, 0x80, 0x01
 	.byte 0x00, 0x1d, 0x00, 0x01, 0x36, 0x00, 0x00, 0x00, 0x11, 0x00, 0x0c, 0x80, 0x02, 0x00, 0x1d, 0x00
 	.byte 0x01, 0x33, 0x00, 0x00, 0x00, 0x11, 0x00, 0x0c, 0x80, 0x03, 0x00, 0x1d, 0x00, 0x01, 0x3a, 0x00
@@ -394,19 +334,20 @@ scr_seq_0166_0447:
 	.byte 0x23, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x01, 0x00, 0x25, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x22, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x20, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x23, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-scr_seq_0166_0590:
+scr_seq_0166_008:
+scr_seq_0166_009:
+scr_seq_0166_010:
+scr_seq_0166_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4003, 2
 	setvar VAR_SPECIAL_x8004, 0
-	npc_msg 111
-	goto scr_seq_0166_05AF
-
-scr_seq_0166_05AD:
+	npc_msg msg_0043_00111
+	goto _05AF
 	.byte 0x02, 0x00
-scr_seq_0166_05AF:
-	npc_msg 112
+_05AF:
+	npc_msg msg_0043_00112
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 113, 0
 	scrcmd_066 114, 1
@@ -414,16 +355,14 @@ scr_seq_0166_05AF:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_05FD
+	gotoif eq, _05FD
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_0872
+	gotoif eq, _0872
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_0A97
-	goto scr_seq_0166_0A97
-
-scr_seq_0166_05FB:
+	gotoif eq, _0A97
+	goto _0A97
 	.byte 0x02, 0x00
-scr_seq_0166_05FD:
+_05FD:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 155, 0
 	scrcmd_066 156, 1
@@ -432,43 +371,33 @@ scr_seq_0166_05FD:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_064C
+	gotoif eq, _064C
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_0660
+	gotoif eq, _0660
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_067A
-	goto scr_seq_0166_068E
-
-scr_seq_0166_064A:
+	gotoif eq, _067A
+	goto _068E
 	.byte 0x02, 0x00
-scr_seq_0166_064C:
+_064C:
 	setvar VAR_TEMP_x4004, 0
 	setvar VAR_SPECIAL_x8007, 3
-	goto scr_seq_0166_0743
-
-scr_seq_0166_065E:
+	goto _0743
 	.byte 0x02, 0x00
-scr_seq_0166_0660:
+_0660:
 	setvar VAR_TEMP_x4004, 1
 	setvar VAR_SPECIAL_x8005, 0
 	setvar VAR_SPECIAL_x8007, 5
-	goto scr_seq_0166_0743
-
-scr_seq_0166_0678:
+	goto _0743
 	.byte 0x02, 0x00
-scr_seq_0166_067A:
+_067A:
 	setvar VAR_TEMP_x4004, 0
 	setvar VAR_SPECIAL_x8007, 7
-	goto scr_seq_0166_0743
-
-scr_seq_0166_068C:
+	goto _0743
 	.byte 0x02, 0x00
-scr_seq_0166_068E:
-	npc_msg 159
+_068E:
+	npc_msg msg_0043_00159
 	waitbutton
-	goto scr_seq_0166_0A9C
-
-scr_seq_0166_0699:
+	goto _0A9C
 	.byte 0x02, 0x00, 0x2d, 0x00, 0xa8, 0x41, 0x00
 	.byte 0x01, 0x01, 0x00, 0x01, 0x0c, 0x80, 0x42, 0x00, 0xa9, 0x00, 0x42, 0x00, 0xaa, 0x01, 0x42, 0x00
 	.byte 0xab, 0x02, 0x42, 0x00, 0xac, 0x03, 0x42, 0x00, 0xad, 0x04, 0x43, 0x00, 0x2a, 0x00, 0x08, 0x80
@@ -481,13 +410,13 @@ scr_seq_0166_0699:
 	.byte 0x16, 0x00, 0x1d, 0x00, 0x00, 0x00, 0x02, 0x00, 0x29, 0x00, 0x04, 0x80, 0x03, 0x00, 0x16, 0x00
 	.byte 0x0f, 0x00, 0x00, 0x00, 0x02, 0x00, 0x2d, 0x00, 0xae, 0x32, 0x00, 0x16, 0x00, 0x5b, 0x03, 0x00
 	.byte 0x00, 0x02, 0x00
-scr_seq_0166_0743:
+_0743:
 	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif eq, scr_seq_0166_081D
-	goto scr_seq_0166_0756
+	gotoif eq, _081D
+	goto _0756
 
-scr_seq_0166_0756:
-	npc_msg 160
+_0756:
+	npc_msg msg_0043_00160
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 161, 0
 	scrcmd_066 162, 1
@@ -498,82 +427,66 @@ scr_seq_0166_0756:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_07CA
+	gotoif eq, _07CA
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_07D8
+	gotoif eq, _07D8
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_07E6
+	gotoif eq, _07E6
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0166_07F4
+	gotoif eq, _07F4
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0166_0802
-	goto scr_seq_0166_0810
-
-scr_seq_0166_07C8:
+	gotoif eq, _0802
+	goto _0810
 	.byte 0x02, 0x00
-scr_seq_0166_07CA:
+_07CA:
 	setvar VAR_SPECIAL_x8005, 0
-	goto scr_seq_0166_081D
-
-scr_seq_0166_07D6:
+	goto _081D
 	.byte 0x02, 0x00
-scr_seq_0166_07D8:
+_07D8:
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0166_081D
-
-scr_seq_0166_07E4:
+	goto _081D
 	.byte 0x02, 0x00
-scr_seq_0166_07E6:
+_07E6:
 	setvar VAR_SPECIAL_x8005, 2
-	goto scr_seq_0166_081D
-
-scr_seq_0166_07F2:
+	goto _081D
 	.byte 0x02, 0x00
-scr_seq_0166_07F4:
+_07F4:
 	setvar VAR_SPECIAL_x8005, 3
-	goto scr_seq_0166_081D
-
-scr_seq_0166_0800:
+	goto _081D
 	.byte 0x02, 0x00
-scr_seq_0166_0802:
+_0802:
 	setvar VAR_SPECIAL_x8005, 4
-	goto scr_seq_0166_081D
-
-scr_seq_0166_080E:
+	goto _081D
 	.byte 0x02, 0x00
-scr_seq_0166_0810:
-	npc_msg 167
+_0810:
+	npc_msg msg_0043_00167
 	waitbutton
-	goto scr_seq_0166_0A9C
-
-scr_seq_0166_081B:
+	goto _0A9C
 	.byte 0x02, 0x00
-scr_seq_0166_081D:
-	npc_msg 175
-	npc_msg 176
+_081D:
+	npc_msg msg_0043_00175
+	npc_msg msg_0043_00176
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
-scr_seq_0166_0837:
+_0837:
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0166_084F
+	gotoif eq, _084F
 	scrcmd_353 0, 32780
-	goto scr_seq_0166_0837
+	goto _0837
 
-scr_seq_0166_084F:
+_084F:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
-	gotoif eq, scr_seq_0166_0810
-	goto scr_seq_0166_0339
-
-scr_seq_0166_0870:
+	gotoif eq, _0810
+	goto _0339
 	.byte 0x02, 0x00
-scr_seq_0166_0872:
-	npc_msg 117
-scr_seq_0166_0875:
+_0872:
+	npc_msg msg_0043_00117
+_0875:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 121, 0
 	scrcmd_066 118, 1
@@ -583,20 +496,18 @@ scr_seq_0166_0875:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_0A7E
+	gotoif eq, _0A7E
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_08D8
+	gotoif eq, _08D8
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_0953
+	gotoif eq, _0953
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0166_09EA
-	goto scr_seq_0166_05AF
-
-scr_seq_0166_08D3:
+	gotoif eq, _09EA
+	goto _05AF
 	.byte 0x02, 0x00
-scr_seq_0166_08D5:
-	npc_msg 117
-scr_seq_0166_08D8:
+_08D5:
+	npc_msg msg_0043_00117
+_08D8:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 125, 0
 	scrcmd_066 126, 1
@@ -605,41 +516,31 @@ scr_seq_0166_08D8:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_0927
+	gotoif eq, _0927
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_0932
+	gotoif eq, _0932
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_093D
-	goto scr_seq_0166_0948
-
-scr_seq_0166_0925:
+	gotoif eq, _093D
+	goto _0948
 	.byte 0x02, 0x00
-scr_seq_0166_0927:
-	npc_msg 130
-	goto scr_seq_0166_08D5
-
-scr_seq_0166_0930:
+_0927:
+	npc_msg msg_0043_00130
+	goto _08D5
 	.byte 0x02, 0x00
-scr_seq_0166_0932:
-	npc_msg 131
-	goto scr_seq_0166_08D5
-
-scr_seq_0166_093B:
+_0932:
+	npc_msg msg_0043_00131
+	goto _08D5
 	.byte 0x02, 0x00
-scr_seq_0166_093D:
-	npc_msg 132
-	goto scr_seq_0166_08D5
-
-scr_seq_0166_0946:
+_093D:
+	npc_msg msg_0043_00132
+	goto _08D5
 	.byte 0x02, 0x00
-scr_seq_0166_0948:
-	goto scr_seq_0166_0875
-
-scr_seq_0166_094E:
+_0948:
+	goto _0875
 	.byte 0x02, 0x00
-scr_seq_0166_0950:
-	npc_msg 117
-scr_seq_0166_0953:
+_0950:
+	npc_msg msg_0043_00117
+_0953:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 135, 0
 	scrcmd_066 136, 1
@@ -649,49 +550,37 @@ scr_seq_0166_0953:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_09B3
+	gotoif eq, _09B3
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_09BE
+	gotoif eq, _09BE
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_09C9
+	gotoif eq, _09C9
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0166_09D4
-	goto scr_seq_0166_09DF
-
-scr_seq_0166_09B1:
+	gotoif eq, _09D4
+	goto _09DF
 	.byte 0x02, 0x00
-scr_seq_0166_09B3:
-	npc_msg 140
-	goto scr_seq_0166_0950
-
-scr_seq_0166_09BC:
+_09B3:
+	npc_msg msg_0043_00140
+	goto _0950
 	.byte 0x02, 0x00
-scr_seq_0166_09BE:
-	npc_msg 141
-	goto scr_seq_0166_0950
-
-scr_seq_0166_09C7:
+_09BE:
+	npc_msg msg_0043_00141
+	goto _0950
 	.byte 0x02, 0x00
-scr_seq_0166_09C9:
-	npc_msg 142
-	goto scr_seq_0166_0950
-
-scr_seq_0166_09D2:
+_09C9:
+	npc_msg msg_0043_00142
+	goto _0950
 	.byte 0x02, 0x00
-scr_seq_0166_09D4:
-	npc_msg 143
-	goto scr_seq_0166_0950
-
-scr_seq_0166_09DD:
+_09D4:
+	npc_msg msg_0043_00143
+	goto _0950
 	.byte 0x02, 0x00
-scr_seq_0166_09DF:
-	goto scr_seq_0166_0875
-
-scr_seq_0166_09E5:
+_09DF:
+	goto _0875
 	.byte 0x02, 0x00
-scr_seq_0166_09E7:
-	npc_msg 117
-scr_seq_0166_09EA:
+_09E7:
+	npc_msg msg_0043_00117
+_09EA:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
 	scrcmd_066 145, 0
 	scrcmd_066 146, 1
@@ -701,62 +590,48 @@ scr_seq_0166_09EA:
 	scrcmd_067
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0166_0A4A
+	gotoif eq, _0A4A
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0166_0A55
+	gotoif eq, _0A55
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0166_0A60
+	gotoif eq, _0A60
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0166_0A6B
-	goto scr_seq_0166_0A76
-
-scr_seq_0166_0A48:
+	gotoif eq, _0A6B
+	goto _0A76
 	.byte 0x02, 0x00
-scr_seq_0166_0A4A:
-	npc_msg 150
-	goto scr_seq_0166_09E7
-
-scr_seq_0166_0A53:
+_0A4A:
+	npc_msg msg_0043_00150
+	goto _09E7
 	.byte 0x02, 0x00
-scr_seq_0166_0A55:
-	npc_msg 151
-	goto scr_seq_0166_09E7
-
-scr_seq_0166_0A5E:
+_0A55:
+	npc_msg msg_0043_00151
+	goto _09E7
 	.byte 0x02, 0x00
-scr_seq_0166_0A60:
-	npc_msg 152
-	goto scr_seq_0166_09E7
-
-scr_seq_0166_0A69:
+_0A60:
+	npc_msg msg_0043_00152
+	goto _09E7
 	.byte 0x02, 0x00
-scr_seq_0166_0A6B:
-	npc_msg 153
-	goto scr_seq_0166_09E7
-
-scr_seq_0166_0A74:
+_0A6B:
+	npc_msg msg_0043_00153
+	goto _09E7
 	.byte 0x02, 0x00
-scr_seq_0166_0A76:
-	goto scr_seq_0166_0875
-
-scr_seq_0166_0A7C:
+_0A76:
+	goto _0875
 	.byte 0x02, 0x00
-scr_seq_0166_0A7E:
-	npc_msg 124
-	npc_msg 117
-	goto scr_seq_0166_0875
-
-scr_seq_0166_0A8A:
+_0A7E:
+	npc_msg msg_0043_00124
+	npc_msg msg_0043_00117
+	goto _0875
 	.byte 0x02, 0x00, 0x2d, 0x00, 0x7b, 0x16
 	.byte 0x00, 0x07, 0x00, 0x00, 0x00, 0x02, 0x00
-scr_seq_0166_0A97:
-	npc_msg 116
+_0A97:
+	npc_msg msg_0043_00116
 	waitbutton
-scr_seq_0166_0A9C:
+_0A9C:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0166_0AA2:
+scr_seq_0166_012:
 	end
 	.balign 4, 0

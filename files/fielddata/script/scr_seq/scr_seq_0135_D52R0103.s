@@ -1,40 +1,42 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D52R0103.h"
+#include "msgdata/msg/msg_0150_D52R0103.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0135_D52R0103_00C0 ; 000
-	scrdef scr_seq_0135_D52R0103_003E ; 001
-	scrdef scr_seq_0135_D52R0103_0012 ; 002
-	scrdef scr_seq_0135_D52R0103_0029 ; 003
+	scrdef scr_seq_D52R0103_000
+	scrdef scr_seq_D52R0103_001
+	scrdef scr_seq_D52R0103_002
+	scrdef scr_seq_D52R0103_003
 	scrdef_end
 
-scr_seq_0135_D52R0103_0012:
+scr_seq_D52R0103_002:
 	checkflag FLAG_UNK_0A4
-	gotoif TRUE, scr_seq_0135_D52R0103_001F
+	gotoif TRUE, _001F
 	end
 
-scr_seq_0135_D52R0103_001F:
+_001F:
 	setflag FLAG_UNK_2D2
 	hide_person 0
 	end
 
-scr_seq_0135_D52R0103_0029:
+scr_seq_D52R0103_003:
 	comparevartovalue VAR_UNK_40F9, 7
-	gotoif ge, scr_seq_0135_D52R0103_003C
+	gotoif ge, _003C
 	clearflag FLAG_UNK_2D2
 	end
 
-scr_seq_0135_D52R0103_003C:
+_003C:
 	end
 
-scr_seq_0135_D52R0103_003E:
+scr_seq_D52R0103_001:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0135_D52R0103_00B4
+	apply_movement obj_player, _00B4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -44,37 +46,35 @@ scr_seq_0135_D52R0103_003E:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0135_D52R0103_00B4
+	apply_movement obj_player, _00B4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	release 0
+	release obj_D52R0103_tsure_poke_624
 	scrcmd_523 0, 8, 90, 3, 0
 	scrcmd_076 384, 0
-	npc_msg 0
+	npc_msg msg_0150_D52R0103_00000
 	scrcmd_077
-	lock 0
+	lock obj_D52R0103_tsure_poke_624
 	closemsg
 	setvar VAR_UNK_40F9, 6
 	releaseall
 	end
-
-scr_seq_0135_D52R0103_00B1:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0135_D52R0103_00B4:
+_00B4:
 	step 12, 8
 	step 63, 2
 	step_end
-scr_seq_0135_D52R0103_00C0:
+scr_seq_D52R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	release 0
+	release obj_D52R0103_tsure_poke_624
 	scrcmd_523 0, 8, 90, 3, 0
 	scrcmd_076 384, 0
-	npc_msg 0
+	npc_msg msg_0150_D52R0103_00000
 	scrcmd_077
 	closemsg
 	setflag FLAG_UNK_0A4
@@ -82,27 +82,27 @@ scr_seq_0135_D52R0103_00C0:
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0135_D52R0103_0142
+	gotoif eq, _0142
 	scrcmd_683 16386
 	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, scr_seq_0135_D52R0103_0123
+	gotoif eq, _0123
 	comparevartovalue VAR_TEMP_x4002, 4
-	gotoif eq, scr_seq_0135_D52R0103_0134
-scr_seq_0135_D52R0103_0123:
-	npc_msg 1
+	gotoif eq, _0134
+_0123:
+	npc_msg msg_0150_D52R0103_00001
 	waitbutton
 	closemsg
 	setvar VAR_UNK_40F9, 9
 	releaseall
 	end
 
-scr_seq_0135_D52R0103_0134:
+_0134:
 	setvar VAR_UNK_40F9, 7
 	setflag FLAG_UNK_17B
 	releaseall
 	end
 
-scr_seq_0135_D52R0103_0142:
+_0142:
 	white_out
 	releaseall
 	end

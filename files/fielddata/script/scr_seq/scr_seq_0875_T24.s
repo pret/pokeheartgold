@@ -1,89 +1,89 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T24.h"
+#include "msgdata/msg/msg_0572_T24.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0875_T24_023F ; 000
-	scrdef scr_seq_0875_T24_013C ; 001
-	scrdef scr_seq_0875_T24_013E ; 002
-	scrdef scr_seq_0875_T24_023D ; 003
-	scrdef scr_seq_0875_T24_0536 ; 004
-	scrdef scr_seq_0875_T24_0042 ; 005
-	scrdef scr_seq_0875_T24_004E ; 006
-	scrdef scr_seq_0875_T24_038E ; 007
-	scrdef scr_seq_0875_T24_04E0 ; 008
-	scrdef scr_seq_0875_T24_04F7 ; 009
-	scrdef scr_seq_0875_T24_050C ; 010
-	scrdef scr_seq_0875_T24_0521 ; 011
-	scrdef scr_seq_0875_T24_054B ; 012
-	scrdef scr_seq_0875_T24_055E ; 013
-	scrdef scr_seq_0875_T24_0571 ; 014
-	scrdef scr_seq_0875_T24_0584 ; 015
+	scrdef scr_seq_T24_000
+	scrdef scr_seq_T24_001
+	scrdef scr_seq_T24_002
+	scrdef scr_seq_T24_003
+	scrdef scr_seq_T24_004
+	scrdef scr_seq_T24_005
+	scrdef scr_seq_T24_006
+	scrdef scr_seq_T24_007
+	scrdef scr_seq_T24_008
+	scrdef scr_seq_T24_009
+	scrdef scr_seq_T24_010
+	scrdef scr_seq_T24_011
+	scrdef scr_seq_T24_012
+	scrdef scr_seq_T24_013
+	scrdef scr_seq_T24_014
+	scrdef scr_seq_T24_015
 	scrdef_end
 
-scr_seq_0875_T24_0042:
+scr_seq_T24_005:
 	clearflag FLAG_UNK_981
 	setvar VAR_UNK_40EB, 0
 	end
 
-scr_seq_0875_T24_004E:
+scr_seq_T24_006:
 	scrcmd_609
 	lockall
-	apply_movement 0, scr_seq_0875_T24_00C4
-	apply_movement 255, scr_seq_0875_T24_00E4
+	apply_movement obj_T24_middlewoman1_2, _00C4
+	apply_movement obj_player, _00E4
 	wait_movement
-	npc_msg 2
+	npc_msg msg_0572_T24_00002
 	setvar VAR_SPECIAL_x8004, 421
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0875_T24_00B8
+	gotoif eq, _00B8
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0BB
 	setvar VAR_UNK_4116, 2
-	npc_msg 4
+	npc_msg msg_0572_T24_00004
 	waitbutton
 	closemsg
-	apply_movement 0, scr_seq_0875_T24_00D8
+	apply_movement obj_T24_middlewoman1_2, _00D8
 	wait_movement
 	comparevartovalue VAR_UNK_4134, 4
-	gotoif eq, scr_seq_0875_T24_00F0
+	gotoif eq, _00F0
 	releaseall
 	end
 
-scr_seq_0875_T24_00B8:
+_00B8:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
-
-scr_seq_0875_T24_00C2:
 	.byte 0x00, 0x00
 
-scr_seq_0875_T24_00C4:
+_00C4:
 	step 36, 1
 	step 75, 1
 	step 12, 2
 	step 2, 1
 	step_end
 
-scr_seq_0875_T24_00D8:
+_00D8:
 	step 13, 2
 	step 36, 1
 	step_end
 
-scr_seq_0875_T24_00E4:
+_00E4:
 	step 65, 3
 	step 3, 1
 	step_end
-scr_seq_0875_T24_00F0:
+_00F0:
 	setvar VAR_UNK_4077, 2
 	setflag FLAG_UNK_0C5
 	setflag FLAG_UNK_99B
 	comparevartovalue VAR_UNK_40F8, 0
-	gotoif ne, scr_seq_0875_T24_0111
+	gotoif ne, _0111
 	setvar VAR_UNK_40F8, 2
-scr_seq_0875_T24_0111:
+_0111:
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 2
@@ -91,33 +91,31 @@ scr_seq_0875_T24_0111:
 	setvar VAR_UNK_4134, 5
 	releaseall
 	end
-
-scr_seq_0875_T24_0131:
 	.byte 0x00, 0x00, 0x00, 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-scr_seq_0875_T24_013C:
+scr_seq_T24_001:
 	end
 
-scr_seq_0875_T24_013E:
+scr_seq_T24_002:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0875_T24_0310
+	apply_movement obj_player, _0310
 	wait_movement
 	scrcmd_076 245, 0
-	release 5
+	release obj_T24_tsure_poke_618
 	scrcmd_523 5, 2, 90, 2, 0
-	lock 5
+	lock obj_T24_tsure_poke_618
 	scrcmd_077
-	apply_movement 5, scr_seq_0875_T24_02F4
+	apply_movement obj_T24_tsure_poke_618, _02F4
 	wait_movement
-	apply_movement 5, scr_seq_0875_T24_0338
-	apply_movement 255, scr_seq_0875_T24_0320
+	apply_movement obj_T24_tsure_poke_618, _0338
+	apply_movement obj_player, _0320
 	wait_movement
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 5, scr_seq_0875_T24_0300
-	apply_movement 255, scr_seq_0875_T24_0344
+	apply_movement obj_T24_tsure_poke_618, _0300
+	apply_movement obj_player, _0344
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -128,21 +126,21 @@ scr_seq_0875_T24_013E:
 	clearflag FLAG_UNK_1E2
 	show_person 6
 	callstd 2042
-	apply_movement 6, scr_seq_0875_T24_0358
-	apply_movement 255, scr_seq_0875_T24_036C
+	apply_movement obj_T24_minaki, _0358
+	apply_movement obj_player, _036C
 	wait_movement
 	buffer_players_name 0
-	npc_msg 15
+	npc_msg msg_0572_T24_00015
 	scrcmd_049
 	closemsg
 	trainer_battle TRAINER_MYSTERY_MAN_EUSINE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0875_T24_0227
+	gotoif eq, _0227
 	buffer_players_name 0
-	npc_msg 16
+	npc_msg msg_0572_T24_00016
 	closemsg
-	apply_movement 6, scr_seq_0875_T24_037C
+	apply_movement obj_T24_minaki, _037C
 	wait_movement
 	hide_person 6
 	setflag FLAG_UNK_1E2
@@ -151,138 +149,136 @@ scr_seq_0875_T24_013E:
 	releaseall
 	end
 
-scr_seq_0875_T24_0227:
+_0227:
 	hide_person 6
 	setflag FLAG_UNK_1E2
 	clearflag FLAG_UNK_29E
 	setvar VAR_UNK_4092, 1
 	white_out
 	releaseall
-scr_seq_0875_T24_023D:
+scr_seq_T24_003:
 	end
 
-scr_seq_0875_T24_023F:
+scr_seq_T24_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0875_T24_0276
+	gotoif TRUE, _0276
 	checkflag FLAG_UNK_0BB
-	gotoif TRUE, scr_seq_0875_T24_026B
-	npc_msg 0
-	npc_msg 1
+	gotoif TRUE, _026B
+	npc_msg msg_0572_T24_00000
+	npc_msg msg_0572_T24_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_026B:
-	npc_msg 5
+_026B:
+	npc_msg msg_0572_T24_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_0276:
+_0276:
 	scrcmd_147 32, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0875_T24_02CD
+	gotoif eq, _02CD
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, scr_seq_0875_T24_02E9
-	npc_msg 7
-scr_seq_0875_T24_0299:
+	gotoif ge, _02E9
+	npc_msg msg_0572_T24_00007
+_0299:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0875_T24_02BD
+	gotoif eq, _02BD
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0875_T24_02D8
+	gotoif ge, _02D8
 	end
 
-scr_seq_0875_T24_02BD:
+_02BD:
 	buffer_players_name 0
-	npc_msg 8
+	npc_msg msg_0572_T24_00008
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	register_gear_number 32
-scr_seq_0875_T24_02CD:
-	npc_msg 9
+_02CD:
+	npc_msg msg_0572_T24_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_02D8:
+_02D8:
 	setvar VAR_TEMP_x4002, 1
-	npc_msg 10
+	npc_msg msg_0572_T24_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_02E9:
-	npc_msg 11
-	goto scr_seq_0875_T24_0299
-
-scr_seq_0875_T24_02F2:
+_02E9:
+	npc_msg msg_0572_T24_00011
+	goto _0299
 	.byte 0x02, 0x00
 
-scr_seq_0875_T24_02F4:
+_02F4:
 	step 111, 1
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_0300:
+_0300:
 	step 112, 1
 	step 69, 1
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_0310:
+_0310:
 	step 0, 1
 	step 75, 1
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_0320:
+_0320:
 	step 0, 1
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_0338:
+_0338:
 	step 1, 1
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_0344:
+_0344:
 	step 3, 1
 	step 63, 1
 	step 15, 2
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_0358:
+_0358:
 	step 12, 5
 	step 15, 2
 	step 12, 2
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_036C:
+_036C:
 	step 63, 6
 	step 1, 1
 	step_end
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_037C:
+_037C:
 	step 13, 2
 	step 14, 2
 	step 13, 5
 	step_end
 	.byte 0x02, 0x00
-scr_seq_0875_T24_038E:
+scr_seq_T24_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -292,10 +288,10 @@ scr_seq_0875_T24_038E:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0875_T24_047B
+	gotoif eq, _047B
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0875_T24_0481
+	gotoif eq, _0481
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 7
 	closemsg
@@ -304,29 +300,29 @@ scr_seq_0875_T24_038E:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0875_T24_03FF
-	apply_movement 255, scr_seq_0875_T24_0498
-	goto scr_seq_0875_T24_0422
+	gotoif ne, _03FF
+	apply_movement obj_player, _0498
+	goto _0422
 
-scr_seq_0875_T24_03FF:
+_03FF:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0875_T24_041A
-	apply_movement 255, scr_seq_0875_T24_04B0
-	goto scr_seq_0875_T24_0422
+	gotoif ne, _041A
+	apply_movement obj_player, _04B0
+	goto _0422
 
-scr_seq_0875_T24_041A:
-	apply_movement 255, scr_seq_0875_T24_04BC
-scr_seq_0875_T24_0422:
+_041A:
+	apply_movement obj_player, _04BC
+_0422:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0875_T24_0449
-	apply_movement 253, scr_seq_0875_T24_04D0
+	gotoif ne, _0449
+	apply_movement 253, _04D0
 	wait_movement
-scr_seq_0875_T24_0449:
+_0449:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	cameron_photo 35
@@ -340,23 +336,21 @@ scr_seq_0875_T24_0449:
 	releaseall
 	end
 
-scr_seq_0875_T24_047B:
+_047B:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_0481:
+_0481:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 9
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0875_T24_0495:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0875_T24_0498:
+_0498:
 	step 15, 1
 	step 12, 2
 	step 14, 1
@@ -364,24 +358,24 @@ scr_seq_0875_T24_0498:
 	step 33, 1
 	step_end
 
-scr_seq_0875_T24_04B0:
+_04B0:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0875_T24_04BC:
+_04BC:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0875_T24_04D0:
+_04D0:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0875_T24_04E0:
+scr_seq_T24_008:
 	scrcmd_055 18, 0, 15, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -389,7 +383,7 @@ scr_seq_0875_T24_04E0:
 	callstd 2000
 	end
 
-scr_seq_0875_T24_04F7:
+scr_seq_T24_009:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -397,7 +391,7 @@ scr_seq_0875_T24_04F7:
 	callstd 2000
 	end
 
-scr_seq_0875_T24_050C:
+scr_seq_T24_010:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -405,7 +399,7 @@ scr_seq_0875_T24_050C:
 	callstd 2000
 	end
 
-scr_seq_0875_T24_0521:
+scr_seq_T24_011:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -413,7 +407,7 @@ scr_seq_0875_T24_0521:
 	callstd 2000
 	end
 
-scr_seq_0875_T24_0536:
+scr_seq_T24_004:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -421,41 +415,41 @@ scr_seq_0875_T24_0536:
 	callstd 2000
 	end
 
-scr_seq_0875_T24_054B:
+scr_seq_T24_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 12
+	npc_msg msg_0572_T24_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_055E:
+scr_seq_T24_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 13
+	npc_msg msg_0572_T24_00013
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_0571:
+scr_seq_T24_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 14
+	npc_msg msg_0572_T24_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0875_T24_0584:
+scr_seq_T24_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 17
+	npc_msg msg_0572_T24_00017
 	waitbutton
 	closemsg
 	releaseall

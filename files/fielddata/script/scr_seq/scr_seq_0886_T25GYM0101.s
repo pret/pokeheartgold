@@ -1,112 +1,114 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25GYM0101.h"
+#include "msgdata/msg/msg_0582_T25GYM0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0886_T25GYM0101_010C ; 000
-	scrdef scr_seq_0886_T25GYM0101_021E ; 001
-	scrdef scr_seq_0886_T25GYM0101_0284 ; 002
-	scrdef scr_seq_0886_T25GYM0101_02B5 ; 003
-	scrdef scr_seq_0886_T25GYM0101_0016 ; 004
+	scrdef scr_seq_T25GYM0101_000
+	scrdef scr_seq_T25GYM0101_001
+	scrdef scr_seq_T25GYM0101_002
+	scrdef scr_seq_T25GYM0101_003
+	scrdef scr_seq_T25GYM0101_004
 	scrdef_end
 
-scr_seq_0886_T25GYM0101_0016:
+scr_seq_T25GYM0101_004:
 	get_phone_book_rematch 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0886_T25GYM0101_0106
+	gotoif ne, _0106
 	checkflag FLAG_GAME_CLEAR
-	gotoif FALSE, scr_seq_0886_T25GYM0101_0100
+	gotoif FALSE, _0100
 	scrcmd_147 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0886_T25GYM0101_00AF
+	gotoif eq, _00AF
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 12
-	gotoif ne, scr_seq_0886_T25GYM0101_0062
+	gotoif ne, _0062
 	setflag FLAG_UNK_2EC
-	goto scr_seq_0886_T25GYM0101_00AD
+	goto _00AD
 
-scr_seq_0886_T25GYM0101_0062:
+_0062:
 	comparevartovalue VAR_TEMP_x4000, 13
-	gotoif ne, scr_seq_0886_T25GYM0101_0079
+	gotoif ne, _0079
 	setflag FLAG_UNK_2EC
-	goto scr_seq_0886_T25GYM0101_00AD
+	goto _00AD
 
-scr_seq_0886_T25GYM0101_0079:
+_0079:
 	comparevartovalue VAR_TEMP_x4000, 14
-	gotoif ne, scr_seq_0886_T25GYM0101_0090
+	gotoif ne, _0090
 	setflag FLAG_UNK_2EC
-	goto scr_seq_0886_T25GYM0101_00AD
+	goto _00AD
 
-scr_seq_0886_T25GYM0101_0090:
+_0090:
 	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, scr_seq_0886_T25GYM0101_00A7
+	gotoif ne, _00A7
 	setflag FLAG_UNK_2EC
-	goto scr_seq_0886_T25GYM0101_00AD
+	goto _00AD
 
-scr_seq_0886_T25GYM0101_00A7:
-	goto scr_seq_0886_T25GYM0101_0100
+_00A7:
+	goto _0100
 
-scr_seq_0886_T25GYM0101_00AD:
+_00AD:
 	end
 
-scr_seq_0886_T25GYM0101_00AF:
+_00AF:
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, scr_seq_0886_T25GYM0101_00CA
+	gotoif ne, _00CA
 	setflag FLAG_UNK_2EC
-	goto scr_seq_0886_T25GYM0101_00FE
+	goto _00FE
 
-scr_seq_0886_T25GYM0101_00CA:
+_00CA:
 	comparevartovalue VAR_TEMP_x4000, 19
-	gotoif ne, scr_seq_0886_T25GYM0101_00E1
+	gotoif ne, _00E1
 	setflag FLAG_UNK_2EC
-	goto scr_seq_0886_T25GYM0101_00FE
+	goto _00FE
 
-scr_seq_0886_T25GYM0101_00E1:
+_00E1:
 	comparevartovalue VAR_TEMP_x4000, 20
-	gotoif ne, scr_seq_0886_T25GYM0101_00F8
+	gotoif ne, _00F8
 	setflag FLAG_UNK_2EC
-	goto scr_seq_0886_T25GYM0101_00FE
+	goto _00FE
 
-scr_seq_0886_T25GYM0101_00F8:
-	goto scr_seq_0886_T25GYM0101_0100
+_00F8:
+	goto _0100
 
-scr_seq_0886_T25GYM0101_00FE:
+_00FE:
 	end
 
-scr_seq_0886_T25GYM0101_0100:
+_0100:
 	clearflag FLAG_UNK_2EC
 	end
 
-scr_seq_0886_T25GYM0101_0106:
+_0106:
 	setflag FLAG_UNK_2EC
 	end
 
-scr_seq_0886_T25GYM0101_010C:
+scr_seq_T25GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0886_T25GYM0101_0202
+	gotoif eq, _0202
 	checkflag FLAG_UNK_0B7
-	gotoif TRUE, scr_seq_0886_T25GYM0101_01A0
+	gotoif TRUE, _01A0
 	comparevartovalue VAR_UNK_410A, 1
-	gotoif eq, scr_seq_0886_T25GYM0101_017D
-	npc_msg 0
+	gotoif eq, _017D
+	npc_msg msg_0582_T25GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_WHITNEY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0886_T25GYM0101_0218
+	gotoif eq, _0218
 	settrainerflag TRAINER_LASS_CARRIE
 	settrainerflag TRAINER_LASS_CATHY
 	settrainerflag TRAINER_BEAUTY_VICTORIA
 	settrainerflag TRAINER_BEAUTY_SAMANTHA
 	add_special_game_stat 22
 	move_person 1, 13, 0, 15, 0
-scr_seq_0886_T25GYM0101_017D:
-	npc_msg 2
+_017D:
+	npc_msg msg_0582_T25GYM0101_00002
 	waitbutton
 	closemsg
 	releaseall
@@ -117,63 +119,63 @@ scr_seq_0886_T25GYM0101_017D:
 	setflag FLAG_UNK_224
 	end
 
-scr_seq_0886_T25GYM0101_01A0:
-	npc_msg 3
+_01A0:
+	npc_msg msg_0582_T25GYM0101_00003
 	buffer_players_name 0
-	npc_msg 4
+	npc_msg msg_0582_T25GYM0101_00004
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
 	give_badge 2
 	setvar VAR_UNK_410A, 2
 	clearflag FLAG_UNK_084
 	setflag FLAG_UNK_998
-	npc_msg 5
-scr_seq_0886_T25GYM0101_01C4:
+	npc_msg msg_0582_T25GYM0101_00005
+_01C4:
 	setvar VAR_SPECIAL_x8004, 372
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0886_T25GYM0101_01F8
+	gotoif eq, _01F8
 	callstd std_give_item_verbose
-	npc_msg 7
+	npc_msg msg_0582_T25GYM0101_00007
 	waitbutton
 	closemsg
 	setflag FLAG_UNK_085
 	releaseall
 	end
 
-scr_seq_0886_T25GYM0101_01F8:
+_01F8:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0886_T25GYM0101_0202:
+_0202:
 	checkflag FLAG_UNK_085
-	gotoif FALSE, scr_seq_0886_T25GYM0101_01C4
-	npc_msg 8
+	gotoif FALSE, _01C4
+	npc_msg msg_0582_T25GYM0101_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0886_T25GYM0101_0218:
+_0218:
 	white_out
 	releaseall
 	end
 
-scr_seq_0886_T25GYM0101_021E:
+scr_seq_T25GYM0101_001:
 	scrcmd_609
 	lockall
-	apply_movement 1, scr_seq_0886_T25GYM0101_0260
+	apply_movement obj_T25GYM0101_gsgirl1, _0260
 	wait_movement
-	npc_msg 9
+	npc_msg msg_0582_T25GYM0101_00009
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 1, scr_seq_0886_T25GYM0101_026C
-	apply_movement 255, scr_seq_0886_T25GYM0101_0278
+	apply_movement obj_T25GYM0101_gsgirl1, _026C
+	apply_movement obj_player, _0278
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -181,58 +183,56 @@ scr_seq_0886_T25GYM0101_021E:
 	setflag FLAG_UNK_0B7
 	releaseall
 	end
-
-scr_seq_0886_T25GYM0101_025F:
 	.byte 0x00
 
-scr_seq_0886_T25GYM0101_0260:
+_0260:
 	step 75, 1
 	step 12, 3
 	step_end
 
-scr_seq_0886_T25GYM0101_026C:
+_026C:
 	step 13, 3
 	step 32, 1
 	step_end
 
-scr_seq_0886_T25GYM0101_0278:
+_0278:
 	step 63, 1
 	step 12, 1
 	step_end
-scr_seq_0886_T25GYM0101_0284:
+scr_seq_T25GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0886_T25GYM0101_02AA
-	npc_msg 10
+	gotoif eq, _02AA
+	npc_msg msg_0582_T25GYM0101_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0886_T25GYM0101_02AA:
-	npc_msg 11
+_02AA:
+	npc_msg msg_0582_T25GYM0101_00011
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0886_T25GYM0101_02B5:
+scr_seq_T25GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 2, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0886_T25GYM0101_02DC
-	npc_msg 12
-	goto scr_seq_0886_T25GYM0101_02DF
+	gotoif ne, _02DC
+	npc_msg msg_0582_T25GYM0101_00012
+	goto _02DF
 
-scr_seq_0886_T25GYM0101_02DC:
-	npc_msg 13
-scr_seq_0886_T25GYM0101_02DF:
+_02DC:
+	npc_msg msg_0582_T25GYM0101_00013
+_02DF:
 	waitbutton
 	closemsg
 	releaseall

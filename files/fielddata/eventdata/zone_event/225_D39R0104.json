@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D39R0104.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_d39r0104.h_breakrock",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_d39r0104.h_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

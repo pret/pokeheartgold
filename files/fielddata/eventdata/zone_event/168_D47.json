@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D47.h",
   "bgs": [
     {
-      "scr": 12,
+      "scr": "_EV_scr_seq_D47_012",
       "type": 1,
       "x": 91,
       "y": 294,
@@ -35,12 +36,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D47_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D47_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -52,12 +53,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D47_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_D47_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -69,12 +70,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D47_tsure_poke_583",
       "ovid": "SPRITE_TSURE_POKE_583",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 5,
+      "scr": "_EV_scr_seq_D47_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -86,12 +87,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D47_tsure_poke_601",
       "ovid": "SPRITE_TSURE_POKE_601",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_D47_003",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -103,12 +104,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D47_middlewoman1_2",
       "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D47_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -120,12 +121,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D47_gsbabyboy1",
       "ovid": "SPRITE_GSBABYBOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 6,
+      "scr": "_EV_scr_seq_D47_006",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -137,12 +138,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_D47_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_D47_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -154,12 +155,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_D47_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 8,
+      "scr": "_EV_scr_seq_D47_008",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -171,12 +172,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_D47_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 10,
+      "scr": "_EV_scr_seq_D47_010",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -188,12 +189,12 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_D47_tsure_poke_573",
       "ovid": "SPRITE_TSURE_POKE_573",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 9,
+      "scr": "_EV_scr_seq_D47_009",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -205,12 +206,12 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_D47_tsure_poke_594",
       "ovid": "SPRITE_TSURE_POKE_594",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 11,
+      "scr": "_EV_scr_seq_D47_011",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -222,12 +223,12 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_D47_gsbabygirl1",
       "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 13,
+      "scr": "_EV_scr_seq_D47_013",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -239,12 +240,12 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_D47_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 14,
+      "scr": "_EV_scr_seq_D47_014",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -256,12 +257,12 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_D47_workman",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_319",
-      "scr": 16,
+      "scr": "_EV_scr_seq_D47_016",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -273,7 +274,7 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_D47_workman_2",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 0,
       "type": 0,

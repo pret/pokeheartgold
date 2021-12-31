@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_W19.h",
   "bgs": [
     {
       "scr": 8180,
@@ -49,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_W19_005",
       "type": 1,
       "x": 1200,
       "y": 468,
@@ -59,7 +60,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_W19_gsswimmerm",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 2,
       "type": 1,
@@ -76,7 +77,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_W19_gsswimmerm_2",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 20,
       "type": 1,
@@ -93,7 +94,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_W19_gsswimmerm_3",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 20,
       "type": 1,
@@ -110,7 +111,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_W19_gsswimmerw",
       "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 16,
       "type": 1,
@@ -127,12 +128,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_W19_stop",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_265",
-      "scr": 0,
+      "scr": "_EV_scr_seq_W19_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -144,12 +145,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_W19_stop_2",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_265",
-      "scr": 0,
+      "scr": "_EV_scr_seq_W19_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -161,12 +162,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_W19_stop_3",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_265",
-      "scr": 0,
+      "scr": "_EV_scr_seq_W19_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -178,12 +179,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_W19_stop_4",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_265",
-      "scr": 0,
+      "scr": "_EV_scr_seq_W19_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -195,7 +196,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_W19_breakrock",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -212,7 +213,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_W19_breakrock_2",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -229,7 +230,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_W19_breakrock_3",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -246,7 +247,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_W19_breakrock_4",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -263,7 +264,7 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_W19_breakrock_5",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -280,12 +281,12 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_W19_workman",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_299",
-      "scr": 1,
+      "scr": "_EV_scr_seq_W19_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -297,12 +298,12 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_W19_workman_2",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_UNK_299",
-      "scr": 2,
+      "scr": "_EV_scr_seq_W19_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -314,12 +315,12 @@
       "z": 0
     },
     {
-      "id": 15,
+      "id": "obj_W19_workman_3",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_29A",
-      "scr": 3,
+      "scr": "_EV_scr_seq_W19_003",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -331,12 +332,12 @@
       "z": 0
     },
     {
-      "id": 16,
+      "id": "obj_W19_workman_4",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_UNK_29A",
-      "scr": 4,
+      "scr": "_EV_scr_seq_W19_004",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -348,7 +349,7 @@
       "z": 0
     },
     {
-      "id": 17,
+      "id": "obj_W19_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T06R0301.h",
   "bgs": [
     {
-      "scr": 7,
+      "scr": "_EV_scr_seq_T06R0301_007",
       "type": 0,
       "x": 4,
       "y": 2,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 6,
+      "scr": "_EV_scr_seq_T06R0301_006",
       "type": 0,
       "x": 10,
       "y": 2,
@@ -27,12 +28,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T06R0301_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T06R0301_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -44,12 +45,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T06R0301_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T06R0301_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -61,12 +62,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T06R0301_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T06R0301_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -78,12 +79,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T06R0301_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T06R0301_003",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -95,12 +96,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T06R0301_tsure_poke_609",
       "ovid": "SPRITE_TSURE_POKE_609",
       "mvt": 42,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T06R0301_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -112,12 +113,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T06R0301_mono_pip",
       "ovid": "SPRITE_MONO_PIP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2FC",
-      "scr": 0,
+      "scr": "_EV_scr_seq_T06R0301_000",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

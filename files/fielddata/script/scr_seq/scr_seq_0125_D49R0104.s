@@ -1,143 +1,143 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D49R0104.h"
+#include "msgdata/msg/msg_0140_D49R0104.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0125_D49R0104_0076 ; 000
-	scrdef scr_seq_0125_D49R0104_0089 ; 001
-	scrdef scr_seq_0125_D49R0104_00B2 ; 002
-	scrdef scr_seq_0125_D49R0104_00C5 ; 003
-	scrdef scr_seq_0125_D49R0104_00F8 ; 004
-	scrdef scr_seq_0125_D49R0104_010B ; 005
-	scrdef scr_seq_0125_D49R0104_0126 ; 006
-	scrdef scr_seq_0125_D49R0104_0141 ; 007
-	scrdef scr_seq_0125_D49R0104_0172 ; 008
-	scrdef scr_seq_0125_D49R0104_0185 ; 009
-	scrdef scr_seq_0125_D49R0104_0198 ; 010
-	scrdef scr_seq_0125_D49R0104_0055 ; 011
-	scrdef scr_seq_0125_D49R0104_003A ; 012
-	scrdef scr_seq_0125_D49R0104_01AB ; 013
+	scrdef scr_seq_D49R0104_000
+	scrdef scr_seq_D49R0104_001
+	scrdef scr_seq_D49R0104_002
+	scrdef scr_seq_D49R0104_003
+	scrdef scr_seq_D49R0104_004
+	scrdef scr_seq_D49R0104_005
+	scrdef scr_seq_D49R0104_006
+	scrdef scr_seq_D49R0104_007
+	scrdef scr_seq_D49R0104_008
+	scrdef scr_seq_D49R0104_009
+	scrdef scr_seq_D49R0104_010
+	scrdef scr_seq_D49R0104_011
+	scrdef scr_seq_D49R0104_012
+	scrdef scr_seq_D49R0104_013
 	scrdef_end
 
-scr_seq_0125_D49R0104_003A:
+scr_seq_D49R0104_012:
 	checkflag FLAG_UNK_0EF
-	gotoif TRUE, scr_seq_0125_D49R0104_004D
+	gotoif TRUE, _004D
 	setvar VAR_TEMP_x400B, 0
 	end
 
-scr_seq_0125_D49R0104_004D:
+_004D:
 	setvar VAR_TEMP_x400B, 1
 	end
 
-scr_seq_0125_D49R0104_0055:
+scr_seq_D49R0104_011:
 	comparevartovalue VAR_TEMP_x400B, 1
-	gotoif ne, scr_seq_0125_D49R0104_0074
+	gotoif ne, _0074
 	move_person 2, 2, 1, 3, 3
 	setvar VAR_TEMP_x400B, 0
-scr_seq_0125_D49R0104_0074:
+_0074:
 	end
 
-scr_seq_0125_D49R0104_0076:
+scr_seq_D49R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0140_D49R0104_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_0089:
+scr_seq_D49R0104_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0EF
-	gotoif TRUE, scr_seq_0125_D49R0104_00A7
-	npc_msg 1
+	gotoif TRUE, _00A7
+	npc_msg msg_0140_D49R0104_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_00A7:
-	npc_msg 2
+_00A7:
+	npc_msg msg_0140_D49R0104_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_00B2:
+scr_seq_D49R0104_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0140_D49R0104_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_00C5:
+scr_seq_D49R0104_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg msg_0140_D49R0104_00004
 	closemsg
-	apply_movement 4, scr_seq_0125_D49R0104_00F0
+	apply_movement obj_D49R0104_tsure_poke_575, _00F0
 	wait_movement
 	scrcmd_076 19, 0
-	npc_msg 11
+	npc_msg msg_0140_D49R0104_00011
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0125_D49R0104_00EF:
 	.byte 0x00
 
-scr_seq_0125_D49R0104_00F0:
+_00F0:
 	step 48, 2
 	step_end
-scr_seq_0125_D49R0104_00F8:
+scr_seq_D49R0104_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg msg_0140_D49R0104_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_010B:
+scr_seq_D49R0104_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 19, 0
-	npc_msg 10
+	npc_msg msg_0140_D49R0104_00010
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_0126:
+scr_seq_D49R0104_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 41, 0
-	npc_msg 12
+	npc_msg msg_0140_D49R0104_00012
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_0141:
+scr_seq_D49R0104_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	buffer_players_name 0
-	npc_msg 6
+	npc_msg msg_0140_D49R0104_00006
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -148,41 +148,41 @@ scr_seq_0125_D49R0104_0141:
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_0172:
+scr_seq_D49R0104_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0140_D49R0104_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_0185:
+scr_seq_D49R0104_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0140_D49R0104_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_0198:
+scr_seq_D49R0104_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 9
+	npc_msg msg_0140_D49R0104_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0125_D49R0104_01AB:
+scr_seq_D49R0104_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 13
+	npc_msg msg_0140_D49R0104_00013
 	waitbutton
 	closemsg
 	releaseall

@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R10.h",
   "bgs": [
     {
       "scr": 8197,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 6,
+      "scr": "_EV_scr_seq_R10_006",
       "type": 1,
       "x": 1421,
       "y": 185,
@@ -27,12 +28,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R10_gsleader9",
       "ovid": "SPRITE_GSLEADER9",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_264",
-      "scr": 3,
+      "scr": "_EV_scr_seq_R10_003",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -44,12 +45,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R10_tsure_poke_604",
       "ovid": "SPRITE_TSURE_POKE_604",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_297",
-      "scr": 4,
+      "scr": "_EV_scr_seq_R10_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -86,7 +87,7 @@
   ],
   "coords": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_R10_001",
       "x": 1423,
       "y": 184,
       "w": 1,

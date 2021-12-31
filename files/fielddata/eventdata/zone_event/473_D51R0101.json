@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D51R0101.h",
   "bgs": [
     {
       "scr": 4,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D51R0101_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2DB",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D51R0101_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,

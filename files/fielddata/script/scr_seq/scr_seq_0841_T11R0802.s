@@ -1,84 +1,86 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T11R0802.h"
+#include "msgdata/msg/msg_0541_T11R0802.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0841_T11R0802_005C ; 000
-	scrdef scr_seq_0841_T11R0802_03E0 ; 001
-	scrdef scr_seq_0841_T11R0802_03F3 ; 002
-	scrdef scr_seq_0841_T11R0802_0320 ; 003
-	scrdef scr_seq_0841_T11R0802_001E ; 004
-	scrdef scr_seq_0841_T11R0802_0043 ; 005
-	scrdef scr_seq_0841_T11R0802_0406 ; 006
+	scrdef scr_seq_T11R0802_000
+	scrdef scr_seq_T11R0802_001
+	scrdef scr_seq_T11R0802_002
+	scrdef scr_seq_T11R0802_003
+	scrdef scr_seq_T11R0802_004
+	scrdef scr_seq_T11R0802_005
+	scrdef scr_seq_T11R0802_006
 	scrdef_end
 
-scr_seq_0841_T11R0802_001E:
+scr_seq_T11R0802_004:
 	get_player_gender VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 0
-	gotoif ne, scr_seq_0841_T11R0802_003B
+	gotoif ne, _003B
 	setvar VAR_OBJ_0, 0
-	goto scr_seq_0841_T11R0802_0041
+	goto _0041
 
-scr_seq_0841_T11R0802_003B:
+_003B:
 	setvar VAR_OBJ_0, 97
-scr_seq_0841_T11R0802_0041:
+_0041:
 	end
 
-scr_seq_0841_T11R0802_0043:
+scr_seq_T11R0802_005:
 	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, scr_seq_0841_T11R0802_005A
+	gotoif ne, _005A
 	hide_person 3
 	setvar VAR_TEMP_x400B, 1
-scr_seq_0841_T11R0802_005A:
+_005A:
 	end
 
-scr_seq_0841_T11R0802_005C:
+scr_seq_T11R0802_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	getitemquantity 480, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0841_T11R0802_0125
+	gotoif ne, _0125
 	getitemquantity 479, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0841_T11R0802_00E9
+	gotoif ne, _00E9
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0841_T11R0802_00BD
-	call scr_seq_0841_T11R0802_014D
+	gotoif TRUE, _00BD
+	call _014D
 	buffer_players_name 0
-	gender_msgbox 0, 1
+	gender_msgbox msg_0541_T11R0802_00000, msg_0541_T11R0802_00001
 	closemsg
-	call scr_seq_0841_T11R0802_01DB
-	npc_msg 2
+	call _01DB
+	npc_msg msg_0541_T11R0802_00002
 	closemsg
-	apply_movement 0, scr_seq_0841_T11R0802_026C
+	apply_movement obj_T11R0802_gsgirl1, _026C
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0841_T11R0802_00BD:
+_00BD:
 	setflag FLAG_UNK_119
-	call scr_seq_0841_T11R0802_014D
+	call _014D
 	buffer_players_name 0
-	gender_msgbox 3, 4
+	gender_msgbox msg_0541_T11R0802_00003, msg_0541_T11R0802_00004
 	closemsg
-	call scr_seq_0841_T11R0802_01DB
-	npc_msg 5
+	call _01DB
+	npc_msg msg_0541_T11R0802_00005
 	closemsg
-	apply_movement 0, scr_seq_0841_T11R0802_026C
+	apply_movement obj_T11R0802_gsgirl1, _026C
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0841_T11R0802_00E9:
+_00E9:
 	takeitem ITEM_LOST_ITEM, 1, VAR_SPECIAL_x800C
-	npc_msg 6
+	npc_msg msg_0541_T11R0802_00006
 	clearflag FLAG_UNK_2FB
 	show_person 1
 	setvar VAR_SPECIAL_x8004, 480
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	npc_msg 8
+	npc_msg msg_0541_T11R0802_00008
 	waitbutton
 	closemsg
 	releaseall
@@ -87,99 +89,97 @@ scr_seq_0841_T11R0802_00E9:
 	setvar VAR_UNK_40FF, 2
 	end
 
-scr_seq_0841_T11R0802_0125:
-	call scr_seq_0841_T11R0802_014D
+_0125:
+	call _014D
 	buffer_players_name 0
-	gender_msgbox 9, 10
+	gender_msgbox msg_0541_T11R0802_00009, msg_0541_T11R0802_00010
 	closemsg
-	call scr_seq_0841_T11R0802_01DB
-	npc_msg 11
+	call _01DB
+	npc_msg msg_0541_T11R0802_00011
 	closemsg
-	apply_movement 0, scr_seq_0841_T11R0802_026C
+	apply_movement obj_T11R0802_gsgirl1, _026C
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0841_T11R0802_014D:
+_014D:
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0841_T11R0802_016C
-	apply_movement 0, scr_seq_0841_T11R0802_02B0
-	goto scr_seq_0841_T11R0802_018F
+	gotoif ne, _016C
+	apply_movement obj_T11R0802_gsgirl1, _02B0
+	goto _018F
 
-scr_seq_0841_T11R0802_016C:
+_016C:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0841_T11R0802_0187
-	apply_movement 0, scr_seq_0841_T11R0802_0274
-	goto scr_seq_0841_T11R0802_018F
+	gotoif ne, _0187
+	apply_movement obj_T11R0802_gsgirl1, _0274
+	goto _018F
 
-scr_seq_0841_T11R0802_0187:
-	apply_movement 0, scr_seq_0841_T11R0802_0294
-scr_seq_0841_T11R0802_018F:
+_0187:
+	apply_movement obj_T11R0802_gsgirl1, _0294
+_018F:
 	wait_movement
 	show_person 3
 	hide_person 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0841_T11R0802_01B4
-	apply_movement 3, scr_seq_0841_T11R0802_0304
-	goto scr_seq_0841_T11R0802_01D7
+	gotoif ne, _01B4
+	apply_movement obj_T11R0802_var_1, _0304
+	goto _01D7
 
-scr_seq_0841_T11R0802_01B4:
+_01B4:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0841_T11R0802_01CF
-	apply_movement 3, scr_seq_0841_T11R0802_02C8
-	goto scr_seq_0841_T11R0802_01D7
+	gotoif ne, _01CF
+	apply_movement obj_T11R0802_var_1, _02C8
+	goto _01D7
 
-scr_seq_0841_T11R0802_01CF:
-	apply_movement 3, scr_seq_0841_T11R0802_02EC
-scr_seq_0841_T11R0802_01D7:
+_01CF:
+	apply_movement obj_T11R0802_var_1, _02EC
+_01D7:
 	wait_movement
 	return
 
-scr_seq_0841_T11R0802_01DB:
+_01DB:
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0841_T11R0802_01FA
-	apply_movement 3, scr_seq_0841_T11R0802_02B0
-	goto scr_seq_0841_T11R0802_021D
+	gotoif ne, _01FA
+	apply_movement obj_T11R0802_var_1, _02B0
+	goto _021D
 
-scr_seq_0841_T11R0802_01FA:
+_01FA:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0841_T11R0802_0215
-	apply_movement 3, scr_seq_0841_T11R0802_0274
-	goto scr_seq_0841_T11R0802_021D
+	gotoif ne, _0215
+	apply_movement obj_T11R0802_var_1, _0274
+	goto _021D
 
-scr_seq_0841_T11R0802_0215:
-	apply_movement 3, scr_seq_0841_T11R0802_0294
-scr_seq_0841_T11R0802_021D:
+_0215:
+	apply_movement obj_T11R0802_var_1, _0294
+_021D:
 	wait_movement
 	show_person 0
 	hide_person 3
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0841_T11R0802_0242
-	apply_movement 0, scr_seq_0841_T11R0802_0304
-	goto scr_seq_0841_T11R0802_0265
+	gotoif ne, _0242
+	apply_movement obj_T11R0802_gsgirl1, _0304
+	goto _0265
 
-scr_seq_0841_T11R0802_0242:
+_0242:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0841_T11R0802_025D
-	apply_movement 0, scr_seq_0841_T11R0802_02C8
-	goto scr_seq_0841_T11R0802_0265
+	gotoif ne, _025D
+	apply_movement obj_T11R0802_gsgirl1, _02C8
+	goto _0265
 
-scr_seq_0841_T11R0802_025D:
-	apply_movement 0, scr_seq_0841_T11R0802_02EC
-scr_seq_0841_T11R0802_0265:
+_025D:
+	apply_movement obj_T11R0802_gsgirl1, _02EC
+_0265:
 	wait_movement
 	return
-
-scr_seq_0841_T11R0802_0269:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0841_T11R0802_026C:
+_026C:
 	step 34, 1
 	step_end
 
-scr_seq_0841_T11R0802_0274:
+_0274:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -189,7 +189,7 @@ scr_seq_0841_T11R0802_0274:
 	step 2, 1
 	step_end
 
-scr_seq_0841_T11R0802_0294:
+_0294:
 	step 1, 1
 	step 2, 1
 	step 0, 1
@@ -198,7 +198,7 @@ scr_seq_0841_T11R0802_0294:
 	step 2, 1
 	step_end
 
-scr_seq_0841_T11R0802_02B0:
+_02B0:
 	step 2, 1
 	step 0, 1
 	step 3, 1
@@ -206,7 +206,7 @@ scr_seq_0841_T11R0802_02B0:
 	step 2, 1
 	step_end
 
-scr_seq_0841_T11R0802_02C8:
+_02C8:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -217,7 +217,7 @@ scr_seq_0841_T11R0802_02C8:
 	step 0, 1
 	step_end
 
-scr_seq_0841_T11R0802_02EC:
+_02EC:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -225,7 +225,7 @@ scr_seq_0841_T11R0802_02EC:
 	step 3, 1
 	step_end
 
-scr_seq_0841_T11R0802_0304:
+_0304:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -233,112 +233,110 @@ scr_seq_0841_T11R0802_0304:
 	step 3, 1
 	step 1, 1
 	step_end
-scr_seq_0841_T11R0802_0320:
+scr_seq_T11R0802_003:
 	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, scr_seq_0841_T11R0802_03A3
+	gotoif ne, _03A3
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 12
+	npc_msg msg_0541_T11R0802_00012
 	waitbutton
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0841_T11R0802_0359
-	apply_movement 2, scr_seq_0841_T11R0802_03C8
-	goto scr_seq_0841_T11R0802_0397
+	gotoif ne, _0359
+	apply_movement obj_T11R0802_jupetta, _03C8
+	goto _0397
 
-scr_seq_0841_T11R0802_0359:
+_0359:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0841_T11R0802_0374
-	apply_movement 2, scr_seq_0841_T11R0802_03C0
-	goto scr_seq_0841_T11R0802_0397
+	gotoif ne, _0374
+	apply_movement obj_T11R0802_jupetta, _03C0
+	goto _0397
 
-scr_seq_0841_T11R0802_0374:
+_0374:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0841_T11R0802_038F
-	apply_movement 2, scr_seq_0841_T11R0802_03D8
-	goto scr_seq_0841_T11R0802_0397
+	gotoif ne, _038F
+	apply_movement obj_T11R0802_jupetta, _03D8
+	goto _0397
 
-scr_seq_0841_T11R0802_038F:
-	apply_movement 2, scr_seq_0841_T11R0802_03D0
-scr_seq_0841_T11R0802_0397:
+_038F:
+	apply_movement obj_T11R0802_jupetta, _03D0
+_0397:
 	wait_movement
 	setvar VAR_TEMP_x400A, 1
 	releaseall
 	end
 
-scr_seq_0841_T11R0802_03A3:
+_03A3:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 354, 0
-	npc_msg 13
+	npc_msg msg_0541_T11R0802_00013
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0841_T11R0802_03BE:
 	.byte 0x00, 0x00
 
-scr_seq_0841_T11R0802_03C0:
+_03C0:
 	step 0, 1
 	step_end
 
-scr_seq_0841_T11R0802_03C8:
+_03C8:
 	step 1, 1
 	step_end
 
-scr_seq_0841_T11R0802_03D0:
+_03D0:
 	step 2, 1
 	step_end
 
-scr_seq_0841_T11R0802_03D8:
+_03D8:
 	step 3, 1
 	step_end
-scr_seq_0841_T11R0802_03E0:
+scr_seq_T11R0802_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 15
+	npc_msg msg_0541_T11R0802_00015
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0841_T11R0802_03F3:
+scr_seq_T11R0802_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 14
+	npc_msg msg_0541_T11R0802_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0841_T11R0802_0406:
+scr_seq_T11R0802_006:
 	checkflag FLAG_UNK_2FB
-	gotoif TRUE, scr_seq_0841_T11R0802_0431
+	gotoif TRUE, _0431
 	comparevartovalue VAR_UNK_40FF, 2
-	gotoif eq, scr_seq_0841_T11R0802_0433
+	gotoif eq, _0433
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 16
+	npc_msg msg_0541_T11R0802_00016
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0841_T11R0802_0431:
+_0431:
 	end
 
-scr_seq_0841_T11R0802_0433:
+_0433:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 17
+	npc_msg msg_0541_T11R0802_00017
 	waitbutton
 	closemsg
 	releaseall

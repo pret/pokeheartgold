@@ -1,80 +1,82 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25R1001.h"
+#include "msgdata/msg/msg_0592_T25R1001.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0899_T25R1001_0016 ; 000
-	scrdef scr_seq_0899_T25R1001_0029 ; 001
-	scrdef scr_seq_0899_T25R1001_0052 ; 002
-	scrdef scr_seq_0899_T25R1001_007B ; 003
-	scrdef scr_seq_0899_T25R1001_00A4 ; 004
+	scrdef scr_seq_T25R1001_000
+	scrdef scr_seq_T25R1001_001
+	scrdef scr_seq_T25R1001_002
+	scrdef scr_seq_T25R1001_003
+	scrdef scr_seq_T25R1001_004
 	scrdef_end
 
-scr_seq_0899_T25R1001_0016:
+scr_seq_T25R1001_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0592_T25R1001_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0899_T25R1001_0029:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0899_T25R1001_0047
-	npc_msg 2
-	goto scr_seq_0899_T25R1001_004A
-
-scr_seq_0899_T25R1001_0047:
-	npc_msg 1
-scr_seq_0899_T25R1001_004A:
-	waitbutton
-	closemsg
-	releaseall
-	end
-
-scr_seq_0899_T25R1001_0052:
+scr_seq_T25R1001_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0899_T25R1001_0070
-	npc_msg 4
-	goto scr_seq_0899_T25R1001_0073
+	gotoif ne, _0047
+	npc_msg msg_0592_T25R1001_00002
+	goto _004A
 
-scr_seq_0899_T25R1001_0070:
-	npc_msg 3
-scr_seq_0899_T25R1001_0073:
+_0047:
+	npc_msg msg_0592_T25R1001_00001
+_004A:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0899_T25R1001_007B:
+scr_seq_T25R1001_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0899_T25R1001_0099
-	npc_msg 6
-	goto scr_seq_0899_T25R1001_009C
+	gotoif ne, _0070
+	npc_msg msg_0592_T25R1001_00004
+	goto _0073
 
-scr_seq_0899_T25R1001_0099:
-	npc_msg 5
-scr_seq_0899_T25R1001_009C:
+_0070:
+	npc_msg msg_0592_T25R1001_00003
+_0073:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0899_T25R1001_00A4:
+scr_seq_T25R1001_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 7
+	faceplayer
+	comparevartovalue VAR_UNK_4077, 3
+	gotoif ne, _0099
+	npc_msg msg_0592_T25R1001_00006
+	goto _009C
+
+_0099:
+	npc_msg msg_0592_T25R1001_00005
+_009C:
+	waitbutton
+	closemsg
+	releaseall
+	end
+
+scr_seq_T25R1001_004:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	npc_msg msg_0592_T25R1001_00007
 	waitbutton
 	closemsg
 	releaseall

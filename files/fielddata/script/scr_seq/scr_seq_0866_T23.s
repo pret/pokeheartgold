@@ -1,228 +1,229 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T23.h"
+#include "msgdata/msg/msg_0564_T23.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0866_T23_0061 ; 000
-	scrdef scr_seq_0866_T23_0074 ; 001
-	scrdef scr_seq_0866_T23_0092 ; 002
-	scrdef scr_seq_0866_T23_02FC ; 003
-	scrdef scr_seq_0866_T23_0046 ; 004
-	scrdef scr_seq_0866_T23_0061 ; 005
-	scrdef scr_seq_0866_T23_0380 ; 006
-	scrdef scr_seq_0866_T23_03A7 ; 007
-	scrdef scr_seq_0866_T23_03CC ; 008
-	scrdef scr_seq_0866_T23_03E1 ; 009
-	scrdef scr_seq_0866_T23_03F6 ; 010
-	scrdef scr_seq_0866_T23_040B ; 011
-	scrdef scr_seq_0866_T23_0422 ; 012
-	scrdef scr_seq_0866_T23_0437 ; 013
-	scrdef scr_seq_0866_T23_044E ; 014
-	scrdef scr_seq_0866_T23_0461 ; 015
-	scrdef scr_seq_0866_T23_0474 ; 016
+	scrdef scr_seq_T23_000
+	scrdef scr_seq_T23_001
+	scrdef scr_seq_T23_002
+	scrdef scr_seq_T23_003
+	scrdef scr_seq_T23_004
+	scrdef scr_seq_T23_005
+	scrdef scr_seq_T23_006
+	scrdef scr_seq_T23_007
+	scrdef scr_seq_T23_008
+	scrdef scr_seq_T23_009
+	scrdef scr_seq_T23_010
+	scrdef scr_seq_T23_011
+	scrdef scr_seq_T23_012
+	scrdef scr_seq_T23_013
+	scrdef scr_seq_T23_014
+	scrdef scr_seq_T23_015
+	scrdef scr_seq_T23_016
 	scrdef_end
 
-scr_seq_0866_T23_0046:
+scr_seq_T23_004:
 	comparevartovalue VAR_UNK_4080, 0
-	gotoif ne, scr_seq_0866_T23_005F
+	gotoif ne, _005F
 	setflag FLAG_UNK_19F
 	clearflag FLAG_UNK_271
 	clearflag FLAG_UNK_272
-scr_seq_0866_T23_005F:
+_005F:
 	end
 
-scr_seq_0866_T23_0061:
+scr_seq_T23_000:
+scr_seq_T23_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0564_T23_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0866_T23_0074:
+scr_seq_T23_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 9
+	npc_msg msg_0564_T23_00009
 	scrcmd_076 79, 0
-	npc_msg 10
+	npc_msg msg_0564_T23_00010
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0866_T23_0092:
+scr_seq_T23_002:
 	scrcmd_609
 	lockall
 	fade_out_bgm 0, 3
-	apply_movement 255, scr_seq_0866_T23_02A4
+	apply_movement obj_player, _02A4
 	wait_movement
 	setvar VAR_UNK_4099, 1
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 462
-	gotoif ne, scr_seq_0866_T23_00E5
+	gotoif ne, _00E5
 	move_person 9, 404, 0, 463, 2
-	apply_movement 9, scr_seq_0866_T23_028C
-	apply_movement 255, scr_seq_0866_T23_02AC
-	goto scr_seq_0866_T23_018E
+	apply_movement obj_T23_gsrivel, _028C
+	apply_movement obj_player, _02AC
+	goto _018E
 
-scr_seq_0866_T23_00E5:
+_00E5:
 	comparevartovalue VAR_SPECIAL_x8005, 463
-	gotoif ne, scr_seq_0866_T23_0114
+	gotoif ne, _0114
 	move_person 9, 404, 0, 464, 2
-	apply_movement 9, scr_seq_0866_T23_028C
-	apply_movement 255, scr_seq_0866_T23_02AC
-	goto scr_seq_0866_T23_018E
+	apply_movement obj_T23_gsrivel, _028C
+	apply_movement obj_player, _02AC
+	goto _018E
 
-scr_seq_0866_T23_0114:
+_0114:
 	comparevartovalue VAR_SPECIAL_x8005, 464
-	gotoif ne, scr_seq_0866_T23_0143
+	gotoif ne, _0143
 	move_person 9, 404, 0, 463, 2
-	apply_movement 9, scr_seq_0866_T23_0298
-	apply_movement 255, scr_seq_0866_T23_02C0
-	goto scr_seq_0866_T23_018E
+	apply_movement obj_T23_gsrivel, _0298
+	apply_movement obj_player, _02C0
+	goto _018E
 
-scr_seq_0866_T23_0143:
+_0143:
 	comparevartovalue VAR_SPECIAL_x8005, 465
-	gotoif ne, scr_seq_0866_T23_0172
+	gotoif ne, _0172
 	move_person 9, 404, 0, 464, 2
-	apply_movement 9, scr_seq_0866_T23_0298
-	apply_movement 255, scr_seq_0866_T23_02C0
-	goto scr_seq_0866_T23_018E
+	apply_movement obj_T23_gsrivel, _0298
+	apply_movement obj_player, _02C0
+	goto _018E
 
-scr_seq_0866_T23_0172:
+_0172:
 	move_person 9, 404, 0, 465, 2
-	apply_movement 9, scr_seq_0866_T23_0298
-	apply_movement 255, scr_seq_0866_T23_02C0
-scr_seq_0866_T23_018E:
+	apply_movement obj_T23_gsrivel, _0298
+	apply_movement obj_player, _02C0
+_018E:
 	wait_movement
 	buffer_rivals_name 0
-	npc_msg 1
+	npc_msg msg_0564_T23_00001
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, scr_seq_0866_T23_01B7
+	gotoif ne, _01B7
 	trainer_battle TRAINER_RIVAL_SILVER_7, 0, 0, 0
-	goto scr_seq_0866_T23_01DA
+	goto _01DA
 
-scr_seq_0866_T23_01B7:
+_01B7:
 	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, scr_seq_0866_T23_01D2
+	gotoif ne, _01D2
 	trainer_battle TRAINER_RIVAL_SILVER_10, 0, 0, 0
-	goto scr_seq_0866_T23_01DA
+	goto _01DA
 
-scr_seq_0866_T23_01D2:
+_01D2:
 	trainer_battle TRAINER_RIVAL_SILVER, 0, 0, 0
-scr_seq_0866_T23_01DA:
+_01DA:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0866_T23_0285
+	gotoif eq, _0285
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
-	npc_msg 2
+	npc_msg msg_0564_T23_00002
 	closemsg
 	setvar VAR_UNK_4075, 2
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 462
-	gotoif ne, scr_seq_0866_T23_021E
-	apply_movement 9, scr_seq_0866_T23_02D4
-	goto scr_seq_0866_T23_0277
+	gotoif ne, _021E
+	apply_movement obj_T23_gsrivel, _02D4
+	goto _0277
 
-scr_seq_0866_T23_021E:
+_021E:
 	comparevartovalue VAR_SPECIAL_x8005, 463
-	gotoif ne, scr_seq_0866_T23_0239
-	apply_movement 9, scr_seq_0866_T23_02DC
-	goto scr_seq_0866_T23_0277
+	gotoif ne, _0239
+	apply_movement obj_T23_gsrivel, _02DC
+	goto _0277
 
-scr_seq_0866_T23_0239:
+_0239:
 	comparevartovalue VAR_SPECIAL_x8005, 464
-	gotoif ne, scr_seq_0866_T23_0254
-	apply_movement 9, scr_seq_0866_T23_02D4
-	goto scr_seq_0866_T23_0277
+	gotoif ne, _0254
+	apply_movement obj_T23_gsrivel, _02D4
+	goto _0277
 
-scr_seq_0866_T23_0254:
+_0254:
 	comparevartovalue VAR_SPECIAL_x8005, 465
-	gotoif ne, scr_seq_0866_T23_026F
-	apply_movement 9, scr_seq_0866_T23_02DC
-	goto scr_seq_0866_T23_0277
+	gotoif ne, _026F
+	apply_movement obj_T23_gsrivel, _02DC
+	goto _0277
 
-scr_seq_0866_T23_026F:
-	apply_movement 9, scr_seq_0866_T23_02EC
-scr_seq_0866_T23_0277:
+_026F:
+	apply_movement obj_T23_gsrivel, _02EC
+_0277:
 	wait_movement
 	hide_person 9
 	callstd std_fade_end_rival_outro_music
 	releaseall
 	end
 
-scr_seq_0866_T23_0285:
+_0285:
 	white_out
 	releaseall
 	end
-
-scr_seq_0866_T23_028B:
 	.byte 0x00
 
-scr_seq_0866_T23_028C:
+_028C:
 	step 14, 9
 	step 0, 1
 	step_end
 
-scr_seq_0866_T23_0298:
+_0298:
 	step 14, 9
 	step 1, 1
 	step_end
 
-scr_seq_0866_T23_02A4:
+_02A4:
 	step 75, 1
 	step_end
 
-scr_seq_0866_T23_02AC:
+_02AC:
 	step 3, 1
 	step 62, 6
 	step 63, 7
 	step 1, 1
 	step_end
 
-scr_seq_0866_T23_02C0:
+_02C0:
 	step 3, 1
 	step 62, 6
 	step 63, 7
 	step 0, 1
 	step_end
 
-scr_seq_0866_T23_02D4:
+_02D4:
 	step 14, 3
 	step_end
 
-scr_seq_0866_T23_02DC:
+_02DC:
 	step 14, 1
 	step 12, 1
 	step 14, 2
 	step_end
 
-scr_seq_0866_T23_02EC:
+_02EC:
 	step 14, 1
 	step 12, 2
 	step 14, 2
 	step_end
-scr_seq_0866_T23_02FC:
+scr_seq_T23_003:
 	scrcmd_609
 	lockall
-	apply_movement 12, scr_seq_0866_T23_0350
+	apply_movement obj_T23_rocketm_3, _0350
 	wait_movement
-	npc_msg 16
+	npc_msg msg_0564_T23_00016
 	play_se SEQ_SE_DP_WALL_HIT
-	npc_msg 17
+	npc_msg msg_0564_T23_00017
 	closemsg
-	apply_movement 13, scr_seq_0866_T23_0358
+	apply_movement obj_T23_gsmiddleman1_2, _0358
 	wait_movement
 	move_person 13, 23, 0, 16, 3
-	apply_movement 12, scr_seq_0866_T23_0374
+	apply_movement obj_T23_rocketm_3, _0374
 	wait_movement
 	hide_person 13
 	setflag FLAG_UNK_272
@@ -233,11 +234,11 @@ scr_seq_0866_T23_02FC:
 	end
 
 
-scr_seq_0866_T23_0350:
+_0350:
 	step 34, 2
 	step_end
 
-scr_seq_0866_T23_0358:
+_0358:
 	step 71, 1
 	step 22, 1
 	step 63, 2
@@ -246,41 +247,41 @@ scr_seq_0866_T23_0358:
 	step 18, 9
 	step_end
 
-scr_seq_0866_T23_0374:
+_0374:
 	step 12, 2
 	step 33, 1
 	step_end
-scr_seq_0866_T23_0380:
+scr_seq_T23_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_07B
-	gotoif TRUE, scr_seq_0866_T23_039C
-	npc_msg 18
-	goto scr_seq_0866_T23_039F
+	gotoif TRUE, _039C
+	npc_msg msg_0564_T23_00018
+	goto _039F
 
-scr_seq_0866_T23_039C:
-	npc_msg 19
-scr_seq_0866_T23_039F:
+_039C:
+	npc_msg msg_0564_T23_00019
+_039F:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0866_T23_03A7:
+scr_seq_T23_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_07B
-	gotoif TRUE, scr_seq_0866_T23_03C3
-	npc_msg 5
-	goto scr_seq_0866_T23_039F
+	gotoif TRUE, _03C3
+	npc_msg msg_0564_T23_00005
+	goto _039F
 
-scr_seq_0866_T23_03C3:
-	npc_msg 6
-	goto scr_seq_0866_T23_039F
+_03C3:
+	npc_msg msg_0564_T23_00006
+	goto _039F
 
-scr_seq_0866_T23_03CC:
+scr_seq_T23_008:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -288,7 +289,7 @@ scr_seq_0866_T23_03CC:
 	callstd 2000
 	end
 
-scr_seq_0866_T23_03E1:
+scr_seq_T23_009:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -296,7 +297,7 @@ scr_seq_0866_T23_03E1:
 	callstd 2000
 	end
 
-scr_seq_0866_T23_03F6:
+scr_seq_T23_010:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -304,7 +305,7 @@ scr_seq_0866_T23_03F6:
 	callstd 2000
 	end
 
-scr_seq_0866_T23_040B:
+scr_seq_T23_011:
 	scrcmd_055 11, 0, 14, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -312,7 +313,7 @@ scr_seq_0866_T23_040B:
 	callstd 2000
 	end
 
-scr_seq_0866_T23_0422:
+scr_seq_T23_012:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -320,7 +321,7 @@ scr_seq_0866_T23_0422:
 	callstd 2000
 	end
 
-scr_seq_0866_T23_0437:
+scr_seq_T23_013:
 	scrcmd_055 0, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -328,31 +329,31 @@ scr_seq_0866_T23_0437:
 	callstd 2000
 	end
 
-scr_seq_0866_T23_044E:
+scr_seq_T23_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg msg_0564_T23_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0866_T23_0461:
+scr_seq_T23_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0564_T23_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0866_T23_0474:
+scr_seq_T23_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0564_T23_00008
 	waitbutton
 	closemsg
 	releaseall

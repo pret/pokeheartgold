@@ -1,77 +1,79 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R34R0101.h"
+#include "msgdata/msg/msg_0385_R34R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0238_R34R0101_0210 ; 000
-	scrdef scr_seq_0238_R34R0101_000A ; 001
+	scrdef scr_seq_R34R0101_000
+	scrdef scr_seq_R34R0101_001
 	scrdef_end
 
-scr_seq_0238_R34R0101_000A:
+scr_seq_R34R0101_001:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 1, scr_seq_0238_R34R0101_0140
-	apply_movement 2, scr_seq_0238_R34R0101_014C
-	apply_movement 255, scr_seq_0238_R34R0101_0158
+	apply_movement obj_R34R0101_var_1, _0140
+	apply_movement obj_R34R0101_tsure_poke_611, _014C
+	apply_movement obj_player, _0158
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	buffer_players_name 0
-	gender_msgbox 0, 10
+	gender_msgbox msg_0385_R34R0101_00000, msg_0385_R34R0101_00010
 	closemsg
-	gender_msgbox 1, 11
+	gender_msgbox msg_0385_R34R0101_00001, msg_0385_R34R0101_00011
 	closemsg
-	apply_movement 1, scr_seq_0238_R34R0101_0138
+	apply_movement obj_R34R0101_var_1, _0138
 	wait_movement
-	gender_msgbox 2, 12
+	gender_msgbox msg_0385_R34R0101_00002, msg_0385_R34R0101_00012
 	closemsg
-	gender_msgbox 3, 13
+	gender_msgbox msg_0385_R34R0101_00003, msg_0385_R34R0101_00013
 	closemsg
-	apply_movement 1, scr_seq_0238_R34R0101_0164
+	apply_movement obj_R34R0101_var_1, _0164
 	wait_movement
-	gender_msgbox 4, 14
+	gender_msgbox msg_0385_R34R0101_00004, msg_0385_R34R0101_00014
 	closemsg
-	apply_movement 1, scr_seq_0238_R34R0101_016C
-	apply_movement 2, scr_seq_0238_R34R0101_0184
+	apply_movement obj_R34R0101_var_1, _016C
+	apply_movement obj_R34R0101_tsure_poke_611, _0184
 	wait_movement
-	gender_msgbox 5, 15
+	gender_msgbox msg_0385_R34R0101_00005, msg_0385_R34R0101_00015
 	closemsg
-	apply_movement 1, scr_seq_0238_R34R0101_0198
-	apply_movement 2, scr_seq_0238_R34R0101_01A8
+	apply_movement obj_R34R0101_var_1, _0198
+	apply_movement obj_R34R0101_tsure_poke_611, _01A8
 	wait_movement
-	apply_movement 255, scr_seq_0238_R34R0101_0190
+	apply_movement obj_player, _0190
 	wait_movement
-	gender_msgbox 6, 16
+	gender_msgbox msg_0385_R34R0101_00006, msg_0385_R34R0101_00016
 	closemsg
 	get_player_gender VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0238_R34R0101_00C6
+	gotoif ne, _00C6
 	register_gear_number 4
-	goto scr_seq_0238_R34R0101_00CA
+	goto _00CA
 
-scr_seq_0238_R34R0101_00C6:
+_00C6:
 	register_gear_number 3
-scr_seq_0238_R34R0101_00CA:
+_00CA:
 	buffer_players_name 0
-	gender_msgbox 7, 17
+	gender_msgbox msg_0385_R34R0101_00007, msg_0385_R34R0101_00017
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	apply_movement 1, scr_seq_0238_R34R0101_01BC
+	apply_movement obj_R34R0101_var_1, _01BC
 	wait_movement
-	gender_msgbox 8, 18
+	gender_msgbox msg_0385_R34R0101_00008, msg_0385_R34R0101_00018
 	closemsg
-	apply_movement 1, scr_seq_0238_R34R0101_01C4
-	apply_movement 2, scr_seq_0238_R34R0101_01CC
+	apply_movement obj_R34R0101_var_1, _01C4
+	apply_movement obj_R34R0101_tsure_poke_611, _01CC
 	wait_movement
-	gender_msgbox 9, 19
+	gender_msgbox msg_0385_R34R0101_00009, msg_0385_R34R0101_00019
 	closemsg
-	apply_movement 1, scr_seq_0238_R34R0101_01D4
-	apply_movement 2, scr_seq_0238_R34R0101_01E8
-	apply_movement 255, scr_seq_0238_R34R0101_0204
+	apply_movement obj_R34R0101_var_1, _01D4
+	apply_movement obj_R34R0101_tsure_poke_611, _01E8
+	apply_movement obj_player, _0204
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 1
@@ -81,34 +83,32 @@ scr_seq_0238_R34R0101_00CA:
 	setflag FLAG_UNK_22D
 	releaseall
 	end
-
-scr_seq_0238_R34R0101_0137:
 	.byte 0x00
 
-scr_seq_0238_R34R0101_0138:
+_0138:
 	step 75, 1
 	step_end
 
-scr_seq_0238_R34R0101_0140:
+_0140:
 	step 63, 1
 	step 12, 3
 	step_end
 
-scr_seq_0238_R34R0101_014C:
+_014C:
 	step 16, 3
 	step 48, 2
 	step_end
 
-scr_seq_0238_R34R0101_0158:
+_0158:
 	step 63, 1
 	step 12, 3
 	step_end
 
-scr_seq_0238_R34R0101_0164:
+_0164:
 	step 33, 1
 	step_end
 
-scr_seq_0238_R34R0101_016C:
+_016C:
 	step 14, 1
 	step 13, 3
 	step 63, 1
@@ -116,48 +116,48 @@ scr_seq_0238_R34R0101_016C:
 	step 32, 1
 	step_end
 
-scr_seq_0238_R34R0101_0184:
+_0184:
 	step 14, 2
 	step 13, 2
 	step_end
 
-scr_seq_0238_R34R0101_0190:
+_0190:
 	step 34, 1
 	step_end
 
-scr_seq_0238_R34R0101_0198:
+_0198:
 	step 63, 1
 	step 12, 1
 	step 35, 1
 	step_end
 
-scr_seq_0238_R34R0101_01A8:
+_01A8:
 	step 35, 1
 	step 71, 1
 	step 54, 1
 	step 72, 1
 	step_end
 
-scr_seq_0238_R34R0101_01BC:
+_01BC:
 	step 35, 1
 	step_end
 
-scr_seq_0238_R34R0101_01C4:
+_01C4:
 	step 32, 1
 	step_end
 
-scr_seq_0238_R34R0101_01CC:
+_01CC:
 	step 32, 1
 	step_end
 
-scr_seq_0238_R34R0101_01D4:
+_01D4:
 	step 13, 2
 	step 15, 1
 	step 13, 1
 	step 69, 1
 	step_end
 
-scr_seq_0238_R34R0101_01E8:
+_01E8:
 	step 63, 1
 	step 48, 2
 	step 63, 1
@@ -166,11 +166,11 @@ scr_seq_0238_R34R0101_01E8:
 	step 37, 1
 	step_end
 
-scr_seq_0238_R34R0101_0204:
+_0204:
 	step 63, 2
 	step 33, 1
 	step_end
-scr_seq_0238_R34R0101_0210:
+scr_seq_R34R0101_000:
 	scrcmd_715
 	end
 	.balign 4, 0

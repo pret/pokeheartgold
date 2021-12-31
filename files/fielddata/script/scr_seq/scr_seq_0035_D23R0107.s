@@ -1,86 +1,86 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D23R0107.h"
+#include "msgdata/msg/msg_0071_D23R0107.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0035_D23R0107_0006 ; 000
+	scrdef scr_seq_D23R0107_000
 	scrdef_end
 
-scr_seq_0035_D23R0107_0006:
+scr_seq_D23R0107_000:
 	scrcmd_609
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0035_D23R0107_0058
+	gotoif eq, _0058
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0035_D23R0107_002A
+	gotoif eq, _002A
 	end
 
-scr_seq_0035_D23R0107_002A:
+_002A:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0035_D23R0107_00F4
+	apply_movement obj_player, _00F4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 253, scr_seq_0035_D23R0107_0100
+	apply_movement 253, _0100
 	wait_movement
-	goto scr_seq_0035_D23R0107_0062
+	goto _0062
 
-scr_seq_0035_D23R0107_0058:
-	apply_movement 255, scr_seq_0035_D23R0107_00F4
+_0058:
+	apply_movement obj_player, _00F4
 	wait_movement
-scr_seq_0035_D23R0107_0062:
+_0062:
 	scrcmd_241 16659
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0035_D23R0107_0088
+	gotoif eq, _0088
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0035_D23R0107_00A5
+	gotoif eq, _00A5
 	end
 
-scr_seq_0035_D23R0107_0088:
-	npc_msg 0
+_0088:
+	npc_msg msg_0071_D23R0107_00000
 	closemsg
 	scrcmd_240 190, 0, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 0
-	goto scr_seq_0035_D23R0107_00C2
+	goto _00C2
 
-scr_seq_0035_D23R0107_00A5:
-	npc_msg 1
+_00A5:
+	npc_msg msg_0071_D23R0107_00001
 	closemsg
 	scrcmd_240 189, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 1
-	goto scr_seq_0035_D23R0107_00C2
+	goto _00C2
 
-scr_seq_0035_D23R0107_00C2:
+_00C2:
 	wait_se SEQ_SE_DP_SELECT
 	scrcmd_488 32772, 4
 	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, scr_seq_0035_D23R0107_00E2
-	npc_msg 2
-	goto scr_seq_0035_D23R0107_00E5
+	gotoif ne, _00E2
+	npc_msg msg_0071_D23R0107_00002
+	goto _00E5
 
-scr_seq_0035_D23R0107_00E2:
-	npc_msg 3
-scr_seq_0035_D23R0107_00E5:
+_00E2:
+	npc_msg msg_0071_D23R0107_00003
+_00E5:
 	waitbutton
 	closemsg
 	setvar VAR_UNK_4125, 1
 	releaseall
 	end
-
-scr_seq_0035_D23R0107_00F3:
 	.byte 0x00
 
-scr_seq_0035_D23R0107_00F4:
+_00F4:
 	step 12, 2
 	step 33, 1
 	step_end
 
-scr_seq_0035_D23R0107_0100:
+_0100:
 	step 15, 1
 	step 12, 1
 	step 1, 1

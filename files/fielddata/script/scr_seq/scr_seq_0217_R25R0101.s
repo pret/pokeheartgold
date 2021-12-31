@@ -1,102 +1,104 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R25R0101.h"
+#include "msgdata/msg/msg_0364_R25R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0217_R25R0101_0006 ; 000
+	scrdef scr_seq_R25R0101_000
 	scrdef_end
 
-scr_seq_0217_R25R0101_0006:
+scr_seq_R25R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_14E
-	gotoif TRUE, scr_seq_0217_R25R0101_0020
-	npc_msg 0
+	gotoif TRUE, _0020
+	npc_msg msg_0364_R25R0101_00000
 	setflag FLAG_UNK_14E
-scr_seq_0217_R25R0101_0020:
+_0020:
 	scrcmd_495 VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x8002, 8
-	gotoif ne, scr_seq_0217_R25R0101_0037
-	goto scr_seq_0217_R25R0101_00B1
+	gotoif ne, _0037
+	goto _00B1
 
-scr_seq_0217_R25R0101_0037:
+_0037:
 	comparevartovalue VAR_UNK_412D, 0
-	gotoif ne, scr_seq_0217_R25R0101_004D
-	npc_msg 1
-	goto scr_seq_0217_R25R0101_00AB
+	gotoif ne, _004D
+	npc_msg msg_0364_R25R0101_00001
+	goto _00AB
 
-scr_seq_0217_R25R0101_004D:
+_004D:
 	comparevartovalue VAR_UNK_412D, 1
-	gotoif ne, scr_seq_0217_R25R0101_0063
-	npc_msg 2
-	goto scr_seq_0217_R25R0101_00AB
+	gotoif ne, _0063
+	npc_msg msg_0364_R25R0101_00002
+	goto _00AB
 
-scr_seq_0217_R25R0101_0063:
+_0063:
 	comparevartovalue VAR_UNK_412D, 2
-	gotoif ne, scr_seq_0217_R25R0101_0079
-	npc_msg 3
-	goto scr_seq_0217_R25R0101_00AB
+	gotoif ne, _0079
+	npc_msg msg_0364_R25R0101_00003
+	goto _00AB
 
-scr_seq_0217_R25R0101_0079:
+_0079:
 	comparevartovalue VAR_UNK_412D, 3
-	gotoif ne, scr_seq_0217_R25R0101_008F
-	npc_msg 4
-	goto scr_seq_0217_R25R0101_00AB
+	gotoif ne, _008F
+	npc_msg msg_0364_R25R0101_00004
+	goto _00AB
 
-scr_seq_0217_R25R0101_008F:
+_008F:
 	comparevartovalue VAR_UNK_412D, 4
-	gotoif ne, scr_seq_0217_R25R0101_00A5
-	npc_msg 5
-	goto scr_seq_0217_R25R0101_00AB
+	gotoif ne, _00A5
+	npc_msg msg_0364_R25R0101_00005
+	goto _00AB
 
-scr_seq_0217_R25R0101_00A5:
-	goto scr_seq_0217_R25R0101_0484
+_00A5:
+	goto _0484
 
-scr_seq_0217_R25R0101_00AB:
-	goto scr_seq_0217_R25R0101_0125
+_00AB:
+	goto _0125
 
-scr_seq_0217_R25R0101_00B1:
+_00B1:
 	comparevartovalue VAR_UNK_412D, 0
-	gotoif ne, scr_seq_0217_R25R0101_00C7
-	npc_msg 6
-	goto scr_seq_0217_R25R0101_0125
+	gotoif ne, _00C7
+	npc_msg msg_0364_R25R0101_00006
+	goto _0125
 
-scr_seq_0217_R25R0101_00C7:
+_00C7:
 	comparevartovalue VAR_UNK_412D, 1
-	gotoif ne, scr_seq_0217_R25R0101_00DD
-	npc_msg 7
-	goto scr_seq_0217_R25R0101_0125
+	gotoif ne, _00DD
+	npc_msg msg_0364_R25R0101_00007
+	goto _0125
 
-scr_seq_0217_R25R0101_00DD:
+_00DD:
 	comparevartovalue VAR_UNK_412D, 2
-	gotoif ne, scr_seq_0217_R25R0101_00F3
-	npc_msg 8
-	goto scr_seq_0217_R25R0101_0125
+	gotoif ne, _00F3
+	npc_msg msg_0364_R25R0101_00008
+	goto _0125
 
-scr_seq_0217_R25R0101_00F3:
+_00F3:
 	comparevartovalue VAR_UNK_412D, 3
-	gotoif ne, scr_seq_0217_R25R0101_0109
-	npc_msg 9
-	goto scr_seq_0217_R25R0101_0125
+	gotoif ne, _0109
+	npc_msg msg_0364_R25R0101_00009
+	goto _0125
 
-scr_seq_0217_R25R0101_0109:
+_0109:
 	comparevartovalue VAR_UNK_412D, 4
-	gotoif ne, scr_seq_0217_R25R0101_011F
-	npc_msg 10
-	goto scr_seq_0217_R25R0101_0125
+	gotoif ne, _011F
+	npc_msg msg_0364_R25R0101_00010
+	goto _0125
 
-scr_seq_0217_R25R0101_011F:
-	goto scr_seq_0217_R25R0101_0484
+_011F:
+	goto _0484
 
-scr_seq_0217_R25R0101_0125:
-	npc_msg 11
+_0125:
+	npc_msg msg_0364_R25R0101_00011
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0217_R25R0101_048D
-	npc_msg 12
+	gotoif eq, _048D
+	npc_msg msg_0364_R25R0101_00012
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -106,218 +108,218 @@ scr_seq_0217_R25R0101_0125:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
-	gotoif eq, scr_seq_0217_R25R0101_048D
+	gotoif eq, _048D
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8002, 8
-	gotoif ne, scr_seq_0217_R25R0101_0188
-	goto scr_seq_0217_R25R0101_02F0
+	gotoif ne, _0188
+	goto _02F0
 
-scr_seq_0217_R25R0101_0188:
+_0188:
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0217_R25R0101_01C8
+	gotoif eq, _01C8
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0217_R25R0101_01E4
+	gotoif eq, _01E4
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0217_R25R0101_0200
+	gotoif eq, _0200
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0217_R25R0101_021C
-	goto scr_seq_0217_R25R0101_0238
+	gotoif eq, _021C
+	goto _0238
 
-scr_seq_0217_R25R0101_01C8:
+_01C8:
 	comparevartovalue VAR_SPECIAL_x8001, 43
-	gotoif eq, scr_seq_0217_R25R0101_01DE
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _01DE
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_01DE:
-	goto scr_seq_0217_R25R0101_024E
+_01DE:
+	goto _024E
 
-scr_seq_0217_R25R0101_01E4:
+_01E4:
 	comparevartovalue VAR_SPECIAL_x8001, 58
-	gotoif eq, scr_seq_0217_R25R0101_01FA
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _01FA
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_01FA:
-	goto scr_seq_0217_R25R0101_024E
+_01FA:
+	goto _024E
 
-scr_seq_0217_R25R0101_0200:
+_0200:
 	comparevartovalue VAR_SPECIAL_x8001, 39
-	gotoif eq, scr_seq_0217_R25R0101_0216
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _0216
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_0216:
-	goto scr_seq_0217_R25R0101_024E
+_0216:
+	goto _024E
 
-scr_seq_0217_R25R0101_021C:
+_021C:
 	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif eq, scr_seq_0217_R25R0101_0232
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _0232
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_0232:
-	goto scr_seq_0217_R25R0101_024E
+_0232:
+	goto _024E
 
-scr_seq_0217_R25R0101_0238:
+_0238:
 	comparevartovalue VAR_SPECIAL_x8001, 183
-	gotoif eq, scr_seq_0217_R25R0101_024E
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _024E
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_024E:
+_024E:
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
-	npc_msg 15
+	npc_msg msg_0364_R25R0101_00015
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0217_R25R0101_0296
+	gotoif eq, _0296
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0217_R25R0101_02A8
+	gotoif eq, _02A8
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0217_R25R0101_02BA
+	gotoif eq, _02BA
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0217_R25R0101_02CC
-	goto scr_seq_0217_R25R0101_02DE
+	gotoif eq, _02CC
+	goto _02DE
 
-scr_seq_0217_R25R0101_0296:
+_0296:
 	setvar VAR_SPECIAL_x8004, 85
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_02A8:
+_02A8:
 	setvar VAR_SPECIAL_x8004, 82
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_02BA:
+_02BA:
 	setvar VAR_SPECIAL_x8004, 229
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_02CC:
+_02CC:
 	setvar VAR_SPECIAL_x8004, 83
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_02DE:
+_02DE:
 	setvar VAR_SPECIAL_x8004, 84
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_02F0:
+_02F0:
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0217_R25R0101_0330
+	gotoif eq, _0330
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0217_R25R0101_034C
+	gotoif eq, _034C
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0217_R25R0101_0368
+	gotoif eq, _0368
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0217_R25R0101_0384
-	goto scr_seq_0217_R25R0101_03A0
+	gotoif eq, _0384
+	goto _03A0
 
-scr_seq_0217_R25R0101_0330:
+_0330:
 	comparevartovalue VAR_SPECIAL_x8001, 108
-	gotoif eq, scr_seq_0217_R25R0101_0346
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _0346
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_0346:
-	goto scr_seq_0217_R25R0101_03B6
+_0346:
+	goto _03B6
 
-scr_seq_0217_R25R0101_034C:
+_034C:
 	comparevartovalue VAR_SPECIAL_x8001, 43
-	gotoif eq, scr_seq_0217_R25R0101_0362
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _0362
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_0362:
-	goto scr_seq_0217_R25R0101_03B6
+_0362:
+	goto _03B6
 
-scr_seq_0217_R25R0101_0368:
+_0368:
 	comparevartovalue VAR_SPECIAL_x8001, 120
-	gotoif eq, scr_seq_0217_R25R0101_037E
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _037E
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_037E:
-	goto scr_seq_0217_R25R0101_03B6
+_037E:
+	goto _03B6
 
-scr_seq_0217_R25R0101_0384:
+_0384:
 	comparevartovalue VAR_SPECIAL_x8001, 37
-	gotoif eq, scr_seq_0217_R25R0101_039A
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _039A
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_039A:
-	goto scr_seq_0217_R25R0101_03B6
+_039A:
+	goto _03B6
 
-scr_seq_0217_R25R0101_03A0:
+_03A0:
 	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif eq, scr_seq_0217_R25R0101_03B6
-	npc_msg 14
-	goto scr_seq_0217_R25R0101_0490
+	gotoif eq, _03B6
+	npc_msg msg_0364_R25R0101_00014
+	goto _0490
 
-scr_seq_0217_R25R0101_03B6:
+_03B6:
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
-	npc_msg 15
+	npc_msg msg_0364_R25R0101_00015
 	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0217_R25R0101_03FE
+	gotoif eq, _03FE
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0217_R25R0101_0410
+	gotoif eq, _0410
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0217_R25R0101_0422
+	gotoif eq, _0422
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0217_R25R0101_0434
-	goto scr_seq_0217_R25R0101_0446
+	gotoif eq, _0434
+	goto _0446
 
-scr_seq_0217_R25R0101_03FE:
+_03FE:
 	setvar VAR_SPECIAL_x8004, 229
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_0410:
+_0410:
 	setvar VAR_SPECIAL_x8004, 85
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_0422:
+_0422:
 	setvar VAR_SPECIAL_x8004, 84
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_0434:
+_0434:
 	setvar VAR_SPECIAL_x8004, 82
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0217_R25R0101_0452
+	goto _0452
 
-scr_seq_0217_R25R0101_0446:
+_0446:
 	setvar VAR_SPECIAL_x8004, 83
 	setvar VAR_SPECIAL_x8005, 1
-scr_seq_0217_R25R0101_0452:
+_0452:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0217_R25R0101_047A
+	gotoif eq, _047A
 	callstd std_give_item_verbose
 	addvar VAR_UNK_412D, 1
-	npc_msg 16
-	goto scr_seq_0217_R25R0101_0490
+	npc_msg msg_0364_R25R0101_00016
+	goto _0490
 
-scr_seq_0217_R25R0101_047A:
+_047A:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0217_R25R0101_0484:
-	npc_msg 17
-	goto scr_seq_0217_R25R0101_0490
+_0484:
+	npc_msg msg_0364_R25R0101_00017
+	goto _0490
 
-scr_seq_0217_R25R0101_048D:
-	npc_msg 13
-scr_seq_0217_R25R0101_0490:
+_048D:
+	npc_msg msg_0364_R25R0101_00013
+_0490:
 	waitbutton
 	closemsg
 	releaseall

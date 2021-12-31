@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T07R0204.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T07R0204_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T07R0204_001",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,

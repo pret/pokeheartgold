@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R07.h",
   "bgs": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_R07_001",
       "type": 1,
       "x": 1260,
       "y": 248,
@@ -19,7 +20,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R07_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T07R0202.h",
   "bgs": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_T07R0202_001",
       "type": 0,
       "x": 5,
       "y": 2,

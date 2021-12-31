@@ -1,15 +1,17 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25R0503.h"
+#include "msgdata/msg/msg_0003_EVERYWHERE.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0895_T25R0503_0006 ; 000
+	scrdef scr_seq_T25R0503_000
 	scrdef_end
 
-scr_seq_0895_T25R0503_0006:
+scr_seq_T25R0503_000:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0895_T25R0503_0038
+	apply_movement obj_player, _0038
 	wait_movement
 	play_se SEQ_SE_GS_N_LINEAR
 	wait 40, VAR_SPECIAL_x8004
@@ -18,11 +20,9 @@ scr_seq_0895_T25R0503_0006:
 	setvar VAR_UNK_411F, 0
 	releaseall
 	end
-
-scr_seq_0895_T25R0503_0036:
 	.byte 0x00, 0x00
 
-scr_seq_0895_T25R0503_0038:
+_0038:
 	step 15, 7
 	step 12, 2
 	step_end

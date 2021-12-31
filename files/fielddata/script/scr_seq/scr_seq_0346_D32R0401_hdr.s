@@ -1,4 +1,5 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D32R0401.h"
 	.rodata
 	.option alignment off
 
@@ -9,10 +10,10 @@
 	.byte 3
 	.short 22, 0
 	.byte 1
-	.word scr_seq_0346_D32R0401_hdr_0015-.-4
+	.word scr_seq_D32R0401_map_scripts_2-.-4
 	.byte 0
 
-scr_seq_0346_D32R0401_hdr_0015:
+scr_seq_D32R0401_map_scripts_2:
 	.short VAR_UNK_4145, 1, 4
 	.short VAR_UNK_4145, 2, 2
 	.short VAR_UNK_4145, 3, 5

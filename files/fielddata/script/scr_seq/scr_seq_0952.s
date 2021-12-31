@@ -1,109 +1,89 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0952.h"
+#include "msgdata/msg/msg_0726.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0952_0032 ; 000
-	scrdef scr_seq_0952_007E ; 001
-	scrdef scr_seq_0952_008C ; 002
-	scrdef scr_seq_0952_009A ; 003
-	scrdef scr_seq_0952_00A8 ; 004
-	scrdef scr_seq_0952_00B6 ; 005
-	scrdef scr_seq_0952_00C4 ; 006
-	scrdef scr_seq_0952_00D2 ; 007
-	scrdef scr_seq_0952_00E0 ; 008
-	scrdef scr_seq_0952_00EE ; 009
-	scrdef scr_seq_0952_00FC ; 010
-	scrdef scr_seq_0952_010A ; 011
+	scrdef scr_seq_0952_000
+	scrdef scr_seq_0952_001
+	scrdef scr_seq_0952_002
+	scrdef scr_seq_0952_003
+	scrdef scr_seq_0952_004
+	scrdef scr_seq_0952_005
+	scrdef scr_seq_0952_006
+	scrdef scr_seq_0952_007
+	scrdef scr_seq_0952_008
+	scrdef scr_seq_0952_009
+	scrdef scr_seq_0952_010
+	scrdef scr_seq_0952_011
 	scrdef_end
 
-scr_seq_0952_0032:
+scr_seq_0952_000:
 	setflag FLAG_UNK_9CB
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 653
-scr_seq_0952_0042:
+_0042:
 	scrcmd_807 16384, 16386
 	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, scr_seq_0952_005F
+	gotoif ne, _005F
 	setflagvar VAR_TEMP_x4001
-	goto scr_seq_0952_0063
+	goto _0063
 
-scr_seq_0952_005F:
+_005F:
 	clearflagvar VAR_TEMP_x4001
-scr_seq_0952_0063:
+_0063:
 	addvar VAR_TEMP_x4000, 1
 	addvar VAR_TEMP_x4001, 1
 	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif lt, scr_seq_0952_0042
+	gotoif lt, _0042
 	end
 
-scr_seq_0952_007E:
+scr_seq_0952_001:
 	setvar VAR_TEMP_x4000, 10
-	goto scr_seq_0952_0118
-
-scr_seq_0952_008A:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_008C:
+scr_seq_0952_002:
 	setvar VAR_TEMP_x4000, 0
-	goto scr_seq_0952_0118
-
-scr_seq_0952_0098:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_009A:
+scr_seq_0952_003:
 	setvar VAR_TEMP_x4000, 1
-	goto scr_seq_0952_0118
-
-scr_seq_0952_00A6:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_00A8:
+scr_seq_0952_004:
 	setvar VAR_TEMP_x4000, 2
-	goto scr_seq_0952_0118
-
-scr_seq_0952_00B4:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_00B6:
+scr_seq_0952_005:
 	setvar VAR_TEMP_x4000, 3
-	goto scr_seq_0952_0118
-
-scr_seq_0952_00C2:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_00C4:
+scr_seq_0952_006:
 	setvar VAR_TEMP_x4000, 4
-	goto scr_seq_0952_0118
-
-scr_seq_0952_00D0:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_00D2:
+scr_seq_0952_007:
 	setvar VAR_TEMP_x4000, 5
-	goto scr_seq_0952_0118
-
-scr_seq_0952_00DE:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_00E0:
+scr_seq_0952_008:
 	setvar VAR_TEMP_x4000, 6
-	goto scr_seq_0952_0118
-
-scr_seq_0952_00EC:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_00EE:
+scr_seq_0952_009:
 	setvar VAR_TEMP_x4000, 7
-	goto scr_seq_0952_0118
-
-scr_seq_0952_00FA:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_00FC:
+scr_seq_0952_010:
 	setvar VAR_TEMP_x4000, 8
-	goto scr_seq_0952_0118
-
-scr_seq_0952_0108:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_010A:
+scr_seq_0952_011:
 	setvar VAR_TEMP_x4000, 9
-	goto scr_seq_0952_0118
-
-scr_seq_0952_0116:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0952_0118:
+_0118:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -111,14 +91,14 @@ scr_seq_0952_0118:
 	addvar VAR_TEMP_x4001, VAR_TEMP_x4000
 	checkflagvar VAR_TEMP_x4001, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0952_0186
-	npc_msg 0
+	gotoif eq, _0186
+	npc_msg msg_0726_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0952_0186
+	gotoif eq, _0186
 	scrcmd_784 4, 0
 	scrcmd_809 16384
 	scrcmd_049
@@ -127,20 +107,20 @@ scr_seq_0952_0118:
 	scrcmd_808 16384
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, scr_seq_0952_0191
+	callif eq, _0191
 	setflagvar VAR_TEMP_x4001
 	releaseall
 	end
 
-scr_seq_0952_0186:
-	npc_msg 1
+_0186:
+	npc_msg msg_0726_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0952_0191:
-	npc_msg 2
+_0191:
+	npc_msg msg_0726_00002
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	closemsg

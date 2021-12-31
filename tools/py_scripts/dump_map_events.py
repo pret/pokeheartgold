@@ -1,8 +1,11 @@
+import collections
 import json
 import struct
 import re
 import os
 import glob
+import csv
+import typing
 
 
 def unpack_narc(filename: str):
@@ -23,10 +26,12 @@ def unpack_narc(filename: str):
         yield img[start:end]
 
 
-def parse_c_header(filename: str, prefix='') -> dict[int, str]:
+def parse_c_header(filename: str, prefix='', as_list=False) -> typing.Union[list[tuple[int, str]], dict[int, str]]:
     with open(filename) as fp:
         data = fp.read()
     pat = re.compile(rf'#define\s+({prefix}\w+)\s+(\d+|0x[0-9a-fA-F]+)\n')
+    if as_list:
+        return [(int(m[2], 0), m[1]) for m in pat.finditer(data)]
     return {int(m[2], 0): m[1] for m in pat.finditer(data)}
 
 
@@ -128,7 +133,18 @@ std_scripts = parse_c_header(os.path.join(my_dir, 'include/constants/std_script.
 
 def main():
     for file in sorted(glob.glob(os.path.join(my_dir, 'files/fielddata/eventdata/zone_event/*.bin'))):
-        ret = {}
+        event_header = re.sub(r'fielddata/eventdata/zone_event/\d+_(\w+)\.bin', r'fielddata/script/scr_seq/event_\1.h', file).replace('DUMMY', 'EVERYWHERE')
+        name = os.path.basename(event_header).replace('event_', '')
+        try:
+            scripts = parse_c_header(event_header, '_EV_')
+            objects = parse_c_header(event_header, 'obj_', as_list=True)
+        except FileNotFoundError:
+            scripts = {}
+            objects = None
+
+        def scr_get(id_):
+            return std_scripts.get(id_, scripts.get(id_, id_))
+
         with open(file, 'rb') as fp:
             nbg = int.from_bytes(fp.read(4), 'little')
             bgs = list(BgEvent.iter_unpack(fp.read(nbg * BgEvent.size)))
@@ -138,10 +154,29 @@ def main():
             wps = list(WarpEvent.iter_unpack(fp.read(nwp * WarpEvent.size)))
             ncd = int.from_bytes(fp.read(4), 'little')
             cds = list(CoordEvent.iter_unpack(fp.read(ncd * CoordEvent.size)))
+        if objects is None:
+            objects = []
+            with open(event_header, 'w') as ofp:
+                guard = f'SCR_SEQ_{name}_H_'.upper()
+                print(f'#ifndef {guard}', file=ofp)
+                print(f'#define {guard}', file=ofp)
+                print('', file=ofp)
+                seen = collections.Counter()
+                for ob in obs:
+                    sprite = sprites[ob.ovid].replace('SPRITE_', '')
+                    obname = f'obj_{name}_{sprite}'.lower()
+                    seen[obname] += 1
+                    if seen[obname] > 1:
+                        obname = f'{obname}_{seen[obname]}'
+                    print(f'#define {obname:<32s} {ob.id: 5d}', file=ofp)
+                    objects.append((ob.id, obname))
+                print('', file=ofp)
+                print(f'#endif //{guard}', file=ofp)
+        ret = {'header': os.path.relpath(event_header, os.path.join(my_dir, 'files'))}
         if bgs:
             ret['bgs'] = [
                 {
-                    'scr': std_scripts.get(bg.scr, bg.scr),
+                    'scr': scr_get(bg.scr),
                     'type': bg.type,
                     'x': bg.x,
                     'y': bg.y,
@@ -150,14 +185,16 @@ def main():
                 } for bg in bgs
             ]
         if obs:
+            if objects is not None:
+                assert all(ob.id == objects[i][0] for i, ob in enumerate(obs))
             ret['objects'] = [
                 {
-                    'id': ob.id,
+                    'id': ob.id if objects is None else objects[i][1],
                     'ovid': sprites[ob.ovid],
                     'mvt': ob.mvt,
                     'type': ob.type,
                     'flag': flags[ob.flag],
-                    'scr': std_scripts.get(ob.scr, ob.scr),
+                    'scr': scr_get(ob.scr),
                     'dirn': ob.dirn,
                     'eye': ob.eye,
                     'unk10': ob.unk10,
@@ -167,7 +204,7 @@ def main():
                     'x': ob.x,
                     'y': ob.y,
                     'z': ob.z,
-                } for ob in obs
+                } for i, ob in enumerate(obs)
             ]
         if wps:
             ret['warps'] = [
@@ -182,7 +219,7 @@ def main():
         if cds:
             ret['coords'] = [
                 {
-                    'scr': std_scripts.get(cd.scr, cd.scr),
+                    'scr': scr_get(cd.scr),
                     'x': cd.x,
                     'y': cd.y,
                     'w': cd.w,

@@ -1,56 +1,58 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D38R0104.h"
+#include "msgdata/msg/msg_0121_D38R0104.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0098_D38R0104_0006 ; 000
+	scrdef scr_seq_D38R0104_000
 	scrdef_end
 
-scr_seq_0098_D38R0104_0006:
+scr_seq_D38R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_10C
-	gotoif TRUE, scr_seq_0098_D38R0104_0097
+	gotoif TRUE, _0097
 	checkflag FLAG_UNK_10D
-	gotoif TRUE, scr_seq_0098_D38R0104_0046
-	npc_msg 0
+	gotoif TRUE, _0046
+	npc_msg msg_0121_D38R0104_00000
 	closemsg
 	trainer_battle TRAINER_BLACK_BELT_KIYO, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0098_D38R0104_00CC
+	gotoif eq, _00CC
 	setflag FLAG_UNK_10D
-scr_seq_0098_D38R0104_0046:
-	npc_msg 1
+_0046:
+	npc_msg msg_0121_D38R0104_00001
 	get_party_count VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 6
-	gotoif ne, scr_seq_0098_D38R0104_0063
-	npc_msg 4
-	goto scr_seq_0098_D38R0104_00D2
+	gotoif ne, _0063
+	npc_msg msg_0121_D38R0104_00004
+	goto _00D2
 
-scr_seq_0098_D38R0104_0063:
+_0063:
 	buffer_players_name 0
-	npc_msg 2
+	npc_msg msg_0121_D38R0104_00002
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
 	give_mon SPECIES_TYROGUE, 10, 0, 0, 0, VAR_SPECIAL_x800C
-	npc_msg 5
+	npc_msg msg_0121_D38R0104_00005
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif eq, scr_seq_0098_D38R0104_00A6
+	callif eq, _00A6
 	touchscreen_menu_show
-scr_seq_0098_D38R0104_0097:
+_0097:
 	setflag FLAG_UNK_10C
-	npc_msg 3
+	npc_msg msg_0121_D38R0104_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0098_D38R0104_00A6:
+_00A6:
 	setvar VAR_TEMP_x4000, 0
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -59,12 +61,12 @@ scr_seq_0098_D38R0104_00A6:
 	wait_fade
 	return
 
-scr_seq_0098_D38R0104_00CC:
+_00CC:
 	white_out
 	releaseall
 	end
 
-scr_seq_0098_D38R0104_00D2:
+_00D2:
 	waitbutton
 	closemsg
 	releaseall

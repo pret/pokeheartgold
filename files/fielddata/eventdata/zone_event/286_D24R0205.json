@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D24R0205.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 3,
       "y": 6,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 7,
       "y": 6,
@@ -17,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 11,
       "y": 6,
@@ -25,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 15,
       "y": 6,
@@ -33,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 19,
       "y": 6,
@@ -41,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 23,
       "y": 6,
@@ -49,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 27,
       "y": 6,
@@ -57,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 27,
       "y": 15,
@@ -65,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 23,
       "y": 15,
@@ -73,7 +74,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 3,
       "y": 15,
@@ -81,7 +82,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 7,
       "y": 15,
@@ -89,7 +90,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 27,
       "y": 24,
@@ -97,7 +98,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 11,
       "y": 15,
@@ -105,7 +106,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 15,
       "y": 15,
@@ -113,7 +114,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 19,
       "y": 15,
@@ -121,7 +122,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 3,
       "y": 24,
@@ -129,7 +130,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 27,
       "y": 33,
@@ -137,7 +138,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 23,
       "y": 33,
@@ -145,7 +146,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 19,
       "y": 33,
@@ -153,7 +154,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 15,
       "y": 33,
@@ -161,7 +162,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 11,
       "y": 33,
@@ -169,7 +170,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 7,
       "y": 33,
@@ -177,7 +178,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 3,
       "y": 33,
@@ -185,7 +186,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 3,
       "y": 42,
@@ -193,7 +194,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 7,
       "y": 42,
@@ -201,7 +202,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 11,
       "y": 42,
@@ -209,7 +210,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 15,
       "y": 42,
@@ -217,7 +218,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 19,
       "y": 42,
@@ -225,7 +226,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 23,
       "y": 42,
@@ -233,7 +234,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0205_003",
       "type": 0,
       "x": 27,
       "y": 42,
@@ -243,12 +244,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D24R0205_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_236",
-      "scr": 5,
+      "scr": "_EV_scr_seq_D24R0205_005",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -260,12 +261,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D24R0205_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_236",
-      "scr": 4,
+      "scr": "_EV_scr_seq_D24R0205_004",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -277,12 +278,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D24R0205_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_236",
-      "scr": 6,
+      "scr": "_EV_scr_seq_D24R0205_006",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -294,12 +295,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D24R0205_gsassistantm",
       "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_235",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D24R0205_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -311,12 +312,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D24R0205_gsassistantm_2",
       "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_235",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D24R0205_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -328,12 +329,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D24R0205_gsassistantm_3",
       "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_235",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D24R0205_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -345,12 +346,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_D24R0205_gsassistantm_4",
       "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_235",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D24R0205_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -362,12 +363,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_D24R0205_suit",
       "ovid": "SPRITE_SUIT",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2E7",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D24R0205_000",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

@@ -1729,8 +1729,8 @@
 .public Save_FrontierData_get
 .public ScheduleBgTilemapBufferTransfer
 .public ScrCmd_NPCMsg
-.public ScrCmd_046
-.public ScrCmd_047
+.public ScrCmd_NonNpcMsgVar
+.public ScrCmd_NpcMsgVar
 .public ScrCmd_048
 .public ScrCmd_049
 .public ScrCmd_049

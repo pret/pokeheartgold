@@ -1,22 +1,24 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D41R0108.h"
+#include "msgdata/msg/msg_0126_D41R0108.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0107_D41R0108_0006 ; 000
+	scrdef scr_seq_D41R0108_000
 	scrdef_end
 
-scr_seq_0107_D41R0108_0006:
+scr_seq_D41R0108_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0126_D41R0108_00000
 	closemsg
 	trainer_battle TRAINER_PKMN_TRAINER_RED_RED, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0107_D41R0108_0098
-	npc_msg 1
+	gotoif eq, _0098
+	npc_msg msg_0126_D41R0108_00001
 	wait 30, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -25,10 +27,10 @@ scr_seq_0107_D41R0108_0006:
 	setflag FLAG_UNK_25F
 	setvar VAR_UNK_40FD, 1
 	comparevartovalue VAR_UNK_4131, 0
-	callif eq, scr_seq_0107_D41R0108_009E
+	callif eq, _009E
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	call scr_seq_0107_D41R0108_00B2
+	call _00B2
 	wait 60, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -39,29 +41,29 @@ scr_seq_0107_D41R0108_0006:
 	releaseall
 	end
 
-scr_seq_0107_D41R0108_0098:
+_0098:
 	white_out
 	releaseall
 	end
 
-scr_seq_0107_D41R0108_009E:
+_009E:
 	setvar VAR_UNK_4131, 1
 	clearflag FLAG_UNK_2FE
 	clearflag FLAG_UNK_300
 	clearflag FLAG_UNK_2FF
 	return
 
-scr_seq_0107_D41R0108_00B2:
+_00B2:
 	get_party_count VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 0
-scr_seq_0107_D41R0108_00BC:
+_00BC:
 	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0107_D41R0108_00D5
+	gotoif eq, _00D5
 	give_ribbon VAR_SPECIAL_x8005, RIBBON_LEGEND
-scr_seq_0107_D41R0108_00D5:
+_00D5:
 	addvar VAR_SPECIAL_x8005, 1
 	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x8004
-	gotoif lt, scr_seq_0107_D41R0108_00BC
+	gotoif lt, _00BC
 	return
 	.balign 4, 0

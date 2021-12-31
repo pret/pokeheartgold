@@ -1,59 +1,61 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0150.h"
+#include "msgdata/msg/msg_0023.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0150_0006 ; 000
+	scrdef scr_seq_0150_000
 	scrdef_end
 
-scr_seq_0150_0006:
+scr_seq_0150_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0023_00000
 	closemsg
 	hasitem ITEM_APRICORN_BOX, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0150_0099
+	gotoif eq, _0099
 	scrcmd_623 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0150_0088
+	gotoif eq, _0088
 	scrcmd_624 32768
 	setvar VAR_SPECIAL_x8005, 1
 	buffer_players_name 0
 	buffer_apricorn_name 1, VAR_SPECIAL_x8000
-	npc_msg 1
+	npc_msg msg_0023_00001
 	closemsg
 	play_fanfare SEQ_ME_ITEM
-	npc_msg 3
+	npc_msg msg_0023_00003
 	wait_fanfare
 	scrcmd_625 32768, 1, 32780
 	add_special_game_stat 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0150_007D
-	npc_msg 4
+	gotoif eq, _007D
+	npc_msg msg_0023_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0150_007D:
-	npc_msg 6
+_007D:
+	npc_msg msg_0023_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0150_0088:
+_0088:
 	wait 15, VAR_SPECIAL_x800C
-	npc_msg 2
+	npc_msg msg_0023_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0150_0099:
-	npc_msg 7
+_0099:
+	npc_msg msg_0023_00007
 	waitbutton
 	closemsg
 	releaseall

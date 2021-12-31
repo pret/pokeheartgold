@@ -1,39 +1,39 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0164.h"
+#include "msgdata/msg/msg_0267.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0164_001A ; 000
-	scrdef scr_seq_0164_011C ; 001
-	scrdef scr_seq_0164_01E1 ; 002
-	scrdef scr_seq_0164_0521 ; 003
-	scrdef scr_seq_0164_0714 ; 004
-	scrdef scr_seq_0164_0766 ; 005
+	scrdef scr_seq_0164_000
+	scrdef scr_seq_0164_001
+	scrdef scr_seq_0164_002
+	scrdef scr_seq_0164_003
+	scrdef scr_seq_0164_004
+	scrdef scr_seq_0164_005
 	scrdef_end
 
-scr_seq_0164_001A:
+scr_seq_0164_000:
 	scrcmd_609
 	lockall
-	npc_msg 0
+	npc_msg msg_0267_00000
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0164_0100
+	apply_movement obj_player, _0100
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	npc_msg 1
+	npc_msg msg_0267_00001
 	setvar VAR_SPECIAL_x8004, 437
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	goto scr_seq_0164_005C
-
-scr_seq_0164_005A:
+	goto _005C
 	.byte 0x02, 0x00
-scr_seq_0164_005C:
-	npc_msg 2
+_005C:
+	npc_msg msg_0267_00002
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 156, 255, 0
@@ -42,15 +42,13 @@ scr_seq_0164_005C:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0164_00A5
+	gotoif eq, _00A5
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0164_00EE
-	goto scr_seq_0164_00EE
-
-scr_seq_0164_00A3:
+	gotoif eq, _00EE
+	goto _00EE
 	.byte 0x02, 0x00
-scr_seq_0164_00A5:
-	npc_msg 3
+_00A5:
+	npc_msg msg_0267_00003
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 158, 255, 0
@@ -59,25 +57,21 @@ scr_seq_0164_00A5:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0164_00A5
+	gotoif eq, _00A5
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0164_00EE
-	goto scr_seq_0164_00EE
-
-scr_seq_0164_00EC:
+	gotoif eq, _00EE
+	goto _00EE
 	.byte 0x02, 0x00
-scr_seq_0164_00EE:
+_00EE:
 	setvar VAR_UNK_4117, 1
-	npc_msg 4
+	npc_msg msg_0267_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0164_00FF:
 	.byte 0x00
 
-scr_seq_0164_0100:
+_0100:
 	step 32, 1
 	step 63, 2
 	step 12, 4
@@ -85,29 +79,27 @@ scr_seq_0164_0100:
 	step 0, 1
 	step 63, 2
 	step_end
-scr_seq_0164_011C:
+scr_seq_0164_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg msg_0267_00005
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0164_014F
-	goto scr_seq_0164_0144
-
-scr_seq_0164_0142:
+	gotoif eq, _014F
+	goto _0144
 	.byte 0x02, 0x00
-scr_seq_0164_0144:
-	npc_msg 4
+_0144:
+	npc_msg msg_0267_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_014F:
-	npc_msg 6
+_014F:
+	npc_msg msg_0267_00006
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 156, 255, 0
@@ -116,15 +108,13 @@ scr_seq_0164_014F:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0164_0198
+	gotoif eq, _0198
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0164_0144
-	goto scr_seq_0164_0144
-
-scr_seq_0164_0196:
+	gotoif eq, _0144
+	goto _0144
 	.byte 0x02, 0x00
-scr_seq_0164_0198:
-	npc_msg 3
+_0198:
+	npc_msg msg_0267_00003
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 158, 255, 0
@@ -133,49 +123,45 @@ scr_seq_0164_0198:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0164_0198
+	gotoif eq, _0198
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0164_0144
-	goto scr_seq_0164_0144
-
-scr_seq_0164_01DF:
+	gotoif eq, _0144
+	goto _0144
 	.byte 0x02
 	.byte 0x00
-scr_seq_0164_01E1:
+scr_seq_0164_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_584 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0164_04EC
+	gotoif eq, _04EC
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0164_031B
+	gotoif eq, _031B
 	get_party_count VAR_TEMP_x4009
 	setvar VAR_TEMP_x400A, 0
-scr_seq_0164_0215:
+_0215:
 	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 172
-	gotoif ne, scr_seq_0164_0241
+	gotoif ne, _0241
 	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0164_0241
-	goto scr_seq_0164_04F8
+	gotoif ne, _0241
+	goto _04F8
 
-scr_seq_0164_0241:
+_0241:
 	addvar VAR_TEMP_x400A, 1
 	comparevartovar VAR_TEMP_x400A, VAR_TEMP_x4009
-	gotoif ge, scr_seq_0164_025A
-	goto scr_seq_0164_0215
+	gotoif ge, _025A
+	goto _0215
 
-scr_seq_0164_025A:
-	goto scr_seq_0164_0262
-
-scr_seq_0164_0260:
+_025A:
+	goto _0262
 	.byte 0x02, 0x00
-scr_seq_0164_0262:
-	npc_msg 7
-scr_seq_0164_0265:
+_0262:
+	npc_msg msg_0267_00007
+_0265:
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 14, 255, 0
@@ -185,252 +171,230 @@ scr_seq_0164_0265:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0164_02BE
+	gotoif eq, _02BE
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0164_02B3
-	goto scr_seq_0164_0326
-
-scr_seq_0164_02B1:
+	gotoif eq, _02B3
+	goto _0326
 	.byte 0x02, 0x00
-scr_seq_0164_02B3:
-	npc_msg 13
-	goto scr_seq_0164_0265
-
-scr_seq_0164_02BC:
+_02B3:
+	npc_msg msg_0267_00013
+	goto _0265
 	.byte 0x02, 0x00
-scr_seq_0164_02BE:
+_02BE:
 	scrcmd_565 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0164_02D7
-	goto scr_seq_0164_0331
-
-scr_seq_0164_02D5:
+	gotoif eq, _02D7
+	goto _0331
 	.byte 0x02, 0x00
-scr_seq_0164_02D7:
+_02D7:
 	scrcmd_564 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0164_0310
-	goto scr_seq_0164_02F0
-
-scr_seq_0164_02EE:
+	gotoif eq, _0310
+	goto _02F0
 	.byte 0x02, 0x00
-scr_seq_0164_02F0:
-	npc_msg 11
+_02F0:
+	npc_msg msg_0267_00011
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0164_0331
-	goto scr_seq_0164_0326
-
-scr_seq_0164_030E:
+	gotoif eq, _0331
+	goto _0326
 	.byte 0x02, 0x00
-scr_seq_0164_0310:
-	npc_msg 12
+_0310:
+	npc_msg msg_0267_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_031B:
-	npc_msg 17
+_031B:
+	npc_msg msg_0267_00017
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_0326:
-	npc_msg 8
+_0326:
+	npc_msg msg_0267_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_0331:
+_0331:
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0164_0356
-	goto scr_seq_0164_0326
-
-scr_seq_0164_034E:
+	gotoif eq, _0356
+	goto _0326
 	.byte 0x02, 0x00
-scr_seq_0164_0350:
+_0350:
 	callstd 2041
 	end
 
-scr_seq_0164_0356:
+_0356:
 	scrcmd_689 32780
 	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, scr_seq_0164_0350
-	npc_msg 10
+	gotoif eq, _0350
+	npc_msg msg_0267_00010
 	closemsg
 	scrcmd_600
 	heal_party
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_815 0
-	apply_movement 255, scr_seq_0164_0474
+	apply_movement obj_player, _0474
 	wait_movement
-	goto scr_seq_0164_038C
-
-scr_seq_0164_038A:
+	goto _038C
 	.byte 0x02, 0x00
-scr_seq_0164_038C:
+_038C:
 	scrcmd_307 0, 0, 9, 5, 77
-	call scr_seq_0164_03E0
-	apply_movement 255, scr_seq_0164_0480
+	call _03E0
+	apply_movement obj_player, _0480
 	wait_movement
-	call scr_seq_0164_03E8
-	apply_movement 255, scr_seq_0164_0488
+	call _03E8
+	apply_movement obj_player, _0488
 	wait_movement
 	scrcmd_307 0, 0, 9, 2, 77
-	call scr_seq_0164_03E0
-	apply_movement 255, scr_seq_0164_0490
+	call _03E0
+	apply_movement obj_player, _0490
 	wait_movement
-	call scr_seq_0164_03E8
-	goto scr_seq_0164_03F3
-
-scr_seq_0164_03DE:
+	call _03E8
+	goto _03F3
 	.byte 0x02, 0x00
-scr_seq_0164_03E0:
+_03E0:
 	scrcmd_310 77
 	scrcmd_308 77
 	return
 
-scr_seq_0164_03E8:
+_03E8:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
 	return
 
-scr_seq_0164_03F3:
+_03F3:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_436
 	scrcmd_565 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0164_041A
+	gotoif eq, _041A
 	scrcmd_152
-	goto scr_seq_0164_041C
+	goto _041C
 
-scr_seq_0164_041A:
+_041A:
 	scrcmd_152
-scr_seq_0164_041C:
+_041C:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_307 0, 0, 8, 2, 77
-	call scr_seq_0164_03E0
-	apply_movement 255, scr_seq_0164_04A8
+	call _03E0
+	apply_movement obj_player, _04A8
 	wait_movement
-	call scr_seq_0164_03E8
+	call _03E8
 	scrcmd_307 0, 0, 8, 5, 77
-	call scr_seq_0164_03E0
-	apply_movement 255, scr_seq_0164_04C0
+	call _03E0
+	apply_movement obj_player, _04C0
 	wait_movement
-	call scr_seq_0164_03E8
+	call _03E8
 	scrcmd_606
 	releaseall
 	end
-
-scr_seq_0164_0472:
 	.byte 0x00, 0x00
 
-scr_seq_0164_0474:
+_0474:
 	step 15, 1
 	step 32, 1
 	step_end
 
-scr_seq_0164_0480:
+_0480:
 	step 12, 2
 	step_end
 
-scr_seq_0164_0488:
+_0488:
 	step 12, 1
 	step_end
 
-scr_seq_0164_0490:
+_0490:
 	step 12, 1
 	step 69, 1
 	step_end
 
-scr_seq_0164_049C:
+_049C:
 	step 12, 2
 	step 69, 1
 	step_end
 
-scr_seq_0164_04A8:
+_04A8:
 	step 1, 1
 	step 70, 1
 	step 13, 2
 	step_end
 	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
-scr_seq_0164_04C0:
+_04C0:
 	step 13, 2
 	step_end
 
-scr_seq_0164_04C8:
+_04C8:
 	step 35, 1
 	step_end
 
-scr_seq_0164_04D0:
+_04D0:
 	step 12, 1
 	step 15, 1
 	step 32, 1
 	step_end
 
-scr_seq_0164_04E0:
+_04E0:
 	step 12, 1
 	step 69, 1
 	step_end
-scr_seq_0164_04EC:
+_04EC:
 	callstd 9016
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_04F8:
+_04F8:
 	scrcmd_490 16385
 	scrcmd_490 16386
 	comparevartovalue VAR_UNK_412F, 0
-	gotoif ne, scr_seq_0164_0516
-	npc_msg 29
-	goto scr_seq_0164_0519
+	gotoif ne, _0516
+	npc_msg msg_0267_00029
+	goto _0519
 
-scr_seq_0164_0516:
-	npc_msg 28
-scr_seq_0164_0519:
+_0516:
+	npc_msg msg_0267_00028
+_0519:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_0521:
+scr_seq_0164_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0164_0709
+	gotoif eq, _0709
 	scrcmd_691 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0164_0560
+	gotoif eq, _0560
 	scrcmd_446 VAR_UNK_4056
 	copyvar VAR_UNK_4055, VAR_SPECIAL_x800D
-	npc_msg 18
-	goto scr_seq_0164_056B
-
-scr_seq_0164_055E:
+	npc_msg msg_0267_00018
+	goto _056B
 	.byte 0x02, 0x00
-scr_seq_0164_0560:
-	npc_msg 26
-	goto scr_seq_0164_05C4
-
-scr_seq_0164_0569:
+_0560:
+	npc_msg msg_0267_00026
+	goto _05C4
 	.byte 0x02, 0x00
-scr_seq_0164_056B:
+_056B:
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 23, 255, 0
@@ -440,57 +404,51 @@ scr_seq_0164_056B:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0164_05D7
+	gotoif eq, _05D7
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0164_05CC
-	goto scr_seq_0164_05B9
-
-scr_seq_0164_05B7:
+	gotoif eq, _05CC
+	goto _05B9
 	.byte 0x02, 0x00
-scr_seq_0164_05B9:
-	npc_msg 21
-	goto scr_seq_0164_05C4
-
-scr_seq_0164_05C2:
+_05B9:
+	npc_msg msg_0267_00021
+	goto _05C4
 	.byte 0x02, 0x00
-scr_seq_0164_05C4:
+_05C4:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_05CC:
-	npc_msg 22
-	goto scr_seq_0164_056B
-
-scr_seq_0164_05D5:
+_05CC:
+	npc_msg msg_0267_00022
+	goto _056B
 	.byte 0x02, 0x00
-scr_seq_0164_05D7:
+_05D7:
 	callstd 2006
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0164_05B9
-	npc_msg 20
+	gotoif eq, _05B9
+	npc_msg msg_0267_00020
 	closemsg
 	scrcmd_600
 	heal_party
 	scrcmd_815 0
-	apply_movement 255, scr_seq_0164_0474
+	apply_movement obj_player, _0474
 	wait_movement
 	scrcmd_307 0, 0, 5, 5, 77
-	call scr_seq_0164_03E0
-	apply_movement VAR_SPECIAL_x800D, scr_seq_0164_04C8
-	apply_movement 255, scr_seq_0164_0480
+	call _03E0
+	apply_movement VAR_SPECIAL_x800D, _04C8
+	apply_movement obj_player, _0480
 	wait_movement
-	call scr_seq_0164_03E8
-	apply_movement VAR_SPECIAL_x800D, scr_seq_0164_04D0
+	call _03E8
+	apply_movement VAR_SPECIAL_x800D, _04D0
 	wait_movement
 	scrcmd_307 0, 0, 5, 2, 77
-	call scr_seq_0164_03E0
-	apply_movement 255, scr_seq_0164_049C
-	apply_movement VAR_SPECIAL_x800D, scr_seq_0164_04E0
+	call _03E0
+	apply_movement obj_player, _049C
+	apply_movement VAR_SPECIAL_x800D, _04E0
 	wait_movement
-	call scr_seq_0164_03E8
+	call _03E8
 	setvar VAR_TEMP_x4003, 0
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -499,8 +457,6 @@ scr_seq_0164_05D7:
 	wait_fade
 	releaseall
 	end
-
-scr_seq_0164_068F:
 	.byte 0xae
 	.byte 0x00, 0x06, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xaf, 0x00, 0xb4, 0x01, 0xa6, 0x00, 0x0c
 	.byte 0x80, 0x2a, 0x00, 0x04, 0x80, 0x0c, 0x80, 0x97, 0x02, 0x04, 0x80, 0x96, 0x00, 0xae, 0x00, 0x06
@@ -510,32 +466,32 @@ scr_seq_0164_068F:
 	.byte 0xff, 0xff, 0x5f, 0x00, 0x33, 0x01, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x05, 0x00, 0x4d, 0x1a
 	.byte 0x00, 0xeb, 0xfc, 0xff, 0xff, 0x5e, 0x00, 0xff, 0x00, 0xc3, 0xfd, 0xff, 0xff, 0x5f, 0x00, 0x1a
 	.byte 0x00, 0xe3, 0xfc, 0xff, 0xff, 0x61, 0x00, 0x02, 0x00
-scr_seq_0164_0709:
-	npc_msg 27
+_0709:
+	npc_msg msg_0267_00027
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0164_0714:
+scr_seq_0164_004:
 	scrcmd_609
 	lockall
 	scrcmd_307 0, 0, 5, 2, 77
-	call scr_seq_0164_03E0
-	apply_movement 255, scr_seq_0164_04A8
+	call _03E0
+	apply_movement obj_player, _04A8
 	wait_movement
-	call scr_seq_0164_03E8
+	call _03E8
 	scrcmd_307 0, 0, 5, 5, 77
-	call scr_seq_0164_03E0
-	apply_movement 255, scr_seq_0164_04C0
+	call _03E0
+	apply_movement obj_player, _04C0
 	wait_movement
-	call scr_seq_0164_03E8
+	call _03E8
 	scrcmd_606
 	setvar VAR_UNK_4137, 0
 	releaseall
 	end
 
-scr_seq_0164_0766:
+scr_seq_0164_005:
 	debugwatch VAR_UNK_4143
 	setvar VAR_UNK_414F, 0
 	setvar VAR_UNK_4150, 0

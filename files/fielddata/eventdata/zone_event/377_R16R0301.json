@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R16R0301.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R16R0301_tree",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,

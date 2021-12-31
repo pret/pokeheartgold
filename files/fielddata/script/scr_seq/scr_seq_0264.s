@@ -1,148 +1,126 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0264.h"
+#include "msgdata/msg/msg_0019.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0264_001A ; 000
-	scrdef scr_seq_0264_0068 ; 001
-	scrdef scr_seq_0264_00B6 ; 002
-	scrdef scr_seq_0264_0104 ; 003
-	scrdef scr_seq_0264_0152 ; 004
-	scrdef scr_seq_0264_01A0 ; 005
+	scrdef scr_seq_0264_000
+	scrdef scr_seq_0264_001
+	scrdef scr_seq_0264_002
+	scrdef scr_seq_0264_003
+	scrdef scr_seq_0264_004
+	scrdef scr_seq_0264_005
 	scrdef_end
 
-scr_seq_0264_001A:
+scr_seq_0264_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 1
-	goto scr_seq_0264_002E
-
-scr_seq_0264_002C:
+	goto _002E
 	.byte 0x02, 0x00
-scr_seq_0264_002E:
-	call scr_seq_0264_01EE
-	call scr_seq_0264_01F5
+_002E:
+	call _01EE
+	call _01F5
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0264_0221
+	gotoif eq, _0221
 	comparevartovalue VAR_SPECIAL_x8008, 65534
-	gotoif eq, scr_seq_0264_0221
-	call scr_seq_0264_0229
-	goto scr_seq_0264_002E
-
-scr_seq_0264_0066:
+	gotoif eq, _0221
+	call _0229
+	goto _002E
 	.byte 0x02, 0x00
-scr_seq_0264_0068:
+scr_seq_0264_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 1
-	goto scr_seq_0264_007C
-
-scr_seq_0264_007A:
+	goto _007C
 	.byte 0x02, 0x00
-scr_seq_0264_007C:
-	call scr_seq_0264_01EE
-	call scr_seq_0264_01F5
+_007C:
+	call _01EE
+	call _01F5
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0264_0221
+	gotoif eq, _0221
 	comparevartovalue VAR_SPECIAL_x8008, 65534
-	gotoif eq, scr_seq_0264_0221
-	call scr_seq_0264_0229
-	goto scr_seq_0264_007C
-
-scr_seq_0264_00B4:
+	gotoif eq, _0221
+	call _0229
+	goto _007C
 	.byte 0x02, 0x00
-scr_seq_0264_00B6:
+scr_seq_0264_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 2
-	goto scr_seq_0264_00CA
-
-scr_seq_0264_00C8:
+	goto _00CA
 	.byte 0x02, 0x00
-scr_seq_0264_00CA:
-	call scr_seq_0264_01EE
-	call scr_seq_0264_01F5
+_00CA:
+	call _01EE
+	call _01F5
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0264_0221
+	gotoif eq, _0221
 	comparevartovalue VAR_SPECIAL_x8008, 65534
-	gotoif eq, scr_seq_0264_0221
-	call scr_seq_0264_0229
-	goto scr_seq_0264_00CA
-
-scr_seq_0264_0102:
+	gotoif eq, _0221
+	call _0229
+	goto _00CA
 	.byte 0x02, 0x00
-scr_seq_0264_0104:
+scr_seq_0264_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 5
-	goto scr_seq_0264_0118
-
-scr_seq_0264_0116:
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0264_0118:
-	call scr_seq_0264_01EE
-	call scr_seq_0264_01F5
+_0118:
+	call _01EE
+	call _01F5
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0264_0221
+	gotoif eq, _0221
 	comparevartovalue VAR_SPECIAL_x8008, 65534
-	gotoif eq, scr_seq_0264_0221
-	call scr_seq_0264_0229
-	goto scr_seq_0264_0118
-
-scr_seq_0264_0150:
+	gotoif eq, _0221
+	call _0229
+	goto _0118
 	.byte 0x02, 0x00
-scr_seq_0264_0152:
+scr_seq_0264_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 4
-	goto scr_seq_0264_0166
-
-scr_seq_0264_0164:
+	goto _0166
 	.byte 0x02, 0x00
-scr_seq_0264_0166:
-	call scr_seq_0264_01EE
-	call scr_seq_0264_01F5
+_0166:
+	call _01EE
+	call _01F5
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0264_0221
+	gotoif eq, _0221
 	comparevartovalue VAR_SPECIAL_x8008, 65534
-	gotoif eq, scr_seq_0264_0221
-	call scr_seq_0264_0229
-	goto scr_seq_0264_0166
-
-scr_seq_0264_019E:
+	gotoif eq, _0221
+	call _0229
+	goto _0166
 	.byte 0x02, 0x00
-scr_seq_0264_01A0:
+scr_seq_0264_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 6
-	goto scr_seq_0264_01B4
-
-scr_seq_0264_01B2:
+	goto _01B4
 	.byte 0x02, 0x00
-scr_seq_0264_01B4:
-	call scr_seq_0264_01EE
-	call scr_seq_0264_01F5
+_01B4:
+	call _01EE
+	call _01F5
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0264_0221
+	gotoif eq, _0221
 	comparevartovalue VAR_SPECIAL_x8008, 65534
-	gotoif eq, scr_seq_0264_0221
-	call scr_seq_0264_0229
-	goto scr_seq_0264_01B4
-
-scr_seq_0264_01EC:
+	gotoif eq, _0221
+	call _0229
+	goto _01B4
 	.byte 0x02, 0x00
-scr_seq_0264_01EE:
-	npc_msg 0
+_01EE:
+	npc_msg msg_0019_00000
 	touchscreen_menu_hide
 	return
 
-scr_seq_0264_01F5:
+_01F5:
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x8001
 	menu_item_add 1, 255, 0
 	menu_item_add 2, 255, 1
@@ -151,20 +129,20 @@ scr_seq_0264_01F5:
 	menu_exec
 	return
 
-scr_seq_0264_0221:
+_0221:
 	closemsg
 	touchscreen_menu_show
 	releaseall
 	end
 
-scr_seq_0264_0229:
+_0229:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	call scr_seq_0264_023F
+	call _023F
 	return
 
-scr_seq_0264_023F:
+_023F:
 	scrcmd_631 32769, 32768, 32771
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00

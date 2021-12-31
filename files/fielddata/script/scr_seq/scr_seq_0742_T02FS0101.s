@@ -1,15 +1,17 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T02FS0101.h"
+#include "msgdata/msg/msg_0453_T02FS0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0742_T02FS0101_0012 ; 000
-	scrdef scr_seq_0742_T02FS0101_002E ; 001
-	scrdef scr_seq_0742_T02FS0101_004A ; 002
-	scrdef scr_seq_0742_T02FS0101_005D ; 003
+	scrdef scr_seq_T02FS0101_000
+	scrdef scr_seq_T02FS0101_001
+	scrdef scr_seq_T02FS0101_002
+	scrdef scr_seq_T02FS0101_003
 	scrdef_end
 
-scr_seq_0742_T02FS0101_0012:
+scr_seq_T02FS0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -20,7 +22,7 @@ scr_seq_0742_T02FS0101_0012:
 	releaseall
 	end
 
-scr_seq_0742_T02FS0101_002E:
+scr_seq_T02FS0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -31,21 +33,21 @@ scr_seq_0742_T02FS0101_002E:
 	releaseall
 	end
 
-scr_seq_0742_T02FS0101_004A:
+scr_seq_T02FS0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0453_T02FS0101_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0742_T02FS0101_005D:
+scr_seq_T02FS0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0453_T02FS0101_00001
 	waitbutton
 	closemsg
 	releaseall

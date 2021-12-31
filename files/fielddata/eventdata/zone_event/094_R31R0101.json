@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R31R0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R31R0101_counterm",
       "ovid": "SPRITE_COUNTERM",
       "mvt": 15,
       "type": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R31R0101_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_R31R0101_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -35,12 +36,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R31R0101_tsure_poke_611",
       "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_R31R0101_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -70,7 +71,7 @@
   ],
   "coords": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_R31R0101_001",
       "x": 5,
       "y": 6,
       "w": 1,

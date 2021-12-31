@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_D17R0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D17R0101_bozu",
       "ovid": "SPRITE_BOZU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D17R0101_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -43,7 +44,7 @@
   ],
   "coords": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_D17R0101_002",
       "x": 7,
       "y": 12,
       "w": 3,
@@ -53,7 +54,7 @@
       "var": "VAR_UNK_40F3"
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_D17R0101_002",
       "x": 12,
       "y": 7,
       "w": 1,

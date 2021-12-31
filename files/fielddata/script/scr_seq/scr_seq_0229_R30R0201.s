@@ -1,51 +1,53 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R30R0201.h"
+#include "msgdata/msg/msg_0377_R30R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0229_R30R0201_00CF ; 000
-	scrdef scr_seq_0229_R30R0201_002F ; 001
-	scrdef scr_seq_0229_R30R0201_0234 ; 002
-	scrdef scr_seq_0229_R30R0201_0012 ; 003
+	scrdef scr_seq_R30R0201_000
+	scrdef scr_seq_R30R0201_001
+	scrdef scr_seq_R30R0201_002
+	scrdef scr_seq_R30R0201_003
 	scrdef_end
 
-scr_seq_0229_R30R0201_0012:
+scr_seq_R30R0201_003:
 	comparevartovalue VAR_UNK_40F9, 1
-	gotoif eq, scr_seq_0229_R30R0201_0021
+	gotoif eq, _0021
 	end
 
-scr_seq_0229_R30R0201_0021:
+_0021:
 	move_person 0, 5, 0, 6, 3
 	end
 
-scr_seq_0229_R30R0201_002F:
+scr_seq_R30R0201_001:
 	scrcmd_609
 	lockall
-	apply_movement 0, scr_seq_0229_R30R0201_03AC
+	apply_movement obj_R30R0201_gsgentleman, _03AC
 	wait_movement
-	apply_movement 1, scr_seq_0229_R30R0201_041C
-	apply_movement 0, scr_seq_0229_R30R0201_03B4
+	apply_movement obj_R30R0201_ookido, _041C
+	apply_movement obj_R30R0201_gsgentleman, _03B4
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 0, 1
+	gender_msgbox msg_0377_R30R0201_00000, msg_0377_R30R0201_00001
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 0, scr_seq_0229_R30R0201_03C4
-	apply_movement 255, scr_seq_0229_R30R0201_0404
+	apply_movement obj_R30R0201_gsgentleman, _03C4
+	apply_movement obj_player, _0404
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0229_R30R0201_03E4
+	apply_movement obj_R30R0201_gsgentleman, _03E4
 	wait_movement
-	npc_msg 2
+	npc_msg msg_0377_R30R0201_00002
 	setvar VAR_SPECIAL_x8004, 484
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	npc_msg 3
-	npc_msg 4
+	npc_msg msg_0377_R30R0201_00003
+	npc_msg msg_0377_R30R0201_00004
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -55,51 +57,49 @@ scr_seq_0229_R30R0201_002F:
 	heal_party
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	goto scr_seq_0229_R30R0201_02E8
-
-scr_seq_0229_R30R0201_00CD:
+	goto _02E8
 	.byte 0x02, 0x00
-scr_seq_0229_R30R0201_00CF:
+scr_seq_R30R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40F9, 4
-	gotoif ge, scr_seq_0229_R30R0201_00F1
+	gotoif ge, _00F1
 	comparevartovalue VAR_UNK_40F9, 2
-	gotoif ge, scr_seq_0229_R30R0201_02CD
-scr_seq_0229_R30R0201_00F1:
+	gotoif ge, _02CD
+_00F1:
 	checkflag FLAG_UNK_06C
-	gotoif TRUE, scr_seq_0229_R30R0201_019F
+	gotoif TRUE, _019F
 	checkflag FLAG_UNK_0C9
-	gotoif TRUE, scr_seq_0229_R30R0201_012A
+	gotoif TRUE, _012A
 	comparevartovalue VAR_UNK_4107, 2
-	gotoif ge, scr_seq_0229_R30R0201_011F
-	npc_msg 5
+	gotoif ge, _011F
+	npc_msg msg_0377_R30R0201_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_R30R0201_011F:
-	npc_msg 6
+_011F:
+	npc_msg msg_0377_R30R0201_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_R30R0201_012A:
+_012A:
 	buffer_players_name 0
-	gender_msgbox 16, 17
+	gender_msgbox msg_0377_R30R0201_00016, msg_0377_R30R0201_00017
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0229_R30R0201_0189
+	gotoif eq, _0189
 	setvar VAR_SPECIAL_x8004, 216
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0229_R30R0201_0194
+	gotoif eq, _0194
 	callstd std_give_item_verbose
 	closemsg
 	setflag FLAG_UNK_06C
@@ -109,155 +109,153 @@ scr_seq_0229_R30R0201_012A:
 	releaseall
 	end
 
-scr_seq_0229_R30R0201_0189:
-	npc_msg 20
+_0189:
+	npc_msg msg_0377_R30R0201_00020
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_R30R0201_0194:
-	npc_msg 19
+_0194:
+	npc_msg msg_0377_R30R0201_00019
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_R30R0201_019F:
+_019F:
 	checkflag FLAG_UNK_107
-	gotoif FALSE, scr_seq_0229_R30R0201_011F
-	npc_msg 7
+	gotoif FALSE, _011F
+	npc_msg msg_0377_R30R0201_00007
 	closemsg
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0229_R30R0201_01CE
-	apply_movement 0, scr_seq_0229_R30R0201_01F8
-	goto scr_seq_0229_R30R0201_01F1
+	gotoif ne, _01CE
+	apply_movement obj_R30R0201_gsgentleman, _01F8
+	goto _01F1
 
-scr_seq_0229_R30R0201_01CE:
+_01CE:
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0229_R30R0201_01E9
-	apply_movement 0, scr_seq_0229_R30R0201_020C
-	goto scr_seq_0229_R30R0201_01F1
+	gotoif ne, _01E9
+	apply_movement obj_R30R0201_gsgentleman, _020C
+	goto _01F1
 
-scr_seq_0229_R30R0201_01E9:
-	apply_movement 0, scr_seq_0229_R30R0201_0220
-scr_seq_0229_R30R0201_01F1:
+_01E9:
+	apply_movement obj_R30R0201_gsgentleman, _0220
+_01F1:
 	wait_movement
 	releaseall
 	end
-
-scr_seq_0229_R30R0201_01F7:
 	.byte 0x00
 
-scr_seq_0229_R30R0201_01F8:
+_01F8:
 	step 1, 3
 	step 2, 3
 	step 0, 3
 	step 3, 3
 	step_end
 
-scr_seq_0229_R30R0201_020C:
+_020C:
 	step 1, 3
 	step 3, 3
 	step 0, 3
 	step 2, 3
 	step_end
 
-scr_seq_0229_R30R0201_0220:
+_0220:
 	step 3, 3
 	step 0, 3
 	step 2, 3
 	step 1, 3
 	step_end
-scr_seq_0229_R30R0201_0234:
+scr_seq_R30R0201_002:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40F9, 2
-	apply_movement 0, scr_seq_0229_R30R0201_03AC
+	apply_movement obj_R30R0201_gsgentleman, _03AC
 	wait_movement
-	apply_movement 0, scr_seq_0229_R30R0201_02D8
+	apply_movement obj_R30R0201_gsgentleman, _02D8
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 21, 22
+	gender_msgbox msg_0377_R30R0201_00021, msg_0377_R30R0201_00022
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 0, scr_seq_0229_R30R0201_03C4
-	apply_movement 255, scr_seq_0229_R30R0201_0404
+	apply_movement obj_R30R0201_gsgentleman, _03C4
+	apply_movement obj_player, _0404
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	npc_msg 23
+	npc_msg msg_0377_R30R0201_00023
 	closemsg
-	apply_movement 0, scr_seq_0229_R30R0201_03E4
+	apply_movement obj_R30R0201_gsgentleman, _03E4
 	wait_movement
 	buffer_players_name 0
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, scr_seq_0229_R30R0201_02B0
+	gotoif ne, _02B0
 	setvar VAR_SPECIAL_x8004, 535
-	goto scr_seq_0229_R30R0201_02B6
+	goto _02B6
 
-scr_seq_0229_R30R0201_02B0:
+_02B0:
 	setvar VAR_SPECIAL_x8004, 534
-scr_seq_0229_R30R0201_02B6:
+_02B6:
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
 	closemsg
-	npc_msg 26
+	npc_msg msg_0377_R30R0201_00026
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0229_R30R0201_02CD:
-	npc_msg 27
+_02CD:
+	npc_msg msg_0377_R30R0201_00027
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 
-scr_seq_0229_R30R0201_02D8:
+_02D8:
 	step 13, 1
 	step 14, 1
 	step 13, 1
 	step_end
-scr_seq_0229_R30R0201_02E8:
+_02E8:
 	play_bgm SEQ_GS_OHKIDO
-	apply_movement 1, scr_seq_0229_R30R0201_0424
+	apply_movement obj_R30R0201_ookido, _0424
 	wait_movement
-	apply_movement 255, scr_seq_0229_R30R0201_0414
+	apply_movement obj_player, _0414
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 8, 9
+	gender_msgbox msg_0377_R30R0201_00008, msg_0377_R30R0201_00009
 	closemsg
-	apply_movement 1, scr_seq_0229_R30R0201_0438
+	apply_movement obj_R30R0201_ookido, _0438
 	wait_movement
-	npc_msg 10
+	npc_msg msg_0377_R30R0201_00010
 	closemsg
-	apply_movement 1, scr_seq_0229_R30R0201_0444
+	apply_movement obj_R30R0201_ookido, _0444
 	wait_movement
-	npc_msg 11
+	npc_msg msg_0377_R30R0201_00011
 	buffer_players_name 0
-	npc_msg 12
+	npc_msg msg_0377_R30R0201_00012
 	scrcmd_291
 	setflag FLAG_UNK_06B
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	scrcmd_573
-	gender_msgbox 13, 14
+	gender_msgbox msg_0377_R30R0201_00013, msg_0377_R30R0201_00014
 	closemsg
 	buffer_players_name 0
-	npc_msg 15
+	npc_msg msg_0377_R30R0201_00015
 	register_gear_number 2
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	closemsg
-	apply_movement 1, scr_seq_0229_R30R0201_0450
+	apply_movement obj_R30R0201_ookido, _0450
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 1
@@ -278,21 +276,19 @@ scr_seq_0229_R30R0201_02E8:
 	clearflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setvar VAR_UNK_408C, 2
 	end
-
-scr_seq_0229_R30R0201_03AB:
 	.byte 0x00
 
-scr_seq_0229_R30R0201_03AC:
+_03AC:
 	step 75, 1
 	step_end
 
-scr_seq_0229_R30R0201_03B4:
+_03B4:
 	step 17, 1
 	step 18, 5
 	step 33, 1
 	step_end
 
-scr_seq_0229_R30R0201_03C4:
+_03C4:
 	step 15, 1
 	step 12, 3
 	step 33, 1
@@ -300,7 +296,7 @@ scr_seq_0229_R30R0201_03C4:
 	.byte 0x20, 0x00, 0x01, 0x00, 0x23, 0x00, 0x01, 0x00, 0x22, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 
-scr_seq_0229_R30R0201_03E4:
+_03E4:
 	step 18, 3
 	step 16, 1
 	step 63, 1
@@ -310,38 +306,38 @@ scr_seq_0229_R30R0201_03E4:
 	step 29, 1
 	step_end
 
-scr_seq_0229_R30R0201_0404:
+_0404:
 	step 12, 1
 	step 15, 1
 	step 12, 2
 	step_end
 
-scr_seq_0229_R30R0201_0414:
+_0414:
 	step 34, 1
 	step_end
 
-scr_seq_0229_R30R0201_041C:
+_041C:
 	step 34, 1
 	step_end
 
-scr_seq_0229_R30R0201_0424:
+_0424:
 	step 9, 1
 	step 10, 4
 	step 8, 2
 	step 31, 1
 	step_end
 
-scr_seq_0229_R30R0201_0438:
+_0438:
 	step 9, 1
 	step 31, 1
 	step_end
 
-scr_seq_0229_R30R0201_0444:
+_0444:
 	step 8, 1
 	step 31, 1
 	step_end
 
-scr_seq_0229_R30R0201_0450:
+_0450:
 	step 9, 3
 	step 63, 1
 	step_end

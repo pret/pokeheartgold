@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_UNION.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_UNION_pcwoman3",
       "ovid": "SPRITE_PCWOMAN3",
       "mvt": 0,
       "type": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_UNION_boy1",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -35,12 +36,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_UNION_boy1_2",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -52,12 +53,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_UNION_boy1_3",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -69,12 +70,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_UNION_lady",
       "ovid": "SPRITE_LADY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -86,12 +87,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_UNION_badman",
       "ovid": "SPRITE_BADMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -103,12 +104,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_UNION_boy1_4",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -120,12 +121,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_UNION_boy1_5",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -137,12 +138,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_UNION_girl1",
       "ovid": "SPRITE_GIRL1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -154,12 +155,12 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_UNION_boy1_6",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -171,12 +172,12 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_UNION_boy1_7",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_UNION_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -188,12 +189,12 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_UNION_boy1_8",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -205,12 +206,12 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_UNION_boy1_9",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -222,12 +223,12 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_UNION_boy1_10",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -239,12 +240,12 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_UNION_boy1_11",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -256,12 +257,12 @@
       "z": 0
     },
     {
-      "id": 15,
+      "id": "obj_UNION_boy1_12",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -273,12 +274,12 @@
       "z": 0
     },
     {
-      "id": 16,
+      "id": "obj_UNION_boy1_13",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -290,12 +291,12 @@
       "z": 0
     },
     {
-      "id": 17,
+      "id": "obj_UNION_boy1_14",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -307,12 +308,12 @@
       "z": 0
     },
     {
-      "id": 18,
+      "id": "obj_UNION_boy1_15",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -324,12 +325,12 @@
       "z": 0
     },
     {
-      "id": 19,
+      "id": "obj_UNION_boy1_16",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -341,12 +342,12 @@
       "z": 0
     },
     {
-      "id": 20,
+      "id": "obj_UNION_boy1_17",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -358,12 +359,12 @@
       "z": 0
     },
     {
-      "id": 21,
+      "id": "obj_UNION_boy1_18",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -375,12 +376,12 @@
       "z": 0
     },
     {
-      "id": 22,
+      "id": "obj_UNION_boy1_19",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -392,12 +393,12 @@
       "z": 0
     },
     {
-      "id": 23,
+      "id": "obj_UNION_woman3",
       "ovid": "SPRITE_WOMAN3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -409,12 +410,12 @@
       "z": 0
     },
     {
-      "id": 24,
+      "id": "obj_UNION_cowgirl",
       "ovid": "SPRITE_COWGIRL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -426,12 +427,12 @@
       "z": 0
     },
     {
-      "id": 25,
+      "id": "obj_UNION_gorggeousw",
       "ovid": "SPRITE_GORGGEOUSW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -443,12 +444,12 @@
       "z": 0
     },
     {
-      "id": 26,
+      "id": "obj_UNION_idol",
       "ovid": "SPRITE_IDOL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -460,12 +461,12 @@
       "z": 0
     },
     {
-      "id": 27,
+      "id": "obj_UNION_boy3",
       "ovid": "SPRITE_BOY3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -477,12 +478,12 @@
       "z": 0
     },
     {
-      "id": 28,
+      "id": "obj_UNION_explore",
       "ovid": "SPRITE_EXPLORE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -494,12 +495,12 @@
       "z": 0
     },
     {
-      "id": 29,
+      "id": "obj_UNION_fighter",
       "ovid": "SPRITE_FIGHTER",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -511,12 +512,12 @@
       "z": 0
     },
     {
-      "id": 30,
+      "id": "obj_UNION_man3",
       "ovid": "SPRITE_MAN3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -528,12 +529,12 @@
       "z": 0
     },
     {
-      "id": 31,
+      "id": "obj_UNION_boy1_20",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -545,12 +546,12 @@
       "z": 0
     },
     {
-      "id": 32,
+      "id": "obj_UNION_boy1_21",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -562,12 +563,12 @@
       "z": 0
     },
     {
-      "id": 33,
+      "id": "obj_UNION_boy1_22",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -579,12 +580,12 @@
       "z": 0
     },
     {
-      "id": 34,
+      "id": "obj_UNION_boy1_23",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -596,12 +597,12 @@
       "z": 0
     },
     {
-      "id": 35,
+      "id": "obj_UNION_boy1_24",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -613,12 +614,12 @@
       "z": 0
     },
     {
-      "id": 36,
+      "id": "obj_UNION_boy1_25",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -630,12 +631,12 @@
       "z": 0
     },
     {
-      "id": 37,
+      "id": "obj_UNION_boy1_26",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -647,12 +648,12 @@
       "z": 0
     },
     {
-      "id": 38,
+      "id": "obj_UNION_boy1_27",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -664,12 +665,12 @@
       "z": 0
     },
     {
-      "id": 39,
+      "id": "obj_UNION_gorggeousm",
       "ovid": "SPRITE_GORGGEOUSM",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -681,12 +682,12 @@
       "z": 0
     },
     {
-      "id": 40,
+      "id": "obj_UNION_girl2",
       "ovid": "SPRITE_GIRL2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -698,12 +699,12 @@
       "z": 0
     },
     {
-      "id": 41,
+      "id": "obj_UNION_woman2",
       "ovid": "SPRITE_WOMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -715,12 +716,12 @@
       "z": 0
     },
     {
-      "id": 42,
+      "id": "obj_UNION_mystery",
       "ovid": "SPRITE_MYSTERY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -732,12 +733,12 @@
       "z": 0
     },
     {
-      "id": 43,
+      "id": "obj_UNION_boy1_28",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -749,12 +750,12 @@
       "z": 0
     },
     {
-      "id": 44,
+      "id": "obj_UNION_boy1_29",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -766,12 +767,12 @@
       "z": 0
     },
     {
-      "id": 45,
+      "id": "obj_UNION_boy1_30",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -783,12 +784,12 @@
       "z": 0
     },
     {
-      "id": 46,
+      "id": "obj_UNION_boy1_31",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -800,12 +801,12 @@
       "z": 0
     },
     {
-      "id": 47,
+      "id": "obj_UNION_boy1_32",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -817,12 +818,12 @@
       "z": 0
     },
     {
-      "id": 48,
+      "id": "obj_UNION_boy1_33",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -834,12 +835,12 @@
       "z": 0
     },
     {
-      "id": 49,
+      "id": "obj_UNION_boy1_34",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -851,12 +852,12 @@
       "z": 0
     },
     {
-      "id": 50,
+      "id": "obj_UNION_boy1_35",
       "ovid": "SPRITE_BOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_UNION_007",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

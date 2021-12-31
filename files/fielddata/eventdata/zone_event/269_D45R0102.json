@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D45R0102.h",
   "bgs": [
     {
       "scr": 4,
@@ -11,7 +12,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D45R0102_breakrock",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -28,7 +29,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D45R0102_breakrock_2",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -45,7 +46,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D45R0102_breakrock_3",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -62,7 +63,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D45R0102_breakrock_4",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -79,12 +80,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D45R0102_sakaki",
       "ovid": "SPRITE_SAKAKI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_303",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D45R0102_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -96,12 +97,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D45R0102_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_311",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D45R0102_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

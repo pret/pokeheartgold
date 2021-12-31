@@ -1,32 +1,34 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T29.h"
+#include "msgdata/msg/msg_0626_T29.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0938_T29_004E ; 000
-	scrdef scr_seq_0938_T29_03C3 ; 001
-	scrdef scr_seq_0938_T29_01B3 ; 002
-	scrdef scr_seq_0938_T29_047C ; 003
-	scrdef scr_seq_0938_T29_054C ; 004
-	scrdef scr_seq_0938_T29_0275 ; 005
-	scrdef scr_seq_0938_T29_0577 ; 006
-	scrdef scr_seq_0938_T29_06FB ; 007
-	scrdef scr_seq_0938_T29_0723 ; 008
-	scrdef scr_seq_0938_T29_0736 ; 009
-	scrdef scr_seq_0938_T29_075C ; 010
-	scrdef scr_seq_0938_T29_076F ; 011
-	scrdef scr_seq_0938_T29_0782 ; 012
-	scrdef scr_seq_0938_T29_0795 ; 013
-	scrdef scr_seq_0938_T29_05CD ; 014
-	scrdef scr_seq_0938_T29_05E7 ; 015
-	scrdef scr_seq_0938_T29_0601 ; 016
-	scrdef scr_seq_0938_T29_01DA ; 017
-	scrdef scr_seq_0938_T29_06E2 ; 018
+	scrdef scr_seq_T29_000
+	scrdef scr_seq_T29_001
+	scrdef scr_seq_T29_002
+	scrdef scr_seq_T29_003
+	scrdef scr_seq_T29_004
+	scrdef scr_seq_T29_005
+	scrdef scr_seq_T29_006
+	scrdef scr_seq_T29_007
+	scrdef scr_seq_T29_008
+	scrdef scr_seq_T29_009
+	scrdef scr_seq_T29_010
+	scrdef scr_seq_T29_011
+	scrdef scr_seq_T29_012
+	scrdef scr_seq_T29_013
+	scrdef scr_seq_T29_014
+	scrdef scr_seq_T29_015
+	scrdef scr_seq_T29_016
+	scrdef scr_seq_T29_017
+	scrdef scr_seq_T29_018
 	scrdef_end
 
-scr_seq_0938_T29_004E:
+scr_seq_T29_000:
 	checkflag FLAG_UNK_0C9
-	gotoif TRUE, scr_seq_0938_T29_007F
+	gotoif TRUE, _007F
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	setflag FLAG_UNK_011
@@ -38,12 +40,12 @@ scr_seq_0938_T29_004E:
 	setflag FLAG_UNK_28C
 	end
 
-scr_seq_0938_T29_007F:
-	goto scr_seq_0938_T29_0115
+_007F:
+	goto _0115
 
-scr_seq_0938_T29_0085:
+_0085:
 	comparevartovalue VAR_UNK_4037, 61993
-	gotoif eq, scr_seq_0938_T29_00BC
+	gotoif eq, _00BC
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	clearflag FLAG_UNK_1FF
@@ -56,7 +58,7 @@ scr_seq_0938_T29_0085:
 	setflag FLAG_UNK_28C
 	end
 
-scr_seq_0938_T29_00BC:
+_00BC:
 	clearflag FLAG_UNK_1FC
 	clearflag FLAG_UNK_1FE
 	setflag FLAG_UNK_1FF
@@ -64,81 +66,77 @@ scr_seq_0938_T29_00BC:
 	clearflag FLAG_UNK_28B
 	clearflag FLAG_UNK_28C
 	checkflag FLAG_UNK_146
-	gotoif TRUE, scr_seq_0938_T29_00E5
-	goto scr_seq_0938_T29_00E9
+	gotoif TRUE, _00E5
+	goto _00E9
 
-scr_seq_0938_T29_00E5:
+_00E5:
 	setflag FLAG_UNK_289
-scr_seq_0938_T29_00E9:
+_00E9:
 	checkflag FLAG_UNK_147
-	gotoif TRUE, scr_seq_0938_T29_00FA
-	goto scr_seq_0938_T29_00FE
+	gotoif TRUE, _00FA
+	goto _00FE
 
-scr_seq_0938_T29_00FA:
+_00FA:
 	setflag FLAG_UNK_28B
-scr_seq_0938_T29_00FE:
+_00FE:
 	checkflag FLAG_UNK_148
-	gotoif TRUE, scr_seq_0938_T29_010F
-	goto scr_seq_0938_T29_0113
+	gotoif TRUE, _010F
+	goto _0113
 
-scr_seq_0938_T29_010F:
+_010F:
 	setflag FLAG_UNK_28C
-scr_seq_0938_T29_0113:
+_0113:
 	end
 
-scr_seq_0938_T29_0115:
+_0115:
 	scrcmd_147 39, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0938_T29_01A7
+	gotoif eq, _01A7
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0938_T29_0139
-	goto scr_seq_0938_T29_01A7
+	gotoif TRUE, _0139
+	goto _01A7
 
-scr_seq_0938_T29_0139:
+_0139:
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0938_T29_0154
+	gotoif ne, _0154
 	clearflag FLAG_UNK_2CC
-	goto scr_seq_0938_T29_019F
+	goto _019F
 
-scr_seq_0938_T29_0154:
+_0154:
 	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, scr_seq_0938_T29_016B
+	gotoif ne, _016B
 	clearflag FLAG_UNK_2CC
-	goto scr_seq_0938_T29_019F
+	goto _019F
 
-scr_seq_0938_T29_016B:
+_016B:
 	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, scr_seq_0938_T29_0182
+	gotoif ne, _0182
 	clearflag FLAG_UNK_2CC
-	goto scr_seq_0938_T29_019F
+	goto _019F
 
-scr_seq_0938_T29_0182:
+_0182:
 	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, scr_seq_0938_T29_0199
+	gotoif ne, _0199
 	clearflag FLAG_UNK_2CC
-	goto scr_seq_0938_T29_019F
+	goto _019F
 
-scr_seq_0938_T29_0199:
-	goto scr_seq_0938_T29_01A7
+_0199:
+	goto _01A7
 
-scr_seq_0938_T29_019F:
-	goto scr_seq_0938_T29_0085
-
-scr_seq_0938_T29_01A5:
+_019F:
+	goto _0085
 	.byte 0x02, 0x00
-scr_seq_0938_T29_01A7:
+_01A7:
 	setflag FLAG_UNK_2CC
-	goto scr_seq_0938_T29_0085
-
-scr_seq_0938_T29_01B1:
+	goto _0085
 	.byte 0x02, 0x00
-scr_seq_0938_T29_01B3:
+scr_seq_T29_002:
 	checkflag FLAG_UNK_0A4
-	gotoif TRUE, scr_seq_0938_T29_01C0
+	gotoif TRUE, _01C0
 	end
 
-scr_seq_0938_T29_01C0:
+_01C0:
 	setflag FLAG_UNK_1E3
 	hide_person 3
 	clearflag FLAG_UNK_1E4
@@ -147,30 +145,30 @@ scr_seq_0938_T29_01C0:
 	clearflag FLAG_UNK_0A4
 	end
 
-scr_seq_0938_T29_01DA:
+scr_seq_T29_017:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif ge, scr_seq_0938_T29_026A
-	npc_msg 13
-scr_seq_0938_T29_01F2:
+	gotoif ge, _026A
+	npc_msg msg_0626_T29_00013
+_01F2:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0938_T29_0216
+	gotoif eq, _0216
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0938_T29_0259
+	gotoif ge, _0259
 	end
 
-scr_seq_0938_T29_0216:
+_0216:
 	buffer_players_name 0
-	npc_msg 14
+	npc_msg msg_0626_T29_00014
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	register_gear_number 39
-	npc_msg 15
+	npc_msg msg_0626_T29_00015
 	waitbutton
 	closemsg
 	fade_screen 6, 1, 0, 0x00
@@ -184,61 +182,59 @@ scr_seq_0938_T29_0216:
 	releaseall
 	end
 
-scr_seq_0938_T29_0259:
+_0259:
 	setvar VAR_TEMP_x4004, 1
-	npc_msg 16
+	npc_msg msg_0626_T29_00016
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_026A:
-	npc_msg 17
-	goto scr_seq_0938_T29_01F2
-
-scr_seq_0938_T29_0273:
+_026A:
+	npc_msg msg_0626_T29_00017
+	goto _01F2
 	.byte 0x02, 0x00
-scr_seq_0938_T29_0275:
+scr_seq_T29_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
 	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0938_T29_039B
+	gotoif eq, _039B
 	checkflag FLAG_GOT_SHOCK_RIBBON
-	gotoif TRUE, scr_seq_0938_T29_03AF
+	gotoif TRUE, _03AF
 	comparevartovalue VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	gotoif eq, scr_seq_0938_T29_0349
+	gotoif eq, _0349
 	checkflag FLAG_UNK_0D5
-	gotoif TRUE, scr_seq_0938_T29_032B
+	gotoif TRUE, _032B
 	get_weekday VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0938_T29_02DC
+	gotoif eq, _02DC
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 11
-	goto scr_seq_0938_T29_0323
+	goto _0323
 
-scr_seq_0938_T29_02DC:
+_02DC:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 8
 	setvar VAR_SPECIAL_x8004, 241
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0938_T29_033F
+	gotoif eq, _033F
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D5
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 9
-scr_seq_0938_T29_0323:
+_0323:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_032B:
+_032B:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 10
 	waitbutton
@@ -246,21 +242,21 @@ scr_seq_0938_T29_032B:
 	releaseall
 	end
 
-scr_seq_0938_T29_033F:
+_033F:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_0349:
+_0349:
 	get_weekday VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0938_T29_036C
+	gotoif eq, _036C
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 11
-	goto scr_seq_0938_T29_0323
+	goto _0323
 
-scr_seq_0938_T29_036C:
+_036C:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 36
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
@@ -274,7 +270,7 @@ scr_seq_0938_T29_036C:
 	releaseall
 	end
 
-scr_seq_0938_T29_039B:
+_039B:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 37
 	waitbutton
@@ -282,7 +278,7 @@ scr_seq_0938_T29_039B:
 	releaseall
 	end
 
-scr_seq_0938_T29_03AF:
+_03AF:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 39
 	waitbutton
@@ -290,12 +286,12 @@ scr_seq_0938_T29_03AF:
 	releaseall
 	end
 
-scr_seq_0938_T29_03C3:
+scr_seq_T29_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 130, 0
-	npc_msg 0
+	npc_msg msg_0626_T29_00000
 	scrcmd_077
 	closemsg
 	setflag FLAG_UNK_0A4
@@ -303,74 +299,74 @@ scr_seq_0938_T29_03C3:
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0938_T29_0456
+	gotoif eq, _0456
 	scrcmd_683 16386
 	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, scr_seq_0938_T29_0452
+	gotoif eq, _0452
 	comparevartovalue VAR_TEMP_x4002, 4
-	callif eq, scr_seq_0938_T29_0466
+	callif eq, _0466
 	checkflag FLAG_UNK_0C9
-	gotoif TRUE, scr_seq_0938_T29_046C
+	gotoif TRUE, _046C
 	scrcmd_052
 	setvar VAR_SPECIAL_x8004, 478
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0938_T29_045C
+	gotoif eq, _045C
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0C9
 	clearflag FLAG_UNK_28A
 	closemsg
-scr_seq_0938_T29_0452:
+_0452:
 	releaseall
 	end
 
-scr_seq_0938_T29_0456:
+_0456:
 	white_out
 	releaseall
 	end
 
-scr_seq_0938_T29_045C:
+_045C:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_0466:
+_0466:
 	setflag FLAG_UNK_16A
 	return
 
-scr_seq_0938_T29_046C:
+_046C:
 	clearflag FLAG_UNK_1E4
 	hide_person 8
 	hide_person 10
 	releaseall
 	end
 
-scr_seq_0938_T29_047C:
+scr_seq_T29_003:
 	checkflag FLAG_UNK_0C3
-	gotoif TRUE, scr_seq_0938_T29_0509
+	gotoif TRUE, _0509
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 2
+	npc_msg msg_0626_T29_00002
 	faceplayer
 	buffer_players_name 0
-	gender_msgbox 3, 4
+	gender_msgbox msg_0626_T29_00003, msg_0626_T29_00004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0938_T29_04BB
+	gotoif eq, _04BB
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0938_T29_04FA
-scr_seq_0938_T29_04BB:
+	gotoif eq, _04FA
+_04BB:
 	buffer_players_name 0
-	gender_msgbox 5, 6
+	gender_msgbox msg_0626_T29_00005, msg_0626_T29_00006
 	waitbutton
 	closemsg
-	apply_movement 10, scr_seq_0938_T29_0538
+	apply_movement obj_T29_tsure_poke_607, _0538
 	wait_movement
-	apply_movement 8, scr_seq_0938_T29_0544
+	apply_movement obj_T29_wataru, _0544
 	wait_movement
 	scrcmd_775 8, 10
 	setflag FLAG_UNK_1E4
@@ -381,61 +377,59 @@ scr_seq_0938_T29_04BB:
 	releaseall
 	end
 
-scr_seq_0938_T29_04FA:
+_04FA:
 	setflag FLAG_UNK_0C3
-	npc_msg 7
+	npc_msg msg_0626_T29_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_0509:
+_0509:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0626_T29_00008
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0938_T29_04BB
+	gotoif eq, _04BB
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0938_T29_04FA
+	gotoif eq, _04FA
 	end
 
 
-scr_seq_0938_T29_0538:
+_0538:
 	step 34, 1
 	step 50, 2
 	step_end
 
-scr_seq_0938_T29_0544:
+_0544:
 	step 33, 1
 	step_end
-scr_seq_0938_T29_054C:
+scr_seq_T29_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif TRUE, scr_seq_0938_T29_056A
-	npc_msg 9
+	gotoif TRUE, _056A
+	npc_msg msg_0626_T29_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_056A:
-	npc_msg 10
+_056A:
+	npc_msg msg_0626_T29_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0938_T29_0575:
 	.byte 0x02, 0x00
-scr_seq_0938_T29_0577:
+scr_seq_T29_006:
 	checkflag FLAG_UNK_139
-	gotoif TRUE, scr_seq_0938_T29_0597
+	gotoif TRUE, _0597
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -443,7 +437,7 @@ scr_seq_0938_T29_0577:
 	callstd 2000
 	end
 
-scr_seq_0938_T29_0597:
+_0597:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -461,32 +455,26 @@ scr_seq_0938_T29_0597:
 	releaseall
 	end
 
-scr_seq_0938_T29_05CD:
+scr_seq_T29_014:
 	setvar VAR_TEMP_x4001, 1
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0938_T29_061B
-
-scr_seq_0938_T29_05E5:
+	goto _061B
 	.byte 0x02, 0x00
-scr_seq_0938_T29_05E7:
+scr_seq_T29_015:
 	setvar VAR_TEMP_x4001, 2
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0938_T29_061B
-
-scr_seq_0938_T29_05FF:
+	goto _061B
 	.byte 0x02
 	.byte 0x00
-scr_seq_0938_T29_0601:
+scr_seq_T29_016:
 	setvar VAR_TEMP_x4001, 3
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0938_T29_061B
-
-scr_seq_0938_T29_0619:
+	goto _061B
 	.byte 0x02, 0x00
-scr_seq_0938_T29_061B:
+_061B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -495,134 +483,128 @@ scr_seq_0938_T29_061B:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0938_T29_0657
+	gotoif eq, _0657
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0938_T29_06CA
+	gotoif eq, _06CA
 	end
 
-scr_seq_0938_T29_0657:
+_0657:
 	callstd 2001
 	hide_person VAR_SPECIAL_x800D
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif ne, scr_seq_0938_T29_0676
+	gotoif ne, _0676
 	setflag FLAG_UNK_146
-	goto scr_seq_0938_T29_0691
+	goto _0691
 
-scr_seq_0938_T29_0676:
+_0676:
 	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, scr_seq_0938_T29_068D
+	gotoif ne, _068D
 	setflag FLAG_UNK_147
-	goto scr_seq_0938_T29_0691
+	goto _0691
 
-scr_seq_0938_T29_068D:
+_068D:
 	setflag FLAG_UNK_148
-scr_seq_0938_T29_0691:
+_0691:
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
-	npc_msg 33
+	npc_msg msg_0626_T29_00033
 	wait_fanfare
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	npc_msg 34
+	npc_msg msg_0626_T29_00034
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 1
-scr_seq_0938_T29_06C4:
+_06C4:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_06CA:
+_06CA:
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg 35
+	npc_msg msg_0626_T29_00035
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0
-	goto scr_seq_0938_T29_06C4
-
-scr_seq_0938_T29_06E0:
+	goto _06C4
 	.byte 0x02, 0x00
-scr_seq_0938_T29_06E2:
+scr_seq_T29_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 149, 0
-	npc_msg 1
+	npc_msg msg_0626_T29_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_06FB:
+scr_seq_T29_007:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_059 30, VAR_SPECIAL_x800C
 	callstd 2000
 	end
-
-scr_seq_0938_T29_0710:
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x09, 0x32, 0x00, 0x35, 0x00, 0x61
 	.byte 0x00, 0x02, 0x00
-scr_seq_0938_T29_0723:
+scr_seq_T29_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 12
+	npc_msg msg_0626_T29_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_0736:
+scr_seq_T29_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 11
+	npc_msg msg_0626_T29_00011
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0938_T29_0749:
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68
 	.byte 0x00, 0x2d, 0x00, 0x00, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
-scr_seq_0938_T29_075C:
+scr_seq_T29_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 18
+	npc_msg msg_0626_T29_00018
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_076F:
+scr_seq_T29_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 21
+	npc_msg msg_0626_T29_00021
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_0782:
+scr_seq_T29_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 24
+	npc_msg msg_0626_T29_00024
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0938_T29_0795:
+scr_seq_T29_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 27
+	npc_msg msg_0626_T29_00027
 	waitbutton
 	closemsg
 	releaseall

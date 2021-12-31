@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D37R0104.h",
   "bgs": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_D37R0104_001",
       "type": 0,
       "x": 8,
       "y": 8,
@@ -9,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_D37R0104_002",
       "type": 0,
       "x": 9,
       "y": 8,
@@ -17,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D37R0104_003",
       "type": 0,
       "x": 10,
       "y": 8,
@@ -25,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_D37R0104_004",
       "type": 0,
       "x": 23,
       "y": 14,
@@ -35,7 +36,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D37R0104_rocketm",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 15,
       "type": 1,
@@ -52,7 +53,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D37R0104_rocketm_2",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 15,
       "type": 1,
@@ -69,7 +70,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D37R0104_rocketm_3",
       "ovid": "SPRITE_ROCKETM",
       "mvt": 17,
       "type": 1,
@@ -86,7 +87,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D37R0104_rocketw",
       "ovid": "SPRITE_ROCKETW",
       "mvt": 15,
       "type": 1,
@@ -103,7 +104,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D37R0104_thief",
       "ovid": "SPRITE_THIEF",
       "mvt": 16,
       "type": 1,
@@ -120,7 +121,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D37R0104_thief_2",
       "ovid": "SPRITE_THIEF",
       "mvt": 17,
       "type": 1,
@@ -137,12 +138,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_D37R0104_babyboy1_4",
       "ovid": "SPRITE_BABYBOY1_4",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -154,12 +155,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_D37R0104_babyboy1_3",
       "ovid": "SPRITE_BABYBOY1_3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -171,12 +172,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_D37R0104_babyboy1_4_2",
       "ovid": "SPRITE_BABYBOY1_4",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -188,12 +189,12 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_D37R0104_babyboy1_3_2",
       "ovid": "SPRITE_BABYBOY1_3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -205,12 +206,12 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_D37R0104_babyboy1_6",
       "ovid": "SPRITE_BABYBOY1_6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -222,12 +223,12 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_D37R0104_babyboy1_7",
       "ovid": "SPRITE_BABYBOY1_7",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -239,12 +240,12 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_D37R0104_babyboy1_6_2",
       "ovid": "SPRITE_BABYBOY1_6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -256,12 +257,12 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_D37R0104_babyboy1_7_2",
       "ovid": "SPRITE_BABYBOY1_7",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -273,12 +274,12 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_D37R0104_babyboy1_4_3",
       "ovid": "SPRITE_BABYBOY1_4",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -290,12 +291,12 @@
       "z": 0
     },
     {
-      "id": 15,
+      "id": "obj_D37R0104_babyboy1_3_3",
       "ovid": "SPRITE_BABYBOY1_3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -307,12 +308,12 @@
       "z": 0
     },
     {
-      "id": 16,
+      "id": "obj_D37R0104_babyboy1_4_4",
       "ovid": "SPRITE_BABYBOY1_4",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -324,12 +325,12 @@
       "z": 0
     },
     {
-      "id": 17,
+      "id": "obj_D37R0104_babyboy1_3_4",
       "ovid": "SPRITE_BABYBOY1_3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -341,12 +342,12 @@
       "z": 0
     },
     {
-      "id": 18,
+      "id": "obj_D37R0104_babyboy1_4_5",
       "ovid": "SPRITE_BABYBOY1_4",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -358,12 +359,12 @@
       "z": 0
     },
     {
-      "id": 19,
+      "id": "obj_D37R0104_babyboy1_3_5",
       "ovid": "SPRITE_BABYBOY1_3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -375,12 +376,12 @@
       "z": 0
     },
     {
-      "id": 20,
+      "id": "obj_D37R0104_babyboy1_6_3",
       "ovid": "SPRITE_BABYBOY1_6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -392,12 +393,12 @@
       "z": 0
     },
     {
-      "id": 21,
+      "id": "obj_D37R0104_babyboy1_7_3",
       "ovid": "SPRITE_BABYBOY1_7",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -409,12 +410,12 @@
       "z": 0
     },
     {
-      "id": 22,
+      "id": "obj_D37R0104_babyboy1_6_4",
       "ovid": "SPRITE_BABYBOY1_6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -426,12 +427,12 @@
       "z": 0
     },
     {
-      "id": 23,
+      "id": "obj_D37R0104_babyboy1_7_4",
       "ovid": "SPRITE_BABYBOY1_7",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -443,12 +444,12 @@
       "z": 0
     },
     {
-      "id": 24,
+      "id": "obj_D37R0104_babyboy1_6_5",
       "ovid": "SPRITE_BABYBOY1_6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -460,12 +461,12 @@
       "z": 0
     },
     {
-      "id": 25,
+      "id": "obj_D37R0104_babyboy1_7_5",
       "ovid": "SPRITE_BABYBOY1_7",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -477,12 +478,12 @@
       "z": 0
     },
     {
-      "id": 26,
+      "id": "obj_D37R0104_babyboy1_4_6",
       "ovid": "SPRITE_BABYBOY1_4",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -494,12 +495,12 @@
       "z": 0
     },
     {
-      "id": 27,
+      "id": "obj_D37R0104_babyboy1_3_6",
       "ovid": "SPRITE_BABYBOY1_3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -511,12 +512,12 @@
       "z": 0
     },
     {
-      "id": 28,
+      "id": "obj_D37R0104_gsrivel",
       "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -528,12 +529,12 @@
       "z": 0
     },
     {
-      "id": 29,
+      "id": "obj_D37R0104_stop",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -545,12 +546,12 @@
       "z": 0
     },
     {
-      "id": 30,
+      "id": "obj_D37R0104_stop_2",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -562,12 +563,12 @@
       "z": 0
     },
     {
-      "id": 31,
+      "id": "obj_D37R0104_stop_3",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -579,12 +580,12 @@
       "z": 0
     },
     {
-      "id": 32,
+      "id": "obj_D37R0104_stop_4",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -596,12 +597,12 @@
       "z": 0
     },
     {
-      "id": 33,
+      "id": "obj_D37R0104_stop_5",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -613,12 +614,12 @@
       "z": 0
     },
     {
-      "id": 34,
+      "id": "obj_D37R0104_stop_6",
       "ovid": "SPRITE_STOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D37R0104_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -630,7 +631,7 @@
       "z": 0
     },
     {
-      "id": 35,
+      "id": "obj_D37R0104_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -647,7 +648,7 @@
       "z": 0
     },
     {
-      "id": 36,
+      "id": "obj_D37R0104_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -682,7 +683,7 @@
   ],
   "coords": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_D37R0104_005",
       "x": 19,
       "y": 5,
       "w": 1,

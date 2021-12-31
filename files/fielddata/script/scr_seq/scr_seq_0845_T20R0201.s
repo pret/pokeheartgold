@@ -1,213 +1,209 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T20R0201.h"
+#include "msgdata/msg/msg_0545_T20R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0845_T20R0201_001E ; 000
-	scrdef scr_seq_0845_T20R0201_0126 ; 001
-	scrdef scr_seq_0845_T20R0201_0449 ; 002
-	scrdef scr_seq_0845_T20R0201_045A ; 003
-	scrdef scr_seq_0845_T20R0201_046B ; 004
-	scrdef scr_seq_0845_T20R0201_047C ; 005
-	scrdef scr_seq_0845_T20R0201_00DC ; 006
+	scrdef scr_seq_T20R0201_000
+	scrdef scr_seq_T20R0201_001
+	scrdef scr_seq_T20R0201_002
+	scrdef scr_seq_T20R0201_003
+	scrdef scr_seq_T20R0201_004
+	scrdef scr_seq_T20R0201_005
+	scrdef scr_seq_T20R0201_006
 	scrdef_end
 
-scr_seq_0845_T20R0201_001E:
+scr_seq_T20R0201_000:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0845_T20R0201_00A4
-	apply_movement 0, scr_seq_0845_T20R0201_00B0
+	apply_movement obj_player, _00A4
+	apply_movement obj_T20R0201_gsmama, _00B0
 	wait_movement
 	callstd std_play_mom_music
 	wait 30, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0845_T20R0201_00B8
+	apply_movement obj_T20R0201_gsmama, _00B8
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 0, 1
+	gender_msgbox msg_0545_T20R0201_00000, msg_0545_T20R0201_00001
 	setflag FLAG_GOT_BAG
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
-	npc_msg 2
+	npc_msg msg_0545_T20R0201_00002
 	setflag FLAG_GOT_TRAINER_CARD
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
-	npc_msg 3
+	npc_msg msg_0545_T20R0201_00003
 	setflag FLAG_GOT_SAVE_BUTTON
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
-	npc_msg 4
+	npc_msg msg_0545_T20R0201_00004
 	setflag FLAG_GOT_OPTIONS_BUTTON
 	play_fanfare SEQ_SE_PL_KIRAKIRA
 	wait_fanfare
-	npc_msg 5
+	npc_msg msg_0545_T20R0201_00005
 	closemsg
 	wait 15, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0845_T20R0201_00C8
+	apply_movement obj_T20R0201_gsmama, _00C8
 	wait_movement
 	callstd std_fade_end_mom_music
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 1
 	releaseall
 	end
-
-scr_seq_0845_T20R0201_00A3:
 	.byte 0x00
 
-scr_seq_0845_T20R0201_00A4:
+_00A4:
 	step 62, 1
 	step 33, 1
 	step_end
 
-scr_seq_0845_T20R0201_00B0:
+_00B0:
 	step 32, 1
 	step_end
 
-scr_seq_0845_T20R0201_00B8:
+_00B8:
 	step 12, 2
 	step 14, 3
 	step 12, 1
 	step_end
 
-scr_seq_0845_T20R0201_00C8:
+_00C8:
 	step 33, 1
 	step 13, 3
 	step 15, 3
 	step 32, 1
 	step_end
-scr_seq_0845_T20R0201_00DC:
+scr_seq_T20R0201_006:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0845_T20R0201_00A4
-	apply_movement 0, scr_seq_0845_T20R0201_00B0
+	apply_movement obj_player, _00A4
+	apply_movement obj_T20R0201_gsmama, _00B0
 	wait_movement
 	callstd std_play_mom_music
 	wait 30, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0845_T20R0201_00B8
+	apply_movement obj_T20R0201_gsmama, _00B8
 	wait_movement
 	buffer_players_name 0
-	npc_msg 33
+	npc_msg msg_0545_T20R0201_00033
 	closemsg
-	apply_movement 0, scr_seq_0845_T20R0201_00C8
+	apply_movement obj_T20R0201_gsmama, _00C8
 	wait_movement
 	callstd std_fade_end_mom_music
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 4
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0126:
+scr_seq_T20R0201_001:
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0845_T20R0201_015C
+	gotoif TRUE, _015C
 	comparevartovalue VAR_SCENE_ELMS_LAB, 4
-	gotoif ge, scr_seq_0845_T20R0201_0205
+	gotoif ge, _0205
 	checkflag FLAG_GOT_STARTER
-	gotoif TRUE, scr_seq_0845_T20R0201_0179
+	gotoif TRUE, _0179
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 6
+	npc_msg msg_0545_T20R0201_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_015C:
+_015C:
 	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0845_T20R0201_01F2
-	goto scr_seq_0845_T20R0201_0205
-
-scr_seq_0845_T20R0201_0177:
+	gotoif eq, _01F2
+	goto _0205
 	.byte 0x02, 0x00
-scr_seq_0845_T20R0201_0179:
+_0179:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_GOT_POKEGEAR
-	gotoif TRUE, scr_seq_0845_T20R0201_01D4
+	gotoif TRUE, _01D4
 	buffer_players_name 0
-	npc_msg 7
+	npc_msg msg_0545_T20R0201_00007
 	buffer_players_name 0
-	npc_msg 8
+	npc_msg msg_0545_T20R0201_00008
 	setflag FLAG_GOT_POKEGEAR
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	npc_msg 9
-	npc_msg 10
+	npc_msg msg_0545_T20R0201_00009
+	npc_msg msg_0545_T20R0201_00010
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0845_T20R0201_01C6
-	npc_msg 11
-	goto scr_seq_0845_T20R0201_01C9
+	gotoif ne, _01C6
+	npc_msg msg_0545_T20R0201_00011
+	goto _01C9
 
-scr_seq_0845_T20R0201_01C6:
-	npc_msg 12
-scr_seq_0845_T20R0201_01C9:
-	npc_msg 13
+_01C6:
+	npc_msg msg_0545_T20R0201_00012
+_01C9:
+	npc_msg msg_0545_T20R0201_00013
 	scrcmd_051
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_01D4:
-	npc_msg 14
+_01D4:
+	npc_msg msg_0545_T20R0201_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0845_T20R0201_01DF:
 	.byte 0x49
 	.byte 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x07, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00
 	.byte 0x02, 0x00
-scr_seq_0845_T20R0201_01F2:
+_01F2:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 34
+	npc_msg msg_0545_T20R0201_00034
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0205:
+_0205:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0A7
-	gotoif TRUE, scr_seq_0845_T20R0201_0275
+	gotoif TRUE, _0275
 	check_badge 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0845_T20R0201_0234
-	npc_msg 15
-	goto scr_seq_0845_T20R0201_023A
+	gotoif ne, _0234
+	npc_msg msg_0545_T20R0201_00015
+	goto _023A
 
-scr_seq_0845_T20R0201_0234:
+_0234:
 	buffer_players_name 0
-	npc_msg 16
-scr_seq_0845_T20R0201_023A:
+	npc_msg msg_0545_T20R0201_00016
+_023A:
 	setflag FLAG_UNK_0A7
 	setvar VAR_UNK_4095, 0
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0845_T20R0201_0266
-	npc_msg 17
+	gotoif ne, _0266
+	npc_msg msg_0545_T20R0201_00017
 	setflag FLAG_UNK_986
-	goto scr_seq_0845_T20R0201_026D
+	goto _026D
 
-scr_seq_0845_T20R0201_0266:
-	npc_msg 18
+_0266:
+	npc_msg msg_0545_T20R0201_00018
 	clearflag FLAG_UNK_986
-scr_seq_0845_T20R0201_026D:
+_026D:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0275:
-	npc_msg 20
+_0275:
+	npc_msg msg_0545_T20R0201_00020
 	scrcmd_795 1, 1
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
@@ -218,177 +214,175 @@ scr_seq_0845_T20R0201_0275:
 	menu_exec
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0845_T20R0201_02DF
+	gotoif eq, _02DF
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0845_T20R0201_0335
+	gotoif eq, _0335
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0845_T20R0201_0398
-	goto scr_seq_0845_T20R0201_03D1
-
-scr_seq_0845_T20R0201_02DD:
+	gotoif eq, _0398
+	goto _03D1
 	.byte 0x02, 0x00
-scr_seq_0845_T20R0201_02DF:
+_02DF:
 	bank_or_wallet_is_full 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0845_T20R0201_043A
+	gotoif eq, _043A
 	check_bank_balance VAR_SPECIAL_x800C, 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0845_T20R0201_041C
+	gotoif eq, _041C
 	bank_transaction 1, VAR_SPECIAL_x800C
 	scrcmd_796
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0845_T20R0201_03E0
+	gotoif eq, _03E0
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0845_T20R0201_0411
+	gotoif eq, _0411
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0335:
+_0335:
 	bank_or_wallet_is_full 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0845_T20R0201_042B
+	gotoif eq, _042B
 	hasenoughmoneyvar VAR_SPECIAL_x800C, 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0845_T20R0201_0389
+	gotoif eq, _0389
 	bank_transaction 0, VAR_SPECIAL_x800C
 	scrcmd_796
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0845_T20R0201_03FA
+	gotoif eq, _03FA
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0845_T20R0201_0411
+	gotoif eq, _0411
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0389:
+_0389:
 	touchscreen_menu_show
 	scrcmd_796
-	npc_msg 26
+	npc_msg msg_0545_T20R0201_00026
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0398:
-	npc_msg 25
+_0398:
+	npc_msg msg_0545_T20R0201_00025
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	scrcmd_796
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0845_T20R0201_03C2
+	gotoif ne, _03C2
 	buffer_players_name 0
-	npc_msg 17
+	npc_msg msg_0545_T20R0201_00017
 	setflag FLAG_UNK_986
-	goto scr_seq_0845_T20R0201_03C9
+	goto _03C9
 
-scr_seq_0845_T20R0201_03C2:
-	npc_msg 18
+_03C2:
+	npc_msg msg_0545_T20R0201_00018
 	clearflag FLAG_UNK_986
-scr_seq_0845_T20R0201_03C9:
+_03C9:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_03D1:
+_03D1:
 	scrcmd_796
 	touchscreen_menu_show
-	npc_msg 21
+	npc_msg msg_0545_T20R0201_00021
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_03E0:
+_03E0:
 	closemsg
 	wait 8, VAR_SPECIAL_x800C
 	play_se SEQ_SE_GS_OKOZUKAI
 	buffer_players_name 0
-	npc_msg 24
+	npc_msg msg_0545_T20R0201_00024
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_03FA:
+_03FA:
 	closemsg
 	wait 8, VAR_SPECIAL_x800C
 	play_se SEQ_SE_GS_OKOZUKAI
-	npc_msg 23
+	npc_msg msg_0545_T20R0201_00023
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0411:
-	npc_msg 21
+_0411:
+	npc_msg msg_0545_T20R0201_00021
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_041C:
+_041C:
 	touchscreen_menu_show
 	scrcmd_796
-	npc_msg 22
+	npc_msg msg_0545_T20R0201_00022
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_042B:
+_042B:
 	touchscreen_menu_show
 	scrcmd_796
-	npc_msg 27
+	npc_msg msg_0545_T20R0201_00027
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_043A:
+_043A:
 	touchscreen_menu_show
 	scrcmd_796
-	npc_msg 28
+	npc_msg msg_0545_T20R0201_00028
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_0449:
+scr_seq_T20R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 35
+	npc_msg msg_0545_T20R0201_00035
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_045A:
+scr_seq_T20R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 36
+	npc_msg msg_0545_T20R0201_00036
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_046B:
+scr_seq_T20R0201_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 37
+	npc_msg msg_0545_T20R0201_00037
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0845_T20R0201_047C:
+scr_seq_T20R0201_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 38
+	npc_msg msg_0545_T20R0201_00038
 	waitbutton
 	closemsg
 	releaseall

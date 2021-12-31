@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_D02FS0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D02FS0101_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D02FS0101_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D02FS0101_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 15,
       "type": 0,

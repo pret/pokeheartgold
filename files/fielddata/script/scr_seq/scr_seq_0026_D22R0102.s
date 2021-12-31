@@ -1,114 +1,116 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D22R0102.h"
+#include "msgdata/msg/msg_0063_D22R0102.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0026_D22R0102_00E0 ; 000
-	scrdef scr_seq_0026_D22R0102_00F5 ; 001
-	scrdef scr_seq_0026_D22R0102_010A ; 002
-	scrdef scr_seq_0026_D22R0102_0036 ; 003
-	scrdef scr_seq_0026_D22R0102_0047 ; 004
-	scrdef scr_seq_0026_D22R0102_0058 ; 005
-	scrdef scr_seq_0026_D22R0102_0069 ; 006
-	scrdef scr_seq_0026_D22R0102_007A ; 007
-	scrdef scr_seq_0026_D22R0102_008B ; 008
-	scrdef scr_seq_0026_D22R0102_009C ; 009
-	scrdef scr_seq_0026_D22R0102_00AD ; 010
-	scrdef scr_seq_0026_D22R0102_00BE ; 011
-	scrdef scr_seq_0026_D22R0102_00CF ; 012
+	scrdef scr_seq_D22R0102_000
+	scrdef scr_seq_D22R0102_001
+	scrdef scr_seq_D22R0102_002
+	scrdef scr_seq_D22R0102_003
+	scrdef scr_seq_D22R0102_004
+	scrdef scr_seq_D22R0102_005
+	scrdef scr_seq_D22R0102_006
+	scrdef scr_seq_D22R0102_007
+	scrdef scr_seq_D22R0102_008
+	scrdef scr_seq_D22R0102_009
+	scrdef scr_seq_D22R0102_010
+	scrdef scr_seq_D22R0102_011
+	scrdef scr_seq_D22R0102_012
 	scrdef_end
 
-scr_seq_0026_D22R0102_0036:
+scr_seq_D22R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 3
+	npc_msg msg_0063_D22R0102_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_0047:
+scr_seq_D22R0102_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 6
+	npc_msg msg_0063_D22R0102_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_0058:
+scr_seq_D22R0102_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 9
+	npc_msg msg_0063_D22R0102_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_0069:
+scr_seq_D22R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 12
+	npc_msg msg_0063_D22R0102_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_007A:
+scr_seq_D22R0102_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 15
+	npc_msg msg_0063_D22R0102_00015
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_008B:
+scr_seq_D22R0102_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 18
+	npc_msg msg_0063_D22R0102_00018
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_009C:
+scr_seq_D22R0102_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 21
+	npc_msg msg_0063_D22R0102_00021
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_00AD:
+scr_seq_D22R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 24
+	npc_msg msg_0063_D22R0102_00024
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_00BE:
+scr_seq_D22R0102_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 27
+	npc_msg msg_0063_D22R0102_00027
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_00CF:
+scr_seq_D22R0102_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 30
+	npc_msg msg_0063_D22R0102_00030
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0026_D22R0102_00E0:
+scr_seq_D22R0102_000:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -116,7 +118,7 @@ scr_seq_0026_D22R0102_00E0:
 	callstd 2000
 	end
 
-scr_seq_0026_D22R0102_00F5:
+scr_seq_D22R0102_001:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -124,7 +126,7 @@ scr_seq_0026_D22R0102_00F5:
 	callstd 2000
 	end
 
-scr_seq_0026_D22R0102_010A:
+scr_seq_D22R0102_002:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058

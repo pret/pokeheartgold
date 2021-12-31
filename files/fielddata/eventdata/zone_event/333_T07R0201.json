@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T07R0201.h",
   "bgs": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_T07R0201_005",
       "type": 0,
       "x": 5,
       "y": 2,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T07R0201_gsoldwoman1",
       "ovid": "SPRITE_GSOLDWOMAN1",
       "mvt": 8,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T07R0201_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -28,12 +29,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T07R0201_tsure_poke_587",
       "ovid": "SPRITE_TSURE_POKE_587",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T07R0201_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -45,12 +46,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T07R0201_tsure_poke_582",
       "ovid": "SPRITE_TSURE_POKE_582",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T07R0201_003",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -62,12 +63,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T07R0201_tsure_poke_579",
       "ovid": "SPRITE_TSURE_POKE_579",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T07R0201_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

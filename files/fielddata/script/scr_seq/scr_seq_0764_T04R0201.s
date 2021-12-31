@@ -1,39 +1,41 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T04R0201.h"
+#include "msgdata/msg/msg_0472_T04R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0764_T04R0201_000E ; 000
-	scrdef scr_seq_0764_T04R0201_0021 ; 001
-	scrdef scr_seq_0764_T04R0201_0034 ; 002
+	scrdef scr_seq_T04R0201_000
+	scrdef scr_seq_T04R0201_001
+	scrdef scr_seq_T04R0201_002
 	scrdef_end
 
-scr_seq_0764_T04R0201_000E:
+scr_seq_T04R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0472_T04R0201_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0764_T04R0201_0021:
+scr_seq_T04R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0472_T04R0201_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0764_T04R0201_0034:
+scr_seq_T04R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 50, 0
-	npc_msg 2
+	npc_msg msg_0472_T04R0201_00002
 	scrcmd_077
 	waitbutton
 	closemsg

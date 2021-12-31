@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R26.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_R26_003",
       "type": 1,
       "x": 911,
       "y": 298,
@@ -35,7 +36,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R26_fishing_2",
       "ovid": "SPRITE_FISHING_2",
       "mvt": 9,
       "type": 1,
@@ -52,7 +53,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R26_mystery_2",
       "ovid": "SPRITE_MYSTERY_2",
       "mvt": 16,
       "type": 1,
@@ -69,7 +70,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R26_gswoman3",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 19,
       "type": 1,
@@ -86,7 +87,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R26_gsman3",
       "ovid": "SPRITE_GSMAN3",
       "mvt": 16,
       "type": 1,
@@ -103,7 +104,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R26_gsman3_2",
       "ovid": "SPRITE_GSMAN3",
       "mvt": 15,
       "type": 1,
@@ -120,7 +121,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R26_gswoman3_2",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 15,
       "type": 1,
@@ -137,7 +138,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R26_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -154,7 +155,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_R26_bonguri",
       "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
@@ -171,12 +172,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_R26_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R26_001",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

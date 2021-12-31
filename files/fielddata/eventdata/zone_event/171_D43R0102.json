@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D43R0102.h",
   "bgs": [
     {
       "scr": 8185,
@@ -27,7 +28,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D43R0102_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -44,7 +45,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D43R0102_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -61,7 +62,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D43R0102_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -78,7 +79,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D43R0102_rock",
       "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,
@@ -95,7 +96,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D43R0102_rock_2",
       "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,

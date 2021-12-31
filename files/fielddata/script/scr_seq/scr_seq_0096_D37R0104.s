@@ -1,23 +1,25 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D37R0104.h"
+#include "msgdata/msg/msg_0119_D37R0104.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0096_D37R0104_042C ; 000
-	scrdef scr_seq_0096_D37R0104_0274 ; 001
-	scrdef scr_seq_0096_D37R0104_00BC ; 002
-	scrdef scr_seq_0096_D37R0104_0595 ; 003
-	scrdef scr_seq_0096_D37R0104_061C ; 004
-	scrdef scr_seq_0096_D37R0104_0071 ; 005
-	scrdef scr_seq_0096_D37R0104_001E ; 006
+	scrdef scr_seq_D37R0104_000
+	scrdef scr_seq_D37R0104_001
+	scrdef scr_seq_D37R0104_002
+	scrdef scr_seq_D37R0104_003
+	scrdef scr_seq_D37R0104_004
+	scrdef scr_seq_D37R0104_005
+	scrdef scr_seq_D37R0104_006
 	scrdef_end
 
-scr_seq_0096_D37R0104_001E:
+scr_seq_D37R0104_006:
 	setflag FLAG_UNK_1B7
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0096_D37R0104_0033
+	gotoif ne, _0033
 	clearflag FLAG_UNK_1B7
-scr_seq_0096_D37R0104_0033:
+_0033:
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 0
 	setvar VAR_TEMP_x4002, 1
@@ -30,7 +32,7 @@ scr_seq_0096_D37R0104_0033:
 	setvar VAR_TEMP_x4009, 1
 	end
 
-scr_seq_0096_D37R0104_0071:
+scr_seq_D37R0104_005:
 	scrcmd_375 31
 	scrcmd_375 30
 	scrcmd_375 29
@@ -38,317 +40,317 @@ scr_seq_0096_D37R0104_0071:
 	scrcmd_375 33
 	scrcmd_375 34
 	checkflag FLAG_UNK_09B
-	gotoif TRUE, scr_seq_0096_D37R0104_0096
+	gotoif TRUE, _0096
 	end
 
-scr_seq_0096_D37R0104_0096:
+_0096:
 	move_person 26, 18, 0, 14, 0
 	move_person 27, 24, 0, 14, 0
 	move_person 34, 24, 0, 14, 0
 	end
 
-scr_seq_0096_D37R0104_00BC:
+scr_seq_D37R0104_002:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0096_D37R0104_00F5
-	apply_movement 8, scr_seq_0096_D37R0104_05CC
-	apply_movement 9, scr_seq_0096_D37R0104_05D4
-	apply_movement 30, scr_seq_0096_D37R0104_060C
+	gotoif ne, _00F5
+	apply_movement obj_D37R0104_babyboy1_4_2, _05CC
+	apply_movement obj_D37R0104_babyboy1_3_2, _05D4
+	apply_movement obj_D37R0104_stop_2, _060C
 	setvar VAR_TEMP_x4001, 1
-	goto scr_seq_0096_D37R0104_0113
+	goto _0113
 
-scr_seq_0096_D37R0104_00F5:
-	apply_movement 8, scr_seq_0096_D37R0104_05DC
-	apply_movement 9, scr_seq_0096_D37R0104_05E4
-	apply_movement 30, scr_seq_0096_D37R0104_0614
+_00F5:
+	apply_movement obj_D37R0104_babyboy1_4_2, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_2, _05E4
+	apply_movement obj_D37R0104_stop_2, _0614
 	setvar VAR_TEMP_x4001, 0
-scr_seq_0096_D37R0104_0113:
+_0113:
 	comparevartovalue VAR_TEMP_x4003, 0
-	gotoif ne, scr_seq_0096_D37R0104_013C
-	apply_movement 12, scr_seq_0096_D37R0104_05EC
-	apply_movement 13, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _013C
+	apply_movement obj_D37R0104_babyboy1_6_2, _05EC
+	apply_movement obj_D37R0104_babyboy1_7_2, _05F4
 	setvar VAR_TEMP_x4003, 1
-	goto scr_seq_0096_D37R0104_0152
+	goto _0152
 
-scr_seq_0096_D37R0104_013C:
-	apply_movement 12, scr_seq_0096_D37R0104_05FC
-	apply_movement 13, scr_seq_0096_D37R0104_0604
+_013C:
+	apply_movement obj_D37R0104_babyboy1_6_2, _05FC
+	apply_movement obj_D37R0104_babyboy1_7_2, _0604
 	setvar VAR_TEMP_x4003, 0
-scr_seq_0096_D37R0104_0152:
+_0152:
 	comparevartovalue VAR_TEMP_x4005, 0
-	gotoif ne, scr_seq_0096_D37R0104_0183
-	apply_movement 16, scr_seq_0096_D37R0104_05CC
-	apply_movement 17, scr_seq_0096_D37R0104_05D4
-	apply_movement 32, scr_seq_0096_D37R0104_060C
+	gotoif ne, _0183
+	apply_movement obj_D37R0104_babyboy1_4_4, _05CC
+	apply_movement obj_D37R0104_babyboy1_3_4, _05D4
+	apply_movement obj_D37R0104_stop_4, _060C
 	setvar VAR_TEMP_x4005, 1
-	goto scr_seq_0096_D37R0104_01A1
+	goto _01A1
 
-scr_seq_0096_D37R0104_0183:
-	apply_movement 16, scr_seq_0096_D37R0104_05DC
-	apply_movement 17, scr_seq_0096_D37R0104_05E4
-	apply_movement 32, scr_seq_0096_D37R0104_0614
+_0183:
+	apply_movement obj_D37R0104_babyboy1_4_4, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_4, _05E4
+	apply_movement obj_D37R0104_stop_4, _0614
 	setvar VAR_TEMP_x4005, 0
-scr_seq_0096_D37R0104_01A1:
+_01A1:
 	comparevartovalue VAR_TEMP_x4006, 0
-	gotoif ne, scr_seq_0096_D37R0104_01D2
-	apply_movement 18, scr_seq_0096_D37R0104_05CC
-	apply_movement 19, scr_seq_0096_D37R0104_05D4
-	apply_movement 33, scr_seq_0096_D37R0104_060C
+	gotoif ne, _01D2
+	apply_movement obj_D37R0104_babyboy1_4_5, _05CC
+	apply_movement obj_D37R0104_babyboy1_3_5, _05D4
+	apply_movement obj_D37R0104_stop_5, _060C
 	setvar VAR_TEMP_x4006, 1
-	goto scr_seq_0096_D37R0104_01F0
+	goto _01F0
 
-scr_seq_0096_D37R0104_01D2:
-	apply_movement 18, scr_seq_0096_D37R0104_05DC
-	apply_movement 19, scr_seq_0096_D37R0104_05E4
-	apply_movement 33, scr_seq_0096_D37R0104_0614
+_01D2:
+	apply_movement obj_D37R0104_babyboy1_4_5, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_5, _05E4
+	apply_movement obj_D37R0104_stop_5, _0614
 	setvar VAR_TEMP_x4006, 0
-scr_seq_0096_D37R0104_01F0:
+_01F0:
 	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, scr_seq_0096_D37R0104_0219
-	apply_movement 20, scr_seq_0096_D37R0104_05EC
-	apply_movement 21, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _0219
+	apply_movement obj_D37R0104_babyboy1_6_3, _05EC
+	apply_movement obj_D37R0104_babyboy1_7_3, _05F4
 	setvar VAR_TEMP_x4007, 1
-	goto scr_seq_0096_D37R0104_022F
+	goto _022F
 
-scr_seq_0096_D37R0104_0219:
-	apply_movement 20, scr_seq_0096_D37R0104_05FC
-	apply_movement 21, scr_seq_0096_D37R0104_0604
+_0219:
+	apply_movement obj_D37R0104_babyboy1_6_3, _05FC
+	apply_movement obj_D37R0104_babyboy1_7_3, _0604
 	setvar VAR_TEMP_x4007, 0
-scr_seq_0096_D37R0104_022F:
+_022F:
 	comparevartovalue VAR_TEMP_x4008, 0
-	gotoif ne, scr_seq_0096_D37R0104_0258
-	apply_movement 22, scr_seq_0096_D37R0104_05EC
-	apply_movement 23, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _0258
+	apply_movement obj_D37R0104_babyboy1_6_4, _05EC
+	apply_movement obj_D37R0104_babyboy1_7_4, _05F4
 	setvar VAR_TEMP_x4008, 1
-	goto scr_seq_0096_D37R0104_026E
+	goto _026E
 
-scr_seq_0096_D37R0104_0258:
-	apply_movement 22, scr_seq_0096_D37R0104_05FC
-	apply_movement 23, scr_seq_0096_D37R0104_0604
+_0258:
+	apply_movement obj_D37R0104_babyboy1_6_4, _05FC
+	apply_movement obj_D37R0104_babyboy1_7_4, _0604
 	setvar VAR_TEMP_x4008, 0
-scr_seq_0096_D37R0104_026E:
+_026E:
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0096_D37R0104_0274:
+scr_seq_D37R0104_001:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0096_D37R0104_02AD
-	apply_movement 6, scr_seq_0096_D37R0104_05CC
-	apply_movement 7, scr_seq_0096_D37R0104_05D4
-	apply_movement 31, scr_seq_0096_D37R0104_060C
+	gotoif ne, _02AD
+	apply_movement obj_D37R0104_babyboy1_4, _05CC
+	apply_movement obj_D37R0104_babyboy1_3, _05D4
+	apply_movement obj_D37R0104_stop_3, _060C
 	setvar VAR_TEMP_x4000, 1
-	goto scr_seq_0096_D37R0104_02CB
+	goto _02CB
 
-scr_seq_0096_D37R0104_02AD:
-	apply_movement 6, scr_seq_0096_D37R0104_05DC
-	apply_movement 7, scr_seq_0096_D37R0104_05E4
-	apply_movement 31, scr_seq_0096_D37R0104_0614
+_02AD:
+	apply_movement obj_D37R0104_babyboy1_4, _05DC
+	apply_movement obj_D37R0104_babyboy1_3, _05E4
+	apply_movement obj_D37R0104_stop_3, _0614
 	setvar VAR_TEMP_x4000, 0
-scr_seq_0096_D37R0104_02CB:
+_02CB:
 	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, scr_seq_0096_D37R0104_02F4
-	apply_movement 10, scr_seq_0096_D37R0104_05EC
-	apply_movement 11, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _02F4
+	apply_movement obj_D37R0104_babyboy1_6, _05EC
+	apply_movement obj_D37R0104_babyboy1_7, _05F4
 	setvar VAR_TEMP_x4002, 1
-	goto scr_seq_0096_D37R0104_030A
+	goto _030A
 
-scr_seq_0096_D37R0104_02F4:
-	apply_movement 10, scr_seq_0096_D37R0104_05FC
-	apply_movement 11, scr_seq_0096_D37R0104_0604
+_02F4:
+	apply_movement obj_D37R0104_babyboy1_6, _05FC
+	apply_movement obj_D37R0104_babyboy1_7, _0604
 	setvar VAR_TEMP_x4002, 0
-scr_seq_0096_D37R0104_030A:
+_030A:
 	comparevartovalue VAR_TEMP_x4004, 0
-	gotoif ne, scr_seq_0096_D37R0104_033B
-	apply_movement 14, scr_seq_0096_D37R0104_05CC
-	apply_movement 15, scr_seq_0096_D37R0104_05D4
-	apply_movement 29, scr_seq_0096_D37R0104_060C
+	gotoif ne, _033B
+	apply_movement obj_D37R0104_babyboy1_4_3, _05CC
+	apply_movement obj_D37R0104_babyboy1_3_3, _05D4
+	apply_movement obj_D37R0104_stop, _060C
 	setvar VAR_TEMP_x4004, 1
-	goto scr_seq_0096_D37R0104_0359
+	goto _0359
 
-scr_seq_0096_D37R0104_033B:
-	apply_movement 14, scr_seq_0096_D37R0104_05DC
-	apply_movement 15, scr_seq_0096_D37R0104_05E4
-	apply_movement 29, scr_seq_0096_D37R0104_0614
+_033B:
+	apply_movement obj_D37R0104_babyboy1_4_3, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_3, _05E4
+	apply_movement obj_D37R0104_stop, _0614
 	setvar VAR_TEMP_x4004, 0
-scr_seq_0096_D37R0104_0359:
+_0359:
 	comparevartovalue VAR_TEMP_x4006, 0
-	gotoif ne, scr_seq_0096_D37R0104_038A
-	apply_movement 18, scr_seq_0096_D37R0104_05CC
-	apply_movement 19, scr_seq_0096_D37R0104_05D4
-	apply_movement 33, scr_seq_0096_D37R0104_060C
+	gotoif ne, _038A
+	apply_movement obj_D37R0104_babyboy1_4_5, _05CC
+	apply_movement obj_D37R0104_babyboy1_3_5, _05D4
+	apply_movement obj_D37R0104_stop_5, _060C
 	setvar VAR_TEMP_x4006, 1
-	goto scr_seq_0096_D37R0104_03A8
+	goto _03A8
 
-scr_seq_0096_D37R0104_038A:
-	apply_movement 18, scr_seq_0096_D37R0104_05DC
-	apply_movement 19, scr_seq_0096_D37R0104_05E4
-	apply_movement 33, scr_seq_0096_D37R0104_0614
+_038A:
+	apply_movement obj_D37R0104_babyboy1_4_5, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_5, _05E4
+	apply_movement obj_D37R0104_stop_5, _0614
 	setvar VAR_TEMP_x4006, 0
-scr_seq_0096_D37R0104_03A8:
+_03A8:
 	comparevartovalue VAR_TEMP_x4008, 0
-	gotoif ne, scr_seq_0096_D37R0104_03D1
-	apply_movement 22, scr_seq_0096_D37R0104_05EC
-	apply_movement 23, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _03D1
+	apply_movement obj_D37R0104_babyboy1_6_4, _05EC
+	apply_movement obj_D37R0104_babyboy1_7_4, _05F4
 	setvar VAR_TEMP_x4008, 1
-	goto scr_seq_0096_D37R0104_03E7
+	goto _03E7
 
-scr_seq_0096_D37R0104_03D1:
-	apply_movement 22, scr_seq_0096_D37R0104_05FC
-	apply_movement 23, scr_seq_0096_D37R0104_0604
+_03D1:
+	apply_movement obj_D37R0104_babyboy1_6_4, _05FC
+	apply_movement obj_D37R0104_babyboy1_7_4, _0604
 	setvar VAR_TEMP_x4008, 0
-scr_seq_0096_D37R0104_03E7:
+_03E7:
 	comparevartovalue VAR_TEMP_x4009, 0
-	gotoif ne, scr_seq_0096_D37R0104_0410
-	apply_movement 24, scr_seq_0096_D37R0104_05EC
-	apply_movement 25, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _0410
+	apply_movement obj_D37R0104_babyboy1_6_5, _05EC
+	apply_movement obj_D37R0104_babyboy1_7_5, _05F4
 	setvar VAR_TEMP_x4009, 1
-	goto scr_seq_0096_D37R0104_0426
+	goto _0426
 
-scr_seq_0096_D37R0104_0410:
-	apply_movement 24, scr_seq_0096_D37R0104_05FC
-	apply_movement 25, scr_seq_0096_D37R0104_0604
+_0410:
+	apply_movement obj_D37R0104_babyboy1_6_5, _05FC
+	apply_movement obj_D37R0104_babyboy1_7_5, _0604
 	setvar VAR_TEMP_x4009, 0
-scr_seq_0096_D37R0104_0426:
+_0426:
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0096_D37R0104_042C:
+scr_seq_D37R0104_000:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
 	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, scr_seq_0096_D37R0104_045D
-	apply_movement 10, scr_seq_0096_D37R0104_05EC
-	apply_movement 11, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _045D
+	apply_movement obj_D37R0104_babyboy1_6, _05EC
+	apply_movement obj_D37R0104_babyboy1_7, _05F4
 	setvar VAR_TEMP_x4002, 1
-	goto scr_seq_0096_D37R0104_0473
+	goto _0473
 
-scr_seq_0096_D37R0104_045D:
-	apply_movement 10, scr_seq_0096_D37R0104_05FC
-	apply_movement 11, scr_seq_0096_D37R0104_0604
+_045D:
+	apply_movement obj_D37R0104_babyboy1_6, _05FC
+	apply_movement obj_D37R0104_babyboy1_7, _0604
 	setvar VAR_TEMP_x4002, 0
-scr_seq_0096_D37R0104_0473:
+_0473:
 	comparevartovalue VAR_TEMP_x4003, 0
-	gotoif ne, scr_seq_0096_D37R0104_049C
-	apply_movement 12, scr_seq_0096_D37R0104_05EC
-	apply_movement 13, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _049C
+	apply_movement obj_D37R0104_babyboy1_6_2, _05EC
+	apply_movement obj_D37R0104_babyboy1_7_2, _05F4
 	setvar VAR_TEMP_x4003, 1
-	goto scr_seq_0096_D37R0104_04B2
+	goto _04B2
 
-scr_seq_0096_D37R0104_049C:
-	apply_movement 12, scr_seq_0096_D37R0104_05FC
-	apply_movement 13, scr_seq_0096_D37R0104_0604
+_049C:
+	apply_movement obj_D37R0104_babyboy1_6_2, _05FC
+	apply_movement obj_D37R0104_babyboy1_7_2, _0604
 	setvar VAR_TEMP_x4003, 0
-scr_seq_0096_D37R0104_04B2:
+_04B2:
 	comparevartovalue VAR_TEMP_x4004, 0
-	gotoif ne, scr_seq_0096_D37R0104_04E3
-	apply_movement 14, scr_seq_0096_D37R0104_05CC
-	apply_movement 15, scr_seq_0096_D37R0104_05D4
-	apply_movement 29, scr_seq_0096_D37R0104_060C
+	gotoif ne, _04E3
+	apply_movement obj_D37R0104_babyboy1_4_3, _05CC
+	apply_movement obj_D37R0104_babyboy1_3_3, _05D4
+	apply_movement obj_D37R0104_stop, _060C
 	setvar VAR_TEMP_x4004, 1
-	goto scr_seq_0096_D37R0104_0501
+	goto _0501
 
-scr_seq_0096_D37R0104_04E3:
-	apply_movement 14, scr_seq_0096_D37R0104_05DC
-	apply_movement 15, scr_seq_0096_D37R0104_05E4
-	apply_movement 29, scr_seq_0096_D37R0104_0614
+_04E3:
+	apply_movement obj_D37R0104_babyboy1_4_3, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_3, _05E4
+	apply_movement obj_D37R0104_stop, _0614
 	setvar VAR_TEMP_x4004, 0
-scr_seq_0096_D37R0104_0501:
+_0501:
 	comparevartovalue VAR_TEMP_x4005, 0
-	gotoif ne, scr_seq_0096_D37R0104_0532
-	apply_movement 16, scr_seq_0096_D37R0104_05CC
-	apply_movement 17, scr_seq_0096_D37R0104_05D4
-	apply_movement 32, scr_seq_0096_D37R0104_060C
+	gotoif ne, _0532
+	apply_movement obj_D37R0104_babyboy1_4_4, _05CC
+	apply_movement obj_D37R0104_babyboy1_3_4, _05D4
+	apply_movement obj_D37R0104_stop_4, _060C
 	setvar VAR_TEMP_x4005, 1
-	goto scr_seq_0096_D37R0104_0550
+	goto _0550
 
-scr_seq_0096_D37R0104_0532:
-	apply_movement 16, scr_seq_0096_D37R0104_05DC
-	apply_movement 17, scr_seq_0096_D37R0104_05E4
-	apply_movement 32, scr_seq_0096_D37R0104_0614
+_0532:
+	apply_movement obj_D37R0104_babyboy1_4_4, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_4, _05E4
+	apply_movement obj_D37R0104_stop_4, _0614
 	setvar VAR_TEMP_x4005, 0
-scr_seq_0096_D37R0104_0550:
+_0550:
 	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, scr_seq_0096_D37R0104_0579
-	apply_movement 20, scr_seq_0096_D37R0104_05EC
-	apply_movement 21, scr_seq_0096_D37R0104_05F4
+	gotoif ne, _0579
+	apply_movement obj_D37R0104_babyboy1_6_3, _05EC
+	apply_movement obj_D37R0104_babyboy1_7_3, _05F4
 	setvar VAR_TEMP_x4007, 1
-	goto scr_seq_0096_D37R0104_058F
+	goto _058F
 
-scr_seq_0096_D37R0104_0579:
-	apply_movement 20, scr_seq_0096_D37R0104_05FC
-	apply_movement 21, scr_seq_0096_D37R0104_0604
+_0579:
+	apply_movement obj_D37R0104_babyboy1_6_3, _05FC
+	apply_movement obj_D37R0104_babyboy1_7_3, _0604
 	setvar VAR_TEMP_x4007, 0
-scr_seq_0096_D37R0104_058F:
+_058F:
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0096_D37R0104_0595:
+scr_seq_D37R0104_003:
 	checkflag FLAG_UNK_09B
-	gotoif TRUE, scr_seq_0096_D37R0104_05CA
+	gotoif TRUE, _05CA
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
-	apply_movement 26, scr_seq_0096_D37R0104_05DC
-	apply_movement 27, scr_seq_0096_D37R0104_05E4
-	apply_movement 34, scr_seq_0096_D37R0104_0614
+	apply_movement obj_D37R0104_babyboy1_4_6, _05DC
+	apply_movement obj_D37R0104_babyboy1_3_6, _05E4
+	apply_movement obj_D37R0104_stop_6, _0614
 	wait_movement
 	setflag FLAG_UNK_09B
 	releaseall
 	end
 
-scr_seq_0096_D37R0104_05CA:
+_05CA:
 	end
 
 
-scr_seq_0096_D37R0104_05CC:
+_05CC:
 	step 15, 2
 	step_end
 
-scr_seq_0096_D37R0104_05D4:
+_05D4:
 	step 14, 2
 	step_end
 
-scr_seq_0096_D37R0104_05DC:
+_05DC:
 	step 14, 2
 	step_end
 
-scr_seq_0096_D37R0104_05E4:
+_05E4:
 	step 15, 2
 	step_end
 
-scr_seq_0096_D37R0104_05EC:
+_05EC:
 	step 13, 2
 	step_end
 
-scr_seq_0096_D37R0104_05F4:
+_05F4:
 	step 12, 2
 	step_end
 
-scr_seq_0096_D37R0104_05FC:
+_05FC:
 	step 12, 2
 	step_end
 
-scr_seq_0096_D37R0104_0604:
+_0604:
 	step 13, 2
 	step_end
 
-scr_seq_0096_D37R0104_060C:
+_060C:
 	step 15, 2
 	step_end
 
-scr_seq_0096_D37R0104_0614:
+_0614:
 	step 14, 2
 	step_end
-scr_seq_0096_D37R0104_061C:
+scr_seq_D37R0104_004:
 	scrcmd_609
 	lockall
 	callstd std_play_rival_intro_music
@@ -356,66 +358,64 @@ scr_seq_0096_D37R0104_061C:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 28, scr_seq_0096_D37R0104_06E0
-	apply_movement 255, scr_seq_0096_D37R0104_06F4
+	apply_movement obj_D37R0104_gsrivel, _06E0
+	apply_movement obj_player, _06F4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	buffer_rivals_name 0
-	npc_msg 0
+	npc_msg msg_0119_D37R0104_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, scr_seq_0096_D37R0104_067D
+	gotoif ne, _067D
 	trainer_battle TRAINER_RIVAL_SILVER_18, 0, 0, 0
-	goto scr_seq_0096_D37R0104_06A0
+	goto _06A0
 
-scr_seq_0096_D37R0104_067D:
+_067D:
 	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, scr_seq_0096_D37R0104_0698
+	gotoif ne, _0698
 	trainer_battle TRAINER_RIVAL_SILVER_12, 0, 0, 0
-	goto scr_seq_0096_D37R0104_06A0
+	goto _06A0
 
-scr_seq_0096_D37R0104_0698:
+_0698:
 	trainer_battle TRAINER_RIVAL_SILVER_17, 0, 0, 0
-scr_seq_0096_D37R0104_06A0:
+_06A0:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0096_D37R0104_06D9
+	gotoif eq, _06D9
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
-	npc_msg 1
+	npc_msg msg_0119_D37R0104_00001
 	closemsg
 	setvar VAR_UNK_40A0, 1
-	apply_movement 28, scr_seq_0096_D37R0104_0700
+	apply_movement obj_D37R0104_gsrivel, _0700
 	wait_movement
 	hide_person 28
 	callstd std_fade_end_rival_outro_music
 	releaseall
 	end
 
-scr_seq_0096_D37R0104_06D9:
+_06D9:
 	white_out
 	releaseall
 	end
-
-scr_seq_0096_D37R0104_06DF:
 	.byte 0x00
 
-scr_seq_0096_D37R0104_06E0:
+_06E0:
 	step 62, 6
 	step 14, 3
 	step 13, 1
 	step 14, 4
 	step_end
 
-scr_seq_0096_D37R0104_06F4:
+_06F4:
 	step 75, 1
 	step 15, 1
 	step_end
 
-scr_seq_0096_D37R0104_0700:
+_0700:
 	step 15, 4
 	step 12, 1
 	step 15, 4

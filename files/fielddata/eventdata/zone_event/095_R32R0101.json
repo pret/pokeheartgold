@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_R32R0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R32R0101_counterm",
       "ovid": "SPRITE_COUNTERM",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_R32R0101_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R32R0101_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_R32R0101_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R32R0101_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 0,
       "type": 0,

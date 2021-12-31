@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D49R0106.h",
   "bgs": [
     {
-      "scr": 6,
+      "scr": "_EV_scr_seq_D49R0106_006",
       "type": 0,
       "x": 3,
       "y": 3,
@@ -9,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": 7,
+      "scr": "_EV_scr_seq_D49R0106_007",
       "type": 0,
       "x": 10,
       "y": 3,
@@ -17,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": 7,
+      "scr": "_EV_scr_seq_D49R0106_007",
       "type": 0,
       "x": 11,
       "y": 3,
@@ -25,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_D49R0106_005",
       "type": 0,
       "x": 6,
       "y": 11,
@@ -33,7 +34,7 @@
       "dir": 0
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_D49R0106_005",
       "type": 0,
       "x": 8,
       "y": 11,
@@ -41,7 +42,7 @@
       "dir": 0
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_D49R0106_005",
       "type": 0,
       "x": 7,
       "y": 11,
@@ -51,12 +52,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D49R0106_pcwoman2",
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D49R0106_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -68,12 +69,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D49R0106_pcwoman2_2",
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D49R0106_001",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -85,12 +86,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D49R0106_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_D49R0106_003",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -102,12 +103,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D49R0106_tsure_poke_597",
       "ovid": "SPRITE_TSURE_POKE_597",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_D49R0106_004",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -119,12 +120,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D49R0106_signpokegear",
       "ovid": "SPRITE_SIGNPOKEGEAR",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D8",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D49R0106_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -136,12 +137,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D49R0106_signball",
       "ovid": "SPRITE_SIGNBALL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D9",
-      "scr": 0,
+      "scr": "_EV_scr_seq_D49R0106_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

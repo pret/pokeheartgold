@@ -1,24 +1,26 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T07SP0101.h"
+#include "msgdata/msg/msg_0511_T07SP0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0806_T07SP0101_0012 ; 000
-	scrdef scr_seq_0806_T07SP0101_01E3 ; 001
-	scrdef scr_seq_0806_T07SP0101_0094 ; 002
-	scrdef scr_seq_0806_T07SP0101_012A ; 003
+	scrdef scr_seq_T07SP0101_000
+	scrdef scr_seq_T07SP0101_001
+	scrdef scr_seq_T07SP0101_002
+	scrdef scr_seq_T07SP0101_003
 	scrdef_end
 
-scr_seq_0806_T07SP0101_0012:
+scr_seq_T07SP0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0806_T07SP0101_0066
-	apply_movement 0, scr_seq_0806_T07SP0101_007C
+	gotoif eq, _0066
+	apply_movement obj_T07SP0101_suit, _007C
 	wait_movement
-	npc_msg 12
+	npc_msg msg_0511_T07SP0101_00012
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -30,127 +32,127 @@ scr_seq_0806_T07SP0101_0012:
 	releaseall
 	end
 
-scr_seq_0806_T07SP0101_0066:
-	npc_msg 10
-	apply_movement 0, scr_seq_0806_T07SP0101_007C
+_0066:
+	npc_msg msg_0511_T07SP0101_00010
+	apply_movement obj_T07SP0101_suit, _007C
 	wait_movement
-	npc_msg 11
-	goto scr_seq_0806_T07SP0101_00E4
+	npc_msg msg_0511_T07SP0101_00011
+	goto _00E4
 
 
-scr_seq_0806_T07SP0101_007C:
+_007C:
 	step 1, 1
 	step_end
 
-scr_seq_0806_T07SP0101_0084:
+_0084:
 	step 2, 1
 	step_end
 
-scr_seq_0806_T07SP0101_008C:
+_008C:
 	step 3, 1
 	step_end
-scr_seq_0806_T07SP0101_0094:
+scr_seq_T07SP0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_386 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, scr_seq_0806_T07SP0101_00B9
-	call scr_seq_0806_T07SP0101_00EC
-	goto scr_seq_0806_T07SP0101_00C1
+	gotoif ne, _00B9
+	call _00EC
+	goto _00C1
 
-scr_seq_0806_T07SP0101_00B9:
-	apply_movement 0, scr_seq_0806_T07SP0101_007C
-scr_seq_0806_T07SP0101_00C1:
+_00B9:
+	apply_movement obj_T07SP0101_suit, _007C
+_00C1:
 	wait_movement
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0806_T07SP0101_00E1
-	npc_msg 13
-	goto scr_seq_0806_T07SP0101_00E4
+	gotoif eq, _00E1
+	npc_msg msg_0511_T07SP0101_00013
+	goto _00E4
 
-scr_seq_0806_T07SP0101_00E1:
-	npc_msg 11
-scr_seq_0806_T07SP0101_00E4:
+_00E1:
+	npc_msg msg_0511_T07SP0101_00011
+_00E4:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0806_T07SP0101_00EC:
+_00EC:
 	get_player_coords VAR_TEMP_x4002, VAR_TEMP_x4003
 	get_player_coords VAR_TEMP_x4002, VAR_TEMP_x4003
 	comparevartovalue VAR_TEMP_x4002, 6
-	gotoif ne, scr_seq_0806_T07SP0101_0113
-	apply_movement 0, scr_seq_0806_T07SP0101_0084
-	goto scr_seq_0806_T07SP0101_0128
+	gotoif ne, _0113
+	apply_movement obj_T07SP0101_suit, _0084
+	goto _0128
 
-scr_seq_0806_T07SP0101_0113:
+_0113:
 	comparevartovalue VAR_TEMP_x4002, 8
-	gotoif ne, scr_seq_0806_T07SP0101_0128
-	apply_movement 0, scr_seq_0806_T07SP0101_008C
-scr_seq_0806_T07SP0101_0128:
+	gotoif ne, _0128
+	apply_movement obj_T07SP0101_suit, _008C
+_0128:
 	return
 
-scr_seq_0806_T07SP0101_012A:
+scr_seq_T07SP0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0806_T07SP0101_0184
+	gotoif eq, _0184
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0806_T07SP0101_0163
-	npc_msg 6
+	gotoif ne, _0163
+	npc_msg msg_0511_T07SP0101_00006
 	setvar VAR_TEMP_x4001, 1
-	goto scr_seq_0806_T07SP0101_017C
+	goto _017C
 
-scr_seq_0806_T07SP0101_0163:
+_0163:
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif ne, scr_seq_0806_T07SP0101_0179
-	npc_msg 7
-	goto scr_seq_0806_T07SP0101_017C
+	gotoif ne, _0179
+	npc_msg msg_0511_T07SP0101_00007
+	goto _017C
 
-scr_seq_0806_T07SP0101_0179:
-	npc_msg 8
-scr_seq_0806_T07SP0101_017C:
+_0179:
+	npc_msg msg_0511_T07SP0101_00008
+_017C:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0806_T07SP0101_0184:
+_0184:
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0806_T07SP0101_019A
-	npc_msg 0
-	goto scr_seq_0806_T07SP0101_019D
+	gotoif ne, _019A
+	npc_msg msg_0511_T07SP0101_00000
+	goto _019D
 
-scr_seq_0806_T07SP0101_019A:
-	npc_msg 9
-scr_seq_0806_T07SP0101_019D:
+_019A:
+	npc_msg msg_0511_T07SP0101_00009
+_019D:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0806_T07SP0101_01D4
-	npc_msg 3
+	gotoif eq, _01D4
+	npc_msg msg_0511_T07SP0101_00003
 	setvar VAR_TEMP_x4001, 1
 	setvar VAR_SPECIAL_x8004, 444
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	npc_msg 4
-	goto scr_seq_0806_T07SP0101_00E4
+	npc_msg msg_0511_T07SP0101_00004
+	goto _00E4
 
-scr_seq_0806_T07SP0101_01D4:
+_01D4:
 	setvar VAR_TEMP_x4001, 1
-	npc_msg 5
-	goto scr_seq_0806_T07SP0101_00E4
+	npc_msg msg_0511_T07SP0101_00005
+	goto _00E4
 
-scr_seq_0806_T07SP0101_01E3:
+scr_seq_T07SP0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 14
+	npc_msg msg_0511_T07SP0101_00014
 	waitbutton
 	closemsg
 	releaseall

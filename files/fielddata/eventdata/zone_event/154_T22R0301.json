@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T22R0301.h",
   "bgs": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_T22R0301_002",
       "type": 0,
       "x": 6,
       "y": 2,
@@ -9,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_T22R0301_002",
       "type": 0,
       "x": 5,
       "y": 2,
@@ -17,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_T22R0301_002",
       "type": 0,
       "x": 7,
       "y": 2,
@@ -25,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T22R0301_003",
       "type": 0,
       "x": 9,
       "y": 6,
@@ -35,12 +36,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T22R0301_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_19B",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T22R0301_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -52,12 +53,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T22R0301_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T22R0301_005",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -69,12 +70,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T22R0301_gsboy1_2",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T22R0301_006",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -86,12 +87,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T22R0301_gsdsboy",
       "ovid": "SPRITE_GSDSBOY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_T22R0301_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -103,7 +104,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T22R0301_gsdsboy_2",
       "ovid": "SPRITE_GSDSBOY",
       "mvt": 0,
       "type": 0,
@@ -120,7 +121,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T22R0301_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 2,
       "type": 0,
@@ -137,12 +138,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_T22R0301_gsgirl2",
       "ovid": "SPRITE_GSGIRL2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T22R0301_004",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

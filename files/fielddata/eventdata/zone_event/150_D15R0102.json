@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D15R0102.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D15R0102_bozu",
       "ovid": "SPRITE_BOZU",
       "mvt": 15,
       "type": 1,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D15R0102_bozu_2",
       "ovid": "SPRITE_BOZU",
       "mvt": 16,
       "type": 1,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D15R0102_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

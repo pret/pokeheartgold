@@ -1,13 +1,15 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R07.h"
+#include "msgdata/msg/msg_0336_R07.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0186_R07_000A ; 000
-	scrdef scr_seq_0186_R07_001F ; 001
+	scrdef scr_seq_R07_000
+	scrdef scr_seq_R07_001
 	scrdef_end
 
-scr_seq_0186_R07_000A:
+scr_seq_R07_000:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -15,10 +17,10 @@ scr_seq_0186_R07_000A:
 	callstd 2000
 	end
 
-scr_seq_0186_R07_001F:
+scr_seq_R07_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 1
+	npc_msg msg_0336_R07_00001
 	waitbutton
 	closemsg
 	releaseall

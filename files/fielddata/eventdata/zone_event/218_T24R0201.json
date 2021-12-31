@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T24R0201.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T24R0201_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 15,
       "type": 0,

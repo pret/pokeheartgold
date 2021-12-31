@@ -1,15 +1,17 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D43R0102.h"
+#include "msgdata/msg/msg_0003_EVERYWHERE.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0109_D43R0102_000A ; 000
-	scrdef scr_seq_0109_D43R0102_0032 ; 001
+	scrdef scr_seq_D43R0102_000
+	scrdef scr_seq_D43R0102_001
 	scrdef_end
 
-scr_seq_0109_D43R0102_000A:
+scr_seq_D43R0102_000:
 	play_se SEQ_SE_GS_RAKKA01
-	apply_movement 255, scr_seq_0109_D43R0102_0048
+	apply_movement obj_player, _0048
 	scrcmd_374 255
 	wait_movement
 	scrcmd_561 0, 1, 1, 8
@@ -17,17 +19,15 @@ scr_seq_0109_D43R0102_000A:
 	setvar VAR_UNK_40CA, 0
 	end
 
-scr_seq_0109_D43R0102_0032:
+scr_seq_D43R0102_001:
 	comparevartovalue VAR_UNK_40CA, 1
-	gotoif ne, scr_seq_0109_D43R0102_0043
+	gotoif ne, _0043
 	scrcmd_375 255
-scr_seq_0109_D43R0102_0043:
+_0043:
 	end
-
-scr_seq_0109_D43R0102_0045:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0109_D43R0102_0048:
+_0048:
 	step 68, 1
 	step_end
 	.balign 4, 0

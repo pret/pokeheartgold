@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H
 #define POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H
 
+#define _std_misc                       2000
 #define std_nurse_joy                   2002
 #define std_bag_is_full                 2009
 #define std_wifi_club_closed            2025
@@ -16,6 +17,8 @@
 #define std_fade_end_kimono_girl_music  2068
 #define std_play_rival_outro_music      2070
 #define std_fade_end_rival_outro_music  2071
+
+#define _std_bookshelves                2500
 
 #define std_wireless_colosseum          9001
 #define std_union_room                  9003

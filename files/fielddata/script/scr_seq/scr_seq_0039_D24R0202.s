@@ -1,16 +1,18 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D24R0202.h"
+#include "msgdata/msg/msg_0074_D24R0202.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0039_D24R0202_0016 ; 000
-	scrdef scr_seq_0039_D24R0202_0250 ; 001
-	scrdef scr_seq_0039_D24R0202_025B ; 002
-	scrdef scr_seq_0039_D24R0202_02B4 ; 003
-	scrdef scr_seq_0039_D24R0202_014B ; 004
+	scrdef scr_seq_D24R0202_000
+	scrdef scr_seq_D24R0202_001
+	scrdef scr_seq_D24R0202_002
+	scrdef scr_seq_D24R0202_003
+	scrdef scr_seq_D24R0202_004
 	scrdef_end
 
-scr_seq_0039_D24R0202_0016:
+scr_seq_D24R0202_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -21,16 +23,16 @@ scr_seq_0039_D24R0202_0016:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	checkflag FLAG_UNK_977
-	gotoif TRUE, scr_seq_0039_D24R0202_004A
+	gotoif TRUE, _004A
 	releaseall
 	end
 
-scr_seq_0039_D24R0202_004A:
+_004A:
 	setflag FLAG_UNK_188
 	wait 2, VAR_SPECIAL_x8004
 	scrcmd_561 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
-	apply_movement 255, scr_seq_0039_D24R0202_02AC
+	apply_movement obj_player, _02AC
 	wait_movement
 	hide_person 1
 	play_se SEQ_SE_DP_KI_GASYAN
@@ -39,24 +41,24 @@ scr_seq_0039_D24R0202_004A:
 	clearflag FLAG_UNK_235
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0039_D24R0202_00A2
+	gotoif eq, _00A2
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0039_D24R0202_00B2
+	gotoif eq, _00B2
 	end
 
-scr_seq_0039_D24R0202_00A2:
-	apply_movement 255, scr_seq_0039_D24R0202_0234
+_00A2:
+	apply_movement obj_player, _0234
 	wait_movement
-	goto scr_seq_0039_D24R0202_00C4
+	goto _00C4
 
-scr_seq_0039_D24R0202_00B2:
-	apply_movement 255, scr_seq_0039_D24R0202_0234
-	apply_movement 253, scr_seq_0039_D24R0202_0240
+_00B2:
+	apply_movement obj_player, _0234
+	apply_movement 253, _0240
 	wait_movement
-scr_seq_0039_D24R0202_00C4:
+_00C4:
 	setvar VAR_UNK_40CE, 1
 	comparevartovalue VAR_UNK_40EC, 1
-	gotoif ge, scr_seq_0039_D24R0202_010F
+	gotoif ge, _010F
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -68,7 +70,7 @@ scr_seq_0039_D24R0202_00C4:
 	releaseall
 	end
 
-scr_seq_0039_D24R0202_010F:
+_010F:
 	setflag FLAG_UNK_235
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x00
@@ -81,86 +83,84 @@ scr_seq_0039_D24R0202_010F:
 	releaseall
 	end
 
-scr_seq_0039_D24R0202_014B:
+scr_seq_D24R0202_004:
 	scrcmd_609
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0039_D24R0202_016F
+	gotoif eq, _016F
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0039_D24R0202_017F
+	gotoif eq, _017F
 	end
 
-scr_seq_0039_D24R0202_016F:
-	apply_movement 255, scr_seq_0039_D24R0202_0234
+_016F:
+	apply_movement obj_player, _0234
 	wait_movement
-	goto scr_seq_0039_D24R0202_0191
+	goto _0191
 
-scr_seq_0039_D24R0202_017F:
-	apply_movement 255, scr_seq_0039_D24R0202_0234
-	apply_movement 253, scr_seq_0039_D24R0202_0240
+_017F:
+	apply_movement obj_player, _0234
+	apply_movement 253, _0240
 	wait_movement
-scr_seq_0039_D24R0202_0191:
+_0191:
 	setvar VAR_UNK_40CE, 1
 	play_se SEQ_SE_GS_RAKKA01
 	comparevartovalue VAR_UNK_403E, 7
-	gotoif ge, scr_seq_0039_D24R0202_01DD
+	gotoif ge, _01DD
 	comparevartovalue VAR_UNK_403E, 6
-	gotoif eq, scr_seq_0039_D24R0202_0207
+	gotoif eq, _0207
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 315, 0, 25, 6, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-scr_seq_0039_D24R0202_01D9:
+_01D9:
 	releaseall
 	end
 
-scr_seq_0039_D24R0202_01DD:
+_01DD:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 492, 0, 25, 6, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	goto scr_seq_0039_D24R0202_01D9
+	goto _01D9
 
-scr_seq_0039_D24R0202_0207:
+_0207:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 490, 0, 25, 6, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	goto scr_seq_0039_D24R0202_01D9
-
-scr_seq_0039_D24R0202_0231:
+	goto _01D9
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0039_D24R0202_0234:
+_0234:
 	step 40, 4
 	step 69, 1
 	step_end
 
-scr_seq_0039_D24R0202_0240:
+_0240:
 	step 62, 3
 	step 20, 1
 	step 69, 1
 	step_end
-scr_seq_0039_D24R0202_0250:
+scr_seq_D24R0202_001:
 	scrcmd_609
 	lockall
 	scrcmd_714 0
 	releaseall
 	end
 
-scr_seq_0039_D24R0202_025B:
+scr_seq_D24R0202_002:
 	scrcmd_609
 	lockall
 	checkflag FLAG_UNK_21B
-	gotoif TRUE, scr_seq_0039_D24R0202_029A
+	gotoif TRUE, _029A
 	wait 2, VAR_SPECIAL_x8004
 	scrcmd_561 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
-	apply_movement 255, scr_seq_0039_D24R0202_02AC
+	apply_movement obj_player, _02AC
 	wait_movement
 	hide_person 0
 	setflag FLAG_UNK_21B
@@ -168,34 +168,32 @@ scr_seq_0039_D24R0202_025B:
 	releaseall
 	end
 
-scr_seq_0039_D24R0202_029A:
+_029A:
 	wait 10, VAR_SPECIAL_x8004
-	npc_msg 3
+	npc_msg msg_0074_D24R0202_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0039_D24R0202_02AB:
 	.byte 0x00
 
-scr_seq_0039_D24R0202_02AC:
+_02AC:
 	step 75, 1
 	step_end
-scr_seq_0039_D24R0202_02B4:
+scr_seq_D24R0202_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_188
-	gotoif TRUE, scr_seq_0039_D24R0202_02D2
-	npc_msg 0
+	gotoif TRUE, _02D2
+	npc_msg msg_0074_D24R0202_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0039_D24R0202_02D2:
-	npc_msg 1
+_02D2:
+	npc_msg msg_0074_D24R0202_00001
 	waitbutton
 	closemsg
 	releaseall

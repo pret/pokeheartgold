@@ -1,37 +1,39 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R18R0101.h"
+#include "msgdata/msg/msg_0359_R18R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0211_R18R0101_00A9 ; 000
-	scrdef scr_seq_0211_R18R0101_0012 ; 001
-	scrdef scr_seq_0211_R18R0101_0024 ; 002
-	scrdef scr_seq_0211_R18R0101_0094 ; 003
+	scrdef scr_seq_R18R0101_000
+	scrdef scr_seq_R18R0101_001
+	scrdef scr_seq_R18R0101_002
+	scrdef scr_seq_R18R0101_003
 	scrdef_end
 
-scr_seq_0211_R18R0101_0012:
+scr_seq_R18R0101_001:
 	checkflag FLAG_UNK_149
-	gotoif TRUE, scr_seq_0211_R18R0101_001F
+	gotoif TRUE, _001F
 	end
 
-scr_seq_0211_R18R0101_001F:
+_001F:
 	scrcmd_186 1
 	end
 
-scr_seq_0211_R18R0101_0024:
+scr_seq_R18R0101_002:
 	scrcmd_609
 	lockall
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0211_R18R0101_006A
-	apply_movement 255, scr_seq_0211_R18R0101_0084
+	gotoif eq, _006A
+	apply_movement obj_player, _0084
 	wait_movement
-	npc_msg 1
+	npc_msg msg_0359_R18R0101_00001
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0211_R18R0101_008C
+	apply_movement obj_player, _008C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -39,36 +41,34 @@ scr_seq_0211_R18R0101_0024:
 	releaseall
 	end
 
-scr_seq_0211_R18R0101_006A:
+_006A:
 	scrcmd_186 1
 	setvar VAR_UNK_4129, 1
 	setvar VAR_UNK_412A, 1
 	setflag FLAG_UNK_149
 	releaseall
 	end
-
-scr_seq_0211_R18R0101_0081:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0211_R18R0101_0084:
+_0084:
 	step 32, 1
 	step_end
 
-scr_seq_0211_R18R0101_008C:
+_008C:
 	step 15, 1
 	step_end
-scr_seq_0211_R18R0101_0094:
+scr_seq_R18R0101_003:
 	scrcmd_186 0
 	setvar VAR_UNK_4129, 0
 	setvar VAR_UNK_412A, 0
 	clearflag FLAG_UNK_149
 	end
 
-scr_seq_0211_R18R0101_00A9:
+scr_seq_R18R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0359_R18R0101_00000
 	waitbutton
 	closemsg
 	releaseall

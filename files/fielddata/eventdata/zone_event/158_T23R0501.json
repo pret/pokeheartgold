@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T23R0501.h",
   "bgs": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_T23R0501_005",
       "type": 0,
       "x": 9,
       "y": 2,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T23R0501_gantetsu",
       "ovid": "SPRITE_GANTETSU",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_19E",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T23R0501_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -36,12 +37,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T23R0501_gsbabygirl1",
       "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T23R0501_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -53,12 +54,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T23R0501_tsure_poke_594",
       "ovid": "SPRITE_TSURE_POKE_594",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_1AB",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T23R0501_004",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

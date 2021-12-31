@@ -1,12 +1,14 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0165.h"
+#include "msgdata/msg/msg_0268.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0165_0006 ; 000
+	scrdef scr_seq_0165_000
 	scrdef_end
 
-scr_seq_0165_0006:
+scr_seq_0165_000:
 	scrcmd_609
 	lockall
 	scrcmd_839 1
@@ -15,67 +17,63 @@ scr_seq_0165_0006:
 	scrcmd_547 32768
 	scrcmd_089 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0165_0037
-	goto scr_seq_0165_005E
-
-scr_seq_0165_0035:
+	gotoif eq, _0037
+	goto _005E
 	.byte 0x02, 0x00
-scr_seq_0165_0037:
-	npc_msg 0
+_0037:
+	npc_msg msg_0268_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0165_005E
+	gotoif eq, _005E
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0165_00C9
+	gotoif eq, _00C9
 	end
 
-scr_seq_0165_005E:
+_005E:
 	fade_out_bgm 42, 10
-	npc_msg 8
+	npc_msg msg_0268_00008
 	scrcmd_345
 	wait 80, VAR_SPECIAL_x800C
 	scrcmd_346
-	npc_msg 1
+	npc_msg msg_0268_00001
 	scrcmd_090 32780
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_085 10
 	wait 10, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8004, 0
-	gotoif eq, scr_seq_0165_00D5
+	gotoif eq, _00D5
 	scrcmd_091
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_092
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_548
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg 2
+	npc_msg msg_0268_00002
 	scrcmd_549 32780
 	scrcmd_076 441, 0
 	scrcmd_077
-	goto scr_seq_0165_00C9
-
-scr_seq_0165_00C7:
+	goto _00C9
 	.byte 0x02, 0x00
-scr_seq_0165_00C9:
+_00C9:
 	scrcmd_453
 	closemsg
 	scrcmd_839 0
 	releaseall
 	end
 
-scr_seq_0165_00D5:
+_00D5:
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
-	npc_msg 3
-	npc_msg 4
+	npc_msg msg_0268_00003
+	npc_msg msg_0268_00004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0165_005E
+	gotoif eq, _005E
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0165_00C9
+	gotoif eq, _00C9
 	end
 	.balign 4, 0

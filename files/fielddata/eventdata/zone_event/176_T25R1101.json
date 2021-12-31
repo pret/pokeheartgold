@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T25R1101.h",
   "bgs": [
     {
-      "scr": 13,
+      "scr": "_EV_scr_seq_T25R1101_013",
       "type": 0,
       "x": 4,
       "y": 10,
@@ -9,7 +10,7 @@
       "dir": 1
     },
     {
-      "scr": 12,
+      "scr": "_EV_scr_seq_T25R1101_012",
       "type": 0,
       "x": 4,
       "y": 8,
@@ -17,7 +18,7 @@
       "dir": 1
     },
     {
-      "scr": 11,
+      "scr": "_EV_scr_seq_T25R1101_011",
       "type": 0,
       "x": 4,
       "y": 7,
@@ -25,7 +26,7 @@
       "dir": 1
     },
     {
-      "scr": 26,
+      "scr": "_EV_scr_seq_T25R1101_026",
       "type": 0,
       "x": 14,
       "y": 8,
@@ -33,7 +34,7 @@
       "dir": 1
     },
     {
-      "scr": 24,
+      "scr": "_EV_scr_seq_T25R1101_024",
       "type": 0,
       "x": 10,
       "y": 10,
@@ -41,7 +42,7 @@
       "dir": 2
     },
     {
-      "scr": 19,
+      "scr": "_EV_scr_seq_T25R1101_019",
       "type": 0,
       "x": 9,
       "y": 9,
@@ -49,7 +50,7 @@
       "dir": 1
     },
     {
-      "scr": 18,
+      "scr": "_EV_scr_seq_T25R1101_018",
       "type": 0,
       "x": 9,
       "y": 8,
@@ -57,7 +58,7 @@
       "dir": 1
     },
     {
-      "scr": 17,
+      "scr": "_EV_scr_seq_T25R1101_017",
       "type": 0,
       "x": 9,
       "y": 7,
@@ -65,7 +66,7 @@
       "dir": 1
     },
     {
-      "scr": 16,
+      "scr": "_EV_scr_seq_T25R1101_016",
       "type": 0,
       "x": 5,
       "y": 10,
@@ -73,7 +74,7 @@
       "dir": 2
     },
     {
-      "scr": 20,
+      "scr": "_EV_scr_seq_T25R1101_020",
       "type": 0,
       "x": 9,
       "y": 10,
@@ -81,7 +82,7 @@
       "dir": 1
     },
     {
-      "scr": 15,
+      "scr": "_EV_scr_seq_T25R1101_015",
       "type": 0,
       "x": 5,
       "y": 9,
@@ -89,7 +90,7 @@
       "dir": 2
     },
     {
-      "scr": 14,
+      "scr": "_EV_scr_seq_T25R1101_014",
       "type": 0,
       "x": 5,
       "y": 8,
@@ -97,7 +98,7 @@
       "dir": 2
     },
     {
-      "scr": 25,
+      "scr": "_EV_scr_seq_T25R1101_025",
       "type": 0,
       "x": 14,
       "y": 7,
@@ -105,7 +106,7 @@
       "dir": 1
     },
     {
-      "scr": 23,
+      "scr": "_EV_scr_seq_T25R1101_023",
       "type": 0,
       "x": 10,
       "y": 9,
@@ -113,7 +114,7 @@
       "dir": 2
     },
     {
-      "scr": 22,
+      "scr": "_EV_scr_seq_T25R1101_022",
       "type": 0,
       "x": 10,
       "y": 8,
@@ -121,7 +122,7 @@
       "dir": 2
     },
     {
-      "scr": 21,
+      "scr": "_EV_scr_seq_T25R1101_021",
       "type": 0,
       "x": 10,
       "y": 7,
@@ -129,7 +130,7 @@
       "dir": 2
     },
     {
-      "scr": 27,
+      "scr": "_EV_scr_seq_T25R1101_027",
       "type": 0,
       "x": 14,
       "y": 9,
@@ -137,7 +138,7 @@
       "dir": 1
     },
     {
-      "scr": 28,
+      "scr": "_EV_scr_seq_T25R1101_028",
       "type": 0,
       "x": 14,
       "y": 10,
@@ -145,7 +146,7 @@
       "dir": 1
     },
     {
-      "scr": 29,
+      "scr": "_EV_scr_seq_T25R1101_029",
       "type": 0,
       "x": 15,
       "y": 7,
@@ -153,7 +154,7 @@
       "dir": 2
     },
     {
-      "scr": 30,
+      "scr": "_EV_scr_seq_T25R1101_030",
       "type": 0,
       "x": 15,
       "y": 8,
@@ -161,7 +162,7 @@
       "dir": 2
     },
     {
-      "scr": 31,
+      "scr": "_EV_scr_seq_T25R1101_031",
       "type": 0,
       "x": 15,
       "y": 9,
@@ -169,7 +170,7 @@
       "dir": 2
     },
     {
-      "scr": 32,
+      "scr": "_EV_scr_seq_T25R1101_032",
       "type": 0,
       "x": 15,
       "y": 10,
@@ -179,12 +180,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T25R1101_shopm1_2",
       "ovid": "SPRITE_SHOPM1_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T25R1101_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -196,12 +197,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T25R1101_gswoman6",
       "ovid": "SPRITE_GSWOMAN6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T25R1101_002",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -213,12 +214,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T25R1101_gswoman6_2",
       "ovid": "SPRITE_GSWOMAN6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T25R1101_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -230,12 +231,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T25R1101_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T25R1101_006",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -247,12 +248,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T25R1101_gswoman3",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_T25R1101_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -264,12 +265,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T25R1101_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2DA",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25R1101_004",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -281,12 +282,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_T25R1101_gsgentleman_2",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 9,
+      "scr": "_EV_scr_seq_T25R1101_009",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -298,12 +299,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_T25R1101_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T25R1101_005",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -315,12 +316,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_T25R1101_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 10,
+      "scr": "_EV_scr_seq_T25R1101_010",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -332,12 +333,12 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_T25R1101_middlewoman1_2",
       "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 8,
+      "scr": "_EV_scr_seq_T25R1101_008",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -349,7 +350,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_T25R1101_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

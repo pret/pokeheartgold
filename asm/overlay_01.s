@@ -20170,8 +20170,8 @@ ov01_021EF348: ; 0x021EF348
 	pop {r3, pc}
 	thumb_func_end ov01_021EF348
 
-	thumb_func_start ScrCmd_046
-ScrCmd_046: ; 0x021EF35C
+	thumb_func_start ScrCmd_NonNpcMsgVar
+ScrCmd_NonNpcMsgVar: ; 0x021EF35C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20198,7 +20198,7 @@ ScrCmd_046: ; 0x021EF35C
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021EF394: .word ov01_021EF348
-	thumb_func_end ScrCmd_046
+	thumb_func_end ScrCmd_NonNpcMsgVar
 
 	thumb_func_start ScrCmd_592
 ScrCmd_592: ; 0x021EF398
@@ -20235,8 +20235,8 @@ ScrCmd_592: ; 0x021EF398
 _021EF3DC: .word ov01_021EF348
 	thumb_func_end ScrCmd_592
 
-	thumb_func_start ScrCmd_047
-ScrCmd_047: ; 0x021EF3E0
+	thumb_func_start ScrCmd_NpcMsgVar
+ScrCmd_NpcMsgVar: ; 0x021EF3E0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -20262,7 +20262,7 @@ ScrCmd_047: ; 0x021EF3E0
 	pop {r3, r4, pc}
 	nop
 _021EF418: .word ov01_021EF348
-	thumb_func_end ScrCmd_047
+	thumb_func_end ScrCmd_NpcMsgVar
 
 	thumb_func_start ScrCmd_GenderMsgbox
 ScrCmd_GenderMsgbox: ; 0x021EF41C

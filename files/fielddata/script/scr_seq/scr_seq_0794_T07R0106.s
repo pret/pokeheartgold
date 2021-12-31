@@ -1,51 +1,53 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T07R0106.h"
+#include "msgdata/msg/msg_0499_T07R0106.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0794_T07R0106_0012 ; 000
-	scrdef scr_seq_0794_T07R0106_0025 ; 001
-	scrdef scr_seq_0794_T07R0106_0038 ; 002
-	scrdef scr_seq_0794_T07R0106_0049 ; 003
+	scrdef scr_seq_T07R0106_000
+	scrdef scr_seq_T07R0106_001
+	scrdef scr_seq_T07R0106_002
+	scrdef scr_seq_T07R0106_003
 	scrdef_end
 
-scr_seq_0794_T07R0106_0012:
+scr_seq_T07R0106_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0499_T07R0106_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0794_T07R0106_0025:
+scr_seq_T07R0106_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0499_T07R0106_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0794_T07R0106_0038:
+scr_seq_T07R0106_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 2
+	npc_msg msg_0499_T07R0106_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0794_T07R0106_0049:
+scr_seq_T07R0106_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 3
+	npc_msg msg_0499_T07R0106_00003
 	scrcmd_113 20, 2
-	goto scr_seq_0794_T07R0106_005E
+	goto _005E
 
-scr_seq_0794_T07R0106_005E:
+_005E:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
 	menu_item_add 209, 255, 0
@@ -56,102 +58,102 @@ scr_seq_0794_T07R0106_005E:
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0794_T07R0106_00C2
+	gotoif eq, _00C2
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0794_T07R0106_00CE
+	gotoif eq, _00CE
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0794_T07R0106_00DA
-	npc_msg 7
-	goto scr_seq_0794_T07R0106_0205
+	gotoif eq, _00DA
+	npc_msg msg_0499_T07R0106_00007
+	goto _0205
 
-scr_seq_0794_T07R0106_00C2:
+_00C2:
 	setvar VAR_SPECIAL_x8001, 30
-	goto scr_seq_0794_T07R0106_011C
+	goto _011C
 
-scr_seq_0794_T07R0106_00CE:
+_00CE:
 	setvar VAR_SPECIAL_x8001, 31
-	goto scr_seq_0794_T07R0106_011C
+	goto _011C
 
-scr_seq_0794_T07R0106_00DA:
+_00DA:
 	setvar VAR_SPECIAL_x8001, 32
-	goto scr_seq_0794_T07R0106_011C
+	goto _011C
 
-scr_seq_0794_T07R0106_00E6:
+_00E6:
 	hasenoughmoneyimmediate 32780, 200
 	return
 
-scr_seq_0794_T07R0106_00F0:
+_00F0:
 	hasenoughmoneyimmediate 32780, 300
 	return
 
-scr_seq_0794_T07R0106_00FA:
+_00FA:
 	hasenoughmoneyimmediate 32780, 350
 	return
 
-scr_seq_0794_T07R0106_0104:
+_0104:
 	submoneyimmediate 200
 	return
 
-scr_seq_0794_T07R0106_010C:
+_010C:
 	submoneyimmediate 300
 	return
 
-scr_seq_0794_T07R0106_0114:
+_0114:
 	submoneyimmediate 350
 	return
 
-scr_seq_0794_T07R0106_011C:
+_011C:
 	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, scr_seq_0794_T07R0106_00E6
+	callif eq, _00E6
 	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, scr_seq_0794_T07R0106_00F0
+	callif eq, _00F0
 	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, scr_seq_0794_T07R0106_00FA
+	callif eq, _00FA
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0794_T07R0106_01F0
+	gotoif eq, _01F0
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0794_T07R0106_01F9
+	gotoif eq, _01F9
 	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, scr_seq_0794_T07R0106_0104
+	callif eq, _0104
 	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, scr_seq_0794_T07R0106_010C
+	callif eq, _010C
 	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, scr_seq_0794_T07R0106_0114
+	callif eq, _0114
 	scrcmd_115
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
-	npc_msg 4
+	npc_msg msg_0499_T07R0106_00004
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
 	scrcmd_380 32780, 64
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0794_T07R0106_01E7
+	gotoif ne, _01E7
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
-	npc_msg 5
+	npc_msg msg_0499_T07R0106_00005
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0794_T07R0106_01F9
+	gotoif eq, _01F9
 	callstd std_give_item_verbose
-scr_seq_0794_T07R0106_01E7:
-	npc_msg 3
-	goto scr_seq_0794_T07R0106_005E
+_01E7:
+	npc_msg msg_0499_T07R0106_00003
+	goto _005E
 
-scr_seq_0794_T07R0106_01F0:
-	npc_msg 6
-	goto scr_seq_0794_T07R0106_0205
+_01F0:
+	npc_msg msg_0499_T07R0106_00006
+	goto _0205
 
-scr_seq_0794_T07R0106_01F9:
+_01F9:
 	callstd std_bag_is_full
 	closemsg
 	scrcmd_114
 	releaseall
 	end
 
-scr_seq_0794_T07R0106_0205:
+_0205:
 	waitbutton
 	closemsg
 	scrcmd_114

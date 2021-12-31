@@ -1,111 +1,111 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T07R0701.h"
+#include "msgdata/msg/msg_0510_T07R0701.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0805_T07R0701_00E8 ; 000
-	scrdef scr_seq_0805_T07R0701_0087 ; 001
-	scrdef scr_seq_0805_T07R0701_00A2 ; 002
-	scrdef scr_seq_0805_T07R0701_00BD ; 003
-	scrdef scr_seq_0805_T07R0701_0044 ; 004
-	scrdef scr_seq_0805_T07R0701_001E ; 005
-	scrdef scr_seq_0805_T07R0701_00FB ; 006
+	scrdef scr_seq_T07R0701_000
+	scrdef scr_seq_T07R0701_001
+	scrdef scr_seq_T07R0701_002
+	scrdef scr_seq_T07R0701_003
+	scrdef scr_seq_T07R0701_004
+	scrdef scr_seq_T07R0701_005
+	scrdef scr_seq_T07R0701_006
 	scrdef_end
 
-scr_seq_0805_T07R0701_001E:
+scr_seq_T07R0701_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 6
+	npc_msg msg_0510_T07R0701_00006
 	closemsg
-	apply_movement 3, scr_seq_0805_T07R0701_003C
+	apply_movement obj_T07R0701_leader4, _003C
 	wait_movement
 	releaseall
 	end
-
-scr_seq_0805_T07R0701_0039:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0805_T07R0701_003C:
+_003C:
 	step 35, 1
 	step_end
-scr_seq_0805_T07R0701_0044:
+scr_seq_T07R0701_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0805_T07R0701_0074
-	npc_msg 4
+	gotoif eq, _0074
+	npc_msg msg_0510_T07R0701_00004
 	closemsg
-	apply_movement 1, scr_seq_0805_T07R0701_00D8
+	apply_movement obj_T07R0701_gswoman1, _00D8
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_T07R0701_0074:
-	npc_msg 5
+_0074:
+	npc_msg msg_0510_T07R0701_00005
 	closemsg
-	apply_movement 1, scr_seq_0805_T07R0701_00D8
+	apply_movement obj_T07R0701_gswoman1, _00D8
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_T07R0701_0087:
+scr_seq_T07R0701_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0510_T07R0701_00001
 	closemsg
-	apply_movement 5, scr_seq_0805_T07R0701_00E0
+	apply_movement obj_T07R0701_gsbigman_3, _00E0
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_T07R0701_00A2:
+scr_seq_T07R0701_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0510_T07R0701_00002
 	closemsg
-	apply_movement 4, scr_seq_0805_T07R0701_00E0
+	apply_movement obj_T07R0701_gsbigman_2, _00E0
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0805_T07R0701_00BD:
+scr_seq_T07R0701_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0510_T07R0701_00003
 	closemsg
-	apply_movement 2, scr_seq_0805_T07R0701_00D8
+	apply_movement obj_T07R0701_gsbigman, _00D8
 	wait_movement
 	releaseall
 	end
 
 
-scr_seq_0805_T07R0701_00D8:
+_00D8:
 	step 33, 1
 	step_end
 
-scr_seq_0805_T07R0701_00E0:
+_00E0:
 	step 32, 1
 	step_end
-scr_seq_0805_T07R0701_00E8:
+scr_seq_T07R0701_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0510_T07R0701_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0805_T07R0701_00FB:
+scr_seq_T07R0701_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 7
+	npc_msg msg_0510_T07R0701_00007
 	waitbutton
 	closemsg
 	releaseall

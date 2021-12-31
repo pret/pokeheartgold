@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R46.h",
   "bgs": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_R46_002",
       "type": 1,
       "x": 628,
       "y": 370,
@@ -27,7 +28,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R46_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 16,
       "type": 1,
@@ -44,7 +45,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R46_campboy_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 9,
       "type": 1,
@@ -61,7 +62,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R46_picnicgirl_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 6,
       "type": 1,
@@ -78,7 +79,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R46_bonguri",
       "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
@@ -95,7 +96,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R46_bonguri_2",
       "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
@@ -112,7 +113,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R46_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -129,12 +130,12 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R46_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R46_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

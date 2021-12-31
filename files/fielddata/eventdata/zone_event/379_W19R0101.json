@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_W19R0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_W19R0101_counterm",
       "ovid": "SPRITE_COUNTERM",
       "mvt": 0,
       "type": 0,

@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R13.h",
   "bgs": [
     {
       "scr": 3,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_R13_002",
       "type": 1,
       "x": 1410,
       "y": 375,
@@ -17,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_R13_001",
       "type": 1,
       "x": 1385,
       "y": 377,
@@ -35,7 +36,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R13_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 5,
       "type": 1,
@@ -52,7 +53,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R13_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 1,
@@ -69,7 +70,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R13_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 0,
       "type": 1,
@@ -86,7 +87,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R13_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 8,
       "type": 1,
@@ -103,7 +104,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R13_gsmiddleman1_2",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 0,
       "type": 1,
@@ -120,7 +121,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R13_campboy_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 10,
       "type": 1,
@@ -137,7 +138,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R13_campboy_2_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 5,
       "type": 1,
@@ -154,7 +155,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_R13_picnicgirl_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 1,
@@ -171,7 +172,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_R13_picnicgirl_2_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 1,
@@ -188,7 +189,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_R13_gsman2_2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 1,
@@ -205,7 +206,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_R13_gsman2_3",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 1,
@@ -222,7 +223,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_R13_tree",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -239,7 +240,7 @@
       "z": 0
     },
     {
-      "id": 17,
+      "id": "obj_R13_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 2,
       "type": 0,

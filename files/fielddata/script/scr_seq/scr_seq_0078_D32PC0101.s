@@ -1,49 +1,51 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D32PC0101.h"
+#include "msgdata/msg/msg_0102_D32PC0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0078_D32PC0101_001E ; 000
-	scrdef scr_seq_0078_D32PC0101_002A ; 001
-	scrdef scr_seq_0078_D32PC0101_003D ; 002
-	scrdef scr_seq_0078_D32PC0101_0050 ; 003
-	scrdef scr_seq_0078_D32PC0101_0016 ; 004
+	scrdef scr_seq_D32PC0101_000
+	scrdef scr_seq_D32PC0101_001
+	scrdef scr_seq_D32PC0101_002
+	scrdef scr_seq_D32PC0101_003
+	scrdef scr_seq_D32PC0101_004
 	scrdef_end
 
-scr_seq_0078_D32PC0101_0016:
+scr_seq_D32PC0101_004:
 	setvar VAR_UNK_40E5, 2
 	end
 
-scr_seq_0078_D32PC0101_001E:
+scr_seq_D32PC0101_000:
 	setvar VAR_SPECIAL_x8007, 0
 	callstd std_nurse_joy
 	end
 
-scr_seq_0078_D32PC0101_002A:
+scr_seq_D32PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0102_D32PC0101_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0078_D32PC0101_003D:
+scr_seq_D32PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0102_D32PC0101_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0078_D32PC0101_0050:
+scr_seq_D32PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0102_D32PC0101_00002
 	waitbutton
 	closemsg
 	releaseall

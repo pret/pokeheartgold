@@ -1,18 +1,20 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D02FS0101.h"
+#include "msgdata/msg/msg_0048_D02FS0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0006_D02FS0101_002D ; 000
-	scrdef scr_seq_0006_D02FS0101_000A ; 001
+	scrdef scr_seq_D02FS0101_000
+	scrdef scr_seq_D02FS0101_001
 	scrdef_end
 
-scr_seq_0006_D02FS0101_000A:
+scr_seq_D02FS0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	setflag FLAG_UNK_18A
-	npc_msg 1
+	npc_msg msg_0048_D02FS0101_00001
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 27
 	callstd 2052
@@ -20,11 +22,11 @@ scr_seq_0006_D02FS0101_000A:
 	releaseall
 	end
 
-scr_seq_0006_D02FS0101_002D:
+scr_seq_D02FS0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0048_D02FS0101_00000
 	waitbutton
 	closemsg
 	releaseall

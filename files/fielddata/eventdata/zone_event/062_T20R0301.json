@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T20R0301.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T20R0301_gswoman3",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 17,
       "type": 0,

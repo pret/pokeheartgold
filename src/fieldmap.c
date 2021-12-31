@@ -4,6 +4,7 @@
 #include "map_header.h"
 #include "event_data.h"
 #include "map_events.h"
+#include "constants/std_script.h"
 #include "fielddata/script/scr_seq.naix"
 #include "msgdata/msg.naix"
 
@@ -53,7 +54,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     { 3000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
     { 2800, NARC_scr_seq_scr_seq_0150_bin,  NARC_msg_msg_0023_bin},
     { 2500, NARC_scr_seq_scr_seq_0001_bin,  NARC_msg_msg_0020_bin},
-    { 2000, NARC_scr_seq_scr_seq_0003_bin,  NARC_msg_msg_0040_bin},
+    { _std_misc, NARC_scr_seq_scr_seq_0003_bin,  NARC_msg_msg_0040_bin},
 };
 
 #define HEAP_ID_FIELDMAP                  11

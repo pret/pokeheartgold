@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R31.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_R31_003",
       "type": 1,
       "x": 522,
       "y": 268,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_R31_004",
       "type": 1,
       "x": 563,
       "y": 270,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R31_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 5,
+      "scr": "_EV_scr_seq_R31_005",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -36,7 +37,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R31_tree",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -53,12 +54,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R31_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_R31_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -70,7 +71,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R31_tree_2",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -87,7 +88,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R31_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 3,
       "type": 0,
@@ -104,7 +105,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R31_gsboy3",
       "ovid": "SPRITE_GSBOY3",
       "mvt": 14,
       "type": 1,
@@ -121,7 +122,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R31_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -138,7 +139,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_R31_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -155,7 +156,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_R31_bonguri",
       "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,

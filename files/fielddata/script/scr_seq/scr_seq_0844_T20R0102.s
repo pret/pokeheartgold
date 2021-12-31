@@ -1,28 +1,30 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T20R0102.h"
+#include "msgdata/msg/msg_0544_T20R0102.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0844_T20R0102_000A ; 000
-	scrdef scr_seq_0844_T20R0102_0021 ; 001
+	scrdef scr_seq_T20R0102_000
+	scrdef scr_seq_T20R0102_001
 	scrdef_end
 
-scr_seq_0844_T20R0102_000A:
+scr_seq_T20R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	buffer_players_name 0
-	gender_msgbox 0, 1
+	gender_msgbox msg_0544_T20R0102_00000, msg_0544_T20R0102_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0844_T20R0102_0021:
+scr_seq_T20R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0544_T20R0102_00002
 	waitbutton
 	closemsg
 	releaseall

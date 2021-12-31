@@ -1,4 +1,5 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_UNION.h"
 	.rodata
 	.option alignment off
 

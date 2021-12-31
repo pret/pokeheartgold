@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_D52R0103.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D52R0103_tsure_poke_624",
       "ovid": "SPRITE_TSURE_POKE_624",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D2",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D52R0103_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

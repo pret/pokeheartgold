@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R22.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_R22_003",
       "type": 1,
       "x": 938,
       "y": 264,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R22_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R22_001",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -28,12 +29,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R22_sakaki",
       "ovid": "SPRITE_SAKAKI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_301",
-      "scr": 0,
+      "scr": "_EV_scr_seq_R22_000",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -45,12 +46,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R22_gsrivel",
       "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_301",
-      "scr": 0,
+      "scr": "_EV_scr_seq_R22_000",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -62,12 +63,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R22_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_302",
-      "scr": 0,
+      "scr": "_EV_scr_seq_R22_000",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

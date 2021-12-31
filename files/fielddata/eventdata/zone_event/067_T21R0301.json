@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T21R0301.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T21R0301_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T21R0301_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T21R0301_gsbabyboy1",
       "ovid": "SPRITE_GSBABYBOY1",
       "mvt": 5,
       "type": 0,

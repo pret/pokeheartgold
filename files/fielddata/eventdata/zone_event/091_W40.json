@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_W40.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_W40_003",
       "type": 1,
       "x": 245,
       "y": 272,
@@ -27,7 +28,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_W40_gsswimmerm",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 16,
       "type": 1,
@@ -44,7 +45,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_W40_gsswimmerw",
       "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 5,
       "type": 1,
@@ -61,7 +62,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_W40_gsswimmerm_2",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 7,
       "type": 1,
@@ -78,7 +79,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_W40_gsswimmerw_2",
       "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 20,
       "type": 1,
@@ -95,12 +96,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_W40_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_206",
-      "scr": 2,
+      "scr": "_EV_scr_seq_W40_002",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -112,12 +113,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_W40_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 8,
+      "scr": "_EV_scr_seq_W40_008",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -129,7 +130,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_W40_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -164,7 +165,7 @@
   ],
   "coords": [
     {
-      "scr": 9,
+      "scr": "_EV_scr_seq_W40_009",
       "x": 252,
       "y": 265,
       "w": 4,

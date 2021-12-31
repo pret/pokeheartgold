@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T20R0102.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T20R0102_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T20R0102_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T20R0102_gsboy2",
       "ovid": "SPRITE_GSBOY2",
       "mvt": 3,
       "type": 0,

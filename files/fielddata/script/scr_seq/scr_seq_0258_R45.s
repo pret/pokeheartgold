@@ -1,35 +1,37 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R45.h"
+#include "msgdata/msg/msg_0405_R45.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0258_R45_01AB ; 000
-	scrdef scr_seq_0258_R45_0051 ; 001
-	scrdef scr_seq_0258_R45_0016 ; 002
-	scrdef scr_seq_0258_R45_0198 ; 003
-	scrdef scr_seq_0258_R45_01C2 ; 004
+	scrdef scr_seq_R45_000
+	scrdef scr_seq_R45_001
+	scrdef scr_seq_R45_002
+	scrdef scr_seq_R45_003
+	scrdef scr_seq_R45_004
 	scrdef_end
 
-scr_seq_0258_R45_0016:
+scr_seq_R45_002:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0258_R45_0027
+	gotoif FALSE, _0027
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0258_R45_0027:
+_0027:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, scr_seq_0258_R45_004B
+	gotoif eq, _004B
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif eq, scr_seq_0258_R45_004B
+	gotoif eq, _004B
 	setflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0258_R45_004B:
+_004B:
 	clearflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0258_R45_0051:
+scr_seq_R45_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -39,10 +41,10 @@ scr_seq_0258_R45_0051:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0258_R45_0133
+	gotoif eq, _0133
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0258_R45_0147
+	gotoif eq, _0147
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -51,24 +53,24 @@ scr_seq_0258_R45_0051:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0258_R45_00C2
-	apply_movement 255, scr_seq_0258_R45_015C
-	goto scr_seq_0258_R45_00D2
+	gotoif ne, _00C2
+	apply_movement obj_player, _015C
+	goto _00D2
 
-scr_seq_0258_R45_00C2:
-	apply_movement 255, scr_seq_0258_R45_0168
-	apply_movement 14, scr_seq_0258_R45_017C
-scr_seq_0258_R45_00D2:
+_00C2:
+	apply_movement obj_player, _0168
+	apply_movement obj_R45_gsmiddleman1, _017C
+_00D2:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0258_R45_00F9
-	apply_movement 253, scr_seq_0258_R45_0188
+	gotoif ne, _00F9
+	apply_movement 253, _0188
 	wait_movement
-scr_seq_0258_R45_00F9:
+_00F9:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -84,7 +86,7 @@ scr_seq_0258_R45_00F9:
 	releaseall
 	end
 
-scr_seq_0258_R45_0133:
+_0133:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -92,50 +94,48 @@ scr_seq_0258_R45_0133:
 	releaseall
 	end
 
-scr_seq_0258_R45_0147:
+_0147:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0258_R45_015B:
 	.byte 0x00
 
-scr_seq_0258_R45_015C:
+_015C:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0258_R45_0168:
+_0168:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0258_R45_017C:
+_017C:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0258_R45_0188:
+_0188:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0258_R45_0198:
+scr_seq_R45_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0405_R45_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0258_R45_01AB:
+scr_seq_R45_000:
 	scrcmd_055 1, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -143,7 +143,7 @@ scr_seq_0258_R45_01AB:
 	callstd 2000
 	end
 
-scr_seq_0258_R45_01C2:
+scr_seq_R45_004:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T21R0401.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T21R0401_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 15,
       "type": 0,

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R38.h",
   "bgs": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_R38_002",
       "type": 1,
       "x": 346,
       "y": 165,
@@ -27,7 +28,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R38_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 17,
       "type": 1,
@@ -44,7 +45,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R38_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 17,
       "type": 1,
@@ -61,7 +62,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R38_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 13,
       "type": 1,
@@ -78,7 +79,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R38_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 15,
       "type": 1,
@@ -95,7 +96,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R38_seaman_2",
       "ovid": "SPRITE_SEAMAN_2",
       "mvt": 5,
       "type": 1,
@@ -112,7 +113,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R38_bonguri",
       "ovid": "SPRITE_BONGURI",
       "mvt": 0,
       "type": 0,
@@ -129,7 +130,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_R38_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -146,7 +147,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_R38_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D27R0102.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_d27r0102.h_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 1,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_d27r0102.h_seaman_2",
       "ovid": "SPRITE_SEAMAN_2",
       "mvt": 0,
       "type": 1,

@@ -1,50 +1,52 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R35.h"
+#include "msgdata/msg/msg_0387_R35.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0240_R35_0210 ; 000
-	scrdef scr_seq_0240_R35_0016 ; 001
-	scrdef scr_seq_0240_R35_023E ; 002
-	scrdef scr_seq_0240_R35_0092 ; 003
-	scrdef scr_seq_0240_R35_0227 ; 004
+	scrdef scr_seq_R35_000
+	scrdef scr_seq_R35_001
+	scrdef scr_seq_R35_002
+	scrdef scr_seq_R35_003
+	scrdef scr_seq_R35_004
 	scrdef_end
 
-scr_seq_0240_R35_0016:
+scr_seq_R35_001:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0240_R35_0027
+	gotoif FALSE, _0027
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0240_R35_0027:
+_0027:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0240_R35_005C
+	gotoif eq, _005C
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, scr_seq_0240_R35_005C
+	gotoif eq, _005C
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, scr_seq_0240_R35_005C
+	gotoif eq, _005C
 	setflag FLAG_HIDE_CAMERON
-	goto scr_seq_0240_R35_0060
+	goto _0060
 
-scr_seq_0240_R35_005C:
+_005C:
 	clearflag FLAG_HIDE_CAMERON
-scr_seq_0240_R35_0060:
+_0060:
 	scrcmd_379 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, scr_seq_0240_R35_0088
+	gotoif eq, _0088
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, scr_seq_0240_R35_0088
+	gotoif eq, _0088
 	clearflag FLAG_UNK_1CD
 	setflag FLAG_UNK_1CE
 	end
 
-scr_seq_0240_R35_0088:
+_0088:
 	clearflag FLAG_UNK_1CE
 	setflag FLAG_UNK_1CD
 	end
 
-scr_seq_0240_R35_0092:
+scr_seq_R35_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -54,10 +56,10 @@ scr_seq_0240_R35_0092:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0240_R35_0197
+	gotoif eq, _0197
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0240_R35_01AB
+	gotoif eq, _01AB
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -66,31 +68,31 @@ scr_seq_0240_R35_0092:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0240_R35_010B
-	apply_movement 255, scr_seq_0240_R35_01C0
-	apply_movement 12, scr_seq_0240_R35_01F4
-	goto scr_seq_0240_R35_0136
+	gotoif ne, _010B
+	apply_movement obj_player, _01C0
+	apply_movement obj_R35_gsmiddleman1, _01F4
+	goto _0136
 
-scr_seq_0240_R35_010B:
+_010B:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0240_R35_0126
-	apply_movement 255, scr_seq_0240_R35_01D4
-	goto scr_seq_0240_R35_0136
+	gotoif ne, _0126
+	apply_movement obj_player, _01D4
+	goto _0136
 
-scr_seq_0240_R35_0126:
-	apply_movement 255, scr_seq_0240_R35_01E0
-	apply_movement 12, scr_seq_0240_R35_01F4
-scr_seq_0240_R35_0136:
+_0126:
+	apply_movement obj_player, _01E0
+	apply_movement obj_R35_gsmiddleman1, _01F4
+_0136:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0240_R35_015D
-	apply_movement 253, scr_seq_0240_R35_0200
+	gotoif ne, _015D
+	apply_movement 253, _0200
 	wait_movement
-scr_seq_0240_R35_015D:
+_015D:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -106,7 +108,7 @@ scr_seq_0240_R35_015D:
 	releaseall
 	end
 
-scr_seq_0240_R35_0197:
+_0197:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -114,47 +116,45 @@ scr_seq_0240_R35_0197:
 	releaseall
 	end
 
-scr_seq_0240_R35_01AB:
+_01AB:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0240_R35_01BF:
 	.byte 0x00
 
-scr_seq_0240_R35_01C0:
+_01C0:
 	step 12, 1
 	step 15, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0240_R35_01D4:
+_01D4:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0240_R35_01E0:
+_01E0:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0240_R35_01F4:
+_01F4:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0240_R35_0200:
+_0200:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0240_R35_0210:
+scr_seq_R35_000:
 	scrcmd_055 28, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -162,7 +162,7 @@ scr_seq_0240_R35_0210:
 	callstd 2000
 	end
 
-scr_seq_0240_R35_0227:
+scr_seq_R35_004:
 	scrcmd_055 29, 1, 19, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -170,11 +170,11 @@ scr_seq_0240_R35_0227:
 	callstd 2000
 	end
 
-scr_seq_0240_R35_023E:
+scr_seq_R35_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 21
+	npc_msg msg_0387_R35_00021
 	waitbutton
 	closemsg
 	releaseall

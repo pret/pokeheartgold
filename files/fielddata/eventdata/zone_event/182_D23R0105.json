@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D23R0105.h",
   "bgs": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_D23R0105_002",
       "type": 0,
       "x": 5,
       "y": 4,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D23R0105_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2C6",
-      "scr": 3,
+      "scr": "_EV_scr_seq_D23R0105_003",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -36,7 +37,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D23R0105_rkanbuw",
       "ovid": "SPRITE_RKANBUW",
       "mvt": 0,
       "type": 1,
@@ -53,12 +54,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D23R0105_rkanbum2",
       "ovid": "SPRITE_RKANBUM2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2C7",
-      "scr": 3,
+      "scr": "_EV_scr_seq_D23R0105_003",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

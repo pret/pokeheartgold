@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_R34R0201.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R34R0201_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 4,
       "type": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R34R0201_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R34R0201_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -35,12 +36,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R34R0201_tsure_poke_573",
       "ovid": "SPRITE_TSURE_POKE_573",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_R34R0201_002",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

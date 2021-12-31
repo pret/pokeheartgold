@@ -1,93 +1,95 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T27R0801.h"
+#include "msgdata/msg/msg_0619_T27R0801.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0929_T27R0801_000A ; 000
-	scrdef scr_seq_0929_T27R0801_0098 ; 001
+	scrdef scr_seq_T27R0801_000
+	scrdef scr_seq_T27R0801_001
 	scrdef_end
 
-scr_seq_0929_T27R0801_000A:
+scr_seq_T27R0801_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0A3
-	gotoif TRUE, scr_seq_0929_T27R0801_0078
-	npc_msg 0
+	gotoif TRUE, _0078
+	npc_msg msg_0619_T27R0801_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0929_T27R0801_0044
+	gotoif eq, _0044
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0929_T27R0801_008D
+	gotoif eq, _008D
 	end
 
-scr_seq_0929_T27R0801_0044:
-	npc_msg 1
+_0044:
+	npc_msg msg_0619_T27R0801_00001
 	scrcmd_049
 	setvar VAR_SPECIAL_x8004, 471
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0929_T27R0801_0083
+	gotoif eq, _0083
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0A3
-	goto scr_seq_0929_T27R0801_0078
+	goto _0078
 
-scr_seq_0929_T27R0801_0078:
-	npc_msg 3
+_0078:
+	npc_msg msg_0619_T27R0801_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0929_T27R0801_0083:
+_0083:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0929_T27R0801_008D:
-	npc_msg 4
+_008D:
+	npc_msg msg_0619_T27R0801_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0929_T27R0801_0098:
+scr_seq_T27R0801_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg msg_0619_T27R0801_00005
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0929_T27R0801_00C7
+	gotoif eq, _00C7
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0929_T27R0801_00F9
+	gotoif eq, _00F9
 	end
 
-scr_seq_0929_T27R0801_00C7:
-	npc_msg 6
+_00C7:
+	npc_msg msg_0619_T27R0801_00006
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0929_T27R0801_00EE
+	gotoif eq, _00EE
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0929_T27R0801_00F9
+	gotoif eq, _00F9
 	end
 
-scr_seq_0929_T27R0801_00EE:
-	npc_msg 7
+_00EE:
+	npc_msg msg_0619_T27R0801_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0929_T27R0801_00F9:
+_00F9:
 	closemsg
 	releaseall
 	end

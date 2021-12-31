@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T25R0401.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T25R0401_masaki",
       "ovid": "SPRITE_MASAKI",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_23E",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T25R0401_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T25R0401_middlewoman1_2",
       "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T25R0401_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T25R0401_gsbabygirl1",
       "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 3,
       "type": 0,

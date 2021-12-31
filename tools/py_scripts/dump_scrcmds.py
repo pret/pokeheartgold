@@ -1,6 +1,8 @@
 import collections
 import json
+import operator
 import os
+import traceback
 import typing
 import warnings
 import enum
@@ -90,22 +92,34 @@ class NormalScriptParser(ScriptParserBase):
 
         self.objects = []
         self.messages = []
+        self.c_header = None
 
         seen_objects = collections.Counter()
+        obj_prefix = prefix.replace('scr_seq', 'obj')
         if events:
             with open(events) as fp:
                 events_dict = json.load(fp)
             for obj in events_dict.get('objects', []):
-                assert obj['id'] == len(self.objects)
                 sprite = obj['ovid'].replace('SPRITE_', '').lower()
-                obj_name = f'obj_{prefix}_{sprite}'
+                obj_name = f'{obj_prefix}_{sprite}'
                 seen_objects[obj_name] += 1
                 if seen_objects[obj_name] > 1:
                     obj_name = f'{obj_name}_{seen_objects[obj_name]}'
-                self.objects.append(obj_name)
+                self.objects.append((obj['id'], obj_name))
+        self.objects.append((255, 'obj_player'))
         if gmm:
             self.messages = [row.get('id') for row in ElementTree.parse(gmm).iter('row')]
-    
+            self.gmm_header = os.path.relpath(gmm.replace('.gmm', '.h'), os.path.join(project_root, 'files'))
+        else:
+            self.gmm_header = None
+
+    def get_object(self, id_: int):
+        for i, name in self.objects:
+            if i == id_:
+                return name
+        # warnings.warn(f'{self.prefix}: failed to find object ident {id_}')
+        return str(id_)
+
     def parse_header(self):
         for i in range(0, len(self.raw), 4):
             if self.raw[i:i + 2] == b'\x13\xfd':
@@ -122,18 +136,27 @@ class NormalScriptParser(ScriptParserBase):
             assert size in [1, 2, 4]
             return int.from_bytes(self.raw[pc:pc + size], 'little'), pc + size
         match size:
-            case 'object':
-                value = int.from_bytes(self.raw[pc:pc + 2], 'little')
-                pc += 2
-                if value in self.constants['vars']:
-                    return self.constants['vars'][value], pc
-                assert value < len(self.objects)
-                return self.objects[value], pc
+            case 'object1' | 'object2':
+                try:
+                    size = int(size[-1])
+                    value = int.from_bytes(self.raw[pc:pc + size], 'little')
+                    pc += size
+                    if size == 2 and value in self.constants['var']:
+                        return self.constants['var'][value], pc
+                    return self.get_object(value), pc
+                except:
+                    traceback.print_exc()
+                    exit(1)
             case 'message':
+                value = int.from_bytes(self.raw[pc:pc + 1], 'little')
+                pc += 1
+                assert value < len(self.messages)
+                return self.messages[value], pc
+            case 'message_var':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
-                if value in self.constants['vars']:
-                    return self.constants['vars'][value], pc
+                if value in self.constants['var']:
+                    return self.constants['var'][value], pc
                 assert value < len(self.messages)
                 return self.messages[value], pc
             case 'bool1' | 'bool2' | 'bool4':
@@ -158,7 +181,7 @@ class NormalScriptParser(ScriptParserBase):
                     self.labels[value] = (size != 'script')
                 else:
                     self.labels[value] |= (size != 'script')
-                return f'{self.prefix}_{value:04X}', pc
+                return self.make_label(value), pc
             case 'condition':
                 value = self.raw[pc]
                 pc += 1
@@ -188,7 +211,7 @@ class NormalScriptParser(ScriptParserBase):
             self.pc_history.append(pc)
             cmd_i = int.from_bytes(self.raw[pc:pc + 2], 'little')
             if cmd_i >= len(self.commands):
-                warnings.warn(f'script parser hit illegal command {cmd_i} at position {pc}')
+                warnings.warn(f'script parser hit illegal command {cmd_i} at position {pc} ({self.prefix})')
                 break
             pc += 2
             args = []
@@ -207,7 +230,7 @@ class NormalScriptParser(ScriptParserBase):
                         args.append(arg)
             except (ValueError, KeyError):
                 warnings.warn(f'script parser hit illegal command args to {cmd_i} at position {self.pc_history[-1]} '
-                              f'(arg {len(args)}, last good arg: {None if not args else args[-1]})')
+                              f'(command {name}, arg {len(args)}, last good arg: {None if not args else args[-1]}) ({self.prefix})')
                 break
             self.lines[self.pc_history[-1]] = (name, args, pc)
             if cmd_struct.get('is_abs_branch'):
@@ -257,19 +280,29 @@ class NormalScriptParser(ScriptParserBase):
         s = ''
         labels = sorted({x for x in self.labels if pc <= x < nextpc} | {pc, nextpc})
         for x, y in zip(labels[:-1], labels[1:]):
-            if x in labels:
-                s += f'\n{self.prefix}_{x:04X}:\n'
+            if (label := self.make_label(x)) is not None:
+                s += f'\n{label}:\n'
             s += self.make_gap_internal(x, y)
         return s
+
+    def make_label(self, addr: int):
+        if addr in self.exported:
+            return f'{self.prefix}_{self.exported.index(addr):03d}'
+        if addr in self.labels:
+            return f'_{addr:04X}'
 
     def __str__(self):
         if not self.is_parsed:
             return repr(self)
         s = '#include "constants/scrcmd.h"\n'
+        if self.c_header is not None:
+            s += f'#include "{self.c_header}"\n'
+        if self.gmm_header is not None:
+            s += f'#include "{self.gmm_header}"\n'
         s += '\t.include "asm/macros/script.inc"\n\n'
         s += '\t.rodata\n\n'
         for i, addr in enumerate(self.exported):
-            s += f'\tscrdef {self.prefix}_{addr:04X} ; {i:03d}\n'
+            s += f'\tscrdef {self.prefix}_{i:03d}\n'
         s += '\tscrdef_end\n\n'
         if not self.lines:
             s += self.make_gap(self.header_end, len(self.raw))
@@ -281,8 +314,13 @@ class NormalScriptParser(ScriptParserBase):
             for i, (pc, (name, args, nextpc)) in enumerate(lines[:-1]):
                 if pc != nextpc:
                     args = list(args)
-                    if pc in self.labels:
-                        s += f'{self.prefix}_{pc:04X}:\n'
+                    if (label := self.make_label(pc)) is not None:
+                        if self.exported.count(pc) > 1:
+                            for idx, addr in enumerate(self.exported):
+                                if addr == pc:
+                                    s += f'{self.prefix}_{idx:03d}:\n'
+                        else:
+                            s += f'{label}:\n'
                     if args:
                         s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
                     else:
@@ -297,8 +335,13 @@ class NormalScriptParser(ScriptParserBase):
     def make_header(self):
         s = f'#ifndef {self.prefix.upper()}_H_\n'
         s += f'#define {self.prefix.upper()}_H_\n\n'
-        for i, name in enumerate(self.exported):
-            s += f'#define {name}    {i: 3d}\n'
+        for i, addr in enumerate(self.exported):
+            name = f'_EV_{self.prefix}_{i:03d}'
+            s += f'#define {name:<32s} {i: 5d}\n'
+        s += '\n'
+        for i, name in self.objects:
+            if i != 255:
+                s += f'#define {name:<32s} {i: 5d}\n'
         s += f'\n#endif //{self.prefix.upper()}_H_\n'
         return s
 
@@ -311,6 +354,7 @@ class SpecialScriptParser(ScriptParserBase):
         self.table: list[tuple[int, int, int]] = []
         self.init_offset: int = -1
         self.init_vars: list[tuple[int, int, int]] = []
+        self.c_header = None
 
     def parse_all(self):
         i = 0
@@ -345,15 +389,18 @@ class SpecialScriptParser(ScriptParserBase):
     def __str__(self):
         if not self.is_parsed:
             return repr(self)
-        s = '#include "constants/scrcmd.h"\n\t.rodata\n\t.option alignment off\n\n'
+        s = '#include "constants/scrcmd.h"\n'
+        if self.c_header is not None:
+            s += f'#include "{self.c_header}"\n'
+        s += '\t.rodata\n\t.option alignment off\n\n'
         for kind, val1, val2 in self.table:
             if kind == 1:
-                s += f'\t.byte 1\n\t.word {self.prefix}_{self.init_offset:04X}-.-4\n'
+                s += f'\t.byte 1\n\t.word {self.prefix}_map_scripts_2-.-4\n'
             else:
                 s += f'\t.byte {kind}\n\t.short {val1}, {val2}\n'
         s += '\t.byte 0\n\n'
         if self.init_offset != -1:
-            s += f'{self.prefix}_{self.init_offset:04X}:\n'
+            s += f'{self.prefix}_map_scripts_2:\n'
             for flex1, flex2, script in self.init_vars:
                 s += f'\t.short {self.vars.get(flex1, flex1)}, {self.vars.get(flex2, flex2)}, {script}\n'
             s += '\t.short 0\n\n'
@@ -373,12 +420,23 @@ def parse_map(events, scripts, header, gmm):
         header_bin = None
     gmm = os.path.join(project_root, gmm)
     scr_pref = os.path.splitext(os.path.basename(scripts))[0]
+    scr_pref = re.sub(r'scr_seq_\d{4}_', 'scr_seq_', scr_pref)
 
-    with open(scripts_bin, 'rb') as fp, open(scripts, 'wt') as ofp:
-        print(NormalScriptParser(fp.read(), events, gmm, prefix=scr_pref), file=ofp, end='')
+    c_header_abs = (re.sub(r'scr_seq_\d{4}_', 'scr_seq_', os.path.splitext(scripts)[0]) + '.h').replace('scr_seq_', 'event_')
+    c_header = os.path.relpath(c_header_abs, os.path.join(project_root, 'files'))
     if header:
-        with open(header_bin, 'rb') as fp, open(header, 'wt') as ofp:
-            print(SpecialScriptParser(fp.read(), prefix=scr_pref), file=ofp, end='')
+        with open(header_bin, 'rb') as fp:
+            parser = SpecialScriptParser(fp.read(), prefix=scr_pref).parse_all()
+        parser.c_header = c_header
+        with open(header, 'wt') as ofp:
+            print(parser, file=ofp, end='')
+    with open(scripts_bin, 'rb') as fp:
+        parser = NormalScriptParser(fp.read(), events, gmm, prefix=scr_pref).parse_all()
+    parser.c_header = c_header
+    with open(scripts, 'wt') as ofp:
+        print(parser, file=ofp, end='')
+    with open(c_header_abs, 'wt') as ofp:
+        print(parser.make_header(), file=ofp, end='')
 
 
 def main():

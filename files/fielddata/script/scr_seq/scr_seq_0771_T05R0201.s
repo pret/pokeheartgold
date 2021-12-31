@@ -1,65 +1,67 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T05R0201.h"
+#include "msgdata/msg/msg_0478_T05R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0771_T05R0201_0016 ; 000
-	scrdef scr_seq_0771_T05R0201_0029 ; 001
-	scrdef scr_seq_0771_T05R0201_003C ; 002
-	scrdef scr_seq_0771_T05R0201_0057 ; 003
-	scrdef scr_seq_0771_T05R0201_0072 ; 004
+	scrdef scr_seq_T05R0201_000
+	scrdef scr_seq_T05R0201_001
+	scrdef scr_seq_T05R0201_002
+	scrdef scr_seq_T05R0201_003
+	scrdef scr_seq_T05R0201_004
 	scrdef_end
 
-scr_seq_0771_T05R0201_0016:
+scr_seq_T05R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0478_T05R0201_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0771_T05R0201_0029:
+scr_seq_T05R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0478_T05R0201_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0771_T05R0201_003C:
+scr_seq_T05R0201_002:
 	scrcmd_076 54, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0478_T05R0201_00002
 	waitbutton
 	closemsg
 	releaseall
 	scrcmd_077
 	end
 
-scr_seq_0771_T05R0201_0057:
+scr_seq_T05R0201_003:
 	scrcmd_076 33, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0478_T05R0201_00003
 	waitbutton
 	closemsg
 	releaseall
 	scrcmd_077
 	end
 
-scr_seq_0771_T05R0201_0072:
+scr_seq_T05R0201_004:
 	scrcmd_076 16, 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg msg_0478_T05R0201_00004
 	waitbutton
 	closemsg
 	releaseall

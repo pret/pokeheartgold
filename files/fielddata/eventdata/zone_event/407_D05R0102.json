@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D05R0102.h",
   "bgs": [
     {
       "scr": 8061,
@@ -19,7 +20,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_d05r0102.h_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -36,7 +37,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_d05r0102.h_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -53,7 +54,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_d05r0102.h_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -70,7 +71,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_d05r0102.h_breakrock",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -87,7 +88,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_d05r0102.h_breakrock_2",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -104,7 +105,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_d05r0102.h_breakrock_3",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -121,7 +122,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_d05r0102.h_breakrock_4",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -138,7 +139,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_d05r0102.h_breakrock_5",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -155,7 +156,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_d05r0102.h_breakrock_6",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -172,7 +173,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_d05r0102.h_breakrock_7",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -189,7 +190,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_d05r0102.h_breakrock_8",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -206,7 +207,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_d05r0102.h_breakrock_9",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -223,7 +224,7 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_d05r0102.h_breakrock_10",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -240,7 +241,7 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_d05r0102.h_breakrock_11",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -257,7 +258,7 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_d05r0102.h_breakrock_12",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -274,7 +275,7 @@
       "z": 0
     },
     {
-      "id": 15,
+      "id": "obj_d05r0102.h_breakrock_13",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -291,7 +292,7 @@
       "z": 0
     },
     {
-      "id": 16,
+      "id": "obj_d05r0102.h_breakrock_14",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -308,7 +309,7 @@
       "z": 0
     },
     {
-      "id": 17,
+      "id": "obj_d05r0102.h_breakrock_15",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -325,7 +326,7 @@
       "z": 0
     },
     {
-      "id": 18,
+      "id": "obj_d05r0102.h_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

@@ -1,63 +1,65 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R16R0101.h"
+#include "msgdata/msg/msg_0355_R16R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0206_R16R0101_0089 ; 000
-	scrdef scr_seq_0206_R16R0101_000A ; 001
+	scrdef scr_seq_R16R0101_000
+	scrdef scr_seq_R16R0101_001
 	scrdef_end
 
-scr_seq_0206_R16R0101_000A:
+scr_seq_R16R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_ABA
-	gotoif TRUE, scr_seq_0206_R16R0101_0068
+	gotoif TRUE, _0068
 	scrcmd_540 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0206_R16R0101_007E
-	npc_msg 1
+	gotoif eq, _007E
+	npc_msg msg_0355_R16R0101_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0206_R16R0101_0073
+	gotoif eq, _0073
 	scrcmd_538 32780, 0
 	comparevartovalue VAR_SPECIAL_x800C, 65535
-	gotoif eq, scr_seq_0206_R16R0101_007E
+	gotoif eq, _007E
 	setflag FLAG_UNK_ABA
-	npc_msg 2
+	npc_msg msg_0355_R16R0101_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0206_R16R0101_0068:
-	npc_msg 4
+_0068:
+	npc_msg msg_0355_R16R0101_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0206_R16R0101_0073:
-	npc_msg 3
+_0073:
+	npc_msg msg_0355_R16R0101_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0206_R16R0101_007E:
-	npc_msg 5
+_007E:
+	npc_msg msg_0355_R16R0101_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0206_R16R0101_0089:
+scr_seq_R16R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0355_R16R0101_00000
 	waitbutton
 	closemsg
 	releaseall

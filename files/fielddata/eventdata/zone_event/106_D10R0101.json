@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D10R0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D10R0101_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 16,
       "type": 0,
@@ -36,7 +37,7 @@
   ],
   "coords": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_D10R0101_005",
       "x": 22,
       "y": 48,
       "w": 6,

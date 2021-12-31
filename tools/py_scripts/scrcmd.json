@@ -152,7 +152,7 @@
     {
       "name": "objectgoto",
       "args": [
-        1,
+        "object1",
         "script"
       ]
     },
@@ -289,31 +289,31 @@
     {
       "name": "non_npc_msg",
       "args": [
-        1
+        "message"
       ]
     },
     {
       "name": "npc_msg",
       "args": [
-        1
+        "message"
       ]
     },
     {
-      "name": "scrcmd_046",
+      "name": "non_npc_msg_var",
       "args": [
-        "var"
+        "message_var"
       ]
     },
     {
-      "name": "scrcmd_047",
+      "name": "npc_msg_var",
       "args": [
-        2
+        "message_var"
       ]
     },
     {
       "name": "scrcmd_048",
       "args": [
-        1
+        "message"
       ]
     },
     {
@@ -589,7 +589,7 @@
     {
       "name": "apply_movement",
       "args": [
-        "var",
+        "object2",
         "movement"
       ]
     },
@@ -608,13 +608,13 @@
     {
       "name": "lock",
       "args": [
-        "var"
+        "object2"
       ]
     },
     {
       "name": "release",
       "args": [
-        "var"
+        "object2"
       ]
     },
     {
@@ -825,8 +825,8 @@
     {
       "name": "gender_msgbox",
       "args": [
-        1,
-        1
+        "message",
+        "message"
       ]
     },
     {

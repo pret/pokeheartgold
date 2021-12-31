@@ -1,431 +1,427 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T08GYM0101.h"
+#include "msgdata/msg/msg_0514_T08GYM0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0809_T08GYM0101_0026 ; 000
-	scrdef scr_seq_0809_T08GYM0101_06D4 ; 001
-	scrdef scr_seq_0809_T08GYM0101_079E ; 002
-	scrdef scr_seq_0809_T08GYM0101_0178 ; 003
-	scrdef scr_seq_0809_T08GYM0101_0290 ; 004
-	scrdef scr_seq_0809_T08GYM0101_03A8 ; 005
-	scrdef scr_seq_0809_T08GYM0101_04C5 ; 006
-	scrdef scr_seq_0809_T08GYM0101_07CF ; 007
-	scrdef scr_seq_0809_T08GYM0101_00F5 ; 008
+	scrdef scr_seq_T08GYM0101_000
+	scrdef scr_seq_T08GYM0101_001
+	scrdef scr_seq_T08GYM0101_002
+	scrdef scr_seq_T08GYM0101_003
+	scrdef scr_seq_T08GYM0101_004
+	scrdef scr_seq_T08GYM0101_005
+	scrdef scr_seq_T08GYM0101_006
+	scrdef scr_seq_T08GYM0101_007
+	scrdef scr_seq_T08GYM0101_008
 	scrdef_end
 
-scr_seq_0809_T08GYM0101_0026:
+scr_seq_T08GYM0101_000:
 	scrcmd_330
 	get_phone_book_rematch 26, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_00EF
+	gotoif ne, _00EF
 	scrcmd_147 26, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0809_T08GYM0101_00AF
+	gotoif eq, _00AF
 	check_badge 12, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_006D
-	goto scr_seq_0809_T08GYM0101_00E9
-
-scr_seq_0809_T08GYM0101_0067:
+	gotoif ne, _006D
+	goto _00E9
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
-scr_seq_0809_T08GYM0101_006D:
-	goto scr_seq_0809_T08GYM0101_0075
-
-scr_seq_0809_T08GYM0101_0073:
+_006D:
+	goto _0075
 	.byte 0x02, 0x00
-scr_seq_0809_T08GYM0101_0075:
+_0075:
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, scr_seq_0809_T08GYM0101_0090
+	gotoif ne, _0090
 	setflag FLAG_UNK_2F3
-	goto scr_seq_0809_T08GYM0101_00AD
+	goto _00AD
 
-scr_seq_0809_T08GYM0101_0090:
+_0090:
 	comparevartovalue VAR_TEMP_x4000, 17
-	gotoif ne, scr_seq_0809_T08GYM0101_00A7
+	gotoif ne, _00A7
 	setflag FLAG_UNK_2F3
-	goto scr_seq_0809_T08GYM0101_00AD
+	goto _00AD
 
-scr_seq_0809_T08GYM0101_00A7:
-	goto scr_seq_0809_T08GYM0101_00E9
+_00A7:
+	goto _00E9
 
-scr_seq_0809_T08GYM0101_00AD:
+_00AD:
 	end
 
-scr_seq_0809_T08GYM0101_00AF:
+_00AF:
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, scr_seq_0809_T08GYM0101_00CA
+	gotoif ne, _00CA
 	setflag FLAG_UNK_2F3
-	goto scr_seq_0809_T08GYM0101_00E7
+	goto _00E7
 
-scr_seq_0809_T08GYM0101_00CA:
+_00CA:
 	comparevartovalue VAR_TEMP_x4000, 19
-	gotoif ne, scr_seq_0809_T08GYM0101_00E1
+	gotoif ne, _00E1
 	setflag FLAG_UNK_2F3
-	goto scr_seq_0809_T08GYM0101_00E7
+	goto _00E7
 
-scr_seq_0809_T08GYM0101_00E1:
-	goto scr_seq_0809_T08GYM0101_00E9
+_00E1:
+	goto _00E9
 
-scr_seq_0809_T08GYM0101_00E7:
+_00E7:
 	end
 
-scr_seq_0809_T08GYM0101_00E9:
+_00E9:
 	clearflag FLAG_UNK_2F3
 	end
 
-scr_seq_0809_T08GYM0101_00EF:
+_00EF:
 	setflag FLAG_UNK_2F3
 	end
 
-scr_seq_0809_T08GYM0101_00F5:
+scr_seq_T08GYM0101_008:
 	comparevartovalue VAR_TEMP_x400B, 111
-	gotoif ne, scr_seq_0809_T08GYM0101_012E
+	gotoif ne, _012E
 	checktrainerflag TRAINER_LASS_LINDA
-	callif lt, scr_seq_0809_T08GYM0101_0130
+	callif lt, _0130
 	checktrainerflag TRAINER_CAMPER_BARRY
-	callif lt, scr_seq_0809_T08GYM0101_0142
+	callif lt, _0142
 	checktrainerflag TRAINER_LASS_ALICE
-	callif lt, scr_seq_0809_T08GYM0101_0154
+	callif lt, _0154
 	checktrainerflag TRAINER_PICNICKER_CINDY
-	callif lt, scr_seq_0809_T08GYM0101_0166
-scr_seq_0809_T08GYM0101_012E:
+	callif lt, _0166
+_012E:
 	end
 
-scr_seq_0809_T08GYM0101_0130:
+_0130:
 	clearflag FLAG_UNK_266
 	show_person 1
 	setflag FLAG_UNK_26A
 	hide_person 8
 	return
 
-scr_seq_0809_T08GYM0101_0142:
+_0142:
 	clearflag FLAG_UNK_267
 	show_person 5
 	setflag FLAG_UNK_26B
 	hide_person 7
 	return
 
-scr_seq_0809_T08GYM0101_0154:
+_0154:
 	clearflag FLAG_UNK_268
 	show_person 4
 	setflag FLAG_UNK_26C
 	hide_person 9
 	return
 
-scr_seq_0809_T08GYM0101_0166:
+_0166:
 	clearflag FLAG_UNK_269
 	show_person 0
 	setflag FLAG_UNK_26D
 	hide_person 6
 	return
 
-scr_seq_0809_T08GYM0101_0178:
+scr_seq_T08GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_LASS_LINDA
-	gotoif eq, scr_seq_0809_T08GYM0101_0277
+	gotoif eq, _0277
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_01AA
-	apply_movement 8, scr_seq_0809_T08GYM0101_0620
-	goto scr_seq_0809_T08GYM0101_01E8
+	gotoif ne, _01AA
+	apply_movement obj_T08GYM0101_gsleader13_4, _0620
+	goto _01E8
 
-scr_seq_0809_T08GYM0101_01AA:
+_01AA:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_01C5
-	apply_movement 8, scr_seq_0809_T08GYM0101_05E4
-	goto scr_seq_0809_T08GYM0101_01E8
+	gotoif ne, _01C5
+	apply_movement obj_T08GYM0101_gsleader13_4, _05E4
+	goto _01E8
 
-scr_seq_0809_T08GYM0101_01C5:
+_01C5:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_01E0
-	apply_movement 8, scr_seq_0809_T08GYM0101_0604
-	goto scr_seq_0809_T08GYM0101_01E8
+	gotoif ne, _01E0
+	apply_movement obj_T08GYM0101_gsleader13_4, _0604
+	goto _01E8
 
-scr_seq_0809_T08GYM0101_01E0:
-	apply_movement 8, scr_seq_0809_T08GYM0101_0638
-scr_seq_0809_T08GYM0101_01E8:
+_01E0:
+	apply_movement obj_T08GYM0101_gsleader13_4, _0638
+_01E8:
 	wait_movement
 	clearflag FLAG_UNK_266
 	show_person 1
 	setflag FLAG_UNK_26A
 	hide_person 8
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_0215
-	apply_movement 1, scr_seq_0809_T08GYM0101_0698
-	goto scr_seq_0809_T08GYM0101_0253
+	gotoif ne, _0215
+	apply_movement obj_T08GYM0101_gsgirl1, _0698
+	goto _0253
 
-scr_seq_0809_T08GYM0101_0215:
+_0215:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_0230
-	apply_movement 1, scr_seq_0809_T08GYM0101_065C
-	goto scr_seq_0809_T08GYM0101_0253
+	gotoif ne, _0230
+	apply_movement obj_T08GYM0101_gsgirl1, _065C
+	goto _0253
 
-scr_seq_0809_T08GYM0101_0230:
+_0230:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_024B
-	apply_movement 1, scr_seq_0809_T08GYM0101_0680
-	goto scr_seq_0809_T08GYM0101_0253
+	gotoif ne, _024B
+	apply_movement obj_T08GYM0101_gsgirl1, _0680
+	goto _0253
 
-scr_seq_0809_T08GYM0101_024B:
-	apply_movement 1, scr_seq_0809_T08GYM0101_06B4
-scr_seq_0809_T08GYM0101_0253:
+_024B:
+	apply_movement obj_T08GYM0101_gsgirl1, _06B4
+_0253:
 	wait_movement
-	npc_msg 7
+	npc_msg msg_0514_T08GYM0101_00007
 	closemsg
 	trainer_battle TRAINER_LASS_LINDA, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0809_T08GYM0101_0282
+	gotoif eq, _0282
 	settrainerflag TRAINER_LASS_LINDA
-scr_seq_0809_T08GYM0101_0277:
-	npc_msg 8
+_0277:
+	npc_msg msg_0514_T08GYM0101_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_0282:
+_0282:
 	white_out
 	releaseall
 	setflag FLAG_UNK_266
 	clearflag FLAG_UNK_26A
 	end
 
-scr_seq_0809_T08GYM0101_0290:
+scr_seq_T08GYM0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_CAMPER_BARRY
-	gotoif eq, scr_seq_0809_T08GYM0101_038F
+	gotoif eq, _038F
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_02C2
-	apply_movement 7, scr_seq_0809_T08GYM0101_0620
-	goto scr_seq_0809_T08GYM0101_0300
+	gotoif ne, _02C2
+	apply_movement obj_T08GYM0101_gsleader13_3, _0620
+	goto _0300
 
-scr_seq_0809_T08GYM0101_02C2:
+_02C2:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_02DD
-	apply_movement 7, scr_seq_0809_T08GYM0101_05E4
-	goto scr_seq_0809_T08GYM0101_0300
+	gotoif ne, _02DD
+	apply_movement obj_T08GYM0101_gsleader13_3, _05E4
+	goto _0300
 
-scr_seq_0809_T08GYM0101_02DD:
+_02DD:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_02F8
-	apply_movement 7, scr_seq_0809_T08GYM0101_0604
-	goto scr_seq_0809_T08GYM0101_0300
+	gotoif ne, _02F8
+	apply_movement obj_T08GYM0101_gsleader13_3, _0604
+	goto _0300
 
-scr_seq_0809_T08GYM0101_02F8:
-	apply_movement 7, scr_seq_0809_T08GYM0101_0638
-scr_seq_0809_T08GYM0101_0300:
+_02F8:
+	apply_movement obj_T08GYM0101_gsleader13_3, _0638
+_0300:
 	wait_movement
 	clearflag FLAG_UNK_267
 	show_person 5
 	setflag FLAG_UNK_26B
 	hide_person 7
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_032D
-	apply_movement 5, scr_seq_0809_T08GYM0101_0698
-	goto scr_seq_0809_T08GYM0101_036B
+	gotoif ne, _032D
+	apply_movement obj_T08GYM0101_campboy_2, _0698
+	goto _036B
 
-scr_seq_0809_T08GYM0101_032D:
+_032D:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_0348
-	apply_movement 5, scr_seq_0809_T08GYM0101_065C
-	goto scr_seq_0809_T08GYM0101_036B
+	gotoif ne, _0348
+	apply_movement obj_T08GYM0101_campboy_2, _065C
+	goto _036B
 
-scr_seq_0809_T08GYM0101_0348:
+_0348:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_0363
-	apply_movement 5, scr_seq_0809_T08GYM0101_0680
-	goto scr_seq_0809_T08GYM0101_036B
+	gotoif ne, _0363
+	apply_movement obj_T08GYM0101_campboy_2, _0680
+	goto _036B
 
-scr_seq_0809_T08GYM0101_0363:
-	apply_movement 5, scr_seq_0809_T08GYM0101_06B4
-scr_seq_0809_T08GYM0101_036B:
+_0363:
+	apply_movement obj_T08GYM0101_campboy_2, _06B4
+_036B:
 	wait_movement
-	npc_msg 9
+	npc_msg msg_0514_T08GYM0101_00009
 	closemsg
 	trainer_battle TRAINER_CAMPER_BARRY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0809_T08GYM0101_039A
+	gotoif eq, _039A
 	settrainerflag TRAINER_CAMPER_BARRY
-scr_seq_0809_T08GYM0101_038F:
-	npc_msg 10
+_038F:
+	npc_msg msg_0514_T08GYM0101_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_039A:
+_039A:
 	white_out
 	releaseall
 	setflag FLAG_UNK_267
 	clearflag FLAG_UNK_26B
 	end
 
-scr_seq_0809_T08GYM0101_03A8:
+scr_seq_T08GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_LASS_ALICE
-	gotoif eq, scr_seq_0809_T08GYM0101_04AC
-	npc_msg 11
+	gotoif eq, _04AC
+	npc_msg msg_0514_T08GYM0101_00011
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_03DF
-	apply_movement 9, scr_seq_0809_T08GYM0101_0620
-	goto scr_seq_0809_T08GYM0101_041D
+	gotoif ne, _03DF
+	apply_movement obj_T08GYM0101_gsleader13_5, _0620
+	goto _041D
 
-scr_seq_0809_T08GYM0101_03DF:
+_03DF:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_03FA
-	apply_movement 9, scr_seq_0809_T08GYM0101_05E4
-	goto scr_seq_0809_T08GYM0101_041D
+	gotoif ne, _03FA
+	apply_movement obj_T08GYM0101_gsleader13_5, _05E4
+	goto _041D
 
-scr_seq_0809_T08GYM0101_03FA:
+_03FA:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_0415
-	apply_movement 9, scr_seq_0809_T08GYM0101_0604
-	goto scr_seq_0809_T08GYM0101_041D
+	gotoif ne, _0415
+	apply_movement obj_T08GYM0101_gsleader13_5, _0604
+	goto _041D
 
-scr_seq_0809_T08GYM0101_0415:
-	apply_movement 9, scr_seq_0809_T08GYM0101_0638
-scr_seq_0809_T08GYM0101_041D:
+_0415:
+	apply_movement obj_T08GYM0101_gsleader13_5, _0638
+_041D:
 	wait_movement
 	clearflag FLAG_UNK_268
 	show_person 4
 	setflag FLAG_UNK_26C
 	hide_person 9
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_044A
-	apply_movement 4, scr_seq_0809_T08GYM0101_0698
-	goto scr_seq_0809_T08GYM0101_0488
+	gotoif ne, _044A
+	apply_movement obj_T08GYM0101_gsgirl1_2, _0698
+	goto _0488
 
-scr_seq_0809_T08GYM0101_044A:
+_044A:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_0465
-	apply_movement 4, scr_seq_0809_T08GYM0101_065C
-	goto scr_seq_0809_T08GYM0101_0488
+	gotoif ne, _0465
+	apply_movement obj_T08GYM0101_gsgirl1_2, _065C
+	goto _0488
 
-scr_seq_0809_T08GYM0101_0465:
+_0465:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_0480
-	apply_movement 4, scr_seq_0809_T08GYM0101_0680
-	goto scr_seq_0809_T08GYM0101_0488
+	gotoif ne, _0480
+	apply_movement obj_T08GYM0101_gsgirl1_2, _0680
+	goto _0488
 
-scr_seq_0809_T08GYM0101_0480:
-	apply_movement 4, scr_seq_0809_T08GYM0101_06B4
-scr_seq_0809_T08GYM0101_0488:
+_0480:
+	apply_movement obj_T08GYM0101_gsgirl1_2, _06B4
+_0488:
 	wait_movement
-	npc_msg 12
+	npc_msg msg_0514_T08GYM0101_00012
 	closemsg
 	trainer_battle TRAINER_LASS_ALICE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0809_T08GYM0101_04B7
+	gotoif eq, _04B7
 	settrainerflag TRAINER_LASS_ALICE
-scr_seq_0809_T08GYM0101_04AC:
-	npc_msg 13
+_04AC:
+	npc_msg msg_0514_T08GYM0101_00013
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_04B7:
+_04B7:
 	white_out
 	releaseall
 	setflag FLAG_UNK_268
 	clearflag FLAG_UNK_26C
 	end
 
-scr_seq_0809_T08GYM0101_04C5:
+scr_seq_T08GYM0101_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_PICNICKER_CINDY
-	gotoif eq, scr_seq_0809_T08GYM0101_05C9
-	npc_msg 14
+	gotoif eq, _05C9
+	npc_msg msg_0514_T08GYM0101_00014
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_04FC
-	apply_movement 6, scr_seq_0809_T08GYM0101_0620
-	goto scr_seq_0809_T08GYM0101_053A
+	gotoif ne, _04FC
+	apply_movement obj_T08GYM0101_gsleader13_2, _0620
+	goto _053A
 
-scr_seq_0809_T08GYM0101_04FC:
+_04FC:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_0517
-	apply_movement 6, scr_seq_0809_T08GYM0101_05E4
-	goto scr_seq_0809_T08GYM0101_053A
+	gotoif ne, _0517
+	apply_movement obj_T08GYM0101_gsleader13_2, _05E4
+	goto _053A
 
-scr_seq_0809_T08GYM0101_0517:
+_0517:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_0532
-	apply_movement 6, scr_seq_0809_T08GYM0101_0604
-	goto scr_seq_0809_T08GYM0101_053A
+	gotoif ne, _0532
+	apply_movement obj_T08GYM0101_gsleader13_2, _0604
+	goto _053A
 
-scr_seq_0809_T08GYM0101_0532:
-	apply_movement 6, scr_seq_0809_T08GYM0101_0638
-scr_seq_0809_T08GYM0101_053A:
+_0532:
+	apply_movement obj_T08GYM0101_gsleader13_2, _0638
+_053A:
 	wait_movement
 	clearflag FLAG_UNK_269
 	show_person 0
 	setflag FLAG_UNK_26D
 	hide_person 6
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_0567
-	apply_movement 0, scr_seq_0809_T08GYM0101_0698
-	goto scr_seq_0809_T08GYM0101_05A5
+	gotoif ne, _0567
+	apply_movement obj_T08GYM0101_picnicgirl_2, _0698
+	goto _05A5
 
-scr_seq_0809_T08GYM0101_0567:
+_0567:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0809_T08GYM0101_0582
-	apply_movement 0, scr_seq_0809_T08GYM0101_065C
-	goto scr_seq_0809_T08GYM0101_05A5
+	gotoif ne, _0582
+	apply_movement obj_T08GYM0101_picnicgirl_2, _065C
+	goto _05A5
 
-scr_seq_0809_T08GYM0101_0582:
+_0582:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0809_T08GYM0101_059D
-	apply_movement 0, scr_seq_0809_T08GYM0101_0680
-	goto scr_seq_0809_T08GYM0101_05A5
+	gotoif ne, _059D
+	apply_movement obj_T08GYM0101_picnicgirl_2, _0680
+	goto _05A5
 
-scr_seq_0809_T08GYM0101_059D:
-	apply_movement 0, scr_seq_0809_T08GYM0101_06B4
-scr_seq_0809_T08GYM0101_05A5:
+_059D:
+	apply_movement obj_T08GYM0101_picnicgirl_2, _06B4
+_05A5:
 	wait_movement
-	npc_msg 15
+	npc_msg msg_0514_T08GYM0101_00015
 	closemsg
 	trainer_battle TRAINER_PICNICKER_CINDY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0809_T08GYM0101_05D4
+	gotoif eq, _05D4
 	settrainerflag TRAINER_PICNICKER_CINDY
-scr_seq_0809_T08GYM0101_05C9:
-	npc_msg 16
+_05C9:
+	npc_msg msg_0514_T08GYM0101_00016
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_05D4:
+_05D4:
 	white_out
 	releaseall
 	setflag FLAG_UNK_269
 	clearflag FLAG_UNK_26D
 	end
-
-scr_seq_0809_T08GYM0101_05E2:
 	.byte 0x00, 0x00
 
-scr_seq_0809_T08GYM0101_05E4:
+_05E4:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -435,7 +431,7 @@ scr_seq_0809_T08GYM0101_05E4:
 	step 2, 1
 	step_end
 
-scr_seq_0809_T08GYM0101_0604:
+_0604:
 	step 1, 1
 	step 2, 1
 	step 0, 1
@@ -444,7 +440,7 @@ scr_seq_0809_T08GYM0101_0604:
 	step 2, 1
 	step_end
 
-scr_seq_0809_T08GYM0101_0620:
+_0620:
 	step 2, 1
 	step 0, 1
 	step 3, 1
@@ -452,7 +448,7 @@ scr_seq_0809_T08GYM0101_0620:
 	step 2, 1
 	step_end
 
-scr_seq_0809_T08GYM0101_0638:
+_0638:
 	step 0, 1
 	step 3, 1
 	step 1, 1
@@ -463,7 +459,7 @@ scr_seq_0809_T08GYM0101_0638:
 	step 2, 1
 	step_end
 
-scr_seq_0809_T08GYM0101_065C:
+_065C:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -474,7 +470,7 @@ scr_seq_0809_T08GYM0101_065C:
 	step 0, 1
 	step_end
 
-scr_seq_0809_T08GYM0101_0680:
+_0680:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -482,7 +478,7 @@ scr_seq_0809_T08GYM0101_0680:
 	step 3, 1
 	step_end
 
-scr_seq_0809_T08GYM0101_0698:
+_0698:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -491,7 +487,7 @@ scr_seq_0809_T08GYM0101_0698:
 	step 1, 1
 	step_end
 
-scr_seq_0809_T08GYM0101_06B4:
+_06B4:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -500,20 +496,20 @@ scr_seq_0809_T08GYM0101_06B4:
 	step 1, 1
 	step 2, 1
 	step_end
-scr_seq_0809_T08GYM0101_06D4:
+scr_seq_T08GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 12, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0809_T08GYM0101_0778
-	npc_msg 0
+	gotoif eq, _0778
+	npc_msg msg_0514_T08GYM0101_00000
 	closemsg
 	setvar VAR_TEMP_x400B, 111
 	trainer_battle TRAINER_LEADER_JANINE_JANINE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0809_T08GYM0101_078E
+	gotoif eq, _078E
 	setvar VAR_TEMP_x400B, 0
 	give_badge 12
 	addvar VAR_UNK_4135, 1
@@ -522,76 +518,76 @@ scr_seq_0809_T08GYM0101_06D4:
 	settrainerflag TRAINER_CAMPER_BARRY
 	settrainerflag TRAINER_LASS_LINDA
 	settrainerflag TRAINER_LASS_ALICE
-	npc_msg 1
+	npc_msg msg_0514_T08GYM0101_00001
 	buffer_players_name 0
-	npc_msg 2
+	npc_msg msg_0514_T08GYM0101_00002
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	npc_msg 3
-	goto scr_seq_0809_T08GYM0101_074F
+	npc_msg msg_0514_T08GYM0101_00003
+	goto _074F
 
-scr_seq_0809_T08GYM0101_074F:
+_074F:
 	setvar VAR_SPECIAL_x8004, 411
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0809_T08GYM0101_0794
+	gotoif eq, _0794
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_12D
-scr_seq_0809_T08GYM0101_0778:
+_0778:
 	checkflag FLAG_UNK_12D
-	gotoif FALSE, scr_seq_0809_T08GYM0101_074F
-	npc_msg 4
+	gotoif FALSE, _074F
+	npc_msg msg_0514_T08GYM0101_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_078E:
+_078E:
 	white_out
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_0794:
+_0794:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_079E:
+scr_seq_T08GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 12, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0809_T08GYM0101_07C4
-	npc_msg 5
+	gotoif eq, _07C4
+	npc_msg msg_0514_T08GYM0101_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_07C4:
-	npc_msg 6
+_07C4:
+	npc_msg msg_0514_T08GYM0101_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0809_T08GYM0101_07CF:
+scr_seq_T08GYM0101_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 12, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0809_T08GYM0101_07F6
-	npc_msg 17
-	goto scr_seq_0809_T08GYM0101_07F9
+	gotoif ne, _07F6
+	npc_msg msg_0514_T08GYM0101_00017
+	goto _07F9
 
-scr_seq_0809_T08GYM0101_07F6:
-	npc_msg 18
-scr_seq_0809_T08GYM0101_07F9:
+_07F6:
+	npc_msg msg_0514_T08GYM0101_00018
+_07F9:
 	waitbutton
 	closemsg
 	releaseall

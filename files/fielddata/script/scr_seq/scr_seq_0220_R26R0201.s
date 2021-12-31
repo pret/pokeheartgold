@@ -1,33 +1,35 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R26R0201.h"
+#include "msgdata/msg/msg_0367_R26R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0220_R26R0201_0006 ; 000
+	scrdef scr_seq_R26R0201_000
 	scrdef_end
 
-scr_seq_0220_R26R0201_0006:
+scr_seq_R26R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0367_R26R0201_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0220_R26R0201_0049
-	npc_msg 1
+	gotoif eq, _0049
+	npc_msg msg_0367_R26R0201_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0220_R26R0201_0049
-	npc_msg 2
+	gotoif eq, _0049
+	npc_msg msg_0367_R26R0201_00002
 	waitbutton
 	closemsg
-scr_seq_0220_R26R0201_0049:
+_0049:
 	releaseall
 	end
 	.balign 4, 0

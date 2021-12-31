@@ -1,0 +1,70 @@
+#ifndef SCR_SEQ_D32_H_
+#define SCR_SEQ_D32_H_
+
+#define _EV_scr_seq_D32_000                  0
+#define _EV_scr_seq_D32_001                  1
+#define _EV_scr_seq_D32_002                  2
+#define _EV_scr_seq_D32_003                  3
+#define _EV_scr_seq_D32_004                  4
+#define _EV_scr_seq_D32_005                  5
+#define _EV_scr_seq_D32_006                  6
+#define _EV_scr_seq_D32_007                  7
+#define _EV_scr_seq_D32_008                  8
+#define _EV_scr_seq_D32_009                  9
+#define _EV_scr_seq_D32_010                 10
+#define _EV_scr_seq_D32_011                 11
+#define _EV_scr_seq_D32_012                 12
+#define _EV_scr_seq_D32_013                 13
+#define _EV_scr_seq_D32_014                 14
+#define _EV_scr_seq_D32_015                 15
+#define _EV_scr_seq_D32_016                 16
+#define _EV_scr_seq_D32_017                 17
+#define _EV_scr_seq_D32_018                 18
+#define _EV_scr_seq_D32_019                 19
+#define _EV_scr_seq_D32_020                 20
+#define _EV_scr_seq_D32_021                 21
+#define _EV_scr_seq_D32_022                 22
+#define _EV_scr_seq_D32_023                 23
+#define _EV_scr_seq_D32_024                 24
+#define _EV_scr_seq_D32_025                 25
+#define _EV_scr_seq_D32_026                 26
+#define _EV_scr_seq_D32_027                 27
+#define _EV_scr_seq_D32_028                 28
+#define _EV_scr_seq_D32_029                 29
+#define _EV_scr_seq_D32_030                 30
+#define _EV_scr_seq_D32_031                 31
+#define _EV_scr_seq_D32_032                 32
+#define _EV_scr_seq_D32_033                 33
+#define _EV_scr_seq_D32_034                 34
+#define _EV_scr_seq_D32_035                 35
+#define _EV_scr_seq_D32_036                 36
+#define _EV_scr_seq_D32_037                 37
+#define _EV_scr_seq_D32_038                 38
+
+#define obj_D32_gswoman1                     0
+#define obj_D32_gsoldwoman1                  1
+#define obj_D32_gsoldman1                    2
+#define obj_D32_gsbabygirl1                  3
+#define obj_D32_gsboy1                       4
+#define obj_D32_gsbabyboy1                   5
+#define obj_D32_idol                         6
+#define obj_D32_badman                       7
+#define obj_D32_gsfighter                    8
+#define obj_D32_bfsw2                        9
+#define obj_D32_bfsw2_2                     10
+#define obj_D32_bfsw2_3                     11
+#define obj_D32_gsmiddleman1                12
+#define obj_D32_gsbigman                    13
+#define obj_D32_gsgentleman                 14
+#define obj_D32_gsbabyboy1_2                15
+#define obj_D32_gsman2                      16
+#define obj_D32_cowgirl                     17
+#define obj_D32_fishing_2                   18
+#define obj_D32_picnicgirl_2                19
+#define obj_D32_gswoman1_2                  20
+#define obj_D32_gswoman1_3                  21
+#define obj_D32_gsman3                      22
+#define obj_D32_fishing_2_2                 23
+#define obj_D32_gsmiddleman1_2              24
+
+#endif //SCR_SEQ_D32_H_

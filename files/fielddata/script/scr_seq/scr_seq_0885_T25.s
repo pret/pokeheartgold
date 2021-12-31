@@ -1,698 +1,696 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25.h"
+#include "msgdata/msg/msg_0581_T25.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0885_T25_011C ; 000
-	scrdef scr_seq_0885_T25_0154 ; 001
-	scrdef scr_seq_0885_T25_017D ; 002
-	scrdef scr_seq_0885_T25_01A6 ; 003
-	scrdef scr_seq_0885_T25_01B9 ; 004
-	scrdef scr_seq_0885_T25_01E8 ; 005
-	scrdef scr_seq_0885_T25_0220 ; 006
-	scrdef scr_seq_0885_T25_0258 ; 007
-	scrdef scr_seq_0885_T25_0310 ; 008
-	scrdef scr_seq_0885_T25_0339 ; 009
-	scrdef scr_seq_0885_T25_0362 ; 010
-	scrdef scr_seq_0885_T25_038B ; 011
-	scrdef scr_seq_0885_T25_03B4 ; 012
-	scrdef scr_seq_0885_T25_03DD ; 013
-	scrdef scr_seq_0885_T25_043B ; 014
-	scrdef scr_seq_0885_T25_044E ; 015
-	scrdef scr_seq_0885_T25_0461 ; 016
-	scrdef scr_seq_0885_T25_048A ; 017
-	scrdef scr_seq_0885_T25_0086 ; 018
-	scrdef scr_seq_0885_T25_07F0 ; 019
-	scrdef scr_seq_0885_T25_0805 ; 020
-	scrdef scr_seq_0885_T25_081A ; 021
-	scrdef scr_seq_0885_T25_082F ; 022
-	scrdef scr_seq_0885_T25_0846 ; 023
-	scrdef scr_seq_0885_T25_085B ; 024
-	scrdef scr_seq_0885_T25_0870 ; 025
-	scrdef scr_seq_0885_T25_0885 ; 026
-	scrdef scr_seq_0885_T25_089A ; 027
-	scrdef scr_seq_0885_T25_08AF ; 028
-	scrdef scr_seq_0885_T25_08C4 ; 029
-	scrdef scr_seq_0885_T25_0406 ; 030
-	scrdef scr_seq_0885_T25_042A ; 031
-	scrdef scr_seq_0885_T25_0417 ; 032
+	scrdef scr_seq_T25_000
+	scrdef scr_seq_T25_001
+	scrdef scr_seq_T25_002
+	scrdef scr_seq_T25_003
+	scrdef scr_seq_T25_004
+	scrdef scr_seq_T25_005
+	scrdef scr_seq_T25_006
+	scrdef scr_seq_T25_007
+	scrdef scr_seq_T25_008
+	scrdef scr_seq_T25_009
+	scrdef scr_seq_T25_010
+	scrdef scr_seq_T25_011
+	scrdef scr_seq_T25_012
+	scrdef scr_seq_T25_013
+	scrdef scr_seq_T25_014
+	scrdef scr_seq_T25_015
+	scrdef scr_seq_T25_016
+	scrdef scr_seq_T25_017
+	scrdef scr_seq_T25_018
+	scrdef scr_seq_T25_019
+	scrdef scr_seq_T25_020
+	scrdef scr_seq_T25_021
+	scrdef scr_seq_T25_022
+	scrdef scr_seq_T25_023
+	scrdef scr_seq_T25_024
+	scrdef scr_seq_T25_025
+	scrdef scr_seq_T25_026
+	scrdef scr_seq_T25_027
+	scrdef scr_seq_T25_028
+	scrdef scr_seq_T25_029
+	scrdef scr_seq_T25_030
+	scrdef scr_seq_T25_031
+	scrdef scr_seq_T25_032
 	scrdef_end
 
-scr_seq_0885_T25_0086:
+scr_seq_T25_018:
 	setflag FLAG_UNK_1B9
 	setflag FLAG_UNK_1BA
 	setflag FLAG_UNK_1B7
 	setflag FLAG_UNK_1BB
 	setflag FLAG_UNK_1B8
 	comparevartovalue VAR_UNK_4077, 0
-	gotoif ne, scr_seq_0885_T25_00B5
+	gotoif ne, _00B5
 	clearflag FLAG_UNK_1B8
 	clearflag FLAG_UNK_1B9
-	goto scr_seq_0885_T25_011A
+	goto _011A
 
-scr_seq_0885_T25_00B5:
+_00B5:
 	comparevartovalue VAR_UNK_4077, 1
-	gotoif ne, scr_seq_0885_T25_00D4
+	gotoif ne, _00D4
 	clearflag FLAG_UNK_1B8
 	clearflag FLAG_UNK_1B9
 	clearflag FLAG_UNK_1BA
-	goto scr_seq_0885_T25_011A
+	goto _011A
 
-scr_seq_0885_T25_00D4:
+_00D4:
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_00F7
+	gotoif ne, _00F7
 	clearflag FLAG_UNK_1B9
 	clearflag FLAG_UNK_1BA
 	clearflag FLAG_UNK_1B7
 	clearflag FLAG_UNK_1BB
-	goto scr_seq_0885_T25_011A
+	goto _011A
 
-scr_seq_0885_T25_00F7:
+_00F7:
 	comparevartovalue VAR_UNK_4077, 5
-	gotoif ne, scr_seq_0885_T25_010E
+	gotoif ne, _010E
 	clearflag FLAG_UNK_1B8
-	goto scr_seq_0885_T25_011A
+	goto _011A
 
-scr_seq_0885_T25_010E:
+_010E:
 	clearflag FLAG_UNK_1B9
 	clearflag FLAG_UNK_1BA
 	clearflag FLAG_UNK_1B7
-scr_seq_0885_T25_011A:
+_011A:
 	end
 
-scr_seq_0885_T25_011C:
+scr_seq_T25_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40DA, 1
-	gotoif ne, scr_seq_0885_T25_013E
+	gotoif ne, _013E
 	comparevartovalue VAR_UNK_40DB, 0
-	gotoif eq, scr_seq_0885_T25_0149
-scr_seq_0885_T25_013E:
-	npc_msg 9
+	gotoif eq, _0149
+_013E:
+	npc_msg msg_0581_T25_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0149:
-	npc_msg 10
+_0149:
+	npc_msg msg_0581_T25_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0154:
+scr_seq_T25_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 2
-	gotoif ge, scr_seq_0885_T25_0172
-	npc_msg 4
-	goto scr_seq_0885_T25_0175
+	gotoif ge, _0172
+	npc_msg msg_0581_T25_00004
+	goto _0175
 
-scr_seq_0885_T25_0172:
-	npc_msg 5
-scr_seq_0885_T25_0175:
+_0172:
+	npc_msg msg_0581_T25_00005
+_0175:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_017D:
+scr_seq_T25_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_08A
-	gotoif TRUE, scr_seq_0885_T25_019B
-	npc_msg 6
+	gotoif TRUE, _019B
+	npc_msg msg_0581_T25_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_019B:
-	npc_msg 7
+_019B:
+	npc_msg msg_0581_T25_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_01A6:
+scr_seq_T25_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0581_T25_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_01B9:
+scr_seq_T25_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0885_T25_01DD
-	npc_msg 2
+	gotoif eq, _01DD
+	npc_msg msg_0581_T25_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_01DD:
-	npc_msg 3
+_01DD:
+	npc_msg msg_0581_T25_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_01E8:
+scr_seq_T25_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40DA, 1
-	gotoif ne, scr_seq_0885_T25_020A
+	gotoif ne, _020A
 	comparevartovalue VAR_UNK_40DB, 0
-	gotoif eq, scr_seq_0885_T25_0215
-scr_seq_0885_T25_020A:
-	npc_msg 0
+	gotoif eq, _0215
+_020A:
+	npc_msg msg_0581_T25_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0215:
-	npc_msg 1
+_0215:
+	npc_msg msg_0581_T25_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0220:
+scr_seq_T25_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40DA, 1
-	gotoif ne, scr_seq_0885_T25_0242
+	gotoif ne, _0242
 	comparevartovalue VAR_UNK_40DB, 0
-	gotoif eq, scr_seq_0885_T25_024D
-scr_seq_0885_T25_0242:
-	npc_msg 11
+	gotoif eq, _024D
+_0242:
+	npc_msg msg_0581_T25_00011
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_024D:
-	npc_msg 12
+_024D:
+	npc_msg msg_0581_T25_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0258:
+scr_seq_T25_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 13
+	npc_msg msg_0581_T25_00013
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0885_T25_0284
-	apply_movement 4, scr_seq_0885_T25_02F8
+	gotoif ne, _0284
+	apply_movement obj_T25_rocketm, _02F8
 	wait_movement
-	goto scr_seq_0885_T25_02B8
+	goto _02B8
 
-scr_seq_0885_T25_0284:
+_0284:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0885_T25_02A1
-	apply_movement 4, scr_seq_0885_T25_0308
+	gotoif ne, _02A1
+	apply_movement obj_T25_rocketm, _0308
 	wait_movement
-	goto scr_seq_0885_T25_02B8
+	goto _02B8
 
-scr_seq_0885_T25_02A1:
+_02A1:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0885_T25_02B8
-	apply_movement 4, scr_seq_0885_T25_0300
+	gotoif ne, _02B8
+	apply_movement obj_T25_rocketm, _0300
 	wait_movement
-scr_seq_0885_T25_02B8:
+_02B8:
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_02CE
-	npc_msg 15
-	goto scr_seq_0885_T25_02D1
+	gotoif ne, _02CE
+	npc_msg msg_0581_T25_00015
+	goto _02D1
 
-scr_seq_0885_T25_02CE:
-	npc_msg 14
-scr_seq_0885_T25_02D1:
+_02CE:
+	npc_msg msg_0581_T25_00014
+_02D1:
 	closemsg
 	comparevartovalue VAR_TEMP_x4001, 350
-	gotoif eq, scr_seq_0885_T25_02EA
-	apply_movement 4, scr_seq_0885_T25_02F0
+	gotoif eq, _02EA
+	apply_movement obj_T25_rocketm, _02F0
 	wait_movement
-scr_seq_0885_T25_02EA:
+_02EA:
 	releaseall
 	end
-
-scr_seq_0885_T25_02EE:
 	.byte 0x00, 0x00
 
-scr_seq_0885_T25_02F0:
+_02F0:
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_02F8:
+_02F8:
 	step 33, 1
 	step_end
 
-scr_seq_0885_T25_0300:
+_0300:
 	step 34, 1
 	step_end
 
-scr_seq_0885_T25_0308:
+_0308:
 	step 35, 1
 	step_end
-scr_seq_0885_T25_0310:
+scr_seq_T25_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_032E
-	npc_msg 17
-	goto scr_seq_0885_T25_0331
+	gotoif ne, _032E
+	npc_msg msg_0581_T25_00017
+	goto _0331
 
-scr_seq_0885_T25_032E:
-	npc_msg 16
-scr_seq_0885_T25_0331:
+_032E:
+	npc_msg msg_0581_T25_00016
+_0331:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0339:
+scr_seq_T25_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_0357
-	npc_msg 19
-	goto scr_seq_0885_T25_035A
+	gotoif ne, _0357
+	npc_msg msg_0581_T25_00019
+	goto _035A
 
-scr_seq_0885_T25_0357:
-	npc_msg 18
-scr_seq_0885_T25_035A:
+_0357:
+	npc_msg msg_0581_T25_00018
+_035A:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0362:
+scr_seq_T25_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_0380
-	npc_msg 21
-	goto scr_seq_0885_T25_0383
+	gotoif ne, _0380
+	npc_msg msg_0581_T25_00021
+	goto _0383
 
-scr_seq_0885_T25_0380:
-	npc_msg 20
-scr_seq_0885_T25_0383:
+_0380:
+	npc_msg msg_0581_T25_00020
+_0383:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_038B:
+scr_seq_T25_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_03A9
-	npc_msg 23
-	goto scr_seq_0885_T25_03AC
+	gotoif ne, _03A9
+	npc_msg msg_0581_T25_00023
+	goto _03AC
 
-scr_seq_0885_T25_03A9:
-	npc_msg 22
-scr_seq_0885_T25_03AC:
+_03A9:
+	npc_msg msg_0581_T25_00022
+_03AC:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_03B4:
+scr_seq_T25_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_03D2
-	npc_msg 25
-	goto scr_seq_0885_T25_03D5
+	gotoif ne, _03D2
+	npc_msg msg_0581_T25_00025
+	goto _03D5
 
-scr_seq_0885_T25_03D2:
-	npc_msg 24
-scr_seq_0885_T25_03D5:
+_03D2:
+	npc_msg msg_0581_T25_00024
+_03D5:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_03DD:
+scr_seq_T25_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_03FB
-	npc_msg 30
-	goto scr_seq_0885_T25_03FE
+	gotoif ne, _03FB
+	npc_msg msg_0581_T25_00030
+	goto _03FE
 
-scr_seq_0885_T25_03FB:
-	npc_msg 29
-scr_seq_0885_T25_03FE:
+_03FB:
+	npc_msg msg_0581_T25_00029
+_03FE:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0406:
+scr_seq_T25_030:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 26
+	npc_msg msg_0581_T25_00026
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0417:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg 28
-	waitbutton
-	closemsg
-	releaseall
-	end
-
-scr_seq_0885_T25_042A:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	npc_msg 27
-	waitbutton
-	closemsg
-	releaseall
-	end
-
-scr_seq_0885_T25_043B:
+scr_seq_T25_032:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 31
+	npc_msg msg_0581_T25_00028
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_044E:
+scr_seq_T25_031:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	npc_msg msg_0581_T25_00027
+	waitbutton
+	closemsg
+	releaseall
+	end
+
+scr_seq_T25_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 32
+	npc_msg msg_0581_T25_00031
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_0461:
+scr_seq_T25_015:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg msg_0581_T25_00032
+	waitbutton
+	closemsg
+	releaseall
+	end
+
+scr_seq_T25_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0885_T25_047F
-	npc_msg 34
-	goto scr_seq_0885_T25_0482
+	gotoif ne, _047F
+	npc_msg msg_0581_T25_00034
+	goto _0482
 
-scr_seq_0885_T25_047F:
-	npc_msg 33
-scr_seq_0885_T25_0482:
+_047F:
+	npc_msg msg_0581_T25_00033
+_0482:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0885_T25_048A:
+scr_seq_T25_017:
 	scrcmd_609
 	lockall
-	apply_movement 15, scr_seq_0885_T25_06E4
+	apply_movement obj_T25_rocketm_9, _06E4
 	wait_movement
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 354
-	gotoif ne, scr_seq_0885_T25_04B9
-	apply_movement 15, scr_seq_0885_T25_06EC
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _04B9
+	apply_movement obj_T25_rocketm_9, _06EC
+	goto _05A6
 
-scr_seq_0885_T25_04B9:
+_04B9:
 	comparevartovalue VAR_TEMP_x4000, 355
-	gotoif ne, scr_seq_0885_T25_04D4
-	apply_movement 15, scr_seq_0885_T25_06F4
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _04D4
+	apply_movement obj_T25_rocketm_9, _06F4
+	goto _05A6
 
-scr_seq_0885_T25_04D4:
+_04D4:
 	comparevartovalue VAR_TEMP_x4000, 356
-	gotoif ne, scr_seq_0885_T25_04EF
-	apply_movement 15, scr_seq_0885_T25_06FC
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _04EF
+	apply_movement obj_T25_rocketm_9, _06FC
+	goto _05A6
 
-scr_seq_0885_T25_04EF:
+_04EF:
 	comparevartovalue VAR_TEMP_x4000, 357
-	gotoif ne, scr_seq_0885_T25_050A
-	apply_movement 15, scr_seq_0885_T25_0704
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _050A
+	apply_movement obj_T25_rocketm_9, _0704
+	goto _05A6
 
-scr_seq_0885_T25_050A:
+_050A:
 	comparevartovalue VAR_TEMP_x4000, 358
-	gotoif ne, scr_seq_0885_T25_0525
-	apply_movement 15, scr_seq_0885_T25_070C
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _0525
+	apply_movement obj_T25_rocketm_9, _070C
+	goto _05A6
 
-scr_seq_0885_T25_0525:
+_0525:
 	comparevartovalue VAR_TEMP_x4000, 359
-	gotoif ne, scr_seq_0885_T25_0540
-	apply_movement 15, scr_seq_0885_T25_0714
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _0540
+	apply_movement obj_T25_rocketm_9, _0714
+	goto _05A6
 
-scr_seq_0885_T25_0540:
+_0540:
 	comparevartovalue VAR_TEMP_x4000, 360
-	gotoif ne, scr_seq_0885_T25_055B
-	apply_movement 15, scr_seq_0885_T25_071C
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _055B
+	apply_movement obj_T25_rocketm_9, _071C
+	goto _05A6
 
-scr_seq_0885_T25_055B:
+_055B:
 	comparevartovalue VAR_TEMP_x4000, 361
-	gotoif ne, scr_seq_0885_T25_0576
-	apply_movement 15, scr_seq_0885_T25_0724
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _0576
+	apply_movement obj_T25_rocketm_9, _0724
+	goto _05A6
 
-scr_seq_0885_T25_0576:
+_0576:
 	comparevartovalue VAR_TEMP_x4000, 362
-	gotoif ne, scr_seq_0885_T25_0591
-	apply_movement 15, scr_seq_0885_T25_072C
-	goto scr_seq_0885_T25_05A6
+	gotoif ne, _0591
+	apply_movement obj_T25_rocketm_9, _072C
+	goto _05A6
 
-scr_seq_0885_T25_0591:
+_0591:
 	comparevartovalue VAR_TEMP_x4000, 363
-	gotoif ne, scr_seq_0885_T25_05A6
-	apply_movement 15, scr_seq_0885_T25_0734
-scr_seq_0885_T25_05A6:
+	gotoif ne, _05A6
+	apply_movement obj_T25_rocketm_9, _0734
+_05A6:
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	apply_movement 15, scr_seq_0885_T25_073C
-	apply_movement 255, scr_seq_0885_T25_0744
+	apply_movement obj_T25_rocketm_9, _073C
+	apply_movement obj_player, _0744
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	npc_msg 35
+	npc_msg msg_0581_T25_00035
 	closemsg
 	comparevartovalue VAR_TEMP_x4000, 354
-	gotoif ne, scr_seq_0885_T25_05EE
-	apply_movement 15, scr_seq_0885_T25_0754
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _05EE
+	apply_movement obj_T25_rocketm_9, _0754
+	goto _06DB
 
-scr_seq_0885_T25_05EE:
+_05EE:
 	comparevartovalue VAR_TEMP_x4000, 355
-	gotoif ne, scr_seq_0885_T25_0609
-	apply_movement 15, scr_seq_0885_T25_0764
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _0609
+	apply_movement obj_T25_rocketm_9, _0764
+	goto _06DB
 
-scr_seq_0885_T25_0609:
+_0609:
 	comparevartovalue VAR_TEMP_x4000, 356
-	gotoif ne, scr_seq_0885_T25_0624
-	apply_movement 15, scr_seq_0885_T25_0774
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _0624
+	apply_movement obj_T25_rocketm_9, _0774
+	goto _06DB
 
-scr_seq_0885_T25_0624:
+_0624:
 	comparevartovalue VAR_TEMP_x4000, 357
-	gotoif ne, scr_seq_0885_T25_063F
-	apply_movement 15, scr_seq_0885_T25_0784
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _063F
+	apply_movement obj_T25_rocketm_9, _0784
+	goto _06DB
 
-scr_seq_0885_T25_063F:
+_063F:
 	comparevartovalue VAR_TEMP_x4000, 358
-	gotoif ne, scr_seq_0885_T25_065A
-	apply_movement 15, scr_seq_0885_T25_0794
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _065A
+	apply_movement obj_T25_rocketm_9, _0794
+	goto _06DB
 
-scr_seq_0885_T25_065A:
+_065A:
 	comparevartovalue VAR_TEMP_x4000, 359
-	gotoif ne, scr_seq_0885_T25_0675
-	apply_movement 15, scr_seq_0885_T25_07A4
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _0675
+	apply_movement obj_T25_rocketm_9, _07A4
+	goto _06DB
 
-scr_seq_0885_T25_0675:
+_0675:
 	comparevartovalue VAR_TEMP_x4000, 360
-	gotoif ne, scr_seq_0885_T25_0690
-	apply_movement 15, scr_seq_0885_T25_07B0
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _0690
+	apply_movement obj_T25_rocketm_9, _07B0
+	goto _06DB
 
-scr_seq_0885_T25_0690:
+_0690:
 	comparevartovalue VAR_TEMP_x4000, 361
-	gotoif ne, scr_seq_0885_T25_06AB
-	apply_movement 15, scr_seq_0885_T25_07C0
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _06AB
+	apply_movement obj_T25_rocketm_9, _07C0
+	goto _06DB
 
-scr_seq_0885_T25_06AB:
+_06AB:
 	comparevartovalue VAR_TEMP_x4000, 362
-	gotoif ne, scr_seq_0885_T25_06C6
-	apply_movement 15, scr_seq_0885_T25_07D0
-	goto scr_seq_0885_T25_06DB
+	gotoif ne, _06C6
+	apply_movement obj_T25_rocketm_9, _07D0
+	goto _06DB
 
-scr_seq_0885_T25_06C6:
+_06C6:
 	comparevartovalue VAR_TEMP_x4000, 363
-	gotoif ne, scr_seq_0885_T25_06DB
-	apply_movement 15, scr_seq_0885_T25_07E0
-scr_seq_0885_T25_06DB:
+	gotoif ne, _06DB
+	apply_movement obj_T25_rocketm_9, _07E0
+_06DB:
 	wait_movement
 	releaseall
 	end
-
-scr_seq_0885_T25_06E1:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0885_T25_06E4:
+_06E4:
 	step 75, 1
 	step_end
 
-scr_seq_0885_T25_06EC:
+_06EC:
 	step 14, 5
 	step_end
 
-scr_seq_0885_T25_06F4:
+_06F4:
 	step 14, 4
 	step_end
 
-scr_seq_0885_T25_06FC:
+_06FC:
 	step 14, 3
 	step_end
 
-scr_seq_0885_T25_0704:
+_0704:
 	step 14, 2
 	step_end
 
-scr_seq_0885_T25_070C:
+_070C:
 	step 14, 1
 	step_end
 
-scr_seq_0885_T25_0714:
+_0714:
 	step 60, 1
 	step_end
 
-scr_seq_0885_T25_071C:
+_071C:
 	step 15, 1
 	step_end
 
-scr_seq_0885_T25_0724:
+_0724:
 	step 15, 2
 	step_end
 
-scr_seq_0885_T25_072C:
+_072C:
 	step 15, 3
 	step_end
 
-scr_seq_0885_T25_0734:
+_0734:
 	step 15, 4
 	step_end
 
-scr_seq_0885_T25_073C:
+_073C:
 	step 12, 1
 	step_end
 
-scr_seq_0885_T25_0744:
+_0744:
 	step 71, 1
 	step 12, 1
 	step 72, 1
 	step_end
 
-scr_seq_0885_T25_0754:
+_0754:
 	step 13, 1
 	step 15, 5
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_0764:
+_0764:
 	step 13, 1
 	step 15, 4
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_0774:
+_0774:
 	step 13, 1
 	step 15, 3
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_0784:
+_0784:
 	step 13, 1
 	step 15, 2
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_0794:
+_0794:
 	step 13, 1
 	step 15, 1
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_07A4:
+_07A4:
 	step 13, 1
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_07B0:
+_07B0:
 	step 13, 1
 	step 14, 1
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_07C0:
+_07C0:
 	step 13, 1
 	step 14, 2
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_07D0:
+_07D0:
 	step 13, 1
 	step 14, 3
 	step 32, 1
 	step_end
 
-scr_seq_0885_T25_07E0:
+_07E0:
 	step 13, 1
 	step 14, 4
 	step 32, 1
 	step_end
-scr_seq_0885_T25_07F0:
+scr_seq_T25_019:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -700,7 +698,7 @@ scr_seq_0885_T25_07F0:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_0805:
+scr_seq_T25_020:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -708,7 +706,7 @@ scr_seq_0885_T25_0805:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_081A:
+scr_seq_T25_021:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -716,7 +714,7 @@ scr_seq_0885_T25_081A:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_082F:
+scr_seq_T25_022:
 	scrcmd_055 39, 0, 16, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -724,7 +722,7 @@ scr_seq_0885_T25_082F:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_0846:
+scr_seq_T25_023:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -732,7 +730,7 @@ scr_seq_0885_T25_0846:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_085B:
+scr_seq_T25_024:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -740,7 +738,7 @@ scr_seq_0885_T25_085B:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_0870:
+scr_seq_T25_025:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -748,7 +746,7 @@ scr_seq_0885_T25_0870:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_0885:
+scr_seq_T25_026:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -756,7 +754,7 @@ scr_seq_0885_T25_0885:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_089A:
+scr_seq_T25_027:
 	scrcmd_056 3, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -764,7 +762,7 @@ scr_seq_0885_T25_089A:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_08AF:
+scr_seq_T25_028:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -772,7 +770,7 @@ scr_seq_0885_T25_08AF:
 	callstd 2000
 	end
 
-scr_seq_0885_T25_08C4:
+scr_seq_T25_029:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

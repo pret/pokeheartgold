@@ -1,65 +1,67 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T25PC0101.h"
+#include "msgdata/msg/msg_0583_T25PC0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0887_T25PC0101_0012 ; 000
-	scrdef scr_seq_0887_T25PC0101_0070 ; 001
-	scrdef scr_seq_0887_T25PC0101_0047 ; 002
-	scrdef scr_seq_0887_T25PC0101_001E ; 003
+	scrdef scr_seq_T25PC0101_000
+	scrdef scr_seq_T25PC0101_001
+	scrdef scr_seq_T25PC0101_002
+	scrdef scr_seq_T25PC0101_003
 	scrdef_end
 
-scr_seq_0887_T25PC0101_0012:
+scr_seq_T25PC0101_000:
 	setvar VAR_SPECIAL_x8007, 0
 	callstd std_nurse_joy
 	end
 
-scr_seq_0887_T25PC0101_001E:
+scr_seq_T25PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0887_T25PC0101_003C
-	npc_msg 3
-	goto scr_seq_0887_T25PC0101_003F
+	gotoif ne, _003C
+	npc_msg msg_0583_T25PC0101_00003
+	goto _003F
 
-scr_seq_0887_T25PC0101_003C:
-	npc_msg 2
-scr_seq_0887_T25PC0101_003F:
+_003C:
+	npc_msg msg_0583_T25PC0101_00002
+_003F:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0887_T25PC0101_0047:
+scr_seq_T25PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0887_T25PC0101_0065
-	npc_msg 5
-	goto scr_seq_0887_T25PC0101_0068
+	gotoif ne, _0065
+	npc_msg msg_0583_T25PC0101_00005
+	goto _0068
 
-scr_seq_0887_T25PC0101_0065:
-	npc_msg 4
-scr_seq_0887_T25PC0101_0068:
+_0065:
+	npc_msg msg_0583_T25PC0101_00004
+_0068:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0887_T25PC0101_0070:
+scr_seq_T25PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, scr_seq_0887_T25PC0101_008E
-	npc_msg 1
-	goto scr_seq_0887_T25PC0101_0091
+	gotoif ne, _008E
+	npc_msg msg_0583_T25PC0101_00001
+	goto _0091
 
-scr_seq_0887_T25PC0101_008E:
-	npc_msg 0
-scr_seq_0887_T25PC0101_0091:
+_008E:
+	npc_msg msg_0583_T25PC0101_00000
+_0091:
 	waitbutton
 	closemsg
 	releaseall

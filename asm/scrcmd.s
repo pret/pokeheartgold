@@ -95,8 +95,8 @@ gScriptCmdTable:
 	.word ScrCmd_SetOrCopyVar                           ; 043
 	.word ScrCmd_NonNPCMsg                              ; 044
 	.word ScrCmd_NPCMsg                                 ; 045
-	.word ScrCmd_046                                    ; 046
-	.word ScrCmd_047                                    ; 047
+	.word ScrCmd_NonNpcMsgVar                                    ; 046
+	.word ScrCmd_NpcMsgVar                                    ; 047
 	.word ScrCmd_048                                    ; 048
 	.word ScrCmd_049                                    ; 049
 	.word ScrCmd_WaitButton                             ; 050

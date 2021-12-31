@@ -1,56 +1,58 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R10PC0101.h"
+#include "msgdata/msg/msg_0342_R10PC0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0192_R10PC0101_0012 ; 000
-	scrdef scr_seq_0192_R10PC0101_001E ; 001
-	scrdef scr_seq_0192_R10PC0101_0031 ; 002
-	scrdef scr_seq_0192_R10PC0101_0062 ; 003
+	scrdef scr_seq_R10PC0101_000
+	scrdef scr_seq_R10PC0101_001
+	scrdef scr_seq_R10PC0101_002
+	scrdef scr_seq_R10PC0101_003
 	scrdef_end
 
-scr_seq_0192_R10PC0101_0012:
+scr_seq_R10PC0101_000:
 	setvar VAR_SPECIAL_x8007, 0
 	callstd std_nurse_joy
 	end
 
-scr_seq_0192_R10PC0101_001E:
+scr_seq_R10PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0342_R10PC0101_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0192_R10PC0101_0031:
+scr_seq_R10PC0101_002:
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0192_R10PC0101_004F
+	gotoif TRUE, _004F
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0342_R10PC0101_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0192_R10PC0101_004F:
+_004F:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0342_R10PC0101_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0192_R10PC0101_0062:
+scr_seq_R10PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0342_R10PC0101_00003
 	waitbutton
 	closemsg
 	releaseall

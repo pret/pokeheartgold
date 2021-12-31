@@ -1,184 +1,186 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0144.h"
+#include "msgdata/msg/msg_0209.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0144_0012 ; 000
-	scrdef scr_seq_0144_00B4 ; 001
-	scrdef scr_seq_0144_018C ; 002
-	scrdef scr_seq_0144_0060 ; 003
+	scrdef scr_seq_0144_000
+	scrdef scr_seq_0144_001
+	scrdef scr_seq_0144_002
+	scrdef scr_seq_0144_003
 	scrdef_end
 
-scr_seq_0144_0012:
+scr_seq_0144_000:
 	scrcmd_489 0
 	scrcmd_813 16384
 	scrcmd_490 16384
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0144_0035
+	gotoif ne, _0035
 	setflag FLAG_UNK_2A8
-	goto scr_seq_0144_0039
+	goto _0039
 
-scr_seq_0144_0035:
+_0035:
 	clearflag FLAG_UNK_2A8
-scr_seq_0144_0039:
+_0039:
 	scrcmd_489 1, VAR_UNK_4138
 	comparevartovalue VAR_UNK_4138, 0
-	gotoif ne, scr_seq_0144_0056
+	gotoif ne, _0056
 	setflag FLAG_UNK_2A7
-	goto scr_seq_0144_005A
+	goto _005A
 
-scr_seq_0144_0056:
+_0056:
 	clearflag FLAG_UNK_2A7
-scr_seq_0144_005A:
+_005A:
 	scrcmd_489 7
 	end
 
-scr_seq_0144_0060:
+scr_seq_0144_003:
 	scrcmd_489 0
 	scrcmd_813 16384
 	scrcmd_490 16384
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0144_0083
+	gotoif ne, _0083
 	setflag FLAG_UNK_2A8
-	goto scr_seq_0144_0087
+	goto _0087
 
-scr_seq_0144_0083:
+_0083:
 	clearflag FLAG_UNK_2A8
-scr_seq_0144_0087:
+_0087:
 	scrcmd_489 1, VAR_UNK_4138
 	comparevartovalue VAR_UNK_4138, 0
-	gotoif ne, scr_seq_0144_00A4
+	gotoif ne, _00A4
 	setflag FLAG_UNK_2A7
-	goto scr_seq_0144_00A8
+	goto _00A8
 
-scr_seq_0144_00A4:
+_00A4:
 	clearflag FLAG_UNK_2A7
-scr_seq_0144_00A8:
+_00A8:
 	setvar VAR_UNK_40E5, 2
 	scrcmd_489 7
 	end
 
-scr_seq_0144_00B4:
+scr_seq_0144_001:
 	scrcmd_489 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_489 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0144_016D
+	gotoif eq, _016D
 	scrcmd_379 VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0144_00FD
+	gotoif eq, _00FD
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0144_0109
-	goto scr_seq_0144_0115
+	gotoif eq, _0109
+	goto _0115
 
-scr_seq_0144_00FD:
+_00FD:
 	buffer_players_name 0
-	npc_msg 0
-	goto scr_seq_0144_0121
+	npc_msg msg_0209_00000
+	goto _0121
 
-scr_seq_0144_0109:
+_0109:
 	buffer_players_name 0
-	npc_msg 1
-	goto scr_seq_0144_0121
+	npc_msg msg_0209_00001
+	goto _0121
 
-scr_seq_0144_0115:
+_0115:
 	buffer_players_name 0
-	npc_msg 2
-	goto scr_seq_0144_0121
+	npc_msg msg_0209_00002
+	goto _0121
 
-scr_seq_0144_0121:
+_0121:
 	scrcmd_489 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0144_0157
+	gotoif eq, _0157
 	play_fanfare SEQ_ME_ITEM
 	scrcmd_489 5, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	wait_fanfare
-	npc_msg 20
+	npc_msg msg_0209_00020
 	waitbutton
 	scrcmd_489 4
-	goto scr_seq_0144_0182
+	goto _0182
 
-scr_seq_0144_0157:
+_0157:
 	scrcmd_489 6, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	waitbutton
-	goto scr_seq_0144_0178
+	goto _0178
 
-scr_seq_0144_016D:
-	npc_msg 3
+_016D:
+	npc_msg msg_0209_00003
 	waitbutton
-	goto scr_seq_0144_0178
+	goto _0178
 
-scr_seq_0144_0178:
+_0178:
 	closemsg
 	releaseall
 	scrcmd_489 7
 	end
 
-scr_seq_0144_0182:
+_0182:
 	closemsg
 	releaseall
 	scrcmd_489 8
 	end
 
-scr_seq_0144_018C:
+scr_seq_0144_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_813 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0144_0232
+	gotoif eq, _0232
 	scrcmd_379 VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0144_01CF
+	gotoif eq, _01CF
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0144_01DB
-	goto scr_seq_0144_01E7
+	gotoif eq, _01DB
+	goto _01E7
 
-scr_seq_0144_01CF:
+_01CF:
 	buffer_players_name 0
-	npc_msg 27
-	goto scr_seq_0144_01F3
+	npc_msg msg_0209_00027
+	goto _01F3
 
-scr_seq_0144_01DB:
+_01DB:
 	buffer_players_name 0
-	npc_msg 28
-	goto scr_seq_0144_01F3
+	npc_msg msg_0209_00028
+	goto _01F3
 
-scr_seq_0144_01E7:
+_01E7:
 	buffer_players_name 0
-	npc_msg 29
-	goto scr_seq_0144_01F3
+	npc_msg msg_0209_00029
+	goto _01F3
 
-scr_seq_0144_01F3:
+_01F3:
 	scrcmd_811 32772, 32773
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0144_0222
+	gotoif eq, _0222
 	callstd std_give_item_verbose
 	scrcmd_812
 	scrcmd_149 12
-	npc_msg 20
+	npc_msg msg_0209_00020
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0144_0222:
+_0222:
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg 5
+	npc_msg msg_0209_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0144_0232:
-	npc_msg 30
+_0232:
+	npc_msg msg_0209_00030
 	waitbutton
 	closemsg
 	releaseall

@@ -1,15 +1,17 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D37R0103.h"
+#include "msgdata/msg/msg_0118_D37R0103.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0095_D37R0103_037B ; 000
-	scrdef scr_seq_0095_D37R0103_03DC ; 001
-	scrdef scr_seq_0095_D37R0103_04EA ; 002
-	scrdef scr_seq_0095_D37R0103_0012 ; 003
+	scrdef scr_seq_D37R0103_000
+	scrdef scr_seq_D37R0103_001
+	scrdef scr_seq_D37R0103_002
+	scrdef scr_seq_D37R0103_003
 	scrdef_end
 
-scr_seq_0095_D37R0103_0012:
+scr_seq_D37R0103_003:
 	scrcmd_375 9
 	scrcmd_375 10
 	scrcmd_375 11
@@ -20,18 +22,18 @@ scr_seq_0095_D37R0103_0012:
 	scrcmd_375 16
 	scrcmd_375 17
 	checkflag FLAG_UNK_096
-	gotoif TRUE, scr_seq_0095_D37R0103_0059
+	gotoif TRUE, _0059
 	checkflag FLAG_UNK_097
-	gotoif TRUE, scr_seq_0095_D37R0103_01BE
+	gotoif TRUE, _01BE
 	checkflag FLAG_UNK_098
-	gotoif TRUE, scr_seq_0095_D37R0103_0207
+	gotoif TRUE, _0207
 	end
 
-scr_seq_0095_D37R0103_0059:
+_0059:
 	checkflag FLAG_UNK_097
-	gotoif TRUE, scr_seq_0095_D37R0103_00B3
+	gotoif TRUE, _00B3
 	checkflag FLAG_UNK_098
-	gotoif TRUE, scr_seq_0095_D37R0103_013E
+	gotoif TRUE, _013E
 	scrcmd_109 0, 9
 	move_person 1, 19, 0, 16, 1
 	move_person 7, 19, 0, 18, 0
@@ -40,9 +42,9 @@ scr_seq_0095_D37R0103_0059:
 	move_person 11, 20, 0, 18, 0
 	end
 
-scr_seq_0095_D37R0103_00B3:
+_00B3:
 	checkflag FLAG_UNK_098
-	gotoif TRUE, scr_seq_0095_D37R0103_02BF
+	gotoif TRUE, _02BF
 	scrcmd_109 0, 9
 	move_person 1, 19, 0, 16, 1
 	move_person 7, 19, 0, 18, 0
@@ -56,7 +58,7 @@ scr_seq_0095_D37R0103_00B3:
 	move_person 14, 2, 0, 14, 0
 	end
 
-scr_seq_0095_D37R0103_013E:
+_013E:
 	scrcmd_109 0, 9
 	move_person 1, 19, 0, 16, 1
 	move_person 7, 19, 0, 18, 0
@@ -70,9 +72,9 @@ scr_seq_0095_D37R0103_013E:
 	move_person 17, 9, 0, 18, 0
 	end
 
-scr_seq_0095_D37R0103_01BE:
+_01BE:
 	checkflag FLAG_UNK_098
-	gotoif TRUE, scr_seq_0095_D37R0103_0245
+	gotoif TRUE, _0245
 	move_person 2, 3, 0, 14, 2
 	move_person 6, 1, 0, 14, 0
 	move_person 12, 1, 0, 13, 0
@@ -80,7 +82,7 @@ scr_seq_0095_D37R0103_01BE:
 	move_person 14, 2, 0, 14, 0
 	end
 
-scr_seq_0095_D37R0103_0207:
+_0207:
 	move_person 3, 7, 0, 17, 3
 	move_person 5, 8, 0, 18, 0
 	move_person 15, 8, 0, 17, 0
@@ -88,7 +90,7 @@ scr_seq_0095_D37R0103_0207:
 	move_person 17, 9, 0, 18, 0
 	end
 
-scr_seq_0095_D37R0103_0245:
+_0245:
 	move_person 2, 3, 0, 14, 2
 	move_person 6, 1, 0, 14, 0
 	move_person 12, 1, 0, 13, 0
@@ -101,7 +103,7 @@ scr_seq_0095_D37R0103_0245:
 	move_person 17, 9, 0, 18, 0
 	end
 
-scr_seq_0095_D37R0103_02BF:
+_02BF:
 	scrcmd_109 0, 9
 	move_person 1, 19, 0, 16, 1
 	move_person 7, 19, 0, 18, 0
@@ -120,127 +122,121 @@ scr_seq_0095_D37R0103_02BF:
 	move_person 17, 9, 0, 18, 0
 	end
 
-scr_seq_0095_D37R0103_037B:
+scr_seq_D37R0103_000:
 	checkflag FLAG_UNK_096
-	gotoif TRUE, scr_seq_0095_D37R0103_03C9
+	gotoif TRUE, _03C9
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 0
+	npc_msg msg_0118_D37R0103_00000
 	closemsg
-	apply_movement 1, scr_seq_0095_D37R0103_0504
-	apply_movement 7, scr_seq_0095_D37R0103_0504
-	apply_movement 9, scr_seq_0095_D37R0103_0504
-	apply_movement 10, scr_seq_0095_D37R0103_0504
-	apply_movement 11, scr_seq_0095_D37R0103_0504
+	apply_movement obj_D37R0103_tsure_poke_593, _0504
+	apply_movement obj_D37R0103_babyboy1_5_3, _0504
+	apply_movement obj_D37R0103_stop, _0504
+	apply_movement obj_D37R0103_stop_2, _0504
+	apply_movement obj_D37R0103_stop_3, _0504
 	wait_movement
 	setflag FLAG_UNK_096
 	scrcmd_109 0, 9
 	releaseall
 	end
 
-scr_seq_0095_D37R0103_03C9:
+_03C9:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0118_D37R0103_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0095_D37R0103_03DC:
+scr_seq_D37R0103_001:
 	get_person_coords 4, VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 15
-	gotoif ne, scr_seq_0095_D37R0103_03FD
-	goto scr_seq_0095_D37R0103_041C
-
-scr_seq_0095_D37R0103_03F7:
+	gotoif ne, _03FD
+	goto _041C
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
-scr_seq_0095_D37R0103_03FD:
+_03FD:
 	comparevartovalue VAR_TEMP_x4001, 16
-	gotoif ne, scr_seq_0095_D37R0103_0416
-	goto scr_seq_0095_D37R0103_0483
-
-scr_seq_0095_D37R0103_0410:
+	gotoif ne, _0416
+	goto _0483
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
-scr_seq_0095_D37R0103_0416:
-	goto scr_seq_0095_D37R0103_03C9
+_0416:
+	goto _03C9
 
-scr_seq_0095_D37R0103_041C:
+_041C:
 	checkflag FLAG_UNK_097
-	gotoif TRUE, scr_seq_0095_D37R0103_03C9
+	gotoif TRUE, _03C9
 	scrcmd_622 4, 16384
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0095_D37R0103_0440
-	goto scr_seq_0095_D37R0103_0446
+	gotoif ne, _0440
+	goto _0446
 
-scr_seq_0095_D37R0103_0440:
-	goto scr_seq_0095_D37R0103_03C9
+_0440:
+	goto _03C9
 
-scr_seq_0095_D37R0103_0446:
+_0446:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 0
+	npc_msg msg_0118_D37R0103_00000
 	closemsg
-	apply_movement 2, scr_seq_0095_D37R0103_050C
-	apply_movement 6, scr_seq_0095_D37R0103_050C
-	apply_movement 12, scr_seq_0095_D37R0103_050C
-	apply_movement 13, scr_seq_0095_D37R0103_050C
-	apply_movement 14, scr_seq_0095_D37R0103_050C
+	apply_movement obj_D37R0103_tsure_poke_593_2, _050C
+	apply_movement obj_D37R0103_babyboy1_5_2, _050C
+	apply_movement obj_D37R0103_stop_4, _050C
+	apply_movement obj_D37R0103_stop_5, _050C
+	apply_movement obj_D37R0103_stop_6, _050C
 	wait_movement
 	setflag FLAG_UNK_097
 	releaseall
 	end
 
-scr_seq_0095_D37R0103_0483:
+_0483:
 	checkflag FLAG_UNK_098
-	gotoif TRUE, scr_seq_0095_D37R0103_03C9
+	gotoif TRUE, _03C9
 	scrcmd_622 4, 16384
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, scr_seq_0095_D37R0103_04A7
-	goto scr_seq_0095_D37R0103_04AD
+	gotoif ne, _04A7
+	goto _04AD
 
-scr_seq_0095_D37R0103_04A7:
-	goto scr_seq_0095_D37R0103_03C9
+_04A7:
+	goto _03C9
 
-scr_seq_0095_D37R0103_04AD:
+_04AD:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 0
+	npc_msg msg_0118_D37R0103_00000
 	closemsg
-	apply_movement 3, scr_seq_0095_D37R0103_0514
-	apply_movement 5, scr_seq_0095_D37R0103_0514
-	apply_movement 15, scr_seq_0095_D37R0103_0514
-	apply_movement 16, scr_seq_0095_D37R0103_0514
-	apply_movement 17, scr_seq_0095_D37R0103_0514
+	apply_movement obj_D37R0103_tsure_poke_593_3, _0514
+	apply_movement obj_D37R0103_babyboy1_5, _0514
+	apply_movement obj_D37R0103_stop_7, _0514
+	apply_movement obj_D37R0103_stop_8, _0514
+	apply_movement obj_D37R0103_stop_9, _0514
 	wait_movement
 	setflag FLAG_UNK_098
 	releaseall
 	end
 
-scr_seq_0095_D37R0103_04EA:
+scr_seq_D37R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_076 67, 0
-	npc_msg 2
+	npc_msg msg_0118_D37R0103_00002
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0095_D37R0103_0503:
 	.byte 0x00
 
-scr_seq_0095_D37R0103_0504:
+_0504:
 	step 9, 2
 	step_end
 
-scr_seq_0095_D37R0103_050C:
+_050C:
 	step 10, 2
 	step_end
 
-scr_seq_0095_D37R0103_0514:
+_0514:
 	step 11, 2
 	step_end
 	.balign 4, 0

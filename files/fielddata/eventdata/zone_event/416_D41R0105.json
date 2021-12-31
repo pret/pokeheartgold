@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D41R0105.h",
   "bgs": [
     {
       "scr": 8202,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D41R0105_tsure_poke_605",
       "ovid": "SPRITE_TSURE_POKE_605",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_307",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D41R0105_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

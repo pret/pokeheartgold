@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D41R0108.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D41R0108_red",
       "ovid": "SPRITE_RED",
       "mvt": 0,
       "type": 0,

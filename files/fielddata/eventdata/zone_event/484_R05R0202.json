@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R05R0202.h",
   "bgs": [
     {
       "scr": 8057,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R05R0202_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R05R0202_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

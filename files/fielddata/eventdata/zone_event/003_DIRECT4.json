@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_DIRECT4.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_DIRECT4_pcwoman3",
       "ovid": "SPRITE_PCWOMAN3",
       "mvt": 16,
       "type": 0,

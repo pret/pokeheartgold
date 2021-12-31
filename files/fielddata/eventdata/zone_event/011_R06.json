@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R06.h",
   "bgs": [
     {
       "scr": 2,
@@ -11,7 +12,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R06_campboy_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 0,
       "type": 1,
@@ -28,7 +29,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R06_picnicgirl_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 1,
@@ -45,7 +46,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R06_gsbabygirl1",
       "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 0,
       "type": 1,
@@ -62,7 +63,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R06_gsbabygirl1_2",
       "ovid": "SPRITE_GSBABYGIRL1",
       "mvt": 0,
       "type": 1,
@@ -79,12 +80,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R06_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_258",
-      "scr": 1,
+      "scr": "_EV_scr_seq_R06_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -96,7 +97,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R06_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

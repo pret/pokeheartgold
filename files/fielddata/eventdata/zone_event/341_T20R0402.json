@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T20R0402.h",
   "bgs": [
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_T20R0402_004",
       "type": 0,
       "x": 8,
       "y": 4,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T20R0402_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_2E5",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T20R0402_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -36,12 +37,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T20R0402_tsure_poke_611",
       "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 44,
       "type": 0,
       "flag": "FLAG_UNK_2E5",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T20R0402_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

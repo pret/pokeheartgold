@@ -1,116 +1,118 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T04GYM0101.h"
+#include "msgdata/msg/msg_0469_T04GYM0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0760_T04GYM0101_0286 ; 000
-	scrdef scr_seq_0760_T04GYM0101_03FE ; 001
-	scrdef scr_seq_0760_T04GYM0101_0370 ; 002
-	scrdef scr_seq_0760_T04GYM0101_03B6 ; 003
-	scrdef scr_seq_0760_T04GYM0101_00F3 ; 004
-	scrdef scr_seq_0760_T04GYM0101_0231 ; 005
-	scrdef scr_seq_0760_T04GYM0101_0218 ; 006
-	scrdef scr_seq_0760_T04GYM0101_0022 ; 007
+	scrdef scr_seq_T04GYM0101_000
+	scrdef scr_seq_T04GYM0101_001
+	scrdef scr_seq_T04GYM0101_002
+	scrdef scr_seq_T04GYM0101_003
+	scrdef scr_seq_T04GYM0101_004
+	scrdef scr_seq_T04GYM0101_005
+	scrdef scr_seq_T04GYM0101_006
+	scrdef scr_seq_T04GYM0101_007
 	scrdef_end
 
-scr_seq_0760_T04GYM0101_0022:
+scr_seq_T04GYM0101_007:
 	get_phone_book_rematch 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0760_T04GYM0101_00ED
+	gotoif ne, _00ED
 	check_badge 15, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, scr_seq_0760_T04GYM0101_00E5
+	gotoif eq, _00E5
 	comparevartovalue VAR_UNK_4089, 1
-	gotoif eq, scr_seq_0760_T04GYM0101_00E7
+	gotoif eq, _00E7
 	comparevartovalue VAR_UNK_4089, 2
-	gotoif eq, scr_seq_0760_T04GYM0101_00E7
+	gotoif eq, _00E7
 	scrcmd_147 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0760_T04GYM0101_00AD
+	gotoif eq, _00AD
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, scr_seq_0760_T04GYM0101_0090
+	gotoif ne, _0090
 	setflag FLAG_UNK_253
-	goto scr_seq_0760_T04GYM0101_00AB
+	goto _00AB
 
-scr_seq_0760_T04GYM0101_0090:
+_0090:
 	comparevartovalue VAR_TEMP_x4000, 17
-	gotoif ne, scr_seq_0760_T04GYM0101_00A7
+	gotoif ne, _00A7
 	setflag FLAG_UNK_253
-	goto scr_seq_0760_T04GYM0101_00AB
+	goto _00AB
 
-scr_seq_0760_T04GYM0101_00A7:
+_00A7:
 	clearflag FLAG_UNK_253
-scr_seq_0760_T04GYM0101_00AB:
+_00AB:
 	end
 
-scr_seq_0760_T04GYM0101_00AD:
+_00AD:
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 14
-	gotoif ne, scr_seq_0760_T04GYM0101_00C8
+	gotoif ne, _00C8
 	setflag FLAG_UNK_253
-	goto scr_seq_0760_T04GYM0101_00E3
+	goto _00E3
 
-scr_seq_0760_T04GYM0101_00C8:
+_00C8:
 	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, scr_seq_0760_T04GYM0101_00DF
+	gotoif ne, _00DF
 	setflag FLAG_UNK_253
-	goto scr_seq_0760_T04GYM0101_00E3
+	goto _00E3
 
-scr_seq_0760_T04GYM0101_00DF:
+_00DF:
 	clearflag FLAG_UNK_253
-scr_seq_0760_T04GYM0101_00E3:
+_00E3:
 	end
 
-scr_seq_0760_T04GYM0101_00E5:
+_00E5:
 	end
 
-scr_seq_0760_T04GYM0101_00E7:
+_00E7:
 	clearflag FLAG_UNK_253
 	end
 
-scr_seq_0760_T04GYM0101_00ED:
+_00ED:
 	setflag FLAG_UNK_253
 	end
 
-scr_seq_0760_T04GYM0101_00F3:
+scr_seq_T04GYM0101_004:
 	scrcmd_609
 	lockall
 	scrcmd_081 1065
 	play_bgm SEQ_GS_EYE_ROCKET
-	apply_movement 7, scr_seq_0760_T04GYM0101_01C8
+	apply_movement obj_T04GYM0101_rocketm, _01C8
 	wait_movement
 	play_se SEQ_SE_DP_WALL_HIT2
-	npc_msg 0
-	apply_movement 7, scr_seq_0760_T04GYM0101_01D0
+	npc_msg msg_0469_T04GYM0101_00000
+	apply_movement obj_T04GYM0101_rocketm, _01D0
 	wait_movement
-	npc_msg 1
-	apply_movement 7, scr_seq_0760_T04GYM0101_01E4
+	npc_msg msg_0469_T04GYM0101_00001
+	apply_movement obj_T04GYM0101_rocketm, _01E4
 	wait_movement
-	npc_msg 2
-	apply_movement 7, scr_seq_0760_T04GYM0101_01F4
+	npc_msg msg_0469_T04GYM0101_00002
+	apply_movement obj_T04GYM0101_rocketm, _01F4
 	wait_movement
-	npc_msg 3
+	npc_msg msg_0469_T04GYM0101_00003
 	closemsg
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0760_T04GYM0101_0179
+	gotoif eq, _0179
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0760_T04GYM0101_0159
+	gotoif eq, _0159
 	end
 
-scr_seq_0760_T04GYM0101_0159:
-	apply_movement 7, scr_seq_0760_T04GYM0101_01FC
-	apply_movement 255, scr_seq_0760_T04GYM0101_0204
-	apply_movement 253, scr_seq_0760_T04GYM0101_0210
+_0159:
+	apply_movement obj_T04GYM0101_rocketm, _01FC
+	apply_movement obj_player, _0204
+	apply_movement 253, _0210
 	wait_movement
-	goto scr_seq_0760_T04GYM0101_018B
+	goto _018B
 
-scr_seq_0760_T04GYM0101_0179:
-	apply_movement 7, scr_seq_0760_T04GYM0101_01FC
-	apply_movement 255, scr_seq_0760_T04GYM0101_0204
+_0179:
+	apply_movement obj_T04GYM0101_rocketm, _01FC
+	apply_movement obj_player, _0204
 	wait_movement
-scr_seq_0760_T04GYM0101_018B:
+_018B:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 7
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -125,65 +127,63 @@ scr_seq_0760_T04GYM0101_018B:
 	setvar VAR_UNK_4088, 1
 	releaseall
 	end
-
-scr_seq_0760_T04GYM0101_01C5:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0760_T04GYM0101_01C8:
+_01C8:
 	step 21, 5
 	step_end
 
-scr_seq_0760_T04GYM0101_01D0:
+_01D0:
 	step 71, 1
 	step 56, 1
 	step 63, 2
 	step 17, 2
 	step_end
 
-scr_seq_0760_T04GYM0101_01E4:
+_01E4:
 	step 75, 1
 	step 71, 1
 	step 12, 2
 	step_end
 
-scr_seq_0760_T04GYM0101_01F4:
+_01F4:
 	step 13, 2
 	step_end
 
-scr_seq_0760_T04GYM0101_01FC:
+_01FC:
 	step 17, 1
 	step_end
 
-scr_seq_0760_T04GYM0101_0204:
+_0204:
 	step 18, 1
 	step 3, 1
 	step_end
 
-scr_seq_0760_T04GYM0101_0210:
+_0210:
 	step 18, 1
 	step_end
-scr_seq_0760_T04GYM0101_0218:
+scr_seq_T04GYM0101_006:
 	scrcmd_814
 	checkflag FLAG_UNK_257
-	gotoif TRUE, scr_seq_0760_T04GYM0101_022F
+	gotoif TRUE, _022F
 	scrcmd_375 8
 	scrcmd_375 9
 	end
 
-scr_seq_0760_T04GYM0101_022F:
+_022F:
 	end
 
-scr_seq_0760_T04GYM0101_0231:
+scr_seq_T04GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	buffer_players_name 0
-	npc_msg 16
+	npc_msg msg_0469_T04GYM0101_00016
 	setvar VAR_SPECIAL_x8004, 481
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0760_T04GYM0101_027C
+	gotoif eq, _027C
 	callstd 2008
 	hide_person 8
 	hide_person 9
@@ -193,25 +193,25 @@ scr_seq_0760_T04GYM0101_0231:
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_027C:
+_027C:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_0286:
+scr_seq_T04GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 9, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0760_T04GYM0101_0348
-	npc_msg 8
+	gotoif eq, _0348
+	npc_msg msg_0469_T04GYM0101_00008
 	closemsg
 	trainer_battle TRAINER_LEADER_MISTY_MISTY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0760_T04GYM0101_035E
+	gotoif eq, _035E
 	give_badge 9
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
@@ -220,120 +220,120 @@ scr_seq_0760_T04GYM0101_0286:
 	settrainerflag TRAINER_SWIMMER_F_JOY
 	settrainerflag TRAINER_SAILOR_PARKER
 	settrainerflag TRAINER_SAILOR_EDDIE
-	npc_msg 9
+	npc_msg msg_0469_T04GYM0101_00009
 	buffer_players_name 0
-	npc_msg 10
+	npc_msg msg_0469_T04GYM0101_00010
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
 	checkflag FLAG_UNK_14D
-	callif TRUE, scr_seq_0760_T04GYM0101_0364
+	callif TRUE, _0364
 	buffer_players_name 0
-	npc_msg 11
-	goto scr_seq_0760_T04GYM0101_0307
+	npc_msg msg_0469_T04GYM0101_00011
+	goto _0307
 
-scr_seq_0760_T04GYM0101_0307:
+_0307:
 	setvar VAR_SPECIAL_x8004, 330
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0760_T04GYM0101_033E
+	gotoif eq, _033E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_180
 	buffer_players_name 0
-	npc_msg 12
+	npc_msg msg_0469_T04GYM0101_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_033E:
+_033E:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_0348:
+_0348:
 	checkflag FLAG_UNK_180
-	gotoif FALSE, scr_seq_0760_T04GYM0101_0307
-	npc_msg 13
+	gotoif FALSE, _0307
+	npc_msg msg_0469_T04GYM0101_00013
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_035E:
+_035E:
 	white_out
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_0364:
+_0364:
 	clearflag FLAG_UNK_2A1
 	setvar VAR_UNK_4089, 1
 	return
 
-scr_seq_0760_T04GYM0101_0370:
+scr_seq_T04GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4088, 2
-	gotoif ne, scr_seq_0760_T04GYM0101_03AD
+	gotoif ne, _03AD
 	check_badge 9, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0760_T04GYM0101_03A4
-	npc_msg 6
-	goto scr_seq_0760_T04GYM0101_03A7
+	gotoif ne, _03A4
+	npc_msg msg_0469_T04GYM0101_00006
+	goto _03A7
 
-scr_seq_0760_T04GYM0101_03A4:
-	npc_msg 7
-scr_seq_0760_T04GYM0101_03A7:
-	goto scr_seq_0760_T04GYM0101_03F6
+_03A4:
+	npc_msg msg_0469_T04GYM0101_00007
+_03A7:
+	goto _03F6
 
-scr_seq_0760_T04GYM0101_03AD:
-	npc_msg 4
-	goto scr_seq_0760_T04GYM0101_03F6
+_03AD:
+	npc_msg msg_0469_T04GYM0101_00004
+	goto _03F6
 
-scr_seq_0760_T04GYM0101_03B6:
+scr_seq_T04GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4088, 2
-	gotoif ne, scr_seq_0760_T04GYM0101_03F3
+	gotoif ne, _03F3
 	check_badge 9, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0760_T04GYM0101_03EA
-	npc_msg 6
-	goto scr_seq_0760_T04GYM0101_03ED
+	gotoif ne, _03EA
+	npc_msg msg_0469_T04GYM0101_00006
+	goto _03ED
 
-scr_seq_0760_T04GYM0101_03EA:
-	npc_msg 7
-scr_seq_0760_T04GYM0101_03ED:
-	goto scr_seq_0760_T04GYM0101_03F6
+_03EA:
+	npc_msg msg_0469_T04GYM0101_00007
+_03ED:
+	goto _03F6
 
-scr_seq_0760_T04GYM0101_03F3:
-	npc_msg 5
-scr_seq_0760_T04GYM0101_03F6:
+_03F3:
+	npc_msg msg_0469_T04GYM0101_00005
+_03F6:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_03FE:
+scr_seq_T04GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 9, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0760_T04GYM0101_0424
-	npc_msg 14
+	gotoif eq, _0424
+	npc_msg msg_0469_T04GYM0101_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0760_T04GYM0101_0424:
-	npc_msg 15
+_0424:
+	npc_msg msg_0469_T04GYM0101_00015
 	waitbutton
 	closemsg
 	releaseall

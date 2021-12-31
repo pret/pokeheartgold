@@ -1,112 +1,110 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D51R0301.h"
+#include "msgdata/msg/msg_0147_D51R0301.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0132_D51R0301_0012 ; 000
-	scrdef scr_seq_0132_D51R0301_0234 ; 001
-	scrdef scr_seq_0132_D51R0301_0279 ; 002
-	scrdef scr_seq_0132_D51R0301_038C ; 003
+	scrdef scr_seq_D51R0301_000
+	scrdef scr_seq_D51R0301_001
+	scrdef scr_seq_D51R0301_002
+	scrdef scr_seq_D51R0301_003
 	scrdef_end
 
-scr_seq_0132_D51R0301_0012:
+scr_seq_D51R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_09E
-	gotoif TRUE, scr_seq_0132_D51R0301_002E
-	npc_msg 0
+	gotoif TRUE, _002E
+	npc_msg msg_0147_D51R0301_00000
 	closemsg
 	setflag FLAG_UNK_09E
-scr_seq_0132_D51R0301_002E:
+_002E:
 	scrcmd_389 32780, 493
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0132_D51R0301_004C
-	npc_msg 2
+	gotoif eq, _004C
+	npc_msg msg_0147_D51R0301_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0132_D51R0301_004C:
-	apply_movement 0, scr_seq_0132_D51R0301_0188
+_004C:
+	apply_movement obj_D51R0301_champion, _0188
 	wait_movement
-	npc_msg 1
+	npc_msg msg_0147_D51R0301_00001
 	closemsg
 	scrcmd_386 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, scr_seq_0132_D51R0301_0078
-	goto scr_seq_0132_D51R0301_0107
-
-scr_seq_0132_D51R0301_0072:
+	gotoif ne, _0078
+	goto _0107
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
-scr_seq_0132_D51R0301_0078:
+_0078:
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, scr_seq_0132_D51R0301_0091
-	goto scr_seq_0132_D51R0301_00CF
-
-scr_seq_0132_D51R0301_008B:
+	gotoif ne, _0091
+	goto _00CF
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00
 	.byte 0x00
-scr_seq_0132_D51R0301_0091:
-	goto scr_seq_0132_D51R0301_0097
+_0091:
+	goto _0097
 
-scr_seq_0132_D51R0301_0097:
-	apply_movement 0, scr_seq_0132_D51R0301_0194
+_0097:
+	apply_movement obj_D51R0301_champion, _0194
 	wait_movement
-	apply_movement 0, scr_seq_0132_D51R0301_01A0
+	apply_movement obj_D51R0301_champion, _01A0
 	wait_movement
-	npc_msg 3
+	npc_msg msg_0147_D51R0301_00003
 	closemsg
-	apply_movement 0, scr_seq_0132_D51R0301_01A8
+	apply_movement obj_D51R0301_champion, _01A8
 	wait_movement
-	npc_msg 4
+	npc_msg msg_0147_D51R0301_00004
 	closemsg
-	apply_movement 0, scr_seq_0132_D51R0301_01B4
+	apply_movement obj_D51R0301_champion, _01B4
 	wait_movement
-	goto scr_seq_0132_D51R0301_0167
+	goto _0167
 
-scr_seq_0132_D51R0301_00CF:
-	apply_movement 0, scr_seq_0132_D51R0301_01C4
+_00CF:
+	apply_movement obj_D51R0301_champion, _01C4
 	wait_movement
-	apply_movement 0, scr_seq_0132_D51R0301_01D0
+	apply_movement obj_D51R0301_champion, _01D0
 	wait_movement
-	npc_msg 3
+	npc_msg msg_0147_D51R0301_00003
 	closemsg
-	apply_movement 0, scr_seq_0132_D51R0301_01D8
+	apply_movement obj_D51R0301_champion, _01D8
 	wait_movement
-	npc_msg 4
+	npc_msg msg_0147_D51R0301_00004
 	closemsg
-	apply_movement 0, scr_seq_0132_D51R0301_01E0
+	apply_movement obj_D51R0301_champion, _01E0
 	wait_movement
-	goto scr_seq_0132_D51R0301_0167
+	goto _0167
 
-scr_seq_0132_D51R0301_0107:
-	apply_movement 0, scr_seq_0132_D51R0301_01F0
+_0107:
+	apply_movement obj_D51R0301_champion, _01F0
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0132_D51R0301_01FC
+	apply_movement obj_player, _01FC
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0132_D51R0301_0204
+	apply_movement obj_D51R0301_champion, _0204
 	wait_movement
-	npc_msg 3
+	npc_msg msg_0147_D51R0301_00003
 	closemsg
-	apply_movement 0, scr_seq_0132_D51R0301_020C
+	apply_movement obj_D51R0301_champion, _020C
 	wait_movement
-	apply_movement 255, scr_seq_0132_D51R0301_022C
+	apply_movement obj_player, _022C
 	wait_movement
-	npc_msg 4
+	npc_msg msg_0147_D51R0301_00004
 	closemsg
-	apply_movement 0, scr_seq_0132_D51R0301_021C
+	apply_movement obj_D51R0301_champion, _021C
 	wait_movement
-	goto scr_seq_0132_D51R0301_0167
+	goto _0167
 
-scr_seq_0132_D51R0301_0167:
+_0167:
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2DD
 	hide_person 0
@@ -115,140 +113,138 @@ scr_seq_0132_D51R0301_0167:
 	setvar VAR_UNK_40FB, 7
 	releaseall
 	end
-
-scr_seq_0132_D51R0301_0185:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0132_D51R0301_0188:
+_0188:
 	step 75, 1
 	step 63, 1
 	step_end
 
-scr_seq_0132_D51R0301_0194:
+_0194:
 	step 32, 1
 	step 8, 2
 	step_end
 
-scr_seq_0132_D51R0301_01A0:
+_01A0:
 	step 33, 1
 	step_end
 
-scr_seq_0132_D51R0301_01A8:
+_01A8:
 	step 13, 2
 	step 35, 1
 	step_end
 
-scr_seq_0132_D51R0301_01B4:
+_01B4:
 	step 13, 2
 	step 14, 4
 	step 33, 1
 	step_end
 
-scr_seq_0132_D51R0301_01C4:
+_01C4:
 	step 33, 1
 	step 9, 1
 	step_end
 
-scr_seq_0132_D51R0301_01D0:
+_01D0:
 	step 32, 1
 	step_end
 
-scr_seq_0132_D51R0301_01D8:
+_01D8:
 	step 12, 1
 	step_end
 
-scr_seq_0132_D51R0301_01E0:
+_01E0:
 	step 13, 2
 	step 14, 4
 	step 33, 1
 	step_end
 
-scr_seq_0132_D51R0301_01F0:
+_01F0:
 	step 32, 1
 	step 8, 2
 	step_end
 
-scr_seq_0132_D51R0301_01FC:
+_01FC:
 	step 8, 1
 	step_end
 
-scr_seq_0132_D51R0301_0204:
+_0204:
 	step 33, 1
 	step_end
 
-scr_seq_0132_D51R0301_020C:
+_020C:
 	step 15, 1
 	step 13, 2
 	step 34, 1
 	step_end
 
-scr_seq_0132_D51R0301_021C:
+_021C:
 	step 13, 2
 	step 14, 5
 	step 33, 1
 	step_end
 
-scr_seq_0132_D51R0301_022C:
+_022C:
 	step 35, 1
 	step_end
-scr_seq_0132_D51R0301_0234:
+scr_seq_D51R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40FB, 13
-	gotoif ge, scr_seq_0132_D51R0301_026E
+	gotoif ge, _026E
 	checkflag FLAG_UNK_09D
-	gotoif TRUE, scr_seq_0132_D51R0301_0263
-	npc_msg 7
+	gotoif TRUE, _0263
+	npc_msg msg_0147_D51R0301_00007
 	waitbutton
 	closemsg
 	setflag FLAG_UNK_09D
 	releaseall
 	end
 
-scr_seq_0132_D51R0301_0263:
-	npc_msg 8
+_0263:
+	npc_msg msg_0147_D51R0301_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0132_D51R0301_026E:
-	npc_msg 9
+_026E:
+	npc_msg msg_0147_D51R0301_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0132_D51R0301_0279:
+scr_seq_D51R0301_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 10
+	npc_msg msg_0147_D51R0301_00010
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0132_D51R0301_02A6
+	gotoif eq, _02A6
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0132_D51R0301_030C
-scr_seq_0132_D51R0301_02A6:
-	npc_msg 11
+	gotoif ge, _030C
+_02A6:
+	npc_msg msg_0147_D51R0301_00011
 	closemsg
 	play_se SEQ_SE_DP_TELE
-	apply_movement 255, scr_seq_0132_D51R0301_0318
+	apply_movement obj_player, _0318
 	wait_movement
 	comparevartovalue VAR_UNK_40FB, 13
-	gotoif ne, scr_seq_0132_D51R0301_02D2
+	gotoif ne, _02D2
 	setvar VAR_UNK_40FB, 10
-	goto scr_seq_0132_D51R0301_02E4
+	goto _02E4
 
-scr_seq_0132_D51R0301_02D2:
+_02D2:
 	setvar VAR_UNK_40FB, 1
 	setflag FLAG_UNK_2DC
 	clearflag FLAG_UNK_2DD
 	clearflag FLAG_UNK_2DB
-scr_seq_0132_D51R0301_02E4:
+_02E4:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_176 60, 0, 695, 397, 1
@@ -257,17 +253,15 @@ scr_seq_0132_D51R0301_02E4:
 	releaseall
 	end
 
-scr_seq_0132_D51R0301_030C:
-	npc_msg 12
+_030C:
+	npc_msg msg_0147_D51R0301_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0132_D51R0301_0317:
 	.byte 0x00
 
-scr_seq_0132_D51R0301_0318:
+_0318:
 	step 3, 1
 	step 62, 1
 	step 1, 1
@@ -297,12 +291,12 @@ scr_seq_0132_D51R0301_0318:
 	step 2, 1
 	step 0, 1
 	step_end
-scr_seq_0132_D51R0301_038C:
+scr_seq_D51R0301_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 63, 0
-	npc_msg 13
+	npc_msg msg_0147_D51R0301_00013
 	scrcmd_077
 	waitbutton
 	closemsg

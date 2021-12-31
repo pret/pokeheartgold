@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D17R0109.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_d17r0109.h_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

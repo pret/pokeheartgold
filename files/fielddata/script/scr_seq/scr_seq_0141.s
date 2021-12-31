@@ -1,2052 +1,1544 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_0141.h"
+#include "msgdata/msg/msg_0199.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0141_0402 ; 000
-	scrdef scr_seq_0141_0416 ; 001
-	scrdef scr_seq_0141_042A ; 002
-	scrdef scr_seq_0141_043E ; 003
-	scrdef scr_seq_0141_0452 ; 004
-	scrdef scr_seq_0141_0466 ; 005
-	scrdef scr_seq_0141_047A ; 006
-	scrdef scr_seq_0141_048E ; 007
-	scrdef scr_seq_0141_04A2 ; 008
-	scrdef scr_seq_0141_04B6 ; 009
-	scrdef scr_seq_0141_04CA ; 010
-	scrdef scr_seq_0141_04DE ; 011
-	scrdef scr_seq_0141_04F2 ; 012
-	scrdef scr_seq_0141_0506 ; 013
-	scrdef scr_seq_0141_051A ; 014
-	scrdef scr_seq_0141_052E ; 015
-	scrdef scr_seq_0141_0542 ; 016
-	scrdef scr_seq_0141_0556 ; 017
-	scrdef scr_seq_0141_056A ; 018
-	scrdef scr_seq_0141_057E ; 019
-	scrdef scr_seq_0141_0592 ; 020
-	scrdef scr_seq_0141_05A6 ; 021
-	scrdef scr_seq_0141_05BA ; 022
-	scrdef scr_seq_0141_05CE ; 023
-	scrdef scr_seq_0141_05E2 ; 024
-	scrdef scr_seq_0141_05F6 ; 025
-	scrdef scr_seq_0141_060A ; 026
-	scrdef scr_seq_0141_061E ; 027
-	scrdef scr_seq_0141_0632 ; 028
-	scrdef scr_seq_0141_0646 ; 029
-	scrdef scr_seq_0141_065A ; 030
-	scrdef scr_seq_0141_066E ; 031
-	scrdef scr_seq_0141_0682 ; 032
-	scrdef scr_seq_0141_0696 ; 033
-	scrdef scr_seq_0141_06AA ; 034
-	scrdef scr_seq_0141_06BE ; 035
-	scrdef scr_seq_0141_06D2 ; 036
-	scrdef scr_seq_0141_06E6 ; 037
-	scrdef scr_seq_0141_06FA ; 038
-	scrdef scr_seq_0141_070E ; 039
-	scrdef scr_seq_0141_0722 ; 040
-	scrdef scr_seq_0141_0736 ; 041
-	scrdef scr_seq_0141_074A ; 042
-	scrdef scr_seq_0141_075E ; 043
-	scrdef scr_seq_0141_0772 ; 044
-	scrdef scr_seq_0141_0786 ; 045
-	scrdef scr_seq_0141_079A ; 046
-	scrdef scr_seq_0141_07AE ; 047
-	scrdef scr_seq_0141_07C2 ; 048
-	scrdef scr_seq_0141_07D6 ; 049
-	scrdef scr_seq_0141_07EA ; 050
-	scrdef scr_seq_0141_07FE ; 051
-	scrdef scr_seq_0141_0812 ; 052
-	scrdef scr_seq_0141_0826 ; 053
-	scrdef scr_seq_0141_083A ; 054
-	scrdef scr_seq_0141_084E ; 055
-	scrdef scr_seq_0141_0862 ; 056
-	scrdef scr_seq_0141_0876 ; 057
-	scrdef scr_seq_0141_088A ; 058
-	scrdef scr_seq_0141_089E ; 059
-	scrdef scr_seq_0141_08B2 ; 060
-	scrdef scr_seq_0141_08C6 ; 061
-	scrdef scr_seq_0141_08DA ; 062
-	scrdef scr_seq_0141_08EE ; 063
-	scrdef scr_seq_0141_0902 ; 064
-	scrdef scr_seq_0141_0916 ; 065
-	scrdef scr_seq_0141_092A ; 066
-	scrdef scr_seq_0141_093E ; 067
-	scrdef scr_seq_0141_0952 ; 068
-	scrdef scr_seq_0141_0966 ; 069
-	scrdef scr_seq_0141_097A ; 070
-	scrdef scr_seq_0141_098E ; 071
-	scrdef scr_seq_0141_09A2 ; 072
-	scrdef scr_seq_0141_09B6 ; 073
-	scrdef scr_seq_0141_09CA ; 074
-	scrdef scr_seq_0141_09DE ; 075
-	scrdef scr_seq_0141_09F2 ; 076
-	scrdef scr_seq_0141_0A06 ; 077
-	scrdef scr_seq_0141_0A1A ; 078
-	scrdef scr_seq_0141_0A2E ; 079
-	scrdef scr_seq_0141_0A42 ; 080
-	scrdef scr_seq_0141_0A56 ; 081
-	scrdef scr_seq_0141_0A6A ; 082
-	scrdef scr_seq_0141_0A7E ; 083
-	scrdef scr_seq_0141_0A92 ; 084
-	scrdef scr_seq_0141_0AA6 ; 085
-	scrdef scr_seq_0141_0ABA ; 086
-	scrdef scr_seq_0141_0ACE ; 087
-	scrdef scr_seq_0141_0AE2 ; 088
-	scrdef scr_seq_0141_0AF6 ; 089
-	scrdef scr_seq_0141_0B0A ; 090
-	scrdef scr_seq_0141_0B1E ; 091
-	scrdef scr_seq_0141_0B32 ; 092
-	scrdef scr_seq_0141_0B46 ; 093
-	scrdef scr_seq_0141_0B5A ; 094
-	scrdef scr_seq_0141_0B6E ; 095
-	scrdef scr_seq_0141_0B82 ; 096
-	scrdef scr_seq_0141_0B96 ; 097
-	scrdef scr_seq_0141_0BAA ; 098
-	scrdef scr_seq_0141_0BBE ; 099
-	scrdef scr_seq_0141_0BD2 ; 100
-	scrdef scr_seq_0141_0BE6 ; 101
-	scrdef scr_seq_0141_0BFA ; 102
-	scrdef scr_seq_0141_0C0E ; 103
-	scrdef scr_seq_0141_0C22 ; 104
-	scrdef scr_seq_0141_0C36 ; 105
-	scrdef scr_seq_0141_0C4A ; 106
-	scrdef scr_seq_0141_0C5E ; 107
-	scrdef scr_seq_0141_0C72 ; 108
-	scrdef scr_seq_0141_0C86 ; 109
-	scrdef scr_seq_0141_0C9A ; 110
-	scrdef scr_seq_0141_0CAE ; 111
-	scrdef scr_seq_0141_0CC2 ; 112
-	scrdef scr_seq_0141_0CD6 ; 113
-	scrdef scr_seq_0141_0CEA ; 114
-	scrdef scr_seq_0141_0CFE ; 115
-	scrdef scr_seq_0141_0D12 ; 116
-	scrdef scr_seq_0141_0D26 ; 117
-	scrdef scr_seq_0141_0D3A ; 118
-	scrdef scr_seq_0141_0D4E ; 119
-	scrdef scr_seq_0141_0D62 ; 120
-	scrdef scr_seq_0141_0D76 ; 121
-	scrdef scr_seq_0141_0D8A ; 122
-	scrdef scr_seq_0141_0D9E ; 123
-	scrdef scr_seq_0141_0DB2 ; 124
-	scrdef scr_seq_0141_0DC6 ; 125
-	scrdef scr_seq_0141_0DDA ; 126
-	scrdef scr_seq_0141_0DEE ; 127
-	scrdef scr_seq_0141_0E02 ; 128
-	scrdef scr_seq_0141_0E16 ; 129
-	scrdef scr_seq_0141_0E2A ; 130
-	scrdef scr_seq_0141_0E3E ; 131
-	scrdef scr_seq_0141_0E52 ; 132
-	scrdef scr_seq_0141_0E66 ; 133
-	scrdef scr_seq_0141_0E7A ; 134
-	scrdef scr_seq_0141_0E8E ; 135
-	scrdef scr_seq_0141_0EA2 ; 136
-	scrdef scr_seq_0141_0EB6 ; 137
-	scrdef scr_seq_0141_0ECA ; 138
-	scrdef scr_seq_0141_0EDE ; 139
-	scrdef scr_seq_0141_0EF2 ; 140
-	scrdef scr_seq_0141_0F06 ; 141
-	scrdef scr_seq_0141_0F1A ; 142
-	scrdef scr_seq_0141_0F2E ; 143
-	scrdef scr_seq_0141_0F42 ; 144
-	scrdef scr_seq_0141_0F56 ; 145
-	scrdef scr_seq_0141_0F6A ; 146
-	scrdef scr_seq_0141_0F7E ; 147
-	scrdef scr_seq_0141_0F92 ; 148
-	scrdef scr_seq_0141_0FA6 ; 149
-	scrdef scr_seq_0141_0FBA ; 150
-	scrdef scr_seq_0141_0FCE ; 151
-	scrdef scr_seq_0141_0FE2 ; 152
-	scrdef scr_seq_0141_0FF6 ; 153
-	scrdef scr_seq_0141_100A ; 154
-	scrdef scr_seq_0141_101E ; 155
-	scrdef scr_seq_0141_1032 ; 156
-	scrdef scr_seq_0141_1046 ; 157
-	scrdef scr_seq_0141_105A ; 158
-	scrdef scr_seq_0141_106E ; 159
-	scrdef scr_seq_0141_1082 ; 160
-	scrdef scr_seq_0141_1096 ; 161
-	scrdef scr_seq_0141_10AA ; 162
-	scrdef scr_seq_0141_10BE ; 163
-	scrdef scr_seq_0141_10D2 ; 164
-	scrdef scr_seq_0141_10E6 ; 165
-	scrdef scr_seq_0141_10FA ; 166
-	scrdef scr_seq_0141_110E ; 167
-	scrdef scr_seq_0141_1122 ; 168
-	scrdef scr_seq_0141_1136 ; 169
-	scrdef scr_seq_0141_114A ; 170
-	scrdef scr_seq_0141_115E ; 171
-	scrdef scr_seq_0141_1172 ; 172
-	scrdef scr_seq_0141_1186 ; 173
-	scrdef scr_seq_0141_119A ; 174
-	scrdef scr_seq_0141_11AE ; 175
-	scrdef scr_seq_0141_11C2 ; 176
-	scrdef scr_seq_0141_11D6 ; 177
-	scrdef scr_seq_0141_11EA ; 178
-	scrdef scr_seq_0141_11FE ; 179
-	scrdef scr_seq_0141_1212 ; 180
-	scrdef scr_seq_0141_1226 ; 181
-	scrdef scr_seq_0141_123A ; 182
-	scrdef scr_seq_0141_124E ; 183
-	scrdef scr_seq_0141_1262 ; 184
-	scrdef scr_seq_0141_1276 ; 185
-	scrdef scr_seq_0141_128A ; 186
-	scrdef scr_seq_0141_129E ; 187
-	scrdef scr_seq_0141_12B2 ; 188
-	scrdef scr_seq_0141_12C6 ; 189
-	scrdef scr_seq_0141_12DA ; 190
-	scrdef scr_seq_0141_12EE ; 191
-	scrdef scr_seq_0141_1302 ; 192
-	scrdef scr_seq_0141_1316 ; 193
-	scrdef scr_seq_0141_132A ; 194
-	scrdef scr_seq_0141_133E ; 195
-	scrdef scr_seq_0141_1352 ; 196
-	scrdef scr_seq_0141_1366 ; 197
-	scrdef scr_seq_0141_137A ; 198
-	scrdef scr_seq_0141_138E ; 199
-	scrdef scr_seq_0141_13A2 ; 200
-	scrdef scr_seq_0141_13B6 ; 201
-	scrdef scr_seq_0141_13CA ; 202
-	scrdef scr_seq_0141_13DE ; 203
-	scrdef scr_seq_0141_13F2 ; 204
-	scrdef scr_seq_0141_1406 ; 205
-	scrdef scr_seq_0141_141A ; 206
-	scrdef scr_seq_0141_142E ; 207
-	scrdef scr_seq_0141_1442 ; 208
-	scrdef scr_seq_0141_1456 ; 209
-	scrdef scr_seq_0141_146A ; 210
-	scrdef scr_seq_0141_147E ; 211
-	scrdef scr_seq_0141_1492 ; 212
-	scrdef scr_seq_0141_14A6 ; 213
-	scrdef scr_seq_0141_14BA ; 214
-	scrdef scr_seq_0141_14CE ; 215
-	scrdef scr_seq_0141_14E2 ; 216
-	scrdef scr_seq_0141_14F6 ; 217
-	scrdef scr_seq_0141_150A ; 218
-	scrdef scr_seq_0141_151E ; 219
-	scrdef scr_seq_0141_1532 ; 220
-	scrdef scr_seq_0141_1546 ; 221
-	scrdef scr_seq_0141_155A ; 222
-	scrdef scr_seq_0141_156E ; 223
-	scrdef scr_seq_0141_1582 ; 224
-	scrdef scr_seq_0141_1596 ; 225
-	scrdef scr_seq_0141_15AA ; 226
-	scrdef scr_seq_0141_15BE ; 227
-	scrdef scr_seq_0141_15D2 ; 228
-	scrdef scr_seq_0141_15E6 ; 229
-	scrdef scr_seq_0141_15FA ; 230
-	scrdef scr_seq_0141_160E ; 231
-	scrdef scr_seq_0141_1622 ; 232
-	scrdef scr_seq_0141_1636 ; 233
-	scrdef scr_seq_0141_164A ; 234
-	scrdef scr_seq_0141_165E ; 235
-	scrdef scr_seq_0141_1672 ; 236
-	scrdef scr_seq_0141_1686 ; 237
-	scrdef scr_seq_0141_169A ; 238
-	scrdef scr_seq_0141_16AE ; 239
-	scrdef scr_seq_0141_16C2 ; 240
-	scrdef scr_seq_0141_16D6 ; 241
-	scrdef scr_seq_0141_16EA ; 242
-	scrdef scr_seq_0141_16FE ; 243
-	scrdef scr_seq_0141_1712 ; 244
-	scrdef scr_seq_0141_1726 ; 245
-	scrdef scr_seq_0141_173A ; 246
-	scrdef scr_seq_0141_174E ; 247
-	scrdef scr_seq_0141_1762 ; 248
-	scrdef scr_seq_0141_1776 ; 249
-	scrdef scr_seq_0141_178A ; 250
-	scrdef scr_seq_0141_179E ; 251
-	scrdef scr_seq_0141_17B2 ; 252
-	scrdef scr_seq_0141_17C6 ; 253
-	scrdef scr_seq_0141_17DA ; 254
-	scrdef scr_seq_0141_17EE ; 255
+	scrdef scr_seq_0141_000
+	scrdef scr_seq_0141_001
+	scrdef scr_seq_0141_002
+	scrdef scr_seq_0141_003
+	scrdef scr_seq_0141_004
+	scrdef scr_seq_0141_005
+	scrdef scr_seq_0141_006
+	scrdef scr_seq_0141_007
+	scrdef scr_seq_0141_008
+	scrdef scr_seq_0141_009
+	scrdef scr_seq_0141_010
+	scrdef scr_seq_0141_011
+	scrdef scr_seq_0141_012
+	scrdef scr_seq_0141_013
+	scrdef scr_seq_0141_014
+	scrdef scr_seq_0141_015
+	scrdef scr_seq_0141_016
+	scrdef scr_seq_0141_017
+	scrdef scr_seq_0141_018
+	scrdef scr_seq_0141_019
+	scrdef scr_seq_0141_020
+	scrdef scr_seq_0141_021
+	scrdef scr_seq_0141_022
+	scrdef scr_seq_0141_023
+	scrdef scr_seq_0141_024
+	scrdef scr_seq_0141_025
+	scrdef scr_seq_0141_026
+	scrdef scr_seq_0141_027
+	scrdef scr_seq_0141_028
+	scrdef scr_seq_0141_029
+	scrdef scr_seq_0141_030
+	scrdef scr_seq_0141_031
+	scrdef scr_seq_0141_032
+	scrdef scr_seq_0141_033
+	scrdef scr_seq_0141_034
+	scrdef scr_seq_0141_035
+	scrdef scr_seq_0141_036
+	scrdef scr_seq_0141_037
+	scrdef scr_seq_0141_038
+	scrdef scr_seq_0141_039
+	scrdef scr_seq_0141_040
+	scrdef scr_seq_0141_041
+	scrdef scr_seq_0141_042
+	scrdef scr_seq_0141_043
+	scrdef scr_seq_0141_044
+	scrdef scr_seq_0141_045
+	scrdef scr_seq_0141_046
+	scrdef scr_seq_0141_047
+	scrdef scr_seq_0141_048
+	scrdef scr_seq_0141_049
+	scrdef scr_seq_0141_050
+	scrdef scr_seq_0141_051
+	scrdef scr_seq_0141_052
+	scrdef scr_seq_0141_053
+	scrdef scr_seq_0141_054
+	scrdef scr_seq_0141_055
+	scrdef scr_seq_0141_056
+	scrdef scr_seq_0141_057
+	scrdef scr_seq_0141_058
+	scrdef scr_seq_0141_059
+	scrdef scr_seq_0141_060
+	scrdef scr_seq_0141_061
+	scrdef scr_seq_0141_062
+	scrdef scr_seq_0141_063
+	scrdef scr_seq_0141_064
+	scrdef scr_seq_0141_065
+	scrdef scr_seq_0141_066
+	scrdef scr_seq_0141_067
+	scrdef scr_seq_0141_068
+	scrdef scr_seq_0141_069
+	scrdef scr_seq_0141_070
+	scrdef scr_seq_0141_071
+	scrdef scr_seq_0141_072
+	scrdef scr_seq_0141_073
+	scrdef scr_seq_0141_074
+	scrdef scr_seq_0141_075
+	scrdef scr_seq_0141_076
+	scrdef scr_seq_0141_077
+	scrdef scr_seq_0141_078
+	scrdef scr_seq_0141_079
+	scrdef scr_seq_0141_080
+	scrdef scr_seq_0141_081
+	scrdef scr_seq_0141_082
+	scrdef scr_seq_0141_083
+	scrdef scr_seq_0141_084
+	scrdef scr_seq_0141_085
+	scrdef scr_seq_0141_086
+	scrdef scr_seq_0141_087
+	scrdef scr_seq_0141_088
+	scrdef scr_seq_0141_089
+	scrdef scr_seq_0141_090
+	scrdef scr_seq_0141_091
+	scrdef scr_seq_0141_092
+	scrdef scr_seq_0141_093
+	scrdef scr_seq_0141_094
+	scrdef scr_seq_0141_095
+	scrdef scr_seq_0141_096
+	scrdef scr_seq_0141_097
+	scrdef scr_seq_0141_098
+	scrdef scr_seq_0141_099
+	scrdef scr_seq_0141_100
+	scrdef scr_seq_0141_101
+	scrdef scr_seq_0141_102
+	scrdef scr_seq_0141_103
+	scrdef scr_seq_0141_104
+	scrdef scr_seq_0141_105
+	scrdef scr_seq_0141_106
+	scrdef scr_seq_0141_107
+	scrdef scr_seq_0141_108
+	scrdef scr_seq_0141_109
+	scrdef scr_seq_0141_110
+	scrdef scr_seq_0141_111
+	scrdef scr_seq_0141_112
+	scrdef scr_seq_0141_113
+	scrdef scr_seq_0141_114
+	scrdef scr_seq_0141_115
+	scrdef scr_seq_0141_116
+	scrdef scr_seq_0141_117
+	scrdef scr_seq_0141_118
+	scrdef scr_seq_0141_119
+	scrdef scr_seq_0141_120
+	scrdef scr_seq_0141_121
+	scrdef scr_seq_0141_122
+	scrdef scr_seq_0141_123
+	scrdef scr_seq_0141_124
+	scrdef scr_seq_0141_125
+	scrdef scr_seq_0141_126
+	scrdef scr_seq_0141_127
+	scrdef scr_seq_0141_128
+	scrdef scr_seq_0141_129
+	scrdef scr_seq_0141_130
+	scrdef scr_seq_0141_131
+	scrdef scr_seq_0141_132
+	scrdef scr_seq_0141_133
+	scrdef scr_seq_0141_134
+	scrdef scr_seq_0141_135
+	scrdef scr_seq_0141_136
+	scrdef scr_seq_0141_137
+	scrdef scr_seq_0141_138
+	scrdef scr_seq_0141_139
+	scrdef scr_seq_0141_140
+	scrdef scr_seq_0141_141
+	scrdef scr_seq_0141_142
+	scrdef scr_seq_0141_143
+	scrdef scr_seq_0141_144
+	scrdef scr_seq_0141_145
+	scrdef scr_seq_0141_146
+	scrdef scr_seq_0141_147
+	scrdef scr_seq_0141_148
+	scrdef scr_seq_0141_149
+	scrdef scr_seq_0141_150
+	scrdef scr_seq_0141_151
+	scrdef scr_seq_0141_152
+	scrdef scr_seq_0141_153
+	scrdef scr_seq_0141_154
+	scrdef scr_seq_0141_155
+	scrdef scr_seq_0141_156
+	scrdef scr_seq_0141_157
+	scrdef scr_seq_0141_158
+	scrdef scr_seq_0141_159
+	scrdef scr_seq_0141_160
+	scrdef scr_seq_0141_161
+	scrdef scr_seq_0141_162
+	scrdef scr_seq_0141_163
+	scrdef scr_seq_0141_164
+	scrdef scr_seq_0141_165
+	scrdef scr_seq_0141_166
+	scrdef scr_seq_0141_167
+	scrdef scr_seq_0141_168
+	scrdef scr_seq_0141_169
+	scrdef scr_seq_0141_170
+	scrdef scr_seq_0141_171
+	scrdef scr_seq_0141_172
+	scrdef scr_seq_0141_173
+	scrdef scr_seq_0141_174
+	scrdef scr_seq_0141_175
+	scrdef scr_seq_0141_176
+	scrdef scr_seq_0141_177
+	scrdef scr_seq_0141_178
+	scrdef scr_seq_0141_179
+	scrdef scr_seq_0141_180
+	scrdef scr_seq_0141_181
+	scrdef scr_seq_0141_182
+	scrdef scr_seq_0141_183
+	scrdef scr_seq_0141_184
+	scrdef scr_seq_0141_185
+	scrdef scr_seq_0141_186
+	scrdef scr_seq_0141_187
+	scrdef scr_seq_0141_188
+	scrdef scr_seq_0141_189
+	scrdef scr_seq_0141_190
+	scrdef scr_seq_0141_191
+	scrdef scr_seq_0141_192
+	scrdef scr_seq_0141_193
+	scrdef scr_seq_0141_194
+	scrdef scr_seq_0141_195
+	scrdef scr_seq_0141_196
+	scrdef scr_seq_0141_197
+	scrdef scr_seq_0141_198
+	scrdef scr_seq_0141_199
+	scrdef scr_seq_0141_200
+	scrdef scr_seq_0141_201
+	scrdef scr_seq_0141_202
+	scrdef scr_seq_0141_203
+	scrdef scr_seq_0141_204
+	scrdef scr_seq_0141_205
+	scrdef scr_seq_0141_206
+	scrdef scr_seq_0141_207
+	scrdef scr_seq_0141_208
+	scrdef scr_seq_0141_209
+	scrdef scr_seq_0141_210
+	scrdef scr_seq_0141_211
+	scrdef scr_seq_0141_212
+	scrdef scr_seq_0141_213
+	scrdef scr_seq_0141_214
+	scrdef scr_seq_0141_215
+	scrdef scr_seq_0141_216
+	scrdef scr_seq_0141_217
+	scrdef scr_seq_0141_218
+	scrdef scr_seq_0141_219
+	scrdef scr_seq_0141_220
+	scrdef scr_seq_0141_221
+	scrdef scr_seq_0141_222
+	scrdef scr_seq_0141_223
+	scrdef scr_seq_0141_224
+	scrdef scr_seq_0141_225
+	scrdef scr_seq_0141_226
+	scrdef scr_seq_0141_227
+	scrdef scr_seq_0141_228
+	scrdef scr_seq_0141_229
+	scrdef scr_seq_0141_230
+	scrdef scr_seq_0141_231
+	scrdef scr_seq_0141_232
+	scrdef scr_seq_0141_233
+	scrdef scr_seq_0141_234
+	scrdef scr_seq_0141_235
+	scrdef scr_seq_0141_236
+	scrdef scr_seq_0141_237
+	scrdef scr_seq_0141_238
+	scrdef scr_seq_0141_239
+	scrdef scr_seq_0141_240
+	scrdef scr_seq_0141_241
+	scrdef scr_seq_0141_242
+	scrdef scr_seq_0141_243
+	scrdef scr_seq_0141_244
+	scrdef scr_seq_0141_245
+	scrdef scr_seq_0141_246
+	scrdef scr_seq_0141_247
+	scrdef scr_seq_0141_248
+	scrdef scr_seq_0141_249
+	scrdef scr_seq_0141_250
+	scrdef scr_seq_0141_251
+	scrdef scr_seq_0141_252
+	scrdef scr_seq_0141_253
+	scrdef scr_seq_0141_254
+	scrdef scr_seq_0141_255
 	scrdef_end
 
-scr_seq_0141_0402:
+scr_seq_0141_000:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0414:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0416:
+scr_seq_0141_001:
 	setvar VAR_SPECIAL_x8008, 18
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0428:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_042A:
+scr_seq_0141_002:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_043C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_043E:
+scr_seq_0141_003:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0450:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0452:
+scr_seq_0141_004:
 	setvar VAR_SPECIAL_x8008, 4
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0464:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0466:
+scr_seq_0141_005:
 	setvar VAR_SPECIAL_x8008, 50
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0478:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_047A:
+scr_seq_0141_006:
 	setvar VAR_SPECIAL_x8008, 51
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_048C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_048E:
+scr_seq_0141_007:
 	setvar VAR_SPECIAL_x8008, 22
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_04A0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_04A2:
+scr_seq_0141_008:
 	setvar VAR_SPECIAL_x8008, 60
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_04B4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_04B6:
+scr_seq_0141_009:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_04C8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_04CA:
+scr_seq_0141_010:
 	setvar VAR_SPECIAL_x8008, 78
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_04DC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_04DE:
+scr_seq_0141_011:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_04F0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_04F2:
+scr_seq_0141_012:
 	setvar VAR_SPECIAL_x8008, 25
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0504:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0506:
+scr_seq_0141_013:
 	setvar VAR_SPECIAL_x8008, 36
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0518:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_051A:
+scr_seq_0141_014:
 	setvar VAR_SPECIAL_x8008, 34
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_052C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_052E:
+scr_seq_0141_015:
 	setvar VAR_SPECIAL_x8008, 155
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0540:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0542:
+scr_seq_0141_016:
 	setvar VAR_SPECIAL_x8008, 151
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0554:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0556:
+scr_seq_0141_017:
 	setvar VAR_SPECIAL_x8008, 36
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0568:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_056A:
+scr_seq_0141_018:
 	setvar VAR_SPECIAL_x8008, 35
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_057C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_057E:
+scr_seq_0141_019:
 	setvar VAR_SPECIAL_x8008, 158
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0590:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0592:
+scr_seq_0141_020:
 	setvar VAR_SPECIAL_x8008, 81
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_05A4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_05A6:
+scr_seq_0141_021:
 	setvar VAR_SPECIAL_x8008, 90
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_05B8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_05BA:
+scr_seq_0141_022:
 	setvar VAR_SPECIAL_x8008, 91
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_05CC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_05CE:
+scr_seq_0141_023:
 	setvar VAR_SPECIAL_x8008, 154
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_05E0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_05E2:
+scr_seq_0141_024:
 	setvar VAR_SPECIAL_x8008, 243
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_05F4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_05F6:
+scr_seq_0141_025:
 	setvar VAR_SPECIAL_x8008, 37
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0608:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_060A:
+scr_seq_0141_026:
 	setvar VAR_SPECIAL_x8008, 249
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_061C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_061E:
+scr_seq_0141_027:
 	setvar VAR_SPECIAL_x8008, 270
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0630:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0632:
+scr_seq_0141_028:
 	setvar VAR_SPECIAL_x8008, 154
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0644:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0646:
+scr_seq_0141_029:
 	setvar VAR_SPECIAL_x8008, 79
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0658:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_065A:
+scr_seq_0141_030:
 	setvar VAR_SPECIAL_x8008, 3
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_066C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_066E:
+scr_seq_0141_031:
 	setvar VAR_SPECIAL_x8008, 336
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0680:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0682:
+scr_seq_0141_032:
 	setvar VAR_SPECIAL_x8008, 253
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0694:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0696:
+scr_seq_0141_033:
 	setvar VAR_SPECIAL_x8008, 57
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_06A8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_06AA:
+scr_seq_0141_034:
 	setvar VAR_SPECIAL_x8008, 3
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_06BC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_06BE:
+scr_seq_0141_035:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_06D0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_06D2:
+scr_seq_0141_036:
 	setvar VAR_SPECIAL_x8008, 21
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_06E4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_06E6:
+scr_seq_0141_037:
 	setvar VAR_SPECIAL_x8008, 58
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_06F8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_06FA:
+scr_seq_0141_038:
 	setvar VAR_SPECIAL_x8008, 366
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_070C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_070E:
+scr_seq_0141_039:
 	setvar VAR_SPECIAL_x8008, 40
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0720:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0722:
+scr_seq_0141_040:
 	setvar VAR_SPECIAL_x8008, 25
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0734:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0736:
+scr_seq_0141_041:
 	setvar VAR_SPECIAL_x8008, 26
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0748:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_074A:
+scr_seq_0141_042:
 	setvar VAR_SPECIAL_x8008, 345
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_075C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_075E:
+scr_seq_0141_043:
 	setvar VAR_SPECIAL_x8008, 28
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0770:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0772:
+scr_seq_0141_044:
 	setvar VAR_SPECIAL_x8008, 57
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0784:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0786:
+scr_seq_0141_045:
 	setvar VAR_SPECIAL_x8008, 18
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0798:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_079A:
+scr_seq_0141_046:
 	setvar VAR_SPECIAL_x8008, 38
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_07AC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_07AE:
+scr_seq_0141_047:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_07C0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_07C2:
+scr_seq_0141_048:
 	setvar VAR_SPECIAL_x8008, 390
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_07D4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_07D6:
+scr_seq_0141_049:
 	setvar VAR_SPECIAL_x8008, 409
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_07E8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_07EA:
+scr_seq_0141_050:
 	setvar VAR_SPECIAL_x8008, 39
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_07FC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_07FE:
+scr_seq_0141_051:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0810:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0812:
+scr_seq_0141_052:
 	setvar VAR_SPECIAL_x8008, 19
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0824:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0826:
+scr_seq_0141_053:
 	setvar VAR_SPECIAL_x8008, 223
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0838:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_083A:
+scr_seq_0141_054:
 	setvar VAR_SPECIAL_x8008, 38
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_084C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_084E:
+scr_seq_0141_055:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0860:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0862:
+scr_seq_0141_056:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0874:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0876:
+scr_seq_0141_057:
 	setvar VAR_SPECIAL_x8008, 228
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0888:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_088A:
+scr_seq_0141_058:
 	setvar VAR_SPECIAL_x8008, 444
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_089C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_089E:
+scr_seq_0141_059:
 	setvar VAR_SPECIAL_x8008, 405
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_08B0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_08B2:
+scr_seq_0141_060:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_08C4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_08C6:
+scr_seq_0141_061:
 	setvar VAR_SPECIAL_x8008, 393
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_08D8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_08DA:
+scr_seq_0141_062:
 	setvar VAR_SPECIAL_x8008, 22
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_08EC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_08EE:
+scr_seq_0141_063:
 	setvar VAR_SPECIAL_x8008, 218
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0900:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0902:
+scr_seq_0141_064:
 	setvar VAR_SPECIAL_x8008, 355
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0914:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0916:
+scr_seq_0141_065:
 	setvar VAR_SPECIAL_x8008, 107
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0928:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_092A:
+scr_seq_0141_066:
 	setvar VAR_SPECIAL_x8008, 25
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_093C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_093E:
+scr_seq_0141_067:
 	setvar VAR_SPECIAL_x8008, 18
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0950:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0952:
+scr_seq_0141_068:
 	setvar VAR_SPECIAL_x8008, 45
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0964:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0966:
+scr_seq_0141_069:
 	setvar VAR_SPECIAL_x8008, 339
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0978:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_097A:
+scr_seq_0141_070:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_098C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_098E:
+scr_seq_0141_071:
 	setvar VAR_SPECIAL_x8008, 78
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_09A0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_09A2:
+scr_seq_0141_072:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_09B4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_09B6:
+scr_seq_0141_073:
 	setvar VAR_SPECIAL_x8008, 51
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_09C8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_09CA:
+scr_seq_0141_074:
 	setvar VAR_SPECIAL_x8008, 50
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_09DC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_09DE:
+scr_seq_0141_075:
 	setvar VAR_SPECIAL_x8008, 24
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_09F0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_09F2:
+scr_seq_0141_076:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A04:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A06:
+scr_seq_0141_077:
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A18:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A1A:
+scr_seq_0141_078:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A2C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A2E:
+scr_seq_0141_079:
 	setvar VAR_SPECIAL_x8008, 41
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A40:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A42:
+scr_seq_0141_080:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A54:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A56:
+scr_seq_0141_081:
 	setvar VAR_SPECIAL_x8008, 45
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A68:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A6A:
+scr_seq_0141_082:
 	setvar VAR_SPECIAL_x8008, 24
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A7C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A7E:
+scr_seq_0141_083:
 	setvar VAR_SPECIAL_x8008, 255
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0A90:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0A92:
+scr_seq_0141_084:
 	setvar VAR_SPECIAL_x8008, 387
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0AA4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0AA6:
+scr_seq_0141_085:
 	setvar VAR_SPECIAL_x8008, 384
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0AB8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0ABA:
+scr_seq_0141_086:
 	setvar VAR_SPECIAL_x8008, 50
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0ACC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0ACE:
+scr_seq_0141_087:
 	setvar VAR_SPECIAL_x8008, 38
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0AE0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0AE2:
+scr_seq_0141_088:
 	setvar VAR_SPECIAL_x8008, 414
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0AF4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0AF6:
+scr_seq_0141_089:
 	setvar VAR_SPECIAL_x8008, 76
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B08:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B0A:
+scr_seq_0141_090:
 	setvar VAR_SPECIAL_x8008, 26
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B1C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B1E:
+scr_seq_0141_091:
 	setvar VAR_SPECIAL_x8008, 415
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B30:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B32:
+scr_seq_0141_092:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B44:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B46:
+scr_seq_0141_093:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B58:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B5A:
+scr_seq_0141_094:
 	setvar VAR_SPECIAL_x8008, 78
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B6C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B6E:
+scr_seq_0141_095:
 	setvar VAR_SPECIAL_x8008, 48
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B80:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B82:
+scr_seq_0141_096:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0B94:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0B96:
+scr_seq_0141_097:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0BA8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0BAA:
+scr_seq_0141_098:
 	setvar VAR_SPECIAL_x8008, 49
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0BBC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0BBE:
+scr_seq_0141_099:
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0BD0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0BD2:
+scr_seq_0141_100:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0BE4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0BE6:
+scr_seq_0141_101:
 	setvar VAR_SPECIAL_x8008, 41
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0BF8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0BFA:
+scr_seq_0141_102:
 	setvar VAR_SPECIAL_x8008, 50
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C0C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C0E:
+scr_seq_0141_103:
 	setvar VAR_SPECIAL_x8008, 28
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C20:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C22:
+scr_seq_0141_104:
 	setvar VAR_SPECIAL_x8008, 279
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C34:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C36:
+scr_seq_0141_105:
 	setvar VAR_SPECIAL_x8008, 317
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C48:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C4A:
+scr_seq_0141_106:
 	setvar VAR_SPECIAL_x8008, 69
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C5C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C5E:
+scr_seq_0141_107:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C70:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C72:
+scr_seq_0141_108:
 	setvar VAR_SPECIAL_x8008, 26
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C84:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C86:
+scr_seq_0141_109:
 	setvar VAR_SPECIAL_x8008, 324
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0C98:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0C9A:
+scr_seq_0141_110:
 	setvar VAR_SPECIAL_x8008, 392
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0CAC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0CAE:
+scr_seq_0141_111:
 	setvar VAR_SPECIAL_x8008, 38
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0CC0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0CC2:
+scr_seq_0141_112:
 	setvar VAR_SPECIAL_x8008, 28
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0CD4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0CD6:
+scr_seq_0141_113:
 	setvar VAR_SPECIAL_x8008, 78
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0CE8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0CEA:
+scr_seq_0141_114:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0CFC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0CFE:
+scr_seq_0141_115:
 	setvar VAR_SPECIAL_x8008, 278
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D10:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D12:
+scr_seq_0141_116:
 	setvar VAR_SPECIAL_x8008, 24
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D24:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D26:
+scr_seq_0141_117:
 	setvar VAR_SPECIAL_x8008, 47
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D38:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D3A:
+scr_seq_0141_118:
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D4C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D4E:
+scr_seq_0141_119:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D60:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D62:
+scr_seq_0141_120:
 	setvar VAR_SPECIAL_x8008, 316
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D74:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D76:
+scr_seq_0141_121:
 	setvar VAR_SPECIAL_x8008, 321
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D88:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D8A:
+scr_seq_0141_122:
 	setvar VAR_SPECIAL_x8008, 50
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0D9C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0D9E:
+scr_seq_0141_123:
 	setvar VAR_SPECIAL_x8008, 24
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0DB0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0DB2:
+scr_seq_0141_124:
 	setvar VAR_SPECIAL_x8008, 367
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0DC4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0DC6:
+scr_seq_0141_125:
 	setvar VAR_SPECIAL_x8008, 40
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0DD8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0DDA:
+scr_seq_0141_126:
 	setvar VAR_SPECIAL_x8008, 235
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0DEC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0DEE:
+scr_seq_0141_127:
 	setvar VAR_SPECIAL_x8008, 78
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E00:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E02:
+scr_seq_0141_128:
 	setvar VAR_SPECIAL_x8008, 48
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E14:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E16:
+scr_seq_0141_129:
 	setvar VAR_SPECIAL_x8008, 51
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E28:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E2A:
+scr_seq_0141_130:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E3C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E3E:
+scr_seq_0141_131:
 	setvar VAR_SPECIAL_x8008, 39
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E50:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E52:
+scr_seq_0141_132:
 	setvar VAR_SPECIAL_x8008, 25
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E64:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E66:
+scr_seq_0141_133:
 	setvar VAR_SPECIAL_x8008, 25
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E78:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E7A:
+scr_seq_0141_134:
 	setvar VAR_SPECIAL_x8008, 55
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0E8C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0E8E:
+scr_seq_0141_135:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0EA0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0EA2:
+scr_seq_0141_136:
 	setvar VAR_SPECIAL_x8008, 373
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0EB4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0EB6:
+scr_seq_0141_137:
 	setvar VAR_SPECIAL_x8008, 376
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0EC8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0ECA:
+scr_seq_0141_138:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0EDC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0EDE:
+scr_seq_0141_139:
 	setvar VAR_SPECIAL_x8008, 46
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0EF0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0EF2:
+scr_seq_0141_140:
 	setvar VAR_SPECIAL_x8008, 61
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F04:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F06:
+scr_seq_0141_141:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F18:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F1A:
+scr_seq_0141_142:
 	setvar VAR_SPECIAL_x8008, 39
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F2C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F2E:
+scr_seq_0141_143:
 	setvar VAR_SPECIAL_x8008, 370
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F40:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F42:
+scr_seq_0141_144:
 	setvar VAR_SPECIAL_x8008, 297
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F54:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F56:
+scr_seq_0141_145:
 	setvar VAR_SPECIAL_x8008, 67
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F68:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F6A:
+scr_seq_0141_146:
 	setvar VAR_SPECIAL_x8008, 77
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F7C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F7E:
+scr_seq_0141_147:
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0F90:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0F92:
+scr_seq_0141_148:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0FA4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0FA6:
+scr_seq_0141_149:
 	setvar VAR_SPECIAL_x8008, 426
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0FB8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0FBA:
+scr_seq_0141_150:
 	setvar VAR_SPECIAL_x8008, 46
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0FCC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0FCE:
+scr_seq_0141_151:
 	setvar VAR_SPECIAL_x8008, 51
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0FE0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0FE2:
+scr_seq_0141_152:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_0FF4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_0FF6:
+scr_seq_0141_153:
 	setvar VAR_SPECIAL_x8008, 24
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1008:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_100A:
+scr_seq_0141_154:
 	setvar VAR_SPECIAL_x8008, 246
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_101C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_101E:
+scr_seq_0141_155:
 	setvar VAR_SPECIAL_x8008, 399
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1030:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1032:
+scr_seq_0141_156:
 	setvar VAR_SPECIAL_x8008, 47
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1044:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1046:
+scr_seq_0141_157:
 	setvar VAR_SPECIAL_x8008, 49
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1058:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_105A:
+scr_seq_0141_158:
 	setvar VAR_SPECIAL_x8008, 41
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_106C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_106E:
+scr_seq_0141_159:
 	setvar VAR_SPECIAL_x8008, 250
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1080:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1082:
+scr_seq_0141_160:
 	setvar VAR_SPECIAL_x8008, 40
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1094:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1096:
+scr_seq_0141_161:
 	setvar VAR_SPECIAL_x8008, 24
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_10A8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_10AA:
+scr_seq_0141_162:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_10BC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_10BE:
+scr_seq_0141_163:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_10D0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_10D2:
+scr_seq_0141_164:
 	setvar VAR_SPECIAL_x8008, 28
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_10E4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_10E6:
+scr_seq_0141_165:
 	setvar VAR_SPECIAL_x8008, 59
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_10F8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_10FA:
+scr_seq_0141_166:
 	setvar VAR_SPECIAL_x8008, 381
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_110C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_110E:
+scr_seq_0141_167:
 	setvar VAR_SPECIAL_x8008, 28
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1120:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1122:
+scr_seq_0141_168:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1134:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1136:
+scr_seq_0141_169:
 	setvar VAR_SPECIAL_x8008, 25
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1148:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_114A:
+scr_seq_0141_170:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_115C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_115E:
+scr_seq_0141_171:
 	setvar VAR_SPECIAL_x8008, 56
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1170:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1172:
+scr_seq_0141_172:
 	setvar VAR_SPECIAL_x8008, 68
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1184:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1186:
+scr_seq_0141_173:
 	setvar VAR_SPECIAL_x8008, 81
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1198:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_119A:
+scr_seq_0141_174:
 	setvar VAR_SPECIAL_x8008, 50
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_11AC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_11AE:
+scr_seq_0141_175:
 	setvar VAR_SPECIAL_x8008, 329
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_11C0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_11C2:
+scr_seq_0141_176:
 	setvar VAR_SPECIAL_x8008, 280
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_11D4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_11D6:
+scr_seq_0141_177:
 	setvar VAR_SPECIAL_x8008, 41
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_11E8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_11EA:
+scr_seq_0141_178:
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_11FC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_11FE:
+scr_seq_0141_179:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1210:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1212:
+scr_seq_0141_180:
 	setvar VAR_SPECIAL_x8008, 17
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1224:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1226:
+scr_seq_0141_181:
 	setvar VAR_SPECIAL_x8008, 353
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1238:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_123A:
+scr_seq_0141_182:
 	setvar VAR_SPECIAL_x8008, 45
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_124C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_124E:
+scr_seq_0141_183:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1260:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1262:
+scr_seq_0141_184:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1274:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1276:
+scr_seq_0141_185:
 	setvar VAR_SPECIAL_x8008, 406
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1288:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_128A:
+scr_seq_0141_186:
 	setvar VAR_SPECIAL_x8008, 50
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_129C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_129E:
+scr_seq_0141_187:
 	setvar VAR_SPECIAL_x8008, 319
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_12B0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_12B2:
+scr_seq_0141_188:
 	setvar VAR_SPECIAL_x8008, 288
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_12C4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_12C6:
+scr_seq_0141_189:
 	setvar VAR_SPECIAL_x8008, 53
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_12D8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_12DA:
+scr_seq_0141_190:
 	setvar VAR_SPECIAL_x8008, 315
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_12EC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_12EE:
+scr_seq_0141_191:
 	setvar VAR_SPECIAL_x8008, 389
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1300:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1302:
+scr_seq_0141_192:
 	setvar VAR_SPECIAL_x8008, 368
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1314:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1316:
+scr_seq_0141_193:
 	setvar VAR_SPECIAL_x8008, 396
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1328:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_132A:
+scr_seq_0141_194:
 	setvar VAR_SPECIAL_x8008, 40
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_133C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_133E:
+scr_seq_0141_195:
 	setvar VAR_SPECIAL_x8008, 383
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1350:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1352:
+scr_seq_0141_196:
 	setvar VAR_SPECIAL_x8008, 47
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1364:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1366:
+scr_seq_0141_197:
 	setvar VAR_SPECIAL_x8008, 51
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1378:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_137A:
+scr_seq_0141_198:
 	setvar VAR_SPECIAL_x8008, 28
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_138C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_138E:
+scr_seq_0141_199:
 	setvar VAR_SPECIAL_x8008, 110
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_13A0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_13A2:
+scr_seq_0141_200:
 	setvar VAR_SPECIAL_x8008, 418
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_13B4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_13B6:
+scr_seq_0141_201:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_13C8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_13CA:
+scr_seq_0141_202:
 	setvar VAR_SPECIAL_x8008, 269
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_13DC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_13DE:
+scr_seq_0141_203:
 	setvar VAR_SPECIAL_x8008, 24
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_13F0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_13F2:
+scr_seq_0141_204:
 	setvar VAR_SPECIAL_x8008, 46
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1404:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1406:
+scr_seq_0141_205:
 	setvar VAR_SPECIAL_x8008, 219
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1418:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_141A:
+scr_seq_0141_206:
 	setvar VAR_SPECIAL_x8008, 394
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_142C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_142E:
+scr_seq_0141_207:
 	setvar VAR_SPECIAL_x8008, 49
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1440:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1442:
+scr_seq_0141_208:
 	setvar VAR_SPECIAL_x8008, 66
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1454:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1456:
+scr_seq_0141_209:
 	setvar VAR_SPECIAL_x8008, 51
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1468:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_146A:
+scr_seq_0141_210:
 	setvar VAR_SPECIAL_x8008, 318
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_147C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_147E:
+scr_seq_0141_211:
 	setvar VAR_SPECIAL_x8008, 413
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1490:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1492:
+scr_seq_0141_212:
 	setvar VAR_SPECIAL_x8008, 48
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_14A4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_14A6:
+scr_seq_0141_213:
 	setvar VAR_SPECIAL_x8008, 40
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_14B8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_14BA:
+scr_seq_0141_214:
 	setvar VAR_SPECIAL_x8008, 56
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_14CC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_14CE:
+scr_seq_0141_215:
 	setvar VAR_SPECIAL_x8008, 65
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_14E0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_14E2:
+scr_seq_0141_216:
 	setvar VAR_SPECIAL_x8008, 85
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_14F4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_14F6:
+scr_seq_0141_217:
 	setvar VAR_SPECIAL_x8008, 404
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1508:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_150A:
+scr_seq_0141_218:
 	setvar VAR_SPECIAL_x8008, 267
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_151C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_151E:
+scr_seq_0141_219:
 	setvar VAR_SPECIAL_x8008, 296
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1530:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1532:
+scr_seq_0141_220:
 	setvar VAR_SPECIAL_x8008, 45
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1544:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1546:
+scr_seq_0141_221:
 	setvar VAR_SPECIAL_x8008, 323
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1558:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_155A:
+scr_seq_0141_222:
 	setvar VAR_SPECIAL_x8008, 20
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_156C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_156E:
+scr_seq_0141_223:
 	setvar VAR_SPECIAL_x8008, 286
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1580:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1582:
+scr_seq_0141_224:
 	setvar VAR_SPECIAL_x8008, 84
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1594:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1596:
+scr_seq_0141_225:
 	setvar VAR_SPECIAL_x8008, 28
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_15A8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_15AA:
+scr_seq_0141_226:
 	setvar VAR_SPECIAL_x8008, 89
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_15BC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_15BE:
+scr_seq_0141_227:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_15D0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_15D2:
+scr_seq_0141_228:
 	setvar VAR_SPECIAL_x8008, 340
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_15E4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_15E6:
+scr_seq_0141_229:
 	setvar VAR_SPECIAL_x8008, 382
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_15F8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_15FA:
+scr_seq_0141_230:
 	setvar VAR_SPECIAL_x8008, 362
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_160C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_160E:
+scr_seq_0141_231:
 	setvar VAR_SPECIAL_x8008, 325
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1620:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1622:
+scr_seq_0141_232:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1634:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1636:
+scr_seq_0141_233:
 	setvar VAR_SPECIAL_x8008, 320
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1648:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_164A:
+scr_seq_0141_234:
 	setvar VAR_SPECIAL_x8008, 109
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_165C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_165E:
+scr_seq_0141_235:
 	setvar VAR_SPECIAL_x8008, 78
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1670:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1672:
+scr_seq_0141_236:
 	setvar VAR_SPECIAL_x8008, 403
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1684:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1686:
+scr_seq_0141_237:
 	setvar VAR_SPECIAL_x8008, 268
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1698:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_169A:
+scr_seq_0141_238:
 	setvar VAR_SPECIAL_x8008, 41
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_16AC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_16AE:
+scr_seq_0141_239:
 	setvar VAR_SPECIAL_x8008, 49
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_16C0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_16C2:
+scr_seq_0141_240:
 	setvar VAR_SPECIAL_x8008, 46
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_16D4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_16D6:
+scr_seq_0141_241:
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_16E8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_16EA:
+scr_seq_0141_242:
 	setvar VAR_SPECIAL_x8008, 41
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_16FC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_16FE:
+scr_seq_0141_243:
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1710:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1712:
+scr_seq_0141_244:
 	setvar VAR_SPECIAL_x8008, 92
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1724:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1726:
+scr_seq_0141_245:
 	setvar VAR_SPECIAL_x8008, 254
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1738:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_173A:
+scr_seq_0141_246:
 	setvar VAR_SPECIAL_x8008, 51
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_174C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_174E:
+scr_seq_0141_247:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1760:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1762:
+scr_seq_0141_248:
 	setvar VAR_SPECIAL_x8008, 351
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1774:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_1776:
+scr_seq_0141_249:
 	setvar VAR_SPECIAL_x8008, 314
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_1788:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_178A:
+scr_seq_0141_250:
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_179C:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_179E:
+scr_seq_0141_251:
 	setvar VAR_SPECIAL_x8008, 2
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_17B0:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_17B2:
+scr_seq_0141_252:
 	setvar VAR_SPECIAL_x8008, 108
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_17C4:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_17C6:
+scr_seq_0141_253:
 	setvar VAR_SPECIAL_x8008, 322
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_17D8:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_17DA:
+scr_seq_0141_254:
 	setvar VAR_SPECIAL_x8008, 281
 	setvar VAR_SPECIAL_x8009, 1
-	goto scr_seq_0141_17EE
-
-scr_seq_0141_17EC:
+	goto scr_seq_0141_255
 	.byte 0x02, 0x00
-scr_seq_0141_17EE:
+scr_seq_0141_255:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -2055,140 +1547,116 @@ scr_seq_0141_17EE:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0141_1830
+	gotoif eq, _1830
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0141_19B8
+	gotoif eq, _19B8
 	end
 
-scr_seq_0141_182A:
+_182A:
 	closemsg
 	releaseall
 	end
 
-scr_seq_0141_1830:
+_1830:
 	callstd 2001
 	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0141_198D
+	gotoif eq, _198D
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0141_19A5
+	gotoif eq, _19A5
 	end
 
-scr_seq_0141_1862:
+_1862:
 	wait_fanfare
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, scr_seq_0141_18F5
+	gotoif eq, _18F5
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0141_18E2
+	gotoif eq, _18E2
 	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, scr_seq_0141_1941
+	gotoif eq, _1941
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0141_192E
+	gotoif eq, _192E
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0141_1954
+	gotoif eq, _1954
 	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, scr_seq_0141_1967
+	gotoif eq, _1967
 	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, scr_seq_0141_191B
+	gotoif eq, _191B
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0141_1908
+	gotoif eq, _1908
 	end
 
-scr_seq_0141_18E2:
+_18E2:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_18F3:
+	goto _197A
 	.byte 0x02, 0x00
-scr_seq_0141_18F5:
+_18F5:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_1906:
+	goto _197A
 	.byte 0x02, 0x00
-scr_seq_0141_1908:
+_1908:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_1919:
+	goto _197A
 	.byte 0x02, 0x00
-scr_seq_0141_191B:
+_191B:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_192C:
+	goto _197A
 	.byte 0x02, 0x00
-scr_seq_0141_192E:
+_192E:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_193F:
+	goto _197A
 	.byte 0x02
 	.byte 0x00
-scr_seq_0141_1941:
+_1941:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_1952:
+	goto _197A
 	.byte 0x02, 0x00
-scr_seq_0141_1954:
+_1954:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_1965:
+	goto _197A
 	.byte 0x02, 0x00
-scr_seq_0141_1967:
+_1967:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	buffer_pocket_name 2, VAR_SPECIAL_x800C
-	goto scr_seq_0141_197A
-
-scr_seq_0141_1978:
+	goto _197A
 	.byte 0x02, 0x00
-scr_seq_0141_197A:
-	npc_msg 9
+_197A:
+	npc_msg msg_0199_00009
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 1
-	goto scr_seq_0141_182A
-
-scr_seq_0141_198B:
+	goto _182A
 	.byte 0x02, 0x00
-scr_seq_0141_198D:
+_198D:
 	buffer_players_name 0
 	buffer_item_name_indef 1, VAR_SPECIAL_x8004
 	buffer_tmhm_move_name 2, VAR_SPECIAL_x8004
-	npc_msg 6
-	goto scr_seq_0141_1862
-
-scr_seq_0141_19A3:
+	npc_msg msg_0199_00006
+	goto _1862
 	.byte 0x02, 0x00
-scr_seq_0141_19A5:
+_19A5:
 	buffer_players_name 0
 	buffer_item_name_indef 1, VAR_SPECIAL_x8004
-	npc_msg 3
-	goto scr_seq_0141_1862
-
-scr_seq_0141_19B6:
+	npc_msg msg_0199_00003
+	goto _1862
 	.byte 0x02, 0x00
-scr_seq_0141_19B8:
+_19B8:
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	npc_msg 4
+	npc_msg msg_0199_00004
 	waitbutton
 	setvar VAR_SPECIAL_x800C, 0
-	goto scr_seq_0141_182A
-
-scr_seq_0141_19CE:
+	goto _182A
 	.byte 0x02, 0x00
 	.balign 4, 0

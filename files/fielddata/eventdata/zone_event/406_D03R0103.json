@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D03R0103.h",
   "bgs": [
     {
       "scr": 8121,
@@ -27,7 +28,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D03R0103_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -44,7 +45,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D03R0103_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -61,7 +62,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D03R0103_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -78,7 +79,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D03R0103_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -95,7 +96,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D03R0103_monstarball_5",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -112,7 +113,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D03R0103_breakrock",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -129,7 +130,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_D03R0103_breakrock_2",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -146,7 +147,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_D03R0103_breakrock_3",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -163,7 +164,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_D03R0103_breakrock_4",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -180,7 +181,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_D03R0103_breakrock_5",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -197,7 +198,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_D03R0103_breakrock_6",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -214,7 +215,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_D03R0103_breakrock_7",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -231,7 +232,7 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_D03R0103_breakrock_8",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -248,7 +249,7 @@
       "z": 0
     },
     {
-      "id": 13,
+      "id": "obj_D03R0103_breakrock_9",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -265,12 +266,12 @@
       "z": 0
     },
     {
-      "id": 14,
+      "id": "obj_D03R0103_tsure_poke_608",
       "ovid": "SPRITE_TSURE_POKE_608",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_305",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D03R0103_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -282,7 +283,7 @@
       "z": 0
     },
     {
-      "id": 15,
+      "id": "obj_D03R0103_breakrock_10",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,

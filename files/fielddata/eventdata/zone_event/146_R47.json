@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_R47.h",
   "bgs": [
     {
       "scr": 8039,
@@ -19,7 +20,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_R47_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -36,7 +37,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_R47_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -53,7 +54,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_R47_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -70,7 +71,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_R47_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -87,12 +88,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_R47_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2CF",
-      "scr": 2,
+      "scr": "_EV_scr_seq_R47_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -104,12 +105,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_R47_leader3",
       "ovid": "SPRITE_LEADER3",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2DF",
-      "scr": 4,
+      "scr": "_EV_scr_seq_R47_004",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -121,7 +122,7 @@
       "z": 851968
     },
     {
-      "id": 6,
+      "id": "obj_R47_gsman3",
       "ovid": "SPRITE_GSMAN3",
       "mvt": 0,
       "type": 1,
@@ -138,7 +139,7 @@
       "z": 851968
     },
     {
-      "id": 7,
+      "id": "obj_R47_gswoman3",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 0,
       "type": 1,
@@ -155,7 +156,7 @@
       "z": 851968
     },
     {
-      "id": 8,
+      "id": "obj_R47_campboy_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 17,
       "type": 1,
@@ -172,7 +173,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_R47_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 1,
@@ -189,7 +190,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_R47_gswoman2",
       "ovid": "SPRITE_GSWOMAN2",
       "mvt": 0,
       "type": 1,
@@ -206,7 +207,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_R47_mount_2_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 8,
       "type": 1,
@@ -223,7 +224,7 @@
       "z": 0
     },
     {
-      "id": 12,
+      "id": "obj_R47_gsleader5",
       "ovid": "SPRITE_GSLEADER5",
       "mvt": 0,
       "type": 0,

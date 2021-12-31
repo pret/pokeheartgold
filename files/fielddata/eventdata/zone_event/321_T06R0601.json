@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T06R0601.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T06R0601_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 0,

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_W20.h",
   "bgs": [
     {
-      "scr": 1,
+      "scr": "_EV_scr_seq_W20_001",
       "type": 1,
       "x": 1125,
       "y": 502,
@@ -43,7 +44,7 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_W20_gsswimmerm",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 0,
       "type": 1,
@@ -60,7 +61,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_W20_campboy_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 0,
       "type": 1,
@@ -77,7 +78,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_W20_picnicgirl_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 1,
@@ -94,7 +95,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_W20_picnicgirl_2_2",
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 4,
       "type": 1,
@@ -111,7 +112,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_W20_gsman2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 6,
       "type": 1,
@@ -128,7 +129,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_W20_gsman2_2",
       "ovid": "SPRITE_GSMAN2",
       "mvt": 0,
       "type": 1,
@@ -145,7 +146,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_W20_gsswimmerw",
       "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 10,
       "type": 1,
@@ -162,7 +163,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_W20_gsswimmerw_2",
       "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 20,
       "type": 4,
@@ -179,7 +180,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_W20_gsswimmerm_2",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 4,
       "type": 1,
@@ -196,7 +197,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_W20_gsswimmerm_3",
       "ovid": "SPRITE_GSSWIMMERM",
       "mvt": 9,
       "type": 1,
@@ -213,7 +214,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_W20_gsswimmerw_3",
       "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 0,
       "type": 1,
@@ -230,7 +231,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_W20_gsswimmerw_4",
       "ovid": "SPRITE_GSSWIMMERW",
       "mvt": 5,
       "type": 1,

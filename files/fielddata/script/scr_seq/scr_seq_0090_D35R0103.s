@@ -1,98 +1,100 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D35R0103.h"
+#include "msgdata/msg/msg_0113_D35R0103.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0090_D35R0103_012D ; 000
-	scrdef scr_seq_0090_D35R0103_0360 ; 001
-	scrdef scr_seq_0090_D35R0103_003E ; 002
-	scrdef scr_seq_0090_D35R0103_03C4 ; 003
-	scrdef scr_seq_0090_D35R0103_0770 ; 004
-	scrdef scr_seq_0090_D35R0103_07D4 ; 005
-	scrdef scr_seq_0090_D35R0103_0838 ; 006
-	scrdef scr_seq_0090_D35R0103_00B2 ; 007
-	scrdef scr_seq_0090_D35R0103_0A40 ; 008
-	scrdef scr_seq_0090_D35R0103_0A74 ; 009
-	scrdef scr_seq_0090_D35R0103_0AB8 ; 010
-	scrdef scr_seq_0090_D35R0103_0288 ; 011
-	scrdef scr_seq_0090_D35R0103_0344 ; 012
-	scrdef scr_seq_0090_D35R0103_01CC ; 013
-	scrdef scr_seq_0090_D35R0103_0238 ; 014
+	scrdef scr_seq_D35R0103_000
+	scrdef scr_seq_D35R0103_001
+	scrdef scr_seq_D35R0103_002
+	scrdef scr_seq_D35R0103_003
+	scrdef scr_seq_D35R0103_004
+	scrdef scr_seq_D35R0103_005
+	scrdef scr_seq_D35R0103_006
+	scrdef scr_seq_D35R0103_007
+	scrdef scr_seq_D35R0103_008
+	scrdef scr_seq_D35R0103_009
+	scrdef scr_seq_D35R0103_010
+	scrdef scr_seq_D35R0103_011
+	scrdef scr_seq_D35R0103_012
+	scrdef scr_seq_D35R0103_013
+	scrdef scr_seq_D35R0103_014
 	scrdef_end
 
-scr_seq_0090_D35R0103_003E:
+scr_seq_D35R0103_002:
 	scrcmd_710
 	comparevartovalue VAR_UNK_40A9, 3
-	gotoif ge, scr_seq_0090_D35R0103_004F
+	gotoif ge, _004F
 	end
 
-scr_seq_0090_D35R0103_004F:
+_004F:
 	move_person 5, 29, 0, 22, 0
 	move_person 6, 29, 0, 22, 0
 	comparevartovalue VAR_UNK_40AC, 10
-	gotoif ge, scr_seq_0090_D35R0103_00B0
+	gotoif ge, _00B0
 	comparevartovalue VAR_UNK_40A9, 4
-	gotoif ge, scr_seq_0090_D35R0103_0083
+	gotoif ge, _0083
 	end
 
-scr_seq_0090_D35R0103_0083:
+_0083:
 	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, scr_seq_0090_D35R0103_00B0
+	gotoif ne, _00B0
 	setvar VAR_TEMP_x4007, 77
 	move_person 0, 39, 0, 18, 0
 	move_person 1, 40, 0, 18, 0
 	end
 
-scr_seq_0090_D35R0103_00B0:
+_00B0:
 	end
 
-scr_seq_0090_D35R0103_00B2:
+scr_seq_D35R0103_007:
 	checkflag FLAG_UNK_0A4
-	gotoif TRUE, scr_seq_0090_D35R0103_00BF
+	gotoif TRUE, _00BF
 	end
 
-scr_seq_0090_D35R0103_00BF:
+_00BF:
 	scrcmd_221 16384, 1
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0090_D35R0103_0127
+	gotoif eq, _0127
 	comparevartovalue VAR_TEMP_x400A, 1
-	gotoif ne, scr_seq_0090_D35R0103_00F4
+	gotoif ne, _00F4
 	setflag FLAG_UNK_96B
 	hide_person 9
 	hide_person 12
 	setflag FLAG_UNK_1F5
-	goto scr_seq_0090_D35R0103_0127
+	goto _0127
 
-scr_seq_0090_D35R0103_00F4:
+_00F4:
 	comparevartovalue VAR_TEMP_x400A, 2
-	gotoif ne, scr_seq_0090_D35R0103_0117
+	gotoif ne, _0117
 	setflag FLAG_UNK_96C
 	hide_person 10
 	hide_person 13
 	setflag FLAG_UNK_1F6
-	goto scr_seq_0090_D35R0103_0127
+	goto _0127
 
-scr_seq_0090_D35R0103_0117:
+_0117:
 	setflag FLAG_UNK_96D
 	hide_person 11
 	hide_person 14
 	setflag FLAG_UNK_1F7
-scr_seq_0090_D35R0103_0127:
+_0127:
 	clearflag FLAG_UNK_0A4
 	end
 
-scr_seq_0090_D35R0103_012D:
+scr_seq_D35R0103_000:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0090_D35R0103_01AC
+	apply_movement obj_player, _01AC
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	npc_msg 0
+	npc_msg msg_0113_D35R0103_00000
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -104,10 +106,10 @@ scr_seq_0090_D35R0103_012D:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	buffer_players_name 0
-	gender_msgbox 1, 2
+	gender_msgbox msg_0113_D35R0103_00001, msg_0113_D35R0103_00002
 	closemsg
-	apply_movement 0, scr_seq_0090_D35R0103_01B8
-	apply_movement 1, scr_seq_0090_D35R0103_01C0
+	apply_movement obj_D35R0103_wataru, _01B8
+	apply_movement obj_D35R0103_tsure_poke_607, _01C0
 	wait_movement
 	hide_person 0
 	hide_person 1
@@ -115,34 +117,32 @@ scr_seq_0090_D35R0103_012D:
 	releaseall
 	setvar VAR_UNK_40A9, 1
 	end
-
-scr_seq_0090_D35R0103_01A9:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0090_D35R0103_01AC:
+_01AC:
 	step 15, 5
 	step 12, 4
 	step_end
 
-scr_seq_0090_D35R0103_01B8:
+_01B8:
 	step 15, 11
 	step_end
 
-scr_seq_0090_D35R0103_01C0:
+_01C0:
 	step 61, 1
 	step 15, 11
 	step_end
-scr_seq_0090_D35R0103_01CC:
+scr_seq_D35R0103_013:
 	scrcmd_609
 	lockall
-	apply_movement 16, scr_seq_0090_D35R0103_0214
+	apply_movement obj_D35R0103_tsure_poke_613, _0214
 	wait_movement
-	npc_msg 24
+	npc_msg msg_0113_D35R0103_00024
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 16, scr_seq_0090_D35R0103_021C
+	apply_movement obj_D35R0103_tsure_poke_613, _021C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -153,29 +153,27 @@ scr_seq_0090_D35R0103_01CC:
 	clearflag FLAG_UNK_24C
 	releaseall
 	end
-
-scr_seq_0090_D35R0103_0213:
 	.byte 0x00
 
-scr_seq_0090_D35R0103_0214:
+_0214:
 	step 50, 2
 	step_end
 
-scr_seq_0090_D35R0103_021C:
+_021C:
 	step 3, 1
 	step 51, 1
 	step 19, 5
 	step_end
 	.byte 0x3f, 0x00, 0x01, 0x00
 	.byte 0x0f, 0x00, 0x03, 0x00, 0xfe, 0x00, 0x00, 0x00
-scr_seq_0090_D35R0103_0238:
+scr_seq_D35R0103_014:
 	scrcmd_609
 	lockall
-	apply_movement 17, scr_seq_0090_D35R0103_0270
+	apply_movement obj_D35R0103_tsure_poke_613_2, _0270
 	wait_movement
-	npc_msg 25
+	npc_msg msg_0113_D35R0103_00025
 	closemsg
-	apply_movement 17, scr_seq_0090_D35R0103_0278
+	apply_movement obj_D35R0103_tsure_poke_613_2, _0278
 	wait_movement
 	setvar VAR_UNK_40AC, 7
 	hide_person 17
@@ -184,41 +182,39 @@ scr_seq_0090_D35R0103_0238:
 	show_person 18
 	releaseall
 	end
-
-scr_seq_0090_D35R0103_026F:
 	.byte 0x00
 
-scr_seq_0090_D35R0103_0270:
+_0270:
 	step 51, 2
 	step_end
 
-scr_seq_0090_D35R0103_0278:
+_0278:
 	step 2, 1
 	step 50, 1
 	step 18, 10
 	step_end
-scr_seq_0090_D35R0103_0288:
+scr_seq_D35R0103_011:
 	scrcmd_609
 	lockall
-	apply_movement 18, scr_seq_0090_D35R0103_0308
+	apply_movement obj_D35R0103_tsure_poke_613_3, _0308
 	wait_movement
-	npc_msg 26
+	npc_msg msg_0113_D35R0103_00026
 	closemsg
-	npc_msg 27
+	npc_msg msg_0113_D35R0103_00027
 	closemsg
 	play_se SEQ_SE_DP_DOOR10
-	apply_movement 5, scr_seq_0090_D35R0103_03B0
-	apply_movement 6, scr_seq_0090_D35R0103_03B8
+	apply_movement obj_D35R0103_babyboy1_9, _03B0
+	apply_movement obj_D35R0103_babyboy1_9_2, _03B8
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 24
-	gotoif ne, scr_seq_0090_D35R0103_02D7
-	apply_movement 18, scr_seq_0090_D35R0103_0324
-	goto scr_seq_0090_D35R0103_02DF
+	gotoif ne, _02D7
+	apply_movement obj_D35R0103_tsure_poke_613_3, _0324
+	goto _02DF
 
-scr_seq_0090_D35R0103_02D7:
-	apply_movement 18, scr_seq_0090_D35R0103_0310
-scr_seq_0090_D35R0103_02DF:
+_02D7:
+	apply_movement obj_D35R0103_tsure_poke_613_3, _0310
+_02DF:
 	wait_movement
 	setvar VAR_UNK_40AC, 8
 	hide_person 18
@@ -229,22 +225,20 @@ scr_seq_0090_D35R0103_02DF:
 	setflag FLAG_UNK_0D3
 	releaseall
 	end
-
-scr_seq_0090_D35R0103_0305:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0090_D35R0103_0308:
+_0308:
 	step 48, 2
 	step_end
 
-scr_seq_0090_D35R0103_0310:
+_0310:
 	step 48, 2
 	step 2, 1
 	step 63, 1
 	step 18, 12
 	step_end
 
-scr_seq_0090_D35R0103_0324:
+_0324:
 	step 48, 2
 	step 2, 1
 	step 63, 1
@@ -253,54 +247,50 @@ scr_seq_0090_D35R0103_0324:
 	step 17, 1
 	step 18, 10
 	step_end
-scr_seq_0090_D35R0103_0344:
-	goto scr_seq_0090_D35R0103_0288
-
-scr_seq_0090_D35R0103_034A:
+scr_seq_D35R0103_012:
+	goto scr_seq_D35R0103_011
 	.byte 0x02, 0x00, 0x4b, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00, 0x12, 0x00, 0x09, 0x00, 0x10, 0x00, 0x05, 0x00, 0xfe, 0x00, 0x00, 0x00
-scr_seq_0090_D35R0103_0360:
+scr_seq_D35R0103_001:
 	comparevartovalue VAR_UNK_40AC, 8
-	gotoif ge, scr_seq_0090_D35R0103_03A0
+	gotoif ge, _03A0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0D3
-	gotoif FALSE, scr_seq_0090_D35R0103_03A2
+	gotoif FALSE, _03A2
 	buffer_players_name 0
-	npc_msg 21
+	npc_msg msg_0113_D35R0103_00021
 	closemsg
 	play_se SEQ_SE_DP_DOOR10
-	apply_movement 5, scr_seq_0090_D35R0103_03B0
-	apply_movement 6, scr_seq_0090_D35R0103_03B8
+	apply_movement obj_D35R0103_babyboy1_9, _03B0
+	apply_movement obj_D35R0103_babyboy1_9_2, _03B8
 	wait_movement
 	releaseall
-scr_seq_0090_D35R0103_03A0:
+_03A0:
 	end
 
-scr_seq_0090_D35R0103_03A2:
-	npc_msg 20
+_03A2:
+	npc_msg msg_0113_D35R0103_00020
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0090_D35R0103_03AD:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0090_D35R0103_03B0:
+_03B0:
 	step 14, 2
 	step_end
 
-scr_seq_0090_D35R0103_03B8:
+_03B8:
 	step 63, 1
 	step 14, 1
 	step_end
-scr_seq_0090_D35R0103_03C4:
+scr_seq_D35R0103_003:
 	scrcmd_609
 	lockall
-	npc_msg 3
-	apply_movement 255, scr_seq_0090_D35R0103_0630
+	npc_msg msg_0113_D35R0103_00003
+	apply_movement obj_player, _0630
 	wait_movement
 	closemsg
 	clearflag FLAG_UNK_1F3
@@ -315,48 +305,48 @@ scr_seq_0090_D35R0103_03C4:
 	scrcmd_604 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 30
-	gotoif ne, scr_seq_0090_D35R0103_042E
-	apply_movement 255, scr_seq_0090_D35R0103_065C
-	goto scr_seq_0090_D35R0103_0436
+	gotoif ne, _042E
+	apply_movement obj_player, _065C
+	goto _0436
 
-scr_seq_0090_D35R0103_042E:
-	apply_movement 255, scr_seq_0090_D35R0103_0668
-scr_seq_0090_D35R0103_0436:
-	apply_movement 8, scr_seq_0090_D35R0103_0638
-	apply_movement 7, scr_seq_0090_D35R0103_0650
+_042E:
+	apply_movement obj_player, _0668
+_0436:
+	apply_movement obj_D35R0103_rkanbuw, _0638
+	apply_movement obj_D35R0103_rocketm_4, _0650
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 8, scr_seq_0090_D35R0103_0648
+	apply_movement obj_D35R0103_rkanbuw, _0648
 	wait_movement
-	npc_msg 4
+	npc_msg msg_0113_D35R0103_00004
 	closemsg
 	clearflag FLAG_UNK_1E5
 	show_person 0
 	show_person 1
 	move_person 0, 20, 1, 25, 3
 	move_person 1, 19, 1, 25, 0
-	apply_movement 0, scr_seq_0090_D35R0103_067C
-	apply_movement 1, scr_seq_0090_D35R0103_0684
+	apply_movement obj_D35R0103_wataru, _067C
+	apply_movement obj_D35R0103_tsure_poke_607, _0684
 	wait_movement
-	npc_msg 5
+	npc_msg msg_0113_D35R0103_00005
 	closemsg
-	apply_movement 1, scr_seq_0090_D35R0103_0690
+	apply_movement obj_D35R0103_tsure_poke_607, _0690
 	scrcmd_076 149, 0
 	scrcmd_077
-	apply_movement 8, scr_seq_0090_D35R0103_0648
+	apply_movement obj_D35R0103_rkanbuw, _0648
 	wait_movement
-	npc_msg 6
+	npc_msg msg_0113_D35R0103_00006
 	closemsg
-	apply_movement 8, scr_seq_0090_D35R0103_0698
-	apply_movement 7, scr_seq_0090_D35R0103_06A0
+	apply_movement obj_D35R0103_rkanbuw, _0698
+	apply_movement obj_D35R0103_rocketm_4, _06A0
 	wait_movement
 	scrcmd_562 675, 479, 499, 1
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0090_D35R0103_0620
-	npc_msg 8
+	gotoif eq, _0620
+	npc_msg msg_0113_D35R0103_00008
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -365,7 +355,7 @@ scr_seq_0090_D35R0103_0436:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0090_D35R0103_06A8
+	apply_movement obj_player, _06A8
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -380,36 +370,36 @@ scr_seq_0090_D35R0103_0436:
 	setflag FLAG_UNK_1E8
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	apply_movement 0, scr_seq_0090_D35R0103_06BC
-	apply_movement 1, scr_seq_0090_D35R0103_06C4
+	apply_movement obj_D35R0103_wataru, _06BC
+	apply_movement obj_D35R0103_tsure_poke_607, _06C4
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 10, 11
+	gender_msgbox msg_0113_D35R0103_00010, msg_0113_D35R0103_00011
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0090_D35R0103_0738
-	apply_movement 0, scr_seq_0090_D35R0103_06D0
-	apply_movement 1, scr_seq_0090_D35R0103_070C
+	apply_movement obj_player, _0738
+	apply_movement obj_D35R0103_wataru, _06D0
+	apply_movement obj_D35R0103_tsure_poke_607, _070C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_076 149, 0
 	scrcmd_077
-	apply_movement 0, scr_seq_0090_D35R0103_06FC
-	apply_movement 1, scr_seq_0090_D35R0103_072C
+	apply_movement obj_D35R0103_wataru, _06FC
+	apply_movement obj_D35R0103_tsure_poke_607, _072C
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 12, 13
+	gender_msgbox msg_0113_D35R0103_00012, msg_0113_D35R0103_00013
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0090_D35R0103_0744
-	apply_movement 0, scr_seq_0090_D35R0103_0758
-	apply_movement 1, scr_seq_0090_D35R0103_0760
+	apply_movement obj_player, _0744
+	apply_movement obj_D35R0103_wataru, _0758
+	apply_movement obj_D35R0103_tsure_poke_607, _0760
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -422,85 +412,83 @@ scr_seq_0090_D35R0103_0436:
 	setflag FLAG_UNK_998
 	end
 
-scr_seq_0090_D35R0103_0620:
+_0620:
 	white_out
 	setflag FLAG_UNK_1F3
 	setflag FLAG_UNK_1E5
 	releaseall
 	end
-
-scr_seq_0090_D35R0103_062E:
 	.byte 0x00, 0x00
 
-scr_seq_0090_D35R0103_0630:
+_0630:
 	step 75, 1
 	step_end
 
-scr_seq_0090_D35R0103_0638:
+_0638:
 	step 63, 1
 	step 16, 6
 	step 34, 1
 	step_end
 
-scr_seq_0090_D35R0103_0648:
+_0648:
 	step 34, 1
 	step_end
 
-scr_seq_0090_D35R0103_0650:
+_0650:
 	step 63, 2
 	step 16, 3
 	step_end
 
-scr_seq_0090_D35R0103_065C:
+_065C:
 	step 13, 5
 	step 35, 1
 	step_end
 
-scr_seq_0090_D35R0103_0668:
+_0668:
 	step 13, 2
 	step 14, 1
 	step 13, 3
 	step 35, 1
 	step_end
 
-scr_seq_0090_D35R0103_067C:
+_067C:
 	step 19, 10
 	step_end
 
-scr_seq_0090_D35R0103_0684:
+_0684:
 	step 62, 1
 	step 19, 10
 	step_end
 
-scr_seq_0090_D35R0103_0690:
+_0690:
 	step 51, 1
 	step_end
 
-scr_seq_0090_D35R0103_0698:
+_0698:
 	step 18, 1
 	step_end
 
-scr_seq_0090_D35R0103_06A0:
+_06A0:
 	step 16, 1
 	step_end
 
-scr_seq_0090_D35R0103_06A8:
+_06A8:
 	step 16, 2
 	step 19, 1
 	step 17, 2
 	step 2, 1
 	step_end
 
-scr_seq_0090_D35R0103_06BC:
+_06BC:
 	step 15, 2
 	step_end
 
-scr_seq_0090_D35R0103_06C4:
+_06C4:
 	step 61, 1
 	step 15, 2
 	step_end
 
-scr_seq_0090_D35R0103_06D0:
+_06D0:
 	step 12, 6
 	step 63, 2
 	step 14, 2
@@ -513,13 +501,13 @@ scr_seq_0090_D35R0103_06D0:
 	step 35, 1
 	step_end
 
-scr_seq_0090_D35R0103_06FC:
+_06FC:
 	step 14, 2
 	step 33, 1
 	step 33, 1
 	step_end
 
-scr_seq_0090_D35R0103_070C:
+_070C:
 	step 61, 1
 	step 15, 1
 	step 12, 5
@@ -529,33 +517,33 @@ scr_seq_0090_D35R0103_070C:
 	step 14, 4
 	step_end
 
-scr_seq_0090_D35R0103_072C:
+_072C:
 	step 62, 1
 	step 14, 2
 	step_end
 
-scr_seq_0090_D35R0103_0738:
+_0738:
 	step 63, 4
 	step 12, 5
 	step_end
 
-scr_seq_0090_D35R0103_0744:
+_0744:
 	step 61, 1
 	step 63, 1
 	step 12, 1
 	step 14, 5
 	step_end
 
-scr_seq_0090_D35R0103_0758:
+_0758:
 	step 15, 6
 	step_end
 
-scr_seq_0090_D35R0103_0760:
+_0760:
 	step 61, 1
 	step 14, 1
 	step 15, 5
 	step_end
-scr_seq_0090_D35R0103_0770:
+scr_seq_D35R0103_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -565,22 +553,22 @@ scr_seq_0090_D35R0103_0770:
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0090_D35R0103_089C
+	gotoif eq, _089C
 	scrcmd_221 16384, 0
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0090_D35R0103_07D0
+	gotoif eq, _07D0
 	setflag FLAG_UNK_0CB
 	checkflag FLAG_UNK_0CC
-	gotoif FALSE, scr_seq_0090_D35R0103_07D0
+	gotoif FALSE, _07D0
 	checkflag FLAG_UNK_0CD
-	gotoif FALSE, scr_seq_0090_D35R0103_07D0
-	goto scr_seq_0090_D35R0103_08A2
+	gotoif FALSE, _07D0
+	goto _08A2
 
-scr_seq_0090_D35R0103_07D0:
+_07D0:
 	releaseall
 	end
 
-scr_seq_0090_D35R0103_07D4:
+scr_seq_D35R0103_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -590,22 +578,22 @@ scr_seq_0090_D35R0103_07D4:
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0090_D35R0103_089C
+	gotoif eq, _089C
 	scrcmd_221 16384, 0
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0090_D35R0103_0834
+	gotoif eq, _0834
 	setflag FLAG_UNK_0CC
 	checkflag FLAG_UNK_0CB
-	gotoif FALSE, scr_seq_0090_D35R0103_0834
+	gotoif FALSE, _0834
 	checkflag FLAG_UNK_0CD
-	gotoif FALSE, scr_seq_0090_D35R0103_0834
-	goto scr_seq_0090_D35R0103_08A2
+	gotoif FALSE, _0834
+	goto _08A2
 
-scr_seq_0090_D35R0103_0834:
+_0834:
 	releaseall
 	end
 
-scr_seq_0090_D35R0103_0838:
+scr_seq_D35R0103_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -615,65 +603,65 @@ scr_seq_0090_D35R0103_0838:
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0090_D35R0103_089C
+	gotoif eq, _089C
 	scrcmd_221 16384, 0
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0090_D35R0103_0898
+	gotoif eq, _0898
 	setflag FLAG_UNK_0CD
 	checkflag FLAG_UNK_0CB
-	gotoif FALSE, scr_seq_0090_D35R0103_0898
+	gotoif FALSE, _0898
 	checkflag FLAG_UNK_0CC
-	gotoif FALSE, scr_seq_0090_D35R0103_0898
-	goto scr_seq_0090_D35R0103_08A2
+	gotoif FALSE, _0898
+	goto _08A2
 
-scr_seq_0090_D35R0103_0898:
+_0898:
 	releaseall
 	end
 
-scr_seq_0090_D35R0103_089C:
+_089C:
 	white_out
 	releaseall
 	end
 
-scr_seq_0090_D35R0103_08A2:
+_08A2:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
 	comparevartovalue VAR_TEMP_x4001, 16
-	gotoif ne, scr_seq_0090_D35R0103_08CD
-	apply_movement 255, scr_seq_0090_D35R0103_09E0
-	goto scr_seq_0090_D35R0103_08F0
+	gotoif ne, _08CD
+	apply_movement obj_player, _09E0
+	goto _08F0
 
-scr_seq_0090_D35R0103_08CD:
+_08CD:
 	comparevartovalue VAR_TEMP_x4001, 14
-	gotoif ne, scr_seq_0090_D35R0103_08E8
-	apply_movement 255, scr_seq_0090_D35R0103_09EC
-	goto scr_seq_0090_D35R0103_08F0
+	gotoif ne, _08E8
+	apply_movement obj_player, _09EC
+	goto _08F0
 
-scr_seq_0090_D35R0103_08E8:
-	apply_movement 255, scr_seq_0090_D35R0103_09F8
-scr_seq_0090_D35R0103_08F0:
+_08E8:
+	apply_movement obj_player, _09F8
+_08F0:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0090_D35R0103_0A04
-	apply_movement 1, scr_seq_0090_D35R0103_0A0C
+	apply_movement obj_D35R0103_wataru, _0A04
+	apply_movement obj_D35R0103_tsure_poke_607, _0A0C
 	wait_movement
-	npc_msg 15
+	npc_msg msg_0113_D35R0103_00015
 	setvar VAR_SPECIAL_x8004, 424
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	npc_msg 17
+	npc_msg msg_0113_D35R0103_00017
 	closemsg
-	apply_movement 0, scr_seq_0090_D35R0103_0A18
+	apply_movement obj_D35R0103_wataru, _0A18
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 18, 19
+	gender_msgbox msg_0113_D35R0103_00018, msg_0113_D35R0103_00019
 	closemsg
-	apply_movement 0, scr_seq_0090_D35R0103_0A20
-	apply_movement 1, scr_seq_0090_D35R0103_0A2C
+	apply_movement obj_D35R0103_wataru, _0A20
+	apply_movement obj_D35R0103_tsure_poke_607, _0A2C
 	wait_movement
 	hide_person 0
 	hide_person 1
@@ -706,107 +694,103 @@ scr_seq_0090_D35R0103_08F0:
 	end
 
 
-scr_seq_0090_D35R0103_09E0:
+_09E0:
 	step 13, 2
 	step 15, 10
 	step_end
 
-scr_seq_0090_D35R0103_09EC:
+_09EC:
 	step 13, 4
 	step 15, 10
 	step_end
 
-scr_seq_0090_D35R0103_09F8:
+_09F8:
 	step 13, 6
 	step 15, 10
 	step_end
 
-scr_seq_0090_D35R0103_0A04:
+_0A04:
 	step 14, 8
 	step_end
 
-scr_seq_0090_D35R0103_0A0C:
+_0A0C:
 	step 61, 1
 	step 14, 8
 	step_end
 
-scr_seq_0090_D35R0103_0A18:
+_0A18:
 	step 33, 1
 	step_end
 
-scr_seq_0090_D35R0103_0A20:
+_0A20:
 	step 17, 6
 	step 18, 12
 	step_end
 
-scr_seq_0090_D35R0103_0A2C:
+_0A2C:
 	step 62, 1
 	step 18, 1
 	step 17, 6
 	step 18, 12
 	step_end
-scr_seq_0090_D35R0103_0A40:
+scr_seq_D35R0103_008:
 	scrcmd_609
 	lockall
-	npc_msg 14
+	npc_msg msg_0113_D35R0103_00014
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0090_D35R0103_0A6C
+	apply_movement obj_player, _0A6C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	releaseall
 	end
-
-scr_seq_0090_D35R0103_0A6B:
 	.byte 0x00
 
-scr_seq_0090_D35R0103_0A6C:
+_0A6C:
 	step 14, 1
 	step_end
-scr_seq_0090_D35R0103_0A74:
+scr_seq_D35R0103_009:
 	scrcmd_609
 	lockall
-	apply_movement 0, scr_seq_0090_D35R0103_0AAC
+	apply_movement obj_D35R0103_wataru, _0AAC
 	wait_movement
-	npc_msg 14
+	npc_msg msg_0113_D35R0103_00014
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0090_D35R0103_0A6C
+	apply_movement obj_player, _0A6C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	releaseall
 	end
-
-scr_seq_0090_D35R0103_0AA9:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0090_D35R0103_0AAC:
+_0AAC:
 	step 75, 1
 	step 34, 1
 	step_end
-scr_seq_0090_D35R0103_0AB8:
+scr_seq_D35R0103_010:
 	releaseall
 	checkflag FLAG_UNK_0CB
-	gotoif FALSE, scr_seq_0090_D35R0103_0AE4
+	gotoif FALSE, _0AE4
 	checkflag FLAG_UNK_0CC
-	gotoif FALSE, scr_seq_0090_D35R0103_0AE4
+	gotoif FALSE, _0AE4
 	checkflag FLAG_UNK_0CD
-	gotoif FALSE, scr_seq_0090_D35R0103_0AE4
-	npc_msg 23
+	gotoif FALSE, _0AE4
+	npc_msg msg_0113_D35R0103_00023
 	closemsg
 	releaseall
 	end
 
-scr_seq_0090_D35R0103_0AE4:
-	npc_msg 22
+_0AE4:
+	npc_msg msg_0113_D35R0103_00022
 	closemsg
 	releaseall
 	end

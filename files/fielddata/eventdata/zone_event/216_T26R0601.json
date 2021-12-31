@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T26R0601.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T26R0601_fishing_2",
       "ovid": "SPRITE_FISHING_2",
       "mvt": 0,
       "type": 0,

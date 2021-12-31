@@ -1,101 +1,103 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R10.h"
+#include "msgdata/msg/msg_0341_R10.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0191_R10_01A2 ; 000
-	scrdef scr_seq_0191_R10_0039 ; 001
-	scrdef scr_seq_0191_R10_00C1 ; 002
-	scrdef scr_seq_0191_R10_0261 ; 003
-	scrdef scr_seq_0191_R10_001E ; 004
-	scrdef scr_seq_0191_R10_02BF ; 005
-	scrdef scr_seq_0191_R10_02D4 ; 006
+	scrdef scr_seq_R10_000
+	scrdef scr_seq_R10_001
+	scrdef scr_seq_R10_002
+	scrdef scr_seq_R10_003
+	scrdef scr_seq_R10_004
+	scrdef scr_seq_R10_005
+	scrdef scr_seq_R10_006
 	scrdef_end
 
-scr_seq_0191_R10_001E:
+scr_seq_R10_004:
 	checkflag FLAG_UNK_0A4
-	gotoif TRUE, scr_seq_0191_R10_002B
+	gotoif TRUE, _002B
 	end
 
-scr_seq_0191_R10_002B:
+_002B:
 	setflag FLAG_UNK_297
 	hide_person 1
 	clearflag FLAG_UNK_0A4
 	end
 
-scr_seq_0191_R10_0039:
+scr_seq_R10_001:
 	check_badge 15, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif eq, scr_seq_0191_R10_0052
-	goto scr_seq_0191_R10_00BF
+	gotoif eq, _0052
+	goto _00BF
 
-scr_seq_0191_R10_0052:
+_0052:
 	checkflag FLAG_UNK_14A
-	gotoif FALSE, scr_seq_0191_R10_00BF
+	gotoif FALSE, _00BF
 	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0191_R10_00BF
+	gotoif eq, _00BF
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, scr_seq_0191_R10_008B
+	gotoif ne, _008B
 	clearflag FLAG_UNK_264
-	goto scr_seq_0191_R10_00BD
+	goto _00BD
 
-scr_seq_0191_R10_008B:
+_008B:
 	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif ne, scr_seq_0191_R10_00A2
+	gotoif ne, _00A2
 	clearflag FLAG_UNK_264
-	goto scr_seq_0191_R10_00BD
+	goto _00BD
 
-scr_seq_0191_R10_00A2:
+_00A2:
 	comparevartovalue VAR_TEMP_x4000, 11
-	gotoif ne, scr_seq_0191_R10_00B9
+	gotoif ne, _00B9
 	clearflag FLAG_UNK_264
-	goto scr_seq_0191_R10_00BD
+	goto _00BD
 
-scr_seq_0191_R10_00B9:
+_00B9:
 	setflag FLAG_UNK_264
-scr_seq_0191_R10_00BD:
+_00BD:
 	end
 
-scr_seq_0191_R10_00BF:
+_00BF:
 	end
 
-scr_seq_0191_R10_00C1:
+scr_seq_R10_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0191_R10_0148
+	gotoif eq, _0148
 	scrcmd_184 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0191_R10_0197
+	gotoif eq, _0197
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 25
-	gotoif ne, scr_seq_0191_R10_0197
+	gotoif ne, _0197
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, scr_seq_0191_R10_018C
-	npc_msg 0
-scr_seq_0191_R10_0114:
+	gotoif ge, _018C
+	npc_msg msg_0341_R10_00000
+_0114:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0191_R10_0138
+	gotoif eq, _0138
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0191_R10_017B
+	gotoif ge, _017B
 	end
 
-scr_seq_0191_R10_0138:
+_0138:
 	buffer_players_name 0
-	npc_msg 1
+	npc_msg msg_0341_R10_00001
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	register_gear_number 36
-scr_seq_0191_R10_0148:
-	npc_msg 2
+_0148:
+	npc_msg msg_0341_R10_00002
 	waitbutton
 	closemsg
 	fade_screen 6, 1, 0, 0x00
@@ -109,40 +111,38 @@ scr_seq_0191_R10_0148:
 	releaseall
 	end
 
-scr_seq_0191_R10_017B:
+_017B:
 	setvar VAR_TEMP_x4002, 1
-	npc_msg 3
+	npc_msg msg_0341_R10_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0191_R10_018C:
-	npc_msg 4
-	goto scr_seq_0191_R10_0114
-
-scr_seq_0191_R10_0195:
+_018C:
+	npc_msg msg_0341_R10_00004
+	goto _0114
 	.byte 0x02, 0x00
-scr_seq_0191_R10_0197:
-	npc_msg 5
+_0197:
+	npc_msg msg_0341_R10_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0191_R10_01A2:
+scr_seq_R10_000:
 	scrcmd_609
 	lockall
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0191_R10_0209
+	gotoif TRUE, _0209
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0191_R10_01D5
+	gotoif eq, _01D5
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0191_R10_01D5
+	gotoif ne, _01D5
 	scrcmd_600
-scr_seq_0191_R10_01D5:
+_01D5:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -153,15 +153,15 @@ scr_seq_0191_R10_01D5:
 	releaseall
 	end
 
-scr_seq_0191_R10_0209:
+_0209:
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0191_R10_022D
+	gotoif eq, _022D
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0191_R10_022D
+	gotoif ne, _022D
 	scrcmd_600
-scr_seq_0191_R10_022D:
+_022D:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -172,7 +172,7 @@ scr_seq_0191_R10_022D:
 	releaseall
 	end
 
-scr_seq_0191_R10_0261:
+scr_seq_R10_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -183,26 +183,26 @@ scr_seq_0191_R10_0261:
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0191_R10_02B3
+	gotoif eq, _02B3
 	scrcmd_683 16386
 	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, scr_seq_0191_R10_02AF
+	gotoif eq, _02AF
 	comparevartovalue VAR_TEMP_x4002, 4
-	callif eq, scr_seq_0191_R10_02B9
-scr_seq_0191_R10_02AF:
+	callif eq, _02B9
+_02AF:
 	releaseall
 	end
 
-scr_seq_0191_R10_02B3:
+_02B3:
 	white_out
 	releaseall
 	end
 
-scr_seq_0191_R10_02B9:
+_02B9:
 	setflag FLAG_UNK_14A
 	return
 
-scr_seq_0191_R10_02BF:
+scr_seq_R10_005:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -210,7 +210,7 @@ scr_seq_0191_R10_02BF:
 	callstd 2000
 	end
 
-scr_seq_0191_R10_02D4:
+scr_seq_R10_006:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

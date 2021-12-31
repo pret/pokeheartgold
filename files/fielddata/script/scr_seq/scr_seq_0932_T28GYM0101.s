@@ -1,139 +1,141 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T28GYM0101.h"
+#include "msgdata/msg/msg_0622_T28GYM0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0932_T28GYM0101_00BE ; 000
-	scrdef scr_seq_0932_T28GYM0101_000A ; 001
+	scrdef scr_seq_T28GYM0101_000
+	scrdef scr_seq_T28GYM0101_001
 	scrdef_end
 
-scr_seq_0932_T28GYM0101_000A:
+scr_seq_T28GYM0101_001:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0932_T28GYM0101_001B
+	gotoif FALSE, _001B
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0932_T28GYM0101_001B:
+_001B:
 	get_phone_book_rematch 39, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, scr_seq_0932_T28GYM0101_00B8
+	gotoif ne, _00B8
 	checkflag FLAG_GAME_CLEAR
-	gotoif FALSE, scr_seq_0932_T28GYM0101_00B2
+	gotoif FALSE, _00B2
 	scrcmd_147 39, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, scr_seq_0932_T28GYM0101_00B2
+	gotoif eq, _00B2
 	scrcmd_522 16384
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0932_T28GYM0101_0067
+	gotoif ne, _0067
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_T28GYM0101_00B0
+	goto _00B0
 
-scr_seq_0932_T28GYM0101_0067:
+_0067:
 	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, scr_seq_0932_T28GYM0101_007E
+	gotoif ne, _007E
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_T28GYM0101_00B0
+	goto _00B0
 
-scr_seq_0932_T28GYM0101_007E:
+_007E:
 	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, scr_seq_0932_T28GYM0101_0095
+	gotoif ne, _0095
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_T28GYM0101_00B0
+	goto _00B0
 
-scr_seq_0932_T28GYM0101_0095:
+_0095:
 	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, scr_seq_0932_T28GYM0101_00AC
+	gotoif ne, _00AC
 	setflag FLAG_UNK_2EE
-	goto scr_seq_0932_T28GYM0101_00B0
+	goto _00B0
 
-scr_seq_0932_T28GYM0101_00AC:
+_00AC:
 	clearflag FLAG_UNK_2EE
-scr_seq_0932_T28GYM0101_00B0:
+_00B0:
 	end
 
-scr_seq_0932_T28GYM0101_00B2:
+_00B2:
 	clearflag FLAG_UNK_2EE
 	end
 
-scr_seq_0932_T28GYM0101_00B8:
+_00B8:
 	setflag FLAG_UNK_2EE
 	end
 
-scr_seq_0932_T28GYM0101_00BE:
+scr_seq_T28GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	check_badge 6, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0932_T28GYM0101_0178
-	npc_msg 0
+	gotoif eq, _0178
+	npc_msg msg_0622_T28GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_PRYCE_PRYCE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0932_T28GYM0101_0172
+	gotoif eq, _0172
 	settrainerflag TRAINER_BOARDER_DEANDRE
 	settrainerflag TRAINER_BOARDER_GERARDO
 	settrainerflag TRAINER_SKIER_JILL
 	settrainerflag TRAINER_SKIER_DIANA
 	settrainerflag TRAINER_BOARDER_PATTON
-	npc_msg 1
+	npc_msg msg_0622_T28GYM0101_00001
 	give_badge 6
 	addvar VAR_UNK_4134, 1
 	add_special_game_stat 22
 	comparevartovalue VAR_UNK_4134, 3
-	gotoif ne, scr_seq_0932_T28GYM0101_012F
+	gotoif ne, _012F
 	setvar VAR_UNK_4077, 1
-scr_seq_0932_T28GYM0101_012F:
+_012F:
 	buffer_players_name 0
-	npc_msg 2
+	npc_msg msg_0622_T28GYM0101_00002
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	npc_msg 3
+	npc_msg msg_0622_T28GYM0101_00003
 	setvar VAR_SPECIAL_x8004, 334
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0932_T28GYM0101_018E
+	gotoif eq, _018E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D2
-	npc_msg 4
+	npc_msg msg_0622_T28GYM0101_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_T28GYM0101_0172:
+_0172:
 	white_out
 	releaseall
 	end
 
-scr_seq_0932_T28GYM0101_0178:
+_0178:
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0932_T28GYM0101_0198
-	npc_msg 5
+	gotoif TRUE, _0198
+	npc_msg msg_0622_T28GYM0101_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_T28GYM0101_018E:
+_018E:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_T28GYM0101_0198:
-	npc_msg 6
+_0198:
+	npc_msg msg_0622_T28GYM0101_00006
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0932_T28GYM0101_01F9
+	gotoif eq, _01F9
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0932_T28GYM0101_0204
-	npc_msg 7
+	gotoif eq, _0204
+	npc_msg msg_0622_T28GYM0101_00007
 	closemsg
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
@@ -144,21 +146,21 @@ scr_seq_0932_T28GYM0101_0198:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	clearflag FLAG_UNK_189
-	npc_msg 8
+	npc_msg msg_0622_T28GYM0101_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_T28GYM0101_01F9:
-	npc_msg 9
+_01F9:
+	npc_msg msg_0622_T28GYM0101_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0932_T28GYM0101_0204:
-	npc_msg 10
+_0204:
+	npc_msg msg_0622_T28GYM0101_00010
 	waitbutton
 	closemsg
 	releaseall

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D47PC0101.h",
   "bgs": [
     {
-      "scr": 0,
+      "scr": "_EV_scr_seq_D47PC0101_000",
       "type": 0,
       "x": 4,
       "y": 8,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D47PC0101_pcwoman1",
       "ovid": "SPRITE_PCWOMAN1",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D47PC0101_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -28,7 +29,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D47PC0101_pcwoman2",
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 15,
       "type": 0,
@@ -45,7 +46,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D47PC0101_pcwoman2_2",
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 15,
       "type": 0,
@@ -62,7 +63,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D47PC0101_pcwoman2_3",
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 15,
       "type": 0,
@@ -79,12 +80,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D47PC0101_gsgirl2",
       "ovid": "SPRITE_GSGIRL2",
       "mvt": 9,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D47PC0101_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -96,7 +97,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D47PC0101_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 5,
       "type": 0,

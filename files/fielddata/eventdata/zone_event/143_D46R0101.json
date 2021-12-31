@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D46R0101.h",
   "bgs": [
     {
       "scr": 8085,
@@ -59,12 +60,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D46R0101_gsleader2",
       "ovid": "SPRITE_GSLEADER2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_263",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D46R0101_001",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -76,7 +77,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D46R0101_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -93,7 +94,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D46R0101_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -110,7 +111,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D46R0101_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -127,7 +128,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D46R0101_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -144,7 +145,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_D46R0101_tree",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -161,7 +162,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_D46R0101_tree_2",
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
@@ -178,7 +179,7 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_D46R0101_gsboy3",
       "ovid": "SPRITE_GSBOY3",
       "mvt": 16,
       "type": 1,
@@ -195,7 +196,7 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_D46R0101_gsboy3_2",
       "ovid": "SPRITE_GSBOY3",
       "mvt": 15,
       "type": 1,
@@ -212,7 +213,7 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_D46R0101_gsboy3_3",
       "ovid": "SPRITE_GSBOY3",
       "mvt": 17,
       "type": 1,
@@ -229,7 +230,7 @@
       "z": 0
     },
     {
-      "id": 10,
+      "id": "obj_D46R0101_gsboy3_4",
       "ovid": "SPRITE_GSBOY3",
       "mvt": 41,
       "type": 1,
@@ -246,7 +247,7 @@
       "z": 0
     },
     {
-      "id": 11,
+      "id": "obj_D46R0101_gsboy3_5",
       "ovid": "SPRITE_GSBOY3",
       "mvt": 17,
       "type": 1,

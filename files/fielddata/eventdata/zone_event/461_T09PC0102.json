@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T09PC0102.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T09PC0102_wifisf",
       "ovid": "SPRITE_WIFISF",
       "mvt": 15,
       "type": 0,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T09PC0102_pcwoman2",
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 15,
       "type": 0,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T09PC0102_pcwoman2_2",
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 15,
       "type": 0,

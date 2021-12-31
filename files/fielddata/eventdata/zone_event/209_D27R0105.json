@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_D27R0105.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D27R0105_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 0,
       "type": 1,
@@ -18,7 +19,7 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D27R0105_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 1,
@@ -35,7 +36,7 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D27R0105_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T20R0201.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T20R0201_003",
       "type": 0,
       "x": 5,
       "y": 3,
@@ -9,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T20R0201_003",
       "type": 0,
       "x": 6,
       "y": 3,
@@ -17,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_T20R0201_005",
       "type": 0,
       "x": 8,
       "y": 3,
@@ -25,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_T20R0201_004",
       "type": 0,
       "x": 9,
       "y": 3,
@@ -33,7 +34,7 @@
       "dir": 0
     },
     {
-      "scr": 6,
+      "scr": "_EV_scr_seq_T20R0201_006",
       "type": 0,
       "x": 11,
       "y": 3,
@@ -43,12 +44,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T20R0201_gsmama",
       "ovid": "SPRITE_GSMAMA",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T20R0201_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,

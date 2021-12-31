@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_T25R1001.h",
   "bgs": [
     {
       "scr": 5,
@@ -11,12 +12,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T25R1001_gswoman6",
       "ovid": "SPRITE_GSWOMAN6",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T25R1001_001",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -28,12 +29,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T25R1001_gsgentleman",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T25R1001_002",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -45,12 +46,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T25R1001_middlewoman1_2",
       "ovid": "SPRITE_MIDDLEWOMAN1_2",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T25R1001_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -62,12 +63,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T25R1001_gsboy1",
       "ovid": "SPRITE_GSBOY1",
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 4,
+      "scr": "_EV_scr_seq_T25R1001_004",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -79,7 +80,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T25R1001_delivery2",
       "ovid": "SPRITE_DELIVERY2",
       "mvt": 0,
       "type": 0,
@@ -96,7 +97,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T25R1001_delivery",
       "ovid": "SPRITE_DELIVERY",
       "mvt": 0,
       "type": 0,

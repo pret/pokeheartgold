@@ -1,7 +1,8 @@
 {
+  "header": "fielddata/script/scr_seq/event_T20.h",
   "bgs": [
     {
-      "scr": 14,
+      "scr": "_EV_scr_seq_T20_014",
       "type": 1,
       "x": 682,
       "y": 393,
@@ -9,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8,
+      "scr": "_EV_scr_seq_T20_008",
       "type": 1,
       "x": 693,
       "y": 396,
@@ -17,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 15,
+      "scr": "_EV_scr_seq_T20_015",
       "type": 1,
       "x": 685,
       "y": 400,
@@ -25,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 17,
+      "scr": "_EV_scr_seq_T20_017",
       "type": 1,
       "x": 688,
       "y": 407,
@@ -43,12 +44,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T20_gsrivel",
       "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_RIVAL",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T20_001",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -60,12 +61,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T20_gswoman1",
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T20_002",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -77,12 +78,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T20_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 16,
+      "scr": "_EV_scr_seq_T20_016",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -94,12 +95,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T20_tsure_poke_611",
       "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_MARILL",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T20_006",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -111,12 +112,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T20_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIEND",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T20_005",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -128,12 +129,12 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T20_doctor",
       "ovid": "SPRITE_DOCTOR",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 0,
+      "scr": "_EV_scr_seq_T20_000",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -145,7 +146,7 @@
       "z": 0
     },
     {
-      "id": 6,
+      "id": "obj_T20_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
@@ -162,12 +163,12 @@
       "z": 0
     },
     {
-      "id": 7,
+      "id": "obj_T20_gsmama",
       "ovid": "SPRITE_GSMAMA",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_MOM",
-      "scr": 0,
+      "scr": "_EV_scr_seq_T20_000",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -179,12 +180,12 @@
       "z": 0
     },
     {
-      "id": 8,
+      "id": "obj_T20_var_1_2",
       "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIEND_2",
-      "scr": 5,
+      "scr": "_EV_scr_seq_T20_005",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -196,12 +197,12 @@
       "z": 0
     },
     {
-      "id": 9,
+      "id": "obj_T20_tsure_poke_611_2",
       "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIEND_2",
-      "scr": 6,
+      "scr": "_EV_scr_seq_T20_006",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -252,7 +253,7 @@
   ],
   "coords": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T20_003",
       "x": 676,
       "y": 396,
       "w": 1,
@@ -262,7 +263,7 @@
       "var": "VAR_SCENE_NEW_BARK_WEST_EXIT"
     },
     {
-      "scr": 11,
+      "scr": "_EV_scr_seq_T20_011",
       "x": 688,
       "y": 392,
       "w": 1,
@@ -272,7 +273,7 @@
       "var": "VAR_TEMP_x4003"
     },
     {
-      "scr": 12,
+      "scr": "_EV_scr_seq_T20_012",
       "x": 700,
       "y": 398,
       "w": 1,
@@ -282,7 +283,7 @@
       "var": "VAR_SCENE_NEW_BARK_EAST_EXIT"
     },
     {
-      "scr": 13,
+      "scr": "_EV_scr_seq_T20_013",
       "x": 700,
       "y": 398,
       "w": 1,

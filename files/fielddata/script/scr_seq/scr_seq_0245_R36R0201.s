@@ -1,60 +1,62 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R36R0201.h"
+#include "msgdata/msg/msg_0392_R36R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0245_R36R0201_000E ; 000
-	scrdef scr_seq_0245_R36R0201_0138 ; 001
-	scrdef scr_seq_0245_R36R0201_0088 ; 002
+	scrdef scr_seq_R36R0201_000
+	scrdef scr_seq_R36R0201_001
+	scrdef scr_seq_R36R0201_002
 	scrdef_end
 
-scr_seq_0245_R36R0201_000E:
+scr_seq_R36R0201_000:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_UNK_4118, 1
-	gotoif ne, scr_seq_0245_R36R0201_002D
+	gotoif ne, _002D
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
-	goto scr_seq_0245_R36R0201_0086
+	goto _0086
 
-scr_seq_0245_R36R0201_002D:
+_002D:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0245_R36R0201_0048
+	gotoif ne, _0048
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
-	goto scr_seq_0245_R36R0201_0086
+	goto _0086
 
-scr_seq_0245_R36R0201_0048:
+_0048:
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, scr_seq_0245_R36R0201_0063
+	gotoif ne, _0063
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
-	goto scr_seq_0245_R36R0201_0086
+	goto _0086
 
-scr_seq_0245_R36R0201_0063:
+_0063:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0245_R36R0201_007E
+	gotoif ne, _007E
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
-	goto scr_seq_0245_R36R0201_0086
+	goto _0086
 
-scr_seq_0245_R36R0201_007E:
+_007E:
 	clearflag FLAG_UNK_1C3
 	setflag FLAG_UNK_1C4
-scr_seq_0245_R36R0201_0086:
+_0086:
 	end
 
-scr_seq_0245_R36R0201_0088:
+scr_seq_R36R0201_002:
 	scrcmd_609
 	lockall
-	apply_movement 255, scr_seq_0245_R36R0201_0120
+	apply_movement obj_player, _0120
 	wait_movement
 	callstd 10406
 	comparevartovalue VAR_UNK_4118, 1
-	gotoif ne, scr_seq_0245_R36R0201_011A
+	gotoif ne, _011A
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0245_R36R0201_0128
+	apply_movement obj_player, _0128
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -68,78 +70,76 @@ scr_seq_0245_R36R0201_0088:
 	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0245_R36R0201_010A
+	gotoif ne, _010A
 	scrcmd_606
-	goto scr_seq_0245_R36R0201_010C
+	goto _010C
 
-scr_seq_0245_R36R0201_010A:
+_010A:
 	scrcmd_607
-scr_seq_0245_R36R0201_010C:
-	apply_movement 253, scr_seq_0245_R36R0201_0130
+_010C:
+	apply_movement 253, _0130
 	wait_movement
 	release 253
-scr_seq_0245_R36R0201_011A:
+_011A:
 	releaseall
 	end
-
-scr_seq_0245_R36R0201_011E:
 	.byte 0x00, 0x00
 
-scr_seq_0245_R36R0201_0120:
+_0120:
 	step 0, 1
 	step_end
 
-scr_seq_0245_R36R0201_0128:
+_0128:
 	step 34, 1
 	step_end
 
-scr_seq_0245_R36R0201_0130:
+_0130:
 	step 2, 1
 	step_end
-scr_seq_0245_R36R0201_0138:
+scr_seq_R36R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	callstd 10405
 	comparevartovalue VAR_UNK_4118, 1
-	gotoif ne, scr_seq_0245_R36R0201_0231
+	gotoif ne, _0231
 	checkflag FLAG_UNK_1C4
-	gotoif TRUE, scr_seq_0245_R36R0201_01BA
+	gotoif TRUE, _01BA
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0245_R36R0201_0185
-	apply_movement 255, scr_seq_0245_R36R0201_0238
-	goto scr_seq_0245_R36R0201_01A8
+	gotoif ne, _0185
+	apply_movement obj_player, _0238
+	goto _01A8
 
-scr_seq_0245_R36R0201_0185:
+_0185:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0245_R36R0201_01A0
-	apply_movement 255, scr_seq_0245_R36R0201_0240
-	goto scr_seq_0245_R36R0201_01A8
+	gotoif ne, _01A0
+	apply_movement obj_player, _0240
+	goto _01A8
 
-scr_seq_0245_R36R0201_01A0:
-	apply_movement 255, scr_seq_0245_R36R0201_024C
-scr_seq_0245_R36R0201_01A8:
+_01A0:
+	apply_movement obj_player, _024C
+_01A8:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	goto scr_seq_0245_R36R0201_01DC
+	goto _01DC
 
-scr_seq_0245_R36R0201_01BA:
+_01BA:
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0245_R36R0201_025C
+	apply_movement obj_player, _025C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-scr_seq_0245_R36R0201_01DC:
+_01DC:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -149,39 +149,37 @@ scr_seq_0245_R36R0201_01DC:
 	lock 253
 	scrcmd_596 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0245_R36R0201_0221
+	gotoif ne, _0221
 	scrcmd_606
-	goto scr_seq_0245_R36R0201_0223
+	goto _0223
 
-scr_seq_0245_R36R0201_0221:
+_0221:
 	scrcmd_607
-scr_seq_0245_R36R0201_0223:
-	apply_movement 253, scr_seq_0245_R36R0201_0130
+_0223:
+	apply_movement 253, _0130
 	wait_movement
 	release 253
-scr_seq_0245_R36R0201_0231:
+_0231:
 	releaseall
 	end
-
-scr_seq_0245_R36R0201_0235:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0245_R36R0201_0238:
+_0238:
 	step 2, 1
 	step_end
 
-scr_seq_0245_R36R0201_0240:
+_0240:
 	step 13, 1
 	step 14, 1
 	step_end
 
-scr_seq_0245_R36R0201_024C:
+_024C:
 	step 15, 1
 	step 13, 2
 	step 14, 2
 	step_end
 
-scr_seq_0245_R36R0201_025C:
+_025C:
 	step 13, 1
 	step 14, 4
 	step_end

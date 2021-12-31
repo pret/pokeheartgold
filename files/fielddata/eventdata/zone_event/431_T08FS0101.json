@@ -1,12 +1,13 @@
 {
+  "header": "fielddata/script/scr_seq/event_T08FS0101.h",
   "objects": [
     {
-      "id": 0,
+      "id": "obj_T08FS0101_shopm1_2",
       "ovid": "SPRITE_SHOPM1_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_T08FS0101_001",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -18,12 +19,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_T08FS0101_shopm1_2_2",
       "ovid": "SPRITE_SHOPM1_2",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2,
+      "scr": "_EV_scr_seq_T08FS0101_002",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -35,12 +36,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_T08FS0101_gsbigman",
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 3,
+      "scr": "_EV_scr_seq_T08FS0101_003",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -52,7 +53,7 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_T08FS0101_gswoman3",
       "ovid": "SPRITE_GSWOMAN3",
       "mvt": 17,
       "type": 0,
@@ -69,7 +70,7 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_T08FS0101_delivery2",
       "ovid": "SPRITE_DELIVERY2",
       "mvt": 0,
       "type": 0,
@@ -86,7 +87,7 @@
       "z": 0
     },
     {
-      "id": 5,
+      "id": "obj_T08FS0101_delivery",
       "ovid": "SPRITE_DELIVERY",
       "mvt": 0,
       "type": 0,

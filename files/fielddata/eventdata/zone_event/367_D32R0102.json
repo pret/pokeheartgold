@@ -1,4 +1,5 @@
 {
+  "header": "fielddata/script/scr_seq/event_D32R0102.h",
   "bgs": [
     {
       "scr": 8161,
@@ -19,12 +20,12 @@
   ],
   "objects": [
     {
-      "id": 0,
+      "id": "obj_D32R0102_gsmiddleman1",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D32R0102_001",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -36,12 +37,12 @@
       "z": 0
     },
     {
-      "id": 1,
+      "id": "obj_D32R0102_gsmiddleman1_2",
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": 4,
+      "scr": "_EV_scr_seq_D32R0102_004",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -53,12 +54,12 @@
       "z": 0
     },
     {
-      "id": 2,
+      "id": "obj_D32R0102_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 6,
+      "scr": "_EV_scr_seq_D32R0102_006",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -70,12 +71,12 @@
       "z": 0
     },
     {
-      "id": 3,
+      "id": "obj_D32R0102_mount_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 7,
+      "scr": "_EV_scr_seq_D32R0102_007",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -87,12 +88,12 @@
       "z": 0
     },
     {
-      "id": 4,
+      "id": "obj_D32R0102_gsgirl2",
       "ovid": "SPRITE_GSGIRL2",
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 8,
+      "scr": "_EV_scr_seq_D32R0102_008",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -157,7 +158,7 @@
   ],
   "coords": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_D32R0102_002",
       "x": 12,
       "y": 28,
       "w": 6,

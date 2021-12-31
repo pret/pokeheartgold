@@ -1,13 +1,15 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_W20.h"
+#include "msgdata/msg/msg_0742_W20.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0960_W20_000A ; 000
-	scrdef scr_seq_0960_W20_001F ; 001
+	scrdef scr_seq_W20_000
+	scrdef scr_seq_W20_001
 	scrdef_end
 
-scr_seq_0960_W20_000A:
+scr_seq_W20_000:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -15,7 +17,7 @@ scr_seq_0960_W20_000A:
 	callstd 2000
 	end
 
-scr_seq_0960_W20_001F:
+scr_seq_W20_001:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

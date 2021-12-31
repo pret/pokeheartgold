@@ -1,19 +1,21 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D32R0103.h"
+#include "msgdata/msg/msg_0105_D32R0103.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0082_D32R0103_001A ; 000
-	scrdef scr_seq_0082_D32R0103_002A ; 001
-	scrdef scr_seq_0082_D32R0103_003A ; 002
-	scrdef scr_seq_0082_D32R0103_0012 ; 003
+	scrdef scr_seq_D32R0103_000
+	scrdef scr_seq_D32R0103_001
+	scrdef scr_seq_D32R0103_002
+	scrdef scr_seq_D32R0103_003
 	scrdef_end
 
-scr_seq_0082_D32R0103_0012:
+scr_seq_D32R0103_003:
 	setvar VAR_UNK_40E5, 2
 	end
 
-scr_seq_0082_D32R0103_001A:
+scr_seq_D32R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -21,7 +23,7 @@ scr_seq_0082_D32R0103_001A:
 	releaseall
 	end
 
-scr_seq_0082_D32R0103_002A:
+scr_seq_D32R0103_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -29,7 +31,7 @@ scr_seq_0082_D32R0103_002A:
 	releaseall
 	end
 
-scr_seq_0082_D32R0103_003A:
+scr_seq_D32R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

@@ -1,240 +1,242 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D23R0102.h"
+#include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0030_D23R0102_0085 ; 000
-	scrdef scr_seq_0030_D23R0102_0098 ; 001
-	scrdef scr_seq_0030_D23R0102_00AB ; 002
-	scrdef scr_seq_0030_D23R0102_00BE ; 003
-	scrdef scr_seq_0030_D23R0102_00D9 ; 004
-	scrdef scr_seq_0030_D23R0102_0102 ; 005
-	scrdef scr_seq_0030_D23R0102_0115 ; 006
-	scrdef scr_seq_0030_D23R0102_002E ; 007
-	scrdef scr_seq_0030_D23R0102_006A ; 008
-	scrdef scr_seq_0030_D23R0102_013E ; 009
-	scrdef scr_seq_0030_D23R0102_057B ; 010
+	scrdef scr_seq_D23R0102_000
+	scrdef scr_seq_D23R0102_001
+	scrdef scr_seq_D23R0102_002
+	scrdef scr_seq_D23R0102_003
+	scrdef scr_seq_D23R0102_004
+	scrdef scr_seq_D23R0102_005
+	scrdef scr_seq_D23R0102_006
+	scrdef scr_seq_D23R0102_007
+	scrdef scr_seq_D23R0102_008
+	scrdef scr_seq_D23R0102_009
+	scrdef scr_seq_D23R0102_010
 	scrdef_end
 
-scr_seq_0030_D23R0102_002E:
+scr_seq_D23R0102_007:
 	setflag FLAG_UNK_1B7
 	setflag FLAG_UNK_1B8
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0030_D23R0102_004D
+	gotoif ne, _004D
 	clearflag FLAG_UNK_1B7
-	goto scr_seq_0030_D23R0102_0068
+	goto _0068
 
-scr_seq_0030_D23R0102_004D:
+_004D:
 	comparevartovalue VAR_UNK_4077, 2
-	gotoif ge, scr_seq_0030_D23R0102_0064
+	gotoif ge, _0064
 	clearflag FLAG_UNK_1B8
-	goto scr_seq_0030_D23R0102_0068
+	goto _0068
 
-scr_seq_0030_D23R0102_0064:
+_0064:
 	clearflag FLAG_UNK_1B8
-scr_seq_0030_D23R0102_0068:
+_0068:
 	end
 
-scr_seq_0030_D23R0102_006A:
+scr_seq_D23R0102_008:
 	comparevartovalue VAR_UNK_4077, 5
-	gotoif ne, scr_seq_0030_D23R0102_0083
+	gotoif ne, _0083
 	move_person 3, 2, 1, 7, 3
-scr_seq_0030_D23R0102_0083:
+_0083:
 	end
 
-scr_seq_0030_D23R0102_0085:
+scr_seq_D23R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 6
+	npc_msg msg_0066_D23R0102_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_0098:
+scr_seq_D23R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0066_D23R0102_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_00AB:
+scr_seq_D23R0102_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0066_D23R0102_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_00BE:
+scr_seq_D23R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 39, 0
-	npc_msg 3
+	npc_msg msg_0066_D23R0102_00003
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_00D9:
+scr_seq_D23R0102_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0030_D23R0102_00F7
-	npc_msg 2
-	goto scr_seq_0030_D23R0102_00FA
+	gotoif ne, _00F7
+	npc_msg msg_0066_D23R0102_00002
+	goto _00FA
 
-scr_seq_0030_D23R0102_00F7:
-	npc_msg 1
-scr_seq_0030_D23R0102_00FA:
+_00F7:
+	npc_msg msg_0066_D23R0102_00001
+_00FA:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_0102:
+scr_seq_D23R0102_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0066_D23R0102_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_0115:
+scr_seq_D23R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 5
-	gotoif ne, scr_seq_0030_D23R0102_0133
-	npc_msg 5
-	goto scr_seq_0030_D23R0102_0136
+	gotoif ne, _0133
+	npc_msg msg_0066_D23R0102_00005
+	goto _0136
 
-scr_seq_0030_D23R0102_0133:
-	npc_msg 4
-scr_seq_0030_D23R0102_0136:
+_0133:
+	npc_msg msg_0066_D23R0102_00004
+_0136:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_013E:
+scr_seq_D23R0102_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0030_D23R0102_015C
-	npc_msg 9
-	goto scr_seq_0030_D23R0102_0162
+	gotoif ne, _015C
+	npc_msg msg_0066_D23R0102_00009
+	goto _0162
 
-scr_seq_0030_D23R0102_015C:
-	goto scr_seq_0030_D23R0102_016A
+_015C:
+	goto _016A
 
-scr_seq_0030_D23R0102_0162:
+_0162:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_016A:
+_016A:
 	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0030_D23R0102_01B5
-	npc_msg 10
+	gotoif ge, _01B5
+	npc_msg msg_0066_D23R0102_00010
 	closemsg
 	setvar VAR_SPECIAL_x8004, 472
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0030_D23R0102_0539
+	gotoif eq, _0539
 	callstd std_give_item_verbose
 	closemsg
 	addvar VAR_UNK_4115, 1
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_01B5:
+_01B5:
 	comparevartovalue VAR_UNK_4115, 2
-	gotoif lt, scr_seq_0030_D23R0102_01CF
+	gotoif lt, _01CF
 	buffer_players_name 0
-	gender_msgbox 12, 13
-	goto scr_seq_0030_D23R0102_01D2
+	gender_msgbox msg_0066_D23R0102_00012, msg_0066_D23R0102_00013
+	goto _01D2
 
-scr_seq_0030_D23R0102_01CF:
-	npc_msg 11
-scr_seq_0030_D23R0102_01D2:
+_01CF:
+	npc_msg msg_0066_D23R0102_00011
+_01D2:
 	closemsg
 	checkflag FLAG_UNK_AB6
-	gotoif TRUE, scr_seq_0030_D23R0102_01EA
-	npc_msg 28
+	gotoif TRUE, _01EA
+	npc_msg msg_0066_D23R0102_00028
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_01EA:
+_01EA:
 	checkflag FLAG_UNK_AA3
-	gotoif TRUE, scr_seq_0030_D23R0102_0547
-	npc_msg 14
+	gotoif TRUE, _0547
+	npc_msg msg_0066_D23R0102_00014
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0030_D23R0102_0552
+	gotoif eq, _0552
 	buffer_players_name 0
 	comparevartovalue VAR_UNK_4115, 2
-	gotoif lt, scr_seq_0030_D23R0102_0227
-	gender_msgbox 17, 18
-	goto scr_seq_0030_D23R0102_022B
+	gotoif lt, _0227
+	gender_msgbox msg_0066_D23R0102_00017, msg_0066_D23R0102_00018
+	goto _022B
 
-scr_seq_0030_D23R0102_0227:
-	gender_msgbox 15, 16
-scr_seq_0030_D23R0102_022B:
+_0227:
+	gender_msgbox msg_0066_D23R0102_00015, msg_0066_D23R0102_00016
+_022B:
 	closemsg
-	apply_movement 9, scr_seq_0030_D23R0102_0620
+	apply_movement obj_D23R0102_gswoman1, _0620
 	wait_movement
-	gender_msgbox 20, 21
+	gender_msgbox msg_0066_D23R0102_00020, msg_0066_D23R0102_00021
 	closemsg
 	scrcmd_386 VAR_TEMP_x4000
 	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, scr_seq_0030_D23R0102_0295
+	gotoif eq, _0295
 	release 253
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0030_D23R0102_0279
-	apply_movement 255, scr_seq_0030_D23R0102_05CC
-	apply_movement 253, scr_seq_0030_D23R0102_05E0
-	goto scr_seq_0030_D23R0102_0289
+	gotoif ne, _0279
+	apply_movement obj_player, _05CC
+	apply_movement 253, _05E0
+	goto _0289
 
-scr_seq_0030_D23R0102_0279:
-	apply_movement 255, scr_seq_0030_D23R0102_05F0
-	apply_movement 253, scr_seq_0030_D23R0102_0600
-scr_seq_0030_D23R0102_0289:
+_0279:
+	apply_movement obj_player, _05F0
+	apply_movement 253, _0600
+_0289:
 	wait_movement
 	lock 253
-	goto scr_seq_0030_D23R0102_02BA
+	goto _02BA
 
-scr_seq_0030_D23R0102_0295:
+_0295:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0030_D23R0102_02B0
-	apply_movement 255, scr_seq_0030_D23R0102_05CC
-	goto scr_seq_0030_D23R0102_02B8
+	gotoif ne, _02B0
+	apply_movement obj_player, _05CC
+	goto _02B8
 
-scr_seq_0030_D23R0102_02B0:
-	apply_movement 255, scr_seq_0030_D23R0102_05F0
-scr_seq_0030_D23R0102_02B8:
+_02B0:
+	apply_movement obj_player, _05F0
+_02B8:
 	wait_movement
-scr_seq_0030_D23R0102_02BA:
+_02BA:
 	scrcmd_821 32768, 32769
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 0, VAR_SPECIAL_x800C
@@ -247,283 +249,263 @@ scr_seq_0030_D23R0102_02BA:
 	touchscreen_menu_show
 	setflag FLAG_UNK_102
 	setflag FLAG_UNK_AA3
-	apply_movement 9, scr_seq_0030_D23R0102_0628
+	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
 	comparevartovar VAR_SPECIAL_x800C, VAR_SPECIAL_x8001
-	gotoif ne, scr_seq_0030_D23R0102_055D
-	npc_msg 22
-	apply_movement 9, scr_seq_0030_D23R0102_0630
+	gotoif ne, _055D
+	npc_msg msg_0066_D23R0102_00022
+	apply_movement obj_D23R0102_gswoman1, _0630
 	wait_movement
-	apply_movement 255, scr_seq_0030_D23R0102_060C
+	apply_movement obj_player, _060C
 	wait_movement
 	play_se SEQ_SE_GS_OKOZUKAI
 	comparevartovalue VAR_UNK_413A, 30
-	gotoif ge, scr_seq_0030_D23R0102_033F
+	gotoif ge, _033F
 	addvar VAR_UNK_413A, 1
-scr_seq_0030_D23R0102_033F:
+_033F:
 	comparevartovalue VAR_UNK_413A, 30
-	gotoif lt, scr_seq_0030_D23R0102_0387
+	gotoif lt, _0387
 	comparevartovalue VAR_UNK_4115, 2
-	gotoif ge, scr_seq_0030_D23R0102_0387
-	apply_movement 9, scr_seq_0030_D23R0102_0628
+	gotoif ge, _0387
+	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
-	gender_msgbox 24, 25
+	gender_msgbox msg_0066_D23R0102_00024, msg_0066_D23R0102_00025
 	closemsg
 	register_gear_number 8
-	npc_msg 26
+	npc_msg msg_0066_D23R0102_00026
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	closemsg
-	apply_movement 9, scr_seq_0030_D23R0102_0628
+	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
-	npc_msg 27
+	npc_msg msg_0066_D23R0102_00027
 	closemsg
-scr_seq_0030_D23R0102_0387:
+_0387:
 	comparevartovalue VAR_UNK_413A, 1
-	gotoif eq, scr_seq_0030_D23R0102_0499
+	gotoif eq, _0499
 	comparevartovalue VAR_UNK_413A, 3
-	gotoif eq, scr_seq_0030_D23R0102_04AD
+	gotoif eq, _04AD
 	comparevartovalue VAR_UNK_413A, 5
-	gotoif eq, scr_seq_0030_D23R0102_04C1
+	gotoif eq, _04C1
 	comparevartovalue VAR_UNK_413A, 10
-	gotoif eq, scr_seq_0030_D23R0102_04D5
+	gotoif eq, _04D5
 	comparevartovalue VAR_UNK_413A, 15
-	gotoif eq, scr_seq_0030_D23R0102_04E9
+	gotoif eq, _04E9
 	comparevartovalue VAR_UNK_413A, 20
-	gotoif eq, scr_seq_0030_D23R0102_04FD
+	gotoif eq, _04FD
 	comparevartovalue VAR_UNK_413A, 25
-	gotoif eq, scr_seq_0030_D23R0102_0511
+	gotoif eq, _0511
 	comparevartovalue VAR_UNK_413A, 30
-	gotoif eq, scr_seq_0030_D23R0102_0525
-	goto scr_seq_0030_D23R0102_0568
+	gotoif eq, _0525
+	goto _0568
 
-scr_seq_0030_D23R0102_03F5:
-	npc_msg 32
+_03F5:
+	npc_msg msg_0066_D23R0102_00032
 	closemsg
-	apply_movement 9, scr_seq_0030_D23R0102_0638
+	apply_movement obj_D23R0102_gswoman1, _0638
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 8, scr_seq_0030_D23R0102_0648
-	apply_movement 255, scr_seq_0030_D23R0102_0614
+	apply_movement obj_D23R0102_gswoman2_2, _0648
+	apply_movement obj_player, _0614
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	buffer_int 0, VAR_UNK_413A
 	buffer_item_name 1, VAR_SPECIAL_x8004
-	npc_msg 35
+	npc_msg msg_0066_D23R0102_00035
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0030_D23R0102_0539
+	gotoif eq, _0539
 	callstd std_give_item_verbose
-scr_seq_0030_D23R0102_0450:
+_0450:
 	comparevartovalue VAR_UNK_413A, 30
-	gotoif lt, scr_seq_0030_D23R0102_0486
-	npc_msg 36
+	gotoif lt, _0486
+	npc_msg msg_0066_D23R0102_00036
 	closemsg
 	play_fanfare SEQ_ME_KEYITEM
-	npc_msg 37
+	npc_msg msg_0066_D23R0102_00037
 	wait_fanfare
 	closemsg
 	comparevartovalue VAR_UNK_4115, 255
-	gotoif ge, scr_seq_0030_D23R0102_0480
+	gotoif ge, _0480
 	addvar VAR_UNK_4115, 1
-scr_seq_0030_D23R0102_0480:
+_0480:
 	setvar VAR_UNK_413A, 0
-scr_seq_0030_D23R0102_0486:
-	npc_msg 38
+_0486:
+	npc_msg msg_0066_D23R0102_00038
 	closemsg
-	apply_movement 8, scr_seq_0030_D23R0102_0654
+	apply_movement obj_D23R0102_gswoman2_2, _0654
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_0499:
+_0499:
 	setvar VAR_SPECIAL_x8004, 4
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_04AB:
+	goto _03F5
 	.byte 0x02, 0x00
-scr_seq_0030_D23R0102_04AD:
+_04AD:
 	setvar VAR_SPECIAL_x8004, 23
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_04BF:
+	goto _03F5
 	.byte 0x02
 	.byte 0x00
-scr_seq_0030_D23R0102_04C1:
+_04C1:
 	setvar VAR_SPECIAL_x8004, 46
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_04D3:
+	goto _03F5
 	.byte 0x02, 0x00
-scr_seq_0030_D23R0102_04D5:
+_04D5:
 	setvar VAR_SPECIAL_x8004, 47
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_04E7:
+	goto _03F5
 	.byte 0x02, 0x00
-scr_seq_0030_D23R0102_04E9:
+_04E9:
 	setvar VAR_SPECIAL_x8004, 48
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_04FB:
+	goto _03F5
 	.byte 0x02, 0x00
-scr_seq_0030_D23R0102_04FD:
+_04FD:
 	setvar VAR_SPECIAL_x8004, 92
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_050F:
+	goto _03F5
 	.byte 0x02
 	.byte 0x00
-scr_seq_0030_D23R0102_0511:
+_0511:
 	setvar VAR_SPECIAL_x8004, 50
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_0523:
+	goto _03F5
 	.byte 0x02, 0x00
-scr_seq_0030_D23R0102_0525:
+_0525:
 	setvar VAR_SPECIAL_x8004, 45
 	setvar VAR_SPECIAL_x8005, 1
-	goto scr_seq_0030_D23R0102_03F5
-
-scr_seq_0030_D23R0102_0537:
+	goto _03F5
 	.byte 0x02, 0x00
-scr_seq_0030_D23R0102_0539:
+_0539:
 	callstd std_bag_is_full
 	closemsg
-	goto scr_seq_0030_D23R0102_0450
-
-scr_seq_0030_D23R0102_0545:
+	goto _0450
 	.byte 0x02, 0x00
-scr_seq_0030_D23R0102_0547:
-	npc_msg 29
+_0547:
+	npc_msg msg_0066_D23R0102_00029
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_0552:
-	npc_msg 19
+_0552:
+	npc_msg msg_0066_D23R0102_00019
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_055D:
-	npc_msg 23
+_055D:
+	npc_msg msg_0066_D23R0102_00023
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_0568:
-	npc_msg 32
+_0568:
+	npc_msg msg_0066_D23R0102_00032
 	closemsg
-	apply_movement 9, scr_seq_0030_D23R0102_0638
+	apply_movement obj_D23R0102_gswoman1, _0638
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_057B:
+scr_seq_D23R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif eq, scr_seq_0030_D23R0102_05C0
+	gotoif eq, _05C0
 	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0030_D23R0102_05B0
-	npc_msg 33
+	gotoif ge, _05B0
+	npc_msg msg_0066_D23R0102_00033
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_05B0:
+_05B0:
 	buffer_int 0, VAR_UNK_413A
-	npc_msg 34
+	npc_msg msg_0066_D23R0102_00034
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0030_D23R0102_05C0:
-	npc_msg 39
+_05C0:
+	npc_msg msg_0066_D23R0102_00039
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0030_D23R0102_05CB:
 	.byte 0x00
 
-scr_seq_0030_D23R0102_05CC:
+_05CC:
 	step 1, 1
 	step 13, 2
 	step 14, 1
 	step 34, 1
 	step_end
 
-scr_seq_0030_D23R0102_05E0:
+_05E0:
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
 
-scr_seq_0030_D23R0102_05F0:
+_05F0:
 	step 1, 1
 	step 13, 1
 	step 34, 1
 	step_end
 
-scr_seq_0030_D23R0102_0600:
+_0600:
 	step 13, 1
 	step 32, 1
 	step_end
 
-scr_seq_0030_D23R0102_060C:
+_060C:
 	step 32, 1
 	step_end
 
-scr_seq_0030_D23R0102_0614:
+_0614:
 	step 13, 1
 	step 14, 2
 	step_end
 
-scr_seq_0030_D23R0102_0620:
+_0620:
 	step 34, 1
 	step_end
 
-scr_seq_0030_D23R0102_0628:
+_0628:
 	step 33, 1
 	step_end
 
-scr_seq_0030_D23R0102_0630:
+_0630:
 	step 13, 1
 	step_end
 
-scr_seq_0030_D23R0102_0638:
+_0638:
 	step 0, 1
 	step 12, 1
 	step 34, 1
 	step_end
 
-scr_seq_0030_D23R0102_0648:
+_0648:
 	step 13, 2
 	step 15, 3
 	step_end
 
-scr_seq_0030_D23R0102_0654:
+_0654:
 	step 14, 3
 	step 12, 2
 	step 33, 1

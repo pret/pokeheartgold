@@ -1,15 +1,17 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D27R0103.h"
+#include "msgdata/msg/msg_0003_EVERYWHERE.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0063_D27R0103_000A ; 000
-	scrdef scr_seq_0063_D27R0103_0040 ; 001
+	scrdef scr_seq_D27R0103_000
+	scrdef scr_seq_D27R0103_001
 	scrdef_end
 
-scr_seq_0063_D27R0103_000A:
+scr_seq_D27R0103_000:
 	play_se SEQ_SE_GS_RAKKA01
-	apply_movement 255, scr_seq_0063_D27R0103_0038
+	apply_movement obj_player, _0038
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_374 255
 	wait_movement
@@ -19,13 +21,13 @@ scr_seq_0063_D27R0103_000A:
 	end
 
 
-scr_seq_0063_D27R0103_0038:
+_0038:
 	step 68, 1
 	step_end
-scr_seq_0063_D27R0103_0040:
+scr_seq_D27R0103_001:
 	comparevartovalue VAR_UNK_40A7, 1
-	gotoif ne, scr_seq_0063_D27R0103_0051
+	gotoif ne, _0051
 	scrcmd_375 255
-scr_seq_0063_D27R0103_0051:
+_0051:
 	end
 	.balign 4, 0

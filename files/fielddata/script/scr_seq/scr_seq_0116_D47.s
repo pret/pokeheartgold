@@ -1,128 +1,130 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D47.h"
+#include "msgdata/msg/msg_0133_D47.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0116_D47_0081 ; 000
-	scrdef scr_seq_0116_D47_0094 ; 001
-	scrdef scr_seq_0116_D47_00A7 ; 002
-	scrdef scr_seq_0116_D47_00BA ; 003
-	scrdef scr_seq_0116_D47_00CD ; 004
-	scrdef scr_seq_0116_D47_00E8 ; 005
-	scrdef scr_seq_0116_D47_0130 ; 006
-	scrdef scr_seq_0116_D47_014F ; 007
-	scrdef scr_seq_0116_D47_016E ; 008
-	scrdef scr_seq_0116_D47_0189 ; 009
-	scrdef scr_seq_0116_D47_019C ; 010
-	scrdef scr_seq_0116_D47_01B7 ; 011
-	scrdef scr_seq_0116_D47_01CC ; 012
-	scrdef scr_seq_0116_D47_01DF ; 013
-	scrdef scr_seq_0116_D47_0046 ; 014
-	scrdef scr_seq_0116_D47_0398 ; 015
-	scrdef scr_seq_0116_D47_03AB ; 016
+	scrdef scr_seq_D47_000
+	scrdef scr_seq_D47_001
+	scrdef scr_seq_D47_002
+	scrdef scr_seq_D47_003
+	scrdef scr_seq_D47_004
+	scrdef scr_seq_D47_005
+	scrdef scr_seq_D47_006
+	scrdef scr_seq_D47_007
+	scrdef scr_seq_D47_008
+	scrdef scr_seq_D47_009
+	scrdef scr_seq_D47_010
+	scrdef scr_seq_D47_011
+	scrdef scr_seq_D47_012
+	scrdef scr_seq_D47_013
+	scrdef scr_seq_D47_014
+	scrdef scr_seq_D47_015
+	scrdef scr_seq_D47_016
 	scrdef_end
 
-scr_seq_0116_D47_0046:
+scr_seq_D47_014:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0116_D47_0057
+	gotoif FALSE, _0057
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0116_D47_0057:
+_0057:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, scr_seq_0116_D47_007B
+	gotoif eq, _007B
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, scr_seq_0116_D47_007B
+	gotoif eq, _007B
 	setflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0116_D47_007B:
+_007B:
 	clearflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0116_D47_0081:
+scr_seq_D47_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0133_D47_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_0094:
+scr_seq_D47_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0133_D47_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_00A7:
+scr_seq_D47_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 4
+	npc_msg msg_0133_D47_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_00BA:
+scr_seq_D47_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg msg_0133_D47_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_00CD:
+scr_seq_D47_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 39, 0
-	npc_msg 6
+	npc_msg msg_0133_D47_00006
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_00E8:
+scr_seq_D47_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, scr_seq_0116_D47_0106
-	npc_msg 7
-	goto scr_seq_0116_D47_0109
+	gotoif ne, _0106
+	npc_msg msg_0133_D47_00007
+	goto _0109
 
-scr_seq_0116_D47_0106:
-	npc_msg 8
-scr_seq_0116_D47_0109:
+_0106:
+	npc_msg msg_0133_D47_00008
+_0109:
 	waitbutton
 	closemsg
 	releaseall
 	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, scr_seq_0116_D47_0128
+	gotoif ne, _0128
 	addvar VAR_TEMP_x400B, 1
-	goto scr_seq_0116_D47_012E
+	goto _012E
 
-scr_seq_0116_D47_0128:
+_0128:
 	setvar VAR_TEMP_x400B, 0
-scr_seq_0116_D47_012E:
+_012E:
 	end
 
-scr_seq_0116_D47_0130:
+scr_seq_D47_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 9
+	npc_msg msg_0133_D47_00009
 	callstd 2011
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 6
@@ -130,11 +132,11 @@ scr_seq_0116_D47_0130:
 	releaseall
 	end
 
-scr_seq_0116_D47_014F:
+scr_seq_D47_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 10
+	npc_msg msg_0133_D47_00010
 	callstd 2011
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 14
@@ -142,41 +144,41 @@ scr_seq_0116_D47_014F:
 	releaseall
 	end
 
-scr_seq_0116_D47_016E:
+scr_seq_D47_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 12, 0
-	npc_msg 11
+	npc_msg msg_0133_D47_00011
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_0189:
+scr_seq_D47_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 12
+	npc_msg msg_0133_D47_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_019C:
+scr_seq_D47_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 79, 0
-	npc_msg 13
+	npc_msg msg_0133_D47_00013
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_01B7:
+scr_seq_D47_011:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -184,17 +186,17 @@ scr_seq_0116_D47_01B7:
 	callstd 2000
 	end
 
-scr_seq_0116_D47_01CC:
+scr_seq_D47_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 14
+	npc_msg msg_0133_D47_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_01DF:
+scr_seq_D47_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -204,10 +206,10 @@ scr_seq_0116_D47_01DF:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0116_D47_0307
+	gotoif eq, _0307
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0116_D47_031B
+	gotoif eq, _031B
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -216,38 +218,38 @@ scr_seq_0116_D47_01DF:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0116_D47_0258
-	apply_movement 255, scr_seq_0116_D47_0330
-	apply_movement 12, scr_seq_0116_D47_037C
-	goto scr_seq_0116_D47_02A6
+	gotoif ne, _0258
+	apply_movement obj_player, _0330
+	apply_movement obj_D47_gsmiddleman1, _037C
+	goto _02A6
 
-scr_seq_0116_D47_0258:
+_0258:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0116_D47_0273
-	apply_movement 255, scr_seq_0116_D47_0348
-	goto scr_seq_0116_D47_02A6
+	gotoif ne, _0273
+	apply_movement obj_player, _0348
+	goto _02A6
 
-scr_seq_0116_D47_0273:
+_0273:
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, scr_seq_0116_D47_0296
-	apply_movement 255, scr_seq_0116_D47_0368
-	apply_movement 12, scr_seq_0116_D47_037C
-	goto scr_seq_0116_D47_02A6
+	gotoif ne, _0296
+	apply_movement obj_player, _0368
+	apply_movement obj_D47_gsmiddleman1, _037C
+	goto _02A6
 
-scr_seq_0116_D47_0296:
-	apply_movement 255, scr_seq_0116_D47_0354
-	apply_movement 12, scr_seq_0116_D47_037C
-scr_seq_0116_D47_02A6:
+_0296:
+	apply_movement obj_player, _0354
+	apply_movement obj_D47_gsmiddleman1, _037C
+_02A6:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0116_D47_02CD
-	apply_movement 253, scr_seq_0116_D47_0388
+	gotoif ne, _02CD
+	apply_movement 253, _0388
 	wait_movement
-scr_seq_0116_D47_02CD:
+_02CD:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -263,7 +265,7 @@ scr_seq_0116_D47_02CD:
 	releaseall
 	end
 
-scr_seq_0116_D47_0307:
+_0307:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -271,18 +273,16 @@ scr_seq_0116_D47_0307:
 	releaseall
 	end
 
-scr_seq_0116_D47_031B:
+_031B:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0116_D47_032F:
 	.byte 0x00
 
-scr_seq_0116_D47_0330:
+_0330:
 	step 15, 1
 	step 12, 2
 	step 14, 1
@@ -290,50 +290,50 @@ scr_seq_0116_D47_0330:
 	step 33, 1
 	step_end
 
-scr_seq_0116_D47_0348:
+_0348:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0116_D47_0354:
+_0354:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0116_D47_0368:
+_0368:
 	step 12, 1
 	step 15, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0116_D47_037C:
+_037C:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0116_D47_0388:
+_0388:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0116_D47_0398:
+scr_seq_D47_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 15
+	npc_msg msg_0133_D47_00015
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0116_D47_03AB:
+scr_seq_D47_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 16
+	npc_msg msg_0133_D47_00016
 	waitbutton
 	closemsg
 	releaseall

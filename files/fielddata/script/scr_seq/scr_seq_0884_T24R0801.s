@@ -1,62 +1,62 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T24R0801.h"
+#include "msgdata/msg/msg_0580_T24R0801.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0884_T24R0801_0006 ; 000
+	scrdef scr_seq_T24R0801_000
 	scrdef_end
 
-scr_seq_0884_T24R0801_0006:
+scr_seq_T24R0801_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, scr_seq_0884_T24R0801_002B
-	goto scr_seq_0884_T24R0801_0031
-
-scr_seq_0884_T24R0801_0025:
+	gotoif ne, _002B
+	goto _0031
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
-scr_seq_0884_T24R0801_002B:
-	goto scr_seq_0884_T24R0801_0073
+_002B:
+	goto _0073
 
-scr_seq_0884_T24R0801_0031:
+_0031:
 	hasitem ITEM_CLEAR_BELL, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0884_T24R0801_0061
+	gotoif ge, _0061
 	hasitem ITEM_RAINBOW_WING, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0884_T24R0801_006A
-	goto scr_seq_0884_T24R0801_00B5
+	gotoif ge, _006A
+	goto _00B5
 
-scr_seq_0884_T24R0801_0061:
-	npc_msg 3
-	goto scr_seq_0884_T24R0801_00B8
+_0061:
+	npc_msg msg_0580_T24R0801_00003
+	goto _00B8
 
-scr_seq_0884_T24R0801_006A:
-	npc_msg 1
-	goto scr_seq_0884_T24R0801_00B8
+_006A:
+	npc_msg msg_0580_T24R0801_00001
+	goto _00B8
 
-scr_seq_0884_T24R0801_0073:
+_0073:
 	hasitem ITEM_TIDAL_BELL, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0884_T24R0801_00A3
+	gotoif ge, _00A3
 	hasitem ITEM_SILVER_WING, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, scr_seq_0884_T24R0801_00AC
-	goto scr_seq_0884_T24R0801_00B5
+	gotoif ge, _00AC
+	goto _00B5
 
-scr_seq_0884_T24R0801_00A3:
-	npc_msg 4
-	goto scr_seq_0884_T24R0801_00B8
+_00A3:
+	npc_msg msg_0580_T24R0801_00004
+	goto _00B8
 
-scr_seq_0884_T24R0801_00AC:
-	npc_msg 2
-	goto scr_seq_0884_T24R0801_00B8
+_00AC:
+	npc_msg msg_0580_T24R0801_00002
+	goto _00B8
 
-scr_seq_0884_T24R0801_00B5:
-	npc_msg 0
-scr_seq_0884_T24R0801_00B8:
+_00B5:
+	npc_msg msg_0580_T24R0801_00000
+_00B8:
 	waitbutton
 	closemsg
 	releaseall

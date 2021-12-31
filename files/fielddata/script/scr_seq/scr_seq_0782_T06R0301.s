@@ -1,105 +1,107 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T06R0301.h"
+#include "msgdata/msg/msg_0488_T06R0301.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0782_T06R0301_0022 ; 000
-	scrdef scr_seq_0782_T06R0301_00A9 ; 001
-	scrdef scr_seq_0782_T06R0301_00BC ; 002
-	scrdef scr_seq_0782_T06R0301_014C ; 003
-	scrdef scr_seq_0782_T06R0301_015F ; 004
-	scrdef scr_seq_0782_T06R0301_019A ; 005
-	scrdef scr_seq_0782_T06R0301_01AD ; 006
-	scrdef scr_seq_0782_T06R0301_017A ; 007
+	scrdef scr_seq_T06R0301_000
+	scrdef scr_seq_T06R0301_001
+	scrdef scr_seq_T06R0301_002
+	scrdef scr_seq_T06R0301_003
+	scrdef scr_seq_T06R0301_004
+	scrdef scr_seq_T06R0301_005
+	scrdef scr_seq_T06R0301_006
+	scrdef scr_seq_T06R0301_007
 	scrdef_end
 
-scr_seq_0782_T06R0301_0022:
+scr_seq_T06R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0F8
-	gotoif FALSE, scr_seq_0782_T06R0301_0044
+	gotoif FALSE, _0044
 	buffer_players_name 0
-	gender_msgbox 4, 5
+	gender_msgbox msg_0488_T06R0301_00004, msg_0488_T06R0301_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_0044:
-	npc_msg 0
+_0044:
+	npc_msg msg_0488_T06R0301_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0782_T06R0301_009E
-	npc_msg 1
+	gotoif eq, _009E
+	npc_msg msg_0488_T06R0301_00001
 	setvar VAR_SPECIAL_x8004, 50
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0782_T06R0301_0093
+	gotoif eq, _0093
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0F8
-	npc_msg 3
+	npc_msg msg_0488_T06R0301_00003
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_0093:
-	npc_msg 7
+_0093:
+	npc_msg msg_0488_T06R0301_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_009E:
-	npc_msg 6
+_009E:
+	npc_msg msg_0488_T06R0301_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_00A9:
+scr_seq_T06R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0488_T06R0301_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_00BC:
+scr_seq_T06R0301_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	getitemquantity 479, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0782_T06R0301_0141
+	gotoif ne, _0141
 	getitemquantity 480, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0782_T06R0301_0141
+	gotoif ne, _0141
 	checkflag FLAG_UNK_119
-	gotoif TRUE, scr_seq_0782_T06R0301_0116
+	gotoif TRUE, _0116
 	checkflag FLAG_UNK_118
-	gotoif TRUE, scr_seq_0782_T06R0301_010B
-	npc_msg 9
+	gotoif TRUE, _010B
+	npc_msg msg_0488_T06R0301_00009
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_010B:
-	npc_msg 10
+_010B:
+	npc_msg msg_0488_T06R0301_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_0116:
-	npc_msg 11
+_0116:
+	npc_msg msg_0488_T06R0301_00011
 	hide_person 5
 	setflag FLAG_UNK_2FC
 	setvar VAR_SPECIAL_x8004, 479
@@ -111,65 +113,65 @@ scr_seq_0782_T06R0301_0116:
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_0141:
-	npc_msg 13
+_0141:
+	npc_msg msg_0488_T06R0301_00013
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_014C:
+scr_seq_T06R0301_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 14
+	npc_msg msg_0488_T06R0301_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_015F:
+scr_seq_T06R0301_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 153, 0
-	npc_msg 16
+	npc_msg msg_0488_T06R0301_00016
 	scrcmd_077
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_017A:
+scr_seq_T06R0301_007:
 	checkflag FLAG_UNK_2FC
-	gotoif TRUE, scr_seq_0782_T06R0301_0198
+	gotoif TRUE, _0198
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 15
+	npc_msg msg_0488_T06R0301_00015
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_0198:
+_0198:
 	end
 
-scr_seq_0782_T06R0301_019A:
+scr_seq_T06R0301_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 17
+	npc_msg msg_0488_T06R0301_00017
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0782_T06R0301_01AD:
+scr_seq_T06R0301_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 18
+	npc_msg msg_0488_T06R0301_00018
 	waitbutton
 	closemsg
 	releaseall

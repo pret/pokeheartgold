@@ -1,41 +1,43 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T08.h"
+#include "msgdata/msg/msg_0512_T08.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0807_T08_0718 ; 000
-	scrdef scr_seq_0807_T08_072B ; 001
-	scrdef scr_seq_0807_T08_073E ; 002
-	scrdef scr_seq_0807_T08_0768 ; 003
-	scrdef scr_seq_0807_T08_077D ; 004
-	scrdef scr_seq_0807_T08_0792 ; 005
-	scrdef scr_seq_0807_T08_0069 ; 006
-	scrdef scr_seq_0807_T08_002A ; 007
-	scrdef scr_seq_0807_T08_01B0 ; 008
-	scrdef scr_seq_0807_T08_0751 ; 009
+	scrdef scr_seq_T08_000
+	scrdef scr_seq_T08_001
+	scrdef scr_seq_T08_002
+	scrdef scr_seq_T08_003
+	scrdef scr_seq_T08_004
+	scrdef scr_seq_T08_005
+	scrdef scr_seq_T08_006
+	scrdef scr_seq_T08_007
+	scrdef scr_seq_T08_008
+	scrdef scr_seq_T08_009
 	scrdef_end
 
-scr_seq_0807_T08_002A:
+scr_seq_T08_007:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0807_T08_003B
+	gotoif FALSE, _003B
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0807_T08_003B:
+_003B:
 	clearflag FLAG_UNK_149
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, scr_seq_0807_T08_0063
+	gotoif eq, _0063
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif eq, scr_seq_0807_T08_0063
+	gotoif eq, _0063
 	setflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0807_T08_0063:
+_0063:
 	clearflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0807_T08_0069:
+scr_seq_T08_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -45,10 +47,10 @@ scr_seq_0807_T08_0069:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0807_T08_014B
+	gotoif eq, _014B
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0807_T08_015F
+	gotoif eq, _015F
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -57,24 +59,24 @@ scr_seq_0807_T08_0069:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0807_T08_00DA
-	apply_movement 255, scr_seq_0807_T08_0174
-	goto scr_seq_0807_T08_00EA
+	gotoif ne, _00DA
+	apply_movement obj_player, _0174
+	goto _00EA
 
-scr_seq_0807_T08_00DA:
-	apply_movement 255, scr_seq_0807_T08_0180
-	apply_movement 5, scr_seq_0807_T08_0194
-scr_seq_0807_T08_00EA:
+_00DA:
+	apply_movement obj_player, _0180
+	apply_movement obj_T08_gsmiddleman1_2, _0194
+_00EA:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0807_T08_0111
-	apply_movement 253, scr_seq_0807_T08_01A0
+	gotoif ne, _0111
+	apply_movement 253, _01A0
 	wait_movement
-scr_seq_0807_T08_0111:
+_0111:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -90,7 +92,7 @@ scr_seq_0807_T08_0111:
 	releaseall
 	end
 
-scr_seq_0807_T08_014B:
+_014B:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -98,105 +100,103 @@ scr_seq_0807_T08_014B:
 	releaseall
 	end
 
-scr_seq_0807_T08_015F:
+_015F:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0807_T08_0173:
 	.byte 0x00
 
-scr_seq_0807_T08_0174:
+_0174:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0807_T08_0180:
+_0180:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0807_T08_0194:
+_0194:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0807_T08_01A0:
+_01A0:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0807_T08_01B0:
+scr_seq_T08_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	call scr_seq_0807_T08_0601
-	call scr_seq_0807_T08_057B
+	call _0601
+	call _057B
 	comparevartovalue VAR_SPECIAL_x8006, 1
-	gotoif eq, scr_seq_0807_T08_01E0
-	npc_msg 7
+	gotoif eq, _01E0
+	npc_msg msg_0512_T08_00007
 	closemsg
-	call scr_seq_0807_T08_0601
+	call _0601
 	releaseall
 	end
 
-scr_seq_0807_T08_01E0:
-	npc_msg 8
-scr_seq_0807_T08_01E3:
+_01E0:
+	npc_msg msg_0512_T08_00008
+_01E3:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8000, 1
-	gotoif ne, scr_seq_0807_T08_0202
+	gotoif ne, _0202
 	menu_item_add 205, 255, 0
-scr_seq_0807_T08_0202:
+_0202:
 	comparevartovalue VAR_SPECIAL_x8001, 1
-	gotoif ne, scr_seq_0807_T08_0217
+	gotoif ne, _0217
 	menu_item_add 206, 255, 1
-scr_seq_0807_T08_0217:
+_0217:
 	comparevartovalue VAR_SPECIAL_x8002, 1
-	gotoif ne, scr_seq_0807_T08_022C
+	gotoif ne, _022C
 	menu_item_add 207, 255, 2
-scr_seq_0807_T08_022C:
+_022C:
 	comparevartovalue VAR_SPECIAL_x8003, 1
-	gotoif ne, scr_seq_0807_T08_0241
+	gotoif ne, _0241
 	menu_item_add 208, 255, 3
-scr_seq_0807_T08_0241:
+_0241:
 	menu_item_add 126, 255, 4
 	menu_exec
 	touchscreen_menu_show
 	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0807_T08_028D
+	gotoif eq, _028D
 	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0807_T08_0331
+	gotoif eq, _0331
 	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0807_T08_03D5
+	gotoif eq, _03D5
 	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, scr_seq_0807_T08_0479
-	goto scr_seq_0807_T08_051D
+	gotoif eq, _0479
+	goto _051D
 
-scr_seq_0807_T08_028D:
-	npc_msg 11
+_028D:
+	npc_msg msg_0512_T08_00011
 	setvar VAR_SPECIAL_x8004, 156
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 164
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 169
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 156
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -207,25 +207,25 @@ scr_seq_0807_T08_028D:
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
 	takeitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
-	goto scr_seq_0807_T08_053B
+	goto _053B
 
-scr_seq_0807_T08_0331:
-	npc_msg 12
+_0331:
+	npc_msg msg_0512_T08_00012
 	setvar VAR_SPECIAL_x8004, 165
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 170
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 175
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 165
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -236,25 +236,25 @@ scr_seq_0807_T08_0331:
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
 	takeitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
-	goto scr_seq_0807_T08_053B
+	goto _053B
 
-scr_seq_0807_T08_03D5:
-	npc_msg 13
+_03D5:
+	npc_msg msg_0512_T08_00013
 	setvar VAR_SPECIAL_x8004, 168
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 173
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 178
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 168
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -265,25 +265,25 @@ scr_seq_0807_T08_03D5:
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
 	takeitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
-	goto scr_seq_0807_T08_053B
+	goto _053B
 
-scr_seq_0807_T08_0479:
-	npc_msg 14
+_0479:
+	npc_msg msg_0512_T08_00014
 	setvar VAR_SPECIAL_x8004, 167
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 172
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 182
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0807_T08_052C
+	gotoif eq, _052C
 	setvar VAR_SPECIAL_x8004, 167
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -294,89 +294,87 @@ scr_seq_0807_T08_0479:
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
 	takeitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
-	goto scr_seq_0807_T08_053B
+	goto _053B
 
-scr_seq_0807_T08_051D:
-	npc_msg 10
+_051D:
+	npc_msg msg_0512_T08_00010
 	closemsg
-	call scr_seq_0807_T08_0601
+	call _0601
 	releaseall
 	end
 
-scr_seq_0807_T08_052C:
-	npc_msg 15
+_052C:
+	npc_msg msg_0512_T08_00015
 	closemsg
-	call scr_seq_0807_T08_0601
+	call _0601
 	releaseall
 	end
 
-scr_seq_0807_T08_053B:
+_053B:
 	setvar VAR_SPECIAL_x8000, 0
 	setvar VAR_SPECIAL_x8001, 0
 	setvar VAR_SPECIAL_x8002, 0
 	setvar VAR_SPECIAL_x8003, 0
 	setvar VAR_SPECIAL_x8006, 0
-	call scr_seq_0807_T08_057B
+	call _057B
 	comparevartovalue VAR_SPECIAL_x8006, 1
-	gotoif ne, scr_seq_0807_T08_0575
-	npc_msg 9
-	goto scr_seq_0807_T08_01E3
+	gotoif ne, _0575
+	npc_msg msg_0512_T08_00009
+	goto _01E3
 
-scr_seq_0807_T08_0575:
-	goto scr_seq_0807_T08_051D
+_0575:
+	goto _051D
 
-scr_seq_0807_T08_057B:
+_057B:
 	hasitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0807_T08_059C
+	gotoif ne, _059C
 	setvar VAR_SPECIAL_x8000, 1
 	setvar VAR_SPECIAL_x8006, 1
-scr_seq_0807_T08_059C:
+_059C:
 	hasitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0807_T08_05BD
+	gotoif ne, _05BD
 	setvar VAR_SPECIAL_x8001, 1
 	setvar VAR_SPECIAL_x8006, 1
-scr_seq_0807_T08_05BD:
+_05BD:
 	hasitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0807_T08_05DE
+	gotoif ne, _05DE
 	setvar VAR_SPECIAL_x8002, 1
 	setvar VAR_SPECIAL_x8006, 1
-scr_seq_0807_T08_05DE:
+_05DE:
 	hasitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0807_T08_05FF
+	gotoif ne, _05FF
 	setvar VAR_SPECIAL_x8003, 1
 	setvar VAR_SPECIAL_x8006, 1
-scr_seq_0807_T08_05FF:
+_05FF:
 	return
 
-scr_seq_0807_T08_0601:
+_0601:
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0807_T08_0622
-	apply_movement 6, scr_seq_0807_T08_064C
+	gotoif ne, _0622
+	apply_movement obj_T08_juggrer, _064C
 	wait_movement
-	goto scr_seq_0807_T08_0649
+	goto _0649
 
-scr_seq_0807_T08_0622:
+_0622:
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, scr_seq_0807_T08_063F
-	apply_movement 6, scr_seq_0807_T08_0690
+	gotoif ne, _063F
+	apply_movement obj_T08_juggrer, _0690
 	wait_movement
-	goto scr_seq_0807_T08_0649
+	goto _0649
 
-scr_seq_0807_T08_063F:
-	apply_movement 6, scr_seq_0807_T08_06D4
+_063F:
+	apply_movement obj_T08_juggrer, _06D4
 	wait_movement
-scr_seq_0807_T08_0649:
+_0649:
 	return
-
-scr_seq_0807_T08_064B:
 	.byte 0x00
 
-scr_seq_0807_T08_064C:
+_064C:
 	step 3, 1
 	step 0, 1
 	step 2, 1
@@ -395,7 +393,7 @@ scr_seq_0807_T08_064C:
 	step 1, 1
 	step_end
 
-scr_seq_0807_T08_0690:
+_0690:
 	step 0, 1
 	step 2, 1
 	step 1, 1
@@ -414,7 +412,7 @@ scr_seq_0807_T08_0690:
 	step 3, 1
 	step_end
 
-scr_seq_0807_T08_06D4:
+_06D4:
 	step 1, 1
 	step 3, 1
 	step 0, 1
@@ -432,37 +430,37 @@ scr_seq_0807_T08_06D4:
 	step 0, 1
 	step 2, 1
 	step_end
-scr_seq_0807_T08_0718:
+scr_seq_T08_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 0
+	npc_msg msg_0512_T08_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0807_T08_072B:
+scr_seq_T08_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0512_T08_00001
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0807_T08_073E:
+scr_seq_T08_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 2
+	npc_msg msg_0512_T08_00002
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0807_T08_0751:
+scr_seq_T08_009:
 	scrcmd_055 3, 0, 8, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
@@ -470,7 +468,7 @@ scr_seq_0807_T08_0751:
 	callstd 2000
 	end
 
-scr_seq_0807_T08_0768:
+scr_seq_T08_003:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -478,7 +476,7 @@ scr_seq_0807_T08_0768:
 	callstd 2000
 	end
 
-scr_seq_0807_T08_077D:
+scr_seq_T08_004:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -486,7 +484,7 @@ scr_seq_0807_T08_077D:
 	callstd 2000
 	end
 
-scr_seq_0807_T08_0792:
+scr_seq_T08_005:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058

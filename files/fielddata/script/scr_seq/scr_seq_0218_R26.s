@@ -1,34 +1,36 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R26.h"
+#include "msgdata/msg/msg_0365_R26.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0218_R26_004D ; 000
-	scrdef scr_seq_0218_R26_0012 ; 001
-	scrdef scr_seq_0218_R26_01D0 ; 002
-	scrdef scr_seq_0218_R26_01E5 ; 003
+	scrdef scr_seq_R26_000
+	scrdef scr_seq_R26_001
+	scrdef scr_seq_R26_002
+	scrdef scr_seq_R26_003
 	scrdef_end
 
-scr_seq_0218_R26_0012:
+scr_seq_R26_001:
 	checkflag FLAG_UNK_189
-	gotoif FALSE, scr_seq_0218_R26_0023
+	gotoif FALSE, _0023
 	clearflag FLAG_UNK_189
 	end
 
-scr_seq_0218_R26_0023:
+_0023:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, scr_seq_0218_R26_0047
+	gotoif eq, _0047
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, scr_seq_0218_R26_0047
+	gotoif eq, _0047
 	setflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0218_R26_0047:
+_0047:
 	clearflag FLAG_HIDE_CAMERON
 	end
 
-scr_seq_0218_R26_004D:
+scr_seq_R26_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -38,10 +40,10 @@ scr_seq_0218_R26_004D:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0218_R26_0152
+	gotoif eq, _0152
 	photo_album_is_full VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0218_R26_0166
+	gotoif eq, _0166
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -50,31 +52,31 @@ scr_seq_0218_R26_004D:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0218_R26_00C6
-	apply_movement 255, scr_seq_0218_R26_017C
-	apply_movement 8, scr_seq_0218_R26_01B4
-	goto scr_seq_0218_R26_00F1
+	gotoif ne, _00C6
+	apply_movement obj_player, _017C
+	apply_movement obj_R26_gsmiddleman1, _01B4
+	goto _00F1
 
-scr_seq_0218_R26_00C6:
+_00C6:
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0218_R26_00E1
-	apply_movement 255, scr_seq_0218_R26_0194
-	goto scr_seq_0218_R26_00F1
+	gotoif ne, _00E1
+	apply_movement obj_player, _0194
+	goto _00F1
 
-scr_seq_0218_R26_00E1:
-	apply_movement 255, scr_seq_0218_R26_01A0
-	apply_movement 8, scr_seq_0218_R26_01B4
-scr_seq_0218_R26_00F1:
+_00E1:
+	apply_movement obj_player, _01A0
+	apply_movement obj_R26_gsmiddleman1, _01B4
+_00F1:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, scr_seq_0218_R26_0118
-	apply_movement 253, scr_seq_0218_R26_01C0
+	gotoif ne, _0118
+	apply_movement 253, _01C0
 	wait_movement
-scr_seq_0218_R26_0118:
+_0118:
 	setflag FLAG_UNK_189
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -90,7 +92,7 @@ scr_seq_0218_R26_0118:
 	releaseall
 	end
 
-scr_seq_0218_R26_0152:
+_0152:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 5
 	waitbutton
@@ -98,18 +100,16 @@ scr_seq_0218_R26_0152:
 	releaseall
 	end
 
-scr_seq_0218_R26_0166:
+_0166:
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0218_R26_017A:
 	.byte 0x00, 0x00
 
-scr_seq_0218_R26_017C:
+_017C:
 	step 15, 1
 	step 12, 2
 	step 14, 1
@@ -117,29 +117,29 @@ scr_seq_0218_R26_017C:
 	step 33, 1
 	step_end
 
-scr_seq_0218_R26_0194:
+_0194:
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0218_R26_01A0:
+_01A0:
 	step 12, 1
 	step 14, 1
 	step 12, 3
 	step 33, 1
 	step_end
 
-scr_seq_0218_R26_01B4:
+_01B4:
 	step 63, 1
 	step 32, 1
 	step_end
 
-scr_seq_0218_R26_01C0:
+_01C0:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
-scr_seq_0218_R26_01D0:
+scr_seq_R26_002:
 	scrcmd_056 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -147,7 +147,7 @@ scr_seq_0218_R26_01D0:
 	callstd 2000
 	end
 
-scr_seq_0218_R26_01E5:
+scr_seq_R26_003:
 	scrcmd_055 1, 1, 6, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058

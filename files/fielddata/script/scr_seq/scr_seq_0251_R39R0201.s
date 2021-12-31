@@ -1,298 +1,288 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R39R0201.h"
+#include "msgdata/msg/msg_0398_R39R0201.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0251_R39R0201_004D ; 000
-	scrdef scr_seq_0251_R39R0201_00AF ; 001
-	scrdef scr_seq_0251_R39R0201_022C ; 002
-	scrdef scr_seq_0251_R39R0201_0386 ; 003
-	scrdef scr_seq_0251_R39R0201_0016 ; 004
+	scrdef scr_seq_R39R0201_000
+	scrdef scr_seq_R39R0201_001
+	scrdef scr_seq_R39R0201_002
+	scrdef scr_seq_R39R0201_003
+	scrdef scr_seq_R39R0201_004
 	scrdef_end
 
-scr_seq_0251_R39R0201_0016:
+scr_seq_R39R0201_004:
 	scrcmd_379 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, scr_seq_0251_R39R0201_0047
+	gotoif eq, _0047
 	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, scr_seq_0251_R39R0201_0047
+	gotoif eq, _0047
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, scr_seq_0251_R39R0201_0047
+	gotoif eq, _0047
 	clearflag FLAG_UNK_226
 	end
 
-scr_seq_0251_R39R0201_0047:
+_0047:
 	setflag FLAG_UNK_226
 	end
 
-scr_seq_0251_R39R0201_004D:
+scr_seq_R39R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_100
-	gotoif TRUE, scr_seq_0251_R39R0201_00A2
+	gotoif TRUE, _00A2
 	checkflag FLAG_UNK_0AA
-	gotoif TRUE, scr_seq_0251_R39R0201_007E
-	npc_msg 5
+	gotoif TRUE, _007E
+	npc_msg msg_0398_R39R0201_00005
 	closemsg
-scr_seq_0251_R39R0201_0070:
-	apply_movement 0, scr_seq_0251_R39R0201_021C
+_0070:
+	apply_movement obj_R39R0201_gsbabygirl1, _021C
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_007E:
-	npc_msg 6
+_007E:
+	npc_msg msg_0398_R39R0201_00006
 	setvar VAR_SPECIAL_x8004, 434
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	npc_msg 7
+	npc_msg msg_0398_R39R0201_00007
 	closemsg
 	setflag FLAG_UNK_100
-	goto scr_seq_0251_R39R0201_0070
-
-scr_seq_0251_R39R0201_00A0:
+	goto _0070
 	.byte 0x02, 0x00
-scr_seq_0251_R39R0201_00A2:
-	npc_msg 8
+_00A2:
+	npc_msg msg_0398_R39R0201_00008
 	closemsg
-	goto scr_seq_0251_R39R0201_0070
-
-scr_seq_0251_R39R0201_00AD:
+	goto _0070
 	.byte 0x02, 0x00
-scr_seq_0251_R39R0201_00AF:
+scr_seq_R39R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_101
-	gotoif TRUE, scr_seq_0251_R39R0201_00E0
+	gotoif TRUE, _00E0
 	checkflag FLAG_UNK_0AA
-	gotoif TRUE, scr_seq_0251_R39R0201_00FA
-	npc_msg 0
+	gotoif TRUE, _00FA
+	npc_msg msg_0398_R39R0201_00000
 	closemsg
-scr_seq_0251_R39R0201_00D2:
-	apply_movement 2, scr_seq_0251_R39R0201_0224
+_00D2:
+	apply_movement obj_R39R0201_gsbabygirl1_2, _0224
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_00E0:
-	npc_msg 4
+_00E0:
+	npc_msg msg_0398_R39R0201_00004
 	closemsg
-	goto scr_seq_0251_R39R0201_00D2
-
-scr_seq_0251_R39R0201_00EB:
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0251_R39R0201_00ED:
-	npc_msg 2
+_00ED:
+	npc_msg msg_0398_R39R0201_00002
 	closemsg
-	goto scr_seq_0251_R39R0201_00D2
-
-scr_seq_0251_R39R0201_00F8:
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0251_R39R0201_00FA:
+_00FA:
 	checkflag FLAG_UNK_100
-	gotoif FALSE, scr_seq_0251_R39R0201_00ED
-	npc_msg 1
+	gotoif FALSE, _00ED
+	npc_msg msg_0398_R39R0201_00001
 	setvar VAR_SPECIAL_x8004, 29
 	setvar VAR_SPECIAL_x8005, 34
 	setvar VAR_SPECIAL_x8006, 39
 	scrcmd_133 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 99
-	gotoif eq, scr_seq_0251_R39R0201_020C
+	gotoif eq, _020C
 	scrcmd_133 32773, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 99
-	gotoif eq, scr_seq_0251_R39R0201_020C
+	gotoif eq, _020C
 	scrcmd_133 32774, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 99
-	gotoif eq, scr_seq_0251_R39R0201_020C
+	gotoif eq, _020C
 	setvar VAR_SPECIAL_x8000, 3
 	setvar VAR_SPECIAL_x8001, 3
 	setvar VAR_SPECIAL_x8002, 3
 	scrcmd_133 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 96
-	gotoif le, scr_seq_0251_R39R0201_01C2
+	gotoif le, _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	scrcmd_133 32773, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 96
-	gotoif le, scr_seq_0251_R39R0201_01C2
+	gotoif le, _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
 	scrcmd_133 32774, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 96
-	gotoif le, scr_seq_0251_R39R0201_01C2
+	gotoif le, _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
-scr_seq_0251_R39R0201_01C2:
+_01C2:
 	scrcmd_134 32772, 32768
 	scrcmd_134 32773, 32769
 	scrcmd_134 32774, 32770
 	buffer_seal_name_plural 0, VAR_SPECIAL_x8004
-	npc_msg 20
+	npc_msg msg_0398_R39R0201_00020
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	buffer_seal_name_plural 0, VAR_SPECIAL_x8005
-	npc_msg 20
+	npc_msg msg_0398_R39R0201_00020
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	buffer_seal_name_plural 0, VAR_SPECIAL_x8006
-	npc_msg 20
+	npc_msg msg_0398_R39R0201_00020
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	closemsg
 	setflag FLAG_UNK_101
-	goto scr_seq_0251_R39R0201_00D2
-
-scr_seq_0251_R39R0201_020A:
+	goto _00D2
 	.byte 0x02, 0x00
-scr_seq_0251_R39R0201_020C:
-	npc_msg 3
+_020C:
+	npc_msg msg_0398_R39R0201_00003
 	closemsg
-	goto scr_seq_0251_R39R0201_00D2
-
-scr_seq_0251_R39R0201_0217:
+	goto _00D2
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00
 
-scr_seq_0251_R39R0201_021C:
+_021C:
 	step 35, 1
 	step_end
 
-scr_seq_0251_R39R0201_0224:
+_0224:
 	step 34, 1
 	step_end
-scr_seq_0251_R39R0201_022C:
+scr_seq_R39R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0AA
-	gotoif TRUE, scr_seq_0251_R39R0201_0354
+	gotoif TRUE, _0354
 	scrcmd_076 241, 11
-	npc_msg 9
+	npc_msg msg_0398_R39R0201_00009
 	scrcmd_077
 	checkflag FLAG_UNK_0A8
-	gotoif TRUE, scr_seq_0251_R39R0201_0260
-	npc_msg 10
+	gotoif TRUE, _0260
+	npc_msg msg_0398_R39R0201_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0260:
-	npc_msg 10
+_0260:
+	npc_msg msg_0398_R39R0201_00010
 	scrcmd_049
-	npc_msg 13
+	npc_msg msg_0398_R39R0201_00013
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0251_R39R0201_028C
+	gotoif eq, _028C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0251_R39R0201_0378
+	gotoif eq, _0378
 	end
 
-scr_seq_0251_R39R0201_028C:
+_028C:
 	setvar VAR_SPECIAL_x8004, 155
 	setvar VAR_SPECIAL_x8005, 1
 	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0251_R39R0201_036A
+	gotoif eq, _036A
 	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	npc_msg 14
+	npc_msg msg_0398_R39R0201_00014
 	waitbutton
 	closemsg
 	checkflag FLAG_UNK_0B0
-	gotoif TRUE, scr_seq_0251_R39R0201_033F
+	gotoif TRUE, _033F
 	checkflag FLAG_UNK_0AF
-	gotoif TRUE, scr_seq_0251_R39R0201_0337
+	gotoif TRUE, _0337
 	checkflag FLAG_UNK_0AE
-	gotoif TRUE, scr_seq_0251_R39R0201_0328
+	gotoif TRUE, _0328
 	checkflag FLAG_UNK_0AD
-	gotoif TRUE, scr_seq_0251_R39R0201_0320
+	gotoif TRUE, _0320
 	checkflag FLAG_UNK_0AC
-	gotoif TRUE, scr_seq_0251_R39R0201_0311
+	gotoif TRUE, _0311
 	checkflag FLAG_UNK_0A9
-	gotoif TRUE, scr_seq_0251_R39R0201_0309
+	gotoif TRUE, _0309
 	setflag FLAG_UNK_0A9
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0309:
+_0309:
 	setflag FLAG_UNK_0AC
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0311:
+_0311:
 	setflag FLAG_UNK_0AD
-	npc_msg 15
+	npc_msg msg_0398_R39R0201_00015
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0320:
+_0320:
 	setflag FLAG_UNK_0AE
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0328:
+_0328:
 	setflag FLAG_UNK_0AF
-	npc_msg 16
+	npc_msg msg_0398_R39R0201_00016
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0337:
+_0337:
 	setflag FLAG_UNK_0B0
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_033F:
+_033F:
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
-	npc_msg 17
+	npc_msg msg_0398_R39R0201_00017
 	waitbutton
 	closemsg
 	setflag FLAG_UNK_0AA
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0354:
+_0354:
 	scrcmd_076 241, 0
-	npc_msg 11
+	npc_msg msg_0398_R39R0201_00011
 	scrcmd_077
-	npc_msg 12
+	npc_msg msg_0398_R39R0201_00012
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_036A:
+_036A:
 	buffer_players_name 0
-	npc_msg 18
+	npc_msg msg_0398_R39R0201_00018
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0378:
+_0378:
 	buffer_players_name 0
-	npc_msg 19
+	npc_msg msg_0398_R39R0201_00019
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0251_R39R0201_0386:
+scr_seq_R39R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	scrcmd_076 241, 0
-	npc_msg 11
+	npc_msg msg_0398_R39R0201_00011
 	scrcmd_077
-	npc_msg 12
+	npc_msg msg_0398_R39R0201_00012
 	waitbutton
 	closemsg
 	releaseall

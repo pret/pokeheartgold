@@ -1,84 +1,86 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D15R0103.h"
+#include "msgdata/msg/msg_0056_D15R0103.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0018_D15R0103_000E ; 000
-	scrdef scr_seq_0018_D15R0103_0025 ; 001
-	scrdef scr_seq_0018_D15R0103_013C ; 002
+	scrdef scr_seq_D15R0103_000
+	scrdef scr_seq_D15R0103_001
+	scrdef scr_seq_D15R0103_002
 	scrdef_end
 
-scr_seq_0018_D15R0103_000E:
+scr_seq_D15R0103_000:
 	clearflag FLAG_UNK_1A3
 	checkflag FLAG_UNK_078
-	gotoif TRUE, scr_seq_0018_D15R0103_001F
+	gotoif TRUE, _001F
 	end
 
-scr_seq_0018_D15R0103_001F:
+_001F:
 	setflag FLAG_UNK_1A3
 	end
 
-scr_seq_0018_D15R0103_0025:
+scr_seq_D15R0103_001:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40A4, 1
-	apply_movement 255, scr_seq_0018_D15R0103_00B4
+	apply_movement obj_player, _00B4
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	apply_movement 241, scr_seq_0018_D15R0103_00C0
+	apply_movement 241, _00C0
 	wait_movement
-	apply_movement 3, scr_seq_0018_D15R0103_00D0
+	apply_movement obj_D15R0103_chourou, _00D0
 	wait_movement
-	npc_msg 0
+	npc_msg msg_0056_D15R0103_00000
 	closemsg
 	wait 15, VAR_SPECIAL_x800C
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
-	apply_movement 6, scr_seq_0018_D15R0103_00D8
+	apply_movement obj_D15R0103_gsrivel, _00D8
 	wait_movement
-	npc_msg 1
+	npc_msg msg_0056_D15R0103_00001
 	closemsg
 	wait 15, VAR_SPECIAL_x800C
 	buffer_rivals_name 0
-	npc_msg 2
+	npc_msg msg_0056_D15R0103_00002
 	scrcmd_049
 	closemsg
 	play_se SEQ_SE_DP_KAIDAN2
-	apply_movement 6, scr_seq_0018_D15R0103_00E0
+	apply_movement obj_D15R0103_gsrivel, _00E0
 	wait_movement
 	hide_person 6
 	setflag FLAG_UNK_078
 	callstd std_fade_end_rival_outro_music
-	apply_movement 241, scr_seq_0018_D15R0103_00C8
+	apply_movement 241, _00C8
 	wait_movement
 	scrcmd_103
 	releaseall
 	end
 
 
-scr_seq_0018_D15R0103_00B4:
+_00B4:
 	step 75, 1
 	step 63, 1
 	step_end
 
-scr_seq_0018_D15R0103_00C0:
+_00C0:
 	step 12, 5
 	step_end
 
-scr_seq_0018_D15R0103_00C8:
+_00C8:
 	step 13, 5
 	step_end
 
-scr_seq_0018_D15R0103_00D0:
+_00D0:
 	step 33, 2
 	step_end
 
-scr_seq_0018_D15R0103_00D8:
+_00D8:
 	step 13, 1
 	step_end
 
-scr_seq_0018_D15R0103_00E0:
+_00E0:
 	step 2, 4
 	step 0, 4
 	step 3, 4
@@ -102,39 +104,39 @@ scr_seq_0018_D15R0103_00E0:
 	step 2, 1
 	step 0, 1
 	step_end
-scr_seq_0018_D15R0103_013C:
+scr_seq_D15R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_076
-	gotoif TRUE, scr_seq_0018_D15R0103_0197
-	npc_msg 3
+	gotoif TRUE, _0197
+	npc_msg msg_0056_D15R0103_00003
 	closemsg
 	trainer_battle TRAINER_ELDER_LI, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0018_D15R0103_01A2
-	npc_msg 4
+	gotoif eq, _01A2
+	npc_msg msg_0056_D15R0103_00004
 	setvar VAR_SPECIAL_x8004, 397
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_076
 	setflag FLAG_UNK_2E3
 	clearflag FLAG_UNK_2E4
-	npc_msg 5
+	npc_msg msg_0056_D15R0103_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0018_D15R0103_0197:
-	npc_msg 6
+_0197:
+	npc_msg msg_0056_D15R0103_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0018_D15R0103_01A2:
+_01A2:
 	white_out
 	releaseall
 	end

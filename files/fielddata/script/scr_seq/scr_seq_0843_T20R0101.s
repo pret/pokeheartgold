@@ -1,164 +1,166 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_T20R0101.h"
+#include "msgdata/msg/msg_0543_T20R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0843_T20R0101_039C ; 000
-	scrdef scr_seq_0843_T20R0101_0787 ; 001
-	scrdef scr_seq_0843_T20R0101_0894 ; 002
-	scrdef scr_seq_0843_T20R0101_0664 ; 003
-	scrdef scr_seq_0843_T20R0101_104F ; 004
-	scrdef scr_seq_0843_T20R0101_1051 ; 005
-	scrdef scr_seq_0843_T20R0101_1065 ; 006
-	scrdef scr_seq_0843_T20R0101_1079 ; 007
-	scrdef scr_seq_0843_T20R0101_108D ; 008
-	scrdef scr_seq_0843_T20R0101_10A1 ; 009
-	scrdef scr_seq_0843_T20R0101_0042 ; 010
-	scrdef scr_seq_0843_T20R0101_00CA ; 011
-	scrdef scr_seq_0843_T20R0101_0224 ; 012
-	scrdef scr_seq_0843_T20R0101_10B2 ; 013
-	scrdef scr_seq_0843_T20R0101_0B6C ; 014
-	scrdef scr_seq_0843_T20R0101_1112 ; 015
+	scrdef scr_seq_T20R0101_000
+	scrdef scr_seq_T20R0101_001
+	scrdef scr_seq_T20R0101_002
+	scrdef scr_seq_T20R0101_003
+	scrdef scr_seq_T20R0101_004
+	scrdef scr_seq_T20R0101_005
+	scrdef scr_seq_T20R0101_006
+	scrdef scr_seq_T20R0101_007
+	scrdef scr_seq_T20R0101_008
+	scrdef scr_seq_T20R0101_009
+	scrdef scr_seq_T20R0101_010
+	scrdef scr_seq_T20R0101_011
+	scrdef scr_seq_T20R0101_012
+	scrdef scr_seq_T20R0101_013
+	scrdef scr_seq_T20R0101_014
+	scrdef scr_seq_T20R0101_015
 	scrdef_end
 
-scr_seq_0843_T20R0101_0042:
+scr_seq_T20R0101_010:
 	get_friend_sprite VAR_OBJ_0
 	checkflag FLAG_ELM_RECEIVED_EMAIL
-	gotoif TRUE, scr_seq_0843_T20R0101_00B8
+	gotoif TRUE, _00B8
 	comparevartovalue VAR_SCENE_ELMS_LAB, 0
-	gotoif ne, scr_seq_0843_T20R0101_0070
+	gotoif ne, _0070
 	move_person 0, 4, 0, 5, 1
-	goto scr_seq_0843_T20R0101_00B4
+	goto _00B4
 
-scr_seq_0843_T20R0101_0070:
+_0070:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 3
-	gotoif ne, scr_seq_0843_T20R0101_008F
+	gotoif ne, _008F
 	move_person 0, 4, 0, 5, 1
-	goto scr_seq_0843_T20R0101_00B4
+	goto _00B4
 
-scr_seq_0843_T20R0101_008F:
+_008F:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 8
-	gotoif ne, scr_seq_0843_T20R0101_00B4
+	gotoif ne, _00B4
 	move_person 0, 4, 0, 5, 1
 	move_person 3, 7, 0, 12, 3
-scr_seq_0843_T20R0101_00B4:
+_00B4:
 	scrcmd_621
 	end
 
-scr_seq_0843_T20R0101_00B8:
+_00B8:
 	move_person 0, 4, 0, 5, 3
-	goto scr_seq_0843_T20R0101_00B4
+	goto _00B4
 
-scr_seq_0843_T20R0101_00CA:
+scr_seq_T20R0101_011:
 	scrcmd_609
 	lockall
 	checkflag FLAG_ELM_RECEIVED_EMAIL
-	gotoif TRUE, scr_seq_0843_T20R0101_0197
+	gotoif TRUE, _0197
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0843_T20R0101_00FA
-	apply_movement 255, scr_seq_0843_T20R0101_01BC
-	goto scr_seq_0843_T20R0101_0145
+	gotoif ne, _00FA
+	apply_movement obj_player, _01BC
+	goto _0145
 
-scr_seq_0843_T20R0101_00FA:
+_00FA:
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, scr_seq_0843_T20R0101_0115
-	apply_movement 255, scr_seq_0843_T20R0101_01CC
-	goto scr_seq_0843_T20R0101_0145
+	gotoif ne, _0115
+	apply_movement obj_player, _01CC
+	goto _0145
 
-scr_seq_0843_T20R0101_0115:
+_0115:
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0843_T20R0101_0130
-	apply_movement 255, scr_seq_0843_T20R0101_01D4
-	goto scr_seq_0843_T20R0101_0145
+	gotoif ne, _0130
+	apply_movement obj_player, _01D4
+	goto _0145
 
-scr_seq_0843_T20R0101_0130:
+_0130:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0843_T20R0101_0145
-	apply_movement 255, scr_seq_0843_T20R0101_01E4
-scr_seq_0843_T20R0101_0145:
+	gotoif ne, _0145
+	apply_movement obj_player, _01E4
+_0145:
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 0, 1
+	gender_msgbox msg_0543_T20R0101_00000, msg_0543_T20R0101_00001
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0368
+	apply_movement obj_T20R0101_doctor, _0368
 	wait_movement
 	wait 15, VAR_SPECIAL_x8004
 	play_se SEQ_SE_GS_PHONE0
-	apply_movement 0, scr_seq_0843_T20R0101_01F4
+	apply_movement obj_T20R0101_doctor, _01F4
 	wait_movement
-	npc_msg 2
-	npc_msg 3
+	npc_msg msg_0543_T20R0101_00002
+	npc_msg msg_0543_T20R0101_00003
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0204
+	apply_movement obj_T20R0101_doctor, _0204
 	wait_movement
-	npc_msg 4
+	npc_msg msg_0543_T20R0101_00004
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0368
+	apply_movement obj_T20R0101_doctor, _0368
 	wait_movement
 	setflag FLAG_ELM_RECEIVED_EMAIL
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0197:
-	apply_movement 0, scr_seq_0843_T20R0101_020C
+_0197:
+	apply_movement obj_T20R0101_doctor, _020C
 	wait_movement
-	npc_msg 6
+	npc_msg msg_0543_T20R0101_00006
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0368
-	apply_movement 255, scr_seq_0843_T20R0101_021C
+	apply_movement obj_T20R0101_doctor, _0368
+	apply_movement obj_player, _021C
 	wait_movement
 	releaseall
 	end
 
 
-scr_seq_0843_T20R0101_01BC:
+_01BC:
 	step 12, 2
 	step 15, 1
 	step 12, 1
 	step_end
 
-scr_seq_0843_T20R0101_01CC:
+_01CC:
 	step 12, 3
 	step_end
 
-scr_seq_0843_T20R0101_01D4:
+_01D4:
 	step 12, 2
 	step 14, 1
 	step 12, 1
 	step_end
 
-scr_seq_0843_T20R0101_01E4:
+_01E4:
 	step 12, 2
 	step 14, 2
 	step 12, 1
 	step_end
 
-scr_seq_0843_T20R0101_01F4:
+_01F4:
 	step 75, 1
 	step 12, 1
 	step 65, 1
 	step_end
 
-scr_seq_0843_T20R0101_0204:
+_0204:
 	step 13, 1
 	step_end
 
-scr_seq_0843_T20R0101_020C:
+_020C:
 	step 1, 1
 	step 75, 1
 	step 33, 2
 	step_end
 
-scr_seq_0843_T20R0101_021C:
+_021C:
 	step 12, 1
 	step_end
-scr_seq_0843_T20R0101_0224:
+scr_seq_T20R0101_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_GOT_STARTER
-	gotoif TRUE, scr_seq_0843_T20R0101_0331
+	gotoif TRUE, _0331
 	scrcmd_167
 	setflag FLAG_GOT_STARTER
 	scrcmd_605 3, 2
@@ -170,36 +172,36 @@ scr_seq_0843_T20R0101_0224:
 	set_starter_choice VAR_TEMP_x4001
 	buffer_players_name 0
 	buffer_mon_species_name 1, 0
-	npc_msg 7
+	npc_msg msg_0543_T20R0101_00007
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
 	touchscreen_menu_hide
 	buffer_mon_species_name 1, 0
-	npc_msg 8
+	npc_msg msg_0543_T20R0101_00008
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif eq, scr_seq_0843_T20R0101_02EE
+	callif eq, _02EE
 	touchscreen_menu_show
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0843_T20R0101_0370
-	apply_movement 0, scr_seq_0843_T20R0101_0388
+	apply_movement obj_player, _0370
+	apply_movement obj_T20R0101_doctor, _0388
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	npc_msg 10
+	npc_msg msg_0543_T20R0101_00010
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0380
+	apply_movement obj_T20R0101_doctor, _0380
 	wait_movement
-	npc_msg 11
+	npc_msg msg_0543_T20R0101_00011
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0390
+	apply_movement obj_T20R0101_doctor, _0390
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 12, 13
+	gender_msgbox msg_0543_T20R0101_00012, msg_0543_T20R0101_00013
 	waitbutton
 	closemsg
 	setvar VAR_SCENE_ELMS_LAB, 1
@@ -208,7 +210,7 @@ scr_seq_0843_T20R0101_0224:
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_02EE:
+_02EE:
 	setvar VAR_TEMP_x4000, 0
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -217,412 +219,408 @@ scr_seq_0843_T20R0101_02EE:
 	wait_fade
 	touchscreen_menu_hide
 	bufferpartymonnick 1, 0
-	npc_msg 9
+	npc_msg msg_0543_T20R0101_00009
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0843_T20R0101_02EE
+	gotoif eq, _02EE
 	return
 
-scr_seq_0843_T20R0101_0331:
+_0331:
 	checkflag FLAG_UNK_073
-	gotoif TRUE, scr_seq_0843_T20R0101_035D
+	gotoif TRUE, _035D
 	checkflag FLAG_MET_PASSERBY_BOY
-	gotoif TRUE, scr_seq_0843_T20R0101_0352
-	npc_msg 15
+	gotoif TRUE, _0352
+	npc_msg msg_0543_T20R0101_00015
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0352:
-	npc_msg 16
+_0352:
+	npc_msg msg_0543_T20R0101_00016
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_035D:
-	npc_msg 17
+_035D:
+	npc_msg msg_0543_T20R0101_00017
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 
-scr_seq_0843_T20R0101_0368:
+_0368:
 	step 3, 1
 	step_end
 
-scr_seq_0843_T20R0101_0370:
+_0370:
 	step 13, 2
 	step 14, 4
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0380:
+_0380:
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0388:
+_0388:
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0390:
+_0390:
 	step 65, 1
 	step 33, 1
 	step_end
-scr_seq_0843_T20R0101_039C:
+scr_seq_T20R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0F2
-	gotoif TRUE, scr_seq_0843_T20R0101_03BA
+	gotoif TRUE, _03BA
 	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, scr_seq_0843_T20R0101_0526
-scr_seq_0843_T20R0101_03BA:
+	gotoif TRUE, _0526
+_03BA:
 	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0843_T20R0101_03F5
+	gotoif eq, _03F5
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 172
-	gotoif ne, scr_seq_0843_T20R0101_03F5
+	gotoif ne, _03F5
 	get_partymon_forme VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0843_T20R0101_0CDC
-scr_seq_0843_T20R0101_03F5:
+	gotoif eq, _0CDC
+_03F5:
 	checkflag FLAG_UNK_072
-	gotoif TRUE, scr_seq_0843_T20R0101_04A1
+	gotoif TRUE, _04A1
 	checkflag FLAG_UNK_983
-	gotoif TRUE, scr_seq_0843_T20R0101_055F
+	gotoif TRUE, _055F
 	comparevartovalue VAR_SCENE_ELMS_LAB, 9
-	gotoif ge, scr_seq_0843_T20R0101_04A1
+	gotoif ge, _04A1
 	comparevartovalue VAR_SCENE_ELMS_LAB, 0
-	gotoif ne, scr_seq_0843_T20R0101_043C
-	npc_msg 5
+	gotoif ne, _043C
+	npc_msg msg_0543_T20R0101_00005
 	waitbutton
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0368
+	apply_movement obj_T20R0101_doctor, _0368
 	wait_movement
-	goto scr_seq_0843_T20R0101_049D
+	goto _049D
 
-scr_seq_0843_T20R0101_043C:
+_043C:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 2
-	gotoif gt, scr_seq_0843_T20R0101_045A
+	gotoif gt, _045A
 	buffer_players_name 0
-	gender_msgbox 12, 13
+	gender_msgbox msg_0543_T20R0101_00012, msg_0543_T20R0101_00013
 	waitbutton
 	closemsg
-	goto scr_seq_0843_T20R0101_049D
+	goto _049D
 
-scr_seq_0843_T20R0101_045A:
+_045A:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 5
-	gotoif gt, scr_seq_0843_T20R0101_0474
-	npc_msg 40
+	gotoif gt, _0474
+	npc_msg msg_0543_T20R0101_00040
 	waitbutton
 	closemsg
-	goto scr_seq_0843_T20R0101_049D
+	goto _049D
 
-scr_seq_0843_T20R0101_0474:
+_0474:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 6
-	gotoif ne, scr_seq_0843_T20R0101_0492
+	gotoif ne, _0492
 	buffer_players_name 0
-	gender_msgbox 42, 43
+	gender_msgbox msg_0543_T20R0101_00042, msg_0543_T20R0101_00043
 	waitbutton
 	closemsg
-	goto scr_seq_0843_T20R0101_049D
+	goto _049D
 
-scr_seq_0843_T20R0101_0492:
+_0492:
 	buffer_players_name 0
-	gender_msgbox 44, 45
+	gender_msgbox msg_0543_T20R0101_00044, msg_0543_T20R0101_00045
 	waitbutton
 	closemsg
-scr_seq_0843_T20R0101_049D:
+_049D:
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_04A1:
+_04A1:
 	check_badge 15, VAR_TEMP_x4003
 	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif eq, scr_seq_0843_T20R0101_0550
+	gotoif eq, _0550
 	checkflag FLAG_UNK_0F2
-	gotoif TRUE, scr_seq_0843_T20R0101_0541
+	gotoif TRUE, _0541
 	checkflag FLAG_UNK_108
-	gotoif TRUE, scr_seq_0843_T20R0101_051B
+	gotoif TRUE, _051B
 	checkflag FLAG_UNK_109
-	gotoif TRUE, scr_seq_0843_T20R0101_051B
+	gotoif TRUE, _051B
 	check_badge 7, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif eq, scr_seq_0843_T20R0101_0510
+	gotoif eq, _0510
 	comparevartovalue VAR_TEMP_x400F, 1
-	gotoif eq, scr_seq_0843_T20R0101_0504
+	gotoif eq, _0504
 	buffer_players_name 0
-	gender_msgbox 98, 99
+	gender_msgbox msg_0543_T20R0101_00098, msg_0543_T20R0101_00099
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0504:
-	gender_msgbox 100, 101
+_0504:
+	gender_msgbox msg_0543_T20R0101_00100, msg_0543_T20R0101_00101
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0510:
-	npc_msg 69
+_0510:
+	npc_msg msg_0543_T20R0101_00069
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_051B:
-	npc_msg 70
+_051B:
+	npc_msg msg_0543_T20R0101_00070
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0526:
+_0526:
 	buffer_players_name 0
-	gender_msgbox 71, 72
+	gender_msgbox msg_0543_T20R0101_00071, msg_0543_T20R0101_00072
 	setvar VAR_SPECIAL_x8004, 456
 	setvar VAR_SPECIAL_x8005, 1
 	setflag FLAG_UNK_0F2
 	callstd std_give_item_verbose
-scr_seq_0843_T20R0101_0541:
+_0541:
 	buffer_players_name 0
-	gender_msgbox 73, 74
+	gender_msgbox msg_0543_T20R0101_00073, msg_0543_T20R0101_00074
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0550:
+_0550:
 	buffer_players_name 0
-	gender_msgbox 102, 103
+	gender_msgbox msg_0543_T20R0101_00102, msg_0543_T20R0101_00103
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_055F:
+_055F:
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	scrcmd_149 0
 	comparevartovalue VAR_TEMP_x4001, 175
-	gotoif eq, scr_seq_0843_T20R0101_0599
+	gotoif eq, _0599
 	comparevartovalue VAR_TEMP_x4001, 176
-	gotoif eq, scr_seq_0843_T20R0101_0599
+	gotoif eq, _0599
 	comparevartovalue VAR_TEMP_x4001, 468
-	gotoif eq, scr_seq_0843_T20R0101_0599
-	goto scr_seq_0843_T20R0101_0637
+	gotoif eq, _0599
+	goto _0637
 
-scr_seq_0843_T20R0101_0599:
-	apply_movement 0, scr_seq_0843_T20R0101_0658
+_0599:
+	apply_movement obj_T20R0101_doctor, _0658
 	wait_movement
-	npc_msg 46
+	npc_msg msg_0543_T20R0101_00046
 	buffer_players_name 0
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, scr_seq_0843_T20R0101_05D9
+	gotoif ne, _05D9
 	checkflag FLAG_UNK_108
-	gotoif FALSE, scr_seq_0843_T20R0101_05CF
-	gender_msgbox 104, 105
-	goto scr_seq_0843_T20R0101_05D3
+	gotoif FALSE, _05CF
+	gender_msgbox msg_0543_T20R0101_00104, msg_0543_T20R0101_00105
+	goto _05D3
 
-scr_seq_0843_T20R0101_05CF:
-	gender_msgbox 47, 48
-scr_seq_0843_T20R0101_05D3:
-	goto scr_seq_0843_T20R0101_05F2
+_05CF:
+	gender_msgbox msg_0543_T20R0101_00047, msg_0543_T20R0101_00048
+_05D3:
+	goto _05F2
 
-scr_seq_0843_T20R0101_05D9:
+_05D9:
 	checkflag FLAG_UNK_109
-	gotoif FALSE, scr_seq_0843_T20R0101_05EE
-	gender_msgbox 104, 105
-	goto scr_seq_0843_T20R0101_05F2
+	gotoif FALSE, _05EE
+	gender_msgbox msg_0543_T20R0101_00104, msg_0543_T20R0101_00105
+	goto _05F2
 
-scr_seq_0843_T20R0101_05EE:
-	gender_msgbox 47, 48
-scr_seq_0843_T20R0101_05F2:
+_05EE:
+	gender_msgbox msg_0543_T20R0101_00047, msg_0543_T20R0101_00048
+_05F2:
 	setvar VAR_SPECIAL_x8004, 229
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0843_T20R0101_064E
+	gotoif eq, _064E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_072
 	setflag FLAG_UNK_11A
 	setvar VAR_TEMP_x400F, 0
-	npc_msg 49
+	npc_msg msg_0543_T20R0101_00049
 	buffer_players_name 0
-	gender_msgbox 50, 51
+	gender_msgbox msg_0543_T20R0101_00050, msg_0543_T20R0101_00051
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0637:
+_0637:
 	buffer_players_name 0
-	gender_msgbox 53, 54
+	gender_msgbox msg_0543_T20R0101_00053, msg_0543_T20R0101_00054
 	setvar VAR_TEMP_x400F, 1
-	goto scr_seq_0843_T20R0101_04A1
-
-scr_seq_0843_T20R0101_064A:
+	goto _04A1
 	.byte 0x61, 0x00, 0x02, 0x00
-scr_seq_0843_T20R0101_064E:
+_064E:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
 
-scr_seq_0843_T20R0101_0658:
+_0658:
 	step 75, 1
 	step 62, 1
 	step_end
-scr_seq_0843_T20R0101_0664:
+scr_seq_T20R0101_003:
 	scrcmd_609
 	lockall
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0843_T20R0101_0689
-	apply_movement 2, scr_seq_0843_T20R0101_081C
-	goto scr_seq_0843_T20R0101_06D4
+	gotoif ne, _0689
+	apply_movement obj_T20R0101_assistantm, _081C
+	goto _06D4
 
-scr_seq_0843_T20R0101_0689:
+_0689:
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, scr_seq_0843_T20R0101_06A4
-	apply_movement 2, scr_seq_0843_T20R0101_082C
-	goto scr_seq_0843_T20R0101_06D4
+	gotoif ne, _06A4
+	apply_movement obj_T20R0101_assistantm, _082C
+	goto _06D4
 
-scr_seq_0843_T20R0101_06A4:
+_06A4:
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0843_T20R0101_06BF
-	apply_movement 2, scr_seq_0843_T20R0101_083C
-	goto scr_seq_0843_T20R0101_06D4
+	gotoif ne, _06BF
+	apply_movement obj_T20R0101_assistantm, _083C
+	goto _06D4
 
-scr_seq_0843_T20R0101_06BF:
+_06BF:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0843_T20R0101_06D4
-	apply_movement 2, scr_seq_0843_T20R0101_084C
-scr_seq_0843_T20R0101_06D4:
+	gotoif ne, _06D4
+	apply_movement obj_T20R0101_assistantm, _084C
+_06D4:
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 19, 20
+	gender_msgbox msg_0543_T20R0101_00019, msg_0543_T20R0101_00020
 	setvar VAR_SPECIAL_x8004, 17
 	setvar VAR_SPECIAL_x8005, 5
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0843_T20R0101_0805
+	gotoif eq, _0805
 	setvar VAR_SPECIAL_x8004, 17
 	setvar VAR_SPECIAL_x8005, 5
 	callstd 2008
 	closemsg
 	setvar VAR_SCENE_ELMS_LAB, 2
-	npc_msg 21
+	npc_msg msg_0543_T20R0101_00021
 	closemsg
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0843_T20R0101_0736
-	apply_movement 2, scr_seq_0843_T20R0101_0864
-	goto scr_seq_0843_T20R0101_0781
+	gotoif ne, _0736
+	apply_movement obj_T20R0101_assistantm, _0864
+	goto _0781
 
-scr_seq_0843_T20R0101_0736:
+_0736:
 	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, scr_seq_0843_T20R0101_0751
-	apply_movement 2, scr_seq_0843_T20R0101_0870
-	goto scr_seq_0843_T20R0101_0781
+	gotoif ne, _0751
+	apply_movement obj_T20R0101_assistantm, _0870
+	goto _0781
 
-scr_seq_0843_T20R0101_0751:
+_0751:
 	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, scr_seq_0843_T20R0101_076C
-	apply_movement 2, scr_seq_0843_T20R0101_087C
-	goto scr_seq_0843_T20R0101_0781
+	gotoif ne, _076C
+	apply_movement obj_T20R0101_assistantm, _087C
+	goto _0781
 
-scr_seq_0843_T20R0101_076C:
+_076C:
 	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, scr_seq_0843_T20R0101_0781
-	apply_movement 2, scr_seq_0843_T20R0101_0888
-scr_seq_0843_T20R0101_0781:
+	gotoif ne, _0781
+	apply_movement obj_T20R0101_assistantm, _0888
+_0781:
 	wait_movement
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0787:
+scr_seq_T20R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	comparevartovalue VAR_UNK_40FC, 3
-	gotoif eq, scr_seq_0843_T20R0101_080F
+	gotoif eq, _080F
 	comparevartovalue VAR_SCENE_ELMS_LAB, 0
-	gotoif ne, scr_seq_0843_T20R0101_07B2
-	npc_msg 18
-	goto scr_seq_0843_T20R0101_07FD
+	gotoif ne, _07B2
+	npc_msg msg_0543_T20R0101_00018
+	goto _07FD
 
-scr_seq_0843_T20R0101_07B2:
+_07B2:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 2
-	gotoif ne, scr_seq_0843_T20R0101_07C8
-	npc_msg 22
-	goto scr_seq_0843_T20R0101_07FD
+	gotoif ne, _07C8
+	npc_msg msg_0543_T20R0101_00022
+	goto _07FD
 
-scr_seq_0843_T20R0101_07C8:
+_07C8:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 4
-	gotoif ne, scr_seq_0843_T20R0101_07E4
-	npc_msg 41
+	gotoif ne, _07E4
+	npc_msg msg_0543_T20R0101_00041
 	setvar VAR_SCENE_ELMS_LAB, 5
-	goto scr_seq_0843_T20R0101_07FD
+	goto _07FD
 
-scr_seq_0843_T20R0101_07E4:
+_07E4:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 6
-	gotoif ne, scr_seq_0843_T20R0101_07FA
-	npc_msg 55
-	goto scr_seq_0843_T20R0101_07FD
+	gotoif ne, _07FA
+	npc_msg msg_0543_T20R0101_00055
+	goto _07FD
 
-scr_seq_0843_T20R0101_07FA:
-	npc_msg 55
-scr_seq_0843_T20R0101_07FD:
+_07FA:
+	npc_msg msg_0543_T20R0101_00055
+_07FD:
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0805:
+_0805:
 	callstd std_bag_is_full
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_080F:
-	npc_msg 57
+_080F:
+	npc_msg msg_0543_T20R0101_00057
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0843_T20R0101_081A:
 	.byte 0x00, 0x00
 
-scr_seq_0843_T20R0101_081C:
+_081C:
 	step 75, 1
 	step 78, 6
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_082C:
+_082C:
 	step 75, 1
 	step 78, 5
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_083C:
+_083C:
 	step 75, 1
 	step 78, 4
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_084C:
+_084C:
 	step 75, 1
 	step 78, 3
 	step 32, 1
@@ -630,87 +628,87 @@ scr_seq_0843_T20R0101_084C:
 	.byte 0x03, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00
 
-scr_seq_0843_T20R0101_0864:
+_0864:
 	step 79, 6
 	step 34, 1
 	step_end
 
-scr_seq_0843_T20R0101_0870:
+_0870:
 	step 79, 5
 	step 34, 1
 	step_end
 
-scr_seq_0843_T20R0101_087C:
+_087C:
 	step 79, 4
 	step 34, 1
 	step_end
 
-scr_seq_0843_T20R0101_0888:
+_0888:
 	step 79, 3
 	step 34, 1
 	step_end
-scr_seq_0843_T20R0101_0894:
+scr_seq_T20R0101_002:
 	scrcmd_609
 	lockall
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0843_T20R0101_0A68
+	apply_movement obj_player, _0A68
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 1, scr_seq_0843_T20R0101_0A7C
+	apply_movement obj_T20R0101_policeman, _0A7C
 	wait_movement
-	npc_msg 23
+	npc_msg msg_0543_T20R0101_00023
 	closemsg
 	clearflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
 	show_person 3
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
-	apply_movement 3, scr_seq_0843_T20R0101_0ADC
-	apply_movement 1, scr_seq_0843_T20R0101_0A84
+	apply_movement obj_T20R0101_var_1, _0ADC
+	apply_movement obj_T20R0101_policeman, _0A84
 	wait_movement
-	gender_msgbox 24, 25
+	gender_msgbox msg_0543_T20R0101_00024, msg_0543_T20R0101_00025
 	closemsg
-	apply_movement 1, scr_seq_0843_T20R0101_0A90
+	apply_movement obj_T20R0101_policeman, _0A90
 	wait_movement
-	npc_msg 26
+	npc_msg msg_0543_T20R0101_00026
 	closemsg
 	callstd std_fade_end_friend_music
-scr_seq_0843_T20R0101_0904:
+_0904:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	name_rival VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0843_T20R0101_0904
-	apply_movement 1, scr_seq_0843_T20R0101_0A7C
+	gotoif eq, _0904
+	apply_movement obj_T20R0101_policeman, _0A7C
 	wait_movement
 	buffer_rivals_name 1
-	npc_msg 27
+	npc_msg msg_0543_T20R0101_00027
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0843_T20R0101_0A59
+	gotoif eq, _0A59
 	closemsg
-	npc_msg 28
+	npc_msg msg_0543_T20R0101_00028
 	closemsg
-	apply_movement 3, scr_seq_0843_T20R0101_0AEC
-	apply_movement 1, scr_seq_0843_T20R0101_0ABC
+	apply_movement obj_T20R0101_var_1, _0AEC
+	apply_movement obj_T20R0101_policeman, _0ABC
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person 1
 	wait_se SEQ_SE_DP_KAIDAN2
-	apply_movement 3, scr_seq_0843_T20R0101_0B08
+	apply_movement obj_T20R0101_var_1, _0B08
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 30, 31
+	gender_msgbox msg_0543_T20R0101_00030, msg_0543_T20R0101_00031
 	closemsg
-	apply_movement 3, scr_seq_0843_T20R0101_0B18
+	apply_movement obj_T20R0101_var_1, _0B18
 	wait_movement
 	setflag FLAG_UNK_2E5
 	play_se SEQ_SE_DP_KAIDAN2
@@ -719,32 +717,32 @@ scr_seq_0843_T20R0101_0904:
 	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	setflag FLAG_UNK_079
-	apply_movement 255, scr_seq_0843_T20R0101_0A74
+	apply_movement obj_player, _0A74
 	wait_movement
-	apply_movement 0, scr_seq_0843_T20R0101_0B2C
+	apply_movement obj_T20R0101_doctor, _0B2C
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 32, 33
+	gender_msgbox msg_0543_T20R0101_00032, msg_0543_T20R0101_00033
 	closemsg
-	npc_msg 34
+	npc_msg msg_0543_T20R0101_00034
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	setvar VAR_SPECIAL_x8004, 484
 	setvar VAR_SPECIAL_x8005, 1
 	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	apply_movement 0, scr_seq_0843_T20R0101_0B34
+	apply_movement obj_T20R0101_doctor, _0B34
 	wait_movement
-	npc_msg 35
+	npc_msg msg_0543_T20R0101_00035
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0B48
+	apply_movement obj_T20R0101_doctor, _0B48
 	wait_movement
-	gender_msgbox 36, 37
+	gender_msgbox msg_0543_T20R0101_00036, msg_0543_T20R0101_00037
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0B50
+	apply_movement obj_T20R0101_doctor, _0B50
 	wait_movement
-	gender_msgbox 38, 39
+	gender_msgbox msg_0543_T20R0101_00038, msg_0543_T20R0101_00039
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0B64
+	apply_movement obj_T20R0101_doctor, _0B64
 	wait_movement
 	setflag FLAG_UNK_196
 	clearflag FLAG_UNK_199
@@ -759,33 +757,31 @@ scr_seq_0843_T20R0101_0904:
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0A59:
-	npc_msg 29
+_0A59:
+	npc_msg msg_0543_T20R0101_00029
 	closemsg
-	goto scr_seq_0843_T20R0101_0904
-
-scr_seq_0843_T20R0101_0A64:
+	goto _0904
 	.byte 0x02, 0x00, 0x00, 0x00
 
-scr_seq_0843_T20R0101_0A68:
+_0A68:
 	step 76, 8
 	step 2, 1
 	step_end
 
-scr_seq_0843_T20R0101_0A74:
+_0A74:
 	step 0, 1
 	step_end
 
-scr_seq_0843_T20R0101_0A7C:
+_0A7C:
 	step 35, 1
 	step_end
 
-scr_seq_0843_T20R0101_0A84:
+_0A84:
 	step 63, 4
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0A90:
+_0A90:
 	step 75, 1
 	step 60, 1
 	step 1, 1
@@ -798,7 +794,7 @@ scr_seq_0843_T20R0101_0A90:
 	step 63, 2
 	step_end
 
-scr_seq_0843_T20R0101_0ABC:
+_0ABC:
 	step 1, 1
 	step 62, 1
 	step 13, 6
@@ -808,13 +804,13 @@ scr_seq_0843_T20R0101_0ABC:
 	step 13, 2
 	step_end
 
-scr_seq_0843_T20R0101_0ADC:
+_0ADC:
 	step 16, 6
 	step 18, 1
 	step 48, 2
 	step_end
 
-scr_seq_0843_T20R0101_0AEC:
+_0AEC:
 	step 2, 1
 	step 71, 1
 	step 15, 1
@@ -823,99 +819,99 @@ scr_seq_0843_T20R0101_0AEC:
 	step 1, 1
 	step_end
 
-scr_seq_0843_T20R0101_0B08:
+_0B08:
 	step 14, 1
 	step 12, 2
 	step 35, 1
 	step_end
 
-scr_seq_0843_T20R0101_0B18:
+_0B18:
 	step 1, 1
 	step 13, 6
 	step 15, 1
 	step 13, 2
 	step_end
 
-scr_seq_0843_T20R0101_0B2C:
+_0B2C:
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0B34:
+_0B34:
 	step 49, 1
 	step 71, 1
 	step 80, 1
 	step 72, 1
 	step_end
 
-scr_seq_0843_T20R0101_0B48:
+_0B48:
 	step 77, 1
 	step_end
 
-scr_seq_0843_T20R0101_0B50:
+_0B50:
 	step 0, 1
 	step 8, 1
 	step 64, 1
 	step 1, 1
 	step_end
 
-scr_seq_0843_T20R0101_0B64:
+_0B64:
 	step 77, 1
 	step_end
-scr_seq_0843_T20R0101_0B6C:
+scr_seq_T20R0101_014:
 	scrcmd_609
 	lockall
-	apply_movement 3, scr_seq_0843_T20R0101_0C78
+	apply_movement obj_T20R0101_var_1, _0C78
 	wait_movement
-	apply_movement 3, scr_seq_0843_T20R0101_0C84
+	apply_movement obj_T20R0101_var_1, _0C84
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 58, 59
+	gender_msgbox msg_0543_T20R0101_00058, msg_0543_T20R0101_00059
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement 255, scr_seq_0843_T20R0101_0CA4
-	apply_movement 3, scr_seq_0843_T20R0101_0C90
+	apply_movement obj_player, _0CA4
+	apply_movement obj_T20R0101_var_1, _0C90
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	apply_movement 0, scr_seq_0843_T20R0101_0B2C
+	apply_movement obj_T20R0101_doctor, _0B2C
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 60, 61
+	gender_msgbox msg_0543_T20R0101_00060, msg_0543_T20R0101_00061
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0843_T20R0101_0BEF
+	gotoif ne, _0BEF
 	callstd std_bag_is_full
-	goto scr_seq_0843_T20R0101_0BF3
+	goto _0BF3
 
-scr_seq_0843_T20R0101_0BEF:
+_0BEF:
 	callstd std_give_item_verbose
-scr_seq_0843_T20R0101_0BF3:
+_0BF3:
 	buffer_players_name 0
-	gender_msgbox 62, 63
+	gender_msgbox msg_0543_T20R0101_00062, msg_0543_T20R0101_00063
 	buffer_players_name 0
-	gender_msgbox 64, 65
+	gender_msgbox msg_0543_T20R0101_00064, msg_0543_T20R0101_00065
 	closemsg
-	apply_movement 3, scr_seq_0843_T20R0101_0CAC
-	apply_movement 255, scr_seq_0843_T20R0101_0CB8
+	apply_movement obj_T20R0101_var_1, _0CAC
+	apply_movement obj_player, _0CB8
 	wait_movement
 	buffer_players_name 0
-	gender_msgbox 67, 68
+	gender_msgbox msg_0543_T20R0101_00067, msg_0543_T20R0101_00068
 	closemsg
-	apply_movement 3, scr_seq_0843_T20R0101_0CC4
+	apply_movement obj_T20R0101_var_1, _0CC4
 	wait_movement
 	hide_person 3
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	apply_movement 0, scr_seq_0843_T20R0101_0B2C
-	apply_movement 255, scr_seq_0843_T20R0101_0CD4
+	apply_movement obj_T20R0101_doctor, _0B2C
+	apply_movement obj_player, _0CD4
 	wait_movement
-	npc_msg 69
+	npc_msg msg_0543_T20R0101_00069
 	waitbutton
 	closemsg
 	releaseall
@@ -926,104 +922,102 @@ scr_seq_0843_T20R0101_0BF3:
 	setvar VAR_SCENE_NEW_BARK_EAST_EXIT, 2
 	setvar VAR_UNK_407B, 2
 	end
-
-scr_seq_0843_T20R0101_0C75:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0843_T20R0101_0C78:
+_0C78:
 	step 2, 1
 	step 75, 1
 	step_end
 
-scr_seq_0843_T20R0101_0C84:
+_0C84:
 	step 78, 3
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0C90:
+_0C90:
 	step 12, 5
 	step 15, 1
 	step 12, 1
 	step 34, 1
 	step_end
 
-scr_seq_0843_T20R0101_0CA4:
+_0CA4:
 	step 12, 7
 	step_end
 
-scr_seq_0843_T20R0101_0CAC:
+_0CAC:
 	step 13, 1
 	step 34, 1
 	step_end
 
-scr_seq_0843_T20R0101_0CB8:
+_0CB8:
 	step 63, 1
 	step 35, 1
 	step_end
 
-scr_seq_0843_T20R0101_0CC4:
+_0CC4:
 	step 77, 3
 	step 78, 1
 	step 77, 4
 	step_end
 
-scr_seq_0843_T20R0101_0CD4:
+_0CD4:
 	step 32, 1
 	step_end
-scr_seq_0843_T20R0101_0CDC:
+_0CDC:
 	comparevartovalue VAR_TEMP_x4006, 1
-	gotoif eq, scr_seq_0843_T20R0101_0DD2
+	gotoif eq, _0DD2
 	comparevartovalue VAR_UNK_412F, 2
-	gotoif ge, scr_seq_0843_T20R0101_1044
+	gotoif ge, _1044
 	comparevartovalue VAR_UNK_412F, 1
-	gotoif eq, scr_seq_0843_T20R0101_0FE4
-	call scr_seq_0843_T20R0101_0DE3
-	apply_movement 0, scr_seq_0843_T20R0101_0F48
+	gotoif eq, _0FE4
+	call _0DE3
+	apply_movement obj_T20R0101_doctor, _0F48
 	wait_movement
-	npc_msg 75
+	npc_msg msg_0543_T20R0101_00075
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0F50
+	apply_movement obj_T20R0101_doctor, _0F50
 	wait_movement
-	apply_movement 253, scr_seq_0843_T20R0101_0F38
+	apply_movement 253, _0F38
 	wait_movement
-	npc_msg 76
+	npc_msg msg_0543_T20R0101_00076
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0F48
+	apply_movement obj_T20R0101_doctor, _0F48
 	wait_movement
-	npc_msg 77
+	npc_msg msg_0543_T20R0101_00077
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0F60
+	apply_movement obj_T20R0101_doctor, _0F60
 	wait_movement
-	npc_msg 78
+	npc_msg msg_0543_T20R0101_00078
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0FBC
+	apply_movement obj_T20R0101_doctor, _0FBC
 	wait_movement
-	npc_msg 79
+	npc_msg msg_0543_T20R0101_00079
 	closemsg
 	get_person_coords 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	comparevartovalue VAR_SPECIAL_x8006, 4
-	gotoif ne, scr_seq_0843_T20R0101_0D81
-	apply_movement 0, scr_seq_0843_T20R0101_0F98
-	goto scr_seq_0843_T20R0101_0D89
+	gotoif ne, _0D81
+	apply_movement obj_T20R0101_doctor, _0F98
+	goto _0D89
 
-scr_seq_0843_T20R0101_0D81:
-	apply_movement 0, scr_seq_0843_T20R0101_0F6C
-scr_seq_0843_T20R0101_0D89:
+_0D81:
+	apply_movement obj_T20R0101_doctor, _0F6C
+_0D89:
 	wait_movement
-	npc_msg 80
+	npc_msg msg_0543_T20R0101_00080
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8006, 4
-	gotoif ne, scr_seq_0843_T20R0101_0DAD
-	apply_movement 0, scr_seq_0843_T20R0101_0FDC
+	gotoif ne, _0DAD
+	apply_movement obj_T20R0101_doctor, _0FDC
 	wait_movement
-	goto scr_seq_0843_T20R0101_0DB7
+	goto _0DB7
 
-scr_seq_0843_T20R0101_0DAD:
-	apply_movement 0, scr_seq_0843_T20R0101_0FCC
+_0DAD:
+	apply_movement obj_T20R0101_doctor, _0FCC
 	wait_movement
-scr_seq_0843_T20R0101_0DB7:
+_0DB7:
 	buffer_players_name 0
-	gender_msgbox 81, 82
+	gender_msgbox msg_0543_T20R0101_00081, msg_0543_T20R0101_00082
 	waitbutton
 	closemsg
 	setvar VAR_UNK_412F, 1
@@ -1031,17 +1025,17 @@ scr_seq_0843_T20R0101_0DB7:
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0DD2:
-	npc_msg 83
+_0DD2:
+	npc_msg msg_0543_T20R0101_00083
 	waitbutton
 	closemsg
 	addvar VAR_TEMP_x4006, 1
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_0DE3:
+_0DE3:
 	buffer_players_name 0
-	gender_msgbox 84, 85
+	gender_msgbox msg_0543_T20R0101_00084, msg_0543_T20R0101_00085
 	closemsg
 	scrcmd_386 VAR_TEMP_x4005
 	scrcmd_602 0
@@ -1049,120 +1043,118 @@ scr_seq_0843_T20R0101_0DE3:
 	scrcmd_604 55
 	get_person_coords 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	comparevartovalue VAR_TEMP_x4005, 0
-	gotoif ne, scr_seq_0843_T20R0101_0E27
-	apply_movement 255, scr_seq_0843_T20R0101_0EB8
+	gotoif ne, _0E27
+	apply_movement obj_player, _0EB8
 	wait_movement
-	apply_movement 253, scr_seq_0843_T20R0101_0F0C
-	goto scr_seq_0843_T20R0101_0EA8
+	apply_movement 253, _0F0C
+	goto _0EA8
 
-scr_seq_0843_T20R0101_0E27:
+_0E27:
 	comparevartovalue VAR_TEMP_x4005, 3
-	gotoif ne, scr_seq_0843_T20R0101_0E4C
-	apply_movement 255, scr_seq_0843_T20R0101_0EC4
+	gotoif ne, _0E4C
+	apply_movement obj_player, _0EC4
 	wait_movement
-	apply_movement 253, scr_seq_0843_T20R0101_0F1C
-	goto scr_seq_0843_T20R0101_0EA8
+	apply_movement 253, _0F1C
+	goto _0EA8
 
-scr_seq_0843_T20R0101_0E4C:
+_0E4C:
 	comparevartovalue VAR_TEMP_x4005, 2
-	gotoif ne, scr_seq_0843_T20R0101_0E71
-	apply_movement 255, scr_seq_0843_T20R0101_0ED4
+	gotoif ne, _0E71
+	apply_movement obj_player, _0ED4
 	wait_movement
-	apply_movement 253, scr_seq_0843_T20R0101_0F30
-	goto scr_seq_0843_T20R0101_0EA8
+	apply_movement 253, _0F30
+	goto _0EA8
 
-scr_seq_0843_T20R0101_0E71:
+_0E71:
 	comparevartovalue VAR_SPECIAL_x8006, 4
-	gotoif ne, scr_seq_0843_T20R0101_0E96
-	apply_movement 255, scr_seq_0843_T20R0101_0EF8
+	gotoif ne, _0E96
+	apply_movement obj_player, _0EF8
 	wait_movement
-	apply_movement 253, scr_seq_0843_T20R0101_0F30
-	goto scr_seq_0843_T20R0101_0EA8
+	apply_movement 253, _0F30
+	goto _0EA8
 
-scr_seq_0843_T20R0101_0E96:
-	apply_movement 255, scr_seq_0843_T20R0101_0EE4
+_0E96:
+	apply_movement obj_player, _0EE4
 	wait_movement
-	apply_movement 253, scr_seq_0843_T20R0101_0F1C
-scr_seq_0843_T20R0101_0EA8:
+	apply_movement 253, _0F1C
+_0EA8:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	return
-
-scr_seq_0843_T20R0101_0EB6:
 	.byte 0x00, 0x00
 
-scr_seq_0843_T20R0101_0EB8:
+_0EB8:
 	step 13, 1
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0EC4:
+_0EC4:
 	step 13, 2
 	step 15, 1
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0ED4:
+_0ED4:
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0EE4:
+_0EE4:
 	step 14, 1
 	step 13, 3
 	step 15, 1
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0EF8:
+_0EF8:
 	step 15, 1
 	step 13, 3
 	step 14, 1
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F0C:
+_0F0C:
 	step 15, 1
 	step 13, 1
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F1C:
+_0F1C:
 	step 13, 1
 	step 15, 2
 	step 12, 1
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F30:
+_0F30:
 	step 32, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F38:
+_0F38:
 	step 49, 1
 	step 65, 1
 	step 48, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F48:
+_0F48:
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F50:
+_0F50:
 	step 13, 1
 	step 15, 1
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F60:
+_0F60:
 	step 75, 1
 	step 63, 1
 	step_end
 
-scr_seq_0843_T20R0101_0F6C:
+_0F6C:
 	step 12, 1
 	step 14, 2
 	step 32, 1
@@ -1175,7 +1167,7 @@ scr_seq_0843_T20R0101_0F6C:
 	step 63, 2
 	step_end
 
-scr_seq_0843_T20R0101_0F98:
+_0F98:
 	step 12, 1
 	step 63, 2
 	step 71, 1
@@ -1186,122 +1178,120 @@ scr_seq_0843_T20R0101_0F98:
 	step 63, 2
 	step_end
 
-scr_seq_0843_T20R0101_0FBC:
+_0FBC:
 	step 12, 1
 	step 14, 1
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0FCC:
+_0FCC:
 	step 13, 1
 	step 15, 2
 	step 33, 1
 	step_end
 
-scr_seq_0843_T20R0101_0FDC:
+_0FDC:
 	step 13, 1
 	step_end
-scr_seq_0843_T20R0101_0FE4:
+_0FE4:
 	scrcmd_382 VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 220
-	gotoif ge, scr_seq_0843_T20R0101_0FFF
-	goto scr_seq_0843_T20R0101_03F5
-
-scr_seq_0843_T20R0101_0FFD:
+	gotoif ge, _0FFF
+	goto _03F5
 	.byte 0x02, 0x00
-scr_seq_0843_T20R0101_0FFF:
-	call scr_seq_0843_T20R0101_0DE3
-	gender_msgbox 86, 87
+_0FFF:
+	call _0DE3
+	gender_msgbox msg_0543_T20R0101_00086, msg_0543_T20R0101_00087
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0F60
+	apply_movement obj_T20R0101_doctor, _0F60
 	wait_movement
-	npc_msg 88
+	npc_msg msg_0543_T20R0101_00088
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0F50
+	apply_movement obj_T20R0101_doctor, _0F50
 	wait_movement
-	npc_msg 89
+	npc_msg msg_0543_T20R0101_00089
 	closemsg
-	apply_movement 0, scr_seq_0843_T20R0101_0FBC
+	apply_movement obj_T20R0101_doctor, _0FBC
 	wait_movement
-	npc_msg 90
+	npc_msg msg_0543_T20R0101_00090
 	waitbutton
 	closemsg
 	setvar VAR_UNK_412F, 2
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_1044:
-	npc_msg 91
+_1044:
+	npc_msg msg_0543_T20R0101_00091
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_104F:
+scr_seq_T20R0101_004:
 	end
 
-scr_seq_0843_T20R0101_1051:
+scr_seq_T20R0101_005:
 	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 93
+	npc_msg msg_0543_T20R0101_00093
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_1065:
+scr_seq_T20R0101_006:
 	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 94
+	npc_msg msg_0543_T20R0101_00094
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_1079:
+scr_seq_T20R0101_007:
 	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 95
+	npc_msg msg_0543_T20R0101_00095
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_108D:
+scr_seq_T20R0101_008:
 	buffer_players_name 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 96
+	npc_msg msg_0543_T20R0101_00096
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_10A1:
+scr_seq_T20R0101_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 97
+	npc_msg msg_0543_T20R0101_00097
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_10B2:
+scr_seq_T20R0101_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_GOT_STARTER
-	gotoif FALSE, scr_seq_0843_T20R0101_1107
-	npc_msg 92
+	gotoif FALSE, _1107
+	npc_msg msg_0543_T20R0101_00092
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, scr_seq_0843_T20R0101_1103
+	gotoif eq, _1103
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	play_fanfare SEQ_ME_ASA
@@ -1311,38 +1301,38 @@ scr_seq_0843_T20R0101_10B2:
 	wait_fanfare
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-scr_seq_0843_T20R0101_1103:
+_1103:
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_1107:
-	npc_msg 14
+_1107:
+	npc_msg msg_0543_T20R0101_00014
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0843_T20R0101_1112:
+scr_seq_T20R0101_015:
 	scrcmd_609
 	lockall
-	apply_movement 2, scr_seq_0843_T20R0101_113C
+	apply_movement obj_T20R0101_assistantm, _113C
 	wait_movement
 	buffer_players_name 0
-	npc_msg 56
+	npc_msg msg_0543_T20R0101_00056
 	closemsg
-	apply_movement 2, scr_seq_0843_T20R0101_1148
+	apply_movement obj_T20R0101_assistantm, _1148
 	wait_movement
 	setvar VAR_UNK_40FC, 3
 	releaseall
 	end
 
 
-scr_seq_0843_T20R0101_113C:
+_113C:
 	step 14, 5
 	step 13, 1
 	step_end
 
-scr_seq_0843_T20R0101_1148:
+_1148:
 	step 12, 1
 	step 15, 5
 	step 33, 1

@@ -1,40 +1,42 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_R39R0101.h"
+#include "msgdata/msg/msg_0397_R39R0101.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0250_R39R0101_000A ; 000
-	scrdef scr_seq_0250_R39R0101_013A ; 001
+	scrdef scr_seq_R39R0101_000
+	scrdef scr_seq_R39R0101_001
 	scrdef_end
 
-scr_seq_0250_R39R0101_000A:
+scr_seq_R39R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0AA
-	gotoif TRUE, scr_seq_0250_R39R0101_002C
+	gotoif TRUE, _002C
 	setflag FLAG_UNK_0A8
-	npc_msg 0
+	npc_msg msg_0397_R39R0101_00000
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_002C:
+_002C:
 	setvar VAR_SPECIAL_x8004, 33
 	setvar VAR_SPECIAL_x8005, 0
 	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 999
-	gotoif ne, scr_seq_0250_R39R0101_0058
-	npc_msg 6
+	gotoif ne, _0058
+	npc_msg msg_0397_R39R0101_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_0058:
+_0058:
 	scrcmd_113 20, 2
-	npc_msg 1
+	npc_msg msg_0397_R39R0101_00001
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 12, 255, 1
@@ -43,97 +45,97 @@ scr_seq_0250_R39R0101_0058:
 	menu_exec
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, scr_seq_0250_R39R0101_0111
+	gotoif eq, _0111
 	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, scr_seq_0250_R39R0101_011E
+	callif eq, _011E
 	comparevartovalue VAR_SPECIAL_x800C, 2
-	callif eq, scr_seq_0250_R39R0101_012C
+	callif eq, _012C
 	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0250_R39R0101_00F7
+	gotoif eq, _00F7
 	setvar VAR_SPECIAL_x8004, 33
 	copyvar VAR_SPECIAL_x8005, VAR_TEMP_x4000
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0250_R39R0101_0104
+	gotoif eq, _0104
 	submoneyvar VAR_TEMP_x4001
 	scrcmd_115
-	npc_msg 2
+	npc_msg msg_0397_R39R0101_00002
 	callstd std_give_item_verbose
 	closemsg
 	scrcmd_114
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_00F7:
-	npc_msg 3
+_00F7:
+	npc_msg msg_0397_R39R0101_00003
 	waitbutton
 	closemsg
 	scrcmd_114
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_0104:
-	npc_msg 4
+_0104:
+	npc_msg msg_0397_R39R0101_00004
 	waitbutton
 	closemsg
 	scrcmd_114
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_0111:
-	npc_msg 5
+_0111:
+	npc_msg msg_0397_R39R0101_00005
 	waitbutton
 	closemsg
 	scrcmd_114
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_011E:
+_011E:
 	setvar VAR_TEMP_x4000, 1
 	setvar VAR_TEMP_x4001, 500
 	return
 
-scr_seq_0250_R39R0101_012C:
+_012C:
 	setvar VAR_TEMP_x4000, 12
 	setvar VAR_TEMP_x4001, 6000
 	return
 
-scr_seq_0250_R39R0101_013A:
+scr_seq_R39R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	checkflag FLAG_UNK_0AA
-	gotoif TRUE, scr_seq_0250_R39R0101_0158
-	npc_msg 7
+	gotoif TRUE, _0158
+	npc_msg msg_0397_R39R0101_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_0158:
+_0158:
 	checkflag FLAG_UNK_0AB
-	gotoif TRUE, scr_seq_0250_R39R0101_0197
-	npc_msg 8
+	gotoif TRUE, _0197
+	npc_msg msg_0397_R39R0101_00008
 	scrcmd_049
 	setvar VAR_SPECIAL_x8004, 410
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0250_R39R0101_01A2
+	gotoif eq, _01A2
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0AB
-	goto scr_seq_0250_R39R0101_0197
+	goto _0197
 
-scr_seq_0250_R39R0101_0197:
-	npc_msg 10
+_0197:
+	npc_msg msg_0397_R39R0101_00010
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0250_R39R0101_01A2:
-	npc_msg 11
+_01A2:
+	npc_msg msg_0397_R39R0101_00011
 	waitbutton
 	closemsg
 	releaseall

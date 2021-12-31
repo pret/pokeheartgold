@@ -1,56 +1,58 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D26R0102.h"
+#include "msgdata/msg/msg_0091_D26R0102.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0060_D26R0102_000E ; 000
-	scrdef scr_seq_0060_D26R0102_0021 ; 001
-	scrdef scr_seq_0060_D26R0102_0055 ; 002
+	scrdef scr_seq_D26R0102_000
+	scrdef scr_seq_D26R0102_001
+	scrdef scr_seq_D26R0102_002
 	scrdef_end
 
-scr_seq_0060_D26R0102_000E:
+scr_seq_D26R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg msg_0091_D26R0102_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0060_D26R0102_0021:
+scr_seq_D26R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 3
+	npc_msg msg_0091_D26R0102_00003
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0060_D26R0102_0047
+	gotoif eq, _0047
 	closemsg
 	releaseall
 	end
 
-scr_seq_0060_D26R0102_0047:
+_0047:
 	buffer_players_name 0
-	npc_msg 4
+	npc_msg msg_0091_D26R0102_00004
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0060_D26R0102_0055:
+scr_seq_D26R0102_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 1
+	npc_msg msg_0091_D26R0102_00001
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_PROTON_PROTON, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0060_D26R0102_0193
-	npc_msg 2
+	gotoif eq, _0193
+	npc_msg msg_0091_D26R0102_00002
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -70,21 +72,21 @@ scr_seq_0060_D26R0102_0055:
 	scrcmd_604 55
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0060_D26R0102_00F7
-	apply_movement 7, scr_seq_0060_D26R0102_019C
-	apply_movement 255, scr_seq_0060_D26R0102_01C0
-	goto scr_seq_0060_D26R0102_0107
+	gotoif ne, _00F7
+	apply_movement obj_D26R0102_gantetsu, _019C
+	apply_movement obj_player, _01C0
+	goto _0107
 
-scr_seq_0060_D26R0102_00F7:
-	apply_movement 7, scr_seq_0060_D26R0102_019C
-	apply_movement 255, scr_seq_0060_D26R0102_01DC
-scr_seq_0060_D26R0102_0107:
+_00F7:
+	apply_movement obj_D26R0102_gantetsu, _019C
+	apply_movement obj_player, _01DC
+_0107:
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	buffer_players_name 0
-	npc_msg 0
+	npc_msg msg_0091_D26R0102_00000
 	closemsg
 	clearflag FLAG_UNK_19E
 	clearflag FLAG_UNK_1AB
@@ -111,15 +113,13 @@ scr_seq_0060_D26R0102_0107:
 	releaseall
 	end
 
-scr_seq_0060_D26R0102_0193:
+_0193:
 	white_out
 	releaseall
 	end
-
-scr_seq_0060_D26R0102_0199:
 	.byte 0x00, 0x00, 0x00
 
-scr_seq_0060_D26R0102_019C:
+_019C:
 	step 14, 2
 	step 13, 2
 	step 14, 3
@@ -130,7 +130,7 @@ scr_seq_0060_D26R0102_019C:
 	step 2, 1
 	step_end
 
-scr_seq_0060_D26R0102_01C0:
+_01C0:
 	step 15, 2
 	step 0, 1
 	step 63, 6
@@ -139,7 +139,7 @@ scr_seq_0060_D26R0102_01C0:
 	step 3, 1
 	step_end
 
-scr_seq_0060_D26R0102_01DC:
+_01DC:
 	step 13, 1
 	step 15, 1
 	step 0, 1

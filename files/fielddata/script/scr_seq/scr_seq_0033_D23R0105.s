@@ -1,147 +1,149 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D23R0105.h"
+#include "msgdata/msg/msg_0069_D23R0105.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
 
-	scrdef scr_seq_0033_D23R0105_0012 ; 000
-	scrdef scr_seq_0033_D23R0105_002F ; 001
-	scrdef scr_seq_0033_D23R0105_0055 ; 002
-	scrdef scr_seq_0033_D23R0105_0042 ; 003
+	scrdef scr_seq_D23R0105_000
+	scrdef scr_seq_D23R0105_001
+	scrdef scr_seq_D23R0105_002
+	scrdef scr_seq_D23R0105_003
 	scrdef_end
 
-scr_seq_0033_D23R0105_0012:
+scr_seq_D23R0105_000:
 	setflag FLAG_UNK_1B7
 	setvar VAR_UNK_4125, 0
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, scr_seq_0033_D23R0105_002D
+	gotoif ne, _002D
 	clearflag FLAG_UNK_1B7
-scr_seq_0033_D23R0105_002D:
+_002D:
 	end
 
-scr_seq_0033_D23R0105_002F:
+scr_seq_D23R0105_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 7
+	npc_msg msg_0069_D23R0105_00007
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0033_D23R0105_0042:
+scr_seq_D23R0105_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 8
+	npc_msg msg_0069_D23R0105_00008
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0033_D23R0105_0055:
+scr_seq_D23R0105_002:
 	comparevartovalue VAR_UNK_4077, 4
-	gotoif eq, scr_seq_0033_D23R0105_0075
+	gotoif eq, _0075
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 6
+	npc_msg msg_0069_D23R0105_00006
 	waitbutton
 	closemsg
 	releaseall
 	end
 
-scr_seq_0033_D23R0105_0075:
+_0075:
 	getitemquantity 476, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, scr_seq_0033_D23R0105_022B
+	gotoif ne, _022B
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	npc_msg 0
+	npc_msg msg_0069_D23R0105_00000
 	closemsg
 	wait 16, VAR_SPECIAL_x800C
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0033_D23R0105_00B8
-	apply_movement 0, scr_seq_0033_D23R0105_0258
-	goto scr_seq_0033_D23R0105_00DB
+	gotoif ne, _00B8
+	apply_movement obj_D23R0105_gsgentleman, _0258
+	goto _00DB
 
-scr_seq_0033_D23R0105_00B8:
+_00B8:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0033_D23R0105_00D3
-	apply_movement 0, scr_seq_0033_D23R0105_024C
-	goto scr_seq_0033_D23R0105_00DB
+	gotoif ne, _00D3
+	apply_movement obj_D23R0105_gsgentleman, _024C
+	goto _00DB
 
-scr_seq_0033_D23R0105_00D3:
-	apply_movement 0, scr_seq_0033_D23R0105_0240
-scr_seq_0033_D23R0105_00DB:
+_00D3:
+	apply_movement obj_D23R0105_gsgentleman, _0240
+_00DB:
 	wait_movement
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0033_D23R0105_00F8
-	apply_movement 0, scr_seq_0033_D23R0105_0264
-	goto scr_seq_0033_D23R0105_010D
+	gotoif ne, _00F8
+	apply_movement obj_D23R0105_gsgentleman, _0264
+	goto _010D
 
-scr_seq_0033_D23R0105_00F8:
+_00F8:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0033_D23R0105_010D
-	apply_movement 0, scr_seq_0033_D23R0105_0274
-scr_seq_0033_D23R0105_010D:
+	gotoif ne, _010D
+	apply_movement obj_D23R0105_gsgentleman, _0274
+_010D:
 	wait_movement
-	npc_msg 1
+	npc_msg msg_0069_D23R0105_00001
 	closemsg
 	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, scr_seq_0033_D23R0105_012F
-	apply_movement 0, scr_seq_0033_D23R0105_0284
-	goto scr_seq_0033_D23R0105_0144
+	gotoif ne, _012F
+	apply_movement obj_D23R0105_gsgentleman, _0284
+	goto _0144
 
-scr_seq_0033_D23R0105_012F:
+_012F:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0033_D23R0105_0144
-	apply_movement 0, scr_seq_0033_D23R0105_028C
-scr_seq_0033_D23R0105_0144:
+	gotoif ne, _0144
+	apply_movement obj_D23R0105_gsgentleman, _028C
+_0144:
 	wait_movement
 	buffer_players_name 0
-	npc_msg 2
+	npc_msg msg_0069_D23R0105_00002
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0033_D23R0105_0167
-	apply_movement 0, scr_seq_0033_D23R0105_02B0
-	goto scr_seq_0033_D23R0105_018A
+	gotoif ne, _0167
+	apply_movement obj_D23R0105_gsgentleman, _02B0
+	goto _018A
 
-scr_seq_0033_D23R0105_0167:
+_0167:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0033_D23R0105_0182
-	apply_movement 0, scr_seq_0033_D23R0105_0294
-	goto scr_seq_0033_D23R0105_018A
+	gotoif ne, _0182
+	apply_movement obj_D23R0105_gsgentleman, _0294
+	goto _018A
 
-scr_seq_0033_D23R0105_0182:
-	apply_movement 0, scr_seq_0033_D23R0105_02C8
-scr_seq_0033_D23R0105_018A:
+_0182:
+	apply_movement obj_D23R0105_gsgentleman, _02C8
+_018A:
 	wait_movement
 	setflag FLAG_UNK_2C6
 	clearflag FLAG_UNK_2C7
 	show_person 2
 	hide_person 0
 	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, scr_seq_0033_D23R0105_01B7
-	apply_movement 2, scr_seq_0033_D23R0105_0328
-	goto scr_seq_0033_D23R0105_01DA
+	gotoif ne, _01B7
+	apply_movement obj_D23R0105_rkanbum2, _0328
+	goto _01DA
 
-scr_seq_0033_D23R0105_01B7:
+_01B7:
 	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, scr_seq_0033_D23R0105_01D2
-	apply_movement 2, scr_seq_0033_D23R0105_0310
-	goto scr_seq_0033_D23R0105_01DA
+	gotoif ne, _01D2
+	apply_movement obj_D23R0105_rkanbum2, _0310
+	goto _01DA
 
-scr_seq_0033_D23R0105_01D2:
-	apply_movement 2, scr_seq_0033_D23R0105_0344
-scr_seq_0033_D23R0105_01DA:
+_01D2:
+	apply_movement obj_D23R0105_rkanbum2, _0344
+_01DA:
 	wait_movement
-	npc_msg 3
+	npc_msg msg_0069_D23R0105_00003
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, scr_seq_0033_D23R0105_021D
-	npc_msg 4
+	gotoif eq, _021D
+	npc_msg msg_0069_D23R0105_00004
 	setvar VAR_SPECIAL_x8004, 476
 	setvar VAR_SPECIAL_x8005, 1
 	callstd 2008
@@ -151,62 +153,60 @@ scr_seq_0033_D23R0105_01DA:
 	clearflag FLAG_UNK_237
 	end
 
-scr_seq_0033_D23R0105_021D:
+_021D:
 	white_out
 	clearflag FLAG_UNK_2C6
 	setflag FLAG_UNK_2C7
 	releaseall
 	end
 
-scr_seq_0033_D23R0105_022B:
+_022B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	npc_msg 5
+	npc_msg msg_0069_D23R0105_00005
 	waitbutton
 	closemsg
 	releaseall
 	end
-
-scr_seq_0033_D23R0105_023E:
 	.byte 0x00, 0x00
 
-scr_seq_0033_D23R0105_0240:
+_0240:
 	step 2, 1
 	step 75, 1
 	step_end
 
-scr_seq_0033_D23R0105_024C:
+_024C:
 	step 3, 1
 	step 75, 1
 	step_end
 
-scr_seq_0033_D23R0105_0258:
+_0258:
 	step 1, 1
 	step 75, 1
 	step_end
 
-scr_seq_0033_D23R0105_0264:
+_0264:
 	step 71, 1
 	step 19, 1
 	step 72, 1
 	step_end
 
-scr_seq_0033_D23R0105_0274:
+_0274:
 	step 71, 1
 	step 18, 1
 	step 72, 1
 	step_end
 
-scr_seq_0033_D23R0105_0284:
+_0284:
 	step 18, 1
 	step_end
 
-scr_seq_0033_D23R0105_028C:
+_028C:
 	step 19, 1
 	step_end
 
-scr_seq_0033_D23R0105_0294:
+_0294:
 	step 1, 1
 	step 2, 1
 	step 0, 1
@@ -215,7 +215,7 @@ scr_seq_0033_D23R0105_0294:
 	step 2, 1
 	step_end
 
-scr_seq_0033_D23R0105_02B0:
+_02B0:
 	step 2, 1
 	step 0, 1
 	step 3, 1
@@ -223,7 +223,7 @@ scr_seq_0033_D23R0105_02B0:
 	step 2, 1
 	step_end
 
-scr_seq_0033_D23R0105_02C8:
+_02C8:
 	step 0, 1
 	step 3, 1
 	step 1, 1
@@ -237,7 +237,7 @@ scr_seq_0033_D23R0105_02C8:
 	.byte 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00
 	.byte 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
-scr_seq_0033_D23R0105_0310:
+_0310:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -245,7 +245,7 @@ scr_seq_0033_D23R0105_0310:
 	step 3, 1
 	step_end
 
-scr_seq_0033_D23R0105_0328:
+_0328:
 	step 3, 1
 	step 1, 1
 	step 2, 1
@@ -254,7 +254,7 @@ scr_seq_0033_D23R0105_0328:
 	step 1, 1
 	step_end
 
-scr_seq_0033_D23R0105_0344:
+_0344:
 	step 3, 1
 	step 1, 1
 	step 2, 1
