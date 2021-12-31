@@ -7,18 +7,6 @@ SCRIPT_OBJS := $(SCRIPT_SRCS:%.s=%.o)
 SCRIPT_BINS := $(SCRIPT_SRCS:%.s=%.bin)
 SCRIPT_HEADS := $(SCRIPT_SRCS:%.s=%.h)
 
-# Scripts now depend on msgdata
-MSGDATA_MSG_DIR := files/msgdata/msg
-
-define script_find_gmm_h
-GMM_H := $(shell head -n5 $(1:%.bin=%.s) | grep -m1 "msgdata/msg/.*\.h" | cut -d'"' -f2)
-ifneq ($(GMM_H),)
-$(1): files/$(GMM_H)
-endif
-endef
-
-$(foreach binfile,$(SCRIPT_BINS),$(eval $(call script_find_gmm_h,$(binfile))))
-
 ifneq (1,0)
 $(SCRIPT_BINS): MWASFLAGS += -DPM_ASM
 ifeq ($(NODEP),)
@@ -54,4 +42,4 @@ ifeq ($(COMPARE),1)
 endif
 
 # Once this has been reversed, uncomment the below
-FS_CLEAN_TARGETS += $(SCRIPT_NARC) $(SCRIPT_BINS)
+FS_CLEAN_TARGETS += $(SCRIPT_NARC) $(SCRIPT_BINS) $(SCRIPT_DEPS)
