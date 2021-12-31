@@ -594,11 +594,12 @@ def parse_map(events, scripts, header, gmm):
     scr_pref = os.path.splitext(os.path.basename(scripts))[0]
     scr_pref = re.sub(r'scr_seq_\d{4}_', 'scr_seq_', scr_pref)
 
-    if 'DUMMY' in events:
+    if not events or 'DUMMY' in events:
         c_header_abs = (re.sub(r'scr_seq_\d{4}_', 'scr_seq_', os.path.splitext(scripts)[0]) + '.h').replace('scr_seq_', 'event_')
     else:
         c_header_abs = re.sub(r'eventdata/zone_event/\d{3}_', 'script/scr_seq/event_', os.path.splitext(events)[0] + '.h')
     c_header = os.path.relpath(c_header_abs, os.path.join(project_root, 'files'))
+    assert not c_header.startswith('..')
     if header:
         with open(header_bin, 'rb') as fp:
             parser = SpecialScriptParser(c_header, fp.read(), prefix=scr_pref).parse_all()
