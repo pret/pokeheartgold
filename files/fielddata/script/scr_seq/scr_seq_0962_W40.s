@@ -53,11 +53,7 @@ scr_seq_W40_001:
 _00B2:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 0
-	setvar VAR_SPECIAL_x8004, 244
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0115
+	goto_if_no_item_space ITEM_SHARP_BEAK, 1, _0115
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D7
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1

@@ -78,11 +78,7 @@ scr_seq_R32_005:
 _0115:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 16
-	setvar VAR_SPECIAL_x8004, 245
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0178
+	goto_if_no_item_space ITEM_POISON_BARB, 1, _0178
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D9
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
@@ -153,11 +149,7 @@ scr_seq_R32_000:
 	checkflag FLAG_UNK_06E
 	gotoif TRUE, _023B
 	npc_msg msg_0380_R32_00010
-	setvar VAR_SPECIAL_x8004, 332
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0246
+	goto_if_no_item_space ITEM_TM05, 1, _0246
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_06E
 _023B:

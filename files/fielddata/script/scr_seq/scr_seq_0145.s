@@ -549,23 +549,15 @@ _046E:
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, _0501
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _04EE
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _054D
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _053A
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0560
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _0573
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0527
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0514
+	switch VAR_SPECIAL_x800C
+	case 7, _0501
+	case 0, _04EE
+	case 4, _054D
+	case 1, _053A
+	case 2, _0560
+	case 6, _0573
+	case 5, _0527
+	case 3, _0514
 	end
 
 _04EE:

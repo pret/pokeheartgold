@@ -4,11 +4,11 @@
 	.option alignment off
 
 	.byte 4
-	.short 3, 0
+	.short _EV_scr_seq_D40R0107_002 + 1, 0
 	.byte 3
-	.short 5, 0
+	.short _EV_scr_seq_D40R0107_004 + 1, 0
 	.byte 2
-	.short 7, 0
+	.short _EV_scr_seq_D40R0107_006 + 1, 0
 	.byte 0
 
 	.balign 4, 0

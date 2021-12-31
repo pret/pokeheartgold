@@ -36,11 +36,7 @@ _0044:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _009E
 	npc_msg msg_0488_T06R0301_00001
-	setvar VAR_SPECIAL_x8004, 50
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0093
+	goto_if_no_item_space ITEM_RARE_CANDY, 1, _0093
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0F8
 	npc_msg msg_0488_T06R0301_00003

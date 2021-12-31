@@ -152,11 +152,7 @@ _01F8:
 	scrcmd_604 48
 	npc_msg msg_0129_D44R0102_00000
 	npc_msg msg_0129_D44R0102_00001
-	setvar VAR_SPECIAL_x8004, 386
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02A7
+	goto_if_no_item_space ITEM_TM59, 1, _02A7
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0DA
 	npc_msg msg_0129_D44R0102_00003

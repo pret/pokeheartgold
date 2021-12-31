@@ -353,11 +353,7 @@ scr_seq_T27R0501_011:
 	apply_movement obj_T27R0501_gsgentleman, _05B4
 	wait_movement
 	npc_msg msg_0618_T27R0501_00026
-	setvar VAR_SPECIAL_x8004, 422
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _05A9
+	goto_if_no_item_space ITEM_HM03, 1, _05A9
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0A2
 	setvar VAR_UNK_410C, 3
@@ -375,11 +371,7 @@ scr_seq_T27R0501_012:
 	apply_movement obj_T27R0501_gsgentleman, _05D8
 	wait_movement
 	npc_msg msg_0618_T27R0501_00026
-	setvar VAR_SPECIAL_x8004, 422
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _05A9
+	goto_if_no_item_space ITEM_HM03, 1, _05A9
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0A2
 	setvar VAR_UNK_4090, 1

@@ -8,8 +8,8 @@
 	.byte 0
 
 scr_seq_T22_map_scripts_2:
-	.short VAR_SCENE_VIOLET_CITY_OW, 1, 1
-	.short VAR_SCENE_VIOLET_CITY_OW, 3, 5
+	.short VAR_SCENE_VIOLET_CITY_OW, 1, _EV_scr_seq_T22_000 + 1
+	.short VAR_SCENE_VIOLET_CITY_OW, 3, _EV_scr_seq_T22_004 + 1
 	.short 0
 
 	.balign 4, 0

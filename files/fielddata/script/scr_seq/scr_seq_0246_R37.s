@@ -47,11 +47,7 @@ scr_seq_R37_001:
 _009A:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 24
-	setvar VAR_SPECIAL_x8004, 242
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00FD
+	goto_if_no_item_space ITEM_MAGNET, 1, _00FD
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0A5
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1

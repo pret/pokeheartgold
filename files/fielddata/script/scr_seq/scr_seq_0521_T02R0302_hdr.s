@@ -10,8 +10,8 @@
 	.byte 0
 
 scr_seq_T02R0302_map_scripts_2:
-	.short VAR_UNK_412E, 0, 3
-	.short VAR_UNK_412E, 5, 4
+	.short VAR_UNK_412E, 0, _EV_scr_seq_T02R0302_002 + 1
+	.short VAR_UNK_412E, 5, _EV_scr_seq_T02R0302_003 + 1
 	.short 0
 
 	.balign 4, 0

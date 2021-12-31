@@ -17,11 +17,7 @@ scr_seq_R02R0301_000:
 	gotoif TRUE, _004D
 	buffer_players_name 0
 	gender_msgbox msg_0323_R02R0301_00000, msg_0323_R02R0301_00001
-	setvar VAR_SPECIAL_x8004, 44
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0058
+	goto_if_no_item_space ITEM_SACRED_ASH, 1, _0058
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_135
 _004D:

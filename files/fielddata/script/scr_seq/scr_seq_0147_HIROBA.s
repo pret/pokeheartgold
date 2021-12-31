@@ -11,18 +11,13 @@
 scr_seq_HIROBA_000:
 	scrcmd_609
 	lockall
-	scrcmd_380 32768, 5
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0059
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0073
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _008D
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _00A7
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _00C1
+	scrcmd_380 VAR_SPECIAL_x8000, 5
+	switch VAR_SPECIAL_x8000
+	case 0, _0059
+	case 1, _0073
+	case 2, _008D
+	case 3, _00A7
+	case 4, _00C1
 	end
 
 _0059:
@@ -69,11 +64,11 @@ _00DB:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	setvar VAR_TEMP_x4003, 1
-	scrcmd_176 16470, 0, 5, 2, 1
+	scrcmd_176 VAR_UNK_4056, 0, 5, 2, 1
 	scrcmd_436
-	scrcmd_166 32780
+	scrcmd_166 VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_663 32772
+	scrcmd_663 VAR_SPECIAL_x8004
 	scrcmd_150
 	setvar VAR_UNK_4137, 1
 	scrcmd_375 255

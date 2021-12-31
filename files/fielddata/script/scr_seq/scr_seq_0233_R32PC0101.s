@@ -33,11 +33,7 @@ scr_seq_R32PC0101_001:
 	end
 
 _0058:
-	setvar VAR_SPECIAL_x8004, 445
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0097
+	goto_if_no_item_space ITEM_OLD_ROD, 1, _0097
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_075
 	npc_msg msg_0381_R32PC0101_00003
@@ -84,11 +80,7 @@ scr_seq_R32PC0101_002:
 _00E0:
 	npc_msg msg_0381_R32PC0101_00009
 _00E3:
-	setvar VAR_SPECIAL_x8004, 494
-	setvar VAR_SPECIAL_x8005, 2
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0117
+	goto_if_no_item_space ITEM_LURE_BALL, 2, _0117
 	callstd std_give_item_verbose
 	npc_msg msg_0381_R32PC0101_00010
 	waitbutton

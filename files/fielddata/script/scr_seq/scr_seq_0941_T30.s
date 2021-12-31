@@ -94,11 +94,7 @@ scr_seq_T30_006:
 _014A:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 20
-	setvar VAR_SPECIAL_x8004, 237
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01AD
+	goto_if_no_item_space ITEM_SOFT_SAND, 1, _01AD
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D4
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1

@@ -104,11 +104,7 @@ scr_seq_T02_002:
 	checkflag FLAG_UNK_12E
 	gotoif TRUE, _0147
 	npc_msg msg_0452_T02_00005
-	setvar VAR_SPECIAL_x8004, 412
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0152
+	goto_if_no_item_space ITEM_TM85, 1, _0152
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_12E
 _0147:

@@ -293,11 +293,7 @@ scr_seq_D22R0101_000:
 	checkflag FLAG_UNK_10E
 	gotoif TRUE, _0380
 	npc_msg msg_0062_D22R0101_00002
-	setvar VAR_SPECIAL_x8004, 217
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _038B
+	goto_if_no_item_space ITEM_QUICK_CLAW, 1, _038B
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_10E
 _0380:

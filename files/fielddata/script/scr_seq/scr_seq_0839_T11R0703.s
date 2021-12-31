@@ -34,11 +34,9 @@ scr_seq_T11R0703_000:
 	.byte 0xf0, 0x00, 0x00, 0x00, 0x5f, 0x00
 _0066:
 	scrcmd_241 16659
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _008C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00C0
+	switch VAR_UNK_4113
+	case 1, _008C
+	case 0, _00C0
 	end
 
 _008C:
@@ -132,11 +130,9 @@ _01C5:
 	npc_msg msg_0539_T11R0703_00001
 	closemsg
 	scrcmd_241 16659
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _01F0
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0224
+	switch VAR_UNK_4113
+	case 1, _01F0
+	case 0, _0224
 	end
 
 _01F0:

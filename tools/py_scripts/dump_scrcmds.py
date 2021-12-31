@@ -196,6 +196,28 @@ class NormalScriptParser(ScriptParserBase):
         else:
             self.gmm_header = None
 
+        # Convenience macros
+        def handle_itemspace(m: re.Match):
+            item = self.constants['item'][int(m[1])]
+            return f'\tgoto_if_no_item_space {item}, {m[2]}, {m[3]}\n'
+
+        self.macros = [
+            (re.compile(
+                r'\tsetvar VAR_SPECIAL_x8004, (\w+)\n'
+                r'\tsetvar VAR_SPECIAL_x8005, (\w+)\n'
+                r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
+                r'\tcomparevartovalue VAR_SPECIAL_x800C, 0\n'
+                r'\tgotoif eq, (\w+)\n'
+            ), handle_itemspace),
+            (re.compile(
+                r'\tcopyvar VAR_SPECIAL_x8008, (\w+)\n'
+            ), r'\tswitch \1\n'),
+            (re.compile(
+                r'\tcomparevartovalue VAR_SPECIAL_x8008, (\w+)\n'
+                r'\tgotoif eq, (\w+)\n'
+            ), r'\tcase \1, \2\n')
+        ]
+
     def get_object(self, id_: int):
         for i, name in self.objects:
             if i == id_:
@@ -503,6 +525,8 @@ class NormalScriptParser(ScriptParserBase):
                 if nextpc != lines[i + 1][0]:
                     s += self.make_gap(nextpc, lines[i + 1][0])
         s += '\t.balign 4, 0\n'
+        for pattern, replacement in self.macros:
+            s = pattern.sub(replacement, s)
         return s
 
     def make_header(self):
@@ -524,6 +548,8 @@ class SpecialScriptParser(ScriptParserBase):
         super().__init__(header, raw, prefix)
         header_path = os.path.join(os.path.dirname(__file__), '../..')
         self.vars = parse_c_header(os.path.join(header_path, 'include/constants/vars.h'), 'VAR_')
+        self.std_scripts = parse_c_header(os.path.join(header_path, 'include/constants/std_script.h'), 'std_')
+        self.map_scripts = parse_c_header(os.path.join(project_root, 'files', self.c_header), '_EV_')
         self.table: list[tuple[int, int, int]] = []
         self.init_offset: int = -1
         self.init_vars: list[tuple[int, int, int]] = []
@@ -558,6 +584,11 @@ class SpecialScriptParser(ScriptParserBase):
         self.is_parsed = True
         return self
 
+    def get_script(self, id_):
+        if 0 <= id_ - 1 < len(self.map_scripts):
+            return f'{self.map_scripts[id_ - 1]} + 1'
+        return self.std_scripts.get(id_, id_)
+
     def __str__(self):
         if not self.is_parsed:
             return repr(self)
@@ -569,11 +600,13 @@ class SpecialScriptParser(ScriptParserBase):
             if kind == 1:
                 s += f'\t.byte 1\n\t.word {self.prefix}_map_scripts_2-.-4\n'
             else:
+                val1 = self.get_script(val1)
                 s += f'\t.byte {kind}\n\t.short {val1}, {val2}\n'
         s += '\t.byte 0\n\n'
         if self.init_offset != -1:
             s += f'{self.prefix}_map_scripts_2:\n'
             for flex1, flex2, script in self.init_vars:
+                script = self.get_script(script)
                 s += f'\t.short {self.vars.get(flex1, flex1)}, {self.vars.get(flex2, flex2)}, {script}\n'
             s += '\t.short 0\n\n'
         s += '\t.balign 4, 0\n'
@@ -600,17 +633,17 @@ def parse_map(events, scripts, header, gmm):
         c_header_abs = re.sub(r'eventdata/zone_event/\d{3}_', 'script/scr_seq/event_', os.path.splitext(events)[0] + '.h')
     c_header = os.path.relpath(c_header_abs, os.path.join(project_root, 'files'))
     assert not c_header.startswith('..')
-    if header:
-        with open(header_bin, 'rb') as fp:
-            parser = SpecialScriptParser(c_header, fp.read(), prefix=scr_pref).parse_all()
-        with open(header, 'wt') as ofp:
-            print(parser, file=ofp, end='')
     with open(scripts_bin, 'rb') as fp:
         parser = NormalScriptParser(c_header, fp.read(), events, gmm, prefix=scr_pref).parse_all()
     with open(scripts, 'wt') as ofp:
         print(parser, file=ofp, end='')
     with open(c_header_abs, 'wt') as ofp:
         print(parser.make_header(), file=ofp, end='')
+    if header:
+        with open(header_bin, 'rb') as fp:
+            h_parser = SpecialScriptParser(c_header, fp.read(), prefix=scr_pref).parse_all()
+        with open(header, 'wt') as ofp:
+            print(h_parser, file=ofp, end='')
 
 
 def main():

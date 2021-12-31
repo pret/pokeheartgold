@@ -55,11 +55,7 @@ _006B:
 	gotoif TRUE, _00AA
 	npc_msg msg_0570_T23R0201_00004
 	scrcmd_049
-	setvar VAR_SPECIAL_x8004, 249
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00B5
+	goto_if_no_item_space ITEM_CHARCOAL, 1, _00B5
 	callstd 2008
 	setflag FLAG_UNK_081
 	closemsg

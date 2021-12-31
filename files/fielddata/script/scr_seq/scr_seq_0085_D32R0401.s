@@ -53,7 +53,7 @@ scr_seq_D32R0401_020:
 	end
 
 _00B5:
-	scrcmd_380 16391, 100
+	scrcmd_380 VAR_TEMP_x4007, 100
 	checkflag FLAG_UNK_234
 	callif FALSE, _00D5
 	comparevartovalue VAR_TEMP_x4007, 30
@@ -82,11 +82,11 @@ _00EC:
 	end
 
 _011D:
-	scrcmd_380 16467, 4
+	scrcmd_380 VAR_UNK_4053, 4
 	goto _0147
 	.byte 0x02, 0x00
 _012B:
-	scrcmd_380 16467, 2
+	scrcmd_380 VAR_UNK_4053, 2
 	goto _0147
 	.byte 0x02, 0x00
 _0139:
@@ -305,9 +305,8 @@ _0484:
 	menu_item_add 42, 255, 0
 	menu_item_add 43, 255, 1
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _04C8
+	switch VAR_SPECIAL_x800C
+	case 0, _04C8
 	touchscreen_menu_show
 	goto _02F5
 	.byte 0x02, 0x00
@@ -341,11 +340,9 @@ _052E:
 	menu_item_add 15, 255, 1
 	menu_item_add 5, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _057F
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _05D7
+	switch VAR_SPECIAL_x800C
+	case 0, _057F
+	case 1, _05D7
 	touchscreen_menu_show
 	goto _02F5
 	.byte 0x02, 0x00

@@ -49,11 +49,7 @@ _009D:
 	hasenoughmoneyimmediate 32780, 200
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _00EC
-	setvar VAR_SPECIAL_x8004, 504
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00F7
+	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7
 	callstd std_give_item_verbose
 	submoneyimmediate 200
 	npc_msg msg_0620_T28_00005
@@ -136,11 +132,7 @@ _01DF:
 	hasenoughmoneyimmediate 32780, 300
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0262
-	setvar VAR_SPECIAL_x8004, 504
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00F7
+	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7
 	callstd std_give_item_verbose
 	submoneyimmediate 300
 	npc_msg msg_0620_T28_00006

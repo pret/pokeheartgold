@@ -31,7 +31,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     {10400, NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin},
     {10350, NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin},
     {10300, NARC_scr_seq_scr_seq_0734_bin, NARC_msg_msg_0444_bin},
-    {10200, NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin},
+    {_std_mystery_gift, NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin},
     {10150, NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin},
     {10100, NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin},
     {_std_field_move, NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin},

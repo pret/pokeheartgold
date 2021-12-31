@@ -115,15 +115,11 @@ _0125:
 	goto _02F0
 
 _0188:
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _01C8
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _01E4
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0200
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _021C
+	switch VAR_UNK_412D
+	case 0, _01C8
+	case 1, _01E4
+	case 2, _0200
+	case 3, _021C
 	goto _0238
 
 _01C8:
@@ -171,15 +167,11 @@ _0238:
 _024E:
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0364_R25R0101_00015
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0296
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _02A8
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _02BA
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _02CC
+	switch VAR_UNK_412D
+	case 0, _0296
+	case 1, _02A8
+	case 2, _02BA
+	case 3, _02CC
 	goto _02DE
 
 _0296:
@@ -208,15 +200,11 @@ _02DE:
 	goto _0452
 
 _02F0:
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0330
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _034C
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0368
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0384
+	switch VAR_UNK_412D
+	case 0, _0330
+	case 1, _034C
+	case 2, _0368
+	case 3, _0384
 	goto _03A0
 
 _0330:
@@ -264,15 +252,11 @@ _03A0:
 _03B6:
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0364_R25R0101_00015
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_412D
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _03FE
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0410
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0422
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0434
+	switch VAR_UNK_412D
+	case 0, _03FE
+	case 1, _0410
+	case 2, _0422
+	case 3, _0434
 	goto _0446
 
 _03FE:

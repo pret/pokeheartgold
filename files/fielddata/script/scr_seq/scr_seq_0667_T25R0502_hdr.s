@@ -8,7 +8,7 @@
 	.byte 0
 
 scr_seq_T25R0502_map_scripts_2:
-	.short VAR_UNK_411E, 0, 1
+	.short VAR_UNK_411E, 0, _EV_scr_seq_T25R0502_000 + 1
 	.short 0
 
 	.balign 4, 0

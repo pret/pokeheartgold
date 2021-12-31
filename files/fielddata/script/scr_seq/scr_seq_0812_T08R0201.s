@@ -494,7 +494,7 @@ _0669:
 	return
 
 _06A5:
-	scrcmd_380 32774, 8
+	scrcmd_380 VAR_SPECIAL_x8006, 8
 	comparevartovalue VAR_SPECIAL_x8006, 0
 	callif eq, _0861
 	comparevartovalue VAR_SPECIAL_x8006, 1
@@ -515,7 +515,7 @@ _06A5:
 	return
 
 _071B:
-	scrcmd_380 32774, 5
+	scrcmd_380 VAR_SPECIAL_x8006, 5
 	comparevartovalue VAR_SPECIAL_x8006, 0
 	callif eq, _08A1
 	comparevartovalue VAR_SPECIAL_x8006, 1
@@ -530,7 +530,7 @@ _071B:
 	return
 
 _076A:
-	scrcmd_380 32774, 7
+	scrcmd_380 VAR_SPECIAL_x8006, 7
 	comparevartovalue VAR_SPECIAL_x8006, 0
 	callif eq, _08C9
 	comparevartovalue VAR_SPECIAL_x8006, 1
@@ -549,7 +549,7 @@ _076A:
 	return
 
 _07D3:
-	scrcmd_380 32774, 6
+	scrcmd_380 VAR_SPECIAL_x8006, 6
 	comparevartovalue VAR_SPECIAL_x8006, 0
 	callif eq, _0901
 	comparevartovalue VAR_SPECIAL_x8006, 1

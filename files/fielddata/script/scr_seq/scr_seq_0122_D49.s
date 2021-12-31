@@ -585,11 +585,7 @@ _076E:
 
 _079A:
 	npc_msg msg_0137_D49_00014
-	setvar VAR_SPECIAL_x8004, 50
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _07D6
+	goto_if_no_item_space ITEM_RARE_CANDY, 1, _07D6
 	callstd std_give_item_verbose
 	scrcmd_725 0, 100
 	setflag FLAG_UNK_154

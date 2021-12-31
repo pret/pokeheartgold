@@ -47,11 +47,9 @@ scr_seq_UNION_003:
 	gotoif eq, _0499
 	npc_msg msg_0738_UNION_00199
 	scrcmd_269 32780
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _07CC
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0488
+	switch VAR_SPECIAL_x800C
+	case 3, _07CC
+	case 2, _0488
 	goto _00BC
 	.byte 0x02, 0x00
 _00BC:
@@ -78,21 +76,14 @@ _00EC:
 	scrcmd_066 141, 5
 	scrcmd_066 24, 99
 	scrcmd_585
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0184
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0336
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0276
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _01ED
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0396
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _03F6
-	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, _07A0
+	switch VAR_SPECIAL_x800C
+	case 0, _0184
+	case 1, _0336
+	case 2, _0276
+	case 3, _01ED
+	case 4, _0396
+	case 5, _03F6
+	case 7, _07A0
 	scrcmd_271 0, 7
 	goto _0784
 	.byte 0x02, 0x00
@@ -509,23 +500,15 @@ _07E4:
 	scrcmd_257 100
 	scrcmd_261 11
 	scrcmd_273 32780
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0863
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0B11
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0974
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _08DB
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0A44
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _0AA2
-	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, _0BA0
-	comparevartovalue VAR_SPECIAL_x8008, 8
-	gotoif eq, _0BB1
+	switch VAR_SPECIAL_x800C
+	case 1, _0863
+	case 4, _0B11
+	case 2, _0974
+	case 3, _08DB
+	case 5, _0A44
+	case 6, _0AA2
+	case 7, _0BA0
+	case 8, _0BB1
 	end
 
 _0863:
@@ -800,11 +783,9 @@ _0C2E:
 	menu_item_add 169, 255, 1
 	menu_item_add 24, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0CAF
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0C91
+	switch VAR_SPECIAL_x800C
+	case 0, _0CAF
+	case 1, _0C91
 	goto _0CA5
 	.byte 0x02, 0x00
 _0C87:
@@ -840,19 +821,13 @@ _0CAF:
 	menu_item_add 141, 255, 5
 	menu_item_add 13, 255, 6
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0D50
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0D5F
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0D6E
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0D7D
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0D8C
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0D9B
+	switch VAR_SPECIAL_x800C
+	case 0, _0D50
+	case 1, _0D5F
+	case 2, _0D6E
+	case 3, _0D7D
+	case 4, _0D8C
+	case 5, _0D9B
 	goto _0C2E
 	.byte 0x02, 0x00
 _0D50:

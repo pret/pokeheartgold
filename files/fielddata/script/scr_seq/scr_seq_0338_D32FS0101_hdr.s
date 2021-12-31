@@ -4,7 +4,7 @@
 	.option alignment off
 
 	.byte 2
-	.short 10203, 0
+	.short std_hide_show_deliverymen_2, 0
 	.byte 0
 
 	.balign 4, 0

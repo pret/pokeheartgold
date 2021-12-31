@@ -181,7 +181,7 @@ _01F5:
 	scrcmd_049
 	setflag FLAG_UNK_AA0
 	call _04C8
-	scrcmd_380 32780, 100
+	scrcmd_380 VAR_SPECIAL_x800C, 100
 	comparevartovalue VAR_SPECIAL_x800C, 40
 	gotoif ge, _02F6
 	comparevartovalue VAR_SPECIAL_x800C, 10
@@ -297,7 +297,7 @@ _0375:
 	npc_msg msg_0117_D37R0102_00020
 	scrcmd_049
 	setflag FLAG_UNK_AA0
-	scrcmd_380 32780, 100
+	scrcmd_380 VAR_SPECIAL_x800C, 100
 	comparevartovalue VAR_SPECIAL_x800C, 40
 	gotoif ge, _0444
 	comparevartovalue VAR_SPECIAL_x800C, 10
@@ -397,17 +397,12 @@ _0522:
 	menu_item_add 449, 255, 4
 	menu_item_add 450, 255, 7
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _05AB
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _05D0
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _05F5
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _061A
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _063F
+	switch VAR_SPECIAL_x800C
+	case 0, _05AB
+	case 1, _05D0
+	case 2, _05F5
+	case 3, _061A
+	case 4, _063F
 	goto _0886
 
 _05AB:

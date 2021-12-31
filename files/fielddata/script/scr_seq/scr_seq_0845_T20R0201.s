@@ -212,13 +212,10 @@ _0275:
 	menu_item_add 31, 255, 2
 	menu_item_add 32, 255, 3
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _02DF
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0335
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0398
+	switch VAR_SPECIAL_x800C
+	case 0, _02DF
+	case 1, _0335
+	case 2, _0398
 	goto _03D1
 	.byte 0x02, 0x00
 _02DF:
@@ -231,11 +228,9 @@ _02DF:
 	bank_transaction 1, VAR_SPECIAL_x800C
 	scrcmd_796
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _03E0
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0411
+	switch VAR_SPECIAL_x800C
+	case 0, _03E0
+	case 1, _0411
 	releaseall
 	end
 
@@ -249,11 +244,9 @@ _0335:
 	bank_transaction 0, VAR_SPECIAL_x800C
 	scrcmd_796
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _03FA
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0411
+	switch VAR_SPECIAL_x800C
+	case 0, _03FA
+	case 1, _0411
 	releaseall
 	end
 

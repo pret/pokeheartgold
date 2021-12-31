@@ -377,7 +377,7 @@ _0503:
 	goto _0514
 	.byte 0x02, 0x00
 _0514:
-	scrcmd_490 16393
+	scrcmd_490 VAR_TEMP_x4009
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
@@ -404,7 +404,7 @@ _0550:
 	get_party_count VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, _056D
-	scrcmd_490 16392
+	scrcmd_490 VAR_TEMP_x4008
 	setvar VAR_TEMP_x400A, 2
 	return
 
@@ -614,8 +614,8 @@ _08AC:
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_490 32772
-	scrcmd_490 32773
+	scrcmd_490 VAR_SPECIAL_x8004
+	scrcmd_490 VAR_SPECIAL_x8005
 	apply_movement 241, _0CF0
 	wait_movement
 	play_se SEQ_SE_GS_TAMASYUTUGEN
@@ -639,7 +639,7 @@ _090F:
 	scrcmd_819
 	wait 2, VAR_SPECIAL_x800C
 	npc_msg msg_0146_D51R0201_00025
-	scrcmd_490 16393
+	scrcmd_490 VAR_TEMP_x4009
 	buffer_players_name 0
 	buffer_species_name 1, VAR_TEMP_x4009, 0, 0
 	play_fanfare SEQ_ME_SHINKAOME
@@ -650,7 +650,7 @@ _090F:
 	wait_movement
 	scrcmd_103
 	reset_bgm
-	scrcmd_490 16393
+	scrcmd_490 VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 483
 	gotoif ne, _097B
 	give_mon SPECIES_DIALGA, 1, 135, 0, 0, VAR_SPECIAL_x800C

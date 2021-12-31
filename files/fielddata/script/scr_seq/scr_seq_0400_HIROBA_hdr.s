@@ -8,7 +8,7 @@
 	.byte 0
 
 scr_seq_HIROBA_map_scripts_2:
-	.short VAR_TEMP_x4003, 0, 1
+	.short VAR_TEMP_x4003, 0, _EV_scr_seq_HIROBA_000 + 1
 	.short 0
 
 	.balign 4, 0

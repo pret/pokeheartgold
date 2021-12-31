@@ -61,6 +61,12 @@
 #define std_menu_whirlpool             10017
 #define std_menu_headbutt              10018
 
+#define _std_mystery_gift              10200
+#define std_hide_show_deliverymen      10200
+#define std_mystery_gift_deliveryman   10201
+#define std_moms_gift_deliveryman      10202
+#define std_hide_show_deliverymen_2    10203
+
 #define _std_scratch_card              10490
 #define std_scratch_card               10490
 

@@ -6,9 +6,9 @@
 	.byte 1
 	.word scr_seq_D22R0101_map_scripts_2-.-4
 	.byte 3
-	.short 12, 0
+	.short _EV_scr_seq_D22R0101_011 + 1, 0
 	.byte 2
-	.short 26, 0
+	.short _EV_scr_seq_D22R0101_025 + 1, 0
 	.byte 0
 
 scr_seq_D22R0101_map_scripts_2:

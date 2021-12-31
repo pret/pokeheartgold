@@ -12,7 +12,7 @@ scr_seq_T01R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_490 16674
+	scrcmd_490 VAR_UNK_4122
 	comparevartovalue VAR_UNK_4122, 7
 	gotoif eq, _003B
 _001F:
@@ -61,7 +61,7 @@ _00A7:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	scrcmd_490 32772
+	scrcmd_490 VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 255
 	gotoif eq, _0147
 	get_partymon_species VAR_SPECIAL_x8004, VAR_TEMP_x4000

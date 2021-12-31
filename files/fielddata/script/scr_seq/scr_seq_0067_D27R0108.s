@@ -36,11 +36,9 @@ _0058:
 	wait_movement
 _0062:
 	scrcmd_241 16659
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0088
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _00A5
+	switch VAR_UNK_4113
+	case 0, _0088
+	case 1, _00A5
 	end
 
 _0088:

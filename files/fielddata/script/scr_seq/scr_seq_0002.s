@@ -79,16 +79,16 @@ _011F:
 _0125:
 	setvar VAR_SPECIAL_x8004, 0
 	touchscreen_menu_hide
-	scrcmd_490 32768
-	scrcmd_490 32769
-	scrcmd_490 32770
-	scrcmd_490 32771
+	scrcmd_490 VAR_SPECIAL_x8000
+	scrcmd_490 VAR_SPECIAL_x8001
+	scrcmd_490 VAR_SPECIAL_x8002
+	scrcmd_490 VAR_SPECIAL_x8003
 _013D:
 	scrcmd_653 32769, 32768, 32772, 32780
-	scrcmd_490 32768
-	scrcmd_490 32769
-	scrcmd_490 32770
-	scrcmd_490 32771
+	scrcmd_490 VAR_SPECIAL_x8000
+	scrcmd_490 VAR_SPECIAL_x8001
+	scrcmd_490 VAR_SPECIAL_x8002
+	scrcmd_490 VAR_SPECIAL_x8003
 	copyvar VAR_SPECIAL_x8003, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8003, 65533
 	gotoif ne, _018F
@@ -156,14 +156,14 @@ _0241:
 	scrcmd_117
 	scrcmd_352 1, 32769, 32771
 	scrcmd_353 1, 32774
-	scrcmd_490 32774
+	scrcmd_490 VAR_SPECIAL_x8006
 	scrcmd_150
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif eq, _03A4
-	scrcmd_490 32774
+	scrcmd_490 VAR_SPECIAL_x8006
 	buffer_party_mon_move_name 2, VAR_SPECIAL_x8001, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8004, 9
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F

@@ -12,7 +12,7 @@
 scr_seq_T27PC0101_map_scripts_2:
 	.short VAR_UNK_4133, 2, 9013
 	.short VAR_UNK_4133, 1, 9012
-	.short VAR_UNK_410D, 0, 2
+	.short VAR_UNK_410D, 0, _EV_scr_seq_T27PC0101_001 + 1
 	.short 0
 
 	.balign 4, 0

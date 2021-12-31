@@ -81,7 +81,7 @@ _00F2:
 	scrcmd_363 6, 16384, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	callif ne, _019A
-	scrcmd_490 32780
+	scrcmd_490 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0120
 	npc_msg msg_0576_T24R0201_00008

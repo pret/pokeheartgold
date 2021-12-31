@@ -3,27 +3,27 @@
 
 	.bss
 
-_021D2AF4:
+sMysteryGiftData:
 	.space 0x4
 
 	.text
 
-	thumb_func_start sub_0202DBA8
-sub_0202DBA8: ; 0x0202DBA8
+	thumb_func_start Save_MysteryGift_sizeof
+Save_MysteryGift_sizeof: ; 0x0202DBA8
 	mov r0, #0x5a
 	lsl r0, r0, #6
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0202DBA8
+	thumb_func_end Save_MysteryGift_sizeof
 
-	thumb_func_start sub_0202DBB0
-sub_0202DBB0: ; 0x0202DBB0
+	thumb_func_start Save_MysteryGift_init
+Save_MysteryGift_init: ; 0x0202DBB0
 	ldr r3, _0202DBB8 ; =SaveSubstruct_UpdateCRC
 	mov r0, #0x1b
 	bx r3
 	nop
 _0202DBB8: .word SaveSubstruct_UpdateCRC
-	thumb_func_end sub_0202DBB0
+	thumb_func_end Save_MysteryGift_init
 
 	thumb_func_start sub_0202DBBC
 sub_0202DBBC: ; 0x0202DBBC
@@ -676,27 +676,27 @@ _0202E02C: .word sub_0202DFAC
 _0202E030: .word 0x000007FF
 	thumb_func_end sub_0202E024
 
-	thumb_func_start sub_0202E034
-sub_0202E034: ; 0x0202E034
+	thumb_func_start GetStaticPointerToSaveMysteryGift
+GetStaticPointerToSaveMysteryGift: ; 0x0202E034
 	push {r3, lr}
-	ldr r1, _0202E050 ; =_021D2AF4
+	ldr r1, _0202E050 ; =sMysteryGiftData
 	ldr r1, [r1]
 	cmp r1, #0
 	bne _0202E046
-	bl sub_020270E4
-	ldr r1, _0202E050 ; =_021D2AF4
+	bl Save_MysteryGift_get
+	ldr r1, _0202E050 ; =sMysteryGiftData
 	str r0, [r1]
 _0202E046:
 	mov r0, #0x1b
 	bl SaveSubstruct_UpdateCRC
 	pop {r3, pc}
 	nop
-_0202E050: .word _021D2AF4
-	thumb_func_end sub_0202E034
+_0202E050: .word sMysteryGiftData
+	thumb_func_end GetStaticPointerToSaveMysteryGift
 
-	thumb_func_start sub_0202E054
-sub_0202E054: ; 0x0202E054
-	ldr r0, _0202E064 ; =_021D2AF4
+	thumb_func_start DeleteStaticPointerToMysteryGift
+DeleteStaticPointerToMysteryGift: ; 0x0202E054
+	ldr r0, _0202E064 ; =sMysteryGiftData
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _0202E060
@@ -705,13 +705,13 @@ sub_0202E054: ; 0x0202E054
 _0202E060:
 	bx lr
 	nop
-_0202E064: .word _021D2AF4
-	thumb_func_end sub_0202E054
+_0202E064: .word sMysteryGiftData
+	thumb_func_end DeleteStaticPointerToMysteryGift
 
 	thumb_func_start sub_0202E068
 sub_0202E068: ; 0x0202E068
 	push {r3, r4, r5, lr}
-	ldr r4, _0202E08C ; =_021D2AF4
+	ldr r4, _0202E08C ; =sMysteryGiftData
 	mov r5, #0
 _0202E06E:
 	ldr r0, [r4]
@@ -729,14 +729,14 @@ _0202E07E:
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 	nop
-_0202E08C: .word _021D2AF4
+_0202E08C: .word sMysteryGiftData
 	thumb_func_end sub_0202E068
 
 	thumb_func_start sub_0202E090
 sub_0202E090: ; 0x0202E090
 	push {r3, lr}
 	add r1, r0, #0
-	ldr r0, _0202E0A8 ; =_021D2AF4
+	ldr r0, _0202E0A8 ; =sMysteryGiftData
 	ldr r0, [r0]
 	bl sub_0202DBCC
 	cmp r0, #0
@@ -747,14 +747,14 @@ _0202E0A4:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_0202E0A8: .word _021D2AF4
+_0202E0A8: .word sMysteryGiftData
 	thumb_func_end sub_0202E090
 
 	thumb_func_start sub_0202E0AC
 sub_0202E0AC: ; 0x0202E0AC
 	push {r3, lr}
 	add r1, r0, #0
-	ldr r0, _0202E0C4 ; =_021D2AF4
+	ldr r0, _0202E0C4 ; =sMysteryGiftData
 	ldr r0, [r0]
 	bl sub_0202DBCC
 	cmp r0, #0
@@ -765,17 +765,17 @@ _0202E0C0:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_0202E0C4: .word _021D2AF4
+_0202E0C4: .word sMysteryGiftData
 	thumb_func_end sub_0202E0AC
 
 	thumb_func_start sub_0202E0C8
 sub_0202E0C8: ; 0x0202E0C8
 	add r1, r0, #0
-	ldr r0, _0202E0D4 ; =_021D2AF4
+	ldr r0, _0202E0D4 ; =sMysteryGiftData
 	ldr r3, _0202E0D8 ; =sub_0202DD7C
 	ldr r0, [r0]
 	bx r3
 	nop
-_0202E0D4: .word _021D2AF4
+_0202E0D4: .word sMysteryGiftData
 _0202E0D8: .word sub_0202DD7C
 	thumb_func_end sub_0202E0C8

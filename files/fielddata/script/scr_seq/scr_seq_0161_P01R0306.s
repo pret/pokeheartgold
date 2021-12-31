@@ -69,11 +69,7 @@ scr_seq_P01R0306_003:
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0262_P01R0306_00004, msg_0262_P01R0306_00005
-	setvar VAR_SPECIAL_x8004, 233
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0103
+	goto_if_no_item_space ITEM_METAL_COAT, 1, _0103
 	callstd std_give_item_verbose
 _00E2:
 	setvar VAR_UNK_40CB, 6

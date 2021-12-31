@@ -310,11 +310,9 @@ _043E:
 	menu_item_add 128, 255, 1
 	menu_item_add 129, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _048B
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _04D7
+	switch VAR_SPECIAL_x800C
+	case 0, _048B
+	case 1, _04D7
 	npc_msg msg_0508_T07R0401_00006
 	goto _0531
 	.byte 0x02, 0x00

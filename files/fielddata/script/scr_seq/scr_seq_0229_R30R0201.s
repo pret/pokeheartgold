@@ -95,11 +95,7 @@ _012A:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0189
-	setvar VAR_SPECIAL_x8004, 216
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0194
+	goto_if_no_item_space ITEM_EXP__SHARE, 1, _0194
 	callstd std_give_item_verbose
 	closemsg
 	setflag FLAG_UNK_06C

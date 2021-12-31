@@ -13,48 +13,48 @@
 
 scr_seq_0144_000:
 	scrcmd_489 0
-	scrcmd_813 16384
-	scrcmd_490 16384
+	scrcmd_813 VAR_TEMP_x4000
+	scrcmd_490 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0035
-	setflag FLAG_UNK_2A8
+	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
 	goto _0039
 
 _0035:
-	clearflag FLAG_UNK_2A8
+	clearflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
 _0039:
 	scrcmd_489 1, VAR_UNK_4138
 	comparevartovalue VAR_UNK_4138, 0
 	gotoif ne, _0056
-	setflag FLAG_UNK_2A7
+	setflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 	goto _005A
 
 _0056:
-	clearflag FLAG_UNK_2A7
+	clearflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 _005A:
 	scrcmd_489 7
 	end
 
 scr_seq_0144_003:
 	scrcmd_489 0
-	scrcmd_813 16384
-	scrcmd_490 16384
+	scrcmd_813 VAR_TEMP_x4000
+	scrcmd_490 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0083
-	setflag FLAG_UNK_2A8
+	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
 	goto _0087
 
 _0083:
-	clearflag FLAG_UNK_2A8
+	clearflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
 _0087:
 	scrcmd_489 1, VAR_UNK_4138
 	comparevartovalue VAR_UNK_4138, 0
 	gotoif ne, _00A4
-	setflag FLAG_UNK_2A7
+	setflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 	goto _00A8
 
 _00A4:
-	clearflag FLAG_UNK_2A7
+	clearflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 _00A8:
 	setvar VAR_UNK_40E5, 2
 	scrcmd_489 7
@@ -69,11 +69,9 @@ scr_seq_0144_001:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _016D
 	scrcmd_379 VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00FD
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0109
+	switch VAR_SPECIAL_x800C
+	case 0, _00FD
+	case 1, _0109
 	goto _0115
 
 _00FD:
@@ -131,15 +129,13 @@ scr_seq_0144_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_813 32780
+	scrcmd_813 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0232
 	scrcmd_379 VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _01CF
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _01DB
+	switch VAR_SPECIAL_x800C
+	case 0, _01CF
+	case 1, _01DB
 	goto _01E7
 
 _01CF:
@@ -158,7 +154,7 @@ _01E7:
 	goto _01F3
 
 _01F3:
-	scrcmd_811 32772, 32773
+	scrcmd_811 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0222

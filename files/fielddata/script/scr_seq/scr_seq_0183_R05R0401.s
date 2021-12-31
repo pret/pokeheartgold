@@ -16,11 +16,7 @@ scr_seq_R05R0401_000:
 	checkflag FLAG_UNK_131
 	gotoif TRUE, _0049
 	npc_msg msg_0333_R05R0401_00000
-	setvar VAR_SPECIAL_x8004, 224
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0054
+	goto_if_no_item_space ITEM_CLEANSE_TAG, 1, _0054
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_131
 _0049:

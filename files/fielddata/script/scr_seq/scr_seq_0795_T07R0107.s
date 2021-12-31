@@ -13,19 +13,13 @@ scr_seq_T07R0107_000:
 	lockall
 	faceplayer
 	scrcmd_241 16659
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0068
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0072
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _007C
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0086
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0090
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _009A
+	switch VAR_UNK_4113
+	case 5, _0068
+	case 4, _0072
+	case 3, _007C
+	case 2, _0086
+	case 1, _0090
+	case 0, _009A
 	end
 
 _0068:
@@ -66,19 +60,13 @@ _00A4:
 	menu_item_add 126, 255, 7
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _052D
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0467
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _03A1
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _02DB
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0215
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _014F
+	switch VAR_SPECIAL_x800C
+	case 6, _052D
+	case 0, _0467
+	case 1, _03A1
+	case 2, _02DB
+	case 3, _0215
+	case 4, _014F
 	goto _06DE
 
 _014F:
@@ -353,19 +341,13 @@ _0609:
 	return
 
 _0627:
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _067D
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0688
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0693
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _069E
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _06A9
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _06B4
+	switch VAR_UNK_4113
+	case 5, _067D
+	case 4, _0688
+	case 3, _0693
+	case 2, _069E
+	case 1, _06A9
+	case 0, _06B4
 	end
 
 _067D:

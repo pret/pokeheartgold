@@ -179,11 +179,7 @@ scr_seq_T04GYM0101_005:
 	faceplayer
 	buffer_players_name 0
 	npc_msg msg_0469_T04GYM0101_00016
-	setvar VAR_SPECIAL_x8004, 481
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _027C
+	goto_if_no_item_space ITEM_MACHINE_PART, 1, _027C
 	callstd 2008
 	hide_person obj_T04GYM0101_stop
 	hide_person obj_T04GYM0101_stop_2
@@ -232,11 +228,7 @@ scr_seq_T04GYM0101_000:
 	goto _0307
 
 _0307:
-	setvar VAR_SPECIAL_x8004, 330
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _033E
+	goto_if_no_item_space ITEM_TM03, 1, _033E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_180
 	buffer_players_name 0

@@ -160,11 +160,9 @@ _01EC:
 	menu_item_add 13, 255, 1
 	menu_item_add 11, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0234
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _02D0
+	switch VAR_TEMP_x4000
+	case 0, _0234
+	case 1, _02D0
 	goto _0C17
 
 _0234:
@@ -177,19 +175,13 @@ _0234:
 	menu_item_add 19, 255, 5
 	menu_item_add 11, 255, 6
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0342
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _03CD
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0458
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _04E3
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _056E
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _05F9
+	switch VAR_TEMP_x4000
+	case 0, _0342
+	case 1, _03CD
+	case 2, _0458
+	case 3, _04E3
+	case 4, _056E
+	case 5, _05F9
 	goto _01EC
 
 _02D0:
@@ -200,23 +192,15 @@ _02D0:
 	menu_item_add 23, 255, 3
 	menu_item_add 11, 255, 4
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0684
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _070F
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _079A
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0825
+	switch VAR_TEMP_x4000
+	case 0, _0684
+	case 1, _070F
+	case 2, _079A
+	case 3, _0825
 	goto _01EC
 
 _0342:
-	setvar VAR_SPECIAL_x8004, 417
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_TM90, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -241,11 +225,7 @@ _038B:
 	goto _0234
 	.byte 0x02, 0x00
 _03CD:
-	setvar VAR_SPECIAL_x8004, 402
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_TM75, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -270,11 +250,7 @@ _0416:
 	goto _0234
 	.byte 0x02, 0x00
 _0458:
-	setvar VAR_SPECIAL_x8004, 371
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_TM44, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -299,11 +275,7 @@ _04A1:
 	goto _0234
 	.byte 0x02, 0x00
 _04E3:
-	setvar VAR_SPECIAL_x8004, 362
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_TM35, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -328,11 +300,7 @@ _052C:
 	goto _0234
 	.byte 0x02, 0x00
 _056E:
-	setvar VAR_SPECIAL_x8004, 340
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_TM13, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -357,11 +325,7 @@ _05B7:
 	goto _0234
 	.byte 0x02, 0x00
 _05F9:
-	setvar VAR_SPECIAL_x8004, 351
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_TM24, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -386,11 +350,7 @@ _0642:
 	goto _0234
 	.byte 0x02, 0x00
 _0684:
-	setvar VAR_SPECIAL_x8004, 251
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_SILK_SCARF, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -415,11 +375,7 @@ _06CD:
 	goto _02D0
 	.byte 0x02, 0x00
 _070F:
-	setvar VAR_SPECIAL_x8004, 265
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_WIDE_LENS, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -444,11 +400,7 @@ _0758:
 	goto _02D0
 	.byte 0x02, 0x00
 _079A:
-	setvar VAR_SPECIAL_x8004, 276
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_ZOOM_LENS, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -473,11 +425,7 @@ _07E3:
 	goto _02D0
 	.byte 0x02, 0x00
 _0825:
-	setvar VAR_SPECIAL_x8004, 277
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B45
+	goto_if_no_item_space ITEM_METRONOME, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
 	getmenuchoice VAR_SPECIAL_x800C
@@ -525,13 +473,10 @@ _08EB:
 	menu_item_add 26, 255, 2
 	menu_item_add 11, 255, 3
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _09A5
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _09B1
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _09BD
+	switch VAR_TEMP_x4000
+	case 0, _09A5
+	case 1, _09B1
+	case 2, _09BD
 	goto _0C17
 
 _0948:
@@ -541,13 +486,10 @@ _0948:
 	menu_item_add 26, 255, 2
 	menu_item_add 11, 255, 3
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _09A5
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _09C9
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _09BD
+	switch VAR_TEMP_x4000
+	case 0, _09A5
+	case 1, _09C9
+	case 2, _09BD
 	goto _0C17
 
 _09A5:

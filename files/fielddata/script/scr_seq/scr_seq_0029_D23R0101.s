@@ -781,17 +781,12 @@ _0A3D:
 	goto _0A4B
 
 _0A4B:
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8002
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0A94
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0A9F
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0AA8
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0AB1
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0ABA
+	switch VAR_SPECIAL_x8002
+	case 1, _0A94
+	case 2, _0A9F
+	case 3, _0AA8
+	case 4, _0AB1
+	case 5, _0ABA
 	end
 
 _0A94:
@@ -815,17 +810,12 @@ _0ABA:
 	goto _0AC3
 
 _0AC3:
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8002
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0B0C
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0B1A
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0B26
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0B32
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0B3E
+	switch VAR_SPECIAL_x8002
+	case 1, _0B0C
+	case 2, _0B1A
+	case 3, _0B26
+	case 4, _0B32
+	case 5, _0B3E
 	end
 
 _0B0C:

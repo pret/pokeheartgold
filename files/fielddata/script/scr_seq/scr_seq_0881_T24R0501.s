@@ -36,11 +36,7 @@ _0051:
 	faceplayer
 	npc_msg msg_0577_T24R0501_00000
 	scrcmd_049
-	setvar VAR_SPECIAL_x8004, 464
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _009C
+	goto_if_no_item_space ITEM_SECRETPOTION, 1, _009C
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0B9
 	npc_msg msg_0577_T24R0501_00002

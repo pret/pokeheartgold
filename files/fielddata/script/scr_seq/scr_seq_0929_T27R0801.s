@@ -13,7 +13,7 @@ scr_seq_T27R0801_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0A3
+	checkflag FLAG_GOT_DOWSING_MACHINE
 	gotoif TRUE, _0078
 	npc_msg msg_0619_T27R0801_00000
 	touchscreen_menu_hide
@@ -28,13 +28,9 @@ scr_seq_T27R0801_000:
 _0044:
 	npc_msg msg_0619_T27R0801_00001
 	scrcmd_049
-	setvar VAR_SPECIAL_x8004, 471
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0083
+	goto_if_no_item_space ITEM_DOWSING_MCHN, 1, _0083
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0A3
+	setflag FLAG_GOT_DOWSING_MACHINE
 	goto _0078
 
 _0078:

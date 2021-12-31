@@ -153,11 +153,7 @@ scr_seq_R43R0201_003:
 	checkflag FLAG_UNK_0CE
 	gotoif TRUE, _0208
 	npc_msg msg_0403_R43R0201_00004
-	setvar VAR_SPECIAL_x8004, 363
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0213
+	goto_if_no_item_space ITEM_TM36, 1, _0213
 	callstd 2008
 	waitbutton
 	setflag FLAG_UNK_0CE

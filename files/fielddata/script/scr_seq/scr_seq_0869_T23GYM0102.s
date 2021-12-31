@@ -89,11 +89,7 @@ scr_seq_T23GYM0102_001:
 	add_special_game_stat 22
 	npc_msg msg_0567_T23GYM0102_00003
 _0136:
-	setvar VAR_SPECIAL_x8004, 416
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _016A
+	goto_if_no_item_space ITEM_TM89, 1, _016A
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_07F
 	npc_msg msg_0567_T23GYM0102_00005

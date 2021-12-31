@@ -191,11 +191,9 @@ _030A:
 	menu_item_add 15, 255, 1
 	menu_item_add 5, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _035B
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _03B3
+	switch VAR_SPECIAL_x800C
+	case 0, _035B
+	case 1, _03B3
 	touchscreen_menu_show
 	goto _0132
 	.byte 0x02, 0x00
@@ -251,13 +249,10 @@ _040B:
 	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x8000
 	get_partymon_species VAR_TEMP_x4005, VAR_SPECIAL_x8001
 	scrcmd_644 32768, 32769, 32780
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _047E
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0494
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _04AA
+	switch VAR_SPECIAL_x800C
+	case 1, _047E
+	case 2, _0494
+	case 3, _04AA
 	scrcmd_258
 	scrcmd_257 156
 	npc_msg msg_0110_D32R0601_00045

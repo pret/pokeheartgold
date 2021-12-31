@@ -89,11 +89,7 @@ scr_seq_T11R0701_001:
 	checkflag FLAG_UNK_130
 	gotoif TRUE, _015A
 	npc_msg msg_0537_T11R0701_00001
-	setvar VAR_SPECIAL_x8004, 252
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0165
+	goto_if_no_item_space ITEM_UPGRADE, 1, _0165
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_130
 _015A:
@@ -163,9 +159,8 @@ _022C:
 	menu_item_add 27, 255, 3
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0346
+	switch VAR_SPECIAL_x8004
+	case 3, _0346
 	get_party_count VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 6
 	gotoif eq, _033B

@@ -131,11 +131,7 @@ _01A0:
 	setflag FLAG_UNK_998
 	npc_msg msg_0582_T25GYM0101_00005
 _01C4:
-	setvar VAR_SPECIAL_x8004, 372
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01F8
+	goto_if_no_item_space ITEM_TM45, 1, _01F8
 	callstd std_give_item_verbose
 	npc_msg msg_0582_T25GYM0101_00007
 	waitbutton

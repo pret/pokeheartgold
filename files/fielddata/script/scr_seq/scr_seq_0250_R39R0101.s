@@ -118,11 +118,7 @@ _0158:
 	gotoif TRUE, _0197
 	npc_msg msg_0397_R39R0101_00008
 	scrcmd_049
-	setvar VAR_SPECIAL_x8004, 410
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01A2
+	goto_if_no_item_space ITEM_TM83, 1, _01A2
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0AB
 	goto _0197

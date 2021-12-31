@@ -1573,23 +1573,15 @@ _1862:
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, _18F5
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _18E2
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _1941
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _192E
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _1954
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _1967
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _191B
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _1908
+	switch VAR_SPECIAL_x800C
+	case 7, _18F5
+	case 0, _18E2
+	case 4, _1941
+	case 1, _192E
+	case 2, _1954
+	case 6, _1967
+	case 5, _191B
+	case 3, _1908
 	end
 
 _18E2:

@@ -107,11 +107,7 @@ _0195:
 	gotoif ne, _01AD
 	scrcmd_606
 _01AD:
-	setvar VAR_SPECIAL_x8004, 371
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01FC
+	goto_if_no_item_space ITEM_TM44, 1, _01FC
 	callstd std_give_item_verbose
 	comparevartovalue VAR_UNK_4114, 2
 	gotoif ne, _01EB

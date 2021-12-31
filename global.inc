@@ -27189,7 +27189,7 @@
 .public sub_02027010
 .public sub_02027098
 .public sub_020270C4
-.public sub_020270E4
+.public Save_MysteryGift_get
 .public sub_020270F8
 .public sub_0202711C
 .public sub_02027134
@@ -27477,8 +27477,8 @@
 .public sub_0202DB90
 .public sub_0202DB98
 .public sub_0202DBA0
-.public sub_0202DBA8
-.public sub_0202DBB0
+.public Save_MysteryGift_sizeof
+.public Save_MysteryGift_init
 .public sub_0202DBF4
 .public sub_0202DC2C
 .public sub_0202DCAC
@@ -27495,8 +27495,8 @@
 .public sub_0202DFAC
 .public sub_0202E014
 .public sub_0202E024
-.public sub_0202E034
-.public sub_0202E054
+.public GetStaticPointerToSaveMysteryGift
+.public DeleteStaticPointerToMysteryGift
 .public sub_0202E068
 .public sub_0202E090
 .public sub_0202E0AC

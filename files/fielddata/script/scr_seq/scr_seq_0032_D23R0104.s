@@ -92,11 +92,7 @@ _00F0:
 	checkflag FLAG_UNK_091
 	gotoif TRUE, _013D
 	npc_msg msg_0068_D23R0104_00002
-	setvar VAR_SPECIAL_x8004, 213
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0132
+	goto_if_no_item_space ITEM_BRIGHTPOWDER, 1, _0132
 	callstd std_give_item_verbose
 	npc_msg msg_0068_D23R0104_00004
 	waitbutton

@@ -102,11 +102,7 @@ _0104:
 	comparevartovalue VAR_UNK_4114, 4
 	gotoif ge, _016D
 	npc_msg msg_0388_R35R0101_00007
-	setvar VAR_SPECIAL_x8004, 45
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0163
+	goto_if_no_item_space ITEM_HP_UP, 1, _0163
 	callstd std_give_item_verbose
 	comparevartovalue VAR_UNK_4114, 3
 	gotoif ne, _0152

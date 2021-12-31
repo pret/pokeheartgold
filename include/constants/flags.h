@@ -167,7 +167,7 @@
 #define FLAG_UNK_0A0                 0xA0
 #define FLAG_UNK_0A1                 0xA1
 #define FLAG_UNK_0A2                 0xA2
-#define FLAG_UNK_0A3                 0xA3
+#define FLAG_GOT_DOWSING_MACHINE                 0xA3
 #define FLAG_UNK_0A4                 0xA4
 #define FLAG_UNK_0A5                 0xA5
 #define FLAG_UNK_0A6                 0xA6
@@ -411,7 +411,7 @@
 #define FLAG_UNK_194                 0x194
 #define FLAG_UNK_195                 0x195
 #define FLAG_UNK_196                 0x196
-#define FLAG_HIDE_VIOLET_SHOP_KIMONO_GIRL                 0x197
+#define FLAG_HIDE_VIOLET_SHOP_LAB_AIDE                 0x197
 #define FLAG_HIDE_CHERRYGROVE_GUIDE_GENT                 0x198
 #define FLAG_UNK_199                 0x199
 #define FLAG_UNK_19A                 0x19A
@@ -683,8 +683,8 @@
 #define FLAG_UNK_2A4                 0x2A4
 #define FLAG_UNK_2A5                 0x2A5
 #define FLAG_HIDE_NEW_BARK_MOM                 0x2A6
-#define FLAG_UNK_2A7                 0x2A7
-#define FLAG_UNK_2A8                 0x2A8
+#define FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN                 0x2A7
+#define FLAG_HIDE_MOM_GIFT_DELIVERYMAN                 0x2A8
 #define FLAG_UNK_2A9                 0x2A9
 #define FLAG_UNK_2AA                 0x2AA
 #define FLAG_UNK_2AB                 0x2AB

@@ -28,11 +28,7 @@ scr_seq_T07R0205_000:
 
 _0045:
 	npc_msg msg_0505_T07R0205_00002
-	setvar VAR_SPECIAL_x8004, 247
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _007C
+	goto_if_no_item_space ITEM_SPELL_TAG, 1, _007C
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_158
 _0071:

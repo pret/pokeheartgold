@@ -85,21 +85,21 @@ _0204BDD2:
 	ldr r0, [r4]
 	mov r1, #0x20
 	ldr r0, [r0, #0xc]
-	bl sub_0202E034
+	bl GetStaticPointerToSaveMysteryGift
 	b _0204BF8C
 _0204BDE0:
 	add r4, #0x80
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0202E054
+	bl DeleteStaticPointerToMysteryGift
 	b _0204BF8C
 _0204BDEE:
 	add r4, #0x80
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl sub_0202E054
+	bl DeleteStaticPointerToMysteryGift
 	b _0204BF8C
 _0204BDFC:
 	add r0, r4, #0

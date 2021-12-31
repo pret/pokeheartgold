@@ -111,7 +111,7 @@ _0156:
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0597_T25R1006_00011
-	scrcmd_380 32780, 100
+	scrcmd_380 VAR_SPECIAL_x800C, 100
 	comparevartovalue VAR_SPECIAL_x800C, 40
 	gotoif ge, _01AD
 	comparevartovalue VAR_SPECIAL_x800C, 4
@@ -124,7 +124,7 @@ _01AD:
 	play_se SEQ_SE_GS_KUJI_ATARI
 	buffer_int 0, 3
 	npc_msg msg_0597_T25R1006_00012
-	scrcmd_380 32780, 70
+	scrcmd_380 VAR_SPECIAL_x800C, 70
 	comparevartovalue VAR_SPECIAL_x800C, 60
 	gotoif ge, _021C
 	comparevartovalue VAR_SPECIAL_x800C, 50
@@ -532,13 +532,10 @@ _0717:
 	menu_item_add 212, 255, 3
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _077B
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0787
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0793
+	switch VAR_SPECIAL_x8000
+	case 0, _077B
+	case 1, _0787
+	case 2, _0793
 	npc_msg msg_0597_T25R1006_00009
 	goto _08BE
 
@@ -604,7 +601,7 @@ _07D5:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	scrcmd_380 32780, 64
+	scrcmd_380 VAR_SPECIAL_x800C, 64
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _08A0
 	play_se SEQ_SE_DP_JIHANKI

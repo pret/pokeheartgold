@@ -343,15 +343,12 @@ scr_seq_0003_069:
 	end
 
 scr_seq_0003_000:
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _04D6
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _04DD
+	switch VAR_SPECIAL_x800C
+	case 0, _04D6
+	case 1, _04DD
 	scrcmd_060 VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _04DD
+	switch VAR_SPECIAL_x800C
+	case 1, _04DD
 	scrcmd_057 2
 	endstd
 	end
@@ -375,23 +372,15 @@ scr_seq_0003_001:
 
 _04F2:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, _0574
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0568
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0568
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0568
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0568
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _0568
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _057A
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _056E
+	switch VAR_SPECIAL_x800C
+	case 7, _0574
+	case 0, _0568
+	case 4, _0568
+	case 1, _0568
+	case 2, _0568
+	case 6, _0568
+	case 5, _057A
+	case 3, _056E
 	end
 
 _0568:
@@ -692,23 +681,15 @@ _08E6:
 	buffer_item_name_plural 1, VAR_SPECIAL_x8004
 _08EB:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 7
-	gotoif eq, _0972
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0961
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _09B6
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _09A5
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _09C7
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _0983
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0994
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _09D8
+	switch VAR_SPECIAL_x800C
+	case 7, _0972
+	case 0, _0961
+	case 4, _09B6
+	case 1, _09A5
+	case 2, _09C7
+	case 6, _0983
+	case 5, _0994
+	case 3, _09D8
 	end
 
 _0961:
@@ -813,23 +794,18 @@ _0A8C:
 	menu_item_add 64, 255, 2
 	menu_item_add 66, 255, 3
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8006
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0B01
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0C23
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0DBA
+	switch VAR_SPECIAL_x8006
+	case 0, _0B01
+	case 1, _0C23
+	case 2, _0DBA
 	goto _0DF0
 
 _0AD1:
 	menu_item_add 66, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8006
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0B01
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0C23
+	switch VAR_SPECIAL_x8006
+	case 0, _0B01
+	case 1, _0C23
 	goto _0DF0
 
 _0B01:
@@ -851,17 +827,12 @@ _0B17:
 	.byte 0x00, 0x1b, 0x00
 _0B53:
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0BA2
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0BB5
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0BC8
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0BDB
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0BEE
+	switch VAR_SPECIAL_x800C
+	case 0, _0BA2
+	case 1, _0BB5
+	case 2, _0BC8
+	case 3, _0BDB
+	case 4, _0BEE
 	goto _0A2E
 
 _0BA2:
@@ -920,22 +891,17 @@ _0C39:
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0C72
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0CEC
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0D3A
+	switch VAR_SPECIAL_x800C
+	case 0, _0CEC
+	case 1, _0D3A
 	goto _0A2E
 
 _0C72:
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0CEC
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0D3A
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0D86
+	switch VAR_SPECIAL_x800C
+	case 0, _0CEC
+	case 1, _0D3A
+	case 2, _0D86
 	goto _0A2E
 
 _0CA7:
@@ -1547,7 +1513,7 @@ scr_seq_0003_041:
 scr_seq_0003_046:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_166 32780
+	scrcmd_166 VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_662 32773, 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -1575,13 +1541,10 @@ _145E:
 	menu_item_add 322, 255, 1
 	menu_item_add 323, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0003_049
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0003_050
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0003_051
+	switch VAR_SPECIAL_x800C
+	case 0, scr_seq_0003_049
+	case 1, scr_seq_0003_050
+	case 2, scr_seq_0003_051
 	end
 
 scr_seq_0003_049:
@@ -1617,13 +1580,10 @@ _14FB:
 	menu_item_add 322, 255, 1
 	menu_item_add 323, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0003_053
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0003_054
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0003_055
+	switch VAR_SPECIAL_x800C
+	case 0, scr_seq_0003_053
+	case 1, scr_seq_0003_054
+	case 2, scr_seq_0003_055
 	end
 
 scr_seq_0003_053:
@@ -1714,13 +1674,10 @@ scr_seq_0003_056:
 	menu_item_add 324, 255, 1
 	menu_item_add 323, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0003_057
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0003_058
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0003_059
+	switch VAR_SPECIAL_x800C
+	case 0, scr_seq_0003_057
+	case 1, scr_seq_0003_058
+	case 2, scr_seq_0003_059
 	end
 
 scr_seq_0003_057:
@@ -1745,13 +1702,10 @@ scr_seq_0003_060:
 	menu_item_add 324, 255, 1
 	menu_item_add 323, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, scr_seq_0003_061
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, scr_seq_0003_062
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, scr_seq_0003_063
+	switch VAR_SPECIAL_x800C
+	case 0, scr_seq_0003_061
+	case 1, scr_seq_0003_062
+	case 2, scr_seq_0003_063
 	end
 
 scr_seq_0003_061:

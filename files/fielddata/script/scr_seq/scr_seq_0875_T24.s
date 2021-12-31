@@ -35,11 +35,7 @@ scr_seq_T24_006:
 	apply_movement obj_player, _00E4
 	wait_movement
 	npc_msg msg_0572_T24_00002
-	setvar VAR_SPECIAL_x8004, 421
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00B8
+	goto_if_no_item_space ITEM_HM02, 1, _00B8
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0BB
 	setvar VAR_UNK_4116, 2

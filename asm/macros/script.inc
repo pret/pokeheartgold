@@ -4746,6 +4746,36 @@
 	.byte \arg1
 	.endm
 
+	; Script headers
+
+	.macro map_script kind, script
+	.byte \kind
+	.word \script
+	.endm
+
+	.macro map_script_2 var, val, script
+	.short \var, \val, \script
+	.endm
+
+	; Convenience macros
+
+	.macro goto_if_no_item_space item, quantity, target
+	setvar VAR_SPECIAL_x8004, \item
+	setvar VAR_SPECIAL_x8005, \quantity
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	comparevartovalue VAR_SPECIAL_x800C, 0
+	gotoif eq, \target
+	.endm
+
+	.macro switch var
+	copyvar VAR_SPECIAL_x8008, \var
+	.endm
+
+	.macro case value, target
+	comparevartovalue VAR_SPECIAL_x8008, \value
+	gotoif eq, \target
+	.endm
+
 	; Movement commands
 
 	.macro step type, length

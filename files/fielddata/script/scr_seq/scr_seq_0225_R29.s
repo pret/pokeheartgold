@@ -60,11 +60,7 @@ scr_seq_R29_003:
 _00CB:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 4
-	setvar VAR_SPECIAL_x8004, 248
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _012E
+	goto_if_no_item_space ITEM_TWISTEDSPOON, 1, _012E
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1

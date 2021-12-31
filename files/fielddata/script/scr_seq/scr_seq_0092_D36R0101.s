@@ -1223,11 +1223,7 @@ scr_seq_D36R0101_011:
 	checkflag FLAG_UNK_080
 	gotoif TRUE, _11F2
 	npc_msg msg_0115_D36R0101_00006
-	setvar VAR_SPECIAL_x8004, 420
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FD
+	goto_if_no_item_space ITEM_HM01, 1, _11FD
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_080
 	clearflag FLAG_UNK_1AE
@@ -1271,11 +1267,7 @@ _1207:
 	checkflag FLAG_UNK_080
 	gotoif TRUE, _12BE
 	npc_msg msg_0115_D36R0101_00006
-	setvar VAR_SPECIAL_x8004, 420
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _12C9
+	goto_if_no_item_space ITEM_HM01, 1, _12C9
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_1AF
 	setflag FLAG_UNK_1AD
@@ -1850,7 +1842,7 @@ _1A51:
 	get_party_count VAR_TEMP_x4009
 	subvar VAR_TEMP_x4009, 1
 	setvar VAR_TEMP_x400A, 0
-	scrcmd_490 16393
+	scrcmd_490 VAR_TEMP_x4009
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	nickname_input VAR_TEMP_x4009, VAR_TEMP_x400A

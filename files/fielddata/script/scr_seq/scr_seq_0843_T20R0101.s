@@ -449,11 +449,7 @@ _05D9:
 _05EE:
 	gender_msgbox msg_0543_T20R0101_00047, msg_0543_T20R0101_00048
 _05F2:
-	setvar VAR_SPECIAL_x8004, 229
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _064E
+	goto_if_no_item_space ITEM_EVERSTONE, 1, _064E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_072
 	setflag FLAG_UNK_11A
@@ -512,11 +508,7 @@ _06D4:
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00019, msg_0543_T20R0101_00020
-	setvar VAR_SPECIAL_x8004, 17
-	setvar VAR_SPECIAL_x8005, 5
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0805
+	goto_if_no_item_space ITEM_POTION, 5, _0805
 	setvar VAR_SPECIAL_x8004, 17
 	setvar VAR_SPECIAL_x8005, 5
 	callstd 2008

@@ -30,7 +30,7 @@
 #define SAVE_UNK_24              24
 #define SAVE_UNK_25              25
 #define SAVE_UNK_26              26
-#define SAVE_UNK_27              27
+#define SAVE_MYSTERY_GIFT        27
 #define SAVE_UNK_28              28
 #define SAVE_UNK_29              29
 #define SAVE_EASY_CHAT           30

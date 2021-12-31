@@ -450,11 +450,7 @@ _060D:
 	apply_movement obj_R14_gswoman1, _0698
 	wait_movement
 	npc_msg msg_0351_R14_00002
-	setvar VAR_SPECIAL_x8004, 256
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _064E
+	goto_if_no_item_space ITEM_LUCKY_PUNCH, 1, _064E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_15C
 	npc_msg msg_0351_R14_00003

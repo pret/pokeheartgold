@@ -172,11 +172,7 @@ _01FF:
 
 _020A:
 	npc_msg msg_0483_T06_00007
-	setvar VAR_SPECIAL_x8004, 53
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0241
+	goto_if_no_item_space ITEM_PP_MAX, 1, _0241
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0F7
 	npc_msg msg_0483_T06_00008

@@ -646,11 +646,7 @@ scr_seq_T21_004:
 	checkflag FLAG_UNK_0F3
 	gotoif TRUE, _0903
 	npc_msg msg_0550_T21_00020
-	setvar VAR_SPECIAL_x8004, 243
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _090E
+	goto_if_no_item_space ITEM_MYSTIC_WATER, 1, _090E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0F3
 _0903:

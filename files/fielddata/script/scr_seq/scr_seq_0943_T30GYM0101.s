@@ -129,11 +129,7 @@ _018E:
 	checkflag FLAG_UNK_0DA
 	gotoif TRUE, _01C8
 	npc_msg msg_0631_T30GYM0101_00006
-	setvar VAR_SPECIAL_x8004, 386
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01D3
+	goto_if_no_item_space ITEM_TM59, 1, _01D3
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0DA
 	npc_msg msg_0631_T30GYM0101_00007

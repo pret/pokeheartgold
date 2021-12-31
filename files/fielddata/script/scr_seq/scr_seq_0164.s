@@ -40,11 +40,9 @@ _005C:
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00A5
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _00EE
+	switch VAR_SPECIAL_x800C
+	case 0, _00A5
+	case 1, _00EE
 	goto _00EE
 	.byte 0x02, 0x00
 _00A5:
@@ -55,11 +53,9 @@ _00A5:
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00A5
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _00EE
+	switch VAR_SPECIAL_x800C
+	case 0, _00A5
+	case 1, _00EE
 	goto _00EE
 	.byte 0x02, 0x00
 _00EE:
@@ -106,11 +102,9 @@ _014F:
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0198
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0144
+	switch VAR_SPECIAL_x800C
+	case 0, _0198
+	case 1, _0144
 	goto _0144
 	.byte 0x02, 0x00
 _0198:
@@ -121,11 +115,9 @@ _0198:
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0198
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0144
+	switch VAR_SPECIAL_x800C
+	case 0, _0198
+	case 1, _0144
 	goto _0144
 	.byte 0x02
 	.byte 0x00
@@ -169,11 +161,9 @@ _0265:
 	menu_item_add 16, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _02BE
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _02B3
+	switch VAR_SPECIAL_x800C
+	case 0, _02BE
+	case 1, _02B3
 	goto _0326
 	.byte 0x02, 0x00
 _02B3:
@@ -360,8 +350,8 @@ _04EC:
 	end
 
 _04F8:
-	scrcmd_490 16385
-	scrcmd_490 16386
+	scrcmd_490 VAR_TEMP_x4001
+	scrcmd_490 VAR_TEMP_x4002
 	comparevartovalue VAR_UNK_412F, 0
 	gotoif ne, _0516
 	npc_msg msg_0267_00029
@@ -402,11 +392,9 @@ _056B:
 	menu_item_add 25, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _05D7
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _05CC
+	switch VAR_SPECIAL_x800C
+	case 0, _05D7
+	case 1, _05CC
 	goto _05B9
 	.byte 0x02, 0x00
 _05B9:

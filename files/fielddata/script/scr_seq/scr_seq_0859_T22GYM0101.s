@@ -91,11 +91,7 @@ scr_seq_T22GYM0101_001:
 	goto _0126
 
 _0126:
-	setvar VAR_SPECIAL_x8004, 378
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _015E
+	goto_if_no_item_space ITEM_TM51, 1, _015E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_073
 	clearflag FLAG_UNK_2E5

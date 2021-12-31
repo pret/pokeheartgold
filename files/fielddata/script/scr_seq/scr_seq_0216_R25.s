@@ -383,11 +383,7 @@ scr_seq_R25_001:
 	checkflag FLAG_UNK_122
 	gotoif TRUE, _0558
 	npc_msg msg_0363_R25_00011
-	setvar VAR_SPECIAL_x8004, 92
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0563
+	goto_if_no_item_space ITEM_NUGGET, 1, _0563
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_122
 	npc_msg msg_0363_R25_00013

@@ -123,11 +123,7 @@ scr_seq_T27GYM0101_001:
 	goto _019B
 
 _019B:
-	setvar VAR_SPECIAL_x8004, 357
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CF
+	goto_if_no_item_space ITEM_TM30, 1, _01CF
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0A6
 	npc_msg msg_0614_T27GYM0101_00005

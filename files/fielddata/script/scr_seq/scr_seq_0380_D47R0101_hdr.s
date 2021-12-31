@@ -8,11 +8,11 @@
 	.byte 0
 
 scr_seq_D47R0101_map_scripts_2:
-	.short VAR_UNK_40E3, 1, 7
-	.short VAR_UNK_40E3, 3, 7
-	.short VAR_UNK_40E3, 2, 8
-	.short VAR_UNK_4057, 1, 9
-	.short VAR_UNK_4057, 4, 10
+	.short VAR_UNK_40E3, 1, _EV_scr_seq_D47R0101_006 + 1
+	.short VAR_UNK_40E3, 3, _EV_scr_seq_D47R0101_006 + 1
+	.short VAR_UNK_40E3, 2, _EV_scr_seq_D47R0101_007 + 1
+	.short VAR_UNK_4057, 1, _EV_scr_seq_D47R0101_008 + 1
+	.short VAR_UNK_4057, 4, _EV_scr_seq_D47R0101_009 + 1
 	.short 0
 
 	.balign 4, 0

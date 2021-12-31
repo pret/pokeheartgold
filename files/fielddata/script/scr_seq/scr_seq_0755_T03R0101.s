@@ -44,7 +44,7 @@ scr_seq_T03R0101_014:
 	scrcmd_546 0, 16384
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _00F4
-	scrcmd_490 16391
+	scrcmd_490 VAR_TEMP_x4007
 	setvar VAR_UNK_4083, 1
 	clearflag FLAG_UNK_308
 	setflag FLAG_UNK_317
@@ -65,7 +65,7 @@ _00E8:
 	goto _0104
 	.byte 0x02, 0x00
 _00F4:
-	scrcmd_490 16390
+	scrcmd_490 VAR_TEMP_x4006
 	setflag FLAG_UNK_308
 	goto _0104
 	.byte 0x02, 0x00
@@ -519,7 +519,7 @@ _07BF:
 	end
 
 _07C1:
-	scrcmd_490 16515
+	scrcmd_490 VAR_UNK_4083
 	scrcmd_344 0, 0
 	move_person 6, 26, 0, 7, 1
 	goto _07BF

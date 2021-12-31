@@ -58,15 +58,11 @@ _00B6:
 	menu_item_add 14, 255, 4
 	menu_exec
 _00E2:
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _01EF
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0287
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _056C
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0577
+	switch VAR_SPECIAL_x8004
+	case 1, _01EF
+	case 2, _0287
+	case 3, _056C
+	case 4, _0577
 	goto _0577
 
 _0122:

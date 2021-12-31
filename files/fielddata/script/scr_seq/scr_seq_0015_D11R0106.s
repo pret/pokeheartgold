@@ -110,11 +110,7 @@ scr_seq_D11R0106_000:
 	goto _0175
 
 _0175:
-	setvar VAR_SPECIAL_x8004, 377
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01AC
+	goto_if_no_item_space ITEM_TM50, 1, _01AC
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_17D
 	buffer_players_name 0

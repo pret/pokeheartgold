@@ -252,21 +252,21 @@ _0354:
 	return
 
 _03A8:
-	scrcmd_380 32780, 6
+	scrcmd_380 VAR_SPECIAL_x800C, 6
 	setvar VAR_SPECIAL_x8004, 0
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_403 32772, 1
 	return
 
 _03C2:
-	scrcmd_380 32780, 6
+	scrcmd_380 VAR_SPECIAL_x800C, 6
 	setvar VAR_SPECIAL_x8004, 18
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_403 32772, 1
 	return
 
 _03DC:
-	scrcmd_380 32780, 8
+	scrcmd_380 VAR_SPECIAL_x800C, 8
 	comparevartovar VAR_TEMP_x4001, VAR_SPECIAL_x800C
 	gotoif eq, _03DC
 	copyvar VAR_TEMP_x4001, VAR_SPECIAL_x800C

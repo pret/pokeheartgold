@@ -26,14 +26,11 @@ scr_seq_0071_002:
 	scrcmd_609
 	lockall
 	call _0090
-	scrcmd_380 32780, 4
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _00F2
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _010C
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0126
+	scrcmd_380 VAR_SPECIAL_x800C, 4
+	switch VAR_SPECIAL_x800C
+	case 1, _00F2
+	case 2, _010C
+	case 3, _0126
 	goto _00D8
 
 _0068:

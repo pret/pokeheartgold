@@ -13,21 +13,14 @@ scr_seq_T25R1007_000:
 	lockall
 	faceplayer
 	scrcmd_241 16659
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _0075
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _007F
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0089
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0093
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _009D
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _00A7
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00B1
+	switch VAR_UNK_4113
+	case 6, _0075
+	case 5, _007F
+	case 4, _0089
+	case 3, _0093
+	case 2, _009D
+	case 1, _00A7
+	case 0, _00B1
 	end
 
 _0075:
@@ -73,21 +66,14 @@ _00BC:
 	menu_item_add 126, 255, 7
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _05D7
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _04F8
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0419
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _033A
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _025B
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _017C
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _06B6
+	switch VAR_SPECIAL_x800C
+	case 6, _05D7
+	case 0, _04F8
+	case 1, _0419
+	case 2, _033A
+	case 3, _025B
+	case 4, _017C
+	case 5, _06B6
 	goto _0898
 
 _017C:
@@ -446,21 +432,14 @@ _07AB:
 	return
 
 _07C9:
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 6
-	gotoif eq, _082C
-	comparevartovalue VAR_SPECIAL_x8008, 5
-	gotoif eq, _0837
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0842
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _084D
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0858
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0863
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _086E
+	switch VAR_UNK_4113
+	case 6, _082C
+	case 5, _0837
+	case 4, _0842
+	case 3, _084D
+	case 2, _0858
+	case 1, _0863
+	case 0, _086E
 	end
 
 _082C:

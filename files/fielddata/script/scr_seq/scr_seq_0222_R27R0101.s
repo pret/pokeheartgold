@@ -27,11 +27,7 @@ scr_seq_R27R0101_000:
 
 _003E:
 	npc_msg msg_0370_R27R0101_00001
-	setvar VAR_SPECIAL_x8004, 364
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0075
+	goto_if_no_item_space ITEM_TM37, 1, _0075
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0E9
 _006A:

@@ -15,7 +15,7 @@
 	scrdef_end
 
 scr_seq_D24R0216_004:
-	scrcmd_490 16388
+	scrcmd_490 VAR_TEMP_x4004
 	comparevartovalue VAR_UNK_40FB, 10
 	gotoif eq, _0035
 	goto _0095
@@ -32,16 +32,16 @@ _0059:
 	scrcmd_698 1, 16389, 16391
 	comparevartovalue VAR_TEMP_x4007, 1
 	callif eq, _0097
-	scrcmd_490 16389
-	scrcmd_490 16391
+	scrcmd_490 VAR_TEMP_x4005
+	scrcmd_490 VAR_TEMP_x4007
 	end
 
 _0077:
 	scrcmd_698 2, 16389, 16390
 	comparevartovalue VAR_TEMP_x4006, 1
 	callif eq, _0097
-	scrcmd_490 16389
-	scrcmd_490 16390
+	scrcmd_490 VAR_TEMP_x4005
+	scrcmd_490 VAR_TEMP_x4006
 	end
 
 _0095:

@@ -10,6 +10,7 @@ _020FC224:
 
 	thumb_func_start ScrCmd_490
 ScrCmd_490: ; 0x0204EE20
+	; Essentially a nop
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -24,6 +25,7 @@ ScrCmd_490: ; 0x0204EE20
 
 	thumb_func_start ScrCmd_491
 ScrCmd_491: ; 0x0204EE38
+	; Essentially a nop
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword

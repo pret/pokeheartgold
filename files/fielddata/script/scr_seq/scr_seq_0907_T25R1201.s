@@ -110,13 +110,10 @@ _014D:
 	menu_item_add 130, 255, 1
 	menu_item_add 132, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0227
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _01A4
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0330
+	switch VAR_SPECIAL_x800C
+	case 0, _0227
+	case 1, _01A4
+	case 2, _0330
 	goto _0330
 	.byte 0x02, 0x00
 _01A4:
@@ -129,13 +126,10 @@ _01AF:
 	menu_item_add 134, 255, 1
 	menu_item_add 135, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0206
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0211
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _021C
+	switch VAR_SPECIAL_x800C
+	case 0, _0206
+	case 1, _0211
+	case 2, _021C
 	goto _021C
 	.byte 0x02, 0x00
 _0206:
@@ -194,7 +188,7 @@ _024D:
 	wait_fade
 	scrcmd_579
 	scrcmd_815 0
-	scrcmd_166 32780
+	scrcmd_166 VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_165 32772, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -373,11 +367,9 @@ _047C:
 	menu_item_add 34, 255, 1
 	menu_item_add 35, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _04D3
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _04F8
+	switch VAR_SPECIAL_x800C
+	case 0, _04D3
+	case 1, _04F8
 	goto _04CB
 	.byte 0x02, 0x00
 _04CB:
@@ -416,11 +408,9 @@ _0517:
 	menu_item_add 34, 255, 1
 	menu_item_add 35, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _056E
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0593
+	switch VAR_SPECIAL_x800C
+	case 0, _056E
+	case 1, _0593
 	goto _0566
 	.byte 0x02, 0x00
 _0566:

@@ -52,11 +52,7 @@ _00A6:
 	goto _00AF
 
 _00AF:
-	setvar VAR_SPECIAL_x8004, 328
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00E3
+	goto_if_no_item_space ITEM_TM01, 1, _00E3
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0BA
 	npc_msg msg_0574_T24GYM0101_00006

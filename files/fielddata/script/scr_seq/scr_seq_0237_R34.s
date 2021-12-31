@@ -707,11 +707,7 @@ scr_seq_R34_005:
 	setvar VAR_UNK_4097, 2
 _09A0:
 	npc_msg msg_0384_R34_00030
-	setvar VAR_SPECIAL_x8004, 271
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _09EE
+	goto_if_no_item_space ITEM_POWER_HERB, 1, _09EE
 	callstd std_give_item_verbose
 	setvar VAR_UNK_4097, 3
 	npc_msg msg_0384_R34_00032

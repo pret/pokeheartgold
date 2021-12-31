@@ -395,11 +395,9 @@ _0498:
 	menu_item_add 137, 255, 1
 	menu_item_add 138, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0520
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0520
+	switch VAR_SPECIAL_x8001
+	case 0, _0520
+	case 1, _0520
 	touchscreen_menu_show
 	goto _03CE
 

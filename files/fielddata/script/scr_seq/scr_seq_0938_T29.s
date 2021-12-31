@@ -218,11 +218,7 @@ scr_seq_T29_005:
 _02DC:
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 8
-	setvar VAR_SPECIAL_x8004, 241
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _033F
+	goto_if_no_item_space ITEM_BLACK_BELT, 1, _033F
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D5
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
@@ -308,11 +304,7 @@ scr_seq_T29_001:
 	checkflag FLAG_UNK_0C9
 	gotoif TRUE, _046C
 	scrcmd_052
-	setvar VAR_SPECIAL_x8004, 478
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _045C
+	goto_if_no_item_space ITEM_RED_SCALE, 1, _045C
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0C9
 	clearflag FLAG_UNK_28A

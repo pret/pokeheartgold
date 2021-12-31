@@ -141,11 +141,9 @@ _0113:
 	menu_item_add 14, 255, 1
 	menu_item_add 15, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _016A
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _018F
+	switch VAR_SPECIAL_x800C
+	case 0, _016A
+	case 1, _018F
 	goto _0162
 	.byte 0x02, 0x00
 _0162:

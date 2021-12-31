@@ -204,15 +204,11 @@ _0310:
 	wait_movement
 	npc_msg msg_0130_D44R0103_00008
 	scrcmd_049
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00A0
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _00DF
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _011E
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _015D
+	switch VAR_SPECIAL_x8004
+	case 0, _00A0
+	case 1, _00DF
+	case 2, _011E
+	case 3, _015D
 	goto _019C
 
 

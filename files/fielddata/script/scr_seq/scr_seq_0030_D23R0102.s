@@ -154,11 +154,7 @@ _016A:
 	gotoif ge, _01B5
 	npc_msg msg_0066_D23R0102_00010
 	closemsg
-	setvar VAR_SPECIAL_x8004, 472
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0539
+	goto_if_no_item_space ITEM_BLUE_CARD, 1, _0539
 	callstd std_give_item_verbose
 	closemsg
 	addvar VAR_UNK_4115, 1

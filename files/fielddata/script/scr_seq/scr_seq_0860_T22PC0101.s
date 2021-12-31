@@ -189,11 +189,9 @@ _028C:
 	menu_item_add 44, 255, 4
 	menu_exec
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 4
-	gotoif eq, _0331
-	comparevartovalue VAR_SPECIAL_x8008, 65534
-	gotoif eq, _0331
+	switch VAR_SPECIAL_x800C
+	case 4, _0331
+	case 65534, _0331
 	scrcmd_288 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
 	capitalize 0

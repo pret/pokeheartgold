@@ -169,34 +169,18 @@ _0241:
 	menu_item_add 126, 255, 4
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _028D
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0331
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _03D5
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0479
+	switch VAR_SPECIAL_x800C
+	case 0, _028D
+	case 1, _0331
+	case 2, _03D5
+	case 3, _0479
 	goto _051D
 
 _028D:
 	npc_msg msg_0512_T08_00011
-	setvar VAR_SPECIAL_x8004, 156
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 164
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 169
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
+	goto_if_no_item_space ITEM_PERSIM_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_RAZZ_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_POMEG_BERRY, 1, _052C
 	setvar VAR_SPECIAL_x8004, 156
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -211,21 +195,9 @@ _028D:
 
 _0331:
 	npc_msg msg_0512_T08_00012
-	setvar VAR_SPECIAL_x8004, 165
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 170
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 175
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
+	goto_if_no_item_space ITEM_BLUK_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_KELPSY_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_CORNN_BERRY, 1, _052C
 	setvar VAR_SPECIAL_x8004, 165
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -240,21 +212,9 @@ _0331:
 
 _03D5:
 	npc_msg msg_0512_T08_00013
-	setvar VAR_SPECIAL_x8004, 168
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 173
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 178
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
+	goto_if_no_item_space ITEM_PINAP_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_GREPA_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_NOMEL_BERRY, 1, _052C
 	setvar VAR_SPECIAL_x8004, 168
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
@@ -269,21 +229,9 @@ _03D5:
 
 _0479:
 	npc_msg msg_0512_T08_00014
-	setvar VAR_SPECIAL_x8004, 167
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 172
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
-	setvar VAR_SPECIAL_x8004, 182
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _052C
+	goto_if_no_item_space ITEM_WEPEAR_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_HONDEW_BERRY, 1, _052C
+	goto_if_no_item_space ITEM_DURIN_BERRY, 1, _052C
 	setvar VAR_SPECIAL_x8004, 167
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose

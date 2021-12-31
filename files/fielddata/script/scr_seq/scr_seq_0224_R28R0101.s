@@ -73,11 +73,7 @@ _00F4:
 _00FC:
 	wait_movement
 	npc_msg msg_0372_R28R0101_00001
-	setvar VAR_SPECIAL_x8004, 374
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0135
+	goto_if_no_item_space ITEM_TM47, 1, _0135
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_137
 _012A:

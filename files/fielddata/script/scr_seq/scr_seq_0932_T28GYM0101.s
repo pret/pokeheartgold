@@ -92,11 +92,7 @@ _012F:
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
 	npc_msg msg_0622_T28GYM0101_00003
-	setvar VAR_SPECIAL_x8004, 334
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _018E
+	goto_if_no_item_space ITEM_TM07, 1, _018E
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D2
 	npc_msg msg_0622_T28GYM0101_00004

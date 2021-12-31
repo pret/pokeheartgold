@@ -25,11 +25,7 @@ scr_seq_T26R0601_000:
 	end
 
 _0040:
-	setvar VAR_SPECIAL_x8004, 446
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0084
+	goto_if_no_item_space ITEM_GOOD_ROD, 1, _0084
 	npc_msg msg_0610_T26R0601_00001
 	waitbutton
 	callstd std_give_item_verbose

@@ -130,11 +130,9 @@ _01E5:
 	menu_item_add 14, 255, 1
 	menu_item_add 16, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0189
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0231
+	switch VAR_SPECIAL_x800C
+	case 0, _0189
+	case 1, _0231
 	goto _073D
 	.byte 0x02
 	.byte 0x00
@@ -173,7 +171,7 @@ _02C1:
 	scrcmd_176 403, 0, 32774, 32775, 32780
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	scrcmd_490 16395
+	scrcmd_490 VAR_TEMP_x400B
 	comparevartovalue VAR_TEMP_x400A, 1
 	callif eq, _07BA
 	goto _08A4
@@ -295,7 +293,7 @@ _04BE:
 	goto _04CC
 	.byte 0x02, 0x00
 _04CC:
-	scrcmd_490 16389
+	scrcmd_490 VAR_TEMP_x4005
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
@@ -314,13 +312,13 @@ _050C:
 	goto _0671
 	.byte 0x02, 0x00
 _051C:
-	scrcmd_490 16391
+	scrcmd_490 VAR_TEMP_x4007
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 479
 	gotoif ne, _0564
-	scrcmd_490 16384
-	scrcmd_490 32768
+	scrcmd_490 VAR_TEMP_x4000
+	scrcmd_490 VAR_SPECIAL_x8000
 	comparevartovar VAR_TEMP_x4000, VAR_SPECIAL_x8000
 	gotoif ne, _055E
 	release obj_partner_poke
@@ -386,7 +384,7 @@ _0649:
 	waitbutton
 	comparevartovalue VAR_TEMP_x400A, 1
 	callif eq, _07BA
-	scrcmd_490 16397
+	scrcmd_490 VAR_TEMP_x400D
 	goto _089C
 	.byte 0x02
 	.byte 0x00
@@ -485,7 +483,7 @@ _073D:
 	callif eq, _07B3
 	comparevartovalue VAR_TEMP_x400A, 1
 	callif eq, _07BA
-	scrcmd_490 16390
+	scrcmd_490 VAR_TEMP_x4006
 	goto _089C
 	.byte 0x02, 0x00
 _0797:
@@ -570,9 +568,8 @@ scr_seq_T11R0702_007:
 	menu_item_add 14, 255, 0
 	menu_item_add 19, 255, 1
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0231
+	switch VAR_SPECIAL_x800C
+	case 0, _0231
 	goto _089C
 	.byte 0x02, 0x00
 _088D:

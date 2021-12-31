@@ -133,11 +133,7 @@ _0185:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _01D0
 	npc_msg msg_0589_T25R0601_00001
-	setvar VAR_SPECIAL_x8004, 477
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01DB
+	goto_if_no_item_space ITEM_SQUIRTBOTTLE, 1, _01DB
 	callstd std_give_item_verbose
 	closemsg
 	releaseall
@@ -172,15 +168,11 @@ _01E5:
 	menu_item_add 217, 474, 4
 	menu_exec
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _033D
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0349
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0355
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0361
+	switch VAR_SPECIAL_x8000
+	case 0, _033D
+	case 1, _0349
+	case 2, _0355
+	case 3, _0361
 	npc_msg msg_0589_T25R0601_00010
 	goto _031F
 

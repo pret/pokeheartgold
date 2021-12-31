@@ -56,13 +56,10 @@ _005E:
 	menu_item_add 212, 255, 3
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00C2
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _00CE
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _00DA
+	switch VAR_SPECIAL_x8000
+	case 0, _00C2
+	case 1, _00CE
+	case 2, _00DA
 	npc_msg msg_0499_T07R0106_00007
 	goto _0205
 
@@ -128,7 +125,7 @@ _011C:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	scrcmd_380 32780, 64
+	scrcmd_380 VAR_SPECIAL_x800C, 64
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01E7
 	play_se SEQ_SE_DP_JIHANKI

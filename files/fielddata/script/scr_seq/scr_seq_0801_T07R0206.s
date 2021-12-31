@@ -36,13 +36,10 @@ _0058:
 	wait_movement
 _0062:
 	scrcmd_241 16659
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _0095
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _00A0
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _00AA
+	switch VAR_UNK_4113
+	case 3, _0095
+	case 2, _00A0
+	case 0, _00AA
 	end
 
 _0095:
@@ -68,13 +65,10 @@ _00B4:
 	menu_item_add 126, 255, 3
 	menu_exec
 	touchscreen_menu_show
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0120
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _019B
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0216
+	switch VAR_SPECIAL_x800C
+	case 0, _0120
+	case 1, _019B
+	case 2, _0216
 	goto _0322
 
 _0120:
@@ -167,13 +161,10 @@ _02A7:
 	return
 
 _02BB:
-	copyvar VAR_SPECIAL_x8008, VAR_UNK_4113
-	comparevartovalue VAR_SPECIAL_x8008, 3
-	gotoif eq, _02EA
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _02F3
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _02FC
+	switch VAR_UNK_4113
+	case 3, _02EA
+	case 2, _02F3
+	case 0, _02FC
 	end
 
 _02EA:

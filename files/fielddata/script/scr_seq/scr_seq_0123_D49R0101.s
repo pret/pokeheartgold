@@ -264,11 +264,9 @@ _0377:
 	menu_item_add 324, 255, 1
 	menu_item_add 323, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _03C7
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _03D7
+	switch VAR_SPECIAL_x800C
+	case 0, _03C7
+	case 1, _03D7
 	goto _03E4
 	.byte 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 _03C7:
@@ -322,11 +320,9 @@ _0443:
 	menu_item_add 324, 255, 1
 	menu_item_add 323, 255, 2
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0493
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _04E8
+	switch VAR_SPECIAL_x800C
+	case 0, _0493
+	case 1, _04E8
 	goto _051C
 	.byte 0x35, 0x00, 0x61
 	.byte 0x00, 0x02, 0x00
@@ -618,13 +614,10 @@ _0759:
 	menu_item_add 211, 255, 2
 	menu_item_add 212, 255, 3
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _07C0
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _07CC
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _07D8
+	switch VAR_SPECIAL_x8000
+	case 0, _07C0
+	case 1, _07CC
+	case 2, _07D8
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00091
 	goto _0A5C
@@ -754,7 +747,7 @@ _098D:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_give_item_verbose
-	scrcmd_380 32780, 64
+	scrcmd_380 VAR_SPECIAL_x800C, 64
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _09E6
 	play_se SEQ_SE_DP_JIHANKI
@@ -826,13 +819,10 @@ _0A7F:
 	menu_item_add 341, 255, 2
 	menu_item_add 212, 255, 3
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _07C0
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _07CC
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _07D8
+	switch VAR_SPECIAL_x8000
+	case 0, _07C0
+	case 1, _07CC
+	case 2, _07D8
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00091
 	goto _0A5C
@@ -851,13 +841,10 @@ _0AF3:
 	menu_item_add 96, 255, 2
 	menu_item_add 97, 255, 3
 	menu_exec
-	copyvar VAR_SPECIAL_x8008, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8008, 0
-	gotoif eq, _0B57
-	comparevartovalue VAR_SPECIAL_x8008, 1
-	gotoif eq, _0B65
-	comparevartovalue VAR_SPECIAL_x8008, 2
-	gotoif eq, _0B73
+	switch VAR_SPECIAL_x800C
+	case 0, _0B57
+	case 1, _0B65
+	case 2, _0B73
 	goto _0BA5
 	.byte 0x02, 0x00
 _0B57:
@@ -922,11 +909,7 @@ _0BFE:
 
 _0C09:
 	npc_msg msg_0138_D49R0101_00107
-	setvar VAR_SPECIAL_x8004, 50
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C42
+	goto_if_no_item_space ITEM_RARE_CANDY, 1, _0C42
 	callstd std_give_item_verbose
 	scrcmd_725 0, 100
 	setflag FLAG_UNK_152
@@ -976,11 +959,7 @@ _0C9F:
 
 _0CB7:
 	npc_msg msg_0138_D49R0101_00113
-	setvar VAR_SPECIAL_x8004, 50
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C42
+	goto_if_no_item_space ITEM_RARE_CANDY, 1, _0C42
 	callstd std_give_item_verbose
 	scrcmd_725 0, 100
 	setflag FLAG_UNK_153

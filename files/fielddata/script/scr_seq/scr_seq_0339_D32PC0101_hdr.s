@@ -4,7 +4,7 @@
 	.option alignment off
 
 	.byte 2
-	.short 5, 0
+	.short _EV_scr_seq_D32PC0101_004 + 1, 0
 	.byte 3
 	.short 9000, 0
 	.byte 1
