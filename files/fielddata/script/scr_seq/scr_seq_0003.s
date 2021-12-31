@@ -236,7 +236,7 @@ _0336:
 	end
 
 _034D:
-	scrcmd_238 32774
+	scrcmd_238 VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x8006, 1
 	gotoif eq, _0364
 	goto _023A

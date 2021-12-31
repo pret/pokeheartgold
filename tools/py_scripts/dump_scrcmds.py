@@ -395,18 +395,17 @@ class NormalScriptParser(ScriptParserBase):
             case _:
                 raise ValueError('unknown arg type: ' + size)
     
-    def parse_script(self, pc: int):
-        if self.labels[pc]:
-            return
+    def parse_script(self, pc: int, warn=True):
         self.pc_history.clear()
-        while pc < len(self.raw):
+        while not self.labels.get(pc, False) and pc < len(self.raw):
             if pc in self.labels:
                 self.labels[pc] = True
             self.pc_history.append(pc)
             cmd_i = int.from_bytes(self.raw[pc:pc + 2], 'little')
             if cmd_i >= len(self.commands):
-                warnings.warn(f'script parser hit illegal command {cmd_i} at position {pc} ({self.prefix})')
-                break
+                if warn:
+                    warnings.warn(f'script parser hit illegal command {cmd_i} at position {pc} ({self.prefix})')
+                return False
             pc += 2
             args = []
             cmd_struct = self.commands[cmd_i]
@@ -423,13 +422,15 @@ class NormalScriptParser(ScriptParserBase):
                         arg, pc = self.get_arg(size, pc)
                         args.append(arg)
             except (ValueError, KeyError):
-                warnings.warn(f'script parser hit illegal command args to {cmd_i} at position {self.pc_history[-1]} '
-                              f'(command {name}, arg {len(args)}, last good arg: {None if not args else args[-1]}) ({self.prefix})')
-                break
+                if warn:
+                    warnings.warn(f'script parser hit illegal command args to {cmd_i} at position {self.pc_history[-1]} '
+                                  f'(command {name}, arg {len(args)}, last good arg: {None if not args else args[-1]}) ({self.prefix})')
+                return True
             self.lines[self.pc_history[-1]] = (name, args, pc)
             if cmd_struct.get('is_abs_branch'):
                 break
-        
+        return False
+
     def parse_all(self):
         self.parse_header()
         self.make_events_json()
@@ -520,7 +521,7 @@ class NormalScriptParser(ScriptParserBase):
                         s += f'\t{name} ' + ', '.join(map(str, args)) + '\n'
                     else:
                         s += f'\t{name}\n'
-                    if nextpc in self.labels and self.commands_d[name].get('is_abs_branch'):
+                    if nextpc in self.labels and name in self.commands_d and self.commands_d[name].get('is_abs_branch'):
                         s += '\n'
                 if nextpc != lines[i + 1][0]:
                     s += self.make_gap(nextpc, lines[i + 1][0])

@@ -69,14 +69,14 @@ jobs:
         continue-on-error: true
 
       - name: Prepare error zip
-        if: ${{ job.status == 'failure' }}
+        if: ${{ !success() }}
         env:
           ZIPFILE_NAME: pokeheartgold-failure-${{ github.run_id }}.zip
         run: |
           zip -r $ZIPFILE_NAME build files sub/build
 
       - name: Post error zip
-        if: ${{ job.status == 'failure' }}
+        if: ${{ !success() }}
         uses: actions/upload-artifact@v2
         with:
           name: pokeheartgold-failure-${{ github.run_id }}.zip
