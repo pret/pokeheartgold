@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D51R0101.h",
   "bgs": [
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_D51R0101_003 + 1",
       "type": 1,
       "x": 12,
       "y": 9,
@@ -17,7 +17,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2DB",
-      "scr": "_EV_scr_seq_D51R0101_002",
+      "scr": "_EV_scr_seq_D51R0101_001 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,

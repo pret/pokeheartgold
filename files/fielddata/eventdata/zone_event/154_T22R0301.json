@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T22R0301.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T22R0301_002",
+      "scr": "_EV_scr_seq_T22R0301_001 + 1",
       "type": 0,
       "x": 6,
       "y": 2,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T22R0301_002",
+      "scr": "_EV_scr_seq_T22R0301_001 + 1",
       "type": 0,
       "x": 5,
       "y": 2,
@@ -18,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T22R0301_002",
+      "scr": "_EV_scr_seq_T22R0301_001 + 1",
       "type": 0,
       "x": 7,
       "y": 2,
@@ -26,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T22R0301_003",
+      "scr": "_EV_scr_seq_T22R0301_002 + 1",
       "type": 0,
       "x": 9,
       "y": 6,
@@ -41,7 +41,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_19B",
-      "scr": "_EV_scr_seq_T22R0301_001",
+      "scr": "_EV_scr_seq_T22R0301_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -58,7 +58,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T22R0301_005",
+      "scr": "_EV_scr_seq_T22R0301_004 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -75,7 +75,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T22R0301_006",
+      "scr": "_EV_scr_seq_T22R0301_005 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -92,7 +92,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T22R0301_007",
+      "scr": "_EV_scr_seq_T22R0301_006 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -109,7 +109,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 8,
+      "scr": "_EV_scr_seq_T22R0301_007 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -143,7 +143,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T22R0301_004",
+      "scr": "_EV_scr_seq_T22R0301_003 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

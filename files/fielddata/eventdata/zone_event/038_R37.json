@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R37.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R37_003",
+      "scr": "_EV_scr_seq_R37_002 + 1",
       "type": 1,
       "x": 388,
       "y": 198,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_R37_003 + 1",
       "type": 1,
       "x": 394,
       "y": 223,
@@ -76,7 +76,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_1C3",
-      "scr": "_EV_scr_seq_R37_002",
+      "scr": "_EV_scr_seq_R37_001 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

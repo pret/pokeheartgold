@@ -1,5 +1,5 @@
 #include "constants/scrcmd.h"
-#include "fielddata/script/scr_seq/event_0263.h"
+#include "../.h"
 #include "msgdata/msg/msg_0433.h"
 	.include "asm/macros/script.inc"
 
@@ -47,7 +47,7 @@ _0097:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _016B
-	scrcmd_557 1, 32780
+	scrcmd_557 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _015E
 	scrcmd_556 1
@@ -58,11 +58,11 @@ _0097:
 	scrcmd_815 0
 	scrcmd_117
 	closemsg
-	scrcmd_649
-	scrcmd_651 0, 16384, 16385
-	scrcmd_651 1, 16386, 16387
-	scrcmd_651 2, 16388, 16389
-	scrcmd_650
+	scratch_off_card
+	get_scratch_off_prize 0, VAR_TEMP_x4000, VAR_TEMP_x4001
+	get_scratch_off_prize 1, VAR_TEMP_x4002, VAR_TEMP_x4003
+	get_scratch_off_prize 2, VAR_TEMP_x4004, VAR_TEMP_x4005
+	scratch_off_card_end
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

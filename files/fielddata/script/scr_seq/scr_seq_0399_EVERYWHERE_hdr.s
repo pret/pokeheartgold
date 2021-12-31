@@ -1,5 +1,5 @@
 #include "constants/scrcmd.h"
-#include "fielddata/script/scr_seq/event_EVERYWHERE.h"
+#include "fielddata/script/scr_seq/event_D40R0106.h"
 	.rodata
 	.option alignment off
 

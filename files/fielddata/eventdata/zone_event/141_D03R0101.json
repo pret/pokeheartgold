@@ -28,7 +28,7 @@
   ],
   "objects": [
     {
-      "id": "obj_d03r0101.h_monstarball",
+      "id": "obj_EVERYWHERE_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -45,7 +45,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_monstarball_2",
+      "id": "obj_EVERYWHERE_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -62,7 +62,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_monstarball_3",
+      "id": "obj_EVERYWHERE_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -79,7 +79,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_monstarball_4",
+      "id": "obj_EVERYWHERE_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -96,7 +96,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_breakrock",
+      "id": "obj_EVERYWHERE_breakrock",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -113,7 +113,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_breakrock_2",
+      "id": "obj_EVERYWHERE_breakrock_2",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -130,7 +130,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_breakrock_3",
+      "id": "obj_EVERYWHERE_breakrock_3",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -147,7 +147,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_breakrock_4",
+      "id": "obj_EVERYWHERE_breakrock_4",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -164,7 +164,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_breakrock_5",
+      "id": "obj_EVERYWHERE_breakrock_5",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -181,7 +181,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_breakrock_6",
+      "id": "obj_EVERYWHERE_breakrock_6",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,
@@ -198,7 +198,7 @@
       "z": 0
     },
     {
-      "id": "obj_d03r0101.h_breakrock_7",
+      "id": "obj_EVERYWHERE_breakrock_7",
       "ovid": "SPRITE_BREAKROCK",
       "mvt": 0,
       "type": 0,

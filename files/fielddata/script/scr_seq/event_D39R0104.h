@@ -1,7 +1,9 @@
-#ifndef SCR_SEQ_D39R0104.H_H_
-#define SCR_SEQ_D39R0104.H_H_
+#ifndef SCR_SEQ_EVERYWHERE_H_
+#define SCR_SEQ_EVERYWHERE_H_
 
-#define obj_d39r0104.h_breakrock             0
-#define obj_d39r0104.h_monstarball           1
+#define _EV_scr_seq_EVERYWHERE_000           0
 
-#endif //SCR_SEQ_D39R0104.H_H_
+#define obj_EVERYWHERE_breakrock             0
+#define obj_EVERYWHERE_monstarball           1
+
+#endif //SCR_SEQ_EVERYWHERE_H_

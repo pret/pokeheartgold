@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R27.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R27_003",
+      "scr": "_EV_scr_seq_R27_002 + 1",
       "type": 1,
       "x": 739,
       "y": 399,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_R27_004 + 1",
       "type": 1,
       "x": 818,
       "y": 398,
@@ -49,7 +49,7 @@
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_R27_001",
+      "scr": "_EV_scr_seq_R27_000 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -239,7 +239,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_R27_002",
+      "scr": "_EV_scr_seq_R27_001 + 1",
       "x": 734,
       "y": 402,
       "w": 1,

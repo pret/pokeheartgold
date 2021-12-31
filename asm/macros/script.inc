@@ -3656,15 +3656,15 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_649
+	.macro scratch_off_card
 	.short 649
 	.endm
 
-	.macro scrcmd_650
+	.macro scratch_off_card_end
 	.short 650
 	.endm
 
-	.macro scrcmd_651 arg0, arg1, arg2
+	.macro get_scratch_off_prize arg0, arg1, arg2
 	.short 651
 	.short \arg0
 	.short \arg1

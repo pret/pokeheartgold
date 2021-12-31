@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T20R0101.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T20R0101_006",
+      "scr": "_EV_scr_seq_T20R0101_005 + 1",
       "type": 0,
       "x": 1,
       "y": 10,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_006",
+      "scr": "_EV_scr_seq_T20R0101_005 + 1",
       "type": 0,
       "x": 2,
       "y": 10,
@@ -18,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_007",
+      "scr": "_EV_scr_seq_T20R0101_006 + 1",
       "type": 0,
       "x": 7,
       "y": 10,
@@ -26,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_007",
+      "scr": "_EV_scr_seq_T20R0101_006 + 1",
       "type": 0,
       "x": 8,
       "y": 10,
@@ -34,7 +34,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_008",
+      "scr": "_EV_scr_seq_T20R0101_007 + 1",
       "type": 0,
       "x": 9,
       "y": 10,
@@ -42,7 +42,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_008",
+      "scr": "_EV_scr_seq_T20R0101_007 + 1",
       "type": 0,
       "x": 10,
       "y": 10,
@@ -50,7 +50,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_009",
+      "scr": "_EV_scr_seq_T20R0101_008 + 1",
       "type": 0,
       "x": 11,
       "y": 10,
@@ -58,7 +58,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_009",
+      "scr": "_EV_scr_seq_T20R0101_008 + 1",
       "type": 0,
       "x": 12,
       "y": 10,
@@ -66,7 +66,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_010",
+      "scr": "_EV_scr_seq_T20R0101_009 + 1",
       "type": 0,
       "x": 6,
       "y": 3,
@@ -74,7 +74,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_013",
+      "scr": "_EV_scr_seq_T20R0101_012 + 1",
       "type": 0,
       "x": 8,
       "y": 4,
@@ -82,7 +82,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_014",
+      "scr": "_EV_scr_seq_T20R0101_013 + 1",
       "type": 0,
       "x": 4,
       "y": 3,
@@ -97,7 +97,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_ELM",
-      "scr": "_EV_scr_seq_T20R0101_001",
+      "scr": "_EV_scr_seq_T20R0101_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -114,7 +114,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_OFFICER",
-      "scr": "_EV_scr_seq_T20R0101_000",
+      "scr": 0,
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -131,7 +131,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_AIDE",
-      "scr": "_EV_scr_seq_T20R0101_002",
+      "scr": "_EV_scr_seq_T20R0101_001 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -148,7 +148,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ELMS_LAB_FRIEND",
-      "scr": "_EV_scr_seq_T20R0101_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -171,7 +171,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_T20R0101_004",
+      "scr": "_EV_scr_seq_T20R0101_003 + 1",
       "x": 3,
       "y": 11,
       "w": 4,
@@ -181,7 +181,7 @@
       "var": "VAR_SCENE_ELMS_LAB"
     },
     {
-      "scr": "_EV_scr_seq_T20R0101_012",
+      "scr": "_EV_scr_seq_T20R0101_011 + 1",
       "x": 3,
       "y": 10,
       "w": 4,

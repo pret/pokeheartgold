@@ -33,7 +33,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D42R0101_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

@@ -20,7 +20,7 @@
   ],
   "objects": [
     {
-      "id": "obj_d11r0103.h_boarder",
+      "id": "obj_EVERYWHERE_boarder",
       "ovid": "SPRITE_BOARDER",
       "mvt": 14,
       "type": 1,
@@ -37,7 +37,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0103.h_boarder_2",
+      "id": "obj_EVERYWHERE_boarder_2",
       "ovid": "SPRITE_BOARDER",
       "mvt": 20,
       "type": 1,
@@ -54,7 +54,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0103.h_skierw",
+      "id": "obj_EVERYWHERE_skierw",
       "ovid": "SPRITE_SKIERW",
       "mvt": 16,
       "type": 1,
@@ -71,7 +71,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0103.h_monstarball",
+      "id": "obj_EVERYWHERE_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

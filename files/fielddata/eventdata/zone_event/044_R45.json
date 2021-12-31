@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R45.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R45_001",
+      "scr": "_EV_scr_seq_R45_000 + 1",
       "type": 1,
       "x": 664,
       "y": 199,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_R45_004 + 1",
       "type": 1,
       "x": 652,
       "y": 199,
@@ -262,7 +262,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_R45_004",
+      "scr": "_EV_scr_seq_R45_003 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -279,7 +279,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_R45_002",
+      "scr": "_EV_scr_seq_R45_001 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

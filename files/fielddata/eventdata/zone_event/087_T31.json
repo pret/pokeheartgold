@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_T31_002 + 1",
       "type": 1,
       "x": 810,
       "y": 262,
@@ -42,7 +42,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_T31_001",
+      "scr": "_EV_scr_seq_T31_000 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

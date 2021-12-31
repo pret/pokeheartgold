@@ -4122,7 +4122,7 @@ sub_02092B40: ; 0x02092B40
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _02092B52
 	mov r0, #0x18
@@ -10745,7 +10745,7 @@ _02095E72:
 	b _02095EF4
 _02095E9E:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02095EF4
 	mov r0, #2
@@ -11075,7 +11075,7 @@ _020960C0:
 	b _020961CE
 _0209612C:
 	ldr r0, [sp, #0x1c]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020961CE
 	mov r0, #3
@@ -11252,7 +11252,7 @@ _02096284:
 	b _02096314
 _020962A2:
 	ldr r0, [r4]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02096314
 	ldr r0, [r4]
@@ -13238,7 +13238,7 @@ sub_02097108: ; 0x02097108
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x28]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02097142
 	ldr r0, [r4, #0x24]
@@ -13272,7 +13272,7 @@ sub_02097148: ; 0x02097148
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x28]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020971A4
 	ldr r0, [r5, #0x2c]
@@ -13323,7 +13323,7 @@ sub_020971AC: ; 0x020971AC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x28]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020971CE
 	ldr r0, [r4, #0x30]
@@ -13345,7 +13345,7 @@ sub_020971D4: ; 0x020971D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x28]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020971E6
 	mov r0, #5
@@ -14148,7 +14148,7 @@ _02097780:
 	b _020977C6
 _02097790:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020977C6
 	ldr r0, [r4, #8]
@@ -14293,7 +14293,7 @@ _020978A2:
 	b _020978C4
 _020978AC:
 	add r0, r4, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _020978C4
 	mov r0, #0
@@ -14531,7 +14531,7 @@ _02097A72:
 	b _02097A94
 _02097A7C:
 	add r0, r4, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _02097A94
 	mov r0, #0
@@ -14884,7 +14884,7 @@ _02097CFC:
 	b _02097D36
 _02097D14:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02097D36
 	ldr r0, [r4, #8]
@@ -14992,7 +14992,7 @@ _02097DD0:
 	b _02097E46
 _02097DEC:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02097E46
 	ldr r0, [r4]

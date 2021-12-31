@@ -1,11 +1,13 @@
-#ifndef SCR_SEQ_D43R0101.H_H_
-#define SCR_SEQ_D43R0101.H_H_
+#ifndef SCR_SEQ_EVERYWHERE_H_
+#define SCR_SEQ_EVERYWHERE_H_
 
-#define obj_d43r0101.h_monstarball           0
-#define obj_d43r0101.h_monstarball_2         1
-#define obj_d43r0101.h_monstarball_3         2
-#define obj_d43r0101.h_rock                  3
-#define obj_d43r0101.h_rock_2                4
-#define obj_d43r0101.h_rock_3                5
+#define _EV_scr_seq_EVERYWHERE_000           0
 
-#endif //SCR_SEQ_D43R0101.H_H_
+#define obj_EVERYWHERE_monstarball           0
+#define obj_EVERYWHERE_monstarball_2         1
+#define obj_EVERYWHERE_monstarball_3         2
+#define obj_EVERYWHERE_rock                  3
+#define obj_EVERYWHERE_rock_2                4
+#define obj_EVERYWHERE_rock_3                5
+
+#endif //SCR_SEQ_EVERYWHERE_H_

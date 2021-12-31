@@ -1,6 +1,8 @@
-#ifndef SCR_SEQ_D41R0104.H_H_
-#define SCR_SEQ_D41R0104.H_H_
+#ifndef SCR_SEQ_EVERYWHERE_H_
+#define SCR_SEQ_EVERYWHERE_H_
 
-#define obj_d41r0104.h_monstarball           0
+#define _EV_scr_seq_EVERYWHERE_000           0
 
-#endif //SCR_SEQ_D41R0104.H_H_
+#define obj_EVERYWHERE_monstarball           0
+
+#endif //SCR_SEQ_EVERYWHERE_H_

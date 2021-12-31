@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T01R0301.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T01R0301_006",
+      "scr": "_EV_scr_seq_T01R0301_005 + 1",
       "type": 0,
       "x": 5,
       "y": 3,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 1,
       "y": 11,
@@ -18,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 2,
       "y": 11,
@@ -26,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 3,
       "y": 11,
@@ -34,7 +34,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 4,
       "y": 11,
@@ -42,7 +42,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 11,
       "y": 11,
@@ -50,7 +50,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 12,
       "y": 11,
@@ -58,7 +58,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 13,
       "y": 11,
@@ -66,7 +66,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 14,
       "y": 11,
@@ -74,7 +74,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_008",
+      "scr": "_EV_scr_seq_T01R0301_007 + 1",
       "type": 0,
       "x": 9,
       "y": 3,
@@ -82,7 +82,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_010",
+      "scr": "_EV_scr_seq_T01R0301_009 + 1",
       "type": 0,
       "x": 7,
       "y": 3,
@@ -90,7 +90,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_009",
+      "scr": "_EV_scr_seq_T01R0301_008 + 1",
       "type": 0,
       "x": 8,
       "y": 3,
@@ -98,7 +98,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 11,
       "y": 3,
@@ -106,7 +106,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 12,
       "y": 3,
@@ -114,7 +114,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 13,
       "y": 3,
@@ -122,7 +122,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T01R0301_005",
+      "scr": "_EV_scr_seq_T01R0301_004 + 1",
       "type": 0,
       "x": 14,
       "y": 3,
@@ -137,7 +137,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T01R0301_001",
+      "scr": "_EV_scr_seq_T01R0301_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -154,7 +154,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T01R0301_002",
+      "scr": "_EV_scr_seq_T01R0301_001 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -171,7 +171,7 @@
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T01R0301_003",
+      "scr": "_EV_scr_seq_T01R0301_002 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -188,7 +188,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T01R0301_004",
+      "scr": "_EV_scr_seq_T01R0301_003 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -205,7 +205,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_300",
-      "scr": "_EV_scr_seq_T01R0301_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -222,7 +222,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2FF",
-      "scr": "_EV_scr_seq_T01R0301_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -239,7 +239,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2FE",
-      "scr": "_EV_scr_seq_T01R0301_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

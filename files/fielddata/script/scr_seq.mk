@@ -11,7 +11,10 @@ SCRIPT_HEADS := $(SCRIPT_SRCS:%.s=%.h)
 MSGDATA_MSG_DIR := files/msgdata/msg
 
 define script_find_gmm_h
-$(1): files/$(shell grep -m1 "msgdata/msg/.*\.h" $(1:%.bin=%.s) | cut -d'"' -f2)
+GMM_H := $(shell head -n5 $(1:%.bin=%.s) | grep -m1 "msgdata/msg/.*\.h" | cut -d'"' -f2)
+ifneq ($(GMM_H),)
+$(1): files/$(GMM_H)
+endif
 endef
 
 $(foreach binfile,$(SCRIPT_BINS),$(eval $(call script_find_gmm_h,$(binfile))))

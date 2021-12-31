@@ -1,5 +1,5 @@
 #include "constants/scrcmd.h"
-#include "fielddata/script/scr_seq/event_0001.h"
+#include "../.h"
 #include "msgdata/msg/msg_0020.h"
 	.include "asm/macros/script.inc"
 

@@ -1,9 +1,11 @@
-#ifndef SCR_SEQ_T28GYM0102.H_H_
-#define SCR_SEQ_T28GYM0102.H_H_
+#ifndef SCR_SEQ_EVERYWHERE_H_
+#define SCR_SEQ_EVERYWHERE_H_
 
-#define obj_t28gym0102.h_ice                 0
-#define obj_t28gym0102.h_ice_2               1
-#define obj_t28gym0102.h_skierw              2
-#define obj_t28gym0102.h_boarder             3
+#define _EV_scr_seq_EVERYWHERE_000           0
 
-#endif //SCR_SEQ_T28GYM0102.H_H_
+#define obj_EVERYWHERE_ice                   0
+#define obj_EVERYWHERE_ice_2                 1
+#define obj_EVERYWHERE_skierw                2
+#define obj_EVERYWHERE_boarder               3
+
+#endif //SCR_SEQ_EVERYWHERE_H_

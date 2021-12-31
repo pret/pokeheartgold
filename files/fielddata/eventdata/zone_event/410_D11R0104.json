@@ -20,7 +20,7 @@
   ],
   "objects": [
     {
-      "id": "obj_d11r0104.h_rock",
+      "id": "obj_EVERYWHERE_rock",
       "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,
@@ -37,7 +37,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_ice",
+      "id": "obj_EVERYWHERE_ice",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -54,7 +54,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_ice_2",
+      "id": "obj_EVERYWHERE_ice_2",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -71,7 +71,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_ice_3",
+      "id": "obj_EVERYWHERE_ice_3",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -88,7 +88,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_ice_4",
+      "id": "obj_EVERYWHERE_ice_4",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -105,7 +105,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_ice_5",
+      "id": "obj_EVERYWHERE_ice_5",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -122,7 +122,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_ice_6",
+      "id": "obj_EVERYWHERE_ice_6",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -139,7 +139,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_monstarball",
+      "id": "obj_EVERYWHERE_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -156,7 +156,7 @@
       "z": 0
     },
     {
-      "id": "obj_d11r0104.h_monstarball_2",
+      "id": "obj_EVERYWHERE_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,

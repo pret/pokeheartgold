@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R03.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R03_001",
+      "scr": "_EV_scr_seq_R03_000 + 1",
       "type": 1,
       "x": 1168,
       "y": 121,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_R03_004 + 1",
       "type": 0,
       "x": 1093,
       "y": 115,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R03_003",
+      "scr": "_EV_scr_seq_R03_002 + 1",
       "type": 0,
       "x": 1094,
       "y": 121,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R03_004",
+      "scr": "_EV_scr_seq_R03_003 + 1",
       "type": 0,
       "x": 1102,
       "y": 115,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R03_002",
+      "scr": "_EV_scr_seq_R03_001 + 1",
       "type": 0,
       "x": 1100,
       "y": 122,

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_W20.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_W20_001",
+      "scr": "_EV_scr_seq_W20_000 + 1",
       "type": 1,
       "x": 1125,
       "y": 502,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_W20_001 + 1",
       "type": 1,
       "x": 1115,
       "y": 496,

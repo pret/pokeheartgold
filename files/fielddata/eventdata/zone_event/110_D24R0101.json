@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D24R0101.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_D24R0101_003",
+      "scr": "_EV_scr_seq_D24R0101_002 + 1",
       "type": 1,
       "x": 429,
       "y": 266,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0101_001",
+      "scr": "_EV_scr_seq_D24R0101_000 + 1",
       "type": 1,
       "x": 429,
       "y": 286,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0101_002",
+      "scr": "_EV_scr_seq_D24R0101_001 + 1",
       "type": 1,
       "x": 440,
       "y": 287,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0101_004",
+      "scr": "_EV_scr_seq_D24R0101_003 + 1",
       "type": 1,
       "x": 443,
       "y": 292,
@@ -217,7 +217,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_D24R0101_005",
+      "scr": "_EV_scr_seq_D24R0101_004 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -234,7 +234,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2E6",
-      "scr": "_EV_scr_seq_D24R0101_000",
+      "scr": 0,
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -369,7 +369,7 @@
   ],
   "coords": [
     {
-      "scr": 8,
+      "scr": "_EV_scr_seq_D24R0101_007 + 1",
       "x": 441,
       "y": 286,
       "w": 1,

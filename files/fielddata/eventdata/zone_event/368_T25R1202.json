@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T25R1202.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T25R1202_010",
+      "scr": "_EV_scr_seq_T25R1202_009 + 1",
       "type": 0,
       "x": 15,
       "y": 3,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T25R1202_011",
+      "scr": "_EV_scr_seq_T25R1202_010 + 1",
       "type": 0,
       "x": 15,
       "y": 13,
@@ -18,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T25R1202_012",
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
       "type": 0,
       "x": 6,
       "y": 7,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T25R1202_012",
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
       "type": 0,
       "x": 6,
       "y": 8,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 13,
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
       "type": 0,
       "x": 9,
       "y": 14,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 13,
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
       "type": 0,
       "x": 9,
       "y": 13,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 13,
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
       "type": 0,
       "x": 6,
       "y": 13,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": 13,
+      "scr": "_EV_scr_seq_T25R1202_012 + 1",
       "type": 0,
       "x": 6,
       "y": 14,
@@ -66,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T25R1202_012",
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
       "type": 0,
       "x": 9,
       "y": 8,
@@ -74,7 +74,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T25R1202_012",
+      "scr": "_EV_scr_seq_T25R1202_011 + 1",
       "type": 0,
       "x": 9,
       "y": 7,
@@ -89,7 +89,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_003",
+      "scr": "_EV_scr_seq_T25R1202_002 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -106,7 +106,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_009",
+      "scr": "_EV_scr_seq_T25R1202_008 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -123,7 +123,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_006",
+      "scr": "_EV_scr_seq_T25R1202_005 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -140,7 +140,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_007",
+      "scr": "_EV_scr_seq_T25R1202_006 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -157,7 +157,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_008",
+      "scr": "_EV_scr_seq_T25R1202_007 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -174,7 +174,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_005",
+      "scr": "_EV_scr_seq_T25R1202_004 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -191,7 +191,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_002",
+      "scr": "_EV_scr_seq_T25R1202_001 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -208,7 +208,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_004",
+      "scr": "_EV_scr_seq_T25R1202_003 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -225,7 +225,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T25R1202_001",
+      "scr": "_EV_scr_seq_T25R1202_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

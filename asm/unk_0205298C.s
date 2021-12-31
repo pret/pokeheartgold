@@ -218,7 +218,7 @@ _02052AFC:
 	b _02052CA8
 _02052B20:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02052B8C
 	mov r1, #4
@@ -388,7 +388,7 @@ _02052C5E:
 	b _02052CA8
 _02052C86:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02052CA8
 	add r0, r5, #0

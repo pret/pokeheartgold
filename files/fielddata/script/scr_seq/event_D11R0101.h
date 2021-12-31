@@ -1,5 +1,7 @@
-#ifndef SCR_SEQ_D11R0101.H_H_
-#define SCR_SEQ_D11R0101.H_H_
+#ifndef SCR_SEQ_EVERYWHERE_H_
+#define SCR_SEQ_EVERYWHERE_H_
+
+#define _EV_scr_seq_EVERYWHERE_000           0
 
 
-#endif //SCR_SEQ_D11R0101.H_H_
+#endif //SCR_SEQ_EVERYWHERE_H_

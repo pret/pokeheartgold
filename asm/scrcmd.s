@@ -698,9 +698,9 @@ gScriptCmdTable:
 	.word ScrCmd_646                                    ; 646
 	.word ScrCmd_647                                    ; 647
 	.word ScrCmd_648                                    ; 648
-	.word ScrCmd_649                                    ; 649
-	.word ScrCmd_650                                    ; 650
-	.word ScrCmd_651                                    ; 651
+	.word ScrCmd_ScratchOffCard                                    ; 649
+	.word ScrCmd_ScratchOffCardEnd                                    ; 650
+	.word ScrCmd_GetScratchOffPrize                                    ; 651
 	.word ScrCmd_652                                    ; 652
 	.word ScrCmd_653                                    ; 653
 	.word ScrCmd_654                                    ; 654
@@ -4701,13 +4701,13 @@ ScrCmd_349: ; 0x02042574
 	mov r0, #0x20
 	bl sub_0203E580
 	str r0, [r4]
-	ldr r1, _020425A0 ; =sub_020429F8
+	ldr r1, _020425A0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_020425A0: .word sub_020429F8
+_020425A0: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_349
 
 	thumb_func_start ScrCmd_566
@@ -4725,13 +4725,13 @@ ScrCmd_566: ; 0x020425A4
 	mov r0, #0x20
 	bl sub_0203E5A4
 	str r0, [r4]
-	ldr r1, _020425D0 ; =sub_020429F8
+	ldr r1, _020425D0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_020425D0: .word sub_020429F8
+_020425D0: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_566
 
 	thumb_func_start ScrCmd_350
@@ -5102,14 +5102,14 @@ _020428B6:
 	add r2, r7, #0
 	bl sub_0203FB94
 _020428C4:
-	ldr r1, _020428D4 ; =sub_020429F8
+	ldr r1, _020428D4 ; =ScrNative_WaitApplication
 	str r0, [r4]
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_020428D4: .word sub_020429F8
+_020428D4: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_352
 
 	thumb_func_start ScrCmd_GetPhoneBookRematch
@@ -5194,7 +5194,7 @@ sub_02042974: ; 0x02042974
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _02042992
 	mov r0, #0
@@ -5218,7 +5218,7 @@ sub_020429A0: ; 0x020429A0
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _020429BE
 	mov r0, #0
@@ -5256,12 +5256,12 @@ _020429F0:
 	pop {r4, pc}
 	thumb_func_end sub_020429D4
 
-	thumb_func_start sub_020429F8
-sub_020429F8: ; 0x020429F8
+	thumb_func_start ScrNative_WaitApplication
+ScrNative_WaitApplication: ; 0x020429F8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02042A0A
 	mov r0, #1
@@ -5270,7 +5270,7 @@ _02042A0A:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020429F8
+	thumb_func_end ScrNative_WaitApplication
 
 	thumb_func_start ScrCmd_150
 ScrCmd_150: ; 0x02042A10
@@ -5821,13 +5821,13 @@ ScrCmd_450: ; 0x02042E2C
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0203F964
-	ldr r1, _02042E44 ; =sub_020429F8
+	ldr r1, _02042E44 ; =ScrNative_WaitApplication
 	add r0, r4, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02042E44: .word sub_020429F8
+_02042E44: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_450
 
 	thumb_func_start ScrCmd_156
@@ -5973,13 +5973,13 @@ ScrCmd_159: ; 0x02042F5C
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0203F4C8
-	ldr r1, _02042F74 ; =sub_020429F8
+	ldr r1, _02042F74 ; =ScrNative_WaitApplication
 	add r0, r4, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02042F74: .word sub_020429F8
+_02042F74: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_159
 
 	thumb_func_start ScrCmd_160
@@ -6128,7 +6128,7 @@ ScrCmd_165: ; 0x02043044
 	ldr r0, [r0]
 	add r1, r6, #0
 	bl sub_0203F844
-	ldr r1, _020430A0 ; =sub_020429F8
+	ldr r1, _020430A0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	b _0204309C
@@ -6139,7 +6139,7 @@ _0204309C:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_020430A0: .word sub_020429F8
+_020430A0: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_165
 
 	thumb_func_start ScrCmd_166
@@ -6204,13 +6204,13 @@ _02043106:
 	add r1, r4, #0
 	bl sub_0203E460
 	str r0, [r6]
-	ldr r1, _02043120 ; =sub_020429F8
+	ldr r1, _02043120 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02043120: .word sub_020429F8
+_02043120: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_333
 
 	thumb_func_start ScrCmd_334
@@ -8013,13 +8013,13 @@ ScrCmd_252: ; 0x02043F54
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0203F818
-	ldr r1, _02043F6C ; =sub_020429F8
+	ldr r1, _02043F6C ; =ScrNative_WaitApplication
 	add r0, r4, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02043F6C: .word sub_020429F8
+_02043F6C: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_252
 
 	thumb_func_start ScrCmd_253
@@ -12190,13 +12190,13 @@ ScrCmd_551: ; 0x02045F80
 	add r2, r6, #0
 	bl sub_0203E5D0
 	str r0, [r4]
-	ldr r1, _02045FC0 ; =sub_020429F8
+	ldr r1, _02045FC0 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02045FC0: .word sub_020429F8
+_02045FC0: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_551
 
 	thumb_func_start ScrCmd_552
@@ -12906,8 +12906,8 @@ ScrCmd_631: ; 0x020464E0
 _02046550: .word sub_02042974
 	thumb_func_end ScrCmd_631
 
-	thumb_func_start ScrCmd_649
-ScrCmd_649: ; 0x02046554
+	thumb_func_start ScrCmd_ScratchOffCard
+ScrCmd_ScratchOffCard: ; 0x02046554
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -12919,19 +12919,19 @@ ScrCmd_649: ; 0x02046554
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0x20
-	bl sub_0203FB60
+	bl ScratchOffCards_Create
 	str r0, [r4]
-	ldr r1, _02046580 ; =sub_020429F8
+	ldr r1, _02046580 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02046580: .word sub_020429F8
-	thumb_func_end ScrCmd_649
+_02046580: .word ScrNative_WaitApplication
+	thumb_func_end ScrCmd_ScratchOffCard
 
-	thumb_func_start ScrCmd_650
-ScrCmd_650: ; 0x02046584
+	thumb_func_start ScrCmd_ScratchOffCardEnd
+ScrCmd_ScratchOffCardEnd: ; 0x02046584
 	push {r4, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -12944,10 +12944,10 @@ ScrCmd_650: ; 0x02046584
 	str r0, [r4]
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_650
+	thumb_func_end ScrCmd_ScratchOffCardEnd
 
-	thumb_func_start ScrCmd_651
-ScrCmd_651: ; 0x020465A0
+	thumb_func_start ScrCmd_GetScratchOffPrize
+ScrCmd_GetScratchOffPrize: ; 0x020465A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -12987,7 +12987,7 @@ ScrCmd_651: ; 0x020465A0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_651
+	thumb_func_end ScrCmd_GetScratchOffPrize
 
 	thumb_func_start ScrCmd_662
 ScrCmd_662: ; 0x020465FC
@@ -13031,7 +13031,7 @@ ScrCmd_662: ; 0x020465FC
 	add r1, r7, #0
 	add r2, r6, #0
 	bl sub_0203FC14
-	ldr r1, _02046670 ; =sub_020429F8
+	ldr r1, _02046670 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	b _0204666A
@@ -13042,7 +13042,7 @@ _0204666A:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02046670: .word sub_020429F8
+_02046670: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_662
 
 	thumb_func_start ScrCmd_663

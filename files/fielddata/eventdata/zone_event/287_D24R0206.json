@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D24R0206.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_D24R0206_001",
+      "scr": "_EV_scr_seq_D24R0206_000 + 1",
       "type": 0,
       "x": 6,
       "y": 6,
@@ -17,7 +17,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_21F",
-      "scr": "_EV_scr_seq_D24R0206_002",
+      "scr": "_EV_scr_seq_D24R0206_001 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -34,7 +34,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_220",
-      "scr": "_EV_scr_seq_D24R0206_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -64,7 +64,7 @@
   ],
   "coords": [
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_D24R0206_003 + 1",
       "x": 6,
       "y": 7,
       "w": 1,

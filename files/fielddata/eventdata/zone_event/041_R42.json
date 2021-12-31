@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R42.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R42_003",
+      "scr": "_EV_scr_seq_R42_002 + 1",
       "type": 1,
       "x": 427,
       "y": 177,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R42_004",
+      "scr": "_EV_scr_seq_R42_003 + 1",
       "type": 1,
       "x": 432,
       "y": 171,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R42_005",
+      "scr": "_EV_scr_seq_R42_004 + 1",
       "type": 1,
       "x": 491,
       "y": 172,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 6,
+      "scr": "_EV_scr_seq_R42_005 + 1",
       "type": 1,
       "x": 504,
       "y": 172,
@@ -219,7 +219,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_29D",
-      "scr": "_EV_scr_seq_R42_000",
+      "scr": 0,
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -236,7 +236,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_29E",
-      "scr": "_EV_scr_seq_R42_000",
+      "scr": 0,
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -253,7 +253,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2A3",
-      "scr": "_EV_scr_seq_R42_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -311,7 +311,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_R42_001",
+      "scr": "_EV_scr_seq_R42_000 + 1",
       "x": 434,
       "y": 172,
       "w": 1,
@@ -321,7 +321,7 @@
       "var": "VAR_UNK_4091"
     },
     {
-      "scr": "_EV_scr_seq_R42_002",
+      "scr": "_EV_scr_seq_R42_001 + 1",
       "x": 460,
       "y": 181,
       "w": 1,

@@ -7,7 +7,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_R22R0101_004",
+      "scr": "_EV_scr_seq_R22R0101_003 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -24,7 +24,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_R22R0101_006",
+      "scr": "_EV_scr_seq_R22R0101_005 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -41,7 +41,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_R22R0101_005",
+      "scr": "_EV_scr_seq_R22R0101_004 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -58,7 +58,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_270",
-      "scr": 9,
+      "scr": "_EV_scr_seq_R22R0101_008 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -102,7 +102,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_R22R0101_001",
+      "scr": "_EV_scr_seq_R22R0101_000 + 1",
       "x": 11,
       "y": 16,
       "w": 1,
@@ -112,7 +112,7 @@
       "var": "VAR_UNK_4110"
     },
     {
-      "scr": "_EV_scr_seq_R22R0101_003",
+      "scr": "_EV_scr_seq_R22R0101_002 + 1",
       "x": 8,
       "y": 8,
       "w": 1,
@@ -122,7 +122,7 @@
       "var": "VAR_UNK_4110"
     },
     {
-      "scr": "_EV_scr_seq_R22R0101_002",
+      "scr": "_EV_scr_seq_R22R0101_001 + 1",
       "x": 14,
       "y": 8,
       "w": 1,

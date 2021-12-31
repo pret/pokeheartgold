@@ -3510,21 +3510,21 @@
     {
       "name": "scrcmd_556",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_557",
       "args": [
-        2,
+        "var",
         "var"
       ]
     },
     {
       "name": "scrcmd_558",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4082,15 +4082,15 @@
       ]
     },
     {
-      "name": "scrcmd_649",
+      "name": "scratch_off_card",
       "args": []
     },
     {
-      "name": "scrcmd_650",
+      "name": "scratch_off_card_end",
       "args": []
     },
     {
-      "name": "scrcmd_651",
+      "name": "get_scratch_off_prize",
       "args": [
         2,
         "var",

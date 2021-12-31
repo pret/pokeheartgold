@@ -274,7 +274,7 @@ _020789FE:
 	b _02078B20
 _02078A16:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02078B20
 	ldr r0, [r4, #0x10]
@@ -293,7 +293,7 @@ _02078A2C:
 	b _02078B20
 _02078A3E:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02078B20
 	add r0, r4, #0
@@ -312,7 +312,7 @@ _02078A52:
 	b _02078B20
 _02078A66:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02078B20
 	mov r0, #2
@@ -331,7 +331,7 @@ _02078A7C:
 	b _02078B20
 _02078A8E:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02078B20
 	add r0, r4, #0
@@ -350,7 +350,7 @@ _02078AA2:
 	b _02078B20
 _02078AB6:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02078B20
 	mov r0, #2
@@ -369,7 +369,7 @@ _02078ACC:
 	b _02078B20
 _02078ADE:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02078B20
 	add r0, r4, #0
@@ -388,7 +388,7 @@ _02078AF2:
 	b _02078B20
 _02078B06:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02078B20
 	mov r0, #2

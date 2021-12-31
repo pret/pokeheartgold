@@ -1,6 +1,6 @@
 import collections
 import json
-import operator
+import struct
 import os
 import traceback
 import typing
@@ -48,6 +48,95 @@ class Namespace(argparse.Namespace):
     mode: ScriptType
 
 
+class NamedStruct(struct.Struct):
+    def __init__(self, cls_name, _format, fields):
+        super().__init__(_format)
+        self._fields = fields
+
+        def _subclass__init__(self, values):
+            for field, value in zip(fields, values):
+                setattr(self, field, value)
+
+        def _subclass__repr__(self):
+            return '<' + cls_name + '(' + ', '.join(field + '=' + repr(getattr(self, field)) for field in fields) + ')'
+
+        self._cls = type(cls_name, (object,), {'__init__': _subclass__init__, '__repr__': _subclass__repr__})
+
+    def _make(self, values):
+        return self._cls(values)
+
+    def _to_tuple(self, obj):
+        assert obj.__class__.__name__ == self._cls.__name__
+        return tuple(getattr(obj, name) for name in self._fields)
+
+    def __call__(self, *args):
+        return self._make(args)
+
+    def unpack(self, buffer):
+        return self._make(super().unpack(buffer))
+
+    def unpack_from(self, buffer, offset=0):
+        return self._make(super().unpack_from(buffer, offset=offset))
+
+    def iter_unpack(self, buffer):
+        for tup in super().iter_unpack(buffer):
+            yield self._make(tup)
+
+    def pack(self, obj):
+        return super().pack(self._to_tuple(obj))
+
+    def pack_into(self, buffer, offset, obj):
+        super().pack_into(buffer, offset, self._to_tuple(obj))
+
+    @property
+    def cls(self):
+        return self._cls
+
+
+BgEvent = NamedStruct('BgEvent', '<HHLLLL', (
+    'scr',
+    'type',
+    'x',
+    'y',
+    'z',
+    'dir'
+))
+ObjectEvent = NamedStruct('ObjectEvent', '<14HL', (
+    'id',
+    'ovid',
+    'mvt',
+    'type',
+    'flag',
+    'scr',
+    'dirn',
+    'eye',
+    'unk10',
+    'unk12',
+    'xrange',
+    'yrange',
+    'x',
+    'y',
+    'z',
+))
+WarpEvent = NamedStruct('WarpEvent', '<HHHHL', (
+    'x',
+    'y',
+    'header',
+    'anchor',
+    'height',
+))
+CoordEvent = NamedStruct('CoordEvent', '<HHHHHHHH', (
+    'scr',
+    'x',
+    'y',
+    'w',
+    'h',
+    'z',
+    'val',
+    'var',
+))
+
+
 class ScriptParserBase(abc.ABC):
     def __init__(self, header: str, raw: bytes, prefix='_EV'):
         self.c_header = header
@@ -65,8 +154,8 @@ class ScriptParserBase(abc.ABC):
 
     def __repr__(self):
         return f'<{self.__class__.__name__}(raw=bytes({len(self.raw)}), prefix={self.prefix!r})>'
-    
-    
+
+
 class NormalScriptParser(ScriptParserBase):
     def __init__(self, header: str, raw: bytes, events: str, gmm: str, prefix='_EV'):
         super().__init__(header, raw, prefix)
@@ -81,7 +170,9 @@ class NormalScriptParser(ScriptParserBase):
             'sound': parse_c_header(os.path.join(project_root, 'include/constants/sndseq.h'), 'SEQ_'),
             'ribbon': parse_c_header(os.path.join(project_root, 'include/constants/ribbon.h'), 'RIBBON_'),
             'stdscr': parse_c_header(os.path.join(project_root, 'include/constants/std_script.h'), 'std_'),
-            'trainer': parse_c_header(os.path.join(project_root, 'include/constants/trainers.h'), 'TRAINER_')
+            'trainer': parse_c_header(os.path.join(project_root, 'include/constants/trainers.h'), 'TRAINER_'),
+            'sprites': parse_c_header(os.path.join(project_root, 'include/constants/sprites.h'), 'SPRITE_'),
+            'maps': parse_c_header(os.path.join(project_root, 'include/constants/maps.h'), 'MAP_'),
         }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
         self.commands_d = {x['name']: x for x in self.commands}
@@ -94,25 +185,11 @@ class NormalScriptParser(ScriptParserBase):
         self.pc_history = []
 
         self.messages = []
-
-        seen_objects = collections.Counter()
-        obj_prefix = prefix.replace('scr_seq', 'obj')
-        try:
-            self.objects = parse_c_header(os.path.join(project_root, 'files', header), 'obj_', as_list=True)
-        except FileNotFoundError:
-            self.objects = []
-            if events:
-                with open(events) as fp:
-                    events_dict = json.load(fp)
-                for obj in events_dict.get('objects', []):
-                    sprite = obj['ovid'].replace('SPRITE_', '').lower()
-                    obj_name = f'{obj_prefix}_{sprite}'
-                    seen_objects[obj_name] += 1
-                    if seen_objects[obj_name] > 1:
-                        obj_name = f'{obj_name}_{seen_objects[obj_name]}'
-                    self.objects.append((obj['id'], obj_name))
-        self.objects.append((253, 'obj_partner_poke'))
-        self.objects.append((255, 'obj_player'))
+        self.objects = [
+            (253, 'obj_partner_poke'),
+            (255, 'obj_player'),
+        ]
+        self.events_json = events
         if gmm:
             self.messages = [row.get('id') for row in ElementTree.parse(gmm).iter('row')]
             self.gmm_header = os.path.relpath(gmm.replace('.gmm', '.h'), os.path.join(project_root, 'files'))
@@ -136,6 +213,95 @@ class NormalScriptParser(ScriptParserBase):
         if self.header_end != 4 * len(self.exported) + 2:
             raise ValueError('malformatted script file')
         self.labels |= {addr: False for addr in self.exported}
+
+    def make_events_json(self):
+        if not self.events_json:
+            return
+
+        def scr_get(id_):
+            if id_ in self.constants['stdscr']:
+                return self.constants['stdscr'][id_]
+            if 0 <= id_ - 1 < len(self.exported):
+                return f'_EV_{self.prefix}_{id_ - 1:03d} + 1'
+            return id_
+
+        ret = {'header': self.c_header}
+        with open(self.events_json.replace('.json', '.bin'), 'rb') as fp:
+            nbg = int.from_bytes(fp.read(4), 'little')
+            bgs = list(BgEvent.iter_unpack(fp.read(nbg * BgEvent.size)))
+            nob = int.from_bytes(fp.read(4), 'little')
+            obs = list(ObjectEvent.iter_unpack(fp.read(nob * ObjectEvent.size)))
+            nwp = int.from_bytes(fp.read(4), 'little')
+            wps = list(WarpEvent.iter_unpack(fp.read(nwp * WarpEvent.size)))
+            ncd = int.from_bytes(fp.read(4), 'little')
+            cds = list(CoordEvent.iter_unpack(fp.read(ncd * CoordEvent.size)))
+
+        if bgs:
+            ret['bgs'] = [
+                {
+                    'scr': scr_get(bg.scr),
+                    'type': bg.type,
+                    'x': bg.x,
+                    'y': bg.y,
+                    'z': bg.z,
+                    'dir': bg.dir
+                } for bg in bgs
+            ]
+        if obs:
+            obj_prefix = self.prefix.replace('scr_seq_', 'obj_')
+            seen_objects = collections.Counter()
+            for obj in obs:
+                sprite = self.constants['sprites'][obj.ovid].replace('SPRITE_', '').lower()
+                obj_name = f'{obj_prefix}_{sprite}'
+                seen_objects[obj_name] += 1
+                if seen_objects[obj_name] > 1:
+                    obj_name = f'{obj_name}_{seen_objects[obj_name]}'
+                self.objects.append((obj.id, obj_name))
+
+            ret['objects'] = [
+                {
+                    'id': self.objects[i + 2][1],
+                    'ovid': self.constants['sprites'][ob.ovid],
+                    'mvt': ob.mvt,
+                    'type': ob.type,
+                    'flag': self.constants['flag'][ob.flag],
+                    'scr': scr_get(ob.scr),
+                    'dirn': ob.dirn,
+                    'eye': ob.eye,
+                    'unk10': ob.unk10,
+                    'unk12': ob.unk12,
+                    'xrange': ob.xrange,
+                    'yrange': ob.yrange,
+                    'x': ob.x,
+                    'y': ob.y,
+                    'z': ob.z,
+                } for i, ob in enumerate(obs)
+            ]
+        if wps:
+            ret['warps'] = [
+                {
+                    'x': wp.x,
+                    'y': wp.y,
+                    'header': self.constants['maps'].get(wp.header, wp.header),
+                    'anchor': wp.anchor,
+                    'height': wp.height,
+                } for wp in wps
+            ]
+        if cds:
+            ret['coords'] = [
+                {
+                    'scr': scr_get(cd.scr),
+                    'x': cd.x,
+                    'y': cd.y,
+                    'w': cd.w,
+                    'h': cd.h,
+                    'z': cd.z,
+                    'val': cd.val,
+                    'var': self.constants['var'][cd.var]
+                } for cd in cds
+            ]
+        with open(self.events_json, 'wt') as ofp:
+            json.dump(ret, ofp, indent=2)
 
     def get_arg(self, size: typing.Union[int, str], pc: int) -> tuple[typing.Union[int, str], int]:
         if isinstance(size, int):
@@ -244,6 +410,7 @@ class NormalScriptParser(ScriptParserBase):
         
     def parse_all(self):
         self.parse_header()
+        self.make_events_json()
         while not all(self.labels.values()):
             for label in sorted(self.labels):
                 self.parse_script(label)
@@ -346,7 +513,7 @@ class NormalScriptParser(ScriptParserBase):
             s += f'#define {name:<32s} {i: 5d}\n'
         s += '\n'
         for i, name in self.objects:
-            if i != 255:
+            if i not in (253, 255):
                 s += f'#define {name:<32s} {i: 5d}\n'
         s += f'\n#endif //{self.prefix.upper()}_H_\n'
         return s
@@ -427,7 +594,10 @@ def parse_map(events, scripts, header, gmm):
     scr_pref = os.path.splitext(os.path.basename(scripts))[0]
     scr_pref = re.sub(r'scr_seq_\d{4}_', 'scr_seq_', scr_pref)
 
-    c_header_abs = (re.sub(r'scr_seq_\d{4}_', 'scr_seq_', os.path.splitext(scripts)[0]) + '.h').replace('scr_seq_', 'event_')
+    if 'DUMMY' in events:
+        c_header_abs = (re.sub(r'scr_seq_\d{4}_', 'scr_seq_', os.path.splitext(scripts)[0]) + '.h').replace('scr_seq_', 'event_')
+    else:
+        c_header_abs = re.sub(r'eventdata/zone_event/\d{3}_', 'script/scr_seq/event_', os.path.splitext(events)[0] + '.h')
     c_header = os.path.relpath(c_header_abs, os.path.join(project_root, 'files'))
     if header:
         with open(header_bin, 'rb') as fp:
@@ -438,8 +608,8 @@ def parse_map(events, scripts, header, gmm):
         parser = NormalScriptParser(c_header, fp.read(), events, gmm, prefix=scr_pref).parse_all()
     with open(scripts, 'wt') as ofp:
         print(parser, file=ofp, end='')
-    # with open(c_header_abs, 'wt') as ofp:
-    #     print(parser.make_header(), file=ofp, end='')
+    with open(c_header_abs, 'wt') as ofp:
+        print(parser.make_header(), file=ofp, end='')
 
 
 def main():

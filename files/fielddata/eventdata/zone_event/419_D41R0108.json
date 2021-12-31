@@ -7,7 +7,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_25F",
-      "scr": 1,
+      "scr": "_EV_scr_seq_D41R0108_000 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

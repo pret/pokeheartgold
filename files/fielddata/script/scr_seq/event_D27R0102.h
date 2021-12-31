@@ -1,7 +1,9 @@
-#ifndef SCR_SEQ_D27R0102.H_H_
-#define SCR_SEQ_D27R0102.H_H_
+#ifndef SCR_SEQ_EVERYWHERE_H_
+#define SCR_SEQ_EVERYWHERE_H_
 
-#define obj_d27r0102.h_gsgentleman           0
-#define obj_d27r0102.h_seaman_2              1
+#define _EV_scr_seq_EVERYWHERE_000           0
 
-#endif //SCR_SEQ_D27R0102.H_H_
+#define obj_EVERYWHERE_gsgentleman           0
+#define obj_EVERYWHERE_seaman_2              1
+
+#endif //SCR_SEQ_EVERYWHERE_H_

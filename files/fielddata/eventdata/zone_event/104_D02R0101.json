@@ -17,7 +17,7 @@
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_25C",
-      "scr": "_EV_scr_seq_D02R0101_000",
+      "scr": 0,
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R43.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R43_002",
+      "scr": "_EV_scr_seq_R43_001 + 1",
       "type": 1,
       "x": 527,
       "y": 154,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R43_003",
+      "scr": "_EV_scr_seq_R43_002 + 1",
       "type": 1,
       "x": 532,
       "y": 146,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_R43_003 + 1",
       "type": 1,
       "x": 532,
       "y": 99,

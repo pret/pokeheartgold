@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D24R0203.h",
   "coords": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_D24R0203_002 + 1",
       "x": 20,
       "y": 11,
       "w": 1,

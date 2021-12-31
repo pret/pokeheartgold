@@ -7,7 +7,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D17R0101_001",
+      "scr": "_EV_scr_seq_D17R0101_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -44,7 +44,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_D17R0101_002",
+      "scr": "_EV_scr_seq_D17R0101_001 + 1",
       "x": 7,
       "y": 12,
       "w": 3,
@@ -54,7 +54,7 @@
       "var": "VAR_UNK_40F3"
     },
     {
-      "scr": "_EV_scr_seq_D17R0101_002",
+      "scr": "_EV_scr_seq_D17R0101_001 + 1",
       "x": 12,
       "y": 7,
       "w": 1,

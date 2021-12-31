@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T03.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T03_007",
+      "scr": "_EV_scr_seq_T03_006 + 1",
       "type": 1,
       "x": 1045,
       "y": 112,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03_005",
+      "scr": "_EV_scr_seq_T03_004 + 1",
       "type": 1,
       "x": 1045,
       "y": 95,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03_004",
+      "scr": "_EV_scr_seq_T03_003 + 1",
       "type": 1,
       "x": 1064,
       "y": 105,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03_006",
+      "scr": "_EV_scr_seq_T03_005 + 1",
       "type": 1,
       "x": 1051,
       "y": 81,
@@ -65,7 +65,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03_001",
+      "scr": "_EV_scr_seq_T03_000 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -82,7 +82,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03_002",
+      "scr": "_EV_scr_seq_T03_001 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -99,7 +99,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03_003",
+      "scr": "_EV_scr_seq_T03_002 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -184,7 +184,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_T03_008",
+      "scr": "_EV_scr_seq_T03_007 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -201,7 +201,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_30C",
-      "scr": "_EV_scr_seq_T03_010",
+      "scr": "_EV_scr_seq_T03_009 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -218,7 +218,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_30D",
-      "scr": "_EV_scr_seq_T03_011",
+      "scr": "_EV_scr_seq_T03_010 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -235,7 +235,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_312",
-      "scr": "_EV_scr_seq_T03_011",
+      "scr": "_EV_scr_seq_T03_010 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,

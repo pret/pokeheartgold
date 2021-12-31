@@ -658,7 +658,7 @@ _020694E4:
 	b _0206951C
 _02069500:
 	add r0, r4, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0206951C
 	add r4, #0x80

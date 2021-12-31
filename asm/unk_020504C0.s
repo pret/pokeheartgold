@@ -139,8 +139,8 @@ _0205059A:
 	.balign 4, 0
 	thumb_func_end sub_02050590
 
-	thumb_func_start sub_020505A0
-sub_020505A0: ; 0x020505A0
+	thumb_func_start FieldSys_ApplicationIsRunning
+FieldSys_ApplicationIsRunning: ; 0x020505A0
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0203DF7C
@@ -157,7 +157,7 @@ _020505BA:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020505A0
+	thumb_func_end FieldSys_ApplicationIsRunning
 
 	thumb_func_start sub_020505C0
 sub_020505C0: ; 0x020505C0
@@ -207,7 +207,7 @@ _020505FA:
 	b _02050620
 _0205060C:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _02050620
 	add r0, r4, #0

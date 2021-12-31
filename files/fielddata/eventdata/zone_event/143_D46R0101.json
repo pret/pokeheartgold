@@ -65,7 +65,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_263",
-      "scr": "_EV_scr_seq_D46R0101_001",
+      "scr": "_EV_scr_seq_D46R0101_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

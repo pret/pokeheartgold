@@ -271,7 +271,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_305",
-      "scr": "_EV_scr_seq_D03R0103_001",
+      "scr": "_EV_scr_seq_D03R0103_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

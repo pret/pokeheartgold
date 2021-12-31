@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T28GYM0102.h",
   "objects": [
     {
-      "id": "obj_t28gym0102.h_ice",
+      "id": "obj_EVERYWHERE_ice",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -19,7 +19,7 @@
       "z": 0
     },
     {
-      "id": "obj_t28gym0102.h_ice_2",
+      "id": "obj_EVERYWHERE_ice_2",
       "ovid": "SPRITE_ICE",
       "mvt": 15,
       "type": 0,
@@ -36,7 +36,7 @@
       "z": 0
     },
     {
-      "id": "obj_t28gym0102.h_skierw",
+      "id": "obj_EVERYWHERE_skierw",
       "ovid": "SPRITE_SKIERW",
       "mvt": 15,
       "type": 1,
@@ -53,7 +53,7 @@
       "z": 0
     },
     {
-      "id": "obj_t28gym0102.h_boarder",
+      "id": "obj_EVERYWHERE_boarder",
       "ovid": "SPRITE_BOARDER",
       "mvt": 16,
       "type": 1,

@@ -1664,7 +1664,7 @@ sub_0203C8B0: ; 0x0203C8B0
 	bl sub_02050650
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203C8EE
 	mov r1, #0xd5

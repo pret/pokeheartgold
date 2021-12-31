@@ -1,5 +1,5 @@
 #include "constants/scrcmd.h"
-#include "fielddata/script/scr_seq/event_0002.h"
+#include "../.h"
 #include "msgdata/msg/msg_0748.h"
 	.include "asm/macros/script.inc"
 
@@ -114,7 +114,7 @@ _018F:
 
 _01D0:
 	scrcmd_655 32771, 32773
-	scrcmd_557 32773, 32780
+	scrcmd_557 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _01EF
 	goto _0224
@@ -200,7 +200,7 @@ _0328:
 	non_npc_msg_var VAR_SPECIAL_x8004
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
-	scrcmd_556 32773
+	scrcmd_556 VAR_SPECIAL_x8005
 	scrcmd_118 1
 	scrcmd_654 32769, 32774, 32771
 _0352:

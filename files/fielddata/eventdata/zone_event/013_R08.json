@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R08.h",
   "bgs": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_R08_001 + 1",
       "type": 1,
       "x": 1356,
       "y": 238,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R08_001",
+      "scr": "_EV_scr_seq_R08_000 + 1",
       "type": 0,
       "x": 1354,
       "y": 237,

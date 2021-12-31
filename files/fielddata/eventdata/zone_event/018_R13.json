@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R13.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_R13_002 + 1",
       "type": 1,
       "x": 1358,
       "y": 375,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R13_002",
+      "scr": "_EV_scr_seq_R13_001 + 1",
       "type": 1,
       "x": 1410,
       "y": 375,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R13_001",
+      "scr": "_EV_scr_seq_R13_000 + 1",
       "type": 1,
       "x": 1385,
       "y": 377,

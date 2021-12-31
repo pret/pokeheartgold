@@ -711,13 +711,13 @@ _09F3:
 	goto _0F76
 
 _0A24:
-	scrcmd_557 32774, 32780
+	scrcmd_557 VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0A9B
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0A85
-	scrcmd_556 32774
+	scrcmd_556 VAR_SPECIAL_x8006
 	scrcmd_118 1
 	play_se SEQ_SE_DP_REGI
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -1014,7 +1014,7 @@ scr_seq_D32_023:
 	faceplayer
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_649
+	scratch_off_card
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

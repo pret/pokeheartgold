@@ -545,7 +545,7 @@ _0203E63A:
 	b _0203E6CC
 _0203E64A:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203E6CC
 	ldr r0, [r4, #4]
@@ -588,7 +588,7 @@ _0203E680:
 	b _0203E6CC
 _0203E6A2:
 	add r0, r6, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203E6CC
 	ldr r0, [r4, #8]
@@ -846,7 +846,7 @@ _0203E8A4:
 	str r0, [r5]
 	b _0203E958
 _0203E8B2:
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203E958
 	ldr r0, [r5]
@@ -1984,7 +1984,7 @@ _0203F152:
 	b _0203F192
 _0203F162:
 	add r0, r4, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203F192
 	ldr r1, [r5, #4]
@@ -3248,8 +3248,8 @@ sub_0203FAE8: ; 0x0203FAE8
 _0203FB5C: .word _0210159C
 	thumb_func_end sub_0203FAE8
 
-	thumb_func_start sub_0203FB60
-sub_0203FB60: ; 0x0203FB60
+	thumb_func_start ScratchOffCards_Create
+ScratchOffCards_Create: ; 0x0203FB60
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -3274,7 +3274,7 @@ _0203FB74:
 	pop {r3, r4, r5, pc}
 	nop
 _0203FB90: .word _0210F97C
-	thumb_func_end sub_0203FB60
+	thumb_func_end ScratchOffCards_Create
 
 	thumb_func_start sub_0203FB94
 sub_0203FB94: ; 0x0203FB94

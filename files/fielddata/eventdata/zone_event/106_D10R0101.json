@@ -7,7 +7,7 @@
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 6,
+      "scr": "_EV_scr_seq_D10R0101_005 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -37,7 +37,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_D10R0101_005",
+      "scr": "_EV_scr_seq_D10R0101_004 + 1",
       "x": 22,
       "y": 48,
       "w": 6,

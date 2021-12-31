@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T26.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T26_005",
+      "scr": "_EV_scr_seq_T26_004 + 1",
       "type": 1,
       "x": 265,
       "y": 238,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T26_006",
+      "scr": "_EV_scr_seq_T26_005 + 1",
       "type": 1,
       "x": 279,
       "y": 247,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T26_007",
+      "scr": "_EV_scr_seq_T26_006 + 1",
       "type": 1,
       "x": 280,
       "y": 266,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T26_008",
+      "scr": "_EV_scr_seq_T26_007 + 1",
       "type": 1,
       "x": 302,
       "y": 264,
@@ -57,7 +57,7 @@
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T26_009",
+      "scr": "_EV_scr_seq_T26_008 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -74,7 +74,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T26_010",
+      "scr": "_EV_scr_seq_T26_009 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -91,7 +91,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T26_011",
+      "scr": "_EV_scr_seq_T26_010 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -108,7 +108,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1D6",
-      "scr": "_EV_scr_seq_T26_001",
+      "scr": "_EV_scr_seq_T26_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -142,7 +142,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T26_000",
+      "scr": 0,
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -159,7 +159,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T26_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -176,7 +176,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_T26_012",
+      "scr": "_EV_scr_seq_T26_011 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -272,7 +272,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_T26_002",
+      "scr": "_EV_scr_seq_T26_001 + 1",
       "x": 272,
       "y": 239,
       "w": 1,

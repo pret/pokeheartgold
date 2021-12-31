@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_W40.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_W40_003",
+      "scr": "_EV_scr_seq_W40_002 + 1",
       "type": 1,
       "x": 245,
       "y": 272,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 10,
+      "scr": "_EV_scr_seq_W40_009 + 1",
       "type": 1,
       "x": 240,
       "y": 267,
@@ -101,7 +101,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_206",
-      "scr": "_EV_scr_seq_W40_002",
+      "scr": "_EV_scr_seq_W40_001 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -118,7 +118,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_W40_008",
+      "scr": "_EV_scr_seq_W40_007 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -165,7 +165,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_W40_009",
+      "scr": "_EV_scr_seq_W40_008 + 1",
       "x": 252,
       "y": 265,
       "w": 4,

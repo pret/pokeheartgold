@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D35R0103.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_D35R0103_011",
+      "scr": "_EV_scr_seq_D35R0103_010 + 1",
       "type": 0,
       "x": 28,
       "y": 16,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_011",
+      "scr": "_EV_scr_seq_D35R0103_010 + 1",
       "type": 0,
       "x": 29,
       "y": 16,
@@ -18,7 +18,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_011",
+      "scr": "_EV_scr_seq_D35R0103_010 + 1",
       "type": 0,
       "x": 30,
       "y": 16,
@@ -26,7 +26,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_011",
+      "scr": "_EV_scr_seq_D35R0103_010 + 1",
       "type": 0,
       "x": 31,
       "y": 16,
@@ -34,7 +34,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_011",
+      "scr": "_EV_scr_seq_D35R0103_010 + 1",
       "type": 0,
       "x": 32,
       "y": 16,
@@ -42,7 +42,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_011",
+      "scr": "_EV_scr_seq_D35R0103_010 + 1",
       "type": 0,
       "x": 33,
       "y": 16,
@@ -73,7 +73,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1E5",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -90,7 +90,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1E5",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -158,7 +158,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D35R0103_002",
+      "scr": "_EV_scr_seq_D35R0103_001 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -175,7 +175,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_D35R0103_002",
+      "scr": "_EV_scr_seq_D35R0103_001 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -192,7 +192,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F3",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -209,7 +209,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F3",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -226,7 +226,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F5",
-      "scr": "_EV_scr_seq_D35R0103_005",
+      "scr": "_EV_scr_seq_D35R0103_004 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -243,7 +243,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F6",
-      "scr": "_EV_scr_seq_D35R0103_006",
+      "scr": "_EV_scr_seq_D35R0103_005 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -260,7 +260,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F7",
-      "scr": "_EV_scr_seq_D35R0103_007",
+      "scr": "_EV_scr_seq_D35R0103_006 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -277,7 +277,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F5",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -294,7 +294,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F6",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -311,7 +311,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F7",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -345,7 +345,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_24B",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 2,
       "eye": 3,
       "unk10": 0,
@@ -362,7 +362,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_24D",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 3,
       "eye": 3,
       "unk10": 0,
@@ -379,7 +379,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_252",
-      "scr": "_EV_scr_seq_D35R0103_000",
+      "scr": 0,
       "dirn": 0,
       "eye": 3,
       "unk10": 0,
@@ -430,7 +430,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_D35R0103_004",
+      "scr": "_EV_scr_seq_D35R0103_003 + 1",
       "x": 30,
       "y": 19,
       "w": 2,
@@ -440,7 +440,7 @@
       "var": "VAR_UNK_40AC"
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_009",
+      "scr": "_EV_scr_seq_D35R0103_008 + 1",
       "x": 28,
       "y": 10,
       "w": 1,
@@ -450,7 +450,7 @@
       "var": "VAR_UNK_40AC"
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_010",
+      "scr": "_EV_scr_seq_D35R0103_009 + 1",
       "x": 32,
       "y": 17,
       "w": 1,
@@ -460,7 +460,7 @@
       "var": "VAR_UNK_40AC"
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_012",
+      "scr": "_EV_scr_seq_D35R0103_011 + 1",
       "x": 29,
       "y": 27,
       "w": 4,
@@ -470,7 +470,7 @@
       "var": "VAR_UNK_40AC"
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_013",
+      "scr": "_EV_scr_seq_D35R0103_012 + 1",
       "x": 27,
       "y": 24,
       "w": 1,
@@ -480,7 +480,7 @@
       "var": "VAR_UNK_40A9"
     },
     {
-      "scr": "_EV_scr_seq_D35R0103_014",
+      "scr": "_EV_scr_seq_D35R0103_013 + 1",
       "x": 11,
       "y": 4,
       "w": 1,
@@ -490,7 +490,7 @@
       "var": "VAR_UNK_40AC"
     },
     {
-      "scr": 15,
+      "scr": "_EV_scr_seq_D35R0103_014 + 1",
       "x": 50,
       "y": 29,
       "w": 1,

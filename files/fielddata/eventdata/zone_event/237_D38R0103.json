@@ -36,7 +36,7 @@
   ],
   "objects": [
     {
-      "id": "obj_d38r0103.h_monstarball",
+      "id": "obj_EVERYWHERE_monstarball",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -53,7 +53,7 @@
       "z": 0
     },
     {
-      "id": "obj_d38r0103.h_monstarball_2",
+      "id": "obj_EVERYWHERE_monstarball_2",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -70,7 +70,7 @@
       "z": 0
     },
     {
-      "id": "obj_d38r0103.h_monstarball_3",
+      "id": "obj_EVERYWHERE_monstarball_3",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -87,7 +87,7 @@
       "z": 0
     },
     {
-      "id": "obj_d38r0103.h_monstarball_4",
+      "id": "obj_EVERYWHERE_monstarball_4",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -104,7 +104,7 @@
       "z": 0
     },
     {
-      "id": "obj_d38r0103.h_monstarball_5",
+      "id": "obj_EVERYWHERE_monstarball_5",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -121,7 +121,7 @@
       "z": 0
     },
     {
-      "id": "obj_d38r0103.h_monstarball_6",
+      "id": "obj_EVERYWHERE_monstarball_6",
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
@@ -138,7 +138,7 @@
       "z": 0
     },
     {
-      "id": "obj_d38r0103.h_gsassistantm",
+      "id": "obj_EVERYWHERE_gsassistantm",
       "ovid": "SPRITE_GSASSISTANTM",
       "mvt": 2,
       "type": 1,

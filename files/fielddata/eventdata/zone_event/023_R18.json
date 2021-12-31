@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R18.h",
   "bgs": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_R18_001 + 1",
       "type": 1,
       "x": 1174,
       "y": 424,

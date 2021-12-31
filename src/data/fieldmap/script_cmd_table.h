@@ -649,9 +649,9 @@ extern BOOL ScrCmd_645(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_646(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_647(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_648(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_649(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_650(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_651(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ScratchOffCard(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ScratchOffCardEnd(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetScratchOffPrize(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_652(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_653(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_654(SCRIPTCONTEXT *ctx);
@@ -1504,9 +1504,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_646,
     ScrCmd_647,
     ScrCmd_648,
-    ScrCmd_649,
-    ScrCmd_650,
-    ScrCmd_651,
+    ScrCmd_ScratchOffCard,
+    ScrCmd_ScratchOffCardEnd,
+    ScrCmd_GetScratchOffPrize,
     ScrCmd_652,
     ScrCmd_653,
     ScrCmd_654,

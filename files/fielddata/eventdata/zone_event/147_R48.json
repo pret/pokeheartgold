@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R48.h",
   "bgs": [
     {
-      "scr": 3,
+      "scr": "_EV_scr_seq_R48_002 + 1",
       "type": 1,
       "x": 103,
       "y": 336,
@@ -34,7 +34,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_R48_001",
+      "scr": "_EV_scr_seq_R48_000 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

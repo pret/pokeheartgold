@@ -2329,9 +2329,9 @@
 .public ScrCmd_646
 .public ScrCmd_647
 .public ScrCmd_648
-.public ScrCmd_649
-.public ScrCmd_650
-.public ScrCmd_651
+.public ScrCmd_ScratchOffCard
+.public ScrCmd_ScratchOffCardEnd
+.public ScrCmd_GetScratchOffPrize
 .public ScrCmd_652
 .public ScrCmd_653
 .public ScrCmd_654
@@ -28283,7 +28283,7 @@
 .public sub_0203FA8C
 .public sub_0203FAB4
 .public sub_0203FAE8
-.public sub_0203FB60
+.public ScratchOffCards_Create
 .public sub_0203FB94
 .public sub_0203FC14
 .public sub_0203FC58
@@ -28306,7 +28306,7 @@
 .public TryStartMapScriptByType
 .public sub_020407AC
 .public sub_02042974
-.public sub_020429F8
+.public ScrNative_WaitApplication
 .public sub_0204A5B0
 .public sub_0204A68C
 .public sub_0204A698
@@ -28358,7 +28358,7 @@
 .public sub_02050530
 .public sub_02050544
 .public sub_02050590
-.public sub_020505A0
+.public FieldSys_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
 .public sub_02050624

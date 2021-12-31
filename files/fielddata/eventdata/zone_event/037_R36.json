@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R36.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_R36_006",
+      "scr": "_EV_scr_seq_R36_005 + 1",
       "type": 1,
       "x": 377,
       "y": 235,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R36_005",
+      "scr": "_EV_scr_seq_R36_004 + 1",
       "type": 1,
       "x": 427,
       "y": 248,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R36_004",
+      "scr": "_EV_scr_seq_R36_003 + 1",
       "type": 1,
       "x": 441,
       "y": 244,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_R36_007",
+      "scr": "_EV_scr_seq_R36_006 + 1",
       "type": 1,
       "x": 394,
       "y": 223,
@@ -49,7 +49,7 @@
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_R36_009",
+      "scr": "_EV_scr_seq_R36_008 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -66,7 +66,7 @@
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_R36_010",
+      "scr": "_EV_scr_seq_R36_009 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -117,7 +117,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1C2",
-      "scr": "_EV_scr_seq_R36_001",
+      "scr": "_EV_scr_seq_R36_000 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -134,7 +134,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1CF",
-      "scr": "_EV_scr_seq_R36_008",
+      "scr": "_EV_scr_seq_R36_007 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -151,7 +151,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_1C4",
-      "scr": "_EV_scr_seq_R36_002",
+      "scr": "_EV_scr_seq_R36_001 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

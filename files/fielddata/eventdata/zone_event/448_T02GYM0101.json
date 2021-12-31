@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T02GYM0101.h",
   "bgs": [
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_T02GYM0101_004 + 1",
       "type": 0,
       "x": 3,
       "y": 45,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": 5,
+      "scr": "_EV_scr_seq_T02GYM0101_004 + 1",
       "type": 0,
       "x": 7,
       "y": 45,
@@ -93,7 +93,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T02GYM0101_002",
+      "scr": "_EV_scr_seq_T02GYM0101_001 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -110,7 +110,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_2F6",
-      "scr": "_EV_scr_seq_T02GYM0101_001",
+      "scr": "_EV_scr_seq_T02GYM0101_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -150,7 +150,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_T02GYM0101_004",
+      "scr": "_EV_scr_seq_T02GYM0101_003 + 1",
       "x": 1,
       "y": 46,
       "w": 9,

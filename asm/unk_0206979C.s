@@ -2450,7 +2450,7 @@ sub_0206A9A0: ; 0x0206A9A0
 sub_0206A9B4: ; 0x0206A9B4
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _0206A9C4
 	mov r0, #1
@@ -8854,7 +8854,7 @@ _0206DBFC:
 	b _0206DC4C
 _0206DC10:
 	add r0, r7, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _0206DC4C
 	ldr r0, [r4, #8]

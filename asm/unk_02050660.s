@@ -32,7 +32,7 @@ _02050686:
 	b _020506A8
 _0205069A:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020506A8
 	mov r0, #1

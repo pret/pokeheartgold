@@ -21158,7 +21158,7 @@ _02065854:
 	b _020658B4
 _0206585C:
 	add r0, r5, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	bne _020658B4
 _02065866:
@@ -24429,7 +24429,7 @@ sub_02066F90: ; 0x02066F90
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _02066FA2
 	mov r0, #1
@@ -24546,7 +24546,7 @@ sub_02067088: ; 0x02067088
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _0206709A
 	mov r0, #3
@@ -24685,7 +24685,7 @@ sub_0206718C: ; 0x0206718C
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _0206719E
 	mov r0, #1

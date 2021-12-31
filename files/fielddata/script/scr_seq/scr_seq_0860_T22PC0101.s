@@ -208,7 +208,7 @@ _0313:
 	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
 	npc_msg msg_0559_T22PC0101_00024
 	setflag FLAG_UNK_2C5
-	scrcmd_558 32772, 32773
+	scrcmd_558 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_289 32773
 	goto _0333
 

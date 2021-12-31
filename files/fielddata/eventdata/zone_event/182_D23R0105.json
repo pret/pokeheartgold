@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D23R0105.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_D23R0105_002",
+      "scr": "_EV_scr_seq_D23R0105_001 + 1",
       "type": 0,
       "x": 5,
       "y": 4,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_D23R0105_003 + 1",
       "type": 0,
       "x": 17,
       "y": 4,
@@ -25,7 +25,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2C6",
-      "scr": "_EV_scr_seq_D23R0105_003",
+      "scr": "_EV_scr_seq_D23R0105_002 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -59,7 +59,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2C7",
-      "scr": "_EV_scr_seq_D23R0105_003",
+      "scr": "_EV_scr_seq_D23R0105_002 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D24R0218.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 3,
       "y": 6,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 7,
       "y": 6,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 11,
       "y": 6,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 15,
       "y": 6,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 19,
       "y": 6,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 23,
       "y": 6,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 27,
       "y": 6,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 3,
       "y": 15,
@@ -66,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 7,
       "y": 15,
@@ -74,7 +74,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 11,
       "y": 15,
@@ -82,7 +82,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 15,
       "y": 15,
@@ -90,7 +90,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 19,
       "y": 15,
@@ -98,7 +98,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 23,
       "y": 15,
@@ -106,7 +106,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 27,
       "y": 15,
@@ -114,7 +114,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 27,
       "y": 24,
@@ -122,7 +122,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 3,
       "y": 24,
@@ -130,7 +130,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 3,
       "y": 33,
@@ -138,7 +138,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 7,
       "y": 33,
@@ -146,7 +146,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 11,
       "y": 33,
@@ -154,7 +154,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 15,
       "y": 33,
@@ -162,7 +162,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 19,
       "y": 33,
@@ -170,7 +170,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 23,
       "y": 33,
@@ -178,7 +178,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 27,
       "y": 33,
@@ -186,7 +186,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 27,
       "y": 42,
@@ -194,7 +194,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 23,
       "y": 42,
@@ -202,7 +202,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 19,
       "y": 42,
@@ -210,7 +210,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 15,
       "y": 42,
@@ -218,7 +218,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 11,
       "y": 42,
@@ -226,7 +226,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 7,
       "y": 42,
@@ -234,7 +234,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_D24R0218_001",
+      "scr": "_EV_scr_seq_D24R0218_000 + 1",
       "type": 0,
       "x": 3,
       "y": 42,
@@ -249,7 +249,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2E7",
-      "scr": "_EV_scr_seq_D24R0218_000",
+      "scr": 0,
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

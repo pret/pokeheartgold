@@ -160,7 +160,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_D39R0102_001",
+      "scr": "_EV_scr_seq_D39R0102_000 + 1",
       "x": 11,
       "y": 10,
       "w": 1,
@@ -170,7 +170,7 @@
       "var": "VAR_UNK_40AA"
     },
     {
-      "scr": "_EV_scr_seq_D39R0102_002",
+      "scr": "_EV_scr_seq_D39R0102_001 + 1",
       "x": 10,
       "y": 18,
       "w": 1,
@@ -180,7 +180,7 @@
       "var": "VAR_UNK_40AA"
     },
     {
-      "scr": "_EV_scr_seq_D39R0102_003",
+      "scr": "_EV_scr_seq_D39R0102_002 + 1",
       "x": 18,
       "y": 7,
       "w": 1,
@@ -190,7 +190,7 @@
       "var": "VAR_UNK_40AA"
     },
     {
-      "scr": 4,
+      "scr": "_EV_scr_seq_D39R0102_003 + 1",
       "x": 19,
       "y": 19,
       "w": 1,

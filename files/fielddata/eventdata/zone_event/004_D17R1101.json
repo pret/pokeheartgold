@@ -49,7 +49,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2CA",
-      "scr": 2,
+      "scr": "_EV_scr_seq_D17R1101_001 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

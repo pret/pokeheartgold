@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T24.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T24_009",
+      "scr": "_EV_scr_seq_T24_008 + 1",
       "type": 1,
       "x": 176,
       "y": 362,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T24_010",
+      "scr": "_EV_scr_seq_T24_009 + 1",
       "type": 1,
       "x": 175,
       "y": 358,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T24_011",
+      "scr": "_EV_scr_seq_T24_010 + 1",
       "type": 1,
       "x": 182,
       "y": 370,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T24_012",
+      "scr": "_EV_scr_seq_T24_011 + 1",
       "type": 1,
       "x": 179,
       "y": 354,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T24_005",
+      "scr": "_EV_scr_seq_T24_004 + 1",
       "type": 1,
       "x": 172,
       "y": 344,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T24_008",
+      "scr": "_EV_scr_seq_T24_007 + 1",
       "type": 0,
       "x": 185,
       "y": 354,
@@ -73,7 +73,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T24_001",
+      "scr": "_EV_scr_seq_T24_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -90,7 +90,7 @@
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T24_013",
+      "scr": "_EV_scr_seq_T24_012 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -107,7 +107,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T24_014",
+      "scr": "_EV_scr_seq_T24_013 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -124,7 +124,7 @@
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T24_015",
+      "scr": "_EV_scr_seq_T24_014 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -141,7 +141,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 16,
+      "scr": "_EV_scr_seq_T24_015 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -158,7 +158,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_1E1",
-      "scr": "_EV_scr_seq_T24_002",
+      "scr": "_EV_scr_seq_T24_001 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -175,7 +175,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_1E2",
-      "scr": "_EV_scr_seq_T24_004",
+      "scr": "_EV_scr_seq_T24_003 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -332,7 +332,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_T24_003",
+      "scr": "_EV_scr_seq_T24_002 + 1",
       "x": 176,
       "y": 334,
       "w": 1,

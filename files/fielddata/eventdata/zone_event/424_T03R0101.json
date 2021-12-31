@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T03R0101.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T03R0101_006",
+      "scr": "_EV_scr_seq_T03R0101_005 + 1",
       "type": 0,
       "x": 5,
       "y": 9,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_006",
+      "scr": "_EV_scr_seq_T03R0101_005 + 1",
       "type": 0,
       "x": 5,
       "y": 10,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_006",
+      "scr": "_EV_scr_seq_T03R0101_005 + 1",
       "type": 0,
       "x": 5,
       "y": 11,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_006",
+      "scr": "_EV_scr_seq_T03R0101_005 + 1",
       "type": 0,
       "x": 6,
       "y": 11,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_006",
+      "scr": "_EV_scr_seq_T03R0101_005 + 1",
       "type": 0,
       "x": 7,
       "y": 11,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_007",
+      "scr": "_EV_scr_seq_T03R0101_006 + 1",
       "type": 0,
       "x": 5,
       "y": 8,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_007",
+      "scr": "_EV_scr_seq_T03R0101_006 + 1",
       "type": 0,
       "x": 5,
       "y": 7,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_007",
+      "scr": "_EV_scr_seq_T03R0101_006 + 1",
       "type": 0,
       "x": 5,
       "y": 6,
@@ -66,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_007",
+      "scr": "_EV_scr_seq_T03R0101_006 + 1",
       "type": 0,
       "x": 6,
       "y": 6,
@@ -74,7 +74,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_007",
+      "scr": "_EV_scr_seq_T03R0101_006 + 1",
       "type": 0,
       "x": 7,
       "y": 6,
@@ -82,7 +82,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_008",
+      "scr": "_EV_scr_seq_T03R0101_007 + 1",
       "type": 0,
       "x": 13,
       "y": 11,
@@ -90,7 +90,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_008",
+      "scr": "_EV_scr_seq_T03R0101_007 + 1",
       "type": 0,
       "x": 14,
       "y": 11,
@@ -98,7 +98,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_008",
+      "scr": "_EV_scr_seq_T03R0101_007 + 1",
       "type": 0,
       "x": 15,
       "y": 11,
@@ -106,7 +106,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_008",
+      "scr": "_EV_scr_seq_T03R0101_007 + 1",
       "type": 0,
       "x": 15,
       "y": 10,
@@ -114,7 +114,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_008",
+      "scr": "_EV_scr_seq_T03R0101_007 + 1",
       "type": 0,
       "x": 15,
       "y": 9,
@@ -122,7 +122,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_009",
+      "scr": "_EV_scr_seq_T03R0101_008 + 1",
       "type": 0,
       "x": 15,
       "y": 8,
@@ -130,7 +130,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_009",
+      "scr": "_EV_scr_seq_T03R0101_008 + 1",
       "type": 0,
       "x": 15,
       "y": 7,
@@ -138,7 +138,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_009",
+      "scr": "_EV_scr_seq_T03R0101_008 + 1",
       "type": 0,
       "x": 15,
       "y": 6,
@@ -146,7 +146,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_009",
+      "scr": "_EV_scr_seq_T03R0101_008 + 1",
       "type": 0,
       "x": 14,
       "y": 6,
@@ -154,7 +154,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_009",
+      "scr": "_EV_scr_seq_T03R0101_008 + 1",
       "type": 0,
       "x": 13,
       "y": 6,
@@ -162,7 +162,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_010",
+      "scr": "_EV_scr_seq_T03R0101_009 + 1",
       "type": 0,
       "x": 3,
       "y": 3,
@@ -170,7 +170,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_010",
+      "scr": "_EV_scr_seq_T03R0101_009 + 1",
       "type": 0,
       "x": 4,
       "y": 3,
@@ -178,7 +178,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_010",
+      "scr": "_EV_scr_seq_T03R0101_009 + 1",
       "type": 0,
       "x": 5,
       "y": 3,
@@ -186,7 +186,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_010",
+      "scr": "_EV_scr_seq_T03R0101_009 + 1",
       "type": 0,
       "x": 6,
       "y": 3,
@@ -194,7 +194,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_011",
+      "scr": "_EV_scr_seq_T03R0101_010 + 1",
       "type": 0,
       "x": 14,
       "y": 3,
@@ -202,7 +202,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_011",
+      "scr": "_EV_scr_seq_T03R0101_010 + 1",
       "type": 0,
       "x": 15,
       "y": 3,
@@ -210,7 +210,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_011",
+      "scr": "_EV_scr_seq_T03R0101_010 + 1",
       "type": 0,
       "x": 16,
       "y": 3,
@@ -218,7 +218,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_011",
+      "scr": "_EV_scr_seq_T03R0101_010 + 1",
       "type": 0,
       "x": 17,
       "y": 3,
@@ -226,7 +226,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_012",
+      "scr": "_EV_scr_seq_T03R0101_011 + 1",
       "type": 0,
       "x": 26,
       "y": 5,
@@ -234,7 +234,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_012",
+      "scr": "_EV_scr_seq_T03R0101_011 + 1",
       "type": 0,
       "x": 27,
       "y": 5,
@@ -242,7 +242,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_012",
+      "scr": "_EV_scr_seq_T03R0101_011 + 1",
       "type": 0,
       "x": 1,
       "y": 11,
@@ -250,7 +250,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_012",
+      "scr": "_EV_scr_seq_T03R0101_011 + 1",
       "type": 0,
       "x": 2,
       "y": 11,
@@ -258,7 +258,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_013",
+      "scr": "_EV_scr_seq_T03R0101_012 + 1",
       "type": 0,
       "x": 9,
       "y": 8,
@@ -266,7 +266,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_013",
+      "scr": "_EV_scr_seq_T03R0101_012 + 1",
       "type": 0,
       "x": 9,
       "y": 9,
@@ -274,7 +274,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_013",
+      "scr": "_EV_scr_seq_T03R0101_012 + 1",
       "type": 0,
       "x": 10,
       "y": 8,
@@ -282,7 +282,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_013",
+      "scr": "_EV_scr_seq_T03R0101_012 + 1",
       "type": 0,
       "x": 10,
       "y": 9,
@@ -290,7 +290,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_013",
+      "scr": "_EV_scr_seq_T03R0101_012 + 1",
       "type": 0,
       "x": 11,
       "y": 8,
@@ -298,7 +298,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_013",
+      "scr": "_EV_scr_seq_T03R0101_012 + 1",
       "type": 0,
       "x": 11,
       "y": 9,
@@ -306,7 +306,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_010",
+      "scr": "_EV_scr_seq_T03R0101_009 + 1",
       "type": 0,
       "x": 1,
       "y": 7,
@@ -314,7 +314,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_010",
+      "scr": "_EV_scr_seq_T03R0101_009 + 1",
       "type": 0,
       "x": 2,
       "y": 7,
@@ -322,7 +322,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_012",
+      "scr": "_EV_scr_seq_T03R0101_011 + 1",
       "type": 0,
       "x": 25,
       "y": 5,
@@ -330,7 +330,7 @@
       "dir": 4
     },
     {
-      "scr": "_EV_scr_seq_T03R0101_012",
+      "scr": "_EV_scr_seq_T03R0101_011 + 1",
       "type": 0,
       "x": 24,
       "y": 5,
@@ -345,7 +345,7 @@
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03R0101_002",
+      "scr": "_EV_scr_seq_T03R0101_001 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -362,7 +362,7 @@
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03R0101_001",
+      "scr": "_EV_scr_seq_T03R0101_000 + 1",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,
@@ -379,7 +379,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03R0101_005",
+      "scr": "_EV_scr_seq_T03R0101_004 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -396,7 +396,7 @@
       "mvt": 4,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03R0101_004",
+      "scr": "_EV_scr_seq_T03R0101_003 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -413,7 +413,7 @@
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": "_EV_scr_seq_T03R0101_003",
+      "scr": "_EV_scr_seq_T03R0101_002 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -430,7 +430,7 @@
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_CAMERON",
-      "scr": "_EV_scr_seq_T03R0101_014",
+      "scr": "_EV_scr_seq_T03R0101_013 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -447,7 +447,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_308",
-      "scr": "_EV_scr_seq_T03R0101_016",
+      "scr": "_EV_scr_seq_T03R0101_015 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -464,7 +464,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_317",
-      "scr": 20,
+      "scr": "_EV_scr_seq_T03R0101_019 + 1",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -487,7 +487,7 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_T03R0101_017",
+      "scr": "_EV_scr_seq_T03R0101_016 + 1",
       "x": 25,
       "y": 6,
       "w": 1,

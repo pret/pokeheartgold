@@ -29,13 +29,13 @@ ScrCmd_394: ; 0x0204EBE8
 	mov r3, #0
 	bl sub_0203E7F4
 	str r0, [r6]
-	ldr r1, _0204EC2C ; =sub_020429F8
+	ldr r1, _0204EC2C ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0204EC2C: .word sub_020429F8
+_0204EC2C: .word ScrNative_WaitApplication
 	thumb_func_end ScrCmd_394
 
 	thumb_func_start ScrCmd_395
@@ -152,7 +152,7 @@ sub_0204ECD0: ; 0x0204ECD0
 	ldr r0, [r0]
 	add r1, r4, #0
 	bl sub_0203F9C4
-	ldr r1, _0204ED38 ; =sub_020429F8
+	ldr r1, _0204ED38 ; =ScrNative_WaitApplication
 	add r0, r5, #0
 	bl SetupNativeScript
 	add r0, r6, #0
@@ -160,7 +160,7 @@ sub_0204ECD0: ; 0x0204ECD0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0204ED38: .word sub_020429F8
+_0204ED38: .word ScrNative_WaitApplication
 	thumb_func_end sub_0204ECD0
 
 	thumb_func_start ScrCmd_467

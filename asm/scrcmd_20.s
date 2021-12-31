@@ -765,7 +765,7 @@ sub_0204F3F8: ; 0x0204F3F8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _0204F40A
 	mov r0, #1
@@ -871,7 +871,7 @@ sub_0204F4D8: ; 0x0204F4D8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl sub_020505A0
+	bl FieldSys_ApplicationIsRunning
 	cmp r0, #0
 	beq _0204F4EA
 	mov r0, #3

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T07GYM0101.h",
   "bgs": [
     {
-      "scr": "_EV_scr_seq_T07GYM0101_002",
+      "scr": "_EV_scr_seq_T07GYM0101_001 + 1",
       "type": 0,
       "x": 5,
       "y": 44,
@@ -10,7 +10,7 @@
       "dir": 0
     },
     {
-      "scr": "_EV_scr_seq_T07GYM0101_002",
+      "scr": "_EV_scr_seq_T07GYM0101_001 + 1",
       "type": 0,
       "x": 9,
       "y": 44,
@@ -161,7 +161,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_2F2",
-      "scr": "_EV_scr_seq_T07GYM0101_001",
+      "scr": "_EV_scr_seq_T07GYM0101_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

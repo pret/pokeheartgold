@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R06.h",
   "bgs": [
     {
-      "scr": 2,
+      "scr": "_EV_scr_seq_R06_001 + 1",
       "type": 1,
       "x": 1311,
       "y": 266,
@@ -85,7 +85,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_258",
-      "scr": "_EV_scr_seq_R06_001",
+      "scr": "_EV_scr_seq_R06_000 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
