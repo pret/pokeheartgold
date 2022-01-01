@@ -32,8 +32,6 @@ else
 $(SCRIPT_BINS):
 endif
 
-$(SCRIPT_HEADS): %.h: %.bin
-
 $(SCRIPT_NARC): $(SCRIPT_BINS) check_scripts
 
 check_scripts:
@@ -42,4 +40,4 @@ ifeq ($(COMPARE),1)
 endif
 
 # Once this has been reversed, uncomment the below
-FS_CLEAN_TARGETS += $(SCRIPT_NARC) $(SCRIPT_BINS) $(SCRIPT_DEPS)
+FS_CLEAN_TARGETS += $(SCRIPT_NARC) $(SCRIPT_BINS) $(SCRIPT_OBJS) $(SCRIPT_DEPS)

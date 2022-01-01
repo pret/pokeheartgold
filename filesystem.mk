@@ -390,12 +390,10 @@ NITROFS_FILES := \
 # Temporary names for now
 define arc_strip_name
 $(2): $(1)
+SRC_ARCS  += $(1)
 DIFF_ARCS += $(2)
 .PHONY: $(2)
 endef
-
-NARCS := $(filter %.narc,$(NITROFS_FILES))
-NAIXS := $(NARCS:%.narc=%.naix)
 
 $(eval $(call arc_strip_name,files/poketool/personal/personal.narc,files/a/0/0/2))
 $(eval $(call arc_strip_name,files/poketool/personal/growtbl.narc,files/a/0/0/3))
@@ -437,6 +435,9 @@ $(DIFF_ARCS):
 	cp $< $@
 
 $(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
+
+NARCS := $(filter %.narc,$(NITROFS_FILES) $(SRC_ARCS))
+NAIXS := $(NARCS:%.narc=%.naix)
 
 CSV2BINFLAGS := -i $(WORK_DIR)/include --naix
 
