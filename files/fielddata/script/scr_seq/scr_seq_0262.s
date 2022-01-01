@@ -17,7 +17,7 @@
 scr_seq_0262_000:
 	scrcmd_609
 	lockall
-	scrcmd_721 32780
+	scrcmd_721 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _006A
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -46,12 +46,12 @@ _006A:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_717 32780
+	scrcmd_717 VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, _00B7
-	scrcmd_718 0, 32780
+	scrcmd_718 0, VAR_SPECIAL_x800C
 	npc_msg msg_0427_00005
 	waitbutton
 _00B5:
@@ -64,10 +64,10 @@ _00B7:
 scr_seq_0262_001:
 	scrcmd_609
 	lockall
-	scrcmd_719 32768, 32769
+	scrcmd_719 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, _0114
-	scrcmd_718 0, 32768
+	scrcmd_718 0, VAR_SPECIAL_x8000
 	npc_msg msg_0427_00006
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -76,7 +76,7 @@ scr_seq_0262_001:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_720 32769
+	scrcmd_720 VAR_SPECIAL_x8001
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	npc_msg msg_0427_00007
@@ -90,7 +90,7 @@ _0114:
 
 _011A:
 	scrcmd_447 1, 0
-	comparevartovalue VAR_UNK_40E3, 3
+	comparevartovalue VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
 	gotoif ne, _0155
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -106,7 +106,7 @@ _0155:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 _0179:
-	setvar VAR_UNK_40E3, 2
+	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2
 	return
 
 scr_seq_0262_002:
@@ -140,7 +140,7 @@ scr_seq_0262_004:
 	end
 
 scr_seq_0262_005:
-	setvar VAR_UNK_40E3, 2
+	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2
 	scrcmd_447 1, 0
 	end
 

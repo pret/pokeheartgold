@@ -78,7 +78,7 @@ _00E2:
 	scrcmd_464 0
 	scrcmd_464 1
 	wait 15, VAR_SPECIAL_x800C
-	clearflag FLAG_UNK_1C8
+	clearflag FLAG_HIDE_BURNED_TOWER_EUSINE
 	play_se SEQ_SE_DP_KAIDAN2
 	show_person obj_D18R0102_minaki
 	lock obj_D18R0102_minaki
@@ -123,7 +123,7 @@ _01D4:
 	wait 2, VAR_SPECIAL_x800C
 	hide_person obj_D18R0102_minaki
 	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_UNK_1C8
+	setflag FLAG_HIDE_BURNED_TOWER_EUSINE
 	setflag FLAG_UNK_1C7
 	setflag FLAG_UNK_1CC
 	setflag FLAG_UNK_1DE

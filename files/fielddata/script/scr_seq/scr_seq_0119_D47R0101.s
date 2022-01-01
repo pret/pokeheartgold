@@ -73,7 +73,7 @@ _00EE:
 	apply_movement obj_D47R0101_counterm_5, _01F4
 	wait_movement
 	call _08B7
-	setvar VAR_UNK_40E3, 0
+	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg msg_0135_D47R0101_00008
 	npc_msg msg_0135_D47R0101_00009
 	waitbutton
@@ -103,7 +103,7 @@ _017E:
 	apply_movement obj_player, _01BC
 	wait_movement
 	call _08B7
-	setvar VAR_UNK_40E3, 0
+	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 0
 	npc_msg msg_0135_D47R0101_00009
 	waitbutton
 	closemsg
@@ -554,7 +554,7 @@ _0773:
 	apply_movement obj_player, _08D0
 	wait_movement
 	call _08B7
-	setvar VAR_UNK_40E3, 1
+	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
 	scrcmd_447 0, 0
 	scrcmd_240 173, 1, 5, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
@@ -943,7 +943,7 @@ _0CCC:
 	apply_movement obj_player, _08D0
 	wait_movement
 	call _08B7
-	setvar VAR_UNK_40E3, 3
+	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
 	scrcmd_447 0, 1
 	scrcmd_240 173, 2, 19, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2

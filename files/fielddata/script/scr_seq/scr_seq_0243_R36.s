@@ -44,7 +44,7 @@ _005C:
 scr_seq_R36_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	checkflag FLAG_UNK_1D0
+	checkflag FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL
 	gotoif FALSE, _0261
 	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -147,7 +147,7 @@ _0225:
 _022F:
 	hide_person obj_R36_gsgirl1_2
 	setflag FLAG_UNK_1CF
-	clearflag FLAG_UNK_1D0
+	clearflag FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL
 	releaseall
 	end
 

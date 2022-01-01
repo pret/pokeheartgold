@@ -75,7 +75,7 @@
       "ovid": "SPRITE_MINAKI",
       "mvt": 16,
       "type": 0,
-      "flag": "FLAG_UNK_1C8",
+      "flag": "FLAG_HIDE_BURNED_TOWER_EUSINE",
       "scr": 0,
       "dirn": 2,
       "eye": 0,

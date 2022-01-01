@@ -239,7 +239,7 @@
 #define VAR_UNK_40E0                 0x40E0
 #define VAR_UNK_40E1                 0x40E1
 #define VAR_UNK_40E2                 0x40E2
-#define VAR_UNK_40E3                 0x40E3
+#define VAR_SCENE_SAFARI_ZONE_ENTRANCE                 0x40E3
 #define VAR_UNK_40E4                 0x40E4
 #define VAR_UNK_40E5                 0x40E5
 #define VAR_UNK_40E6                 0x40E6

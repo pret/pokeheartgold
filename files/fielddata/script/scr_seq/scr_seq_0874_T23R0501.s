@@ -17,11 +17,11 @@
 scr_seq_T23R0501_000:
 	checkflag FLAG_UNK_07B
 	gotoif TRUE, _002F
-	setflag FLAG_UNK_1AB
+	setflag FLAG_HIDE_AZALEA_SLOWPOKES
 	end
 
 _002F:
-	clearflag FLAG_UNK_1AB
+	clearflag FLAG_HIDE_AZALEA_SLOWPOKES
 	end
 
 scr_seq_T23R0501_005:

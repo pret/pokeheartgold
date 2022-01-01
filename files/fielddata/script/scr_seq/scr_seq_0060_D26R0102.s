@@ -89,7 +89,7 @@ _0107:
 	npc_msg msg_0091_D26R0102_00000
 	closemsg
 	clearflag FLAG_UNK_19E
-	clearflag FLAG_UNK_1AB
+	clearflag FLAG_HIDE_AZALEA_SLOWPOKES
 	setflag FLAG_UNK_07B
 	setvar VAR_UNK_4075, 1
 	setvar VAR_UNK_4080, 2
@@ -106,9 +106,9 @@ _0107:
 	setflag FLAG_UNK_1AA
 	setflag FLAG_UNK_1D5
 	setflag FLAG_UNK_1AC
-	clearflag FLAG_UNK_1AD
-	clearflag FLAG_UNK_1A7
-	clearflag FLAG_UNK_1A8
+	clearflag FLAG_HIDE_ILEX_APPRENTICE
+	clearflag FLAG_HIDE_FARFETCHD_1_LOST
+	clearflag FLAG_HIDE_FARFETCHD_2_LOST
 	setvar VAR_UNK_40F4, 1
 	releaseall
 	end

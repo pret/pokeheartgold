@@ -70,14 +70,14 @@ _00D0:
 	setvar VAR_TEMP_x4002, 0
 	setvar VAR_TEMP_x4003, 0
 	setvar VAR_TEMP_x4004, 0
-	checkflag FLAG_UNK_07D
+	checkflag FLAG_FOUND_FIRST_FARFETCHD
 	gotoif TRUE, _0124
-	checkflag FLAG_UNK_07E
+	checkflag FLAG_FOUND_SECOND_FARFETCHD
 	gotoif TRUE, _0145
 	end
 
 _0124:
-	checkflag FLAG_UNK_07E
+	checkflag FLAG_FOUND_SECOND_FARFETCHD
 	gotoif TRUE, _0137
 	setvar VAR_UNK_4099, 2
 	end
@@ -230,11 +230,11 @@ _0346:
 	closemsg
 	setvar VAR_UNK_4099, 2
 	setvar VAR_UNK_409B, 2
-	setflag FLAG_UNK_1A7
-	setflag FLAG_UNK_07D
-	checkflag FLAG_UNK_07E
+	setflag FLAG_HIDE_FARFETCHD_1_LOST
+	setflag FLAG_FOUND_FIRST_FARFETCHD
+	checkflag FLAG_FOUND_SECOND_FARFETCHD
 	gotoif TRUE, _1207
-	clearflag FLAG_UNK_1D3
+	clearflag FLAG_HIDE_FARFETCHD_1_FOUND
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -590,17 +590,17 @@ _08DF:
 	npc_msg msg_0115_D36R0101_00037
 	waitbutton
 	closemsg
-	checkflag FLAG_UNK_07D
+	checkflag FLAG_FOUND_FIRST_FARFETCHD
 	callif FALSE, _097A
 	setvar VAR_UNK_409A, 2
 	setvar VAR_UNK_409C, 2
 	setvar VAR_UNK_409D, 2
 	setvar VAR_UNK_409E, 2
-	setflag FLAG_UNK_1A8
-	setflag FLAG_UNK_07E
-	checkflag FLAG_UNK_07D
+	setflag FLAG_HIDE_FARFETCHD_2_LOST
+	setflag FLAG_FOUND_SECOND_FARFETCHD
+	checkflag FLAG_FOUND_FIRST_FARFETCHD
 	gotoif TRUE, _1207
-	clearflag FLAG_UNK_1D3
+	clearflag FLAG_HIDE_FARFETCHD_1_FOUND
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -1149,17 +1149,17 @@ _10E1:
 	goto _0F0B
 	.byte 0x02, 0x00
 scr_seq_D36R0101_010:
-	checkflag FLAG_UNK_07D
+	checkflag FLAG_FOUND_FIRST_FARFETCHD
 	gotoif TRUE, _1104
 	goto _1115
 
 _1104:
-	checkflag FLAG_UNK_07E
+	checkflag FLAG_FOUND_SECOND_FARFETCHD
 	gotoif TRUE, _1126
 	goto _1139
 
 _1115:
-	checkflag FLAG_UNK_07E
+	checkflag FLAG_FOUND_SECOND_FARFETCHD
 	gotoif TRUE, _1139
 	goto _114C
 
@@ -1248,9 +1248,9 @@ _11FD:
 	end
 
 _1207:
-	clearflag FLAG_UNK_1AF
+	clearflag FLAG_HIDE_ILEX_CUT_MASTER
 	show_person obj_D36R0101_gsfighter
-	clearflag FLAG_UNK_1D4
+	clearflag FLAG_HIDE_FARFETCHD_2_FOUND
 	wait 20, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -1269,12 +1269,12 @@ _1207:
 	npc_msg msg_0115_D36R0101_00006
 	goto_if_no_item_space ITEM_HM01, 1, _12C9
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_1AF
-	setflag FLAG_UNK_1AD
-	setflag FLAG_UNK_1A7
-	setflag FLAG_UNK_1A8
-	setflag FLAG_UNK_1D3
-	setflag FLAG_UNK_1D4
+	setflag FLAG_HIDE_ILEX_CUT_MASTER
+	setflag FLAG_HIDE_ILEX_APPRENTICE
+	setflag FLAG_HIDE_FARFETCHD_1_LOST
+	setflag FLAG_HIDE_FARFETCHD_2_LOST
+	setflag FLAG_HIDE_FARFETCHD_1_FOUND
+	setflag FLAG_HIDE_FARFETCHD_2_FOUND
 	setflag FLAG_UNK_080
 	clearflag FLAG_UNK_1AE
 	clearflag FLAG_UNK_1AC

@@ -529,12 +529,35 @@
 #define std_hiddenitem_w20_deepseascale                 8229
 #define std_hiddenitem_r45_r46_pp_max                   8230
 
+#define _std_safari                     8800
+#define std_safari_place_object         8800
+#define std_safari_remove_object        8801
+#define std_safari_steps_out            8802
+#define std_safari_balls_out            8803
+#define std_safari_storage_out          8804
+#define std_safari_enter                8805
+#define std_safari_exit                 8806
+
 #define _std_chatot                     8900
 
-#define _std_communication              9000
+#define _std_comm_reception             9000
 #define std_wireless_colosseum          9001
 #define std_union_room                  9003
 #define std_trainer_card_explain        9017
+
+#define _std_colosseum                  9100
+
+#define _std_wifi_reception             9200
+
+#define _std_group                      9300
+#define std_group                       9300
+
+#define _std_daycare                    9500
+#define std_daycare_man                 9500
+#define std_daycare_lady                9501
+
+#define _std_init                       9600
+#define std_init                        9600
 
 #define _std_dex_evaluation             9950
 #define std_via_pc_evaluate_dex         9950

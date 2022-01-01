@@ -317,8 +317,8 @@ _04DC:
 	wait_movement
 	hide_person obj_R29_var_2
 	hide_person obj_R29_tsure_poke_611
-	setflag FLAG_UNK_1A4
-	setflag FLAG_UNK_1A5
+	setflag FLAG_HIDE_ROUTE_29_FRIEND
+	setflag FLAG_HIDE_ROUTE_29_MARILL
 	setvar VAR_UNK_408B, 0
 	setflag FLAG_UNK_09A
 	releaseall

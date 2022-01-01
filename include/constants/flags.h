@@ -134,8 +134,8 @@
 #define FLAG_UNK_07A                 0x7A
 #define FLAG_UNK_07B                 0x7B
 #define FLAG_UNK_07C                 0x7C
-#define FLAG_UNK_07D                 0x7D
-#define FLAG_UNK_07E                 0x7E
+#define FLAG_FOUND_FIRST_FARFETCHD                 0x7D
+#define FLAG_FOUND_SECOND_FARFETCHD                 0x7E
 #define FLAG_UNK_07F                 0x7F
 #define FLAG_UNK_080                 0x80
 #define FLAG_UNK_081                 0x81
@@ -431,18 +431,18 @@
 #define FLAG_HIDE_NEW_BARK_MARILL                 0x1A1
 #define FLAG_HIDE_NEW_BARK_FRIEND                 0x1A2
 #define FLAG_UNK_1A3                 0x1A3
-#define FLAG_UNK_1A4                 0x1A4
-#define FLAG_UNK_1A5                 0x1A5
+#define FLAG_HIDE_ROUTE_29_FRIEND                 0x1A4
+#define FLAG_HIDE_ROUTE_29_MARILL                 0x1A5
 #define FLAG_HIDE_ELMS_LAB_FRIEND                 0x1A6
-#define FLAG_UNK_1A7                 0x1A7
-#define FLAG_UNK_1A8                 0x1A8
+#define FLAG_HIDE_FARFETCHD_1_LOST                 0x1A7
+#define FLAG_HIDE_FARFETCHD_2_LOST                 0x1A8
 #define FLAG_UNK_1A9                 0x1A9
 #define FLAG_UNK_1AA                 0x1AA
-#define FLAG_UNK_1AB                 0x1AB
+#define FLAG_HIDE_AZALEA_SLOWPOKES                 0x1AB
 #define FLAG_UNK_1AC                 0x1AC
-#define FLAG_UNK_1AD                 0x1AD
+#define FLAG_HIDE_ILEX_APPRENTICE                 0x1AD
 #define FLAG_UNK_1AE                 0x1AE
-#define FLAG_UNK_1AF                 0x1AF
+#define FLAG_HIDE_ILEX_CUT_MASTER                 0x1AF
 #define FLAG_UNK_1B0                 0x1B0
 #define FLAG_UNK_1B1                 0x1B1
 #define FLAG_UNK_1B2                 0x1B2
@@ -467,7 +467,7 @@
 #define FLAG_UNK_1C5                 0x1C5
 #define FLAG_UNK_1C6                 0x1C6
 #define FLAG_UNK_1C7                 0x1C7
-#define FLAG_UNK_1C8                 0x1C8
+#define FLAG_HIDE_BURNED_TOWER_EUSINE                 0x1C8
 #define FLAG_UNK_1C9                 0x1C9
 #define FLAG_UNK_1CA                 0x1CA
 #define FLAG_UNK_1CB                 0x1CB
@@ -475,11 +475,11 @@
 #define FLAG_UNK_1CD                 0x1CD
 #define FLAG_UNK_1CE                 0x1CE
 #define FLAG_UNK_1CF                 0x1CF
-#define FLAG_UNK_1D0                 0x1D0
+#define FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL                 0x1D0
 #define FLAG_UNK_1D1                 0x1D1
 #define FLAG_UNK_1D2                 0x1D2
-#define FLAG_UNK_1D3                 0x1D3
-#define FLAG_UNK_1D4                 0x1D4
+#define FLAG_HIDE_FARFETCHD_1_FOUND                 0x1D3
+#define FLAG_HIDE_FARFETCHD_2_FOUND                 0x1D4
 #define FLAG_UNK_1D5                 0x1D5
 #define FLAG_UNK_1D6                 0x1D6
 #define FLAG_UNK_1D7                 0x1D7
@@ -812,6 +812,7 @@
 #define FLAG_UNK_31E                 0x31E
 #define FLAG_UNK_31F                 0x31F
 
+// Hidden items
 #define HIDDEN_ITEMS_FLAG_BASE          800
 #define FLAG_HIDDENITEM_T20_POTION                     0x320
 #define FLAG_HIDDENITEM_R29_R30_T21_NUGGET             0x321
@@ -1378,7 +1379,8 @@
 #define FLAG_UNK_54E                 0x54E
 #define FLAG_UNK_54F                 0x54F
 
-#define TRAINER_FLAG_BASE              0x550
+// Trainer flags
+#define TRAINER_FLAG_BASE            0x550
 #define FLAG_TRAINER(tr)               (TRAINER_FLAG_BASE+(tr))
 
 #define FLAG_UNK_82E                 0x82E
@@ -1687,11 +1689,13 @@
 #define FLAG_UNK_95D                 0x95D
 #define FLAG_UNK_95E                 0x95E
 #define FLAG_UNK_95F                 0x95F
+
+// System flags
 #define FLAG_UNK_960                 0x960
-#define FLAG_HEAL_AFTER_BATTLE                 0x961
-#define FLAG_STRENGTH_ACTIVE                 0x962
+#define FLAG_HEAL_AFTER_BATTLE       0x961
+#define FLAG_STRENGTH_ACTIVE         0x962
 #define FLAG_UNK_963                 0x963
-#define FLAG_GAME_CLEAR                 0x964
+#define FLAG_GAME_CLEAR              0x964
 #define FLAG_UNK_965                 0x965
 #define FLAG_UNK_966                 0x966
 #define FLAG_UNK_967                 0x967

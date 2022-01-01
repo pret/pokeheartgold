@@ -4520,33 +4520,33 @@
     {
       "name": "scrcmd_717",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_718",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_719",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_720",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_721",
       "args": [
-        2
+        "var"
       ]
     },
     {
