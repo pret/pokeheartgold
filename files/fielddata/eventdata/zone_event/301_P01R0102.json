@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_P01R0102.h",
   "bgs": [
     {
-      "scr": 8086,
+      "scr": "std_hiddenitem_p01r0102_ultra_ball",
       "type": 2,
       "x": 23,
       "y": 26,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8158,
+      "scr": "std_hiddenitem_p01r0102_nugget",
       "type": 2,
       "x": 13,
       "y": 16,

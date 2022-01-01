@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T31.h",
   "bgs": [
     {
-      "scr": 8116,
+      "scr": "std_hiddenitem_t31_x_sp__def",
       "type": 2,
       "x": 827,
       "y": 263,
@@ -24,8 +24,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4CF",
-      "scr": 7231,
+      "flag": "FLAG_HIDE_ITEMBALL_T31_REAPER_CLOTH",
+      "scr": "std_itemball_t31_reaper_cloth",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D25R0103.h",
   "bgs": [
     {
-      "scr": 8156,
+      "scr": "std_hiddenitem_d25r0103_carbos",
       "type": 2,
       "x": 3,
       "y": 81,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8157,
+      "scr": "std_hiddenitem_d25r0103_ether",
       "type": 2,
       "x": 4,
       "y": 59,
@@ -92,8 +92,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_43A",
-      "scr": 7039,
+      "flag": "FLAG_HIDE_ITEMBALL_D25R0103_ELIXIR",
+      "scr": "std_itemball_d25r0103_elixir",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -109,8 +109,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_43B",
-      "scr": 7040,
+      "flag": "FLAG_HIDE_ITEMBALL_D25R0103_HYPER_POTION",
+      "scr": "std_itemball_d25r0103_hyper_potion",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

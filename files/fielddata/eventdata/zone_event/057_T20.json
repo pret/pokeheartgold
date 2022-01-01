@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8000,
+      "scr": "std_hiddenitem_t20_potion",
       "type": 2,
       "x": 682,
       "y": 391,

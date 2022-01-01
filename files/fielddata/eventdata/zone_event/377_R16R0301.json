@@ -6,7 +6,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,

@@ -329,7 +329,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_052",
+      "name": "openmsg",
       "args": []
     },
     {
@@ -1041,13 +1041,13 @@
       "args": []
     },
     {
-      "name": "scrcmd_168",
+      "name": "get_trainer_path_to_player",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_169",
+      "name": "trainer_step_towards_player",
       "args": [
         2,
         "var"
@@ -1060,9 +1060,9 @@
       ]
     },
     {
-      "name": "scrcmd_171",
+      "name": "get_eye_trainer_num",
       "args": [
-        2,
+        "var",
         "var"
       ]
     },
@@ -1357,7 +1357,7 @@
       ]
     },
     {
-      "name": "scrcmd_216",
+      "name": "get_rematch_msg_params",
       "args": [
         "var",
         "var",
@@ -1365,15 +1365,15 @@
       ]
     },
     {
-      "name": "scrcmd_217",
+      "name": "trainer_is_double_battle",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_218",
+      "name": "encounter_music",
       "args": [
-        "var"
+        "trainer"
       ]
     },
     {
@@ -1394,7 +1394,7 @@
       ]
     },
     {
-      "name": "scrcmd_222",
+      "name": "party_check_for_double",
       "args": [
         "var"
       ]
@@ -1577,7 +1577,7 @@
       ]
     },
     {
-      "name": "scrcmd_251",
+      "name": "catching_tutorial",
       "args": []
     },
     {

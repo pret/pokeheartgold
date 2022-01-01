@@ -178,7 +178,7 @@ _01E3:
 	npc_msg msg_0596_T25R1005_00001
 	setvar VAR_SPECIAL_x8004, 354
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	goto _0219
 
@@ -186,7 +186,7 @@ _01FE:
 	npc_msg msg_0596_T25R1005_00004
 	setvar VAR_SPECIAL_x8004, 348
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	goto _0219
 

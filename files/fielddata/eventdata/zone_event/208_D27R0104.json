@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D27R0104.h",
   "bgs": [
     {
-      "scr": 8066,
+      "scr": "std_hiddenitem_d27r0104_max_potion",
       "type": 2,
       "x": 5,
       "y": 14,
@@ -67,8 +67,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_44A",
-      "scr": 7087,
+      "flag": "FLAG_HIDE_ITEMBALL_D27R0104_ETHER",
+      "scr": "std_itemball_d27r0104_ether",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

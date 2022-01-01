@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8230,
+      "scr": "std_hiddenitem_r45_r46_pp_max",
       "type": 2,
       "x": 640,
       "y": 341,
@@ -117,8 +117,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4C1",
-      "scr": 7165,
+      "flag": "FLAG_HIDE_ITEMBALL_R46_X_SPEED",
+      "scr": "std_itemball_r46_x_speed",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

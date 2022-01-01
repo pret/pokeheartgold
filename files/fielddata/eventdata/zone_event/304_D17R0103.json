@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D17R0103.h",
   "bgs": [
     {
-      "scr": 8062,
+      "scr": "std_hiddenitem_d17r0103_big_mushroom",
       "type": 2,
       "x": 16,
       "y": 8,
@@ -16,8 +16,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_47C",
-      "scr": 7070,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0103_FULL_HEAL",
+      "scr": "std_itemball_d17r0103_full_heal",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

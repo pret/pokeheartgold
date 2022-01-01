@@ -101,7 +101,7 @@ gScriptCmdTable:
 	.word ScrCmd_049                                    ; 049
 	.word ScrCmd_WaitButton                             ; 050
 	.word ScrCmd_051                                    ; 051
-	.word ScrCmd_052                                    ; 052
+	.word ScrCmd_OpenMsg                                    ; 052
 	.word ScrCmd_CloseMsg                               ; 053
 	.word ScrCmd_054                                    ; 054
 	.word ScrCmd_DirectionSignpost                                    ; 055
@@ -217,10 +217,10 @@ gScriptCmdTable:
 	.word ScrCmd_165                                    ; 165
 	.word ScrCmd_166                                    ; 166
 	.word ScrCmd_167                                    ; 167
-	.word ScrCmd_168                                    ; 168
-	.word ScrCmd_169                                    ; 169
+	.word ScrCmd_GetTrainerPathToPlayer                                    ; 168
+	.word ScrCmd_TrainerStepTowardsPlayer                                    ; 169
 	.word ScrCmd_170                                    ; 170
-	.word ScrCmd_171                                    ; 171
+	.word ScrCmd_GetEyeTrainerNum                                    ; 171
 	.word ScrCmd_172                                    ; 172
 	.word ScrCmd_NicknameInput                          ; 173
 	.word ScrCmd_FadeScreen                             ; 174
@@ -265,13 +265,13 @@ gScriptCmdTable:
 	.word ScrCmd_TrainerBattle                          ; 213
 	.word ScrCmd_TrainerMessage                                    ; 214
 	.word ScrCmd_GetTrainerMsgParams                                    ; 215
-	.word ScrCmd_216                                    ; 216
-	.word ScrCmd_217                                    ; 217
-	.word ScrCmd_218                                    ; 218
+	.word ScrCmd_GetRematchMsgParams                                    ; 216
+	.word ScrCmd_TrainerIsDoubleBattle                                    ; 217
+	.word ScrCmd_EncounterMusic                                    ; 218
 	.word ScrCmd_WhiteOut                               ; 219
 	.word ScrCmd_CheckBattleWon                         ; 220
 	.word ScrCmd_221                                    ; 221
-	.word ScrCmd_222                                    ; 222
+	.word ScrCmd_PartyCheckForDouble                                    ; 222
 	.word ScrCmd_223                                    ; 223
 	.word ScrCmd_224                                    ; 224
 	.word ScrCmd_225                                    ; 225
@@ -300,7 +300,7 @@ gScriptCmdTable:
 	.word ScrCmd_GetDexEvalResult                                    ; 248
 	.word ScrCmd_249                                    ; 249
 	.word ScrCmd_250                                    ; 250
-	.word ScrCmd_251                                    ; 251
+	.word ScrCmd_CatchingTutorial                                    ; 251
 	.word ScrCmd_252                                    ; 252
 	.word ScrCmd_253                                    ; 253
 	.word ScrCmd_254                                    ; 254
@@ -2117,8 +2117,8 @@ _02041108:
 _0204110C: .word gMain
 	thumb_func_end sub_020410F0
 
-	thumb_func_start ScrCmd_052
-ScrCmd_052: ; 0x02041110
+	thumb_func_start ScrCmd_OpenMsg
+ScrCmd_OpenMsg: ; 0x02041110
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -2157,7 +2157,7 @@ ScrCmd_052: ; 0x02041110
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_052
+	thumb_func_end ScrCmd_OpenMsg
 
 	thumb_func_start ScrCmd_CloseMsg
 ScrCmd_CloseMsg: ; 0x02041168
@@ -7997,14 +7997,14 @@ ScrCmd_250: ; 0x02043F0C
 	.balign 4, 0
 	thumb_func_end ScrCmd_250
 
-	thumb_func_start ScrCmd_251
-ScrCmd_251: ; 0x02043F48
+	thumb_func_start ScrCmd_CatchingTutorial
+ScrCmd_CatchingTutorial: ; 0x02043F48
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
 	bl sub_02051334
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end ScrCmd_251
+	thumb_func_end ScrCmd_CatchingTutorial
 
 	thumb_func_start ScrCmd_252
 ScrCmd_252: ; 0x02043F54
@@ -14504,7 +14504,7 @@ _020471D4:
 _020471EC:
 	ldrh r0, [r7]
 	bl ScriptNumToTrainerNum
-	bl sub_02040500
+	bl TrainerNumIsDouble
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _02047200
@@ -14512,7 +14512,7 @@ _020471EC:
 	b _02047208
 _02047200:
 	ldrh r0, [r7]
-	bl sub_020404EC
+	bl ScriptNoToDoublePartnerNo
 	strh r5, [r4]
 _02047208:
 	mov r0, #0

@@ -180,7 +180,7 @@ _029C:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _02C3
-	callstd 2008
+	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_ABB
 	setflag FLAG_UNK_092
 	closemsg

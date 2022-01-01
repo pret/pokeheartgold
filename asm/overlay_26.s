@@ -231,7 +231,7 @@ ov26_02259A24: ; 0x02259A24
 	str r0, [sp, #0xc]
 	bl ScriptNumToTrainerNum
 	str r0, [sp, #8]
-	bl sub_02040500
+	bl TrainerNumIsDouble
 	cmp r0, #0
 	bne _02259A54
 	add sp, #0x10

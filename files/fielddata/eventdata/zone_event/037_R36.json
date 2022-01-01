@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8011,
+      "scr": "std_hiddenitem_r36_great_ball",
       "type": 2,
       "x": 391,
       "y": 243,
@@ -184,8 +184,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4FC",
-      "scr": 7066,
+      "flag": "FLAG_HIDE_ITEMBALL_R36_HYPER_POTION",
+      "scr": "std_itemball_r36_hyper_potion",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

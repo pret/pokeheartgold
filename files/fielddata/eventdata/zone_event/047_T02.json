@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 8200,
+      "scr": "std_hiddenitem_t02_pearl",
       "type": 2,
       "x": 1053,
       "y": 247,
@@ -124,7 +124,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,
@@ -141,7 +141,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_011",
+      "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,

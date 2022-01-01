@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D42R0101.h",
   "bgs": [
     {
-      "scr": 8016,
+      "scr": "std_hiddenitem_d42r0101_great_ball",
       "type": 2,
       "x": 14,
       "y": 9,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8017,
+      "scr": "std_hiddenitem_d42r0101_parlyz_heal",
       "type": 2,
       "x": 9,
       "y": 52,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8018,
+      "scr": "std_hiddenitem_d42r0101_big_pearl",
       "type": 2,
       "x": 48,
       "y": 16,
@@ -49,8 +49,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_459",
-      "scr": 7166,
+      "flag": "FLAG_HIDE_ITEMBALL_D42R0101_TM54",
+      "scr": "std_itemball_d42r0101_tm54",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -66,8 +66,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_45A",
-      "scr": 7167,
+      "flag": "FLAG_HIDE_ITEMBALL_D42R0101_REVIVE",
+      "scr": "std_itemball_d42r0101_revive",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

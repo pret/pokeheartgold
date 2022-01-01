@@ -511,7 +511,7 @@ _06D4:
 	goto_if_no_item_space ITEM_POTION, 5, _0805
 	setvar VAR_SPECIAL_x8004, 17
 	setvar VAR_SPECIAL_x8005, 5
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	setvar VAR_SCENE_ELMS_LAB, 2
 	npc_msg msg_0543_T20R0101_00021

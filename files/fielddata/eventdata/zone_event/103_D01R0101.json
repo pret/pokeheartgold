@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D01R0101.h",
   "bgs": [
     {
-      "scr": 8056,
+      "scr": "std_hiddenitem_d01r0101_ultra_ball",
       "type": 2,
       "x": 28,
       "y": 60,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8224,
+      "scr": "std_hiddenitem_d01r0101_protein",
       "type": 2,
       "x": 3,
       "y": 44,
@@ -58,8 +58,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_511",
-      "scr": 7189,
+      "flag": "FLAG_HIDE_ITEMBALL_D01R0101_PP_MAX",
+      "scr": "std_itemball_d01r0101_pp_max",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -75,8 +75,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_512",
-      "scr": 7190,
+      "flag": "FLAG_HIDE_ITEMBALL_D01R0101_ROCK_INCENSE",
+      "scr": "std_itemball_d01r0101_rock_incense",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8111,
+      "scr": "std_hiddenitem_r13_full_heal",
       "type": 2,
       "x": 1386,
       "y": 377,
@@ -227,7 +227,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,
@@ -244,7 +244,7 @@
       "ovid": "SPRITE_GSWOMAN1",
       "mvt": 2,
       "type": 0,
-      "flag": "FLAG_UNK_016",
+      "flag": "FLAG_MAPTEMP_016",
       "scr": 65535,
       "dirn": 2,
       "eye": 0,

@@ -15,11 +15,11 @@ struct ScriptBankMapping {
 };
 
 struct HiddenItemData {
-    u16 unk0;
-    u8 unk2;
+    u16 itemId;
+    u8 quantity;
     u8 unk3;
     u16 unk4;
-    u16 unk6;
+    u16 index;
 };
 
 #include "data/fieldmap.h"
@@ -49,8 +49,8 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     { _std_chatot, NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
     { 8800, NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin},
     { _std_hidden_item, NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
-    { 7000, NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
-    { 5000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
+    { _std_item_ball, NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
+    { _std_npc_trainer_2, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
     { _std_npc_trainer, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
     { _std_apricorn_tree, NARC_scr_seq_scr_seq_0150_bin,  NARC_msg_msg_0023_bin},
     { _std_bookshelves, NARC_scr_seq_scr_seq_0001_bin,  NARC_msg_msg_0020_bin},
@@ -164,7 +164,7 @@ void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, Loc
         *sp0 = sub_0205F24C(a3);
     }
     if (a2 >= 8000 && a2 <= 8799) {
-        sub_020405AC(a1, a2);
+        GetHiddenItemParams(a1, a2);
     }
 }
 
@@ -397,8 +397,8 @@ void ClearTempFieldEventData(UnkSavStruct80 *fsys) {
     u16 *vars;
 
     SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
-    flags = GetFlagAddr(state, FLAG_UNK_001);
-    memset(flags, 0, NUM_TEMP_FLAGS / 8);
+    flags = GetFlagAddr(state, MAPTEMP_FLAG_BASE);
+    memset(flags, 0, NUM_MAPTEMP_FLAGS / 8);
     vars = GetVarAddr(state, TEMP_VAR_BASE);
     memset(vars, 0, NUM_TEMP_VARS * 2);
 }
@@ -426,11 +426,11 @@ u16 ScriptNumToTrainerNum(u16 a0) {
     }
 }
 
-BOOL sub_020404EC(u16 a0) {
+BOOL ScriptNoToDoublePartnerNo(u16 a0) {
     return a0 >= _std_npc_trainer_2;
 }
 
-BOOL sub_02040500(u32 trainer) {
+BOOL TrainerNumIsDouble(u32 trainer) {
     return TrainerData_GetAttr(trainer, TRATTR_DOUBLEBTL) != 0;
 }
 
@@ -450,11 +450,11 @@ void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
 }
 
 u16 HiddenItemScriptNoToFlagId(u16 a0) {
-    return a0 - 8000 + HIDDEN_ITEMS_FLAG_BASE;
+    return a0 - _std_hidden_item + HIDDEN_ITEMS_FLAG_BASE;
 }
 
 u16 HiddenItemScriptNoToHiddenItemIdx(u16 a0) {
-    return a0 - 8000;
+    return a0 - _std_hidden_item;
 }
 
 u8 sub_02040578(u16 a0) {
@@ -463,7 +463,7 @@ u8 sub_02040578(u16 a0) {
     u16 r0 = HiddenItemScriptNoToHiddenItemIdx(a0);
 
     for (i = 0; i < NELEMS(_020FA558); i++) {
-        if (r0 == r4[i].unk6) {
+        if (r0 == r4[i].index) {
             break;
         }
     }
@@ -475,22 +475,22 @@ u8 sub_02040578(u16 a0) {
     return r4[i].unk3;
 }
 
-BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
+BOOL GetHiddenItemParams(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
     int i;
-    u16 r0;
-    const struct HiddenItemData *r3;
-    u16 *r7;
-    u16 *r6;
-    u16 *r4;
+    u16 idx;
+    const struct HiddenItemData *table;
+    u16 *var_8000;
+    u16 *var_8001;
+    u16 *var_8002;
 
-    r7 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8000);
-    r6 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8001);
-    r4 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8002);
-    r3 = _020FA558;
-    r0 = HiddenItemScriptNoToHiddenItemIdx(a1);
+    var_8000 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8000);
+    var_8001 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8001);
+    var_8002 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8002);
+    table = _020FA558;
+    idx = HiddenItemScriptNoToHiddenItemIdx(a1);
 
     for (i = 0; i < NELEMS(_020FA558); i++) {
-        if (r0 == r3[i].unk6) {
+        if (idx == table[i].index) {
             break;
         }
     }
@@ -499,9 +499,9 @@ BOOL sub_020405AC(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
         return FALSE;
     }
 
-    *r7 = r3[i].unk0;
-    *r6 = r3[i].unk2;
-    *r4 = HiddenItemScriptNoToFlagId(a1);
+    *var_8000 = table[i].itemId;
+    *var_8001 = table[i].quantity;
+    *var_8002 = HiddenItemScriptNoToFlagId(a1);
     return TRUE;
 }
 

@@ -37,7 +37,7 @@ scr_seq_D39R0101_000:
 	faceplayer
 	comparevartovalue VAR_UNK_4100, 1
 	gotoif eq, _008A
-	checkflag FLAG_UNK_457
+	checkflag FLAG_HIDE_ITEMBALL_D39R0101_HM07
 	gotoif TRUE, _0084
 	npc_msg msg_0122_D39R0101_00001
 	closemsg
@@ -58,7 +58,7 @@ _008A:
 scr_seq_D39R0101_004:
 	scrcmd_609
 	lockall
-	checkflag FLAG_UNK_457
+	checkflag FLAG_HIDE_ITEMBALL_D39R0101_HM07
 	gotoif TRUE, _00E5
 	apply_movement obj_D39R0101_gsmiddleman1, _0108
 	apply_movement obj_player, _011C

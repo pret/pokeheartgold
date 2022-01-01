@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8098,
+      "scr": "std_hiddenitem_r39_tinymushroom",
       "type": 2,
       "x": 266,
       "y": 191,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8135,
+      "scr": "std_hiddenitem_r39_max_revive",
       "type": 2,
       "x": 259,
       "y": 176,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 8136,
+      "scr": "std_hiddenitem_r39_pp_up",
       "type": 2,
       "x": 271,
       "y": 180,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 8137,
+      "scr": "std_hiddenitem_r39_t26_ultra_ball",
       "type": 2,
       "x": 285,
       "y": 231,
@@ -234,8 +234,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4FF",
-      "scr": 7084,
+      "flag": "FLAG_HIDE_ITEMBALL_R39_TM60",
+      "scr": "std_itemball_r39_tm60",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

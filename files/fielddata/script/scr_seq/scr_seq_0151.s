@@ -221,7 +221,7 @@ _02BC:
 	gotoif ne, _02F3
 	copyvar VAR_SPECIAL_x8004, VAR_UNK_4058
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	setvar VAR_UNK_4058, 0
 	goto _02F8
 

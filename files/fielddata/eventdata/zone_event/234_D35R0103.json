@@ -50,7 +50,7 @@
       "dir": 0
     },
     {
-      "scr": 8054,
+      "scr": "std_hiddenitem_d35r0103_ether",
       "type": 2,
       "x": 20,
       "y": 29,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": 8055,
+      "scr": "std_hiddenitem_d35r0103_rare_candy",
       "type": 2,
       "x": 48,
       "y": 14,
@@ -327,8 +327,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_451",
-      "scr": 7136,
+      "flag": "FLAG_HIDE_ITEMBALL_D35R0103_TM46",
+      "scr": "std_itemball_d35r0103_tm46",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

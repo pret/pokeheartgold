@@ -304,7 +304,7 @@ _04DC:
 	comparevartovalue VAR_TEMP_x4002, 0
 	callif eq, _0559
 	wait 10, VAR_SPECIAL_x800C
-	scrcmd_251
+	catching_tutorial
 	apply_movement obj_R29_var_2, _064C
 	apply_movement obj_R29_tsure_poke_611, _0654
 	wait_movement

@@ -923,7 +923,7 @@ _0CEB:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0D2C
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 _0D2A:
 	end

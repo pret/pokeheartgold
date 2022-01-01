@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D41R0105.h",
   "bgs": [
     {
-      "scr": 8202,
+      "scr": "std_hiddenitem_d41r0105_max_elixir",
       "type": 2,
       "x": 18,
       "y": 1,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8203,
+      "scr": "std_hiddenitem_d41r0105_rare_candy",
       "type": 2,
       "x": 2,
       "y": 1,

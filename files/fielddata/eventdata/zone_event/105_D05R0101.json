@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D05R0101.h",
   "bgs": [
     {
-      "scr": 8060,
+      "scr": "std_hiddenitem_d05r0101_revive",
       "type": 2,
       "x": 38,
       "y": 31,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8059,
+      "scr": "std_hiddenitem_d05r0101_antidote",
       "type": 2,
       "x": 16,
       "y": 8,
@@ -24,8 +24,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4C6",
-      "scr": 7194,
+      "flag": "FLAG_HIDE_ITEMBALL_D05R0101_ELIXIR",
+      "scr": "std_itemball_d05r0101_elixir",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -41,8 +41,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4C7",
-      "scr": 7195,
+      "flag": "FLAG_HIDE_ITEMBALL_D05R0101_TM56",
+      "scr": "std_itemball_d05r0101_tm56",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

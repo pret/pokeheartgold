@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8181,
+      "scr": "std_hiddenitem_r27_ultra_ball",
       "type": 2,
       "x": 858,
       "y": 394,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8182,
+      "scr": "std_hiddenitem_r27_big_mushroom",
       "type": 2,
       "x": 882,
       "y": 396,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8183,
+      "scr": "std_hiddenitem_r26_r27_nugget",
       "type": 2,
       "x": 890,
       "y": 408,
@@ -167,8 +167,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_45D",
-      "scr": 7174,
+      "flag": "FLAG_HIDE_ITEMBALL_R27_RARE_CANDY",
+      "scr": "std_itemball_r27_rare_candy",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -184,8 +184,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_45E",
-      "scr": 7175,
+      "flag": "FLAG_HIDE_ITEMBALL_R27_TM02",
+      "scr": "std_itemball_r27_tm02",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -201,8 +201,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_50D",
-      "scr": 7176,
+      "flag": "FLAG_HIDE_ITEMBALL_R27_DESTINY_KNOT",
+      "scr": "std_itemball_r27_destiny_knot",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

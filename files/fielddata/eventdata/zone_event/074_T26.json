@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8023,
+      "scr": "std_hiddenitem_t26_heart_scale",
       "type": 2,
       "x": 309,
       "y": 256,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 8137,
+      "scr": "std_hiddenitem_r39_t26_ultra_ball",
       "type": 2,
       "x": 285,
       "y": 231,
@@ -124,8 +124,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_51E",
-      "scr": 7085,
+      "flag": "FLAG_HIDE_ITEMBALL_T26_TM57",
+      "scr": "std_itemball_t26_tm57",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

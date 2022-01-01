@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D25R0102.h",
   "bgs": [
     {
-      "scr": 8153,
+      "scr": "std_hiddenitem_d25r0102_x_defense",
       "type": 2,
       "x": 20,
       "y": 43,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8155,
+      "scr": "std_hiddenitem_d25r0102_hp_up",
       "type": 2,
       "x": 24,
       "y": 15,
@@ -92,7 +92,7 @@
       "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_strength",
       "dirn": 0,
       "eye": 0,
@@ -109,8 +109,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_430",
-      "scr": 7038,
+      "flag": "FLAG_HIDE_ITEMBALL_D25R0102_TM39",
+      "scr": "std_itemball_d25r0102_tm39",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -126,8 +126,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_42F",
-      "scr": 7037,
+      "flag": "FLAG_HIDE_ITEMBALL_D25R0102_X_DEFENSE",
+      "scr": "std_itemball_d25r0102_x_defense",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

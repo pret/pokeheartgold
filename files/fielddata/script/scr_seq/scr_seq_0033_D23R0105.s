@@ -146,7 +146,7 @@ _01DA:
 	npc_msg msg_0069_D23R0105_00004
 	setvar VAR_SPECIAL_x8004, 476
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	releaseall
 	setvar VAR_UNK_40E7, 2

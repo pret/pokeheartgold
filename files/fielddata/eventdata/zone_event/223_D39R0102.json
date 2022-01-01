@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D39R0102.h",
   "bgs": [
     {
-      "scr": 8228,
+      "scr": "std_hiddenitem_d39r0102_deepseatooth",
       "type": 2,
       "x": 15,
       "y": 47,
@@ -101,8 +101,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4B9",
-      "scr": 7156,
+      "flag": "FLAG_HIDE_ITEMBALL_D39R0102_IRON",
+      "scr": "std_itemball_d39r0102_iron",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

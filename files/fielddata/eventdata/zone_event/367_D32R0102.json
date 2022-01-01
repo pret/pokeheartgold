@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D32R0102.h",
   "bgs": [
     {
-      "scr": 8161,
+      "scr": "std_hiddenitem_d32r0102_max_ether",
       "type": 2,
       "x": 24,
       "y": 21,

@@ -223,7 +223,7 @@ _0307:
 _030D:
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _0324
-	callstd 2008
+	callstd std_obtain_item_verbose
 	goto _0328
 
 _0324:

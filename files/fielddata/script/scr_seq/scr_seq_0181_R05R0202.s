@@ -54,7 +54,7 @@ _006E:
 	closemsg
 	setvar VAR_SPECIAL_x8004, 391
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 _00BE:
 	npc_msg msg_0331_R05R0202_00005
 	closemsg

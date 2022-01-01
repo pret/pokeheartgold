@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8030,
+      "scr": "std_hiddenitem_d36r0101_antidote",
       "type": 2,
       "x": 15,
       "y": 37,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8031,
+      "scr": "std_hiddenitem_d36r0101_super_potion",
       "type": 2,
       "x": 36,
       "y": 26,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8032,
+      "scr": "std_hiddenitem_d36r0101_full_heal",
       "type": 2,
       "x": 39,
       "y": 12,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 8033,
+      "scr": "std_hiddenitem_d36r0101_ether",
       "type": 2,
       "x": 33,
       "y": 14,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 8211,
+      "scr": "std_hiddenitem_d36r0101_ultra_ball",
       "type": 2,
       "x": 50,
       "y": 30,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": 8212,
+      "scr": "std_hiddenitem_d36r0101_hyper_potion",
       "type": 2,
       "x": 28,
       "y": 26,
@@ -66,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": 8213,
+      "scr": "std_hiddenitem_d36r0101_max_potion",
       "type": 2,
       "x": 10,
       "y": 32,
@@ -74,7 +74,7 @@
       "dir": 4
     },
     {
-      "scr": 8214,
+      "scr": "std_hiddenitem_d36r0101_iron",
       "type": 2,
       "x": 53,
       "y": 48,
@@ -82,7 +82,7 @@
       "dir": 4
     },
     {
-      "scr": 8215,
+      "scr": "std_hiddenitem_d36r0101_max_revive",
       "type": 2,
       "x": 42,
       "y": 17,
@@ -181,7 +181,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,
@@ -198,8 +198,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_435",
-      "scr": 7043,
+      "flag": "FLAG_HIDE_ITEMBALL_D36R0101_REVIVE",
+      "scr": "std_itemball_d36r0101_revive",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -215,8 +215,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_43C",
-      "scr": 7044,
+      "flag": "FLAG_HIDE_ITEMBALL_D36R0101_X_ATTACK",
+      "scr": "std_itemball_d36r0101_x_attack",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -232,8 +232,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_43D",
-      "scr": 7045,
+      "flag": "FLAG_HIDE_ITEMBALL_D36R0101_ANTIDOTE",
+      "scr": "std_itemball_d36r0101_antidote",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -249,8 +249,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_43E",
-      "scr": 7046,
+      "flag": "FLAG_HIDE_ITEMBALL_D36R0101_ETHER",
+      "scr": "std_itemball_d36r0101_ether",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

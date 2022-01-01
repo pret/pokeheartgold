@@ -106,7 +106,7 @@ scr_seq_T03R0101_001:
 	lockall
 	faceplayer
 	scrcmd_784 2, 0
-	checkflag FLAG_UNK_001
+	checkflag FLAG_MAPTEMP_001
 	gotoif TRUE, _0530
 	comparevartovalue VAR_UNK_407F, 0
 	gotoif ne, _0550
@@ -331,7 +331,7 @@ _04F7:
 	goto _0530
 
 _0530:
-	setflag FLAG_UNK_001
+	setflag FLAG_MAPTEMP_001
 	npc_msg msg_0464_T03R0101_00003
 	goto _05FC
 	.byte 0x02, 0x00
@@ -597,7 +597,7 @@ _08F1:
 	takeitem ITEM_ENIGMA_STONE, 1, VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8004, 225
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	apply_movement obj_T03R0101_daigo, _09B8
 	wait_movement

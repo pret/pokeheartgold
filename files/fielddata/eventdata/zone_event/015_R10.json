@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R10.h",
   "bgs": [
     {
-      "scr": 8197,
+      "scr": "std_hiddenitem_r10_zinc",
       "type": 2,
       "x": 1418,
       "y": 183,

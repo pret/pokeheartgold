@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D46R0101.h",
   "bgs": [
     {
-      "scr": 8085,
+      "scr": "std_hiddenitem_d46r0101_rare_candy",
       "type": 2,
       "x": 11,
       "y": 71,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8087,
+      "scr": "std_hiddenitem_d46r0101_super_repel",
       "type": 2,
       "x": 26,
       "y": 41,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8216,
+      "scr": "std_hiddenitem_d46r0101_hyper_potion",
       "type": 2,
       "x": 12,
       "y": 46,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8217,
+      "scr": "std_hiddenitem_d46r0101_rare_candy_2",
       "type": 2,
       "x": 47,
       "y": 46,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8218,
+      "scr": "std_hiddenitem_d46r0101_revive",
       "type": 2,
       "x": 49,
       "y": 18,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 8219,
+      "scr": "std_hiddenitem_d46r0101_ultra_ball",
       "type": 2,
       "x": 32,
       "y": 57,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 8220,
+      "scr": "std_hiddenitem_d46r0101_pp_up",
       "type": 2,
       "x": 50,
       "y": 58,
@@ -81,8 +81,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4D2",
-      "scr": 7214,
+      "flag": "FLAG_HIDE_ITEMBALL_D46R0101_DIRE_HIT",
+      "scr": "std_itemball_d46r0101_dire_hit",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -98,8 +98,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4D3",
-      "scr": 7215,
+      "flag": "FLAG_HIDE_ITEMBALL_D46R0101_BLUE_FLUTE",
+      "scr": "std_itemball_d46r0101_blue_flute",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -115,8 +115,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4D5",
-      "scr": 7216,
+      "flag": "FLAG_HIDE_ITEMBALL_D46R0101_LEAF_STONE",
+      "scr": "std_itemball_d46r0101_leaf_stone",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -132,8 +132,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4D6",
-      "scr": 7217,
+      "flag": "FLAG_HIDE_ITEMBALL_D46R0101_TM77",
+      "scr": "std_itemball_d46r0101_tm77",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -149,7 +149,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,
@@ -166,7 +166,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_011",
+      "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,

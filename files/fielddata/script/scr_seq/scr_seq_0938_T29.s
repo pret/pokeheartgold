@@ -31,10 +31,10 @@ scr_seq_T29_000:
 	gotoif TRUE, _007F
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
-	setflag FLAG_UNK_011
-	setflag FLAG_UNK_013
-	setflag FLAG_UNK_014
-	setflag FLAG_UNK_015
+	setflag FLAG_MAPTEMP_011
+	setflag FLAG_MAPTEMP_013
+	setflag FLAG_MAPTEMP_014
+	setflag FLAG_MAPTEMP_015
 	setflag FLAG_UNK_289
 	setflag FLAG_UNK_28B
 	setflag FLAG_UNK_28C
@@ -49,10 +49,10 @@ _0085:
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	clearflag FLAG_UNK_1FF
-	setflag FLAG_UNK_011
-	setflag FLAG_UNK_013
-	setflag FLAG_UNK_014
-	setflag FLAG_UNK_015
+	setflag FLAG_MAPTEMP_011
+	setflag FLAG_MAPTEMP_013
+	setflag FLAG_MAPTEMP_014
+	setflag FLAG_MAPTEMP_015
 	setflag FLAG_UNK_289
 	setflag FLAG_UNK_28B
 	setflag FLAG_UNK_28C
@@ -303,7 +303,7 @@ scr_seq_T29_001:
 	callif eq, _0466
 	checkflag FLAG_GOT_RED_SCALE
 	gotoif TRUE, _046C
-	scrcmd_052
+	openmsg
 	goto_if_no_item_space ITEM_RED_SCALE, 1, _045C
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_RED_SCALE
@@ -481,7 +481,7 @@ _061B:
 	end
 
 _0657:
-	callstd 2001
+	callstd std_hidden_item_fanfare
 	hide_person VAR_SPECIAL_x800D
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif ne, _0676

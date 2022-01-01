@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D11R0103.h",
   "bgs": [
     {
-      "scr": 8090,
+      "scr": "std_hiddenitem_d11r0103_full_restore",
       "type": 2,
       "x": 5,
       "y": 7,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8091,
+      "scr": "std_hiddenitem_d11r0103_revive",
       "type": 2,
       "x": 42,
       "y": 18,
@@ -75,8 +75,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4E4",
-      "scr": 7224,
+      "flag": "FLAG_HIDE_ITEMBALL_D11R0103_WATER_STONE",
+      "scr": "std_itemball_d11r0103_water_stone",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

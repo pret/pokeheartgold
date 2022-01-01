@@ -1558,7 +1558,7 @@ _182A:
 	end
 
 _1830:
-	callstd 2001
+	callstd std_hidden_item_fanfare
 	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C

@@ -178,7 +178,7 @@ _0294:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _04B0
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	scrcmd_114
 	releaseall
@@ -237,7 +237,7 @@ _038B:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _04B0
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	scrcmd_114
 	releaseall
@@ -296,7 +296,7 @@ _0482:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _04B0
-	callstd 2008
+	callstd std_obtain_item_verbose
 	closemsg
 	scrcmd_114
 	releaseall

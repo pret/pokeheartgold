@@ -356,7 +356,7 @@
 	.short 51
 	.endm
 
-	.macro scrcmd_052
+	.macro openmsg
 	.short 52
 	.endm
 
@@ -986,12 +986,12 @@
 	.short 167
 	.endm
 
-	.macro scrcmd_168 arg0
+	.macro get_trainer_path_to_player arg0
 	.short 168
 	.short \arg0
 	.endm
 
-	.macro scrcmd_169 arg0, arg1
+	.macro trainer_step_towards_player arg0, arg1
 	.short 169
 	.short \arg0
 	.short \arg1
@@ -1002,7 +1002,8 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_171 arg0, arg1
+	; For when one or more trainers see you
+	.macro get_eye_trainer_num arg0, arg1
 	.short 171
 	.short \arg0
 	.short \arg1
@@ -1258,6 +1259,7 @@
 	.short \arg1
 	.endm
 
+	; For when you talk to a trainer
 	.macro get_trainer_num arg0
 	.short 212
 	.short \arg0
@@ -1284,19 +1286,19 @@
 	.short \_1poke
 	.endm
 
-	.macro scrcmd_216 arg0, arg1, arg2
+	.macro get_rematch_msg_params arg0, arg1, arg2
 	.short 216
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_217 arg0
+	.macro trainer_is_double_battle arg0
 	.short 217
 	.short \arg0
 	.endm
 
-	.macro scrcmd_218 arg0
+	.macro encounter_music arg0
 	.short 218
 	.short \arg0
 	.endm
@@ -1317,7 +1319,7 @@
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_222 arg0
+	.macro party_check_for_double arg0
 	.short 222
 	.short \arg0
 	.endm
@@ -1482,7 +1484,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_251
+	.macro catching_tutorial
 	.short 251
 	.endm
 

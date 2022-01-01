@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8012,
+      "scr": "std_hiddenitem_t27_big_mushroom",
       "type": 2,
       "x": 385,
       "y": 170,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 8013,
+      "scr": "std_hiddenitem_t27_tinymushroom",
       "type": 2,
       "x": 379,
       "y": 146,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 8132,
+      "scr": "std_hiddenitem_t27_tinymushroom_2",
       "type": 2,
       "x": 406,
       "y": 163,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": 8133,
+      "scr": "std_hiddenitem_t27_max_potion",
       "type": 2,
       "x": 365,
       "y": 164,

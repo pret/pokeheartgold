@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_168
-ScrCmd_168: ; 0x02049460
+	thumb_func_start ScrCmd_GetTrainerPathToPlayer
+ScrCmd_GetTrainerPathToPlayer: ; 0x02049460
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -93,10 +93,10 @@ _02049500:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_168
+	thumb_func_end ScrCmd_GetTrainerPathToPlayer
 
-	thumb_func_start ScrCmd_169
-ScrCmd_169: ; 0x0204952C
+	thumb_func_start ScrCmd_TrainerStepTowardsPlayer
+ScrCmd_TrainerStepTowardsPlayer: ; 0x0204952C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -149,7 +149,7 @@ _02049582:
 _02049598:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_169
+	thumb_func_end ScrCmd_TrainerStepTowardsPlayer
 
 	thumb_func_start ScrCmd_170
 ScrCmd_170: ; 0x0204959C
@@ -172,8 +172,8 @@ ScrCmd_170: ; 0x0204959C
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_170
 
-	thumb_func_start ScrCmd_171
-ScrCmd_171: ; 0x020495C4
+	thumb_func_start ScrCmd_GetEyeTrainerNum
+ScrCmd_GetEyeTrainerNum: ; 0x020495C4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -212,7 +212,7 @@ _02049610:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_171
+	thumb_func_end ScrCmd_GetEyeTrainerNum
 
 	thumb_func_start ScrCmd_GetTrainerNum
 ScrCmd_GetTrainerNum: ; 0x02049618
@@ -394,7 +394,7 @@ ScrCmd_GetTrainerMsgParams: ; 0x02049750
 	add r5, r0, #0
 	ldrh r0, [r4]
 	bl ScriptNumToTrainerNum
-	bl sub_02040500
+	bl TrainerNumIsDouble
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _020497B2
@@ -404,7 +404,7 @@ ScrCmd_GetTrainerMsgParams: ; 0x02049750
 	b _020497CC
 _020497B2:
 	ldrh r0, [r4]
-	bl sub_020404EC
+	bl ScriptNoToDoublePartnerNo
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _020497C6
@@ -425,8 +425,8 @@ _020497CC:
 	.balign 4, 0
 	thumb_func_end ScrCmd_GetTrainerMsgParams
 
-	thumb_func_start ScrCmd_216
-ScrCmd_216: ; 0x020497D8
+	thumb_func_start ScrCmd_GetRematchMsgParams
+ScrCmd_GetRematchMsgParams: ; 0x020497D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -459,28 +459,28 @@ ScrCmd_216: ; 0x020497D8
 	add r5, r0, #0
 	ldrh r0, [r4]
 	bl ScriptNumToTrainerNum
-	bl sub_02040500
+	bl TrainerNumIsDouble
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _0204983A
-	mov r1, #0
-	mov r0, #0x11
-	add r2, r1, #0
+	mov r1, #TRMSG_INTRO
+	mov r0, #TRMSG_PHONE_REMATCH_INTRO
+	add r2, r1, #TRMSG_INTRO
 	b _02049854
 _0204983A:
 	ldrh r0, [r4]
-	bl sub_020404EC
+	bl ScriptNoToDoublePartnerNo
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _0204984E
-	mov r0, #0x12
-	mov r1, #0
-	mov r2, #6
+	mov r0, #TRMSG_PHONE_REMATCH_DBL_INTRO_1
+	mov r1, #TRMSG_INTRO
+	mov r2, #TRMSG_DBL_1POKE_1
 	b _02049854
 _0204984E:
-	mov r0, #0x13
-	mov r1, #0
-	mov r2, #0xa
+	mov r0, #TRMSG_PHONE_REMATCH_DBL_INTRO_2
+	mov r1, #TRMSG_INTRO
+	mov r2, #TRMSG_DBL_1POKE_2
 _02049854:
 	strh r0, [r7]
 	strh r1, [r6]
@@ -488,10 +488,10 @@ _02049854:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_216
+	thumb_func_end ScrCmd_GetRematchMsgParams
 
-	thumb_func_start ScrCmd_217
-ScrCmd_217: ; 0x02049860
+	thumb_func_start ScrCmd_TrainerIsDoubleBattle
+ScrCmd_TrainerIsDoubleBattle: ; 0x02049860
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -508,15 +508,15 @@ ScrCmd_217: ; 0x02049860
 	add r5, r0, #0
 	ldrh r0, [r4]
 	bl ScriptNumToTrainerNum
-	bl sub_02040500
+	bl TrainerNumIsDouble
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_217
+	thumb_func_end ScrCmd_TrainerIsDoubleBattle
 
-	thumb_func_start ScrCmd_218
-ScrCmd_218: ; 0x02049894
+	thumb_func_start ScrCmd_EncounterMusic
+ScrCmd_EncounterMusic: ; 0x02049894
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -533,12 +533,12 @@ ScrCmd_218: ; 0x02049894
 	bl MapHeader_IsKanto
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_02055098
+	bl Trainer_GetEncounterMusic
 	bl sub_02005304
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_218
+	thumb_func_end ScrCmd_EncounterMusic
 
 	thumb_func_start ScrCmd_WhiteOut
 ScrCmd_WhiteOut: ; 0x020498C8
@@ -635,8 +635,8 @@ ScrCmd_588: ; 0x02049950
 	.balign 4, 0
 	thumb_func_end ScrCmd_588
 
-	thumb_func_start ScrCmd_222
-ScrCmd_222: ; 0x02049980
+	thumb_func_start ScrCmd_PartyCheckForDouble
+ScrCmd_PartyCheckForDouble: ; 0x02049980
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -655,7 +655,7 @@ ScrCmd_222: ; 0x02049980
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_222
+	thumb_func_end ScrCmd_PartyCheckForDouble
 
 	thumb_func_start ScrCmd_223
 ScrCmd_223: ; 0x020499AC

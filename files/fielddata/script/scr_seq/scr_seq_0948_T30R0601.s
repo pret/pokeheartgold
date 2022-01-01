@@ -16,10 +16,10 @@ scr_seq_T30R0601_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_001
+	checkflag FLAG_MAPTEMP_001
 	gotoif TRUE, _0036
 	npc_msg msg_0635_T30R0601_00000
-	setflag FLAG_UNK_001
+	setflag FLAG_MAPTEMP_001
 	goto _0036
 
 _0036:

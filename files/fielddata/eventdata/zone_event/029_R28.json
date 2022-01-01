@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R28.h",
   "bgs": [
     {
-      "scr": 8115,
+      "scr": "std_hiddenitem_r28_full_heal",
       "type": 2,
       "x": 874,
       "y": 262,
@@ -24,8 +24,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_500",
-      "scr": 7230,
+      "flag": "FLAG_HIDE_ITEMBALL_R28_TM35",
+      "scr": "std_itemball_r28_tm35",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -41,7 +41,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_011",
+      "flag": "FLAG_MAPTEMP_011",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,

@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8001,
+      "scr": "std_hiddenitem_r29_r30_t21_nugget",
       "type": 2,
       "x": 572,
       "y": 390,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8225,
+      "scr": "std_hiddenitem_t21_max_revive",
       "type": 2,
       "x": 522,
       "y": 388,

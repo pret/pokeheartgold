@@ -52,7 +52,7 @@ extern BOOL ScrCmd_048(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_049(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_049(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_051(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_052(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_OpenMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_054(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT *ctx);
@@ -168,10 +168,10 @@ extern BOOL ScrCmd_164(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_165(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_166(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_167(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_168(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_169(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetTrainerPathToPlayer(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TrainerStepTowardsPlayer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_170(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_171(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetEyeTrainerNum(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_172(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_FadeScreen(SCRIPTCONTEXT *ctx);
@@ -216,13 +216,13 @@ extern BOOL ScrCmd_GetTrainerNum(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetTrainerMsgParams(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_216(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_217(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_218(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetRematchMsgParams(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TrainerIsDoubleBattle(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_EncounterMusic(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WhiteOut(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckBattleWon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_221(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_222(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartyCheckForDouble(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_223(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_224(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_225(SCRIPTCONTEXT *ctx);
@@ -251,7 +251,7 @@ extern BOOL ScrCmd_247(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetDexEvalResult(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_249(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_250(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_251(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CatchingTutorial(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_252(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_253(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_254(SCRIPTCONTEXT *ctx);
@@ -907,7 +907,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_049,
     ScrCmd_049,
     ScrCmd_051,
-    ScrCmd_052,
+    ScrCmd_OpenMsg,
     ScrCmd_CloseMsg,
     ScrCmd_054,
     ScrCmd_DirectionSignpost,
@@ -1023,10 +1023,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_165,
     ScrCmd_166,
     ScrCmd_167,
-    ScrCmd_168,
-    ScrCmd_169,
+    ScrCmd_GetTrainerPathToPlayer,
+    ScrCmd_TrainerStepTowardsPlayer,
     ScrCmd_170,
-    ScrCmd_171,
+    ScrCmd_GetEyeTrainerNum,
     ScrCmd_172,
     ScrCmd_NicknameInput,
     ScrCmd_FadeScreen,
@@ -1071,13 +1071,13 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_TrainerBattle,
     ScrCmd_TrainerMessage,
     ScrCmd_GetTrainerMsgParams,
-    ScrCmd_216,
-    ScrCmd_217,
-    ScrCmd_218,
+    ScrCmd_GetRematchMsgParams,
+    ScrCmd_TrainerIsDoubleBattle,
+    ScrCmd_EncounterMusic,
     ScrCmd_WhiteOut,
     ScrCmd_CheckBattleWon,
     ScrCmd_221,
-    ScrCmd_222,
+    ScrCmd_PartyCheckForDouble,
     ScrCmd_223,
     ScrCmd_224,
     ScrCmd_225,
@@ -1106,7 +1106,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetDexEvalResult,
     ScrCmd_249,
     ScrCmd_250,
-    ScrCmd_251,
+    ScrCmd_CatchingTutorial,
     ScrCmd_252,
     ScrCmd_253,
     ScrCmd_254,

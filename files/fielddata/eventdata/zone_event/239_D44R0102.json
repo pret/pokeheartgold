@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D44R0102.h",
   "bgs": [
     {
-      "scr": 8081,
+      "scr": "std_hiddenitem_d44r0102_stardust",
       "type": 2,
       "x": 14,
       "y": 12,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8083,
+      "scr": "std_hiddenitem_d44r0102_stardust_3",
       "type": 2,
       "x": 32,
       "y": 49,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8082,
+      "scr": "std_hiddenitem_d44r0102_stardust_2",
       "type": 2,
       "x": 8,
       "y": 22,
@@ -125,8 +125,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_458",
-      "scr": 7159,
+      "flag": "FLAG_HIDE_ITEMBALL_D44R0102_DRAGON_FANG",
+      "scr": "std_itemball_d44r0102_dragon_fang",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -159,8 +159,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4BA",
-      "scr": 7157,
+      "flag": "FLAG_HIDE_ITEMBALL_D44R0102_CALCIUM",
+      "scr": "std_itemball_d44r0102_calcium",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -176,8 +176,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4BB",
-      "scr": 7158,
+      "flag": "FLAG_HIDE_ITEMBALL_D44R0102_MAX_ELIXIR",
+      "scr": "std_itemball_d44r0102_max_elixir",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_W21.h",
   "bgs": [
     {
-      "scr": 8175,
+      "scr": "std_hiddenitem_w21_max_revive",
       "type": 2,
       "x": 1044,
       "y": 412,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8176,
+      "scr": "std_hiddenitem_w21_star_piece",
       "type": 2,
       "x": 1037,
       "y": 436,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8177,
+      "scr": "std_hiddenitem_w21_star_piece_2",
       "type": 2,
       "x": 1042,
       "y": 439,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8114,
+      "scr": "std_hiddenitem_t09_w21_revive",
       "type": 2,
       "x": 1033,
       "y": 481,
@@ -261,7 +261,7 @@
       "ovid": "SPRITE_GSBIGMAN",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_031",
+      "flag": "FLAG_MAPTEMP_031",
       "scr": 65535,
       "dirn": 1,
       "eye": 0,

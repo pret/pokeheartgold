@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8190,
+      "scr": "std_hiddenitem_t10_star_piece",
       "type": 2,
       "x": 910,
       "y": 209,

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D17R0105.h",
   "bgs": [
     {
-      "scr": 8063,
+      "scr": "std_hiddenitem_d17r0105_big_mushroom",
       "type": 2,
       "x": 24,
       "y": 20,
@@ -16,8 +16,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_480",
-      "scr": 7074,
+      "flag": "FLAG_HIDE_ITEMBALL_D17R0105_RARE_CANDY",
+      "scr": "std_itemball_d17r0105_rare_candy",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

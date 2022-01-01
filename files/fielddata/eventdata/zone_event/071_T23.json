@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 8006,
+      "scr": "std_hiddenitem_t23_max_revive",
       "type": 2,
       "x": 421,
       "y": 469,

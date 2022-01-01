@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": 8007,
+      "scr": "std_hiddenitem_r34_hyper_potion",
       "type": 2,
       "x": 363,
       "y": 436,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8008,
+      "scr": "std_hiddenitem_r34_elixir",
       "type": 2,
       "x": 381,
       "y": 417,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": 8009,
+      "scr": "std_hiddenitem_r34_t25_hyper_potion",
       "type": 2,
       "x": 369,
       "y": 380,
@@ -192,8 +192,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_43F",
-      "scr": 7047,
+      "flag": "FLAG_HIDE_ITEMBALL_R34_NUGGET",
+      "scr": "std_itemball_r34_nugget",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -294,8 +294,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4FA",
-      "scr": 7048,
+      "flag": "FLAG_HIDE_ITEMBALL_R34_TM63",
+      "scr": "std_itemball_r34_tm63",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

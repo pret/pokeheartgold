@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": 8122,
+      "scr": "std_hiddenitem_t07_ice_heal",
       "type": 2,
       "x": 1230,
       "y": 272,
@@ -251,7 +251,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,
@@ -268,8 +268,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_519",
-      "scr": 7206,
+      "flag": "FLAG_HIDE_ITEMBALL_T07_TM67",
+      "scr": "std_itemball_t07_tm67",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

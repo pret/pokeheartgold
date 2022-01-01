@@ -535,7 +535,7 @@ _043C:
 	end
 
 _0440:
-	callstd 2001
+	callstd std_hidden_item_fanfare
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1

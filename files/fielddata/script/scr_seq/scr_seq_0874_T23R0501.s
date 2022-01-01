@@ -34,7 +34,7 @@ scr_seq_T23R0501_005:
 	npc_msg msg_0571_T23R0501_00001
 	setvar VAR_SPECIAL_x8004, 492
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_07C
 	releaseall
 	goto _011A

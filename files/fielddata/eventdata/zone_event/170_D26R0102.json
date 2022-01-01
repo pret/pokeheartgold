@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D26R0102.h",
   "bgs": [
     {
-      "scr": 8028,
+      "scr": "std_hiddenitem_d26r0102_super_potion",
       "type": 2,
       "x": 38,
       "y": 15,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8029,
+      "scr": "std_hiddenitem_d26r0102_full_heal",
       "type": 2,
       "x": 36,
       "y": 19,
@@ -160,8 +160,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_433",
-      "scr": 7041,
+      "flag": "FLAG_HIDE_ITEMBALL_D26R0102_SUPER_POTION",
+      "scr": "std_itemball_d26r0102_super_potion",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

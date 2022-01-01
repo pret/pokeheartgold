@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8024,
+      "scr": "std_hiddenitem_w40_great_ball",
       "type": 2,
       "x": 252,
       "y": 300,
@@ -134,8 +134,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4F2",
-      "scr": 7091,
+      "flag": "FLAG_HIDE_ITEMBALL_W40_TM88",
+      "scr": "std_itemball_w40_tm88",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

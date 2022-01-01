@@ -1502,17 +1502,17 @@ scr_seq_0953_738:
 	callif eq, _0E57
 	checktrainerflag VAR_SPECIAL_x8004
 	gotoif TRUE, _0C9C
-	scrcmd_217 VAR_SPECIAL_x800C
+	trainer_is_double_battle VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0C13
-	scrcmd_222 VAR_SPECIAL_x800C
+	party_check_for_double VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0E3B
 	goto _0C13
 	.byte 0x02, 0x00
 _0C13:
-	scrcmd_218 VAR_SPECIAL_x8004
-	scrcmd_052
+	encounter_music VAR_SPECIAL_x8004
+	openmsg
 	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	goto _0C2F
@@ -1558,7 +1558,7 @@ _0C9C:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0CF8
 _0CE0:
-	scrcmd_052
+	openmsg
 	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	waitbutton
@@ -1573,18 +1573,18 @@ _0CF8:
 
 _0D02:
 	copyvar VAR_SPECIAL_x8007, VAR_SPECIAL_x800C
-	scrcmd_217 VAR_SPECIAL_x800C
+	trainer_is_double_battle VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0D32
-	scrcmd_222 VAR_SPECIAL_x800C
+	party_check_for_double VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0E3B
 	goto _0D32
 	.byte 0x02, 0x00
 _0D32:
-	scrcmd_218 VAR_SPECIAL_x8004
-	scrcmd_052
-	scrcmd_216 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	encounter_music VAR_SPECIAL_x8004
+	openmsg
+	get_rematch_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8007
 	goto _0C2F
@@ -1602,7 +1602,7 @@ _0D54:
 	goto _0D93
 
 _0D8F:
-	callstd 2008
+	callstd std_obtain_item_verbose
 _0D93:
 	closemsg
 	releaseall
@@ -1659,7 +1659,7 @@ _0E2F:
 
 _0E3B:
 	get_trainer_num VAR_SPECIAL_x8004
-	scrcmd_052
+	openmsg
 	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8002
 	scrcmd_049
@@ -1719,24 +1719,24 @@ _0EDD:
 	end
 
 _0F0A:
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
-	scrcmd_218 VAR_SPECIAL_x8004
+	encounter_music VAR_SPECIAL_x8004
 	scrcmd_315
-	scrcmd_168 0
+	get_trainer_path_to_player 0
 	call _0F87
 	scrcmd_316
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_052
+	openmsg
 	trainer_message VAR_SPECIAL_x8004, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1176
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
 	scrcmd_317 0
@@ -1747,42 +1747,42 @@ _0F0A:
 	end
 
 _0F87:
-	scrcmd_169 0, VAR_SPECIAL_x800C
+	trainer_step_towards_player 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0F87
 	return
 
 _0F9C:
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif ne, _0FC7
-	scrcmd_171 1, VAR_SPECIAL_x800C
+	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x800C, VAR_TEMP_x4010
 _0FC7:
-	scrcmd_218 VAR_SPECIAL_x8004
-	scrcmd_168 0
-	scrcmd_168 1
+	encounter_music VAR_SPECIAL_x8004
+	get_trainer_path_to_player 0
+	get_trainer_path_to_player 1
 	call _1055
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_052
+	openmsg
 	trainer_message VAR_SPECIAL_x8004, 3
 	closemsg
-	scrcmd_171 1, VAR_SPECIAL_x800C
+	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_052
+	openmsg
 	trainer_message VAR_SPECIAL_x8005, 7
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1176
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
-	scrcmd_171 1, VAR_SPECIAL_x800C
+	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8005
 	call _0D9F
@@ -1792,49 +1792,49 @@ _0FC7:
 	end
 
 _1055:
-	scrcmd_169 0, VAR_SPECIAL_x800C
+	trainer_step_towards_player 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1055
-	scrcmd_169 1, VAR_SPECIAL_x800C
+	trainer_step_towards_player 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1055
 	return
 
 _107D:
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif ne, _10A8
-	scrcmd_171 1, VAR_SPECIAL_x800C
+	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x800C, VAR_TEMP_x4010
 _10A8:
-	scrcmd_218 VAR_SPECIAL_x8004
-	scrcmd_168 0
+	encounter_music VAR_SPECIAL_x8004
+	get_trainer_path_to_player 0
 	call _114C
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_052
+	openmsg
 	trainer_message VAR_SPECIAL_x8004, 0
 	closemsg
-	scrcmd_171 1, VAR_SPECIAL_x800C
+	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_218 VAR_SPECIAL_x8005
-	scrcmd_168 1
+	encounter_music VAR_SPECIAL_x8005
+	get_trainer_path_to_player 1
 	call _1161
-	scrcmd_171 1, VAR_SPECIAL_x800C
+	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	scrcmd_052
+	openmsg
 	trainer_message VAR_SPECIAL_x8005, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1176
-	scrcmd_171 0, VAR_SPECIAL_x800C
+	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
-	scrcmd_171 1, VAR_SPECIAL_x800C
+	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8005
 	call _0D9F
@@ -1844,13 +1844,13 @@ _10A8:
 	end
 
 _114C:
-	scrcmd_169 0, VAR_SPECIAL_x800C
+	trainer_step_towards_player 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _114C
 	return
 
 _1161:
-	scrcmd_169 1, VAR_SPECIAL_x800C
+	trainer_step_towards_player 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1161
 	return

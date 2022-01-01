@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8183,
+      "scr": "std_hiddenitem_r26_r27_nugget",
       "type": 2,
       "x": 890,
       "y": 408,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": 8184,
+      "scr": "std_hiddenitem_r26_stardust",
       "type": 2,
       "x": 923,
       "y": 316,
@@ -142,8 +142,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_45B",
-      "scr": 7177,
+      "flag": "FLAG_HIDE_ITEMBALL_R26_MAX_ELIXIR",
+      "scr": "std_itemball_r26_max_elixir",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

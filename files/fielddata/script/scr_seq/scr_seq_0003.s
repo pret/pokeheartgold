@@ -442,7 +442,7 @@ _05F5:
 	end
 
 scr_seq_0003_005:
-	clearflag FLAG_UNK_020
+	clearflag FLAG_MAPTEMP_020
 	call _0646
 	scrcmd_347 VAR_SPECIAL_x800C
 	closemsg
@@ -455,7 +455,7 @@ scr_seq_0003_024:
 	end
 
 scr_seq_0003_006:
-	setflag FLAG_UNK_020
+	setflag FLAG_MAPTEMP_020
 	call _0646
 	copyvar VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	endstd
@@ -501,9 +501,9 @@ _06C6:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0740
-	checkflag FLAG_UNK_020
+	checkflag FLAG_MAPTEMP_020
 	gotoif FALSE, _076A
-	checkflag FLAG_UNK_020
+	checkflag FLAG_MAPTEMP_020
 	gotoif TRUE, _0775
 	end
 
@@ -516,7 +516,7 @@ _06F2:
 
 _0708:
 	scrcmd_345
-	checkflag FLAG_UNK_020
+	checkflag FLAG_MAPTEMP_020
 	callif TRUE, _0762
 	scrcmd_254 VAR_SPECIAL_x800C
 	scrcmd_346
@@ -552,7 +552,7 @@ _0757:
 	.byte 0x02, 0x00
 _0762:
 	scrcmd_641
-	clearflag FLAG_UNK_020
+	clearflag FLAG_MAPTEMP_020
 	return
 
 _076A:

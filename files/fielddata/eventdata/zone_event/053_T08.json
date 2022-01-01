@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": 8134,
+      "scr": "std_hiddenitem_t08_full_heal",
       "type": 2,
       "x": 1232,
       "y": 413,
@@ -99,7 +99,7 @@
       "ovid": "SPRITE_TREE",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_cut",
       "dirn": 0,
       "eye": 0,

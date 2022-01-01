@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D11R0104.h",
   "bgs": [
     {
-      "scr": 8092,
+      "scr": "std_hiddenitem_d11r0104_stardust",
       "type": 2,
       "x": 38,
       "y": 27,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8210,
+      "scr": "std_hiddenitem_d11r0104_hyper_potion",
       "type": 2,
       "x": 10,
       "y": 9,
@@ -24,7 +24,7 @@
       "ovid": "SPRITE_ROCK",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_010",
+      "flag": "FLAG_MAPTEMP_010",
       "scr": "std_field_strength",
       "dirn": 0,
       "eye": 0,
@@ -143,8 +143,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4E5",
-      "scr": 7225,
+      "flag": "FLAG_HIDE_ITEMBALL_D11R0104_REVIVE",
+      "scr": "std_itemball_d11r0104_revive",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,
@@ -160,8 +160,8 @@
       "ovid": "SPRITE_MONSTARBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_4E6",
-      "scr": 7226,
+      "flag": "FLAG_HIDE_ITEMBALL_D11R0104_BIG_PEARL",
+      "scr": "std_itemball_d11r0104_big_pearl",
       "dirn": 0,
       "eye": 0,
       "unk10": 0,

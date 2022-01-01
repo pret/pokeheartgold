@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D26R0101.h",
   "bgs": [
     {
-      "scr": 8027,
+      "scr": "std_hiddenitem_d26r0101_great_ball",
       "type": 2,
       "x": 17,
       "y": 8,

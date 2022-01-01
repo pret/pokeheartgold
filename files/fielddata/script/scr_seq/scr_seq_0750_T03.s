@@ -64,7 +64,7 @@ _00B0:
 	gotoif ne, _00E6
 	setvar VAR_SPECIAL_x8004, 482
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_094
 	clearflag FLAG_UNK_243
 	setflag FLAG_UNK_245
@@ -73,7 +73,7 @@ _00B0:
 _00E6:
 	setvar VAR_SPECIAL_x8004, 483
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2008
+	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_093
 	clearflag FLAG_UNK_242
 	setflag FLAG_UNK_244

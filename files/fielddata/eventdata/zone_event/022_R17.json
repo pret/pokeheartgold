@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R17.h",
   "bgs": [
     {
-      "scr": 8109,
+      "scr": "std_hiddenitem_r17_hp_up",
       "type": 2,
       "x": 1133,
       "y": 355,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": 8110,
+      "scr": "std_hiddenitem_r17_hyper_potion",
       "type": 2,
       "x": 1129,
       "y": 390,
