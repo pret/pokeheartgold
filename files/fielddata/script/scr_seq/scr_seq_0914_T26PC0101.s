@@ -19,7 +19,7 @@ scr_seq_T26PC0101_000:
 
 scr_seq_T26PC0101_004:
 	checktrainerflag TRAINER_BEAUTY_CHARLOTTE
-	gotoif eq, _00E6
+	gotoif TRUE, _00E6
 	comparevartovalue VAR_TEMP_x4007, 77
 	gotoif eq, _00C4
 	play_se SEQ_SE_DP_SELECT

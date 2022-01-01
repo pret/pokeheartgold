@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H
 #define POKEHEARTGOLD_CONSTANTS_STD_SCRIPT_H
 
+#include "constants/trainers.h"
+
 // The _std_XXX constants are group thresholds for
 // use in fieldmap.c (sScriptBankMapping).
 // The std_XXX constants (no leading underscore)
@@ -27,6 +29,12 @@
 #define _std_bookshelves                2500
 
 #define _std_apricorn_tree              2800
+
+#define _std_npc_trainer                3000
+#define std_trainer(trainer) ((trainer)-FIRST_TRAINER_INDEX+_std_npc_trainer)
+
+#define _std_npc_trainer_2              5000
+#define std_trainer_2(trainer) ((trainer)-FIRST_TRAINER_INDEX+_std_npc_trainer_2)
 
 #define _std_hidden_item                8000
 

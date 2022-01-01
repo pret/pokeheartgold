@@ -251,14 +251,14 @@ _03A8:
 	scrcmd_380 VAR_SPECIAL_x800C, 6
 	setvar VAR_SPECIAL_x8004, 0
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_403 32772, 1
+	scrcmd_403 VAR_SPECIAL_x8004, 1
 	return
 
 _03C2:
 	scrcmd_380 VAR_SPECIAL_x800C, 6
 	setvar VAR_SPECIAL_x8004, 18
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_403 32772, 1
+	scrcmd_403 VAR_SPECIAL_x8004, 1
 	return
 
 _03DC:
@@ -268,7 +268,7 @@ _03DC:
 	copyvar VAR_TEMP_x4001, VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8004, 1
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_406 32772
+	scrcmd_406 VAR_SPECIAL_x8004
 	return
 
 scr_seq_D37R0101_000:

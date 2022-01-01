@@ -212,10 +212,10 @@ extern BOOL ScrCmd_208(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_209(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferMapSecName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_211(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_212(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetTrainerNum(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_214(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_215(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TrainerMessage(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetTrainerMsgParams(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_216(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_217(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_218(SCRIPTCONTEXT *ctx);
@@ -460,7 +460,7 @@ extern BOOL ScrCmd_456(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_457(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_458(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_459(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_460(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_462(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_463(SCRIPTCONTEXT *ctx);
@@ -1067,10 +1067,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_209,
     ScrCmd_BufferMapSecName,
     ScrCmd_211,
-    ScrCmd_212,
+    ScrCmd_GetTrainerNum,
     ScrCmd_TrainerBattle,
-    ScrCmd_214,
-    ScrCmd_215,
+    ScrCmd_TrainerMessage,
+    ScrCmd_GetTrainerMsgParams,
     ScrCmd_216,
     ScrCmd_217,
     ScrCmd_218,
@@ -1315,7 +1315,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_457,
     ScrCmd_458,
     ScrCmd_459,
-    ScrCmd_460,
+    ScrCmd_LoadPhoneDat,
     ScrCmd_GetPhoneContactMsgIds,
     ScrCmd_462,
     ScrCmd_463,

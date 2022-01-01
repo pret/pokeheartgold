@@ -18244,7 +18244,7 @@ sub_0206426C: ; 0x0206426C
 	str r0, [r5, #8]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	str r0, [r5, #0xc]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -18592,7 +18592,7 @@ sub_02064508: ; 0x02064508
 	bl sub_0205F27C
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	pop {r3, pc}
 	thumb_func_end sub_02064508
 

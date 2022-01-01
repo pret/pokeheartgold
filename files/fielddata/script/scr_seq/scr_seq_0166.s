@@ -193,7 +193,7 @@ _0254:
 	.byte 0x02, 0x00
 _0295:
 	npc_msg msg_0043_00212
-	scrcmd_063 32780
+	scrcmd_063 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0254
 	closemsg
@@ -212,7 +212,7 @@ _02DF:
 	.byte 0x02, 0x00
 _02E7:
 	npc_msg msg_0043_00212
-	scrcmd_063 32780
+	scrcmd_063 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0254
 	closemsg

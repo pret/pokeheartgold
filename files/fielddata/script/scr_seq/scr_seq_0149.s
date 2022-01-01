@@ -126,7 +126,7 @@ scr_seq_0149_000:
 	setflag FLAG_UNK_2DE
 	setflag FLAG_UNK_2DC
 	setflag FLAG_UNK_2DF
-	setflag FLAG_UNK_199
+	setflag FLAG_HIDE_ROUTE_30_YOUNGSTER_JOEY
 	setflag FLAG_UNK_2E0
 	setflag FLAG_UNK_2E4
 	setflag FLAG_UNK_2E6

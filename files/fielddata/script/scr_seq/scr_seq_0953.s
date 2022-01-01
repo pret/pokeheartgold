@@ -1489,8 +1489,8 @@ scr_seq_0953_738:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_212 VAR_SPECIAL_x8004
-	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
+	get_trainer_num VAR_SPECIAL_x8004
+	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	scrcmd_574 VAR_SPECIAL_x8001, VAR_SPECIAL_x800D
 	comparevartovalue VAR_SPECIAL_x8001, 51
 	callif eq, _0E57
@@ -1501,7 +1501,7 @@ scr_seq_0953_738:
 	comparevartovalue VAR_SPECIAL_x8001, 54
 	callif eq, _0E57
 	checktrainerflag VAR_SPECIAL_x8004
-	gotoif eq, _0C9C
+	gotoif TRUE, _0C9C
 	scrcmd_217 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0C13
@@ -1513,8 +1513,8 @@ scr_seq_0953_738:
 _0C13:
 	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_052
-	scrcmd_215 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
-	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
+	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	goto _0C2F
 	.byte 0x02, 0x00
 _0C2F:
@@ -1525,9 +1525,9 @@ _0C2F:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0D99
 	copyvar VAR_TEMP_x4012, VAR_SPECIAL_x8004
-	scrcmd_212 VAR_SPECIAL_x8006
+	get_trainer_num VAR_SPECIAL_x8006
 	checktrainerflag VAR_SPECIAL_x8006
-	gotoif eq, _0C7F
+	gotoif TRUE, _0C7F
 	scrcmd_317 1
 	call _0D9F
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -1559,8 +1559,8 @@ _0C9C:
 	gotoif eq, _0CF8
 _0CE0:
 	scrcmd_052
-	scrcmd_215 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
-	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
+	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	waitbutton
 	closemsg
 	releaseall
@@ -1585,7 +1585,7 @@ _0D32:
 	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_052
 	scrcmd_216 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
-	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
+	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8007
 	goto _0C2F
 	.byte 0x02, 0x00
@@ -1658,10 +1658,10 @@ _0E2F:
 	return
 
 _0E3B:
-	scrcmd_212 VAR_SPECIAL_x8004
+	get_trainer_num VAR_SPECIAL_x8004
 	scrcmd_052
-	scrcmd_215 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
-	scrcmd_214 VAR_SPECIAL_x8004, VAR_SPECIAL_x8002
+	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
+	trainer_message VAR_SPECIAL_x8004, VAR_SPECIAL_x8002
 	scrcmd_049
 	closemsg
 	releaseall
@@ -1721,7 +1721,7 @@ _0EDD:
 _0F0A:
 	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
+	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_315
 	scrcmd_168 0
@@ -1730,7 +1730,7 @@ _0F0A:
 	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 VAR_SPECIAL_x8004, 0
+	trainer_message VAR_SPECIAL_x8004, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
@@ -1755,11 +1755,11 @@ _0F87:
 _0F9C:
 	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
+	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif ne, _0FC7
 	scrcmd_171 1, VAR_SPECIAL_x800C
-	scrcmd_460 VAR_SPECIAL_x800C, VAR_TEMP_x4010
+	load_phone_dat VAR_SPECIAL_x800C, VAR_TEMP_x4010
 _0FC7:
 	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_168 0
@@ -1768,12 +1768,12 @@ _0FC7:
 	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 VAR_SPECIAL_x8004, 3
+	trainer_message VAR_SPECIAL_x8004, 3
 	closemsg
 	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 VAR_SPECIAL_x8005, 7
+	trainer_message VAR_SPECIAL_x8005, 7
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
@@ -1803,11 +1803,11 @@ _1055:
 _107D:
 	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_460 VAR_SPECIAL_x8004, VAR_TEMP_x4010
+	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	comparevartovalue VAR_TEMP_x4010, 255
 	gotoif ne, _10A8
 	scrcmd_171 1, VAR_SPECIAL_x800C
-	scrcmd_460 VAR_SPECIAL_x800C, VAR_TEMP_x4010
+	load_phone_dat VAR_SPECIAL_x800C, VAR_TEMP_x4010
 _10A8:
 	scrcmd_218 VAR_SPECIAL_x8004
 	scrcmd_168 0
@@ -1815,7 +1815,7 @@ _10A8:
 	scrcmd_171 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 VAR_SPECIAL_x8004, 0
+	trainer_message VAR_SPECIAL_x8004, 0
 	closemsg
 	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -1825,7 +1825,7 @@ _10A8:
 	scrcmd_171 1, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	scrcmd_052
-	scrcmd_214 VAR_SPECIAL_x8005, 0
+	trainer_message VAR_SPECIAL_x8005, 0
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C

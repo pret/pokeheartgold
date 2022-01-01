@@ -17,7 +17,7 @@
       "mvt": 4,
       "type": 1,
       "flag": "FLAG_NOTHING",
-      "scr": 3060,
+      "scr": "std_trainer(TRAINER_HIKER_ANTHONY)",
       "dirn": 0,
       "eye": 5,
       "unk10": 0,

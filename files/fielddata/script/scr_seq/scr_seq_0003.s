@@ -468,7 +468,7 @@ _0646:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0740
-	scrcmd_253 32780
+	scrcmd_253 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0698
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -518,7 +518,7 @@ _0708:
 	scrcmd_345
 	checkflag FLAG_UNK_020
 	callif TRUE, _0762
-	scrcmd_254 32780
+	scrcmd_254 VAR_SPECIAL_x800C
 	scrcmd_346
 	return
 
@@ -560,7 +560,7 @@ _076A:
 	goto _06F2
 	.byte 0x02, 0x00
 _0775:
-	scrcmd_642 32780
+	scrcmd_642 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0757
 	goto _076A
@@ -580,7 +580,7 @@ scr_seq_0003_035:
 
 _07AA:
 	play_fanfare SEQ_ME_ACCE
-	scrcmd_403 32772, 32773
+	scrcmd_403 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_fashion_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0040_00025
 	wait_fanfare
@@ -603,12 +603,12 @@ scr_seq_0003_034:
 
 _07E4:
 	play_fanfare SEQ_ME_ACCE
-	scrcmd_406 32772
-	scrcmd_531 0, 32772
+	scrcmd_406 VAR_SPECIAL_x8004
+	scrcmd_531 0, VAR_SPECIAL_x8004
 	npc_msg msg_0040_00025
 	wait_fanfare
 	buffer_players_name 0
-	scrcmd_531 1, 32772
+	scrcmd_531 1, VAR_SPECIAL_x8004
 	return
 
 scr_seq_0003_008:
@@ -887,7 +887,7 @@ _0C23:
 _0C33:
 	call _0CA7
 _0C39:
-	scrcmd_616 16384
+	scrcmd_616 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0C72
 	menu_exec
@@ -908,7 +908,7 @@ _0CA7:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 73, 82, 0
 	menu_item_add 74, 83, 1
-	scrcmd_616 16384
+	scrcmd_616 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0CDA
 	menu_item_add 75, 84, 2
@@ -921,7 +921,7 @@ _0CDA:
 
 _0CEC:
 	closemsg
-	scrcmd_377 32780
+	scrcmd_377 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0D0F
 	call _0E16
@@ -942,7 +942,7 @@ _0D18:
 	goto _0C39
 
 _0D3A:
-	scrcmd_572 32780
+	scrcmd_572 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0D5B
 	closemsg
@@ -980,7 +980,7 @@ _0D98:
 _0DBA:
 	play_se SEQ_SE_DP_PC_LOGIN
 	closemsg
-	scrcmd_706 32780
+	scrcmd_706 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0DE7
 	call _0E16
@@ -1252,11 +1252,11 @@ scr_seq_0003_020:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_DP_SELECT
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _1140
 	npc_msg msg_0040_00059
-	scrcmd_063 32780
+	scrcmd_063 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _115D
 	scrcmd_185 1
@@ -1266,7 +1266,7 @@ scr_seq_0003_020:
 
 _1140:
 	npc_msg msg_0040_00060
-	scrcmd_063 32780
+	scrcmd_063 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _115D
 	scrcmd_185 0
@@ -1515,7 +1515,7 @@ scr_seq_0003_046:
 	wait_fade
 	scrcmd_166 VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_662 32773, 32772, 32780
+	scrcmd_662 VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1444
 	scrcmd_150
@@ -1548,7 +1548,7 @@ _145E:
 	end
 
 scr_seq_0003_049:
-	scrcmd_275 32772
+	scrcmd_275 VAR_SPECIAL_x8004
 	goto _14DD
 	.byte 0x02, 0x00
 scr_seq_0003_050:
@@ -1587,7 +1587,7 @@ _14FB:
 	end
 
 scr_seq_0003_053:
-	scrcmd_276 32772
+	scrcmd_276 VAR_SPECIAL_x8004
 	goto _15A6
 	.byte 0x02, 0x00
 scr_seq_0003_054:

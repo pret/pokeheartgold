@@ -1,11 +1,14 @@
 #ifndef POKEHEARTGOLD_TRAINER_DATA_H
 #define POKEHEARTGOLD_TRAINER_DATA_H
 
+#include "constants/pokemon.h"
+#include "constants/trainers.h"
+#include "constants/trainer_class.h"
+
 #ifndef PM_ASM
 #include "pm_string.h"
 #include "mail_message.h"
 #include "pokemon_types_def.h"
-#include "constants/pokemon.h"
 
 typedef enum TrainerAttr {
     TRATTR_TYPE,
@@ -25,60 +28,7 @@ typedef enum TrainerGender {
     TRAINER_FEMALE,
     TRAINER_DOUBLE,
 } TrainerGender;
-#endif //PM_ASM
 
-#define TRPOKE_GENDER_OVERRIDE_OFF          0
-#define TRPOKE_GENDER_OVERRIDE_MALE         1
-#define TRPOKE_GENDER_OVERRIDE_FEMALE       2
-
-#define TRPOKE_ABILITY_OVERRIDE_OFF         0
-#define TRPOKE_ABILITY_OVERRIDE_FIRST       1
-#define TRPOKE_ABILITY_OVERRIDE_SECOND      2
-
-// Indices identifying messages in trtbl.narc.
-// For use with GetTrainerMessageByIdPair and
-// TrainerMessageWithIdPairExists.
-
-// Before the battle starts (interact, trainer eye)
-#define TRMSG_INTRO                         0
-// When the NPC loses
-#define TRMSG_LOSE                          1
-// After the trainer is defeated (interact)
-#define TRMSG_AFTER                         2
-// These are for double-battle trainer classes.
-// One member gets the _1 IDs, the other gets
-// the _2 IDs.
-#define TRMSG_DBL_INTRO_1                   3
-#define TRMSG_DBL_LOSE_1                    4
-#define TRMSG_DBL_AFTER_1                   5
-// If the player tries to start the double
-// battle with only one usable party member,
-// a double trainer will refuse to engage.
-// This message, along with TRMSG_DBL_1POKE_2,
-// accompanies this refusal.
-#define TRMSG_DBL_1POKE_1                   6
-#define TRMSG_DBL_INTRO_2                   7
-#define TRMSG_DBL_LOSE_2                    8
-#define TRMSG_DBL_AFTER_2                   9
-#define TRMSG_DBL_1POKE_2                  10
-// 11-14 are unused.
-#define TRMSG_LAST_POKE                    15
-#define TRMSG_LAST_POKE_HALF               16
-// The texts change when it's a phone trainer.
-#define TRMSG_PHONE_REMATCH_INTRO          17
-#define TRMSG_PHONE_REMATCH_DBL_INTRO_1    18
-#define TRMSG_PHONE_REMATCH_DBL_INTRO_2    19
-#define TRMSG_WIN                          20
-
-#define TRTYPE_MOVES_F                      (0)
-#define TRTYPE_ITEM_F                       (1)
-
-#define TRTYPE_MON            ((0<<TRTYPE_MOVES_F)|(0<<TRTYPE_ITEM_F))
-#define TRTYPE_MON_MOVES      ((1<<TRTYPE_MOVES_F)|(0<<TRTYPE_ITEM_F))
-#define TRTYPE_MON_ITEM       ((0<<TRTYPE_MOVES_F)|(1<<TRTYPE_ITEM_F))
-#define TRTYPE_MON_ITEM_MOVES ((1<<TRTYPE_MOVES_F)|(1<<TRTYPE_ITEM_F))
-
-#ifndef PM_ASM
 typedef struct TrainerMonSpecies {
     // IV scale parameter
     u8 difficulty;

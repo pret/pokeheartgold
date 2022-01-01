@@ -229,7 +229,7 @@ ov26_02259A24: ; 0x02259A24
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0xc]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	str r0, [sp, #8]
 	bl sub_02040500
 	cmp r0, #0
@@ -281,7 +281,7 @@ _02259A9E:
 	add r6, r0, #0
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	ldr r1, [sp, #0xc]
 	cmp r1, r6
 	beq _02259AC0

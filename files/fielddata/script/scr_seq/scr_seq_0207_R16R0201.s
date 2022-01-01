@@ -23,7 +23,7 @@ _001F:
 scr_seq_R16R0201_001:
 	scrcmd_609
 	lockall
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _006A
 	apply_movement obj_player, _0084

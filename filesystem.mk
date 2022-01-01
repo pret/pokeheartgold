@@ -475,6 +475,9 @@ include graphics_files_rules.mk
 
 .PHONY: filesystem clean-filesystem clean-fs
 filesystem: $(NITROFS_FILES)
+ifeq ($(COMPARE),1)
+	$(SHA1SUM) --quiet -c $(WORK_DIR)/filesystem.sha1
+endif
 
 clean-fs: clean-filesystem
 clean-filesystem:

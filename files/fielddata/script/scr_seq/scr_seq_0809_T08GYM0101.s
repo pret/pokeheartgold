@@ -82,13 +82,13 @@ scr_seq_T08GYM0101_008:
 	comparevartovalue VAR_TEMP_x400B, 111
 	gotoif ne, _012E
 	checktrainerflag TRAINER_LASS_LINDA
-	callif lt, _0130
+	callif FALSE, _0130
 	checktrainerflag TRAINER_CAMPER_BARRY
-	callif lt, _0142
+	callif FALSE, _0142
 	checktrainerflag TRAINER_LASS_ALICE
-	callif lt, _0154
+	callif FALSE, _0154
 	checktrainerflag TRAINER_PICNICKER_CINDY
-	callif lt, _0166
+	callif FALSE, _0166
 _012E:
 	end
 
@@ -125,7 +125,7 @@ scr_seq_T08GYM0101_003:
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_LASS_LINDA
-	gotoif eq, _0277
+	gotoif TRUE, _0277
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01AA
@@ -199,7 +199,7 @@ scr_seq_T08GYM0101_004:
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_CAMPER_BARRY
-	gotoif eq, _038F
+	gotoif TRUE, _038F
 	scrcmd_386 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _02C2
@@ -273,7 +273,7 @@ scr_seq_T08GYM0101_005:
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_LASS_ALICE
-	gotoif eq, _04AC
+	gotoif TRUE, _04AC
 	npc_msg msg_0514_T08GYM0101_00011
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -349,7 +349,7 @@ scr_seq_T08GYM0101_006:
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_PICNICKER_CINDY
-	gotoif eq, _05C9
+	gotoif TRUE, _05C9
 	npc_msg msg_0514_T08GYM0101_00014
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C

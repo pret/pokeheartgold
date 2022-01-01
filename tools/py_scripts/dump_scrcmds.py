@@ -174,6 +174,11 @@ class NormalScriptParser(ScriptParserBase):
             'sprites': parse_c_header(os.path.join(project_root, 'include/constants/sprites.h'), 'SPRITE_'),
             'maps': parse_c_header(os.path.join(project_root, 'include/constants/maps.h'), 'MAP_'),
         }
+        self.constants['stdscr'] |= {
+            x + 2999: f'std_trainer({y})' for x, y in self.constants['trainer'].items()
+        } | {
+            x + 4999: f'std_trainer_2({y})' for x, y in self.constants['trainer'].items()
+        }
         self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
         self.commands_d = {x['name']: x for x in self.commands}
         self.movement_cmds = scrcmds.get('movement_commands', [])
@@ -392,7 +397,7 @@ class NormalScriptParser(ScriptParserBase):
             case 'condition':
                 value = self.raw[pc]
                 pc += 1
-                if len(self.pc_history) >= 2 and value < 2 and self.lines[self.pc_history[-2]][0] == 'checkflag':
+                if len(self.pc_history) >= 2 and value < 2 and self.lines[self.pc_history[-2]][0] in ('checkflag', 'checktrainerflag'):
                     conds = ['FALSE', 'TRUE']
                 else:
                     conds = ['lt', 'eq', 'gt', 'le', 'ge', 'ne']

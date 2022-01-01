@@ -40,7 +40,7 @@ void FlagClear(UnkSavStruct80 *fsys, u16 flagId);
 void ClearTempFieldEventData(UnkSavStruct80 *fsys);
 void ClearDailyFlags(UnkSavStruct80 *fsys);
 void sub_02040490(UnkSavStruct80 *a0, u16 a1, u16 a2, u16 a3, u16 a4);
-u16 sub_020404C8(u16 a0);
+u16 ScriptNumToTrainerNum(u16 a0);
 BOOL sub_020404EC(u16 a0);
 BOOL sub_02040500(u32 trainer);
 BOOL TrainerFlagCheck(SAVEDATA *a0, u32 trno);

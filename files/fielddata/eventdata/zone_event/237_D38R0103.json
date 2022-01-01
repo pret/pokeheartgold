@@ -143,7 +143,7 @@
       "mvt": 2,
       "type": 1,
       "flag": "FLAG_NOTHING",
-      "scr": 3537,
+      "scr": "std_trainer(TRAINER_SUPER_NERD_HUGH)",
       "dirn": 1,
       "eye": 3,
       "unk10": 0,

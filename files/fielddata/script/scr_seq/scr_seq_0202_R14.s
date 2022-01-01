@@ -432,7 +432,7 @@ scr_seq_R14_005:
 	checkflag FLAG_UNK_15C
 	gotoif TRUE, _0658
 	npc_msg msg_0351_R14_00000
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0602
 	get_lead_mon_index VAR_TEMP_x4000
@@ -466,7 +466,7 @@ _064E:
 	end
 
 _0658:
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0680
 	get_lead_mon_index VAR_TEMP_x4000

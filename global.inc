@@ -1895,10 +1895,10 @@
 .public ScrCmd_209
 .public ScrCmd_BufferMapSecName
 .public ScrCmd_211
-.public ScrCmd_212
+.public ScrCmd_GetTrainerNum
 .public ScrCmd_TrainerBattle
-.public ScrCmd_214
-.public ScrCmd_215
+.public ScrCmd_TrainerMessage
+.public ScrCmd_GetTrainerMsgParams
 .public ScrCmd_216
 .public ScrCmd_217
 .public ScrCmd_218
@@ -2141,7 +2141,7 @@
 .public ScrCmd_457
 .public ScrCmd_458
 .public ScrCmd_459
-.public ScrCmd_460
+.public ScrCmd_LoadPhoneDat
 .public ScrCmd_GetPhoneContactMsgIds
 .public ScrCmd_462
 .public ScrCmd_463
@@ -28298,7 +28298,7 @@
 .public sub_0203FF0C
 .public sub_0204031C
 .public sub_02040490
-.public sub_020404C8
+.public ScriptNumToTrainerNum
 .public sub_020404EC
 .public sub_02040500
 .public HiddenItemScriptNoToFlagId

@@ -18,9 +18,9 @@
 
 scr_seq_D35R0104_006:
 	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_5
-	gotoif lt, _004F
+	gotoif FALSE, _004F
 	checktrainerflag TRAINER_TEAM_ROCKET_GRUNT_19
-	gotoif lt, _004F
+	gotoif FALSE, _004F
 	comparevartovalue VAR_UNK_40AC, 3
 	gotoif ge, _004F
 	setvar VAR_UNK_40AC, 2
@@ -404,9 +404,9 @@ scr_seq_D35R0104_004:
 	lockall
 	faceplayer
 	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_5
-	gotoif lt, _0561
+	gotoif FALSE, _0561
 	checktrainerflag TRAINER_TEAM_ROCKET_GRUNT_19
-	gotoif lt, _0561
+	gotoif FALSE, _0561
 	buffer_players_name 0
 	npc_msg msg_0114_D35R0104_00012
 	closemsg

@@ -110,7 +110,7 @@
       "mvt": 14,
       "type": 1,
       "flag": "FLAG_NOTHING",
-      "scr": 3003,
+      "scr": "std_trainer(TRAINER_BUG_CATCHER_WADE)",
       "dirn": 0,
       "eye": 2,
       "unk10": 0,

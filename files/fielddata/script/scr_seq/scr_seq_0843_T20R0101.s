@@ -734,8 +734,8 @@ _0904:
 	closemsg
 	apply_movement obj_T20R0101_doctor, _0B64
 	wait_movement
-	setflag FLAG_UNK_196
-	clearflag FLAG_UNK_199
+	setflag FLAG_HIDE_ROUTE_30_BATTLERS
+	clearflag FLAG_HIDE_ROUTE_30_YOUNGSTER_JOEY
 	setvar VAR_SCENE_ELMS_LAB, 4
 	setvar VAR_UNK_408B, 1
 	clearflag FLAG_UNK_1A4

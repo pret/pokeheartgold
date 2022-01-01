@@ -154,7 +154,7 @@ scr_seq_T25_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _01DD
 	npc_msg msg_0581_T25_00002

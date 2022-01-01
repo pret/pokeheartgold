@@ -32,7 +32,7 @@ _0050:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _00B2
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -75,7 +75,7 @@ _0107:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0180
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -124,7 +124,7 @@ _01D5:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0220
 	scrcmd_605 2, 3
@@ -160,7 +160,7 @@ _0275:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, 32780
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _02C0
 	scrcmd_605 3, 2

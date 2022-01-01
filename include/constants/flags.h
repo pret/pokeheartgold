@@ -3,8 +3,9 @@
 
 #include "constants/trainers.h"
 
-#define FLAG_NOTHING                         0
+#define FLAG_NOTHING                   0
 
+// Flags reset on map transition
 #define FLAG_UNK_001                 0x1
 #define FLAG_UNK_002                 0x2
 #define FLAG_UNK_003                 0x3
@@ -104,16 +105,18 @@
 #define FLAG_UNK_061                 0x61
 #define FLAG_UNK_062                 0x62
 #define FLAG_UNK_063                 0x63
-#define FLAG_NURSE_NOTICED_CARD                 0x64
+
+// Story flags
+#define FLAG_NURSE_NOTICED_CARD      0x64
 #define FLAG_UNK_065                 0x65
 #define FLAG_UNK_066                 0x66
 #define FLAG_UNK_067                 0x67
 #define FLAG_UNK_068                 0x68
 #define FLAG_UNK_069                 0x69
-#define FLAG_GOT_STARTER                 0x6A
-#define FLAG_GOT_POKEDEX                 0x6B
-#define FLAG_EXCHANGED_RED_SCALE                 0x6C
-#define FLAG_GOT_APRICORN_BOX                 0x6D
+#define FLAG_GOT_STARTER             0x6A
+#define FLAG_GOT_POKEDEX             0x6B
+#define FLAG_EXCHANGED_RED_SCALE     0x6C
+#define FLAG_GOT_APRICORN_BOX        0x6D
 #define FLAG_UNK_06E                 0x6E
 #define FLAG_UNK_06F                 0x6F
 #define FLAG_UNK_070                 0x70
@@ -157,17 +160,17 @@
 #define FLAG_UNK_096                 0x96
 #define FLAG_UNK_097                 0x97
 #define FLAG_UNK_098                 0x98
-#define FLAG_MET_PASSERBY_BOY                 0x99
+#define FLAG_MET_PASSERBY_BOY        0x99
 #define FLAG_UNK_09A                 0x9A
 #define FLAG_UNK_09B                 0x9B
-#define FLAG_GOT_POKEGEAR                 0x9C
+#define FLAG_GOT_POKEGEAR            0x9C
 #define FLAG_UNK_09D                 0x9D
 #define FLAG_UNK_09E                 0x9E
 #define FLAG_UNK_09F                 0x9F
 #define FLAG_UNK_0A0                 0xA0
 #define FLAG_UNK_0A1                 0xA1
 #define FLAG_UNK_0A2                 0xA2
-#define FLAG_GOT_DOWSING_MACHINE                 0xA3
+#define FLAG_GOT_DOWSING_MACHINE     0xA3
 #define FLAG_UNK_0A4                 0xA4
 #define FLAG_UNK_0A5                 0xA5
 #define FLAG_UNK_0A6                 0xA6
@@ -404,16 +407,18 @@
 #define FLAG_UNK_18D                 0x18D
 #define FLAG_UNK_18E                 0x18E
 #define FLAG_UNK_18F                 0x18F
+
+// Hide/show flags
 #define FLAG_HIDE_NEW_BARK_RIVAL                 0x190
 #define FLAG_HIDE_ELMS_LAB_ELM                 0x191
 #define FLAG_UNK_192                 0x192
 #define FLAG_HIDE_WIFI_CLUB_CLOSED_LADY                 0x193
 #define FLAG_UNK_194                 0x194
 #define FLAG_HIDE_MR_POKEMONS_HOUSE_OAK                 0x195
-#define FLAG_UNK_196                 0x196
+#define FLAG_HIDE_ROUTE_30_BATTLERS                 0x196
 #define FLAG_HIDE_VIOLET_SHOP_LAB_AIDE                 0x197
 #define FLAG_HIDE_CHERRYGROVE_GUIDE_GENT                 0x198
-#define FLAG_UNK_199                 0x199
+#define FLAG_HIDE_ROUTE_30_YOUNGSTER_JOEY                 0x199
 #define FLAG_UNK_19A                 0x19A
 #define FLAG_UNK_19B                 0x19B
 #define FLAG_HIDE_CHERRYGROVE_RIVAL                 0x19C

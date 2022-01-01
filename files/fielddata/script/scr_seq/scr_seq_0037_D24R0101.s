@@ -198,7 +198,7 @@ _02DA:
 	comparevartovalue VAR_TEMP_x4007, 0
 	gotoif eq, _0530
 _02EE:
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0530
 	scrcmd_307 13, 8, 25, 29, 77

@@ -1643,7 +1643,7 @@ _1758:
 	step 1, 1
 	step_end
 scr_seq_D36R0101_012:
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _1803
 	comparevartovalue VAR_UNK_412B, 2

@@ -1258,7 +1258,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_212 arg0
+	.macro get_trainer_num arg0
 	.short 212
 	.short \arg0
 	.endm
@@ -1271,17 +1271,17 @@
 	.byte \arg3
 	.endm
 
-	.macro scrcmd_214 arg0, arg1
+	.macro trainer_message trainer, param
 	.short 214
-	.short \arg0
-	.short \arg1
+	.short \trainer
+	.short \param
 	.endm
 
-	.macro scrcmd_215 arg0, arg1, arg2
+	.macro get_trainer_msg_params intro, after, _1poke
 	.short 215
-	.short \arg0
-	.short \arg1
-	.short \arg2
+	.short \intro
+	.short \after
+	.short \_1poke
 	.endm
 
 	.macro scrcmd_216 arg0, arg1, arg2
@@ -2609,7 +2609,7 @@
 	.short 459
 	.endm
 
-	.macro scrcmd_460 arg0, arg1
+	.macro load_phone_dat arg0, arg1
 	.short 460
 	.short \arg0
 	.short \arg1

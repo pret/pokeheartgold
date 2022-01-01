@@ -261,10 +261,10 @@ gScriptCmdTable:
 	.word ScrCmd_209                                    ; 209
 	.word ScrCmd_BufferMapSecName                                    ; 210
 	.word ScrCmd_211                                    ; 211
-	.word ScrCmd_212                                    ; 212
+	.word ScrCmd_GetTrainerNum                                    ; 212
 	.word ScrCmd_TrainerBattle                          ; 213
-	.word ScrCmd_214                                    ; 214
-	.word ScrCmd_215                                    ; 215
+	.word ScrCmd_TrainerMessage                                    ; 214
+	.word ScrCmd_GetTrainerMsgParams                                    ; 215
 	.word ScrCmd_216                                    ; 216
 	.word ScrCmd_217                                    ; 217
 	.word ScrCmd_218                                    ; 218
@@ -509,7 +509,7 @@ gScriptCmdTable:
 	.word ScrCmd_457                                    ; 457
 	.word ScrCmd_458                                    ; 458
 	.word ScrCmd_459                                    ; 459
-	.word ScrCmd_460                                    ; 460
+	.word ScrCmd_LoadPhoneDat                                    ; 460
 	.word ScrCmd_GetPhoneContactMsgIds                                    ; 461
 	.word ScrCmd_462                                    ; 462
 	.word ScrCmd_463                                    ; 463
@@ -7290,8 +7290,8 @@ ScrCmd_SetStarterChoice: ; 0x02043964
 	.balign 4, 0
 	thumb_func_end ScrCmd_SetStarterChoice
 
-	thumb_func_start ScrCmd_214
-ScrCmd_214: ; 0x02043990
+	thumb_func_start ScrCmd_TrainerMessage
+ScrCmd_TrainerMessage: ; 0x02043990
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -7354,7 +7354,7 @@ ScrCmd_214: ; 0x02043990
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02043A24: .word ov01_021EF348
-	thumb_func_end ScrCmd_214
+	thumb_func_end ScrCmd_TrainerMessage
 
 	thumb_func_start ScrCmd_226
 ScrCmd_226: ; 0x02043A28
@@ -14407,8 +14407,8 @@ ScrCmd_RunPhoneCall: ; 0x020470F4
 _0204711C: .word sub_02042974
 	thumb_func_end ScrCmd_RunPhoneCall
 
-	thumb_func_start ScrCmd_460
-ScrCmd_460: ; 0x02047120
+	thumb_func_start ScrCmd_LoadPhoneDat
+ScrCmd_LoadPhoneDat: ; 0x02047120
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -14438,7 +14438,7 @@ ScrCmd_460: ; 0x02047120
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_460
+	thumb_func_end ScrCmd_LoadPhoneDat
 
 	thumb_func_start ScrCmd_GetPhoneContactMsgIds
 ScrCmd_GetPhoneContactMsgIds: ; 0x02047168
@@ -14491,7 +14491,7 @@ _020471CE:
 	mov r6, #0
 _020471D4:
 	ldrh r0, [r7]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	add r1, r6, #1
 	lsl r1, r1, #0x10
 	lsr r5, r1, #0x10
@@ -14503,7 +14503,7 @@ _020471D4:
 	b _02047208
 _020471EC:
 	ldrh r0, [r7]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	bl sub_02040500
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10

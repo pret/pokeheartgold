@@ -838,7 +838,7 @@ _0BB2:
 	npc_msg msg_0135_D47R0101_00082
 	npc_msg msg_0135_D47R0101_00088
 	scrcmd_345
-	scrcmd_254 32780
+	scrcmd_254 VAR_SPECIAL_x800C
 	scrcmd_346
 	buffer_players_name 0
 	npc_msg msg_0135_D47R0101_00089

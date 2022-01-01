@@ -146,7 +146,7 @@ _0184:
 
 scr_seq_D23R0104_007:
 	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_4
-	gotoif eq, _01F6
+	gotoif TRUE, _01F6
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0068_D23R0104_00012

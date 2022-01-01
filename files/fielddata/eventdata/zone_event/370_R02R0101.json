@@ -17,7 +17,7 @@
       "mvt": 8,
       "type": 1,
       "flag": "FLAG_NOTHING",
-      "scr": 3247,
+      "scr": "std_trainer(TRAINER_BUG_CATCHER_ED)",
       "dirn": 1,
       "eye": 3,
       "unk10": 0,

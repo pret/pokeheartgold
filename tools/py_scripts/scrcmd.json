@@ -397,7 +397,7 @@
     {
       "name": "scrcmd_063",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1147,7 +1147,7 @@
     {
       "name": "scrcmd_184",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1327,7 +1327,7 @@
       ]
     },
     {
-      "name": "scrcmd_212",
+      "name": "get_trainer_num",
       "args": [
         "var"
       ]
@@ -1342,14 +1342,14 @@
       ]
     },
     {
-      "name": "scrcmd_214",
+      "name": "trainer_message",
       "args": [
-        "var",
+        "trainer",
         "var"
       ]
     },
     {
-      "name": "scrcmd_215",
+      "name": "get_trainer_msg_params",
       "args": [
         "var",
         "var",
@@ -1587,13 +1587,13 @@
     {
       "name": "scrcmd_253",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_254",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1711,13 +1711,13 @@
     {
       "name": "scrcmd_275",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_276",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2292,7 +2292,7 @@
     {
       "name": "scrcmd_377",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2477,8 +2477,8 @@
     {
       "name": "scrcmd_403",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2500,7 +2500,7 @@
     {
       "name": "scrcmd_406",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2848,7 +2848,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_460",
+      "name": "load_phone_dat",
       "args": [
         "var",
         "var"
@@ -3350,7 +3350,7 @@
       "name": "scrcmd_531",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -3624,7 +3624,7 @@
     {
       "name": "scrcmd_572",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3865,7 +3865,7 @@
     {
       "name": "scrcmd_616",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4031,7 +4031,7 @@
     {
       "name": "scrcmd_642",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4178,9 +4178,9 @@
     {
       "name": "scrcmd_662",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -4463,7 +4463,7 @@
     {
       "name": "scrcmd_706",
       "args": [
-        2
+        "var"
       ]
     },
     {

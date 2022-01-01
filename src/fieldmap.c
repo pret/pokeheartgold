@@ -51,7 +51,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     { _std_hidden_item, NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
     { 7000, NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
     { 5000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
-    { 3000, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
+    { _std_npc_trainer, NARC_scr_seq_scr_seq_0953_bin,  NARC_msg_msg_0040_bin},
     { _std_apricorn_tree, NARC_scr_seq_scr_seq_0150_bin,  NARC_msg_msg_0023_bin},
     { _std_bookshelves, NARC_scr_seq_scr_seq_0001_bin,  NARC_msg_msg_0020_bin},
     { _std_misc, NARC_scr_seq_scr_seq_0003_bin,  NARC_msg_msg_0040_bin},
@@ -418,16 +418,16 @@ void sub_02040490(UnkSavStruct80 *fsys, u16 a1, u16 a2, u16 a3, u16 a4) {
     *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8003) = a4;
 }
 
-u16 sub_020404C8(u16 a0) {
-    if (a0 < 5000) {
-        return a0 - 3000 + 1;
+u16 ScriptNumToTrainerNum(u16 a0) {
+    if (a0 < _std_npc_trainer_2) {
+        return a0 - _std_npc_trainer + FIRST_TRAINER_INDEX;
     } else {
-        return a0 - 5000 + 1;
+        return a0 - _std_npc_trainer_2 + FIRST_TRAINER_INDEX;
     }
 }
 
 BOOL sub_020404EC(u16 a0) {
-    return a0 >= 5000;
+    return a0 >= _std_npc_trainer_2;
 }
 
 BOOL sub_02040500(u32 trainer) {

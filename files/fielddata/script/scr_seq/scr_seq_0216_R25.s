@@ -323,7 +323,7 @@ _044B:
 	goto _03D3
 	.byte 0x02, 0x00
 _0456:
-	scrcmd_184 32780
+	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _04DA
 	scrcmd_733 11, VAR_SPECIAL_x800C

@@ -75,7 +75,7 @@
       "mvt": 17,
       "type": 1,
       "flag": "FLAG_NOTHING",
-      "scr": 3042,
+      "scr": "std_trainer(TRAINER_SAGE_CHOW)",
       "dirn": 3,
       "eye": 2,
       "unk10": 0,

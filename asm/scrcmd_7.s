@@ -1,3 +1,4 @@
+#include "constants/trainers.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -213,8 +214,8 @@ _02049610:
 	.balign 4, 0
 	thumb_func_end ScrCmd_171
 
-	thumb_func_start ScrCmd_212
-ScrCmd_212: ; 0x02049618
+	thumb_func_start ScrCmd_GetTrainerNum
+ScrCmd_GetTrainerNum: ; 0x02049618
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -230,12 +231,12 @@ ScrCmd_212: ; 0x02049618
 	bl GetVarPointer
 	add r5, r0, #0
 	ldrh r0, [r4]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_212
+	thumb_func_end ScrCmd_GetTrainerNum
 
 	thumb_func_start ScrCmd_TrainerBattle
 ScrCmd_TrainerBattle: ; 0x02049648
@@ -359,8 +360,8 @@ ScrCmd_562: ; 0x020496DC
 	.balign 4, 0
 	thumb_func_end ScrCmd_562
 
-	thumb_func_start ScrCmd_215
-ScrCmd_215: ; 0x02049750
+	thumb_func_start ScrCmd_GetTrainerMsgParams
+ScrCmd_GetTrainerMsgParams: ; 0x02049750
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -392,14 +393,14 @@ ScrCmd_215: ; 0x02049750
 	bl GetVarPointer
 	add r5, r0, #0
 	ldrh r0, [r4]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	bl sub_02040500
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _020497B2
-	mov r0, #0
-	mov r1, #2
-	add r2, r0, #0
+	mov r0, #TRMSG_INTRO
+	mov r1, #TRMSG_AFTER
+	add r2, r0, #TRMSG_INTRO
 	b _020497CC
 _020497B2:
 	ldrh r0, [r4]
@@ -407,14 +408,14 @@ _020497B2:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bne _020497C6
-	mov r0, #3
-	mov r1, #5
-	mov r2, #6
+	mov r0, #TRMSG_DBL_INTRO_1
+	mov r1, #TRMSG_DBL_AFTER_1
+	mov r2, #TRMSG_DBL_1POKE_1
 	b _020497CC
 _020497C6:
-	mov r0, #7
-	mov r1, #9
-	mov r2, #0xa
+	mov r0, #TRMSG_DBL_INTRO_2
+	mov r1, #TRMSG_DBL_AFTER_2
+	mov r2, #TRMSG_DBL_1POKE_2
 _020497CC:
 	strh r0, [r7]
 	strh r1, [r6]
@@ -422,7 +423,7 @@ _020497CC:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_215
+	thumb_func_end ScrCmd_GetTrainerMsgParams
 
 	thumb_func_start ScrCmd_216
 ScrCmd_216: ; 0x020497D8
@@ -457,7 +458,7 @@ ScrCmd_216: ; 0x020497D8
 	bl GetVarPointer
 	add r5, r0, #0
 	ldrh r0, [r4]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	bl sub_02040500
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -506,7 +507,7 @@ ScrCmd_217: ; 0x02049860
 	bl GetVarPointer
 	add r5, r0, #0
 	ldrh r0, [r4]
-	bl sub_020404C8
+	bl ScriptNumToTrainerNum
 	bl sub_02040500
 	strh r0, [r5]
 	mov r0, #0
