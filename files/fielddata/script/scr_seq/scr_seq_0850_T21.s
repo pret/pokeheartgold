@@ -425,7 +425,7 @@ scr_seq_T21_002:
 	show_person obj_T21_gsoldman1
 	lock obj_T21_gsoldman1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	move_person 0, VAR_TEMP_x4000, 1, 394, 0
+	move_person obj_T21_gsoldman1, VAR_TEMP_x4000, 1, 394, 0
 	comparevartovalue VAR_TEMP_x4000, 549
 	gotoif ne, _05DB
 	apply_movement obj_T21_gsoldman1, _068C
@@ -504,7 +504,7 @@ scr_seq_T21_003:
 	wait_movement
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	move_person 4, 583, 0, VAR_TEMP_x4001, 2
+	move_person obj_T21_gsrivel, 583, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_T21_gsrivel, _0808
 	wait_movement
 	npc_msg msg_0550_T21_00013
@@ -789,19 +789,19 @@ _0ACC:
 	step 1, 1
 	step_end
 scr_seq_T21_005:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 24, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0550_T21_00024, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T21_006:
-	scrcmd_055 23, 0, 12, VAR_SPECIAL_x800C
+	direction_signpost msg_0550_T21_00023, 0, 12, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T21_007:

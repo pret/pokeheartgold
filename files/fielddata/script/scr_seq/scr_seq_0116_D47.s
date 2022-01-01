@@ -179,11 +179,11 @@ scr_seq_D47_010:
 	end
 
 scr_seq_D47_011:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 17, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0133_D47_00017, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D47_012:

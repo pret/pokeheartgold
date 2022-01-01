@@ -104,11 +104,11 @@ gScriptCmdTable:
 	.word ScrCmd_052                                    ; 052
 	.word ScrCmd_CloseMsg                               ; 053
 	.word ScrCmd_054                                    ; 054
-	.word ScrCmd_055                                    ; 055
-	.word ScrCmd_056                                    ; 056
+	.word ScrCmd_DirectionSignpost                                    ; 055
+	.word ScrCmd_055                                    ; 056
 	.word ScrCmd_057                                    ; 057
 	.word ScrCmd_058                                    ; 058
-	.word ScrCmd_059                                    ; 059
+	.word ScrCmd_TrainerTips                                    ; 059
 	.word ScrCmd_060                                    ; 060
 	.word ScrCmd_061                                    ; 061
 	.word ScrCmd_062                                    ; 062
@@ -340,7 +340,7 @@ gScriptCmdTable:
 	.word ScrCmd_288                                    ; 288
 	.word ScrCmd_289                                    ; 289
 	.word ScrCmd_290                                    ; 290
-	.word ScrCmd_291                                    ; 291
+	.word ScrCmd_GivePokedex                                    ; 291
 	.word ScrCmd_292                                    ; 292
 	.word ScrCmd_GiveRunningShoes                       ; 293
 	.word ScrCmd_CheckBadge                             ; 294
@@ -638,7 +638,7 @@ gScriptCmdTable:
 	.word ScrCmd_586                                    ; 586
 	.word ScrCmd_587                                    ; 587
 	.word ScrCmd_588                                    ; 588
-	.word ScrCmd_589                                    ; 589
+	.word ScrCmd_WildBattle                                    ; 589
 	.word ScrCmd_GetTrcardStars                                    ; 590
 	.word ScrCmd_591                                    ; 591
 	.word ScrCmd_592                                    ; 592
@@ -2382,8 +2382,8 @@ _02041320:
 	.balign 4, 0
 	thumb_func_end sub_02041270
 
-	thumb_func_start ScrCmd_055
-ScrCmd_055: ; 0x02041328
+	thumb_func_start ScrCmd_DirectionSignpost
+ScrCmd_DirectionSignpost: ; 0x02041328
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -2457,10 +2457,10 @@ ScrCmd_055: ; 0x02041328
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020413D0: .word 0x00020A0F
-	thumb_func_end ScrCmd_055
+	thumb_func_end ScrCmd_DirectionSignpost
 
-	thumb_func_start ScrCmd_056
-ScrCmd_056: ; 0x020413D4
+	thumb_func_start ScrCmd_055
+ScrCmd_055: ; 0x020413D4
 	push {r3, r4, r5, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -2488,7 +2488,7 @@ ScrCmd_056: ; 0x020413D4
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_056
+	thumb_func_end ScrCmd_055
 
 	thumb_func_start ScrCmd_057
 ScrCmd_057: ; 0x02041410
@@ -2545,8 +2545,8 @@ _02041468:
 	pop {r3, pc}
 	thumb_func_end sub_02041454
 
-	thumb_func_start ScrCmd_059
-ScrCmd_059: ; 0x0204146C
+	thumb_func_start ScrCmd_TrainerTips
+ScrCmd_TrainerTips: ; 0x0204146C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -2620,7 +2620,7 @@ ScrCmd_059: ; 0x0204146C
 	nop
 _02041518: .word 0x00020A0F
 _0204151C: .word sub_02041520
-	thumb_func_end ScrCmd_059
+	thumb_func_end ScrCmd_TrainerTips
 
 	thumb_func_start sub_02041520
 sub_02041520: ; 0x02041520
@@ -7884,8 +7884,8 @@ ScrCmd_249: ; 0x02043E08
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_249
 
-	thumb_func_start ScrCmd_589
-ScrCmd_589: ; 0x02043E5C
+	thumb_func_start ScrCmd_WildBattle
+ScrCmd_WildBattle: ; 0x02043E5C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -7926,7 +7926,7 @@ ScrCmd_589: ; 0x02043E5C
 	mov r0, #1
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_589
+	thumb_func_end ScrCmd_WildBattle
 
 	thumb_func_start ScrCmd_686
 ScrCmd_686: ; 0x02043EB8

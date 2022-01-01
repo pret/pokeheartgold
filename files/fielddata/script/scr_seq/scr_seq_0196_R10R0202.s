@@ -54,9 +54,7 @@ _0071:
 	wait_movement
 	setflag FLAG_UNK_118
 	npc_msg msg_0345_R10R0202_00016
-	setvar VAR_SPECIAL_x8004, 384
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_TM57, 1
 	npc_msg msg_0345_R10R0202_00017
 	waitbutton
 	closemsg

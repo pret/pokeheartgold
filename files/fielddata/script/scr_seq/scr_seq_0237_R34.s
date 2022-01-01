@@ -777,26 +777,26 @@ scr_seq_R34_008:
 	end
 
 scr_seq_R34_009:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 34, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0384_R34_00034, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R34_010:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 35, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0384_R34_00035, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R34_011:
-	scrcmd_055 33, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0384_R34_00033, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

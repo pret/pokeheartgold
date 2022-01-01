@@ -73,9 +73,7 @@ scr_seq_D24R0205_000:
 	apply_movement obj_D24R0205_gsassistantm_4, _01B8
 	wait_movement
 	npc_msg msg_0076_D24R0205_00000
-	setvar VAR_SPECIAL_x8004, 469
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_UNOWN_REPORT, 1
 	closemsg
 	apply_movement obj_D24R0205_gsassistantm, _01A8
 	apply_movement obj_D24R0205_gsassistantm_2, _01B0

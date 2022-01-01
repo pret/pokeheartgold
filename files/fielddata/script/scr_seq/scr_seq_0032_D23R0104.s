@@ -34,9 +34,9 @@ _0056:
 scr_seq_D23R0104_008:
 	comparevartovalue VAR_UNK_4077, 4
 	gotoif ne, _0089
-	move_person 4, 18, 1, 12, 3
-	move_person 5, 19, 1, 12, 1
-	move_person 7, 20, 1, 12, 1
+	move_person obj_D23R0104_kurumi, 18, 1, 12, 3
+	move_person obj_D23R0104_tsure_poke_587, 19, 1, 12, 1
+	move_person obj_D23R0104_gsman2, 20, 1, 12, 1
 _0089:
 	end
 

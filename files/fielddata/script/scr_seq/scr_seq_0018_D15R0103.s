@@ -117,9 +117,7 @@ scr_seq_D15R0103_002:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _01A2
 	npc_msg msg_0056_D15R0103_00004
-	setvar VAR_SPECIAL_x8004, 397
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_TM70, 1
 	setflag FLAG_UNK_076
 	setflag FLAG_UNK_2E3
 	clearflag FLAG_UNK_2E4

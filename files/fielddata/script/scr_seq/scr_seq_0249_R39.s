@@ -357,26 +357,26 @@ _0490:
 	end
 
 scr_seq_R39_003:
-	scrcmd_055 0, 1, 21, VAR_SPECIAL_x800C
+	direction_signpost msg_0396_R39_00000, 1, 21, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R39_004:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0396_R39_00001, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R39_005:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 2, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0396_R39_00002, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

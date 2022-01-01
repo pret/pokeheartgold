@@ -155,29 +155,29 @@ scr_seq_P01R0301_004:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 22
 	gotoif ne, _01D3
-	move_person 3, 31, 0, VAR_TEMP_x4001, 2
+	move_person obj_P01R0301_gsgentleman, 31, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
 _01D3:
 	comparevartovalue VAR_TEMP_x4000, 23
 	gotoif ne, _01F2
-	move_person 3, 32, 0, VAR_TEMP_x4001, 2
+	move_person obj_P01R0301_gsgentleman, 32, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
 _01F2:
 	comparevartovalue VAR_TEMP_x4000, 24
 	gotoif ne, _0211
-	move_person 3, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_P01R0301_gsgentleman, 33, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
 _0211:
 	comparevartovalue VAR_TEMP_x4000, 25
 	gotoif ne, _0230
-	move_person 3, 34, 0, VAR_TEMP_x4001, 2
+	move_person obj_P01R0301_gsgentleman, 34, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
 _0230:
-	move_person 3, 35, 0, VAR_TEMP_x4001, 2
+	move_person obj_P01R0301_gsgentleman, 35, 0, VAR_TEMP_x4001, 2
 _023C:
 	apply_movement obj_P01R0301_gsgentleman, _0288
 	apply_movement obj_player, _02A0

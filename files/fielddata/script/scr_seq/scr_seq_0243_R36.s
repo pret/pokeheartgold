@@ -98,12 +98,12 @@ _012C:
 	apply_movement obj_R36_usokky, _0394
 	wait_movement
 	setflag FLAG_UNK_0A4
-	scrcmd_589 185, 20, 0
+	wild_battle SPECIES_SUDOWOODO, 20, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0255
-	scrcmd_683 16385
+	scrcmd_683 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif eq, _0251
 	comparevartovalue VAR_TEMP_x4001, 4
@@ -127,17 +127,11 @@ _01BC:
 	wait_movement
 _01C6:
 	npc_msg msg_0390_R36_00015
-	setvar VAR_SPECIAL_x8004, 470
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_BERRY_POTS, 1
 	npc_msg msg_0390_R36_00016
 	npc_msg msg_0390_R36_00017
-	setvar VAR_SPECIAL_x8004, 155
-	setvar VAR_SPECIAL_x8005, 3
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 151
-	setvar VAR_SPECIAL_x8005, 3
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_ORAN_BERRY, 3
+	giveitem_no_check ITEM_PECHA_BERRY, 3
 	npc_msg msg_0390_R36_00018
 	closemsg
 	scrcmd_386 VAR_SPECIAL_x800C
@@ -216,12 +210,12 @@ _02E2:
 	apply_movement obj_R36_usokky, _0394
 	wait_movement
 	setflag FLAG_UNK_0A4
-	scrcmd_589 185, 20, 0
+	wild_battle SPECIES_SUDOWOODO, 20, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0255
-	scrcmd_683 16385
+	scrcmd_683 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 4
 	callif eq, _023F
 	scrcmd_221 16384, 0
@@ -390,9 +384,7 @@ scr_seq_R36_008:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0572
 	npc_msg msg_0390_R36_00003
-	setvar VAR_SPECIAL_x8004, 425
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_HM06, 1
 _0572:
 	npc_msg msg_0390_R36_00005
 	waitbutton
@@ -420,34 +412,34 @@ _05B1:
 	end
 
 scr_seq_R36_003:
-	scrcmd_055 9, 1, 15, VAR_SPECIAL_x800C
+	direction_signpost msg_0390_R36_00009, 1, 15, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R36_004:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 10, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0390_R36_00010, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R36_005:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 11, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0390_R36_00011, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R36_006:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 12, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0390_R36_00012, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

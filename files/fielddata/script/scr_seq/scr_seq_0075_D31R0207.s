@@ -92,7 +92,7 @@ _0142:
 	return
 
 _0148:
-	move_person 0, 8, 0, 3, 1
+	move_person obj_D31R0207_bfsw1, 8, 0, 3, 1
 	end
 
 scr_seq_D31R0207_008:

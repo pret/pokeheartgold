@@ -100,13 +100,13 @@ scr_seq_D36R0101_021:
 	end
 
 _016F:
-	move_person 15, 15, 0, 58, 1
-	move_person 14, 15, 0, 59, 3
+	move_person obj_D36R0101_gsoldman1, 15, 0, 58, 1
+	move_person obj_D36R0101_tsure_poke_625, 15, 0, 59, 3
 	return
 
 _0189:
-	move_person 16, 15, 0, 58, 1
-	move_person 17, 11, 0, 58, 3
+	move_person obj_D36R0101_var_1, 15, 0, 58, 1
+	move_person obj_D36R0101_tsure_poke_611, 11, 0, 58, 3
 	return
 
 scr_seq_D36R0101_001:
@@ -2431,10 +2431,10 @@ _21F4:
 	step 63, 1
 	step_end
 scr_seq_D36R0101_013:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 27, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0115_D36R0101_00027, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

@@ -28,7 +28,7 @@ scr_seq_P01R0104_002:
 	end
 
 _0045:
-	move_person 0, 24, 0, 19, 2
+	move_person obj_P01R0104_seaman_2, 24, 0, 19, 2
 	end
 
 scr_seq_P01R0104_001:

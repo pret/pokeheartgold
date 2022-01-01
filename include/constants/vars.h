@@ -152,7 +152,7 @@
 #define VAR_UNK_4089                 0x4089
 #define VAR_UNK_408A                 0x408A
 #define VAR_UNK_408B                 0x408B
-#define VAR_UNK_408C                 0x408C
+#define VAR_SCENE_ROUTE_30_OW                 0x408C
 #define VAR_UNK_408D                 0x408D
 #define VAR_UNK_408E                 0x408E
 #define VAR_UNK_408F                 0x408F
@@ -275,7 +275,7 @@
 #define VAR_UNK_4104                 0x4104
 #define VAR_UNK_4105                 0x4105
 #define VAR_SCENE_PLAYERS_HOUSE_1F                 0x4106
-#define VAR_UNK_4107                 0x4107
+#define VAR_SCENE_MR_POKEMONS_HOUSE                 0x4107
 #define VAR_SCENE_ELMS_LAB                 0x4108
 #define VAR_UNK_4109                 0x4109
 #define VAR_UNK_410A                 0x410A

@@ -363,18 +363,18 @@ _0495:
 	end
 
 scr_seq_T09_001:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 20, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0519_T09_00020, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T09_002:
-	scrcmd_055 21, 0, 9, VAR_SPECIAL_x800C
+	direction_signpost msg_0519_T09_00021, 0, 9, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

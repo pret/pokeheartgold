@@ -34,7 +34,7 @@ _004D:
 scr_seq_D49R0104_011:
 	comparevartovalue VAR_TEMP_x400B, 1
 	gotoif ne, _0074
-	move_person 2, 2, 1, 3, 3
+	move_person obj_D49R0104_pcwoman2_2, 2, 1, 3, 3
 	setvar VAR_TEMP_x400B, 0
 _0074:
 	end

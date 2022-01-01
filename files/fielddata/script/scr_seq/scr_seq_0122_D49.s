@@ -1136,10 +1136,10 @@ _0EC4:
 	step 1, 1
 	step_end
 scr_seq_D49_023:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 49, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0137_D49_00049, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

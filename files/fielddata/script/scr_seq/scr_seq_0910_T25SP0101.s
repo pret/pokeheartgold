@@ -135,9 +135,7 @@ _018E:
 	gotoif eq, _01C5
 	npc_msg msg_0603_T25SP0101_00031
 	setvar VAR_TEMP_x4001, 1
-	setvar VAR_SPECIAL_x8004, 444
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_COIN_CASE, 1
 	npc_msg msg_0603_T25SP0101_00032
 	goto _00E8
 

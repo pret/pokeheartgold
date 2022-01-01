@@ -17,7 +17,7 @@ scr_seq_T27R0201_003:
 	end
 
 _001F:
-	move_person 0, 16, 0, 8, 2
+	move_person obj_T27R0201_bozu, 16, 0, 8, 2
 	end
 
 scr_seq_T27R0201_000:

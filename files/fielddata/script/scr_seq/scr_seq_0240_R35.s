@@ -155,19 +155,19 @@ _0200:
 	step 1, 1
 	step_end
 scr_seq_R35_000:
-	scrcmd_055 28, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0387_R35_00028, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R35_004:
-	scrcmd_055 29, 1, 19, VAR_SPECIAL_x800C
+	direction_signpost msg_0387_R35_00029, 1, 19, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R35_002:

@@ -68,73 +68,73 @@ scr_seq_D35R0102_030:
 	callif ge, _025D
 	comparevartovalue VAR_UNK_40AD, 2
 	gotoif ne, _0108
-	move_person 0, 44, 0, 3, 2
+	move_person obj_D35R0102_aji_peru, 44, 0, 3, 2
 	goto _0133
 
 _0108:
 	comparevartovalue VAR_UNK_40AD, 1
 	gotoif ne, _0127
-	move_person 0, 44, 0, 3, 1
+	move_person obj_D35R0102_aji_peru, 44, 0, 3, 1
 	goto _0133
 
 _0127:
-	move_person 0, 44, 0, 3, 0
+	move_person obj_D35R0102_aji_peru, 44, 0, 3, 0
 _0133:
 	comparevartovalue VAR_UNK_40AE, 2
 	gotoif ne, _0152
-	move_person 2, 18, 0, 3, 2
+	move_person obj_D35R0102_aji_peru_2, 18, 0, 3, 2
 	goto _017D
 
 _0152:
 	comparevartovalue VAR_UNK_40AE, 1
 	gotoif ne, _0171
-	move_person 2, 18, 0, 3, 1
+	move_person obj_D35R0102_aji_peru_2, 18, 0, 3, 1
 	goto _017D
 
 _0171:
-	move_person 2, 18, 0, 3, 0
+	move_person obj_D35R0102_aji_peru_2, 18, 0, 3, 0
 _017D:
 	comparevartovalue VAR_UNK_40AF, 2
 	gotoif ne, _019C
-	move_person 3, 44, 0, 10, 2
+	move_person obj_D35R0102_aji_peru_3, 44, 0, 10, 2
 	goto _01C7
 
 _019C:
 	comparevartovalue VAR_UNK_40AF, 1
 	gotoif ne, _01BB
-	move_person 3, 44, 0, 10, 1
+	move_person obj_D35R0102_aji_peru_3, 44, 0, 10, 1
 	goto _01C7
 
 _01BB:
-	move_person 3, 44, 0, 10, 0
+	move_person obj_D35R0102_aji_peru_3, 44, 0, 10, 0
 _01C7:
 	comparevartovalue VAR_UNK_40B0, 2
 	gotoif ne, _01E6
-	move_person 4, 44, 0, 28, 2
+	move_person obj_D35R0102_aji_peru_4, 44, 0, 28, 2
 	goto _0211
 
 _01E6:
 	comparevartovalue VAR_UNK_40B0, 1
 	gotoif ne, _0205
-	move_person 4, 44, 0, 28, 1
+	move_person obj_D35R0102_aji_peru_4, 44, 0, 28, 1
 	goto _0211
 
 _0205:
-	move_person 4, 44, 0, 28, 0
+	move_person obj_D35R0102_aji_peru_4, 44, 0, 28, 0
 _0211:
 	comparevartovalue VAR_UNK_40B1, 2
 	gotoif ne, _0230
-	move_person 5, 18, 0, 28, 2
+	move_person obj_D35R0102_aji_peru_5, 18, 0, 28, 2
 	goto _025B
 
 _0230:
 	comparevartovalue VAR_UNK_40B1, 1
 	gotoif ne, _024F
-	move_person 5, 18, 0, 28, 1
+	move_person obj_D35R0102_aji_peru_5, 18, 0, 28, 1
 	goto _025B
 
 _024F:
-	move_person 5, 18, 0, 28, 0
+	move_person obj_D35R0102_aji_peru_5, 18, 0, 28, 0
 _025B:
 	end
 
@@ -171,7 +171,7 @@ _02D0:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0460
 	wait_movement
 	apply_movement obj_player, _0478
@@ -184,7 +184,7 @@ _02D0:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
-	move_person 1, 33, 0, VAR_TEMP_x4001, 3
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 3
 	apply_movement obj_D35R0102_rocketm, _0460
 	wait_movement
 	npc_msg msg_0112_D35R0102_00001
@@ -201,7 +201,7 @@ _036C:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _046C
 	wait_movement
 	apply_movement obj_player, _0484
@@ -214,7 +214,7 @@ _036C:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
-	move_person 1, 33, 0, VAR_TEMP_x4001, 3
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 3
 	apply_movement obj_D35R0102_rocketm, _046C
 	wait_movement
 	npc_msg msg_0112_D35R0102_00001
@@ -226,7 +226,7 @@ _036C:
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
 _0402:
-	move_person 1, 37, 0, 0, 2
+	move_person obj_D35R0102_rocketm, 37, 0, 0, 2
 	setflag FLAG_UNK_1E8
 	setvar VAR_UNK_40AD, 2
 	apply_movement obj_D35R0102_aji_peru, _049C
@@ -312,7 +312,7 @@ _0503:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0668
 	wait_movement
 	apply_movement obj_player, _0478
@@ -325,7 +325,7 @@ _0503:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0668
 	wait_movement
 	apply_movement obj_player, _0478
@@ -344,7 +344,7 @@ _05A9:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0674
 	wait_movement
 	apply_movement obj_player, _0484
@@ -357,7 +357,7 @@ _05A9:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0674
 	wait_movement
 	apply_movement obj_player, _0484
@@ -462,7 +462,7 @@ _0747:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0680
 	wait_movement
 	apply_movement obj_player, _0478
@@ -475,7 +475,7 @@ _0747:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0680
 	wait_movement
 	apply_movement obj_player, _0478
@@ -494,7 +494,7 @@ _07ED:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _068C
 	wait_movement
 	apply_movement obj_player, _0484
@@ -507,7 +507,7 @@ _07ED:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _068C
 	wait_movement
 	apply_movement obj_player, _0484
@@ -552,7 +552,7 @@ _08F8:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0698
 	wait_movement
 	apply_movement obj_player, _0478
@@ -565,7 +565,7 @@ _08F8:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _0698
 	wait_movement
 	apply_movement obj_player, _0478
@@ -584,7 +584,7 @@ _099E:
 	scrcmd_338 1, 33, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06A4
 	wait_movement
 	apply_movement obj_player, _0484
@@ -597,7 +597,7 @@ _099E:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
-	move_person 1, 33, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06A4
 	wait_movement
 	apply_movement obj_player, _0484
@@ -641,7 +641,7 @@ _0AA5:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06B0
 	wait_movement
 	apply_movement obj_player, _0478
@@ -654,7 +654,7 @@ _0AA5:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06B0
 	wait_movement
 	apply_movement obj_player, _0478
@@ -673,7 +673,7 @@ _0B4B:
 	scrcmd_338 1, 27, 0
 	clearflag FLAG_UNK_1E8
 	show_person obj_D35R0102_rocketm
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06BC
 	wait_movement
 	apply_movement obj_player, _0484
@@ -686,7 +686,7 @@ _0B4B:
 	gotoif eq, _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
-	move_person 1, 27, 0, VAR_TEMP_x4001, 2
+	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
 	apply_movement obj_D35R0102_rocketm, _06BC
 	wait_movement
 	apply_movement obj_player, _0484

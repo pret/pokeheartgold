@@ -27,9 +27,7 @@ scr_seq_0164_000:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg msg_0267_00001
-	setvar VAR_SPECIAL_x8004, 437
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_PAL_PAD, 1
 	goto _005C
 	.byte 0x02, 0x00
 _005C:

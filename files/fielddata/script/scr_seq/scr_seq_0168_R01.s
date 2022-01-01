@@ -141,10 +141,10 @@ _01DC:
 	step 1, 1
 	step_end
 scr_seq_R01_002:
-	scrcmd_055 0, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0319_R01_00000, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

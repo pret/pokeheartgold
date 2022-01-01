@@ -29,8 +29,8 @@ scr_seq_T07R0203_008:
 scr_seq_T07R0203_011:
 	comparevartovalue VAR_UNK_412C, 0
 	gotoif ne, _006B
-	move_person 5, 12, 0, 6, 2
-	move_person 6, 13, 0, 6, 2
+	move_person obj_T07R0203_var_1, 12, 0, 6, 2
+	move_person obj_T07R0203_tsure_poke_611, 13, 0, 6, 2
 _006B:
 	end
 
@@ -71,8 +71,8 @@ scr_seq_T07R0203_010:
 	scrcmd_309 77
 	callstd std_fade_end_friend_music
 	setvar VAR_UNK_412C, 1
-	move_person 5, 29, 0, 29, 2
-	move_person 6, 29, 0, 29, 2
+	move_person obj_T07R0203_var_1, 29, 0, 29, 2
+	move_person obj_T07R0203_tsure_poke_611, 29, 0, 29, 2
 	releaseall
 	end
 	.byte 0x00
@@ -192,9 +192,7 @@ _0276:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _02A7
 	npc_msg msg_0503_T07R0203_00008
-	setvar VAR_SPECIAL_x8004, 502
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_GB_SOUNDS, 1
 	npc_msg msg_0503_T07R0203_00010
 	waitbutton
 	closemsg

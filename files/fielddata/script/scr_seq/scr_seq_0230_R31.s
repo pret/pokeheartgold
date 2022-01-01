@@ -213,19 +213,19 @@ _02D4:
 	step 35, 1
 	step_end
 scr_seq_R31_002:
-	scrcmd_055 13, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0378_R31_00013, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R31_003:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 14, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0378_R31_00014, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R31_004:

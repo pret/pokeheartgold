@@ -30,23 +30,23 @@ scr_seq_D35R0101_001:
 	end
 
 _005F:
-	move_person 4, 8, 0, 7, 2
+	move_person obj_D35R0101_gsfighter, 8, 0, 7, 2
 	end
 
 _006D:
-	move_person 4, 10, 0, 7, 2
-	move_person 5, 4, 0, 3, 1
-	move_person 0, 9, 0, 3, 1
-	move_person 1, 8, 0, 3, 1
-	move_person 2, 9, 0, 4, 1
-	move_person 3, 8, 0, 4, 1
+	move_person obj_D35R0101_gsfighter, 10, 0, 7, 2
+	move_person obj_D35R0101_sunglasses, 4, 0, 3, 1
+	move_person obj_D35R0101_babyboy1_10, 9, 0, 3, 1
+	move_person obj_D35R0101_stop, 8, 0, 3, 1
+	move_person obj_D35R0101_stop_2, 9, 0, 4, 1
+	move_person obj_D35R0101_stop_3, 8, 0, 4, 1
 	end
 
 _00B7:
-	move_person 0, 9, 0, 3, 1
-	move_person 1, 8, 0, 3, 1
-	move_person 2, 9, 0, 4, 1
-	move_person 3, 8, 0, 4, 1
+	move_person obj_D35R0101_babyboy1_10, 9, 0, 3, 1
+	move_person obj_D35R0101_stop, 8, 0, 3, 1
+	move_person obj_D35R0101_stop_2, 9, 0, 4, 1
+	move_person obj_D35R0101_stop_3, 8, 0, 4, 1
 	end
 
 scr_seq_D35R0101_008:

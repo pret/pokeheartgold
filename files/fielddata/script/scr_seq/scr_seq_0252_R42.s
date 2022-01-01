@@ -61,9 +61,7 @@ _00AA:
 	closemsg
 	apply_movement obj_R42_mount_2_2, _01D4
 	wait_movement
-	setvar VAR_SPECIAL_x8004, 423
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_HM04, 1
 	npc_msg msg_0399_R42_00006
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8001, 172
@@ -255,34 +253,34 @@ _0348:
 	step 15, 1
 	step_end
 scr_seq_R42_002:
-	scrcmd_055 0, 1, 1, VAR_SPECIAL_x800C
+	direction_signpost msg_0399_R42_00000, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R42_003:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0399_R42_00001, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R42_004:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 2, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0399_R42_00002, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R42_005:
-	scrcmd_055 3, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0399_R42_00003, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

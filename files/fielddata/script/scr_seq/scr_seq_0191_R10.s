@@ -179,12 +179,12 @@ scr_seq_R10_003:
 	play_cry SPECIES_ZAPDOS, 0
 	wait_cry
 	setflag FLAG_UNK_0A4
-	scrcmd_589 145, 50, 0
+	wild_battle SPECIES_ZAPDOS, 50, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _02B3
-	scrcmd_683 16386
+	scrcmd_683 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif eq, _02AF
 	comparevartovalue VAR_TEMP_x4002, 4
@@ -203,18 +203,18 @@ _02B9:
 	return
 
 scr_seq_R10_005:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 8, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0341_R10_00008, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R10_006:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 9, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0341_R10_00009, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

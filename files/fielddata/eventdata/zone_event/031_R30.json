@@ -277,7 +277,7 @@
       "ovid": "SPRITE_GSMIDDLEMAN1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_24F",
+      "flag": "FLAG_HIDE_ROUTE_30_APRICORN_MAN",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -332,7 +332,7 @@
       "h": 1,
       "z": 0,
       "val": 0,
-      "var": "VAR_UNK_408C"
+      "var": "VAR_SCENE_ROUTE_30_OW"
     },
     {
       "scr": "_EV_scr_seq_R30_004 + 1",

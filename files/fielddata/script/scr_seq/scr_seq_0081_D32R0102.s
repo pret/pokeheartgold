@@ -22,7 +22,7 @@ scr_seq_D32R0102_002:
 	end
 
 _0035:
-	move_person 0, 17, 1, 25, 2
+	move_person obj_D32R0102_gsmiddleman1, 17, 1, 25, 2
 	end
 
 scr_seq_D32R0102_004:
@@ -68,7 +68,7 @@ scr_seq_D32R0102_001:
 	lockall
 	npc_msg msg_0104_D32R0102_00000
 	closemsg
-	move_person 0, 14, 1, 36, 0
+	move_person obj_D32R0102_gsmiddleman1, 14, 1, 36, 0
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8004, 12
 	gotoif ne, _00E7
@@ -350,10 +350,10 @@ scr_seq_D32R0102_007:
 	end
 
 scr_seq_D32R0102_008:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 9, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0104_D32R0102_00009, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

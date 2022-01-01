@@ -366,8 +366,8 @@ _04B2:
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00014
 	closemsg
-	move_person 11, 28, 0, 34, 1
-	move_person 12, 28, 0, 33, 1
+	move_person obj_D44R0102_wataru, 28, 0, 34, 1
+	move_person obj_D44R0102_gsleader8_2, 28, 0, 33, 1
 	callstd 2032
 	apply_movement obj_D44R0102_gsrivel_2, _0674
 	apply_movement obj_player, _06A8
@@ -567,10 +567,10 @@ _0780:
 	step 2, 1
 	step_end
 scr_seq_D44R0102_005:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 6, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0129_D44R0102_00006, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

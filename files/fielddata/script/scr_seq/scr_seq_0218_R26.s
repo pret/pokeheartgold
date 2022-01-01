@@ -140,18 +140,18 @@ _01C0:
 	step 1, 1
 	step_end
 scr_seq_R26_002:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0365_R26_00000, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R26_003:
-	scrcmd_055 1, 1, 6, VAR_SPECIAL_x800C
+	direction_signpost msg_0365_R26_00001, 1, 6, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

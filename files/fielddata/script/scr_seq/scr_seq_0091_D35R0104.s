@@ -33,8 +33,8 @@ scr_seq_D35R0104_008:
 	end
 
 _0060:
-	move_person 10, 22, 0, 15, 0
-	move_person 11, 22, 0, 15, 0
+	move_person obj_D35R0104_babyboy1_9, 22, 0, 15, 0
+	move_person obj_D35R0104_babyboy1_9_2, 22, 0, 15, 0
 	end
 
 scr_seq_D35R0104_001:

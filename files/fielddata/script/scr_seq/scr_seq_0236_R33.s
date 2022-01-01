@@ -20,10 +20,10 @@ scr_seq_R33_000:
 	end
 
 scr_seq_R33_001:
-	scrcmd_055 1, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0383_R33_00001, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

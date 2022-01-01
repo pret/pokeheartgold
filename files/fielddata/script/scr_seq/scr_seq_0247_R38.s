@@ -14,18 +14,18 @@ scr_seq_R38_000:
 	end
 
 scr_seq_R38_001:
-	scrcmd_055 15, 1, 8, VAR_SPECIAL_x800C
+	direction_signpost msg_0394_R38_00015, 1, 8, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R38_002:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 16, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0394_R38_00016, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

@@ -24,13 +24,13 @@ scr_seq_D45R0102_000:
 	end
 
 _003D:
-	move_person 4, 6, 1, 4, 0
-	move_person 5, 5, 1, 8, 1
+	move_person obj_D45R0102_sakaki, 6, 1, 4, 0
+	move_person obj_D45R0102_var_1, 5, 1, 8, 1
 	end
 
 _0057:
-	move_person 4, 6, 1, 6, 1
-	move_person 5, 5, 1, 7, 0
+	move_person obj_D45R0102_sakaki, 6, 1, 6, 1
+	move_person obj_D45R0102_var_1, 5, 1, 7, 0
 	scrcmd_375 253
 	scrcmd_606
 	end

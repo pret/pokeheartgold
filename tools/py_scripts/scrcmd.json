@@ -341,16 +341,16 @@
       "args": []
     },
     {
-      "name": "scrcmd_055",
+      "name": "direction_signpost",
       "args": [
-        1,
+        "message",
         1,
         2,
         "var"
       ]
     },
     {
-      "name": "scrcmd_056",
+      "name": "scrcmd_055",
       "args": [
         1,
         2
@@ -367,9 +367,9 @@
       "args": []
     },
     {
-      "name": "scrcmd_059",
+      "name": "trainer_tips",
       "args": [
-        1,
+        "message",
         "var"
       ]
     },
@@ -1794,7 +1794,7 @@
       ]
     },
     {
-      "name": "scrcmd_291",
+      "name": "give_pokedex",
       "args": []
     },
     {
@@ -2055,7 +2055,7 @@
     {
       "name": "move_person",
       "args": [
-        "var",
+        "object2",
         "var",
         "var",
         "var",
@@ -3716,10 +3716,10 @@
       ]
     },
     {
-      "name": "scrcmd_589",
+      "name": "wild_battle",
       "args": [
-        2,
-        2,
+        "species",
+        "var",
         1
       ]
     },
@@ -4316,7 +4316,7 @@
     {
       "name": "scrcmd_683",
       "args": [
-        2
+        "var"
       ]
     },
     {

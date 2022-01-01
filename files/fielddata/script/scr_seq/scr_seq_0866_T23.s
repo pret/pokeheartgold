@@ -68,7 +68,7 @@ scr_seq_T23_002:
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 462
 	gotoif ne, _00E5
-	move_person 9, 404, 0, 463, 2
+	move_person obj_T23_gsrivel, 404, 0, 463, 2
 	apply_movement obj_T23_gsrivel, _028C
 	apply_movement obj_player, _02AC
 	goto _018E
@@ -76,7 +76,7 @@ scr_seq_T23_002:
 _00E5:
 	comparevartovalue VAR_SPECIAL_x8005, 463
 	gotoif ne, _0114
-	move_person 9, 404, 0, 464, 2
+	move_person obj_T23_gsrivel, 404, 0, 464, 2
 	apply_movement obj_T23_gsrivel, _028C
 	apply_movement obj_player, _02AC
 	goto _018E
@@ -84,7 +84,7 @@ _00E5:
 _0114:
 	comparevartovalue VAR_SPECIAL_x8005, 464
 	gotoif ne, _0143
-	move_person 9, 404, 0, 463, 2
+	move_person obj_T23_gsrivel, 404, 0, 463, 2
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
 	goto _018E
@@ -92,13 +92,13 @@ _0114:
 _0143:
 	comparevartovalue VAR_SPECIAL_x8005, 465
 	gotoif ne, _0172
-	move_person 9, 404, 0, 464, 2
+	move_person obj_T23_gsrivel, 404, 0, 464, 2
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
 	goto _018E
 
 _0172:
-	move_person 9, 404, 0, 465, 2
+	move_person obj_T23_gsrivel, 404, 0, 465, 2
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
 _018E:
@@ -222,7 +222,7 @@ scr_seq_T23_003:
 	closemsg
 	apply_movement obj_T23_gsmiddleman1_2, _0358
 	wait_movement
-	move_person 13, 23, 0, 16, 3
+	move_person obj_T23_gsmiddleman1_2, 23, 0, 16, 3
 	apply_movement obj_T23_rocketm_3, _0374
 	wait_movement
 	hide_person obj_T23_gsmiddleman1_2
@@ -282,51 +282,51 @@ _03C3:
 	goto _039F
 
 scr_seq_T23_008:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 12, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0564_T23_00012, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T23_009:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 13, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0564_T23_00013, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T23_010:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 15, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0564_T23_00015, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T23_011:
-	scrcmd_055 11, 0, 14, VAR_SPECIAL_x800C
+	direction_signpost msg_0564_T23_00011, 0, 14, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T23_012:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 14, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0564_T23_00014, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T23_013:
-	scrcmd_055 0, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0564_T23_00000, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T23_014:

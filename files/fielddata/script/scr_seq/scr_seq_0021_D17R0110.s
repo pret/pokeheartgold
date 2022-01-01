@@ -42,11 +42,11 @@ _005C:
 	gotoif FALSE, _00C3
 	comparevartovalue VAR_TEMP_x4003, 111
 	gotoif ne, _00BB
-	move_person 0, 16, 1, 18, 0
-	move_person 1, 12, 1, 18, 0
-	move_person 2, 12, 1, 12, 1
-	move_person 3, 18, 1, 18, 0
-	move_person 4, 18, 1, 12, 1
+	move_person obj_D17R0110_dancer, 16, 1, 18, 0
+	move_person obj_D17R0110_dancer_2, 12, 1, 18, 0
+	move_person obj_D17R0110_dancer_3, 12, 1, 12, 1
+	move_person obj_D17R0110_dancer_4, 18, 1, 18, 0
+	move_person obj_D17R0110_dancer_5, 18, 1, 12, 1
 _00BB:
 	setvar VAR_TEMP_x4003, 0
 	end
@@ -73,9 +73,9 @@ _00FD:
 	setvar VAR_SPECIAL_x8004, 70
 _0103:
 	setflag FLAG_UNK_0A4
-	scrcmd_589 16394, 32772, 0
+	wild_battle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_683 16389
+	scrcmd_683 VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 2
 	gotoif eq, _0167
 	comparevartovalue VAR_TEMP_x4005, 3
@@ -274,11 +274,11 @@ scr_seq_D17R0110_006:
 	release obj_D17R0110_dancer_3
 	release obj_D17R0110_dancer_4
 	release obj_D17R0110_dancer_5
-	move_person 0, 15, 1, 18, 0
-	move_person 1, 12, 1, 18, 0
-	move_person 2, 12, 1, 12, 1
-	move_person 3, 18, 1, 18, 0
-	move_person 4, 18, 1, 12, 1
+	move_person obj_D17R0110_dancer, 15, 1, 18, 0
+	move_person obj_D17R0110_dancer_2, 12, 1, 18, 0
+	move_person obj_D17R0110_dancer_3, 12, 1, 12, 1
+	move_person obj_D17R0110_dancer_4, 18, 1, 18, 0
+	move_person obj_D17R0110_dancer_5, 18, 1, 12, 1
 	wait 86, VAR_SPECIAL_x800C
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2

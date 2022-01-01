@@ -218,35 +218,35 @@ scr_seq_T03_002:
 	end
 
 scr_seq_T03_003:
-	scrcmd_055 20, 0, 3, VAR_SPECIAL_x800C
+	direction_signpost msg_0460_T03_00020, 0, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T03_004:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 21, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0460_T03_00021, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T03_005:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 22, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0460_T03_00022, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T03_006:
-	scrcmd_055 23, 2, 0, VAR_SPECIAL_x800C
+	direction_signpost msg_0460_T03_00023, 2, 0, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 _030E:
@@ -278,7 +278,7 @@ scr_seq_T03_011:
 	end
 
 _0371:
-	move_person 8, 1047, 6, 81, 2
+	move_person obj_T03_daigo, 1047, 6, 81, 2
 	end
 
 scr_seq_T03_013:
@@ -396,9 +396,9 @@ _04D7:
 	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
-	scrcmd_589 16394, 40, 0
+	wild_battle VAR_TEMP_x400A, 40, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_683 16384
+	scrcmd_683 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif eq, _057B
 	comparevartovalue VAR_TEMP_x4000, 3

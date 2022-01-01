@@ -210,7 +210,7 @@ scr_seq_T28_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0C9
+	checkflag FLAG_GOT_RED_SCALE
 	gotoif TRUE, _02FA
 	npc_msg msg_0620_T28_00014
 	waitbutton
@@ -246,26 +246,26 @@ scr_seq_T28_004:
 	end
 
 scr_seq_T28_006:
-	scrcmd_055 17, 0, 19, VAR_SPECIAL_x800C
+	direction_signpost msg_0620_T28_00017, 0, 19, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T28_007:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 18, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0620_T28_00018, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T28_008:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 19, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0620_T28_00019, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

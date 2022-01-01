@@ -35,15 +35,15 @@ _0058:
 	get_player_gender VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _007B
-	move_person 2, 28, 0, 28, 0
+	move_person obj_D49R0107_statueheroine, 28, 0, 28, 0
 	goto _0087
 
 _007B:
-	move_person 1, 28, 0, 28, 0
+	move_person obj_D49R0107_statuehero, 28, 0, 28, 0
 _0087:
 	comparevartovalue VAR_TEMP_x400E, 1
 	gotoif ne, _00A6
-	move_person 0, 9, 0, 9, 1
+	move_person obj_D49R0107_thlonowner, 9, 0, 9, 1
 	setvar VAR_TEMP_x400E, 0
 _00A6:
 	end

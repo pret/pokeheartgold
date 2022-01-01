@@ -45,9 +45,7 @@ _0070:
 
 _007E:
 	npc_msg msg_0398_R39R0201_00006
-	setvar VAR_SPECIAL_x8004, 434
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_SEAL_CASE, 1
 	npc_msg msg_0398_R39R0201_00007
 	closemsg
 	setflag FLAG_UNK_100

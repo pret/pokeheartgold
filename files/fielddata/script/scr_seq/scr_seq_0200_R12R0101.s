@@ -22,9 +22,7 @@ scr_seq_R12R0101_000:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0057
 	npc_msg msg_0349_R12R0101_00001
-	setvar VAR_SPECIAL_x8004, 447
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_SUPER_ROD, 1
 _004C:
 	npc_msg msg_0349_R12R0101_00002
 	waitbutton

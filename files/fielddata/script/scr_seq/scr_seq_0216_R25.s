@@ -535,12 +535,12 @@ scr_seq_R25_007:
 	lock obj_R25_tsure_poke_618
 	wait_cry
 	setflag FLAG_UNK_0A4
-	scrcmd_589 245, 40, 0
+	wild_battle SPECIES_SUICUNE, 40, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _07AA
-	scrcmd_683 16386
+	scrcmd_683 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif eq, _07A6
 	comparevartovalue VAR_TEMP_x4002, 4
@@ -609,10 +609,10 @@ _0800:
 	step 14, 11
 	step_end
 scr_seq_R25_002:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 15, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0363_R25_00015, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

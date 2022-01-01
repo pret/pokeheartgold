@@ -68,7 +68,7 @@ _00E0:
 	gotoif ne, _0106
 	comparevartovalue VAR_UNK_4130, 3
 	gotoif gt, _0106
-	move_person 2, 22, 0, 8, 0
+	move_person obj_T11R0701_daigo, 22, 0, 8, 0
 _0106:
 	end
 

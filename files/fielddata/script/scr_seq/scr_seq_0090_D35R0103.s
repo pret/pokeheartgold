@@ -29,8 +29,8 @@ scr_seq_D35R0103_002:
 	end
 
 _004F:
-	move_person 5, 29, 0, 22, 0
-	move_person 6, 29, 0, 22, 0
+	move_person obj_D35R0103_babyboy1_9, 29, 0, 22, 0
+	move_person obj_D35R0103_babyboy1_9_2, 29, 0, 22, 0
 	comparevartovalue VAR_UNK_40AC, 10
 	gotoif ge, _00B0
 	comparevartovalue VAR_UNK_40A9, 4
@@ -41,8 +41,8 @@ _0083:
 	comparevartovalue VAR_TEMP_x4007, 0
 	gotoif ne, _00B0
 	setvar VAR_TEMP_x4007, 77
-	move_person 0, 39, 0, 18, 0
-	move_person 1, 40, 0, 18, 0
+	move_person obj_D35R0103_wataru, 39, 0, 18, 0
+	move_person obj_D35R0103_tsure_poke_607, 40, 0, 18, 0
 	end
 
 _00B0:
@@ -296,8 +296,8 @@ scr_seq_D35R0103_003:
 	clearflag FLAG_UNK_1F3
 	show_person obj_D35R0103_rkanbuw
 	show_person obj_D35R0103_rocketm_4
-	move_person 8, 32, 1, 30, 3
-	move_person 7, 30, 1, 30, 0
+	move_person obj_D35R0103_rkanbuw, 32, 1, 30, 3
+	move_person obj_D35R0103_rocketm_4, 30, 1, 30, 0
 	scrcmd_081 0
 	play_bgm SEQ_GS_EYE_ROCKET
 	scrcmd_602 0
@@ -325,8 +325,8 @@ _0436:
 	clearflag FLAG_UNK_1E5
 	show_person obj_D35R0103_wataru
 	show_person obj_D35R0103_tsure_poke_607
-	move_person 0, 20, 1, 25, 3
-	move_person 1, 19, 1, 25, 0
+	move_person obj_D35R0103_wataru, 20, 1, 25, 3
+	move_person obj_D35R0103_tsure_poke_607, 19, 1, 25, 0
 	apply_movement obj_D35R0103_wataru, _067C
 	apply_movement obj_D35R0103_tsure_poke_607, _0684
 	wait_movement
@@ -350,8 +350,8 @@ _0436:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	move_person 0, 28, 1, 24, 1
-	move_person 1, 27, 1, 24, 3
+	move_person obj_D35R0103_wataru, 28, 1, 24, 1
+	move_person obj_D35R0103_tsure_poke_607, 27, 1, 24, 3
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -404,8 +404,8 @@ _0436:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	move_person 0, 39, 0, 18, 0
-	move_person 1, 40, 0, 18, 0
+	move_person obj_D35R0103_wataru, 39, 0, 18, 0
+	move_person obj_D35R0103_tsure_poke_607, 40, 0, 18, 0
 	releaseall
 	setvar VAR_UNK_40AC, 9
 	setvar VAR_UNK_40A9, 4
@@ -549,7 +549,7 @@ scr_seq_D35R0103_004:
 	faceplayer
 	setvar VAR_TEMP_x400A, 1
 	setflag FLAG_UNK_0A4
-	scrcmd_589 101, 23, 0
+	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -574,7 +574,7 @@ scr_seq_D35R0103_005:
 	faceplayer
 	setvar VAR_TEMP_x400A, 2
 	setflag FLAG_UNK_0A4
-	scrcmd_589 101, 23, 0
+	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -599,7 +599,7 @@ scr_seq_D35R0103_006:
 	faceplayer
 	setvar VAR_TEMP_x400A, 3
 	setflag FLAG_UNK_0A4
-	scrcmd_589 101, 23, 0
+	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -650,9 +650,7 @@ _08F0:
 	apply_movement obj_D35R0103_tsure_poke_607, _0A0C
 	wait_movement
 	npc_msg msg_0113_D35R0103_00015
-	setvar VAR_SPECIAL_x8004, 424
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_HM05, 1
 	npc_msg msg_0113_D35R0103_00017
 	closemsg
 	apply_movement obj_D35R0103_wataru, _0A18

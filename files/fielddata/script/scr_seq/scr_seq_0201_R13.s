@@ -11,26 +11,26 @@
 	scrdef_end
 
 scr_seq_R13_000:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0350_R13_00000, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R13_001:
-	scrcmd_055 1, 1, 10, VAR_SPECIAL_x800C
+	direction_signpost msg_0350_R13_00001, 1, 10, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R13_002:
-	scrcmd_055 2, 1, 14, VAR_SPECIAL_x800C
+	direction_signpost msg_0350_R13_00002, 1, 14, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

@@ -192,12 +192,12 @@ _0268:
 	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
-	scrcmd_589 143, 50, 0
+	wild_battle SPECIES_SNORLAX, 50, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _02AE
-	scrcmd_683 16389
+	scrcmd_683 VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 4
 	callif eq, _02B4
 	setflag FLAG_UNK_0F9
@@ -214,18 +214,18 @@ _02B4:
 	return
 	.byte 0x61, 0x00, 0x02, 0x00
 scr_seq_R12_002:
-	scrcmd_055 0, 1, 3, VAR_SPECIAL_x800C
+	direction_signpost msg_0348_R12_00000, 1, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R12_003:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0348_R12_00001, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

@@ -29,26 +29,26 @@ scr_seq_T20R0101_010:
 	gotoif TRUE, _00B8
 	comparevartovalue VAR_SCENE_ELMS_LAB, 0
 	gotoif ne, _0070
-	move_person 0, 4, 0, 5, 1
+	move_person obj_T20R0101_doctor, 4, 0, 5, 1
 	goto _00B4
 
 _0070:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 3
 	gotoif ne, _008F
-	move_person 0, 4, 0, 5, 1
+	move_person obj_T20R0101_doctor, 4, 0, 5, 1
 	goto _00B4
 
 _008F:
 	comparevartovalue VAR_SCENE_ELMS_LAB, 8
 	gotoif ne, _00B4
-	move_person 0, 4, 0, 5, 1
-	move_person 3, 7, 0, 12, 3
+	move_person obj_T20R0101_doctor, 4, 0, 5, 1
+	move_person obj_T20R0101_var_1, 7, 0, 12, 3
 _00B4:
 	scrcmd_621
 	end
 
 _00B8:
-	move_person 0, 4, 0, 5, 3
+	move_person obj_T20R0101_doctor, 4, 0, 5, 3
 	goto _00B4
 
 scr_seq_T20R0101_011:
@@ -719,9 +719,7 @@ _0904:
 	npc_msg msg_0543_T20R0101_00034
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_SPECIAL_x8004, 484
-	setvar VAR_SPECIAL_x8005, 1
-	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	takeitem_no_check ITEM_MYSTERY_EGG, 1
 	apply_movement obj_T20R0101_doctor, _0B34
 	wait_movement
 	npc_msg msg_0543_T20R0101_00035
@@ -742,7 +740,7 @@ _0904:
 	setvar VAR_UNK_408B, 1
 	clearflag FLAG_UNK_1A4
 	clearflag FLAG_UNK_1A5
-	setvar VAR_UNK_4107, 2
+	setvar VAR_SCENE_MR_POKEMONS_HOUSE, 2
 	setvar VAR_SCENE_NEW_BARK_TOWN_OW, 3
 	clearflag FLAG_UNK_194
 	setvar VAR_UNK_4095, 1

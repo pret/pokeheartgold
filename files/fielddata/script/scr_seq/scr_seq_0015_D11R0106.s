@@ -68,15 +68,15 @@ scr_seq_D11R0106_008:
 	end
 
 _00D4:
-	move_person 5, 21, 0, 14, 2
+	move_person obj_D11R0106_gsassistantm, 21, 0, 14, 2
 	return
 
 _00E2:
-	move_person 7, 9, 0, 13, 0
+	move_person obj_D11R0106_gsassistantm_3, 9, 0, 13, 0
 	return
 
 _00F0:
-	move_person 2, 15, 0, 16, 1
+	move_person obj_D11R0106_assistantm, 15, 0, 16, 1
 	return
 
 scr_seq_D11R0106_000:

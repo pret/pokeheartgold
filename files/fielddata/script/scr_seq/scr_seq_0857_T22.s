@@ -532,15 +532,9 @@ _0769:
 	goto_if_no_item_space ITEM_CHERI_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_PECHA_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_LEPPA_BERRY, 1, _0A08
-	setvar VAR_SPECIAL_x8004, 149
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 151
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 154
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_CHERI_BERRY, 1
+	giveitem_no_check ITEM_PECHA_BERRY, 1
+	giveitem_no_check ITEM_LEPPA_BERRY, 1
 	takeitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
 	goto _0A17
 
@@ -549,15 +543,9 @@ _080D:
 	goto_if_no_item_space ITEM_ORAN_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_CHESTO_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_WIKI_BERRY, 1, _0A08
-	setvar VAR_SPECIAL_x8004, 155
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 150
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 160
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_ORAN_BERRY, 1
+	giveitem_no_check ITEM_CHESTO_BERRY, 1
+	giveitem_no_check ITEM_WIKI_BERRY, 1
 	takeitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
 	goto _0A17
 
@@ -566,15 +554,9 @@ _08B1:
 	goto_if_no_item_space ITEM_ASPEAR_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_SITRUS_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_IAPAPA_BERRY, 1, _0A08
-	setvar VAR_SPECIAL_x8004, 153
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 158
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 163
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_ASPEAR_BERRY, 1
+	giveitem_no_check ITEM_SITRUS_BERRY, 1
+	giveitem_no_check ITEM_IAPAPA_BERRY, 1
 	takeitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
 	goto _0A17
 
@@ -583,15 +565,9 @@ _0955:
 	goto_if_no_item_space ITEM_RAWST_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_LUM_BERRY, 1, _0A08
 	goto_if_no_item_space ITEM_AGUAV_BERRY, 1, _0A08
-	setvar VAR_SPECIAL_x8004, 152
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 157
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
-	setvar VAR_SPECIAL_x8004, 162
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_RAWST_BERRY, 1
+	giveitem_no_check ITEM_LUM_BERRY, 1
+	giveitem_no_check ITEM_AGUAV_BERRY, 1
 	takeitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
 	goto _0A17
 
@@ -743,35 +719,35 @@ scr_seq_T22_006:
 	end
 
 scr_seq_T22_007:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 12, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0556_T22_00012, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T22_008:
-	scrcmd_055 9, 0, 13, VAR_SPECIAL_x800C
+	direction_signpost msg_0556_T22_00009, 0, 13, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T22_009:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 10, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0556_T22_00010, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T22_010:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 11, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0556_T22_00011, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T22_011:

@@ -17,7 +17,7 @@ scr_seq_R30R0201_003:
 	end
 
 _0021:
-	move_person 0, 5, 0, 6, 3
+	move_person obj_R30R0201_gsgentleman, 5, 0, 6, 3
 	end
 
 scr_seq_R30R0201_001:
@@ -43,9 +43,7 @@ scr_seq_R30R0201_001:
 	apply_movement obj_R30R0201_gsgentleman, _03E4
 	wait_movement
 	npc_msg msg_0377_R30R0201_00002
-	setvar VAR_SPECIAL_x8004, 484
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_MYSTERY_EGG, 1
 	npc_msg msg_0377_R30R0201_00003
 	npc_msg msg_0377_R30R0201_00004
 	closemsg
@@ -68,11 +66,11 @@ scr_seq_R30R0201_000:
 	comparevartovalue VAR_UNK_40F9, 2
 	gotoif ge, _02CD
 _00F1:
-	checkflag FLAG_UNK_06C
+	checkflag FLAG_EXCHANGED_RED_SCALE
 	gotoif TRUE, _019F
-	checkflag FLAG_UNK_0C9
+	checkflag FLAG_GOT_RED_SCALE
 	gotoif TRUE, _012A
-	comparevartovalue VAR_UNK_4107, 2
+	comparevartovalue VAR_SCENE_MR_POKEMONS_HOUSE, 2
 	gotoif ge, _011F
 	npc_msg msg_0377_R30R0201_00005
 	waitbutton
@@ -98,10 +96,8 @@ _012A:
 	goto_if_no_item_space ITEM_EXP__SHARE, 1, _0194
 	callstd std_give_item_verbose
 	closemsg
-	setflag FLAG_UNK_06C
-	setvar VAR_SPECIAL_x8004, 478
-	setvar VAR_SPECIAL_x8005, 1
-	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	setflag FLAG_EXCHANGED_RED_SCALE
+	takeitem_no_check ITEM_RED_SCALE, 1
 	releaseall
 	end
 
@@ -238,8 +234,8 @@ _02E8:
 	npc_msg msg_0377_R30R0201_00011
 	buffer_players_name 0
 	npc_msg msg_0377_R30R0201_00012
-	scrcmd_291
-	setflag FLAG_UNK_06B
+	give_pokedex
+	setflag FLAG_GOT_POKEDEX
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
 	scrcmd_573
@@ -260,9 +256,9 @@ _02E8:
 	scrcmd_081 0
 	reset_bgm
 	releaseall
-	setvar VAR_UNK_4107, 1
+	setvar VAR_SCENE_MR_POKEMONS_HOUSE, 1
 	scrcmd_280 2
-	setflag FLAG_UNK_195
+	setflag FLAG_HIDE_MR_POKEMONS_HOUSE_OAK
 	setflag FLAG_HIDE_COMM_CLUB_CLOSED_LADIES
 	clearflag FLAG_HIDE_COMM_CLUB_RECEPTIONISTS
 	setflag FLAG_HIDE_NEW_BARK_RIVAL
@@ -270,7 +266,7 @@ _02E8:
 	clearflag FLAG_HIDE_CHERRYGROVE_RIVAL
 	setvar VAR_SCENE_ELMS_LAB, 3
 	clearflag FLAG_HIDE_ELMS_LAB_OFFICER
-	setvar VAR_UNK_408C, 2
+	setvar VAR_SCENE_ROUTE_30_OW, 2
 	end
 	.byte 0x00
 

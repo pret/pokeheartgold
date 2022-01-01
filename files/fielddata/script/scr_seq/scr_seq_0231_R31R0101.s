@@ -21,8 +21,8 @@ scr_seq_R31R0101_000:
 	apply_movement obj_R31R0101_tsure_poke_611, _028C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	move_person 1, 10, 1, 7, 2
-	move_person 2, 10, 1, 7, 2
+	move_person obj_R31R0101_var_1, 10, 1, 7, 2
+	move_person obj_R31R0101_tsure_poke_611, 10, 1, 7, 2
 	apply_movement obj_R31R0101_var_1, _0284
 	wait_movement
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -76,9 +76,7 @@ _0138:
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0379_R31R0101_00002, msg_0379_R31R0101_00003
-	setvar VAR_SPECIAL_x8004, 465
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_VS__RECORDER, 1
 	gender_msgbox msg_0379_R31R0101_00004, msg_0379_R31R0101_00005
 	closemsg
 	apply_movement obj_R31R0101_var_1, _0294
@@ -135,8 +133,8 @@ _0253:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	move_person 1, 12, 0, 28, 0
-	move_person 2, 12, 0, 28, 0
+	move_person obj_R31R0101_var_1, 12, 0, 28, 0
+	move_person obj_R31R0101_tsure_poke_611, 12, 0, 28, 0
 	callstd std_fade_end_friend_music
 	releaseall
 	setvar VAR_UNK_4132, 1

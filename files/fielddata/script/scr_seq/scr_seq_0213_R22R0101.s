@@ -19,11 +19,11 @@
 scr_seq_R22R0101_006:
 	checkflag FLAG_UNK_12C
 	gotoif FALSE, _003D
-	move_person 2, 15, 0, 8, 1
+	move_person obj_R22R0101_policeman_3, 15, 0, 8, 1
 _003D:
 	checkflag FLAG_UNK_12B
 	gotoif FALSE, _0054
-	move_person 1, 7, 0, 8, 1
+	move_person obj_R22R0101_policeman_2, 7, 0, 8, 1
 _0054:
 	end
 

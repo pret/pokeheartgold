@@ -137,9 +137,7 @@ _019D:
 	gotoif eq, _01D4
 	npc_msg msg_0511_T07SP0101_00003
 	setvar VAR_TEMP_x4001, 1
-	setvar VAR_SPECIAL_x8004, 444
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_COIN_CASE, 1
 	npc_msg msg_0511_T07SP0101_00004
 	goto _00E4
 

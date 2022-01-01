@@ -62,12 +62,12 @@ scr_seq_D52R0101_000:
 	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
-	scrcmd_589 383, 50, 0
+	wild_battle SPECIES_GROUDON, 50, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _019D
-	scrcmd_683 16386
+	scrcmd_683 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif eq, _00EC
 	comparevartovalue VAR_TEMP_x4002, 4

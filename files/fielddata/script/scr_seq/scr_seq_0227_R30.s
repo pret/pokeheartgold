@@ -19,12 +19,12 @@
 	scrdef_end
 
 scr_seq_R30_001:
-	setflag FLAG_UNK_0EE
+	setflag FLAG_GOT_ELMS_PANIC_CALL
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 0
 	callstd std_phone_call
-	setvar VAR_UNK_408C, 3
+	setvar VAR_SCENE_ROUTE_30_OW, 3
 	end
 
 scr_seq_R30_000:
@@ -63,7 +63,7 @@ scr_seq_R30_002:
 	scrcmd_307 17, 11, 11, 3, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	clearflag FLAG_UNK_24F
+	clearflag FLAG_HIDE_ROUTE_30_APRICORN_MAN
 	show_person obj_R30_gsmiddleman1
 	apply_movement obj_R30_gsmiddleman1, _01B0
 	wait_movement
@@ -103,9 +103,7 @@ _0148:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg msg_0375_R30_00006
-	setvar VAR_SPECIAL_x8004, 468
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_APRICORN_BOX, 1
 	npc_msg msg_0375_R30_00008
 	closemsg
 	apply_movement obj_R30_gsmiddleman1, _01CC
@@ -119,10 +117,10 @@ _0148:
 	scrcmd_308 77
 	scrcmd_309 77
 	hide_person obj_R30_gsmiddleman1
-	setflag FLAG_UNK_24F
+	setflag FLAG_HIDE_ROUTE_30_APRICORN_MAN
 	releaseall
-	setflag FLAG_UNK_06D
-	setvar VAR_UNK_408C, 1
+	setflag FLAG_GOT_APRICORN_BOX
+	setvar VAR_SCENE_ROUTE_30_OW, 1
 	end
 
 
@@ -193,39 +191,39 @@ scr_seq_R30_004:
 	end
 
 scr_seq_R30_005:
-	scrcmd_055 9, 1, 6, VAR_SPECIAL_x800C
+	direction_signpost msg_0375_R30_00009, 1, 6, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R30_006:
-	scrcmd_055 10, 1, 3, VAR_SPECIAL_x800C
+	direction_signpost msg_0375_R30_00010, 1, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R30_007:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 12, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0375_R30_00012, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R30_008:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 11, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0375_R30_00011, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R30_009:
-	checkflag FLAG_UNK_06B
+	checkflag FLAG_GOT_POKEDEX
 	gotoif TRUE, _02D5
 	play_se SEQ_SE_DP_SELECT
 	lockall

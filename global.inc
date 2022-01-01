@@ -1738,11 +1738,11 @@
 .public ScrCmd_052
 .public ScrCmd_CloseMsg
 .public ScrCmd_054
+.public ScrCmd_DirectionSignpost
 .public ScrCmd_055
-.public ScrCmd_056
 .public ScrCmd_057
 .public ScrCmd_058
-.public ScrCmd_059
+.public ScrCmd_TrainerTips
 .public ScrCmd_060
 .public ScrCmd_061
 .public ScrCmd_062
@@ -1974,7 +1974,7 @@
 .public ScrCmd_288
 .public ScrCmd_289
 .public ScrCmd_290
-.public ScrCmd_291
+.public ScrCmd_GivePokedex
 .public ScrCmd_292
 .public ScrCmd_GiveRunningShoes
 .public ScrCmd_CheckBadge
@@ -2269,7 +2269,7 @@
 .public ScrCmd_586
 .public ScrCmd_587
 .public ScrCmd_588
-.public ScrCmd_589
+.public ScrCmd_WildBattle
 .public ScrCmd_GetTrcardStars
 .public ScrCmd_591
 .public ScrCmd_592
@@ -27265,7 +27265,7 @@
 .public sub_0202A59C
 .public sub_0202A5E8
 .public sub_0202A5F4
-.public sub_0202A614
+.public Pokedex_Enable
 .public sub_0202A640
 .public sub_0202A798
 .public sub_0202A8A8

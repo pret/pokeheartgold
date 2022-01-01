@@ -27,12 +27,12 @@ scr_seq_D41R0105_000:
 	play_cry SPECIES_MOLTRES, 0
 	wait_cry
 	setflag FLAG_UNK_0A4
-	scrcmd_589 146, 50, 0
+	wild_battle SPECIES_MOLTRES, 50, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0077
-	scrcmd_683 16386
+	scrcmd_683 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif eq, _0073
 	comparevartovalue VAR_TEMP_x4002, 4

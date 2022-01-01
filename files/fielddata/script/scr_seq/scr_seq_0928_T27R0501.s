@@ -31,33 +31,33 @@ scr_seq_T27R0501_013:
 _0057:
 	comparevartovalue VAR_UNK_410C, 0
 	gotoif ne, _007C
-	move_person 9, 6, 0, 6, 3
-	move_person 6, 8, 0, 6, 2
+	move_person obj_T27R0501_rocketm, 6, 0, 6, 3
+	move_person obj_T27R0501_dancer_3, 8, 0, 6, 2
 _007C:
 	comparevartovalue VAR_TEMP_x4009, 222
 	gotoif ne, _0110
-	move_person 9, 29, 0, 29, 1
+	move_person obj_T27R0501_rocketm, 29, 0, 29, 1
 	scrcmd_375 9
 	scrcmd_386 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _00BC
-	move_person 12, 7, 0, 6, 1
+	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 1
 	goto _0106
 
 _00BC:
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, _00DB
-	move_person 12, 7, 0, 6, 0
+	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 0
 	goto _0106
 
 _00DB:
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _00FA
-	move_person 12, 7, 0, 6, 3
+	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 3
 	goto _0106
 
 _00FA:
-	move_person 12, 7, 0, 6, 2
+	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 2
 _0106:
 	scrcmd_374 12
 	setvar VAR_TEMP_x4009, 0
@@ -66,7 +66,7 @@ _0110:
 	gotoif eq, _0136
 	comparevartovalue VAR_UNK_410C, 3
 	gotoif ne, _0136
-	move_person 6, 7, 0, 6, 1
+	move_person obj_T27R0501_dancer_3, 7, 0, 6, 1
 _0136:
 	end
 
@@ -794,16 +794,12 @@ _0944:
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _0AA4
-	setvar VAR_SPECIAL_x8004, 474
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_CLEAR_BELL, 1
 	setflag FLAG_UNK_103
 	goto _0AB8
 
 _0AA4:
-	setvar VAR_SPECIAL_x8004, 503
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_TIDAL_BELL, 1
 	setflag FLAG_UNK_104
 _0AB8:
 	closemsg

@@ -231,12 +231,12 @@ scr_seq_D18R0102_001:
 	play_cry SPECIES_SUICUNE, 0
 	wait_cry
 	setflag FLAG_UNK_0A4
-	scrcmd_589 245, 40, 0
+	wild_battle SPECIES_SUICUNE, 40, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _035C
-	scrcmd_683 16386
+	scrcmd_683 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif eq, _0358
 	comparevartovalue VAR_TEMP_x4002, 4

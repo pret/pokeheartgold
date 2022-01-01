@@ -560,11 +560,11 @@ _0798:
 	step_end
 	.byte 0x46, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_D02R0104_001:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0051_D02R0104_00001, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D02R0104_003:

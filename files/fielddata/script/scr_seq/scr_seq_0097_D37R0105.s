@@ -28,9 +28,7 @@ scr_seq_D37R0105_001:
 	gotoif ne, _005B
 	npc_msg msg_0120_D37R0105_00000
 	setflag FLAG_UNK_1C1
-	setvar VAR_SPECIAL_x8004, 475
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_CARD_KEY, 1
 _005B:
 	npc_msg msg_0120_D37R0105_00002
 	npc_msg msg_0120_D37R0105_00003

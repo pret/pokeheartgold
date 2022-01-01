@@ -15,10 +15,10 @@ scr_seq_R16_000:
 	end
 
 scr_seq_R16_001:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0354_R16_00000, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

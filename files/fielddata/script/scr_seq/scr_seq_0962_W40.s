@@ -266,19 +266,19 @@ scr_seq_W40_007:
 	end
 
 scr_seq_W40_002:
-	scrcmd_055 19, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0744_W40_00019, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_W40_009:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 20, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0744_W40_00020, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_W40_003:

@@ -17,7 +17,7 @@ scr_seq_D51R0101_002:
 	end
 
 _0021:
-	move_person 0, 13, 1, 28, 0
+	move_person obj_D51R0101_mount_2, 13, 1, 28, 0
 	end
 
 scr_seq_D51R0101_000:
@@ -35,7 +35,7 @@ scr_seq_D51R0101_000:
 	closemsg
 	apply_movement obj_D51R0101_mount_2, _00A8
 	wait_movement
-	move_person 0, 13, 1, 28, 0
+	move_person obj_D51R0101_mount_2, 13, 1, 28, 0
 	setvar VAR_UNK_40FB, 5
 	releaseall
 	end
@@ -95,10 +95,10 @@ _0114:
 	step 12, 1
 	step_end
 scr_seq_D51R0101_003:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 7, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0145_D51R0101_00007, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

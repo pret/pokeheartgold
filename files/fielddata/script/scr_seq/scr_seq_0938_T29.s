@@ -27,7 +27,7 @@
 	scrdef_end
 
 scr_seq_T29_000:
-	checkflag FLAG_UNK_0C9
+	checkflag FLAG_GOT_RED_SCALE
 	gotoif TRUE, _007F
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
@@ -137,9 +137,9 @@ scr_seq_T29_002:
 	end
 
 _01C0:
-	setflag FLAG_UNK_1E3
+	setflag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
 	hide_person obj_T29_rgyaradosu
-	clearflag FLAG_UNK_1E4
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	show_person obj_T29_wataru
 	show_person obj_T29_tsure_poke_607
 	clearflag FLAG_UNK_0A4
@@ -291,22 +291,22 @@ scr_seq_T29_001:
 	wait_cry
 	closemsg
 	setflag FLAG_UNK_0A4
-	scrcmd_589 130, 30, 1
+	wild_battle SPECIES_GYARADOS, 30, 1
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0456
-	scrcmd_683 16386
+	scrcmd_683 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 3
 	gotoif eq, _0452
 	comparevartovalue VAR_TEMP_x4002, 4
 	callif eq, _0466
-	checkflag FLAG_UNK_0C9
+	checkflag FLAG_GOT_RED_SCALE
 	gotoif TRUE, _046C
 	scrcmd_052
 	goto_if_no_item_space ITEM_RED_SCALE, 1, _045C
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_0C9
+	setflag FLAG_GOT_RED_SCALE
 	clearflag FLAG_UNK_28A
 	closemsg
 _0452:
@@ -329,7 +329,7 @@ _0466:
 	return
 
 _046C:
-	clearflag FLAG_UNK_1E4
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
 	hide_person obj_T29_tsure_poke_607
 	releaseall
@@ -361,7 +361,7 @@ _04BB:
 	apply_movement obj_T29_wataru, _0544
 	wait_movement
 	scrcmd_775 8, 10
-	setflag FLAG_UNK_1E4
+	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
 	hide_person obj_T29_tsure_poke_607
 	clearflag FLAG_UNK_1F8
@@ -422,11 +422,11 @@ _056A:
 scr_seq_T29_006:
 	checkflag FLAG_UNK_139
 	gotoif TRUE, _0597
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 31, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0626_T29_00031, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 _0597:
@@ -437,11 +437,11 @@ _0597:
 	scrcmd_393 0, 1, 129
 	scrcmd_784 0, 1
 	buffer_players_name 2
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 32, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0626_T29_00032, VAR_SPECIAL_x800C
+	callstd std_signpost
 	dummy_486
 	dummy_486
 	releaseall
@@ -533,11 +533,11 @@ scr_seq_T29_018:
 	end
 
 scr_seq_T29_007:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 30, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0626_T29_00030, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x09, 0x32, 0x00, 0x35, 0x00, 0x61
 	.byte 0x00, 0x02, 0x00

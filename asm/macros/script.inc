@@ -368,17 +368,17 @@
 	.short 54
 	.endm
 
-	.macro scrcmd_055 arg0, arg1, arg2, arg3
+	.macro direction_signpost message, arg1, arrow, arg3
 	.short 55
-	.byte \arg0
+	.byte \message
 	.byte \arg1
-	.short \arg2
+	.short \arrow
 	.short \arg3
 	.endm
 
-	.macro scrcmd_056 arg0, arg1
+	.macro scrcmd_055 message, arg1
 	.short 56
-	.byte \arg0
+	.byte \message
 	.short \arg1
 	.endm
 
@@ -391,7 +391,7 @@
 	.short 58
 	.endm
 
-	.macro scrcmd_059 arg0, arg1
+	.macro trainer_tips arg0, arg1
 	.short 59
 	.byte \arg0
 	.short \arg1
@@ -1677,7 +1677,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_291
+	.macro give_pokedex
 	.short 291
 	.endm
 
@@ -3334,11 +3334,11 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_589 arg0, arg1, arg2
+	.macro wild_battle species, level, shiny=0
 	.short 589
-	.short \arg0
-	.short \arg1
-	.byte \arg2
+	.short \species
+	.short \level
+	.byte \shiny
 	.endm
 
 	.macro get_trcard_stars arg0
@@ -4765,6 +4765,18 @@
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, \target
+	.endm
+
+	.macro giveitem_no_check item, quantity
+	setvar VAR_SPECIAL_x8004, \item
+	setvar VAR_SPECIAL_x8005, \quantity
+	callstd std_give_item_verbose
+	.endm
+
+	.macro takeitem_no_check item, quantity
+	setvar VAR_SPECIAL_x8004, \item
+	setvar VAR_SPECIAL_x8005, \quantity
+	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	.endm
 
 	.macro switch var

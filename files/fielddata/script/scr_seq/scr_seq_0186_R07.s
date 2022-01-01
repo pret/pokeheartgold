@@ -10,11 +10,11 @@
 	scrdef_end
 
 scr_seq_R07_000:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0336_R07_00000, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R07_001:

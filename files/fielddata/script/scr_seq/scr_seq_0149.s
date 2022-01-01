@@ -31,7 +31,7 @@ scr_seq_0149_000:
 	setflag FLAG_UNK_1DD
 	setflag FLAG_UNK_1E1
 	setflag FLAG_UNK_1E2
-	setflag FLAG_UNK_1E4
+	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	setflag FLAG_UNK_1E7
 	setflag FLAG_UNK_1F8
 	setflag FLAG_UNK_1FB
@@ -72,7 +72,7 @@ scr_seq_0149_000:
 	setflag FLAG_UNK_24D
 	setflag FLAG_UNK_252
 	scrcmd_505
-	setflag FLAG_UNK_24F
+	setflag FLAG_HIDE_ROUTE_30_APRICORN_MAN
 	setflag FLAG_UNK_250
 	setflag FLAG_UNK_251
 	setflag FLAG_UNK_253

@@ -9,10 +9,10 @@
 	scrdef_end
 
 scr_seq_R02_000:
-	scrcmd_055 0, 1, 3, VAR_SPECIAL_x800C
+	direction_signpost msg_0320_R02_00000, 1, 3, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

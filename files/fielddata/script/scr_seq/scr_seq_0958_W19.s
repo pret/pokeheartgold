@@ -54,18 +54,18 @@ scr_seq_W19_003:
 	end
 
 scr_seq_W19_004:
-	scrcmd_055 4, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0740_W19_00004, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_W19_005:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 5, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0740_W19_00005, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

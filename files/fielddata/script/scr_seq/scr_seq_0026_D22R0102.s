@@ -111,26 +111,26 @@ scr_seq_D22R0102_012:
 	end
 
 scr_seq_D22R0102_000:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0063_D22R0102_00000, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D22R0102_001:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 1, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0063_D22R0102_00001, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D22R0102_002:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 2, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0063_D22R0102_00002, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

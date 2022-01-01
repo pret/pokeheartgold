@@ -521,7 +521,7 @@ _07BF:
 _07C1:
 	scrcmd_490 VAR_UNK_4083
 	scrcmd_344 0, 0
-	move_person 6, 26, 0, 7, 1
+	move_person obj_T03R0101_daigo, 26, 0, 7, 1
 	goto _07BF
 	.byte 0x02, 0x00
 scr_seq_T03R0101_016:
@@ -574,7 +574,7 @@ _0870:
 	wait_fade
 	wait 30, VAR_SPECIAL_x800C
 	release obj_T03R0101_daigo
-	move_person 6, 25, 0, 7, 1
+	move_person obj_T03R0101_daigo, 25, 0, 7, 1
 	wait 10, VAR_SPECIAL_x800C
 	lock obj_T03R0101_daigo
 	comparevartovalue VAR_TEMP_x4001, 6

@@ -134,7 +134,7 @@ _01D5:
 	return
 
 _01DB:
-	clearflag FLAG_UNK_1E3
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
 	return
 
 _01E1:

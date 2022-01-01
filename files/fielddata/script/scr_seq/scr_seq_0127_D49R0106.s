@@ -29,7 +29,7 @@ _0039:
 scr_seq_D49R0106_007:
 	comparevartovalue VAR_TEMP_x400D, 1
 	gotoif ne, _0060
-	move_person 0, 6, 1, 3, 3
+	move_person obj_D49R0106_pcwoman2, 6, 1, 3, 3
 	setvar VAR_TEMP_x400D, 0
 _0060:
 	end

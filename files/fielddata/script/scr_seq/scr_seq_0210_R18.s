@@ -19,10 +19,10 @@ _0017:
 	end
 
 scr_seq_R18_001:
-	scrcmd_055 0, 1, 1, VAR_SPECIAL_x800C
+	direction_signpost msg_0358_R18_00000, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

@@ -44,7 +44,7 @@ scr_seq_D23R0106_001:
 	reset_bgm
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	move_person 1, 8, 1, 12, 1
+	move_person obj_D23R0106_gsgentleman, 8, 1, 12, 1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _00C1
@@ -75,18 +75,14 @@ _0119:
 	scrcmd_495 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _014E
-	setvar VAR_SPECIAL_x8004, 483
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_RAINBOW_WING, 1
 	setflag FLAG_UNK_093
 	npc_msg msg_0070_D23R0106_00005
 	closemsg
 	goto _0167
 
 _014E:
-	setvar VAR_SPECIAL_x8004, 482
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_SILVER_WING, 1
 	setflag FLAG_UNK_094
 	npc_msg msg_0070_D23R0106_00006
 	closemsg

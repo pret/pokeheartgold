@@ -56,11 +56,11 @@ _0093:
 	gotoif FALSE, _00FA
 	comparevartovalue VAR_TEMP_x4003, 111
 	gotoif ne, _00FA
-	move_person 4, 16, 1, 32, 0
-	move_person 2, 13, 1, 33, 0
-	move_person 3, 13, 1, 27, 0
-	move_person 0, 19, 1, 33, 0
-	move_person 1, 19, 1, 27, 0
+	move_person obj_D40R0107_dancer_5, 16, 1, 32, 0
+	move_person obj_D40R0107_dancer_3, 13, 1, 33, 0
+	move_person obj_D40R0107_dancer_4, 13, 1, 27, 0
+	move_person obj_D40R0107_dancer, 19, 1, 33, 0
+	move_person obj_D40R0107_dancer_2, 19, 1, 27, 0
 	setvar VAR_TEMP_x4003, 0
 	end
 
@@ -86,9 +86,9 @@ _0134:
 	setvar VAR_SPECIAL_x8004, 45
 _013A:
 	setflag FLAG_UNK_0A4
-	scrcmd_589 16394, 32772, 0
+	wild_battle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
 	clearflag FLAG_UNK_0A4
-	scrcmd_683 16389
+	scrcmd_683 VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 2
 	gotoif eq, _019E
 	comparevartovalue VAR_TEMP_x4005, 3
@@ -418,11 +418,11 @@ scr_seq_D40R0107_005:
 	release obj_D40R0107_dancer_4
 	release obj_D40R0107_dancer
 	release obj_D40R0107_dancer_2
-	move_person 4, 16, 1, 33, 0
-	move_person 2, 13, 1, 33, 0
-	move_person 3, 13, 1, 27, 0
-	move_person 0, 19, 1, 33, 0
-	move_person 1, 19, 1, 27, 0
+	move_person obj_D40R0107_dancer_5, 16, 1, 33, 0
+	move_person obj_D40R0107_dancer_3, 13, 1, 33, 0
+	move_person obj_D40R0107_dancer_4, 13, 1, 27, 0
+	move_person obj_D40R0107_dancer, 19, 1, 33, 0
+	move_person obj_D40R0107_dancer_2, 19, 1, 27, 0
 	scrcmd_773 1
 	scrcmd_767
 	fade_screen 6, 1, 1, 0x00

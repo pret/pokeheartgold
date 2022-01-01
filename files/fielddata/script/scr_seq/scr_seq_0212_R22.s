@@ -43,9 +43,9 @@ scr_seq_R22_004:
 	end
 
 _0073:
-	move_person 1, 947, 1, 266, 2
-	move_person 2, 950, 1, 266, 2
-	move_person 3, 952, 1, 280, 3
+	move_person obj_R22_sakaki, 947, 1, 266, 2
+	move_person obj_R22_gsrivel, 950, 1, 266, 2
+	move_person obj_R22_var_1, 952, 1, 280, 3
 	end
 
 scr_seq_R22_003:
@@ -450,10 +450,10 @@ _0604:
 	step 1, 1
 	step_end
 scr_seq_R22_002:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0360_R22_00000, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

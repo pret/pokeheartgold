@@ -95,7 +95,7 @@ scr_seq_T10R0101_006:
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_UNK_250
 	show_person obj_T10R0101_gsrivel
-	move_person 5, VAR_SPECIAL_x8000, 0, 23, 0
+	move_person obj_T10R0101_gsrivel, VAR_SPECIAL_x8000, 0, 23, 0
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

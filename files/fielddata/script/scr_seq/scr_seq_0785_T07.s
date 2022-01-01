@@ -214,51 +214,51 @@ scr_seq_T07_008:
 	end
 
 scr_seq_T07_009:
-	scrcmd_055 30, 0, 7, VAR_SPECIAL_x800C
+	direction_signpost msg_0491_T07_00030, 0, 7, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T07_010:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 31, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0491_T07_00031, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T07_011:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 32, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0491_T07_00032, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T07_012:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 33, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0491_T07_00033, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T07_013:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 34, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0491_T07_00034, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T07_014:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 35, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0491_T07_00035, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T07_016:

@@ -7,6 +7,7 @@
 // are for use in event scripts.
 
 #define _std_misc                       2000
+#define std_signpost                    2000
 #define std_nurse_joy                   2002
 #define std_bag_is_full                 2009
 #define std_wifi_club_closed            2025

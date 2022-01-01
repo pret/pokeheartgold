@@ -25,7 +25,7 @@ scr_seq_D37R0101_002:
 	show_person obj_D37R0101_tsure_poke_611
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, _0050
-	move_person 3, 9, 0, 25, 2
+	move_person obj_D37R0101_tsure_poke_611, 9, 0, 25, 2
 _0050:
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_D37R0101_tsure_poke_611, _0174
@@ -45,7 +45,7 @@ _0050:
 	show_person obj_D37R0101_var_1
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, _00AB
-	move_person 2, 9, 0, 25, 2
+	move_person obj_D37R0101_var_1, 9, 0, 25, 2
 _00AB:
 	play_se SEQ_SE_DP_KAIDAN2
 	callstd std_play_friend_music
@@ -72,9 +72,7 @@ _0100:
 	apply_movement obj_D37R0101_tsure_poke_611, _01E0
 	wait_movement
 	gender_msgbox msg_0116_D37R0101_00007, msg_0116_D37R0101_00010
-	setvar VAR_SPECIAL_x8004, 435
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_FASHION_CASE, 1
 	call _0354
 	gender_msgbox msg_0116_D37R0101_00008, msg_0116_D37R0101_00011
 	closemsg
@@ -162,7 +160,7 @@ _0228:
 	show_person obj_D37R0101_tsure_poke_611
 	lock obj_D37R0101_tsure_poke_611
 	callstd std_play_friend_music
-	move_person 2, 25, 0, 9, 0
+	move_person obj_D37R0101_var_1, 25, 0, 9, 0
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_player, _0220
@@ -174,7 +172,7 @@ _0228:
 	apply_movement obj_player, _0310
 	apply_movement obj_D37R0101_var_1, _0318
 	wait 8, VAR_SPECIAL_x800C
-	move_person 3, 25, 0, 9, 0
+	move_person obj_D37R0101_tsure_poke_611, 25, 0, 9, 0
 	apply_movement obj_D37R0101_tsure_poke_611, _0320
 	wait_movement
 	scrcmd_603
@@ -183,9 +181,7 @@ _0228:
 	buffer_players_name 0
 	gender_msgbox msg_0116_D37R0101_00006, msg_0116_D37R0101_00009
 	gender_msgbox msg_0116_D37R0101_00007, msg_0116_D37R0101_00010
-	setvar VAR_SPECIAL_x8004, 435
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_FASHION_CASE, 1
 	call _0354
 	gender_msgbox msg_0116_D37R0101_00008, msg_0116_D37R0101_00011
 	closemsg

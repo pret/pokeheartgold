@@ -406,35 +406,35 @@ _059C:
 	step 1, 1
 	step_end
 scr_seq_T26_004:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 7, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0604_T26_00007, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T26_005:
-	scrcmd_055 5, 0, 17, VAR_SPECIAL_x800C
+	direction_signpost msg_0604_T26_00005, 0, 17, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T26_006:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 6, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0604_T26_00006, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T26_007:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 8, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0604_T26_00008, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T26_008:

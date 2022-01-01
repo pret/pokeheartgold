@@ -62,7 +62,7 @@ _00B3:
 	wait_movement
 	clearflag FLAG_UNK_227
 	show_person obj_D49R0101_gsleader3
-	move_person 1, 23, 0, 20, 0
+	move_person obj_D49R0101_gsleader3, 23, 0, 20, 0
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, _00EC
 	apply_movement obj_D49R0101_gsleader3, _0248

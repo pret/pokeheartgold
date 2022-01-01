@@ -591,7 +591,7 @@ _0833:
 	comparevartovalue VAR_UNK_40FB, 14
 	gotoif eq, _086E
 	release obj_D51R0201_champion
-	move_person 0, 16, 1, 28, 0
+	move_person obj_D51R0201_champion, 16, 1, 28, 0
 	wait 5, VAR_SPECIAL_x800C
 	lock obj_D51R0201_champion
 _086E:

@@ -80,18 +80,18 @@ _00C4:
 	step 14, 4
 	step_end
 scr_seq_R27_002:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 2, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0369_R27_00002, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_R27_004:
-	scrcmd_055 3, 1, 5, VAR_SPECIAL_x800C
+	direction_signpost msg_0369_R27_00003, 1, 5, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

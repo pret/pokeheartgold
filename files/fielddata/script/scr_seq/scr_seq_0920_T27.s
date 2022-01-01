@@ -280,43 +280,43 @@ _0380:
 	step 1, 1
 	step_end
 scr_seq_T27_001:
-	scrcmd_055 11, 0, 18, VAR_SPECIAL_x800C
+	direction_signpost msg_0612_T27_00011, 0, 18, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T27_002:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 12, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0612_T27_00012, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T27_003:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 13, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0612_T27_00013, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T27_004:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 14, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0612_T27_00014, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T27_016:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 15, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0612_T27_00015, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T27_008:

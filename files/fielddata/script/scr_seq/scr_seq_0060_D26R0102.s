@@ -66,7 +66,7 @@ scr_seq_D26R0102_002:
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	move_person 7, 36, 0, 7, 2
+	move_person obj_D26R0102_gantetsu, 36, 0, 7, 2
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

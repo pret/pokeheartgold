@@ -309,9 +309,7 @@ _04DC:
 	apply_movement obj_R29_tsure_poke_611, _0654
 	wait_movement
 	gender_msgbox msg_0373_R29_00003, msg_0373_R29_00004
-	setvar VAR_SPECIAL_x8004, 4
-	setvar VAR_SPECIAL_x8005, 5
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_POKE_BALL, 5
 	gender_msgbox msg_0373_R29_00007, msg_0373_R29_00008
 	closemsg
 	apply_movement obj_R29_var_2, _0928
@@ -722,19 +720,19 @@ _09A5:
 	end
 
 scr_seq_R29_004:
-	scrcmd_055 16, 1, 1, VAR_SPECIAL_x800C
+	direction_signpost msg_0373_R29_00016, 1, 1, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R29_005:
-	scrcmd_055 15, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0373_R29_00015, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R29_006:

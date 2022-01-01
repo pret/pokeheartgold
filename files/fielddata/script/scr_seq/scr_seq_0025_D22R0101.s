@@ -40,7 +40,7 @@ scr_seq_D22R0101_011:
 	end
 
 _007D:
-	move_person 20, 51, 0, 48, 1
+	move_person obj_D22R0101_counterm, 51, 0, 48, 1
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 10
 	setvar VAR_TEMP_x4002, 48
@@ -511,27 +511,27 @@ _0678:
 	step 33, 1
 	step_end
 scr_seq_D22R0101_001:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 22, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0062_D22R0101_00022, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D22R0101_002:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 23, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0062_D22R0101_00023, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D22R0101_003:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 24, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0062_D22R0101_00024, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D22R0101_004:

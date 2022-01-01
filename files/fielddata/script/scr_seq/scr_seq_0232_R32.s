@@ -522,26 +522,26 @@ _06E0:
 	step 1, 1
 	step_end
 scr_seq_R32_006:
-	scrcmd_055 18, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0380_R32_00018, 1, 2, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R32_007:
-	scrcmd_055 17, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0380_R32_00017, 1, 4, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_R32_008:
-	scrcmd_055 19, 1, 13, VAR_SPECIAL_x800C
+	direction_signpost msg_0380_R32_00019, 1, 13, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 	.balign 4, 0

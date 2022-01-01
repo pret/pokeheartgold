@@ -973,43 +973,43 @@ scr_seq_D32_023:
 	end
 
 scr_seq_D32_025:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 34, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0100_D32_00034, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D32_026:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 35, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0100_D32_00035, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D32_027:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 36, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0100_D32_00036, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D32_028:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 37, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0100_D32_00037, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D32_029:
-	scrcmd_056 3, 0
+	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 38, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0100_D32_00038, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D32_030:

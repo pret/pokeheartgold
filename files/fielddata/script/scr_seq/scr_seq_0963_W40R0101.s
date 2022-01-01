@@ -18,7 +18,7 @@ scr_seq_W40R0101_001:
 	end
 
 _0028:
-	move_person 0, 3, 0, 3, 0
+	move_person obj_W40R0101_gsmiddleman1, 3, 0, 3, 0
 	end
 
 _0036:

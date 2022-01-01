@@ -27,17 +27,17 @@ ScrCmd_290: ; 0x0204E610
 	.balign 4, 0
 	thumb_func_end ScrCmd_290
 
-	thumb_func_start ScrCmd_291
-ScrCmd_291: ; 0x0204E640
+	thumb_func_start ScrCmd_GivePokedex
+ScrCmd_GivePokedex: ; 0x0204E640
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A614
+	bl Pokedex_Enable
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_291
+	thumb_func_end ScrCmd_GivePokedex
 
 	thumb_func_start ScrCmd_292
 ScrCmd_292: ; 0x0204E654

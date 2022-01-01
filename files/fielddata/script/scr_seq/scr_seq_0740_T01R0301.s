@@ -198,9 +198,7 @@ _0282:
 	checkflag FLAG_UNK_185
 	gotoif TRUE, _02C0
 	npc_msg msg_0451_T01R0301_00055
-	setvar VAR_SPECIAL_x8004, 427
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_HM08, 1
 	npc_msg msg_0451_T01R0301_00056
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00006, msg_0451_T01R0301_00007
@@ -333,9 +331,7 @@ _0476:
 _047E:
 	wait_movement
 	buffer_players_name 0
-	setvar VAR_SPECIAL_x8004, 532
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_JADE_ORB, 1
 	closemsg
 	npc_msg msg_0451_T01R0301_00021
 	closemsg

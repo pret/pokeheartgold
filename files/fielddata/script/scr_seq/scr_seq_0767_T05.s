@@ -56,34 +56,34 @@ scr_seq_T05_003:
 	end
 
 scr_seq_T05_004:
-	scrcmd_055 4, 0, 5, VAR_SPECIAL_x800C
+	direction_signpost msg_0475_T05_00004, 0, 5, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T05_005:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 5, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0475_T05_00005, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T05_006:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 6, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0475_T05_00006, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T05_007:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 7, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0475_T05_00007, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

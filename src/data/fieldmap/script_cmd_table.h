@@ -55,11 +55,11 @@ extern BOOL ScrCmd_051(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_052(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CloseMsg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_054(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_DirectionSignpost(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_055(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_056(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_057(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_058(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_059(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TrainerTips(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_060(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_061(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_062(SCRIPTCONTEXT *ctx);
@@ -291,7 +291,7 @@ extern BOOL ScrCmd_287(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_288(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_289(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_290(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_291(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GivePokedex(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_292(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveRunningShoes(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckBadge(SCRIPTCONTEXT *ctx);
@@ -589,7 +589,7 @@ extern BOOL ScrCmd_585(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_586(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_587(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_588(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_589(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_WildBattle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetTrcardStars(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_591(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_592(SCRIPTCONTEXT *ctx);
@@ -910,11 +910,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_052,
     ScrCmd_CloseMsg,
     ScrCmd_054,
+    ScrCmd_DirectionSignpost,
     ScrCmd_055,
-    ScrCmd_056,
     ScrCmd_057,
     ScrCmd_058,
-    ScrCmd_059,
+    ScrCmd_TrainerTips,
     ScrCmd_060,
     ScrCmd_061,
     ScrCmd_062,
@@ -1146,7 +1146,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_288,
     ScrCmd_289,
     ScrCmd_290,
-    ScrCmd_291,
+    ScrCmd_GivePokedex,
     ScrCmd_292,
     ScrCmd_GiveRunningShoes,
     ScrCmd_CheckBadge,
@@ -1444,7 +1444,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_586,
     ScrCmd_587,
     ScrCmd_588,
-    ScrCmd_589,
+    ScrCmd_WildBattle,
     ScrCmd_GetTrcardStars,
     ScrCmd_591,
     ScrCmd_592,

@@ -39,12 +39,12 @@ scr_seq_D32R0401_021:
 
 _007A:
 	scrcmd_338 11, 8, 11
-	move_person 11, 8, 0, 11, 2
+	move_person obj_D32R0401_var_10, 8, 0, 11, 2
 	return
 
 _0090:
 	scrcmd_338 11, 13, 11
-	move_person 11, 13, 0, 11, 2
+	move_person obj_D32R0401_var_10, 13, 0, 11, 2
 	return
 
 scr_seq_D32R0401_020:

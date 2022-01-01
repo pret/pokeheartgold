@@ -197,18 +197,31 @@ class NormalScriptParser(ScriptParserBase):
             self.gmm_header = None
 
         # Convenience macros
-        def handle_itemspace(m: re.Match):
-            item = self.constants['item'][int(m[1])]
-            return f'\tgoto_if_no_item_space {item}, {m[2]}, {m[3]}\n'
+        def handle_itemspace(macro, itemgrp=0):
+            def inner(m: re.Match):
+                grps = list(m.groups())
+                grps[itemgrp] = self.constants['item'][int(grps[itemgrp])]
+                return f'\t{macro} {", ".join(grps)}\n'
+            return inner
 
         self.macros = [
+            (re.compile(
+                r'\tsetvar VAR_SPECIAL_x8004, (\w+)\n'
+                r'\tsetvar VAR_SPECIAL_x8005, (\w+)\n'
+                r'\tcallstd std_give_item_verbose\n'
+            ), handle_itemspace('giveitem_no_check')),
+            (re.compile(
+                r'\tsetvar VAR_SPECIAL_x8004, (\w+)\n'
+                r'\tsetvar VAR_SPECIAL_x8005, (\w+)\n'
+                r'\ttakeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
+            ), handle_itemspace('takeitem_no_check')),
             (re.compile(
                 r'\tsetvar VAR_SPECIAL_x8004, (\w+)\n'
                 r'\tsetvar VAR_SPECIAL_x8005, (\w+)\n'
                 r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
                 r'\tcomparevartovalue VAR_SPECIAL_x800C, 0\n'
                 r'\tgotoif eq, (\w+)\n'
-            ), handle_itemspace),
+            ), handle_itemspace('goto_if_no_item_space')),
             (re.compile(
                 r'\tcopyvar VAR_SPECIAL_x8008, (\w+)\n'
             ), r'\tswitch \1\n'),

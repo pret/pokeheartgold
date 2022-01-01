@@ -2611,8 +2611,8 @@ _0202A60C: .word 0xBEEFCAFE
 _0202A610: .word 0x00000336
 	thumb_func_end sub_0202A5F4
 
-	thumb_func_start sub_0202A614
-sub_0202A614: ; 0x0202A614
+	thumb_func_start Pokedex_Enable
+Pokedex_Enable: ; 0x0202A614
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4]
@@ -2628,7 +2628,7 @@ _0202A624:
 	.balign 4, 0
 _0202A62C: .word 0xBEEFCAFE
 _0202A630: .word 0x00000336
-	thumb_func_end sub_0202A614
+	thumb_func_end Pokedex_Enable
 
 	thumb_func_start Sav2_Pokedex_get
 Sav2_Pokedex_get: ; 0x0202A634

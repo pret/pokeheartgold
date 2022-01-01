@@ -77,9 +77,7 @@ _00E9:
 	npc_msg msg_0541_T11R0802_00006
 	clearflag FLAG_UNK_2FB
 	show_person obj_T11R0802_mono_pip
-	setvar VAR_SPECIAL_x8004, 480
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_PASS, 1
 	npc_msg msg_0541_T11R0802_00008
 	waitbutton
 	closemsg

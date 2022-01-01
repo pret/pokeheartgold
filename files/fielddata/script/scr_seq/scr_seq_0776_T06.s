@@ -554,35 +554,35 @@ scr_seq_T06_004:
 	end
 
 scr_seq_T06_005:
-	scrcmd_055 10, 0, 6, VAR_SPECIAL_x800C
+	direction_signpost msg_0483_T06_00010, 0, 6, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T06_006:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 11, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0483_T06_00011, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T06_007:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 12, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0483_T06_00012, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T06_008:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 13, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0483_T06_00013, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T06_010:

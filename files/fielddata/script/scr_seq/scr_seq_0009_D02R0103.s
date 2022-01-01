@@ -15,24 +15,24 @@ scr_seq_D02R0103_002:
 	scrcmd_379 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif ne, _003D
-	move_person 0, 18, 0, 10, 1
+	move_person obj_D02R0103_stop, 18, 0, 10, 1
 	scrcmd_342 2, 20, 3
 	goto _005E
 
 _003D:
 	comparevartovalue VAR_TEMP_x4001, 4
 	gotoif ne, _005E
-	move_person 0, 18, 0, 10, 1
+	move_person obj_D02R0103_stop, 18, 0, 10, 1
 	scrcmd_342 2, 20, 3
 _005E:
 	end
 
 scr_seq_D02R0103_000:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 0, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0050_D02R0103_00000, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D02R0103_001:

@@ -45,7 +45,7 @@ scr_seq_D25R0103_000:
 	play_cry SPECIES_LAPRAS, 0
 	wait_cry
 	setflag FLAG_UNK_0A4
-	scrcmd_589 131, 20, 0
+	wild_battle SPECIES_LAPRAS, 20, 0
 	clearflag FLAG_UNK_0A4
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

@@ -420,34 +420,34 @@ _0630:
 	step 12, 1
 	step_end
 scr_seq_D24R0101_000:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 10, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0072_D24R0101_00010, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D24R0101_001:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 9, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0072_D24R0101_00009, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D24R0101_002:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 7, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0072_D24R0101_00007, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_D24R0101_003:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 8, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0072_D24R0101_00008, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 	.balign 4, 0

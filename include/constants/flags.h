@@ -111,9 +111,9 @@
 #define FLAG_UNK_068                 0x68
 #define FLAG_UNK_069                 0x69
 #define FLAG_GOT_STARTER                 0x6A
-#define FLAG_UNK_06B                 0x6B
-#define FLAG_UNK_06C                 0x6C
-#define FLAG_UNK_06D                 0x6D
+#define FLAG_GOT_POKEDEX                 0x6B
+#define FLAG_EXCHANGED_RED_SCALE                 0x6C
+#define FLAG_GOT_APRICORN_BOX                 0x6D
 #define FLAG_UNK_06E                 0x6E
 #define FLAG_UNK_06F                 0x6F
 #define FLAG_UNK_070                 0x70
@@ -205,7 +205,7 @@
 #define FLAG_UNK_0C6                 0xC6
 #define FLAG_UNK_0C7                 0xC7
 #define FLAG_UNK_0C8                 0xC8
-#define FLAG_UNK_0C9                 0xC9
+#define FLAG_GOT_RED_SCALE                 0xC9
 #define FLAG_UNK_0CA                 0xCA
 #define FLAG_UNK_0CB                 0xCB
 #define FLAG_UNK_0CC                 0xCC
@@ -242,7 +242,7 @@
 #define FLAG_UNK_0EB                 0xEB
 #define FLAG_UNK_0EC                 0xEC
 #define FLAG_UNK_0ED                 0xED
-#define FLAG_UNK_0EE                 0xEE
+#define FLAG_GOT_ELMS_PANIC_CALL                 0xEE
 #define FLAG_UNK_0EF                 0xEF
 #define FLAG_UNK_0F0                 0xF0
 #define FLAG_UNK_0F1                 0xF1
@@ -409,7 +409,7 @@
 #define FLAG_UNK_192                 0x192
 #define FLAG_HIDE_WIFI_CLUB_CLOSED_LADY                 0x193
 #define FLAG_UNK_194                 0x194
-#define FLAG_UNK_195                 0x195
+#define FLAG_HIDE_MR_POKEMONS_HOUSE_OAK                 0x195
 #define FLAG_UNK_196                 0x196
 #define FLAG_HIDE_VIOLET_SHOP_LAB_AIDE                 0x197
 #define FLAG_HIDE_CHERRYGROVE_GUIDE_GENT                 0x198
@@ -487,8 +487,8 @@
 #define FLAG_UNK_1E0                 0x1E0
 #define FLAG_UNK_1E1                 0x1E1
 #define FLAG_UNK_1E2                 0x1E2
-#define FLAG_UNK_1E3                 0x1E3
-#define FLAG_UNK_1E4                 0x1E4
+#define FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS                 0x1E3
+#define FLAG_HIDE_LAKE_OF_RAGE_LANCE                 0x1E4
 #define FLAG_UNK_1E5                 0x1E5
 #define FLAG_UNK_1E6                 0x1E6
 #define FLAG_UNK_1E7                 0x1E7
@@ -595,7 +595,7 @@
 #define FLAG_UNK_24C                 0x24C
 #define FLAG_UNK_24D                 0x24D
 #define FLAG_UNK_24E                 0x24E
-#define FLAG_UNK_24F                 0x24F
+#define FLAG_HIDE_ROUTE_30_APRICORN_MAN                 0x24F
 #define FLAG_UNK_250                 0x250
 #define FLAG_UNK_251                 0x251
 #define FLAG_UNK_252                 0x252

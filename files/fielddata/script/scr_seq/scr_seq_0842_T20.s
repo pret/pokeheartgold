@@ -58,8 +58,8 @@ _00A4:
 	show_person obj_T20_var_1
 	clearflag FLAG_HIDE_NEW_BARK_MARILL
 	show_person obj_T20_tsure_poke_611
-	move_person 4, 686, 0, 396, 2
-	move_person 3, 685, 0, 396, 1
+	move_person obj_T20_var_1, 686, 0, 396, 2
+	move_person obj_T20_tsure_poke_611, 685, 0, 396, 1
 	end
 
 scr_seq_T20_000:
@@ -480,7 +480,7 @@ _075A:
 	scrcmd_310 77
 	scrcmd_308 77
 	show_person obj_T20_doctor
-	move_person 5, 684, 0, 393, 1
+	move_person obj_T20_doctor, 684, 0, 393, 1
 	apply_movement obj_T20_doctor, _0D08
 	wait_movement
 	scrcmd_311 77
@@ -1074,11 +1074,11 @@ _0EC0:
 	step_end
 scr_seq_T20_007:
 	buffer_players_name 0
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 35, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0542_T20_00035, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T20_008:
@@ -1209,11 +1209,11 @@ _1078:
 	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_T20_016:
 	buffer_friends_name 0
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 35, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0542_T20_00035, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T20_017:
@@ -1687,19 +1687,19 @@ _1700:
 	step 34, 1
 	step_end
 scr_seq_T20_013:
-	scrcmd_056 2, 0
+	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_059 36, VAR_SPECIAL_x800C
-	callstd 2000
+	trainer_tips msg_0542_T20_00036, VAR_SPECIAL_x800C
+	callstd std_signpost
 	end
 
 scr_seq_T20_014:
-	scrcmd_055 34, 0, 11, VAR_SPECIAL_x800C
+	direction_signpost msg_0542_T20_00034, 0, 11, VAR_SPECIAL_x800C
 	scrcmd_057 3
 	scrcmd_058
 	scrcmd_060 VAR_SPECIAL_x800C
-	callstd 2000
+	callstd std_signpost
 	end
 
 scr_seq_T20_015:

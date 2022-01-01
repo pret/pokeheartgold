@@ -34,9 +34,7 @@ _0042:
 	end
 
 _0065:
-	setvar VAR_SPECIAL_x8004, 450
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_BICYCLE, 1
 	setflag FLAG_UNK_089
 	closemsg
 	touchscreen_menu_show

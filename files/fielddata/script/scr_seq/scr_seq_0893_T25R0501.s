@@ -31,7 +31,7 @@ scr_seq_T25R0501_005:
 	end
 
 _004C:
-	move_person 0, 4, 0, 6, 3
+	move_person obj_T25R0501_policeman, 4, 0, 6, 3
 	end
 
 scr_seq_T25R0501_000:

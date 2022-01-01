@@ -100,9 +100,7 @@ _0116:
 	npc_msg msg_0488_T06R0301_00011
 	hide_person obj_T06R0301_mono_pip
 	setflag FLAG_UNK_2FC
-	setvar VAR_SPECIAL_x8004, 479
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check ITEM_LOST_ITEM, 1
 	setvar VAR_UNK_4130, 1
 	clearflag FLAG_UNK_2FD
 	closemsg
