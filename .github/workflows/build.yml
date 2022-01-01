@@ -68,13 +68,15 @@ jobs:
           $GITHUB_WORKSPACE/.github/calcrom/webhook.sh pokeheartgold "$CALCROM_WEBHOOK_URL"
         continue-on-error: true
 
-      - name: Post error zip
-        if: ${{ !success() }}
+      - name: Post error archive
+        if: failure()
+        run:
+          tar -chzvf failure.tar.gz -T tar-on-error
+
+      - name: Post error upload
+        if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: pokeheartgold-failure-${{ github.run_id }}
-          path: |
-            build
-            files
-            sub/build
+          path: failure.tar.gz
           retention-days: 1
