@@ -15,14 +15,14 @@
 	scrdef_end
 
 scr_seq_R10_004:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _002B
 	end
 
 _002B:
 	setflag FLAG_UNK_297
 	hide_person obj_R10_tsure_poke_604
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_R10_001:
@@ -37,7 +37,7 @@ _0052:
 	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00BF
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 9
 	gotoif ne, _008B
 	clearflag FLAG_UNK_264
@@ -178,9 +178,9 @@ scr_seq_R10_003:
 	faceplayer
 	play_cry SPECIES_ZAPDOS, 0
 	wait_cry
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ZAPDOS, 50, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _02B3

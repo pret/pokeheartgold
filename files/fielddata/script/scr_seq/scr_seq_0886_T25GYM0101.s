@@ -21,7 +21,7 @@ scr_seq_T25GYM0101_004:
 	scrcmd_147 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00AF
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 12
 	gotoif ne, _0062
 	setflag FLAG_UNK_2EC
@@ -52,7 +52,7 @@ _00AD:
 	end
 
 _00AF:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 18
 	gotoif ne, _00CA
 	setflag FLAG_UNK_2EC
@@ -115,8 +115,8 @@ _017D:
 	setvar VAR_UNK_410A, 1
 	setflag FLAG_UNK_084
 	setvar VAR_UNK_40DA, 1
-	clearflag FLAG_UNK_223
-	setflag FLAG_UNK_224
+	clearflag FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_UNLOCKED
+	setflag FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_LOCKED
 	end
 
 _01A0:

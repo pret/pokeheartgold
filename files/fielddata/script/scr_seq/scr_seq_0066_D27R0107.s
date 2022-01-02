@@ -107,11 +107,11 @@ _00B5:
 	setvar VAR_UNK_40A5, 2
 	setvar VAR_UNK_410E, 1
 	setflag FLAG_UNK_1D7
-	clearflag FLAG_UNK_1D9
+	clearflag FLAG_HIDE_JASMINE_IN_GYM
 	setflag FLAG_UNK_1DA
 	setflag FLAG_UNK_1DB
-	clearflag FLAG_UNK_1DC
-	clearflag FLAG_UNK_1DD
+	clearflag FLAG_HIDE_OLIVINE_GYM_GENTLEMAN
+	clearflag FLAG_HIDE_OLIVINE_GYM_GIRL
 	setflag FLAG_UNK_998
 	end
 

@@ -8,8 +8,8 @@ _021D416C:
 
 	.text
 
-	thumb_func_start ScrCmd_852
-ScrCmd_852: ; 0x02048EB8
+	thumb_func_start ScrCmd_BufferDeptStoreFloorNo
+ScrCmd_BufferDeptStoreFloorNo: ; 0x02048EB8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -28,10 +28,10 @@ ScrCmd_852: ; 0x02048EB8
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_852
+	thumb_func_end ScrCmd_BufferDeptStoreFloorNo
 
-	thumb_func_start ScrCmd_503
-ScrCmd_503: ; 0x02048EE0
+	thumb_func_start ScrCmd_LotoIdGet
+ScrCmd_LotoIdGet: ; 0x02048EE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -47,15 +47,15 @@ ScrCmd_503: ; 0x02048EE0
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02066CD0
+	bl ScriptState_GetLotoId
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_503
+	thumb_func_end ScrCmd_LotoIdGet
 
-	thumb_func_start ScrCmd_504
-ScrCmd_504: ; 0x02048F10
+	thumb_func_start ScrCmd_LotoIdSearch
+ScrCmd_LotoIdSearch: ; 0x02048F10
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r0, #0
@@ -125,7 +125,7 @@ _02048F88:
 	lsl r1, r1, #0x10
 	ldr r0, [sp]
 	lsr r1, r1, #0x10
-	bl sub_020490A0
+	bl LotoId_CountDigitsMatched
 	cmp r0, #0
 	beq _02048FC8
 	ldr r1, [sp, #0x1c]
@@ -172,7 +172,7 @@ _02048FDC:
 	lsl r1, r1, #0x10
 	ldr r0, [sp]
 	lsr r1, r1, #0x10
-	bl sub_020490A0
+	bl LotoId_CountDigitsMatched
 	cmp r0, #0
 	beq _0204902C
 	cmp r6, r0
@@ -234,22 +234,22 @@ _02049082:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02049088: .word 0x00000000
-	thumb_func_end ScrCmd_504
+	thumb_func_end ScrCmd_LotoIdSearch
 
-	thumb_func_start ScrCmd_505
-ScrCmd_505: ; 0x0204908C
+	thumb_func_start ScrCmd_LotoIdSet
+ScrCmd_LotoIdSet: ; 0x0204908C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066CF4
+	bl ScriptState_RollLotoId
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_505
+	thumb_func_end ScrCmd_LotoIdSet
 
-	thumb_func_start sub_020490A0
-sub_020490A0: ; 0x020490A0
+	thumb_func_start LotoId_CountDigitsMatched
+LotoId_CountDigitsMatched: ; 0x020490A0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	mov r6, #0
@@ -302,4 +302,4 @@ _020490F8:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02049108: .word _021D416C
-	thumb_func_end sub_020490A0
+	thumb_func_end LotoId_CountDigitsMatched

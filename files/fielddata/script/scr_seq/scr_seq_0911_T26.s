@@ -81,7 +81,7 @@ scr_seq_T26_001:
 	scrcmd_307 8, 7, 13, 14, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	clearflag FLAG_UNK_1D6
+	clearflag FLAG_HIDE_OLIVINE_RIVAL
 	show_person obj_T26_gsrivel
 	apply_movement obj_T26_gsrivel, _02B4
 	wait_movement
@@ -165,7 +165,7 @@ _029C:
 	wait_movement
 	setvar VAR_UNK_4078, 1
 	hide_person obj_T26_gsrivel
-	setflag FLAG_UNK_1D6
+	setflag FLAG_HIDE_OLIVINE_RIVAL
 	callstd 2032
 	releaseall
 	end

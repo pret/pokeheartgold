@@ -1958,8 +1958,8 @@
 .public ScrCmd_272
 .public ScrCmd_273
 .public ScrCmd_274
-.public ScrCmd_275
-.public ScrCmd_276
+.public ScrCmd_MartBuy
+.public ScrCmd_SpecialMartBuy
 .public ScrCmd_277
 .public ScrCmd_278
 .public ScrCmd_OverworldWhiteOut
@@ -2183,10 +2183,10 @@
 .public ScrCmd_500
 .public ScrCmd_501
 .public ScrCmd_502
-.public ScrCmd_503
-.public ScrCmd_504
-.public ScrCmd_505
-.public ScrCmd_506
+.public ScrCmd_LotoIdGet
+.public ScrCmd_LotoIdSearch
+.public ScrCmd_LotoIdSet
+.public ScrCmd_BufferBoxMonNick
 .public ScrCmd_CountPCEmptySpace
 .public ScrCmd_508
 .public ScrCmd_509
@@ -2221,7 +2221,7 @@
 .public ScrCmd_538
 .public ScrCmd_539
 .public ScrCmd_540
-.public ScrCmd_541
+.public ScrCmd_BufferIntEx
 .public ScrCmd_542
 .public ScrCmd_543
 .public ScrCmd_544
@@ -2242,7 +2242,7 @@
 .public ScrCmd_559
 .public ScrCmd_560
 .public ScrCmd_561
-.public ScrCmd_562
+.public ScrCmd_MultiBattle
 .public ScrCmd_563
 .public ScrCmd_564
 .public ScrCmd_565
@@ -2462,7 +2462,7 @@
 .public ScrCmd_779
 .public ScrCmd_780
 .public ScrCmd_781
-.public ScrCmd_782
+.public ScrCmd_MartSell
 .public ScrCmd_783
 .public ScrCmd_784
 .public ScrCmd_785
@@ -2532,7 +2532,7 @@
 .public ScrCmd_BufferTrainerClassNameIndef
 .public ScrCmd_BufferSealNamePlural
 .public ScrCmd_Capitalize
-.public ScrCmd_852
+.public ScrCmd_BufferDeptStoreFloorNo
 .public ScrCmd_AddVar
 .public ScrCmd_BgGoTo
 .public ScrCmd_Call
@@ -29149,8 +29149,8 @@
 .public sub_02066C1C
 .public sub_02066C4C
 .public sub_02066C74
-.public sub_02066CD0
-.public sub_02066CF4
+.public ScriptState_GetLotoId
+.public ScriptState_RollLotoId
 .public sub_02066D10
 .public sub_02066D40
 .public sub_02066D60

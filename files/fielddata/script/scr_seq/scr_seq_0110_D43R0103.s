@@ -19,7 +19,7 @@ scr_seq_D43R0103_000:
 	lockall
 	apply_movement obj_player, _0168
 	wait_movement
-	clearflag FLAG_UNK_20A
+	clearflag FLAG_HIDE_VICTORY_ROAD_RIVAL
 	show_person obj_D43R0103_gsrivel
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -85,7 +85,7 @@ _013A:
 	apply_movement obj_D43R0103_gsrivel, _0200
 _0142:
 	wait_movement
-	setflag FLAG_UNK_20A
+	setflag FLAG_HIDE_VICTORY_ROAD_RIVAL
 	hide_person obj_D43R0103_gsrivel
 	callstd std_fade_end_rival_outro_music
 	setvar VAR_UNK_40C5, 1
@@ -94,7 +94,7 @@ _0142:
 
 _015A:
 	hide_person obj_D43R0103_gsrivel
-	setflag FLAG_UNK_20A
+	setflag FLAG_HIDE_VICTORY_ROAD_RIVAL
 	white_out
 	releaseall
 	end

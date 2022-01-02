@@ -11,14 +11,14 @@
 	scrdef_end
 
 scr_seq_D18R0102_002:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _001B
 	end
 
 _001B:
-	setflag FLAG_UNK_30E
+	setflag FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE
 	hide_person obj_D18R0102_tsure_poke_618_2
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_D18R0102_000:
@@ -69,9 +69,9 @@ _00E2:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	setflag FLAG_UNK_1C9
-	setflag FLAG_UNK_1CA
-	setflag FLAG_UNK_1CB
+	setflag FLAG_HIDE_BURNED_TOWER_RAIKOU
+	setflag FLAG_HIDE_BURNED_TOWER_ENTEI
+	setflag FLAG_HIDE_BURNED_TOWER_SUICUNE
 	hide_person obj_D18R0102_tsure_poke_616
 	hide_person obj_D18R0102_tsure_poke_617
 	hide_person obj_D18R0102_tsure_poke_618
@@ -129,7 +129,7 @@ _01D4:
 	setflag FLAG_UNK_1DE
 	setflag FLAG_UNK_1DF
 	setflag FLAG_UNK_1E0
-	clearflag FLAG_UNK_1E1
+	clearflag FLAG_HIDE_CIANWOOD_SUICUNE
 	setvar VAR_UNK_40A1, 1
 	setvar VAR_UNK_4076, 1
 	setvar VAR_UNK_4079, 2
@@ -230,9 +230,9 @@ scr_seq_D18R0102_001:
 	faceplayer
 	play_cry SPECIES_SUICUNE, 0
 	wait_cry
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUICUNE, 40, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _035C
@@ -251,6 +251,6 @@ _035C:
 	end
 
 _0362:
-	setflag FLAG_UNK_175
+	setflag FLAG_ENGAGED_STATIC_SUICUNE
 	return
 	.balign 4, 0

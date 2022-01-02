@@ -24,7 +24,7 @@ scr_seq_T03GYM0101_003:
 	goto _00F5
 	.byte 0x02, 0x00
 _0053:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 12
 	gotoif ne, _006E
 	setflag FLAG_UNK_2F4
@@ -49,7 +49,7 @@ _00A2:
 	end
 
 _00A4:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 17
 	gotoif ne, _00BF
 	setflag FLAG_UNK_2F4

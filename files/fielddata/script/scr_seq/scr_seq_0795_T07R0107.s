@@ -23,27 +23,27 @@ scr_seq_T07R0107_000:
 	end
 
 _0068:
-	scrcmd_852 0, 6
+	buffer_dept_store_floor_no 0, 6
 	goto _00A4
 
 _0072:
-	scrcmd_852 0, 5
+	buffer_dept_store_floor_no 0, 5
 	goto _00A4
 
 _007C:
-	scrcmd_852 0, 4
+	buffer_dept_store_floor_no 0, 4
 	goto _00A4
 
 _0086:
-	scrcmd_852 0, 3
+	buffer_dept_store_floor_no 0, 3
 	goto _00A4
 
 _0090:
-	scrcmd_852 0, 2
+	buffer_dept_store_floor_no 0, 2
 	goto _00A4
 
 _009A:
-	scrcmd_852 0, 1
+	buffer_dept_store_floor_no 0, 1
 	goto _00A4
 
 _00A4:

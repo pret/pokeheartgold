@@ -24,17 +24,17 @@ scr_seq_R25_003:
 	end
 
 _003B:
-	comparevartovalue VAR_UNK_4089, 2
+	comparevartovalue VAR_SCENE_ROUTE_25, 2
 	gotoif ne, _0050
 	clearflag FLAG_UNK_2B2
-	setflag FLAG_UNK_2A2
+	setflag FLAG_HIDE_ROUTE_25_EUSINE
 _0050:
 	check_badge 15, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _011B
-	comparevartovalue VAR_UNK_4089, 1
+	comparevartovalue VAR_SCENE_ROUTE_25, 1
 	gotoif eq, _011B
-	comparevartovalue VAR_UNK_4089, 2
+	comparevartovalue VAR_SCENE_ROUTE_25, 2
 	gotoif eq, _011B
 	get_phone_book_rematch 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
@@ -42,7 +42,7 @@ _0050:
 	scrcmd_147 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00DD
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 16
 	gotoif ne, _00BE
 	clearflag FLAG_UNK_2CD
@@ -61,7 +61,7 @@ _00DB:
 	end
 
 _00DD:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 14
 	gotoif ne, _00F8
 	clearflag FLAG_UNK_2CD
@@ -87,14 +87,14 @@ _011B:
 	end
 
 scr_seq_R25_008:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _012E
 	end
 
 _012E:
-	setflag FLAG_UNK_2A1
+	setflag FLAG_HIDE_ROUTE_25_SUICUNE
 	hide_person obj_R25_tsure_poke_618
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_R25_000:
@@ -122,7 +122,7 @@ _019C:
 	apply_movement obj_player, _0310
 _01B4:
 	wait_movement
-	scrcmd_081 1061
+	scrcmd_081 SEQ_GS_R_12_24
 	play_bgm SEQ_GS_EYE_K_SHOUJO
 	comparevartovalue VAR_TEMP_x4001, 40
 	gotoif ne, _01E1
@@ -164,7 +164,7 @@ _0271:
 	wait_movement
 	hide_person obj_R25_gsman1
 	hide_person obj_R25_gsleader11
-	scrcmd_081 1113
+	scrcmd_081 SEQ_GS_EYE_K_SHOUJO
 	play_bgm SEQ_GS_R_12_24
 	setflag FLAG_UNK_309
 	setflag FLAG_UNK_256
@@ -414,7 +414,7 @@ scr_seq_R25_004:
 	scrcmd_609
 	lockall
 	setflag FLAG_UNK_2AC
-	clearflag FLAG_UNK_2A2
+	clearflag FLAG_HIDE_ROUTE_25_EUSINE
 	show_person obj_R25_minaki
 	apply_movement obj_player, _0648
 	wait_movement
@@ -458,7 +458,7 @@ _05F7:
 	waitbutton
 	closemsg
 	callstd 2043
-	setvar VAR_UNK_4089, 2
+	setvar VAR_SCENE_ROUTE_25, 2
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00
@@ -534,9 +534,9 @@ scr_seq_R25_007:
 	scrcmd_523 12, 2, 90, 2, 0
 	lock obj_R25_tsure_poke_618
 	wait_cry
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUICUNE, 40, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _07AA
@@ -559,7 +559,7 @@ _0766:
 	apply_movement obj_R25_minaki, _0800
 	wait_movement
 	hide_person obj_R25_minaki
-	setflag FLAG_UNK_2A2
+	setflag FLAG_HIDE_ROUTE_25_EUSINE
 	goto _07A0
 
 _0786:
@@ -569,7 +569,7 @@ _0786:
 	hide_person obj_R25_minaki_2
 	setflag FLAG_UNK_2B2
 _07A0:
-	setvar VAR_UNK_4089, 3
+	setvar VAR_SCENE_ROUTE_25, 3
 _07A6:
 	releaseall
 	end
@@ -580,7 +580,7 @@ _07AA:
 	end
 
 _07B0:
-	setflag FLAG_UNK_175
+	setflag FLAG_ENGAGED_STATIC_SUICUNE
 	return
 
 _07B6:

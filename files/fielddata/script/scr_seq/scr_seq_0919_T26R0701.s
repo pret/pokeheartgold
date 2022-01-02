@@ -35,7 +35,7 @@ _004E:
 	scrcmd_147 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _008F
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 13
 	gotoif ne, _0087
 	clearflag FLAG_UNK_2CB
@@ -51,7 +51,7 @@ _008F:
 	get_phone_book_rematch 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _00C3
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 12
 	gotoif ne, _00BD
 	clearflag FLAG_UNK_2CB

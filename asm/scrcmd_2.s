@@ -363,8 +363,8 @@ _0210FA3C:
 
 	.text
 
-	thumb_func_start ScrCmd_275
-ScrCmd_275: ; 0x02048060
+	thumb_func_start ScrCmd_MartBuy
+ScrCmd_MartBuy: ; 0x02048060
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x8c
 	add r7, r0, #0
@@ -474,10 +474,10 @@ _020480FA:
 	.balign 4, 0
 _02048124: .word _020FBF22
 _02048128: .word 0x0000FFFF
-	thumb_func_end ScrCmd_275
+	thumb_func_end ScrCmd_MartBuy
 
-	thumb_func_start ScrCmd_782
-ScrCmd_782: ; 0x0204812C
+	thumb_func_start ScrCmd_MartSell
+ScrCmd_MartSell: ; 0x0204812C
 	push {r3, lr}
 	sub sp, #0x10
 	ldr r1, _02048154 ; =0x0000FFFF
@@ -499,10 +499,10 @@ ScrCmd_782: ; 0x0204812C
 	pop {r3, pc}
 	.balign 4, 0
 _02048154: .word 0x0000FFFF
-	thumb_func_end ScrCmd_782
+	thumb_func_end ScrCmd_MartSell
 
-	thumb_func_start ScrCmd_276
-ScrCmd_276: ; 0x02048158
+	thumb_func_start ScrCmd_SpecialMartBuy
+ScrCmd_SpecialMartBuy: ; 0x02048158
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -529,7 +529,7 @@ ScrCmd_276: ; 0x02048158
 	pop {r3, r4, pc}
 	nop
 _02048190: .word _0210FA3C
-	thumb_func_end ScrCmd_276
+	thumb_func_end ScrCmd_SpecialMartBuy
 
 	thumb_func_start ScrCmd_277
 ScrCmd_277: ; 0x02048194

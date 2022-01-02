@@ -51,7 +51,7 @@ _00A3:
 	goto _00FC
 	.byte 0x02, 0x00
 _00AB:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _00C6
 	setflag FLAG_UNK_2DA

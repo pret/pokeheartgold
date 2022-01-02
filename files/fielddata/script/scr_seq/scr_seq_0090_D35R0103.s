@@ -49,7 +49,7 @@ _00B0:
 	end
 
 scr_seq_D35R0103_007:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _00BF
 	end
 
@@ -80,7 +80,7 @@ _0117:
 	hide_person obj_D35R0103_tsure_poke_598_6
 	setflag FLAG_UNK_1F7
 _0127:
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_D35R0103_000:
@@ -150,7 +150,7 @@ scr_seq_D35R0103_013:
 	setvar VAR_UNK_40AC, 5
 	hide_person obj_D35R0103_tsure_poke_613
 	setflag FLAG_UNK_24B
-	clearflag FLAG_UNK_24C
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	releaseall
 	end
 	.byte 0x00
@@ -221,7 +221,7 @@ _02DF:
 	setflag FLAG_UNK_252
 	setvar VAR_UNK_40A9, 3
 	setflag FLAG_UNK_24B
-	setflag FLAG_UNK_24C
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	setflag FLAG_UNK_0D3
 	releaseall
 	end
@@ -293,7 +293,7 @@ scr_seq_D35R0103_003:
 	apply_movement obj_player, _0630
 	wait_movement
 	closemsg
-	clearflag FLAG_UNK_1F3
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	show_person obj_D35R0103_rkanbuw
 	show_person obj_D35R0103_rocketm_4
 	move_person obj_D35R0103_rkanbuw, 32, 1, 30, 3
@@ -342,7 +342,7 @@ _0436:
 	apply_movement obj_D35R0103_rkanbuw, _0698
 	apply_movement obj_D35R0103_rocketm_4, _06A0
 	wait_movement
-	scrcmd_562 675, 479, 499, 1
+	multi_battle TRAINER_PKMN_TRAINER_LANCE_LANCE, TRAINER_EXECUTIVE_ARIANA_ARIANA_2, TRAINER_TEAM_ROCKET_GRUNT_25, 1
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0620
@@ -365,8 +365,8 @@ _0436:
 	hide_person obj_D35R0103_rocketm_2
 	hide_person obj_D35R0103_rocketm_3
 	hide_person obj_D35R0103_rocketm
-	setflag FLAG_UNK_1F3
-	setflag FLAG_UNK_1F2
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
+	setflag FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN
 	setflag FLAG_UNK_1E8
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -414,7 +414,7 @@ _0436:
 
 _0620:
 	white_out
-	setflag FLAG_UNK_1F3
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	setflag FLAG_UNK_1E5
 	releaseall
 	end
@@ -548,9 +548,9 @@ scr_seq_D35R0103_004:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x400A, 1
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ELECTRODE, 23, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _089C
@@ -573,9 +573,9 @@ scr_seq_D35R0103_005:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x400A, 2
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ELECTRODE, 23, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _089C
@@ -598,9 +598,9 @@ scr_seq_D35R0103_006:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x400A, 3
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ELECTRODE, 23, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _089C
@@ -667,8 +667,8 @@ _08F0:
 	releaseall
 	scrcmd_074 2141
 	setflag FLAG_RED_GYARADOS_MEET
-	clearflag FLAG_UNK_1FB
-	setflag FLAG_UNK_1FA
+	clearflag FLAG_HIDE_ROUTE_43_GATE_GUARD
+	setflag FLAG_HIDE_ROUTE_43_GATE_ROCKETS
 	setflag FLAG_UNK_1F9
 	setvar VAR_UNK_40AC, 10
 	setvar VAR_UNK_410F, 1

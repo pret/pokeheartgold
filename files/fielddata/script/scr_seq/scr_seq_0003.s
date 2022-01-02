@@ -1548,11 +1548,11 @@ _145E:
 	end
 
 scr_seq_0003_049:
-	scrcmd_275 VAR_SPECIAL_x8004
+	mart_buy VAR_SPECIAL_x8004
 	goto _14DD
 	.byte 0x02, 0x00
 scr_seq_0003_050:
-	scrcmd_782
+	mart_sell
 	goto _14DD
 	.byte 0x02, 0x00
 scr_seq_0003_051:
@@ -1587,11 +1587,11 @@ _14FB:
 	end
 
 scr_seq_0003_053:
-	scrcmd_276 VAR_SPECIAL_x8004
+	special_mart_buy VAR_SPECIAL_x8004
 	goto _15A6
 	.byte 0x02, 0x00
 scr_seq_0003_054:
-	scrcmd_782
+	mart_sell
 	goto _15A6
 	.byte 0x02, 0x00
 scr_seq_0003_055:

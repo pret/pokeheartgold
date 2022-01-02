@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_T10R0501_002:
-	checkflag FLAG_UNK_0E7
+	checkflag FLAG_DEFEATED_KAREN
 	gotoif TRUE, _0023
 	scrcmd_375 3
 	scrcmd_375 4
@@ -32,7 +32,7 @@ scr_seq_T10R0501_000:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_20E
+	clearflag FLAG_HIDE_KARENS_ROOM_RETREAT
 	show_person obj_T10R0501_babyboy1_11
 	setvar VAR_TEMP_x4001, 1
 	releaseall
@@ -46,7 +46,7 @@ scr_seq_T10R0501_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0E7
+	checkflag FLAG_DEFEATED_KAREN
 	gotoif TRUE, _00D4
 	buffer_players_name 0
 	npc_msg msg_0526_T10R0501_00000
@@ -62,7 +62,7 @@ _00A6:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _00DF
-	setflag FLAG_UNK_0E7
+	setflag FLAG_DEFEATED_KAREN
 	npc_msg msg_0526_T10R0501_00001
 	closemsg
 	play_se SEQ_SE_DP_KI_GASYAN

@@ -47,11 +47,11 @@ _0095:
 	goto _00B4
 
 _00A0:
-	scrcmd_852 0, 3
+	buffer_dept_store_floor_no 0, 3
 	goto _00B4
 
 _00AA:
-	scrcmd_852 0, 1
+	buffer_dept_store_floor_no 0, 1
 	goto _00B4
 
 _00B4:

@@ -33,7 +33,7 @@ _006D:
 	goto _0075
 	.byte 0x02, 0x00
 _0075:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 16
 	gotoif ne, _0090
 	setflag FLAG_UNK_2F3
@@ -52,7 +52,7 @@ _00AD:
 	end
 
 _00AF:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 18
 	gotoif ne, _00CA
 	setflag FLAG_UNK_2F3

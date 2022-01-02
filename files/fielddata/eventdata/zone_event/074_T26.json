@@ -107,7 +107,7 @@
       "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_1D6",
+      "flag": "FLAG_HIDE_OLIVINE_RIVAL",
       "scr": "_EV_scr_seq_T26_000 + 1",
       "dirn": 1,
       "eye": 0,

@@ -27,7 +27,7 @@
 scr_seq_T30_005:
 	comparevartovalue VAR_UNK_40C4, 1
 	gotoif ne, _005D
-	setflag FLAG_UNK_209
+	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	setvar VAR_UNK_40C4, 2
 _005D:
 	checkflag FLAG_UNK_189

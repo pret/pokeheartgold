@@ -97,7 +97,7 @@ _0115:
 	goto _01A7
 
 _0139:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 6
 	gotoif ne, _0154
 	clearflag FLAG_UNK_2CC
@@ -132,7 +132,7 @@ _01A7:
 	goto _0085
 	.byte 0x02, 0x00
 scr_seq_T29_002:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _01C0
 	end
 
@@ -142,7 +142,7 @@ _01C0:
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	show_person obj_T29_wataru
 	show_person obj_T29_tsure_poke_607
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_T29_017:
@@ -290,9 +290,9 @@ scr_seq_T29_001:
 	npc_msg msg_0626_T29_00000
 	wait_cry
 	closemsg
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_GYARADOS, 30, 1
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0456
@@ -364,7 +364,7 @@ _04BB:
 	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
 	hide_person obj_T29_tsure_poke_607
-	clearflag FLAG_UNK_1F8
+	clearflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
 	setvar VAR_UNK_40A8, 1
 	releaseall
 	end

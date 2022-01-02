@@ -61,7 +61,7 @@ scr_seq_D35R0104_001:
 	wait_movement
 	hide_person obj_D35R0104_wataru
 	hide_person obj_D35R0104_tsure_poke_607
-	setflag FLAG_UNK_1E6
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_LANCE
 	releaseall
 	setvar VAR_UNK_40AC, 1
 	end
@@ -116,7 +116,7 @@ scr_seq_D35R0104_007:
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 6
 	hide_person obj_D35R0104_tsure_poke_613_2
-	setflag FLAG_UNK_24C
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	clearflag FLAG_UNK_24D
 	releaseall
 	end
@@ -152,7 +152,7 @@ scr_seq_D35R0104_002:
 	apply_movement obj_player, _00F4
 	wait_movement
 	callstd std_play_rival_intro_music
-	clearflag FLAG_UNK_1FD
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
 	show_person obj_D35R0104_gsrivel
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 17
@@ -193,7 +193,7 @@ _0221:
 	wait_movement
 	callstd 2032
 	hide_person obj_D35R0104_gsrivel
-	setflag FLAG_UNK_1FD
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
 	releaseall
 	setvar VAR_UNK_40AC, 3
 	end
@@ -267,9 +267,9 @@ _0331:
 	closemsg
 	apply_movement obj_D35R0104_sakaki, _0458
 	wait_movement
-	clearflag FLAG_UNK_1F4
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
 	show_person obj_D35R0104_rkanbum2
-	setflag FLAG_UNK_280
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
 	hide_person obj_D35R0104_sakaki
 	apply_movement obj_D35R0104_rkanbum2, _047C
 	wait_movement
@@ -284,7 +284,7 @@ _0331:
 	apply_movement obj_D35R0104_rkanbum2, _04A8
 	wait_movement
 	hide_person obj_D35R0104_rkanbum2
-	setflag FLAG_UNK_1F4
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
 	apply_movement obj_D35R0104_tsure_poke_613, _04E4
 	wait_movement
 	npc_msg msg_0114_D35R0104_00008
@@ -302,7 +302,7 @@ _0331:
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 4
 	hide_person obj_D35R0104_tsure_poke_613
-	setflag FLAG_UNK_24A
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1
 	clearflag FLAG_UNK_24B
 	releaseall
 	end

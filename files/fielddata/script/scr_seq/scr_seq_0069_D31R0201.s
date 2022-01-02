@@ -674,7 +674,7 @@ _0B46:
 	gotoif ne, _085B
 	scrcmd_418 32772, 32773
 	buffer_int 0, VAR_SPECIAL_x8004
-	scrcmd_541 1, VAR_SPECIAL_x8005, 2, 3
+	buffer_int_ex 1, VAR_SPECIAL_x8005, 2, 3
 	npc_msg msg_0096_D31R0201_00052
 	scrcmd_049
 	goto _0860

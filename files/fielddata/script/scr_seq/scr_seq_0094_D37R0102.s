@@ -98,7 +98,7 @@ _015F:
 	end
 
 _0161:
-	scrcmd_522 16385
+	scrcmd_522 VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 4
 	gotoif ge, _017C
 	setflag FLAG_UNK_1B0

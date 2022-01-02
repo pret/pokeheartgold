@@ -126,7 +126,7 @@
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 9300,
+      "scr": "std_group",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

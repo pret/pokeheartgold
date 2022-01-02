@@ -58,7 +58,7 @@ _00BE:
 	setvar VAR_UNK_40AC, 8
 	setvar VAR_UNK_40A9, 2
 	setflag FLAG_UNK_24B
-	setflag FLAG_UNK_24C
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	setflag FLAG_UNK_24D
 	clearflag FLAG_UNK_252
 	end

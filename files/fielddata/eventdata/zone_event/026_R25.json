@@ -228,7 +228,7 @@
       "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2A1",
+      "flag": "FLAG_HIDE_ROUTE_25_SUICUNE",
       "scr": "_EV_scr_seq_R25_007 + 1",
       "dirn": 1,
       "eye": 0,
@@ -245,7 +245,7 @@
       "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2A2",
+      "flag": "FLAG_HIDE_ROUTE_25_EUSINE",
       "scr": "_EV_scr_seq_R25_005 + 1",
       "dirn": 3,
       "eye": 0,
@@ -320,7 +320,7 @@
       "h": 3,
       "z": 0,
       "val": 1,
-      "var": "VAR_UNK_4089"
+      "var": "VAR_SCENE_ROUTE_25"
     }
   ]
 }

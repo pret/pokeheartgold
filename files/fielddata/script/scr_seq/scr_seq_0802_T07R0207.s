@@ -42,7 +42,7 @@ _0062:
 	end
 
 _0088:
-	scrcmd_852 0, 2
+	buffer_dept_store_floor_no 0, 2
 	call _00A9
 	goto _00B3
 

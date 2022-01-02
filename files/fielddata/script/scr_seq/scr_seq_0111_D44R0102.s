@@ -30,47 +30,47 @@ _0047:
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _0062
-	clearflag FLAG_UNK_20F
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 	goto _007D
 
 _0062:
 	comparevartovalue VAR_TEMP_x4000, 4
 	gotoif ne, _0079
-	clearflag FLAG_UNK_20F
+	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 	goto _007D
 
 _0079:
-	setflag FLAG_UNK_20F
+	setflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 _007D:
 	scrcmd_147 27, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00F6
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 6
 	gotoif ne, _00AB
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
 _00AB:
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _00C2
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
 _00C2:
 	comparevartovalue VAR_TEMP_x4000, 8
 	gotoif ne, _00D9
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
 _00D9:
 	comparevartovalue VAR_TEMP_x4000, 9
 	gotoif ne, _00F0
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
 _00F0:
-	setflag FLAG_UNK_209
+	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 _00F4:
 	end
 
@@ -78,31 +78,31 @@ _00F6:
 	get_phone_book_rematch 27, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _0158
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 16
 	gotoif ne, _0124
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _0156
 
 _0124:
 	comparevartovalue VAR_TEMP_x4000, 17
 	gotoif ne, _013B
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _0156
 
 _013B:
 	comparevartovalue VAR_TEMP_x4000, 18
 	gotoif ne, _0152
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _0156
 
 _0152:
-	setflag FLAG_UNK_209
+	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 _0156:
 	end
 
 _0158:
-	setflag FLAG_UNK_209
+	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	end
 
 _015E:
@@ -280,7 +280,7 @@ _039D:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	setflag FLAG_UNK_209
+	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	hide_person obj_D44R0102_gsleader8
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -406,17 +406,17 @@ _04B2:
 	wait_movement
 	comparevartovalue VAR_OBJ_0, 1048
 	gotoif ne, _05AC
-	scrcmd_562 736, 733, 734, 1
+	multi_battle TRAINER_PARTNER_RIVAL_2, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
 
 _05AC:
 	comparevartovalue VAR_OBJ_0, 1049
 	gotoif ne, _05C8
-	scrcmd_562 737, 733, 734, 1
+	multi_battle TRAINER_PARTNER_RIVAL_3, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
 
 _05C8:
-	scrcmd_562 735, 733, 734, 1
+	multi_battle TRAINER_PARTNER_RIVAL_1, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 _05D1:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

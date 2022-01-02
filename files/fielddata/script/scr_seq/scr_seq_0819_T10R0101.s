@@ -17,18 +17,18 @@
 	scrdef_end
 
 scr_seq_T10R0101_005:
-	setflag FLAG_UNK_20B
-	setflag FLAG_UNK_20C
-	setflag FLAG_UNK_20D
-	setflag FLAG_UNK_20E
-	clearflag FLAG_UNK_211
-	clearflag FLAG_UNK_212
-	clearflag FLAG_UNK_213
-	clearflag FLAG_UNK_214
-	clearflag FLAG_UNK_0E4
-	clearflag FLAG_UNK_0E5
-	clearflag FLAG_UNK_0E6
-	clearflag FLAG_UNK_0E7
+	setflag FLAG_HIDE_WILLS_ROOM_RETREAT
+	setflag FLAG_HIDE_KOGAS_ROOM_RETREAT
+	setflag FLAG_HIDE_BRUNOS_ROOM_RETREAT
+	setflag FLAG_HIDE_KARENS_ROOM_RETREAT
+	clearflag FLAG_HIDE_WILLS_ROOM_EXIT
+	clearflag FLAG_HIDE_KOGAS_ROOM_EXIT
+	clearflag FLAG_HIDE_BRUNOS_ROOM_EXIT
+	clearflag FLAG_HIDE_KARENS_ROOM_EXIT
+	clearflag FLAG_DEFEATED_WILL
+	clearflag FLAG_DEFEATED_KOGA
+	clearflag FLAG_DEFEATED_BRUNO
+	clearflag FLAG_DEFEATED_KAREN
 	comparevartovalue VAR_UNK_40FC, 1
 	gotoif le, _00AC
 	checkflag FLAG_UNK_AA9

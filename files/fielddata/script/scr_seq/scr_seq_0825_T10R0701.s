@@ -68,7 +68,7 @@ _009A:
 	checkflag FLAG_UNK_173
 	gotoif FALSE, _020C
 _0105:
-	checkflag FLAG_UNK_175
+	checkflag FLAG_ENGAGED_STATIC_SUICUNE
 	callif FALSE, _0227
 	scrcmd_495 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
@@ -167,9 +167,9 @@ _021D:
 	goto _0105
 
 _0227:
-	comparevartovalue VAR_UNK_4089, 3
+	comparevartovalue VAR_SCENE_ROUTE_25, 3
 	gotoif ne, _0238
-	clearflag FLAG_UNK_30E
+	clearflag FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE
 _0238:
 	return
 

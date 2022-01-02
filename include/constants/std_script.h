@@ -14,6 +14,7 @@
 #define std_nurse_joy                   2002
 #define std_obtain_item_verbose         2008
 #define std_bag_is_full                 2009
+#define std_mart_intro                  2011
 #define std_wifi_club_closed            2025
 #define std_play_friend_music           2029
 #define std_fade_end_friend_music       2030

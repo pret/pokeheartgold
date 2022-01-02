@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_T10R0301_002:
-	checkflag FLAG_UNK_0E5
+	checkflag FLAG_DEFEATED_KOGA
 	gotoif TRUE, _0023
 	scrcmd_375 3
 	scrcmd_375 4
@@ -32,7 +32,7 @@ scr_seq_T10R0301_000:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_20C
+	clearflag FLAG_HIDE_KOGAS_ROOM_RETREAT
 	show_person obj_T10R0301_babyboy1_11
 	setvar VAR_TEMP_x4001, 1
 	releaseall
@@ -46,7 +46,7 @@ scr_seq_T10R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0E5
+	checkflag FLAG_DEFEATED_KOGA
 	gotoif TRUE, _00D1
 	npc_msg msg_0524_T10R0301_00000
 	closemsg
@@ -61,7 +61,7 @@ _00A3:
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _00DC
-	setflag FLAG_UNK_0E5
+	setflag FLAG_DEFEATED_KOGA
 	npc_msg msg_0524_T10R0301_00001
 	closemsg
 	play_se SEQ_SE_DP_KI_GASYAN

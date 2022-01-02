@@ -291,8 +291,8 @@ _03D2:
 	check_badge 9, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0449
-	clearflag FLAG_UNK_2A1
-	setvar VAR_UNK_4089, 1
+	clearflag FLAG_HIDE_ROUTE_25_SUICUNE
+	setvar VAR_SCENE_ROUTE_25, 1
 _0449:
 	releaseall
 	end

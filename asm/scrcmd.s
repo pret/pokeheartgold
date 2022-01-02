@@ -324,8 +324,8 @@ gScriptCmdTable:
 	.word ScrCmd_272                                    ; 272
 	.word ScrCmd_273                                    ; 273
 	.word ScrCmd_274                                    ; 274
-	.word ScrCmd_275                                    ; 275
-	.word ScrCmd_276                                    ; 276
+	.word ScrCmd_MartBuy                                    ; 275
+	.word ScrCmd_SpecialMartBuy                                    ; 276
 	.word ScrCmd_277                                    ; 277
 	.word ScrCmd_278                                    ; 278
 	.word ScrCmd_OverworldWhiteOut                                    ; 279
@@ -552,10 +552,10 @@ gScriptCmdTable:
 	.word ScrCmd_500                                    ; 500
 	.word ScrCmd_501                                    ; 501
 	.word ScrCmd_502                                    ; 502
-	.word ScrCmd_503                                    ; 503
-	.word ScrCmd_504                                    ; 504
-	.word ScrCmd_505                                    ; 505
-	.word ScrCmd_506                                    ; 506
+	.word ScrCmd_LotoIdGet                                    ; 503
+	.word ScrCmd_LotoIdSearch                                    ; 504
+	.word ScrCmd_LotoIdSet                                    ; 505
+	.word ScrCmd_BufferBoxMonNick                                    ; 506
 	.word ScrCmd_CountPCEmptySpace                      ; 507
 	.word ScrCmd_508                                    ; 508
 	.word ScrCmd_509                                    ; 509
@@ -590,7 +590,7 @@ gScriptCmdTable:
 	.word ScrCmd_538                                    ; 538
 	.word ScrCmd_539                                    ; 539
 	.word ScrCmd_540                                    ; 540
-	.word ScrCmd_541                                    ; 541
+	.word ScrCmd_BufferIntEx                                    ; 541
 	.word ScrCmd_542                                    ; 542
 	.word ScrCmd_543                                    ; 543
 	.word ScrCmd_544                                    ; 544
@@ -611,7 +611,7 @@ gScriptCmdTable:
 	.word ScrCmd_559                                    ; 559
 	.word ScrCmd_560                                    ; 560
 	.word ScrCmd_561                                    ; 561
-	.word ScrCmd_562                                    ; 562
+	.word ScrCmd_MultiBattle                                    ; 562
 	.word ScrCmd_563                                    ; 563
 	.word ScrCmd_564                                    ; 564
 	.word ScrCmd_565                                    ; 565
@@ -831,7 +831,7 @@ gScriptCmdTable:
 	.word ScrCmd_779                                    ; 779
 	.word ScrCmd_780                                    ; 780
 	.word ScrCmd_781                                    ; 781
-	.word ScrCmd_782                                    ; 782
+	.word ScrCmd_MartSell                                    ; 782
 	.word ScrCmd_783                                    ; 783
 	.word ScrCmd_784                                    ; 784
 	.word ScrCmd_785                                    ; 785
@@ -901,7 +901,7 @@ gScriptCmdTable:
 	.word ScrCmd_BufferTrainerClassNameIndef                                    ; 849
 	.word ScrCmd_BufferSealNamePlural                                    ; 850
 	.word ScrCmd_Capitalize                                    ; 851
-	.word ScrCmd_852                                    ; 852
+	.word ScrCmd_BufferDeptStoreFloorNo                                    ; 852
 gScriptCmdTable_end:
 
 	.bss

@@ -1600,12 +1600,12 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_275 arg0
+	.macro mart_buy arg0
 	.short 275
 	.short \arg0
 	.endm
 
-	.macro scrcmd_276 arg0
+	.macro special_mart_buy arg0
 	.short 276
 	.short \arg0
 	.endm
@@ -2865,12 +2865,12 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_503 arg0
+	.macro loto_id_get arg0
 	.short 503
 	.short \arg0
 	.endm
 
-	.macro scrcmd_504 arg0, arg1, arg2, arg3
+	.macro loto_id_search arg0, arg1, arg2, arg3
 	.short 504
 	.short \arg0
 	.short \arg1
@@ -2878,11 +2878,11 @@
 	.short \arg3
 	.endm
 
-	.macro scrcmd_505
+	.macro loto_id_set
 	.short 505
 	.endm
 
-	.macro scrcmd_506 arg0, arg1
+	.macro bufferboxmonnick arg0, arg1
 	.short 506
 	.byte \arg0
 	.short \arg1
@@ -3070,7 +3070,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_541 arg0, arg1, arg2, arg3
+	.macro buffer_int_ex arg0, arg1, arg2, arg3
 	.short 541
 	.byte \arg0
 	.short \arg1
@@ -3190,7 +3190,7 @@
 	.short \arg3
 	.endm
 
-	.macro scrcmd_562 arg0, arg1, arg2, arg3
+	.macro multi_battle arg0, arg1, arg2, arg3
 	.short 562
 	.short \arg0
 	.short \arg1
@@ -4377,7 +4377,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_782
+	.macro mart_sell
 	.short 782
 	.endm
 
@@ -4742,7 +4742,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_852 arg0, arg1
+	.macro buffer_dept_store_floor_no arg0, arg1
 	.short 852
 	.byte \arg0
 	.byte \arg1
@@ -4762,22 +4762,46 @@
 	; Convenience macros
 
 	.macro goto_if_no_item_space item, quantity, target
+	.if \item < 0x4000
 	setvar VAR_SPECIAL_x8004, \item
+	.else
+	copyvar VAR_SPECIAL_x8004, \item
+	.endif
+	.if \quantity < 0x4000
 	setvar VAR_SPECIAL_x8005, \quantity
+	.else
+	copyvar VAR_SPECIAL_x8004, \quantity
+	.endif
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, \target
 	.endm
 
 	.macro giveitem_no_check item, quantity
+	.if \item < 0x4000
 	setvar VAR_SPECIAL_x8004, \item
+	.else
+	copyvar VAR_SPECIAL_x8004, \item
+	.endif
+	.if \quantity < 0x4000
 	setvar VAR_SPECIAL_x8005, \quantity
+	.else
+	copyvar VAR_SPECIAL_x8004, \quantity
+	.endif
 	callstd std_give_item_verbose
 	.endm
 
 	.macro takeitem_no_check item, quantity
+	.if \item < 0x4000
 	setvar VAR_SPECIAL_x8004, \item
+	.else
+	copyvar VAR_SPECIAL_x8004, \item
+	.endif
+	.if \quantity < 0x4000
 	setvar VAR_SPECIAL_x8005, \quantity
+	.else
+	copyvar VAR_SPECIAL_x8004, \quantity
+	.endif
 	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	.endm
 

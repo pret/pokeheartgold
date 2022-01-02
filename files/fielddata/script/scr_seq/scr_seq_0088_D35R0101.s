@@ -58,12 +58,12 @@ scr_seq_D35R0101_008:
 
 _0105:
 	setflag FLAG_UNK_1E5
-	setflag FLAG_UNK_1F3
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	end
 
 _010F:
-	clearflag FLAG_UNK_280
-	setflag FLAG_UNK_1F4
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
 	end
 
 scr_seq_D35R0101_006:
@@ -119,7 +119,7 @@ scr_seq_D35R0101_006:
 	apply_movement obj_D35R0101_tsure_poke_607, _02DC
 	wait_movement
 	hide_person obj_D35R0101_tsure_poke_607
-	setflag FLAG_UNK_1F8
+	setflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
 	setvar VAR_UNK_40A8, 2
 	releaseall
 	end
@@ -305,7 +305,7 @@ _03E5:
 	goto _0552
 
 _03EB:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0405
 	npc_msg msg_0111_D35R0101_00011

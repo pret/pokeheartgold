@@ -27,7 +27,7 @@ _0044:
 	scrcmd_147 27, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00BD
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 6
 	gotoif ne, _0072
 	setflag FLAG_UNK_2EF
@@ -57,7 +57,7 @@ _00BB:
 	end
 
 _00BD:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 16
 	gotoif ne, _00D8
 	setflag FLAG_UNK_2EF
@@ -105,8 +105,8 @@ scr_seq_T30GYM0101_000:
 	settrainerflag TRAINER_ACE_TRAINER_F_LOLA
 	add_special_game_stat 22
 	setflag FLAG_UNK_0D1
-	setflag FLAG_UNK_202
-	clearflag FLAG_UNK_203
+	setflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT
+	clearflag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE
 	npc_msg msg_0631_T30GYM0101_00004
 	waitbutton
 	closemsg

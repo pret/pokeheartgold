@@ -117,9 +117,9 @@ scr_seq_T24_002:
 	scrcmd_602 1
 	scrcmd_604 48
 	hide_person obj_T24_tsure_poke_618
-	setflag FLAG_UNK_1E1
+	setflag FLAG_HIDE_CIANWOOD_SUICUNE
 	addvar VAR_UNK_4076, 1
-	clearflag FLAG_UNK_1E2
+	clearflag FLAG_HIDE_CIANWOOD_EUSINE
 	show_person obj_T24_minaki
 	callstd 2042
 	apply_movement obj_T24_minaki, _0358
@@ -139,7 +139,7 @@ scr_seq_T24_002:
 	apply_movement obj_T24_minaki, _037C
 	wait_movement
 	hide_person obj_T24_minaki
-	setflag FLAG_UNK_1E2
+	setflag FLAG_HIDE_CIANWOOD_EUSINE
 	clearflag FLAG_UNK_29E
 	setvar VAR_UNK_4092, 1
 	releaseall
@@ -147,7 +147,7 @@ scr_seq_T24_002:
 
 _0227:
 	hide_person obj_T24_minaki
-	setflag FLAG_UNK_1E2
+	setflag FLAG_HIDE_CIANWOOD_EUSINE
 	clearflag FLAG_UNK_29E
 	setvar VAR_UNK_4092, 1
 	white_out

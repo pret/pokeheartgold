@@ -306,8 +306,8 @@ _020496BE:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_TrainerBattle
 
-	thumb_func_start ScrCmd_562
-ScrCmd_562: ; 0x020496DC
+	thumb_func_start ScrCmd_MultiBattle
+ScrCmd_MultiBattle: ; 0x020496DC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -358,7 +358,7 @@ ScrCmd_562: ; 0x020496DC
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_562
+	thumb_func_end ScrCmd_MultiBattle
 
 	thumb_func_start ScrCmd_GetTrainerMsgParams
 ScrCmd_GetTrainerMsgParams: ; 0x02049750

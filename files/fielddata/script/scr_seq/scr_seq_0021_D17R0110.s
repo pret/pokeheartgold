@@ -15,14 +15,14 @@
 	scrdef_end
 
 scr_seq_D17R0110_002:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _002B
 	end
 
 _002B:
 	setflag FLAG_UNK_242
 	hide_person obj_D17R0110_hou_obj01
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_D17R0110_003:
@@ -72,9 +72,9 @@ scr_seq_D17R0110_000:
 _00FD:
 	setvar VAR_SPECIAL_x8004, 70
 _0103:
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	scrcmd_683 VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 2
 	gotoif eq, _0167

@@ -22,14 +22,14 @@ scr_seq_T04GYM0101_007:
 	check_badge 15, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _00E5
-	comparevartovalue VAR_UNK_4089, 1
+	comparevartovalue VAR_SCENE_ROUTE_25, 1
 	gotoif eq, _00E7
-	comparevartovalue VAR_UNK_4089, 2
+	comparevartovalue VAR_SCENE_ROUTE_25, 2
 	gotoif eq, _00E7
 	scrcmd_147 29, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00AD
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 16
 	gotoif ne, _0090
 	setflag FLAG_UNK_253
@@ -47,7 +47,7 @@ _00AB:
 	end
 
 _00AD:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 14
 	gotoif ne, _00C8
 	setflag FLAG_UNK_253
@@ -78,7 +78,7 @@ _00ED:
 scr_seq_T04GYM0101_004:
 	scrcmd_609
 	lockall
-	scrcmd_081 1065
+	scrcmd_081 SEQ_GS_GYM
 	play_bgm SEQ_GS_EYE_ROCKET
 	apply_movement obj_T04GYM0101_rocketm, _01C8
 	wait_movement
@@ -116,7 +116,7 @@ _018B:
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T04GYM0101_rocketm
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_081 1112
+	scrcmd_081 SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_GYM
 	setflag FLAG_UNK_254
 	clearflag FLAG_UNK_255
@@ -259,8 +259,8 @@ _035E:
 	end
 
 _0364:
-	clearflag FLAG_UNK_2A1
-	setvar VAR_UNK_4089, 1
+	clearflag FLAG_HIDE_ROUTE_25_SUICUNE
+	setvar VAR_SCENE_ROUTE_25, 1
 	return
 
 scr_seq_T04GYM0101_002:

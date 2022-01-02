@@ -33,7 +33,7 @@ _004F:
 	end
 
 scr_seq_R12_004:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _006D
 	checkflag FLAG_UNK_0F9
 	gotoif TRUE, _0087
@@ -45,7 +45,7 @@ _006D:
 	hide_person obj_R12_gsbabyboy1
 	hide_person obj_R12_gsbabyboy1_2
 	hide_person obj_R12_gsbabyboy1_3
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 _0087:
@@ -191,9 +191,9 @@ _0268:
 	npc_msg msg_0348_R12_00003
 	wait_cry
 	closemsg
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SNORLAX, 50, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _02AE

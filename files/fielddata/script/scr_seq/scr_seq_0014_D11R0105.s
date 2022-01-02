@@ -10,14 +10,14 @@
 	scrdef_end
 
 scr_seq_D11R0105_001:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _0017
 	end
 
 _0017:
 	setflag FLAG_UNK_306
 	hide_person obj_D11R0105_tsure_poke_603
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_D11R0105_000:
@@ -26,9 +26,9 @@ scr_seq_D11R0105_000:
 	faceplayer
 	play_cry SPECIES_ARTICUNO, 0
 	wait_cry
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ARTICUNO, 50, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0077

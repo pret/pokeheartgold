@@ -47,7 +47,7 @@ _0079:
 	scrcmd_147 36, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00FB
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 9
 	gotoif ne, _00C7
 	setflag FLAG_UNK_2F0

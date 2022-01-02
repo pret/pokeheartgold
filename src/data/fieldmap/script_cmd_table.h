@@ -275,8 +275,8 @@ extern BOOL ScrCmd_271(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_272(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_273(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_274(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_275(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_276(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MartBuy(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SpecialMartBuy(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_277(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_278(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_OverworldWhiteOut(SCRIPTCONTEXT *ctx);
@@ -503,10 +503,10 @@ extern BOOL ScrCmd_PrimoPasswordCheck2(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_500(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_501(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_502(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_503(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_504(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_505(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_506(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_LotoIdGet(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_LotoIdSearch(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_LotoIdSet(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferBoxMonNick(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountPCEmptySpace(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_508(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_509(SCRIPTCONTEXT *ctx);
@@ -541,7 +541,7 @@ extern BOOL ScrCmd_537(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_538(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_539(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_540(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_541(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferIntEx(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_542(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_543(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_544(SCRIPTCONTEXT *ctx);
@@ -562,7 +562,7 @@ extern BOOL ScrCmd_558(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_559(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_560(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_561(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_562(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MultiBattle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_563(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_564(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_565(SCRIPTCONTEXT *ctx);
@@ -782,7 +782,7 @@ extern BOOL ScrCmd_778(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_779(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_780(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_782(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_783(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_784(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_785(SCRIPTCONTEXT *ctx);
@@ -852,7 +852,7 @@ extern BOOL ScrCmd_BufferFashionNameIndef(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTrainerClassNameIndef(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferSealNamePlural(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Capitalize(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_852(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDeptStoreFloorNo(SCRIPTCONTEXT *ctx);
 
 const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_Nop,
@@ -1130,8 +1130,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_272,
     ScrCmd_273,
     ScrCmd_274,
-    ScrCmd_275,
-    ScrCmd_276,
+    ScrCmd_MartBuy,
+    ScrCmd_SpecialMartBuy,
     ScrCmd_277,
     ScrCmd_278,
     ScrCmd_OverworldWhiteOut,
@@ -1358,10 +1358,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_500,
     ScrCmd_501,
     ScrCmd_502,
-    ScrCmd_503,
-    ScrCmd_504,
-    ScrCmd_505,
-    ScrCmd_506,
+    ScrCmd_LotoIdGet,
+    ScrCmd_LotoIdSearch,
+    ScrCmd_LotoIdSet,
+    ScrCmd_BufferBoxMonNick,
     ScrCmd_CountPCEmptySpace,
     ScrCmd_508,
     ScrCmd_509,
@@ -1396,7 +1396,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_538,
     ScrCmd_539,
     ScrCmd_540,
-    ScrCmd_541,
+    ScrCmd_BufferIntEx,
     ScrCmd_542,
     ScrCmd_543,
     ScrCmd_544,
@@ -1417,7 +1417,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_559,
     ScrCmd_560,
     ScrCmd_561,
-    ScrCmd_562,
+    ScrCmd_MultiBattle,
     ScrCmd_563,
     ScrCmd_564,
     ScrCmd_565,
@@ -1637,7 +1637,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_779,
     ScrCmd_780,
     ScrCmd_781,
-    ScrCmd_782,
+    ScrCmd_MartSell,
     ScrCmd_783,
     ScrCmd_784,
     ScrCmd_785,
@@ -1707,7 +1707,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferTrainerClassNameIndef,
     ScrCmd_BufferSealNamePlural,
     ScrCmd_Capitalize,
-    ScrCmd_852,
+    ScrCmd_BufferDeptStoreFloorNo,
 };
 const u32 sNumScriptCmds = NELEMS(gScriptCmdTable);
 

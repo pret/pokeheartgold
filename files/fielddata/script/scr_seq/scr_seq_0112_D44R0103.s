@@ -185,7 +185,7 @@ _02D6:
 	releaseall
 	setflag FLAG_UNK_998
 	setflag FLAG_UNK_0EA
-	clearflag FLAG_UNK_209
+	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	setvar VAR_UNK_40C4, 1
 	setflag FLAG_UNK_2E5
 	setvar VAR_UNK_40C3, 1

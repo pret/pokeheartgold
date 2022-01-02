@@ -245,7 +245,7 @@
       "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_30E",
+      "flag": "FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE",
       "scr": 0,
       "dirn": 1,
       "eye": 0,

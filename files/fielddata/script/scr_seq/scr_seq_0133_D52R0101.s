@@ -43,14 +43,14 @@ _007C:
 	end
 
 scr_seq_D52R0101_002:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _008B
 	end
 
 _008B:
 	setflag FLAG_UNK_2D0
 	hide_person obj_D52R0101_tsure_poke_623
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_D52R0101_000:
@@ -61,9 +61,9 @@ scr_seq_D52R0101_000:
 	npc_msg msg_0148_D52R0101_00000
 	wait_cry
 	closemsg
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_GROUDON, 50, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _019D

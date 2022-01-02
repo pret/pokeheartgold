@@ -29,7 +29,7 @@ _003A:
 	end
 
 scr_seq_D25R0103_001:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _004D
 	end
 
@@ -44,9 +44,9 @@ scr_seq_D25R0103_000:
 	faceplayer
 	play_cry SPECIES_LAPRAS, 0
 	wait_cry
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_LAPRAS, 20, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _008F

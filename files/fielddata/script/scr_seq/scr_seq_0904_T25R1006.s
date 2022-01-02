@@ -30,7 +30,7 @@ _0033:
 	scrcmd_147 17, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00CC
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 12
 	gotoif ne, _007F
 	clearflag FLAG_UNK_26F
@@ -61,7 +61,7 @@ _00CA:
 	end
 
 _00CC:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 18
 	gotoif ne, _00E7
 	clearflag FLAG_UNK_26F

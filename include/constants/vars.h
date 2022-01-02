@@ -72,8 +72,8 @@
 #define VAR_UNK_4039                 0x4039
 #define VAR_UNK_403A                 0x403A
 #define VAR_UNK_403B                 0x403B
-#define VAR_UNK_403C                 0x403C
-#define VAR_UNK_403D                 0x403D
+#define VAR_LOTO_NUMBER_LO           0x403C
+#define VAR_LOTO_NUMBER_HI           0x403D
 #define VAR_UNK_403E                 0x403E
 #define VAR_UNK_403F                 0x403F
 #define VAR_UNK_4040                 0x4040
@@ -149,7 +149,7 @@
 #define VAR_UNK_4086                 0x4086
 #define VAR_UNK_4087                 0x4087
 #define VAR_UNK_4088                 0x4088
-#define VAR_UNK_4089                 0x4089
+#define VAR_SCENE_ROUTE_25                 0x4089
 #define VAR_UNK_408A                 0x408A
 #define VAR_UNK_408B                 0x408B
 #define VAR_SCENE_ROUTE_30_OW                 0x408C

@@ -12,7 +12,7 @@
 	scrdef_end
 
 scr_seq_D52R0103_002:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _001F
 	end
 
@@ -77,9 +77,9 @@ scr_seq_D52R0103_000:
 	npc_msg msg_0150_D52R0103_00000
 	wait_cry
 	closemsg
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_RAYQUAZA, 50, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0142

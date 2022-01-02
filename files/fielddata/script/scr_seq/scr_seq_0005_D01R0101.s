@@ -26,7 +26,7 @@ _001F:
 	goto _0102
 	.byte 0x02, 0x00
 _004D:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 12
 	gotoif ne, _0068
 	clearflag FLAG_UNK_262
@@ -54,7 +54,7 @@ _009E:
 	get_phone_book_rematch 33, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _0102
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 17
 	gotoif ne, _00CC
 	clearflag FLAG_UNK_262

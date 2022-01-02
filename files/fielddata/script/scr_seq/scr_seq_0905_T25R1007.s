@@ -24,27 +24,27 @@ scr_seq_T25R1007_000:
 	end
 
 _0075:
-	scrcmd_852 0, 6
+	buffer_dept_store_floor_no 0, 6
 	goto _00BC
 
 _007F:
-	scrcmd_852 0, 5
+	buffer_dept_store_floor_no 0, 5
 	goto _00BC
 
 _0089:
-	scrcmd_852 0, 4
+	buffer_dept_store_floor_no 0, 4
 	goto _00BC
 
 _0093:
-	scrcmd_852 0, 3
+	buffer_dept_store_floor_no 0, 3
 	goto _00BC
 
 _009D:
-	scrcmd_852 0, 2
+	buffer_dept_store_floor_no 0, 2
 	goto _00BC
 
 _00A7:
-	scrcmd_852 0, 1
+	buffer_dept_store_floor_no 0, 1
 	goto _00BC
 
 _00B1:

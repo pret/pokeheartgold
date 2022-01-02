@@ -21,14 +21,14 @@ scr_seq_T26GYM0101_007:
 	gotoif ne, _015C
 	checkflag FLAG_GAME_CLEAR
 	gotoif FALSE, _015A
-	clearflag FLAG_UNK_1D9
+	clearflag FLAG_HIDE_JASMINE_IN_GYM
 	scrcmd_147 38, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _007A
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 13
 	gotoif ne, _0072
-	setflag FLAG_UNK_1D9
+	setflag FLAG_HIDE_JASMINE_IN_GYM
 	goto _0078
 
 _0072:
@@ -38,10 +38,10 @@ _0078:
 	end
 
 _007A:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 12
 	gotoif ne, _0095
-	setflag FLAG_UNK_1D9
+	setflag FLAG_HIDE_JASMINE_IN_GYM
 	goto _009B
 
 _0095:
@@ -75,22 +75,22 @@ _0101:
 	goto _015A
 	.byte 0x02, 0x00
 _0109:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 14
 	gotoif ne, _0124
-	setflag FLAG_UNK_1D9
+	setflag FLAG_HIDE_JASMINE_IN_GYM
 	goto _0158
 
 _0124:
 	comparevartovalue VAR_TEMP_x4000, 15
 	gotoif ne, _013B
-	setflag FLAG_UNK_1D9
+	setflag FLAG_HIDE_JASMINE_IN_GYM
 	goto _0158
 
 _013B:
 	comparevartovalue VAR_TEMP_x4000, 16
 	gotoif ne, _0152
-	setflag FLAG_UNK_1D9
+	setflag FLAG_HIDE_JASMINE_IN_GYM
 	goto _0158
 
 _0152:
@@ -103,7 +103,7 @@ _015A:
 	end
 
 _015C:
-	setflag FLAG_UNK_1D9
+	setflag FLAG_HIDE_JASMINE_IN_GYM
 	end
 
 scr_seq_T26GYM0101_000:

@@ -517,7 +517,7 @@
     {
       "name": "scrcmd_081",
       "args": [
-        2
+        "sound"
       ]
     },
     {
@@ -1709,13 +1709,13 @@
       ]
     },
     {
-      "name": "scrcmd_275",
+      "name": "mart_buy",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_276",
+      "name": "special_mart_buy",
       "args": [
         "var"
       ]
@@ -3177,29 +3177,29 @@
       ]
     },
     {
-      "name": "scrcmd_503",
+      "name": "loto_id_get",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_504",
+      "name": "loto_id_search",
       "args": [
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_505",
+      "name": "loto_id_set",
       "args": []
     },
     {
-      "name": "scrcmd_506",
+      "name": "bufferboxmonnick",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -3288,7 +3288,7 @@
     {
       "name": "scrcmd_522",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3411,7 +3411,7 @@
       ]
     },
     {
-      "name": "scrcmd_541",
+      "name": "buffer_int_ex",
       "args": [
         1,
         "var",
@@ -3551,11 +3551,11 @@
       ]
     },
     {
-      "name": "scrcmd_562",
+      "name": "multi_battle",
       "args": [
-        2,
-        2,
-        2,
+        "trainer",
+        "trainer",
+        "trainer",
         1
       ]
     },
@@ -4897,7 +4897,7 @@
       ]
     },
     {
-      "name": "scrcmd_782",
+      "name": "mart_sell",
       "args": []
     },
     {
@@ -5318,7 +5318,7 @@
       ]
     },
     {
-      "name": "scrcmd_852",
+      "name": "buffer_dept_store_floor_no",
       "args": [
         1,
         1

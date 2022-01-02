@@ -31,14 +31,14 @@ _004D:
 	end
 
 scr_seq_R36_010:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _005C
 	end
 
 _005C:
 	setflag FLAG_UNK_1C2
 	hide_person obj_R36_usokky
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_R36_000:
@@ -97,9 +97,9 @@ _012C:
 	play_se SEQ_SE_GS_KI_UGOKU
 	apply_movement obj_R36_usokky, _0394
 	wait_movement
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUDOWOODO, 20, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0255
@@ -209,9 +209,9 @@ _02E2:
 	play_se SEQ_SE_GS_KI_UGOKU
 	apply_movement obj_R36_usokky, _0394
 	wait_movement
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUDOWOODO, 20, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0255

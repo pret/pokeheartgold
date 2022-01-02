@@ -753,10 +753,10 @@ _09DA:
 _09E5:
 	setflag FLAG_UNK_AA5
 	npc_msg msg_0065_D23R0101_00031
-	scrcmd_503 32768
-	scrcmd_541 0, VAR_SPECIAL_x8000, 2, 5
+	loto_id_get VAR_SPECIAL_x8000
+	buffer_int_ex 0, VAR_SPECIAL_x8000, 2, 5
 	npc_msg msg_0065_D23R0101_00032
-	scrcmd_504 32769, 32770, 32771, 32768
+	loto_id_search VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8002, 0
 	gotoif eq, _0A24
 	comparevartovalue VAR_SPECIAL_x8003, 0
@@ -776,7 +776,7 @@ _0A2F:
 	goto _0A4B
 
 _0A3D:
-	scrcmd_506 0, 32769
+	bufferboxmonnick 0, VAR_SPECIAL_x8001
 	npc_msg msg_0065_D23R0101_00034
 	goto _0A4B
 

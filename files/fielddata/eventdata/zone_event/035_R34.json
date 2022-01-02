@@ -227,7 +227,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 9500,
+      "scr": "std_daycare_man",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,

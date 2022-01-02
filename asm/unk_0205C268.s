@@ -24023,7 +24023,7 @@ sub_02066CAC: ; 0x02066CAC
 	bl SetScriptVar
 	lsr r2, r4, #0x10
 	lsl r2, r2, #0x10
-	ldr r1, _02066CCC ; =0x0000403C
+	ldr r1, _02066CCC ; =0x0000403C ; bug: supposed to be 403D
 	add r0, r5, #0
 	lsr r2, r2, #0x10
 	bl SetScriptVar
@@ -24032,8 +24032,8 @@ sub_02066CAC: ; 0x02066CAC
 _02066CCC: .word 0x0000403C
 	thumb_func_end sub_02066CAC
 
-	thumb_func_start sub_02066CD0
-sub_02066CD0: ; 0x02066CD0
+	thumb_func_start ScriptState_GetLotoId
+ScriptState_GetLotoId: ; 0x02066CD0
 	push {r3, r4, r5, lr}
 	ldr r1, _02066CEC ; =0x0000403C
 	add r5, r0, #0
@@ -24048,10 +24048,10 @@ sub_02066CD0: ; 0x02066CD0
 	nop
 _02066CEC: .word 0x0000403C
 _02066CF0: .word 0x0000403D
-	thumb_func_end sub_02066CD0
+	thumb_func_end ScriptState_GetLotoId
 
-	thumb_func_start sub_02066CF4
-sub_02066CF4: ; 0x02066CF4
+	thumb_func_start ScriptState_RollLotoId
+ScriptState_RollLotoId: ; 0x02066CF4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl LCRandom
@@ -24063,7 +24063,7 @@ sub_02066CF4: ; 0x02066CF4
 	orr r1, r4
 	bl sub_02066CAC
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02066CF4
+	thumb_func_end ScriptState_RollLotoId
 
 	thumb_func_start sub_02066D10
 sub_02066D10: ; 0x02066D10

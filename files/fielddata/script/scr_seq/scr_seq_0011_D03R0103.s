@@ -10,14 +10,14 @@
 	scrdef_end
 
 scr_seq_D03R0103_001:
-	checkflag FLAG_UNK_0A4
+	checkflag FLAG_ENGAGING_STATIC_POKEMON
 	gotoif TRUE, _0017
 	end
 
 _0017:
 	setflag FLAG_UNK_305
 	hide_person obj_D03R0103_tsure_poke_608
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
 scr_seq_D03R0103_000:
@@ -26,9 +26,9 @@ scr_seq_D03R0103_000:
 	faceplayer
 	play_cry SPECIES_MEWTWO, 0
 	wait_cry
-	setflag FLAG_UNK_0A4
+	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_MEWTWO, 70, 0
-	clearflag FLAG_UNK_0A4
+	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0077

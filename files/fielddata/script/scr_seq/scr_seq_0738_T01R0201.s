@@ -16,7 +16,7 @@ scr_seq_T01R0201_000:
 	comparevartovalue VAR_UNK_4122, 7
 	gotoif eq, _003B
 _001F:
-	scrcmd_522 32780
+	scrcmd_522 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 15
 	gotoif eq, _0056
 	npc_msg msg_0449_T01R0201_00000

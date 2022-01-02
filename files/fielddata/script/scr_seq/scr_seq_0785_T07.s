@@ -72,7 +72,7 @@ _00F9:
 	.byte 0x02
 	.byte 0x00
 _0101:
-	scrcmd_522 16384
+	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 14
 	gotoif ne, _0120
 	clearflag FLAG_UNK_25D

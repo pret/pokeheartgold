@@ -309,8 +309,8 @@ ScrCmd_BufferInt: ; 0x020485F4
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_BufferInt
 
-	thumb_func_start ScrCmd_541
-ScrCmd_541: ; 0x0204863C
+	thumb_func_start ScrCmd_BufferIntEx
+ScrCmd_BufferIntEx: ; 0x0204863C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -355,7 +355,7 @@ _02048684:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_541
+	thumb_func_end ScrCmd_BufferIntEx
 
 	thumb_func_start ScrCmd_661
 ScrCmd_661: ; 0x0204869C
@@ -434,8 +434,8 @@ ScrCmd_BufferPartyMonNick: ; 0x020486F0
 	.balign 4, 0
 	thumb_func_end ScrCmd_BufferPartyMonNick
 
-	thumb_func_start ScrCmd_506
-ScrCmd_506: ; 0x02048738
+	thumb_func_start ScrCmd_BufferBoxMonNick
+ScrCmd_BufferBoxMonNick: ; 0x02048738
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -474,7 +474,7 @@ ScrCmd_506: ; 0x02048738
 	bl BufferBoxMonNickname
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_506
+	thumb_func_end ScrCmd_BufferBoxMonNick
 
 	thumb_func_start ScrCmd_BufferTrainerClassName
 ScrCmd_BufferTrainerClassName: ; 0x02048794
