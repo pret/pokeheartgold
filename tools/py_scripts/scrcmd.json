@@ -1099,7 +1099,7 @@
         2,
         2,
         2,
-        2
+        "var"
       ]
     },
     {
@@ -1169,13 +1169,13 @@
       ]
     },
     {
-      "name": "scrcmd_188",
+      "name": "set_avatar_bits",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_189",
+      "name": "update_avatar_state",
       "args": []
     },
     {
@@ -1721,13 +1721,13 @@
       ]
     },
     {
-      "name": "scrcmd_277",
+      "name": "decoration_mart",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_278",
+      "name": "seal_mart",
       "args": [
         2
       ]
@@ -1879,7 +1879,7 @@
       "args": [
         2,
         2,
-        2,
+        "var",
         2,
         1
       ]
@@ -2537,7 +2537,7 @@
       "args": [
         2,
         2,
-        2
+        "var"
       ]
     },
     {
@@ -2552,13 +2552,13 @@
     {
       "name": "scrcmd_414",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_415",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3119,7 +3119,7 @@
       ]
     },
     {
-      "name": "scrcmd_495",
+      "name": "get_game_version",
       "args": [
         "var"
       ]
@@ -4221,8 +4221,8 @@
     {
       "name": "getitemquantity",
       "args": [
-        2,
-        2
+        "item",
+        "var"
       ]
     },
     {
@@ -4573,7 +4573,7 @@
       "name": "scrcmd_724",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {

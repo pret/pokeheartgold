@@ -13,7 +13,7 @@
 scr_seq_D52R0102_001:
 	comparevartovalue VAR_UNK_40F9, 4
 	gotoif ge, _007C
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _0038
 	goto _004A

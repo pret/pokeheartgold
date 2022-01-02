@@ -6,7 +6,7 @@
       "ovid": "SPRITE_MASAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_23E",
+      "flag": "FLAG_HIDE_GOLDENROD_BILL",
       "scr": "_EV_scr_seq_T25R0401_000 + 1",
       "dirn": 2,
       "eye": 0,

@@ -38,7 +38,7 @@ scr_seq_T27PC0101_001:
 	wait_movement
 	hide_person obj_T27PC0101_masaki
 	setflag FLAG_UNK_1C5
-	clearflag FLAG_UNK_23E
+	clearflag FLAG_HIDE_GOLDENROD_BILL
 	setflag FLAG_UNK_976
 	setvar VAR_UNK_410D, 1
 	releaseall

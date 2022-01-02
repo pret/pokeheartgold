@@ -35,7 +35,7 @@ scr_seq_D40R0104_000:
 	faceplayer
 	checkflag FLAG_UNK_117
 	gotoif TRUE, _010D
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif eq, _0093
 	checkflag FLAG_UNK_106
@@ -68,7 +68,7 @@ _00B4:
 	end
 
 _00C5:
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif ne, _00EC
 	checkflag FLAG_UNK_109

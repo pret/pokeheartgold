@@ -561,7 +561,7 @@ scr_seq_D49_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 12, 16384
+	scrcmd_724 12, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ge, _076E
 	npc_msg msg_0137_D49_00011
@@ -574,7 +574,7 @@ _076E:
 	checkflag FLAG_UNK_154
 	gotoif TRUE, _07CB
 	npc_msg msg_0137_D49_00012
-	scrcmd_724 16, 16384
+	scrcmd_724 16, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1000
 	gotoif ge, _079A
 	npc_msg msg_0137_D49_00013

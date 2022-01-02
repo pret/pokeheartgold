@@ -83,7 +83,7 @@ scr_seq_D23R0103_005:
 	faceplayer
 	comparevartovalue VAR_UNK_4077, 4
 	gotoif ne, _00E7
-	getitemquantity 476, 32780
+	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _00F5
 	npc_msg msg_0067_D23R0103_00003
@@ -136,7 +136,7 @@ scr_seq_D23R0103_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity 475, 32780
+	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01B4
 	npc_msg msg_0067_D23R0103_00010
@@ -153,7 +153,7 @@ scr_seq_D23R0103_007:
 	gotoif TRUE, _01E2
 	npc_msg msg_0067_D23R0103_00011
 	closemsg
-	getitemquantity 475, 32780
+	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01B4
 	npc_msg msg_0067_D23R0103_00013

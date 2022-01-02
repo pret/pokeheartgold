@@ -134,7 +134,7 @@ _01D4:
 	setvar VAR_UNK_4076, 1
 	setvar VAR_UNK_4079, 2
 	setflag FLAG_UNK_247
-	clearflag FLAG_UNK_248
+	clearflag FLAG_HIDE_ECRUTEAK_OLD_MAN
 	releaseall
 	end
 	.byte 0x00, 0x00

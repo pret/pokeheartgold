@@ -62,7 +62,7 @@ scr_seq_T06_013:
 	closemsg
 	apply_movement obj_T06_daigo, _0180
 	wait_movement
-	scrcmd_495 VAR_TEMP_x4004
+	get_game_version VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 8
 	gotoif eq, _0109
 	scrcmd_452 380, 1

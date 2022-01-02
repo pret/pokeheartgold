@@ -139,12 +139,12 @@ _021C:
 	goto _027A
 
 _0222:
-	scrcmd_307 0, 0, 16384, 16385, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, 16385, 77
 	call _0BC2
 	apply_movement obj_player, _0288
 	wait_movement
 	call _0BCA
-	scrcmd_307 0, 0, 16384, 16386, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, 16386, 77
 	call _0BC2
 	apply_movement obj_player, _02A0
 	wait_movement
@@ -659,14 +659,14 @@ _0B13:
 	goto _0B35
 
 _0B35:
-	scrcmd_307 0, 0, 16384, 16386, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, 16386, 77
 	call _0BC2
 	apply_movement obj_player, _0BF4
 	wait_movement
 	call _0BCA
 	apply_movement obj_player, _0BFC
 	wait_movement
-	scrcmd_307 0, 0, 16384, 16385, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, 16385, 77
 	call _0BC2
 	apply_movement obj_player, _0C04
 	wait_movement
@@ -830,14 +830,14 @@ _0DC8:
 	goto _0DE2
 	.byte 0x02, 0x00
 _0DE2:
-	scrcmd_307 0, 0, 16384, 16386, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, 16386, 77
 	call _0BC2
 	apply_movement obj_player, _0BF4
 	wait_movement
 	call _0BCA
 	apply_movement obj_player, _0BFC
 	wait_movement
-	scrcmd_307 0, 0, 16384, 16385, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, 16385, 77
 	call _0BC2
 	apply_movement obj_player, _0C04
 	wait_movement

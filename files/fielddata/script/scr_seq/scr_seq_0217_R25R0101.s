@@ -17,7 +17,7 @@ scr_seq_R25R0101_000:
 	npc_msg msg_0364_R25R0101_00000
 	setflag FLAG_UNK_14E
 _0020:
-	scrcmd_495 VAR_SPECIAL_x8002
+	get_game_version VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x8002, 8
 	gotoif ne, _0037
 	goto _00B1

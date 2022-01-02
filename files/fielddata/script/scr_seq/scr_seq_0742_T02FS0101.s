@@ -15,10 +15,10 @@ scr_seq_T02FS0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 2011
+	callstd std_mart_intro
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 1
-	callstd 2048
+	callstd std_pokemart
 	releaseall
 	end
 
@@ -26,10 +26,10 @@ scr_seq_T02FS0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 2011
+	callstd std_mart_intro
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 26
-	callstd 2052
+	callstd std_special_mart
 	releaseall
 	end
 

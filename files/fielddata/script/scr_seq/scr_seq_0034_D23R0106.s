@@ -72,7 +72,7 @@ _0102:
 _0119:
 	wait_movement
 	npc_msg msg_0070_D23R0106_00002
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _014E
 	giveitem_no_check ITEM_RAINBOW_WING, 1
@@ -108,7 +108,7 @@ _01B2:
 	wait_movement
 	apply_movement obj_player, _02EC
 	wait_movement
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _01E2
 	npc_msg msg_0070_D23R0106_00007

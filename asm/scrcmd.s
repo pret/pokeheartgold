@@ -237,8 +237,8 @@ gScriptCmdTable:
 	.word ScrCmd_185                                    ; 185
 	.word ScrCmd_186                                    ; 186
 	.word ScrCmd_GetPlayerState                         ; 187
-	.word ScrCmd_188                                    ; 188
-	.word ScrCmd_189                                    ; 189
+	.word ScrCmd_SetAvatarBits                                    ; 188
+	.word ScrCmd_UpdateAvatarState                                    ; 189
 	.word ScrCmd_BufferPlayersName                      ; 190
 	.word ScrCmd_BufferRivalsName                                    ; 191
 	.word ScrCmd_BufferFriendsName                                    ; 192
@@ -326,8 +326,8 @@ gScriptCmdTable:
 	.word ScrCmd_274                                    ; 274
 	.word ScrCmd_MartBuy                                    ; 275
 	.word ScrCmd_SpecialMartBuy                                    ; 276
-	.word ScrCmd_277                                    ; 277
-	.word ScrCmd_278                                    ; 278
+	.word ScrCmd_DecorationMart                                    ; 277
+	.word ScrCmd_SealMart                                    ; 278
 	.word ScrCmd_OverworldWhiteOut                                    ; 279
 	.word ScrCmd_280                                    ; 280
 	.word ScrCmd_GetPlayerGender                        ; 281
@@ -544,7 +544,7 @@ gScriptCmdTable:
 	.word ScrCmd_492                                    ; 492
 	.word ScrCmd_PromptEasyChat                         ; 493
 	.word ScrCmd_494                                    ; 494
-	.word ScrCmd_495                                    ; 495
+	.word ScrCmd_GetGameVersion                                    ; 495
 	.word ScrCmd_496                                    ; 496
 	.word ScrCmd_497                                    ; 497
 	.word ScrCmd_PrimoPasswordCheck1                    ; 498
@@ -7186,8 +7186,8 @@ ScrCmd_GetPlayerState: ; 0x0204389C
 	.balign 4, 0
 	thumb_func_end ScrCmd_GetPlayerState
 
-	thumb_func_start ScrCmd_188
-ScrCmd_188: ; 0x020438C4
+	thumb_func_start ScrCmd_SetAvatarBits
+ScrCmd_SetAvatarBits: ; 0x020438C4
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -7198,10 +7198,10 @@ ScrCmd_188: ; 0x020438C4
 	bl sub_0205C710
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_188
+	thumb_func_end ScrCmd_SetAvatarBits
 
-	thumb_func_start ScrCmd_189
-ScrCmd_189: ; 0x020438DC
+	thumb_func_start ScrCmd_UpdateAvatarState
+ScrCmd_UpdateAvatarState: ; 0x020438DC
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -7209,7 +7209,7 @@ ScrCmd_189: ; 0x020438DC
 	bl ov01_021F1B04
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_189
+	thumb_func_end ScrCmd_UpdateAvatarState
 
 	thumb_func_start ScrCmd_211
 ScrCmd_211: ; 0x020438EC
@@ -10948,8 +10948,8 @@ ScrCmd_488: ; 0x020455B0
 	.balign 4, 0
 	thumb_func_end ScrCmd_488
 
-	thumb_func_start ScrCmd_495
-ScrCmd_495: ; 0x020455F0
+	thumb_func_start ScrCmd_GetGameVersion
+ScrCmd_GetGameVersion: ; 0x020455F0
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -10962,7 +10962,7 @@ ScrCmd_495: ; 0x020455F0
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_495
+	thumb_func_end ScrCmd_GetGameVersion
 
 	thumb_func_start ScrCmd_PrimoPasswordCheck1
 ScrCmd_PrimoPasswordCheck1: ; 0x0204560C

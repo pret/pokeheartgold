@@ -73,10 +73,10 @@ scr_seq_T06R0301_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity 479, 32780
+	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0141
-	getitemquantity 480, 32780
+	getitemquantity ITEM_PASS, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0141
 	checkflag FLAG_UNK_119

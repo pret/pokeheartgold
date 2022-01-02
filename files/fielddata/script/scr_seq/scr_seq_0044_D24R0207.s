@@ -109,7 +109,7 @@ _0182:
 	gotoif eq, _01F2
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_176 315, 0, 5, 42, 32780
+	scrcmd_176 315, 0, 5, 42, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 _01C4:
@@ -119,7 +119,7 @@ _01C4:
 _01C8:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_176 492, 0, 5, 42, 32780
+	scrcmd_176 492, 0, 5, 42, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto _01C4
@@ -127,7 +127,7 @@ _01C8:
 _01F2:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_176 490, 0, 5, 42, 32780
+	scrcmd_176 490, 0, 5, 42, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	goto _01C4

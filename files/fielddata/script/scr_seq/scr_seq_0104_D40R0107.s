@@ -26,7 +26,7 @@ scr_seq_D40R0107_002:
 	end
 
 _003B:
-	setflag FLAG_UNK_243
+	setflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
 	hide_person obj_D40R0107_lug_obj01
 	hide_person obj_D40R0107_stop
 	hide_person obj_D40R0107_stop_2
@@ -37,7 +37,7 @@ _003B:
 	end
 
 scr_seq_D40R0107_004:
-	checkflag FLAG_UNK_243
+	checkflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
 	gotoif TRUE, _007C
 	scrcmd_375 6
 	scrcmd_375 7
@@ -76,7 +76,7 @@ scr_seq_D40R0107_000:
 	npc_msg msg_0125_D40R0107_00004
 	wait_cry
 	closemsg
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _0134
 	setvar VAR_SPECIAL_x8004, 70
@@ -102,13 +102,13 @@ _013A:
 	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_HIDE_NEW_BARK_FRIEND_2
 	clearflag FLAG_UNK_2E5
-	setflag FLAG_UNK_245
-	clearflag FLAG_UNK_23C
+	setflag FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS
+	clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
 	clearflag FLAG_UNK_241
 	end
 
 _019E:
-	clearflag FLAG_UNK_243
+	clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
 	white_out
 	releaseall
 	end
@@ -405,7 +405,7 @@ scr_seq_D40R0107_005:
 	setvar VAR_TEMP_x400B, 123
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	clearflag FLAG_UNK_243
+	clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
 	show_person obj_D40R0107_lug_obj01
 	scrcmd_375 5
 	show_person obj_D40R0107_stop

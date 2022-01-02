@@ -12,7 +12,7 @@ scr_seq_T24R0801_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _002B
 	goto _0031

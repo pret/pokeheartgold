@@ -222,7 +222,7 @@ scr_seq_D35R0101_002:
 	npc_msg msg_0111_D35R0101_00000
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 28
-	callstd 2052
+	callstd std_special_mart
 	releaseall
 	end
 
@@ -266,7 +266,7 @@ scr_seq_D35R0101_004:
 	npc_msg msg_0111_D35R0101_00010
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 29
-	callstd 2052
+	callstd std_special_mart
 	clearflag FLAG_UNK_171
 	releaseall
 	end

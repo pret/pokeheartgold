@@ -109,7 +109,7 @@
       "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_1BD",
+      "flag": "FLAG_HIDE_RADIO_TOWER_RIVAL",
       "scr": 0,
       "dirn": 3,
       "eye": 0,

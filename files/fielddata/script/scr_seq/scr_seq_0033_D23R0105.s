@@ -53,7 +53,7 @@ scr_seq_D23R0105_002:
 	end
 
 _0075:
-	getitemquantity 476, 32780
+	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _022B
 	play_se SEQ_SE_DP_SELECT
@@ -150,7 +150,7 @@ _01DA:
 	closemsg
 	releaseall
 	setvar VAR_UNK_40E7, 2
-	clearflag FLAG_UNK_237
+	clearflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
 	end
 
 _021D:

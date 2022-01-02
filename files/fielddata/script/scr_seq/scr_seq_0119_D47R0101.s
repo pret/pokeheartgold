@@ -66,7 +66,7 @@ _00E2:
 _00EE:
 	apply_movement obj_player, _01DC
 	wait_movement
-	scrcmd_307 0, 0, 16386, 16387, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4002, 16387, 77
 	call _08AF
 	apply_movement obj_player, _01BC
 	apply_movement obj_D47R0101_counterm_3, _01F4
@@ -98,7 +98,7 @@ _0172:
 	setvar VAR_TEMP_x4002, 19
 	setvar VAR_TEMP_x4003, 5
 _017E:
-	scrcmd_307 0, 0, 16386, 16387, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4002, 16387, 77
 	call _08AF
 	apply_movement obj_player, _01BC
 	wait_movement

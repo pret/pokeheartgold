@@ -79,7 +79,7 @@ _00D0:
 scr_seq_T27_005:
 	scrcmd_609
 	lockall
-	clearflag FLAG_UNK_23F
+	clearflag FLAG_HIDE_ECRUTEAK_RIVAL
 	show_person obj_T27_gsrivel
 	scrcmd_602 0
 	scrcmd_603
@@ -116,11 +116,11 @@ scr_seq_T27_005:
 	apply_movement obj_player, _01F0
 	wait_movement
 	hide_person obj_T27_gsrivel
-	setflag FLAG_UNK_23F
+	setflag FLAG_HIDE_ECRUTEAK_RIVAL
 	releaseall
 	setvar VAR_UNK_4079, 4
 	setvar VAR_UNK_410C, 4
-	clearflag FLAG_UNK_23C
+	clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
 	setflag FLAG_UNK_241
 	end
 	.byte 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00

@@ -166,8 +166,8 @@ _028F:
 	call _04DE
 	apply_movement obj_player, _0848
 	wait 40, VAR_SPECIAL_x800C
-	scrcmd_188 4096
-	scrcmd_189
+	set_avatar_bits 4096
+	update_avatar_state
 	wait_movement
 	play_fanfare SEQ_ME_PT_NEW
 	buffer_players_name 0
@@ -188,8 +188,8 @@ _028F:
 	wait_fade
 	scrcmd_309 77
 	call _0766
-	scrcmd_188 1
-	scrcmd_189
+	set_avatar_bits 1
+	update_avatar_state
 	apply_movement obj_player, _0934
 	wait_movement
 	scrcmd_784 3, 0
@@ -405,7 +405,7 @@ _0630:
 	return
 
 _063E:
-	scrcmd_724 16, 32780
+	scrcmd_724 16, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 5000
 	gotoif lt, _0655
 	clearflag FLAG_UNK_2D5
@@ -413,7 +413,7 @@ _0655:
 	return
 
 _0657:
-	scrcmd_724 12, 32780
+	scrcmd_724 12, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 50
 	gotoif lt, _066E
 	clearflag FLAG_UNK_2D6
@@ -421,7 +421,7 @@ _066E:
 	return
 
 _0670:
-	scrcmd_724 17, 32780
+	scrcmd_724 17, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 200
 	gotoif lt, _0687
 	clearflag FLAG_UNK_2D7
@@ -429,7 +429,7 @@ _0687:
 	return
 
 _0689:
-	scrcmd_724 10, 32780
+	scrcmd_724 10, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 100
 	gotoif lt, _06A0
 	clearflag FLAG_UNK_2D8
@@ -437,34 +437,34 @@ _06A0:
 	return
 
 _06A2:
-	scrcmd_724 0, 16384
+	scrcmd_724 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 1, 16384
+	scrcmd_724 1, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 2, 16384
+	scrcmd_724 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 3, 16384
+	scrcmd_724 3, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 4, 16384
+	scrcmd_724 4, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 5, 16384
+	scrcmd_724 5, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 6, 16384
+	scrcmd_724 6, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 7, 16384
+	scrcmd_724 7, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 8, 16384
+	scrcmd_724 8, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
-	scrcmd_724 9, 16384
+	scrcmd_724 9, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 50
 	gotoif lt, _0764
 	clearflag FLAG_UNK_2D9
@@ -829,8 +829,8 @@ _0CE3:
 	apply_movement 2, _0914
 	apply_movement obj_player, _0848
 	wait 40, VAR_SPECIAL_x800C
-	scrcmd_188 4096
-	scrcmd_189
+	set_avatar_bits 4096
+	update_avatar_state
 	wait_movement
 	play_fanfare SEQ_ME_PT_NEW
 	buffer_players_name 0
@@ -878,8 +878,8 @@ _0DD7:
 	scrcmd_257 239
 	call _0766
 	scrcmd_283
-	scrcmd_188 1
-	scrcmd_189
+	set_avatar_bits 1
+	update_avatar_state
 	apply_movement obj_player, _0934
 	wait_movement
 	scrcmd_784 3, 0

@@ -47,7 +47,7 @@ scr_seq_T03_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _00A5
 	checkflag FLAG_UNK_094
@@ -59,15 +59,15 @@ _00A5:
 	gotoif TRUE, _0108
 _00B0:
 	npc_msg msg_0460_T03_00002
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _00E6
 	setvar VAR_SPECIAL_x8004, 482
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_094
-	clearflag FLAG_UNK_243
-	setflag FLAG_UNK_245
+	clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
+	setflag FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS
 	goto _0102
 
 _00E6:
@@ -75,8 +75,8 @@ _00E6:
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_093
-	clearflag FLAG_UNK_242
-	setflag FLAG_UNK_244
+	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
+	setflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
 _0102:
 	closemsg
 	releaseall
@@ -261,7 +261,7 @@ _030E:
 _033D:
 	clearflag FLAG_UNK_30C
 _0341:
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _035C
 	clearflag FLAG_UNK_30D
@@ -287,7 +287,7 @@ scr_seq_T03_013:
 	end
 
 _038C:
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _03AB
 	setflag FLAG_UNK_30D
@@ -310,7 +310,7 @@ scr_seq_T03_012:
 	wait_movement
 	apply_movement obj_T03_daigo, _045C
 	wait_movement
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _03F1
 	npc_msg msg_0460_T03_00006
@@ -326,7 +326,7 @@ _03F4:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _042C
 	npc_msg msg_0460_T03_00008
@@ -380,7 +380,7 @@ scr_seq_T03_010:
 	scrcmd_546 0, 16384
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _0649
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _04C8
 	setvar VAR_TEMP_x400A, 381
@@ -409,7 +409,7 @@ _04D7:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _055A
 _0526:
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _0540
 	npc_msg msg_0460_T03_00012
@@ -451,7 +451,7 @@ _0585:
 	comparevartovalue VAR_TEMP_x4000, 4
 	gotoif eq, _05FF
 _05D2:
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _05EC
 	npc_msg msg_0460_T03_00016

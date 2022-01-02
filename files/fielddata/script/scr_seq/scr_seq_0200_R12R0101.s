@@ -12,7 +12,7 @@ scr_seq_R12R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity 447, 32780
+	getitemquantity ITEM_SUPER_ROD, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _004C
 	npc_msg msg_0349_R12R0101_00000

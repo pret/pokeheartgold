@@ -188,8 +188,8 @@ extern BOOL ScrCmd_184(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_185(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_186(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerState(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_188(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_189(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetAvatarBits(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_UpdateAvatarState(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPlayersName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferRivalsName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferFriendsName(SCRIPTCONTEXT *ctx);
@@ -277,8 +277,8 @@ extern BOOL ScrCmd_273(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_274(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MartBuy(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SpecialMartBuy(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_277(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_278(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_DecorationMart(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SealMart(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_OverworldWhiteOut(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_280(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx);
@@ -495,7 +495,7 @@ extern BOOL ScrCmd_491(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_492(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_494(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_495(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetGameVersion(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_496(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_497(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx);
@@ -1043,8 +1043,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_185,
     ScrCmd_186,
     ScrCmd_GetPlayerState,
-    ScrCmd_188,
-    ScrCmd_189,
+    ScrCmd_SetAvatarBits,
+    ScrCmd_UpdateAvatarState,
     ScrCmd_BufferPlayersName,
     ScrCmd_BufferRivalsName,
     ScrCmd_BufferFriendsName,
@@ -1132,8 +1132,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_274,
     ScrCmd_MartBuy,
     ScrCmd_SpecialMartBuy,
-    ScrCmd_277,
-    ScrCmd_278,
+    ScrCmd_DecorationMart,
+    ScrCmd_SealMart,
     ScrCmd_OverworldWhiteOut,
     ScrCmd_280,
     ScrCmd_GetPlayerGender,
@@ -1350,7 +1350,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_492,
     ScrCmd_PromptEasyChat,
     ScrCmd_494,
-    ScrCmd_495,
+    ScrCmd_GetGameVersion,
     ScrCmd_496,
     ScrCmd_497,
     ScrCmd_PrimoPasswordCheck1,

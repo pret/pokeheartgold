@@ -83,7 +83,7 @@
       "ovid": "SPRITE_PCWOMAN2",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_22F",
+      "flag": "FLAG_HIDE_BATTLE_TOWER_RECEPTIONIST",
       "scr": "_EV_scr_seq_D31R0201_006 + 1",
       "dirn": 1,
       "eye": 0,

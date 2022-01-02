@@ -125,10 +125,10 @@ scr_seq_D47_006:
 	lockall
 	faceplayer
 	npc_msg msg_0133_D47_00009
-	callstd 2011
+	callstd std_mart_intro
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 6
-	callstd 2052
+	callstd std_special_mart
 	releaseall
 	end
 
@@ -137,10 +137,10 @@ scr_seq_D47_007:
 	lockall
 	faceplayer
 	npc_msg msg_0133_D47_00010
-	callstd 2011
+	callstd std_mart_intro
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 14
-	callstd 2052
+	callstd std_special_mart
 	releaseall
 	end
 

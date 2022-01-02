@@ -1101,12 +1101,12 @@
 	.short \var
 	.endm
 
-	.macro scrcmd_188 arg0
+	.macro set_avatar_bits arg0
 	.short 188
 	.short \arg0
 	.endm
 
-	.macro scrcmd_189
+	.macro update_avatar_state
 	.short 189
 	.endm
 
@@ -1610,12 +1610,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_277 arg0
+	.macro decoration_mart arg0
 	.short 277
 	.short \arg0
 	.endm
 
-	.macro scrcmd_278 arg0
+	.macro seal_mart arg0
 	.short 278
 	.short \arg0
 	.endm
@@ -2815,7 +2815,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_495 arg0
+	.macro get_game_version arg0
 	.short 495
 	.short \arg0
 	.endm

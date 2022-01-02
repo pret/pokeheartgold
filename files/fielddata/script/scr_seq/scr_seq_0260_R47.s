@@ -15,7 +15,7 @@
 scr_seq_R47_000:
 	setvar VAR_UNK_40EB, 1
 	setflag FLAG_UNK_9C9
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _004F
 	scrcmd_342 4, 87, 385
@@ -72,7 +72,7 @@ _00EC:
 scr_seq_R47_002:
 	comparevartovalue VAR_UNK_40F9, 5
 	gotoif ge, _0162
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _0148
 	scrcmd_342 4, 87, 385

@@ -185,7 +185,7 @@ scr_seq_R30R0201_002:
 	apply_movement obj_R30R0201_gsgentleman, _03E4
 	wait_movement
 	buffer_players_name 0
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _02B0
 	setvar VAR_SPECIAL_x8004, 535

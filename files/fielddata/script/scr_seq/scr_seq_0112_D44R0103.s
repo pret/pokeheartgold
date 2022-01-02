@@ -171,7 +171,7 @@ _019C:
 	wait_fanfare
 	apply_movement obj_D44R0103_chourou, _0450
 	wait_movement
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _02D3
 	npc_msg msg_0130_D44R0103_00020
@@ -311,7 +311,7 @@ scr_seq_D44R0103_000:
 	gotoif TRUE, _052E
 	checkflag FLAG_UNK_0DA
 	gotoif TRUE, _04A6
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _049B
 	npc_msg msg_0130_D44R0103_00020

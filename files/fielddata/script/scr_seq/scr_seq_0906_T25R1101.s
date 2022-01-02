@@ -853,7 +853,7 @@ scr_seq_T25R1101_002:
 	npc_msg msg_0599_T25R1101_00016
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _0EC7
 	goto _0ECD
@@ -919,7 +919,7 @@ _0FD5:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _1016
 	closemsg
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _1010
 	goto _0ECD
@@ -983,7 +983,7 @@ _10FB:
 	scrcmd_121 2100
 _10FF:
 	scrcmd_118 0
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _111F
 	goto _0ECD
@@ -1035,7 +1035,7 @@ _11C8:
 	.byte 0x02, 0x00
 _11D3:
 	npc_msg msg_0599_T25R1101_00009
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _11F3
 	goto _0ECD

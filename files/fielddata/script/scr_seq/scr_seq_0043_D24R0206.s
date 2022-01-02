@@ -36,7 +36,7 @@ _0046:
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_111
 	setflag FLAG_UNK_220
-	clearflag FLAG_UNK_235
+	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _009A
@@ -69,7 +69,7 @@ _00BC:
 	end
 
 _0107:
-	setflag FLAG_UNK_235
+	setflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x00
 	wait_fade

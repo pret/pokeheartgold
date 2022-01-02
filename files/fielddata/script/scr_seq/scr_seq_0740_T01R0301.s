@@ -287,7 +287,7 @@ _03BD:
 	goto _03DE
 	.byte 0x02, 0x00
 _03DE:
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 8
 	gotoif eq, _03FE
 	buffer_players_name 0

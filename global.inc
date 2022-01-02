@@ -1871,8 +1871,8 @@
 .public ScrCmd_185
 .public ScrCmd_186
 .public ScrCmd_GetPlayerState
-.public ScrCmd_188
-.public ScrCmd_189
+.public ScrCmd_SetAvatarBits
+.public ScrCmd_UpdateAvatarState
 .public ScrCmd_BufferPlayersName
 .public ScrCmd_BufferRivalsName
 .public ScrCmd_BufferFriendsName
@@ -1960,8 +1960,8 @@
 .public ScrCmd_274
 .public ScrCmd_MartBuy
 .public ScrCmd_SpecialMartBuy
-.public ScrCmd_277
-.public ScrCmd_278
+.public ScrCmd_DecorationMart
+.public ScrCmd_SealMart
 .public ScrCmd_OverworldWhiteOut
 .public ScrCmd_280
 .public ScrCmd_GetPlayerGender
@@ -2175,7 +2175,7 @@
 .public ScrCmd_492
 .public ScrCmd_PromptEasyChat
 .public ScrCmd_494
-.public ScrCmd_495
+.public ScrCmd_GetGameVersion
 .public ScrCmd_496
 .public ScrCmd_497
 .public ScrCmd_PrimoPasswordCheck1

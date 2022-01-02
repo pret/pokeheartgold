@@ -149,7 +149,7 @@ scr_seq_D35R0103_013:
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 5
 	hide_person obj_D35R0103_tsure_poke_613
-	setflag FLAG_UNK_24B
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	releaseall
 	end
@@ -177,8 +177,8 @@ scr_seq_D35R0103_014:
 	wait_movement
 	setvar VAR_UNK_40AC, 7
 	hide_person obj_D35R0103_tsure_poke_613_2
-	setflag FLAG_UNK_24D
-	clearflag FLAG_UNK_252
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
 	show_person obj_D35R0103_tsure_poke_613_3
 	releaseall
 	end
@@ -218,9 +218,9 @@ _02DF:
 	wait_movement
 	setvar VAR_UNK_40AC, 8
 	hide_person obj_D35R0103_tsure_poke_613_3
-	setflag FLAG_UNK_252
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
 	setvar VAR_UNK_40A9, 3
-	setflag FLAG_UNK_24B
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	setflag FLAG_UNK_0D3
 	releaseall

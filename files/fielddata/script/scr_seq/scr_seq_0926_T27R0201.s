@@ -34,7 +34,7 @@ scr_seq_T27R0201_000:
 	check_badge 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0096
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _008B
 	npc_msg msg_0616_T27R0201_00000
@@ -49,7 +49,7 @@ _008E:
 	end
 
 _0096:
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _00B0
 	npc_msg msg_0616_T27R0201_00002
@@ -106,7 +106,7 @@ scr_seq_T27R0201_001:
 	gotoif TRUE, _0162
 	checkflag FLAG_UNK_103
 	gotoif TRUE, _0157
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _014C
 	npc_msg msg_0616_T27R0201_00006

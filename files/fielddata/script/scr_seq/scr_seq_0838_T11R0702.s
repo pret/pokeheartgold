@@ -168,7 +168,7 @@ _02C1:
 	scrcmd_815 0
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
-	scrcmd_176 403, 0, 32774, 32775, 32780
+	scrcmd_176 403, 0, 32774, 32775, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_490 VAR_TEMP_x400B

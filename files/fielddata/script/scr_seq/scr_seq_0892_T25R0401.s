@@ -14,7 +14,7 @@ scr_seq_T25R0401_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_095
+	checkflag FLAG_GOT_EEVEE_FROM_BILL
 	gotoif TRUE, _00E9
 	buffer_players_name 0
 	npc_msg msg_0586_T25R0401_00000
@@ -33,7 +33,7 @@ _004B:
 	gotoif eq, _00DE
 	npc_msg msg_0586_T25R0401_00001
 	give_mon SPECIES_EEVEE, 5, 0, 0, 0, VAR_SPECIAL_x800C
-	setflag FLAG_UNK_095
+	setflag FLAG_GOT_EEVEE_FROM_BILL
 	buffer_players_name 0
 	npc_msg msg_0586_T25R0401_00002
 	play_fanfare SEQ_ME_POKEGET

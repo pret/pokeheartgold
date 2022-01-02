@@ -35,7 +35,7 @@ _0066:
 	comparevartovalue VAR_UNK_4077, 3
 	gotoif ne, _0081
 	clearflag FLAG_UNK_1BC
-	clearflag FLAG_UNK_1BD
+	clearflag FLAG_HIDE_RADIO_TOWER_RIVAL
 	goto _0085
 
 _0081:
@@ -352,8 +352,8 @@ _04A8:
 	apply_movement obj_player, _07BC
 _04BD:
 	wait 50, VAR_SPECIAL_x800C
-	scrcmd_188 1
-	scrcmd_189
+	set_avatar_bits 1
+	update_avatar_state
 	scrcmd_620 0
 	wait_movement
 	comparevartovalue VAR_TEMP_x4001, 5
@@ -440,7 +440,7 @@ _0625:
 	callstd std_fade_end_rival_outro_music
 	releaseall
 	setvar VAR_UNK_4077, 4
-	setflag FLAG_UNK_1BD
+	setflag FLAG_HIDE_RADIO_TOWER_RIVAL
 	setvar VAR_UNK_409F, 1
 	end
 

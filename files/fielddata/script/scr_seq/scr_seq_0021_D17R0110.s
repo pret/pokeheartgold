@@ -20,7 +20,7 @@ scr_seq_D17R0110_002:
 	end
 
 _002B:
-	setflag FLAG_UNK_242
+	setflag FLAG_HIDE_BELL_TOWER_HO_OH
 	hide_person obj_D17R0110_hou_obj01
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
@@ -63,7 +63,7 @@ scr_seq_D17R0110_000:
 	npc_msg msg_0058_D17R0110_00004
 	wait_cry
 	closemsg
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _00FD
 	setvar VAR_SPECIAL_x8004, 45
@@ -89,13 +89,13 @@ _0103:
 	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_HIDE_NEW_BARK_FRIEND_2
 	clearflag FLAG_UNK_2E5
-	setflag FLAG_UNK_244
-	clearflag FLAG_UNK_23C
+	setflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
+	clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
 	clearflag FLAG_UNK_241
 	end
 
 _0167:
-	clearflag FLAG_UNK_242
+	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	white_out
 	releaseall
 	end
@@ -318,7 +318,7 @@ scr_seq_D17R0110_006:
 	fade_screen 6, 1, 0, 0x7FFF
 	wait_fade
 	scrcmd_773 0
-	clearflag FLAG_UNK_242
+	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	show_person obj_D17R0110_hou_obj01
 	scrcmd_375 5
 	wait 6, VAR_SPECIAL_x800C

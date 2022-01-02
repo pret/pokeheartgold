@@ -427,7 +427,7 @@ _0599:
 	wait_movement
 	npc_msg msg_0543_T20R0101_00046
 	buffer_players_name 0
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _05D9
 	checkflag FLAG_UNK_108
@@ -742,7 +742,7 @@ _0904:
 	clearflag FLAG_HIDE_ROUTE_29_MARILL
 	setvar VAR_SCENE_MR_POKEMONS_HOUSE, 2
 	setvar VAR_SCENE_NEW_BARK_TOWN_OW, 3
-	clearflag FLAG_UNK_194
+	clearflag FLAG_HIDE_CHERRYGROVE_MART_SPECIAL_CLERK
 	setvar VAR_UNK_4095, 1
 	releaseall
 	end

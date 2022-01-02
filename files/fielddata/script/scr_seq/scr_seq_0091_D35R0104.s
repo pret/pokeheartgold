@@ -117,7 +117,7 @@ scr_seq_D35R0104_007:
 	setvar VAR_UNK_40AC, 6
 	hide_person obj_D35R0104_tsure_poke_613_2
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
-	clearflag FLAG_UNK_24D
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
 	releaseall
 	end
 	.byte 0x00
@@ -303,7 +303,7 @@ _0331:
 	setvar VAR_UNK_40AC, 4
 	hide_person obj_D35R0104_tsure_poke_613
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1
-	clearflag FLAG_UNK_24B
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
 	releaseall
 	end
 

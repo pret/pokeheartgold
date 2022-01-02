@@ -711,7 +711,7 @@ scr_seq_T27R0501_016:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _092A
 	npc_msg msg_0618_T27R0501_00011
@@ -791,7 +791,7 @@ _0944:
 	apply_movement obj_T27R0501_dancer_6, _0D08
 	wait_movement
 	npc_msg msg_0618_T27R0501_00020
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _0AA4
 	giveitem_no_check ITEM_CLEAR_BELL, 1
@@ -806,13 +806,13 @@ _0AB8:
 	play_se SEQ_SE_DP_KI_GASYAN
 	scrcmd_561 0, 2, 10, 6
 	wait_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_240
+	clearflag FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL
 	show_person obj_T27R0501_gsbabygirl1
 	apply_movement obj_T27R0501_gsbabygirl1, _0D10
 	wait_movement
 	apply_movement obj_T27R0501_dancer_6, _0BEC
 	wait_movement
-	scrcmd_495 VAR_SPECIAL_x800C
+	get_game_version VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _0B02
 	npc_msg msg_0618_T27R0501_00021
@@ -847,18 +847,18 @@ _0B2D:
 	hide_person obj_T27R0501_dancer_4
 	hide_person obj_T27R0501_dancer_5
 	hide_person obj_T27R0501_gsbabygirl1
-	setflag FLAG_UNK_23C
-	setflag FLAG_UNK_240
+	setflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+	setflag FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL
 	call _0BB0
 	setvar VAR_UNK_410C, 6
 	setvar VAR_UNK_40FA, 1
 	comparevartovalue VAR_SPECIAL_x800C, 7
 	gotoif ne, _0BAA
-	clearflag FLAG_UNK_244
+	clearflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
 	goto _0BAE
 
 _0BAA:
-	clearflag FLAG_UNK_245
+	clearflag FLAG_HIDE_WHIRL_ISLANDS_BOTTOM_KIMONO_GIRLS
 _0BAE:
 	end
 

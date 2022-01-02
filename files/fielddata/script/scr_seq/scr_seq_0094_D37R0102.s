@@ -123,7 +123,7 @@ scr_seq_D37R0102_000:
 	npc_msg msg_0117_D37R0102_00000
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 8
-	callstd 2052
+	callstd std_special_mart
 	clearflag FLAG_UNK_170
 	releaseall
 	end
@@ -685,8 +685,8 @@ _0A71:
 	scrcmd_604 48
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_188 1024
-	scrcmd_189
+	set_avatar_bits 1024
+	update_avatar_state
 	scrcmd_620 1
 	play_se SEQ_SE_DP_CARD2
 	wait 24, VAR_SPECIAL_x800C
@@ -1037,8 +1037,8 @@ _0F05:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_188 1024
-	scrcmd_189
+	set_avatar_bits 1024
+	update_avatar_state
 	scrcmd_620 1
 	scrcmd_602 0
 	scrcmd_603
@@ -1065,8 +1065,8 @@ _0F79:
 	wait_fade
 	cameron_photo 10
 	lockall
-	scrcmd_188 1
-	scrcmd_189
+	set_avatar_bits 1
+	update_avatar_state
 	scrcmd_620 0
 	scrcmd_602 0
 	scrcmd_603
@@ -1145,7 +1145,7 @@ _1094:
 _109C:
 	wait_movement
 	hide_person obj_D37R0102_dancer
-	setflag FLAG_UNK_237
+	setflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
 	callstd std_fade_end_kimono_girl_music
 	releaseall
 	setvar VAR_UNK_40E7, 3
@@ -1214,7 +1214,7 @@ scr_seq_D37R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity 476, 32780
+	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _1189
 	npc_msg msg_0117_D37R0102_00027

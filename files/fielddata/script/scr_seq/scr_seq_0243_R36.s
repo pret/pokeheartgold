@@ -380,7 +380,7 @@ scr_seq_R36_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity 425, 32780
+	getitemquantity ITEM_HM06, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0572
 	npc_msg msg_0390_R36_00003

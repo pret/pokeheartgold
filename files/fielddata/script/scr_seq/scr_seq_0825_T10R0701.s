@@ -70,7 +70,7 @@ _009A:
 _0105:
 	checkflag FLAG_ENGAGED_STATIC_SUICUNE
 	callif FALSE, _0227
-	scrcmd_495 VAR_TEMP_x4000
+	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _012D
 	goto _023A
@@ -122,11 +122,11 @@ _01C3:
 	return
 
 _01C9:
-	clearflag FLAG_UNK_242
+	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	return
 
 _01CF:
-	clearflag FLAG_UNK_243
+	clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
 	return
 
 _01D5:

@@ -217,7 +217,7 @@ scr_seq_D49R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 500
 	gotoif lt, _0417
 	buffer_players_name 0
@@ -236,7 +236,7 @@ scr_seq_D49R0102_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 51
 	gotoif lt, _0449
 	buffer_players_name 0
@@ -255,7 +255,7 @@ scr_seq_D49R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 150
 	gotoif lt, _047B
 	buffer_players_name 0
@@ -274,7 +274,7 @@ scr_seq_D49R0102_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1000
 	gotoif lt, _04AD
 	buffer_players_name 0
@@ -293,7 +293,7 @@ scr_seq_D49R0102_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 10001
 	gotoif lt, _04DF
 	buffer_players_name 0
@@ -312,7 +312,7 @@ scr_seq_D49R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 75
 	gotoif lt, _0511
 	buffer_players_name 0
@@ -331,7 +331,7 @@ scr_seq_D49R0102_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 26
 	gotoif lt, _0544
 	buffer_players_name 0
@@ -350,7 +350,7 @@ scr_seq_D49R0102_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 20001
 	gotoif lt, _0576
 	buffer_players_name 0
@@ -369,7 +369,7 @@ scr_seq_D49R0102_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 800
 	gotoif lt, _05A5
 	npc_msg msg_0139_D49R0102_00043
@@ -387,7 +387,7 @@ scr_seq_D49R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 800
 	gotoif lt, _05D7
 	buffer_players_name 0
@@ -426,7 +426,7 @@ scr_seq_D49R0102_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 201
 	gotoif lt, _0647
 	buffer_players_name 0
@@ -445,7 +445,7 @@ scr_seq_D49R0102_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 250
 	gotoif lt, _0679
 	buffer_players_name 0
@@ -464,7 +464,7 @@ scr_seq_D49R0102_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 101
 	gotoif lt, _06AB
 	buffer_players_name 0
@@ -483,7 +483,7 @@ scr_seq_D49R0102_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	play_cry SPECIES_RATTATA, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, _06E3
@@ -504,7 +504,7 @@ scr_seq_D49R0102_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	play_cry SPECIES_MACHOP, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, _071D
@@ -525,7 +525,7 @@ scr_seq_D49R0102_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_724 11, 16384
+	scrcmd_724 11, VAR_TEMP_x4000
 	play_cry SPECIES_BUTTERFREE, 0
 	comparevartovalue VAR_TEMP_x4000, 15000
 	gotoif lt, _0757

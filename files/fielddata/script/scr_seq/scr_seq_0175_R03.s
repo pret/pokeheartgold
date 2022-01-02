@@ -31,7 +31,7 @@ _0050:
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
-	scrcmd_176 11, 0, 32774, 32775, 32780
+	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _00B2
@@ -74,7 +74,7 @@ _0107:
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
-	scrcmd_176 11, 0, 32774, 32775, 32780
+	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0180
@@ -123,7 +123,7 @@ _01D5:
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
-	scrcmd_176 11, 0, 32774, 32775, 32780
+	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0220
@@ -159,7 +159,7 @@ _0275:
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	scrcmd_386 VAR_SPECIAL_x800C
-	scrcmd_176 11, 0, 32774, 32775, 32780
+	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _02C0

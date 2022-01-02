@@ -23,7 +23,7 @@ _0024:
 	npc_msg msg_0577_T24R0501_00003
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 11
-	callstd 2052
+	callstd std_special_mart
 	apply_movement obj_T24R0501_sunglasses, _00A8
 	wait_movement
 	clearflag FLAG_UNK_16F

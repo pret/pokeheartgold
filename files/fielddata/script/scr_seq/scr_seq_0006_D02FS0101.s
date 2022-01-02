@@ -17,7 +17,7 @@ scr_seq_D02FS0101_001:
 	npc_msg msg_0048_D02FS0101_00001
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 27
-	callstd 2052
+	callstd std_special_mart
 	clearflag FLAG_UNK_18A
 	releaseall
 	end

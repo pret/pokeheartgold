@@ -33,10 +33,10 @@ scr_seq_T25R1005_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 2011
+	callstd std_mart_intro
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 7
-	callstd 2052
+	callstd std_special_mart
 	releaseall
 	end
 

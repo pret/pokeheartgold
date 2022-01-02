@@ -188,7 +188,7 @@ scr_seq_T07R0203_009:
 	end
 
 _0276:
-	getitemquantity 502, 32780
+	getitemquantity ITEM_GB_SOUNDS, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _02A7
 	npc_msg msg_0503_T07R0203_00008

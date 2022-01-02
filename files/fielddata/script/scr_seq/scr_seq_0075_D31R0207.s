@@ -20,7 +20,7 @@
 scr_seq_D31R0207_006:
 	comparevartovalue VAR_UNK_4151, 2
 	gotoif ne, _004C
-	scrcmd_412 55, 2, 16393
+	scrcmd_412 55, 2, VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 0
 	gotoif eq, _00EA
 _004C:
@@ -28,7 +28,7 @@ _004C:
 _0050:
 	comparevartovalue VAR_UNK_4151, 2
 	gotoif ne, _0072
-	scrcmd_412 55, 2, 16393
+	scrcmd_412 55, 2, VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 1
 	gotoif eq, _00F6
 _0072:
@@ -36,7 +36,7 @@ _0072:
 _0076:
 	comparevartovalue VAR_UNK_4151, 2
 	gotoif ne, _0098
-	scrcmd_412 55, 2, 16393
+	scrcmd_412 55, 2, VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 2
 	gotoif eq, _0102
 _0098:
@@ -44,7 +44,7 @@ _0098:
 _009C:
 	comparevartovalue VAR_UNK_4151, 2
 	gotoif ne, _00BE
-	scrcmd_412 55, 2, 16393
+	scrcmd_412 55, 2, VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 3
 	gotoif eq, _010E
 _00BE:
@@ -52,7 +52,7 @@ _00BE:
 _00C2:
 	comparevartovalue VAR_UNK_4151, 2
 	gotoif ne, _00E4
-	scrcmd_412 55, 2, 16393
+	scrcmd_412 55, 2, VAR_TEMP_x4009
 	comparevartovalue VAR_TEMP_x4009, 4
 	gotoif eq, _011A
 _00E4:

@@ -119,13 +119,13 @@ _01AA:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _01C5
-	scrcmd_188 2048
+	set_avatar_bits 2048
 	goto _01C9
 
 _01C5:
-	scrcmd_188 256
+	set_avatar_bits 256
 _01C9:
-	scrcmd_189
+	update_avatar_state
 	apply_movement obj_player, _0460
 	wait_movement
 	scrcmd_599
@@ -167,13 +167,13 @@ _023A:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _026F
-	scrcmd_188 1024
+	set_avatar_bits 1024
 	goto _0273
 
 _026F:
-	scrcmd_188 1
+	set_avatar_bits 1
 _0273:
-	scrcmd_189
+	update_avatar_state
 	get_lead_mon_index VAR_SPECIAL_x8009
 	comparevartovar VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	gotoif eq, _02B2
@@ -205,13 +205,13 @@ _02CB:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _02F3
-	scrcmd_188 1024
+	set_avatar_bits 1024
 	goto _02F7
 
 _02F3:
-	scrcmd_188 1
+	set_avatar_bits 1
 _02F7:
-	scrcmd_189
+	update_avatar_state
 	get_lead_mon_index VAR_SPECIAL_x8009
 	comparevartovar VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	gotoif eq, _0336
@@ -249,13 +249,13 @@ _0364:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0391
-	scrcmd_188 1024
+	set_avatar_bits 1024
 	goto _0395
 
 _0391:
-	scrcmd_188 1
+	set_avatar_bits 1
 _0395:
-	scrcmd_189
+	update_avatar_state
 	get_lead_mon_index VAR_SPECIAL_x8009
 	comparevartovar VAR_SPECIAL_x8008, VAR_SPECIAL_x8009
 	gotoif eq, _03D4
@@ -1059,13 +1059,13 @@ scr_seq_0003_013:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0ED4
-	scrcmd_188 2048
+	set_avatar_bits 2048
 	goto _0ED8
 
 _0ED4:
-	scrcmd_188 256
+	set_avatar_bits 256
 _0ED8:
-	scrcmd_189
+	update_avatar_state
 	apply_movement obj_player, _0460
 	wait_movement
 	npc_msg msg_0040_00044
@@ -1080,13 +1080,13 @@ _0ED8:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0F2E
-	scrcmd_188 1024
+	set_avatar_bits 1024
 	goto _0F32
 
 _0F2E:
-	scrcmd_188 1
+	set_avatar_bits 1
 _0F32:
-	scrcmd_189
+	update_avatar_state
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00046
@@ -1101,13 +1101,13 @@ _0F49:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0F6E
-	scrcmd_188 1024
+	set_avatar_bits 1024
 	goto _0F72
 
 _0F6E:
-	scrcmd_188 1
+	set_avatar_bits 1
 _0F72:
-	scrcmd_189
+	update_avatar_state
 	apply_movement VAR_SPECIAL_x8007, _0454
 	wait_movement
 	npc_msg msg_0040_00040

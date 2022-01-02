@@ -60,7 +60,7 @@ _00AB:
 	apply_movement obj_player, _023C
 _00B3:
 	wait_movement
-	clearflag FLAG_UNK_227
+	clearflag FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY
 	show_person obj_D49R0101_gsleader3
 	move_person obj_D49R0101_gsleader3, 23, 0, 20, 0
 	comparevartovalue VAR_TEMP_x400A, 0
@@ -132,7 +132,7 @@ _01E1:
 	apply_movement obj_player, _0078
 	wait_movement
 	hide_person obj_D49R0101_gsleader3
-	setflag FLAG_UNK_227
+	setflag FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY
 	releaseall
 	setvar VAR_UNK_40E2, 1
 	end
@@ -346,7 +346,7 @@ _0493:
 _04E8:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00055
-	scrcmd_724 12, 32780
+	scrcmd_724 12, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 100
 	gotoif lt, _0509
 	npc_msg msg_0138_D49R0101_00057
@@ -891,7 +891,7 @@ scr_seq_D49R0101_021:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0BFE
 	npc_msg msg_0138_D49R0101_00105
-	scrcmd_724 14, 16384
+	scrcmd_724 14, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 1000
 	gotoif ge, _0C09
 	npc_msg msg_0138_D49R0101_00106
@@ -934,7 +934,7 @@ scr_seq_D49R0101_022:
 	faceplayer
 	checkflag FLAG_UNK_153
 	gotoif TRUE, _0CF0
-	scrcmd_724 15, 16384
+	scrcmd_724 15, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 500
 	gotoif ge, _0C86
 	npc_msg msg_0138_D49R0101_00109

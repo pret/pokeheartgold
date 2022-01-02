@@ -64,7 +64,7 @@ scr_seq_D24R0205_000:
 	play_se SEQ_SE_DP_SUTYA2
 	checkflag FLAG_UNK_111
 	gotoif TRUE, _016F
-	checkflag FLAG_UNK_110
+	checkflag FLAG_GOT_UNOWN_REPORT
 	gotoif TRUE, _016F
 	wait 5, VAR_SPECIAL_x800C
 	apply_movement obj_D24R0205_gsassistantm, _0194
@@ -87,9 +87,9 @@ scr_seq_D24R0205_000:
 	hide_person obj_D24R0205_gsbigman
 	hide_person obj_D24R0205_gswoman1
 	hide_person obj_D24R0205_gsoldman1
-	setflag FLAG_UNK_235
-	setflag FLAG_UNK_236
-	setflag FLAG_UNK_110
+	setflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
+	setflag FLAG_HIDE_RUINS_OF_ALPH_TOURISTS
+	setflag FLAG_GOT_UNOWN_REPORT
 	npc_msg msg_0076_D24R0205_00001
 	waitbutton
 	closemsg

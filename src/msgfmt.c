@@ -322,6 +322,7 @@ void BufferTrainerNameFromDataStruct(MSGFMT *msgFmt, u32 fieldno, TRAINER *train
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
+// The GMM associated with this routine is blanked.
 void BufferDecorationName(MSGFMT *msgFmt, u32 fieldno, u32 decorationId) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0737_bin, msgFmt->heapId);
     if (msgData != NULL) {
