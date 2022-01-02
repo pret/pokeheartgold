@@ -34,7 +34,8 @@
 	.short {{ object.yrange }}
 	.short {{ object.x }}
 	.short {{ object.y }}
-	.word {{ object.z }}
+	.short {{ object.z }}
+	.short {{ object.unk1E }}
 ## endfor
 ## else
 	.word 0

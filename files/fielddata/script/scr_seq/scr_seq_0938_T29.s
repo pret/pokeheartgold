@@ -48,7 +48,7 @@ _0085:
 	gotoif eq, _00BC
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
-	clearflag FLAG_UNK_1FF
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
 	setflag FLAG_MAPTEMP_011
 	setflag FLAG_MAPTEMP_013
 	setflag FLAG_MAPTEMP_014
@@ -61,7 +61,7 @@ _0085:
 _00BC:
 	clearflag FLAG_UNK_1FC
 	clearflag FLAG_UNK_1FE
-	setflag FLAG_UNK_1FF
+	setflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
 	clearflag FLAG_UNK_289
 	clearflag FLAG_UNK_28B
 	clearflag FLAG_UNK_28C
@@ -100,25 +100,25 @@ _0139:
 	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 6
 	gotoif ne, _0154
-	clearflag FLAG_UNK_2CC
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
 _0154:
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _016B
-	clearflag FLAG_UNK_2CC
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
 _016B:
 	comparevartovalue VAR_TEMP_x4000, 8
 	gotoif ne, _0182
-	clearflag FLAG_UNK_2CC
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
 _0182:
 	comparevartovalue VAR_TEMP_x4000, 9
 	gotoif ne, _0199
-	clearflag FLAG_UNK_2CC
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
 _0199:
@@ -128,7 +128,7 @@ _019F:
 	goto _0085
 	.byte 0x02, 0x00
 _01A7:
-	setflag FLAG_UNK_2CC
+	setflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _0085
 	.byte 0x02, 0x00
 scr_seq_T29_002:
@@ -173,7 +173,7 @@ _0216:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	setflag FLAG_UNK_2CC
+	setflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	hide_person obj_T29_gsleader7
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -307,7 +307,7 @@ scr_seq_T29_001:
 	goto_if_no_item_space ITEM_RED_SCALE, 1, _045C
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_RED_SCALE
-	clearflag FLAG_UNK_28A
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_LOIS
 	closemsg
 _0452:
 	releaseall

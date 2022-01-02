@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 5,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_ice_2",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 8,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_skierw",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 2,
       "y": 12,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_boarder",
@@ -67,7 +70,8 @@
       "yrange": 0,
       "x": 11,
       "y": 12,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

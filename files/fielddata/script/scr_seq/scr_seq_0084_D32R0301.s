@@ -172,11 +172,11 @@ _0277:
 	goto _037B
 	.byte 0x02, 0x00
 _02CF:
-	scrcmd_226 27, 0, 0, 32780
+	scrcmd_226 27, 0, 0, VAR_SPECIAL_x800C
 	return
 
 _02DB:
-	scrcmd_226 28, 0, 0, 32780
+	scrcmd_226 28, 0, 0, VAR_SPECIAL_x800C
 	return
 
 _02E7:
@@ -207,11 +207,11 @@ _02F9:
 	.byte 0x02
 	.byte 0x00
 _0351:
-	scrcmd_227 27, 0, 0, 32780
+	scrcmd_227 27, 0, 0, VAR_SPECIAL_x800C
 	return
 
 _035D:
-	scrcmd_227 28, 0, 0, 32780
+	scrcmd_227 28, 0, 0, VAR_SPECIAL_x800C
 	return
 
 _0369:

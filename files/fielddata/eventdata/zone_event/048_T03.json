@@ -74,7 +74,8 @@
       "yrange": 0,
       "x": 1069,
       "y": 94,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_gswoman3",
@@ -91,7 +92,8 @@
       "yrange": 1,
       "x": 1056,
       "y": 89,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_gsbabyboy1",
@@ -108,7 +110,8 @@
       "yrange": 2,
       "x": 1050,
       "y": 111,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_breakrock",
@@ -125,7 +128,8 @@
       "yrange": 0,
       "x": 1035,
       "y": 75,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_bonguri",
@@ -142,7 +146,8 @@
       "yrange": 0,
       "x": 1072,
       "y": 77,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_bonguri_2",
@@ -159,7 +164,8 @@
       "yrange": 0,
       "x": 1074,
       "y": 77,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_monstarball",
@@ -176,7 +182,8 @@
       "yrange": 0,
       "x": 1029,
       "y": 91,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_gsmiddleman1",
@@ -193,14 +200,15 @@
       "yrange": 0,
       "x": 1047,
       "y": 85,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_daigo",
       "ovid": "SPRITE_DAIGO",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_30C",
+      "flag": "FLAG_HIDE_PEWTER_CITY_STEVEN",
       "scr": "_EV_scr_seq_T03_009 + 1",
       "dirn": 2,
       "eye": 0,
@@ -210,14 +218,15 @@
       "yrange": 0,
       "x": 1044,
       "y": 81,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_tsure_poke_621",
       "ovid": "SPRITE_TSURE_POKE_621",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_30D",
+      "flag": "FLAG_HIDE_PEWTER_CITY_LATIOS",
       "scr": "_EV_scr_seq_T03_010 + 1",
       "dirn": 3,
       "eye": 0,
@@ -227,14 +236,15 @@
       "yrange": 0,
       "x": 1039,
       "y": 83,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03_tsure_poke_620",
       "ovid": "SPRITE_TSURE_POKE_620",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_312",
+      "flag": "FLAG_HIDE_PEWTER_CITY_LATIAS",
       "scr": "_EV_scr_seq_T03_010 + 1",
       "dirn": 3,
       "eye": 0,
@@ -244,7 +254,8 @@
       "yrange": 0,
       "x": 1039,
       "y": 83,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

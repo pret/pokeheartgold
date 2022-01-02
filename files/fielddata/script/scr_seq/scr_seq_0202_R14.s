@@ -158,7 +158,7 @@ _0200:
 scr_seq_R14_002:
 	scrcmd_609
 	lockall
-	clearflag FLAG_UNK_2A5
+	clearflag FLAG_HIDE_ROUTE_14_EUSINE
 	show_person obj_R14_minaki
 	scrcmd_602 0
 	scrcmd_603
@@ -273,7 +273,7 @@ _03D2:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	callstd 2042
+	callstd std_play_eusine_music
 	apply_movement obj_R14_minaki, _057C
 	apply_movement obj_player, _056C
 	wait_movement
@@ -281,11 +281,11 @@ _03D2:
 	npc_msg msg_0351_R14_00006
 	waitbutton
 	closemsg
-	callstd 2043
+	callstd std_fade_end_eusine_music
 	hide_person obj_R14_tsure_poke_618
-	setflag FLAG_UNK_2A0
-	setflag FLAG_UNK_2A5
-	clearflag FLAG_UNK_2AC
+	setflag FLAG_HIDE_ROUTE_14_SUICUNE
+	setflag FLAG_HIDE_ROUTE_14_EUSINE
+	clearflag FLAG_HIDE_ROUTE_14_EUSINE_2
 	setvar VAR_UNK_4086, 0
 	setflag FLAG_UNK_14D
 	check_badge 9, VAR_SPECIAL_x800C

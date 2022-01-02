@@ -13,12 +13,12 @@
 	scrdef_end
 
 scr_seq_R24_004:
-	comparevartovalue VAR_UNK_4087, 2
+	comparevartovalue VAR_SCENE_ROUTE_24_ROCKET, 2
 	gotoif eq, _0025
 	end
 
 _0025:
-	setvar VAR_UNK_4087, 1
+	setvar VAR_SCENE_ROUTE_24_ROCKET, 1
 	end
 
 scr_seq_R24_003:
@@ -38,7 +38,7 @@ _0060:
 	apply_movement obj_R24_gswoman2, _00AC
 _0078:
 	wait_movement
-	setvar VAR_UNK_4087, 2
+	setvar VAR_SCENE_ROUTE_24_ROCKET, 2
 	releaseall
 	end
 
@@ -93,10 +93,10 @@ scr_seq_R24_002:
 	scrcmd_602 1
 	scrcmd_604 48
 	hide_person obj_R24_rocketm
-	setflag FLAG_UNK_255
-	clearflag FLAG_UNK_257
+	setflag FLAG_HIDE_ROUTE_24_ROCKET
+	clearflag FLAG_HIDE_CERULEAN_GYM_MACHINE_PART
 	play_bgm SEQ_GS_R_12_24
-	setvar VAR_UNK_4087, 3
+	setvar VAR_SCENE_ROUTE_24_ROCKET, 3
 	releaseall
 	end
 
@@ -133,13 +133,13 @@ _017C:
 scr_seq_R24_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	comparevartovalue VAR_UNK_4087, 2
+	comparevartovalue VAR_SCENE_ROUTE_24_ROCKET, 2
 	gotoif ne, _01B3
 	goto _01DC
 	.byte 0x16, 0x00, 0x29
 	.byte 0x00, 0x00, 0x00
 _01B3:
-	comparevartovalue VAR_UNK_4087, 3
+	comparevartovalue VAR_SCENE_ROUTE_24_ROCKET, 3
 	gotoif ne, _01D1
 	faceplayer
 	npc_msg msg_0362_R24_00005
@@ -162,12 +162,12 @@ _01DF:
 scr_seq_R24_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	comparevartovalue VAR_UNK_4087, 2
+	comparevartovalue VAR_SCENE_ROUTE_24_ROCKET, 2
 	gotoif ne, _0206
 	goto _022F
 	.byte 0x16, 0x00, 0x29, 0x00, 0x00, 0x00
 _0206:
-	comparevartovalue VAR_UNK_4087, 3
+	comparevartovalue VAR_SCENE_ROUTE_24_ROCKET, 3
 	gotoif ne, _0224
 	faceplayer
 	npc_msg msg_0362_R24_00008

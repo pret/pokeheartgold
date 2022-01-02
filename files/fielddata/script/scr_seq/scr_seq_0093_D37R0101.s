@@ -21,7 +21,7 @@ scr_seq_D37R0101_002:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif eq, _0228
-	clearflag FLAG_UNK_2C8
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_tsure_poke_611
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, _0050
@@ -41,7 +41,7 @@ _0050:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	clearflag FLAG_UNK_2C8
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_var_1
 	comparevartovalue VAR_TEMP_x4001, 30
 	gotoif ne, _00AB
@@ -80,7 +80,7 @@ _0100:
 	apply_movement obj_D37R0101_tsure_poke_611, _0204
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_UNK_2C8
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	hide_person obj_D37R0101_var_1
 	hide_person obj_D37R0101_tsure_poke_611
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -154,9 +154,9 @@ _0220:
 	step 33, 1
 	step_end
 _0228:
-	clearflag FLAG_UNK_2C8
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_var_1
-	clearflag FLAG_UNK_2C8
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_tsure_poke_611
 	lock obj_D37R0101_tsure_poke_611
 	callstd std_play_friend_music
@@ -189,7 +189,7 @@ _0228:
 	apply_movement obj_D37R0101_tsure_poke_611, _033C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_UNK_2C8
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	hide_person obj_D37R0101_var_1
 	hide_person obj_D37R0101_tsure_poke_611
 	wait_se SEQ_SE_DP_KAIDAN2

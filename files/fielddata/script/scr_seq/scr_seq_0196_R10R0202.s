@@ -52,16 +52,16 @@ _0071:
 	npc_msg msg_0345_R10R0202_00015
 	apply_movement obj_R10R0202_gsbigman, _0120
 	wait_movement
-	setflag FLAG_UNK_118
+	setflag FLAG_RESTORED_POWER
 	npc_msg msg_0345_R10R0202_00016
 	giveitem_no_check ITEM_TM57, 1
 	npc_msg msg_0345_R10R0202_00017
 	waitbutton
 	closemsg
 	setflag FLAG_UNK_258
-	clearflag FLAG_UNK_259
+	clearflag FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR
 	setflag FLAG_UNK_2FB
-	clearflag FLAG_UNK_2FC
+	clearflag FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM
 	setvar VAR_UNK_40FF, 1
 	releaseall
 	end
@@ -105,7 +105,7 @@ scr_seq_R10R0202_007:
 	closemsg
 	apply_movement obj_R10R0202_policeman, _01E8
 	wait_movement
-	clearflag FLAG_UNK_254
+	clearflag FLAG_HIDE_CERULEAN_GYM_ROCKET
 	setvar VAR_UNK_411B, 0
 	setvar VAR_UNK_411C, 1
 	releaseall

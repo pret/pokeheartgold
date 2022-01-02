@@ -253,7 +253,7 @@ _0343:
 	scrcmd_309 77
 	hide_person obj_T22_gsbigman
 	setflag FLAG_UNK_19A
-	clearflag FLAG_UNK_19B
+	clearflag FLAG_HIDE_EARL_IN_SCHOOL
 	releaseall
 	end
 	.byte 0x00, 0x00

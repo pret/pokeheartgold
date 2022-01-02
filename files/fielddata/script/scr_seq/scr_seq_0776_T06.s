@@ -105,7 +105,7 @@ _013F:
 	wait_movement
 	setvar VAR_UNK_4130, 2
 	hide_person obj_T06_daigo
-	setflag FLAG_UNK_2FD
+	setflag FLAG_HIDE_VERMILION_CITY_STEVEN
 	releaseall
 	end
 	.byte 0x00, 0x00
@@ -190,7 +190,7 @@ _0241:
 scr_seq_T06_011:
 	scrcmd_609
 	lockall
-	clearflag FLAG_UNK_2A4
+	clearflag FLAG_HIDE_VERMILION_EUSINE
 	show_person obj_T06_minaki
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4000, 1334
@@ -205,7 +205,7 @@ _0270:
 	scrcmd_523 15, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
 	wait_cry
-	callstd 2042
+	callstd std_play_eusine_music
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -245,15 +245,15 @@ _0318:
 	apply_movement obj_player, _04F0
 	wait_movement
 _034D:
-	callstd 2043
+	callstd std_fade_end_eusine_music
 	hide_person obj_T06_minaki
 	hide_person obj_T06_tsure_poke_618
-	setflag FLAG_UNK_2A4
-	setflag FLAG_UNK_2B4
-	setflag FLAG_UNK_29F
+	setflag FLAG_HIDE_VERMILION_EUSINE
+	setflag FLAG_HIDE_VERMILION_EUSINE_2
+	setflag FLAG_HIDE_VERMILION_SUICUNE
 	setvar VAR_UNK_4070, 0
 	setvar VAR_UNK_4071, 0
-	clearflag FLAG_UNK_2A0
+	clearflag FLAG_HIDE_ROUTE_14_SUICUNE
 	setvar VAR_UNK_4086, 1
 	releaseall
 	end
@@ -267,7 +267,7 @@ _037F:
 	scrcmd_523 15, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
 	wait_cry
-	callstd 2042
+	callstd std_play_eusine_music
 	apply_movement obj_T06_tsure_poke_618, _0438
 	apply_movement obj_T06_minaki, _04C0
 	apply_movement obj_player, _04F8
@@ -393,7 +393,7 @@ _0504:
 scr_seq_T06_012:
 	scrcmd_609
 	lockall
-	clearflag FLAG_UNK_2B4
+	clearflag FLAG_HIDE_VERMILION_EUSINE_2
 	show_person obj_T06_minaki_2
 	apply_movement obj_player, _040C
 	wait_movement
@@ -402,7 +402,7 @@ scr_seq_T06_012:
 	scrcmd_523 15, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
 	wait_cry
-	callstd 2042
+	callstd std_play_eusine_music
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -442,15 +442,15 @@ _05C0:
 	apply_movement obj_T06_minaki_2, _0698
 	apply_movement obj_player, _06AC
 	wait_movement
-	callstd 2043
+	callstd std_fade_end_eusine_music
 	hide_person obj_T06_minaki_2
 	hide_person obj_T06_tsure_poke_618
-	setflag FLAG_UNK_2A4
-	setflag FLAG_UNK_2B4
-	setflag FLAG_UNK_29F
+	setflag FLAG_HIDE_VERMILION_EUSINE
+	setflag FLAG_HIDE_VERMILION_EUSINE_2
+	setflag FLAG_HIDE_VERMILION_SUICUNE
 	setvar VAR_UNK_4070, 0
 	setvar VAR_UNK_4071, 0
-	clearflag FLAG_UNK_2A0
+	clearflag FLAG_HIDE_ROUTE_14_SUICUNE
 	setvar VAR_UNK_4086, 1
 	releaseall
 	end

@@ -30,7 +30,7 @@ scr_seq_T11PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _004F
 	npc_msg msg_0532_T11PC0101_00001
 	waitbutton

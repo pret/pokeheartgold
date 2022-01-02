@@ -44,7 +44,7 @@ _0099:
 	end
 
 _00A5:
-	setflag FLAG_UNK_317
+	setflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
 	return
 
 _00AB:
@@ -208,7 +208,7 @@ _031F:
 	setflag FLAG_UNK_2FA
 	setflag FLAG_UNK_177
 	setvar VAR_UNK_4130, 4
-	clearflag FLAG_UNK_317
+	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
 	releaseall
 	end
 

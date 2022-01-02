@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 6,
       "y": 9,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D27R0106_seaman_2_2",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 13,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D27R0106_monstarball",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 11,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D27R0106_gsmiddleman1",
@@ -67,7 +70,8 @@
       "yrange": 0,
       "x": 2,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

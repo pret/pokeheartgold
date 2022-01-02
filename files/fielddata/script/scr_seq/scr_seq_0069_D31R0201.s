@@ -147,17 +147,17 @@ _0213:
 	wait_fanfare
 	comparevartovalue VAR_SPECIAL_x8004, 85
 	gotoif ne, _0233
-	clearflag FLAG_UNK_2A9
+	clearflag FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY
 	goto _024E
 
 _0233:
 	comparevartovalue VAR_SPECIAL_x8004, 86
 	gotoif ne, _024A
-	clearflag FLAG_UNK_2AA
+	clearflag FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY
 	goto _024E
 
 _024A:
-	clearflag FLAG_UNK_2AB
+	clearflag FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY
 _024E:
 	npc_msg msg_0096_D31R0201_00015
 	goto _01AC
@@ -795,7 +795,7 @@ _0DA6:
 	gotoif eq, _0D55
 	touchscreen_menu_show
 	closemsg
-	scrcmd_226 16, 0, 0, 32780
+	scrcmd_226 16, 0, 0, VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0DEC
@@ -817,7 +817,7 @@ _0DFE:
 	gotoif eq, _0D55
 	touchscreen_menu_show
 	closemsg
-	scrcmd_227 16, 0, 0, 32780
+	scrcmd_227 16, 0, 0, VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0E44
@@ -850,7 +850,7 @@ _0E6C:
 	scrcmd_258
 	scrcmd_257 2
 	scrcmd_412 57, 0, VAR_SPECIAL_x8004
-	scrcmd_451 32780
+	scrcmd_451 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0F84
 	scrcmd_417 1, 16384

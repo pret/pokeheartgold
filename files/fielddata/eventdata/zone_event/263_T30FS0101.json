@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 2,
       "y": 6,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30FS0101_shopm1_2_2",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 2,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30FS0101_gsfighter",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 10,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30FS0101_gsman3",
@@ -67,7 +70,8 @@
       "yrange": 0,
       "x": 10,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30FS0101_delivery2",
@@ -84,7 +88,8 @@
       "yrange": 0,
       "x": 3,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30FS0101_delivery",
@@ -101,7 +106,8 @@
       "yrange": 0,
       "x": 2,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

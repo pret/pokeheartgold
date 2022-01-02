@@ -50,7 +50,8 @@
       "yrange": 0,
       "x": 7,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0107_statuehero",
@@ -67,7 +68,8 @@
       "yrange": 0,
       "x": 7,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0107_statueheroine",
@@ -84,7 +86,8 @@
       "yrange": 0,
       "x": 7,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

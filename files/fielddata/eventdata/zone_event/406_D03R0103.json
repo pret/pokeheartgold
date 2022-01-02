@@ -42,7 +42,8 @@
       "yrange": 0,
       "x": 31,
       "y": 6,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_monstarball_2",
@@ -59,7 +60,8 @@
       "yrange": 0,
       "x": 5,
       "y": 32,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_monstarball_3",
@@ -76,7 +78,8 @@
       "yrange": 0,
       "x": 28,
       "y": 26,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_monstarball_4",
@@ -93,7 +96,8 @@
       "yrange": 0,
       "x": 58,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_monstarball_5",
@@ -110,7 +114,8 @@
       "yrange": 0,
       "x": 57,
       "y": 39,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock",
@@ -127,7 +132,8 @@
       "yrange": 0,
       "x": 14,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_2",
@@ -144,7 +150,8 @@
       "yrange": 0,
       "x": 14,
       "y": 16,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_3",
@@ -161,7 +168,8 @@
       "yrange": 0,
       "x": 13,
       "y": 12,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_4",
@@ -178,7 +186,8 @@
       "yrange": 0,
       "x": 11,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_5",
@@ -195,7 +204,8 @@
       "yrange": 0,
       "x": 36,
       "y": 20,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_6",
@@ -212,7 +222,8 @@
       "yrange": 0,
       "x": 37,
       "y": 18,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_7",
@@ -229,7 +240,8 @@
       "yrange": 0,
       "x": 40,
       "y": 11,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_8",
@@ -246,7 +258,8 @@
       "yrange": 0,
       "x": 32,
       "y": 19,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_9",
@@ -263,7 +276,8 @@
       "yrange": 0,
       "x": 31,
       "y": 20,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_tsure_poke_608",
@@ -280,7 +294,8 @@
       "yrange": 0,
       "x": 56,
       "y": 24,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D03R0103_breakrock_10",
@@ -297,7 +312,8 @@
       "yrange": 0,
       "x": 36,
       "y": 17,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

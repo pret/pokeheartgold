@@ -117,7 +117,7 @@ _018E:
 	wait_movement
 	hide_person obj_T07R0102_leader3
 	setflag FLAG_UNK_313
-	clearflag FLAG_UNK_2DF
+	clearflag FLAG_HIDE_ROUTE_47_CRASHER_WAKE
 	releaseall
 	end
 

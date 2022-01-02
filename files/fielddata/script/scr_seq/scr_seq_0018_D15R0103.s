@@ -119,8 +119,8 @@ scr_seq_D15R0103_002:
 	npc_msg msg_0056_D15R0103_00004
 	giveitem_no_check ITEM_TM70, 1
 	setflag FLAG_UNK_076
-	setflag FLAG_UNK_2E3
-	clearflag FLAG_UNK_2E4
+	setflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
+	clearflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT
 	npc_msg msg_0056_D15R0103_00005
 	waitbutton
 	closemsg

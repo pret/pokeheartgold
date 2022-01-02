@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 9,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D27R0105_gsgentleman",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 14,
       "y": 6,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D27R0105_monstarball",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 2,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

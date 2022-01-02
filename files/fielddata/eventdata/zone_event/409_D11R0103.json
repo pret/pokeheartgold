@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 33,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_boarder_2",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 25,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_skierw",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 17,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
@@ -85,7 +88,8 @@
       "yrange": 0,
       "x": 19,
       "y": 25,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

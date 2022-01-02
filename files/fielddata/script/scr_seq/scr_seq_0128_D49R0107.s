@@ -95,7 +95,7 @@ scr_seq_D49R0107_005:
 	end
 
 _0154:
-	clearflag FLAG_UNK_2B3
+	clearflag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
 	return
 	.byte 0x00, 0x00
 

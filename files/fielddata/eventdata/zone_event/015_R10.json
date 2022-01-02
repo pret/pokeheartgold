@@ -32,7 +32,7 @@
       "ovid": "SPRITE_GSLEADER9",
       "mvt": 3,
       "type": 0,
-      "flag": "FLAG_UNK_264",
+      "flag": "FLAG_HIDE_ROUTE_10_LT_SURGE",
       "scr": "_EV_scr_seq_R10_002 + 1",
       "dirn": 1,
       "eye": 0,
@@ -42,14 +42,15 @@
       "yrange": 0,
       "x": 1430,
       "y": 183,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R10_tsure_poke_604",
       "ovid": "SPRITE_TSURE_POKE_604",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_297",
+      "flag": "FLAG_HIDE_ROUTE_10_ZAPDOS",
       "scr": "_EV_scr_seq_R10_003 + 1",
       "dirn": 1,
       "eye": 0,
@@ -59,7 +60,8 @@
       "yrange": 0,
       "x": 1419,
       "y": 184,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

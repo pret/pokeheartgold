@@ -24,7 +24,7 @@
       "ovid": "SPRITE_STOROPHY",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2AA",
+      "flag": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -34,14 +34,15 @@
       "yrange": 0,
       "x": 8,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T20R0202_gtorophy",
       "ovid": "SPRITE_GTOROPHY",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2AB",
+      "flag": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -51,14 +52,15 @@
       "yrange": 0,
       "x": 9,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T20R0202_btorophy",
       "ovid": "SPRITE_BTOROPHY",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2A9",
+      "flag": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 7,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

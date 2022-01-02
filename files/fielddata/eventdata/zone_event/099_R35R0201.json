@@ -58,7 +58,8 @@
       "yrange": 1,
       "x": 27,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R35R0201_counterm",
@@ -75,7 +76,8 @@
       "yrange": 0,
       "x": 21,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R35R0201_workman",
@@ -92,7 +94,8 @@
       "yrange": 0,
       "x": 19,
       "y": 9,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R35R0201_counterm_2",
@@ -109,7 +112,8 @@
       "yrange": 0,
       "x": 19,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R35R0201_gsfighter",
@@ -126,7 +130,8 @@
       "yrange": 1,
       "x": 9,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R35R0201_gsgirl1",
@@ -143,7 +148,8 @@
       "yrange": 1,
       "x": 6,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R35R0201_gsmiddleman1",
@@ -160,7 +166,8 @@
       "yrange": 0,
       "x": 10,
       "y": 9,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R35R0201_counterm_3",
@@ -177,7 +184,8 @@
       "yrange": 0,
       "x": 24,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

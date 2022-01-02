@@ -28,8 +28,8 @@ scr_seq_T23_004:
 	comparevartovalue VAR_UNK_4080, 0
 	gotoif ne, _005F
 	setflag FLAG_UNK_19F
-	clearflag FLAG_UNK_271
-	clearflag FLAG_UNK_272
+	clearflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+	clearflag FLAG_AZALEA_HARASSED_CIVILIAN
 _005F:
 	end
 
@@ -226,8 +226,8 @@ scr_seq_T23_003:
 	apply_movement obj_T23_rocketm_3, _0374
 	wait_movement
 	hide_person obj_T23_gsmiddleman1_2
-	setflag FLAG_UNK_272
-	setflag FLAG_UNK_271
+	setflag FLAG_AZALEA_HARASSED_CIVILIAN
+	setflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
 	clearflag FLAG_UNK_19F
 	setvar VAR_UNK_4080, 1
 	releaseall

@@ -16,14 +16,15 @@
       "yrange": 0,
       "x": 7,
       "y": 9,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_P01R0101_ookido",
       "ovid": "SPRITE_OOKIDO",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_251",
+      "flag": "FLAG_HIDE_OLIVINE_PORT_OAK",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 11,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_P01R0101_gswoman3",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 2,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_P01R0101_gsboy2",
@@ -67,7 +70,8 @@
       "yrange": 0,
       "x": 12,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

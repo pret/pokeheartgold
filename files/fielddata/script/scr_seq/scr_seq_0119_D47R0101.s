@@ -217,7 +217,7 @@ scr_seq_D47R0101_009:
 	waitbutton
 	closemsg
 	setvar VAR_UNK_4057, 5
-	clearflag FLAG_UNK_319
+	clearflag FLAG_HIDE_SAFARI_ZONE_WORKERS
 	releaseall
 	end
 	.byte 0x00, 0x00
@@ -754,7 +754,7 @@ _0AAC:
 	gotoif eq, _0A5D
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_226 32772, 32773, 0, 32780
+	scrcmd_226 32772, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0B05
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -794,7 +794,7 @@ _0B2F:
 	gotoif eq, _0A5D
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_227 32772, 32773, 0, 32780
+	scrcmd_227 32772, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0B88
 	comparevartovalue VAR_SPECIAL_x800C, 3

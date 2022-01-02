@@ -1651,13 +1651,13 @@ scr_seq_D36R0101_012:
 	comparevartovalue VAR_UNK_412B, 1
 	gotoif eq, _1803
 	get_lead_mon_index VAR_TEMP_x4000
-	scrcmd_698 0, 16384, 16385
+	scrcmd_698 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _17B7
 	goto _17C1
 	.byte 0x16, 0x00, 0x0a, 0x00, 0x00, 0x00
 _17B7:
-	clearflag FLAG_UNK_29B
+	clearflag FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU
 	goto _1816
 
 _17C1:
@@ -1666,7 +1666,7 @@ _17C1:
 	checkflag FLAG_UNK_0C6
 	gotoif FALSE, _1803
 	get_lead_mon_index VAR_TEMP_x4006
-	scrcmd_698 3, 16390, 16391
+	scrcmd_698 3, VAR_TEMP_x4006, VAR_TEMP_x4007
 	comparevartovalue VAR_TEMP_x4007, 0
 	gotoif ne, _17FD
 	goto _1803
@@ -1688,7 +1688,7 @@ _1816:
 	scrcmd_609
 	lockall
 	scrcmd_081 0
-	clearflag FLAG_UNK_29B
+	clearflag FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU
 	show_person obj_D36R0101_tsure_poke_625
 	apply_movement obj_D36R0101_tsure_poke_625, _1C44
 	wait_movement
@@ -1696,7 +1696,7 @@ _1816:
 	wait_cry
 	apply_movement obj_player, _1C58
 	wait_movement
-	callstd 2065
+	callstd std_play_pichu_music
 	apply_movement obj_D36R0101_tsure_poke_625, _1C64
 	scrcmd_602 0
 	scrcmd_603
@@ -1717,7 +1717,7 @@ _1816:
 	apply_movement obj_D36R0101_tsure_poke_625, _1D08
 	apply_movement obj_partner_poke, _1D2C
 	wait_movement
-	clearflag FLAG_UNK_29C
+	clearflag FLAG_HIDE_ILEX_FOREST_OLD_MAN
 	show_person obj_D36R0101_gsoldman1
 	apply_movement obj_D36R0101_gsoldman1, _1DE0
 	apply_movement obj_D36R0101_tsure_poke_625, _1D48
@@ -1825,7 +1825,7 @@ _1A34:
 	scrcmd_604 48
 	comparevartovalue VAR_TEMP_x4008, 0
 	gotoif ne, _1A51
-	callstd 2066
+	callstd std_fade_end_pichu_music
 _1A51:
 	scrcmd_778
 	hide_person obj_D36R0101_tsure_poke_625
@@ -1866,7 +1866,7 @@ _1AE7:
 _1AEF:
 	wait_movement
 	hide_person obj_D36R0101_gsoldman1
-	setflag FLAG_UNK_29C
+	setflag FLAG_HIDE_ILEX_FOREST_OLD_MAN
 	return
 
 _1AFB:
@@ -1875,7 +1875,7 @@ _1AFB:
 	closemsg
 	comparevartovalue VAR_TEMP_x4008, 0
 	gotoif ne, _1B13
-	callstd 2066
+	callstd std_fade_end_pichu_music
 _1B13:
 	setvar VAR_UNK_412B, 1
 	return
@@ -2239,7 +2239,7 @@ _1F48:
 	fade_out_bgm 0, 30
 	callstd std_play_friend_music
 	touchscreen_menu_hide
-	clearflag FLAG_UNK_310
+	clearflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	show_person obj_D36R0101_var_1
 	show_person obj_D36R0101_tsure_poke_611
 	apply_movement obj_D36R0101_var_1, _2054
@@ -2265,9 +2265,9 @@ _1F48:
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
 	setvar VAR_UNK_40FE, 1
-	clearflag FLAG_UNK_301
-	clearflag FLAG_UNK_302
-	setflag FLAG_UNK_310
+	clearflag FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL
+	clearflag FLAG_HIDE_ROUTE_22_FRIEND
+	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	scrcmd_176 27, 0, 954, 280, 1
 	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
@@ -2362,7 +2362,7 @@ scr_seq_D36R0101_022:
 	setvar VAR_UNK_40FE, 5
 	hide_person obj_D36R0101_var_1
 	hide_person obj_D36R0101_tsure_poke_611
-	setflag FLAG_UNK_310
+	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	releaseall
 	end
 	.byte 0x00

@@ -93,30 +93,30 @@ _012E:
 	end
 
 _0130:
-	clearflag FLAG_UNK_266
+	clearflag FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_REVEALED
 	show_person obj_T08GYM0101_gsgirl1
-	setflag FLAG_UNK_26A
+	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_4
 	return
 
 _0142:
-	clearflag FLAG_UNK_267
+	clearflag FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_REVEALED
 	show_person obj_T08GYM0101_campboy_2
-	setflag FLAG_UNK_26B
+	setflag FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_3
 	return
 
 _0154:
-	clearflag FLAG_UNK_268
+	clearflag FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_REVEALED
 	show_person obj_T08GYM0101_gsgirl1_2
-	setflag FLAG_UNK_26C
+	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_5
 	return
 
 _0166:
-	clearflag FLAG_UNK_269
+	clearflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_REVEALED
 	show_person obj_T08GYM0101_picnicgirl_2
-	setflag FLAG_UNK_26D
+	setflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_2
 	return
 
@@ -148,9 +148,9 @@ _01E0:
 	apply_movement obj_T08GYM0101_gsleader13_4, _0638
 _01E8:
 	wait_movement
-	clearflag FLAG_UNK_266
+	clearflag FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_REVEALED
 	show_person obj_T08GYM0101_gsgirl1
-	setflag FLAG_UNK_26A
+	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_4
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0215
@@ -190,8 +190,8 @@ _0277:
 _0282:
 	white_out
 	releaseall
-	setflag FLAG_UNK_266
-	clearflag FLAG_UNK_26A
+	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_REVEALED
+	clearflag FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_DISGUISED
 	end
 
 scr_seq_T08GYM0101_004:
@@ -222,9 +222,9 @@ _02F8:
 	apply_movement obj_T08GYM0101_gsleader13_3, _0638
 _0300:
 	wait_movement
-	clearflag FLAG_UNK_267
+	clearflag FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_REVEALED
 	show_person obj_T08GYM0101_campboy_2
-	setflag FLAG_UNK_26B
+	setflag FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_3
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _032D
@@ -264,8 +264,8 @@ _038F:
 _039A:
 	white_out
 	releaseall
-	setflag FLAG_UNK_267
-	clearflag FLAG_UNK_26B
+	setflag FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_REVEALED
+	clearflag FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_DISGUISED
 	end
 
 scr_seq_T08GYM0101_005:
@@ -298,9 +298,9 @@ _0415:
 	apply_movement obj_T08GYM0101_gsleader13_5, _0638
 _041D:
 	wait_movement
-	clearflag FLAG_UNK_268
+	clearflag FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_REVEALED
 	show_person obj_T08GYM0101_gsgirl1_2
-	setflag FLAG_UNK_26C
+	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_5
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _044A
@@ -340,8 +340,8 @@ _04AC:
 _04B7:
 	white_out
 	releaseall
-	setflag FLAG_UNK_268
-	clearflag FLAG_UNK_26C
+	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_REVEALED
+	clearflag FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_DISGUISED
 	end
 
 scr_seq_T08GYM0101_006:
@@ -374,9 +374,9 @@ _0532:
 	apply_movement obj_T08GYM0101_gsleader13_2, _0638
 _053A:
 	wait_movement
-	clearflag FLAG_UNK_269
+	clearflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_REVEALED
 	show_person obj_T08GYM0101_picnicgirl_2
-	setflag FLAG_UNK_26D
+	setflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_2
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0567
@@ -416,8 +416,8 @@ _05C9:
 _05D4:
 	white_out
 	releaseall
-	setflag FLAG_UNK_269
-	clearflag FLAG_UNK_26D
+	setflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_REVEALED
+	clearflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED
 	end
 	.byte 0x00, 0x00
 

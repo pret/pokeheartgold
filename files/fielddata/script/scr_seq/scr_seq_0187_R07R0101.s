@@ -12,7 +12,7 @@ scr_seq_R07R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _0024
 	npc_msg msg_0337_R07R0101_00000
 	waitbutton

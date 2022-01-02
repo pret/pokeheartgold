@@ -108,9 +108,9 @@ _0167:
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_UNK_2DD
 	hide_person obj_D51R0301_champion
-	clearflag FLAG_UNK_2DC
+	clearflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
 	wait_se SEQ_SE_DP_KAIDAN2
-	setvar VAR_UNK_40FB, 7
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 7
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00
@@ -191,7 +191,7 @@ scr_seq_D51R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40FB, 13
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	gotoif ge, _026E
 	checkflag FLAG_UNK_09D
 	gotoif TRUE, _0263
@@ -234,14 +234,14 @@ _02A6:
 	play_se SEQ_SE_DP_TELE
 	apply_movement obj_player, _0318
 	wait_movement
-	comparevartovalue VAR_UNK_40FB, 13
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	gotoif ne, _02D2
-	setvar VAR_UNK_40FB, 10
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
 	goto _02E4
 
 _02D2:
-	setvar VAR_UNK_40FB, 1
-	setflag FLAG_UNK_2DC
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 1
+	setflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
 	clearflag FLAG_UNK_2DD
 	clearflag FLAG_UNK_2DB
 _02E4:

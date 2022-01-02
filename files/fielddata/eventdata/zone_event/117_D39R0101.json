@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 47,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D39R0101_gsmiddleman1",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 47,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D39R0101_dancer",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 55,
       "y": 29,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D39R0101_monstarball_2",
@@ -85,7 +88,8 @@
       "yrange": 0,
       "x": 53,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D39R0101_monstarball_3",
@@ -102,7 +106,8 @@
       "yrange": 0,
       "x": 53,
       "y": 35,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D39R0101_gsmiddleman1_2",
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 38,
       "y": 21,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

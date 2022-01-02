@@ -48,7 +48,7 @@ scr_seq_T10R0701_000:
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 3
 _009A:
 	setflag FLAG_UNK_97E
-	clearflag FLAG_UNK_2CC
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	checkflag FLAG_UNK_116
 	callif FALSE, _01C9
 	checkflag FLAG_UNK_117
@@ -149,7 +149,7 @@ _01ED:
 	check_badge 15, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0204
-	clearflag FLAG_UNK_297
+	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
 _0204:
 	return
 
@@ -163,7 +163,7 @@ _020C:
 	goto _0105
 
 _021D:
-	clearflag FLAG_UNK_31B
+	clearflag FLAG_HIDE_ROUTE_12_SNORLAX
 	goto _0105
 
 _0227:

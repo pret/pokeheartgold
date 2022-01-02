@@ -18,7 +18,7 @@
 
 scr_seq_T11R0601_006:
 	scrcmd_582 76, 1290, 209
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _003F
 	goto _0045
 
@@ -39,7 +39,7 @@ _007E:
 	end
 
 scr_seq_T11R0601_005:
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _008D
 	end
 
@@ -51,7 +51,7 @@ scr_seq_T11R0601_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _00B9
 	npc_msg msg_0535_T11R0601_00000
 	waitbutton
@@ -206,7 +206,7 @@ scr_seq_T11R0601_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _028E
 	npc_msg msg_0535_T11R0601_00008
 	waitbutton

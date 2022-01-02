@@ -58,7 +58,8 @@
       "yrange": 0,
       "x": 483,
       "y": 175,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_mania",
@@ -75,7 +76,8 @@
       "yrange": 0,
       "x": 495,
       "y": 172,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_mount_2",
@@ -92,7 +94,8 @@
       "yrange": 0,
       "x": 501,
       "y": 177,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_bonguri",
@@ -109,7 +112,8 @@
       "yrange": 0,
       "x": 464,
       "y": 184,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_bonguri_2",
@@ -126,7 +130,8 @@
       "yrange": 0,
       "x": 465,
       "y": 184,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_bonguri_3",
@@ -143,7 +148,8 @@
       "yrange": 0,
       "x": 466,
       "y": 184,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_monstarball",
@@ -160,7 +166,8 @@
       "yrange": 0,
       "x": 472,
       "y": 176,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_monstarball_2",
@@ -177,7 +184,8 @@
       "yrange": 0,
       "x": 477,
       "y": 166,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_monstarball_3",
@@ -194,7 +202,8 @@
       "yrange": 0,
       "x": 430,
       "y": 169,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_tree",
@@ -211,14 +220,15 @@
       "yrange": 0,
       "x": 460,
       "y": 181,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_mount_2_2",
       "ovid": "SPRITE_MOUNT_2",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_29D",
+      "flag": "FLAG_HIDE_ROUTE_42_HIKER",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -228,14 +238,15 @@
       "yrange": 0,
       "x": 436,
       "y": 171,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_tsure_poke_618",
       "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_29E",
+      "flag": "FLAG_HIDE_ROUTE_42_SUICUNE",
       "scr": 0,
       "dirn": 2,
       "eye": 0,
@@ -245,14 +256,15 @@
       "yrange": 0,
       "x": 466,
       "y": 182,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R42_minaki",
       "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2A3",
+      "flag": "FLAG_HIDE_ROUTE_42_EUSINE",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -262,7 +274,8 @@
       "yrange": 0,
       "x": 452,
       "y": 181,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

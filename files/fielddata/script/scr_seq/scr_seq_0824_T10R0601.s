@@ -155,7 +155,7 @@ _0234:
 	closemsg
 	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, _0268
-	clearflag FLAG_UNK_251
+	clearflag FLAG_HIDE_OLIVINE_PORT_OAK
 	setvar VAR_UNK_411A, 1
 _0268:
 	fade_screen 6, 1, 0, 0x00

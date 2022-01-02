@@ -197,7 +197,7 @@ _0295:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0254
 	closemsg
-	scrcmd_226 8, 32773, 32772, 32780
+	scrcmd_226 8, VAR_SPECIAL_x8005, 32772, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _02D7
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -216,7 +216,7 @@ _02E7:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0254
 	closemsg
-	scrcmd_227 8, 32773, 32772, 32780
+	scrcmd_227 8, VAR_SPECIAL_x8005, 32772, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0329
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -286,7 +286,7 @@ _03FE:
 	scrcmd_232 4
 	scrcmd_233 4
 	scrcmd_257 239
-	scrcmd_611 1, 0, 32768, 32780, 32769, 32770, 32771
+	scrcmd_611 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	scrcmd_237
 	scrcmd_048 msg_0043_00078
 	closemsg

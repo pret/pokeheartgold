@@ -28379,11 +28379,11 @@
 .public sub_020514A4
 .public sub_02051598
 .public sub_020515FC
-.public sub_02051738
+.public BattleSetup_GetTransitionAndMusicParam
 .public sub_020517E8
 .public sub_020517FC
-.public sub_02051868
-.public sub_02051894
+.public NPCTrainerGetBattleIntroAndMusicParam
+.public WildPokemonGetBattleIntroAndMusicParam
 .public sub_020518D8
 .public sub_02051A60
 .public sub_02051A74

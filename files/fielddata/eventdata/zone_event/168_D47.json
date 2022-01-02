@@ -50,7 +50,8 @@
       "yrange": 0,
       "x": 85,
       "y": 313,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_gsgentleman",
@@ -67,7 +68,8 @@
       "yrange": 0,
       "x": 79,
       "y": 295,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_tsure_poke_583",
@@ -84,7 +86,8 @@
       "yrange": 0,
       "x": 78,
       "y": 295,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_tsure_poke_601",
@@ -101,7 +104,8 @@
       "yrange": 0,
       "x": 97,
       "y": 299,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_middlewoman1_2",
@@ -118,7 +122,8 @@
       "yrange": 0,
       "x": 96,
       "y": 299,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_gsbabyboy1",
@@ -135,7 +140,8 @@
       "yrange": 0,
       "x": 95,
       "y": 305,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_gsoldman1",
@@ -152,7 +158,8 @@
       "yrange": 0,
       "x": 95,
       "y": 311,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_gswoman1",
@@ -169,7 +176,8 @@
       "yrange": 0,
       "x": 82,
       "y": 310,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_gswoman2",
@@ -186,7 +194,8 @@
       "yrange": 0,
       "x": 97,
       "y": 314,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_tsure_poke_573",
@@ -203,7 +212,8 @@
       "yrange": 0,
       "x": 81,
       "y": 310,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_tsure_poke_594",
@@ -220,7 +230,8 @@
       "yrange": 0,
       "x": 98,
       "y": 314,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_gsbabygirl1",
@@ -237,7 +248,8 @@
       "yrange": 1,
       "x": 86,
       "y": 303,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_gsmiddleman1",
@@ -254,14 +266,15 @@
       "yrange": 0,
       "x": 87,
       "y": 300,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_workman",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_319",
+      "flag": "FLAG_HIDE_SAFARI_ZONE_WORKERS",
       "scr": "_EV_scr_seq_D47_015 + 1",
       "dirn": 1,
       "eye": 0,
@@ -271,14 +284,15 @@
       "yrange": 0,
       "x": 94,
       "y": 294,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D47_workman_2",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_319",
+      "flag": "FLAG_HIDE_SAFARI_ZONE_WORKERS",
       "scr": "_EV_scr_seq_D47_016 + 1",
       "dirn": 1,
       "eye": 0,
@@ -288,7 +302,8 @@
       "yrange": 0,
       "x": 95,
       "y": 294,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

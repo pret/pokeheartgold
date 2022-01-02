@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 44,
       "y": 26,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_assistantm",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 42,
       "y": 18,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_assistantm_2",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 22,
       "y": 28,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_rocketm_2",
@@ -67,7 +70,8 @@
       "yrange": 0,
       "x": 15,
       "y": 25,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_rocketw",
@@ -84,7 +88,8 @@
       "yrange": 0,
       "x": 38,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_wataru",
@@ -101,7 +106,8 @@
       "yrange": 0,
       "x": 46,
       "y": 26,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_tsure_poke_607",
@@ -118,7 +124,8 @@
       "yrange": 0,
       "x": 47,
       "y": 26,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_gsrivel",
@@ -135,7 +142,8 @@
       "yrange": 0,
       "x": 15,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_rkanbum2",
@@ -152,7 +160,8 @@
       "yrange": 0,
       "x": 21,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_tsure_poke_613",
@@ -169,7 +178,8 @@
       "yrange": 0,
       "x": 19,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_babyboy1_9",
@@ -186,7 +196,8 @@
       "yrange": 0,
       "x": 23,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_babyboy1_9_2",
@@ -203,7 +214,8 @@
       "yrange": 0,
       "x": 24,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_monstarball",
@@ -220,7 +232,8 @@
       "yrange": 0,
       "x": 11,
       "y": 24,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_monstarball_2",
@@ -237,7 +250,8 @@
       "yrange": 0,
       "x": 13,
       "y": 24,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_monstarball_3",
@@ -254,7 +268,8 @@
       "yrange": 0,
       "x": 32,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_monstarball_4",
@@ -271,7 +286,8 @@
       "yrange": 0,
       "x": 49,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_tsure_poke_613_2",
@@ -288,7 +304,8 @@
       "yrange": 0,
       "x": 49,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_monstarball_5",
@@ -305,7 +322,8 @@
       "yrange": 0,
       "x": 27,
       "y": 18,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D35R0104_sakaki",
@@ -322,7 +340,8 @@
       "yrange": 0,
       "x": 21,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 17,
       "y": 11,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 17,
       "y": 37,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 37,
       "y": 17,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_4",
@@ -85,7 +88,8 @@
       "yrange": 0,
       "x": 25,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_breakrock",
@@ -102,7 +106,8 @@
       "yrange": 0,
       "x": 38,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_breakrock_2",
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 37,
       "y": 2,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_breakrock_3",
@@ -136,7 +142,8 @@
       "yrange": 0,
       "x": 3,
       "y": 18,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_breakrock_4",
@@ -153,7 +160,8 @@
       "yrange": 0,
       "x": 3,
       "y": 19,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_breakrock_5",
@@ -170,7 +178,8 @@
       "yrange": 0,
       "x": 2,
       "y": 20,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

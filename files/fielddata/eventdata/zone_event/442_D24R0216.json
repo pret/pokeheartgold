@@ -248,7 +248,7 @@
       "ovid": "SPRITE_SUIT",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2E7",
+      "flag": "FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE",
       "scr": 0,
       "dirn": 2,
       "eye": 0,
@@ -258,7 +258,8 @@
       "yrange": 0,
       "x": 14,
       "y": 24,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

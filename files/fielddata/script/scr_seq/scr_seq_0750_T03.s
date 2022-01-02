@@ -259,16 +259,16 @@ _030E:
 	goto _0051
 	.byte 0x02, 0x00
 _033D:
-	clearflag FLAG_UNK_30C
+	clearflag FLAG_HIDE_PEWTER_CITY_STEVEN
 _0341:
 	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _035C
-	clearflag FLAG_UNK_30D
+	clearflag FLAG_HIDE_PEWTER_CITY_LATIOS
 	goto _0360
 
 _035C:
-	clearflag FLAG_UNK_312
+	clearflag FLAG_HIDE_PEWTER_CITY_LATIAS
 _0360:
 	end
 
@@ -290,12 +290,12 @@ _038C:
 	get_game_version VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 7
 	gotoif ne, _03AB
-	setflag FLAG_UNK_30D
+	setflag FLAG_HIDE_PEWTER_CITY_LATIOS
 	hide_person obj_T03_tsure_poke_621
 	goto _03B3
 
 _03AB:
-	setflag FLAG_UNK_312
+	setflag FLAG_HIDE_PEWTER_CITY_LATIAS
 	hide_person obj_T03_tsure_poke_620
 _03B3:
 	end
@@ -490,7 +490,7 @@ _0649:
 	end
 
 _064D:
-	clearflag FLAG_UNK_317
+	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
 	return
 
 scr_seq_T03_009:

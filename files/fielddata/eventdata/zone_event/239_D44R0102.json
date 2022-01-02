@@ -50,7 +50,8 @@
       "yrange": 0,
       "x": 24,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_gsman3",
@@ -67,7 +68,8 @@
       "yrange": 0,
       "x": 30,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_gswoman3",
@@ -84,7 +86,8 @@
       "yrange": 0,
       "x": 12,
       "y": 20,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_gsbabygirl1",
@@ -101,7 +104,8 @@
       "yrange": 0,
       "x": 6,
       "y": 30,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_gsbabygirl1_2",
@@ -118,7 +122,8 @@
       "yrange": 0,
       "x": 6,
       "y": 31,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_monstarball",
@@ -135,7 +140,8 @@
       "yrange": 0,
       "x": 50,
       "y": 34,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_gsrivel",
@@ -152,7 +158,8 @@
       "yrange": 0,
       "x": 25,
       "y": 41,
-      "z": 131072
+      "z": 0,
+      "unk1E": 2
     },
     {
       "id": "obj_D44R0102_monstarball_2",
@@ -169,7 +176,8 @@
       "yrange": 0,
       "x": 42,
       "y": 16,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_monstarball_3",
@@ -186,14 +194,15 @@
       "yrange": 0,
       "x": 7,
       "y": 33,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_gsrivel_2",
       "ovid": "SPRITE_GSRIVEL",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_2E0",
+      "flag": "FLAG_HIDE_DRAGONS_DEN_RIVAL",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -203,14 +212,15 @@
       "yrange": 0,
       "x": 24,
       "y": 47,
-      "z": 131072
+      "z": 0,
+      "unk1E": 2
     },
     {
       "id": "obj_D44R0102_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 14,
       "type": 0,
-      "flag": "FLAG_UNK_2E0",
+      "flag": "FLAG_HIDE_DRAGONS_DEN_RIVAL",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -220,7 +230,8 @@
       "yrange": 0,
       "x": 24,
       "y": 49,
-      "z": 131072
+      "z": 0,
+      "unk1E": 2
     },
     {
       "id": "obj_D44R0102_wataru",
@@ -237,7 +248,8 @@
       "yrange": 0,
       "x": 51,
       "y": 2,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D44R0102_gsleader8_2",
@@ -254,7 +266,8 @@
       "yrange": 0,
       "x": 53,
       "y": 2,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

@@ -24,7 +24,7 @@
       "ovid": "SPRITE_PICNICGIRL_2",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_269",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_REVEALED",
       "scr": "_EV_scr_seq_T08GYM0101_006 + 1",
       "dirn": 1,
       "eye": 0,
@@ -34,14 +34,15 @@
       "yrange": 0,
       "x": 12,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_gsgirl1",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_266",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_REVEALED",
       "scr": "_EV_scr_seq_T08GYM0101_003 + 1",
       "dirn": 1,
       "eye": 0,
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 3,
       "y": 18,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_gsleader13",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 7,
       "y": 16,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_sunglasses",
@@ -85,14 +88,15 @@
       "yrange": 0,
       "x": 10,
       "y": 23,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_gsgirl1_2",
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_268",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_REVEALED",
       "scr": "_EV_scr_seq_T08GYM0101_005 + 1",
       "dirn": 1,
       "eye": 0,
@@ -102,14 +106,15 @@
       "yrange": 0,
       "x": 9,
       "y": 11,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_campboy_2",
       "ovid": "SPRITE_CAMPBOY_2",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_267",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_REVEALED",
       "scr": "_EV_scr_seq_T08GYM0101_004 + 1",
       "dirn": 1,
       "eye": 0,
@@ -119,14 +124,15 @@
       "yrange": 0,
       "x": 3,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_gsleader13_2",
       "ovid": "SPRITE_GSLEADER13",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_26D",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED",
       "scr": "_EV_scr_seq_T08GYM0101_006 + 1",
       "dirn": 1,
       "eye": 0,
@@ -136,14 +142,15 @@
       "yrange": 0,
       "x": 12,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_gsleader13_3",
       "ovid": "SPRITE_GSLEADER13",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_26B",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_DISGUISED",
       "scr": "_EV_scr_seq_T08GYM0101_004 + 1",
       "dirn": 1,
       "eye": 0,
@@ -153,14 +160,15 @@
       "yrange": 0,
       "x": 3,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_gsleader13_4",
       "ovid": "SPRITE_GSLEADER13",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_26A",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_DISGUISED",
       "scr": "_EV_scr_seq_T08GYM0101_003 + 1",
       "dirn": 1,
       "eye": 0,
@@ -170,14 +178,15 @@
       "yrange": 0,
       "x": 3,
       "y": 18,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T08GYM0101_gsleader13_5",
       "ovid": "SPRITE_GSLEADER13",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_26C",
+      "flag": "FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_DISGUISED",
       "scr": "_EV_scr_seq_T08GYM0101_005 + 1",
       "dirn": 1,
       "eye": 0,
@@ -187,7 +196,8 @@
       "yrange": 0,
       "x": 9,
       "y": 11,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

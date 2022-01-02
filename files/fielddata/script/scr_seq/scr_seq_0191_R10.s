@@ -20,7 +20,7 @@ scr_seq_R10_004:
 	end
 
 _002B:
-	setflag FLAG_UNK_297
+	setflag FLAG_HIDE_ROUTE_10_ZAPDOS
 	hide_person obj_R10_tsure_poke_604
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
@@ -40,23 +40,23 @@ _0052:
 	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 9
 	gotoif ne, _008B
-	clearflag FLAG_UNK_264
+	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	goto _00BD
 
 _008B:
 	comparevartovalue VAR_TEMP_x4000, 10
 	gotoif ne, _00A2
-	clearflag FLAG_UNK_264
+	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	goto _00BD
 
 _00A2:
 	comparevartovalue VAR_TEMP_x4000, 11
 	gotoif ne, _00B9
-	clearflag FLAG_UNK_264
+	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	goto _00BD
 
 _00B9:
-	setflag FLAG_UNK_264
+	setflag FLAG_HIDE_ROUTE_10_LT_SURGE
 _00BD:
 	end
 
@@ -102,7 +102,7 @@ _0148:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	setflag FLAG_UNK_264
+	setflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	hide_person obj_R10_gsleader9
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -133,7 +133,7 @@ _0197:
 scr_seq_R10_000:
 	scrcmd_609
 	lockall
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _0209
 	scrcmd_729 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0

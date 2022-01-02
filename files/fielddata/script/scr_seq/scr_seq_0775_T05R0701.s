@@ -18,9 +18,9 @@ scr_seq_T05R0701_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_11F
+	checkflag FLAG_GOT_EXPN_CARD
 	gotoif TRUE, _0069
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _0047
 	npc_msg msg_0482_T05R0701_00003
 	waitbutton
@@ -34,8 +34,8 @@ _0047:
 	npc_msg msg_0482_T05R0701_00006
 	play_fanfare SEQ_ME_KEYITEM
 	wait_fanfare
-	setflag FLAG_UNK_11F
-	checkflag FLAG_UNK_08A
+	setflag FLAG_GOT_EXPN_CARD
+	checkflag FLAG_GOT_RADIO_CARD
 	gotoif TRUE, _0069
 	register_pokegear_card 2
 _0069:
@@ -49,7 +49,7 @@ scr_seq_T05R0701_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_11F
+	checkflag FLAG_GOT_EXPN_CARD
 	gotoif TRUE, _0092
 	npc_msg msg_0482_T05R0701_00008
 	waitbutton

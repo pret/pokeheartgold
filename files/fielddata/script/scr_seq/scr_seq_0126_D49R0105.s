@@ -139,7 +139,7 @@ scr_seq_D49R0105_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_2D6
+	checkflag FLAG_HIDE_POKEATHLON_CLOTHES_SIGN
 	gotoif FALSE, _0166
 	npc_msg msg_0141_D49R0105_00007
 	waitbutton
@@ -158,7 +158,7 @@ scr_seq_D49R0105_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_2D5
+	checkflag FLAG_HIDE_POKEATHLON_SHOES_SIGN
 	gotoif FALSE, _018F
 	npc_msg msg_0141_D49R0105_00009
 	waitbutton
@@ -177,7 +177,7 @@ scr_seq_D49R0105_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_2D7
+	checkflag FLAG_HIDE_POKEATHLON_FLAG_SIGN
 	gotoif FALSE, _01B8
 	npc_msg msg_0141_D49R0105_00011
 	waitbutton

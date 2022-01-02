@@ -354,7 +354,8 @@
       "yrange": 0,
       "x": 26,
       "y": 9,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03R0101_gswoman6",
@@ -371,7 +372,8 @@
       "yrange": 0,
       "x": 12,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03R0101_gsoldman1",
@@ -388,7 +390,8 @@
       "yrange": 0,
       "x": 6,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03R0101_mania",
@@ -405,7 +408,8 @@
       "yrange": 2,
       "x": 17,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03R0101_gsassistantm_2",
@@ -422,7 +426,8 @@
       "yrange": 0,
       "x": 4,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03R0101_gsmiddleman1",
@@ -439,14 +444,15 @@
       "yrange": 0,
       "x": 8,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03R0101_daigo",
       "ovid": "SPRITE_DAIGO",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_308",
+      "flag": "FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS",
       "scr": "_EV_scr_seq_T03R0101_015 + 1",
       "dirn": 0,
       "eye": 0,
@@ -456,14 +462,15 @@
       "yrange": 0,
       "x": 23,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T03R0101_daigo_2",
       "ovid": "SPRITE_DAIGO",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_317",
+      "flag": "FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS",
       "scr": "_EV_scr_seq_T03R0101_019 + 1",
       "dirn": 0,
       "eye": 0,
@@ -473,7 +480,8 @@
       "yrange": 0,
       "x": 16,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

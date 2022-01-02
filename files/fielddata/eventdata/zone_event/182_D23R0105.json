@@ -24,7 +24,7 @@
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2C6",
+      "flag": "FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR",
       "scr": "_EV_scr_seq_D23R0105_002 + 1",
       "dirn": 0,
       "eye": 0,
@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 5,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D23R0105_rkanbuw",
@@ -51,14 +52,15 @@
       "yrange": 0,
       "x": 11,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D23R0105_rkanbum2",
       "ovid": "SPRITE_RKANBUM2",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2C7",
+      "flag": "FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED",
       "scr": "_EV_scr_seq_D23R0105_002 + 1",
       "dirn": 0,
       "eye": 0,
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 5,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

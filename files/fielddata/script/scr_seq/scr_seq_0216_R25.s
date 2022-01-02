@@ -26,7 +26,7 @@ scr_seq_R25_003:
 _003B:
 	comparevartovalue VAR_SCENE_ROUTE_25, 2
 	gotoif ne, _0050
-	clearflag FLAG_UNK_2B2
+	clearflag FLAG_HIDE_ROUTE_25_EUSINE_2
 	setflag FLAG_HIDE_ROUTE_25_EUSINE
 _0050:
 	check_badge 15, VAR_TEMP_x4000
@@ -166,9 +166,9 @@ _0271:
 	hide_person obj_R25_gsleader11
 	scrcmd_081 SEQ_GS_EYE_K_SHOUJO
 	play_bgm SEQ_GS_R_12_24
-	setflag FLAG_UNK_309
-	setflag FLAG_UNK_256
-	clearflag FLAG_UNK_253
+	setflag FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND
+	setflag FLAG_HIDE_ROUTE_25_MISTY
+	clearflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	setvar VAR_UNK_4088, 2
 	releaseall
 	end
@@ -413,7 +413,7 @@ _056D:
 scr_seq_R25_004:
 	scrcmd_609
 	lockall
-	setflag FLAG_UNK_2AC
+	setflag FLAG_HIDE_ROUTE_14_EUSINE_2
 	clearflag FLAG_HIDE_ROUTE_25_EUSINE
 	show_person obj_R25_minaki
 	apply_movement obj_player, _0648
@@ -445,7 +445,7 @@ _05F7:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	callstd 2042
+	callstd std_play_eusine_music
 	apply_movement obj_R25_minaki, _069C
 	apply_movement obj_player, _0690
 	wait_movement
@@ -457,7 +457,7 @@ _05F7:
 	npc_msg msg_0363_R25_00017
 	waitbutton
 	closemsg
-	callstd 2043
+	callstd std_fade_end_eusine_music
 	setvar VAR_SCENE_ROUTE_25, 2
 	releaseall
 	end
@@ -550,7 +550,7 @@ scr_seq_R25_007:
 	buffer_players_name 0
 	npc_msg msg_0363_R25_00018
 	closemsg
-	checkflag FLAG_UNK_2B2
+	checkflag FLAG_HIDE_ROUTE_25_EUSINE_2
 	gotoif TRUE, _0766
 	goto _0786
 
@@ -567,7 +567,7 @@ _0786:
 	apply_movement obj_R25_minaki_2, _0800
 	wait_movement
 	hide_person obj_R25_minaki_2
-	setflag FLAG_UNK_2B2
+	setflag FLAG_HIDE_ROUTE_25_EUSINE_2
 _07A0:
 	setvar VAR_SCENE_ROUTE_25, 3
 _07A6:
@@ -590,7 +590,7 @@ _07B6:
 	buffer_players_name 0
 	npc_msg msg_0363_R25_00019
 	closemsg
-	checkflag FLAG_UNK_2B2
+	checkflag FLAG_HIDE_ROUTE_25_EUSINE_2
 	gotoif TRUE, _0766
 	goto _0786
 	.byte 0x00

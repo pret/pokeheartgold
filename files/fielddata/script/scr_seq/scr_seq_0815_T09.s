@@ -164,8 +164,8 @@ _024B:
 	hide_person obj_T09_gsleader16
 	setflag FLAG_UNK_25A
 	setflag FLAG_UNK_129
-	setflag FLAG_UNK_2F8
-	clearflag FLAG_UNK_2F9
+	setflag FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED
+	clearflag FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00

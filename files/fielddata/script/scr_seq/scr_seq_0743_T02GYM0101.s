@@ -61,7 +61,7 @@ scr_seq_T02GYM0101_000:
 	settrainerflag TRAINER_ACE_TRAINER_M_BONITA
 	settrainerflag TRAINER_DOUBLE_TEAM_ELAN_AND_IDA
 	setflag FLAG_UNK_97F
-	clearflag FLAG_UNK_297
+	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
 	setflag FLAG_UNK_30F
 	setvar VAR_UNK_4096, 1
 	npc_msg msg_0454_T02GYM0101_00001

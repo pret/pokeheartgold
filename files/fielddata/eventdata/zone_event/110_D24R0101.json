@@ -90,7 +90,8 @@
       "yrange": 0,
       "x": 422,
       "y": 290,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_monstarball",
@@ -107,7 +108,8 @@
       "yrange": 0,
       "x": 435,
       "y": 274,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_breakrock",
@@ -124,7 +126,8 @@
       "yrange": 0,
       "x": 424,
       "y": 262,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_breakrock_2",
@@ -141,7 +144,8 @@
       "yrange": 0,
       "x": 423,
       "y": 263,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_breakrock_3",
@@ -158,7 +162,8 @@
       "yrange": 0,
       "x": 426,
       "y": 264,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_breakrock_4",
@@ -175,7 +180,8 @@
       "yrange": 0,
       "x": 417,
       "y": 272,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_breakrock_5",
@@ -192,7 +198,8 @@
       "yrange": 0,
       "x": 416,
       "y": 273,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_monstarball_2",
@@ -209,7 +216,8 @@
       "yrange": 0,
       "x": 418,
       "y": 273,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_gsmiddleman1",
@@ -226,14 +234,15 @@
       "yrange": 0,
       "x": 435,
       "y": 284,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D24R0101_suit",
       "ovid": "SPRITE_SUIT",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2E6",
+      "flag": "FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -243,7 +252,8 @@
       "yrange": 0,
       "x": 441,
       "y": 285,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [
@@ -376,7 +386,7 @@
       "h": 1,
       "z": 0,
       "val": 1,
-      "var": "VAR_UNK_40FB"
+      "var": "VAR_SCENE_SINJOH_MYSTRI_ROOM"
     }
   ]
 }

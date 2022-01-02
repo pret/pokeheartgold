@@ -74,7 +74,8 @@
       "yrange": 0,
       "x": 1198,
       "y": 474,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_gsswimmerm_2",
@@ -91,7 +92,8 @@
       "yrange": 5,
       "x": 1194,
       "y": 485,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_gsswimmerm_3",
@@ -108,7 +110,8 @@
       "yrange": 0,
       "x": 1200,
       "y": 497,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_gsswimmerw",
@@ -125,7 +128,8 @@
       "yrange": 0,
       "x": 1201,
       "y": 497,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_stop",
@@ -142,7 +146,8 @@
       "yrange": 0,
       "x": 1203,
       "y": 458,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_stop_2",
@@ -159,7 +164,8 @@
       "yrange": 0,
       "x": 1205,
       "y": 458,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_stop_3",
@@ -176,7 +182,8 @@
       "yrange": 0,
       "x": 1204,
       "y": 458,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_stop_4",
@@ -193,7 +200,8 @@
       "yrange": 0,
       "x": 1206,
       "y": 458,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_breakrock",
@@ -210,7 +218,8 @@
       "yrange": 0,
       "x": 1209,
       "y": 456,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_breakrock_2",
@@ -227,7 +236,8 @@
       "yrange": 0,
       "x": 1208,
       "y": 458,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_breakrock_3",
@@ -244,7 +254,8 @@
       "yrange": 0,
       "x": 1210,
       "y": 455,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_breakrock_4",
@@ -261,7 +272,8 @@
       "yrange": 0,
       "x": 1207,
       "y": 457,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_breakrock_5",
@@ -278,14 +290,15 @@
       "yrange": 0,
       "x": 1201,
       "y": 456,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_workman",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_299",
+      "flag": "FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED",
       "scr": "_EV_scr_seq_W19_000 + 1",
       "dirn": 1,
       "eye": 0,
@@ -295,14 +308,15 @@
       "yrange": 0,
       "x": 1203,
       "y": 457,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_workman_2",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 5,
       "type": 0,
-      "flag": "FLAG_UNK_299",
+      "flag": "FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED",
       "scr": "_EV_scr_seq_W19_001 + 1",
       "dirn": 3,
       "eye": 0,
@@ -312,14 +326,15 @@
       "yrange": 0,
       "x": 1206,
       "y": 457,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_workman_3",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_29A",
+      "flag": "FLAG_HIDE_ROUTE_19_WORKMEN_OPEN",
       "scr": "_EV_scr_seq_W19_002 + 1",
       "dirn": 1,
       "eye": 0,
@@ -329,14 +344,15 @@
       "yrange": 0,
       "x": 1201,
       "y": 468,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_workman_4",
       "ovid": "SPRITE_WORKMAN",
       "mvt": 5,
       "type": 0,
-      "flag": "FLAG_UNK_29A",
+      "flag": "FLAG_HIDE_ROUTE_19_WORKMEN_OPEN",
       "scr": "_EV_scr_seq_W19_003 + 1",
       "dirn": 2,
       "eye": 0,
@@ -346,7 +362,8 @@
       "yrange": 0,
       "x": 1204,
       "y": 468,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W19_monstarball",
@@ -363,7 +380,8 @@
       "yrange": 0,
       "x": 1210,
       "y": 505,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

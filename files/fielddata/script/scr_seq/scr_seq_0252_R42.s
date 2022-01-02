@@ -19,7 +19,7 @@ scr_seq_R42_000:
 	apply_movement obj_player, _017C
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	clearflag FLAG_UNK_29D
+	clearflag FLAG_HIDE_ROUTE_42_HIKER
 	show_person obj_R42_mount_2_2
 	comparevartovalue VAR_SPECIAL_x8001, 172
 	gotoif ne, _0051
@@ -91,7 +91,7 @@ _015E:
 	apply_movement obj_R42_mount_2_2, _0224
 _0166:
 	wait_movement
-	setflag FLAG_UNK_29D
+	setflag FLAG_HIDE_ROUTE_42_HIKER
 	hide_person obj_R42_mount_2_2
 	setvar VAR_UNK_4091, 1
 	releaseall
@@ -185,9 +185,9 @@ scr_seq_R42_001:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	clearflag FLAG_UNK_2A3
+	clearflag FLAG_HIDE_ROUTE_42_EUSINE
 	show_person obj_R42_minaki
-	callstd 2042
+	callstd std_play_eusine_music
 	apply_movement obj_R42_minaki, _0324
 	wait_movement
 	npc_msg msg_0399_R42_00007
@@ -203,15 +203,15 @@ scr_seq_R42_001:
 	closemsg
 	apply_movement obj_R42_minaki, _0340
 	wait_movement
-	callstd 2043
+	callstd std_fade_end_eusine_music
 	hide_person obj_R42_tsure_poke_618
 	hide_person obj_R42_minaki
-	setflag FLAG_UNK_29E
-	setflag FLAG_UNK_2A3
+	setflag FLAG_HIDE_ROUTE_42_SUICUNE
+	setflag FLAG_HIDE_ROUTE_42_EUSINE
 	setvar VAR_UNK_4092, 0
 	setvar VAR_UNK_4070, 1
 	setvar VAR_UNK_4071, 1
-	clearflag FLAG_UNK_29F
+	clearflag FLAG_HIDE_VERMILION_SUICUNE
 	releaseall
 	end
 	.byte 0x00, 0x00

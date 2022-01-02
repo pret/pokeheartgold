@@ -93,7 +93,7 @@ scr_seq_T10R0101_006:
 	wait_movement
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	clearflag FLAG_UNK_250
+	clearflag FLAG_HIDE_INDIGO_PLATEAU_RIVAL
 	show_person obj_T10R0101_gsrivel
 	move_person obj_T10R0101_gsrivel, VAR_SPECIAL_x8000, 0, 23, 0
 	scrcmd_602 0
@@ -141,7 +141,7 @@ _0191:
 
 _01CE:
 	hide_person obj_T10R0101_gsrivel
-	setflag FLAG_UNK_250
+	setflag FLAG_HIDE_INDIGO_PLATEAU_RIVAL
 	white_out
 	releaseall
 	end

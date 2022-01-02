@@ -18,7 +18,7 @@
 	scrdef_end
 
 scr_seq_D24R0205_008:
-	comparevartovalue VAR_UNK_40FB, 10
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
 	gotoif eq, _003D
 	goto _009D
 
@@ -31,7 +31,7 @@ _003D:
 	goto _009D
 
 _0061:
-	scrcmd_698 1, 16389, 16391
+	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
 	comparevartovalue VAR_TEMP_x4007, 1
 	callif eq, _009F
 	scrcmd_490 VAR_TEMP_x4005
@@ -39,7 +39,7 @@ _0061:
 	end
 
 _007F:
-	scrcmd_698 2, 16389, 16390
+	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	comparevartovalue VAR_TEMP_x4006, 1
 	callif eq, _009F
 	scrcmd_490 VAR_TEMP_x4005
@@ -50,7 +50,7 @@ _009D:
 	end
 
 _009F:
-	setvar VAR_UNK_40FB, 11
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 11
 	return
 
 scr_seq_D24R0205_000:
@@ -172,9 +172,9 @@ scr_seq_D24R0205_006:
 	fade_screen 6, 6, 1, 0x00
 	wait_fade
 	scrcmd_074 2305
-	setvar VAR_UNK_40FB, 3
-	setflag FLAG_UNK_2E6
-	setflag FLAG_UNK_2E7
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 3
+	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
+	setflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
@@ -236,8 +236,8 @@ scr_seq_D24R0205_007:
 	apply_movement obj_D24R0205_suit, _0388
 	wait_movement
 	hide_person obj_D24R0205_suit
-	setflag FLAG_UNK_2E7
-	setvar VAR_UNK_40FB, 10
+	setflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
 	releaseall
 	end
 
@@ -292,9 +292,9 @@ scr_seq_D24R0205_009:
 	fade_screen 6, 6, 1, 0x00
 	wait_fade
 	scrcmd_074 2305
-	setvar VAR_UNK_40FB, 12
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
 	setvar VAR_UNK_4104, 1
-	setflag FLAG_UNK_2DC
+	setflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
 	setflag FLAG_UNK_2DD
 	setflag FLAG_UNK_2DB
 	play_se SEQ_SE_DP_KAIDAN2

@@ -16,15 +16,15 @@
 	scrdef_end
 
 scr_seq_D51R0201_002:
-	comparevartovalue VAR_UNK_40FB, 7
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 7
 	gotoif eq, _0065
-	comparevartovalue VAR_UNK_40FB, 8
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
 	gotoif eq, _0065
-	comparevartovalue VAR_UNK_40FB, 9
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
 	gotoif eq, _0065
-	comparevartovalue VAR_UNK_40FB, 12
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
 	gotoif eq, _0065
-	comparevartovalue VAR_UNK_40FB, 13
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	gotoif eq, _0065
 	end
 
@@ -43,7 +43,7 @@ scr_seq_D51R0201_007:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	setvar VAR_UNK_40FB, 13
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	releaseall
 	end
 
@@ -58,7 +58,7 @@ scr_seq_D51R0201_006:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	setvar VAR_UNK_40FB, 4
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 4
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00
@@ -73,13 +73,13 @@ scr_seq_D51R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40FB, 8
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
 	gotoif eq, _0165
 	get_lead_mon_index VAR_TEMP_x4005
-	scrcmd_698 2, 16389, 16390
+	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	comparevartovalue VAR_TEMP_x4006, 1
 	gotoif eq, _011A
-	scrcmd_698 1, 16389, 16391
+	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
 	comparevartovalue VAR_TEMP_x4007, 1
 	gotoif eq, _011A
 	npc_msg msg_0146_D51R0201_00024
@@ -118,7 +118,7 @@ _0165:
 	end
 
 _0170:
-	setvar VAR_UNK_40FB, 8
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
 	setvar VAR_UNK_4104, 1
 	scrcmd_386 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
@@ -307,7 +307,7 @@ _03C8:
 scr_seq_D51R0201_004:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_UNK_40FB, 13
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	gotoif lt, _0430
 	comparevartovalue VAR_UNK_4103, 1
 	gotoif eq, _0545
@@ -331,7 +331,7 @@ _0433:
 scr_seq_D51R0201_003:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_UNK_40FB, 13
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	gotoif lt, _0498
 	comparevartovalue VAR_UNK_4103, 2
 	gotoif eq, _0545
@@ -355,7 +355,7 @@ _049B:
 scr_seq_D51R0201_005:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_UNK_40FB, 13
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	gotoif lt, _0500
 	comparevartovalue VAR_UNK_4103, 3
 	gotoif eq, _0545
@@ -412,10 +412,10 @@ _056D:
 	get_lead_mon_index VAR_TEMP_x4000
 	comparevartovalue VAR_UNK_4102, 1
 	gotoif ne, _05B2
-	scrcmd_698 1, 16384, 32780
+	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0605
-	scrcmd_698 2, 16384, 32780
+	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _060D
 	goto _0615
@@ -424,10 +424,10 @@ _056D:
 _05B2:
 	comparevartovalue VAR_UNK_4102, 2
 	gotoif ne, _05F3
-	scrcmd_698 2, 16384, 32780
+	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0605
-	scrcmd_698 1, 16384, 32780
+	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _060D
 	goto _0615
@@ -472,13 +472,13 @@ _0633:
 
 _063E:
 	closemsg
-	comparevartovalue VAR_UNK_40FB, 13
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	gotoif ne, _0659
-	setvar VAR_UNK_40FB, 14
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto _065F
 
 _0659:
-	setvar VAR_UNK_40FB, 9
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
 _065F:
 	scrcmd_820 0
 	setvar VAR_UNK_4104, 0
@@ -588,7 +588,7 @@ _0833:
 	scrcmd_816
 	scrcmd_074 2366
 	scrcmd_773 2
-	comparevartovalue VAR_UNK_40FB, 14
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	gotoif eq, _086E
 	release obj_D51R0201_champion
 	move_person obj_D51R0201_champion, 16, 1, 28, 0
@@ -675,7 +675,7 @@ _09B6:
 	scrcmd_815 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	callif eq, _0BB2
-	comparevartovalue VAR_UNK_40FB, 14
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	gotoif eq, _0A4D
 	apply_movement obj_D51R0201_champion, _0D28
 	apply_movement obj_player, _0D00
@@ -708,10 +708,10 @@ _0A4D:
 	wait 1, VAR_SPECIAL_x800C
 	fade_screen 6, 6, 1, 0x00
 	wait_fade
-	comparevartovalue VAR_UNK_40FB, 14
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	gotoif eq, _0AAA
 	get_lead_mon_index VAR_TEMP_x4005
-	scrcmd_698 2, 16389, 16390
+	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	comparevartovalue VAR_TEMP_x4006, 1
 	gotoif ne, _0AA0
 	setvar VAR_UNK_4102, 1
@@ -720,7 +720,7 @@ _0A4D:
 _0AA0:
 	setvar VAR_UNK_4102, 2
 _0AA6:
-	clearflag FLAG_UNK_2E7
+	clearflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 _0AAA:
 	play_se SEQ_SE_DP_KAIDAN2
 	comparevartovalue VAR_UNK_403E, 6

@@ -58,7 +58,8 @@
       "yrange": 0,
       "x": 51,
       "y": 72,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
@@ -75,7 +76,8 @@
       "yrange": 0,
       "x": 67,
       "y": 54,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
@@ -92,7 +94,8 @@
       "yrange": 0,
       "x": 67,
       "y": 28,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
@@ -109,7 +112,8 @@
       "yrange": 0,
       "x": 51,
       "y": 31,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_4",
@@ -126,7 +130,8 @@
       "yrange": 0,
       "x": 51,
       "y": 43,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_5",
@@ -143,7 +148,8 @@
       "yrange": 0,
       "x": 29,
       "y": 20,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_6",
@@ -160,7 +166,8 @@
       "yrange": 0,
       "x": 23,
       "y": 36,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_7",
@@ -177,7 +184,8 @@
       "yrange": 0,
       "x": 37,
       "y": 52,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_mania",
@@ -194,7 +202,8 @@
       "yrange": 0,
       "x": 62,
       "y": 79,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_gsassistantm",
@@ -211,7 +220,8 @@
       "yrange": 0,
       "x": 52,
       "y": 50,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_8",
@@ -228,7 +238,8 @@
       "yrange": 0,
       "x": 73,
       "y": 47,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_9",
@@ -245,7 +256,8 @@
       "yrange": 0,
       "x": 38,
       "y": 75,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

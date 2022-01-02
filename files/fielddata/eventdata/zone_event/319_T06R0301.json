@@ -42,7 +42,8 @@
       "yrange": 0,
       "x": 14,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06R0301_gswoman2",
@@ -59,7 +60,8 @@
       "yrange": 0,
       "x": 12,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06R0301_gswoman1",
@@ -76,7 +78,8 @@
       "yrange": 0,
       "x": 3,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06R0301_gsbigman",
@@ -93,7 +96,8 @@
       "yrange": 0,
       "x": 5,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06R0301_tsure_poke_609",
@@ -110,14 +114,15 @@
       "yrange": 2,
       "x": 4,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06R0301_mono_pip",
       "ovid": "SPRITE_MONO_PIP",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2FC",
+      "flag": "FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -127,7 +132,8 @@
       "yrange": 1,
       "x": 6,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

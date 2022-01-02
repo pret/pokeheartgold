@@ -106,7 +106,8 @@
       "yrange": 0,
       "x": 25,
       "y": 62,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_gsbigman",
@@ -123,7 +124,8 @@
       "yrange": 0,
       "x": 36,
       "y": 37,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_tsure_poke_596_2",
@@ -140,7 +142,8 @@
       "yrange": 0,
       "x": 41,
       "y": 54,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_gsboy1",
@@ -157,7 +160,8 @@
       "yrange": 0,
       "x": 15,
       "y": 64,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_gsfighter",
@@ -174,7 +178,8 @@
       "yrange": 0,
       "x": 11,
       "y": 75,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_tree",
@@ -191,7 +196,8 @@
       "yrange": 0,
       "x": 16,
       "y": 62,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_monstarball",
@@ -208,7 +214,8 @@
       "yrange": 0,
       "x": 42,
       "y": 73,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_monstarball_2",
@@ -225,7 +232,8 @@
       "yrange": 0,
       "x": 27,
       "y": 42,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_monstarball_3",
@@ -242,7 +250,8 @@
       "yrange": 0,
       "x": 20,
       "y": 30,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_monstarball_4",
@@ -259,7 +268,8 @@
       "yrange": 0,
       "x": 47,
       "y": 16,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_tsure_poke_596_3",
@@ -276,7 +286,8 @@
       "yrange": 0,
       "x": 14,
       "y": 64,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_tsure_poke_596_4",
@@ -293,7 +304,8 @@
       "yrange": 0,
       "x": 13,
       "y": 64,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_dancer",
@@ -310,7 +322,8 @@
       "yrange": 0,
       "x": 38,
       "y": 16,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_gsmiddleman1",
@@ -327,14 +340,15 @@
       "yrange": 0,
       "x": 11,
       "y": 24,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_tsure_poke_625",
       "ovid": "SPRITE_TSURE_POKE_625",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_29B",
+      "flag": "FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU",
       "scr": "_EV_scr_seq_D36R0101_019 + 1",
       "dirn": 1,
       "eye": 0,
@@ -344,14 +358,15 @@
       "yrange": 0,
       "x": 16,
       "y": 52,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_gsoldman1",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_29C",
+      "flag": "FLAG_HIDE_ILEX_FOREST_OLD_MAN",
       "scr": "_EV_scr_seq_D36R0101_020 + 1",
       "dirn": 1,
       "eye": 0,
@@ -361,14 +376,15 @@
       "yrange": 0,
       "x": 11,
       "y": 48,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_310",
+      "flag": "FLAG_HIDE_ILEX_FOREST_FRIEND",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -378,14 +394,15 @@
       "yrange": 0,
       "x": 10,
       "y": 47,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D36R0101_tsure_poke_611",
       "ovid": "SPRITE_TSURE_POKE_611",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_310",
+      "flag": "FLAG_HIDE_ILEX_FOREST_FRIEND",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -395,7 +412,8 @@
       "yrange": 0,
       "x": 10,
       "y": 46,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

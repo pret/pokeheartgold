@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 1335,
       "y": 46,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsgirl1",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 1346,
       "y": 49,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsboy1_2",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 1364,
       "y": 46,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsgirl1_2",
@@ -85,7 +88,8 @@
       "yrange": 0,
       "x": 1372,
       "y": 46,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsgirl1_3",
@@ -102,7 +106,8 @@
       "yrange": 0,
       "x": 1376,
       "y": 49,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_campboy_2",
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 1367,
       "y": 38,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsassistantm",
@@ -136,7 +142,8 @@
       "yrange": 0,
       "x": 1384,
       "y": 43,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsman3",
@@ -153,14 +160,15 @@
       "yrange": 0,
       "x": 1392,
       "y": 45,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsleader11",
       "ovid": "SPRITE_GSLEADER11",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_256",
+      "flag": "FLAG_HIDE_ROUTE_25_MISTY",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -170,14 +178,15 @@
       "yrange": 0,
       "x": 1421,
       "y": 47,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsman1",
       "ovid": "SPRITE_GSMAN1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_309",
+      "flag": "FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -187,7 +196,8 @@
       "yrange": 0,
       "x": 1420,
       "y": 47,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_tree",
@@ -204,7 +214,8 @@
       "yrange": 0,
       "x": 1388,
       "y": 40,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_monstarball",
@@ -221,7 +232,8 @@
       "yrange": 0,
       "x": 1380,
       "y": 36,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_tsure_poke_618",
@@ -238,7 +250,8 @@
       "yrange": 0,
       "x": 1421,
       "y": 37,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_minaki",
@@ -255,14 +268,15 @@
       "yrange": 0,
       "x": 1409,
       "y": 42,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_minaki_2",
       "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2B2",
+      "flag": "FLAG_HIDE_ROUTE_25_EUSINE_2",
       "scr": "_EV_scr_seq_R25_006 + 1",
       "dirn": 0,
       "eye": 0,
@@ -272,7 +286,8 @@
       "yrange": 0,
       "x": 1422,
       "y": 40,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R25_gsleader11_2",
@@ -289,7 +304,8 @@
       "yrange": 0,
       "x": 1422,
       "y": 46,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

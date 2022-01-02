@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 34,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 35,
       "y": 33,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 42,
       "y": 40,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_rock",
@@ -85,7 +88,8 @@
       "yrange": 0,
       "x": 43,
       "y": 52,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_rock_2",
@@ -102,7 +106,8 @@
       "yrange": 0,
       "x": 25,
       "y": 17,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_rock_3",
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 24,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

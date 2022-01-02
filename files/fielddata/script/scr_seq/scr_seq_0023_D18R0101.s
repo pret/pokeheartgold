@@ -90,14 +90,14 @@ _00F8:
 scr_seq_D18R0101_000:
 	scrcmd_609
 	lockall
-	callstd 2042
+	callstd std_play_eusine_music
 	apply_movement obj_D18R0101_minaki, _0158
 	wait_movement
 	buffer_players_name 0
 	npc_msg msg_0060_D18R0101_00002
 	waitbutton
 	closemsg
-	callstd 2043
+	callstd std_fade_end_eusine_music
 	setvar VAR_UNK_40A2, 1
 	releaseall
 	end

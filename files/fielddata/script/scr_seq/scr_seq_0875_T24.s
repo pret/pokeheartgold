@@ -121,7 +121,7 @@ scr_seq_T24_002:
 	addvar VAR_UNK_4076, 1
 	clearflag FLAG_HIDE_CIANWOOD_EUSINE
 	show_person obj_T24_minaki
-	callstd 2042
+	callstd std_play_eusine_music
 	apply_movement obj_T24_minaki, _0358
 	apply_movement obj_player, _036C
 	wait_movement
@@ -140,7 +140,7 @@ scr_seq_T24_002:
 	wait_movement
 	hide_person obj_T24_minaki
 	setflag FLAG_HIDE_CIANWOOD_EUSINE
-	clearflag FLAG_UNK_29E
+	clearflag FLAG_HIDE_ROUTE_42_SUICUNE
 	setvar VAR_UNK_4092, 1
 	releaseall
 	end
@@ -148,7 +148,7 @@ scr_seq_T24_002:
 _0227:
 	hide_person obj_T24_minaki
 	setflag FLAG_HIDE_CIANWOOD_EUSINE
-	clearflag FLAG_UNK_29E
+	clearflag FLAG_HIDE_ROUTE_42_SUICUNE
 	setvar VAR_UNK_4092, 1
 	white_out
 	releaseall

@@ -48,9 +48,9 @@ scr_seq_D24R0101_005:
 	end
 
 _00B3:
-	comparevartovalue VAR_UNK_40FB, 9
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
 	gotoif ge, _00C6
-	setvar VAR_UNK_40FB, 1
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 1
 _00C6:
 	check_badge 2, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -188,13 +188,13 @@ scr_seq_D24R0101_007:
 	scrcmd_609
 	lockall
 	get_lead_mon_index VAR_TEMP_x4005
-	scrcmd_698 2, 16389, 16390
+	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	comparevartovalue VAR_TEMP_x4006, 0
 	gotoif eq, _02DA
 	goto _02EE
 
 _02DA:
-	scrcmd_698 1, 16389, 16391
+	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
 	comparevartovalue VAR_TEMP_x4007, 0
 	gotoif eq, _0530
 _02EE:
@@ -204,7 +204,7 @@ _02EE:
 	scrcmd_307 13, 8, 25, 29, 77
 	scrcmd_310 77
 	scrcmd_308 77
-	clearflag FLAG_UNK_2E6
+	clearflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
 	show_person obj_D24R0101_suit
 	scrcmd_311 77
 	scrcmd_308 77
@@ -270,9 +270,9 @@ _03EA:
 	wait_movement
 	npc_msg msg_0072_D24R0101_00006
 	closemsg
-	setvar VAR_UNK_40FB, 2
-	setflag FLAG_UNK_2E6
-	clearflag FLAG_UNK_2E7
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 2
+	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
+	clearflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 	play_se SEQ_SE_DP_KAIDAN2
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif ne, _0467

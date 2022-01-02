@@ -12,7 +12,7 @@
 	scrdef_end
 
 scr_seq_D51R0101_002:
-	comparevartovalue VAR_UNK_40FB, 5
+	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 5
 	gotoif eq, _0021
 	end
 
@@ -36,7 +36,7 @@ scr_seq_D51R0101_000:
 	apply_movement obj_D51R0101_mount_2, _00A8
 	wait_movement
 	move_person obj_D51R0101_mount_2, 13, 1, 28, 0
-	setvar VAR_UNK_40FB, 5
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 5
 	releaseall
 	end
 	.byte 0x00
@@ -81,7 +81,7 @@ scr_seq_D51R0101_001:
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
-	setvar VAR_UNK_40FB, 6
+	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 6
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00

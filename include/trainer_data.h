@@ -84,26 +84,29 @@ typedef union TrainerMon {
 } TRPOKE;
 
 typedef struct TrainerData {
-    u8 trainerType;
-    u8 trainerClass;
-    u8 unk_2; // unused
-    u8 npoke;
-    u16 items[4];
-    u32 ai_flags;
-    u32 doubleBattle;
-    u16 name[OT_NAME_LENGTH + 1];
+    /*000*/ u8 trainerType;
+    /*001*/ u8 trainerClass;
+    /*002*/ u8 unk_2; // unused
+    /*003*/ u8 npoke;
+    /*004*/ u16 items[4];
+    /*00C*/ u32 ai_flags;
+    /*010*/ u32 doubleBattle;
+    /*014*/ u16 name[OT_NAME_LENGTH + 1];
     // Used in the Frontier
-    MAIL_MESSAGE winMessage;
-    MAIL_MESSAGE loseMessage;
-} TRAINER;
+    /*024*/ MAIL_MESSAGE winMessage;
+    /*02C*/ MAIL_MESSAGE loseMessage;
+} TRAINER; // size=0x34
 
 typedef struct BattleSetupStruct {
-    u32 flags;
-    PARTY *parties[4];
-    u16 field_14[2];
-    u32 trainer_idxs[4];
-    TRAINER trainers[4];
-} BATTLE_SETUP;
+    /*000*/ u32 flags;
+    /*004*/ PARTY *parties[4];
+    /*014*/ u16 field_14[2];
+    /*018*/ u32 trainer_idxs[4];
+    /*028*/ TRAINER trainers[4];
+    /*0F8*/ u8 unk_0F8[0x60];
+    /*158*/ u32 unk_158;
+    /*15C*/ u8 unk_15C[0x78];
+} BATTLE_SETUP; // size=0x1d4
 
 void TrainerData_ReadTrData(u32 trno, TRAINER *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);

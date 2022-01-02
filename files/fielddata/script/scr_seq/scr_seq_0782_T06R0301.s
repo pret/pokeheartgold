@@ -81,7 +81,7 @@ scr_seq_T06R0301_002:
 	gotoif ne, _0141
 	checkflag FLAG_UNK_119
 	gotoif TRUE, _0116
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _010B
 	npc_msg msg_0488_T06R0301_00009
 	waitbutton
@@ -99,10 +99,10 @@ _010B:
 _0116:
 	npc_msg msg_0488_T06R0301_00011
 	hide_person obj_T06R0301_mono_pip
-	setflag FLAG_UNK_2FC
+	setflag FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM
 	giveitem_no_check ITEM_LOST_ITEM, 1
 	setvar VAR_UNK_4130, 1
-	clearflag FLAG_UNK_2FD
+	clearflag FLAG_HIDE_VERMILION_CITY_STEVEN
 	closemsg
 	releaseall
 	end
@@ -137,7 +137,7 @@ scr_seq_T06R0301_004:
 	end
 
 scr_seq_T06R0301_007:
-	checkflag FLAG_UNK_2FC
+	checkflag FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM
 	gotoif TRUE, _0198
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 7,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T05R0701_policeman",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 16,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T05R0701_gsgentleman",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 9,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T05R0701_gsman1",
@@ -85,7 +88,8 @@
       "yrange": 1,
       "x": 2,
       "y": 6,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T05R0701_gsman1_2",
@@ -102,14 +106,15 @@
       "yrange": 0,
       "x": 15,
       "y": 10,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T05R0701_gsgentleman_2",
       "ovid": "SPRITE_GSGENTLEMAN",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_259",
+      "flag": "FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR",
       "scr": "_EV_scr_seq_T05R0701_003 + 1",
       "dirn": 1,
       "eye": 0,
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 9,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

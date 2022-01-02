@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 117,
       "y": 395,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_monstarball_2",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 108,
       "y": 385,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_monstarball_3",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 78,
       "y": 399,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_monstarball_4",
@@ -85,7 +88,8 @@
       "yrange": 0,
       "x": 78,
       "y": 363,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_mount_2",
@@ -102,14 +106,15 @@
       "yrange": 0,
       "x": 86,
       "y": 390,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_leader3",
       "ovid": "SPRITE_LEADER3",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2DF",
+      "flag": "FLAG_HIDE_ROUTE_47_CRASHER_WAKE",
       "scr": "_EV_scr_seq_R47_003 + 1",
       "dirn": 0,
       "eye": 0,
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 99,
       "y": 390,
-      "z": 851968
+      "z": 0,
+      "unk1E": 13
     },
     {
       "id": "obj_R47_gsman3",
@@ -136,7 +142,8 @@
       "yrange": 0,
       "x": 131,
       "y": 384,
-      "z": 851968
+      "z": 0,
+      "unk1E": 13
     },
     {
       "id": "obj_R47_gswoman3",
@@ -153,7 +160,8 @@
       "yrange": 0,
       "x": 131,
       "y": 383,
-      "z": 851968
+      "z": 0,
+      "unk1E": 13
     },
     {
       "id": "obj_R47_campboy_2",
@@ -170,7 +178,8 @@
       "yrange": 0,
       "x": 117,
       "y": 390,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_gsman2",
@@ -187,7 +196,8 @@
       "yrange": 0,
       "x": 100,
       "y": 364,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_gswoman2",
@@ -204,7 +214,8 @@
       "yrange": 0,
       "x": 101,
       "y": 364,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_mount_2_2",
@@ -221,7 +232,8 @@
       "yrange": 0,
       "x": 135,
       "y": 392,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R47_gsleader5",
@@ -238,7 +250,8 @@
       "yrange": 0,
       "x": 80,
       "y": 371,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

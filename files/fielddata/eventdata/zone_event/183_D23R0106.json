@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 8,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D23R0106_gsgentleman",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 25,
       "y": 1,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

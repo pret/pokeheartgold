@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 26,
       "y": 38,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D38R0104_gsfighter",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 41,
       "y": 18,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D38R0104_monstarball",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 11,
       "y": 58,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D38R0104_monstarball_2",
@@ -85,7 +88,8 @@
       "yrange": 0,
       "x": 36,
       "y": 66,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D38R0104_monstarball_3",
@@ -102,7 +106,8 @@
       "yrange": 0,
       "x": 52,
       "y": 64,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D38R0104_monstarball_4",
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 46,
       "y": 45,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D38R0104_monstarball_5",
@@ -136,7 +142,8 @@
       "yrange": 0,
       "x": 40,
       "y": 39,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

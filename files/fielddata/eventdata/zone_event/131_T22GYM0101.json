@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 15,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T22GYM0101_gsman2",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 12,
       "y": 15,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T22GYM0101_gsman2_2",
@@ -68,14 +70,15 @@
       "yrange": 0,
       "x": 18,
       "y": 11,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T22GYM0101_sunglasses",
       "ovid": "SPRITE_SUNGLASSES",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_2E4",
+      "flag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT",
       "scr": "_EV_scr_seq_T22GYM0101_002 + 1",
       "dirn": 1,
       "eye": 0,
@@ -85,14 +88,15 @@
       "yrange": 0,
       "x": 17,
       "y": 26,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T22GYM0101_sunglasses_2",
       "ovid": "SPRITE_SUNGLASSES",
       "mvt": 15,
       "type": 0,
-      "flag": "FLAG_UNK_2E3",
+      "flag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT",
       "scr": "_EV_scr_seq_T22GYM0101_005 + 1",
       "dirn": 1,
       "eye": 0,
@@ -102,7 +106,8 @@
       "yrange": 0,
       "x": 15,
       "y": 20,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

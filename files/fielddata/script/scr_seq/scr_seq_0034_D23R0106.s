@@ -133,8 +133,8 @@ _01E5:
 	releaseall
 	setvar VAR_UNK_4077, 5
 	setflag FLAG_UNK_0C6
-	clearflag FLAG_UNK_2C6
-	setflag FLAG_UNK_2C7
+	clearflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
+	setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
 	comparevartovalue VAR_UNK_40F8, 2
 	gotoif ne, _0241
 	setvar VAR_UNK_40F8, 0

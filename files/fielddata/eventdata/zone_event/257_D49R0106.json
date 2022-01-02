@@ -66,7 +66,8 @@
       "yrange": 0,
       "x": 7,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0106_pcwoman2_2",
@@ -83,7 +84,8 @@
       "yrange": 0,
       "x": 1,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0106_gsbigman",
@@ -100,7 +102,8 @@
       "yrange": 0,
       "x": 11,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0106_tsure_poke_597",
@@ -117,14 +120,15 @@
       "yrange": 0,
       "x": 12,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0106_signpokegear",
       "ovid": "SPRITE_SIGNPOKEGEAR",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2D8",
+      "flag": "FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -134,14 +138,15 @@
       "yrange": 0,
       "x": 3,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0106_signball",
       "ovid": "SPRITE_SIGNBALL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2D9",
+      "flag": "FLAG_HIDE_POKEATHLON_BALL_SIGN",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -151,7 +156,8 @@
       "yrange": 0,
       "x": 10,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

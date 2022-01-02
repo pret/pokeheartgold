@@ -32,17 +32,17 @@ scr_seq_T04GYM0101_007:
 	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 16
 	gotoif ne, _0090
-	setflag FLAG_UNK_253
+	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00AB
 
 _0090:
 	comparevartovalue VAR_TEMP_x4000, 17
 	gotoif ne, _00A7
-	setflag FLAG_UNK_253
+	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00AB
 
 _00A7:
-	clearflag FLAG_UNK_253
+	clearflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 _00AB:
 	end
 
@@ -50,17 +50,17 @@ _00AD:
 	scrcmd_522 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 14
 	gotoif ne, _00C8
-	setflag FLAG_UNK_253
+	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00E3
 
 _00C8:
 	comparevartovalue VAR_TEMP_x4000, 15
 	gotoif ne, _00DF
-	setflag FLAG_UNK_253
+	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00E3
 
 _00DF:
-	clearflag FLAG_UNK_253
+	clearflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 _00E3:
 	end
 
@@ -68,11 +68,11 @@ _00E5:
 	end
 
 _00E7:
-	clearflag FLAG_UNK_253
+	clearflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	end
 
 _00ED:
-	setflag FLAG_UNK_253
+	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	end
 
 scr_seq_T04GYM0101_004:
@@ -118,12 +118,12 @@ _018B:
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_081 SEQ_GS_EYE_ROCKET
 	play_bgm SEQ_GS_GYM
-	setflag FLAG_UNK_254
-	clearflag FLAG_UNK_255
-	clearflag FLAG_UNK_256
-	clearflag FLAG_UNK_309
+	setflag FLAG_HIDE_CERULEAN_GYM_ROCKET
+	clearflag FLAG_HIDE_ROUTE_24_ROCKET
+	clearflag FLAG_HIDE_ROUTE_25_MISTY
+	clearflag FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND
 	setvar VAR_UNK_411C, 2
-	setvar VAR_UNK_4087, 1
+	setvar VAR_SCENE_ROUTE_24_ROCKET, 1
 	setvar VAR_UNK_4088, 1
 	releaseall
 	end
@@ -164,7 +164,7 @@ _0210:
 	step_end
 scr_seq_T04GYM0101_006:
 	scrcmd_814
-	checkflag FLAG_UNK_257
+	checkflag FLAG_HIDE_CERULEAN_GYM_MACHINE_PART
 	gotoif TRUE, _022F
 	scrcmd_375 8
 	scrcmd_375 9
@@ -183,8 +183,8 @@ scr_seq_T04GYM0101_005:
 	callstd std_obtain_item_verbose
 	hide_person obj_T04GYM0101_stop
 	hide_person obj_T04GYM0101_stop_2
-	setflag FLAG_UNK_257
-	setvar VAR_UNK_4087, 4
+	setflag FLAG_HIDE_CERULEAN_GYM_MACHINE_PART
+	setvar VAR_SCENE_ROUTE_24_ROCKET, 4
 	closemsg
 	releaseall
 	end

@@ -56,7 +56,7 @@
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2F8",
+      "flag": "FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED",
       "scr": "_EV_scr_seq_T02_001 + 1",
       "dirn": 0,
       "eye": 0,
@@ -66,7 +66,8 @@
       "yrange": 0,
       "x": 1045,
       "y": 240,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T02_gsoldman1_2",
@@ -83,7 +84,8 @@
       "yrange": 1,
       "x": 1028,
       "y": 235,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T02_gsbigman",
@@ -100,7 +102,8 @@
       "yrange": 0,
       "x": 1008,
       "y": 264,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T02_gsboy1",
@@ -117,7 +120,8 @@
       "yrange": 3,
       "x": 1027,
       "y": 255,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T02_tree",
@@ -134,7 +138,8 @@
       "yrange": 0,
       "x": 1019,
       "y": 235,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T02_tree_2",
@@ -151,7 +156,8 @@
       "yrange": 0,
       "x": 1014,
       "y": 261,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T02_gsmiddleman1",
@@ -168,14 +174,15 @@
       "yrange": 0,
       "x": 1037,
       "y": 260,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T02_gsoldman1_3",
       "ovid": "SPRITE_GSOLDMAN1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2F9",
+      "flag": "FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED",
       "scr": "_EV_scr_seq_T02_010 + 1",
       "dirn": 1,
       "eye": 0,
@@ -185,7 +192,8 @@
       "yrange": 0,
       "x": 1047,
       "y": 240,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

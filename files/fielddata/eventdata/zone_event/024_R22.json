@@ -26,14 +26,15 @@
       "yrange": 0,
       "x": 952,
       "y": 271,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R22_sakaki",
       "ovid": "SPRITE_SAKAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_301",
+      "flag": "FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -43,14 +44,15 @@
       "yrange": 0,
       "x": 940,
       "y": 270,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R22_gsrivel",
       "ovid": "SPRITE_GSRIVEL",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_301",
+      "flag": "FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -60,14 +62,15 @@
       "yrange": 0,
       "x": 944,
       "y": 270,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R22_var_1",
       "ovid": "SPRITE_VAR_1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_302",
+      "flag": "FLAG_HIDE_ROUTE_22_FRIEND",
       "scr": 0,
       "dirn": 1,
       "eye": 0,
@@ -77,7 +80,8 @@
       "yrange": 0,
       "x": 948,
       "y": 275,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 1,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_EVERYWHERE_seaman_2",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 15,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

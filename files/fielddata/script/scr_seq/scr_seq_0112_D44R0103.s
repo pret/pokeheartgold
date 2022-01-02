@@ -128,7 +128,7 @@ _019C:
 	wait 10, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_DOOR
 	wait 5, VAR_SPECIAL_x8004
-	callstd 2044
+	callstd std_play_clair_music
 	apply_movement obj_player, _0390
 	apply_movement obj_D44R0103_gsleader8, _03A8
 	wait_movement
@@ -167,7 +167,7 @@ _019C:
 	apply_movement obj_D44R0103_gsleader8, _0434
 	wait_movement
 	hide_person obj_D44R0103_gsleader8
-	callstd 2045
+	callstd std_fade_end_clair_music
 	wait_fanfare
 	apply_movement obj_D44R0103_chourou, _0450
 	wait_movement

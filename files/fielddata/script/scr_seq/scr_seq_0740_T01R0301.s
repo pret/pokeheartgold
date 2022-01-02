@@ -28,9 +28,9 @@ scr_seq_T01R0301_010:
 	end
 
 _0057:
-	setflag FLAG_UNK_2FE
-	setflag FLAG_UNK_2FF
-	setflag FLAG_UNK_300
+	setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+	setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
+	setflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
 	setvar VAR_UNK_4131, 6
 	end
 
@@ -562,19 +562,19 @@ _0801:
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif ne, _082F
 	hide_person obj_T01R0301_monstarball_3
-	setflag FLAG_UNK_2FE
+	setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
 	goto _0852
 
 _082F:
 	comparevartovalue VAR_SPECIAL_x8004, 7
 	gotoif ne, _084A
 	hide_person obj_T01R0301_monstarball_2
-	setflag FLAG_UNK_2FF
+	setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
 	goto _0852
 
 _084A:
 	hide_person obj_T01R0301_monstarball
-	setflag FLAG_UNK_300
+	setflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
 _0852:
 	buffer_players_name 0
 	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0

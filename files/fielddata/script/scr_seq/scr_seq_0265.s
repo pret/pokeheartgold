@@ -216,7 +216,7 @@ _0290:
 	party_count_not_egg VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _03FB
-	scrcmd_358 32780
+	scrcmd_358 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, _041F
 	npc_msg msg_0439_00022

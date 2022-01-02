@@ -114,7 +114,8 @@
       "yrange": 0,
       "x": 23,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gsleader3",
@@ -131,7 +132,8 @@
       "yrange": 0,
       "x": 23,
       "y": 22,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_pcwoman1_2",
@@ -148,7 +150,8 @@
       "yrange": 0,
       "x": 11,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_pcwoman1_3",
@@ -165,7 +168,8 @@
       "yrange": 0,
       "x": 36,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_pcwoman1_4",
@@ -182,7 +186,8 @@
       "yrange": 0,
       "x": 25,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gsboy1",
@@ -199,7 +204,8 @@
       "yrange": 0,
       "x": 15,
       "y": 22,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gsmiddleman1",
@@ -216,7 +222,8 @@
       "yrange": 1,
       "x": 33,
       "y": 13,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gswoman1",
@@ -233,7 +240,8 @@
       "yrange": 1,
       "x": 15,
       "y": 12,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gsman1",
@@ -250,7 +258,8 @@
       "yrange": 1,
       "x": 32,
       "y": 9,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gsbigman",
@@ -267,14 +276,15 @@
       "yrange": 2,
       "x": 40,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_pcwoman1_5",
       "ovid": "SPRITE_PCWOMAN1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2B3",
+      "flag": "FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST",
       "scr": 9851,
       "dirn": 1,
       "eye": 0,
@@ -284,7 +294,8 @@
       "yrange": 0,
       "x": 21,
       "y": 8,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gsoldman1",
@@ -301,7 +312,8 @@
       "yrange": 0,
       "x": 5,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0101_gsman2",
@@ -318,7 +330,8 @@
       "yrange": 0,
       "x": 41,
       "y": 14,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

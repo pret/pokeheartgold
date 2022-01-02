@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 1,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30R0601_gsbigman",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 3,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30R0601_gsoldman1",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 8,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30R0601_gsoldwoman1",
@@ -67,7 +70,8 @@
       "yrange": 0,
       "x": 5,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T30R0601_babyboy1_2",
@@ -84,7 +88,8 @@
       "yrange": 0,
       "x": 7,
       "y": 5,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

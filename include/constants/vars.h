@@ -147,7 +147,7 @@
 #define VAR_UNK_4084                 0x4084
 #define VAR_UNK_4085                 0x4085
 #define VAR_UNK_4086                 0x4086
-#define VAR_UNK_4087                 0x4087
+#define VAR_SCENE_ROUTE_24_ROCKET                 0x4087
 #define VAR_UNK_4088                 0x4088
 #define VAR_SCENE_ROUTE_25                 0x4089
 #define VAR_UNK_408A                 0x408A
@@ -263,7 +263,7 @@
 #define VAR_UNK_40F8                 0x40F8
 #define VAR_UNK_40F9                 0x40F9
 #define VAR_UNK_40FA                 0x40FA
-#define VAR_UNK_40FB                 0x40FB
+#define VAR_SCENE_SINJOH_MYSTRI_ROOM                 0x40FB
 #define VAR_UNK_40FC                 0x40FC
 #define VAR_UNK_40FD                 0x40FD
 #define VAR_UNK_40FE                 0x40FE

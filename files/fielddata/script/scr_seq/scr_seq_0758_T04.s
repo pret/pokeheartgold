@@ -44,7 +44,7 @@ scr_seq_T04_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _0093
 	npc_msg msg_0467_T04_00000
 	waitbutton
@@ -96,7 +96,7 @@ scr_seq_T04_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4087, 3
+	comparevartovalue VAR_SCENE_ROUTE_24_ROCKET, 3
 	gotoif ge, _012C
 	comparevartovalue VAR_UNK_411C, 2
 	gotoif eq, _0123

@@ -204,7 +204,7 @@ _035B:
 	gotoif eq, _030A
 	touchscreen_menu_show
 	closemsg
-	scrcmd_226 32, 0, 0, 32780
+	scrcmd_226 32, 0, 0, VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _03A1
@@ -227,7 +227,7 @@ _03B3:
 	gotoif eq, _030A
 	touchscreen_menu_show
 	closemsg
-	scrcmd_227 32, 0, 0, 32780
+	scrcmd_227 32, 0, 0, VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _03F9

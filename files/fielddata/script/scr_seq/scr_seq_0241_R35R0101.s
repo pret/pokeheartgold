@@ -13,7 +13,7 @@ scr_seq_R35R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_08A
+	checkflag FLAG_GOT_RADIO_CARD
 	gotoif TRUE, _0028
 	npc_msg msg_0388_R35R0101_00013
 	waitbutton

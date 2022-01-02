@@ -17,7 +17,7 @@
 
 scr_seq_T25R0501_006:
 	scrcmd_582 76, 348, 350
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _0037
 	end
 
@@ -26,7 +26,7 @@ _0037:
 	end
 
 scr_seq_T25R0501_005:
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _004C
 	end
 
@@ -38,7 +38,7 @@ scr_seq_T25R0501_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _0078
 	npc_msg msg_0587_T25R0501_00000
 	waitbutton

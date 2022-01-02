@@ -48,9 +48,9 @@ _0098:
 
 _009E:
 	setvar VAR_UNK_4131, 1
-	clearflag FLAG_UNK_2FE
-	clearflag FLAG_UNK_300
-	clearflag FLAG_UNK_2FF
+	clearflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
+	clearflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
+	clearflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
 	return
 
 _00B2:

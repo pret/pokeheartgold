@@ -89,7 +89,7 @@ scr_seq_D23R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_08A
+	checkflag FLAG_GOT_RADIO_CARD
 	gotoif TRUE, _0243
 	npc_msg msg_0065_D23R0101_00003
 	touchscreen_menu_hide
@@ -135,7 +135,7 @@ scr_seq_D23R0101_002:
 	wait_fanfare
 	closemsg
 	register_pokegear_card 2
-	setflag FLAG_UNK_08A
+	setflag FLAG_GOT_RADIO_CARD
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

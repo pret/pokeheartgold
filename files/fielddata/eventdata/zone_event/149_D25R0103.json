@@ -34,7 +34,8 @@
       "yrange": 0,
       "x": 24,
       "y": 77,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D25R0103_gswoman3",
@@ -51,7 +52,8 @@
       "yrange": 0,
       "x": 6,
       "y": 62,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D25R0103_gswoman3_2",
@@ -68,7 +70,8 @@
       "yrange": 0,
       "x": 4,
       "y": 83,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D25R0103_rapurasu",
@@ -85,7 +88,8 @@
       "yrange": 2,
       "x": 18,
       "y": 88,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D25R0103_monstarball",
@@ -102,7 +106,8 @@
       "yrange": 0,
       "x": 25,
       "y": 43,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D25R0103_monstarball_2",
@@ -119,7 +124,8 @@
       "yrange": 0,
       "x": 17,
       "y": 73,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

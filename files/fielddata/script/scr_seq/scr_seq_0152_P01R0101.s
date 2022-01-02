@@ -58,7 +58,7 @@ scr_seq_P01R0101_002:
 	apply_movement obj_P01R0101_ookido, _0128
 	wait_movement
 	hide_person obj_P01R0101_ookido
-	setflag FLAG_UNK_251
+	setflag FLAG_HIDE_OLIVINE_PORT_OAK
 	setvar VAR_UNK_411A, 0
 	fade_out_bgm 0, 30
 	scrcmd_081 0
@@ -70,7 +70,7 @@ scr_seq_P01R0101_002:
 	end
 
 _00DE:
-	clearflag FLAG_UNK_2B3
+	clearflag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
 	return
 
 

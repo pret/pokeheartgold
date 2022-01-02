@@ -71,7 +71,7 @@
 #define TRAINERCLASS_LEADER_BUGSY                                   67
 #define TRAINERCLASS_POKE_MANIAC                                    68
 #define TRAINERCLASS_BIRD_KEEPER_GS                                 69
-#define TRAINERCLASS_LEADER                                         70
+#define TRAINERCLASS_LEADER_WHITNEY                                 70
 #define TRAINERCLASS_RANCHER                                        71
 #define TRAINERCLASS_LEADER_MORTY                                   72
 #define TRAINERCLASS_LEADER_PRYCE                                   73

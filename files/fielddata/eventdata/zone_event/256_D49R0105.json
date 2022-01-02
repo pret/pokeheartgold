@@ -122,7 +122,8 @@
       "yrange": 0,
       "x": 1,
       "y": 12,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_pcwoman2_2",
@@ -139,7 +140,8 @@
       "yrange": 0,
       "x": 3,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_gsfighter",
@@ -156,7 +158,8 @@
       "yrange": 0,
       "x": 14,
       "y": 9,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_gsman3",
@@ -173,7 +176,8 @@
       "yrange": 0,
       "x": 14,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_gswoman3",
@@ -190,7 +194,8 @@
       "yrange": 0,
       "x": 11,
       "y": 12,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_tsure_poke_591",
@@ -207,7 +212,8 @@
       "yrange": 0,
       "x": 10,
       "y": 12,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_tsure_poke_606",
@@ -224,14 +230,15 @@
       "yrange": 0,
       "x": 15,
       "y": 4,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_signshoes",
       "ovid": "SPRITE_SIGNSHOES",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2D5",
+      "flag": "FLAG_HIDE_POKEATHLON_SHOES_SIGN",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -241,14 +248,15 @@
       "yrange": 0,
       "x": 13,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_signclothes",
       "ovid": "SPRITE_SIGNCLOTHES",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2D6",
+      "flag": "FLAG_HIDE_POKEATHLON_CLOTHES_SIGN",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -258,14 +266,15 @@
       "yrange": 0,
       "x": 9,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_D49R0105_signflag",
       "ovid": "SPRITE_SIGNFLAG",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2D7",
+      "flag": "FLAG_HIDE_POKEATHLON_FLAG_SIGN",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -275,7 +284,8 @@
       "yrange": 0,
       "x": 6,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

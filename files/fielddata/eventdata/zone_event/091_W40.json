@@ -42,7 +42,8 @@
       "yrange": 0,
       "x": 241,
       "y": 283,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W40_gsswimmerw",
@@ -59,7 +60,8 @@
       "yrange": 0,
       "x": 247,
       "y": 292,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W40_gsswimmerm_2",
@@ -76,7 +78,8 @@
       "yrange": 0,
       "x": 239,
       "y": 305,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W40_gsswimmerw_2",
@@ -93,7 +96,8 @@
       "yrange": 0,
       "x": 236,
       "y": 309,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W40_gswoman1",
@@ -110,7 +114,8 @@
       "yrange": 0,
       "x": 238,
       "y": 273,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W40_gsmiddleman1",
@@ -127,7 +132,8 @@
       "yrange": 0,
       "x": 252,
       "y": 271,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_W40_monstarball",
@@ -144,7 +150,8 @@
       "yrange": 0,
       "x": 252,
       "y": 300,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

@@ -40,7 +40,7 @@ scr_seq_R12_004:
 	end
 
 _006D:
-	setflag FLAG_UNK_31B
+	setflag FLAG_HIDE_ROUTE_12_SNORLAX
 	hide_person obj_R12_kabigon
 	hide_person obj_R12_gsbabyboy1
 	hide_person obj_R12_gsbabyboy1_2

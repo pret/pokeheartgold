@@ -100,7 +100,7 @@ scr_seq_D45R0102_001:
 	apply_movement obj_D45R0102_sakaki, _0350
 	wait_movement
 	hide_person obj_D45R0102_sakaki
-	setflag FLAG_UNK_303
+	setflag FLAG_HIDE_TOHJO_FALLS_GIOVANNI
 	apply_movement obj_player, _0380
 	apply_movement obj_D45R0102_var_1, _0380
 	wait_movement
@@ -143,7 +143,7 @@ _0224:
 _022A:
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
-	clearflag FLAG_UNK_310
+	clearflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	scrcmd_176 117, 0, 16, 57, 1
 	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
@@ -162,14 +162,14 @@ _0250:
 	wait_fade
 	wait_movement
 	hide_person obj_D45R0102_sakaki
-	setflag FLAG_UNK_303
+	setflag FLAG_HIDE_TOHJO_FALLS_GIOVANNI
 	npc_msg msg_0131_D45R0102_00019
 	closemsg
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
 	setflag FLAG_UNK_178
 	setvar VAR_UNK_40FE, 0
-	setflag FLAG_UNK_310
+	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	scrcmd_176 117, 0, 16, 57, 1
 	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade

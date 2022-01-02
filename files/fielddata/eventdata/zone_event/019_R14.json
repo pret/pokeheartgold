@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 1361,
       "y": 400,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_middlewoman1_2",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 1350,
       "y": 406,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gsman2",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 1353,
       "y": 432,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gsmiddleman1_2",
@@ -67,7 +70,8 @@
       "yrange": 0,
       "x": 1359,
       "y": 422,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gsman2_2",
@@ -84,7 +88,8 @@
       "yrange": 0,
       "x": 1354,
       "y": 396,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gsboy1",
@@ -101,7 +106,8 @@
       "yrange": 0,
       "x": 1345,
       "y": 406,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gsboy1_2",
@@ -118,7 +124,8 @@
       "yrange": 0,
       "x": 1345,
       "y": 409,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gsboy1_3",
@@ -135,7 +142,8 @@
       "yrange": 0,
       "x": 1345,
       "y": 403,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_tree",
@@ -152,7 +160,8 @@
       "yrange": 0,
       "x": 1345,
       "y": 391,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_tree_2",
@@ -169,7 +178,8 @@
       "yrange": 0,
       "x": 1352,
       "y": 411,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gsmiddleman1_3",
@@ -186,14 +196,15 @@
       "yrange": 0,
       "x": 1357,
       "y": 393,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_tsure_poke_618",
       "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2A0",
+      "flag": "FLAG_HIDE_ROUTE_14_SUICUNE",
       "scr": 0,
       "dirn": 2,
       "eye": 0,
@@ -203,14 +214,15 @@
       "yrange": 0,
       "x": 1365,
       "y": 412,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_minaki",
       "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2A5",
+      "flag": "FLAG_HIDE_ROUTE_14_EUSINE",
       "scr": "_EV_scr_seq_R14_003 + 1",
       "dirn": 0,
       "eye": 0,
@@ -220,14 +232,15 @@
       "yrange": 0,
       "x": 1358,
       "y": 424,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_minaki_2",
       "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 1,
-      "flag": "FLAG_UNK_2AC",
+      "flag": "FLAG_HIDE_ROUTE_14_EUSINE_2",
       "scr": "_EV_scr_seq_R14_004 + 1",
       "dirn": 3,
       "eye": 0,
@@ -237,7 +250,8 @@
       "yrange": 0,
       "x": 1358,
       "y": 411,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_tree_3",
@@ -254,7 +268,8 @@
       "yrange": 0,
       "x": 1353,
       "y": 412,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_tree_4",
@@ -271,7 +286,8 @@
       "yrange": 0,
       "x": 1353,
       "y": 413,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_tree_5",
@@ -288,7 +304,8 @@
       "yrange": 0,
       "x": 1352,
       "y": 414,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_R14_gswoman1",
@@ -305,7 +322,8 @@
       "yrange": 0,
       "x": 1348,
       "y": 387,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "coords": [

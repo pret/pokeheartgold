@@ -16,7 +16,8 @@
       "yrange": 0,
       "x": 5,
       "y": 3,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T04R0201_middlewoman1_2",
@@ -33,7 +34,8 @@
       "yrange": 0,
       "x": 8,
       "y": 6,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T04R0201_tsure_poke_586",
@@ -50,7 +52,8 @@
       "yrange": 0,
       "x": 6,
       "y": 7,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

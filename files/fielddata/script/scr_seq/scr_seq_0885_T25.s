@@ -125,7 +125,7 @@ scr_seq_T25_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_08A
+	checkflag FLAG_GOT_RADIO_CARD
 	gotoif TRUE, _019B
 	npc_msg msg_0581_T25_00006
 	waitbutton

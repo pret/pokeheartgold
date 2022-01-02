@@ -44,7 +44,7 @@ scr_seq_T11R0802_000:
 	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _00E9
-	checkflag FLAG_UNK_118
+	checkflag FLAG_RESTORED_POWER
 	gotoif TRUE, _00BD
 	call _014D
 	buffer_players_name 0

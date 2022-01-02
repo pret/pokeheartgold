@@ -1260,7 +1260,7 @@
     },
     {
       "type": "TRTYPE_MON_ITEM_MOVES",
-      "class": "TRAINERCLASS_LEADER",
+      "class": "TRAINERCLASS_LEADER_WHITNEY",
       "name": "{TRNAME}Whitney",
       "items": [
         "ITEM_SUPER_POTION",
@@ -32306,7 +32306,7 @@
     },
     {
       "type": "TRTYPE_MON_ITEM_MOVES",
-      "class": "TRAINERCLASS_LEADER",
+      "class": "TRAINERCLASS_LEADER_WHITNEY",
       "name": "{TRNAME}Whitney",
       "items": [
         "ITEM_FULL_RESTORE",

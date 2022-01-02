@@ -152,7 +152,7 @@ scr_seq_R22_003:
 	scrcmd_604 48
 	hide_person obj_R22_sakaki
 	hide_person obj_R22_gsrivel
-	setflag FLAG_UNK_301
+	setflag FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL
 	callstd 2032
 	gender_msgbox msg_0360_R22_00022, msg_0360_R22_00021
 	closemsg
@@ -173,8 +173,8 @@ scr_seq_R22_003:
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
 	setvar VAR_UNK_40FE, 2
-	clearflag FLAG_UNK_303
-	clearflag FLAG_UNK_311
+	clearflag FLAG_HIDE_TOHJO_FALLS_GIOVANNI
+	clearflag FLAG_HIDE_TOHJO_FALLS_FRIEND
 	scrcmd_176 298, 0, 6, 8, 1
 	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade

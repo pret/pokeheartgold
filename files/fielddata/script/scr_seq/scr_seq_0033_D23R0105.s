@@ -118,8 +118,8 @@ _0182:
 	apply_movement obj_D23R0105_gsgentleman, _02C8
 _018A:
 	wait_movement
-	setflag FLAG_UNK_2C6
-	clearflag FLAG_UNK_2C7
+	setflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
+	clearflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
 	show_person obj_D23R0105_rkanbum2
 	hide_person obj_D23R0105_gsgentleman
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -155,8 +155,8 @@ _01DA:
 
 _021D:
 	white_out
-	clearflag FLAG_UNK_2C6
-	setflag FLAG_UNK_2C7
+	clearflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
+	setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
 	releaseall
 	end
 

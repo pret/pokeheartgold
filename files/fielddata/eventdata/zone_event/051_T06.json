@@ -90,7 +90,8 @@
       "yrange": 0,
       "x": 1316,
       "y": 296,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_gsmiddleman1",
@@ -107,7 +108,8 @@
       "yrange": 0,
       "x": 1326,
       "y": 309,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_gswoman1",
@@ -124,7 +126,8 @@
       "yrange": 3,
       "x": 1307,
       "y": 306,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_gsman1",
@@ -141,7 +144,8 @@
       "yrange": 1,
       "x": 1301,
       "y": 315,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_tsure_poke_592",
@@ -158,7 +162,8 @@
       "yrange": 2,
       "x": 1318,
       "y": 298,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_breakrock",
@@ -175,7 +180,8 @@
       "yrange": 0,
       "x": 1320,
       "y": 306,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_breakrock_2",
@@ -192,7 +198,8 @@
       "yrange": 0,
       "x": 1325,
       "y": 300,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_breakrock_3",
@@ -209,7 +216,8 @@
       "yrange": 0,
       "x": 1326,
       "y": 301,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_breakrock_4",
@@ -226,7 +234,8 @@
       "yrange": 0,
       "x": 1319,
       "y": 306,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_breakrock_5",
@@ -243,7 +252,8 @@
       "yrange": 0,
       "x": 1324,
       "y": 305,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_breakrock_6",
@@ -260,7 +270,8 @@
       "yrange": 0,
       "x": 1326,
       "y": 297,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_tree",
@@ -277,7 +288,8 @@
       "yrange": 0,
       "x": 1300,
       "y": 319,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_monstarball",
@@ -294,7 +306,8 @@
       "yrange": 0,
       "x": 1321,
       "y": 328,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_monstarball_2",
@@ -311,7 +324,8 @@
       "yrange": 0,
       "x": 1336,
       "y": 327,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_gsmiddleman1_2",
@@ -328,14 +342,15 @@
       "yrange": 0,
       "x": 1323,
       "y": 305,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_tsure_poke_618",
       "ovid": "SPRITE_TSURE_POKE_618",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_29F",
+      "flag": "FLAG_HIDE_VERMILION_SUICUNE",
       "scr": 0,
       "dirn": 2,
       "eye": 0,
@@ -345,14 +360,15 @@
       "yrange": 0,
       "x": 1330,
       "y": 328,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_minaki",
       "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2A4",
+      "flag": "FLAG_HIDE_VERMILION_EUSINE",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -362,14 +378,15 @@
       "yrange": 0,
       "x": 1325,
       "y": 321,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_minaki_2",
       "ovid": "SPRITE_MINAKI",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2B4",
+      "flag": "FLAG_HIDE_VERMILION_EUSINE_2",
       "scr": 0,
       "dirn": 0,
       "eye": 0,
@@ -379,14 +396,15 @@
       "yrange": 0,
       "x": 1318,
       "y": 332,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     },
     {
       "id": "obj_T06_daigo",
       "ovid": "SPRITE_DAIGO",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_2FD",
+      "flag": "FLAG_HIDE_VERMILION_CITY_STEVEN",
       "scr": 0,
       "dirn": 2,
       "eye": 0,
@@ -396,7 +414,8 @@
       "yrange": 1,
       "x": 1298,
       "y": 311,
-      "z": 0
+      "z": 0,
+      "unk1E": 0
     }
   ],
   "warps": [

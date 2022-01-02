@@ -95,8 +95,8 @@ scr_seq_D11R0106_000:
 	give_badge 14
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_265
-	setflag FLAG_UNK_299
-	clearflag FLAG_UNK_29A
+	setflag FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED
+	clearflag FLAG_HIDE_ROUTE_19_WORKMEN_OPEN
 	add_special_game_stat 22
 	setflag FLAG_UNK_13F
 	setflag FLAG_UNK_140
