@@ -5184,8 +5184,8 @@ ScrCmd_684: ; 0x02042948
 	.balign 4, 0
 	thumb_func_end ScrCmd_684
 
-	thumb_func_start sub_02042974
-sub_02042974: ; 0x02042974
+	thumb_func_start ScrNative_WaitApplication_DestroyTaskData
+ScrNative_WaitApplication_DestroyTaskData: ; 0x02042974
 	push {r3, r4, r5, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -5206,7 +5206,7 @@ _02042992:
 	str r0, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02042974
+	thumb_func_end ScrNative_WaitApplication_DestroyTaskData
 
 	thumb_func_start sub_020429A0
 sub_020429A0: ; 0x020429A0
@@ -5751,13 +5751,13 @@ _02042DA0:
 	ldr r0, [r0]
 	ldr r1, [r4]
 	bl sub_0203F204
-	ldr r1, _02042DBC ; =sub_02042974
+	ldr r1, _02042DBC ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02042DBC: .word sub_02042974
+_02042DBC: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_155
 
 	thumb_func_start ScrCmd_255
@@ -5858,13 +5858,13 @@ ScrCmd_157: ; 0x02042E5C
 	mov r1, #1
 	bl Radio_new
 	str r0, [r4]
-	ldr r1, _02042E88 ; =sub_02042974
+	ldr r1, _02042E88 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02042E88: .word sub_02042974
+_02042E88: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_157
 
 	thumb_func_start ScrCmd_408
@@ -5913,13 +5913,13 @@ ScrCmd_408: ; 0x02042E8C
 	ldr r0, [r0]
 	ldr r1, [r6]
 	bl sub_0203F0A8
-	ldr r1, _02042F00 ; =sub_02042974
+	ldr r1, _02042F00 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02042F00: .word sub_02042974
+_02042F00: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_408
 
 	thumb_func_start ScrCmd_158
@@ -6018,13 +6018,13 @@ ScrCmd_162: ; 0x02042F98
 	ldr r0, [r0]
 	bl sub_0203F4F8
 	str r0, [r4]
-	ldr r1, _02042FC0 ; =sub_02042974
+	ldr r1, _02042FC0 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02042FC0: .word sub_02042974
+_02042FC0: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_162
 
 	thumb_func_start ScrCmd_HOF_Credits
@@ -6055,13 +6055,13 @@ ScrCmd_164: ; 0x02042FDC
 	ldr r0, [r0]
 	bl sub_0203F984
 	str r0, [r4]
-	ldr r1, _02043004 ; =sub_02042974
+	ldr r1, _02043004 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02043004: .word sub_02042974
+_02043004: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_164
 
 	thumb_func_start ScrCmd_706
@@ -6278,13 +6278,13 @@ _02043196:
 	add r1, r4, #0
 	bl sub_0203E460
 	str r0, [r6]
-	ldr r1, _020431B0 ; =sub_02042974
+	ldr r1, _020431B0 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_020431B0: .word sub_02042974
+_020431B0: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_370
 
 	thumb_func_start ScrCmd_172
@@ -9810,13 +9810,13 @@ ScrCmd_376: ; 0x02044CCC
 	mov r1, #0xb
 	bl sub_0203F074
 	str r0, [r4]
-	ldr r1, _02044CF8 ; =sub_02042974
+	ldr r1, _02044CF8 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02044CF8: .word sub_02042974
+_02044CF8: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_376
 
 	thumb_func_start ScrCmd_377
@@ -10197,13 +10197,13 @@ ScrCmd_425: ; 0x02044FE4
 	mov r1, #0x20
 	bl sub_0203FA8C
 	str r0, [r4]
-	ldr r1, _02045024 ; =sub_02042974
+	ldr r1, _02045024 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02045024: .word sub_02042974
+_02045024: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_425
 
 	thumb_func_start ScrCmd_427
@@ -12843,14 +12843,14 @@ _0204647E:
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x74]
 	bl sub_02050624
-	ldr r1, _020464DC ; =sub_02042974
+	ldr r1, _020464DC ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020464D8: .word _02108584
-_020464DC: .word sub_02042974
+_020464DC: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_627
 
 	thumb_func_start ScrCmd_631
@@ -12897,13 +12897,13 @@ ScrCmd_631: ; 0x020464E0
 	lsr r2, r2, #0x18
 	bl sub_0203FAB4
 	str r0, [r4]
-	ldr r1, _02046550 ; =sub_02042974
+	ldr r1, _02046550 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02046550: .word sub_02042974
+_02046550: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_631
 
 	thumb_func_start ScrCmd_ScratchOffCard
@@ -14396,15 +14396,15 @@ ScrCmd_RunPhoneCall: ; 0x020470F4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203EA84
+	bl PhoneUI_new
 	str r0, [r4]
-	ldr r1, _0204711C ; =sub_02042974
+	ldr r1, _0204711C ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0204711C: .word sub_02042974
+_0204711C: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_RunPhoneCall
 
 	thumb_func_start ScrCmd_LoadPhoneDat
@@ -14856,13 +14856,13 @@ _0204747E:
 	bl sub_0203EEA0
 	str r0, [r4]
 _0204748A:
-	ldr r1, _02047498 ; =sub_02042974
+	ldr r1, _02047498 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02047498: .word sub_02042974
+_02047498: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_712
 
 	thumb_func_start ScrCmd_713
@@ -14887,13 +14887,13 @@ _020474BA:
 	ldr r0, [r0]
 	bl sub_0203EC04
 	str r0, [r4]
-	ldr r1, _020474D4 ; =sub_02042974
+	ldr r1, _020474D4 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_020474D4: .word sub_02042974
+_020474D4: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_713
 
 	thumb_func_start ScrCmd_722

@@ -185,7 +185,7 @@
 #define FLAG_ENGAGING_STATIC_POKEMON                                0xA4
 #define FLAG_UNK_0A5                                                0xA5
 #define FLAG_UNK_0A6                                                0xA6
-#define FLAG_UNK_0A7                                                0xA7
+#define FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL                                                0xA7
 #define FLAG_UNK_0A8                                                0xA8
 #define FLAG_UNK_0A9                                                0xA9
 #define FLAG_UNK_0AA                                                0xAA

@@ -4817,6 +4817,13 @@
 	gotoif eq, \target
 	.endm
 
+	.macro phone_call who, b, c
+	setvar VAR_SPECIAL_x8004, \who
+	setvar VAR_SPECIAL_x8005, \b
+	setvar VAR_SPECIAL_x8006, \c
+	callstd std_phone_call
+	.endm
+
 	; Movement commands
 
 	.macro step type, length

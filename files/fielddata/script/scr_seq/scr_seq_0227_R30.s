@@ -185,8 +185,8 @@ scr_seq_R30_004:
 	setvar VAR_SPECIAL_x8005, 2
 	setvar VAR_SPECIAL_x8006, 0
 	callstd std_phone_call
-	setvar VAR_UNK_4095, 0
-	setflag FLAG_UNK_0A7
+	setvar VAR_SCENE_ROUTE_30_PHONE_CALL, 0
+	setflag FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL
 	releaseall
 	end
 

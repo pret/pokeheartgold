@@ -7653,9 +7653,9 @@
 .public ov100_021E6374
 .public ov100_021E63F4
 .public ov100_021E6408
-.public ov100_021E642C
-.public ov100_021E6520
-.public ov100_021E65BC
+.public ov100_Phone_OvyInit
+.public ov100_Phone_OvyExec
+.public ov100_Phone_OvyExit
 .public ov100_021E65F4
 .public ov100_021E665C
 .public ov100_021E669C
@@ -28239,7 +28239,7 @@
 .public sub_0203E868
 .public sub_0203E960
 .public sub_0203EA24
-.public sub_0203EA84
+.public PhoneUI_new
 .public sub_0203EB08
 .public sub_0203EB64
 .public sub_0203EBA4
@@ -28305,7 +28305,7 @@
 .public AllocAndFetchNearbyHiddenItems
 .public TryStartMapScriptByType
 .public sub_020407AC
-.public sub_02042974
+.public ScrNative_WaitApplication_DestroyTaskData
 .public ScrNative_WaitApplication
 .public sub_0204A5B0
 .public sub_0204A68C

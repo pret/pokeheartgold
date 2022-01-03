@@ -161,7 +161,7 @@
 #define VAR_UNK_4092                 0x4092
 #define VAR_UNK_4093                 0x4093
 #define VAR_NUM_MET_WEEKDAY_SIBLINGS                 0x4094
-#define VAR_UNK_4095                 0x4095
+#define VAR_SCENE_ROUTE_30_PHONE_CALL                 0x4095
 #define VAR_UNK_4096                 0x4096
 #define VAR_UNK_4097                 0x4097
 #define VAR_UNK_4098                 0x4098

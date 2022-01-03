@@ -92,7 +92,7 @@ _020FA3D4:
 _020FA3E4:
 	.word ov101_Radio_OvyInit, ov101_Radio_OvyExec, ov101_Radio_OvyExit, SDK_OVERLAY_OVY_101_ID
 _020FA3F4:
-	.word ov100_021E642C, ov100_021E6520, ov100_021E65BC, SDK_OVERLAY_OVY_100_ID
+	.word ov100_Phone_OvyInit, ov100_Phone_OvyExec, ov100_Phone_OvyExit, SDK_OVERLAY_OVY_100_ID
 _020FA404:
 	.word ov102_021E7740, ov102_021E77B8, ov102_021E7868, SDK_OVERLAY_OVY_102_ID
 _020FA414:
@@ -1040,8 +1040,8 @@ _0203EA2C: .word ScrUnk80_AddOvyMan
 _0203EA30: .word _020FA404
 	thumb_func_end sub_0203EA24
 
-	thumb_func_start sub_0203EA34
-sub_0203EA34: ; 0x0203EA34
+	thumb_func_start SwitchToPokegearApp_Phone
+SwitchToPokegearApp_Phone: ; 0x0203EA34
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r5, _0203EA58 ; =_020FA3F4
@@ -1060,7 +1060,7 @@ sub_0203EA34: ; 0x0203EA34
 	pop {r4, r5, r6, pc}
 	nop
 _0203EA58: .word _020FA3F4
-	thumb_func_end sub_0203EA34
+	thumb_func_end SwitchToPokegearApp_Phone
 
 	thumb_func_start SwitchToPokegearApp_Radio
 SwitchToPokegearApp_Radio: ; 0x0203EA5C
@@ -1084,8 +1084,8 @@ SwitchToPokegearApp_Radio: ; 0x0203EA5C
 _0203EA80: .word _020FA3E4
 	thumb_func_end SwitchToPokegearApp_Radio
 
-	thumb_func_start sub_0203EA84
-sub_0203EA84: ; 0x0203EA84
+	thumb_func_start PhoneUI_new
+PhoneUI_new: ; 0x0203EA84
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1100,11 +1100,11 @@ sub_0203EA84: ; 0x0203EA84
 	bl sub_02092D80
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0203EA34
+	bl SwitchToPokegearApp_Phone
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203EA84
+	thumb_func_end PhoneUI_new
 
 	thumb_func_start Radio_new
 Radio_new: ; 0x0203EAB0

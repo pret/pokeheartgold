@@ -1431,8 +1431,8 @@ _021E6428:
 	pop {r4, pc}
 	thumb_func_end ov100_021E6408
 
-	thumb_func_start ov100_021E642C
-ov100_021E642C: ; 0x021E642C
+	thumb_func_start ov100_Phone_OvyInit
+ov100_Phone_OvyInit: ; 0x021E642C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetField18
@@ -1544,10 +1544,10 @@ _021E64FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E651C: .word 0x0000FFFF
-	thumb_func_end ov100_021E642C
+	thumb_func_end ov100_Phone_OvyInit
 
-	thumb_func_start ov100_021E6520
-ov100_021E6520: ; 0x021E6520
+	thumb_func_start ov100_Phone_OvyExec
+ov100_Phone_OvyExec: ; 0x021E6520
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -1628,10 +1628,10 @@ _021E65B4:
 _021E65B8:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov100_021E6520
+	thumb_func_end ov100_Phone_OvyExec
 
-	thumb_func_start ov100_021E65BC
-ov100_021E65BC: ; 0x021E65BC
+	thumb_func_start ov100_Phone_OvyExit
+ov100_Phone_OvyExit: ; 0x021E65BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -1653,7 +1653,7 @@ ov100_021E65BC: ; 0x021E65BC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov100_021E65BC
+	thumb_func_end ov100_Phone_OvyExit
 
 	thumb_func_start ov100_021E65F4
 ov100_021E65F4: ; 0x021E65F4

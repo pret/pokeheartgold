@@ -3183,7 +3183,7 @@ sub_0203D524: ; 0x0203D524
 	bl sub_02050650
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0203EA84
+	bl PhoneUI_new
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]

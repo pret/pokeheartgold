@@ -170,7 +170,7 @@ _0205:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0A7
+	checkflag FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL
 	gotoif TRUE, _0275
 	check_badge 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
@@ -182,8 +182,8 @@ _0234:
 	buffer_players_name 0
 	npc_msg msg_0545_T20R0201_00016
 _023A:
-	setflag FLAG_UNK_0A7
-	setvar VAR_UNK_4095, 0
+	setflag FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL
+	setvar VAR_SCENE_ROUTE_30_PHONE_CALL, 0
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show

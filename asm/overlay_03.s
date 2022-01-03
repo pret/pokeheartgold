@@ -9499,13 +9499,13 @@ ScrCmd_716: ; 0x0225894C
 	ldr r0, [r0]
 	bl sub_0203EB08
 	str r0, [r4]
-	ldr r1, _02258974 ; =sub_02042974
+	ldr r1, _02258974 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02258974: .word sub_02042974
+_02258974: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_716
 
 	thumb_func_start ScrCmd_717
