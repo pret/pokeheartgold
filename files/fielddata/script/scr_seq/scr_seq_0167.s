@@ -691,7 +691,7 @@ _0AB1:
 	scrcmd_358 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif lt, _07E6
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0AE1

@@ -12,6 +12,7 @@
 #define std_signpost                    2000
 #define std_hidden_item_fanfare         2001
 #define std_nurse_joy                   2002
+#define std_prompt_save                 2006
 #define std_obtain_item_verbose         2008
 #define std_bag_is_full                 2009
 #define std_mart_intro                  2011
@@ -24,6 +25,7 @@
 #define std_play_follow_music           2037
 #define std_fade_end_mom_music          2038
 #define std_phone_call                  2039
+#define std_bag_is_full_griseous_orb    2041
 #define std_play_eusine_music           2042
 #define std_fade_end_eusine_music       2043
 #define std_play_clair_music            2044
@@ -569,6 +571,8 @@
 #define _std_init                       9600
 #define std_init                        9600
 
+#define _std_pokeathlon                 9850
+
 #define _std_dex_evaluation             9950
 #define std_via_pc_evaluate_dex         9950
 #define std_in_person_evaluate_dex      9951
@@ -594,11 +598,28 @@
 #define std_menu_whirlpool             10017
 #define std_menu_headbutt              10018
 
+#define _std_tv                        10100
+#define std_tv                         10100
+
 #define _std_mystery_gift              10200
 #define std_hide_show_deliverymen      10200
 #define std_mystery_gift_deliveryman   10201
 #define std_moms_gift_deliveryman      10202
 #define std_hide_show_deliverymen_2    10203
+
+#define _std_trainer_house             10350
+#define std_trainer_house_reset        10350
+#define std_trainer_house_cal_10       10351
+#define std_trainer_house_cal_0        10352
+#define std_trainer_house_cal_1        10353
+#define std_trainer_house_cal_2        10354
+#define std_trainer_house_cal_3        10355
+#define std_trainer_house_cal_4        10356
+#define std_trainer_house_cal_5        10357
+#define std_trainer_house_cal_6        10358
+#define std_trainer_house_cal_7        10359
+#define std_trainer_house_cal_8        10360
+#define std_trainer_house_cal_9        10361
 
 #define _std_scratch_card              10490
 #define std_scratch_card               10490

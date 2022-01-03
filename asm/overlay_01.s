@@ -58994,8 +58994,8 @@ _022012EC:
 _02201300: .word ov01_022093C2
 	thumb_func_end ScrCmd_657
 
-	thumb_func_start ScrCmd_689
-ScrCmd_689: ; 0x02201304
+	thumb_func_start ScrCmd_CommSanitizeParty
+ScrCmd_CommSanitizeParty: ; 0x02201304
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	mov r1, #0
@@ -59136,10 +59136,10 @@ _02201418:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02201420: .word 0x000001DF
-	thumb_func_end ScrCmd_689
+	thumb_func_end ScrCmd_CommSanitizeParty
 
-	thumb_func_start ScrCmd_659
-ScrCmd_659: ; 0x02201424
+	thumb_func_start ScrCmd_SetMonForme
+ScrCmd_SetMonForme: ; 0x02201424
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -59171,7 +59171,7 @@ ScrCmd_659: ; 0x02201424
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ScrCmd_659
+	thumb_func_end ScrCmd_SetMonForme
 
 	thumb_func_start ScrCmd_674
 ScrCmd_674: ; 0x02201470

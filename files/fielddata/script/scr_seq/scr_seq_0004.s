@@ -139,12 +139,12 @@ _021C:
 	goto _027A
 
 _0222:
-	scrcmd_307 0, 0, VAR_TEMP_x4000, 16385, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, VAR_TEMP_x4001, 77
 	call _0BC2
 	apply_movement obj_player, _0288
 	wait_movement
 	call _0BCA
-	scrcmd_307 0, 0, VAR_TEMP_x4000, 16386, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, VAR_TEMP_x4002, 77
 	call _0BC2
 	apply_movement obj_player, _02A0
 	wait_movement
@@ -334,7 +334,7 @@ _051B:
 	goto _02DD
 	.byte 0x02, 0x00
 _058E:
-	scrcmd_800 16384
+	scrcmd_800 VAR_TEMP_x4000
 	goto _0682
 	.byte 0x02, 0x00
 _059A:
@@ -369,14 +369,14 @@ _0653:
 
 _065F:
 	setvar VAR_SPECIAL_x8004, 38
-	scrcmd_800 16384
-	scrcmd_803 16384, 16386
+	scrcmd_800 VAR_TEMP_x4000
+	scrcmd_803 VAR_TEMP_x4000, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif eq, _0440
 	goto _0905
 
 _0682:
-	scrcmd_799 16384
+	scrcmd_799 VAR_TEMP_x4000
 	npc_msg msg_0046_00121
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 130, 255, 0
@@ -397,7 +397,7 @@ _06FA:
 	goto _0763
 	.byte 0x02, 0x00
 _0702:
-	scrcmd_803 16384, 16386
+	scrcmd_803 VAR_TEMP_x4000, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, _0905
 	comparevartovalue VAR_TEMP_x4002, 1
@@ -419,7 +419,7 @@ _0744:
 	.byte 0x00
 _0751:
 	closemsg
-	scrcmd_801 16384
+	scrcmd_801 VAR_TEMP_x4000
 	scrcmd_049
 	scrcmd_802
 	goto _0682
@@ -434,63 +434,63 @@ _0778:
 	buffer_players_name 0
 	npc_msg msg_0046_00025
 	setvar VAR_TEMP_x4005, 0
-	scrcmd_707 150, 16388
+	scrcmd_707 150, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _07AA
 	buffer_species_name 0, SPECIES_MEWTWO, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _07AA:
-	scrcmd_707 249, 16388
+	scrcmd_707 249, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _07CE
 	buffer_species_name 0, SPECIES_LUGIA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _07CE:
-	scrcmd_707 250, 16388
+	scrcmd_707 250, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _07F2
 	buffer_species_name 0, SPECIES_HO_OH, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _07F2:
-	scrcmd_707 382, 16388
+	scrcmd_707 382, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _0816
 	buffer_species_name 0, SPECIES_KYOGRE, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _0816:
-	scrcmd_707 383, 16388
+	scrcmd_707 383, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _083A
 	buffer_species_name 0, SPECIES_GROUDON, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _083A:
-	scrcmd_707 384, 16388
+	scrcmd_707 384, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _085E
 	buffer_species_name 0, SPECIES_RAYQUAZA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _085E:
-	scrcmd_707 483, 16388
+	scrcmd_707 483, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _0882
 	buffer_species_name 0, SPECIES_DIALGA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _0882:
-	scrcmd_707 484, 16388
+	scrcmd_707 484, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _08A6
 	buffer_species_name 0, SPECIES_PALKIA, 0, 0
 	npc_msg msg_0046_00026
 	setvar VAR_TEMP_x4005, 1
 _08A6:
-	scrcmd_707 487, 16388
+	scrcmd_707 487, VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 1
 	gotoif ne, _08CA
 	buffer_species_name 0, SPECIES_GIRATINA, 0, 0
@@ -510,11 +510,11 @@ _08E3:
 	.byte 0x29, 0x00, 0x05, 0x80, 0x00
 	.byte 0x00, 0x16, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x02, 0x00
 _08F9:
-	scrcmd_800 16384
+	scrcmd_800 VAR_TEMP_x4000
 	goto _0905
 	.byte 0x02, 0x00
 _0905:
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0924
@@ -559,7 +559,7 @@ _09C8:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0926
 	closemsg
-	scrcmd_226 32772, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
+	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0A17
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -597,7 +597,7 @@ _0A41:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0926
 	closemsg
-	scrcmd_227 32772, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
+	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0A90
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -659,14 +659,14 @@ _0B13:
 	goto _0B35
 
 _0B35:
-	scrcmd_307 0, 0, VAR_TEMP_x4000, 16386, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, VAR_TEMP_x4002, 77
 	call _0BC2
 	apply_movement obj_player, _0BF4
 	wait_movement
 	call _0BCA
 	apply_movement obj_player, _0BFC
 	wait_movement
-	scrcmd_307 0, 0, VAR_TEMP_x4000, 16385, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, VAR_TEMP_x4001, 77
 	call _0BC2
 	apply_movement obj_player, _0C04
 	wait_movement
@@ -675,14 +675,14 @@ _0B35:
 	gotoif eq, _0BA8
 	scrcmd_451 VAR_SPECIAL_x800C
 	addvar VAR_SPECIAL_x800C, 7
-	scrcmd_448 4, 0, 32780, 11, 0
+	scrcmd_448 4, 0, VAR_SPECIAL_x800C, 11, 0
 	releaseall
 	end
 
 _0BA8:
 	scrcmd_451 VAR_SPECIAL_x800C
 	addvar VAR_SPECIAL_x800C, 6
-	scrcmd_448 5, 0, 32780, 11, 0
+	scrcmd_448 5, 0, VAR_SPECIAL_x800C, 11, 0
 	releaseall
 	end
 
@@ -789,12 +789,12 @@ _0D14:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _034C
-	scrcmd_689 32780
+	comm_sanitize_party VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, _0E34
 	setvar VAR_UNK_4133, 2
 	setflag FLAG_UNK_966
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0D70
@@ -830,14 +830,14 @@ _0DC8:
 	goto _0DE2
 	.byte 0x02, 0x00
 _0DE2:
-	scrcmd_307 0, 0, VAR_TEMP_x4000, 16386, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, VAR_TEMP_x4002, 77
 	call _0BC2
 	apply_movement obj_player, _0BF4
 	wait_movement
 	call _0BCA
 	apply_movement obj_player, _0BFC
 	wait_movement
-	scrcmd_307 0, 0, VAR_TEMP_x4000, 16385, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4000, VAR_TEMP_x4001, 77
 	call _0BC2
 	apply_movement obj_player, _0C04
 	wait_movement
@@ -847,7 +847,7 @@ _0DE2:
 	end
 
 _0E34:
-	callstd 2041
+	callstd std_bag_is_full_griseous_orb
 	end
 
 _0E3A:

@@ -129,7 +129,7 @@ _01D6:
 	callif eq, _0399
 	setvar VAR_TEMP_x4000, 0
 	heal_party
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0126

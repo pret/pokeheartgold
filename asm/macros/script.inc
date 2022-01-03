@@ -3721,7 +3721,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_659 arg0, arg1
+	.macro set_mon_forme arg0, arg1
 	.short 659
 	.short \arg0
 	.short \arg1
@@ -3895,9 +3895,12 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_689 arg0
+	; Attempt to remove all Griseous Orbs and reset Pokemon
+	; to formes present in Diamond and Pearl, to avoid
+	; problems communicating with those games.
+	.macro comm_sanitize_party var_result
 	.short 689
-	.short \arg0
+	.short \var_result
 	.endm
 
 	.macro scrcmd_690 arg0, arg1

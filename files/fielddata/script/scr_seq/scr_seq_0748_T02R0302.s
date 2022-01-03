@@ -59,7 +59,7 @@ _0091:
 	gotoif eq, _00ED
 	scrcmd_783 1
 	setvar VAR_UNK_412E, 5
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _00ED

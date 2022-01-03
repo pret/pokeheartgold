@@ -24,7 +24,7 @@ scr_seq_0952_000:
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 653
 _0042:
-	scrcmd_807 16384, 16386
+	scrcmd_807 VAR_TEMP_x4000, VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _005F
 	setflagvar VAR_TEMP_x4001
@@ -100,11 +100,11 @@ _0118:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0186
 	scrcmd_784 4, 0
-	scrcmd_809 16384
+	scrcmd_809 VAR_TEMP_x4000
 	scrcmd_049
 	closemsg
 	scrcmd_784 4, 1
-	scrcmd_808 16384
+	scrcmd_808 VAR_TEMP_x4000
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	callif eq, _0191

@@ -708,7 +708,7 @@ gScriptCmdTable:
 	.word ScrCmd_656                                    ; 656
 	.word ScrCmd_657                                    ; 657
 	.word ScrCmd_BufferStatName                                    ; 658
-	.word ScrCmd_659                                    ; 659
+	.word ScrCmd_SetMonForme                                    ; 659
 	.word ScrCmd_BufferTrainerName                                    ; 660
 	.word ScrCmd_661                                    ; 661
 	.word ScrCmd_662                                    ; 662
@@ -738,7 +738,7 @@ gScriptCmdTable:
 	.word ScrCmd_686                                    ; 686
 	.word ScrCmd_687                                    ; 687
 	.word ScrCmd_688                                    ; 688
-	.word ScrCmd_689                                    ; 689
+	.word ScrCmd_CommSanitizeParty                                    ; 689
 	.word ScrCmd_690                                    ; 690
 	.word ScrCmd_691                                    ; 691
 	.word ScrCmd_692                                    ; 692

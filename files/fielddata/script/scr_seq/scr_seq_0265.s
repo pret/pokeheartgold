@@ -283,7 +283,7 @@ _03A1:
 	call _038B
 	touchscreen_menu_show
 	scrcmd_114
-	callstd 2041
+	callstd std_bag_is_full_griseous_orb
 	end
 
 _03B1:

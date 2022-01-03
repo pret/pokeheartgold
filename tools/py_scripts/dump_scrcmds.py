@@ -8,6 +8,7 @@ import warnings
 import enum
 import abc
 import re
+from progressbar import progressbar
 from xml.etree import ElementTree
 import csv
 
@@ -669,7 +670,7 @@ def parse_map(events, scripts, header, gmm):
 
 def main():
     with open(os.path.join(os.path.dirname(__file__), 'event_mapping.csv')) as fp:
-        for row in csv.reader(fp):
+        for row in progressbar(csv.reader(fp)):
             parse_map(*row)
 
 

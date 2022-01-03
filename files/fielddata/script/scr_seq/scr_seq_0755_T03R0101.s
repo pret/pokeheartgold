@@ -41,7 +41,7 @@ scr_seq_T03R0101_014:
 	hasitem ITEM_ENIGMA_STONE, 1, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _00F4
-	scrcmd_546 0, 16384
+	scrcmd_546 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _00F4
 	scrcmd_490 VAR_TEMP_x4007
@@ -530,7 +530,7 @@ scr_seq_T03R0101_016:
 	hasitem ITEM_ENIGMA_STONE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0963
-	scrcmd_546 0, 32780
+	scrcmd_546 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0963
 	apply_movement obj_T03R0101_daigo, _0968

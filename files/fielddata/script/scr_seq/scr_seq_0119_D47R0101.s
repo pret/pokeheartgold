@@ -66,7 +66,7 @@ _00E2:
 _00EE:
 	apply_movement obj_player, _01DC
 	wait_movement
-	scrcmd_307 0, 0, VAR_TEMP_x4002, 16387, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
 	call _08AF
 	apply_movement obj_player, _01BC
 	apply_movement obj_D47R0101_counterm_3, _01F4
@@ -98,7 +98,7 @@ _0172:
 	setvar VAR_TEMP_x4002, 19
 	setvar VAR_TEMP_x4003, 5
 _017E:
-	scrcmd_307 0, 0, VAR_TEMP_x4002, 16387, 77
+	scrcmd_307 0, 0, VAR_TEMP_x4002, VAR_TEMP_x4003, 77
 	call _08AF
 	apply_movement obj_player, _01BC
 	wait_movement
@@ -728,7 +728,7 @@ _0A29:
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0BFC
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0A5D
@@ -754,7 +754,7 @@ _0AAC:
 	gotoif eq, _0A5D
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_226 32772, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
+	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0B05
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -794,7 +794,7 @@ _0B2F:
 	gotoif eq, _0A5D
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_227 32772, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
+	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0B88
 	comparevartovalue VAR_SPECIAL_x800C, 3

@@ -377,7 +377,7 @@ scr_seq_T03_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_546 0, 16384
+	scrcmd_546 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _0649
 	get_game_version VAR_SPECIAL_x800C
@@ -403,7 +403,7 @@ _04D7:
 	gotoif eq, _057B
 	comparevartovalue VAR_TEMP_x4000, 3
 	gotoif eq, _057B
-	scrcmd_588 32780
+	scrcmd_588 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0526
 	comparevartovalue VAR_SPECIAL_x800C, 0

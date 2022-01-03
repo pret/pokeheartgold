@@ -1,3 +1,9 @@
+#include "constants/easy_chat.h"
+#include "msgdata/msg/msg_0285.h"
+#include "msgdata/msg/msg_0287.h"
+#include "msgdata/msg/msg_0292.h"
+#include "msgdata/msg/msg_0296.h"
+#include "msgdata/msg/msg_0726.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -87,7 +93,7 @@ _0225996C:
 	cmp r6, #0
 	beq _022599C4
 	add r0, r6, #0
-	mov r1, #3
+	mov r1, #msg_0726_00003 ; Cal
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	add r0, r6, #0
@@ -582,12 +588,15 @@ _02259D7A:
 _02259D84:
 	.byte 0x00, 0x03, 0x04, 0xFF, 0x0D, 0x00, 0x00, 0x00
 
+; VICTORY! Thank you!
 ov25_02259D8C: ; 0x02259D8C
-	.byte 0x01, 0x07, 0x04, 0xFF
-	.byte 0x0E, 0x00, 0x00, 0x00
+	.byte 0x01, msg_0296_00007, EC_GROUP_PEOPLE, 0xFF
+	.short msg_0285_victory, 0x0000
 
+; You win... THANKS!
 ov25_02259D94: ; 0x02259D94
-	.byte 0x02, 0x00, 0x06, 0xFF, 0x0A, 0x00, 0x00, 0x00
+	.byte 0x02, msg_0292_00000, EC_GROUP_LIFESTYLE, 0xFF
+	.short msg_0287_thanks, 0x0000
 
 ov25_02259D9C: ; 0x02259D9C
 	.byte 0x00, 0x00, 0x00, 0x00

@@ -1416,18 +1416,18 @@
     {
       "name": "scrcmd_226",
       "args": [
-        2,
         "var",
-        2,
+        "var",
+        "var",
         "var"
       ]
     },
     {
       "name": "scrcmd_227",
       "args": [
-        2,
         "var",
-        2,
+        "var",
+        "var",
         "var"
       ]
     },
@@ -1880,7 +1880,7 @@
         2,
         2,
         "var",
-        2,
+        "var",
         1
       ]
     },
@@ -2785,7 +2785,7 @@
       "args": [
         2,
         2,
-        2,
+        "var",
         2,
         2
       ]
@@ -4153,7 +4153,7 @@
       ]
     },
     {
-      "name": "scrcmd_659",
+      "name": "set_mon_forme",
       "args": [
         2,
         2
@@ -4354,9 +4354,9 @@
       ]
     },
     {
-      "name": "scrcmd_689",
+      "name": "comm_sanitize_party",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4470,7 +4470,7 @@
       "name": "scrcmd_707",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -5003,19 +5003,19 @@
     {
       "name": "scrcmd_799",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_800",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_801",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -5025,8 +5025,8 @@
     {
       "name": "scrcmd_803",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -5046,20 +5046,20 @@
     {
       "name": "scrcmd_807",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_808",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_809",
       "args": [
-        2
+        "var"
       ]
     },
     {

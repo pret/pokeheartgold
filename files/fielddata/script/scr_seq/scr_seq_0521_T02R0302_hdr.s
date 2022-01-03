@@ -4,7 +4,7 @@
 	.option alignment off
 
 	.byte 2
-	.short 10350, 0
+	.short std_trainer_house_reset, 0
 	.byte 1
 	.word scr_seq_T02R0302_map_scripts_2-.-4
 	.byte 0

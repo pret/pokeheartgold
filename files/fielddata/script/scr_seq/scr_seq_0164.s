@@ -211,18 +211,18 @@ _0326:
 	end
 
 _0331:
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0356
 	goto _0326
 	.byte 0x02, 0x00
 _0350:
-	callstd 2041
+	callstd std_bag_is_full_griseous_orb
 	end
 
 _0356:
-	scrcmd_689 32780
+	comm_sanitize_party VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, _0350
 	npc_msg msg_0267_00010
@@ -410,7 +410,7 @@ _05CC:
 	goto _056B
 	.byte 0x02, 0x00
 _05D7:
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _05B9

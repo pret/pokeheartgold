@@ -299,7 +299,7 @@ _04F6:
 	goto _06CD
 	.byte 0x02, 0x00
 _053A:
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	return
 
@@ -1295,7 +1295,7 @@ _14C8:
 	touchscreen_menu_show
 	call _088C
 	call _0890
-	callstd 2041
+	callstd std_bag_is_full_griseous_orb
 	end
 
 scr_seq_D31R0201_023:

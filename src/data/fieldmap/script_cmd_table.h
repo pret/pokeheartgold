@@ -659,7 +659,7 @@ extern BOOL ScrCmd_655(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_656(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_657(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferStatName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_659(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetMonForme(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTrainerName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_661(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_662(SCRIPTCONTEXT *ctx);
@@ -689,7 +689,7 @@ extern BOOL ScrCmd_685(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_686(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_687(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_688(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_689(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_690(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_691(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_692(SCRIPTCONTEXT *ctx);
@@ -1514,7 +1514,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_656,
     ScrCmd_657,
     ScrCmd_BufferStatName,
-    ScrCmd_659,
+    ScrCmd_SetMonForme,
     ScrCmd_BufferTrainerName,
     ScrCmd_661,
     ScrCmd_662,
@@ -1544,7 +1544,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_686,
     ScrCmd_687,
     ScrCmd_688,
-    ScrCmd_689,
+    ScrCmd_CommSanitizeParty,
     ScrCmd_690,
     ScrCmd_691,
     ScrCmd_692,

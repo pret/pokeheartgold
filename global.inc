@@ -2339,7 +2339,7 @@
 .public ScrCmd_656
 .public ScrCmd_657
 .public ScrCmd_BufferStatName
-.public ScrCmd_659
+.public ScrCmd_SetMonForme
 .public ScrCmd_BufferTrainerName
 .public ScrCmd_661
 .public ScrCmd_662
@@ -2369,7 +2369,7 @@
 .public ScrCmd_686
 .public ScrCmd_687
 .public ScrCmd_688
-.public ScrCmd_689
+.public ScrCmd_CommSanitizeParty
 .public ScrCmd_690
 .public ScrCmd_691
 .public ScrCmd_692

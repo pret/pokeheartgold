@@ -171,7 +171,7 @@ _02AE:
 	callif eq, _046A
 	setvar VAR_TEMP_x4000, 0
 	heal_party
-	callstd 2006
+	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0126
@@ -374,7 +374,7 @@ _05E7:
 _05FB:
 	touchscreen_menu_show
 	setvar VAR_UNK_4147, 0
-	callstd 2041
+	callstd std_bag_is_full_griseous_orb
 	end
 	.byte 0x00, 0x00, 0x00
 
