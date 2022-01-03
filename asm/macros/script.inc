@@ -3015,7 +3015,7 @@
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_531 arg0, arg1
+	.macro buffer_background_name arg0, arg1
 	.short 531
 	.byte \arg0
 	.short \arg1
@@ -3313,7 +3313,7 @@
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_584 arg0
+	.macro party_legal_check arg0
 	.short 584
 	.short \arg0
 	.endm
@@ -3502,7 +3502,7 @@
 	.short \arg1
 	.endm
 
-	.macro check_apricorn_tree arg0
+	.macro anim_apricorn_tree arg0
 	.short 623
 	.short \arg0
 	.endm

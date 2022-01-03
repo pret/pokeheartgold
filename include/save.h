@@ -41,7 +41,7 @@
 #define SAVE_UNK_35              35
 #define SAVE_PHOTO_ALBUM         36
 #define SAVE_UNK_37              37
-#define SAVE_UNK_38              38
+#define SAVE_APRICORN_BOX        38
 #define SAVE_POKEWALKER          39
 #define SAVE_UNK_40              40
 #define SAVE_PCSTORAGE           41

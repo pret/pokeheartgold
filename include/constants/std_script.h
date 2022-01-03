@@ -13,23 +13,30 @@
 #define std_hidden_item_fanfare         2001
 #define std_nurse_joy                   2002
 #define std_prompt_save                 2006
+#define std_receive_accessory           2007
 #define std_obtain_item_verbose         2008
 #define std_bag_is_full                 2009
 #define std_mart_intro                  2011
+#define std_global_terminal_globe       2015
+#define std_set_battle_phrase           2023
 #define std_wifi_club_closed            2025
+#define std_receive_background          2026
 #define std_play_friend_music           2029
 #define std_fade_end_friend_music       2030
 #define std_play_rival_intro_music      2031
+#define std_fade_end_rival_intro_music  2032
 #define std_give_item_verbose           2033
 #define std_play_mom_music              2036
 #define std_play_follow_music           2037
 #define std_fade_end_mom_music          2038
 #define std_phone_call                  2039
+#define std_frontier_gold_prints_check  2040
 #define std_bag_is_full_griseous_orb    2041
 #define std_play_eusine_music           2042
 #define std_fade_end_eusine_music       2043
 #define std_play_clair_music            2044
 #define std_fade_end_clair_music        2045
+#define std_enter_global_terminal       2046
 #define std_pokemart                    2048
 #define std_special_mart                2052
 #define std_play_pichu_music            2065
@@ -43,6 +50,7 @@
 #define _std_bookshelves                2500
 
 #define _std_apricorn_tree              2800
+#define std_apricorn_tree               2800
 
 #define _std_npc_trainer                3000
 #define std_trainer(trainer) ((trainer)-FIRST_TRAINER_INDEX+_std_npc_trainer)
@@ -555,6 +563,7 @@
 #define _std_comm_reception             9000
 #define std_wireless_colosseum          9001
 #define std_union_room                  9003
+#define std_party_illegal               9016
 #define std_trainer_card_explain        9017
 
 #define _std_colosseum                  9100
@@ -620,6 +629,8 @@
 #define std_trainer_house_cal_7        10359
 #define std_trainer_house_cal_8        10360
 #define std_trainer_house_cal_9        10361
+
+#define _std_bug_contest               10400
 
 #define _std_scratch_card              10490
 #define std_scratch_card               10490

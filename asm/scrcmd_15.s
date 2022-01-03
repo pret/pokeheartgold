@@ -2249,8 +2249,8 @@ ScrCmd_GiveRibbon: ; 0x0204E2D8
 	.balign 4, 0
 	thumb_func_end ScrCmd_GiveRibbon
 
-	thumb_func_start ScrCmd_584
-ScrCmd_584: ; 0x0204E338
+	thumb_func_start ScrCmd_PartyLegalCheck
+ScrCmd_PartyLegalCheck: ; 0x0204E338
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -2321,7 +2321,7 @@ _0204E3B4:
 	strh r0, [r1]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_584
+	thumb_func_end ScrCmd_PartyLegalCheck
 
 	thumb_func_start ScrCmd_688
 ScrCmd_688: ; 0x0204E3CC

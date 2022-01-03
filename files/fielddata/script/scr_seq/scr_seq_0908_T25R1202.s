@@ -161,7 +161,7 @@ _016E:
 	gotoif eq, _0168
 	closemsg
 	scrcmd_815 0
-	callstd 2046
+	callstd std_enter_global_terminal
 	releaseall
 	end
 
@@ -203,7 +203,7 @@ _0209:
 	gotoif eq, _0203
 	closemsg
 	scrcmd_815 0
-	callstd 2046
+	callstd std_enter_global_terminal
 	releaseall
 	end
 

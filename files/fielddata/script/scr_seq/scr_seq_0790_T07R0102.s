@@ -93,15 +93,15 @@ _011E:
 	npc_msg msg_0495_T07R0102_00005
 	setvar VAR_SPECIAL_x8004, 92
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2007
+	callstd std_receive_accessory
 	npc_msg msg_0495_T07R0102_00006
 	setvar VAR_SPECIAL_x8004, 93
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2007
+	callstd std_receive_accessory
 	npc_msg msg_0495_T07R0102_00007
 	setvar VAR_SPECIAL_x8004, 94
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2007
+	callstd std_receive_accessory
 	npc_msg msg_0495_T07R0102_00008
 	closemsg
 	comparevartovalue VAR_TEMP_x4000, 3

@@ -368,7 +368,7 @@ _04B2:
 	closemsg
 	move_person obj_D44R0102_wataru, 28, 0, 34, 1
 	move_person obj_D44R0102_gsleader8_2, 28, 0, 33, 1
-	callstd 2032
+	callstd std_fade_end_rival_intro_music
 	apply_movement obj_D44R0102_gsrivel_2, _0674
 	apply_movement obj_player, _06A8
 	apply_movement obj_D44R0102_wataru, _06E4

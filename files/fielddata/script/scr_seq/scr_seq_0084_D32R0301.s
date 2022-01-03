@@ -425,19 +425,19 @@ scr_seq_D32R0301_002:
 	lockall
 	faceplayer
 	npc_msg msg_0107_D32R0301_00012
-	scrcmd_628 16707, 16708
-	comparevartovalue VAR_UNK_404E, 1
+	scrcmd_628 VAR_UNK_4143, VAR_UNK_4144
+	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 1
 	callif eq, _062E
-	comparevartovalue VAR_UNK_404E, 3
+	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 3
 	callif eq, _0636
 	goto _0126
 	.byte 0x02, 0x00
 _062E:
-	setvar VAR_UNK_404E, 0
+	setvar VAR_BATTLE_FACTORY_PRINT_PROGRESS, 0
 	return
 
 _0636:
-	setvar VAR_UNK_404E, 2
+	setvar VAR_BATTLE_FACTORY_PRINT_PROGRESS, 2
 	return
 
 scr_seq_D32R0301_003:
@@ -445,9 +445,9 @@ scr_seq_D32R0301_003:
 	callif eq, _067A
 	comparevartovalue VAR_UNK_4143, 1
 	callif eq, _067A
-	comparevartovalue VAR_UNK_404E, 1
+	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 1
 	callif eq, _0680
-	comparevartovalue VAR_UNK_404E, 3
+	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 3
 	callif eq, _0697
 	goto _0126
 	.byte 0x02, 0x00
@@ -461,7 +461,7 @@ _0680:
 	npc_msg msg_0107_D32R0301_00015
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_404E, 2
+	setvar VAR_BATTLE_FACTORY_PRINT_PROGRESS, 2
 	return
 
 _0697:
@@ -470,8 +470,8 @@ _0697:
 	npc_msg msg_0107_D32R0301_00014
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_404E, 4
-	callstd 2040
+	setvar VAR_BATTLE_FACTORY_PRINT_PROGRESS, 4
+	callstd std_frontier_gold_prints_check
 	return
 
 scr_seq_D32R0301_004:

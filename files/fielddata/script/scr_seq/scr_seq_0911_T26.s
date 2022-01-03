@@ -166,7 +166,7 @@ _029C:
 	setvar VAR_UNK_4078, 1
 	hide_person obj_T26_gsrivel
 	setflag FLAG_HIDE_OLIVINE_RIVAL
-	callstd 2032
+	callstd std_fade_end_rival_intro_music
 	releaseall
 	end
 

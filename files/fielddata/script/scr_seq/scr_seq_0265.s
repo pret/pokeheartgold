@@ -230,8 +230,8 @@ _02CB:
 	scrcmd_552 32768, 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _02F4
-	scrcmd_352 0, 32768, 0
-	scrcmd_353 0, 32780
+	scrcmd_352 0, VAR_SPECIAL_x8000, 0
+	scrcmd_353 0, VAR_SPECIAL_x800C
 	goto _02CB
 
 _02F4:

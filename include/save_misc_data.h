@@ -3,8 +3,15 @@
 
 #include "save.h"
 
+typedef struct APRICORN_TREE {
+    u8 unk_0;
+    u8 unk_1;
+    u16 unk_2;
+} APRICORN_TREE;
+
 typedef struct SAVE_MISC_DATA {
-    u8 filler_0000[0x270];
+    APRICORN_TREE apricorn_trees[0x80];
+    u8 filler_0200[0x70];
     u16 rivalName[OT_NAME_LENGTH + 1];
     u8 filler_0280[0x60];
 } SAVE_MISC_DATA;

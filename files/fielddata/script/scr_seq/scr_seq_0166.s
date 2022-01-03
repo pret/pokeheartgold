@@ -451,7 +451,7 @@ _081D:
 _0837:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _084F
-	scrcmd_353 0, 32780
+	scrcmd_353 0, VAR_SPECIAL_x800C
 	goto _0837
 
 _084F:

@@ -154,7 +154,7 @@ _01F5:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32780
+	scrcmd_351 VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -271,7 +271,7 @@ _0375:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32780
+	scrcmd_351 VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -898,7 +898,7 @@ _0CCC:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 16386
+	scrcmd_351 VAR_TEMP_x4002
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -1439,7 +1439,7 @@ _1480:
 	gotoif eq, _155B
 	npc_msg msg_0117_D37R0102_00061
 	setvar VAR_SPECIAL_x8005, 1
-	callstd 2007
+	callstd std_receive_accessory
 _14EB:
 	scrcmd_832 32780
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -1449,7 +1449,7 @@ _14EB:
 	gotoif eq, _1530
 	scrcmd_833 32772
 	npc_msg msg_0117_D37R0102_00062
-	callstd 2026
+	callstd std_receive_background
 	goto _1530
 	.byte 0x02
 	.byte 0x00

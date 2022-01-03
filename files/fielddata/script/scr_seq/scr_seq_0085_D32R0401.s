@@ -30,7 +30,7 @@
 	scrdef_end
 
 scr_seq_D32R0401_021:
-	scrcmd_693 16384
+	scrcmd_693 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 11
 	callif ge, _0090
 	comparevartovalue VAR_TEMP_x4000, 101
@@ -72,7 +72,7 @@ _00DF:
 
 _00EC:
 	setflag FLAG_UNK_AA1
-	scrcmd_694 16392
+	scrcmd_694 VAR_TEMP_x4008
 	comparevartovalue VAR_TEMP_x4008, 10000
 	gotoif ge, _011D
 	comparevartovalue VAR_TEMP_x4008, 1000
@@ -218,7 +218,7 @@ _02FD:
 
 _030E:
 	setvar VAR_UNK_4146, 0
-	scrcmd_633 0, 1, 32780
+	scrcmd_633 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0377
 	goto _03A1
@@ -226,14 +226,14 @@ _030E:
 	.byte 0x00
 _0331:
 	setvar VAR_UNK_4146, 1
-	scrcmd_633 0, 2, 32780
+	scrcmd_633 0, 2, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _038C
 	goto _03A1
 	.byte 0x02, 0x00
 _0354:
 	setvar VAR_UNK_4146, 2
-	scrcmd_633 0, 1, 32780
+	scrcmd_633 0, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0377
 	goto _03A1
@@ -256,8 +256,8 @@ _03A1:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_633 4, 16710, 32780
-	scrcmd_635 16386, 16389
+	scrcmd_633 4, VAR_UNK_4146, VAR_SPECIAL_x800C
+	scrcmd_635 VAR_TEMP_x4002, VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif ne, _03D1
 	scrcmd_815 0
@@ -288,10 +288,10 @@ _042F:
 	goto _02F5
 
 _044A:
-	scrcmd_633 1, 16710, 32780
+	scrcmd_633 1, VAR_UNK_4146, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _04D8
-	scrcmd_633 2, 16710, 32780
+	scrcmd_633 2, VAR_UNK_4146, VAR_SPECIAL_x800C
 	buffer_species_name 0, VAR_SPECIAL_x800C, 0, 0
 	comparevartovar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	gotoif eq, _04D8
@@ -311,7 +311,7 @@ _0484:
 	goto _02F5
 	.byte 0x02, 0x00
 _04C8:
-	scrcmd_633 3, 16710, 32780
+	scrcmd_633 3, VAR_UNK_4146, VAR_SPECIAL_x800C
 	goto _04D8
 	.byte 0x02, 0x00
 _04D8:
@@ -393,7 +393,7 @@ _0625:
 _062F:
 	scrcmd_258
 	scrcmd_257 108
-	scrcmd_634 16385, 32780
+	scrcmd_634 VAR_TEMP_x4001, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0674
 	scrcmd_258
@@ -611,19 +611,19 @@ _08D9:
 
 scr_seq_D32R0401_002:
 	npc_msg msg_0108_D32R0401_00012
-	scrcmd_636 16710
-	comparevartovalue VAR_UNK_404F, 1
+	scrcmd_636 VAR_UNK_4146
+	comparevartovalue VAR_BATTLE_HALL_PRINT_PROGRESS, 1
 	callif eq, _0914
-	comparevartovalue VAR_UNK_404F, 3
+	comparevartovalue VAR_BATTLE_HALL_PRINT_PROGRESS, 3
 	callif eq, _091C
 	goto _02F5
 	.byte 0x02, 0x00
 _0914:
-	setvar VAR_UNK_404F, 0
+	setvar VAR_BATTLE_HALL_PRINT_PROGRESS, 0
 	return
 
 _091C:
-	setvar VAR_UNK_404F, 2
+	setvar VAR_BATTLE_HALL_PRINT_PROGRESS, 2
 	return
 
 scr_seq_D32R0401_003:
@@ -631,9 +631,9 @@ scr_seq_D32R0401_003:
 	callif eq, _0960
 	comparevartovalue VAR_UNK_4146, 1
 	callif eq, _0960
-	comparevartovalue VAR_UNK_404F, 1
+	comparevartovalue VAR_BATTLE_HALL_PRINT_PROGRESS, 1
 	callif eq, _0966
-	comparevartovalue VAR_UNK_404F, 3
+	comparevartovalue VAR_BATTLE_HALL_PRINT_PROGRESS, 3
 	callif eq, _097D
 	goto _02F5
 	.byte 0x02, 0x00
@@ -647,7 +647,7 @@ _0966:
 	npc_msg msg_0108_D32R0401_00015
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_404F, 2
+	setvar VAR_BATTLE_HALL_PRINT_PROGRESS, 2
 	return
 
 _097D:
@@ -656,8 +656,8 @@ _097D:
 	npc_msg msg_0108_D32R0401_00014
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_404F, 4
-	callstd 2040
+	setvar VAR_BATTLE_HALL_PRINT_PROGRESS, 4
+	callstd std_frontier_gold_prints_check
 	return
 
 scr_seq_D32R0401_004:
@@ -817,7 +817,7 @@ scr_seq_D32R0401_017:
 	.byte 0x02, 0x00
 _0B37:
 	buffer_players_name 0
-	scrcmd_693 32773
+	scrcmd_693 VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 475
 	gotoif ge, _0BBE
 	comparevartovalue VAR_SPECIAL_x8005, 351
@@ -893,7 +893,7 @@ scr_seq_D32R0401_018:
 	.byte 0x02, 0x00
 _0C4A:
 	buffer_players_name 0
-	scrcmd_693 32773
+	scrcmd_693 VAR_SPECIAL_x8005
 	comparevartovalue VAR_SPECIAL_x8005, 475
 	gotoif ge, _0CD1
 	comparevartovalue VAR_SPECIAL_x8005, 351

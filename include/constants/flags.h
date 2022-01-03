@@ -271,7 +271,7 @@
 #define FLAG_UNK_0FA                                                0xFA
 #define FLAG_UNK_0FB                                                0xFB
 #define FLAG_UNK_0FC                                                0xFC
-#define FLAG_UNK_0FD                                                0xFD
+#define FLAG_GOT_ALL_FOUR_FRONTIER_PRINTS                                                0xFD
 #define FLAG_UNK_0FE                                                0xFE
 #define FLAG_GOT_SCRATCH_CARD_INFO                                  0xFF
 #define FLAG_UNK_100                                               0x100

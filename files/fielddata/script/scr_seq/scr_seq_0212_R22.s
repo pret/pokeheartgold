@@ -153,7 +153,7 @@ scr_seq_R22_003:
 	hide_person obj_R22_sakaki
 	hide_person obj_R22_gsrivel
 	setflag FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL
-	callstd 2032
+	callstd std_fade_end_rival_intro_music
 	gender_msgbox msg_0360_R22_00022, msg_0360_R22_00021
 	closemsg
 	fade_out_bgm 20, 30

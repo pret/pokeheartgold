@@ -123,7 +123,7 @@ scr_seq_0164_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 VAR_SPECIAL_x800C
+	party_legal_check VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _04EC
 	get_player_state VAR_SPECIAL_x800C
@@ -341,7 +341,7 @@ _04E0:
 	step 69, 1
 	step_end
 _04EC:
-	callstd 9016
+	callstd std_party_illegal
 	waitbutton
 	closemsg
 	releaseall

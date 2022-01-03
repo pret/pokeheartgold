@@ -90,7 +90,7 @@ _013A:
 
 _014B:
 	setvar VAR_UNK_4149, 0
-	scrcmd_643 0, 3, 32780
+	scrcmd_643 0, 3, VAR_SPECIAL_x800C
 	buffer_int 0, 3
 	buffer_int 1, 3
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -99,7 +99,7 @@ _014B:
 	.byte 0x02, 0x00
 _0178:
 	setvar VAR_UNK_4149, 1
-	scrcmd_643 0, 3, 32780
+	scrcmd_643 0, 3, VAR_SPECIAL_x800C
 	buffer_int 0, 3
 	buffer_int 1, 3
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -108,7 +108,7 @@ _0178:
 	.byte 0x02, 0x00
 _01A5:
 	setvar VAR_UNK_4149, 2
-	scrcmd_643 0, 2, 32780
+	scrcmd_643 0, 2, VAR_SPECIAL_x800C
 	buffer_int 0, 2
 	buffer_int 1, 2
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -132,8 +132,8 @@ _01FC:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_643 4, 16713, 32780
-	scrcmd_645 16386, 16389, 16390
+	scrcmd_643 4, VAR_UNK_4149, VAR_SPECIAL_x800C
+	scrcmd_645 VAR_TEMP_x4002, VAR_TEMP_x4005, VAR_TEMP_x4006
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif ne, _022E
 	scrcmd_815 0
@@ -248,7 +248,7 @@ _040B:
 	scrcmd_257 154
 	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x8000
 	get_partymon_species VAR_TEMP_x4005, VAR_SPECIAL_x8001
-	scrcmd_644 32768, 32769, 32780
+	scrcmd_644 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
 	switch VAR_SPECIAL_x800C
 	case 1, _047E
 	case 2, _0494
@@ -482,19 +482,19 @@ _0711:
 
 scr_seq_D32R0601_002:
 	npc_msg msg_0110_D32R0601_00034
-	scrcmd_646 16713
-	comparevartovalue VAR_UNK_4051, 1
+	scrcmd_646 VAR_UNK_4149
+	comparevartovalue VAR_BATTLE_ARCADE_PRINT_PROGRESS, 1
 	callif eq, _074C
-	comparevartovalue VAR_UNK_4051, 3
+	comparevartovalue VAR_BATTLE_ARCADE_PRINT_PROGRESS, 3
 	callif eq, _0754
 	goto _0132
 	.byte 0x02, 0x00
 _074C:
-	setvar VAR_UNK_4051, 0
+	setvar VAR_BATTLE_ARCADE_PRINT_PROGRESS, 0
 	return
 
 _0754:
-	setvar VAR_UNK_4051, 2
+	setvar VAR_BATTLE_ARCADE_PRINT_PROGRESS, 2
 	return
 
 scr_seq_D32R0601_003:
@@ -502,9 +502,9 @@ scr_seq_D32R0601_003:
 	callif eq, _0798
 	comparevartovalue VAR_UNK_4149, 1
 	callif eq, _0798
-	comparevartovalue VAR_UNK_4051, 1
+	comparevartovalue VAR_BATTLE_ARCADE_PRINT_PROGRESS, 1
 	callif eq, _079E
-	comparevartovalue VAR_UNK_4051, 3
+	comparevartovalue VAR_BATTLE_ARCADE_PRINT_PROGRESS, 3
 	callif eq, _07B5
 	goto _0132
 	.byte 0x02, 0x00
@@ -518,7 +518,7 @@ _079E:
 	npc_msg msg_0110_D32R0601_00037
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_4051, 2
+	setvar VAR_BATTLE_ARCADE_PRINT_PROGRESS, 2
 	return
 
 _07B5:
@@ -527,8 +527,8 @@ _07B5:
 	npc_msg msg_0110_D32R0601_00036
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_4051, 4
-	callstd 2040
+	setvar VAR_BATTLE_ARCADE_PRINT_PROGRESS, 4
+	callstd std_frontier_gold_prints_check
 	return
 
 scr_seq_D32R0601_004:

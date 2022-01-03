@@ -249,7 +249,7 @@
       "mvt": 8,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2023,
+      "scr": "std_set_battle_phrase",
       "dirn": 2,
       "eye": 0,
       "unk10": 0,

@@ -219,7 +219,7 @@ _021E5A94:
 	lsr r1, r1, #0x18
 	bl PlayerProfile_SetAvatar
 	add r0, r6, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	bl sub_0202AE0C
 	add r0, r6, #0
 	bl Sav2_Pokewalker_get

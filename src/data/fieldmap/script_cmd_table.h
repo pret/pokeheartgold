@@ -531,7 +531,7 @@ extern BOOL ScrCmd_527(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_528(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartySelectMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_530(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_531(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferBackgroundName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_532(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_534(SCRIPTCONTEXT *ctx);
@@ -584,7 +584,7 @@ extern BOOL ScrCmd_BufferSealName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_581(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_582(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_583(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_584(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartyLegalCheck(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_585(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_586(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_587(SCRIPTCONTEXT *ctx);
@@ -623,7 +623,7 @@ extern BOOL ScrCmd_619(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_620(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_621(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_622(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_CheckApricornTree(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveApricornFromTree(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferApricornName(SCRIPTCONTEXT *ctx);
@@ -1386,7 +1386,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_528,
     ScrCmd_PartySelectMon,
     ScrCmd_530,
-    ScrCmd_531,
+    ScrCmd_BufferBackgroundName,
     ScrCmd_532,
     ScrCmd_CheckGiveCoins,
     ScrCmd_534,
@@ -1439,7 +1439,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_581,
     ScrCmd_582,
     ScrCmd_583,
-    ScrCmd_584,
+    ScrCmd_PartyLegalCheck,
     ScrCmd_585,
     ScrCmd_586,
     ScrCmd_587,
@@ -1478,7 +1478,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_620,
     ScrCmd_621,
     ScrCmd_622,
-    ScrCmd_CheckApricornTree,
+    ScrCmd_AnimApricornTree,
     ScrCmd_ApricornTreeGetApricorn,
     ScrCmd_GiveApricornFromTree,
     ScrCmd_BufferApricornName,

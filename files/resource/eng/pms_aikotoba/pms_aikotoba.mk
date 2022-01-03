@@ -1,7 +1,9 @@
-PMS_AIKOTOBA_S    := files/resource/eng/pms_aikotoba/pms_aikotoba.s
-PMS_AIKOTOBA_NARC := $(PMS_AIKOTOBA_S:%.s=%.narc)
+PMS_AIKOTOBA_STEM := files/resource/eng/pms_aikotoba/pms_aikotoba
+PMS_AIKOTOBA_S    := $(PMS_AIKOTOBA_STEM).s
+PMS_AIKOTOBA_O    := $(PMS_AIKOTOBA_STEM).o
+PMS_AIKOTOBA_NARC := $(PMS_AIKOTOBA_STEM).narc
 
-FS_CLEAN_TARGETS += $(PMS_AIKOTOBA_NARC) $(PMS_AIKOTOBA_S:%.s=%.o) $(PMS_AIKOTOBA_S:%.s=%)
+FS_CLEAN_TARGETS += $(PMS_AIKOTOBA_NARC) $(PMS_AIKOTOBA_O)
 
 
 ifeq ($(NODEP),)
@@ -15,6 +17,7 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s %.d
 	@$(call fixdep,$*.d)
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
 	@$(KNARC) -p $@ -d $*
+	@$(RM) -r $*
 
 $(PMS_AIKOTOBA_DEP):
 
@@ -29,4 +32,5 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s
 	@$(call fixdep,$*.d)
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
 	@$(KNARC) -p $@ -d $*
+	@$(RM) -r $*
 endif

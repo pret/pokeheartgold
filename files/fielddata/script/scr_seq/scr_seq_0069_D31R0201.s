@@ -370,20 +370,20 @@ scr_seq_D31R0201_005:
 	lockall
 	npc_msg msg_0096_D31R0201_00019
 	scrcmd_412 14, 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_UNK_404D, 1
+	comparevartovalue VAR_BATTLE_TOWER_PRINT_PROGRESS, 1
 	callif eq, _068A
-	comparevartovalue VAR_UNK_404D, 3
+	comparevartovalue VAR_BATTLE_TOWER_PRINT_PROGRESS, 3
 	callif eq, _0692
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	gotoif eq, _069A
 	goto _0855
 	.byte 0x02, 0x00
 _068A:
-	setvar VAR_UNK_404D, 0
+	setvar VAR_BATTLE_TOWER_PRINT_PROGRESS, 0
 	return
 
 _0692:
-	setvar VAR_UNK_404D, 2
+	setvar VAR_BATTLE_TOWER_PRINT_PROGRESS, 2
 	return
 
 _069A:
@@ -1039,9 +1039,9 @@ _11B8:
 	.byte 0x02
 	.byte 0x00
 _11F1:
-	comparevartovalue VAR_UNK_404D, 1
+	comparevartovalue VAR_BATTLE_TOWER_PRINT_PROGRESS, 1
 	callif eq, _1231
-	comparevartovalue VAR_UNK_404D, 3
+	comparevartovalue VAR_BATTLE_TOWER_PRINT_PROGRESS, 3
 	callif eq, _1248
 	scrcmd_412 48, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
@@ -1058,7 +1058,7 @@ _1231:
 	npc_msg msg_0096_D31R0201_00087
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_404D, 2
+	setvar VAR_BATTLE_TOWER_PRINT_PROGRESS, 2
 	return
 
 _1248:
@@ -1067,8 +1067,8 @@ _1248:
 	npc_msg msg_0096_D31R0201_00086
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setvar VAR_UNK_404D, 4
-	callstd 2040
+	setvar VAR_BATTLE_TOWER_PRINT_PROGRESS, 4
+	callstd std_frontier_gold_prints_check
 	return
 
 _1263:
@@ -1314,7 +1314,7 @@ _1506:
 	wait_fade
 	closemsg
 	scrcmd_349
-	scrcmd_351 32780
+	scrcmd_351 VAR_SPECIAL_x800C
 	scrcmd_150
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00

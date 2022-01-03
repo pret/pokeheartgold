@@ -1,17 +1,46 @@
+#include "constants/apricorns.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.rodata
 
 _020F6784:
-	.byte 0x07, 0x05, 0x02, 0x04, 0x03, 0x04, 0x04, 0x05, 0x07, 0x05, 0x07, 0x04
-	.byte 0x03, 0x01, 0x03, 0x07, 0x06, 0x04, 0x05, 0x04, 0x02, 0x07, 0x01, 0x04, 0x04, 0x02, 0x03, 0x06
-	.byte 0x01, 0x02, 0x06, 0x00
+	.byte APRICORN_BLK ; Route 1
+	.byte APRICORN_PNK ; Route 2 North
+	.byte APRICORN_YLW ; Route 8
+	.byte APRICORN_GRN ; Route 11
+	.byte APRICORN_BLU ; Route 26
+	.byte APRICORN_GRN ; Route 29
+	.byte APRICORN_GRN ; Route 30
+	.byte APRICORN_PNK ; Route 30
+	.byte APRICORN_BLK ; Route 31
+	.byte APRICORN_PNK ; Route 33
+	.byte APRICORN_BLK ; Route 33
+	.byte APRICORN_GRN ; Route 35
+	.byte APRICORN_BLU ; Route 36
+	.byte APRICORN_RED ; Route 37
+	.byte APRICORN_BLU ; Route 37
+	.byte APRICORN_BLK ; Route 37
+	.byte APRICORN_WHT ; Route 38
+	.byte APRICORN_GRN ; Route 39
+	.byte APRICORN_PNK ; Route 42
+	.byte APRICORN_GRN ; Route 42
+	.byte APRICORN_YLW ; Route 42
+	.byte APRICORN_BLK ; Route 43
+	.byte APRICORN_RED ; Route 44
+	.byte APRICORN_GRN ; Route 45
+	.byte APRICORN_GRN ; Route 46
+	.byte APRICORN_YLW ; Route 46
+	.byte APRICORN_BLU ; Pewter City
+	.byte APRICORN_WHT ; Pewter City
+	.byte APRICORN_RED ; Fuchsia City
+	.byte APRICORN_YLW ; Violet City
+	.byte APRICORN_WHT ; Azalea Town
 
 	.text
 
-	thumb_func_start sub_0202ADEC
-sub_0202ADEC: ; 0x0202ADEC
+	thumb_func_start ApricornTrees_init
+ApricornTrees_init: ; 0x0202ADEC
 	push {r4, lr}
 	mov r2, #2
 	mov r1, #0
@@ -28,7 +57,7 @@ _0202ADFE:
 	blt _0202ADFE
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202ADEC
+	thumb_func_end ApricornTrees_init
 
 	thumb_func_start sub_0202AE0C
 sub_0202AE0C: ; 0x0202AE0C
@@ -78,8 +107,8 @@ sub_0202AE40: ; 0x0202AE40
 _0202AE48: .word _020F6784
 	thumb_func_end sub_0202AE40
 
-	thumb_func_start sub_0202AE4C
-sub_0202AE4C: ; 0x0202AE4C
+	thumb_func_start ApricornTrees_GetApricorn
+ApricornTrees_GetApricorn: ; 0x0202AE4C
 	push {r3, lr}
 	ldr r0, _0202AE64 ; =_020F6784
 	ldrb r0, [r0, r1]
@@ -93,7 +122,7 @@ _0202AE5E:
 	pop {r3, pc}
 	nop
 _0202AE64: .word _020F6784
-	thumb_func_end sub_0202AE4C
+	thumb_func_end ApricornTrees_GetApricorn
 
 	thumb_func_start sub_0202AE68
 sub_0202AE68: ; 0x0202AE68

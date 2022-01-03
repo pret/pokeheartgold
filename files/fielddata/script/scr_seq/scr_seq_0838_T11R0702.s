@@ -207,7 +207,7 @@ _0332:
 	wait_fade
 	closemsg
 	scrcmd_349
-	scrcmd_351 32768
+	scrcmd_351 VAR_SPECIAL_x8000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -243,7 +243,7 @@ _03C0:
 	wait_fade
 	closemsg
 	scrcmd_349
-	scrcmd_351 32768
+	scrcmd_351 VAR_SPECIAL_x8000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -282,7 +282,7 @@ _0434:
 	mon_has_move VAR_SPECIAL_x800C, MOVE_LEAF_STORM, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _04BE
-	scrcmd_396 32780, 32768
+	scrcmd_396 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	copyvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	gotoif eq, _051C
@@ -340,8 +340,8 @@ _058A:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_352 1, 32768, 32769
-	scrcmd_353 1, 32770
+	scrcmd_352 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	scrcmd_353 1, VAR_SPECIAL_x8002
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

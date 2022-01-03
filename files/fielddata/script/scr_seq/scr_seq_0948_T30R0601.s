@@ -42,7 +42,7 @@ _0068:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32770
+	scrcmd_351 VAR_SPECIAL_x8002
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -51,7 +51,7 @@ _0068:
 	get_partymon_species VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8001, 0
 	gotoif eq, _0134
-	scrcmd_396 32780, 32770
+	scrcmd_396 VAR_SPECIAL_x800C, VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _013F
 	npc_msg msg_0635_T30R0601_00006
@@ -118,7 +118,7 @@ scr_seq_T30R0601_001:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32773
+	scrcmd_351 VAR_SPECIAL_x8005
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -274,7 +274,7 @@ _0359:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32768
+	scrcmd_351 VAR_SPECIAL_x8000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -355,7 +355,7 @@ _04AC:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32768
+	scrcmd_351 VAR_SPECIAL_x8000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

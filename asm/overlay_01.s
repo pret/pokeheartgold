@@ -65921,8 +65921,8 @@ ov01_02204834: ; 0x02204834
 _0220483C: .word ov01_022095EC
 	thumb_func_end ov01_02204834
 
-	thumb_func_start FieldSys_CheckApricornTree
-FieldSys_CheckApricornTree: ; 0x02204840
+	thumb_func_start FieldSys_AnimApricornTree
+FieldSys_AnimApricornTree: ; 0x02204840
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -65939,16 +65939,16 @@ FieldSys_CheckApricornTree: ; 0x02204840
 	str r6, [r4, #8]
 	str r7, [r4, #0x24]
 	ldr r0, [r5, #0x10]
-	ldr r1, _02204870 ; =ov01_02204874
+	ldr r1, _02204870 ; =Task_AnimApricornTree
 	add r2, r4, #0
 	bl sub_02050530
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02204870: .word ov01_02204874
-	thumb_func_end FieldSys_CheckApricornTree
+_02204870: .word Task_AnimApricornTree
+	thumb_func_end FieldSys_AnimApricornTree
 
-	thumb_func_start ov01_02204874
-ov01_02204874: ; 0x02204874
+	thumb_func_start Task_AnimApricornTree
+Task_AnimApricornTree: ; 0x02204874
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x14
 	add r6, r0, #0
@@ -66017,7 +66017,7 @@ _022048E0:
 	strb r1, [r0]
 	mov r0, #2
 	str r0, [r4]
-	ldr r0, _02204A98 ; =0x000008FF
+	ldr r0, _02204A98 ; =SEQ_SE_GS_KI_YURERU
 	bl PlaySE
 	b _02204A8E
 _0220490A:
@@ -66188,7 +66188,7 @@ _02204A40:
 	bl sub_0205F214
 	mov r0, #0
 	str r0, [r4, #0xc]
-	ldr r0, _02204AA8 ; =0x000008E5
+	ldr r0, _02204AA8 ; =SEQ_SE_GS_FW255E
 	bl PlaySE
 	mov r0, #9
 	str r0, [r4]
@@ -66217,12 +66217,12 @@ _02204A8E:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _02204A94: .word ov01_02204B78
-_02204A98: .word 0x000008FF
+_02204A98: .word SEQ_SE_GS_KI_YURERU
 _02204A9C: .word 0xFFFFF000
 _02204AA0: .word 0x0000010E
 _02204AA4: .word 0x00000106
-_02204AA8: .word 0x000008E5
-	thumb_func_end ov01_02204874
+_02204AA8: .word SEQ_SE_GS_FW255E
+	thumb_func_end Task_AnimApricornTree
 
 	thumb_func_start ov01_02204AAC
 ov01_02204AAC: ; 0x02204AAC

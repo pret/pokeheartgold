@@ -59,7 +59,7 @@ Sav2_Misc_init: ; 0x0202A8BC
 	lsl r2, r2, #4
 	bl MIi_CpuClearFast
 	add r0, r4, #0
-	bl sub_0202ADEC
+	bl ApricornTrees_init
 	mov r0, #2
 	lsl r0, r0, #8
 	add r0, r4, r0
@@ -137,14 +137,14 @@ Sav2_Misc_const_get: ; 0x0202A960
 _0202A968: .word SavArray_const_get
 	thumb_func_end Sav2_Misc_const_get
 
-	thumb_func_start sub_0202A96C
-sub_0202A96C: ; 0x0202A96C
+	thumb_func_start Sav2_FieldApricornTrees_get
+Sav2_FieldApricornTrees_get: ; 0x0202A96C
 	ldr r3, _0202A974 ; =SavArray_get
 	mov r1, #9
 	bx r3
 	nop
 _0202A974: .word SavArray_get
-	thumb_func_end sub_0202A96C
+	thumb_func_end Sav2_FieldApricornTrees_get
 
 	thumb_func_start sub_0202A978
 sub_0202A978: ; 0x0202A978

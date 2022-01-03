@@ -17,7 +17,7 @@ scr_seq_0150_000:
 	hasitem ITEM_APRICORN_BOX, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0099
-	check_apricorn_tree VAR_SPECIAL_x800C
+	anim_apricorn_tree VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0088
 	apricorn_tree_get_apricorn VAR_SPECIAL_x8000

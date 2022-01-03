@@ -604,11 +604,11 @@ scr_seq_0003_034:
 _07E4:
 	play_fanfare SEQ_ME_ACCE
 	scrcmd_406 VAR_SPECIAL_x8004
-	scrcmd_531 0, VAR_SPECIAL_x8004
+	buffer_background_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0040_00025
 	wait_fanfare
 	buffer_players_name 0
-	scrcmd_531 1, VAR_SPECIAL_x8004
+	buffer_background_name 1, VAR_SPECIAL_x8004
 	return
 
 scr_seq_0003_008:
@@ -1482,19 +1482,19 @@ _136C:
 	return
 
 scr_seq_0003_040:
-	checkflag FLAG_UNK_0FD
+	checkflag FLAG_GOT_ALL_FOUR_FRONTIER_PRINTS
 	gotoif TRUE, _13F6
-	comparevartovalue VAR_UNK_404E, 4
+	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 4
 	gotoif ne, _13F6
-	comparevartovalue VAR_UNK_404F, 4
+	comparevartovalue VAR_BATTLE_HALL_PRINT_PROGRESS, 4
 	gotoif ne, _13F6
-	comparevartovalue VAR_UNK_4050, 4
+	comparevartovalue VAR_BATTLE_CASTLE_PRINT_PROGRESS, 4
 	gotoif ne, _13F6
-	comparevartovalue VAR_UNK_4051, 4
+	comparevartovalue VAR_BATTLE_ARCADE_PRINT_PROGRESS, 4
 	gotoif ne, _13F6
-	comparevartovalue VAR_UNK_404D, 4
+	comparevartovalue VAR_BATTLE_TOWER_PRINT_PROGRESS, 4
 	gotoif ne, _13F6
-	setflag FLAG_UNK_0FD
+	setflag FLAG_GOT_ALL_FOUR_FRONTIER_PRINTS
 	scrcmd_680 31
 	goto _13F6
 	.byte 0x02, 0x00

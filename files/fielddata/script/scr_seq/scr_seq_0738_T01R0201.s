@@ -57,7 +57,7 @@ _00A7:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32772
+	scrcmd_351 VAR_SPECIAL_x8004
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

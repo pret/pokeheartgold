@@ -2130,22 +2130,22 @@
     {
       "name": "scrcmd_351",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_352",
       "args": [
         1,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_353",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -2421,8 +2421,8 @@
     {
       "name": "scrcmd_396",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -3347,7 +3347,7 @@
       ]
     },
     {
-      "name": "scrcmd_531",
+      "name": "buffer_background_name",
       "args": [
         1,
         "var"
@@ -3690,7 +3690,7 @@
       ]
     },
     {
-      "name": "scrcmd_584",
+      "name": "party_legal_check",
       "args": [
         "var"
       ]
@@ -3902,7 +3902,7 @@
       ]
     },
     {
-      "name": "check_apricorn_tree",
+      "name": "anim_apricorn_tree",
       "args": [
         "var"
       ]
@@ -3937,8 +3937,8 @@
     {
       "name": "scrcmd_628",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -3970,58 +3970,58 @@
       "name": "scrcmd_633",
       "args": [
         2,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_634",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_635",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_636",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_637",
       "args": [
         2,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_638",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_639",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_640",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4038,30 +4038,30 @@
       "name": "scrcmd_643",
       "args": [
         2,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_644",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_645",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_646",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4100,33 +4100,33 @@
     {
       "name": "scrcmd_652",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_653",
       "args": [
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_654",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_655",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4386,13 +4386,13 @@
     {
       "name": "scrcmd_693",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_694",
       "args": [
-        2
+        "var"
       ]
     },
     {

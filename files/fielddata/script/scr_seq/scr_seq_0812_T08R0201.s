@@ -468,14 +468,14 @@ _0610:
 	goto _0659
 	.byte 0x02, 0x00
 _0649:
-	callstd 2007
+	callstd std_receive_accessory
 	setvar VAR_TEMP_x4009, 1
 	closemsg
 	releaseall
 	end
 
 _0659:
-	callstd 2026
+	callstd std_receive_background
 	setvar VAR_TEMP_x4009, 1
 	closemsg
 	releaseall

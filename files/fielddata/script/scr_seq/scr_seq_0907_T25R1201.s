@@ -95,7 +95,7 @@ scr_seq_T25R1201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 VAR_SPECIAL_x800C
+	party_legal_check VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _03C4
 	checkflag FLAG_UNK_112
@@ -267,7 +267,7 @@ _03BC:
 	step 1, 1
 	step_end
 _03C4:
-	callstd 9016
+	callstd std_party_illegal
 	waitbutton
 	closemsg
 	releaseall
@@ -386,7 +386,7 @@ _04D3:
 	gotoif eq, _04CD
 	closemsg
 	scrcmd_815 0
-	callstd 2046
+	callstd std_enter_global_terminal
 	releaseall
 	end
 
@@ -427,7 +427,7 @@ _056E:
 	gotoif eq, _0568
 	closemsg
 	scrcmd_815 0
-	callstd 2046
+	callstd std_enter_global_terminal
 	releaseall
 	end
 
@@ -459,7 +459,7 @@ scr_seq_T25R1201_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 VAR_SPECIAL_x800C
+	party_legal_check VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0622
 	setvar VAR_SPECIAL_x8000, 0

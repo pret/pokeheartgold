@@ -1020,7 +1020,7 @@ _0F0B:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 32780
+	scrcmd_351 VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -1041,7 +1041,7 @@ _0F0B:
 	goto _0F0B
 
 _0F84:
-	scrcmd_396 32770, 32774
+	scrcmd_396 VAR_SPECIAL_x8002, VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x8002, 3
 	gotoif le, _1041
 	touchscreen_menu_hide
@@ -1054,8 +1054,8 @@ _0F99:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_352 1, 32774, 29
-	scrcmd_353 1, 32769
+	scrcmd_352 1, VAR_SPECIAL_x8006, 29
+	scrcmd_353 1, VAR_SPECIAL_x8001
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

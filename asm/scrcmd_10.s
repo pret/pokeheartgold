@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_CheckApricornTree
-ScrCmd_CheckApricornTree: ; 0x0204BC98
+	thumb_func_start ScrCmd_AnimApricornTree
+ScrCmd_AnimApricornTree: ; 0x0204BC98
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -24,10 +24,10 @@ ScrCmd_CheckApricornTree: ; 0x0204BC98
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [r4]
-	bl FieldSys_CheckApricornTree
+	bl FieldSys_AnimApricornTree
 	mov r0, #1
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_CheckApricornTree
+	thumb_func_end ScrCmd_AnimApricornTree
 
 	thumb_func_start ScrCmd_ApricornTreeGetApricorn
 ScrCmd_ApricornTreeGetApricorn: ; 0x0204BCCC

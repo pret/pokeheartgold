@@ -53,7 +53,7 @@ _0098:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_349
-	scrcmd_351 16384
+	scrcmd_351 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 255
 	gotoif eq, _0206
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001

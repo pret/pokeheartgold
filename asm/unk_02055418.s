@@ -350,7 +350,7 @@ sub_020556A8: ; 0x020556A8
 sub_020556B8: ; 0x020556B8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	bl sub_0202AE74
 	pop {r3, pc}
 	.balign 4, 0
@@ -445,7 +445,7 @@ sub_02055760: ; 0x02055760
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -462,7 +462,7 @@ sub_02055780: ; 0x02055780
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -479,7 +479,7 @@ sub_020557A0: ; 0x020557A0
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -496,14 +496,14 @@ FieldSys_ApricornTree_GetApricorn: ; 0x020557C0
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl sub_0202A96C
+	bl Sav2_FieldApricornTrees_get
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0205F2F4
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0202AE4C
+	bl ApricornTrees_GetApricorn
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end FieldSys_ApricornTree_GetApricorn

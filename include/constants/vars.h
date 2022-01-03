@@ -89,11 +89,11 @@
 #define VAR_UNK_404A                 0x404A
 #define VAR_UNK_404B                 0x404B
 #define VAR_UNK_404C                 0x404C
-#define VAR_UNK_404D                 0x404D
-#define VAR_UNK_404E                 0x404E
-#define VAR_UNK_404F                 0x404F
-#define VAR_UNK_4050                 0x4050
-#define VAR_UNK_4051                 0x4051
+#define VAR_BATTLE_TOWER_PRINT_PROGRESS                 0x404D
+#define VAR_BATTLE_FACTORY_PRINT_PROGRESS                 0x404E
+#define VAR_BATTLE_HALL_PRINT_PROGRESS                 0x404F
+#define VAR_BATTLE_CASTLE_PRINT_PROGRESS                 0x4050
+#define VAR_BATTLE_ARCADE_PRINT_PROGRESS                 0x4051
 #define VAR_UNK_4052                 0x4052
 #define VAR_UNK_4053                 0x4053
 #define VAR_UNK_4054                 0x4054

@@ -580,7 +580,7 @@ gScriptCmdTable:
 	.word ScrCmd_528                                    ; 528
 	.word ScrCmd_PartySelectMon                         ; 529
 	.word ScrCmd_530                                    ; 530
-	.word ScrCmd_531                                    ; 531
+	.word ScrCmd_BufferBackgroundName                                    ; 531
 	.word ScrCmd_532                                    ; 532
 	.word ScrCmd_CheckGiveCoins                         ; 533
 	.word ScrCmd_534                                    ; 534
@@ -633,7 +633,7 @@ gScriptCmdTable:
 	.word ScrCmd_581                                    ; 581
 	.word ScrCmd_582                                    ; 582
 	.word ScrCmd_583                                    ; 583
-	.word ScrCmd_584                                    ; 584
+	.word ScrCmd_PartyLegalCheck                                    ; 584
 	.word ScrCmd_585                                    ; 585
 	.word ScrCmd_586                                    ; 586
 	.word ScrCmd_587                                    ; 587
@@ -672,7 +672,7 @@ gScriptCmdTable:
 	.word ScrCmd_620                                    ; 620
 	.word ScrCmd_621                                    ; 621
 	.word ScrCmd_622                                    ; 622
-	.word ScrCmd_CheckApricornTree                                    ; 623
+	.word ScrCmd_AnimApricornTree                                    ; 623
 	.word ScrCmd_ApricornTreeGetApricorn                                    ; 624
 	.word ScrCmd_GiveApricornFromTree                                    ; 625
 	.word ScrCmd_BufferApricornName                                    ; 626
@@ -11818,8 +11818,8 @@ _02045CBE:
 	.balign 4, 0
 	thumb_func_end ScrCmd_530
 
-	thumb_func_start ScrCmd_531
-ScrCmd_531: ; 0x02045CC4
+	thumb_func_start ScrCmd_BufferBackgroundName
+ScrCmd_BufferBackgroundName: ; 0x02045CC4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -11844,7 +11844,7 @@ ScrCmd_531: ; 0x02045CC4
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_531
+	thumb_func_end ScrCmd_BufferBackgroundName
 
 	thumb_func_start ScrCmd_534
 ScrCmd_534: ; 0x02045CFC

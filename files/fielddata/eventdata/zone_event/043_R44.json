@@ -159,7 +159,7 @@
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
-      "scr": 2800,
+      "scr": "std_apricorn_tree",
       "dirn": 0,
       "eye": 22,
       "unk10": 0,

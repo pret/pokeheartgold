@@ -44,7 +44,7 @@ _008A:
 	closemsg
 	scrcmd_117
 	scrcmd_349
-	scrcmd_351 32769
+	scrcmd_351 VAR_SPECIAL_x8001
 	scrcmd_150
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, 0x00
@@ -54,7 +54,7 @@ _008A:
 	get_partymon_species VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x8002, 0
 	gotoif eq, _0391
-	scrcmd_652 32769, 32768, 32770
+	scrcmd_652 VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
 	comparevartovalue VAR_SPECIAL_x8002, 0
 	gotoif eq, _00F0
 	goto _0125
@@ -84,7 +84,7 @@ _0125:
 	scrcmd_490 VAR_SPECIAL_x8002
 	scrcmd_490 VAR_SPECIAL_x8003
 _013D:
-	scrcmd_653 32769, 32768, 32772, 32780
+	scrcmd_653 VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	scrcmd_490 VAR_SPECIAL_x8000
 	scrcmd_490 VAR_SPECIAL_x8001
 	scrcmd_490 VAR_SPECIAL_x8002
@@ -113,7 +113,7 @@ _018F:
 	goto _013D
 
 _01D0:
-	scrcmd_655 32771, 32773
+	scrcmd_655 VAR_SPECIAL_x8003, VAR_SPECIAL_x8005
 	scrcmd_557 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _01EF
@@ -139,7 +139,7 @@ _021E:
 _0224:
 	bufferpartymonnick 0, VAR_SPECIAL_x8001
 	buffer_move_name 1, VAR_SPECIAL_x8003
-	scrcmd_396 32774, 32769
+	scrcmd_396 VAR_SPECIAL_x8006, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif lt, _0328
 _0241:
@@ -154,8 +154,8 @@ _0241:
 	wait_fade
 	closemsg
 	scrcmd_117
-	scrcmd_352 1, 32769, 32771
-	scrcmd_353 1, 32774
+	scrcmd_352 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
+	scrcmd_353 1, VAR_SPECIAL_x8006
 	scrcmd_490 VAR_SPECIAL_x8006
 	scrcmd_150
 	scrcmd_116 1, 21, 1
@@ -202,7 +202,7 @@ _0328:
 	wait_fanfare
 	scrcmd_556 VAR_SPECIAL_x8005
 	scrcmd_118 1
-	scrcmd_654 32769, 32774, 32771
+	scrcmd_654 VAR_SPECIAL_x8001, VAR_SPECIAL_x8006, VAR_SPECIAL_x8003
 _0352:
 	comparevartovalue VAR_SPECIAL_x8007, 0
 	gotoif ne, _0368

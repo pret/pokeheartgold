@@ -191,7 +191,7 @@ _0221:
 	scrcmd_604 48
 	apply_movement obj_D35R0104_gsrivel, _02D8
 	wait_movement
-	callstd 2032
+	callstd std_fade_end_rival_intro_music
 	hide_person obj_D35R0104_gsrivel
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
 	releaseall

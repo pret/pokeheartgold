@@ -71,7 +71,7 @@ _00AD:
 	wait_fade
 	closemsg
 	scrcmd_349
-	scrcmd_351 16384
+	scrcmd_351 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 255
 	gotoif ne, _00F2
 	call _019A

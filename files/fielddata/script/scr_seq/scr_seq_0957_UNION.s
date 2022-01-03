@@ -317,7 +317,7 @@ _0528:
 	scrcmd_359 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0698
-	scrcmd_584 VAR_SPECIAL_x800C
+	party_legal_check VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0682
 	scrcmd_274 32772, 32780

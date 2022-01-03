@@ -92,7 +92,7 @@ scr_seq_R10R0201_006:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
-	scrcmd_351 32780
+	scrcmd_351 VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

@@ -2211,7 +2211,7 @@
 .public ScrCmd_528
 .public ScrCmd_PartySelectMon
 .public ScrCmd_530
-.public ScrCmd_531
+.public ScrCmd_BufferBackgroundName
 .public ScrCmd_532
 .public ScrCmd_CheckGiveCoins
 .public ScrCmd_534
@@ -2264,7 +2264,7 @@
 .public ScrCmd_581
 .public ScrCmd_582
 .public ScrCmd_583
-.public ScrCmd_584
+.public ScrCmd_PartyLegalCheck
 .public ScrCmd_585
 .public ScrCmd_586
 .public ScrCmd_587
@@ -2303,7 +2303,7 @@
 .public ScrCmd_620
 .public ScrCmd_621
 .public ScrCmd_622
-.public ScrCmd_CheckApricornTree
+.public ScrCmd_AnimApricornTree
 .public ScrCmd_ApricornTreeGetApricorn
 .public ScrCmd_GiveApricornFromTree
 .public ScrCmd_BufferApricornName
@@ -5584,8 +5584,8 @@
 .public ov01_0220476C
 .public ov01_022047DC
 .public ov01_02204834
-.public FieldSys_CheckApricornTree
-.public ov01_02204874
+.public FieldSys_AnimApricornTree
+.public Task_AnimApricornTree
 .public ov01_02204AAC
 .public ov01_02204B24
 .public ov01_02204B78
@@ -27269,7 +27269,7 @@
 .public sub_0202A640
 .public sub_0202A798
 .public sub_0202A8A8
-.public sub_0202A96C
+.public Sav2_FieldApricornTrees_get
 .public sub_0202A978
 .public sub_0202A988
 .public sub_0202A998
@@ -27289,11 +27289,11 @@
 .public sub_0202AC1C
 .public sub_0202AC38
 .public sub_0202AC60
-.public sub_0202ADEC
+.public ApricornTrees_init
 .public sub_0202AE0C
 .public sub_0202AE38
 .public sub_0202AE40
-.public sub_0202AE4C
+.public ApricornTrees_GetApricorn
 .public sub_0202AE68
 .public sub_0202AE74
 .public sub_0202AE8C

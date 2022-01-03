@@ -177,7 +177,7 @@ scr_seq_0004_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 VAR_SPECIAL_x800C
+	party_legal_check VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0F27
 	get_player_state VAR_SPECIAL_x800C
@@ -736,7 +736,7 @@ scr_seq_0004_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_584 VAR_SPECIAL_x800C
+	party_legal_check VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0F27
 	get_player_state VAR_SPECIAL_x800C

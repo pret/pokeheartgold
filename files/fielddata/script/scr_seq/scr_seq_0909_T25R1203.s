@@ -160,7 +160,7 @@ _016A:
 	gotoif eq, _0164
 	closemsg
 	scrcmd_815 0
-	callstd 2046
+	callstd std_enter_global_terminal
 	releaseall
 	end
 
