@@ -434,8 +434,6 @@ $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 $(DIFF_ARCS):
 	cp $< $@
 
-$(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
-
 NARCS := $(filter %.narc,$(NITROFS_FILES) $(SRC_ARCS))
 NAIXS := $(NARCS:%.narc=%.naix)
 

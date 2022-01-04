@@ -152,7 +152,7 @@ sub_02055508: ; 0x02055508
 	bl sub_0202C7DC
 	add r1, r0, #0
 	add r0, r7, #0
-	bl Roamers_SetLocationParam
+	bl Roamers_SetRand
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	add r1, r4, #0

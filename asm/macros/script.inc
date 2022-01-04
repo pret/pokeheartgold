@@ -2087,7 +2087,7 @@
 	.short \amount
 	.endm
 
-	.macro scrcmd_369
+	.macro egg_hatch_anim
 	.short 369
 	.endm
 

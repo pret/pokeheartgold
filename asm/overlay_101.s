@@ -32232,7 +32232,7 @@ ov101_021F6F14: ; 0x021F6F14
 	beq _021F6F5C
 	add r0, r6, #0
 	mov r1, #2
-	bl Roamers_GetLocationParam
+	bl Roamers_GetRand
 	add r1, r5, #0
 	add r1, #8
 	add r2, r5, #6

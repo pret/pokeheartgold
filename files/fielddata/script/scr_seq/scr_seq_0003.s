@@ -1290,7 +1290,7 @@ scr_seq_0003_021:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_369
+	egg_hatch_anim
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	releaseall

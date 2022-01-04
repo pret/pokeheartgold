@@ -1,6 +1,8 @@
 #include "constants/abilities.h"
 #include "constants/species.h"
 #include "constants/sndseq.h"
+#include "constants/items.h"
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2050,7 +2052,7 @@ ov02_02246B58: ; 0x02246B58
 	beq _02246B9A
 	ldr r0, [sp]
 	mov r1, #2
-	bl Roamers_GetLocationParam
+	bl Roamers_GetRand
 	ldr r1, [r5, #0x20]
 	mov r2, #0
 	ldr r1, [r1]
@@ -2084,7 +2086,7 @@ ov02_02246B9C: ; 0x02246B9C
 	beq _02246BD4
 	add r0, r7, #0
 	mov r1, #2
-	bl Roamers_GetLocationParam
+	bl Roamers_GetRand
 	ldr r1, [r5, #0x20]
 	mov r2, #1
 	ldr r1, [r1]
@@ -2117,7 +2119,7 @@ ov02_02246BD8: ; 0x02246BD8
 	beq _02246C7A
 	ldr r0, [sp]
 	mov r1, #2
-	bl Roamers_GetLocationParam
+	bl Roamers_GetRand
 	ldr r1, [r6, #0x20]
 	mov r2, #2
 	ldr r1, [r1]
@@ -2257,7 +2259,7 @@ _02246CD6:
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #1
 	str r1, [sp, #0x28]
-	mov r1, #0xa1
+	mov r1, #MON_DATA_LEVEL
 	mov r2, #0
 	bl GetMonData
 	add r1, sp, #0x18
@@ -2278,10 +2280,10 @@ _02246D26:
 	strb r0, [r1]
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl ov02_0224782C
+	bl ApplyFluteEffectToEncounterRate
 	ldr r0, [sp, #0x10]
 	add r1, sp, #0x18
-	bl ov02_02247800
+	bl ApplyLeadMonHeldItemEffectToEncounterRate
 	add r1, sp, #0x18
 	ldrb r1, [r1]
 	add r0, r5, #0
@@ -3679,8 +3681,8 @@ _022477FC:
 	pop {r3, pc}
 	thumb_func_end ov02_022477C0
 
-	thumb_func_start ov02_02247800
-ov02_02247800: ; 0x02247800
+	thumb_func_start ApplyLeadMonHeldItemEffectToEncounterRate
+ApplyLeadMonHeldItemEffectToEncounterRate: ; 0x02247800
 	push {r4, lr}
 	add r4, r1, #0
 	mov r1, #6
@@ -3688,9 +3690,9 @@ ov02_02247800: ; 0x02247800
 	bl GetMonData
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
-	cmp r1, #0xe0
+	cmp r1, #ITEM_CLEANSE_TAG
 	beq _0224781C
-	mov r0, #5
+	mov r0, #ITEM_PURE_INCENSE>>6
 	lsl r0, r0, #6
 	cmp r1, r0
 	bne _02247828
@@ -3703,10 +3705,10 @@ _0224781C:
 _02247828:
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov02_02247800
+	thumb_func_end ApplyLeadMonHeldItemEffectToEncounterRate
 
-	thumb_func_start ov02_0224782C
-ov02_0224782C: ; 0x0224782C
+	thumb_func_start ApplyFluteEffectToEncounterRate
+ApplyFluteEffectToEncounterRate: ; 0x0224782C
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
@@ -3727,7 +3729,7 @@ _02247846:
 	strb r0, [r4]
 _02247852:
 	pop {r4, pc}
-	thumb_func_end ov02_0224782C
+	thumb_func_end ApplyFluteEffectToEncounterRate
 
 	thumb_func_start ov02_02247854
 ov02_02247854: ; 0x02247854
@@ -5197,7 +5199,7 @@ ov02_02248360: ; 0x02248360
 _02248374:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202D9F8
+	bl Roamer_GetLocation
 	bl sub_02067698
 	add r7, r0, #0
 	add r0, r6, #0
@@ -12508,7 +12510,7 @@ ov02_0224B998: ; 0x0224B998
 	beq _0224BA50
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_020677F4
+	bl SpeciesToRoamerIdx
 	str r0, [sp, #4]
 	add r0, r7, #0
 	mov r1, #0xa3
@@ -12594,7 +12596,7 @@ _0224BA78:
 	beq _0224BA9C
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202D9F8
+	bl Roamer_GetLocation
 	bl sub_02067698
 	cmp r6, r0
 	bne _0224BA9C

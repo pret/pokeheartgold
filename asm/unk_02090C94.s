@@ -15255,17 +15255,17 @@ sub_02097F9C: ; 0x02097F9C
 	b _02097FDE
 _02097FC8:
 	add r0, sp, #0x80
-	ldrh r0, [r0, #0x3e]
+	ldrh r0, [r0, #0x3e] ; swarmSpecies[1]
 	strh r0, [r5]
 	b _02097FDE
 _02097FD0:
 	add r0, sp, #0xc0
-	ldrh r0, [r0, #2]
+	ldrh r0, [r0, #2] ; swarmSpecies[3]
 	strh r0, [r5]
 	b _02097FDE
 _02097FD8:
 	add r0, sp, #0x80
-	ldrh r0, [r0, #0x3c]
+	ldrh r0, [r0, #0x3c] ; swarmSpecies[0]
 	strh r0, [r5]
 _02097FDE:
 	ldrh r0, [r5]

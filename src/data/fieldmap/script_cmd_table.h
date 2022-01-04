@@ -369,7 +369,7 @@ extern BOOL ScrCmd_365(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_366(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_367(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HasEnoughMoneyVar(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_369(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_EggHatchAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_370(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_371(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_372(SCRIPTCONTEXT *ctx);
@@ -1224,7 +1224,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_366,
     ScrCmd_367,
     ScrCmd_HasEnoughMoneyVar,
-    ScrCmd_369,
+    ScrCmd_EggHatchAnim,
     ScrCmd_370,
     ScrCmd_371,
     ScrCmd_372,

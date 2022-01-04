@@ -418,7 +418,7 @@ gScriptCmdTable:
 	.word ScrCmd_366                                    ; 366
 	.word ScrCmd_367                                    ; 367
 	.word ScrCmd_HasEnoughMoneyVar                      ; 368
-	.word ScrCmd_369                                    ; 369
+	.word ScrCmd_EggHatchAnim                                    ; 369
 	.word ScrCmd_370                                    ; 370
 	.word ScrCmd_371                                    ; 371
 	.word ScrCmd_372                                    ; 372
@@ -7237,7 +7237,7 @@ ScrCmd_211: ; 0x020438EC
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #2
-	bl Roamers_GetLocationParam
+	bl Roamers_GetRand
 	add r1, r6, #0
 	add r2, r4, #0
 	bl sub_02097F9C
@@ -9732,8 +9732,8 @@ ScrCmd_685: ; 0x02044BE8
 	.balign 4, 0
 	thumb_func_end ScrCmd_685
 
-	thumb_func_start ScrCmd_369
-ScrCmd_369: ; 0x02044C54
+	thumb_func_start ScrCmd_EggHatchAnim
+ScrCmd_EggHatchAnim: ; 0x02044C54
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -9741,7 +9741,7 @@ ScrCmd_369: ; 0x02044C54
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_369
+	thumb_func_end ScrCmd_EggHatchAnim
 
 	thumb_func_start ScrCmd_374
 ScrCmd_374: ; 0x02044C64

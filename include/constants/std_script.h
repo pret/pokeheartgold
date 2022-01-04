@@ -18,6 +18,8 @@
 #define std_bag_is_full                 2009
 #define std_mart_intro                  2011
 #define std_global_terminal_globe       2015
+#define std_hatch_egg                   2021
+#define std_repel_wore_off              2022
 #define std_set_battle_phrase           2023
 #define std_wifi_club_closed            2025
 #define std_receive_background          2026

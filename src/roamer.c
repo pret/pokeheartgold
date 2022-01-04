@@ -8,25 +8,25 @@ u32 Save_Roamers_sizeof(void) {
 
 void Save_Roamers_init(ROAMER_SAVE *roamer) {
     memset(roamer, 0, sizeof(ROAMER_SAVE));
-    roamer->loc[0] = MTRandom();
-    roamer->loc[1] = MTRandom();
+    roamer->rand[0] = MTRandom();
+    roamer->rand[1] = MTRandom();
     roamer->unk_64 = 0;
     roamer->unk_65 = 0;
     roamer->unk_66 = 0;
-    roamer->unk_67 = 0;
+    roamer->flutePlayed = 0;
 }
 
-void Roamers_SetLocationParam(ROAMER_SAVE *roamer, u32 param) {
-    roamer->loc[0] = param;
-    roamer->loc[1] = param;
+void Roamers_SetRand(ROAMER_SAVE *roamer, u32 param) {
+    roamer->rand[0] = param;
+    roamer->rand[1] = param;
 }
 
-u32 Roamers_GetLocationParam(ROAMER_SAVE *roamer, u32 which) {
+u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which) {
     switch (which) {
     case 1:
-        return roamer->loc[0];
+        return roamer->rand[0];
     case 2:
-        return roamer->loc[1];
+        return roamer->rand[1];
     default:
         GF_ASSERT(0);
         return 0;
@@ -57,12 +57,12 @@ u32 sub_0202D9F4(ROAMER_SAVE *roamerSave) {
     return roamerSave->unk_8[1];
 }
 
-u8 sub_0202D9F8(ROAMER_SAVE *roamerSave, u32 a1) {
+u8 Roamer_GetLocation(ROAMER_SAVE *roamerSave, u32 a1) {
     GF_ASSERT(a1 < ROAMER_MAX);
     return roamerSave->unk_60[a1];
 }
 
-void sub_0202DA10(ROAMER_SAVE *roamerSave, u32 a1, u8 a2) {
+void Roamer_SetLocation(ROAMER_SAVE *roamerSave, u32 a1, u8 a2) {
     GF_ASSERT(a1 < ROAMER_MAX);
     roamerSave->unk_60[a1] = a2;
 }
@@ -147,9 +147,9 @@ BOOL sub_0202DB08(ROAMER_SAVE *roamerSave) {
 
 void sub_0202DB18(ROAMER_SAVE *roamerSave, u8 a1) {
     GF_ASSERT(a1 <= 2);
-    roamerSave->unk_67 = a1;
+    roamerSave->flutePlayed = a1;
 }
 
 u8 sub_0202DB2C(ROAMER_SAVE *roamerSave) {
-    return roamerSave->unk_67;
+    return roamerSave->flutePlayed;
 }

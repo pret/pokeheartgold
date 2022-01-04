@@ -308,7 +308,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             species = monSpecies[i].species & 0x3FF;
             forme = (monSpecies[i].species & 0xFC00) >> 10;
             // Starting in HGSS, additional checks are performed to
-            // loc each Pokemon's personality.
+            // rand each Pokemon's personality.
             TrMon_OverridePidGender(species, forme, monSpecies[i].genderAbilityOverride, &pid_gender);
             // Generate personality by seeding with a value based on the difficulty,
             // level, species, and opponent ID. Roll the RNG N times, where N is

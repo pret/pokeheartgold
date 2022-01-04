@@ -28,14 +28,14 @@ typedef struct ROAMER {
 } ROAMER;
 
 typedef struct ROAMER_SAVE {
-    u32 loc[2];
+    u32 rand[2];
     u32 unk_8[2];
     ROAMER data[ROAMER_MAX];
     u8 unk_60[ROAMER_MAX];
     u8 unk_64;
     u8 unk_65;
     u8 unk_66;
-    u8 unk_67;
+    u8 flutePlayed;
 } ROAMER_SAVE;
 
 #endif //POKEHEARTGOLD_ROAMER_H
