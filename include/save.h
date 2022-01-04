@@ -24,7 +24,7 @@
 #define SAVE_CHATOT              18
 #define SAVE_UNK_19              19
 #define SAVE_UNK_20              20
-#define SAVE_UNK_21              21
+#define SAVE_ROAMER              21
 #define SAVE_UNK_22              22
 #define SAVE_UNK_23              23
 #define SAVE_UNK_24              24

@@ -2043,14 +2043,14 @@ ov02_02246B58: ; 0x02246B58
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	str r0, [sp]
 	bl sub_0202D9E0
 	cmp r0, #0
 	beq _02246B9A
 	ldr r0, [sp]
 	mov r1, #2
-	bl sub_0202D9A8
+	bl Roamers_GetLocationParam
 	ldr r1, [r5, #0x20]
 	mov r2, #0
 	ldr r1, [r1]
@@ -2077,14 +2077,14 @@ ov02_02246B9C: ; 0x02246B9C
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r7, r0, #0
 	bl sub_0202D9E0
 	cmp r0, #0
 	beq _02246BD4
 	add r0, r7, #0
 	mov r1, #2
-	bl sub_0202D9A8
+	bl Roamers_GetLocationParam
 	ldr r1, [r5, #0x20]
 	mov r2, #1
 	ldr r1, [r1]
@@ -2110,14 +2110,14 @@ ov02_02246BD8: ; 0x02246BD8
 	add r7, r1, #0
 	add r5, r2, #0
 	add r4, r3, #0
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	str r0, [sp]
 	bl sub_0202D9E0
 	cmp r0, #0
 	beq _02246C7A
 	ldr r0, [sp]
 	mov r1, #2
-	bl sub_0202D9A8
+	bl Roamers_GetLocationParam
 	ldr r1, [r6, #0x20]
 	mov r2, #2
 	ldr r1, [r1]
@@ -2249,7 +2249,7 @@ _02246CD6:
 	add r3, sp, #0x24
 	bl ov02_02248618
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	bl sub_0202DB08
 	cmp r0, #0
 	bne _02246D26
@@ -2319,7 +2319,7 @@ _02246D8A:
 	beq _02246DE0
 	ldr r0, [sp, #0x1c]
 	mov r1, #6
-	bl sub_0202DA6C
+	bl GetRoamerData
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, sp, #0x24
@@ -3710,7 +3710,7 @@ ov02_0224782C: ; 0x0224782C
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	bl sub_0202DB2C
 	cmp r0, #1
 	bne _02247846
@@ -5122,28 +5122,28 @@ ov02_022482BC: ; 0x022482BC
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0202DA6C
+	bl GetRoamerData
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_0202DA6C
+	bl GetRoamerData
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202DA6C
+	bl GetRoamerData
 	str r0, [sp, #8]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0202DA6C
+	bl GetRoamerData
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	mov r1, #7
-	bl sub_0202DA6C
+	bl GetRoamerData
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_0202DA6C
+	bl GetRoamerData
 	add r1, sp, #0x10
 	strh r0, [r1]
 	ldr r1, [sp, #4]
@@ -5191,7 +5191,7 @@ ov02_02248360: ; 0x02248360
 	ldr r0, [r0, #0xc]
 	str r1, [sp, #4]
 	mov r5, #0
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r6, r0, #0
 	add r4, r5, #0
 _02248374:
@@ -5212,7 +5212,7 @@ _02248374:
 	bne _022483AC
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202DA54
+	bl Roamers_GetRoamMonStats
 	lsl r2, r5, #2
 	add r1, sp, #8
 	str r0, [r1, r2]
@@ -12493,7 +12493,7 @@ ov02_0224B998: ; 0x0224B998
 	bl GetPartyMonByIndex
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #5
@@ -12529,7 +12529,7 @@ ov02_0224B998: ; 0x0224B998
 	cmp r4, #0
 	bne _0224BA14
 	add r0, sp, #8
-	bl sub_0202DA44
+	bl RoamerMon_init
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	ldr r1, [sp, #4]
@@ -12540,7 +12540,7 @@ _0224BA14:
 	cmp r0, #4
 	bne _0224BA2E
 	add r0, sp, #8
-	bl sub_0202DA44
+	bl RoamerMon_init
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	ldr r1, [sp, #4]
@@ -12551,11 +12551,11 @@ _0224BA2E:
 	ldr r0, [sp, #8]
 	mov r1, #5
 	add r2, r4, #0
-	bl sub_0202DAB8
+	bl SetRoamerData
 	ldr r0, [sp, #8]
 	mov r1, #7
 	add r2, r7, #0
-	bl sub_0202DAB8
+	bl SetRoamerData
 _0224BA42:
 	ldr r1, [r5, #0x20]
 	add r0, r6, #0
@@ -12624,10 +12624,10 @@ _0224BAB0:
 	beq _0224BAD4
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202DA54
+	bl Roamers_GetRoamMonStats
 	mov r1, #4
 	add r7, r0, #0
-	bl sub_0202DA6C
+	bl GetRoamerData
 	cmp r6, r0
 	bne _0224BAD4
 	add r0, r7, #0
@@ -12647,7 +12647,7 @@ _0224BAD4:
 ov02_0224BAE4: ; 0x0224BAE4
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	bl sub_0202DB04
 	ldrb r1, [r0]
 	cmp r1, #0

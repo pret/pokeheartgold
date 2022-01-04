@@ -2633,7 +2633,7 @@
 	.short 463
 	.endm
 
-	.macro scrcmd_464 arg0
+	.macro create_roamer arg0
 	.short 464
 	.byte \arg0
 	.endm

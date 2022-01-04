@@ -670,11 +670,11 @@ ov15_021F992C: ; 0x021F992C
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	ldr r3, _021F9938 ; =sub_0202D9C4
+	ldr r3, _021F9938 ; =Save_Roamers_get
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_021F9938: .word sub_0202D9C4
+_021F9938: .word Save_Roamers_get
 	thumb_func_end ov15_021F992C
 
 	thumb_func_start ov15_021F993C

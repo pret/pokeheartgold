@@ -513,7 +513,7 @@ gScriptCmdTable:
 	.word ScrCmd_GetPhoneContactMsgIds                                    ; 461
 	.word ScrCmd_462                                    ; 462
 	.word ScrCmd_463                                    ; 463
-	.word ScrCmd_464                                    ; 464
+	.word ScrCmd_CreateRoamer                                    ; 464
 	.word ScrCmd_465                                    ; 465
 	.word ScrCmd_466                                    ; 466
 	.word ScrCmd_467                                    ; 467
@@ -7218,7 +7218,7 @@ ScrCmd_211: ; 0x020438EC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -7237,7 +7237,7 @@ ScrCmd_211: ; 0x020438EC
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202D9A8
+	bl Roamers_GetLocationParam
 	add r1, r6, #0
 	add r2, r4, #0
 	bl sub_02097F9C
@@ -10495,8 +10495,8 @@ ScrCmd_463: ; 0x02045254
 	pop {r3, pc}
 	thumb_func_end ScrCmd_463
 
-	thumb_func_start ScrCmd_464
-ScrCmd_464: ; 0x02045264
+	thumb_func_start ScrCmd_CreateRoamer
+ScrCmd_CreateRoamer: ; 0x02045264
 	push {r3, lr}
 	ldr r2, [r0, #8]
 	add r1, r2, #1
@@ -10505,10 +10505,10 @@ ScrCmd_464: ; 0x02045264
 	ldr r0, [r0]
 	ldrb r1, [r2]
 	ldr r0, [r0, #0xc]
-	bl sub_020676EC
+	bl Save_CreateRoamerByID
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_464
+	thumb_func_end ScrCmd_CreateRoamer
 
 	thumb_func_start ScrCmd_470
 ScrCmd_470: ; 0x0204527C

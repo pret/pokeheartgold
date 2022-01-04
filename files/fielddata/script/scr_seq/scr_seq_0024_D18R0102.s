@@ -75,8 +75,8 @@ _00E2:
 	hide_person obj_D18R0102_tsure_poke_616
 	hide_person obj_D18R0102_tsure_poke_617
 	hide_person obj_D18R0102_tsure_poke_618
-	scrcmd_464 0
-	scrcmd_464 1
+	create_roamer 0
+	create_roamer 1
 	wait 15, VAR_SPECIAL_x800C
 	clearflag FLAG_HIDE_BURNED_TOWER_EUSINE
 	play_se SEQ_SE_DP_KAIDAN2

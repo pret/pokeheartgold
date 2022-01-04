@@ -145,14 +145,14 @@ sub_02055508: ; 0x02055508
 	add r1, r4, #0
 	bl sub_0202C78C
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
 	bl sub_0202C854
 	bl sub_0202C7DC
 	add r1, r0, #0
 	add r0, r7, #0
-	bl sub_0202D9A0
+	bl Roamers_SetLocationParam
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	add r1, r4, #0

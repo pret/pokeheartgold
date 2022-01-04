@@ -68,7 +68,7 @@ scr_seq_T06_013:
 	scrcmd_452 380, 1
 	npc_msg msg_0483_T06_00017
 	closemsg
-	scrcmd_464 2
+	create_roamer 2
 	scrcmd_453
 	apply_movement obj_T06_daigo, _0180
 	wait_movement
@@ -84,7 +84,7 @@ _0109:
 	scrcmd_452 381, 0
 	npc_msg msg_0483_T06_00018
 	closemsg
-	scrcmd_464 3
+	create_roamer 3
 	scrcmd_453
 	apply_movement obj_T06_daigo, _0180
 	wait_movement

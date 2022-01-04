@@ -191,21 +191,21 @@ _0264:
 
 _026A:
 	setvar VAR_UNK_4046, 0
-	scrcmd_464 1
+	create_roamer 1
 	return
 
 _0275:
 	setvar VAR_UNK_4045, 0
-	scrcmd_464 0
+	create_roamer 0
 	return
 
 _0280:
 	setvar VAR_UNK_4047, 0
-	scrcmd_464 2
+	create_roamer 2
 	return
 
 _028B:
 	setvar VAR_UNK_4048, 0
-	scrcmd_464 3
+	create_roamer 3
 	return
 	.balign 4, 0

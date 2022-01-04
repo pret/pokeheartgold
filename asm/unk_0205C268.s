@@ -1,5 +1,6 @@
 #include "constants/sndseq.h"
 #include "constants/species.h"
+#include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -25409,16 +25410,16 @@ _020676EA:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020676D4
 
-	thumb_func_start sub_020676EC
-sub_020676EC: ; 0x020676EC
+	thumb_func_start Save_CreateRoamerByID
+Save_CreateRoamerByID: ; 0x020676EC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	str r1, [sp, #0x10]
 	add r7, r0, #0
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	ldr r1, [sp, #0x10]
 	str r0, [sp, #0x14]
-	bl sub_0202DA54
+	bl Roamers_GetRoamMonStats
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	cmp r0, #3
@@ -25435,21 +25436,21 @@ _02067714: ; jump table
 	.short _02067728 - _02067714 - 2 ; case 2
 	.short _02067730 - _02067714 - 2 ; case 3
 _0206771C:
-	mov r6, #0xf3
-	mov r5, #0x28
+	mov r6, #SPECIES_RAIKOU
+	mov r5, #40
 	b _0206773E
 _02067722:
-	mov r6, #0xf4
-	mov r5, #0x28
+	mov r6, #SPECIES_ENTEI
+	mov r5, #40
 	b _0206773E
 _02067728:
-	mov r6, #0x5f
+	mov r6, #SPECIES_LATIAS>>2
 	lsl r6, r6, #2
-	mov r5, #0x23
+	mov r5, #35
 	b _0206773E
 _02067730:
-	ldr r6, _020677F0 ; =0x0000017D
-	mov r5, #0x23
+	ldr r6, _020677F0 ; =SPECIES_LATIOS
+	mov r5, #35
 	b _0206773E
 _02067736:
 	bl GF_AssertFail
@@ -25459,11 +25460,11 @@ _0206773E:
 	add r0, r4, #0
 	mov r1, #4
 	add r2, r6, #0
-	bl sub_0202DAB8
+	bl SetRoamerData
 	add r0, r4, #0
 	mov r1, #6
 	add r2, r5, #0
-	bl sub_0202DAB8
+	bl SetRoamerData
 	add r0, r7, #0
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #0x18]
@@ -25487,35 +25488,35 @@ _0206773E:
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl sub_0202DAB8
+	bl SetRoamerData
 	add r0, r4, #0
 	mov r1, #8
 	mov r2, #1
-	bl sub_0202DAB8
+	bl SetRoamerData
 	add r0, r7, #0
-	mov r1, #0xaf
+	mov r1, #MON_DATA_IVS_WORD
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0202DAB8
-	mov r1, #0
+	bl SetRoamerData
+	mov r1, #MON_DATA_PERSONALITY
 	add r0, r7, #0
 	add r2, r1, #0
 	bl GetMonData
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0202DAB8
+	bl SetRoamerData
 	add r0, r7, #0
-	mov r1, #0xa4
+	mov r1, #MON_DATA_MAXHP
 	mov r2, #0
 	bl GetMonData
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #5
-	bl sub_0202DAB8
+	bl SetRoamerData
 	add r0, r7, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
@@ -25528,7 +25529,7 @@ _0206773E:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _020677F0: .word 0x0000017D
-	thumb_func_end sub_020676EC
+	thumb_func_end Save_CreateRoamerByID
 
 	thumb_func_start sub_020677F4
 sub_020677F4: ; 0x020677F4
@@ -25693,7 +25694,7 @@ sub_02067914: ; 0x02067914
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0202DA54
+	bl Roamers_GetRoamMonStats
 	str r0, [sp]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -25702,7 +25703,7 @@ sub_02067914: ; 0x02067914
 	ldr r0, [sp]
 	mov r1, #1
 	add r2, r7, #0
-	bl sub_0202DAB8
+	bl SetRoamerData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067914
@@ -25897,7 +25898,7 @@ sub_02067A88: ; 0x02067A88
 	ldr r1, [r1]
 	bl sub_0203BB70
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	mov r1, #0
 	bl sub_0202DB18
 	add r0, r5, #0
@@ -25913,7 +25914,7 @@ sub_02067A88: ; 0x02067A88
 	cmp r0, #0
 	bne _02067AE0
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	ldr r1, [r5, #0x20]
 	add r4, r0, #0
 	ldr r1, [r1]
@@ -25945,7 +25946,7 @@ sub_02067AE4: ; 0x02067AE4
 	ldr r1, [r1]
 	bl sub_0203BB70
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	mov r1, #0
 	bl sub_0202DB18
 	add r0, r5, #0
@@ -25956,7 +25957,7 @@ sub_02067AE4: ; 0x02067AE4
 	add r0, #0x7c
 	strh r1, [r0]
 	ldr r0, [r5, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	ldr r1, [r5, #0x20]
 	ldr r1, [r1]
 	bl sub_020676D4
@@ -26006,7 +26007,7 @@ sub_02067B88: ; 0x02067B88
 	bl SavArray_Flags_get
 	bl sub_02066850
 	ldr r0, [r4, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	bl sub_02067620
 	pop {r4, pc}
 	.balign 4, 0
@@ -26020,7 +26021,7 @@ sub_02067BA4: ; 0x02067BA4
 	bl SavArray_Flags_get
 	bl sub_02066850
 	ldr r0, [r4, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	bl sub_02067620
 	pop {r4, pc}
 	.balign 4, 0
@@ -26053,7 +26054,7 @@ sub_02067BD0: ; 0x02067BD0
 sub_02067BE8: ; 0x02067BE8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	bl sub_02067620
 	pop {r3, pc}
 	.balign 4, 0

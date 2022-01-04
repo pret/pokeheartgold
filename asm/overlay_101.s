@@ -491,7 +491,7 @@ _021E799A:
 	strb r0, [r5, r3]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	mov r4, #0
 	add r6, r0, #0
 	add r7, r4, #0
@@ -505,9 +505,9 @@ _021E7B0A:
 	lsl r1, r4, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl sub_0202DA54
+	bl Roamers_GetRoamMonStats
 	mov r1, #1
-	bl sub_0202DA6C
+	bl GetRoamerData
 	ldr r1, _021E7B50 ; =0x000009E8
 	strh r0, [r5, r1]
 	b _021E7B32
@@ -32225,14 +32225,14 @@ ov101_021F6F14: ; 0x021F6F14
 	mov r1, #1
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
-	bl sub_0202D9C4
+	bl Save_Roamers_get
 	add r6, r0, #0
 	bl sub_0202D9E0
 	cmp r0, #0
 	beq _021F6F5C
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_0202D9A8
+	bl Roamers_GetLocationParam
 	add r1, r5, #0
 	add r1, #8
 	add r2, r5, #6

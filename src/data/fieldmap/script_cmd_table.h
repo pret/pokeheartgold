@@ -464,7 +464,7 @@ extern BOOL ScrCmd_LoadPhoneDat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactMsgIds(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_462(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_463(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_464(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CreateRoamer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_465(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_466(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_467(SCRIPTCONTEXT *ctx);
@@ -1319,7 +1319,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetPhoneContactMsgIds,
     ScrCmd_462,
     ScrCmd_463,
-    ScrCmd_464,
+    ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
     ScrCmd_467,
