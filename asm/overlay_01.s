@@ -1,5 +1,7 @@
 #include "constants/sndseq.h"
 #include "constants/moves.h"
+#include "constants/species.h"
+#include "msgdata/msg/msg_0096_D31R0201.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -58852,8 +58854,8 @@ _022011CC: .word 0x000005DC
 _022011D0: .word 0x00000207
 	thumb_func_end ov01_0220116C
 
-	thumb_func_start ScrCmd_657
-ScrCmd_657: ; 0x022011D4
+	thumb_func_start ScrCmd_StatJudge
+ScrCmd_StatJudge: ; 0x022011D4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r4, r0, #0
@@ -58985,15 +58987,15 @@ _022012EC:
 	strh r4, [r0]
 	ldrh r0, [r7]
 	lsl r1, r0, #1
-	ldr r0, _02201300 ; =ov01_022093C2
+	ldr r0, _02201300 ; =sStatJudgeBestStatMsgIdxs
 	ldrh r0, [r0, r1]
 	strh r0, [r7]
 	mov r0, #0
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02201300: .word ov01_022093C2
-	thumb_func_end ScrCmd_657
+_02201300: .word sStatJudgeBestStatMsgIdxs
+	thumb_func_end ScrCmd_StatJudge
 
 	thumb_func_start ScrCmd_CommSanitizeParty
 ScrCmd_CommSanitizeParty: ; 0x02201304
@@ -60861,8 +60863,8 @@ ScrCmd_777: ; 0x022021AC
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_777
 
-	thumb_func_start ScrCmd_778
-ScrCmd_778: ; 0x022021F8
+	thumb_func_start ScrCmd_GiveSpikyEarPichu
+ScrCmd_GiveSpikyEarPichu: ; 0x022021F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	str r0, [sp, #0x10]
@@ -60902,8 +60904,8 @@ _02202224:
 	str r0, [sp, #4]
 	str r1, [sp, #8]
 	add r0, r5, #0
-	mov r1, #0xac
-	mov r2, #0x1e
+	mov r1, #SPECIES_PICHU
+	mov r2, #30
 	mov r3, #0x20
 	str r4, [sp, #0xc]
 	bl CreateMon
@@ -60915,7 +60917,7 @@ _02202224:
 	mov r1, #0x70
 	add r2, #1
 	bl SetMonData
-	ldr r6, _02202304 ; =ov01_022093BA
+	ldr r6, _02202304 ; =sSpikyEarPichuMoveset
 	mov r4, #0
 	add r7, sp, #0x20
 _02202276:
@@ -60980,8 +60982,8 @@ _02202276:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02202304: .word ov01_022093BA
-	thumb_func_end ScrCmd_778
+_02202304: .word sSpikyEarPichuMoveset
+	thumb_func_end ScrCmd_GiveSpikyEarPichu
 
 	thumb_func_start ScrCmd_PhotoAlbumIsFull
 ScrCmd_PhotoAlbumIsFull: ; 0x02202308
@@ -62183,22 +62185,22 @@ _02202C74:
 SpeciesAndFormeToWazaOshieIndex: ; 0x02202C7C
 	; Convert species and forme into
 	; naix for tutor compat
-	ldr r2, _02202D3C ; =0x000001DF
+	ldr r2, _02202D3C ; =SPECIES_ROTOM
 	cmp r0, r2
 	bgt _02202CA0
 	bge _02202D02
 	add r3, r2, #0
-	sub r3, #0x5d
+	sub r3, #SPECIES_ROTOM - SPECIES_DEOXYS
 	cmp r0, r3
 	bgt _02202C96
 	add r3, r2, #0
-	sub r3, #0x5d
+	sub r3, #SPECIES_ROTOM - SPECIES_DEOXYS
 	cmp r0, r3
 	beq _02202CBC
 	b _02202D32
 _02202C96:
 	add r3, r2, #0
-	sub r3, #0x42
+	sub r3, #SPECIES_ROTOM - SPECIES_WORMADAM
 	cmp r0, r3
 	beq _02202CDA
 	b _02202D32
@@ -71596,12 +71598,21 @@ ov01_02209354: ; 0x02209354
 ov01_022093B4: ; 0x022093B4
 	.byte 0x04, 0x0A, 0x07, 0x05, 0x0A, 0x0A
 
-ov01_022093BA: ; 0x022093BA
-	.byte 0x0E, 0x01, 0x58, 0x01, 0xCF, 0x00
-	.byte 0xDC, 0x00
+sSpikyEarPichuMoveset: ; 0x022093BA
+	.short MOVE_HELPING_HAND
+	.short MOVE_VOLT_TACKLE
+	.short MOVE_SWAGGER
+	.short MOVE_PAIN_SPLIT
 
-ov01_022093C2: ; 0x022093C2
-	.byte 0x7A, 0x00, 0x7B, 0x00, 0x7C, 0x00, 0x7F, 0x00, 0x7D, 0x00, 0x7E, 0x00, 0x00, 0x00
+sStatJudgeBestStatMsgIdxs: ; 0x022093C2
+	.short msg_0096_D31R0201_00122
+	.short msg_0096_D31R0201_00123
+	.short msg_0096_D31R0201_00124
+	.short msg_0096_D31R0201_00127
+	.short msg_0096_D31R0201_00125
+	.short msg_0096_D31R0201_00126
+
+	.balign 4, 0
 ov01_022093D0:
 	.word 7, 3
 	.word 5, 2

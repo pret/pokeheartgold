@@ -106,7 +106,7 @@ _0191:
 
 _01CB:
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01EC
 	apply_movement obj_T22PC0101_instructor, _023C

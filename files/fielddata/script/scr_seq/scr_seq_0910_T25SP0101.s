@@ -56,7 +56,7 @@ scr_seq_T25SP0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 VAR_TEMP_x4002
+	get_player_facing VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ne, _00BD
 	call _00F0

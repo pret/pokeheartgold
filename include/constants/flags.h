@@ -353,7 +353,7 @@
 #define FLAG_UNK_14C                                               0x14C
 #define FLAG_UNK_14D                                               0x14D
 #define FLAG_UNK_14E                                               0x14E
-#define FLAG_UNK_14F                                               0x14F
+#define FLAG_GOT_JUDGE_EXPLANATION                                               0x14F
 #define FLAG_UNK_150                                               0x150
 #define FLAG_UNK_151                                               0x151
 #define FLAG_UNK_152                                               0x152

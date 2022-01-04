@@ -356,7 +356,7 @@ _04CB:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0515
 	apply_movement obj_D47R0101_gsgentleman, _034C

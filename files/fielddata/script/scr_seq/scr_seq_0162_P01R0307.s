@@ -128,7 +128,7 @@ scr_seq_P01R0307_003:
 	scrcmd_603
 	scrcmd_604 56
 _0180:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _01A7
 	apply_movement obj_player, _0218

@@ -609,7 +609,7 @@ _0A52:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_166 VAR_TEMP_x4000
-	scrcmd_412 16, 16385, VAR_TEMP_x4000
+	scrcmd_412 16, VAR_TEMP_x4001, VAR_TEMP_x4000
 	copyvar VAR_TEMP_x4001, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, _0A81
@@ -672,7 +672,7 @@ _0B46:
 	call _0A52
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _085B
-	scrcmd_418 32772, 32773
+	scrcmd_418 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_int 0, VAR_SPECIAL_x8004
 	buffer_int_ex 1, VAR_SPECIAL_x8005, 2, 3
 	npc_msg msg_0096_D31R0201_00052
@@ -839,10 +839,10 @@ _0E56:
 	goto _0E6C
 	.byte 0x02, 0x00
 _0E6C:
-	scrcmd_416 0, 0, 32780
+	scrcmd_416 0, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0E6C
-	scrcmd_417 0, 16384
+	scrcmd_417 0, VAR_TEMP_x4000
 	switch VAR_TEMP_x4000
 	case 1, _0EE1
 	case 2, _0EFF
@@ -853,7 +853,7 @@ _0E6C:
 	scrcmd_451 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0F84
-	scrcmd_417 1, 16384
+	scrcmd_417 1, VAR_TEMP_x4000
 	goto _0F52
 	.byte 0x02
 	.byte 0x00
@@ -905,7 +905,7 @@ _0F84:
 	goto _0F9C
 	.byte 0x02, 0x00
 _0F9C:
-	scrcmd_416 1, 0, 32780
+	scrcmd_416 1, 0, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0F9C
 	goto _0F52
@@ -1182,7 +1182,7 @@ scr_seq_D31R0201_011:
 scr_seq_D31R0201_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_419 32780
+	scrcmd_419 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _13F9
 	setvar VAR_SPECIAL_x8000, 1
@@ -1200,7 +1200,7 @@ _13F9:
 _1404:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_408 32768, 32769
+	scrcmd_408 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -1302,19 +1302,19 @@ scr_seq_D31R0201_023:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_14F
+	checkflag FLAG_GOT_JUDGE_EXPLANATION
 	callif FALSE, _158E
-	checkflag FLAG_UNK_14F
+	checkflag FLAG_GOT_JUDGE_EXPLANATION
 	callif TRUE, _1593
-	setflag FLAG_UNK_14F
+	setflag FLAG_GOT_JUDGE_EXPLANATION
 	goto _1506
 	.byte 0x02, 0x00
 _1506:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_349
-	scrcmd_351 VAR_SPECIAL_x800C
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
@@ -1324,7 +1324,7 @@ _1506:
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 0
 	gotoif eq, _1598
-	scrcmd_657 32768, 32769, 32770, 32771
+	stat_judge VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	comparevartovalue VAR_SPECIAL_x8001, 90
 	gotoif le, _15E5
 	comparevartovalue VAR_SPECIAL_x8001, 120

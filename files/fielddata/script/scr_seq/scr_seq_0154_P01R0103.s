@@ -26,7 +26,7 @@ scr_seq_P01R0103_000:
 	faceplayer
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, _014D
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, _0158
 	get_weekday VAR_SPECIAL_x800C

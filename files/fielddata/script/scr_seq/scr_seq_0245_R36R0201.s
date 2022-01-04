@@ -105,7 +105,7 @@ scr_seq_R36R0201_001:
 	gotoif ne, _0231
 	checkflag FLAG_UNK_1C4
 	gotoif TRUE, _01BA
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -130,7 +130,7 @@ _01A8:
 	goto _01DC
 
 _01BA:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

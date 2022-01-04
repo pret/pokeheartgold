@@ -32,7 +32,7 @@ scr_seq_W40R0101_000:
 	gotoif TRUE, _00BE
 	checkflag FLAG_GAME_CLEAR
 	gotoif TRUE, _00B1
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 3
 	gotoif ne, _0079
 	apply_movement obj_W40R0101_gsmiddleman1, _00E4

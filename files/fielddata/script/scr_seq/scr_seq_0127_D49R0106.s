@@ -227,7 +227,7 @@ scr_seq_D49R0106_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _03E0
 	apply_movement obj_D49R0106_tsure_poke_597, _043C

@@ -70,15 +70,15 @@ _00AD:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_349
-	scrcmd_351 VAR_TEMP_x4000
+	party_select_ui
+	get_party_selection VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 255
 	gotoif ne, _00F2
 	call _019A
 	goto _01AA
 
 _00F2:
-	scrcmd_363 6, 16384, 32780
+	scrcmd_363 6, VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	callif ne, _019A
 	nop_var_490 VAR_SPECIAL_x800C
@@ -113,7 +113,7 @@ _0162:
 	goto _01B5
 
 _0181:
-	scrcmd_364 16384
+	scrcmd_364 VAR_TEMP_x4000
 	call _019A
 	npc_msg msg_0576_T24R0201_00007
 	setflag FLAG_UNK_0C1

@@ -1670,7 +1670,7 @@ _0E3B:
 _0E57:
 	apply_movement VAR_SPECIAL_x800D, _0EBC
 	wait_movement
-	scrcmd_386 VAR_SPECIAL_x8000
+	get_player_facing VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x8000, 0
 	callif eq, _0E9B
 	comparevartovalue VAR_SPECIAL_x8000, 1

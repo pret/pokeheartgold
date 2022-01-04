@@ -47,7 +47,7 @@ scr_seq_T25R0501_000:
 	end
 
 _0078:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _0096
 	npc_msg msg_0587_T25R0501_00005

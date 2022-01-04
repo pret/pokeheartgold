@@ -38,7 +38,7 @@ _007C:
 	gotoif ne, _0110
 	move_person obj_T27R0501_rocketm, 29, 0, 29, 1
 	scrcmd_375 9
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _00BC
 	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 1
@@ -216,7 +216,7 @@ scr_seq_T27R0501_003:
 	gotoif eq, _040C
 	npc_msg msg_0618_T27R0501_00006
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x8004
+	get_player_facing VAR_SPECIAL_x8004
 	comparevartovalue VAR_SPECIAL_x8004, 0
 	gotoif ne, _0354
 	apply_movement obj_T27R0501_rocketm_2, _0414
@@ -591,7 +591,7 @@ scr_seq_T27R0501_007:
 	comparevartovalue VAR_SPECIAL_x8004, 1
 	gotoif eq, _0BD3
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	callif ne, _07BA
 	goto _0944

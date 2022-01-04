@@ -14,7 +14,7 @@
 scr_seq_R43R0201_001:
 	scrcmd_081 SEQ_GS_R_7_42
 	play_bgm SEQ_GS_EYE_ROCKET
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0037
 	goto _0095

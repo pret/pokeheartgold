@@ -49,7 +49,7 @@ scr_seq_D24R0203_002:
 	end
 
 _009A:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _00B9
 	apply_movement obj_player, _0218
@@ -74,7 +74,7 @@ _00F7:
 	goto _017E
 
 _00FF:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0126
 	apply_movement obj_player, _0218

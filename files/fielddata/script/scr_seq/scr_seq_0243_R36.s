@@ -75,7 +75,7 @@ _00E0:
 	buffer_players_name 0
 	npc_msg msg_0390_R36_00001
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _0109
 	apply_movement obj_player, _039C
@@ -109,7 +109,7 @@ _012C:
 	comparevartovalue VAR_TEMP_x4001, 4
 	callif eq, _023F
 	setflag FLAG_UNK_0B5
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01BC
 	scrcmd_602 0
@@ -134,7 +134,7 @@ _01C6:
 	giveitem_no_check ITEM_PECHA_BERRY, 3
 	npc_msg msg_0390_R36_00018
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0225
 	apply_movement obj_R36_gsgirl1_2, _0378
@@ -188,7 +188,7 @@ _0296:
 	buffer_players_name 0
 	npc_msg msg_0390_R36_00001
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _02BF
 	apply_movement obj_player, _039C

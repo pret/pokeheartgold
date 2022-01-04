@@ -398,11 +398,11 @@ gScriptCmdTable:
 	.word ScrCmd_346                                    ; 346
 	.word ScrCmd_347                                    ; 347
 	.word ScrCmd_348                                    ; 348
-	.word ScrCmd_349                                    ; 349
+	.word ScrCmd_PartySelectUI                                    ; 349
 	.word ScrCmd_350                                    ; 350
-	.word ScrCmd_351                                    ; 351
-	.word ScrCmd_352                                    ; 352
-	.word ScrCmd_353                                    ; 353
+	.word ScrCmd_PartySelect                                    ; 351
+	.word ScrCmd_ChooseMoveUI                                    ; 352
+	.word ScrCmd_GetMoveSelection                                    ; 353
 	.word ScrCmd_GetPartyMonSpecies                     ; 354
 	.word ScrCmd_PartymonIsMine                         ; 355
 	.word ScrCmd_PartyCountNotEgg                       ; 356
@@ -435,7 +435,7 @@ gScriptCmdTable:
 	.word ScrCmd_383                                    ; 383
 	.word ScrCmd_384                                    ; 384
 	.word ScrCmd_385                                    ; 385
-	.word ScrCmd_386                                    ; 386
+	.word ScrCmd_GetPlayerFacing                                    ; 386
 	.word ScrCmd_387                                    ; 387
 	.word ScrCmd_388                                    ; 388
 	.word ScrCmd_389                                    ; 389
@@ -445,7 +445,7 @@ gScriptCmdTable:
 	.word ScrCmd_393                                    ; 393
 	.word ScrCmd_394                                    ; 394
 	.word ScrCmd_395                                    ; 395
-	.word ScrCmd_396                                    ; 396
+	.word ScrCmd_CountMonMoves                                    ; 396
 	.word ScrCmd_397                                    ; 397
 	.word ScrCmd_398                                    ; 398
 	.word ScrCmd_BufferPartyMonMoveName                                    ; 399
@@ -706,7 +706,7 @@ gScriptCmdTable:
 	.word ScrCmd_TutorMoveTeachInSlot                                    ; 654
 	.word ScrCmd_TutorMoveGetPrice                                    ; 655
 	.word ScrCmd_656                                    ; 656
-	.word ScrCmd_657                                    ; 657
+	.word ScrCmd_StatJudge                                    ; 657
 	.word ScrCmd_BufferStatName                                    ; 658
 	.word ScrCmd_SetMonForme                                    ; 659
 	.word ScrCmd_BufferTrainerName                                    ; 660
@@ -827,7 +827,7 @@ gScriptCmdTable:
 	.word ScrCmd_775                                    ; 775
 	.word ScrCmd_GiveTogepiEgg                          ; 776
 	.word ScrCmd_777                                    ; 777
-	.word ScrCmd_778                                    ; 778
+	.word ScrCmd_GiveSpikyEarPichu                                    ; 778
 	.word ScrCmd_779                                    ; 779
 	.word ScrCmd_780                                    ; 780
 	.word ScrCmd_781                                    ; 781
@@ -4443,8 +4443,8 @@ _02042368:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_GetPersonCoords
 
-	thumb_func_start ScrCmd_386
-ScrCmd_386: ; 0x0204236C
+	thumb_func_start ScrCmd_GetPlayerFacing
+ScrCmd_GetPlayerFacing: ; 0x0204236C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -4462,7 +4462,7 @@ ScrCmd_386: ; 0x0204236C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_386
+	thumb_func_end ScrCmd_GetPlayerFacing
 
 	thumb_func_start ScrCmd_107
 ScrCmd_107: ; 0x02042394
@@ -4686,8 +4686,8 @@ ScrCmd_136: ; 0x02042530
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_136
 
-	thumb_func_start ScrCmd_349
-ScrCmd_349: ; 0x02042574
+	thumb_func_start ScrCmd_PartySelectUI
+ScrCmd_PartySelectUI: ; 0x02042574
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -4708,7 +4708,7 @@ ScrCmd_349: ; 0x02042574
 	pop {r3, r4, r5, pc}
 	nop
 _020425A0: .word ScrNative_WaitApplication
-	thumb_func_end ScrCmd_349
+	thumb_func_end ScrCmd_PartySelectUI
 
 	thumb_func_start ScrCmd_566
 ScrCmd_566: ; 0x020425A4
@@ -4754,8 +4754,8 @@ ScrCmd_350: ; 0x020425D4
 	.balign 4, 0
 	thumb_func_end ScrCmd_350
 
-	thumb_func_start ScrCmd_351
-ScrCmd_351: ; 0x020425F8
+	thumb_func_start ScrCmd_PartySelect
+ScrCmd_PartySelect: ; 0x020425F8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -4790,7 +4790,7 @@ _02042636:
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_351
+	thumb_func_end ScrCmd_PartySelect
 
 	thumb_func_start ScrCmd_635
 ScrCmd_635: ; 0x02042644
@@ -5013,8 +5013,8 @@ _02042800:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_645
 
-	thumb_func_start ScrCmd_353
-ScrCmd_353: ; 0x0204280C
+	thumb_func_start ScrCmd_GetMoveSelection
+ScrCmd_GetMoveSelection: ; 0x0204280C
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	ldr r2, [r4, #8]
@@ -5053,10 +5053,10 @@ _02042850:
 	str r0, [r4]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_353
+	thumb_func_end ScrCmd_GetMoveSelection
 
-	thumb_func_start ScrCmd_352
-ScrCmd_352: ; 0x02042860
+	thumb_func_start ScrCmd_ChooseMoveUI
+ScrCmd_ChooseMoveUI: ; 0x02042860
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -5110,7 +5110,7 @@ _020428C4:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020428D4: .word ScrNative_WaitApplication
-	thumb_func_end ScrCmd_352
+	thumb_func_end ScrCmd_ChooseMoveUI
 
 	thumb_func_start ScrCmd_GetPhoneBookRematch
 ScrCmd_GetPhoneBookRematch: ; 0x020428D8

@@ -265,7 +265,7 @@ scr_seq_R35R0201_001:
 	gotoif ne, _0438
 	checkflag FLAG_UNK_1C4
 	gotoif TRUE, _03C1
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -290,7 +290,7 @@ _03AF:
 	goto _03E3
 
 _03C1:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -373,7 +373,7 @@ scr_seq_R35R0201_011:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _04F8
 	apply_movement obj_player, _05D0

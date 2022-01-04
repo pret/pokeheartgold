@@ -1027,7 +1027,7 @@ _0DE3:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00084, msg_0543_T20R0101_00085
 	closemsg
-	scrcmd_386 VAR_TEMP_x4005
+	get_player_facing VAR_TEMP_x4005
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

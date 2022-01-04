@@ -88,7 +88,7 @@ _00FB:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _0142
 	apply_movement obj_D52R0102_mount_2, _01A4

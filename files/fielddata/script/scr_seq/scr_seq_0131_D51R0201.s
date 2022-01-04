@@ -120,7 +120,7 @@ _0165:
 _0170:
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
 	setvar VAR_UNK_4104, 1
-	scrcmd_386 VAR_TEMP_x4002
+	get_player_facing VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _019B
 	apply_movement obj_D51R0201_champion, _02B4
@@ -484,7 +484,7 @@ _065F:
 	setvar VAR_UNK_4104, 0
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_386 VAR_TEMP_x4002
+	get_player_facing VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4009, 483
 	gotoif ne, _0691
 	goto _06B0

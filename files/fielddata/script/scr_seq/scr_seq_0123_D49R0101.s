@@ -50,7 +50,7 @@ _0080:
 scr_seq_D49R0101_000:
 	scrcmd_609
 	lockall
-	scrcmd_386 VAR_TEMP_x400A
+	get_player_facing VAR_TEMP_x400A
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, _00AB
 	apply_movement obj_player, _0230
@@ -301,7 +301,7 @@ _0400:
 	end
 
 scr_seq_D49R0101_002:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, _05B7
 	play_se SEQ_SE_DP_SELECT

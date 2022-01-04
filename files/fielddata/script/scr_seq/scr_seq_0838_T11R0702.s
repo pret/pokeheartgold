@@ -167,7 +167,7 @@ _0252:
 _02C1:
 	scrcmd_815 0
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 403, 0, 32774, 32775, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -206,8 +206,8 @@ _0332:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_349
-	scrcmd_351 VAR_SPECIAL_x8000
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x8000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -242,8 +242,8 @@ _03C0:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_349
-	scrcmd_351 VAR_SPECIAL_x8000
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x8000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -282,7 +282,7 @@ _0434:
 	mon_has_move VAR_SPECIAL_x800C, MOVE_LEAF_STORM, VAR_SPECIAL_x8000
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _04BE
-	scrcmd_396 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
+	count_mon_moves VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	copyvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	gotoif eq, _051C
@@ -340,8 +340,8 @@ _058A:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	closemsg
-	scrcmd_352 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	scrcmd_353 1, VAR_SPECIAL_x8002
+	choose_move_ui 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	get_move_selection 1, VAR_SPECIAL_x8002
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

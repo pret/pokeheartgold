@@ -30,7 +30,7 @@ _0050:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -73,7 +73,7 @@ _0107:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -122,7 +122,7 @@ _01D5:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
@@ -158,7 +158,7 @@ _0275:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1

@@ -37,7 +37,7 @@ _0056:
 _006F:
 	comparevartovalue VAR_UNK_4114, 6
 	gotoif ne, _008D
-	scrcmd_781 32780
+	scrcmd_781 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _02AE
 _008D:
@@ -52,29 +52,29 @@ _0098:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_349
-	scrcmd_351 VAR_TEMP_x4000
+	party_select_ui
+	get_party_selection VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 255
 	gotoif eq, _0206
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, _021F
-	scrcmd_426 32780, 16384, 0
+	scrcmd_426 VAR_SPECIAL_x800C, VAR_TEMP_x4000, 0
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0238
-	scrcmd_426 32780, 16384, 1
+	scrcmd_426 VAR_SPECIAL_x800C, VAR_TEMP_x4000, 1
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0251
-	scrcmd_363 7, 16384, 32780
+	scrcmd_363 7, VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _026A
 	comparevartovalue VAR_SPECIAL_x800C, 4
 	gotoif eq, _0295
-	scrcmd_364 16384
+	scrcmd_364 VAR_TEMP_x4000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0149
 	apply_movement obj_player, _02BC
@@ -179,7 +179,7 @@ _026A:
 	npc_msg msg_0378_R31_00006
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	scrcmd_428 16384
+	scrcmd_428 VAR_TEMP_x4000
 	goto _0195
 	.byte 0x02, 0x00
 _0295:

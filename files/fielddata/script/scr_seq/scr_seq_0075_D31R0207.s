@@ -185,7 +185,7 @@ _02A7:
 	end
 
 _02B2:
-	scrcmd_412 50, 16393, 0
+	scrcmd_412 50, VAR_TEMP_x4009, 0
 	setvar VAR_UNK_4151, 2
 	npc_msg msg_0099_D31R0207_00008
 	closemsg
@@ -216,7 +216,7 @@ _030F:
 	end
 
 _031A:
-	scrcmd_412 50, 16393, 0
+	scrcmd_412 50, VAR_TEMP_x4009, 0
 	setvar VAR_UNK_4151, 2
 	buffer_players_name 0
 	npc_msg msg_0099_D31R0207_00017
@@ -247,7 +247,7 @@ _0377:
 	end
 
 _0382:
-	scrcmd_412 50, 16393, 0
+	scrcmd_412 50, VAR_TEMP_x4009, 0
 	setvar VAR_UNK_4151, 2
 	npc_msg msg_0099_D31R0207_00005
 	closemsg
@@ -277,7 +277,7 @@ _03DC:
 	end
 
 _03E7:
-	scrcmd_412 50, 16393, 0
+	scrcmd_412 50, VAR_TEMP_x4009, 0
 	setvar VAR_UNK_4151, 2
 	npc_msg msg_0099_D31R0207_00014
 	closemsg
@@ -307,7 +307,7 @@ _0441:
 	end
 
 _044C:
-	scrcmd_412 50, 16393, 0
+	scrcmd_412 50, VAR_TEMP_x4009, 0
 	setvar VAR_UNK_4151, 2
 	npc_msg msg_0099_D31R0207_00011
 	closemsg

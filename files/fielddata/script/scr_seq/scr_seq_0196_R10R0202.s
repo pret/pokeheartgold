@@ -186,7 +186,7 @@ scr_seq_R10R0202_005:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
-	scrcmd_351 VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade

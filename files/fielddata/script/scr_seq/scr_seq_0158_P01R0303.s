@@ -15,7 +15,7 @@ scr_seq_P01R0303_000:
 	faceplayer
 	checkflag FLAG_UNK_0ED
 	gotoif FALSE, _0112
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, _009D
 	apply_movement obj_P01R0303_seaman_2, _0120

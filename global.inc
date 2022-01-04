@@ -2032,11 +2032,11 @@
 .public ScrCmd_346
 .public ScrCmd_347
 .public ScrCmd_348
-.public ScrCmd_349
+.public ScrCmd_PartySelectUI
 .public ScrCmd_350
-.public ScrCmd_351
-.public ScrCmd_352
-.public ScrCmd_353
+.public ScrCmd_PartySelect
+.public ScrCmd_ChooseMoveUI
+.public ScrCmd_GetMoveSelection
 .public ScrCmd_GetPartyMonSpecies
 .public ScrCmd_PartymonIsMine
 .public ScrCmd_PartyCountNotEgg
@@ -2069,7 +2069,7 @@
 .public ScrCmd_383
 .public ScrCmd_384
 .public ScrCmd_385
-.public ScrCmd_386
+.public ScrCmd_GetPlayerFacing
 .public ScrCmd_387
 .public ScrCmd_388
 .public ScrCmd_389
@@ -2079,7 +2079,7 @@
 .public ScrCmd_393
 .public ScrCmd_394
 .public ScrCmd_395
-.public ScrCmd_396
+.public ScrCmd_CountMonMoves
 .public ScrCmd_397
 .public ScrCmd_398
 .public ScrCmd_BufferPartyMonMoveName
@@ -2337,7 +2337,7 @@
 .public ScrCmd_TutorMoveTeachInSlot
 .public ScrCmd_TutorMoveGetPrice
 .public ScrCmd_656
-.public ScrCmd_657
+.public ScrCmd_StatJudge
 .public ScrCmd_BufferStatName
 .public ScrCmd_SetMonForme
 .public ScrCmd_BufferTrainerName
@@ -2458,7 +2458,7 @@
 .public ScrCmd_775
 .public ScrCmd_GiveTogepiEgg
 .public ScrCmd_777
-.public ScrCmd_778
+.public ScrCmd_GiveSpikyEarPichu
 .public ScrCmd_779
 .public ScrCmd_780
 .public ScrCmd_781

@@ -66,7 +66,7 @@ scr_seq_R35R0101_000:
 	play_fanfare SEQ_ME_PT_SPECIAL
 	wait_fanfare
 _00BC:
-	scrcmd_781 32780
+	scrcmd_781 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0178
 	checkflag FLAG_UNK_0B5

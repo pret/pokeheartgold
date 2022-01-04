@@ -43,8 +43,8 @@ _008A:
 	wait_fade
 	closemsg
 	scrcmd_117
-	scrcmd_349
-	scrcmd_351 VAR_SPECIAL_x8001
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x8001
 	scrcmd_150
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, 0x00
@@ -139,7 +139,7 @@ _021E:
 _0224:
 	bufferpartymonnick 0, VAR_SPECIAL_x8001
 	buffer_move_name 1, VAR_SPECIAL_x8003
-	scrcmd_396 VAR_SPECIAL_x8006, VAR_SPECIAL_x8001
+	count_mon_moves VAR_SPECIAL_x8006, VAR_SPECIAL_x8001
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif lt, _0328
 _0241:
@@ -154,8 +154,8 @@ _0241:
 	wait_fade
 	closemsg
 	scrcmd_117
-	scrcmd_352 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
-	scrcmd_353 1, VAR_SPECIAL_x8006
+	choose_move_ui 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
+	get_move_selection 1, VAR_SPECIAL_x8006
 	nop_var_490 VAR_SPECIAL_x8006
 	scrcmd_150
 	scrcmd_116 1, 21, 1

@@ -1975,7 +1975,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_349
+	.macro party_select_ui
 	.short 349
 	.endm
 
@@ -1983,19 +1983,19 @@
 	.short 350
 	.endm
 
-	.macro scrcmd_351 arg0
+	.macro get_party_selection arg0
 	.short 351
 	.short \arg0
 	.endm
 
-	.macro scrcmd_352 arg0, arg1, arg2
+	.macro choose_move_ui arg0, arg1, arg2
 	.short 352
 	.byte \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_353 arg0, arg1
+	.macro get_move_selection arg0, arg1
 	.short 353
 	.byte \arg0
 	.short \arg1
@@ -2180,7 +2180,7 @@
 	.short \arg3
 	.endm
 
-	.macro scrcmd_386 arg0
+	.macro get_player_facing arg0
 	.short 386
 	.short \arg0
 	.endm
@@ -2236,7 +2236,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_396 arg0, arg1
+	.macro count_mon_moves arg0, arg1
 	.short 396
 	.short \arg0
 	.short \arg1
@@ -3707,12 +3707,12 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_657 arg0, arg1, arg2, arg3
+	.macro stat_judge mon_slot, iv_sum, best_stat, best_iv
 	.short 657
-	.short \arg0
-	.short \arg1
-	.short \arg2
-	.short \arg3
+	.short \mon_slot
+	.short \iv_sum
+	.short \best_stat
+	.short \best_iv
 	.endm
 
 	.macro buffer_stat_name arg0, arg1
@@ -4359,7 +4359,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_778
+	.macro give_spiky_ear_pichu
 	.short 778
 	.endm
 

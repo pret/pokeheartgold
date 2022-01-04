@@ -203,7 +203,7 @@ _022B:
 	wait_movement
 	gender_msgbox msg_0066_D23R0102_00020, msg_0066_D23R0102_00021
 	closemsg
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	scrcmd_729 VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif eq, _0295

@@ -110,7 +110,7 @@ scr_seq_D39R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	callstd std_play_kimono_girl_music
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0157
 	goto _0169
@@ -215,7 +215,7 @@ scr_seq_D39R0101_003:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _02D5
 	apply_movement obj_player, _03AC

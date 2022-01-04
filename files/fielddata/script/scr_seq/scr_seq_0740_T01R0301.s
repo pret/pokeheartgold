@@ -231,7 +231,7 @@ _02CB:
 	setflag FLAG_UNK_0BC
 	npc_msg msg_0451_T01R0301_00013
 	closemsg
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _0320
 	goto _035A
@@ -308,7 +308,7 @@ _040D:
 	gender_msgbox msg_0451_T01R0301_00019, msg_0451_T01R0301_00020
 	closemsg
 _0421:
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _0440
 	apply_movement obj_T01R0301_ookido, _0500

@@ -251,7 +251,7 @@ _030A:
 	end
 
 _0316:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0333
 	setvar VAR_TEMP_x400B, 33

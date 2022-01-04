@@ -1370,8 +1370,8 @@ ScrCmd_239: ; 0x0204DBA0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_239
 
-	thumb_func_start ScrCmd_396
-ScrCmd_396: ; 0x0204DBE8
+	thumb_func_start ScrCmd_CountMonMoves
+ScrCmd_CountMonMoves: ; 0x0204DBE8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -1450,7 +1450,7 @@ _0204DC88:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_396
+	thumb_func_end ScrCmd_CountMonMoves
 
 	thumb_func_start ScrCmd_397
 ScrCmd_397: ; 0x0204DC90

@@ -126,7 +126,7 @@ scr_seq_T08GYM0101_003:
 	faceplayer
 	checktrainerflag TRAINER_LASS_LINDA
 	gotoif TRUE, _0277
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01AA
 	apply_movement obj_T08GYM0101_gsleader13_4, _0620
@@ -200,7 +200,7 @@ scr_seq_T08GYM0101_004:
 	faceplayer
 	checktrainerflag TRAINER_CAMPER_BARRY
 	gotoif TRUE, _038F
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _02C2
 	apply_movement obj_T08GYM0101_gsleader13_3, _0620
@@ -276,7 +276,7 @@ scr_seq_T08GYM0101_005:
 	gotoif TRUE, _04AC
 	npc_msg msg_0514_T08GYM0101_00011
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _03DF
 	apply_movement obj_T08GYM0101_gsleader13_5, _0620
@@ -352,7 +352,7 @@ scr_seq_T08GYM0101_006:
 	gotoif TRUE, _05C9
 	npc_msg msg_0514_T08GYM0101_00014
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _04FC
 	apply_movement obj_T08GYM0101_gsleader13_2, _0620

@@ -150,7 +150,7 @@ _0245:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4002, 0
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0272
 	apply_movement obj_D36R0101_tsure_poke_596, _0E18
@@ -168,7 +168,7 @@ _0293:
 	end
 
 _0299:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _02B6
 	goto _02C9
@@ -252,7 +252,7 @@ _03CA:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0403
 	apply_movement obj_D36R0101_tsure_poke_596, _0E08
@@ -277,7 +277,7 @@ _042A:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4004, 0
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0463
 	apply_movement obj_D36R0101_tsure_poke_596, _0DF8
@@ -480,7 +480,7 @@ _074A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _078B
 	apply_movement obj_D36R0101_tsure_poke_596_2, _0E38
@@ -515,7 +515,7 @@ _07D4:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0813
 	apply_movement obj_D36R0101_tsure_poke_596_2, _0E38
@@ -539,7 +539,7 @@ _0840:
 	end
 
 _0846:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0863
 	goto _0876
@@ -623,7 +623,7 @@ _0982:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4003, 0
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _09C7
 	apply_movement obj_D36R0101_tsure_poke_596_2, _0DF8
@@ -1019,8 +1019,8 @@ scr_seq_D36R0101_002:
 _0F0B:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_349
-	scrcmd_351 VAR_SPECIAL_x800C
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -1041,7 +1041,7 @@ _0F0B:
 	goto _0F0B
 
 _0F84:
-	scrcmd_396 VAR_SPECIAL_x8002, VAR_SPECIAL_x8006
+	count_mon_moves VAR_SPECIAL_x8002, VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x8002, 3
 	gotoif le, _1041
 	touchscreen_menu_hide
@@ -1054,8 +1054,8 @@ _0F99:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_352 1, VAR_SPECIAL_x8006, 29
-	scrcmd_353 1, VAR_SPECIAL_x8001
+	choose_move_ui 1, VAR_SPECIAL_x8006, 29
+	get_move_selection 1, VAR_SPECIAL_x8001
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -1538,7 +1538,7 @@ scr_seq_D36R0101_018:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _1625
 	apply_movement obj_player, _1700
@@ -1793,7 +1793,7 @@ _19AC:
 	scrcmd_602 1
 	scrcmd_604 48
 _19CF:
-	scrcmd_386 VAR_TEMP_x4005
+	get_player_facing VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 3
 	gotoif ne, _19EE
 	apply_movement obj_D36R0101_gsoldman1, _1E90
@@ -1827,7 +1827,7 @@ _1A34:
 	gotoif ne, _1A51
 	callstd std_fade_end_pichu_music
 _1A51:
-	scrcmd_778
+	give_spiky_ear_pichu
 	hide_person obj_D36R0101_tsure_poke_625
 	setvar VAR_UNK_412B, 2
 	play_fanfare SEQ_ME_SHINKAOME
@@ -1884,7 +1884,7 @@ scr_seq_D36R0101_019:
 	scrcmd_609
 	lockall
 	setvar VAR_TEMP_x4008, 1
-	scrcmd_386 VAR_TEMP_x4005
+	get_player_facing VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 3
 	gotoif ne, _1B44
 	apply_movement obj_D36R0101_tsure_poke_625, _1EF0
@@ -1910,7 +1910,7 @@ _1B67:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_TEMP_x4005
+	get_player_facing VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 3
 	gotoif ne, _1BB2
 	apply_movement obj_D36R0101_gsoldman1, _1E90
@@ -1928,7 +1928,7 @@ _1BD5:
 	wait_movement
 	npc_msg msg_0115_D36R0101_00052
 	closemsg
-	scrcmd_386 VAR_TEMP_x4005
+	get_player_facing VAR_TEMP_x4005
 	comparevartovalue VAR_TEMP_x4005, 3
 	gotoif ne, _1BFB
 	apply_movement obj_player, _1EA8

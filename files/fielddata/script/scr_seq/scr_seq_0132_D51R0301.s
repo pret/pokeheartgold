@@ -35,7 +35,7 @@ _004C:
 	wait_movement
 	npc_msg msg_0147_D51R0301_00001
 	closemsg
-	scrcmd_386 VAR_TEMP_x4002
+	get_player_facing VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _0078
 	goto _0107

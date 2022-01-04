@@ -70,7 +70,7 @@ scr_seq_D26R0102_002:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _00F7
 	apply_movement obj_D26R0102_gantetsu, _019C

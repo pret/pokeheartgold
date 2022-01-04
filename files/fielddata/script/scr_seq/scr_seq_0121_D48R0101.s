@@ -30,7 +30,7 @@ scr_seq_D48R0101_006:
 	end
 
 _0046:
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 2
 	gotoif eq, _0065
 	move_person obj_D48R0101_gsleader5, 19, 0, 40, 1

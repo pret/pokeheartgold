@@ -200,7 +200,7 @@ scr_seq_P01R0302_001:
 	lockall
 	npc_msg msg_0260_P01R0302_00000
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _02FD
 	apply_movement obj_P01R0302_gsbabygirl1, _0340

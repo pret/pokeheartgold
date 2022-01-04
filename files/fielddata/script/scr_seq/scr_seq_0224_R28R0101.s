@@ -28,7 +28,7 @@ scr_seq_R28R0101_000:
 	checkflag FLAG_UNK_137
 	gotoif TRUE, _012A
 	faceplayer
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0060
 	apply_movement obj_R28R0101_gsgirl1, _0140

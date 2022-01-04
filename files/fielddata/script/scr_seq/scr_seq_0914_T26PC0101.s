@@ -26,7 +26,7 @@ scr_seq_T26PC0101_004:
 	lockall
 	npc_msg msg_0607_T26PC0101_00003
 	setvar VAR_TEMP_x4007, 77
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _0068
 	apply_movement obj_T26PC0101_gswoman2, _00FC

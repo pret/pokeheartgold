@@ -2120,7 +2120,7 @@
       ]
     },
     {
-      "name": "scrcmd_349",
+      "name": "party_select_ui",
       "args": []
     },
     {
@@ -2128,13 +2128,13 @@
       "args": []
     },
     {
-      "name": "scrcmd_351",
+      "name": "get_party_selection",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_352",
+      "name": "choose_move_ui",
       "args": [
         1,
         "var",
@@ -2142,7 +2142,7 @@
       ]
     },
     {
-      "name": "scrcmd_353",
+      "name": "get_move_selection",
       "args": [
         1,
         "var"
@@ -2212,14 +2212,14 @@
       "name": "scrcmd_363",
       "args": [
         1,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_364",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2353,7 +2353,7 @@
       ]
     },
     {
-      "name": "scrcmd_386",
+      "name": "get_player_facing",
       "args": [
         "var"
       ]
@@ -2419,7 +2419,7 @@
       ]
     },
     {
-      "name": "scrcmd_396",
+      "name": "count_mon_moves",
       "args": [
         "var",
         "var"
@@ -2513,8 +2513,8 @@
     {
       "name": "scrcmd_408",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2536,7 +2536,7 @@
       "name": "scrcmd_412",
       "args": [
         2,
-        2,
+        "var",
         "var"
       ]
     },
@@ -2566,27 +2566,27 @@
       "args": [
         2,
         2,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_417",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_418",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_419",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2633,8 +2633,8 @@
     {
       "name": "scrcmd_426",
       "args": [
-        2,
-        2,
+        "var",
+        "var",
         1
       ]
     },
@@ -2647,7 +2647,7 @@
     {
       "name": "scrcmd_428",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4137,12 +4137,12 @@
       ]
     },
     {
-      "name": "scrcmd_657",
+      "name": "stat_judge",
       "args": [
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -4873,7 +4873,7 @@
       ]
     },
     {
-      "name": "scrcmd_778",
+      "name": "give_spiky_ear_pichu",
       "args": []
     },
     {
@@ -4893,7 +4893,7 @@
     {
       "name": "scrcmd_781",
       "args": [
-        2
+        "var"
       ]
     },
     {

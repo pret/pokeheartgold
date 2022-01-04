@@ -95,7 +95,7 @@ scr_seq_D24R0101_004:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01AD
 	apply_movement obj_player, _0264
@@ -211,7 +211,7 @@ _02EE:
 	scrcmd_309 77
 	apply_movement obj_D24R0101_suit, _0534
 	apply_movement obj_player, _05C4
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 3
 	gotoif ne, _0350
 	apply_movement obj_partner_poke, _05DC

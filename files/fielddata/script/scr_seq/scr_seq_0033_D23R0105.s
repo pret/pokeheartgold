@@ -61,7 +61,7 @@ _0075:
 	npc_msg msg_0069_D23R0105_00000
 	closemsg
 	wait 16, VAR_SPECIAL_x800C
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _00B8
 	apply_movement obj_D23R0105_gsgentleman, _0258

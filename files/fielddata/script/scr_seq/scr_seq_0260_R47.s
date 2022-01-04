@@ -123,7 +123,7 @@ scr_seq_R47_003:
 	apply_movement obj_R47_leader3, _022C
 	wait_movement
 	npc_msg msg_0407_R47_00003
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01EB
 	apply_movement obj_R47_leader3, _0234

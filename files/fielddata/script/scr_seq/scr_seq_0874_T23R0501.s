@@ -49,7 +49,7 @@ scr_seq_T23R0501_001:
 	npc_msg msg_0571_T23R0501_00000
 	scrcmd_049
 	closemsg
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif ne, _00A7
 	goto _00C7

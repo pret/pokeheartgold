@@ -59,7 +59,7 @@ _007D:
 	wait_fanfare
 	gender_msgbox msg_0557_T22FS0101_00005, msg_0557_T22FS0101_00006
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _00C5
 	apply_movement obj_T22FS0101_assistantm, _014C

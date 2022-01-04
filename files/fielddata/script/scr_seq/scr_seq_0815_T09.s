@@ -96,7 +96,7 @@ scr_seq_T09_000:
 	setflag FLAG_UNK_128
 	npc_msg msg_0519_T09_00000
 	closemsg
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0162
 	apply_movement obj_T09_gsleader16, _0268
@@ -120,7 +120,7 @@ _016F:
 _018C:
 	npc_msg msg_0519_T09_00002
 	closemsg
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	get_person_coords 253, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _01C7

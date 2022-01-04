@@ -309,7 +309,7 @@ _0432:
 	wait_movement
 	npc_msg msg_0589_T25R0601_00005
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0460
 	apply_movement obj_T25R0601_gsgirl1, _0134

@@ -191,7 +191,7 @@ scr_seq_T10R0101_008:
 	gotoif ge, _0293
 	npc_msg msg_0522_T10R0101_00005
 	closemsg
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _027D
 	apply_movement obj_T10R0101_counterm, _02A0

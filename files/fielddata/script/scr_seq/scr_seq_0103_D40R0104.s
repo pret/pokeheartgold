@@ -107,7 +107,7 @@ scr_seq_D40R0104_002:
 	wait 60, VAR_SPECIAL_x800C
 	npc_msg msg_0124_D40R0104_00003
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _0142
 	apply_movement obj_D40R0104_bozu, _0168

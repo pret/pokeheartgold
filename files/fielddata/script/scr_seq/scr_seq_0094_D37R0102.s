@@ -153,8 +153,8 @@ _01F5:
 	scrcmd_114
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_349
-	scrcmd_351 VAR_SPECIAL_x800C
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -270,8 +270,8 @@ _0375:
 	scrcmd_114
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_349
-	scrcmd_351 VAR_SPECIAL_x800C
+	party_select_ui
+	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -897,8 +897,8 @@ _0CCC:
 	closemsg
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
-	scrcmd_349
-	scrcmd_351 VAR_TEMP_x4002
+	party_select_ui
+	get_party_selection VAR_TEMP_x4002
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -912,7 +912,7 @@ _0CCC:
 _0D17:
 	npc_msg msg_0117_D37R0102_00043
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x8006
+	get_player_facing VAR_SPECIAL_x8006
 	comparevartovalue VAR_SPECIAL_x8006, 0
 	gotoif eq, _0D49
 	comparevartovalue VAR_SPECIAL_x8006, 2

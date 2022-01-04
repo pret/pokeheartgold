@@ -115,7 +115,7 @@ scr_seq_T11R0701_004:
 	setvar VAR_UNK_4130, 3
 	npc_msg msg_0537_T11R0701_00014
 	closemsg
-	scrcmd_386 VAR_TEMP_x4002
+	get_player_facing VAR_TEMP_x4002
 	comparevartovalue VAR_TEMP_x4002, 0
 	gotoif ne, _01B7
 	apply_movement obj_T11R0701_daigo, _03AC
@@ -194,7 +194,7 @@ _02B6:
 _02F3:
 	npc_msg msg_0537_T11R0701_00022
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0317
 	apply_movement obj_T11R0701_daigo, _03DC
@@ -300,7 +300,7 @@ _0415:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
-	scrcmd_351 VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -325,7 +325,7 @@ _04A2:
 	npc_msg msg_0537_T11R0701_00012
 _04A5:
 	closemsg
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _04C6
 	apply_movement obj_T11R0701_daigo, _0504

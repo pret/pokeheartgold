@@ -219,7 +219,7 @@ scr_seq_T25_007:
 	lockall
 	npc_msg msg_0581_T25_00013
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0284
 	apply_movement obj_T25_rocketm, _02F8

@@ -62,7 +62,7 @@ scr_seq_T07R0102_007:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _01DA
 	npc_msg msg_0495_T07R0102_00003
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _00C9
 	apply_movement obj_T07R0102_leader3, _01E8
@@ -215,7 +215,7 @@ scr_seq_T07R0102_005:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _02ED
 	apply_movement obj_player, _03C4

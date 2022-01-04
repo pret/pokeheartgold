@@ -150,7 +150,7 @@ scr_seq_D23R0104_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0068_D23R0104_00012
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _01BF
 	apply_movement obj_D23R0104_rocketw, _0210

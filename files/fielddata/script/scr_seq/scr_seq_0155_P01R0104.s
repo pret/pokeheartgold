@@ -69,7 +69,7 @@ scr_seq_P01R0104_000:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _00EF
 	apply_movement obj_P01R0104_seaman_2, _0150

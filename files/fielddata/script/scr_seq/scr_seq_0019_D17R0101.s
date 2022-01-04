@@ -54,7 +54,7 @@ _0069:
 scr_seq_D17R0101_001:
 	scrcmd_609
 	lockall
-	scrcmd_386 VAR_TEMP_x400A
+	get_player_facing VAR_TEMP_x400A
 	comparevartovalue VAR_TEMP_x400A, 0
 	gotoif ne, _0097
 	apply_movement obj_D17R0101_bozu, _02D8

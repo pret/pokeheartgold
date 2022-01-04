@@ -101,7 +101,7 @@ _0125:
 	end
 
 _014D:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _016C
 	apply_movement obj_T11R0802_gsgirl1, _02B0
@@ -137,7 +137,7 @@ _01D7:
 	return
 
 _01DB:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01FA
 	apply_movement obj_T11R0802_var_1, _02B0
@@ -239,7 +239,7 @@ scr_seq_T11R0802_003:
 	npc_msg msg_0541_T11R0802_00012
 	waitbutton
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0359
 	apply_movement obj_T11R0802_jupetta, _03C8

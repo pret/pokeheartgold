@@ -114,7 +114,7 @@ scr_seq_P01R0101_000:
 	gotoif FALSE, _0361
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, _0356
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 0
 	gotoif eq, _0320
 	comparevartovalue VAR_UNK_40CB, 7

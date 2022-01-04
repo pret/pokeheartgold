@@ -28,7 +28,7 @@ scr_seq_T27R0201_000:
 	gotoif TRUE, _00E8
 	comparevartovalue VAR_TEMP_x4002, 1
 	gotoif ge, _00C9
-	scrcmd_386 VAR_TEMP_x4001
+	get_player_facing VAR_TEMP_x4001
 	comparevartovalue VAR_TEMP_x4001, 1
 	gotoif eq, _00D4
 	check_badge 3, VAR_SPECIAL_x800C

@@ -19,7 +19,7 @@ scr_seq_T22R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _0049
 	apply_movement obj_T22R0301_gsbigman, _0164

@@ -120,7 +120,7 @@ _019F:
 	gotoif FALSE, _011F
 	npc_msg msg_0377_R30R0201_00007
 	closemsg
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _01CE
 	apply_movement obj_R30R0201_gsgentleman, _01F8

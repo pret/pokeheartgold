@@ -181,7 +181,7 @@ scr_seq_D11R0106_003:
 	gotoif eq, _01CC
 	npc_msg msg_0053_D11R0106_00011
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _027A
 	apply_movement obj_D11R0106_gsassistantm_2, _043C
@@ -270,7 +270,7 @@ scr_seq_D11R0106_006:
 	gotoif eq, _01CC
 	npc_msg msg_0053_D11R0106_00020
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif ne, _0392
 	apply_movement obj_D11R0106_assistantm_2, _046C
@@ -305,7 +305,7 @@ scr_seq_D11R0106_007:
 	gotoif eq, _01CC
 	npc_msg msg_0053_D11R0106_00023
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _0404
 	apply_movement obj_D11R0106_assistantm_3, _0478

@@ -60,7 +60,7 @@ scr_seq_T11R0601_000:
 	end
 
 _00B9:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _00D7
 	npc_msg msg_0535_T11R0601_00005
@@ -146,7 +146,7 @@ scr_seq_T11R0601_007:
 	fade_screen 6, 1, 0, 0x00
 	wait_fade
 	scrcmd_566
-	scrcmd_351 VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
@@ -163,7 +163,7 @@ scr_seq_T11R0601_007:
 	setflag FLAG_UNK_162
 	npc_msg msg_0535_T11R0601_00016
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _022C
 	apply_movement obj_T11R0601_gsleader9, _025C

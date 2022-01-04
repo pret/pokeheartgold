@@ -24,7 +24,7 @@ _0025:
 scr_seq_R24_003:
 	scrcmd_609
 	lockall
-	scrcmd_386 VAR_TEMP_x4000
+	get_player_facing VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0060
 	apply_movement obj_R24_rocketm, _0084

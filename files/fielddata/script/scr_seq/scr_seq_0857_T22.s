@@ -117,7 +117,7 @@ scr_seq_T22_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _0182
 	apply_movement obj_T22_gsbigman, _0388
@@ -159,7 +159,7 @@ _01E9:
 _01F4:
 	npc_msg msg_0556_T22_00003
 	closemsg
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif ne, _0218
 	apply_movement obj_T22_gsbigman, _0418
@@ -181,7 +181,7 @@ _024E:
 	apply_movement obj_T22_gsbigman, _0484
 _0256:
 	wait_movement
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 2
 	gotoif eq, _028B
 	comparevartovalue VAR_SPECIAL_x800C, 3
@@ -628,7 +628,7 @@ _0ADB:
 	return
 
 _0ADD:
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0AFE
 	apply_movement obj_T22_juggrer, _0B28

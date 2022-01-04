@@ -349,11 +349,11 @@ extern BOOL ScrCmd_345(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_346(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_347(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_348(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_349(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartySelectUI(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_350(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_351(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_352(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_353(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PartySelect(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ChooseMoveUI(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetMoveSelection(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartyCountNotEgg(SCRIPTCONTEXT *ctx);
@@ -386,7 +386,7 @@ extern BOOL ScrCmd_382(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_383(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_384(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_385(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_386(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPlayerFacing(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_387(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_388(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_389(SCRIPTCONTEXT *ctx);
@@ -396,7 +396,7 @@ extern BOOL ScrCmd_392(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_393(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_394(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_395(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_396(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountMonMoves(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_397(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_398(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT *ctx);
@@ -657,7 +657,7 @@ extern BOOL ScrCmd_MoveTutorChooseMove(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TutorMoveTeachInSlot(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TutorMoveGetPrice(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_656(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_657(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_StatJudge(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferStatName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetMonForme(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferTrainerName(SCRIPTCONTEXT *ctx);
@@ -778,7 +778,7 @@ extern BOOL ScrCmd_774(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_775(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_777(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_778(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_779(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_780(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
@@ -1204,11 +1204,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_346,
     ScrCmd_347,
     ScrCmd_348,
-    ScrCmd_349,
+    ScrCmd_PartySelectUI,
     ScrCmd_350,
-    ScrCmd_351,
-    ScrCmd_352,
-    ScrCmd_353,
+    ScrCmd_PartySelect,
+    ScrCmd_ChooseMoveUI,
+    ScrCmd_GetMoveSelection,
     ScrCmd_GetPartyMonSpecies,
     ScrCmd_PartymonIsMine,
     ScrCmd_PartyCountNotEgg,
@@ -1241,7 +1241,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_383,
     ScrCmd_384,
     ScrCmd_385,
-    ScrCmd_386,
+    ScrCmd_GetPlayerFacing,
     ScrCmd_387,
     ScrCmd_388,
     ScrCmd_389,
@@ -1251,7 +1251,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_393,
     ScrCmd_394,
     ScrCmd_395,
-    ScrCmd_396,
+    ScrCmd_CountMonMoves,
     ScrCmd_397,
     ScrCmd_398,
     ScrCmd_BufferPartyMonMoveName,
@@ -1512,7 +1512,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_TutorMoveTeachInSlot,
     ScrCmd_TutorMoveGetPrice,
     ScrCmd_656,
-    ScrCmd_657,
+    ScrCmd_StatJudge,
     ScrCmd_BufferStatName,
     ScrCmd_SetMonForme,
     ScrCmd_BufferTrainerName,
@@ -1633,7 +1633,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_775,
     ScrCmd_GiveTogepiEgg,
     ScrCmd_777,
-    ScrCmd_778,
+    ScrCmd_GiveSpikyEarPichu,
     ScrCmd_779,
     ScrCmd_780,
     ScrCmd_781,

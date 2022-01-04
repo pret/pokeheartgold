@@ -30,7 +30,7 @@ scr_seq_D24R0102_000:
 	gotoif TRUE, _0081
 	npc_msg msg_0073_D24R0102_00000
 	setflag FLAG_UNK_10F
-	scrcmd_386 VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0077
 	apply_movement obj_D24R0102_suit, _009C

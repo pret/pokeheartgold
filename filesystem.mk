@@ -434,7 +434,7 @@ $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
 $(DIFF_ARCS):
 	cp $< $@
 
-$(filter-out $(DIFF_ARCS),$(NITROFS_FILES)): ;
+$(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 
 NARCS := $(filter %.narc,$(NITROFS_FILES) $(SRC_ARCS))
 NAIXS := $(NARCS:%.narc=%.naix)
@@ -446,6 +446,8 @@ ifeq ($(NODEP),)
 else
 %.narc: csvdep :=
 endif
+
+include graphics_files_rules.mk
 
 include files/msgdata/msg.mk
 include files/fielddata/script/scr_seq.mk
@@ -464,8 +466,9 @@ include files/poketool/trainer/trainer.mk
 include files/fielddata/mapmatrix/map_matrix.mk
 include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
 include files/data/mmodel/mmodel.mk
+include files/fielddata/wazaoshie/waza_oshie.mk
 
-include graphics_files_rules.mk
+$(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 
 %.narc: NARC_DEPS = $(wildcard $*/*.bin)
 %.narc: $(NARC_DEPS)
