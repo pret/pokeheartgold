@@ -2170,7 +2170,7 @@
 .public ScrCmd_PokeCenAnim
 .public ScrCmd_488
 .public ScrCmd_489
-.public ScrCmd_490
+.public ScrCmd_NopVar490
 .public ScrCmd_491
 .public ScrCmd_492
 .public ScrCmd_PromptEasyChat
@@ -2237,7 +2237,7 @@
 .public ScrCmd_554
 .public ScrCmd_555
 .public ScrCmd_556
-.public ScrCmd_557
+.public ScrCmd_CheckBattlePoints
 .public ScrCmd_558
 .public ScrCmd_559
 .public ScrCmd_560
@@ -2333,9 +2333,9 @@
 .public ScrCmd_ScratchOffCardEnd
 .public ScrCmd_GetScratchOffPrize
 .public ScrCmd_652
-.public ScrCmd_653
-.public ScrCmd_654
-.public ScrCmd_655
+.public ScrCmd_MoveTutorChooseMove
+.public ScrCmd_TutorMoveTeachInSlot
+.public ScrCmd_TutorMoveGetPrice
 .public ScrCmd_656
 .public ScrCmd_657
 .public ScrCmd_BufferStatName
@@ -2464,7 +2464,7 @@
 .public ScrCmd_781
 .public ScrCmd_MartSell
 .public ScrCmd_783
-.public ScrCmd_784
+.public ScrCmd_ScriptOverlayCmd
 .public ScrCmd_785
 .public ScrCmd_786
 .public ScrCmd_787
@@ -4317,12 +4317,12 @@
 .public ov01_021EDF00
 .public ov01_021EDF38
 .public ov01_021EDF78
-.public ov01_021EDF9C
+.public MoveTutorMenu_SetListItem
 .public ov01_021EDFA4
 .public ov01_021EE014
 .public ov01_021EE01C
 .public ov01_021EE0EC
-.public ov01_021EE244
+.public MoveTutorMenu_SetListItem_Internal
 .public ov01_021EE2E4
 .public ov01_021EE324
 .public ov01_021EE434
@@ -5488,9 +5488,9 @@
 .public ov01_02202378
 .public ov01_02202570
 .public ov01_022026F8
-.public ov01_02202C7C
-.public ov01_02202D40
-.public ov01_02202E00
+.public SpeciesAndFormeToWazaOshieIndex
+.public MonGetTutorCompat
+.public WazaOshieGet
 .public ov01_0220305C
 .public ov01_022031C0
 .public ov01_022031E8

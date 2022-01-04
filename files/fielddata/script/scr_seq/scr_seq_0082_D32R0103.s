@@ -19,7 +19,7 @@ scr_seq_D32R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 10440
+	callstd std_frontier_move_tutor_1
 	releaseall
 	end
 
@@ -27,7 +27,7 @@ scr_seq_D32R0103_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 10441
+	callstd std_frontier_move_tutor_2
 	releaseall
 	end
 
@@ -35,7 +35,7 @@ scr_seq_D32R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 10442
+	callstd std_frontier_move_tutor_3
 	releaseall
 	end
 	.balign 4, 0

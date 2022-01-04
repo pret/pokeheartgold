@@ -6,7 +6,7 @@
 #include "msgdata.h"
 #include "string_control_code.h"
 
-const u16 _020F60E0[] = {
+static const u16 sMessageBanks[] = {
     NARC_msg_msg_0294_bin,
     NARC_msg_msg_0296_bin,
     NARC_msg_msg_0292_bin,
@@ -34,9 +34,10 @@ void MailMsg_init_withBank(MAIL_MESSAGE *mailMessage, u16 msgBank) {
     }
 }
 
+// I've entered the Union Room
 void MailMsg_init_default(MAIL_MESSAGE *mailMessage) {
     MailMsg_init_withBank(mailMessage, 4);
-    mailMessage->msg_no = 5;
+    mailMessage->msg_no = msg_0295_00005;
 }
 
 void MailMsg_init_fromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLATE *template) {
@@ -64,7 +65,7 @@ STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId
         BufferECWord(msgFmt, i, mailMessage->fields[i]);
     }
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, _020F60E0[mailMessage->msg_bank], heapId);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], heapId);
     string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, mailMessage->msg_no, heapId);
     DestroyMsgData(msgData);
     ScrStrBufs_delete(msgFmt);
@@ -72,7 +73,7 @@ STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId
 }
 
 STRING *MailMsg_GetRawString(MAIL_MESSAGE *mailMessage, HeapID heapId) {
-    return ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, _020F60E0[mailMessage->msg_bank], mailMessage->msg_no, heapId);
+    return ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], mailMessage->msg_no, heapId);
 }
 
 BOOL MailMsg_IsInit(MAIL_MESSAGE *mailMessage) {
@@ -97,9 +98,9 @@ u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no) {
     const u16 *msg_cstr;
     u32 ret;
 
-    GF_ASSERT(msg_bank < NELEMS(_020F60E0));
+    GF_ASSERT(msg_bank < NELEMS(sMessageBanks));
     GF_ASSERT(msg_no < MailMsg_NumMsgsInBank(msg_bank));
-    msg = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, _020F60E0[msg_bank], msg_no, 0);
+    msg = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[msg_bank], msg_no, 0);
     msg_cstr = String_c_str(msg);
     ret = 0;
     while (*msg_cstr != EOS) {
@@ -147,11 +148,11 @@ void MailMsg_copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src) {
 }
 
 u32 MailMsg_NumMsgsInBank(u16 msg_bank) {
-    return (msg_bank < NELEMS(_020F60E0)) ? 20 : 0;
+    return (msg_bank < NELEMS(sMessageBanks)) ? 20 : 0;
 }
 
 void MailMsg_SetMsgBankAndNum(MAIL_MESSAGE *mailMessage, u16 msg_bank, u16 msg_no) {
-    GF_ASSERT(msg_bank < NELEMS(_020F60E0));
+    GF_ASSERT(msg_bank < NELEMS(sMessageBanks));
     mailMessage->msg_bank = msg_bank;
     mailMessage->msg_no = msg_no;
 }

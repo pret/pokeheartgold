@@ -30,7 +30,7 @@ _002F:
 	end
 
 _003A:
-	scrcmd_784 0, 0
+	script_overlay_cmd 0, 0
 	scrcmd_389 32780, 129
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _005A
@@ -96,7 +96,7 @@ _0146:
 	waitbutton
 _0148:
 	closemsg
-	scrcmd_784 0, 1
+	script_overlay_cmd 0, 1
 	releaseall
 	end
 	.balign 4, 0

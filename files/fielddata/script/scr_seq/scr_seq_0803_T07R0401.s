@@ -35,11 +35,11 @@ _0062:
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _009C
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	scrcmd_532 32780, 3
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _00AB
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 0
 	return
 
@@ -54,7 +54,7 @@ _00AB:
 	npc_msg msg_0508_T07R0401_00022
 	waitbutton
 	closemsg
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 1
 	return
 
@@ -299,7 +299,7 @@ scr_seq_T07R0401_000:
 	end
 
 _0428:
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0508_T07R0401_00002
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -362,7 +362,7 @@ _0531:
 	touchscreen_menu_show
 	scrcmd_117
 	scrcmd_114
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 
@@ -370,7 +370,7 @@ scr_seq_T07R0401_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	checkflag FLAG_UNK_17C
 	gotoif TRUE, _059B
 	npc_msg msg_0508_T07R0401_00011
@@ -392,7 +392,7 @@ _059B:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	end
 
 _05AA:
@@ -400,7 +400,7 @@ _05AA:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	end
 
 _05B9:
@@ -408,7 +408,7 @@ _05B9:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	end
 
 scr_seq_T07R0401_001:

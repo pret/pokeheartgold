@@ -99,11 +99,11 @@ _013D:
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0177
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	scrcmd_532 32780, 3
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0186
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 0
 	return
 
@@ -118,7 +118,7 @@ _0186:
 	npc_msg msg_0599_T25R1101_00026
 	waitbutton
 	closemsg
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 1
 	return
 
@@ -473,7 +473,7 @@ scr_seq_T25R1101_000:
 	end
 
 _069B:
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0599_T25R1101_00002
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -537,7 +537,7 @@ _07A4:
 	touchscreen_menu_show
 	scrcmd_117
 	scrcmd_114
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 
@@ -545,7 +545,7 @@ scr_seq_T25R1101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0599_T25R1101_00007
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -849,7 +849,7 @@ scr_seq_T25R1101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0599_T25R1101_00016
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -1053,7 +1053,7 @@ _11F9:
 _1208:
 	scrcmd_117
 	touchscreen_menu_show
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 

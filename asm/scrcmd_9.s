@@ -962,8 +962,8 @@ ScrCmd_556: ; 0x0204A360
 	.balign 4, 0
 	thumb_func_end ScrCmd_556
 
-	thumb_func_start ScrCmd_557
-ScrCmd_557: ; 0x0204A3A4
+	thumb_func_start ScrCmd_CheckBattlePoints
+ScrCmd_CheckBattlePoints: ; 0x0204A3A4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -1000,7 +1000,7 @@ _0204A3EC:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_557
+	thumb_func_end ScrCmd_CheckBattlePoints
 
 	thumb_func_start sub_0204A3F4
 sub_0204A3F4: ; 0x0204A3F4

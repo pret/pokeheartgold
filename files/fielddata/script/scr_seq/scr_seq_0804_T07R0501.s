@@ -87,7 +87,7 @@ scr_seq_T07R0501_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0509_T07R0501_00009
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -391,7 +391,7 @@ scr_seq_T07R0501_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0509_T07R0501_00018
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -536,7 +536,7 @@ _0A43:
 _0A52:
 	scrcmd_117
 	touchscreen_menu_show
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 

@@ -539,7 +539,7 @@ gScriptCmdTable:
 	.word ScrCmd_PokeCenAnim                            ; 487
 	.word ScrCmd_488                                    ; 488
 	.word ScrCmd_489                                    ; 489
-	.word ScrCmd_490                                    ; 490
+	.word ScrCmd_NopVar490                                    ; 490
 	.word ScrCmd_491                                    ; 491
 	.word ScrCmd_492                                    ; 492
 	.word ScrCmd_PromptEasyChat                         ; 493
@@ -606,7 +606,7 @@ gScriptCmdTable:
 	.word ScrCmd_554                                    ; 554
 	.word ScrCmd_555                                    ; 555
 	.word ScrCmd_556                                    ; 556
-	.word ScrCmd_557                                    ; 557
+	.word ScrCmd_CheckBattlePoints                                    ; 557
 	.word ScrCmd_558                                    ; 558
 	.word ScrCmd_559                                    ; 559
 	.word ScrCmd_560                                    ; 560
@@ -702,9 +702,9 @@ gScriptCmdTable:
 	.word ScrCmd_ScratchOffCardEnd                                    ; 650
 	.word ScrCmd_GetScratchOffPrize                                    ; 651
 	.word ScrCmd_652                                    ; 652
-	.word ScrCmd_653                                    ; 653
-	.word ScrCmd_654                                    ; 654
-	.word ScrCmd_655                                    ; 655
+	.word ScrCmd_MoveTutorChooseMove                                    ; 653
+	.word ScrCmd_TutorMoveTeachInSlot                                    ; 654
+	.word ScrCmd_TutorMoveGetPrice                                    ; 655
 	.word ScrCmd_656                                    ; 656
 	.word ScrCmd_657                                    ; 657
 	.word ScrCmd_BufferStatName                                    ; 658
@@ -833,7 +833,7 @@ gScriptCmdTable:
 	.word ScrCmd_781                                    ; 781
 	.word ScrCmd_MartSell                                    ; 782
 	.word ScrCmd_783                                    ; 783
-	.word ScrCmd_784                                    ; 784
+	.word ScrCmd_ScriptOverlayCmd                                    ; 784
 	.word ScrCmd_785                                    ; 785
 	.word ScrCmd_786                                    ; 786
 	.word ScrCmd_787                                    ; 787
@@ -3253,7 +3253,7 @@ ScrCmd_070: ; 0x02041988
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_070
@@ -15397,7 +15397,7 @@ ScrCmd_MenuItemAdd: ; 0x02047830
 	ldr r0, [r4]
 	add r1, r6, #0
 	add r2, r7, #0
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -15951,8 +15951,10 @@ ScrCmd_783: ; 0x02047C64
 	pop {r4, pc}
 	thumb_func_end ScrCmd_783
 
-	thumb_func_start ScrCmd_784
-ScrCmd_784: ; 0x02047C80
+	; Loads an overlay containing additional script
+	; commands or data
+	thumb_func_start ScrCmd_ScriptOverlayCmd
+ScrCmd_ScriptOverlayCmd: ; 0x02047C80
 	push {r3, lr}
 	ldr r1, [r0, #8]
 	add r3, r1, #1
@@ -15984,7 +15986,7 @@ _02047CB4:
 	pop {r3, pc}
 	.balign 4, 0
 _02047CB8: .word _020FACB0
-	thumb_func_end ScrCmd_784
+	thumb_func_end ScrCmd_ScriptOverlayCmd
 
 	thumb_func_start ScrCmd_CheckBankBalance
 ScrCmd_CheckBankBalance: ; 0x02047CBC

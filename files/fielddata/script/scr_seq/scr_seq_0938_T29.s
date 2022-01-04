@@ -433,9 +433,9 @@ _0597:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 0, 0
+	script_overlay_cmd 0, 0
 	scrcmd_393 0, 1, 129
-	scrcmd_784 0, 1
+	script_overlay_cmd 0, 1
 	buffer_players_name 2
 	scrcmd_055 2, 0
 	scrcmd_057 3

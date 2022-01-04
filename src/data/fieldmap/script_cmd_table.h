@@ -490,7 +490,7 @@ extern BOOL ScrCmd_Dummy(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PokeCenAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_488(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_489(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_490(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NopVar490(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_491(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_492(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx);
@@ -557,7 +557,7 @@ extern BOOL ScrCmd_553(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_554(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_555(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_556(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_557(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckBattlePoints(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_558(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_559(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_560(SCRIPTCONTEXT *ctx);
@@ -653,9 +653,9 @@ extern BOOL ScrCmd_ScratchOffCard(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ScratchOffCardEnd(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetScratchOffPrize(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_652(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_653(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_654(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_655(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MoveTutorChooseMove(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TutorMoveTeachInSlot(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TutorMoveGetPrice(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_656(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_657(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferStatName(SCRIPTCONTEXT *ctx);
@@ -784,7 +784,7 @@ extern BOOL ScrCmd_780(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_783(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_784(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ScriptOverlayCmd(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_785(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_786(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_787(SCRIPTCONTEXT *ctx);
@@ -1345,7 +1345,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PokeCenAnim,
     ScrCmd_488,
     ScrCmd_489,
-    ScrCmd_490,
+    ScrCmd_NopVar490,
     ScrCmd_491,
     ScrCmd_492,
     ScrCmd_PromptEasyChat,
@@ -1412,7 +1412,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_554,
     ScrCmd_555,
     ScrCmd_556,
-    ScrCmd_557,
+    ScrCmd_CheckBattlePoints,
     ScrCmd_558,
     ScrCmd_559,
     ScrCmd_560,
@@ -1508,9 +1508,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_ScratchOffCardEnd,
     ScrCmd_GetScratchOffPrize,
     ScrCmd_652,
-    ScrCmd_653,
-    ScrCmd_654,
-    ScrCmd_655,
+    ScrCmd_MoveTutorChooseMove,
+    ScrCmd_TutorMoveTeachInSlot,
+    ScrCmd_TutorMoveGetPrice,
     ScrCmd_656,
     ScrCmd_657,
     ScrCmd_BufferStatName,
@@ -1639,7 +1639,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_781,
     ScrCmd_MartSell,
     ScrCmd_783,
-    ScrCmd_784,
+    ScrCmd_ScriptOverlayCmd,
     ScrCmd_785,
     ScrCmd_786,
     ScrCmd_787,

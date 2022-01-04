@@ -476,4 +476,58 @@
 
 #define NUM_MOVES   MOVE_SHADOW_FORCE
 
+// Tutor move flags
+#define TUTOR_DIVE                  0
+#define TUTOR_MUD_SLAP              1
+#define TUTOR_FURY_CUTTER           2
+#define TUTOR_ICY_WIND              3
+#define TUTOR_ROLLOUT               4
+#define TUTOR_THUNDER_PUNCH         5
+#define TUTOR_FIRE_PUNCH            6
+#define TUTOR_SUPERPOWER            7
+#define TUTOR_ICE_PUNCH             8
+#define TUTOR_IRON_HEAD             9
+#define TUTOR_AQUA_TAIL            10
+#define TUTOR_OMINOUS_WIND         11
+#define TUTOR_GASTRO_ACID          12
+#define TUTOR_SNORE                13
+#define TUTOR_SPITE                14
+#define TUTOR_AIR_CUTTER           15
+#define TUTOR_HELPING_HAND         16
+#define TUTOR_ENDEAVOR             17
+#define TUTOR_OUTRAGE              18
+#define TUTOR_ANCIENT_POWER        19
+#define TUTOR_SYNTHESIS            20
+#define TUTOR_SIGNAL_BEAM          21
+#define TUTOR_ZEN_HEADBUTT         22
+#define TUTOR_VACUUM_WAVE          23
+#define TUTOR_EARTH_POWER          24
+#define TUTOR_GUNK_SHOT            25
+#define TUTOR_TWISTER              26
+#define TUTOR_SEED_BOMB            27
+#define TUTOR_IRON_DEFENSE         28
+#define TUTOR_MAGNET_RISE          29
+#define TUTOR_LAST_RESORT          30
+#define TUTOR_BOUNCE               31
+#define TUTOR_TRICK                32
+#define TUTOR_HEAT_WAVE            33
+#define TUTOR_KNOCK_OFF            34
+#define TUTOR_SUCKER_PUNCH         35
+#define TUTOR_SWIFT                36
+#define TUTOR_UPROAR               37
+#define TUTOR_SUPER_FANG           38
+#define TUTOR_PAIN_SPLIT           39
+#define TUTOR_STRING_SHOT          40
+#define TUTOR_TAILWIND             41
+#define TUTOR_GRAVITY              42
+#define TUTOR_WORRY_SEED           43
+#define TUTOR_MAGIC_COAT           44
+#define TUTOR_ROLE_PLAY            45
+#define TUTOR_HEAL_BELL            46
+#define TUTOR_LOW_KICK             47
+#define TUTOR_SKY_ATTACK           48
+#define TUTOR_BLOCK                49
+#define TUTOR_BUG_BITE             50
+#define TUTOR_HEADBUTT             51
+
 #endif //POKEHEARTGOLD_CONSTANTS_MOVES_H

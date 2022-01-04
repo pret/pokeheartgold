@@ -44,7 +44,7 @@ scr_seq_T03R0101_014:
 	scrcmd_546 0, VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _00F4
-	scrcmd_490 VAR_TEMP_x4007
+	nop_var_490 VAR_TEMP_x4007
 	setvar VAR_UNK_4083, 1
 	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
@@ -65,7 +65,7 @@ _00E8:
 	goto _0104
 	.byte 0x02, 0x00
 _00F4:
-	scrcmd_490 VAR_TEMP_x4006
+	nop_var_490 VAR_TEMP_x4006
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	goto _0104
 	.byte 0x02, 0x00
@@ -105,7 +105,7 @@ scr_seq_T03R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 2, 0
+	script_overlay_cmd 2, 0
 	checkflag FLAG_MAPTEMP_001
 	gotoif TRUE, _0530
 	comparevartovalue VAR_UNK_407F, 0
@@ -376,7 +376,7 @@ _0575:
 _05E8:
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
-	scrcmd_784 2, 1
+	script_overlay_cmd 2, 1
 	releaseall
 	end
 
@@ -384,7 +384,7 @@ _05FC:
 	waitbutton
 	closemsg
 _0600:
-	scrcmd_784 2, 1
+	script_overlay_cmd 2, 1
 	releaseall
 	end
 
@@ -519,7 +519,7 @@ _07BF:
 	end
 
 _07C1:
-	scrcmd_490 VAR_UNK_4083
+	nop_var_490 VAR_UNK_4083
 	scrcmd_344 0, 0
 	move_person obj_T03R0101_daigo, 26, 0, 7, 1
 	goto _07BF

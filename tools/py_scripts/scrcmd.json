@@ -3084,7 +3084,7 @@
       "switch_arg": 0
     },
     {
-      "name": "scrcmd_490",
+      "name": "nop_var_490",
       "args": [
         "var"
       ]
@@ -3514,7 +3514,7 @@
       ]
     },
     {
-      "name": "scrcmd_557",
+      "name": "check_battle_points",
       "args": [
         "var",
         "var"
@@ -4106,7 +4106,7 @@
       ]
     },
     {
-      "name": "scrcmd_653",
+      "name": "move_tutor_choose_move",
       "args": [
         "var",
         "var",
@@ -4115,7 +4115,7 @@
       ]
     },
     {
-      "name": "scrcmd_654",
+      "name": "tutor_move_teach_in_slot",
       "args": [
         "var",
         "var",
@@ -4123,7 +4123,7 @@
       ]
     },
     {
-      "name": "scrcmd_655",
+      "name": "tutor_move_get_price",
       "args": [
         "var",
         "var"
@@ -4907,7 +4907,7 @@
       ]
     },
     {
-      "name": "scrcmd_784",
+      "name": "script_overlay_cmd",
       "args": [
         1,
         1

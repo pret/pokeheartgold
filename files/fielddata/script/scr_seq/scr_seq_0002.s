@@ -29,7 +29,7 @@ scr_seq_0002_002:
 	goto _005C
 	.byte 0x02, 0x00
 _005C:
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	scrcmd_116 1, 21, 1
 	setvar VAR_SPECIAL_x8004, 4
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
@@ -79,16 +79,16 @@ _011F:
 _0125:
 	setvar VAR_SPECIAL_x8004, 0
 	touchscreen_menu_hide
-	scrcmd_490 VAR_SPECIAL_x8000
-	scrcmd_490 VAR_SPECIAL_x8001
-	scrcmd_490 VAR_SPECIAL_x8002
-	scrcmd_490 VAR_SPECIAL_x8003
+	nop_var_490 VAR_SPECIAL_x8000
+	nop_var_490 VAR_SPECIAL_x8001
+	nop_var_490 VAR_SPECIAL_x8002
+	nop_var_490 VAR_SPECIAL_x8003
 _013D:
-	scrcmd_653 VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	scrcmd_490 VAR_SPECIAL_x8000
-	scrcmd_490 VAR_SPECIAL_x8001
-	scrcmd_490 VAR_SPECIAL_x8002
-	scrcmd_490 VAR_SPECIAL_x8003
+	move_tutor_choose_move VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	nop_var_490 VAR_SPECIAL_x8000
+	nop_var_490 VAR_SPECIAL_x8001
+	nop_var_490 VAR_SPECIAL_x8002
+	nop_var_490 VAR_SPECIAL_x8003
 	copyvar VAR_SPECIAL_x8003, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x8003, 65533
 	gotoif ne, _018F
@@ -113,8 +113,8 @@ _018F:
 	goto _013D
 
 _01D0:
-	scrcmd_655 VAR_SPECIAL_x8003, VAR_SPECIAL_x8005
-	scrcmd_557 VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	tutor_move_get_price VAR_SPECIAL_x8003, VAR_SPECIAL_x8005
+	check_battle_points VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _01EF
 	goto _0224
@@ -156,14 +156,14 @@ _0241:
 	scrcmd_117
 	scrcmd_352 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
 	scrcmd_353 1, VAR_SPECIAL_x8006
-	scrcmd_490 VAR_SPECIAL_x8006
+	nop_var_490 VAR_SPECIAL_x8006
 	scrcmd_150
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif eq, _03A4
-	scrcmd_490 VAR_SPECIAL_x8006
+	nop_var_490 VAR_SPECIAL_x8006
 	buffer_party_mon_move_name 2, VAR_SPECIAL_x8001, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8004, 9
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
@@ -202,7 +202,7 @@ _0328:
 	wait_fanfare
 	scrcmd_556 VAR_SPECIAL_x8005
 	scrcmd_118 1
-	scrcmd_654 VAR_SPECIAL_x8001, VAR_SPECIAL_x8006, VAR_SPECIAL_x8003
+	tutor_move_teach_in_slot VAR_SPECIAL_x8001, VAR_SPECIAL_x8006, VAR_SPECIAL_x8003
 _0352:
 	comparevartovalue VAR_SPECIAL_x8007, 0
 	gotoif ne, _0368
@@ -222,7 +222,7 @@ _0381:
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	endstd
 	end
 
@@ -232,7 +232,7 @@ _0391:
 	closemsg
 	touchscreen_menu_show
 	scrcmd_117
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	endstd
 	end
 

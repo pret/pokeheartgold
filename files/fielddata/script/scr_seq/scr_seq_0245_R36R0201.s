@@ -50,7 +50,7 @@ scr_seq_R36R0201_002:
 	lockall
 	apply_movement obj_player, _0120
 	wait_movement
-	callstd 10406
+	callstd std_bug_contest_guard_ask_end
 	comparevartovalue VAR_UNK_4118, 1
 	gotoif ne, _011A
 	scrcmd_602 0
@@ -100,7 +100,7 @@ scr_seq_R36R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 10405
+	callstd std_bug_contest_guard_start
 	comparevartovalue VAR_UNK_4118, 1
 	gotoif ne, _0231
 	checkflag FLAG_UNK_1C4

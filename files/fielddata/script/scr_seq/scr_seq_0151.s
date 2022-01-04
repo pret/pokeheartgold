@@ -97,7 +97,7 @@ scr_seq_0151_005:
 	end
 
 _0114:
-	checkflag FLAG_UNK_AA7
+	checkflag FLAG_DAILY_DID_BUG_CONTEST
 	gotoif TRUE, _02A6
 	get_weekday VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 2
@@ -175,10 +175,10 @@ _0224:
 	setflag FLAG_UNK_24E
 	setvar VAR_UNK_4118, 1
 	setvar VAR_UNK_40F7, 1
-	scrcmd_784 1, 0
+	script_overlay_cmd 1, 0
 	scrcmd_785 0, 16384
 	call _0268
-	scrcmd_784 1, 1
+	script_overlay_cmd 1, 1
 	setflag FLAG_UNK_996
 	goto _0262
 	.byte 0x02, 0x00
@@ -259,7 +259,7 @@ scr_seq_0151_007:
 	lockall
 	setvar VAR_UNK_4118, 0
 	setvar VAR_UNK_40F7, 0
-	scrcmd_784 1, 0
+	script_overlay_cmd 1, 0
 	scrcmd_787 16384, 16385, 16386
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
@@ -357,12 +357,12 @@ _04B5:
 	play_bgm SEQ_GS_D_KOUEN
 	scrcmd_103
 	call _04FD
-	setflag FLAG_UNK_AA7
+	setflag FLAG_DAILY_DID_BUG_CONTEST
 	clearflag FLAG_UNK_993
 	clearflag FLAG_UNK_24E
 	clearflag FLAG_UNK_15F
 	scrcmd_785 1, 0
-	scrcmd_784 1, 1
+	script_overlay_cmd 1, 1
 	fade_out_bgm 0, 30
 	reset_bgm
 	releaseall

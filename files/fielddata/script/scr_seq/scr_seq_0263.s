@@ -12,7 +12,7 @@ scr_seq_0263_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	scrcmd_116 1, 21, 1
 	checkflag FLAG_GOT_SCRATCH_CARD_INFO
 	gotoif TRUE, _0038
@@ -45,7 +45,7 @@ _0097:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _016B
-	scrcmd_557 1, VAR_SPECIAL_x800C
+	check_battle_points 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _015E
 	scrcmd_556 1
@@ -97,14 +97,14 @@ _0183:
 	waitbutton
 	closemsg
 	scrcmd_117
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 
 _0191:
 	waitbutton
 	closemsg
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 

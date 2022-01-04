@@ -148,7 +148,7 @@ scr_seq_T25SP0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0603_T25SP0101_00000
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -451,7 +451,7 @@ scr_seq_T25SP0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0603_T25SP0101_00009
 	touchscreen_menu_hide
 	scrcmd_116 0, 20, 2
@@ -657,7 +657,7 @@ _0C17:
 _0C26:
 	scrcmd_117
 	touchscreen_menu_show
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 	.balign 4, 0

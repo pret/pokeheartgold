@@ -231,7 +231,7 @@ scr_seq_P01R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_490 VAR_UNK_40CB
+	nop_var_490 VAR_UNK_40CB
 	comparevartovalue VAR_UNK_40CB, 7
 	gotoif lt, _02FA
 	npc_msg msg_0259_P01R0301_00009

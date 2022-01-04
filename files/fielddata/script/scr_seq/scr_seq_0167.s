@@ -192,7 +192,7 @@ _028F:
 	update_avatar_state
 	apply_movement obj_player, _0934
 	wait_movement
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_602 0
@@ -242,7 +242,7 @@ _028F:
 	closemsg
 	releaseall
 	scrcmd_606
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	end
 
 _045C:
@@ -257,7 +257,7 @@ _0464:
 	return
 
 _046F:
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -882,7 +882,7 @@ _0DD7:
 	update_avatar_state
 	apply_movement obj_player, _0934
 	wait_movement
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	fade_screen 6, 1, 1, 0x00
 	wait_fade
 	scrcmd_602 0
@@ -945,7 +945,7 @@ _0EB8:
 	closemsg
 	releaseall
 	scrcmd_606
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	end
 
 _0F43:

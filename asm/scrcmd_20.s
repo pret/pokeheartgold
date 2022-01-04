@@ -8,8 +8,8 @@ _020FC224:
 
 	.text
 
-	thumb_func_start ScrCmd_490
-ScrCmd_490: ; 0x0204EE20
+	thumb_func_start ScrCmd_NopVar490
+ScrCmd_NopVar490: ; 0x0204EE20
 	; Essentially a nop
 	push {r4, lr}
 	add r4, r0, #0
@@ -21,7 +21,7 @@ ScrCmd_490: ; 0x0204EE20
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_490
+	thumb_func_end ScrCmd_NopVar490
 
 	thumb_func_start ScrCmd_491
 ScrCmd_491: ; 0x0204EE38

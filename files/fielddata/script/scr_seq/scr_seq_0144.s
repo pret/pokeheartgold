@@ -14,7 +14,7 @@
 scr_seq_0144_000:
 	scrcmd_489 0
 	scrcmd_813 VAR_TEMP_x4000
-	scrcmd_490 VAR_TEMP_x4000
+	nop_var_490 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0035
 	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
@@ -38,7 +38,7 @@ _005A:
 scr_seq_0144_003:
 	scrcmd_489 0
 	scrcmd_813 VAR_TEMP_x4000
-	scrcmd_490 VAR_TEMP_x4000
+	nop_var_490 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _0083
 	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN

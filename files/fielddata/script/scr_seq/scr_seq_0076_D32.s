@@ -405,7 +405,7 @@ scr_seq_D32_022:
 	lockall
 	faceplayer
 	setvar VAR_SPECIAL_x8000, 0
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	scrcmd_116 1, 21, 1
 	npc_msg msg_0100_D32_00021
 	touchscreen_menu_hide
@@ -681,7 +681,7 @@ _09F3:
 	goto _0F76
 
 _0A24:
-	scrcmd_557 VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
+	check_battle_points VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0A9B
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -737,7 +737,7 @@ _0B02:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	end
 
 scr_seq_D32_024:
@@ -745,7 +745,7 @@ scr_seq_D32_024:
 	lockall
 	faceplayer
 	setvar VAR_SPECIAL_x8000, 1
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	scrcmd_116 1, 21, 1
 	npc_msg msg_0100_D32_00021
 	touchscreen_menu_hide

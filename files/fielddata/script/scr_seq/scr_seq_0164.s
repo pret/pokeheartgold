@@ -348,8 +348,8 @@ _04EC:
 	end
 
 _04F8:
-	scrcmd_490 VAR_TEMP_x4001
-	scrcmd_490 VAR_TEMP_x4002
+	nop_var_490 VAR_TEMP_x4001
+	nop_var_490 VAR_TEMP_x4002
 	comparevartovalue VAR_UNK_412F, 0
 	gotoif ne, _0516
 	npc_msg msg_0267_00029

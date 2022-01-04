@@ -2785,7 +2785,7 @@
 	.endif
 	.endm
 
-	.macro scrcmd_490 arg0
+	.macro nop_var_490 arg0
 	.short 490
 	.short \arg0
 	.endm
@@ -3158,7 +3158,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_557 arg0, arg1
+	.macro check_battle_points arg0, arg1
 	.short 557
 	.short \arg0
 	.short \arg1
@@ -3680,22 +3680,22 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_653 arg0, arg1, arg2, arg3
+	.macro move_tutor_choose_move mon_slot, tutor_no, arg2, arg3
 	.short 653
-	.short \arg0
-	.short \arg1
+	.short \mon_slot
+	.short \tutor_no
 	.short \arg2
 	.short \arg3
 	.endm
 
-	.macro scrcmd_654 arg0, arg1, arg2
+	.macro tutor_move_teach_in_slot party_slot, move_slot, move
 	.short 654
-	.short \arg0
-	.short \arg1
-	.short \arg2
+	.short \party_slot
+	.short \move_slot
+	.short \move
 	.endm
 
-	.macro scrcmd_655 arg0, arg1
+	.macro tutor_move_get_price arg0, arg1
 	.short 655
 	.short \arg0
 	.short \arg1
@@ -4389,7 +4389,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_784 arg0, arg1
+	.macro script_overlay_cmd arg0, arg1
 	.short 784
 	.byte \arg0
 	.byte \arg1

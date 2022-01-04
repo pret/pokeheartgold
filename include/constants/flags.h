@@ -2046,7 +2046,7 @@
 #define FLAG_UNK_AA4                                               0xAA4
 #define FLAG_UNK_AA5                                               0xAA5
 #define FLAG_UNK_AA6                                               0xAA6
-#define FLAG_UNK_AA7                                               0xAA7
+#define FLAG_DAILY_DID_BUG_CONTEST                                 0xAA7
 #define FLAG_UNK_AA8                                               0xAA8
 #define FLAG_UNK_AA9                                               0xAA9
 #define FLAG_UNK_AAA                                               0xAAA

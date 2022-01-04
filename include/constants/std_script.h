@@ -631,6 +631,13 @@
 #define std_trainer_house_cal_9        10361
 
 #define _std_bug_contest               10400
+#define std_bug_contest_guard_start    10405
+#define std_bug_contest_guard_ask_end  10406
+
+#define _std_frontier_move_tutor       10440
+#define std_frontier_move_tutor_1      10440
+#define std_frontier_move_tutor_2      10441
+#define std_frontier_move_tutor_3      10442
 
 #define _std_scratch_card              10490
 #define std_scratch_card               10490

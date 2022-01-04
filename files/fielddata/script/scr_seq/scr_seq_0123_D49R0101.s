@@ -576,7 +576,7 @@ scr_seq_D49R0101_019:
 scr_seq_D49R0101_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_784 3, 0
+	script_overlay_cmd 3, 0
 	npc_msg msg_0138_D49R0101_00085
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
@@ -602,7 +602,7 @@ _0748:
 	waitbutton
 	closemsg
 	releaseall
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	end
 
 _0759:
@@ -791,7 +791,7 @@ _0A35:
 _0A52:
 	scrcmd_117
 _0A54:
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 
@@ -806,7 +806,7 @@ _0A5C:
 _0A75:
 	scrcmd_117
 _0A77:
-	scrcmd_784 3, 1
+	script_overlay_cmd 3, 1
 	releaseall
 	end
 

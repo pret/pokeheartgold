@@ -1,4 +1,5 @@
 #include "constants/sndseq.h"
+#include "constants/moves.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -17637,12 +17638,12 @@ ov01_021EDF78: ; 0x021EDF78
 	.balign 4, 0
 	thumb_func_end ov01_021EDF78
 
-	thumb_func_start ov01_021EDF9C
-ov01_021EDF9C: ; 0x021EDF9C
+	thumb_func_start MoveTutorMenu_SetListItem
+MoveTutorMenu_SetListItem: ; 0x021EDF9C
 	push {r3, lr}
-	bl ov01_021EE244
+	bl MoveTutorMenu_SetListItem_Internal
 	pop {r3, pc}
-	thumb_func_end ov01_021EDF9C
+	thumb_func_end MoveTutorMenu_SetListItem
 
 	thumb_func_start ov01_021EDFA4
 ov01_021EDFA4: ; 0x021EDFA4
@@ -17989,8 +17990,8 @@ _021EE23C: .word 0x000003D9
 _021EE240: .word ov01_021EE49C
 	thumb_func_end ov01_021EE0EC
 
-	thumb_func_start ov01_021EE244
-ov01_021EE244: ; 0x021EE244
+	thumb_func_start MoveTutorMenu_SetListItem_Internal
+MoveTutorMenu_SetListItem_Internal: ; 0x021EE244
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	str r1, [sp]
@@ -18069,7 +18070,7 @@ _021EE2C4:
 	strb r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021EE244
+	thumb_func_end MoveTutorMenu_SetListItem_Internal
 
 	thumb_func_start ov01_021EE2E4
 ov01_021EE2E4: ; 0x021EE2E4
@@ -62031,7 +62032,7 @@ ScrCmd_652: ; 0x02202B00
 	bl GetPartyMonByIndex
 	add r1, r7, #0
 	mov r2, #0
-	bl ov01_02202D40
+	bl MonGetTutorCompat
 	cmp r0, #0
 	bne _02202B60
 	mov r0, #0
@@ -62053,8 +62054,8 @@ _02202B74:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_652
 
-	thumb_func_start ScrCmd_654
-ScrCmd_654: ; 0x02202B78
+	thumb_func_start ScrCmd_TutorMoveTeachInSlot
+ScrCmd_TutorMoveTeachInSlot: ; 0x02202B78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62091,10 +62092,10 @@ ScrCmd_654: ; 0x02202B78
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_654
+	thumb_func_end ScrCmd_TutorMoveTeachInSlot
 
-	thumb_func_start ScrCmd_655
-ScrCmd_655: ; 0x02202BD0
+	thumb_func_start ScrCmd_TutorMoveGetPrice
+ScrCmd_TutorMoveGetPrice: ; 0x02202BD0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -62110,14 +62111,14 @@ ScrCmd_655: ; 0x02202BD0
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl GetVarPointer
-	ldr r2, _02202C20 ; =ov01_022093E0
+	ldr r2, _02202C20 ; =sTutorMoves
 	add r5, r0, #0
 	mov r1, #0
 _02202BFC:
 	ldrh r0, [r2]
 	cmp r4, r0
 	bne _02202C0E
-	ldr r0, _02202C24 ; =ov01_022093E0 + 2
+	ldr r0, _02202C24 ; =sTutorMoves + 2
 	lsl r1, r1, #2
 	ldrb r0, [r0, r1]
 	strh r0, [r5]
@@ -62133,9 +62134,9 @@ _02202C0E:
 	strh r0, [r5]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02202C20: .word ov01_022093E0
-_02202C24: .word ov01_022093E0 + 2
-	thumb_func_end ScrCmd_655
+_02202C20: .word sTutorMoves
+_02202C24: .word sTutorMoves + 2
+	thumb_func_end ScrCmd_TutorMoveGetPrice
 
 	thumb_func_start ScrCmd_656
 ScrCmd_656: ; 0x02202C28
@@ -62164,7 +62165,7 @@ ScrCmd_656: ; 0x02202C28
 	bl GetPartyMonByIndex
 	mov r1, #3
 	mov r2, #0
-	bl ov01_02202D40
+	bl MonGetTutorCompat
 	cmp r0, #0
 	beq _02202C72
 	mov r0, #1
@@ -62178,8 +62179,10 @@ _02202C74:
 	.balign 4, 0
 	thumb_func_end ScrCmd_656
 
-	thumb_func_start ov01_02202C7C
-ov01_02202C7C: ; 0x02202C7C
+	thumb_func_start SpeciesAndFormeToWazaOshieIndex
+SpeciesAndFormeToWazaOshieIndex: ; 0x02202C7C
+	; Convert species and forme into
+	; naix for tutor compat
 	ldr r2, _02202D3C ; =0x000001DF
 	cmp r0, r2
 	bgt _02202CA0
@@ -62293,10 +62296,10 @@ _02202D32:
 	bx lr
 	nop
 _02202D3C: .word 0x000001DF
-	thumb_func_end ov01_02202C7C
+	thumb_func_end SpeciesAndFormeToWazaOshieIndex
 
-	thumb_func_start ov01_02202D40
-ov01_02202D40: ; 0x02202D40
+	thumb_func_start MonGetTutorCompat
+MonGetTutorCompat: ; 0x02202D40
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -62304,6 +62307,7 @@ ov01_02202D40: ; 0x02202D40
 	add r7, r2, #0
 	mov r4, #0
 	add r5, sp, #4
+	; Get the poke's current moveset
 _02202D4E:
 	add r1, r4, #0
 	add r0, r6, #0
@@ -62315,6 +62319,8 @@ _02202D4E:
 	add r5, r5, #2
 	cmp r4, #4
 	blt _02202D4E
+	; Get species and forme, then
+	; get tutor compat flags
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
@@ -62329,15 +62335,17 @@ _02202D4E:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl ov01_02202C7C
+	bl SpeciesAndFormeToWazaOshieIndex
 	add r1, r0, #0
 	mov r0, #0xb
-	bl ov01_02202E00
+	bl WazaOshieGet
 	mov r6, #0
 	mov ip, r0
-	ldr r1, _02202DFC ; =ov01_022093E0
+	ldr r1, _02202DFC ; =sTutorMoves
 	add r0, r6, #0
 _02202D98:
+	; waza_oshie.bin entries are 64-bit
+	; flag arrays
 	asr r2, r0, #2
 	lsr r2, r2, #0x1d
 	add r2, r0, r2
@@ -62391,11 +62399,11 @@ _02202DE6:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02202DFC: .word ov01_022093E0
-	thumb_func_end ov01_02202D40
+_02202DFC: .word sTutorMoves
+	thumb_func_end MonGetTutorCompat
 
-	thumb_func_start ov01_02202E00
-ov01_02202E00: ; 0x02202E00
+	thumb_func_start WazaOshieGet
+WazaOshieGet: ; 0x02202E00
 	push {r3, r4, r5, lr}
 	sub sp, #0x48
 	add r5, r0, #0
@@ -62415,7 +62423,7 @@ _02202E24:
 	ldr r1, [sp, #0x28]
 	ldr r0, [sp, #0x24]
 	sub r1, r1, r0
-	ldr r0, _02202E64 ; =0x00000FC8
+	ldr r0, _02202E64 ; =505 * 8
 	cmp r1, r0
 	beq _02202E34
 	bl GF_AssertFail
@@ -62439,11 +62447,11 @@ _02202E34:
 	pop {r3, r4, r5, pc}
 	nop
 _02202E60: .word ov01_02209AF4
-_02202E64: .word 0x00000FC8
-	thumb_func_end ov01_02202E00
+_02202E64: .word 505 * 8
+	thumb_func_end WazaOshieGet
 
-	thumb_func_start ScrCmd_653
-ScrCmd_653: ; 0x02202E68
+	thumb_func_start ScrCmd_MoveTutorChooseMove
+ScrCmd_MoveTutorChooseMove: ; 0x02202E68
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x6c
 	str r0, [sp, #0x14]
@@ -62494,7 +62502,7 @@ ScrCmd_653: ; 0x02202E68
 	bl GetPartyMonByIndex
 	add r1, r7, #0
 	add r2, sp, #0x38
-	bl ov01_02202D40
+	bl MonGetTutorCompat
 	str r0, [sp, #0x34]
 	cmp r0, #7
 	bgt _02202EF2
@@ -62578,7 +62586,7 @@ _02202F82:
 	ldrb r1, [r5]
 	ldr r0, [sp, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0220304C ; =ov01_022093E0
+	ldr r1, _0220304C ; =sTutorMoves
 	ldrh r1, [r1, r2]
 	add r2, r7, #0
 	bl ReadMsgDataIntoString
@@ -62598,7 +62606,7 @@ _02202F82:
 	ldr r0, [r4]
 	mov r1, #1
 	lsl r3, r2, #2
-	ldr r2, _0220304C ; =ov01_022093E0
+	ldr r2, _0220304C ; =sTutorMoves
 	add r2, r2, r3
 	ldrb r2, [r2, #2]
 	mov r3, #2
@@ -62607,11 +62615,11 @@ _02202F82:
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x18]
 	lsl r6, r3, #2
-	ldr r3, _0220304C ; =ov01_022093E0
+	ldr r3, _0220304C ; =sTutorMoves
 	ldr r0, [r0]
 	ldrh r3, [r3, r6]
 	mov r2, #0xff
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	ldr r0, [sp, #0x30]
 	add r5, r5, #1
 	add r1, r0, #1
@@ -62632,14 +62640,14 @@ _02202FE2:
 	ldr r0, [r0]
 	mov r1, #2
 	mov r2, #0xff
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 _02203002:
 	ldr r0, [sp, #0x24]
 	ldr r3, _02203054 ; =0x0000FFFE
 	ldr r0, [r0]
 	mov r1, #3
 	mov r2, #0xff
-	bl ov01_021EDF9C
+	bl MoveTutorMenu_SetListItem
 	ldr r1, [sp, #0x14]
 	ldr r0, [sp, #0x28]
 	ldr r1, [r1, #0x64]
@@ -62665,11 +62673,11 @@ _02203002:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02203048: .word 0x000002EE
-_0220304C: .word ov01_022093E0
+_0220304C: .word sTutorMoves
 _02203050: .word 0x0000FFFD
 _02203054: .word 0x0000FFFE
 _02203058: .word ov01_0220305C
-	thumb_func_end ScrCmd_653
+	thumb_func_end ScrCmd_MoveTutorChooseMove
 
 	thumb_func_start ov01_0220305C
 ov01_0220305C: ; 0x0220305C
@@ -71598,59 +71606,111 @@ ov01_022093D0:
 	.word 7, 3
 	.word 5, 2
 
-ov01_022093E0: ; 0x022093E0
-	.byte 0x23, 0x01, 0x28, 0x00
-	.byte 0xBD, 0x00, 0x20, 0x01
-	.byte 0xD2, 0x00, 0x20, 0x00
-	.byte 0xC4, 0x00, 0x30, 0x00
-	.byte 0xCD, 0x00, 0x20, 0x01
-	.byte 0x09, 0x00, 0x40, 0x00
-	.byte 0x07, 0x00, 0x40, 0x00
-	.byte 0x14, 0x01, 0x30, 0x01
-	.byte 0x08, 0x00, 0x40, 0x00
-	.byte 0xBA, 0x01, 0x28, 0x01
-	.byte 0x91, 0x01, 0x28, 0x01
-	.byte 0xD2, 0x01, 0x30, 0x00
-	.byte 0x7C, 0x01, 0x20, 0x01
-	.byte 0xAD, 0x00, 0x20, 0x02
-	.byte 0xB4, 0x00, 0x28, 0x02
-	.byte 0x3A, 0x01, 0x30, 0x00
-	.byte 0x0E, 0x01, 0x28, 0x02
-	.byte 0x1B, 0x01, 0x40, 0x01
-	.byte 0xC8, 0x00, 0x30, 0x01
-	.byte 0xF6, 0x00, 0x28, 0x01
-	.byte 0xEB, 0x00, 0x28, 0x02
-	.byte 0x44, 0x01, 0x28, 0x01
-	.byte 0xAC, 0x01, 0x40, 0x00
-	.byte 0x9A, 0x01, 0x30, 0x00
-	.byte 0x9E, 0x01, 0x28, 0x01
-	.byte 0xB9, 0x01, 0x20, 0x01
-	.byte 0xEF, 0x00, 0x28, 0x01
-	.byte 0x92, 0x01, 0x28, 0x01
-	.byte 0x4E, 0x01, 0x28, 0x01
-	.byte 0x89, 0x01, 0x28, 0x02
-	.byte 0x83, 0x01, 0x30, 0x02
-	.byte 0x54, 0x01, 0x20, 0x01
-	.byte 0x0F, 0x01, 0x30, 0x00
-	.byte 0x01, 0x01, 0x30, 0x01
-	.byte 0x1A, 0x01, 0x28, 0x00
-	.byte 0x85, 0x01, 0x28, 0x00
-	.byte 0x81, 0x00, 0x28, 0x02
-	.byte 0xFD, 0x00, 0x30, 0x02
-	.byte 0xA2, 0x00, 0x28, 0x01
-	.byte 0xDC, 0x00, 0x40, 0x01
-	.byte 0x51, 0x00, 0x20, 0x02
-	.byte 0x6E, 0x01, 0x30, 0x02
-	.byte 0x64, 0x01, 0x20, 0x02
-	.byte 0x84, 0x01, 0x20, 0x02
-	.byte 0x15, 0x01, 0x20, 0x02
-	.byte 0x10, 0x01, 0x30, 0x02
-	.byte 0xD7, 0x00, 0x30, 0x02
-	.byte 0x43, 0x00, 0x20, 0x01
-	.byte 0x8F, 0x00, 0x40, 0x01
-	.byte 0x4F, 0x01, 0x20, 0x02
-	.byte 0xC2, 0x01, 0x20, 0x00
-	.byte 0x1D, 0x00, 0x00, 0x03
+sTutorMoves: ; 0x022093E0
+	.short MOVE_DIVE
+	.byte 40, 0
+	.short MOVE_MUD_SLAP
+	.byte 32, 1
+	.short MOVE_FURY_CUTTER
+	.byte 32, 0
+	.short MOVE_ICY_WIND
+	.byte 48, 0
+	.short MOVE_ROLLOUT
+	.byte 32, 1
+	.short MOVE_THUNDER_PUNCH
+	.byte 64, 0
+	.short MOVE_FIRE_PUNCH
+	.byte 64, 0
+	.short MOVE_SUPERPOWER
+	.byte 48, 1
+	.short MOVE_ICE_PUNCH
+	.byte 64, 0
+	.short MOVE_IRON_HEAD
+	.byte 40, 1
+	.short MOVE_AQUA_TAIL
+	.byte 40, 1
+	.short MOVE_OMINOUS_WIND
+	.byte 48, 0
+	.short MOVE_GASTRO_ACID
+	.byte 32, 1
+	.short MOVE_SNORE
+	.byte 32, 2
+	.short MOVE_SPITE
+	.byte 40, 2
+	.short MOVE_AIR_CUTTER
+	.byte 48, 0
+	.short MOVE_HELPING_HAND
+	.byte 40, 2
+	.short MOVE_ENDEAVOR
+	.byte 64, 1
+	.short MOVE_OUTRAGE
+	.byte 48, 1
+	.short MOVE_ANCIENT_POWER
+	.byte 40, 1
+	.short MOVE_SYNTHESIS
+	.byte 40, 2
+	.short MOVE_SIGNAL_BEAM
+	.byte 40, 1
+	.short MOVE_ZEN_HEADBUTT
+	.byte 64, 0
+	.short MOVE_VACUUM_WAVE
+	.byte 48, 0
+	.short MOVE_EARTH_POWER
+	.byte 40, 1
+	.short MOVE_GUNK_SHOT
+	.byte 32, 1
+	.short MOVE_TWISTER
+	.byte 40, 1
+	.short MOVE_SEED_BOMB
+	.byte 40, 1
+	.short MOVE_IRON_DEFENSE
+	.byte 40, 1
+	.short MOVE_MAGNET_RISE
+	.byte 40, 2
+	.short MOVE_LAST_RESORT
+	.byte 48, 2
+	.short MOVE_BOUNCE
+	.byte 32, 1
+	.short MOVE_TRICK
+	.byte 48, 0
+	.short MOVE_HEAT_WAVE
+	.byte 48, 1
+	.short MOVE_KNOCK_OFF
+	.byte 40, 0
+	.short MOVE_SUCKER_PUNCH
+	.byte 40, 0
+	.short MOVE_SWIFT
+	.byte 40, 2
+	.short MOVE_UPROAR
+	.byte 48, 2
+	.short MOVE_SUPER_FANG
+	.byte 40, 1
+	.short MOVE_PAIN_SPLIT
+	.byte 64, 1
+	.short MOVE_STRING_SHOT
+	.byte 32, 2
+	.short MOVE_TAILWIND
+	.byte 48, 2
+	.short MOVE_GRAVITY
+	.byte 32, 2
+	.short MOVE_WORRY_SEED
+	.byte 32, 2
+	.short MOVE_MAGIC_COAT
+	.byte 32, 2
+	.short MOVE_ROLE_PLAY
+	.byte 48, 2
+	.short MOVE_HEAL_BELL
+	.byte 48, 2
+	.short MOVE_LOW_KICK
+	.byte 32, 1
+	.short MOVE_SKY_ATTACK
+	.byte 64, 1
+	.short MOVE_BLOCK
+	.byte 32, 2
+	.short MOVE_BUG_BITE
+	.byte 32, 0
+	.short MOVE_HEADBUTT
+	.byte 0, 3
 
 ov01_022094B0: ; 0x022094B0
 	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00

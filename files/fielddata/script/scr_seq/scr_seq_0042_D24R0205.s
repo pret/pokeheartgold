@@ -34,16 +34,16 @@ _0061:
 	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
 	comparevartovalue VAR_TEMP_x4007, 1
 	callif eq, _009F
-	scrcmd_490 VAR_TEMP_x4005
-	scrcmd_490 VAR_TEMP_x4007
+	nop_var_490 VAR_TEMP_x4005
+	nop_var_490 VAR_TEMP_x4007
 	end
 
 _007F:
 	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	comparevartovalue VAR_TEMP_x4006, 1
 	callif eq, _009F
-	scrcmd_490 VAR_TEMP_x4005
-	scrcmd_490 VAR_TEMP_x4006
+	nop_var_490 VAR_TEMP_x4005
+	nop_var_490 VAR_TEMP_x4006
 	end
 
 _009D:

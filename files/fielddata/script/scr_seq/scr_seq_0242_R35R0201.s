@@ -29,7 +29,7 @@ scr_seq_R35R0201_010:
 	apply_movement obj_player, _00D8
 	apply_movement obj_R35R0201_counterm_3, _00E0
 	wait_movement
-	callstd 10406
+	callstd std_bug_contest_guard_ask_end
 	comparevartovalue VAR_UNK_4118, 1
 	gotoif ne, _00D2
 	scrcmd_602 0
@@ -260,7 +260,7 @@ scr_seq_R35R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	callstd 10405
+	callstd std_bug_contest_guard_start
 	comparevartovalue VAR_UNK_4118, 1
 	gotoif ne, _0438
 	checkflag FLAG_UNK_1C4

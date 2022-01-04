@@ -99,11 +99,11 @@ _0118:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0186
-	scrcmd_784 4, 0
+	script_overlay_cmd 4, 0
 	scrcmd_809 VAR_TEMP_x4000
 	scrcmd_049
 	closemsg
-	scrcmd_784 4, 1
+	script_overlay_cmd 4, 1
 	scrcmd_808 VAR_TEMP_x4000
 	check_battle_won VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1

@@ -28,7 +28,7 @@ _004D:
 scr_seq_D24R0207_001:
 	comparevartovalue VAR_UNK_40D5, 1
 	gotoif ne, _0064
-	scrcmd_490 VAR_UNK_40D5
+	nop_var_490 VAR_UNK_40D5
 	scrcmd_375 255
 _0064:
 	end

@@ -44,7 +44,7 @@ _007D:
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 10
 	setvar VAR_TEMP_x4002, 48
-	scrcmd_784 1, 0
+	script_overlay_cmd 1, 0
 _009F:
 	scrcmd_790 16384, 16388
 	comparevartovalue VAR_TEMP_x4004, 1
@@ -56,7 +56,7 @@ _00C4:
 	addvar VAR_TEMP_x4001, 1
 	comparevartovalue VAR_TEMP_x4000, 10
 	gotoif lt, _009F
-	scrcmd_784 1, 1
+	script_overlay_cmd 1, 1
 	return
 
 scr_seq_D22R0101_025:
