@@ -25901,7 +25901,7 @@ sub_02067A88: ; 0x02067A88
 	ldr r0, [r5, #0xc]
 	bl Save_Roamers_get
 	mov r1, #0
-	bl sub_0202DB18
+	bl RoamerSave_SetFlute
 	add r0, r5, #0
 	mov r1, #0
 	add r0, #0x7e
@@ -25949,7 +25949,7 @@ sub_02067AE4: ; 0x02067AE4
 	ldr r0, [r5, #0xc]
 	bl Save_Roamers_get
 	mov r1, #0
-	bl sub_0202DB18
+	bl RoamerSave_SetFlute
 	add r0, r5, #0
 	mov r1, #0
 	add r0, #0x7e

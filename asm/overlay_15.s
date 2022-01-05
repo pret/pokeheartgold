@@ -693,7 +693,7 @@ ov15_021F994C: ; 0x021F994C
 	add r4, r1, #0
 	bl ov15_021F992C
 	add r1, r4, #0
-	bl sub_0202DB18
+	bl RoamerSave_SetFlute
 	pop {r4, pc}
 	thumb_func_end ov15_021F994C
 

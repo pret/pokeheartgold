@@ -27463,7 +27463,7 @@
 .public SetRoamerData
 .public sub_0202DB04
 .public sub_0202DB08
-.public sub_0202DB18
+.public RoamerSave_SetFlute
 .public sub_0202DB2C
 .public sub_0202DB34
 .public sub_0202DB40

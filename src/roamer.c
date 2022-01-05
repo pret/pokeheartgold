@@ -57,17 +57,17 @@ u32 sub_0202D9F4(ROAMER_SAVE *roamerSave) {
     return roamerSave->unk_8[1];
 }
 
-u8 Roamer_GetLocation(ROAMER_SAVE *roamerSave, u32 a1) {
+u8 Roamer_GetLocation(ROAMER_SAVE *roamerSave, int a1) {
     GF_ASSERT(a1 < ROAMER_MAX);
     return roamerSave->unk_60[a1];
 }
 
-void Roamer_SetLocation(ROAMER_SAVE *roamerSave, u32 a1, u8 a2) {
+void Roamer_SetLocation(ROAMER_SAVE *roamerSave, int a1, u8 a2) {
     GF_ASSERT(a1 < ROAMER_MAX);
     roamerSave->unk_60[a1] = a2;
 }
 
-u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, u32 a1) {
+u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, int a1) {
     GF_ASSERT(a1 < ROAMER_MAX);
     return roamerSave->data[a1].active;
 }
@@ -76,7 +76,7 @@ void RoamerMon_init(ROAMER ** roamer_p) {
     memset(*roamer_p, 0, sizeof(ROAMER));
 }
 
-ROAMER *Roamers_GetRoamMonStats(ROAMER_SAVE *roamerSave, u32 a1) {
+ROAMER *Roamers_GetRoamMonStats(ROAMER_SAVE *roamerSave, int a1) {
     GF_ASSERT(a1 < ROAMER_MAX);
     return &roamerSave->data[a1];
 }
@@ -145,7 +145,7 @@ BOOL sub_0202DB08(ROAMER_SAVE *roamerSave) {
     return roamerSave->unk_65 == 0;
 }
 
-void sub_0202DB18(ROAMER_SAVE *roamerSave, u8 a1) {
+void RoamerSave_SetFlute(ROAMER_SAVE *roamerSave, u8 a1) {
     GF_ASSERT(a1 <= 2);
     roamerSave->flutePlayed = a1;
 }
