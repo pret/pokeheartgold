@@ -5204,7 +5204,7 @@ _02248374:
 	add r7, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _022483AC
 	ldr r0, [sp]
@@ -12591,7 +12591,7 @@ ov02_0224BA70: ; 0x0224BA70
 _0224BA78:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _0224BA9C
 	add r0, r5, #0
@@ -12621,7 +12621,7 @@ ov02_0224BAA8: ; 0x0224BAA8
 _0224BAB0:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _0224BAD4
 	add r0, r5, #0

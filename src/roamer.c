@@ -67,9 +67,9 @@ void Roamer_SetLocation(ROAMER_SAVE *roamerSave, u32 a1, u8 a2) {
     roamerSave->unk_60[a1] = a2;
 }
 
-u8 sub_0202DA28(ROAMER_SAVE *roamerSave, u32 a1) {
+u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, u32 a1) {
     GF_ASSERT(a1 < ROAMER_MAX);
-    return roamerSave->data[a1].unk_12;
+    return roamerSave->data[a1].active;
 }
 
 void RoamerMon_init(ROAMER ** roamer_p) {
@@ -98,7 +98,7 @@ int GetRoamerData(ROAMER *roamer, int a1) {
     case ROAMER_DATA_STATUS:
         return roamer->status;
     case ROAMER_DATA_UNK8:
-        return roamer->unk_12;
+        return roamer->active;
     default:
         GF_ASSERT(0);
         return 0;
@@ -129,7 +129,7 @@ void SetRoamerData(ROAMER *roamer, int a1, int val) {
         roamer->status = val;
         break;
     case ROAMER_DATA_UNK8:
-        roamer->unk_12 = val;
+        roamer->active = val;
         break;
     default:
         GF_ASSERT(0);

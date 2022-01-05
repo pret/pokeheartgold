@@ -499,7 +499,7 @@ _021E7B0A:
 	lsl r1, r4, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _021E7B2E
 	lsl r1, r4, #0x18

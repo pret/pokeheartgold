@@ -25291,15 +25291,15 @@ sub_02067608: ; 0x02067608
 	.balign 4, 0
 	thumb_func_end sub_02067608
 
-	thumb_func_start sub_02067620
-sub_02067620: ; 0x02067620
+	thumb_func_start Save_UpdateRoamersOnConnection
+Save_UpdateRoamersOnConnection: ; 0x02067620
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r5, #0
 _02067626:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _0206763A
 	add r0, r4, #0
@@ -25313,7 +25313,7 @@ _0206763A:
 	blo _02067626
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02067620
+	thumb_func_end Save_UpdateRoamersOnConnection
 
 	thumb_func_start sub_02067648
 sub_02067648: ; 0x02067648
@@ -25324,7 +25324,7 @@ sub_02067648: ; 0x02067648
 _02067650:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _0206768A
 	bl LCRandom
@@ -25381,7 +25381,7 @@ sub_020676B0: ; 0x020676B0
 _020676B6:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0202DA28
+	bl GetRoamerIsActiveByIndex
 	cmp r0, #0
 	beq _020676C6
 	mov r0, #1
@@ -26009,7 +26009,7 @@ sub_02067B88: ; 0x02067B88
 	bl sub_02066850
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
-	bl sub_02067620
+	bl Save_UpdateRoamersOnConnection
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067B88
@@ -26023,7 +26023,7 @@ sub_02067BA4: ; 0x02067BA4
 	bl sub_02066850
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
-	bl sub_02067620
+	bl Save_UpdateRoamersOnConnection
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067BA4
@@ -26056,7 +26056,7 @@ sub_02067BE8: ; 0x02067BE8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_Roamers_get
-	bl sub_02067620
+	bl Save_UpdateRoamersOnConnection
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067BE8

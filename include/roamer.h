@@ -23,7 +23,7 @@ typedef struct ROAMER {
     u16 hp;
     u8 level;
     u8 status;
-    u8 unk_12;
+    u8 active;
     u8 dummy;
 } ROAMER;
 

@@ -27456,7 +27456,7 @@
 .public sub_0202D9F4
 .public Roamer_GetLocation
 .public Roamer_SetLocation
-.public sub_0202DA28
+.public GetRoamerIsActiveByIndex
 .public RoamerMon_init
 .public Roamers_GetRoamMonStats
 .public GetRoamerData
