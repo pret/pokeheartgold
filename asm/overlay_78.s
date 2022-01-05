@@ -24,7 +24,7 @@ ov78_021E5900: ; 0x021E5900
 	bl OverlayManager_GetField18
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205BD64
+	bl Save_GetLeadMonIdxForBugContest
 	add r6, r0, #0
 	cmp r5, #0
 	bne _021E593C

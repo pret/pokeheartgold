@@ -443,13 +443,13 @@ _061B:
 	npc_msg msg_0597_T25R1006_00027
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	setflag FLAG_UNK_26F
 	hide_person obj_T25R1006_gsleader3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -479,12 +479,12 @@ _067A:
 	npc_msg msg_0597_T25R1006_00031
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 15
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0597_T25R1006_00032
@@ -598,9 +598,7 @@ _07D5:
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0597_T25R1006_00006
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check VAR_SPECIAL_x8001, 1
 	scrcmd_380 VAR_SPECIAL_x800C, 64
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _08A0

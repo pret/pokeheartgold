@@ -244,11 +244,11 @@ _032B:
 	wait_movement
 _0352:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 28
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -328,12 +328,12 @@ scr_seq_R39_007:
 	npc_msg msg_0396_R39_00011
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 80
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0396_R39_00012

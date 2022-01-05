@@ -32,17 +32,17 @@ scr_seq_D23R0106_001:
 	gotoif eq, _025D
 	npc_msg msg_0070_D23R0106_00001
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	hide_person obj_D23R0106_rkanbum
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	clearflag FLAG_UNK_99B
+	clearflag FLAG_ROCKET_TAKEOVER_ACTIVE
 	fade_out_bgm 0, 30
 	scrcmd_081 0
 	wait 15, VAR_SPECIAL_x800C
 	reset_bgm
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	move_person obj_D23R0106_gsgentleman, 8, 1, 12, 1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001

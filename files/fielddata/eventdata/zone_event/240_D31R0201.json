@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D31R0201.h",
   "bgs": [
     {
-      "scr": 10450,
+      "scr": "std_battle_tower_records",
       "type": 0,
       "x": 13,
       "y": 5,

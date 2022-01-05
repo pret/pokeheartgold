@@ -299,13 +299,13 @@ _03F7:
 	npc_msg msg_0363_R25_00003
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	setflag FLAG_UNK_2CD
 	hide_person obj_R25_gsleader11_2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -341,12 +341,12 @@ _0456:
 	npc_msg msg_0363_R25_00007
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 84
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0363_R25_00008

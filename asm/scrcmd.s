@@ -834,12 +834,12 @@ gScriptCmdTable:
 	.word ScrCmd_MartSell                                    ; 782
 	.word ScrCmd_783                                    ; 783
 	.word ScrCmd_ScriptOverlayCmd                                    ; 784
-	.word ScrCmd_785                                    ; 785
-	.word ScrCmd_786                                    ; 786
-	.word ScrCmd_787                                    ; 787
-	.word ScrCmd_788                                    ; 788
-	.word ScrCmd_789                                    ; 789
-	.word ScrCmd_790                                    ; 790
+	.word ScrCmd_BugContestAction                                    ; 785
+	.word ScrCmd_BufferBugContestWinner                                    ; 786
+	.word ScrCmd_JudgeBugContest                                    ; 787
+	.word ScrCmd_BufferBugContestMonNick                                    ; 788
+	.word ScrCmd_BugContestGetTimeLeft                                    ; 789
+	.word ScrCmd_IsBugContestantRegistered                                    ; 790
 	.word ScrCmd_791                                    ; 791
 	.word ScrCmd_792                                    ; 792
 	.word ScrCmd_BankTransaction                        ; 793
@@ -847,7 +847,7 @@ gScriptCmdTable:
 	.word ScrCmd_795                                    ; 795
 	.word ScrCmd_796                                    ; 796
 	.word ScrCmd_797                                    ; 797
-	.word ScrCmd_798                                    ; 798
+	.word ScrCmd_BufferRulesetName                                    ; 798
 	.word ScrCmd_799                                    ; 799
 	.word ScrCmd_800                                    ; 800
 	.word ScrCmd_801                                    ; 801
@@ -6355,7 +6355,7 @@ ScrCmd_NicknameInput: ; 0x02043214
 	cmp r6, #0xff
 	bne _0204324E
 	add r0, r5, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldrb r1, [r0, #0x17]
 	lsl r1, r1, #0x1f
 	lsr r1, r1, #0x1f
@@ -16021,8 +16021,8 @@ _02047CF6:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_CheckBankBalance
 
-	thumb_func_start ScrCmd_798
-ScrCmd_798: ; 0x02047CFC
+	thumb_func_start ScrCmd_BufferRulesetName
+ScrCmd_BufferRulesetName: ; 0x02047CFC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -16040,7 +16040,7 @@ ScrCmd_798: ; 0x02047CFC
 	bl ov03_022566D0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_798
+	thumb_func_end ScrCmd_BufferRulesetName
 
 	thumb_func_start ScrCmd_799
 ScrCmd_799: ; 0x02047D24

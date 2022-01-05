@@ -785,12 +785,12 @@ extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_783(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ScriptOverlayCmd(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_785(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_786(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_787(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_788(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_789(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_790(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_JudgeBugContest(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BugContestGetTimeLeft(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_IsBugContestantRegistered(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_791(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_792(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BankTransaction(SCRIPTCONTEXT *ctx);
@@ -798,7 +798,7 @@ extern BOOL ScrCmd_CheckBankBalance(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_795(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_796(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_797(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_798(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferRulesetName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_799(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_800(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_801(SCRIPTCONTEXT *ctx);
@@ -1640,12 +1640,12 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MartSell,
     ScrCmd_783,
     ScrCmd_ScriptOverlayCmd,
-    ScrCmd_785,
-    ScrCmd_786,
-    ScrCmd_787,
-    ScrCmd_788,
-    ScrCmd_789,
-    ScrCmd_790,
+    ScrCmd_BugContestAction,
+    ScrCmd_BufferBugContestWinner,
+    ScrCmd_JudgeBugContest,
+    ScrCmd_BufferBugContestMonNick,
+    ScrCmd_BugContestGetTimeLeft,
+    ScrCmd_IsBugContestantRegistered,
     ScrCmd_791,
     ScrCmd_792,
     ScrCmd_BankTransaction,
@@ -1653,7 +1653,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_795,
     ScrCmd_796,
     ScrCmd_797,
-    ScrCmd_798,
+    ScrCmd_BufferRulesetName,
     ScrCmd_799,
     ScrCmd_800,
     ScrCmd_801,

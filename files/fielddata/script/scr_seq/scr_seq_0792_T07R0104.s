@@ -108,14 +108,14 @@ _013F:
 	npc_msg msg_0497_T07R0104_00007
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	setflag FLAG_UNK_260
 	hide_person obj_T07R0104_gsleader1
 	hide_person obj_T07R0104_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -156,12 +156,12 @@ _01CD:
 	npc_msg msg_0497_T07R0104_00011
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 2
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0497_T07R0104_00012

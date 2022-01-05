@@ -998,7 +998,7 @@ ScrCmd_PartySelectMon: ; 0x0204D8C8
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0205BD64
+	bl Save_GetLeadMonIdxForBugContest
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

@@ -305,20 +305,20 @@ _04AF:
 	npc_msg msg_0046_00120
 	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
 	menu_item_add 20, 255, 12
-	scrcmd_798 0
+	buffer_ruleset_name 0
 	menu_item_add 19, 255, 0
-	scrcmd_798 1
+	buffer_ruleset_name 1
 	menu_item_add 19, 255, 1
-	scrcmd_798 2
+	buffer_ruleset_name 2
 	menu_item_add 19, 255, 2
-	scrcmd_798 3
+	buffer_ruleset_name 3
 	menu_item_add 19, 255, 3
-	scrcmd_798 4
+	buffer_ruleset_name 4
 	menu_item_add 19, 255, 4
-	scrcmd_837 16384
+	scrcmd_837 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif eq, _051B
-	scrcmd_798 5
+	buffer_ruleset_name 5
 	menu_item_add 19, 255, 5
 _051B:
 	menu_item_add 22, 255, 255
@@ -342,15 +342,15 @@ _059A:
 	npc_msg msg_0046_00120
 	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
 	menu_item_add 20, 255, 6
-	scrcmd_798 7
+	buffer_ruleset_name 7
 	menu_item_add 19, 255, 7
-	scrcmd_798 8
+	buffer_ruleset_name 8
 	menu_item_add 19, 255, 8
-	scrcmd_798 9
+	buffer_ruleset_name 9
 	menu_item_add 19, 255, 9
-	scrcmd_798 10
+	buffer_ruleset_name 10
 	menu_item_add 23, 255, 10
-	scrcmd_798 11
+	buffer_ruleset_name 11
 	menu_item_add 19, 255, 11
 	menu_item_add 22, 255, 255
 	menu_exec
@@ -893,7 +893,7 @@ scr_seq_0004_010:
 	scrcmd_436
 	scrcmd_152
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	end
 
@@ -924,11 +924,11 @@ _0EEB:
 	.byte 0x02, 0x00
 _0EF6:
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_252
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _0F1C
 	.byte 0x02, 0x00

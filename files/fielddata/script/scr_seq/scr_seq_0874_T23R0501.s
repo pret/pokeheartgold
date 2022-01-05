@@ -101,11 +101,11 @@ _011A:
 	wait_movement
 	npc_msg msg_0571_T23R0501_00004
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_739
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_735 32780
 	comparevartovalue VAR_SPECIAL_x800C, 0

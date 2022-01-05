@@ -345,8 +345,8 @@ _0205BD5C:
 _0205BD60: .word 0x00000000
 	thumb_func_end sub_0205BD20
 
-	thumb_func_start sub_0205BD64
-sub_0205BD64: ; 0x0205BD64
+	thumb_func_start Save_GetLeadMonIdxForBugContest
+Save_GetLeadMonIdxForBugContest: ; 0x0205BD64
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	bl SavArray_PlayerParty_get
@@ -385,7 +385,7 @@ _0205BDAE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0205BDB4: .word 0x00000000
-	thumb_func_end sub_0205BD64
+	thumb_func_end Save_GetLeadMonIdxForBugContest
 
 	thumb_func_start sub_0205BDB8
 sub_0205BDB8: ; 0x0205BDB8

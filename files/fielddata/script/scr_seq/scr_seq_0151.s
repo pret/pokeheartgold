@@ -37,10 +37,10 @@
 	scrdef_end
 
 _0076:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 96, 0, 46, 50, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	return
 
@@ -90,7 +90,7 @@ _00F9:
 	end
 
 scr_seq_0151_005:
-	comparevartovalue VAR_UNK_4058, 0
+	comparevartovalue VAR_BUG_CONTEST_HELD_PRIZE, 0
 	gotoif eq, _0114
 	call _02BC
 	endstd
@@ -161,7 +161,7 @@ _0200:
 	play_bgm SEQ_GS_TAIKAIMAE
 	buffer_players_name 0
 	npc_msg msg_0246_00013
-	setflag FLAG_UNK_15F
+	setflag FLAG_BUG_CONTEST_OTHER_POKES_HELD
 	goto _0224
 
 _021A:
@@ -171,12 +171,12 @@ _0224:
 	buffer_players_name 0
 	npc_msg msg_0246_00014
 	npc_msg msg_0246_00015
-	setflag FLAG_UNK_993
+	setflag FLAG_BUG_CONTEST_ACTIVE
 	setflag FLAG_UNK_24E
 	setvar VAR_UNK_4118, 1
 	setvar VAR_UNK_40F7, 1
 	script_overlay_cmd 1, 0
-	scrcmd_785 0, 16384
+	bug_contest_action 0, VAR_TEMP_x4000
 	call _0268
 	script_overlay_cmd 1, 1
 	setflag FLAG_UNK_996
@@ -193,7 +193,7 @@ _0268:
 	setvar VAR_SPECIAL_x8004, 0
 	setvar VAR_SPECIAL_x8005, 627
 _0274:
-	scrcmd_790 32772, 32780
+	is_npc_bug_contestant_registered VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _028B
 	setflagvar VAR_SPECIAL_x8005
@@ -216,13 +216,13 @@ _02B1:
 _02BC:
 	buffer_players_name 0
 	npc_msg msg_0246_00020
-	hasspaceforitem VAR_UNK_4058, 1, VAR_SPECIAL_x800C
+	hasspaceforitem VAR_BUG_CONTEST_HELD_PRIZE, 1, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _02F3
-	copyvar VAR_SPECIAL_x8004, VAR_UNK_4058
+	copyvar VAR_SPECIAL_x8004, VAR_BUG_CONTEST_HELD_PRIZE
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
-	setvar VAR_UNK_4058, 0
+	setvar VAR_BUG_CONTEST_HELD_PRIZE, 0
 	goto _02F8
 
 _02F3:
@@ -260,13 +260,13 @@ scr_seq_0151_007:
 	setvar VAR_UNK_4118, 0
 	setvar VAR_UNK_40F7, 0
 	script_overlay_cmd 1, 0
-	scrcmd_787 16384, 16385, 16386
+	judge_bug_contest VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_TEMP_x4002
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	apply_movement 241, _053C
 	wait_movement
 	npc_msg msg_0246_00029
-	scrcmd_786 2
+	buffer_bug_contest_winner 2
 	comparevartovalue VAR_TEMP_x4000, 2
 	gotoif ne, _038E
 	npc_msg msg_0246_00030
@@ -278,7 +278,7 @@ _0391:
 	play_fanfare SEQ_ME_MUSHITORI3
 	wait_fanfare
 	npc_msg msg_0246_00032
-	scrcmd_786 1
+	buffer_bug_contest_winner 1
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif ne, _03B3
 	npc_msg msg_0246_00033
@@ -290,15 +290,15 @@ _03B6:
 	play_fanfare SEQ_ME_MUSHITORI2
 	wait_fanfare
 	npc_msg msg_0246_00032
-	scrcmd_786 0
+	buffer_bug_contest_winner 0
 	comparevartovalue VAR_TEMP_x4000, 0
 	gotoif ne, _03DC
-	setflag FLAG_UNK_141
+	setflag FLAG_WON_THIS_BUG_CONTEST
 	npc_msg msg_0246_00035
 	goto _03E3
 
 _03DC:
-	clearflag FLAG_UNK_141
+	clearflag FLAG_WON_THIS_BUG_CONTEST
 	npc_msg msg_0246_00036
 _03E3:
 	play_fanfare SEQ_ME_MUSHITORI1
@@ -309,20 +309,16 @@ _03E3:
 	setvar VAR_SPECIAL_x8004, 37
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x4000
 	non_npc_msg_var VAR_SPECIAL_x8004
-	copyvar VAR_SPECIAL_x8004, VAR_TEMP_x4001
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _042F
+	goto_if_no_item_space_2 VAR_TEMP_x4001, 1, _042F
 	callstd std_give_item_verbose
 	goto _043B
 
 _042F:
 	buffer_players_name 0
 	npc_msg msg_0246_00045
-	copyvar VAR_UNK_4058, VAR_TEMP_x4001
+	copyvar VAR_BUG_CONTEST_HELD_PRIZE, VAR_TEMP_x4001
 _043B:
-	checkflag FLAG_UNK_15F
+	checkflag FLAG_BUG_CONTEST_OTHER_POKES_HELD
 	callif TRUE, _04F6
 	npc_msg msg_0246_00042
 	comparevartovalue VAR_TEMP_x4002, 0
@@ -339,13 +335,13 @@ _045E:
 	closemsg
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _049E
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	nickname_input 255, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 _049E:
-	scrcmd_788 5, 32780
+	buffer_bug_contest_mon_nick 5, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif ne, _04B5
 	npc_msg msg_0246_00046
@@ -358,10 +354,10 @@ _04B5:
 	scrcmd_103
 	call _04FD
 	setflag FLAG_DAILY_DID_BUG_CONTEST
-	clearflag FLAG_UNK_993
+	clearflag FLAG_BUG_CONTEST_ACTIVE
 	clearflag FLAG_UNK_24E
-	clearflag FLAG_UNK_15F
-	scrcmd_785 1, 0
+	clearflag FLAG_BUG_CONTEST_OTHER_POKES_HELD
+	bug_contest_action 1, 0
 	script_overlay_cmd 1, 1
 	fade_out_bgm 0, 30
 	reset_bgm
@@ -406,7 +402,7 @@ scr_seq_0151_008:
 	end
 
 scr_seq_0151_009:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _0581
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -439,7 +435,7 @@ scr_seq_0151_010:
 	end
 
 scr_seq_0151_011:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _05C9
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -472,7 +468,7 @@ scr_seq_0151_012:
 	end
 
 scr_seq_0151_013:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _0611
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -505,7 +501,7 @@ scr_seq_0151_014:
 	end
 
 scr_seq_0151_015:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _0659
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -538,7 +534,7 @@ scr_seq_0151_016:
 	end
 
 scr_seq_0151_017:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _06A1
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -571,7 +567,7 @@ scr_seq_0151_018:
 	end
 
 scr_seq_0151_019:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _06E9
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -604,7 +600,7 @@ scr_seq_0151_020:
 	end
 
 scr_seq_0151_021:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _0731
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -637,7 +633,7 @@ scr_seq_0151_022:
 	end
 
 scr_seq_0151_023:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _0779
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -670,7 +666,7 @@ scr_seq_0151_024:
 	end
 
 scr_seq_0151_025:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _07C1
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -703,7 +699,7 @@ scr_seq_0151_026:
 	end
 
 scr_seq_0151_027:
-	checkflag FLAG_UNK_141
+	checkflag FLAG_WON_THIS_BUG_CONTEST
 	gotoif TRUE, _0809
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -729,7 +725,7 @@ scr_seq_0151_028:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4058, 0
+	comparevartovalue VAR_BUG_CONTEST_HELD_PRIZE, 0
 	gotoif eq, _083D
 	call _02BC
 	goto _0844

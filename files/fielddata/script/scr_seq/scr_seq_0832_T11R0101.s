@@ -187,14 +187,14 @@ scr_seq_T11R0101_004:
 	npc_msg msg_0533_T11R0101_00009
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 17
 	setflag FLAG_UNK_2B5
 	hide_person obj_T11R0101_gsleader3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -217,14 +217,14 @@ scr_seq_T11R0101_005:
 	npc_msg msg_0533_T11R0101_00031
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 26
 	setflag FLAG_UNK_2B6
 	hide_person obj_T11R0101_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -247,14 +247,14 @@ scr_seq_T11R0101_006:
 	npc_msg msg_0533_T11R0101_00019
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 27
 	setflag FLAG_UNK_2B7
 	hide_person obj_T11R0101_gsleader8
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -277,14 +277,14 @@ scr_seq_T11R0101_007:
 	npc_msg msg_0533_T11R0101_00025
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 28
 	setflag FLAG_UNK_2B8
 	hide_person obj_T11R0101_gsleader12
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -307,14 +307,14 @@ scr_seq_T11R0101_008:
 	npc_msg msg_0533_T11R0101_00027
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 29
 	setflag FLAG_UNK_2B9
 	hide_person obj_T11R0101_gsleader11
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -337,14 +337,14 @@ scr_seq_T11R0101_009:
 	npc_msg msg_0533_T11R0101_00033
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 30
 	setflag FLAG_UNK_2BA
 	hide_person obj_T11R0101_gsleader15
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -367,14 +367,14 @@ scr_seq_T11R0101_010:
 	npc_msg msg_0533_T11R0101_00035
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 31
 	setflag FLAG_UNK_2BB
 	hide_person obj_T11R0101_gsleader16
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -397,14 +397,14 @@ scr_seq_T11R0101_011:
 	npc_msg msg_0533_T11R0101_00011
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 32
 	setflag FLAG_UNK_2BC
 	hide_person obj_T11R0101_gsleader5
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -427,14 +427,14 @@ scr_seq_T11R0101_012:
 	npc_msg msg_0533_T11R0101_00029
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 33
 	setflag FLAG_UNK_2BD
 	hide_person obj_T11R0101_gsleader14
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -457,14 +457,14 @@ scr_seq_T11R0101_013:
 	npc_msg msg_0533_T11R0101_00007
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 34
 	setflag FLAG_UNK_2BE
 	hide_person obj_T11R0101_gsleader2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -487,14 +487,14 @@ scr_seq_T11R0101_014:
 	npc_msg msg_0533_T11R0101_00023
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 35
 	setflag FLAG_UNK_2BF
 	hide_person obj_T11R0101_gsleader10
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -517,14 +517,14 @@ scr_seq_T11R0101_015:
 	npc_msg msg_0533_T11R0101_00005
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 18
 	setflag FLAG_UNK_2C0
 	hide_person obj_T11R0101_gsleader1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -547,14 +547,14 @@ scr_seq_T11R0101_016:
 	npc_msg msg_0533_T11R0101_00021
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 36
 	setflag FLAG_UNK_2C1
 	hide_person obj_T11R0101_gsleader9
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -577,14 +577,14 @@ scr_seq_T11R0101_017:
 	npc_msg msg_0533_T11R0101_00015
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 37
 	setflag FLAG_UNK_2C2
 	hide_person obj_T11R0101_gsleader4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -607,14 +607,14 @@ scr_seq_T11R0101_018:
 	npc_msg msg_0533_T11R0101_00013
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 38
 	setflag FLAG_UNK_2C3
 	hide_person obj_T11R0101_gsleader6
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -637,14 +637,14 @@ scr_seq_T11R0101_019:
 	npc_msg msg_0533_T11R0101_00017
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_462 39
 	setflag FLAG_UNK_2C4
 	hide_person obj_T11R0101_gsleader7
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

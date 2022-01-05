@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_02055418
-sub_02055418: ; 0x02055418
+	thumb_func_start FieldSys_StartBugContestTimer
+FieldSys_StartBugContestTimer: ; 0x02055418
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -30,7 +30,7 @@ _0205544A:
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02055418
+	thumb_func_end FieldSys_StartBugContestTimer
 
 	thumb_func_start sub_02055450
 sub_02055450: ; 0x02055450

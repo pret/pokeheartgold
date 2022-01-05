@@ -147,7 +147,7 @@ _0252:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0538_T11R0702_00011
 	scrcmd_675 32768, 0, 0, 0
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	scrcmd_676 32768, 32772
@@ -169,7 +169,7 @@ _02C1:
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 403, 0, 32774, 32775, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	nop_var_490 VAR_TEMP_x400B
 	comparevartovalue VAR_TEMP_x400A, 1
@@ -203,13 +203,13 @@ _0328:
 
 _0332:
 	npc_msg msg_0538_T11R0702_00007
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8000
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, _03AC
@@ -239,13 +239,13 @@ _03B2:
 	.byte 0x02, 0x00
 _03C0:
 	npc_msg msg_0538_T11R0702_00007
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8000
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, _073D
@@ -337,13 +337,13 @@ _0564:
 	goto _058A
 	.byte 0x02, 0x00
 _058A:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	choose_move_ui 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	get_move_selection 1, VAR_SPECIAL_x8002
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8002, 4
 	gotoif eq, _0628
@@ -390,7 +390,7 @@ _0649:
 	.byte 0x00
 _0671:
 	scrcmd_675 32768, 32770, 32769, 32772
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	comparevartovalue VAR_SPECIAL_x8004, 1

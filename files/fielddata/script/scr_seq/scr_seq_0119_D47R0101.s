@@ -39,10 +39,10 @@ _0062:
 	apply_movement obj_player, _01B4
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 357, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
@@ -558,10 +558,10 @@ _0773:
 	scrcmd_447 0, 0
 	scrcmd_240 173, 1, 5, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 357, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
@@ -947,10 +947,10 @@ _0CCC:
 	scrcmd_447 0, 1
 	scrcmd_240 173, 2, 19, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 357, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
@@ -1071,11 +1071,11 @@ scr_seq_D47R0101_005:
 	npc_msg msg_0135_D47R0101_00027
 	closemsg
 	clearflag FLAG_UNK_99D
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_716
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	checkflag FLAG_UNK_99D
 	gotoif TRUE, _0EFC

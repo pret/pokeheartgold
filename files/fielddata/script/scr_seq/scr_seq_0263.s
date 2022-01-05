@@ -51,7 +51,7 @@ _0097:
 	scrcmd_556 1
 	scrcmd_118 1
 	npc_msg msg_0433_00010
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_815 0
 	scrcmd_117
@@ -62,7 +62,7 @@ _0097:
 	get_scratch_off_prize 2, VAR_TEMP_x4004, VAR_TEMP_x4005
 	scratch_off_card_end
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	setvar VAR_SPECIAL_x8000, 0
 	call _019D

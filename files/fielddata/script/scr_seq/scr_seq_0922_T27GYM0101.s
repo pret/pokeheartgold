@@ -71,10 +71,10 @@ scr_seq_T27GYM0101_004:
 	apply_movement obj_player, _0128
 	wait_movement
 	setvar VAR_UNK_4079, 1
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 78, 7, 376, 182, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -158,10 +158,10 @@ scr_seq_T27GYM0101_002:
 	play_se SEQ_SE_DP_GYURU
 	apply_movement obj_player, _0230
 	wait_movement
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 80, 0, 16, 49, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

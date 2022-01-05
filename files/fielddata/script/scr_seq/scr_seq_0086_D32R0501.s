@@ -127,7 +127,7 @@ _01DB:
 _01F0:
 	npc_msg msg_0109_D32R0501_00007
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_637 4, VAR_UNK_4148, VAR_SPECIAL_x800C
 	scrcmd_639 VAR_TEMP_x4002, VAR_TEMP_x4005, VAR_TEMP_x4006
@@ -136,7 +136,7 @@ _01F0:
 	scrcmd_815 0
 _0222:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_TEMP_x4002, 255
 	gotoif eq, _0126
@@ -300,7 +300,7 @@ _04CB:
 	goto _04FE
 	.byte 0x02, 0x00
 _04FE:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_815 0
 	comparevartovalue VAR_UNK_4148, 0
@@ -315,7 +315,7 @@ _04FE:
 	comparevartovalue VAR_UNK_4148, 2
 	callif eq, _055F
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_682 1
 	end

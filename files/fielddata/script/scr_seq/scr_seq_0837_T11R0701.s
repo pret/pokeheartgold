@@ -231,11 +231,11 @@ _0351:
 	get_party_count VAR_SPECIAL_x800C
 	subvar VAR_SPECIAL_x800C, 1
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_815 0
 	nickname_input VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_TEMP_x4000, 1
 	gotoif eq, _02F3
@@ -297,12 +297,12 @@ _0415:
 	gotoif eq, _04EA
 	npc_msg msg_0537_T11R0701_00009
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_566
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, _04EA

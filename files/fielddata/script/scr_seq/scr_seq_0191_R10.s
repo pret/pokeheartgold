@@ -100,13 +100,13 @@ _0148:
 	npc_msg msg_0341_R10_00002
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	setflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	hide_person obj_R10_gsleader9
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -144,10 +144,10 @@ scr_seq_R10_000:
 	scrcmd_600
 _01D5:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 489, 0, 7, 20, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_582 18, 1423, 185
 	releaseall
@@ -163,10 +163,10 @@ _0209:
 	scrcmd_600
 _022D:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 467, 0, 7, 20, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_582 18, 1423, 185
 	releaseall

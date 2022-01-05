@@ -39,7 +39,7 @@ scr_seq_T10R0701_000:
 	party_count_not_egg VAR_SPECIAL_x800C
 	hall_of_fame_anim VAR_SPECIAL_x800C
 	add_special_game_stat 23
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	call _01B4
 	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
@@ -91,7 +91,7 @@ _0133:
 	callif eq, _028B
 	hof_credits 0
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

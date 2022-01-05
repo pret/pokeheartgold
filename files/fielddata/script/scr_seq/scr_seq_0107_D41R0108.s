@@ -20,7 +20,7 @@ scr_seq_D41R0108_000:
 	gotoif eq, _0098
 	npc_msg msg_0126_D41R0108_00001
 	wait 30, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	hide_person obj_D41R0108_red
@@ -28,15 +28,15 @@ scr_seq_D41R0108_000:
 	setvar VAR_UNK_40FD, 1
 	comparevartovalue VAR_UNK_4131, 0
 	callif eq, _009E
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	call _00B2
 	wait 60, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	hof_credits 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

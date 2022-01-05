@@ -34,10 +34,10 @@ scr_seq_0071_002:
 	goto _00D8
 
 _0068:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 269, 0, 7, 6, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

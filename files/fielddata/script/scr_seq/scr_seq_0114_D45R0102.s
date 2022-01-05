@@ -185,14 +185,14 @@ _02C0:
 	closemsg
 	gender_msgbox msg_0131_D45R0102_00025, msg_0131_D45R0102_00024
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	return
 	.byte 0x00, 0x00

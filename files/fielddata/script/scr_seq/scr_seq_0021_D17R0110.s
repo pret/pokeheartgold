@@ -261,10 +261,10 @@ scr_seq_D17R0110_006:
 	wait 41, VAR_SPECIAL_x800C
 	scrcmd_763
 	wait 8, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_761 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait 20, VAR_SPECIAL_x800C
 	scrcmd_758 0
@@ -283,10 +283,10 @@ scr_seq_D17R0110_006:
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait 32, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_761 2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait 22, VAR_SPECIAL_x800C
 	apply_movement obj_D17R0110_dancer, _07C4

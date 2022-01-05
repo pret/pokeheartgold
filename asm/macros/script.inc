@@ -2907,7 +2907,7 @@
 	.short 510
 	.endm
 
-	.macro scrcmd_511 arg0, arg1
+	.macro pal_park_score_get arg0, arg1
 	.short 511
 	.short \arg0
 	.short \arg1
@@ -4395,25 +4395,25 @@
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_785 arg0, arg1
+	.macro bug_contest_action arg0, arg1
 	.short 785
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_786 arg0
+	.macro buffer_bug_contest_winner arg0
 	.short 786
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_787 arg0, arg1, arg2
+	.macro judge_bug_contest arg0, arg1, arg2
 	.short 787
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_788 arg0, arg1
+	.macro buffer_bug_contest_mon_nick arg0, arg1
 	.short 788
 	.byte \arg0
 	.short \arg1
@@ -4424,7 +4424,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_790 arg0, arg1
+	.macro is_npc_bug_contestant_registered arg0, arg1
 	.short 790
 	.short \arg0
 	.short \arg1
@@ -4466,7 +4466,7 @@
 	.short 797
 	.endm
 
-	.macro scrcmd_798 arg0
+	.macro buffer_ruleset_name arg0
 	.short 798
 	.short \arg0
 	.endm
@@ -4764,7 +4764,7 @@
 
 	; Convenience macros
 
-	.macro goto_if_no_item_space item, quantity, target
+	.macro item_vars item, quantity=1
 	.if \item < 0x4000
 	setvar VAR_SPECIAL_x8004, \item
 	.else
@@ -4773,38 +4773,31 @@
 	.if \quantity < 0x4000
 	setvar VAR_SPECIAL_x8005, \quantity
 	.else
-	copyvar VAR_SPECIAL_x8004, \quantity
+	copyvar VAR_SPECIAL_x8005, \quantity
 	.endif
+	.endm
+
+	.macro goto_if_no_item_space item, quantity, target
+	item_vars \item, \quantity
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, \target
 	.endm
 
+	.macro goto_if_no_item_space_2 item, quantity, target
+	item_vars \item, \quantity
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	comparevartovalue VAR_SPECIAL_x800C, 1
+	gotoif ne, \target
+	.endm
+
 	.macro giveitem_no_check item, quantity
-	.if \item < 0x4000
-	setvar VAR_SPECIAL_x8004, \item
-	.else
-	copyvar VAR_SPECIAL_x8004, \item
-	.endif
-	.if \quantity < 0x4000
-	setvar VAR_SPECIAL_x8005, \quantity
-	.else
-	copyvar VAR_SPECIAL_x8004, \quantity
-	.endif
+	item_vars \item, \quantity
 	callstd std_give_item_verbose
 	.endm
 
 	.macro takeitem_no_check item, quantity
-	.if \item < 0x4000
-	setvar VAR_SPECIAL_x8004, \item
-	.else
-	copyvar VAR_SPECIAL_x8004, \item
-	.endif
-	.if \quantity < 0x4000
-	setvar VAR_SPECIAL_x8005, \quantity
-	.else
-	copyvar VAR_SPECIAL_x8004, \quantity
-	.endif
+	item_vars \item, \quantity
 	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	.endm
 

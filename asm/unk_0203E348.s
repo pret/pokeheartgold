@@ -2658,7 +2658,7 @@ _0203F6A2:
 	cmp r6, #0xff
 	bne _0203F6B2
 	add r0, r5, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r0, [r0, #0x10]
 	b _0203F6BE
 _0203F6B2:
@@ -2733,7 +2733,7 @@ _0203F73C:
 	cmp r0, #0xff
 	bne _0203F74C
 	add r0, r6, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r6, [r0, #0x10]
 	b _0203F75A
 _0203F74C:

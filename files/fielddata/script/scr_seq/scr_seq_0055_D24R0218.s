@@ -71,10 +71,10 @@ scr_seq_D24R0218_001:
 	closemsg
 	fade_out_bgm 0, 30
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x00
+	fade_screen 6, 6, 0, 0x0000
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x00
+	fade_screen 6, 6, 1, 0x0000
 	wait_fade
 	scrcmd_074 2305
 	apply_movement obj_D24R0218_suit, _01AC
@@ -82,20 +82,20 @@ scr_seq_D24R0218_001:
 	npc_msg msg_0086_D24R0218_00003
 	closemsg
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x00
+	fade_screen 6, 6, 0, 0x0000
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x00
+	fade_screen 6, 6, 1, 0x0000
 	wait_fade
 	scrcmd_074 2305
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 3
 	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
 	setflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 522, 0, 16, 24, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -193,19 +193,19 @@ scr_seq_D24R0218_003:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x00
+	fade_screen 6, 6, 0, 0x0000
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x00
+	fade_screen 6, 6, 1, 0x0000
 	wait_fade
 	scrcmd_074 2305
 	apply_movement obj_player, _0330
 	wait_movement
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x00
+	fade_screen 6, 6, 0, 0x0000
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x00
+	fade_screen 6, 6, 1, 0x0000
 	wait_fade
 	scrcmd_074 2305
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
@@ -214,10 +214,10 @@ scr_seq_D24R0218_003:
 	setflag FLAG_UNK_2DD
 	setflag FLAG_UNK_2DB
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 522, 0, 16, 24, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

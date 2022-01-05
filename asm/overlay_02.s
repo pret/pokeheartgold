@@ -4558,7 +4558,7 @@ ov02_02247ED8: ; 0x02247ED8
 	sub sp, #0xc
 	add r6, r1, #0
 	add r5, r3, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	mov r1, #4
 	bl ov24_02259B50
 	add r4, r0, #0
@@ -5061,7 +5061,7 @@ _02248252:
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
 _0224826A:
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r4, r0, #0
 	bl sub_0206DB30
 	add r1, r0, #0

@@ -75,7 +75,7 @@ _00E4:
 _00F0:
 	setvar VAR_UNK_4077, 2
 	setflag FLAG_UNK_0C5
-	setflag FLAG_UNK_99B
+	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
 	comparevartovalue VAR_UNK_40F8, 0
 	gotoif ne, _0111
 	setvar VAR_UNK_40F8, 2
@@ -319,11 +319,11 @@ _0422:
 	apply_movement obj_partner_poke, _04D0
 	wait_movement
 _0449:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 35
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 8

@@ -1063,7 +1063,7 @@ sub_02050EB8: ; 0x02050EB8
 	bl sub_02050650
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	str r0, [sp]
 	add r0, r7, #0
 	bl sub_02050654

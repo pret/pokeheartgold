@@ -107,28 +107,28 @@ _0182:
 	gotoif ge, _01C8
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif eq, _01F2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 315, 0, 5, 42, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 _01C4:
 	releaseall
 	end
 
 _01C8:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 5, 42, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _01C4
 
 _01F2:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 490, 0, 5, 42, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _01C4
 

@@ -314,7 +314,7 @@ _0553:
 	goto _085B
 	.byte 0x02, 0x00
 _0560:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	scrcmd_412 30, 0, 0
@@ -324,7 +324,7 @@ _0560:
 	scrcmd_815 0
 _058F:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	return
 
@@ -479,10 +479,10 @@ _0817:
 
 _0829:
 	scrcmd_420 59
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 266, 0, 3, 6, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -606,7 +606,7 @@ _0A42:
 	return
 
 _0A52:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_166 VAR_TEMP_x4000
 	scrcmd_412 16, VAR_TEMP_x4001, VAR_TEMP_x4000
@@ -616,7 +616,7 @@ _0A52:
 	scrcmd_815 0
 _0A81:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	return
@@ -655,7 +655,7 @@ _0ADF:
 	npc_msg msg_0096_D31R0201_00056
 	call _0817
 	scrcmd_348 30
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	scrcmd_412 2, 0, 0
@@ -913,7 +913,7 @@ _0F9C:
 scr_seq_D31R0201_003:
 	scrcmd_609
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	call _0807
 	scrcmd_412 100, 0, VAR_SPECIAL_x800C
@@ -1198,11 +1198,11 @@ _13F9:
 	end
 
 _1404:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_408 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	return
@@ -1310,14 +1310,14 @@ scr_seq_D31R0201_023:
 	goto _1506
 	.byte 0x02, 0x00
 _1506:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8000, 255
 	gotoif eq, _1645

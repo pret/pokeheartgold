@@ -123,11 +123,11 @@ _01D8:
 	wait_movement
 _01FF:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 3
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -276,48 +276,48 @@ _03EA:
 	play_se SEQ_SE_DP_KAIDAN2
 	comparevartovalue VAR_UNK_403E, 6
 	gotoif ne, _0467
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 490, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _0530
 
 _0467:
 	comparevartovalue VAR_UNK_403E, 7
 	gotoif ne, _049E
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _0530
 
 _049E:
 	comparevartovalue VAR_UNK_403E, 8
 	gotoif ne, _04D5
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _0530
 
 _04D5:
 	comparevartovalue VAR_UNK_403E, 9
 	gotoif ne, _050C
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _0530
 
 _050C:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 315, 0, 15, 24, 2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 _0530:
 	releaseall

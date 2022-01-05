@@ -42,10 +42,10 @@ _0066:
 _008C:
 	setvar VAR_SPECIAL_x8004, 0
 	call _00F4
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 402, 0, 3, 3, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -53,10 +53,10 @@ _008C:
 _00C0:
 	setvar VAR_SPECIAL_x8004, 1
 	call _00F4
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 403, 0, 7, 3, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -138,10 +138,10 @@ _01C5:
 _01F0:
 	setvar VAR_SPECIAL_x8004, 0
 	call _00FE
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 403, 0, 7, 3, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -149,10 +149,10 @@ _01F0:
 _0224:
 	setvar VAR_SPECIAL_x8004, 1
 	call _00FE
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 402, 0, 3, 3, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

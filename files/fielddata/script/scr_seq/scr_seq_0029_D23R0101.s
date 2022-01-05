@@ -839,11 +839,7 @@ _0B3E:
 	goto _0B4A
 
 _0B4A:
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8003
-	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0B75
+	goto_if_no_item_space VAR_SPECIAL_x8003, 1, _0B75
 	callstd std_give_item_verbose
 	goto _0B98
 

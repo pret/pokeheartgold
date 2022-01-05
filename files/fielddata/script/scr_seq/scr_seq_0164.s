@@ -57,7 +57,7 @@ _00A5:
 	goto _00EE
 	.byte 0x02, 0x00
 _00EE:
-	setvar VAR_UNK_4117, 1
+	setvar VAR_SCENE_POKECENTER_WIFI_BASEMENT, 1
 	npc_msg msg_0267_00004
 	waitbutton
 	closemsg
@@ -169,13 +169,13 @@ _02B3:
 	goto _0265
 	.byte 0x02, 0x00
 _02BE:
-	scrcmd_565 32780
+	scrcmd_565 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _02D7
 	goto _0331
 	.byte 0x02, 0x00
 _02D7:
-	scrcmd_564 32780
+	scrcmd_564 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0310
 	goto _02F0
@@ -262,10 +262,10 @@ _03E8:
 	return
 
 _03F3:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_436
-	scrcmd_565 32780
+	scrcmd_565 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _041A
 	scrcmd_152
@@ -275,7 +275,7 @@ _041A:
 	scrcmd_152
 _041C:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_307 0, 0, 8, 2, 77
 	call _03E0
@@ -370,7 +370,7 @@ scr_seq_0164_003:
 	get_player_state VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3
 	gotoif eq, _0709
-	scrcmd_691 32780
+	scrcmd_691 VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0560
 	scrcmd_446 VAR_UNK_4056
@@ -436,10 +436,10 @@ _05D7:
 	wait_movement
 	call _03E8
 	setvar VAR_TEMP_x4003, 0
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 516, 0, 20, 11, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

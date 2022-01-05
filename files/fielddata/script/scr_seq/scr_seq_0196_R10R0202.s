@@ -44,10 +44,10 @@ _0071:
 	apply_movement obj_R10R0202_gsbigman, _0108
 	wait_movement
 	wait_se SEQ_SE_GS_W012
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 467, 0, 13, 7, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	npc_msg msg_0345_R10R0202_00015
 	apply_movement obj_R10R0202_gsbigman, _0120
@@ -183,12 +183,12 @@ scr_seq_R10R0202_005:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _02CD
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_566
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, _02CD

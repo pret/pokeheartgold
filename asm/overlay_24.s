@@ -1,10 +1,11 @@
+#include "constants/trainer_class.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov24_022598C0
-ov24_022598C0: ; 0x022598C0
+	thumb_func_start BugContest_new
+BugContest_new: ; 0x022598C0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -38,33 +39,33 @@ ov24_022598C0: ; 0x022598C0
 	strb r0, [r4, #0x17]
 	add r0, r4, #0
 	strb r6, [r4, #0x16]
-	bl ov24_02259BB4
+	bl BugContest_BackUpParty
 	add r0, r4, #0
-	bl ov24_02259CC0
+	bl BugContest_InitOpponents
 	add r0, r4, #0
-	bl ov24_02259DF0
+	bl BugContest_InitEncounters
 	add r0, r5, #0
-	bl sub_02055418
+	bl FieldSys_StartBugContestTimer
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov24_022598C0
+	thumb_func_end BugContest_new
 
-	thumb_func_start ov24_02259928
-ov24_02259928: ; 0x02259928
+	thumb_func_start BugContest_delete
+BugContest_delete: ; 0x02259928
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov24_02259C10
+	bl BugContest_RestoreParty_RetrieveCaughtPokemon
 	ldr r0, [r4, #0x10]
 	bl FreeToHeap
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov24_02259928
+	thumb_func_end BugContest_delete
 
-	thumb_func_start ov24_02259940
-ov24_02259940: ; 0x02259940
+	thumb_func_start BugContest_Judge
+BugContest_Judge: ; 0x02259940
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -74,7 +75,7 @@ ov24_02259940: ; 0x02259940
 	strb r2, [r1]
 	ldr r1, [r4, #0x10]
 	add r5, #0xac
-	bl ov24_02259E60
+	bl BugContest_JudgePlayerMon
 	strh r0, [r5, #2]
 	ldr r0, [r4, #0x10]
 	mov r1, #5
@@ -209,10 +210,10 @@ _02259A40:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02259A48: .word 0x00000127
-	thumb_func_end ov24_02259940
+	thumb_func_end BugContest_Judge
 
-	thumb_func_start ov24_02259A4C
-ov24_02259A4C: ; 0x02259A4C
+	thumb_func_start BugContest_BufferContestWinnerNames
+BugContest_BufferContestWinnerNames: ; 0x02259A4C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r2, #0
@@ -257,7 +258,7 @@ _02259A80:
 	add r0, r5, #0
 	mov r1, #2
 	lsl r3, r2, #1
-	ldr r2, _02259AD8 ; =_02259F28
+	ldr r2, _02259AD8 ; =sBugContestOpponentClasses
 	ldrh r2, [r2, r3]
 	bl BufferTrainerClassName
 _02259AB4:
@@ -277,11 +278,11 @@ _02259AB4:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
-_02259AD8: .word _02259F28
-	thumb_func_end ov24_02259A4C
+_02259AD8: .word sBugContestOpponentClasses
+	thumb_func_end BugContest_BufferContestWinnerNames
 
-	thumb_func_start ov24_02259ADC
-ov24_02259ADC: ; 0x02259ADC
+	thumb_func_start BugContest_ContestantIsRegistered
+BugContest_ContestantIsRegistered: ; 0x02259ADC
 	mov r3, #0
 _02259ADE:
 	add r2, r0, #0
@@ -298,10 +299,10 @@ _02259AEC:
 	blt _02259ADE
 	mov r0, #0
 	bx lr
-	thumb_func_end ov24_02259ADC
+	thumb_func_end BugContest_ContestantIsRegistered
 
-	thumb_func_start ov24_02259AF8
-ov24_02259AF8: ; 0x02259AF8
+	thumb_func_start BugContest_BufferCaughtMonNick
+BugContest_BufferCaughtMonNick: ; 0x02259AF8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -344,7 +345,7 @@ _02259B48:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov24_02259AF8
+	thumb_func_end BugContest_BufferCaughtMonNick
 
 	thumb_func_start ov24_02259B50
 ov24_02259B50: ; 0x02259B50
@@ -397,8 +398,8 @@ _02259B82:
 	.balign 4, 0
 	thumb_func_end ov24_02259B50
 
-	thumb_func_start ov24_02259BB4
-ov24_02259BB4: ; 0x02259BB4
+	thumb_func_start BugContest_BackUpParty
+BugContest_BackUpParty: ; 0x02259BB4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -413,7 +414,7 @@ ov24_02259BB4: ; 0x02259BB4
 	bl GetPartyCount
 	strb r0, [r5, #0x15]
 	ldr r0, [r5, #4]
-	bl sub_0205BD64
+	bl Save_GetLeadMonIdxForBugContest
 	strb r0, [r5, #0x14]
 	ldrb r0, [r5, #0x15]
 	mov r4, #0
@@ -442,10 +443,10 @@ _02259C02:
 _02259C0C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov24_02259BB4
+	thumb_func_end BugContest_BackUpParty
 
-	thumb_func_start ov24_02259C10
-ov24_02259C10: ; 0x02259C10
+	thumb_func_start BugContest_RestoreParty_RetrieveCaughtPokemon
+BugContest_RestoreParty_RetrieveCaughtPokemon: ; 0x02259C10
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -503,7 +504,7 @@ _02259C92:
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov24_02259C10
+	thumb_func_end BugContest_RestoreParty_RetrieveCaughtPokemon
 
 	thumb_func_start ov24_02259C98
 ov24_02259C98: ; 0x02259C98
@@ -532,14 +533,14 @@ _02259CB8:
 	.balign 4, 0
 	thumb_func_end ov24_02259C98
 
-	thumb_func_start ov24_02259CC0
-ov24_02259CC0: ; 0x02259CC0
+	thumb_func_start BugContest_InitOpponents
+BugContest_InitOpponents: ; 0x02259CC0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x58
 	add r5, r0, #0
 	add r0, sp, #0x10
 	bl FS_InitFile
-	ldr r1, _02259DEC ; =_02259F40
+	ldr r1, _02259DEC ; =_mushi_trainer
 	add r0, sp, #0x10
 	bl FS_OpenFile
 	cmp r0, #0
@@ -548,6 +549,7 @@ ov24_02259CC0: ; 0x02259CC0
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
 _02259CE0:
+	; r4 <- FS_GetLength(&file)
 	ldr r1, [sp, #0x38]
 	ldr r0, [sp, #0x34]
 	sub r4, r1, r0
@@ -675,17 +677,17 @@ _02259D7E:
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02259DEC: .word _02259F40
-	thumb_func_end ov24_02259CC0
+_02259DEC: .word _mushi_trainer
+	thumb_func_end BugContest_InitOpponents
 
-	thumb_func_start ov24_02259DF0
-ov24_02259DF0: ; 0x02259DF0
+	thumb_func_start BugContest_InitEncounters
+BugContest_InitEncounters: ; 0x02259DF0
 	push {r4, r5, r6, lr}
 	sub sp, #0x48
 	add r5, r0, #0
 	add r0, sp, #0
 	bl FS_InitFile
-	ldr r1, _02259E5C ; =_02259F60
+	ldr r1, _02259E5C ; =_mushi_encount
 	add r0, sp, #0
 	bl FS_OpenFile
 	cmp r0, #0
@@ -730,11 +732,11 @@ _02259E3A:
 	add sp, #0x48
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02259E5C: .word _02259F60
-	thumb_func_end ov24_02259DF0
+_02259E5C: .word _mushi_encount
+	thumb_func_end BugContest_InitEncounters
 
-	thumb_func_start ov24_02259E60
-ov24_02259E60: ; 0x02259E60
+	thumb_func_start BugContest_JudgePlayerMon
+BugContest_JudgePlayerMon: ; 0x02259E60
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldrb r0, [r4, #0x17]
@@ -832,21 +834,29 @@ _02259ED8:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov24_02259E60
+	thumb_func_end BugContest_JudgePlayerMon
 
 	.rodata
 
-_02259F28:
-	.byte 0x06, 0x00, 0x06, 0x00, 0x19, 0x00, 0x14, 0x00
-	.byte 0x06, 0x00, 0x04, 0x00, 0x05, 0x00, 0x06, 0x00, 0x02, 0x00, 0x3C, 0x00
+sBugContestOpponentClasses:
+	.short TRAINERCLASS_BUG_CATCHER      ; Don
+	.short TRAINERCLASS_BUG_CATCHER      ; Ed
+	.short TRAINERCLASS_ACE_TRAINER_F    ; Abby
+	.short TRAINERCLASS_POKEFAN_M        ; William
+	.short TRAINERCLASS_BUG_CATCHER      ; Benny
+	.short TRAINERCLASS_CAMPER           ; Barry
+	.short TRAINERCLASS_PICNICKER        ; Cindy
+	.short TRAINERCLASS_BUG_CATCHER      ; Josh
+	.short TRAINERCLASS_YOUNGSTER        ; Samuel
+	.short TRAINERCLASS_SCHOOL_KID_M     ; Kipp
 
 	.data
 
 	.balign 4, 0
-_02259F40:
+_mushi_trainer:
 	.asciz "data/mushi/mushi_trainer.bin"
 	.balign 4, 0
-_02259F60:
+_mushi_encount:
 	.asciz "data/mushi/mushi_encount.bin"
 	.balign 4, 0
 	; 0x02259F80

@@ -236,10 +236,10 @@ _0346:
 	gotoif TRUE, _1207
 	clearflag FLAG_HIDE_FARFETCHD_1_FOUND
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 117, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00001
@@ -602,10 +602,10 @@ _08DF:
 	gotoif TRUE, _1207
 	clearflag FLAG_HIDE_FARFETCHD_1_FOUND
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 117, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00001
@@ -1017,12 +1017,12 @@ scr_seq_D36R0101_002:
 	npc_msg msg_0115_D36R0101_00014
 	closemsg
 _0F0B:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x800C, 255
 	gotoif eq, _1093
@@ -1052,12 +1052,12 @@ _0F99:
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _10C7
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	choose_move_ui 1, VAR_SPECIAL_x8006, 29
 	get_move_selection 1, VAR_SPECIAL_x8001
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8001, 4
 	gotoif eq, _10AB
@@ -1252,10 +1252,10 @@ _1207:
 	show_person obj_D36R0101_gsfighter
 	clearflag FLAG_HIDE_FARFETCHD_2_FOUND
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 117, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00002
@@ -1574,11 +1574,11 @@ _1677:
 	wait_movement
 _169E:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 8
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -1843,10 +1843,10 @@ _1A51:
 	subvar VAR_TEMP_x4009, 1
 	setvar VAR_TEMP_x400A, 0
 	nop_var_490 VAR_TEMP_x4009
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	nickname_input VAR_TEMP_x4009, VAR_TEMP_x400A
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_TEMP_x400A, 1
 	gotoif eq, _1AC5

@@ -96,14 +96,14 @@ scr_seq_D35R0103_000:
 	scrcmd_604 48
 	npc_msg msg_0113_D35R0103_00000
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	buffer_players_name 0
 	gender_msgbox msg_0113_D35R0103_00001, msg_0113_D35R0103_00002
@@ -348,7 +348,7 @@ _0436:
 	gotoif eq, _0620
 	npc_msg msg_0113_D35R0103_00008
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	move_person obj_D35R0103_wataru, 28, 1, 24, 1
 	move_person obj_D35R0103_tsure_poke_607, 27, 1, 24, 3
@@ -368,7 +368,7 @@ _0436:
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	setflag FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN
 	setflag FLAG_UNK_1E8
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	apply_movement obj_D35R0103_wataru, _06BC
 	apply_movement obj_D35R0103_tsure_poke_607, _06C4

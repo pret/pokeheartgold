@@ -195,7 +195,7 @@ _02053074:
 	cmp r6, #0
 	bne _02053088
 	add r0, r4, #0
-	bl sub_02055418
+	bl FieldSys_StartBugContestTimer
 _02053088:
 	cmp r6, #0
 	bne _020530A6
@@ -750,7 +750,7 @@ _02053502:
 	add r0, r4, #0
 	bl sub_02053284
 	add r0, r4, #0
-	bl sub_02055418
+	bl FieldSys_StartBugContestTimer
 	add r0, r4, #0
 	bl sub_0205323C
 _0205351C:

@@ -47,13 +47,13 @@ scr_seq_R30R0201_001:
 	npc_msg msg_0377_R30R0201_00003
 	npc_msg msg_0377_R30R0201_00004
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_081 0
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _02E8
 	.byte 0x02, 0x00

@@ -153,12 +153,12 @@ _01F2:
 	gotoif eq, _0261
 	npc_msg msg_0451_T01R0301_00029
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 90
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	npc_msg msg_0451_T01R0301_00030
 	waitbutton
@@ -631,10 +631,10 @@ _0912:
 
 _0929:
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	touchscreen_menu_hide
 	bufferpartymonnick 1, VAR_SPECIAL_x8005

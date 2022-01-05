@@ -100,7 +100,7 @@
 #define VAR_UNK_4055                 0x4055
 #define VAR_UNK_4056                 0x4056
 #define VAR_UNK_4057                 0x4057
-#define VAR_UNK_4058                 0x4058
+#define VAR_BUG_CONTEST_HELD_PRIZE                 0x4058
 #define VAR_UNK_4059                 0x4059
 #define VAR_UNK_405A                 0x405A
 #define VAR_UNK_405B                 0x405B
@@ -291,7 +291,7 @@
 #define VAR_UNK_4114                 0x4114
 #define VAR_UNK_4115                 0x4115
 #define VAR_UNK_4116                 0x4116
-#define VAR_UNK_4117                 0x4117
+#define VAR_SCENE_POKECENTER_WIFI_BASEMENT                 0x4117
 #define VAR_UNK_4118                 0x4118
 #define VAR_UNK_4119                 0x4119
 #define VAR_UNK_411A                 0x411A
@@ -303,7 +303,7 @@
 #define VAR_UNK_4120                 0x4120
 #define VAR_UNK_4121                 0x4121
 #define VAR_UNK_4122                 0x4122
-#define VAR_UNK_4123                 0x4123
+#define VAR_PAL_PARK_HIGH_SCORE                 0x4123
 #define VAR_UNK_4124                 0x4124
 #define VAR_UNK_4125                 0x4125
 #define VAR_UNK_4126                 0x4126

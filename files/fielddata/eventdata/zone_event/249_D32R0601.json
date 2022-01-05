@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D32R0601.h",
   "bgs": [
     {
-      "scr": 10455,
+      "scr": "std_battle_arcade_records",
       "type": 0,
       "x": 16,
       "y": 5,

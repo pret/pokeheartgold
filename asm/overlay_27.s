@@ -1919,7 +1919,7 @@ _0225AEDE:
 	cmp r2, r0
 	bne _0225AF22
 	mov r0, ip
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	str r0, [sp, #0x14]
 	cmp r0, #0
 	bne _0225AEFA
@@ -2346,7 +2346,7 @@ _0225B27E:
 	cmp r0, #2
 	bne _0225B2D2
 	ldr r0, [r5, #0x10]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r4, r0, #0
 	bne _0225B298
 	bl GF_AssertFail
@@ -4126,7 +4126,7 @@ ov27_0225C088: ; 0x0225C088
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r4, r0, #0
 	bne _0225C09A
 	bl GF_AssertFail

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D32R0301.h",
   "bgs": [
     {
-      "scr": 10452,
+      "scr": "std_battle_factory_records",
       "type": 0,
       "x": 22,
       "y": 6,

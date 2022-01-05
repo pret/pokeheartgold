@@ -367,14 +367,14 @@ _0575:
 	gotoif eq, _0600
 	get_party_count VAR_TEMP_x4000
 	subvar VAR_TEMP_x4000, 1
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _05E8
 	scrcmd_420 50
 _05E8:
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	script_overlay_cmd 2, 1
 	releaseall
@@ -436,11 +436,11 @@ _06AC:
 	wait_movement
 _06D3:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 65
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -570,7 +570,7 @@ _0870:
 	wait_movement
 	npc_msg msg_0464_T03R0101_00018
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	wait 30, VAR_SPECIAL_x800C
 	release obj_T03R0101_daigo
@@ -585,7 +585,7 @@ _0870:
 	apply_movement obj_partner_poke, _09F0
 	wait_movement
 _08F1:
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait 10, VAR_SPECIAL_x800C
 	apply_movement obj_T03R0101_gsassistantm, _09D0

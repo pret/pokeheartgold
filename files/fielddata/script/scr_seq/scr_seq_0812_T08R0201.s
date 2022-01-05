@@ -20,7 +20,7 @@
 scr_seq_T08R0201_000:
 	checkflag FLAG_UNK_9CD
 	gotoif TRUE, _003B
-	setvar VAR_UNK_4123, 2000
+	setvar VAR_PAL_PARK_HIGH_SCORE, 2000
 _003B:
 	clearflag FLAG_UNK_999
 	setflag FLAG_UNK_9CD
@@ -34,15 +34,15 @@ _0052:
 	end
 
 _0062:
-	comparevartovalue VAR_UNK_4123, 2000
+	comparevartovalue VAR_PAL_PARK_HIGH_SCORE, 2000
 	gotoif eq, _0079
 	buffer_players_name 1
-	buffer_int 2, VAR_UNK_4123
+	buffer_int 2, VAR_PAL_PARK_HIGH_SCORE
 	return
 
 _0079:
 	buffer_rivals_name 1
-	buffer_int 2, VAR_UNK_4123
+	buffer_int 2, VAR_PAL_PARK_HIGH_SCORE
 	return
 
 scr_seq_T08R0201_003:
@@ -153,10 +153,10 @@ _01FB:
 	apply_movement obj_player, _0294
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 109, 0, 24, 47, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
@@ -219,17 +219,17 @@ scr_seq_T08R0201_001:
 	apply_movement obj_player, _03DC
 	apply_movement obj_T08R0201_workman, _03C8
 	wait_movement
-	scrcmd_511 0, 32780
+	pal_park_score_get 0, VAR_SPECIAL_x800C
 	buffer_int 0, VAR_SPECIAL_x800C
-	scrcmd_511 1, 32780
+	pal_park_score_get 1, VAR_SPECIAL_x800C
 	buffer_int 1, VAR_SPECIAL_x800C
-	scrcmd_511 2, 32780
+	pal_park_score_get 2, VAR_SPECIAL_x800C
 	buffer_int 2, VAR_SPECIAL_x800C
-	scrcmd_511 3, 32780
+	pal_park_score_get 3, VAR_SPECIAL_x800C
 	buffer_int 3, VAR_SPECIAL_x800C
 	npc_msg msg_0516_T08R0201_00016
-	scrcmd_511 3, 32780
-	comparevartovar VAR_SPECIAL_x800C, VAR_UNK_4123
+	pal_park_score_get 3, VAR_SPECIAL_x800C
+	comparevartovar VAR_SPECIAL_x800C, VAR_PAL_PARK_HIGH_SCORE
 	gotoif gt, _0339
 	npc_msg msg_0516_T08R0201_00018
 	call _0669
@@ -238,7 +238,7 @@ scr_seq_T08R0201_001:
 _0339:
 	npc_msg msg_0516_T08R0201_00017
 	call _0669
-	scrcmd_511 3, 16675
+	pal_park_score_get 3, VAR_PAL_PARK_HIGH_SCORE
 	goto _034E
 
 _034E:
@@ -416,7 +416,7 @@ _051C:
 	gotoif eq, _0506
 	setvar VAR_SPECIAL_x8004, 97
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 32772, 32773, 32780
+	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0506
 	npc_msg msg_0516_T08R0201_00035
@@ -428,7 +428,7 @@ _055D:
 	gotoif eq, _0506
 	setvar VAR_SPECIAL_x8004, 98
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 32772, 32773, 32780
+	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0506
 	npc_msg msg_0516_T08R0201_00036
@@ -439,7 +439,7 @@ _059E:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0506
 	setvar VAR_SPECIAL_x8004, 14
-	scrcmd_407 32772, 32780
+	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0506
 	npc_msg msg_0516_T08R0201_00037
@@ -450,7 +450,7 @@ _05D7:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0506
 	setvar VAR_SPECIAL_x8004, 15
-	scrcmd_407 32772, 32780
+	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0506
 	npc_msg msg_0516_T08R0201_00038
@@ -461,7 +461,7 @@ _0610:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _0506
 	setvar VAR_SPECIAL_x8004, 16
-	scrcmd_407 32772, 32780
+	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _0506
 	npc_msg msg_0516_T08R0201_00039
@@ -482,7 +482,7 @@ _0659:
 	end
 
 _0669:
-	scrcmd_511 3, 32780
+	pal_park_score_get 3, VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 3000
 	callif lt, _06A5
 	comparevartovalue VAR_SPECIAL_x800C, 3300
@@ -574,9 +574,7 @@ _082F:
 
 _084C:
 	npc_msg msg_0516_T08R0201_00023
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8006
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check VAR_SPECIAL_x8006, 1
 	return
 
 _0861:

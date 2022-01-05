@@ -245,10 +245,10 @@ _02D2:
 	clearflag FLAG_UNK_2DD
 	clearflag FLAG_UNK_2DB
 _02E4:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 60, 0, 695, 397, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

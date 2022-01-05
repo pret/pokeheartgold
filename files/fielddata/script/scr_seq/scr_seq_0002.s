@@ -39,7 +39,7 @@ _005C:
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _0352
 _008A:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	scrcmd_117
@@ -47,7 +47,7 @@ _008A:
 	get_party_selection VAR_SPECIAL_x8001
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8001, 255
 	gotoif eq, _0352
@@ -150,7 +150,7 @@ _0241:
 	getmenuchoice VAR_SPECIAL_x800C
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _03A4
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	scrcmd_117
@@ -159,7 +159,7 @@ _0241:
 	nop_var_490 VAR_SPECIAL_x8006
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8006, 4
 	gotoif eq, _03A4

@@ -1,5 +1,6 @@
 #include "constants/sndseq.h"
 #include "constants/moves.h"
+#include "constants/std_script.h"
 #include "constants/species.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 	.include "asm/macros.inc"
@@ -758,7 +759,7 @@ ov01_021E5FC0: ; 0x021E5FC0
 	cmp r0, #0
 	bne _021E5FD4
 	add r0, r5, #0
-	bl sub_02055418
+	bl FieldSys_StartBugContestTimer
 _021E5FD4:
 	ldr r0, [r5, #0x50]
 	bl ov01_021EA2A4
@@ -2301,7 +2302,7 @@ _021E6B66:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6B86:
 	add r0, r4, #0
-	bl ov01_021E7A60
+	bl BugContestTimeoutCheck
 	cmp r0, #0
 	beq _021E6B94
 	mov r0, #1
@@ -4109,11 +4110,11 @@ _021E7A56:
 _021E7A5C: .word 0x00000984
 	thumb_func_end ov01_021E7A08
 
-	thumb_func_start ov01_021E7A60
-ov01_021E7A60: ; 0x021E7A60
+	thumb_func_start BugContestTimeoutCheck
+BugContestTimeoutCheck: ; 0x021E7A60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
@@ -4126,7 +4127,7 @@ _021E7A7C:
 	ldr r0, [r5, #0x1c]
 	cmp r0, #0x14
 	blo _021E7A90
-	ldr r1, _021E7A94 ; =0x000028A0
+	ldr r1, _021E7A94 ; =std_bug_contest_time_up
 	add r0, r4, #0
 	mov r2, #0
 	bl StartMapSceneScript
@@ -4136,8 +4137,8 @@ _021E7A90:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E7A94: .word 0x000028A0
-	thumb_func_end ov01_021E7A60
+_021E7A94: .word std_bug_contest_time_up
+	thumb_func_end BugContestTimeoutCheck
 
 	thumb_func_start ov01_021E7A98
 ov01_021E7A98: ; 0x021E7A98
@@ -61769,8 +61770,8 @@ _0220292C:
 	pop {r4, pc}
 	thumb_func_end ScrCmd_839
 
-	thumb_func_start ScrCmd_785
-ScrCmd_785: ; 0x02202930
+	thumb_func_start ScrCmd_BugContestAction
+ScrCmd_BugContestAction: ; 0x02202930
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61789,7 +61790,7 @@ ScrCmd_785: ; 0x02202930
 	cmp r4, #0
 	bne _02202964
 	add r0, r5, #0
-	bl ov24_022598C0
+	bl BugContest_new
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -61798,7 +61799,7 @@ _02202964:
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl ov24_02259928
+	bl BugContest_delete
 	mov r0, #0x46
 	mov r1, #0
 	lsl r0, r0, #2
@@ -61808,10 +61809,10 @@ _02202964:
 _0220297C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_785
+	thumb_func_end ScrCmd_BugContestAction
 
-	thumb_func_start ScrCmd_786
-ScrCmd_786: ; 0x02202980
+	thumb_func_start ScrCmd_BufferBugContestWinner
+ScrCmd_BufferBugContestWinner: ; 0x02202980
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -61822,26 +61823,26 @@ ScrCmd_786: ; 0x02202980
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r3, [r5, #8]
 	add r1, r3, #1
 	str r1, [r5, #8]
 	ldrb r3, [r3]
 	ldr r1, [r5, #0x78]
 	ldr r2, [r4]
-	bl ov24_02259A4C
+	bl BugContest_BufferContestWinnerNames
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_786
+	thumb_func_end ScrCmd_BufferBugContestWinner
 
-	thumb_func_start ScrCmd_787
-ScrCmd_787: ; 0x022029B0
+	thumb_func_start ScrCmd_JudgeBugContest
+ScrCmd_JudgeBugContest: ; 0x022029B0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -61867,7 +61868,7 @@ ScrCmd_787: ; 0x022029B0
 	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov24_02259940
+	bl BugContest_Judge
 	ldrb r0, [r5, #0x17]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1a
@@ -61890,10 +61891,10 @@ _02202A20:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_787
+	thumb_func_end ScrCmd_JudgeBugContest
 
-	thumb_func_start ScrCmd_788
-ScrCmd_788: ; 0x02202A28
+	thumb_func_start ScrCmd_BufferBugContestMonNick
+ScrCmd_BufferBugContestMonNick: ; 0x02202A28
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -61904,7 +61905,7 @@ ScrCmd_788: ; 0x02202A28
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	ldr r1, [r4, #8]
 	add r7, r0, #0
 	add r0, r1, #1
@@ -61920,15 +61921,15 @@ ScrCmd_788: ; 0x02202A28
 	ldr r1, [r6]
 	add r0, r7, #0
 	add r2, r5, #0
-	bl ov24_02259AF8
+	bl BugContest_BufferCaughtMonNick
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_788
+	thumb_func_end ScrCmd_BufferBugContestMonNick
 
-	thumb_func_start ScrCmd_789
-ScrCmd_789: ; 0x02202A70
+	thumb_func_start ScrCmd_BugContestGetTimeLeft
+ScrCmd_BugContestGetTimeLeft: ; 0x02202A70
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -61944,7 +61945,7 @@ ScrCmd_789: ; 0x02202A70
 	ldr r0, [r5]
 	ldrb r6, [r1]
 	mov r4, #1
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	cmp r0, #0
 	beq _02202AA2
 	ldr r1, [r0, #0x1c]
@@ -61965,15 +61966,15 @@ _02202AA2:
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_789
+	thumb_func_end ScrCmd_BugContestGetTimeLeft
 
-	thumb_func_start ScrCmd_790
-ScrCmd_790: ; 0x02202ABC
+	thumb_func_start ScrCmd_IsBugContestantRegistered
+ScrCmd_IsBugContestantRegistered: ; 0x02202ABC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -61993,11 +61994,11 @@ ScrCmd_790: ; 0x02202ABC
 	add r4, r0, #0
 	add r0, r6, #0
 	lsr r1, r1, #0x18
-	bl ov24_02259ADC
+	bl BugContest_ContestantIsRegistered
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_790
+	thumb_func_end ScrCmd_IsBugContestantRegistered
 
 	thumb_func_start ScrCmd_652
 ScrCmd_652: ; 0x02202B00

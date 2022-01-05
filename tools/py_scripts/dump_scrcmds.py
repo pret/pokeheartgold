@@ -204,31 +204,41 @@ class NormalScriptParser(ScriptParserBase):
             self.gmm_header = None
 
         # Convenience macros
-        def handle_itemspace(macro, itemgrp=0):
+        def handle_itemspace(macro, *arg_idxs):
+            itemgrp, quantgrp, *_ = arg_idxs
+
             def inner(m: re.Match):
                 grps = list(m.groups())
-                grps[itemgrp] = self.constants['item'][int(grps[itemgrp])]
-                return f'\t{macro} {", ".join(grps)}\n'
+                if grps[itemgrp].isnumeric():
+                    grps[itemgrp] = self.constants['item'].get(int(grps[itemgrp]), grps[itemgrp])
+                return f'\t{macro} {", ".join(grps[i] for i in arg_idxs)}\n'
             return inner
 
         self.macros = [
             (re.compile(
-                r'\tsetvar VAR_SPECIAL_x8004, (\w+)\n'
-                r'\tsetvar VAR_SPECIAL_x8005, (\w+)\n'
+                r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
+                r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
                 r'\tcallstd std_give_item_verbose\n'
-            ), handle_itemspace('giveitem_no_check')),
+            ), handle_itemspace('giveitem_no_check', 1, 3)),
             (re.compile(
-                r'\tsetvar VAR_SPECIAL_x8004, (\w+)\n'
-                r'\tsetvar VAR_SPECIAL_x8005, (\w+)\n'
+                r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
+                r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
                 r'\ttakeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
-            ), handle_itemspace('takeitem_no_check')),
+            ), handle_itemspace('takeitem_no_check', 1, 3)),
             (re.compile(
-                r'\tsetvar VAR_SPECIAL_x8004, (\w+)\n'
-                r'\tsetvar VAR_SPECIAL_x8005, (\w+)\n'
+                r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
+                r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
                 r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
                 r'\tcomparevartovalue VAR_SPECIAL_x800C, 0\n'
                 r'\tgotoif eq, (\w+)\n'
-            ), handle_itemspace('goto_if_no_item_space')),
+            ), handle_itemspace('goto_if_no_item_space', 1, 3, 4)),
+            (re.compile(
+                r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
+                r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
+                r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
+                r'\tcomparevartovalue VAR_SPECIAL_x800C, 1\n'
+                r'\tgotoif ne, (\w+)\n'
+            ), handle_itemspace('goto_if_no_item_space_2', 1, 3, 4)),
             (re.compile(
                 r'\tcopyvar VAR_SPECIAL_x8008, (\w+)\n'
             ), r'\tswitch \1\n'),
@@ -383,7 +393,7 @@ class NormalScriptParser(ScriptParserBase):
                 size = int(size[-1])
                 value = int.from_bytes(self.raw[pc:pc + size], 'little')
                 pc += size
-                return (f'0x{{:0{size}X}}').format(value), pc
+                return (f'0x{{:0{size * 2}X}}').format(value), pc
             case 'addr' | 'script' | 'movement':
                 value = int.from_bytes(self.raw[pc:pc + 4], 'little')
                 pc += 4

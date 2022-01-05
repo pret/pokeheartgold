@@ -160,14 +160,14 @@ scr_seq_P01R0303_001:
 	wait_movement
 	npc_msg msg_0261_P01R0303_00000
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	npc_msg msg_0261_P01R0303_00001
 	closemsg

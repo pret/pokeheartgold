@@ -67,7 +67,7 @@ _00AD:
 	touchscreen_menu_show
 	comparevartovalue VAR_SPECIAL_x800C, 1
 	gotoif eq, _01AA
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	party_select_ui
@@ -122,7 +122,7 @@ _0192:
 	.byte 0x02, 0x00
 _019A:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	return
 

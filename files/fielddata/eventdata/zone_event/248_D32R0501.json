@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D32R0501.h",
   "bgs": [
     {
-      "scr": 10454,
+      "scr": "std_battle_castle_records",
       "type": 0,
       "x": 6,
       "y": 8,

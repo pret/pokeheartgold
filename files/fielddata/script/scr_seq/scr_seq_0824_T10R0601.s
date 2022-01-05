@@ -158,10 +158,10 @@ _0234:
 	clearflag FLAG_HIDE_OLIVINE_PORT_OAK
 	setvar VAR_UNK_411A, 1
 _0268:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 306, 0, 6, 22, 0
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

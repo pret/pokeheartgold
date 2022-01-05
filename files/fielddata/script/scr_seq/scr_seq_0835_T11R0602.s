@@ -14,10 +14,10 @@ scr_seq_T11R0602_000:
 	apply_movement obj_player, _0088
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 400, 0, 3, 3, 3
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_606

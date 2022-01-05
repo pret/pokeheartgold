@@ -91,11 +91,11 @@ scr_seq_0001_007:
 scr_seq_0001_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_157
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end

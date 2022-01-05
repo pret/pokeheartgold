@@ -278,13 +278,13 @@ _039D:
 	npc_msg msg_0129_D44R0102_00011
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	hide_person obj_D44R0102_gsleader8
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -314,12 +314,12 @@ _03FC:
 	npc_msg msg_0129_D44R0102_00030
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 83
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0129_D44R0102_00031
@@ -440,12 +440,12 @@ _05D1:
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00028
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	hide_person obj_D44R0102_gsrivel_2
 	hide_person obj_D44R0102_var_1
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	apply_movement obj_partner_poke, _06DC
 	wait_movement

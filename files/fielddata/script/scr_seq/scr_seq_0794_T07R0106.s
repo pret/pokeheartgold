@@ -122,9 +122,7 @@ _011C:
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0499_T07R0106_00004
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
-	setvar VAR_SPECIAL_x8005, 1
-	callstd std_give_item_verbose
+	giveitem_no_check VAR_SPECIAL_x8001, 1
 	scrcmd_380 VAR_SPECIAL_x800C, 64
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif ne, _01E7

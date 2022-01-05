@@ -278,14 +278,14 @@ _03F1:
 	gotoif ne, _0455
 	scrcmd_600
 _0455:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_se SEQ_SE_DP_KAIDAN2
 	wait_fade
 	scrcmd_309 77
 	setvar VAR_UNK_408E, 1
 	scrcmd_176 331, 0, 3, 12, 0
 	scrcmd_582 38, 368, 411
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
 	end
@@ -500,11 +500,11 @@ _06C6:
 	wait_movement
 _06ED:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 9
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

@@ -563,14 +563,25 @@
 #define _std_chatot                     8900
 
 #define _std_comm_reception             9000
+#define std_wireless_reset_state        9000
 #define std_wireless_colosseum          9001
 #define std_union_room                  9003
+#define std_wireless_colosseum_return   9012
+#define std_union_room_return           9013
 #define std_party_illegal               9016
 #define std_trainer_card_explain        9017
 
 #define _std_colosseum                  9100
+#define std_colosseum_pcwoman3          9100
+#define std_colosseum_exit              9101
 
 #define _std_wifi_reception             9200
+#define std_teala_first_intro           9200
+#define std_teala_subsequent_talk       9201
+#define std_wifi_pichu_check            9202
+#define std_wifi_reception              9203
+#define std_wifi_return                 9204
+#define std_wifi_reset_state            9205
 
 #define _std_group                      9300
 #define std_group                       9300
@@ -633,13 +644,44 @@
 #define std_trainer_house_cal_9        10361
 
 #define _std_bug_contest               10400
+#define std_bug_contest_time_up        10400
+#define std_bug_contest_balls_up       10401
+#define std_bug_contest_retire         10404
 #define std_bug_contest_guard_start    10405
 #define std_bug_contest_guard_ask_end  10406
+#define std_bug_contest_judging        10407
+#define std_bug_contest_don_during     10408
+#define std_bug_contest_don_after      10409
+#define std_bug_contest_ed_during      10410
+#define std_bug_contest_ed_after       10411
+#define std_bug_contest_abby_during    10412
+#define std_bug_contest_abby_after     10413
+#define std_bug_contest_william_during 10414
+#define std_bug_contest_william_after  10415
+#define std_bug_contest_benny_during   10416
+#define std_bug_contest_benny_after    10417
+#define std_bug_contest_barry_during   10418
+#define std_bug_contest_barry_after    10419
+#define std_bug_contest_cindy_during   10420
+#define std_bug_contest_cindy_after    10421
+#define std_bug_contest_josh_during    10422
+#define std_bug_contest_josh_after     10423
+#define std_bug_contest_samuel_during  10424
+#define std_bug_contest_samuel_after   10425
+#define std_bug_contest_kipp_during    10426
+#define std_bug_contest_kipp_after     10427
 
 #define _std_frontier_move_tutor       10440
 #define std_frontier_move_tutor_1      10440
 #define std_frontier_move_tutor_2      10441
 #define std_frontier_move_tutor_3      10442
+
+#define _std_frontier_records          10450
+#define std_battle_tower_records       10450
+#define std_battle_factory_records     10452
+#define std_battle_hall_records        10453
+#define std_battle_castle_records      10454
+#define std_battle_arcade_records      10455
 
 #define _std_scratch_card              10490
 #define std_scratch_card               10490

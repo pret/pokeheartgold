@@ -831,13 +831,13 @@ _0A3A:
 	gotoif eq, _0AEB
 	npc_msg msg_0137_D49_00034
 	closemsg
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_114
 	scrcmd_740 32768, 32771
 	scrcmd_150
 	scrcmd_113 21, 1
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	comparevartovalue VAR_SPECIAL_x8003, 0
 	gotoif ne, _0AD0
@@ -1000,11 +1000,11 @@ _0CC3:
 	wait_movement
 _0CEA:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 13
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -1068,11 +1068,11 @@ _0DEB:
 	apply_movement obj_partner_poke, _0EC4
 	wait_movement
 _0E12:
-	fade_screen 6, 1, 0, 0x00
+	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	cameron_photo 14
 	lockall
-	fade_screen 6, 1, 1, 0x00
+	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 2

@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_P01R0103_001:
-	scrcmd_445 16384
+	scrcmd_445 VAR_TEMP_x4000
 	comparevartovalue VAR_TEMP_x4000, 387
 	gotoif eq, _0021
 	end

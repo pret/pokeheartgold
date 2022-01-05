@@ -625,7 +625,7 @@ _02051D94:
 	cmp r0, #0
 	beq _02051DDA
 	add r0, r4, #0
-	bl sub_0205BD64
+	bl Save_GetLeadMonIdxForBugContest
 	mov r1, #0x73
 	lsl r1, r1, #2
 	strb r0, [r5, r1]
@@ -1381,7 +1381,7 @@ _0205241E:
 	cmp r0, #0
 	beq _02052434
 	add r0, r4, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	bl sub_0206DB30
 	add r6, r0, #0
 _02052434:

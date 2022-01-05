@@ -6,12 +6,12 @@
 	.byte 1
 	.word scr_seq_T07PC0102_map_scripts_2-.-4
 	.byte 4
-	.short 9205, 0
+	.short std_wifi_reset_state, 0
 	.byte 0
 
 scr_seq_T07PC0102_map_scripts_2:
-	.short VAR_UNK_4117, 0, 9200
-	.short VAR_UNK_4137, 1, 9204
+	.short VAR_SCENE_POKECENTER_WIFI_BASEMENT, 0, std_teala_first_intro
+	.short VAR_UNK_4137, 1, std_wifi_return
 	.short 0
 
 	.balign 4, 0

@@ -19,7 +19,7 @@
 scr_seq_T28_005:
 	setvar VAR_UNK_4077, 2
 	setflag FLAG_UNK_0C5
-	setflag FLAG_UNK_99B
+	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
 	comparevartovalue VAR_UNK_40F8, 0
 	gotoif ne, _0047
 	setvar VAR_UNK_40F8, 2

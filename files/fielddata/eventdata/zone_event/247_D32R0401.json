@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D32R0401.h",
   "bgs": [
     {
-      "scr": 10453,
+      "scr": "std_battle_hall_records",
       "type": 0,
       "x": 7,
       "y": 8,

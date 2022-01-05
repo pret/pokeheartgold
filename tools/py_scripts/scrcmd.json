@@ -2484,9 +2484,9 @@
     {
       "name": "scrcmd_404",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -2506,8 +2506,8 @@
     {
       "name": "scrcmd_407",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -3225,10 +3225,10 @@
       "args": []
     },
     {
-      "name": "scrcmd_511",
+      "name": "pal_park_score_get",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -3570,13 +3570,13 @@
     {
       "name": "scrcmd_564",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_565",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3954,9 +3954,9 @@
     {
       "name": "scrcmd_631",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -4369,7 +4369,7 @@
     {
       "name": "scrcmd_691",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4914,31 +4914,31 @@
       ]
     },
     {
-      "name": "scrcmd_785",
+      "name": "bug_contest_action",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_786",
+      "name": "buffer_bug_contest_winner",
       "args": [
         1
       ]
     },
     {
-      "name": "scrcmd_787",
+      "name": "judge_bug_contest",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_788",
+      "name": "buffer_bug_contest_mon_nick",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -4948,10 +4948,10 @@
       ]
     },
     {
-      "name": "scrcmd_790",
+      "name": "is_npc_bug_contestant_registered",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4995,7 +4995,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_798",
+      "name": "buffer_ruleset_name",
       "args": [
         2
       ]
@@ -5219,7 +5219,7 @@
     {
       "name": "scrcmd_837",
       "args": [
-        2
+        "var"
       ]
     },
     {

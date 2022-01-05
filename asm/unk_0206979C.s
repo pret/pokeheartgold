@@ -8726,13 +8726,13 @@ _0206DB18:
 _0206DB24: .word gGameVersion
 	thumb_func_end MonIsInGameTradePokeEx
 
-	thumb_func_start sub_0206DB28
-sub_0206DB28: ; 0x0206DB28
+	thumb_func_start FieldSys_BugContest_get
+FieldSys_BugContest_get: ; 0x0206DB28
 	mov r1, #0x46
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	bx lr
-	thumb_func_end sub_0206DB28
+	thumb_func_end FieldSys_BugContest_get
 
 	thumb_func_start sub_0206DB30
 sub_0206DB30: ; 0x0206DB30
@@ -8745,7 +8745,7 @@ sub_0206DB34: ; 0x0206DB34
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r4, r0, #0
 	beq _0206DB56
 	ldr r0, [r5, #0xc]
@@ -8822,7 +8822,7 @@ sub_0206DBC0: ; 0x0206DBC0
 	bl sub_02050650
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_0206DB28
+	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_02050654

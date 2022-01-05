@@ -53,11 +53,7 @@ _0058:
 	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_TEMP_x4001
 	comparevartovalue VAR_SPECIAL_x800C, 0
 	gotoif eq, _00F7
-	setvar VAR_SPECIAL_x8004, 33
-	copyvar VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0104
+	goto_if_no_item_space ITEM_MOOMOO_MILK, VAR_TEMP_x4000, _0104
 	submoneyvar VAR_TEMP_x4001
 	scrcmd_115
 	npc_msg msg_0397_R39R0101_00002
