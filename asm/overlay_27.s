@@ -4132,7 +4132,7 @@ ov27_0225C088: ; 0x0225C088
 	bl GF_AssertFail
 _0225C09A:
 	add r0, r4, #0
-	bl sub_0206DB30
+	bl BugContest_GetSportBallsAddr
 	add r3, r0, #0
 	mov r1, #0xe
 	ldrh r3, [r3]

@@ -8734,14 +8734,14 @@ FieldSys_BugContest_get: ; 0x0206DB28
 	bx lr
 	thumb_func_end FieldSys_BugContest_get
 
-	thumb_func_start sub_0206DB30
-sub_0206DB30: ; 0x0206DB30
+	thumb_func_start BugContest_GetSportBallsAddr
+BugContest_GetSportBallsAddr: ; 0x0206DB30
 	add r0, #0x18
 	bx lr
-	thumb_func_end sub_0206DB30
+	thumb_func_end BugContest_GetSportBallsAddr
 
-	thumb_func_start sub_0206DB34
-sub_0206DB34: ; 0x0206DB34
+	thumb_func_start FieldSys_IncrementBugContestTimer
+FieldSys_IncrementBugContestTimer: ; 0x0206DB34
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -8758,7 +8758,7 @@ sub_0206DB34: ; 0x0206DB34
 	str r0, [r4, #0x1c]
 _0206DB56:
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0206DB34
+	thumb_func_end FieldSys_IncrementBugContestTimer
 
 	thumb_func_start sub_0206DB58
 sub_0206DB58: ; 0x0206DB58

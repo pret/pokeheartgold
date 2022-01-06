@@ -1382,7 +1382,7 @@ _0205241E:
 	beq _02052434
 	add r0, r4, #0
 	bl FieldSys_BugContest_get
-	bl sub_0206DB30
+	bl BugContest_GetSportBallsAddr
 	add r6, r0, #0
 _02052434:
 	cmp r6, #0

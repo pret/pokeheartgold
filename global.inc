@@ -14152,10 +14152,10 @@
 .public BugContest_BufferContestWinnerNames
 .public BugContest_ContestantIsRegistered
 .public BugContest_BufferCaughtMonNick
-.public ov24_02259B50
+.public BugContest_GetEncounterSlot
 .public BugContest_BackUpParty
 .public BugContest_RestoreParty_RetrieveCaughtPokemon
-.public ov24_02259C98
+.public BugContest_ContestantIsRegisteredN
 .public BugContest_InitOpponents
 .public BugContest_InitEncounters
 .public BugContest_JudgePlayerMon
@@ -29309,8 +29309,8 @@
 .public sub_0206D494
 .public sub_0206D8D0
 .public FieldSys_BugContest_get
-.public sub_0206DB30
-.public sub_0206DB34
+.public BugContest_GetSportBallsAddr
+.public FieldSys_IncrementBugContestTimer
 .public sub_0206DB58
 .public sub_0206DB94
 .public sub_0206DCC4

@@ -205,7 +205,7 @@ sub_020555B4: ; 0x020555B4
 	bl sub_02092E34
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0206DB34
+	bl FieldSys_IncrementBugContestTimer
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	add r1, r4, #0

@@ -1,4 +1,5 @@
 #include "constants/trainer_class.h"
+#include "constants/items.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -189,27 +190,27 @@ _02259A22:
 _02259A24:
 	cmp r0, #6
 	bhs _02259A2E
-	add r0, #0x50
+	add r0, #ITEM_SUN_STONE
 	strh r0, [r4, #0x1a]
 	pop {r3, r4, r5, r6, r7, pc}
 _02259A2E:
-	add r0, #0x65
+	add r0, #ITEM_SHINY_STONE - 6
 	strh r0, [r4, #0x1a]
 	pop {r3, r4, r5, r6, r7, pc}
 _02259A34:
-	mov r0, #0xe5
+	mov r0, #ITEM_EVERSTONE
 	strh r0, [r4, #0x1a]
 	pop {r3, r4, r5, r6, r7, pc}
 _02259A3A:
-	mov r0, #0x9e
+	mov r0, #ITEM_SITRUS_BERRY
 	strh r0, [r4, #0x1a]
 	pop {r3, r4, r5, r6, r7, pc}
 _02259A40:
-	ldr r0, _02259A48 ; =0x00000127
+	ldr r0, _02259A48 ; =ITEM_SHED_SHELL
 	strh r0, [r4, #0x1a]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02259A48: .word 0x00000127
+_02259A48: .word ITEM_SHED_SHELL
 	thumb_func_end BugContest_Judge
 
 	thumb_func_start BugContest_BufferContestWinnerNames
@@ -347,8 +348,8 @@ _02259B48:
 	.balign 4, 0
 	thumb_func_end BugContest_BufferCaughtMonNick
 
-	thumb_func_start ov24_02259B50
-ov24_02259B50: ; 0x02259B50
+	thumb_func_start BugContest_GetEncounterSlot
+BugContest_GetEncounterSlot: ; 0x02259B50
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -396,7 +397,7 @@ _02259B82:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov24_02259B50
+	thumb_func_end BugContest_GetEncounterSlot
 
 	thumb_func_start BugContest_BackUpParty
 BugContest_BackUpParty: ; 0x02259BB4
@@ -506,8 +507,8 @@ _02259C92:
 	.balign 4, 0
 	thumb_func_end BugContest_RestoreParty_RetrieveCaughtPokemon
 
-	thumb_func_start ov24_02259C98
-ov24_02259C98: ; 0x02259C98
+	thumb_func_start BugContest_ContestantIsRegisteredN
+BugContest_ContestantIsRegisteredN: ; 0x02259C98
 	push {r3, r4}
 	mov r4, #0
 	cmp r2, #0
@@ -531,7 +532,7 @@ _02259CB8:
 	pop {r3, r4}
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov24_02259C98
+	thumb_func_end BugContest_ContestantIsRegisteredN
 
 	thumb_func_start BugContest_InitOpponents
 BugContest_InitOpponents: ; 0x02259CC0
@@ -594,7 +595,7 @@ _02259D26:
 	add r0, r5, #0
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl ov24_02259C98
+	bl BugContest_ContestantIsRegisteredN
 	cmp r0, #0
 	bne _02259D26
 	add r0, r7, #0

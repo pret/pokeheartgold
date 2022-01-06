@@ -4560,7 +4560,7 @@ ov02_02247ED8: ; 0x02247ED8
 	add r5, r3, #0
 	bl FieldSys_BugContest_get
 	mov r1, #4
-	bl ov24_02259B50
+	bl BugContest_GetEncounterSlot
 	add r4, r0, #0
 	ldrh r0, [r4, #4]
 	add r1, r5, #0
@@ -5063,7 +5063,7 @@ _02248252:
 _0224826A:
 	bl FieldSys_BugContest_get
 	add r4, r0, #0
-	bl sub_0206DB30
+	bl BugContest_GetSportBallsAddr
 	add r1, r0, #0
 	ldrh r1, [r1]
 	ldr r2, [r4, #0x10]

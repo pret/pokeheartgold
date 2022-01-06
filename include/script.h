@@ -8,6 +8,7 @@
 #include "window.h"
 #include "field_player_avatar.h"
 #include "gear_phone.h"
+#include "bug_contest.h"
 #include "constants/vars.h"
 
 #define SCRIPT_MODE_STOPPED  0
@@ -164,7 +165,8 @@ struct UnkSavStruct80 {
     u32 unkAC;
     u8 unkB0[0x44];
     struct UnkFsysSub_114* unk114;
-    u8 unk118[0x10];
+    BUGCONTEST* bugContest;
+    u8 unk11C[0xC];
 }; // size: 0x128
 
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;

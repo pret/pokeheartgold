@@ -1,3 +1,4 @@
+#include "constants/std_script.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -974,7 +975,7 @@ _02050E0A:
 	b _02050EA8
 _02050E12:
 	mov r2, #0
-	ldr r1, _02050EAC ; =0x00002265
+	ldr r1, _02050EAC ; =std_safari_enter
 	add r0, r7, #0
 	add r3, r2, #0
 	bl sub_0203FED4
@@ -1008,7 +1009,7 @@ _02050E48:
 	cmp r0, #4
 	bne _02050E96
 	mov r2, #0
-	ldr r1, _02050EB0 ; =0x00002263
+	ldr r1, _02050EB0 ; =std_safari_balls_out
 	add r0, r7, #0
 	add r3, r2, #0
 	bl sub_0203FED4
@@ -1029,7 +1030,7 @@ _02050E66:
 	cmp r0, #6
 	bne _02050E96
 	mov r2, #0
-	ldr r1, _02050EB4 ; =0x00002264
+	ldr r1, _02050EB4 ; =std_safari_storage_out
 	add r0, r7, #0
 	add r3, r2, #0
 	bl sub_0203FED4
@@ -1047,9 +1048,9 @@ _02050EA8:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02050EAC: .word 0x00002265
-_02050EB0: .word 0x00002263
-_02050EB4: .word 0x00002264
+_02050EAC: .word std_safari_enter
+_02050EB0: .word std_safari_balls_out
+_02050EB4: .word std_safari_storage_out
 	thumb_func_end sub_02050D1C
 
 	thumb_func_start sub_02050EB8
@@ -1069,7 +1070,7 @@ sub_02050EB8: ; 0x02050EB8
 	bl sub_02050654
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl sub_0206DB30
+	bl BugContest_GetSportBallsAddr
 	str r0, [sp, #4]
 	ldr r0, [r4]
 	cmp r0, #7
@@ -1205,7 +1206,7 @@ _02050FE6:
 	ldr r0, [r0, #0x14]
 	cmp r0, #4
 	bne _0205100C
-	ldr r1, _0205101C ; =0x000028A1
+	ldr r1, _0205101C ; =std_bug_contest_balls_up
 	add r0, r7, #0
 	mov r2, #0
 	bl sub_0203FF0C
@@ -1222,7 +1223,7 @@ _02051012:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02051018: .word sub_0205298C
-_0205101C: .word 0x000028A1
+_0205101C: .word std_bug_contest_balls_up
 	thumb_func_end sub_02050EB8
 
 	thumb_func_start sub_02051020
