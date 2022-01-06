@@ -579,7 +579,7 @@ _020751CC:
 	add r4, #0x20
 	ldr r0, [r0, #4]
 	add r1, r4, #0
-	bl sub_020748B8
+	bl Party_copy
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end sub_020751B8
@@ -864,7 +864,7 @@ _020753BE:
 	add r5, #0x20
 	ldr r0, [r0, #4]
 	add r1, r5, #0
-	bl sub_020748B8
+	bl Party_copy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

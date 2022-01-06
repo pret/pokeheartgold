@@ -26,5 +26,6 @@ struct PokemonStorageSystem {
 #define BOX_ALL_MODIFIED_FLAG      ((u32)((1<<NUM_BOXES)-1))
 
 void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, STRING *dest);
+BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BOXMON *boxmon);
 
 #endif //POKEHEARTGOLD_POKEMON_STORAGE_SYSTEM_H

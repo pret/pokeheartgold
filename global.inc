@@ -20924,7 +20924,7 @@
 .public ov74_02228B8C
 .public ov74_02228C60
 .public ov74_02228C84
-.public ov74_02228CB4
+.public ov74_IntToWstring5
 .public ov74_02228D20
 .public ov74_02228D64
 .public ov74_02228E98
@@ -29365,7 +29365,7 @@
 .public sub_02074708
 .public sub_02074740
 .public sub_020747BC
-.public sub_020748B8
+.public Party_copy
 .public sub_02074930
 .public sub_02074944
 .public sub_0207495C

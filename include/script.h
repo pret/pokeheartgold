@@ -8,7 +8,7 @@
 #include "window.h"
 #include "field_player_avatar.h"
 #include "gear_phone.h"
-#include "bug_contest.h"
+#include "bug_contest_internal.h"
 #include "constants/vars.h"
 
 #define SCRIPT_MODE_STOPPED  0

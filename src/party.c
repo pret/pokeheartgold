@@ -119,7 +119,7 @@ BOOL sub_020747BC(PARTY *party, int slotA, int slotB) {
     return FALSE;
 }
 
-void sub_020748B8(const PARTY *src, PARTY *dest) {
+void Party_copy(const PARTY *src, PARTY *dest) {
     *dest = *src;
 }
 

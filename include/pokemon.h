@@ -74,6 +74,7 @@ void DeleteBoxMonFirstMoveAndAppend(BOXMON *boxmon, u16 move);
 void LoadWotbl_HandleAlternateForme(int species, int forme, u16 *wotbl);
 void MonSwapMoves(POKEMON *pokemon, int a, int b);
 void BoxMonSwapMoves(BOXMON *boxmon, int a, int b);
+BOXMON *Mon_GetBoxMon(POKEMON *pokemon);
 
 u16 GetMonEvolution(PARTY * party, POKEMON * pokemon, u8 context, u16 usedItem, int *method_ret);
 u16 ReadFromPersonalPmsNarc(u16 species);

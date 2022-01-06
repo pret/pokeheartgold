@@ -3600,8 +3600,8 @@ _02228CAC: .word ov74_0223BD68
 _02228CB0: .word 0x00000123
 	thumb_func_end ov74_02228C84
 
-	thumb_func_start ov74_02228CB4
-ov74_02228CB4: ; 0x02228CB4
+	thumb_func_start ov74_IntToWstring5
+ov74_IntToWstring5: ; 0x02228CB4
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -3648,7 +3648,7 @@ ov74_02228CB4: ; 0x02228CB4
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02228D1C: .word 0x00002710
-	thumb_func_end ov74_02228CB4
+	thumb_func_end ov74_IntToWstring5
 
 	thumb_func_start ov74_02228D20
 ov74_02228D20: ; 0x02228D20
@@ -3672,7 +3672,7 @@ _02228D30:
 	bl PlayerProfile_GetTrainerID_VisibleHalf
 	add r1, r0, #0
 	ldr r0, _02228D5C ; =ov74_0223D090
-	bl ov74_02228CB4
+	bl ov74_IntToWstring5
 	ldr r0, _02228D60 ; =_0223D080
 	mov r1, #0
 	strh r1, [r0, #0x1a]

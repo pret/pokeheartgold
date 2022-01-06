@@ -523,7 +523,7 @@ _02051CD4:
 	add r1, r5, r1
 	ldr r1, [r1, #4]
 	add r0, r6, #0
-	bl sub_020748B8
+	bl Party_copy
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_02051CC4
@@ -1352,7 +1352,7 @@ sub_0205239C: ; 0x0205239C
 	bl PlayerProfile_copy
 	ldr r0, [r5, #4]
 	add r1, r7, #0
-	bl sub_020748B8
+	bl Party_copy
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

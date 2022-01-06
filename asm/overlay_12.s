@@ -1391,7 +1391,7 @@ _022384CE:
 _022384D6:
 	ldr r0, [r5, #0x68]
 	ldr r1, [r6, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [r5, #0x68]
 	bl FreeToHeap
 	add r1, r6, #0
@@ -2405,7 +2405,7 @@ _02238D86:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2513,7 +2513,7 @@ _02238E68:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2616,7 +2616,7 @@ _02238F42:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2746,7 +2746,7 @@ _02239050:
 	ldr r0, [sp, #4]
 	ldr r1, [r7, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
 	bl GetPartyCount
@@ -2841,7 +2841,7 @@ _0223911A:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2968,7 +2968,7 @@ _02239220:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -3071,7 +3071,7 @@ _022392F2:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -3204,7 +3204,7 @@ _02239408:
 	ldr r0, [sp, #4]
 	ldr r1, [r7, #0x68]
 	ldr r0, [r0, #4]
-	bl sub_020748B8
+	bl Party_copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
 	bl GetPartyCount

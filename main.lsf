@@ -595,7 +595,7 @@ Overlay OVY_23
 Overlay OVY_24
 {
     After OVY_3
-    Object overlay_24.o
+    Object overlay_bug_contest.o
     ### Size 0x6c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259f3c ###
