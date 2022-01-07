@@ -8997,7 +8997,7 @@ _0223C122:
 	lsl r0, r0, #2
 	str r5, [r4, r0]
 	ldr r0, _0223C194 ; =0x000005FE
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #1

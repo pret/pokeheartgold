@@ -960,7 +960,7 @@ _0225DC98:
 	add r2, #0xf0
 	ldr r0, _0225DD24 ; =0x0000093D
 	str r1, [r4, r2]
-	bl sub_02006154
+	bl StopSE
 	b _0225DCF6
 _0225DCD0:
 	cmp r0, #1

@@ -189,7 +189,7 @@ ScrCmd_074: ; 0x02049244
 	ldr r0, [r4]
 	bl VarGet
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ScrCmd_074

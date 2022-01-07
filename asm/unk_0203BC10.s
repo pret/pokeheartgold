@@ -325,7 +325,7 @@ sub_0203BE60: ; 0x0203BE60
 	ldr r0, [r5, #0xc]
 	mov r4, #0
 	bl SavArray_Flags_get
-	bl sub_02066974
+	bl CheckGotPokedex
 	cmp r0, #0
 	bne _0203BE78
 	mov r0, #1
@@ -333,7 +333,7 @@ sub_0203BE60: ; 0x0203BE60
 _0203BE78:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_0206695C
+	bl CheckGotStarter
 	cmp r0, #0
 	bne _0203BE8A
 	mov r0, #2
@@ -342,7 +342,7 @@ _0203BE8A:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #0
-	bl sub_02066980
+	bl CheckGotMenuIconI
 	cmp r0, #0
 	bne _0203BE9E
 	mov r0, #4
@@ -350,7 +350,7 @@ _0203BE8A:
 _0203BE9E:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066968
+	bl CheckGotPokegear
 	cmp r0, #0
 	bne _0203BEB2
 	mov r0, #2
@@ -1053,41 +1053,41 @@ _0203C3DE: ; jump table
 _0203C3EE:
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066974
+	bl CheckGotPokedex
 	pop {r3, pc}
 _0203C3FA:
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_0206695C
+	bl CheckGotStarter
 	pop {r3, pc}
 _0203C406:
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #0
-	bl sub_02066980
+	bl CheckGotMenuIconI
 	pop {r3, pc}
 _0203C414:
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066968
+	bl CheckGotPokegear
 	pop {r3, pc}
 _0203C420:
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #1
-	bl sub_02066980
+	bl CheckGotMenuIconI
 	pop {r3, pc}
 _0203C42E:
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #2
-	bl sub_02066980
+	bl CheckGotMenuIconI
 	pop {r3, pc}
 _0203C43C:
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	mov r1, #3
-	bl sub_02066980
+	bl CheckGotMenuIconI
 	pop {r3, pc}
 _0203C44A:
 	ldr r0, [r0, #0xc]
@@ -2564,7 +2564,7 @@ _0203D01C:
 	lsl r1, r1, #0x10
 	mov r0, #0
 	lsr r1, r1, #0x10
-	bl sub_02064980
+	bl GetItemFieldUseFunc
 	mov r1, #0xd6
 	lsl r1, r1, #2
 	add r2, r0, #0

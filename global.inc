@@ -4130,7 +4130,7 @@
 .public ov01_021E9374
 .public ov01_021E95CC
 .public ov01_021E9610
-.public ov01_021E9650
+.public GetDoorSE
 .public ov01_021E9700
 .public ov01_021E971C
 .public ov01_021E98F0
@@ -26243,7 +26243,7 @@
 .public sub_02006088
 .public sub_02006118
 .public sub_02006134
-.public sub_02006154
+.public StopSE
 .public sub_0200615C
 .public sub_0200616C
 .public sub_02006184
@@ -29067,10 +29067,10 @@
 .public sub_020648EC
 .public sub_02064910
 .public sub_02064938
-.public sub_02064980
+.public GetItemFieldUseFunc
 .public sub_020649B8
 .public sub_02064F24
-.public sub_02065690
+.public UseRegisteredItemButtonInField
 .public sub_0206599C
 .public sub_020659A8
 .public sub_020659B8
@@ -29118,10 +29118,10 @@
 .public sub_02066920
 .public sub_02066930
 .public sub_02066950
-.public sub_0206695C
-.public sub_02066968
-.public sub_02066974
-.public sub_02066980
+.public CheckGotStarter
+.public CheckGotPokegear
+.public CheckGotPokedex
+.public CheckGotMenuIconI
 .public sub_020669A4
 .public sub_020669B4
 .public sub_020669D0
@@ -29151,7 +29151,7 @@
 .public sub_02066C74
 .public ScriptState_GetLotoId
 .public ScriptState_RollLotoId
-.public sub_02066D10
+.public Save_LCRNGAdvanceLotoID
 .public sub_02066D40
 .public sub_02066D60
 .public sub_02066D80

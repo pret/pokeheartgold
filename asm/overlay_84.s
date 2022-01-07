@@ -2807,7 +2807,7 @@ ov84_0223F28C: ; 0x0223F28C
 	add r4, r0, #0
 	ldr r0, _0223F2AC ; =0x000005DC
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223F2B0 ; =0x000005E4
 	bl PlaySE
 	mov r0, #0xd6

@@ -4486,7 +4486,7 @@ ov15_021FB680: ; 0x021FB680
 	lsl r1, r1, #0x10
 	mov r0, #2
 	lsr r1, r1, #0x10
-	bl sub_02064980
+	bl GetItemFieldUseFunc
 	add r1, r0, #0
 	beq _021FB6EE
 	mov r0, #0x8d

@@ -8417,7 +8417,7 @@ _021E9876:
 	beq _021E98B6
 	ldr r0, _021E98BC ; =0x00000657
 	mov r1, #8
-	bl sub_02006154
+	bl StopSE
 	add r0, r5, #0
 	mov r1, #0xd
 	mov r2, #0

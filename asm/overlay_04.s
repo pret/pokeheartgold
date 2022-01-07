@@ -280,7 +280,7 @@ _02254026:
 	mov r0, #0x61
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -378,7 +378,7 @@ _022540F6:
 	mov r0, #0x61
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1464,7 +1464,7 @@ _02254992:
 	bl ov01_021E8ED0
 	ldr r0, _02254B9C ; =0x0000087B
 	mov r1, #1
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -3680,7 +3680,7 @@ _02255A16:
 _02255AA2:
 	ldr r0, _02255AC0 ; =0x00000902
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x14
@@ -3927,7 +3927,7 @@ _02255C64:
 _02255C9E:
 	ldr r0, _02255CB8 ; =0x00000902
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #1

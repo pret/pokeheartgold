@@ -11,3 +11,4 @@ $(MUSHI_BIN): %.bin: %.csv %.txt
 	$(CSV2BIN) compile $< $@ $*.txt $(CSV2BINFLAGS)
 
 FS_RULE_OVERRIDES += $(MUSHI_BIN)
+FS_CLEAN_TARGETS += $(MUSHI_BIN)

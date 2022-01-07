@@ -7983,7 +7983,7 @@ _0206D534:
 	beq _0206D586
 	ldr r0, _0206D58C ; =0x00000906
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

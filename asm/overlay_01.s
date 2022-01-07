@@ -2501,7 +2501,7 @@ _021E6D2A:
 	lsr r1, r0, #0x1e
 	beq _021E6D4C
 	add r0, r4, #0
-	bl sub_02065690
+	bl UseRegisteredItemButtonInField
 	add r6, r0, #0
 	beq _021E6D4C
 	ldrh r1, [r5]
@@ -2520,7 +2520,7 @@ _021E6D4C:
 	bl sub_0203BC10
 	cmp r0, #1
 	bne _021E6D6E
-	ldr r0, _021E6DC0 ; =0x000005FC
+	ldr r0, _021E6DC0 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r4, #0
 	bl sub_0203BC28
@@ -2565,7 +2565,7 @@ _021E6DB6:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E6DBC: .word 0x0000FFFF
-_021E6DC0: .word 0x000005FC
+_021E6DC0: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6AF4
 
 	thumb_func_start ov01_021E6DC4
@@ -2684,7 +2684,7 @@ _021E6EB4:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1f
 	beq _021E6ECA
-	ldr r0, _021E6ED4 ; =0x000005FC
+	ldr r0, _021E6ED4 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r5, #0
 	bl sub_0203BD20
@@ -2695,7 +2695,7 @@ _021E6ECA:
 	pop {r3, r4, r5, pc}
 	nop
 _021E6ED0: .word 0x0000238D
-_021E6ED4: .word 0x000005FC
+_021E6ED4: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6E00
 
 	thumb_func_start ov01_021E6ED8
@@ -2804,7 +2804,7 @@ _021E6F98:
 	bl ov01_021E690C
 	cmp r0, #0
 	beq _021E6FCC
-	ldr r0, _021E6FD0 ; =0x000005FC
+	ldr r0, _021E6FD0 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r5, #0
 	bl sub_0203BCDC
@@ -2817,7 +2817,7 @@ _021E6FCC:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E6FD0: .word 0x000005FC
+_021E6FD0: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6EFC
 
 	thumb_func_start ov01_021E6FD4
@@ -2940,7 +2940,7 @@ _021E70C8:
 	lsr r1, r0, #0x1e
 	beq _021E70EC
 	add r0, r4, #0
-	bl sub_02065690
+	bl UseRegisteredItemButtonInField
 	add r6, r0, #0
 	beq _021E70EC
 	ldrh r1, [r5]
@@ -2956,7 +2956,7 @@ _021E70EC:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1f
 	beq _021E7106
-	ldr r0, _021E7110 ; =0x000005FC
+	ldr r0, _021E7110 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r4, #0
 	bl sub_0203BC28
@@ -2969,7 +2969,7 @@ _021E7106:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021E710C: .word 0x0000FFFF
-_021E7110: .word 0x000005FC
+_021E7110: .word SEQ_SE_DP_WIN_OPEN
 	thumb_func_end ov01_021E6FD4
 
 	thumb_func_start ov01_021E7114
@@ -4702,7 +4702,7 @@ _021E7EC6:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0xa
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0
 	mov r1, #0x80
 	mov r2, #0xf
@@ -7367,7 +7367,7 @@ _021E9238:
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r6, #0x58]
 	mov r1, #1
@@ -7685,7 +7685,7 @@ _021E94DC:
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r4, #0x58]
 	mov r1, #1
@@ -7736,7 +7736,7 @@ _021E952E:
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	mov r1, #1
 	ldr r0, [r4, #0x58]
@@ -7867,8 +7867,8 @@ _021E964C:
 	.balign 4, 0
 	thumb_func_end ov01_021E9610
 
-	thumb_func_start ov01_021E9650
-ov01_021E9650: ; 0x021E9650
+	thumb_func_start GetDoorSE
+GetDoorSE: ; 0x021E9650
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	ldr r0, [r0, #0x34]
@@ -7898,24 +7898,24 @@ _021E967E: ; jump table
 	.short _021E969A - _021E967E - 2 ; case 4
 _021E9688:
 	add sp, #0x18
-	ldr r0, _021E96E8 ; =0x00000604
+	ldr r0, _021E96E8 ; =SEQ_SE_DP_DOOR_OPEN
 	pop {r3, r4, r5, pc}
 _021E968E:
 	add sp, #0x18
-	ldr r0, _021E96EC ; =0x00000607
+	ldr r0, _021E96EC ; =SEQ_SE_DP_DOOR10
 	pop {r3, r4, r5, pc}
 _021E9694:
 	add sp, #0x18
-	ldr r0, _021E96F0 ; =0x000005DB
+	ldr r0, _021E96F0 ; =SEQ_SE_PL_DOOR_OPEN5
 	pop {r3, r4, r5, pc}
 _021E969A:
 	add sp, #0x18
-	ldr r0, _021E96F4 ; =0x00000915
+	ldr r0, _021E96F4 ; =SEQ_SE_GS_HIKIDO_OPEN
 	pop {r3, r4, r5, pc}
 _021E96A0:
 	bl GF_AssertFail
 	add sp, #0x18
-	ldr r0, _021E96E8 ; =0x00000604
+	ldr r0, _021E96E8 ; =SEQ_SE_DP_DOOR_OPEN
 	pop {r3, r4, r5, pc}
 _021E96AA:
 	ldrb r0, [r0, #4]
@@ -7935,7 +7935,7 @@ _021E96BC: ; jump table
 	.short _021E96D8 - _021E96BC - 2 ; case 4
 _021E96C6:
 	add sp, #0x18
-	ldr r0, _021E96F8 ; =0x00000606
+	ldr r0, _021E96F8 ; =SEQ_SE_DP_DOOR_CLOSE2
 	pop {r3, r4, r5, pc}
 _021E96CC:
 	add sp, #0x18
@@ -7947,21 +7947,21 @@ _021E96D2:
 	pop {r3, r4, r5, pc}
 _021E96D8:
 	add sp, #0x18
-	ldr r0, _021E96FC ; =0x00000916
+	ldr r0, _021E96FC ; =SEQ_SE_GS_HIKIDO_CLOSE
 	pop {r3, r4, r5, pc}
 _021E96DE:
 	bl GF_AssertFail
-	ldr r0, _021E96F8 ; =0x00000606
+	ldr r0, _021E96F8 ; =SEQ_SE_DP_DOOR_CLOSE2
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E96E8: .word 0x00000604
-_021E96EC: .word 0x00000607
-_021E96F0: .word 0x000005DB
-_021E96F4: .word 0x00000915
-_021E96F8: .word 0x00000606
-_021E96FC: .word 0x00000916
-	thumb_func_end ov01_021E9650
+_021E96E8: .word SEQ_SE_DP_DOOR_OPEN
+_021E96EC: .word SEQ_SE_DP_DOOR10
+_021E96F0: .word SEQ_SE_PL_DOOR_OPEN5
+_021E96F4: .word SEQ_SE_GS_HIKIDO_OPEN
+_021E96F8: .word SEQ_SE_DP_DOOR_CLOSE2
+_021E96FC: .word SEQ_SE_GS_HIKIDO_CLOSE
+	thumb_func_end GetDoorSE
 
 	thumb_func_start ov01_021E9700
 ov01_021E9700: ; 0x021E9700
@@ -8103,7 +8103,7 @@ _021E9806:
 	mov r0, #1
 	bl ov01_021E636C
 	ldr r0, [r6, #0x58]
-	ldr r3, _021E98EC ; =0x00000614
+	ldr r3, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
 	mov r2, #0
 	bl ov01_021E8E98
@@ -8193,9 +8193,9 @@ _021E98B4:
 	ldr r1, [r6, #0x58]
 	mov r2, #2
 	bl ov01_021E8ED0
-	ldr r0, _021E98EC ; =0x00000614
+	ldr r0, _021E98EC ; =SEQ_SE_DP_ESUKA
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add sp, #0x40
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -8205,7 +8205,7 @@ _021E98E0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E98E8: .word ov01_02206408
-_021E98EC: .word 0x00000614
+_021E98EC: .word SEQ_SE_DP_ESUKA
 	thumb_func_end ov01_021E971C
 
 	thumb_func_start ov01_021E98F0
@@ -8326,7 +8326,7 @@ _021E99D2:
 	b _021E9AAC
 _021E99DA:
 	ldr r0, [r6, #0x58]
-	ldr r3, _021E9AB8 ; =0x00000614
+	ldr r3, _021E9AB8 ; =SEQ_SE_DP_ESUKA
 	mov r1, #2
 	mov r2, #0
 	bl ov01_021E8E98
@@ -8411,9 +8411,9 @@ _021E9A80:
 	ldr r1, [r6, #0x58]
 	mov r2, #2
 	bl ov01_021E8ED0
-	ldr r0, _021E9AB8 ; =0x00000614
+	ldr r0, _021E9AB8 ; =SEQ_SE_DP_ESUKA
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add sp, #0x44
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -8423,7 +8423,7 @@ _021E9AAC:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021E9AB4: .word ov01_02206418
-_021E9AB8: .word 0x00000614
+_021E9AB8: .word SEQ_SE_DP_ESUKA
 	thumb_func_end ov01_021E98F0
 
 	thumb_func_start ov01_021E9ABC
@@ -8560,7 +8560,7 @@ ov01_021E9BB8: ; 0x021E9BB8
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r5, #0x58]
 	add r1, r4, #0
@@ -8579,7 +8579,7 @@ ov01_021E9BDC: ; 0x021E9BDC
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r5, #0x58]
 	add r1, r4, #0
@@ -8847,7 +8847,7 @@ _021E9E04:
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #1
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	ldr r0, [r4, #0x58]
 	mov r1, #1
@@ -8895,7 +8895,7 @@ _021E9E58:
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
-	bl ov01_021E9650
+	bl GetDoorSE
 	add r3, r0, #0
 	mov r1, #1
 	ldr r0, [r4, #0x58]
@@ -12374,7 +12374,7 @@ _021EB7DA:
 	add r0, r0, #4
 	ldrh r0, [r2, r0]
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 _021EB7FA:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
@@ -17012,7 +17012,7 @@ ov01_021EDAE0: ; 0x021EDAE0
 	lsl r0, r0, #4
 	ldrh r0, [r4, r0]
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _021EDAF8 ; =0x00000F5C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -28709,7 +28709,7 @@ _021F32BC:
 	bl ov01_021F336C
 	ldr r0, _021F3344 ; =0x00000657
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021F32FA:
@@ -28740,7 +28740,7 @@ _021F3314:
 	bl ov01_021F336C
 	ldr r0, _021F3344 ; =0x00000657
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _021F3340:

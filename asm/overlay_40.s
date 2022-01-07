@@ -17929,7 +17929,7 @@ _0223467E:
 	ldr r0, _022347FC ; =0x0000057D
 	bne _022346B2
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -17942,7 +17942,7 @@ _0223467E:
 	b _022347F2
 _022346B2:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	mov r1, #0x24
 	bl ov40_0222FB28
@@ -19044,7 +19044,7 @@ _02235028:
 	ldr r0, _02235120 ; =0x0000057D
 	bne _02235072
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -19066,7 +19066,7 @@ _02235028:
 	b _02235118
 _02235072:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02235124 ; =0x00000577
 	bl PlaySE
 	ldr r0, [r4, #8]
@@ -22460,7 +22460,7 @@ _02236BCE:
 	ldr r0, _02236C5C ; =0x0000057D
 	bne _02236C02
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #0xc]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -22473,7 +22473,7 @@ _02236BCE:
 	b _02236C50
 _02236C02:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	mov r1, #0x25
 	bl ov40_0222FB28
@@ -24840,7 +24840,7 @@ _02237F06:
 	ldr r0, _0223812C ; =0x0000057D
 	bne _02237F9A
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #0x10]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -24892,7 +24892,7 @@ _02237F06:
 	b _02238272
 _02237F9A:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02238134 ; =0x00000577
 	bl PlaySE
 	ldr r0, [r4, #8]
@@ -28273,7 +28273,7 @@ _02239BEC:
 	bne _02239C2A
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl ov40_0222DFB0
 	ldr r3, [sp, #4]
@@ -28362,7 +28362,7 @@ _02239C2A:
 	str r0, [r5, r1]
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -28394,7 +28394,7 @@ _02239CF6:
 	bne _02239D34
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -28472,7 +28472,7 @@ _02239D7A:
 _02239DA6:
 	ldr r0, _02239ED4 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02239EF8 ; =0x00000577
 	bl PlaySE
 	mov r0, #0xff
@@ -29625,7 +29625,7 @@ _0223A75A:
 	ldr r0, _0223A81C ; =0x0000057D
 	bne _0223A794
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -29641,7 +29641,7 @@ _0223A75A:
 	b _0223A7CC
 _0223A794:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xff
 	ldr r1, _0223A818 ; =0x00002038
 	str r0, [r4, #8]
@@ -29992,11 +29992,11 @@ _0223AA5C:
 	ldr r0, _0223AC14 ; =0x0000057D
 	bne _0223AA76
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	b _0223AA82
 _0223AA76:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223AC18 ; =0x00000577
 	bl PlaySE
 _0223AA82:
@@ -31697,7 +31697,7 @@ _0223B87C:
 	ldr r0, _0223BA64 ; =0x0000057D
 	bne _0223B8B0
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -31710,7 +31710,7 @@ _0223B87C:
 	b _0223BA58
 _0223B8B0:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223BA68 ; =0x00000577
 	bl PlaySE
 	ldr r0, _0223BA6C ; =0x00004138
@@ -38597,7 +38597,7 @@ _0223F0B2:
 	ldr r0, _0223F150 ; =0x0000057D
 	bne _0223F0E6
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #4]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -38613,7 +38613,7 @@ _0223F0B2:
 	b _0223F148
 _0223F0E6:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x51
 	mov r1, #0x76
 	lsl r0, r0, #4
@@ -40275,7 +40275,7 @@ _0223FEA6:
 	ldr r0, _0223FF7C ; =0x0000057D
 	bne _0223FEE0
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	bl ov40_0222DFB0
 	ldr r3, [sp, #4]
@@ -40293,7 +40293,7 @@ _0223FEA6:
 	b _0223FF18
 _0223FEE0:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xff
 	str r0, [r4, #8]
 	ldr r0, _0223FF70 ; =0x000004B8
@@ -41328,7 +41328,7 @@ _02240772:
 	ldr r0, _02240844 ; =0x0000057D
 	bne _022407BA
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02240848 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -41350,7 +41350,7 @@ _02240772:
 	b _022407EE
 _022407BA:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xff
 	str r0, [r4, #8]
 	ldr r0, _02240840 ; =0x000004B8
@@ -43348,7 +43348,7 @@ _02241884:
 	bne _022418D4
 	ldr r0, _02241940 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r3, [sp, #8]
 	add r0, r4, #0
 	ldr r2, [r3, #0xc]
@@ -43378,7 +43378,7 @@ _022418D4:
 	bl ov40_02242E4C
 	ldr r0, _02241940 ; =0x0000057D
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02241944 ; =0x00000577
 	bl PlaySE
 	ldr r0, [r4, #8]
@@ -45136,11 +45136,11 @@ _02242722:
 	ldr r0, _022428BC ; =0x0000057D
 	bne _0224273C
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	b _02242748
 _0224273C:
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _022428C0 ; =0x00000577
 	bl PlaySE
 _02242748:

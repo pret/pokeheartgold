@@ -809,7 +809,7 @@ _0223E402:
 	bne _0223E508
 	ldr r0, _0223E510 ; =0x00000611
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223E514 ; =0x00000678
 	bl PlaySE
 	ldrb r0, [r4, #0x12]
@@ -3952,7 +3952,7 @@ _0223FE14:
 	bne _0223FEB4
 	ldr r0, _0223FFFC ; =0x00000611
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02240000 ; =0x00000678
 	bl PlaySE
 	mov r0, #8
@@ -4029,7 +4029,7 @@ _0223FEB4:
 _0223FEB6:
 	ldr r0, _0223FFFC ; =0x00000611
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _02240000 ; =0x00000678
 	bl PlaySE
 	ldrb r0, [r4, #0x12]

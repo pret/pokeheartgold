@@ -1118,7 +1118,7 @@ _021E61EA:
 	bne _021E6262
 	ldr r0, _021E63FC ; =0x0000055F
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1178,7 +1178,7 @@ _021E6262:
 	blo _021E6298
 	ldr r0, _021E63FC ; =0x0000055F
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x3c
 	strb r0, [r4, #0xf]
 	mov r0, #0xd
@@ -1195,7 +1195,7 @@ _021E6262:
 _021E6290:
 	ldr r0, _021E63FC ; =0x0000055F
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 _021E6298:
 	mov r0, #0x3a
 	lsl r0, r0, #4

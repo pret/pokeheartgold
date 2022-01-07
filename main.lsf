@@ -94,6 +94,7 @@ Static main
 	Object unk_020290B4.o
 	Object daycare.o
 	Object pokedex.o
+	Object pokedex_s.o
 	Object unk_0202A888.o
 	Object options.o
 	Object unk_0202ADEC.o

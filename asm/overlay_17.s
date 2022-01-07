@@ -1448,7 +1448,7 @@ _022026D6:
 	bne _02202704
 	ldr r0, _02202798 ; =0x00000889
 	mov r1, #2
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

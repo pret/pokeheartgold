@@ -3,6 +3,8 @@
 #include "constants/maps.h"
 #include "constants/pokemon.h"
 #include "constants/flags.h"
+#include "constants/vars.h"
+#include "constants/items.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -13,14 +15,14 @@ _0210FACC:
 	.word _020FDAC4
 	.word _020FDB04
 _0210FAD8:
-	.short 0x01C2
-	.short 0x01BD
-	.short 0x01BE
-	.short 0x01BF
-	.short 0x01B0
-	.short 0x01B2
-	.short 0x01B3
-	.short 0x01BC
+	.short ITEM_BICYCLE
+	.short ITEM_OLD_ROD
+	.short ITEM_GOOD_ROD
+	.short ITEM_SUPER_ROD
+	.short ITEM_POINT_CARD
+	.short ITEM_SEAL_CASE
+	.short ITEM_FASHION_CASE
+	.short ITEM_COIN_CASE
 
 	.text
 
@@ -1851,7 +1853,7 @@ _0205CDFE:
 	bne _0205CE2A
 	mov r4, #1
 _0205CE2A:
-	ldr r0, _0205CE64 ; =_020FCB9A
+	ldr r0, _0205CE64 ; =_020FCB98 + 2
 	lsl r1, r4, #2
 	ldrh r0, [r0, r1]
 	cmp r0, #1
@@ -1878,7 +1880,7 @@ _0205CE58:
 	nop
 _0205CE5C: .word _020FCB98
 _0205CE60: .word 0x00000876
-_0205CE64: .word _020FCB9A
+_0205CE64: .word _020FCB98 + 2
 	thumb_func_end sub_0205CD70
 
 	thumb_func_start sub_0205CE68
@@ -2133,7 +2135,7 @@ _0205D054:
 	blx r1
 	cmp r0, #1
 	bne _0205D066
-	ldr r0, _0205D078 ; =_020FCB8C
+	ldr r0, _0205D078 ; =_020FCB88 + 4
 	lsl r1, r4, #3
 	ldr r0, [r0, r1]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2147,7 +2149,7 @@ _0205D066:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0205D074: .word _020FCB88
-_0205D078: .word _020FCB8C
+_0205D078: .word _020FCB88 + 4
 	thumb_func_end sub_0205D01C
 
 	thumb_func_start sub_0205D07C
@@ -19249,8 +19251,8 @@ _02064976:
 _0206497C: .word _020FE23C
 	thumb_func_end sub_02064938
 
-	thumb_func_start sub_02064980
-sub_02064980: ; 0x02064980
+	thumb_func_start GetItemFieldUseFunc
+GetItemFieldUseFunc: ; 0x02064980
 	cmp r0, #0
 	bne _02064990
 	mov r0, #0xc
@@ -19279,7 +19281,7 @@ _020649A0:
 _020649AC: .word _020FE264
 _020649B0: .word _020FE264 + 4
 _020649B4: .word _020FE264 + 8
-	thumb_func_end sub_02064980
+	thumb_func_end GetItemFieldUseFunc
 
 	thumb_func_start sub_020649B8
 sub_020649B8: ; 0x020649B8
@@ -20911,8 +20913,8 @@ sub_0206565C: ; 0x0206565C
 	pop {r4, pc}
 	thumb_func_end sub_0206565C
 
-	thumb_func_start sub_02065670
-sub_02065670: ; 0x02065670
+	thumb_func_start KeyItemIdIsUsedInTheField
+KeyItemIdIsUsedInTheField: ; 0x02065670
 	ldr r3, _0206568C ; =_0210FAD8
 	mov r2, #0
 _02065674:
@@ -20930,10 +20932,10 @@ _0206567E:
 	bx lr
 	nop
 _0206568C: .word _0210FAD8
-	thumb_func_end sub_02065670
+	thumb_func_end KeyItemIdIsUsedInTheField
 
-	thumb_func_start sub_02065690
-sub_02065690: ; 0x02065690
+	thumb_func_start UseRegisteredItemButtonInField
+UseRegisteredItemButtonInField: ; 0x02065690
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -20984,7 +20986,7 @@ _020656F2:
 	bl Bag_GetRegisteredItemSlot2
 _020656FA:
 	add r6, r0, #0
-	ldr r0, _020657A0 ; =0x000001D7
+	ldr r0, _020657A0 ; =ITEM_DOWSING_MCHN
 	cmp r6, r0
 	bne _02065710
 	add r0, r5, #0
@@ -20995,18 +20997,18 @@ _020656FA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02065710:
 	add r0, r6, #0
-	mov r1, #6
+	mov r1, #ITEMATTR_FIELDUSEFUNC
 	mov r2, #0xb
 	bl GetItemAttr
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	mov r0, #2
 	add r1, r4, #0
-	bl sub_02064980
+	bl GetItemFieldUseFunc
 	add r7, r0, #0
 	mov r0, #1
 	add r1, r4, #0
-	bl sub_02064980
+	bl GetItemFieldUseFunc
 	str r0, [sp]
 	cmp r0, #0
 	bne _0206573A
@@ -21055,7 +21057,7 @@ _02065780:
 _0206578C:
 	ldrh r1, [r4, #0x24]
 	add r0, r5, #0
-	bl sub_02065670
+	bl KeyItemIdIsUsedInTheField
 	cmp r0, #0
 	beq _0206579C
 	mov r0, #1
@@ -21064,8 +21066,8 @@ _0206579C:
 	mov r0, #2
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020657A0: .word 0x000001D7
-	thumb_func_end sub_02065690
+_020657A0: .word ITEM_DOWSING_MCHN
+	thumb_func_end UseRegisteredItemButtonInField
 
 	thumb_func_start sub_020657A4
 sub_020657A4: ; 0x020657A4
@@ -22895,6 +22897,8 @@ _02066596:
 	.balign 4, 0
 	thumb_func_end sub_020664D8
 
+	; File boundary
+
 	thumb_func_start SetScriptFlag
 SetScriptFlag: ; 0x0206659C
 	ldr r3, _020665A0 ; =SetFlagInArray
@@ -22955,7 +22959,7 @@ _020665E6:
 	thumb_func_start sub_020665EC
 sub_020665EC: ; 0x020665EC
 	ldr r3, _020665F4 ; =SetScriptFlag
-	mov r1, #0x96
+	mov r1, #FLAG_UNK_960>>4
 	lsl r1, r1, #4
 	bx r3
 	.balign 4, 0
@@ -22965,7 +22969,7 @@ _020665F4: .word SetScriptFlag
 	thumb_func_start sub_020665F8
 sub_020665F8: ; 0x020665F8
 	ldr r3, _02066600 ; =CheckScriptFlag
-	mov r1, #0x96
+	mov r1, #FLAG_UNK_960>>4
 	lsl r1, r1, #4
 	bx r3
 	.balign 4, 0
@@ -22975,133 +22979,133 @@ _02066600: .word CheckScriptFlag
 	thumb_func_start SetGameClearFlag
 SetGameClearFlag: ; 0x02066604
 	ldr r3, _0206660C ; =SetScriptFlag
-	ldr r1, _02066610 ; =0x00000964
+	ldr r1, _02066610 ; =FLAG_GAME_CLEAR
 	bx r3
 	nop
 _0206660C: .word SetScriptFlag
-_02066610: .word 0x00000964
+_02066610: .word FLAG_GAME_CLEAR
 	thumb_func_end SetGameClearFlag
 
 	thumb_func_start CheckGameClearFlag
 CheckGameClearFlag: ; 0x02066614
 	ldr r3, _0206661C ; =CheckScriptFlag
-	ldr r1, _02066620 ; =0x00000964
+	ldr r1, _02066620 ; =FLAG_GAME_CLEAR
 	bx r3
 	nop
 _0206661C: .word CheckScriptFlag
-_02066620: .word 0x00000964
+_02066620: .word FLAG_GAME_CLEAR
 	thumb_func_end CheckGameClearFlag
 
 	thumb_func_start ScriptState_SetHealAfterBattleFlag
 ScriptState_SetHealAfterBattleFlag: ; 0x02066624
 	ldr r3, _0206662C ; =SetScriptFlag
-	ldr r1, _02066630 ; =0x00000961
+	ldr r1, _02066630 ; =FLAG_HEAL_AFTER_BATTLE
 	bx r3
 	nop
 _0206662C: .word SetScriptFlag
-_02066630: .word 0x00000961
+_02066630: .word FLAG_HEAL_AFTER_BATTLE
 	thumb_func_end ScriptState_SetHealAfterBattleFlag
 
 	thumb_func_start ScriptState_ClearHealAfterBattleFlag
 ScriptState_ClearHealAfterBattleFlag: ; 0x02066634
 	ldr r3, _0206663C ; =ClearScriptFlag
-	ldr r1, _02066640 ; =0x00000961
+	ldr r1, _02066640 ; =FLAG_HEAL_AFTER_BATTLE
 	bx r3
 	nop
 _0206663C: .word ClearScriptFlag
-_02066640: .word 0x00000961
+_02066640: .word FLAG_HEAL_AFTER_BATTLE
 	thumb_func_end ScriptState_ClearHealAfterBattleFlag
 
 	thumb_func_start ScriptState_CheckHealAfterBattleFlag
 ScriptState_CheckHealAfterBattleFlag: ; 0x02066644
 	ldr r3, _0206664C ; =CheckScriptFlag
-	ldr r1, _02066650 ; =0x00000961
+	ldr r1, _02066650 ; =FLAG_HEAL_AFTER_BATTLE
 	bx r3
 	nop
 _0206664C: .word CheckScriptFlag
-_02066650: .word 0x00000961
+_02066650: .word FLAG_HEAL_AFTER_BATTLE
 	thumb_func_end ScriptState_CheckHealAfterBattleFlag
 
 	thumb_func_start sub_02066654
 sub_02066654: ; 0x02066654
 	ldr r3, _0206665C ; =SetScriptFlag
-	ldr r1, _02066660 ; =0x0000099C
+	ldr r1, _02066660 ; =FLAG_UNK_99C
 	bx r3
 	nop
 _0206665C: .word SetScriptFlag
-_02066660: .word 0x0000099C
+_02066660: .word FLAG_UNK_99C
 	thumb_func_end sub_02066654
 
 	thumb_func_start sub_02066664
 sub_02066664: ; 0x02066664
 	ldr r3, _0206666C ; =SetScriptFlag
-	ldr r1, _02066670 ; =0x00000965
+	ldr r1, _02066670 ; =FLAG_UNK_965
 	bx r3
 	nop
 _0206666C: .word SetScriptFlag
-_02066670: .word 0x00000965
+_02066670: .word FLAG_UNK_965
 	thumb_func_end sub_02066664
 
 	thumb_func_start sub_02066674
 sub_02066674: ; 0x02066674
 	ldr r3, _0206667C ; =ClearScriptFlag
-	ldr r1, _02066680 ; =0x00000965
+	ldr r1, _02066680 ; =FLAG_UNK_965
 	bx r3
 	nop
 _0206667C: .word ClearScriptFlag
-_02066680: .word 0x00000965
+_02066680: .word FLAG_UNK_965
 	thumb_func_end sub_02066674
 
 	thumb_func_start sub_02066684
 sub_02066684: ; 0x02066684
 	ldr r3, _0206668C ; =CheckScriptFlag
-	ldr r1, _02066690 ; =0x00000965
+	ldr r1, _02066690 ; =FLAG_UNK_965
 	bx r3
 	nop
 _0206668C: .word CheckScriptFlag
-_02066690: .word 0x00000965
+_02066690: .word FLAG_UNK_965
 	thumb_func_end sub_02066684
 
 	thumb_func_start sub_02066694
 sub_02066694: ; 0x02066694
 	ldr r3, _0206669C ; =SetScriptFlag
-	ldr r1, _020666A0 ; =0x00000969
+	ldr r1, _020666A0 ; =FLAG_UNK_969
 	bx r3
 	nop
 _0206669C: .word SetScriptFlag
-_020666A0: .word 0x00000969
+_020666A0: .word FLAG_UNK_969
 	thumb_func_end sub_02066694
 
 	thumb_func_start sub_020666A4
 sub_020666A4: ; 0x020666A4
 	ldr r3, _020666AC ; =ClearScriptFlag
-	ldr r1, _020666B0 ; =0x00000969
+	ldr r1, _020666B0 ; =FLAG_UNK_969
 	bx r3
 	nop
 _020666AC: .word ClearScriptFlag
-_020666B0: .word 0x00000969
+_020666B0: .word FLAG_UNK_969
 	thumb_func_end sub_020666A4
 
 	thumb_func_start sub_020666B4
 sub_020666B4: ; 0x020666B4
 	ldr r3, _020666BC ; =CheckScriptFlag
-	ldr r1, _020666C0 ; =0x00000969
+	ldr r1, _020666C0 ; =FLAG_UNK_969
 	bx r3
 	nop
 _020666BC: .word CheckScriptFlag
-_020666C0: .word 0x00000969
+_020666C0: .word FLAG_UNK_969
 	thumb_func_end sub_020666B4
 
 	thumb_func_start EventFlagCheck_RematchGroup
 EventFlagCheck_RematchGroup: ; 0x020666C4
-	ldr r2, _020666D0 ; =0x0000097B
+	ldr r2, _020666D0 ; =FLAG_UNK_97B
 	ldr r3, _020666D4 ; =CheckScriptFlag
 	add r1, r1, r2
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	bx r3
 	.balign 4, 0
-_020666D0: .word 0x0000097B
+_020666D0: .word FLAG_UNK_97B
 _020666D4: .word CheckScriptFlag
 	thumb_func_end EventFlagCheck_RematchGroup
 
@@ -23122,27 +23126,27 @@ _020666EA: ; jump table
 	.short _02066702 - _020666EA - 2 ; case 2
 	.short _0206670A - _020666EA - 2 ; case 3
 _020666F2:
-	ldr r1, _02066714 ; =0x00000977
+	ldr r1, _02066714 ; =FLAG_UNK_977
 	bl SetScriptFlag
 	pop {r3, pc}
 _020666FA:
-	ldr r1, _02066718 ; =0x00000978
+	ldr r1, _02066718 ; =FLAG_UNK_978
 	bl SetScriptFlag
 	pop {r3, pc}
 _02066702:
-	ldr r1, _0206671C ; =0x00000979
+	ldr r1, _0206671C ; =FLAG_UNK_979
 	bl SetScriptFlag
 	pop {r3, pc}
 _0206670A:
-	ldr r1, _02066720 ; =0x0000097A
+	ldr r1, _02066720 ; =FLAG_UNK_97A
 	bl SetScriptFlag
 _02066710:
 	pop {r3, pc}
 	nop
-_02066714: .word 0x00000977
-_02066718: .word 0x00000978
-_0206671C: .word 0x00000979
-_02066720: .word 0x0000097A
+_02066714: .word FLAG_UNK_977
+_02066718: .word FLAG_UNK_978
+_0206671C: .word FLAG_UNK_979
+_02066720: .word FLAG_UNK_97A
 	thumb_func_end sub_020666D8
 
 	thumb_func_start sub_02066724
@@ -23163,39 +23167,39 @@ _02066738: ; jump table
 	.short _02066754 - _02066738 - 2 ; case 2
 	.short _0206675E - _02066738 - 2 ; case 3
 _02066740:
-	ldr r1, _0206676C ; =0x00000977
+	ldr r1, _0206676C ; =FLAG_UNK_977
 	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _0206674A:
-	ldr r1, _02066770 ; =0x00000978
+	ldr r1, _02066770 ; =FLAG_UNK_978
 	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _02066754:
-	ldr r1, _02066774 ; =0x00000979
+	ldr r1, _02066774 ; =FLAG_UNK_979
 	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _0206675E:
-	ldr r1, _02066778 ; =0x0000097A
+	ldr r1, _02066778 ; =FLAG_UNK_97A
 	bl CheckScriptFlag
 	add r2, r0, #0
 _02066766:
 	add r0, r2, #0
 	pop {r3, pc}
 	nop
-_0206676C: .word 0x00000977
-_02066770: .word 0x00000978
-_02066774: .word 0x00000979
-_02066778: .word 0x0000097A
+_0206676C: .word FLAG_UNK_977
+_02066770: .word FLAG_UNK_978
+_02066774: .word FLAG_UNK_979
+_02066778: .word FLAG_UNK_97A
 	thumb_func_end sub_02066724
 
 	thumb_func_start sub_0206677C
 sub_0206677C: ; 0x0206677C
 	push {r3, lr}
 	cmp r1, #0
-	ldr r1, _02066790 ; =0x00000986
+	ldr r1, _02066790 ; =FLAG_UNK_986
 	beq _0206678A
 	bl SetScriptFlag
 	pop {r3, pc}
@@ -23203,17 +23207,17 @@ _0206678A:
 	bl ClearScriptFlag
 	pop {r3, pc}
 	.balign 4, 0
-_02066790: .word 0x00000986
+_02066790: .word FLAG_UNK_986
 	thumb_func_end sub_0206677C
 
 	thumb_func_start sub_02066794
 sub_02066794: ; 0x02066794
 	ldr r3, _0206679C ; =CheckScriptFlag
-	ldr r1, _020667A0 ; =0x00000986
+	ldr r1, _020667A0 ; =FLAG_UNK_986
 	bx r3
 	nop
 _0206679C: .word CheckScriptFlag
-_020667A0: .word 0x00000986
+_020667A0: .word FLAG_UNK_986
 	thumb_func_end sub_02066794
 
 	thumb_func_start GetOverriddenMapMusic
@@ -23253,211 +23257,211 @@ _020667DC: .word _020FE454 + 4
 	thumb_func_start sub_020667E0
 sub_020667E0: ; 0x020667E0
 	ldr r3, _020667E8 ; =SetScriptFlag
-	ldr r1, _020667EC ; =0x00000966
+	ldr r1, _020667EC ; =FLAG_UNK_966
 	bx r3
 	nop
 _020667E8: .word SetScriptFlag
-_020667EC: .word 0x00000966
+_020667EC: .word FLAG_UNK_966
 	thumb_func_end sub_020667E0
 
 	thumb_func_start sub_020667F0
 sub_020667F0: ; 0x020667F0
 	ldr r3, _020667F8 ; =ClearScriptFlag
-	ldr r1, _020667FC ; =0x00000966
+	ldr r1, _020667FC ; =FLAG_UNK_966
 	bx r3
 	nop
 _020667F8: .word ClearScriptFlag
-_020667FC: .word 0x00000966
+_020667FC: .word FLAG_UNK_966
 	thumb_func_end sub_020667F0
 
 	thumb_func_start sub_02066800
 sub_02066800: ; 0x02066800
 	ldr r3, _02066808 ; =CheckScriptFlag
-	ldr r1, _0206680C ; =0x00000966
+	ldr r1, _0206680C ; =FLAG_UNK_966
 	bx r3
 	nop
 _02066808: .word CheckScriptFlag
-_0206680C: .word 0x00000966
+_0206680C: .word FLAG_UNK_966
 	thumb_func_end sub_02066800
 
 	thumb_func_start sub_02066810
 sub_02066810: ; 0x02066810
 	ldr r3, _02066818 ; =CheckScriptFlag
-	ldr r1, _0206681C ; =0x00000976
+	ldr r1, _0206681C ; =FLAG_UNK_976
 	bx r3
 	nop
 _02066818: .word CheckScriptFlag
-_0206681C: .word 0x00000976
+_0206681C: .word FLAG_UNK_976
 	thumb_func_end sub_02066810
 
 	thumb_func_start sub_02066820
 sub_02066820: ; 0x02066820
 	ldr r3, _02066828 ; =SetScriptFlag
-	ldr r1, _0206682C ; =0x00000975
+	ldr r1, _0206682C ; =FLAG_UNK_975
 	bx r3
 	nop
 _02066828: .word SetScriptFlag
-_0206682C: .word 0x00000975
+_0206682C: .word FLAG_UNK_975
 	thumb_func_end sub_02066820
 
 	thumb_func_start sub_02066830
 sub_02066830: ; 0x02066830
 	ldr r3, _02066838 ; =ClearScriptFlag
-	ldr r1, _0206683C ; =0x00000975
+	ldr r1, _0206683C ; =FLAG_UNK_975
 	bx r3
 	nop
 _02066838: .word ClearScriptFlag
-_0206683C: .word 0x00000975
+_0206683C: .word FLAG_UNK_975
 	thumb_func_end sub_02066830
 
 	thumb_func_start sub_02066840
 sub_02066840: ; 0x02066840
 	ldr r3, _02066848 ; =SetScriptFlag
-	ldr r1, _0206684C ; =0x00000967
+	ldr r1, _0206684C ; =FLAG_UNK_967
 	bx r3
 	nop
 _02066848: .word SetScriptFlag
-_0206684C: .word 0x00000967
+_0206684C: .word FLAG_UNK_967
 	thumb_func_end sub_02066840
 
 	thumb_func_start sub_02066850
 sub_02066850: ; 0x02066850
 	ldr r3, _02066858 ; =ClearScriptFlag
-	ldr r1, _0206685C ; =0x00000967
+	ldr r1, _0206685C ; =FLAG_UNK_967
 	bx r3
 	nop
 _02066858: .word ClearScriptFlag
-_0206685C: .word 0x00000967
+_0206685C: .word FLAG_UNK_967
 	thumb_func_end sub_02066850
 
 	thumb_func_start sub_02066860
 sub_02066860: ; 0x02066860
 	ldr r3, _02066868 ; =CheckScriptFlag
-	ldr r1, _0206686C ; =0x00000967
+	ldr r1, _0206686C ; =FLAG_UNK_967
 	bx r3
 	nop
 _02066868: .word CheckScriptFlag
-_0206686C: .word 0x00000967
+_0206686C: .word FLAG_UNK_967
 	thumb_func_end sub_02066860
 
 	thumb_func_start sub_02066870
 sub_02066870: ; 0x02066870
 	ldr r3, _02066878 ; =CheckScriptFlag
-	ldr r1, _0206687C ; =0x00000996
+	ldr r1, _0206687C ; =FLAG_UNK_996
 	bx r3
 	nop
 _02066878: .word CheckScriptFlag
-_0206687C: .word 0x00000996
+_0206687C: .word FLAG_UNK_996
 	thumb_func_end sub_02066870
 
 	thumb_func_start sub_02066880
 sub_02066880: ; 0x02066880
 	ldr r3, _02066888 ; =SetScriptFlag
-	ldr r1, _0206688C ; =0x00000971
+	ldr r1, _0206688C ; =FLAG_UNK_971
 	bx r3
 	nop
 _02066888: .word SetScriptFlag
-_0206688C: .word 0x00000971
+_0206688C: .word FLAG_UNK_971
 	thumb_func_end sub_02066880
 
 	thumb_func_start sub_02066890
 sub_02066890: ; 0x02066890
 	ldr r3, _02066898 ; =ClearScriptFlag
-	ldr r1, _0206689C ; =0x00000971
+	ldr r1, _0206689C ; =FLAG_UNK_971
 	bx r3
 	nop
 _02066898: .word ClearScriptFlag
-_0206689C: .word 0x00000971
+_0206689C: .word FLAG_UNK_971
 	thumb_func_end sub_02066890
 
 	thumb_func_start sub_020668A0
 sub_020668A0: ; 0x020668A0
 	ldr r3, _020668A8 ; =CheckScriptFlag
-	ldr r1, _020668AC ; =0x00000971
+	ldr r1, _020668AC ; =FLAG_UNK_971
 	bx r3
 	nop
 _020668A8: .word CheckScriptFlag
-_020668AC: .word 0x00000971
+_020668AC: .word FLAG_UNK_971
 	thumb_func_end sub_020668A0
 
 	thumb_func_start sub_020668B0
 sub_020668B0: ; 0x020668B0
 	ldr r3, _020668B8 ; =ClearScriptFlag
-	ldr r1, _020668BC ; =0x00000972
+	ldr r1, _020668BC ; =FLAG_UNK_972
 	bx r3
 	nop
 _020668B8: .word ClearScriptFlag
-_020668BC: .word 0x00000972
+_020668BC: .word FLAG_UNK_972
 	thumb_func_end sub_020668B0
 
 	thumb_func_start StrengthFlagAction
 StrengthFlagAction: ; 0x020668C0
 	ldr r3, _020668C8 ; =FlagAction
-	ldr r2, _020668CC ; =0x00000962
+	ldr r2, _020668CC ; =FLAG_STRENGTH_ACTIVE
 	bx r3
 	nop
 _020668C8: .word FlagAction
-_020668CC: .word 0x00000962
+_020668CC: .word FLAG_STRENGTH_ACTIVE
 	thumb_func_end StrengthFlagAction
 
 	thumb_func_start sub_020668D0
 sub_020668D0: ; 0x020668D0
 	ldr r3, _020668D8 ; =SetScriptFlag
-	ldr r1, _020668DC ; =0x00000973
+	ldr r1, _020668DC ; =FLAG_UNK_973
 	bx r3
 	nop
 _020668D8: .word SetScriptFlag
-_020668DC: .word 0x00000973
+_020668DC: .word FLAG_UNK_973
 	thumb_func_end sub_020668D0
 
 	thumb_func_start sub_020668E0
 sub_020668E0: ; 0x020668E0
 	ldr r3, _020668E8 ; =ClearScriptFlag
-	ldr r1, _020668EC ; =0x00000973
+	ldr r1, _020668EC ; =FLAG_UNK_973
 	bx r3
 	nop
 _020668E8: .word ClearScriptFlag
-_020668EC: .word 0x00000973
+_020668EC: .word FLAG_UNK_973
 	thumb_func_end sub_020668E0
 
 	thumb_func_start sub_020668F0
 sub_020668F0: ; 0x020668F0
 	ldr r3, _020668F8 ; =CheckScriptFlag
-	ldr r1, _020668FC ; =0x00000973
+	ldr r1, _020668FC ; =FLAG_UNK_973
 	bx r3
 	nop
 _020668F8: .word CheckScriptFlag
-_020668FC: .word 0x00000973
+_020668FC: .word FLAG_UNK_973
 	thumb_func_end sub_020668F0
 
 	thumb_func_start sub_02066900
 sub_02066900: ; 0x02066900
 	ldr r3, _02066908 ; =SetScriptFlag
-	ldr r1, _0206690C ; =0x00000974
+	ldr r1, _0206690C ; =FLAG_UNK_974
 	bx r3
 	nop
 _02066908: .word SetScriptFlag
-_0206690C: .word 0x00000974
+_0206690C: .word FLAG_UNK_974
 	thumb_func_end sub_02066900
 
 	thumb_func_start sub_02066910
 sub_02066910: ; 0x02066910
 	ldr r3, _02066918 ; =ClearScriptFlag
-	ldr r1, _0206691C ; =0x00000974
+	ldr r1, _0206691C ; =FLAG_UNK_974
 	bx r3
 	nop
 _02066918: .word ClearScriptFlag
-_0206691C: .word 0x00000974
+_0206691C: .word FLAG_UNK_974
 	thumb_func_end sub_02066910
 
 	thumb_func_start sub_02066920
 sub_02066920: ; 0x02066920
 	ldr r3, _02066928 ; =CheckScriptFlag
-	ldr r1, _0206692C ; =0x00000974
+	ldr r1, _0206692C ; =FLAG_UNK_974
 	bx r3
 	nop
 _02066928: .word CheckScriptFlag
-_0206692C: .word 0x00000974
+_0206692C: .word FLAG_UNK_974
 	thumb_func_end sub_02066920
 
 	thumb_func_start sub_02066930
@@ -23470,7 +23474,7 @@ sub_02066930: ; 0x02066930
 	blo _02066940
 	bl GF_AssertFail
 _02066940:
-	mov r2, #0x9b
+	mov r2, #FLAG_UNK_9B0>>4
 	lsl r2, r2, #4
 	add r0, r5, #0
 	add r1, r6, #0
@@ -23482,42 +23486,42 @@ _02066940:
 	thumb_func_start sub_02066950
 sub_02066950: ; 0x02066950
 	ldr r3, _02066958 ; =SetScriptFlag
-	mov r1, #0x97
+	mov r1, #FLAG_UNK_970>>4
 	lsl r1, r1, #4
 	bx r3
 	.balign 4, 0
 _02066958: .word SetScriptFlag
 	thumb_func_end sub_02066950
 
-	thumb_func_start sub_0206695C
-sub_0206695C: ; 0x0206695C
+	thumb_func_start CheckGotStarter
+CheckGotStarter: ; 0x0206695C
 	ldr r3, _02066964 ; =CheckScriptFlag
-	mov r1, #0x6a
+	mov r1, #FLAG_GOT_STARTER
 	bx r3
 	nop
 _02066964: .word CheckScriptFlag
-	thumb_func_end sub_0206695C
+	thumb_func_end CheckGotStarter
 
-	thumb_func_start sub_02066968
-sub_02066968: ; 0x02066968
+	thumb_func_start CheckGotPokegear
+CheckGotPokegear: ; 0x02066968
 	ldr r3, _02066970 ; =CheckScriptFlag
-	mov r1, #0x9c
+	mov r1, #FLAG_GOT_POKEGEAR
 	bx r3
 	nop
 _02066970: .word CheckScriptFlag
-	thumb_func_end sub_02066968
+	thumb_func_end CheckGotPokegear
 
-	thumb_func_start sub_02066974
-sub_02066974: ; 0x02066974
+	thumb_func_start CheckGotPokedex
+CheckGotPokedex: ; 0x02066974
 	ldr r3, _0206697C ; =CheckScriptFlag
-	mov r1, #0x6b
+	mov r1, #FLAG_GOT_POKEDEX
 	bx r3
 	nop
 _0206697C: .word CheckScriptFlag
-	thumb_func_end sub_02066974
+	thumb_func_end CheckGotPokedex
 
-	thumb_func_start sub_02066980
-sub_02066980: ; 0x02066980
+	thumb_func_start CheckGotMenuIconI
+CheckGotMenuIconI: ; 0x02066980
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -23525,7 +23529,7 @@ sub_02066980: ; 0x02066980
 	blt _0206698E
 	bl GF_AssertFail
 _0206698E:
-	ldr r1, _020669A0 ; =0x0000011B
+	ldr r1, _020669A0 ; =FLAG_GOT_BAG
 	add r0, r5, #0
 	add r1, r4, r1
 	lsl r1, r1, #0x10
@@ -23533,17 +23537,17 @@ _0206698E:
 	bl CheckScriptFlag
 	pop {r3, r4, r5, pc}
 	nop
-_020669A0: .word 0x0000011B
-	thumb_func_end sub_02066980
+_020669A0: .word FLAG_GOT_BAG
+	thumb_func_end CheckGotMenuIconI
 
 	thumb_func_start sub_020669A4
 sub_020669A4: ; 0x020669A4
 	ldr r3, _020669AC ; =CheckScriptFlag
-	ldr r1, _020669B0 ; =0x0000096A
+	ldr r1, _020669B0 ; =FLAG_UNK_96A
 	bx r3
 	nop
 _020669AC: .word CheckScriptFlag
-_020669B0: .word 0x0000096A
+_020669B0: .word FLAG_UNK_96A
 	thumb_func_end sub_020669A4
 
 	thumb_func_start sub_020669B4
@@ -23554,50 +23558,50 @@ sub_020669B4: ; 0x020669B4
 	mov r0, #0
 	pop {r3, pc}
 _020669BE:
-	ldr r2, _020669CC ; =0x0000096B
+	ldr r2, _020669CC ; =FLAG_UNK_96B
 	add r1, r1, r2
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	bl CheckScriptFlag
 	pop {r3, pc}
 	.balign 4, 0
-_020669CC: .word 0x0000096B
+_020669CC: .word FLAG_UNK_96B
 	thumb_func_end sub_020669B4
 
 	thumb_func_start sub_020669D0
 sub_020669D0: ; 0x020669D0
 	ldr r3, _020669D8 ; =CheckScriptFlag
-	ldr r1, _020669DC ; =0x00000981
+	ldr r1, _020669DC ; =FLAG_UNK_981
 	bx r3
 	nop
 _020669D8: .word CheckScriptFlag
-_020669DC: .word 0x00000981
+_020669DC: .word FLAG_UNK_981
 	thumb_func_end sub_020669D0
 
 	thumb_func_start sub_020669E0
 sub_020669E0: ; 0x020669E0
 	ldr r3, _020669E8 ; =CheckScriptFlag
-	ldr r1, _020669EC ; =0x000009A6
+	ldr r1, _020669EC ; =FLAG_UNK_9A6
 	bx r3
 	nop
 _020669E8: .word CheckScriptFlag
-_020669EC: .word 0x000009A6
+_020669EC: .word FLAG_UNK_9A6
 	thumb_func_end sub_020669E0
 
 	thumb_func_start sub_020669F0
 sub_020669F0: ; 0x020669F0
 	ldr r3, _020669F8 ; =CheckScriptFlag
-	ldr r1, _020669FC ; =0x00000982
+	ldr r1, _020669FC ; =FLAG_UNK_982
 	bx r3
 	nop
 _020669F8: .word CheckScriptFlag
-_020669FC: .word 0x00000982
+_020669FC: .word FLAG_UNK_982
 	thumb_func_end sub_020669F0
 
 	thumb_func_start sub_02066A00
 sub_02066A00: ; 0x02066A00
 	ldr r3, _02066A08 ; =CheckScriptFlag
-	mov r1, #0x9a
+	mov r1, #FLAG_UNK_09A
 	bx r3
 	nop
 _02066A08: .word CheckScriptFlag
@@ -23606,47 +23610,47 @@ _02066A08: .word CheckScriptFlag
 	thumb_func_start sub_02066A0C
 sub_02066A0C: ; 0x02066A0C
 	ldr r3, _02066A14 ; =CheckScriptFlag
-	ldr r1, _02066A18 ; =0x00000997
+	ldr r1, _02066A18 ; =FLAG_UNK_997
 	bx r3
 	nop
 _02066A14: .word CheckScriptFlag
-_02066A18: .word 0x00000997
+_02066A18: .word FLAG_UNK_997
 	thumb_func_end sub_02066A0C
 
 	thumb_func_start sub_02066A1C
 sub_02066A1C: ; 0x02066A1C
 	ldr r3, _02066A24 ; =SetScriptFlag
-	ldr r1, _02066A28 ; =0x0000099A
+	ldr r1, _02066A28 ; =FLAG_UNK_99A
 	bx r3
 	nop
 _02066A24: .word SetScriptFlag
-_02066A28: .word 0x0000099A
+_02066A28: .word FLAG_UNK_99A
 	thumb_func_end sub_02066A1C
 
 	thumb_func_start sub_02066A2C
 sub_02066A2C: ; 0x02066A2C
 	ldr r3, _02066A34 ; =ClearScriptFlag
-	ldr r1, _02066A38 ; =0x0000099A
+	ldr r1, _02066A38 ; =FLAG_UNK_99A
 	bx r3
 	nop
 _02066A34: .word ClearScriptFlag
-_02066A38: .word 0x0000099A
+_02066A38: .word FLAG_UNK_99A
 	thumb_func_end sub_02066A2C
 
 	thumb_func_start sub_02066A3C
 sub_02066A3C: ; 0x02066A3C
 	ldr r3, _02066A44 ; =CheckScriptFlag
-	ldr r1, _02066A48 ; =0x0000099A
+	ldr r1, _02066A48 ; =FLAG_UNK_99A
 	bx r3
 	nop
 _02066A44: .word CheckScriptFlag
-_02066A48: .word 0x0000099A
+_02066A48: .word FLAG_UNK_99A
 	thumb_func_end sub_02066A3C
 
 	thumb_func_start sub_02066A4C
 sub_02066A4C: ; 0x02066A4C
 	ldr r3, _02066A54 ; =CheckScriptFlag
-	mov r1, #0xf9
+	mov r1, #FLAG_UNK_0F9
 	bx r3
 	nop
 _02066A54: .word CheckScriptFlag
@@ -23655,7 +23659,7 @@ _02066A54: .word CheckScriptFlag
 	thumb_func_start sub_02066A58
 sub_02066A58: ; 0x02066A58
 	ldr r3, _02066A60 ; =CheckScriptFlag
-	mov r1, #0xca
+	mov r1, #FLAG_RED_GYARADOS_MEET
 	bx r3
 	nop
 _02066A60: .word CheckScriptFlag
@@ -23665,7 +23669,7 @@ _02066A60: .word CheckScriptFlag
 sub_02066A64: ; 0x02066A64
 	push {r3, lr}
 	cmp r1, #0
-	ldr r1, _02066A78 ; =0x0000099D
+	ldr r1, _02066A78 ; =FLAG_UNK_99D
 	beq _02066A72
 	bl SetScriptFlag
 	pop {r3, pc}
@@ -23673,7 +23677,7 @@ _02066A72:
 	bl ClearScriptFlag
 	pop {r3, pc}
 	.balign 4, 0
-_02066A78: .word 0x0000099D
+_02066A78: .word FLAG_UNK_99D
 	thumb_func_end sub_02066A64
 
 	thumb_func_start SetScriptVar
@@ -23723,49 +23727,49 @@ _02066ABA:
 sub_02066AC0: ; 0x02066AC0
 	ldr r3, _02066AC8 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066ACC ; =0x0000403F
+	ldr r1, _02066ACC ; =VAR_UNK_403F
 	bx r3
 	.balign 4, 0
 _02066AC8: .word SetScriptVar
-_02066ACC: .word 0x0000403F
+_02066ACC: .word VAR_UNK_403F
 	thumb_func_end sub_02066AC0
 
 	thumb_func_start sub_02066AD0
 sub_02066AD0: ; 0x02066AD0
 	ldr r3, _02066AD8 ; =GetScriptVar
-	ldr r1, _02066ADC ; =0x0000403F
+	ldr r1, _02066ADC ; =VAR_UNK_403F
 	bx r3
 	nop
 _02066AD8: .word GetScriptVar
-_02066ADC: .word 0x0000403F
+_02066ADC: .word VAR_UNK_403F
 	thumb_func_end sub_02066AD0
 
 	thumb_func_start SetStarterToScriptState
 SetStarterToScriptState: ; 0x02066AE0
 	ldr r3, _02066AE8 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066AEC ; =0x00004030
+	ldr r1, _02066AEC ; =VAR_PLAYER_STARTER
 	bx r3
 	.balign 4, 0
 _02066AE8: .word SetScriptVar
-_02066AEC: .word 0x00004030
+_02066AEC: .word VAR_PLAYER_STARTER
 	thumb_func_end SetStarterToScriptState
 
 	thumb_func_start GetStarterFromScriptState
 GetStarterFromScriptState: ; 0x02066AF0
 	ldr r3, _02066AF8 ; =GetScriptVar
-	ldr r1, _02066AFC ; =0x00004030
+	ldr r1, _02066AFC ; =VAR_PLAYER_STARTER
 	bx r3
 	nop
 _02066AF8: .word GetScriptVar
-_02066AFC: .word 0x00004030
+_02066AFC: .word VAR_PLAYER_STARTER
 	thumb_func_end GetStarterFromScriptState
 
 	thumb_func_start DPPtLeftover_GetRivalSpecies
 DPPtLeftover_GetRivalSpecies: ; 0x02066B00
 	; This will always return Turtwig
 	push {r3, lr}
-	ldr r1, _02066B20 ; =0x00004030
+	ldr r1, _02066B20 ; =VAR_PLAYER_STARTER
 	bl GetScriptVar
 	ldr r2, _02066B24 ; =SPECIES_TURTWIG
 	cmp r0, r2
@@ -23781,7 +23785,7 @@ _02066B1A:
 	add r0, r2, #0
 	pop {r3, pc}
 	nop
-_02066B20: .word 0x00004030
+_02066B20: .word VAR_PLAYER_STARTER
 _02066B24: .word SPECIES_TURTWIG
 	thumb_func_end DPPtLeftover_GetRivalSpecies
 
@@ -23789,7 +23793,7 @@ _02066B24: .word SPECIES_TURTWIG
 DPPtLeftover_GetFriendStarterSpecies: ; 0x02066B28
 	; This will always return Chimchar
 	push {r3, lr}
-	ldr r1, _02066B48 ; =0x00004030
+	ldr r1, _02066B48 ; =VAR_PLAYER_STARTER
 	bl GetScriptVar
 	ldr r2, _02066B4C ; =SPECIES_TURTWIG
 	cmp r0, r2
@@ -23805,39 +23809,39 @@ _02066B42:
 	add r0, r2, #0
 	pop {r3, pc}
 	nop
-_02066B48: .word 0x00004030
+_02066B48: .word VAR_PLAYER_STARTER
 _02066B4C: .word SPECIES_TURTWIG
 	thumb_func_end DPPtLeftover_GetFriendStarterSpecies
 
 	thumb_func_start sub_02066B50
 sub_02066B50: ; 0x02066B50
 	ldr r3, _02066B58 ; =GetScriptVar
-	ldr r1, _02066B5C ; =0x00004035
+	ldr r1, _02066B5C ; =VAR_UNK_4035
 	bx r3
 	nop
 _02066B58: .word GetScriptVar
-_02066B5C: .word 0x00004035
+_02066B5C: .word VAR_UNK_4035
 	thumb_func_end sub_02066B50
 
 	thumb_func_start sub_02066B60
 sub_02066B60: ; 0x02066B60
 	ldr r3, _02066B68 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066B6C ; =0x00004035
+	ldr r1, _02066B6C ; =VAR_UNK_4035
 	bx r3
 	.balign 4, 0
 _02066B68: .word SetScriptVar
-_02066B6C: .word 0x00004035
+_02066B6C: .word VAR_UNK_4035
 	thumb_func_end sub_02066B60
 
 	thumb_func_start sub_02066B70
 sub_02066B70: ; 0x02066B70
 	ldr r3, _02066B78 ; =GetScriptVar
-	ldr r1, _02066B7C ; =0x0000403E
+	ldr r1, _02066B7C ; =VAR_UNK_403E
 	bx r3
 	nop
 _02066B78: .word GetScriptVar
-_02066B7C: .word 0x0000403E
+_02066B7C: .word VAR_UNK_403E
 	thumb_func_end sub_02066B70
 
 	thumb_func_start sub_02066B80
@@ -23865,7 +23869,7 @@ sub_02066B9C: ; 0x02066B9C
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02066B80
-	ldr r1, _02066BBC ; =0x00004043
+	ldr r1, _02066BBC ; =VAR_UNK_4043
 	add r2, r0, #0
 	add r1, r4, r1
 	lsl r1, r1, #0x10
@@ -23874,14 +23878,14 @@ sub_02066B9C: ; 0x02066B9C
 	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	nop
-_02066BBC: .word 0x00004043
+_02066BBC: .word VAR_UNK_4043
 	thumb_func_end sub_02066B9C
 
 	thumb_func_start sub_02066BC0
 sub_02066BC0: ; 0x02066BC0
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	ldr r1, _02066BE4 ; =0x00004043
+	ldr r1, _02066BE4 ; =VAR_UNK_4043
 	add r1, r4, r1
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
@@ -23897,7 +23901,7 @@ _02066BE0:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02066BE4: .word 0x00004043
+_02066BE4: .word VAR_UNK_4043
 	thumb_func_end sub_02066BC0
 
 	thumb_func_start sub_02066BE8
@@ -23905,7 +23909,7 @@ sub_02066BE8: ; 0x02066BE8
 	push {r3, lr}
 	cmp r1, #4
 	bhs _02066BFA
-	ldr r3, _02066BFC ; =0x00004045
+	ldr r3, _02066BFC ; =VAR_UNK_4045
 	add r1, r1, r3
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
@@ -23913,7 +23917,7 @@ sub_02066BE8: ; 0x02066BE8
 _02066BFA:
 	pop {r3, pc}
 	.balign 4, 0
-_02066BFC: .word 0x00004045
+_02066BFC: .word VAR_UNK_4045
 	thumb_func_end sub_02066BE8
 
 	thumb_func_start sub_02066C00
@@ -23948,7 +23952,7 @@ _02066C2C:
 	add r0, r4, #0
 	bl sub_02066C00
 	add r2, r0, #0
-	ldr r1, _02066C48 ; =0x00004036
+	ldr r1, _02066C48 ; =VAR_UNK_4036
 	lsl r2, r2, #0x10
 	add r1, r4, r1
 	lsl r1, r1, #0x10
@@ -23958,7 +23962,7 @@ _02066C2C:
 	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02066C48: .word 0x00004036
+_02066C48: .word VAR_UNK_4036
 	thumb_func_end sub_02066C1C
 
 	thumb_func_start sub_02066C4C
@@ -23972,7 +23976,7 @@ sub_02066C4C: ; 0x02066C4C
 _02066C58:
 	bl GF_AssertFail
 _02066C5C:
-	ldr r1, _02066C70 ; =0x00004036
+	ldr r1, _02066C70 ; =VAR_UNK_4036
 	add r0, r5, #0
 	add r1, r4, r1
 	lsl r1, r1, #0x10
@@ -23981,7 +23985,7 @@ _02066C5C:
 	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	nop
-_02066C70: .word 0x00004036
+_02066C70: .word VAR_UNK_4036
 	thumb_func_end sub_02066C4C
 
 	thumb_func_start sub_02066C74
@@ -23995,7 +23999,7 @@ sub_02066C74: ; 0x02066C74
 _02066C80:
 	bl GF_AssertFail
 _02066C84:
-	ldr r1, _02066CA8 ; =0x00004036
+	ldr r1, _02066CA8 ; =VAR_UNK_4036
 	add r0, r5, #0
 	add r1, r4, r1
 	lsl r1, r1, #0x10
@@ -24012,7 +24016,7 @@ _02066CA2:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02066CA8: .word 0x00004036
+_02066CA8: .word VAR_UNK_4036
 	thumb_func_end sub_02066C74
 
 	thumb_func_start sub_02066CAC
@@ -24020,37 +24024,44 @@ sub_02066CAC: ; 0x02066CAC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	lsl r2, r4, #0x10
-	ldr r1, _02066CCC ; =0x0000403C
+	ldr r1, _02066CCC ; =VAR_LOTO_NUMBER_LO
 	lsr r2, r2, #0x10
 	add r5, r0, #0
 	bl SetScriptVar
 	lsr r2, r4, #0x10
 	lsl r2, r2, #0x10
-	ldr r1, _02066CCC ; =0x0000403C ; bug: supposed to be 403D
+	.ifdef BUGFIX_LOTO_NUMBER_HI
+	ldr r1, _pool_VAR_LOTO_NUMBER_HI ; =VAR_LOTO_NUMBER_HI
+	.else
+	ldr r1, _02066CCC ; =VAR_LOTO_NUMBER_LO ; bug: supposed to be VAR_LOTO_NUMBER_HI
+	.endif
 	add r0, r5, #0
 	lsr r2, r2, #0x10
 	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02066CCC: .word 0x0000403C
+_02066CCC: .word VAR_LOTO_NUMBER_LO
+	.ifdef BUGFIX_LOTO_NUMBER_HI
+_pool_VAR_LOTO_NUMBER_HI: .word VAR_LOTO_NUMBER_HI
+	.endif
 	thumb_func_end sub_02066CAC
 
 	thumb_func_start ScriptState_GetLotoId
 ScriptState_GetLotoId: ; 0x02066CD0
 	push {r3, r4, r5, lr}
-	ldr r1, _02066CEC ; =0x0000403C
+	ldr r1, _02066CEC ; =VAR_LOTO_NUMBER_LO
 	add r5, r0, #0
 	bl GetScriptVar
 	add r4, r0, #0
-	ldr r1, _02066CF0 ; =0x0000403D
+	ldr r1, _02066CF0 ; =VAR_LOTO_NUMBER_HI
 	add r0, r5, #0
 	bl GetScriptVar
 	lsl r0, r0, #0x10
 	orr r0, r4
 	pop {r3, r4, r5, pc}
 	nop
-_02066CEC: .word 0x0000403C
-_02066CF0: .word 0x0000403D
+_02066CEC: .word VAR_LOTO_NUMBER_LO
+_02066CF0: .word VAR_LOTO_NUMBER_HI
 	thumb_func_end ScriptState_GetLotoId
 
 	thumb_func_start ScriptState_RollLotoId
@@ -24068,8 +24079,8 @@ ScriptState_RollLotoId: ; 0x02066CF4
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScriptState_RollLotoId
 
-	thumb_func_start sub_02066D10
-sub_02066D10: ; 0x02066D10
+	thumb_func_start Save_LCRNGAdvanceLotoID
+Save_LCRNGAdvanceLotoID: ; 0x02066D10
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl SavArray_Flags_get
@@ -24088,27 +24099,27 @@ sub_02066D10: ; 0x02066D10
 	nop
 _02066D38: .word 0x41C64E6D
 _02066D3C: .word 0x00003039
-	thumb_func_end sub_02066D10
+	thumb_func_end Save_LCRNGAdvanceLotoID
 
 	thumb_func_start sub_02066D40
 sub_02066D40: ; 0x02066D40
 	ldr r3, _02066D48 ; =GetScriptVar
-	ldr r1, _02066D4C ; =0x00004041
+	ldr r1, _02066D4C ; =VAR_UNK_4041
 	bx r3
 	nop
 _02066D48: .word GetScriptVar
-_02066D4C: .word 0x00004041
+_02066D4C: .word VAR_UNK_4041
 	thumb_func_end sub_02066D40
 
 	thumb_func_start sub_02066D50
 sub_02066D50: ; 0x02066D50
 	ldr r3, _02066D58 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066D5C ; =0x00004041
+	ldr r1, _02066D5C ; =VAR_UNK_4041
 	bx r3
 	.balign 4, 0
 _02066D58: .word SetScriptVar
-_02066D5C: .word 0x00004041
+_02066D5C: .word VAR_UNK_4041
 	thumb_func_end sub_02066D50
 
 	thumb_func_start sub_02066D60
@@ -24130,7 +24141,7 @@ sub_02066D60: ; 0x02066D60
 	thumb_func_start sub_02066D80
 sub_02066D80: ; 0x02066D80
 	push {r4, lr}
-	ldr r1, _02066DA0 ; =0x00004042
+	ldr r1, _02066DA0 ; =VAR_UNK_4042
 	add r4, r0, #0
 	bl GetScriptVar
 	ldr r2, _02066DA4 ; =0x00002710
@@ -24140,131 +24151,131 @@ sub_02066D80: ; 0x02066D80
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 _02066D96:
-	ldr r1, _02066DA0 ; =0x00004042
+	ldr r1, _02066DA0 ; =VAR_UNK_4042
 	add r0, r4, #0
 	bl SetScriptVar
 	pop {r4, pc}
 	.balign 4, 0
-_02066DA0: .word 0x00004042
+_02066DA0: .word VAR_UNK_4042
 _02066DA4: .word 0x00002710
 	thumb_func_end sub_02066D80
 
 	thumb_func_start sub_02066DA8
 sub_02066DA8: ; 0x02066DA8
 	ldr r3, _02066DB0 ; =GetScriptVar
-	ldr r1, _02066DB4 ; =0x00004042
+	ldr r1, _02066DB4 ; =VAR_UNK_4042
 	bx r3
 	nop
 _02066DB0: .word GetScriptVar
-_02066DB4: .word 0x00004042
+_02066DB4: .word VAR_UNK_4042
 	thumb_func_end sub_02066DA8
 
 	thumb_func_start sub_02066DB8
 sub_02066DB8: ; 0x02066DB8
 	ldr r3, _02066DC0 ; =GetScriptVar
-	ldr r1, _02066DC4 ; =0x0000404B
+	ldr r1, _02066DC4 ; =VAR_UNK_404B
 	bx r3
 	nop
 _02066DC0: .word GetScriptVar
-_02066DC4: .word 0x0000404B
+_02066DC4: .word VAR_UNK_404B
 	thumb_func_end sub_02066DB8
 
 	thumb_func_start sub_02066DC8
 sub_02066DC8: ; 0x02066DC8
 	ldr r3, _02066DD0 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066DD4 ; =0x0000404B
+	ldr r1, _02066DD4 ; =VAR_UNK_404B
 	bx r3
 	.balign 4, 0
 _02066DD0: .word SetScriptVar
-_02066DD4: .word 0x0000404B
+_02066DD4: .word VAR_UNK_404B
 	thumb_func_end sub_02066DC8
 
 	thumb_func_start sub_02066DD8
 sub_02066DD8: ; 0x02066DD8
 	ldr r3, _02066DE0 ; =GetScriptVar
-	ldr r1, _02066DE4 ; =0x0000404E
+	ldr r1, _02066DE4 ; =VAR_BATTLE_FACTORY_PRINT_PROGRESS
 	bx r3
 	nop
 _02066DE0: .word GetScriptVar
-_02066DE4: .word 0x0000404E
+_02066DE4: .word VAR_BATTLE_FACTORY_PRINT_PROGRESS
 	thumb_func_end sub_02066DD8
 
 	thumb_func_start sub_02066DE8
 sub_02066DE8: ; 0x02066DE8
 	ldr r3, _02066DF0 ; =GetScriptVar
-	ldr r1, _02066DF4 ; =0x0000404F
+	ldr r1, _02066DF4 ; =VAR_BATTLE_HALL_PRINT_PROGRESS
 	bx r3
 	nop
 _02066DF0: .word GetScriptVar
-_02066DF4: .word 0x0000404F
+_02066DF4: .word VAR_BATTLE_HALL_PRINT_PROGRESS
 	thumb_func_end sub_02066DE8
 
 	thumb_func_start sub_02066DF8
 sub_02066DF8: ; 0x02066DF8
 	ldr r3, _02066E00 ; =GetScriptVar
-	ldr r1, _02066E04 ; =0x00004050
+	ldr r1, _02066E04 ; =VAR_BATTLE_CASTLE_PRINT_PROGRESS
 	bx r3
 	nop
 _02066E00: .word GetScriptVar
-_02066E04: .word 0x00004050
+_02066E04: .word VAR_BATTLE_CASTLE_PRINT_PROGRESS
 	thumb_func_end sub_02066DF8
 
 	thumb_func_start sub_02066E08
 sub_02066E08: ; 0x02066E08
 	ldr r3, _02066E10 ; =GetScriptVar
-	ldr r1, _02066E14 ; =0x00004051
+	ldr r1, _02066E14 ; =VAR_BATTLE_ARCADE_PRINT_PROGRESS
 	bx r3
 	nop
 _02066E10: .word GetScriptVar
-_02066E14: .word 0x00004051
+_02066E14: .word VAR_BATTLE_ARCADE_PRINT_PROGRESS
 	thumb_func_end sub_02066E08
 
 	thumb_func_start sub_02066E18
 sub_02066E18: ; 0x02066E18
 	ldr r3, _02066E20 ; =GetScriptVar
-	ldr r1, _02066E24 ; =0x0000404D
+	ldr r1, _02066E24 ; =VAR_BATTLE_TOWER_PRINT_PROGRESS
 	bx r3
 	nop
 _02066E20: .word GetScriptVar
-_02066E24: .word 0x0000404D
+_02066E24: .word VAR_BATTLE_TOWER_PRINT_PROGRESS
 	thumb_func_end sub_02066E18
 
 	thumb_func_start sub_02066E28
 sub_02066E28: ; 0x02066E28
 	ldr r3, _02066E30 ; =GetScriptVar
-	ldr r1, _02066E34 ; =0x0000404C
+	ldr r1, _02066E34 ; =VAR_UNK_404C
 	bx r3
 	nop
 _02066E30: .word GetScriptVar
-_02066E34: .word 0x0000404C
+_02066E34: .word VAR_UNK_404C
 	thumb_func_end sub_02066E28
 
 	thumb_func_start sub_02066E38
 sub_02066E38: ; 0x02066E38
 	ldr r3, _02066E40 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066E44 ; =0x0000404C
+	ldr r1, _02066E44 ; =VAR_UNK_404C
 	bx r3
 	.balign 4, 0
 _02066E40: .word SetScriptVar
-_02066E44: .word 0x0000404C
+_02066E44: .word VAR_UNK_404C
 	thumb_func_end sub_02066E38
 
 	thumb_func_start sub_02066E48
 sub_02066E48: ; 0x02066E48
 	ldr r3, _02066E50 ; =GetScriptVar
-	ldr r1, _02066E54 ; =0x00004052
+	ldr r1, _02066E54 ; =VAR_UNK_4052
 	bx r3
 	nop
 _02066E50: .word GetScriptVar
-_02066E54: .word 0x00004052
+_02066E54: .word VAR_UNK_4052
 	thumb_func_end sub_02066E48
 
 	thumb_func_start sub_02066E58
 sub_02066E58: ; 0x02066E58
 	push {r3, lr}
-	ldr r1, _02066E70 ; =0x00004077
+	ldr r1, _02066E70 ; =VAR_UNK_4077
 	bl GetScriptVar
 	cmp r0, #2
 	blo _02066E68
@@ -24277,34 +24288,34 @@ _02066E6C:
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_02066E70: .word 0x00004077
+_02066E70: .word VAR_UNK_4077
 	thumb_func_end sub_02066E58
 
 	thumb_func_start sub_02066E74
 sub_02066E74: ; 0x02066E74
 	ldr r3, _02066E7C ; =GetScriptVar
-	ldr r1, _02066E80 ; =0x00004057
+	ldr r1, _02066E80 ; =VAR_UNK_4057
 	bx r3
 	nop
 _02066E7C: .word GetScriptVar
-_02066E80: .word 0x00004057
+_02066E80: .word VAR_UNK_4057
 	thumb_func_end sub_02066E74
 
 	thumb_func_start sub_02066E84
 sub_02066E84: ; 0x02066E84
 	ldr r3, _02066E8C ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066E90 ; =0x00004057
+	ldr r1, _02066E90 ; =VAR_UNK_4057
 	bx r3
 	.balign 4, 0
 _02066E8C: .word SetScriptVar
-_02066E90: .word 0x00004057
+_02066E90: .word VAR_UNK_4057
 	thumb_func_end sub_02066E84
 
 	thumb_func_start sub_02066E94
 sub_02066E94: ; 0x02066E94
 	push {r3, r4, r5, lr}
-	ldr r1, _02066EC8 ; =0x00004033
+	ldr r1, _02066EC8 ; =VAR_UNK_4033
 	add r5, r0, #0
 	bl GetScriptVar
 	add r4, r0, #0
@@ -24321,22 +24332,22 @@ sub_02066E94: ; 0x02066E94
 	lsl r0, r1, #0x10
 	lsr r2, r0, #0x10
 _02066EBE:
-	ldr r1, _02066EC8 ; =0x00004033
+	ldr r1, _02066EC8 ; =VAR_UNK_4033
 	add r0, r5, #0
 	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02066EC8: .word 0x00004033
+_02066EC8: .word VAR_UNK_4033
 	thumb_func_end sub_02066E94
 
 	thumb_func_start sub_02066ECC
 sub_02066ECC: ; 0x02066ECC
 	ldr r3, _02066ED4 ; =GetScriptVar
-	ldr r1, _02066ED8 ; =0x00004033
+	ldr r1, _02066ED8 ; =VAR_UNK_4033
 	bx r3
 	nop
 _02066ED4: .word GetScriptVar
-_02066ED8: .word 0x00004033
+_02066ED8: .word VAR_UNK_4033
 	thumb_func_end sub_02066ECC
 
 	thumb_func_start sub_02066EDC
@@ -28549,108 +28560,158 @@ _020FCB7C:
 	.word sub_0205D0A8
 	.word sub_0205D190
 _020FCB88:
-	.word sub_0205B828
-_020FCB8C:
-	.byte 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word sub_0205B828, 1
+	.word 0, 3
 _020FCB98:
-	.byte 0x6C, 0x08
-_020FCB9A:
-	.byte 0x00, 0x00
-_020FCB9C:
-	.byte 0x6D, 0x08, 0x00, 0x00
-	.byte 0x6A, 0x08, 0x00, 0x00, 0x76, 0x08, 0x00, 0x00, 0x77, 0x08, 0x00, 0x00, 0x6E, 0x08, 0x01, 0x00
-	.byte 0x70, 0x08, 0x01, 0x00, 0x71, 0x08, 0x00, 0x00, 0x72, 0x08, 0x00, 0x00, 0x6E, 0x08, 0x01, 0x00
-	.byte 0x73, 0x08, 0x01, 0x00, 0x70, 0x08, 0x00, 0x00, 0x75, 0x08, 0x00, 0x00, 0x74, 0x08, 0x00, 0x00
-	.byte 0xEB, 0x05, 0x00, 0x00, 0xEA, 0x05, 0x00, 0x00
+	.short SEQ_SE_GS_ASHIOTO_A_WALK, 0
+	.short SEQ_SE_GS_ASHIOTO_A, 0
+	.short SEQ_SE_GS_OCHIBA, 0
+	.short SEQ_SE_GS_EDAPAKI, 0
+	.short SEQ_SE_GS_KUSA2, 0
+	.short SEQ_SE_GS_ASHIOTO_B, 1
+	.short SEQ_SE_GS_ASHIOTO_D, 1
+	.short SEQ_SE_GS_ASHIOTO_D_2, 0
+	.short SEQ_SE_GS_ASHIOTO_E, 0
+	.short SEQ_SE_GS_ASHIOTO_B, 1
+	.short SEQ_SE_GS_ASHIOTO_F, 1
+	.short SEQ_SE_GS_ASHIOTO_D, 0
+	.short SEQ_SE_GS_ASHIOTO_H, 0
+	.short SEQ_SE_GS_ASHIOTO_G, 0
+	.short SEQ_SE_DP_BOX02, 0
+	.short SEQ_SE_DP_BOX01, 0
 
+	; file boundary
 _020FCBD8:
-	.byte 0x24, 0x00, 0x00, 0x00, 0x25, 0x00, 0x00, 0x00
-	.byte 0x26, 0x00, 0x00, 0x00, 0x27, 0x00, 0x00, 0x00
+	.word 0x00000024
+	.word 0x00000025
+	.word 0x00000026
+	.word 0x00000027
 
 _020FCBE8:
-	.byte 0x34, 0x00, 0x00, 0x00, 0x35, 0x00, 0x00, 0x00
-	.byte 0x36, 0x00, 0x00, 0x00, 0x37, 0x00, 0x00, 0x00
+	.word 0x00000034
+	.word 0x00000035
+	.word 0x00000036
+	.word 0x00000037
 
 _020FCBF8:
-	.byte 0x5E, 0x00, 0x00, 0x00, 0x5F, 0x00, 0x00, 0x00
-	.byte 0x5E, 0x00, 0x00, 0x00, 0x5F, 0x00, 0x00, 0x00
+	.word 0x0000005E
+	.word 0x0000005F
+	.word 0x0000005E
+	.word 0x0000005F
 
 _020FCC08:
-	.byte 0x28, 0x00, 0x00, 0x00, 0x29, 0x00, 0x00, 0x00
-	.byte 0x2A, 0x00, 0x00, 0x00, 0x2B, 0x00, 0x00, 0x00
+	.word 0x00000028
+	.word 0x00000029
+	.word 0x0000002A
+	.word 0x0000002B
 
 _020FCC18:
-	.byte 0x5C, 0x00, 0x00, 0x00, 0x5D, 0x00, 0x00, 0x00
-	.byte 0x5C, 0x00, 0x00, 0x00, 0x5D, 0x00, 0x00, 0x00
+	.word 0x0000005C
+	.word 0x0000005D
+	.word 0x0000005C
+	.word 0x0000005D
 
 _020FCC28:
-	.byte 0x20, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00
-	.byte 0x22, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00
+	.word 0x00000020
+	.word 0x00000021
+	.word 0x00000022
+	.word 0x00000023
 
 _020FCC38:
-	.byte 0x4C, 0x00, 0x00, 0x00, 0x4D, 0x00, 0x00, 0x00
-	.byte 0x4E, 0x00, 0x00, 0x00, 0x4F, 0x00, 0x00, 0x00
+	.word 0x0000004C
+	.word 0x0000004D
+	.word 0x0000004E
+	.word 0x0000004F
 
 _020FCC48:
-	.byte 0x54, 0x00, 0x00, 0x00, 0x55, 0x00, 0x00, 0x00
-	.byte 0x56, 0x00, 0x00, 0x00, 0x57, 0x00, 0x00, 0x00
+	.word 0x00000054
+	.word 0x00000055
+	.word 0x00000056
+	.word 0x00000057
 
 _020FCC58:
-	.byte 0x30, 0x00, 0x00, 0x00, 0x31, 0x00, 0x00, 0x00
-	.byte 0x32, 0x00, 0x00, 0x00, 0x33, 0x00, 0x00, 0x00
+	.word 0x00000030
+	.word 0x00000031
+	.word 0x00000032
+	.word 0x00000033
 
 _020FCC68:
-	.byte 0x58, 0x00, 0x00, 0x00, 0x59, 0x00, 0x00, 0x00
-	.byte 0x5A, 0x00, 0x00, 0x00, 0x5B, 0x00, 0x00, 0x00
+	.word 0x00000058
+	.word 0x00000059
+	.word 0x0000005A
+	.word 0x0000005B
 
 _020FCC78:
-	.byte 0x1C, 0x00, 0x00, 0x00, 0x1D, 0x00, 0x00, 0x00
-	.byte 0x1E, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00
+	.word 0x0000001C
+	.word 0x0000001D
+	.word 0x0000001E
+	.word 0x0000001F
 
 _020FCC88:
-	.byte 0x38, 0x00, 0x00, 0x00, 0x39, 0x00, 0x00, 0x00
-	.byte 0x3A, 0x00, 0x00, 0x00, 0x3B, 0x00, 0x00, 0x00
+	.word 0x00000038
+	.word 0x00000039
+	.word 0x0000003A
+	.word 0x0000003B
 
 _020FCC98:
-	.byte 0x18, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00
-	.byte 0x1A, 0x00, 0x00, 0x00, 0x1B, 0x00, 0x00, 0x00
+	.word 0x00000018
+	.word 0x00000019
+	.word 0x0000001A
+	.word 0x0000001B
 
 _020FCCA8:
-	.byte 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00
-	.byte 0x12, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00
+	.word 0x00000010
+	.word 0x00000011
+	.word 0x00000012
+	.word 0x00000013
 
 _020FCCB8:
-	.byte 0x14, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00
-	.byte 0x16, 0x00, 0x00, 0x00, 0x17, 0x00, 0x00, 0x00
+	.word 0x00000014
+	.word 0x00000015
+	.word 0x00000016
+	.word 0x00000017
 
 _020FCCC8:
-	.byte 0x60, 0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00
-	.byte 0x62, 0x00, 0x00, 0x00, 0x63, 0x00, 0x00, 0x00
+	.word 0x00000060
+	.word 0x00000061
+	.word 0x00000062
+	.word 0x00000063
 
 _020FCCD8:
-	.byte 0x50, 0x00, 0x00, 0x00, 0x51, 0x00, 0x00, 0x00
-	.byte 0x52, 0x00, 0x00, 0x00, 0x53, 0x00, 0x00, 0x00
+	.word 0x00000050
+	.word 0x00000051
+	.word 0x00000052
+	.word 0x00000053
 
 _020FCCE8:
-	.byte 0x0C, 0x00, 0x00, 0x00, 0x0D, 0x00, 0x00, 0x00
-	.byte 0x0E, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00
+	.word 0x0000000C
+	.word 0x0000000D
+	.word 0x0000000E
+	.word 0x0000000F
 
 _020FCCF8:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 0
+	.word 0x00000001
+	.word 0x00000002
+	.word 0x00000003
 
 _020FCD08:
-	.byte 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
-	.byte 0x06, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
+	.word 0x00000004
+	.word 0x00000005
+	.word 0x00000006
+	.word 0x00000007
 
 _020FCD18:
-	.byte 0x08, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
-	.byte 0x0A, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
+	.word 0x00000008
+	.word 0x00000009
+	.word 0x0000000A
+	.word 0x0000000B
 
 _020FCD28:
-	.byte 0x2C, 0x00, 0x00, 0x00, 0x2D, 0x00, 0x00, 0x00
-	.byte 0x2E, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x00
+	.word 0x0000002C
+	.word 0x0000002D
+	.word 0x0000002E
+	.word 0x0000002F
 
 _020FCD38:
 	.word 0x00000034
@@ -28793,7 +28854,7 @@ _020FCEB4:
 	.word sub_0205FCC0
 
 _020FCEC8:
-	.word 0x00000000
+	.word 0
 	.word sub_0205FCB4
 	.word sub_0205FCB8
 	.word sub_0205FCBC
@@ -29066,7 +29127,7 @@ _020FD198:
 	.word _020FCC18
 	.word _020FCBF8
 	.word _020FCCC8
-	.word 0x00000000
+	.word 0
 _020FD1F4:
 	.word _020FCEC8
 	.word _020FCEDC
@@ -29115,7 +29176,7 @@ _020FD1F4:
 	.word _020FD06C
 	.word _020FD080
 	.word _020FD094
-	.word 0x00000000
+	.word 0
 	.word _020FD0A8
 	.word _020FCFF4
 	.word _020FD148
@@ -29240,11 +29301,15 @@ _020FD2D8:
 	.word _020FE070
 	.word _020FDF8C
 _020FD49C:
-	.byte 0xFF, 0xFF, 0xFF, 0xFF
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word -1
+	.word  1
+	.word  0
+	.word  0
 _020FD4AC:
-	.byte 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x01, 0x00, 0x00, 0x00
+	.word  0
+	.word  0
+	.word -1
+	.word  1
 _020FD4BC:
 	.word sub_0205B918
 	.word sub_0205B8F4
@@ -29256,121 +29321,123 @@ _020FD4CC:
 	.word sub_0205B93C
 	.word sub_0205B960
 _020FD4DC:
-	.byte 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 1
+	.word 0
+	.word 3
+	.word 2
 _020FD4EC:
 	.word sub_02061C40
 	.word sub_02061D50
 _020FD4F4:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0, 2, -1
 _020FD500:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 1, 2, -1
 _020FD50C:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 2, 3, -1
 _020FD518:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0, 3, -1
 _020FD524:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 1, 3, -1
 _020FD530:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0, 1, -1
 _020FD53C:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 2, 3, -1
 _020FD548:
 	.word sub_020619C0
 	.word sub_020619FC
 	.word sub_02061ABC
 _020FD554:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0, 1, -1
 _020FD560:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 1, 0, 2, 3
 _020FD570:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 2, 3, 0, 1
 _020FD580:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 0, 1, 2, 3
 _020FD590:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 0, 3, 1, 2
 _020FD5A0:
 	.word sub_02061874
 	.word sub_02061894
 	.word sub_020618B0
 	.word sub_020618C8
 _020FD5B0:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 1, 2, 3, 0
 _020FD5C0:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 1, 3, 0, 2
 _020FD5D0:
 	.word sub_02061720
 	.word sub_02061754
 	.word sub_02061770
 	.word sub_020617AC
 _020FD5E0:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 0x00000001, 0x00000002, 0x00000000, 0x00000003
 _020FD5F0:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x00000002, 0x00000000, 0x00000003, 0x00000001
 _020FD600:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000002, 0x00000003, 0x00000001, 0x00000000
 _020FD610:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 0x00000000, 0x00000002, 0x00000001, 0x00000003
 _020FD620:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 0x00000001, 0x00000000, 0x00000003, 0x00000002
 _020FD630:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 0x00000002, 0x00000001, 0x00000000, 0x00000003
 _020FD640:
-	.byte 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000003, 0x00000002, 0x00000001, 0x00000000
 _020FD650:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x00000000, 0x00000003, 0x00000002, 0x00000001
 _020FD660:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+	.word 0x00000002, 0x00000000, 0x00000001, 0x00000003
 _020FD670:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 0x00000000, 0x00000001, 0x00000003, 0x00000002
 _020FD680:
-	.byte 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 0x00000003, 0x00000000, 0x00000001, 0x00000002
 _020FD690:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000002, 0x00000001, 0x00000003, 0x00000000
 _020FD6A0:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000001, 0x00000003, 0xFFFFFFFF
 _020FD6B0:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000002, 0x00000003, 0xFFFFFFFF
 _020FD6C0:
-	.byte 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x00000003, 0x00000002, 0x00000000, 0x00000001
 _020FD6D0:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000001, 0x00000002, 0x00000003, 0xFFFFFFFF
 _020FD6E0:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000001, 0x00000002, 0xFFFFFFFF
 _020FD6F0:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000001, 0x00000003, 0x00000002, 0x00000000
 _020FD700:
-	.byte 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+	.word 0x00000003, 0x00000000, 0x00000002, 0x00000001
 _020FD710:
-	.byte 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000003, 0x00000001, 0x00000002, 0x00000000
 _020FD720:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000002, 0x00000003, 0x00000001, 0x00000000
 _020FD730:
-	.byte 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.word 0x00000003, 0x00000001, 0x00000000, 0x00000002
 _020FD740:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000001, 0x00000002, 0x00000003
+	.word 0xFFFFFFFF
 _020FD754:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000002, 0x00000001
+	.word 0x00000003, 0xFFFFFFFF
 _020FD768:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000003
+	.word 0x00000001, 0x00000002, 0xFFFFFFFF
 _020FD77C:
-	.byte 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000
+	.word 0x00000002, 0x00000001, 0x00000003, 0xFFFFFFFF
 _020FD790:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-	.byte 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000001, 0x00000002, 0x00000003
+	.word 0xFFFFFFFF
 _020FD7A4:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000, 0x00000003, 0x00000001
+	.word 0x00000002, 0xFFFFFFFF
 _020FD7B8:
-	.byte 0x10, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00
-	.byte 0x30, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000010, 0x00000020
+	.word 0x00000030, 0x00000040, 0xFFFFFFFF
 _020FD7CC:
-	.byte 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0x00000000
+	.word 0x00000001, 0x00000002, 0x00000003, 0xFFFFFFFF
 _020FD7E0:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
@@ -29380,7 +29447,7 @@ _020FD800:
 	.byte 0x0D, 0x00, 0x00, 0x00, 0x2D, 0x00, 0x00, 0x00, 0x2E, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00
 	.byte 0x13, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00
 _020FD838:
-	.word 0x00000000, _020FD7CC
+	.word 0, _020FD7CC
 	.word 0x00000001, _020FD4F4
 	.word 0x00000002, _020FD518
 	.word 0x00000003, _020FD500
@@ -29420,6 +29487,8 @@ _020FD838:
 	.word 0x00000025, _020FD710
 	.word 0x00000026, _020FD790
 	.word 0x00000027, 0
+
+	; file boundary
 _020FD978:
 	.word sub_020624A8
 	.word sub_02062470
@@ -29532,6 +29601,8 @@ _020FDB04:
 	.byte 0x00, 0xA0, 0x00, 0x00, 0x00, 0x90, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00
 	.byte 0x00, 0x50, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
+
+	; file boundary
 _020FDB44:
 	.word sub_0206311C
 	.word sub_0206313C
@@ -30076,6 +30147,7 @@ _020FE070:
 	.word sub_02063424
 	.word sub_02062470
 
+	; file boundary
 _020FE0C4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00
@@ -30265,7 +30337,10 @@ _020FE454:
 _020FE4A4:
 	.byte 0xF2, 0x06, 0x7C, 0xAD
 _020FE4A8:
-	.byte 0x08, 0x62, 0x29, 0xF2, 0x82, 0x03, 0x28, 0x12
+	.short 0x6208
+	.short 0xF229
+	.short 0x0382
+	.short 0x1228
 _020FE4B0:
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x00, 0x00, 0x00
 	.balign 4, 0

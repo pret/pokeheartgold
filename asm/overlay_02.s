@@ -13173,7 +13173,7 @@ _0224BF00:
 	beq _0224BF48
 	ldr r0, _0224BF50 ; =0x00000611
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0224BF54 ; =0x000005F1
 	bl PlaySE
 	ldr r0, [r6, #0x54]

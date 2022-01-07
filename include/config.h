@@ -36,4 +36,6 @@
 #error "Missing or unrecognized game language define"
 #endif
 
+#include "constants/bugfix.h"
+
 #endif //POKEHEARTGOLD_CONFIG_H

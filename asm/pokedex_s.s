@@ -4,10 +4,10 @@
 
 	.rodata
 
-_020F6764:
+sJohtoDexMythicals:
 	.short SPECIES_MEW
 	.short SPECIES_CELEBI
-_020F6768:
+sNationalDexMythicals:
 	.short SPECIES_MEW
 	.short SPECIES_CELEBI
 	.short SPECIES_JIRACHI
@@ -20,55 +20,7 @@ _020F6768:
 
 	.text
 
-	thumb_func_start Save_Pokedex_sizeof
-Save_Pokedex_sizeof: ; 0x020293E0
-	mov r0, #0xd
-	lsl r0, r0, #6
-	bx lr
-	.balign 4, 0
-	thumb_func_end Save_Pokedex_sizeof
-
-	thumb_func_start Pokedex_new
-Pokedex_new: ; 0x020293E8
-	push {r4, lr}
-	mov r1, #0xd
-	lsl r1, r1, #6
-	bl AllocFromHeap
-	add r4, r0, #0
-	bl Save_Pokedex_init
-	add r0, r4, #0
-	pop {r4, pc}
-	thumb_func_end Pokedex_new
-
-	thumb_func_start Pokedex_copy
-Pokedex_copy: ; 0x020293FC
-	ldr r3, _02029404 ; =MI_CpuCopy8
-	mov r2, #0xd
-	lsl r2, r2, #6
-	bx r3
-	.balign 4, 0
-_02029404: .word MI_CpuCopy8
-	thumb_func_end Pokedex_copy
-
-; Was inlined in Diamond, not anymore
-	thumb_func_start DexSpeciesIsInvalid
-DexSpeciesIsInvalid: ; 0x02029408
-	push {r3, lr}
-	cmp r0, #0
-	beq _02029414
-	ldr r1, _02029420 ; =0x000001ED
-	cmp r0, r1
-	bls _0202941C
-_02029414:
-	bl GF_AssertFail
-	mov r0, #1
-	pop {r3, pc}
-_0202941C:
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-_02029420: .word 0x000001ED
-	thumb_func_end DexSpeciesIsInvalid
+	.public DexSpeciesIsInvalid
 
 	thumb_func_start sub_02029424
 sub_02029424: ; 0x02029424
@@ -1389,7 +1341,7 @@ _02029D32:
 SpeciesIsNotNationalMythical: ; 0x02029D50
 	push {r4, r5}
 	mov r3, #0
-	ldr r5, _02029D70 ; =_020F6768
+	ldr r5, _02029D70 ; =sNationalDexMythicals
 	mov r4, #1
 	add r1, r3, #0
 _02029D5A:
@@ -1406,14 +1358,14 @@ _02029D62:
 	pop {r4, r5}
 	bx lr
 	.balign 4, 0
-_02029D70: .word _020F6768
+_02029D70: .word sNationalDexMythicals
 	thumb_func_end SpeciesIsNotNationalMythical
 
 	thumb_func_start SpeciesIsNotJohtoMythical
 SpeciesIsNotJohtoMythical: ; 0x02029D74
 	push {r4, r5}
 	mov r3, #0
-	ldr r5, _02029D94 ; =_020F6764
+	ldr r5, _02029D94 ; =sJohtoDexMythicals
 	mov r4, #1
 	add r1, r3, #0
 _02029D7E:
@@ -1430,7 +1382,7 @@ _02029D86:
 	pop {r4, r5}
 	bx lr
 	.balign 4, 0
-_02029D94: .word _020F6764
+_02029D94: .word sJohtoDexMythicals
 	thumb_func_end SpeciesIsNotJohtoMythical
 
 	thumb_func_start Save_Pokedex_init

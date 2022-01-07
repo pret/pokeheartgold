@@ -13830,7 +13830,7 @@ _021EBF44:
 	bl sub_0200DC4C
 	ldr r0, _021EBFFC ; =0x000006EE
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _021EC000 ; =0x000008E2
 	bl PlaySE
 	mov r0, #0x8e
@@ -14007,7 +14007,7 @@ _021EC126:
 	ldr r0, _021EC1AC ; =0x000008E2
 	mov r1, #0x78
 	mov r7, #0x1f
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0xb8

@@ -550,13 +550,13 @@ _0200614C:
 _02006150: .word 0x0000FFFF
 	thumb_func_end sub_02006134
 
-	thumb_func_start sub_02006154
-sub_02006154: ; 0x02006154
+	thumb_func_start StopSE
+StopSE: ; 0x02006154
 	ldr r3, _02006158 ; =NNS_SndPlayerStopSeqBySeqNo
 	bx r3
 	.balign 4, 0
 _02006158: .word NNS_SndPlayerStopSeqBySeqNo
-	thumb_func_end sub_02006154
+	thumb_func_end StopSE
 
 	thumb_func_start sub_0200615C
 sub_0200615C: ; 0x0200615C

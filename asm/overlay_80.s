@@ -23631,7 +23631,7 @@ ov80_022353A0: ; 0x022353A0
 	push {r3, lr}
 	bl ov80_0222BE10
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov80_022353A0

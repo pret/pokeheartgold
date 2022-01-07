@@ -1644,7 +1644,7 @@ _022386C0:
 	beq _0223872E
 	ldr r0, _0223879C ; =0x00000704
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 _0223872E:
 	mov r0, #0x73
 	lsl r0, r0, #2
@@ -3773,7 +3773,7 @@ _0223987A:
 	beq _02239984
 	ldr r0, _02239988 ; =0x00000704
 	add r1, r6, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r5, #0
 	mov r1, #2
 	bl ov12_0223BD3C
@@ -3855,7 +3855,7 @@ _0223992C:
 	beq _0223994A
 	ldr r0, _02239988 ; =0x00000704
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r5, #0
 	mov r1, #0
 	bl ov12_0223BD3C
@@ -83502,7 +83502,7 @@ _0226007A:
 	blo _022600A0
 	ldr r0, _022600EC ; =0x0000070B
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x64
 	strb r0, [r4]
 	pop {r3, r4, r5, pc}
@@ -83526,7 +83526,7 @@ _022600A8:
 	blo _022600E8
 	ldr r0, _022600EC ; =0x0000070B
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0x64
 	strb r0, [r4]
 	pop {r3, r4, r5, pc}

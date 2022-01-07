@@ -889,7 +889,7 @@ _0223E45E:
 _0223E482:
 	ldr r0, _0223E5C8 ; =0x000005DC
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223E5CC ; =0x00000623
 	bl PlaySE
 	ldrb r0, [r4, #0x1f]
@@ -1219,7 +1219,7 @@ _0223E73A:
 _0223E73C:
 	ldr r0, _0223E7E0 ; =0x000005DC
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223E7E4 ; =0x00000623
 	bl PlaySE
 	add r0, r4, #0

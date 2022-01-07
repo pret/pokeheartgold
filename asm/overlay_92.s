@@ -1287,7 +1287,7 @@ _0225CFA8:
 	bne _0225CFD2
 	ldr r0, _0225D1E8 ; =0x00000589
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r1, #0
 	mov r0, #0x17
 	add r2, r1, #0
@@ -1305,10 +1305,10 @@ _0225CFD8:
 _0225CFE6:
 	ldr r0, _0225D1EC ; =0x0000058B
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0225D1E8 ; =0x00000589
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -9902,7 +9902,7 @@ _02261508:
 	str r2, [r4, r1]
 	ldr r0, _02261568 ; =0x00000589
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 _02261530:
 	add r0, r4, #0
 	add r0, #8

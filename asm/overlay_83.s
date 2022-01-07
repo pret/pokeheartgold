@@ -766,7 +766,7 @@ _0223E3A4:
 	bne _0223E3C8
 	ldr r0, _0223E4F8 ; =0x000005DC
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223E510 ; =0x000005F3
 	bl PlaySE
 	bl _0223EE86
@@ -1218,7 +1218,7 @@ _0223E7C0:
 	bne _0223E7E2
 	ldr r0, _0223E8EC ; =0x000005DC
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	ldr r0, _0223E8F8 ; =0x000005F3
 	bl PlaySE
 	b _0223EE86

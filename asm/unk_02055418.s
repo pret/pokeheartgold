@@ -160,7 +160,7 @@ sub_02055508: ; 0x02055508
 	lsl r1, r4, #0x10
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x10
-	bl sub_02066D10
+	bl Save_LCRNGAdvanceLotoID
 	ldr r0, [r5, #0xc]
 	bl sub_02066D60
 	ldr r0, [r5, #0xc]

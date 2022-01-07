@@ -33690,7 +33690,7 @@ ov49_02268DB0: ; 0x02268DB0
 	beq _02268DC6
 	ldr r0, _02268DC8 ; =0x000005B5
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0
 	strb r0, [r4, #9]
 _02268DC6:

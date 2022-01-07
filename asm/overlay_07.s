@@ -6936,7 +6936,7 @@ _0221F0AC: .word PlaySE
 	thumb_func_start ov07_0221F0B0
 ov07_0221F0B0: ; 0x0221F0B0
 	ldr r1, [r0, #0x18]
-	ldr r3, _0221F0C8 ; =sub_02006154
+	ldr r3, _0221F0C8 ; =StopSE
 	add r1, r1, #4
 	str r1, [r0, #0x18]
 	ldr r2, [r1]
@@ -6947,7 +6947,7 @@ ov07_0221F0B0: ; 0x0221F0B0
 	mov r1, #0
 	bx r3
 	nop
-_0221F0C8: .word sub_02006154
+_0221F0C8: .word StopSE
 	thumb_func_end ov07_0221F0B0
 
 	thumb_func_start ov07_0221F0CC

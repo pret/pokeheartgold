@@ -1338,7 +1338,7 @@ ov106_021E62F4: ; 0x021E62F4
 	mov r1, #0
 	str r1, [r4, r0]
 	ldr r0, _021E639C ; =0x00000868
-	bl sub_02006154
+	bl StopSE
 	ldr r0, [r4, #4]
 	bl ov106_021E6064
 	mov r0, #1

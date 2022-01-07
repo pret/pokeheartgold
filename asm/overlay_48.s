@@ -4816,7 +4816,7 @@ ov48_0225AC34: ; 0x0225AC34
 	str r1, [sp, #4]
 	ldr r0, _0225ACA8 ; =0x000005D8
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #0
 	ldr r7, [sp]
 	str r0, [sp, #8]
@@ -5004,7 +5004,7 @@ _0225AD82:
 _0225ADA6:
 	ldr r0, _0225ADB8 ; =0x000005D8
 	mov r1, #0
-	bl sub_02006154
+	bl StopSE
 	mov r0, #2
 	strh r0, [r5, #0x30]
 	mov r0, #0x80

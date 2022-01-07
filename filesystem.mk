@@ -445,8 +445,6 @@ else
 %.narc: csvdep :=
 endif
 
-include graphics_files_rules.mk
-
 include files/msgdata/msg.mk
 include files/fielddata/script/scr_seq.mk
 
@@ -468,6 +466,8 @@ include files/fielddata/wazaoshie/waza_oshie.mk
 include files/data/mushi/mushi.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
+
+include graphics_files_rules.mk
 
 %.narc: NARC_DEPS = $(wildcard $*/*.bin)
 %.narc: $(NARC_DEPS)
