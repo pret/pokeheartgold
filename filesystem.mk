@@ -465,6 +465,7 @@ include files/fielddata/mapmatrix/map_matrix.mk
 include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
 include files/data/mmodel/mmodel.mk
 include files/fielddata/wazaoshie/waza_oshie.mk
+include files/data/mushi/mushi.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

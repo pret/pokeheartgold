@@ -270,7 +270,7 @@ void BugContest_InitOpponents(BUGCONTEST *bugContest) {
             if (curbin[j].national && !bugContest->national_dex) {
                 continue;
             }
-            if (curbin[j].day < 7 && bugContest->day_of_week != curbin[j].day) {
+            if (curbin[j].day < RTC_WEEK_MAX && bugContest->day_of_week != curbin[j].day) {
                 continue;
             }
             idxs[k++] = j;
@@ -336,7 +336,7 @@ u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon) {
     for (i = 0; i < NUM_STATS; i++) {
         stat_total += GetMonData(pokemon, MON_DATA_HP_IV + i, NULL);
     }
-    score += stat_total * 100 / (31 * 6);
+    score += stat_total * 100 / (31 * NUM_STATS);
     score += GetMonData(pokemon, MON_DATA_HP, NULL) * 100 / GetMonData(pokemon, MON_DATA_MAXHP, NULL);
     return score;
 }

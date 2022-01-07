@@ -1,0 +1,6 @@
+species:u16:constants/species.h
+lvlmin:u8
+lvlmax:u8
+rate:u8
+score:u8
+dummy:pad2
