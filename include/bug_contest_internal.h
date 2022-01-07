@@ -35,23 +35,23 @@ typedef struct BUGCONTESTANT {
 #define BUGCONTESTANT_COUNT     (BUGCONTESTANT_NPC_COUNT+1)
 
 typedef struct BUGCONTEST {
-    HeapID heapId;
-    SAVEDATA *saveData;
-    PARTY *party_bak;
-    PARTY *party_cur;
-    POKEMON *pokemon;
-    u8 lead_mon_idx;
-    u8 party_cur_num;
-    u8 day_of_week;
-    u8 caught_poke:1;
-    u8 national_dex:1;
-    u8 placement:6;
-    u16 sport_balls;
-    u16 prize;
-    u32 elapsed_time;
-    BUGMON encounters[BUGMON_COUNT];
-    BUGCONTESTANT contestants[BUGCONTESTANT_COUNT];
-    u8 ranking[BUGCONTESTANT_COUNT];
+    HeapID heapId;           // Always set to 3
+    SAVEDATA *saveData;      // Pointer to save data
+    PARTY *party_bak;        // Player's party is held for the contest
+    PARTY *party_cur;        // Only the lead Pokemon
+    POKEMON *pokemon;        // The Pokemon you caught in the contest
+    u8 lead_mon_idx;         // Slot number of the Pokemon you battled with
+    u8 party_cur_num;        // Size of the party pre-contest
+    u8 day_of_week;          // Used to choose NPCs and encounters
+    u8 caught_poke:1;        // If you've caught a Pokemon in the contest
+    u8 national_dex:1;       // Used to choose NPCs and encounters
+    u8 placement:6;          // 0: First, 1: Second, 2: Third, 3: Consolation
+    u16 sport_balls;         // Set to 20, decremented on use
+    u16 prize;               // Item ID
+    u32 elapsed_time;        // Used to determine when the contest ends
+    BUGMON encounters[BUGMON_COUNT]; // Which wild Pokemon you can find
+    BUGCONTESTANT contestants[BUGCONTESTANT_COUNT]; // 5 NPCs + player
+    u8 ranking[BUGCONTESTANT_COUNT]; // Index sorting by score at the end
 } BUGCONTEST;
 
 #endif //POKEHEARTGOLD_BUG_CONTEST_INTERNAL_H

@@ -467,6 +467,7 @@ include files/data/mushi/mushi.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 
+# This must come after the above includes
 include graphics_files_rules.mk
 
 %.narc: NARC_DEPS = $(wildcard $*/*.bin)

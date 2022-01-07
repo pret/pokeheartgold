@@ -243,7 +243,7 @@ case "$mode" in
       mkdir -p $(dirname $basefile)
       "${MYDIR}"/ntrextractfile "${baserom}" "${filepath}" >"${basefile}"
     }
-    cmp "$basefile" "$buildfile" || diff -u <(hexdump -Cv "$basefile") <(hexdump -Cv "$buildfile")
+    cmp -s "$basefile" "$buildfile" || diff -u <(hexdump -Cv "$basefile") <(hexdump -Cv "$buildfile")
     exit 0
     ;;
 esac
@@ -252,4 +252,4 @@ esac
 do-objdump () {
   arm-none-eabi-objdump -Drz -bbinary -m$proc $thumb --adjust-vma="$vma" --start-address="$start" --stop-address=$((start+size)) "$1"
 }
-cmp "$basefile" "$buildfile" || diff -u <(do-objdump "$basefile") <(do-objdump "$buildfile")
+cmp -s "$basefile" "$buildfile" || diff -u <(do-objdump "$basefile") <(do-objdump "$buildfile")
