@@ -1,4 +1,5 @@
 #include "pokedex.h"
+#include "pokemon.h"
 #include "constants/species.h"
 
 void sub_020299CC(POKEDEX *pokedex);
@@ -47,11 +48,17 @@ static inline int CheckDex2Flag(const u8 *array, u16 _2flagId) {
     return (array[_2flagId >> 2] >> (2 * (_2flagId % 4u))) & 3;
 }
 
+static inline void SetDex2FlagState(u8 *array, u8 state, u16 _2flagId) {
+    GF_ASSERT(state < 4);
+    array[_2flagId >> 2] &= ~(3 << (2 * (_2flagId % 4u)));
+    array[_2flagId >> 2] |= (state << (2 * (_2flagId % 4u)));
+}
+
 void sub_02029424(POKEDEX *pokeDex, u8 state, u8 num, u16 flagId) {
     if (num == 0) {
-        SetDexFlagState(pokeDex->unk_084[1], state, flagId);
+        SetDexFlagState((u8 *)pokeDex->unk_084[1], state, flagId);
     }
-    SetDexFlagState(pokeDex->unk_084[num], state, flagId);
+    SetDexFlagState((u8 *)pokeDex->unk_084[num], state, flagId);
 }
 
 void sub_0202949C(POKEDEX *pokeDex, u8 state, u8 num, u16 flagId) {
@@ -214,6 +221,106 @@ BOOL sub_020297EC(POKEDEX *pokedex, u32 species, u8 state) {
         }
     }
     return FALSE;
+}
+
+void sub_0202984C(POKEDEX *pokedex, u32 species, u32 state) {
+    int n;
+    u8 *flag_p;
+    GF_ASSERT(species == SPECIES_BURMY || species == SPECIES_WORMADAM || species == SPECIES_PICHU);
+    if (!sub_020297EC(pokedex, species, state)) {
+        flag_p = sub_020294C4(pokedex, species);
+        n = sub_02029790(pokedex, species);
+        if (n < 3) {
+            SetDex2FlagState(flag_p, state, n);
+        }
+    }
+}
+
+void sub_020298C4(u32 *flags, u8 a1, u8 a2) {
+    flags[15] &= ~(15 << (24 + 4 * a2));
+    flags[15] |= (a1 << (24 + 4 * a2));
+}
+
+void sub_020298E0(POKEDEX *pokedex, u8 a1, u8 a2) {
+    GF_ASSERT(a2 < 4);
+    GF_ASSERT(a1 <= 15);
+    if (a2 < 2) {
+        sub_020298C4(pokedex->unk_004, a1, a2);
+    } else {
+        sub_020298C4(pokedex->unk_044, a1, a2 - 2);
+    }
+}
+
+static inline int sub_0202991C_sub(u32 *a0, u8 a1) {
+    return (a0[15] >> (24 + 4 * a1)) & 15;
+}
+
+u32 sub_0202991C(POKEDEX *pokedex, u8 a1) {
+    if (a1 < 2) {
+        return sub_0202991C_sub(pokedex->unk_004, a1);
+    } else {
+        return sub_0202991C_sub(pokedex->unk_044, a1 - 2);
+    }
+}
+
+int sub_02029948(POKEDEX *pokedex) {
+    int i;
+    for (i = 0; i < 4; i++) {
+        if (sub_0202991C(pokedex, i) == 15) {
+            break;
+        }
+    }
+    return i;
+}
+
+BOOL sub_02029968(POKEDEX *pokedex, u32 a1) {
+    int i;
+    u32 val;
+    for (i = 0; i < 4; i++) {
+        val = sub_0202991C(pokedex, i);
+        if (a1 == val) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+void sub_0202998C(POKEDEX *pokedex, u16 species, POKEMON *pokemon) {
+    u8 forme;
+
+    forme = GetMonData(pokemon, MON_DATA_FORME, NULL);
+    if (species == SPECIES_DEOXYS) {
+        if (!sub_02029968(pokedex, forme)) {
+            sub_020298E0(pokedex, forme, sub_02029948(pokedex));
+        }
+    }
+}
+
+void sub_020299CC(POKEDEX *pokedex) {
+    int i;
+    for (i = 0; i < 4; i++) {
+        sub_020298E0(pokedex, 15, i);
+    }
+}
+
+static inline int sub_020299E8_sub(const u32 *arr, u32 idx) {
+    return ((*arr) >> (3 * idx)) & 7;
+}
+
+int sub_020299E8(const POKEDEX *pokedex, u32 species) {
+    int i, n;
+
+    GF_ASSERT(species == SPECIES_ROTOM);
+    if (!Pokedex_CheckMonSeenFlag(pokedex, species)) {
+        return 0;
+    }
+    n = 0;
+    for (i = 0; i < 6; i++, n++) {
+        if (sub_020299E8_sub(&pokedex->unk_338, i) == 7) {
+            break;
+        }
+    }
+    return n;
 }
 
 /*
