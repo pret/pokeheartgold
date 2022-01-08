@@ -5294,7 +5294,7 @@ _02248426:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0202A108
+	bl Pokedex_GetSeenFormeByIdx_Unown
 	cmp r6, r0
 	bne _02248438
 	mov r0, #1
@@ -5360,7 +5360,7 @@ _022484A4:
 	ldr r0, [r0, #0x18]
 	mov r1, #1
 	add r7, r6, #0
-	bl sub_0202A14C
+	bl Pokedex_GetSeenFormeNum_Unown
 	lsl r0, r0, #0x18
 	add r1, r6, #0
 	lsr r0, r0, #0x18

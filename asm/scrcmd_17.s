@@ -20,7 +20,7 @@ ScrCmd_290: ; 0x0204E610
 	bl GetVarPointer
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

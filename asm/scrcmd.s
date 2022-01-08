@@ -10764,7 +10764,7 @@ ScrCmd_NatDexFlagAction: ; 0x02045440
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A53C
+	bl Pokedex_SetNatDexFlag
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
@@ -11208,7 +11208,7 @@ sub_020457D4: ; 0x020457D4
 	bl CreateMon
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202A36C
+	bl Pokedex_SetMonSeenFlag
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x10
@@ -12076,7 +12076,7 @@ ScrCmd_545: ; 0x02045EA8
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0202A14C
+	bl Pokedex_GetSeenFormeNum_Unown
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}

@@ -53,11 +53,11 @@ sub_02068FC8: ; 0x02068FC8
 	str r0, [sp, #0x34]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_02029E84
+	bl Pokedex_CountDexOwned
 	str r0, [sp, #0x38]
 	ldr r0, [r6, #0xc]
 	bl Sav2_Pokedex_get
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	str r0, [sp, #0x3c]
 	add r0, r4, #0
 	bl GameStats_GetStat2

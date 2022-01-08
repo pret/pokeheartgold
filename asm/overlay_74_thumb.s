@@ -1983,7 +1983,7 @@ _02227F28:
 	beq _02227FEA
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0, #8]
-	bl sub_02029E84
+	bl Pokedex_CountDexOwned
 	add r1, r0, #0
 	ldr r0, [sp, #0x28]
 	bl ov74_02227E64
@@ -3210,7 +3210,7 @@ ov74_02228920: ; 0x02228920
 	bl Sav2_PlayerData_GetIGTAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0xc]
 	bl PlayerProfile_CountBadges
@@ -4323,7 +4323,7 @@ _022292B4: ; jump table
 _022292D0:
 	bl ov74_02228D64
 	ldr r0, [r4, #0xc]
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	cmp r0, #0
 	bne _022292EC
 	mov r0, #1

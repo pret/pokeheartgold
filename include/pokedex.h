@@ -6,25 +6,26 @@
 #include "constants/species.h"
 #include "constants/pokemon.h"
 
-#define ROUND_UP(x,n)             (((x)+(n)-1)/(n))
-#define NUM_DEX_FLAG_WORDS        (ROUND_UP(NATIONAL_DEX_COUNT+DEOXYS_FORME_MAX,32))
+#define ROUND_UP(x,n)             (((x)+(n)-1)&~((n)-1))
+#define CEILDIV(x,n)              (((x)+(n)-1)/(n))
+#define NUM_DEX_FLAG_WORDS        (CEILDIV(NATIONAL_DEX_COUNT+DEOXYS_FORME_MAX,32))
 
 typedef struct POKEDEX {
     u32 magic;
     u32 caughtSpecies[NUM_DEX_FLAG_WORDS];
     u32 seenSpecies[NUM_DEX_FLAG_WORDS];
-    u32 unk_084[2][NUM_DEX_FLAG_WORDS];
+    u32 seenGenders[2][NUM_DEX_FLAG_WORDS];
     u32 spindaPersonality;
     u8 shellosFormeOrder;
     u8 gastrodonFormeOrder;
     u8 burmyFormeOrder;
     u8 wormadamFormeOrder;
-    u8 unk_10C[28];
-    u8 unk_128[28];
-    u8 unk_144[0x1F0];
+    u8 unownSeenOrder[28];
+    u8 unownCaughtOrder[28];
+    u8 caughtLanguages[ROUND_UP(NATIONAL_DEX_COUNT,4)];
     u8 unk_334;
-    u8 unk_335;
-    u8 unk_336;
+    u8 enabledInternational;
+    u8 dexEnabled;
     u8 nationalDex;
     u32 rotomFormeOrder;
     u8 shayminFormeOrder;

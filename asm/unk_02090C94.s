@@ -883,8 +883,8 @@ _02091256:
 _02091274: .word sub_020910D8
 	thumb_func_end sub_02091240
 
-	thumb_func_start sub_02091278
-sub_02091278: ; 0x02091278
+	thumb_func_start LanguageToDexFlag
+LanguageToDexFlag: ; 0x02091278
 	ldr r3, _02091290 ; =_02106058
 	mov r2, #0
 _0209127C:
@@ -900,7 +900,7 @@ _0209128A:
 	bx lr
 	nop
 _02091290: .word _02106058
-	thumb_func_end sub_02091278
+	thumb_func_end LanguageToDexFlag
 
 	thumb_func_start sub_02091294
 sub_02091294: ; 0x02091294
@@ -932,7 +932,7 @@ _020912B8:
 	pop {r4, pc}
 _020912C2:
 	mov r0, #2
-	bl sub_02091278
+	bl LanguageToDexFlag
 	pop {r4, pc}
 	nop
 _020912CC: .word _02106060
@@ -961,7 +961,7 @@ _020912EE:
 	cmp r4, #6
 	blo _020912D6
 	mov r0, #2
-	bl sub_02091278
+	bl LanguageToDexFlag
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	pop {r4, pc}

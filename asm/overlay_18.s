@@ -207,7 +207,7 @@ ov18_021E5A50: ; 0x021E5A50
 	add r4, r2, #0
 	add r5, r3, #0
 	ldr r6, [sp, #0x18]
-	bl sub_02091278
+	bl LanguageToDexFlag
 	str r0, [r5]
 	cmp r0, #6
 	blt _021E5A6A
@@ -309,7 +309,7 @@ _021E5B12:
 	ldr r1, _021E5B5C ; =0x000001E7
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	bl SetDexBanksByGiratinaForme
 	b _021E5B38
 _021E5B32:
@@ -2520,7 +2520,7 @@ ov18_021E6D10: ; 0x021E6D10
 	add r4, r1, #0
 	ldr r0, [r0]
 	add r6, r2, #0
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #0
 	bne _021E6D28
 	mov r0, #0
@@ -2530,7 +2530,7 @@ _021E6D28:
 	add r1, r4, #0
 	ldr r0, [r0]
 	add r2, r6, #0
-	bl sub_0202A59C
+	bl Pokedex_HasCaughtMonWithLanguage
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021E6D10
@@ -2573,12 +2573,12 @@ ov18_021E6D68: ; 0x021E6D68
 	str r2, [sp, #8]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #0
 	beq _021E6E34
 	ldr r0, _021E6E38 ; =0x0000185C
 	ldrb r0, [r5, r0]
-	bl sub_02091278
+	bl LanguageToDexFlag
 	lsl r0, r0, #0x10
 	asr r7, r0, #0x10
 	mov r6, #0
@@ -4153,7 +4153,7 @@ ov18_021E7A80: ; 0x021E7A80
 	str r2, [sp, #8]
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #0
 	beq _021E7B5C
 	add r0, r6, #0
@@ -4163,7 +4163,7 @@ ov18_021E7A80: ; 0x021E7A80
 	beq _021E7B5C
 	ldr r0, _021E7B60 ; =0x0000185C
 	ldrb r0, [r6, r0]
-	bl sub_02091278
+	bl LanguageToDexFlag
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	mov r7, #0
@@ -5158,7 +5158,7 @@ _021E82F4:
 _021E82FA:
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0202A798
+	bl Pokedex_GetSeenFormeNum
 	ldr r1, _021E83C8 ; =0x000018C4
 	mov r4, #0
 	strb r0, [r5, r1]
@@ -5174,7 +5174,7 @@ _021E8314:
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
 	add r2, r4, #0
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	mov r1, #0x80
 	orr r1, r0
 	add r0, r5, r4
@@ -5274,7 +5274,7 @@ ov18_021E83D0: ; 0x021E83D0
 	ldrh r1, [r2, r1]
 	ldr r0, [r0]
 	add r2, r4, #0
-	bl sub_0202A0B4
+	bl Pokedex_SpeciesGetLastSeenGender
 	cmp r0, #0
 	beq _021E83F2
 	cmp r0, #1
@@ -16361,7 +16361,7 @@ _021EDE14:
 	add r1, r4, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	add r5, r0, #0
 	cmp r4, #0xac
 	bne _021EDE30
@@ -17473,7 +17473,7 @@ ov18_021EE638: ; 0x021EE638
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #1
 	ldr r0, _021EE6B8 ; =0x00020100
 	bne _021EE682
@@ -18160,7 +18160,7 @@ ov18_021EEBE4: ; 0x021EEBE4
 	bl FillWindowPixelBuffer
 	ldr r0, _021EEC28 ; =0x0000185C
 	ldrb r0, [r6, r0]
-	bl sub_02091278
+	bl LanguageToDexFlag
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -23309,7 +23309,7 @@ ov18_021F1598: ; 0x021F1598
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	add r2, r0, #0
 	ldr r0, [sp, #4]
 	ldrh r1, [r0, r4]
@@ -24121,13 +24121,13 @@ _021F1C3C:
 	add r1, r6, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0202A0B4
+	bl Pokedex_SpeciesGetLastSeenGender
 	add r7, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	add r2, r0, #0
 	cmp r6, #0xac
 	bne _021F1C88
@@ -24328,7 +24328,7 @@ ov18_021F1DE4: ; 0x021F1DE4
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	cmp r0, #1
 	bne _021F1E2E
 _021F1E1A:
@@ -24717,7 +24717,7 @@ _021F213A:
 	add r1, r6, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	add r7, r0, #0
 	cmp r6, #0xac
 	bne _021F2174
@@ -25145,7 +25145,7 @@ ov18_021F24E0: ; 0x021F24E0
 	beq _021F24F6
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #0
 	bne _021F2508
 _021F24F6:
@@ -25160,7 +25160,7 @@ _021F24F6:
 _021F2508:
 	ldr r0, _021F252C ; =0x0000185C
 	ldrb r0, [r5, r0]
-	bl sub_02091278
+	bl LanguageToDexFlag
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -25189,7 +25189,7 @@ ov18_021F2530: ; 0x021F2530
 	beq _021F254C
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #0
 	bne _021F257A
 _021F254C:
@@ -25248,7 +25248,7 @@ _021F258E:
 _021F25B6:
 	ldr r0, _021F2644 ; =0x0000185C
 	ldrb r0, [r6, r0]
-	bl sub_02091278
+	bl LanguageToDexFlag
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #8]
 	bl sub_020912AC
@@ -25768,7 +25768,7 @@ ov18_021F2A2C: ; 0x021F2A2C
 	bne _021F2A60
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #1
 	bne _021F2A60
 	lsl r5, r5, #2
@@ -25811,7 +25811,7 @@ ov18_021F2A84: ; 0x021F2A84
 	bne _021F2AAC
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0202A5E8
+	bl Pokedex_GetInternationalViewFlag
 	cmp r0, #1
 	bne _021F2AAC
 	lsl r0, r4, #2
@@ -28138,7 +28138,7 @@ _021F3CF2:
 	ldrh r1, [r4, r1]
 	ldr r0, [r0]
 	mov r2, #0
-	bl sub_0202A0B4
+	bl Pokedex_SpeciesGetLastSeenGender
 	strb r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 _021F3D0C:

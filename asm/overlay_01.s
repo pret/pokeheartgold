@@ -30422,11 +30422,11 @@ ov01_021F3F50: ; 0x021F3F50
 	bl MapHeader_GetMapSec
 	str r0, [r5, #4]
 	add r0, r7, #0
-	bl sub_0202A5F4
+	bl Pokedex_IsEnabled
 	cmp r0, #0
 	beq _021F3F84
 	add r0, r7, #0
-	bl sub_02029E84
+	bl Pokedex_CountDexOwned
 	b _021F3F86
 _021F3F84:
 	mov r0, #0
@@ -60682,7 +60682,7 @@ ScrCmd_770: ; 0x0220205C
 	bl Sav2_Pokedex_get
 	mov r1, #1
 	add r7, r0, #0
-	bl sub_0202A14C
+	bl Pokedex_GetSeenFormeNum_Unown
 	add r6, r0, #0
 	cmp r6, #0x1a
 	bge _02202094
@@ -60700,7 +60700,7 @@ _0220209C:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0202A108
+	bl Pokedex_GetSeenFormeByIdx_Unown
 	cmp r0, #0x1a
 	beq _022020B0
 	cmp r0, #0x1b

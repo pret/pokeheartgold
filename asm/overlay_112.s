@@ -17768,7 +17768,7 @@ _021EE854:
 	add r1, #0x14
 	ldr r0, [r5, r1]
 	add r1, r4, #0
-	bl sub_0202A36C
+	bl Pokedex_SetMonSeenFlag
 	ldr r0, _021EE8B8 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -18146,7 +18146,7 @@ _021EEB3A:
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A36C
+	bl Pokedex_SetMonSeenFlag
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -18250,7 +18250,7 @@ _021EEBA4:
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202A36C
+	bl Pokedex_SetMonSeenFlag
 	ldr r0, _021EECD0 ; =0x0001E444
 	add r1, r4, #0
 	ldr r0, [r5, r0]

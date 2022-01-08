@@ -3190,7 +3190,7 @@ _021E71F4:
 	bl ov99_021E71DC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0202A640
+	bl Pokedex_GetSeenFormeByIdx
 	pop {r4, pc}
 	nop
 _021E7204: .word 0x000001ED
@@ -3211,7 +3211,7 @@ _021E7218:
 	bl ov99_021E71DC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0202A0B4
+	bl Pokedex_SpeciesGetLastSeenGender
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

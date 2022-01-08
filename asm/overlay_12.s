@@ -9557,7 +9557,7 @@ ov12_0223C288: ; 0x0223C288
 _0223C2C6:
 	ldr r0, [r5, #0x60]
 	add r1, r6, #0
-	bl sub_0202A36C
+	bl Pokedex_SetMonSeenFlag
 _0223C2CE:
 	mov r0, #1
 	tst r0, r4
