@@ -2741,7 +2741,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_483 arg0, arg1
+	.macro get_ev_total arg0, arg1
 	.short 483
 	.short \arg0
 	.short \arg1

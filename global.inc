@@ -2164,7 +2164,7 @@
 .public ScrCmd_MonHasRibbon
 .public ScrCmd_GiveRibbon
 .public ScrCmd_BufferRibbonName
-.public ScrCmd_483
+.public ScrCmd_GetEVTotal
 .public ScrCmd_GetWeekday
 .public ScrCmd_485
 .public ScrCmd_PokeCenAnim

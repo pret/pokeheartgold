@@ -84,7 +84,7 @@ scr_seq_T30R0301_001:
 	gotoif eq, _0199
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0634_T30R0301_00005
-	scrcmd_483 32780, 32768
+	get_ev_total 32780, 32768
 	comparevartovalue VAR_SPECIAL_x800C, 510
 	gotoif lt, _0136
 	npc_msg msg_0634_T30R0301_00006

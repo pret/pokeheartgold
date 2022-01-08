@@ -483,7 +483,7 @@ extern BOOL ScrCmd_479(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MonHasRibbon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveRibbon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferRibbonName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_483(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetEVTotal(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetWeekday(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_485(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Dummy(SCRIPTCONTEXT *ctx);
@@ -1338,7 +1338,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MonHasRibbon,
     ScrCmd_GiveRibbon,
     ScrCmd_BufferRibbonName,
-    ScrCmd_483,
+    ScrCmd_GetEVTotal,
     ScrCmd_GetWeekday,
     ScrCmd_485,
     ScrCmd_Dummy,

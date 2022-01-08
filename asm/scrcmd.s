@@ -532,7 +532,7 @@ gScriptCmdTable:
 	.word ScrCmd_MonHasRibbon                           ; 480
 	.word ScrCmd_GiveRibbon                             ; 481
 	.word ScrCmd_BufferRibbonName                                    ; 482
-	.word ScrCmd_483                                    ; 483
+	.word ScrCmd_GetEVTotal                                    ; 483
 	.word ScrCmd_GetWeekday                             ; 484
 	.word ScrCmd_485                                    ; 485
 	.word ScrCmd_Dummy                                  ; 486
@@ -5484,7 +5484,7 @@ ScrCmd_452: ; 0x02042B1C
 	str r0, [r6]
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_020457D4
+	bl Script_SetMonSeenFlagBySpecies
 	mov r0, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -10788,8 +10788,8 @@ _020454A0:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_NatDexFlagAction
 
-	thumb_func_start ScrCmd_483
-ScrCmd_483: ; 0x020454A4
+	thumb_func_start ScrCmd_GetEVTotal
+ScrCmd_GetEVTotal: ; 0x020454A4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -10856,7 +10856,7 @@ ScrCmd_483: ; 0x020454A4
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_483
+	thumb_func_end ScrCmd_GetEVTotal
 
 	thumb_func_start ScrCmd_GetWeekday
 ScrCmd_GetWeekday: ; 0x02045540
@@ -11184,8 +11184,8 @@ ScrCmd_502: ; 0x020457B8
 	.balign 4, 0
 	thumb_func_end ScrCmd_502
 
-	thumb_func_start sub_020457D4
-sub_020457D4: ; 0x020457D4
+	thumb_func_start Script_SetMonSeenFlagBySpecies
+Script_SetMonSeenFlagBySpecies: ; 0x020457D4
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r0, [r0, #0xc]
@@ -11214,7 +11214,7 @@ sub_020457D4: ; 0x020457D4
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_020457D4
+	thumb_func_end Script_SetMonSeenFlagBySpecies
 
 	thumb_func_start ScrCmd_687
 ScrCmd_687: ; 0x02045818
@@ -11229,7 +11229,7 @@ ScrCmd_687: ; 0x02045818
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_020457D4
+	bl Script_SetMonSeenFlagBySpecies
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0

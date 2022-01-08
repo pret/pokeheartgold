@@ -467,7 +467,7 @@ _0663:
 	apply_movement obj_T01R0301_ookido, _09BC
 _066B:
 	wait_movement
-	scrcmd_452 1, 0
+	scrcmd_452 SPECIES_BULBASAUR, 0
 	play_cry SPECIES_BULBASAUR, 0
 	npc_msg msg_0451_T01R0301_00045
 	wait_cry
@@ -504,7 +504,7 @@ _0711:
 	apply_movement obj_T01R0301_ookido, _09BC
 _0719:
 	wait_movement
-	scrcmd_452 7, 0
+	scrcmd_452 SPECIES_SQUIRTLE, 0
 	play_cry SPECIES_SQUIRTLE, 0
 	npc_msg msg_0451_T01R0301_00044
 	wait_cry
@@ -541,7 +541,7 @@ _07BF:
 	apply_movement obj_T01R0301_ookido, _09BC
 _07C7:
 	wait_movement
-	scrcmd_452 4, 0
+	scrcmd_452 SPECIES_CHARMANDER, 0
 	play_cry SPECIES_CHARMANDER, 0
 	npc_msg msg_0451_T01R0301_00043
 	wait_cry

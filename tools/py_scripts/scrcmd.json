@@ -2807,7 +2807,7 @@
     {
       "name": "scrcmd_452",
       "args": [
-        2,
+        "species",
         2
       ]
     },
@@ -3018,7 +3018,7 @@
       ]
     },
     {
-      "name": "scrcmd_483",
+      "name": "get_ev_total",
       "args": [
         2,
         2

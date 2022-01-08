@@ -65,7 +65,7 @@ scr_seq_T06_013:
 	get_game_version VAR_TEMP_x4004
 	comparevartovalue VAR_TEMP_x4004, 8
 	gotoif eq, _0109
-	scrcmd_452 380, 1
+	scrcmd_452 SPECIES_LATIAS, 1
 	npc_msg msg_0483_T06_00017
 	closemsg
 	create_roamer 2
@@ -81,7 +81,7 @@ scr_seq_T06_013:
 	goto _013F
 	.byte 0x02, 0x00
 _0109:
-	scrcmd_452 381, 0
+	scrcmd_452 SPECIES_LATIOS, 0
 	npc_msg msg_0483_T06_00018
 	closemsg
 	create_roamer 3
