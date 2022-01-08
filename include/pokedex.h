@@ -4,27 +4,29 @@
 #include "save.h"
 #include "heap.h"
 #include "constants/species.h"
+#include "constants/pokemon.h"
 
-#define NUM_DEX_FLAG_WORDS        ((NATIONAL_DEX_COUNT+35)/32)
+#define ROUND_UP(x,n)             (((x)+(n)-1)/(n))
+#define NUM_DEX_FLAG_WORDS        (ROUND_UP(NATIONAL_DEX_COUNT+DEOXYS_FORME_MAX,32))
 
 typedef struct POKEDEX {
     u32 magic;
-    u32 unk_004[NUM_DEX_FLAG_WORDS];
-    u32 unk_044[NUM_DEX_FLAG_WORDS];
+    u32 caughtSpecies[NUM_DEX_FLAG_WORDS];
+    u32 seenSpecies[NUM_DEX_FLAG_WORDS];
     u32 unk_084[2][NUM_DEX_FLAG_WORDS];
     u32 unk_104;
-    u8 unk_108;
-    u8 unk_109;
-    u8 unk_10A;
-    u8 unk_10B;
+    u8 shellosFormeOrder;
+    u8 gastrodonFormeOrder;
+    u8 burmyFormeOrder;
+    u8 wormadamFormeOrder;
     u8 unk_10C[28];
     u8 unk_128[28];
     u8 unk_144[0x1F3];
     u8 unk_337;
-    u32 unk_338;
-    u8 unk_33C;
-    u8 unk_33D;
-    u8 unk_33E;
+    u32 rotomFormeOrder;
+    u8 shayminFormeOrder;
+    u8 giratinaFormeOrder;
+    u8 pichuFormeOrder;
     u8 dummy;
 } POKEDEX; // size=0x340
 
