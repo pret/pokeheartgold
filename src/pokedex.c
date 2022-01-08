@@ -1,13 +1,16 @@
 #include "pokedex.h"
 #include "pokemon.h"
 #include "constants/species.h"
+#include "constants/johto_dex.h"
 
 #define POKEDEX_MAGIC (0xBEEFCAFE)
 #define ASSERT_POKEDEX(pokedex) do { GF_ASSERT((pokedex)->magic == POKEDEX_MAGIC);} while (0)
 
-extern int sub_02091278(u8 a0);
+extern int sub_02091278(u32 a0);
 
 void sub_020299CC(POKEDEX *pokedex);
+u16 *LoadSpeciesToJohtoDexNoLUT(void);
+void sub_0202A5DC(POKEDEX *pokedex);
 
 u32 Save_Pokedex_sizeof(void) {
     return sizeof(POKEDEX);
@@ -76,6 +79,14 @@ static inline void SetDex3Flag(u32 *arr, u32 idx, u32 forme) {
     GF_ASSERT(forme < 7);
     *arr &= ~(7 << (3 * idx));
     *arr |= (forme << (3 * idx));
+}
+
+static inline u8 CheckDexGender(const u8 *arr, u16 species) {
+    if (CheckDexFlag(arr, species)) {
+        return MON_FEMALE;
+    } else {
+        return MON_MALE;
+    }
 }
 
 void sub_02029424(POKEDEX *pokeDex, u8 state, u8 num, u16 flagId) {
@@ -408,7 +419,7 @@ void sub_02029AF0(POKEDEX *pokedex, u16 species, POKEMON *pokemon) {
     }
 }
 
-void sub_02029BE0(POKEDEX *pokedex, u32 species, u8 a2) {
+void sub_02029BE0(POKEDEX *pokedex, u32 species, u32 a2) {
     int shift;
 
     shift = sub_02091278(a2);
@@ -457,39 +468,41 @@ int sub_02029D0C(POKEDEX *pokedex, u32 species, int a2) {
     return CheckDex2Flag(sub_020294C4(pokedex, species), a2);
 }
 
+static const u16 sNationalMythicals[] = {
+    SPECIES_MEW,
+    SPECIES_CELEBI,
+    SPECIES_JIRACHI,
+    SPECIES_DEOXYS,
+    SPECIES_PHIONE,
+    SPECIES_MANAPHY,
+    SPECIES_DARKRAI,
+    SPECIES_SHAYMIN,
+    SPECIES_ARCEUS,
+};
+
 BOOL SpeciesIsNotNationalMythical(u16 species) {
     int i;
     BOOL result;
-    static const u16 mythicals[] = {
-        SPECIES_MEW,
-        SPECIES_CELEBI,
-        SPECIES_JIRACHI,
-        SPECIES_DEOXYS,
-        SPECIES_PHIONE,
-        SPECIES_MANAPHY,
-        SPECIES_DARKRAI,
-        SPECIES_SHAYMIN,
-        SPECIES_ARCEUS,
-    };
 
-    for (i = 0, result = TRUE; i < (s32)NELEMS(mythicals); i++) {
-        if (species == mythicals[i]) {
+    for (i = 0, result = TRUE; i < (s32)NELEMS(sNationalMythicals); i++) {
+        if (species == sNationalMythicals[i]) {
             result = FALSE;
         }
     }
     return result;
 }
 
+static const u16 sJohtoMythicals[] = {
+    SPECIES_MEW,
+    SPECIES_CELEBI,
+};
+
 BOOL SpeciesIsNotJohtoMythical(u16 species) {
     int i;
     BOOL result;
-    static const u16 mythicals[] = {
-        SPECIES_MEW,
-        SPECIES_CELEBI,
-    };
 
-    for (i = 0, result = TRUE; i < (s32)NELEMS(mythicals); i++) {
-        if (species == mythicals[i]) {
+    for (i = 0, result = TRUE; i < (s32)NELEMS(sJohtoMythicals); i++) {
+        if (species == sJohtoMythicals[i]) {
             result = FALSE;
         }
     }
@@ -499,7 +512,7 @@ BOOL SpeciesIsNotJohtoMythical(u16 species) {
 void Save_Pokedex_init(POKEDEX *pokedex) {
     memset(pokedex, 0, sizeof(POKEDEX));
     pokedex->magic = POKEDEX_MAGIC;
-    pokedex->unk_337 = 0;
+    pokedex->nationalDex = 0;
     memset(pokedex->unk_10C, 0xFF, 28);
     memset(pokedex->unk_128, 0xFF, 28);
     pokedex->shellosFormeOrder = 0xFF;
@@ -511,4 +524,436 @@ void Save_Pokedex_init(POKEDEX *pokedex) {
     pokedex->giratinaFormeOrder = 0xFF;
     pokedex->pichuFormeOrder = 0xFF;
     sub_020299CC(pokedex);
+}
+
+u16 Pokedex_CountNationalDexOwned(POKEDEX *pokedex) {
+    int i, n;
+    ASSERT_POKEDEX(pokedex);
+    n = 0;
+    for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
+        if (Pokedex_CheckMonCaughtFlag(pokedex, i) == TRUE) {
+            n++;
+        }
+    }
+    return n;
+}
+
+u16 Pokedex_CountNationalDexSeen(POKEDEX *pokedex) {
+    int i, n;
+    ASSERT_POKEDEX(pokedex);
+    n = 0;
+    for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
+        if (Pokedex_CheckMonSeenFlag(pokedex, i) == TRUE) {
+            n++;
+        }
+    }
+    return n;
+}
+
+u16 sub_02029E84(POKEDEX *pokedex) {
+    if (Pokedex_GetNatDexFlag(pokedex)) {
+        return Pokedex_CountNationalDexOwned(pokedex);
+    } else {
+        return Pokedex_CountJohtoDexOwned(pokedex);
+    }
+}
+
+u16 Pokedex_CountJohtoDexOwned(POKEDEX *pokedex) {
+    u16 *johto_species;
+    u16 i, n;
+    ASSERT_POKEDEX(pokedex);
+    johto_species = LoadSpeciesToJohtoDexNoLUT();
+    n = 0;
+    for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
+        if (Pokedex_CheckMonCaughtFlag(pokedex, i) == TRUE && johto_species[i] != J_SPECIES_NONE) {
+            n++;
+        }
+    }
+    FreeToHeap(johto_species);
+    return n;
+}
+
+u16 Pokedex_CountJohtoDexSeen(POKEDEX *pokedex) {
+    u16 *johto_species;
+    u16 i, n;
+    ASSERT_POKEDEX(pokedex);
+    johto_species = LoadSpeciesToJohtoDexNoLUT();
+    n = 0;
+    for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
+        if (Pokedex_CheckMonSeenFlag(pokedex, i) == TRUE && johto_species[i] != J_SPECIES_NONE) {
+            n++;
+        }
+    }
+    FreeToHeap(johto_species);
+    return n;
+}
+
+BOOL Pokedex_NationalDexIsComplete(POKEDEX *pokedex) {
+    return Pokedex_CountNationalOwned_ExcludeMythical(pokedex) >= (NATIONAL_DEX_COUNT - NELEMS(sNationalMythicals));
+}
+
+BOOL Pokedex_JohtoDexIsComplete(POKEDEX *pokedex) {
+    return Pokedex_CountJohtoOwned_ExcludeMythical(pokedex) >= (J_NUM_SPECIES - NELEMS(sJohtoMythicals));
+}
+
+u16 Pokedex_CountNationalOwned_ExcludeMythical(POKEDEX *pokedex) {
+    int i;
+    u16 n;
+
+    n = 0;
+    for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
+        if (Pokedex_CheckMonCaughtFlag(pokedex, i) == TRUE && SpeciesIsNotNationalMythical(i) == TRUE) {
+            n++;
+        }
+    }
+    return n;
+}
+
+u16 Pokedex_CountJohtoOwned_ExcludeMythical(POKEDEX *pokedex) {
+    u16 i;
+    u16 n;
+    u16 *johto_dex;
+
+    johto_dex = LoadSpeciesToJohtoDexNoLUT();
+    n = 0;
+    for (i = 1; i <= NATIONAL_DEX_COUNT; i++) {
+        if (Pokedex_CheckMonCaughtFlag(pokedex, i) == TRUE && johto_dex[i] != J_SPECIES_NONE && SpeciesIsNotJohtoMythical(i) == TRUE) {
+            n++;
+        }
+    }
+    FreeToHeap(johto_dex);
+    return n;
+}
+
+BOOL Pokedex_CheckMonCaughtFlag(const POKEDEX *pokedex, const u16 species) {
+    ASSERT_POKEDEX(pokedex);
+    if (DexSpeciesIsInvalid(species)) {
+        return FALSE;
+    }
+    if (CheckDexFlag((const u8 *)pokedex->caughtSpecies, species) && CheckDexFlag((const u8 *)pokedex->seenSpecies, species)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+BOOL Pokedex_CheckMonSeenFlag(const POKEDEX *pokedex, const u16 species) {
+    ASSERT_POKEDEX(pokedex);
+    if (DexSpeciesIsInvalid(species)) {
+        return FALSE;
+    }
+    if (CheckDexFlag((const u8 *)pokedex->seenSpecies, species)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+u32 Pokedex_GetSeenSpindaPersonality(POKEDEX *pokedex, u32 arg) {
+    u32 personality;
+    ASSERT_POKEDEX(pokedex);
+    if (arg == 0) {
+        personality = pokedex->spindaPersonality;
+    } else {
+        GF_ASSERT(0);
+    }
+    return personality;
+}
+
+int sub_0202A0B4(POKEDEX *pokedex, u16 species, u32 a2) {
+    ASSERT_POKEDEX(pokedex);
+    if (DexSpeciesIsInvalid(species)) {
+        return -1;
+    }
+    if (CheckDexFlag((u8 *)pokedex->seenSpecies, species)) {
+        return sub_02029C04(pokedex, species, a2);
+    }
+    return -1;
+}
+
+int sub_0202A108(POKEDEX *pokedex, int a1, u32 a2) {
+    ASSERT_POKEDEX(pokedex);
+    if (sub_02029558(pokedex, a2) <= a1) {
+        return -1;
+    }
+    if (a2) {
+        return pokedex->unk_128[a1];
+    } else {
+        return pokedex->unk_10C[a1];
+    }
+}
+
+u32 sub_0202A14C(POKEDEX *pokedex, u32 a1) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_02029558(pokedex, a1);
+}
+
+int sub_0202A16C(POKEDEX *pokedex, int a1) {
+    ASSERT_POKEDEX(pokedex);
+    if (sub_020295D4(pokedex, SPECIES_SHELLOS) <= a1) {
+        return -1;
+    }
+    return sub_02029C7C(pokedex, SPECIES_SHELLOS, a1);
+}
+
+u32 sub_0202A1A4(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_020295D4(pokedex, SPECIES_SHELLOS);
+}
+
+int sub_0202A1C8(POKEDEX *pokedex, int a1) {
+    ASSERT_POKEDEX(pokedex);
+    if (sub_020295D4(pokedex, SPECIES_GASTRODON) <= a1) {
+        return -1;
+    }
+    return sub_02029C7C(pokedex, SPECIES_GASTRODON, a1);
+}
+
+u32 sub_0202A200(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_020295D4(pokedex, SPECIES_GASTRODON);
+}
+
+int sub_0202A224(POKEDEX *pokedex, int a1) {
+    ASSERT_POKEDEX(pokedex);
+    if (sub_02029790(pokedex, SPECIES_BURMY) <= a1) {
+        return -1;
+    }
+    return sub_02029D0C(pokedex, SPECIES_BURMY, a1);
+}
+
+u32 sub_0202A25C(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_02029790(pokedex, SPECIES_BURMY);
+}
+
+int sub_0202A27C(POKEDEX *pokedex, int a1) {
+    ASSERT_POKEDEX(pokedex);
+    if (sub_02029790(pokedex, SPECIES_WORMADAM) <= a1) {
+        return -1;
+    }
+    return sub_02029D0C(pokedex, SPECIES_WORMADAM, a1);
+}
+
+u32 sub_0202A2B4(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_02029790(pokedex, SPECIES_WORMADAM);
+}
+
+int sub_0202A2D8(POKEDEX *pokedex, int a1) {
+    ASSERT_POKEDEX(pokedex);
+    if (sub_02029790(pokedex, SPECIES_PICHU) <= a1) {
+        return -1;
+    }
+    return sub_02029D0C(pokedex, SPECIES_PICHU, a1);
+}
+
+u32 sub_0202A30C(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_02029790(pokedex, SPECIES_PICHU);
+}
+
+u32 sub_0202A32C(POKEDEX *pokedex, u32 a1) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_0202991C(pokedex, a1);
+}
+
+u32 sub_0202A350(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return sub_02029948(pokedex);
+}
+
+void sub_0202A36C(POKEDEX *pokedex, POKEMON *pokemon) {
+    u16 species;
+    u32 personality;
+    u32 gender;
+    u8 seenGender;
+
+    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
+    gender = GetMonGender(pokemon);
+
+    ASSERT_POKEDEX(pokedex);
+    if (!DexSpeciesIsInvalid(species)) {
+        if (!CheckDexFlag((const u8 *)pokedex->seenSpecies, species)) {
+            if (species == SPECIES_SPINDA) {
+                pokedex->spindaPersonality = personality;
+            }
+            sub_0202949C(pokedex, gender, 0, species);
+        } else {
+            seenGender = CheckDexFlag((const u8 *)pokedex->unk_084[0], species);
+            if (seenGender != gender) {
+                sub_0202949C(pokedex, gender, 1, species);
+            }
+        }
+        sub_02029AF0(pokedex, species, pokemon);
+        SetDexFlag((u8 *)pokedex->seenSpecies, species);
+    }
+}
+
+void Pokedex_SetMonCaughtFlag(POKEDEX *pokedex, POKEMON *pokemon) {
+    u16 species;
+    u32 language;
+    u32 personality;
+    u32 gender;
+    u32 gender_ct;
+
+    species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    language = GetMonData(pokemon, MON_DATA_GAME_LANGUAGE, NULL);
+    personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
+    gender = GetMonGender(pokemon);
+
+    ASSERT_POKEDEX(pokedex);
+    if (!DexSpeciesIsInvalid(species)) {
+        if (!CheckDexFlag((const u8 *)pokedex->seenSpecies, species)) {
+            if (species == SPECIES_SPINDA) {
+                pokedex->spindaPersonality = personality;
+            }
+            sub_0202949C(pokedex, gender, 0, species);
+        } else {
+            gender_ct = CheckDexGender((const u8 *)pokedex->unk_084[0], species);
+            if (gender_ct != gender) {
+                sub_0202949C(pokedex, gender, 1, species);
+            }
+        }
+        sub_02029AF0(pokedex, species, pokemon);
+        if (species == SPECIES_UNOWN) {
+            sub_020295A0(pokedex, GetMonUnownLetter(pokemon), 1);
+        }
+        sub_02029BE0(pokedex, species, language);
+        if (language != GAME_LANGUAGE) {
+            sub_0202A5DC(pokedex);
+        }
+        SetDexFlag((u8 *)pokedex->caughtSpecies, species);
+        SetDexFlag((u8 *)pokedex->seenSpecies, species);
+    }
+}
+
+void sub_0202A53C(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    pokedex->nationalDex = TRUE;
+}
+
+BOOL Pokedex_GetNatDexFlag(const POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return pokedex->nationalDex;
+}
+
+void sub_0202A57C(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    pokedex->unk_334 = TRUE;
+}
+
+BOOL sub_0202A59C(POKEDEX *pokedex, u32 a1, u32 a2) {
+    int shift;
+    GF_ASSERT(a2 <= 8);
+    ASSERT_POKEDEX(pokedex);
+    shift = sub_02091278(a2);
+    if (pokedex->unk_144[a1] & (1 << shift)) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+void sub_0202A5DC(POKEDEX *pokedex) {
+    pokedex->unk_335 = TRUE;
+}
+
+BOOL sub_0202A5E8(const POKEDEX *pokedex) {
+    return pokedex->unk_335;
+}
+
+BOOL sub_0202A5F4(const POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    return pokedex->unk_336;
+}
+
+void Pokedex_Enable(POKEDEX *pokedex) {
+    ASSERT_POKEDEX(pokedex);
+    pokedex->unk_336 = TRUE;
+}
+
+POKEDEX *Sav2_Pokedex_get(SAVEDATA *saveData) {
+    return SavArray_get(saveData, SAVE_POKEDEX);
+}
+
+int sub_0202A640(POKEDEX *pokedex, int species, int forme) {
+    ASSERT_POKEDEX(pokedex);
+    switch (species) {
+    case SPECIES_UNOWN:
+        if (forme < sub_0202A14C(pokedex, 0)) {
+            return sub_0202A108(pokedex, forme, 0);
+        }
+        break;
+    case SPECIES_SHELLOS:
+        if (forme < sub_0202A1A4(pokedex)) {
+            return sub_0202A16C(pokedex, forme);
+        }
+        break;
+    case SPECIES_GASTRODON:
+        if (forme < sub_0202A200(pokedex)) {
+            return sub_0202A1C8(pokedex, forme);
+        }
+        break;
+    case SPECIES_BURMY:
+        if (forme < sub_0202A25C(pokedex)) {
+            return sub_0202A224(pokedex, forme);
+        }
+        break;
+    case SPECIES_WORMADAM:
+        if (forme < sub_0202A2B4(pokedex)) {
+            return sub_0202A27C(pokedex, forme);
+        }
+        break;
+    case SPECIES_PICHU:
+        if (forme < sub_0202A30C(pokedex)) {
+            return sub_0202A2D8(pokedex, forme);
+        }
+        break;
+    case SPECIES_DEOXYS:
+        if (forme < sub_0202A350(pokedex)) {
+            return sub_0202A32C(pokedex, forme);
+        }
+        break;
+    case SPECIES_SHAYMIN:
+    case SPECIES_GIRATINA:
+        if (forme < sub_020295D4(pokedex, species)) {
+            return sub_02029C7C(pokedex, species, forme);
+        }
+        break;
+    case SPECIES_ROTOM:
+        if (forme < sub_020299E8(pokedex, SPECIES_ROTOM)) {
+            return sub_02029CDC(pokedex, SPECIES_ROTOM, forme);
+        }
+        break;
+    }
+    return 0;
+}
+
+int sub_0202A798(POKEDEX *pokedex, int species) {
+    ASSERT_POKEDEX(pokedex);
+    switch (species) {
+    case SPECIES_UNOWN:
+        return sub_0202A14C(pokedex, 0);
+    case SPECIES_SHELLOS:
+        return sub_0202A1A4(pokedex);
+    case SPECIES_GASTRODON:
+        return sub_0202A200(pokedex);
+    case SPECIES_BURMY:
+        return sub_0202A25C(pokedex);
+    case SPECIES_WORMADAM:
+        return sub_0202A2B4(pokedex);
+    case SPECIES_PICHU:
+        return sub_0202A30C(pokedex);
+    case SPECIES_DEOXYS:
+        return sub_0202A350(pokedex);
+    case SPECIES_SHAYMIN:
+        return sub_020295D4(pokedex, SPECIES_SHAYMIN);
+    case SPECIES_GIRATINA:
+        return sub_020295D4(pokedex, SPECIES_GIRATINA);
+    case SPECIES_ROTOM:
+        return sub_020299E8(pokedex, SPECIES_ROTOM);
+    }
+    return 1;
 }

@@ -9,7 +9,7 @@
 #define SAVE_BAG                  3
 #define SAVE_FLAGS                4
 #define SAVE_UNK_5                5
-#define SAVE_UNK_6                6
+#define SAVE_POKEDEX              6
 #define SAVE_DAYCARE              7
 #define SAVE_UNK_8                8
 #define SAVE_UNK_9                9

@@ -14,15 +14,18 @@ typedef struct POKEDEX {
     u32 caughtSpecies[NUM_DEX_FLAG_WORDS];
     u32 seenSpecies[NUM_DEX_FLAG_WORDS];
     u32 unk_084[2][NUM_DEX_FLAG_WORDS];
-    u32 unk_104;
+    u32 spindaPersonality;
     u8 shellosFormeOrder;
     u8 gastrodonFormeOrder;
     u8 burmyFormeOrder;
     u8 wormadamFormeOrder;
     u8 unk_10C[28];
     u8 unk_128[28];
-    u8 unk_144[0x1F3];
-    u8 unk_337;
+    u8 unk_144[0x1F0];
+    u8 unk_334;
+    u8 unk_335;
+    u8 unk_336;
+    u8 nationalDex;
     u32 rotomFormeOrder;
     u8 shayminFormeOrder;
     u8 giratinaFormeOrder;
@@ -35,6 +38,13 @@ POKEDEX *Pokedex_new(HeapID heapId);
 void Save_Pokedex_init(POKEDEX *pokedex);
 POKEDEX *Sav2_Pokedex_get(SAVEDATA *saveData);
 BOOL Pokedex_GetNatDexFlag(const POKEDEX *pokedex);
+BOOL Pokedex_CheckMonCaughtFlag(const POKEDEX *pokedex, u16 species);
 BOOL Pokedex_CheckMonSeenFlag(const POKEDEX *pokedex, u16 species);
+u16 Pokedex_CountNationalDexOwned(POKEDEX *pokedex);
+u16 Pokedex_CountNationalOwned_ExcludeMythical(POKEDEX *pokedex);
+u16 Pokedex_CountNationalDexSeen(POKEDEX *pokedex);
+u16 Pokedex_CountJohtoDexOwned(POKEDEX *pokedex);
+u16 Pokedex_CountJohtoOwned_ExcludeMythical(POKEDEX *pokedex);
+u16 Pokedex_CountJohtoDexSeen(POKEDEX *pokedex);
 
 #endif //POKEHEARTGOLD_POKEDEX_H
