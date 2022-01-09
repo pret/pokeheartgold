@@ -45,7 +45,10 @@ clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
 
+.PHONY: main_lz
+
 main: $(SBIN) $(ELF)
+main_lz: $(SBIN_LZ)
 sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
@@ -65,7 +68,7 @@ $(BUILD_DIR)/component.files: main ;
 
 $(HEADER_TEMPLATE): ;
 
-$(ROM): $(ROMSPEC) $(NITROFS_FILES) $(SBIN_LZ) sub $(BANNER)
+$(ROM): $(ROMSPEC) filesystem main_lz sub $(BANNER)
 	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
