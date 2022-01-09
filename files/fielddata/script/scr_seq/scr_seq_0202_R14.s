@@ -404,24 +404,12 @@ _057C:
 	step_end
 scr_seq_R14_003:
 	buffer_players_name 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0351_R14_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0351_R14_00007
 	end
 
 scr_seq_R14_004:
 	buffer_players_name 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0351_R14_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0351_R14_00007
 	end
 
 scr_seq_R14_005:

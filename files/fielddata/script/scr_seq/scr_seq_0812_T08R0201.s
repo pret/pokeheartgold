@@ -335,44 +335,20 @@ _0444:
 
 scr_seq_T08R0201_005:
 	buffer_players_name 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0516_T08R0201_00044
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0516_T08R0201_00044
 	end
 
 scr_seq_T08R0201_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0516_T08R0201_00045
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0516_T08R0201_00045
 	end
 
 scr_seq_T08R0201_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0516_T08R0201_00033
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0516_T08R0201_00033
 	end
 
 scr_seq_T08R0201_008:
 	call _0062
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0516_T08R0201_00025
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0516_T08R0201_00025
 	end
 
 scr_seq_T08R0201_009:

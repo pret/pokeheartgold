@@ -328,23 +328,11 @@ _0444:
 	step 0, 1
 	step_end
 scr_seq_D32R0102_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0104_D32R0102_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0104_D32R0102_00007
 	end
 
 scr_seq_D32R0102_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0104_D32R0102_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0104_D32R0102_00008
 	end
 
 scr_seq_D32R0102_008:

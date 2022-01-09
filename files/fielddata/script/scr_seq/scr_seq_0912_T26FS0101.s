@@ -34,22 +34,10 @@ scr_seq_T26FS0101_003:
 	end
 
 scr_seq_T26FS0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0605_T26FS0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0605_T26FS0101_00000
 	end
 
 scr_seq_T26FS0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0605_T26FS0101_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0605_T26FS0101_00001
 	end
 	.balign 4, 0

@@ -287,13 +287,7 @@ scr_seq_T23R0501_003:
 	end
 
 scr_seq_T23R0501_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0571_T23R0501_00021
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0571_T23R0501_00021
 	end
 
 scr_seq_T23R0501_006:

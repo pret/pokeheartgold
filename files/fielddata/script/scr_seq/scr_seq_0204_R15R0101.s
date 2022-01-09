@@ -9,12 +9,6 @@
 	scrdef_end
 
 scr_seq_R15R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0353_R15R0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0353_R15R0101_00000
 	end
 	.balign 4, 0

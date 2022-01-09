@@ -589,12 +589,6 @@ _08A4:
 	end
 
 scr_seq_T11R0702_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0538_T11R0702_00035
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0538_T11R0702_00035
 	end
 	.balign 4, 0

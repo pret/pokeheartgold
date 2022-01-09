@@ -190,213 +190,87 @@ _028C:
 	step 1, 1
 	step_end
 scr_seq_D32_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00000
 	end
 
 scr_seq_D32_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00001
 	end
 
 scr_seq_D32_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00002
 	end
 
 scr_seq_D32_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00003
 	end
 
 scr_seq_D32_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00004
 	end
 
 scr_seq_D32_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00005
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00005
 	end
 
 scr_seq_D32_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00006
 	end
 
 scr_seq_D32_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00007
 	end
 
 scr_seq_D32_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00008
 	end
 
 scr_seq_D32_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00009
 	end
 
 scr_seq_D32_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00010
 	end
 
 scr_seq_D32_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00011
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00011
 	end
 
 scr_seq_D32_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00012
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00012
 	end
 
 scr_seq_D32_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00013
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00013
 	end
 
 scr_seq_D32_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00014
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00014
 	end
 
 scr_seq_D32_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00015
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00015
 	end
 
 scr_seq_D32_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00016
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00016
 	end
 
 scr_seq_D32_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00017
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00017
 	end
 
 scr_seq_D32_019:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00018
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00018
 	end
 
 scr_seq_D32_020:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00019
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00019
 	end
 
 scr_seq_D32_021:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0100_D32_00020
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0100_D32_00020
 	end
 
 scr_seq_D32_022:

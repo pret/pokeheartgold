@@ -33,12 +33,6 @@ _0058:
 	end
 
 scr_seq_R02R0301_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0323_R02R0301_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0323_R02R0301_00003
 	end
 	.balign 4, 0

@@ -14,43 +14,19 @@
 	scrdef_end
 
 scr_seq_W19_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0740_W19_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0740_W19_00000
 	end
 
 scr_seq_W19_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0740_W19_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0740_W19_00002
 	end
 
 scr_seq_W19_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0740_W19_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0740_W19_00001
 	end
 
 scr_seq_W19_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0740_W19_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0740_W19_00003
 	end
 
 scr_seq_W19_004:

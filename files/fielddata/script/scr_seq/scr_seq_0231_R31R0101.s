@@ -329,12 +329,6 @@ _0474:
 	step 69, 1
 	step_end
 scr_seq_R31R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0379_R31R0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0379_R31R0101_00000
 	end
 	.balign 4, 0

@@ -510,33 +510,15 @@ _06AC:
 	step 0, 1
 	step_end
 scr_seq_T06_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0483_T06_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0483_T06_00000
 	end
 
 scr_seq_T06_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0483_T06_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0483_T06_00003
 	end
 
 scr_seq_T06_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0483_T06_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0483_T06_00001
 	end
 
 scr_seq_T06_004:

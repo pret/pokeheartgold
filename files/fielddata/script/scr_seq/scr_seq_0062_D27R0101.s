@@ -15,22 +15,10 @@ scr_seq_D27R0101_002:
 	end
 
 scr_seq_D27R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0093_D27R0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0093_D27R0101_00000
 	end
 
 scr_seq_D27R0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0093_D27R0101_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0093_D27R0101_00001
 	end
 	.balign 4, 0

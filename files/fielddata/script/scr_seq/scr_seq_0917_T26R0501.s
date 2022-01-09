@@ -11,23 +11,11 @@
 	scrdef_end
 
 scr_seq_T26R0501_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0609_T26R0501_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0609_T26R0501_00000
 	end
 
 scr_seq_T26R0501_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0609_T26R0501_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0609_T26R0501_00001
 	end
 
 scr_seq_T26R0501_002:

@@ -354,33 +354,15 @@ _06D4:
 	step 2, 1
 	step_end
 scr_seq_T08_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0512_T08_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0512_T08_00000
 	end
 
 scr_seq_T08_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0512_T08_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0512_T08_00001
 	end
 
 scr_seq_T08_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0512_T08_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0512_T08_00002
 	end
 
 scr_seq_T08_009:

@@ -268,6 +268,15 @@ class NormalScriptParser(ScriptParserBase):
                 r'\tchecktrainerflag (\w+)\n'
                 r'\t(goto|call)_if FALSE, (\w+)\n'
             ), r'\t\2_if_not_defeated \1, \3\n'),
+            (re.compile(
+                r'\tplay_se SEQ_SE_DP_SELECT\n'
+                r'\tlockall\n'
+                r'\tfaceplayer\n'
+                r'\tnpc_msg (\w+)\n'
+                r'\twaitbutton\n'
+                r'\tclosemsg\n'
+                r'\treleaseall\n'
+            ), r'\tsimple_npc_msg \1\n'),
         ]
 
     def get_object(self, id_: int):

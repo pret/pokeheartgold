@@ -236,23 +236,11 @@ _031C:
 scr_seq_D35R0101_003:
 	compare VAR_UNK_40A8, 2
 	goto_if_ge _0347
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0111_D35R0101_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0111_D35R0101_00002
 	end
 
 _0347:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0111_D35R0101_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0111_D35R0101_00003
 	end
 
 scr_seq_D35R0101_005:

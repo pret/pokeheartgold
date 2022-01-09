@@ -72,13 +72,7 @@ _0106:
 	end
 
 scr_seq_T11R0701_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0537_T11R0701_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0537_T11R0701_00000
 	end
 
 scr_seq_T11R0701_001:

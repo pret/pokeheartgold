@@ -51,13 +51,7 @@ scr_seq_0166_004:
 	end
 	.byte 0x77, 0x01, 0xff, 0x00, 0x1b, 0x00
 scr_seq_0166_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0043_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0043_00000
 	end
 
 scr_seq_0166_006:

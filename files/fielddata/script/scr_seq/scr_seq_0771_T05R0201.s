@@ -13,58 +13,28 @@
 	scrdef_end
 
 scr_seq_T05R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0478_T05R0201_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0478_T05R0201_00000
 	end
 
 scr_seq_T05R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0478_T05R0201_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0478_T05R0201_00001
 	end
 
 scr_seq_T05R0201_002:
 	play_cry SPECIES_PSYDUCK, 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0478_T05R0201_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0478_T05R0201_00002
 	wait_cry
 	end
 
 scr_seq_T05R0201_003:
 	play_cry SPECIES_NIDORINO, 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0478_T05R0201_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0478_T05R0201_00003
 	wait_cry
 	end
 
 scr_seq_T05R0201_004:
 	play_cry SPECIES_PIDGEY, 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0478_T05R0201_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0478_T05R0201_00004
 	wait_cry
 	end
 	.balign 4, 0

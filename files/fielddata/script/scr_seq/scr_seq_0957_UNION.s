@@ -746,13 +746,7 @@ _0BDA:
 	return
 
 scr_seq_UNION_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0738_UNION_00207
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0738_UNION_00207
 	end
 
 scr_seq_UNION_006:

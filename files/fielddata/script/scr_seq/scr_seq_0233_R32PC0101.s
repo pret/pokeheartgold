@@ -101,12 +101,6 @@ _0121:
 	end
 
 scr_seq_R32PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0381_R32PC0101_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0381_R32PC0101_00006
 	end
 	.balign 4, 0

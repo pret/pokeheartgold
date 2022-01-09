@@ -10,22 +10,10 @@
 	scrdef_end
 
 scr_seq_T25R0801_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0590_T25R0801_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0590_T25R0801_00000
 	end
 
 scr_seq_T25R0801_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0590_T25R0801_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0590_T25R0801_00001
 	end
 	.balign 4, 0

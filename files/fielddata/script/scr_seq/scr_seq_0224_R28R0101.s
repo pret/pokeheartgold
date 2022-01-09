@@ -110,13 +110,7 @@ _0164:
 	step_end
 scr_seq_R28R0101_001:
 	play_cry SPECIES_FEAROW, 0
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0372_R28R0101_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0372_R28R0101_00003
 	wait_cry
 	end
 	.balign 4, 0

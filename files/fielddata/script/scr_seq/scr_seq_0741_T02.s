@@ -76,23 +76,11 @@ _00DA:
 	end
 
 scr_seq_T02_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0452_T02_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0452_T02_00003
 	end
 
 scr_seq_T02_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0452_T02_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0452_T02_00004
 	end
 
 scr_seq_T02_002:
@@ -241,13 +229,7 @@ _0304:
 	step 1, 1
 	step_end
 scr_seq_T02_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0452_T02_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0452_T02_00007
 	end
 
 scr_seq_T02_004:

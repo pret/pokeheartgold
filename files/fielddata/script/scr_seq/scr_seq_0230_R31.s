@@ -229,23 +229,11 @@ scr_seq_R31_003:
 	end
 
 scr_seq_R31_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0378_R31_00012
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0378_R31_00012
 	end
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60
 	.byte 0x00, 0x68, 0x00, 0x2d, 0x00, 0x01, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 scr_seq_R31_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0378_R31_00011
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0378_R31_00011
 	end
 	.balign 4, 0

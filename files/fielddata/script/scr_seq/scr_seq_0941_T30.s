@@ -156,13 +156,7 @@ _021D:
 	end
 
 scr_seq_T30_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0629_T30_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0629_T30_00000
 	end
 
 scr_seq_T30_001:
@@ -184,23 +178,11 @@ _0262:
 	end
 
 scr_seq_T30_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0629_T30_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0629_T30_00003
 	end
 
 scr_seq_T30_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0629_T30_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0629_T30_00004
 	end
 
 scr_seq_T30_004:
@@ -370,32 +352,14 @@ scr_seq_T30_012:
 	end
 
 scr_seq_T30_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0629_T30_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0629_T30_00007
 	end
 
 scr_seq_T30_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0629_T30_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0629_T30_00008
 	end
 
 scr_seq_T30_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0629_T30_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0629_T30_00009
 	end
 	.balign 4, 0

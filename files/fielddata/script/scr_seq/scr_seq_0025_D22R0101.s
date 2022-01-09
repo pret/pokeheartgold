@@ -119,113 +119,47 @@ _01C9:
 	end
 
 scr_seq_D22R0101_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00045
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00045
 	end
 
 scr_seq_D22R0101_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00048
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00048
 	end
 
 scr_seq_D22R0101_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00051
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00051
 	end
 
 scr_seq_D22R0101_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00054
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00054
 	end
 
 scr_seq_D22R0101_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00057
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00057
 	end
 
 scr_seq_D22R0101_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00060
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00060
 	end
 
 scr_seq_D22R0101_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00063
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00063
 	end
 
 scr_seq_D22R0101_019:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00066
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00066
 	end
 
 scr_seq_D22R0101_020:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00069
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00069
 	end
 
 scr_seq_D22R0101_021:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00072
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00072
 	end
 
 scr_seq_D22R0101_022:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00042
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00042
 	end
 
 scr_seq_D22R0101_026:
@@ -532,63 +466,27 @@ scr_seq_D22R0101_003:
 	end
 
 scr_seq_D22R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00000
 	end
 
 scr_seq_D22R0101_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00001
 	end
 
 scr_seq_D22R0101_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00005
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00005
 	end
 
 scr_seq_D22R0101_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00006
 	end
 
 scr_seq_D22R0101_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00009
 	end
 
 scr_seq_D22R0101_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0062_D22R0101_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0062_D22R0101_00007
 	end
 
 scr_seq_D22R0101_010:

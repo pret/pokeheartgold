@@ -10,13 +10,7 @@
 	scrdef_end
 
 scr_seq_T28R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0625_T28R0201_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0625_T28R0201_00000
 	end
 
 scr_seq_T28R0201_001:

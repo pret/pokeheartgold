@@ -77,13 +77,7 @@ _00E0:
 	end
 
 _00E6:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0607_T26PC0101_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0607_T26PC0101_00006
 	end
 	.byte 0x00, 0x00, 0x00
 
@@ -95,32 +89,14 @@ _0104:
 	step 33, 1
 	step_end
 scr_seq_T26PC0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0607_T26PC0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0607_T26PC0101_00000
 	end
 
 scr_seq_T26PC0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0607_T26PC0101_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0607_T26PC0101_00001
 	end
 
 scr_seq_T26PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0607_T26PC0101_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0607_T26PC0101_00002
 	end
 	.balign 4, 0

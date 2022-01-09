@@ -254,13 +254,7 @@ _0358:
 	step 32, 1
 	step_end
 scr_seq_W40_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0744_W40_00018
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0744_W40_00018
 	end
 
 scr_seq_W40_002:
@@ -280,42 +274,18 @@ scr_seq_W40_009:
 	end
 
 scr_seq_W40_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0744_W40_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0744_W40_00000
 	end
 
 scr_seq_W40_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0744_W40_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0744_W40_00006
 	end
 
 scr_seq_W40_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0744_W40_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0744_W40_00003
 	end
 
 scr_seq_W40_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0744_W40_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0744_W40_00009
 	end
 	.balign 4, 0

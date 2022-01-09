@@ -109,12 +109,6 @@ scr_seq_0955_018:
 	goto _0159
 
 _0159:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0732_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0732_00002
 	end
 	.balign 4, 0

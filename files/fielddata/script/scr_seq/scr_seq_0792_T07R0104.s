@@ -186,13 +186,7 @@ _0241:
 scr_seq_T07R0104_006:
 	compare VAR_TEMP_x4004, 1
 	goto_if_ne _00CC
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0497_T07R0104_00015
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0497_T07R0104_00015
 	end
 
 
@@ -219,23 +213,11 @@ scr_seq_T07R0104_000:
 	end
 
 scr_seq_T07R0104_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0497_T07R0104_00016
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0497_T07R0104_00016
 	end
 
 scr_seq_T07R0104_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0497_T07R0104_00017
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0497_T07R0104_00017
 	end
 
 scr_seq_T07R0104_003:

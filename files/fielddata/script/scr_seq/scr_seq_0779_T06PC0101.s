@@ -35,22 +35,10 @@ _003C:
 	end
 
 scr_seq_T06PC0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0486_T06PC0101_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0486_T06PC0101_00002
 	end
 
 scr_seq_T06PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0486_T06PC0101_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0486_T06PC0101_00003
 	end
 	.balign 4, 0

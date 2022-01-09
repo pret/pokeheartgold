@@ -243,13 +243,7 @@ _02FD:
 	end
 
 scr_seq_P01R0301_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0259_P01R0301_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0259_P01R0301_00010
 	end
 
 scr_seq_P01R0301_003:

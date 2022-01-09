@@ -20,93 +20,39 @@
 	scrdef_end
 
 scr_seq_T25R1203_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00000
 	end
 
 scr_seq_T25R1203_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00001
 	end
 
 scr_seq_T25R1203_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00002
 	end
 
 scr_seq_T25R1203_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00003
 	end
 
 scr_seq_T25R1203_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00004
 	end
 
 scr_seq_T25R1203_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00005
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00005
 	end
 
 scr_seq_T25R1203_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00006
 	end
 
 scr_seq_T25R1203_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00007
 	end
 
 scr_seq_T25R1203_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0602_T25R1203_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0602_T25R1203_00008
 	end
 
 scr_seq_T25R1203_009:

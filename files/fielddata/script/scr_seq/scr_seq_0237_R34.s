@@ -435,13 +435,7 @@ _05E0:
 	step 69, 1
 	step_end
 scr_seq_R34_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0384_R34_00018
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0384_R34_00018
 	end
 
 scr_seq_R34_012:

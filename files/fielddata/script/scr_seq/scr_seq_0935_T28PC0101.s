@@ -17,32 +17,14 @@ scr_seq_T28PC0101_000:
 	end
 
 scr_seq_T28PC0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0624_T28PC0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0624_T28PC0101_00000
 	end
 
 scr_seq_T28PC0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0624_T28PC0101_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0624_T28PC0101_00001
 	end
 
 scr_seq_T28PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0624_T28PC0101_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0624_T28PC0101_00002
 	end
 	.balign 4, 0

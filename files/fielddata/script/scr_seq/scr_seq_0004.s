@@ -956,12 +956,6 @@ _0F3F:
 	return
 
 scr_seq_0004_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0046_00149
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0046_00149
 	end
 	.balign 4, 0

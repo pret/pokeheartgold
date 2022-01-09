@@ -133,13 +133,7 @@ scr_seq_D37R0103_000:
 	end
 
 _03C9:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0118_D37R0103_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0118_D37R0103_00001
 	end
 
 scr_seq_D37R0103_001:

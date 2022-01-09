@@ -141,13 +141,7 @@ _01AA:
 	end
 
 scr_seq_T22GYM0101_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0558_T22GYM0101_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0558_T22GYM0101_00006
 	end
 
 scr_seq_T22GYM0101_003:

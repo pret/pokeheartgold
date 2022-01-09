@@ -59,13 +59,7 @@ _009E:
 	end
 
 scr_seq_T06R0301_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0488_T06R0301_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0488_T06R0301_00008
 	end
 
 scr_seq_T06R0301_002:
@@ -112,13 +106,7 @@ _0141:
 	end
 
 scr_seq_T06R0301_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0488_T06R0301_00014
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0488_T06R0301_00014
 	end
 
 scr_seq_T06R0301_004:
@@ -135,35 +123,17 @@ scr_seq_T06R0301_004:
 
 scr_seq_T06R0301_007:
 	goto_if_set FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM, _0198
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0488_T06R0301_00015
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0488_T06R0301_00015
 	end
 
 _0198:
 	end
 
 scr_seq_T06R0301_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0488_T06R0301_00017
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0488_T06R0301_00017
 	end
 
 scr_seq_T06R0301_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0488_T06R0301_00018
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0488_T06R0301_00018
 	end
 	.balign 4, 0

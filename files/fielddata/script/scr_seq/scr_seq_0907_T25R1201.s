@@ -273,83 +273,35 @@ _03C4:
 	end
 
 scr_seq_T25R1201_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00010
 	end
 
 scr_seq_T25R1201_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00011
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00011
 	end
 
 scr_seq_T25R1201_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00012
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00012
 	end
 
 scr_seq_T25R1201_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00013
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00013
 	end
 
 scr_seq_T25R1201_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00014
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00014
 	end
 
 scr_seq_T25R1201_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00015
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00015
 	end
 
 scr_seq_T25R1201_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00016
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00016
 	end
 
 scr_seq_T25R1201_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00017
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00017
 	end
 
 scr_seq_T25R1201_011:
@@ -435,23 +387,11 @@ _0593:
 	goto _0517
 	.byte 0x02, 0x00
 scr_seq_T25R1201_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00027
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00027
 	end
 
 scr_seq_T25R1201_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0600_T25R1201_00028
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0600_T25R1201_00028
 	end
 
 scr_seq_T25R1201_015:

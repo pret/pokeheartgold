@@ -315,22 +315,10 @@ _03F4:
 	step 32, 1
 	step_end
 scr_seq_P01R0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0255_P01R0101_00014
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0255_P01R0101_00014
 	end
 
 scr_seq_P01R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0255_P01R0101_00015
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0255_P01R0101_00015
 	end
 	.balign 4, 0

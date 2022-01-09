@@ -1207,33 +1207,15 @@ scr_seq_0003_016:
 	end
 
 scr_seq_0003_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0040_00054
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0040_00054
 	end
 
 scr_seq_0003_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0040_00057
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0040_00057
 	end
 
 scr_seq_0003_019:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0040_00058
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0040_00058
 	end
 
 scr_seq_0003_020:
@@ -1350,13 +1332,7 @@ _1277:
 	goto _126D
 	.byte 0x02, 0x00
 scr_seq_0003_025:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0040_00068
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0040_00068
 	end
 
 scr_seq_0003_027:

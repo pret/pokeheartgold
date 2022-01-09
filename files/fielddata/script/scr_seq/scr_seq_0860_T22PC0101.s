@@ -216,32 +216,14 @@ _0333:
 	end
 
 scr_seq_T22PC0101_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0559_T22PC0101_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0559_T22PC0101_00009
 	end
 
 scr_seq_T22PC0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0559_T22PC0101_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0559_T22PC0101_00010
 	end
 
 scr_seq_T22PC0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0559_T22PC0101_00011
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0559_T22PC0101_00011
 	end
 	.balign 4, 0

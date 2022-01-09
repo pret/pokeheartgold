@@ -21,12 +21,6 @@ scr_seq_T20R0102_000:
 	end
 
 scr_seq_T20R0102_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0544_T20R0102_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0544_T20R0102_00002
 	end
 	.balign 4, 0

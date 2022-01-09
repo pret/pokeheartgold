@@ -48,12 +48,6 @@ scr_seq_R34R0201_001:
 	end
 
 scr_seq_R34R0201_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0386_R34R0201_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0386_R34R0201_00004
 	end
 	.balign 4, 0

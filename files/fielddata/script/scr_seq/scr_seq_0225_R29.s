@@ -734,32 +734,14 @@ scr_seq_R29_005:
 	end
 
 scr_seq_R29_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0373_R29_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0373_R29_00009
 	end
 
 scr_seq_R29_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0373_R29_00011
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0373_R29_00011
 	end
 
 scr_seq_R29_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0373_R29_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0373_R29_00010
 	end
 	.balign 4, 0

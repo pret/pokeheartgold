@@ -16,53 +16,23 @@
 	scrdef_end
 
 scr_seq_T02R0301_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0457_T02R0301_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0457_T02R0301_00000
 	end
 
 scr_seq_T02R0301_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0457_T02R0301_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0457_T02R0301_00001
 	end
 
 scr_seq_T02R0301_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0457_T02R0301_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0457_T02R0301_00002
 	end
 
 scr_seq_T02R0301_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0457_T02R0301_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0457_T02R0301_00003
 	end
 
 scr_seq_T02R0301_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0457_T02R0301_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0457_T02R0301_00004
 	end
 
 scr_seq_T02R0301_005:
@@ -84,12 +54,6 @@ scr_seq_T02R0301_006:
 	end
 
 scr_seq_T02R0301_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0457_T02R0301_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0457_T02R0301_00007
 	end
 	.balign 4, 0

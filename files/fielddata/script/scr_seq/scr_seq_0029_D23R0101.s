@@ -689,23 +689,11 @@ _0938:
 	step 14, 9
 	step_end
 scr_seq_D23R0101_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0065_D23R0101_00026
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0065_D23R0101_00026
 	end
 
 scr_seq_D23R0101_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0065_D23R0101_00027
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0065_D23R0101_00027
 	end
 
 scr_seq_D23R0101_001:

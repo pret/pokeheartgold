@@ -222,23 +222,11 @@ _02FA:
 	end
 
 scr_seq_T28_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0620_T28_00016
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0620_T28_00016
 	end
 
 scr_seq_T28_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0620_T28_00013
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0620_T28_00013
 	end
 
 scr_seq_T28_006:

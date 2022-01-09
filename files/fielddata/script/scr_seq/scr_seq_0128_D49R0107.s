@@ -157,32 +157,14 @@ scr_seq_D49R0107_001:
 	end
 
 scr_seq_D49R0107_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0143_D49R0107_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0143_D49R0107_00008
 	end
 
 scr_seq_D49R0107_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0143_D49R0107_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0143_D49R0107_00008
 	end
 
 scr_seq_D49R0107_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0143_D49R0107_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0143_D49R0107_00008
 	end
 	.balign 4, 0

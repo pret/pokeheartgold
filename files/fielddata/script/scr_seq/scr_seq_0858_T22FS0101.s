@@ -119,22 +119,10 @@ _014C:
 	step 13, 1
 	step_end
 scr_seq_T22FS0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0557_T22FS0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0557_T22FS0101_00000
 	end
 
 scr_seq_T22FS0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0557_T22FS0101_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0557_T22FS0101_00001
 	end
 	.balign 4, 0

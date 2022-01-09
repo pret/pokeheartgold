@@ -91,13 +91,7 @@ scr_seq_T03R0101_017:
 	end
 	.byte 0xea, 0x01, 0x06, 0x40, 0x02, 0x00
 scr_seq_T03R0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0464_T03R0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0464_T03R0101_00000
 	end
 
 scr_seq_T03R0101_001:
@@ -674,33 +668,15 @@ _09F0:
 	step 1, 1
 	step_end
 scr_seq_T03R0101_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0464_T03R0101_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0464_T03R0101_00010
 	end
 
 scr_seq_T03R0101_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0464_T03R0101_00011
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0464_T03R0101_00011
 	end
 
 scr_seq_T03R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0464_T03R0101_00012
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0464_T03R0101_00012
 	end
 
 scr_seq_T03R0101_005:

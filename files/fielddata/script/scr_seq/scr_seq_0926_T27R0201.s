@@ -131,12 +131,6 @@ _0162:
 	end
 
 scr_seq_T27R0201_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0616_T27R0201_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0616_T27R0201_00010
 	end
 	.balign 4, 0

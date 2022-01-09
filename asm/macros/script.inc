@@ -4915,6 +4915,16 @@
 	callstd std_phone_call
 	.endm
 
+	.macro simple_npc_msg msgid
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	faceplayer
+	npc_msg \msgid
+	waitbutton
+	closemsg
+	releaseall
+	.endm
+
 	; Movement commands
 
 	.macro step type, length

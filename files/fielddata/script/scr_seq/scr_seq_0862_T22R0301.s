@@ -209,13 +209,7 @@ _02D4:
 	end
 
 scr_seq_T22R0301_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0560_T22R0301_00011
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0560_T22R0301_00011
 	end
 
 scr_seq_T22R0301_002:
@@ -259,42 +253,18 @@ _035C:
 	step 32, 1
 	step_end
 scr_seq_T22R0301_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0560_T22R0301_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0560_T22R0301_00007
 	end
 
 scr_seq_T22R0301_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0560_T22R0301_00010
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0560_T22R0301_00010
 	end
 
 scr_seq_T22R0301_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0560_T22R0301_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0560_T22R0301_00009
 	end
 
 scr_seq_T22R0301_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0560_T22R0301_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0560_T22R0301_00008
 	end
 	.balign 4, 0

@@ -43,43 +43,19 @@ _007B:
 	end
 
 scr_seq_D47_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00002
 	end
 
 scr_seq_D47_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00003
 	end
 
 scr_seq_D47_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00004
 	end
 
 scr_seq_D47_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00005
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00005
 	end
 
 scr_seq_D47_004:
@@ -156,13 +132,7 @@ scr_seq_D47_008:
 	end
 
 scr_seq_D47_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00012
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00012
 	end
 
 scr_seq_D47_010:
@@ -186,13 +156,7 @@ scr_seq_D47_011:
 	end
 
 scr_seq_D47_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00014
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00014
 	end
 
 scr_seq_D47_013:
@@ -319,22 +283,10 @@ _0388:
 	step 1, 1
 	step_end
 scr_seq_D47_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00015
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00015
 	end
 
 scr_seq_D47_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0133_D47_00016
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0133_D47_00016
 	end
 	.balign 4, 0

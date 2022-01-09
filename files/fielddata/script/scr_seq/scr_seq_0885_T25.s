@@ -140,13 +140,7 @@ _019B:
 	end
 
 scr_seq_T25_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0581_T25_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0581_T25_00008
 	end
 
 scr_seq_T25_004:
@@ -383,13 +377,7 @@ scr_seq_T25_030:
 	end
 
 scr_seq_T25_032:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0581_T25_00028
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0581_T25_00028
 	end
 
 scr_seq_T25_031:
@@ -402,23 +390,11 @@ scr_seq_T25_031:
 	end
 
 scr_seq_T25_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0581_T25_00031
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0581_T25_00031
 	end
 
 scr_seq_T25_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0581_T25_00032
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0581_T25_00032
 	end
 
 scr_seq_T25_016:

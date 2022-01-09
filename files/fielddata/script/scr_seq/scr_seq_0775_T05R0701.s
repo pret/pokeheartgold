@@ -61,33 +61,15 @@ _0092:
 	end
 
 scr_seq_T05R0701_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0482_T05R0701_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0482_T05R0701_00000
 	end
 
 scr_seq_T05R0701_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0482_T05R0701_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0482_T05R0701_00001
 	end
 
 scr_seq_T05R0701_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0482_T05R0701_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0482_T05R0701_00002
 	end
 
 scr_seq_T05R0701_005:

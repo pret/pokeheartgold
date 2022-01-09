@@ -98,13 +98,7 @@ scr_seq_T20R0201_001:
 	compare VAR_SCENE_ELMS_LAB, 4
 	goto_if_ge _0205
 	goto_if_set FLAG_GOT_STARTER, _0179
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0545_T20R0201_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0545_T20R0201_00006
 	end
 
 _015C:
@@ -154,13 +148,7 @@ _01D4:
 	.byte 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x07, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00
 	.byte 0x02, 0x00
 _01F2:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0545_T20R0201_00034
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0545_T20R0201_00034
 	end
 
 _0205:

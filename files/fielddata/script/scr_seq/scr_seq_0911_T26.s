@@ -437,32 +437,14 @@ scr_seq_T26_007:
 	end
 
 scr_seq_T26_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0604_T26_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0604_T26_00001
 	end
 
 scr_seq_T26_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0604_T26_00002
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0604_T26_00002
 	end
 
 scr_seq_T26_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0604_T26_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0604_T26_00004
 	end
 	.balign 4, 0

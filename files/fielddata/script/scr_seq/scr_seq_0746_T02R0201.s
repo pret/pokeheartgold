@@ -12,23 +12,11 @@
 	scrdef_end
 
 scr_seq_T02R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0456_T02R0201_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0456_T02R0201_00000
 	end
 
 scr_seq_T02R0201_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0456_T02R0201_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0456_T02R0201_00001
 	end
 
 scr_seq_T02R0201_002:

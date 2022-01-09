@@ -664,33 +664,15 @@ scr_seq_D32R0401_004:
 	.byte 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.byte 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_D32R0401_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00059
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00059
 	end
 
 scr_seq_D32R0401_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00060
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00060
 	end
 
 scr_seq_D32R0401_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00061
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00061
 	end
 
 scr_seq_D32R0401_009:
@@ -707,53 +689,23 @@ scr_seq_D32R0401_009:
 	end
 
 scr_seq_D32R0401_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00063
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00063
 	end
 
 scr_seq_D32R0401_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00064
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00064
 	end
 
 scr_seq_D32R0401_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00065
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00065
 	end
 
 scr_seq_D32R0401_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00066
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00066
 	end
 
 scr_seq_D32R0401_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0108_D32R0401_00067
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0108_D32R0401_00067
 	end
 
 scr_seq_D32R0401_016:

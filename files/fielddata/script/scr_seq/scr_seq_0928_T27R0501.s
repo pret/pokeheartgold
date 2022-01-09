@@ -523,13 +523,7 @@ _06DD:
 	end
 
 scr_seq_T27R0501_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0618_T27R0501_00039
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0618_T27R0501_00039
 	end
 
 scr_seq_T27R0501_005:

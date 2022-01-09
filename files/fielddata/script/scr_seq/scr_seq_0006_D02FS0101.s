@@ -23,12 +23,6 @@ scr_seq_D02FS0101_001:
 	end
 
 scr_seq_D02FS0101_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0048_D02FS0101_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0048_D02FS0101_00000
 	end
 	.balign 4, 0

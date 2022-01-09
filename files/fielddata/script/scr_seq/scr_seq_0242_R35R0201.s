@@ -246,13 +246,7 @@ _0320:
 	step 35, 1
 	step_end
 scr_seq_R35R0201_000:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0389_R35R0201_00009
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0389_R35R0201_00009
 	end
 
 scr_seq_R35R0201_001:
@@ -342,13 +336,7 @@ _0460:
 	step 12, 2
 	step_end
 scr_seq_R35R0201_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0389_R35R0201_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0389_R35R0201_00003
 	end
 
 scr_seq_R35R0201_011:
@@ -475,52 +463,22 @@ _0628:
 	step 1, 1
 	step_end
 scr_seq_R35R0201_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0389_R35R0201_00005
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0389_R35R0201_00005
 	end
 
 scr_seq_R35R0201_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0389_R35R0201_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0389_R35R0201_00006
 	end
 
 scr_seq_R35R0201_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0389_R35R0201_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0389_R35R0201_00000
 	end
 
 scr_seq_R35R0201_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0389_R35R0201_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0389_R35R0201_00007
 	end
 
 scr_seq_R35R0201_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0389_R35R0201_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0389_R35R0201_00008
 	end
 	.balign 4, 0

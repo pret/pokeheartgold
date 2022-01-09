@@ -195,23 +195,11 @@ _0280:
 	step 1, 1
 	step_end
 scr_seq_T03_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0460_T03_00000
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0460_T03_00000
 	end
 
 scr_seq_T03_002:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0460_T03_00001
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0460_T03_00001
 	end
 
 scr_seq_T03_003:
@@ -490,12 +478,6 @@ _064D:
 	return
 
 scr_seq_T03_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0460_T03_00019
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0460_T03_00019
 	end
 	.balign 4, 0

@@ -293,42 +293,18 @@ _039C:
 	step 34, 1
 	step_end
 scr_seq_D32R0101_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0103_D32R0101_00032
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0103_D32R0101_00032
 	end
 
 scr_seq_D32R0101_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0103_D32R0101_00033
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0103_D32R0101_00033
 	end
 
 scr_seq_D32R0101_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0103_D32R0101_00034
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0103_D32R0101_00034
 	end
 
 scr_seq_D32R0101_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0103_D32R0101_00035
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0103_D32R0101_00035
 	end
 	.balign 4, 0

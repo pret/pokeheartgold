@@ -807,13 +807,7 @@ _0BB8:
 	step 35, 1
 	step_end
 scr_seq_D37R0102_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0117_D37R0102_00037
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0117_D37R0102_00037
 	end
 
 scr_seq_D37R0102_005:
@@ -1197,13 +1191,7 @@ _1120:
 	step 14, 7
 	step_end
 scr_seq_D37R0102_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0117_D37R0102_00027
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0117_D37R0102_00027
 	end
 
 scr_seq_D37R0102_010:

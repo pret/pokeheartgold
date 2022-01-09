@@ -35,13 +35,7 @@ _005F:
 
 scr_seq_T23_000:
 scr_seq_T23_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0564_T23_00003
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0564_T23_00003
 	end
 
 scr_seq_T23_001:
@@ -328,32 +322,14 @@ scr_seq_T23_013:
 	end
 
 scr_seq_T23_014:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0564_T23_00004
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0564_T23_00004
 	end
 
 scr_seq_T23_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0564_T23_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0564_T23_00007
 	end
 
 scr_seq_T23_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0564_T23_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0564_T23_00008
 	end
 	.balign 4, 0

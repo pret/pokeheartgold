@@ -422,153 +422,63 @@ scr_seq_D49R0101_003:
 	end
 
 scr_seq_D49R0101_004:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00068
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00068
 	end
 
 scr_seq_D49R0101_005:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00069
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00069
 	end
 
 scr_seq_D49R0101_006:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00070
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00070
 	end
 
 scr_seq_D49R0101_007:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00071
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00071
 	end
 
 scr_seq_D49R0101_008:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00072
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00072
 	end
 
 scr_seq_D49R0101_009:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00073
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00073
 	end
 
 scr_seq_D49R0101_010:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00074
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00074
 	end
 
 scr_seq_D49R0101_011:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00075
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00075
 	end
 
 scr_seq_D49R0101_012:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00076
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00076
 	end
 
 scr_seq_D49R0101_013:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00077
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00077
 	end
 
 scr_seq_D49R0101_015:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00063
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00063
 	end
 
 scr_seq_D49R0101_016:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00064
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00064
 	end
 
 scr_seq_D49R0101_017:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00065
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00065
 	end
 
 scr_seq_D49R0101_018:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00066
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00066
 	end
 
 scr_seq_D49R0101_019:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0138_D49R0101_00067
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0138_D49R0101_00067
 	end
 
 scr_seq_D49R0101_014:

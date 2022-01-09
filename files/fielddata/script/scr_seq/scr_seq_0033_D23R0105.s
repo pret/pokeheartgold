@@ -21,35 +21,17 @@ _002D:
 	end
 
 scr_seq_D23R0105_001:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0069_D23R0105_00007
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0069_D23R0105_00007
 	end
 
 scr_seq_D23R0105_003:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0069_D23R0105_00008
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0069_D23R0105_00008
 	end
 
 scr_seq_D23R0105_002:
 	compare VAR_UNK_4077, 4
 	goto_if_eq _0075
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0069_D23R0105_00006
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0069_D23R0105_00006
 	end
 
 _0075:
@@ -161,13 +143,7 @@ _021D:
 	end
 
 _022B:
-	play_se SEQ_SE_DP_SELECT
-	lockall
-	faceplayer
-	npc_msg msg_0069_D23R0105_00005
-	waitbutton
-	closemsg
-	releaseall
+	simple_npc_msg msg_0069_D23R0105_00005
 	end
 	.byte 0x00, 0x00
 
