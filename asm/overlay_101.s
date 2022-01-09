@@ -26179,7 +26179,7 @@ _021F4120:
 	cmp r0, #0
 	beq _021F419A
 	ldr r0, [r5, #0x1c]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	ldrh r1, [r4, #0x1c]
 	add r6, r0, #0
 	cmp r1, #0

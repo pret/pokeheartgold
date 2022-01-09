@@ -125,7 +125,7 @@ ov108_021E59E4: ; 0x021E59E4
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r2, r5, #0
 	str r0, [r5, #0x18]
 	mov r1, #0
@@ -6107,7 +6107,7 @@ ov108_021E8968: ; 0x021E8968
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r2, r5, #0
 	str r0, [r5, #0x20]
 	mov r1, #0

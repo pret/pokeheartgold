@@ -204,7 +204,7 @@ ov36_021E5A38: ; 0x021E5A38
 	bl PlayerProfile_SetTrainerID
 _021E5A94:
 	add r0, r6, #0
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r1, r4, #0
 	bl sub_0202F5B8
 	add r0, r7, #0

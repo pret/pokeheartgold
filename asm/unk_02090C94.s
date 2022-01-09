@@ -4560,7 +4560,7 @@ sub_02092E54: ; 0x02092E54
 	bl SavArray_Flags_get
 	add r5, r0, #0
 	ldr r0, [r4, #0x38]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r7, r0, #0
 	ldr r0, [r4, #0x38]
 	bl Sav2_PlayerData_GetIGTAddr
@@ -13562,7 +13562,7 @@ sub_0209730C: ; 0x0209730C
 	bl SaveData_GetPhoneRematches
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	str r0, [sp, #0x28]
 	mov r1, #0
 	bl sub_0202F630

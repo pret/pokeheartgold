@@ -9466,7 +9466,7 @@ ov03_02258910: ; 0x02258910
 	bl ov03_02258878
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov03_02258814
@@ -9636,7 +9636,7 @@ ScrCmd_720: ; 0x02258A18
 	add r0, r1, r0
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	mov r1, #0
 	bl sub_0202F630
 	str r0, [sp, #0xc]
@@ -9930,7 +9930,7 @@ ScrCmd_792: ; 0x02258CDC
 	add r0, #0x80
 	ldr r5, [r0]
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetIGTAddr

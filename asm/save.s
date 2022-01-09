@@ -55,7 +55,7 @@ _020F64C4:
 	.word 0x00000020, 0x00000000, sub_020318C8, sub_020318CC
 	.word 0x00000021, 0x00000000, sub_0202ED18, sub_0202ED1C
 	.word 0x00000022, 0x00000000, SaveData_GSPlayerMisc_sizeof, SaveData_GSPlayerMisc_init
-	.word 0x00000023, 0x00000000, sub_0202F574, sub_0202F588
+	.word 0x00000023, 0x00000000, Save_SafariZone_sizeof, Save_SafariZone_init
 	.word 0x00000024, 0x00000000, Save_PhotoAlbum_sizeof, Save_PhotoAlbum_init
 	.word 0x00000025, 0x00000000, sub_02031904, sub_0203190C
 	.word 0x00000026, 0x00000000, Save_ApricornBox_sizeof, Save_ApricornBox_init

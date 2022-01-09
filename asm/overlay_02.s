@@ -4409,7 +4409,7 @@ ov02_02247DA0: ; 0x02247DA0
 	add r6, r1, #0
 	str r2, [sp, #0xc]
 	add r5, r3, #0
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	mov r1, #3
 	bl sub_0202F630
 	str r0, [sp, #0x14]
@@ -18083,7 +18083,7 @@ ov02_0224E35C: ; 0x0224E35C
 	bl sub_0203B9C4
 	bl sub_0203B958
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
@@ -18445,7 +18445,7 @@ ov02_0224E640: ; 0x0224E640
 	bl PlayerProfile_GetTrainerID
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	bl sub_0202F720
 	add r4, r0, #0
 	add r0, r5, #0
@@ -18503,7 +18503,7 @@ ov02_0224E698: ; 0x0224E698
 	add r1, sp, #0x14
 	bl sub_0205C6AC
 	ldr r0, [r5, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	mov r1, #0
 	bl sub_0202F630
 	add r2, r0, #0
@@ -18618,7 +18618,7 @@ ov02_0224E754: ; 0x0224E754
 	ror r0, r2
 	add r6, r1, r0
 	ldr r0, [r4, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	mov r1, #0
 	bl sub_0202F630
 	mov r1, #0x7a

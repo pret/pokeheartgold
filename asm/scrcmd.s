@@ -10400,7 +10400,7 @@ ScrCmd_447: ; 0x02045188
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	str r0, [sp, #8]
 	ldr r0, [r5, #8]
 	add r1, r0, #1
@@ -16303,7 +16303,7 @@ ScrCmd_823: ; 0x02047EC4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r1, r4, #0
 	bl sub_0202F844
 	ldrh r1, [r6]
@@ -16323,7 +16323,7 @@ ScrCmd_824: ; 0x02047F14
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202F57C
+	bl Save_SafariZone_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword

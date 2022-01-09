@@ -58,9 +58,9 @@ typedef struct SAFARIZONE {
     u16 unk5FA;
 } SAFARIZONE;
 
-u32 sub_0202F574(void);
-SAFARIZONE* sub_0202F57C(SAVEDATA* savedata);
-void sub_0202F588(SAFARIZONE* safari_zone);
+u32 Save_SafariZone_sizeof(void);
+SAFARIZONE* Save_SafariZone_get(SAVEDATA* savedata);
+void Save_SafariZone_init(SAFARIZONE* safari_zone);
 void sub_0202F5B8(SAFARIZONE_AREASET* area_set, u32 a1);
 void sub_0202F5F8(SAFARIZONE* safari_zone, s32 a1);
 u8 sub_0202F620(SAFARIZONE* safari_zone);

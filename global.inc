@@ -27581,9 +27581,9 @@
 .public sub_0202F500
 .public sub_0202F514
 .public sub_0202F53C
-.public sub_0202F574
-.public sub_0202F57C
-.public sub_0202F588
+.public Save_SafariZone_sizeof
+.public Save_SafariZone_get
+.public Save_SafariZone_init
 .public sub_0202F5B8
 .public sub_0202F5F8
 .public sub_0202F620

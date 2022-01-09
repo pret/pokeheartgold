@@ -27,15 +27,15 @@ static const u8 sSafariZoneDefaultAreaSets[10][6] = {
       SAFARI_ZONE_AREA_SWAMP, SAFARI_ZONE_AREA_PEAK, SAFARI_ZONE_AREA_WASTELAND },
 };
 
-u32 sub_0202F574(void) {
+u32 Save_SafariZone_sizeof(void) {
     return sizeof(SAFARIZONE);
 }
 
-SAFARIZONE* sub_0202F57C(SAVEDATA* savedata) {
+SAFARIZONE* Save_SafariZone_get(SAVEDATA* savedata) {
     return SavArray_get(savedata, SAVE_SAFARI_ZONE);
 }
 
-void sub_0202F588(SAFARIZONE* safari_zone) {
+void Save_SafariZone_init(SAFARIZONE* safari_zone) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREA_SETS; i++) {
         MI_CpuFill8(&safari_zone->area_sets[i], 0, sizeof(SAFARIZONE_AREASET));
     }
