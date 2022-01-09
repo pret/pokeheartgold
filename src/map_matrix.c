@@ -218,11 +218,11 @@ void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
     }
 
     SAFARIZONE* safari_zone = sub_0202F57C(save);
-    SAFARIZONE_UNKSUB1* sz_sub = sub_0202F630(safari_zone, 3);
+    SAFARIZONE_AREASET* sz_area_set = sub_0202F630(safari_zone, 3);
 
-    for (s32 y = 0; y < SAFARI_ZONE_ROWS; y++) {
-        for (s32 x = 0; x < SAFARI_ZONE_COLS; x++) {
-            u8 area_no = sz_sub->areas[(y * SAFARI_ZONE_COLS) + x].area_no;
+    for (s32 y = 0; y < SAFARI_ZONE_AREA_SET_ROWS; y++) {
+        for (s32 x = 0; x < SAFARI_ZONE_AREA_SET_COLS; x++) {
+            u8 area_no = sz_area_set->areas[(y * SAFARI_ZONE_AREA_SET_COLS) + x].area_no;
             models[width * (y + 1) + x + 1] = 652 + area_no;
         }
     }

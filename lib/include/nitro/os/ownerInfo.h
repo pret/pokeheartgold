@@ -16,4 +16,8 @@ typedef struct OSOwnerInfo {
     u16 commentLength;
 } OSOwnerInfo;
 
+void OS_GetMacAddress(u8 *macAddr);
+void OS_GetOwnerInfo(OSOwnerInfo *info);
+s64 OS_GetOwnerRtcOffset(void);
+
 #endif //NITRO_OS_OWNERINFO_H_

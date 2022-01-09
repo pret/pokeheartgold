@@ -42,7 +42,7 @@ PLAYERPROFILE *PlayerProfile_new(HeapID heapId);
 void PlayerProfile_copy(const PLAYERPROFILE *src, PLAYERPROFILE *dest);
 void PlayerProfile_init(PLAYERPROFILE *profile);
 BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE *profile);
-void Sav2_Profile_PlayerName_set(u16 *dest, PLAYERPROFILE *profile);
+void Sav2_Profile_PlayerName_set(PLAYERPROFILE* profile, u16 *name);
 void PlayerName_StringToFlat(PLAYERPROFILE *profile, STRING *str);
 u16 *PlayerProfile_GetNamePtr(PLAYERPROFILE *profile);
 void PlayerName_FlatToString(PLAYERPROFILE *profile, STRING *str);
