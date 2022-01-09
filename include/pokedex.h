@@ -8,7 +8,13 @@
 
 #define ROUND_UP(x,n)             (((x)+(n)-1)&~((n)-1))
 #define CEILDIV(x,n)              (((x)+(n)-1)/(n))
-#define NUM_DEX_FLAG_WORDS        (CEILDIV(NATIONAL_DEX_COUNT+DEOXYS_FORME_MAX,32))
+
+// Deoxys forme history is split between the
+// seen and caught flags because of space efficiency.
+// For some reason, 4 bits are reserved for each forme,
+// even though 2 would suffice. This negates any
+// benefits this split would have provided.
+#define NUM_DEX_FLAG_WORDS        (CEILDIV(NATIONAL_DEX_COUNT+8,32))
 
 typedef struct POKEDEX {
     u32 magic;

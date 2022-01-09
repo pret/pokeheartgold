@@ -14,6 +14,12 @@
 #define CHAR_JP_7                             169
 #define CHAR_JP_8                             170
 #define CHAR_JP_9                             171
+#define CHAR_JP_A                             172
+#define CHAR_JP_B                             173
+#define CHAR_JP_C                             174
+#define CHAR_JP_D                             175
+#define CHAR_JP_E                             176
+#define CHAR_JP_F                             177
 
 #define CHAR_JP_QUESTION_MARK                 226
 
