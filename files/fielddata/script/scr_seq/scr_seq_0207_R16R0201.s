@@ -12,8 +12,7 @@
 	scrdef_end
 
 scr_seq_R16R0201_003:
-	checkflag FLAG_UNK_149
-	gotoif TRUE, _001F
+	goto_if_set FLAG_UNK_149, _001F
 	end
 
 _001F:
@@ -24,8 +23,8 @@ scr_seq_R16R0201_001:
 	scrcmd_609
 	lockall
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _006A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _006A
 	apply_movement obj_player, _0084
 	wait_movement
 	npc_msg msg_0356_R16R0201_00001

@@ -13,8 +13,8 @@ scr_seq_T11R0703_000:
 	lockall
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 479
-	gotoif ne, _018C
+	compare VAR_TEMP_x4001, 479
+	goto_if_ne _018C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -66,10 +66,10 @@ _00F4:
 	scrcmd_488 32772, 1
 _00FE:
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0142
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _011E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0142
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _011E
 	end
 
 _011E:
@@ -122,8 +122,8 @@ _018C:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01C5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01C5
 	apply_movement obj_partner_poke, _0160
 	wait_movement
 _01C5:

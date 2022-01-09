@@ -13,8 +13,8 @@ scr_seq_D23R0106_000:
 	setflag FLAG_UNK_1B7
 	setflag FLAG_UNK_1B8
 	setvar VAR_UNK_4125, 0
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _002D
+	compare VAR_UNK_4077, 4
+	goto_if_ne _002D
 	clearflag FLAG_UNK_1B7
 	clearflag FLAG_UNK_1B8
 _002D:
@@ -28,8 +28,8 @@ scr_seq_D23R0106_001:
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_ARCHER_ARCHER, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _025D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _025D
 	npc_msg msg_0070_D23R0106_00001
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
@@ -46,35 +46,35 @@ scr_seq_D23R0106_001:
 	wait_fade
 	move_person obj_D23R0106_gsgentleman, 8, 1, 12, 1
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _00C1
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _00C1
 	apply_movement obj_D23R0106_gsgentleman, _0288
 	goto _0102
 
 _00C1:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _00ED
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _00ED
 	apply_movement obj_D23R0106_gsgentleman, _02A4
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, _0263
+	compare VAR_SPECIAL_x800C, 1
+	call_if_eq _0263
 	goto _0102
 
 _00ED:
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _0102
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _0102
 	apply_movement obj_D23R0106_gsgentleman, _02C0
 _0102:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _0119
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _0119
 	apply_movement obj_player, _02EC
 _0119:
 	wait_movement
 	npc_msg msg_0070_D23R0106_00002
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _014E
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _014E
 	giveitem_no_check ITEM_RAINBOW_WING, 1
 	setflag FLAG_UNK_093
 	npc_msg msg_0070_D23R0106_00005
@@ -87,20 +87,20 @@ _014E:
 	npc_msg msg_0070_D23R0106_00006
 	closemsg
 _0167:
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _0182
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _0182
 	apply_movement obj_D23R0106_gsgentleman, _02F4
 	goto _01B2
 
 _0182:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _019D
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _019D
 	apply_movement obj_D23R0106_gsgentleman, _0304
 	goto _01B2
 
 _019D:
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _01B2
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _01B2
 	apply_movement obj_D23R0106_gsgentleman, _0314
 _01B2:
 	wait_movement
@@ -109,8 +109,8 @@ _01B2:
 	apply_movement obj_player, _02EC
 	wait_movement
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _01E2
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _01E2
 	npc_msg msg_0070_D23R0106_00007
 	goto _01E5
 
@@ -135,8 +135,8 @@ _01E5:
 	setflag FLAG_UNK_0C6
 	clearflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
 	setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
-	comparevartovalue VAR_UNK_40F8, 2
-	gotoif ne, _0241
+	compare VAR_UNK_40F8, 2
+	goto_if_ne _0241
 	setvar VAR_UNK_40F8, 0
 _0241:
 	setvar VAR_UNK_407A, 1
@@ -154,8 +154,8 @@ _025D:
 
 _0263:
 	get_person_coords 253, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8004, 7
-	gotoif ne, _0286
+	compare VAR_SPECIAL_x8004, 7
+	goto_if_ne _0286
 	wait 112, VAR_SPECIAL_x800C
 	apply_movement obj_partner_poke, _02DC
 _0286:

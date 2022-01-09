@@ -11,16 +11,15 @@
 
 scr_seq_D46R0101_001:
 	scrcmd_147 34, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0047
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0030
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0047
+	goto_if_set FLAG_GAME_CLEAR, _0030
 	goto _0047
 	.byte 0x02, 0x00
 _0030:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _0047
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0047
 	clearflag FLAG_UNK_263
 	end
 
@@ -32,17 +31,17 @@ scr_seq_D46R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _00DD
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _00DD
 	npc_msg msg_0132_D46R0101_00000
 _0065:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0089
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _00CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0089
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _00CC
 	end
 
 _0089:

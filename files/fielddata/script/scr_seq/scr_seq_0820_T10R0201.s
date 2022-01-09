@@ -11,8 +11,7 @@
 	scrdef_end
 
 scr_seq_T10R0201_002:
-	checkflag FLAG_DEFEATED_WILL
-	gotoif TRUE, _0023
+	goto_if_set FLAG_DEFEATED_WILL, _0023
 	scrcmd_375 3
 	scrcmd_375 4
 	end
@@ -46,12 +45,11 @@ scr_seq_T10R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_DEFEATED_WILL
-	gotoif TRUE, _00D1
+	goto_if_set FLAG_DEFEATED_WILL, _00D1
 	npc_msg msg_0523_T10R0201_00000
 	closemsg
-	comparevartovalue VAR_UNK_4135, 8
-	gotoif lt, _009B
+	compare VAR_UNK_4135, 8
+	goto_if_lt _009B
 	trainer_battle TRAINER_ELITE_FOUR_WILL_WILL_2, 0, 0, 0
 	goto _00A3
 
@@ -59,8 +57,8 @@ _009B:
 	trainer_battle TRAINER_ELITE_FOUR_WILL_WILL, 0, 0, 0
 _00A3:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00DC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00DC
 	setflag FLAG_DEFEATED_WILL
 	npc_msg msg_0523_T10R0201_00001
 	closemsg

@@ -9,8 +9,7 @@
 	scrdef_end
 
 scr_seq_T29R0101_000:
-	checkflag FLAG_UNK_0C7
-	gotoif TRUE, _005A
+	goto_if_set FLAG_UNK_0C7, _005A
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

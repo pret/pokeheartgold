@@ -100,23 +100,23 @@ _0114:
 	return
 
 _011C:
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, _00E6
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, _00F0
-	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, _00FA
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01F0
+	compare VAR_SPECIAL_x8000, 0
+	call_if_eq _00E6
+	compare VAR_SPECIAL_x8000, 1
+	call_if_eq _00F0
+	compare VAR_SPECIAL_x8000, 2
+	call_if_eq _00FA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01F0
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01F9
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, _0104
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, _010C
-	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, _0114
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01F9
+	compare VAR_SPECIAL_x8000, 0
+	call_if_eq _0104
+	compare VAR_SPECIAL_x8000, 1
+	call_if_eq _010C
+	compare VAR_SPECIAL_x8000, 2
+	call_if_eq _0114
 	scrcmd_115
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	play_se SEQ_SE_DP_JIHANKI
@@ -124,14 +124,14 @@ _011C:
 	npc_msg msg_0499_T07R0106_00004
 	giveitem_no_check VAR_SPECIAL_x8001, 1
 	scrcmd_380 VAR_SPECIAL_x800C, 64
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01E7
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01E7
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0499_T07R0106_00005
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01F9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01F9
 	callstd std_give_item_verbose
 _01E7:
 	npc_msg msg_0499_T07R0106_00003

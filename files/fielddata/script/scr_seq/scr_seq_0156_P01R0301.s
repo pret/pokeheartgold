@@ -17,16 +17,15 @@
 	scrdef_end
 
 scr_seq_P01R0301_007:
-	checkflag FLAG_UNK_0EB
-	gotoif FALSE, _0031
+	goto_if_unset FLAG_UNK_0EB, _0031
 _0031:
 	end
 
 scr_seq_P01R0301_006:
-	comparevartovalue VAR_UNK_40E1, 1
-	gotoif le, _004F
-	comparevartovalue VAR_UNK_40E1, 2
-	gotoif ge, _0059
+	compare VAR_UNK_40E1, 1
+	goto_if_le _004F
+	compare VAR_UNK_40E1, 2
+	goto_if_ge _0059
 	end
 
 _004F:
@@ -74,8 +73,8 @@ scr_seq_P01R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40E1, 1
-	gotoif gt, _00E5
+	compare VAR_UNK_40E1, 1
+	goto_if_gt _00E5
 	goto _00EB
 	.byte 0x16
 	.byte 0x00, 0x06, 0x00, 0x00, 0x00
@@ -83,8 +82,7 @@ _00E5:
 	goto _0138
 
 _00EB:
-	checkflag FLAG_UNK_0EB
-	gotoif TRUE, _0101
+	goto_if_set FLAG_UNK_0EB, _0101
 	npc_msg msg_0259_P01R0301_00000
 	waitbutton
 	closemsg
@@ -92,8 +90,8 @@ _00EB:
 	end
 
 _0101:
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _012D
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _012D
 	npc_msg msg_0259_P01R0301_00002
 	closemsg
 	apply_movement obj_P01R0301_seaman_2_2, _0180
@@ -111,8 +109,7 @@ _012D:
 	end
 
 _0138:
-	checkflag FLAG_UNK_0EB
-	gotoif TRUE, _014E
+	goto_if_set FLAG_UNK_0EB, _014E
 	npc_msg msg_0259_P01R0301_00001
 	waitbutton
 	closemsg
@@ -120,8 +117,8 @@ _0138:
 	end
 
 _014E:
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0174
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0174
 	npc_msg msg_0259_P01R0301_00005
 	closemsg
 	apply_movement obj_P01R0301_seaman_2_2, _0180
@@ -153,26 +150,26 @@ scr_seq_P01R0301_004:
 	apply_movement obj_player, _0280
 	wait_movement
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 22
-	gotoif ne, _01D3
+	compare VAR_TEMP_x4000, 22
+	goto_if_ne _01D3
 	move_person obj_P01R0301_gsgentleman, 31, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
 _01D3:
-	comparevartovalue VAR_TEMP_x4000, 23
-	gotoif ne, _01F2
+	compare VAR_TEMP_x4000, 23
+	goto_if_ne _01F2
 	move_person obj_P01R0301_gsgentleman, 32, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
 _01F2:
-	comparevartovalue VAR_TEMP_x4000, 24
-	gotoif ne, _0211
+	compare VAR_TEMP_x4000, 24
+	goto_if_ne _0211
 	move_person obj_P01R0301_gsgentleman, 33, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
 _0211:
-	comparevartovalue VAR_TEMP_x4000, 25
-	gotoif ne, _0230
+	compare VAR_TEMP_x4000, 25
+	goto_if_ne _0230
 	move_person obj_P01R0301_gsgentleman, 34, 0, VAR_TEMP_x4001, 2
 	goto _023C
 
@@ -232,8 +229,8 @@ scr_seq_P01R0301_001:
 	lockall
 	faceplayer
 	nop_var_490 VAR_UNK_40CB
-	comparevartovalue VAR_UNK_40CB, 7
-	gotoif lt, _02FA
+	compare VAR_UNK_40CB, 7
+	goto_if_lt _02FA
 	npc_msg msg_0259_P01R0301_00009
 	goto _02FD
 

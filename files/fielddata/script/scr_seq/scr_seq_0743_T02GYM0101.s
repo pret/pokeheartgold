@@ -16,13 +16,13 @@ scr_seq_T02GYM0101_002:
 	scrcmd_331
 	setvar VAR_UNK_4127, 0
 	get_phone_book_rematch 31, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0065
-	comparevartovalue VAR_UNK_40FD, 0
-	gotoif eq, _005F
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0065
+	compare VAR_UNK_40FD, 0
+	goto_if_eq _005F
 	get_weekday VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 5
-	gotoif ne, _0059
+	compare VAR_TEMP_x4002, 5
+	goto_if_ne _0059
 	setflag FLAG_UNK_2F6
 	goto _005D
 
@@ -44,14 +44,14 @@ scr_seq_T02GYM0101_000:
 	lockall
 	faceplayer
 	check_badge 15, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0131
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0131
 	npc_msg msg_0454_T02GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_BLUE_BLUE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0147
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0147
 	give_badge 15
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_998
@@ -90,8 +90,7 @@ _0127:
 	end
 
 _0131:
-	checkflag FLAG_UNK_17E
-	gotoif FALSE, _00F0
+	goto_if_unset FLAG_UNK_17E, _00F0
 	npc_msg msg_0454_T02GYM0101_00005
 	waitbutton
 	closemsg
@@ -108,8 +107,8 @@ scr_seq_T02GYM0101_001:
 	lockall
 	faceplayer
 	check_badge 15, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0186
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0186
 	npc_msg msg_0454_T02GYM0101_00006
 	scrcmd_600
 	scrcmd_783 1
@@ -131,53 +130,52 @@ _0186:
 scr_seq_T02GYM0101_003:
 	scrcmd_609
 	lockall
-	checkflag FLAG_UNK_13A
-	gotoif TRUE, _037D
+	goto_if_set FLAG_UNK_13A, _037D
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _01C9
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _01C9
 	apply_movement obj_T02GYM0101_sunglasses, _0394
 	apply_movement obj_player, _040C
 	goto _02AB
 
 _01C9:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _01EC
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _01EC
 	apply_movement obj_T02GYM0101_sunglasses, _03A4
 	apply_movement obj_player, _040C
 	goto _02AB
 
 _01EC:
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _020F
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _020F
 	apply_movement obj_T02GYM0101_sunglasses, _03B4
 	apply_movement obj_player, _040C
 	goto _02AB
 
 _020F:
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _0232
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0232
 	apply_movement obj_T02GYM0101_sunglasses, _03C4
 	apply_movement obj_player, _0418
 	goto _02AB
 
 _0232:
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _0255
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _0255
 	apply_movement obj_T02GYM0101_sunglasses, _03D4
 	apply_movement obj_player, _0418
 	goto _02AB
 
 _0255:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _0278
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0278
 	apply_movement obj_T02GYM0101_sunglasses, _03E4
 	apply_movement obj_player, _0418
 	goto _02AB
 
 _0278:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _029B
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _029B
 	apply_movement obj_T02GYM0101_sunglasses, _03F0
 	apply_movement obj_player, _0424
 	goto _02AB
@@ -190,44 +188,44 @@ _02AB:
 	npc_msg msg_0454_T02GYM0101_00008
 	closemsg
 	setflag FLAG_UNK_13A
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _02D1
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _02D1
 	apply_movement obj_T02GYM0101_sunglasses, _0430
 	goto _037B
 
 _02D1:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _02EC
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _02EC
 	apply_movement obj_T02GYM0101_sunglasses, _043C
 	goto _037B
 
 _02EC:
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _0307
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _0307
 	apply_movement obj_T02GYM0101_sunglasses, _0448
 	goto _037B
 
 _0307:
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _0322
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0322
 	apply_movement obj_T02GYM0101_sunglasses, _0454
 	goto _037B
 
 _0322:
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _033D
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _033D
 	apply_movement obj_T02GYM0101_sunglasses, _0460
 	goto _037B
 
 _033D:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _0358
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0358
 	apply_movement obj_T02GYM0101_sunglasses, _046C
 	goto _037B
 
 _0358:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _0373
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _0373
 	apply_movement obj_T02GYM0101_sunglasses, _046C
 	goto _037B
 
@@ -345,8 +343,8 @@ scr_seq_T02GYM0101_004:
 	faceplayer
 	check_badge 15, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _04A7
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _04A7
 	npc_msg msg_0454_T02GYM0101_00009
 	goto _04AA
 

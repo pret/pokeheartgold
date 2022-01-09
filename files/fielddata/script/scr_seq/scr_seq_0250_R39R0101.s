@@ -13,8 +13,7 @@ scr_seq_R39R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0AA
-	gotoif TRUE, _002C
+	goto_if_set FLAG_UNK_0AA, _002C
 	setflag FLAG_UNK_0A8
 	npc_msg msg_0397_R39R0101_00000
 	waitbutton
@@ -26,8 +25,8 @@ _002C:
 	setvar VAR_SPECIAL_x8004, 33
 	setvar VAR_SPECIAL_x8005, 0
 	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 999
-	gotoif ne, _0058
+	compare VAR_SPECIAL_x800C, 999
+	goto_if_ne _0058
 	npc_msg msg_0397_R39R0101_00006
 	waitbutton
 	closemsg
@@ -44,15 +43,15 @@ _0058:
 	menu_item_add 14, 255, 3
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0111
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, _011E
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	callif eq, _012C
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0111
+	compare VAR_SPECIAL_x800C, 1
+	call_if_eq _011E
+	compare VAR_SPECIAL_x800C, 2
+	call_if_eq _012C
 	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_TEMP_x4001
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00F7
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00F7
 	goto_if_no_item_space ITEM_MOOMOO_MILK, VAR_TEMP_x4000, _0104
 	submoneyvar VAR_TEMP_x4001
 	scrcmd_115
@@ -101,8 +100,7 @@ scr_seq_R39R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0AA
-	gotoif TRUE, _0158
+	goto_if_set FLAG_UNK_0AA, _0158
 	npc_msg msg_0397_R39R0101_00007
 	waitbutton
 	closemsg
@@ -110,8 +108,7 @@ scr_seq_R39R0101_001:
 	end
 
 _0158:
-	checkflag FLAG_UNK_0AB
-	gotoif TRUE, _0197
+	goto_if_set FLAG_UNK_0AB, _0197
 	npc_msg msg_0397_R39R0101_00008
 	scrcmd_049
 	goto_if_no_item_space ITEM_TM83, 1, _01A2

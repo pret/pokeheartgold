@@ -11,8 +11,8 @@
 
 scr_seq_D50R0101_001:
 	nat_dex_flag_action 2, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0064
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0064
 	move_person obj_D50R0101_breakrock, 30, 1, 30, 0
 	move_person obj_D50R0101_breakrock_2, 30, 1, 30, 0
 	move_person obj_D50R0101_breakrock_3, 30, 1, 30, 0

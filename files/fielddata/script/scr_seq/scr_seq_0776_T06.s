@@ -22,21 +22,20 @@
 	scrdef_end
 
 scr_seq_T06_009:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _004B
+	goto_if_unset FLAG_UNK_189, _004B
 	clearflag FLAG_UNK_189
 	end
 
 _004B:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _0066
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0066
 	clearflag FLAG_HIDE_CAMERON
 	goto _0081
 
 _0066:
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _007D
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _007D
 	clearflag FLAG_HIDE_CAMERON
 	goto _0081
 
@@ -63,8 +62,8 @@ scr_seq_T06_013:
 	apply_movement obj_T06_daigo, _0180
 	wait_movement
 	get_game_version VAR_TEMP_x4004
-	comparevartovalue VAR_TEMP_x4004, 8
-	gotoif eq, _0109
+	compare VAR_TEMP_x4004, 8
+	goto_if_eq _0109
 	scrcmd_452 SPECIES_LATIAS, 1
 	npc_msg msg_0483_T06_00017
 	closemsg
@@ -135,14 +134,13 @@ scr_seq_T06_000:
 	lockall
 	faceplayer
 	scrcmd_491 247
-	checkflag FLAG_UNK_0F7
-	gotoif TRUE, _01FF
-	comparevartovalue VAR_UNK_4135, 8
-	gotoif ge, _020A
-	comparevartovalue VAR_UNK_4135, 5
-	gotoif ge, _01F4
-	comparevartovalue VAR_UNK_4135, 1
-	gotoif ge, _01E9
+	goto_if_set FLAG_UNK_0F7, _01FF
+	compare VAR_UNK_4135, 8
+	goto_if_ge _020A
+	compare VAR_UNK_4135, 5
+	goto_if_ge _01F4
+	compare VAR_UNK_4135, 1
+	goto_if_ge _01E9
 	npc_msg msg_0483_T06_00004
 	waitbutton
 	closemsg
@@ -193,8 +191,8 @@ scr_seq_T06_011:
 	clearflag FLAG_HIDE_VERMILION_EUSINE
 	show_person obj_T06_minaki
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 1334
-	gotoif ne, _0270
+	compare VAR_TEMP_x4000, 1334
+	goto_if_ne _0270
 	goto _037F
 
 _0270:
@@ -210,16 +208,16 @@ _0270:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 331
-	gotoif ne, _02D5
+	compare VAR_TEMP_x4001, 331
+	goto_if_ne _02D5
 	apply_movement obj_player, _0460
 	apply_movement obj_T06_minaki, _0490
 	apply_movement obj_T06_tsure_poke_618, _0414
 	goto _0318
 
 _02D5:
-	comparevartovalue VAR_TEMP_x4001, 332
-	gotoif ne, _0300
+	compare VAR_TEMP_x4001, 332
+	goto_if_ne _0300
 	apply_movement obj_player, _0470
 	apply_movement obj_T06_minaki, _04A0
 	apply_movement obj_T06_tsure_poke_618, _0420
@@ -407,16 +405,16 @@ scr_seq_T06_012:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 1324
-	gotoif ne, _057D
+	compare VAR_TEMP_x4000, 1324
+	goto_if_ne _057D
 	apply_movement obj_T06_minaki_2, _0654
 	apply_movement obj_player, _0630
 	apply_movement obj_T06_tsure_poke_618, _0414
 	goto _05C0
 
 _057D:
-	comparevartovalue VAR_TEMP_x4000, 1325
-	gotoif ne, _05A8
+	compare VAR_TEMP_x4000, 1325
+	goto_if_ne _05A8
 	apply_movement obj_T06_minaki_2, _0668
 	apply_movement obj_player, _063C
 	apply_movement obj_T06_tsure_poke_618, _0420
@@ -594,11 +592,11 @@ scr_seq_T06_010:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _086F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _086F
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0883
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0883
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -606,14 +604,14 @@ scr_seq_T06_010:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _07DB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _07DB
 	apply_movement obj_player, _0898
 	goto _080E
 
 _07DB:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _07FE
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _07FE
 	apply_movement obj_player, _08B8
 	apply_movement obj_T06_gsmiddleman1_2, _08CC
 	goto _080E
@@ -627,8 +625,8 @@ _080E:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0835
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0835
 	apply_movement obj_partner_poke, _08D8
 	wait_movement
 _0835:

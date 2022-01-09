@@ -34,34 +34,32 @@
 	scrdef_end
 
 scr_seq_T06GYM0101_021:
-	checkflag FLAG_UNK_31A
-	gotoif TRUE, _0079
+	goto_if_set FLAG_UNK_31A, _0079
 	clearflag FLAG_UNK_9A6
 _0079:
 	scrcmd_320
 	get_phone_book_rematch 36, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _014A
-	checkflag FLAG_UNK_14A
-	gotoif FALSE, _0144
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _014A
+	goto_if_unset FLAG_UNK_14A, _0144
 	scrcmd_147 36, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00FB
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00FB
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _00C7
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _00C7
 	setflag FLAG_UNK_2F0
 	goto _00F9
 
 _00C7:
-	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif ne, _00DE
+	compare VAR_TEMP_x4000, 10
+	goto_if_ne _00DE
 	setflag FLAG_UNK_2F0
 	goto _00F9
 
 _00DE:
-	comparevartovalue VAR_TEMP_x4000, 11
-	gotoif ne, _00F5
+	compare VAR_TEMP_x4000, 11
+	goto_if_ne _00F5
 	setflag FLAG_UNK_2F0
 	goto _00F9
 
@@ -71,21 +69,20 @@ _00F9:
 	end
 
 _00FB:
-	checkflag FLAG_UNK_162
-	gotoif TRUE, _010C
+	goto_if_set FLAG_UNK_162, _010C
 	setflag FLAG_UNK_2F0
 	end
 
 _010C:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _0127
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _0127
 	setflag FLAG_UNK_2F0
 	goto _0142
 
 _0127:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _013E
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _013E
 	setflag FLAG_UNK_2F0
 	goto _0142
 
@@ -103,8 +100,7 @@ _014A:
 	end
 
 scr_seq_T06GYM0101_022:
-	checkflag FLAG_UNK_31A
-	gotoif TRUE, _0175
+	goto_if_set FLAG_UNK_31A, _0175
 	scrcmd_375 0
 	scrcmd_375 1
 	scrcmd_375 2
@@ -178,16 +174,16 @@ scr_seq_T06GYM0101_014:
 	goto _023A
 	.byte 0x02, 0x00
 _023A:
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _027D
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _02AA
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _028E
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _02CE
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02E5
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _027D
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _02AA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _028E
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _02CE
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02E5
 	end
 
 _027D:
@@ -270,14 +266,14 @@ scr_seq_T06GYM0101_023:
 	lockall
 	faceplayer
 	check_badge 10, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03C7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03C7
 	npc_msg msg_0485_T06GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_LT_SURGE_LT__SURGE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03DD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03DD
 	give_badge 10
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
@@ -316,8 +312,7 @@ _03BD:
 	end
 
 _03C7:
-	checkflag FLAG_UNK_181
-	gotoif FALSE, _0389
+	goto_if_unset FLAG_UNK_181, _0389
 	npc_msg msg_0485_T06GYM0101_00005
 	waitbutton
 	closemsg
@@ -334,8 +329,8 @@ scr_seq_T06GYM0101_024:
 	lockall
 	faceplayer
 	check_badge 10, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0409
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0409
 	npc_msg msg_0485_T06GYM0101_00006
 	waitbutton
 	closemsg
@@ -355,8 +350,8 @@ scr_seq_T06GYM0101_025:
 	faceplayer
 	check_badge 10, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _043B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _043B
 	npc_msg msg_0485_T06GYM0101_00013
 	goto _043E
 

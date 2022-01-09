@@ -12,25 +12,25 @@
 
 scr_seq_T07GYM0101_002:
 	get_phone_book_rematch 28, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0107
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0107
 	scrcmd_147 28, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00DE
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00DE
 	check_badge 15, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif eq, _004F
+	compare VAR_TEMP_x4002, 1
+	goto_if_eq _004F
 	goto _0101
 	.byte 0x02, 0x00
 _004F:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _006C
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _006C
 	goto _008D
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _006C:
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0085
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0085
 	goto _008D
 	.byte 0x16
 	.byte 0x00, 0x06, 0x00, 0x00, 0x00
@@ -39,20 +39,20 @@ _0085:
 	.byte 0x02, 0x00
 _008D:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 14
-	gotoif ne, _00A8
+	compare VAR_TEMP_x4000, 14
+	goto_if_ne _00A8
 	setflag FLAG_UNK_2F2
 	goto _00DC
 
 _00A8:
-	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, _00BF
+	compare VAR_TEMP_x4000, 15
+	goto_if_ne _00BF
 	setflag FLAG_UNK_2F2
 	goto _00DC
 
 _00BF:
-	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, _00D6
+	compare VAR_TEMP_x4000, 16
+	goto_if_ne _00D6
 	setflag FLAG_UNK_2F2
 	goto _00DC
 
@@ -64,8 +64,8 @@ _00DC:
 
 _00DE:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _00F9
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _00F9
 	setflag FLAG_UNK_2F2
 	goto _00FF
 
@@ -88,14 +88,14 @@ scr_seq_T07GYM0101_000:
 	lockall
 	faceplayer
 	check_badge 11, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01A5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01A5
 	npc_msg msg_0492_T07GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_ERIKA_ERIKA, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01BB
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01BB
 	give_badge 11
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
@@ -116,8 +116,7 @@ _017C:
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_124
 _01A5:
-	checkflag FLAG_UNK_124
-	gotoif FALSE, _017C
+	goto_if_unset FLAG_UNK_124, _017C
 	npc_msg msg_0492_T07GYM0101_00004
 	waitbutton
 	closemsg
@@ -141,8 +140,8 @@ scr_seq_T07GYM0101_001:
 	faceplayer
 	check_badge 11, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01F2
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01F2
 	npc_msg msg_0492_T07GYM0101_00005
 	goto _01F5
 

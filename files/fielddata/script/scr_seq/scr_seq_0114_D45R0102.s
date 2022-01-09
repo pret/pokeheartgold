@@ -15,12 +15,12 @@ scr_seq_D45R0102_002:
 	end
 
 scr_seq_D45R0102_000:
-	comparevartovalue VAR_UNK_40FE, 4
-	gotoif eq, _0077
-	comparevartovalue VAR_UNK_40FE, 3
-	gotoif eq, _0057
-	comparevartovalue VAR_UNK_40FE, 2
-	gotoif eq, _003D
+	compare VAR_UNK_40FE, 4
+	goto_if_eq _0077
+	compare VAR_UNK_40FE, 3
+	goto_if_eq _0057
+	compare VAR_UNK_40FE, 2
+	goto_if_eq _003D
 	end
 
 _003D:
@@ -90,8 +90,8 @@ scr_seq_D45R0102_001:
 	setvar VAR_UNK_40FE, 3
 	trainer_battle TRAINER_ROCKET_BOSS_GIOVANNI, 0, 1, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0250
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0250
 	setvar VAR_UNK_40FE, 4
 	apply_movement obj_D45R0102_sakaki, _033C
 	wait_movement
@@ -117,8 +117,8 @@ scr_seq_D45R0102_001:
 	closemsg
 	get_lead_mon_index VAR_TEMP_x4002
 	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 251
-	callif ne, _02C0
+	compare VAR_SPECIAL_x800C, 251
+	call_if_ne _02C0
 	apply_movement obj_partner_poke, _03A4
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
@@ -131,8 +131,8 @@ scr_seq_D45R0102_001:
 	wait_movement
 	apply_movement obj_D45R0102_var_1, _03C0
 	wait_movement
-	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif ne, _0224
+	compare VAR_TEMP_x4003, 1
+	goto_if_ne _0224
 	gender_msgbox msg_0131_D45R0102_00027, msg_0131_D45R0102_00026
 	closemsg
 	goto _022A
@@ -287,8 +287,8 @@ scr_seq_D45R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40FE, 4
-	gotoif ge, _0404
+	compare VAR_UNK_40FE, 4
+	goto_if_ge _0404
 	npc_msg msg_0131_D45R0102_00020
 	waitbutton
 	closemsg

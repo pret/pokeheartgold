@@ -16,16 +16,16 @@
 	scrdef_end
 
 scr_seq_D51R0201_002:
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 7
-	gotoif eq, _0065
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
-	gotoif eq, _0065
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
-	gotoif eq, _0065
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
-	gotoif eq, _0065
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	gotoif eq, _0065
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 7
+	goto_if_eq _0065
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
+	goto_if_eq _0065
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
+	goto_if_eq _0065
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
+	goto_if_eq _0065
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	goto_if_eq _0065
 	end
 
 _0065:
@@ -73,15 +73,15 @@ scr_seq_D51R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
-	gotoif eq, _0165
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
+	goto_if_eq _0165
 	get_lead_mon_index VAR_TEMP_x4005
 	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
-	comparevartovalue VAR_TEMP_x4006, 1
-	gotoif eq, _011A
+	compare VAR_TEMP_x4006, 1
+	goto_if_eq _011A
 	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
-	comparevartovalue VAR_TEMP_x4007, 1
-	gotoif eq, _011A
+	compare VAR_TEMP_x4007, 1
+	goto_if_eq _011A
 	npc_msg msg_0146_D51R0201_00024
 	waitbutton
 	closemsg
@@ -89,13 +89,13 @@ scr_seq_D51R0201_001:
 	end
 
 _011A:
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif eq, _0154
+	compare VAR_TEMP_x4004, 1
+	goto_if_eq _0154
 	npc_msg msg_0146_D51R0201_00000
 	closemsg
 	get_party_count VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8004, 2
-	gotoif ge, _0154
+	compare VAR_SPECIAL_x8004, 2
+	goto_if_ge _0154
 	apply_movement obj_D51R0201_champion, _02CC
 	wait_movement
 	npc_msg msg_0146_D51R0201_00006
@@ -121,14 +121,14 @@ _0170:
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
 	setvar VAR_UNK_4104, 1
 	get_player_facing VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _019B
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _019B
 	apply_movement obj_D51R0201_champion, _02B4
 	goto _01BE
 
 _019B:
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif ne, _01B6
+	compare VAR_TEMP_x4002, 3
+	goto_if_ne _01B6
 	apply_movement obj_D51R0201_champion, _02BC
 	goto _01BE
 
@@ -141,8 +141,8 @@ _01BE:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x4002, 2
-	gotoif ne, _01EA
+	compare VAR_TEMP_x4002, 2
+	goto_if_ne _01EA
 	apply_movement obj_D51R0201_champion, _02D4
 	goto _01F2
 
@@ -150,15 +150,15 @@ _01EA:
 	apply_movement obj_D51R0201_champion, _02E0
 _01F2:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _0217
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _0217
 	apply_movement obj_player, _0390
 	apply_movement obj_D51R0201_champion, _0308
 	goto _024A
 
 _0217:
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif ne, _023A
+	compare VAR_TEMP_x4002, 3
+	goto_if_ne _023A
 	apply_movement obj_player, _03A0
 	apply_movement obj_D51R0201_champion, _0308
 	goto _024A
@@ -307,17 +307,17 @@ _03C8:
 scr_seq_D51R0201_004:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	gotoif lt, _0430
-	comparevartovalue VAR_UNK_4103, 1
-	gotoif eq, _0545
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	goto_if_lt _0430
+	compare VAR_UNK_4103, 1
+	goto_if_eq _0545
 	call _0550
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif eq, _0633
-	comparevartovalue VAR_TEMP_x400A, 2
-	gotoif eq, _061D
-	comparevartovalue VAR_TEMP_x400A, 3
-	gotoif eq, _0628
+	compare VAR_TEMP_x400A, 0
+	goto_if_eq _0633
+	compare VAR_TEMP_x400A, 2
+	goto_if_eq _061D
+	compare VAR_TEMP_x400A, 3
+	goto_if_eq _0628
 	npc_msg msg_0146_D51R0201_00027
 	goto _0433
 
@@ -331,17 +331,17 @@ _0433:
 scr_seq_D51R0201_003:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	gotoif lt, _0498
-	comparevartovalue VAR_UNK_4103, 2
-	gotoif eq, _0545
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	goto_if_lt _0498
+	compare VAR_UNK_4103, 2
+	goto_if_eq _0545
 	call _0550
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif eq, _0633
-	comparevartovalue VAR_TEMP_x400A, 2
-	gotoif eq, _061D
-	comparevartovalue VAR_TEMP_x400A, 3
-	gotoif eq, _0628
+	compare VAR_TEMP_x400A, 0
+	goto_if_eq _0633
+	compare VAR_TEMP_x400A, 2
+	goto_if_eq _061D
+	compare VAR_TEMP_x400A, 3
+	goto_if_eq _0628
 	npc_msg msg_0146_D51R0201_00028
 	goto _049B
 
@@ -355,17 +355,17 @@ _049B:
 scr_seq_D51R0201_005:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	gotoif lt, _0500
-	comparevartovalue VAR_UNK_4103, 3
-	gotoif eq, _0545
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	goto_if_lt _0500
+	compare VAR_UNK_4103, 3
+	goto_if_eq _0545
 	call _0550
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif eq, _0633
-	comparevartovalue VAR_TEMP_x400A, 2
-	gotoif eq, _061D
-	comparevartovalue VAR_TEMP_x400A, 3
-	gotoif eq, _0628
+	compare VAR_TEMP_x400A, 0
+	goto_if_eq _0633
+	compare VAR_TEMP_x400A, 2
+	goto_if_eq _061D
+	compare VAR_TEMP_x400A, 3
+	goto_if_eq _0628
 	npc_msg msg_0146_D51R0201_00029
 	goto _0503
 
@@ -381,10 +381,10 @@ _0514:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _063E
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _053C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _063E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _053C
 	end
 
 _053C:
@@ -402,34 +402,34 @@ _0545:
 
 _0550:
 	get_party_count VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif eq, _056D
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_eq _056D
 	nop_var_490 VAR_TEMP_x4008
 	setvar VAR_TEMP_x400A, 2
 	return
 
 _056D:
 	get_lead_mon_index VAR_TEMP_x4000
-	comparevartovalue VAR_UNK_4102, 1
-	gotoif ne, _05B2
+	compare VAR_UNK_4102, 1
+	goto_if_ne _05B2
 	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0605
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0605
 	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _060D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _060D
 	goto _0615
 	.byte 0x16, 0x00, 0x47, 0x00
 	.byte 0x00, 0x00
 _05B2:
-	comparevartovalue VAR_UNK_4102, 2
-	gotoif ne, _05F3
+	compare VAR_UNK_4102, 2
+	goto_if_ne _05F3
 	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0605
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0605
 	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _060D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _060D
 	goto _0615
 	.byte 0x16, 0x00, 0x06
 	.byte 0x00, 0x00, 0x00
@@ -472,8 +472,8 @@ _0633:
 
 _063E:
 	closemsg
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	gotoif ne, _0659
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	goto_if_ne _0659
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto _065F
 
@@ -485,36 +485,36 @@ _065F:
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	get_player_facing VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4009, 483
-	gotoif ne, _0691
+	compare VAR_TEMP_x4009, 483
+	goto_if_ne _0691
 	goto _06B0
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00
 	.byte 0x00
 _0691:
-	comparevartovalue VAR_TEMP_x4009, 484
-	gotoif ne, _06AA
+	compare VAR_TEMP_x4009, 484
+	goto_if_ne _06AA
 	goto _0731
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _06AA:
 	goto _07B2
 
 _06B0:
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _06D3
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _06D3
 	apply_movement obj_partner_poke, _0BE4
 	apply_movement 241, _0C28
 	goto _0729
 
 _06D3:
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif ne, _06F6
+	compare VAR_TEMP_x4002, 3
+	goto_if_ne _06F6
 	apply_movement obj_partner_poke, _0BF4
 	apply_movement 241, _0C28
 	goto _0729
 
 _06F6:
-	comparevartovalue VAR_TEMP_x4002, 2
-	gotoif ne, _0719
+	compare VAR_TEMP_x4002, 2
+	goto_if_ne _0719
 	apply_movement obj_partner_poke, _0C08
 	apply_movement 241, _0C28
 	goto _0729
@@ -527,22 +527,22 @@ _0729:
 	goto _0833
 
 _0731:
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _0754
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _0754
 	apply_movement obj_partner_poke, _0C34
 	apply_movement 241, _0C78
 	goto _07AA
 
 _0754:
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif ne, _0777
+	compare VAR_TEMP_x4002, 3
+	goto_if_ne _0777
 	apply_movement obj_partner_poke, _0C44
 	apply_movement 241, _0C78
 	goto _07AA
 
 _0777:
-	comparevartovalue VAR_TEMP_x4002, 2
-	gotoif ne, _079A
+	compare VAR_TEMP_x4002, 2
+	goto_if_ne _079A
 	apply_movement obj_partner_poke, _0C54
 	apply_movement 241, _0C78
 	goto _07AA
@@ -555,22 +555,22 @@ _07AA:
 	goto _0833
 
 _07B2:
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _07D5
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _07D5
 	apply_movement obj_partner_poke, _0C84
 	apply_movement 241, _0CC4
 	goto _082B
 
 _07D5:
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif ne, _07F8
+	compare VAR_TEMP_x4002, 3
+	goto_if_ne _07F8
 	apply_movement obj_partner_poke, _0C90
 	apply_movement 241, _0CC4
 	goto _082B
 
 _07F8:
-	comparevartovalue VAR_TEMP_x4002, 2
-	gotoif ne, _081B
+	compare VAR_TEMP_x4002, 2
+	goto_if_ne _081B
 	apply_movement obj_partner_poke, _0CA0
 	apply_movement 241, _0CC4
 	goto _082B
@@ -588,21 +588,21 @@ _0833:
 	scrcmd_816
 	scrcmd_074 2366
 	scrcmd_773 2
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
-	gotoif eq, _086E
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
+	goto_if_eq _086E
 	release obj_D51R0201_champion
 	move_person obj_D51R0201_champion, 16, 1, 28, 0
 	wait 5, VAR_SPECIAL_x800C
 	lock obj_D51R0201_champion
 _086E:
-	comparevartovalue VAR_TEMP_x4009, 483
-	gotoif ne, _0889
+	compare VAR_TEMP_x4009, 483
+	goto_if_ne _0889
 	apply_movement obj_player, _0CCC
 	goto _08AC
 
 _0889:
-	comparevartovalue VAR_TEMP_x4009, 484
-	gotoif ne, _08A4
+	compare VAR_TEMP_x4009, 484
+	goto_if_ne _08A4
 	apply_movement obj_player, _0CD8
 	goto _08AC
 
@@ -619,14 +619,14 @@ _08AC:
 	apply_movement 241, _0CF0
 	wait_movement
 	play_se SEQ_SE_GS_TAMASYUTUGEN
-	comparevartovalue VAR_TEMP_x4009, 483
-	gotoif ne, _08F6
+	compare VAR_TEMP_x4009, 483
+	goto_if_ne _08F6
 	scrcmd_817 0
 	goto _090F
 
 _08F6:
-	comparevartovalue VAR_TEMP_x4009, 484
-	gotoif ne, _090C
+	compare VAR_TEMP_x4009, 484
+	goto_if_ne _090C
 	scrcmd_817 1
 	goto _090F
 
@@ -651,15 +651,15 @@ _090F:
 	scrcmd_103
 	reset_bgm
 	nop_var_490 VAR_TEMP_x4009
-	comparevartovalue VAR_TEMP_x4009, 483
-	gotoif ne, _097B
+	compare VAR_TEMP_x4009, 483
+	goto_if_ne _097B
 	give_mon SPECIES_DIALGA, 1, 135, 0, 0, VAR_SPECIAL_x800C
 	setvar VAR_UNK_4103, 1
 	goto _09B6
 
 _097B:
-	comparevartovalue VAR_TEMP_x4009, 484
-	gotoif ne, _09A2
+	compare VAR_TEMP_x4009, 484
+	goto_if_ne _09A2
 	give_mon SPECIES_PALKIA, 1, 136, 0, 0, VAR_SPECIAL_x800C
 	setvar VAR_UNK_4103, 2
 	goto _09B6
@@ -673,10 +673,10 @@ _09B6:
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	scrcmd_815 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif eq, _0BB2
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
-	gotoif eq, _0A4D
+	compare VAR_SPECIAL_x800C, 0
+	call_if_eq _0BB2
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
+	goto_if_eq _0A4D
 	apply_movement obj_D51R0201_champion, _0D28
 	apply_movement obj_player, _0D00
 	apply_movement obj_partner_poke, _0D1C
@@ -708,12 +708,12 @@ _0A4D:
 	wait 1, VAR_SPECIAL_x800C
 	fade_screen 6, 6, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
-	gotoif eq, _0AAA
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
+	goto_if_eq _0AAA
 	get_lead_mon_index VAR_TEMP_x4005
 	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
-	comparevartovalue VAR_TEMP_x4006, 1
-	gotoif ne, _0AA0
+	compare VAR_TEMP_x4006, 1
+	goto_if_ne _0AA0
 	setvar VAR_UNK_4102, 1
 	goto _0AA6
 
@@ -723,8 +723,8 @@ _0AA6:
 	clearflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 _0AAA:
 	play_se SEQ_SE_DP_KAIDAN2
-	comparevartovalue VAR_UNK_403E, 6
-	gotoif ne, _0AE5
+	compare VAR_UNK_403E, 6
+	goto_if_ne _0AE5
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 490, 0, 9, 24, 1
@@ -733,8 +733,8 @@ _0AAA:
 	goto _0BAE
 
 _0AE5:
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif ne, _0B1C
+	compare VAR_UNK_403E, 7
+	goto_if_ne _0B1C
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 9, 24, 1
@@ -743,8 +743,8 @@ _0AE5:
 	goto _0BAE
 
 _0B1C:
-	comparevartovalue VAR_UNK_403E, 8
-	gotoif ne, _0B53
+	compare VAR_UNK_403E, 8
+	goto_if_ne _0B53
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 9, 24, 1
@@ -753,8 +753,8 @@ _0B1C:
 	goto _0BAE
 
 _0B53:
-	comparevartovalue VAR_UNK_403E, 9
-	gotoif ne, _0B8A
+	compare VAR_UNK_403E, 9
+	goto_if_ne _0B8A
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 9, 24, 1

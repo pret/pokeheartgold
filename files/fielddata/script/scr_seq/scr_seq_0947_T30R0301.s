@@ -13,14 +13,13 @@ scr_seq_T30R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0D0
-	gotoif TRUE, _00CA
+	goto_if_set FLAG_UNK_0D0, _00CA
 	npc_msg msg_0634_T30R0301_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _003B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _003B
 	goto _00BF
 
 _003B:
@@ -32,17 +31,17 @@ _003B:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _00BF
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _00BF
 	scrcmd_470 3
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_239 32772, 32774
-	comparevartovalue VAR_SPECIAL_x8006, 0
-	gotoif eq, _00B2
+	compare VAR_SPECIAL_x8006, 0
+	goto_if_eq _00B2
 	scrcmd_472 32780
-	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	gotoif ne, _00B2
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	goto_if_ne _00B2
 	scrcmd_473 32772
 	scrcmd_474
 	setflag FLAG_UNK_0D0
@@ -80,13 +79,13 @@ scr_seq_T30R0301_001:
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8000
 	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, RIBBON_HOENN_EFFORT
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0199
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0199
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0634_T30R0301_00005
 	get_ev_total 32780, 32768
-	comparevartovalue VAR_SPECIAL_x800C, 510
-	gotoif lt, _0136
+	compare VAR_SPECIAL_x800C, 510
+	goto_if_lt _0136
 	npc_msg msg_0634_T30R0301_00006
 	give_ribbon VAR_SPECIAL_x8000, RIBBON_HOENN_EFFORT
 	play_fanfare SEQ_ME_ITEM
@@ -101,26 +100,26 @@ scr_seq_T30R0301_001:
 	end
 
 _0136:
-	comparevartovalue VAR_SPECIAL_x800C, 506
-	gotoif ne, _014C
+	compare VAR_SPECIAL_x800C, 506
+	goto_if_ne _014C
 	npc_msg msg_0634_T30R0301_00010
 	goto _0191
 
 _014C:
-	comparevartovalue VAR_SPECIAL_x800C, 507
-	gotoif ne, _0162
+	compare VAR_SPECIAL_x800C, 507
+	goto_if_ne _0162
 	npc_msg msg_0634_T30R0301_00011
 	goto _0191
 
 _0162:
-	comparevartovalue VAR_SPECIAL_x800C, 508
-	gotoif ne, _0178
+	compare VAR_SPECIAL_x800C, 508
+	goto_if_ne _0178
 	npc_msg msg_0634_T30R0301_00012
 	goto _0191
 
 _0178:
-	comparevartovalue VAR_SPECIAL_x800C, 509
-	gotoif ne, _018E
+	compare VAR_SPECIAL_x800C, 509
+	goto_if_ne _018E
 	npc_msg msg_0634_T30R0301_00013
 	goto _0191
 

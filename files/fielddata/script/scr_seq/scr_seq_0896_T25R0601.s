@@ -12,17 +12,15 @@
 	scrdef_end
 
 scr_seq_T25R0601_002:
-	checkflag FLAG_UNK_15D
-	gotoif TRUE, _0058
-	checkflag FLAG_UNK_0B5
-	gotoif FALSE, _0058
+	goto_if_set FLAG_UNK_15D, _0058
+	goto_if_unset FLAG_UNK_0B5, _0058
 	scrcmd_688 16384, 492
-	comparevartovalue VAR_TEMP_x4000, 255
-	gotoif eq, _0058
+	compare VAR_TEMP_x4000, 255
+	goto_if_eq _0058
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 492
-	gotoif ne, _0058
+	compare VAR_TEMP_x4001, 492
+	goto_if_ne _0058
 	setvar VAR_UNK_4082, 1
 _0058:
 	end
@@ -51,8 +49,8 @@ scr_seq_T25R0601_003:
 	setvar VAR_SPECIAL_x8004, 466
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _00EA
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _00EA
 	callstd std_give_item_verbose
 	npc_msg msg_0589_T25R0601_00007
 	waitbutton
@@ -111,11 +109,10 @@ _014C:
 	step 3, 1
 	step_end
 scr_seq_T25R0601_000:
-	checkflag FLAG_UNK_0B5
-	gotoif TRUE, _01E5
+	goto_if_set FLAG_UNK_0B5, _01E5
 	check_badge 2, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0185
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0185
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -130,8 +127,8 @@ _0185:
 	lockall
 	faceplayer
 	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01D0
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01D0
 	npc_msg msg_0589_T25R0601_00001
 	goto_if_no_item_space ITEM_SQUIRTBOTTLE, 1, _01DB
 	callstd std_give_item_verbose
@@ -177,27 +174,27 @@ _01E5:
 	goto _031F
 
 _0276:
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, _036D
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, _0377
-	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, _0381
-	comparevartovalue VAR_SPECIAL_x8000, 3
-	callif eq, _038B
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0334
+	compare VAR_SPECIAL_x8000, 0
+	call_if_eq _036D
+	compare VAR_SPECIAL_x8000, 1
+	call_if_eq _0377
+	compare VAR_SPECIAL_x8000, 2
+	call_if_eq _0381
+	compare VAR_SPECIAL_x8000, 3
+	call_if_eq _038B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0334
 	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _032B
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, _0395
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, _039D
-	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, _03A5
-	comparevartovalue VAR_SPECIAL_x8000, 3
-	callif eq, _03AD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _032B
+	compare VAR_SPECIAL_x8000, 0
+	call_if_eq _0395
+	compare VAR_SPECIAL_x8000, 1
+	call_if_eq _039D
+	compare VAR_SPECIAL_x8000, 2
+	call_if_eq _03A5
+	compare VAR_SPECIAL_x8000, 3
+	call_if_eq _03AD
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
 	giveitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
@@ -274,15 +271,14 @@ scr_seq_T25R0601_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_15D
-	gotoif TRUE, _03FD
+	goto_if_set FLAG_UNK_15D, _03FD
 	scrcmd_688 32780, 492
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _03F2
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _03F2
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 492
-	gotoif eq, _0432
+	compare VAR_TEMP_x4001, 492
+	goto_if_eq _0432
 _03F2:
 	npc_msg msg_0589_T25R0601_00004
 	waitbutton
@@ -292,12 +288,12 @@ _03F2:
 
 _03FD:
 	scrcmd_688 32780, 492
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _03F2
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _03F2
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 492
-	gotoif ne, _03F2
+	compare VAR_TEMP_x4001, 492
+	goto_if_ne _03F2
 	npc_msg msg_0589_T25R0601_00007
 	waitbutton
 	closemsg
@@ -310,20 +306,20 @@ _0432:
 	npc_msg msg_0589_T25R0601_00005
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0460
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0460
 	apply_movement obj_T25R0601_gsgirl1, _0134
 	goto _049E
 
 _0460:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _047B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _047B
 	apply_movement obj_T25R0601_gsgirl1, _013C
 	goto _049E
 
 _047B:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0496
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0496
 	apply_movement obj_T25R0601_gsgirl1, _0144
 	goto _049E
 
@@ -335,8 +331,8 @@ _049E:
 	setvar VAR_SPECIAL_x8004, 466
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _04DD
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _04DD
 	callstd std_give_item_verbose
 	npc_msg msg_0589_T25R0601_00007
 	waitbutton

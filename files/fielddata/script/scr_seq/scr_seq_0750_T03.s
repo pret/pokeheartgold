@@ -22,8 +22,7 @@
 	scrdef_end
 
 scr_seq_T03_008:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _004B
+	goto_if_unset FLAG_UNK_189, _004B
 	clearflag FLAG_UNK_189
 	end
 
@@ -32,10 +31,10 @@ _004B:
 
 _0051:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, _0075
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif eq, _0075
+	compare VAR_TEMP_x4000, 2
+	goto_if_eq _0075
+	compare VAR_TEMP_x4000, 6
+	goto_if_eq _0075
 	setflag FLAG_HIDE_CAMERON
 	end
 
@@ -48,20 +47,18 @@ scr_seq_T03_000:
 	lockall
 	faceplayer
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _00A5
-	checkflag FLAG_UNK_094
-	gotoif TRUE, _0108
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _00A5
+	goto_if_set FLAG_UNK_094, _0108
 	goto _00B0
 
 _00A5:
-	checkflag FLAG_UNK_093
-	gotoif TRUE, _0108
+	goto_if_set FLAG_UNK_093, _0108
 _00B0:
 	npc_msg msg_0460_T03_00002
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _00E6
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _00E6
 	setvar VAR_SPECIAL_x8004, 482
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
@@ -98,11 +95,11 @@ scr_seq_T03_007:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0218
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0218
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _022C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _022C
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -110,14 +107,14 @@ scr_seq_T03_007:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0184
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0184
 	apply_movement obj_player, _0240
 	goto _01B7
 
 _0184:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _01A7
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _01A7
 	apply_movement obj_player, _0260
 	apply_movement obj_T03_gsmiddleman1, _0274
 	goto _01B7
@@ -131,8 +128,8 @@ _01B7:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _01DE
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _01DE
 	apply_movement obj_partner_poke, _0280
 	wait_movement
 _01DE:
@@ -250,20 +247,20 @@ scr_seq_T03_006:
 	end
 
 _030E:
-	comparevartovalue VAR_UNK_4083, 4
-	gotoif eq, _0341
-	comparevartovalue VAR_UNK_4083, 2
-	gotoif eq, _033D
-	comparevartovalue VAR_UNK_4083, 3
-	gotoif eq, _033D
+	compare VAR_UNK_4083, 4
+	goto_if_eq _0341
+	compare VAR_UNK_4083, 2
+	goto_if_eq _033D
+	compare VAR_UNK_4083, 3
+	goto_if_eq _033D
 	goto _0051
 	.byte 0x02, 0x00
 _033D:
 	clearflag FLAG_HIDE_PEWTER_CITY_STEVEN
 _0341:
 	get_game_version VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _035C
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _035C
 	clearflag FLAG_HIDE_PEWTER_CITY_LATIOS
 	goto _0360
 
@@ -273,8 +270,8 @@ _0360:
 	end
 
 scr_seq_T03_011:
-	comparevartovalue VAR_UNK_4083, 2
-	gotoif eq, _0371
+	compare VAR_UNK_4083, 2
+	goto_if_eq _0371
 	end
 
 _0371:
@@ -282,14 +279,13 @@ _0371:
 	end
 
 scr_seq_T03_013:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _038C
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _038C
 	end
 
 _038C:
 	get_game_version VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _03AB
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _03AB
 	setflag FLAG_HIDE_PEWTER_CITY_LATIOS
 	hide_person obj_T03_tsure_poke_621
 	goto _03B3
@@ -311,8 +307,8 @@ scr_seq_T03_012:
 	apply_movement obj_T03_daigo, _045C
 	wait_movement
 	get_game_version VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _03F1
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _03F1
 	npc_msg msg_0460_T03_00006
 	goto _03F4
 
@@ -327,8 +323,8 @@ _03F4:
 	scrcmd_602 1
 	scrcmd_604 48
 	get_game_version VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _042C
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _042C
 	npc_msg msg_0460_T03_00008
 	goto _042F
 
@@ -378,11 +374,11 @@ scr_seq_T03_010:
 	lockall
 	faceplayer
 	scrcmd_546 0, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _0649
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _0649
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _04C8
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _04C8
 	setvar VAR_TEMP_x400A, 381
 	play_cry VAR_TEMP_x400A, 0
 	npc_msg msg_0460_T03_00010
@@ -399,19 +395,19 @@ _04D7:
 	wild_battle VAR_TEMP_x400A, 40, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	scrcmd_683 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, _057B
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, _057B
+	compare VAR_TEMP_x4000, 2
+	goto_if_eq _057B
+	compare VAR_TEMP_x4000, 3
+	goto_if_eq _057B
 	scrcmd_588 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0526
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _055A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0526
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _055A
 _0526:
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _0540
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _0540
 	npc_msg msg_0460_T03_00012
 	goto _0543
 
@@ -419,15 +415,15 @@ _0540:
 	npc_msg msg_0460_T03_00013
 _0543:
 	closemsg
-	comparevartovalue VAR_UNK_4083, 4
-	gotoif eq, _0649
+	compare VAR_UNK_4083, 4
+	goto_if_eq _0649
 	goto _0585
 	.byte 0x02, 0x00
 _055A:
 	copyvar VAR_TEMP_x4009, VAR_UNK_4083
 	setvar VAR_UNK_4083, 5
-	comparevartovalue VAR_TEMP_x4009, 4
-	gotoif eq, _0649
+	compare VAR_TEMP_x4009, 4
+	goto_if_eq _0649
 	goto _0585
 	.byte 0x02, 0x00
 _057B:
@@ -444,16 +440,16 @@ _0585:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, _060C
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _05D2
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, _05FF
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _060C
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _05D2
+	compare VAR_TEMP_x4000, 4
+	goto_if_eq _05FF
 _05D2:
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _05EC
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _05EC
 	npc_msg msg_0460_T03_00016
 	goto _05EF
 
@@ -483,8 +479,8 @@ _061F:
 	apply_movement obj_T03_daigo, _0480
 	wait_movement
 	hide_person obj_T03_daigo
-	comparevartovalue VAR_UNK_4130, 4
-	callif eq, _064D
+	compare VAR_UNK_4130, 4
+	call_if_eq _064D
 _0649:
 	releaseall
 	end

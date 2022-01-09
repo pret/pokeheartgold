@@ -25,34 +25,34 @@
 	scrdef_end
 
 scr_seq_T27R0501_013:
-	comparevartovalue VAR_UNK_410C, 1
-	gotoif gt, _0057
+	compare VAR_UNK_410C, 1
+	goto_if_gt _0057
 	scrcmd_375 12
 _0057:
-	comparevartovalue VAR_UNK_410C, 0
-	gotoif ne, _007C
+	compare VAR_UNK_410C, 0
+	goto_if_ne _007C
 	move_person obj_T27R0501_rocketm, 6, 0, 6, 3
 	move_person obj_T27R0501_dancer_3, 8, 0, 6, 2
 _007C:
-	comparevartovalue VAR_TEMP_x4009, 222
-	gotoif ne, _0110
+	compare VAR_TEMP_x4009, 222
+	goto_if_ne _0110
 	move_person obj_T27R0501_rocketm, 29, 0, 29, 1
 	scrcmd_375 9
 	get_player_facing VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _00BC
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _00BC
 	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 1
 	goto _0106
 
 _00BC:
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _00DB
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _00DB
 	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 0
 	goto _0106
 
 _00DB:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _00FA
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _00FA
 	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 3
 	goto _0106
 
@@ -62,10 +62,10 @@ _0106:
 	scrcmd_374 12
 	setvar VAR_TEMP_x4009, 0
 _0110:
-	comparevartovalue VAR_TEMP_x400A, 10
-	gotoif eq, _0136
-	comparevartovalue VAR_UNK_410C, 3
-	gotoif ne, _0136
+	compare VAR_TEMP_x400A, 10
+	goto_if_eq _0136
+	compare VAR_UNK_410C, 3
+	goto_if_ne _0136
 	move_person obj_T27R0501_dancer_3, 7, 0, 6, 1
 _0136:
 	end
@@ -212,25 +212,25 @@ scr_seq_T27R0501_003:
 	setvar VAR_TEMP_x4009, 222
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_26, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _040C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _040C
 	npc_msg msg_0618_T27R0501_00006
 	closemsg
 	get_player_facing VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8004, 0
-	gotoif ne, _0354
+	compare VAR_SPECIAL_x8004, 0
+	goto_if_ne _0354
 	apply_movement obj_T27R0501_rocketm_2, _0414
 	goto _0392
 
 _0354:
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif ne, _036F
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_ne _036F
 	apply_movement obj_T27R0501_rocketm_2, _0424
 	goto _0392
 
 _036F:
-	comparevartovalue VAR_SPECIAL_x8004, 2
-	gotoif ne, _038A
+	compare VAR_SPECIAL_x8004, 2
+	goto_if_ne _038A
 	apply_movement obj_T27R0501_rocketm_2, _0434
 	goto _0392
 
@@ -240,20 +240,20 @@ _0392:
 	wait_movement
 	npc_msg msg_0618_T27R0501_00007
 	closemsg
-	comparevartovalue VAR_SPECIAL_x8004, 0
-	gotoif ne, _03B4
+	compare VAR_SPECIAL_x8004, 0
+	goto_if_ne _03B4
 	apply_movement obj_T27R0501_rocketm_2, _0454
 	goto _03F2
 
 _03B4:
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif ne, _03CF
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_ne _03CF
 	apply_movement obj_T27R0501_rocketm_2, _0460
 	goto _03F2
 
 _03CF:
-	comparevartovalue VAR_SPECIAL_x8004, 2
-	gotoif ne, _03EA
+	compare VAR_SPECIAL_x8004, 2
+	goto_if_ne _03EA
 	apply_movement obj_T27R0501_rocketm_2, _046C
 	goto _03F2
 
@@ -322,10 +322,10 @@ scr_seq_T27R0501_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_410C, 1
-	gotoif eq, _04B5
-	comparevartovalue VAR_TEMP_x400A, 10
-	gotoif eq, _04C0
+	compare VAR_UNK_410C, 1
+	goto_if_eq _04B5
+	compare VAR_TEMP_x400A, 10
+	goto_if_eq _04C0
 	npc_msg msg_0618_T27R0501_00010
 	waitbutton
 	closemsg
@@ -387,8 +387,7 @@ scr_seq_T27R0501_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0A2
-	gotoif TRUE, _059E
+	goto_if_set FLAG_UNK_0A2, _059E
 	npc_msg msg_0618_T27R0501_00025
 	waitbutton
 	closemsg
@@ -450,10 +449,10 @@ scr_seq_T27R0501_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x400A, 10
-	gotoif eq, _0644
-	comparevartovalue VAR_UNK_410C, 1
-	gotoif eq, _064F
+	compare VAR_TEMP_x400A, 10
+	goto_if_eq _0644
+	compare VAR_UNK_410C, 1
+	goto_if_eq _064F
 	npc_msg msg_0618_T27R0501_00031
 	waitbutton
 	closemsg
@@ -468,14 +467,14 @@ _0644:
 	end
 
 _064F:
-	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, _0665
+	compare VAR_TEMP_x400B, 0
+	goto_if_ne _0665
 	npc_msg msg_0618_T27R0501_00032
 	goto _067E
 
 _0665:
-	comparevartovalue VAR_TEMP_x400B, 1
-	gotoif ne, _067B
+	compare VAR_TEMP_x400B, 1
+	goto_if_ne _067B
 	npc_msg msg_0618_T27R0501_00034
 	goto _067E
 
@@ -485,8 +484,8 @@ _067E:
 	waitbutton
 	closemsg
 	releaseall
-	comparevartovalue VAR_TEMP_x400B, 2
-	gotoif ge, _069D
+	compare VAR_TEMP_x400B, 2
+	goto_if_ge _069D
 	addvar VAR_TEMP_x400B, 1
 	goto _06A3
 
@@ -499,10 +498,10 @@ scr_seq_T27R0501_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x400A, 10
-	gotoif eq, _06D2
-	comparevartovalue VAR_UNK_410C, 1
-	gotoif eq, _06DD
+	compare VAR_TEMP_x400A, 10
+	goto_if_eq _06D2
+	compare VAR_UNK_410C, 1
+	goto_if_eq _06DD
 	npc_msg msg_0618_T27R0501_00036
 	waitbutton
 	closemsg
@@ -537,10 +536,8 @@ scr_seq_T27R0501_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _0724
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _0724
+	goto_if_set FLAG_UNK_108, _0724
+	goto_if_set FLAG_UNK_109, _0724
 	npc_msg msg_0618_T27R0501_00019
 	waitbutton
 	closemsg
@@ -558,10 +555,8 @@ scr_seq_T27R0501_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _0758
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _0758
+	goto_if_set FLAG_UNK_108, _0758
+	goto_if_set FLAG_UNK_109, _0758
 	npc_msg msg_0618_T27R0501_00019
 	waitbutton
 	closemsg
@@ -580,40 +575,38 @@ scr_seq_T27R0501_007:
 	lockall
 	faceplayer
 	setvar VAR_SPECIAL_x8000, 77
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _0868
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _0868
+	goto_if_set FLAG_UNK_108, _0868
+	goto_if_set FLAG_UNK_109, _0868
 	npc_msg msg_0618_T27R0501_00013
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x8004
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif eq, _0BD3
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_eq _0BD3
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif ne, _07BA
+	compare VAR_SPECIAL_x800C, 0
+	call_if_ne _07BA
 	goto _0944
 	.byte 0x02, 0x00
 _07BA:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _07DF
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _07DF
 	apply_movement obj_player, _0828
 	goto _080F
 
 _07DF:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _07FA
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _07FA
 	apply_movement obj_player, _083C
 	goto _080F
 
 _07FA:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _080F
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _080F
 	apply_movement obj_player, _084C
 _080F:
 	apply_movement obj_T27R0501_dancer_6, _085C
@@ -660,10 +653,8 @@ scr_seq_T27R0501_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _08A3
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _08A3
+	goto_if_set FLAG_UNK_108, _08A3
+	goto_if_set FLAG_UNK_109, _08A3
 	npc_msg msg_0618_T27R0501_00019
 	waitbutton
 	closemsg
@@ -681,10 +672,8 @@ scr_seq_T27R0501_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _08D7
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _08D7
+	goto_if_set FLAG_UNK_108, _08D7
+	goto_if_set FLAG_UNK_109, _08D7
 	npc_msg msg_0618_T27R0501_00019
 	waitbutton
 	closemsg
@@ -712,8 +701,8 @@ scr_seq_T27R0501_016:
 	scrcmd_602 1
 	scrcmd_604 48
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _092A
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _092A
 	npc_msg msg_0618_T27R0501_00011
 	goto _092D
 
@@ -723,8 +712,8 @@ _092D:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x8004
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif eq, _0BD3
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_eq _0BD3
 	closemsg
 _0944:
 	scrcmd_081 30
@@ -736,8 +725,8 @@ _0944:
 	wait 10, VAR_SPECIAL_x800C
 	trainer_battle TRAINER_KIMONO_GIRL_ZUKI, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0BC9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_6, _0C0C
 	wait_movement
 	scrcmd_081 30
@@ -748,8 +737,8 @@ _0944:
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_NAOKO, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0BC9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer, _0C48
 	wait_movement
 	scrcmd_081 30
@@ -760,8 +749,8 @@ _0944:
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_MIKI, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0BC9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_5, _0C84
 	wait_movement
 	scrcmd_081 30
@@ -772,8 +761,8 @@ _0944:
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_SAYO, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0BC9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_2, _0CBC
 	wait_movement
 	scrcmd_081 30
@@ -784,16 +773,16 @@ _0944:
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_KUNI, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0BC9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_4, _0CF8
 	wait_movement
 	apply_movement obj_T27R0501_dancer_6, _0D08
 	wait_movement
 	npc_msg msg_0618_T27R0501_00020
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _0AA4
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _0AA4
 	giveitem_no_check ITEM_CLEAR_BELL, 1
 	setflag FLAG_UNK_103
 	goto _0AB8
@@ -813,8 +802,8 @@ _0AB8:
 	apply_movement obj_T27R0501_dancer_6, _0BEC
 	wait_movement
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _0B02
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _0B02
 	npc_msg msg_0618_T27R0501_00021
 	goto _0B05
 
@@ -825,8 +814,8 @@ _0B05:
 	apply_movement obj_T27R0501_dancer_6, _0BE4
 	wait_movement
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _0B2A
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _0B2A
 	npc_msg msg_0618_T27R0501_00023
 	goto _0B2D
 
@@ -852,8 +841,8 @@ _0B2D:
 	call _0BB0
 	setvar VAR_UNK_410C, 6
 	setvar VAR_UNK_40FA, 1
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _0BAA
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _0BAA
 	clearflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
 	goto _0BAE
 
@@ -863,8 +852,8 @@ _0BAE:
 	end
 
 _0BB0:
-	comparevartovalue VAR_SPECIAL_x8000, 77
-	gotoif ne, _0BC5
+	compare VAR_SPECIAL_x8000, 77
+	goto_if_ne _0BC5
 	releaseall
 	goto _0BC7
 

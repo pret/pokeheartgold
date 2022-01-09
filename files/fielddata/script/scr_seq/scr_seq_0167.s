@@ -42,8 +42,8 @@ _008C:
 	npc_msg msg_0312_00011
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _00B4
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _00B4
 	menu_item_add 272, 255, 0
 	goto _00BC
 
@@ -99,8 +99,8 @@ _019C:
 	.byte 0x02, 0x00
 _01A7:
 	scrcmd_358 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif lt, _07E6
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_lt _07E6
 	npc_msg msg_0312_00003
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
@@ -146,8 +146,8 @@ _028F:
 	npc_msg msg_0312_00004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01A7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01A7
 	scrcmd_815 0
 	npc_msg msg_0312_00005
 	closemsg
@@ -205,8 +205,8 @@ _028F:
 	scrcmd_604 48
 	scrcmd_307 0, 0, 22, 9, 77
 	call _045C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _046F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _046F
 	call _0505
 	call _0540
 	call _0464
@@ -218,25 +218,20 @@ _028F:
 	npc_msg msg_0312_00020
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	comparevartovalue VAR_SPECIAL_x8003, 0
-	callif eq, _05AB
+	compare VAR_SPECIAL_x8003, 0
+	call_if_eq _05AB
 	call _0567
-	comparevartovalue VAR_UNK_40E2, 1
-	callif eq, _05ED
-	comparevartovalue VAR_UNK_40E2, 2
-	callif eq, _05FA
-	comparevartovalue VAR_UNK_40E2, 3
-	callif eq, _0607
-	checkflag FLAG_HIDE_POKEATHLON_SHOES_SIGN
-	callif TRUE, _063E
-	checkflag FLAG_HIDE_POKEATHLON_CLOTHES_SIGN
-	callif TRUE, _0657
-	checkflag FLAG_HIDE_POKEATHLON_FLAG_SIGN
-	callif TRUE, _0670
-	checkflag FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN
-	callif TRUE, _0689
-	checkflag FLAG_HIDE_POKEATHLON_BALL_SIGN
-	callif TRUE, _06A2
+	compare VAR_UNK_40E2, 1
+	call_if_eq _05ED
+	compare VAR_UNK_40E2, 2
+	call_if_eq _05FA
+	compare VAR_UNK_40E2, 3
+	call_if_eq _0607
+	call_if_set FLAG_HIDE_POKEATHLON_SHOES_SIGN, _063E
+	call_if_set FLAG_HIDE_POKEATHLON_CLOTHES_SIGN, _0657
+	call_if_set FLAG_HIDE_POKEATHLON_FLAG_SIGN, _0670
+	call_if_set FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN, _0689
+	call_if_set FLAG_HIDE_POKEATHLON_BALL_SIGN, _06A2
 	npc_msg msg_0312_00010
 	waitbutton
 	closemsg
@@ -276,8 +271,8 @@ _04A3:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _04C8
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _04C8
 	apply_movement obj_player, _0814
 	goto _04D0
 
@@ -291,8 +286,8 @@ _04D0:
 	return
 
 _04DE:
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _04F9
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _04F9
 	apply_movement 0, _0914
 	goto _0501
 
@@ -306,8 +301,8 @@ _0505:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _052A
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _052A
 	apply_movement obj_player, _08EC
 	goto _0532
 
@@ -321,8 +316,8 @@ _0532:
 	return
 
 _0540:
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _055B
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _055B
 	apply_movement 0, _0924
 	goto _0563
 
@@ -333,27 +328,27 @@ _0563:
 	return
 
 _0567:
-	comparevartovalue VAR_SPECIAL_x8003, 0
-	gotoif ne, _057F
+	compare VAR_SPECIAL_x8003, 0
+	goto_if_ne _057F
 	scrcmd_725 0, 10
 	goto _05A9
 
 _057F:
-	comparevartovalue VAR_SPECIAL_x8003, 1
-	gotoif ne, _0597
+	compare VAR_SPECIAL_x8003, 1
+	goto_if_ne _0597
 	scrcmd_725 0, 5
 	goto _05A9
 
 _0597:
-	comparevartovalue VAR_SPECIAL_x8003, 3
-	gotoif ne, _05A9
+	compare VAR_SPECIAL_x8003, 3
+	goto_if_ne _05A9
 	scrcmd_725 1, 5
 _05A9:
 	return
 
 _05AB:
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _05C4
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _05C4
 	setvar VAR_TEMP_x4009, 100
 	goto _05CA
 
@@ -372,18 +367,15 @@ _05CA:
 	return
 
 _05ED:
-	checkflag FLAG_UNK_0EF
-	callif TRUE, _0614
+	call_if_set FLAG_UNK_0EF, _0614
 	return
 
 _05FA:
-	checkflag FLAG_UNK_0F0
-	callif TRUE, _0622
+	call_if_set FLAG_UNK_0F0, _0622
 	return
 
 _0607:
-	checkflag FLAG_UNK_0F1
-	callif TRUE, _0630
+	call_if_set FLAG_UNK_0F1, _0630
 	return
 
 _0614:
@@ -406,86 +398,86 @@ _0630:
 
 _063E:
 	scrcmd_724 16, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 5000
-	gotoif lt, _0655
+	compare VAR_SPECIAL_x800C, 5000
+	goto_if_lt _0655
 	clearflag FLAG_HIDE_POKEATHLON_SHOES_SIGN
 _0655:
 	return
 
 _0657:
 	scrcmd_724 12, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 50
-	gotoif lt, _066E
+	compare VAR_SPECIAL_x800C, 50
+	goto_if_lt _066E
 	clearflag FLAG_HIDE_POKEATHLON_CLOTHES_SIGN
 _066E:
 	return
 
 _0670:
 	scrcmd_724 17, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 200
-	gotoif lt, _0687
+	compare VAR_SPECIAL_x800C, 200
+	goto_if_lt _0687
 	clearflag FLAG_HIDE_POKEATHLON_FLAG_SIGN
 _0687:
 	return
 
 _0689:
 	scrcmd_724 10, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 100
-	gotoif lt, _06A0
+	compare VAR_SPECIAL_x800C, 100
+	goto_if_lt _06A0
 	clearflag FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN
 _06A0:
 	return
 
 _06A2:
 	scrcmd_724 0, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 1, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 2, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 3, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 4, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 5, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 6, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 7, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 8, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	scrcmd_724 9, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 50
-	gotoif lt, _0764
+	compare VAR_TEMP_x4000, 50
+	goto_if_lt _0764
 	clearflag FLAG_HIDE_POKEATHLON_BALL_SIGN
 _0764:
 	return
 
 _0766:
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _0787
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _0787
 	scrcmd_611 0, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _0787:
-	comparevartovalue VAR_TEMP_x400A, 1
-	gotoif ne, _07A8
+	compare VAR_TEMP_x400A, 1
+	goto_if_ne _07A8
 	scrcmd_611 0, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _07A8:
-	comparevartovalue VAR_TEMP_x400A, 2
-	gotoif ne, _07C9
+	compare VAR_TEMP_x400A, 2
+	goto_if_ne _07C9
 	scrcmd_611 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
@@ -617,8 +609,8 @@ scr_seq_0167_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40E2, 0
-	gotoif eq, _0FE4
+	compare VAR_UNK_40E2, 0
+	goto_if_eq _0FE4
 	setvar VAR_TEMP_x400A, 2
 	npc_msg msg_0312_00026
 _095A:
@@ -643,8 +635,7 @@ _09A6:
 	menu_item_add 344, 255, 3
 	menu_item_add 345, 255, 4
 	menu_item_add 346, 255, 6
-	checkflag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
-	callif FALSE, _0B93
+	call_if_unset FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST, _0B93
 	menu_item_add 13, 255, 7
 	menu_exec
 	switch VAR_SPECIAL_x800C
@@ -689,12 +680,12 @@ _0AA6:
 	.byte 0x00
 _0AB1:
 	scrcmd_358 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif lt, _07E6
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_lt _07E6
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0AE1
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0AE1
 	goto _07DB
 	.byte 0x02
 	.byte 0x00
@@ -708,8 +699,7 @@ _0AE1:
 	menu_item_add 344, 255, 2
 	menu_item_add 345, 255, 3
 	menu_item_add 346, 255, 4
-	checkflag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
-	callif FALSE, _0B93
+	call_if_unset FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST, _0B93
 	menu_item_add 12, 255, 6
 	menu_exec
 	copyvar VAR_TEMP_x400B, VAR_SPECIAL_x800C
@@ -767,25 +757,25 @@ _0BF7:
 _0C48:
 	npc_msg msg_0312_00028
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0BF7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0BF7
 	scrcmd_226 40, VAR_TEMP_x400B, 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0CC8
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0CD2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0CC8
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0CD2
 	goto _0CE3
 	.byte 0x02, 0x00
 _0C88:
 	npc_msg msg_0312_00028
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0BF7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0BF7
 	scrcmd_227 40, VAR_TEMP_x400B, 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0CC8
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0CD2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0CC8
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0CD2
 	goto _0CE3
 	.byte 0x02, 0x00
 _0CC8:
@@ -839,22 +829,22 @@ _0CE3:
 	wait_fanfare
 	scrcmd_745 3, VAR_SPECIAL_x8000
 	scrcmd_451 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0D96
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0D96
 	npc_msg msg_0312_00030
 	wait 30, VAR_SPECIAL_x8004
 	goto _0DD7
 
 _0D96:
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _0DB2
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _0DB2
 	npc_msg msg_0312_00031
 	wait 30, VAR_SPECIAL_x8004
 	goto _0DD7
 
 _0DB2:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0DCE
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0DCE
 	npc_msg msg_0312_00032
 	wait 30, VAR_SPECIAL_x8004
 	goto _0DD7
@@ -910,8 +900,8 @@ _0DD7:
 	buffer_players_name 0
 	buffer_int 1, VAR_SPECIAL_x8001
 	buffer_int 2, VAR_SPECIAL_x8002
-	comparevartovalue VAR_SPECIAL_x8000, 10
-	gotoif lt, _0EB5
+	compare VAR_SPECIAL_x8000, 10
+	goto_if_lt _0EB5
 	npc_msg msg_0312_00047
 	goto _0EB8
 
@@ -921,25 +911,20 @@ _0EB8:
 	npc_msg msg_0312_00020
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	comparevartovalue VAR_SPECIAL_x8003, 1
-	callif le, _0F43
+	compare VAR_SPECIAL_x8003, 1
+	call_if_le _0F43
 	call _0F8D
-	comparevartovalue VAR_UNK_40E2, 1
-	callif eq, _05ED
-	comparevartovalue VAR_UNK_40E2, 2
-	callif eq, _05FA
-	comparevartovalue VAR_UNK_40E2, 3
-	callif eq, _0607
-	checkflag FLAG_HIDE_POKEATHLON_SHOES_SIGN
-	callif TRUE, _063E
-	checkflag FLAG_HIDE_POKEATHLON_CLOTHES_SIGN
-	callif TRUE, _0657
-	checkflag FLAG_HIDE_POKEATHLON_FLAG_SIGN
-	callif TRUE, _0670
-	checkflag FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN
-	callif TRUE, _0689
-	checkflag FLAG_HIDE_POKEATHLON_BALL_SIGN
-	callif TRUE, _06A2
+	compare VAR_UNK_40E2, 1
+	call_if_eq _05ED
+	compare VAR_UNK_40E2, 2
+	call_if_eq _05FA
+	compare VAR_UNK_40E2, 3
+	call_if_eq _0607
+	call_if_set FLAG_HIDE_POKEATHLON_SHOES_SIGN, _063E
+	call_if_set FLAG_HIDE_POKEATHLON_CLOTHES_SIGN, _0657
+	call_if_set FLAG_HIDE_POKEATHLON_FLAG_SIGN, _0670
+	call_if_set FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN, _0689
+	call_if_set FLAG_HIDE_POKEATHLON_BALL_SIGN, _06A2
 	npc_msg msg_0312_00010
 	waitbutton
 	closemsg
@@ -949,8 +934,8 @@ _0EB8:
 	end
 
 _0F43:
-	comparevartovalue VAR_SPECIAL_x8003, 0
-	gotoif ne, _0F68
+	compare VAR_SPECIAL_x8003, 0
+	goto_if_ne _0F68
 	setvar VAR_TEMP_x4009, 500
 	buffer_int 2, VAR_TEMP_x4009
 	npc_msg msg_0312_00022
@@ -971,20 +956,20 @@ _0F76:
 	return
 
 _0F8D:
-	comparevartovalue VAR_SPECIAL_x8003, 0
-	gotoif ne, _0FA5
+	compare VAR_SPECIAL_x8003, 0
+	goto_if_ne _0FA5
 	scrcmd_725 0, 15
 	goto _0FCF
 
 _0FA5:
-	comparevartovalue VAR_SPECIAL_x8003, 1
-	gotoif ne, _0FBD
+	compare VAR_SPECIAL_x8003, 1
+	goto_if_ne _0FBD
 	scrcmd_725 0, 10
 	goto _0FCF
 
 _0FBD:
-	comparevartovalue VAR_SPECIAL_x8003, 3
-	gotoif ne, _0FCF
+	compare VAR_SPECIAL_x8003, 3
+	goto_if_ne _0FCF
 	scrcmd_725 1, 5
 _0FCF:
 	return

@@ -24,14 +24,14 @@ scr_seq_D02R0101_000:
 	npc_msg msg_0049_D02R0101_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, _005A
+	compare VAR_SPECIAL_x800C, 152
+	goto_if_ne _005A
 	trainer_battle TRAINER_RIVAL_SILVER_15, 0, 0, 0
 	goto _007D
 
 _005A:
-	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, _0075
+	compare VAR_SPECIAL_x800C, 155
+	goto_if_ne _0075
 	trainer_battle TRAINER_RIVAL_SILVER_16, 0, 0, 0
 	goto _007D
 
@@ -39,8 +39,8 @@ _0075:
 	trainer_battle TRAINER_RIVAL_SILVER_14, 0, 0, 0
 _007D:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00C9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00C9
 	callstd std_play_rival_outro_music
 	buffer_players_name 0
 	buffer_rivals_name 1

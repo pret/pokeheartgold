@@ -13,20 +13,19 @@ scr_seq_R16R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_ABA
-	gotoif TRUE, _0068
+	goto_if_set FLAG_UNK_ABA, _0068
 	scrcmd_540 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _007E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _007E
 	npc_msg msg_0355_R16R0101_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0073
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0073
 	scrcmd_538 32780, 0
-	comparevartovalue VAR_SPECIAL_x800C, 65535
-	gotoif eq, _007E
+	compare VAR_SPECIAL_x800C, 65535
+	goto_if_eq _007E
 	setflag FLAG_UNK_ABA
 	npc_msg msg_0355_R16R0101_00002
 	waitbutton

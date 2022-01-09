@@ -79,8 +79,8 @@ scr_seq_0151_004:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00F9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00F9
 	call _0076
 	releaseall
 	end
@@ -90,30 +90,29 @@ _00F9:
 	end
 
 scr_seq_0151_005:
-	comparevartovalue VAR_BUG_CONTEST_HELD_PRIZE, 0
-	gotoif eq, _0114
+	compare VAR_BUG_CONTEST_HELD_PRIZE, 0
+	goto_if_eq _0114
 	call _02BC
 	endstd
 	end
 
 _0114:
-	checkflag FLAG_DAILY_DID_BUG_CONTEST
-	gotoif TRUE, _02A6
+	goto_if_set FLAG_DAILY_DID_BUG_CONTEST, _02A6
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0139
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0139
 	npc_msg msg_0246_00004
 	goto _016E
 
 _0139:
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _014F
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _014F
 	npc_msg msg_0246_00005
 	goto _016E
 
 _014F:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _0165
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0165
 	npc_msg msg_0246_00006
 	goto _016E
 
@@ -125,25 +124,25 @@ _016E:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _018E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _018E
 	npc_msg msg_0246_00017
 	goto _0260
 	.byte 0x02, 0x00
 _018E:
 	count_pc_empty_space VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01B0
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01B0
 	get_party_count VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8004, 6
-	gotoif eq, _02B1
+	compare VAR_SPECIAL_x8004, 6
+	goto_if_eq _02B1
 _01B0:
 	count_alive_mons VAR_SPECIAL_x8005, 6
-	comparevartovalue VAR_SPECIAL_x8005, 1
-	gotoif ne, _01D4
+	compare VAR_SPECIAL_x8005, 1
+	goto_if_ne _01D4
 	get_party_count VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif eq, _021A
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_eq _021A
 _01D4:
 	get_lead_mon_index VAR_SPECIAL_x800C
 	bufferpartymonnick 0, VAR_SPECIAL_x800C
@@ -151,8 +150,8 @@ _01D4:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0200
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0200
 	npc_msg msg_0246_00028
 	goto _0260
 	.byte 0x02, 0x00
@@ -194,14 +193,14 @@ _0268:
 	setvar VAR_SPECIAL_x8005, 627
 _0274:
 	is_npc_bug_contestant_registered VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _028B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _028B
 	setflagvar VAR_SPECIAL_x8005
 _028B:
 	addvar VAR_SPECIAL_x8004, 1
 	addvar VAR_SPECIAL_x8005, 1
-	comparevartovalue VAR_SPECIAL_x8004, 10
-	gotoif lt, _0274
+	compare VAR_SPECIAL_x8004, 10
+	goto_if_lt _0274
 	return
 
 _02A6:
@@ -217,8 +216,8 @@ _02BC:
 	buffer_players_name 0
 	npc_msg msg_0246_00020
 	hasspaceforitem VAR_BUG_CONTEST_HELD_PRIZE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _02F3
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _02F3
 	copyvar VAR_SPECIAL_x8004, VAR_BUG_CONTEST_HELD_PRIZE
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose
@@ -239,8 +238,8 @@ scr_seq_0151_006:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _032B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _032B
 	npc_msg msg_0246_00026
 	closemsg
 	endstd
@@ -267,8 +266,8 @@ scr_seq_0151_007:
 	wait_movement
 	npc_msg msg_0246_00029
 	buffer_bug_contest_winner 2
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _038E
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _038E
 	npc_msg msg_0246_00030
 	goto _0391
 
@@ -279,8 +278,8 @@ _0391:
 	wait_fanfare
 	npc_msg msg_0246_00032
 	buffer_bug_contest_winner 1
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _03B3
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _03B3
 	npc_msg msg_0246_00033
 	goto _03B6
 
@@ -291,8 +290,8 @@ _03B6:
 	wait_fanfare
 	npc_msg msg_0246_00032
 	buffer_bug_contest_winner 0
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _03DC
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _03DC
 	setflag FLAG_WON_THIS_BUG_CONTEST
 	npc_msg msg_0246_00035
 	goto _03E3
@@ -309,7 +308,11 @@ _03E3:
 	setvar VAR_SPECIAL_x8004, 37
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x4000
 	non_npc_msg_var VAR_SPECIAL_x8004
-	goto_if_no_item_space_2 VAR_TEMP_x4001, 1, _042F
+	copyvar VAR_SPECIAL_x8004, VAR_TEMP_x4001
+	setvar VAR_SPECIAL_x8005, 1
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _042F
 	callstd std_give_item_verbose
 	goto _043B
 
@@ -318,11 +321,10 @@ _042F:
 	npc_msg msg_0246_00045
 	copyvar VAR_BUG_CONTEST_HELD_PRIZE, VAR_TEMP_x4001
 _043B:
-	checkflag FLAG_BUG_CONTEST_OTHER_POKES_HELD
-	callif TRUE, _04F6
+	call_if_set FLAG_BUG_CONTEST_OTHER_POKES_HELD, _04F6
 	npc_msg msg_0246_00042
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _045E
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _045E
 	closemsg
 	goto _04B5
 
@@ -333,8 +335,8 @@ _045E:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _049E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _049E
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	nickname_input 255, VAR_SPECIAL_x800C
@@ -342,8 +344,8 @@ _045E:
 	wait_fade
 _049E:
 	buffer_bug_contest_mon_nick 5, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _04B5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _04B5
 	npc_msg msg_0246_00046
 	closemsg
 _04B5:
@@ -379,8 +381,8 @@ _050F:
 	addvar VAR_SPECIAL_x8004, 1
 	addvar VAR_SPECIAL_x8005, 1
 	addvar VAR_SPECIAL_x8006, 1
-	comparevartovalue VAR_SPECIAL_x8004, 10
-	gotoif lt, _050F
+	compare VAR_SPECIAL_x8004, 10
+	goto_if_lt _050F
 	return
 	.byte 0x00, 0x00
 
@@ -402,8 +404,7 @@ scr_seq_0151_008:
 	end
 
 scr_seq_0151_009:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _0581
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0581
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -435,8 +436,7 @@ scr_seq_0151_010:
 	end
 
 scr_seq_0151_011:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _05C9
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _05C9
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -468,8 +468,7 @@ scr_seq_0151_012:
 	end
 
 scr_seq_0151_013:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _0611
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0611
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -501,8 +500,7 @@ scr_seq_0151_014:
 	end
 
 scr_seq_0151_015:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _0659
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0659
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -534,8 +532,7 @@ scr_seq_0151_016:
 	end
 
 scr_seq_0151_017:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _06A1
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _06A1
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -567,8 +564,7 @@ scr_seq_0151_018:
 	end
 
 scr_seq_0151_019:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _06E9
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _06E9
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -600,8 +596,7 @@ scr_seq_0151_020:
 	end
 
 scr_seq_0151_021:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _0731
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0731
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -633,8 +628,7 @@ scr_seq_0151_022:
 	end
 
 scr_seq_0151_023:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _0779
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0779
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -666,8 +660,7 @@ scr_seq_0151_024:
 	end
 
 scr_seq_0151_025:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _07C1
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _07C1
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -699,8 +692,7 @@ scr_seq_0151_026:
 	end
 
 scr_seq_0151_027:
-	checkflag FLAG_WON_THIS_BUG_CONTEST
-	gotoif TRUE, _0809
+	goto_if_set FLAG_WON_THIS_BUG_CONTEST, _0809
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -725,8 +717,8 @@ scr_seq_0151_028:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_BUG_CONTEST_HELD_PRIZE, 0
-	gotoif eq, _083D
+	compare VAR_BUG_CONTEST_HELD_PRIZE, 0
+	goto_if_eq _083D
 	call _02BC
 	goto _0844
 

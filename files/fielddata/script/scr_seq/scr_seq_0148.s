@@ -19,21 +19,20 @@ scr_seq_0148_001:
 _0019:
 	scrcmd_247
 	nat_dex_flag_action 2, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _005E
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _005E
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 17, 255, 0
 	menu_item_add 16, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00EB
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00EB
 	goto _00DA
 
 _005E:
-	checkflag FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
-	gotoif TRUE, _00AF
+	goto_if_set FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION, _00AF
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 18, 255, 0
@@ -41,10 +40,10 @@ _005E:
 	menu_item_add 16, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00EB
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0142
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00EB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0142
 	goto _00DA
 
 _00AF:
@@ -54,8 +53,8 @@ _00AF:
 	menu_item_add 16, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0142
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0142
 _00DA:
 	npc_msg msg_0666_00021
 	waitbutton
@@ -76,8 +75,8 @@ _00EB:
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait_fanfare
 	check_johto_dex_complete VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _012F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _012F
 	setflag FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
 	goto _0132
 
@@ -101,8 +100,8 @@ _0142:
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait_fanfare
 	check_national_dex_complete VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0183
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0183
 	npc_msg msg_0666_00021
 	waitbutton
 	closemsg

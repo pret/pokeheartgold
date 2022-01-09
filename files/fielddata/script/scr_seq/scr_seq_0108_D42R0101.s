@@ -12,8 +12,7 @@ scr_seq_D42R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0DF
-	gotoif TRUE, _0045
+	goto_if_set FLAG_UNK_0DF, _0045
 	npc_msg msg_0127_D42R0101_00000
 	goto_if_no_item_space ITEM_BLACKGLASSES, 1, _0050
 	callstd std_give_item_verbose

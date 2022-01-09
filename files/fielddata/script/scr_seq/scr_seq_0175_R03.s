@@ -16,12 +16,12 @@ scr_seq_R03_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02DF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 386
-	gotoif eq, _0050
+	compare VAR_TEMP_x4001, 386
+	goto_if_eq _0050
 	scrcmd_518 3
 	goto _00BE
 
@@ -33,10 +33,10 @@ _0050:
 	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00B2
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _009E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00B2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _009E
 	scrcmd_605 0, 1
 	goto _00A2
 
@@ -59,12 +59,12 @@ scr_seq_R03_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02DF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 386
-	gotoif eq, _0107
+	compare VAR_TEMP_x4001, 386
+	goto_if_eq _0107
 	scrcmd_518 2
 	goto _018C
 
@@ -76,16 +76,16 @@ _0107:
 	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0180
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0155
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0180
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0155
 	scrcmd_605 0, 1
 	goto _0170
 
 _0155:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _016C
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _016C
 	scrcmd_605 0, 1
 	goto _0170
 
@@ -108,12 +108,12 @@ scr_seq_R03_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02DF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 386
-	gotoif eq, _01D5
+	compare VAR_TEMP_x4001, 386
+	goto_if_eq _01D5
 	scrcmd_518 1
 	goto _022C
 
@@ -125,8 +125,8 @@ _01D5:
 	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0220
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0220
 	scrcmd_605 2, 3
 	scrcmd_602 0
 	scrcmd_608
@@ -144,12 +144,12 @@ scr_seq_R03_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02DF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 386
-	gotoif eq, _0275
+	compare VAR_TEMP_x4001, 386
+	goto_if_eq _0275
 	scrcmd_518 0
 	goto _02CC
 
@@ -161,8 +161,8 @@ _0275:
 	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_176 11, 0, 32774, 32775, VAR_SPECIAL_x800C
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _02C0
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _02C0
 	scrcmd_605 3, 2
 	scrcmd_602 0
 	scrcmd_608

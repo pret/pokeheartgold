@@ -12,8 +12,7 @@ scr_seq_R30R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GOT_APRICORN_BOX
-	gotoif TRUE, _0041
+	goto_if_set FLAG_GOT_APRICORN_BOX, _0041
 	npc_msg msg_0376_R30R0101_00000
 	giveitem_no_check ITEM_APRICORN_BOX, 1
 	setflag FLAG_GOT_APRICORN_BOX

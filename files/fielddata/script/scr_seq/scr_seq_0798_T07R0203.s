@@ -27,8 +27,8 @@ scr_seq_T07R0203_008:
 	end
 
 scr_seq_T07R0203_011:
-	comparevartovalue VAR_UNK_412C, 0
-	gotoif ne, _006B
+	compare VAR_UNK_412C, 0
+	goto_if_ne _006B
 	move_person obj_T07R0203_var_1, 12, 0, 6, 2
 	move_person obj_T07R0203_tsure_poke_611, 13, 0, 6, 2
 _006B:
@@ -126,10 +126,9 @@ scr_seq_T07R0203_000:
 	lockall
 	faceplayer
 	check_johto_dex_complete VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0245
-	checkflag FLAG_UNK_143
-	gotoif TRUE, _01ED
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0245
+	goto_if_set FLAG_UNK_143, _01ED
 	npc_msg msg_0503_T07R0203_00001
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
@@ -144,10 +143,9 @@ scr_seq_T07R0203_000:
 	wait_fade
 _01ED:
 	check_national_dex_complete VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0245
-	checkflag FLAG_UNK_144
-	gotoif TRUE, _023A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0245
+	goto_if_set FLAG_UNK_144, _023A
 	npc_msg msg_0503_T07R0203_00002
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
@@ -179,8 +177,8 @@ scr_seq_T07R0203_009:
 	lockall
 	faceplayer
 	check_badge 15, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0276
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0276
 	npc_msg msg_0503_T07R0203_00007
 	waitbutton
 	closemsg
@@ -189,8 +187,8 @@ scr_seq_T07R0203_009:
 
 _0276:
 	getitemquantity ITEM_GB_SOUNDS, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _02A7
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _02A7
 	npc_msg msg_0503_T07R0203_00008
 	giveitem_no_check ITEM_GB_SOUNDS, 1
 	npc_msg msg_0503_T07R0203_00010

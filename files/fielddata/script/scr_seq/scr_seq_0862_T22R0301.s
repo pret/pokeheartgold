@@ -20,20 +20,20 @@ scr_seq_T22R0301_000:
 	lockall
 	faceplayer
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0049
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0049
 	apply_movement obj_T22R0301_gsbigman, _0164
 	goto _0087
 
 _0049:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0064
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0064
 	apply_movement obj_T22R0301_gsbigman, _0188
 	goto _0087
 
 _0064:
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _007F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _007F
 	apply_movement obj_T22R0301_gsbigman, _01AC
 	goto _0087
 
@@ -45,10 +45,10 @@ _0087:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00B0
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00D7
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00B0
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00D7
 	end
 
 _00B0:
@@ -56,10 +56,10 @@ _00B0:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00D7
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0157
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00D7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0157
 	end
 
 _00D7:
@@ -67,10 +67,10 @@ _00D7:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00FE
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0125
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00FE
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0125
 	end
 
 _00FE:
@@ -78,10 +78,10 @@ _00FE:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0125
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0157
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0125
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0157
 	end
 
 _0125:
@@ -89,10 +89,10 @@ _0125:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _014C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0157
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _014C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0157
 	end
 
 _014C:
@@ -172,33 +172,33 @@ _0207:
 	menu_item_add 29, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0264
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0264
 	npc_msg msg_0560_T22R0301_00014
 	goto _0207
 	.byte 0x16, 0x00
 	.byte 0x74, 0x00, 0x00, 0x00
 _0264:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0280
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0280
 	npc_msg msg_0560_T22R0301_00015
 	goto _0207
 	.byte 0x16, 0x00, 0x58, 0x00, 0x00, 0x00
 _0280:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _029C
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _029C
 	npc_msg msg_0560_T22R0301_00016
 	goto _0207
 	.byte 0x16, 0x00, 0x3c, 0x00, 0x00, 0x00
 _029C:
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif ne, _02B8
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_ne _02B8
 	npc_msg msg_0560_T22R0301_00017
 	goto _0207
 	.byte 0x16, 0x00, 0x20, 0x00, 0x00, 0x00
 _02B8:
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif ne, _02D4
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_ne _02D4
 	npc_msg msg_0560_T22R0301_00018
 	goto _0207
 	.byte 0x16, 0x00
@@ -225,18 +225,18 @@ scr_seq_T22R0301_002:
 	npc_msg msg_0560_T22R0301_00019
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0353
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0353
 	npc_msg msg_0560_T22R0301_00020
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0353
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0353
 	npc_msg msg_0560_T22R0301_00021
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0353
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0353
 	npc_msg msg_0560_T22R0301_00022
 	closemsg
 	touchscreen_menu_show

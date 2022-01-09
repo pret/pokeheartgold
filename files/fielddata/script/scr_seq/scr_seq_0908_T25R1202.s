@@ -157,8 +157,8 @@ _0168:
 _016E:
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0168
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0168
 	closemsg
 	scrcmd_815 0
 	callstd std_enter_global_terminal
@@ -199,8 +199,8 @@ _0203:
 _0209:
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0203
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0203
 	closemsg
 	scrcmd_815 0
 	callstd std_enter_global_terminal

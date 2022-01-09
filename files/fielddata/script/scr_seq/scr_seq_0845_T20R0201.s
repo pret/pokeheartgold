@@ -94,12 +94,10 @@ scr_seq_T20R0201_006:
 	end
 
 scr_seq_T20R0201_001:
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _015C
-	comparevartovalue VAR_SCENE_ELMS_LAB, 4
-	gotoif ge, _0205
-	checkflag FLAG_GOT_STARTER
-	gotoif TRUE, _0179
+	goto_if_set FLAG_GAME_CLEAR, _015C
+	compare VAR_SCENE_ELMS_LAB, 4
+	goto_if_ge _0205
+	goto_if_set FLAG_GOT_STARTER, _0179
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -111,16 +109,15 @@ scr_seq_T20R0201_001:
 
 _015C:
 	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01F2
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01F2
 	goto _0205
 	.byte 0x02, 0x00
 _0179:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GOT_POKEGEAR
-	gotoif TRUE, _01D4
+	goto_if_set FLAG_GOT_POKEGEAR, _01D4
 	buffer_players_name 0
 	npc_msg msg_0545_T20R0201_00007
 	buffer_players_name 0
@@ -133,8 +130,8 @@ _0179:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01C6
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01C6
 	npc_msg msg_0545_T20R0201_00011
 	goto _01C9
 
@@ -170,11 +167,10 @@ _0205:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL
-	gotoif TRUE, _0275
+	goto_if_set FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL, _0275
 	check_badge 0, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0234
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0234
 	npc_msg msg_0545_T20R0201_00015
 	goto _023A
 
@@ -187,8 +183,8 @@ _023A:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0266
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0266
 	npc_msg msg_0545_T20R0201_00017
 	setflag FLAG_UNK_986
 	goto _026D
@@ -220,11 +216,11 @@ _0275:
 	.byte 0x02, 0x00
 _02DF:
 	bank_or_wallet_is_full 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _043A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _043A
 	check_bank_balance VAR_SPECIAL_x800C, 1
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _041C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _041C
 	bank_transaction 1, VAR_SPECIAL_x800C
 	scrcmd_796
 	touchscreen_menu_show
@@ -236,11 +232,11 @@ _02DF:
 
 _0335:
 	bank_or_wallet_is_full 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _042B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _042B
 	hasenoughmoneyvar VAR_SPECIAL_x800C, 1
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0389
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0389
 	bank_transaction 0, VAR_SPECIAL_x800C
 	scrcmd_796
 	touchscreen_menu_show
@@ -265,8 +261,8 @@ _0398:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	scrcmd_796
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _03C2
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _03C2
 	buffer_players_name 0
 	npc_msg msg_0545_T20R0201_00017
 	setflag FLAG_UNK_986

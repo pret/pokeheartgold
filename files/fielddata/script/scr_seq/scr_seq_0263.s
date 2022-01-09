@@ -14,8 +14,7 @@ scr_seq_0263_000:
 	faceplayer
 	script_overlay_cmd 3, 0
 	scrcmd_116 1, 21, 1
-	checkflag FLAG_GOT_SCRATCH_CARD_INFO
-	gotoif TRUE, _0038
+	goto_if_set FLAG_GOT_SCRATCH_CARD_INFO, _0038
 	setflag FLAG_GOT_SCRATCH_CARD_INFO
 	buffer_int 0, 1
 	npc_msg msg_0433_00015
@@ -43,11 +42,11 @@ _0097:
 	buffer_int 2, 1
 	npc_msg msg_0433_00007
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _016B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _016B
 	check_battle_points 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _015E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _015E
 	scrcmd_556 1
 	scrcmd_118 1
 	npc_msg msg_0433_00010
@@ -66,16 +65,16 @@ _0097:
 	wait_fade
 	setvar VAR_SPECIAL_x8000, 0
 	call _019D
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif eq, _01CE
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_eq _01CE
 	buffer_int 0, VAR_SPECIAL_x8000
 	npc_msg msg_0433_00011
-	comparevartovalue VAR_TEMP_x4001, 0
-	callif ne, _01D9
-	comparevartovalue VAR_TEMP_x4003, 0
-	callif ne, _0225
-	comparevartovalue VAR_TEMP_x4005, 0
-	callif ne, _0271
+	compare VAR_TEMP_x4001, 0
+	call_if_ne _01D9
+	compare VAR_TEMP_x4003, 0
+	call_if_ne _0225
+	compare VAR_TEMP_x4005, 0
+	call_if_ne _0271
 	npc_msg msg_0433_00005
 	goto _0191
 	.byte 0x02, 0x00
@@ -109,12 +108,12 @@ _0191:
 	end
 
 _019D:
-	comparevartovalue VAR_TEMP_x4001, 0
-	callif ne, _01C6
-	comparevartovalue VAR_TEMP_x4003, 0
-	callif ne, _01C6
-	comparevartovalue VAR_TEMP_x4005, 0
-	callif ne, _01C6
+	compare VAR_TEMP_x4001, 0
+	call_if_ne _01C6
+	compare VAR_TEMP_x4003, 0
+	call_if_ne _01C6
+	compare VAR_TEMP_x4005, 0
+	call_if_ne _01C6
 	return
 
 _01C6:
@@ -126,8 +125,8 @@ _01CE:
 	goto _0191
 	.byte 0x02, 0x00
 _01D9:
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif gt, _01F1
+	compare VAR_TEMP_x4001, 1
+	goto_if_gt _01F1
 	buffer_item_name 0, VAR_TEMP_x4000
 	goto _01F6
 
@@ -136,8 +135,8 @@ _01F1:
 _01F6:
 	buffer_int 1, VAR_TEMP_x4001
 	hasspaceforitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02BD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02BD
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0433_00013
 	giveitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_x800C
@@ -146,8 +145,8 @@ _01F6:
 	return
 
 _0225:
-	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif gt, _023D
+	compare VAR_TEMP_x4003, 1
+	goto_if_gt _023D
 	buffer_item_name 0, VAR_TEMP_x4002
 	goto _0242
 
@@ -156,8 +155,8 @@ _023D:
 _0242:
 	buffer_int 1, VAR_TEMP_x4003
 	hasspaceforitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02BD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02BD
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0433_00013
 	giveitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_x800C
@@ -166,8 +165,8 @@ _0242:
 	return
 
 _0271:
-	comparevartovalue VAR_TEMP_x4005, 1
-	gotoif gt, _0289
+	compare VAR_TEMP_x4005, 1
+	goto_if_gt _0289
 	buffer_item_name 0, VAR_TEMP_x4004
 	goto _028E
 
@@ -176,8 +175,8 @@ _0289:
 _028E:
 	buffer_int 1, VAR_TEMP_x4005
 	hasspaceforitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02BD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02BD
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0433_00013
 	giveitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_x800C

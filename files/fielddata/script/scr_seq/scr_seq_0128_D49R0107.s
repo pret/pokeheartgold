@@ -16,8 +16,8 @@
 	scrdef_end
 
 scr_seq_D49R0107_007:
-	comparevartovalue VAR_UNK_40D3, 1
-	gotoif ne, _003B
+	compare VAR_UNK_40D3, 1
+	goto_if_ne _003B
 	setvar VAR_TEMP_x400E, 1
 	goto _0041
 
@@ -27,22 +27,22 @@ _0041:
 	end
 
 scr_seq_D49R0107_006:
-	comparevartovalue VAR_TEMP_x400F, 0
-	gotoif ne, _0058
+	compare VAR_TEMP_x400F, 0
+	goto_if_ne _0058
 	scrcmd_744
 	setvar VAR_TEMP_x400F, 1
 _0058:
 	get_player_gender VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _007B
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _007B
 	move_person obj_D49R0107_statueheroine, 28, 0, 28, 0
 	goto _0087
 
 _007B:
 	move_person obj_D49R0107_statuehero, 28, 0, 28, 0
 _0087:
-	comparevartovalue VAR_TEMP_x400E, 1
-	gotoif ne, _00A6
+	compare VAR_TEMP_x400E, 1
+	goto_if_ne _00A6
 	move_person obj_D49R0107_thlonowner, 9, 0, 9, 1
 	setvar VAR_TEMP_x400E, 0
 _00A6:
@@ -90,8 +90,8 @@ scr_seq_D49R0107_005:
 	releaseall
 	setvar VAR_UNK_40D3, 1
 	nat_dex_flag_action 2, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	callif eq, _0154
+	compare VAR_TEMP_x4000, 1
+	call_if_eq _0154
 	end
 
 _0154:

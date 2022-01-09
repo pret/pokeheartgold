@@ -31,8 +31,8 @@ scr_seq_T24PC0101_002:
 	lockall
 	faceplayer
 	count_pc_empty_space VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 540
-	gotoif ne, _0056
+	compare VAR_SPECIAL_x800C, 540
+	goto_if_ne _0056
 	goto _005C
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0056:
@@ -40,8 +40,8 @@ _0056:
 
 _005C:
 	get_party_count VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0079
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0079
 	goto _007F
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0079:
@@ -57,8 +57,8 @@ _007F:
 	npc_msg msg_0575_T24PC0101_00006
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _00BC
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _00BC
 	touchscreen_menu_show
 	closemsg
 	goto _00E0
@@ -87,8 +87,8 @@ scr_seq_T24PC0101_003:
 	lockall
 	faceplayer
 	check_badge 4, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0115
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0115
 	npc_msg msg_0575_T24PC0101_00002
 	waitbutton
 	closemsg

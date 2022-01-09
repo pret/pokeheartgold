@@ -24,8 +24,8 @@ scr_seq_T26_002:
 	setvar VAR_UNK_4077, 2
 	setflag FLAG_UNK_0C5
 	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
-	comparevartovalue VAR_UNK_40F8, 0
-	gotoif ne, _0057
+	compare VAR_UNK_40F8, 0
+	goto_if_ne _0057
 	setvar VAR_UNK_40F8, 2
 _0057:
 	setvar VAR_SPECIAL_x8004, 1
@@ -47,21 +47,20 @@ scr_seq_T26_003:
 	end
 
 scr_seq_T26_012:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _00B2
+	goto_if_unset FLAG_UNK_189, _00B2
 	clearflag FLAG_UNK_189
 	end
 
 _00B2:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _00CD
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _00CD
 	clearflag FLAG_HIDE_CAMERON
 	goto _00E8
 
 _00CD:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _00E4
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _00E4
 	clearflag FLAG_HIDE_CAMERON
 	goto _00E8
 
@@ -92,72 +91,72 @@ scr_seq_T26_001:
 	wait_movement
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 239
-	gotoif ne, _015B
+	compare VAR_TEMP_x4001, 239
+	goto_if_ne _015B
 	apply_movement obj_T26_gsrivel, _02CC
 	goto _01C1
 
 _015B:
-	comparevartovalue VAR_TEMP_x4001, 240
-	gotoif ne, _0176
+	compare VAR_TEMP_x4001, 240
+	goto_if_ne _0176
 	apply_movement obj_T26_gsrivel, _02DC
 	goto _01C1
 
 _0176:
-	comparevartovalue VAR_TEMP_x4001, 241
-	gotoif ne, _0191
+	compare VAR_TEMP_x4001, 241
+	goto_if_ne _0191
 	apply_movement obj_T26_gsrivel, _02F0
 	goto _01C1
 
 _0191:
-	comparevartovalue VAR_TEMP_x4001, 242
-	gotoif ne, _01AC
+	compare VAR_TEMP_x4001, 242
+	goto_if_ne _01AC
 	apply_movement obj_T26_gsrivel, _0304
 	goto _01C1
 
 _01AC:
-	comparevartovalue VAR_TEMP_x4001, 243
-	gotoif ne, _01C1
+	compare VAR_TEMP_x4001, 243
+	goto_if_ne _01C1
 	apply_movement obj_T26_gsrivel, _0318
 _01C1:
 	wait_movement
 	buffer_rivals_name 0
 	npc_msg msg_0604_T26_00000
 	closemsg
-	comparevartovalue VAR_TEMP_x4001, 239
-	gotoif ne, _01F6
+	compare VAR_TEMP_x4001, 239
+	goto_if_ne _01F6
 	apply_movement obj_T26_gsrivel, _032C
 	apply_movement obj_player, _037C
 	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _01F6:
-	comparevartovalue VAR_TEMP_x4001, 240
-	gotoif ne, _0221
+	compare VAR_TEMP_x4001, 240
+	goto_if_ne _0221
 	apply_movement obj_T26_gsrivel, _033C
 	apply_movement obj_player, _037C
 	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _0221:
-	comparevartovalue VAR_TEMP_x4001, 241
-	gotoif ne, _024C
+	compare VAR_TEMP_x4001, 241
+	goto_if_ne _024C
 	apply_movement obj_T26_gsrivel, _034C
 	apply_movement obj_player, _037C
 	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _024C:
-	comparevartovalue VAR_TEMP_x4001, 242
-	gotoif ne, _0277
+	compare VAR_TEMP_x4001, 242
+	goto_if_ne _0277
 	apply_movement obj_T26_gsrivel, _035C
 	apply_movement obj_player, _037C
 	apply_movement obj_partner_poke, _03C4
 	goto _029C
 
 _0277:
-	comparevartovalue VAR_TEMP_x4001, 243
-	gotoif ne, _029C
+	compare VAR_TEMP_x4001, 243
+	goto_if_ne _029C
 	apply_movement obj_T26_gsrivel, _036C
 	apply_movement obj_player, _03A0
 	apply_movement obj_partner_poke, _03E0
@@ -291,11 +290,11 @@ scr_seq_T26_011:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _051C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _051C
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0530
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0530
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -303,21 +302,21 @@ scr_seq_T26_011:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _046D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _046D
 	apply_movement obj_player, _0544
 	apply_movement obj_T26_gsmiddleman1, _0590
 	goto _04BB
 
 _046D:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0488
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0488
 	apply_movement obj_player, _055C
 	goto _04BB
 
 _0488:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _04AB
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _04AB
 	apply_movement obj_player, _057C
 	apply_movement obj_T26_gsmiddleman1, _0590
 	goto _04BB
@@ -331,8 +330,8 @@ _04BB:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _04E2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _04E2
 	apply_movement obj_partner_poke, _059C
 	wait_movement
 _04E2:

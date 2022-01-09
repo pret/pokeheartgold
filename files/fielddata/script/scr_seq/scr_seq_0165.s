@@ -16,8 +16,8 @@ scr_seq_0165_000:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
 	scrcmd_547 VAR_SPECIAL_x8000
 	chatot_has_cry VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0037
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0037
 	goto _005E
 	.byte 0x02, 0x00
 _0037:
@@ -25,10 +25,10 @@ _0037:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _005E
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00C9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _005E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00C9
 	end
 
 _005E:
@@ -43,8 +43,8 @@ _005E:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_085 10
 	wait 10, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8004, 0
-	gotoif eq, _00D5
+	compare VAR_SPECIAL_x8004, 0
+	goto_if_eq _00D5
 	chatot_stop_recording
 	wait 1, VAR_SPECIAL_x800C
 	chatot_save_recording
@@ -71,9 +71,9 @@ _00D5:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _005E
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00C9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _005E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00C9
 	end
 	.balign 4, 0

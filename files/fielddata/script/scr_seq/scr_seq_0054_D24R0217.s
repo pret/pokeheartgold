@@ -12,22 +12,21 @@
 	scrdef_end
 
 scr_seq_D24R0217_002:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0023
+	goto_if_unset FLAG_UNK_189, _0023
 	clearflag FLAG_UNK_189
 	end
 
 _0023:
 	check_badge 2, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _0061
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _0061
 	get_weekday VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0067
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif eq, _0067
-	comparevartovalue VAR_TEMP_x4001, 4
-	gotoif eq, _0067
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0067
+	compare VAR_TEMP_x4001, 2
+	goto_if_eq _0067
+	compare VAR_TEMP_x4001, 4
+	goto_if_eq _0067
 _0061:
 	setflag FLAG_HIDE_CAMERON
 	end
@@ -57,11 +56,11 @@ scr_seq_D24R0217_003:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0197
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0197
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01AB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01AB
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -69,21 +68,21 @@ scr_seq_D24R0217_003:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00F9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00F9
 	apply_movement obj_player, _01C0
 	apply_movement obj_D24R0217_gsmiddleman1, _020C
 	goto _0147
 
 _00F9:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0114
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0114
 	apply_movement obj_player, _01D8
 	goto _0147
 
 _0114:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0137
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0137
 	apply_movement obj_player, _01F8
 	apply_movement obj_D24R0217_gsmiddleman1, _020C
 	goto _0147

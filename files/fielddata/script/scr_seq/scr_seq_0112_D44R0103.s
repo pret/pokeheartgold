@@ -14,22 +14,20 @@
 	scrdef_end
 
 scr_seq_D44R0103_004:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _002B
+	goto_if_unset FLAG_UNK_189, _002B
 	clearflag FLAG_UNK_189
 	end
 
 _002B:
-	checkflag FLAG_UNK_0EA
-	gotoif TRUE, _003C
+	goto_if_set FLAG_UNK_0EA, _003C
 	goto _005A
 
 _003C:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0064
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, _0064
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0064
+	compare VAR_TEMP_x4000, 4
+	goto_if_eq _0064
 _005A:
 	setflag FLAG_HIDE_CAMERON
 	goto _0068
@@ -37,8 +35,7 @@ _005A:
 _0064:
 	clearflag FLAG_HIDE_CAMERON
 _0068:
-	checkflag FLAG_UNK_0DC
-	gotoif TRUE, _0075
+	goto_if_set FLAG_UNK_0DC, _0075
 	end
 
 _0075:
@@ -67,8 +64,8 @@ _00A0:
 	menu_item_add 282, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0310
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _00DF:
 	setvar VAR_SPECIAL_x8004, 1
@@ -80,8 +77,8 @@ _00DF:
 	menu_item_add 285, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0310
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _011E:
 	setvar VAR_SPECIAL_x8004, 2
@@ -93,8 +90,8 @@ _011E:
 	menu_item_add 288, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0310
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _015D:
 	setvar VAR_SPECIAL_x8004, 3
@@ -106,8 +103,8 @@ _015D:
 	menu_item_add 291, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0310
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _019C:
 	setvar VAR_SPECIAL_x8004, 4
@@ -119,8 +116,8 @@ _019C:
 	menu_item_add 294, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0310
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0310
 	buffer_players_name 0
 	npc_msg msg_0130_D44R0103_00006
 	closemsg
@@ -172,8 +169,8 @@ _019C:
 	apply_movement obj_D44R0103_chourou, _0450
 	wait_movement
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _02D3
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _02D3
 	npc_msg msg_0130_D44R0103_00020
 	goto _02D6
 
@@ -305,15 +302,12 @@ scr_seq_D44R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0DD
-	gotoif TRUE, _053D
-	checkflag FLAG_UNK_0DC
-	gotoif TRUE, _052E
-	checkflag FLAG_UNK_0DA
-	gotoif TRUE, _04A6
+	goto_if_set FLAG_UNK_0DD, _053D
+	goto_if_set FLAG_UNK_0DC, _052E
+	goto_if_set FLAG_UNK_0DA, _04A6
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _049B
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _049B
 	npc_msg msg_0130_D44R0103_00020
 	goto _049E
 
@@ -328,8 +322,8 @@ _049E:
 _04A6:
 	npc_msg msg_0130_D44R0103_00026
 	get_party_count VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 6
-	gotoif ne, _04C3
+	compare VAR_SPECIAL_x8005, 6
+	goto_if_ne _04C3
 	npc_msg msg_0130_D44R0103_00028
 	goto _0548
 
@@ -339,16 +333,15 @@ _04C3:
 	play_fanfare SEQ_ME_SHINKAOME
 	wait_fanfare
 	give_mon SPECIES_DRATINI, 15, 0, 0, 0, VAR_SPECIAL_x800C
-	checkflag FLAG_UNK_0DB
-	gotoif TRUE, _04F0
+	goto_if_set FLAG_UNK_0DB, _04F0
 	set_mon_move VAR_SPECIAL_x8005, 0, MOVE_EXTREME_SPEED
 _04F0:
 	npc_msg msg_0130_D44R0103_00032
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _050E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _050E
 	goto _052E
 
 _050E:
@@ -408,11 +401,11 @@ scr_seq_D44R0103_005:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _069E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _069E
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _06B2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _06B2
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -420,21 +413,21 @@ scr_seq_D44R0103_005:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _05EF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _05EF
 	apply_movement obj_player, _06C8
 	apply_movement obj_D44R0103_gsmiddleman1, _0714
 	goto _063D
 
 _05EF:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _060A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _060A
 	apply_movement obj_player, _06E0
 	goto _063D
 
 _060A:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _062D
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _062D
 	apply_movement obj_player, _0700
 	apply_movement obj_D44R0103_gsmiddleman1, _0714
 	goto _063D
@@ -448,8 +441,8 @@ _063D:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0664
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0664
 	apply_movement obj_partner_poke, _0720
 	wait_movement
 _0664:

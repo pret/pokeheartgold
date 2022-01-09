@@ -22,8 +22,7 @@
 	scrdef_end
 
 scr_seq_D49R0105_012:
-	checkflag FLAG_UNK_0F0
-	gotoif TRUE, _004D
+	goto_if_set FLAG_UNK_0F0, _004D
 	setvar VAR_TEMP_x400C, 0
 	end
 
@@ -32,8 +31,8 @@ _004D:
 	end
 
 scr_seq_D49R0105_011:
-	comparevartovalue VAR_TEMP_x400C, 1
-	gotoif ne, _0074
+	compare VAR_TEMP_x400C, 1
+	goto_if_ne _0074
 	move_person obj_D49R0105_pcwoman2_2, 2, 1, 3, 3
 	setvar VAR_TEMP_x400C, 0
 _0074:
@@ -53,8 +52,7 @@ scr_seq_D49R0105_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0F0
-	gotoif TRUE, _00A7
+	goto_if_set FLAG_UNK_0F0, _00A7
 	npc_msg msg_0141_D49R0105_00001
 	waitbutton
 	closemsg
@@ -139,8 +137,7 @@ scr_seq_D49R0105_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_HIDE_POKEATHLON_CLOTHES_SIGN
-	gotoif FALSE, _0166
+	goto_if_unset FLAG_HIDE_POKEATHLON_CLOTHES_SIGN, _0166
 	npc_msg msg_0141_D49R0105_00007
 	waitbutton
 	closemsg
@@ -158,8 +155,7 @@ scr_seq_D49R0105_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_HIDE_POKEATHLON_SHOES_SIGN
-	gotoif FALSE, _018F
+	goto_if_unset FLAG_HIDE_POKEATHLON_SHOES_SIGN, _018F
 	npc_msg msg_0141_D49R0105_00009
 	waitbutton
 	closemsg
@@ -177,8 +173,7 @@ scr_seq_D49R0105_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_HIDE_POKEATHLON_FLAG_SIGN
-	gotoif FALSE, _01B8
+	goto_if_unset FLAG_HIDE_POKEATHLON_FLAG_SIGN, _01B8
 	npc_msg msg_0141_D49R0105_00011
 	waitbutton
 	closemsg

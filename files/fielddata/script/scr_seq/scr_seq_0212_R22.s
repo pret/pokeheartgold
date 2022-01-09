@@ -13,19 +13,18 @@
 	scrdef_end
 
 scr_seq_R22_001:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0027
+	goto_if_unset FLAG_UNK_189, _0027
 	clearflag FLAG_UNK_189
 	end
 
 _0027:
-	comparevartovalue VAR_UNK_40FE, 1
-	gotoif eq, _005E
+	compare VAR_UNK_40FE, 1
+	goto_if_eq _005E
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, _0058
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _0058
+	compare VAR_TEMP_x4000, 4
+	goto_if_eq _0058
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _0058
 	setflag FLAG_HIDE_CAMERON
 	end
 
@@ -38,8 +37,8 @@ _005E:
 	end
 
 scr_seq_R22_004:
-	comparevartovalue VAR_UNK_40FE, 1
-	gotoif eq, _0073
+	compare VAR_UNK_40FE, 1
+	goto_if_eq _0073
 	end
 
 _0073:
@@ -335,11 +334,11 @@ scr_seq_R22_000:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0584
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0584
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0598
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0598
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -347,21 +346,21 @@ scr_seq_R22_000:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _04D5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _04D5
 	apply_movement obj_player, _05AC
 	apply_movement obj_R22_gsmiddleman1, _05F8
 	goto _0523
 
 _04D5:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _04F0
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _04F0
 	apply_movement obj_player, _05C4
 	goto _0523
 
 _04F0:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0513
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0513
 	apply_movement obj_player, _05E4
 	apply_movement obj_R22_gsmiddleman1, _05F8
 	goto _0523
@@ -375,8 +374,8 @@ _0523:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _054A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _054A
 	apply_movement obj_partner_poke, _0604
 	wait_movement
 _054A:

@@ -11,8 +11,7 @@
 	scrdef_end
 
 scr_seq_T10R0501_002:
-	checkflag FLAG_DEFEATED_KAREN
-	gotoif TRUE, _0023
+	goto_if_set FLAG_DEFEATED_KAREN, _0023
 	scrcmd_375 3
 	scrcmd_375 4
 	end
@@ -46,13 +45,12 @@ scr_seq_T10R0501_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_DEFEATED_KAREN
-	gotoif TRUE, _00D4
+	goto_if_set FLAG_DEFEATED_KAREN, _00D4
 	buffer_players_name 0
 	npc_msg msg_0526_T10R0501_00000
 	closemsg
-	comparevartovalue VAR_UNK_4135, 8
-	gotoif lt, _009E
+	compare VAR_UNK_4135, 8
+	goto_if_lt _009E
 	trainer_battle TRAINER_ELITE_FOUR_KAREN_KAREN_2, 0, 0, 0
 	goto _00A6
 
@@ -60,8 +58,8 @@ _009E:
 	trainer_battle TRAINER_ELITE_FOUR_KAREN_KAREN, 0, 0, 0
 _00A6:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00DF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00DF
 	setflag FLAG_DEFEATED_KAREN
 	npc_msg msg_0526_T10R0501_00001
 	closemsg

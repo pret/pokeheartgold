@@ -17,15 +17,14 @@ scr_seq_R05R0202_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00BE
-	checkflag FLAG_UNK_164
-	gotoif TRUE, _00D8
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _006E
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00BE
+	goto_if_set FLAG_UNK_164, _00D8
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _006E
 	hasitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _005F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _005F
 	npc_msg msg_0331_R05R0202_00000
 	waitbutton
 	closemsg
@@ -42,11 +41,11 @@ _006E:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00E3
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00E3
 	hasspaceforitem ITEM_TM64, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00F4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00F4
 	buffer_players_name 0
 	npc_msg msg_0331_R05R0202_00003
 	takeitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_x800C

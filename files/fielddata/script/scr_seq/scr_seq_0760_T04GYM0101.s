@@ -17,27 +17,27 @@
 
 scr_seq_T04GYM0101_007:
 	get_phone_book_rematch 29, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00ED
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00ED
 	check_badge 15, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _00E5
-	comparevartovalue VAR_SCENE_ROUTE_25, 1
-	gotoif eq, _00E7
-	comparevartovalue VAR_SCENE_ROUTE_25, 2
-	gotoif eq, _00E7
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _00E5
+	compare VAR_SCENE_ROUTE_25, 1
+	goto_if_eq _00E7
+	compare VAR_SCENE_ROUTE_25, 2
+	goto_if_eq _00E7
 	scrcmd_147 29, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00AD
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00AD
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, _0090
+	compare VAR_TEMP_x4000, 16
+	goto_if_ne _0090
 	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00AB
 
 _0090:
-	comparevartovalue VAR_TEMP_x4000, 17
-	gotoif ne, _00A7
+	compare VAR_TEMP_x4000, 17
+	goto_if_ne _00A7
 	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00AB
 
@@ -48,14 +48,14 @@ _00AB:
 
 _00AD:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 14
-	gotoif ne, _00C8
+	compare VAR_TEMP_x4000, 14
+	goto_if_ne _00C8
 	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00E3
 
 _00C8:
-	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, _00DF
+	compare VAR_TEMP_x4000, 15
+	goto_if_ne _00DF
 	setflag FLAG_HIDE_CERULEAN_GYM_POPULATION
 	goto _00E3
 
@@ -95,10 +95,10 @@ scr_seq_T04GYM0101_004:
 	npc_msg msg_0469_T04GYM0101_00003
 	closemsg
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0179
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0159
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0179
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0159
 	end
 
 _0159:
@@ -164,8 +164,7 @@ _0210:
 	step_end
 scr_seq_T04GYM0101_006:
 	scrcmd_814
-	checkflag FLAG_HIDE_CERULEAN_GYM_MACHINE_PART
-	gotoif TRUE, _022F
+	goto_if_set FLAG_HIDE_CERULEAN_GYM_MACHINE_PART, _022F
 	scrcmd_375 8
 	scrcmd_375 9
 	end
@@ -200,14 +199,14 @@ scr_seq_T04GYM0101_000:
 	lockall
 	faceplayer
 	check_badge 9, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0348
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0348
 	npc_msg msg_0469_T04GYM0101_00008
 	closemsg
 	trainer_battle TRAINER_LEADER_MISTY_MISTY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _035E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _035E
 	give_badge 9
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
@@ -221,8 +220,7 @@ scr_seq_T04GYM0101_000:
 	npc_msg msg_0469_T04GYM0101_00010
 	play_fanfare SEQ_ME_BADGE
 	wait_fanfare
-	checkflag FLAG_UNK_14D
-	callif TRUE, _0364
+	call_if_set FLAG_UNK_14D, _0364
 	buffer_players_name 0
 	npc_msg msg_0469_T04GYM0101_00011
 	goto _0307
@@ -245,8 +243,7 @@ _033E:
 	end
 
 _0348:
-	checkflag FLAG_UNK_180
-	gotoif FALSE, _0307
+	goto_if_unset FLAG_UNK_180, _0307
 	npc_msg msg_0469_T04GYM0101_00013
 	waitbutton
 	closemsg
@@ -267,12 +264,12 @@ scr_seq_T04GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4088, 2
-	gotoif ne, _03AD
+	compare VAR_UNK_4088, 2
+	goto_if_ne _03AD
 	check_badge 9, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _03A4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _03A4
 	npc_msg msg_0469_T04GYM0101_00006
 	goto _03A7
 
@@ -289,12 +286,12 @@ scr_seq_T04GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4088, 2
-	gotoif ne, _03F3
+	compare VAR_UNK_4088, 2
+	goto_if_ne _03F3
 	check_badge 9, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _03EA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _03EA
 	npc_msg msg_0469_T04GYM0101_00006
 	goto _03ED
 
@@ -316,8 +313,8 @@ scr_seq_T04GYM0101_001:
 	lockall
 	faceplayer
 	check_badge 9, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0424
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0424
 	npc_msg msg_0469_T04GYM0101_00014
 	waitbutton
 	closemsg

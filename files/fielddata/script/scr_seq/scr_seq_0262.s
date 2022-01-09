@@ -18,16 +18,16 @@ scr_seq_0262_000:
 	scrcmd_609
 	lockall
 	scrcmd_721 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _006A
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0049
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _006A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0049
 	npc_msg msg_0427_00008
 	goto _0062
 
 _0049:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _005F
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _005F
 	npc_msg msg_0427_00009
 	goto _0062
 
@@ -41,16 +41,16 @@ _006A:
 	npc_msg msg_0427_00004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00B5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00B5
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	scrcmd_717 VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _00B7
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _00B7
 	scrcmd_718 0, VAR_SPECIAL_x800C
 	npc_msg msg_0427_00005
 	waitbutton
@@ -65,14 +65,14 @@ scr_seq_0262_001:
 	scrcmd_609
 	lockall
 	scrcmd_719 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8000, 255
-	gotoif eq, _0114
+	compare VAR_SPECIAL_x8000, 255
+	goto_if_eq _0114
 	scrcmd_718 0, VAR_SPECIAL_x8000
 	npc_msg msg_0427_00006
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0112
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0112
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
@@ -90,8 +90,8 @@ _0114:
 
 _011A:
 	scrcmd_447 1, 0
-	comparevartovalue VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
-	gotoif ne, _0155
+	compare VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
+	goto_if_ne _0155
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 173, 0, 19, 2, 1
@@ -152,8 +152,8 @@ scr_seq_0262_006:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01FA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01FA
 	call _011A
 	releaseall
 	end

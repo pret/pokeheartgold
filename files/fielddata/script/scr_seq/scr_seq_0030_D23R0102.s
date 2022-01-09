@@ -21,14 +21,14 @@
 scr_seq_D23R0102_007:
 	setflag FLAG_UNK_1B7
 	setflag FLAG_UNK_1B8
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _004D
+	compare VAR_UNK_4077, 4
+	goto_if_ne _004D
 	clearflag FLAG_UNK_1B7
 	goto _0068
 
 _004D:
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ge, _0064
+	compare VAR_UNK_4077, 2
+	goto_if_ge _0064
 	clearflag FLAG_UNK_1B8
 	goto _0068
 
@@ -38,8 +38,8 @@ _0068:
 	end
 
 scr_seq_D23R0102_008:
-	comparevartovalue VAR_UNK_4077, 5
-	gotoif ne, _0083
+	compare VAR_UNK_4077, 5
+	goto_if_ne _0083
 	move_person obj_D23R0102_policeman, 2, 1, 7, 3
 _0083:
 	end
@@ -90,8 +90,8 @@ scr_seq_D23R0102_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _00F7
+	compare VAR_UNK_4077, 4
+	goto_if_ne _00F7
 	npc_msg msg_0066_D23R0102_00002
 	goto _00FA
 
@@ -117,8 +117,8 @@ scr_seq_D23R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 5
-	gotoif ne, _0133
+	compare VAR_UNK_4077, 5
+	goto_if_ne _0133
 	npc_msg msg_0066_D23R0102_00005
 	goto _0136
 
@@ -134,8 +134,8 @@ scr_seq_D23R0102_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _015C
+	compare VAR_UNK_4077, 4
+	goto_if_ne _015C
 	npc_msg msg_0066_D23R0102_00009
 	goto _0162
 
@@ -150,8 +150,8 @@ _0162:
 
 _016A:
 	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _01B5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _01B5
 	npc_msg msg_0066_D23R0102_00010
 	closemsg
 	goto_if_no_item_space ITEM_BLUE_CARD, 1, _0539
@@ -162,8 +162,8 @@ _016A:
 	end
 
 _01B5:
-	comparevartovalue VAR_UNK_4115, 2
-	gotoif lt, _01CF
+	compare VAR_UNK_4115, 2
+	goto_if_lt _01CF
 	buffer_players_name 0
 	gender_msgbox msg_0066_D23R0102_00012, msg_0066_D23R0102_00013
 	goto _01D2
@@ -172,8 +172,7 @@ _01CF:
 	npc_msg msg_0066_D23R0102_00011
 _01D2:
 	closemsg
-	checkflag FLAG_UNK_AB6
-	gotoif TRUE, _01EA
+	goto_if_set FLAG_UNK_AB6, _01EA
 	npc_msg msg_0066_D23R0102_00028
 	waitbutton
 	closemsg
@@ -181,17 +180,16 @@ _01D2:
 	end
 
 _01EA:
-	checkflag FLAG_UNK_AA3
-	gotoif TRUE, _0547
+	goto_if_set FLAG_UNK_AA3, _0547
 	npc_msg msg_0066_D23R0102_00014
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0552
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0552
 	buffer_players_name 0
-	comparevartovalue VAR_UNK_4115, 2
-	gotoif lt, _0227
+	compare VAR_UNK_4115, 2
+	goto_if_lt _0227
 	gender_msgbox msg_0066_D23R0102_00017, msg_0066_D23R0102_00018
 	goto _022B
 
@@ -205,11 +203,11 @@ _022B:
 	closemsg
 	get_player_facing VAR_TEMP_x4000
 	scrcmd_729 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _0295
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _0295
 	release obj_partner_poke
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0279
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0279
 	apply_movement obj_player, _05CC
 	apply_movement obj_partner_poke, _05E0
 	goto _0289
@@ -223,8 +221,8 @@ _0289:
 	goto _02BA
 
 _0295:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _02B0
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _02B0
 	apply_movement obj_player, _05CC
 	goto _02B8
 
@@ -247,22 +245,22 @@ _02BA:
 	setflag FLAG_UNK_AA3
 	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
-	comparevartovar VAR_SPECIAL_x800C, VAR_SPECIAL_x8001
-	gotoif ne, _055D
+	compare VAR_SPECIAL_x800C, VAR_SPECIAL_x8001
+	goto_if_ne _055D
 	npc_msg msg_0066_D23R0102_00022
 	apply_movement obj_D23R0102_gswoman1, _0630
 	wait_movement
 	apply_movement obj_player, _060C
 	wait_movement
 	play_se SEQ_SE_GS_OKOZUKAI
-	comparevartovalue VAR_UNK_413A, 30
-	gotoif ge, _033F
+	compare VAR_UNK_413A, 30
+	goto_if_ge _033F
 	addvar VAR_UNK_413A, 1
 _033F:
-	comparevartovalue VAR_UNK_413A, 30
-	gotoif lt, _0387
-	comparevartovalue VAR_UNK_4115, 2
-	gotoif ge, _0387
+	compare VAR_UNK_413A, 30
+	goto_if_lt _0387
+	compare VAR_UNK_4115, 2
+	goto_if_ge _0387
 	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
 	gender_msgbox msg_0066_D23R0102_00024, msg_0066_D23R0102_00025
@@ -277,22 +275,22 @@ _033F:
 	npc_msg msg_0066_D23R0102_00027
 	closemsg
 _0387:
-	comparevartovalue VAR_UNK_413A, 1
-	gotoif eq, _0499
-	comparevartovalue VAR_UNK_413A, 3
-	gotoif eq, _04AD
-	comparevartovalue VAR_UNK_413A, 5
-	gotoif eq, _04C1
-	comparevartovalue VAR_UNK_413A, 10
-	gotoif eq, _04D5
-	comparevartovalue VAR_UNK_413A, 15
-	gotoif eq, _04E9
-	comparevartovalue VAR_UNK_413A, 20
-	gotoif eq, _04FD
-	comparevartovalue VAR_UNK_413A, 25
-	gotoif eq, _0511
-	comparevartovalue VAR_UNK_413A, 30
-	gotoif eq, _0525
+	compare VAR_UNK_413A, 1
+	goto_if_eq _0499
+	compare VAR_UNK_413A, 3
+	goto_if_eq _04AD
+	compare VAR_UNK_413A, 5
+	goto_if_eq _04C1
+	compare VAR_UNK_413A, 10
+	goto_if_eq _04D5
+	compare VAR_UNK_413A, 15
+	goto_if_eq _04E9
+	compare VAR_UNK_413A, 20
+	goto_if_eq _04FD
+	compare VAR_UNK_413A, 25
+	goto_if_eq _0511
+	compare VAR_UNK_413A, 30
+	goto_if_eq _0525
 	goto _0568
 
 _03F5:
@@ -313,20 +311,20 @@ _03F5:
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg msg_0066_D23R0102_00035
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0539
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0539
 	callstd std_give_item_verbose
 _0450:
-	comparevartovalue VAR_UNK_413A, 30
-	gotoif lt, _0486
+	compare VAR_UNK_413A, 30
+	goto_if_lt _0486
 	npc_msg msg_0066_D23R0102_00036
 	closemsg
 	play_fanfare SEQ_ME_KEYITEM
 	npc_msg msg_0066_D23R0102_00037
 	wait_fanfare
 	closemsg
-	comparevartovalue VAR_UNK_4115, 255
-	gotoif ge, _0480
+	compare VAR_UNK_4115, 255
+	goto_if_ge _0480
 	addvar VAR_UNK_4115, 1
 _0480:
 	setvar VAR_UNK_413A, 0
@@ -418,11 +416,11 @@ scr_seq_D23R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif eq, _05C0
+	compare VAR_UNK_4077, 4
+	goto_if_eq _05C0
 	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _05B0
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _05B0
 	npc_msg msg_0066_D23R0102_00033
 	waitbutton
 	closemsg

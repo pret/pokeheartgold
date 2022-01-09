@@ -15,8 +15,7 @@
 	scrdef_end
 
 scr_seq_T23R0501_000:
-	checkflag FLAG_UNK_07B
-	gotoif TRUE, _002F
+	goto_if_set FLAG_UNK_07B, _002F
 	setflag FLAG_HIDE_AZALEA_SLOWPOKES
 	end
 
@@ -40,8 +39,7 @@ scr_seq_T23R0501_005:
 	goto _011A
 	.byte 0x02, 0x00
 scr_seq_T23R0501_001:
-	checkflag FLAG_UNK_07C
-	gotoif TRUE, _011A
+	goto_if_set FLAG_UNK_07C, _011A
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -50,8 +48,8 @@ scr_seq_T23R0501_001:
 	scrcmd_049
 	closemsg
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00A7
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00A7
 	goto _00C7
 	.byte 0x16, 0x00, 0x08, 0x00, 0x00, 0x00
 _00A7:
@@ -71,8 +69,8 @@ _00C7:
 	scrcmd_603
 	scrcmd_604 56
 	get_person_coords 253, VAR_TEMP_x4002, VAR_TEMP_x4003
-	comparevartovalue VAR_TEMP_x4002, 5
-	gotoif ne, _00F4
+	compare VAR_TEMP_x4002, 5
+	goto_if_ne _00F4
 	apply_movement obj_T23R0501_gantetsu, _02E8
 	goto _0108
 
@@ -92,11 +90,11 @@ _011A:
 	lockall
 	faceplayer
 	scrcmd_735 32768
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif ne, _01A5
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_ne _01A5
 	scrcmd_738 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _020F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _020F
 	apply_movement obj_T23R0501_gantetsu, _02BC
 	wait_movement
 	npc_msg msg_0571_T23R0501_00004
@@ -108,8 +106,8 @@ _011A:
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_735 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0189
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0189
 	npc_msg msg_0571_T23R0501_00006
 	goto _0190
 
@@ -119,14 +117,13 @@ _0189:
 _0190:
 	waitbutton
 	closemsg
-	comparevartovalue VAR_UNK_4080, 3
-	gotoif eq, _022D
+	compare VAR_UNK_4080, 3
+	goto_if_eq _022D
 	releaseall
 	end
 
 _01A5:
-	checkflag FLAG_UNK_AA2
-	gotoif TRUE, _0204
+	goto_if_set FLAG_UNK_AA2, _0204
 	buffer_players_name 0
 	npc_msg msg_0571_T23R0501_00008
 	scrcmd_737 32772
@@ -134,11 +131,11 @@ _01A5:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
 	callstd std_give_item_verbose
 	scrcmd_736
-	comparevartovalue VAR_UNK_413B, 10
-	gotoif ge, _01EE
+	compare VAR_UNK_413B, 10
+	goto_if_ge _01EE
 	addvar VAR_UNK_413B, 1
-	comparevartovalue VAR_UNK_413B, 10
-	callif ge, _0227
+	compare VAR_UNK_413B, 10
+	call_if_ge _0227
 _01EE:
 	npc_msg msg_0571_T23R0501_00010
 	goto _021F
@@ -150,8 +147,8 @@ _0204:
 	.byte 0x02, 0x00
 _020F:
 	npc_msg msg_0571_T23R0501_00003
-	comparevartovalue VAR_UNK_4080, 3
-	gotoif eq, _022D
+	compare VAR_UNK_4080, 3
+	goto_if_eq _022D
 _021F:
 	waitbutton
 	closemsg
@@ -173,10 +170,10 @@ _024A:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _026E
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0289
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _026E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0289
 	end
 
 _026E:
@@ -244,8 +241,7 @@ scr_seq_T23R0501_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_077
-	gotoif TRUE, _0332
+	goto_if_set FLAG_UNK_077, _0332
 	npc_msg msg_0571_T23R0501_00011
 	waitbutton
 	closemsg
@@ -253,8 +249,7 @@ scr_seq_T23R0501_002:
 	end
 
 _0332:
-	checkflag FLAG_UNK_07B
-	gotoif TRUE, _0348
+	goto_if_set FLAG_UNK_07B, _0348
 	npc_msg msg_0571_T23R0501_00012
 	waitbutton
 	closemsg
@@ -263,10 +258,9 @@ _0332:
 
 _0348:
 	scrcmd_147 5, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif eq, _02A2
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0371
+	compare VAR_TEMP_x4001, 0
+	goto_if_eq _02A2
+	goto_if_set FLAG_GAME_CLEAR, _0371
 	npc_msg msg_0571_T23R0501_00013
 	waitbutton
 	closemsg
@@ -306,20 +300,20 @@ scr_seq_T23R0501_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, _03C8
+	compare VAR_UNK_4077, 2
+	goto_if_ne _03C8
 	npc_msg msg_0571_T23R0501_00024
 	goto _03F7
 
 _03C8:
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _03DE
+	compare VAR_UNK_4077, 3
+	goto_if_ne _03DE
 	npc_msg msg_0571_T23R0501_00024
 	goto _03F7
 
 _03DE:
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _03F4
+	compare VAR_UNK_4077, 4
+	goto_if_ne _03F4
 	npc_msg msg_0571_T23R0501_00024
 	goto _03F7
 

@@ -27,8 +27,7 @@ scr_seq_R10PC0101_001:
 	end
 
 scr_seq_R10PC0101_002:
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _004F
+	goto_if_set FLAG_RESTORED_POWER, _004F
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

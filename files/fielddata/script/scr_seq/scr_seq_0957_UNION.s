@@ -32,19 +32,19 @@ scr_seq_UNION_003:
 	faceplayer
 	scrcmd_268 32780
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, _0499
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_eq _0499
 	scrcmd_264 0
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _04AF
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _05DB
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _0528
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _04AF
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _05DB
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _0528
 	scrcmd_274 32772, 32780
 	scrcmd_268 32780
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, _0499
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_eq _0499
 	npc_msg msg_0738_UNION_00199
 	scrcmd_269 32780
 	switch VAR_SPECIAL_x800C
@@ -90,13 +90,13 @@ _00EC:
 _0184:
 	scrcmd_271 0, 1
 	scrcmd_267 9, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01A1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01A1
 	non_npc_msg_var VAR_SPECIAL_x800C
 _01A1:
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _06AE
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _06AE
 	scrcmd_261 5
 	scrcmd_267 1, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
@@ -113,17 +113,17 @@ _01A1:
 	.byte 0x02, 0x00
 _01ED:
 	party_count_not_egg VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, _0264
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_lt _0264
 	scrcmd_271 0, 3
 	scrcmd_267 9, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _021B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _021B
 	non_npc_msg_var VAR_SPECIAL_x800C
 _021B:
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _06F6
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _06F6
 	scrcmd_261 7
 	scrcmd_267 1, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
@@ -144,17 +144,17 @@ _0264:
 	.byte 0x02, 0x00
 _0276:
 	scrcmd_434 32780, 30
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, _0324
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_lt _0324
 	scrcmd_271 0, 2
 	scrcmd_267 9, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02A6
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02A6
 	non_npc_msg_var VAR_SPECIAL_x800C
 _02A6:
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _06DE
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _06DE
 	scrcmd_261 6
 	scrcmd_267 1, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
@@ -171,10 +171,10 @@ _02A6:
 	scrcmd_257 102
 	closemsg
 	scrcmd_586 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0B8B
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0B8B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0B8B
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0B8B
 	scrcmd_230
 	call _0BDA
 	goto _00D2
@@ -187,13 +187,13 @@ _0324:
 _0336:
 	scrcmd_271 0, 4
 	scrcmd_267 9, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0353
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0353
 	non_npc_msg_var VAR_SPECIAL_x800C
 _0353:
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _06C6
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _06C6
 	scrcmd_267 1, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
 	scrcmd_348 30
@@ -209,13 +209,13 @@ _0353:
 _0396:
 	scrcmd_271 0, 5
 	scrcmd_267 9, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03B3
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03B3
 	non_npc_msg_var VAR_SPECIAL_x800C
 _03B3:
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _0726
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _0726
 	scrcmd_267 1, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
 	scrcmd_348 30
@@ -230,20 +230,20 @@ _03B3:
 	.byte 0x02, 0x00
 _03F6:
 	scrcmd_359 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _074F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _074F
 	scrcmd_630 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0761
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0761
 	scrcmd_271 0, 6
 	scrcmd_267 9, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0435
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0435
 	non_npc_msg_var VAR_SPECIAL_x800C
 _0435:
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _076C
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _076C
 	scrcmd_267 1, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
 	scrcmd_348 30
@@ -286,14 +286,14 @@ _04AF:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _05C3
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _05C3
 	scrcmd_274 32772, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, _0488
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_eq _0488
 	scrcmd_269 32780
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0488
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0488
 	scrcmd_267 13, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
@@ -312,20 +312,20 @@ _0528:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _066C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _066C
 	scrcmd_359 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0698
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0698
 	party_legal_check VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0682
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0682
 	scrcmd_274 32772, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, _0488
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_eq _0488
 	scrcmd_269 32780
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0488
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0488
 	scrcmd_267 15, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
@@ -353,14 +353,14 @@ _05DB:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0654
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0654
 	scrcmd_274 32772, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, _0488
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_eq _0488
 	scrcmd_269 32780
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0488
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0488
 	scrcmd_267 14, 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
@@ -516,13 +516,13 @@ _0863:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _08CA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _08CA
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _0B80
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _0B80
 	scrcmd_576 32780
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
@@ -546,16 +546,16 @@ _08DB:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0952
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0952
 	party_count_not_egg VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, _0963
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_lt _0963
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _0BA0
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00027
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 3
@@ -584,16 +584,16 @@ _0974:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0A22
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0A22
 	scrcmd_434 32780, 30
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif lt, _0A33
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_lt _0A33
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _0BA0
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00022
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 2
@@ -609,10 +609,10 @@ _0974:
 	scrcmd_257 102
 	closemsg
 	scrcmd_586 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0B8B
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0B8B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0B8B
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0B8B
 	scrcmd_230
 	scrcmd_261 11
 	call _0BDA
@@ -633,13 +633,13 @@ _0A44:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0A22
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0A22
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _0BA0
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00031
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 5
@@ -658,16 +658,16 @@ _0AA2:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0A22
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0A22
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_359 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _073E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _073E
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _0BA0
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00034
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 6
@@ -686,13 +686,13 @@ _0B11:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0B6F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0B6F
 	scrcmd_271 1, 0
 	closemsg
 	scrcmd_272 32780
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif eq, _0BA0
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00019
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 4
@@ -771,12 +771,10 @@ scr_seq_UNION_007:
 	.byte 0x02, 0x00
 _0C1F:
 	scrcmd_262
-	checkflag FLAG_UNK_069
-	callif TRUE, _0C87
+	call_if_set FLAG_UNK_069, _0C87
 	touchscreen_menu_hide
 _0C2E:
-	checkflag FLAG_UNK_069
-	callif FALSE, _0C8C
+	call_if_unset FLAG_UNK_069, _0C8C
 	setflag FLAG_UNK_069
 	menu_init_std_gmm 21, 11, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 11, 255, 0

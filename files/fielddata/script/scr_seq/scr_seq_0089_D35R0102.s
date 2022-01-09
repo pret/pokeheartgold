@@ -44,14 +44,14 @@ scr_seq_D35R0102_032:
 	end
 
 scr_seq_D35R0102_031:
-	comparevartovalue VAR_UNK_40AC, 4
-	gotoif eq, _00BE
-	comparevartovalue VAR_UNK_40AC, 5
-	gotoif eq, _00BE
-	comparevartovalue VAR_UNK_40AC, 6
-	gotoif eq, _00BE
-	comparevartovalue VAR_UNK_40AC, 7
-	gotoif eq, _00BE
+	compare VAR_UNK_40AC, 4
+	goto_if_eq _00BE
+	compare VAR_UNK_40AC, 5
+	goto_if_eq _00BE
+	compare VAR_UNK_40AC, 6
+	goto_if_eq _00BE
+	compare VAR_UNK_40AC, 7
+	goto_if_eq _00BE
 	end
 
 _00BE:
@@ -64,72 +64,72 @@ _00BE:
 	end
 
 scr_seq_D35R0102_030:
-	comparevartovalue VAR_UNK_40AC, 9
-	callif ge, _025D
-	comparevartovalue VAR_UNK_40AD, 2
-	gotoif ne, _0108
+	compare VAR_UNK_40AC, 9
+	call_if_ge _025D
+	compare VAR_UNK_40AD, 2
+	goto_if_ne _0108
 	move_person obj_D35R0102_aji_peru, 44, 0, 3, 2
 	goto _0133
 
 _0108:
-	comparevartovalue VAR_UNK_40AD, 1
-	gotoif ne, _0127
+	compare VAR_UNK_40AD, 1
+	goto_if_ne _0127
 	move_person obj_D35R0102_aji_peru, 44, 0, 3, 1
 	goto _0133
 
 _0127:
 	move_person obj_D35R0102_aji_peru, 44, 0, 3, 0
 _0133:
-	comparevartovalue VAR_UNK_40AE, 2
-	gotoif ne, _0152
+	compare VAR_UNK_40AE, 2
+	goto_if_ne _0152
 	move_person obj_D35R0102_aji_peru_2, 18, 0, 3, 2
 	goto _017D
 
 _0152:
-	comparevartovalue VAR_UNK_40AE, 1
-	gotoif ne, _0171
+	compare VAR_UNK_40AE, 1
+	goto_if_ne _0171
 	move_person obj_D35R0102_aji_peru_2, 18, 0, 3, 1
 	goto _017D
 
 _0171:
 	move_person obj_D35R0102_aji_peru_2, 18, 0, 3, 0
 _017D:
-	comparevartovalue VAR_UNK_40AF, 2
-	gotoif ne, _019C
+	compare VAR_UNK_40AF, 2
+	goto_if_ne _019C
 	move_person obj_D35R0102_aji_peru_3, 44, 0, 10, 2
 	goto _01C7
 
 _019C:
-	comparevartovalue VAR_UNK_40AF, 1
-	gotoif ne, _01BB
+	compare VAR_UNK_40AF, 1
+	goto_if_ne _01BB
 	move_person obj_D35R0102_aji_peru_3, 44, 0, 10, 1
 	goto _01C7
 
 _01BB:
 	move_person obj_D35R0102_aji_peru_3, 44, 0, 10, 0
 _01C7:
-	comparevartovalue VAR_UNK_40B0, 2
-	gotoif ne, _01E6
+	compare VAR_UNK_40B0, 2
+	goto_if_ne _01E6
 	move_person obj_D35R0102_aji_peru_4, 44, 0, 28, 2
 	goto _0211
 
 _01E6:
-	comparevartovalue VAR_UNK_40B0, 1
-	gotoif ne, _0205
+	compare VAR_UNK_40B0, 1
+	goto_if_ne _0205
 	move_person obj_D35R0102_aji_peru_4, 44, 0, 28, 1
 	goto _0211
 
 _0205:
 	move_person obj_D35R0102_aji_peru_4, 44, 0, 28, 0
 _0211:
-	comparevartovalue VAR_UNK_40B1, 2
-	gotoif ne, _0230
+	compare VAR_UNK_40B1, 2
+	goto_if_ne _0230
 	move_person obj_D35R0102_aji_peru_5, 18, 0, 28, 2
 	goto _025B
 
 _0230:
-	comparevartovalue VAR_UNK_40B1, 1
-	gotoif ne, _024F
+	compare VAR_UNK_40B1, 1
+	goto_if_ne _024F
 	move_person obj_D35R0102_aji_peru_5, 18, 0, 28, 1
 	goto _025B
 
@@ -157,8 +157,8 @@ scr_seq_D35R0102_000:
 	scrcmd_709
 	scrcmd_074 2173
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 4
-	gotoif ne, _02C4
+	compare VAR_TEMP_x4001, 4
+	goto_if_ne _02C4
 	addvar VAR_TEMP_x4001, 1
 	goto _02D0
 	.byte 0x16, 0x00
@@ -180,8 +180,8 @@ _02D0:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
 	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 3
@@ -191,8 +191,8 @@ _02D0:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
 	goto _0402
@@ -210,8 +210,8 @@ _036C:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
 	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 3
@@ -221,8 +221,8 @@ _036C:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
 _0402:
@@ -299,8 +299,8 @@ scr_seq_D35R0102_005:
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 4
-	gotoif ne, _04F7
+	compare VAR_TEMP_x4001, 4
+	goto_if_ne _04F7
 	addvar VAR_TEMP_x4001, 1
 	goto _0503
 	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
@@ -321,8 +321,8 @@ _0503:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
 	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
@@ -334,8 +334,8 @@ _0503:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
 	goto _0649
@@ -353,8 +353,8 @@ _05A9:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
 	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
@@ -366,8 +366,8 @@ _05A9:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
 _0649:
@@ -449,8 +449,8 @@ scr_seq_D35R0102_006:
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 11
-	gotoif ne, _073B
+	compare VAR_TEMP_x4001, 11
+	goto_if_ne _073B
 	addvar VAR_TEMP_x4001, 1
 	goto _0747
 	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
@@ -471,8 +471,8 @@ _0747:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
 	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
@@ -484,8 +484,8 @@ _0747:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
 	goto _088D
@@ -503,8 +503,8 @@ _07ED:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
 	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
@@ -516,8 +516,8 @@ _07ED:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
 _088D:
@@ -539,8 +539,8 @@ scr_seq_D35R0102_007:
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 29
-	gotoif ne, _08EC
+	compare VAR_TEMP_x4001, 29
+	goto_if_ne _08EC
 	addvar VAR_TEMP_x4001, 1
 	goto _08F8
 	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
@@ -561,8 +561,8 @@ _08F8:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
 	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
@@ -574,8 +574,8 @@ _08F8:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
 	goto _0A3E
@@ -593,8 +593,8 @@ _099E:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
 	move_person obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, 2
@@ -606,8 +606,8 @@ _099E:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
 _0A3E:
@@ -628,8 +628,8 @@ scr_seq_D35R0102_008:
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 29
-	gotoif ne, _0A99
+	compare VAR_TEMP_x4001, 29
+	goto_if_ne _0A99
 	addvar VAR_TEMP_x4001, 1
 	goto _0AA5
 	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
@@ -650,8 +650,8 @@ _0AA5:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
 	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
@@ -663,8 +663,8 @@ _0AA5:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
 	goto _0BEB
@@ -682,8 +682,8 @@ _0B4B:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
 	move_person obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, 2
@@ -695,8 +695,8 @@ _0B4B:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0C03
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
 _0BEB:
@@ -715,14 +715,14 @@ _0C03:
 scr_seq_D35R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	comparevartovalue VAR_UNK_40AD, 0
-	gotoif ne, _0C2B
+	compare VAR_UNK_40AD, 0
+	goto_if_ne _0C2B
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0C2B:
-	comparevartovalue VAR_UNK_40AD, 1
-	gotoif ne, _0C47
+	compare VAR_UNK_40AD, 1
+	goto_if_ne _0C47
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
@@ -737,15 +737,15 @@ _0C4A:
 scr_seq_D35R0102_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	comparevartovalue VAR_UNK_40AE, 0
-	gotoif ne, _0C74
+	compare VAR_UNK_40AE, 0
+	goto_if_ne _0C74
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
 	.byte 0x16, 0x00
 	.byte 0x1f, 0x00, 0x00, 0x00
 _0C74:
-	comparevartovalue VAR_UNK_40AE, 1
-	gotoif ne, _0C90
+	compare VAR_UNK_40AE, 1
+	goto_if_ne _0C90
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
@@ -756,14 +756,14 @@ _0C90:
 scr_seq_D35R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	comparevartovalue VAR_UNK_40AF, 0
-	gotoif ne, _0CBB
+	compare VAR_UNK_40AF, 0
+	goto_if_ne _0CBB
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0CBB:
-	comparevartovalue VAR_UNK_40AF, 1
-	gotoif ne, _0CD7
+	compare VAR_UNK_40AF, 1
+	goto_if_ne _0CD7
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
@@ -774,15 +774,15 @@ _0CD7:
 scr_seq_D35R0102_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	comparevartovalue VAR_UNK_40B0, 0
-	gotoif ne, _0D02
+	compare VAR_UNK_40B0, 0
+	goto_if_ne _0D02
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
 	.byte 0x16, 0x00, 0x1f, 0x00
 	.byte 0x00, 0x00
 _0D02:
-	comparevartovalue VAR_UNK_40B0, 1
-	gotoif ne, _0D1E
+	compare VAR_UNK_40B0, 1
+	goto_if_ne _0D1E
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
@@ -793,14 +793,14 @@ _0D1E:
 scr_seq_D35R0102_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	comparevartovalue VAR_UNK_40B1, 0
-	gotoif ne, _0D49
+	compare VAR_UNK_40B1, 0
+	goto_if_ne _0D49
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0D49:
-	comparevartovalue VAR_UNK_40B1, 1
-	gotoif ne, _0D65
+	compare VAR_UNK_40B1, 1
+	goto_if_ne _0D65
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
 	.byte 0x16
@@ -819,45 +819,44 @@ scr_seq_D35R0102_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40AC, 9
-	gotoif ge, _0F24
-	checkflag FLAG_UNK_0D6
-	gotoif TRUE, _0E58
+	compare VAR_UNK_40AC, 9
+	goto_if_ge _0F24
+	goto_if_set FLAG_UNK_0D6, _0E58
 	npc_msg msg_0112_D35R0102_00005
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0DB7
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0F1E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0DB7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0F1E
 _0DB7:
 	play_se SEQ_SE_DP_DENSI01
 	npc_msg msg_0112_D35R0102_00007
 	closemsg
 	setflag FLAG_UNK_0D6
-	comparevartovalue VAR_UNK_40AD, 2
-	gotoif ge, _0DDF
+	compare VAR_UNK_40AD, 2
+	goto_if_ge _0DDF
 	setvar VAR_UNK_40AD, 1
 	apply_movement obj_D35R0102_aji_peru, _04A4
 _0DDF:
-	comparevartovalue VAR_UNK_40AE, 2
-	gotoif ge, _0DFA
+	compare VAR_UNK_40AE, 2
+	goto_if_ge _0DFA
 	setvar VAR_UNK_40AE, 1
 	apply_movement obj_D35R0102_aji_peru_2, _04A4
 _0DFA:
-	comparevartovalue VAR_UNK_40AF, 2
-	gotoif ge, _0E15
+	compare VAR_UNK_40AF, 2
+	goto_if_ge _0E15
 	setvar VAR_UNK_40AF, 1
 	apply_movement obj_D35R0102_aji_peru_3, _04A4
 _0E15:
-	comparevartovalue VAR_UNK_40B0, 2
-	gotoif ge, _0E30
+	compare VAR_UNK_40B0, 2
+	goto_if_ge _0E30
 	setvar VAR_UNK_40B0, 1
 	apply_movement obj_D35R0102_aji_peru_4, _04A4
 _0E30:
-	comparevartovalue VAR_UNK_40B1, 2
-	gotoif ge, _0E4D
+	compare VAR_UNK_40B1, 2
+	goto_if_ge _0E4D
 	setvar VAR_UNK_40B1, 1
 	apply_movement obj_D35R0102_aji_peru_5, _04A4
 	wait_movement
@@ -873,37 +872,37 @@ _0E58:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0E7D
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0F1E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0E7D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0F1E
 _0E7D:
 	play_se SEQ_SE_DP_DENSI01
 	npc_msg msg_0112_D35R0102_00007
 	closemsg
 	clearflag FLAG_UNK_0D6
-	comparevartovalue VAR_UNK_40AD, 2
-	gotoif ge, _0EA5
+	compare VAR_UNK_40AD, 2
+	goto_if_ge _0EA5
 	setvar VAR_UNK_40AD, 0
 	apply_movement obj_D35R0102_aji_peru, _04AC
 _0EA5:
-	comparevartovalue VAR_UNK_40AE, 2
-	gotoif ge, _0EC0
+	compare VAR_UNK_40AE, 2
+	goto_if_ge _0EC0
 	setvar VAR_UNK_40AE, 0
 	apply_movement obj_D35R0102_aji_peru_2, _04AC
 _0EC0:
-	comparevartovalue VAR_UNK_40AF, 2
-	gotoif ge, _0EDB
+	compare VAR_UNK_40AF, 2
+	goto_if_ge _0EDB
 	setvar VAR_UNK_40AF, 0
 	apply_movement obj_D35R0102_aji_peru_3, _04AC
 _0EDB:
-	comparevartovalue VAR_UNK_40B0, 2
-	gotoif ge, _0EF6
+	compare VAR_UNK_40B0, 2
+	goto_if_ge _0EF6
 	setvar VAR_UNK_40B0, 0
 	apply_movement obj_D35R0102_aji_peru_4, _04AC
 _0EF6:
-	comparevartovalue VAR_UNK_40B1, 2
-	gotoif ge, _0F13
+	compare VAR_UNK_40B1, 2
+	goto_if_ge _0F13
 	setvar VAR_UNK_40B1, 0
 	apply_movement obj_D35R0102_aji_peru_5, _04AC
 	wait_movement
@@ -933,8 +932,8 @@ scr_seq_D35R0102_013:
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B2, 1
 	releaseall
 	end
@@ -946,8 +945,8 @@ scr_seq_D35R0102_014:
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B3, 1
 	releaseall
 	end
@@ -959,8 +958,8 @@ scr_seq_D35R0102_015:
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B4, 1
 	releaseall
 	end
@@ -972,8 +971,8 @@ scr_seq_D35R0102_016:
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B5, 1
 	releaseall
 	end
@@ -985,8 +984,8 @@ scr_seq_D35R0102_017:
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B6, 1
 	releaseall
 	end
@@ -998,8 +997,8 @@ scr_seq_D35R0102_018:
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B7, 1
 	releaseall
 	end
@@ -1011,8 +1010,8 @@ scr_seq_D35R0102_019:
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B8, 1
 	releaseall
 	end
@@ -1024,8 +1023,8 @@ scr_seq_D35R0102_020:
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40B9, 1
 	releaseall
 	end
@@ -1037,8 +1036,8 @@ scr_seq_D35R0102_021:
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40BA, 1
 	releaseall
 	end
@@ -1050,8 +1049,8 @@ scr_seq_D35R0102_022:
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40BB, 1
 	releaseall
 	end
@@ -1063,8 +1062,8 @@ scr_seq_D35R0102_023:
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40BC, 1
 	releaseall
 	end
@@ -1076,8 +1075,8 @@ scr_seq_D35R0102_024:
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40BD, 1
 	releaseall
 	end
@@ -1089,8 +1088,8 @@ scr_seq_D35R0102_025:
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40BE, 1
 	releaseall
 	end
@@ -1102,8 +1101,8 @@ scr_seq_D35R0102_026:
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40BF, 1
 	releaseall
 	end
@@ -1115,8 +1114,8 @@ scr_seq_D35R0102_027:
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40C0, 1
 	releaseall
 	end
@@ -1128,8 +1127,8 @@ scr_seq_D35R0102_028:
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _11FF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _11FF
 	setvar VAR_UNK_40C1, 1
 	releaseall
 	end

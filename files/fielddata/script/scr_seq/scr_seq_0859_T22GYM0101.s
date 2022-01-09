@@ -16,20 +16,20 @@
 scr_seq_T22GYM0101_000:
 	scrcmd_324
 	get_phone_book_rematch 18, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00A7
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00A7
 	scrcmd_147 18, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _007E
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _007E
 	check_badge 12, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _005B
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _005B
 	goto _00A1
 
 _005B:
 	get_weekday VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif ne, _0076
+	compare VAR_TEMP_x4001, 1
+	goto_if_ne _0076
 	setflag FLAG_UNK_2E9
 	goto _007C
 
@@ -41,8 +41,8 @@ _007C:
 
 _007E:
 	get_weekday VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif ne, _0099
+	compare VAR_TEMP_x4001, 3
+	goto_if_ne _0099
 	setflag FLAG_UNK_2E9
 	goto _009F
 
@@ -65,14 +65,14 @@ scr_seq_T22GYM0101_001:
 	lockall
 	faceplayer
 	check_badge 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0168
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0168
 	npc_msg msg_0558_T22GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_FALKNER_FALKNER, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _017E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _017E
 	give_badge 0
 	add_special_game_stat 22
 	settrainerflag TRAINER_BIRD_KEEPER_GS_ROD
@@ -108,8 +108,7 @@ _015E:
 	end
 
 _0168:
-	checkflag FLAG_UNK_073
-	gotoif FALSE, _0126
+	goto_if_unset FLAG_UNK_073, _0126
 	npc_msg msg_0558_T22GYM0101_00005
 	waitbutton
 	closemsg
@@ -126,8 +125,8 @@ scr_seq_T22GYM0101_002:
 	lockall
 	faceplayer
 	check_badge 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01AA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01AA
 	npc_msg msg_0558_T22GYM0101_00007
 	waitbutton
 	closemsg
@@ -157,8 +156,8 @@ scr_seq_T22GYM0101_003:
 	faceplayer
 	check_badge 0, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01EF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01EF
 	npc_msg msg_0558_T22GYM0101_00009
 	goto _01F2
 

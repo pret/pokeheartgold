@@ -11,11 +11,10 @@
 	scrdef_end
 
 scr_seq_D25R0103_002:
-	checkflag FLAG_UNK_AB8
-	gotoif TRUE, _003A
+	goto_if_set FLAG_UNK_AB8, _003A
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _0034
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _0034
 	clearflag FLAG_UNK_30A
 	goto _0038
 
@@ -29,8 +28,7 @@ _003A:
 	end
 
 scr_seq_D25R0103_001:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _004D
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _004D
 	end
 
 _004D:
@@ -48,8 +46,8 @@ scr_seq_D25R0103_000:
 	wild_battle SPECIES_LAPRAS, 20, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _008F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _008F
 	setflag FLAG_UNK_AB8
 	releaseall
 	end

@@ -15,8 +15,8 @@
 	scrdef_end
 
 scr_seq_P01R0102_001:
-	comparevartovalue VAR_UNK_40E1, 2
-	gotoif eq, _002D
+	compare VAR_UNK_40E1, 2
+	goto_if_eq _002D
 	end
 
 _002D:
@@ -25,34 +25,33 @@ _002D:
 
 scr_seq_P01R0102_005:
 	scrcmd_582 77, 279, 276
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0054
+	goto_if_unset FLAG_UNK_189, _0054
 	clearflag FLAG_UNK_189
 	end
 
 _0054:
 	scrcmd_147 35, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0097
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0097
 	check_badge 13, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0080
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0080
 	goto _00C1
 
 _0080:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _00C1
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _00C1
 	clearflag FLAG_UNK_2C9
 	end
 
 _0097:
 	get_phone_book_rematch 35, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00C1
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00C1
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _00C1
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _00C1
 	clearflag FLAG_UNK_2C9
 	end
 
@@ -115,32 +114,31 @@ scr_seq_P01R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0EB
-	gotoif TRUE, _0211
+	goto_if_set FLAG_UNK_0EB, _0211
 	npc_msg msg_0256_P01R0102_00000
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0197
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0197
 	apply_movement obj_P01R0102_seaman_2, _021C
 	wait_movement
 	apply_movement obj_player, _024C
 	goto _01F3
 
 _0197:
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _01BC
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _01BC
 	apply_movement obj_P01R0102_seaman_2, _022C
 	wait_movement
 	apply_movement obj_player, _025C
 	goto _01F3
 
 _01BC:
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _01E1
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _01E1
 	apply_movement obj_P01R0102_seaman_2, _023C
 	wait_movement
 	apply_movement obj_player, _026C
@@ -206,19 +204,19 @@ scr_seq_P01R0102_006:
 	lockall
 	faceplayer
 	scrcmd_147 35, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0322
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif ge, _0317
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0322
+	compare VAR_TEMP_x4004, 1
+	goto_if_ge _0317
 	npc_msg msg_0256_P01R0102_00004
 _029F:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02C3
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0306
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02C3
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0306
 	end
 
 _02C3:
@@ -258,11 +256,11 @@ _0322:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0383
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0383
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _038E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _038E
 	npc_msg msg_0256_P01R0102_00010
 	closemsg
 	setflag FLAG_UNK_189

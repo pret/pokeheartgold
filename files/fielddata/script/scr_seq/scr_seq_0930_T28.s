@@ -20,8 +20,8 @@ scr_seq_T28_005:
 	setvar VAR_UNK_4077, 2
 	setflag FLAG_UNK_0C5
 	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
-	comparevartovalue VAR_UNK_40F8, 0
-	gotoif ne, _0047
+	compare VAR_UNK_40F8, 0
+	goto_if_ne _0047
 	setvar VAR_UNK_40F8, 2
 _0047:
 	setvar VAR_SPECIAL_x8004, 1
@@ -35,20 +35,19 @@ scr_seq_T28_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 5
-	gotoif eq, _0117
-	checkflag FLAG_UNK_163
-	gotoif TRUE, _010C
+	compare VAR_UNK_4077, 5
+	goto_if_eq _0117
+	goto_if_set FLAG_UNK_163, _010C
 	npc_msg msg_0620_T28_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0101
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0101
 _009D:
 	hasenoughmoneyimmediate 32780, 200
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00EC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00EC
 	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7
 	callstd std_give_item_verbose
 	submoneyimmediate 200
@@ -77,16 +76,15 @@ _010C:
 	goto _014C
 
 _0117:
-	checkflag FLAG_UNK_163
-	gotoif TRUE, _0147
+	goto_if_set FLAG_UNK_163, _0147
 	npc_msg msg_0620_T28_00003
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _009D
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0101
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _009D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0101
 _0147:
 	npc_msg msg_0620_T28_00004
 	waitbutton
@@ -104,8 +102,8 @@ scr_seq_T28_001:
 	scrcmd_603
 	scrcmd_604 56
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 176
-	gotoif ne, _0193
+	compare VAR_TEMP_x4001, 176
+	goto_if_ne _0193
 	apply_movement obj_T28_gsmiddleman1, _0284
 	apply_movement obj_player, _0294
 	goto _01A3
@@ -118,20 +116,19 @@ _01A3:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	checkflag FLAG_UNK_163
-	gotoif TRUE, _026D
+	goto_if_set FLAG_UNK_163, _026D
 	npc_msg msg_0620_T28_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01DF
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0257
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01DF
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0257
 _01DF:
 	hasenoughmoneyimmediate 32780, 300
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0262
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0262
 	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7
 	callstd std_give_item_verbose
 	submoneyimmediate 300
@@ -140,8 +137,8 @@ _01DF:
 	setflag FLAG_UNK_163
 _0228:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 176
-	gotoif ne, _0249
+	compare VAR_TEMP_x4001, 176
+	goto_if_ne _0249
 	apply_movement obj_T28_gsmiddleman1, _02C4
 	goto _0251
 
@@ -210,8 +207,7 @@ scr_seq_T28_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GOT_RED_SCALE
-	gotoif TRUE, _02FA
+	goto_if_set FLAG_GOT_RED_SCALE, _02FA
 	npc_msg msg_0620_T28_00014
 	waitbutton
 	closemsg

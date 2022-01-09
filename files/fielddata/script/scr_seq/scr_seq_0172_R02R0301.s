@@ -13,8 +13,7 @@ scr_seq_R02R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_135
-	gotoif TRUE, _004D
+	goto_if_set FLAG_UNK_135, _004D
 	buffer_players_name 0
 	gender_msgbox msg_0323_R02R0301_00000, msg_0323_R02R0301_00001
 	goto_if_no_item_space ITEM_SACRED_ASH, 1, _0058

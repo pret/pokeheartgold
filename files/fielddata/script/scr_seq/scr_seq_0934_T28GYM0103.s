@@ -14,8 +14,8 @@ scr_seq_T28GYM0103_000:
 	lockall
 	faceplayer
 	check_badge 6, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0030
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0030
 	npc_msg msg_0623_T28GYM0103_00000
 	waitbutton
 	closemsg
@@ -35,8 +35,8 @@ scr_seq_T28GYM0103_001:
 	faceplayer
 	check_badge 6, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0062
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0062
 	npc_msg msg_0623_T28GYM0103_00002
 	goto _0065
 

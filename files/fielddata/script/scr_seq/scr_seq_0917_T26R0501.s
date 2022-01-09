@@ -34,23 +34,22 @@ scr_seq_T26R0501_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_AB9
-	gotoif FALSE, _0050
+	goto_if_unset FLAG_UNK_AB9, _0050
 	npc_msg msg_0609_T26R0501_00004
 	goto _00E3
 
 _0050:
 	npc_msg msg_0609_T26R0501_00002
 	hasitem ITEM_SEAL_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0071
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0071
 	npc_msg msg_0609_T26R0501_00005
 	goto _00E3
 
 _0071:
 	scrcmd_135 32768, 32769, 32770
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif ne, _008F
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_ne _008F
 	npc_msg msg_0609_T26R0501_00003
 	goto _00E3
 
@@ -61,15 +60,15 @@ _008F:
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0609_T26R0501_00011
 	wait_fanfare
-	comparevartovalue VAR_SPECIAL_x8001, 0
-	gotoif eq, _00EB
+	compare VAR_SPECIAL_x8001, 0
+	goto_if_eq _00EB
 	buffer_seal_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0609_T26R0501_00007
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0609_T26R0501_00011
 	wait_fanfare
-	comparevartovalue VAR_SPECIAL_x8002, 0
-	gotoif eq, _00EB
+	compare VAR_SPECIAL_x8002, 0
+	goto_if_eq _00EB
 	buffer_seal_name 0, VAR_SPECIAL_x8002
 	npc_msg msg_0609_T26R0501_00008
 	play_fanfare SEQ_ME_ITEM

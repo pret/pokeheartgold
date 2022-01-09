@@ -35,8 +35,8 @@
 	scrdef_end
 
 scr_seq_D22R0101_011:
-	comparevartovalue VAR_UNK_40F7, 1
-	callif eq, _007D
+	compare VAR_UNK_40F7, 1
+	call_if_eq _007D
 	end
 
 _007D:
@@ -47,38 +47,37 @@ _007D:
 	script_overlay_cmd 1, 0
 _009F:
 	is_npc_bug_contestant_registered VAR_TEMP_x4000, VAR_TEMP_x4004
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif ne, _00C4
+	compare VAR_TEMP_x4004, 1
+	goto_if_ne _00C4
 	move_person VAR_TEMP_x4001, VAR_TEMP_x4002, 0, 50, 0
 	addvar VAR_TEMP_x4002, 2
 _00C4:
 	addvar VAR_TEMP_x4000, 1
 	addvar VAR_TEMP_x4001, 1
-	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif lt, _009F
+	compare VAR_TEMP_x4000, 10
+	goto_if_lt _009F
 	script_overlay_cmd 1, 1
 	return
 
 scr_seq_D22R0101_025:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _00F4
+	goto_if_unset FLAG_UNK_189, _00F4
 	clearflag FLAG_UNK_189
 	end
 
 _00F4:
-	comparevartovalue VAR_UNK_40F7, 1
-	gotoif eq, _0162
+	compare VAR_UNK_40F7, 1
+	goto_if_eq _0162
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0154
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, _0154
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, _0162
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, _0162
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, _0162
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0154
+	compare VAR_TEMP_x4000, 3
+	goto_if_eq _0154
+	compare VAR_TEMP_x4000, 2
+	goto_if_eq _0162
+	compare VAR_TEMP_x4000, 4
+	goto_if_eq _0162
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _0162
 	setflag FLAG_HIDE_CAMERON
 	clearflag FLAG_UNK_27F
 	goto _016E
@@ -93,22 +92,21 @@ _0162:
 	setflag FLAG_UNK_27F
 	clearflag FLAG_UNK_996
 _016E:
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _017F
+	goto_if_set FLAG_GAME_CLEAR, _017F
 	setflag FLAG_UNK_288
 	end
 
 _017F:
 	get_phone_book_rematch 34, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _01C9
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _01C9
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _01C3
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, _01C3
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, _01C3
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _01C3
+	compare VAR_TEMP_x4000, 3
+	goto_if_eq _01C3
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _01C3
 	setflag FLAG_UNK_288
 	end
 
@@ -235,8 +233,8 @@ scr_seq_D22R0101_026:
 	lockall
 	faceplayer
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, _02C7
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _02C7
 	buffer_players_name 0
 	npc_msg msg_0062_D22R0101_00084
 	waitbutton
@@ -250,11 +248,11 @@ _02C7:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _032B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _032B
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0336
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0336
 	npc_msg msg_0062_D22R0101_00086
 	closemsg
 	setflag FLAG_UNK_189
@@ -290,8 +288,7 @@ scr_seq_D22R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_10E
-	gotoif TRUE, _0380
+	goto_if_set FLAG_UNK_10E, _0380
 	npc_msg msg_0062_D22R0101_00002
 	goto_if_no_item_space ITEM_QUICK_CLAW, 1, _038B
 	callstd std_give_item_verbose
@@ -318,11 +315,11 @@ scr_seq_D22R0101_023:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0650
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0650
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0664
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0664
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -330,21 +327,21 @@ scr_seq_D22R0101_023:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _040E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _040E
 	apply_movement obj_player, _04C0
 	apply_movement obj_D22R0101_gsmiddleman1_3, _050C
 	goto _045C
 
 _040E:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0429
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0429
 	apply_movement obj_player, _04D8
 	goto _045C
 
 _0429:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _044C
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _044C
 	apply_movement obj_player, _04F8
 	apply_movement obj_D22R0101_gsmiddleman1_3, _050C
 	goto _045C
@@ -358,8 +355,8 @@ _045C:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0483
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0483
 	apply_movement obj_partner_poke, _0518
 	wait_movement
 _0483:
@@ -425,11 +422,11 @@ scr_seq_D22R0101_024:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0650
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0650
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0664
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0664
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -437,21 +434,21 @@ scr_seq_D22R0101_024:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _05A1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _05A1
 	apply_movement obj_player, _04C0
 	apply_movement obj_D22R0101_gsmiddleman1_4, _050C
 	goto _05EF
 
 _05A1:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _05BC
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _05BC
 	apply_movement obj_player, _04D8
 	goto _05EF
 
 _05BC:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _05DF
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _05DF
 	apply_movement obj_player, _0678
 	apply_movement obj_D22R0101_gsmiddleman1_4, _050C
 	goto _05EF
@@ -465,8 +462,8 @@ _05EF:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0616
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0616
 	apply_movement obj_partner_poke, _0518
 	wait_movement
 _0616:

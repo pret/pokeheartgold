@@ -13,8 +13,7 @@
 	scrdef_end
 
 scr_seq_T20R0402_002:
-	checkflag FLAG_UNK_2E5
-	gotoif TRUE, _0025
+	goto_if_set FLAG_UNK_2E5, _0025
 	get_friend_sprite VAR_OBJ_0
 _0025:
 	end
@@ -24,11 +23,10 @@ scr_seq_T20R0402_000:
 	lockall
 	faceplayer
 	check_badge 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _006D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _006D
 	buffer_players_name 0
-	checkflag FLAG_GOT_STARTER
-	gotoif TRUE, _005C
+	goto_if_set FLAG_GOT_STARTER, _005C
 	gender_msgbox msg_0549_T20R0402_00000, msg_0549_T20R0402_00001
 	waitbutton
 	closemsg
@@ -46,10 +44,9 @@ _005C:
 _006D:
 	get_lead_mon_index VAR_SPECIAL_x8006
 	scrcmd_825 32774, 32780
-	checkflag FLAG_UNK_161
-	gotoif TRUE, _00B1
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _009E
+	goto_if_set FLAG_UNK_161, _00B1
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _009E
 _008F:
 	buffer_players_name 0
 	gender_msgbox msg_0549_T20R0402_00005, msg_0549_T20R0402_00006
@@ -69,12 +66,12 @@ _009E:
 
 _00B1:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8004, 6
-	gotoif eq, _00E4
-	comparevartovalue VAR_SPECIAL_x8004, 5
-	gotoif eq, _00FC
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif ge, _0137
+	compare VAR_SPECIAL_x8004, 6
+	goto_if_eq _00E4
+	compare VAR_SPECIAL_x8004, 5
+	goto_if_eq _00FC
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_ge _0137
 	goto _008F
 
 _00E4:
@@ -105,20 +102,20 @@ _010D:
 	end
 
 _0137:
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif ne, _0150
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_ne _0150
 	setvar VAR_SPECIAL_x8005, 4
 	goto _0188
 
 _0150:
-	comparevartovalue VAR_SPECIAL_x8004, 2
-	gotoif ne, _0169
+	compare VAR_SPECIAL_x8004, 2
+	goto_if_ne _0169
 	setvar VAR_SPECIAL_x8005, 3
 	goto _0188
 
 _0169:
-	comparevartovalue VAR_SPECIAL_x8004, 3
-	gotoif ne, _0182
+	compare VAR_SPECIAL_x8004, 3
+	goto_if_ne _0182
 	setvar VAR_SPECIAL_x8005, 2
 	goto _0188
 

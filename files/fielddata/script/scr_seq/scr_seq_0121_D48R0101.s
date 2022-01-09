@@ -15,8 +15,8 @@
 	scrdef_end
 
 scr_seq_D48R0101_005:
-	comparevartovalue VAR_UNK_40F9, 2
-	gotoif eq, _0031
+	compare VAR_UNK_40F9, 2
+	goto_if_eq _0031
 	setflag FLAG_UNK_2CE
 	end
 
@@ -25,14 +25,14 @@ _0031:
 	end
 
 scr_seq_D48R0101_006:
-	comparevartovalue VAR_UNK_40F9, 2
-	gotoif eq, _0046
+	compare VAR_UNK_40F9, 2
+	goto_if_eq _0046
 	end
 
 _0046:
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif eq, _0065
+	compare VAR_TEMP_x4001, 2
+	goto_if_eq _0065
 	move_person obj_D48R0101_gsleader5, 19, 0, 40, 1
 	end
 
@@ -42,8 +42,8 @@ _0065:
 scr_seq_D48R0101_004:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _0086
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _0086
 	apply_movement obj_D48R0101_gsleader5, _0130
 	goto _008E
 
@@ -54,8 +54,8 @@ _008E:
 	buffer_players_name 0
 	npc_msg msg_0136_D48R0101_00007
 	closemsg
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _00B3
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _00B3
 	apply_movement obj_D48R0101_gsleader5, _0160
 	goto _00BB
 
@@ -65,8 +65,8 @@ _00BB:
 	wait_movement
 	npc_msg msg_0136_D48R0101_00008
 	closemsg
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _00DD
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _00DD
 	apply_movement obj_D48R0101_gsleader5, _0178
 	goto _00E5
 
@@ -76,8 +76,8 @@ _00E5:
 	wait_movement
 	npc_msg msg_0136_D48R0101_00009
 	closemsg
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _010F
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _010F
 	apply_movement obj_player, _01A8
 	apply_movement obj_D48R0101_gsleader5, _0188
 	goto _0117
@@ -150,10 +150,9 @@ scr_seq_D48R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40EB, 1
-	gotoif eq, _0215
-	checkflag FLAG_UNK_0F5
-	gotoif TRUE, _01E7
+	compare VAR_UNK_40EB, 1
+	goto_if_eq _0215
+	goto_if_set FLAG_UNK_0F5, _01E7
 	npc_msg msg_0136_D48R0101_00000
 	waitbutton
 	closemsg
@@ -165,8 +164,8 @@ _01E7:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _020A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _020A
 	npc_msg msg_0136_D48R0101_00003
 	waitbutton
 	closemsg
@@ -212,8 +211,7 @@ scr_seq_D48R0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0F5
-	gotoif TRUE, _027C
+	goto_if_set FLAG_UNK_0F5, _027C
 	npc_msg msg_0136_D48R0101_00010
 	waitbutton
 	closemsg

@@ -16,22 +16,21 @@
 scr_seq_T27GYM0101_000:
 	scrcmd_314
 	get_phone_book_rematch 37, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00AC
-	checkflag FLAG_GAME_CLEAR
-	gotoif FALSE, _00A6
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00AC
+	goto_if_unset FLAG_GAME_CLEAR, _00A6
 	scrcmd_147 37, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0085
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0085
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _0068
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _0068
 	setflag FLAG_UNK_2ED
 	goto _0083
 
 _0068:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _007F
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _007F
 	setflag FLAG_UNK_2ED
 	goto _0083
 
@@ -42,8 +41,8 @@ _0083:
 
 _0085:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _00A0
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _00A0
 	setflag FLAG_UNK_2ED
 	goto _00A4
 
@@ -102,14 +101,14 @@ scr_seq_T27GYM0101_001:
 	lockall
 	faceplayer
 	check_badge 3, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01D9
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01D9
 	npc_msg msg_0614_T27GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_MORTY_MORTY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01EF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01EF
 	npc_msg msg_0614_T27GYM0101_00001
 	give_badge 3
 	addvar VAR_UNK_4134, 1
@@ -139,8 +138,7 @@ _01CF:
 	end
 
 _01D9:
-	checkflag FLAG_UNK_0A6
-	gotoif FALSE, _019B
+	goto_if_unset FLAG_UNK_0A6, _019B
 	npc_msg msg_0614_T27GYM0101_00006
 	waitbutton
 	closemsg
@@ -191,8 +189,8 @@ scr_seq_T27GYM0101_003:
 	lockall
 	faceplayer
 	check_badge 3, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _029E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _029E
 	npc_msg msg_0614_T27GYM0101_00007
 	waitbutton
 	closemsg
@@ -213,8 +211,8 @@ scr_seq_T27GYM0101_005:
 	faceplayer
 	check_badge 3, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _02D3
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _02D3
 	npc_msg msg_0614_T27GYM0101_00010
 	goto _02D6
 

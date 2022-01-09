@@ -17,30 +17,27 @@
 	scrdef_end
 
 scr_seq_R22R0101_006:
-	checkflag FLAG_UNK_12C
-	gotoif FALSE, _003D
+	goto_if_unset FLAG_UNK_12C, _003D
 	move_person obj_R22R0101_policeman_3, 15, 0, 8, 1
 _003D:
-	checkflag FLAG_UNK_12B
-	gotoif FALSE, _0054
+	goto_if_unset FLAG_UNK_12B, _0054
 	move_person obj_R22R0101_policeman_2, 7, 0, 8, 1
 _0054:
 	end
 
 scr_seq_R22R0101_007:
 	setflag FLAG_UNK_9D1
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _006B
+	goto_if_unset FLAG_UNK_189, _006B
 	clearflag FLAG_UNK_189
 	end
 
 _006B:
 	scrcmd_147 26, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00DF
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00DF
 	check_badge 12, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _009D
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _009D
 	goto _012C
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _009D:
@@ -48,14 +45,14 @@ _009D:
 	.byte 0x02, 0x00
 _00A5:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, _00C0
+	compare VAR_TEMP_x4000, 16
+	goto_if_ne _00C0
 	clearflag FLAG_UNK_270
 	goto _00DD
 
 _00C0:
-	comparevartovalue VAR_TEMP_x4000, 17
-	gotoif ne, _00D7
+	compare VAR_TEMP_x4000, 17
+	goto_if_ne _00D7
 	clearflag FLAG_UNK_270
 	goto _00DD
 
@@ -67,17 +64,17 @@ _00DD:
 
 _00DF:
 	get_phone_book_rematch 26, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _012C
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _012C
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, _010D
+	compare VAR_TEMP_x4000, 18
+	goto_if_ne _010D
 	clearflag FLAG_UNK_270
 	goto _012A
 
 _010D:
-	comparevartovalue VAR_TEMP_x4000, 19
-	gotoif ne, _0124
+	compare VAR_TEMP_x4000, 19
+	goto_if_ne _0124
 	clearflag FLAG_UNK_270
 	goto _012A
 
@@ -127,8 +124,8 @@ scr_seq_R22R0101_001:
 	scrcmd_609
 	lockall
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 8
-	gotoif ne, _01A4
+	compare VAR_TEMP_x4001, 8
+	goto_if_ne _01A4
 	apply_movement obj_R22R0101_policeman_3, _0264
 	goto _01AC
 
@@ -136,14 +133,14 @@ _01A4:
 	apply_movement obj_R22R0101_policeman_3, _0270
 _01AC:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4001, 8
-	gotoif ne, _01C9
+	compare VAR_TEMP_x4001, 8
+	goto_if_ne _01C9
 	apply_movement obj_R22R0101_policeman_3, _027C
 	goto _01EC
 
 _01C9:
-	comparevartovalue VAR_TEMP_x4001, 10
-	gotoif ne, _01E4
+	compare VAR_TEMP_x4001, 10
+	goto_if_ne _01E4
 	apply_movement obj_R22R0101_policeman_3, _028C
 	goto _01EC
 
@@ -163,14 +160,14 @@ _01EC:
 	scrcmd_602 1
 	scrcmd_604 48
 	wait 16, VAR_SPECIAL_x800C
-	comparevartovalue VAR_TEMP_x4001, 8
-	gotoif ne, _023A
+	compare VAR_TEMP_x4001, 8
+	goto_if_ne _023A
 	apply_movement obj_R22R0101_policeman_3, _02C4
 	goto _025D
 
 _023A:
-	comparevartovalue VAR_TEMP_x4001, 10
-	gotoif ne, _0255
+	compare VAR_TEMP_x4001, 10
+	goto_if_ne _0255
 	apply_movement obj_R22R0101_policeman_3, _02D0
 	goto _025D
 
@@ -238,8 +235,7 @@ scr_seq_R22R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_12C
-	gotoif TRUE, _0306
+	goto_if_set FLAG_UNK_12C, _0306
 	npc_msg msg_0361_R22R0101_00004
 	waitbutton
 	closemsg
@@ -257,8 +253,8 @@ scr_seq_R22R0101_002:
 	scrcmd_609
 	lockall
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 8
-	gotoif ne, _0336
+	compare VAR_TEMP_x4001, 8
+	goto_if_ne _0336
 	apply_movement obj_R22R0101_policeman_2, _03F8
 	goto _033E
 
@@ -266,14 +262,14 @@ _0336:
 	apply_movement obj_R22R0101_policeman_2, _0404
 _033E:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4001, 8
-	gotoif ne, _035B
+	compare VAR_TEMP_x4001, 8
+	goto_if_ne _035B
 	apply_movement obj_R22R0101_policeman_2, _0410
 	goto _037E
 
 _035B:
-	comparevartovalue VAR_TEMP_x4001, 10
-	gotoif ne, _0376
+	compare VAR_TEMP_x4001, 10
+	goto_if_ne _0376
 	apply_movement obj_R22R0101_policeman_2, _0420
 	goto _037E
 
@@ -293,14 +289,14 @@ _037E:
 	scrcmd_602 1
 	scrcmd_604 48
 	wait 16, VAR_SPECIAL_x800C
-	comparevartovalue VAR_TEMP_x4001, 8
-	gotoif ne, _03CC
+	compare VAR_TEMP_x4001, 8
+	goto_if_ne _03CC
 	apply_movement obj_R22R0101_policeman_2, _0458
 	goto _03EF
 
 _03CC:
-	comparevartovalue VAR_TEMP_x4001, 10
-	gotoif ne, _03E7
+	compare VAR_TEMP_x4001, 10
+	goto_if_ne _03E7
 	apply_movement obj_R22R0101_policeman_2, _0464
 	goto _03EF
 
@@ -368,8 +364,7 @@ scr_seq_R22R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_12B
-	gotoif TRUE, _049A
+	goto_if_set FLAG_UNK_12B, _049A
 	npc_msg msg_0361_R22R0101_00001
 	waitbutton
 	closemsg
@@ -388,19 +383,19 @@ scr_seq_R22R0101_008:
 	lockall
 	faceplayer
 	scrcmd_147 26, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0553
-	comparevartovalue VAR_TEMP_x4005, 1
-	gotoif ge, _0548
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0553
+	compare VAR_TEMP_x4005, 1
+	goto_if_ge _0548
 	npc_msg msg_0361_R22R0101_00007
 _04D0:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _04F4
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0537
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _04F4
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0537
 	end
 
 _04F4:
@@ -440,11 +435,11 @@ _0553:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _05B4
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _05B4
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _05BF
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _05BF
 	npc_msg msg_0361_R22R0101_00013
 	closemsg
 	setflag FLAG_UNK_189

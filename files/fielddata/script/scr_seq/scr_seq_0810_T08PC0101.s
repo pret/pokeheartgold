@@ -42,14 +42,14 @@ scr_seq_T08PC0101_003:
 	faceplayer
 	npc_msg msg_0515_T08PC0101_00002
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _006E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _006E
 	apply_movement obj_T08PC0101_gsgirl1, _009C
 	goto _0091
 
 _006E:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0089
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0089
 	apply_movement obj_T08PC0101_gsgirl1, _00C0
 	goto _0091
 

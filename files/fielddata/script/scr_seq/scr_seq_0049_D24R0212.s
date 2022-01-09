@@ -14,22 +14,22 @@ scr_seq_D24R0212_000:
 	lockall
 	setvar VAR_UNK_40CD, 1
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0034
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _007E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0034
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _007E
 	end
 
 _0034:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0053
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0053
 	apply_movement obj_player, _0108
 	goto _0076
 
 _0053:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _006E
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _006E
 	apply_movement obj_player, _0140
 	goto _0076
 
@@ -41,15 +41,15 @@ _0076:
 
 _007E:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00A5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00A5
 	apply_movement obj_player, _0108
 	apply_movement obj_partner_poke, _0114
 	goto _00D8
 
 _00A5:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _00C8
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _00C8
 	apply_movement obj_player, _0140
 	apply_movement obj_partner_poke, _014C
 	goto _00D8

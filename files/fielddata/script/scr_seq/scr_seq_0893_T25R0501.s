@@ -17,8 +17,7 @@
 
 scr_seq_T25R0501_006:
 	scrcmd_582 76, 348, 350
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _0037
+	goto_if_set FLAG_RESTORED_POWER, _0037
 	end
 
 _0037:
@@ -26,8 +25,7 @@ _0037:
 	end
 
 scr_seq_T25R0501_005:
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _004C
+	goto_if_set FLAG_RESTORED_POWER, _004C
 	end
 
 _004C:
@@ -38,8 +36,7 @@ scr_seq_T25R0501_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _0078
+	goto_if_set FLAG_RESTORED_POWER, _0078
 	npc_msg msg_0587_T25R0501_00000
 	waitbutton
 	closemsg
@@ -48,8 +45,8 @@ scr_seq_T25R0501_000:
 
 _0078:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0096
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0096
 	npc_msg msg_0587_T25R0501_00005
 	waitbutton
 	closemsg
@@ -73,16 +70,15 @@ scr_seq_T25R0501_001:
 	lockall
 	apply_movement obj_player, _013C
 	wait_movement
-	checkflag FLAG_UNK_123
-	gotoif TRUE, _0118
+	goto_if_set FLAG_UNK_123, _0118
 	npc_msg msg_0587_T25R0501_00001
 	closemsg
 	setflag FLAG_UNK_123
 _00D6:
 	wait 50, VAR_SPECIAL_x8004
 	hasitem ITEM_PASS, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0123
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0123
 	npc_msg msg_0587_T25R0501_00002
 	closemsg
 	scrcmd_602 0

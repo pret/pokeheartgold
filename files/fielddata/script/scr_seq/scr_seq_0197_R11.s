@@ -12,10 +12,8 @@
 	scrdef_end
 
 scr_seq_R11_001:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _002A
-	checkflag FLAG_UNK_0F9
-	gotoif TRUE, _0044
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _002A
+	goto_if_set FLAG_UNK_0F9, _0044
 	end
 
 _002A:
@@ -34,8 +32,8 @@ scr_seq_R11_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_779 5, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _006A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _006A
 	npc_msg msg_0346_R11_00002
 	waitbutton
 	closemsg
@@ -51,11 +49,11 @@ _006A:
 	wild_battle SPECIES_SNORLAX, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00B4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00B4
 	scrcmd_683 VAR_TEMP_x4005
-	comparevartovalue VAR_TEMP_x4005, 4
-	callif eq, _00BA
+	compare VAR_TEMP_x4005, 4
+	call_if_eq _00BA
 	setflag FLAG_UNK_998
 	setflag FLAG_UNK_0F9
 	releaseall

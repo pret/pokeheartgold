@@ -16,30 +16,30 @@
 
 scr_seq_D24R0218_004:
 	nop_var_490 VAR_TEMP_x4004
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
-	gotoif eq, _0035
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
+	goto_if_eq _0035
 	goto _0095
 
 _0035:
 	get_lead_mon_index VAR_TEMP_x4005
-	comparevartovalue VAR_UNK_4102, 1
-	gotoif eq, _0059
-	comparevartovalue VAR_UNK_4102, 2
-	gotoif eq, _0077
+	compare VAR_UNK_4102, 1
+	goto_if_eq _0059
+	compare VAR_UNK_4102, 2
+	goto_if_eq _0077
 	goto _0095
 
 _0059:
 	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
-	comparevartovalue VAR_TEMP_x4007, 1
-	callif eq, _0097
+	compare VAR_TEMP_x4007, 1
+	call_if_eq _0097
 	nop_var_490 VAR_TEMP_x4005
 	nop_var_490 VAR_TEMP_x4007
 	end
 
 _0077:
 	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
-	comparevartovalue VAR_TEMP_x4006, 1
-	callif eq, _0097
+	compare VAR_TEMP_x4006, 1
+	call_if_eq _0097
 	nop_var_490 VAR_TEMP_x4005
 	nop_var_490 VAR_TEMP_x4006
 	end
@@ -249,8 +249,8 @@ scr_seq_D24R0218_006:
 	end
 
 scr_seq_D24R0218_005:
-	comparevartovalue VAR_UNK_40CE, 1
-	gotoif ne, _0387
+	compare VAR_UNK_40CE, 1
+	goto_if_ne _0387
 	scrcmd_375 255
 _0387:
 	end

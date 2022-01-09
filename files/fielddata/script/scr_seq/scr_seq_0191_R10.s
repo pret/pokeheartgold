@@ -15,8 +15,7 @@
 	scrdef_end
 
 scr_seq_R10_004:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _002B
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _002B
 	end
 
 _002B:
@@ -27,31 +26,30 @@ _002B:
 
 scr_seq_R10_001:
 	check_badge 15, VAR_TEMP_x4004
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif eq, _0052
+	compare VAR_TEMP_x4004, 1
+	goto_if_eq _0052
 	goto _00BF
 
 _0052:
-	checkflag FLAG_UNK_14A
-	gotoif FALSE, _00BF
+	goto_if_unset FLAG_UNK_14A, _00BF
 	scrcmd_147 36, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00BF
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00BF
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _008B
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _008B
 	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	goto _00BD
 
 _008B:
-	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif ne, _00A2
+	compare VAR_TEMP_x4000, 10
+	goto_if_ne _00A2
 	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	goto _00BD
 
 _00A2:
-	comparevartovalue VAR_TEMP_x4000, 11
-	gotoif ne, _00B9
+	compare VAR_TEMP_x4000, 11
+	goto_if_ne _00B9
 	clearflag FLAG_HIDE_ROUTE_10_LT_SURGE
 	goto _00BD
 
@@ -68,26 +66,26 @@ scr_seq_R10_002:
 	lockall
 	faceplayer
 	scrcmd_147 36, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0148
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0148
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0197
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0197
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 25
-	gotoif ne, _0197
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _018C
+	compare VAR_TEMP_x4001, 25
+	goto_if_ne _0197
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _018C
 	npc_msg msg_0341_R10_00000
 _0114:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0138
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _017B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0138
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _017B
 	end
 
 _0138:
@@ -133,14 +131,13 @@ _0197:
 scr_seq_R10_000:
 	scrcmd_609
 	lockall
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _0209
+	goto_if_set FLAG_RESTORED_POWER, _0209
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01D5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01D5
 	scrcmd_596 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _01D5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _01D5
 	scrcmd_600
 _01D5:
 	play_se SEQ_SE_DP_KAIDAN2
@@ -155,11 +152,11 @@ _01D5:
 
 _0209:
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _022D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _022D
 	scrcmd_596 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _022D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _022D
 	scrcmd_600
 _022D:
 	play_se SEQ_SE_DP_KAIDAN2
@@ -182,13 +179,13 @@ scr_seq_R10_003:
 	wild_battle SPECIES_ZAPDOS, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02B3
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02B3
 	scrcmd_683 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, _02AF
-	comparevartovalue VAR_TEMP_x4002, 4
-	callif eq, _02B9
+	compare VAR_TEMP_x4002, 3
+	goto_if_eq _02AF
+	compare VAR_TEMP_x4002, 4
+	call_if_eq _02B9
 _02AF:
 	releaseall
 	end

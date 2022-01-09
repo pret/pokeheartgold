@@ -18,14 +18,13 @@
 	scrdef_end
 
 scr_seq_T08R0201_000:
-	checkflag FLAG_UNK_9CD
-	gotoif TRUE, _003B
+	goto_if_set FLAG_UNK_9CD, _003B
 	setvar VAR_PAL_PARK_HIGH_SCORE, 2000
 _003B:
 	clearflag FLAG_UNK_999
 	setflag FLAG_UNK_9CD
-	comparevartovalue VAR_UNK_4124, 0
-	gotoif ne, _0052
+	compare VAR_UNK_4124, 0
+	goto_if_ne _0052
 	end
 
 _0052:
@@ -34,8 +33,8 @@ _0052:
 	end
 
 _0062:
-	comparevartovalue VAR_PAL_PARK_HIGH_SCORE, 2000
-	gotoif eq, _0079
+	compare VAR_PAL_PARK_HIGH_SCORE, 2000
+	goto_if_eq _0079
 	buffer_players_name 1
 	buffer_int 2, VAR_PAL_PARK_HIGH_SCORE
 	return
@@ -49,18 +48,17 @@ scr_seq_T08R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_136
-	gotoif TRUE, _019B
+	goto_if_set FLAG_UNK_136, _019B
 	setflag FLAG_UNK_136
 	buffer_players_name 0
 	gender_msgbox msg_0516_T08R0201_00000, msg_0516_T08R0201_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00C5
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0190
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00C5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0190
 	end
 
 _00C5:
@@ -88,12 +86,12 @@ _00E9:
 	menu_item_add 198, 255, 4
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00CE
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00D7
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _00E0
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00CE
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00D7
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _00E0
 	goto _0144
 
 _0144:
@@ -101,17 +99,17 @@ _0144:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0190
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0190
 _015C:
 	setvar VAR_SPECIAL_x800C, 0
 	count_pc_empty_space VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif lt, _0274
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_lt _0274
 	setvar VAR_SPECIAL_x800C, 0
 	scrcmd_509 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0260
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0260
 	goto _01FB
 
 _0190:
@@ -134,12 +132,12 @@ _01A8:
 	menu_item_add 201, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _015C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _026B
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0190
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _015C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _026B
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0190
 	goto _0190
 
 _01FB:
@@ -229,8 +227,8 @@ scr_seq_T08R0201_001:
 	buffer_int 3, VAR_SPECIAL_x800C
 	npc_msg msg_0516_T08R0201_00016
 	pal_park_score_get 3, VAR_SPECIAL_x800C
-	comparevartovar VAR_SPECIAL_x800C, VAR_PAL_PARK_HIGH_SCORE
-	gotoif gt, _0339
+	compare VAR_SPECIAL_x800C, VAR_PAL_PARK_HIGH_SCORE
+	goto_if_gt _0339
 	npc_msg msg_0516_T08R0201_00018
 	call _0669
 	goto _034E
@@ -246,14 +244,14 @@ _034E:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0391
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0391
 	npc_msg msg_0516_T08R0201_00024
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0384
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0384
 	goto _034E
 
 _0384:
@@ -308,10 +306,10 @@ scr_seq_T08R0201_004:
 	lockall
 	faceplayer
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0444
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0439
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0444
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0439
 	goto _042E
 
 _042E:
@@ -381,19 +379,19 @@ scr_seq_T08R0201_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x4009, 1
-	gotoif eq, _0511
+	compare VAR_TEMP_x4009, 1
+	goto_if_eq _0511
 	scrcmd_528 32780
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _051C
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, _055D
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _059E
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _05D7
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0610
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _051C
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_eq _055D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _059E
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _05D7
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0610
 	goto _0506
 	.byte 0x02, 0x00
 _0506:
@@ -412,58 +410,58 @@ _0511:
 
 _051C:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 97
 	setvar VAR_SPECIAL_x8005, 1
 	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00035
 	goto _0649
 	.byte 0x02, 0x00
 _055D:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 98
 	setvar VAR_SPECIAL_x8005, 1
 	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00036
 	goto _0649
 	.byte 0x02, 0x00
 _059E:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 14
 	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00037
 	goto _0659
 	.byte 0x02, 0x00
 _05D7:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 15
 	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00038
 	goto _0659
 	.byte 0x02, 0x00
 _0610:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 16
 	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0506
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00039
 	goto _0659
 	.byte 0x02, 0x00
@@ -483,92 +481,92 @@ _0659:
 
 _0669:
 	pal_park_score_get 3, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3000
-	callif lt, _06A5
-	comparevartovalue VAR_SPECIAL_x800C, 3300
-	callif lt, _071B
-	comparevartovalue VAR_SPECIAL_x800C, 3500
-	callif lt, _076A
-	comparevartovalue VAR_SPECIAL_x800C, 10000
-	callif lt, _07D3
+	compare VAR_SPECIAL_x800C, 3000
+	call_if_lt _06A5
+	compare VAR_SPECIAL_x800C, 3300
+	call_if_lt _071B
+	compare VAR_SPECIAL_x800C, 3500
+	call_if_lt _076A
+	compare VAR_SPECIAL_x800C, 10000
+	call_if_lt _07D3
 	return
 
 _06A5:
 	scrcmd_380 VAR_SPECIAL_x8006, 8
-	comparevartovalue VAR_SPECIAL_x8006, 0
-	callif eq, _0861
-	comparevartovalue VAR_SPECIAL_x8006, 1
-	callif eq, _0869
-	comparevartovalue VAR_SPECIAL_x8006, 2
-	callif eq, _0871
-	comparevartovalue VAR_SPECIAL_x8006, 3
-	callif eq, _0879
-	comparevartovalue VAR_SPECIAL_x8006, 4
-	callif eq, _0881
-	comparevartovalue VAR_SPECIAL_x8006, 5
-	callif eq, _0889
-	comparevartovalue VAR_SPECIAL_x8006, 6
-	callif eq, _0891
-	comparevartovalue VAR_SPECIAL_x8006, 7
-	callif eq, _0899
+	compare VAR_SPECIAL_x8006, 0
+	call_if_eq _0861
+	compare VAR_SPECIAL_x8006, 1
+	call_if_eq _0869
+	compare VAR_SPECIAL_x8006, 2
+	call_if_eq _0871
+	compare VAR_SPECIAL_x8006, 3
+	call_if_eq _0879
+	compare VAR_SPECIAL_x8006, 4
+	call_if_eq _0881
+	compare VAR_SPECIAL_x8006, 5
+	call_if_eq _0889
+	compare VAR_SPECIAL_x8006, 6
+	call_if_eq _0891
+	compare VAR_SPECIAL_x8006, 7
+	call_if_eq _0899
 	call _082F
 	return
 
 _071B:
 	scrcmd_380 VAR_SPECIAL_x8006, 5
-	comparevartovalue VAR_SPECIAL_x8006, 0
-	callif eq, _08A1
-	comparevartovalue VAR_SPECIAL_x8006, 1
-	callif eq, _08A9
-	comparevartovalue VAR_SPECIAL_x8006, 2
-	callif eq, _08B1
-	comparevartovalue VAR_SPECIAL_x8006, 3
-	callif eq, _08B9
-	comparevartovalue VAR_SPECIAL_x8006, 4
-	callif eq, _08C1
+	compare VAR_SPECIAL_x8006, 0
+	call_if_eq _08A1
+	compare VAR_SPECIAL_x8006, 1
+	call_if_eq _08A9
+	compare VAR_SPECIAL_x8006, 2
+	call_if_eq _08B1
+	compare VAR_SPECIAL_x8006, 3
+	call_if_eq _08B9
+	compare VAR_SPECIAL_x8006, 4
+	call_if_eq _08C1
 	call _082F
 	return
 
 _076A:
 	scrcmd_380 VAR_SPECIAL_x8006, 7
-	comparevartovalue VAR_SPECIAL_x8006, 0
-	callif eq, _08C9
-	comparevartovalue VAR_SPECIAL_x8006, 1
-	callif eq, _08D1
-	comparevartovalue VAR_SPECIAL_x8006, 2
-	callif eq, _08D9
-	comparevartovalue VAR_SPECIAL_x8006, 3
-	callif eq, _08E1
-	comparevartovalue VAR_SPECIAL_x8006, 4
-	callif eq, _08E9
-	comparevartovalue VAR_SPECIAL_x8006, 5
-	callif eq, _08F1
-	comparevartovalue VAR_SPECIAL_x8006, 6
-	callif eq, _08F9
+	compare VAR_SPECIAL_x8006, 0
+	call_if_eq _08C9
+	compare VAR_SPECIAL_x8006, 1
+	call_if_eq _08D1
+	compare VAR_SPECIAL_x8006, 2
+	call_if_eq _08D9
+	compare VAR_SPECIAL_x8006, 3
+	call_if_eq _08E1
+	compare VAR_SPECIAL_x8006, 4
+	call_if_eq _08E9
+	compare VAR_SPECIAL_x8006, 5
+	call_if_eq _08F1
+	compare VAR_SPECIAL_x8006, 6
+	call_if_eq _08F9
 	call _082F
 	return
 
 _07D3:
 	scrcmd_380 VAR_SPECIAL_x8006, 6
-	comparevartovalue VAR_SPECIAL_x8006, 0
-	callif eq, _0901
-	comparevartovalue VAR_SPECIAL_x8006, 1
-	callif eq, _0909
-	comparevartovalue VAR_SPECIAL_x8006, 2
-	callif eq, _0911
-	comparevartovalue VAR_SPECIAL_x8006, 3
-	callif eq, _0919
-	comparevartovalue VAR_SPECIAL_x8006, 4
-	callif eq, _0921
-	comparevartovalue VAR_SPECIAL_x8006, 5
-	callif eq, _0929
+	compare VAR_SPECIAL_x8006, 0
+	call_if_eq _0901
+	compare VAR_SPECIAL_x8006, 1
+	call_if_eq _0909
+	compare VAR_SPECIAL_x8006, 2
+	call_if_eq _0911
+	compare VAR_SPECIAL_x8006, 3
+	call_if_eq _0919
+	compare VAR_SPECIAL_x8006, 4
+	call_if_eq _0921
+	compare VAR_SPECIAL_x8006, 5
+	call_if_eq _0929
 	call _082F
 	return
 
 _082F:
 	hasspaceforitem VAR_SPECIAL_x8006, 1, VAR_SPECIAL_x8007
-	comparevartovalue VAR_SPECIAL_x8007, 0
-	callif ne, _084C
+	compare VAR_SPECIAL_x8007, 0
+	call_if_ne _084C
 	setvar VAR_SPECIAL_x800C, 10000
 	return
 

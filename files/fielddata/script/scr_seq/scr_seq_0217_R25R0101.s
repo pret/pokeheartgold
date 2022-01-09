@@ -12,43 +12,42 @@ scr_seq_R25R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_14E
-	gotoif TRUE, _0020
+	goto_if_set FLAG_UNK_14E, _0020
 	npc_msg msg_0364_R25R0101_00000
 	setflag FLAG_UNK_14E
 _0020:
 	get_game_version VAR_SPECIAL_x8002
-	comparevartovalue VAR_SPECIAL_x8002, 8
-	gotoif ne, _0037
+	compare VAR_SPECIAL_x8002, 8
+	goto_if_ne _0037
 	goto _00B1
 
 _0037:
-	comparevartovalue VAR_UNK_412D, 0
-	gotoif ne, _004D
+	compare VAR_UNK_412D, 0
+	goto_if_ne _004D
 	npc_msg msg_0364_R25R0101_00001
 	goto _00AB
 
 _004D:
-	comparevartovalue VAR_UNK_412D, 1
-	gotoif ne, _0063
+	compare VAR_UNK_412D, 1
+	goto_if_ne _0063
 	npc_msg msg_0364_R25R0101_00002
 	goto _00AB
 
 _0063:
-	comparevartovalue VAR_UNK_412D, 2
-	gotoif ne, _0079
+	compare VAR_UNK_412D, 2
+	goto_if_ne _0079
 	npc_msg msg_0364_R25R0101_00003
 	goto _00AB
 
 _0079:
-	comparevartovalue VAR_UNK_412D, 3
-	gotoif ne, _008F
+	compare VAR_UNK_412D, 3
+	goto_if_ne _008F
 	npc_msg msg_0364_R25R0101_00004
 	goto _00AB
 
 _008F:
-	comparevartovalue VAR_UNK_412D, 4
-	gotoif ne, _00A5
+	compare VAR_UNK_412D, 4
+	goto_if_ne _00A5
 	npc_msg msg_0364_R25R0101_00005
 	goto _00AB
 
@@ -59,32 +58,32 @@ _00AB:
 	goto _0125
 
 _00B1:
-	comparevartovalue VAR_UNK_412D, 0
-	gotoif ne, _00C7
+	compare VAR_UNK_412D, 0
+	goto_if_ne _00C7
 	npc_msg msg_0364_R25R0101_00006
 	goto _0125
 
 _00C7:
-	comparevartovalue VAR_UNK_412D, 1
-	gotoif ne, _00DD
+	compare VAR_UNK_412D, 1
+	goto_if_ne _00DD
 	npc_msg msg_0364_R25R0101_00007
 	goto _0125
 
 _00DD:
-	comparevartovalue VAR_UNK_412D, 2
-	gotoif ne, _00F3
+	compare VAR_UNK_412D, 2
+	goto_if_ne _00F3
 	npc_msg msg_0364_R25R0101_00008
 	goto _0125
 
 _00F3:
-	comparevartovalue VAR_UNK_412D, 3
-	gotoif ne, _0109
+	compare VAR_UNK_412D, 3
+	goto_if_ne _0109
 	npc_msg msg_0364_R25R0101_00009
 	goto _0125
 
 _0109:
-	comparevartovalue VAR_UNK_412D, 4
-	gotoif ne, _011F
+	compare VAR_UNK_412D, 4
+	goto_if_ne _011F
 	npc_msg msg_0364_R25R0101_00010
 	goto _0125
 
@@ -96,8 +95,8 @@ _0125:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _048D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _048D
 	npc_msg msg_0364_R25R0101_00012
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
@@ -107,11 +106,11 @@ _0125:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x8000, 255
-	gotoif eq, _048D
+	compare VAR_SPECIAL_x8000, 255
+	goto_if_eq _048D
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8002, 8
-	gotoif ne, _0188
+	compare VAR_SPECIAL_x8002, 8
+	goto_if_ne _0188
 	goto _02F0
 
 _0188:
@@ -123,8 +122,8 @@ _0188:
 	goto _0238
 
 _01C8:
-	comparevartovalue VAR_SPECIAL_x8001, 43
-	gotoif eq, _01DE
+	compare VAR_SPECIAL_x8001, 43
+	goto_if_eq _01DE
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -132,8 +131,8 @@ _01DE:
 	goto _024E
 
 _01E4:
-	comparevartovalue VAR_SPECIAL_x8001, 58
-	gotoif eq, _01FA
+	compare VAR_SPECIAL_x8001, 58
+	goto_if_eq _01FA
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -141,8 +140,8 @@ _01FA:
 	goto _024E
 
 _0200:
-	comparevartovalue VAR_SPECIAL_x8001, 39
-	gotoif eq, _0216
+	compare VAR_SPECIAL_x8001, 39
+	goto_if_eq _0216
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -150,8 +149,8 @@ _0216:
 	goto _024E
 
 _021C:
-	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif eq, _0232
+	compare VAR_SPECIAL_x8001, 172
+	goto_if_eq _0232
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -159,8 +158,8 @@ _0232:
 	goto _024E
 
 _0238:
-	comparevartovalue VAR_SPECIAL_x8001, 183
-	gotoif eq, _024E
+	compare VAR_SPECIAL_x8001, 183
+	goto_if_eq _024E
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -208,8 +207,8 @@ _02F0:
 	goto _03A0
 
 _0330:
-	comparevartovalue VAR_SPECIAL_x8001, 108
-	gotoif eq, _0346
+	compare VAR_SPECIAL_x8001, 108
+	goto_if_eq _0346
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -217,8 +216,8 @@ _0346:
 	goto _03B6
 
 _034C:
-	comparevartovalue VAR_SPECIAL_x8001, 43
-	gotoif eq, _0362
+	compare VAR_SPECIAL_x8001, 43
+	goto_if_eq _0362
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -226,8 +225,8 @@ _0362:
 	goto _03B6
 
 _0368:
-	comparevartovalue VAR_SPECIAL_x8001, 120
-	gotoif eq, _037E
+	compare VAR_SPECIAL_x8001, 120
+	goto_if_eq _037E
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -235,8 +234,8 @@ _037E:
 	goto _03B6
 
 _0384:
-	comparevartovalue VAR_SPECIAL_x8001, 37
-	gotoif eq, _039A
+	compare VAR_SPECIAL_x8001, 37
+	goto_if_eq _039A
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -244,8 +243,8 @@ _039A:
 	goto _03B6
 
 _03A0:
-	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif eq, _03B6
+	compare VAR_SPECIAL_x8001, 172
+	goto_if_eq _03B6
 	npc_msg msg_0364_R25R0101_00014
 	goto _0490
 
@@ -284,8 +283,8 @@ _0446:
 	setvar VAR_SPECIAL_x8005, 1
 _0452:
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _047A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _047A
 	callstd std_give_item_verbose
 	addvar VAR_UNK_412D, 1
 	npc_msg msg_0364_R25R0101_00016

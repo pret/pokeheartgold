@@ -12,8 +12,7 @@ scr_seq_R43R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif TRUE, _0024
+	goto_if_set FLAG_RED_GYARADOS_MEET, _0024
 	npc_msg msg_0402_R43R0101_00000
 	waitbutton
 	closemsg

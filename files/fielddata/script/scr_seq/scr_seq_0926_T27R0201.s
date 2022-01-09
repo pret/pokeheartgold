@@ -12,8 +12,7 @@
 	scrdef_end
 
 scr_seq_T27R0201_003:
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _001F
+	goto_if_set FLAG_UNK_108, _001F
 	end
 
 _001F:
@@ -24,19 +23,18 @@ scr_seq_T27R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _00E8
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _00C9
+	goto_if_set FLAG_UNK_108, _00E8
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _00C9
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00D4
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00D4
 	check_badge 3, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0096
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0096
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _008B
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _008B
 	npc_msg msg_0616_T27R0201_00000
 	goto _008E
 
@@ -50,8 +48,8 @@ _008E:
 
 _0096:
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _00B0
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _00B0
 	npc_msg msg_0616_T27R0201_00002
 	goto _00B3
 
@@ -102,13 +100,11 @@ scr_seq_T27R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _0162
-	checkflag FLAG_UNK_103
-	gotoif TRUE, _0157
+	goto_if_set FLAG_UNK_108, _0162
+	goto_if_set FLAG_UNK_103, _0157
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _014C
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _014C
 	npc_msg msg_0616_T27R0201_00006
 	goto _014F
 

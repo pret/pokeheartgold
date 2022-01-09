@@ -20,8 +20,7 @@ scr_seq_T06PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_173
-	gotoif TRUE, _003C
+	goto_if_set FLAG_UNK_173, _003C
 	npc_msg msg_0486_T06PC0101_00000
 	waitbutton
 	closemsg

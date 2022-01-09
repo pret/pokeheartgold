@@ -27,19 +27,18 @@
 
 scr_seq_T20_006:
 	get_friend_sprite VAR_OBJ_0
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _005F
+	goto_if_unset FLAG_UNK_189, _005F
 	clearflag FLAG_UNK_189
 	end
 
 _005F:
 	setvar VAR_TEMP_x4007, 0
 	check_badge 2, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _0089
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _0089
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, _008F
+	compare VAR_TEMP_x4000, 2
+	goto_if_eq _008F
 _0089:
 	setflag FLAG_HIDE_CAMERON
 	end
@@ -49,8 +48,8 @@ _008F:
 	end
 
 scr_seq_T20_009:
-	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 1
-	gotoif eq, _00A4
+	compare VAR_SCENE_NEW_BARK_TOWN_OW, 1
+	goto_if_eq _00A4
 	end
 
 _00A4:
@@ -68,45 +67,44 @@ scr_seq_T20_000:
 	npc_msg msg_0542_T20_00013
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00F8
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00F8
 	apply_movement obj_T20_gsrivel, _024C
 	goto _0128
 
 _00F8:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0113
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0113
 	apply_movement obj_T20_gsrivel, _0244
 	goto _0128
 
 _0113:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0128
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0128
 	apply_movement obj_T20_gsrivel, _0254
 _0128:
 	wait_movement
 	npc_msg msg_0542_T20_00014
 	closemsg
-	checkflag FLAG_GOT_STARTER
-	gotoif FALSE, _0166
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0153
+	goto_if_unset FLAG_GOT_STARTER, _0166
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0153
 	goto _01BA
 	.byte 0x16, 0x00, 0x13
 	.byte 0x00, 0x00, 0x00
 _0153:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0166
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0166
 	goto _0192
 
 _0166:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _017F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _017F
 	goto _0202
 	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
 _017F:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0192
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0192
 	goto _01E2
 
 _0192:
@@ -218,26 +216,26 @@ scr_seq_T20_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 0
-	gotoif ne, _02FE
+	compare VAR_SCENE_NEW_BARK_TOWN_OW, 0
+	goto_if_ne _02FE
 	npc_msg msg_0542_T20_00009
 	goto _0347
 
 _02FE:
-	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 1
-	gotoif ne, _0314
+	compare VAR_SCENE_NEW_BARK_TOWN_OW, 1
+	goto_if_ne _0314
 	npc_msg msg_0542_T20_00005
 	goto _0347
 
 _0314:
-	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 2
-	gotoif ne, _032A
+	compare VAR_SCENE_NEW_BARK_TOWN_OW, 2
+	goto_if_ne _032A
 	npc_msg msg_0542_T20_00005
 	goto _0347
 
 _032A:
-	comparevartovalue VAR_SCENE_NEW_BARK_WEST_EXIT, 1
-	gotoif ne, _0340
+	compare VAR_SCENE_NEW_BARK_WEST_EXIT, 1
+	goto_if_ne _0340
 	npc_msg msg_0542_T20_00000
 	goto _0347
 
@@ -253,8 +251,7 @@ _0347:
 scr_seq_T20_002:
 	scrcmd_609
 	lockall
-	checkflag FLAG_GOT_POKEGEAR
-	gotoif TRUE, _075A
+	goto_if_set FLAG_GOT_POKEGEAR, _075A
 	apply_movement obj_T20_gswoman1, _09B8
 	wait_movement
 	buffer_players_name 0
@@ -263,96 +260,96 @@ scr_seq_T20_002:
 	closemsg
 	apply_movement obj_player, _09D4
 	wait_movement
-	comparevartovalue VAR_SCENE_NEW_BARK_TOWN_OW, 2
-	gotoif eq, _054E
+	compare VAR_SCENE_NEW_BARK_TOWN_OW, 2
+	goto_if_eq _054E
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 396
-	gotoif ne, _03AF
+	compare VAR_TEMP_x4001, 396
+	goto_if_ne _03AF
 	apply_movement obj_T20_gswoman1, _0A1C
 	goto _044B
 
 _03AF:
-	comparevartovalue VAR_TEMP_x4001, 397
-	gotoif ne, _03CA
+	compare VAR_TEMP_x4001, 397
+	goto_if_ne _03CA
 	apply_movement obj_T20_gswoman1, _0A2C
 	goto _044B
 
 _03CA:
-	comparevartovalue VAR_TEMP_x4001, 398
-	gotoif ne, _03E5
+	compare VAR_TEMP_x4001, 398
+	goto_if_ne _03E5
 	apply_movement obj_T20_gswoman1, _0A3C
 	goto _044B
 
 _03E5:
-	comparevartovalue VAR_TEMP_x4001, 399
-	gotoif ne, _0400
+	compare VAR_TEMP_x4001, 399
+	goto_if_ne _0400
 	apply_movement obj_T20_gswoman1, _0A4C
 	goto _044B
 
 _0400:
-	comparevartovalue VAR_TEMP_x4001, 400
-	gotoif ne, _041B
+	compare VAR_TEMP_x4001, 400
+	goto_if_ne _041B
 	apply_movement obj_T20_gswoman1, _0A54
 	goto _044B
 
 _041B:
-	comparevartovalue VAR_TEMP_x4001, 401
-	gotoif ne, _0436
+	compare VAR_TEMP_x4001, 401
+	goto_if_ne _0436
 	apply_movement obj_T20_gswoman1, _0A64
 	goto _044B
 
 _0436:
-	comparevartovalue VAR_TEMP_x4001, 402
-	gotoif ne, _044B
+	compare VAR_TEMP_x4001, 402
+	goto_if_ne _044B
 	apply_movement obj_T20_gswoman1, _0A74
 _044B:
 	wait_movement
 	npc_msg msg_0542_T20_00003
 	closemsg
-	comparevartovalue VAR_TEMP_x4001, 396
-	gotoif ne, _0475
+	compare VAR_TEMP_x4001, 396
+	goto_if_ne _0475
 	apply_movement obj_T20_gswoman1, _0AEC
 	apply_movement obj_player, _0BD4
 	goto _0541
 
 _0475:
-	comparevartovalue VAR_TEMP_x4001, 397
-	gotoif ne, _0498
+	compare VAR_TEMP_x4001, 397
+	goto_if_ne _0498
 	apply_movement obj_T20_gswoman1, _0B00
 	apply_movement obj_player, _0BE4
 	goto _0541
 
 _0498:
-	comparevartovalue VAR_TEMP_x4001, 398
-	gotoif ne, _04BB
+	compare VAR_TEMP_x4001, 398
+	goto_if_ne _04BB
 	apply_movement obj_T20_gswoman1, _0B14
 	apply_movement obj_player, _0BF4
 	goto _0541
 
 _04BB:
-	comparevartovalue VAR_TEMP_x4001, 399
-	gotoif ne, _04DE
+	compare VAR_TEMP_x4001, 399
+	goto_if_ne _04DE
 	apply_movement obj_T20_gswoman1, _0B28
 	apply_movement obj_player, _0C04
 	goto _0541
 
 _04DE:
-	comparevartovalue VAR_TEMP_x4001, 400
-	gotoif ne, _0501
+	compare VAR_TEMP_x4001, 400
+	goto_if_ne _0501
 	apply_movement obj_T20_gswoman1, _0B34
 	apply_movement obj_player, _0C0C
 	goto _0541
 
 _0501:
-	comparevartovalue VAR_TEMP_x4001, 401
-	gotoif ne, _0524
+	compare VAR_TEMP_x4001, 401
+	goto_if_ne _0524
 	apply_movement obj_T20_gswoman1, _0B48
 	apply_movement obj_player, _0C1C
 	goto _0541
 
 _0524:
-	comparevartovalue VAR_TEMP_x4001, 402
-	gotoif ne, _0541
+	compare VAR_TEMP_x4001, 402
+	goto_if_ne _0541
 	apply_movement obj_T20_gswoman1, _0B58
 	apply_movement obj_player, _0C2C
 _0541:
@@ -365,50 +362,50 @@ _0541:
 
 _054E:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 396
-	gotoif ne, _0577
+	compare VAR_TEMP_x4001, 396
+	goto_if_ne _0577
 	apply_movement obj_player, _09E8
 	apply_movement obj_T20_gswoman1, _0A84
 	goto _0643
 
 _0577:
-	comparevartovalue VAR_TEMP_x4001, 397
-	gotoif ne, _059A
+	compare VAR_TEMP_x4001, 397
+	goto_if_ne _059A
 	apply_movement obj_player, _09E8
 	apply_movement obj_T20_gswoman1, _0A90
 	goto _0643
 
 _059A:
-	comparevartovalue VAR_TEMP_x4001, 398
-	gotoif ne, _05BD
+	compare VAR_TEMP_x4001, 398
+	goto_if_ne _05BD
 	apply_movement obj_player, _09E8
 	apply_movement obj_T20_gswoman1, _0A9C
 	goto _0643
 
 _05BD:
-	comparevartovalue VAR_TEMP_x4001, 399
-	gotoif ne, _05E0
+	compare VAR_TEMP_x4001, 399
+	goto_if_ne _05E0
 	apply_movement obj_player, _09DC
 	apply_movement obj_T20_gswoman1, _0AA8
 	goto _0643
 
 _05E0:
-	comparevartovalue VAR_TEMP_x4001, 400
-	gotoif ne, _0603
+	compare VAR_TEMP_x4001, 400
+	goto_if_ne _0603
 	apply_movement obj_player, _09DC
 	apply_movement obj_T20_gswoman1, _0ABC
 	goto _0643
 
 _0603:
-	comparevartovalue VAR_TEMP_x4001, 401
-	gotoif ne, _0626
+	compare VAR_TEMP_x4001, 401
+	goto_if_ne _0626
 	apply_movement obj_player, _09DC
 	apply_movement obj_T20_gswoman1, _0AC8
 	goto _0643
 
 _0626:
-	comparevartovalue VAR_TEMP_x4001, 402
-	gotoif ne, _0643
+	compare VAR_TEMP_x4001, 402
+	goto_if_ne _0643
 	apply_movement obj_player, _09DC
 	apply_movement obj_T20_gswoman1, _0AD4
 _0643:
@@ -418,50 +415,50 @@ _0643:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x4001, 396
-	gotoif ne, _0677
+	compare VAR_TEMP_x4001, 396
+	goto_if_ne _0677
 	apply_movement obj_T20_gswoman1, _0B68
 	apply_movement obj_player, _0C3C
 	goto _0743
 
 _0677:
-	comparevartovalue VAR_TEMP_x4001, 397
-	gotoif ne, _069A
+	compare VAR_TEMP_x4001, 397
+	goto_if_ne _069A
 	apply_movement obj_T20_gswoman1, _0B78
 	apply_movement obj_player, _0C48
 	goto _0743
 
 _069A:
-	comparevartovalue VAR_TEMP_x4001, 398
-	gotoif ne, _06BD
+	compare VAR_TEMP_x4001, 398
+	goto_if_ne _06BD
 	apply_movement obj_T20_gswoman1, _0B88
 	apply_movement obj_player, _0C54
 	goto _0743
 
 _06BD:
-	comparevartovalue VAR_TEMP_x4001, 399
-	gotoif ne, _06E0
+	compare VAR_TEMP_x4001, 399
+	goto_if_ne _06E0
 	apply_movement obj_T20_gswoman1, _0B94
 	apply_movement obj_player, _0C60
 	goto _0743
 
 _06E0:
-	comparevartovalue VAR_TEMP_x4001, 400
-	gotoif ne, _0703
+	compare VAR_TEMP_x4001, 400
+	goto_if_ne _0703
 	apply_movement obj_T20_gswoman1, _0BA8
 	apply_movement obj_player, _0C74
 	goto _0743
 
 _0703:
-	comparevartovalue VAR_TEMP_x4001, 401
-	gotoif ne, _0726
+	compare VAR_TEMP_x4001, 401
+	goto_if_ne _0726
 	apply_movement obj_T20_gswoman1, _0BB4
 	apply_movement obj_player, _0C80
 	goto _0743
 
 _0726:
-	comparevartovalue VAR_TEMP_x4001, 402
-	gotoif ne, _0743
+	compare VAR_TEMP_x4001, 402
+	goto_if_ne _0743
 	apply_movement obj_T20_gswoman1, _0BC4
 	apply_movement obj_player, _0C8C
 _0743:
@@ -491,50 +488,50 @@ _075A:
 	apply_movement obj_player, _09C8
 	wait_movement
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 396
-	gotoif ne, _07C6
+	compare VAR_TEMP_x4001, 396
+	goto_if_ne _07C6
 	apply_movement obj_T20_doctor, _0C98
 	apply_movement obj_player, _09FC
 	goto _0892
 
 _07C6:
-	comparevartovalue VAR_TEMP_x4001, 397
-	gotoif ne, _07E9
+	compare VAR_TEMP_x4001, 397
+	goto_if_ne _07E9
 	apply_movement obj_T20_doctor, _0CA8
 	apply_movement obj_player, _0A0C
 	goto _0892
 
 _07E9:
-	comparevartovalue VAR_TEMP_x4001, 398
-	gotoif ne, _080C
+	compare VAR_TEMP_x4001, 398
+	goto_if_ne _080C
 	apply_movement obj_T20_doctor, _0CB8
 	apply_movement obj_player, _0A0C
 	goto _0892
 
 _080C:
-	comparevartovalue VAR_TEMP_x4001, 399
-	gotoif ne, _082F
+	compare VAR_TEMP_x4001, 399
+	goto_if_ne _082F
 	apply_movement obj_T20_doctor, _0CC8
 	apply_movement obj_player, _0A0C
 	goto _0892
 
 _082F:
-	comparevartovalue VAR_TEMP_x4001, 400
-	gotoif ne, _0852
+	compare VAR_TEMP_x4001, 400
+	goto_if_ne _0852
 	apply_movement obj_T20_doctor, _0CD8
 	apply_movement obj_player, _0A0C
 	goto _0892
 
 _0852:
-	comparevartovalue VAR_TEMP_x4001, 401
-	gotoif ne, _0875
+	compare VAR_TEMP_x4001, 401
+	goto_if_ne _0875
 	apply_movement obj_T20_doctor, _0CE8
 	apply_movement obj_player, _09F4
 	goto _0892
 
 _0875:
-	comparevartovalue VAR_TEMP_x4001, 402
-	gotoif ne, _0892
+	compare VAR_TEMP_x4001, 402
+	goto_if_ne _0892
 	apply_movement obj_T20_doctor, _0CF8
 	apply_movement obj_player, _09F4
 _0892:
@@ -548,47 +545,47 @@ _0892:
 	npc_msg msg_0542_T20_00020
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 396
-	gotoif ne, _08D5
+	compare VAR_TEMP_x4001, 396
+	goto_if_ne _08D5
 	apply_movement obj_player, _09D4
 	apply_movement obj_T20_doctor, _0D18
 	goto _0981
 
 _08D5:
-	comparevartovalue VAR_TEMP_x4001, 397
-	gotoif ne, _08F8
+	compare VAR_TEMP_x4001, 397
+	goto_if_ne _08F8
 	apply_movement obj_player, _09D4
 	apply_movement obj_T20_doctor, _0D24
 	goto _0981
 
 _08F8:
-	comparevartovalue VAR_TEMP_x4001, 398
-	gotoif ne, _091B
+	compare VAR_TEMP_x4001, 398
+	goto_if_ne _091B
 	apply_movement obj_player, _09F4
 	apply_movement obj_T20_doctor, _0D30
 	goto _0981
 
 _091B:
-	comparevartovalue VAR_TEMP_x4001, 399
-	gotoif ne, _0936
+	compare VAR_TEMP_x4001, 399
+	goto_if_ne _0936
 	apply_movement obj_T20_doctor, _0D40
 	goto _0981
 
 _0936:
-	comparevartovalue VAR_TEMP_x4001, 400
-	gotoif ne, _0951
+	compare VAR_TEMP_x4001, 400
+	goto_if_ne _0951
 	apply_movement obj_T20_doctor, _0D50
 	goto _0981
 
 _0951:
-	comparevartovalue VAR_TEMP_x4001, 401
-	gotoif ne, _096C
+	compare VAR_TEMP_x4001, 401
+	goto_if_ne _096C
 	apply_movement obj_T20_doctor, _0D60
 	goto _0981
 
 _096C:
-	comparevartovalue VAR_TEMP_x4001, 402
-	gotoif ne, _0981
+	compare VAR_TEMP_x4001, 402
+	goto_if_ne _0981
 	apply_movement obj_T20_doctor, _0D70
 _0981:
 	wait_movement
@@ -1189,11 +1186,11 @@ _104C:
 	step_end
 scr_seq_T20_010:
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _1078
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _1078
 	scrcmd_596 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _1078
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _1078
 	scrcmd_600
 _1078:
 	play_se SEQ_SE_DP_KAIDAN2
@@ -1225,11 +1222,11 @@ scr_seq_T20_017:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _11FC
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _11FC
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _1224
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _1224
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -1237,21 +1234,21 @@ scr_seq_T20_017:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _114D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _114D
 	apply_movement obj_player, _1238
 	apply_movement obj_T20_gsmiddleman1, _1284
 	goto _119B
 
 _114D:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _1168
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _1168
 	apply_movement obj_player, _1250
 	goto _119B
 
 _1168:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _118B
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _118B
 	apply_movement obj_player, _1270
 	apply_movement obj_T20_gsmiddleman1, _1284
 	goto _119B
@@ -1265,8 +1262,8 @@ _119B:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _11C2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _11C2
 	apply_movement obj_partner_poke, _1290
 	wait_movement
 _11C2:
@@ -1343,8 +1340,8 @@ _1290:
 scr_seq_T20_011:
 	scrcmd_609
 	lockall
-	comparevartovalue VAR_TEMP_x4007, 2
-	gotoif eq, _144F
+	compare VAR_TEMP_x4007, 2
+	goto_if_eq _144F
 	scrcmd_307 21, 12, 23, 12, 77
 	scrcmd_310 77
 	scrcmd_308 77
@@ -1354,8 +1351,8 @@ scr_seq_T20_011:
 	wait_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_T20_gsmama, _1478
 	wait_movement
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, _12F1
+	compare VAR_TEMP_x4007, 0
+	goto_if_ne _12F1
 	buffer_players_name 0
 	npc_msg msg_0542_T20_00021
 	closemsg
@@ -1367,29 +1364,29 @@ _12F1:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_SPECIAL_x8005, 398
-	gotoif ne, _132D
+	compare VAR_SPECIAL_x8005, 398
+	goto_if_ne _132D
 	apply_movement obj_T20_gsmama, _1480
 	apply_movement obj_player, _14A4
 	goto _13A6
 
 _132D:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _1350
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _1350
 	apply_movement obj_T20_gsmama, _148C
 	apply_movement obj_player, _14B0
 	goto _13A6
 
 _1350:
-	comparevartovalue VAR_SPECIAL_x8005, 400
-	gotoif ne, _1373
+	compare VAR_SPECIAL_x8005, 400
+	goto_if_ne _1373
 	apply_movement obj_T20_gsmama, _1498
 	apply_movement obj_player, _14BC
 	goto _13A6
 
 _1373:
-	comparevartovalue VAR_SPECIAL_x8005, 401
-	gotoif ne, _1396
+	compare VAR_SPECIAL_x8005, 401
+	goto_if_ne _1396
 	apply_movement obj_T20_gsmama, _1498
 	apply_movement obj_player, _14C8
 	goto _13A6
@@ -1402,8 +1399,8 @@ _13A6:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, _13C8
+	compare VAR_TEMP_x4007, 0
+	goto_if_ne _13C8
 	npc_msg msg_0542_T20_00022
 	goto _13CB
 
@@ -1411,15 +1408,15 @@ _13C8:
 	npc_msg msg_0542_T20_00023
 _13CB:
 	closemsg
-	comparevartovalue VAR_SPECIAL_x8005, 398
-	gotoif ne, _13EA
+	compare VAR_SPECIAL_x8005, 398
+	goto_if_ne _13EA
 	apply_movement obj_T20_gsmama, _14E8
 	wait_movement
 	goto _1411
 
 _13EA:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _1407
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _1407
 	apply_movement obj_T20_gsmama, _14F0
 	wait_movement
 	goto _1411
@@ -1536,26 +1533,26 @@ scr_seq_T20_012:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_SPECIAL_x8005, 398
-	gotoif ne, _1552
+	compare VAR_SPECIAL_x8005, 398
+	goto_if_ne _1552
 	apply_movement obj_T20_var_1_2, _1650
 	goto _15AB
 
 _1552:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _156D
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _156D
 	apply_movement obj_T20_var_1_2, _1658
 	goto _15AB
 
 _156D:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _1588
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _1588
 	apply_movement obj_T20_var_1_2, _1660
 	goto _15AB
 
 _1588:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _15A3
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _15A3
 	apply_movement obj_T20_var_1_2, _1668
 	goto _15AB
 
@@ -1570,26 +1567,26 @@ _15AB:
 	buffer_players_name 0
 	gender_msgbox msg_0542_T20_00029, msg_0542_T20_00030
 	closemsg
-	comparevartovalue VAR_SPECIAL_x8005, 398
-	gotoif ne, _15E3
+	compare VAR_SPECIAL_x8005, 398
+	goto_if_ne _15E3
 	apply_movement obj_T20_var_1_2, _1680
 	goto _163C
 
 _15E3:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _15FE
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _15FE
 	apply_movement obj_T20_var_1_2, _1688
 	goto _163C
 
 _15FE:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _1619
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _1619
 	apply_movement obj_T20_var_1_2, _1690
 	goto _163C
 
 _1619:
-	comparevartovalue VAR_SPECIAL_x8005, 399
-	gotoif ne, _1634
+	compare VAR_SPECIAL_x8005, 399
+	goto_if_ne _1634
 	apply_movement obj_T20_var_1_2, _1698
 	goto _163C
 

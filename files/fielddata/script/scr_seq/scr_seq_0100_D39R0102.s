@@ -36,22 +36,22 @@ _0062:
 	lockall
 	setvar VAR_UNK_40AB, 1
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0093
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0093
 	apply_movement obj_player, _0118
 	apply_movement obj_partner_poke, _0124
 	goto _00E9
 
 _0093:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _00B6
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _00B6
 	apply_movement obj_player, _0134
 	apply_movement obj_partner_poke, _0140
 	goto _00E9
 
 _00B6:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _00D9
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _00D9
 	apply_movement obj_player, _0150
 	apply_movement obj_partner_poke, _015C
 	goto _00E9

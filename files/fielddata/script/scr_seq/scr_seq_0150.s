@@ -15,11 +15,11 @@ scr_seq_0150_000:
 	npc_msg msg_0023_00000
 	closemsg
 	hasitem ITEM_APRICORN_BOX, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0099
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0099
 	anim_apricorn_tree VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0088
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0088
 	apricorn_tree_get_apricorn VAR_SPECIAL_x8000
 	setvar VAR_SPECIAL_x8005, 1
 	buffer_players_name 0
@@ -31,8 +31,8 @@ scr_seq_0150_000:
 	wait_fanfare
 	give_apricorn_from_tree VAR_SPECIAL_x8000, 1, VAR_SPECIAL_x800C
 	add_special_game_stat 1
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _007D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _007D
 	npc_msg msg_0023_00004
 	waitbutton
 	closemsg

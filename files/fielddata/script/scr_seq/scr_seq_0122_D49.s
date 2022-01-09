@@ -32,23 +32,22 @@
 	scrdef_end
 
 scr_seq_D49_018:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0073
+	goto_if_unset FLAG_UNK_189, _0073
 	clearflag FLAG_UNK_189
 	end
 
 _0073:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _00C2
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, _00C2
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, _00C2
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _00CC
-	comparevartovalue VAR_UNK_40DB, 0
-	gotoif eq, _00CC
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _00C2
+	compare VAR_TEMP_x4000, 2
+	goto_if_eq _00C2
+	compare VAR_TEMP_x4000, 3
+	goto_if_eq _00C2
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _00CC
+	compare VAR_UNK_40DB, 0
+	goto_if_eq _00CC
 	setflag FLAG_HIDE_CAMERON
 	clearflag FLAG_UNK_27F
 	end
@@ -73,43 +72,43 @@ scr_seq_D49_000:
 	npc_msg msg_0137_D49_00000
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 40
-	gotoif ne, _011A
+	compare VAR_TEMP_x4000, 40
+	goto_if_ne _011A
 	apply_movement obj_D49_thlonowner, _043C
 	apply_movement obj_D49_tsure_poke_590, _04A8
 	goto _01D9
 
 _011A:
-	comparevartovalue VAR_TEMP_x4000, 41
-	gotoif ne, _013D
+	compare VAR_TEMP_x4000, 41
+	goto_if_ne _013D
 	apply_movement obj_D49_thlonowner, _044C
 	apply_movement obj_D49_tsure_poke_590, _04BC
 	goto _01D9
 
 _013D:
-	comparevartovalue VAR_TEMP_x4000, 42
-	gotoif ne, _0160
+	compare VAR_TEMP_x4000, 42
+	goto_if_ne _0160
 	apply_movement obj_D49_thlonowner, _045C
 	apply_movement obj_D49_tsure_poke_590, _04D0
 	goto _01D9
 
 _0160:
-	comparevartovalue VAR_TEMP_x4000, 43
-	gotoif ne, _0183
+	compare VAR_TEMP_x4000, 43
+	goto_if_ne _0183
 	apply_movement obj_D49_thlonowner, _0464
 	apply_movement obj_D49_tsure_poke_590, _04DC
 	goto _01D9
 
 _0183:
-	comparevartovalue VAR_TEMP_x4000, 44
-	gotoif ne, _01A6
+	compare VAR_TEMP_x4000, 44
+	goto_if_ne _01A6
 	apply_movement obj_D49_thlonowner, _0474
 	apply_movement obj_D49_tsure_poke_590, _04F0
 	goto _01D9
 
 _01A6:
-	comparevartovalue VAR_TEMP_x4000, 39
-	gotoif ne, _01C9
+	compare VAR_TEMP_x4000, 39
+	goto_if_ne _01C9
 	apply_movement obj_D49_thlonowner, _042C
 	apply_movement obj_D49_tsure_poke_590, _0494
 	goto _01D9
@@ -125,8 +124,8 @@ _01D9:
 	apply_movement obj_D49_tsure_poke_590, _0424
 	wait_movement
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _020C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _020C
 	npc_msg msg_0137_D49_00005
 	goto _0218
 
@@ -139,48 +138,48 @@ _0218:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x4000, 40
-	gotoif ne, _024F
+	compare VAR_TEMP_x4000, 40
+	goto_if_ne _024F
 	apply_movement obj_D49_thlonowner, _0528
 	apply_movement obj_D49_tsure_poke_590, _05A0
 	apply_movement obj_player, _0658
 	goto _033E
 
 _024F:
-	comparevartovalue VAR_TEMP_x4000, 41
-	gotoif ne, _027A
+	compare VAR_TEMP_x4000, 41
+	goto_if_ne _027A
 	apply_movement obj_D49_thlonowner, _0538
 	apply_movement obj_D49_tsure_poke_590, _05BC
 	apply_movement obj_player, _066C
 	goto _033E
 
 _027A:
-	comparevartovalue VAR_TEMP_x4000, 42
-	gotoif ne, _02A5
+	compare VAR_TEMP_x4000, 42
+	goto_if_ne _02A5
 	apply_movement obj_D49_thlonowner, _0548
 	apply_movement obj_D49_tsure_poke_590, _05D8
 	apply_movement obj_player, _0680
 	goto _033E
 
 _02A5:
-	comparevartovalue VAR_TEMP_x4000, 43
-	gotoif ne, _02D0
+	compare VAR_TEMP_x4000, 43
+	goto_if_ne _02D0
 	apply_movement obj_D49_thlonowner, _0554
 	apply_movement obj_D49_tsure_poke_590, _05F0
 	apply_movement obj_player, _068C
 	goto _033E
 
 _02D0:
-	comparevartovalue VAR_TEMP_x4000, 44
-	gotoif ne, _02FB
+	compare VAR_TEMP_x4000, 44
+	goto_if_ne _02FB
 	apply_movement obj_D49_thlonowner, _0564
 	apply_movement obj_D49_tsure_poke_590, _060C
 	apply_movement obj_player, _06A0
 	goto _033E
 
 _02FB:
-	comparevartovalue VAR_TEMP_x4000, 39
-	gotoif ne, _0326
+	compare VAR_TEMP_x4000, 39
+	goto_if_ne _0326
 	apply_movement obj_D49_thlonowner, _0518
 	apply_movement obj_D49_tsure_poke_590, _0584
 	apply_movement obj_player, _0644
@@ -562,8 +561,8 @@ scr_seq_D49_003:
 	lockall
 	faceplayer
 	scrcmd_724 12, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ge, _076E
+	compare VAR_TEMP_x4000, 1
+	goto_if_ge _076E
 	npc_msg msg_0137_D49_00011
 	waitbutton
 	closemsg
@@ -571,12 +570,11 @@ scr_seq_D49_003:
 	end
 
 _076E:
-	checkflag FLAG_UNK_154
-	gotoif TRUE, _07CB
+	goto_if_set FLAG_UNK_154, _07CB
 	npc_msg msg_0137_D49_00012
 	scrcmd_724 16, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1000
-	gotoif ge, _079A
+	compare VAR_TEMP_x4000, 1000
+	goto_if_ge _079A
 	npc_msg msg_0137_D49_00013
 	waitbutton
 	closemsg
@@ -708,8 +706,7 @@ scr_seq_D49_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_997
-	gotoif FALSE, _093E
+	goto_if_unset FLAG_UNK_997, _093E
 	npc_msg msg_0137_D49_00025
 _08D1:
 	touchscreen_menu_hide
@@ -719,10 +716,10 @@ _08D1:
 	menu_item_add 157, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _091D
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0928
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _091D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0928
 	goto _0933
 	.byte 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 _091D:
@@ -759,14 +756,14 @@ _095F:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, _0993
+	compare VAR_TEMP_x4007, 0
+	goto_if_ne _0993
 	apply_movement obj_player, _09E0
 	goto _09B6
 
 _0993:
-	comparevartovalue VAR_TEMP_x4007, 1
-	gotoif ne, _09AE
+	compare VAR_TEMP_x4007, 1
+	goto_if_ne _09AE
 	apply_movement obj_player, _09EC
 	goto _09B6
 
@@ -806,8 +803,7 @@ scr_seq_D49_019:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4007, 0
-	checkflag FLAG_UNK_997
-	gotoif FALSE, _095F
+	goto_if_unset FLAG_UNK_997, _095F
 _0A1D:
 	scrcmd_113 21, 1
 	scrcmd_741 16391, 32768, 32769, 32770
@@ -822,13 +818,13 @@ _0A3A:
 	menu_item_add 44, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0AD6
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0AF6
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0AD6
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0AF6
 	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0AEB
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0AEB
 	npc_msg msg_0137_D49_00034
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
@@ -839,8 +835,8 @@ _0A3A:
 	scrcmd_113 21, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x8003, 0
-	gotoif ne, _0AD0
+	compare VAR_SPECIAL_x8003, 0
+	goto_if_ne _0AD0
 	npc_msg msg_0137_D49_00036
 	goto _0AD9
 
@@ -862,18 +858,18 @@ _0AEB:
 	goto _0AD9
 	.byte 0x02, 0x00
 _0AF6:
-	comparevartovalue VAR_SPECIAL_x8002, 2000
-	gotoif ge, _0B80
-	comparevartovalue VAR_SPECIAL_x8002, 1000
-	gotoif ge, _0B77
-	comparevartovalue VAR_SPECIAL_x8002, 500
-	gotoif ge, _0B6E
-	comparevartovalue VAR_SPECIAL_x8002, 300
-	gotoif ge, _0B65
-	comparevartovalue VAR_SPECIAL_x8002, 200
-	gotoif ge, _0B5C
-	comparevartovalue VAR_SPECIAL_x8002, 100
-	gotoif ge, _0B53
+	compare VAR_SPECIAL_x8002, 2000
+	goto_if_ge _0B80
+	compare VAR_SPECIAL_x8002, 1000
+	goto_if_ge _0B77
+	compare VAR_SPECIAL_x8002, 500
+	goto_if_ge _0B6E
+	compare VAR_SPECIAL_x8002, 300
+	goto_if_ge _0B65
+	compare VAR_SPECIAL_x8002, 200
+	goto_if_ge _0B5C
+	compare VAR_SPECIAL_x8002, 100
+	goto_if_ge _0B53
 	goto _0B4A
 
 _0B4A:
@@ -914,8 +910,7 @@ scr_seq_D49_020:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4007, 1
-	checkflag FLAG_UNK_997
-	gotoif FALSE, _095F
+	goto_if_unset FLAG_UNK_997, _095F
 	goto _0A1D
 	.byte 0x02, 0x00
 scr_seq_D49_021:
@@ -923,8 +918,7 @@ scr_seq_D49_021:
 	lockall
 	faceplayer
 	setvar VAR_TEMP_x4007, 2
-	checkflag FLAG_UNK_997
-	gotoif FALSE, _095F
+	goto_if_unset FLAG_UNK_997, _095F
 	goto _0A1D
 	.byte 0x02, 0x00
 scr_seq_D49_022:
@@ -954,11 +948,11 @@ scr_seq_D49_016:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0E44
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0E44
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0E58
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0E58
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -966,21 +960,21 @@ scr_seq_D49_016:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0C75
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0C75
 	apply_movement obj_player, _0E6C
 	apply_movement obj_D49_gsmiddleman1, _0EB8
 	goto _0CC3
 
 _0C75:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0C90
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0C90
 	apply_movement obj_player, _0E84
 	goto _0CC3
 
 _0C90:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0CB3
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0CB3
 	apply_movement obj_player, _0EA4
 	apply_movement obj_D49_gsmiddleman1, _0EB8
 	goto _0CC3
@@ -994,8 +988,8 @@ _0CC3:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0CEA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0CEA
 	apply_movement obj_partner_poke, _0EC4
 	wait_movement
 _0CEA:
@@ -1023,11 +1017,11 @@ scr_seq_D49_017:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0E44
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0E44
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0E58
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0E58
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -1035,21 +1029,21 @@ scr_seq_D49_017:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0D9D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0D9D
 	apply_movement obj_player, _0E6C
 	apply_movement obj_D49_gsmiddleman1_2, _0EB8
 	goto _0DEB
 
 _0D9D:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0DB8
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0DB8
 	apply_movement obj_player, _0E84
 	goto _0DEB
 
 _0DB8:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0DDB
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0DDB
 	apply_movement obj_player, _0EA4
 	apply_movement obj_D49_gsmiddleman1_2, _0EB8
 	goto _0DEB
@@ -1063,8 +1057,8 @@ _0DEB:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0E12
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0E12
 	apply_movement obj_partner_poke, _0EC4
 	wait_movement
 _0E12:

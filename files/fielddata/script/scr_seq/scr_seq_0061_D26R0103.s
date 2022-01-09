@@ -12,8 +12,7 @@ scr_seq_D26R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_07A
-	gotoif TRUE, _004F
+	goto_if_set FLAG_UNK_07A, _004F
 	npc_msg msg_0092_D26R0103_00000
 	scrcmd_049
 	closemsg

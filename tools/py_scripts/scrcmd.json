@@ -71,56 +71,56 @@
       ]
     },
     {
-      "name": "comparelocaltolocal",
+      "name": "compare_local_to_local",
       "args": [
         1,
         1
       ]
     },
     {
-      "name": "comparelocaltovalue",
+      "name": "compare_local_to_value",
       "args": [
         1,
         1
       ]
     },
     {
-      "name": "comparelocaltoaddr",
+      "name": "compare_local_to_addr",
       "args": [
         1,
         4
       ]
     },
     {
-      "name": "compareaddrtolocal",
+      "name": "compare_addr_to_local",
       "args": [
         4,
         1
       ]
     },
     {
-      "name": "compareaddrtovalue",
+      "name": "compare_addr_to_value",
       "args": [
         4,
         1
       ]
     },
     {
-      "name": "compareaddrtoaddr",
+      "name": "compare_addr_to_addr",
       "args": [
         4,
         4
       ]
     },
     {
-      "name": "comparevartovalue",
+      "name": "compare_var_to_value",
       "args": [
         "var",
         2
       ]
     },
     {
-      "name": "comparevartovar",
+      "name": "compare_var_to_var",
       "args": [
         "var",
         "var"
@@ -183,14 +183,14 @@
       "is_abs_branch": true
     },
     {
-      "name": "gotoif",
+      "name": "goto_if",
       "args": [
         "condition",
         "script"
       ]
     },
     {
-      "name": "callif",
+      "name": "call_if",
       "args": [
         "condition",
         "script"

@@ -118,20 +118,20 @@ scr_seq_T22_001:
 	lockall
 	faceplayer
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0182
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0182
 	apply_movement obj_T22_gsbigman, _0388
 	goto _01C0
 
 _0182:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _019D
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _019D
 	apply_movement obj_T22_gsbigman, _03AC
 	goto _01C0
 
 _019D:
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01B8
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01B8
 	apply_movement obj_T22_gsbigman, _03D0
 	goto _01C0
 
@@ -143,10 +143,10 @@ _01C0:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01E9
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01F4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01E9
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01F4
 	end
 
 _01E9:
@@ -160,20 +160,20 @@ _01F4:
 	npc_msg msg_0556_T22_00003
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0218
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0218
 	apply_movement obj_T22_gsbigman, _0418
 	goto _0256
 
 _0218:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0233
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0233
 	apply_movement obj_T22_gsbigman, _0440
 	goto _0256
 
 _0233:
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _024E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _024E
 	apply_movement obj_T22_gsbigman, _0460
 	goto _0256
 
@@ -182,12 +182,12 @@ _024E:
 _0256:
 	wait_movement
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _028B
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _02B9
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02E7
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _028B
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _02B9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02E7
 	goto _0315
 	.byte 0x02, 0x00
 _028B:
@@ -488,8 +488,8 @@ scr_seq_T22_003:
 	faceplayer
 	call _0ADD
 	call _0A57
-	comparevartovalue VAR_SPECIAL_x8006, 1
-	gotoif eq, _06BC
+	compare VAR_SPECIAL_x8006, 1
+	goto_if_eq _06BC
 	npc_msg msg_0556_T22_00017
 	closemsg
 	call _0ADD
@@ -501,20 +501,20 @@ _06BC:
 _06BF:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	gotoif ne, _06DE
+	compare VAR_SPECIAL_x8000, 1
+	goto_if_ne _06DE
 	menu_item_add 205, 255, 0
 _06DE:
-	comparevartovalue VAR_SPECIAL_x8001, 1
-	gotoif ne, _06F3
+	compare VAR_SPECIAL_x8001, 1
+	goto_if_ne _06F3
 	menu_item_add 206, 255, 1
 _06F3:
-	comparevartovalue VAR_SPECIAL_x8002, 1
-	gotoif ne, _0708
+	compare VAR_SPECIAL_x8002, 1
+	goto_if_ne _0708
 	menu_item_add 207, 255, 2
 _0708:
-	comparevartovalue VAR_SPECIAL_x8003, 1
-	gotoif ne, _071D
+	compare VAR_SPECIAL_x8003, 1
+	goto_if_ne _071D
 	menu_item_add 208, 255, 3
 _071D:
 	menu_item_add 126, 255, 4
@@ -592,8 +592,8 @@ _0A17:
 	setvar VAR_SPECIAL_x8003, 0
 	setvar VAR_SPECIAL_x8006, 0
 	call _0A57
-	comparevartovalue VAR_SPECIAL_x8006, 1
-	gotoif ne, _0A51
+	compare VAR_SPECIAL_x8006, 1
+	goto_if_ne _0A51
 	npc_msg msg_0556_T22_00019
 	goto _06BF
 
@@ -602,26 +602,26 @@ _0A51:
 
 _0A57:
 	hasitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0A78
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0A78
 	setvar VAR_SPECIAL_x8000, 1
 	setvar VAR_SPECIAL_x8006, 1
 _0A78:
 	hasitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0A99
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0A99
 	setvar VAR_SPECIAL_x8001, 1
 	setvar VAR_SPECIAL_x8006, 1
 _0A99:
 	hasitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0ABA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0ABA
 	setvar VAR_SPECIAL_x8002, 1
 	setvar VAR_SPECIAL_x8006, 1
 _0ABA:
 	hasitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0ADB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0ADB
 	setvar VAR_SPECIAL_x8003, 1
 	setvar VAR_SPECIAL_x8006, 1
 _0ADB:
@@ -629,15 +629,15 @@ _0ADB:
 
 _0ADD:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0AFE
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0AFE
 	apply_movement obj_T22_juggrer, _0B28
 	wait_movement
 	goto _0B25
 
 _0AFE:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0B1B
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0B1B
 	apply_movement obj_T22_juggrer, _0B6C
 	wait_movement
 	goto _0B25

@@ -12,10 +12,10 @@ scr_seq_T07R0206_000:
 	scrcmd_609
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0058
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _002A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0058
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _002A
 	end
 
 _002A:
@@ -75,20 +75,20 @@ _0120:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 376, 2, 5, 3, 1
-	comparevartovalue VAR_UNK_4113, 0
-	gotoif eq, _0305
-	comparevartovalue VAR_UNK_4113, 0
-	callif gt, _029C
-	comparevartovalue VAR_UNK_4113, 0
-	callif lt, _0291
-	comparevartovalue VAR_UNK_4113, 2
-	gotoif ne, _0176
+	compare VAR_UNK_4113, 0
+	goto_if_eq _0305
+	compare VAR_UNK_4113, 0
+	call_if_gt _029C
+	compare VAR_UNK_4113, 0
+	call_if_lt _0291
+	compare VAR_UNK_4113, 2
+	goto_if_ne _0176
 	setvar VAR_SPECIAL_x8005, 2
 	goto _0189
 
 _0176:
-	comparevartovalue VAR_UNK_4113, 3
-	gotoif ne, _0189
+	compare VAR_UNK_4113, 3
+	goto_if_ne _0189
 	setvar VAR_SPECIAL_x8005, 3
 _0189:
 	call _02A7
@@ -99,20 +99,20 @@ _019B:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 378, 0, 5, 3, 1
-	comparevartovalue VAR_UNK_4113, 2
-	gotoif eq, _0305
-	comparevartovalue VAR_UNK_4113, 2
-	callif gt, _029C
-	comparevartovalue VAR_UNK_4113, 2
-	callif lt, _0291
-	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, _01F1
+	compare VAR_UNK_4113, 2
+	goto_if_eq _0305
+	compare VAR_UNK_4113, 2
+	call_if_gt _029C
+	compare VAR_UNK_4113, 2
+	call_if_lt _0291
+	compare VAR_UNK_4113, 0
+	goto_if_ne _01F1
 	setvar VAR_SPECIAL_x8005, 2
 	goto _0204
 
 _01F1:
-	comparevartovalue VAR_UNK_4113, 3
-	gotoif ne, _0204
+	compare VAR_UNK_4113, 3
+	goto_if_ne _0204
 	setvar VAR_SPECIAL_x8005, 1
 _0204:
 	call _02A7
@@ -123,20 +123,20 @@ _0216:
 	wait 1, VAR_SPECIAL_x800C
 	scrcmd_241 16659
 	scrcmd_240 379, 1, 5, 3, 1
-	comparevartovalue VAR_UNK_4113, 3
-	gotoif eq, _0305
-	comparevartovalue VAR_UNK_4113, 3
-	callif gt, _029C
-	comparevartovalue VAR_UNK_4113, 3
-	callif lt, _0291
-	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, _026C
+	compare VAR_UNK_4113, 3
+	goto_if_eq _0305
+	compare VAR_UNK_4113, 3
+	call_if_gt _029C
+	compare VAR_UNK_4113, 3
+	call_if_lt _0291
+	compare VAR_UNK_4113, 0
+	goto_if_ne _026C
 	setvar VAR_SPECIAL_x8005, 3
 	goto _027F
 
 _026C:
-	comparevartovalue VAR_UNK_4113, 2
-	gotoif ne, _027F
+	compare VAR_UNK_4113, 2
+	goto_if_ne _027F
 	setvar VAR_SPECIAL_x8005, 1
 _027F:
 	call _02A7

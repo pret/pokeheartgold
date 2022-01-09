@@ -17,8 +17,8 @@ scr_seq_T20R0202_000:
 	npc_msg msg_0546_T20R0202_00000
 	closemsg
 	scrcmd_377 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _004B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _004B
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_376

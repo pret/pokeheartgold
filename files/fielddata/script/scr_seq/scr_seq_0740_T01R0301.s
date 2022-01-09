@@ -19,12 +19,12 @@
 	scrdef_end
 
 scr_seq_T01R0301_010:
-	comparevartovalue VAR_UNK_4131, 3
-	gotoif eq, _0057
-	comparevartovalue VAR_UNK_4131, 4
-	gotoif eq, _0057
-	comparevartovalue VAR_UNK_4131, 5
-	gotoif eq, _0057
+	compare VAR_UNK_4131, 3
+	goto_if_eq _0057
+	compare VAR_UNK_4131, 4
+	goto_if_eq _0057
+	compare VAR_UNK_4131, 5
+	goto_if_eq _0057
 	end
 
 _0057:
@@ -89,32 +89,30 @@ scr_seq_T01R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4096, 2
-	gotoif eq, _0282
-	comparevartovalue VAR_UNK_4131, 3
-	gotoif eq, _0277
-	comparevartovalue VAR_UNK_4131, 4
-	gotoif eq, _0277
-	comparevartovalue VAR_UNK_4131, 5
-	gotoif eq, _0277
-	comparevartovalue VAR_UNK_4131, 2
-	gotoif eq, _026C
-	comparevartovalue VAR_UNK_40F9, 7
-	gotoif eq, _04B1
-	comparevartovalue VAR_UNK_40F9, 5
-	gotoif eq, _04A6
-	comparevartovalue VAR_UNK_40F9, 4
-	gotoif eq, _02CB
-	checkflag FLAG_UNK_185
-	gotoif TRUE, _01B2
-	checkflag FLAG_UNK_12A
-	gotoif TRUE, _0195
+	compare VAR_UNK_4096, 2
+	goto_if_eq _0282
+	compare VAR_UNK_4131, 3
+	goto_if_eq _0277
+	compare VAR_UNK_4131, 4
+	goto_if_eq _0277
+	compare VAR_UNK_4131, 5
+	goto_if_eq _0277
+	compare VAR_UNK_4131, 2
+	goto_if_eq _026C
+	compare VAR_UNK_40F9, 7
+	goto_if_eq _04B1
+	compare VAR_UNK_40F9, 5
+	goto_if_eq _04A6
+	compare VAR_UNK_40F9, 4
+	goto_if_eq _02CB
+	goto_if_set FLAG_UNK_185, _01B2
+	goto_if_set FLAG_UNK_12A, _0195
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00000, msg_0451_T01R0301_00001
 	setflag FLAG_UNK_12A
 _0195:
-	comparevartovalue VAR_UNK_4135, 0
-	gotoif ne, _01AB
+	compare VAR_UNK_4135, 0
+	goto_if_ne _01AB
 	npc_msg msg_0451_T01R0301_00008
 	goto _01B2
 
@@ -122,16 +120,15 @@ _01AB:
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00009, msg_0451_T01R0301_00010
 _01B2:
-	checkflag FLAG_UNK_988
-	gotoif TRUE, _01F2
+	goto_if_set FLAG_UNK_988, _01F2
 	callstd std_in_person_evaluate_dex
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01EC
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01EC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01EC
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01EC
 	check_national_dex_complete VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01F0
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01F0
 _01EC:
 	releaseall
 	end
@@ -146,11 +143,11 @@ _01F2:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0256
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0256
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0261
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0261
 	npc_msg msg_0451_T01R0301_00029
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
@@ -195,8 +192,7 @@ _0277:
 	end
 
 _0282:
-	checkflag FLAG_UNK_185
-	gotoif TRUE, _02C0
+	goto_if_set FLAG_UNK_185, _02C0
 	npc_msg msg_0451_T01R0301_00055
 	giveitem_no_check ITEM_HM08, 1
 	npc_msg msg_0451_T01R0301_00056
@@ -219,10 +215,9 @@ _02C0:
 
 _02CB:
 	scrcmd_836 32773
-	comparevartovalue VAR_SPECIAL_x8005, 1
-	gotoif eq, _040D
-	checkflag FLAG_UNK_0BC
-	gotoif TRUE, _03DE
+	compare VAR_SPECIAL_x8005, 1
+	goto_if_eq _040D
+	goto_if_set FLAG_UNK_0BC, _03DE
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00011, msg_0451_T01R0301_00012
 	closemsg
@@ -232,18 +227,18 @@ _02CB:
 	npc_msg msg_0451_T01R0301_00013
 	closemsg
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0320
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0320
 	goto _035A
 	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
 _0320:
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif ne, _0339
+	compare VAR_TEMP_x4001, 3
+	goto_if_ne _0339
 	goto _037B
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0339:
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _0352
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _0352
 	goto _039C
 	.byte 0x16, 0x00, 0x06, 0x00
 	.byte 0x00, 0x00
@@ -288,8 +283,8 @@ _03BD:
 	.byte 0x02, 0x00
 _03DE:
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 8
-	gotoif eq, _03FE
+	compare VAR_SPECIAL_x800C, 8
+	goto_if_eq _03FE
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00015, msg_0451_T01R0301_00016
 	closemsg
@@ -302,27 +297,26 @@ _03FE:
 	goto _01B2
 
 _040D:
-	checkflag FLAG_UNK_0BC
-	gotoif FALSE, _04C2
+	goto_if_unset FLAG_UNK_0BC, _04C2
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00019, msg_0451_T01R0301_00020
 	closemsg
 _0421:
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0440
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0440
 	apply_movement obj_T01R0301_ookido, _0500
 	goto _047E
 
 _0440:
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif ne, _045B
+	compare VAR_TEMP_x4001, 3
+	goto_if_ne _045B
 	apply_movement obj_T01R0301_ookido, _052C
 	goto _047E
 
 _045B:
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _0476
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _0476
 	apply_movement obj_T01R0301_ookido, _0558
 	goto _047E
 
@@ -444,22 +438,22 @@ scr_seq_T01R0301_005:
 	end
 
 scr_seq_T01R0301_007:
-	comparevartovalue VAR_UNK_4131, 6
-	gotoif eq, _0979
-	comparevartovalue VAR_UNK_4131, 0
-	gotoif eq, _097B
-	comparevartovalue VAR_UNK_4131, 3
-	gotoif eq, _097B
+	compare VAR_UNK_4131, 6
+	goto_if_eq _0979
+	compare VAR_UNK_4131, 0
+	goto_if_eq _097B
+	compare VAR_UNK_4131, 3
+	goto_if_eq _097B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4131, 4
-	gotoif eq, _097D
-	comparevartovalue VAR_UNK_4131, 5
-	gotoif eq, _097D
+	compare VAR_UNK_4131, 4
+	goto_if_eq _097D
+	compare VAR_UNK_4131, 5
+	goto_if_eq _097D
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _0663
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _0663
 	apply_movement obj_T01R0301_ookido, _09C4
 	goto _066B
 
@@ -473,30 +467,30 @@ _066B:
 	wait_cry
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _096C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _096C
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8006, 3
 	call _0801
 	end
 
 scr_seq_T01R0301_008:
-	comparevartovalue VAR_UNK_4131, 6
-	gotoif eq, _0979
-	comparevartovalue VAR_UNK_4131, 0
-	gotoif eq, _097B
-	comparevartovalue VAR_UNK_4131, 4
-	gotoif eq, _097B
+	compare VAR_UNK_4131, 6
+	goto_if_eq _0979
+	compare VAR_UNK_4131, 0
+	goto_if_eq _097B
+	compare VAR_UNK_4131, 4
+	goto_if_eq _097B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4131, 3
-	gotoif eq, _097D
-	comparevartovalue VAR_UNK_4131, 5
-	gotoif eq, _097D
+	compare VAR_UNK_4131, 3
+	goto_if_eq _097D
+	compare VAR_UNK_4131, 5
+	goto_if_eq _097D
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _0711
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _0711
 	apply_movement obj_T01R0301_ookido, _09C4
 	goto _0719
 
@@ -510,30 +504,30 @@ _0719:
 	wait_cry
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _096C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _096C
 	setvar VAR_SPECIAL_x8004, 7
 	setvar VAR_SPECIAL_x8006, 4
 	call _0801
 	end
 
 scr_seq_T01R0301_009:
-	comparevartovalue VAR_UNK_4131, 6
-	gotoif eq, _0979
-	comparevartovalue VAR_UNK_4131, 0
-	gotoif eq, _097B
-	comparevartovalue VAR_UNK_4131, 5
-	gotoif eq, _097B
+	compare VAR_UNK_4131, 6
+	goto_if_eq _0979
+	compare VAR_UNK_4131, 0
+	goto_if_eq _097B
+	compare VAR_UNK_4131, 5
+	goto_if_eq _097B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4131, 3
-	gotoif eq, _097D
-	comparevartovalue VAR_UNK_4131, 4
-	gotoif eq, _097D
+	compare VAR_UNK_4131, 3
+	goto_if_eq _097D
+	compare VAR_UNK_4131, 4
+	goto_if_eq _097D
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _07BF
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _07BF
 	apply_movement obj_T01R0301_ookido, _09C4
 	goto _07C7
 
@@ -547,8 +541,8 @@ _07C7:
 	wait_cry
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _096C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _096C
 	setvar VAR_SPECIAL_x8004, 4
 	setvar VAR_SPECIAL_x8006, 5
 	call _0801
@@ -557,17 +551,17 @@ _07C7:
 _0801:
 	scrcmd_453
 	get_party_count VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 6
-	gotoif eq, _098B
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif ne, _082F
+	compare VAR_SPECIAL_x8005, 6
+	goto_if_eq _098B
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_ne _082F
 	hide_person obj_T01R0301_monstarball_3
 	setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
 	goto _0852
 
 _082F:
-	comparevartovalue VAR_SPECIAL_x8004, 7
-	gotoif ne, _084A
+	compare VAR_SPECIAL_x8004, 7
+	goto_if_ne _084A
 	hide_person obj_T01R0301_monstarball_2
 	setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
 	goto _0852
@@ -588,23 +582,23 @@ _0852:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif eq, _0929
+	compare VAR_SPECIAL_x800C, 0
+	call_if_eq _0929
 	touchscreen_menu_show
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif eq, _0908
+	compare VAR_TEMP_x4000, 8
+	goto_if_eq _0908
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	gotoif ne, _08D3
+	compare VAR_SPECIAL_x8004, 1
+	goto_if_ne _08D3
 	apply_movement obj_player, _0998
 	goto _08F6
 
 _08D3:
-	comparevartovalue VAR_SPECIAL_x8004, 7
-	gotoif ne, _08EE
+	compare VAR_SPECIAL_x8004, 7
+	goto_if_ne _08EE
 	apply_movement obj_player, _09A4
 	goto _08F6
 
@@ -641,8 +635,8 @@ _0929:
 	npc_msg msg_0451_T01R0301_00050
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0929
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0929
 	return
 
 _096C:

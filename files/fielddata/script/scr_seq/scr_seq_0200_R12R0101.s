@@ -13,14 +13,14 @@ scr_seq_R12R0101_000:
 	lockall
 	faceplayer
 	getitemquantity ITEM_SUPER_ROD, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _004C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _004C
 	npc_msg msg_0349_R12R0101_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0057
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0057
 	npc_msg msg_0349_R12R0101_00001
 	giveitem_no_check ITEM_SUPER_ROD, 1
 _004C:

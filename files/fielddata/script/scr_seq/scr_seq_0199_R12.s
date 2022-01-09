@@ -14,17 +14,16 @@
 	scrdef_end
 
 scr_seq_R12_001:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _002B
+	goto_if_unset FLAG_UNK_189, _002B
 	clearflag FLAG_UNK_189
 	end
 
 _002B:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _004F
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, _004F
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _004F
+	compare VAR_TEMP_x4000, 3
+	goto_if_eq _004F
 	setflag FLAG_HIDE_CAMERON
 	end
 
@@ -33,10 +32,8 @@ _004F:
 	end
 
 scr_seq_R12_004:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _006D
-	checkflag FLAG_UNK_0F9
-	gotoif TRUE, _0087
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _006D
+	goto_if_set FLAG_UNK_0F9, _0087
 	end
 
 _006D:
@@ -60,11 +57,11 @@ scr_seq_R12_000:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01B1
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01B1
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01C5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01C5
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -72,21 +69,21 @@ scr_seq_R12_000:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0102
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0102
 	apply_movement obj_player, _01DC
 	apply_movement obj_R12_gsmiddleman1, _0228
 	goto _0150
 
 _0102:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _011D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _011D
 	apply_movement obj_player, _01F4
 	goto _0150
 
 _011D:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0140
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0140
 	apply_movement obj_player, _0214
 	apply_movement obj_R12_gsmiddleman1, _0228
 	goto _0150
@@ -100,8 +97,8 @@ _0150:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0177
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0177
 	apply_movement obj_partner_poke, _0234
 	wait_movement
 _0177:
@@ -178,8 +175,8 @@ scr_seq_R12_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_779 5, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0268
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0268
 	npc_msg msg_0348_R12_00002
 	waitbutton
 	closemsg
@@ -195,11 +192,11 @@ _0268:
 	wild_battle SPECIES_SNORLAX, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02AE
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02AE
 	scrcmd_683 VAR_TEMP_x4005
-	comparevartovalue VAR_TEMP_x4005, 4
-	callif eq, _02B4
+	compare VAR_TEMP_x4005, 4
+	call_if_eq _02B4
 	setflag FLAG_UNK_0F9
 	releaseall
 	end

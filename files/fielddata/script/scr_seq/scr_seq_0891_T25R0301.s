@@ -17,16 +17,16 @@ scr_seq_T25R0301_000:
 	get_lead_mon_index VAR_SPECIAL_x8000
 	npc_msg msg_0585_T25R0301_00000
 	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x800C, 250
-	gotoif ge, _006C
-	comparevartovalue VAR_SPECIAL_x800C, 200
-	gotoif ge, _0077
-	comparevartovalue VAR_SPECIAL_x800C, 150
-	gotoif ge, _0082
-	comparevartovalue VAR_SPECIAL_x800C, 100
-	gotoif ge, _008D
-	comparevartovalue VAR_SPECIAL_x800C, 50
-	gotoif ge, _0098
+	compare VAR_SPECIAL_x800C, 250
+	goto_if_ge _006C
+	compare VAR_SPECIAL_x800C, 200
+	goto_if_ge _0077
+	compare VAR_SPECIAL_x800C, 150
+	goto_if_ge _0082
+	compare VAR_SPECIAL_x800C, 100
+	goto_if_ge _008D
+	compare VAR_SPECIAL_x800C, 50
+	goto_if_ge _0098
 	goto _00A3
 	.byte 0x02, 0x00
 _006C:

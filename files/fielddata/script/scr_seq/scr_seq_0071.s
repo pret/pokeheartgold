@@ -14,8 +14,8 @@ scr_seq_0071_000:
 	end
 
 scr_seq_0071_001:
-	comparevartovalue VAR_UNK_414E, 0
-	callif ne, _001F
+	compare VAR_UNK_414E, 0
+	call_if_ne _001F
 	end
 
 _001F:

@@ -12,8 +12,8 @@
 	scrdef_end
 
 scr_seq_R30R0201_003:
-	comparevartovalue VAR_UNK_40F9, 1
-	gotoif eq, _0021
+	compare VAR_UNK_40F9, 1
+	goto_if_eq _0021
 	end
 
 _0021:
@@ -61,17 +61,15 @@ scr_seq_R30R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40F9, 4
-	gotoif ge, _00F1
-	comparevartovalue VAR_UNK_40F9, 2
-	gotoif ge, _02CD
+	compare VAR_UNK_40F9, 4
+	goto_if_ge _00F1
+	compare VAR_UNK_40F9, 2
+	goto_if_ge _02CD
 _00F1:
-	checkflag FLAG_EXCHANGED_RED_SCALE
-	gotoif TRUE, _019F
-	checkflag FLAG_GOT_RED_SCALE
-	gotoif TRUE, _012A
-	comparevartovalue VAR_SCENE_MR_POKEMONS_HOUSE, 2
-	gotoif ge, _011F
+	goto_if_set FLAG_EXCHANGED_RED_SCALE, _019F
+	goto_if_set FLAG_GOT_RED_SCALE, _012A
+	compare VAR_SCENE_MR_POKEMONS_HOUSE, 2
+	goto_if_ge _011F
 	npc_msg msg_0377_R30R0201_00005
 	waitbutton
 	closemsg
@@ -91,8 +89,8 @@ _012A:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0189
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0189
 	goto_if_no_item_space ITEM_EXP__SHARE, 1, _0194
 	callstd std_give_item_verbose
 	closemsg
@@ -116,19 +114,18 @@ _0194:
 	end
 
 _019F:
-	checkflag FLAG_UNK_107
-	gotoif FALSE, _011F
+	goto_if_unset FLAG_UNK_107, _011F
 	npc_msg msg_0377_R30R0201_00007
 	closemsg
 	get_player_facing VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _01CE
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _01CE
 	apply_movement obj_R30R0201_gsgentleman, _01F8
 	goto _01F1
 
 _01CE:
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _01E9
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _01E9
 	apply_movement obj_R30R0201_gsgentleman, _020C
 	goto _01F1
 
@@ -186,8 +183,8 @@ scr_seq_R30R0201_002:
 	wait_movement
 	buffer_players_name 0
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _02B0
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _02B0
 	setvar VAR_SPECIAL_x8004, 535
 	goto _02B6
 

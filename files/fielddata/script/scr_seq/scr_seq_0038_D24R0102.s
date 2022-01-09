@@ -22,17 +22,16 @@ scr_seq_D24R0102_000:
 	lockall
 	faceplayer
 	scrcmd_545 32780
-	comparevartovalue VAR_SPECIAL_x800C, 28
-	gotoif eq, _0093
-	comparevartovalue VAR_UNK_40EC, 1
-	gotoif ge, _008A
-	checkflag FLAG_UNK_10F
-	gotoif TRUE, _0081
+	compare VAR_SPECIAL_x800C, 28
+	goto_if_eq _0093
+	compare VAR_UNK_40EC, 1
+	goto_if_ge _008A
+	goto_if_set FLAG_UNK_10F, _0081
 	npc_msg msg_0073_D24R0102_00000
 	setflag FLAG_UNK_10F
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0077
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0077
 	apply_movement obj_D24R0102_suit, _009C
 	goto _007F
 
@@ -96,26 +95,26 @@ scr_seq_D24R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_403E, 8
-	gotoif eq, _033C
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif eq, _02C4
-	comparevartovalue VAR_UNK_403E, 4
-	gotoif ge, _0277
+	compare VAR_UNK_403E, 8
+	goto_if_eq _033C
+	compare VAR_UNK_403E, 7
+	goto_if_eq _02C4
+	compare VAR_UNK_403E, 4
+	goto_if_ge _0277
 	scrcmd_545 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02DB
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02DB
 	scrcmd_770 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0223
-	comparevartovalue VAR_UNK_40EC, 4
-	gotoif eq, _01F6
-	comparevartovalue VAR_UNK_40EC, 3
-	gotoif eq, _01D6
-	comparevartovalue VAR_UNK_40EC, 2
-	gotoif eq, _01C3
-	comparevartovalue VAR_UNK_40EC, 1
-	gotoif eq, _01BA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0223
+	compare VAR_UNK_40EC, 4
+	goto_if_eq _01F6
+	compare VAR_UNK_40EC, 3
+	goto_if_eq _01D6
+	compare VAR_UNK_40EC, 2
+	goto_if_eq _01C3
+	compare VAR_UNK_40EC, 1
+	goto_if_eq _01BA
 _01B1:
 	npc_msg msg_0073_D24R0102_00004
 	goto _0366
@@ -125,66 +124,66 @@ _01BA:
 	goto _0366
 
 _01C3:
-	comparevartovalue VAR_UNK_403E, 1
-	gotoif eq, _035D
+	compare VAR_UNK_403E, 1
+	goto_if_eq _035D
 	goto _02FA
 
 _01D6:
-	comparevartovalue VAR_UNK_403E, 2
-	gotoif eq, _035D
-	comparevartovalue VAR_UNK_403E, 1
-	gotoif eq, _0303
+	compare VAR_UNK_403E, 2
+	goto_if_eq _035D
+	compare VAR_UNK_403E, 1
+	goto_if_eq _0303
 	goto _02FA
 
 _01F6:
-	comparevartovalue VAR_UNK_403E, 3
-	gotoif eq, _035D
-	comparevartovalue VAR_UNK_403E, 2
-	gotoif eq, _030C
-	comparevartovalue VAR_UNK_403E, 1
-	gotoif eq, _0303
+	compare VAR_UNK_403E, 3
+	goto_if_eq _035D
+	compare VAR_UNK_403E, 2
+	goto_if_eq _030C
+	compare VAR_UNK_403E, 1
+	goto_if_eq _0303
 	goto _02FA
 
 _0223:
-	comparevartovalue VAR_UNK_40EC, 0
-	gotoif eq, _01B1
-	comparevartovalue VAR_UNK_40EC, 1
-	gotoif eq, _01BA
-	comparevartovalue VAR_UNK_403E, 4
-	gotoif eq, _035D
-	comparevartovalue VAR_UNK_403E, 3
-	gotoif eq, _0315
-	comparevartovalue VAR_UNK_403E, 2
-	gotoif eq, _030C
-	comparevartovalue VAR_UNK_403E, 1
-	gotoif eq, _0303
+	compare VAR_UNK_40EC, 0
+	goto_if_eq _01B1
+	compare VAR_UNK_40EC, 1
+	goto_if_eq _01BA
+	compare VAR_UNK_403E, 4
+	goto_if_eq _035D
+	compare VAR_UNK_403E, 3
+	goto_if_eq _0315
+	compare VAR_UNK_403E, 2
+	goto_if_eq _030C
+	compare VAR_UNK_403E, 1
+	goto_if_eq _0303
 	goto _02FA
 
 _0277:
-	comparevartovalue VAR_UNK_403E, 6
-	gotoif eq, _035D
-	comparevartovalue VAR_UNK_40F1, 4
-	gotoif eq, _02B1
-	comparevartovalue VAR_UNK_403E, 5
-	gotoif eq, _035D
-	comparevartovalue VAR_UNK_40F1, 1
-	gotoif ge, _0321
+	compare VAR_UNK_403E, 6
+	goto_if_eq _035D
+	compare VAR_UNK_40F1, 4
+	goto_if_eq _02B1
+	compare VAR_UNK_403E, 5
+	goto_if_eq _035D
+	compare VAR_UNK_40F1, 1
+	goto_if_ge _0321
 	goto _035D
 
 _02B1:
-	comparevartovalue VAR_UNK_403E, 5
-	gotoif eq, _032A
+	compare VAR_UNK_403E, 5
+	goto_if_eq _032A
 	goto _0321
 
 _02C4:
 	scrcmd_545 32780
-	comparevartovalue VAR_SPECIAL_x800C, 28
-	gotoif eq, _0333
+	compare VAR_SPECIAL_x800C, 28
+	goto_if_eq _0333
 	goto _035D
 
 _02DB:
-	comparevartovalue VAR_UNK_40EC, 1
-	gotoif eq, _02F1
+	compare VAR_UNK_40EC, 1
+	goto_if_eq _02F1
 	npc_msg msg_0073_D24R0102_00004
 	goto _0366
 
@@ -248,11 +247,11 @@ scr_seq_D24R0102_002:
 	lockall
 	faceplayer
 	scrcmd_770 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03AA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03AA
 	scrcmd_545 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03A1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03A1
 	npc_msg msg_0073_D24R0102_00019
 	goto _0366
 
@@ -268,11 +267,11 @@ scr_seq_D24R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif ge, _03EB
+	compare VAR_UNK_403E, 7
+	goto_if_ge _03EB
 	scrcmd_770 32780
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03E2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03E2
 	npc_msg msg_0073_D24R0102_00021
 	goto _0366
 

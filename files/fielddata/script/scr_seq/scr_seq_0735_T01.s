@@ -16,26 +16,24 @@
 	scrdef_end
 
 scr_seq_T01_007:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0033
+	goto_if_unset FLAG_UNK_189, _0033
 	clearflag FLAG_UNK_189
 	end
 
 _0033:
-	checkflag FLAG_UNK_185
-	gotoif TRUE, _0044
+	goto_if_set FLAG_UNK_185, _0044
 	goto _004A
 
 _0044:
 	setvar VAR_UNK_4096, 0
 _004A:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, _007B
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, _007B
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, _007B
+	compare VAR_TEMP_x4000, 3
+	goto_if_eq _007B
+	compare VAR_TEMP_x4000, 4
+	goto_if_eq _007B
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _007B
 	setflag FLAG_HIDE_CAMERON
 	end
 
@@ -52,11 +50,11 @@ scr_seq_T01_006:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01A9
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01A9
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01BD
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01BD
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -64,21 +62,21 @@ scr_seq_T01_006:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00FA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00FA
 	apply_movement obj_player, _01D4
 	apply_movement obj_T01_gsmiddleman1, _0220
 	goto _0148
 
 _00FA:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0115
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0115
 	apply_movement obj_player, _01EC
 	goto _0148
 
 _0115:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0138
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0138
 	apply_movement obj_player, _020C
 	apply_movement obj_T01_gsmiddleman1, _0220
 	goto _0148
@@ -92,8 +90,8 @@ _0148:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _016F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _016F
 	apply_movement obj_partner_poke, _022C
 	wait_movement
 _016F:

@@ -19,8 +19,8 @@
 
 scr_seq_W40_000:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _0045
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _0045
 	clearflag FLAG_UNK_206
 	goto _0049
 
@@ -35,17 +35,15 @@ scr_seq_W40_001:
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
 	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_ALERT
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0171
-	checkflag FLAG_GOT_SHOCK_RIBBON
-	gotoif TRUE, _0185
-	comparevartovalue VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	gotoif eq, _011F
-	checkflag FLAG_UNK_0D7
-	gotoif TRUE, _0101
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0171
+	goto_if_set FLAG_GOT_SHOCK_RIBBON, _0185
+	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	goto_if_eq _011F
+	goto_if_set FLAG_UNK_0D7, _0101
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00B2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00B2
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	goto _00F9
@@ -81,8 +79,8 @@ _0115:
 
 _011F:
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0142
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0142
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 3
 	goto _00F9
@@ -123,20 +121,20 @@ scr_seq_W40_008:
 	apply_movement obj_W40_gsmiddleman1, _02C8
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8000, 252
-	gotoif ne, _01C8
+	compare VAR_SPECIAL_x8000, 252
+	goto_if_ne _01C8
 	apply_movement obj_W40_gsmiddleman1, _02D4
 	goto _0206
 
 _01C8:
-	comparevartovalue VAR_SPECIAL_x8000, 253
-	gotoif ne, _01E3
+	compare VAR_SPECIAL_x8000, 253
+	goto_if_ne _01E3
 	apply_movement obj_W40_gsmiddleman1, _02E0
 	goto _0206
 
 _01E3:
-	comparevartovalue VAR_SPECIAL_x8000, 254
-	gotoif ne, _01FE
+	compare VAR_SPECIAL_x8000, 254
+	goto_if_ne _01FE
 	apply_movement obj_W40_gsmiddleman1, _02F4
 	goto _0206
 
@@ -145,8 +143,8 @@ _01FE:
 _0206:
 	wait_movement
 	scrcmd_729 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _0223
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _0223
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
@@ -164,20 +162,20 @@ _0223:
 	npc_msg msg_0744_W40_00016
 	closemsg
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8000, 252
-	gotoif ne, _0274
+	compare VAR_SPECIAL_x8000, 252
+	goto_if_ne _0274
 	apply_movement obj_W40_gsmiddleman1, _0324
 	goto _02B2
 
 _0274:
-	comparevartovalue VAR_SPECIAL_x8000, 253
-	gotoif ne, _028F
+	compare VAR_SPECIAL_x8000, 253
+	goto_if_ne _028F
 	apply_movement obj_W40_gsmiddleman1, _0330
 	goto _02B2
 
 _028F:
-	comparevartovalue VAR_SPECIAL_x8000, 254
-	gotoif ne, _02AA
+	compare VAR_SPECIAL_x8000, 254
+	goto_if_ne _02AA
 	apply_movement obj_W40_gsmiddleman1, _0344
 	goto _02B2
 

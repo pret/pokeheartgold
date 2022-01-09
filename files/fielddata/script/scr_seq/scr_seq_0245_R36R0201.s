@@ -12,29 +12,29 @@
 
 scr_seq_R36R0201_000:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_UNK_4118, 1
-	gotoif ne, _002D
+	compare VAR_UNK_4118, 1
+	goto_if_ne _002D
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0086
 
 _002D:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0048
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0048
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0086
 
 _0048:
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _0063
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0063
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0086
 
 _0063:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _007E
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _007E
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0086
@@ -51,8 +51,8 @@ scr_seq_R36R0201_002:
 	apply_movement obj_player, _0120
 	wait_movement
 	callstd std_bug_contest_guard_ask_end
-	comparevartovalue VAR_UNK_4118, 1
-	gotoif ne, _011A
+	compare VAR_UNK_4118, 1
+	goto_if_ne _011A
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -69,8 +69,8 @@ scr_seq_R36R0201_002:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _010A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _010A
 	scrcmd_606
 	goto _010C
 
@@ -101,22 +101,21 @@ scr_seq_R36R0201_001:
 	lockall
 	faceplayer
 	callstd std_bug_contest_guard_start
-	comparevartovalue VAR_UNK_4118, 1
-	gotoif ne, _0231
-	checkflag FLAG_UNK_1C4
-	gotoif TRUE, _01BA
+	compare VAR_UNK_4118, 1
+	goto_if_ne _0231
+	goto_if_set FLAG_UNK_1C4, _01BA
 	get_player_facing VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0185
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0185
 	apply_movement obj_player, _0238
 	goto _01A8
 
 _0185:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _01A0
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _01A0
 	apply_movement obj_player, _0240
 	goto _01A8
 
@@ -148,8 +147,8 @@ _01DC:
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0221
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0221
 	scrcmd_606
 	goto _0223
 

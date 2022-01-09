@@ -12,14 +12,13 @@ scr_seq_T26R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0BE
-	gotoif TRUE, _00B3
+	goto_if_set FLAG_UNK_0BE, _00B3
 	npc_msg msg_0608_T26R0301_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0037
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0037
 	goto _00A8
 
 _0037:
@@ -31,14 +30,14 @@ _0037:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _00A8
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _00A8
 	scrcmd_470 2
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	gotoif ne, _009B
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	goto_if_ne _009B
 	scrcmd_473 32772
 	scrcmd_474
 	setflag FLAG_UNK_0BE

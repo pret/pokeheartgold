@@ -28,22 +28,22 @@
 	scrdef_end
 
 scr_seq_T03R0101_014:
-	comparevartovalue VAR_UNK_4083, 5
-	gotoif ge, _00E8
-	comparevartovalue VAR_UNK_4083, 4
-	gotoif eq, _00E8
-	comparevartovalue VAR_UNK_4083, 3
-	gotoif eq, _00D8
-	comparevartovalue VAR_UNK_4083, 2
-	gotoif eq, _00D8
-	comparevartovalue VAR_UNK_4083, 1
-	gotoif eq, _00CE
+	compare VAR_UNK_4083, 5
+	goto_if_ge _00E8
+	compare VAR_UNK_4083, 4
+	goto_if_eq _00E8
+	compare VAR_UNK_4083, 3
+	goto_if_eq _00D8
+	compare VAR_UNK_4083, 2
+	goto_if_eq _00D8
+	compare VAR_UNK_4083, 1
+	goto_if_eq _00CE
 	hasitem ITEM_ENIGMA_STONE, 1, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _00F4
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _00F4
 	scrcmd_546 0, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _00F4
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _00F4
 	nop_var_490 VAR_TEMP_x4007
 	setvar VAR_UNK_4083, 1
 	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
@@ -70,17 +70,16 @@ _00F4:
 	goto _0104
 	.byte 0x02, 0x00
 _0104:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0115
+	goto_if_unset FLAG_UNK_189, _0115
 	clearflag FLAG_UNK_189
 	end
 
 _0115:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0139
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _0139
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0139
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _0139
 	setflag FLAG_HIDE_CAMERON
 	end
 
@@ -106,20 +105,19 @@ scr_seq_T03R0101_001:
 	lockall
 	faceplayer
 	script_overlay_cmd 2, 0
-	checkflag FLAG_MAPTEMP_001
-	gotoif TRUE, _0530
-	comparevartovalue VAR_UNK_407F, 0
-	gotoif ne, _0550
+	goto_if_set FLAG_MAPTEMP_001, _0530
+	compare VAR_UNK_407F, 0
+	goto_if_ne _0550
 	npc_msg msg_0464_T03R0101_00001
 	countfossils VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif ne, _019B
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_ne _019B
 	npc_msg msg_0464_T03R0101_00006
 	goto _05FC
 
 _019B:
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	gotoif eq, _04F7
+	compare VAR_SPECIAL_x8000, 1
+	goto_if_eq _04F7
 	setvar VAR_SPECIAL_x8001, 0
 	hasitem ITEM_OLD_AMBER, 1, VAR_SPECIAL_x800C
 	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
@@ -135,8 +133,8 @@ _019B:
 	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
 	hasitem ITEM_SKULL_FOSSIL, 1, VAR_SPECIAL_x800C
 	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8001, 1
-	gotoif eq, _04F7
+	compare VAR_SPECIAL_x8001, 1
+	goto_if_eq _04F7
 	setvar VAR_SPECIAL_x8004, 0
 	setvar VAR_SPECIAL_x8005, 0
 	setvar VAR_TEMP_x4000, 0
@@ -150,36 +148,36 @@ _019B:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8000
 _0263:
-	comparevartovalue VAR_SPECIAL_x8005, 0
-	callif eq, _0417
-	comparevartovalue VAR_SPECIAL_x8005, 1
-	callif eq, _0427
-	comparevartovalue VAR_SPECIAL_x8005, 2
-	callif eq, _0437
-	comparevartovalue VAR_SPECIAL_x8005, 3
-	callif eq, _0447
-	comparevartovalue VAR_SPECIAL_x8005, 4
-	callif eq, _0457
-	comparevartovalue VAR_SPECIAL_x8005, 5
-	callif eq, _0467
-	comparevartovalue VAR_SPECIAL_x8005, 6
-	callif eq, _0477
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0340
-	comparevartovalue VAR_SPECIAL_x8004, 0
-	callif eq, _0487
-	comparevartovalue VAR_SPECIAL_x8004, 1
-	callif eq, _048F
-	comparevartovalue VAR_SPECIAL_x8004, 2
-	callif eq, _0497
-	comparevartovalue VAR_SPECIAL_x8004, 3
-	callif eq, _049F
-	comparevartovalue VAR_SPECIAL_x8004, 4
-	callif eq, _04A7
-	comparevartovalue VAR_SPECIAL_x8004, 5
-	callif eq, _04AF
-	comparevartovalue VAR_SPECIAL_x8004, 6
-	callif eq, _04B7
+	compare VAR_SPECIAL_x8005, 0
+	call_if_eq _0417
+	compare VAR_SPECIAL_x8005, 1
+	call_if_eq _0427
+	compare VAR_SPECIAL_x8005, 2
+	call_if_eq _0437
+	compare VAR_SPECIAL_x8005, 3
+	call_if_eq _0447
+	compare VAR_SPECIAL_x8005, 4
+	call_if_eq _0457
+	compare VAR_SPECIAL_x8005, 5
+	call_if_eq _0467
+	compare VAR_SPECIAL_x8005, 6
+	call_if_eq _0477
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0340
+	compare VAR_SPECIAL_x8004, 0
+	call_if_eq _0487
+	compare VAR_SPECIAL_x8004, 1
+	call_if_eq _048F
+	compare VAR_SPECIAL_x8004, 2
+	call_if_eq _0497
+	compare VAR_SPECIAL_x8004, 3
+	call_if_eq _049F
+	compare VAR_SPECIAL_x8004, 4
+	call_if_eq _04A7
+	compare VAR_SPECIAL_x8004, 5
+	call_if_eq _04AF
+	compare VAR_SPECIAL_x8004, 6
+	call_if_eq _04B7
 	copyvar VAR_SPECIAL_x8006, VAR_SPECIAL_x8005
 	addvar VAR_SPECIAL_x8006, 159
 	menu_item_add 32774, 255, 32772
@@ -192,37 +190,37 @@ _0340:
 _034C:
 	addvar VAR_SPECIAL_x8004, 1
 	addvar VAR_SPECIAL_x8005, 1
-	comparevartovar VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
-	gotoif ne, _0263
+	compare VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
+	goto_if_ne _0263
 	menu_item_add 45, 255, 32772
 	menu_exec
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x8000, 255
-	gotoif eq, _053F
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, _04BF
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, _04C7
-	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, _04CF
-	comparevartovalue VAR_SPECIAL_x8000, 3
-	callif eq, _04D7
-	comparevartovalue VAR_SPECIAL_x8000, 4
-	callif eq, _04DF
-	comparevartovalue VAR_SPECIAL_x8000, 5
-	callif eq, _04E7
-	comparevartovalue VAR_SPECIAL_x8000, 6
-	callif eq, _04EF
+	compare VAR_SPECIAL_x8000, 255
+	goto_if_eq _053F
+	compare VAR_SPECIAL_x8000, 0
+	call_if_eq _04BF
+	compare VAR_SPECIAL_x8000, 1
+	call_if_eq _04C7
+	compare VAR_SPECIAL_x8000, 2
+	call_if_eq _04CF
+	compare VAR_SPECIAL_x8000, 3
+	call_if_eq _04D7
+	compare VAR_SPECIAL_x8000, 4
+	call_if_eq _04DF
+	compare VAR_SPECIAL_x8000, 5
+	call_if_eq _04E7
+	compare VAR_SPECIAL_x8000, 6
+	call_if_eq _04EF
 	getfossilpokemon VAR_UNK_407F, VAR_SPECIAL_x8002
-	comparevartovalue VAR_UNK_407F, 0
-	gotoif eq, _053F
+	compare VAR_UNK_407F, 0
+	goto_if_eq _053F
 	buffer_item_name 0, VAR_SPECIAL_x8002
 	npc_msg msg_0464_T03R0101_00007
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _053F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _053F
 	takeitem VAR_SPECIAL_x8002, 1, VAR_SPECIAL_x800C
 	goto _0530
 
@@ -324,8 +322,8 @@ _04F7:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _053F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _053F
 	getfossilpokemon VAR_UNK_407F, VAR_SPECIAL_x8002
 	takeitem VAR_SPECIAL_x8002, 1, VAR_SPECIAL_x800C
 	goto _0530
@@ -344,8 +342,8 @@ _0550:
 	buffer_species_name 0, VAR_UNK_407F, 0, 0
 	npc_msg msg_0464_T03R0101_00004
 	get_party_count VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif ne, _0575
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_ne _0575
 	npc_msg msg_0464_T03R0101_00005
 	goto _05FC
 
@@ -363,15 +361,15 @@ _0575:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0600
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0600
 	get_party_count VAR_TEMP_x4000
 	subvar VAR_TEMP_x4000, 1
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _05E8
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _05E8
 	scrcmd_420 50
 _05E8:
 	fade_screen 6, 1, 1, 0x0000
@@ -397,11 +395,11 @@ scr_seq_T03R0101_013:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _070D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _070D
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0721
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0721
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -409,15 +407,15 @@ scr_seq_T03R0101_013:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0681
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0681
 	apply_movement obj_player, _0738
 	apply_movement obj_T03R0101_gsmiddleman1, _0770
 	goto _06AC
 
 _0681:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _069C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _069C
 	apply_movement obj_player, _0750
 	goto _06AC
 
@@ -430,8 +428,8 @@ _06AC:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _06D3
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _06D3
 	apply_movement obj_partner_poke, _077C
 	wait_movement
 _06D3:
@@ -511,10 +509,10 @@ scr_seq_T03R0101_015:
 	end
 
 scr_seq_T03R0101_018:
-	comparevartovalue VAR_UNK_4083, 0
-	gotoif eq, _07BF
-	comparevartovalue VAR_UNK_4083, 1
-	gotoif eq, _07C1
+	compare VAR_UNK_4083, 0
+	goto_if_eq _07BF
+	compare VAR_UNK_4083, 1
+	goto_if_eq _07C1
 _07BF:
 	end
 
@@ -528,11 +526,11 @@ scr_seq_T03R0101_016:
 	scrcmd_609
 	lockall
 	hasitem ITEM_ENIGMA_STONE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0963
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0963
 	scrcmd_546 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0963
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0963
 	apply_movement obj_T03R0101_daigo, _0968
 	wait_movement
 	npc_msg msg_0464_T03R0101_00014
@@ -549,8 +547,8 @@ scr_seq_T03R0101_016:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _0868
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _0868
 	apply_movement obj_player, _0998
 	goto _0870
 
@@ -577,11 +575,11 @@ _0870:
 	move_person obj_T03R0101_daigo, 25, 0, 7, 1
 	wait 10, VAR_SPECIAL_x800C
 	lock obj_T03R0101_daigo
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif eq, _08F1
+	compare VAR_TEMP_x4001, 6
+	goto_if_eq _08F1
 	scrcmd_729 VAR_TEMP_x4009
-	comparevartovalue VAR_TEMP_x4009, 0
-	gotoif eq, _08F1
+	compare VAR_TEMP_x4009, 0
+	goto_if_eq _08F1
 	apply_movement obj_partner_poke, _09F0
 	wait_movement
 _08F1:

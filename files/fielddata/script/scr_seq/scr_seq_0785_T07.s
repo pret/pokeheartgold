@@ -27,21 +27,20 @@
 	scrdef_end
 
 scr_seq_T07_015:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _005F
+	goto_if_unset FLAG_UNK_189, _005F
 	clearflag FLAG_UNK_189
 	end
 
 _005F:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _007A
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _007A
 	clearflag FLAG_HIDE_CAMERON
 	goto _0095
 
 _007A:
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _0091
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _0091
 	clearflag FLAG_HIDE_CAMERON
 	goto _0095
 
@@ -49,22 +48,22 @@ _0091:
 	setflag FLAG_HIDE_CAMERON
 _0095:
 	scrcmd_147 28, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _015E
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _015E
 	check_badge 15, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif eq, _00C3
+	compare VAR_TEMP_x4002, 1
+	goto_if_eq _00C3
 	goto _0198
 	.byte 0x02, 0x00
 _00C3:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _00E0
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _00E0
 	goto _0101
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _00E0:
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _00F9
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _00F9
 	goto _0101
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _00F9:
@@ -73,22 +72,22 @@ _00F9:
 	.byte 0x00
 _0101:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 14
-	gotoif ne, _0120
+	compare VAR_TEMP_x4000, 14
+	goto_if_ne _0120
 	clearflag FLAG_UNK_25D
 	clearflag FLAG_UNK_2E1
 	goto _015C
 
 _0120:
-	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, _013B
+	compare VAR_TEMP_x4000, 15
+	goto_if_ne _013B
 	clearflag FLAG_UNK_25D
 	clearflag FLAG_UNK_2E1
 	goto _015C
 
 _013B:
-	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, _0156
+	compare VAR_TEMP_x4000, 16
+	goto_if_ne _0156
 	clearflag FLAG_UNK_25D
 	clearflag FLAG_UNK_2E1
 	goto _015C
@@ -101,11 +100,11 @@ _015C:
 
 _015E:
 	get_phone_book_rematch 28, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0198
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0198
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _0190
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _0190
 	clearflag FLAG_UNK_25D
 	setflag FLAG_UNK_2E1
 	goto _0196
@@ -263,12 +262,12 @@ scr_seq_T07_014:
 
 scr_seq_T07_016:
 	scrcmd_147 28, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _046C
-	comparevartovalue VAR_TEMP_x4005, 2
-	gotoif eq, _0434
-	comparevartovalue VAR_TEMP_x4005, 1
-	gotoif eq, _03AA
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _046C
+	compare VAR_TEMP_x4005, 2
+	goto_if_eq _0434
+	compare VAR_TEMP_x4005, 1
+	goto_if_eq _03AA
 _0302:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -328,10 +327,10 @@ _03BE:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03E2
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0429
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03E2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0429
 	end
 
 _03E2:
@@ -386,11 +385,11 @@ _046C:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _04D5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _04D5
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _04E0
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _04E0
 	npc_msg msg_0491_T07_00025
 	closemsg
 	setflag FLAG_UNK_189
@@ -423,8 +422,8 @@ _04E0:
 	end
 
 scr_seq_T07_017:
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _0500
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _0500
 	goto _0302
 	.byte 0x02, 0x00
 _0500:
@@ -446,11 +445,11 @@ scr_seq_T07_018:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _063B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _063B
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _064F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _064F
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -458,21 +457,21 @@ scr_seq_T07_018:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _058C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _058C
 	apply_movement obj_player, _0664
 	apply_movement obj_T07_gsmiddleman1, _06B0
 	goto _05DA
 
 _058C:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _05A7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _05A7
 	apply_movement obj_player, _067C
 	goto _05DA
 
 _05A7:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _05CA
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _05CA
 	apply_movement obj_player, _069C
 	apply_movement obj_T07_gsmiddleman1, _06B0
 	goto _05DA
@@ -486,8 +485,8 @@ _05DA:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0601
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0601
 	apply_movement obj_partner_poke, _06BC
 	wait_movement
 _0601:

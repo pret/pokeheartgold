@@ -13,8 +13,7 @@
 	scrdef_end
 
 scr_seq_R27_003:
-	checkflag FLAG_UNK_168
-	gotoif TRUE, _0026
+	goto_if_set FLAG_UNK_168, _0026
 	scrcmd_804 1
 	end
 
@@ -39,14 +38,14 @@ scr_seq_R27_001:
 	npc_msg msg_0369_R27_00000
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 402
-	gotoif ne, _006F
+	compare VAR_TEMP_x4001, 402
+	goto_if_ne _006F
 	apply_movement obj_R27_gsbigman, _00C4
 	goto _0092
 
 _006F:
-	comparevartovalue VAR_TEMP_x4001, 403
-	gotoif ne, _008A
+	compare VAR_TEMP_x4001, 403
+	goto_if_ne _008A
 	apply_movement obj_R27_gsbigman, _00B0
 	goto _0092
 

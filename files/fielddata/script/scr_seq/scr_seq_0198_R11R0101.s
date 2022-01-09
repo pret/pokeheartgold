@@ -17,8 +17,7 @@ scr_seq_R11R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0F9
-	gotoif TRUE, _0030
+	goto_if_set FLAG_UNK_0F9, _0030
 	npc_msg msg_0347_R11R0101_00000
 _0028:
 	waitbutton

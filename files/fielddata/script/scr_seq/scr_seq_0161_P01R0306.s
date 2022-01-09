@@ -12,10 +12,10 @@
 	scrdef_end
 
 scr_seq_P01R0306_001:
-	comparevartovalue VAR_UNK_40CB, 7
-	gotoif ge, _003C
-	comparevartovalue VAR_UNK_40CB, 4
-	gotoif gt, _0036
+	compare VAR_UNK_40CB, 7
+	goto_if_ge _003C
+	compare VAR_UNK_40CB, 4
+	goto_if_gt _0036
 	setflag FLAG_UNK_218
 	goto _003A
 
@@ -33,16 +33,16 @@ scr_seq_P01R0306_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40CB, 3
-	gotoif gt, _006E
+	compare VAR_UNK_40CB, 3
+	goto_if_gt _006E
 	apply_movement obj_P01R0306_gsgentleman, _0090
 	wait_movement
 	npc_msg msg_0262_P01R0306_00001
 	goto _0087
 
 _006E:
-	comparevartovalue VAR_UNK_40CB, 4
-	gotoif ne, _0084
+	compare VAR_UNK_40CB, 4
+	goto_if_ne _0084
 	npc_msg msg_0262_P01R0306_00000
 	goto _0087
 

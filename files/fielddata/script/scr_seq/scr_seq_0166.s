@@ -80,8 +80,8 @@ scr_seq_0166_007:
 	.byte 0x02
 	.byte 0x00
 _00C1:
-	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif eq, _00D7
+	compare VAR_TEMP_x4003, 1
+	goto_if_eq _00D7
 	npc_msg msg_0043_00004
 	goto _00DA
 
@@ -112,8 +112,8 @@ _012F:
 	goto _0254
 	.byte 0x02, 0x00
 _0137:
-	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif eq, _014C
+	compare VAR_TEMP_x4003, 1
+	goto_if_eq _014C
 	goto _0155
 	.byte 0x02, 0x00
 _014C:
@@ -194,14 +194,14 @@ _0254:
 _0295:
 	npc_msg msg_0043_00212
 	scrcmd_063 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0254
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0254
 	closemsg
 	scrcmd_226 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _02D7
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _02DF
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _02D7
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _02DF
 	goto _0339
 	.byte 0x02, 0x00
 _02D7:
@@ -213,14 +213,14 @@ _02DF:
 _02E7:
 	npc_msg msg_0043_00212
 	scrcmd_063 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0254
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0254
 	closemsg
 	scrcmd_227 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0329
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0331
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0329
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0331
 	goto _0339
 	.byte 0x02, 0x00
 _0329:
@@ -237,12 +237,12 @@ _0339:
 	scrcmd_234 32772, 32773, 32775, 16386
 	scrcmd_232 25
 	scrcmd_233 25
-	comparevartovalue VAR_TEMP_x4003, 0
-	gotoif eq, _038D
-	comparevartovalue VAR_TEMP_x4003, 1
-	gotoif eq, _0395
-	comparevartovalue VAR_TEMP_x4003, 2
-	gotoif eq, _03A7
+	compare VAR_TEMP_x4003, 0
+	goto_if_eq _038D
+	compare VAR_TEMP_x4003, 1
+	goto_if_eq _0395
+	compare VAR_TEMP_x4003, 2
+	goto_if_eq _03A7
 	end
 	.byte 0xec, 0x00, 0x0c, 0x80, 0x27, 0x00, 0x0c, 0x80, 0x01, 0x00, 0x2d, 0x00
 	.byte 0xb1, 0xec, 0x00, 0x0c, 0x80, 0x35, 0x00, 0x16, 0x00, 0xbe, 0xff, 0xff, 0xff
@@ -261,8 +261,8 @@ _03A7:
 	.byte 0x02, 0x00
 _03B4:
 	get_player_gender VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03CD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03CD
 	goto _03DB
 	.byte 0x02, 0x00
 _03CD:
@@ -394,8 +394,8 @@ _068E:
 	.byte 0x0f, 0x00, 0x00, 0x00, 0x02, 0x00, 0x2d, 0x00, 0xae, 0x32, 0x00, 0x16, 0x00, 0x5b, 0x03, 0x00
 	.byte 0x00, 0x02, 0x00
 _0743:
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif eq, _081D
+	compare VAR_TEMP_x4004, 1
+	goto_if_eq _081D
 	goto _0756
 
 _0756:
@@ -449,8 +449,8 @@ _081D:
 	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 _0837:
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _084F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _084F
 	get_move_selection 0, VAR_SPECIAL_x800C
 	goto _0837
 
@@ -458,8 +458,8 @@ _084F:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_TEMP_x4002, 255
-	gotoif eq, _0810
+	compare VAR_TEMP_x4002, 255
+	goto_if_eq _0810
 	goto _0339
 	.byte 0x02, 0x00
 _0872:

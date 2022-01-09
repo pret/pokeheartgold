@@ -30,8 +30,7 @@ scr_seq_D49R0102_000:
 	faceplayer
 	scrcmd_074 2147
 	callstd std_play_mom_music
-	checkflag FLAG_UNK_0FA
-	gotoif FALSE, _006A
+	goto_if_unset FLAG_UNK_0FA, _006A
 	npc_msg msg_0139_D49R0102_00001
 	goto _0071
 
@@ -184,14 +183,14 @@ _037B:
 	.byte 0x02, 0x00
 _0386:
 	npc_msg msg_0139_D49R0102_00004
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif eq, _0166
-	comparevartovalue VAR_TEMP_x4007, 1
-	gotoif eq, _01A0
-	comparevartovalue VAR_TEMP_x4007, 2
-	gotoif eq, _01DA
-	comparevartovalue VAR_TEMP_x4007, 3
-	gotoif eq, _0214
+	compare VAR_TEMP_x4007, 0
+	goto_if_eq _0166
+	compare VAR_TEMP_x4007, 1
+	goto_if_eq _01A0
+	compare VAR_TEMP_x4007, 2
+	goto_if_eq _01DA
+	compare VAR_TEMP_x4007, 3
+	goto_if_eq _0214
 	goto _024E
 	.byte 0x02, 0x00
 _03C5:
@@ -218,8 +217,8 @@ scr_seq_D49R0102_001:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 500
-	gotoif lt, _0417
+	compare VAR_TEMP_x4000, 500
+	goto_if_lt _0417
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00025
 	goto _041A
@@ -237,8 +236,8 @@ scr_seq_D49R0102_002:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 51
-	gotoif lt, _0449
+	compare VAR_TEMP_x4000, 51
+	goto_if_lt _0449
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00027
 	goto _044C
@@ -256,8 +255,8 @@ scr_seq_D49R0102_003:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 150
-	gotoif lt, _047B
+	compare VAR_TEMP_x4000, 150
+	goto_if_lt _047B
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00029
 	goto _047E
@@ -275,8 +274,8 @@ scr_seq_D49R0102_004:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1000
-	gotoif lt, _04AD
+	compare VAR_TEMP_x4000, 1000
+	goto_if_lt _04AD
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00031
 	goto _04B0
@@ -294,8 +293,8 @@ scr_seq_D49R0102_005:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 10001
-	gotoif lt, _04DF
+	compare VAR_TEMP_x4000, 10001
+	goto_if_lt _04DF
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00033
 	goto _04E2
@@ -313,8 +312,8 @@ scr_seq_D49R0102_006:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 75
-	gotoif lt, _0511
+	compare VAR_TEMP_x4000, 75
+	goto_if_lt _0511
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00035
 	goto _0514
@@ -332,8 +331,8 @@ scr_seq_D49R0102_007:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 26
-	gotoif lt, _0544
+	compare VAR_TEMP_x4000, 26
+	goto_if_lt _0544
 	buffer_players_name 0
 	gender_msgbox msg_0139_D49R0102_00037, msg_0139_D49R0102_00038
 	goto _0547
@@ -351,8 +350,8 @@ scr_seq_D49R0102_008:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 20001
-	gotoif lt, _0576
+	compare VAR_TEMP_x4000, 20001
+	goto_if_lt _0576
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00040
 	goto _0579
@@ -370,8 +369,8 @@ scr_seq_D49R0102_009:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 800
-	gotoif lt, _05A5
+	compare VAR_TEMP_x4000, 800
+	goto_if_lt _05A5
 	npc_msg msg_0139_D49R0102_00043
 	goto _05A8
 
@@ -388,8 +387,8 @@ scr_seq_D49R0102_010:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 800
-	gotoif lt, _05D7
+	compare VAR_TEMP_x4000, 800
+	goto_if_lt _05D7
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00046
 	goto _05DA
@@ -400,8 +399,8 @@ _05DA:
 	closemsg
 	apply_movement obj_D49R0102_gsmiddleman1, _0610
 	wait_movement
-	comparevartovalue VAR_TEMP_x4000, 800
-	gotoif lt, _05FC
+	compare VAR_TEMP_x4000, 800
+	goto_if_lt _05FC
 	npc_msg msg_0139_D49R0102_00044
 	goto _05FF
 
@@ -427,8 +426,8 @@ scr_seq_D49R0102_011:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 201
-	gotoif lt, _0647
+	compare VAR_TEMP_x4000, 201
+	goto_if_lt _0647
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00048
 	goto _064A
@@ -446,8 +445,8 @@ scr_seq_D49R0102_012:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 250
-	gotoif lt, _0679
+	compare VAR_TEMP_x4000, 250
+	goto_if_lt _0679
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00050
 	goto _067C
@@ -465,8 +464,8 @@ scr_seq_D49R0102_013:
 	lockall
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 101
-	gotoif lt, _06AB
+	compare VAR_TEMP_x4000, 101
+	goto_if_lt _06AB
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00052
 	goto _06AE
@@ -485,8 +484,8 @@ scr_seq_D49R0102_014:
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
 	play_cry SPECIES_RATTATA, 0
-	comparevartovalue VAR_TEMP_x4000, 15000
-	gotoif lt, _06E3
+	compare VAR_TEMP_x4000, 15000
+	goto_if_lt _06E3
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00019
 	goto _06E6
@@ -506,8 +505,8 @@ scr_seq_D49R0102_015:
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
 	play_cry SPECIES_MACHOP, 0
-	comparevartovalue VAR_TEMP_x4000, 15000
-	gotoif lt, _071D
+	compare VAR_TEMP_x4000, 15000
+	goto_if_lt _071D
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00021
 	goto _0720
@@ -527,8 +526,8 @@ scr_seq_D49R0102_016:
 	faceplayer
 	scrcmd_724 11, VAR_TEMP_x4000
 	play_cry SPECIES_BUTTERFREE, 0
-	comparevartovalue VAR_TEMP_x4000, 15000
-	gotoif lt, _0757
+	compare VAR_TEMP_x4000, 15000
+	goto_if_lt _0757
 	buffer_players_name 0
 	npc_msg msg_0139_D49R0102_00023
 	goto _075A

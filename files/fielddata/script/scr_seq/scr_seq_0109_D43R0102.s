@@ -20,8 +20,8 @@ scr_seq_D43R0102_000:
 	end
 
 scr_seq_D43R0102_001:
-	comparevartovalue VAR_UNK_40CA, 1
-	gotoif ne, _0043
+	compare VAR_UNK_40CA, 1
+	goto_if_ne _0043
 	scrcmd_375 255
 _0043:
 	end

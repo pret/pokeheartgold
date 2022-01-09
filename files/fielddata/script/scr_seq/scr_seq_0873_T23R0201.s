@@ -14,8 +14,7 @@ scr_seq_T23R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_07B
-	gotoif TRUE, _002C
+	goto_if_set FLAG_UNK_07B, _002C
 	npc_msg msg_0570_T23R0201_00000
 	waitbutton
 	closemsg
@@ -23,8 +22,7 @@ scr_seq_T23R0201_000:
 	end
 
 _002C:
-	checkflag FLAG_UNK_080
-	gotoif TRUE, _0042
+	goto_if_set FLAG_UNK_080, _0042
 	npc_msg msg_0570_T23R0201_00001
 	waitbutton
 	closemsg
@@ -42,8 +40,7 @@ scr_seq_T23R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_080
-	gotoif TRUE, _006B
+	goto_if_set FLAG_UNK_080, _006B
 	npc_msg msg_0570_T23R0201_00003
 	waitbutton
 	closemsg
@@ -51,8 +48,7 @@ scr_seq_T23R0201_001:
 	end
 
 _006B:
-	checkflag FLAG_UNK_081
-	gotoif TRUE, _00AA
+	goto_if_set FLAG_UNK_081, _00AA
 	npc_msg msg_0570_T23R0201_00004
 	scrcmd_049
 	goto_if_no_item_space ITEM_CHARCOAL, 1, _00B5

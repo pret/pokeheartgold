@@ -14,8 +14,8 @@
 
 scr_seq_P01R0101_001:
 	scrcmd_445 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 330
-	gotoif eq, _0029
+	compare VAR_TEMP_x4000, 330
+	goto_if_eq _0029
 	end
 
 _0029:
@@ -64,8 +64,8 @@ scr_seq_P01R0101_002:
 	scrcmd_081 0
 	reset_bgm
 	releaseall
-	comparevartovalue VAR_UNK_40D3, 1
-	callif eq, _00DE
+	compare VAR_UNK_40D3, 1
+	call_if_eq _00DE
 	scrcmd_463
 	end
 
@@ -110,20 +110,19 @@ scr_seq_P01R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GAME_CLEAR
-	gotoif FALSE, _0361
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _0356
+	goto_if_unset FLAG_GAME_CLEAR, _0361
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _0356
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif eq, _0320
-	comparevartovalue VAR_UNK_40CB, 7
-	gotoif ge, _01FB
+	compare VAR_TEMP_x4001, 0
+	goto_if_eq _0320
+	compare VAR_UNK_40CB, 7
+	goto_if_ge _01FB
 	npc_msg msg_0255_P01R0101_00001
 	closemsg
 	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02F9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02F9
 	apply_movement obj_player, _036C
 	wait_movement
 	buffer_players_name 0
@@ -154,35 +153,35 @@ scr_seq_P01R0101_000:
 
 _01FB:
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0218
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0218
 	goto _02EE
 	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
 _0218:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0231
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0231
 	goto _029B
 	.byte 0x16, 0x00, 0x6a, 0x00, 0x00
 	.byte 0x00
 _0231:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _024A
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _024A
 	goto _02EE
 	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
 _024A:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0263
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0263
 	goto _02EE
 	.byte 0x16, 0x00, 0x38
 	.byte 0x00, 0x00, 0x00
 _0263:
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif ne, _027C
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_ne _027C
 	goto _02EE
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _027C:
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif ne, _0295
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_ne _0295
 	goto _029B
 	.byte 0x16
 	.byte 0x00, 0x06, 0x00, 0x00, 0x00

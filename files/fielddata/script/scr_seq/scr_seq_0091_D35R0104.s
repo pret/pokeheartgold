@@ -17,19 +17,17 @@
 	scrdef_end
 
 scr_seq_D35R0104_006:
-	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_5
-	gotoif FALSE, _004F
-	checktrainerflag TRAINER_TEAM_ROCKET_GRUNT_19
-	gotoif FALSE, _004F
-	comparevartovalue VAR_UNK_40AC, 3
-	gotoif ge, _004F
+	goto_if_not_defeated TRAINER_TEAM_ROCKET_F_GRUNT_5, _004F
+	goto_if_not_defeated TRAINER_TEAM_ROCKET_GRUNT_19, _004F
+	compare VAR_UNK_40AC, 3
+	goto_if_ge _004F
 	setvar VAR_UNK_40AC, 2
 _004F:
 	end
 
 scr_seq_D35R0104_008:
-	comparevartovalue VAR_UNK_40AC, 4
-	gotoif ge, _0060
+	compare VAR_UNK_40AC, 4
+	goto_if_ge _0060
 	end
 
 _0060:
@@ -155,14 +153,14 @@ scr_seq_D35R0104_002:
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
 	show_person obj_D35R0104_gsrivel
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 17
-	gotoif ne, _01FE
+	compare VAR_TEMP_x4001, 17
+	goto_if_ne _01FE
 	apply_movement obj_D35R0104_gsrivel, _0290
 	goto _0221
 
 _01FE:
-	comparevartovalue VAR_TEMP_x4001, 18
-	gotoif ne, _0219
+	compare VAR_TEMP_x4001, 18
+	goto_if_ne _0219
 	apply_movement obj_D35R0104_gsrivel, _029C
 	goto _0221
 
@@ -245,8 +243,8 @@ scr_seq_D35R0104_003:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 23
-	gotoif ne, _0329
+	compare VAR_TEMP_x4000, 23
+	goto_if_ne _0329
 	apply_movement obj_player, _040C
 	goto _0331
 
@@ -277,8 +275,8 @@ _0331:
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0405
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0405
 	npc_msg msg_0114_D35R0104_00007
 	closemsg
 	apply_movement obj_D35R0104_rkanbum2, _04A8
@@ -398,15 +396,13 @@ _04F4:
 	step 18, 5
 	step_end
 scr_seq_D35R0104_004:
-	comparevartovalue VAR_UNK_40AC, 4
-	gotoif ge, _055F
+	compare VAR_UNK_40AC, 4
+	goto_if_ge _055F
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checktrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_5
-	gotoif FALSE, _0561
-	checktrainerflag TRAINER_TEAM_ROCKET_GRUNT_19
-	gotoif FALSE, _0561
+	goto_if_not_defeated TRAINER_TEAM_ROCKET_F_GRUNT_5, _0561
+	goto_if_not_defeated TRAINER_TEAM_ROCKET_GRUNT_19, _0561
 	buffer_players_name 0
 	npc_msg msg_0114_D35R0104_00012
 	closemsg

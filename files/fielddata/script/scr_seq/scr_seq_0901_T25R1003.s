@@ -26,8 +26,8 @@ scr_seq_T25R1003_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _004C
+	compare VAR_UNK_4077, 3
+	goto_if_ne _004C
 	npc_msg msg_0594_T25R1003_00001
 	goto _004F
 
@@ -43,8 +43,8 @@ scr_seq_T25R1003_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _0075
+	compare VAR_UNK_4077, 3
+	goto_if_ne _0075
 	npc_msg msg_0594_T25R1003_00003
 	goto _0078
 

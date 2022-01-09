@@ -43,52 +43,41 @@ scr_seq_T10R0701_000:
 	wait_fade
 	call _01B4
 	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _009A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _009A
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 3
 _009A:
 	setflag FLAG_UNK_97E
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
-	checkflag FLAG_UNK_116
-	callif FALSE, _01C9
-	checkflag FLAG_UNK_117
-	callif FALSE, _01CF
-	checkflag FLAG_UNK_169
-	callif FALSE, _01D5
-	checkflag FLAG_UNK_16A
-	callif FALSE, _01DB
-	checkflag FLAG_UNK_16B
-	callif FALSE, _01E1
-	checkflag FLAG_UNK_16C
-	callif FALSE, _01E7
-	checkflag FLAG_UNK_14A
-	callif FALSE, _01ED
-	checkflag FLAG_UNK_16D
-	callif FALSE, _0206
-	checkflag FLAG_UNK_173
-	gotoif FALSE, _020C
+	call_if_unset FLAG_UNK_116, _01C9
+	call_if_unset FLAG_UNK_117, _01CF
+	call_if_unset FLAG_UNK_169, _01D5
+	call_if_unset FLAG_UNK_16A, _01DB
+	call_if_unset FLAG_UNK_16B, _01E1
+	call_if_unset FLAG_UNK_16C, _01E7
+	call_if_unset FLAG_UNK_14A, _01ED
+	call_if_unset FLAG_UNK_16D, _0206
+	goto_if_unset FLAG_UNK_173, _020C
 _0105:
-	checkflag FLAG_ENGAGED_STATIC_SUICUNE
-	callif FALSE, _0227
+	call_if_unset FLAG_ENGAGED_STATIC_SUICUNE, _0227
 	get_game_version VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _012D
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _012D
 	goto _023A
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _012D:
 	goto _024F
 
 _0133:
-	checkflag FLAG_UNK_17B
-	callif FALSE, _0264
-	comparevartovalue VAR_UNK_4046, 2
-	callif eq, _026A
-	comparevartovalue VAR_UNK_4045, 2
-	callif eq, _0275
-	comparevartovalue VAR_UNK_4047, 2
-	callif eq, _0280
-	comparevartovalue VAR_UNK_4048, 2
-	callif eq, _028B
+	call_if_unset FLAG_UNK_17B, _0264
+	compare VAR_UNK_4046, 2
+	call_if_eq _026A
+	compare VAR_UNK_4045, 2
+	call_if_eq _0275
+	compare VAR_UNK_4047, 2
+	call_if_eq _0280
+	compare VAR_UNK_4048, 2
+	call_if_eq _028B
 	hof_credits 0
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
@@ -114,8 +103,7 @@ _01A8:
 	step 12, 4
 	step_end
 _01B4:
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _01C3
+	goto_if_set FLAG_GAME_CLEAR, _01C3
 	setflag FLAG_UNK_998
 _01C3:
 	clearflag FLAG_UNK_25F
@@ -147,8 +135,8 @@ _01E7:
 
 _01ED:
 	check_badge 15, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0204
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0204
 	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
 _0204:
 	return
@@ -158,8 +146,7 @@ _0206:
 	return
 
 _020C:
-	checkflag FLAG_UNK_0F9
-	gotoif TRUE, _021D
+	goto_if_set FLAG_UNK_0F9, _021D
 	goto _0105
 
 _021D:
@@ -167,21 +154,19 @@ _021D:
 	goto _0105
 
 _0227:
-	comparevartovalue VAR_SCENE_ROUTE_25, 3
-	gotoif ne, _0238
+	compare VAR_SCENE_ROUTE_25, 3
+	goto_if_ne _0238
 	clearflag FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE
 _0238:
 	return
 
 _023A:
-	checkflag FLAG_UNK_17A
-	gotoif TRUE, _0133
+	goto_if_set FLAG_UNK_17A, _0133
 	clearflag FLAG_UNK_18B
 	goto _0133
 
 _024F:
-	checkflag FLAG_UNK_17A
-	gotoif TRUE, _0133
+	goto_if_set FLAG_UNK_17A, _0133
 	clearflag FLAG_UNK_18B
 	goto _0133
 

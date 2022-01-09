@@ -15,24 +15,23 @@
 	scrdef_end
 
 scr_seq_T07R0104_004:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _002F
+	goto_if_unset FLAG_UNK_189, _002F
 	clearflag FLAG_UNK_189
 	end
 
 _002F:
 	scrcmd_147 18, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0082
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0082
 	check_badge 12, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _005B
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _005B
 	goto _00C2
 
 _005B:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _007A
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _007A
 	clearflag FLAG_UNK_260
 	clearflag FLAG_UNK_2E2
 	goto _0080
@@ -45,11 +44,11 @@ _0080:
 
 _0082:
 	get_phone_book_rematch 18, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00C2
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00C2
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _00BA
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _00BA
 	clearflag FLAG_UNK_260
 	setflag FLAG_UNK_2E2
 	scrcmd_341 3, 1
@@ -92,10 +91,10 @@ _011B:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _013F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0189
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _013F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0189
 	end
 
 _013F:
@@ -130,10 +129,10 @@ _0189:
 
 scr_seq_T07R0104_005:
 	scrcmd_147 18, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _01CD
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif ne, _00CC
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _01CD
+	compare VAR_TEMP_x4004, 1
+	goto_if_ne _00CC
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -148,11 +147,11 @@ _01CD:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0236
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0236
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0241
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0241
 	npc_msg msg_0497_T07R0104_00011
 	closemsg
 	setflag FLAG_UNK_189
@@ -185,8 +184,8 @@ _0241:
 	end
 
 scr_seq_T07R0104_006:
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif ne, _00CC
+	compare VAR_TEMP_x4004, 1
+	goto_if_ne _00CC
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

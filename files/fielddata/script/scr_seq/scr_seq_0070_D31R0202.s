@@ -12,24 +12,24 @@
 	scrdef_end
 
 scr_seq_D31R0202_000:
-	comparevartovalue VAR_UNK_414D, 0
-	callif ne, _008A
+	compare VAR_UNK_414D, 0
+	call_if_ne _008A
 	scrcmd_412 43, 0, VAR_TEMP_x400A
 	call _008E
-	comparevartovalue VAR_TEMP_x400A, 2
-	callif eq, _009E
-	comparevartovalue VAR_TEMP_x400A, 3
-	callif eq, _009E
-	comparevartovalue VAR_TEMP_x400A, 0
-	callif eq, _008E
-	comparevartovalue VAR_TEMP_x400A, 1
-	callif eq, _008E
-	comparevartovalue VAR_TEMP_x400A, 4
-	callif eq, _0096
-	comparevartovalue VAR_TEMP_x400A, 5
-	callif eq, _0096
-	comparevartovalue VAR_TEMP_x400A, 6
-	callif eq, _0096
+	compare VAR_TEMP_x400A, 2
+	call_if_eq _009E
+	compare VAR_TEMP_x400A, 3
+	call_if_eq _009E
+	compare VAR_TEMP_x400A, 0
+	call_if_eq _008E
+	compare VAR_TEMP_x400A, 1
+	call_if_eq _008E
+	compare VAR_TEMP_x400A, 4
+	call_if_eq _0096
+	compare VAR_TEMP_x400A, 5
+	call_if_eq _0096
+	compare VAR_TEMP_x400A, 6
+	call_if_eq _0096
 	end
 
 _008A:
@@ -52,10 +52,10 @@ _00A6:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_412 43, 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _0200
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif eq, _0200
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _0200
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_eq _0200
 	scrcmd_436
 	scrcmd_627 5
 	scrcmd_150

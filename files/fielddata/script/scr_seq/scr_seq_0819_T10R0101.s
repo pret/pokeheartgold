@@ -29,19 +29,18 @@ scr_seq_T10R0101_005:
 	clearflag FLAG_DEFEATED_KOGA
 	clearflag FLAG_DEFEATED_BRUNO
 	clearflag FLAG_DEFEATED_KAREN
-	comparevartovalue VAR_UNK_40FC, 1
-	gotoif le, _00AC
-	checkflag FLAG_UNK_AA9
-	gotoif TRUE, _00AC
+	compare VAR_UNK_40FC, 1
+	goto_if_le _00AC
+	goto_if_set FLAG_UNK_AA9, _00AC
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _008B
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _008B
 	setvar VAR_UNK_4119, 1
 	goto _00AA
 
 _008B:
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _00A4
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _00A4
 	setvar VAR_UNK_4119, 1
 	goto _00AA
 
@@ -109,14 +108,14 @@ scr_seq_T10R0101_006:
 	npc_msg msg_0522_T10R0101_00003
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, _016E
+	compare VAR_SPECIAL_x800C, 152
+	goto_if_ne _016E
 	trainer_battle TRAINER_RIVAL_SILVER_20, 0, 0, 0
 	goto _0191
 
 _016E:
-	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, _0189
+	compare VAR_SPECIAL_x800C, 155
+	goto_if_ne _0189
 	trainer_battle TRAINER_RIVAL_SILVER_21, 0, 0, 0
 	goto _0191
 
@@ -124,8 +123,8 @@ _0189:
 	trainer_battle TRAINER_RIVAL_SILVER_19, 0, 0, 0
 _0191:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CE
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CE
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
 	npc_msg msg_0522_T10R0101_00004
@@ -187,13 +186,13 @@ scr_seq_T10R0101_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x4005, 1
-	gotoif ge, _0293
+	compare VAR_TEMP_x4005, 1
+	goto_if_ge _0293
 	npc_msg msg_0522_T10R0101_00005
 	closemsg
 	get_player_facing VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _027D
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _027D
 	apply_movement obj_T10R0101_counterm, _02A0
 	goto _0287
 
@@ -243,8 +242,8 @@ _02CD:
 	goto _058C
 	.byte 0x02, 0x00
 _0317:
-	comparevartovalue VAR_UNK_40E6, 0
-	gotoif eq, _037A
+	compare VAR_UNK_40E6, 0
+	goto_if_eq _037A
 	npc_msg msg_0522_T10R0101_00011
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 12, 255, 0
@@ -270,8 +269,8 @@ _037A:
 	menu_item_add 19, 255, 3
 	menu_item_add 26, 255, 4
 	menu_exec
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _03CF
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _03CF
 	closemsg
 	scrcmd_378 4, 32780
 	npc_msg msg_0522_T10R0101_00007
@@ -279,8 +278,8 @@ _037A:
 	goto _02CD
 
 _03CF:
-	comparevartovalue VAR_UNK_40E6, 0
-	gotoif ne, _03EB
+	compare VAR_UNK_40E6, 0
+	goto_if_ne _03EB
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
@@ -298,8 +297,8 @@ _03F1:
 	menu_item_add 25, 255, 5
 	menu_item_add 26, 255, 6
 	menu_exec
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, _03CF
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_eq _03CF
 	closemsg
 	scrcmd_378 3, 32780
 	npc_msg msg_0522_T10R0101_00007
@@ -307,8 +306,8 @@ _03F1:
 	goto _02CD
 
 _0456:
-	comparevartovalue VAR_UNK_40E6, 0
-	gotoif eq, _04B0
+	compare VAR_UNK_40E6, 0
+	goto_if_eq _04B0
 	npc_msg msg_0522_T10R0101_00011
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
 	menu_item_add 12, 255, 0
@@ -329,8 +328,8 @@ _04B0:
 	menu_item_add 19, 255, 3
 	menu_item_add 26, 255, 4
 	menu_exec
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _0505
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _0505
 	closemsg
 	scrcmd_378 1, 32780
 	npc_msg msg_0522_T10R0101_00007
@@ -338,8 +337,8 @@ _04B0:
 	goto _02CD
 
 _0505:
-	comparevartovalue VAR_UNK_40E6, 0
-	gotoif ne, _0521
+	compare VAR_UNK_40E6, 0
+	goto_if_ne _0521
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00
@@ -358,8 +357,8 @@ _0527:
 	menu_item_add 25, 255, 5
 	menu_item_add 26, 255, 6
 	menu_exec
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, _0505
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_eq _0505
 	closemsg
 	scrcmd_378 0, 32780
 	npc_msg msg_0522_T10R0101_00007

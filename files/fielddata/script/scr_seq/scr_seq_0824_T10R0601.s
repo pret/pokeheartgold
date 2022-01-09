@@ -44,14 +44,14 @@ scr_seq_T10R0601_000:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _008B
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _008B
 	apply_movement obj_player, _0298
 	goto _00AE
 
 _008B:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _00A6
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _00A6
 	apply_movement obj_player, _02A8
 	goto _00AE
 
@@ -67,8 +67,8 @@ _00AE:
 	buffer_players_name 0
 	gender_msgbox msg_0527_T10R0601_00000, msg_0527_T10R0601_00001
 	closemsg
-	comparevartovalue VAR_UNK_4135, 8
-	gotoif lt, _00E8
+	compare VAR_UNK_4135, 8
+	goto_if_lt _00E8
 	trainer_battle TRAINER_CHAMPION_LANCE_2, 0, 0, 0
 	goto _00F0
 
@@ -76,8 +76,8 @@ _00E8:
 	trainer_battle TRAINER_CHAMPION_LANCE, 0, 0, 0
 _00F0:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0290
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0290
 	buffer_players_name 0
 	gender_msgbox msg_0527_T10R0601_00002, msg_0527_T10R0601_00003
 	closemsg
@@ -93,16 +93,16 @@ _00F0:
 	apply_movement obj_player, _02E0
 	wait_movement
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01A1
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _017C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01A1
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _017C
 	apply_movement obj_partner_poke, _02F8
 	goto _019F
 
 _017C:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _0197
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0197
 	apply_movement obj_partner_poke, _0308
 	goto _019F
 
@@ -140,8 +140,8 @@ _01A1:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0234
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0234
 	apply_movement obj_partner_poke, _03A4
 	wait_movement
 _0234:
@@ -153,8 +153,7 @@ _0234:
 	wait_movement
 	scrcmd_049
 	closemsg
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0268
+	goto_if_set FLAG_GAME_CLEAR, _0268
 	clearflag FLAG_HIDE_OLIVINE_PORT_OAK
 	setvar VAR_UNK_411A, 1
 _0268:

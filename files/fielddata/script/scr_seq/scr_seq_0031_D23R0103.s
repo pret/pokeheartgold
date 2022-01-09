@@ -18,14 +18,14 @@
 scr_seq_D23R0103_000:
 	setflag FLAG_UNK_1B7
 	setflag FLAG_UNK_1B8
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _0041
+	compare VAR_UNK_4077, 4
+	goto_if_ne _0041
 	clearflag FLAG_UNK_1B7
 	goto _0052
 
 _0041:
-	comparevartovalue VAR_UNK_4077, 5
-	gotoif ne, _0052
+	compare VAR_UNK_4077, 5
+	goto_if_ne _0052
 	clearflag FLAG_UNK_1B8
 _0052:
 	end
@@ -54,8 +54,8 @@ scr_seq_D23R0103_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _0098
+	compare VAR_UNK_4077, 4
+	goto_if_ne _0098
 	npc_msg msg_0067_D23R0103_00001
 	goto _009B
 
@@ -81,11 +81,11 @@ scr_seq_D23R0103_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _00E7
+	compare VAR_UNK_4077, 4
+	goto_if_ne _00E7
 	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00F5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00F5
 	npc_msg msg_0067_D23R0103_00003
 	goto _00ED
 
@@ -106,8 +106,7 @@ _00F5:
 	end
 
 _0100:
-	checkflag FLAG_UNK_08F
-	gotoif TRUE, _014D
+	goto_if_set FLAG_UNK_08F, _014D
 	npc_msg msg_0067_D23R0103_00005
 	goto_if_no_item_space ITEM_TM11, 1, _0142
 	callstd std_give_item_verbose
@@ -137,8 +136,8 @@ scr_seq_D23R0103_006:
 	lockall
 	faceplayer
 	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01B4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01B4
 	npc_msg msg_0067_D23R0103_00010
 	waitbutton
 	closemsg
@@ -149,13 +148,12 @@ scr_seq_D23R0103_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_090
-	gotoif TRUE, _01E2
+	goto_if_set FLAG_UNK_090, _01E2
 	npc_msg msg_0067_D23R0103_00011
 	closemsg
 	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01B4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01B4
 	npc_msg msg_0067_D23R0103_00013
 	waitbutton
 	closemsg

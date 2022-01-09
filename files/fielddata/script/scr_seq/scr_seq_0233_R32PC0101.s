@@ -20,16 +20,15 @@ scr_seq_R32PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_075
-	gotoif TRUE, _008C
+	goto_if_set FLAG_UNK_075, _008C
 	npc_msg msg_0381_R32PC0101_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0058
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00A1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0058
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00A1
 	end
 
 _0058:
@@ -66,14 +65,13 @@ scr_seq_R32PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_174
-	gotoif TRUE, _0121
+	goto_if_set FLAG_UNK_174, _0121
 	npc_msg msg_0381_R32PC0101_00007
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00E0
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00E0
 	npc_msg msg_0381_R32PC0101_00008
 	goto _00E3
 

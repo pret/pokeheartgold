@@ -81,8 +81,8 @@ scr_seq_0164_001:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _014F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _014F
 	goto _0144
 	.byte 0x02, 0x00
 _0144:
@@ -124,26 +124,26 @@ scr_seq_0164_002:
 	lockall
 	faceplayer
 	party_legal_check VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _04EC
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _04EC
 	get_player_state VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _031B
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _031B
 	get_party_count VAR_TEMP_x4009
 	setvar VAR_TEMP_x400A, 0
 _0215:
 	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 172
-	gotoif ne, _0241
+	compare VAR_SPECIAL_x800C, 172
+	goto_if_ne _0241
 	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0241
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0241
 	goto _04F8
 
 _0241:
 	addvar VAR_TEMP_x400A, 1
-	comparevartovar VAR_TEMP_x400A, VAR_TEMP_x4009
-	gotoif ge, _025A
+	compare VAR_TEMP_x400A, VAR_TEMP_x4009
+	goto_if_ge _025A
 	goto _0215
 
 _025A:
@@ -170,14 +170,14 @@ _02B3:
 	.byte 0x02, 0x00
 _02BE:
 	scrcmd_565 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02D7
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02D7
 	goto _0331
 	.byte 0x02, 0x00
 _02D7:
 	scrcmd_564 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0310
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0310
 	goto _02F0
 	.byte 0x02, 0x00
 _02F0:
@@ -185,8 +185,8 @@ _02F0:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0331
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0331
 	goto _0326
 	.byte 0x02, 0x00
 _0310:
@@ -213,8 +213,8 @@ _0326:
 _0331:
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0356
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0356
 	goto _0326
 	.byte 0x02, 0x00
 _0350:
@@ -223,8 +223,8 @@ _0350:
 
 _0356:
 	comm_sanitize_party VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _0350
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _0350
 	npc_msg msg_0267_00010
 	closemsg
 	scrcmd_600
@@ -266,8 +266,8 @@ _03F3:
 	wait_fade
 	scrcmd_436
 	scrcmd_565 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _041A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _041A
 	scrcmd_152
 	goto _041C
 
@@ -350,8 +350,8 @@ _04EC:
 _04F8:
 	nop_var_490 VAR_TEMP_x4001
 	nop_var_490 VAR_TEMP_x4002
-	comparevartovalue VAR_UNK_412F, 0
-	gotoif ne, _0516
+	compare VAR_UNK_412F, 0
+	goto_if_ne _0516
 	npc_msg msg_0267_00029
 	goto _0519
 
@@ -368,11 +368,11 @@ scr_seq_0164_003:
 	lockall
 	faceplayer
 	get_player_state VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0709
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0709
 	scrcmd_691 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0560
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0560
 	scrcmd_446 VAR_UNK_4056
 	copyvar VAR_UNK_4055, VAR_SPECIAL_x800D
 	npc_msg msg_0267_00018
@@ -412,8 +412,8 @@ _05CC:
 _05D7:
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _05B9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _05B9
 	npc_msg msg_0267_00020
 	closemsg
 	scrcmd_600

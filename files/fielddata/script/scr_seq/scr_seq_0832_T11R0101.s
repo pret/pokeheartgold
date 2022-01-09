@@ -44,128 +44,128 @@ scr_seq_T11R0101_003:
 	get_phone_book_rematch 37, VAR_TEMP_x400D
 	get_phone_book_rematch 38, VAR_TEMP_x400E
 	get_phone_book_rematch 39, VAR_TEMP_x400F
-	comparevartovalue VAR_TEMP_x4003, 0
-	gotoif ne, _00C9
+	compare VAR_TEMP_x4003, 0
+	goto_if_ne _00C9
 	setflag FLAG_UNK_2B8
 	goto _00CD
 
 _00C9:
 	clearflag FLAG_UNK_2B8
 _00CD:
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _00E4
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _00E4
 	setflag FLAG_UNK_2B5
 	goto _00E8
 
 _00E4:
 	clearflag FLAG_UNK_2B5
 _00E8:
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00FF
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00FF
 	setflag FLAG_UNK_2B6
 	goto _0103
 
 _00FF:
 	clearflag FLAG_UNK_2B6
 _0103:
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _011A
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _011A
 	setflag FLAG_UNK_2B7
 	goto _011E
 
 _011A:
 	clearflag FLAG_UNK_2B7
 _011E:
-	comparevartovalue VAR_TEMP_x4004, 0
-	gotoif ne, _0135
+	compare VAR_TEMP_x4004, 0
+	goto_if_ne _0135
 	setflag FLAG_UNK_2B9
 	goto _0139
 
 _0135:
 	clearflag FLAG_UNK_2B9
 _0139:
-	comparevartovalue VAR_TEMP_x4005, 0
-	gotoif ne, _0150
+	compare VAR_TEMP_x4005, 0
+	goto_if_ne _0150
 	setflag FLAG_UNK_2BA
 	goto _0154
 
 _0150:
 	clearflag FLAG_UNK_2BA
 _0154:
-	comparevartovalue VAR_TEMP_x4006, 0
-	gotoif ne, _016B
+	compare VAR_TEMP_x4006, 0
+	goto_if_ne _016B
 	setflag FLAG_UNK_2BB
 	goto _016F
 
 _016B:
 	clearflag FLAG_UNK_2BB
 _016F:
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, _0186
+	compare VAR_TEMP_x4007, 0
+	goto_if_ne _0186
 	setflag FLAG_UNK_2BC
 	goto _018A
 
 _0186:
 	clearflag FLAG_UNK_2BC
 _018A:
-	comparevartovalue VAR_TEMP_x4008, 0
-	gotoif ne, _01A1
+	compare VAR_TEMP_x4008, 0
+	goto_if_ne _01A1
 	setflag FLAG_UNK_2BD
 	goto _01A5
 
 _01A1:
 	clearflag FLAG_UNK_2BD
 _01A5:
-	comparevartovalue VAR_TEMP_x4009, 0
-	gotoif ne, _01BC
+	compare VAR_TEMP_x4009, 0
+	goto_if_ne _01BC
 	setflag FLAG_UNK_2BE
 	goto _01C0
 
 _01BC:
 	clearflag FLAG_UNK_2BE
 _01C0:
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _01D7
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _01D7
 	setflag FLAG_UNK_2BF
 	goto _01DB
 
 _01D7:
 	clearflag FLAG_UNK_2BF
 _01DB:
-	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, _01F2
+	compare VAR_TEMP_x400B, 0
+	goto_if_ne _01F2
 	setflag FLAG_UNK_2C0
 	goto _01F6
 
 _01F2:
 	clearflag FLAG_UNK_2C0
 _01F6:
-	comparevartovalue VAR_TEMP_x400C, 0
-	gotoif ne, _020D
+	compare VAR_TEMP_x400C, 0
+	goto_if_ne _020D
 	setflag FLAG_UNK_2C1
 	goto _0211
 
 _020D:
 	clearflag FLAG_UNK_2C1
 _0211:
-	comparevartovalue VAR_TEMP_x400D, 0
-	gotoif ne, _0228
+	compare VAR_TEMP_x400D, 0
+	goto_if_ne _0228
 	setflag FLAG_UNK_2C2
 	goto _022C
 
 _0228:
 	clearflag FLAG_UNK_2C2
 _022C:
-	comparevartovalue VAR_TEMP_x400E, 0
-	gotoif ne, _0243
+	compare VAR_TEMP_x400E, 0
+	goto_if_ne _0243
 	setflag FLAG_UNK_2C3
 	goto _0247
 
 _0243:
 	clearflag FLAG_UNK_2C3
 _0247:
-	comparevartovalue VAR_TEMP_x400F, 0
-	gotoif ne, _025E
+	compare VAR_TEMP_x400F, 0
+	goto_if_ne _025E
 	setflag FLAG_UNK_2C4
 	goto _0262
 
@@ -182,8 +182,8 @@ scr_seq_T11R0101_004:
 	closemsg
 	trainer_battle TRAINER_LEADER_WHITNEY_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02C1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02C1
 	npc_msg msg_0533_T11R0101_00009
 	waitbutton
 	closemsg
@@ -212,8 +212,8 @@ scr_seq_T11R0101_005:
 	closemsg
 	trainer_battle TRAINER_LEADER_JANINE_JANINE_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0324
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0324
 	npc_msg msg_0533_T11R0101_00031
 	waitbutton
 	closemsg
@@ -242,8 +242,8 @@ scr_seq_T11R0101_006:
 	closemsg
 	trainer_battle TRAINER_LEADER_CLAIR_CLAIR_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0387
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0387
 	npc_msg msg_0533_T11R0101_00019
 	waitbutton
 	closemsg
@@ -272,8 +272,8 @@ scr_seq_T11R0101_007:
 	closemsg
 	trainer_battle TRAINER_LEADER_ERIKA_ERIKA_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03EA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03EA
 	npc_msg msg_0533_T11R0101_00025
 	waitbutton
 	closemsg
@@ -302,8 +302,8 @@ scr_seq_T11R0101_008:
 	closemsg
 	trainer_battle TRAINER_LEADER_MISTY_MISTY_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _044D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _044D
 	npc_msg msg_0533_T11R0101_00027
 	waitbutton
 	closemsg
@@ -332,8 +332,8 @@ scr_seq_T11R0101_009:
 	closemsg
 	trainer_battle TRAINER_LEADER_BLAINE_BLAINE_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _04B0
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _04B0
 	npc_msg msg_0533_T11R0101_00033
 	waitbutton
 	closemsg
@@ -362,8 +362,8 @@ scr_seq_T11R0101_010:
 	closemsg
 	trainer_battle TRAINER_LEADER_BLUE_BLUE_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0513
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0513
 	npc_msg msg_0533_T11R0101_00035
 	waitbutton
 	closemsg
@@ -392,8 +392,8 @@ scr_seq_T11R0101_011:
 	closemsg
 	trainer_battle TRAINER_LEADER_CHUCK_CHUCK_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0576
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0576
 	npc_msg msg_0533_T11R0101_00011
 	waitbutton
 	closemsg
@@ -422,8 +422,8 @@ scr_seq_T11R0101_012:
 	closemsg
 	trainer_battle TRAINER_LEADER_BROCK_BROCK_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _05D9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _05D9
 	npc_msg msg_0533_T11R0101_00029
 	waitbutton
 	closemsg
@@ -452,8 +452,8 @@ scr_seq_T11R0101_013:
 	closemsg
 	trainer_battle TRAINER_LEADER_BUGSY_BUGSY_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _063C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _063C
 	npc_msg msg_0533_T11R0101_00007
 	waitbutton
 	closemsg
@@ -482,8 +482,8 @@ scr_seq_T11R0101_014:
 	closemsg
 	trainer_battle TRAINER_LEADER_SABRINA_SABRINA_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _069F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _069F
 	npc_msg msg_0533_T11R0101_00023
 	waitbutton
 	closemsg
@@ -512,8 +512,8 @@ scr_seq_T11R0101_015:
 	closemsg
 	trainer_battle TRAINER_LEADER_FALKNER_FALKNER_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0702
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0702
 	npc_msg msg_0533_T11R0101_00005
 	waitbutton
 	closemsg
@@ -542,8 +542,8 @@ scr_seq_T11R0101_016:
 	closemsg
 	trainer_battle TRAINER_LEADER_LT_SURGE_LT__SURGE_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0765
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0765
 	npc_msg msg_0533_T11R0101_00021
 	waitbutton
 	closemsg
@@ -572,8 +572,8 @@ scr_seq_T11R0101_017:
 	closemsg
 	trainer_battle TRAINER_LEADER_MORTY_MORTY_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _07C8
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _07C8
 	npc_msg msg_0533_T11R0101_00015
 	waitbutton
 	closemsg
@@ -602,8 +602,8 @@ scr_seq_T11R0101_018:
 	closemsg
 	trainer_battle TRAINER_LEADER_JASMINE_JASMINE_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _082B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _082B
 	npc_msg msg_0533_T11R0101_00013
 	waitbutton
 	closemsg
@@ -632,8 +632,8 @@ scr_seq_T11R0101_019:
 	closemsg
 	trainer_battle TRAINER_LEADER_PRYCE_PRYCE_2, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _088E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _088E
 	npc_msg msg_0533_T11R0101_00017
 	waitbutton
 	closemsg
@@ -658,8 +658,7 @@ scr_seq_T11R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_10D
-	gotoif TRUE, _08B2
+	goto_if_set FLAG_UNK_10D, _08B2
 	npc_msg msg_0533_T11R0101_00000
 	waitbutton
 	closemsg

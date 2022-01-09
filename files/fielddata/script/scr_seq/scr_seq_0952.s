@@ -25,8 +25,8 @@ scr_seq_0952_000:
 	setvar VAR_TEMP_x4001, 653
 _0042:
 	scrcmd_807 VAR_TEMP_x4000, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _005F
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _005F
 	setflagvar VAR_TEMP_x4001
 	goto _0063
 
@@ -35,8 +35,8 @@ _005F:
 _0063:
 	addvar VAR_TEMP_x4000, 1
 	addvar VAR_TEMP_x4001, 1
-	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif lt, _0042
+	compare VAR_TEMP_x4000, 10
+	goto_if_lt _0042
 	end
 
 scr_seq_0952_001:
@@ -90,15 +90,15 @@ _0118:
 	setvar VAR_TEMP_x4001, 2730
 	addvar VAR_TEMP_x4001, VAR_TEMP_x4000
 	checkflagvar VAR_TEMP_x4001, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0186
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0186
 	npc_msg msg_0726_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0186
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0186
 	script_overlay_cmd 4, 0
 	scrcmd_809 VAR_TEMP_x4000
 	scrcmd_049
@@ -106,8 +106,8 @@ _0118:
 	script_overlay_cmd 4, 1
 	scrcmd_808 VAR_TEMP_x4000
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, _0191
+	compare VAR_SPECIAL_x800C, 1
+	call_if_eq _0191
 	setflagvar VAR_TEMP_x4001
 	releaseall
 	end

@@ -25,8 +25,8 @@ _0038:
 	step 68, 1
 	step_end
 scr_seq_D27R0103_001:
-	comparevartovalue VAR_UNK_40A7, 1
-	gotoif ne, _0051
+	compare VAR_UNK_40A7, 1
+	goto_if_ne _0051
 	scrcmd_375 255
 _0051:
 	end

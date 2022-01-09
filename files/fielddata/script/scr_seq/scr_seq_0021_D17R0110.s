@@ -15,8 +15,7 @@
 	scrdef_end
 
 scr_seq_D17R0110_002:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _002B
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _002B
 	end
 
 _002B:
@@ -31,17 +30,15 @@ scr_seq_D17R0110_003:
 	end
 
 scr_seq_D17R0110_005:
-	comparevartovalue VAR_TEMP_x400B, 123
-	gotoif ne, _005C
+	compare VAR_TEMP_x400B, 123
+	goto_if_ne _005C
 	scrcmd_074 2153
 	setvar VAR_TEMP_x400B, 0
 _005C:
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _00C3
-	checkflag FLAG_UNK_10A
-	gotoif FALSE, _00C3
-	comparevartovalue VAR_TEMP_x4003, 111
-	gotoif ne, _00BB
+	goto_if_set FLAG_UNK_108, _00C3
+	goto_if_unset FLAG_UNK_10A, _00C3
+	compare VAR_TEMP_x4003, 111
+	goto_if_ne _00BB
 	move_person obj_D17R0110_dancer, 16, 1, 18, 0
 	move_person obj_D17R0110_dancer_2, 12, 1, 18, 0
 	move_person obj_D17R0110_dancer_3, 12, 1, 12, 1
@@ -64,8 +61,8 @@ scr_seq_D17R0110_000:
 	wait_cry
 	closemsg
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _00FD
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _00FD
 	setvar VAR_SPECIAL_x8004, 45
 	goto _0103
 
@@ -76,12 +73,12 @@ _0103:
 	wild_battle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	scrcmd_683 VAR_TEMP_x4005
-	comparevartovalue VAR_TEMP_x4005, 2
-	gotoif eq, _0167
-	comparevartovalue VAR_TEMP_x4005, 3
-	gotoif eq, _0167
-	comparevartovalue VAR_TEMP_x4005, 4
-	callif eq, _0171
+	compare VAR_TEMP_x4005, 2
+	goto_if_eq _0167
+	compare VAR_TEMP_x4005, 3
+	goto_if_eq _0167
+	compare VAR_TEMP_x4005, 4
+	call_if_eq _0171
 	releaseall
 	setflag FLAG_UNK_108
 	setvar VAR_SCENE_NEW_BARK_EAST_EXIT, 3
@@ -349,8 +346,7 @@ scr_seq_D17R0110_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _0704
+	goto_if_set FLAG_UNK_108, _0704
 	npc_msg msg_0058_D17R0110_00001
 	waitbutton
 	closemsg
@@ -358,20 +354,20 @@ scr_seq_D17R0110_001:
 	end
 
 _0704:
-	comparevartovalue VAR_TEMP_x4005, 5
-	gotoif ne, _071A
+	compare VAR_TEMP_x4005, 5
+	goto_if_ne _071A
 	npc_msg msg_0058_D17R0110_00008
 	goto _0749
 
 _071A:
-	comparevartovalue VAR_TEMP_x4005, 6
-	gotoif ne, _0730
+	compare VAR_TEMP_x4005, 6
+	goto_if_ne _0730
 	npc_msg msg_0058_D17R0110_00008
 	goto _0749
 
 _0730:
-	comparevartovalue VAR_TEMP_x4005, 4
-	gotoif ne, _0746
+	compare VAR_TEMP_x4005, 4
+	goto_if_ne _0746
 	npc_msg msg_0058_D17R0110_00006
 	goto _0749
 
@@ -551,8 +547,7 @@ scr_seq_D17R0110_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _095E
+	goto_if_set FLAG_UNK_108, _095E
 	npc_msg msg_0058_D17R0110_00001
 	waitbutton
 	closemsg

@@ -20,26 +20,26 @@ scr_seq_R31_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4114, 1
-	gotoif ne, _003D
+	compare VAR_UNK_4114, 1
+	goto_if_ne _003D
 	goto _0098
 	.byte 0x16, 0x00, 0x50, 0x00, 0x00, 0x00
 _003D:
-	comparevartovalue VAR_UNK_4114, 2
-	gotoif ne, _0056
+	compare VAR_UNK_4114, 2
+	goto_if_ne _0056
 	goto _01AD
 	.byte 0x16, 0x00, 0x37, 0x00, 0x00, 0x00
 _0056:
-	comparevartovalue VAR_UNK_4114, 4
-	gotoif ne, _006F
+	compare VAR_UNK_4114, 4
+	goto_if_ne _006F
 	goto _01AD
 	.byte 0x16, 0x00, 0x1e, 0x00, 0x00, 0x00
 _006F:
-	comparevartovalue VAR_UNK_4114, 6
-	gotoif ne, _008D
+	compare VAR_UNK_4114, 6
+	goto_if_ne _008D
 	scrcmd_781 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _02AE
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _02AE
 _008D:
 	npc_msg msg_0378_R31_00000
 	waitbutton
@@ -54,41 +54,41 @@ _0098:
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 255
-	gotoif eq, _0206
+	compare VAR_TEMP_x4000, 255
+	goto_if_eq _0206
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif eq, _021F
+	compare VAR_TEMP_x4001, 0
+	goto_if_eq _021F
 	scrcmd_426 VAR_SPECIAL_x800C, VAR_TEMP_x4000, 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0238
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0238
 	scrcmd_426 VAR_SPECIAL_x800C, VAR_TEMP_x4000, 1
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0251
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0251
 	scrcmd_363 7, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _026A
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _0295
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _026A
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _0295
 	scrcmd_364 VAR_TEMP_x4000
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0149
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0149
 	apply_movement obj_player, _02BC
 	goto _0187
 
 _0149:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0164
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0164
 	apply_movement obj_player, _02C4
 	goto _0187
 
 _0164:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _017F
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _017F
 	apply_movement obj_player, _02CC
 	goto _0187
 
@@ -103,14 +103,14 @@ _0187:
 _0195:
 	npc_msg msg_0378_R31_00007
 	setvar VAR_UNK_4114, 2
-	comparevartovar VAR_TEMP_x4000, VAR_TEMP_x4001
-	gotoif ne, _01AD
+	compare VAR_TEMP_x4000, VAR_TEMP_x4001
+	goto_if_ne _01AD
 	scrcmd_606
 _01AD:
 	goto_if_no_item_space ITEM_TM44, 1, _01FC
 	callstd std_give_item_verbose
-	comparevartovalue VAR_UNK_4114, 2
-	gotoif ne, _01EB
+	compare VAR_UNK_4114, 2
+	goto_if_ne _01EB
 	setvar VAR_UNK_4114, 3
 	goto _01F1
 

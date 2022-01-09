@@ -83,12 +83,12 @@ scr_seq_0955_013:
 	goto _0159
 
 scr_seq_0955_014:
-	comparevartovalue VAR_UNK_4032, 1
-	gotoif eq, scr_seq_0955_015
-	comparevartovalue VAR_UNK_4032, 2
-	gotoif eq, scr_seq_0955_016
-	comparevartovalue VAR_UNK_4032, 3
-	gotoif eq, scr_seq_0955_017
+	compare VAR_UNK_4032, 1
+	goto_if_eq scr_seq_0955_015
+	compare VAR_UNK_4032, 2
+	goto_if_eq scr_seq_0955_016
+	compare VAR_UNK_4032, 3
+	goto_if_eq scr_seq_0955_017
 	setvar VAR_SPECIAL_x8000, 15
 	goto _0159
 

@@ -34,8 +34,8 @@ scr_seq_T07R0701_004:
 	lockall
 	faceplayer
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0074
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0074
 	npc_msg msg_0510_T07R0701_00004
 	closemsg
 	apply_movement obj_T07R0701_gswoman1, _00D8

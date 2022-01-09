@@ -19,8 +19,7 @@ scr_seq_T06R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0F8
-	gotoif FALSE, _0044
+	goto_if_unset FLAG_UNK_0F8, _0044
 	buffer_players_name 0
 	gender_msgbox msg_0488_T06R0301_00004, msg_0488_T06R0301_00005
 	waitbutton
@@ -33,8 +32,8 @@ _0044:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _009E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _009E
 	npc_msg msg_0488_T06R0301_00001
 	goto_if_no_item_space ITEM_RARE_CANDY, 1, _0093
 	callstd std_give_item_verbose
@@ -74,15 +73,13 @@ scr_seq_T06R0301_002:
 	lockall
 	faceplayer
 	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0141
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0141
 	getitemquantity ITEM_PASS, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0141
-	checkflag FLAG_UNK_119
-	gotoif TRUE, _0116
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _010B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0141
+	goto_if_set FLAG_UNK_119, _0116
+	goto_if_set FLAG_RESTORED_POWER, _010B
 	npc_msg msg_0488_T06R0301_00009
 	waitbutton
 	closemsg
@@ -137,8 +134,7 @@ scr_seq_T06R0301_004:
 	end
 
 scr_seq_T06R0301_007:
-	checkflag FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM
-	gotoif TRUE, _0198
+	goto_if_set FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM, _0198
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

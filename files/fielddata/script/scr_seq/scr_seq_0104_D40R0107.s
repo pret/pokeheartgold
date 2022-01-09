@@ -21,8 +21,7 @@ scr_seq_D40R0107_006:
 
 scr_seq_D40R0107_002:
 	setflag FLAG_UNK_99A
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _003B
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _003B
 	end
 
 _003B:
@@ -37,25 +36,22 @@ _003B:
 	end
 
 scr_seq_D40R0107_004:
-	checkflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
-	gotoif TRUE, _007C
+	goto_if_set FLAG_HIDE_WHIRL_ISLAND_LUGIA, _007C
 	scrcmd_375 6
 	scrcmd_375 7
 	scrcmd_375 8
 	scrcmd_375 9
 	scrcmd_375 10
 _007C:
-	comparevartovalue VAR_TEMP_x400B, 123
-	gotoif ne, _0093
+	compare VAR_TEMP_x400B, 123
+	goto_if_ne _0093
 	scrcmd_074 2143
 	setvar VAR_TEMP_x400B, 0
 _0093:
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _00FA
-	checkflag FLAG_UNK_10B
-	gotoif FALSE, _00FA
-	comparevartovalue VAR_TEMP_x4003, 111
-	gotoif ne, _00FA
+	goto_if_set FLAG_UNK_109, _00FA
+	goto_if_unset FLAG_UNK_10B, _00FA
+	compare VAR_TEMP_x4003, 111
+	goto_if_ne _00FA
 	move_person obj_D40R0107_dancer_5, 16, 1, 32, 0
 	move_person obj_D40R0107_dancer_3, 13, 1, 33, 0
 	move_person obj_D40R0107_dancer_4, 13, 1, 27, 0
@@ -77,8 +73,8 @@ scr_seq_D40R0107_000:
 	wait_cry
 	closemsg
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _0134
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _0134
 	setvar VAR_SPECIAL_x8004, 70
 	goto _013A
 
@@ -89,12 +85,12 @@ _013A:
 	wild_battle VAR_TEMP_x400A, VAR_SPECIAL_x8004, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	scrcmd_683 VAR_TEMP_x4005
-	comparevartovalue VAR_TEMP_x4005, 2
-	gotoif eq, _019E
-	comparevartovalue VAR_TEMP_x4005, 3
-	gotoif eq, _019E
-	comparevartovalue VAR_TEMP_x4005, 4
-	callif eq, _01A8
+	compare VAR_TEMP_x4005, 2
+	goto_if_eq _019E
+	compare VAR_TEMP_x4005, 3
+	goto_if_eq _019E
+	compare VAR_TEMP_x4005, 4
+	call_if_eq _01A8
 	releaseall
 	setflag FLAG_UNK_109
 	setvar VAR_SCENE_NEW_BARK_EAST_EXIT, 3
@@ -615,8 +611,7 @@ scr_seq_D40R0107_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _0B62
+	goto_if_set FLAG_UNK_109, _0B62
 	npc_msg msg_0125_D40R0107_00001
 	waitbutton
 	closemsg
@@ -624,20 +619,20 @@ scr_seq_D40R0107_001:
 	end
 
 _0B62:
-	comparevartovalue VAR_TEMP_x4005, 5
-	gotoif ne, _0B78
+	compare VAR_TEMP_x4005, 5
+	goto_if_ne _0B78
 	npc_msg msg_0125_D40R0107_00008
 	goto _0BA7
 
 _0B78:
-	comparevartovalue VAR_TEMP_x4005, 6
-	gotoif ne, _0B8E
+	compare VAR_TEMP_x4005, 6
+	goto_if_ne _0B8E
 	npc_msg msg_0125_D40R0107_00008
 	goto _0BA7
 
 _0B8E:
-	comparevartovalue VAR_TEMP_x4005, 4
-	gotoif ne, _0BA4
+	compare VAR_TEMP_x4005, 4
+	goto_if_ne _0BA4
 	npc_msg msg_0125_D40R0107_00006
 	goto _0BA7
 
@@ -653,8 +648,7 @@ scr_seq_D40R0107_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _0BCD
+	goto_if_set FLAG_UNK_109, _0BCD
 	npc_msg msg_0125_D40R0107_00001
 	waitbutton
 	closemsg

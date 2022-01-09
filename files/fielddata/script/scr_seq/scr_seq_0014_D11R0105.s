@@ -10,8 +10,7 @@
 	scrdef_end
 
 scr_seq_D11R0105_001:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _0017
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _0017
 	end
 
 _0017:
@@ -30,13 +29,13 @@ scr_seq_D11R0105_000:
 	wild_battle SPECIES_ARTICUNO, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0077
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0077
 	scrcmd_683 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, _0073
-	comparevartovalue VAR_TEMP_x4002, 4
-	callif eq, _007D
+	compare VAR_TEMP_x4002, 3
+	goto_if_eq _0073
+	compare VAR_TEMP_x4002, 4
+	call_if_eq _007D
 _0073:
 	releaseall
 	end

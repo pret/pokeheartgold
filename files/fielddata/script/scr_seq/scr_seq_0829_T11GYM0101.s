@@ -14,27 +14,27 @@
 
 scr_seq_T11GYM0101_004:
 	get_phone_book_rematch 35, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0089
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0089
 	scrcmd_147 35, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _006C
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _006C
 	check_badge 13, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0055
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0055
 	goto _0083
 
 _0055:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _0083
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _0083
 	setflag FLAG_UNK_2F1
 	end
 
 _006C:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _0083
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _0083
 	setflag FLAG_UNK_2F1
 	end
 
@@ -51,14 +51,14 @@ scr_seq_T11GYM0101_000:
 	lockall
 	faceplayer
 	check_badge 13, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0140
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0140
 	npc_msg msg_0531_T11GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_SABRINA_SABRINA, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0156
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0156
 	give_badge 13
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat 22
@@ -92,8 +92,7 @@ _0136:
 	end
 
 _0140:
-	checkflag FLAG_UNK_182
-	gotoif FALSE, _0102
+	goto_if_unset FLAG_UNK_182, _0102
 	npc_msg msg_0531_T11GYM0101_00005
 	waitbutton
 	closemsg
@@ -110,8 +109,8 @@ scr_seq_T11GYM0101_001:
 	lockall
 	faceplayer
 	check_badge 13, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0182
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0182
 	npc_msg msg_0531_T11GYM0101_00006
 	waitbutton
 	closemsg
@@ -131,8 +130,8 @@ scr_seq_T11GYM0101_002:
 	faceplayer
 	check_badge 13, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01B4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01B4
 	npc_msg msg_0531_T11GYM0101_00008
 	goto _01B7
 

@@ -18,43 +18,43 @@
 	scrdef_end
 
 scr_seq_D31R0207_006:
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif ne, _004C
+	compare VAR_UNK_4151, 2
+	goto_if_ne _004C
 	scrcmd_412 55, 2, VAR_TEMP_x4009
-	comparevartovalue VAR_TEMP_x4009, 0
-	gotoif eq, _00EA
+	compare VAR_TEMP_x4009, 0
+	goto_if_eq _00EA
 _004C:
 	clearflag FLAG_UNK_2AD
 _0050:
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif ne, _0072
+	compare VAR_UNK_4151, 2
+	goto_if_ne _0072
 	scrcmd_412 55, 2, VAR_TEMP_x4009
-	comparevartovalue VAR_TEMP_x4009, 1
-	gotoif eq, _00F6
+	compare VAR_TEMP_x4009, 1
+	goto_if_eq _00F6
 _0072:
 	clearflag FLAG_UNK_2AE
 _0076:
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif ne, _0098
+	compare VAR_UNK_4151, 2
+	goto_if_ne _0098
 	scrcmd_412 55, 2, VAR_TEMP_x4009
-	comparevartovalue VAR_TEMP_x4009, 2
-	gotoif eq, _0102
+	compare VAR_TEMP_x4009, 2
+	goto_if_eq _0102
 _0098:
 	clearflag FLAG_UNK_2AF
 _009C:
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif ne, _00BE
+	compare VAR_UNK_4151, 2
+	goto_if_ne _00BE
 	scrcmd_412 55, 2, VAR_TEMP_x4009
-	comparevartovalue VAR_TEMP_x4009, 3
-	gotoif eq, _010E
+	compare VAR_TEMP_x4009, 3
+	goto_if_eq _010E
 _00BE:
 	clearflag FLAG_UNK_2B0
 _00C2:
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif ne, _00E4
+	compare VAR_UNK_4151, 2
+	goto_if_ne _00E4
 	scrcmd_412 55, 2, VAR_TEMP_x4009
-	comparevartovalue VAR_TEMP_x4009, 4
-	gotoif eq, _011A
+	compare VAR_TEMP_x4009, 4
+	goto_if_eq _011A
 _00E4:
 	clearflag FLAG_UNK_2B1
 _00E8:
@@ -81,10 +81,10 @@ _011A:
 	goto _00E8
 	.byte 0x02, 0x00
 scr_seq_D31R0207_007:
-	comparevartovalue VAR_UNK_4151, 1
-	callif eq, _0142
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif eq, _0148
+	compare VAR_UNK_4151, 1
+	call_if_eq _0142
+	compare VAR_UNK_4151, 2
+	goto_if_eq _0148
 	end
 
 _0142:
@@ -115,8 +115,8 @@ scr_seq_D31R0207_000:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01A3
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01A3
 	npc_msg msg_0099_D31R0207_00000
 	closemsg
 	releaseall
@@ -162,8 +162,8 @@ scr_seq_D31R0207_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif eq, _02A7
+	compare VAR_UNK_4151, 2
+	goto_if_eq _02A7
 	setvar VAR_TEMP_x4009, 0
 	scrcmd_413 16393, 0, 32772, 32773
 	buffer_species_name_indef 0, VAR_SPECIAL_x8004, 0, 0
@@ -175,8 +175,8 @@ scr_seq_D31R0207_001:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02B2
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02B2
 _02A7:
 	npc_msg msg_0099_D31R0207_00007
 	waitbutton
@@ -197,8 +197,8 @@ scr_seq_D31R0207_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif eq, _030F
+	compare VAR_UNK_4151, 2
+	goto_if_eq _030F
 	setvar VAR_TEMP_x4009, 1
 	call _0216
 	buffer_players_name 4
@@ -206,8 +206,8 @@ scr_seq_D31R0207_002:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _031A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _031A
 _030F:
 	npc_msg msg_0099_D31R0207_00016
 	waitbutton
@@ -229,16 +229,16 @@ scr_seq_D31R0207_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif eq, _0377
+	compare VAR_UNK_4151, 2
+	goto_if_eq _0377
 	setvar VAR_TEMP_x4009, 2
 	call _0216
 	npc_msg msg_0099_D31R0207_00003
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0382
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0382
 _0377:
 	npc_msg msg_0099_D31R0207_00004
 	waitbutton
@@ -259,16 +259,16 @@ scr_seq_D31R0207_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif eq, _03DC
+	compare VAR_UNK_4151, 2
+	goto_if_eq _03DC
 	setvar VAR_TEMP_x4009, 3
 	call _0216
 	npc_msg msg_0099_D31R0207_00012
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03E7
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03E7
 _03DC:
 	npc_msg msg_0099_D31R0207_00013
 	waitbutton
@@ -289,16 +289,16 @@ scr_seq_D31R0207_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4151, 2
-	gotoif eq, _0441
+	compare VAR_UNK_4151, 2
+	goto_if_eq _0441
 	setvar VAR_TEMP_x4009, 4
 	call _0216
 	npc_msg msg_0099_D31R0207_00009
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _044C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _044C
 _0441:
 	npc_msg msg_0099_D31R0207_00010
 	waitbutton
@@ -371,8 +371,8 @@ _04E5:
 _0541:
 	setvar VAR_TEMP_x4000, 1
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8000, 12
-	gotoif eq, _0562
+	compare VAR_SPECIAL_x8000, 12
+	goto_if_eq _0562
 	goto _0574
 	.byte 0x02, 0x00
 _0562:
@@ -388,8 +388,8 @@ _0574:
 _0586:
 	setvar VAR_TEMP_x4000, 2
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8000, 4
-	gotoif eq, _05A7
+	compare VAR_SPECIAL_x8000, 4
+	goto_if_eq _05A7
 	goto _05B9
 	.byte 0x02, 0x00
 _05A7:
@@ -405,8 +405,8 @@ _05B9:
 _05CB:
 	setvar VAR_TEMP_x4000, 3
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8001, 7
-	gotoif eq, _05EC
+	compare VAR_SPECIAL_x8001, 7
+	goto_if_eq _05EC
 	goto _05FE
 	.byte 0x02, 0x00
 _05EC:
@@ -422,8 +422,8 @@ _05FE:
 _0610:
 	setvar VAR_TEMP_x4000, 4
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8001, 9
-	gotoif eq, _0631
+	compare VAR_SPECIAL_x8001, 9
+	goto_if_eq _0631
 	goto _0643
 	.byte 0x02
 	.byte 0x00
@@ -440,8 +440,8 @@ _0643:
 _0655:
 	setvar VAR_TEMP_x4000, 5
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8000, 8
-	gotoif eq, _0676
+	compare VAR_SPECIAL_x8000, 8
+	goto_if_eq _0676
 	goto _0688
 	.byte 0x02, 0x00
 _0676:

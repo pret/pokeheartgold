@@ -12,16 +12,15 @@ scr_seq_T26R0601_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0BD
-	gotoif TRUE, _008E
+	goto_if_set FLAG_UNK_0BD, _008E
 	npc_msg msg_0610_T26R0601_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0040
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0079
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0040
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0079
 	end
 
 _0040:

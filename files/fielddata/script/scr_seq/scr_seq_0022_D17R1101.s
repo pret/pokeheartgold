@@ -10,29 +10,27 @@
 	scrdef_end
 
 scr_seq_D17R1101_000:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _001B
+	goto_if_unset FLAG_UNK_189, _001B
 	clearflag FLAG_UNK_189
 	end
 
 _001B:
-	checkflag FLAG_GAME_CLEAR
-	gotoif FALSE, _00A5
+	goto_if_unset FLAG_GAME_CLEAR, _00A5
 	get_phone_book_rematch 37, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00A5
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00A5
 	scrcmd_147 37, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0084
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0084
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _0067
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _0067
 	clearflag FLAG_UNK_2CA
 	goto _0082
 
 _0067:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _007E
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _007E
 	clearflag FLAG_UNK_2CA
 	goto _0082
 
@@ -43,8 +41,8 @@ _0082:
 
 _0084:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _009F
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _009F
 	clearflag FLAG_UNK_2CA
 	goto _00A3
 
@@ -62,19 +60,19 @@ scr_seq_D17R1101_001:
 	lockall
 	faceplayer
 	scrcmd_147 37, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0159
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _014E
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0159
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _014E
 	npc_msg msg_0059_D17R1101_00000
 _00D6:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00FA
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _013D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00FA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _013D
 	end
 
 _00FA:
@@ -114,11 +112,11 @@ _0159:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01BA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01BA
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01C5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01C5
 	npc_msg msg_0059_D17R1101_00006
 	closemsg
 	setflag FLAG_UNK_189

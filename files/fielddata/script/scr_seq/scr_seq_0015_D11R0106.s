@@ -19,21 +19,21 @@
 
 scr_seq_D11R0106_009:
 	get_phone_book_rematch 30, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00AB
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00AB
 	scrcmd_147 30, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _008A
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _008A
 	check_badge 15, VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif eq, _0069
+	compare VAR_TEMP_x4002, 1
+	goto_if_eq _0069
 	clearflag FLAG_UNK_2F5
 	end
 
 _0069:
 	get_weekday VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 2
-	gotoif ne, _0084
+	compare VAR_TEMP_x4002, 2
+	goto_if_ne _0084
 	setflag FLAG_UNK_2F5
 	goto _0088
 
@@ -44,8 +44,8 @@ _0088:
 
 _008A:
 	get_weekday VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 4
-	gotoif ne, _00A5
+	compare VAR_TEMP_x4002, 4
+	goto_if_ne _00A5
 	setflag FLAG_UNK_2F5
 	goto _00A9
 
@@ -59,12 +59,9 @@ _00AB:
 	end
 
 scr_seq_D11R0106_008:
-	checkflag FLAG_UNK_13B
-	callif TRUE, _00D4
-	checkflag FLAG_UNK_13D
-	callif TRUE, _00E2
-	checkflag FLAG_UNK_13E
-	callif TRUE, _00F0
+	call_if_set FLAG_UNK_13B, _00D4
+	call_if_set FLAG_UNK_13D, _00E2
+	call_if_set FLAG_UNK_13E, _00F0
 	end
 
 _00D4:
@@ -84,14 +81,14 @@ scr_seq_D11R0106_000:
 	lockall
 	faceplayer
 	check_badge 14, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01B6
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01B6
 	npc_msg msg_0053_D11R0106_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_BLAINE_BLAINE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CC
 	give_badge 14
 	addvar VAR_UNK_4135, 1
 	setflag FLAG_UNK_265
@@ -127,8 +124,7 @@ _01AC:
 	end
 
 _01B6:
-	checkflag FLAG_UNK_17D
-	gotoif FALSE, _0175
+	goto_if_unset FLAG_UNK_17D, _0175
 	npc_msg msg_0053_D11R0106_00005
 	waitbutton
 	closemsg
@@ -144,14 +140,13 @@ scr_seq_D11R0106_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_13B
-	gotoif TRUE, _021A
+	goto_if_set FLAG_UNK_13B, _021A
 	npc_msg msg_0053_D11R0106_00006
 	closemsg
 	trainer_battle TRAINER_SUPER_NERD_CARY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00008
 	closemsg
 	apply_movement obj_D11R0106_gsassistantm, _0424
@@ -171,19 +166,18 @@ scr_seq_D11R0106_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_13C
-	gotoif TRUE, _028C
+	goto_if_set FLAG_UNK_13C, _028C
 	npc_msg msg_0053_D11R0106_00009
 	closemsg
 	trainer_battle TRAINER_SUPER_NERD_WALDO, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00011
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _027A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _027A
 	apply_movement obj_D11R0106_gsassistantm_2, _043C
 	goto _0282
 
@@ -206,14 +200,13 @@ scr_seq_D11R0106_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_13D
-	gotoif TRUE, _02DF
+	goto_if_set FLAG_UNK_13D, _02DF
 	npc_msg msg_0053_D11R0106_00012
 	closemsg
 	trainer_battle TRAINER_SUPER_NERD_MERLE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00014
 	closemsg
 	apply_movement obj_D11R0106_gsassistantm_3, _0448
@@ -233,14 +226,13 @@ scr_seq_D11R0106_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_13E
-	gotoif TRUE, _0332
+	goto_if_set FLAG_UNK_13E, _0332
 	npc_msg msg_0053_D11R0106_00015
 	closemsg
 	trainer_battle TRAINER_SCIENTIST_GS_LOWELL, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00017
 	closemsg
 	apply_movement obj_D11R0106_assistantm, _0454
@@ -260,19 +252,18 @@ scr_seq_D11R0106_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_13F
-	gotoif TRUE, _03A4
+	goto_if_set FLAG_UNK_13F, _03A4
 	npc_msg msg_0053_D11R0106_00018
 	closemsg
 	trainer_battle TRAINER_SCIENTIST_GS_LINDEN, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00020
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0392
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0392
 	apply_movement obj_D11R0106_assistantm_2, _046C
 	goto _039A
 
@@ -295,19 +286,18 @@ scr_seq_D11R0106_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_140
-	gotoif TRUE, _0416
+	goto_if_set FLAG_UNK_140, _0416
 	npc_msg msg_0053_D11R0106_00021
 	closemsg
 	trainer_battle TRAINER_SCIENTIST_GS_DANIEL, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00023
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0404
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0404
 	apply_movement obj_D11R0106_assistantm_3, _0478
 	goto _040C
 
@@ -376,8 +366,8 @@ scr_seq_D11R0106_001:
 	lockall
 	faceplayer
 	check_badge 14, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _04B6
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _04B6
 	npc_msg msg_0053_D11R0106_00024
 	waitbutton
 	closemsg

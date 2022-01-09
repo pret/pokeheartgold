@@ -13,8 +13,7 @@ scr_seq_R35R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GOT_RADIO_CARD
-	gotoif TRUE, _0028
+	goto_if_set FLAG_GOT_RADIO_CARD, _0028
 	npc_msg msg_0388_R35R0101_00013
 	waitbutton
 	closemsg
@@ -26,8 +25,8 @@ _0028:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _004B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _004B
 	npc_msg msg_0388_R35R0101_00015
 	waitbutton
 	closemsg
@@ -45,19 +44,19 @@ scr_seq_R35R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4114, 1
-	gotoif eq, _00BC
-	comparevartovalue VAR_UNK_4114, 2
-	gotoif ge, _0104
+	compare VAR_UNK_4114, 1
+	goto_if_eq _00BC
+	compare VAR_UNK_4114, 2
+	goto_if_ge _0104
 	npc_msg msg_0388_R35R0101_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00EE
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00EE
 	get_party_count VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, _00F9
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_eq _00F9
 	npc_msg msg_0388_R35R0101_00003
 	scrcmd_362 7, 20, 101
 	setvar VAR_UNK_4114, 1
@@ -67,10 +66,9 @@ scr_seq_R35R0101_000:
 	wait_fanfare
 _00BC:
 	scrcmd_781 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0178
-	checkflag FLAG_UNK_0B5
-	gotoif TRUE, _00E3
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0178
+	goto_if_set FLAG_UNK_0B5, _00E3
 	npc_msg msg_0388_R35R0101_00006
 	waitbutton
 	closemsg
@@ -99,13 +97,13 @@ _00F9:
 	end
 
 _0104:
-	comparevartovalue VAR_UNK_4114, 4
-	gotoif ge, _016D
+	compare VAR_UNK_4114, 4
+	goto_if_ge _016D
 	npc_msg msg_0388_R35R0101_00007
 	goto_if_no_item_space ITEM_HP_UP, 1, _0163
 	callstd std_give_item_verbose
-	comparevartovalue VAR_UNK_4114, 3
-	gotoif ne, _0152
+	compare VAR_UNK_4114, 3
+	goto_if_ne _0152
 	setvar VAR_UNK_4114, 5
 	goto _0158
 

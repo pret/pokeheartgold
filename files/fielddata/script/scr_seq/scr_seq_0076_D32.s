@@ -47,17 +47,16 @@
 	scrdef_end
 
 scr_seq_D32_037:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _00AF
+	goto_if_unset FLAG_UNK_189, _00AF
 	clearflag FLAG_UNK_189
 	end
 
 _00AF:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif eq, _00D7
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, _00D7
+	compare VAR_TEMP_x4000, 3
+	goto_if_eq _00D7
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _00D7
 	setflag FLAG_HIDE_CAMERON
 	goto _00DB
 
@@ -76,11 +75,11 @@ scr_seq_D32_038:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0209
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0209
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _021D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _021D
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -88,21 +87,21 @@ scr_seq_D32_038:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _015A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _015A
 	apply_movement obj_player, _0234
 	apply_movement obj_D32_gsmiddleman1_2, _0280
 	goto _01A8
 
 _015A:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0175
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0175
 	apply_movement obj_player, _024C
 	goto _01A8
 
 _0175:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0198
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0198
 	apply_movement obj_player, _026C
 	apply_movement obj_D32_gsmiddleman1_2, _0280
 	goto _01A8
@@ -116,8 +115,8 @@ _01A8:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _01CF
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _01CF
 	apply_movement obj_partner_poke, _028C
 	wait_movement
 _01CF:
@@ -411,8 +410,8 @@ scr_seq_D32_022:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0B02
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0B02
 _045C:
 	npc_msg msg_0100_D32_00031
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
@@ -674,19 +673,19 @@ _09F3:
 	buffer_int 1, VAR_SPECIAL_x8006
 	npc_msg msg_0100_D32_00023
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0A24
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif eq, _0AB1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0A24
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_eq _0AB1
 	goto _0F76
 
 _0A24:
 	check_battle_points VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0A9B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0A9B
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0A85
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0A85
 	scrcmd_556 VAR_SPECIAL_x8006
 	scrcmd_118 1
 	play_se SEQ_SE_DP_REGI
@@ -695,36 +694,36 @@ _0A24:
 	buffer_pocket_name 1, VAR_SPECIAL_x800C
 	npc_msg msg_0100_D32_00026
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif eq, _0AB1
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_eq _0AB1
 	goto _0F76
 
 _0A85:
 	npc_msg msg_0100_D32_00029
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif eq, _0AB1
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_eq _0AB1
 	goto _0F76
 
 _0A9B:
 	npc_msg msg_0100_D32_00027
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif eq, _0AB1
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_eq _0AB1
 	goto _0F76
 
 _0AB1:
-	comparevartovalue VAR_SPECIAL_x8007, 0
-	gotoif ne, _0ACA
+	compare VAR_SPECIAL_x8007, 0
+	goto_if_ne _0ACA
 	goto _04D1
 	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
 _0ACA:
-	comparevartovalue VAR_SPECIAL_x8007, 1
-	gotoif ne, _0AE3
+	compare VAR_SPECIAL_x8007, 1
+	goto_if_ne _0AE3
 	goto _0630
 	.byte 0x16, 0x00, 0x1f
 	.byte 0x00, 0x00, 0x00
 _0AE3:
-	comparevartovalue VAR_SPECIAL_x8007, 2
-	gotoif ne, _0AFC
+	compare VAR_SPECIAL_x8007, 2
+	goto_if_ne _0AFC
 	goto _0762
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0AFC:
@@ -750,8 +749,8 @@ scr_seq_D32_024:
 	npc_msg msg_0100_D32_00021
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0B02
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0B02
 _0B44:
 	npc_msg msg_0100_D32_00030
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
@@ -940,20 +939,20 @@ _0F40:
 	buffer_int 2, VAR_SPECIAL_x8006
 	npc_msg msg_0100_D32_00024
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0A24
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	gotoif eq, _0AB1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0A24
+	compare VAR_SPECIAL_x8000, 0
+	goto_if_eq _0AB1
 	goto _0F76
 
 _0F76:
-	comparevartovalue VAR_SPECIAL_x8007, 0
-	gotoif ne, _0F8F
+	compare VAR_SPECIAL_x8007, 0
+	goto_if_ne _0F8F
 	goto _0BA4
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0F8F:
-	comparevartovalue VAR_SPECIAL_x8007, 1
-	gotoif ne, _0FA8
+	compare VAR_SPECIAL_x8007, 1
+	goto_if_ne _0FA8
 	goto _0CFA
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0FA8:

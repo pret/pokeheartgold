@@ -14,15 +14,12 @@ scr_seq_D17R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_116
-	gotoif TRUE, _0053
+	goto_if_set FLAG_UNK_116, _0053
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 8
-	gotoif eq, _0048
-	checkflag FLAG_UNK_108
-	gotoif TRUE, _005E
-	checkflag FLAG_UNK_105
-	gotoif TRUE, _0069
+	compare VAR_SPECIAL_x800C, 8
+	goto_if_eq _0048
+	goto_if_set FLAG_UNK_108, _005E
+	goto_if_set FLAG_UNK_105, _0069
 _0048:
 	npc_msg msg_0057_D17R0101_00003
 	waitbutton
@@ -55,8 +52,8 @@ scr_seq_D17R0101_001:
 	scrcmd_609
 	lockall
 	get_player_facing VAR_TEMP_x400A
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _0097
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _0097
 	apply_movement obj_D17R0101_bozu, _02D8
 	goto _009F
 
@@ -65,17 +62,16 @@ _0097:
 _009F:
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_TEMP_x400A, 0
-	callif eq, _0150
-	comparevartovalue VAR_TEMP_x400A, 2
-	callif eq, _0192
-	checkflag FLAG_UNK_093
-	gotoif TRUE, _028E
+	compare VAR_TEMP_x400A, 0
+	call_if_eq _0150
+	compare VAR_TEMP_x400A, 2
+	call_if_eq _0192
+	goto_if_set FLAG_UNK_093, _028E
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _00F1
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _00F1
 	apply_movement obj_player, _0344
 	goto _0101
 
@@ -88,8 +84,8 @@ _0101:
 	scrcmd_602 1
 	scrcmd_604 48
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 7
-	gotoif ne, _0127
+	compare VAR_SPECIAL_x800C, 7
+	goto_if_ne _0127
 	npc_msg msg_0057_D17R0101_00000
 	goto _012A
 
@@ -98,22 +94,22 @@ _0127:
 _012A:
 	closemsg
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_TEMP_x400A, 0
-	callif eq, _01EF
-	comparevartovalue VAR_TEMP_x400A, 2
-	callif eq, _0231
+	compare VAR_TEMP_x400A, 0
+	call_if_eq _01EF
+	compare VAR_TEMP_x400A, 2
+	call_if_eq _0231
 	releaseall
 	end
 
 _0150:
-	comparevartovalue VAR_SPECIAL_x8004, 7
-	gotoif ne, _016B
+	compare VAR_SPECIAL_x8004, 7
+	goto_if_ne _016B
 	apply_movement obj_D17R0101_bozu, _02EC
 	goto _018E
 
 _016B:
-	comparevartovalue VAR_SPECIAL_x8004, 8
-	gotoif ne, _0186
+	compare VAR_SPECIAL_x8004, 8
+	goto_if_ne _0186
 	apply_movement obj_D17R0101_bozu, _02FC
 	goto _018E
 
@@ -124,20 +120,20 @@ _018E:
 	return
 
 _0192:
-	comparevartovalue VAR_SPECIAL_x8005, 7
-	gotoif ne, _01AD
+	compare VAR_SPECIAL_x8005, 7
+	goto_if_ne _01AD
 	apply_movement obj_D17R0101_bozu, _0314
 	goto _01EB
 
 _01AD:
-	comparevartovalue VAR_SPECIAL_x8005, 8
-	gotoif ne, _01C8
+	compare VAR_SPECIAL_x8005, 8
+	goto_if_ne _01C8
 	apply_movement obj_D17R0101_bozu, _0324
 	goto _01EB
 
 _01C8:
-	comparevartovalue VAR_SPECIAL_x8005, 9
-	gotoif ne, _01E3
+	compare VAR_SPECIAL_x8005, 9
+	goto_if_ne _01E3
 	apply_movement obj_D17R0101_bozu, _032C
 	goto _01EB
 
@@ -148,14 +144,14 @@ _01EB:
 	return
 
 _01EF:
-	comparevartovalue VAR_SPECIAL_x8004, 7
-	gotoif ne, _020A
+	compare VAR_SPECIAL_x8004, 7
+	goto_if_ne _020A
 	apply_movement obj_D17R0101_bozu, _0364
 	goto _022D
 
 _020A:
-	comparevartovalue VAR_SPECIAL_x8004, 8
-	gotoif ne, _0225
+	compare VAR_SPECIAL_x8004, 8
+	goto_if_ne _0225
 	apply_movement obj_D17R0101_bozu, _0378
 	goto _022D
 
@@ -166,20 +162,20 @@ _022D:
 	return
 
 _0231:
-	comparevartovalue VAR_SPECIAL_x8005, 7
-	gotoif ne, _024C
+	compare VAR_SPECIAL_x8005, 7
+	goto_if_ne _024C
 	apply_movement obj_D17R0101_bozu, _0398
 	goto _028A
 
 _024C:
-	comparevartovalue VAR_SPECIAL_x8005, 8
-	gotoif ne, _0267
+	compare VAR_SPECIAL_x8005, 8
+	goto_if_ne _0267
 	apply_movement obj_D17R0101_bozu, _03A4
 	goto _028A
 
 _0267:
-	comparevartovalue VAR_SPECIAL_x8005, 9
-	gotoif ne, _0282
+	compare VAR_SPECIAL_x8005, 9
+	goto_if_ne _0282
 	apply_movement obj_D17R0101_bozu, _03B0
 	goto _028A
 
@@ -199,8 +195,8 @@ _028E:
 
 scr_seq_D17R0101_002:
 	wait 30, VAR_SPECIAL_x800C
-	comparevartovalue VAR_TEMP_x400A, 0
-	gotoif ne, _02C2
+	compare VAR_TEMP_x400A, 0
+	goto_if_ne _02C2
 	apply_movement obj_D17R0101_bozu, _03D0
 	goto _02CA
 

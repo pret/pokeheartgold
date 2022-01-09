@@ -92,14 +92,14 @@
 	.endm
 
 	; Compares values between script reg and script reg
-	.macro comparelocaltolocal a, b
+	.macro compare_local_to_local a, b
 	.short 11
 	.byte \a
 	.byte \b
 	.endm
 
 	; Compares script reg to byte literal
-	.macro comparelocaltovalue reg, val
+	.macro compare_local_to_value reg, val
 	.short 12
 	.byte \reg
 	.byte \val
@@ -108,7 +108,7 @@
 	; Compares script reg to memory address
 	; Because scripts are compiled in a code-agnostic fashion,
 	; this command can never be assembled.
-	.macro comparelocaltoaddr reg, addr
+	.macro compare_local_to_addr reg, addr
 	.short 13
 	.byte \reg
 	.word \addr
@@ -117,7 +117,7 @@
 	; Compares memory address to script reg
 	; Because scripts are compiled in a code-agnostic fashion,
 	; this command can never be assembled.
-	.macro compareaddrtolocal addr, reg
+	.macro compare_addr_to_local addr, reg
 	.short 14
 	.word \addr
 	.byte \reg
@@ -126,7 +126,7 @@
 	; Compares memory address to byte literal
 	; Because scripts are compiled in a code-agnostic fashion,
 	; this command can never be assembled.
-	.macro compareaddrtovalue addr, val
+	.macro compare_addr_to_value addr, val
 	.short 15
 	.word \addr
 	.byte \val
@@ -135,21 +135,21 @@
 	; Compares bytes at two memory addresses
 	; Because scripts are compiled in a code-agnostic fashion,
 	; this command can never be assembled.
-	.macro compareaddrtoaddr a, b
+	.macro compare_addr_to_addr a, b
 	.short 16
 	.word \a
 	.word \b
 	.endm
 
 	; Compares variable to 16-bit literal
-	.macro comparevartovalue var, val
+	.macro compare_var_to_value var, val
 	.short 17
 	.short \var
 	.short \val
 	.endm
 
 	; Compares two variables
-	.macro comparevartovar a, b
+	.macro compare_var_to_var a, b
 	.short 18
 	.short \a
 	.short \b
@@ -211,14 +211,14 @@
 	.endm
 
 	; Conditional branch to offset in script
-	.macro gotoif condition, dest
+	.macro goto_if condition, dest
 	.short 28
 	.byte \condition
 	.word \dest-.-4
 	.endm
 
 	; Conditional call subroutine
-	.macro callif condition, sub
+	.macro call_if condition, sub
 	.short 29
 	.byte \condition
 	.word \sub-.-4
@@ -4764,6 +4764,104 @@
 
 	; Convenience macros
 
+	; Generic compare macro which attempts to deduce argument types based on their values
+	; Any values between 0x4000 to 0x40FF and 0x8000 to 0x8015 are considered event variable identifiers
+	.macro compare var, arg
+		.if ((\arg >= VARS_START && \arg <= VARS_END) || (\arg >= SPECIAL_VARS_START && \arg <= SPECIAL_VARS_END))
+			compare_var_to_var \var, \arg
+		.else
+			compare_var_to_value \var, \arg
+		.endif
+	.endm
+
+	.macro goto_if_unset flag, dest
+	checkflag \flag
+	goto_if FALSE, \dest
+	.endm
+
+	.macro goto_if_set flag, dest
+	checkflag \flag
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_lt dest ; LESS THAN
+	goto_if 0, \dest
+	.endm
+
+	.macro goto_if_eq dest ; EQUAL
+	goto_if 1, \dest
+	.endm
+
+	.macro goto_if_gt dest ; GREATER THAN
+	goto_if 2, \dest
+	.endm
+
+	.macro goto_if_le dest ; LESS THAN OR EQUAL
+	goto_if 3, \dest
+	.endm
+
+	.macro goto_if_ge dest ; GREATER THAN OR EQUAL
+	goto_if 4, \dest
+	.endm
+
+	.macro goto_if_ne dest ; NOT EQUAL
+	goto_if 5, \dest
+	.endm
+
+	.macro call_if_unset flag, dest
+	checkflag \flag
+	call_if FALSE, \dest
+	.endm
+
+	.macro call_if_set flag, dest
+	checkflag \flag
+	call_if TRUE, \dest
+	.endm
+
+	.macro call_if_lt dest ; LESS THAN
+	call_if 0, \dest
+	.endm
+
+	.macro call_if_eq dest ; EQUAL
+	call_if 1, \dest
+	.endm
+
+	.macro call_if_gt dest ; GREATER THAN
+	call_if 2, \dest
+	.endm
+
+	.macro call_if_le dest ; LESS THAN OR EQUAL
+	call_if 3, \dest
+	.endm
+
+	.macro call_if_ge dest ; GREATER THAN OR EQUAL
+	call_if 4, \dest
+	.endm
+
+	.macro call_if_ne dest ; NOT EQUAL
+	call_if 5, \dest
+	.endm
+
+	.macro goto_if_defeated trainer, dest
+	checktrainerflag \trainer
+	goto_if TRUE, \dest
+	.endm
+
+	.macro goto_if_not_defeated trainer, dest
+	checktrainerflag \trainer
+	goto_if FALSE, \dest
+	.endm
+
+	.macro call_if_defeated trainer, dest
+	checktrainerflag \trainer
+	call_if TRUE, \dest
+	.endm
+
+	.macro call_if_not_defeated trainer, dest
+	checktrainerflag \trainer
+	call_if FALSE, \dest
+	.endm
+
 	.macro item_vars item, quantity=1
 	.if \item < 0x4000
 	setvar VAR_SPECIAL_x8004, \item
@@ -4780,15 +4878,15 @@
 	.macro goto_if_no_item_space item, quantity, target
 	item_vars \item, \quantity
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, \target
+	compare VAR_SPECIAL_x800C, 0
+	goto_if eq, \target
 	.endm
 
 	.macro goto_if_no_item_space_2 item, quantity, target
 	item_vars \item, \quantity
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, \target
+	compare VAR_SPECIAL_x800C, 1
+	goto_if ne, \target
 	.endm
 
 	.macro giveitem_no_check item, quantity
@@ -4806,8 +4904,8 @@
 	.endm
 
 	.macro case value, target
-	comparevartovalue VAR_SPECIAL_x8008, \value
-	gotoif eq, \target
+	compare VAR_SPECIAL_x8008, \value
+	goto_if eq, \target
 	.endm
 
 	.macro phone_call who, b, c

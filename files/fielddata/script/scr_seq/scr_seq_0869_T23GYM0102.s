@@ -27,31 +27,30 @@
 scr_seq_T23GYM0102_016:
 	scrcmd_326
 	get_phone_book_rematch 34, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00CD
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _006C
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00CD
+	goto_if_set FLAG_GAME_CLEAR, _006C
 	clearflag FLAG_UNK_2EA
 	end
 
 _006C:
 	scrcmd_147 34, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _0096
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _0096
 	get_weekday VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 4
-	gotoif ne, _0096
+	compare VAR_TEMP_x4002, 4
+	goto_if_ne _0096
 	setflag FLAG_UNK_2EA
 	end
 
 _0096:
 	get_weekday VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00C7
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif eq, _00C7
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif eq, _00C7
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00C7
+	compare VAR_TEMP_x4001, 3
+	goto_if_eq _00C7
+	compare VAR_TEMP_x4001, 5
+	goto_if_eq _00C7
 	clearflag FLAG_UNK_2EA
 	end
 
@@ -68,14 +67,14 @@ scr_seq_T23GYM0102_001:
 	lockall
 	faceplayer
 	check_badge 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _017A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _017A
 	npc_msg msg_0567_T23GYM0102_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_BUGSY_BUGSY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0174
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0174
 	npc_msg msg_0567_T23GYM0102_00001
 	buffer_players_name 0
 	npc_msg msg_0567_T23GYM0102_00002
@@ -110,8 +109,7 @@ _0174:
 	end
 
 _017A:
-	checkflag FLAG_UNK_07F
-	gotoif FALSE, _0136
+	goto_if_unset FLAG_UNK_07F, _0136
 	npc_msg msg_0567_T23GYM0102_00006
 	waitbutton
 	closemsg

@@ -28,17 +28,17 @@ scr_seq_R31R0101_000:
 	wait_se SEQ_SE_DP_KAIDAN2
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	scrcmd_729 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, _00C3
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _008A
+	compare VAR_TEMP_x4002, 1
+	goto_if_ne _00C3
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _008A
 	apply_movement obj_R31R0101_var_1, _02AC
 	apply_movement obj_R31R0101_tsure_poke_611, _02FC
 	goto _00BD
 
 _008A:
-	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, _00AD
+	compare VAR_TEMP_x4001, 7
+	goto_if_ne _00AD
 	apply_movement obj_R31R0101_var_1, _02BC
 	apply_movement obj_R31R0101_tsure_poke_611, _0314
 	goto _00BD
@@ -50,15 +50,15 @@ _00BD:
 	goto _0119
 
 _00C3:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _00E6
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _00E6
 	apply_movement obj_R31R0101_var_1, _02D4
 	apply_movement obj_R31R0101_tsure_poke_611, _033C
 	goto _0119
 
 _00E6:
-	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, _0109
+	compare VAR_TEMP_x4001, 7
+	goto_if_ne _0109
 	apply_movement obj_R31R0101_var_1, _02E4
 	apply_movement obj_R31R0101_tsure_poke_611, _0354
 	goto _0119
@@ -69,8 +69,8 @@ _0109:
 _0119:
 	wait_movement
 	apply_movement obj_player, _0294
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, _0138
+	compare VAR_TEMP_x4002, 1
+	goto_if_ne _0138
 	apply_movement obj_partner_poke, _0294
 _0138:
 	wait_movement
@@ -85,17 +85,17 @@ _0138:
 	closemsg
 	apply_movement obj_R31R0101_tsure_poke_611, _02A4
 	wait_movement
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, _01DA
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _01A1
+	compare VAR_TEMP_x4002, 1
+	goto_if_ne _01DA
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _01A1
 	apply_movement obj_R31R0101_var_1, _037C
 	apply_movement obj_R31R0101_tsure_poke_611, _03EC
 	goto _01D4
 
 _01A1:
-	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, _01C4
+	compare VAR_TEMP_x4001, 7
+	goto_if_ne _01C4
 	apply_movement obj_R31R0101_var_1, _038C
 	apply_movement obj_R31R0101_tsure_poke_611, _0404
 	goto _01D4
@@ -107,15 +107,15 @@ _01D4:
 	goto _0230
 
 _01DA:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _01FD
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _01FD
 	apply_movement obj_R31R0101_var_1, _03B4
 	apply_movement obj_R31R0101_tsure_poke_611, _043C
 	goto _0230
 
 _01FD:
-	comparevartovalue VAR_TEMP_x4001, 7
-	gotoif ne, _0220
+	compare VAR_TEMP_x4001, 7
+	goto_if_ne _0220
 	apply_movement obj_R31R0101_var_1, _03C4
 	apply_movement obj_R31R0101_tsure_poke_611, _0454
 	goto _0230
@@ -126,8 +126,8 @@ _0220:
 _0230:
 	wait 16, VAR_SPECIAL_x800C
 	apply_movement obj_player, _029C
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, _0253
+	compare VAR_TEMP_x4002, 1
+	goto_if_ne _0253
 	apply_movement obj_partner_poke, _029C
 _0253:
 	wait_movement

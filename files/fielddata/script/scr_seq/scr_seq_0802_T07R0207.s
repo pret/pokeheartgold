@@ -12,10 +12,10 @@ scr_seq_T07R0207_000:
 	scrcmd_609
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0058
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _002A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0058
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _002A
 	end
 
 _002A:
@@ -60,8 +60,8 @@ _00B3:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0150
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0150
 	npc_msg msg_0507_T07R0207_00003
 	closemsg
 	setvar VAR_UNK_4113, 65535
@@ -74,8 +74,8 @@ _00EE:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0150
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0150
 	npc_msg msg_0507_T07R0207_00004
 	closemsg
 	setvar VAR_UNK_4113, 65535
@@ -87,8 +87,8 @@ _0129:
 	wait_se SEQ_SE_DP_SELECT
 	scrcmd_488 32772, 2
 	scrcmd_241 16659
-	comparevartovalue VAR_UNK_4113, 1
-	gotoif ne, _014D
+	compare VAR_UNK_4113, 1
+	goto_if_ne _014D
 	npc_msg msg_0507_T07R0207_00006
 	goto _0150
 

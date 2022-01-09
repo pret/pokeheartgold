@@ -22,8 +22,7 @@
 	scrdef_end
 
 scr_seq_D49R0104_012:
-	checkflag FLAG_UNK_0EF
-	gotoif TRUE, _004D
+	goto_if_set FLAG_UNK_0EF, _004D
 	setvar VAR_TEMP_x400B, 0
 	end
 
@@ -32,8 +31,8 @@ _004D:
 	end
 
 scr_seq_D49R0104_011:
-	comparevartovalue VAR_TEMP_x400B, 1
-	gotoif ne, _0074
+	compare VAR_TEMP_x400B, 1
+	goto_if_ne _0074
 	move_person obj_D49R0104_pcwoman2_2, 2, 1, 3, 3
 	setvar VAR_TEMP_x400B, 0
 _0074:
@@ -53,8 +52,7 @@ scr_seq_D49R0104_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0EF
-	gotoif TRUE, _00A7
+	goto_if_set FLAG_UNK_0EF, _00A7
 	npc_msg msg_0140_D49R0104_00001
 	waitbutton
 	closemsg

@@ -30,8 +30,7 @@ scr_seq_T11PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _004F
+	goto_if_set FLAG_RESTORED_POWER, _004F
 	npc_msg msg_0532_T11PC0101_00001
 	waitbutton
 	closemsg

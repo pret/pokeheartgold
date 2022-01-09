@@ -229,23 +229,45 @@ class NormalScriptParser(ScriptParserBase):
                 r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
                 r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
                 r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
-                r'\tcomparevartovalue VAR_SPECIAL_x800C, 0\n'
-                r'\tgotoif eq, (\w+)\n'
+                r'\tcompare_var_to_value VAR_SPECIAL_x800C, 0\n'
+                r'\tgoto_if eq, (\w+)\n'
             ), handle_itemspace('goto_if_no_item_space', 1, 3, 4)),
             (re.compile(
                 r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
                 r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
                 r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
                 r'\tcomparevartovalue VAR_SPECIAL_x800C, 1\n'
-                r'\tgotoif ne, (\w+)\n'
+                r'\tgoto_if ne, (\w+)\n'
             ), handle_itemspace('goto_if_no_item_space_2', 1, 3, 4)),
             (re.compile(
                 r'\tcopyvar VAR_SPECIAL_x8008, (\w+)\n'
             ), r'\tswitch \1\n'),
             (re.compile(
-                r'\tcomparevartovalue VAR_SPECIAL_x8008, (\w+)\n'
-                r'\tgotoif eq, (\w+)\n'
-            ), r'\tcase \1, \2\n')
+                r'\tcompare_var_to_value VAR_SPECIAL_x8008, (\w+)\n'
+                r'\tgoto_if eq, (\w+)\n'
+            ), r'\tcase \1, \2\n'),
+            (re.compile(
+                r'\tcompare_var_to_(var|value) '
+            ), '\tcompare '),
+            (re.compile(
+                r'\tcheckflag (\w+)\n'
+                r'\t(goto|call)_if FALSE, (\w+)\n'
+            ), r'\t\2_if_unset \1, \3\n'),
+            (re.compile(
+                r'\tcheckflag (\w+)\n'
+                r'\t(goto|call)_if TRUE, (\w+)\n'
+            ), r'\t\2_if_set \1, \3\n'),
+            (re.compile(
+                r'\t(goto|call)_if (eq|ne|lt|le|gt|ge), (\w+)\n'
+            ), r'\t\1_if_\2 \3\n'),
+            (re.compile(
+                r'\tchecktrainerflag (\w+)\n'
+                r'\t(goto|call)_if TRUE, (\w+)\n'
+            ), r'\t\2_if_defeated \1, \3\n'),
+            (re.compile(
+                r'\tchecktrainerflag (\w+)\n'
+                r'\t(goto|call)_if FALSE, (\w+)\n'
+            ), r'\t\2_if_not_defeated \1, \3\n'),
         ]
 
     def get_object(self, id_: int):

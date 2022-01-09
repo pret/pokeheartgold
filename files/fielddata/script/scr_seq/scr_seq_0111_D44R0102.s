@@ -14,28 +14,27 @@
 	scrdef_end
 
 scr_seq_D44R0102_002:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _002B
+	goto_if_unset FLAG_UNK_189, _002B
 	clearflag FLAG_UNK_189
 	end
 
 _002B:
-	comparevartovalue VAR_UNK_40FC, 2
-	gotoif ge, _0047
-	comparevartovalue VAR_UNK_40FC, 1
-	callif eq, _015E
+	compare VAR_UNK_40FC, 2
+	goto_if_ge _0047
+	compare VAR_UNK_40FC, 1
+	call_if_eq _015E
 	end
 
 _0047:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0062
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0062
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 	goto _007D
 
 _0062:
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _0079
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0079
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 	goto _007D
 
@@ -43,29 +42,29 @@ _0079:
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 _007D:
 	scrcmd_147 27, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00F6
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00F6
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _00AB
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _00AB
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
 _00AB:
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _00C2
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _00C2
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
 _00C2:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _00D9
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _00D9
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
 _00D9:
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _00F0
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _00F0
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _00F4
 
@@ -76,23 +75,23 @@ _00F4:
 
 _00F6:
 	get_phone_book_rematch 27, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0158
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0158
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, _0124
+	compare VAR_TEMP_x4000, 16
+	goto_if_ne _0124
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _0156
 
 _0124:
-	comparevartovalue VAR_TEMP_x4000, 17
-	gotoif ne, _013B
+	compare VAR_TEMP_x4000, 17
+	goto_if_ne _013B
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _0156
 
 _013B:
-	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, _0152
+	compare VAR_TEMP_x4000, 18
+	goto_if_ne _0152
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	goto _0156
 
@@ -107,14 +106,14 @@ _0158:
 
 _015E:
 	get_starter_choice VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 152
-	gotoif ne, _017B
+	compare VAR_TEMP_x4000, 152
+	goto_if_ne _017B
 	setvar VAR_OBJ_0, 1048
 	goto _019A
 
 _017B:
-	comparevartovalue VAR_TEMP_x4000, 155
-	gotoif ne, _0194
+	compare VAR_TEMP_x4000, 155
+	goto_if_ne _0194
 	setvar VAR_OBJ_0, 1049
 	goto _019A
 
@@ -132,14 +131,14 @@ scr_seq_D44R0102_000:
 	apply_movement obj_player, _02C0
 	wait_movement
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 26
-	gotoif ne, _01D5
+	compare VAR_TEMP_x4000, 26
+	goto_if_ne _01D5
 	apply_movement obj_D44R0102_gsleader8, _02C8
 	goto _01F8
 
 _01D5:
-	comparevartovalue VAR_TEMP_x4000, 27
-	gotoif ne, _01F0
+	compare VAR_TEMP_x4000, 27
+	goto_if_ne _01F0
 	apply_movement obj_D44R0102_gsleader8, _02D0
 	goto _01F8
 
@@ -160,15 +159,15 @@ _0236:
 	npc_msg msg_0129_D44R0102_00005
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 26
-	gotoif ne, _0264
+	compare VAR_TEMP_x4000, 26
+	goto_if_ne _0264
 	apply_movement obj_D44R0102_gsleader8, _02E0
 	apply_movement obj_player, _0310
 	goto _0297
 
 _0264:
-	comparevartovalue VAR_TEMP_x4000, 27
-	gotoif ne, _0287
+	compare VAR_TEMP_x4000, 27
+	goto_if_ne _0287
 	apply_movement obj_D44R0102_gsleader8, _02F0
 	apply_movement obj_player, _0310
 	goto _0297
@@ -230,8 +229,7 @@ scr_seq_D44R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0E2
-	gotoif TRUE, _0340
+	goto_if_set FLAG_UNK_0E2, _0340
 	buffer_players_name 0
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00007
@@ -254,19 +252,19 @@ scr_seq_D44R0102_003:
 	lockall
 	faceplayer
 	scrcmd_147 27, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _03FC
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _03F1
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _03FC
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _03F1
 	npc_msg msg_0129_D44R0102_00009
 _0379:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _039D
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _03E0
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _039D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _03E0
 	end
 
 _039D:
@@ -306,11 +304,11 @@ _03FC:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _045D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _045D
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0468
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0468
 	npc_msg msg_0129_D44R0102_00030
 	closemsg
 	setflag FLAG_UNK_189
@@ -350,8 +348,8 @@ scr_seq_D44R0102_004:
 	scrcmd_603
 	scrcmd_604 55
 	apply_movement obj_D44R0102_gsrivel_2, _0674
-	comparevartovalue VAR_TEMP_x4000, 24
-	gotoif ne, _04AA
+	compare VAR_TEMP_x4000, 24
+	goto_if_ne _04AA
 	apply_movement obj_player, _0688
 	goto _04B2
 
@@ -404,14 +402,14 @@ _04B2:
 	apply_movement obj_player, _0770
 	apply_movement obj_D44R0102_gsleader8_2, _0718
 	wait_movement
-	comparevartovalue VAR_OBJ_0, 1048
-	gotoif ne, _05AC
+	compare VAR_OBJ_0, 1048
+	goto_if_ne _05AC
 	multi_battle TRAINER_PARTNER_RIVAL_2, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
 
 _05AC:
-	comparevartovalue VAR_OBJ_0, 1049
-	gotoif ne, _05C8
+	compare VAR_OBJ_0, 1049
+	goto_if_ne _05C8
 	multi_battle TRAINER_PARTNER_RIVAL_3, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
 
@@ -419,8 +417,8 @@ _05C8:
 	multi_battle TRAINER_PARTNER_RIVAL_1, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 _05D1:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _066C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _066C
 	buffer_players_name 0
 	gender_msgbox msg_0129_D44R0102_00025, msg_0129_D44R0102_00026
 	closemsg

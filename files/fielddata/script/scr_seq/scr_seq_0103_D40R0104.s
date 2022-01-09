@@ -16,10 +16,9 @@ scr_seq_D40R0104_003:
 	end
 
 scr_seq_D40R0104_001:
-	comparevartovalue VAR_TEMP_x4003, 111
-	gotoif ne, _0032
-	checkflag FLAG_UNK_106
-	gotoif TRUE, _003A
+	compare VAR_TEMP_x4003, 111
+	goto_if_ne _0032
+	goto_if_set FLAG_UNK_106, _003A
 _0032:
 	setvar VAR_TEMP_x4003, 0
 	end
@@ -33,15 +32,12 @@ scr_seq_D40R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_117
-	gotoif TRUE, _010D
+	goto_if_set FLAG_UNK_117, _010D
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 8
-	gotoif eq, _0093
-	checkflag FLAG_UNK_106
-	gotoif TRUE, _00C5
-	checkflag FLAG_UNK_094
-	gotoif TRUE, _00B4
+	compare VAR_SPECIAL_x800C, 8
+	goto_if_eq _0093
+	goto_if_set FLAG_UNK_106, _00C5
+	goto_if_set FLAG_UNK_094, _00B4
 	npc_msg msg_0124_D40R0104_00001
 	waitbutton
 	closemsg
@@ -49,10 +45,8 @@ scr_seq_D40R0104_000:
 	end
 
 _0093:
-	checkflag FLAG_UNK_106
-	gotoif TRUE, _00C5
-	checkflag FLAG_UNK_094
-	gotoif TRUE, _00B4
+	goto_if_set FLAG_UNK_106, _00C5
+	goto_if_set FLAG_UNK_094, _00B4
 	npc_msg msg_0124_D40R0104_00000
 	waitbutton
 	closemsg
@@ -69,12 +63,10 @@ _00B4:
 
 _00C5:
 	get_game_version VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 8
-	gotoif ne, _00EC
-	checkflag FLAG_UNK_109
-	gotoif TRUE, _00F7
-	checkflag FLAG_UNK_105
-	gotoif TRUE, _0102
+	compare VAR_SPECIAL_x800C, 8
+	goto_if_ne _00EC
+	goto_if_set FLAG_UNK_109, _00F7
+	goto_if_set FLAG_UNK_105, _0102
 _00EC:
 	npc_msg msg_0124_D40R0104_00004
 	waitbutton
@@ -108,8 +100,8 @@ scr_seq_D40R0104_002:
 	npc_msg msg_0124_D40R0104_00003
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0142
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0142
 	apply_movement obj_D40R0104_bozu, _0168
 	goto _014A
 

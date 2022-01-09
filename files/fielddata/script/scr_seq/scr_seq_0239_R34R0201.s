@@ -14,8 +14,7 @@ scr_seq_R34R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_083
-	gotoif TRUE, _0055
+	goto_if_set FLAG_UNK_083, _0055
 	npc_msg msg_0386_R34R0201_00000
 	scrcmd_049
 	goto_if_no_item_space ITEM_TM12, 1, _0060

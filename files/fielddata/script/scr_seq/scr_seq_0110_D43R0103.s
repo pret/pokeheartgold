@@ -23,14 +23,14 @@ scr_seq_D43R0103_000:
 	show_person obj_D43R0103_gsrivel
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 37
-	gotoif ne, _0059
+	compare VAR_TEMP_x4000, 37
+	goto_if_ne _0059
 	apply_movement obj_D43R0103_gsrivel, _0180
 	goto _007C
 
 _0059:
-	comparevartovalue VAR_TEMP_x4000, 38
-	gotoif ne, _0074
+	compare VAR_TEMP_x4000, 38
+	goto_if_ne _0074
 	apply_movement obj_D43R0103_gsrivel, _0198
 	goto _007C
 
@@ -49,14 +49,14 @@ _007C:
 	npc_msg msg_0128_D43R0103_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, _00C1
+	compare VAR_SPECIAL_x800C, 152
+	goto_if_ne _00C1
 	trainer_battle TRAINER_RIVAL_SILVER_9, 0, 0, 0
 	goto _00E4
 
 _00C1:
-	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, _00DC
+	compare VAR_SPECIAL_x800C, 155
+	goto_if_ne _00DC
 	trainer_battle TRAINER_RIVAL_SILVER_13, 0, 0, 0
 	goto _00E4
 
@@ -64,20 +64,20 @@ _00DC:
 	trainer_battle TRAINER_RIVAL_SILVER_5, 0, 0, 0
 _00E4:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _015A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _015A
 	callstd std_play_rival_outro_music
 	npc_msg msg_0128_D43R0103_00001
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 37
-	gotoif ne, _011F
+	compare VAR_TEMP_x4000, 37
+	goto_if_ne _011F
 	apply_movement obj_D43R0103_gsrivel, _01C8
 	goto _0142
 
 _011F:
-	comparevartovalue VAR_TEMP_x4000, 38
-	gotoif ne, _013A
+	compare VAR_TEMP_x4000, 38
+	goto_if_ne _013A
 	apply_movement obj_D43R0103_gsrivel, _01E4
 	goto _0142
 
@@ -193,22 +193,22 @@ _0278:
 	lockall
 	setvar VAR_UNK_40CA, 1
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _02A9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _02A9
 	apply_movement obj_player, _0330
 	apply_movement obj_partner_poke, _033C
 	goto _02FF
 
 _02A9:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _02CC
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _02CC
 	apply_movement obj_player, _034C
 	apply_movement obj_partner_poke, _0358
 	goto _02FF
 
 _02CC:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _02EF
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _02EF
 	apply_movement obj_player, _0384
 	apply_movement obj_partner_poke, _0390
 	goto _02FF

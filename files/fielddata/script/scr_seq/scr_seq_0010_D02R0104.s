@@ -16,13 +16,13 @@
 scr_seq_D02R0104_000:
 	setflag FLAG_UNK_298
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _003B
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _003B
 	goto _0060
 	.byte 0x16, 0x00, 0x23, 0x00, 0x00, 0x00
 _003B:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0054
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0054
 	goto _007D
 	.byte 0x16, 0x00
 	.byte 0x0a, 0x00, 0x00, 0x00
@@ -33,16 +33,16 @@ _0054:
 
 _0060:
 	scrcmd_379 VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif eq, _009A
+	compare VAR_TEMP_x4001, 3
+	goto_if_eq _009A
 	setvar VAR_UNK_40F6, 1
 	setflag FLAG_UNK_26E
 	end
 
 _007D:
 	scrcmd_379 VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 4
-	gotoif eq, _009A
+	compare VAR_TEMP_x4001, 4
+	goto_if_eq _009A
 	setvar VAR_UNK_40F6, 1
 	setflag FLAG_UNK_26E
 	end
@@ -54,22 +54,22 @@ _009A:
 
 scr_seq_D02R0104_005:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _00C3
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _00C3
 	goto _0113
 	.byte 0x16, 0x00, 0x1f
 	.byte 0x00, 0x00, 0x00
 _00C3:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _00DC
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _00DC
 	goto _012A
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _00DC:
 	goto _00E2
 
 _00E2:
-	comparevartovalue VAR_UNK_40F6, 1
-	gotoif eq, _0141
+	compare VAR_UNK_40F6, 1
+	goto_if_eq _0141
 	setflag FLAG_UNK_26E
 	hide_person obj_D02R0104_tsure_poke_582
 	hide_person obj_D02R0104_tsure_poke_582_2
@@ -82,14 +82,14 @@ _00E2:
 
 _0113:
 	scrcmd_379 VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif eq, _0141
+	compare VAR_TEMP_x4001, 3
+	goto_if_eq _0141
 	goto _00E2
 
 _012A:
 	scrcmd_379 VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 4
-	gotoif eq, _0141
+	compare VAR_TEMP_x4001, 4
+	goto_if_eq _0141
 	goto _00E2
 
 _0141:
@@ -580,10 +580,10 @@ _07E9:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0825
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0866
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0825
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0866
 	end
 
 _0825:

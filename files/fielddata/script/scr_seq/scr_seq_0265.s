@@ -15,14 +15,14 @@ scr_seq_0265_000:
 	faceplayer
 	scrcmd_312
 	scrcmd_313 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0094
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0151
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _015E
-	comparevartovalue VAR_UNK_408E, 4
-	gotoif eq, _0057
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0094
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0151
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _015E
+	compare VAR_UNK_408E, 4
+	goto_if_eq _0057
 	npc_msg msg_0439_00000
 	waitbutton
 	closemsg
@@ -35,8 +35,8 @@ _0057:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0082
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0082
 	setflag FLAG_UNK_99E
 	npc_msg msg_0439_00015
 	waitbutton
@@ -58,18 +58,18 @@ _0094:
 	npc_msg msg_0439_00001
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00F6
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00F6
 	npc_msg msg_0439_00010
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00F6
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00F6
 	touchscreen_menu_show
 	clearflag FLAG_UNK_067
 	scrcmd_365
-	comparevartovalue VAR_UNK_408E, 3
-	gotoif ne, _00EB
+	compare VAR_UNK_408E, 3
+	goto_if_ne _00EB
 	npc_msg msg_0439_00012
 	setvar VAR_UNK_408E, 4
 	setflag FLAG_UNK_992
@@ -85,8 +85,8 @@ _00EB:
 _00F6:
 	touchscreen_menu_show
 	get_party_count VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif ne, _0114
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_ne _0114
 	npc_msg msg_0439_00004
 	waitbutton
 	closemsg
@@ -100,8 +100,8 @@ _0114:
 	wait_fanfare
 	scrcmd_366
 	clearflag FLAG_UNK_067
-	comparevartovalue VAR_UNK_408E, 3
-	gotoif ne, _0146
+	compare VAR_UNK_408E, 3
+	goto_if_ne _0146
 	npc_msg msg_0439_00011
 	setvar VAR_UNK_408E, 4
 	setflag FLAG_UNK_992
@@ -126,17 +126,17 @@ _015E:
 	scrcmd_312
 	npc_msg msg_0439_00009
 	scrcmd_387 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0196
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01BD
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _01E4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0196
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01BD
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _01E4
 	goto _020B
 	.byte 0x02, 0x00
 _0196:
-	comparevartovalue VAR_UNK_408E, 4
-	gotoif ne, _01B2
+	compare VAR_UNK_408E, 4
+	goto_if_ne _01B2
 	npc_msg msg_0439_00047
 	goto _0057
 	.byte 0x16, 0x00, 0x03, 0x00
@@ -149,8 +149,8 @@ _01B2:
 	end
 
 _01BD:
-	comparevartovalue VAR_UNK_408E, 4
-	gotoif ne, _01D9
+	compare VAR_UNK_408E, 4
+	goto_if_ne _01D9
 	npc_msg msg_0439_00048
 	goto _0057
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
@@ -162,8 +162,8 @@ _01D9:
 	end
 
 _01E4:
-	comparevartovalue VAR_UNK_408E, 4
-	gotoif ne, _0200
+	compare VAR_UNK_408E, 4
+	goto_if_ne _0200
 	npc_msg msg_0439_00049
 	goto _0057
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
@@ -175,8 +175,8 @@ _0200:
 	end
 
 _020B:
-	comparevartovalue VAR_UNK_408E, 4
-	gotoif ne, _0227
+	compare VAR_UNK_408E, 4
+	goto_if_ne _0227
 	npc_msg msg_0439_00050
 	goto _0057
 	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
@@ -193,17 +193,17 @@ scr_seq_0265_001:
 	faceplayer
 	scrcmd_113 20, 2
 	scrcmd_313 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _042E
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0455
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0620
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _042E
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0455
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0620
 	npc_msg msg_0439_00021
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0290
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0290
 	touchscreen_menu_show
 	npc_msg msg_0439_00026
 	waitbutton
@@ -214,11 +214,11 @@ scr_seq_0265_001:
 
 _0290:
 	party_count_not_egg VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03FB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03FB
 	scrcmd_358 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _041F
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _041F
 	npc_msg msg_0439_00022
 	closemsg
 	scrcmd_114
@@ -228,31 +228,31 @@ _0290:
 _02CB:
 	scrcmd_551 32780
 	scrcmd_552 32768, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02F4
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02F4
 	choose_move_ui 0, VAR_SPECIAL_x8000, 0
 	get_move_selection 0, VAR_SPECIAL_x800C
 	goto _02CB
 
 _02F4:
-	comparevartovalue VAR_SPECIAL_x8000, 255
-	gotoif eq, _03C6
+	compare VAR_SPECIAL_x8000, 255
+	goto_if_eq _03C6
 	scrcmd_690 VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _03A1
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _03A1
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _03B1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _03B1
 	count_alive_mons VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _040A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _040A
 	scrcmd_373 VAR_SPECIAL_x8000
 	call _038B
 	scrcmd_372 VAR_SPECIAL_x8001
 	setflag FLAG_UNK_068
 	scrcmd_313 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0363
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0363
 	goto _0374
 
 _0363:
@@ -311,8 +311,8 @@ _03DB:
 	npc_msg msg_0439_00024
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0290
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0290
 	touchscreen_menu_show
 	goto _03CE
 	.byte 0x02, 0x00
@@ -358,8 +358,8 @@ _043B:
 
 _0440:
 	scrcmd_371 32780, 32768
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif ne, _043B
+	compare VAR_SPECIAL_x800C, 0
+	call_if_ne _043B
 	return
 
 _0455:
@@ -369,24 +369,24 @@ _0455:
 	npc_msg msg_0439_00024
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0290
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0290
 	npc_msg msg_0439_00037
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0498
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0498
 	touchscreen_menu_show
 	goto _03CE
 
 _0498:
 	get_party_count VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, _05DC
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_eq _05DC
 	scrcmd_313 VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8001, 0
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0520
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0520
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8001
 	scrcmd_385 0, 1, 2, 0
@@ -406,15 +406,15 @@ _0520:
 	npc_msg msg_0439_00033
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0544
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0544
 	touchscreen_menu_show
 	goto _03CE
 
 _0544:
 	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_SPECIAL_x8004
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0566
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0566
 	touchscreen_menu_show
 	npc_msg msg_0439_00027
 	waitbutton
@@ -440,8 +440,8 @@ _0566:
 	npc_msg msg_0439_00035
 	wait_cry
 	scrcmd_313 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _05BE
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _05BE
 	touchscreen_menu_show
 	goto _03CE
 
@@ -449,8 +449,8 @@ _05BE:
 	npc_msg msg_0439_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0498
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0498
 	touchscreen_menu_show
 	goto _03CE
 
@@ -475,8 +475,8 @@ _0620:
 	npc_msg msg_0439_00037
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0498
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0498
 	touchscreen_menu_show
 	npc_msg msg_0439_00029
 	waitbutton

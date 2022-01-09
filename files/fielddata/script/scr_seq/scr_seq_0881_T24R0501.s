@@ -9,10 +9,9 @@
 	scrdef_end
 
 scr_seq_T24R0501_000:
-	checkflag FLAG_UNK_0B9
-	gotoif TRUE, _0024
-	comparevartovalue VAR_UNK_40A5, 1
-	gotoif eq, _0051
+	goto_if_set FLAG_UNK_0B9, _0024
+	compare VAR_UNK_40A5, 1
+	goto_if_eq _0051
 	goto _0024
 
 _0024:

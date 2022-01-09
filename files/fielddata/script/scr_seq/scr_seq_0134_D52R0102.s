@@ -11,11 +11,11 @@
 	scrdef_end
 
 scr_seq_D52R0102_001:
-	comparevartovalue VAR_UNK_40F9, 4
-	gotoif ge, _007C
+	compare VAR_UNK_40F9, 4
+	goto_if_ge _007C
 	get_game_version VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _0038
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _0038
 	goto _004A
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0038:
@@ -27,11 +27,10 @@ _0040:
 	end
 
 _004A:
-	checkflag FLAG_UNK_18B
-	gotoif TRUE, _007C
+	goto_if_set FLAG_UNK_18B, _007C
 	hasitem ITEM_BLUE_ORB, 1, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ge, _0072
+	compare VAR_TEMP_x4000, 1
+	goto_if_ge _0072
 	goto _0040
 	.byte 0x02, 0x00
 _0072:
@@ -43,8 +42,7 @@ _007C:
 	end
 
 scr_seq_D52R0102_002:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _008B
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _008B
 	end
 
 _008B:
@@ -65,13 +63,13 @@ scr_seq_D52R0102_000:
 	wild_battle SPECIES_KYOGRE, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _019D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _019D
 	scrcmd_683 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, _00EC
-	comparevartovalue VAR_TEMP_x4002, 4
-	gotoif eq, _00FB
+	compare VAR_TEMP_x4002, 3
+	goto_if_eq _00EC
+	compare VAR_TEMP_x4002, 4
+	goto_if_eq _00FB
 _00EC:
 	npc_msg msg_0149_D52R0102_00001
 	waitbutton
@@ -89,8 +87,8 @@ _00FB:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0142
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0142
 	apply_movement obj_D52R0102_mount_2, _01A4
 	wait_movement
 	apply_movement obj_player, _01B0

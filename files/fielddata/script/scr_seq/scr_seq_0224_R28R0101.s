@@ -25,24 +25,23 @@ scr_seq_R28R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_137
-	gotoif TRUE, _012A
+	goto_if_set FLAG_UNK_137, _012A
 	faceplayer
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0060
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0060
 	apply_movement obj_R28R0101_gsgirl1, _0140
 	goto _009E
 
 _0060:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _007B
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _007B
 	apply_movement obj_R28R0101_gsgirl1, _014C
 	goto _009E
 
 _007B:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0096
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0096
 	apply_movement obj_R28R0101_gsgirl1, _0158
 	goto _009E
 
@@ -51,20 +50,20 @@ _0096:
 _009E:
 	wait_movement
 	npc_msg msg_0372_R28R0101_00000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00BE
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00BE
 	apply_movement obj_R28R0101_gsgirl1, _0164
 	goto _00FC
 
 _00BE:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _00D9
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _00D9
 	apply_movement obj_R28R0101_gsgirl1, _0158
 	goto _00FC
 
 _00D9:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _00F4
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _00F4
 	apply_movement obj_R28R0101_gsgirl1, _014C
 	goto _00FC
 

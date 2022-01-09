@@ -15,8 +15,8 @@ scr_seq_R43R0201_001:
 	scrcmd_081 SEQ_GS_R_7_42
 	play_bgm SEQ_GS_EYE_ROCKET
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0037
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0037
 	goto _0095
 	.byte 0x16, 0x00, 0x2f, 0x00, 0x00, 0x00
 _0037:
@@ -25,8 +25,8 @@ _0037:
 	wait_movement
 	npc_msg msg_0403_R43R0201_00000
 	hasenoughmoneyimmediate 32780, 1000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _006C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _006C
 	npc_msg msg_0403_R43R0201_00001
 	closemsg
 	goto _0077
@@ -49,8 +49,8 @@ _0095:
 	wait_movement
 	npc_msg msg_0403_R43R0201_00000
 	hasenoughmoneyimmediate 32780, 1000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00CA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00CA
 	npc_msg msg_0403_R43R0201_00001
 	closemsg
 	goto _00D5
@@ -72,8 +72,7 @@ _00ED:
 	end
 
 scr_seq_R43R0201_002:
-	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif TRUE, _0110
+	goto_if_set FLAG_RED_GYARADOS_MEET, _0110
 	setvar VAR_UNK_410F, 0
 	end
 
@@ -150,8 +149,7 @@ scr_seq_R43R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0CE
-	gotoif TRUE, _0208
+	goto_if_set FLAG_UNK_0CE, _0208
 	npc_msg msg_0403_R43R0201_00004
 	goto_if_no_item_space ITEM_TM36, 1, _0213
 	callstd std_obtain_item_verbose

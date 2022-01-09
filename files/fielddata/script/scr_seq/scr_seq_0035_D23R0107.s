@@ -12,10 +12,10 @@ scr_seq_D23R0107_000:
 	scrcmd_609
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0058
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _002A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0058
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _002A
 	end
 
 _002A:
@@ -58,8 +58,8 @@ _00A5:
 _00C2:
 	wait_se SEQ_SE_DP_SELECT
 	scrcmd_488 32772, 4
-	comparevartovalue VAR_UNK_4113, 0
-	gotoif ne, _00E2
+	compare VAR_UNK_4113, 0
+	goto_if_ne _00E2
 	npc_msg msg_0071_D23R0107_00002
 	goto _00E5
 

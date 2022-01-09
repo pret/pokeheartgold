@@ -78,20 +78,20 @@ scr_seq_R30_002:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x4000, 558
-	gotoif ne, _010A
+	compare VAR_TEMP_x4000, 558
+	goto_if_ne _010A
 	apply_movement obj_player, _01D4
 	goto _0148
 
 _010A:
-	comparevartovalue VAR_TEMP_x4000, 559
-	gotoif ne, _0125
+	compare VAR_TEMP_x4000, 559
+	goto_if_ne _0125
 	apply_movement obj_player, _01E8
 	goto _0148
 
 _0125:
-	comparevartovalue VAR_TEMP_x4000, 560
-	gotoif ne, _0140
+	compare VAR_TEMP_x4000, 560
+	goto_if_ne _0140
 	apply_movement obj_player, _01FC
 	goto _0148
 
@@ -223,8 +223,7 @@ scr_seq_R30_008:
 	end
 
 scr_seq_R30_009:
-	checkflag FLAG_GOT_POKEDEX
-	gotoif TRUE, _02D5
+	goto_if_set FLAG_GOT_POKEDEX, _02D5
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer

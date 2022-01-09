@@ -12,8 +12,8 @@
 	scrdef_end
 
 scr_seq_D51R0101_002:
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 5
-	gotoif eq, _0021
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 5
+	goto_if_eq _0021
 	end
 
 _0021:

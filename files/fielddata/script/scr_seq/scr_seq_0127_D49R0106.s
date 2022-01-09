@@ -17,8 +17,7 @@
 	scrdef_end
 
 scr_seq_D49R0106_008:
-	checkflag FLAG_UNK_0F1
-	gotoif TRUE, _0039
+	goto_if_set FLAG_UNK_0F1, _0039
 	setvar VAR_TEMP_x400D, 0
 	end
 
@@ -27,8 +26,8 @@ _0039:
 	end
 
 scr_seq_D49R0106_007:
-	comparevartovalue VAR_TEMP_x400D, 1
-	gotoif ne, _0060
+	compare VAR_TEMP_x400D, 1
+	goto_if_ne _0060
 	move_person obj_D49R0106_pcwoman2, 6, 1, 3, 3
 	setvar VAR_TEMP_x400D, 0
 _0060:
@@ -48,8 +47,7 @@ scr_seq_D49R0106_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0F1
-	gotoif TRUE, _0093
+	goto_if_set FLAG_UNK_0F1, _0093
 	npc_msg msg_0142_D49R0106_00001
 	waitbutton
 	closemsg
@@ -70,8 +68,8 @@ scr_seq_D49R0106_002:
 	npc_msg msg_0142_D49R0106_00003
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03AC
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03AC
 _00BC:
 	npc_msg msg_0142_D49R0106_00006
 	touchscreen_menu_hide
@@ -205,14 +203,14 @@ _0362:
 	.byte 0x02, 0x00
 _036D:
 	npc_msg msg_0142_D49R0106_00007
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif eq, _014D
-	comparevartovalue VAR_TEMP_x4007, 1
-	gotoif eq, _0187
-	comparevartovalue VAR_TEMP_x4007, 2
-	gotoif eq, _01C1
-	comparevartovalue VAR_TEMP_x4007, 3
-	gotoif eq, _01FB
+	compare VAR_TEMP_x4007, 0
+	goto_if_eq _014D
+	compare VAR_TEMP_x4007, 1
+	goto_if_eq _0187
+	compare VAR_TEMP_x4007, 2
+	goto_if_eq _01C1
+	compare VAR_TEMP_x4007, 3
+	goto_if_eq _01FB
 	goto _0235
 	.byte 0x02, 0x00
 _03AC:
@@ -228,20 +226,20 @@ scr_seq_D49R0106_003:
 	lockall
 	faceplayer
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _03E0
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _03E0
 	apply_movement obj_D49R0106_tsure_poke_597, _043C
 	goto _041E
 
 _03E0:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _03FB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _03FB
 	apply_movement obj_D49R0106_tsure_poke_597, _0434
 	goto _041E
 
 _03FB:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0416
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0416
 	apply_movement obj_D49R0106_tsure_poke_597, _044C
 	goto _041E
 
@@ -293,8 +291,7 @@ scr_seq_D49R0106_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN
-	gotoif FALSE, _04A3
+	goto_if_unset FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN, _04A3
 	npc_msg msg_0142_D49R0106_00019
 	waitbutton
 	closemsg
@@ -312,8 +309,7 @@ scr_seq_D49R0106_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_HIDE_POKEATHLON_BALL_SIGN
-	gotoif FALSE, _04CC
+	goto_if_unset FLAG_HIDE_POKEATHLON_BALL_SIGN, _04CC
 	npc_msg msg_0142_D49R0106_00021
 	waitbutton
 	closemsg

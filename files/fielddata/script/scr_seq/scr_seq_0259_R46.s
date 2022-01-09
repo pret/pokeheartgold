@@ -14,8 +14,7 @@ scr_seq_R46_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_079
-	gotoif TRUE, _002C
+	goto_if_set FLAG_UNK_079, _002C
 	npc_msg msg_0406_R46_00002
 	waitbutton
 	closemsg

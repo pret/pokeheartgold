@@ -14,8 +14,8 @@
 scr_seq_D23R0105_000:
 	setflag FLAG_UNK_1B7
 	setvar VAR_UNK_4125, 0
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _002D
+	compare VAR_UNK_4077, 4
+	goto_if_ne _002D
 	clearflag FLAG_UNK_1B7
 _002D:
 	end
@@ -41,8 +41,8 @@ scr_seq_D23R0105_003:
 	end
 
 scr_seq_D23R0105_002:
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif eq, _0075
+	compare VAR_UNK_4077, 4
+	goto_if_eq _0075
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -54,22 +54,22 @@ scr_seq_D23R0105_002:
 
 _0075:
 	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _022B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _022B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0069_D23R0105_00000
 	closemsg
 	wait 16, VAR_SPECIAL_x800C
 	get_player_facing VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _00B8
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _00B8
 	apply_movement obj_D23R0105_gsgentleman, _0258
 	goto _00DB
 
 _00B8:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _00D3
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _00D3
 	apply_movement obj_D23R0105_gsgentleman, _024C
 	goto _00DB
 
@@ -77,40 +77,40 @@ _00D3:
 	apply_movement obj_D23R0105_gsgentleman, _0240
 _00DB:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _00F8
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _00F8
 	apply_movement obj_D23R0105_gsgentleman, _0264
 	goto _010D
 
 _00F8:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _010D
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _010D
 	apply_movement obj_D23R0105_gsgentleman, _0274
 _010D:
 	wait_movement
 	npc_msg msg_0069_D23R0105_00001
 	closemsg
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _012F
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _012F
 	apply_movement obj_D23R0105_gsgentleman, _0284
 	goto _0144
 
 _012F:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0144
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0144
 	apply_movement obj_D23R0105_gsgentleman, _028C
 _0144:
 	wait_movement
 	buffer_players_name 0
 	npc_msg msg_0069_D23R0105_00002
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0167
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0167
 	apply_movement obj_D23R0105_gsgentleman, _02B0
 	goto _018A
 
 _0167:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0182
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0182
 	apply_movement obj_D23R0105_gsgentleman, _0294
 	goto _018A
 
@@ -122,14 +122,14 @@ _018A:
 	clearflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
 	show_person obj_D23R0105_rkanbum2
 	hide_person obj_D23R0105_gsgentleman
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _01B7
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _01B7
 	apply_movement obj_D23R0105_rkanbum2, _0328
 	goto _01DA
 
 _01B7:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _01D2
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _01D2
 	apply_movement obj_D23R0105_rkanbum2, _0310
 	goto _01DA
 
@@ -141,8 +141,8 @@ _01DA:
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _021D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _021D
 	npc_msg msg_0069_D23R0105_00004
 	setvar VAR_SPECIAL_x8004, 476
 	setvar VAR_SPECIAL_x8005, 1

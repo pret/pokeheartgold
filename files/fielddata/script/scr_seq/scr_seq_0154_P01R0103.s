@@ -12,8 +12,8 @@
 
 scr_seq_P01R0103_001:
 	scrcmd_445 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 387
-	gotoif eq, _0021
+	compare VAR_TEMP_x4000, 387
+	goto_if_eq _0021
 	end
 
 _0021:
@@ -24,40 +24,40 @@ scr_seq_P01R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ge, _014D
+	compare VAR_TEMP_x4002, 1
+	goto_if_ge _014D
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif eq, _0158
+	compare VAR_TEMP_x4001, 0
+	goto_if_eq _0158
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _006C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _006C
 	goto _00EF
 	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
 _006C:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0085
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0085
 	goto _0142
 	.byte 0x16
 	.byte 0x00, 0x6a, 0x00, 0x00, 0x00
 _0085:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _009E
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _009E
 	goto _0142
 	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
 _009E:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _00B7
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _00B7
 	goto _00EF
 	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
 _00B7:
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif ne, _00D0
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_ne _00D0
 	goto _0142
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _00D0:
-	comparevartovalue VAR_SPECIAL_x800C, 5
-	gotoif ne, _00E9
+	compare VAR_SPECIAL_x800C, 5
+	goto_if_ne _00E9
 	goto _0142
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _00E9:

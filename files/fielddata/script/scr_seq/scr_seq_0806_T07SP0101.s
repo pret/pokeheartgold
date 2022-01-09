@@ -16,8 +16,8 @@ scr_seq_T07SP0101_000:
 	lockall
 	faceplayer
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0066
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0066
 	apply_movement obj_T07SP0101_suit, _007C
 	wait_movement
 	npc_msg msg_0511_T07SP0101_00012
@@ -56,8 +56,8 @@ scr_seq_T07SP0101_002:
 	lockall
 	faceplayer
 	get_player_facing VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, _00B9
+	compare VAR_TEMP_x4002, 1
+	goto_if_ne _00B9
 	call _00EC
 	goto _00C1
 
@@ -66,8 +66,8 @@ _00B9:
 _00C1:
 	wait_movement
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00E1
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00E1
 	npc_msg msg_0511_T07SP0101_00013
 	goto _00E4
 
@@ -82,14 +82,14 @@ _00E4:
 _00EC:
 	get_player_coords VAR_TEMP_x4002, VAR_TEMP_x4003
 	get_player_coords VAR_TEMP_x4002, VAR_TEMP_x4003
-	comparevartovalue VAR_TEMP_x4002, 6
-	gotoif ne, _0113
+	compare VAR_TEMP_x4002, 6
+	goto_if_ne _0113
 	apply_movement obj_T07SP0101_suit, _0084
 	goto _0128
 
 _0113:
-	comparevartovalue VAR_TEMP_x4002, 8
-	gotoif ne, _0128
+	compare VAR_TEMP_x4002, 8
+	goto_if_ne _0128
 	apply_movement obj_T07SP0101_suit, _008C
 _0128:
 	return
@@ -99,17 +99,17 @@ scr_seq_T07SP0101_003:
 	lockall
 	faceplayer
 	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0184
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0163
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0184
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0163
 	npc_msg msg_0511_T07SP0101_00006
 	setvar VAR_TEMP_x4001, 1
 	goto _017C
 
 _0163:
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif ne, _0179
+	compare VAR_TEMP_x4001, 1
+	goto_if_ne _0179
 	npc_msg msg_0511_T07SP0101_00007
 	goto _017C
 
@@ -122,8 +122,8 @@ _017C:
 	end
 
 _0184:
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _019A
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _019A
 	npc_msg msg_0511_T07SP0101_00000
 	goto _019D
 
@@ -133,8 +133,8 @@ _019D:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01D4
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01D4
 	npc_msg msg_0511_T07SP0101_00003
 	setvar VAR_TEMP_x4001, 1
 	giveitem_no_check ITEM_COIN_CASE, 1

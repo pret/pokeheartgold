@@ -25,8 +25,8 @@
 	scrdef_end
 
 scr_seq_T23_004:
-	comparevartovalue VAR_UNK_4080, 0
-	gotoif ne, _005F
+	compare VAR_UNK_4080, 0
+	goto_if_ne _005F
 	setflag FLAG_UNK_19F
 	clearflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
 	clearflag FLAG_AZALEA_HARASSED_CIVILIAN
@@ -66,32 +66,32 @@ scr_seq_T23_002:
 	setvar VAR_UNK_4099, 1
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 462
-	gotoif ne, _00E5
+	compare VAR_SPECIAL_x8005, 462
+	goto_if_ne _00E5
 	move_person obj_T23_gsrivel, 404, 0, 463, 2
 	apply_movement obj_T23_gsrivel, _028C
 	apply_movement obj_player, _02AC
 	goto _018E
 
 _00E5:
-	comparevartovalue VAR_SPECIAL_x8005, 463
-	gotoif ne, _0114
+	compare VAR_SPECIAL_x8005, 463
+	goto_if_ne _0114
 	move_person obj_T23_gsrivel, 404, 0, 464, 2
 	apply_movement obj_T23_gsrivel, _028C
 	apply_movement obj_player, _02AC
 	goto _018E
 
 _0114:
-	comparevartovalue VAR_SPECIAL_x8005, 464
-	gotoif ne, _0143
+	compare VAR_SPECIAL_x8005, 464
+	goto_if_ne _0143
 	move_person obj_T23_gsrivel, 404, 0, 463, 2
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
 	goto _018E
 
 _0143:
-	comparevartovalue VAR_SPECIAL_x8005, 465
-	gotoif ne, _0172
+	compare VAR_SPECIAL_x8005, 465
+	goto_if_ne _0172
 	move_person obj_T23_gsrivel, 404, 0, 464, 2
 	apply_movement obj_T23_gsrivel, _0298
 	apply_movement obj_player, _02C0
@@ -107,14 +107,14 @@ _018E:
 	npc_msg msg_0564_T23_00001
 	closemsg
 	get_starter_choice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 152
-	gotoif ne, _01B7
+	compare VAR_SPECIAL_x800C, 152
+	goto_if_ne _01B7
 	trainer_battle TRAINER_RIVAL_SILVER_7, 0, 0, 0
 	goto _01DA
 
 _01B7:
-	comparevartovalue VAR_SPECIAL_x800C, 155
-	gotoif ne, _01D2
+	compare VAR_SPECIAL_x800C, 155
+	goto_if_ne _01D2
 	trainer_battle TRAINER_RIVAL_SILVER_10, 0, 0, 0
 	goto _01DA
 
@@ -122,34 +122,34 @@ _01D2:
 	trainer_battle TRAINER_RIVAL_SILVER, 0, 0, 0
 _01DA:
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0285
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0285
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
 	npc_msg msg_0564_T23_00002
 	closemsg
 	setvar VAR_UNK_4075, 2
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 462
-	gotoif ne, _021E
+	compare VAR_SPECIAL_x8005, 462
+	goto_if_ne _021E
 	apply_movement obj_T23_gsrivel, _02D4
 	goto _0277
 
 _021E:
-	comparevartovalue VAR_SPECIAL_x8005, 463
-	gotoif ne, _0239
+	compare VAR_SPECIAL_x8005, 463
+	goto_if_ne _0239
 	apply_movement obj_T23_gsrivel, _02DC
 	goto _0277
 
 _0239:
-	comparevartovalue VAR_SPECIAL_x8005, 464
-	gotoif ne, _0254
+	compare VAR_SPECIAL_x8005, 464
+	goto_if_ne _0254
 	apply_movement obj_T23_gsrivel, _02D4
 	goto _0277
 
 _0254:
-	comparevartovalue VAR_SPECIAL_x8005, 465
-	gotoif ne, _026F
+	compare VAR_SPECIAL_x8005, 465
+	goto_if_ne _026F
 	apply_movement obj_T23_gsrivel, _02DC
 	goto _0277
 
@@ -255,8 +255,7 @@ scr_seq_T23_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_07B
-	gotoif TRUE, _039C
+	goto_if_set FLAG_UNK_07B, _039C
 	npc_msg msg_0564_T23_00018
 	goto _039F
 
@@ -272,8 +271,7 @@ scr_seq_T23_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_07B
-	gotoif TRUE, _03C3
+	goto_if_set FLAG_UNK_07B, _03C3
 	npc_msg msg_0564_T23_00005
 	goto _039F
 

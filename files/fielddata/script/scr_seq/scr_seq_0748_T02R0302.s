@@ -26,8 +26,7 @@ scr_seq_T02R0302_002:
 	scrcmd_602 1
 	scrcmd_604 48
 	npc_msg msg_0458_T02R0302_00008
-	checkflag FLAG_UNK_176
-	gotoif TRUE, _0063
+	goto_if_set FLAG_UNK_176, _0063
 	npc_msg msg_0458_T02R0302_00009
 	setflag FLAG_UNK_25B
 	dummy_486
@@ -55,14 +54,14 @@ _0091:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00ED
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00ED
 	scrcmd_783 1
 	setvar VAR_UNK_412E, 5
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00ED
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00ED
 	touchscreen_menu_show
 	scrcmd_600
 	heal_party
@@ -103,8 +102,8 @@ scr_seq_T02R0302_001:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0168
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0168
 	npc_msg msg_0458_T02R0302_00005
 	closemsg
 	apply_movement obj_player, _0184

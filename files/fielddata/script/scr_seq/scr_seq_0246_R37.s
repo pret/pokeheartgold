@@ -13,8 +13,8 @@
 
 scr_seq_R37_000:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _002D
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _002D
 	clearflag FLAG_UNK_1C3
 	goto _0031
 
@@ -29,17 +29,15 @@ scr_seq_R37_001:
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
 	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_SMILE
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0159
-	checkflag FLAG_GOT_SHOCK_RIBBON
-	gotoif TRUE, _016D
-	comparevartovalue VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	gotoif eq, _0107
-	checkflag FLAG_UNK_0A5
-	gotoif TRUE, _00E9
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0159
+	goto_if_set FLAG_GOT_SHOCK_RIBBON, _016D
+	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	goto_if_eq _0107
+	goto_if_set FLAG_UNK_0A5, _00E9
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _009A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _009A
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 27
 	goto _00E1
@@ -75,8 +73,8 @@ _00FD:
 
 _0107:
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _012A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _012A
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 27
 	goto _00E1

@@ -24,22 +24,22 @@
 
 scr_seq_D35R0103_002:
 	scrcmd_710
-	comparevartovalue VAR_UNK_40A9, 3
-	gotoif ge, _004F
+	compare VAR_UNK_40A9, 3
+	goto_if_ge _004F
 	end
 
 _004F:
 	move_person obj_D35R0103_babyboy1_9, 29, 0, 22, 0
 	move_person obj_D35R0103_babyboy1_9_2, 29, 0, 22, 0
-	comparevartovalue VAR_UNK_40AC, 10
-	gotoif ge, _00B0
-	comparevartovalue VAR_UNK_40A9, 4
-	gotoif ge, _0083
+	compare VAR_UNK_40AC, 10
+	goto_if_ge _00B0
+	compare VAR_UNK_40A9, 4
+	goto_if_ge _0083
 	end
 
 _0083:
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif ne, _00B0
+	compare VAR_TEMP_x4007, 0
+	goto_if_ne _00B0
 	setvar VAR_TEMP_x4007, 77
 	move_person obj_D35R0103_wataru, 39, 0, 18, 0
 	move_person obj_D35R0103_tsure_poke_607, 40, 0, 18, 0
@@ -49,16 +49,15 @@ _00B0:
 	end
 
 scr_seq_D35R0103_007:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _00BF
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _00BF
 	end
 
 _00BF:
 	scrcmd_221 16384, 1
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0127
-	comparevartovalue VAR_TEMP_x400A, 1
-	gotoif ne, _00F4
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0127
+	compare VAR_TEMP_x400A, 1
+	goto_if_ne _00F4
 	setflag FLAG_UNK_96B
 	hide_person obj_D35R0103_tsure_poke_598
 	hide_person obj_D35R0103_tsure_poke_598_4
@@ -66,8 +65,8 @@ _00BF:
 	goto _0127
 
 _00F4:
-	comparevartovalue VAR_TEMP_x400A, 2
-	gotoif ne, _0117
+	compare VAR_TEMP_x400A, 2
+	goto_if_ne _0117
 	setflag FLAG_UNK_96C
 	hide_person obj_D35R0103_tsure_poke_598_2
 	hide_person obj_D35R0103_tsure_poke_598_5
@@ -207,8 +206,8 @@ scr_seq_D35R0103_011:
 	apply_movement obj_D35R0103_babyboy1_9_2, _03B8
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8001, 24
-	gotoif ne, _02D7
+	compare VAR_SPECIAL_x8001, 24
+	goto_if_ne _02D7
 	apply_movement obj_D35R0103_tsure_poke_613_3, _0324
 	goto _02DF
 
@@ -252,13 +251,12 @@ scr_seq_D35R0103_012:
 	.byte 0x02, 0x00, 0x4b, 0x00, 0x01, 0x00
 	.byte 0xfe, 0x00, 0x00, 0x00, 0x12, 0x00, 0x09, 0x00, 0x10, 0x00, 0x05, 0x00, 0xfe, 0x00, 0x00, 0x00
 scr_seq_D35R0103_001:
-	comparevartovalue VAR_UNK_40AC, 8
-	gotoif ge, _03A0
+	compare VAR_UNK_40AC, 8
+	goto_if_ge _03A0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0D3
-	gotoif FALSE, _03A2
+	goto_if_unset FLAG_UNK_0D3, _03A2
 	buffer_players_name 0
 	npc_msg msg_0113_D35R0103_00021
 	closemsg
@@ -304,8 +302,8 @@ scr_seq_D35R0103_003:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 30
-	gotoif ne, _042E
+	compare VAR_TEMP_x4000, 30
+	goto_if_ne _042E
 	apply_movement obj_player, _065C
 	goto _0436
 
@@ -344,8 +342,8 @@ _0436:
 	wait_movement
 	multi_battle TRAINER_PKMN_TRAINER_LANCE_LANCE, TRAINER_EXECUTIVE_ARIANA_ARIANA_2, TRAINER_TEAM_ROCKET_GRUNT_25, 1
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0620
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0620
 	npc_msg msg_0113_D35R0103_00008
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
@@ -552,16 +550,14 @@ scr_seq_D35R0103_004:
 	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _089C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _089C
 	scrcmd_221 16384, 0
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _07D0
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _07D0
 	setflag FLAG_UNK_0CB
-	checkflag FLAG_UNK_0CC
-	gotoif FALSE, _07D0
-	checkflag FLAG_UNK_0CD
-	gotoif FALSE, _07D0
+	goto_if_unset FLAG_UNK_0CC, _07D0
+	goto_if_unset FLAG_UNK_0CD, _07D0
 	goto _08A2
 
 _07D0:
@@ -577,16 +573,14 @@ scr_seq_D35R0103_005:
 	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _089C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _089C
 	scrcmd_221 16384, 0
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0834
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0834
 	setflag FLAG_UNK_0CC
-	checkflag FLAG_UNK_0CB
-	gotoif FALSE, _0834
-	checkflag FLAG_UNK_0CD
-	gotoif FALSE, _0834
+	goto_if_unset FLAG_UNK_0CB, _0834
+	goto_if_unset FLAG_UNK_0CD, _0834
 	goto _08A2
 
 _0834:
@@ -602,16 +596,14 @@ scr_seq_D35R0103_006:
 	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _089C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _089C
 	scrcmd_221 16384, 0
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0898
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0898
 	setflag FLAG_UNK_0CD
-	checkflag FLAG_UNK_0CB
-	gotoif FALSE, _0898
-	checkflag FLAG_UNK_0CC
-	gotoif FALSE, _0898
+	goto_if_unset FLAG_UNK_0CB, _0898
+	goto_if_unset FLAG_UNK_0CC, _0898
 	goto _08A2
 
 _0898:
@@ -628,14 +620,14 @@ _08A2:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	comparevartovalue VAR_TEMP_x4001, 16
-	gotoif ne, _08CD
+	compare VAR_TEMP_x4001, 16
+	goto_if_ne _08CD
 	apply_movement obj_player, _09E0
 	goto _08F0
 
 _08CD:
-	comparevartovalue VAR_TEMP_x4001, 14
-	gotoif ne, _08E8
+	compare VAR_TEMP_x4001, 14
+	goto_if_ne _08E8
 	apply_movement obj_player, _09EC
 	goto _08F0
 
@@ -776,12 +768,9 @@ _0AAC:
 	step_end
 scr_seq_D35R0103_010:
 	releaseall
-	checkflag FLAG_UNK_0CB
-	gotoif FALSE, _0AE4
-	checkflag FLAG_UNK_0CC
-	gotoif FALSE, _0AE4
-	checkflag FLAG_UNK_0CD
-	gotoif FALSE, _0AE4
+	goto_if_unset FLAG_UNK_0CB, _0AE4
+	goto_if_unset FLAG_UNK_0CC, _0AE4
+	goto_if_unset FLAG_UNK_0CD, _0AE4
 	npc_msg msg_0113_D35R0103_00023
 	closemsg
 	releaseall

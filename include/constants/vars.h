@@ -401,4 +401,10 @@
 #define VAR_SPECIAL_x800C               0x800C
 #define VAR_SPECIAL_x800D               0x800D
 
+#define VARS_START         VAR_BASE
+#define VARS_END           (VAR_BASE + NUM_VARS - 1)
+#define SPECIAL_VARS_START SPECIAL_VAR_BASE
+#define SPECIAL_VARS_END   (SPECIAL_VAR_BASE + NUM_SPECIAL_VARS - 1)
+
+
 #endif //POKEHEARTGOLD_CONSTANTS_VARS_H

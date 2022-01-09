@@ -21,12 +21,12 @@ scr_seq_D35R0101_001:
 	scrcmd_375 1
 	scrcmd_375 2
 	scrcmd_375 3
-	comparevartovalue VAR_UNK_40AC, 9
-	gotoif ge, _00B7
-	comparevartovalue VAR_UNK_40A8, 2
-	gotoif ge, _006D
-	comparevartovalue VAR_UNK_40A8, 1
-	gotoif eq, _005F
+	compare VAR_UNK_40AC, 9
+	goto_if_ge _00B7
+	compare VAR_UNK_40A8, 2
+	goto_if_ge _006D
+	compare VAR_UNK_40A8, 1
+	goto_if_eq _005F
 	end
 
 _005F:
@@ -50,10 +50,10 @@ _00B7:
 	end
 
 scr_seq_D35R0101_008:
-	comparevartovalue VAR_UNK_40AC, 3
-	gotoif eq, _010F
-	comparevartovalue VAR_UNK_40AC, 8
-	gotoif eq, _0105
+	compare VAR_UNK_40AC, 3
+	goto_if_eq _010F
+	compare VAR_UNK_40AC, 8
+	goto_if_eq _0105
 	end
 
 _0105:
@@ -217,8 +217,8 @@ scr_seq_D35R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40A8, 2
-	gotoif ge, _031C
+	compare VAR_UNK_40A8, 2
+	goto_if_ge _031C
 	npc_msg msg_0111_D35R0101_00000
 	scrcmd_054
 	setvar VAR_SPECIAL_x8004, 28
@@ -234,8 +234,8 @@ _031C:
 	end
 
 scr_seq_D35R0101_003:
-	comparevartovalue VAR_UNK_40A8, 2
-	gotoif ge, _0347
+	compare VAR_UNK_40A8, 2
+	goto_if_ge _0347
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
@@ -275,26 +275,26 @@ scr_seq_D35R0101_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40AC, 10
-	gotoif ge, _039D
+	compare VAR_UNK_40AC, 10
+	goto_if_ge _039D
 	npc_msg msg_0111_D35R0101_00015
 	goto _0552
 
 _039D:
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, _03B3
+	compare VAR_UNK_4077, 2
+	goto_if_ne _03B3
 	npc_msg msg_0111_D35R0101_00014
 	goto _03E5
 
 _03B3:
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _03C9
+	compare VAR_UNK_4077, 3
+	goto_if_ne _03C9
 	npc_msg msg_0111_D35R0101_00014
 	goto _03E5
 
 _03C9:
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _03DF
+	compare VAR_UNK_4077, 4
+	goto_if_ne _03DF
 	npc_msg msg_0111_D35R0101_00014
 	goto _03E5
 
@@ -306,98 +306,98 @@ _03E5:
 
 _03EB:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0405
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0405
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _0405:
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _041B
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _041B
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 
 _041B:
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _0431
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _0431
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _0431:
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif ne, _0447
+	compare VAR_TEMP_x4000, 4
+	goto_if_ne _0447
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 
 _0447:
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _045D
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _045D
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _045D:
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _0473
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _0473
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 
 _0473:
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _0489
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _0489
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _0489:
-	comparevartovalue VAR_TEMP_x4000, 10
-	gotoif ne, _049F
+	compare VAR_TEMP_x4000, 10
+	goto_if_ne _049F
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 
 _049F:
-	comparevartovalue VAR_TEMP_x4000, 12
-	gotoif ne, _04B5
+	compare VAR_TEMP_x4000, 12
+	goto_if_ne _04B5
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _04B5:
-	comparevartovalue VAR_TEMP_x4000, 13
-	gotoif ne, _04CB
+	compare VAR_TEMP_x4000, 13
+	goto_if_ne _04CB
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 
 _04CB:
-	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, _04E1
+	compare VAR_TEMP_x4000, 15
+	goto_if_ne _04E1
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _04E1:
-	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, _04F7
+	compare VAR_TEMP_x4000, 16
+	goto_if_ne _04F7
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 
 _04F7:
-	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, _050D
+	compare VAR_TEMP_x4000, 18
+	goto_if_ne _050D
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _050D:
-	comparevartovalue VAR_TEMP_x4000, 19
-	gotoif ne, _0523
+	compare VAR_TEMP_x4000, 19
+	goto_if_ne _0523
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 
 _0523:
-	comparevartovalue VAR_TEMP_x4000, 21
-	gotoif ne, _0539
+	compare VAR_TEMP_x4000, 21
+	goto_if_ne _0539
 	npc_msg msg_0111_D35R0101_00011
 	goto _0552
 
 _0539:
-	comparevartovalue VAR_TEMP_x4000, 22
-	gotoif ne, _054F
+	compare VAR_TEMP_x4000, 22
+	goto_if_ne _054F
 	npc_msg msg_0111_D35R0101_00012
 	goto _0552
 

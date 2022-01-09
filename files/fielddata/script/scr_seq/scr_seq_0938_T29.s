@@ -27,8 +27,7 @@
 	scrdef_end
 
 scr_seq_T29_000:
-	checkflag FLAG_GOT_RED_SCALE
-	gotoif TRUE, _007F
+	goto_if_set FLAG_GOT_RED_SCALE, _007F
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	setflag FLAG_MAPTEMP_011
@@ -44,8 +43,8 @@ _007F:
 	goto _0115
 
 _0085:
-	comparevartovalue VAR_UNK_4037, 61993
-	gotoif eq, _00BC
+	compare VAR_UNK_4037, 61993
+	goto_if_eq _00BC
 	setflag FLAG_UNK_1FC
 	setflag FLAG_UNK_1FE
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
@@ -65,22 +64,19 @@ _00BC:
 	clearflag FLAG_UNK_289
 	clearflag FLAG_UNK_28B
 	clearflag FLAG_UNK_28C
-	checkflag FLAG_UNK_146
-	gotoif TRUE, _00E5
+	goto_if_set FLAG_UNK_146, _00E5
 	goto _00E9
 
 _00E5:
 	setflag FLAG_UNK_289
 _00E9:
-	checkflag FLAG_UNK_147
-	gotoif TRUE, _00FA
+	goto_if_set FLAG_UNK_147, _00FA
 	goto _00FE
 
 _00FA:
 	setflag FLAG_UNK_28B
 _00FE:
-	checkflag FLAG_UNK_148
-	gotoif TRUE, _010F
+	goto_if_set FLAG_UNK_148, _010F
 	goto _0113
 
 _010F:
@@ -90,34 +86,33 @@ _0113:
 
 _0115:
 	scrcmd_147 39, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _01A7
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0139
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _01A7
+	goto_if_set FLAG_GAME_CLEAR, _0139
 	goto _01A7
 
 _0139:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _0154
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0154
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
 _0154:
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _016B
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _016B
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
 _016B:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _0182
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _0182
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
 _0182:
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _0199
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _0199
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _019F
 
@@ -132,8 +127,7 @@ _01A7:
 	goto _0085
 	.byte 0x02, 0x00
 scr_seq_T29_002:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _01C0
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _01C0
 	end
 
 _01C0:
@@ -149,17 +143,17 @@ scr_seq_T29_017:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x4004, 1
-	gotoif ge, _026A
+	compare VAR_TEMP_x4004, 1
+	goto_if_ge _026A
 	npc_msg msg_0626_T29_00013
 _01F2:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0216
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0259
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0216
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0259
 	end
 
 _0216:
@@ -200,17 +194,15 @@ scr_seq_T29_005:
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
 	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _039B
-	checkflag FLAG_GOT_SHOCK_RIBBON
-	gotoif TRUE, _03AF
-	comparevartovalue VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	gotoif eq, _0349
-	checkflag FLAG_UNK_0D5
-	gotoif TRUE, _032B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _039B
+	goto_if_set FLAG_GOT_SHOCK_RIBBON, _03AF
+	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	goto_if_eq _0349
+	goto_if_set FLAG_UNK_0D5, _032B
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _02DC
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _02DC
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 11
 	goto _0323
@@ -246,8 +238,8 @@ _033F:
 
 _0349:
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _036C
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _036C
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 11
 	goto _0323
@@ -294,15 +286,14 @@ scr_seq_T29_001:
 	wild_battle SPECIES_GYARADOS, 30, 1
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0456
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0456
 	scrcmd_683 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, _0452
-	comparevartovalue VAR_TEMP_x4002, 4
-	callif eq, _0466
-	checkflag FLAG_GOT_RED_SCALE
-	gotoif TRUE, _046C
+	compare VAR_TEMP_x4002, 3
+	goto_if_eq _0452
+	compare VAR_TEMP_x4002, 4
+	call_if_eq _0466
+	goto_if_set FLAG_GOT_RED_SCALE, _046C
 	openmsg
 	goto_if_no_item_space ITEM_RED_SCALE, 1, _045C
 	callstd std_give_item_verbose
@@ -336,8 +327,7 @@ _046C:
 	end
 
 scr_seq_T29_003:
-	checkflag FLAG_UNK_0C3
-	gotoif TRUE, _0509
+	goto_if_set FLAG_UNK_0C3, _0509
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0626_T29_00002
@@ -347,10 +337,10 @@ scr_seq_T29_003:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _04BB
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _04FA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _04BB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _04FA
 _04BB:
 	buffer_players_name 0
 	gender_msgbox msg_0626_T29_00005, msg_0626_T29_00006
@@ -385,10 +375,10 @@ _0509:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _04BB
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _04FA
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _04BB
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _04FA
 	end
 
 
@@ -404,8 +394,7 @@ scr_seq_T29_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_RED_GYARADOS_MEET
-	gotoif TRUE, _056A
+	goto_if_set FLAG_RED_GYARADOS_MEET, _056A
 	npc_msg msg_0626_T29_00009
 	waitbutton
 	closemsg
@@ -420,8 +409,7 @@ _056A:
 	end
 	.byte 0x02, 0x00
 scr_seq_T29_006:
-	checkflag FLAG_UNK_139
-	gotoif TRUE, _0597
+	goto_if_set FLAG_UNK_139, _0597
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
@@ -474,23 +462,23 @@ _061B:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0657
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _06CA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0657
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _06CA
 	end
 
 _0657:
 	callstd std_hidden_item_fanfare
 	hide_person VAR_SPECIAL_x800D
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif ne, _0676
+	compare VAR_TEMP_x4001, 1
+	goto_if_ne _0676
 	setflag FLAG_UNK_146
 	goto _0691
 
 _0676:
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _068D
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _068D
 	setflag FLAG_UNK_147
 	goto _0691
 

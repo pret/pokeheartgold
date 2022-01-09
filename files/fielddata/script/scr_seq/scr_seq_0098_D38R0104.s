@@ -12,22 +12,20 @@ scr_seq_D38R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_10C
-	gotoif TRUE, _0097
-	checkflag FLAG_UNK_10D
-	gotoif TRUE, _0046
+	goto_if_set FLAG_UNK_10C, _0097
+	goto_if_set FLAG_UNK_10D, _0046
 	npc_msg msg_0121_D38R0104_00000
 	closemsg
 	trainer_battle TRAINER_BLACK_BELT_KIYO, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00CC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00CC
 	setflag FLAG_UNK_10D
 _0046:
 	npc_msg msg_0121_D38R0104_00001
 	get_party_count VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 6
-	gotoif ne, _0063
+	compare VAR_SPECIAL_x8005, 6
+	goto_if_ne _0063
 	npc_msg msg_0121_D38R0104_00004
 	goto _00D2
 
@@ -41,8 +39,8 @@ _0063:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif eq, _00A6
+	compare VAR_SPECIAL_x800C, 0
+	call_if_eq _00A6
 	touchscreen_menu_show
 _0097:
 	setflag FLAG_UNK_10C

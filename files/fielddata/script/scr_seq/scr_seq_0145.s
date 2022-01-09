@@ -524,10 +524,10 @@ scr_seq_0145_255:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8001
 	copyvar VAR_SPECIAL_x8006, VAR_SPECIAL_x8002
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0440
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _05C8
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0440
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _05C8
 	end
 
 _043C:
@@ -538,10 +538,10 @@ _0440:
 	callstd std_hidden_item_fanfare
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _059D
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _05B5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _059D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _05B5
 	end
 
 _046E:

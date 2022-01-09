@@ -14,34 +14,33 @@
 
 scr_seq_T25GYM0101_004:
 	get_phone_book_rematch 17, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _0106
-	checkflag FLAG_GAME_CLEAR
-	gotoif FALSE, _0100
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _0106
+	goto_if_unset FLAG_GAME_CLEAR, _0100
 	scrcmd_147 17, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00AF
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00AF
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 12
-	gotoif ne, _0062
+	compare VAR_TEMP_x4000, 12
+	goto_if_ne _0062
 	setflag FLAG_UNK_2EC
 	goto _00AD
 
 _0062:
-	comparevartovalue VAR_TEMP_x4000, 13
-	gotoif ne, _0079
+	compare VAR_TEMP_x4000, 13
+	goto_if_ne _0079
 	setflag FLAG_UNK_2EC
 	goto _00AD
 
 _0079:
-	comparevartovalue VAR_TEMP_x4000, 14
-	gotoif ne, _0090
+	compare VAR_TEMP_x4000, 14
+	goto_if_ne _0090
 	setflag FLAG_UNK_2EC
 	goto _00AD
 
 _0090:
-	comparevartovalue VAR_TEMP_x4000, 15
-	gotoif ne, _00A7
+	compare VAR_TEMP_x4000, 15
+	goto_if_ne _00A7
 	setflag FLAG_UNK_2EC
 	goto _00AD
 
@@ -53,20 +52,20 @@ _00AD:
 
 _00AF:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, _00CA
+	compare VAR_TEMP_x4000, 18
+	goto_if_ne _00CA
 	setflag FLAG_UNK_2EC
 	goto _00FE
 
 _00CA:
-	comparevartovalue VAR_TEMP_x4000, 19
-	gotoif ne, _00E1
+	compare VAR_TEMP_x4000, 19
+	goto_if_ne _00E1
 	setflag FLAG_UNK_2EC
 	goto _00FE
 
 _00E1:
-	comparevartovalue VAR_TEMP_x4000, 20
-	gotoif ne, _00F8
+	compare VAR_TEMP_x4000, 20
+	goto_if_ne _00F8
 	setflag FLAG_UNK_2EC
 	goto _00FE
 
@@ -89,18 +88,17 @@ scr_seq_T25GYM0101_000:
 	lockall
 	faceplayer
 	check_badge 2, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0202
-	checkflag FLAG_UNK_0B7
-	gotoif TRUE, _01A0
-	comparevartovalue VAR_UNK_410A, 1
-	gotoif eq, _017D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0202
+	goto_if_set FLAG_UNK_0B7, _01A0
+	compare VAR_UNK_410A, 1
+	goto_if_eq _017D
 	npc_msg msg_0582_T25GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_WHITNEY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0218
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0218
 	settrainerflag TRAINER_LASS_CARRIE
 	settrainerflag TRAINER_LASS_CATHY
 	settrainerflag TRAINER_BEAUTY_VICTORIA
@@ -147,8 +145,7 @@ _01F8:
 	end
 
 _0202:
-	checkflag FLAG_UNK_085
-	gotoif FALSE, _01C4
+	goto_if_unset FLAG_UNK_085, _01C4
 	npc_msg msg_0582_T25GYM0101_00008
 	waitbutton
 	closemsg
@@ -200,8 +197,8 @@ scr_seq_T25GYM0101_002:
 	lockall
 	faceplayer
 	check_badge 2, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _02AA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _02AA
 	npc_msg msg_0582_T25GYM0101_00010
 	waitbutton
 	closemsg
@@ -221,8 +218,8 @@ scr_seq_T25GYM0101_003:
 	faceplayer
 	check_badge 2, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _02DC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _02DC
 	npc_msg msg_0582_T25GYM0101_00012
 	goto _02DF
 

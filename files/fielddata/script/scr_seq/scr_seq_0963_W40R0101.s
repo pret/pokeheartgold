@@ -11,10 +11,9 @@
 	scrdef_end
 
 scr_seq_W40R0101_001:
-	comparevartovalue VAR_UNK_40E5, 1
-	gotoif ge, _0036
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0028
+	compare VAR_UNK_40E5, 1
+	goto_if_ge _0036
+	goto_if_set FLAG_GAME_CLEAR, _0028
 	end
 
 _0028:
@@ -28,19 +27,17 @@ _0036:
 scr_seq_W40R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	checkflag FLAG_UNK_0FB
-	gotoif TRUE, _00BE
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _00B1
+	goto_if_set FLAG_UNK_0FB, _00BE
+	goto_if_set FLAG_GAME_CLEAR, _00B1
 	get_player_facing VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _0079
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _0079
 	apply_movement obj_W40R0101_gsmiddleman1, _00E4
 	goto _009C
 
 _0079:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0094
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0094
 	apply_movement obj_W40R0101_gsmiddleman1, _00DC
 	goto _009C
 
@@ -89,8 +86,7 @@ scr_seq_W40R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0108
+	goto_if_set FLAG_GAME_CLEAR, _0108
 	npc_msg msg_0745_W40R0101_00003
 	goto _010B
 

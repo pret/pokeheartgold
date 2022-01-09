@@ -13,8 +13,8 @@ scr_seq_W19R0101_000:
 	lockall
 	faceplayer
 	check_badge 14, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _002C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _002C
 	npc_msg msg_0741_W19R0101_00000
 	waitbutton
 	closemsg

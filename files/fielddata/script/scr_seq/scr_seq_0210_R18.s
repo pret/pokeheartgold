@@ -10,8 +10,7 @@
 	scrdef_end
 
 scr_seq_R18_000:
-	checkflag FLAG_UNK_149
-	gotoif TRUE, _0017
+	goto_if_set FLAG_UNK_149, _0017
 	end
 
 _0017:

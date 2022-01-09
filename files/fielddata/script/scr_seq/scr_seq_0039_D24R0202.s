@@ -22,8 +22,7 @@ scr_seq_D24R0202_000:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	checkflag FLAG_UNK_977
-	gotoif TRUE, _004A
+	goto_if_set FLAG_UNK_977, _004A
 	releaseall
 	end
 
@@ -40,10 +39,10 @@ _004A:
 	setflag FLAG_UNK_21C
 	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00A2
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _00B2
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00A2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _00B2
 	end
 
 _00A2:
@@ -57,8 +56,8 @@ _00B2:
 	wait_movement
 _00C4:
 	setvar VAR_UNK_40CE, 1
-	comparevartovalue VAR_UNK_40EC, 1
-	gotoif ge, _010F
+	compare VAR_UNK_40EC, 1
+	goto_if_ge _010F
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
@@ -87,10 +86,10 @@ scr_seq_D24R0202_004:
 	scrcmd_609
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _016F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _017F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _016F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _017F
 	end
 
 _016F:
@@ -105,10 +104,10 @@ _017F:
 _0191:
 	setvar VAR_UNK_40CE, 1
 	play_se SEQ_SE_GS_RAKKA01
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif ge, _01DD
-	comparevartovalue VAR_UNK_403E, 6
-	gotoif eq, _0207
+	compare VAR_UNK_403E, 7
+	goto_if_ge _01DD
+	compare VAR_UNK_403E, 6
+	goto_if_eq _0207
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 315, 0, 25, 6, 0
@@ -155,8 +154,7 @@ scr_seq_D24R0202_001:
 scr_seq_D24R0202_002:
 	scrcmd_609
 	lockall
-	checkflag FLAG_UNK_21B
-	gotoif TRUE, _029A
+	goto_if_set FLAG_UNK_21B, _029A
 	wait 2, VAR_SPECIAL_x8004
 	scrcmd_561 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
@@ -184,8 +182,7 @@ scr_seq_D24R0202_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_188
-	gotoif TRUE, _02D2
+	goto_if_set FLAG_UNK_188, _02D2
 	npc_msg msg_0074_D24R0202_00000
 	waitbutton
 	closemsg

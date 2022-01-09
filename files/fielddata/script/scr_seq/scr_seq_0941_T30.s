@@ -25,26 +25,25 @@
 	scrdef_end
 
 scr_seq_T30_005:
-	comparevartovalue VAR_UNK_40C4, 1
-	gotoif ne, _005D
+	compare VAR_UNK_40C4, 1
+	goto_if_ne _005D
 	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	setvar VAR_UNK_40C4, 2
 _005D:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _006E
+	goto_if_unset FLAG_UNK_189, _006E
 	clearflag FLAG_UNK_189
 	end
 
 _006E:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0089
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0089
 	clearflag FLAG_HIDE_CAMERON
 	goto _00A4
 
 _0089:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _00A0
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _00A0
 	clearflag FLAG_HIDE_CAMERON
 	goto _00A4
 
@@ -52,8 +51,8 @@ _00A0:
 	setflag FLAG_HIDE_CAMERON
 _00A4:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _00BF
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _00BF
 	clearflag FLAG_UNK_204
 	goto _00C3
 
@@ -76,17 +75,15 @@ scr_seq_T30_006:
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
 	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_SNOOZE
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0209
-	checkflag FLAG_GOT_SHOCK_RIBBON
-	gotoif TRUE, _021D
-	comparevartovalue VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
-	gotoif eq, _01B7
-	checkflag FLAG_UNK_0D4
-	gotoif TRUE, _0199
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0209
+	goto_if_set FLAG_GOT_SHOCK_RIBBON, _021D
+	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
+	goto_if_eq _01B7
+	goto_if_set FLAG_UNK_0D4, _0199
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, _014A
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_eq _014A
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 23
 	goto _0191
@@ -122,8 +119,8 @@ _01AD:
 
 _01B7:
 	get_weekday VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif eq, _01DA
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_eq _01DA
 	get_std_msg_naix 0, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 23
 	goto _0191
@@ -172,8 +169,7 @@ scr_seq_T30_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0D1
-	gotoif TRUE, _0262
+	goto_if_set FLAG_UNK_0D1, _0262
 	npc_msg msg_0629_T30_00001
 	waitbutton
 	closemsg
@@ -211,8 +207,8 @@ scr_seq_T30_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, _02B1
+	compare VAR_UNK_4077, 2
+	goto_if_ne _02B1
 	npc_msg msg_0629_T30_00005
 	goto _02B4
 
@@ -233,11 +229,11 @@ scr_seq_T30_016:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03C1
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03C1
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03D5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03D5
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -245,15 +241,15 @@ scr_seq_T30_016:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0335
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0335
 	apply_movement obj_player, _03EC
 	apply_movement obj_T30_gsmiddleman1, _0424
 	goto _0360
 
 _0335:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0350
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0350
 	apply_movement obj_player, _0404
 	goto _0360
 
@@ -266,8 +262,8 @@ _0360:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0387
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0387
 	apply_movement obj_partner_poke, _0430
 	wait_movement
 _0387:

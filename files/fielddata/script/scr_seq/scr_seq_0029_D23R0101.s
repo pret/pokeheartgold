@@ -21,19 +21,19 @@
 scr_seq_D23R0101_008:
 	setflag FLAG_UNK_1BC
 	setflag FLAG_UNK_1B8
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, _004D
+	compare VAR_UNK_4077, 2
+	goto_if_ne _004D
 	clearflag FLAG_UNK_1BC
 	goto _0085
 
 _004D:
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _0066
+	compare VAR_UNK_4077, 4
+	goto_if_ne _0066
 	goto _008B
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0066:
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _0081
+	compare VAR_UNK_4077, 3
+	goto_if_ne _0081
 	clearflag FLAG_UNK_1BC
 	clearflag FLAG_HIDE_RADIO_TOWER_RIVAL
 	goto _0085
@@ -49,20 +49,20 @@ scr_seq_D23R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, _00AB
+	compare VAR_UNK_4077, 2
+	goto_if_ne _00AB
 	npc_msg msg_0065_D23R0101_00001
 	goto _00DA
 
 _00AB:
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _00C1
+	compare VAR_UNK_4077, 4
+	goto_if_ne _00C1
 	npc_msg msg_0065_D23R0101_00001
 	goto _00DA
 
 _00C1:
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _00D7
+	compare VAR_UNK_4077, 3
+	goto_if_ne _00D7
 	npc_msg msg_0065_D23R0101_00002
 	goto _00DA
 
@@ -89,41 +89,40 @@ scr_seq_D23R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GOT_RADIO_CARD
-	gotoif TRUE, _0243
+	goto_if_set FLAG_GOT_RADIO_CARD, _0243
 	npc_msg msg_0065_D23R0101_00003
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0221
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0221
 	npc_msg msg_0065_D23R0101_00004
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _022E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00005
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _022E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00006
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _022E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00007
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _022E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00008
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _022E
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _022E
 	wait 30, VAR_SPECIAL_x800C
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
@@ -221,8 +220,8 @@ scr_seq_D23R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif eq, _02C2
+	compare VAR_UNK_4077, 3
+	goto_if_eq _02C2
 	npc_msg msg_0065_D23R0101_00018
 	waitbutton
 	closemsg
@@ -230,19 +229,19 @@ scr_seq_D23R0101_005:
 	end
 
 _02C2:
-	comparevartovalue VAR_TEMP_x400A, 1
-	gotoif eq, _0316
+	compare VAR_TEMP_x400A, 1
+	goto_if_eq _0316
 	npc_msg msg_0065_D23R0101_00019
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _02F5
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _02F5
 	apply_movement obj_D23R0101_rocketm, _0354
 	goto _030A
 
 _02F5:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _030A
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _030A
 	apply_movement obj_D23R0101_rocketm, _0360
 _030A:
 	wait_movement
@@ -252,14 +251,14 @@ _030A:
 
 _0316:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0333
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0333
 	setvar VAR_TEMP_x400B, 33
 	goto _0346
 
 _0333:
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0346
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0346
 	setvar VAR_TEMP_x400B, 11
 _0346:
 	npc_msg msg_0065_D23R0101_00020
@@ -290,21 +289,21 @@ scr_seq_D23R0101_009:
 	move_person obj_D23R0101_gsrivel, 13, 1, 6, 3
 	callstd std_play_rival_intro_music
 	get_person_coords 6, VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _03D0
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _03D0
 	apply_movement obj_D23R0101_gsrivel, _0670
-	comparevartovalue VAR_TEMP_x400B, 33
-	gotoif ne, _03CA
+	compare VAR_TEMP_x400B, 33
+	goto_if_ne _03CA
 	apply_movement obj_D23R0101_rocketm, _069C
 _03CA:
 	goto _03FA
 
 _03D0:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _03FA
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _03FA
 	apply_movement obj_D23R0101_gsrivel, _067C
-	comparevartovalue VAR_TEMP_x400B, 11
-	gotoif ne, _03FA
+	compare VAR_TEMP_x400B, 11
+	goto_if_ne _03FA
 	apply_movement obj_D23R0101_rocketm, _06A8
 _03FA:
 	wait_movement
@@ -313,27 +312,27 @@ _03FA:
 	closemsg
 	apply_movement obj_D23R0101_gsrivel, _0664
 	wait_movement
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _0431
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _0431
 	apply_movement obj_D23R0101_gsrivel, _0684
 	apply_movement obj_D23R0101_rocketm, _06B4
 	goto _044E
 
 _0431:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _044E
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _044E
 	apply_movement obj_D23R0101_gsrivel, _0690
 	apply_movement obj_D23R0101_rocketm, _06C8
 _044E:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _046B
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _046B
 	apply_movement obj_player, _06E4
 	goto _0480
 
 _046B:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _0480
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _0480
 	apply_movement obj_player, _06EC
 _0480:
 	wait_movement
@@ -341,14 +340,14 @@ _0480:
 	buffer_rivals_name 1
 	npc_msg msg_0065_D23R0101_00022
 	closemsg
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _04A8
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _04A8
 	apply_movement obj_player, _06FC
 	goto _04BD
 
 _04A8:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _04BD
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _04BD
 	apply_movement obj_player, _07BC
 _04BD:
 	wait 50, VAR_SPECIAL_x800C
@@ -356,26 +355,26 @@ _04BD:
 	update_avatar_state
 	scrcmd_620 0
 	wait_movement
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _04E9
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _04E9
 	apply_movement obj_D23R0101_rocketm, _0874
 	goto _04FE
 
 _04E9:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _04FE
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _04FE
 	apply_movement obj_D23R0101_rocketm, _0890
 _04FE:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _0523
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _0523
 	apply_movement obj_D23R0101_rocketm, _08AC
 	apply_movement obj_D23R0101_gsrivel, _08BC
 	goto _0540
 
 _0523:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _0540
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _0540
 	apply_movement obj_D23R0101_rocketm, _08B4
 	apply_movement obj_D23R0101_gsrivel, _08D4
 _0540:
@@ -384,22 +383,22 @@ _0540:
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_3, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0655
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0655
 	npc_msg msg_0065_D23R0101_00024
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _0592
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _0592
 	apply_movement obj_D23R0101_rocketm, _08EC
 	apply_movement obj_player, _0900
 	goto _05AF
 
 _0592:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _05AF
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _05AF
 	apply_movement obj_D23R0101_rocketm, _08F4
 	apply_movement obj_player, _0914
 _05AF:
@@ -409,25 +408,25 @@ _05AF:
 	scrcmd_604 48
 	hide_person obj_D23R0101_rocketm
 	callstd std_play_rival_outro_music
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _05DE
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _05DE
 	apply_movement obj_D23R0101_gsrivel, _0928
 	goto _05F3
 
 _05DE:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _05F3
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _05F3
 	apply_movement obj_D23R0101_gsrivel, _0930
 _05F3:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4001, 5
-	gotoif ne, _0610
+	compare VAR_TEMP_x4001, 5
+	goto_if_ne _0610
 	apply_movement obj_player, _06DC
 	goto _0625
 
 _0610:
-	comparevartovalue VAR_TEMP_x4001, 6
-	gotoif ne, _0625
+	compare VAR_TEMP_x4001, 6
+	goto_if_ne _0625
 	apply_movement obj_player, _06F4
 _0625:
 	wait_movement
@@ -713,18 +712,16 @@ scr_seq_D23R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4136, 0
-	gotoif ne, _0B86
-	checkflag FLAG_UNK_AA6
-	gotoif TRUE, _09CF
-	checkflag FLAG_UNK_AA5
-	gotoif TRUE, _09AF
+	compare VAR_UNK_4136, 0
+	goto_if_ne _0B86
+	goto_if_set FLAG_UNK_AA6, _09CF
+	goto_if_set FLAG_UNK_AA5, _09AF
 	npc_msg msg_0065_D23R0101_00028
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _09E5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _09E5
 	goto _09DA
 
 _09AF:
@@ -732,8 +729,8 @@ _09AF:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _09E5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _09E5
 	goto _09DA
 	.byte 0x02, 0x00
 _09CF:
@@ -757,10 +754,10 @@ _09E5:
 	buffer_int_ex 0, VAR_SPECIAL_x8000, 2, 5
 	npc_msg msg_0065_D23R0101_00032
 	loto_id_search VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8002, 0
-	gotoif eq, _0A24
-	comparevartovalue VAR_SPECIAL_x8003, 0
-	gotoif eq, _0A2F
+	compare VAR_SPECIAL_x8002, 0
+	goto_if_eq _0A24
+	compare VAR_SPECIAL_x8003, 0
+	goto_if_eq _0A2F
 	goto _0A3D
 
 _0A24:

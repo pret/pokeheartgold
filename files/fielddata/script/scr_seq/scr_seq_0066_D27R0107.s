@@ -17,8 +17,7 @@ scr_seq_D27R0107_003:
 	end
 
 scr_seq_D27R0107_004:
-	checkflag FLAG_UNK_1D8
-	gotoif TRUE, _002D
+	goto_if_set FLAG_UNK_1D8, _002D
 	scrcmd_375 4
 _002D:
 	end
@@ -27,10 +26,9 @@ scr_seq_D27R0107_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0B9
-	gotoif TRUE, _00B5
-	comparevartovalue VAR_UNK_40A5, 0
-	gotoif eq, _0062
+	goto_if_set FLAG_UNK_0B9, _00B5
+	compare VAR_UNK_40A5, 0
+	goto_if_eq _0062
 	npc_msg msg_0094_D27R0107_00001
 	closemsg
 	apply_movement obj_D27R0107_gsleader6, _01B0
@@ -66,8 +64,8 @@ _00B5:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _017F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _017F
 	takeitem ITEM_SECRETPOTION, 1, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	npc_msg msg_0094_D27R0107_00003
@@ -186,8 +184,8 @@ scr_seq_D27R0107_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40A5, 2
-	gotoif lt, _0266
+	compare VAR_UNK_40A5, 2
+	goto_if_lt _0266
 	play_cry SPECIES_AMPHAROS, 0
 	npc_msg msg_0094_D27R0107_00012
 	wait_cry

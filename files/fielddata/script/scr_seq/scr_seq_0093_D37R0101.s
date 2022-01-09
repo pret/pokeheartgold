@@ -19,12 +19,12 @@ scr_seq_D37R0101_002:
 	scrcmd_609
 	lockall
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif eq, _0228
+	compare VAR_TEMP_x4001, 3
+	goto_if_eq _0228
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_tsure_poke_611
-	comparevartovalue VAR_TEMP_x4001, 30
-	gotoif ne, _0050
+	compare VAR_TEMP_x4001, 30
+	goto_if_ne _0050
 	move_person obj_D37R0101_tsure_poke_611, 9, 0, 25, 2
 _0050:
 	play_se SEQ_SE_DP_KAIDAN2
@@ -43,8 +43,8 @@ _0050:
 	scrcmd_604 48
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_var_1
-	comparevartovalue VAR_TEMP_x4001, 30
-	gotoif ne, _00AB
+	compare VAR_TEMP_x4001, 30
+	goto_if_ne _00AB
 	move_person obj_D37R0101_var_1, 9, 0, 25, 2
 _00AB:
 	play_se SEQ_SE_DP_KAIDAN2
@@ -52,8 +52,8 @@ _00AB:
 	apply_movement obj_D37R0101_var_1, _01C4
 	wait_movement
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00EE
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00EE
 	apply_movement obj_D37R0101_tsure_poke_611, _0218
 	apply_movement obj_player, _0218
 	apply_movement obj_partner_poke, _0218
@@ -263,8 +263,8 @@ _03C2:
 
 _03DC:
 	scrcmd_380 VAR_SPECIAL_x800C, 8
-	comparevartovar VAR_TEMP_x4001, VAR_SPECIAL_x800C
-	gotoif eq, _03DC
+	compare VAR_TEMP_x4001, VAR_SPECIAL_x800C
+	goto_if_eq _03DC
 	copyvar VAR_TEMP_x4001, VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8004, 1
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -275,20 +275,20 @@ scr_seq_D37R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, _0425
+	compare VAR_UNK_4077, 2
+	goto_if_ne _0425
 	npc_msg msg_0116_D37R0101_00002
 	goto _0454
 
 _0425:
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _043B
+	compare VAR_UNK_4077, 4
+	goto_if_ne _043B
 	npc_msg msg_0116_D37R0101_00002
 	goto _0454
 
 _043B:
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _0451
+	compare VAR_UNK_4077, 3
+	goto_if_ne _0451
 	npc_msg msg_0116_D37R0101_00001
 	goto _0454
 
@@ -304,20 +304,20 @@ scr_seq_D37R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 2
-	gotoif ne, _047A
+	compare VAR_UNK_4077, 2
+	goto_if_ne _047A
 	npc_msg msg_0116_D37R0101_00005
 	goto _04A9
 
 _047A:
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _0490
+	compare VAR_UNK_4077, 4
+	goto_if_ne _0490
 	npc_msg msg_0116_D37R0101_00005
 	goto _04A9
 
 _0490:
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _04A6
+	compare VAR_UNK_4077, 3
+	goto_if_ne _04A6
 	npc_msg msg_0116_D37R0101_00004
 	goto _04A9
 

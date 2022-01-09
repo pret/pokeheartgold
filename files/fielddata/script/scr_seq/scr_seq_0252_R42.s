@@ -21,26 +21,26 @@ scr_seq_R42_000:
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	clearflag FLAG_HIDE_ROUTE_42_HIKER
 	show_person obj_R42_mount_2_2
-	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif ne, _0051
+	compare VAR_SPECIAL_x8001, 172
+	goto_if_ne _0051
 	apply_movement obj_R42_mount_2_2, _0198
 	goto _00AA
 
 _0051:
-	comparevartovalue VAR_SPECIAL_x8001, 173
-	gotoif ne, _006C
+	compare VAR_SPECIAL_x8001, 173
+	goto_if_ne _006C
 	apply_movement obj_R42_mount_2_2, _01A4
 	goto _00AA
 
 _006C:
-	comparevartovalue VAR_SPECIAL_x8001, 174
-	gotoif ne, _0087
+	compare VAR_SPECIAL_x8001, 174
+	goto_if_ne _0087
 	apply_movement obj_R42_mount_2_2, _01B0
 	goto _00AA
 
 _0087:
-	comparevartovalue VAR_SPECIAL_x8001, 175
-	gotoif ne, _00A2
+	compare VAR_SPECIAL_x8001, 175
+	goto_if_ne _00A2
 	apply_movement obj_R42_mount_2_2, _01BC
 	goto _00AA
 
@@ -64,26 +64,26 @@ _00AA:
 	giveitem_no_check ITEM_HM04, 1
 	npc_msg msg_0399_R42_00006
 	closemsg
-	comparevartovalue VAR_SPECIAL_x8001, 172
-	gotoif ne, _010D
+	compare VAR_SPECIAL_x8001, 172
+	goto_if_ne _010D
 	apply_movement obj_R42_mount_2_2, _01DC
 	goto _0166
 
 _010D:
-	comparevartovalue VAR_SPECIAL_x8001, 173
-	gotoif ne, _0128
+	compare VAR_SPECIAL_x8001, 173
+	goto_if_ne _0128
 	apply_movement obj_R42_mount_2_2, _01F0
 	goto _0166
 
 _0128:
-	comparevartovalue VAR_SPECIAL_x8001, 174
-	gotoif ne, _0143
+	compare VAR_SPECIAL_x8001, 174
+	goto_if_ne _0143
 	apply_movement obj_R42_mount_2_2, _0204
 	goto _0166
 
 _0143:
-	comparevartovalue VAR_SPECIAL_x8001, 175
-	gotoif ne, _015E
+	compare VAR_SPECIAL_x8001, 175
+	goto_if_ne _015E
 	apply_movement obj_R42_mount_2_2, _0210
 	goto _0166
 

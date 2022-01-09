@@ -12,8 +12,8 @@
 	scrdef_end
 
 scr_seq_P01R0307_002:
-	comparevartovalue VAR_UNK_40CB, 4
-	gotoif ne, _0029
+	compare VAR_UNK_40CB, 4
+	goto_if_ne _0029
 	clearflag FLAG_UNK_219
 	goto _002D
 
@@ -27,12 +27,12 @@ scr_seq_P01R0307_001:
 	lockall
 	setflag FLAG_UNK_0ED
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 19
-	gotoif eq, _0088
+	compare VAR_TEMP_x4001, 19
+	goto_if_eq _0088
 	apply_movement obj_P01R0307_seaman_2, _00C4
 	scrcmd_729 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _006B
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _006B
 	apply_movement obj_partner_poke, _0114
 _006B:
 	apply_movement obj_player, _0104
@@ -46,8 +46,8 @@ _006B:
 
 _0088:
 	apply_movement obj_P01R0307_seaman_2, _00E4
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _00A5
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _00A5
 	apply_movement obj_partner_poke, _0114
 _00A5:
 	apply_movement obj_player, _0104
@@ -99,8 +99,8 @@ scr_seq_P01R0307_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_40CB, 3
-	gotoif ge, _0148
+	compare VAR_UNK_40CB, 3
+	goto_if_ge _0148
 	npc_msg msg_0263_P01R0307_00001
 	waitbutton
 	closemsg
@@ -122,15 +122,15 @@ scr_seq_P01R0307_003:
 	apply_movement obj_P01R0307_gsbabygirl1, _020C
 	wait_movement
 	scrcmd_729 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _0180
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _0180
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
 _0180:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _01A7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _01A7
 	apply_movement obj_player, _0218
 	apply_movement obj_P01R0307_gsbabygirl1, _0238
 	goto _01B7
@@ -140,8 +140,8 @@ _01A7:
 	apply_movement obj_P01R0307_gsbabygirl1, _0244
 _01B7:
 	wait_movement
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _01D0
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _01D0
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48

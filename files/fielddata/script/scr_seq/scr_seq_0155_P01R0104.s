@@ -12,8 +12,7 @@
 	scrdef_end
 
 scr_seq_P01R0104_003:
-	checkflag FLAG_UNK_168
-	gotoif TRUE, _0021
+	goto_if_set FLAG_UNK_168, _0021
 	setflag FLAG_UNK_998
 _0021:
 	scrcmd_804 2
@@ -23,8 +22,8 @@ _0021:
 	end
 
 scr_seq_P01R0104_002:
-	comparevartovalue VAR_UNK_40E1, 1
-	gotoif eq, _0045
+	compare VAR_UNK_40E1, 1
+	goto_if_eq _0045
 	end
 
 _0045:
@@ -62,24 +61,23 @@ scr_seq_P01R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0EB
-	gotoif TRUE, _0144
+	goto_if_set FLAG_UNK_0EB, _0144
 	npc_msg msg_0258_P01R0104_00000
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _00EF
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _00EF
 	apply_movement obj_P01R0104_seaman_2, _0150
 	wait_movement
 	apply_movement obj_player, _0180
 	goto _0126
 
 _00EF:
-	comparevartovalue VAR_TEMP_x4000, 3
-	gotoif ne, _0114
+	compare VAR_TEMP_x4000, 3
+	goto_if_ne _0114
 	apply_movement obj_P01R0104_seaman_2, _0160
 	wait_movement
 	apply_movement obj_player, _0190

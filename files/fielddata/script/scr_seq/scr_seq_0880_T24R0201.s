@@ -12,12 +12,9 @@ scr_seq_T24R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0C1
-	gotoif TRUE, _0037
-	checkflag FLAG_UNK_0BF
-	gotoif FALSE, _0042
-	checkflag FLAG_UNK_ABD
-	gotoif TRUE, _00A2
+	goto_if_set FLAG_UNK_0C1, _0037
+	goto_if_unset FLAG_UNK_0BF, _0042
+	goto_if_set FLAG_UNK_ABD, _00A2
 	goto _00AD
 	.byte 0x02, 0x00
 _0037:
@@ -33,15 +30,15 @@ _0042:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0063
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0063
 	npc_msg msg_0576_T24R0201_00004
 	goto _003A
 
 _0063:
 	get_party_count VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 6
-	gotoif ne, _007D
+	compare VAR_SPECIAL_x800C, 6
+	goto_if_ne _007D
 	npc_msg msg_0576_T24R0201_00003
 	goto _003A
 
@@ -65,50 +62,50 @@ _00AD:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01AA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01AA
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
 	party_select_ui
 	get_party_selection VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 255
-	gotoif ne, _00F2
+	compare VAR_TEMP_x4000, 255
+	goto_if_ne _00F2
 	call _019A
 	goto _01AA
 
 _00F2:
 	scrcmd_363 6, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	callif ne, _019A
+	compare VAR_SPECIAL_x800C, 0
+	call_if_ne _019A
 	nop_var_490 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0120
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0120
 	npc_msg msg_0576_T24R0201_00008
 	goto _0192
 
 _0120:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0136
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0136
 	npc_msg msg_0576_T24R0201_00012
 	goto _0192
 
 _0136:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _014C
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _014C
 	npc_msg msg_0576_T24R0201_00013
 	goto _0192
 
 _014C:
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif ne, _0162
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_ne _0162
 	npc_msg msg_0576_T24R0201_00014
 	goto _0192
 
 _0162:
 	scrcmd_382 VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 149
-	gotoif le, _0181
+	compare VAR_SPECIAL_x800C, 149
+	goto_if_le _0181
 	call _019A
 	goto _01B5
 

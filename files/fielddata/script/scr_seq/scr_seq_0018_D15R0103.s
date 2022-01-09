@@ -12,8 +12,7 @@
 
 scr_seq_D15R0103_000:
 	clearflag FLAG_UNK_1A3
-	checkflag FLAG_UNK_078
-	gotoif TRUE, _001F
+	goto_if_set FLAG_UNK_078, _001F
 	end
 
 _001F:
@@ -108,14 +107,13 @@ scr_seq_D15R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_076
-	gotoif TRUE, _0197
+	goto_if_set FLAG_UNK_076, _0197
 	npc_msg msg_0056_D15R0103_00003
 	closemsg
 	trainer_battle TRAINER_ELDER_LI, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01A2
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01A2
 	npc_msg msg_0056_D15R0103_00004
 	giveitem_no_check ITEM_TM70, 1
 	setflag FLAG_UNK_076

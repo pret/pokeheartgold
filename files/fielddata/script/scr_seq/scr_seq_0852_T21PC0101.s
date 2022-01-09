@@ -42,8 +42,8 @@ scr_seq_T21PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_SCENE_ELMS_LAB, 3
-	gotoif lt, _006A
+	compare VAR_SCENE_ELMS_LAB, 3
+	goto_if_lt _006A
 	npc_msg msg_0552_T21PC0101_00003
 	goto _006D
 

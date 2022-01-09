@@ -1492,22 +1492,21 @@ scr_seq_0953_738:
 	get_trainer_num VAR_SPECIAL_x8004
 	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
 	scrcmd_574 VAR_SPECIAL_x8001, VAR_SPECIAL_x800D
-	comparevartovalue VAR_SPECIAL_x8001, 51
-	callif eq, _0E57
-	comparevartovalue VAR_SPECIAL_x8001, 52
-	callif eq, _0E57
-	comparevartovalue VAR_SPECIAL_x8001, 53
-	callif eq, _0E57
-	comparevartovalue VAR_SPECIAL_x8001, 54
-	callif eq, _0E57
-	checktrainerflag VAR_SPECIAL_x8004
-	gotoif TRUE, _0C9C
+	compare VAR_SPECIAL_x8001, 51
+	call_if_eq _0E57
+	compare VAR_SPECIAL_x8001, 52
+	call_if_eq _0E57
+	compare VAR_SPECIAL_x8001, 53
+	call_if_eq _0E57
+	compare VAR_SPECIAL_x8001, 54
+	call_if_eq _0E57
+	goto_if_defeated VAR_SPECIAL_x8004, _0C9C
 	trainer_is_double_battle VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0C13
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0C13
 	party_check_for_double VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0E3B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0E3B
 	goto _0C13
 	.byte 0x02, 0x00
 _0C13:
@@ -1522,16 +1521,15 @@ _0C2F:
 	scrcmd_454
 	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0D99
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0D99
 	copyvar VAR_TEMP_x4012, VAR_SPECIAL_x8004
 	get_trainer_num VAR_SPECIAL_x8006
-	checktrainerflag VAR_SPECIAL_x8006
-	gotoif TRUE, _0C7F
+	goto_if_defeated VAR_SPECIAL_x8006, _0C7F
 	scrcmd_317 1
 	call _0D9F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, _0DCF
+	compare VAR_SPECIAL_x800C, 1
+	call_if_eq _0DCF
 	settrainerflag VAR_TEMP_x4012
 	releaseall
 	end
@@ -1540,23 +1538,23 @@ _0C7F:
 	settrainerflag VAR_TEMP_x4012
 	scrcmd_462 VAR_TEMP_x4010
 	get_phone_contact_random_gift_berry VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0D54
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0D54
 	releaseall
 	end
 
 _0C9C:
-	comparevartovalue VAR_TEMP_x4010, 255
-	gotoif eq, _0CE0
+	compare VAR_TEMP_x4010, 255
+	goto_if_eq _0CE0
 	get_phone_book_rematch VAR_TEMP_x4010, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0D02
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0D02
 	get_phone_contact_gift_item VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0D54
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0D54
 	call _0D9F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0CF8
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0CF8
 _0CE0:
 	openmsg
 	get_trainer_msg_params VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
@@ -1574,11 +1572,11 @@ _0CF8:
 _0D02:
 	copyvar VAR_SPECIAL_x8007, VAR_SPECIAL_x800C
 	trainer_is_double_battle VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0D32
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0D32
 	party_check_for_double VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0E3B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0E3B
 	goto _0D32
 	.byte 0x02, 0x00
 _0D32:
@@ -1596,8 +1594,8 @@ _0D54:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8005, 1
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0D8F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0D8F
 	callstd std_bag_is_full
 	goto _0D93
 
@@ -1614,11 +1612,11 @@ _0D99:
 	end
 
 _0D9F:
-	comparevartovalue VAR_TEMP_x4010, 255
-	gotoif eq, _0DC7
+	compare VAR_TEMP_x4010, 255
+	goto_if_eq _0DC7
 	scrcmd_147 VAR_TEMP_x4010, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0DC7
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0DC7
 	setvar VAR_SPECIAL_x800C, 1
 	return
 
@@ -1640,8 +1638,8 @@ _0DF9:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0E28
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0E28
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	npc_msg msg_0040_00101
@@ -1671,14 +1669,14 @@ _0E57:
 	apply_movement VAR_SPECIAL_x800D, _0EBC
 	wait_movement
 	get_player_facing VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x8000, 0
-	callif eq, _0E9B
-	comparevartovalue VAR_SPECIAL_x8000, 1
-	callif eq, _0EA3
-	comparevartovalue VAR_SPECIAL_x8000, 2
-	callif eq, _0EAB
-	comparevartovalue VAR_SPECIAL_x8000, 3
-	callif eq, _0EB3
+	compare VAR_SPECIAL_x8000, 0
+	call_if_eq _0E9B
+	compare VAR_SPECIAL_x8000, 1
+	call_if_eq _0EA3
+	compare VAR_SPECIAL_x8000, 2
+	call_if_eq _0EAB
+	compare VAR_SPECIAL_x8000, 3
+	call_if_eq _0EB3
 	return
 
 _0E9B:
@@ -1705,17 +1703,17 @@ scr_seq_0953_739:
 	scrcmd_603
 	lockall
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0EDD
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0EDD
 	release obj_partner_poke
 _0EDD:
 	scrcmd_170 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0F0A
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0F9C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _107D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0F0A
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0F9C
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _107D
 	end
 
 _0F0A:
@@ -1734,30 +1732,30 @@ _0F0A:
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _1176
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _1176
 	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
 	scrcmd_317 0
 	call _0D9F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, _0DCF
+	compare VAR_SPECIAL_x800C, 1
+	call_if_eq _0DCF
 	releaseall
 	end
 
 _0F87:
 	trainer_step_towards_player 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0F87
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0F87
 	return
 
 _0F9C:
 	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
-	comparevartovalue VAR_TEMP_x4010, 255
-	gotoif ne, _0FC7
+	compare VAR_TEMP_x4010, 255
+	goto_if_ne _0FC7
 	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x800C, VAR_TEMP_x4010
 _0FC7:
@@ -1777,8 +1775,8 @@ _0FC7:
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _1176
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _1176
 	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
@@ -1786,26 +1784,26 @@ _0FC7:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8005
 	call _0D9F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, _0DCF
+	compare VAR_SPECIAL_x800C, 1
+	call_if_eq _0DCF
 	releaseall
 	end
 
 _1055:
 	trainer_step_towards_player 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _1055
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _1055
 	trainer_step_towards_player 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _1055
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _1055
 	return
 
 _107D:
 	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x8004, VAR_TEMP_x4010
-	comparevartovalue VAR_TEMP_x4010, 255
-	gotoif ne, _10A8
+	compare VAR_TEMP_x4010, 255
+	goto_if_ne _10A8
 	get_eye_trainer_num 1, VAR_SPECIAL_x800C
 	load_phone_dat VAR_SPECIAL_x800C, VAR_TEMP_x4010
 _10A8:
@@ -1829,8 +1827,8 @@ _10A8:
 	closemsg
 	trainer_battle VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _1176
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _1176
 	get_eye_trainer_num 0, VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8004
@@ -1838,21 +1836,21 @@ _10A8:
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	settrainerflag VAR_SPECIAL_x8005
 	call _0D9F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	callif eq, _0DCF
+	compare VAR_SPECIAL_x800C, 1
+	call_if_eq _0DCF
 	releaseall
 	end
 
 _114C:
 	trainer_step_towards_player 0, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _114C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _114C
 	return
 
 _1161:
 	trainer_step_towards_player 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _1161
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _1161
 	return
 
 _1176:

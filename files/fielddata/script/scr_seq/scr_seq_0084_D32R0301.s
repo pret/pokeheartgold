@@ -42,36 +42,36 @@ scr_seq_D32R0301_005:
 	.byte 0x02, 0x00
 _0074:
 	scrcmd_682 0
-	comparevartovalue VAR_TEMP_x4004, 0
-	callif eq, _057C
-	comparevartovalue VAR_TEMP_x4004, 1
-	callif eq, _0581
+	compare VAR_TEMP_x4004, 0
+	call_if_eq _057C
+	compare VAR_TEMP_x4004, 1
+	call_if_eq _0581
 	goto _009A
 	.byte 0x02, 0x00
 _009A:
-	comparevartovalue VAR_TEMP_x4004, 0
-	callif eq, _0586
-	comparevartovalue VAR_TEMP_x4004, 1
-	callif eq, _05A5
+	compare VAR_TEMP_x4004, 0
+	call_if_eq _0586
+	compare VAR_TEMP_x4004, 1
+	call_if_eq _05A5
 	menu_item_add 19, 255, 2
 	menu_item_add 20, 255, 3
 	menu_exec
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _013F
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _014D
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif eq, _0104
-	comparevartovalue VAR_SPECIAL_x800C, 4
-	gotoif eq, _015B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _013F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _014D
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_eq _0104
+	compare VAR_SPECIAL_x800C, 4
+	goto_if_eq _015B
 	touchscreen_menu_show
 	goto _0126
 	.byte 0x02, 0x00
 _0104:
-	comparevartovalue VAR_TEMP_x4004, 0
-	callif eq, _05BC
-	comparevartovalue VAR_TEMP_x4004, 1
-	callif eq, _05C1
+	compare VAR_TEMP_x4004, 0
+	call_if_eq _05BC
+	compare VAR_TEMP_x4004, 1
+	call_if_eq _05C1
 	goto _009A
 	.byte 0x02, 0x00
 _0126:
@@ -104,10 +104,10 @@ _0169:
 	menu_item_add 22, 255, 1
 	menu_item_add 23, 255, 2
 	menu_exec
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01B2
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01C0
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01B2
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01C0
 	touchscreen_menu_show
 	goto _0126
 	.byte 0x02, 0x00
@@ -123,19 +123,19 @@ _01CE:
 	goto _01D6
 	.byte 0x02, 0x00
 _01D6:
-	comparevartovalue VAR_UNK_4143, 0
-	callif eq, _0399
-	comparevartovalue VAR_UNK_4143, 1
-	callif eq, _0399
+	compare VAR_UNK_4143, 0
+	call_if_eq _0399
+	compare VAR_UNK_4143, 1
+	call_if_eq _0399
 	setvar VAR_TEMP_x4000, 0
 	heal_party
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0126
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0126
 	touchscreen_menu_show
-	comparevartovalue VAR_UNK_4143, 2
-	gotoif eq, _0226
+	compare VAR_UNK_4143, 2
+	goto_if_eq _0226
 	goto _03A1
 	.byte 0x02, 0x00
 _0226:
@@ -156,19 +156,19 @@ _0277:
 	npc_msg msg_0107_D32R0301_00025
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0226
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0226
 	touchscreen_menu_show
 	closemsg
-	comparevartovalue VAR_UNK_4144, 0
-	callif eq, _02CF
-	comparevartovalue VAR_UNK_4144, 1
-	callif eq, _02DB
+	compare VAR_UNK_4144, 0
+	call_if_eq _02CF
+	compare VAR_UNK_4144, 1
+	call_if_eq _02DB
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _02E7
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _02EF
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _02E7
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _02EF
 	goto _037B
 	.byte 0x02, 0x00
 _02CF:
@@ -190,19 +190,19 @@ _02F9:
 	npc_msg msg_0107_D32R0301_00025
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0226
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0226
 	touchscreen_menu_show
 	closemsg
-	comparevartovalue VAR_UNK_4144, 0
-	callif eq, _0351
-	comparevartovalue VAR_UNK_4144, 1
-	callif eq, _035D
+	compare VAR_UNK_4144, 0
+	call_if_eq _0351
+	compare VAR_UNK_4144, 1
+	call_if_eq _035D
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0369
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _0371
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0369
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _0371
 	goto _037B
 	.byte 0x02
 	.byte 0x00
@@ -224,8 +224,8 @@ _0371:
 	.byte 0x02, 0x00
 _037B:
 	npc_msg msg_0107_D32R0301_00026
-	comparevartovalue VAR_UNK_4143, 2
-	callif eq, _0399
+	compare VAR_UNK_4143, 2
+	call_if_eq _0399
 	call _05ED
 	goto _03A1
 	.byte 0x02, 0x00
@@ -234,12 +234,12 @@ _0399:
 	return
 
 _03A1:
-	comparevartovalue VAR_UNK_4143, 0
-	callif eq, _0439
-	comparevartovalue VAR_UNK_4143, 1
-	callif eq, _0454
-	comparevartovalue VAR_UNK_4143, 2
-	callif eq, _046F
+	compare VAR_UNK_4143, 0
+	call_if_eq _0439
+	compare VAR_UNK_4143, 1
+	call_if_eq _0454
+	compare VAR_UNK_4143, 2
+	call_if_eq _046F
 	play_se SEQ_SE_DP_KAIDAN2
 	goto _03D4
 	.byte 0x02, 0x00
@@ -247,17 +247,17 @@ _03D4:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_815 0
-	comparevartovalue VAR_UNK_4143, 0
-	callif eq, _0495
-	comparevartovalue VAR_UNK_4143, 1
-	callif eq, _04A9
-	comparevartovalue VAR_UNK_4143, 2
-	callif eq, _04BD
+	compare VAR_UNK_4143, 0
+	call_if_eq _0495
+	compare VAR_UNK_4143, 1
+	call_if_eq _04A9
+	compare VAR_UNK_4143, 2
+	call_if_eq _04BD
 	scrcmd_420 59
 	scrcmd_436
 	scrcmd_627 3
-	comparevartovalue VAR_UNK_4143, 2
-	callif eq, _0435
+	compare VAR_UNK_4143, 2
+	call_if_eq _0435
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -426,10 +426,10 @@ scr_seq_D32R0301_002:
 	faceplayer
 	npc_msg msg_0107_D32R0301_00012
 	scrcmd_628 VAR_UNK_4143, VAR_UNK_4144
-	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 1
-	callif eq, _062E
-	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 3
-	callif eq, _0636
+	compare VAR_BATTLE_FACTORY_PRINT_PROGRESS, 1
+	call_if_eq _062E
+	compare VAR_BATTLE_FACTORY_PRINT_PROGRESS, 3
+	call_if_eq _0636
 	goto _0126
 	.byte 0x02, 0x00
 _062E:
@@ -441,14 +441,14 @@ _0636:
 	return
 
 scr_seq_D32R0301_003:
-	comparevartovalue VAR_UNK_4143, 0
-	callif eq, _067A
-	comparevartovalue VAR_UNK_4143, 1
-	callif eq, _067A
-	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 1
-	callif eq, _0680
-	comparevartovalue VAR_BATTLE_FACTORY_PRINT_PROGRESS, 3
-	callif eq, _0697
+	compare VAR_UNK_4143, 0
+	call_if_eq _067A
+	compare VAR_UNK_4143, 1
+	call_if_eq _067A
+	compare VAR_BATTLE_FACTORY_PRINT_PROGRESS, 1
+	call_if_eq _0680
+	compare VAR_BATTLE_FACTORY_PRINT_PROGRESS, 3
+	call_if_eq _0697
 	goto _0126
 	.byte 0x02, 0x00
 _067A:

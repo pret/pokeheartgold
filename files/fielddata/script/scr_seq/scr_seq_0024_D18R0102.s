@@ -11,8 +11,7 @@
 	scrdef_end
 
 scr_seq_D18R0102_002:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _001B
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _001B
 	end
 
 _001B:
@@ -44,8 +43,8 @@ scr_seq_D18R0102_000:
 	apply_movement obj_D18R0102_tsure_poke_617, _0234
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 16
-	gotoif ne, _00C8
+	compare VAR_SPECIAL_x8005, 16
+	goto_if_ne _00C8
 	apply_movement obj_D18R0102_tsure_poke_618, _0244
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
@@ -84,8 +83,8 @@ _00E2:
 	lock obj_D18R0102_minaki
 	wait_se SEQ_SE_DP_KAIDAN2
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 16
-	gotoif ne, _015B
+	compare VAR_SPECIAL_x8005, 16
+	goto_if_ne _015B
 	apply_movement obj_D18R0102_minaki, _029C
 	goto _016B
 
@@ -96,8 +95,8 @@ _016B:
 	wait_movement
 	npc_msg msg_0061_D18R0102_00000
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 16
-	gotoif ne, _0191
+	compare VAR_SPECIAL_x8005, 16
+	goto_if_ne _0191
 	apply_movement obj_D18R0102_minaki, _02C4
 	goto _01A1
 
@@ -110,8 +109,8 @@ _01A1:
 	npc_msg msg_0061_D18R0102_00001
 	closemsg
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	comparevartovalue VAR_SPECIAL_x8005, 16
-	gotoif ne, _01CC
+	compare VAR_SPECIAL_x8005, 16
+	goto_if_ne _01CC
 	apply_movement obj_D18R0102_minaki, _02E8
 	goto _01D4
 
@@ -234,13 +233,13 @@ scr_seq_D18R0102_001:
 	wild_battle SPECIES_SUICUNE, 40, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _035C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _035C
 	scrcmd_683 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, _0358
-	comparevartovalue VAR_TEMP_x4002, 4
-	callif eq, _0362
+	compare VAR_TEMP_x4002, 3
+	goto_if_eq _0358
+	compare VAR_TEMP_x4002, 4
+	call_if_eq _0362
 _0358:
 	releaseall
 	end

@@ -20,8 +20,7 @@ scr_seq_T02PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_129
-	gotoif FALSE, _003C
+	goto_if_unset FLAG_UNK_129, _003C
 	npc_msg msg_0455_T02PC0101_00001
 	waitbutton
 	closemsg

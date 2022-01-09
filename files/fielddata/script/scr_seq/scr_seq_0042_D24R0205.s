@@ -18,30 +18,30 @@
 	scrdef_end
 
 scr_seq_D24R0205_008:
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
-	gotoif eq, _003D
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
+	goto_if_eq _003D
 	goto _009D
 
 _003D:
 	get_lead_mon_index VAR_TEMP_x4005
-	comparevartovalue VAR_UNK_4102, 1
-	gotoif eq, _0061
-	comparevartovalue VAR_UNK_4102, 2
-	gotoif eq, _007F
+	compare VAR_UNK_4102, 1
+	goto_if_eq _0061
+	compare VAR_UNK_4102, 2
+	goto_if_eq _007F
 	goto _009D
 
 _0061:
 	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
-	comparevartovalue VAR_TEMP_x4007, 1
-	callif eq, _009F
+	compare VAR_TEMP_x4007, 1
+	call_if_eq _009F
 	nop_var_490 VAR_TEMP_x4005
 	nop_var_490 VAR_TEMP_x4007
 	end
 
 _007F:
 	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
-	comparevartovalue VAR_TEMP_x4006, 1
-	callif eq, _009F
+	compare VAR_TEMP_x4006, 1
+	call_if_eq _009F
 	nop_var_490 VAR_TEMP_x4005
 	nop_var_490 VAR_TEMP_x4006
 	end
@@ -62,10 +62,8 @@ scr_seq_D24R0205_000:
 	wait_movement
 	scrcmd_561 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
-	checkflag FLAG_UNK_111
-	gotoif TRUE, _016F
-	checkflag FLAG_GOT_UNOWN_REPORT
-	gotoif TRUE, _016F
+	goto_if_set FLAG_UNK_111, _016F
+	goto_if_set FLAG_GOT_UNOWN_REPORT, _016F
 	wait 5, VAR_SPECIAL_x800C
 	apply_movement obj_D24R0205_gsassistantm, _0194
 	apply_movement obj_D24R0205_gsassistantm_2, _0194
@@ -99,8 +97,8 @@ _016F:
 	end
 
 scr_seq_D24R0205_001:
-	comparevartovalue VAR_UNK_40CE, 1
-	gotoif ne, _018A
+	compare VAR_UNK_40CE, 1
+	goto_if_ne _018A
 	scrcmd_375 255
 _018A:
 	end

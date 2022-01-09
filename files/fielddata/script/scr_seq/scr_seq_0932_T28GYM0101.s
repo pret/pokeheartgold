@@ -10,41 +10,39 @@
 	scrdef_end
 
 scr_seq_T28GYM0101_001:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _001B
+	goto_if_unset FLAG_UNK_189, _001B
 	clearflag FLAG_UNK_189
 	end
 
 _001B:
 	get_phone_book_rematch 39, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _00B8
-	checkflag FLAG_GAME_CLEAR
-	gotoif FALSE, _00B2
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _00B8
+	goto_if_unset FLAG_GAME_CLEAR, _00B2
 	scrcmd_147 39, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00B2
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00B2
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _0067
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0067
 	setflag FLAG_UNK_2EE
 	goto _00B0
 
 _0067:
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _007E
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _007E
 	setflag FLAG_UNK_2EE
 	goto _00B0
 
 _007E:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _0095
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _0095
 	setflag FLAG_UNK_2EE
 	goto _00B0
 
 _0095:
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _00AC
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _00AC
 	setflag FLAG_UNK_2EE
 	goto _00B0
 
@@ -66,14 +64,14 @@ scr_seq_T28GYM0101_000:
 	lockall
 	faceplayer
 	check_badge 6, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0178
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0178
 	npc_msg msg_0622_T28GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_PRYCE_PRYCE, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0172
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0172
 	settrainerflag TRAINER_BOARDER_DEANDRE
 	settrainerflag TRAINER_BOARDER_GERARDO
 	settrainerflag TRAINER_SKIER_JILL
@@ -83,8 +81,8 @@ scr_seq_T28GYM0101_000:
 	give_badge 6
 	addvar VAR_UNK_4134, 1
 	add_special_game_stat 22
-	comparevartovalue VAR_UNK_4134, 3
-	gotoif ne, _012F
+	compare VAR_UNK_4134, 3
+	goto_if_ne _012F
 	setvar VAR_UNK_4077, 1
 _012F:
 	buffer_players_name 0
@@ -107,8 +105,7 @@ _0172:
 	end
 
 _0178:
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0198
+	goto_if_set FLAG_GAME_CLEAR, _0198
 	npc_msg msg_0622_T28GYM0101_00005
 	waitbutton
 	closemsg
@@ -126,11 +123,11 @@ _0198:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01F9
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01F9
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0204
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0204
 	npc_msg msg_0622_T28GYM0101_00007
 	closemsg
 	setflag FLAG_UNK_189

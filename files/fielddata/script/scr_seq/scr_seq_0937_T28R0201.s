@@ -23,10 +23,8 @@ scr_seq_T28R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0C6
-	gotoif TRUE, _003B
-	checkflag FLAG_UNK_0C5
-	gotoif TRUE, _0046
+	goto_if_set FLAG_UNK_0C6, _003B
+	goto_if_set FLAG_UNK_0C5, _0046
 _003B:
 	npc_msg msg_0625_T28R0201_00001
 	waitbutton

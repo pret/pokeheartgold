@@ -13,11 +13,10 @@ scr_seq_P01R0303_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0ED
-	gotoif FALSE, _0112
+	goto_if_unset FLAG_UNK_0ED, _0112
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif eq, _009D
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_eq _009D
 	apply_movement obj_P01R0303_seaman_2, _0120
 	wait_movement
 	scrcmd_602 0
@@ -33,8 +32,8 @@ scr_seq_P01R0303_000:
 	closemsg
 	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _010C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _010C
 	npc_msg msg_0261_P01R0303_00006
 	closemsg
 	apply_movement obj_P01R0303_seaman_2, _0160
@@ -61,8 +60,8 @@ _009D:
 	closemsg
 	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _010C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _010C
 	npc_msg msg_0261_P01R0303_00006
 	closemsg
 	apply_movement obj_P01R0303_seaman_2, _01AC
@@ -172,33 +171,32 @@ scr_seq_P01R0303_001:
 	npc_msg msg_0261_P01R0303_00001
 	closemsg
 	scrcmd_729 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _0247
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _0247
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
 _0247:
 	apply_movement obj_player, _02C4
 	wait_movement
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif eq, _0268
+	compare VAR_TEMP_x4002, 0
+	goto_if_eq _0268
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 _0268:
-	comparevartovalue VAR_UNK_40CB, 7
-	gotoif ge, _0279
+	compare VAR_UNK_40CB, 7
+	goto_if_ge _0279
 	releaseall
 	end
 
 _0279:
-	checkflag FLAG_UNK_0EB
-	gotoif TRUE, _02AD
+	goto_if_set FLAG_UNK_0EB, _02AD
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	setflag FLAG_UNK_0EB
-	comparevartovalue VAR_UNK_40E1, 1
-	gotoif ne, _02A6
+	compare VAR_UNK_40E1, 1
+	goto_if_ne _02A6
 	npc_msg msg_0261_P01R0303_00003
 	goto _02A9
 

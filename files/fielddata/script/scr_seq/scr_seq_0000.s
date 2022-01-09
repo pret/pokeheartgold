@@ -27,10 +27,10 @@ scr_seq_0000_001:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0050
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0063
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0050
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0063
 	end
 
 scr_seq_0000_002:

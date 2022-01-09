@@ -9,16 +9,15 @@
 	scrdef_end
 
 scr_seq_D02R0102_000:
-	checkflag FLAG_UNK_AB5
-	gotoif TRUE, _004D
+	goto_if_set FLAG_UNK_AB5, _004D
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _002E
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _002E
 	goto _004F
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _002E:
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif ne, _0047
+	compare VAR_TEMP_x4000, 2
+	goto_if_ne _0047
 	goto _008E
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0047:
@@ -29,8 +28,8 @@ _004D:
 
 _004F:
 	scrcmd_379 VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif ne, _0086
+	compare VAR_TEMP_x4001, 3
+	goto_if_ne _0086
 	scrcmd_342 1, 1, 7
 	scrcmd_342 4, 5, 6
 	scrcmd_342 2, 1, 26
@@ -45,8 +44,8 @@ _008C:
 
 _008E:
 	scrcmd_379 VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 4
-	gotoif ne, _00C5
+	compare VAR_TEMP_x4001, 4
+	goto_if_ne _00C5
 	scrcmd_342 1, 1, 7
 	scrcmd_342 4, 5, 6
 	scrcmd_342 2, 1, 26

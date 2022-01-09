@@ -28,15 +28,14 @@ scr_seq_T27_000:
 	end
 
 scr_seq_T27_015:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0059
+	goto_if_unset FLAG_UNK_189, _0059
 	clearflag FLAG_UNK_189
 	end
 
 _0059:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif ne, _0074
+	compare VAR_TEMP_x4000, 5
+	goto_if_ne _0074
 	clearflag FLAG_HIDE_CAMERON
 	goto _0078
 
@@ -55,8 +54,8 @@ scr_seq_T27_012:
 	wait_movement
 	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _00B6
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _00B6
 	scrcmd_606
 	goto _00B8
 
@@ -179,11 +178,11 @@ scr_seq_T27_014:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0314
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0314
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0328
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0328
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -191,15 +190,15 @@ scr_seq_T27_014:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0288
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0288
 	apply_movement obj_player, _033C
 	apply_movement obj_T27_gsmiddleman1, _0374
 	goto _02B3
 
 _0288:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _02A3
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _02A3
 	apply_movement obj_player, _0354
 	goto _02B3
 
@@ -212,8 +211,8 @@ _02B3:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _02DA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _02DA
 	apply_movement obj_partner_poke, _0380
 	wait_movement
 _02DA:
@@ -323,8 +322,7 @@ scr_seq_T27_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_96A
-	gotoif TRUE, _0417
+	goto_if_set FLAG_UNK_96A, _0417
 	npc_msg msg_0612_T27_00008
 	goto _041A
 
@@ -340,8 +338,7 @@ scr_seq_T27_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _0440
+	goto_if_set FLAG_GAME_CLEAR, _0440
 	npc_msg msg_0612_T27_00000
 	waitbutton
 	closemsg
@@ -359,8 +356,8 @@ scr_seq_T27_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_410C, 2
-	gotoif gt, _0469
+	compare VAR_UNK_410C, 2
+	goto_if_gt _0469
 	npc_msg msg_0612_T27_00002
 	goto _046C
 
@@ -376,10 +373,9 @@ scr_seq_T27_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_GAME_CLEAR
-	gotoif TRUE, _04A8
-	comparevartovalue VAR_UNK_40A1, 0
-	gotoif ne, _049D
+	goto_if_set FLAG_GAME_CLEAR, _04A8
+	compare VAR_UNK_40A1, 0
+	goto_if_ne _049D
 	npc_msg msg_0612_T27_00005
 	goto _04A0
 

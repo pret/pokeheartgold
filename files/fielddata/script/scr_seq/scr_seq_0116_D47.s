@@ -25,17 +25,16 @@
 	scrdef_end
 
 scr_seq_D47_014:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _0057
+	goto_if_unset FLAG_UNK_189, _0057
 	clearflag FLAG_UNK_189
 	end
 
 _0057:
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, _007B
-	comparevartovalue VAR_TEMP_x4000, 4
-	gotoif eq, _007B
+	compare VAR_TEMP_x4000, 2
+	goto_if_eq _007B
+	compare VAR_TEMP_x4000, 4
+	goto_if_eq _007B
 	setflag FLAG_HIDE_CAMERON
 	end
 
@@ -99,8 +98,8 @@ scr_seq_D47_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, _0106
+	compare VAR_TEMP_x400B, 0
+	goto_if_ne _0106
 	npc_msg msg_0133_D47_00007
 	goto _0109
 
@@ -110,8 +109,8 @@ _0109:
 	waitbutton
 	closemsg
 	releaseall
-	comparevartovalue VAR_TEMP_x400B, 0
-	gotoif ne, _0128
+	compare VAR_TEMP_x400B, 0
+	goto_if_ne _0128
 	addvar VAR_TEMP_x400B, 1
 	goto _012E
 
@@ -205,11 +204,11 @@ scr_seq_D47_013:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0307
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0307
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _031B
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _031B
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -217,21 +216,21 @@ scr_seq_D47_013:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0258
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0258
 	apply_movement obj_player, _0330
 	apply_movement obj_D47_gsmiddleman1, _037C
 	goto _02A6
 
 _0258:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _0273
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _0273
 	apply_movement obj_player, _0348
 	goto _02A6
 
 _0273:
-	comparevartovalue VAR_SPECIAL_x800C, 3
-	gotoif ne, _0296
+	compare VAR_SPECIAL_x800C, 3
+	goto_if_ne _0296
 	apply_movement obj_player, _0368
 	apply_movement obj_D47_gsmiddleman1, _037C
 	goto _02A6
@@ -245,8 +244,8 @@ _02A6:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _02CD
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _02CD
 	apply_movement obj_partner_poke, _0388
 	wait_movement
 _02CD:

@@ -14,12 +14,12 @@
 
 scr_seq_R39R0201_004:
 	scrcmd_379 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _0047
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif eq, _0047
-	comparevartovalue VAR_TEMP_x4000, 2
-	gotoif eq, _0047
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _0047
+	compare VAR_TEMP_x4000, 1
+	goto_if_eq _0047
+	compare VAR_TEMP_x4000, 2
+	goto_if_eq _0047
 	clearflag FLAG_UNK_226
 	end
 
@@ -31,10 +31,8 @@ scr_seq_R39R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_100
-	gotoif TRUE, _00A2
-	checkflag FLAG_UNK_0AA
-	gotoif TRUE, _007E
+	goto_if_set FLAG_UNK_100, _00A2
+	goto_if_set FLAG_UNK_0AA, _007E
 	npc_msg msg_0398_R39R0201_00005
 	closemsg
 _0070:
@@ -60,10 +58,8 @@ scr_seq_R39R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_101
-	gotoif TRUE, _00E0
-	checkflag FLAG_UNK_0AA
-	gotoif TRUE, _00FA
+	goto_if_set FLAG_UNK_101, _00E0
+	goto_if_set FLAG_UNK_0AA, _00FA
 	npc_msg msg_0398_R39R0201_00000
 	closemsg
 _00D2:
@@ -83,37 +79,36 @@ _00ED:
 	goto _00D2
 	.byte 0x02, 0x00
 _00FA:
-	checkflag FLAG_UNK_100
-	gotoif FALSE, _00ED
+	goto_if_unset FLAG_UNK_100, _00ED
 	npc_msg msg_0398_R39R0201_00001
 	setvar VAR_SPECIAL_x8004, 29
 	setvar VAR_SPECIAL_x8005, 34
 	setvar VAR_SPECIAL_x8006, 39
 	scrcmd_133 32772, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 99
-	gotoif eq, _020C
+	compare VAR_SPECIAL_x800C, 99
+	goto_if_eq _020C
 	scrcmd_133 32773, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 99
-	gotoif eq, _020C
+	compare VAR_SPECIAL_x800C, 99
+	goto_if_eq _020C
 	scrcmd_133 32774, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 99
-	gotoif eq, _020C
+	compare VAR_SPECIAL_x800C, 99
+	goto_if_eq _020C
 	setvar VAR_SPECIAL_x8000, 3
 	setvar VAR_SPECIAL_x8001, 3
 	setvar VAR_SPECIAL_x8002, 3
 	scrcmd_133 32772, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 96
-	gotoif le, _01C2
+	compare VAR_SPECIAL_x800C, 96
+	goto_if_le _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	scrcmd_133 32773, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 96
-	gotoif le, _01C2
+	compare VAR_SPECIAL_x800C, 96
+	goto_if_le _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
 	scrcmd_133 32774, 32780
-	comparevartovalue VAR_SPECIAL_x800C, 96
-	gotoif le, _01C2
+	compare VAR_SPECIAL_x800C, 96
+	goto_if_le _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
 _01C2:
@@ -153,13 +148,11 @@ scr_seq_R39R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0AA
-	gotoif TRUE, _0354
+	goto_if_set FLAG_UNK_0AA, _0354
 	play_cry SPECIES_MILTANK, 11
 	npc_msg msg_0398_R39R0201_00009
 	wait_cry
-	checkflag FLAG_UNK_0A8
-	gotoif TRUE, _0260
+	goto_if_set FLAG_UNK_0A8, _0260
 	npc_msg msg_0398_R39R0201_00010
 	waitbutton
 	closemsg
@@ -173,35 +166,29 @@ _0260:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _028C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0378
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _028C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0378
 	end
 
 _028C:
 	setvar VAR_SPECIAL_x8004, 155
 	setvar VAR_SPECIAL_x8005, 1
 	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _036A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _036A
 	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	buffer_players_name 0
 	npc_msg msg_0398_R39R0201_00014
 	waitbutton
 	closemsg
-	checkflag FLAG_UNK_0B0
-	gotoif TRUE, _033F
-	checkflag FLAG_UNK_0AF
-	gotoif TRUE, _0337
-	checkflag FLAG_UNK_0AE
-	gotoif TRUE, _0328
-	checkflag FLAG_UNK_0AD
-	gotoif TRUE, _0320
-	checkflag FLAG_UNK_0AC
-	gotoif TRUE, _0311
-	checkflag FLAG_UNK_0A9
-	gotoif TRUE, _0309
+	goto_if_set FLAG_UNK_0B0, _033F
+	goto_if_set FLAG_UNK_0AF, _0337
+	goto_if_set FLAG_UNK_0AE, _0328
+	goto_if_set FLAG_UNK_0AD, _0320
+	goto_if_set FLAG_UNK_0AC, _0311
+	goto_if_set FLAG_UNK_0A9, _0309
 	setflag FLAG_UNK_0A9
 	releaseall
 	end

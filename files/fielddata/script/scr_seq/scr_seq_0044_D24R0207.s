@@ -18,16 +18,16 @@ scr_seq_D24R0207_000:
 	scrcmd_561 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
 	setvar VAR_UNK_40D5, 0
-	comparevartovalue VAR_UNK_40EF, 1
-	gotoif eq, _004D
+	compare VAR_UNK_40EF, 1
+	goto_if_eq _004D
 	setvar VAR_UNK_40EF, 1
 	addvar VAR_UNK_40F1, 1
 _004D:
 	end
 
 scr_seq_D24R0207_001:
-	comparevartovalue VAR_UNK_40D5, 1
-	gotoif ne, _0064
+	compare VAR_UNK_40D5, 1
+	goto_if_ne _0064
 	nop_var_490 VAR_UNK_40D5
 	scrcmd_375 255
 _0064:
@@ -43,28 +43,28 @@ scr_seq_D24R0207_002:
 	setvar VAR_UNK_40CE, 1
 	setflag FLAG_UNK_111
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _009E
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0103
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _009E
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0103
 	end
 
 _009E:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00BD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00BD
 	apply_movement obj_player, _021C
 	goto _00FB
 
 _00BD:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _00D8
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _00D8
 	apply_movement obj_player, _0238
 	goto _00FB
 
 _00D8:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _00F3
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _00F3
 	apply_movement obj_player, _0254
 	goto _00FB
 
@@ -76,22 +76,22 @@ _00FB:
 
 _0103:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _012A
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _012A
 	apply_movement obj_player, _021C
 	apply_movement obj_partner_poke, _0228
 	goto _0180
 
 _012A:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _014D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _014D
 	apply_movement obj_player, _0238
 	apply_movement obj_partner_poke, _0244
 	goto _0180
 
 _014D:
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _0170
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _0170
 	apply_movement obj_player, _0254
 	apply_movement obj_partner_poke, _0260
 	goto _0180
@@ -103,10 +103,10 @@ _0180:
 	wait_movement
 _0182:
 	play_se SEQ_SE_GS_RAKKA01
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif ge, _01C8
-	comparevartovalue VAR_UNK_403E, 6
-	gotoif eq, _01F2
+	compare VAR_UNK_403E, 7
+	goto_if_ge _01C8
+	compare VAR_UNK_403E, 6
+	goto_if_eq _01F2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 315, 0, 5, 42, VAR_SPECIAL_x800C

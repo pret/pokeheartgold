@@ -18,8 +18,7 @@
 
 scr_seq_T11R0601_006:
 	scrcmd_582 76, 1290, 209
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _003F
+	goto_if_set FLAG_RESTORED_POWER, _003F
 	goto _0045
 
 _003F:
@@ -27,20 +26,18 @@ _003F:
 _0045:
 	setflag FLAG_UNK_2F7
 	scrcmd_147 36, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif eq, _007E
+	compare VAR_TEMP_x4001, 0
+	goto_if_eq _007E
 	get_phone_book_rematch 36, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _007E
-	checkflag FLAG_UNK_162
-	gotoif TRUE, _007E
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _007E
+	goto_if_set FLAG_UNK_162, _007E
 	clearflag FLAG_UNK_2F7
 _007E:
 	end
 
 scr_seq_T11R0601_005:
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _008D
+	goto_if_set FLAG_RESTORED_POWER, _008D
 	end
 
 _008D:
@@ -51,8 +48,7 @@ scr_seq_T11R0601_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _00B9
+	goto_if_set FLAG_RESTORED_POWER, _00B9
 	npc_msg msg_0535_T11R0601_00000
 	waitbutton
 	closemsg
@@ -61,8 +57,8 @@ scr_seq_T11R0601_000:
 
 _00B9:
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 2
-	gotoif ne, _00D7
+	compare VAR_SPECIAL_x800C, 2
+	goto_if_ne _00D7
 	npc_msg msg_0535_T11R0601_00005
 	waitbutton
 	closemsg
@@ -86,16 +82,15 @@ scr_seq_T11R0601_004:
 	lockall
 	apply_movement obj_player, _017C
 	wait_movement
-	checkflag FLAG_UNK_123
-	gotoif TRUE, _0158
+	goto_if_set FLAG_UNK_123, _0158
 	npc_msg msg_0535_T11R0601_00001
 	closemsg
 	setflag FLAG_UNK_123
 _0116:
 	wait 50, VAR_SPECIAL_x8004
 	hasitem ITEM_PASS, 1, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _0163
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _0163
 	npc_msg msg_0535_T11R0601_00002
 	closemsg
 	scrcmd_602 0
@@ -139,8 +134,8 @@ scr_seq_T11R0601_007:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _024F
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _024F
 	npc_msg msg_0535_T11R0601_00014
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
@@ -150,22 +145,22 @@ scr_seq_T11R0601_007:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _024F
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _024F
 	scrcmd_470 10
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	gotoif ne, _0242
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	goto_if_ne _0242
 	scrcmd_473 32772
 	scrcmd_474
 	setflag FLAG_UNK_162
 	npc_msg msg_0535_T11R0601_00016
 	closemsg
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _022C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _022C
 	apply_movement obj_T11R0601_gsleader9, _025C
 	goto _0234
 
@@ -206,8 +201,7 @@ scr_seq_T11R0601_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_RESTORED_POWER
-	gotoif TRUE, _028E
+	goto_if_set FLAG_RESTORED_POWER, _028E
 	npc_msg msg_0535_T11R0601_00008
 	waitbutton
 	closemsg

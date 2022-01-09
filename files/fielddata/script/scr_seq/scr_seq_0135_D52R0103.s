@@ -12,8 +12,7 @@
 	scrdef_end
 
 scr_seq_D52R0103_002:
-	checkflag FLAG_ENGAGING_STATIC_POKEMON
-	gotoif TRUE, _001F
+	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _001F
 	end
 
 _001F:
@@ -22,8 +21,8 @@ _001F:
 	end
 
 scr_seq_D52R0103_003:
-	comparevartovalue VAR_UNK_40F9, 7
-	gotoif ge, _003C
+	compare VAR_UNK_40F9, 7
+	goto_if_ge _003C
 	clearflag FLAG_UNK_2D2
 	end
 
@@ -81,13 +80,13 @@ scr_seq_D52R0103_000:
 	wild_battle SPECIES_RAYQUAZA, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0142
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0142
 	scrcmd_683 VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 3
-	gotoif eq, _0123
-	comparevartovalue VAR_TEMP_x4002, 4
-	gotoif eq, _0134
+	compare VAR_TEMP_x4002, 3
+	goto_if_eq _0123
+	compare VAR_TEMP_x4002, 4
+	goto_if_eq _0134
 _0123:
 	npc_msg msg_0150_D52R0103_00001
 	waitbutton

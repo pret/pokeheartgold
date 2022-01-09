@@ -21,19 +21,14 @@ scr_seq_D37R0103_003:
 	scrcmd_375 15
 	scrcmd_375 16
 	scrcmd_375 17
-	checkflag FLAG_UNK_096
-	gotoif TRUE, _0059
-	checkflag FLAG_UNK_097
-	gotoif TRUE, _01BE
-	checkflag FLAG_UNK_098
-	gotoif TRUE, _0207
+	goto_if_set FLAG_UNK_096, _0059
+	goto_if_set FLAG_UNK_097, _01BE
+	goto_if_set FLAG_UNK_098, _0207
 	end
 
 _0059:
-	checkflag FLAG_UNK_097
-	gotoif TRUE, _00B3
-	checkflag FLAG_UNK_098
-	gotoif TRUE, _013E
+	goto_if_set FLAG_UNK_097, _00B3
+	goto_if_set FLAG_UNK_098, _013E
 	scrcmd_109 0, 9
 	move_person obj_D37R0103_tsure_poke_593, 19, 0, 16, 1
 	move_person obj_D37R0103_babyboy1_5_3, 19, 0, 18, 0
@@ -43,8 +38,7 @@ _0059:
 	end
 
 _00B3:
-	checkflag FLAG_UNK_098
-	gotoif TRUE, _02BF
+	goto_if_set FLAG_UNK_098, _02BF
 	scrcmd_109 0, 9
 	move_person obj_D37R0103_tsure_poke_593, 19, 0, 16, 1
 	move_person obj_D37R0103_babyboy1_5_3, 19, 0, 18, 0
@@ -73,8 +67,7 @@ _013E:
 	end
 
 _01BE:
-	checkflag FLAG_UNK_098
-	gotoif TRUE, _0245
+	goto_if_set FLAG_UNK_098, _0245
 	move_person obj_D37R0103_tsure_poke_593_2, 3, 0, 14, 2
 	move_person obj_D37R0103_babyboy1_5_2, 1, 0, 14, 0
 	move_person obj_D37R0103_stop_4, 1, 0, 13, 0
@@ -123,8 +116,7 @@ _02BF:
 	end
 
 scr_seq_D37R0103_000:
-	checkflag FLAG_UNK_096
-	gotoif TRUE, _03C9
+	goto_if_set FLAG_UNK_096, _03C9
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0118_D37R0103_00000
@@ -152,24 +144,23 @@ _03C9:
 
 scr_seq_D37R0103_001:
 	get_person_coords 4, VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 15
-	gotoif ne, _03FD
+	compare VAR_TEMP_x4001, 15
+	goto_if_ne _03FD
 	goto _041C
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _03FD:
-	comparevartovalue VAR_TEMP_x4001, 16
-	gotoif ne, _0416
+	compare VAR_TEMP_x4001, 16
+	goto_if_ne _0416
 	goto _0483
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0416:
 	goto _03C9
 
 _041C:
-	checkflag FLAG_UNK_097
-	gotoif TRUE, _03C9
+	goto_if_set FLAG_UNK_097, _03C9
 	scrcmd_622 4, 16384
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0440
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0440
 	goto _0446
 
 _0440:
@@ -191,11 +182,10 @@ _0446:
 	end
 
 _0483:
-	checkflag FLAG_UNK_098
-	gotoif TRUE, _03C9
+	goto_if_set FLAG_UNK_098, _03C9
 	scrcmd_622 4, 16384
-	comparevartovalue VAR_TEMP_x4000, 1
-	gotoif ne, _04A7
+	compare VAR_TEMP_x4000, 1
+	goto_if_ne _04A7
 	goto _04AD
 
 _04A7:

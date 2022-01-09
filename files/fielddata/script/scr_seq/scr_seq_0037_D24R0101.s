@@ -16,10 +16,10 @@
 	scrdef_end
 
 scr_seq_D24R0101_006:
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif ge, _005E
-	comparevartovalue VAR_UNK_403E, 6
-	gotoif eq, _0080
+	compare VAR_UNK_403E, 7
+	goto_if_ge _005E
+	compare VAR_UNK_403E, 6
+	goto_if_eq _0080
 _003C:
 	scrcmd_342 11, 418, 284
 	scrcmd_342 12, 419, 284
@@ -42,26 +42,25 @@ _0080:
 	end
 
 scr_seq_D24R0101_005:
-	checkflag FLAG_UNK_189
-	gotoif FALSE, _00B3
+	goto_if_unset FLAG_UNK_189, _00B3
 	clearflag FLAG_UNK_189
 	end
 
 _00B3:
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
-	gotoif ge, _00C6
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 9
+	goto_if_ge _00C6
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 1
 _00C6:
 	check_badge 2, VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _0104
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _0104
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 5
-	gotoif eq, _010E
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif eq, _010E
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _010E
+	compare VAR_TEMP_x4000, 5
+	goto_if_eq _010E
+	compare VAR_TEMP_x4000, 6
+	goto_if_eq _010E
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _010E
 _0104:
 	setflag FLAG_HIDE_CAMERON
 	goto _0112
@@ -69,10 +68,10 @@ _0104:
 _010E:
 	clearflag FLAG_HIDE_CAMERON
 _0112:
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif ge, _005E
-	comparevartovalue VAR_UNK_403E, 6
-	gotoif eq, _0080
+	compare VAR_UNK_403E, 7
+	goto_if_ge _005E
+	compare VAR_UNK_403E, 6
+	goto_if_eq _0080
 	goto _003C
 	.byte 0x02, 0x00
 scr_seq_D24R0101_004:
@@ -84,11 +83,11 @@ scr_seq_D24R0101_004:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0239
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0239
 	photo_album_is_full VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _024D
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _024D
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
 	msgbox_extern VAR_SPECIAL_x800C, 1
 	closemsg
@@ -96,15 +95,15 @@ scr_seq_D24R0101_004:
 	scrcmd_603
 	scrcmd_604 55
 	get_player_facing VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _01AD
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _01AD
 	apply_movement obj_player, _0264
 	apply_movement obj_D24R0101_gsmiddleman1, _029C
 	goto _01D8
 
 _01AD:
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _01C8
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _01C8
 	apply_movement obj_player, _027C
 	goto _01D8
 
@@ -117,8 +116,8 @@ _01D8:
 	scrcmd_602 1
 	scrcmd_604 48
 	scrcmd_729 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ne, _01FF
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ne _01FF
 	apply_movement obj_partner_poke, _02A8
 	wait_movement
 _01FF:
@@ -189,18 +188,18 @@ scr_seq_D24R0101_007:
 	lockall
 	get_lead_mon_index VAR_TEMP_x4005
 	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
-	comparevartovalue VAR_TEMP_x4006, 0
-	gotoif eq, _02DA
+	compare VAR_TEMP_x4006, 0
+	goto_if_eq _02DA
 	goto _02EE
 
 _02DA:
 	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
-	comparevartovalue VAR_TEMP_x4007, 0
-	gotoif eq, _0530
+	compare VAR_TEMP_x4007, 0
+	goto_if_eq _0530
 _02EE:
 	scrcmd_184 VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0530
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0530
 	scrcmd_307 13, 8, 25, 29, 77
 	scrcmd_310 77
 	scrcmd_308 77
@@ -212,14 +211,14 @@ _02EE:
 	apply_movement obj_D24R0101_suit, _0534
 	apply_movement obj_player, _05C4
 	get_player_facing VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif ne, _0350
+	compare VAR_TEMP_x4001, 3
+	goto_if_ne _0350
 	apply_movement obj_partner_poke, _05DC
 	goto _0373
 
 _0350:
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _036B
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _036B
 	apply_movement obj_partner_poke, _05F4
 	goto _0373
 
@@ -230,14 +229,14 @@ _0373:
 	npc_msg msg_0072_D24R0101_00001
 	closemsg
 	apply_movement obj_D24R0101_suit, _054C
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif ne, _039D
+	compare VAR_TEMP_x4001, 3
+	goto_if_ne _039D
 	apply_movement obj_partner_poke, _0614
 	goto _03C0
 
 _039D:
-	comparevartovalue VAR_TEMP_x4001, 2
-	gotoif ne, _03B8
+	compare VAR_TEMP_x4001, 2
+	goto_if_ne _03B8
 	apply_movement obj_partner_poke, _0624
 	goto _03C0
 
@@ -247,8 +246,8 @@ _03C0:
 	wait_movement
 	npc_msg msg_0072_D24R0101_00002
 	closemsg
-	comparevartovalue VAR_TEMP_x4001, 3
-	gotoif ne, _03E2
+	compare VAR_TEMP_x4001, 3
+	goto_if_ne _03E2
 	apply_movement obj_D24R0101_suit, _0554
 	goto _03EA
 
@@ -274,8 +273,8 @@ _03EA:
 	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
 	clearflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 	play_se SEQ_SE_DP_KAIDAN2
-	comparevartovalue VAR_UNK_403E, 6
-	gotoif ne, _0467
+	compare VAR_UNK_403E, 6
+	goto_if_ne _0467
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 490, 0, 15, 24, 2
@@ -284,8 +283,8 @@ _03EA:
 	goto _0530
 
 _0467:
-	comparevartovalue VAR_UNK_403E, 7
-	gotoif ne, _049E
+	compare VAR_UNK_403E, 7
+	goto_if_ne _049E
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
@@ -294,8 +293,8 @@ _0467:
 	goto _0530
 
 _049E:
-	comparevartovalue VAR_UNK_403E, 8
-	gotoif ne, _04D5
+	compare VAR_UNK_403E, 8
+	goto_if_ne _04D5
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2
@@ -304,8 +303,8 @@ _049E:
 	goto _0530
 
 _04D5:
-	comparevartovalue VAR_UNK_403E, 9
-	gotoif ne, _050C
+	compare VAR_UNK_403E, 9
+	goto_if_ne _050C
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	scrcmd_176 492, 0, 15, 24, 2

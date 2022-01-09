@@ -17,10 +17,10 @@
 scr_seq_T25R1005_005:
 	setflag FLAG_UNK_1BE
 	get_weekday VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif eq, _0046
-	comparevartovalue VAR_TEMP_x4000, 0
-	gotoif ne, _0044
+	compare VAR_TEMP_x4000, 0
+	goto_if_eq _0046
+	compare VAR_TEMP_x4000, 0
+	goto_if_ne _0044
 	clearflag FLAG_UNK_1BE
 _0044:
 	end
@@ -44,8 +44,8 @@ scr_seq_T25R1005_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _0086
+	compare VAR_UNK_4077, 3
+	goto_if_ne _0086
 	npc_msg msg_0596_T25R1005_00018
 	goto _0089
 
@@ -61,8 +61,8 @@ scr_seq_T25R1005_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_UNK_4077, 3
-	gotoif ne, _00AF
+	compare VAR_UNK_4077, 3
+	goto_if_ne _00AF
 	npc_msg msg_0596_T25R1005_00016
 	goto _00B2
 
@@ -78,16 +78,14 @@ scr_seq_T25R1005_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_969
-	gotoif TRUE, _017D
-	checkflag FLAG_UNK_08D
-	gotoif TRUE, _0172
+	goto_if_set FLAG_UNK_969, _017D
+	goto_if_set FLAG_UNK_08D, _0172
 	npc_msg msg_0596_T25R1005_00009
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00F6
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00F6
 	goto _0167
 
 _00F6:
@@ -99,14 +97,14 @@ _00F6:
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x800C, 255
-	gotoif eq, _0167
+	compare VAR_SPECIAL_x800C, 255
+	goto_if_eq _0167
 	scrcmd_470 1
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	comparevartovar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	gotoif ne, _015A
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	goto_if_ne _015A
 	scrcmd_473 32772
 	scrcmd_474
 	setflag FLAG_UNK_08D
@@ -158,16 +156,15 @@ scr_seq_T25R1005_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_08E
-	gotoif TRUE, _0219
+	goto_if_set FLAG_UNK_08E, _0219
 	get_lead_mon_index VAR_SPECIAL_x8000
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0596_T25R1005_00000
 	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	comparevartovalue VAR_SPECIAL_x800C, 149
-	gotoif ge, _01E3
-	comparevartovalue VAR_SPECIAL_x800C, 50
-	gotoif le, _01FE
+	compare VAR_SPECIAL_x800C, 149
+	goto_if_ge _01E3
+	compare VAR_SPECIAL_x800C, 50
+	goto_if_le _01FE
 	npc_msg msg_0596_T25R1005_00003
 	waitbutton
 	closemsg

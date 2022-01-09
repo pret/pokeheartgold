@@ -50,8 +50,8 @@ scr_seq_R34R0101_001:
 	gender_msgbox msg_0385_R34R0101_00006, msg_0385_R34R0101_00016
 	closemsg
 	get_player_gender VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _00C6
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _00C6
 	register_gear_number 4
 	goto _00CA
 

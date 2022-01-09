@@ -17,37 +17,37 @@ scr_seq_T30GYM0101_001:
 	scrcmd_329
 	setvar VAR_UNK_4120, 0
 	get_phone_book_rematch 27, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 0
-	gotoif ne, _010C
-	comparevartovalue VAR_UNK_40FC, 2
-	gotoif ge, _0044
+	compare VAR_TEMP_x4001, 0
+	goto_if_ne _010C
+	compare VAR_UNK_40FC, 2
+	goto_if_ge _0044
 	end
 
 _0044:
 	scrcmd_147 27, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4001, 1
-	gotoif eq, _00BD
+	compare VAR_TEMP_x4001, 1
+	goto_if_eq _00BD
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 6
-	gotoif ne, _0072
+	compare VAR_TEMP_x4000, 6
+	goto_if_ne _0072
 	setflag FLAG_UNK_2EF
 	goto _00BB
 
 _0072:
-	comparevartovalue VAR_TEMP_x4000, 7
-	gotoif ne, _0089
+	compare VAR_TEMP_x4000, 7
+	goto_if_ne _0089
 	setflag FLAG_UNK_2EF
 	goto _00BB
 
 _0089:
-	comparevartovalue VAR_TEMP_x4000, 8
-	gotoif ne, _00A0
+	compare VAR_TEMP_x4000, 8
+	goto_if_ne _00A0
 	setflag FLAG_UNK_2EF
 	goto _00BB
 
 _00A0:
-	comparevartovalue VAR_TEMP_x4000, 9
-	gotoif ne, _00B7
+	compare VAR_TEMP_x4000, 9
+	goto_if_ne _00B7
 	setflag FLAG_UNK_2EF
 	goto _00BB
 
@@ -58,20 +58,20 @@ _00BB:
 
 _00BD:
 	scrcmd_522 VAR_TEMP_x4000
-	comparevartovalue VAR_TEMP_x4000, 16
-	gotoif ne, _00D8
+	compare VAR_TEMP_x4000, 16
+	goto_if_ne _00D8
 	setflag FLAG_UNK_2EF
 	goto _010A
 
 _00D8:
-	comparevartovalue VAR_TEMP_x4000, 17
-	gotoif ne, _00EF
+	compare VAR_TEMP_x4000, 17
+	goto_if_ne _00EF
 	setflag FLAG_UNK_2EF
 	goto _010A
 
 _00EF:
-	comparevartovalue VAR_TEMP_x4000, 18
-	gotoif ne, _0106
+	compare VAR_TEMP_x4000, 18
+	goto_if_ne _0106
 	setflag FLAG_UNK_2EF
 	goto _010A
 
@@ -88,16 +88,14 @@ scr_seq_T30GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0EA
-	gotoif TRUE, _018E
-	checkflag FLAG_UNK_0D1
-	gotoif TRUE, _017D
+	goto_if_set FLAG_UNK_0EA, _018E
+	goto_if_set FLAG_UNK_0D1, _017D
 	npc_msg msg_0631_T30GYM0101_00003
 	closemsg
 	trainer_battle TRAINER_LEADER_CLAIR_CLAIR, 0, 0, 0
 	check_battle_won VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0188
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0188
 	settrainerflag TRAINER_ACE_TRAINER_M_PAULO
 	settrainerflag TRAINER_ACE_TRAINER_M_CODY
 	settrainerflag TRAINER_ACE_TRAINER_M_MIKE
@@ -126,8 +124,7 @@ _0188:
 	end
 
 _018E:
-	checkflag FLAG_UNK_0DA
-	gotoif TRUE, _01C8
+	goto_if_set FLAG_UNK_0DA, _01C8
 	npc_msg msg_0631_T30GYM0101_00006
 	goto_if_no_item_space ITEM_TM59, 1, _01D3
 	callstd std_give_item_verbose
@@ -185,8 +182,7 @@ scr_seq_T30GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_0D1
-	gotoif TRUE, _0291
+	goto_if_set FLAG_UNK_0D1, _0291
 	npc_msg msg_0631_T30GYM0101_00000
 	scrcmd_600
 	scrcmd_783 1
@@ -208,18 +204,17 @@ _0291:
 scr_seq_T30GYM0101_004:
 	scrcmd_609
 	lockall
-	checkflag FLAG_UNK_138
-	gotoif TRUE, _0352
+	goto_if_set FLAG_UNK_138, _0352
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	comparevartovalue VAR_TEMP_x4000, 12
-	gotoif ne, _02D4
+	compare VAR_TEMP_x4000, 12
+	goto_if_ne _02D4
 	apply_movement obj_T30GYM0101_sunglasses, _0370
 	apply_movement obj_player, _039C
 	goto _0307
 
 _02D4:
-	comparevartovalue VAR_TEMP_x4000, 13
-	gotoif ne, _02F7
+	compare VAR_TEMP_x4000, 13
+	goto_if_ne _02F7
 	apply_movement obj_T30GYM0101_sunglasses, _0380
 	apply_movement obj_player, _03A8
 	goto _0307
@@ -232,14 +227,14 @@ _0307:
 	npc_msg msg_0631_T30GYM0101_00002
 	closemsg
 	setflag FLAG_UNK_138
-	comparevartovalue VAR_TEMP_x4000, 12
-	gotoif ne, _032D
+	compare VAR_TEMP_x4000, 12
+	goto_if_ne _032D
 	apply_movement obj_T30GYM0101_sunglasses, _03C0
 	goto _0350
 
 _032D:
-	comparevartovalue VAR_TEMP_x4000, 13
-	gotoif ne, _0348
+	compare VAR_TEMP_x4000, 13
+	goto_if_ne _0348
 	apply_movement obj_T30GYM0101_sunglasses, _03CC
 	goto _0350
 
@@ -309,8 +304,8 @@ scr_seq_T30GYM0101_005:
 	faceplayer
 	check_badge 7, VAR_SPECIAL_x800C
 	buffer_players_name 0
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0407
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0407
 	npc_msg msg_0631_T30GYM0101_00010
 	goto _040A
 

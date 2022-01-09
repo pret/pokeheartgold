@@ -36,8 +36,8 @@ _005C:
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _0352
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _0352
 _008A:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
@@ -49,25 +49,25 @@ _008A:
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x8001, 255
-	gotoif eq, _0352
+	compare VAR_SPECIAL_x8001, 255
+	goto_if_eq _0352
 	get_partymon_species VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
-	comparevartovalue VAR_SPECIAL_x8002, 0
-	gotoif eq, _0391
+	compare VAR_SPECIAL_x8002, 0
+	goto_if_eq _0391
 	scrcmd_652 VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
-	comparevartovalue VAR_SPECIAL_x8002, 0
-	gotoif eq, _00F0
+	compare VAR_SPECIAL_x8002, 0
+	goto_if_eq _00F0
 	goto _0125
 
 _00F0:
-	comparevartovalue VAR_SPECIAL_x8007, 0
-	gotoif ne, _0106
+	compare VAR_SPECIAL_x8007, 0
+	goto_if_ne _0106
 	npc_msg msg_0748_00005
 	goto _011F
 
 _0106:
-	comparevartovalue VAR_SPECIAL_x8007, 1
-	gotoif ne, _011C
+	compare VAR_SPECIAL_x8007, 1
+	goto_if_ne _011C
 	npc_msg msg_0748_00017
 	goto _011F
 
@@ -90,24 +90,24 @@ _013D:
 	nop_var_490 VAR_SPECIAL_x8002
 	nop_var_490 VAR_SPECIAL_x8003
 	copyvar VAR_SPECIAL_x8003, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x8003, 65533
-	gotoif ne, _018F
+	compare VAR_SPECIAL_x8003, 65533
+	goto_if_ne _018F
 	addvar VAR_SPECIAL_x8004, 1
-	comparevartovar VAR_SPECIAL_x8004, VAR_SPECIAL_x8002
-	gotoif lt, _013D
+	compare VAR_SPECIAL_x8004, VAR_SPECIAL_x8002
+	goto_if_lt _013D
 	setvar VAR_SPECIAL_x8004, 0
 	goto _013D
 	.byte 0x16, 0x00, 0x41, 0x00, 0x00, 0x00
 _018F:
-	comparevartovalue VAR_SPECIAL_x8003, 65534
-	gotoif ne, _01D0
+	compare VAR_SPECIAL_x8003, 65534
+	goto_if_ne _01D0
 	bufferpartymonnick 0, VAR_SPECIAL_x8001
 	setvar VAR_SPECIAL_x8004, 7
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0352
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0352
 	setvar VAR_SPECIAL_x8004, 0
 	closemsg
 	goto _013D
@@ -115,19 +115,19 @@ _018F:
 _01D0:
 	tutor_move_get_price VAR_SPECIAL_x8003, VAR_SPECIAL_x8005
 	check_battle_points VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01EF
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01EF
 	goto _0224
 
 _01EF:
-	comparevartovalue VAR_SPECIAL_x8007, 0
-	gotoif ne, _0205
+	compare VAR_SPECIAL_x8007, 0
+	goto_if_ne _0205
 	npc_msg msg_0748_00006
 	goto _021E
 
 _0205:
-	comparevartovalue VAR_SPECIAL_x8007, 1
-	gotoif ne, _021B
+	compare VAR_SPECIAL_x8007, 1
+	goto_if_ne _021B
 	npc_msg msg_0748_00018
 	goto _021E
 
@@ -140,16 +140,16 @@ _0224:
 	bufferpartymonnick 0, VAR_SPECIAL_x8001
 	buffer_move_name 1, VAR_SPECIAL_x8003
 	count_mon_moves VAR_SPECIAL_x8006, VAR_SPECIAL_x8001
-	comparevartovalue VAR_SPECIAL_x8006, 4
-	gotoif lt, _0328
+	compare VAR_SPECIAL_x8006, 4
+	goto_if_lt _0328
 _0241:
 	setvar VAR_SPECIAL_x8004, 8
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03A4
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03A4
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	closemsg
@@ -161,8 +161,8 @@ _0241:
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
-	comparevartovalue VAR_SPECIAL_x8006, 4
-	gotoif eq, _03A4
+	compare VAR_SPECIAL_x8006, 4
+	goto_if_eq _03A4
 	nop_var_490 VAR_SPECIAL_x8006
 	buffer_party_mon_move_name 2, VAR_SPECIAL_x8001, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8004, 9
@@ -170,16 +170,16 @@ _0241:
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _03A4
-	comparevartovalue VAR_SPECIAL_x8007, 0
-	gotoif ne, _02EA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _03A4
+	compare VAR_SPECIAL_x8007, 0
+	goto_if_ne _02EA
 	npc_msg msg_0748_00012
 	goto _0303
 
 _02EA:
-	comparevartovalue VAR_SPECIAL_x8007, 1
-	gotoif ne, _0300
+	compare VAR_SPECIAL_x8007, 1
+	goto_if_ne _0300
 	npc_msg msg_0748_00024
 	goto _0303
 
@@ -204,14 +204,14 @@ _0328:
 	scrcmd_118 1
 	tutor_move_teach_in_slot VAR_SPECIAL_x8001, VAR_SPECIAL_x8006, VAR_SPECIAL_x8003
 _0352:
-	comparevartovalue VAR_SPECIAL_x8007, 0
-	gotoif ne, _0368
+	compare VAR_SPECIAL_x8007, 0
+	goto_if_ne _0368
 	npc_msg msg_0748_00015
 	goto _0381
 
 _0368:
-	comparevartovalue VAR_SPECIAL_x8007, 1
-	gotoif ne, _037E
+	compare VAR_SPECIAL_x8007, 1
+	goto_if_ne _037E
 	npc_msg msg_0748_00027
 	goto _0381
 
@@ -243,8 +243,8 @@ _03A4:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0241
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0241
 	setvar VAR_SPECIAL_x8004, 11
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004

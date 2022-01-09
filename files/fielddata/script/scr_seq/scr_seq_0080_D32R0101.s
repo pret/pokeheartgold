@@ -32,8 +32,7 @@ scr_seq_D32R0101_000:
 	npc_msg msg_0103_D32R0101_00000
 	closemsg
 	call _0333
-	checkflag FLAG_UNK_176
-	gotoif TRUE, _0077
+	goto_if_set FLAG_UNK_176, _0077
 	npc_msg msg_0103_D32R0101_00001
 	buffer_players_name 0
 	play_fanfare SEQ_ME_ITEM
@@ -117,10 +116,10 @@ scr_seq_D32R0101_002:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01AD
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01B8
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01AD
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01B8
 	end
 
 _01AD:
@@ -145,10 +144,10 @@ scr_seq_D32R0101_003:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01FA
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0205
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01FA
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0205
 	end
 
 _01FA:
@@ -173,10 +172,10 @@ scr_seq_D32R0101_004:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0247
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _0252
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0247
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _0252
 	end
 
 _0247:
@@ -201,10 +200,10 @@ scr_seq_D32R0101_005:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0294
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _029F
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0294
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _029F
 	end
 
 _0294:
@@ -229,10 +228,10 @@ scr_seq_D32R0101_006:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02E1
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _02EC
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02E1
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _02EC
 	end
 
 _02E1:

@@ -64,8 +64,8 @@ scr_seq_D10R0101_003:
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _00D5
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _00D5
 	releaseall
 	end
 
@@ -80,8 +80,8 @@ scr_seq_D10R0101_004:
 	lockall
 	call _0180
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0110
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0110
 	setvar VAR_UNK_4124, 2
 	releaseall
 	call _01D4
@@ -109,8 +109,8 @@ scr_seq_D10R0101_005:
 	faceplayer
 	call _0180
 	closemsg
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _0169
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _0169
 	setvar VAR_UNK_4124, 2
 	releaseall
 	call _01D4
@@ -131,11 +131,11 @@ _0180:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _01C9
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _01C9
 	get_player_gender VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _01B9
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _01B9
 	buffer_players_name 0
 	npc_msg msg_0052_D10R0101_00002
 	waitbutton

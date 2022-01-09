@@ -1,7 +1,7 @@
 #include "constants/apricorns.h"
 #include "save_misc_data.h"
 
-const u8 _020F6784[NUM_APRICORN_TREE] = {
+static const u8 sTreeApricorns[NUM_APRICORN_TREE] = {
     APRICORN_BLK, // Route 1
     APRICORN_PNK, // Route 2 North
     APRICORN_YLW, // Route 8
@@ -65,13 +65,13 @@ u8 sub_0202AE38(const APRICORN_TREE *trees, int idx) {
 
 u8 sub_0202AE40(const APRICORN_TREE *trees, int idx) {
 #pragma unused(trees)
-    return _020F6784[idx];
+    return sTreeApricorns[idx];
 }
 
 int ApricornTrees_GetApricorn(const APRICORN_TREE *trees, int idx) {
 #pragma unused(trees)
     int ret;
-    ret = _020F6784[idx];
+    ret = sTreeApricorns[idx];
     if (ret <= 0) {
         GF_ASSERT(0);
         return 0;

@@ -15,15 +15,14 @@ scr_seq_D51R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	checkflag FLAG_UNK_09E
-	gotoif TRUE, _002E
+	goto_if_set FLAG_UNK_09E, _002E
 	npc_msg msg_0147_D51R0301_00000
 	closemsg
 	setflag FLAG_UNK_09E
 _002E:
 	scrcmd_389 32780, 493
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _004C
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _004C
 	npc_msg msg_0147_D51R0301_00002
 	waitbutton
 	closemsg
@@ -36,13 +35,13 @@ _004C:
 	npc_msg msg_0147_D51R0301_00001
 	closemsg
 	get_player_facing VAR_TEMP_x4002
-	comparevartovalue VAR_TEMP_x4002, 0
-	gotoif ne, _0078
+	compare VAR_TEMP_x4002, 0
+	goto_if_ne _0078
 	goto _0107
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0078:
-	comparevartovalue VAR_TEMP_x4002, 1
-	gotoif ne, _0091
+	compare VAR_TEMP_x4002, 1
+	goto_if_ne _0091
 	goto _00CF
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00
 	.byte 0x00
@@ -191,10 +190,9 @@ scr_seq_D51R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	gotoif ge, _026E
-	checkflag FLAG_UNK_09D
-	gotoif TRUE, _0263
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	goto_if_ge _026E
+	goto_if_set FLAG_UNK_09D, _0263
 	npc_msg msg_0147_D51R0301_00007
 	waitbutton
 	closemsg
@@ -224,18 +222,18 @@ scr_seq_D51R0301_002:
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
 	touchscreen_menu_show
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _02A6
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif ge, _030C
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _02A6
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_ge _030C
 _02A6:
 	npc_msg msg_0147_D51R0301_00011
 	closemsg
 	play_se SEQ_SE_DP_TELE
 	apply_movement obj_player, _0318
 	wait_movement
-	comparevartovalue VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
-	gotoif ne, _02D2
+	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
+	goto_if_ne _02D2
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
 	goto _02E4
 

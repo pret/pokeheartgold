@@ -1546,10 +1546,10 @@ scr_seq_0141_255:
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _1830
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _19B8
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _1830
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _19B8
 	end
 
 _182A:
@@ -1562,10 +1562,10 @@ _1830:
 	hide_person VAR_SPECIAL_x800D
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 1
-	gotoif eq, _198D
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif eq, _19A5
+	compare VAR_SPECIAL_x800C, 1
+	goto_if_eq _198D
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_eq _19A5
 	end
 
 _1862:

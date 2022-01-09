@@ -12,8 +12,8 @@
 scr_seq_D37R0105_000:
 	setflag FLAG_UNK_1B7
 	setflag FLAG_UNK_1B8
-	comparevartovalue VAR_UNK_4077, 4
-	gotoif ne, _0027
+	compare VAR_UNK_4077, 4
+	goto_if_ne _0027
 	clearflag FLAG_UNK_1B7
 	clearflag FLAG_UNK_1B8
 _0027:
@@ -24,8 +24,8 @@ scr_seq_D37R0105_001:
 	lockall
 	faceplayer
 	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
-	comparevartovalue VAR_SPECIAL_x800C, 0
-	gotoif ne, _005B
+	compare VAR_SPECIAL_x800C, 0
+	goto_if_ne _005B
 	npc_msg msg_0120_D37R0105_00000
 	setflag FLAG_UNK_1C1
 	giveitem_no_check ITEM_CARD_KEY, 1
