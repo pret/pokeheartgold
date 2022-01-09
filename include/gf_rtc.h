@@ -18,6 +18,7 @@ typedef enum TimeOfDayWildParam {
 BOOL IsNighttime(void);
 void GF_RTC_CopyTime(RTCTime *time);
 void GF_RTC_CopyDate(RTCDate *date);
+s64 GF_RTC_DateTimeToSec(void);
 void GF_RTC_CopyDateTime(RTCDate *date, RTCTime *time);
 TIMEOFDAY GF_RTC_GetTimeOfDay(void);
 TIMEOFDAY GF_RTC_GetTimeOfDayByHour(s32 hour);

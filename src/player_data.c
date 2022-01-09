@@ -67,9 +67,9 @@ BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile) {
     return TRUE;
 }
 
-void Sav2_Profile_PlayerName_set(u16* dest, PLAYERPROFILE* profile) {
-    GF_ASSERT(StringLength(profile->name) < OT_NAME_LENGTH + 1);
-    CopyU16StringArray(dest, profile->name);
+void Sav2_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name) {
+    GF_ASSERT(StringLength(name) < OT_NAME_LENGTH + 1);
+    CopyU16StringArray(profile->name, name);
 }
 
 void PlayerName_StringToFlat(PLAYERPROFILE* profile, STRING* str) {

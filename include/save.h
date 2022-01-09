@@ -38,7 +38,7 @@
 #define SAVE_UNK_32              32
 #define SAVE_UNK_33              33
 #define SAVE_UNK_34              34
-#define SAVE_UNK_35              35
+#define SAVE_SAFARI_ZONE         35
 #define SAVE_PHOTO_ALBUM         36
 #define SAVE_UNK_37              37
 #define SAVE_APRICORN_BOX        38
