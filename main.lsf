@@ -96,7 +96,7 @@ Static main
 	Object pokedex.o
 	Object unk_0202A888.o
 	Object options.o
-	Object unk_0202ADEC.o
+	Object apricorn_tree_sys.o
 	Object unk_0202AE8C.o
 	Object unk_0202AEC0.o
 	Object unk_0202AEC0.o

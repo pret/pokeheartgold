@@ -9,8 +9,11 @@ typedef struct APRICORN_TREE {
     u16 unk_2;
 } APRICORN_TREE;
 
+#define MAX_APRICORN_TREE 128
+#define NUM_APRICORN_TREE 31
+
 typedef struct SAVE_MISC_DATA {
-    APRICORN_TREE apricorn_trees[0x80];
+    APRICORN_TREE apricorn_trees[MAX_APRICORN_TREE];
     u8 filler_0200[0x70];
     u16 rivalName[OT_NAME_LENGTH + 1];
     u8 filler_0280[0x60];
