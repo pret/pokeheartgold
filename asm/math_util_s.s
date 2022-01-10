@@ -3,8 +3,11 @@
 
  	.bss
 
- _021D15A4:
- 	.space 0x8
+_021D15A4:
+ 	.space 0x4
+
+_021D15A8:
+	.space 0x4
 
 _021D15AC:
 	.space 0x5F8
@@ -29,197 +32,6 @@ _0210F6DC:
 	.byte 0x01, 0x00, 0x00, 0x00
 
 	.text
-
-	thumb_func_start sub_0201FBB8
-sub_0201FBB8: ; 0x0201FBB8
-	push {r4, lr}
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	cmp r0, r1
-	blo _0201FBC6
-	mov r0, #0
-	pop {r4, pc}
-_0201FBC6:
-	bl sub_0201FCD4
-	asr r0, r0, #4
-	lsl r1, r0, #2
-	ldr r0, _0201FC28 ; =_021094DC
-	ldrsh r4, [r0, r1]
-	add r0, r4, #0
-	bl _fflt
-	ldr r1, _0201FC2C ; =0x45800000
-	bl _fdiv
-	mov r1, #0
-	bl _fgr
-	bls _0201FC06
-	; r4 / 4096. * 4096. + 0.5
-	add r0, r4, #0
-	bl _fflt
-	ldr r1, _0201FC2C ; =0x45800000
-	bl _fdiv
-	add r1, r0, #0
-	ldr r0, _0201FC2C ; =0x45800000
-	bl _fmul
-	add r1, r0, #0
-	mov r0, #0x3f
-	lsl r0, r0, #0x18
-	bl _fadd
-	b _0201FC22
-_0201FC06:
-	; r4 / 4096. * 4096. - 0.5
-	add r0, r4, #0
-	bl _fflt
-	ldr r1, _0201FC2C ; =0x45800000
-	bl _fdiv
-	add r1, r0, #0
-	ldr r0, _0201FC2C ; =0x45800000
-	bl _fmul
-	mov r1, #0x3f
-	lsl r1, r1, #0x18
-	bl _fsub
-_0201FC22:
-	bl _ffix
-	pop {r4, pc}
-	.balign 4, 0
-_0201FC28: .word _021094DC
-_0201FC2C: .word 0x45800000
-	thumb_func_end sub_0201FBB8
-
-	thumb_func_start sub_0201FC30
-sub_0201FC30: ; 0x0201FC30
-	push {r4, lr}
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	cmp r0, r1
-	blo _0201FC3E
-	mov r0, #0
-	pop {r4, pc}
-_0201FC3E:
-	bl sub_0201FCD4
-	asr r0, r0, #4
-	lsl r0, r0, #1
-	add r0, r0, #1
-	lsl r1, r0, #1
-	ldr r0, _0201FCA4 ; =_021094DC
-	ldrsh r4, [r0, r1]
-	add r0, r4, #0
-	bl _fflt
-	ldr r1, _0201FCA8 ; =0x45800000
-	bl _fdiv
-	mov r1, #0
-	bl _fgr
-	bls _0201FC82
-	add r0, r4, #0
-	bl _fflt
-	ldr r1, _0201FCA8 ; =0x45800000
-	bl _fdiv
-	add r1, r0, #0
-	ldr r0, _0201FCA8 ; =0x45800000
-	bl _fmul
-	add r1, r0, #0
-	mov r0, #0x3f
-	lsl r0, r0, #0x18
-	bl _fadd
-	b _0201FC9E
-_0201FC82:
-	add r0, r4, #0
-	bl _fflt
-	ldr r1, _0201FCA8 ; =0x45800000
-	bl _fdiv
-	add r1, r0, #0
-	ldr r0, _0201FCA8 ; =0x45800000
-	bl _fmul
-	mov r1, #0x3f
-	lsl r1, r1, #0x18
-	bl _fsub
-_0201FC9E:
-	bl _ffix
-	pop {r4, pc}
-	.balign 4, 0
-_0201FCA4: .word _021094DC
-_0201FCA8: .word 0x45800000
-	thumb_func_end sub_0201FC30
-
-	thumb_func_start sub_0201FCAC
-sub_0201FCAC: ; 0x0201FCAC
-	push {r3, lr}
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	bl _s32_div_f
-	lsl r0, r1, #0x10
-	lsr r0, r0, #0x10
-	bl sub_0201FBB8
-	pop {r3, pc}
-	thumb_func_end sub_0201FCAC
-
-	thumb_func_start sub_0201FCC0
-sub_0201FCC0: ; 0x0201FCC0
-	push {r3, lr}
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	bl _s32_div_f
-	lsl r0, r1, #0x10
-	lsr r0, r0, #0x10
-	bl sub_0201FC30
-	pop {r3, pc}
-	thumb_func_end sub_0201FCC0
-
-	thumb_func_start sub_0201FCD4
-sub_0201FCD4: ; 0x0201FCD4
-	push {r3, lr}
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	cmp r0, r1
-	blo _0201FCE2
-	mov r0, #0
-	pop {r3, pc}
-_0201FCE2:
-	lsl r0, r0, #0xc
-	ldr r2, _0201FCF8 ; =0x0B60B60B
-	asr r1, r0, #0x1f
-	mov r3, #0xb6
-	bl _ll_mul
-	ldr r0, _0201FCFC ; =0x00000800
-	adc r1, r0
-	lsl r0, r1, #4
-	lsr r0, r0, #0x10
-	pop {r3, pc}
-	.balign 4, 0
-_0201FCF8: .word 0x0B60B60B
-_0201FCFC: .word 0x00000800
-	thumb_func_end sub_0201FCD4
-
-	thumb_func_start sub_0201FD00
-sub_0201FD00: ; 0x0201FD00
-	push {r3, lr}
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	bl _s32_div_f
-	lsl r0, r1, #0x10
-	lsr r0, r0, #0x10
-	bl sub_0201FCD4
-	pop {r3, pc}
-	thumb_func_end sub_0201FD00
-
-	thumb_func_start sub_0201FD14
-sub_0201FD14: ; 0x0201FD14
-	ldr r3, _0201FD1C ; =sub_0201FCAC
-	lsl r0, r0, #4
-	lsr r0, r0, #0x10
-	bx r3
-	.balign 4, 0
-_0201FD1C: .word sub_0201FCAC
-	thumb_func_end sub_0201FD14
-
-	thumb_func_start sub_0201FD20
-sub_0201FD20: ; 0x0201FD20
-	ldr r3, _0201FD28 ; =sub_0201FCC0
-	lsl r0, r0, #4
-	lsr r0, r0, #0x10
-	bx r3
-	.balign 4, 0
-_0201FD28: .word sub_0201FCC0
-	thumb_func_end sub_0201FD20
 
 	thumb_func_start GetLCRNGSeed
 GetLCRNGSeed: ; 0x0201FD2C
@@ -468,7 +280,7 @@ _0201FEFA:
 	asr r0, r1, #4
 	lsl r3, r0, #1
 	lsl r1, r3, #1
-	ldr r2, _0201FF24 ; =_021094DC
+	ldr r2, _0201FF24 ; =FX_SinCosTable_
 	add r3, r3, #1
 	lsl r3, r3, #1
 	ldrsh r1, [r2, r1]
@@ -483,7 +295,7 @@ _0201FEFA:
 	pop {r4, r5, r6, pc}
 	nop
 _0201FF20: .word 0x0000FFFF
-_0201FF24: .word _021094DC
+_0201FF24: .word FX_SinCosTable_
 	thumb_func_end sub_0201FECC
 
 	thumb_func_start Math_CalcArraySum

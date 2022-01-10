@@ -18,10 +18,8 @@ $(C_OBJS):   MWCFLAGS  +=          -include global.h
 $(BUILD_DIR)/asm/nitrocrypto.o:  MWCCVER := 1.2/sp2p3
 $(BUILD_DIR)/lib/msl/src/*.o:    EXCCFLAGS := -Cpp_exceptions on
 
-ifeq ($(NODEP),)
 $(ASM_OBJS): $(WORK_DIR)/include/config.h
 $(C_OBJS):   $(WORK_DIR)/include/global.h
-endif
 
 ROM             := $(BUILD_DIR)/poke$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)
@@ -39,6 +37,7 @@ all: $(ROM)
 tidy:
 	@$(MAKE) -C sub tidy
 	$(RM) -r $(BUILD_DIR)
+	$(RM) -r $(PROJECT_CLEAN_TARGETS)
 	$(RM) $(ROM)
 
 clean: tidy clean-filesystem clean-tools
@@ -76,6 +75,13 @@ endif
 
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 	$(WINE) $(MAKEBNR) $< $@
+
+# TODO: move to NitroSDK makefile
+FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
+$(FX_CONST_H):
+	$(MKFXCONST) >$@
+PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
+$(WORK_DIR)/include/global.h: $(FX_CONST_H)
 
 heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
 soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER

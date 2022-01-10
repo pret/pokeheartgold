@@ -1292,7 +1292,7 @@ sub_020109BC: ; 0x020109BC
 	asr r0, r0, #4
 	lsl r1, r0, #1
 	lsl r0, r1, #1
-	ldr r2, _020109D0 ; =_021094DC
+	ldr r2, _020109D0 ; =FX_SinCosTable_
 	add r1, r1, #1
 	lsl r1, r1, #1
 	ldr r3, _020109D4 ; =FX_Div
@@ -1300,7 +1300,7 @@ sub_020109BC: ; 0x020109BC
 	ldrsh r1, [r2, r1]
 	bx r3
 	.balign 4, 0
-_020109D0: .word _021094DC
+_020109D0: .word FX_SinCosTable_
 _020109D4: .word FX_Div
 	thumb_func_end sub_020109BC
 
@@ -4190,7 +4190,7 @@ sub_02011F10: ; 0x02011F10
 	ldr r2, [r4, #0xc]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02011FF0 ; =_021094DC
+	ldr r0, _02011FF0 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -4286,7 +4286,7 @@ _02011FA4:
 	add sp, #0x110
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02011FF0: .word _021094DC
+_02011FF0: .word FX_SinCosTable_
 _02011FF4: .word 0x0000FFFF
 	thumb_func_end sub_02011F10
 

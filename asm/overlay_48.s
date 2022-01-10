@@ -486,7 +486,7 @@ ov48_02258BF4: ; 0x02258BF4
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4, #4]
-	ldr r3, _02258C68 ; =_021094DC
+	ldr r3, _02258C68 ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -499,7 +499,7 @@ ov48_02258BF4: ; 0x02258BF4
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4]
-	ldr r3, _02258C68 ; =_021094DC
+	ldr r3, _02258C68 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -516,7 +516,7 @@ ov48_02258BF4: ; 0x02258BF4
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _02258C68 ; =_021094DC
+	ldr r3, _02258C68 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -535,7 +535,7 @@ ov48_02258BF4: ; 0x02258BF4
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
-_02258C68: .word _021094DC
+_02258C68: .word FX_SinCosTable_
 	thumb_func_end ov48_02258BF4
 
 	thumb_func_start ov48_02258C6C
@@ -544,7 +544,7 @@ ov48_02258C6C: ; 0x02258C6C
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4]
-	ldr r3, _02258CE0 ; =_021094DC
+	ldr r3, _02258CE0 ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -557,7 +557,7 @@ ov48_02258C6C: ; 0x02258C6C
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4, #4]
-	ldr r3, _02258CE0 ; =_021094DC
+	ldr r3, _02258CE0 ; =FX_SinCosTable_
 	neg r0, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -575,7 +575,7 @@ ov48_02258C6C: ; 0x02258C6C
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _02258CE0 ; =_021094DC
+	ldr r3, _02258CE0 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -594,7 +594,7 @@ ov48_02258C6C: ; 0x02258C6C
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
-_02258CE0: .word _021094DC
+_02258CE0: .word FX_SinCosTable_
 	thumb_func_end ov48_02258C6C
 
 	thumb_func_start ov48_02258CE4
@@ -5252,7 +5252,7 @@ _0225AF0E:
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0225AFB0 ; =_021094DC
+	ldr r0, _0225AFB0 ; =FX_SinCosTable_
 	ldrsh r6, [r0, r1]
 	mov r0, #0xa
 	ldrsh r0, [r4, r0]
@@ -5292,7 +5292,7 @@ _0225AF84:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225AFAC: .word 0x0000FFFF
-_0225AFB0: .word _021094DC
+_0225AFB0: .word FX_SinCosTable_
 	thumb_func_end ov48_0225AEDC
 
 	thumb_func_start ov48_0225AFB4

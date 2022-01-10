@@ -3187,7 +3187,7 @@ ov91_0225DD24: ; 0x0225DD24
 	asr r0, r5, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
-	ldr r3, _0225DD4C ; =_021094DC
+	ldr r3, _0225DD4C ; =FX_SinCosTable_
 	add r2, r2, #1
 	lsl r2, r2, #1
 	add r4, #0xc
@@ -3197,7 +3197,7 @@ ov91_0225DD24: ; 0x0225DD24
 	bl MTX_RotX33_
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0225DD4C: .word _021094DC
+_0225DD4C: .word FX_SinCosTable_
 	thumb_func_end ov91_0225DD24
 
 	thumb_func_start ov91_0225DD50
@@ -3215,7 +3215,7 @@ ov91_0225DD50: ; 0x0225DD50
 	asr r0, r4, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
-	ldr r3, _0225DE84 ; =_021094DC
+	ldr r3, _0225DE84 ; =FX_SinCosTable_
 	add r2, r2, #1
 	lsl r2, r2, #1
 	add r0, r5, #0
@@ -3345,7 +3345,7 @@ ov91_0225DD50: ; 0x0225DD50
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0225DE84: .word _021094DC
+_0225DE84: .word FX_SinCosTable_
 _0225DE88: .word ov91_02261C4C
 	thumb_func_end ov91_0225DD50
 
@@ -8261,7 +8261,7 @@ ov91_0226045C: ; 0x0226045C
 	lsl r1, r5, #1
 	add r0, r0, r2
 	ldrh r0, [r1, r0]
-	ldr r3, _022604A0 ; =_021094DC
+	ldr r3, _022604A0 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -8279,7 +8279,7 @@ ov91_0226045C: ; 0x0226045C
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0226049C: .word ov91_02261D3C
-_022604A0: .word _021094DC
+_022604A0: .word FX_SinCosTable_
 	thumb_func_end ov91_0226045C
 
 	thumb_func_start ov91_022604A4
@@ -8297,7 +8297,7 @@ ov91_022604A4: ; 0x022604A4
 	lsl r1, r5, #1
 	add r0, r0, r2
 	ldrh r0, [r1, r0]
-	ldr r3, _022604F0 ; =_021094DC
+	ldr r3, _022604F0 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -8318,7 +8318,7 @@ ov91_022604A4: ; 0x022604A4
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022604EC: .word ov91_02261D3C
-_022604F0: .word _021094DC
+_022604F0: .word FX_SinCosTable_
 	thumb_func_end ov91_022604A4
 
 	thumb_func_start ov91_022604F4
@@ -9169,7 +9169,7 @@ ov91_02260B5C: ; 0x02260B5C
 	lsl r0, r0, #0x10
 	lsr r6, r0, #4
 	asr r7, r6, #0x1f
-	ldr r0, _02260C40 ; =_021094DC
+	ldr r0, _02260C40 ; =FX_SinCosTable_
 	lsl r1, r4, #1
 	ldrsh r0, [r0, r1]
 	add r2, r6, #0
@@ -9191,7 +9191,7 @@ ov91_02260B5C: ; 0x02260B5C
 	strh r1, [r5, r0]
 	add r0, r4, #1
 	lsl r1, r0, #1
-	ldr r0, _02260C40 ; =_021094DC
+	ldr r0, _02260C40 ; =FX_SinCosTable_
 	add r2, r6, #0
 	ldrsh r0, [r0, r1]
 	add r3, r7, #0
@@ -9248,7 +9248,7 @@ _02260BFA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02260C3C: .word 0x0001E200
-_02260C40: .word _021094DC
+_02260C40: .word FX_SinCosTable_
 _02260C44: .word 0x00000102
 	thumb_func_end ov91_02260B5C
 

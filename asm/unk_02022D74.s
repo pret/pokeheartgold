@@ -25,7 +25,7 @@ sub_02022D74: ; 0x02022D74
 	ldrh r4, [r5, #0x3c]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02022E50 ; =_021094DC
+	ldr r0, _02022E50 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -39,7 +39,7 @@ sub_02022D74: ; 0x02022D74
 	lsl r2, r2, #1
 	add r2, r2, #1
 	lsl r3, r2, #1
-	ldr r2, _02022E50 ; =_021094DC
+	ldr r2, _02022E50 ; =FX_SinCosTable_
 	lsl r1, r1, #0x14
 	ldrsh r2, [r2, r3]
 	lsr r0, r0, #0xc
@@ -62,7 +62,7 @@ sub_02022D74: ; 0x02022D74
 	lsl r0, r0, #1
 	add r0, r0, #1
 	lsl r1, r0, #1
-	ldr r0, _02022E50 ; =_021094DC
+	ldr r0, _02022E50 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -79,7 +79,7 @@ sub_02022D74: ; 0x02022D74
 	lsl r2, r2, #1
 	add r2, r2, #1
 	lsl r3, r2, #1
-	ldr r2, _02022E50 ; =_021094DC
+	ldr r2, _02022E50 ; =FX_SinCosTable_
 	orr r0, r1
 	ldrsh r2, [r2, r3]
 	asr r1, r0, #0x1f
@@ -99,7 +99,7 @@ sub_02022D74: ; 0x02022D74
 	str r1, [r5, #0x1c]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02022E50 ; =_021094DC
+	ldr r0, _02022E50 ; =FX_SinCosTable_
 	ldr r2, [r5, #0x38]
 	ldrsh r0, [r0, r1]
 	asr r3, r2, #0x1f
@@ -122,7 +122,7 @@ sub_02022D74: ; 0x02022D74
 	bl VEC_Add
 	pop {r3, r4, r5, pc}
 	nop
-_02022E50: .word _021094DC
+_02022E50: .word FX_SinCosTable_
 	thumb_func_end sub_02022D74
 
 	thumb_func_start sub_02022E54
@@ -134,7 +134,7 @@ sub_02022E54: ; 0x02022E54
 	ldrh r4, [r5, #0x3c]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02022F34 ; =_021094DC
+	ldr r0, _02022F34 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -148,7 +148,7 @@ sub_02022E54: ; 0x02022E54
 	lsl r2, r2, #1
 	add r2, r2, #1
 	lsl r3, r2, #1
-	ldr r2, _02022F34 ; =_021094DC
+	ldr r2, _02022F34 ; =FX_SinCosTable_
 	lsl r1, r1, #0x14
 	ldrsh r2, [r2, r3]
 	lsr r0, r0, #0xc
@@ -172,7 +172,7 @@ sub_02022E54: ; 0x02022E54
 	lsl r0, r0, #1
 	add r0, r0, #1
 	lsl r1, r0, #1
-	ldr r0, _02022F34 ; =_021094DC
+	ldr r0, _02022F34 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -189,7 +189,7 @@ sub_02022E54: ; 0x02022E54
 	lsl r2, r2, #1
 	add r2, r2, #1
 	lsl r3, r2, #1
-	ldr r2, _02022F34 ; =_021094DC
+	ldr r2, _02022F34 ; =FX_SinCosTable_
 	orr r0, r1
 	ldrsh r2, [r2, r3]
 	asr r1, r0, #0x1f
@@ -210,7 +210,7 @@ sub_02022E54: ; 0x02022E54
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02022F34 ; =_021094DC
+	ldr r0, _02022F34 ; =FX_SinCosTable_
 	ldr r2, [r5, #0x38]
 	ldrsh r0, [r0, r1]
 	asr r3, r2, #0x1f
@@ -234,7 +234,7 @@ sub_02022E54: ; 0x02022E54
 	bl VEC_Add
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02022F34: .word _021094DC
+_02022F34: .word FX_SinCosTable_
 	thumb_func_end sub_02022E54
 
 	thumb_func_start sub_02022F38
@@ -244,7 +244,7 @@ sub_02022F38: ; 0x02022F38
 	strh r0, [r2]
 	asr r0, r0, #4
 	lsl r3, r0, #1
-	ldr r2, _02022F7C ; =_021094DC
+	ldr r2, _02022F7C ; =FX_SinCosTable_
 	lsl r0, r3, #1
 	ldrsh r0, [r2, r0]
 	str r0, [r1]
@@ -273,7 +273,7 @@ sub_02022F38: ; 0x02022F38
 	str r2, [r1, #0x64]
 	bx lr
 	nop
-_02022F7C: .word _021094DC
+_02022F7C: .word FX_SinCosTable_
 _02022F80: .word 0x00001555
 	thumb_func_end sub_02022F38
 
@@ -993,7 +993,7 @@ sub_02023494: ; 0x02023494
 	ldr r3, _020234C8 ; =sub_020233D8
 	asr r0, r0, #4
 	lsl r2, r0, #2
-	ldr r0, _020234CC ; =_021094DC
+	ldr r0, _020234CC ; =FX_SinCosTable_
 	ldrsh r2, [r0, r2]
 	str r2, [r1]
 	add r2, r1, #0
@@ -1011,7 +1011,7 @@ sub_02023494: ; 0x02023494
 	bx r3
 	nop
 _020234C8: .word sub_020233D8
-_020234CC: .word _021094DC
+_020234CC: .word FX_SinCosTable_
 	thumb_func_end sub_02023494
 
 	thumb_func_start sub_020234D0
@@ -1029,7 +1029,7 @@ sub_020234D0: ; 0x020234D0
 	ldrh r0, [r0]
 	asr r0, r0, #4
 	lsl r2, r0, #2
-	ldr r0, _02023510 ; =_021094DC
+	ldr r0, _02023510 ; =FX_SinCosTable_
 	ldrsh r2, [r0, r2]
 	str r2, [r1]
 	add r2, r1, #0
@@ -1047,7 +1047,7 @@ sub_020234D0: ; 0x020234D0
 	bx r3
 	nop
 _0202350C: .word sub_020233D8
-_02023510: .word _021094DC
+_02023510: .word FX_SinCosTable_
 	thumb_func_end sub_020234D0
 
 	thumb_func_start sub_02023514

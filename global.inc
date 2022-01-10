@@ -2790,7 +2790,7 @@
 .public _02102620
 .public _02102830
 .public _02103A1C
-.public _021094DC
+.public FX_SinCosTable_
 .public _0210D750
 .public _0210F6DC
 .public _02110A0C

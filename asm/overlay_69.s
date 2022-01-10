@@ -2855,7 +2855,7 @@ ov69_021E70A8: ; 0x021E70A8
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4, #4]
-	ldr r3, _021E711C ; =_021094DC
+	ldr r3, _021E711C ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -2868,7 +2868,7 @@ ov69_021E70A8: ; 0x021E70A8
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4]
-	ldr r3, _021E711C ; =_021094DC
+	ldr r3, _021E711C ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -2885,7 +2885,7 @@ ov69_021E70A8: ; 0x021E70A8
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _021E711C ; =_021094DC
+	ldr r3, _021E711C ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -2904,7 +2904,7 @@ ov69_021E70A8: ; 0x021E70A8
 	add sp, #0x24
 	pop {r4, r5, pc}
 	nop
-_021E711C: .word _021094DC
+_021E711C: .word FX_SinCosTable_
 	thumb_func_end ov69_021E70A8
 
 	thumb_func_start ov69_021E7120
@@ -2913,7 +2913,7 @@ ov69_021E7120: ; 0x021E7120
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r1, [r4]
-	ldr r3, _021E7194 ; =_021094DC
+	ldr r3, _021E7194 ; =FX_SinCosTable_
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	asr r1, r1, #4
@@ -2926,7 +2926,7 @@ ov69_021E7120: ; 0x021E7120
 	add r5, r0, #0
 	bl MTX_RotY33_
 	ldr r0, [r4, #4]
-	ldr r3, _021E7194 ; =_021094DC
+	ldr r3, _021E7194 ; =FX_SinCosTable_
 	neg r0, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -2944,7 +2944,7 @@ ov69_021E7120: ; 0x021E7120
 	add r2, r5, #0
 	bl MTX_Concat33
 	ldr r0, [r4, #8]
-	ldr r3, _021E7194 ; =_021094DC
+	ldr r3, _021E7194 ; =FX_SinCosTable_
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
@@ -2963,7 +2963,7 @@ ov69_021E7120: ; 0x021E7120
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E7194: .word _021094DC
+_021E7194: .word FX_SinCosTable_
 	thumb_func_end ov69_021E7120
 
 	thumb_func_start ov69_021E7198

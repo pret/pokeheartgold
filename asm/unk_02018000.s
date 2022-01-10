@@ -285,7 +285,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x70
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =_021094DC
+	ldr r3, _02018284 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -302,7 +302,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x74
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =_021094DC
+	ldr r3, _02018284 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -319,7 +319,7 @@ sub_020181EC: ; 0x020181EC
 	add r0, r4, #0
 	add r0, #0x72
 	ldrh r0, [r0]
-	ldr r3, _02018284 ; =_021094DC
+	ldr r3, _02018284 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r1, r2, #1
@@ -344,7 +344,7 @@ _02018280:
 	add sp, #0x48
 	pop {r4, pc}
 	.balign 4, 0
-_02018284: .word _021094DC
+_02018284: .word FX_SinCosTable_
 	thumb_func_end sub_020181EC
 
 	thumb_func_start sub_02018288

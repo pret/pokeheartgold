@@ -13645,7 +13645,7 @@ _0222218A:
 	ldr r2, [r4, #0xc]
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _02222214 ; =_021094DC
+	ldr r0, _02222214 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -13666,7 +13666,7 @@ _0222218A:
 	lsl r0, r0, #1
 	add r0, r0, #1
 	lsl r1, r0, #1
-	ldr r0, _02222214 ; =_021094DC
+	ldr r0, _02222214 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -13687,7 +13687,7 @@ _0222220E:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02222214: .word _021094DC
+_02222214: .word FX_SinCosTable_
 	thumb_func_end ov07_02222180
 
 	thumb_func_start ov07_02222218
@@ -14089,7 +14089,7 @@ _022224B6:
 	lsl r0, r0, #1
 	add r0, r0, #1
 	lsl r1, r0, #1
-	ldr r0, _02222504 ; =_021094DC
+	ldr r0, _02222504 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -14110,7 +14110,7 @@ _022224FE:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02222504: .word _021094DC
+_02222504: .word FX_SinCosTable_
 	thumb_func_end ov07_022224AC
 
 	thumb_func_start ov07_02222508
@@ -39581,7 +39581,7 @@ _0222F13A:
 	mul r0, r1
 	asr r0, r0, #4
 	lsl r0, r0, #2
-	ldr r1, _0222F204 ; =_021094DC
+	ldr r1, _0222F204 ; =FX_SinCosTable_
 	str r0, [sp, #0x18]
 	add r1, r1, r0
 	mov r0, #2
@@ -39601,7 +39601,7 @@ _0222F13A:
 	lsl r0, r1, #4
 	asr r6, r0, #0x10
 	mov r2, #3
-	ldr r1, _0222F204 ; =_021094DC
+	ldr r1, _0222F204 ; =FX_SinCosTable_
 	ldr r0, [sp, #0x18]
 	lsl r2, r2, #0x10
 	ldrsh r0, [r1, r0]
@@ -39667,7 +39667,7 @@ _0222F1E4:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222F200: .word 0x00001555
-_0222F204: .word _021094DC
+_0222F204: .word FX_SinCosTable_
 _0222F208: .word 0x00000000
 _0222F20C: .word ov07_0222EF88
 	thumb_func_end ov07_0222F0B0
@@ -40938,7 +40938,7 @@ _0222FC5A:
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0222FD00 ; =_021094DC
+	ldr r0, _0222FD00 ; =FX_SinCosTable_
 	ldr r3, [r6, #0x14]
 	ldrsh r0, [r0, r1]
 	lsl r2, r2, #0xc
@@ -41007,7 +41007,7 @@ _0222FCE6:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0222FD00: .word _021094DC
+_0222FD00: .word FX_SinCosTable_
 _0222FD04: .word 0x00000132
 _0222FD08: .word 0x00000000
 _0222FD0C: .word 0x00003FFF
@@ -41282,7 +41282,7 @@ ov07_0222FF04: ; 0x0222FF04
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _0222FFC4 ; =_021094DC
+	ldr r0, _0222FFC4 ; =FX_SinCosTable_
 	lsl r2, r2, #0xc
 	ldrsh r0, [r0, r1]
 	mov r3, #0
@@ -41345,7 +41345,7 @@ _0222FFBE:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222FFC4: .word _021094DC
+_0222FFC4: .word FX_SinCosTable_
 _0222FFC8: .word 0x00000000
 _0222FFCC: .word 0x45800000
 	thumb_func_end ov07_0222FF04
@@ -41661,7 +41661,7 @@ _02230220:
 	lsr r0, r0, #0x10
 	asr r0, r0, #4
 	lsl r1, r0, #2
-	ldr r0, _022302A0 ; =_021094DC
+	ldr r0, _022302A0 ; =FX_SinCosTable_
 	asr r3, r2, #0x1f
 	ldrsh r0, [r0, r1]
 	asr r1, r0, #0x1f
@@ -41713,7 +41713,7 @@ _02230296:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0223029C: .word 0x00000199
-_022302A0: .word _021094DC
+_022302A0: .word FX_SinCosTable_
 _022302A4: .word 0x00000000
 	thumb_func_end ov07_022301C4
 

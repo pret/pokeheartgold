@@ -38,6 +38,7 @@ O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
+MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 
 NTRMERGE     := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 
@@ -49,7 +50,8 @@ NATIVE_TOOLS := \
 	$(O2NARC) \
 	$(MSGENC) \
 	$(ASPATCH) \
-	$(CSV2BIN)
+	$(CSV2BIN) \
+	$(MKFXCONST)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 

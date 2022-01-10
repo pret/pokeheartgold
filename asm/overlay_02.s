@@ -26921,7 +26921,7 @@ ov02_022527B0: ; 0x022527B0
 	add r1, r5, #0
 	add r1, #0xe4
 	ldrh r1, [r1]
-	ldr r3, _02252868 ; =_021094DC
+	ldr r3, _02252868 ; =FX_SinCosTable_
 	add r0, r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -26961,7 +26961,7 @@ _0225285E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02252864: .word ov02_02253CD4
-_02252868: .word _021094DC
+_02252868: .word FX_SinCosTable_
 	thumb_func_end ov02_022527B0
 
 	thumb_func_start ov02_0225286C

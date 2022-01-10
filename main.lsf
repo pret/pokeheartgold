@@ -65,6 +65,7 @@ Static main
 	Object unk_0201F79C.o
 	Object string_control_code.o
 	Object math_util.o
+	Object math_util_s.o
 	Object text.o
 	Object unk_0202055C.o
 	Object unk_02020654.o

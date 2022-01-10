@@ -1040,7 +1040,7 @@ ov41_022465D8: ; 0x022465D8
 	mov r0, #0
 	str r0, [r1]
 	ldr r0, [sp]
-	ldr r1, _02246664 ; =_021094DC
+	ldr r1, _02246664 ; =FX_SinCosTable_
 	asr r0, r0, #4
 	lsl r2, r0, #1
 	lsl r0, r2, #1
@@ -1086,7 +1086,7 @@ _02246650:
 	nop
 _0224665C: .word 0x04000454
 _02246660: .word 0x04000470
-_02246664: .word _021094DC
+_02246664: .word FX_SinCosTable_
 _02246668: .word 0x0400046C
 _0224666C: .word 0x04000448
 	thumb_func_end ov41_022465D8

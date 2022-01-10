@@ -341,7 +341,7 @@ _020081C8:
 	ldrh r0, [r4, #0x38]
 	asr r0, r0, #4
 	lsl r2, r0, #2
-	ldr r0, _020084AC ; =_021094DC
+	ldr r0, _020084AC ; =FX_SinCosTable_
 	add r1, r0, r2
 	ldrsh r0, [r0, r2]
 	mov r2, #2
@@ -350,7 +350,7 @@ _020081C8:
 	ldrh r0, [r4, #0x3a]
 	asr r0, r0, #4
 	lsl r2, r0, #2
-	ldr r0, _020084AC ; =_021094DC
+	ldr r0, _020084AC ; =FX_SinCosTable_
 	add r1, r0, r2
 	ldrsh r0, [r0, r2]
 	mov r2, #2
@@ -359,7 +359,7 @@ _020081C8:
 	ldrh r0, [r4, #0x3c]
 	asr r0, r0, #4
 	lsl r2, r0, #2
-	ldr r0, _020084AC ; =_021094DC
+	ldr r0, _020084AC ; =FX_SinCosTable_
 	add r1, r0, r2
 	ldrsh r0, [r0, r2]
 	mov r2, #2
@@ -680,7 +680,7 @@ _0200849C: .word 0x00000333
 _020084A0: .word 0x04000454
 _020084A4: .word 0x040004AC
 _020084A8: .word 0x04000470
-_020084AC: .word _021094DC
+_020084AC: .word FX_SinCosTable_
 _020084B0: .word 0x040004C0
 _020084B4: .word 0x00004210
 _020084B8: .word 0x040004A4
