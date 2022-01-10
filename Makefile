@@ -45,6 +45,7 @@ clean: tidy clean-filesystem clean-tools
 	@$(MAKE) -C lib/syscall clean
 	@$(MAKE) -C sub clean
 
+SBIN_LZ        := $(SBIN)_LZ
 .PHONY: main_lz
 
 main: $(SBIN) $(ELF)
@@ -58,8 +59,6 @@ $(NEF): libsyscall
 
 libsyscall:
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
-
-SBIN_LZ        := $(SBIN)_LZ
 
 $(SBIN_LZ): $(BUILD_DIR)/component.files
 	$(WINE) $(COMPSTATIC) -9 -c -f $<
