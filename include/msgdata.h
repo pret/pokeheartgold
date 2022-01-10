@@ -44,5 +44,6 @@ STRING * ReadMsgData_ExpandPlaceholders(MSGFMT * a0, MSGDATA * msgData, u32 msgn
 STRING * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, u32 heap_id);
 u32 MsgDataGetCount(MSGDATA *msgData);
 void ReadMsgDataIntoU16Array(MSGDATA *msgData, u32 msgno, u16 *dest);
+STRING * GetMoveName(u32 move, HeapID heapno);
 
 #endif //POKEHEARTGOLD_MSGDATA_H

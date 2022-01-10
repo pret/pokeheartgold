@@ -57,7 +57,7 @@ BOOL TryStartMapScriptByType(UnkSavStruct80 *fsys, u8 type);
 BOOL sub_020407AC(UnkSavStruct80 *fsys);
 u16 GetMapLoadScriptId(u8 *a0, u8 a1);
 u16 GetMapSceneScriptId(UnkSavStruct80 *a0, u8 *a1, u8 a2);
-
+void* FieldSysGetAttrAddr(UnkSavStruct80 *fsys, enum Unk80_10_C_Field field);
 
 
 BOOL sub_0203BC10(UnkSavStruct80 *);

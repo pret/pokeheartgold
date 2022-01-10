@@ -69,5 +69,12 @@ void PlayerProfile_SetLanguage(PLAYERPROFILE *profile, u8 language);
 void PlayerProfile_SetGameClearFlag(PLAYERPROFILE *profile);
 BOOL PlayerProfile_GetGameClearFlag(PLAYERPROFILE *profile);
 void PlayerProfile_SetNatDexFlag(PLAYERPROFILE *profile);
+PLAYERPROFILE* Sav2_PlayerData_GetProfileAddr(SAVEDATA* savedata);
+OPTIONS* Sav2_PlayerData_GetOptionsAddr(SAVEDATA* savedata);
+u16* Sav2_PlayerData_GetCoinsAddr(SAVEDATA* savedata);
+IGT* Sav2_PlayerData_GetIGTAddr(SAVEDATA* savedata);
+PLAYERPROFILE* PlayerProfile_new(HeapID heap_id);
+u16* PlayerProfile_GetNamePtr(PLAYERPROFILE* profile);
+STRING* PlayerProfile_GetPlayerName_NewString(PLAYERPROFILE* profile, HeapID heap_id);
 
 #endif //POKEHEARTGOLD_PLAYER_DATA_H

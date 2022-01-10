@@ -2,6 +2,8 @@
 #define POKEHEARTGOLD_SOUND_H
 
 #include "constants/sndseq.h"
+#include "sound_chatot.h"
+#include "options.h"
 
 #define PLAYER_RADIO           9
 
@@ -35,5 +37,25 @@ void GF_SndStopPlayerBgm(void);
 void PlayBGM(u16 seqno);
 void GF_SndStartFadeInBGM(u32, u32, u32);
 u32 GF_SndPlayerCountPlayingSeqByPlayerNo(u32 playerno);
+void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options);
+void GF_SndCallback(void);
+BOOL GF_SndIsFanfarePlaying(void);
+int GF_Snd_SaveState(int *level_p);
+void GF_Snd_LoadState(int level);
+BOOL GF_Snd_LoadGroup(int groupNo);
+BOOL GF_Snd_LoadSeq(int seqNo);
+BOOL GF_Snd_LoadSeqEx(int seqNo, u32 loadFlag);
+BOOL GF_Snd_LoadWaveArc(int waveArcNo);
+BOOL GF_Snd_LoadBank(int bankNo);
+enum SoundHandleNo sub_0200480C(int playerNo);
+void GF_SoundDataInit(SND_WORK *work);
+void GF_SndHandleInitAll(struct SND_WORK *work);
+void sub_02004898(SND_WORK *work);
+void GF_InitMic(SND_WORK *work);
+void sub_02004920(u16 unk);
+BOOL sub_02004924(void);
+void GF_SndWorkMicCounterReset(void);
+void GF_SndWorkSetGbSoundsVolume(u8 a0);
+u8 GF_SndWorkGetGbSoundsVolume(void);
 
 #endif //POKEHEARTGOLD_SOUND_H

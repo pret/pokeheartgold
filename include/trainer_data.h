@@ -111,6 +111,13 @@ typedef struct BattleSetupStruct {
 void TrainerData_ReadTrData(u32 trno, TRAINER *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);
 int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no);
+void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID heap_id);
+BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id);
+void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID heap_id);
+void TrainerData_ReadTrPoke(u32 idx, TRPOKE * dest);
+void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id);
+void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid);
+void TrMon_FrustrationCheckAndSetFriendship(POKEMON *pokemon);
 #endif //PM_ASM
 
 #endif //POKEHEARTGOLD_TRAINER_DATA_H

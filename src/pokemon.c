@@ -25,12 +25,12 @@ u32 CalcMonChecksum(void *data, u32 size);
 void InitBoxMonMoveset(BOXMON *boxmon);
 void LoadMonBaseStats_HandleAlternateForme(int species, int forme, BASE_STATS *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
-u32 GetMonDataInternal(POKEMON * pokemon, int attr, void * dest);
-u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest);
-void SetMonDataInternal(POKEMON * pokemon, int attr, const void * data);
-void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * data);
-void AddMonDataInternal(POKEMON * pokemon, int attr, int value);
-void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value);
+static u32 GetMonDataInternal(POKEMON * pokemon, int attr, void * dest);
+static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest);
+static void SetMonDataInternal(POKEMON * pokemon, int attr, const void * data);
+static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * data);
+static void AddMonDataInternal(POKEMON * pokemon, int attr, int value);
+static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value);
 PokemonDataBlock *GetSubstruct(BOXMON *boxmon, u32 pid, u8 which_struct);
 void LoadMonPersonal(int species, BASE_STATS *dest);
 int ResolveMonForme(int species, int forme);
@@ -422,7 +422,7 @@ u32 GetMonData(POKEMON * pokemon, int attr, void * dest) {
     return ret;
 }
 
-u32 GetMonDataInternal(POKEMON * pokemon, int attr, void * dest) {
+static u32 GetMonDataInternal(POKEMON * pokemon, int attr, void * dest) {
     switch (attr) {
     case MON_DATA_STATUS:
         return pokemon->party.status;
@@ -473,7 +473,7 @@ u32 GetBoxMonData(BOXMON * boxmon, int attr, void * dest) {
     return ret;
 }
 
-u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
+static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
     u32 ret = 0;
     PokemonDataBlockA * blockA = &GetSubstruct(boxmon, boxmon->pid, 0)->blockA;
     PokemonDataBlockB * blockB = &GetSubstruct(boxmon, boxmon->pid, 1)->blockB;
@@ -906,7 +906,7 @@ void SetMonData(POKEMON * pokemon, int attr, void * value) {
     }
 }
 
-void SetMonDataInternal(POKEMON * pokemon, int attr, const void * value) {
+static void SetMonDataInternal(POKEMON * pokemon, int attr, const void * value) {
 #define VALUE(type) (*(const type *)value)
     switch (attr) {
     case MON_DATA_STATUS:
@@ -972,7 +972,7 @@ void SetBoxMonData(BOXMON * boxmon, int attr, void * value) {
 }
 
 
-void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * value) {
+static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * value) {
 #define VALUE(type) (*(const type *)value)
     u8 flag;
     u64 mask;
@@ -1371,7 +1371,7 @@ void AddMonData(POKEMON * pokemon, int attr, int value) {
     }
 }
 
-void AddMonDataInternal(POKEMON * pokemon, int attr, int value) {
+static void AddMonDataInternal(POKEMON * pokemon, int attr, int value) {
     s32 maxHp;
     switch (attr) {
     case MON_DATA_HP:
@@ -1401,7 +1401,7 @@ void AddMonDataInternal(POKEMON * pokemon, int attr, int value) {
     }
 }
 
-void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value) {
+static void AddBoxMonDataInternal(BOXMON * boxmon, int attr, int value) {
     PokemonDataBlockA *blockA = &GetSubstruct(boxmon, boxmon->pid, 0)->blockA;
     PokemonDataBlockB *blockB = &GetSubstruct(boxmon, boxmon->pid, 1)->blockB;
     PokemonDataBlockC *blockC = &GetSubstruct(boxmon, boxmon->pid, 2)->blockC;

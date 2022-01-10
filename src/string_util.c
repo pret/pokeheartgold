@@ -20,7 +20,7 @@ u16 * CopyU16StringArrayN(u16 *dest, const u16 *src, u32 n) {
     return dest;
 }
 
-u32 StringLength(const u16 *str) {
+int StringLength(const u16 *str) {
     int i;
     for (i = 0; str[i] != EOS; i++) {}
     return i;

@@ -7,4 +7,7 @@ typedef enum PMOverlayLoadType {
     OVY_LOAD_ASYNC,
 } PMOverlayLoadType;
 
+void UnloadOverlayByID(FSOverlayID ovyId);
+BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType);
+
 #endif //POKEHEARTGOLD_POKE_OVERLAY_H
