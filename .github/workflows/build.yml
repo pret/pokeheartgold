@@ -70,7 +70,8 @@ jobs:
 
       - name: Post error archive
         if: failure()
-        run: find $(cat .github/workflows/tar-on-error) -exec tar -czvhf failure.tar.gz {} +
+        run: |
+          tar -czvhf failure.tar.gz build files sub/build
 
       - name: Post error upload
         if: failure()
