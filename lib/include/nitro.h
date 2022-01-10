@@ -3,6 +3,7 @@
 
 #include <nitro/types.h>
 
+#include <nitro/fx.h>
 #include <nitro/cp.h>
 #include <nitro/os.h>
 #include <nitro/fs.h>
