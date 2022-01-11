@@ -1,4 +1,4 @@
-CFLAGS := -O3 -g -DNDEBUG
+CFLAGS := -O3 -g -DNDEBUG -DSOURCE_DIR="\"$(PWD)\""
 
 SRCS := main.c fx_encode.c fx_data.c
 OBJS := $(SRCS:%.c=%.o)

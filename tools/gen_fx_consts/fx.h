@@ -1,6 +1,8 @@
 #ifndef GUARD_FX_H
 #define GUARD_FX_H
 
+#include <string.h>
+
 struct FxSpec {
     const char *name;
     int intpart;
@@ -8,13 +10,17 @@ struct FxSpec {
 };
 
 struct FxConst {
-    const char *name;
+    char *name;
     const struct FxSpec *fxtype;
     double value;
 };
 
-extern const struct FxConst gFxConstTable[];
-extern const int gNFxConstTable;
+extern struct FxConst *gFxConstTable;
+extern size_t gNFxConstTable;
+
+// Init and delete the above two objects
+void FxConstTableInit(void);
+void FxConstTableEnd(void);
 
 // Generates the integer value of the fixed-point value represented by FxConst*
 long long MakeFix(const struct FxConst *constdef);

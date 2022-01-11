@@ -80,10 +80,8 @@ $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
 PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
 $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
-# Force this to be made first
-ifeq ($(wildcard $(FX_CONST_H)),)
-$(shell $(MKFXCONST) > $(FX_CONST_H))
-endif
+$(FX_CONST_H): $(TOOLSDIR)/gen_fx_consts/fx_const.csv
+	$(MKFXCONST) $(FX_CONST_H)
 
 heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
 soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER

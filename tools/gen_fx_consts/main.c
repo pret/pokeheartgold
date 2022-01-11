@@ -1,12 +1,9 @@
-#include <stdio.h>
-#include <stdnoreturn.h>
-#include <stdarg.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include "fx.h"
+#include "global.h"
 
-static const int NAMEBUF_SIZ = 32;
+#define NAMEBUF_SIZ 32
 
 static inline void usage(FILE *dest) {
     fprintf(dest, "USAGE: gen_fx_consts FILENAME\n\n"
@@ -14,20 +11,13 @@ static inline void usage(FILE *dest) {
                   "             automatically from the path.\n");
 }
 
-static inline noreturn __attribute__((format(printf, 1, 2))) void fatal_error(const char *fmt, ...) {
-    va_list va_args;
-    va_start(va_args, fmt);
-    vfprintf(stderr, fmt, va_args);
-    va_end(va_args);
-    fputc('\n', stderr);
-    exit(1);
-}
-
 int main(int argc, char ** argv) {
     int i;
     char namebuf[NAMEBUF_SIZ] = "";
     char *header_guard;
     FILE *outfile;
+
+    FxConstTableInit();
     if (argc < 2) {
         outfile = stdout;
         header_guard = "NITRO_FX_FX_CONST_H_";
