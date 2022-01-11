@@ -10,13 +10,11 @@ $(TRDATA_NARC): %.narc: $(TRAINER_JSON) $(TRDATA_TEMPLATE)
 	$(JSONPROC) $^ $*.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n
-	@$(RM) $*.o $*.c
 
 $(TRPOKE_NARC): %.narc: $(TRAINER_JSON) $(TRPOKE_TEMPLATE)
 	$(JSONPROC) $^ $*.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -DPM_ASM -o $*.o $*.s
 	$(O2NARC) $*.o $@ -n -p 0x00
-	@$(RM) $*.o $*.s
 
 $(TRNAME_GMM): $(TRAINER_JSON) $(TRNAME_TEMPLATE)
 	$(JSONPROC) $^ $@
