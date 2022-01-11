@@ -2073,10 +2073,10 @@
 .public ScrCmd_387
 .public ScrCmd_388
 .public ScrCmd_389
-.public ScrCmd_390
-.public ScrCmd_391
-.public ScrCmd_392
-.public ScrCmd_393
+.public ScrCmd_SizeRecordCompare
+.public ScrCmd_SizeRecordUpdate
+.public ScrCmd_BufferMonSize
+.public ScrCmd_BufferRecordSize
 .public ScrCmd_394
 .public ScrCmd_395
 .public ScrCmd_CountMonMoves
@@ -29141,7 +29141,7 @@
 .public DPPtLeftover_GetRivalSpecies
 .public DPPtLeftover_GetFriendStarterSpecies
 .public ScriptState_GetFishingCompetitionLengthRecord
-.public sub_02066B60
+.public ScriptState_SetFishingCompetitionLengthRecord
 .public sub_02066B70
 .public sub_02066B9C
 .public sub_02066BC0

@@ -422,7 +422,7 @@ _0597:
 	lockall
 	faceplayer
 	script_overlay_cmd 0, 0
-	scrcmd_393 0, 1, 129
+	buffer_record_size 0, 1, SPECIES_MAGIKARP
 	script_overlay_cmd 0, 1
 	buffer_players_name 2
 	scrcmd_055 2, 0

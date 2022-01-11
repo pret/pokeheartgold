@@ -439,10 +439,10 @@ gScriptCmdTable:
 	.word ScrCmd_387                                    ; 387
 	.word ScrCmd_388                                    ; 388
 	.word ScrCmd_389                                    ; 389
-	.word ScrCmd_390                                    ; 390
-	.word ScrCmd_391                                    ; 391
-	.word ScrCmd_392                                    ; 392
-	.word ScrCmd_393                                    ; 393
+	.word ScrCmd_SizeRecordCompare                                    ; 390
+	.word ScrCmd_SizeRecordUpdate                                    ; 391
+	.word ScrCmd_BufferMonSize                                    ; 392
+	.word ScrCmd_BufferRecordSize                                    ; 393
 	.word ScrCmd_394                                    ; 394
 	.word ScrCmd_395                                    ; 395
 	.word ScrCmd_CountMonMoves                                    ; 396

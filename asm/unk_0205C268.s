@@ -23816,23 +23816,23 @@ _02066B4C: .word SPECIES_TURTWIG
 	thumb_func_start ScriptState_GetFishingCompetitionLengthRecord
 ScriptState_GetFishingCompetitionLengthRecord: ; 0x02066B50
 	ldr r3, _02066B58 ; =GetScriptVar
-	ldr r1, _02066B5C ; =VAR_UNK_4035
+	ldr r1, _02066B5C ; =VAR_MAGIKARP_SIZE_RECORD
 	bx r3
 	nop
 _02066B58: .word GetScriptVar
-_02066B5C: .word VAR_UNK_4035
+_02066B5C: .word VAR_MAGIKARP_SIZE_RECORD
 	thumb_func_end ScriptState_GetFishingCompetitionLengthRecord
 
-	thumb_func_start sub_02066B60
-sub_02066B60: ; 0x02066B60
+	thumb_func_start ScriptState_SetFishingCompetitionLengthRecord
+ScriptState_SetFishingCompetitionLengthRecord: ; 0x02066B60
 	ldr r3, _02066B68 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066B6C ; =VAR_UNK_4035
+	ldr r1, _02066B6C ; =VAR_MAGIKARP_SIZE_RECORD
 	bx r3
 	.balign 4, 0
 _02066B68: .word SetScriptVar
-_02066B6C: .word VAR_UNK_4035
-	thumb_func_end sub_02066B60
+_02066B6C: .word VAR_MAGIKARP_SIZE_RECORD
+	thumb_func_end ScriptState_SetFishingCompetitionLengthRecord
 
 	thumb_func_start sub_02066B70
 sub_02066B70: ; 0x02066B70

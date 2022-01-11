@@ -351,7 +351,7 @@ ov36_021E5BC8: ; 0x021E5BC8
 	add r0, r4, #0
 	bl SavArray_Flags_get
 	ldr r1, _021E5C00 ; =0x0000DB56
-	bl sub_02066B60
+	bl ScriptState_SetFishingCompetitionLengthRecord
 	add r0, r4, #0
 	bl SavArray_Flags_get
 	bl sub_020665EC

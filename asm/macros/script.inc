@@ -2201,25 +2201,25 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_390 arg0, arg1
+	.macro size_record_compare arg0, arg1
 	.short 390
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_391 arg0
+	.macro size_record_update arg0
 	.short 391
 	.short \arg0
 	.endm
 
-	.macro scrcmd_392 arg0, arg1, arg2
+	.macro buffer_mon_size arg0, arg1, arg2
 	.short 392
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_393 arg0, arg1, arg2
+	.macro buffer_record_size arg0, arg1, arg2
 	.short 393
 	.short \arg0
 	.short \arg1

@@ -58,11 +58,11 @@ _0095:
 	goto _0146
 
 _00B1:
-	scrcmd_390 32780, 32770
+	size_record_compare VAR_SPECIAL_x800C, VAR_SPECIAL_x8002
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _00E3
-	scrcmd_392 0, 1, 32770
-	scrcmd_393 2, 3, 129
+	buffer_mon_size 0, 1, VAR_SPECIAL_x8002
+	buffer_record_size 2, 3, SPECIES_MAGIKARP
 	npc_msg msg_0628_T29R0201_00007
 	goto _0146
 	.byte 0x16, 0x00, 0x1e
@@ -70,12 +70,12 @@ _00B1:
 _00E3:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_ne _0101
-	scrcmd_393 0, 1, 129
+	buffer_record_size 0, 1, SPECIES_MAGIKARP
 	npc_msg msg_0628_T29R0201_00006
 	goto _0146
 
 _0101:
-	scrcmd_392 0, 1, 32770
+	buffer_mon_size 0, 1, VAR_SPECIAL_x8002
 	npc_msg msg_0628_T29R0201_00004
 	setvar VAR_SPECIAL_x8004, 38
 	setvar VAR_SPECIAL_x8005, 1
@@ -87,7 +87,7 @@ _0101:
 
 _0137:
 	callstd std_give_item_verbose
-	scrcmd_391 32770
+	size_record_update VAR_SPECIAL_x8002
 	setflag FLAG_UNK_139
 	npc_msg msg_0628_T29R0201_00005
 _0146:

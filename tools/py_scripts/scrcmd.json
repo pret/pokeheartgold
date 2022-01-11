@@ -2378,32 +2378,32 @@
       ]
     },
     {
-      "name": "scrcmd_390",
+      "name": "size_record_compare",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_391",
+      "name": "size_record_update",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_392",
+      "name": "buffer_mon_size",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_393",
+      "name": "buffer_record_size",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "species"
       ]
     },
     {
