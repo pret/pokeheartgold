@@ -2195,7 +2195,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_389 arg0, arg1
+	.macro player_has_species arg0, arg1
 	.short 389
 	.short \arg0
 	.short \arg1

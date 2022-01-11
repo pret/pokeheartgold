@@ -18,7 +18,7 @@ scr_seq_T11R0701_002:
 	setvar VAR_TEMP_x4009, 0
 	compare VAR_UNK_4130, 3
 	goto_if_eq _0046
-	scrcmd_389 16384, 479
+	player_has_species VAR_TEMP_x4000, SPECIES_ROTOM
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _00AB
 _0046:

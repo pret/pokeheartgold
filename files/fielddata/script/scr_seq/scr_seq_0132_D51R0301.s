@@ -20,7 +20,7 @@ scr_seq_D51R0301_000:
 	closemsg
 	setflag FLAG_UNK_09E
 _002E:
-	scrcmd_389 32780, 493
+	player_has_species VAR_SPECIAL_x800C, SPECIES_ARCEUS
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _004C
 	npc_msg msg_0147_D51R0301_00002

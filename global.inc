@@ -2072,7 +2072,7 @@
 .public ScrCmd_GetPlayerFacing
 .public ScrCmd_387
 .public ScrCmd_388
-.public ScrCmd_389
+.public ScrCmd_PlayerHasSpecies
 .public ScrCmd_SizeRecordCompare
 .public ScrCmd_SizeRecordUpdate
 .public ScrCmd_BufferMonSize

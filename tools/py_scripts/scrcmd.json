@@ -2371,10 +2371,10 @@
       ]
     },
     {
-      "name": "scrcmd_389",
+      "name": "player_has_species",
       "args": [
-        2,
-        2
+        "var",
+        "species"
       ]
     },
     {

@@ -389,7 +389,7 @@ extern BOOL ScrCmd_385(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerFacing(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_387(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_388(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_389(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PlayerHasSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferMonSize(SCRIPTCONTEXT *ctx);
@@ -1244,7 +1244,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetPlayerFacing,
     ScrCmd_387,
     ScrCmd_388,
-    ScrCmd_389,
+    ScrCmd_PlayerHasSpecies,
     ScrCmd_SizeRecordCompare,
     ScrCmd_SizeRecordUpdate,
     ScrCmd_BufferMonSize,

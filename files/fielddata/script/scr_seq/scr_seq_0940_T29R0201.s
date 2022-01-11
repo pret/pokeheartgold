@@ -29,7 +29,7 @@ _002F:
 
 _003A:
 	script_overlay_cmd 0, 0
-	scrcmd_389 32780, 129
+	player_has_species VAR_SPECIAL_x800C, SPECIES_MAGIKARP
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _005A
 	npc_msg msg_0628_T29R0201_00002

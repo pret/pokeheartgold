@@ -1770,8 +1770,8 @@ _0204DF24:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_428
 
-	thumb_func_start ScrCmd_389
-ScrCmd_389: ; 0x0204DF54
+	thumb_func_start ScrCmd_PlayerHasSpecies
+ScrCmd_PlayerHasSpecies: ; 0x0204DF54
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1837,7 +1837,7 @@ _0204DFDA:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204DFE0: .word 0x00000000
-	thumb_func_end ScrCmd_389
+	thumb_func_end ScrCmd_PlayerHasSpecies
 
 	thumb_func_start ScrCmd_632
 ScrCmd_632: ; 0x0204DFE4

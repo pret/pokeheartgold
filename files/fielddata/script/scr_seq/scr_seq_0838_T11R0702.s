@@ -85,7 +85,7 @@ scr_seq_T11R0702_005:
 	goto _0107
 	.byte 0x02, 0x00
 _0107:
-	scrcmd_389 32780, 479
+	player_has_species VAR_SPECIAL_x800C, SPECIES_ROTOM
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _07D8
 	compare VAR_SPECIAL_x8004, 1

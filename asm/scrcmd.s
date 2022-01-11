@@ -438,7 +438,7 @@ gScriptCmdTable:
 	.word ScrCmd_GetPlayerFacing                                    ; 386
 	.word ScrCmd_387                                    ; 387
 	.word ScrCmd_388                                    ; 388
-	.word ScrCmd_389                                    ; 389
+	.word ScrCmd_PlayerHasSpecies                                    ; 389
 	.word ScrCmd_SizeRecordCompare                                    ; 390
 	.word ScrCmd_SizeRecordUpdate                                    ; 391
 	.word ScrCmd_BufferMonSize                                    ; 392

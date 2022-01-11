@@ -145,7 +145,7 @@ scr_seq_D24R0208_001:
 	scrcmd_609
 	lockall
 	scrcmd_714 3
-	scrcmd_389 32780, 250
+	player_has_species VAR_SPECIAL_x800C, SPECIES_HO_OH
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_ne _0264
 	goto _0268
