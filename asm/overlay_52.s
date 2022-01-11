@@ -2175,7 +2175,7 @@ ov52_021E921C: ; 0x021E921C
 	strh r1, [r0]
 _021E9232:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	mul r1, r0
 	asr r0, r1, #0xb

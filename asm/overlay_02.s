@@ -1423,7 +1423,7 @@ _0224667A:
 	lsl r1, r1, #0x14
 	lsr r0, r0, #0xc
 	orr r0, r1
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	mov r2, #8
 	ldrsh r2, [r5, r2]
 	add r4, r0, #0
@@ -6492,7 +6492,7 @@ ov02_02248CAC: ; 0x02248CAC
 	add r1, sp, #0x10
 	bl sub_020247F4
 	mov r0, #0
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -6713,7 +6713,7 @@ ov02_02248E20: ; 0x02248E20
 	lsl r0, r3, #0x11
 	str r0, [r4, #0x4c]
 	mov r0, #0x2d
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r4, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -6727,7 +6727,7 @@ ov02_02248E20: ; 0x02248E20
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r4, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -6755,7 +6755,7 @@ ov02_02248E20: ; 0x02248E20
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x68]
 	bl sub_02024818
@@ -6799,7 +6799,7 @@ ov02_02248E20: ; 0x02248E20
 	add r1, sp, #0
 	bl sub_020247F4
 	mov r0, #0
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -6850,7 +6850,7 @@ _02248FB2:
 	str r0, [r5, #0x4c]
 _02248FBE:
 	mov r0, #0x2d
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -6864,7 +6864,7 @@ _02248FBE:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -7006,7 +7006,7 @@ _022490E0:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -7015,7 +7015,7 @@ _022490E0:
 	mul r0, r1
 	str r0, [r5, #0x14]
 	mov r0, #0x80
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -7043,7 +7043,7 @@ _02249124:
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
 	str r1, [r5, #0x38]
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -7188,7 +7188,7 @@ _022491E2:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x68]
 	bl sub_02024818
@@ -7239,7 +7239,7 @@ _022492B0:
 	str r0, [r5, #0x48]
 _022492BA:
 	ldr r0, _02249398 ; =0x0000013B
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -7253,7 +7253,7 @@ _022492BA:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -7318,7 +7318,7 @@ _0224934C:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -9680,7 +9680,7 @@ ov02_0224A468: ; 0x0224A468
 	add r1, sp, #0x10
 	bl sub_020247F4
 	add r0, r7, #0
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -10794,7 +10794,7 @@ ov02_0224AC38: ; 0x0224AC38
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x58]
 	bl sub_02024818
@@ -10828,7 +10828,7 @@ ov02_0224ACE0: ; 0x0224ACE0
 	str r0, [r5, #0x4c]
 _0224AD00:
 	ldr r0, _0224ADE0 ; =0x0000013B
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -10842,7 +10842,7 @@ _0224AD00:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -10906,7 +10906,7 @@ _0224AD90:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -11020,7 +11020,7 @@ ov02_0224ADF0: ; 0x0224ADF0
 	lsl r0, r7, #0x11
 	str r0, [r4, #0x4c]
 	lsr r0, r6, #0xc
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r4, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -11034,7 +11034,7 @@ ov02_0224ADF0: ; 0x0224ADF0
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r4, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -11062,7 +11062,7 @@ ov02_0224ADF0: ; 0x0224ADF0
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x58]
 	bl sub_02024818
@@ -11111,7 +11111,7 @@ ov02_0224ADF0: ; 0x0224ADF0
 	add r1, sp, #0
 	bl sub_020247F4
 	mov r0, #0
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -11157,7 +11157,7 @@ _0224AF98:
 	str r0, [r5, #0x4c]
 _0224AFA4:
 	ldr r0, _0224B0D8 ; =0x0000013B
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -11171,7 +11171,7 @@ _0224AFA4:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r5, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -11238,7 +11238,7 @@ _0224B03A:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02024818
@@ -11397,7 +11397,7 @@ _0224B17C:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r2, [r4, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -11406,7 +11406,7 @@ _0224B17C:
 	mul r0, r1
 	str r0, [r4, #0x14]
 	mov r0, #0x80
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r2, [r4, #0x48]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -16242,7 +16242,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	lsl r1, r6, #1
 	add r0, #2
 	ldrh r0, [r0, r1]
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #1

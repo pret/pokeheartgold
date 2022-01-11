@@ -3203,7 +3203,7 @@ _0222D0A6:
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x18
 	ldrsb r1, [r4, r1]
 	ldr r2, [sp, #0x24]
@@ -3344,7 +3344,7 @@ _0222D1CE:
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r2, #0x18
 	ldrsb r2, [r4, r2]
 	ldr r1, [r4, #0xc]
@@ -11968,7 +11968,7 @@ _022315B2:
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	lsl r1, r0, #4
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0xc]
@@ -16468,14 +16468,14 @@ _02233A3A:
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x18]
 	add r7, r1, #0
 	mul r7, r0
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x18]
 	add r2, r1, #0
 	mul r2, r0
@@ -16627,7 +16627,7 @@ _02233B88:
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x18]
 	add r2, r1, #0
 	mul r2, r0
@@ -16637,7 +16637,7 @@ _02233B88:
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x18]
 	add r2, r1, #0
 	mul r2, r0

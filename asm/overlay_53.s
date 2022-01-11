@@ -2386,7 +2386,7 @@ _021E6C0E:
 	mul r0, r2
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	lsl r0, r0, #3
 	asr r4, r0, #0xc
 	b _021E6C36

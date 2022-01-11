@@ -3652,7 +3652,7 @@ ov65_0221DCBC: ; 0x0221DCBC
 	strh r1, [r0]
 _0221DCD2:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	mul r1, r0
 	asr r0, r1, #0xb

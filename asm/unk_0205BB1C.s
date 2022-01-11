@@ -465,7 +465,7 @@ sub_0205BE28: ; 0x0205BE28
 	str r0, [sp, #8]
 	ldrh r0, [r4, #0xe]
 	ldr r5, [r4, #4]
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r5, #0x1f
 	add r2, r5, #0
@@ -481,7 +481,7 @@ sub_0205BE28: ; 0x0205BE28
 	str r1, [sp]
 	ldrh r0, [r4, #0xe]
 	ldr r5, [r4, #8]
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r5, #0x1f
 	add r2, r5, #0

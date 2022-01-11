@@ -17484,7 +17484,7 @@ _02232932:
 	ldrh r0, [r1, #6]
 	strh r0, [r1, #2]
 	ldrh r0, [r4, #8]
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	ldr r2, _022329AC ; =0xFFF40000
 	asr r1, r0, #0x1f
 	asr r3, r2, #0x14
@@ -17564,7 +17564,7 @@ ov44_022329B0: ; 0x022329B0
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r1, sp, #0
 	mov r2, #6
 	ldrsh r3, [r1, r2]

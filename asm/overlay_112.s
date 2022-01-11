@@ -9605,13 +9605,13 @@ _021EA872:
 	cmp r0, #0
 	beq _021EA968
 	ldrh r0, [r4, #0xc]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	bl _s32_div_f
 	strh r0, [r4, #0xa]
 	ldrh r0, [r4, #0xc]
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	add r1, r7, #0
 	mul r1, r0
 	asr r0, r1, #0xb

@@ -21926,7 +21926,7 @@ _02226152:
 	str r0, [r5, #0x2c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xaa
 	ldrsh r2, [r5, r1]
 	mov r1, #0xac

@@ -2436,7 +2436,7 @@ _0225995C:
 	add r4, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	ldr r2, _022599F4 ; =0xFFFFE000
 	asr r1, r0, #0x1f
 	asr r3, r2, #0xd
@@ -2454,7 +2454,7 @@ _0225995C:
 	str r0, [sp, #8]
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	mov r2, #0xa
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xc
@@ -34541,7 +34541,7 @@ ov49_02269474: ; 0x02269474
 	mov r0, #8
 	strh r0, [r4, #6]
 	mov r0, #5
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	strh r0, [r4, #8]
 	mov r0, #2
 	strh r0, [r4, #0xa]
@@ -34560,7 +34560,7 @@ ov49_02269494: ; 0x02269494
 	mov r0, #0x10
 	strh r0, [r4, #6]
 	mov r0, #0xa
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	strh r0, [r4, #8]
 	mov r0, #4
 	strh r0, [r4, #0xa]

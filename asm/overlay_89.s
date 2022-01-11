@@ -5772,7 +5772,7 @@ _0225B58C:
 	str r0, [r4, #4]
 _0225B5A4:
 	ldr r0, [r4, #4]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r2, r0, #0
 	mov r1, #1
 	add r0, r5, #0
@@ -6163,7 +6163,7 @@ _0225B892:
 	str r0, [r4, #4]
 _0225B8AA:
 	ldr r0, [r4, #4]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r2, r0, #0
 	asr r6, r2, #0x1f
 	mov r7, #2
@@ -6413,7 +6413,7 @@ _0225BA80:
 	add r0, r4, #0
 	add r0, #0xf0
 	ldr r0, [r0]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r2, r0, #0x1f
 	lsl r3, r2, #0x10
 	lsr r1, r0, #0x10
@@ -6693,7 +6693,7 @@ _0225BCA0:
 	add r0, r4, #0
 	add r0, #0xf0
 	ldr r0, [r0]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r2, r0, #0x1f
 	lsl r3, r2, #0x10
 	lsr r1, r0, #0x10
@@ -7640,7 +7640,7 @@ _0225C364:
 	str r0, [r4, #8]
 _0225C396:
 	ldr r0, [r4, #8]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	ldrh r2, [r4]
 	add r1, sp, #0
 	lsl r6, r0, #0xc
@@ -7843,7 +7843,7 @@ _0225C4EE:
 	str r0, [r4, #0x18]
 _0225C520:
 	ldr r0, [r4, #0x18]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r1, r0, #0x1f
 	lsr r2, r0, #0x10
 	lsl r1, r1, #0x10
@@ -7952,7 +7952,7 @@ _0225C5C6:
 	str r0, [r4, #0x18]
 _0225C5F8:
 	ldr r0, [r4, #0x18]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r1, r0, #0x1f
 	lsr r2, r0, #0x11
 	lsl r1, r1, #0xf

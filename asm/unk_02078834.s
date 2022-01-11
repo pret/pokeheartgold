@@ -23518,7 +23518,7 @@ sub_02084500: ; 0x02084500
 	strh r1, [r0]
 _02084516:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	mul r1, r0
 	asr r0, r1, #0xb
@@ -29770,7 +29770,7 @@ _020875CA:
 	lsl r0, r1, #0x10
 	lsr r0, r0, #0x10
 	str r1, [r5, #0x30]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x28
 	ldrsh r1, [r6, r1]
 	lsl r1, r1, #0xc
@@ -29783,7 +29783,7 @@ _020875CA:
 	ldr r0, [r5, #0x30]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	mov r1, #0x2a
 	ldrsh r1, [r6, r1]
 	ldr r2, [sp, #0x34]

@@ -1412,14 +1412,14 @@ _022592EC:
 	neg r5, r5
 _022592F6:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r4, r0
 	ble _02259304
 	ldr r0, _02259328 ; =0x0000FFFF
 	sub r4, r0, r4
 _02259304:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r5, r0
 	ble _02259312
 	ldr r0, _02259328 ; =0x0000FFFF

@@ -1388,12 +1388,12 @@ _02260696:
 _022606B0:
 	ldr r0, [r5, #0xc]
 	ldr r6, [r5, #4]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r7, r0, #0
 	ldr r0, [r5, #4]
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0xc]
-	bl sub_0201FD20
+	bl GF_CosDegFX32
 	str r0, [sp, #0x1c]
 	asr r1, r7, #0x1f
 	add r0, r7, #0
@@ -1492,12 +1492,12 @@ _0226076A:
 _02260784:
 	ldr r0, [r5, #0xc]
 	ldr r6, [r5, #4]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r7, r0, #0
 	ldr r0, [r5, #4]
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0xc]
-	bl sub_0201FD20
+	bl GF_CosDegFX32
 	str r0, [sp, #0x20]
 	asr r1, r7, #0x1f
 	add r0, r7, #0
@@ -1595,12 +1595,12 @@ _0226083C:
 _02260856:
 	ldr r0, [r5, #0xc]
 	ldr r6, [r5, #4]
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r7, r0, #0
 	ldr r0, [r5, #4]
 	str r0, [sp, #8]
 	ldr r0, [r5, #0xc]
-	bl sub_0201FD20
+	bl GF_CosDegFX32
 	str r0, [sp, #0x24]
 	asr r1, r7, #0x1f
 	add r0, r7, #0
@@ -2843,7 +2843,7 @@ _02261186:
 	ldr r1, [r0]
 	ldr r0, [r4, #0xc]
 	add r0, r1, r0
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r1, r0, #0x1f
 	mov r2, #0x4c
 	mov r3, #0
@@ -2862,7 +2862,7 @@ _02261186:
 	ldr r1, [r0]
 	ldr r0, [r4, #0xc]
 	add r0, r1, r0
-	bl sub_0201FD20
+	bl GF_CosDegFX32
 	asr r1, r0, #0x1f
 	mov r2, #0x44
 	mov r3, #0
@@ -3498,7 +3498,7 @@ _022616A0:
 	lsl r0, r0, #0xc
 	mov r1, #0xf
 	bl _s32_div_f
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	mov r2, #6
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xe
@@ -3609,7 +3609,7 @@ _0226177C:
 	ldr r1, _022618BC ; =ov93_02262CC4
 	ldrb r1, [r1, r2]
 	bl _s32_div_f
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	mov r2, #3
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xe
@@ -3633,7 +3633,7 @@ _0226177C:
 	ldr r1, [r0]
 	ldr r0, [r4, #0xc]
 	add r0, r1, r0
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	asr r1, r0, #0x1f
 	mov r2, #0x4c
 	mov r3, #0
@@ -3652,7 +3652,7 @@ _0226177C:
 	ldr r0, [r4, #0xc]
 	add r6, #0x80
 	add r0, r1, r0
-	bl sub_0201FD20
+	bl GF_CosDegFX32
 	asr r1, r0, #0x1f
 	mov r2, #0x44
 	mov r3, #0
@@ -3925,10 +3925,10 @@ _02261A0C:
 	add r7, r5, #0
 	mul r7, r0
 	add r0, r7, #0
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_0201FD20
+	bl GF_CosDegFX32
 	str r0, [sp]
 	add r1, sp, #4
 	mov r3, #0x16
@@ -4013,7 +4013,7 @@ _02261ACA:
 	ldr r1, [r4, #0x18]
 	lsl r0, r0, #0xc
 	bl _s32_div_f
-	bl sub_0201FD14
+	bl GF_SinDegFX32
 	mov r2, #3
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xe

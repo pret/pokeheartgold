@@ -4163,7 +4163,7 @@ ov85_021E78D8: ; 0x021E78D8
 	lsl r0, r0, #4
 	lsr r6, r0, #0x10
 	add r0, r6, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	ldr r2, [r5, #0x50]
 	ldr r1, [r4]
 	add r2, r2, r1
@@ -4179,7 +4179,7 @@ ov85_021E78D8: ; 0x021E78D8
 	add r0, r1, r0
 	str r0, [r5, #0x48]
 	add r0, r6, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	ldr r2, [r5, #0x58]
 	ldr r1, [r4, #8]
 	add r2, r2, r1
@@ -5031,7 +5031,7 @@ _021E7EFA:
 	add r0, r1, r0
 	lsl r0, r0, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	ldr r2, [r5, #8]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -9194,7 +9194,7 @@ ov85_021E9E58: ; 0x021E9E58
 	strh r1, [r0]
 _021E9E6E:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	add r2, r0, #0
 	mul r2, r1

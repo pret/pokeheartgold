@@ -7967,7 +7967,7 @@ ov91_02260254: ; 0x02260254
 	add r5, r0, #0
 	ldr r0, _02260290 ; =0x0000F222
 	add r4, r1, #0
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, _02260294 ; =0x00000E38
 	sub r2, r4, r0
@@ -9634,7 +9634,7 @@ ov91_02260EE0: ; 0x02260EE0
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r6, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	lsl r5, r4, #0xc
 	asr r4, r5, #0x1f
 	asr r1, r0, #0x1f
@@ -9653,7 +9653,7 @@ ov91_02260EE0: ; 0x02260EE0
 	asr r1, r1, #0xc
 	str r1, [r0]
 	add r0, r6, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	asr r1, r0, #0x1f
 	add r2, r5, #0
 	add r3, r4, #0
@@ -9748,7 +9748,7 @@ _02260FCC:
 	b _02260FF0
 _02260FE0:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1

@@ -5079,7 +5079,7 @@ _022490B6:
 	lsl r0, r4, #0x10
 	ldr r6, [r5, #0x38]
 	lsr r0, r0, #0x10
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -5098,7 +5098,7 @@ _022490B6:
 	lsl r0, r4, #0x10
 	ldr r6, [r5, #0x3c]
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -6374,7 +6374,7 @@ _02249AEC:
 	lsl r0, r4, #0x10
 	ldr r6, [r5, #0x44]
 	lsr r0, r0, #0x10
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -6391,7 +6391,7 @@ _02249AEC:
 	lsl r0, r4, #0x10
 	ldr r6, [r5, #0x48]
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -7920,7 +7920,7 @@ _0224A744:
 	lsl r0, r4, #0x10
 	ldr r6, [r5, #0x44]
 	lsr r0, r0, #0x10
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -7937,7 +7937,7 @@ _0224A744:
 	lsl r0, r4, #0x10
 	ldr r6, [r5, #0x48]
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0

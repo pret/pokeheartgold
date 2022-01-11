@@ -8893,7 +8893,7 @@ _0222B6AC:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add r6, #0x40
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	add r1, r5, #0
 	add r1, #0x98
 	ldr r1, [r1]
@@ -8903,7 +8903,7 @@ _0222B6AC:
 	ldr r0, [sp]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	add r1, r5, #0
 	add r1, #0x9c
 	ldr r1, [r1]
@@ -9485,7 +9485,7 @@ _0222BBEE:
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x38]
 	mul r0, r1
 	asr r0, r0, #0xc
@@ -9493,7 +9493,7 @@ _0222BBEE:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x40]
 	ldr r2, [r5, #0x10]
 	mul r0, r1
@@ -9502,7 +9502,7 @@ _0222BBEE:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x44]
 	ldr r2, [r5, #0x14]
 	mul r0, r1
@@ -9521,7 +9521,7 @@ _0222BC44:
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x38]
 	mul r0, r1
 	asr r0, r0, #0xc
@@ -9529,7 +9529,7 @@ _0222BC44:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x40]
 	ldr r2, [r5, #0x10]
 	mul r0, r1
@@ -9538,7 +9538,7 @@ _0222BC44:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x44]
 	ldr r2, [r5, #0x14]
 	mul r0, r1
@@ -9557,7 +9557,7 @@ _0222BC92:
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x38]
 	mul r0, r1
 	asr r0, r0, #0xc
@@ -9565,7 +9565,7 @@ _0222BC92:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x40]
 	ldr r3, [r5, #0x10]
 	add r2, r1, #0
@@ -9578,7 +9578,7 @@ _0222BC92:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x44]
 	ldr r3, [r5, #0x14]
 	add r2, r1, #0
@@ -9601,7 +9601,7 @@ _0222BCF0:
 	lsl r0, r1, #0x10
 	str r1, [r5, #0x34]
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x38]
 	mul r0, r1
 	asr r0, r0, #0xc
@@ -9609,7 +9609,7 @@ _0222BCF0:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x40]
 	ldr r3, [r5, #0x10]
 	add r2, r1, #0
@@ -9622,7 +9622,7 @@ _0222BCF0:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x44]
 	ldr r3, [r5, #0x14]
 	add r2, r1, #0
@@ -9650,7 +9650,7 @@ _0222BD5E:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x40]
 	ldr r2, [r5, #0x10]
 	mul r0, r1
@@ -9659,7 +9659,7 @@ _0222BD5E:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x44]
 	ldr r2, [r5, #0x14]
 	mul r0, r1
@@ -9685,7 +9685,7 @@ _0222BDA4:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	ldr r1, [r5, #0x40]
 	ldr r3, [r5, #0x10]
 	add r2, r1, #0
@@ -9698,7 +9698,7 @@ _0222BDA4:
 	ldr r0, [r5, #0x28]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCC0
+	bl GF_CosDeg
 	ldr r1, [r5, #0x44]
 	ldr r3, [r5, #0x14]
 	add r2, r1, #0

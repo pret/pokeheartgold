@@ -15826,7 +15826,7 @@ _021ECF54:
 	mul r0, r1
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	asr r1, r0, #0x1f
 	asr r3, r6, #0x1f
 	add r2, r6, #0
@@ -82332,7 +82332,7 @@ _0220DDDE:
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0x12
 	bl _s32_div_f
 	bl _fflt
@@ -83403,7 +83403,7 @@ ov96_0220E6DC: ; 0x0220E6DC
 	asr r4, r0, #0x10
 	lsl r0, r5, #0x11
 	lsr r0, r0, #0x10
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	lsl r0, r0, #6
 	asr r0, r0, #0x10
 	add r0, r4, r0

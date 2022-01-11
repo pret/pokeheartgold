@@ -16389,7 +16389,7 @@ _020634D0:
 	mul r0, r1
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	ldr r7, [r4, #8]
 	add r6, r0, #0
 	ldr r0, [r7, #8]

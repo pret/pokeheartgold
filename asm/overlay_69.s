@@ -3568,14 +3568,14 @@ _021E7604:
 	neg r5, r5
 _021E760E:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r4, r0
 	ble _021E761C
 	ldr r0, _021E7640 ; =0x0000FFFF
 	sub r4, r0, r4
 _021E761C:
 	mov r0, #0xb4
-	bl sub_0201FCD4
+	bl GF_DegreeToSinCosIdxNoWrap
 	cmp r5, r0
 	ble _021E762A
 	ldr r0, _021E7640 ; =0x0000FFFF

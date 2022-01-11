@@ -1106,19 +1106,19 @@ sub_02020DA4: ; 0x02020DA4
 	add r0, r5, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r1, r0, #0
 	ldr r0, [sp]
 	add r2, r7, #0
 	bl MTX_RotX33_
 	add r0, r4, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r1, r0, #0
 	add r0, sp, #4
 	add r2, r5, #0
@@ -1128,10 +1128,10 @@ sub_02020DA4: ; 0x02020DA4
 	add r2, r0, #0
 	bl MTX_Concat33
 	add r0, r6, #0
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r1, r0, #0
 	add r0, sp, #4
 	add r2, r4, #0

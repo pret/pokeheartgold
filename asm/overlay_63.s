@@ -6600,7 +6600,7 @@ _0221F448:
 	asr r6, r0, #0xc
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FC30
+	bl GF_CosDegNoWrap
 	mov r2, #0xa
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xa
@@ -6618,7 +6618,7 @@ _0221F448:
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10
 	add r4, r2, r1
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	mov r2, #0xa
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xa

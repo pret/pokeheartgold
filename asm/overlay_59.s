@@ -8627,7 +8627,7 @@ ov59_0223BFC8: ; 0x0223BFC8
 	cmp r0, #0
 	beq _0223C010
 	ldrh r0, [r5, #0xc]
-	bl sub_0201FD00
+	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r5, #0x1c]
 	bl sub_02024818

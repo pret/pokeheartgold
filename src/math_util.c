@@ -7,55 +7,53 @@ u32 sMTRNG_State[624];
 u32 sLCRNG_State;
 int sMTRNG_Cycles = 625;
 u32 sMTRNG_XOR[2] = {0, 0x9908B0DF};
-MATHCRC16Table *_021D15A4 = NULL;
+MATHCRC16Table *sCRC16TablePtr = NULL;
 
-u16 sub_0201FCD4(u16 deg);
-
-fx32 sub_0201FBB8(u16 deg) {
+fx32 GF_SinDegNoWrap(u16 deg) {
     fx16 sinval;
     if (deg >= 360) {
         return 0;
     }
-    sinval = FX_SinIdx(sub_0201FCD4(deg));
+    sinval = FX_SinIdx(GF_DegreeToSinCosIdxNoWrap(deg));
     return FX16_TO_FX32(sinval);
 }
 
-fx32 sub_0201FC30(u16 deg) {
+fx32 GF_CosDegNoWrap(u16 deg) {
     fx16 cosval;
     if (deg >= 360) {
         return 0;
     }
-    cosval = FX_CosIdx(sub_0201FCD4(deg));
+    cosval = FX_CosIdx(GF_DegreeToSinCosIdxNoWrap(deg));
     return FX16_TO_FX32(cosval);
 }
 
-fx32 sub_0201FCAC(u16 deg) {
+fx32 GF_SinDeg(u16 deg) {
     deg %= 360;
-    return sub_0201FBB8(deg);
+    return GF_SinDegNoWrap(deg);
 }
 
-fx32 sub_0201FCC0(u16 deg) {
+fx32 GF_CosDeg(u16 deg) {
     deg %= 360;
-    return sub_0201FC30(deg);
+    return GF_CosDegNoWrap(deg);
 }
 
-u16 sub_0201FCD4(u16 deg) {
+u16 GF_DegreeToSinCosIdxNoWrap(u16 deg) {
     if (deg >= 360) {
         return 0;
     }
     return FX_DEG_TO_IDX(deg << FX32_SHIFT);
 }
 
-u16 sub_0201FD00(u16 deg) {
-    return sub_0201FCD4(deg % 360);
+u16 GF_DegreeToSinCosIdx(u16 deg) {
+    return GF_DegreeToSinCosIdxNoWrap(deg % 360);
 }
 
-fx32 sub_0201FD14(fx32 deg) {
-    return sub_0201FCAC(deg >> FX32_SHIFT);
+fx32 GF_SinDegFX32(fx32 rad) {
+    return GF_SinDeg(rad >> FX32_SHIFT);
 }
 
-fx32 sub_0201FD20(fx32 deg) {
-    return sub_0201FCC0(deg >> FX32_SHIFT);
+fx32 GF_CosDegFX32(fx32 rad) {
+    return GF_CosDeg(rad >> FX32_SHIFT);
 }
 
 u32 GetLCRNGSeed(void) {
@@ -83,8 +81,7 @@ void SetMTRNGSeed(u32 seed) {
     }
 }
 
-u32 MTRandom(void)
-{
+u32 MTRandom(void) {
     u32 val;
     s32 i;
 
@@ -138,7 +135,7 @@ u32 Math_CalcArraySum(const void *data, u32 size) {
     return sum;
 }
 
-u16 MonEncryptionLCRNG(u32 *seed_p);
+static u16 MonEncryptionLCRNG(u32 *seed_p);
 
 void _MonEncryptSegment(u16 * data, u32 size, u32 seed) {
     int i;
@@ -151,17 +148,17 @@ void _MonDecryptSegment(u16 * data, u32 size, u32 seed) {
     _MonEncryptSegment(data, size, seed);
 }
 
-u16 MonEncryptionLCRNG(u32 * seed) {
+static u16 MonEncryptionLCRNG(u32 * seed) {
     *seed = *seed * 1103515245 + 24691;
     return (u16)(*seed >> 16);
 }
 
 u16 GF_CalcCRC16(const void *data, u32 size) {
-    return MATH_CalcCRC16CCITT(_021D15A4, data, size);
+    return MATH_CalcCRC16CCITT(sCRC16TablePtr, data, size);
 }
 
 void GF_CRC16Init(HeapID heapId) {
-    GF_ASSERT(_021D15A4 == NULL);
-    _021D15A4 = AllocFromHeap(heapId, sizeof(MATHCRC16Table));
-    MATH_CRC16InitTable(_021D15A4);
+    GF_ASSERT(sCRC16TablePtr == NULL);
+    sCRC16TablePtr = AllocFromHeap(heapId, sizeof(MATHCRC16Table));
+    MATH_CRC16InitTable(sCRC16TablePtr);
 }

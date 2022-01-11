@@ -87588,7 +87588,7 @@ _0226205C:
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldrh r0, [r4, r0]
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	mov r2, #6
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xa
@@ -95674,7 +95674,7 @@ _02265DEC:
 	add r0, r4, #0
 	add r0, #0x54
 	ldrh r0, [r0]
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	mov r2, #6
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xa
@@ -107921,7 +107921,7 @@ _0226BDB2:
 	bl _s32_div_f
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	mov r2, #0xe
 	asr r1, r0, #0x1f
 	lsl r2, r2, #0xc

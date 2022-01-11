@@ -1560,7 +1560,7 @@ _021E64EE:
 	add r0, #0x5a
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r2, r0, #0
 	ldr r0, [sp, #0x18]
 	asr r3, r2, #0x1f
@@ -1581,7 +1581,7 @@ _021E64EE:
 	ldr r0, [sp, #0x1c]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	add r2, r0, #0
 	ldr r0, [sp]
 	add r1, r7, #0
@@ -1661,7 +1661,7 @@ _021E65BA:
 _021E65C6:
 	lsl r0, r3, #4
 	lsr r0, r0, #0x10
-	bl sub_0201FBB8
+	bl GF_SinDegNoWrap
 	ldr r1, [r5, #0x28]
 	add r2, r4, #0
 	mul r0, r1

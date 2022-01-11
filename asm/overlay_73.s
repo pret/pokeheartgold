@@ -3216,7 +3216,7 @@ ov73_021E72F4: ; 0x021E72F4
 	strh r1, [r0]
 _021E730A:
 	ldrh r0, [r0]
-	bl sub_0201FCAC
+	bl GF_SinDeg
 	mov r1, #0xa
 	add r2, r0, #0
 	mul r2, r1
