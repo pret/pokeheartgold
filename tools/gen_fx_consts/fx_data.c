@@ -30,11 +30,9 @@ void FxConstTableInit(void) {
     int i, j, k;
     long fsize;
     long readsz;
-    static char filename[BUFSIZ] = SOURCE_DIR "/" __FILE__;
+    static const char filename[] = SOURCE_DIR "/fx_const.csv";
 
     atexit(FxConstTableEnd);
-    *(strrchr(filename, '/') + 1) = 0;
-    strlcat(filename, "fx_const.csv", BUFSIZ);
 
     file = fopen(filename, "r");
     if (file == NULL) {
