@@ -78,11 +78,12 @@ $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 
 # TODO: move to NitroSDK makefile
 FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
-$(FX_CONST_H):
-	$(MKFXCONST) >$@
 PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
 $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
-.PHONY: $(FX_CONST_H)
+# Force this to be made first
+ifeq ($(wildcard $(FX_CONST_H)),)
+$(shell $(MKFXCONST) > $(FX_CONST_H))
+endif
 
 heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
 soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER

@@ -2596,7 +2596,7 @@ sub_0201BF18: ; 0x0201BF18
 	add r0, sp, #4
 	add r3, r2, #0
 	str r1, [sp]
-	bl sub_0201FECC
+	bl MTX22_2DAffine
 	mov r3, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -9460,7 +9460,7 @@ _0201F03E:
 	ldr r2, [r4, #0x7c]
 	ldr r3, [r3]
 	add r0, sp, #0x38
-	bl sub_0201FECC
+	bl MTX22_2DAffine
 	ldr r0, [r4, #0x6c]
 	add r2, r4, #0
 	str r0, [sp]
@@ -9512,7 +9512,7 @@ _0201F0A2:
 	ldr r2, [r2]
 	ldr r3, [r3]
 	add r0, sp, #0x28
-	bl sub_0201FECC
+	bl MTX22_2DAffine
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -9604,7 +9604,7 @@ _0201F158:
 	ldr r2, [r4, r2]
 	ldr r3, [r4, r3]
 	add r0, sp, #0x18
-	bl sub_0201FECC
+	bl MTX22_2DAffine
 	mov r3, #0x47
 	lsl r3, r3, #2
 	ldr r0, [r4, r3]
@@ -9659,7 +9659,7 @@ _0201F1C6:
 	ldr r2, [r4, r2]
 	ldr r3, [r4, r3]
 	add r0, sp, #8
-	bl sub_0201FECC
+	bl MTX22_2DAffine
 	mov r3, #0x52
 	lsl r3, r3, #2
 	ldr r0, [r4, r3]

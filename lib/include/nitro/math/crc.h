@@ -92,4 +92,6 @@ static inline u16 MATH_CRC16GetHash(MATHCRC16Context *context) {
     return MATHi_CRC16GetHash(context);
 }
 
+u16 MATH_CalcCRC16CCITT(const MATHCRC16Table *table, const void *input, u32 length);
+
 #endif //NITRO_MATH_CRC_H_

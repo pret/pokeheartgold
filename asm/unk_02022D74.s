@@ -9,6 +9,11 @@
     .public _021DA6F4
     .public _0210F6DC
 
+	.data
+
+	.public _0210F6DC
+_0210F6DC:
+	.byte 0x01, 0x00, 0x00, 0x00
 	.bss
 
 _021D2204:

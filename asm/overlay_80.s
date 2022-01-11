@@ -7680,7 +7680,7 @@ _0222D6B0:
 	add r0, sp, #0x2c
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_0201FECC
+	bl MTX22_2DAffine
 	mov r0, #8
 	ldrsh r1, [r4, r0]
 	ldr r0, [sp, #0x20]
@@ -7881,7 +7881,7 @@ _0222D834:
 	add r0, sp, #0x2c
 	mov r1, #0
 	add r3, r2, #0
-	bl sub_0201FECC
+	bl MTX22_2DAffine
 	mov r0, #8
 	ldrsh r1, [r4, r0]
 	ldr r0, [sp, #0x20]

@@ -6,6 +6,8 @@
 #include <ctype.h>
 #include "fx.h"
 
+static const int NAMEBUF_SIZ = 32;
+
 static inline void usage(FILE *dest) {
     fprintf(dest, "USAGE: gen_fx_consts FILENAME\n\n"
                   "FILENAME     Path to write C header. Guard will be generated\n"
@@ -23,7 +25,7 @@ static inline noreturn __attribute__((format(printf, 1, 2))) void fatal_error(co
 
 int main(int argc, char ** argv) {
     int i;
-    char namebuf[32] = "";
+    char namebuf[NAMEBUF_SIZ] = "";
     char *header_guard;
     FILE *outfile;
     if (argc < 2) {
@@ -79,8 +81,8 @@ int main(int argc, char ** argv) {
         default:
             fatal_error("invalid integer width: %d", nbyte);
         }
-        snprintf(namebuf, 32, "%s_%s", gFxConstTable[i].fxtype->name, gFxConstTable[i].name);
-        for (j = 0; j < 32 && namebuf[j]; j++) {
+        snprintf(namebuf, NAMEBUF_SIZ, "%s_%s", gFxConstTable[i].fxtype->name, gFxConstTable[i].name);
+        for (j = 0; j < NAMEBUF_SIZ && namebuf[j]; j++) {
             namebuf[j] = toupper(namebuf[j]);
         }
         fprintf(outfile, fmtstr, namebuf, gFxConstTable[i].fxtype->name, value, suffix, gFxConstTable[i].value);

@@ -26915,7 +26915,7 @@
 .public sub_0201FD00
 .public sub_0201FD14
 .public sub_0201FD20
-.public sub_0201FECC
+.public MTX22_2DAffine
 .public sub_0201FFE0
 .public sub_02020080
 .public sub_02020094
