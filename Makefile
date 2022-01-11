@@ -81,7 +81,8 @@ FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
 $(FX_CONST_H):
 	$(MKFXCONST) >$@
 PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
-$(WORK_DIR)/include/global.h: $(FX_CONST_H)
+$(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
+.PHONY: $(FX_CONST_H)
 
 heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
 soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER

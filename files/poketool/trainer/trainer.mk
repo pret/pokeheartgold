@@ -8,7 +8,7 @@ TRNAME_TEMPLATE := files/poketool/trainer/trname.json.txt
 
 $(TRDATA_NARC): %.narc: $(TRAINER_JSON) $(TRDATA_TEMPLATE)
 	$(JSONPROC) $^ $*.c
-	$(WINE) $(MWCC) $(MWCFLAGS) -include global.h -c -o $*.o $*.c
+	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n
 	@$(RM) $*.o $*.c
 
@@ -21,5 +21,8 @@ $(TRPOKE_NARC): %.narc: $(TRAINER_JSON) $(TRPOKE_TEMPLATE)
 $(TRNAME_GMM): $(TRAINER_JSON) $(TRNAME_TEMPLATE)
 	$(JSONPROC) $^ $@
 	$(SED) -i 's/&/&amp;/g' $@
+
+$(TRDATA_NARC): MWCFLAGS += -include global.h
+$(TRAINER_JSON): | $(WORK_DIR)/include/global.h
 
 FS_CLEAN_TARGETS += $(TRNAME_GMM) $(TRDATA_NARC) $(TRPOKE_NARC)
