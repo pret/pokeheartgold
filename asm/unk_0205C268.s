@@ -23813,15 +23813,15 @@ _02066B48: .word VAR_PLAYER_STARTER
 _02066B4C: .word SPECIES_TURTWIG
 	thumb_func_end DPPtLeftover_GetFriendStarterSpecies
 
-	thumb_func_start sub_02066B50
-sub_02066B50: ; 0x02066B50
+	thumb_func_start ScriptState_GetFishingCompetitionLengthRecord
+ScriptState_GetFishingCompetitionLengthRecord: ; 0x02066B50
 	ldr r3, _02066B58 ; =GetScriptVar
 	ldr r1, _02066B5C ; =VAR_UNK_4035
 	bx r3
 	nop
 _02066B58: .word GetScriptVar
 _02066B5C: .word VAR_UNK_4035
-	thumb_func_end sub_02066B50
+	thumb_func_end ScriptState_GetFishingCompetitionLengthRecord
 
 	thumb_func_start sub_02066B60
 sub_02066B60: ; 0x02066B60

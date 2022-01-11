@@ -552,6 +552,7 @@ Overlay OVY_20
 {
     After OVY_3
     Object overlay_20.o
+    Object overlay_20_s.o
     ### Size 0x420 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259cd4 ###

@@ -969,8 +969,8 @@ _020912EE:
 _02091304: .word _02106060
 	thumb_func_end sub_020912D0
 
-	thumb_func_start sub_02091308
-sub_02091308: ; 0x02091308
+	thumb_func_start ZknData_Create
+ZknData_Create: ; 0x02091308
 	push {r3, lr}
 	mov r1, #0x18
 	bl AllocFromHeap
@@ -983,10 +983,10 @@ _02091316:
 	sub r2, r2, #1
 	bne _02091316
 	pop {r3, pc}
-	thumb_func_end sub_02091308
+	thumb_func_end ZknData_Create
 
-	thumb_func_start sub_02091320
-sub_02091320: ; 0x02091320
+	thumb_func_start ZknData_Delete
+ZknData_Delete: ; 0x02091320
 	push {r4, lr}
 	add r4, r0, #0
 	bne _0209132A
@@ -996,10 +996,10 @@ _0209132A:
 	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02091320
+	thumb_func_end ZknData_Delete
 
-	thumb_func_start sub_02091334
-sub_02091334: ; 0x02091334
+	thumb_func_start ZknData_LoadAll
+ZknData_LoadAll: ; 0x02091334
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -1065,10 +1065,10 @@ _020913BC:
 	add r0, r6, #0
 	bl NARC_dtor
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02091334
+	thumb_func_end ZknData_LoadAll
 
-	thumb_func_start sub_020913C4
-sub_020913C4: ; 0x020913C4
+	thumb_func_start ZknData_UnloadAll
+ZknData_UnloadAll: ; 0x020913C4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -1101,10 +1101,10 @@ _020913DC:
 	str r0, [r4, #0x10]
 	str r0, [r4, #0x14]
 	pop {r4, pc}
-	thumb_func_end sub_020913C4
+	thumb_func_end ZknData_UnloadAll
 
-	thumb_func_start sub_02091410
-sub_02091410: ; 0x02091410
+	thumb_func_start ZknData_GetHeight
+ZknData_GetHeight: ; 0x02091410
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -1121,7 +1121,7 @@ _02091428:
 	lsl r0, r4, #2
 	ldr r0, [r1, r0]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02091410
+	thumb_func_end ZknData_GetHeight
 
 	thumb_func_start sub_02091430
 sub_02091430: ; 0x02091430

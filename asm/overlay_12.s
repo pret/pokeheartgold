@@ -47260,11 +47260,11 @@ _0224E93C:
 	lsr r0, r0, #0x1b
 	bl SetDexBanksByGiratinaForme
 	mov r0, #5
-	bl sub_02091308
+	bl ZknData_Create
 	mov r1, #0
 	mov r2, #5
 	str r0, [sp, #0x24]
-	bl sub_02091334
+	bl ZknData_LoadAll
 	ldr r1, [sp, #0x18]
 	ldr r0, [sp, #0x24]
 	ldrh r1, [r1, r5]
@@ -47273,9 +47273,9 @@ _0224E93C:
 	add r2, r7, r6
 	str r0, [r2, r1]
 	ldr r0, [sp, #0x24]
-	bl sub_020913C4
+	bl ZknData_UnloadAll
 	ldr r0, [sp, #0x24]
-	bl sub_02091320
+	bl ZknData_Delete
 	ldr r2, _0224E9FC ; =0x00002D76
 	add r0, r4, #0
 	add r2, r7, r2

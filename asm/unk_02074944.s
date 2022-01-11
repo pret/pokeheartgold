@@ -9,11 +9,11 @@
 sub_02074944: ; 0x02074944
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02091308
+	bl ZknData_Create
 	mov r1, #0
 	add r2, r5, #0
 	add r4, r0, #0
-	bl sub_02091334
+	bl ZknData_LoadAll
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -23,9 +23,9 @@ sub_02074944: ; 0x02074944
 sub_0207495C: ; 0x0207495C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_020913C4
+	bl ZknData_UnloadAll
 	add r0, r4, #0
-	bl sub_02091320
+	bl ZknData_Delete
 	pop {r4, pc}
 	thumb_func_end sub_0207495C
 
@@ -87,7 +87,7 @@ _020749D2:
 	beq _020749FC
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl sub_02091410
+	bl ZknData_GetHeight
 	cmp r5, #0
 	ble _020749F2
 	cmp r0, r5

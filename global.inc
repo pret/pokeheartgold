@@ -29140,7 +29140,7 @@
 .public GetStarterFromScriptState
 .public DPPtLeftover_GetRivalSpecies
 .public DPPtLeftover_GetFriendStarterSpecies
-.public sub_02066B50
+.public ScriptState_GetFishingCompetitionLengthRecord
 .public sub_02066B60
 .public sub_02066B70
 .public sub_02066B9C
@@ -29529,11 +29529,11 @@
 .public sub_02091294
 .public sub_020912AC
 .public sub_020912D0
-.public sub_02091308
-.public sub_02091320
-.public sub_02091334
-.public sub_020913C4
-.public sub_02091410
+.public ZknData_Create
+.public ZknData_Delete
+.public ZknData_LoadAll
+.public ZknData_UnloadAll
+.public ZknData_GetHeight
 .public sub_02091430
 .public sub_02091570
 .public sub_02091574
