@@ -47,8 +47,8 @@ void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(POKEMON *pokemon, u16 move_id);
-void sub_0207213C(BOXMON *boxmon, PLAYERDATA *playerData, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
-void sub_02072190(BOXMON *boxmon, PLAYERDATA *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_0207213C(BOXMON *boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_02072190(BOXMON *boxmon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 
 #define ENCRY_ARGS_PTY(mon) (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxmon) (u16 *)&(boxmon)->substructs, sizeof((boxmon)->substructs), (boxmon)->checksum
@@ -3717,7 +3717,7 @@ void sub_020720D4(POKEMON *pokemon) {
     PlayCry(GetMonData(pokemon, MON_DATA_SPECIES, NULL), GetMonData(pokemon, MON_DATA_FORME, NULL));
 }
 
-void sub_020720FC(POKEMON * pokemon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_020720FC(POKEMON * pokemon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     u32 hp;
     sub_0207213C(&pokemon->box, a1, pokeball, a3, encounterType, heap_id);
     if (pokeball == ITEM_HEAL_BALL) {
@@ -3728,18 +3728,18 @@ void sub_020720FC(POKEMON * pokemon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 
     }
 }
 
-void sub_0207213C(BOXMON * boxmon, PLAYERDATA * a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
-    sub_0208F270(boxmon, a1, 0, a3, heap_id);
+void sub_0207213C(BOXMON * boxmon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+    sub_0208F270(boxmon, playerProfile, 0, a3, heap_id);
     SetBoxMonData(boxmon, MON_DATA_GAME_VERSION, (void *)&gGameVersion);
     SetBoxMonData(boxmon, MON_DATA_POKEBALL, &pokeball);
     SetBoxMonData(boxmon, MON_DATA_ENCOUNTER_TYPE, &encounterType);
 }
 
-void sub_0207217C(POKEMON *pokemon, PLAYERDATA *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_0207217C(POKEMON *pokemon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     sub_02072190(&pokemon->box, a1, pokeball, a3, encounterType, heap_id);
 }
 
-void sub_02072190(BOXMON *boxmon, PLAYERDATA *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_02072190(BOXMON *boxmon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     sub_0207213C(boxmon, a1, pokeball, a3, encounterType, heap_id);
 }
 
