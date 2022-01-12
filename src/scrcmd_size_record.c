@@ -1,6 +1,5 @@
 #include "pokemon.h"
-#include "script.h"
-#include "fieldmap.h"
+#include "scrcmd.h"
 #include "unk_02090C94.h"
 #include "event_data.h"
 #include "script_state_misc.h"
