@@ -267,7 +267,7 @@
 #define FLAG_UNK_0F6                                                0xF6
 #define FLAG_UNK_0F7                                                0xF7
 #define FLAG_UNK_0F8                                                0xF8
-#define FLAG_UNK_0F9                                                0xF9
+#define FLAG_SNORLAX_MEET                                                0xF9
 #define FLAG_UNK_0FA                                                0xFA
 #define FLAG_UNK_0FB                                                0xFB
 #define FLAG_UNK_0FC                                                0xFC
@@ -631,7 +631,7 @@
 #define FLAG_UNK_25E                                               0x25E
 #define FLAG_UNK_25F                                               0x25F
 #define FLAG_UNK_260                                               0x260
-#define FLAG_UNK_261                                               0x261
+#define FLAG_HIDE_ROUTE_11_SNORLAX                                               0x261
 #define FLAG_UNK_262                                               0x262
 #define FLAG_UNK_263                                               0x263
 #define FLAG_HIDE_ROUTE_10_LT_SURGE                                0x264

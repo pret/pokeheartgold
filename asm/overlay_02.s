@@ -26228,16 +26228,16 @@ ov02_022522B4: ; 0x022522B4
 	push {r3, lr}
 	bl SndRadio_GetSeqNo
 	lsl r0, r0, #0x10
-	ldr r2, _0225232C ; =0x00000492
+	ldr r2, _0225232C ; =SEQ_GS_RADIO_R_201
 	lsr r0, r0, #0x10
 	cmp r0, r2
 	bgt _022522F0
 	bge _0225231C
 	add r1, r2, #0
-	sub r1, #0x44
+	sub r1, #SEQ_GS_RADIO_R_201-SEQ_GS_HUE
 	cmp r0, r1
 	bgt _022522E8
-	sub r2, #0x47
+	sub r2, #SEQ_GS_RADIO_R_201-SEQ_GS_RADIO_KOMORIUTA
 	sub r1, r0, r2
 	bmi _02252328
 	add r1, r1, r1
@@ -26247,30 +26247,30 @@ ov02_022522B4: ; 0x022522B4
 	asr r1, r1, #0x10
 	add pc, r1
 _022522E0: ; jump table
-	.short _02252314 - _022522E0 - 2 ; case 0
-	.short _02252310 - _022522E0 - 2 ; case 1
-	.short _02252320 - _022522E0 - 2 ; case 2
-	.short _02252324 - _022522E0 - 2 ; case 3
+	.short _02252314 - _022522E0 - 2 ; case SEQ_GS_RADIO_KOMORIUTA
+	.short _02252310 - _022522E0 - 2 ; case SEQ_GS_RADIO_MARCH
+	.short _02252320 - _022522E0 - 2 ; case SEQ_GS_RADIO_UNKNOWN
+	.short _02252324 - _022522E0 - 2 ; case SEQ_GS_HUE
 _022522E8:
-	ldr r1, _02252330 ; =0x00000491
+	ldr r1, _02252330 ; =SEQ_GS_RADIO_R_101
 	cmp r0, r1
 	beq _02252318
 	b _02252328
 _022522F0:
 	add r1, r2, #0
-	add r1, #0x8e
+	add r1, #SEQ_GS_P_RADIO_MARCH-SEQ_GS_RADIO_R_201
 	cmp r0, r1
 	bgt _02252308
 	add r1, r2, #0
-	add r1, #0x8e
+	add r1, #SEQ_GS_P_RADIO_MARCH-SEQ_GS_RADIO_R_201
 	cmp r0, r1
 	bge _02252310
-	add r2, #0x8d
+	add r2, #SEQ_GS_P_RADIO_KOMORIUTA-SEQ_GS_RADIO_R_201
 	cmp r0, r2
 	beq _02252314
 	b _02252328
 _02252308:
-	add r2, #0x90
+	add r2, #SEQ_GS_P_HUE-SEQ_GS_RADIO_R_201
 	cmp r0, r2
 	beq _02252324
 	b _02252328
@@ -26296,8 +26296,8 @@ _02252328:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_0225232C: .word 0x00000492
-_02252330: .word 0x00000491
+_0225232C: .word SEQ_GS_RADIO_R_201
+_02252330: .word SEQ_GS_RADIO_R_101
 	thumb_func_end ov02_022522B4
 
 	thumb_func_start ov02_02252334

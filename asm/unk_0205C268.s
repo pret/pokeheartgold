@@ -23650,7 +23650,7 @@ _02066A48: .word FLAG_UNK_99A
 	thumb_func_start sub_02066A4C
 sub_02066A4C: ; 0x02066A4C
 	ldr r3, _02066A54 ; =CheckScriptFlag
-	mov r1, #FLAG_UNK_0F9
+	mov r1, #FLAG_SNORLAX_MEET
 	bx r3
 	nop
 _02066A54: .word CheckScriptFlag

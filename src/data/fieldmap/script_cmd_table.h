@@ -779,7 +779,7 @@ extern BOOL ScrCmd_775(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_777(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_779(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_780(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx);
@@ -1634,7 +1634,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GiveTogepiEgg,
     ScrCmd_777,
     ScrCmd_GiveSpikyEarPichu,
-    ScrCmd_779,
+    ScrCmd_RadioMusicIsPlaying,
     ScrCmd_780,
     ScrCmd_781,
     ScrCmd_MartSell,

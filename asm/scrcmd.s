@@ -828,7 +828,7 @@ gScriptCmdTable:
 	.word ScrCmd_GiveTogepiEgg                          ; 776
 	.word ScrCmd_777                                    ; 777
 	.word ScrCmd_GiveSpikyEarPichu                                    ; 778
-	.word ScrCmd_779                                    ; 779
+	.word ScrCmd_RadioMusicIsPlaying                                    ; 779
 	.word ScrCmd_780                                    ; 780
 	.word ScrCmd_781                                    ; 781
 	.word ScrCmd_MartSell                                    ; 782

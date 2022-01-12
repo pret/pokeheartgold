@@ -13,11 +13,11 @@
 
 scr_seq_R11_001:
 	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _002A
-	goto_if_set FLAG_UNK_0F9, _0044
+	goto_if_set FLAG_SNORLAX_MEET, _0044
 	end
 
 _002A:
-	setflag FLAG_UNK_261
+	setflag FLAG_HIDE_ROUTE_11_SNORLAX
 	hide_person obj_R11_kabigon
 	hide_person obj_R11_gsbabyboy1_2
 	hide_person obj_R11_gsbabyboy1
@@ -31,7 +31,7 @@ _0044:
 scr_seq_R11_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_779 5, 32780
+	radio_music_is_playing 5, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _006A
 	npc_msg msg_0346_R11_00002
@@ -55,7 +55,7 @@ _006A:
 	compare VAR_TEMP_x4005, 4
 	call_if_eq _00BA
 	setflag FLAG_UNK_998
-	setflag FLAG_UNK_0F9
+	setflag FLAG_SNORLAX_MEET
 	releaseall
 	end
 

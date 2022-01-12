@@ -1,3 +1,5 @@
+#!/usr/bin/python3.10
+
 import collections
 import json
 import struct

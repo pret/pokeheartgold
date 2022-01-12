@@ -33,7 +33,7 @@ _004F:
 
 scr_seq_R12_004:
 	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _006D
-	goto_if_set FLAG_UNK_0F9, _0087
+	goto_if_set FLAG_SNORLAX_MEET, _0087
 	end
 
 _006D:
@@ -174,7 +174,7 @@ _0234:
 scr_seq_R12_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_779 5, 32780
+	radio_music_is_playing 5, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0268
 	npc_msg msg_0348_R12_00002
@@ -197,7 +197,7 @@ _0268:
 	scrcmd_683 VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 4
 	call_if_eq _02B4
-	setflag FLAG_UNK_0F9
+	setflag FLAG_SNORLAX_MEET
 	releaseall
 	end
 

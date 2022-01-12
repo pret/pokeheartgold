@@ -146,7 +146,7 @@ _0206:
 	return
 
 _020C:
-	goto_if_set FLAG_UNK_0F9, _021D
+	goto_if_set FLAG_SNORLAX_MEET, _021D
 	goto _0105
 
 _021D:

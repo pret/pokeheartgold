@@ -4363,7 +4363,7 @@
 	.short 778
 	.endm
 
-	.macro scrcmd_779 arg0, arg1
+	.macro radio_music_is_playing arg0, arg1
 	.short 779
 	.short \arg0
 	.short \arg1

@@ -61014,8 +61014,8 @@ _02202336:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_PhotoAlbumIsFull
 
-	thumb_func_start ScrCmd_779
-ScrCmd_779: ; 0x0220233C
+	thumb_func_start ScrCmd_RadioMusicIsPlaying
+ScrCmd_RadioMusicIsPlaying: ; 0x0220233C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -61043,7 +61043,7 @@ _02202372:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_779
+	thumb_func_end ScrCmd_RadioMusicIsPlaying
 
 	thumb_func_start ov01_02202378
 ov01_02202378: ; 0x02202378

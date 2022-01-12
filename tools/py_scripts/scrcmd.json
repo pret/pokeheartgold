@@ -4877,10 +4877,10 @@
       "args": []
     },
     {
-      "name": "scrcmd_779",
+      "name": "radio_music_is_playing",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {

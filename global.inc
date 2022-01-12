@@ -2459,7 +2459,7 @@
 .public ScrCmd_GiveTogepiEgg
 .public ScrCmd_777
 .public ScrCmd_GiveSpikyEarPichu
-.public ScrCmd_779
+.public ScrCmd_RadioMusicIsPlaying
 .public ScrCmd_780
 .public ScrCmd_781
 .public ScrCmd_MartSell
