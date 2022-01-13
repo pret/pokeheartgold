@@ -22908,7 +22908,7 @@ _02244BEC:
 	ldr r0, [sl, #0x820]
 	cmp r0, #0
 	ldmeqia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r8, r0
 	cmp r8, #0
 	mov sb, #0
@@ -25565,7 +25565,7 @@ ov45_022471A0: ; 0x022471A0
 _022471C8:
 	ldr r0, [sl, #0x820]
 	mov r8, #0
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r0, #0
 	addle sp, sp, #0x18
 	ldmleia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
@@ -25675,7 +25675,7 @@ _02247354:
 	add r8, r8, #1
 _02247358:
 	ldr r0, [sl, #0x820]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	cmp r8, r0
 	blt _022471F0
 	add sp, sp, #0x18
@@ -25707,7 +25707,7 @@ ov45_0224739C: ; 0x0224739C
 	bl __msl_assertion_failed
 _022473C0:
 	ldr r0, [sl, #0x820]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov fp, r0
 	cmp fp, #0
 	mov r8, #0
@@ -26279,7 +26279,7 @@ ov45_02247AE0: ; 0x02247AE0
 	bl __msl_assertion_failed
 _02247B04:
 	ldr r0, [sl, #0x810]
-	bl ov00_021FE6E4
+	bl ArrayLength
 	mov r7, r0
 	cmp r7, #0
 	mov r6, #0

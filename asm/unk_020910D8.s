@@ -1334,9 +1334,9 @@ sub_020919C4: ; 0x020919C4
 	add r4, r3, #0
 	bl sub_02090D80
 	str r0, [sp, #0xc]
-	ldr r0, _02091A30 ; =0x00000122
+	ldr r0, _02091A30 ; =0x00000122 ; NARC_msg_msg_0290_bin
 	mov r1, #0
-	bl GetECWordIndexByPair
+	bl GetECWordIndexByPair ; EARTH TONES
 	str r0, [sp, #8]
 	mov r7, #0
 	ldr r0, [sp, #4]
@@ -1379,7 +1379,7 @@ _02091A28:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02091A30: .word 0x00000122
+_02091A30: .word 0x00000122 ; NARC_msg_msg_0290_bin
 _02091A34: .word 0x0000189E
 	thumb_func_end sub_020919C4
 
@@ -1394,9 +1394,9 @@ sub_02091A38: ; 0x02091A38
 	add r4, r3, #0
 	bl sub_02090D80
 	str r0, [sp, #0x10]
-	ldr r0, _02091AB8 ; =0x0000011F
+	ldr r0, _02091AB8 ; =0x0000011F ; NARC_msg_msg_0289_bin
 	mov r1, #0
-	bl GetECWordIndexByPair
+	bl GetECWordIndexByPair ; BEAUTY
 	add r6, r0, #0
 	add r0, r6, #5
 	lsl r0, r0, #0x10
@@ -1450,7 +1450,7 @@ _02091AB0:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
-_02091AB8: .word 0x0000011F
+_02091AB8: .word 0x0000011F ; NARC_msg_msg_0289_bin
 _02091ABC: .word 0x0000189E
 	thumb_func_end sub_02091A38
 
