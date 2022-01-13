@@ -382,7 +382,7 @@ _021E5BAA:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
@@ -1029,7 +1029,7 @@ _021E60B2:
 	bl sub_0200DD54
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -1123,7 +1123,7 @@ _021E6174:
 	bl sub_0200DD54
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -6422,7 +6422,7 @@ _021E8BD2:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]

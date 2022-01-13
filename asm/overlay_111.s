@@ -1062,7 +1062,7 @@ ov111_021E60D4: ; 0x021E60D4
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

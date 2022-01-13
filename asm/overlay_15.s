@@ -261,7 +261,7 @@ _021F95B6:
 	strh r0, [r2]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -841,7 +841,7 @@ ov15_021F9A8C: ; 0x021F9A8C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1b
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -12642,7 +12642,7 @@ ov15_021FF850: ; 0x021FF850
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x20
 	mov r1, #6
 	bl sub_0202055C

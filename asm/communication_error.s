@@ -289,13 +289,13 @@ _0203AAA0:
 	bl String_dtor
 	bl GX_BothDispOn
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0
 	mov r1, #0x3f
 	mov r2, #3
-	bl SetBrightness
+	bl SetBlendBrightness
 	add r0, sp, #0x14
 	bl RemoveWindow
 	ldr r0, [sp, #0xc]

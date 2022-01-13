@@ -119,8 +119,8 @@ GX_DisableEngineBLayers: ; 0x02022CBC
 _02022CC4: .word _021D21FC
 	thumb_func_end GX_DisableEngineBLayers
 
-	thumb_func_start sub_02022CC8
-sub_02022CC8: ; 0x02022CC8
+	thumb_func_start GX_EngineBToggleLayers
+GX_EngineBToggleLayers: ; 0x02022CC8
 	cmp r1, #1
 	bne _02022CD6
 	ldr r1, _02022CF8 ; =_021D21FC
@@ -152,7 +152,7 @@ _02022CF6:
 _02022CF8: .word _021D21FC
 _02022CFC: .word 0x04001000
 _02022D00: .word 0xFFFFE0FF
-	thumb_func_end sub_02022CC8
+	thumb_func_end GX_EngineBToggleLayers
 
 	thumb_func_start sub_02022D04
 sub_02022D04: ; 0x02022D04

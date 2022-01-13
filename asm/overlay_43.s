@@ -1951,7 +1951,7 @@ ov43_0222AE2C: ; 0x0222AE2C
 	mov r0, #0
 	mov r1, #0x3d
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 _0222AE58:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}
@@ -4543,7 +4543,7 @@ _0222C2A0:
 	mov r0, #0
 	mov r1, #0x3d
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

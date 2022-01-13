@@ -2791,7 +2791,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #8]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -3098,10 +3098,10 @@ _021E70E2:
 	bl sub_02007B68
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -3134,13 +3134,13 @@ ov95_021E7208: ; 0x021E7208
 	bl ov95_021E7410
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -3177,16 +3177,16 @@ _021E7278:
 _021E728A:
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	bl sub_0200DCE8
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldrb r0, [r4, #0x19]
 	pop {r4, pc}
 _021E72AE:

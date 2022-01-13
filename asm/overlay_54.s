@@ -550,7 +550,7 @@ _021E5D62:
 	mov r0, #0
 	mov r1, #1
 	str r0, [r4, #8]
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	pop {r4, pc}
 _021E5D9C:
@@ -2059,7 +2059,7 @@ ov54_021E69D4: ; 0x021E69D4
 	bne _021E6A28
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x54
 	mul r0, r4
 	add r0, r5, r0
@@ -2113,7 +2113,7 @@ _021E6A28:
 	bl sub_020248F0
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6A60: .word ov54_021E6C80
@@ -2129,7 +2129,7 @@ ov54_021E6A64: ; 0x021E6A64
 	bne _021E6A78
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _021E6A78:
 	pop {r3, pc}
 	.balign 4, 0
@@ -2145,7 +2145,7 @@ ov54_021E6A7C: ; 0x021E6A7C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4]
 	bl sub_0200CF18
 	mov r1, #0x2d

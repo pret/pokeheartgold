@@ -1894,7 +1894,7 @@ _0206A536:
 	blo _0206A5BC
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldrh r3, [r4, #0x14]
 	ldr r0, [r4, #0xc]
 	mov r1, #2

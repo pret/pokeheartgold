@@ -4371,7 +4371,7 @@ _0225A742:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	str r0, [sp]
 	ldr r0, _0225A7BC ; =ov49_0225A854
@@ -6145,16 +6145,16 @@ ov49_0225B450: ; 0x0225B450
 	bl BG_SetMaskColor
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _0225B4DC:
@@ -6267,16 +6267,16 @@ _0225B586:
 	strb r0, [r4, #1]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldrb r0, [r4]
 	add sp, #0x50
 	add r0, r0, #1

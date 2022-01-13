@@ -4440,10 +4440,10 @@ _022293CA:
 	bl ov74_02228E98
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r1, #0xc6
 	lsl r1, r1, #6
 	ldr r0, [r4, #4]
@@ -4654,7 +4654,7 @@ ov74_0222947C: ; 0x0222947C
 	bl sub_0202DC2C
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #4]
 	add r1, r4, #0
 	bl ov74_02235DC4
@@ -10027,7 +10027,7 @@ ov74_0222C014: ; 0x0222C014
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov74_0222C014
@@ -11518,10 +11518,10 @@ _0222CCC0:
 	bl ov74_0222A7A0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	add r0, #0xda
 	ldrb r0, [r0]
@@ -29642,7 +29642,7 @@ _0223580C:
 _0223587E:
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 _02235886:
 	ldr r0, _02235898 ; =ov74_02235A74
 	mov r1, #0

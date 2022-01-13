@@ -662,7 +662,7 @@ _0225F560:
 	mvn r0, r0
 	mov r1, #0x21
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r3, [r4]
 	ldr r0, [r5, #0x10]
 	asr r3, r3, #0xc
@@ -799,7 +799,7 @@ _0225F650:
 	mov r0, #0
 	add r1, r0, #0
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r0, [r5, #0x10]
 	mov r2, #0
 	ldr r0, [r0, #8]

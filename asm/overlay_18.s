@@ -776,19 +776,19 @@ _021E5ED0:
 _021E5F1A:
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x58
 	pop {r3, r4, r5, pc}
 	nop
@@ -22525,7 +22525,7 @@ ov18_021F0FC8: ; 0x021F0FC8
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	bl ov18_021F12FC
 	add r0, r4, #0
@@ -38755,7 +38755,7 @@ ov18_021F8FA0: ; 0x021F8FA0
 	bl ov18_021F9518
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8FA0

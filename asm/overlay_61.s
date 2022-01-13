@@ -1436,7 +1436,7 @@ ov61_021E6508: ; 0x021E6508
 	str r0, [r4, #0xc]
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov61_021E6508

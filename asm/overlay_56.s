@@ -877,7 +877,7 @@ _021E62A2:
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r1, #4
 	ldr r0, _021E63B4 ; =0x04000050
 	mov r2, #8

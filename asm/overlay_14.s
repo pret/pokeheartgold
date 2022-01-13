@@ -26249,7 +26249,7 @@ ov14_021F297C: ; 0x021F297C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #0x34]
 	bl ov14_021F2AC8
 	ldr r0, [r4, #0x34]

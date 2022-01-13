@@ -203,19 +203,19 @@ _0225A12A:
 	str r0, [r2]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r7, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -4502,16 +4502,16 @@ ov27_0225C250: ; 0x0225C250
 	str r0, [r2]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	bl sub_02002B8C
 	add r0, r6, #0

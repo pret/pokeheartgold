@@ -403,7 +403,7 @@ _0201AF32:
 _0201AF3C:
 	mov r0, #1
 	add r1, r6, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldrb r3, [r4, #0x14]
 	ldrb r1, [r4, #0x12]
 	ldrb r0, [r4, #0x11]
@@ -448,7 +448,7 @@ _0201AF8A:
 _0201AF94:
 	mov r0, #2
 	add r1, r6, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldrb r2, [r4, #0x13]
 	ldrb r1, [r4, #0x12]
 	ldrb r0, [r4, #0x11]
@@ -493,7 +493,7 @@ _0201AFE2:
 _0201AFEC:
 	mov r0, #4
 	add r1, r6, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0201B002
@@ -587,7 +587,7 @@ _0201B0A8: .word 0x0400100C
 _0201B0AC:
 	mov r0, #8
 	add r1, r6, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _0201B0C2
@@ -2173,8 +2173,8 @@ _0201BC20: .word 0x0400100C
 _0201BC24: .word 0x0400100E
 	thumb_func_end sub_0201BB68
 
-	thumb_func_start sub_0201BC28
-sub_0201BC28: ; 0x0201BC28
+	thumb_func_start BG_ToggleLayer
+BG_ToggleLayer: ; 0x0201BC28
 	push {r3, lr}
 	cmp r0, #7
 	bhi _0201BC88
@@ -2211,23 +2211,23 @@ _0201BC62:
 	pop {r3, pc}
 _0201BC6A:
 	mov r0, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, pc}
 _0201BC72:
 	mov r0, #2
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, pc}
 _0201BC7A:
 	mov r0, #4
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, pc}
 _0201BC82:
 	mov r0, #8
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 _0201BC88:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201BC28
+	thumb_func_end BG_ToggleLayer
 
 	thumb_func_start sub_0201BC8C
 sub_0201BC8C: ; 0x0201BC8C

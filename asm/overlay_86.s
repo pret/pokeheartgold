@@ -661,7 +661,7 @@ ov86_021E5E54: ; 0x021E5E54
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -2615,7 +2615,7 @@ ov86_021E6E98: ; 0x021E6E98
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x79
 	bl sub_0200CF18
 	mov r1, #0x8b

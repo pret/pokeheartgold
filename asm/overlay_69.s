@@ -217,13 +217,13 @@ _021E5A9A:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	str r0, [r5]
 	b _021E6028
@@ -890,13 +890,13 @@ ov69_021E6080: ; 0x021E6080
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _021E60E8 ; =0x0000C2DC
 	ldr r0, [r4, r0]
 	bl sub_02023120

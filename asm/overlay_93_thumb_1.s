@@ -560,7 +560,7 @@ ov93_0225C768: ; 0x0225C768
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	bl sub_02002B50
 	mov r0, #0
@@ -1106,7 +1106,7 @@ ov93_0225CEA0: ; 0x0225CEA0
 	bne _0225CED8
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, _0225CF04 ; =0x00001454
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -1118,7 +1118,7 @@ _0225CED8:
 	bne _0225CEEE
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, _0225CF08 ; =0x00001455
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -1629,7 +1629,7 @@ _0225D31A:
 	blo _0225D2F4
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
 	nop

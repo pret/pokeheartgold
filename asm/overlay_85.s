@@ -2135,19 +2135,19 @@ ov85_021E6874: ; 0x021E6874
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _021E6924 ; =0x04000008
 	mov r4, #3
 	ldrh r1, [r0]
@@ -2218,19 +2218,19 @@ ov85_021E692C: ; 0x021E692C
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, pc}
 	thumb_func_end ov85_021E692C
 
@@ -7485,7 +7485,7 @@ _021E90F8:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

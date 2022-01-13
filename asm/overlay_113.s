@@ -2105,7 +2105,7 @@ ov113_021E6988: ; 0x021E6988
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov113_021E6988
 
@@ -2115,7 +2115,7 @@ ov113_021E69A8: ; 0x021E69A8
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #0
 	bl GX_EngineAToggleLayers

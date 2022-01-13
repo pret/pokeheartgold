@@ -85,9 +85,9 @@ _021E5916:
 	ldr r0, [r4]
 	bl ov73_021E5D20
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #1
@@ -1133,7 +1133,7 @@ _021E6232:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5381,7 +5381,7 @@ _021E832A:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	bl sub_0203A880
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
@@ -5592,10 +5592,10 @@ ov73_021E84D0: ; 0x021E84D0
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
 	bl sub_02039418
@@ -5786,7 +5786,7 @@ ov73_021E8628: ; 0x021E8628
 	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #4
 	bl BgClearTilemapBufferAndCommit
@@ -5807,7 +5807,7 @@ ov73_021E8628: ; 0x021E8628
 	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0

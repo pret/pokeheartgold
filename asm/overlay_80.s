@@ -8162,7 +8162,7 @@ _0222DA54:
 	str r0, [r5, #0x10]
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
@@ -8341,7 +8341,7 @@ _0222DBBC:
 	str r0, [r5, #0x10]
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
@@ -30611,7 +30611,7 @@ _022386D4:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	mov r1, #3
 	bl ov80_0222ACA0
@@ -30700,7 +30700,7 @@ ov80_0223885C: ; 0x0223885C
 	bl FreeBgTilemapBuffer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r4]
 	mov r1, #4
 	bl FreeBgTilemapBuffer
@@ -34310,7 +34310,7 @@ _0223A534:
 	mvn r0, r0
 	mov r1, #0x2c
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r0, [r5, #0x7c]
 	mov r1, #1
 	bl sub_020137C0

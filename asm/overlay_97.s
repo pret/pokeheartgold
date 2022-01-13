@@ -1250,10 +1250,10 @@ ov97_0221EEA4: ; 0x0221EEA4
 	bl ov97_0221F294
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov97_0221EEA4
@@ -1272,19 +1272,19 @@ ov97_0221EFD0: ; 0x0221EFD0
 	bl ov97_0221F428
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 _0221EFFA:
 	bl ov97_0221F74C
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov97_0221EFD0
 
@@ -2250,7 +2250,7 @@ ov97_0221F7DC: ; 0x0221F7DC
 	bl sub_02009FC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r7, #0x13
 	mov r6, #0
 	add r4, r5, #0

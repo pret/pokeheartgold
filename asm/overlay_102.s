@@ -4174,7 +4174,7 @@ ov102_021E94CC: ; 0x021E94CC
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	bl GX_DispOn
 	add r0, r5, #0
 	bl NARC_dtor
@@ -9044,7 +9044,7 @@ ov102_021EBB6C: ; 0x021EBB6C
 	beq _021EBB84
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	pop {r3, pc}
 _021EBB84:
@@ -9066,7 +9066,7 @@ ov102_021EBB88: ; 0x021EBB88
 	bl G2x_SetBlendAlpha_
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x7c
 	str r0, [sp]
 	mov r0, #0xc
@@ -9295,7 +9295,7 @@ ov102_021EBD00: ; 0x021EBD00
 	bl ov102_021EBD68
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -9418,7 +9418,7 @@ ov102_021EBE3C: ; 0x021EBE3C
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #0
 	mov r3, #0
 	add r0, #0x80
@@ -9496,7 +9496,7 @@ ov102_021EBEC8: ; 0x021EBEC8
 	beq _021EBEEE
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	pop {r3, pc}
 _021EBEEA:

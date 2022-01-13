@@ -2438,7 +2438,7 @@ ov71_02247A10: ; 0x02247A10
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	bl ov71_02247FF8
 	ldr r0, _02247C30 ; =0x04000050
@@ -3985,13 +3985,13 @@ _0224880A:
 	bl sub_0201BC8C
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	add r0, #0xc0
 	mov r1, #3
@@ -4397,10 +4397,10 @@ ov71_02248B60: ; 0x02248B60
 	bl sub_0201BC8C
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r2, _02248BB8 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -5963,7 +5963,7 @@ _022496F0:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7052,7 +7052,7 @@ ov71_02249E6C: ; 0x02249E6C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -7471,7 +7471,7 @@ _0224A2F8:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	bl sub_0203A880
 	mov r0, #1
 	mov r1, #0x38
@@ -8705,13 +8705,13 @@ _0224AD52:
 	bl sub_0201BC8C
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -9498,7 +9498,7 @@ ov71_0224B280: ; 0x0224B280
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0224B44C ; =0x04000050

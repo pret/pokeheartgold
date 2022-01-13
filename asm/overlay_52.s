@@ -1026,7 +1026,7 @@ ov52_021E888C: ; 0x021E888C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x5c
 	pop {r3, r4, pc}
 	.balign 4, 0

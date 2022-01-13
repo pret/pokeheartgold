@@ -744,7 +744,7 @@ _021E5ECA:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -787,7 +787,7 @@ _021E5ECA:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	neg r0, r6
 	lsl r0, r0, #0x10
 	ldr r7, _021E5F70 ; =ov99_021E9690
@@ -3948,7 +3948,7 @@ _021E77A6:
 	lsl r1, r1, #0x18
 	mov r0, #4
 	lsr r1, r1, #0x18
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E77D4: .word 0x000001ED
@@ -3978,7 +3978,7 @@ _021E77F4:
 	blt _021E77F4
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E7810: .word 0x00000414

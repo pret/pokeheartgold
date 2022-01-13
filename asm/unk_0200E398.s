@@ -2432,7 +2432,7 @@ _0200F694:
 	bl sub_0202457C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop

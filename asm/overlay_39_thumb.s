@@ -2488,10 +2488,10 @@ ov39_02228140: ; 0x02228140
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _02228300 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]

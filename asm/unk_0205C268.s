@@ -1704,7 +1704,7 @@ _0205CCD2:
 	bl sub_0205B984
 	cmp r0, #1
 	bne _0205CCE4
-	mov r0, #0x19
+	mov r0, #SEQ_SE_DP_FOOT3_0>>6
 	lsl r0, r0, #6
 	bl PlaySE
 _0205CCE4:
@@ -1712,7 +1712,7 @@ _0205CCE4:
 	bl sub_0205B7A4
 	cmp r0, #1
 	bne _0205CCF4
-	ldr r0, _0205CD60 ; =0x00000641
+	ldr r0, _0205CD60 ; =SEQ_SE_DP_FOOT3_1
 	bl PlaySE
 _0205CCF4:
 	add r0, r5, #0
@@ -1721,7 +1721,7 @@ _0205CCF4:
 	bl sub_0205B8AC
 	cmp r0, #1
 	bne _0205CD0A
-	ldr r0, _0205CD64 ; =0x00000654
+	ldr r0, _0205CD64 ; =SEQ_SE_DP_MARSH_WALK
 	bl PlaySE
 _0205CD0A:
 	add r0, r4, #0
@@ -1742,7 +1742,7 @@ _0205CD0A:
 	cmp r0, #1
 	bne _0205CD3C
 _0205CD36:
-	ldr r0, _0205CD68 ; =0x00000652
+	ldr r0, _0205CD68 ; =SEQ_SE_DP_KUSA
 	bl PlaySE
 _0205CD3C:
 	add r0, r5, #0
@@ -1754,7 +1754,7 @@ _0205CD3C:
 	cmp r0, #1
 	bne _0205CD56
 _0205CD50:
-	ldr r0, _0205CD6C ; =0x00000877
+	ldr r0, _0205CD6C ; =SEQ_SE_GS_KUSA2
 	bl PlaySE
 _0205CD56:
 	add r0, r4, #0
@@ -1763,10 +1763,10 @@ _0205CD56:
 _0205CD5E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0205CD60: .word 0x00000641
-_0205CD64: .word 0x00000654
-_0205CD68: .word 0x00000652
-_0205CD6C: .word 0x00000877
+_0205CD60: .word SEQ_SE_DP_FOOT3_1
+_0205CD64: .word SEQ_SE_DP_MARSH_WALK
+_0205CD68: .word SEQ_SE_DP_KUSA
+_0205CD6C: .word SEQ_SE_GS_KUSA2
 	thumb_func_end sub_0205CC94
 
 	thumb_func_start sub_0205CD70
@@ -2759,7 +2759,7 @@ _0205D4DE:
 	bl ov04_022566EC
 	b _0205D536
 _0205D52E:
-	mov r0, #6
+	mov r0, #SEQ_SE_DP_WALL_HIT>>8
 	lsl r0, r0, #8
 	bl PlaySE
 _0205D536:
@@ -2824,7 +2824,7 @@ _0205D5B4:
 	mov r0, #8
 	tst r0, r4
 	bne _0205D5C6
-	mov r0, #6
+	mov r0, #SEQ_SE_DP_WALL_HIT>>8
 	lsl r0, r0, #8
 	bl PlaySE
 _0205D5C6:
@@ -3216,7 +3216,7 @@ _0205D898:
 	mov r0, #8
 	tst r0, r4
 	bne _0205D8B0
-	mov r0, #6
+	mov r0, #SEQ_SE_DP_WALL_HIT>>8
 	lsl r0, r0, #8
 	bl PlaySE
 _0205D8B0:
@@ -3257,7 +3257,7 @@ _0205D8F2:
 	mov r0, #8
 	tst r0, r4
 	bne _0205D90E
-	mov r0, #6
+	mov r0, #SEQ_SE_DP_WALL_HIT>>8
 	lsl r0, r0, #8
 	bl PlaySE
 _0205D90E:
@@ -3357,7 +3357,7 @@ _0205D9C4:
 	mov r0, #8
 	tst r0, r4
 	bne _0205D9E4
-	mov r0, #6
+	mov r0, #SEQ_SE_DP_WALL_HIT>>8
 	lsl r0, r0, #8
 	bl PlaySE
 _0205D9E4:
@@ -4109,7 +4109,7 @@ _0205DF60:
 	mov r4, #0x1c
 	tst r0, r1
 	bne _0205DFBE
-	mov r0, #6
+	mov r0, #SEQ_SE_DP_WALL_HIT>>8
 	lsl r0, r0, #8
 	bl PlaySE
 	b _0205DFBE
@@ -14841,13 +14841,13 @@ _02062992:
 	bl sub_0205F684
 	cmp r0, #0
 	bne _020629C2
-	ldr r0, _020629C8 ; =0x0000060A
+	ldr r0, _020629C8 ; =SEQ_SE_DP_DANSA
 	bl PlaySE
 _020629C2:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020629C4: .word 0x00010004
-_020629C8: .word 0x0000060A
+_020629C8: .word SEQ_SE_DP_DANSA
 	thumb_func_end sub_02062958
 
 	thumb_func_start sub_020629CC
@@ -14952,7 +14952,7 @@ _02062A68:
 	bl sub_0205F684
 	cmp r0, #0
 	bne _02062AAA
-	ldr r0, _02062AB8 ; =0x00000646
+	ldr r0, _02062AB8 ; =SEQ_SE_DP_SUTYA2
 	bl PlaySE
 _02062AAA:
 	mov r0, #1
@@ -14961,7 +14961,7 @@ _02062AAA:
 	.balign 4, 0
 _02062AB0: .word _0210FACC
 _02062AB4: .word 0x00020028
-_02062AB8: .word 0x00000646
+_02062AB8: .word SEQ_SE_DP_SUTYA2
 	thumb_func_end sub_020629CC
 
 	thumb_func_start sub_02062ABC
@@ -16289,14 +16289,14 @@ _020633B2:
 	bl sub_0205F684
 	cmp r0, #0
 	bne _02063416
-	ldr r0, _02063420 ; =0x0000060A
+	ldr r0, _02063420 ; =SEQ_SE_DP_DANSA
 	bl PlaySE
 _02063416:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0206341C: .word 0x00010004
-_02063420: .word 0x0000060A
+_02063420: .word SEQ_SE_DP_DANSA
 	thumb_func_end sub_020632B0
 
 	thumb_func_start sub_02063424
@@ -16559,7 +16559,7 @@ _02063624:
 	bl sub_0205F684
 	cmp r0, #0
 	bne _0206366E
-	ldr r0, _02063680 ; =0x00000646
+	ldr r0, _02063680 ; =SEQ_SE_DP_SUTYA2
 	bl PlaySE
 _0206366E:
 	ldr r0, [r4, #8]
@@ -16569,7 +16569,7 @@ _0206366E:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0206367C: .word 0x00020008
-_02063680: .word 0x00000646
+_02063680: .word SEQ_SE_DP_SUTYA2
 	thumb_func_end sub_02063424
 
 	thumb_func_start sub_02063684
@@ -29300,6 +29300,7 @@ _020FD2D8:
 	.word _020FDF78
 	.word _020FE070
 	.word _020FDF8C
+	; File boundary
 _020FD49C:
 	.word -1
 	.word  1
@@ -29325,6 +29326,7 @@ _020FD4DC:
 	.word 0
 	.word 3
 	.word 2
+	; File boundary
 _020FD4EC:
 	.word sub_02061C40
 	.word sub_02061D50
@@ -30197,6 +30199,7 @@ _020FE164:
 	.word sub_02063B04
 	.word sub_02063B04
 	.word sub_02063B04
+	; File boundary?
 _020FE194:
 	.word sub_020643B8
 	.word sub_020643E4
@@ -30221,6 +30224,7 @@ _020FE1A4:
 	.word sub_020648A0
 	.word sub_020648C8
 	.word sub_020648E4
+	; File boundary?
 _020FE1EC:
 	.word 0
 	.word ov04_02254D84
@@ -30338,7 +30342,7 @@ _020FE454:
 
 	.balign 4, 0
 _020FE4A4:
-	.byte 0xF2, 0x06, 0x7C, 0xAD
+	.short 0x06F2, 0xAD7C
 _020FE4A8:
 	.short 0x6208
 	.short 0xF229
@@ -30444,9 +30448,12 @@ sRoamerAdjacencyTable:
 	.balign 4, 0
 _020FE79C:
 	.word ov71_02246960, ov71_02246BB8, ov71_02246B58, SDK_OVERLAY_OVY_71_ID
+	; Movement data
 _020FE7AC:
-	.byte 0x49, 0x00, 0x01, 0x00
-	.byte 0x21, 0x00, 0x01, 0x00, 0x4A, 0x00, 0x01, 0x00, 0xFE, 0x00, 0x00, 0x00
+	.short 73, 1
+	.short 33, 1
+	.short 74, 1
+	.short 254, 0
 _020FE7BC:
 	.word sub_02067F9C, sub_02067F68
 	.word sub_0206809C, sub_0206800C

@@ -1,3 +1,5 @@
+#include "constants/sndseq.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public ov62_021E68CC
@@ -140,7 +142,7 @@ _021E5A20:
 	mov r0, #0
 	bl sub_02004AD8
 	mov r0, #1
-	mov r1, #0x3f
+	mov r1, #SEQ_GS_POKEMON_THEME>>4
 	lsl r1, r1, #4
 	add r2, r0, #0
 	bl sub_02004EC4
@@ -202,9 +204,9 @@ _021E5A94:
 	mov r1, #0x3c
 	bl GF_SndStartFadeOutBGM
 #ifdef HEARTGOLD
-	mov r0, #0xfa ; HO-OH
+	mov r0, #SPECIES_HO_OH
 #else
-	mov r0, #0xf9 ; LUGIA
+	mov r0, #SPECIES_LUGIA
 #endif
 	mov r1, #0
 	bl PlayCry
@@ -527,9 +529,9 @@ ov60_021E5D44: ; 0x021E5D44
 	cmp r0, #0
 	beq _021E5D66
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0xbd
 	mov r1, #0
 	lsl r0, r0, #2
@@ -1055,16 +1057,16 @@ ov60_021E6074: ; 0x021E6074
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -1101,16 +1103,16 @@ ov60_021E61C8: ; 0x021E61C8
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #4]
 	mov r1, #3
 	bl FreeBgTilemapBuffer
@@ -1387,28 +1389,28 @@ _021E642E:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #2
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r0, #0x1f
 	str r0, [sp]
 	ldr r0, _021E653C ; =0x04001050
@@ -2386,7 +2388,7 @@ _021E6C5A:
 	mov r0, #0x55
 	lsl r0, r0, #2
 	str r1, [r4, r0]
-	mov r1, #0xfb
+	mov r1, #SEQ_GS_TITLE>>2
 	mov r0, #2
 	lsl r1, r1, #2
 	bl sub_02004EC4
@@ -3860,7 +3862,7 @@ _021E7752:
 	cmp r5, #0
 	beq _021E7778
 	add r0, r7, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 _021E7778:
 	ldr r0, _021E7798 ; =ov60_021E77C0
 	add r1, r4, #0
@@ -3970,7 +3972,7 @@ _021E783C:
 	and r1, r2
 	str r1, [r3]
 _021E7844:
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 _021E7848:
 	mov r0, #0
 	add r1, r0, #0
@@ -4298,7 +4300,7 @@ _021E7A9A:
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	bl ov60_021E7958
 	b _021E7C4C
@@ -4341,10 +4343,10 @@ _021E7B02:
 	mov r0, #1
 	strb r0, [r1]
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	mov r2, #3
@@ -4375,7 +4377,7 @@ _021E7B4C:
 	bl GX_EngineAToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r7, #0x18]
 	mov r1, #1
 	bl sub_02024830
@@ -4883,7 +4885,7 @@ ov60_021E7E0C: ; 0x021E7E0C
 	bl GX_EngineAToggleLayers
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl OS_WaitIrq
@@ -4902,9 +4904,9 @@ ov60_021E7F74: ; 0x021E7F74
 	mov r1, #0
 	bl BG_SetMaskColor
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	pop {r3, pc}
 	thumb_func_end ov60_021E7F74
 
@@ -6046,7 +6048,7 @@ _021E88E0:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -6537,7 +6539,7 @@ ov60_021E8D04: ; 0x021E8D04
 	bl ov60_021E6F28
 	mov r0, #6
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -6777,7 +6779,7 @@ _021E8F0E:
 _021E8F10:
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r3, [r5, #0x34]
 	add r0, r7, #0
 	add r2, r3, #0
@@ -6853,7 +6855,7 @@ _021E8F6C:
 	bl ov60_021E7074
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -6894,7 +6896,7 @@ _021E8FD2:
 	bl ov60_021E7074
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -6938,7 +6940,7 @@ _021E902C:
 	bl ov60_021E7074
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -7092,7 +7094,7 @@ _021E918E:
 	beq _021E9294
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r5, _021E91E0 ; =_021EB4D0
 	b _021E91E4
 	.balign 4, 0
@@ -7201,7 +7203,7 @@ _021E9294:
 _021E9296:
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #5
 	ldr r2, _021E9494 ; =_021EB528
 	add r3, sp, #0x6c
@@ -7284,10 +7286,10 @@ _021E92A6:
 	bl sub_0201BC8C
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021E9476
@@ -7351,7 +7353,7 @@ _021E93D8:
 	beq _021E9476
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r3, _021E949C ; =_021EB39C
 	add r2, sp, #0x14
 	mov r5, #5
@@ -7888,7 +7890,7 @@ _021E984E:
 	blo _021E984E
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8743,7 +8745,7 @@ _021E9F3C:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r6, #0
 	bl ov60_021E7958
 	b _021EA1FA
@@ -8855,7 +8857,7 @@ _021EA05A:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -9000,7 +9002,7 @@ _021EA1B6:
 	b _021EA1FA
 _021EA1D4:
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	ldr r0, [r4, #0x4c]
 	mov r1, #1
 	bl ov60_021E6F28
@@ -9364,7 +9366,7 @@ ov60_021EA4AC: ; 0x021EA4AC
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -9558,7 +9560,7 @@ _021EA664:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x54
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9958,10 +9960,10 @@ ov60_021EA9A8: ; 0x021EA9A8
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	b _021EAA00
 _021EA9DA:
 	ldr r0, _021EAA10 ; =gMain + 0x60
@@ -9975,10 +9977,10 @@ _021EA9DA:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 _021EAA00:
 	bl GX_SwapDisplay
 	ldr r0, [r4, #0x6c]

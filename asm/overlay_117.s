@@ -748,13 +748,13 @@ _0225F560:
 	bl sub_0201BB68
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -870,7 +870,7 @@ _0225F560:
 _0225F72E:
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x6d
 	mov r1, #0xc
 	lsl r0, r0, #2
@@ -907,7 +907,7 @@ _0225F76A:
 	str r0, [r2]
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x5d
 	add r3, r7, #0
 	lsl r0, r0, #2
@@ -1090,7 +1090,7 @@ _0225F8F8:
 	bl BG_SetMaskColor
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1102,7 +1102,7 @@ _0225F90C:
 	ble _0225F91E
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _0225F91E:
 	mov r3, #0x6a
 	lsl r3, r3, #2
@@ -1162,7 +1162,7 @@ _0225F970:
 	str r1, [r4, r0]
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1189,7 +1189,7 @@ _0225F99E:
 _0225F9C4:
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _0225F9CC:
 	mov r1, #0x6a
 	lsl r1, r1, #2

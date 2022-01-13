@@ -1296,7 +1296,7 @@ ov90_022590CC: ; 0x022590CC
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	nop

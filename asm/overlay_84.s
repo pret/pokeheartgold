@@ -1517,7 +1517,7 @@ ov84_0223E958: ; 0x0223E958
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #3
 	bl FreeBgTilemapBuffer
@@ -2900,7 +2900,7 @@ _0223F34E:
 	blt _0223F34E
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

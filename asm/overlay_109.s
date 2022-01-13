@@ -2071,7 +2071,7 @@ ov109_021E6898: ; 0x021E6898
 	lsl r1, r1, #0x1c
 	mov r0, #2
 	lsr r1, r1, #0x1f
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _021E68AE:
 	ldrb r1, [r4, #0x18]
 	mov r0, #4

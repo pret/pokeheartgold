@@ -1665,7 +1665,7 @@ _02238592:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	bl sub_0203A880
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
@@ -1978,10 +1978,10 @@ ov72_0223886C: ; 0x0223886C
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0]
@@ -2174,7 +2174,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #4
 	bl BgClearTilemapBufferAndCommit
@@ -2195,7 +2195,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r5, _02238AE8 ; =ov72_0223B3F4
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -2213,7 +2213,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #6
 	bl BgClearTilemapBufferAndCommit
@@ -5797,7 +5797,7 @@ ov72_0223A5E0: ; 0x0223A5E0
 	bl ov72_0223AD20
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #4
 	str r0, [sp]
 	mov r1, #1
@@ -7170,12 +7170,12 @@ _0223B09A:
 	add r0, #0x2f
 	ldrb r0, [r0]
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #0
 	add r0, #0x32
 	ldrb r0, [r0]
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #0
 	bl ov72_0223B2C0
 	ldr r0, [r4, #4]
@@ -7298,11 +7298,11 @@ _0223B178:
 	add r0, #0x2f
 	ldrb r0, [r0]
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, #0x32
 	ldrb r0, [r4]
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

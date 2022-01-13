@@ -399,12 +399,12 @@ _020528F2:
 	mvn r0, r0
 	mov r1, #0x37
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r0, #0xf
 	mvn r0, r0
 	mov r1, #0x3f
 	mov r2, #2
-	bl SetBrightness
+	bl SetBlendBrightness
 	add r0, r5, #0
 	add r1, r6, #0
 	bl _draw_scurry_message_screen
@@ -423,7 +423,7 @@ _02052928:
 	mov r0, #0
 	mov r1, #0x3f
 	mov r2, #3
-	bl SetBrightness
+	bl SetBlendBrightness
 	bl sub_0203BA70
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]

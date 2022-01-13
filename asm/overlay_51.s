@@ -1358,7 +1358,7 @@ ov51_021E6644: ; 0x021E6644
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #5
@@ -3882,7 +3882,7 @@ _021E7AB2:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x6c
 	pop {r4, r5, r6, r7, pc}
 	nop

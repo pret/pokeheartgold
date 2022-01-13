@@ -339,7 +339,7 @@ _021E5B68:
 	bl ov87_021E7048
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #3
 	strh r0, [r6, #0x12]
 	mov r0, #0x56
@@ -475,7 +475,7 @@ _021E5C80:
 	bl ClearFrameAndWindow2
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	strb r0, [r5, #8]
 	b _021E5CDE
@@ -698,7 +698,7 @@ _021E5E20:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0xff
 	mvn r0, r0
 	strh r0, [r4, #0x10]
@@ -1039,7 +1039,7 @@ _021E613E:
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	strb r0, [r4, #8]
 	b _021E64F4
@@ -1488,7 +1488,7 @@ _021E650C:
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0xcf
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2301,7 +2301,7 @@ ov87_021E6B38: ; 0x021E6B38
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r4, pc}
 	thumb_func_end ov87_021E6B38
 
@@ -2325,7 +2325,7 @@ ov87_021E6BB8: ; 0x021E6BB8
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -2540,7 +2540,7 @@ ov87_021E6C60: ; 0x021E6C60
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0xb8
 	pop {r3, r4, r5, pc}
 	nop
@@ -4462,7 +4462,7 @@ _021E7B96:
 	blt _021E7B96
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

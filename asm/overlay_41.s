@@ -1256,7 +1256,7 @@ ov41_02246778: ; 0x02246778
 	bl GX_EngineAToggleLayers
 	mov r0, #0x13
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

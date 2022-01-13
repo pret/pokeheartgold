@@ -552,7 +552,7 @@ ov62_021E5CF4: ; 0x021E5CF4
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	nop
 _021E5D48: .word ov62_021E66B0

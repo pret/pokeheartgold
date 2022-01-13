@@ -666,7 +666,7 @@ _02259DD4:
 _02259DE0:
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02259DEC: .word ov19_0225A040
@@ -693,7 +693,7 @@ _02259E00:
 	bl ov01_021E8194
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov19_02259DF4
 

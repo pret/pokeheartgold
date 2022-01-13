@@ -2606,7 +2606,7 @@
 .public SealOnCapsuleGetY
 .public SetBothScreensModesAndDisable
 .public SetBoxMonData
-.public SetBrightness
+.public SetBlendBrightness
 .public SetDexBanksByGiratinaForme
 .public SetEggStats
 .public SetFlagInArray
@@ -26547,12 +26547,12 @@
 .public sub_0200FB5C
 .public sub_0200FB70
 .public sub_0200FBDC
-.public sub_0200FBE8
+.public SetMasterBrightnessNeutral
 .public sub_0200FBF4
 .public sub_0200FC20
 .public sub_0200FC60
 .public sub_0200FCDC
-.public sub_0200FCFC
+.public SetMasterBrightness
 .public sub_0200FF88
 .public sub_0200FFB4
 .public sub_0201010C
@@ -26852,7 +26852,7 @@
 .public sub_0201AD0C
 .public sub_0201B1F4
 .public sub_0201BB68
-.public sub_0201BC28
+.public BG_ToggleLayer
 .public sub_0201BC8C
 .public sub_0201BDF4
 .public sub_0201BE00
@@ -26993,7 +26993,7 @@
 .public sub_020227D4
 .public sub_02022808
 .public sub_02022C9C
-.public sub_02022CC8
+.public GX_EngineBToggleLayers
 .public sub_02022D04
 .public sub_02022D68
 .public sub_02023068
@@ -29762,3 +29762,6 @@
 .public NNS_SndArcPlayerStartSeqArc
 .public NNS_SndPlayerSetVolume
 .public WM_GetSharedDataAddress
+.public sub_02090D80
+.public sub_02090D84
+.public sub_02090D7C

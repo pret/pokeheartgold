@@ -1898,7 +1898,7 @@ _0221CADE:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
@@ -3380,7 +3380,7 @@ ov07_0221D5B0: ; 0x0221D5B0
 	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0
 	str r0, [sp]
 	add r0, r5, #0
@@ -3492,7 +3492,7 @@ _0221D696:
 	bl sub_0201BC8C
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r5, #0
 	bl ov07_0221FAE8
 	add r1, r0, #0
@@ -4703,7 +4703,7 @@ _0221DFC8:
 	bl sub_0201BB68
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldrb r0, [r5, #5]
 	add r0, r0, #1
 	strb r0, [r5, #5]
@@ -4824,7 +4824,7 @@ _0221E0CE: ; jump table
 _0221E0D8:
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldrb r0, [r4, #5]
 	add r0, r0, #1
 	strb r0, [r4, #5]
@@ -5006,7 +5006,7 @@ _0221E250:
 	bl ov12_0223C340
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r4, #0x48]
 	mov r1, #2
 	bl ov07_0221EC7C
@@ -5288,7 +5288,7 @@ _0221E478:
 	bl ov07_0221E664
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r4, #0x48]
 	bl ov07_0221BFC0
 	cmp r0, #0
@@ -5367,7 +5367,7 @@ _0221E504:
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldrb r0, [r4, #5]
 	add r0, r0, #1
 	strb r0, [r4, #5]
@@ -6262,7 +6262,7 @@ ov07_0221EBA4: ; 0x0221EBA4
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r5, #0
 	bl ov07_0221BFC0
 	cmp r0, #1
@@ -6757,7 +6757,7 @@ ov07_0221EF54: ; 0x0221EF54
 	add r0, r0, #4
 	str r0, [r5, #0x18]
 	mov r0, #3
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r2, #0
@@ -6830,7 +6830,7 @@ _0221EFEC:
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r7, #0
 	bl FreeToHeap
 	add sp, #0x10
@@ -16225,7 +16225,7 @@ _022233F8:
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldrb r0, [r4, #0x1c]
 	add r0, r0, #1
 	strb r0, [r4, #0x1c]
@@ -16315,7 +16315,7 @@ _02223494:
 _022234A2:
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r4, #0x20]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -16494,7 +16494,7 @@ _02223604:
 	strh r0, [r4, #0x18]
 	mov r0, #2
 	str r1, [r4, #4]
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r5, #0
 	mov r1, #0
 	bl ov07_0221C4A8
@@ -16620,7 +16620,7 @@ _02223710:
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldrb r0, [r4, #0x1c]
 	add r0, r0, #1
 	strb r0, [r4, #0x1c]
@@ -16708,7 +16708,7 @@ _022237A8:
 _022237B6:
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r4, #0x20]
 	add r1, r5, #0
 	bl ov07_0221C448
@@ -16900,7 +16900,7 @@ _0222392C:
 	strh r0, [r4, #0x18]
 	mov r0, #2
 	str r1, [r4, #4]
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r5, #0
 	mov r1, #0
 	bl ov07_0221C4A8
@@ -30671,7 +30671,7 @@ ov07_0222A838: ; 0x0222A838
 	bl ov07_0221EB98
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r4, #8]
 	ldr r1, _0222A8D4 ; =ov07_0222A710
 	add r2, r4, #0

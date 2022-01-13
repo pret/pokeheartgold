@@ -459,7 +459,7 @@ ov68_021E5CD8: ; 0x021E5CD8
 	add r4, r0, #0
 	mov r0, #0x1d
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -2680,7 +2680,7 @@ ov68_021E6DDC: ; 0x021E6DDC
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop

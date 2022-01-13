@@ -971,10 +971,10 @@ _021E6040:
 	blt _021E6040
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

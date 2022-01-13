@@ -1542,7 +1542,7 @@ _02010B72:
 _02010B7C:
 	ldr r0, [r5, #0x10]
 	add r1, r7, #0
-	bl sub_0200FCFC
+	bl SetMasterBrightness
 	ldr r0, [r5, #4]
 	add r1, r6, #0
 	str r0, [r4]
@@ -1639,7 +1639,7 @@ _02010C22:
 	lsr r1, r1, #0x19
 	add r1, r2, r1
 	asr r1, r1, #7
-	bl sub_0200FCFC
+	bl SetMasterBrightness
 _02010C32:
 	add r0, r4, #0
 	pop {r4, pc}

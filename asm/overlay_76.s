@@ -1163,7 +1163,7 @@ _021E6280:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1352,7 +1352,7 @@ _021E63BE:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x60
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2025,7 +2025,7 @@ ov76_021E6904: ; 0x021E6904
 	bl sub_02003030
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -2086,7 +2086,7 @@ _021E6956:
 	str r7, [r5, #8]
 	mov r0, #2
 	str r4, [r5, #0x10]
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E69B4: .word 0x04001000
@@ -2141,11 +2141,11 @@ _021E69F6:
 	bne _021E6A14
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	b _021E6A1A
 _021E6A14:
 	mov r0, #2
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 _021E6A1A:
 	add r0, r6, #0
 	mov r1, #0

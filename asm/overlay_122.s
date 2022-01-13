@@ -4204,7 +4204,7 @@ _021E795E:
 	bl sub_0201C1F4
 	ldrb r0, [r4]
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -5237,7 +5237,7 @@ _021E80A4:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	bl sub_0200FBDC
 	mov r0, #1

@@ -137,7 +137,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl sub_0208F658
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -321,28 +321,28 @@ ov65_0221C08C: ; 0x0221C08C
 	bl ov65_0221FB90
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1243,13 +1243,13 @@ _0221C890:
 	bl sub_0200B484
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1298,16 +1298,16 @@ _0221C90C:
 	bl sub_0200B484
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
 	str r0, [r4, #0x58]
@@ -2137,25 +2137,25 @@ _0221CFFC:
 	blt _0221CFFC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	add r3, r0, #0

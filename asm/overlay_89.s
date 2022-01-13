@@ -257,10 +257,10 @@ _02258A4A:
 	bl GX_EngineAToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _02258AF4 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
@@ -271,7 +271,7 @@ _02258A4A:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -3878,7 +3878,7 @@ _0225A78C:
 	add r1, r1, #2
 	ldrsh r1, [r6, r1]
 	mov r0, #0
-	bl sub_0200FCFC
+	bl SetMasterBrightness
 	mov r0, #0x1d
 	mov r1, #0
 	lsl r0, r0, #6

@@ -515,7 +515,7 @@ _02258C12:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop

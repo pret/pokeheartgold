@@ -296,16 +296,16 @@ ov57_02237B20: ; 0x02237B20
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -601,7 +601,7 @@ _02237DBE:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0xfc
 	pop {r4, r5, pc}
 	nop
@@ -4455,7 +4455,7 @@ ov57_02239B94: ; 0x02239B94
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, pc}
 	thumb_func_end ov57_02239B94
 
@@ -5865,7 +5865,7 @@ _0223A708:
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #7
 	mov r1, #1
 	bl sub_0201BB68
@@ -5993,7 +5993,7 @@ _0223A820:
 	bl sub_0201BB68
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #0
 	bl ov57_0223A034
@@ -6128,7 +6128,7 @@ _0223A930:
 	bl ov57_0223B948
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _0223AB44 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1
@@ -6216,7 +6216,7 @@ _0223A988:
 _0223AA20:
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _0223AB44 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1

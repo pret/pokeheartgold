@@ -291,14 +291,14 @@ sub_0200FBDC: ; 0x0200FBDC
 _0200FBE4: .word sub_020131F4
 	thumb_func_end sub_0200FBDC
 
-	thumb_func_start sub_0200FBE8
-sub_0200FBE8: ; 0x0200FBE8
-	ldr r3, _0200FBF0 ; =sub_0200FCFC
+	thumb_func_start SetMasterBrightnessNeutral
+SetMasterBrightnessNeutral: ; 0x0200FBE8
+	ldr r3, _0200FBF0 ; =SetMasterBrightness
 	mov r1, #0
 	bx r3
 	nop
-_0200FBF0: .word sub_0200FCFC
-	thumb_func_end sub_0200FBE8
+_0200FBF0: .word SetMasterBrightness
+	thumb_func_end SetMasterBrightnessNeutral
 
 	thumb_func_start sub_0200FBF4
 sub_0200FBF4: ; 0x0200FBF4
@@ -317,13 +317,13 @@ _0200FC08:
 	mov r1, #0xf
 	mvn r1, r1
 _0200FC0C:
-	ldr r3, _0200FC1C ; =sub_0200FCFC
+	ldr r3, _0200FC1C ; =SetMasterBrightness
 	bx r3
 	.balign 4, 0
 _0200FC10: .word 0x0000FFFF
 _0200FC14: .word _021D1034
 _0200FC18: .word 0x00007FFF
-_0200FC1C: .word sub_0200FCFC
+_0200FC1C: .word SetMasterBrightness
 	thumb_func_end sub_0200FBF4
 
 	thumb_func_start sub_0200FC20
@@ -347,10 +347,10 @@ _0200FC38:
 _0200FC3C:
 	mov r0, #0
 	add r1, r5, #0
-	bl sub_0200FCFC
+	bl SetMasterBrightness
 	mov r0, #1
 	add r1, r5, #0
-	bl sub_0200FCFC
+	bl SetMasterBrightness
 	ldr r0, _0200FC58 ; =_021D1034
 	strh r4, [r0, #0x10]
 	pop {r3, r4, r5, pc}
@@ -439,22 +439,24 @@ sub_0200FCDC: ; 0x0200FCDC
 	bx r3
 	thumb_func_end sub_0200FCDC
 
-	thumb_func_start sub_0200FCFC
-sub_0200FCFC: ; 0x0200FCFC
+	thumb_func_start SetMasterBrightness
+SetMasterBrightness: ; 0x0200FCFC
 	push {r3, lr}
 	cmp r0, #0
 	bne _0200FD0A
+	; GX_SetMasterBrightness(a1);
 	ldr r0, _0200FD14 ; =0x0400006C
 	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 _0200FD0A:
+	; GXS_SetMasterBrightness(a1);
 	ldr r0, _0200FD18 ; =0x0400106C
 	bl GXx_SetMasterBrightness_
 	pop {r3, pc}
 	nop
 _0200FD14: .word 0x0400006C
 _0200FD18: .word 0x0400106C
-	thumb_func_end sub_0200FCFC
+	thumb_func_end SetMasterBrightness
 
 	thumb_func_start sub_0200FD1C
 sub_0200FD1C: ; 0x0200FD1C
@@ -938,7 +940,7 @@ sub_02010050: ; 0x02010050
 	add r4, r0, #0
 	ldr r0, [r1, #0x10]
 	mov r1, #0
-	bl sub_0200FCFC
+	bl SetMasterBrightness
 	add r0, r4, #0
 	bl sub_0200E390
 	pop {r4, pc}

@@ -848,7 +848,7 @@ _021E7D82:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021E7D82
@@ -860,7 +860,7 @@ _021E7D9A:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E7D9A
@@ -898,7 +898,7 @@ _021E7DAA:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -962,7 +962,7 @@ _021E7E66:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E7E66
@@ -971,7 +971,7 @@ _021E7E66:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [r5, #4]
 	add sp, #0xc
@@ -1010,14 +1010,14 @@ _021E7EBE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7EBE
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -1079,7 +1079,7 @@ _021E7F44:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7F44
@@ -1138,7 +1138,7 @@ _021E7FC2:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7FC2
@@ -3000,7 +3000,7 @@ _021E8E76:
 	bl G2x_SetBlendAlpha_
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r4, #0
 	mov r6, #3
 	add r7, r4, #0
@@ -3264,7 +3264,7 @@ _021E90BE:
 	blt _021E90BE
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r1, #0
 	ldr r0, _021E9258 ; =0x04000050
 	add r2, r1, #0
@@ -3336,7 +3336,7 @@ _021E9136:
 	bl sub_0201C4EC
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x74]
@@ -4916,7 +4916,7 @@ _021E9DD6:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E9DD6
@@ -5091,7 +5091,7 @@ _021E9F4A:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r5, #0x10]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -7696,7 +7696,7 @@ ov101_021EB2FC: ; 0x021EB2FC
 	bl ov101_021EB1E0
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021EB2FC
@@ -13007,7 +13007,7 @@ _021EDC30:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EDC30
@@ -13016,7 +13016,7 @@ _021EDC30:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -13073,7 +13073,7 @@ _021EDCAE:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EDCAE
@@ -13082,7 +13082,7 @@ _021EDCAE:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0
 	str r0, [r5, #4]
 	add sp, #0xc
@@ -13348,7 +13348,7 @@ _021EDE84:
 	bl GX_EngineAToggleLayers
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -14843,7 +14843,7 @@ _021EEB20:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EEB20
@@ -14880,7 +14880,7 @@ _021EEB20:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -14938,7 +14938,7 @@ _021EEBE2:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EEBE2
@@ -14974,7 +14974,7 @@ _021EEC18:
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r6, #1
 	mov r4, #0
 	add r7, r6, #0
@@ -14983,12 +14983,12 @@ _021EEC32:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EEC32
@@ -15091,12 +15091,12 @@ _021EED06:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EED06
@@ -17010,7 +17010,7 @@ _021EFBAE:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EFBAE
@@ -17046,7 +17046,7 @@ _021EFBE4:
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	mov r6, #1
 	mov r4, #0
 	add r7, r6, #0
@@ -17055,12 +17055,12 @@ _021EFBFE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EFBFE
@@ -17169,12 +17169,12 @@ _021EFCDC:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r5, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r5, r5, #1
 	cmp r5, #3
 	blt _021EFCDC
@@ -17498,7 +17498,7 @@ _021EFF7C:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EFF7C
@@ -17507,7 +17507,7 @@ _021EFF7C:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -27034,7 +27034,7 @@ _021F4790:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021F4790
@@ -27071,7 +27071,7 @@ _021F4790:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	bl sub_02004A90
 	mov r1, #6
 	bl sub_02005EB4
@@ -27136,7 +27136,7 @@ _021F4868:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021F4868
@@ -27180,14 +27180,14 @@ _021F48B6:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F48B6
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
-	bl SetBrightness
+	bl SetBlendBrightness
 	bl sub_02004A90
 	mov r1, #6
 	bl sub_02005EB4
@@ -27305,12 +27305,12 @@ _021F49BA:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F49BA
@@ -28303,7 +28303,7 @@ _021F514A:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F514A
@@ -28438,7 +28438,7 @@ _021F5270:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	ldr r0, [r5, #0xc]
 	add r1, r4, #5
 	lsl r1, r1, #0x18

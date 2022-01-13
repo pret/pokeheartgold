@@ -2444,7 +2444,7 @@ _021E6BBE:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0

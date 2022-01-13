@@ -142,6 +142,7 @@ Static main
 	Object unk_02037C94.o
 	Object unk_0203A3B0.o
 	Object communication_error.o
+	Object unk_0203AC88.o
 	Object wfc_user_info_warning.o
 	Object map_matrix.o
 	Object map_header.o
@@ -229,6 +230,7 @@ Static main
 	Object unk_02078834.o
 	Object use_item_on_mon.o
 	Object unk_02090C94.o
+	Object unk_020910D8.o
 
 	### Vendor libraries ###
 	Object middleware.o

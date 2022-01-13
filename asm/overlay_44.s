@@ -943,7 +943,7 @@ _0222A542:
 	bl GX_EngineAToggleLayers
 	mov r0, #0xf
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r5, #0
 	bl ov44_0222ADF8
 	add r0, r5, #0
@@ -1240,9 +1240,9 @@ ov44_0222A7F8: ; 0x0222A7F8
 	cmp r0, #1
 	bne _0222A828
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	ldr r0, _0222A82C ; =0x000010BC
 	mov r1, #0
 	strh r1, [r4, r0]
@@ -2138,7 +2138,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r2, #0
 	str r2, [sp]
 	mov r0, #0x35
@@ -11430,16 +11430,16 @@ ov44_0222F9A0: ; 0x0222F9A0
 	bl memset
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _0222FA18 ; =ov44_022354E8
 	ldr r2, _0222FA1C ; =ov44_0222FC84
 	mov r1, #8
@@ -11496,16 +11496,16 @@ ov44_0222FA28: ; 0x0222FA28
 	str r1, [r4, r0]
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 _0222FA76:
 	pop {r4, pc}
 	.balign 4, 0
@@ -12501,10 +12501,10 @@ _022301EC:
 	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -12598,10 +12598,10 @@ _022302AE:
 	bl sub_0201D5C8
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -14698,7 +14698,7 @@ _02231430:
 	bne _02231430
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x1e
 	str r0, [sp]
 	mov r0, #2
@@ -15034,7 +15034,7 @@ ov44_02231720: ; 0x02231720
 	mov r1, #1
 	str r1, [r5, r0]
 	mov r0, #0x10
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _0223174C ; =0x00000D58
 	mov r4, #0
 	ldr r6, _02231750 ; =0x00000B1C
@@ -15075,7 +15075,7 @@ _02231776:
 	mov r1, #0
 	str r1, [r4, r0]
 	mov r0, #0x10
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r4, pc}
 	.balign 4, 0
 _02231784: .word 0x00000D54
@@ -18802,19 +18802,19 @@ ov44_0223325C: ; 0x0223325C
 	bl GX_EngineAToggleLayers
 	mov r0, #1
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x58
 	add r1, r4, #0
 	bl NARC_ctor

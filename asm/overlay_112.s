@@ -4010,7 +4010,7 @@ ov112_021E7768: ; 0x021E7768
 	strh r0, [r2]
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	pop {r4, pc}
 	nop
 _021E77D8: .word ov112_021E79A8
@@ -4363,7 +4363,7 @@ ov112_021E7AC8: ; 0x021E7AC8
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1b
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #6
 	bl FreeBgTilemapBuffer
@@ -7684,7 +7684,7 @@ ov112_021E98A4: ; 0x021E98A4
 	add r4, r0, #0
 	mov r0, #5
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7699,7 +7699,7 @@ ov112_021E98A4: ; 0x021E98A4
 	bl sub_02007B68
 	mov r0, #5
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x10
@@ -7708,13 +7708,13 @@ ov112_021E98A4: ; 0x021E98A4
 
 	thumb_func_start ov112_021E98E8
 ov112_021E98E8: ; 0x021E98E8
-	ldr r3, _021E98F4 ; =sub_0201BC28
+	ldr r3, _021E98F4 ; =BG_ToggleLayer
 	lsl r1, r1, #0x18
 	mov r0, #5
 	lsr r1, r1, #0x18
 	bx r3
 	nop
-_021E98F4: .word sub_0201BC28
+_021E98F4: .word BG_ToggleLayer
 	thumb_func_end ov112_021E98E8
 
 	thumb_func_start ov112_021E98F8
@@ -8771,7 +8771,7 @@ ov112_021EA1AC: ; 0x021EA1AC
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x40
 	mov r1, #0x9a
 	bl sub_0202055C
@@ -21363,10 +21363,10 @@ ov112_021F03BC: ; 0x021F03BC
 	bl ov112_021F0B28
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -21386,13 +21386,13 @@ ov112_021F04DC: ; 0x021F04DC
 	bl ov112_021F06CC
 	mov r0, #2
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 _021F04FE:
 	bl ov112_021F0980
 	mov r0, #2
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov112_021F04DC
 
@@ -21967,7 +21967,7 @@ ov112_021F09B4: ; 0x021F09B4
 	bl sub_02009FC8
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r7, #0x13
 	mov r6, #0
 	add r4, r5, #0
@@ -24059,7 +24059,7 @@ ov112_021F196C: ; 0x021F196C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

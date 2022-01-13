@@ -508,8 +508,8 @@ _0200B4E8: .word 0x04001050
 _0200B4EC: .word _021D0EB4
 	thumb_func_end sub_0200B484
 
-	thumb_func_start SetBrightness
-SetBrightness: ; 0x0200B4F0
+	thumb_func_start SetBlendBrightness
+SetBlendBrightness: ; 0x0200B4F0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r2, #0
@@ -535,7 +535,7 @@ _0200B516:
 	nop
 _0200B520: .word 0x04000050
 _0200B524: .word 0x04001050
-	thumb_func_end SetBrightness
+	thumb_func_end SetBlendBrightness
 
 	thumb_func_start sub_0200B528
 sub_0200B528: ; 0x0200B528

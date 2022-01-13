@@ -434,7 +434,7 @@ _02237BDE:
 	bl ov12_0226604C
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -667,7 +667,7 @@ _02237D1A:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _02237ECC ; =ov12_02239730
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -1735,9 +1735,9 @@ _022387BE:
 	lsl r2, r2, #0x10
 	bl MIi_CpuClear32
 	mov r0, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	ldr r6, _02238998 ; =ov12_0226BFE8
 	add r3, sp, #0x10
 	add r2, r3, #0
@@ -1905,7 +1905,7 @@ _02238838:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	ldr r0, _022389B4 ; =ov12_02239730
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -4244,7 +4244,7 @@ _02239C52: ; jump table
 	.short _0223A052 - _02239C52 - 2 ; case 33
 _02239C96:
 	add r0, r7, #0
-	bl sub_0200FBE8
+	bl SetMasterBrightnessNeutral
 	mov r0, #1
 	bl sub_02037930
 	ldr r0, _02239F2C ; =0x00001021
@@ -85242,7 +85242,7 @@ _02260E62:
 	bne _02260E7A
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _02260E7A:
 	ldrb r0, [r5, #6]
 	add sp, #8
@@ -96028,7 +96028,7 @@ _022660B0:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -97716,7 +97716,7 @@ _02266E0A:
 	bl sub_0201CB04
 	mov r0, #7
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	mov r0, #7
 	mov r1, #0
 	bl sub_0201BB68
@@ -101511,13 +101511,13 @@ _02268D64:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r4, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	b _02268D80
 _02268D76:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _02268D80:
 	add r5, r5, #1
 	cmp r5, #4
@@ -102934,14 +102934,14 @@ _02269846:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 	b _02269866
 _0226985A:
 	add r0, r4, #4
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _02269866:
 	add r4, r4, #1
 	add r5, r5, #2

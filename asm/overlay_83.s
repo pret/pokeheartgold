@@ -2983,7 +2983,7 @@ ov83_0223F734: ; 0x0223F734
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #3
 	bl FreeBgTilemapBuffer
@@ -3274,10 +3274,10 @@ ov83_0223F804: ; 0x0223F804
 	bl GX_EngineAToggleLayers
 	mov r0, #4
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #8
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add sp, #0xf0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -12363,7 +12363,7 @@ ov83_0224442C: ; 0x0224442C
 	bl GX_EngineAToggleLayers
 	mov r0, #0x1f
 	mov r1, #0
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	add r0, r4, #0
 	mov r1, #3
 	bl FreeBgTilemapBuffer
@@ -17935,7 +17935,7 @@ _02247124:
 	blt _02247124
 	mov r0, #0x10
 	mov r1, #1
-	bl sub_02022CC8
+	bl GX_EngineBToggleLayers
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -18863,7 +18863,7 @@ _02247814:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BC28
+	bl BG_ToggleLayer
 _02247832:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
