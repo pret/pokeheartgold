@@ -6530,7 +6530,7 @@ _0201DB2C:
 _0201DB38:
 	cmp r4, #3
 	bls _0201DB40
-	bl sub_0201EC3C
+	bl _0201EC3C ; long jump
 _0201DB40:
 	add r0, r4, r4
 	add r0, pc
@@ -6553,7 +6553,7 @@ _0201DB54:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	bgt _0201DB6A
-	bl sub_0201EC3C
+	bl _0201EC3C ; long jump
 _0201DB6A:
 	ldr r0, [sp, #0x58]
 	mov r1, #7
@@ -6824,7 +6824,7 @@ _0201DD52:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	bgt _0201DD6E
-	bl sub_0201EC3C
+	bl _0201EC3C ; long jump
 _0201DD6E:
 	ldr r0, [sp, #0x5c]
 	mov r1, #7
@@ -7122,7 +7122,7 @@ _0201DF84:
 	sub r0, #8
 	cmp r0, #0
 	bgt _0201DFA4
-	bl sub_0201EC3C
+	bl _0201EC3C ; long jump
 _0201DFA4:
 	ldr r0, [sp]
 	ldr r1, [sp, #0xb8]
@@ -7674,7 +7674,7 @@ _0201E3A0:
 	sub r0, #8
 	cmp r0, #0
 	bgt _0201E3BE
-	bl sub_0201EC3C
+	bl _0201EC3C ; long jump
 _0201E3BE:
 	ldr r0, [sp, #0x5c]
 	add r0, #8
@@ -8837,16 +8837,13 @@ _0201EC22:
 _0201EC36:
 	ldr r0, [sp, #0x1ec]
 	bl FreeToHeap
-	thumb_func_end sub_0201E4AC
-
-	thumb_func_start sub_0201EC3C
-sub_0201EC3C: ; 0x0201EC3C
+_0201EC3C:
 	add sp, #0x1fc
 	add sp, #0x118
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0201EC44: .word 0x00007FC0
-	thumb_func_end sub_0201EC3C
+	thumb_func_end sub_0201E4AC
 
 	thumb_func_start ScrollWindow
 ScrollWindow: ; 0x0201EC48

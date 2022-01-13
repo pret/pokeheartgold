@@ -24,9 +24,7 @@ def parse_c_header(filename: str, prefix='', as_list=False) -> typing.Union[list
     with open(filename) as fp:
         data = fp.read()
     pat = re.compile(rf'#define\s+({prefix}\w+)\s+(\d+|0x[0-9a-fA-F]+)\n')
-    if as_list:
-        return [(int(m[2], 0), m[1]) for m in pat.finditer(data)]
-    return {int(m[2], 0): m[1] for m in pat.finditer(data)}
+    return (list if as_list else dict)((int(m[2], 0), m[1]) for m in pat.finditer(data))
 
 
 class ScriptType(enum.Enum):

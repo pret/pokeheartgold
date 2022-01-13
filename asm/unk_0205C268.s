@@ -19487,8 +19487,8 @@ _02064B50:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02064AD0
 
-	thumb_func_start sub_02064B54
-sub_02064B54: ; 0x02064B54
+	thumb_func_start ItemMenuUseFunc_HealingItem
+ItemMenuUseFunc_HealingItem: ; 0x02064B54
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
@@ -19556,18 +19556,18 @@ sub_02064B54: ; 0x02064B54
 	nop
 _02064BEC: .word _0210159C
 _02064BF0: .word sub_0203CA9C
-	thumb_func_end sub_02064B54
+	thumb_func_end ItemMenuUseFunc_HealingItem
 
-	thumb_func_start sub_02064BF4
-sub_02064BF4: ; 0x02064BF4
+	thumb_func_start ItemCheckUseFunc_Dummy
+ItemCheckUseFunc_Dummy: ; 0x02064BF4
 	mov r0, #0
 	mvn r0, r0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02064BF4
+	thumb_func_end ItemCheckUseFunc_Dummy
 
-	thumb_func_start sub_02064BFC
-sub_02064BFC: ; 0x02064BFC
+	thumb_func_start ItemMenuUseFunc_Bicycle
+ItemMenuUseFunc_Bicycle: ; 0x02064BFC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -19590,10 +19590,10 @@ sub_02064BFC: ; 0x02064BFC
 	pop {r3, r4, r5, pc}
 	nop
 _02064C2C: .word sub_02064C58
-	thumb_func_end sub_02064BFC
+	thumb_func_end ItemMenuUseFunc_Bicycle
 
-	thumb_func_start sub_02064C30
-sub_02064C30: ; 0x02064C30
+	thumb_func_start ItemFieldUseFunc_Bicycle
+ItemFieldUseFunc_Bicycle: ; 0x02064C30
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -19612,7 +19612,7 @@ sub_02064C30: ; 0x02064C30
 	pop {r4, pc}
 	nop
 _02064C54: .word sub_02064C58
-	thumb_func_end sub_02064C30
+	thumb_func_end ItemFieldUseFunc_Bicycle
 
 	thumb_func_start sub_02064C58
 sub_02064C58: ; 0x02064C58
@@ -19762,8 +19762,8 @@ _02064D9E:
 _02064DA4: .word 0x000003F5
 	thumb_func_end sub_02064C58
 
-	thumb_func_start sub_02064DA8
-sub_02064DA8: ; 0x02064DA8
+	thumb_func_start ItemCheckUseFunc_Bicycle
+ItemCheckUseFunc_Bicycle: ; 0x02064DA8
 	push {r4, lr}
 	add r4, r0, #0
 	ldrh r0, [r4, #8]
@@ -19823,10 +19823,10 @@ _02064E12:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02064DA8
+	thumb_func_end ItemCheckUseFunc_Bicycle
 
-	thumb_func_start sub_02064E18
-sub_02064E18: ; 0x02064E18
+	thumb_func_start ItemMenuUseFunc_TMHM
+ItemMenuUseFunc_TMHM: ; 0x02064E18
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
@@ -19894,10 +19894,10 @@ sub_02064E18: ; 0x02064E18
 	nop
 _02064EB0: .word _0210159C
 _02064EB4: .word sub_0203CA9C
-	thumb_func_end sub_02064E18
+	thumb_func_end ItemMenuUseFunc_TMHM
 
-	thumb_func_start sub_02064EB8
-sub_02064EB8: ; 0x02064EB8
+	thumb_func_start ItemMenuUseFunc_Mail
+ItemMenuUseFunc_Mail: ; 0x02064EB8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -19929,16 +19929,16 @@ sub_02064EB8: ; 0x02064EB8
 	pop {r4, r5, r6, pc}
 	nop
 _02064F00: .word sub_0203D830
-	thumb_func_end sub_02064EB8
+	thumb_func_end ItemMenuUseFunc_Mail
 
-	thumb_func_start sub_02064F04
-sub_02064F04: ; 0x02064F04
+	thumb_func_start ItemCheckUseFunc_Berry
+ItemCheckUseFunc_Berry: ; 0x02064F04
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_02064F04
+	thumb_func_end ItemCheckUseFunc_Berry
 
-	thumb_func_start sub_02064F08
-sub_02064F08: ; 0x02064F08
+	thumb_func_start ItemMenuUseFunc_Berry
+ItemMenuUseFunc_Berry: ; 0x02064F08
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -19948,9 +19948,9 @@ sub_02064F08: ; 0x02064F08
 	bl sub_02050650
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02064B54
+	bl ItemMenuUseFunc_HealingItem
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02064F08
+	thumb_func_end ItemMenuUseFunc_Berry
 
 	thumb_func_start sub_02064F24
 sub_02064F24: ; 0x02064F24
@@ -19958,8 +19958,8 @@ sub_02064F24: ; 0x02064F24
 	bx lr
 	thumb_func_end sub_02064F24
 
-	thumb_func_start sub_02064F28
-sub_02064F28: ; 0x02064F28
+	thumb_func_start ItemMenuUseFunc_PalPad
+ItemMenuUseFunc_PalPad: ; 0x02064F28
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -19981,10 +19981,10 @@ sub_02064F28: ; 0x02064F28
 	pop {r3, r4, r5, pc}
 	nop
 _02064F58: .word sub_0203D718
-	thumb_func_end sub_02064F28
+	thumb_func_end ItemMenuUseFunc_PalPad
 
-	thumb_func_start sub_02064F5C
-sub_02064F5C: ; 0x02064F5C
+	thumb_func_start ItemFieldUseFunc_PalPad
+ItemFieldUseFunc_PalPad: ; 0x02064F5C
 	push {r3, lr}
 	ldr r1, _02064F6C ; =sub_02064F70
 	mov r2, #0
@@ -19993,7 +19993,7 @@ sub_02064F5C: ; 0x02064F5C
 	pop {r3, pc}
 	nop
 _02064F6C: .word sub_02064F70
-	thumb_func_end sub_02064F5C
+	thumb_func_end ItemFieldUseFunc_PalPad
 
 	thumb_func_start sub_02064F70
 sub_02064F70: ; 0x02064F70
@@ -20005,8 +20005,8 @@ sub_02064F70: ; 0x02064F70
 _02064F78: .word sub_0203F53C
 	thumb_func_end sub_02064F70
 
-	thumb_func_start sub_02064F7C
-sub_02064F7C: ; 0x02064F7C
+	thumb_func_start ItemMenuUseFunc_Honey
+ItemMenuUseFunc_Honey: ; 0x02064F7C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -20043,10 +20043,10 @@ sub_02064F7C: ; 0x02064F7C
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02064FD0: .word ov01_021FC310
-	thumb_func_end sub_02064F7C
+	thumb_func_end ItemMenuUseFunc_Honey
 
-	thumb_func_start sub_02064FD4
-sub_02064FD4: ; 0x02064FD4
+	thumb_func_start ItemMenuUseFunc_OldRod
+ItemMenuUseFunc_OldRod: ; 0x02064FD4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20073,10 +20073,10 @@ sub_02064FD4: ; 0x02064FD4
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0206500C: .word ov01_021FC698
-	thumb_func_end sub_02064FD4
+	thumb_func_end ItemMenuUseFunc_OldRod
 
-	thumb_func_start sub_02065010
-sub_02065010: ; 0x02065010
+	thumb_func_start ItemFieldUseFunc_OldRod
+ItemFieldUseFunc_OldRod: ; 0x02065010
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20091,10 +20091,10 @@ sub_02065010: ; 0x02065010
 	pop {r4, pc}
 	.balign 4, 0
 _0206502C: .word ov01_021FC698
-	thumb_func_end sub_02065010
+	thumb_func_end ItemFieldUseFunc_OldRod
 
-	thumb_func_start sub_02065030
-sub_02065030: ; 0x02065030
+	thumb_func_start ItemMenuUseFunc_GoodRod
+ItemMenuUseFunc_GoodRod: ; 0x02065030
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20121,10 +20121,10 @@ sub_02065030: ; 0x02065030
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02065068: .word ov01_021FC698
-	thumb_func_end sub_02065030
+	thumb_func_end ItemMenuUseFunc_GoodRod
 
-	thumb_func_start sub_0206506C
-sub_0206506C: ; 0x0206506C
+	thumb_func_start ItemFieldUseFunc_GoodRod
+ItemFieldUseFunc_GoodRod: ; 0x0206506C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20139,10 +20139,10 @@ sub_0206506C: ; 0x0206506C
 	pop {r4, pc}
 	.balign 4, 0
 _02065088: .word ov01_021FC698
-	thumb_func_end sub_0206506C
+	thumb_func_end ItemFieldUseFunc_GoodRod
 
-	thumb_func_start sub_0206508C
-sub_0206508C: ; 0x0206508C
+	thumb_func_start ItemMenuUseFunc_SuperRod
+ItemMenuUseFunc_SuperRod: ; 0x0206508C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20169,10 +20169,10 @@ sub_0206508C: ; 0x0206508C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _020650C4: .word ov01_021FC698
-	thumb_func_end sub_0206508C
+	thumb_func_end ItemMenuUseFunc_SuperRod
 
-	thumb_func_start sub_020650C8
-sub_020650C8: ; 0x020650C8
+	thumb_func_start ItemFieldUseFunc_SuperRod
+ItemFieldUseFunc_SuperRod: ; 0x020650C8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20187,10 +20187,10 @@ sub_020650C8: ; 0x020650C8
 	pop {r4, pc}
 	.balign 4, 0
 _020650E4: .word ov01_021FC698
-	thumb_func_end sub_020650C8
+	thumb_func_end ItemFieldUseFunc_SuperRod
 
-	thumb_func_start sub_020650E8
-sub_020650E8: ; 0x020650E8
+	thumb_func_start ItemCheckUseFunc_FishingRod
+ItemCheckUseFunc_FishingRod: ; 0x020650E8
 	push {r4, lr}
 	add r4, r0, #0
 	ldrh r0, [r4, #8]
@@ -20243,10 +20243,10 @@ _02065148:
 	mvn r0, r0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020650E8
+	thumb_func_end ItemCheckUseFunc_FishingRod
 
-	thumb_func_start sub_02065150
-sub_02065150: ; 0x02065150
+	thumb_func_start ItemFieldUseFunc_Generic
+ItemFieldUseFunc_Generic: ; 0x02065150
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -20273,7 +20273,7 @@ sub_02065150: ; 0x02065150
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02065188: .word sub_0206518C
-	thumb_func_end sub_02065150
+	thumb_func_end ItemFieldUseFunc_Generic
 
 	thumb_func_start sub_0206518C
 sub_0206518C: ; 0x0206518C
@@ -20372,8 +20372,8 @@ _0206524E:
 _02065254: .word gMain
 	thumb_func_end sub_0206518C
 
-	thumb_func_start sub_02065258
-sub_02065258: ; 0x02065258
+	thumb_func_start ItemMenuUseFunc_EvoStone
+ItemMenuUseFunc_EvoStone: ; 0x02065258
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
@@ -20453,10 +20453,10 @@ _02065280:
 	.balign 4, 0
 _02065308: .word _0210159C
 _0206530C: .word sub_0203CA9C
-	thumb_func_end sub_02065258
+	thumb_func_end ItemMenuUseFunc_EvoStone
 
-	thumb_func_start sub_02065310
-sub_02065310: ; 0x02065310
+	thumb_func_start ItemMenuUseFunc_EscapeRope
+ItemMenuUseFunc_EscapeRope: ; 0x02065310
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -20496,10 +20496,10 @@ _0206532C:
 	pop {r4, r5, r6, pc}
 	nop
 _02065368: .word sub_020653B8
-	thumb_func_end sub_02065310
+	thumb_func_end ItemMenuUseFunc_EscapeRope
 
-	thumb_func_start sub_0206536C
-sub_0206536C: ; 0x0206536C
+	thumb_func_start ItemCheckUseFunc_EscapeRope
+ItemCheckUseFunc_EscapeRope: ; 0x0206536C
 	push {r4, lr}
 	add r4, r0, #0
 	ldrh r0, [r4, #8]
@@ -20539,7 +20539,7 @@ _020653B0:
 	mvn r0, r0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206536C
+	thumb_func_end ItemCheckUseFunc_EscapeRope
 
 	thumb_func_start sub_020653B8
 sub_020653B8: ; 0x020653B8
@@ -20558,8 +20558,8 @@ sub_020653B8: ; 0x020653B8
 _020653D4: .word ov02_0224C020
 	thumb_func_end sub_020653B8
 
-	thumb_func_start sub_020653D8
-sub_020653D8: ; 0x020653D8
+	thumb_func_start ItemMenuUseFunc_ApricornBox
+ItemMenuUseFunc_ApricornBox: ; 0x020653D8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20580,10 +20580,10 @@ sub_020653D8: ; 0x020653D8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02065404: .word sub_0203D718
-	thumb_func_end sub_020653D8
+	thumb_func_end ItemMenuUseFunc_ApricornBox
 
-	thumb_func_start sub_02065408
-sub_02065408: ; 0x02065408
+	thumb_func_start ItemFieldUseFunc_ApricornBox
+ItemFieldUseFunc_ApricornBox: ; 0x02065408
 	push {r3, lr}
 	ldr r1, _02065418 ; =sub_0206541C
 	mov r2, #0
@@ -20592,7 +20592,7 @@ sub_02065408: ; 0x02065408
 	pop {r3, pc}
 	nop
 _02065418: .word sub_0206541C
-	thumb_func_end sub_02065408
+	thumb_func_end ItemFieldUseFunc_ApricornBox
 
 	thumb_func_start sub_0206541C
 sub_0206541C: ; 0x0206541C
@@ -20603,8 +20603,8 @@ sub_0206541C: ; 0x0206541C
 _02065424: .word sub_0203ED24
 	thumb_func_end sub_0206541C
 
-	thumb_func_start sub_02065428
-sub_02065428: ; 0x02065428
+	thumb_func_start ItemMenuUseFunc_BerryPots
+ItemMenuUseFunc_BerryPots: ; 0x02065428
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20624,10 +20624,10 @@ sub_02065428: ; 0x02065428
 	pop {r3, r4, r5, pc}
 	nop
 _02065454: .word sub_0203D718
-	thumb_func_end sub_02065428
+	thumb_func_end ItemMenuUseFunc_BerryPots
 
-	thumb_func_start sub_02065458
-sub_02065458: ; 0x02065458
+	thumb_func_start ItemFieldUseFunc_BerryPots
+ItemFieldUseFunc_BerryPots: ; 0x02065458
 	push {r3, lr}
 	ldr r1, _02065468 ; =sub_0206546C
 	mov r2, #0
@@ -20636,7 +20636,7 @@ sub_02065458: ; 0x02065458
 	pop {r3, pc}
 	nop
 _02065468: .word sub_0206546C
-	thumb_func_end sub_02065458
+	thumb_func_end ItemFieldUseFunc_BerryPots
 
 	thumb_func_start sub_0206546C
 sub_0206546C: ; 0x0206546C
@@ -20646,8 +20646,8 @@ sub_0206546C: ; 0x0206546C
 _02065470: .word sub_0203ECC0
 	thumb_func_end sub_0206546C
 
-	thumb_func_start sub_02065474
-sub_02065474: ; 0x02065474
+	thumb_func_start ItemMenuUseFunc_UnownReport
+ItemMenuUseFunc_UnownReport: ; 0x02065474
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20667,10 +20667,10 @@ sub_02065474: ; 0x02065474
 	pop {r3, r4, r5, pc}
 	nop
 _020654A0: .word sub_0203D718
-	thumb_func_end sub_02065474
+	thumb_func_end ItemMenuUseFunc_UnownReport
 
-	thumb_func_start sub_020654A4
-sub_020654A4: ; 0x020654A4
+	thumb_func_start ItemFieldUseFunc_UnownReport
+ItemFieldUseFunc_UnownReport: ; 0x020654A4
 	push {r3, lr}
 	ldr r1, _020654B4 ; =sub_020654B8
 	mov r2, #0
@@ -20679,7 +20679,7 @@ sub_020654A4: ; 0x020654A4
 	pop {r3, pc}
 	nop
 _020654B4: .word sub_020654B8
-	thumb_func_end sub_020654A4
+	thumb_func_end ItemFieldUseFunc_UnownReport
 
 	thumb_func_start sub_020654B8
 sub_020654B8: ; 0x020654B8
@@ -20689,8 +20689,8 @@ sub_020654B8: ; 0x020654B8
 _020654BC: .word sub_0203EC64
 	thumb_func_end sub_020654B8
 
-	thumb_func_start sub_020654C0
-sub_020654C0: ; 0x020654C0
+	thumb_func_start ItemMenuUseFunc_DowsingMchn
+ItemMenuUseFunc_DowsingMchn: ; 0x020654C0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20713,10 +20713,10 @@ sub_020654C0: ; 0x020654C0
 	pop {r3, r4, r5, pc}
 	nop
 _020654F0: .word sub_02065508
-	thumb_func_end sub_020654C0
+	thumb_func_end ItemMenuUseFunc_DowsingMchn
 
-	thumb_func_start sub_020654F4
-sub_020654F4: ; 0x020654F4
+	thumb_func_start ItemFieldUseFunc_DowsingMchn
+ItemFieldUseFunc_DowsingMchn: ; 0x020654F4
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r1, _02065504 ; =sub_02065508
@@ -20726,7 +20726,7 @@ sub_020654F4: ; 0x020654F4
 	pop {r3, pc}
 	.balign 4, 0
 _02065504: .word sub_02065508
-	thumb_func_end sub_020654F4
+	thumb_func_end ItemFieldUseFunc_DowsingMchn
 
 	thumb_func_start sub_02065508
 sub_02065508: ; 0x02065508
@@ -20774,8 +20774,8 @@ _0206555A:
 	.balign 4, 0
 	thumb_func_end sub_02065508
 
-	thumb_func_start sub_02065560
-sub_02065560: ; 0x02065560
+	thumb_func_start ItemFieldUseFunc_GbSounds
+ItemFieldUseFunc_GbSounds: ; 0x02065560
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	mov r0, #0xb
@@ -20813,10 +20813,10 @@ _02065598:
 	pop {r4, r5, r6, pc}
 	nop
 _020655B4: .word sub_0206518C
-	thumb_func_end sub_02065560
+	thumb_func_end ItemFieldUseFunc_GbSounds
 
-	thumb_func_start sub_020655B8
-sub_020655B8: ; 0x020655B8
+	thumb_func_start ItemMenuUseFunc_Gracidea
+ItemMenuUseFunc_Gracidea: ; 0x020655B8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20839,10 +20839,10 @@ sub_020655B8: ; 0x020655B8
 	nop
 _020655E8: .word 0x000001D2
 _020655EC: .word sub_0203CA9C
-	thumb_func_end sub_020655B8
+	thumb_func_end ItemMenuUseFunc_Gracidea
 
-	thumb_func_start sub_020655F0
-sub_020655F0: ; 0x020655F0
+	thumb_func_start ItemFieldUseFunc_Gracidea
+ItemFieldUseFunc_Gracidea: ; 0x020655F0
 	push {r3, lr}
 	ldr r1, _02065600 ; =sub_02065604
 	mov r2, #0
@@ -20851,7 +20851,7 @@ sub_020655F0: ; 0x020655F0
 	pop {r3, pc}
 	nop
 _02065600: .word sub_02065604
-	thumb_func_end sub_020655F0
+	thumb_func_end ItemFieldUseFunc_Gracidea
 
 	thumb_func_start sub_02065604
 sub_02065604: ; 0x02065604
@@ -20864,8 +20864,8 @@ _0206560C: .word sub_0203FAE8
 _02065610: .word 0x000001D2
 	thumb_func_end sub_02065604
 
-	thumb_func_start sub_02065614
-sub_02065614: ; 0x02065614
+	thumb_func_start ItemMenuUseFunc_VSRecorder
+ItemMenuUseFunc_VSRecorder: ; 0x02065614
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
@@ -20887,10 +20887,10 @@ sub_02065614: ; 0x02065614
 	pop {r3, r4, r5, pc}
 	nop
 _02065644: .word sub_0203D9B4
-	thumb_func_end sub_02065614
+	thumb_func_end ItemMenuUseFunc_VSRecorder
 
-	thumb_func_start sub_02065648
-sub_02065648: ; 0x02065648
+	thumb_func_start ItemFieldUseFunc_VSRecorder
+ItemFieldUseFunc_VSRecorder: ; 0x02065648
 	push {r3, lr}
 	ldr r1, _02065658 ; =sub_0206565C
 	mov r2, #0
@@ -20899,7 +20899,7 @@ sub_02065648: ; 0x02065648
 	pop {r3, pc}
 	nop
 _02065658: .word sub_0206565C
-	thumb_func_end sub_02065648
+	thumb_func_end ItemFieldUseFunc_VSRecorder
 
 	thumb_func_start sub_0206565C
 sub_0206565C: ; 0x0206565C
@@ -30255,36 +30255,39 @@ _020FE23C:
 	.word 0
 	.word 0
 _020FE264:
-	.word 0, sub_02065150, 0
-	.word sub_02064B54, 0, 0
-	.word 0, 0, sub_02064BF4
-	.word 0, 0, sub_02064BF4
-	.word sub_02064BFC, sub_02064C30, sub_02064DA8
-	.word 0, 0, sub_02064BF4
-	.word sub_02064E18, 0, 0
-	.word sub_02064EB8, 0, 0
-	.word sub_02064F08, 0, sub_02064F04
-	.word 0, 0, sub_02064BF4
-	.word sub_02064F28, sub_02064F5C, 0
-	.word 0, 0, sub_02064BF4
-	.word 0, 0, sub_02064BF4
-	.word 0, 0, sub_02064BF4
-	.word sub_02064F7C, 0, 0
-	.word 0, 0, sub_02064BF4
-	.word sub_02064FD4, sub_02065010, sub_020650E8
-	.word sub_02065030, sub_0206506C, sub_020650E8
-	.word sub_0206508C, sub_020650C8, sub_020650E8
-	.word 0, sub_02065150, 0
-	.word sub_02065258, 0, 0
-	.word sub_02065310, 0, sub_0206536C
-	.word 0, 0, sub_02064BF4
-	.word sub_020653D8, sub_02065408, 0
-	.word sub_02065428, sub_02065458, 0
-	.word sub_02065474, sub_020654A4, 0
-	.word sub_020654C0, sub_020654F4, 0
-	.word 0, sub_02065560, 0
-	.word sub_020655B8, sub_020655F0, 0
-	.word sub_02065614, sub_02065648, 0
+	; Menu use, Field use, Check use
+	.word 0, ItemFieldUseFunc_Generic, 0 ; No use
+	.word ItemMenuUseFunc_HealingItem, 0, 0 ; Healing item
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Town map
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Unused
+	.word ItemMenuUseFunc_Bicycle, ItemFieldUseFunc_Bicycle, ItemCheckUseFunc_Bicycle ; Bicycle
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Journal
+	.word ItemMenuUseFunc_TMHM, 0, 0 ; TM/HM
+	.word ItemMenuUseFunc_Mail, 0, 0 ; Mail
+	.word ItemMenuUseFunc_Berry, 0, ItemCheckUseFunc_Berry ; Berry
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Poffin case
+	.word ItemMenuUseFunc_PalPad, ItemFieldUseFunc_PalPad, 0 ; Pal Pad
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Poke Radar
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Sprayduck
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Unused
+	.word ItemMenuUseFunc_Honey, 0, 0 ; Honey
+	.word 0, 0, ItemCheckUseFunc_Dummy ; VS Seeker
+	.word ItemMenuUseFunc_OldRod, ItemFieldUseFunc_OldRod, ItemCheckUseFunc_FishingRod ; Old Rod
+	.word ItemMenuUseFunc_GoodRod, ItemFieldUseFunc_GoodRod, ItemCheckUseFunc_FishingRod ; Good Rod
+	.word ItemMenuUseFunc_SuperRod, ItemFieldUseFunc_SuperRod, ItemCheckUseFunc_FishingRod ; Super Rod
+	.word 0, ItemFieldUseFunc_Generic, 0 ; Repels/Flutes/Seal case for some reason
+	.word ItemMenuUseFunc_EvoStone, 0, 0 ; Evo stones
+	.word ItemMenuUseFunc_EscapeRope, 0, ItemCheckUseFunc_EscapeRope ; Escape Rope
+	.word 0, 0, ItemCheckUseFunc_Dummy ; Azure Flute
+	.word ItemMenuUseFunc_ApricornBox, ItemFieldUseFunc_ApricornBox, 0 ; Apricorn Box
+	.word ItemMenuUseFunc_BerryPots, ItemFieldUseFunc_BerryPots, 0 ; Berry Pots
+	.word ItemMenuUseFunc_UnownReport, ItemFieldUseFunc_UnownReport, 0 ; Unown Report
+	.word ItemMenuUseFunc_DowsingMchn, ItemFieldUseFunc_DowsingMchn, 0 ; Dowsing Mchn
+	.word 0, ItemFieldUseFunc_GbSounds, 0 ; GB Sounds
+	.word ItemMenuUseFunc_Gracidea, ItemFieldUseFunc_Gracidea, 0 ; Gracidea
+	.word ItemMenuUseFunc_VSRecorder, ItemFieldUseFunc_VSRecorder, 0 ; VS Recorder
+
+	; File boundary
 _020FE3CC:
 	.word sub_020663B4
 	.word sub_020663E4

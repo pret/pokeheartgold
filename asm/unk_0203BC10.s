@@ -1,3 +1,4 @@
+#include "constants/items.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2557,7 +2558,7 @@ _0203D01C:
 	strb r0, [r1, #6]
 	str r5, [sp, #0x10]
 	ldrh r0, [r1, #4]
-	mov r1, #6
+	mov r1, #ITEMATTR_FIELDUSEFUNC
 	mov r2, #0xb
 	bl GetItemAttr
 	add r1, r0, #0
