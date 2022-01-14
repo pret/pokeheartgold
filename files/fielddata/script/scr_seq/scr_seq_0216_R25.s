@@ -35,7 +35,7 @@ _0050:
 	goto_if_eq _011B
 	compare VAR_SCENE_ROUTE_25, 2
 	goto_if_eq _011B
-	get_phone_book_rematch 29, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_MISTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0115
 	scrcmd_147 29, VAR_TEMP_x4001
@@ -293,7 +293,7 @@ _03F7:
 	npc_msg msg_0363_R25_00002
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 29
+	register_gear_number PHONE_CONTACT_MISTY
 	npc_msg msg_0363_R25_00003
 	waitbutton
 	closemsg

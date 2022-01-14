@@ -46,7 +46,7 @@ _0080:
 	end
 
 _0097:
-	get_phone_book_rematch 35, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_SABRINA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00C1
 	get_weekday VAR_TEMP_x4000
@@ -224,7 +224,7 @@ _02C3:
 	npc_msg msg_0256_P01R0102_00005
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 35
+	register_gear_number PHONE_CONTACT_SABRINA
 	npc_msg msg_0256_P01R0102_00006
 	waitbutton
 	closemsg

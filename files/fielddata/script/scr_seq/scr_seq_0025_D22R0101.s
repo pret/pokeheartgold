@@ -97,7 +97,7 @@ _016E:
 	end
 
 _017F:
-	get_phone_book_rematch 34, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_BUGSY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _01C9
 	get_weekday VAR_TEMP_x4000

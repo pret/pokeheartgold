@@ -38,7 +38,7 @@ scr_seq_T06GYM0101_021:
 	clearflag FLAG_UNK_9A6
 _0079:
 	scrcmd_320
-	get_phone_book_rematch 36, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _014A
 	goto_if_unset FLAG_UNK_14A, _0144

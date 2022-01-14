@@ -16,7 +16,7 @@ scr_seq_D17R1101_000:
 
 _001B:
 	goto_if_unset FLAG_GAME_CLEAR, _00A5
-	get_phone_book_rematch 37, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00A5
 	scrcmd_147 37, VAR_TEMP_x4001
@@ -80,7 +80,7 @@ _00FA:
 	npc_msg msg_0059_D17R1101_00001
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 37
+	register_gear_number PHONE_CONTACT_MORTY
 	npc_msg msg_0059_D17R1101_00002
 	waitbutton
 	closemsg

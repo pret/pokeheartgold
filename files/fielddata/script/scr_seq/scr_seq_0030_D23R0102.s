@@ -241,7 +241,7 @@ _033F:
 	wait_movement
 	gender_msgbox msg_0066_D23R0102_00024, msg_0066_D23R0102_00025
 	closemsg
-	register_gear_number 8
+	register_gear_number PHONE_CONTACT_BUENA
 	npc_msg msg_0066_D23R0102_00026
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare

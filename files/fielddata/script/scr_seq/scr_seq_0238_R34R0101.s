@@ -52,11 +52,11 @@ scr_seq_R34R0101_001:
 	get_player_gender VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _00C6
-	register_gear_number 4
+	register_gear_number PHONE_CONTACT_LYRA
 	goto _00CA
 
 _00C6:
-	register_gear_number 3
+	register_gear_number PHONE_CONTACT_ETHAN
 _00CA:
 	buffer_players_name 0
 	gender_msgbox msg_0385_R34R0101_00007, msg_0385_R34R0101_00017

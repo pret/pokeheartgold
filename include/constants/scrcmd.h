@@ -15,6 +15,7 @@
 #include "constants/trainers.h"
 #include "constants/sprites.h"
 #include "constants/maps.h"
+#include "constants/phone_contacts.h"
 
 #ifdef PM_ASM
 #define lt    0

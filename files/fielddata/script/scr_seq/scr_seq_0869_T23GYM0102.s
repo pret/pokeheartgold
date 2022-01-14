@@ -26,7 +26,7 @@
 
 scr_seq_T23GYM0102_016:
 	scrcmd_326
-	get_phone_book_rematch 34, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_BUGSY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00CD
 	goto_if_set FLAG_GAME_CLEAR, _006C

@@ -12,7 +12,7 @@
 	scrdef_end
 
 scr_seq_T03GYM0101_003:
-	get_phone_book_rematch 33, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_BROCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00FB
 	scrcmd_147 33, VAR_TEMP_x4001

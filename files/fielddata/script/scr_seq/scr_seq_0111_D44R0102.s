@@ -74,7 +74,7 @@ _00F4:
 	end
 
 _00F6:
-	get_phone_book_rematch 27, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0158
 	scrcmd_522 VAR_TEMP_x4000
@@ -272,7 +272,7 @@ _039D:
 	npc_msg msg_0129_D44R0102_00010
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 27
+	register_gear_number PHONE_CONTACT_CLAIR
 	npc_msg msg_0129_D44R0102_00011
 	waitbutton
 	closemsg

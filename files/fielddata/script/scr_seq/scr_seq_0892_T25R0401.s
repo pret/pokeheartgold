@@ -129,7 +129,7 @@ _0152:
 _0179:
 	buffer_players_name 0
 	npc_msg msg_0586_T25R0401_00013
-	register_gear_number 9
+	register_gear_number PHONE_CONTACT_BILL
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	waitbutton

@@ -181,7 +181,7 @@ _026E:
 	npc_msg msg_0571_T23R0501_00016
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 5
+	register_gear_number PHONE_CONTACT_KURT
 	npc_msg msg_0571_T23R0501_00017
 	waitbutton
 	closemsg

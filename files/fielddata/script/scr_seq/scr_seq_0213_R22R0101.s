@@ -63,7 +63,7 @@ _00DD:
 	end
 
 _00DF:
-	get_phone_book_rematch 26, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_JANINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _012C
 	scrcmd_522 VAR_TEMP_x4000
@@ -397,7 +397,7 @@ _04F4:
 	npc_msg msg_0361_R22R0101_00008
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 26
+	register_gear_number PHONE_CONTACT_JANINE
 	npc_msg msg_0361_R22R0101_00009
 	waitbutton
 	closemsg

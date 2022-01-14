@@ -99,7 +99,7 @@ _015C:
 	end
 
 _015E:
-	get_phone_book_rematch 28, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0198
 	get_weekday VAR_TEMP_x4000
@@ -290,7 +290,7 @@ _03E2:
 	npc_msg msg_0491_T07_00020
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 28
+	register_gear_number PHONE_CONTACT_ERIKA
 	npc_msg msg_0491_T07_00021
 	waitbutton
 	closemsg

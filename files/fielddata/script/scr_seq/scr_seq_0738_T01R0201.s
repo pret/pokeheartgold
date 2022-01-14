@@ -117,7 +117,7 @@ _016D:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _019D
-	register_gear_number 31
+	register_gear_number PHONE_CONTACT_BLUE
 	buffer_players_name 0
 	npc_msg msg_0449_T01R0201_00009
 	play_fanfare SEQ_ME_POKEGEAR_REGIST

@@ -902,7 +902,7 @@
     {
       "name": "get_phone_book_rematch",
       "args": [
-        "var",
+        "phone_contact",
         "var"
       ]
     },
@@ -927,7 +927,7 @@
     {
       "name": "register_gear_number",
       "args": [
-        "var"
+        "phone_contact"
       ]
     },
     {
@@ -2659,7 +2659,7 @@
     {
       "name": "set_phone_call",
       "args": [
-        "var",
+        "phone_contact",
         "var",
         "var"
       ]

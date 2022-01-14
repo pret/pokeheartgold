@@ -93,7 +93,7 @@ _0138:
 	npc_msg msg_0341_R10_00001
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 36
+	register_gear_number PHONE_CONTACT_LT__SURGE
 _0148:
 	npc_msg msg_0341_R10_00002
 	waitbutton

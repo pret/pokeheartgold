@@ -18143,81 +18143,81 @@ _02108434:
 	.word _02108424, sub_02095A7C, sub_02095AF8
 	.word _0210841C, sub_02095B04, sub_02095B88
 sPhoneMessageGmm:
-	.short 664
-	.short 716
-	.short 666
-	.short 662
-	.short 663
-	.short 643
-	.short 661
-	.short 660
-	.short 641
-	.short 665
-	.short 675
-	.short 712
-	.short 680
-	.short 684
-	.short 711
-	.short 642
-	.short 706
-	.short 644
-	.short 648
-	.short 704
-	.short 685
-	.short 688
-	.short 713
-	.short 714
-	.short 667
-	.short 691
-	.short 645
-	.short 649
-	.short 646
-	.short 650
-	.short 651
-	.short 647
-	.short 656
-	.short 657
-	.short 658
-	.short 655
-	.short 652
-	.short 653
-	.short 654
-	.short 659
-	.short 674
-	.short 705
-	.short 677
-	.short 698
-	.short 696
-	.short 708
-	.short 672
-	.short 690
-	.short 671
-	.short 695
-	.short 689
-	.short 700
-	.short 693
-	.short 694
-	.short 669
-	.short 676
-	.short 715
-	.short 703
-	.short 710
-	.short 670
-	.short 692
-	.short 681
-	.short 697
-	.short 687
-	.short 702
-	.short 699
-	.short 707
-	.short 682
-	.short 673
-	.short 686
-	.short 683
-	.short 679
-	.short 701
-	.short 709
-	.short 678
+	.short 664 ; msg_0664.gmm
+	.short 716 ; msg_0716.gmm
+	.short 666 ; msg_0666.gmm
+	.short 662 ; msg_0662.gmm
+	.short 663 ; msg_0663.gmm
+	.short 643 ; msg_0643.gmm
+	.short 661 ; msg_0661.gmm
+	.short 660 ; msg_0660.gmm
+	.short 641 ; msg_0641.gmm
+	.short 665 ; msg_0665.gmm
+	.short 675 ; msg_0675.gmm
+	.short 712 ; msg_0712.gmm
+	.short 680 ; msg_0680.gmm
+	.short 684 ; msg_0684.gmm
+	.short 711 ; msg_0711.gmm
+	.short 642 ; msg_0642.gmm
+	.short 706 ; msg_0706.gmm
+	.short 644 ; msg_0644.gmm
+	.short 648 ; msg_0648.gmm
+	.short 704 ; msg_0704.gmm
+	.short 685 ; msg_0685.gmm
+	.short 688 ; msg_0688.gmm
+	.short 713 ; msg_0713.gmm
+	.short 714 ; msg_0714.gmm
+	.short 667 ; msg_0667.gmm
+	.short 691 ; msg_0691.gmm
+	.short 645 ; msg_0645.gmm
+	.short 649 ; msg_0649.gmm
+	.short 646 ; msg_0646.gmm
+	.short 650 ; msg_0650.gmm
+	.short 651 ; msg_0651.gmm
+	.short 647 ; msg_0647.gmm
+	.short 656 ; msg_0656.gmm
+	.short 657 ; msg_0657.gmm
+	.short 658 ; msg_0658.gmm
+	.short 655 ; msg_0655.gmm
+	.short 652 ; msg_0652.gmm
+	.short 653 ; msg_0653.gmm
+	.short 654 ; msg_0654.gmm
+	.short 659 ; msg_0659.gmm
+	.short 674 ; msg_0674.gmm
+	.short 705 ; msg_0705.gmm
+	.short 677 ; msg_0677.gmm
+	.short 698 ; msg_0698.gmm
+	.short 696 ; msg_0696.gmm
+	.short 708 ; msg_0708.gmm
+	.short 672 ; msg_0672.gmm
+	.short 690 ; msg_0690.gmm
+	.short 671 ; msg_0671.gmm
+	.short 695 ; msg_0695.gmm
+	.short 689 ; msg_0689.gmm
+	.short 700 ; msg_0700.gmm
+	.short 693 ; msg_0693.gmm
+	.short 694 ; msg_0694.gmm
+	.short 669 ; msg_0669.gmm
+	.short 676 ; msg_0676.gmm
+	.short 715 ; msg_0715.gmm
+	.short 703 ; msg_0703.gmm
+	.short 710 ; msg_0710.gmm
+	.short 670 ; msg_0670.gmm
+	.short 692 ; msg_0692.gmm
+	.short 681 ; msg_0681.gmm
+	.short 697 ; msg_0697.gmm
+	.short 687 ; msg_0687.gmm
+	.short 702 ; msg_0702.gmm
+	.short 699 ; msg_0699.gmm
+	.short 707 ; msg_0707.gmm
+	.short 682 ; msg_0682.gmm
+	.short 673 ; msg_0673.gmm
+	.short 686 ; msg_0686.gmm
+	.short 683 ; msg_0683.gmm
+	.short 679 ; msg_0679.gmm
+	.short 701 ; msg_0701.gmm
+	.short 709 ; msg_0709.gmm
+	.short 678 ; msg_0678.gmm
 
 	; File boundary
 	.balign 4, 0

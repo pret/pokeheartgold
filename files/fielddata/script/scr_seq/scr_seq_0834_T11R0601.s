@@ -28,7 +28,7 @@ _0045:
 	scrcmd_147 36, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _007E
-	get_phone_book_rematch 36, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _007E
 	goto_if_set FLAG_UNK_162, _007E

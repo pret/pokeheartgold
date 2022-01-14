@@ -46,7 +46,7 @@ _008D:
 	end
 
 _008F:
-	get_phone_book_rematch 38, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00C3
 	scrcmd_522 VAR_TEMP_x4000
@@ -223,7 +223,7 @@ _032B:
 	npc_msg msg_0611_T26R0701_00005
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 38
+	register_gear_number PHONE_CONTACT_JASMINE
 	npc_msg msg_0611_T26R0701_00006
 	waitbutton
 	closemsg

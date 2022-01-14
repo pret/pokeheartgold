@@ -15,7 +15,7 @@ scr_seq_T28GYM0101_001:
 	end
 
 _001B:
-	get_phone_book_rematch 39, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00B8
 	goto_if_unset FLAG_GAME_CLEAR, _00B2

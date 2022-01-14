@@ -44,7 +44,7 @@ _0087:
 	setflag FLAG_UNK_226
 _008B:
 	goto_if_unset FLAG_UNK_162, _00E3
-	get_phone_book_rematch 36, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00E3
 	get_weekday VAR_TEMP_x4000
@@ -111,7 +111,7 @@ _0156:
 	goto_if_eq _01E3
 _0173:
 	npc_msg msg_0396_R39_00006
-	register_gear_number 24
+	register_gear_number PHONE_CONTACT_BAOBA
 	buffer_players_name 0
 	npc_msg msg_0396_R39_00008
 	play_fanfare SEQ_ME_POKEGEAR_REGIST

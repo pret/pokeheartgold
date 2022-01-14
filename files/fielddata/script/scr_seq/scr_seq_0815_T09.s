@@ -24,7 +24,7 @@ _0027:
 
 _0038:
 	setflag FLAG_UNK_25A
-	get_phone_book_rematch 31, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_BLUE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _007B
 	compare VAR_UNK_40FD, 0
@@ -60,7 +60,7 @@ _00CA:
 	end
 
 _00CC:
-	get_phone_book_rematch 30, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0102
 	get_weekday VAR_TEMP_x4002
@@ -291,7 +291,7 @@ _03CA:
 	npc_msg msg_0519_T09_00011
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 30
+	register_gear_number PHONE_CONTACT_BLAINE
 	npc_msg msg_0519_T09_00012
 	waitbutton
 	closemsg

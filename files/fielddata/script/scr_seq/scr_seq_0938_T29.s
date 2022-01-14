@@ -161,7 +161,7 @@ _0216:
 	npc_msg msg_0626_T29_00014
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 39
+	register_gear_number PHONE_CONTACT_PRYCE
 	npc_msg msg_0626_T29_00015
 	waitbutton
 	closemsg

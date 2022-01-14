@@ -15,7 +15,7 @@
 scr_seq_T02GYM0101_002:
 	scrcmd_331
 	setvar VAR_UNK_4127, 0
-	get_phone_book_rematch 31, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_BLUE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0065
 	compare VAR_UNK_40FD, 0

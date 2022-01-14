@@ -240,7 +240,7 @@ _02E8:
 	closemsg
 	buffer_players_name 0
 	npc_msg msg_0377_R30R0201_00015
-	register_gear_number 2
+	register_gear_number PHONE_CONTACT_PROF__OAK
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
 	closemsg

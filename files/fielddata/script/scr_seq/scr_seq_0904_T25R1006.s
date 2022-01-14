@@ -22,7 +22,7 @@ scr_seq_T25R1006_006:
 
 _0033:
 	goto_if_unset FLAG_GAME_CLEAR, _011D
-	get_phone_book_rematch 17, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _011D
 	scrcmd_147 17, VAR_TEMP_x4001
@@ -437,7 +437,7 @@ _061B:
 	npc_msg msg_0597_T25R1006_00026
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 17
+	register_gear_number PHONE_CONTACT_WHITNEY
 	npc_msg msg_0597_T25R1006_00027
 	waitbutton
 	closemsg

@@ -13,7 +13,7 @@
 	scrdef_end
 
 scr_seq_T11GYM0101_004:
-	get_phone_book_rematch 35, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_SABRINA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0089
 	scrcmd_147 35, VAR_TEMP_x4001

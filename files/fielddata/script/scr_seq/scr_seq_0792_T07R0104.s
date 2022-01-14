@@ -43,7 +43,7 @@ _0080:
 	end
 
 _0082:
-	get_phone_book_rematch 18, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00C2
 	get_weekday VAR_TEMP_x4000
@@ -99,7 +99,7 @@ _011B:
 
 _013F:
 	npc_msg msg_0497_T07R0104_00005
-	register_gear_number 18
+	register_gear_number PHONE_CONTACT_FALKNER
 	buffer_players_name 0
 	npc_msg msg_0497_T07R0104_00006
 	play_fanfare SEQ_ME_POKEGEAR_REGIST

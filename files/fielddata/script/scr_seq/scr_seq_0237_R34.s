@@ -73,11 +73,11 @@ scr_seq_R34_001:
 	wait_movement
 	npc_msg msg_0384_R34_00046
 	buffer_players_name 0
-	register_gear_number 6
+	register_gear_number PHONE_CONTACT_DAY_C_MAN
 	npc_msg msg_0384_R34_00047
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 7
+	register_gear_number PHONE_CONTACT_DAY_C_LADY
 	npc_msg msg_0384_R34_00048
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare

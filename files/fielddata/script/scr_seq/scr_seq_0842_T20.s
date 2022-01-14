@@ -537,7 +537,7 @@ _0875:
 _0892:
 	wait_movement
 	npc_msg msg_0542_T20_00018
-	register_gear_number 1
+	register_gear_number PHONE_CONTACT_PROF__ELM
 	buffer_players_name 0
 	npc_msg msg_0542_T20_00019
 	play_fanfare SEQ_ME_POKEGEAR_REGIST

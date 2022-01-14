@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_T07GYM0101_002:
-	get_phone_book_rematch 28, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0107
 	scrcmd_147 28, VAR_TEMP_x4001

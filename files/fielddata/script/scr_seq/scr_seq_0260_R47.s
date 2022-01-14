@@ -43,7 +43,7 @@ _009F:
 	goto _00E6
 	.byte 0x02, 0x00
 _00B2:
-	get_phone_book_rematch 32, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_CHUCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00E6
 	get_weekday VAR_TEMP_x4002

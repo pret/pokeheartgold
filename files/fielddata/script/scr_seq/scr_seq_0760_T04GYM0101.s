@@ -16,7 +16,7 @@
 	scrdef_end
 
 scr_seq_T04GYM0101_007:
-	get_phone_book_rematch 29, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_MISTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00ED
 	check_badge 15, VAR_TEMP_x4000

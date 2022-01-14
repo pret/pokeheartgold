@@ -28,22 +28,22 @@
 	scrdef_end
 
 scr_seq_T11R0101_003:
-	get_phone_book_rematch 17, VAR_TEMP_x4000
-	get_phone_book_rematch 26, VAR_TEMP_x4001
-	get_phone_book_rematch 27, VAR_TEMP_x4002
-	get_phone_book_rematch 28, VAR_TEMP_x4003
-	get_phone_book_rematch 29, VAR_TEMP_x4004
-	get_phone_book_rematch 30, VAR_TEMP_x4005
-	get_phone_book_rematch 31, VAR_TEMP_x4006
-	get_phone_book_rematch 32, VAR_TEMP_x4007
-	get_phone_book_rematch 33, VAR_TEMP_x4008
-	get_phone_book_rematch 34, VAR_TEMP_x4009
-	get_phone_book_rematch 35, VAR_TEMP_x400A
-	get_phone_book_rematch 18, VAR_TEMP_x400B
-	get_phone_book_rematch 36, VAR_TEMP_x400C
-	get_phone_book_rematch 37, VAR_TEMP_x400D
-	get_phone_book_rematch 38, VAR_TEMP_x400E
-	get_phone_book_rematch 39, VAR_TEMP_x400F
+	get_phone_book_rematch PHONE_CONTACT_WHITNEY, VAR_TEMP_x4000
+	get_phone_book_rematch PHONE_CONTACT_JANINE, VAR_TEMP_x4001
+	get_phone_book_rematch PHONE_CONTACT_CLAIR, VAR_TEMP_x4002
+	get_phone_book_rematch PHONE_CONTACT_ERIKA, VAR_TEMP_x4003
+	get_phone_book_rematch PHONE_CONTACT_MISTY, VAR_TEMP_x4004
+	get_phone_book_rematch PHONE_CONTACT_BLAINE, VAR_TEMP_x4005
+	get_phone_book_rematch PHONE_CONTACT_BLUE, VAR_TEMP_x4006
+	get_phone_book_rematch PHONE_CONTACT_CHUCK, VAR_TEMP_x4007
+	get_phone_book_rematch PHONE_CONTACT_BROCK, VAR_TEMP_x4008
+	get_phone_book_rematch PHONE_CONTACT_BUGSY, VAR_TEMP_x4009
+	get_phone_book_rematch PHONE_CONTACT_SABRINA, VAR_TEMP_x400A
+	get_phone_book_rematch PHONE_CONTACT_FALKNER, VAR_TEMP_x400B
+	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x400C
+	get_phone_book_rematch PHONE_CONTACT_MORTY, VAR_TEMP_x400D
+	get_phone_book_rematch PHONE_CONTACT_JASMINE, VAR_TEMP_x400E
+	get_phone_book_rematch PHONE_CONTACT_PRYCE, VAR_TEMP_x400F
 	compare VAR_TEMP_x4003, 0
 	goto_if_ne _00C9
 	setflag FLAG_UNK_2B8

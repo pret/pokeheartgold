@@ -197,7 +197,7 @@ _02BD:
 	npc_msg msg_0572_T24_00008
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 32
+	register_gear_number PHONE_CONTACT_CHUCK
 _02CD:
 	npc_msg msg_0572_T24_00009
 	waitbutton

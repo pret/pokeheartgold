@@ -49,7 +49,7 @@ _0089:
 	npc_msg msg_0132_D46R0101_00001
 	play_fanfare SEQ_ME_POKEGEAR_REGIST
 	wait_fanfare
-	register_gear_number 34
+	register_gear_number PHONE_CONTACT_BUGSY
 	npc_msg msg_0132_D46R0101_00002
 	waitbutton
 	closemsg
