@@ -74,7 +74,7 @@ extern BOOL ScrCmd_070(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_071(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_072(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlaySE(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_074(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_StopSE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitSE(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayCry(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitCry(SCRIPTCONTEXT *ctx);
@@ -280,7 +280,7 @@ extern BOOL ScrCmd_SpecialMartBuy(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DecorationMart(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SealMart(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_OverworldWhiteOut(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_280(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetSpawn(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HealParty(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_283(SCRIPTCONTEXT *ctx);
@@ -929,7 +929,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_071,
     ScrCmd_072,
     ScrCmd_PlaySE,
-    ScrCmd_074,
+    ScrCmd_StopSE,
     ScrCmd_WaitSE,
     ScrCmd_PlayCry,
     ScrCmd_WaitCry,
@@ -1135,7 +1135,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_DecorationMart,
     ScrCmd_SealMart,
     ScrCmd_OverworldWhiteOut,
-    ScrCmd_280,
+    ScrCmd_SetSpawn,
     ScrCmd_GetPlayerGender,
     ScrCmd_HealParty,
     ScrCmd_283,

@@ -32,7 +32,7 @@ scr_seq_D17R0110_003:
 scr_seq_D17R0110_005:
 	compare VAR_TEMP_x400B, 123
 	goto_if_ne _005C
-	scrcmd_074 2153
+	stop_se SEQ_SE_GS_KYOUHUU
 	setvar VAR_TEMP_x400B, 0
 _005C:
 	goto_if_set FLAG_UNK_108, _00C3
@@ -109,7 +109,7 @@ scr_seq_D17R0110_006:
 	wait_movement
 	npc_msg msg_0058_D17R0110_00000
 	closemsg
-	scrcmd_074 2153
+	stop_se SEQ_SE_GS_KYOUHUU
 	fade_screen 4, 4, 0, 0x7FFF
 	wait_fade
 	scrcmd_755
@@ -317,7 +317,7 @@ scr_seq_D17R0110_006:
 	scrcmd_773 0
 	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	show_person obj_D17R0110_hou_obj01
-	scrcmd_375 5
+	scrcmd_375 obj_D17R0110_hou_obj01
 	wait 6, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x7FFF
 	wait_fade

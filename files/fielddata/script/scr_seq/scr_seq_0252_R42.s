@@ -173,7 +173,7 @@ scr_seq_R42_001:
 	lockall
 	play_cry SPECIES_SUICUNE, 0
 	release obj_R42_tsure_poke_618
-	scrcmd_523 11, 2, 90, 2, 0
+	scrcmd_523 obj_R42_tsure_poke_618, 2, 90, 2, 0
 	lock obj_R42_tsure_poke_618
 	wait_cry
 	scrcmd_602 0

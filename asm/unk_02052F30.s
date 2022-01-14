@@ -77,7 +77,7 @@ sub_02052F94: ; 0x02052F94
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r6, r0, #0
 	bl sub_0203B960
 	add r2, r0, #0
@@ -166,7 +166,7 @@ sub_02053038: ; 0x02053038
 	add r6, r1, #0
 	ldr r7, [r0]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_02054F4C
@@ -266,12 +266,12 @@ _0205311E:
 	cmp r6, #0
 	bne _02053134
 	add r0, r7, #0
-	bl sub_0203BB20
+	bl MapHeader_GetSpawnIdForDeathWarp
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	beq _02053134
 	ldr r0, [sp, #4]
-	bl sub_0203B99C
+	bl FlyPoints_SetDeathSpawn
 _02053134:
 	add r0, r4, #0
 	mov r1, #2
@@ -313,7 +313,7 @@ sub_0205316C: ; 0x0205316C
 	bl PlayerProfile_GetTrainerGender
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	ldr r3, [r4, #0x20]
 	ldr r1, [r0, #4]
@@ -340,7 +340,7 @@ _020531B2:
 	bl PlayerProfile_GetTrainerGender
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	ldr r3, [r4, #0x20]
 	ldr r1, [r0, #4]
@@ -404,7 +404,7 @@ sub_0205323C: ; 0x0205323C
 	add r0, r4, #0
 	bl sub_0203B9F4
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
@@ -592,7 +592,7 @@ sub_020533C0: ; 0x020533C0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
@@ -719,7 +719,7 @@ _020534B6:
 	cmp r0, #0
 	beq _02053502
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_0205337C
@@ -2060,7 +2060,7 @@ sub_02053F14: ; 0x02053F14
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	add r4, r0, #0
 	mov r0, #0xb
@@ -2202,7 +2202,7 @@ sub_02054030: ; 0x02054030
 	bl sub_0205064C
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	add r7, r0, #0
 	mov r0, #0xb
@@ -2327,7 +2327,7 @@ sub_0205412C: ; 0x0205412C
 	bl sub_0205064C
 	str r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	ldr r1, [sp]
 	bl sub_02053350
@@ -2370,7 +2370,7 @@ sub_02054190: ; 0x02054190
 	bl sub_0205064C
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	add r1, r0, #0
 	mov r0, #0

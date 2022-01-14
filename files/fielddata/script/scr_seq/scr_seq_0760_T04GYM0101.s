@@ -165,8 +165,8 @@ _0210:
 scr_seq_T04GYM0101_006:
 	scrcmd_814
 	goto_if_set FLAG_HIDE_CERULEAN_GYM_MACHINE_PART, _022F
-	scrcmd_375 8
-	scrcmd_375 9
+	scrcmd_375 obj_T04GYM0101_stop
+	scrcmd_375 obj_T04GYM0101_stop_2
 	end
 
 _022F:

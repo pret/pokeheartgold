@@ -587,7 +587,7 @@ sub_02051D18: ; 0x02051D18
 	bl Sav2_PlayerData_GetOptionsAddr
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	str r0, [sp, #4]
 	cmp r6, #0
 	beq _02051DB6
@@ -1371,7 +1371,7 @@ sub_0205239C: ; 0x0205239C
 	cmp r0, #0
 	beq _0205241E
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B8
 	add r6, r0, #0
 	b _02052434
@@ -1499,7 +1499,7 @@ sub_02052504: ; 0x02052504
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]

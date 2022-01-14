@@ -417,7 +417,7 @@ scr_seq_R25_004:
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
 	release obj_R25_tsure_poke_618
-	scrcmd_523 12, 2, 90, 2, 0
+	scrcmd_523 obj_R25_tsure_poke_618, 2, 90, 2, 0
 	lock obj_R25_tsure_poke_618
 	wait_cry
 	scrcmd_602 0
@@ -528,7 +528,7 @@ scr_seq_R25_007:
 	faceplayer
 	play_cry SPECIES_SUICUNE, 0
 	release obj_R25_tsure_poke_618
-	scrcmd_523 12, 2, 90, 2, 0
+	scrcmd_523 obj_R25_tsure_poke_618, 2, 90, 2, 0
 	lock obj_R25_tsure_poke_618
 	wait_cry
 	setflag FLAG_ENGAGING_STATIC_POKEMON

@@ -2266,7 +2266,7 @@ _02246CD6:
 	strb r0, [r1, #0x18]
 _02246D26:
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	add r3, r0, #0
 	ldr r0, [sp, #0x10]
@@ -2569,7 +2569,7 @@ _02246F88:
 	bl ov02_02248618
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	add r3, r0, #0
 	ldr r0, [sp, #0x1c]
@@ -2716,7 +2716,7 @@ _022470B8:
 	bl ov02_02248618
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	add r3, r0, #0
 	ldr r0, [sp, #8]
@@ -5052,7 +5052,7 @@ ov02_02248244: ; 0x02248244
 	b _02248284
 _02248252:
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B8
 	add r1, r0, #0
 	ldrh r1, [r1]
@@ -13524,8 +13524,8 @@ ov02_0224C1B8: ; 0x0224C1B8
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
 	add r4, r2, #0
-	bl sub_0203B9C4
-	bl sub_0203B964
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
@@ -14379,17 +14379,17 @@ ov02_0224C840: ; 0x0224C840
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
 	add r4, r2, #0
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r6, r0, #0
-	bl sub_0203B994
+	bl FlyPoints_GetDeathSpawn
 	add r1, sp, #0
 	add r7, r0, #0
-	bl sub_0203BA74
+	bl GetFlyWarpData
 	add r0, r6, #0
-	bl sub_0203B964
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	add r0, r7, #0
-	bl sub_0203BAE8
+	bl GetSpecialSpawnWarpData
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	add r1, sp, #0
@@ -14622,8 +14622,8 @@ ov02_0224CA38: ; 0x0224CA38
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
 	add r4, r2, #0
-	bl sub_0203B9C4
-	bl sub_0203B964
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
@@ -18080,7 +18080,7 @@ ov02_0224E35C: ; 0x0224E35C
 	bl SavArray_Flags_get
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B958
 	ldr r0, [r5, #0xc]
 	bl Save_SafariZone_get
@@ -20452,7 +20452,7 @@ ov02_0224F5D0: ; 0x0224F5D0
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	cmp r0, #0
 	beq _0224F5E8
@@ -25778,7 +25778,7 @@ ov02_02251F20: ; 0x02251F20
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x38]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B958
 	add r4, r0, #0
 	ldr r0, [r4]

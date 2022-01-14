@@ -12,7 +12,7 @@
 	.byte 0
 
 scr_seq_P01R0102_map_scripts_2:
-	.short VAR_UNK_40E1, 2, _EV_scr_seq_P01R0102_002 + 1
+	.short VAR_BOAT_DIRECTION, 2, _EV_scr_seq_P01R0102_002 + 1
 	.short 0
 
 	.balign 4, 0

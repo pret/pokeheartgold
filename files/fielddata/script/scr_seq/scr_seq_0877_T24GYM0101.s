@@ -116,7 +116,7 @@ _0153:
 	npc_msg msg_0574_T24GYM0101_00011
 	closemsg
 	setflag FLAG_UNK_981
-	scrcmd_074 2143
+	stop_se SEQ_SE_GS_N_TAKI
 	play_se SEQ_SE_DP_SHIP03
 	play_se SEQ_SE_GS_TAKI2
 	scrcmd_319 16384

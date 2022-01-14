@@ -872,7 +872,7 @@ sub_02050D1C: ; 0x02050D1C
 	bl sub_02050654
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B8
 	str r0, [sp]
 	ldr r0, [r4]
@@ -957,7 +957,7 @@ _02050DD6:
 	cmp r0, #4
 	beq _02050E02
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	add r1, r0, #0
 	add r0, r7, #0

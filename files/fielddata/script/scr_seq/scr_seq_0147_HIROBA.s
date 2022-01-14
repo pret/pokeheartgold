@@ -71,7 +71,7 @@ _00DB:
 	scrcmd_663 VAR_SPECIAL_x8004
 	scrcmd_150
 	setvar VAR_UNK_4137, 1
-	scrcmd_375 255
+	scrcmd_375 obj_player
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

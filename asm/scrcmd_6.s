@@ -179,8 +179,8 @@ ScrCmd_PlaySE: ; 0x02049228
 	.balign 4, 0
 	thumb_func_end ScrCmd_PlaySE
 
-	thumb_func_start ScrCmd_074
-ScrCmd_074: ; 0x02049244
+	thumb_func_start ScrCmd_StopSE
+ScrCmd_StopSE: ; 0x02049244
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -192,7 +192,7 @@ ScrCmd_074: ; 0x02049244
 	bl StopSE
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_074
+	thumb_func_end ScrCmd_StopSE
 
 	thumb_func_start ScrCmd_WaitSE
 ScrCmd_WaitSE: ; 0x02049260

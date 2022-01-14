@@ -28,7 +28,7 @@ scr_seq_D49R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_074 2147
+	stop_se SEQ_SE_GS_N_KANSEI
 	callstd std_play_mom_music
 	goto_if_unset FLAG_UNK_0FA, _006A
 	npc_msg msg_0139_D49R0102_00001

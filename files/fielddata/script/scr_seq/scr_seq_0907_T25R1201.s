@@ -32,7 +32,7 @@ scr_seq_T25R1201_001:
 	end
 
 _005B:
-	scrcmd_375 255
+	scrcmd_375 obj_player
 	return
 
 scr_seq_T25R1201_002:
@@ -59,7 +59,7 @@ _009D:
 _00A7:
 	scrcmd_307 0, 0, 8, 2, 77
 	call _00F5
-	scrcmd_374 255
+	scrcmd_374 obj_player
 	apply_movement obj_player, _0108
 	wait_movement
 	call _00FD
@@ -179,7 +179,7 @@ _024D:
 	call _00F5
 	apply_movement obj_player, _03AC
 	wait_movement
-	scrcmd_375 255
+	scrcmd_375 obj_player
 	apply_movement obj_player, _03BC
 	wait_movement
 	call _00FD

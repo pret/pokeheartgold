@@ -1402,7 +1402,7 @@ sub_0204A6A8: ; 0x0204A6A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]

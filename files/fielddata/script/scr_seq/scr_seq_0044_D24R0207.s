@@ -13,7 +13,7 @@
 scr_seq_D24R0207_000:
 	play_se SEQ_SE_GS_RAKKA01
 	apply_movement obj_player, _0068
-	scrcmd_374 255
+	scrcmd_374 obj_player
 	wait_movement
 	scrcmd_561 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
@@ -29,7 +29,7 @@ scr_seq_D24R0207_001:
 	compare VAR_UNK_40D5, 1
 	goto_if_ne _0064
 	nop_var_490 VAR_UNK_40D5
-	scrcmd_375 255
+	scrcmd_375 obj_player
 _0064:
 	end
 	.byte 0x00, 0x00

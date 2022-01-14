@@ -586,7 +586,7 @@ _0833:
 	fade_out_bgm 0, 30
 	play_se SEQ_SE_GS_TAMASYUTUGEN
 	scrcmd_816
-	scrcmd_074 2366
+	stop_se SEQ_SE_GS_DOWSING_LOOP
 	scrcmd_773 2
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _086E
@@ -633,7 +633,7 @@ _08F6:
 _090C:
 	scrcmd_817 2
 _090F:
-	scrcmd_074 2322
+	stop_se SEQ_SE_GS_TAMASYUTUGEN
 	apply_movement obj_player, _0D0C
 	wait_movement
 	scrcmd_819

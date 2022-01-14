@@ -17,14 +17,14 @@
 	scrdef_end
 
 scr_seq_P01R0301_007:
-	goto_if_unset FLAG_UNK_0EB, _0031
+	goto_if_unset FLAG_BOAT_ARRIVED, _0031
 _0031:
 	end
 
 scr_seq_P01R0301_006:
-	compare VAR_UNK_40E1, 1
+	compare VAR_BOAT_DIRECTION, 1
 	goto_if_le _004F
-	compare VAR_UNK_40E1, 2
+	compare VAR_BOAT_DIRECTION, 2
 	goto_if_ge _0059
 	end
 
@@ -73,7 +73,7 @@ scr_seq_P01R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40E1, 1
+	compare VAR_BOAT_DIRECTION, 1
 	goto_if_gt _00E5
 	goto _00EB
 	.byte 0x16
@@ -82,7 +82,7 @@ _00E5:
 	goto _0138
 
 _00EB:
-	goto_if_set FLAG_UNK_0EB, _0101
+	goto_if_set FLAG_BOAT_ARRIVED, _0101
 	npc_msg msg_0259_P01R0301_00000
 	waitbutton
 	closemsg
@@ -109,7 +109,7 @@ _012D:
 	end
 
 _0138:
-	goto_if_set FLAG_UNK_0EB, _014E
+	goto_if_set FLAG_BOAT_ARRIVED, _014E
 	npc_msg msg_0259_P01R0301_00001
 	waitbutton
 	closemsg
@@ -188,7 +188,7 @@ _023C:
 	hide_person obj_P01R0301_gsgentleman
 	setflag FLAG_UNK_215
 	setvar VAR_UNK_40CB, 2
-	scrcmd_074 2133
+	stop_se SEQ_SE_GS_N_UMIBE
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00

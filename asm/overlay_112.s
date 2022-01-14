@@ -15291,7 +15291,7 @@ ov112_021ED530: ; 0x021ED530
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B958
 	ldr r1, [r0]
 	ldr r0, _021ED57C ; =0x000001F3

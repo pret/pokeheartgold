@@ -33,7 +33,7 @@ scr_seq_0004_000:
 	end
 
 _0066:
-	scrcmd_375 255
+	scrcmd_375 obj_player
 	end
 
 scr_seq_0004_012:
@@ -158,7 +158,7 @@ _0222:
 
 _027A:
 	setvar VAR_UNK_4133, 0
-	scrcmd_374 255
+	scrcmd_374 obj_player
 	releaseall
 	end
 

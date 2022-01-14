@@ -31,7 +31,7 @@ _003D:
 _0057:
 	move_person obj_D45R0102_sakaki, 6, 1, 6, 1
 	move_person obj_D45R0102_var_1, 5, 1, 7, 0
-	scrcmd_375 253
+	scrcmd_375 obj_partner_poke
 	scrcmd_606
 	end
 
@@ -81,7 +81,7 @@ scr_seq_D45R0102_001:
 	play_se SEQ_SE_PL_FR03
 	play_bgm SEQ_GS_SENKYO
 	npc_msg msg_0131_D45R0102_00002
-	scrcmd_074 1432
+	stop_se SEQ_SE_PL_FR03
 	closemsg
 	apply_movement obj_D45R0102_sakaki, _032C
 	wait_movement
@@ -108,7 +108,7 @@ scr_seq_D45R0102_001:
 	scrcmd_081 0
 	play_se SEQ_SE_PL_FR03
 	npc_msg msg_0131_D45R0102_00005
-	scrcmd_074 1432
+	stop_se SEQ_SE_PL_FR03
 	closemsg
 	apply_movement obj_D45R0102_var_1, _03D4
 	wait_movement

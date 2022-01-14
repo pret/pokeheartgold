@@ -1524,7 +1524,7 @@ _1640:
 	goto _1677
 
 _1663:
-	scrcmd_074 2132
+	stop_se SEQ_SE_GS_N_SESERAGI
 	apply_movement obj_player, _1724
 	apply_movement obj_D36R0101_gsmiddleman1, _174C
 _1677:

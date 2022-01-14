@@ -4904,7 +4904,7 @@ sub_0206BD00: ; 0x0206BD00
 sub_0206BD10: ; 0x0206BD10
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B958
 	mov r1, #0x4e
 	ldr r2, [r0]
@@ -4935,7 +4935,7 @@ _0206BD40:
 sub_0206BD44: ; 0x0206BD44
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B958
 	ldr r2, [r0]
 	ldr r1, _0206BD78 ; =0x0000013A
@@ -4967,7 +4967,7 @@ _0206BD78: .word 0x0000013A
 sub_0206BD7C: ; 0x0206BD7C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B958
 	mov r1, #0x4f
 	ldr r2, [r0]
@@ -8766,7 +8766,7 @@ sub_0206DB58: ; 0x0206DB58
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	mov r1, #0x60
 	str r1, [sp]
 	sub r1, #0x61

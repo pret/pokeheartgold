@@ -33,12 +33,12 @@ _0033:
 	end
 
 scr_seq_D37R0104_005:
-	scrcmd_375 31
-	scrcmd_375 30
-	scrcmd_375 29
-	scrcmd_375 32
-	scrcmd_375 33
-	scrcmd_375 34
+	scrcmd_375 obj_D37R0104_stop_3
+	scrcmd_375 obj_D37R0104_stop_2
+	scrcmd_375 obj_D37R0104_stop
+	scrcmd_375 obj_D37R0104_stop_4
+	scrcmd_375 obj_D37R0104_stop_5
+	scrcmd_375 obj_D37R0104_stop_6
 	goto_if_set FLAG_UNK_09B, _0096
 	end
 

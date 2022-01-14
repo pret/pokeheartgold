@@ -123,7 +123,7 @@ gScriptCmdTable:
 	.word ScrCmd_071                                    ; 071
 	.word ScrCmd_072                                    ; 072
 	.word ScrCmd_PlaySE                                 ; 073
-	.word ScrCmd_074                                    ; 074
+	.word ScrCmd_StopSE                                    ; 074
 	.word ScrCmd_WaitSE                                 ; 075
 	.word ScrCmd_PlayCry                                    ; 076
 	.word ScrCmd_WaitCry                                    ; 077
@@ -329,7 +329,7 @@ gScriptCmdTable:
 	.word ScrCmd_DecorationMart                                    ; 277
 	.word ScrCmd_SealMart                                    ; 278
 	.word ScrCmd_OverworldWhiteOut                                    ; 279
-	.word ScrCmd_280                                    ; 280
+	.word ScrCmd_SetSpawn                                    ; 280
 	.word ScrCmd_GetPlayerGender                        ; 281
 	.word ScrCmd_HealParty                              ; 282
 	.word ScrCmd_283                                    ; 283
@@ -5176,7 +5176,7 @@ ScrCmd_684: ; 0x02042948
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	strh r0, [r4]
 	mov r0, #0
@@ -6743,7 +6743,7 @@ ScrCmd_445: ; 0x02043548
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B960
 	add r5, r0, #0
 	add r0, r4, #0
@@ -6933,7 +6933,7 @@ ScrCmd_181: ; 0x020436C4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r5, r0, #0
 	mov r1, #0xc
 	bl sub_0203B98C
@@ -7598,7 +7598,7 @@ ScrCmd_240: ; 0x02043BA4
 	str r0, [sp, #0x10]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r1, sp, #0
 	bl sub_0203B96C
 	mov r0, #0
@@ -7621,7 +7621,7 @@ ScrCmd_241: ; 0x02043C24
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	ldr r0, [r0]
 	bl ov01_021EE81C
@@ -8857,8 +8857,8 @@ ScrCmd_OverworldWhiteOut: ; 0x020445C0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_OverworldWhiteOut
 
-	thumb_func_start ScrCmd_280
-ScrCmd_280: ; 0x020445CC
+	thumb_func_start ScrCmd_SetSpawn
+ScrCmd_SetSpawn: ; 0x020445CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -8871,13 +8871,13 @@ ScrCmd_280: ; 0x020445CC
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r1, r4, #0
-	bl sub_0203B99C
+	bl FlyPoints_SetDeathSpawn
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_280
+	thumb_func_end ScrCmd_SetSpawn
 
 	thumb_func_start ScrCmd_GetPlayerGender
 ScrCmd_GetPlayerGender: ; 0x020445F8
@@ -10388,7 +10388,7 @@ ScrCmd_447: ; 0x02045188
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x80
@@ -12642,8 +12642,8 @@ ScrCmd_582: ; 0x02046300
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B964
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	str r4, [r0]
 	str r6, [r0, #8]
 	mov r1, #0

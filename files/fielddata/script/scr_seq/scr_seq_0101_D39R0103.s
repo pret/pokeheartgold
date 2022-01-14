@@ -14,7 +14,7 @@ scr_seq_D39R0103_000:
 	play_se SEQ_SE_GS_RAKKA01
 	apply_movement obj_player, _0050
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_374 255
+	scrcmd_374 obj_player
 	wait_movement
 	scrcmd_561 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
@@ -24,7 +24,7 @@ scr_seq_D39R0103_000:
 scr_seq_D39R0103_001:
 	compare VAR_UNK_40AB, 1
 	goto_if_ne _004D
-	scrcmd_375 255
+	scrcmd_375 obj_player
 _004D:
 	end
 	.byte 0x00

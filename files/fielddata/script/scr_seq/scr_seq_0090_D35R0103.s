@@ -657,7 +657,7 @@ _08F0:
 	hide_person obj_D35R0103_tsure_poke_607
 	setflag FLAG_UNK_1E5
 	releaseall
-	scrcmd_074 2141
+	stop_se SEQ_SE_GS_N_MOTER
 	setflag FLAG_RED_GYARADOS_MEET
 	clearflag FLAG_HIDE_ROUTE_43_GATE_GUARD
 	setflag FLAG_HIDE_ROUTE_43_GATE_ROCKETS

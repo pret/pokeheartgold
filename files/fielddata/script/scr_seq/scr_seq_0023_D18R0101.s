@@ -53,7 +53,7 @@ _006E:
 	scrcmd_604 48
 	hide_person obj_D18R0101_gsrivel
 	callstd std_fade_end_rival_outro_music
-	setflag FLAG_UNK_1C6
+	setflag FLAG_HIDE_BURNED_TOWER_1F_RIVAL
 	setvar VAR_UNK_40A6, 1
 	releaseall
 	end

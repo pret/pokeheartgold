@@ -155,7 +155,7 @@ scr_seq_D35R0102_000:
 	wait_movement
 	play_se SEQ_SE_GS_AJITO_SIREN
 	scrcmd_709
-	scrcmd_074 2173
+	stop_se SEQ_SE_GS_AJITO_SIREN
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 4
 	goto_if_ne _02C4

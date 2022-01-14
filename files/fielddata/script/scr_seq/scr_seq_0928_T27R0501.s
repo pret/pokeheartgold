@@ -27,7 +27,7 @@
 scr_seq_T27R0501_013:
 	compare VAR_UNK_410C, 1
 	goto_if_gt _0057
-	scrcmd_375 12
+	scrcmd_375 obj_T27R0501_rocketm_2
 _0057:
 	compare VAR_UNK_410C, 0
 	goto_if_ne _007C
@@ -37,7 +37,7 @@ _007C:
 	compare VAR_TEMP_x4009, 222
 	goto_if_ne _0110
 	move_person obj_T27R0501_rocketm, 29, 0, 29, 1
-	scrcmd_375 9
+	scrcmd_375 obj_T27R0501_rocketm
 	get_player_facing VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _00BC
@@ -59,7 +59,7 @@ _00DB:
 _00FA:
 	move_person obj_T27R0501_rocketm_2, 7, 0, 6, 2
 _0106:
-	scrcmd_374 12
+	scrcmd_374 obj_T27R0501_rocketm_2
 	setvar VAR_TEMP_x4009, 0
 _0110:
 	compare VAR_TEMP_x400A, 10

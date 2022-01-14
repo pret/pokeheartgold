@@ -1,3 +1,4 @@
+#include "constants/moves.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -8702,7 +8703,7 @@ ov08_0222057C: ; 0x0222057C
 	ldr r0, [r5, r0]
 	bl BufferBoxMonNickname
 	ldr r0, _022205D8 ; =0x00001FAC
-	ldr r2, _022205DC ; =0x00000175
+	ldr r2, _022205DC ; =MOVE_EMBARGO
 	ldr r0, [r5, r0]
 	mov r1, #1
 	bl BufferMoveName
@@ -8718,7 +8719,7 @@ ov08_0222057C: ; 0x0222057C
 	.balign 4, 0
 _022205D4: .word 0x00001FA8
 _022205D8: .word 0x00001FAC
-_022205DC: .word 0x00000175
+_022205DC: .word MOVE_EMBARGO
 	thumb_func_end ov08_0222057C
 
 	thumb_func_start ov08_022205E0
@@ -13462,7 +13463,7 @@ _02222B9C:
 	mov r1, #0
 	bl BufferBoxMonNickname
 	ldr r0, [r5, #0x14]
-	ldr r2, _02222D70 ; =0x00000175
+	ldr r2, _02222D70 ; =MOVE_EMBARGO
 	mov r1, #1
 	bl BufferMoveName
 	ldr r0, [r5, #0x14]
@@ -13638,7 +13639,7 @@ _02222D66:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02222D6C: .word 0x0000114D
-_02222D70: .word 0x00000175
+_02222D70: .word MOVE_EMBARGO
 _02222D74: .word 0x0000114B
 	thumb_func_end ov08_02222B8C
 

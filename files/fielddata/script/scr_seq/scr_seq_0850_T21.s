@@ -175,7 +175,7 @@ _0228:
 	scrcmd_604 48
 	npc_msg msg_0550_T21_00005
 	closemsg
-	scrcmd_074 2133
+	stop_se SEQ_SE_GS_N_UMIBE
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55

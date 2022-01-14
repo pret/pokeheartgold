@@ -19,7 +19,7 @@ scr_seq_0071_001:
 	end
 
 _001F:
-	scrcmd_375 255
+	scrcmd_375 obj_player
 	return
 
 scr_seq_0071_002:
@@ -48,7 +48,7 @@ _0090:
 	scrcmd_308 77
 	apply_movement 0, _0140
 	wait_movement
-	scrcmd_374 255
+	scrcmd_374 obj_player
 	apply_movement obj_player, _014C
 	wait_movement
 	scrcmd_311 77

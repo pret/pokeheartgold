@@ -12,15 +12,15 @@
 	scrdef_end
 
 scr_seq_D37R0103_003:
-	scrcmd_375 9
-	scrcmd_375 10
-	scrcmd_375 11
-	scrcmd_375 12
-	scrcmd_375 13
-	scrcmd_375 14
-	scrcmd_375 15
-	scrcmd_375 16
-	scrcmd_375 17
+	scrcmd_375 obj_D37R0103_stop
+	scrcmd_375 obj_D37R0103_stop_2
+	scrcmd_375 obj_D37R0103_stop_3
+	scrcmd_375 obj_D37R0103_stop_4
+	scrcmd_375 obj_D37R0103_stop_5
+	scrcmd_375 obj_D37R0103_stop_6
+	scrcmd_375 obj_D37R0103_stop_7
+	scrcmd_375 obj_D37R0103_stop_8
+	scrcmd_375 obj_D37R0103_stop_9
 	goto_if_set FLAG_UNK_096, _0059
 	goto_if_set FLAG_UNK_097, _01BE
 	goto_if_set FLAG_UNK_098, _0207

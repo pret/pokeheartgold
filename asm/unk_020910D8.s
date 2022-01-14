@@ -3563,9 +3563,9 @@ sub_02092BE8: ; 0x02092BE8
 	str r2, [sp]
 	bl SavArray_Flags_get
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r7, r0, #0
-	bl sub_0203B964
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r6, r0, #0
 	add r0, r7, #0
 	bl sub_0203B958

@@ -25,7 +25,7 @@ _020F64C4:
 	.word 0x00000002, 0x00000000, SavArray_Party_sizeof, SavArray_Party_init
 	.word 0x00000003, 0x00000000, Sav2_Bag_sizeof, Sav2_Bag_init
 	.word 0x00000004, 0x00000000, SavArray_Flags_sizeof, SavArray_Flags_init
-	.word 0x00000005, 0x00000000, sub_0203B91C, sub_0203B938
+	.word 0x00000005, 0x00000000, Save_FlyPoints_sizeof, Save_FlyPoints_init
 	.word 0x00000006, 0x00000000, Save_Pokedex_sizeof, Save_Pokedex_init
 	.word 0x00000007, 0x00000000, Sav2_Daycare_sizeof, Sav2_Daycare_init
 	.word 0x00000008, 0x00000000, sub_0202AEC0, sub_0202AED4

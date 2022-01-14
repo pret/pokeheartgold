@@ -176,6 +176,7 @@ class NormalScriptParser(ScriptParserBase):
             'sprites': parse_c_header(os.path.join(project_root, 'include/constants/sprites.h'), 'SPRITE_'),
             'maps': parse_c_header(os.path.join(project_root, 'include/constants/maps.h'), 'MAP_'),
             'phone_contact': parse_c_header(os.path.join(project_root, 'include/constants/phone_contacts.h'), 'PHONE_CONTACT_'),
+            'spawn': parse_c_header(os.path.join(project_root, 'include/constants/spawns.h'), 'SPAWN_'),
         }
         self.constants['stdscr'] |= {
             x + 2999: f'std_trainer({y})' for x, y in self.constants['trainer'].items()
@@ -451,7 +452,7 @@ class NormalScriptParser(ScriptParserBase):
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants[size].get(value, value), pc
-            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact':
+            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact' | 'spawn':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants['var'].get(value, self.constants[size].get(value, value)), pc

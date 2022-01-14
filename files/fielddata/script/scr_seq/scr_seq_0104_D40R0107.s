@@ -37,15 +37,15 @@ _003B:
 
 scr_seq_D40R0107_004:
 	goto_if_set FLAG_HIDE_WHIRL_ISLAND_LUGIA, _007C
-	scrcmd_375 6
-	scrcmd_375 7
-	scrcmd_375 8
-	scrcmd_375 9
-	scrcmd_375 10
+	scrcmd_375 obj_D40R0107_stop
+	scrcmd_375 obj_D40R0107_stop_2
+	scrcmd_375 obj_D40R0107_stop_3
+	scrcmd_375 obj_D40R0107_stop_4
+	scrcmd_375 obj_D40R0107_stop_5
 _007C:
 	compare VAR_TEMP_x400B, 123
 	goto_if_ne _0093
-	scrcmd_074 2143
+	stop_se SEQ_SE_GS_N_TAKI
 	setvar VAR_TEMP_x400B, 0
 _0093:
 	goto_if_set FLAG_UNK_109, _00FA
@@ -123,7 +123,7 @@ scr_seq_D40R0107_005:
 	wait_movement
 	npc_msg msg_0125_D40R0107_00000
 	closemsg
-	scrcmd_074 2143
+	stop_se SEQ_SE_GS_N_TAKI
 	fade_screen 4, 4, 0, 0x7FFF
 	wait_fade
 	scrcmd_755
@@ -403,7 +403,7 @@ scr_seq_D40R0107_005:
 	wait_fade
 	clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
 	show_person obj_D40R0107_lug_obj01
-	scrcmd_375 5
+	scrcmd_375 obj_D40R0107_lug_obj01
 	show_person obj_D40R0107_stop
 	show_person obj_D40R0107_stop_2
 	show_person obj_D40R0107_stop_3

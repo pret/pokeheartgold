@@ -185,7 +185,7 @@ _0272:
 _027C:
 	play_cry SPECIES_SUICUNE, 0
 	release obj_R14_tsure_poke_618
-	scrcmd_523 11, 2, 90, 2, 0
+	scrcmd_523 obj_R14_tsure_poke_618, 2, 90, 2, 0
 	lock obj_R14_tsure_poke_618
 	wait_cry
 	compare VAR_TEMP_x4000, 1358

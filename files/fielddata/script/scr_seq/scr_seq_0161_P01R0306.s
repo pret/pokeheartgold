@@ -76,7 +76,7 @@ _00E2:
 	setflag FLAG_UNK_22A
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
-	setflag FLAG_UNK_0EB
+	setflag FLAG_BOAT_ARRIVED
 	npc_msg msg_0262_P01R0306_00006
 	waitbutton
 	closemsg

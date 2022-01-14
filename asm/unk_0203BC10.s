@@ -1092,7 +1092,7 @@ _0203C43C:
 	pop {r3, pc}
 _0203C44A:
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	bl sub_0205C7C8
 	pop {r3, pc}
@@ -1728,12 +1728,12 @@ sub_0203C920: ; 0x0203C920
 	bl sub_02050650
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r5, r0, #0
 	bl sub_0203B958
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0203B964
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	str r0, [sp, #8]
 	mov r0, #0xb
 	mov r1, #0x1c

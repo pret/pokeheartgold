@@ -84,7 +84,7 @@ BOOL ScrCmd_072(SCRIPTCONTEXT* ctx);
 
 // Sound-related commands
 BOOL ScrCmd_PlaySE(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_074(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_StopSE(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_WaitSE(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_PlayCry(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_WaitCry(SCRIPTCONTEXT* ctx);
@@ -305,7 +305,7 @@ BOOL ScrCmd_SpecialMartBuy(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_DecorationMart(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_SealMart(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_OverworldWhiteOut(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_280(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_SetSpawn(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetPlayerGender(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_HealParty(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_283(SCRIPTCONTEXT* ctx);

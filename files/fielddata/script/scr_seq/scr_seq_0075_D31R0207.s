@@ -88,7 +88,7 @@ scr_seq_D31R0207_007:
 	end
 
 _0142:
-	scrcmd_375 255
+	scrcmd_375 obj_player
 	return
 
 _0148:
@@ -331,7 +331,7 @@ _048B:
 	call _046D
 	apply_movement obj_D31R0207_bfsw1, _06AC
 	wait_movement
-	scrcmd_374 255
+	scrcmd_374 obj_player
 	apply_movement obj_player, _069C
 	wait_movement
 	call _0480

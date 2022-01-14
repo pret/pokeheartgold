@@ -51,7 +51,7 @@ scr_seq_D52R0103_001:
 	scrcmd_602 1
 	scrcmd_604 48
 	release obj_D52R0103_tsure_poke_624
-	scrcmd_523 0, 8, 90, 3, 0
+	scrcmd_523 obj_D52R0103_tsure_poke_624, 8, 90, 3, 0
 	play_cry SPECIES_RAYQUAZA, 0
 	npc_msg msg_0150_D52R0103_00000
 	wait_cry
@@ -71,7 +71,7 @@ scr_seq_D52R0103_000:
 	lockall
 	faceplayer
 	release obj_D52R0103_tsure_poke_624
-	scrcmd_523 0, 8, 90, 3, 0
+	scrcmd_523 obj_D52R0103_tsure_poke_624, 8, 90, 3, 0
 	play_cry SPECIES_RAYQUAZA, 0
 	npc_msg msg_0150_D52R0103_00000
 	wait_cry

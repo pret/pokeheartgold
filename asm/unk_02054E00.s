@@ -178,7 +178,7 @@ sub_02054F28: ; 0x02054F28
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B980
 	strh r4, [r0]
 	pop {r4, pc}
@@ -189,7 +189,7 @@ sub_02054F28: ; 0x02054F28
 sub_02054F3C: ; 0x02054F3C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B980
 	ldrh r0, [r0]
 	pop {r3, pc}
@@ -199,7 +199,7 @@ sub_02054F3C: ; 0x02054F3C
 sub_02054F4C: ; 0x02054F4C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B980
 	mov r1, #0
 	strh r1, [r0]

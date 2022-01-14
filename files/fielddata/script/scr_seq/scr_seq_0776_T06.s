@@ -200,7 +200,7 @@ _0270:
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
 	release obj_T06_tsure_poke_618
-	scrcmd_523 15, 2, 90, 2, 0
+	scrcmd_523 obj_T06_tsure_poke_618, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
 	wait_cry
 	callstd std_play_eusine_music
@@ -262,7 +262,7 @@ _037F:
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
 	release obj_T06_tsure_poke_618
-	scrcmd_523 15, 2, 90, 2, 0
+	scrcmd_523 obj_T06_tsure_poke_618, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
 	wait_cry
 	callstd std_play_eusine_music
@@ -397,7 +397,7 @@ scr_seq_T06_012:
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
 	release obj_T06_tsure_poke_618
-	scrcmd_523 15, 2, 90, 2, 0
+	scrcmd_523 obj_T06_tsure_poke_618, 2, 90, 2, 0
 	lock obj_T06_tsure_poke_618
 	wait_cry
 	callstd std_play_eusine_music

@@ -15,7 +15,7 @@
 	scrdef_end
 
 scr_seq_P01R0102_001:
-	compare VAR_UNK_40E1, 2
+	compare VAR_BOAT_DIRECTION, 2
 	goto_if_eq _002D
 	end
 
@@ -72,7 +72,7 @@ scr_seq_P01R0102_002:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	setvar VAR_UNK_40E1, 0
+	setvar VAR_BOAT_DIRECTION, 0
 	clearflag FLAG_UNK_092
 	releaseall
 	end
@@ -114,7 +114,7 @@ scr_seq_P01R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0EB, _0211
+	goto_if_set FLAG_BOAT_ARRIVED, _0211
 	npc_msg msg_0256_P01R0102_00000
 	closemsg
 	scrcmd_602 0

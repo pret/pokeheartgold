@@ -12,8 +12,8 @@
 
 scr_seq_T10R0201_002:
 	goto_if_set FLAG_DEFEATED_WILL, _0023
-	scrcmd_375 3
-	scrcmd_375 4
+	scrcmd_375 obj_T10R0201_stop
+	scrcmd_375 obj_T10R0201_stop_2
 	end
 
 _0023:

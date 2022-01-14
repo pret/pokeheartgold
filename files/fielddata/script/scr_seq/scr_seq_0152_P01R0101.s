@@ -143,9 +143,9 @@ scr_seq_P01R0101_000:
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_TEMP_x4002, 1
-	setvar VAR_UNK_40E1, 1
+	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
-	clearflag FLAG_UNK_0EB
+	clearflag FLAG_BOAT_ARRIVED
 	setflag FLAG_UNK_22C
 	setflag FLAG_UNK_22B
 	releaseall
@@ -202,9 +202,9 @@ _029B:
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_TEMP_x4002, 1
-	setvar VAR_UNK_40E1, 1
+	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
-	clearflag FLAG_UNK_0EB
+	clearflag FLAG_BOAT_ARRIVED
 	setflag FLAG_UNK_22A
 	clearflag FLAG_UNK_22B
 	setflag FLAG_UNK_22C

@@ -58,7 +58,7 @@ scr_seq_D24R0205_000:
 	lockall
 	play_se SEQ_SE_GS_RAKKA01
 	apply_movement obj_player, _018C
-	scrcmd_374 255
+	scrcmd_374 obj_player
 	wait_movement
 	scrcmd_561 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
@@ -99,7 +99,7 @@ _016F:
 scr_seq_D24R0205_001:
 	compare VAR_UNK_40CE, 1
 	goto_if_ne _018A
-	scrcmd_375 255
+	scrcmd_375 obj_player
 _018A:
 	end
 
@@ -158,7 +158,7 @@ scr_seq_D24R0205_006:
 	wait 1, VAR_SPECIAL_x800C
 	fade_screen 6, 6, 1, 0x0000
 	wait_fade
-	scrcmd_074 2305
+	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	apply_movement obj_D24R0205_suit, _02E4
 	wait_movement
 	npc_msg msg_0076_D24R0205_00008
@@ -169,7 +169,7 @@ scr_seq_D24R0205_006:
 	wait 1, VAR_SPECIAL_x800C
 	fade_screen 6, 6, 1, 0x0000
 	wait_fade
-	scrcmd_074 2305
+	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 3
 	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
 	setflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
@@ -280,7 +280,7 @@ scr_seq_D24R0205_009:
 	wait 1, VAR_SPECIAL_x800C
 	fade_screen 6, 6, 1, 0x0000
 	wait_fade
-	scrcmd_074 2305
+	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	apply_movement obj_player, _0468
 	wait_movement
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
@@ -289,7 +289,7 @@ scr_seq_D24R0205_009:
 	wait 1, VAR_SPECIAL_x800C
 	fade_screen 6, 6, 1, 0x0000
 	wait_fade
-	scrcmd_074 2305
+	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
 	setvar VAR_UNK_4104, 1
 	setflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA

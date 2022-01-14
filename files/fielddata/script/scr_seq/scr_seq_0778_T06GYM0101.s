@@ -101,12 +101,12 @@ _014A:
 
 scr_seq_T06GYM0101_022:
 	goto_if_set FLAG_UNK_31A, _0175
-	scrcmd_375 0
-	scrcmd_375 1
-	scrcmd_375 2
-	scrcmd_375 3
-	scrcmd_375 4
-	scrcmd_375 5
+	scrcmd_375 obj_T06GYM0101_stop
+	scrcmd_375 obj_T06GYM0101_stop_2
+	scrcmd_375 obj_T06GYM0101_stop_3
+	scrcmd_375 obj_T06GYM0101_stop_4
+	scrcmd_375 obj_T06GYM0101_stop_5
+	scrcmd_375 obj_T06GYM0101_stop_6
 	end
 
 _0175:
@@ -216,7 +216,7 @@ _02AA:
 	closemsg
 	scrcmd_321 1, 0
 	setflag FLAG_UNK_9A6
-	scrcmd_074 2150
+	stop_se SEQ_SE_GS_DENGEKIBARIA
 	npc_msg msg_0485_T06GYM0101_00012
 	waitbutton
 	closemsg

@@ -476,9 +476,9 @@
       ]
     },
     {
-      "name": "scrcmd_074",
+      "name": "stop_se",
       "args": [
-        2
+        "sound"
       ]
     },
     {
@@ -1737,9 +1737,9 @@
       "args": []
     },
     {
-      "name": "scrcmd_280",
+      "name": "set_spawn",
       "args": [
-        2
+        "spawn"
       ]
     },
     {
@@ -2276,13 +2276,13 @@
     {
       "name": "scrcmd_374",
       "args": [
-        2
+        "object2"
       ]
     },
     {
       "name": "scrcmd_375",
       "args": [
-        "var"
+        "object2"
       ]
     },
     {
@@ -3294,7 +3294,7 @@
     {
       "name": "scrcmd_523",
       "args": [
-        2,
+        "object2",
         2,
         2,
         2,

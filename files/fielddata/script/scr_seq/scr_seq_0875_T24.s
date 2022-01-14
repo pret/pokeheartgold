@@ -98,7 +98,7 @@ scr_seq_T24_002:
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
 	release obj_T24_tsure_poke_618
-	scrcmd_523 5, 2, 90, 2, 0
+	scrcmd_523 obj_T24_tsure_poke_618, 2, 90, 2, 0
 	lock obj_T24_tsure_poke_618
 	wait_cry
 	apply_movement obj_T24_tsure_poke_618, _02F4

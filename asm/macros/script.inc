@@ -488,7 +488,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_074 arg0
+	.macro stop_se arg0
 	.short 74
 	.short \arg0
 	.endm
@@ -1627,7 +1627,7 @@
 	.short 279
 	.endm
 
-	.macro scrcmd_280 arg0
+	.macro set_spawn arg0
 	.short 280
 	.short \arg0
 	.endm

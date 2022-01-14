@@ -25,17 +25,17 @@ scr_seq_D18R0102_000:
 	lockall
 	play_cry SPECIES_RAIKOU, 0
 	release obj_D18R0102_tsure_poke_616
-	scrcmd_523 2, 2, 90, 2, 0
+	scrcmd_523 obj_D18R0102_tsure_poke_616, 2, 90, 2, 0
 	lock obj_D18R0102_tsure_poke_616
 	wait_cry
 	play_cry SPECIES_ENTEI, 0
 	release obj_D18R0102_tsure_poke_617
-	scrcmd_523 1, 2, 90, 2, 0
+	scrcmd_523 obj_D18R0102_tsure_poke_617, 2, 90, 2, 0
 	lock obj_D18R0102_tsure_poke_617
 	wait_cry
 	play_cry SPECIES_SUICUNE, 0
 	release obj_D18R0102_tsure_poke_618
-	scrcmd_523 0, 2, 90, 2, 0
+	scrcmd_523 obj_D18R0102_tsure_poke_618, 2, 90, 2, 0
 	lock obj_D18R0102_tsure_poke_618
 	wait_cry
 	apply_movement obj_D18R0102_tsure_poke_616, _0224
@@ -68,16 +68,16 @@ _00E2:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	setflag FLAG_HIDE_BURNED_TOWER_RAIKOU
-	setflag FLAG_HIDE_BURNED_TOWER_ENTEI
-	setflag FLAG_HIDE_BURNED_TOWER_SUICUNE
+	setflag FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
+	setflag FLAG_HIDE_BURNED_TOWER_B1F_ENTEI
+	setflag FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE
 	hide_person obj_D18R0102_tsure_poke_616
 	hide_person obj_D18R0102_tsure_poke_617
 	hide_person obj_D18R0102_tsure_poke_618
 	create_roamer 0
 	create_roamer 1
 	wait 15, VAR_SPECIAL_x800C
-	clearflag FLAG_HIDE_BURNED_TOWER_EUSINE
+	clearflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
 	play_se SEQ_SE_DP_KAIDAN2
 	show_person obj_D18R0102_minaki
 	lock obj_D18R0102_minaki
@@ -122,12 +122,12 @@ _01D4:
 	wait 2, VAR_SPECIAL_x800C
 	hide_person obj_D18R0102_minaki
 	wait_se SEQ_SE_DP_KAIDAN2
-	setflag FLAG_HIDE_BURNED_TOWER_EUSINE
-	setflag FLAG_UNK_1C7
-	setflag FLAG_UNK_1CC
-	setflag FLAG_UNK_1DE
-	setflag FLAG_UNK_1DF
-	setflag FLAG_UNK_1E0
+	setflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
+	setflag FLAG_HIDE_BURNED_TOWER_1F_EUSINE
+	setflag FLAG_HIDE_BURNED_TOWER_1F_MORTY
+	setflag FLAG_HIDE_BURNED_TOWER_1F_RAIKOU
+	setflag FLAG_HIDE_BURNED_TOWER_1F_ENTEI
+	setflag FLAG_HIDE_BURNED_TOWER_1F_SUICUNE
 	clearflag FLAG_HIDE_CIANWOOD_SUICUNE
 	setvar VAR_UNK_40A1, 1
 	setvar VAR_UNK_4076, 1

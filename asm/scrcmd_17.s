@@ -53,7 +53,7 @@ ScrCmd_292: ; 0x0204E654
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	bl sub_0205C7C8
 	strh r0, [r4]
@@ -68,7 +68,7 @@ ScrCmd_GiveRunningShoes: ; 0x0204E684
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	mov r1, #1
 	bl sub_0205C7DC

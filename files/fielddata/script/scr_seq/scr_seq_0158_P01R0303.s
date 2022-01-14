@@ -191,11 +191,11 @@ _0268:
 	end
 
 _0279:
-	goto_if_set FLAG_UNK_0EB, _02AD
+	goto_if_set FLAG_BOAT_ARRIVED, _02AD
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
-	setflag FLAG_UNK_0EB
-	compare VAR_UNK_40E1, 1
+	setflag FLAG_BOAT_ARRIVED
+	compare VAR_BOAT_DIRECTION, 1
 	goto_if_ne _02A6
 	npc_msg msg_0261_P01R0303_00003
 	goto _02A9

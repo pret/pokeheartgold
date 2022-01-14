@@ -25987,7 +25987,7 @@ sub_02067AE4: ; 0x02067AE4
 	bl sub_02066910
 _02067B56:
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B9B4
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -26281,7 +26281,7 @@ _02067D8C:
 	ldr r0, [r4, #0x14]
 	bl ov02_02249548
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r7, r0, #0
 	ldrh r0, [r4, #8]
 	bl sub_0203BB50
@@ -26292,12 +26292,12 @@ _02067D8C:
 _02067DB4:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0203BA74
+	bl GetFlyWarpData
 	add r0, r7, #0
-	bl sub_0203B964
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0203BAE8
+	bl GetSpecialSpawnWarpData
 	ldr r0, [sp, #0x14]
 	mov r2, #1
 	str r0, [sp]
@@ -26446,7 +26446,7 @@ _02067ED8:
 	strh r0, [r4, #0xc]
 _02067EEE:
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B984
 	cmp r0, #0xb
 	bne _02067F04

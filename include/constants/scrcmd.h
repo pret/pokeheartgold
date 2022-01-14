@@ -16,6 +16,7 @@
 #include "constants/sprites.h"
 #include "constants/maps.h"
 #include "constants/phone_contacts.h"
+#include "constants/spawns.h"
 
 #ifdef PM_ASM
 #define lt    0

@@ -1,3 +1,4 @@
+#include "constants/std_script.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -354,17 +355,17 @@ _0205287E: ; jump table
 	.short _02052968 - _0205287E - 2 ; case 6
 _0205288C:
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	add r7, r0, #0
-	bl sub_0203B994
+	bl FlyPoints_GetDeathSpawn
 	add r1, sp, #4
 	str r0, [sp]
-	bl sub_0203BAAC
+	bl GetDeathWarpData
 	add r0, r7, #0
-	bl sub_0203B964
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	ldr r0, [sp]
-	bl sub_0203BAE8
+	bl GetSpecialSpawnWarpData
 	add r0, r6, #0
 	add r1, sp, #4
 	bl sub_020537A8
@@ -424,22 +425,22 @@ _02052928:
 	mov r1, #0x3f
 	mov r2, #3
 	bl SetBlendBrightness
-	bl sub_0203BA70
+	bl GetMomSpawnId
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B994
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetDeathSpawn
 	cmp r7, r0
 	bne _02052954
 	mov r2, #0
-	ldr r1, _02052974 ; =0x000007DC
+	ldr r1, _02052974 ; =std_whited_out_to_mom
 	add r0, r6, #0
 	add r3, r2, #0
 	bl sub_0203FED4
 	b _02052960
 _02052954:
 	mov r2, #0
-	ldr r1, _02052978 ; =0x000007DD
+	ldr r1, _02052978 ; =std_whited_out_to_pokecenter
 	add r0, r6, #0
 	add r3, r2, #0
 	bl sub_0203FED4
@@ -457,8 +458,8 @@ _0205296E:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02052974: .word 0x000007DC
-_02052978: .word 0x000007DD
+_02052974: .word std_whited_out_to_mom
+_02052978: .word std_whited_out_to_pokecenter
 	thumb_func_end sub_02052858
 
 	thumb_func_start sub_0205297C

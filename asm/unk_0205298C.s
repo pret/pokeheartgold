@@ -427,12 +427,12 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	bl Sav2_PlayerData_GetProfileAddr
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
+	bl Save_FlyPoints_get
 	bl sub_0203B968
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0xc]
-	bl sub_0203B9C4
-	bl sub_0203B964
+	bl Save_FlyPoints_get
+	bl FlyPoints_GetSpecialSpawnWarpPtr
 	str r0, [sp, #8]
 	add r0, r6, #0
 	bl CheckGameClearFlag

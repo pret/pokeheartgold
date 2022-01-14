@@ -237,7 +237,7 @@
 #define VAR_UNK_40DE                 0x40DE
 #define VAR_UNK_40DF                 0x40DF
 #define VAR_UNK_40E0                 0x40E0
-#define VAR_UNK_40E1                 0x40E1
+#define VAR_BOAT_DIRECTION                 0x40E1
 #define VAR_UNK_40E2                 0x40E2
 #define VAR_SCENE_SAFARI_ZONE_ENTRANCE                 0x40E3
 #define VAR_UNK_40E4                 0x40E4
