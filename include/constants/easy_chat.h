@@ -1,6 +1,11 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_EASY_CHAT_H
 #define POKEHEARTGOLD_CONSTANTS_EASY_CHAT_H
 
+#include "constants/species.h"
+#include "constants/moves.h"
+#include "constants/pokemon.h"
+#include "constants/abilities.h"
+
 #define EC_GROUP_POKEMON (0)
 #define EC_GROUP_MOVE (1)
 #define EC_GROUP_STATUS (2)
