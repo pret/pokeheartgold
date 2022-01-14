@@ -1674,7 +1674,7 @@ ov17_02202850: ; 0x02202850
 	bl AddTextPrinterParameterized2
 	add r4, #0xfc
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1818,7 +1818,7 @@ _02202994:
 	mov r1, #1
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x3c
 	add r5, #0x7a
 	strb r0, [r5]
@@ -2124,7 +2124,7 @@ _02202C0A:
 	bl NNS_GfdDoVramTransfer
 	add r4, #0x88
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02202C24 ; =0x027E0000
 	ldr r1, _02202C28 ; =0x00003FF8
 	mov r0, #1

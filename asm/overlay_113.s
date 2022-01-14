@@ -703,13 +703,13 @@ _021E5DF6:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x78
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x88
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x98
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl ov113_021E6B1C
 	add sp, #0x10
@@ -756,7 +756,7 @@ ov113_021E5E64: ; 0x021E5E64
 	bl AddTextPrinterParameterized2
 	add r4, #0x68
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -1236,7 +1236,7 @@ ov113_021E6238: ; 0x021E6238
 	lsr r1, r1, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x40]
 	lsr r1, r1, #0x18
@@ -1293,7 +1293,7 @@ ov113_021E62B0: ; 0x021E62B0
 _021E62C0:
 	bl sub_0202061C
 	ldr r0, [r4, #0x40]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E62D8 ; =0x027E0000
 	ldr r1, _021E62DC ; =0x00003FF8
 	mov r0, #1

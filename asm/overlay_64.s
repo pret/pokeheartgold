@@ -179,7 +179,7 @@ _021E5A74:
 ov64_021E5A88: ; 0x021E5A88
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200D034
 	ldr r3, _021E5AA4 ; =0x027E0000
 	ldr r1, _021E5AA8 ; =0x00003FF8
@@ -1063,11 +1063,11 @@ _021E6186:
 	mov r0, #0x42
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	mov r0, #0x42
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1752,9 +1752,9 @@ _021E6656:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r1, _021E6750 ; =0x000001C6
 	mov r0, #1
 	ldrh r2, [r5, r1]
@@ -1786,7 +1786,7 @@ ov64_021E6754: ; 0x021E6754
 	ldr r0, [r4, #4]
 	mov r1, #4
 	mov r2, #0
-	bl sub_0201CB28
+	bl BgFillTilemapBufferAndSchedule
 	pop {r4, pc}
 	thumb_func_end ov64_021E6754
 
@@ -2255,10 +2255,10 @@ _021E6B56:
 	lsl r0, r4, #4
 	str r0, [sp, #0x34]
 	add r0, r6, r0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [sp, #0x34]
 	add r0, r6, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r7, r7, #1
 	add r4, r4, #1
 	cmp r7, #7

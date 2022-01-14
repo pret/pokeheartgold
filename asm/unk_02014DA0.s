@@ -1635,7 +1635,7 @@ ListMenuUpdateCursorObj: ; 0x020157F0
 	add r3, r4, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ListMenuUpdateCursorObj

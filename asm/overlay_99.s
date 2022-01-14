@@ -776,12 +776,12 @@ _021E5ECA:
 	mov r1, #2
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #4]
 	mov r1, #5
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -826,7 +826,7 @@ ov99_021E5F74: ; 0x021E5F74
 	beq _021E5FE0
 	ldr r0, [r5, #4]
 	mov r1, #2
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	asr r6, r0, #2
 	cmp r0, r6
 	bne _021E5F90
@@ -836,12 +836,12 @@ _021E5F90:
 	mov r1, #2
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #4]
 	mov r1, #5
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r7, _021E5FE4 ; =ov99_021E9690
 	mov r4, #0
 _021E5FAC:
@@ -1146,7 +1146,7 @@ _021E6204:
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	add r0, #0x40
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _021E6216:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov99_021E6188
@@ -1176,7 +1176,7 @@ _021E623C:
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #4]
 	add r0, #0xd0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov99_021E6218
 
@@ -1186,7 +1186,7 @@ ov99_021E6250: ; 0x021E6250
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E626C ; =0x027E0000
 	ldr r1, _021E6270 ; =0x00003FF8
 	mov r0, #1
@@ -2029,7 +2029,7 @@ ov99_021E6938: ; 0x021E6938
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6954 ; =0x027E0000
 	ldr r1, _021E6958 ; =0x00003FF8
 	mov r0, #1
@@ -3433,7 +3433,7 @@ _021E73A2:
 	mov r1, #3
 	add r2, sp, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r4, r4, #1
 	cmp r4, #2
 	blt _021E73A2
@@ -3762,12 +3762,12 @@ _021E7636:
 	ldr r0, [r5]
 	mov r2, #1
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5]
 	mov r1, #3
 	mov r2, #1
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [sp]
 	mov r6, #0
 	lsl r0, r0, #0x10
@@ -3789,12 +3789,12 @@ _021E7680:
 	ldr r0, [r5]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	ldr r0, [r5]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #0xfe
 	lsl r1, r1, #2
 	ldr r2, [r5, r1]
@@ -4247,7 +4247,7 @@ ov99_021E7A54: ; 0x021E7A54
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E7A70 ; =0x027E0000
 	ldr r1, _021E7A74 ; =0x00003FF8
 	mov r0, #1
@@ -5654,7 +5654,7 @@ ov99_021E856C: ; 0x021E856C
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E8588 ; =0x027E0000
 	ldr r1, _021E858C ; =0x00003FF8
 	mov r0, #1
@@ -5875,7 +5875,7 @@ _021E870C:
 	lsl r3, r3, #0x18
 	ldr r1, [sp, #0x1c]
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r4, r4, #1
 	cmp r4, #6
 	blt _021E870C

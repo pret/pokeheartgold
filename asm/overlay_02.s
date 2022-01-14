@@ -1099,19 +1099,19 @@ ov02_02246398: ; 0x02246398
 	ldr r0, [r5, #4]
 	mov r1, #0
 	ldr r0, [r0, #8]
-	bl sub_0201CC2C
+	bl GetBgPriority
 	strb r0, [r5, #0xe]
 	ldr r0, [r5, #4]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CC2C
+	bl GetBgPriority
 	strb r0, [r5, #0xf]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1133,10 +1133,10 @@ ov02_02246444: ; 0x02246444
 	bl GX_EngineAToggleLayers
 	ldrb r1, [r4, #0xe]
 	mov r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldrb r1, [r4, #0xf]
 	mov r0, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -1702,11 +1702,11 @@ ov02_0224686C: ; 0x0224686C
 	ldr r0, [r5, #4]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0201CC2C
+	bl GetBgPriority
 	strb r0, [r5, #0x1a]
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1756,7 +1756,7 @@ ov02_0224686C: ; 0x0224686C
 	bl AddTextPrinterParameterized2
 	add r5, #8
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -1777,10 +1777,10 @@ ov02_02246964: ; 0x02246964
 	bl GX_EngineAToggleLayers
 	ldrb r1, [r4, #0x1a]
 	mov r0, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r4, #0
 	add r0, #8
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
 	add r0, #8
 	bl RemoveWindow
@@ -8943,12 +8943,12 @@ ov02_02249EC0: ; 0x02249EC0
 	ldr r0, [r5, #0x60]
 	mov r1, #0
 	ldr r0, [r0, #8]
-	bl sub_0201CC2C
+	bl GetBgPriority
 	strh r0, [r5, #0x24]
 	ldr r0, [r5, #0x60]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201CC2C
+	bl GetBgPriority
 	strh r0, [r5, #0x26]
 	ldr r2, _02249F68 ; =0x0400000A
 	mov r1, #3
@@ -9022,12 +9022,12 @@ ov02_02249F6C: ; 0x02249F6C
 	ldr r0, [r5, #0x60]
 	mov r1, #0
 	ldr r0, [r0, #8]
-	bl sub_0201CC2C
+	bl GetBgPriority
 	strh r0, [r5, #0x24]
 	ldr r0, [r5, #0x60]
 	mov r1, #3
 	ldr r0, [r0, #8]
-	bl sub_0201CC2C
+	bl GetBgPriority
 	strh r0, [r5, #0x26]
 	ldr r2, _02249FD0 ; =0x0400000A
 	mov r1, #3
@@ -9836,12 +9836,12 @@ ov02_0224A5D0: ; 0x0224A5D0
 	mov r1, #3
 	add r3, r2, #0
 	add r5, r0, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #4
@@ -9865,7 +9865,7 @@ ov02_0224A5D0: ; 0x0224A5D0
 	add r0, r5, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r5, #0
 	mov r1, #3
 	bl BgCommitTilemapBufferToVram
@@ -25165,7 +25165,7 @@ _022519D4:
 	ldr r0, [r6, #0x64]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25175,7 +25175,7 @@ _022519D4:
 	ldr r0, [r6, #0x64]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25395,7 +25395,7 @@ _02251BF8:
 	str r1, [sp, #0x18]
 	ldr r0, [r4, #0x64]
 	mov r1, #2
-	bl sub_0201C568
+	bl CopyRectToBgTilemapRect
 	mov r1, #0x20
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -25413,7 +25413,7 @@ _02251BF8:
 	str r1, [sp, #0x18]
 	ldr r0, [r4, #0x64]
 	mov r1, #3
-	bl sub_0201C568
+	bl CopyRectToBgTilemapRect
 	mov r0, #0x20
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25423,7 +25423,7 @@ _02251BF8:
 	ldr r0, [r4, #0x64]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25433,7 +25433,7 @@ _02251BF8:
 	ldr r0, [r4, #0x64]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r4, #0x64]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -25468,27 +25468,27 @@ _02251C7E:
 	ldrb r3, [r3]
 	ldr r0, [r4, #0x64]
 	mov r1, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r3, r4, #0
 	add r3, #0x62
 	ldrb r3, [r3]
 	ldr r0, [r4, #0x64]
 	mov r1, #2
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r3, r4, #0
 	add r3, #0x61
 	ldrb r3, [r3]
 	ldr r0, [r4, #0x64]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x64]
 	add r4, #0x62
 	mov r1, #3
 	ldrb r3, [r4]
 	add r2, r1, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop

@@ -2431,7 +2431,7 @@ _021E6BE0:
 	add r2, r2, r3
 	lsl r3, r4, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r6, r6, #1
 	add r4, r4, #2
 	add r5, r5, #1
@@ -2505,7 +2505,7 @@ ov122_021E6C2C: ; 0x021E6C2C
 	mov r1, #2
 	add r2, sp, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	b _021E6CB8
 _021E6C9C:
 	lsl r0, r6, #0x18
@@ -2565,7 +2565,7 @@ _021E6CDC:
 	mov r1, #2
 	add r2, sp, #0x10
 	mov r3, #0x17
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -2597,7 +2597,7 @@ _021E6D1E:
 	mov r1, #2
 	add r2, sp, #0xc
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r4, r4, #1
 	add r6, r6, #4
 	cmp r4, #5
@@ -2645,7 +2645,7 @@ _021E6D6A:
 	mov r1, #2
 	add r2, sp, #0x10
 	mov r3, #0x16
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -2683,7 +2683,7 @@ _021E6DBC:
 	mov r1, #2
 	add r2, sp, #0xc
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r4, r4, #1
 	add r6, r6, #4
 	cmp r4, #5
@@ -2816,7 +2816,7 @@ _021E6EE4:
 	mov r1, #0
 	add r2, sp, #0x14
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2894,7 +2894,7 @@ _021E6F7E:
 	mov r1, #0
 	add r2, sp, #0x14
 	lsr r3, r3, #0x18
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov122_021E6F04
@@ -3858,7 +3858,7 @@ ov122_021E769C: ; 0x021E769C
 	add r0, r7, #0
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x10
@@ -3913,7 +3913,7 @@ ov122_021E76F4: ; 0x021E76F4
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [r5, #0x18]
@@ -4000,7 +4000,7 @@ _021E77E4:
 	bl GF_AssertFail
 _021E7808:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #5
 	lsl r0, r0, #6
 	str r6, [r5, r0]
@@ -4201,10 +4201,10 @@ _021E795E:
 	ldr r0, [r5, #0x18]
 	mov r2, #0
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	ldrb r0, [r4]
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -5047,7 +5047,7 @@ _021E801C:
 	bl sub_0200D020
 	bl sub_0200D034
 	ldr r0, [r4, #0x18]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E8040 ; =0x027E0000
 	ldr r1, _021E8044 ; =0x00003FF8
 	mov r0, #1

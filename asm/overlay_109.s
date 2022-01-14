@@ -2047,7 +2047,7 @@ _021E686C:
 	bl ov109_021E68D4
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6890 ; =0x027E0000
 	ldr r1, _021E6894 ; =0x00003FF8
 	mov r0, #1
@@ -2071,7 +2071,7 @@ ov109_021E6898: ; 0x021E6898
 	lsl r1, r1, #0x1c
 	mov r0, #2
 	lsr r1, r1, #0x1f
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 _021E68AE:
 	ldrb r1, [r4, #0x18]
 	mov r0, #4
@@ -2125,7 +2125,7 @@ ov109_021E68D4: ; 0x021E68D4
 	mov r1, #2
 	add r2, sp, #4
 	mov r3, #0x80
-	bl sub_0201BE7C
+	bl SetBgAffine
 	ldrb r1, [r4, #0x18]
 	mov r0, #2
 	bic r1, r0
@@ -2341,7 +2341,7 @@ ov109_021E694C: ; 0x021E694C
 	ldr r0, [r4, #0x14]
 	mov r1, #7
 	sub r3, r2, #4
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0xd4
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2365,7 +2365,7 @@ ov109_021E6AFC: ; 0x021E6AFC
 	ldr r0, [r4, #0x14]
 	mov r1, #7
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x14]
 	mov r1, #3
 	bl FreeBgTilemapBuffer
@@ -2952,7 +2952,7 @@ ov109_021E6F7C: ; 0x021E6F7C
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x14]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021E6FCE:
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
@@ -3004,7 +3004,7 @@ _021E6FEA:
 	str r2, [sp, #0x18]
 	ldr r0, [r0, #0x14]
 	add r2, r4, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -3177,7 +3177,7 @@ ov109_021E7114: ; 0x021E7114
 	ldr r0, [r5, #0x14]
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x20]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov109_021E7114
@@ -3313,7 +3313,7 @@ ov109_021E7248: ; 0x021E7248
 	bne _021E728A
 	add r5, #0x70
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 _021E728A:
@@ -3413,7 +3413,7 @@ _021E7342:
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
 	add r0, #0x70
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #8
 	str r0, [sp]
 	ldrb r1, [r4, #4]
@@ -3475,7 +3475,7 @@ _021E73B2:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x50
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x14]
 	mov r1, #1
 	bl ScheduleBgTilemapBufferTransfer
@@ -3541,7 +3541,7 @@ _021E7440:
 _021E7462:
 	add r5, #0x60
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop

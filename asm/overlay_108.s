@@ -1419,7 +1419,7 @@ _021E63D2:
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _021E63FC
 	add sp, #8
@@ -1790,7 +1790,7 @@ _021E66D4:
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _021E66FA
 	add sp, #8
@@ -2150,7 +2150,7 @@ _021E69BA:
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _021E69E4
 	add sp, #8
@@ -2379,7 +2379,7 @@ ov108_021E6BA0: ; 0x021E6BA0
 	ldr r0, [r4, r0]
 	mov r1, #1
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, _021E6C38 ; =0x000184E4
 	mov r0, #0xd
 	lsl r0, r0, #6
@@ -2387,7 +2387,7 @@ ov108_021E6BA0: ; 0x021E6BA0
 	ldr r0, [r4, r0]
 	mov r1, #2
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, _021E6C3C ; =0x000184E6
 	mov r0, #0xd
 	lsl r0, r0, #6
@@ -2395,7 +2395,7 @@ ov108_021E6BA0: ; 0x021E6BA0
 	ldr r0, [r4, r0]
 	mov r1, #4
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, _021E6C3C ; =0x000184E6
 	mov r0, #0xd
 	lsl r0, r0, #6
@@ -2403,7 +2403,7 @@ ov108_021E6BA0: ; 0x021E6BA0
 	ldr r0, [r4, r0]
 	mov r1, #6
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, _021E6C3C ; =0x000184E6
 	mov r0, #0xd
 	lsl r0, r0, #6
@@ -2411,7 +2411,7 @@ ov108_021E6BA0: ; 0x021E6BA0
 	ldr r0, [r4, r0]
 	mov r1, #5
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, _021E6C34 ; =0x000184E2
 	mov r0, #1
 	ldrb r2, [r4, r1]
@@ -2422,7 +2422,7 @@ _021E6C16:
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6C40 ; =0x027E0000
 	ldr r1, _021E6C44 ; =0x00003FF8
 	mov r0, #1
@@ -3108,11 +3108,11 @@ _021E70C2:
 	mov r2, #6
 	add r1, r7, r1
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	ldr r0, _021E71E4 ; =0x000004A4
 	mov r1, #0
 	add r0, r7, r0
-	bl sub_0201D9B0
+	bl FillWindowPixelBufferFast
 	ldr r0, [r7]
 	bl sub_0201660C
 	mov r1, #0x13
@@ -3732,7 +3732,7 @@ ov108_021E767C: ; 0x021E767C
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -4131,7 +4131,7 @@ _021E79D0:
 	lsl r3, r6, #0x18
 	ldr r0, [r5, r0]
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, _021E7AD8 ; =0x000184E2
 	ldrb r0, [r5, r0]
 	lsl r0, r0, #0x18
@@ -4182,7 +4182,7 @@ _021E79D0:
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021E7AA6
 _021E7A80:
 	add r0, r7, #0
@@ -4524,7 +4524,7 @@ _021E7CF4:
 	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x20]
 	add r0, r7, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, r6, #1
 	add r4, r4, #2
 	cmp r6, #5
@@ -4538,7 +4538,7 @@ _021E7D24:
 	mov r0, #0xfd
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 _021E7D3E:
@@ -4591,7 +4591,7 @@ _021E7D3E:
 	add r3, r4, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, _021E7EA4 ; =0x000184E3
 	ldrb r0, [r5, r0]
 	cmp r0, #0
@@ -4700,7 +4700,7 @@ _021E7E14:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r6, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
 	add r7, r7, #1
 	add r0, r0, #2
@@ -4807,7 +4807,7 @@ ov108_021E7EB0: ; 0x021E7EB0
 	bl AddTextPrinterParameterized2
 _021E7F66:
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4949,7 +4949,7 @@ _021E807E:
 	mov r0, #0xfd
 	lsl r0, r0, #2
 	add r0, r6, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, _021E80EC ; =0x04001040
 	mov r1, #0xf0
 	strh r1, [r0]
@@ -7427,7 +7427,7 @@ _021E93D6:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E9408 ; =0x00000464
 	add r0, r5, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E93F6:
@@ -7463,7 +7463,7 @@ _021E9434:
 	bl ov108_021E9F94
 	ldr r0, _021E947C ; =0x00000494
 	add r0, r5, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	mov r1, #0
 	bl ov108_021E9F20
@@ -7961,7 +7961,7 @@ _021E9800:
 	bl sub_0202061C
 	ldr r0, _021E9824 ; =0x00000438
 	ldr r0, [r4, r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E9828 ; =0x027E0000
 	ldr r1, _021E982C ; =0x00003FF8
 	mov r0, #1
@@ -8855,7 +8855,7 @@ ov108_021E9F20: ; 0x021E9F20
 	bl AddTextPrinterParameterized2
 	ldr r0, _021E9F8C ; =0x00000474
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8926,7 +8926,7 @@ _021E9FA4:
 	str r0, [sp, #0x18]
 	ldr r0, _021EA03C ; =0x00000438
 	ldr r0, [r5, r0]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, _021EA03C ; =0x00000438
 	mov r1, #5
 	ldr r0, [r5, r0]
@@ -8990,7 +8990,7 @@ _021EA06A:
 	blt _021EA09A
 	ldr r0, [sp, #0x20]
 	add r0, r7, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	b _021EA168
 _021EA09A:
 	ldr r1, [sp, #0x1c]
@@ -9047,7 +9047,7 @@ _021EA0B0:
 	mov r1, #6
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r1, #0xcd
 	ldr r2, [sp, #0x1c]
 	lsl r1, r1, #2
@@ -9091,7 +9091,7 @@ _021EA0B0:
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x20]
 	add r0, r7, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _021EA168:
 	add r4, r4, #1
 	cmp r4, #6
@@ -9149,7 +9149,7 @@ _021EA170:
 	bl AddTextPrinterParameterized2
 	ldr r0, _021EA258 ; =0x00000484
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, _021EA244 ; =0x00000438
 	mov r1, #5
 	ldr r0, [r5, r0]
@@ -9256,10 +9256,10 @@ ov108_021EA260: ; 0x021EA260
 	bl AddTextPrinterParameterized2
 	ldr r0, _021EA2DC ; =0x00000494
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, _021EA2E8 ; =0x00000484
 	add r0, r4, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -9412,7 +9412,7 @@ _021EA3DE:
 	bl AddTextPrinterParameterized2
 	ldr r0, _021EA40C ; =0x00000454
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -9460,7 +9460,7 @@ ov108_021EA418: ; 0x021EA418
 	bl AddTextPrinterParameterized2
 	ldr r0, _021EA474 ; =0x00000464
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -9496,7 +9496,7 @@ ov108_021EA47C: ; 0x021EA47C
 _021EA4AE:
 	ldr r0, _021EA500 ; =0x000004A4
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 _021EA4BA:
@@ -9529,7 +9529,7 @@ _021EA4BA:
 	bl AddTextPrinterParameterized2
 	ldr r0, _021EA500 ; =0x000004A4
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -13,7 +13,7 @@ ov01_021E5900: ; 0x021E5900
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r0, [r4, #0x3c]
@@ -13676,7 +13676,7 @@ _021EC14A:
 	ldr r0, [r0, #8]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -19181,7 +19181,7 @@ ov01_021EEB38: ; 0x021EEB38
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEB38
 
@@ -19255,7 +19255,7 @@ ov01_021EEB4C: ; 0x021EEB4C
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -19321,7 +19321,7 @@ ov01_021EEC68: ; 0x021EEC68
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEC68
 
@@ -19420,7 +19420,7 @@ _021EED04:
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021EEC7C
@@ -19525,7 +19525,7 @@ ov01_021EEE30: ; 0x021EEE30
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEE30
 
@@ -19642,7 +19642,7 @@ ov01_021EEE44: ; 0x021EEE44
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -19690,7 +19690,7 @@ ov01_021EEF88: ; 0x021EEF88
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end ov01_021EEF88
 
@@ -20931,7 +20931,7 @@ _021EF922:
 	ldr r0, [r4, #0x1c]
 	ldr r3, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	bne _021EF9A4
@@ -20965,7 +20965,7 @@ _021EF962:
 	ldr r0, [r4, #0x1c]
 	ldr r3, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0xc]
 	cmp r0, #0x26
 	bne _021EF9A4
@@ -21089,7 +21089,7 @@ ov01_021EFA3C: ; 0x021EFA3C
 	ldr r0, [r4, #0x1c]
 	add r2, r1, #0
 	mov r3, #0x26
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x26
 	str r0, [r4, #0xc]
 	ldr r0, _021EFAC8 ; =ov01_021EF8F8
@@ -21164,7 +21164,7 @@ _021EFADA:
 	ldr r0, [r4, #0x1c]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r4, #0x1c]
 	add r0, r4, #0
 	bl ov01_021EF8E8
@@ -22477,7 +22477,7 @@ ov01_021F0454: ; 0x021F0454
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r1, [sp, #0x14]
 	mov r2, #0
 	ldrh r0, [r1]
@@ -22496,7 +22496,7 @@ ov01_021F0454: ; 0x021F0454
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r6, #0
 	bl FreeToHeap
 	lsl r1, r4, #0x18
@@ -24156,7 +24156,7 @@ ov01_021F10C8: ; 0x021F10C8
 	bl ov01_021E6340
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	strb r0, [r4, #2]
 	add r0, r5, #0
@@ -24208,7 +24208,7 @@ _021F1154:
 	strh r0, [r2]
 	mov r0, #3
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -30247,7 +30247,7 @@ ov01_021F3E10: ; 0x021F3E10
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	sub r3, #0x33
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r4, #0x68]
 	ldrb r0, [r1, #0x13]
 	lsl r0, r0, #0x18
@@ -30301,7 +30301,7 @@ ov01_021F3E4C: ; 0x021F3E4C
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r2, [r4, #0x68]
 	mov r0, #0x80
 	ldrb r1, [r2, #0x13]
@@ -30319,7 +30319,7 @@ ov01_021F3EA0: ; 0x021F3EA0
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	cmp r0, #0
 	bne _021F3EB4
 	mov r0, #1
@@ -30337,13 +30337,13 @@ _021F3EC0:
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	sub r3, #0x33
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F3ECE:
 	ldr r0, [r4, #8]
 	mov r1, #3
 	mov r2, #4
 	mov r3, #0x10
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -30356,7 +30356,7 @@ ov01_021F3EE0: ; 0x021F3EE0
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	mov r1, #0x2f
 	mvn r1, r1
 	cmp r0, r1
@@ -30381,7 +30381,7 @@ ov01_021F3EE0: ; 0x021F3EE0
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x10
 	mov r0, #1
 	pop {r4, pc}
@@ -30394,13 +30394,13 @@ _021F3F32:
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F3F3E:
 	ldr r0, [r4, #8]
 	mov r1, #3
 	mov r2, #5
 	mov r3, #0x10
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	add sp, #0x10
 	pop {r4, pc}
@@ -47942,7 +47942,7 @@ ov01_021FC05C: ; 0x021FC05C
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48094,7 +48094,7 @@ ov01_021FC14C: ; 0x021FC14C
 	ldr r2, _021FC1A0 ; =0x00006001
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -48189,11 +48189,11 @@ ov01_021FC1FC: ; 0x021FC1FC
 	ldr r0, [r4, #8]
 	add r2, r1, #0
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	ldr r0, [r4, #8]
 	ldr r2, _021FC25C ; =0x00006002
 	mov r1, #2
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48234,11 +48234,11 @@ ov01_021FC260: ; 0x021FC260
 	ldr r0, [r4, #8]
 	mov r1, #3
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	ldr r0, [r4, #8]
 	ldr r2, _021FC2C0 ; =0x00006002
 	mov r1, #3
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	mov r0, #8
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48365,7 +48365,7 @@ _021FC376:
 	mov r0, #2
 	mov r1, #0
 	strh r0, [r4, #8]
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -48444,7 +48444,7 @@ _021FC40E:
 	strh r1, [r0]
 	mov r0, #2
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	strh r0, [r4, #8]
 	b _021FC4B2
@@ -48499,7 +48499,7 @@ _021FC498:
 	ldr r0, [r5, #8]
 	mov r1, #2
 	mov r2, #0
-	bl sub_0201CB04
+	bl BgFillTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers

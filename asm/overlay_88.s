@@ -393,7 +393,7 @@ _02258B1C: .word sub_0202457C
 ov88_02258B20: ; 0x02258B20
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	bl sub_0202061C
 	pop {r3, pc}
@@ -724,7 +724,7 @@ ov88_02258D90: ; 0x02258D90
 	add r3, r3, #4
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
@@ -789,7 +789,7 @@ _02258E16:
 	mov r1, #3
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [sp, #0x48]
 	cmp r0, #0
 	beq _02258E7C
@@ -804,7 +804,7 @@ _02258E16:
 	mov r1, #3
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _02258E9A
 _02258E7C:
 	ldr r0, [sp, #0x40]
@@ -820,7 +820,7 @@ _02258E7C:
 	ldr r0, [r5]
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 _02258E9A:
 	ldr r0, [r5]
 	mov r1, #3
@@ -1485,7 +1485,7 @@ _02259304:
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
 	add r4, r4, #1
 	add r0, #0x20
@@ -1902,9 +1902,9 @@ _02259630:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r5, #0x18]
 	lsr r2, r2, #0x10
-	bl sub_0201DA04
+	bl BlitBitmapRect
 	ldr r0, [sp, #0x1c]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2043,7 +2043,7 @@ _0225978A:
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x28]
 	add r5, #0x10
 	add r0, r0, #4

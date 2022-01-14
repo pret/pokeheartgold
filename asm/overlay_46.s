@@ -1323,11 +1323,11 @@ _022592DC: .word _02259598
 
 	thumb_func_start ov46_022592E0
 ov46_022592E0: ; 0x022592E0
-	ldr r3, _022592E8 ; =sub_0201EEB4
+	ldr r3, _022592E8 ; =BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_022592E8: .word sub_0201EEB4
+_022592E8: .word BgConfig_HandleScheduledScrollAndTransferOps
 	thumb_func_end ov46_022592E0
 
 	thumb_func_start ov46_022592EC
@@ -1454,7 +1454,7 @@ _022593DE:
 _022593EC:
 	add r5, #8
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov46_02259374
@@ -1483,7 +1483,7 @@ _02259414:
 	bl sub_0200E5D4
 	add r4, #8
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 _0225942E:
 	ldr r0, [r4, #0x24]
@@ -1498,7 +1498,7 @@ _0225943A:
 	bl ClearFrameAndWindow2
 	add r4, #8
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov46_022593F8

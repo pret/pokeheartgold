@@ -2004,7 +2004,7 @@ ov85_021E6764: ; 0x021E6764
 	bl sub_0200398C
 	ldr r0, _021E6788 ; =0x00000D84
 	ldr r0, [r4, r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	pop {r4, pc}
 	nop
 _021E6784: .word 0x00000D9C
@@ -3215,7 +3215,7 @@ ov85_021E7194: ; 0x021E7194
 	mov r1, #1
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -3275,7 +3275,7 @@ ov85_021E71EC: ; 0x021E71EC
 	mov r1, #1
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3327,7 +3327,7 @@ ov85_021E7274: ; 0x021E7274
 	mov r1, #1
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3346,7 +3346,7 @@ ov85_021E72E8: ; 0x021E72E8
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r3, r4, r5, pc}
 	nop
 _021E7308: .word 0x00000CA8
@@ -3449,7 +3449,7 @@ ov85_021E7380: ; 0x021E7380
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3493,7 +3493,7 @@ ov85_021E7400: ; 0x021E7400
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E7420: .word 0x00000CB8
@@ -6850,7 +6850,7 @@ ov85_021E8C14: ; 0x021E8C14
 	bl sub_0202061C
 	bl sub_0200B224
 	add r0, r4, #0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E8C34 ; =0x027E0000
 	ldr r1, _021E8C38 ; =0x00003FF8
 	mov r0, #1

@@ -317,9 +317,9 @@ _0225D73A:
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r5, r4
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #1
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
@@ -1305,7 +1305,7 @@ _0225DF3E:
 	ldrb r3, [r4, r3]
 	ldr r0, [r4]
 	lsr r1, r1, #0x19
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r1, #0x75
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]

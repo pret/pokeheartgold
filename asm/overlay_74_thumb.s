@@ -432,7 +432,7 @@ _02227384:
 	ldrh r2, [r2, #0x20]
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _0222739C
 	add sp, #0xc
@@ -580,7 +580,7 @@ _02227498:
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	mov r1, #1
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _022274BA
 	add sp, #8
@@ -1160,7 +1160,7 @@ _022278BC:
 	ldr r3, [sp, #0x14]
 	mov r1, #1
 	add r2, r7, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r1, #0x80
 	add r0, r6, #0
 	tst r0, r1
@@ -1440,7 +1440,7 @@ _02227B44:
 	mov r1, #0
 	mov r2, #3
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x4d
 	lsl r3, r3, #2
 	ldr r0, [r4]
@@ -1451,7 +1451,7 @@ _02227B44:
 	add r3, r4, r3
 	mov r2, #3
 	asr r3, r3, #0xc
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 _02227B74:
 	pop {r3, r4, r5, pc}
 	nop
@@ -2424,11 +2424,11 @@ _022282F6:
 	beq _0222837C
 	ldr r0, [sp, #0x2c]
 	mov r1, #3
-	bl sub_0201EEA8
+	bl GetWindowLeft
 	lsl r1, r5, #0x18
 	ldr r0, [sp, #0x2c]
 	lsr r1, r1, #0x18
-	bl sub_0201EEAC
+	bl GetWindowTop
 	ldr r2, [sp, #0x54]
 	ldr r3, [sp, #0x58]
 	lsl r2, r2, #0x10
@@ -2607,7 +2607,7 @@ _02228452:
 	ldr r2, [sp, #0x18]
 	ldr r3, [sp, #0x1c]
 	mov r1, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _0222852C
 _022284A8:
 	ldr r0, [sp, #0xc]
@@ -2637,7 +2637,7 @@ _022284A8:
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x24]
 	mov r1, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _0222852C
 _022284EE:
 	ldr r2, _02228544 ; =0x000003F7
@@ -2664,7 +2664,7 @@ _022284EE:
 	ldr r2, [sp, #0x28]
 	ldr r3, [sp, #0x2c]
 	mov r1, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 _0222852C:
 	add r6, r6, #1
 	add r4, #0x10
@@ -2724,7 +2724,7 @@ _02228564:
 	ldr r2, [sp, #0x10]
 	ldr r3, [sp, #0x14]
 	mov r1, #1
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _02228678
 _022285AA:
 	mov r0, #0x6b
@@ -2756,7 +2756,7 @@ _022285AA:
 	ldr r2, [sp, #0x18]
 	ldr r3, [sp, #0x1c]
 	mov r1, #1
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _02228678
 _022285F4:
 	ldr r0, [sp, #0xc]
@@ -2786,7 +2786,7 @@ _022285F4:
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x24]
 	mov r1, #1
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _02228678
 _0222863A:
 	ldr r2, _02228690 ; =0x000003F7
@@ -2813,7 +2813,7 @@ _0222863A:
 	ldr r2, [sp, #0x28]
 	ldr r3, [sp, #0x2c]
 	mov r1, #1
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 _02228678:
 	add r7, r7, #1
 	add r4, #0x10
@@ -3147,7 +3147,7 @@ ov74_022288F8: ; 0x022288F8
 	bl sub_0202061C
 	bl sub_0200B224
 	add r0, r4, #0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02228918 ; =0x027E0000
 	ldr r1, _0222891C ; =0x00003FF8
 	mov r0, #1
@@ -3810,7 +3810,7 @@ _02228D70:
 	ldr r0, [r4, #4]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r4, #4]
 	mov r1, #1
 	bl BgCommitTilemapBufferToVram
@@ -3875,7 +3875,7 @@ ov74_02228E98: ; 0x02228E98
 	ldr r0, [r4, #4]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r4, #4]
 	mov r1, #4
 	bl BgCommitTilemapBufferToVram
@@ -7044,7 +7044,7 @@ ov74_0222A7A0: ; 0x0222A7A0
 	add r0, r4, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r4, #0
 	mov r1, #5
 	bl BgCommitTilemapBufferToVram
@@ -7104,7 +7104,7 @@ ov74_0222A81C: ; 0x0222A81C
 	add r0, r4, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r4, #0
 	mov r1, #1
 	bl BgCommitTilemapBufferToVram
@@ -12283,7 +12283,7 @@ ov74_0222D248: ; 0x0222D248
 	add r0, r4, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r4, #0
 	mov r1, #1
 	bl BgCommitTilemapBufferToVram
@@ -13489,7 +13489,7 @@ _0222DBF4:
 	ldr r0, [r5, r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, _0222DC5C ; =0x000029FC
 	mov r1, #3
 	ldr r0, [r5, r0]
@@ -16395,7 +16395,7 @@ _0222F398:
 	ldr r0, [r5, r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, _0222F400 ; =0x000029FC
 	mov r1, #3
 	ldr r0, [r5, r0]
@@ -23641,7 +23641,7 @@ ov74_02232AC8: ; 0x02232AC8
 	mov r1, #2
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x20]
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r4, #0x20]
 	mov r1, #2
 	bl BgCommitTilemapBufferToVram
@@ -23899,7 +23899,7 @@ _02232C54:
 	mov r1, #2
 	str r0, [sp, #8]
 	ldr r0, [r6, #0x20]
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r6, #0x20]
 	mov r1, #2
 	bl BgCommitTilemapBufferToVram
@@ -24266,7 +24266,7 @@ _02233038:
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r0, [r4, #0x20]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02233058 ; =0x027E0000
 	ldr r1, _0223305C ; =0x00003FF8
 	mov r0, #1
@@ -29281,7 +29281,7 @@ _022355BA:
 	add r0, r1, #0
 	lsl r1, r6, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201EEA8
+	bl GetWindowLeft
 _022355CC:
 	mov r0, #0
 	mvn r0, r0
@@ -29290,7 +29290,7 @@ _022355CC:
 	lsl r1, r5, #0x18
 	ldr r0, [r4, #0x10]
 	lsr r1, r1, #0x18
-	bl sub_0201EEAC
+	bl GetWindowTop
 _022355DE:
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0
@@ -29922,7 +29922,7 @@ _02235A8E:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02235AA0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 _02235AA0:
 	ldr r3, _02235ABC ; =0x027E0000
 	ldr r1, _02235AC0 ; =0x00003FF8
@@ -30385,7 +30385,7 @@ ov74_02235DC4: ; 0x02235DC4
 	add r0, r5, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r5, #0
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer

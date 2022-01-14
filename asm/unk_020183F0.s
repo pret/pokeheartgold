@@ -771,7 +771,7 @@ sub_02018998: ; 0x02018998
 	bl FreeToHeap
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r4, #0x1c]
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	pop {r4, pc}
 	thumb_func_end sub_02018998
 
@@ -1199,7 +1199,7 @@ _02018CC8:
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r0, [r5, #0x18]
 	add r7, r7, #1
 	add r6, #8
@@ -1276,7 +1276,7 @@ _02018D50:
 	bl AddTextPrinterParameterized2
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1297,7 +1297,7 @@ sub_02018D90: ; 0x02018D90
 _02018DA0:
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r4
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldrb r0, [r5, #0x18]
 	add r6, r6, #1
 	add r4, #0x10

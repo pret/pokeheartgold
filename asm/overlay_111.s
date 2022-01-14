@@ -563,7 +563,7 @@ ov111_021E5D2C: ; 0x021E5D2C
 	add r4, r0, #0
 	add r5, r1, #0
 	add r7, r2, #0
-	bl sub_0201EE88
+	bl GetWindowBgConfig
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
 	bl GetWindowBgId
@@ -681,7 +681,7 @@ _021E5E0E:
 	bl sub_0200D020
 	bl sub_0200D034
 	ldr r0, [r4, #8]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5E2C ; =0x027E0000
 	ldr r1, _021E5E30 ; =0x00003FF8
 	mov r0, #1
@@ -857,7 +857,7 @@ _021E5F8A:
 	ldr r0, [r5, #8]
 	mov r2, #0
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -1637,7 +1637,7 @@ _021E65E0:
 	add r4, r5, #0
 	add r4, #0xc
 	add r0, r4, #0
-	bl sub_0201EE88
+	bl GetWindowBgConfig
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl GetWindowBgId
@@ -1683,7 +1683,7 @@ _021E6624:
 	ldr r1, [sp]
 	mov r2, #5
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r7, #0
 	add r4, sp, #8
 _021E6646:
@@ -1973,7 +1973,7 @@ ov111_021E67EC: ; 0x021E67EC
 	lsl r1, r1, #0xd
 	lsr r1, r1, #0x1d
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2191,7 +2191,7 @@ _021E69D4:
 	bl sub_0200CDF0
 _021E69E8:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

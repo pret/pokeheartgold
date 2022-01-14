@@ -76,5 +76,6 @@
 #define PHONE_CONTACT_REESE                72
 #define PHONE_CONTACT_AIDEN                73
 #define PHONE_CONTACT_ERNEST               74
+#define NUM_PHONE_CONTACTS                 75
 
 #endif //POKEHEARTGOLD_CONSTANTS_PHONE_CONTACTS_H

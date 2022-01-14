@@ -4010,7 +4010,7 @@ ov112_021E7768: ; 0x021E7768
 	strh r0, [r2]
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	pop {r4, pc}
 	nop
 _021E77D8: .word ov112_021E79A8
@@ -4103,7 +4103,7 @@ _021E7878:
 	ldrh r3, [r4, r3]
 	mov r1, #5
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _021E78E4
 _021E7898:
 	ldr r2, [r4]
@@ -4230,7 +4230,7 @@ _021E79A4: .word 0x0001E444
 ov112_021E79A8: ; 0x021E79A8
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200D034
 	ldr r3, _021E79C8 ; =0x027E0000
@@ -7684,7 +7684,7 @@ ov112_021E98A4: ; 0x021E98A4
 	add r4, r0, #0
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7699,7 +7699,7 @@ ov112_021E98A4: ; 0x021E98A4
 	bl sub_02007B68
 	mov r0, #5
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x10
@@ -7708,13 +7708,13 @@ ov112_021E98A4: ; 0x021E98A4
 
 	thumb_func_start ov112_021E98E8
 ov112_021E98E8: ; 0x021E98E8
-	ldr r3, _021E98F4 ; =BG_ToggleLayer
+	ldr r3, _021E98F4 ; =ToggleBgLayer
 	lsl r1, r1, #0x18
 	mov r0, #5
 	lsr r1, r1, #0x18
 	bx r3
 	nop
-_021E98F4: .word BG_ToggleLayer
+_021E98F4: .word ToggleBgLayer
 	thumb_func_end ov112_021E98E8
 
 	thumb_func_start ov112_021E98F8
@@ -23177,7 +23177,7 @@ _021F12DC:
 	ldr r0, [r5, #0x14]
 	mov r1, #2
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	mov r1, #7
 	ldr r2, [r5, #4]
 	mov r0, #0
@@ -23802,7 +23802,7 @@ _021F17D6:
 	ldr r0, [r5, #0x14]
 	mov r2, #0
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	add r7, r7, #1
 	add r6, #0x1c
 	add r4, r4, #1
@@ -26775,7 +26775,7 @@ _021F2ECE:
 	bl sub_0200D020
 	bl sub_0200D034
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021F2EEC ; =0x027E0000
 	ldr r1, _021F2EF0 ; =0x00003FF8
 	mov r0, #1

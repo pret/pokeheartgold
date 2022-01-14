@@ -5,7 +5,7 @@ struct PhoneBookEntry {
     u8 unk0;
     u8 unk1;
     u8 unk2;
-    u8 unk3;
+    u8 trainerClass;
     u16 trainerId;
     u16 unk6;
     u8 unk8[7];

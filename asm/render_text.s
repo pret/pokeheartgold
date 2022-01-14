@@ -661,7 +661,7 @@ _02002658:
 	ldrb r2, [r2]
 	ldrb r3, [r3]
 	ldr r0, [r4, #4]
-	bl sub_0201DACC
+	bl CopyGlyphToWindow
 	add r5, #0x80
 	ldrb r1, [r5]
 	ldrh r0, [r4, #0x10]

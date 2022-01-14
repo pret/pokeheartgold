@@ -2682,7 +2682,7 @@ ov39_02228418: ; 0x02228418
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02228438 ; =0x027E0000
 	ldr r1, _0222843C ; =0x00003FF8
 	mov r0, #1
@@ -2765,12 +2765,12 @@ _022284B4:
 	add r0, r4, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #0
 	add r0, r4, #0
 	mov r2, #3
 	add r3, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #1
 	add r2, sp, #0x54
@@ -2783,12 +2783,12 @@ _022284B4:
 	add r0, r4, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r5, _022285A4 ; =ov39_0222A944
 	add r3, sp, #0
 	mov r2, #7
@@ -2809,12 +2809,12 @@ _0222851A:
 	add r0, r4, #0
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #5
 	add r2, sp, #0x1c
@@ -2827,12 +2827,12 @@ _0222851A:
 	add r0, r4, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	mov r1, #0x20
 	add r2, r0, #0

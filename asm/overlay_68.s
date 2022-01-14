@@ -289,7 +289,7 @@ ov68_021E5B6C: ; 0x021E5B6C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -655,7 +655,7 @@ _021E5E5C:
 	blo _021E5E5C
 	add r0, r7, #0
 	add r0, #0x88
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x42
 	bl sub_0201660C
 	mov r1, #0x46
@@ -1289,7 +1289,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ov68_021E6234
 	add r0, r5, #0
 	add r0, #0x78
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r1, #0x23
 	add r0, r5, #0
 	add r2, r1, #0
@@ -1324,7 +1324,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ov68_021E6234
 	add r0, r5, #0
 	add r0, #0x98
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r1, #0x16
 	add r0, r5, #0
 	add r2, r1, #0
@@ -1342,7 +1342,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ov68_021E6234
 	add r0, r5, #0
 	add r0, #8
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r1, #0x17
 	add r0, r5, #0
 	add r2, r1, #0
@@ -1360,7 +1360,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ov68_021E6234
 	add r0, r5, #0
 	add r0, #0x18
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r1, #0x18
 	add r0, r5, #0
 	add r2, r1, #0
@@ -1378,7 +1378,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ov68_021E6234
 	add r0, r5, #0
 	add r0, #0x28
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x42
@@ -1417,7 +1417,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ov68_021E6234
 	add r0, r5, #0
 	add r0, #0xc8
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r2, _021E6674 ; =0x000002EE
 	mov r0, #0
 	mov r1, #0x1b
@@ -1563,7 +1563,7 @@ _021E659C:
 _021E65AE:
 	add r0, r5, #0
 	add r0, #0xd8
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	add r0, #0xf8
 	ldr r0, [r0]
@@ -1636,7 +1636,7 @@ _021E65AE:
 	bl ov68_021E6234
 	add r5, #0xe8
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x20]
@@ -1707,7 +1707,7 @@ ov68_021E66A0: ; 0x021E66A0
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4, #4]
 	mov r1, #7
 	bl ScheduleBgTilemapBufferTransfer
@@ -1854,7 +1854,7 @@ _021E67EE:
 	blo _021E67EE
 	add r0, r5, #0
 	add r0, #0xa8
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r5, #4]
 	mov r1, #7
 	bl ScheduleBgTilemapBufferTransfer
@@ -2073,34 +2073,34 @@ _021E697C:
 	bl sub_0200DCE8
 	add r0, r5, #0
 	add r0, #8
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	add r0, #0x18
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	add r0, #0x28
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	b _021E6A06
 _021E69EE:
 	add r0, r5, #0
 	add r0, #8
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	add r0, #0x18
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	add r0, #0x28
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 _021E6A06:
 	add r0, r5, #0
 	add r0, #0x58
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	add r0, #0x38
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r5, #0x48
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -2396,7 +2396,7 @@ ov68_021E6C74: ; 0x021E6C74
 	bl ClearFrameAndWindow2
 	add r4, #0x68
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov68_021E6C74
@@ -3939,7 +3939,7 @@ ov68_021E7898: ; 0x021E7898
 	bl sub_02019FF8
 	add r0, r4, #0
 	add r0, #0x88
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	str r0, [sp]
 	mov r3, #8
@@ -3963,7 +3963,7 @@ _021E78D6:
 	bl sub_02019FD0
 	add r0, r4, #0
 	add r0, #0x88
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #0
@@ -4252,7 +4252,7 @@ _021E7AF4:
 	ldrb r2, [r4]
 	ldrb r3, [r4, #1]
 	ldr r0, [r5, #4]
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #4]
 	mov r1, #7
 	bl ScheduleBgTilemapBufferTransfer
@@ -4277,7 +4277,7 @@ _021E7B1A:
 	ldrb r2, [r4]
 	ldrb r3, [r4, #1]
 	ldr r0, [r5, #4]
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #4]
 	mov r1, #7
 	bl ScheduleBgTilemapBufferTransfer

@@ -404,10 +404,10 @@ _02075878:
 	bl sub_020757AC
 	mov r0, #5
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r5, #0xb4
 	ldr r0, [r5]
 	mov r1, #1
@@ -618,10 +618,10 @@ _02075A44:
 _02075A52:
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	add r0, #0xb4
 	ldr r0, [r0]
@@ -975,7 +975,7 @@ sub_02075D4C: ; 0x02075D4C
 	bl sub_02075770
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	add r0, r4, #0
 	add r0, #0x8c
 	bl RemoveWindow
@@ -3266,10 +3266,10 @@ _02076F38:
 	bl NARC_dtor
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	ldr r1, [r0]
@@ -3479,7 +3479,7 @@ _020772CE:
 	ldr r0, [r4, #0x14]
 	bl sub_0200398C
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _020772F0 ; =OS_IRQTable
 	ldr r1, _020772F4 ; =0x00003FF8
 	mov r0, #1

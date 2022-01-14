@@ -368,7 +368,7 @@ ov67_021E5BE0: ; 0x021E5BE0
 	add r4, r0, #0
 	bl ov67_021E6A00
 	ldr r0, [r4, #0x10]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5BFC ; =0x027E0000
 	ldr r1, _021E5C00 ; =0x00003FF8
 	mov r0, #1
@@ -1335,7 +1335,7 @@ _021E62E8:
 	add r5, #0x6c
 _021E63CC:
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xa
@@ -1498,7 +1498,7 @@ _021E64E6:
 	bl ov67_021E6118
 _021E64FE:
 	add r0, r5, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -1583,7 +1583,7 @@ ov67_021E6530: ; 0x021E6530
 	bl ov67_021E61A0
 	add r4, #0xac
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1666,7 +1666,7 @@ _021E65CE:
 	add r4, #0x6c
 _021E665E:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r5, r5, #1
 	add r4, #0x10
 	cmp r5, #3
@@ -1862,7 +1862,7 @@ _021E67E8:
 _021E67EA:
 	lsl r0, r5, #4
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
@@ -2210,7 +2210,7 @@ _021E6A7E:
 	lsl r1, r1, #0x18
 	ldr r0, [r4, #0x10]
 	lsr r1, r1, #0x19
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r1, _021E6B64 ; =0x00000494
 	ldr r0, [r4, #0x10]
 	ldrb r1, [r4, r1]
@@ -2271,7 +2271,7 @@ _021E6AF8:
 	lsl r1, r1, #0x18
 	ldr r0, [r4, #0x10]
 	lsr r1, r1, #0x19
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r1, _021E6B64 ; =0x00000494
 	ldr r0, [r4, #0x10]
 	ldrb r1, [r4, r1]

@@ -460,7 +460,7 @@ _021E5CB4:
 	bl sub_0200D034
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5CDC ; =0x027E0000
 	ldr r1, _021E5CE0 ; =0x00003FF8
 	mov r0, #1
@@ -550,7 +550,7 @@ _021E5D62:
 	mov r0, #0
 	mov r1, #1
 	str r0, [r4, #8]
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	pop {r4, pc}
 _021E5D9C:
@@ -838,7 +838,7 @@ ov54_021E5F40: ; 0x021E5F40
 	mov r1, #0
 	ldr r3, [r3, r4]
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -991,13 +991,13 @@ ov54_021E6004: ; 0x021E6004
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x54
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r4, #0
 	add r0, #0x44
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r4, #0x54
 	add r0, r4, #0
 	mov r1, #1
@@ -1033,7 +1033,7 @@ _021E6180:
 	add r1, r7, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, r4
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r5, r4
 	bl RemoveWindow
 	add r0, r6, #1
@@ -2059,7 +2059,7 @@ ov54_021E69D4: ; 0x021E69D4
 	bne _021E6A28
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x54
 	mul r0, r4
 	add r0, r5, r0
@@ -2100,7 +2100,7 @@ _021E6A28:
 	mov r1, #0
 	ldr r3, [r3, r4]
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2113,7 +2113,7 @@ _021E6A28:
 	bl sub_020248F0
 	mov r0, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6A60: .word ov54_021E6C80
@@ -2129,7 +2129,7 @@ ov54_021E6A64: ; 0x021E6A64
 	bne _021E6A78
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 _021E6A78:
 	pop {r3, pc}
 	.balign 4, 0

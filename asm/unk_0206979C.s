@@ -1771,38 +1771,38 @@ _0206A438: ; jump table
 _0206A440:
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201CC20
+	bl GetBgRotation
 	strh r0, [r4, #0x14]
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0201CC2C
+	bl GetBgPriority
 	str r0, [r4, #0x1c]
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0201CC2C
+	bl GetBgPriority
 	str r0, [r4, #0x20]
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0201CC2C
+	bl GetBgPriority
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0xc]
 	mov r1, #3
-	bl sub_0201CC2C
+	bl GetBgPriority
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	mov r2, #0
 	mov r3, #1
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r4, #0
 	bl sub_0206A5D0
 	add r0, r4, #0
@@ -1894,34 +1894,34 @@ _0206A536:
 	blo _0206A5BC
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldrh r3, [r4, #0x14]
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	lsl r3, r3, #0x18
 	mov r2, #0
 	lsr r3, r3, #0x18
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r1, [r4, #0x1c]
 	mov r0, #2
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, [r4, #0x20]
 	mov r0, #0
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, [r4, #0x24]
 	mov r0, #1
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, [r4, #0x28]
 	mov r0, #3
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, _0206A5C4 ; =0x04000050
 	mov r2, #0
 	strh r2, [r0]
@@ -1934,7 +1934,7 @@ _0206A536:
 	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -4378,7 +4378,7 @@ sub_0206B8AC: ; 0x0206B8AC
 	bl BgCommitTilemapBufferToVram
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop

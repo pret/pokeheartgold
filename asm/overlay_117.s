@@ -523,7 +523,7 @@ ov117_0225F420: ; 0x0225F420
 	str r0, [sp, #8]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #8]
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [r5, #0x10]
@@ -736,25 +736,25 @@ _0225F560:
 	bl G2x_SetBlendAlpha_
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -870,7 +870,7 @@ _0225F560:
 _0225F72E:
 	mov r0, #1
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x6d
 	mov r1, #0xc
 	lsl r0, r0, #2
@@ -884,7 +884,7 @@ _0225F744:
 	ldr r0, [r0, #8]
 	add r2, r1, #0
 	mov r3, #0x18
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x6d
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]
@@ -907,7 +907,7 @@ _0225F76A:
 	str r0, [r2]
 	mov r0, #3
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x5d
 	add r3, r7, #0
 	lsl r0, r0, #2
@@ -927,7 +927,7 @@ _0225F79C:
 	ldr r0, [r0, #8]
 	add r2, r1, #0
 	mov r3, #0x18
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -964,7 +964,7 @@ _0225F7DC:
 	ldr r0, [r0, #8]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x6d
 	mov r1, #0xd
 	lsl r0, r0, #2
@@ -996,10 +996,10 @@ _0225F820:
 	bl ov117_0225F420
 	mov r0, #1
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x10
 	str r0, [sp]
 	ldr r0, _0225F8DC ; =0x04000050
@@ -1090,7 +1090,7 @@ _0225F8F8:
 	bl BG_SetMaskColor
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1102,7 +1102,7 @@ _0225F90C:
 	ble _0225F91E
 	mov r0, #2
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 _0225F91E:
 	mov r3, #0x6a
 	lsl r3, r3, #2
@@ -1114,7 +1114,7 @@ _0225F91E:
 	mov r1, #2
 	mov r2, #0
 	neg r3, r3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	ldr r0, [r4]
@@ -1162,7 +1162,7 @@ _0225F970:
 	str r1, [r4, r0]
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1184,12 +1184,12 @@ _0225F99E:
 	mov r1, #2
 	ldr r0, [r0, #8]
 	mov r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	b _0225F9CC
 _0225F9C4:
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 _0225F9CC:
 	mov r1, #0x6a
 	lsl r1, r1, #2

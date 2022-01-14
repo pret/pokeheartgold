@@ -545,7 +545,7 @@ _021E5D66:
 	bl sub_0200398C
 _021E5D74:
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	pop {r4, pc}
 	thumb_func_end ov60_021E5D44
 
@@ -2940,11 +2940,11 @@ _021E709A:
 	bne _021E70DE
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	str r0, [sp]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	str r0, [sp, #4]
 	ldr r3, [sp]
 	add r1, sp, #0x10
@@ -2955,14 +2955,14 @@ _021E709A:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, [sp, #4]
 	lsl r1, r5, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r4, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E70DE:
@@ -2974,11 +2974,11 @@ _021E70DE:
 	strh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	strh r0, [r4, #0x18]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	strh r0, [r4, #0x1a]
 	strh r7, [r4, #0x14]
 	add r1, sp, #0x10
@@ -3023,11 +3023,11 @@ _021E7146:
 	bne _021E718A
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	str r0, [sp]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	str r0, [sp, #4]
 	ldr r3, [sp]
 	add r1, sp, #0x10
@@ -3038,14 +3038,14 @@ _021E7146:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, [sp, #4]
 	lsl r1, r5, #0x18
 	add r0, r6, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r4, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E718A:
@@ -3057,11 +3057,11 @@ _021E718A:
 	strh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	strh r0, [r4, #0x18]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	strh r0, [r4, #0x1a]
 	strh r7, [r4, #0x14]
 	add r1, sp, #0x10
@@ -3091,14 +3091,14 @@ ov60_021E71CC: ; 0x021E71CC
 	bge _021E71F8
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	add r0, r1, r0
 	str r0, [sp]
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	add r7, r1, r0
@@ -3145,14 +3145,14 @@ _021E7242:
 	ldr r3, [sp]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r5, #8]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov60_021E71CC
 
@@ -3166,14 +3166,14 @@ ov60_021E7264: ; 0x021E7264
 	bge _021E7290
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BDF4
+	bl Bg_GetXpos
 	mov r1, #0x14
 	ldrsh r1, [r5, r1]
 	add r0, r1, r0
 	str r0, [sp]
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	mov r1, #0x16
 	ldrsh r1, [r5, r1]
 	add r7, r1, r0
@@ -3220,14 +3220,14 @@ _021E72DA:
 	ldr r3, [sp]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r1, [r5, #8]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r7, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov60_021E7264
 
@@ -3776,13 +3776,13 @@ _021E76C4:
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0xc]
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E76C4
@@ -4210,7 +4210,7 @@ _021E79DE:
 ov60_021E79E4: ; 0x021E79E4
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E79E4
@@ -4294,7 +4294,7 @@ _021E7A9A:
 	mov r1, #0
 	mov r2, #3
 	mov r3, #0x80
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -4351,7 +4351,7 @@ _021E7B02:
 	ldr r0, [sp, #0xc]
 	mov r2, #3
 	add r3, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E7C54 ; =0x04000050
@@ -5135,7 +5135,7 @@ _021E813A:
 ov60_021E8140: ; 0x021E8140
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E8140
@@ -6461,7 +6461,7 @@ _021E8C52:
 ov60_021E8C58: ; 0x021E8C58
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E8C58
@@ -7258,32 +7258,32 @@ _021E92A6:
 	add r0, r7, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r7, #0
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	add r0, r7, #0
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r7, #0
 	mov r1, #6
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	add r0, r7, #0
 	mov r1, #7
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r7, #0
 	mov r1, #7
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineBToggleLayers
@@ -8494,7 +8494,7 @@ _021E9D62:
 ov60_021E9D68: ; 0x021E9D68
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021E9D68
@@ -10048,7 +10048,7 @@ _021EAA6E:
 ov60_021EAA74: ; 0x021EAA74
 	push {r3, lr}
 	bl ov60_021E7688
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	thumb_func_end ov60_021EAA74
@@ -10482,12 +10482,12 @@ ov60_021EADF0: ; 0x021EADF0
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0xa0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #3
 	mov r3, #0xa0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov60_021EADF0

@@ -897,7 +897,7 @@ ov34_0225DC18: ; 0x0225DC18
 	ldr r0, [r5, #0x14]
 	mov r2, #0
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x72
 	lsl r0, r0, #2
 	add r7, r5, r0
@@ -941,10 +941,10 @@ ov34_0225DC18: ; 0x0225DC18
 	add r0, r0, r4
 	bl AddTextPrinterParameterized2
 	add r0, r7, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x1c]
 	add r0, r0, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r2, [r6, #8]
 	cmp r2, #0
 	beq _0225DCF0
@@ -960,7 +960,7 @@ ov34_0225DC18: ; 0x0225DC18
 	bl AddTextPrinterParameterized2
 _0225DCF0:
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1669,7 +1669,7 @@ _0225E226:
 	ldr r0, [sp, #0x1c]
 	mov r1, #7
 	mov r2, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r3, [sp, #0x24]
 	add r1, r4, #4
 	lsl r6, r3, #2
@@ -1679,7 +1679,7 @@ _0225E226:
 	ldr r3, [r3, r6]
 	lsr r1, r1, #0x18
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [sp, #0x40]
 	add r4, r4, #1
 	add r5, #0x38

@@ -1026,7 +1026,7 @@ _0201979E:
 	ldrb r1, [r4, #0xa]
 	ldr r0, [r0]
 	ldr r2, [sp, #0x34]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r2, [sp, #0x1c]
 	ldr r0, [sp, #0x1c]
 	ldrh r2, [r2, #0xa]

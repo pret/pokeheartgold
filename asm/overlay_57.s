@@ -627,7 +627,7 @@ ov57_02237E38: ; 0x02237E38
 	bl sub_0200398C
 	add r4, #0xe4
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	ldr r3, _02237E70 ; =0x027E0000
 	ldr r1, _02237E74 ; =0x00003FF8
@@ -1796,14 +1796,14 @@ ov57_0223866C: ; 0x0223866C
 	mov r0, #0x43
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _022386DC:
 	mov r0, #0x43
 	lsl r0, r0, #2
 	add r0, r5, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1962,7 +1962,7 @@ ov57_022387E0: ; 0x022387E0
 	add r1, sp, #0x1c
 	mov r2, #0xa
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -3925,7 +3925,7 @@ _0223974E:
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 _02239766:
@@ -3950,7 +3950,7 @@ _02239766:
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -4005,7 +4005,7 @@ ov57_022397B0: ; 0x022397B0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov57_022397B0
@@ -4094,7 +4094,7 @@ ov57_02239868: ; 0x02239868
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov57_02239868
@@ -4269,7 +4269,7 @@ _02239A06:
 	mov r1, #0xee
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	b _02239A76
 _02239A22:
 	add r0, r5, #0
@@ -4304,7 +4304,7 @@ _02239A22:
 	mov r3, #7
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 _02239A76:
@@ -4338,7 +4338,7 @@ ov57_02239A8C: ; 0x02239A8C
 	mov r1, #0xee
 	bl FillWindowPixelBuffer
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 _02239AB8:
@@ -4370,7 +4370,7 @@ _02239AB8:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add sp, #0x14
@@ -4388,7 +4388,7 @@ ov57_02239B0C: ; 0x02239B0C
 	add r5, #0x50
 _02239B16:
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -4410,7 +4410,7 @@ ov57_02239B2C: ; 0x02239B2C
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 _02239B4A:
@@ -4435,7 +4435,7 @@ _02239B4A:
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r6, #0
@@ -5663,7 +5663,7 @@ _0223A560:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	add r0, #0xec
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
 	mov r1, #1
 	bl ov57_0223866C
@@ -5787,7 +5787,7 @@ _0223A644:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	add r0, #0xec
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
 	mov r1, #1
 	bl ov57_0223866C
@@ -5868,7 +5868,7 @@ _0223A708:
 	bl GX_EngineBToggleLayers
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r4, #0
 	mov r1, #1
 	bl ov57_0223A034
@@ -5895,7 +5895,7 @@ _0223A708:
 	bl sub_0200DCC0
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x47
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -5987,10 +5987,10 @@ _0223A820:
 	bl GX_EngineAToggleLayers
 	mov r0, #3
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineBToggleLayers
@@ -7689,7 +7689,7 @@ _0223B5C0:
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r0]
 	mov r1, #3
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _0223B610
 	mov r4, #0

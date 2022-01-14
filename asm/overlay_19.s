@@ -358,7 +358,7 @@ ov19_02259AD8: ; 0x02259AD8
 	ldr r0, [r4, #0x18]
 	mov r1, #7
 	sub r3, r2, #4
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x54
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -375,7 +375,7 @@ ov19_02259B90: ; 0x02259B90
 	ldr r0, [r4, #0x18]
 	mov r1, #7
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0x18]
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -891,7 +891,7 @@ ov19_02259F64: ; 0x02259F64
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x3c
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x10]
 	str r0, [sp]
 	mov r0, #0x1d
@@ -931,7 +931,7 @@ _02259FD4:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x4c
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl ov19_02259F0C
 	add sp, #0x10

@@ -1,5 +1,6 @@
 #include "constants/species.h"
 #include "constants/sndseq.h"
+#include "constants/phone_contacts.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -848,7 +849,7 @@ _021E7D82:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021E7D82
@@ -860,7 +861,7 @@ _021E7D9A:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E7D9A
@@ -962,7 +963,7 @@ _021E7E66:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021E7E66
@@ -1010,7 +1011,7 @@ _021E7EBE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7EBE
@@ -1079,7 +1080,7 @@ _021E7F44:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7F44
@@ -1138,7 +1139,7 @@ _021E7FC2:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E7FC2
@@ -1499,7 +1500,7 @@ _021E827A:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0x10]
@@ -1507,7 +1508,7 @@ _021E827A:
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
 	add r3, r1, #0
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0x10]
@@ -1515,28 +1516,28 @@ _021E827A:
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
 	mov r3, #2
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x40
 	add r7, r4, #0
@@ -1840,12 +1841,12 @@ _021E850C:
 	add r1, r7, r1
 	mov r2, #0xb
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r0, #0x81
 	lsl r0, r0, #2
 	add r0, r7, r0
 	mov r1, #0
-	bl sub_0201D9B0
+	bl FillWindowPixelBufferFast
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2963,7 +2964,7 @@ _021E8E76:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -2971,7 +2972,7 @@ _021E8E76:
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #4
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -2979,7 +2980,7 @@ _021E8E76:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -2987,7 +2988,7 @@ _021E8E76:
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #2
 	blt _021E8E76
@@ -3000,7 +3001,7 @@ _021E8E76:
 	bl G2x_SetBlendAlpha_
 	mov r0, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r4, #0
 	mov r6, #3
 	add r7, r4, #0
@@ -3018,7 +3019,7 @@ _021E8EE2:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #1
 	lsl r1, r1, #0x18
@@ -3026,7 +3027,7 @@ _021E8EE2:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E8EE2
@@ -3067,7 +3068,7 @@ _021E8EE2:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	bl ov101_021EAF40
 	mov r2, #0x4e
@@ -3103,7 +3104,7 @@ _021E8EE2:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r3, #0x46
 	lsl r3, r3, #2
 	add r2, r3, #0
@@ -3226,7 +3227,7 @@ _021E90BE:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3234,7 +3235,7 @@ _021E90BE:
 	lsr r1, r1, #0x18
 	mov r2, #2
 	mov r3, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3242,7 +3243,7 @@ _021E90BE:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201B1F4
+	bl SetBgControlParam
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3250,7 +3251,7 @@ _021E90BE:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #2
 	lsl r1, r1, #0x18
@@ -3258,13 +3259,13 @@ _021E90BE:
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #2
 	blt _021E90BE
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r1, #0
 	ldr r0, _021E9258 ; =0x04000050
 	add r2, r1, #0
@@ -3307,7 +3308,7 @@ _021E9136:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #6
 	lsl r0, r0, #6
 	mov r2, #0
@@ -3333,10 +3334,10 @@ _021E9136:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #2
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x74]
@@ -4614,7 +4615,7 @@ _021E9B90:
 	lsr r1, r1, #0x18
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r3, _021E9BF0 ; =0x00000133
 	ldr r0, [r4, #0x10]
 	add r1, r5, #2
@@ -4625,7 +4626,7 @@ _021E9B90:
 	lsr r1, r1, #0x18
 	mov r2, #3
 	add r3, r7, r3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r6, #0x14]
 	add r1, r5, #2
 	str r0, [sp]
@@ -4635,7 +4636,7 @@ _021E9B90:
 	ldr r3, [r6, #0x10]
 	lsr r1, r1, #0x18
 	add r2, sp, #4
-	bl sub_0201BE7C
+	bl SetBgAffine
 	add r5, r5, #1
 	cmp r5, #2
 	blt _021E9B90
@@ -4911,12 +4912,12 @@ _021E9DD6:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021E9DD6
@@ -4966,19 +4967,19 @@ _021E9E4A:
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021E9E74:
 	mov r0, #0
 	str r0, [r5, #0x34]
@@ -5013,19 +5014,19 @@ _021E9EA6:
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	mov r0, #6
 _021E9ED8:
@@ -5042,19 +5043,19 @@ _021E9EE8:
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	mov r0, #6
 _021E9F14:
@@ -5091,7 +5092,7 @@ _021E9F4A:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -5105,7 +5106,7 @@ _021E9F4A:
 	lsr r1, r1, #0x18
 	add r2, r7, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -5214,7 +5215,7 @@ _021EA03C:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #2
 	blt _021EA03C
@@ -5256,13 +5257,13 @@ _021EA094:
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -5305,13 +5306,13 @@ _021EA0EE:
 	mov r1, #1
 	mov r2, #5
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x32
 	lsl r0, r0, #4
 	add r3, r4, r0
@@ -5331,13 +5332,13 @@ _021EA12A:
 	mov r1, #1
 	mov r2, #4
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0x1c
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #0x32
 	lsl r0, r0, #4
 	add r2, r4, r0
@@ -6677,7 +6678,7 @@ _021EAAEA:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x10]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
@@ -6726,7 +6727,7 @@ _021EAB5A:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -6761,7 +6762,7 @@ _021EAB5A:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -6826,7 +6827,7 @@ _021EAC2E:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r4, #0
 	add r0, #0xc0
 	ldr r0, [r0]
@@ -7032,7 +7033,7 @@ _021EADDE:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #0
-	bl sub_0201D9B0
+	bl FillWindowPixelBufferFast
 	mov r1, #0
 	add r2, r5, #0
 	str r1, [sp]
@@ -7213,7 +7214,7 @@ ov101_021EAF40: ; 0x021EAF40
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldrb r1, [r5, r0]
@@ -7249,7 +7250,7 @@ _021EAF8E:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EAFFA
 _021EAFC6:
 	add r0, #0x38
@@ -7276,7 +7277,7 @@ _021EAFC6:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EAFFA:
 	ldr r4, _021EB1D8 ; =ov101_021F79B4
 	mov r7, #0
@@ -7350,7 +7351,7 @@ _021EB024:
 	lsl r3, r3, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB08E:
 	add r7, r7, #1
 	add r4, #0xe
@@ -7390,7 +7391,7 @@ _021EB08E:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EB158
 _021EB0E0:
 	lsl r1, r1, #0x1f
@@ -7422,7 +7423,7 @@ _021EB0E0:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EB158
 _021EB120:
 	add r0, #0x33
@@ -7451,7 +7452,7 @@ _021EB120:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB158:
 	ldr r0, _021EB1DC ; =0x0000013D
 	ldrb r1, [r5, r0]
@@ -7483,7 +7484,7 @@ _021EB158:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB198:
 	ldr r0, _021EB1DC ; =0x0000013D
 	ldrb r1, [r5, r0]
@@ -7513,7 +7514,7 @@ _021EB198:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB1D4:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -7627,7 +7628,7 @@ _021EB274:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB2AE:
 	ldr r0, [sp, #0x1c]
 	add r4, #0x10
@@ -7696,7 +7697,7 @@ ov101_021EB2FC: ; 0x021EB2FC
 	bl ov101_021EB1E0
 	mov r0, #2
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021EB2FC
@@ -7787,7 +7788,7 @@ ov101_021EB38C: ; 0x021EB38C
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021EB41A
 _021EB3D8:
 	mov r0, #0x5e
@@ -7821,7 +7822,7 @@ _021EB3D8:
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EB41A:
 	ldr r0, [r4, #0x10]
 	mov r1, #1
@@ -8775,7 +8776,7 @@ _021EBB5A:
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r0, #0x74]
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _021EBB7E
 	mov r0, #0
@@ -8905,7 +8906,7 @@ _021EBC46:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x74]
@@ -8940,7 +8941,7 @@ _021EBCC0:
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	ldr r0, [r0, #0x74]
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	bne _021EBCE4
 	mov r0, #0
@@ -10770,7 +10771,7 @@ ov101_021ECA84: ; 0x021ECA84
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -11014,7 +11015,7 @@ _021ECC9A:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -13007,7 +13008,7 @@ _021EDC30:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EDC30
@@ -13073,7 +13074,7 @@ _021EDCAE:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EDCAE
@@ -13391,13 +13392,13 @@ ov101_021EDF54: ; 0x021EDF54
 	mov r0, #1
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	mov r1, #6
 	ldr r3, [r4]
 	mov r0, #5
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	ldr r0, [r4, #0x10]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
@@ -14268,7 +14269,7 @@ _021EE694:
 	ldr r0, [r0, #0x74]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	add r1, r4, #1
 	lsl r1, r1, #0x18
@@ -14276,7 +14277,7 @@ _021EE694:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EE694
@@ -14317,7 +14318,7 @@ _021EE694:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	bl ov101_021EAF40
 	mov r0, #0
@@ -14350,7 +14351,7 @@ _021EE694:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r3, #0x46
 	lsl r3, r3, #2
 	add r2, r3, #0
@@ -14374,21 +14375,21 @@ _021EE694:
 	ldr r0, [r0, #0x74]
 	mov r1, #5
 	sub r3, #0x54
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r2, #3
 	add r3, r2, #0
 	ldr r0, [r0, #0x74]
 	mov r1, #6
 	sub r3, #0x54
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0x10]
 	mov r2, #3
 	add r3, r2, #0
 	ldr r0, [r0, #0x74]
 	mov r1, #7
 	sub r3, #0x54
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _021EE82A
 _021EE7BC:
 	add r0, r5, #0
@@ -14419,7 +14420,7 @@ _021EE7BC:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r3, #0x46
 	lsl r3, r3, #2
 	add r2, r3, #0
@@ -14843,7 +14844,7 @@ _021EEB20:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EEB20
@@ -14938,7 +14939,7 @@ _021EEBE2:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EEBE2
@@ -14983,12 +14984,12 @@ _021EEC32:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EEC32
@@ -15091,12 +15092,12 @@ _021EED06:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EED06
@@ -15370,42 +15371,42 @@ _021EEF22:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -15984,7 +15985,7 @@ ov101_021EF384: ; 0x021EF384
 	mov r1, #2
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
@@ -16054,7 +16055,7 @@ _021EF42A:
 	mov r1, #3
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021EF48A:
 	lsl r0, r4, #0x11
 	add r6, r6, #1
@@ -17010,7 +17011,7 @@ _021EFBAE:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EFBAE
@@ -17055,12 +17056,12 @@ _021EFBFE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021EFBFE
@@ -17169,12 +17170,12 @@ _021EFCDC:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r5, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r5, r5, #1
 	cmp r5, #3
 	blt _021EFCDC
@@ -17498,7 +17499,7 @@ _021EFF7C:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021EFF7C
@@ -17774,42 +17775,42 @@ _021F0192:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -17845,13 +17846,13 @@ _021F0200:
 	blt _021F0200
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0x20
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0xac
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -17864,13 +17865,13 @@ ov101_021F0260: ; 0x021F0260
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4, #0xc]
 	bl ov100_021E5CA4
 	pop {r4, pc}
@@ -17970,7 +17971,7 @@ ov101_021F0284: ; 0x021F0284
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r4, #0
 	bl NARC_dtor
 	ldr r0, [r5, #0xc]
@@ -18166,7 +18167,7 @@ ov101_021F0464: ; 0x021F0464
 	add r0, #0xc4
 	ldrb r1, [r1]
 	ldr r0, [r0]
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -18962,7 +18963,7 @@ ov101_021F0ACC: ; 0x021F0ACC
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add r0, r5, #0
 	add r0, #0x78
 	mov r1, #5
@@ -18991,7 +18992,7 @@ ov101_021F0ACC: ; 0x021F0ACC
 	b _021F0B6C
 _021F0B48:
 	add r0, #0x78
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x14
 	str r0, [sp]
 	mov r0, #0x20
@@ -21031,7 +21032,7 @@ _021F1A88:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21050,7 +21051,7 @@ _021F1A88:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1F18
+	bl PhoneContact_GetClass
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21071,7 +21072,7 @@ _021F1ADE:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21090,7 +21091,7 @@ _021F1ADE:
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
 	ldr r0, [r5, r0]
-	bl ov101_021F1F18
+	bl PhoneContact_GetClass
 	add r2, r0, #0
 	str r7, [sp]
 	mov r0, #0xff
@@ -21589,11 +21590,11 @@ _021F1E88:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov101_021F1E80
 
-	thumb_func_start ov101_021F1EE8
-ov101_021F1EE8: ; 0x021F1EE8
+	thumb_func_start PhoneContact_GetName
+PhoneContact_GetName: ; 0x021F1EE8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	cmp r1, #0x4b
+	cmp r1, #NUM_PHONE_CONTACTS
 	blo _021F1EF2
 	mov r1, #0
 _021F1EF2:
@@ -21612,13 +21613,13 @@ _021F1EF2:
 	bl DestroyMsgData
 	ldr r0, [r5, #0x58]
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov101_021F1EE8
+	thumb_func_end PhoneContact_GetName
 
-	thumb_func_start ov101_021F1F18
-ov101_021F1F18: ; 0x021F1F18
+	thumb_func_start PhoneContact_GetClass
+PhoneContact_GetClass: ; 0x021F1F18
 	push {r4, lr}
 	add r4, r0, #0
-	cmp r1, #0x4b
+	cmp r1, #NUM_PHONE_CONTACTS
 	blo _021F1F22
 	mov r1, #0
 _021F1F22:
@@ -21654,7 +21655,7 @@ _021F1F4E:
 _021F1F60:
 	ldr r0, [r4, #0x5c]
 	pop {r4, pc}
-	thumb_func_end ov101_021F1F18
+	thumb_func_end PhoneContact_GetClass
 
 	thumb_func_start ov101_021F1F64
 ov101_021F1F64: ; 0x021F1F64
@@ -21669,7 +21670,7 @@ ov101_021F1F64: ; 0x021F1F64
 	mov r2, #0x54
 	str r3, [sp]
 	bl MI_CpuFill8
-	cmp r6, #0x4b
+	cmp r6, #NUM_PHONE_CONTACTS
 	blo _021F1F8C
 	bl GF_AssertFail
 	mov r0, #0xff
@@ -21739,7 +21740,7 @@ ov101_021F1FF4: ; 0x021F1FF4
 	add r4, #0x88
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0xc]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x10]
 	ldrb r0, [r0, #1]
 	cmp r0, #0xf
@@ -21899,7 +21900,7 @@ ov101_021F2110: ; 0x021F2110
 	add r1, #0xa0
 	ldrb r1, [r1]
 	add r0, r4, #0
-	bl ov101_021F1EE8
+	bl PhoneContact_GetName
 	mov r1, #1
 	str r1, [sp]
 	mov r3, #2
@@ -27034,7 +27035,7 @@ _021F4790:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021F4790
@@ -27136,7 +27137,7 @@ _021F4868:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #8
 	blt _021F4868
@@ -27180,7 +27181,7 @@ _021F48B6:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F48B6
@@ -27305,12 +27306,12 @@ _021F49BA:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F49BA
@@ -27478,42 +27479,42 @@ _021F4B02:
 	mov r1, #1
 	ldr r0, [r0, #0x74]
 	add r2, sp, #4
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x20
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x3c
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x58
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x74
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	add r2, sp, #0x90
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	mov r4, #0
 	mov r6, #0x20
 	add r7, r4, #0
@@ -28034,7 +28035,7 @@ ov101_021F4F34: ; 0x021F4F34
 	ldrb r3, [r6, r3]
 	ldr r0, [r0, #0x74]
 	mov r1, #2
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021F4F7A:
 	cmp r4, #4
 	bhs _021F4FB6
@@ -28064,7 +28065,7 @@ _021F4F7A:
 	ldrb r3, [r4, r3]
 	ldr r0, [r0, #0x74]
 	mov r1, #2
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021F4FB6:
 	ldr r0, [r5, #0xc]
 	mov r1, #2
@@ -28173,10 +28174,10 @@ ov101_021F5048: ; 0x021F5048
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x50
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x40
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	add r0, #0x26
 	ldrb r1, [r0]
@@ -28298,12 +28299,12 @@ _021F514A:
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #5
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, r4, #1
 	cmp r4, #3
 	blt _021F514A
@@ -28314,19 +28315,19 @@ _021F5170:
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F519A:
 	ldrh r1, [r5, #0x2e]
 	ldr r0, _021F51BC ; =0xFFFF8000
@@ -28364,38 +28365,38 @@ _021F51D2:
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #4
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _021F522A
 _021F5202:
 	mov r1, #5
 	ldr r0, [r0, #0x74]
 	add r2, r1, #0
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #6
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	mov r1, #7
 	ldr r0, [r0, #0x74]
 	mov r2, #5
 	mov r3, #0xa
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021F522A:
 	ldrh r3, [r5, #0x2e]
 	add r1, r5, #0
@@ -28438,7 +28439,7 @@ _021F5270:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r6, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5, #0xc]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -28452,7 +28453,7 @@ _021F5270:
 	lsr r1, r1, #0x18
 	add r2, r7, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #0xc]
 	add r1, r4, #5
 	lsl r1, r1, #0x18
@@ -29762,9 +29763,9 @@ ov101_021F5C44: ; 0x021F5C44
 	ldr r2, [r4, #0x50]
 	bl AddTextPrinterParameterized2
 	ldr r0, [r4, #0x10]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, pc}
 	nop

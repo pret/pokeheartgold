@@ -137,7 +137,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl sub_0208F658
 	mov r0, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -321,28 +321,28 @@ ov65_0221C08C: ; 0x0221C08C
 	bl ov65_0221FB90
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
 	mov r0, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1243,13 +1243,13 @@ _0221C890:
 	bl sub_0200B484
 	mov r0, #1
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1298,13 +1298,13 @@ _0221C90C:
 	bl sub_0200B484
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
@@ -1886,7 +1886,7 @@ ov65_0221CE1C: ; 0x0221CE1C
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, _0221CE84 ; =0x0000211C
 	ldr r0, [r5, r0]
 	cmp r0, #0
@@ -2111,51 +2111,51 @@ _0221CFFC:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	mov r2, #0
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	cmp r4, #4
 	blt _0221CFFC
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	add r3, r0, #0
@@ -5609,7 +5609,7 @@ _0221EC84:
 	lsl r1, r0, #4
 	ldr r0, [sp, #4]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r7, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -5646,7 +5646,7 @@ _0221ECD0:
 	lsl r1, r0, #4
 	ldr r0, [sp, #4]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, #0x10
@@ -5916,11 +5916,11 @@ ov65_0221EF0C: ; 0x0221EF0C
 	ldr r1, _0221F004 ; =0x00000574
 	str r0, [sp]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldr r1, _0221F008 ; =0x00000584
 	ldr r0, [sp]
 	add r0, r0, r1
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	ldr r6, [sp]
 	ldr r1, _0221F00C ; =0x00000444
 	add r0, r6, #0
@@ -5987,7 +5987,7 @@ _0221EFA6:
 	lsl r1, r0, #4
 	ldr r0, [sp, #4]
 	add r0, r0, r1
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _0221EFB2:
 	add r7, r7, #1
 	add r6, #0x10
@@ -6880,7 +6880,7 @@ ov65_0221F714: ; 0x0221F714
 	ldr r0, [r4, r0]
 	ldr r3, [r4, r3]
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #6
 	ldr r3, _0221F744 ; =0x000022C4
 	lsl r0, r0, #6
@@ -6888,7 +6888,7 @@ ov65_0221F714: ; 0x0221F714
 	ldr r3, [r4, r3]
 	mov r1, #3
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r4, pc}
 	.balign 4, 0
 _0221F744: .word 0x000022C4
@@ -7492,7 +7492,7 @@ _0221FBC6:
 	bl AddTextPrinterParameterized2
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0

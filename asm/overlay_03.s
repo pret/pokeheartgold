@@ -6435,7 +6435,7 @@ ov03_02257184: ; 0x02257184
 	add r5, #8
 _02257194:
 	add r0, r5, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -6543,37 +6543,37 @@ ov03_0225725C: ; 0x0225725C
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0201CC2C
+	bl GetBgPriority
 	mov r1, #0x9e
 	lsl r1, r1, #2
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _022572E0 ; =0x00000279
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _022572E4 ; =0x0000027A
 	strb r0, [r4, r1]
 	ldr r0, [r4]
 	mov r1, #3
-	bl sub_0201CC2C
+	bl GetBgPriority
 	ldr r1, _022572E8 ; =0x0000027B
 	strb r0, [r4, r1]
 	mov r0, #0
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -6601,19 +6601,19 @@ ov03_022572EC: ; 0x022572EC
 	lsl r1, r1, #2
 	ldrb r1, [r4, r1]
 	mov r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _02257328 ; =0x00000279
 	mov r0, #1
 	ldrb r1, [r4, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _0225732C ; =0x0000027A
 	mov r0, #2
 	ldrb r1, [r4, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, _02257330 ; =0x0000027B
 	mov r0, #3
 	ldrb r1, [r4, r1]
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -6835,7 +6835,7 @@ _022574D4:
 _022574DE:
 	add r4, #0x18
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _022574EA:
@@ -6848,7 +6848,7 @@ _022574EA:
 	bl ov03_022585A4
 	add r4, #0x18
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _02257504:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7219,7 +7219,7 @@ ov03_022577D0: ; 0x022577D0
 	ldr r0, [r4]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0201CB28
+	bl BgFillTilemapBufferAndSchedule
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -10219,7 +10219,7 @@ _02258F22:
 _02258F32:
 	add r0, r6, #0
 	add r0, #0x10
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r6, #0xc]
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer

@@ -2029,7 +2029,7 @@ _02059A94:
 	lsl r3, r3, #4
 	bl ListMenuUpdateCursorObj
 	ldr r0, [r4, #0x7c]
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	mov r0, #0
 	add sp, #8
 	pop {r4, pc}

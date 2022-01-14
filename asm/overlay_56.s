@@ -424,7 +424,7 @@ _021E5F18:
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	mov r1, #2
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #1
 	bne _021E5F3A
 	add sp, #8
@@ -1021,7 +1021,7 @@ _021E63CE:
 _021E63DC:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x18]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E63F4 ; =0x027E0000
 	ldr r1, _021E63F8 ; =0x00003FF8
 	mov r0, #1
@@ -1592,7 +1592,7 @@ _021E6768:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x18]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
@@ -1624,7 +1624,7 @@ _021E6768:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x18]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x18]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer

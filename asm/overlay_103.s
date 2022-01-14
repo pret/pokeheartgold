@@ -69,7 +69,7 @@ ov103_021EC9B4: ; 0x021EC9B4
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	ldr r0, [r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200D034
 	ldr r3, _021EC9D0 ; =0x027E0000
 	ldr r1, _021EC9D4 ; =0x00003FF8
@@ -1077,7 +1077,7 @@ _021ED182:
 	lsl r1, r1, #0x18
 	ldr r0, [r0]
 	lsr r1, r1, #0x19
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldrb r1, [r4]
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0x18
@@ -1128,7 +1128,7 @@ _021ED1E6:
 	ldrb r3, [r4, #5]
 	ldr r0, [r0]
 	lsr r1, r1, #0x19
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldrb r1, [r4]
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #0x18
@@ -3642,7 +3642,7 @@ _021EE514:
 	bl ov103_021EE3E4
 _021EE530:
 	add r0, r6, r7
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [r5, #0xc]
 	ldr r1, [sp, #0x18]
 	ldr r0, [r0, #4]
@@ -3685,7 +3685,7 @@ ov103_021EE550: ; 0x021EE550
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	add r0, r1, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x66
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
@@ -3713,7 +3713,7 @@ ov103_021EE550: ; 0x021EE550
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	add r0, r1, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x6a
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
@@ -3750,11 +3750,11 @@ ov103_021EE60C: ; 0x021EE60C
 	mov r0, #0x66
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021EE60C
@@ -3766,11 +3766,11 @@ ov103_021EE628: ; 0x021EE628
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x66
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021EE628
@@ -3916,7 +3916,7 @@ ov103_021EE644: ; 0x021EE644
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2
 	add r0, r1, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -4046,7 +4046,7 @@ ov103_021EE860: ; 0x021EE860
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	add r0, r1, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	.balign 4, 0
 _021EE884: .word 0x000003E2
@@ -4167,7 +4167,7 @@ _021EE93A:
 	ldr r0, [r5, #0xc]
 	add r0, #0x48
 	add r0, r0, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, r4, #1
 	cmp r4, #3
 	blo _021EE93A
@@ -4208,7 +4208,7 @@ _021EE93A:
 	ldr r1, [r5, #0xc]
 	lsl r0, r0, #2
 	add r0, r1, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop

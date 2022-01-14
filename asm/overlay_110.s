@@ -1119,7 +1119,7 @@ _021E6120:
 _021E612E:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6148 ; =0x027E0000
 	ldr r1, _021E614C ; =0x00003FF8
 	mov r0, #1
@@ -2136,7 +2136,7 @@ _021E6948:
 	bl AddTextPrinterParameterized2
 	add r5, #0x4c
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2199,7 +2199,7 @@ _021E69D0:
 _021E69F2:
 	add r5, #0x5c
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -2231,7 +2231,7 @@ ov110_021E6A04: ; 0x021E6A04
 	bl AddTextPrinterParameterized2
 	add r4, #0x6c
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -2295,7 +2295,7 @@ _021E6A74:
 	ldr r0, [r0, #0x14]
 	mov r1, #2
 	lsr r2, r2, #0x18
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2451,7 +2451,7 @@ _021E6BB4:
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x5c
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer

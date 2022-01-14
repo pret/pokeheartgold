@@ -136,22 +136,22 @@ _021E5A1A:
 	bl ov78_021E6068
 	add r0, r6, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -309,7 +309,7 @@ _021E5B84:
 	bl sub_0200D034
 _021E5B8E:
 	ldr r0, [r4, #0x14]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5BA4 ; =0x027E0000
 	ldr r1, _021E5BA8 ; =0x00003FF8
 	mov r0, #1
@@ -454,28 +454,28 @@ _021E5BB8:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add sp, #0x54
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -490,28 +490,28 @@ ov78_021E5D18: ; 0x021E5D18
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -641,27 +641,27 @@ ov78_021E5E54: ; 0x021E5E54
 	ldr r0, [r4, #0x14]
 	mov r1, #1
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x40
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x14]
 	mov r1, #5
 	mov r2, #3
 	add r3, #0xc0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x40
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x40
 	ldrsh r3, [r4, r3]
 	ldr r0, [r4, #0x14]
 	mov r1, #4
 	mov r2, #3
 	add r3, #0xc0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #4]
 	cmp r0, #2
 	bne _021E5EA0
@@ -796,7 +796,7 @@ _021E5EEE:
 	mov r2, #0
 	ldr r0, [r5, #0x14]
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #0x14]
 	mov r1, #1
 	bl BgCommitTilemapBufferToVram
@@ -840,7 +840,7 @@ _021E5EEE:
 	ldr r0, [r5, #0x14]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #0x14]
 	mov r1, #5
 	bl BgCommitTilemapBufferToVram

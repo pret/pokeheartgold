@@ -1808,7 +1808,7 @@ ov82_0223EC0C: ; 0x0223EC0C
 	bl sub_0200398C
 _0223EC24:
 	ldr r0, [r4, #0x48]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r3, _0223EC40 ; =0x027E0000
@@ -2443,7 +2443,7 @@ ov82_0223F10C: ; 0x0223F10C
 	mov r3, #0
 	bl sub_0200CDF0
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -3152,7 +3152,7 @@ _0223F64E:
 	add r0, r7, #0
 	mov r1, #3
 	mov r2, ip
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	cmp r5, #0
 	bne _0223F6C0
 	ldr r0, [sp, #0xc]
@@ -3195,7 +3195,7 @@ _0223F696:
 	str r0, [sp, #8]
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _0223F6AE:
@@ -3206,7 +3206,7 @@ _0223F6AE:
 	str r0, [sp, #8]
 	add r0, r7, #0
 	mov r1, #3
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 _0223F6C0:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}

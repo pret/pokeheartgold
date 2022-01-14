@@ -1180,14 +1180,14 @@ _02259024:
 	ldr r0, [r5]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, [r4]
 	ldr r0, [r5]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [sp]
 	add r7, r7, #1
 	add r6, #0x20
@@ -1208,7 +1208,7 @@ ov90_02259084: ; 0x02259084
 	ldr r0, [r5]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #8]
 	mov r6, #0
 	cmp r0, #0
@@ -1235,11 +1235,11 @@ _022590B6:
 
 	thumb_func_start ov90_022590C0
 ov90_022590C0: ; 0x022590C0
-	ldr r3, _022590C8 ; =sub_0201EEB4
+	ldr r3, _022590C8 ; =BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r0]
 	bx r3
 	nop
-_022590C8: .word sub_0201EEB4
+_022590C8: .word BgConfig_HandleScheduledScrollAndTransferOps
 	thumb_func_end ov90_022590C0
 
 	thumb_func_start ov90_022590CC
@@ -1797,7 +1797,7 @@ _022594B4:
 	add r2, r1, #0
 	bl DrawFrameAndWindow2
 	add r0, r5, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1829,7 +1829,7 @@ _02259524:
 	mov r1, #1
 	bl ClearFrameAndWindow2
 	add r0, r5, r4
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov90_022594FC
@@ -2559,12 +2559,12 @@ _02259AF2:
 	mov r1, #3
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x30]
 	mov r1, #5
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2715,10 +2715,10 @@ _02259C10:
 _02259C12:
 	mov r0, #1
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r1, [sp, #0x1c]
 	mov r0, #0xc
 	add r2, r1, #0
@@ -2781,7 +2781,7 @@ _02259C12:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x48]
 	ldr r0, [r0]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [sp, #0x28]
 	ldr r1, _02259D44 ; =ov90_0225C318
 	lsl r0, r0, #3
@@ -3022,7 +3022,7 @@ _02259E70:
 ov90_02259E8C: ; 0x02259E8C
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [r4]
 	mov r1, #1
 	bl ScheduleBgTilemapBufferTransfer
@@ -3308,14 +3308,14 @@ _0225A09E:
 	ldr r0, [r4]
 	add r2, r1, #0
 	sub r3, #0xff
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r6]
 	mov r2, #0
 	add r3, r2, #0
 	ldr r0, [r0]
 	mov r1, #1
 	sub r3, #0xff
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r7, #6
 	mov r4, #0
 	add r5, r6, #4
@@ -3473,13 +3473,13 @@ ov90_0225A1B8: ; 0x0225A1B8
 	ldrsh r3, [r6, r4]
 	ldr r0, [r0]
 	add r2, r1, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	ldrsh r3, [r6, r4]
 	ldr r0, [r0]
 	mov r1, #1
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0225A1F8:
 	pop {r4, r5, r6, pc}
 	nop
@@ -3980,24 +3980,24 @@ _0225A5D2:
 	ldr r0, [r5]
 	add r2, r1, #0
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, pc}
 _0225A5EC:
 	ldr r0, [r5]
 	mov r1, #0
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	pop {r3, r4, r5, pc}
 _0225A606:
 	bl GF_AssertFail
@@ -4022,24 +4022,24 @@ _0225A622:
 	ldr r0, [r5]
 	add r2, r1, #0
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #0
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r3, r4, r5, pc}
 _0225A63C:
 	ldr r0, [r5]
 	mov r1, #0
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5]
 	mov r1, #1
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r3, r4, r5, pc}
 _0225A656:
 	bl GF_AssertFail
@@ -5055,12 +5055,12 @@ _0225AE1C:
 	mov r1, #3
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x4c]
 	mov r1, #5
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5561,12 +5561,12 @@ _0225B204:
 	mov r1, #3
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r4, #0x4c]
 	mov r1, #5
 	mov r2, #4
 	mov r3, #2
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6241,7 +6241,7 @@ _0225B6EA:
 	ldr r0, [r5]
 	mov r1, #2
 	add r2, #0xc
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x14
@@ -6252,7 +6252,7 @@ _0225B6EA:
 	ldr r0, [r5]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer

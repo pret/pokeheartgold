@@ -2083,13 +2083,13 @@ ov80_0222ADE8: ; 0x0222ADE8
 	str r0, [r4]
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -2123,13 +2123,13 @@ ov80_0222AE30: ; 0x0222AE30
 	push {r3, lr}
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r3, #0x14
 	ldr r0, _0222AE64 ; =0x04000050
 	mov r1, #1
@@ -2155,10 +2155,10 @@ ov80_0222AE6C: ; 0x0222AE6C
 	push {r3, lr}
 	mov r0, #2
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	pop {r3, pc}
 	thumb_func_end ov80_0222AE6C
 
@@ -2213,16 +2213,16 @@ ov80_0222AEBC: ; 0x0222AEBC
 	push {r3, lr}
 	mov r0, #1
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r3, #0x14
 	ldr r0, _0222AEF0 ; =0x04000050
 	mov r1, #1
@@ -7408,7 +7408,7 @@ _0222D440:
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x28]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0xb
 	bl ov80_0223AF30
 	str r0, [r4, #0x2c]
@@ -7432,7 +7432,7 @@ _0222D4B2:
 	bl ov80_0223AFC4
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	cmp r5, #0
 	beq _0222D51A
 	ldr r0, [r4, #4]
@@ -7451,7 +7451,7 @@ _0222D4CC:
 	bl RemoveWindow
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
@@ -7542,7 +7542,7 @@ _0222D55C:
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	ldr r0, [r4, #0x28]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0xb
 	bl ov80_0223AF30
 	str r0, [r4, #0x2c]
@@ -7566,7 +7566,7 @@ _0222D5CE:
 	bl ov80_0223B1D4
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	cmp r5, #0
 	beq _0222D636
 	ldr r0, [r4, #4]
@@ -7585,7 +7585,7 @@ _0222D5E8:
 	bl RemoveWindow
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
@@ -7628,22 +7628,22 @@ ov80_0222D644: ; 0x0222D644
 	mov r1, #2
 	ldr r0, [r0]
 	ldr r7, [r4, #0x24]
-	bl sub_0201CC14
+	bl GetBgHOffset
 	str r0, [sp, #0x20]
 	ldr r0, [r4]
 	mov r1, #2
 	ldr r0, [r0]
-	bl sub_0201CC14
+	bl GetBgHOffset
 	str r0, [sp, #0x1c]
 	ldr r0, [r4]
 	mov r1, #3
 	ldr r0, [r0]
-	bl sub_0201CC14
+	bl GetBgHOffset
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
 	mov r1, #3
 	ldr r0, [r0]
-	bl sub_0201CC14
+	bl GetBgHOffset
 	str r0, [sp, #0x14]
 	ldr r0, [r4, #0x10]
 	cmp r0, #1
@@ -8162,19 +8162,19 @@ _0222DA54:
 	str r0, [r5, #0x10]
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	mov r1, #3
 	ldr r0, [r0]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -8341,19 +8341,19 @@ _0222DBBC:
 	str r0, [r5, #0x10]
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5]
 	mov r1, #3
 	ldr r0, [r0]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -12389,7 +12389,7 @@ _0222FAB2:
 	ldr r0, [r0]
 	add r2, r1, #0
 	mov r3, #0xa
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [sp, #0x20]
 	mov r1, #3
 	ldr r0, [r0]
@@ -12550,20 +12550,20 @@ ov80_0222FC08: ; 0x0222FC08
 	add r4, r1, #0
 	ldr r0, [r4]
 	mov r1, #2
-	bl sub_0201BE00
+	bl Bg_GetYpos
 	cmp r0, #0xff
 	ldr r0, [r4]
 	blt _0222FC26
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r4, pc}
 _0222FC26:
 	mov r1, #2
 	mov r2, #4
 	mov r3, #1
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222FC08
@@ -19534,7 +19534,7 @@ _0223340C:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	b _02233480
 _02233424:
 	add r0, r5, #0
@@ -19573,13 +19573,13 @@ _0223345E:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0200E5D4
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0201D54C
+	bl WindowArray_dtor
 _02233480:
 	add r0, r5, #0
 	mov r1, #0
@@ -29458,7 +29458,7 @@ ov80_02237EFC: ; 0x02237EFC
 	lsr r1, r1, #0x18
 	add r2, sp, #0xc
 	mov r3, #0xb
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
@@ -30308,7 +30308,7 @@ _02238544:
 	mov r1, #3
 	add r2, sp, #0xc
 	mov r3, #0xe
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r0, [r4, #4]
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
@@ -30700,7 +30700,7 @@ ov80_0223885C: ; 0x0223885C
 	bl FreeBgTilemapBuffer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r4]
 	mov r1, #4
 	bl FreeBgTilemapBuffer
@@ -30908,7 +30908,7 @@ ov80_02238A7C: ; 0x02238A7C
 	ldr r0, [r4, #4]
 	bl sub_0200398C
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02238AA4 ; =0x027E0000
 	ldr r1, _02238AA8 ; =0x00003FF8
 	mov r0, #1
@@ -31111,12 +31111,12 @@ _02238BFE:
 	mov r1, #3
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r1, #3
 	ldr r0, [r5]
 	add r2, r1, #0
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r7, #0
 	add r0, #0x20
 	ldrb r0, [r0]
@@ -31135,12 +31135,12 @@ _02238BFE:
 	mov r1, #2
 	mov r2, #0
 	add r3, r6, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5]
 	mov r1, #2
 	mov r2, #3
 	add r3, r4, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 _02238C6E:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -31303,12 +31303,12 @@ _02238D96:
 	add r0, r5, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #2
 	add r2, sp, #0x70
@@ -31321,12 +31321,12 @@ _02238D96:
 	add r0, r5, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #3
 	add r2, sp, #0x8c
@@ -31339,12 +31339,12 @@ _02238D96:
 	add r0, r5, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _02238EA2
 _02238E20:
 	add r0, r5, #0
@@ -31358,12 +31358,12 @@ _02238E20:
 	add r0, r5, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #2
 	add r0, r5, #0
 	add r2, sp, #0x70
@@ -31376,12 +31376,12 @@ _02238E20:
 	add r0, r5, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #3
 	add r2, sp, #0x8c
@@ -31394,12 +31394,12 @@ _02238E20:
 	add r0, r5, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _02238EA2:
 	ldr r1, _02238F08 ; =0x04000008
 	mov r0, #3
@@ -31431,12 +31431,12 @@ _02238EA2:
 	add r0, r5, #0
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #4
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0xa8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -33703,7 +33703,7 @@ _0223A05E:
 	add r0, #0x2c
 	strb r1, [r0]
 	mov r0, #1
-	bl sub_0201CB4C
+	bl BgGetCharPtr
 	mov r2, #2
 	add r1, r0, #0
 	mov r0, #0
@@ -33713,12 +33713,12 @@ _0223A05E:
 	add r0, r5, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r1, r4, #0
 	add r1, #0x2c
 	ldrb r2, [r1]
@@ -34453,7 +34453,7 @@ _0223A668:
 	add r1, sp, #0x3c
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -34914,7 +34914,7 @@ ov80_0223A938: ; 0x0223A938
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl ScheduleBgTilemapBufferTransfer

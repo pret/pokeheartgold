@@ -4932,7 +4932,7 @@ _0225C6B0:
 	mov r3, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r5, r5, #1
 	add r4, #0x10
 	add r7, #8
@@ -5206,7 +5206,7 @@ ov27_0225C8D0: ; 0x0225C8D0
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10

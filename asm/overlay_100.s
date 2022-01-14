@@ -45,7 +45,7 @@ ov100_021E5924: ; 0x021E5924
 	ldr r0, [r5, #0x74]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #1
 	bne _021E595C
 	mov r0, #0
@@ -242,7 +242,7 @@ ov100_021E5A88: ; 0x021E5A88
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	mov r0, #1
 	tst r0, r4
 	bne _021E5B04
@@ -271,7 +271,7 @@ ov100_021E5A88: ; 0x021E5A88
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021E5B04:
 	mov r0, #2
 	tst r0, r4
@@ -301,7 +301,7 @@ _021E5B04:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021E5B40:
 	ldr r0, [r5, #0x74]
 	mov r1, #0
@@ -354,7 +354,7 @@ _021E5B6C:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x74]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r5, #0x74]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -505,13 +505,13 @@ ov100_021E5CA4: ; 0x021E5CA4
 	mov r0, #3
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	mov r1, #6
 	ldr r3, [r5]
 	mov r0, #7
 	lsl r1, r1, #6
 	mov r2, #0
-	bl sub_0201C290
+	bl BG_LoadBlankPltt
 	mov r4, #0
 	mov r6, #0x40
 	add r7, r4, #0
@@ -971,10 +971,10 @@ _021E6040:
 	blt _021E6040
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1694,7 +1694,7 @@ _021E6632:
 _021E663C:
 	bl sub_0202061C
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E6654 ; =0x027E0000
 	ldr r1, _021E6658 ; =0x00003FF8
 	mov r0, #1
@@ -1821,21 +1821,21 @@ _021E6706:
 _021E670E:
 	strb r1, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #2
 	pop {r4, pc}
 _021E671A:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #4
 	pop {r4, pc}
 _021E6728:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #0xa
 	pop {r4, pc}
 _021E6736:
@@ -1961,21 +1961,21 @@ _021E6812:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #6
 	pop {r4, pc}
 _021E6820:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #4
 	pop {r4, pc}
 _021E682E:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #0xa
 	pop {r4, pc}
 _021E683C:
@@ -2021,20 +2021,20 @@ _021E686A:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #6
 	pop {r4, pc}
 _021E688A:
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #2
 	pop {r4, pc}
 _021E6896:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #4
 	pop {r4, pc}
 _021E68A4:
@@ -2082,20 +2082,20 @@ _021E68E6:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #6
 	pop {r4, pc}
 _021E68F4:
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #2
 	pop {r4, pc}
 _021E6900:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	mov r0, #0xa
 	pop {r4, pc}
 _021E690E:

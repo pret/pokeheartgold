@@ -520,7 +520,7 @@ _0225D912:
 	ldr r0, [r7]
 	ldr r2, [sp, #0x1c]
 	mov r1, #5
-	bl sub_0201C4C4
+	bl LoadRectToBgTilemapRect
 	ldr r1, [r7, #0x10]
 	ldr r0, [sp, #0x14]
 	ldr r2, [r1]
@@ -559,9 +559,9 @@ _0225D912:
 	add r0, r4, r6
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	add r0, r5, #1
@@ -616,7 +616,7 @@ ov33_0225D9D4: ; 0x0225D9D4
 	lsl r3, r3, #0x18
 	mov r1, #5
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r4]
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer

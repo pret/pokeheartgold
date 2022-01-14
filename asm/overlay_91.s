@@ -1777,7 +1777,7 @@ ov91_0225D2D0: ; 0x0225D2D0
 	push {r3, lr}
 	ldr r1, _0225D2E4 ; =0x00001AB4
 	ldr r0, [r0, r1]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	pop {r3, pc}
@@ -2780,7 +2780,7 @@ _0225DA0E:
 	ldr r0, [r0]
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, sp, #0x30
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -2801,11 +2801,11 @@ _0225DA60:
 	add r0, sp, #0x30
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201EEA8
+	bl GetWindowLeft
 	lsl r1, r7, #0x18
 	add r0, sp, #0x30
 	lsr r1, r1, #0x18
-	bl sub_0201EEAC
+	bl GetWindowTop
 	add r0, sp, #0x30
 	ldrh r1, [r0, #0xa]
 	ldr r0, _0225DB04 ; =0xFFFF8000
@@ -2926,7 +2926,7 @@ ov91_0225DB5C: ; 0x0225DB5C
 	bl sub_0200E5D4
 	add r4, #0xc
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -7461,7 +7461,7 @@ ov91_0225FDE0: ; 0x0225FDE0
 	add r3, r2, #0
 	str r0, [sp, #8]
 	ldr r0, [r5]
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	lsl r4, r7, #1
@@ -7474,7 +7474,7 @@ ov91_0225FDE0: ; 0x0225FDE0
 	ldr r0, [r5]
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	mov r2, #0
@@ -7486,7 +7486,7 @@ ov91_0225FDE0: ; 0x0225FDE0
 	ldr r0, [r5]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7497,7 +7497,7 @@ ov91_0225FDE0: ; 0x0225FDE0
 	ldr r0, [r5]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5]
 	mov r1, #4
 	bl BgCommitTilemapBufferToVram
@@ -10460,7 +10460,7 @@ _0226151E:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	cmp r4, #0
 	bne _0226154E
 	mov r0, #0x20
@@ -10473,7 +10473,7 @@ _0226151E:
 	ldr r0, [r6]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	b _02261568
 _0226154E:
 	mov r0, #0x20
@@ -10487,7 +10487,7 @@ _0226154E:
 	ldr r0, [r6]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 _02261568:
 	add r1, r5, #4
 	lsl r1, r1, #0x18
@@ -10640,7 +10640,7 @@ _02261616:
 	add r1, #0x38
 	mov r2, #3
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	add r0, r5, #0
 	add r0, #0x38
 	add r1, r6, #0
@@ -10817,7 +10817,7 @@ ov91_02261808: ; 0x02261808
 	add r1, #0x38
 	mov r2, #3
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -10907,7 +10907,7 @@ ov91_022618B0: ; 0x022618B0
 	add r1, #0x38
 	mov r2, #3
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff

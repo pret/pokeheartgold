@@ -656,7 +656,7 @@ ov106_021E5D70: ; 0x021E5D70
 	bl NNS_G3dGlbPolygonAttr
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -1446,7 +1446,7 @@ ov106_021E63E0: ; 0x021E63E0
 	add r4, r0, #0
 	bl ov106_021E6A34
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200D034
 	ldr r3, _021E6400 ; =0x027E0000
 	ldr r1, _021E6404 ; =0x00003FF8
@@ -2444,7 +2444,7 @@ _021E6BBE:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2465,7 +2465,7 @@ _021E6BE2:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0

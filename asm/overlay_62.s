@@ -999,7 +999,7 @@ ov62_021E60D4: ; 0x021E60D4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E60E0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 _021E60E0:
 	pop {r3, pc}
 	.balign 4, 0
@@ -1042,7 +1042,7 @@ _021E6102:
 	mov r1, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
 	ldr r0, [r0, #0x34]
@@ -1090,7 +1090,7 @@ _021E6182:
 	add r1, r6, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D634
+	bl ClearWindowTilemap
 	add r0, r5, #0
 	bl RemoveWindow
 	add r4, r4, #1

@@ -673,19 +673,19 @@ ov121_021E5DA4: ; 0x021E5DA4
 	add r2, r1, #0
 	mov r3, #1
 	str r1, [sp]
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	mov r1, #1
 	mov r2, #0
 	add r0, r4, #0
 	add r3, r1, #0
 	str r2, [sp]
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #1
 	str r2, [sp]
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	add sp, #0xa0
 	pop {r3, r4, r5, pc}
 	nop
@@ -748,7 +748,7 @@ ov121_021E5F30: ; 0x021E5F30
 	add r4, r0, #0
 	bl sub_0200B224
 	add r0, r4, #0
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	ldr r3, _021E5F50 ; =0x027E0000
 	ldr r1, _021E5F54 ; =0x00003FF8

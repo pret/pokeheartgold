@@ -189,23 +189,23 @@ _0225FD44:
 	mov r1, #7
 	mov r2, #3
 	add r3, r5, #0
-	bl sub_0201F25C
+	bl ScheduleSetBgAffineRotation
 	ldr r0, [sp, #4]
 	ldr r3, [sp, #8]
 	mov r1, #7
 	mov r2, #6
-	bl sub_0201F25C
+	bl ScheduleSetBgAffineRotation
 	ldr r0, [sp, #4]
 	mov r1, #7
 	mov r2, #0
 	sub r3, r4, r7
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r3, #0x27
 	ldr r0, [sp, #4]
 	mov r1, #7
 	mov r2, #3
 	sub r3, r3, r6
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 _0225FD86:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -2060,7 +2060,7 @@ ov93_02260BB0: ; 0x02260BB0
 	ldr r0, [r4, #0x2c]
 	mov r2, #0
 	mov r3, #0xd
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0xc
 	str r0, [sp]
 	mov r1, #4
@@ -2070,7 +2070,7 @@ ov93_02260BB0: ; 0x02260BB0
 	ldr r0, [r4, #0x2c]
 	mov r2, #0x14
 	mov r3, #0xd
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 _02260BEC:
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -4529,7 +4529,7 @@ _02261EE6:
 	add r1, sp, #0x30
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff

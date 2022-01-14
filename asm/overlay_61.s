@@ -893,7 +893,7 @@ ov61_021E60B8: ; 0x021E60B8
 	add r4, r0, #0
 	bl sub_0200B224
 	ldr r0, [r4, #8]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	pop {r4, pc}
 	thumb_func_end ov61_021E60B8
 
@@ -2445,7 +2445,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r0, r5, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -2456,7 +2456,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r0, r5, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -2467,7 +2467,7 @@ ov61_021E6C3C: ; 0x021E6C3C
 	add r0, r5, #0
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r5, #0
 	mov r1, #2
 	bl BgCommitTilemapBufferToVram

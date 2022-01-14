@@ -556,7 +556,7 @@ _021E5D90: .word 0x000003F9
 ov76_021E5D94: ; 0x021E5D94
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	pop {r3, pc}
 	.balign 4, 0
@@ -2017,7 +2017,7 @@ ov76_021E6904: ; 0x021E6904
 	ldr r0, [r4, #4]
 	mov r1, #5
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	mov r1, #0x1e
 	mov r0, #4
 	lsl r1, r1, #4
@@ -2156,7 +2156,7 @@ _021E6A1A:
 	mov r1, #5
 	mov r2, #0
 	add r3, r7, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _021E6A32:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov76_021E69C4

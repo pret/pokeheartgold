@@ -2339,12 +2339,12 @@ _020412C6:
 	bne _020412E0
 	mov r1, #3
 	mov r2, #1
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _020412E8
 _020412E0:
 	mov r1, #3
 	mov r2, #2
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _020412E8:
 	ldr r0, [sp, #4]
 	ldrh r3, [r0]
@@ -2357,12 +2357,12 @@ _020412E8:
 	bne _02041304
 	mov r1, #3
 	mov r2, #4
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _0204130C
 _02041304:
 	mov r1, #3
 	mov r2, #5
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 _0204130C:
 	ldrh r0, [r6]
 	cmp r0, #0

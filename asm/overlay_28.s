@@ -380,7 +380,7 @@ _0225D7FC:
 	mov r3, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [sp, #0x10]
 	add r6, #8
 	add r0, r0, #1
@@ -399,11 +399,11 @@ _0225D7FC:
 	ldrb r0, [r0, r1]
 	lsl r0, r0, #4
 	add r0, r2, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r7, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2524,7 +2524,7 @@ _0225E890:
 	ldrb r0, [r0, r1]
 	lsl r0, r0, #4
 	add r0, r2, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _0225E8B0:
 	pop {r3, r4, r5, pc}
 	nop
@@ -2687,7 +2687,7 @@ ov28_0225E9E0: ; 0x0225E9E0
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2703,7 +2703,7 @@ _0225EA10:
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

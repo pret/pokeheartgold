@@ -323,7 +323,7 @@ _02258A88: .word sub_0202457C
 ov47_02258A8C: ; 0x02258A8C
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	bl sub_0202061C
 	pop {r3, pc}
@@ -1243,7 +1243,7 @@ ov47_0225916C: ; 0x0225916C
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1440,7 +1440,7 @@ _02259338:
 	bl DrawFrameAndWindow2
 	add r5, #8
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -1517,7 +1517,7 @@ _022593E8:
 	bl ClearFrameAndWindow2
 	add r4, #8
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov47_022593CC
@@ -2279,7 +2279,7 @@ ov47_0225999C: ; 0x0225999C
 	lsr r3, r3, #1
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2427,10 +2427,10 @@ _02259A98:
 _02259B1C:
 	add r0, r6, #0
 	add r0, #0x50
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, #0x10
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov47_022599F0
@@ -2459,7 +2459,7 @@ _02259B44:
 	lsl r7, r0, #4
 	ldr r1, [sp, #4]
 	add r0, r6, r7
-	bl sub_0201EEB0
+	bl GetWindowPaletteNum
 	add r0, r6, r7
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -2558,7 +2558,7 @@ _02259C0C:
 	add r0, r0, #2
 	lsl r0, r0, #4
 	add r0, r6, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _02259C18:
 	ldr r0, [sp, #0x18]
 	add r0, r0, #4

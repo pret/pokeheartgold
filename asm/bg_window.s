@@ -3,33 +3,33 @@
 
 	.rodata
 
-_020F62C4:
+sTilemapWidthByBufferSize:
 	.byte 0x10, 0x20, 0x20, 0x20, 0x20, 0x20
 	.balign 4, 0
-_020F62CC:
-	.word sub_0201D650
-	.word sub_0201D6D0
-	.word sub_0201D650
-_020F62D8:
-	.word sub_0201D928
-	.word sub_0201D964
-	.word sub_0201D928
-_020F62E4:
-	.word sub_0201D900
-	.word sub_0201D93C
-	.word sub_0201D900
-_020F62F0:
-	.word sub_0201D820
-	.word sub_0201D874
-	.word sub_0201D820
-_020F62FC:
-	.word sub_0201D7F4
-	.word sub_0201D838
-	.word sub_0201D7F4
-_020F6308:
-	.word sub_0201D72C
-	.word sub_0201D79C
-	.word sub_0201D72C
+sPutWindowTilemapFuncs:
+	.word PutWindowTilemap_TextMode
+	.word PutWindowTilemap_AffineMode
+	.word PutWindowTilemap_TextMode
+sClearWindowTilemapAndScheduleTransferFuncs:
+	.word ClearWindowTilemapAndScheduleTransfer_TextMode
+	.word ClearWindowTilemapAndScheduleTransfer_AffineMode
+	.word ClearWindowTilemapAndScheduleTransfer_TextMode
+sClearWindowTilemapAndCopyToVramFuncs:
+	.word ClearWindowTilemapAndCopyToVram_TextMode
+	.word ClearWindowTilemapAndCopyToVram_AffineMode
+	.word ClearWindowTilemapAndCopyToVram_TextMode
+sScheduleWindowCopyToVramFuncs:
+	.word ScheduleWindowCopyToVram_TextMode
+	.word ScheduleWindowCopyToVram_AffineMode
+	.word ScheduleWindowCopyToVram_TextMode
+sCopyWindowToVramFuncs:
+	.word CopyWindowToVram_TextMode
+	.word CopyWindowToVram_AffineMode
+	.word CopyWindowToVram_TextMode
+sClearWindowTilemapFuncs:
+	.word ClearWindowTilemapText
+	.word ClearWindowTilemapAffine
+	.word ClearWindowTilemapText
 
 	.text
 
@@ -86,8 +86,8 @@ SetBothScreensModesAndDisable: ; 0x0201ACB0
 _0201ACE4: .word 0xC7FFFFFF
 	thumb_func_end SetBothScreensModesAndDisable
 
-	thumb_func_start sub_0201ACE8
-sub_0201ACE8: ; 0x0201ACE8
+	thumb_func_start SetScreenModeAndDisable
+SetScreenModeAndDisable: ; 0x0201ACE8
 	push {r3, lr}
 	add r2, r0, #0
 	cmp r1, #0
@@ -103,10 +103,10 @@ _0201AD00:
 	bl GXS_SetGraphicsMode
 	bl GX_DisableEngineBLayers
 	pop {r3, pc}
-	thumb_func_end sub_0201ACE8
+	thumb_func_end SetScreenModeAndDisable
 
-	thumb_func_start sub_0201AD0C
-sub_0201AD0C: ; 0x0201AD0C
+	thumb_func_start InitBgFromTemplateEx
+InitBgFromTemplateEx: ; 0x0201AD0C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r1, [sp, #4]
@@ -116,7 +116,7 @@ sub_0201AD0C: ; 0x0201AD0C
 	ldrb r0, [r4, #0x10]
 	ldr r1, [sp, #8]
 	ldr r6, [sp, #0x30]
-	bl sub_0201BA88
+	bl TranslateGFBgModePairToGXScreenSize
 	add r5, r0, #0
 	ldr r0, [sp, #4]
 	cmp r0, #7
@@ -736,17 +736,17 @@ _0201B1C4:
 	ldr r1, [sp, #4]
 	ldr r3, [r4]
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	ldr r3, [r4, #4]
 	mov r2, #3
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0201B1E0: .word 0x0400100E
-	thumb_func_end sub_0201AD0C
+	thumb_func_end InitBgFromTemplateEx
 
 	thumb_func_start InitBgFromTemplate
 InitBgFromTemplate: ; 0x0201B1E4
@@ -754,13 +754,13 @@ InitBgFromTemplate: ; 0x0201B1E4
 	sub sp, #4
 	mov r4, #1
 	str r4, [sp]
-	bl sub_0201AD0C
+	bl InitBgFromTemplateEx
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end InitBgFromTemplate
 
-	thumb_func_start sub_0201B1F4
-sub_0201B1F4: ; 0x0201B1F4
+	thumb_func_start SetBgControlParam
+SetBgControlParam: ; 0x0201B1F4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r4, r2, #0
@@ -802,7 +802,7 @@ _0201B230:
 	strb r5, [r0, #0x1c]
 	ldrb r0, [r0, #0x1d]
 	add r1, r5, #0
-	bl sub_0201BA88
+	bl TranslateGFBgModePairToGXScreenSize
 	cmp r5, #0
 	bne _0201B25A
 	ldr r1, [sp]
@@ -821,7 +821,7 @@ _0201B25A:
 _0201B262:
 	cmp r7, #7
 	bls _0201B26A
-	bl sub_0201BA78
+	bl _0201BA78
 _0201B26A:
 	add r1, r7, r7
 	add r1, pc
@@ -1913,20 +1913,17 @@ _0201BA4A:
 	orr r0, r1
 	orr r0, r2
 	strh r0, [r6]
-	thumb_func_end sub_0201B1F4
-
-	thumb_func_start sub_0201BA78
-sub_0201BA78: ; 0x0201BA78
+_0201BA78: ; 0x0201BA78
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0201BA7C: .word 0x0400100E
 _0201BA80: .word 0xFFFFE0FF
 _0201BA84: .word 0xFFFF3FFF
-	thumb_func_end sub_0201BA78
+	thumb_func_end SetBgControlParam
 
-	thumb_func_start sub_0201BA88
-sub_0201BA88: ; 0x0201BA88
+	thumb_func_start TranslateGFBgModePairToGXScreenSize
+TranslateGFBgModePairToGXScreenSize: ; 0x0201BA88
 	cmp r1, #0
 	beq _0201BA96
 	cmp r1, #1
@@ -1998,10 +1995,10 @@ _0201BAF6:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201BA88
+	thumb_func_end TranslateGFBgModePairToGXScreenSize
 
-	thumb_func_start sub_0201BAFC
-sub_0201BAFC: ; 0x0201BAFC
+	thumb_func_start GetBgScreenDimensions
+GetBgScreenDimensions: ; 0x0201BAFC
 	cmp r0, #5
 	bhi _0201BB4A
 	add r0, r0, r0
@@ -2050,7 +2047,7 @@ _0201BB44:
 	strb r0, [r2]
 _0201BB4A:
 	bx lr
-	thumb_func_end sub_0201BAFC
+	thumb_func_end GetBgScreenDimensions
 
 	thumb_func_start FreeBgTilemapBuffer
 FreeBgTilemapBuffer: ; 0x0201BB4C
@@ -2070,8 +2067,8 @@ _0201BB66:
 	pop {r3, r4, r5, pc}
 	thumb_func_end FreeBgTilemapBuffer
 
-	thumb_func_start sub_0201BB68
-sub_0201BB68: ; 0x0201BB68
+	thumb_func_start SetBgPriority
+SetBgPriority: ; 0x0201BB68
 	cmp r0, #7
 	bhi _0201BC06
 	add r0, r0, r0
@@ -2171,10 +2168,10 @@ _0201BC18: .word 0x04001008
 _0201BC1C: .word 0x0400100A
 _0201BC20: .word 0x0400100C
 _0201BC24: .word 0x0400100E
-	thumb_func_end sub_0201BB68
+	thumb_func_end SetBgPriority
 
-	thumb_func_start BG_ToggleLayer
-BG_ToggleLayer: ; 0x0201BC28
+	thumb_func_start ToggleBgLayer
+ToggleBgLayer: ; 0x0201BC28
 	push {r3, lr}
 	cmp r0, #7
 	bhi _0201BC88
@@ -2227,10 +2224,10 @@ _0201BC82:
 _0201BC88:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end BG_ToggleLayer
+	thumb_func_end ToggleBgLayer
 
-	thumb_func_start sub_0201BC8C
-sub_0201BC8C: ; 0x0201BC8C
+	thumb_func_start BgSetPosTextAndCommit
+BgSetPosTextAndCommit: ; 0x0201BC8C
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -2242,7 +2239,7 @@ sub_0201BC8C: ; 0x0201BC8C
 	add r1, r2, #0
 	add r2, r3, #0
 	add r0, r0, r6
-	bl sub_0201BE38
+	bl Bg_SetPosText
 	add r0, r4, r6
 	ldr r1, [r0, #0x14]
 	ldr r0, [r0, #0x18]
@@ -2309,7 +2306,7 @@ _0201BCFA:
 _0201BD1A:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0201BF18
+	bl BgAffineReset
 	pop {r4, r5, r6, pc}
 _0201BD24:
 	add r2, r4, #0
@@ -2331,7 +2328,7 @@ _0201BD24:
 _0201BD44:
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_0201BF18
+	bl BgAffineReset
 	pop {r4, r5, r6, pc}
 _0201BD4E:
 	ldr r2, _0201BDCC ; =0x000001FF
@@ -2376,7 +2373,7 @@ _0201BD7A:
 _0201BD98:
 	add r0, r4, #0
 	mov r1, #6
-	bl sub_0201BF18
+	bl BgAffineReset
 	pop {r4, r5, r6, pc}
 _0201BDA2:
 	mov r2, #0x15
@@ -2397,7 +2394,7 @@ _0201BDA2:
 _0201BDC0:
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_0201BF18
+	bl BgAffineReset
 _0201BDC8:
 	pop {r4, r5, r6, pc}
 	nop
@@ -2411,30 +2408,30 @@ _0201BDE4: .word 0x04001014
 _0201BDE8: .word 0x01FF0000
 _0201BDEC: .word 0x04001018
 _0201BDF0: .word 0x0400101C
-	thumb_func_end sub_0201BC8C
+	thumb_func_end BgSetPosTextAndCommit
 
-	thumb_func_start sub_0201BDF4
-sub_0201BDF4: ; 0x0201BDF4
+	thumb_func_start Bg_GetXpos
+Bg_GetXpos: ; 0x0201BDF4
 	mov r2, #0x2c
 	mul r2, r1
 	add r0, r0, r2
 	ldr r0, [r0, #0x14]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201BDF4
+	thumb_func_end Bg_GetXpos
 
-	thumb_func_start sub_0201BE00
-sub_0201BE00: ; 0x0201BE00
+	thumb_func_start Bg_GetYpos
+Bg_GetYpos: ; 0x0201BE00
 	mov r2, #0x2c
 	mul r2, r1
 	add r0, r0, r2
 	ldr r0, [r0, #0x18]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201BE00
+	thumb_func_end Bg_GetYpos
 
-	thumb_func_start sub_0201BE0C
-sub_0201BE0C: ; 0x0201BE0C
+	thumb_func_start Bg_SetTextDimAndAffineParams
+Bg_SetTextDimAndAffineParams: ; 0x0201BE0C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2445,20 +2442,20 @@ sub_0201BE0C: ; 0x0201BE0C
 	add r0, r1, r0
 	add r1, r2, #0
 	add r2, r3, #0
-	bl sub_0201BE38
+	bl Bg_SetPosText
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x10]
 	str r0, [sp]
 	ldr r3, [sp, #0x14]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0201BE7C
+	bl SetBgAffine
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201BE0C
+	thumb_func_end Bg_SetTextDimAndAffineParams
 
-	thumb_func_start sub_0201BE38
-sub_0201BE38: ; 0x0201BE38
+	thumb_func_start Bg_SetPosText
+Bg_SetPosText: ; 0x0201BE38
 	cmp r1, #5
 	bhi _0201BE7A
 	add r1, r1, r1
@@ -2501,10 +2498,10 @@ _0201BE74:
 	str r1, [r0, #0x10]
 _0201BE7A:
 	bx lr
-	thumb_func_end sub_0201BE38
+	thumb_func_end Bg_SetPosText
 
-	thumb_func_start sub_0201BE7C
-sub_0201BE7C: ; 0x0201BE7C
+	thumb_func_start SetBgAffine
+SetBgAffine: ; 0x0201BE7C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -2582,10 +2579,10 @@ _0201BF08: .word 0x04000020
 _0201BF0C: .word 0x04000030
 _0201BF10: .word 0x04001020
 _0201BF14: .word 0x04001030
-	thumb_func_end sub_0201BE7C
+	thumb_func_end SetBgAffine
 
-	thumb_func_start sub_0201BF18
-sub_0201BF18: ; 0x0201BF18
+	thumb_func_start BgAffineReset
+BgAffineReset: ; 0x0201BF18
 	push {r4, r5, lr}
 	sub sp, #0x14
 	mov r2, #1
@@ -2602,14 +2599,14 @@ sub_0201BF18: ; 0x0201BF18
 	add r1, r4, #0
 	add r2, sp, #4
 	str r3, [sp]
-	bl sub_0201BE7C
+	bl SetBgAffine
 	add sp, #0x14
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201BF18
+	thumb_func_end BgAffineReset
 
-	thumb_func_start sub_0201BF44
-sub_0201BF44: ; 0x0201BF44
+	thumb_func_start CopyOrUncompressTilemapData
+CopyOrUncompressTilemapData: ; 0x0201BF44
 	push {r3, r4, r5, lr}
 	cmp r2, #0
 	bne _0201BF50
@@ -2637,7 +2634,7 @@ _0201BF50:
 _0201BF76:
 	bl MIi_CpuCopy16
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201BF44
+	thumb_func_end CopyOrUncompressTilemapData
 
 	thumb_func_start BgCommitTilemapBufferToVram
 BgCommitTilemapBufferToVram: ; 0x0201BF7C
@@ -2675,14 +2672,14 @@ BgCopyOrUncompressTilemapBufferRangeToVram: ; 0x0201BF94
 	ldr r1, [sp, #4]
 	add r0, r6, #0
 	add r2, r3, #0
-	bl sub_0201BF44
+	bl CopyOrUncompressTilemapData
 	add r3, r5, r7
 	ldr r2, [r3, #0x10]
 	ldr r1, [sp, #4]
 	ldr r3, [r3, #0xc]
 	add r0, r4, #0
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _0201BFD2:
@@ -2695,13 +2692,13 @@ _0201BFD2:
 	ldr r2, [sp]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0201BF44
+	bl CopyOrUncompressTilemapData
 	ldr r2, [sp, #0x20]
 	add r0, r4, #0
 	add r1, r5, #0
 	lsl r2, r2, #1
 	add r3, r7, #0
-	bl sub_0201C014
+	bl CopyTilesToVram
 	add r0, r5, #0
 	bl FreeToHeap
 	add sp, #8
@@ -2711,14 +2708,14 @@ _0201C002:
 	add r0, r4, #0
 	add r1, r6, #0
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end BgCopyOrUncompressTilemapBufferRangeToVram
 
-	thumb_func_start sub_0201C014
-sub_0201C014: ; 0x0201C014
+	thumb_func_start CopyTilesToVram
+CopyTilesToVram: ; 0x0201C014
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r6, r3, #0
@@ -2794,7 +2791,7 @@ _0201C09A:
 _0201C0A4:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201C014
+	thumb_func_end CopyTilesToVram
 
 	thumb_func_start BG_LoadScreenTilemapData
 BG_LoadScreenTilemapData: ; 0x0201C0A8
@@ -2806,7 +2803,7 @@ BG_LoadScreenTilemapData: ; 0x0201C0A8
 	add r1, r4, r2
 	ldr r1, [r1, #8]
 	add r2, r3, #0
-	bl sub_0201BF44
+	bl CopyOrUncompressTilemapData
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end BG_LoadScreenTilemapData
@@ -2824,20 +2821,20 @@ BG_LoadCharTilesData: ; 0x0201C0C0
 	ldr r4, [sp, #0x10]
 	lsl r4, r4, #5
 	str r4, [sp]
-	bl sub_0201C0EC
+	bl BG_LoadCharPixelData
 	add sp, #4
 	pop {r3, r4, pc}
 _0201C0DE:
 	ldr r4, [sp, #0x10]
 	lsl r4, r4, #6
 	str r4, [sp]
-	bl sub_0201C0EC
+	bl BG_LoadCharPixelData
 	add sp, #4
 	pop {r3, r4, pc}
 	thumb_func_end BG_LoadCharTilesData
 
-	thumb_func_start sub_0201C0EC
-sub_0201C0EC: ; 0x0201C0EC
+	thumb_func_start BG_LoadCharPixelData
+BG_LoadCharPixelData: ; 0x0201C0EC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	add r5, r2, #0
@@ -2853,12 +2850,12 @@ sub_0201C0EC: ; 0x0201C0EC
 	ldr r2, [sp]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0201BF44
+	bl CopyOrUncompressTilemapData
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r1, r6, #0
 	add r3, r4, #0
-	bl sub_0201C130
+	bl LoadBgVramChar
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2866,12 +2863,12 @@ _0201C124:
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0201C130
+	bl LoadBgVramChar
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201C0EC
+	thumb_func_end BG_LoadCharPixelData
 
-	thumb_func_start sub_0201C130
-sub_0201C130: ; 0x0201C130
+	thumb_func_start LoadBgVramChar
+LoadBgVramChar: ; 0x0201C130
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r1, #0
 	add r6, r3, #0
@@ -2947,7 +2944,7 @@ _0201C1B6:
 _0201C1C0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201C130
+	thumb_func_end LoadBgVramChar
 
 	thumb_func_start BG_ClearCharDataRange
 BG_ClearCharDataRange: ; 0x0201C1C4
@@ -2966,15 +2963,15 @@ BG_ClearCharDataRange: ; 0x0201C1C4
 	add r1, r4, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl sub_0201C130
+	bl LoadBgVramChar
 	ldr r0, [sp]
 	add r1, r4, #0
 	bl FreeToHeapExplicit
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end BG_ClearCharDataRange
 
-	thumb_func_start sub_0201C1F4
-sub_0201C1F4: ; 0x0201C1F4
+	thumb_func_start BG_FillCharDataRange
+BG_FillCharDataRange: ; 0x0201C1F4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r7, r1, #0
@@ -3022,12 +3019,12 @@ _0201C238:
 	mul r2, r3
 	ldr r3, [sp]
 	lsr r0, r0, #0x18
-	bl sub_0201C130
+	bl LoadBgVramChar
 	ldr r0, [sp, #4]
 	bl FreeToHeap
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201C1F4
+	thumb_func_end BG_FillCharDataRange
 
 	thumb_func_start BG_LoadPlttData
 BG_LoadPlttData: ; 0x0201C260
@@ -3055,8 +3052,8 @@ _0201C282:
 	.balign 4, 0
 	thumb_func_end BG_LoadPlttData
 
-	thumb_func_start sub_0201C290
-sub_0201C290: ; 0x0201C290
+	thumb_func_start BG_LoadBlankPltt
+BG_LoadBlankPltt: ; 0x0201C290
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -3089,7 +3086,7 @@ _0201C2CC:
 	bl FreeToHeapExplicit
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201C290
+	thumb_func_end BG_LoadBlankPltt
 
 	thumb_func_start BG_SetMaskColor
 BG_SetMaskColor: ; 0x0201C2D8
@@ -3106,8 +3103,8 @@ BG_SetMaskColor: ; 0x0201C2D8
 	.balign 4, 0
 	thumb_func_end BG_SetMaskColor
 
-	thumb_func_start sub_0201C2F0
-sub_0201C2F0: ; 0x0201C2F0
+	thumb_func_start GetTileMapIndexFromCoords
+GetTileMapIndexFromCoords: ; 0x0201C2F0
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r5, r1, #0
@@ -3239,10 +3236,10 @@ _0201C3DA:
 	lsr r0, r0, #0x10
 _0201C3E2:
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0201C2F0
+	thumb_func_end GetTileMapIndexFromCoords
 
-	thumb_func_start sub_0201C3E4
-sub_0201C3E4: ; 0x0201C3E4
+	thumb_func_start GetSrcTileMapIndexFromCoords
+GetSrcTileMapIndexFromCoords: ; 0x0201C3E4
 	push {r3, r4, r5, r6, r7}
 	sub sp, #4
 	str r3, [sp]
@@ -3367,10 +3364,10 @@ _0201C4BC:
 	add sp, #4
 	pop {r3, r4, r5, r6, r7}
 	bx lr
-	thumb_func_end sub_0201C3E4
+	thumb_func_end GetSrcTileMapIndexFromCoords
 
-	thumb_func_start sub_0201C4C4
-sub_0201C4C4: ; 0x0201C4C4
+	thumb_func_start LoadRectToBgTilemapRect
+LoadRectToBgTilemapRect: ; 0x0201C4C4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x1c
 	add r6, sp, #0x20
@@ -3386,14 +3383,14 @@ sub_0201C4C4: ; 0x0201C4C4
 	str r4, [sp, #0x18]
 	add r2, r3, #0
 	ldrb r3, [r6, #0x10]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201C4C4
+	thumb_func_end LoadRectToBgTilemapRect
 
-	thumb_func_start sub_0201C4EC
-sub_0201C4EC: ; 0x0201C4EC
+	thumb_func_start CopyToBgTilemapRect
+CopyToBgTilemapRect: ; 0x0201C4EC
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r4, r2, #0
@@ -3427,7 +3424,7 @@ sub_0201C4EC: ; 0x0201C4EC
 	str r1, [sp, #0x18]
 	ldrb r3, [r3, #0x10]
 	add r1, r4, #0
-	bl sub_0201C5E4
+	bl CopyToBgTilemapRectText
 	add sp, #0x1c
 	pop {r4, r5, pc}
 _0201C536:
@@ -3452,13 +3449,13 @@ _0201C536:
 	str r1, [sp, #0x18]
 	ldrb r3, [r3, #0x10]
 	add r1, r4, #0
-	bl sub_0201C75C
+	bl CopyBgTilemapRectAffine
 	add sp, #0x1c
 	pop {r4, r5, pc}
-	thumb_func_end sub_0201C4EC
+	thumb_func_end CopyToBgTilemapRect
 
-	thumb_func_start sub_0201C568
-sub_0201C568: ; 0x0201C568
+	thumb_func_start CopyRectToBgTilemapRect
+CopyRectToBgTilemapRect: ; 0x0201C568
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	add r4, r2, #0
@@ -3492,7 +3489,7 @@ sub_0201C568: ; 0x0201C568
 	str r1, [sp, #0x18]
 	ldrb r3, [r3, #0x10]
 	add r1, r4, #0
-	bl sub_0201C5E4
+	bl CopyToBgTilemapRectText
 	add sp, #0x1c
 	pop {r4, r5, pc}
 _0201C5B2:
@@ -3517,13 +3514,13 @@ _0201C5B2:
 	str r1, [sp, #0x18]
 	ldrb r3, [r3, #0x10]
 	add r1, r4, #0
-	bl sub_0201C75C
+	bl CopyBgTilemapRectAffine
 	add sp, #0x1c
 	pop {r4, r5, pc}
-	thumb_func_end sub_0201C568
+	thumb_func_end CopyRectToBgTilemapRect
 
-	thumb_func_start sub_0201C5E4
-sub_0201C5E4: ; 0x0201C5E4
+	thumb_func_start CopyToBgTilemapRectText
+CopyToBgTilemapRectText: ; 0x0201C5E4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x44
 	str r1, [sp]
@@ -3547,7 +3544,7 @@ _0201C608:
 	add r1, sp, #0x40
 	add r1, #1
 	add r2, sp, #0x40
-	bl sub_0201BAFC
+	bl GetBgScreenDimensions
 	add r0, sp, #0x70
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3611,7 +3608,7 @@ _0201C66C:
 	ldrb r3, [r7, #0x14]
 	ldr r1, [sp, #0x30]
 	lsr r0, r0, #0x18
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	ldr r1, [sp, #0x10]
 	lsl r2, r5, #1
 	ldrh r1, [r1, r2]
@@ -3685,7 +3682,7 @@ _0201C6F8:
 	ldrb r3, [r7, #0x14]
 	ldr r1, [sp, #0x34]
 	lsr r0, r0, #0x18
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	str r0, [sp, #0x38]
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #0x3c]
@@ -3693,7 +3690,7 @@ _0201C6F8:
 	ldr r3, [sp, #0x6c]
 	lsr r0, r0, #0x18
 	add r2, r4, #0
-	bl sub_0201C3E4
+	bl GetSrcTileMapIndexFromCoords
 	lsl r1, r0, #1
 	ldr r0, [sp, #0x5c]
 	ldrh r0, [r0, r1]
@@ -3719,10 +3716,10 @@ _0201C756:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201C5E4
+	thumb_func_end CopyToBgTilemapRectText
 
-	thumb_func_start sub_0201C75C
-sub_0201C75C: ; 0x0201C75C
+	thumb_func_start CopyBgTilemapRectAffine
+CopyBgTilemapRectAffine: ; 0x0201C75C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x44
 	str r1, [sp]
@@ -3746,7 +3743,7 @@ _0201C780:
 	add r1, sp, #0x40
 	add r1, #1
 	add r2, sp, #0x40
-	bl sub_0201BAFC
+	bl GetBgScreenDimensions
 	add r0, sp, #0x70
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3807,7 +3804,7 @@ _0201C7DE:
 	ldrb r3, [r7, #0x14]
 	ldr r1, [sp, #0x30]
 	lsr r0, r0, #0x18
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	ldr r1, [sp, #0x10]
 	ldrb r2, [r1, r5]
 	ldr r1, [sp, #0x2c]
@@ -3879,7 +3876,7 @@ _0201C866:
 	ldrb r3, [r7, #0x14]
 	ldr r1, [sp, #0x34]
 	lsr r0, r0, #0x18
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	str r0, [sp, #0x38]
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #0x3c]
@@ -3887,7 +3884,7 @@ _0201C866:
 	ldr r3, [sp, #0x6c]
 	lsr r0, r0, #0x18
 	add r2, r4, #0
-	bl sub_0201C3E4
+	bl GetSrcTileMapIndexFromCoords
 	ldr r1, [sp, #0x5c]
 	ldrb r2, [r1, r0]
 	ldr r1, [sp, #0x2c]
@@ -3910,7 +3907,7 @@ _0201C8B0:
 _0201C8C0:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201C75C
+	thumb_func_end CopyBgTilemapRectAffine
 
 	thumb_func_start FillBgTilemapRect
 FillBgTilemapRect: ; 0x0201C8C4
@@ -3936,7 +3933,7 @@ FillBgTilemapRect: ; 0x0201C8C4
 	str r1, [sp, #8]
 	ldrb r3, [r3, #0x10]
 	add r1, r4, #0
-	bl sub_0201C914
+	bl FillBgTilemapRectText
 	add sp, #0xc
 	pop {r4, r5, pc}
 _0201C8F8:
@@ -3949,14 +3946,14 @@ _0201C8F8:
 	lsl r1, r4, #0x18
 	ldrb r3, [r3, #0x10]
 	lsr r1, r1, #0x18
-	bl sub_0201C9D4
+	bl FillBgTilemapRectAffine
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end FillBgTilemapRect
 
-	thumb_func_start sub_0201C914
-sub_0201C914: ; 0x0201C914
+	thumb_func_start FillBgTilemapRectText
+FillBgTilemapRectText: ; 0x0201C914
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	str r1, [sp]
@@ -3971,7 +3968,7 @@ sub_0201C914: ; 0x0201C914
 	add r1, sp, #0x1c
 	add r1, #1
 	add r2, sp, #0x1c
-	bl sub_0201BAFC
+	bl GetBgScreenDimensions
 	add r0, sp, #0x28
 	ldrb r2, [r0, #0x14]
 	ldr r1, [sp, #8]
@@ -4013,7 +4010,7 @@ _0201C972:
 	ldrb r3, [r7, #0x14]
 	ldr r1, [sp, #8]
 	add r0, r5, #0
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	cmp r6, #0x11
 	bne _0201C992
 	lsl r1, r0, #1
@@ -4057,10 +4054,10 @@ _0201C9CA:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0201C9D0: .word 0x00000FFF
-	thumb_func_end sub_0201C914
+	thumb_func_end FillBgTilemapRectText
 
-	thumb_func_start sub_0201C9D4
-sub_0201C9D4: ; 0x0201C9D4
+	thumb_func_start FillBgTilemapRectAffine
+FillBgTilemapRectAffine: ; 0x0201C9D4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r1, [sp]
@@ -4075,7 +4072,7 @@ sub_0201C9D4: ; 0x0201C9D4
 	add r1, sp, #0x10
 	add r1, #1
 	add r2, sp, #0x10
-	bl sub_0201BAFC
+	bl GetBgScreenDimensions
 	add r1, sp, #0x18
 	ldrb r0, [r1, #0x14]
 	add r0, r5, r0
@@ -4103,7 +4100,7 @@ _0201CA16:
 	ldrb r3, [r7, #0x14]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	ldr r2, [sp]
 	ldr r1, [sp, #0xc]
 	strb r2, [r1, r0]
@@ -4123,10 +4120,10 @@ _0201CA46:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201C9D4
+	thumb_func_end FillBgTilemapRectAffine
 
-	thumb_func_start sub_0201CA4C
-sub_0201CA4C: ; 0x0201CA4C
+	thumb_func_start BgTilemapRectChangePalette
+BgTilemapRectChangePalette: ; 0x0201CA4C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -4143,7 +4140,7 @@ sub_0201CA4C: ; 0x0201CA4C
 	add r1, sp, #0x10
 	add r1, #1
 	add r2, sp, #0x10
-	bl sub_0201BAFC
+	bl GetBgScreenDimensions
 	add r0, sp, #0x18
 	ldrb r1, [r0, #0x14]
 	add r1, r6, r1
@@ -4177,7 +4174,7 @@ _0201CA9E:
 	ldrb r3, [r7, #0x1c]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	lsl r0, r0, #1
 	ldrh r2, [r4, r0]
 	ldr r1, _0201CADC ; =0x00000FFF
@@ -4203,7 +4200,7 @@ _0201CAD8:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0201CADC: .word 0x00000FFF
-	thumb_func_end sub_0201CA4C
+	thumb_func_end BgTilemapRectChangePalette
 
 	thumb_func_start BgClearTilemapBufferAndCommit
 BgClearTilemapBufferAndCommit: ; 0x0201CAE0
@@ -4226,8 +4223,8 @@ _0201CB02:
 	pop {r3, r4, r5, pc}
 	thumb_func_end BgClearTilemapBufferAndCommit
 
-	thumb_func_start sub_0201CB04
-sub_0201CB04: ; 0x0201CB04
+	thumb_func_start BgFillTilemapBufferAndCommit
+BgFillTilemapBufferAndCommit: ; 0x0201CB04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -4245,10 +4242,10 @@ sub_0201CB04: ; 0x0201CB04
 	bl BgCommitTilemapBufferToVram
 _0201CB26:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201CB04
+	thumb_func_end BgFillTilemapBufferAndCommit
 
-	thumb_func_start sub_0201CB28
-sub_0201CB28: ; 0x0201CB28
+	thumb_func_start BgFillTilemapBufferAndSchedule
+BgFillTilemapBufferAndSchedule: ; 0x0201CB28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -4266,10 +4263,10 @@ sub_0201CB28: ; 0x0201CB28
 	bl ScheduleBgTilemapBufferTransfer
 _0201CB4A:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201CB28
+	thumb_func_end BgFillTilemapBufferAndSchedule
 
-	thumb_func_start sub_0201CB4C
-sub_0201CB4C: ; 0x0201CB4C
+	thumb_func_start BgGetCharPtr
+BgGetCharPtr: ; 0x0201CB4C
 	push {r3, lr}
 	cmp r0, #7
 	bhi _0201CB9E
@@ -4316,10 +4313,10 @@ _0201CB9E:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201CB4C
+	thumb_func_end BgGetCharPtr
 
-	thumb_func_start sub_0201CBA4
-sub_0201CBA4: ; 0x0201CBA4
+	thumb_func_start Convert4bppTo8bppInternal
+Convert4bppTo8bppInternal: ; 0x0201CBA4
 	push {r4, r5, r6, r7}
 	lsl r3, r3, #0x1c
 	lsr r3, r3, #0x18
@@ -4356,10 +4353,10 @@ _0201CBDE:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201CBA4
+	thumb_func_end Convert4bppTo8bppInternal
 
-	thumb_func_start sub_0201CBE4
-sub_0201CBE4: ; 0x0201CBE4
+	thumb_func_start Convert4bppTo8bpp
+Convert4bppTo8bpp: ; 0x0201CBE4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -4372,11 +4369,11 @@ sub_0201CBE4: ; 0x0201CBE4
 	add r1, r5, #0
 	add r2, r4, #0
 	add r3, r7, #0
-	bl sub_0201CBA4
+	bl Convert4bppTo8bppInternal
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201CBE4
+	thumb_func_end Convert4bppTo8bpp
 
 	thumb_func_start GetBgTilemapBuffer
 GetBgTilemapBuffer: ; 0x0201CC08
@@ -4388,28 +4385,28 @@ GetBgTilemapBuffer: ; 0x0201CC08
 	.balign 4, 0
 	thumb_func_end GetBgTilemapBuffer
 
-	thumb_func_start sub_0201CC14
-sub_0201CC14: ; 0x0201CC14
+	thumb_func_start GetBgHOffset
+GetBgHOffset: ; 0x0201CC14
 	mov r2, #0x2c
 	mul r2, r1
 	add r0, r0, r2
 	ldr r0, [r0, #0x14]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201CC14
+	thumb_func_end GetBgHOffset
 
-	thumb_func_start sub_0201CC20
-sub_0201CC20: ; 0x0201CC20
+	thumb_func_start GetBgRotation
+GetBgRotation: ; 0x0201CC20
 	mov r2, #0x2c
 	mul r2, r1
 	add r0, r0, r2
 	ldrb r0, [r0, #0x1e]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201CC20
+	thumb_func_end GetBgRotation
 
-	thumb_func_start sub_0201CC2C
-sub_0201CC2C: ; 0x0201CC2C
+	thumb_func_start GetBgPriority
+GetBgPriority: ; 0x0201CC2C
 	sub sp, #0x20
 	cmp r1, #7
 	bls _0201CC34
@@ -4663,7 +4660,7 @@ _0201CDF8: .word 0x04001008
 _0201CDFC: .word 0x0400100A
 _0201CE00: .word 0x0400100C
 _0201CE04: .word 0x0400100E
-	thumb_func_end sub_0201CC2C
+	thumb_func_end GetBgPriority
 
 	thumb_func_start BlitBitmapRect4Bit
 BlitBitmapRect4Bit: ; 0x0201CE08
@@ -4970,8 +4967,8 @@ _0201D040: .word 0x0000FFFF
 _0201D044: .word 0x00003FE0
 	thumb_func_end BlitBitmapRect4Bit
 
-	thumb_func_start sub_0201D048
-sub_0201D048: ; 0x0201D048
+	thumb_func_start BlitBitmapRect8bit
+BlitBitmapRect8bit: ; 0x0201D048
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x50
 	str r2, [sp, #8]
@@ -5230,10 +5227,10 @@ _0201D224:
 	.balign 4, 0
 _0201D228: .word 0x0000FFFF
 _0201D22C: .word 0x00007FC0
-	thumb_func_end sub_0201D048
+	thumb_func_end BlitBitmapRect8bit
 
-	thumb_func_start sub_0201D230
-sub_0201D230: ; 0x0201D230
+	thumb_func_start FillBitmapRect4bit
+FillBitmapRect4bit: ; 0x0201D230
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r1, [sp, #4]
@@ -5340,10 +5337,10 @@ _0201D2EC:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0201D2F0: .word 0x00003FE0
-	thumb_func_end sub_0201D230
+	thumb_func_end FillBitmapRect4bit
 
-	thumb_func_start sub_0201D2F4
-sub_0201D2F4: ; 0x0201D2F4
+	thumb_func_start FillBitmapRect8bit
+FillBitmapRect8bit: ; 0x0201D2F4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	str r1, [sp, #4]
@@ -5433,7 +5430,7 @@ _0201D392:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0201D398: .word 0x00007FC0
-	thumb_func_end sub_0201D2F4
+	thumb_func_end FillBitmapRect8bit
 
 	thumb_func_start AllocWindows
 AllocWindows: ; 0x0201D39C
@@ -5576,8 +5573,8 @@ _0201D48C: .word 0xFFFF8000
 _0201D490: .word 0xFFFF7FFF
 	thumb_func_end AddWindowParameterized
 
-	thumb_func_start sub_0201D494
-sub_0201D494: ; 0x0201D494
+	thumb_func_start AddTextWindowTopLeftCorner
+AddTextWindowTopLeftCorner: ; 0x0201D494
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r3, [sp]
@@ -5627,7 +5624,7 @@ _0201D4F0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0201D4F4: .word 0xFFFF8000
-	thumb_func_end sub_0201D494
+	thumb_func_end AddTextWindowTopLeftCorner
 
 	thumb_func_start AddWindow
 AddWindow: ; 0x0201D4F8
@@ -5677,8 +5674,8 @@ RemoveWindow: ; 0x0201D520
 _0201D548: .word 0xFFFF8000
 	thumb_func_end RemoveWindow
 
-	thumb_func_start sub_0201D54C
-sub_0201D54C: ; 0x0201D54C
+	thumb_func_start WindowArray_dtor
+WindowArray_dtor: ; 0x0201D54C
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -5702,7 +5699,7 @@ _0201D570:
 	add r0, r5, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0201D54C
+	thumb_func_end WindowArray_dtor
 
 	thumb_func_start CopyWindowToVram
 CopyWindowToVram: ; 0x0201D578
@@ -5739,16 +5736,16 @@ _0201D5AA:
 	ldrb r1, [r1, #0x1c]
 	add r0, r4, #0
 	lsl r2, r1, #2
-	ldr r1, _0201D5C4 ; =_020F62FC
+	ldr r1, _0201D5C4 ; =sCopyWindowToVramFuncs
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r4, pc}
 	nop
-_0201D5C4: .word _020F62FC
+_0201D5C4: .word sCopyWindowToVramFuncs
 	thumb_func_end CopyWindowToVram
 
-	thumb_func_start sub_0201D5C8
-sub_0201D5C8: ; 0x0201D5C8
+	thumb_func_start ScheduleWindowCopyToVram
+ScheduleWindowCopyToVram: ; 0x0201D5C8
 	push {r4, lr}
 	add r4, r0, #0
 	bne _0201D5D2
@@ -5782,16 +5779,16 @@ _0201D5FA:
 	ldrb r1, [r1, #0x1c]
 	add r0, r4, #0
 	lsl r2, r1, #2
-	ldr r1, _0201D614 ; =_020F62F0
+	ldr r1, _0201D614 ; =sScheduleWindowCopyToVramFuncs
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r4, pc}
 	nop
-_0201D614: .word _020F62F0
-	thumb_func_end sub_0201D5C8
+_0201D614: .word sScheduleWindowCopyToVramFuncs
+	thumb_func_end ScheduleWindowCopyToVram
 
-	thumb_func_start sub_0201D618
-sub_0201D618: ; 0x0201D618
+	thumb_func_start PutWindowTilemap
+PutWindowTilemap: ; 0x0201D618
 	push {r3, lr}
 	ldrb r2, [r0, #4]
 	mov r1, #0x2c
@@ -5800,16 +5797,16 @@ sub_0201D618: ; 0x0201D618
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D630 ; =_020F62CC
+	ldr r1, _0201D630 ; =sPutWindowTilemapFuncs
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D630: .word _020F62CC
-	thumb_func_end sub_0201D618
+_0201D630: .word sPutWindowTilemapFuncs
+	thumb_func_end PutWindowTilemap
 
-	thumb_func_start sub_0201D634
-sub_0201D634: ; 0x0201D634
+	thumb_func_start ClearWindowTilemap
+ClearWindowTilemap: ; 0x0201D634
 	push {r3, lr}
 	ldrb r2, [r0, #4]
 	mov r1, #0x2c
@@ -5818,16 +5815,16 @@ sub_0201D634: ; 0x0201D634
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D64C ; =_020F6308
+	ldr r1, _0201D64C ; =sClearWindowTilemapFuncs
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D64C: .word _020F6308
-	thumb_func_end sub_0201D634
+_0201D64C: .word sClearWindowTilemapFuncs
+	thumb_func_end ClearWindowTilemap
 
-	thumb_func_start sub_0201D650
-sub_0201D650: ; 0x0201D650
+	thumb_func_start PutWindowTilemap_TextMode
+PutWindowTilemap_TextMode: ; 0x0201D650
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r6, r0, #0
@@ -5873,7 +5870,7 @@ _0201D692:
 	ldrb r3, [r3, #0x1c]
 	ldr r1, [sp, #0xc]
 	lsr r0, r0, #0x18
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	ldrb r1, [r6, #9]
 	lsl r2, r0, #1
 	ldr r0, [sp]
@@ -5895,10 +5892,10 @@ _0201D6CA:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201D650
+	thumb_func_end PutWindowTilemap_TextMode
 
-	thumb_func_start sub_0201D6D0
-sub_0201D6D0: ; 0x0201D6D0
+	thumb_func_start PutWindowTilemap_AffineMode
+PutWindowTilemap_AffineMode: ; 0x0201D6D0
 	push {r4, r5, r6, r7}
 	ldrb r3, [r0, #4]
 	mov r1, #0x2c
@@ -5910,7 +5907,7 @@ sub_0201D6D0: ; 0x0201D6D0
 	cmp r3, #0
 	beq _0201D724
 	ldrb r2, [r1, #0x1d]
-	ldr r1, _0201D728 ; =_020F62C4
+	ldr r1, _0201D728 ; =sTilemapWidthByBufferSize
 	ldrb r6, [r1, r2]
 	ldrb r1, [r0, #6]
 	add r2, r1, #0
@@ -5948,11 +5945,11 @@ _0201D724:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-_0201D728: .word _020F62C4
-	thumb_func_end sub_0201D6D0
+_0201D728: .word sTilemapWidthByBufferSize
+	thumb_func_end PutWindowTilemap_AffineMode
 
-	thumb_func_start sub_0201D72C
-sub_0201D72C: ; 0x0201D72C
+	thumb_func_start ClearWindowTilemapText
+ClearWindowTilemapText: ; 0x0201D72C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -5994,7 +5991,7 @@ _0201D766:
 	ldrb r3, [r3, #0x1c]
 	lsr r0, r0, #0x18
 	add r1, r7, #0
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	lsl r2, r0, #1
 	ldr r0, [sp]
 	mov r1, #0
@@ -6012,10 +6009,10 @@ _0201D78C:
 _0201D798:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201D72C
+	thumb_func_end ClearWindowTilemapText
 
-	thumb_func_start sub_0201D79C
-sub_0201D79C: ; 0x0201D79C
+	thumb_func_start ClearWindowTilemapAffine
+ClearWindowTilemapAffine: ; 0x0201D79C
 	push {r4, r5, r6, r7}
 	ldrb r3, [r0, #4]
 	mov r1, #0x2c
@@ -6027,7 +6024,7 @@ sub_0201D79C: ; 0x0201D79C
 	cmp r3, #0
 	beq _0201D7EA
 	ldrb r2, [r1, #0x1d]
-	ldr r1, _0201D7F0 ; =_020F62C4
+	ldr r1, _0201D7F0 ; =sTilemapWidthByBufferSize
 	mov r4, #0
 	ldrb r6, [r1, r2]
 	ldrb r1, [r0, #6]
@@ -6062,17 +6059,17 @@ _0201D7EA:
 	pop {r4, r5, r6, r7}
 	bx lr
 	nop
-_0201D7F0: .word _020F62C4
-	thumb_func_end sub_0201D79C
+_0201D7F0: .word sTilemapWidthByBufferSize
+	thumb_func_end ClearWindowTilemapAffine
 
-	thumb_func_start sub_0201D7F4
-sub_0201D7F4: ; 0x0201D7F4
+	thumb_func_start CopyWindowToVram_TextMode
+CopyWindowToVram_TextMode: ; 0x0201D7F4
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0201D650
+	bl PutWindowTilemap_TextMode
 	add r0, r4, #0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	ldrb r1, [r4, #4]
 	mov r0, #0x2c
 	add r2, r1, #0
@@ -6086,26 +6083,26 @@ sub_0201D7F4: ; 0x0201D7F4
 	bl BgCopyOrUncompressTilemapBufferRangeToVram
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end sub_0201D7F4
+	thumb_func_end CopyWindowToVram_TextMode
 
-	thumb_func_start sub_0201D820
-sub_0201D820: ; 0x0201D820
+	thumb_func_start ScheduleWindowCopyToVram_TextMode
+ScheduleWindowCopyToVram_TextMode: ; 0x0201D820
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D650
+	bl PutWindowTilemap_TextMode
 	ldrb r1, [r4, #4]
 	ldr r0, [r4]
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
-	bl sub_0201D8A0
+	bl CopyWindowPixelsToVram_TextMode
 	pop {r4, pc}
-	thumb_func_end sub_0201D820
+	thumb_func_end ScheduleWindowCopyToVram_TextMode
 
-	thumb_func_start sub_0201D838
-sub_0201D838: ; 0x0201D838
+	thumb_func_start CopyWindowToVram_AffineMode
+CopyWindowToVram_AffineMode: ; 0x0201D838
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0201D6D0
+	bl PutWindowTilemap_AffineMode
 	ldrb r1, [r4, #4]
 	mov r0, #0x2c
 	add r2, r1, #0
@@ -6130,13 +6127,13 @@ sub_0201D838: ; 0x0201D838
 	lsl r3, r3, #6
 	bl BG_LoadCharTilesData
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201D838
+	thumb_func_end CopyWindowToVram_AffineMode
 
-	thumb_func_start sub_0201D874
-sub_0201D874: ; 0x0201D874
+	thumb_func_start ScheduleWindowCopyToVram_AffineMode
+ScheduleWindowCopyToVram_AffineMode: ; 0x0201D874
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0201D6D0
+	bl PutWindowTilemap_AffineMode
 	ldrb r1, [r4, #4]
 	ldr r0, [r4]
 	bl ScheduleBgTilemapBufferTransfer
@@ -6153,10 +6150,10 @@ sub_0201D874: ; 0x0201D874
 	lsl r3, r3, #6
 	bl BG_LoadCharTilesData
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201D874
+	thumb_func_end ScheduleWindowCopyToVram_AffineMode
 
-	thumb_func_start sub_0201D8A0
-sub_0201D8A0: ; 0x0201D8A0
+	thumb_func_start CopyWindowPixelsToVram_TextMode
+CopyWindowPixelsToVram_TextMode: ; 0x0201D8A0
 	push {r3, r4, r5, lr}
 	add r3, r0, #0
 	ldrh r2, [r3, #0xa]
@@ -6176,7 +6173,7 @@ sub_0201D8A0: ; 0x0201D8A0
 	mul r3, r4
 	bl BG_LoadCharTilesData
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201D8A0
+	thumb_func_end CopyWindowPixelsToVram_TextMode
 
 	thumb_func_start ClearWindowTilemapAndCopyToVram
 ClearWindowTilemapAndCopyToVram: ; 0x0201D8C8
@@ -6188,16 +6185,16 @@ ClearWindowTilemapAndCopyToVram: ; 0x0201D8C8
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D8E0 ; =_020F62E4
+	ldr r1, _0201D8E0 ; =sClearWindowTilemapAndCopyToVramFuncs
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D8E0: .word _020F62E4
+_0201D8E0: .word sClearWindowTilemapAndCopyToVramFuncs
 	thumb_func_end ClearWindowTilemapAndCopyToVram
 
-	thumb_func_start sub_0201D8E4
-sub_0201D8E4: ; 0x0201D8E4
+	thumb_func_start ClearWindowTilemapAndScheduleTransfer
+ClearWindowTilemapAndScheduleTransfer: ; 0x0201D8E4
 	push {r3, lr}
 	ldrb r2, [r0, #4]
 	mov r1, #0x2c
@@ -6206,20 +6203,20 @@ sub_0201D8E4: ; 0x0201D8E4
 	add r1, r3, r1
 	ldrb r1, [r1, #0x1c]
 	lsl r2, r1, #2
-	ldr r1, _0201D8FC ; =_020F62D8
+	ldr r1, _0201D8FC ; =sClearWindowTilemapAndScheduleTransferFuncs
 	ldr r1, [r1, r2]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0201D8FC: .word _020F62D8
-	thumb_func_end sub_0201D8E4
+_0201D8FC: .word sClearWindowTilemapAndScheduleTransferFuncs
+	thumb_func_end ClearWindowTilemapAndScheduleTransfer
 
-	thumb_func_start sub_0201D900
-sub_0201D900: ; 0x0201D900
+	thumb_func_start ClearWindowTilemapAndCopyToVram_TextMode
+ClearWindowTilemapAndCopyToVram_TextMode: ; 0x0201D900
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0201D72C
+	bl ClearWindowTilemapText
 	ldrb r1, [r4, #4]
 	mov r0, #0x2c
 	add r2, r1, #0
@@ -6234,26 +6231,26 @@ sub_0201D900: ; 0x0201D900
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201D900
+	thumb_func_end ClearWindowTilemapAndCopyToVram_TextMode
 
-	thumb_func_start sub_0201D928
-sub_0201D928: ; 0x0201D928
+	thumb_func_start ClearWindowTilemapAndScheduleTransfer_TextMode
+ClearWindowTilemapAndScheduleTransfer_TextMode: ; 0x0201D928
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D72C
+	bl ClearWindowTilemapText
 	ldrb r1, [r4, #4]
 	ldr r0, [r4]
 	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201D928
+	thumb_func_end ClearWindowTilemapAndScheduleTransfer_TextMode
 
-	thumb_func_start sub_0201D93C
-sub_0201D93C: ; 0x0201D93C
+	thumb_func_start ClearWindowTilemapAndCopyToVram_AffineMode
+ClearWindowTilemapAndCopyToVram_AffineMode: ; 0x0201D93C
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
-	bl sub_0201D79C
+	bl ClearWindowTilemapAffine
 	ldrb r1, [r4, #4]
 	mov r0, #0x2c
 	add r2, r1, #0
@@ -6268,19 +6265,19 @@ sub_0201D93C: ; 0x0201D93C
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201D93C
+	thumb_func_end ClearWindowTilemapAndCopyToVram_AffineMode
 
-	thumb_func_start sub_0201D964
-sub_0201D964: ; 0x0201D964
+	thumb_func_start ClearWindowTilemapAndScheduleTransfer_AffineMode
+ClearWindowTilemapAndScheduleTransfer_AffineMode: ; 0x0201D964
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201D79C
+	bl ClearWindowTilemapAffine
 	ldrb r1, [r4, #4]
 	ldr r0, [r4]
 	bl ScheduleBgTilemapBufferTransfer
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201D964
+	thumb_func_end ClearWindowTilemapAndScheduleTransfer_AffineMode
 
 	thumb_func_start FillWindowPixelBuffer
 FillWindowPixelBuffer: ; 0x0201D978
@@ -6314,8 +6311,8 @@ _0201D994:
 	pop {r3, r4, r5, pc}
 	thumb_func_end FillWindowPixelBuffer
 
-	thumb_func_start sub_0201D9B0
-sub_0201D9B0: ; 0x0201D9B0
+	thumb_func_start FillWindowPixelBufferFast
+FillWindowPixelBufferFast: ; 0x0201D9B0
 	push {r4, lr}
 	add r2, r0, #0
 	lsl r0, r1, #4
@@ -6335,7 +6332,7 @@ sub_0201D9B0: ; 0x0201D9B0
 	mul r2, r3
 	bl MIi_CpuClearFast
 	pop {r4, pc}
-	thumb_func_end sub_0201D9B0
+	thumb_func_end FillWindowPixelBufferFast
 
 	thumb_func_start BlitBitmapRectToWindow
 BlitBitmapRectToWindow: ; 0x0201D9D8
@@ -6356,14 +6353,14 @@ BlitBitmapRectToWindow: ; 0x0201D9D8
 	str r4, [sp, #0x14]
 	mov r4, #0
 	str r4, [sp, #0x18]
-	bl sub_0201DA04
+	bl BlitBitmapRect
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end BlitBitmapRectToWindow
 
-	thumb_func_start sub_0201DA04
-sub_0201DA04: ; 0x0201DA04
+	thumb_func_start BlitBitmapRect
+BlitBitmapRect: ; 0x0201DA04
 	push {r4, r5, lr}
 	sub sp, #0x24
 	str r1, [sp, #0x1c]
@@ -6415,11 +6412,11 @@ _0201DA56:
 	ldrh r0, [r4, #0x28]
 	str r0, [sp, #0x10]
 	add r0, sp, #0x1c
-	bl sub_0201D048
+	bl BlitBitmapRect8bit
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201DA04
+	thumb_func_end BlitBitmapRect
 
 	thumb_func_start FillWindowPixelRect
 FillWindowPixelRect: ; 0x0201DA74
@@ -6452,7 +6449,7 @@ FillWindowPixelRect: ; 0x0201DA74
 	str r5, [sp, #4]
 	ldrh r3, [r3, #0x10]
 	add r0, sp, #8
-	bl sub_0201D230
+	bl FillBitmapRect4bit
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 _0201DAB6:
@@ -6462,14 +6459,14 @@ _0201DAB6:
 	str r5, [sp, #4]
 	ldrh r3, [r3, #0x10]
 	add r0, sp, #8
-	bl sub_0201D2F4
+	bl FillBitmapRect8bit
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end FillWindowPixelRect
 
-	thumb_func_start sub_0201DACC
-sub_0201DACC: ; 0x0201DACC
+	thumb_func_start CopyGlyphToWindow
+CopyGlyphToWindow: ; 0x0201DACC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #0x118
@@ -6526,7 +6523,7 @@ _0201DB2C:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x1f
 	beq _0201DB38
-	bl sub_0201E4AC
+	bl _0201E4AC ; long jump
 _0201DB38:
 	cmp r4, #3
 	bls _0201DB40
@@ -7801,10 +7798,7 @@ _0201E492:
 	add sp, #0x1fc
 	add sp, #0x118
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201DACC
-
-	thumb_func_start sub_0201E4AC
-sub_0201E4AC: ; 0x0201E4AC
+_0201E4AC: ; 0x0201E4AC
 	lsl r1, r2, #2
 	mul r1, r3
 	ldr r3, [r5]
@@ -7812,7 +7806,7 @@ sub_0201E4AC: ; 0x0201E4AC
 	ldr r0, [sp]
 	ldr r3, [r3]
 	lsl r1, r1, #3
-	bl sub_0201CBE4
+	bl Convert4bppTo8bpp
 	str r0, [sp, #0x1ec]
 	cmp r4, #3
 	bhi _0201E59E
@@ -8843,7 +8837,7 @@ _0201EC3C:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0201EC44: .word 0x00007FC0
-	thumb_func_end sub_0201E4AC
+	thumb_func_end CopyGlyphToWindow
 
 	thumb_func_start ScrollWindow
 ScrollWindow: ; 0x0201EC48
@@ -8856,16 +8850,16 @@ ScrollWindow: ; 0x0201EC48
 	ldrb r4, [r4, #0x1e]
 	cmp r4, #0
 	bne _0201EC60
-	bl sub_0201EC68
+	bl ScrollWindow_Text
 	pop {r4, r5, r6, pc}
 _0201EC60:
-	bl sub_0201ED54
+	bl ScrollWindow_Affine
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ScrollWindow
 
-	thumb_func_start sub_0201EC68
-sub_0201EC68: ; 0x0201EC68
+	thumb_func_start ScrollWindow_Text
+ScrollWindow_Text: ; 0x0201EC68
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r6, r3, #0
@@ -8996,10 +8990,10 @@ _0201ED4E:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201EC68
+	thumb_func_end ScrollWindow_Text
 
-	thumb_func_start sub_0201ED54
-sub_0201ED54: ; 0x0201ED54
+	thumb_func_start ScrollWindow_Affine
+ScrollWindow_Affine: ; 0x0201ED54
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r6, r3, #0
@@ -9171,13 +9165,13 @@ _0201EE6A:
 _0201EE84:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0201ED54
+	thumb_func_end ScrollWindow_Affine
 
-	thumb_func_start sub_0201EE88
-sub_0201EE88: ; 0x0201EE88
+	thumb_func_start GetWindowBgConfig
+GetWindowBgConfig: ; 0x0201EE88
 	ldr r0, [r0]
 	bx lr
-	thumb_func_end sub_0201EE88
+	thumb_func_end GetWindowBgConfig
 
 	thumb_func_start GetWindowBgId
 GetWindowBgId: ; 0x0201EE8C
@@ -9209,48 +9203,48 @@ GetWindowY: ; 0x0201EE9C
 	bx lr
 	thumb_func_end GetWindowY
 
-	thumb_func_start sub_0201EEA0
-sub_0201EEA0: ; 0x0201EEA0
+	thumb_func_start GetWindowBaseTile
+GetWindowBaseTile: ; 0x0201EEA0
 	ldrh r0, [r0, #0xa]
 	lsl r0, r0, #0x11
 	lsr r0, r0, #0x11
 	bx lr
-	thumb_func_end sub_0201EEA0
+	thumb_func_end GetWindowBaseTile
 
-	thumb_func_start sub_0201EEA8
-sub_0201EEA8: ; 0x0201EEA8
+	thumb_func_start GetWindowLeft
+GetWindowLeft: ; 0x0201EEA8
 	strb r1, [r0, #5]
 	bx lr
-	thumb_func_end sub_0201EEA8
+	thumb_func_end GetWindowLeft
 
-	thumb_func_start sub_0201EEAC
-sub_0201EEAC: ; 0x0201EEAC
+	thumb_func_start GetWindowTop
+GetWindowTop: ; 0x0201EEAC
 	strb r1, [r0, #6]
 	bx lr
-	thumb_func_end sub_0201EEAC
+	thumb_func_end GetWindowTop
 
-	thumb_func_start sub_0201EEB0
-sub_0201EEB0: ; 0x0201EEB0
+	thumb_func_start GetWindowPaletteNum
+GetWindowPaletteNum: ; 0x0201EEB0
 	strb r1, [r0, #9]
 	bx lr
-	thumb_func_end sub_0201EEB0
+	thumb_func_end GetWindowPaletteNum
 
-	thumb_func_start sub_0201EEB4
-sub_0201EEB4: ; 0x0201EEB4
+	thumb_func_start BgConfig_HandleScheduledScrollAndTransferOps
+BgConfig_HandleScheduledScrollAndTransferOps: ; 0x0201EEB4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201EFCC
+	bl BgConfig_HandleScheduledScrolls
 	add r0, r4, #0
-	bl sub_0201EECC
+	bl BgConfig_HandleScheduledBufferTransfers
 	mov r0, #0
 	strh r0, [r4, #4]
 	strh r0, [r4, #6]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201EEB4
+	thumb_func_end BgConfig_HandleScheduledScrollAndTransferOps
 
-	thumb_func_start sub_0201EECC
-sub_0201EECC: ; 0x0201EECC
+	thumb_func_start BgConfig_HandleScheduledBufferTransfers
+BgConfig_HandleScheduledBufferTransfers: ; 0x0201EECC
 	push {r4, lr}
 	add r4, r0, #0
 	ldrh r1, [r4, #6]
@@ -9262,7 +9256,7 @@ sub_0201EECC: ; 0x0201EECC
 	ldr r3, [r4, #0xc]
 	mov r0, #0
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EEE6:
 	ldrh r1, [r4, #6]
 	mov r0, #2
@@ -9273,7 +9267,7 @@ _0201EEE6:
 	ldr r3, [r4, #0x38]
 	mov r0, #1
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EEFC:
 	ldrh r1, [r4, #6]
 	mov r0, #4
@@ -9284,7 +9278,7 @@ _0201EEFC:
 	ldr r3, [r4, #0x64]
 	mov r0, #2
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EF12:
 	ldrh r1, [r4, #6]
 	mov r0, #8
@@ -9301,7 +9295,7 @@ _0201EF12:
 	ldr r3, [r3]
 	mov r0, #3
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EF34:
 	ldrh r1, [r4, #6]
 	mov r0, #0x10
@@ -9318,7 +9312,7 @@ _0201EF34:
 	ldr r3, [r3]
 	mov r0, #4
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EF56:
 	ldrh r1, [r4, #6]
 	mov r0, #0x20
@@ -9335,7 +9329,7 @@ _0201EF56:
 	ldr r3, [r3]
 	mov r0, #5
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EF78:
 	ldrh r0, [r4, #6]
 	mov r3, #0x40
@@ -9351,7 +9345,7 @@ _0201EF78:
 	ldr r3, [r4, r3]
 	mov r0, #6
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EF98:
 	ldrh r0, [r4, #6]
 	mov r3, #0x80
@@ -9367,11 +9361,11 @@ _0201EF98:
 	ldr r3, [r4, r3]
 	mov r0, #7
 	lsl r2, r2, #1
-	bl sub_0201C014
+	bl CopyTilesToVram
 _0201EFB8:
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201EECC
+	thumb_func_end BgConfig_HandleScheduledBufferTransfers
 
 	thumb_func_start ScheduleBgTilemapBufferTransfer
 ScheduleBgTilemapBufferTransfer: ; 0x0201EFBC
@@ -9385,8 +9379,8 @@ ScheduleBgTilemapBufferTransfer: ; 0x0201EFBC
 	.balign 4, 0
 	thumb_func_end ScheduleBgTilemapBufferTransfer
 
-	thumb_func_start sub_0201EFCC
-sub_0201EFCC: ; 0x0201EFCC
+	thumb_func_start BgConfig_HandleScheduledScrolls
+BgConfig_HandleScheduledScrolls: ; 0x0201EFCC
 	push {r4, lr}
 	sub sp, #0x48
 	add r4, r0, #0
@@ -9689,10 +9683,10 @@ _0201F228: .word 0x04001018
 _0201F22C: .word 0x04001020
 _0201F230: .word 0x0400101C
 _0201F234: .word 0x04001030
-	thumb_func_end sub_0201EFCC
+	thumb_func_end BgConfig_HandleScheduledScrolls
 
-	thumb_func_start sub_0201F238
-sub_0201F238: ; 0x0201F238
+	thumb_func_start ScheduleSetBgPosText
+ScheduleSetBgPosText: ; 0x0201F238
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -9703,17 +9697,17 @@ sub_0201F238: ; 0x0201F238
 	add r0, r1, r0
 	add r1, r2, #0
 	add r2, r3, #0
-	bl sub_0201BE38
+	bl Bg_SetPosText
 	mov r0, #1
 	ldrh r1, [r5, #4]
 	lsl r0, r4
 	orr r0, r1
 	strh r0, [r5, #4]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201F238
+	thumb_func_end ScheduleSetBgPosText
 
-	thumb_func_start sub_0201F25C
-sub_0201F25C: ; 0x0201F25C
+	thumb_func_start ScheduleSetBgAffineRotation
+ScheduleSetBgAffineRotation: ; 0x0201F25C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -9724,17 +9718,17 @@ sub_0201F25C: ; 0x0201F25C
 	add r0, r1, r0
 	add r1, r2, #0
 	add r2, r3, #0
-	bl sub_0201F280
+	bl Bg_SetAffineRotation
 	mov r0, #1
 	ldrh r1, [r5, #4]
 	lsl r0, r4
 	orr r0, r1
 	strh r0, [r5, #4]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0201F25C
+	thumb_func_end ScheduleSetBgAffineRotation
 
-	thumb_func_start sub_0201F280
-sub_0201F280: ; 0x0201F280
+	thumb_func_start Bg_SetAffineRotation
+Bg_SetAffineRotation: ; 0x0201F280
 	cmp r1, #8
 	bhi _0201F2C8
 	add r1, r1, r1
@@ -9781,10 +9775,10 @@ _0201F2C2:
 _0201F2C8:
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0201F280
+	thumb_func_end Bg_SetAffineRotation
 
-	thumb_func_start sub_0201F2CC
-sub_0201F2CC: ; 0x0201F2CC
+	thumb_func_start DoesPixelAtScreenXYMatchPtrVal
+DoesPixelAtScreenXYMatchPtrVal: ; 0x0201F2CC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	str r1, [sp]
@@ -9820,10 +9814,10 @@ _0201F2F4:
 	ldrb r3, [r3, r5]
 	lsr r0, r0, #0x18
 	lsr r1, r1, #0x18
-	bl sub_0201C2F0
+	bl GetTileMapIndexFromCoords
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_0201CB4C
+	bl BgGetCharPtr
 	str r0, [sp, #0x1c]
 	ldr r1, [sp, #4]
 	mov r0, #7
@@ -9880,7 +9874,7 @@ _0201F35E:
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	add r2, r4, #0
-	bl sub_0201F434
+	bl ApplyFlipFlagsToTile
 	ldr r0, [sp, #0x10]
 	lsl r1, r0, #3
 	ldr r0, [sp, #0x14]
@@ -9923,7 +9917,7 @@ _0201F3B2:
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 	add r2, r5, #0
-	bl sub_0201F434
+	bl ApplyFlipFlagsToTile
 	ldr r0, [sp, #0x10]
 	lsl r1, r0, #3
 	ldr r0, [sp, #0x14]
@@ -9963,10 +9957,10 @@ _0201F42A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0201F430: .word 0x0000FFFF
-	thumb_func_end sub_0201F2CC
+	thumb_func_end DoesPixelAtScreenXYMatchPtrVal
 
-	thumb_func_start sub_0201F434
-sub_0201F434: ; 0x0201F434
+	thumb_func_start ApplyFlipFlagsToTile
+ApplyFlipFlagsToTile: ; 0x0201F434
 	push {r3, r4, r5, r6, r7, lr}
 	str r1, [sp]
 	ldr r1, [sp]
@@ -10042,4 +10036,4 @@ _0201F4BA:
 _0201F4C0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201F434
+	thumb_func_end ApplyFlipFlagsToTile

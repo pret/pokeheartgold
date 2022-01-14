@@ -1155,7 +1155,7 @@ sub_02016E40: ; 0x02016E40
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
 	add r5, r0, #0
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18

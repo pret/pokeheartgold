@@ -325,7 +325,7 @@ _021E5BC8: .word ov36_021E5C14
 ov53_021E5BCC: ; 0x021E5BCC
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200D034
 	pop {r3, pc}
 	.balign 4, 0
@@ -502,7 +502,7 @@ _021E5BE8:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #7
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r1, #7
 	ldr r2, [r4]
 	mov r0, #4
@@ -515,28 +515,28 @@ _021E5BE8:
 	bl BG_ClearCharDataRange
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	bl ov53_021E65E0
 	mov r0, #0x4a
@@ -560,28 +560,28 @@ ov53_021E5DE0: ; 0x021E5DE0
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -799,7 +799,7 @@ _021E5FBC:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	b _021E60BE
 _021E5FC8:
 	mov r1, #0x10
@@ -917,7 +917,7 @@ _021E60A4:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	b _021E60BE
 _021E60B0:
 	ldr r0, _021E60C4 ; =0x04000050
@@ -972,7 +972,7 @@ ov53_021E60E8: ; 0x021E60E8
 	ldr r0, [r5, #0x18]
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	lsl r1, r4, #0x18
 	ldr r0, [r5, #0x18]
 	lsr r1, r1, #0x18
@@ -1189,7 +1189,7 @@ _021E62B6: ; jump table
 _021E62C2:
 	ldr r0, [sp, #0x14]
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	ldr r1, [r4]
 	lsl r0, r0, #0xa
@@ -1933,7 +1933,7 @@ ov53_021E6824: ; 0x021E6824
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	cmp r6, #1
 	bne _021E6900
 	mov r0, #0x4d
@@ -1945,34 +1945,34 @@ ov53_021E6824: ; 0x021E6824
 	mov r1, #4
 	mov r2, #0
 	mov r3, #0x88
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #0x18]
 	mov r1, #6
 	mov r2, #0
 	mov r3, #0x88
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, [r5, #0x18]
 	mov r1, #5
 	mov r2, #0
 	mov r3, #0x88
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add sp, #0x28
 	pop {r4, r5, r6, pc}
 _021E68DE:
 	mov r2, #0
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	mov r2, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 _021E6900:
 	add sp, #0x28
 	pop {r4, r5, r6, pc}
@@ -2101,7 +2101,7 @@ _021E69E0:
 	bl ov53_021E6928
 	mov r0, #5
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, _021E6B8C ; =0x00000163
 	mov r3, #0xc
 	strb r6, [r5, r0]
@@ -2115,7 +2115,7 @@ _021E69E0:
 	ldr r3, [r4, r3]
 	mov r1, #5
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, _021E6B84 ; =0x00000166
 	mov r1, #1
 	strb r1, [r5, r0]
@@ -2142,7 +2142,7 @@ _021E6A22:
 	bl ov53_021E6928
 	mov r0, #5
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r1, #1
 	sub r0, r6, #4
 	strb r1, [r5, r0]
@@ -2173,7 +2173,7 @@ _021E6A52:
 	mov r2, #3
 	add r3, r4, r3
 	ldr r3, [r6, r3]
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, _021E6B94 ; =0x000005DC
 	bl PlaySE
 	b _021E6B30
@@ -2209,7 +2209,7 @@ _021E6A90:
 	ldr r3, [r3, r4]
 	mov r1, #5
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, _021E6B94 ; =0x000005DC
 	bl PlaySE
 	b _021E6B30
@@ -2252,7 +2252,7 @@ _021E6AF2:
 	ldr r3, [r3, r4]
 	mov r1, #5
 	mov r2, #3
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	ldr r0, _021E6B94 ; =0x000005DC
 	bl PlaySE
 _021E6B30:
@@ -2285,12 +2285,12 @@ _021E6B30:
 	cmp r0, #0
 	beq _021E6B70
 	mov r0, #5
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	b _021E6B78
 _021E6B70:
 	mov r0, #5
 	add r1, r2, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 _021E6B78:
 	add r0, r7, #0
 	add sp, #0x30
@@ -2822,7 +2822,7 @@ _021E6F6C:
 	ldr r0, [r4, #0x18]
 	lsr r1, r1, #0x18
 	mov r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	b _021E6F86
 _021E6F7E:
 	mov r1, #0
@@ -2987,7 +2987,7 @@ _021E6FBA: ; jump table
 _021E70B8:
 	mov r0, #6
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r1, #0x3f
 	mov r0, #2
 	lsl r1, r1, #4
@@ -3013,16 +3013,16 @@ _021E70E4:
 	bl ov53_021E67C4
 	mov r0, #3
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r5, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -3056,7 +3056,7 @@ _021E7154:
 	bne _021E71F6
 	mov r0, #6
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	str r0, [r4, #0xc]
 	str r0, [sp]
@@ -3090,13 +3090,13 @@ _021E719C:
 	bl ov53_021E65B4
 	mov r0, #4
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	str r0, [r4, #0xc]
 	bl _021E7CF8
@@ -3158,10 +3158,10 @@ _021E7226:
 	bl ov53_021E7E08
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -3226,7 +3226,7 @@ _021E72D4:
 	bne _021E7348
 	add r0, r5, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x10
 	str r0, [r4, #0xc]
 	bl _021E7CF8
@@ -3300,7 +3300,7 @@ _021E7378:
 	str r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #1
 	bl ov53_021E66A8
@@ -3400,7 +3400,7 @@ _021E7466:
 	bl ov53_021E7E08
 	mov r0, #6
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	bl ov53_021E7D58
 	mov r0, #8
@@ -3419,10 +3419,10 @@ _021E7484:
 	bl ov53_021E7E08
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
 	str r0, [sp]
@@ -3526,7 +3526,7 @@ _021E7574:
 	bl ov53_021E7E08
 	add r0, r5, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	str r0, [r4, #0xc]
 	b _021E7CF8
@@ -3543,16 +3543,16 @@ _021E7590:
 	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #0x2d
 	str r0, [r4, #0xc]
 	mov r0, #6
@@ -3611,10 +3611,10 @@ _021E762A:
 	bl ov53_021E66E8
 	mov r0, #3
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r1, r5, #0
 	mov r0, #1
 	add r2, r1, #0
@@ -3860,7 +3860,7 @@ _021E7850:
 	bl ov53_021E7E08
 	mov r0, #4
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #4
 	bl ov53_021E67C4
@@ -3996,10 +3996,10 @@ _021E794C:
 _021E797C:
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	ldrh r1, [r4, r1]
@@ -4048,10 +4048,10 @@ _021E79DE:
 	bne _021E7A6E
 	mov r0, #5
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #3
 	bl ov53_021E80B8
@@ -4065,7 +4065,7 @@ _021E79DE:
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r4, #0
 	bl ov53_021E6CB0
 	mov r0, #6
@@ -4136,27 +4136,27 @@ _021E7A76:
 _021E7AA4:
 	add r0, r5, #0
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r2, r5, #0
 	ldr r0, [r4, #0x18]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	bl ov53_021E7D04
 	mov r0, #6
@@ -4274,10 +4274,10 @@ _021E7BBE:
 _021E7BC8:
 	mov r0, #6
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	add r1, r5, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	mov r1, #1
 	bl ov53_021E67C4
@@ -4291,7 +4291,7 @@ _021E7BC8:
 	ldr r0, [r4, #0x18]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_0201F238
+	bl ScheduleSetBgPosText
 	add r0, r4, #0
 	mov r1, #1
 	bl ov53_021E7E08
@@ -4378,7 +4378,7 @@ _021E7C90:
 	str r0, [r4, #0xc]
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	b _021E7CF8
 _021E7CB4:
 	bl sub_0200FB5C
@@ -5031,13 +5031,13 @@ ov53_021E816C: ; 0x021E816C
 	ldr r0, [r5, #0xc]
 	add r1, r6, #0
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldr r0, [r5, #0xc]
 	add r1, r6, #0
 	bl BgCommitTilemapBufferToVram
 	add r0, r6, #0
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [sp, #0x10]
 	bl NARC_dtor
 	add sp, #0x14
@@ -5075,10 +5075,10 @@ ov53_021E81F4: ; 0x021E81F4
 	bl ov53_021E8390
 	ldrb r0, [r5, #0x19]
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldrb r0, [r5, #0x1a]
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl sub_02024830
@@ -5126,10 +5126,10 @@ _021E827E:
 _021E8292:
 	ldrb r0, [r4, #0x19]
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldrb r0, [r4, #0x1a]
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
 	bl sub_02024830

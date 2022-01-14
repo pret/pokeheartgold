@@ -1291,7 +1291,7 @@ _021E6568:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	b _021E6608
 _021E65C8:
 	add r0, r4, #0
@@ -1324,7 +1324,7 @@ _021E65C8:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 _021E6608:
 	ldr r0, [r4]
 	mov r1, #2
@@ -1363,22 +1363,22 @@ ov51_021E6644: ; 0x021E6644
 	add r0, r4, #0
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r4, #0
 	mov r1, #7
 	bl FreeBgTilemapBuffer
@@ -2026,22 +2026,22 @@ ov51_021E6B88: ; 0x021E6B88
 	neg r5, r0
 	ldr r0, [r4]
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4]
 	mov r1, #5
 	mov r2, #3
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, [r4]
 	mov r1, #3
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	ldr r0, [r4]
 	add r2, r1, #0
 	add r3, r5, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r0, _021E6BF4 ; =0x0000343A
 	ldrb r0, [r4, r0]
 	lsl r0, r0, #0x1d
@@ -2051,7 +2051,7 @@ ov51_021E6B88: ; 0x021E6B88
 	bl ov51_021E69EC
 _021E6BD2:
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r3, _021E6BF8 ; =0x027E0000
@@ -2154,7 +2154,7 @@ ov51_021E6C6C: ; 0x021E6C6C
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	ldr r0, [r4]
 	mov r1, #7
 	bl BgCommitTilemapBufferToVram
@@ -2405,13 +2405,13 @@ _021E6E6C:
 	ldr r0, [r5]
 	mov r1, #7
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r5]
 	mov r1, #4
 	mov r3, #1
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	ldr r0, _021E6EE8 ; =0x0000343D
 	ldr r2, _021E6EEC ; =0x000003E1
 	ldrb r0, [r5, r0]
@@ -3645,17 +3645,17 @@ ov51_021E78D0: ; 0x021E78D0
 	cmp r1, #1
 	bne _021E78E8
 	add r0, #0xd4
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	add r4, #0xc4
 	add r0, r4, #0
-	bl sub_0201D8E4
+	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
 _021E78E8:
 	add r0, #0xd4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, #0xc4
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	pop {r4, pc}
 	thumb_func_end ov51_021E78D0
 

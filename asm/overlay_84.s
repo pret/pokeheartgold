@@ -1544,7 +1544,7 @@ ov84_0223E98C: ; 0x0223E98C
 _0223E99C:
 	add r4, #0x90
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r3, _0223E9BC ; =0x027E0000

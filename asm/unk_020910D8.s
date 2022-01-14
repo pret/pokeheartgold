@@ -1936,11 +1936,11 @@ sub_02091E34: ; 0x02091E34
 
 	thumb_func_start sub_02091E54
 sub_02091E54: ; 0x02091E54
-	ldr r3, _02091E5C ; =sub_0201EEB4
+	ldr r3, _02091E5C ; =BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_02091E5C: .word sub_0201EEB4
+_02091E5C: .word BgConfig_HandleScheduledScrollAndTransferOps
 	thumb_func_end sub_02091E54
 
 	thumb_func_start sub_02091E60
@@ -2036,28 +2036,28 @@ sub_02091F24: ; 0x02091F24
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -2569,28 +2569,28 @@ sub_02092378: ; 0x02092378
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #1
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #2
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #3
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #5
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #6
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	bl FreeBgTilemapBuffer
@@ -4796,7 +4796,7 @@ _020935B2:
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _020935D8 ; =OS_IRQTable
 	ldr r1, _020935DC ; =0x00003FF8
 	mov r0, #1
@@ -6334,7 +6334,7 @@ sub_020941CC: ; 0x020941CC
 	add r0, r6, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r6, #0
 	mov r1, #2
 	bl BgCommitTilemapBufferToVram
@@ -6361,7 +6361,7 @@ sub_020941CC: ; 0x020941CC
 	add r0, r6, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	add r0, r6, #0
 	mov r1, #3
 	bl BgCommitTilemapBufferToVram
@@ -6704,7 +6704,7 @@ _020944BA:
 	str r0, [sp, #0x18]
 	ldr r0, [r5]
 	add r3, r2, #0
-	bl sub_0201C568
+	bl CopyRectToBgTilemapRect
 	ldr r0, [r5]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -6856,7 +6856,7 @@ _02094606:
 	str r1, [sp, #0x18]
 	ldr r0, [r6]
 	mov r1, #2
-	bl sub_0201C568
+	bl CopyRectToBgTilemapRect
 	ldr r0, [r6]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -7827,7 +7827,7 @@ sub_02094D9C: ; 0x02094D9C
 	add r2, r1, #0
 	mov r3, #1
 	str r1, [sp]
-	bl sub_0201C1F4
+	bl BG_FillCharDataRange
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -8195,7 +8195,7 @@ sub_020950D4: ; 0x020950D4
 	bne _020950F2
 	ldr r0, _020950F4 ; =0x00004660
 	add r0, r4, r0
-	bl sub_0201EE88
+	bl GetWindowBgConfig
 	cmp r0, #0
 	beq _020950F2
 	ldr r0, _020950F4 ; =0x00004660
@@ -18143,81 +18143,81 @@ _02108434:
 	.word _02108424, sub_02095A7C, sub_02095AF8
 	.word _0210841C, sub_02095B04, sub_02095B88
 sPhoneMessageGmm:
-	.short 664 ; msg_0664.gmm
-	.short 716 ; msg_0716.gmm
-	.short 666 ; msg_0666.gmm
-	.short 662 ; msg_0662.gmm
-	.short 663 ; msg_0663.gmm
-	.short 643 ; msg_0643.gmm
-	.short 661 ; msg_0661.gmm
-	.short 660 ; msg_0660.gmm
-	.short 641 ; msg_0641.gmm
-	.short 665 ; msg_0665.gmm
-	.short 675 ; msg_0675.gmm
-	.short 712 ; msg_0712.gmm
-	.short 680 ; msg_0680.gmm
-	.short 684 ; msg_0684.gmm
-	.short 711 ; msg_0711.gmm
-	.short 642 ; msg_0642.gmm
-	.short 706 ; msg_0706.gmm
-	.short 644 ; msg_0644.gmm
-	.short 648 ; msg_0648.gmm
-	.short 704 ; msg_0704.gmm
-	.short 685 ; msg_0685.gmm
-	.short 688 ; msg_0688.gmm
-	.short 713 ; msg_0713.gmm
-	.short 714 ; msg_0714.gmm
-	.short 667 ; msg_0667.gmm
-	.short 691 ; msg_0691.gmm
-	.short 645 ; msg_0645.gmm
-	.short 649 ; msg_0649.gmm
-	.short 646 ; msg_0646.gmm
-	.short 650 ; msg_0650.gmm
-	.short 651 ; msg_0651.gmm
-	.short 647 ; msg_0647.gmm
-	.short 656 ; msg_0656.gmm
-	.short 657 ; msg_0657.gmm
-	.short 658 ; msg_0658.gmm
-	.short 655 ; msg_0655.gmm
-	.short 652 ; msg_0652.gmm
-	.short 653 ; msg_0653.gmm
-	.short 654 ; msg_0654.gmm
-	.short 659 ; msg_0659.gmm
-	.short 674 ; msg_0674.gmm
-	.short 705 ; msg_0705.gmm
-	.short 677 ; msg_0677.gmm
-	.short 698 ; msg_0698.gmm
-	.short 696 ; msg_0696.gmm
-	.short 708 ; msg_0708.gmm
-	.short 672 ; msg_0672.gmm
-	.short 690 ; msg_0690.gmm
-	.short 671 ; msg_0671.gmm
-	.short 695 ; msg_0695.gmm
-	.short 689 ; msg_0689.gmm
-	.short 700 ; msg_0700.gmm
-	.short 693 ; msg_0693.gmm
-	.short 694 ; msg_0694.gmm
-	.short 669 ; msg_0669.gmm
-	.short 676 ; msg_0676.gmm
-	.short 715 ; msg_0715.gmm
-	.short 703 ; msg_0703.gmm
-	.short 710 ; msg_0710.gmm
-	.short 670 ; msg_0670.gmm
-	.short 692 ; msg_0692.gmm
-	.short 681 ; msg_0681.gmm
-	.short 697 ; msg_0697.gmm
-	.short 687 ; msg_0687.gmm
-	.short 702 ; msg_0702.gmm
-	.short 699 ; msg_0699.gmm
-	.short 707 ; msg_0707.gmm
-	.short 682 ; msg_0682.gmm
-	.short 673 ; msg_0673.gmm
-	.short 686 ; msg_0686.gmm
-	.short 683 ; msg_0683.gmm
-	.short 679 ; msg_0679.gmm
-	.short 701 ; msg_0701.gmm
-	.short 709 ; msg_0709.gmm
-	.short 678 ; msg_0678.gmm
+	.short 664 ; PHONE_CONTACT_MOTHER
+	.short 716 ; PHONE_CONTACT_PROF__ELM
+	.short 666 ; PHONE_CONTACT_PROF__OAK
+	.short 662 ; PHONE_CONTACT_ETHAN
+	.short 663 ; PHONE_CONTACT_LYRA
+	.short 643 ; PHONE_CONTACT_KURT
+	.short 661 ; PHONE_CONTACT_DAY_C_MAN
+	.short 660 ; PHONE_CONTACT_DAY_C_LADY
+	.short 641 ; PHONE_CONTACT_BUENA
+	.short 665 ; PHONE_CONTACT_BILL
+	.short 675 ; PHONE_CONTACT_JOEY
+	.short 712 ; PHONE_CONTACT_RALPH
+	.short 680 ; PHONE_CONTACT_LIZ
+	.short 684 ; PHONE_CONTACT_WADE
+	.short 711 ; PHONE_CONTACT_ANTHONY
+	.short 642 ; PHONE_CONTACT_BIKE_SHOP
+	.short 706 ; PHONE_CONTACT_KENJI
+	.short 644 ; PHONE_CONTACT_WHITNEY
+	.short 648 ; PHONE_CONTACT_FALKNER
+	.short 704 ; PHONE_CONTACT_JACK
+	.short 685 ; PHONE_CONTACT_CHAD
+	.short 688 ; PHONE_CONTACT_BRENT
+	.short 713 ; PHONE_CONTACT_TODD
+	.short 714 ; PHONE_CONTACT_ARNIE
+	.short 667 ; PHONE_CONTACT_BAOBA
+	.short 691 ; PHONE_CONTACT_IRWIN
+	.short 645 ; PHONE_CONTACT_JANINE
+	.short 649 ; PHONE_CONTACT_CLAIR
+	.short 646 ; PHONE_CONTACT_ERIKA
+	.short 650 ; PHONE_CONTACT_MISTY
+	.short 651 ; PHONE_CONTACT_BLAINE
+	.short 647 ; PHONE_CONTACT_BLUE
+	.short 656 ; PHONE_CONTACT_CHUCK
+	.short 657 ; PHONE_CONTACT_BROCK
+	.short 658 ; PHONE_CONTACT_BUGSY
+	.short 655 ; PHONE_CONTACT_SABRINA
+	.short 652 ; PHONE_CONTACT_LT__SURGE
+	.short 653 ; PHONE_CONTACT_MORTY
+	.short 654 ; PHONE_CONTACT_JASMINE
+	.short 659 ; PHONE_CONTACT_PRYCE
+	.short 674 ; PHONE_CONTACT_HUEY
+	.short 705 ; PHONE_CONTACT_GAVEN
+	.short 677 ; PHONE_CONTACT_JAMIE
+	.short 698 ; PHONE_CONTACT_REENA
+	.short 696 ; PHONE_CONTACT_VANCE
+	.short 708 ; PHONE_CONTACT_PARRY
+	.short 672 ; PHONE_CONTACT_ERIN
+	.short 690 ; PHONE_CONTACT_BEVERLY
+	.short 671 ; PHONE_CONTACT_JOSE
+	.short 695 ; PHONE_CONTACT_GINA
+	.short 689 ; PHONE_CONTACT_ALAN
+	.short 700 ; PHONE_CONTACT_DANA
+	.short 693 ; PHONE_CONTACT_DEREK
+	.short 694 ; PHONE_CONTACT_TULLY
+	.short 669 ; PHONE_CONTACT_TIFFANY
+	.short 676 ; PHONE_CONTACT_WILTON
+	.short 715 ; PHONE_CONTACT_KRISE
+	.short 703 ; PHONE_CONTACT_IAN
+	.short 710 ; PHONE_CONTACT_WALT
+	.short 670 ; PHONE_CONTACT_ALFRED
+	.short 692 ; PHONE_CONTACT_DOUG
+	.short 681 ; PHONE_CONTACT_ROB
+	.short 697 ; PHONE_CONTACT_KYLE
+	.short 687 ; PHONE_CONTACT_KYLER
+	.short 702 ; PHONE_CONTACT_TIM_AND_SUE
+	.short 699 ; PHONE_CONTACT_KENNY
+	.short 707 ; PHONE_CONTACT_TANNER
+	.short 682 ; PHONE_CONTACT_JOSH
+	.short 673 ; PHONE_CONTACT_TORIN
+	.short 686 ; PHONE_CONTACT_HILLARY
+	.short 683 ; PHONE_CONTACT_BILLY
+	.short 679 ; PHONE_CONTACT_KAY_AND_TIA
+	.short 701 ; PHONE_CONTACT_REESE
+	.short 709 ; PHONE_CONTACT_AIDEN
+	.short 678 ; PHONE_CONTACT_ERNEST
 
 	; File boundary
 	.balign 4, 0

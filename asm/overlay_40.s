@@ -670,7 +670,7 @@ ov40_0222BD04: ; 0x0222BD04
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _0222BD28 ; =0x027E0000
 	ldr r1, _0222BD2C ; =0x00003FF8
 	mov r0, #1
@@ -3480,7 +3480,7 @@ _0222D2E6:
 	add r1, r7, #0
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	add r0, r7, #0
 	mov r1, #0x6d
 	bl sub_02013910
@@ -3723,7 +3723,7 @@ _0222D504:
 	add r1, sp, #0x1c
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -3816,7 +3816,7 @@ _0222D5BE:
 	add r1, sp, #0xc
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	add r0, sp, #0xc
 	mov r1, #0x6d
 	bl sub_02013910
@@ -3902,7 +3902,7 @@ ov40_0222D66C: ; 0x0222D66C
 	add r1, sp, #0x10
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -4850,7 +4850,7 @@ ov40_0222DD9C: ; 0x0222DD9C
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #6
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, r4
 	bl InitWindow
 	mov r0, #0x13
@@ -4887,7 +4887,7 @@ ov40_0222DD9C: ; 0x0222DD9C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	bl OS_WaitVBlankIntr
@@ -4929,7 +4929,7 @@ ov40_0222DE40: ; 0x0222DE40
 	bl GX_EngineBToggleLayers
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #8
 	str r0, [sp]
 	ldr r0, _0222DEA4 ; =0x04000050
@@ -5027,7 +5027,7 @@ ov40_0222DED0: ; 0x0222DED0
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 _0222DF54:
@@ -5066,7 +5066,7 @@ ov40_0222DF60: ; 0x0222DF60
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 _0222DFA4:
@@ -5132,7 +5132,7 @@ ov40_0222DFE8: ; 0x0222DFE8
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #6
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	mov r1, #6
 	mov r2, #0
@@ -5176,7 +5176,7 @@ ov40_0222DFE8: ; 0x0222DFE8
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 _0222E08A:
@@ -5278,7 +5278,7 @@ _0222E0D6:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	ldrsh r1, [r5, r0]
 	mov r0, #6
@@ -5354,7 +5354,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	ldr r0, [sp, #0x30]
@@ -5409,7 +5409,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
 	bl String_dtor
 	ldr r0, [sp, #0x3c]
@@ -5442,7 +5442,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x20]
@@ -5474,7 +5474,7 @@ _0222E0D6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	b _0222E3F6
@@ -5507,7 +5507,7 @@ _0222E33C:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
 	bl String_dtor
 	ldr r0, [sp, #0x48]
@@ -5550,7 +5550,7 @@ _0222E33C:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x18]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, [sp, #0x4c]
@@ -5588,7 +5588,7 @@ _0222E434:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x14]
@@ -5620,7 +5620,7 @@ _0222E46A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -6139,7 +6139,7 @@ _0222E890:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add sp, #0x18
@@ -6262,7 +6262,7 @@ _0222E99E:
 	blt _0222E95C
 _0222E9A8:
 	ldr r0, [sp, #0x18]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -6493,7 +6493,7 @@ _0222EAC0:
 	blt _0222EAC0
 _0222EB8A:
 	ldr r0, [sp, #0x20]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6884,7 +6884,7 @@ _0222EE7A:
 	b _0222ECEE
 _0222EEB4:
 	ldr r0, [sp, #0x50]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl ScrStrBufs_delete
 	add sp, #0x1fc
@@ -7020,7 +7020,7 @@ _0222EF7C:
 	blt _0222EF7C
 _0222EFCA:
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7479,7 +7479,7 @@ _0222F32A:
 	b _0222F19E
 _0222F36A:
 	ldr r0, [sp, #0x58]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl ScrStrBufs_delete
 	mov r0, #8
@@ -9182,7 +9182,7 @@ _0222FFAE:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	ldrsh r1, [r4, r0]
 	mov r0, #6
@@ -9258,7 +9258,7 @@ _02230062:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
 	bl String_dtor
 	ldr r0, [sp, #0x48]
@@ -9294,7 +9294,7 @@ _02230062:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -9359,7 +9359,7 @@ _02230062:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x50]
 	bl String_dtor
 	ldr r0, [sp, #0x54]
@@ -9376,7 +9376,7 @@ _022301F4:
 	add r0, r5, #0
 	bl FillWindowPixelBuffer
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 _02230206:
 	ldr r0, [sp, #0x14]
 	mov r1, #4
@@ -9526,7 +9526,7 @@ _022302BA:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
 	bl String_dtor
 	ldr r0, [sp, #0x34]
@@ -10041,28 +10041,28 @@ ov40_02230738: ; 0x02230738
 	push {r3, lr}
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	pop {r3, pc}
 	thumb_func_end ov40_02230738
 
@@ -11087,7 +11087,7 @@ ov40_02230E34: ; 0x02230E34
 	add r0, r6, #0
 	bl String_dtor
 	add r0, r5, r4
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -13693,28 +13693,28 @@ _02232356:
 	bl ov40_02230964
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -14162,7 +14162,7 @@ ov40_022326DC: ; 0x022326DC
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, #0x10
 	add r0, r4, r6
 	bl InitWindow
@@ -14204,7 +14204,7 @@ ov40_022326DC: ; 0x022326DC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -15252,7 +15252,7 @@ ov40_02232FEC: ; 0x02232FEC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -16937,7 +16937,7 @@ _02233DE6:
 	bl ov40_02230738
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r4, #0
 	bl ov40_02233238
 	ldr r0, [r4, #0x58]
@@ -17446,28 +17446,28 @@ _02234210:
 _0223425A:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x6f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -17767,28 +17767,28 @@ _02234506: ; jump table
 _02234514:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -17839,10 +17839,10 @@ _02234586:
 	ldr r0, [r4, #0x24]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -18020,7 +18020,7 @@ _0223473E:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	bl ov40_02235994
 _02234776:
 	add r0, r4, #0
@@ -18106,28 +18106,28 @@ ov40_0223480C: ; 0x0223480C
 _02234826:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -18244,7 +18244,7 @@ _02234946:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	bl ov40_02235994
 _02234984:
 	add r0, r5, #0
@@ -18759,28 +18759,28 @@ ov40_02234D94: ; 0x02234D94
 _02234DAE:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -18895,7 +18895,7 @@ _02234EC8:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	bl ov40_02235994
 _02234F06:
 	add r0, r5, #0
@@ -19466,7 +19466,7 @@ _022353A8:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8a
 	mov r1, #0
 	lsl r0, r0, #2
@@ -19581,7 +19581,7 @@ _022354A4:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8a
 	mov r1, #0
 	lsl r0, r0, #2
@@ -19830,7 +19830,7 @@ _022356B4:
 	bl ov40_0222BC54
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x8a
 	mov r1, #0
 	lsl r0, r0, #2
@@ -20053,7 +20053,7 @@ ov40_02235868: ; 0x02235868
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -20111,7 +20111,7 @@ _02235918:
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _02235938 ; =0x027E0000
 	ldr r1, _0223593C ; =0x00003FF8
 	mov r0, #1
@@ -20495,7 +20495,7 @@ _02235C18:
 	blo _02235C18
 _02235C54:
 	ldr r0, [sp, #0x20]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -20631,7 +20631,7 @@ _02235D48:
 	blo _02235D48
 _02235D84:
 	ldr r0, [sp, #0x20]
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -21066,7 +21066,7 @@ _022360BE:
 	bl AddTextPrinterParameterized2
 _022360DA:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -22851,7 +22851,7 @@ _02236ED2:
 	lsr r1, r1, #0x18
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r1, [r5, #2]
 	ldrb r0, [r5, #3]
 	add r4, #0x10
@@ -22933,7 +22933,7 @@ _02236F50:
 	mov r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldrb r1, [r5, #2]
@@ -23025,7 +23025,7 @@ ov40_02237030: ; 0x02237030
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -23106,7 +23106,7 @@ ov40_0223707C: ; 0x0223707C
 	mov r0, #0x75
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
 	bl String_dtor
 	add r0, r6, #0
@@ -23156,7 +23156,7 @@ ov40_02237144: ; 0x02237144
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -23183,7 +23183,7 @@ _022371B2:
 	lsr r1, r1, #0x18
 	bl FillWindowPixelBuffer
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, r5, #4
@@ -23227,7 +23227,7 @@ ov40_022371E4: ; 0x022371E4
 	cmp r6, #0
 	bne _02237214
 	add r0, r4, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x1fc
 	add sp, #0x14
 	pop {r3, r4, r5, r6, r7, pc}
@@ -23272,7 +23272,7 @@ _02237238:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x1fc
@@ -24364,7 +24364,7 @@ _02237AE6:
 	mov r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r1, [r5, #2]
 	ldrb r0, [r5, #3]
 	mul r0, r1
@@ -24422,7 +24422,7 @@ ov40_02237B7C: ; 0x02237B7C
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -24480,7 +24480,7 @@ ov40_02237BD4: ; 0x02237BD4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x14
@@ -24609,7 +24609,7 @@ _02237D16:
 	bl String_dtor
 _02237D3C:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldrb r1, [r5, #2]
 	ldrb r0, [r5, #3]
 	add r7, r7, #1
@@ -27287,7 +27287,7 @@ _02239358:
 	add r2, r7, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -27429,7 +27429,7 @@ _022394B4:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -27558,7 +27558,7 @@ _022395CE:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x24
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, #0
@@ -27592,7 +27592,7 @@ _0223961A:
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
 	add r0, #0x34
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, _022397B0 ; =0x0000088C
@@ -27733,7 +27733,7 @@ _0223973A:
 	bl AddTextPrinterParameterized2
 	add r4, #0x34
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -28143,28 +28143,28 @@ _02239ACC:
 	bl ov40_02230964
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_0222FB90
@@ -29466,7 +29466,7 @@ _0223A602:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0223A638 ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x20
@@ -31028,7 +31028,7 @@ _0223B31A:
 	add r1, sp, #0x18
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -31468,28 +31468,28 @@ _0223B65A:
 _0223B6A4:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_0222FB90
@@ -31964,7 +31964,7 @@ ov40_0223BA70: ; 0x0223BA70
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add r6, r4, #0
@@ -32010,7 +32010,7 @@ ov40_0223BA70: ; 0x0223BA70
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, _0223BB70 ; =0x0000202C
@@ -33489,7 +33489,7 @@ _0223C7CE:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0223C804 ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x1c
@@ -34085,7 +34085,7 @@ ov40_0223CCBC: ; 0x0223CCBC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -34177,7 +34177,7 @@ ov40_0223CD58: ; 0x0223CD58
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, #0xa4
 	add r0, r4, #0
 	bl InitWindow
@@ -34219,7 +34219,7 @@ ov40_0223CD58: ; 0x0223CD58
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -36152,7 +36152,7 @@ _0223DC94:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -36229,7 +36229,7 @@ _0223DD38:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -36286,7 +36286,7 @@ _0223DDB0:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r7
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	add sp, #0x1fc
@@ -36383,7 +36383,7 @@ _0223DE84:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0223DEB0 ; =0x00000664
 	add r0, r7, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x14]
 	bl String_dtor
 	add sp, #0x18
@@ -36428,7 +36428,7 @@ _0223DED2:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x10
@@ -36546,7 +36546,7 @@ _0223DFC6:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add r6, r6, #1
@@ -36679,7 +36679,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
 	bl String_dtor
 	add r6, #0xc0
@@ -36724,7 +36724,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
 	bl String_dtor
 	ldr r0, _0223E18C ; =0x00000798
@@ -37516,7 +37516,7 @@ _0223E7F4:
 	bl AddTextPrinterParameterized2
 _0223E810:
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -40783,28 +40783,28 @@ _02240304:
 	bl ov40_02230964
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -41600,28 +41600,28 @@ _0224096C:
 	bl ov40_022307DC
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	add r0, r4, #0
 	bl ov40_0224085C
 	add r0, r4, #0
@@ -42076,7 +42076,7 @@ _02240DCE:
 	add r1, sp, #0x18
 	mov r2, #0x14
 	mov r3, #2
-	bl sub_0201D494
+	bl AddTextWindowTopLeftCorner
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -42207,7 +42207,7 @@ _02240EE4:
 	bl AddTextPrinterParameterized2
 	ldr r0, _02240F1C ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x1c
@@ -42339,7 +42339,7 @@ _02241014:
 	bl AddTextPrinterParameterized2
 	ldr r0, _0224104C ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
 	bl String_dtor
 	add sp, #0x20
@@ -42975,28 +42975,28 @@ _02241560:
 _02241562:
 	mov r0, #0
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0x6d
 	str r0, [sp]
 	ldr r0, _02241780 ; =ov40_022456B4
@@ -43578,7 +43578,7 @@ ov40_02241A54: ; 0x02241A54
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -43673,7 +43673,7 @@ ov40_02241AFC: ; 0x02241AFC
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r6, #0x10
 	add r0, r4, r6
 	bl InitWindow
@@ -43715,7 +43715,7 @@ ov40_02241AFC: ; 0x02241AFC
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, r6
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -46101,7 +46101,7 @@ ov40_02242E4C: ; 0x02242E4C
 	bl AddTextPrinterParameterized2
 	ldr r0, _02242FA4 ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
 	bl String_dtor
 	ldr r0, [sp, #0x1c]
@@ -48750,7 +48750,7 @@ _02244372:
 	bl AddTextPrinterParameterized2
 	ldr r0, _022443AC ; =0x000008A4
 	add r0, r5, r0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
 	bl String_dtor
 	add sp, #0x18
@@ -48811,7 +48811,7 @@ ov40_022443B4: ; 0x022443B4
 	add r0, r7, #0
 	bl String_dtor
 	add r0, r6, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add r4, #0x20
 	add r0, r4, #0
 	bl InitWindow
@@ -48853,7 +48853,7 @@ ov40_022443B4: ; 0x022443B4
 	add r0, r5, #0
 	bl String_dtor
 	add r0, r4, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -48982,28 +48982,28 @@ _02244540:
 _0224458A:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #1
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #2
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #3
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #5
 	mov r1, #3
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #6
 	mov r1, #1
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #7
 	mov r1, #2
-	bl sub_0201BB68
+	bl SetBgPriority
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

@@ -1052,7 +1052,7 @@ ov72_022380FC: ; 0x022380FC
 	add r4, r0, #0
 	bl sub_0202061C
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	ldr r3, _0223811C ; =0x027E0000
 	ldr r1, _02238120 ; =0x00003FF8
@@ -5797,7 +5797,7 @@ ov72_0223A5E0: ; 0x0223A5E0
 	bl ov72_0223AD20
 	mov r0, #4
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	mov r0, #4
 	str r0, [sp]
 	mov r1, #1
@@ -6859,7 +6859,7 @@ _0223AE42:
 	ldrb r2, [r4, #6]
 	ldrb r3, [r4, #7]
 	ldr r0, [r5, #4]
-	bl sub_0201CA4C
+	bl BgTilemapRectChangePalette
 	ldrb r1, [r4, #2]
 	ldr r0, [r5, #4]
 	bl ScheduleBgTilemapBufferTransfer
@@ -7170,12 +7170,12 @@ _0223B09A:
 	add r0, #0x2f
 	ldrb r0, [r0]
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	add r0, #0x32
 	ldrb r0, [r0]
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r0, r4, #0
 	bl ov72_0223B2C0
 	ldr r0, [r4, #4]
@@ -7298,11 +7298,11 @@ _0223B178:
 	add r0, #0x2f
 	ldrb r0, [r0]
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add r4, #0x32
 	ldrb r0, [r4]
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

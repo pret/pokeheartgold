@@ -443,7 +443,7 @@ ov73_021E5CD8: ; 0x021E5CD8
 	bl sub_0202061C
 	bl sub_0200B224
 	ldr r0, [r4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _021E5CF8 ; =0x027E0000
 	ldr r1, _021E5CFC ; =0x00003FF8
 	mov r0, #1
@@ -1468,7 +1468,7 @@ ov73_021E6508: ; 0x021E6508
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
 	mov r1, #1
-	bl sub_0201F2CC
+	bl DoesPixelAtScreenXYMatchPtrVal
 	cmp r0, #0
 	beq _021E6544
 	add r0, r6, #1
@@ -3106,7 +3106,7 @@ ov73_021E71E4: ; 0x021E71E4
 	ldr r0, [r0]
 	mov r1, #1
 	mov r3, #0x14
-	bl sub_0201C4EC
+	bl CopyToBgTilemapRect
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop
@@ -5075,7 +5075,7 @@ ov73_021E8100: ; 0x021E8100
 	add r4, r0, #0
 	bl sub_0202061C
 	ldr r0, [r4, #4]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	bl sub_0200B224
 	ldr r3, _021E8120 ; =0x027E0000
 	ldr r1, _021E8124 ; =0x00003FF8

@@ -1106,7 +1106,7 @@ ov93_0225CEA0: ; 0x0225CEA0
 	bne _0225CED8
 	mov r0, #7
 	mov r1, #1
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, _0225CF04 ; =0x00001454
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -1118,13 +1118,13 @@ _0225CED8:
 	bne _0225CEEE
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	ldr r0, _0225CF08 ; =0x00001455
 	mov r1, #0
 	strb r1, [r4, r0]
 _0225CEEE:
 	ldr r0, [r4, #0x2c]
-	bl sub_0201EEB4
+	bl BgConfig_HandleScheduledScrollAndTransferOps
 	ldr r3, _0225CF0C ; =0x027E0000
 	ldr r1, _0225CF10 ; =0x00003FF8
 	mov r0, #1
@@ -1522,12 +1522,12 @@ _0225D248:
 	add r0, r5, #0
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #2
 	add r2, sp, #0x54
@@ -1540,12 +1540,12 @@ _0225D248:
 	add r0, r5, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r0, r5, #0
 	mov r1, #3
 	add r2, sp, #0x70
@@ -1558,12 +1558,12 @@ _0225D248:
 	add r0, r5, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	mov r1, #3
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	ldr r1, _0225D378 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -1615,21 +1615,21 @@ _0225D31A:
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	add r3, r2, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r1, r4, #4
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
 	mov r2, #3
 	mov r3, #0
-	bl sub_0201BC8C
+	bl BgSetPosTextAndCommit
 	add r4, r4, #1
 	add r6, #0x1c
 	cmp r4, #4
 	blo _0225D2F4
 	mov r0, #7
 	mov r1, #0
-	bl BG_ToggleLayer
+	bl ToggleBgLayer
 	add sp, #0x8c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1782,7 +1782,7 @@ ov93_0225D468: ; 0x0225D468
 	bl String_dtor
 	add r5, #0x70
 	add r0, r5, #0
-	bl sub_0201D5C8
+	bl ScheduleWindowCopyToVram
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
