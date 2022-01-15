@@ -35,7 +35,7 @@ _0050:
 	goto _00E3
 
 _0071:
-	scrcmd_135 32768, 32769, 32770
+	give_random_seal VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	compare VAR_SPECIAL_x8000, 0
 	goto_if_ne _008F
 	npc_msg msg_0609_T26R0501_00003

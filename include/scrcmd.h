@@ -150,9 +150,9 @@ BOOL ScrCmd_GetItemPocket(SCRIPTCONTEXT* ctx);
 
 BOOL ScrCmd_SetStarterChoice(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GenderMsgbox(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_133(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_134(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_135(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_GetSealQuantity(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_GiveOrTakeSeal(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_GiveRandomSeal(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_136(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GiveMon(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GiveEgg(SCRIPTCONTEXT* ctx);

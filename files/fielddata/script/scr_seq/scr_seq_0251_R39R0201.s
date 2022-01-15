@@ -84,37 +84,37 @@ _00FA:
 	setvar VAR_SPECIAL_x8004, 29
 	setvar VAR_SPECIAL_x8005, 34
 	setvar VAR_SPECIAL_x8006, 39
-	scrcmd_133 32772, 32780
+	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 99
 	goto_if_eq _020C
-	scrcmd_133 32773, 32780
+	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 99
 	goto_if_eq _020C
-	scrcmd_133 32774, 32780
+	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 99
 	goto_if_eq _020C
 	setvar VAR_SPECIAL_x8000, 3
 	setvar VAR_SPECIAL_x8001, 3
 	setvar VAR_SPECIAL_x8002, 3
-	scrcmd_133 32772, 32780
+	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 96
 	goto_if_le _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	scrcmd_133 32773, 32780
+	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 96
 	goto_if_le _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	scrcmd_133 32774, 32780
+	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 96
 	goto_if_le _01C2
 	subvar VAR_SPECIAL_x800C, 96
 	subvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
 _01C2:
-	scrcmd_134 32772, 32768
-	scrcmd_134 32773, 32769
-	scrcmd_134 32774, 32770
+	give_or_take_seal VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
+	give_or_take_seal VAR_SPECIAL_x8005, VAR_SPECIAL_x8001
+	give_or_take_seal VAR_SPECIAL_x8006, VAR_SPECIAL_x8002
 	buffer_seal_name_plural 0, VAR_SPECIAL_x8004
 	npc_msg msg_0398_R39R0201_00020
 	play_fanfare SEQ_ME_ITEM

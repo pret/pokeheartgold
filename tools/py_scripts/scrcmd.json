@@ -830,25 +830,25 @@
       ]
     },
     {
-      "name": "scrcmd_133",
+      "name": "get_seal_quantity",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_134",
+      "name": "give_or_take_seal",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_135",
+      "name": "give_random_seal",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {

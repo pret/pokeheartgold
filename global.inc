@@ -1816,9 +1816,9 @@
 .public ScrCmd_GetItemPocket
 .public ScrCmd_SetStarterChoice
 .public ScrCmd_GenderMsgbox
-.public ScrCmd_133
-.public ScrCmd_134
-.public ScrCmd_135
+.public ScrCmd_GetSealQuantity
+.public ScrCmd_GiveOrTakeSeal
+.public ScrCmd_GiveRandomSeal
 .public ScrCmd_136
 .public ScrCmd_GiveMon
 .public ScrCmd_GiveEgg

@@ -61420,8 +61420,8 @@ ScrCmd_572: ; 0x02202648
 	.balign 4, 0
 	thumb_func_end ScrCmd_572
 
-	thumb_func_start ScrCmd_133
-ScrCmd_133: ; 0x02202674
+	thumb_func_start ScrCmd_GetSealQuantity
+ScrCmd_GetSealQuantity: ; 0x02202674
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61448,10 +61448,10 @@ ScrCmd_133: ; 0x02202674
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_133
+	thumb_func_end ScrCmd_GetSealQuantity
 
-	thumb_func_start ScrCmd_134
-ScrCmd_134: ; 0x022026B4
+	thumb_func_start ScrCmd_GiveOrTakeSeal
+ScrCmd_GiveOrTakeSeal: ; 0x022026B4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61480,7 +61480,7 @@ ScrCmd_134: ; 0x022026B4
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_134
+	thumb_func_end ScrCmd_GiveOrTakeSeal
 
 	thumb_func_start ov01_022026F8
 ov01_022026F8: ; 0x022026F8
@@ -61507,8 +61507,8 @@ _02202714:
 	.balign 4, 0
 	thumb_func_end ov01_022026F8
 
-	thumb_func_start ScrCmd_135
-ScrCmd_135: ; 0x0220271C
+	thumb_func_start ScrCmd_GiveRandomSeal
+ScrCmd_GiveRandomSeal: ; 0x0220271C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	mov r1, #0
@@ -61641,7 +61641,7 @@ _02202812:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_135
+	thumb_func_end ScrCmd_GiveRandomSeal
 
 	thumb_func_start ScrCmd_836
 ScrCmd_836: ; 0x02202834

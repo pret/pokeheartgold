@@ -182,9 +182,9 @@ gScriptCmdTable:
 	.word ScrCmd_GetItemPocket                          ; 130
 	.word ScrCmd_SetStarterChoice                       ; 131
 	.word ScrCmd_GenderMsgbox                           ; 132
-	.word ScrCmd_133                                    ; 133
-	.word ScrCmd_134                                    ; 134
-	.word ScrCmd_135                                    ; 135
+	.word ScrCmd_GetSealQuantity                                    ; 133
+	.word ScrCmd_GiveOrTakeSeal                                    ; 134
+	.word ScrCmd_GiveRandomSeal                                    ; 135
 	.word ScrCmd_136                                    ; 136
 	.word ScrCmd_GiveMon                                ; 137
 	.word ScrCmd_GiveEgg                                ; 138

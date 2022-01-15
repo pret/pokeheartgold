@@ -799,19 +799,19 @@
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_133 arg0, arg1
+	.macro get_seal_quantity arg0, arg1
 	.short 133
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_134 arg0, arg1
+	.macro give_or_take_seal arg0, arg1
 	.short 134
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_135 arg0, arg1, arg2
+	.macro give_random_seal arg0, arg1, arg2
 	.short 135
 	.short \arg0
 	.short \arg1

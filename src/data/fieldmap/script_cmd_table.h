@@ -133,9 +133,9 @@ extern BOOL ScrCmd_ItemIsTMOrHM(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetItemPocket(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SetStarterChoice(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GenderMsgbox(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_133(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_134(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_135(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetSealQuantity(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveOrTakeSeal(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveRandomSeal(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_136(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveEgg(SCRIPTCONTEXT *ctx);
@@ -988,9 +988,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetItemPocket,
     ScrCmd_SetStarterChoice,
     ScrCmd_GenderMsgbox,
-    ScrCmd_133,
-    ScrCmd_134,
-    ScrCmd_135,
+    ScrCmd_GetSealQuantity,
+    ScrCmd_GiveOrTakeSeal,
+    ScrCmd_GiveRandomSeal,
     ScrCmd_136,
     ScrCmd_GiveMon,
     ScrCmd_GiveEgg,
