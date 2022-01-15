@@ -1730,7 +1730,7 @@ sub_0203C920: ; 0x0203C920
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
 	add r5, r0, #0
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl FlyPoints_GetSpecialSpawnWarpPtr
@@ -2320,7 +2320,7 @@ _0203CE2A:
 	str r7, [sp, #4]
 	ldrh r1, [r1, #6]
 	mov r0, #0
-	bl sub_02067DF4
+	bl PartyMenu_GetFieldMoveFunc
 	mov r1, #0x37
 	lsl r1, r1, #4
 	add r2, r0, #0
@@ -3127,7 +3127,7 @@ sub_0203D488: ; 0x0203D488
 	ldr r1, _0203D4F8 ; =0x00002266
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	b _0203D4EE
 _0203D4CA:
 	ldr r0, [r4, #0xc]
@@ -3138,13 +3138,13 @@ _0203D4CA:
 	ldr r1, _0203D4FC ; =0x000028A4
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	b _0203D4EE
 _0203D4E4:
 	add r0, r5, #0
 	mov r1, #4
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 _0203D4EE:
 	add r0, r6, #0
 	bl FreeToHeap

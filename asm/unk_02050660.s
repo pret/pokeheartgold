@@ -1209,7 +1209,7 @@ _02050FE6:
 	ldr r1, _0205101C ; =std_bug_contest_balls_up
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	add sp, #8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1437,7 +1437,7 @@ _020511D2:
 	add r0, r7, #0
 	mov r1, #3
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _020511F0:

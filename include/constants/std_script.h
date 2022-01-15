@@ -563,6 +563,7 @@
 #define std_safari_exit                 8806
 
 #define _std_chatot                     8900
+#define std_menu_chatter                8900
 
 #define _std_comm_reception             9000
 #define std_wireless_reset_state        9000

@@ -18081,7 +18081,7 @@ ov02_0224E35C: ; 0x0224E35C
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	ldr r0, [r5, #0xc]
 	bl Save_SafariZone_get
 	add r4, r0, #0
@@ -25779,7 +25779,7 @@ ov02_02251F20: ; 0x02251F20
 	add r5, r0, #0
 	ldr r0, [r5, #0x38]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	add r4, r0, #0
 	ldr r0, [r4]
 	bl MapHeader_GetField14_1E

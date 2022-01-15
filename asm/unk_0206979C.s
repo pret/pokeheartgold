@@ -1,4 +1,5 @@
 #include "constants/species.h"
+#include "constants/maps.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -4905,7 +4906,7 @@ sub_0206BD10: ; 0x0206BD10
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	mov r1, #0x4e
 	ldr r2, [r0]
 	lsl r1, r1, #2
@@ -4936,9 +4937,9 @@ sub_0206BD44: ; 0x0206BD44
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	ldr r2, [r0]
-	ldr r1, _0206BD78 ; =0x0000013A
+	ldr r1, _0206BD78 ; =MAP_D24R0204
 	cmp r2, r1
 	beq _0206BD5C
 	mov r0, #0
@@ -4960,7 +4961,7 @@ _0206BD72:
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_0206BD78: .word 0x0000013A
+_0206BD78: .word MAP_D24R0204
 	thumb_func_end sub_0206BD44
 
 	thumb_func_start sub_0206BD7C
@@ -4968,7 +4969,7 @@ sub_0206BD7C: ; 0x0206BD7C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	mov r1, #0x4f
 	ldr r2, [r0]
 	lsl r1, r1, #2

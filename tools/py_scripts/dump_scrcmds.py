@@ -452,7 +452,7 @@ class NormalScriptParser(ScriptParserBase):
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants[size].get(value, value), pc
-            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact' | 'spawn':
+            case 'species' | 'item' | 'move' | 'sound' | 'ribbon' | 'stdscr' | 'trainer' | 'phone_contact' | 'spawn' | 'maps':
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants['var'].get(value, self.constants[size].get(value, value)), pc

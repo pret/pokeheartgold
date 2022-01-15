@@ -4534,7 +4534,7 @@ ov01_021E7D58: ; 0x021E7D58
 	ldrh r4, [r0, r1]
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0x8b
@@ -26263,7 +26263,7 @@ _021F2018:
 	ldr r1, _021F2028 ; =0x0000271F
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r0, #0
 	pop {r4, pc}
 	nop
@@ -30414,7 +30414,7 @@ ov01_021F3F50: ; 0x021F3F50
 	add r5, r0, #0
 	add r0, r4, #0
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	add r6, r0, #0
 	add r0, r4, #0
 	bl Sav2_Pokedex_get

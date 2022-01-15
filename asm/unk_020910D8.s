@@ -3568,7 +3568,7 @@ sub_02092BE8: ; 0x02092BE8
 	bl FlyPoints_GetSpecialSpawnWarpPtr
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl sub_02092DEC

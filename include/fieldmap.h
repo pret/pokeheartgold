@@ -14,7 +14,7 @@ typedef struct HiddenItemResponse {
 void StartMapSceneScript(UnkSavStruct80 *a0, u16 a1, LocalMapObject *a2);
 void sub_0203FEA4(UnkSavStruct80 *a0, LocalMapObject *a1, int a2, int a3, int a4, int a5, int a6, int a7);
 void sub_0203FED4(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2, void *a3);
-void sub_0203FF0C(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2);
+void StartScriptFromMenu(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2);
 BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk);
 UnkSavStruct80_Sub10_SubC *sub_0204001C(void);
 void DestroyScriptContext(SCRIPTCONTEXT *ctx);

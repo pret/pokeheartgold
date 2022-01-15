@@ -5,6 +5,8 @@
 #include "constants/flags.h"
 #include "constants/vars.h"
 #include "constants/items.h"
+#include "constants/std_script.h"
+#include "fielddata/script/scr_seq/event_D24R0204.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -26318,8 +26320,10 @@ _02067DEC: .word ov01_02205A60
 _02067DF0: .word _020FE7AC
 	thumb_func_end sub_02067C30
 
-	thumb_func_start sub_02067DF4
-sub_02067DF4: ; 0x02067DF4
+	; a0: 0 = use, 1 = check
+	; a1: menu idx
+	thumb_func_start PartyMenu_GetFieldMoveFunc
+PartyMenu_GetFieldMoveFunc: ; 0x02067DF4
 	cmp r0, #0
 	bne _02067E00
 	ldr r0, _02067E08 ; =_020FE7BC
@@ -26334,7 +26338,7 @@ _02067E00:
 	.balign 4, 0
 _02067E08: .word _020FE7BC
 _02067E0C: .word _020FE7BC + 4
-	thumb_func_end sub_02067DF4
+	thumb_func_end PartyMenu_GetFieldMoveFunc
 
 	thumb_func_start sub_02067E10
 sub_02067E10: ; 0x02067E10
@@ -26513,8 +26517,8 @@ _02067F5C:
 _02067F64: .word 0x19740205
 	thumb_func_end sub_02067F4C
 
-	thumb_func_start sub_02067F68
-sub_02067F68: ; 0x02067F68
+	thumb_func_start FieldMoveMenuCheck_Cut
+FieldMoveMenuCheck_Cut: ; 0x02067F68
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -26542,10 +26546,10 @@ _02067F8E:
 _02067F98:
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02067F68
+	thumb_func_end FieldMoveMenuCheck_Cut
 
-	thumb_func_start sub_02067F9C
-sub_02067F9C: ; 0x02067F9C
+	thumb_func_start FieldMoveMenuUse_Cut
+FieldMoveMenuUse_Cut: ; 0x02067F9C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -26569,7 +26573,7 @@ sub_02067F9C: ; 0x02067F9C
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02067FCC: .word sub_02067FD0
-	thumb_func_end sub_02067F9C
+	thumb_func_end FieldMoveMenuUse_Cut
 
 	thumb_func_start sub_02067FD0
 sub_02067FD0: ; 0x02067FD0
@@ -26581,10 +26585,10 @@ sub_02067FD0: ; 0x02067FD0
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _02068008 ; =0x00002717
+	ldr r1, _02068008 ; =std_menu_cut
 	ldr r2, [r4, #4]
 	add r0, r5, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -26597,11 +26601,11 @@ sub_02067FD0: ; 0x02067FD0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02068008: .word 0x00002717
+_02068008: .word std_menu_cut
 	thumb_func_end sub_02067FD0
 
-	thumb_func_start sub_0206800C
-sub_0206800C: ; 0x0206800C
+	thumb_func_start FieldMoveMenuCheck_Fly
+FieldMoveMenuCheck_Fly: ; 0x0206800C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -26672,10 +26676,10 @@ _02068096:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206800C
+	thumb_func_end FieldMoveMenuCheck_Fly
 
-	thumb_func_start sub_0206809C
-sub_0206809C: ; 0x0206809C
+	thumb_func_start FieldMoveMenuUse_Fly
+FieldMoveMenuUse_Fly: ; 0x0206809C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -26704,10 +26708,10 @@ sub_0206809C: ; 0x0206809C
 	pop {r4, r5, r6, pc}
 	nop
 _020680DC: .word sub_0203D758
-	thumb_func_end sub_0206809C
+	thumb_func_end FieldMoveMenuUse_Fly
 
-	thumb_func_start sub_020680E0
-sub_020680E0: ; 0x020680E0
+	thumb_func_start FieldMoveMenuCheck_Surf
+FieldMoveMenuCheck_Surf: ; 0x020680E0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -26763,10 +26767,10 @@ _0206814A:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020680E0
+	thumb_func_end FieldMoveMenuCheck_Surf
 
-	thumb_func_start sub_02068150
-sub_02068150: ; 0x02068150
+	thumb_func_start FieldMoveMenuUse_Surf
+FieldMoveMenuUse_Surf: ; 0x02068150
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -26790,7 +26794,7 @@ sub_02068150: ; 0x02068150
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02068180: .word sub_02068184
-	thumb_func_end sub_02068150
+	thumb_func_end FieldMoveMenuUse_Surf
 
 	thumb_func_start sub_02068184
 sub_02068184: ; 0x02068184
@@ -26802,10 +26806,10 @@ sub_02068184: ; 0x02068184
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _020681BC ; =0x0000271B
+	ldr r1, _020681BC ; =std_menu_surf
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -26818,11 +26822,11 @@ sub_02068184: ; 0x02068184
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_020681BC: .word 0x0000271B
+_020681BC: .word std_menu_surf
 	thumb_func_end sub_02068184
 
-	thumb_func_start sub_020681C0
-sub_020681C0: ; 0x020681C0
+	thumb_func_start FieldMoveMenuCheck_Strength
+FieldMoveMenuCheck_Strength: ; 0x020681C0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -26857,10 +26861,10 @@ _020681F0:
 _020681FC:
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end sub_020681C0
+	thumb_func_end FieldMoveMenuCheck_Strength
 
-	thumb_func_start sub_02068200
-sub_02068200: ; 0x02068200
+	thumb_func_start FieldMoveMenuUse_Strength
+FieldMoveMenuUse_Strength: ; 0x02068200
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -26884,7 +26888,7 @@ sub_02068200: ; 0x02068200
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02068230: .word sub_02068234
-	thumb_func_end sub_02068200
+	thumb_func_end FieldMoveMenuUse_Strength
 
 	thumb_func_start sub_02068234
 sub_02068234: ; 0x02068234
@@ -26896,10 +26900,10 @@ sub_02068234: ; 0x02068234
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _0206826C ; =0x00002719
+	ldr r1, _0206826C ; =std_menu_strength
 	ldr r2, [r4, #4]
 	add r0, r5, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -26912,11 +26916,11 @@ sub_02068234: ; 0x02068234
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0206826C: .word 0x00002719
+_0206826C: .word std_menu_strength
 	thumb_func_end sub_02068234
 
-	thumb_func_start sub_02068270
-sub_02068270: ; 0x02068270
+	thumb_func_start FieldMoveMenuCheck_RockSmash
+FieldMoveMenuCheck_RockSmash: ; 0x02068270
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -26946,10 +26950,10 @@ _020682A2:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068270
+	thumb_func_end FieldMoveMenuCheck_RockSmash
 
-	thumb_func_start sub_020682A8
-sub_020682A8: ; 0x020682A8
+	thumb_func_start FieldMoveMenuUse_RockSmash
+FieldMoveMenuUse_RockSmash: ; 0x020682A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -26973,7 +26977,7 @@ sub_020682A8: ; 0x020682A8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _020682D8: .word sub_020682DC
-	thumb_func_end sub_020682A8
+	thumb_func_end FieldMoveMenuUse_RockSmash
 
 	thumb_func_start sub_020682DC
 sub_020682DC: ; 0x020682DC
@@ -26985,10 +26989,10 @@ sub_020682DC: ; 0x020682DC
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _02068314 ; =0x00002718
+	ldr r1, _02068314 ; =std_menu_rock_smash
 	ldr r2, [r4, #4]
 	add r0, r5, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -27001,11 +27005,11 @@ sub_020682DC: ; 0x020682DC
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02068314: .word 0x00002718
+_02068314: .word std_menu_rock_smash
 	thumb_func_end sub_020682DC
 
-	thumb_func_start sub_02068318
-sub_02068318: ; 0x02068318
+	thumb_func_start FieldMoveMenuCheck_Waterfall
+FieldMoveMenuCheck_Waterfall: ; 0x02068318
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -27043,10 +27047,10 @@ _0206835A:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068318
+	thumb_func_end FieldMoveMenuCheck_Waterfall
 
-	thumb_func_start sub_02068360
-sub_02068360: ; 0x02068360
+	thumb_func_start FieldMoveMenuUse_Waterfall
+FieldMoveMenuUse_Waterfall: ; 0x02068360
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27070,7 +27074,7 @@ sub_02068360: ; 0x02068360
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02068390: .word sub_02068394
-	thumb_func_end sub_02068360
+	thumb_func_end FieldMoveMenuUse_Waterfall
 
 	thumb_func_start sub_02068394
 sub_02068394: ; 0x02068394
@@ -27082,10 +27086,10 @@ sub_02068394: ; 0x02068394
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _020683CC ; =0x0000271C
+	ldr r1, _020683CC ; =std_menu_waterfall
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -27098,11 +27102,11 @@ sub_02068394: ; 0x02068394
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_020683CC: .word 0x0000271C
+_020683CC: .word std_menu_waterfall
 	thumb_func_end sub_02068394
 
-	thumb_func_start sub_020683D0
-sub_020683D0: ; 0x020683D0
+	thumb_func_start FieldMoveMenuCheck_RockClimb
+FieldMoveMenuCheck_RockClimb: ; 0x020683D0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -27150,10 +27154,10 @@ _0206842A:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020683D0
+	thumb_func_end FieldMoveMenuCheck_RockClimb
 
-	thumb_func_start sub_02068430
-sub_02068430: ; 0x02068430
+	thumb_func_start FieldMoveMenuUse_RockClimb
+FieldMoveMenuUse_RockClimb: ; 0x02068430
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27177,7 +27181,7 @@ sub_02068430: ; 0x02068430
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02068460: .word sub_02068464
-	thumb_func_end sub_02068430
+	thumb_func_end FieldMoveMenuUse_RockClimb
 
 	thumb_func_start sub_02068464
 sub_02068464: ; 0x02068464
@@ -27189,10 +27193,10 @@ sub_02068464: ; 0x02068464
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _0206849C ; =0x0000271A
+	ldr r1, _0206849C ; =std_menu_rock_climb
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -27205,11 +27209,11 @@ sub_02068464: ; 0x02068464
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0206849C: .word 0x0000271A
+_0206849C: .word std_menu_rock_climb
 	thumb_func_end sub_02068464
 
-	thumb_func_start sub_020684A0
-sub_020684A0: ; 0x020684A0
+	thumb_func_start FieldMoveMenuCheck_Flash
+FieldMoveMenuCheck_Flash: ; 0x020684A0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -27236,10 +27240,10 @@ _020684CA:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020684A0
+	thumb_func_end FieldMoveMenuCheck_Flash
 
-	thumb_func_start sub_020684D0
-sub_020684D0: ; 0x020684D0
+	thumb_func_start FieldMoveMenuUse_Flash
+FieldMoveMenuUse_Flash: ; 0x020684D0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27263,7 +27267,7 @@ sub_020684D0: ; 0x020684D0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02068500: .word sub_02068504
-	thumb_func_end sub_020684D0
+	thumb_func_end FieldMoveMenuUse_Flash
 
 	thumb_func_start sub_02068504
 sub_02068504: ; 0x02068504
@@ -27279,15 +27283,15 @@ sub_02068504: ; 0x02068504
 	cmp r0, #0
 	beq _0206852C
 	add r0, r5, #0
-	mov r1, #3
+	mov r1, #_EV_scr_seq_D24R0204_003
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	b _02068536
 _0206852C:
-	ldr r1, _02068550 ; =0x0000271D
+	ldr r1, _02068550 ; =std_menu_flash
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 _02068536:
 	mov r2, #0
 	str r2, [sp]
@@ -27301,11 +27305,11 @@ _02068536:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02068550: .word 0x0000271D
+_02068550: .word std_menu_flash
 	thumb_func_end sub_02068504
 
-	thumb_func_start sub_02068554
-sub_02068554: ; 0x02068554
+	thumb_func_start FieldMoveMenuCheck_Teleport
+FieldMoveMenuCheck_Teleport: ; 0x02068554
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -27367,10 +27371,10 @@ _020685CA:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068554
+	thumb_func_end FieldMoveMenuCheck_Teleport
 
-	thumb_func_start sub_020685D0
-sub_020685D0: ; 0x020685D0
+	thumb_func_start FieldMoveMenuUse_Teleport
+FieldMoveMenuUse_Teleport: ; 0x020685D0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27405,7 +27409,7 @@ sub_020685D0: ; 0x020685D0
 	pop {r4, r5, r6, pc}
 	nop
 _0206861C: .word sub_02068620
-	thumb_func_end sub_020685D0
+	thumb_func_end FieldMoveMenuUse_Teleport
 
 	thumb_func_start sub_02068620
 sub_02068620: ; 0x02068620
@@ -27439,8 +27443,8 @@ sub_02068620: ; 0x02068620
 _02068660: .word ov02_0224C558
 	thumb_func_end sub_02068620
 
-	thumb_func_start sub_02068664
-sub_02068664: ; 0x02068664
+	thumb_func_start FieldMoveMenuCheck_Dig
+FieldMoveMenuCheck_Dig: ; 0x02068664
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
@@ -27484,10 +27488,10 @@ _020686B6:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02068664
+	thumb_func_end FieldMoveMenuCheck_Dig
 
-	thumb_func_start sub_020686BC
-sub_020686BC: ; 0x020686BC
+	thumb_func_start FieldMoveMenuUse_Dig
+FieldMoveMenuUse_Dig: ; 0x020686BC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27522,7 +27526,7 @@ sub_020686BC: ; 0x020686BC
 	pop {r4, r5, r6, pc}
 	nop
 _02068708: .word sub_0206870C
-	thumb_func_end sub_020686BC
+	thumb_func_end FieldMoveMenuUse_Dig
 
 	thumb_func_start sub_0206870C
 sub_0206870C: ; 0x0206870C
@@ -27556,8 +27560,8 @@ sub_0206870C: ; 0x0206870C
 _0206874C: .word ov02_0224C3AC
 	thumb_func_end sub_0206870C
 
-	thumb_func_start sub_02068750
-sub_02068750: ; 0x02068750
+	thumb_func_start FieldMoveMenuCheck_SweetScent
+FieldMoveMenuCheck_SweetScent: ; 0x02068750
 	push {r3, lr}
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #0x70]
@@ -27584,10 +27588,10 @@ _02068774:
 _0206877C:
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_02068750
+	thumb_func_end FieldMoveMenuCheck_SweetScent
 
-	thumb_func_start sub_02068780
-sub_02068780: ; 0x02068780
+	thumb_func_start FieldMoveMenuUse_SweetScent
+FieldMoveMenuUse_SweetScent: ; 0x02068780
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27622,10 +27626,10 @@ sub_02068780: ; 0x02068780
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020687CC: .word ov01_021FCE98
-	thumb_func_end sub_02068780
+	thumb_func_end FieldMoveMenuUse_SweetScent
 
-	thumb_func_start sub_020687D0
-sub_020687D0: ; 0x020687D0
+	thumb_func_start FieldMoveMenuCheck_Chatter
+FieldMoveMenuCheck_Chatter: ; 0x020687D0
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x70]
 	sub r0, r0, #2
@@ -27637,10 +27641,10 @@ _020687DE:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020687D0
+	thumb_func_end FieldMoveMenuCheck_Chatter
 
-	thumb_func_start sub_020687E4
-sub_020687E4: ; 0x020687E4
+	thumb_func_start FieldMoveMenuUse_Chatter
+FieldMoveMenuUse_Chatter: ; 0x020687E4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27667,7 +27671,7 @@ sub_020687E4: ; 0x020687E4
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206881C: .word sub_02068820
-	thumb_func_end sub_020687E4
+	thumb_func_end FieldMoveMenuUse_Chatter
 
 	thumb_func_start sub_02068820
 sub_02068820: ; 0x02068820
@@ -27679,10 +27683,10 @@ sub_02068820: ; 0x02068820
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _02068858 ; =0x000022C4
+	ldr r1, _02068858 ; =std_menu_chatter
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -27695,11 +27699,11 @@ sub_02068820: ; 0x02068820
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02068858: .word 0x000022C4
+_02068858: .word std_menu_chatter
 	thumb_func_end sub_02068820
 
-	thumb_func_start sub_0206885C
-sub_0206885C: ; 0x0206885C
+	thumb_func_start FieldMoveMenuCheck_Whirlpool
+FieldMoveMenuCheck_Whirlpool: ; 0x0206885C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #4]
@@ -27737,10 +27741,10 @@ _02068892:
 _020688A0:
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end sub_0206885C
+	thumb_func_end FieldMoveMenuCheck_Whirlpool
 
-	thumb_func_start sub_020688A4
-sub_020688A4: ; 0x020688A4
+	thumb_func_start FieldMoveMenuUse_Whirlpool
+FieldMoveMenuUse_Whirlpool: ; 0x020688A4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27764,7 +27768,7 @@ sub_020688A4: ; 0x020688A4
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _020688D4: .word sub_020688D8
-	thumb_func_end sub_020688A4
+	thumb_func_end FieldMoveMenuUse_Whirlpool
 
 	thumb_func_start sub_020688D8
 sub_020688D8: ; 0x020688D8
@@ -27776,10 +27780,10 @@ sub_020688D8: ; 0x020688D8
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _02068910 ; =0x00002721
+	ldr r1, _02068910 ; =std_menu_whirlpool
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -27792,11 +27796,11 @@ sub_020688D8: ; 0x020688D8
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02068910: .word 0x00002721
+_02068910: .word std_menu_whirlpool
 	thumb_func_end sub_020688D8
 
-	thumb_func_start sub_02068914
-sub_02068914: ; 0x02068914
+	thumb_func_start FieldMoveMenuCheck_Headbutt
+FieldMoveMenuCheck_Headbutt: ; 0x02068914
 	ldr r1, [r0, #4]
 	ldr r1, [r1, #0x70]
 	sub r1, r1, #2
@@ -27815,10 +27819,10 @@ _02068922:
 _02068930:
 	mov r0, #1
 	bx lr
-	thumb_func_end sub_02068914
+	thumb_func_end FieldMoveMenuCheck_Headbutt
 
-	thumb_func_start sub_02068934
-sub_02068934: ; 0x02068934
+	thumb_func_start FieldMoveMenuUse_Headbutt
+FieldMoveMenuUse_Headbutt: ; 0x02068934
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -27842,7 +27846,7 @@ sub_02068934: ; 0x02068934
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02068964: .word sub_02068968
-	thumb_func_end sub_02068934
+	thumb_func_end FieldMoveMenuUse_Headbutt
 
 	thumb_func_start sub_02068968
 sub_02068968: ; 0x02068968
@@ -27854,10 +27858,10 @@ sub_02068968: ; 0x02068968
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	ldr r1, _020689A0 ; =0x00002722
+	ldr r1, _020689A0 ; =std_menu_headbutt
 	ldr r2, [r4, #4]
 	add r0, r5, #0
-	bl sub_0203FF0C
+	bl StartScriptFromMenu
 	mov r2, #0
 	str r2, [sp]
 	ldrh r1, [r4, #0xc]
@@ -27870,7 +27874,7 @@ sub_02068968: ; 0x02068968
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_020689A0: .word 0x00002722
+_020689A0: .word std_menu_headbutt
 	thumb_func_end sub_02068968
 
 	thumb_func_start sub_020689A4
@@ -30445,6 +30449,7 @@ sRoamerAdjacencyTable:
 	.short      3,     19,     20,     24, 0xFFFF, 0xFFFF, 0xFFFF
 	.short      2,     37,     40, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 	.short      3,     37,     39,     24, 0xFFFF, 0xFFFF, 0xFFFF
+	; File boundary
 	.balign 4, 0
 _020FE79C:
 	.word ov71_02246960, ov71_02246BB8, ov71_02246B58, SDK_OVERLAY_OVY_71_ID
@@ -30455,17 +30460,17 @@ _020FE7AC:
 	.short 74, 1
 	.short 254, 0
 _020FE7BC:
-	.word sub_02067F9C, sub_02067F68
-	.word sub_0206809C, sub_0206800C
-	.word sub_02068150, sub_020680E0
-	.word sub_02068200, sub_020681C0
-	.word sub_020682A8, sub_02068270
-	.word sub_02068360, sub_02068318
-	.word sub_02068430, sub_020683D0
-	.word sub_020684D0, sub_020684A0
-	.word sub_020685D0, sub_02068554
-	.word sub_020686BC, sub_02068664
-	.word sub_02068780, sub_02068750
-	.word sub_020687E4, sub_020687D0
-	.word sub_020688A4, sub_0206885C
-	.word sub_02068934, sub_02068914
+	.word FieldMoveMenuUse_Cut, FieldMoveMenuCheck_Cut
+	.word FieldMoveMenuUse_Fly, FieldMoveMenuCheck_Fly
+	.word FieldMoveMenuUse_Surf, FieldMoveMenuCheck_Surf
+	.word FieldMoveMenuUse_Strength, FieldMoveMenuCheck_Strength
+	.word FieldMoveMenuUse_RockSmash, FieldMoveMenuCheck_RockSmash
+	.word FieldMoveMenuUse_Waterfall, FieldMoveMenuCheck_Waterfall
+	.word FieldMoveMenuUse_RockClimb, FieldMoveMenuCheck_RockClimb
+	.word FieldMoveMenuUse_Flash, FieldMoveMenuCheck_Flash
+	.word FieldMoveMenuUse_Teleport, FieldMoveMenuCheck_Teleport
+	.word FieldMoveMenuUse_Dig, FieldMoveMenuCheck_Dig
+	.word FieldMoveMenuUse_SweetScent, FieldMoveMenuCheck_SweetScent
+	.word FieldMoveMenuUse_Chatter, FieldMoveMenuCheck_Chatter
+	.word FieldMoveMenuUse_Whirlpool, FieldMoveMenuCheck_Whirlpool
+	.word FieldMoveMenuUse_Headbutt, FieldMoveMenuCheck_Headbutt

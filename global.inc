@@ -28148,7 +28148,7 @@
 .public sub_0203B920
 .public sub_0203B928
 .public Save_FlyPoints_init
-.public sub_0203B958
+.public FlyPoints_GetPosition
 .public sub_0203B95C
 .public sub_0203B960
 .public FlyPoints_GetSpecialSpawnWarpPtr
@@ -28295,7 +28295,7 @@
 .public StartMapSceneScript
 .public sub_0203FEA4
 .public sub_0203FED4
-.public sub_0203FF0C
+.public StartScriptFromMenu
 .public sub_0204031C
 .public sub_02040490
 .public ScriptNumToTrainerNum
@@ -29200,7 +29200,7 @@
 .public sub_02067BE8
 .public sub_02067BF8
 .public sub_02067C30
-.public sub_02067DF4
+.public PartyMenu_GetFieldMoveFunc
 .public sub_02067E10
 .public sub_020689C8
 .public sub_020689F8

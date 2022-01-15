@@ -45,7 +45,7 @@ _02260C66:
 	add r4, r4, r0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	str r0, [r5, #0x20]
 	bl MapMatrix_New
 	str r0, [r5, #0x30]

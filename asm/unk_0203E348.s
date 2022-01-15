@@ -166,7 +166,7 @@ _0203E394: .word _020FA190
 sub_0203E398: ; 0x0203E398
 	push {r3, lr}
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	bl sub_0203E368
 	pop {r3, pc}
 	thumb_func_end sub_0203E398

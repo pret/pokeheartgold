@@ -46,11 +46,11 @@ Save_FlyPoints_init: ; 0x0203B938
 	.balign 4, 0
 	thumb_func_end Save_FlyPoints_init
 
-	thumb_func_start sub_0203B958
-sub_0203B958: ; 0x0203B958
+	thumb_func_start FlyPoints_GetPosition
+FlyPoints_GetPosition: ; 0x0203B958
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0203B958
+	thumb_func_end FlyPoints_GetPosition
 
 	thumb_func_start sub_0203B95C
 sub_0203B95C: ; 0x0203B95C

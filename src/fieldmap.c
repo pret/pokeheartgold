@@ -83,7 +83,7 @@ void sub_0203FED4(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2, void *a3
     sub_02050530(a0, sub_0203FF44, r4);
 }
 
-void sub_0203FF0C(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2) {
+void StartScriptFromMenu(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2) {
     UnkSavStruct80 *sp8 = sub_0205064C(a0);
     UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
     sub_0204005C(sp8, r4, a1, a2, NULL);

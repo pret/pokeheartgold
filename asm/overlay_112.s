@@ -15292,7 +15292,7 @@ ov112_021ED530: ; 0x021ED530
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
 	bl Save_FlyPoints_get
-	bl sub_0203B958
+	bl FlyPoints_GetPosition
 	ldr r1, [r0]
 	ldr r0, _021ED57C ; =0x000001F3
 	cmp r1, r0
