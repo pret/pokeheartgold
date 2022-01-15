@@ -1,6 +1,9 @@
 #ifndef POKEHEARTGOLD_WINDOW_H
 #define POKEHEARTGOLD_WINDOW_H
 
+#include "heap.h"
+#include "gx_layers.h"
+
 typedef struct BGTEMPLATE {
     u32 x;
     u32 y;
@@ -38,7 +41,7 @@ typedef struct BG {
 } BG;
 
 typedef struct BGCONFIG {
-    u32 heap_id;
+    HeapID heap_id;
     u16 scrollScheduled;
     u16 bufferTransferScheduled;
     BG bgs[8];
@@ -73,35 +76,14 @@ typedef struct WINDOW {
     void *pixelBuffer;
 } WINDOW;
 
+enum GFScreen {
+    SCREEN_MAIN = 0,
+    SCREEN_SUB  = 1,
+};
+
 enum GFBppMode {
     GF_BG_CLR_4BPP = 0,
     GF_BG_CLR_8BPP,
-};
-
-enum GFBgLayer {
-    GF_BG_LYR_MAIN_0 = 0,
-    GF_BG_LYR_MAIN_1,
-    GF_BG_LYR_MAIN_2,
-    GF_BG_LYR_MAIN_3,
-    GF_BG_LYR_SUB_0,
-    GF_BG_LYR_SUB_1,
-    GF_BG_LYR_SUB_2,
-    GF_BG_LYR_SUB_3,
-    GF_BG_LYR_MAIN_CNT = 4,
-    GF_BG_LYR_SUB_CNT = 4,
-    GF_BG_LYR_MAIN_FIRST = GF_BG_LYR_MAIN_0,
-    GF_BG_LYR_SUB_FIRST = GF_BG_LYR_SUB_0,
-
-    GF_BG_LYR_MAIN_0_F = 1 << (GF_BG_LYR_MAIN_0 - GF_BG_LYR_MAIN_FIRST),
-    GF_BG_LYR_MAIN_1_F = 1 << (GF_BG_LYR_MAIN_1 - GF_BG_LYR_MAIN_FIRST),
-    GF_BG_LYR_MAIN_2_F = 1 << (GF_BG_LYR_MAIN_2 - GF_BG_LYR_MAIN_FIRST),
-    GF_BG_LYR_MAIN_3_F = 1 << (GF_BG_LYR_MAIN_3 - GF_BG_LYR_MAIN_FIRST),
-    GF_BG_LYR_SUB_0_F = 1 << (GF_BG_LYR_SUB_0 - GF_BG_LYR_SUB_FIRST),
-    GF_BG_LYR_SUB_1_F = 1 << (GF_BG_LYR_SUB_1 - GF_BG_LYR_SUB_FIRST),
-    GF_BG_LYR_SUB_2_F = 1 << (GF_BG_LYR_SUB_2 - GF_BG_LYR_SUB_FIRST),
-    GF_BG_LYR_SUB_3_F = 1 << (GF_BG_LYR_SUB_3 - GF_BG_LYR_SUB_FIRST),
-
-    GF_BG_LYR_UNALLOC = 0xFF,
 };
 
 enum GFBgType {
@@ -114,6 +96,7 @@ enum GFBgCntSet {
     GF_BG_CNT_SET_COLOR_MODE = 0,
     GF_BG_CNT_SET_SCREEN_BASE,
     GF_BG_CNT_SET_CHAR_BASE,
+    GF_BG_CNT_SET_SCREEN_SIZE,
 };
 
 enum GFBgScreenSize {
@@ -145,5 +128,14 @@ enum BgPosAdjustOp {
     BG_POS_OP_ADD_CENTERY,
     BG_POS_OP_SUB_CENTERY,
 };
+
+struct GFBgModeSet {
+    GXDispMode dispMode;
+    GXBGMode bgModeMain;
+    GXBGMode bgModeSub;
+    GXBG0As _2d3dSwitch;
+};
+
+void BgSetPosTextAndCommit(BGCONFIG *bgConfig, enum GFBgLayer bgId, enum BgPosAdjustOp op, fx32 value);
 
 #endif //POKEHEARTGOLD_WINDOW_H
