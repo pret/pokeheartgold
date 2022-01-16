@@ -481,7 +481,7 @@ _0829:
 	scrcmd_420 59
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 266, 0, 3, 6, 0
+	warp MAP_D31R0202, 0, 3, 6, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

@@ -59,7 +59,7 @@ _00BC:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 315, 0, 5, 42, 0
+	warp MAP_D24R0205, 0, 5, 42, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	setvar VAR_UNK_40DF, 1
@@ -72,7 +72,7 @@ _0107:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 315, 0, 5, 42, 0
+	warp MAP_D24R0205, 0, 5, 42, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	setvar VAR_UNK_40DF, 1
@@ -108,7 +108,7 @@ _0189:
 	goto_if_eq _01FF
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 315, 0, 5, 42, 0
+	warp MAP_D24R0205, 0, 5, 42, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 _01D1:
@@ -118,7 +118,7 @@ _01D1:
 _01D5:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 492, 0, 5, 42, 0
+	warp MAP_D24R0218, 0, 5, 42, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _01D1
@@ -126,7 +126,7 @@ _01D5:
 _01FF:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 490, 0, 5, 42, 0
+	warp MAP_D24R0216, 0, 5, 42, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _01D1

@@ -3,6 +3,7 @@
 #include "constants/std_script.h"
 #include "constants/species.h"
 #include "constants/sprites.h"
+#include "constants/maps.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -4321,7 +4322,7 @@ _021E7BBC:
 _021E7BD2:
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r2, r0, #0
 	ldmia r2!, {r0, r1}
 	stmia r5!, {r0, r1}
@@ -18533,8 +18534,8 @@ _021EE65E:
 _021EE660: .word 0x000001C2
 	thumb_func_end ov01_021EE634
 
-	thumb_func_start ov01_021EE664
-ov01_021EE664: ; 0x021EE664
+	thumb_func_start PrintCurFloorInNewWindow
+PrintCurFloorInNewWindow: ; 0x021EE664
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	mov r4, #0
@@ -18645,7 +18646,7 @@ _021EE698:
 	.balign 4, 0
 _021EE74C: .word 0x000003D9
 _021EE750: .word ov01_021EE7B8
-	thumb_func_end ov01_021EE664
+	thumb_func_end PrintCurFloorInNewWindow
 
 	thumb_func_start ov01_021EE754
 ov01_021EE754: ; 0x021EE754
@@ -18745,23 +18746,23 @@ _021EE816:
 _021EE818: .word 0x0000FFFF
 	thumb_func_end ov01_021EE7B8
 
-	thumb_func_start ov01_021EE81C
-ov01_021EE81C: ; 0x021EE81C
+	thumb_func_start MapNumToFloorNo
+MapNumToFloorNo: ; 0x021EE81C
 	push {r3, lr}
-	ldr r1, _021EE92C ; =0x00000175
+	ldr r1, _021EE92C ; =MAP_T07R0104
 	cmp r0, r1
 	bgt _021EE878
 	bge _021EE906
-	cmp r0, #0xe1
+	cmp r0, #MAP_D27R0107
 	bgt _021EE860
 	bge _021EE8D2
-	cmp r0, #0x73
+	cmp r0, #MAP_D27R0101
 	bgt _021EE834
 	beq _021EE8CE
 	b _021EE922
 _021EE834:
 	add r1, r0, #0
-	sub r1, #0xbd
+	sub r1, #MAP_D23R0105
 	cmp r1, #0xb
 	bhi _021EE922
 	add r1, r1, r1
@@ -18771,72 +18772,72 @@ _021EE834:
 	asr r1, r1, #0x10
 	add pc, r1
 _021EE848: ; jump table
-	.short _021EE8C6 - _021EE848 - 2 ; case 0
-	.short _021EE8CA - _021EE848 - 2 ; case 1
-	.short _021EE8DE - _021EE848 - 2 ; case 2
-	.short _021EE8E2 - _021EE848 - 2 ; case 3
-	.short _021EE8E6 - _021EE848 - 2 ; case 4
-	.short _021EE8EA - _021EE848 - 2 ; case 5
-	.short _021EE8EE - _021EE848 - 2 ; case 6
-	.short _021EE8F2 - _021EE848 - 2 ; case 7
-	.short _021EE922 - _021EE848 - 2 ; case 8
-	.short _021EE922 - _021EE848 - 2 ; case 9
-	.short _021EE922 - _021EE848 - 2 ; case 10
-	.short _021EE8F6 - _021EE848 - 2 ; case 11
+	.short _021EE8C6 - _021EE848 - 2 ; case MAP_D23R0105
+	.short _021EE8CA - _021EE848 - 2 ; case MAP_D23R0106
+	.short _021EE8DE - _021EE848 - 2 ; case MAP_T25R1001
+	.short _021EE8E2 - _021EE848 - 2 ; case MAP_T25R1002
+	.short _021EE8E6 - _021EE848 - 2 ; case MAP_T25R1003
+	.short _021EE8EA - _021EE848 - 2 ; case MAP_T25R1004
+	.short _021EE8EE - _021EE848 - 2 ; case MAP_T25R1005
+	.short _021EE8F2 - _021EE848 - 2 ; case MAP_T25R1006
+	.short _021EE922 - _021EE848 - 2 ; case MAP_T25R0501
+	.short _021EE922 - _021EE848 - 2 ; case MAP_T25R0502
+	.short _021EE922 - _021EE848 - 2 ; case MAP_D37R0102
+	.short _021EE8F6 - _021EE848 - 2 ; case MAP_D37R0103
 _021EE860:
-	ldr r1, _021EE930 ; =0x00000173
+	ldr r1, _021EE930 ; =MAP_T07R0102
 	cmp r0, r1
 	bgt _021EE870
 	bge _021EE8FE
-	sub r1, r1, #1
+	sub r1, r1, #MAP_T07R0102-MAP_T07R0101
 	cmp r0, r1
 	beq _021EE8FA
 	b _021EE922
 _021EE870:
-	add r1, r1, #1
+	add r1, r1, #MAP_T07R0103-MAP_T07R0102
 	cmp r0, r1
 	beq _021EE902
 	b _021EE922
 _021EE878:
-	add r2, r1, #4
+	add r2, r1, #MAP_T07R0202-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE898
 	bge _021EE916
-	add r2, r1, #2
+	add r2, r1, #MAP_T07R0106-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE890
 	bge _021EE90E
-	add r1, r1, #1
+	add r1, r1, #MAP_T07R0105-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE90A
 	b _021EE922
 _021EE890:
-	add r1, r1, #3
+	add r1, r1, #MAP_T07R0201-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE912
 	b _021EE922
 _021EE898:
 	add r2, r1, #0
-	add r2, #0x1d
+	add r2, #MAP_T11R0701-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE8BE
 	add r2, r1, #0
-	add r2, #0x1d
+	add r2, #MAP_T11R0701-MAP_T07R0104
 	cmp r0, r2
 	bge _021EE8D6
-	add r2, r1, #6
+	add r2, r1, #MAP_T07R0204-MAP_T07R0104
 	cmp r0, r2
 	bgt _021EE922
-	add r2, r1, #5
+	add r2, r1, #MAP_T07R0203-MAP_T07R0104
 	cmp r0, r2
 	blt _021EE922
 	beq _021EE91A
-	add r1, r1, #6
+	add r1, r1, #MAP_T07R0204-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE91E
 	b _021EE922
 _021EE8BE:
-	add r1, #0x1e
+	add r1, #MAP_T11R0702-MAP_T07R0104
 	cmp r0, r1
 	beq _021EE8DA
 	b _021EE922
@@ -18914,9 +18915,9 @@ _021EE922:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_021EE92C: .word 0x00000175
-_021EE930: .word 0x00000173
-	thumb_func_end ov01_021EE81C
+_021EE92C: .word MAP_T07R0104
+_021EE930: .word MAP_T07R0102
+	thumb_func_end MapNumToFloorNo
 
 	thumb_func_start ov01_021EE934
 ov01_021EE934: ; 0x021EE934

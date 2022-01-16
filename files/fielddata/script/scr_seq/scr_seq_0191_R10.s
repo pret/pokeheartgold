@@ -143,7 +143,7 @@ _01D5:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 489, 0, 7, 20, 0
+	warp MAP_R10R0202, 0, 7, 20, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_582 18, 1423, 185
@@ -162,7 +162,7 @@ _022D:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 467, 0, 7, 20, 0
+	warp MAP_R10R0201, 0, 7, 20, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_582 18, 1423, 185

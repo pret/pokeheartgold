@@ -152,7 +152,7 @@ scr_seq_T30GYM0101_002:
 	wait_movement
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 141, 0, 8, 83, 0
+	warp MAP_T30GYM0101, 0, 8, 83, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

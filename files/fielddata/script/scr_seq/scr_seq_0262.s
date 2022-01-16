@@ -89,12 +89,12 @@ _0114:
 	end
 
 _011A:
-	scrcmd_447 1, 0
+	safari_zone_action 1, 0
 	compare VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
 	goto_if_ne _0155
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 173, 0, 19, 2, 1
+	warp MAP_D47R0101, 0, 19, 2, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	goto _0179
@@ -102,7 +102,7 @@ _011A:
 _0155:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 173, 0, 5, 2, 1
+	warp MAP_D47R0101, 0, 5, 2, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 _0179:
@@ -141,7 +141,7 @@ scr_seq_0262_004:
 
 scr_seq_0262_005:
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2
-	scrcmd_447 1, 0
+	safari_zone_action 1, 0
 	end
 
 scr_seq_0262_006:

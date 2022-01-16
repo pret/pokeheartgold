@@ -282,7 +282,7 @@ _0455:
 	wait_fade
 	scrcmd_309 77
 	setvar VAR_UNK_408E, 1
-	scrcmd_176 331, 0, 3, 12, 0
+	warp MAP_R34R0101, 0, 3, 12, 0
 	scrcmd_582 38, 368, 411
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade

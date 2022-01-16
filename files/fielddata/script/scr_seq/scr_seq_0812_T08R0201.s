@@ -153,7 +153,7 @@ _01FB:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 109, 0, 24, 47, 0
+	warp MAP_D10R0101, 0, 24, 47, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke

@@ -438,7 +438,7 @@ _05D7:
 	setvar VAR_TEMP_x4003, 0
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 516, 0, 20, 11, 0
+	warp MAP_HIROBA, 0, 20, 11, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

@@ -35,8 +35,8 @@ _0058:
 	apply_movement obj_player, _0340
 	wait_movement
 _0062:
-	scrcmd_241 16659
-	switch VAR_UNK_4113
+	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
+	switch VAR_ELEVATOR_LAST_FLOOR
 	case 3, _0095
 	case 2, _00A0
 	case 0, _00AA
@@ -55,7 +55,7 @@ _00AA:
 	goto _00B4
 
 _00B4:
-	scrcmd_242 20, 1, 16659, 16659
+	elevator_cur_floor_box 20, 1, VAR_ELEVATOR_LAST_FLOOR, VAR_ELEVATOR_LAST_FLOOR
 	npc_msg msg_0506_T07R0206_00000
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
@@ -73,74 +73,74 @@ _00B4:
 
 _0120:
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_241 16659
-	scrcmd_240 376, 2, 5, 3, 1
-	compare VAR_UNK_4113, 0
+	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
+	set_dynamic_warp MAP_T07R0201, 2, 5, 3, 1
+	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	goto_if_eq _0305
-	compare VAR_UNK_4113, 0
+	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	call_if_gt _029C
-	compare VAR_UNK_4113, 0
+	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	call_if_lt _0291
-	compare VAR_UNK_4113, 2
+	compare VAR_ELEVATOR_LAST_FLOOR, 2
 	goto_if_ne _0176
 	setvar VAR_SPECIAL_x8005, 2
 	goto _0189
 
 _0176:
-	compare VAR_UNK_4113, 3
+	compare VAR_ELEVATOR_LAST_FLOOR, 3
 	goto_if_ne _0189
 	setvar VAR_SPECIAL_x8005, 3
 _0189:
 	call _02A7
-	setvar VAR_UNK_4113, 0
+	setvar VAR_ELEVATOR_LAST_FLOOR, 0
 	goto _02BB
 
 _019B:
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_241 16659
-	scrcmd_240 378, 0, 5, 3, 1
-	compare VAR_UNK_4113, 2
+	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
+	set_dynamic_warp MAP_T07R0203, 0, 5, 3, 1
+	compare VAR_ELEVATOR_LAST_FLOOR, 2
 	goto_if_eq _0305
-	compare VAR_UNK_4113, 2
+	compare VAR_ELEVATOR_LAST_FLOOR, 2
 	call_if_gt _029C
-	compare VAR_UNK_4113, 2
+	compare VAR_ELEVATOR_LAST_FLOOR, 2
 	call_if_lt _0291
-	compare VAR_UNK_4113, 0
+	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	goto_if_ne _01F1
 	setvar VAR_SPECIAL_x8005, 2
 	goto _0204
 
 _01F1:
-	compare VAR_UNK_4113, 3
+	compare VAR_ELEVATOR_LAST_FLOOR, 3
 	goto_if_ne _0204
 	setvar VAR_SPECIAL_x8005, 1
 _0204:
 	call _02A7
-	setvar VAR_UNK_4113, 2
+	setvar VAR_ELEVATOR_LAST_FLOOR, 2
 	goto _02BB
 
 _0216:
 	wait 1, VAR_SPECIAL_x800C
-	scrcmd_241 16659
-	scrcmd_240 379, 1, 5, 3, 1
-	compare VAR_UNK_4113, 3
+	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
+	set_dynamic_warp MAP_T07R0204, 1, 5, 3, 1
+	compare VAR_ELEVATOR_LAST_FLOOR, 3
 	goto_if_eq _0305
-	compare VAR_UNK_4113, 3
+	compare VAR_ELEVATOR_LAST_FLOOR, 3
 	call_if_gt _029C
-	compare VAR_UNK_4113, 3
+	compare VAR_ELEVATOR_LAST_FLOOR, 3
 	call_if_lt _0291
-	compare VAR_UNK_4113, 0
+	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	goto_if_ne _026C
 	setvar VAR_SPECIAL_x8005, 3
 	goto _027F
 
 _026C:
-	compare VAR_UNK_4113, 2
+	compare VAR_ELEVATOR_LAST_FLOOR, 2
 	goto_if_ne _027F
 	setvar VAR_SPECIAL_x8005, 1
 _027F:
 	call _02A7
-	setvar VAR_UNK_4113, 3
+	setvar VAR_ELEVATOR_LAST_FLOOR, 3
 	goto _02BB
 
 _0291:
@@ -154,14 +154,14 @@ _029C:
 	return
 
 _02A7:
-	setvar VAR_UNK_4113, 65535
+	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	closemsg
 	wait_se SEQ_SE_DP_SELECT
-	scrcmd_488 32772, 32773
+	elevator_anim VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	return
 
 _02BB:
-	switch VAR_UNK_4113
+	switch VAR_ELEVATOR_LAST_FLOOR
 	case 3, _02EA
 	case 2, _02F3
 	case 0, _02FC
@@ -180,7 +180,7 @@ _02FC:
 	goto _032E
 
 _0305:
-	setvar VAR_UNK_4113, 65535
+	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	wait 1, VAR_SPECIAL_x800C
 	npc_msg msg_0506_T07R0206_00004
 	waitbutton
@@ -190,7 +190,7 @@ _0305:
 	end
 
 _0322:
-	setvar VAR_UNK_4113, 65535
+	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
 	wait 1, VAR_SPECIAL_x800C
 _032E:
 	npc_msg msg_0506_T07R0206_00001

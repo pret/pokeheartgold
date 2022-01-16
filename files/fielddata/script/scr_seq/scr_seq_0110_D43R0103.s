@@ -221,7 +221,7 @@ _02FF:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 178, 0, 16384, 16385, VAR_SPECIAL_x800C
+	warp MAP_D43R0102, 0, 16384, 16385, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

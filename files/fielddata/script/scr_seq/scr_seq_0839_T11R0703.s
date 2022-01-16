@@ -33,8 +33,8 @@ scr_seq_T11R0703_000:
 	.byte 0x5e, 0x00, 0xff, 0x00
 	.byte 0xf0, 0x00, 0x00, 0x00, 0x5f, 0x00
 _0066:
-	scrcmd_241 16659
-	switch VAR_UNK_4113
+	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
+	switch VAR_ELEVATOR_LAST_FLOOR
 	case 1, _008C
 	case 0, _00C0
 	end
@@ -44,7 +44,7 @@ _008C:
 	call _00F4
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 402, 0, 3, 3, 1
+	warp MAP_T11R0701, 0, 3, 3, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -55,7 +55,7 @@ _00C0:
 	call _00F4
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 403, 0, 7, 3, 1
+	warp MAP_T11R0702, 0, 7, 3, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -63,7 +63,7 @@ _00C0:
 
 _00F4:
 	wait_se SEQ_SE_DP_SELECT
-	scrcmd_488 32772, 1
+	elevator_anim VAR_SPECIAL_x8004, 1
 _00FE:
 	scrcmd_729 VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
@@ -129,8 +129,8 @@ _018C:
 _01C5:
 	npc_msg msg_0539_T11R0703_00001
 	closemsg
-	scrcmd_241 16659
-	switch VAR_UNK_4113
+	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
+	switch VAR_ELEVATOR_LAST_FLOOR
 	case 1, _01F0
 	case 0, _0224
 	end
@@ -140,7 +140,7 @@ _01F0:
 	call _00FE
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 403, 0, 7, 3, 1
+	warp MAP_T11R0702, 0, 7, 3, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -151,7 +151,7 @@ _0224:
 	call _00FE
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 402, 0, 3, 3, 1
+	warp MAP_T11R0701, 0, 3, 3, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

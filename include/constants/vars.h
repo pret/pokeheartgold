@@ -287,7 +287,7 @@
 #define VAR_UNK_4110                 0x4110
 #define VAR_UNK_4111                 0x4111
 #define VAR_UNK_4112                 0x4112
-#define VAR_UNK_4113                 0x4113
+#define VAR_ELEVATOR_LAST_FLOOR                 0x4113
 #define VAR_UNK_4114                 0x4114
 #define VAR_UNK_4115                 0x4115
 #define VAR_UNK_4116                 0x4116

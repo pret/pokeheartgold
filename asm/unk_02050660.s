@@ -958,7 +958,7 @@ _02050DD6:
 	beq _02050E02
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
 	add r0, r7, #0
 	bl sub_020537A8

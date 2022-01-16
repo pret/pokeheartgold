@@ -35,8 +35,8 @@ _0058:
 	apply_movement obj_player, _00F4
 	wait_movement
 _0062:
-	scrcmd_241 16659
-	switch VAR_UNK_4113
+	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
+	switch VAR_ELEVATOR_LAST_FLOOR
 	case 0, _0088
 	case 1, _00A5
 	end
@@ -44,21 +44,21 @@ _0062:
 _0088:
 	npc_msg msg_0095_D27R0108_00000
 	closemsg
-	scrcmd_240 225, 1, 5, 3, 1
+	set_dynamic_warp MAP_D27R0107, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 0
 	goto _00C2
 
 _00A5:
 	npc_msg msg_0095_D27R0108_00001
 	closemsg
-	scrcmd_240 115, 1, 5, 3, 1
+	set_dynamic_warp MAP_D27R0101, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 1
 	goto _00C2
 
 _00C2:
 	wait_se SEQ_SE_DP_SELECT
-	scrcmd_488 32772, 5
-	compare VAR_UNK_4113, 0
+	elevator_anim VAR_SPECIAL_x8004, 5
+	compare VAR_ELEVATOR_LAST_FLOOR, 0
 	goto_if_ne _00E2
 	npc_msg msg_0095_D27R0108_00002
 	goto _00E5

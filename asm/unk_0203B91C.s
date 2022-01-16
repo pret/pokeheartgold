@@ -70,14 +70,14 @@ FlyPoints_GetSpecialSpawnWarpPtr: ; 0x0203B964
 	bx lr
 	thumb_func_end FlyPoints_GetSpecialSpawnWarpPtr
 
-	thumb_func_start sub_0203B968
-sub_0203B968: ; 0x0203B968
+	thumb_func_start FlyPoints_GetDynamicWarp
+FlyPoints_GetDynamicWarp: ; 0x0203B968
 	add r0, #0x3c
 	bx lr
-	thumb_func_end sub_0203B968
+	thumb_func_end FlyPoints_GetDynamicWarp
 
-	thumb_func_start sub_0203B96C
-sub_0203B96C: ; 0x0203B96C
+	thumb_func_start FlyPoints_SetDynamicWarp
+FlyPoints_SetDynamicWarp: ; 0x0203B96C
 	add r3, r1, #0
 	add r2, r0, #0
 	ldmia r3!, {r0, r1}
@@ -88,7 +88,7 @@ sub_0203B96C: ; 0x0203B96C
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end sub_0203B96C
+	thumb_func_end FlyPoints_SetDynamicWarp
 
 	thumb_func_start sub_0203B980
 sub_0203B980: ; 0x0203B980

@@ -159,7 +159,7 @@ _0234:
 _0268:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 306, 0, 6, 22, 0
+	warp MAP_T10R0701, 0, 6, 22, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

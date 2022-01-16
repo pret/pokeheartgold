@@ -94,7 +94,7 @@ _0107:
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 164, 0, 4, 5, 0
+	warp MAP_T23R0501, 0, 4, 5, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	setflag FLAG_UNK_1AA

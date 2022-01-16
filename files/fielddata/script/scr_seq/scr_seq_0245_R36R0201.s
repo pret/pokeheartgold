@@ -64,7 +64,7 @@ scr_seq_R36R0201_002:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 487, 0, 75, 39, 2
+	warp MAP_D22R0102, 0, 75, 39, 2
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke
@@ -142,7 +142,7 @@ _01DC:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 487, 0, 75, 39, 2
+	warp MAP_D22R0102, 0, 75, 39, 2
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke

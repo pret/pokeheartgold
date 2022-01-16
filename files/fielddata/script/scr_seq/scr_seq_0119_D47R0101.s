@@ -30,7 +30,7 @@ scr_seq_D47R0101_006:
 	getmenuchoice VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _0062
-	scrcmd_447 1, 0
+	safari_zone_action 1, 0
 _0062:
 	touchscreen_menu_show
 	closemsg
@@ -41,7 +41,7 @@ _0062:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 357, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke
@@ -554,12 +554,12 @@ _0773:
 	wait_movement
 	call _08B7
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
-	scrcmd_447 0, 0
-	scrcmd_240 173, 1, 5, 2, 1
+	safari_zone_action 0, 0
+	set_dynamic_warp MAP_D47R0101, 1, 5, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 357, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke
@@ -941,12 +941,12 @@ _0CCC:
 	wait_movement
 	call _08B7
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
-	scrcmd_447 0, 1
-	scrcmd_240 173, 2, 19, 2, 1
+	safari_zone_action 0, 1
+	set_dynamic_warp MAP_D47R0101, 2, 19, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 357, 0, 79, 100, 0
+	warp MAP_D47R0102, 0, 79, 100, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	lock obj_partner_poke

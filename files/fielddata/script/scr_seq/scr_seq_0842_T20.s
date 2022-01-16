@@ -1196,7 +1196,7 @@ _1078:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 62, 0, 12, 6, 2
+	warp MAP_T20R0102, 0, 12, 6, 2
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2

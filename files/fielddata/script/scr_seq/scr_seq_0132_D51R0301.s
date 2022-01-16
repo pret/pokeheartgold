@@ -245,7 +245,7 @@ _02D2:
 _02E4:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 60, 0, 695, 397, 1
+	warp MAP_T20, 0, 695, 397, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

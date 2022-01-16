@@ -52,13 +52,13 @@ void sub_0202F5B8(SAFARIZONE_AREASET* area_set, u32 a1) {
     MI_CpuFill8(area_set->unk2DC, 0, sizeof(area_set->unk2DC));
 }
 
-void sub_0202F5F8(SAFARIZONE* safari_zone, s32 a1) {
-    if (a1 >= 2) {
+void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSet) {
+    if (areaSet >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
-        a1 = 0;
+        areaSet = 0;
     }
 
-    safari_zone->unk5F9_6 = a1;
+    safari_zone->unk5F9_6 = areaSet;
 }
 
 u8 sub_0202F620(SAFARIZONE* safari_zone) {

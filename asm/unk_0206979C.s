@@ -8780,9 +8780,9 @@ sub_0206DB58: ; 0x0206DB58
 	str r1, [sp, #0x10]
 	add r4, r0, #0
 	add r1, sp, #0
-	bl sub_0203B96C
+	bl FlyPoints_SetDynamicWarp
 	add r0, r4, #0
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_020537A8

@@ -64,7 +64,7 @@ _00DB:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	setvar VAR_TEMP_x4003, 1
-	scrcmd_176 VAR_UNK_4056, 0, 5, 2, 1
+	warp VAR_UNK_4056, 0, 5, 2, 1
 	scrcmd_436
 	scrcmd_166 VAR_SPECIAL_x800C
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C

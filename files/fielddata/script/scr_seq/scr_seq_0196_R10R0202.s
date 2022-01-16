@@ -45,7 +45,7 @@ _0071:
 	wait_se SEQ_SE_GS_W012
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 467, 0, 13, 7, 1
+	warp MAP_R10R0201, 0, 13, 7, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	npc_msg msg_0345_R10R0202_00015

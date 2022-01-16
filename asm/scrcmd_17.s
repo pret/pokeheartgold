@@ -193,8 +193,8 @@ ScrCmd_298: ; 0x0204E774
 	pop {r3, pc}
 	thumb_func_end ScrCmd_298
 
-	thumb_func_start ScrCmd_299
-ScrCmd_299: ; 0x0204E788
+	thumb_func_start ScrCmd_CheckEscortMode
+ScrCmd_CheckEscortMode: ; 0x0204E788
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -213,10 +213,10 @@ ScrCmd_299: ; 0x0204E788
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_299
+	thumb_func_end ScrCmd_CheckEscortMode
 
-	thumb_func_start ScrCmd_300
-ScrCmd_300: ; 0x0204E7B4
+	thumb_func_start ScrCmd_SetEscortMode
+ScrCmd_SetEscortMode: ; 0x0204E7B4
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -225,10 +225,10 @@ ScrCmd_300: ; 0x0204E7B4
 	bl ScriptState_SetHaveFollowerFlag
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_300
+	thumb_func_end ScrCmd_SetEscortMode
 
-	thumb_func_start ScrCmd_301
-ScrCmd_301: ; 0x0204E7C8
+	thumb_func_start ScrCmd_ClearEscortMode
+ScrCmd_ClearEscortMode: ; 0x0204E7C8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -237,7 +237,7 @@ ScrCmd_301: ; 0x0204E7C8
 	bl ScriptState_ClearHaveFollowerFlag
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end ScrCmd_301
+	thumb_func_end ScrCmd_ClearEscortMode
 
 	thumb_func_start ScrCmd_619
 ScrCmd_619: ; 0x0204E7DC

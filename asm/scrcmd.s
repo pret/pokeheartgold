@@ -225,7 +225,7 @@ gScriptCmdTable:
 	.word ScrCmd_NicknameInput                          ; 173
 	.word ScrCmd_FadeScreen                             ; 174
 	.word ScrCmd_WaitFade                               ; 175
-	.word ScrCmd_176                                    ; 176
+	.word ScrCmd_Warp                                    ; 176
 	.word ScrCmd_177                                    ; 177
 	.word ScrCmd_178                                    ; 178
 	.word ScrCmd_179                                    ; 179
@@ -289,9 +289,9 @@ gScriptCmdTable:
 	.word ScrCmd_237                                    ; 237
 	.word ScrCmd_238                                    ; 238
 	.word ScrCmd_239                                    ; 239
-	.word ScrCmd_240                                    ; 240
-	.word ScrCmd_241                                    ; 241
-	.word ScrCmd_242                                    ; 242
+	.word ScrCmd_SetDynamicWarp                                    ; 240
+	.word ScrCmd_GetDynamicWarpFloorNo                                    ; 241
+	.word ScrCmd_ElevatorCurFloorBox                                    ; 242
 	.word ScrCmd_CountJohtoDexSeen                                    ; 243
 	.word ScrCmd_CountJohtoDexOwned                                    ; 244
 	.word ScrCmd_CountNationalDexSeen                                    ; 245
@@ -348,9 +348,9 @@ gScriptCmdTable:
 	.word ScrCmd_CountBadges                            ; 296
 	.word ScrCmd_297                                    ; 297
 	.word ScrCmd_298                                    ; 298
-	.word ScrCmd_299                                    ; 299
-	.word ScrCmd_300                                    ; 300
-	.word ScrCmd_301                                    ; 301
+	.word ScrCmd_CheckEscortMode                                    ; 299
+	.word ScrCmd_SetEscortMode                                    ; 300
+	.word ScrCmd_ClearEscortMode                                    ; 301
 	.word ScrCmd_302                                    ; 302
 	.word ScrCmd_303                                    ; 303
 	.word ScrCmd_304                                    ; 304
@@ -496,7 +496,7 @@ gScriptCmdTable:
 	.word ScrCmd_444                                    ; 444
 	.word ScrCmd_445                                    ; 445
 	.word ScrCmd_446                                    ; 446
-	.word ScrCmd_447                                    ; 447
+	.word ScrCmd_SafariZoneAction                                    ; 447
 	.word ScrCmd_448                                    ; 448
 	.word ScrCmd_449                                    ; 449
 	.word ScrCmd_450                                    ; 450
@@ -537,7 +537,7 @@ gScriptCmdTable:
 	.word ScrCmd_485                                    ; 485
 	.word ScrCmd_Dummy                                  ; 486
 	.word ScrCmd_PokeCenAnim                            ; 487
-	.word ScrCmd_488                                    ; 488
+	.word ScrCmd_ElevatorAnim                                    ; 488
 	.word ScrCmd_489                                    ; 489
 	.word ScrCmd_NopVar490                                    ; 490
 	.word ScrCmd_491                                    ; 491
@@ -6633,8 +6633,8 @@ _02043466:
 	.balign 4, 0
 	thumb_func_end sub_02043458
 
-	thumb_func_start ScrCmd_176
-ScrCmd_176: ; 0x0204346C
+	thumb_func_start ScrCmd_Warp
+ScrCmd_Warp: ; 0x0204346C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -6681,7 +6681,7 @@ ScrCmd_176: ; 0x0204346C
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_176
+	thumb_func_end ScrCmd_Warp
 
 	thumb_func_start ScrCmd_448
 ScrCmd_448: ; 0x020434DC
@@ -7551,8 +7551,8 @@ ScrCmd_231: ; 0x02043BA0
 	bx lr
 	thumb_func_end ScrCmd_231
 
-	thumb_func_start ScrCmd_240
-ScrCmd_240: ; 0x02043BA4
+	thumb_func_start ScrCmd_SetDynamicWarp
+ScrCmd_SetDynamicWarp: ; 0x02043BA4
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
@@ -7600,15 +7600,15 @@ ScrCmd_240: ; 0x02043BA4
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
 	add r1, sp, #0
-	bl sub_0203B96C
+	bl FlyPoints_SetDynamicWarp
 	mov r0, #0
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_240
+	thumb_func_end ScrCmd_SetDynamicWarp
 
-	thumb_func_start ScrCmd_241
-ScrCmd_241: ; 0x02043C24
+	thumb_func_start ScrCmd_GetDynamicWarpFloorNo
+ScrCmd_GetDynamicWarpFloorNo: ; 0x02043C24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -7622,16 +7622,16 @@ ScrCmd_241: ; 0x02043C24
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	ldr r0, [r0]
-	bl ov01_021EE81C
+	bl MapNumToFloorNo
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_241
+	thumb_func_end ScrCmd_GetDynamicWarpFloorNo
 
-	thumb_func_start ScrCmd_242
-ScrCmd_242: ; 0x02043C54
+	thumb_func_start ScrCmd_ElevatorCurFloorBox
+ScrCmd_ElevatorCurFloorBox: ; 0x02043C54
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -7669,12 +7669,12 @@ ScrCmd_242: ; 0x02043C54
 	ldr r0, [sp, #8]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov01_021EE664
+	bl PrintCurFloorInNewWindow
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_242
+	thumb_func_end ScrCmd_ElevatorCurFloorBox
 
 	thumb_func_start ScrCmd_CountJohtoDexSeen
 ScrCmd_CountJohtoDexSeen: ; 0x02043CB4
@@ -10380,8 +10380,8 @@ ScrCmd_705: ; 0x02045160
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_705
 
-	thumb_func_start ScrCmd_447
-ScrCmd_447: ; 0x02045188
+	thumb_func_start ScrCmd_SafariZoneAction
+ScrCmd_SafariZoneAction: ; 0x02045188
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -10458,7 +10458,7 @@ _02045228:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_447
+	thumb_func_end ScrCmd_SafariZoneAction
 
 	thumb_func_start ScrCmd_459
 ScrCmd_459: ; 0x02045230
@@ -10917,8 +10917,8 @@ ScrCmd_PokeCenAnim: ; 0x02045588
 	.balign 4, 0
 	thumb_func_end ScrCmd_PokeCenAnim
 
-	thumb_func_start ScrCmd_488
-ScrCmd_488: ; 0x020455B0
+	thumb_func_start ScrCmd_ElevatorAnim
+ScrCmd_ElevatorAnim: ; 0x020455B0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -10946,7 +10946,7 @@ ScrCmd_488: ; 0x020455B0
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_488
+	thumb_func_end ScrCmd_ElevatorAnim
 
 	thumb_func_start ScrCmd_GetGameVersion
 ScrCmd_GetGameVersion: ; 0x020455F0

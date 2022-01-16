@@ -1032,7 +1032,7 @@
 	.short 175
 	.endm
 
-	.macro scrcmd_176 arg0, arg1, arg2, arg3, arg4
+	.macro warp arg0, arg1, arg2, arg3, arg4
 	.short 176
 	.short \arg0
 	.short \arg1
@@ -1414,7 +1414,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_240 arg0, arg1, arg2, arg3, arg4
+	.macro set_dynamic_warp arg0, arg1, arg2, arg3, arg4
 	.short 240
 	.short \arg0
 	.short \arg1
@@ -1423,12 +1423,12 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_241 arg0
+	.macro get_dynamic_warp_floor_no arg0
 	.short 241
 	.short \arg0
 	.endm
 
-	.macro scrcmd_242 arg0, arg1, arg2, arg3
+	.macro elevator_cur_floor_box arg0, arg1, arg2, arg3
 	.short 242
 	.byte \arg0
 	.byte \arg1
@@ -1727,11 +1727,11 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_300
+	.macro set_escort_mode
 	.short 300
 	.endm
 
-	.macro scrcmd_301
+	.macro clear_escort_mode
 	.short 301
 	.endm
 
@@ -2544,7 +2544,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_447 arg0, arg1
+	.macro safari_zone_action arg0, arg1
 	.short 447
 	.byte \arg0
 	.byte \arg1
@@ -2766,10 +2766,10 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_488 arg0, arg1
+	.macro elevator_anim direction, distance
 	.short 488
-	.short \arg0
-	.short \arg1
+	.short \direction
+	.short \distance
 	.endm
 
 	.macro scrcmd_489 arg0, arg1=0, arg2=0

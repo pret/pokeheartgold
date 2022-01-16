@@ -921,7 +921,7 @@ scr_seq_D32_033:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 276, 0, 25, 9, 2
+	warp MAP_D32R0401, 0, 25, 9, 2
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -940,7 +940,7 @@ scr_seq_D32_034:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 277, 0, 21, 9, 2
+	warp MAP_D32R0501, 0, 21, 9, 2
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -959,7 +959,7 @@ scr_seq_D32_035:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 278, 0, 1, 6, 3
+	warp MAP_D32R0601, 0, 1, 6, 3
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -978,7 +978,7 @@ scr_seq_D32_036:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 275, 0, 1, 7, 3
+	warp MAP_D32R0301, 0, 1, 7, 3
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

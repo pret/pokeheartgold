@@ -144,7 +144,7 @@ _022A:
 	play_se SEQ_SE_GS_TIMESLIP
 	scrcmd_810
 	clearflag FLAG_HIDE_ILEX_FOREST_FRIEND
-	scrcmd_176 117, 0, 16, 57, 1
+	warp MAP_D36R0101, 0, 16, 57, 1
 	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
 	releaseall
@@ -170,7 +170,7 @@ _0250:
 	setflag FLAG_UNK_178
 	setvar VAR_UNK_40FE, 0
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
-	scrcmd_176 117, 0, 16, 57, 1
+	warp MAP_D36R0101, 0, 16, 57, 1
 	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
 	touchscreen_menu_show

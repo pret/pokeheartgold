@@ -122,7 +122,7 @@ _02052FC8:
 	cmp r1, r0
 	bne _02053016
 	add r0, r6, #0
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0203B95C
@@ -593,7 +593,7 @@ sub_020533C0: ; 0x020533C0
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
@@ -731,7 +731,7 @@ _020534D8:
 	add r0, r7, #0
 	bl sub_020667F0
 	add r0, r6, #0
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_02052F94
@@ -2061,7 +2061,7 @@ sub_02053F14: ; 0x02053F14
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x1c
@@ -2203,7 +2203,7 @@ sub_02054030: ; 0x02054030
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x1c
@@ -2328,7 +2328,7 @@ sub_0205412C: ; 0x0205412C
 	str r0, [sp]
 	ldr r0, [r0, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	ldr r1, [sp]
 	bl sub_02053350
 	ldr r0, [sp]
@@ -2371,7 +2371,7 @@ sub_02054190: ; 0x02054190
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	add r1, r0, #0
 	mov r0, #0
 	str r0, [r4, #0x70]

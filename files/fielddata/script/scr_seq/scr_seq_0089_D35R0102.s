@@ -1145,7 +1145,7 @@ scr_seq_D35R0102_029:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	scrcmd_176 247, 0, 50, 4, 2
+	warp MAP_D35R0102, 0, 50, 4, 2
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

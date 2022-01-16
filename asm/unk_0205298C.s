@@ -428,7 +428,7 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get
-	bl sub_0203B968
+	bl FlyPoints_GetDynamicWarp
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0xc]
 	bl Save_FlyPoints_get

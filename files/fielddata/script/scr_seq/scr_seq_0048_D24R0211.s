@@ -66,7 +66,7 @@ scr_seq_D24R0211_001:
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 321, 0, 7, 4, 3
+	warp MAP_D24R0102, 0, 7, 4, 3
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	scrcmd_344 2, 2

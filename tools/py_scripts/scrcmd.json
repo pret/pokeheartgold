@@ -1093,7 +1093,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_176",
+      "name": "warp",
       "args": [
         "maps",
         2,
@@ -1502,9 +1502,9 @@
       ]
     },
     {
-      "name": "scrcmd_240",
+      "name": "set_dynamic_warp",
       "args": [
-        2,
+        "maps",
         2,
         2,
         2,
@@ -1512,18 +1512,18 @@
       ]
     },
     {
-      "name": "scrcmd_241",
+      "name": "get_dynamic_warp_floor_no",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_242",
+      "name": "elevator_cur_floor_box",
       "args": [
         1,
         1,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -1829,7 +1829,7 @@
     {
       "name": "scrcmd_297",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1843,11 +1843,11 @@
       ]
     },
     {
-      "name": "scrcmd_300",
+      "name": "set_escort_mode",
       "args": []
     },
     {
-      "name": "scrcmd_301",
+      "name": "clear_escort_mode",
       "args": []
     },
     {
@@ -2774,7 +2774,7 @@
       ]
     },
     {
-      "name": "scrcmd_447",
+      "name": "safari_zone_action",
       "args": [
         1,
         1
@@ -3047,10 +3047,10 @@
       ]
     },
     {
-      "name": "scrcmd_488",
+      "name": "elevator_anim",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {

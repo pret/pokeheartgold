@@ -1859,7 +1859,7 @@
 .public ScrCmd_NicknameInput
 .public ScrCmd_FadeScreen
 .public ScrCmd_WaitFade
-.public ScrCmd_176
+.public ScrCmd_Warp
 .public ScrCmd_177
 .public ScrCmd_178
 .public ScrCmd_179
@@ -1923,9 +1923,9 @@
 .public ScrCmd_237
 .public ScrCmd_238
 .public ScrCmd_239
-.public ScrCmd_240
-.public ScrCmd_241
-.public ScrCmd_242
+.public ScrCmd_SetDynamicWarp
+.public ScrCmd_GetDynamicWarpFloorNo
+.public ScrCmd_ElevatorCurFloorBox
 .public ScrCmd_CountJohtoDexSeen
 .public ScrCmd_CountJohtoDexOwned
 .public ScrCmd_CountNationalDexSeen
@@ -1982,9 +1982,9 @@
 .public ScrCmd_CountBadges
 .public ScrCmd_297
 .public ScrCmd_298
-.public ScrCmd_299
-.public ScrCmd_300
-.public ScrCmd_301
+.public ScrCmd_CheckEscortMode
+.public ScrCmd_SetEscortMode
+.public ScrCmd_ClearEscortMode
 .public ScrCmd_302
 .public ScrCmd_303
 .public ScrCmd_304
@@ -2128,7 +2128,7 @@
 .public ScrCmd_444
 .public ScrCmd_445
 .public ScrCmd_446
-.public ScrCmd_447
+.public ScrCmd_SafariZoneAction
 .public ScrCmd_448
 .public ScrCmd_449
 .public ScrCmd_450
@@ -2168,7 +2168,7 @@
 .public ScrCmd_GetWeekday
 .public ScrCmd_485
 .public ScrCmd_PokeCenAnim
-.public ScrCmd_488
+.public ScrCmd_ElevatorAnim
 .public ScrCmd_489
 .public ScrCmd_NopVar490
 .public ScrCmd_491
@@ -4331,10 +4331,10 @@
 .public ov01_021EE568
 .public ov01_021EE5D0
 .public ov01_021EE634
-.public ov01_021EE664
+.public PrintCurFloorInNewWindow
 .public ov01_021EE754
 .public ov01_021EE7B8
-.public ov01_021EE81C
+.public MapNumToFloorNo
 .public ov01_021EE934
 .public ov01_021EE974
 .public ov01_021EEA44
@@ -28152,8 +28152,8 @@
 .public sub_0203B95C
 .public sub_0203B960
 .public FlyPoints_GetSpecialSpawnWarpPtr
-.public sub_0203B968
-.public sub_0203B96C
+.public FlyPoints_GetDynamicWarp
+.public FlyPoints_SetDynamicWarp
 .public sub_0203B980
 .public sub_0203B984
 .public sub_0203B98C

@@ -174,7 +174,7 @@ scr_seq_R22_003:
 	setvar VAR_UNK_40FE, 2
 	clearflag FLAG_HIDE_TOHJO_FALLS_GIOVANNI
 	clearflag FLAG_HIDE_TOHJO_FALLS_FRIEND
-	scrcmd_176 298, 0, 6, 8, 1
+	warp MAP_D45R0102, 0, 6, 8, 1
 	fade_screen 6, 15, 1, 0x7FFF
 	wait_fade
 	releaseall

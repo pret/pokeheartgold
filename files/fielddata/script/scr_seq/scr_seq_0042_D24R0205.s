@@ -176,7 +176,7 @@ scr_seq_D24R0205_006:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 522, 0, 16, 24, 1
+	warp MAP_D51R0201, 0, 16, 24, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -298,7 +298,7 @@ scr_seq_D24R0205_009:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 522, 0, 16, 24, 1
+	warp MAP_D51R0201, 0, 16, 24, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

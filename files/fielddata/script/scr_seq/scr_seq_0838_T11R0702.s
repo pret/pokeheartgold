@@ -168,7 +168,7 @@ _02C1:
 	scrcmd_815 0
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_x800C
-	scrcmd_176 403, 0, 32774, 32775, VAR_SPECIAL_x800C
+	warp MAP_T11R0702, 0, 32774, 32775, VAR_SPECIAL_x800C
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	nop_var_490 VAR_TEMP_x400B

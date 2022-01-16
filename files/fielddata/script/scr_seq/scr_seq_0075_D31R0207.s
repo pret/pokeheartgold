@@ -128,7 +128,7 @@ _01A3:
 	setvar VAR_UNK_414B, 3
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 265, 0, 11, 6, 0
+	warp MAP_D31R0201, 0, 11, 6, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	end
@@ -143,7 +143,7 @@ scr_seq_D31R0207_009:
 	setvar VAR_UNK_414D, 2
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 266, 0, 3, 6, 0
+	warp MAP_D31R0202, 0, 3, 6, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -362,7 +362,7 @@ _04E5:
 	wait_movement
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 271, 0, 8, 4, 0
+	warp MAP_D31R0207, 0, 8, 4, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall

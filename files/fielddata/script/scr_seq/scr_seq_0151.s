@@ -39,7 +39,7 @@
 _0076:
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 96, 0, 46, 50, 0
+	warp MAP_D22R0101, 0, 46, 50, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	return

@@ -176,7 +176,7 @@ extern BOOL ScrCmd_172(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_FadeScreen(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitFade(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_176(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Warp(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_177(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_178(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_179(SCRIPTCONTEXT *ctx);
@@ -240,9 +240,9 @@ extern BOOL ScrCmd_236(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_237(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_238(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_239(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_240(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_241(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_242(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetDynamicWarp(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetDynamicWarpFloorNo(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ElevatorCurFloorBox(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountJohtoDexSeen(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountJohtoDexOwned(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountNationalDexSeen(SCRIPTCONTEXT *ctx);
@@ -299,9 +299,9 @@ extern BOOL ScrCmd_GiveBadge(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountBadges(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_297(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_298(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_299(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_300(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_301(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckEscortMode(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetEscortMode(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ClearEscortMode(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_302(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_303(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_304(SCRIPTCONTEXT *ctx);
@@ -447,7 +447,7 @@ extern BOOL ScrCmd_443(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_444(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_445(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_446(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_447(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SafariZoneAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_448(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_449(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_450(SCRIPTCONTEXT *ctx);
@@ -488,7 +488,7 @@ extern BOOL ScrCmd_GetWeekday(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_485(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Dummy(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PokeCenAnim(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_488(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ElevatorAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_489(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NopVar490(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_491(SCRIPTCONTEXT *ctx);
@@ -1031,7 +1031,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_NicknameInput,
     ScrCmd_FadeScreen,
     ScrCmd_WaitFade,
-    ScrCmd_176,
+    ScrCmd_Warp,
     ScrCmd_177,
     ScrCmd_178,
     ScrCmd_179,
@@ -1095,9 +1095,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_237,
     ScrCmd_238,
     ScrCmd_239,
-    ScrCmd_240,
-    ScrCmd_241,
-    ScrCmd_242,
+    ScrCmd_SetDynamicWarp,
+    ScrCmd_GetDynamicWarpFloorNo,
+    ScrCmd_ElevatorCurFloorBox,
     ScrCmd_CountJohtoDexSeen,
     ScrCmd_CountJohtoDexOwned,
     ScrCmd_CountNationalDexSeen,
@@ -1154,9 +1154,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CountBadges,
     ScrCmd_297,
     ScrCmd_298,
-    ScrCmd_299,
-    ScrCmd_300,
-    ScrCmd_301,
+    ScrCmd_CheckEscortMode,
+    ScrCmd_SetEscortMode,
+    ScrCmd_ClearEscortMode,
     ScrCmd_302,
     ScrCmd_303,
     ScrCmd_304,
@@ -1302,7 +1302,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_444,
     ScrCmd_445,
     ScrCmd_446,
-    ScrCmd_447,
+    ScrCmd_SafariZoneAction,
     ScrCmd_448,
     ScrCmd_449,
     ScrCmd_450,
@@ -1343,7 +1343,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_485,
     ScrCmd_Dummy,
     ScrCmd_PokeCenAnim,
-    ScrCmd_488,
+    ScrCmd_ElevatorAnim,
     ScrCmd_489,
     ScrCmd_NopVar490,
     ScrCmd_491,

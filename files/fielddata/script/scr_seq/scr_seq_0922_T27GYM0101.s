@@ -72,7 +72,7 @@ scr_seq_T27GYM0101_004:
 	setvar VAR_UNK_4079, 1
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 78, 7, 376, 182, 1
+	warp MAP_T27, 7, 376, 182, 1
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
@@ -158,7 +158,7 @@ scr_seq_T27GYM0101_002:
 	wait_movement
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_176 80, 0, 16, 49, 0
+	warp MAP_T27GYM0101, 0, 16, 49, 0
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
 	releaseall
