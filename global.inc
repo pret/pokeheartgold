@@ -26187,7 +26187,7 @@
 .public sub_02004EB4
 .public sub_02004EC4
 .public sub_020051A4
-.public sub_02005304
+.public BGM_SaveStateAndPlayNew
 .public sub_02005328
 .public sub_020053A8
 .public sub_020053F0
@@ -28374,7 +28374,7 @@
 .public sub_020511F8
 .public sub_02051228
 .public sub_02051334
-.public sub_02051370
+.public SetupAndStartTrainerBattle
 .public sub_02051428
 .public sub_020514A4
 .public sub_02051598

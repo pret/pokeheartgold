@@ -23,7 +23,7 @@
 #define VAR_TEMP_x4010                  0x4010
 #define VAR_TEMP_x4011                  0x4011
 #define VAR_TEMP_x4012                  0x4012
-#define VAR_TEMP_x4013                  0x4013
+#define VAR_BATTLE_RESULT                  0x4013
 #define VAR_TEMP_x4014                  0x4014
 #define VAR_TEMP_x4015                  0x4015
 #define VAR_TEMP_x4016                  0x4016

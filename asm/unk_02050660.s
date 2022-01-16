@@ -1,4 +1,5 @@
 #include "constants/std_script.h"
+#include "constants/vars.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -102,7 +103,7 @@ _02050704:
 	ldr r2, [r4, #0x10]
 	add r0, r1, #0
 	ldr r2, [r2, #0x14]
-	ldr r1, _02050720 ; =0x00004013
+	ldr r1, _02050720 ; =VAR_BATTLE_RESULT
 	lsl r2, r2, #0x10
 	lsr r2, r2, #0x10
 	bl VarSet
@@ -111,7 +112,7 @@ _02050704:
 	bl IsBattleResultWin
 	pop {r4, pc}
 	nop
-_02050720: .word 0x00004013
+_02050720: .word VAR_BATTLE_RESULT
 	thumb_func_end sub_020506F4
 
 	thumb_func_start sub_02050724
@@ -1630,8 +1631,8 @@ sub_02051334: ; 0x02051334
 _0205136C: .word sub_0205128C
 	thumb_func_end sub_02051334
 
-	thumb_func_start sub_02051370
-sub_02051370: ; 0x02051370
+	thumb_func_start SetupAndStartTrainerBattle
+SetupAndStartTrainerBattle: ; 0x02051370
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	str r0, [sp, #4]
@@ -1720,7 +1721,7 @@ _020513FE:
 	.balign 4, 0
 _02051420: .word 0x000001CE
 _02051424: .word 0x000001CD
-	thumb_func_end sub_02051370
+	thumb_func_end SetupAndStartTrainerBattle
 
 	thumb_func_start sub_02051428
 sub_02051428: ; 0x02051428

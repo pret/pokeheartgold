@@ -1236,8 +1236,8 @@ sub_020052E4: ; 0x020052E4
 	.balign 4, 0
 	thumb_func_end sub_020052E4
 
-	thumb_func_start sub_02005304
-sub_02005304: ; 0x02005304
+	thumb_func_start BGM_SaveStateAndPlayNew
+BGM_SaveStateAndPlayNew: ; 0x02005304
 	push {r4, lr}
 	add r4, r0, #0
 	bl GetSoundDataPointer
@@ -1245,7 +1245,7 @@ sub_02005304: ; 0x02005304
 	add r0, r4, #0
 	bl PlayBGM
 	pop {r4, pc}
-	thumb_func_end sub_02005304
+	thumb_func_end BGM_SaveStateAndPlayNew
 
 	thumb_func_start sub_02005318
 sub_02005318: ; 0x02005318

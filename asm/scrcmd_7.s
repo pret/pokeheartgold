@@ -1,4 +1,5 @@
 #include "constants/trainers.h"
+#include "constants/vars.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -300,7 +301,7 @@ _020496BE:
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x10]
 	ldr r3, [sp, #0x18]
-	bl sub_02051370
+	bl SetupAndStartTrainerBattle
 	mov r0, #1
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -353,7 +354,7 @@ ScrCmd_MultiBattle: ; 0x020496DC
 	str r0, [sp, #8]
 	str r4, [sp, #0xc]
 	ldr r0, [r5, #0x74]
-	bl sub_02051370
+	bl SetupAndStartTrainerBattle
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -534,7 +535,7 @@ ScrCmd_EncounterMusic: ; 0x02049894
 	add r1, r0, #0
 	add r0, r4, #0
 	bl Trainer_GetEncounterMusic
-	bl sub_02005304
+	bl BGM_SaveStateAndPlayNew
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -592,7 +593,7 @@ ScrCmd_221: ; 0x02049904
 	bne _02049936
 	add r5, #0x80
 	ldr r0, [r5]
-	ldr r1, _0204994C ; =0x00004013
+	ldr r1, _0204994C ; =VAR_BATTLE_RESULT
 	bl VarGet
 	bl sub_02052564
 	b _02049946
@@ -608,7 +609,7 @@ _02049946:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0204994C: .word 0x00004013
+_0204994C: .word VAR_BATTLE_RESULT
 	thumb_func_end ScrCmd_221
 
 	thumb_func_start ScrCmd_588
@@ -675,7 +676,7 @@ ScrCmd_223: ; 0x020499AC
 	ldr r0, [r4, #0x74]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_02051370
+	bl SetupAndStartTrainerBattle
 	mov r0, #1
 	add sp, #0x10
 	pop {r4, pc}
