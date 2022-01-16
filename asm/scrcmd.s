@@ -5856,7 +5856,7 @@ ScrCmd_157: ; 0x02042E5C
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #1
-	bl Radio_new
+	bl TownMap_new
 	str r0, [r4]
 	ldr r1, _02042E88 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
@@ -10423,7 +10423,7 @@ ScrCmd_447: ; 0x02045188
 	b _02045228
 _020451E0:
 	ldr r0, [sp, #4]
-	bl sub_02066840
+	bl ScriptState_SetSafariSysFlag
 	ldr r0, [sp, #8]
 	ldr r1, [sp]
 	bl sub_0202F5F8
@@ -10434,7 +10434,7 @@ _020451E0:
 	b _02045228
 _020451F8:
 	ldr r0, [sp, #4]
-	bl sub_02066850
+	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [sp, #8]
 	mov r1, #1
 	bl sub_0202F5F8

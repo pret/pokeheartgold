@@ -1367,7 +1367,7 @@ sub_0205239C: ; 0x0205239C
 	mov r6, #0
 	bl SavArray_Flags_get
 	add r7, r0, #0
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _0205241E
 	ldr r0, [r4, #0xc]

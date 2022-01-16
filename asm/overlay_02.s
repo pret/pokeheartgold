@@ -2304,7 +2304,7 @@ _02246D6C:
 _02246D76:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #0
 	beq _02246D88
 	mov r6, #1
@@ -2353,7 +2353,7 @@ _02246DE0:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	str r0, [sp, #0x14]
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	bl sub_02066870
@@ -2593,7 +2593,7 @@ _02246FDA:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	str r0, [sp, #0x18]
 	cmp r0, #0
 	beq _02246FF8
@@ -2833,7 +2833,7 @@ _022471AC:
 	mov r0, #1
 	str r0, [sp, #0x28]
 	add r0, r7, #0
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	str r0, [sp, #0xc]
 	cmp r0, #0
 	bne _0224721A
@@ -2862,7 +2862,7 @@ _022471AC:
 	pop {r4, r5, r6, r7, pc}
 _0224721A:
 	add r0, r7, #0
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	add r6, r0, #0
 	add r0, r7, #0
 	bl sub_02066870
@@ -18095,7 +18095,7 @@ ov02_0224E35C: ; 0x0224E35C
 	pop {r4, r5, r6, r7, pc}
 _0224E38E:
 	add r0, r6, #0
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	bne _0224E39E
 	add sp, #0x1c

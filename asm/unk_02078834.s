@@ -2,6 +2,8 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 #include "constants/ribbon.h"
+#include "party_menu.h"
+#include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -16149,7 +16151,7 @@ sub_02080834: ; 0x02080834
 	blx r1
 	b _0208085E
 _0208085C:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 _0208085E:
 	cmp r0, #5
 	bhi _0208089C
@@ -16174,19 +16176,19 @@ _0208087A:
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
 _0208088A:
-	mov r5, #0x65
+	mov r5, #msg_0300_00101
 	b _0208089C
 _0208088E:
-	mov r5, #0x4d
+	mov r5, #msg_0300_00077
 	b _0208089C
 _02080892:
-	mov r5, #0xb4
+	mov r5, #msg_0300_00180
 	b _0208089C
 _02080896:
-	mov r5, #0x64
+	mov r5, #msg_0300_00100
 	b _0208089C
 _0208089A:
-	mov r5, #0xb5
+	mov r5, #msg_0300_00181
 _0208089C:
 	mov r0, #0x85
 	lsl r0, r0, #2

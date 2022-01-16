@@ -1714,13 +1714,13 @@
 // System flags
 
 #define FLAG_UNK_960                                               0x960
-#define FLAG_HEAL_AFTER_BATTLE                                     0x961
+#define FLAG_HAVE_FOLLOWER                                     0x961
 #define FLAG_STRENGTH_ACTIVE                                       0x962
 #define FLAG_UNK_963                                               0x963
 #define FLAG_GAME_CLEAR                                            0x964
 #define FLAG_UNK_965                                               0x965
 #define FLAG_UNK_966                                               0x966
-#define FLAG_UNK_967                                               0x967
+#define FLAG_SYS_SAFARI                                               0x967
 #define FLAG_UNK_968                                               0x968
 #define FLAG_UNK_969                                               0x969
 #define FLAG_UNK_96A                                               0x96A
@@ -1730,7 +1730,7 @@
 #define FLAG_UNK_96E                                               0x96E
 #define FLAG_UNK_96F                                               0x96F
 #define FLAG_UNK_970                                               0x970
-#define FLAG_UNK_971                                               0x971
+#define FLAG_SYS_PAL_PARK                                               0x971
 #define FLAG_UNK_972                                               0x972
 #define FLAG_UNK_973                                               0x973
 #define FLAG_UNK_974                                               0x974

@@ -90,7 +90,7 @@ _020FA3C4:
 _020FA3D4:
 	.word ov108_021E5900, ov108_021E5978, ov108_021E5948, SDK_OVERLAY_OVY_108_ID
 _020FA3E4:
-	.word ov101_Radio_OvyInit, ov101_Radio_OvyExec, ov101_Radio_OvyExit, SDK_OVERLAY_OVY_101_ID
+	.word ov101_TownMap_OvyInit, ov101_TownMap_OvyExec, ov101_TownMap_OvyExit, SDK_OVERLAY_OVY_101_ID
 _020FA3F4:
 	.word ov100_Phone_OvyInit, ov100_Phone_OvyExec, ov100_Phone_OvyExit, SDK_OVERLAY_OVY_100_ID
 _020FA404:
@@ -1062,8 +1062,8 @@ SwitchToPokegearApp_Phone: ; 0x0203EA34
 _0203EA58: .word _020FA3F4
 	thumb_func_end SwitchToPokegearApp_Phone
 
-	thumb_func_start SwitchToPokegearApp_Radio
-SwitchToPokegearApp_Radio: ; 0x0203EA5C
+	thumb_func_start SwitchToPokegearApp_TownMap
+SwitchToPokegearApp_TownMap: ; 0x0203EA5C
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r5, _0203EA80 ; =_020FA3E4
@@ -1082,7 +1082,7 @@ SwitchToPokegearApp_Radio: ; 0x0203EA5C
 	pop {r4, r5, r6, pc}
 	nop
 _0203EA80: .word _020FA3E4
-	thumb_func_end SwitchToPokegearApp_Radio
+	thumb_func_end SwitchToPokegearApp_TownMap
 
 	thumb_func_start PhoneUI_new
 PhoneUI_new: ; 0x0203EA84
@@ -1106,8 +1106,8 @@ PhoneUI_new: ; 0x0203EA84
 	.balign 4, 0
 	thumb_func_end PhoneUI_new
 
-	thumb_func_start Radio_new
-Radio_new: ; 0x0203EAB0
+	thumb_func_start TownMap_new
+TownMap_new: ; 0x0203EAB0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1124,11 +1124,11 @@ Radio_new: ; 0x0203EAB0
 	add r0, r5, #0
 	add r1, r4, #0
 	strb r6, [r4]
-	bl SwitchToPokegearApp_Radio
+	bl SwitchToPokegearApp_TownMap
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end Radio_new
+	thumb_func_end TownMap_new
 
 	thumb_func_start sub_0203EAE0
 sub_0203EAE0: ; 0x0203EAE0

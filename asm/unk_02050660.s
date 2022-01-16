@@ -232,7 +232,7 @@ _02050800:
 _0205080A:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #0
 	beq _02050822
 	ldr r0, [r5, #0xc]
@@ -635,7 +635,7 @@ sub_02050B08: ; 0x02050B08
 	bl sub_020517FC
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _02050B48
 	add r0, r4, #0
@@ -695,7 +695,7 @@ sub_02050B90: ; 0x02050B90
 	bl sub_020517FC
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _02050BD0
 	add r0, r4, #0
@@ -819,7 +819,7 @@ _02050C8A:
 _02050CBE:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #0
 	beq _02050CD6
 	ldr r0, [r5, #0xc]

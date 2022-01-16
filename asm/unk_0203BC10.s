@@ -58,7 +58,7 @@ sub_0203BC28: ; 0x0203BC28
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #1
 	bne _0203BC4E
 	add r0, r5, #0
@@ -82,7 +82,7 @@ _0203BC4E:
 _0203BC6A:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _0203BC86
 	add r0, r5, #0
@@ -212,7 +212,7 @@ sub_0203BD64: ; 0x0203BD64
 	str r1, [r4, r0]
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #1
 	bne _0203BD98
 	add r0, r5, #0
@@ -236,7 +236,7 @@ _0203BD98:
 _0203BDB4:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _0203BDD0
 	add r0, r5, #0
@@ -3121,7 +3121,7 @@ sub_0203D488: ; 0x0203D488
 	strb r1, [r0]
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #1
 	bne _0203D4CA
 	ldr r1, _0203D4F8 ; =0x00002266

@@ -52,7 +52,7 @@ ScrCmd_508: ; 0x0204C874
 	cmp r0, #2
 	bne _0204C8AA
 	add r0, r4, #0
-	bl sub_02066880
+	bl ScriptState_SetPalParkSysFlag
 	add r5, #0x80
 	ldr r0, [r5]
 	bl sub_020557E0
@@ -68,7 +68,7 @@ _0204C8B8:
 	cmp r0, #1
 	bne _0204C8CC
 	add r0, r4, #0
-	bl sub_02066890
+	bl ScriptState_ClearPalParkSysFlag
 	add r5, #0x80
 	ldr r0, [r5]
 	bl sub_02055828

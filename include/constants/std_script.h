@@ -52,6 +52,7 @@
 #define std_fade_end_rival_outro_music  2071
 
 #define _std_bookshelves                2500
+#define std_town_map                    2508
 
 #define _std_apricorn_tree              2800
 #define std_apricorn_tree               2800

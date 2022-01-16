@@ -208,7 +208,7 @@ ScrCmd_299: ; 0x0204E788
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -222,7 +222,7 @@ ScrCmd_300: ; 0x0204E7B4
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_SetHealAfterBattleFlag
+	bl ScriptState_SetHaveFollowerFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_300
@@ -234,7 +234,7 @@ ScrCmd_301: ; 0x0204E7C8
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_ClearHealAfterBattleFlag
+	bl ScriptState_ClearHaveFollowerFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_301

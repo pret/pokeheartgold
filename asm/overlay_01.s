@@ -2263,7 +2263,7 @@ _021E6B12:
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _021E6B36
 	mov r6, #1
@@ -2997,7 +2997,7 @@ _021E7132:
 	bl ov01_021E7AB8
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _021E7172
 	ldr r1, [sp, #4]
@@ -3542,7 +3542,7 @@ _021E758C:
 _021E75AC:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _021E75D6
 	ldr r0, [r5, #0xc]
@@ -4046,7 +4046,7 @@ ov01_021E79CC: ; 0x021E79CC
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	bne _021E79E2
 	mov r0, #0

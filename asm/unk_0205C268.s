@@ -7,6 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
+#include "party_menu.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -19296,7 +19297,7 @@ sub_020649B8: ; 0x020649B8
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	ldrh r1, [r5, #8]
 	mov r2, #1
 	lsl r0, r0, #0x10
@@ -20956,7 +20957,7 @@ _020656A2:
 _020656B0:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _020656C2
 	mov r0, #0
@@ -22998,35 +22999,35 @@ _0206661C: .word CheckScriptFlag
 _02066620: .word FLAG_GAME_CLEAR
 	thumb_func_end CheckGameClearFlag
 
-	thumb_func_start ScriptState_SetHealAfterBattleFlag
-ScriptState_SetHealAfterBattleFlag: ; 0x02066624
+	thumb_func_start ScriptState_SetHaveFollowerFlag
+ScriptState_SetHaveFollowerFlag: ; 0x02066624
 	ldr r3, _0206662C ; =SetScriptFlag
-	ldr r1, _02066630 ; =FLAG_HEAL_AFTER_BATTLE
+	ldr r1, _02066630 ; =FLAG_HAVE_FOLLOWER
 	bx r3
 	nop
 _0206662C: .word SetScriptFlag
-_02066630: .word FLAG_HEAL_AFTER_BATTLE
-	thumb_func_end ScriptState_SetHealAfterBattleFlag
+_02066630: .word FLAG_HAVE_FOLLOWER
+	thumb_func_end ScriptState_SetHaveFollowerFlag
 
-	thumb_func_start ScriptState_ClearHealAfterBattleFlag
-ScriptState_ClearHealAfterBattleFlag: ; 0x02066634
+	thumb_func_start ScriptState_ClearHaveFollowerFlag
+ScriptState_ClearHaveFollowerFlag: ; 0x02066634
 	ldr r3, _0206663C ; =ClearScriptFlag
-	ldr r1, _02066640 ; =FLAG_HEAL_AFTER_BATTLE
+	ldr r1, _02066640 ; =FLAG_HAVE_FOLLOWER
 	bx r3
 	nop
 _0206663C: .word ClearScriptFlag
-_02066640: .word FLAG_HEAL_AFTER_BATTLE
-	thumb_func_end ScriptState_ClearHealAfterBattleFlag
+_02066640: .word FLAG_HAVE_FOLLOWER
+	thumb_func_end ScriptState_ClearHaveFollowerFlag
 
-	thumb_func_start ScriptState_CheckHealAfterBattleFlag
-ScriptState_CheckHealAfterBattleFlag: ; 0x02066644
+	thumb_func_start ScriptState_CheckHaveFollower
+ScriptState_CheckHaveFollower: ; 0x02066644
 	ldr r3, _0206664C ; =CheckScriptFlag
-	ldr r1, _02066650 ; =FLAG_HEAL_AFTER_BATTLE
+	ldr r1, _02066650 ; =FLAG_HAVE_FOLLOWER
 	bx r3
 	nop
 _0206664C: .word CheckScriptFlag
-_02066650: .word FLAG_HEAL_AFTER_BATTLE
-	thumb_func_end ScriptState_CheckHealAfterBattleFlag
+_02066650: .word FLAG_HAVE_FOLLOWER
+	thumb_func_end ScriptState_CheckHaveFollower
 
 	thumb_func_start sub_02066654
 sub_02066654: ; 0x02066654
@@ -23316,35 +23317,35 @@ _02066838: .word ClearScriptFlag
 _0206683C: .word FLAG_UNK_975
 	thumb_func_end sub_02066830
 
-	thumb_func_start sub_02066840
-sub_02066840: ; 0x02066840
+	thumb_func_start ScriptState_SetSafariSysFlag
+ScriptState_SetSafariSysFlag: ; 0x02066840
 	ldr r3, _02066848 ; =SetScriptFlag
-	ldr r1, _0206684C ; =FLAG_UNK_967
+	ldr r1, _0206684C ; =FLAG_SYS_SAFARI
 	bx r3
 	nop
 _02066848: .word SetScriptFlag
-_0206684C: .word FLAG_UNK_967
-	thumb_func_end sub_02066840
+_0206684C: .word FLAG_SYS_SAFARI
+	thumb_func_end ScriptState_SetSafariSysFlag
 
-	thumb_func_start sub_02066850
-sub_02066850: ; 0x02066850
+	thumb_func_start ScriptState_ClearSafariSysFlag
+ScriptState_ClearSafariSysFlag: ; 0x02066850
 	ldr r3, _02066858 ; =ClearScriptFlag
-	ldr r1, _0206685C ; =FLAG_UNK_967
+	ldr r1, _0206685C ; =FLAG_SYS_SAFARI
 	bx r3
 	nop
 _02066858: .word ClearScriptFlag
-_0206685C: .word FLAG_UNK_967
-	thumb_func_end sub_02066850
+_0206685C: .word FLAG_SYS_SAFARI
+	thumb_func_end ScriptState_ClearSafariSysFlag
 
-	thumb_func_start sub_02066860
-sub_02066860: ; 0x02066860
+	thumb_func_start ScriptState_CheckSafariSysFlag
+ScriptState_CheckSafariSysFlag: ; 0x02066860
 	ldr r3, _02066868 ; =CheckScriptFlag
-	ldr r1, _0206686C ; =FLAG_UNK_967
+	ldr r1, _0206686C ; =FLAG_SYS_SAFARI
 	bx r3
 	nop
 _02066868: .word CheckScriptFlag
-_0206686C: .word FLAG_UNK_967
-	thumb_func_end sub_02066860
+_0206686C: .word FLAG_SYS_SAFARI
+	thumb_func_end ScriptState_CheckSafariSysFlag
 
 	thumb_func_start sub_02066870
 sub_02066870: ; 0x02066870
@@ -23356,35 +23357,35 @@ _02066878: .word CheckScriptFlag
 _0206687C: .word FLAG_UNK_996
 	thumb_func_end sub_02066870
 
-	thumb_func_start sub_02066880
-sub_02066880: ; 0x02066880
+	thumb_func_start ScriptState_SetPalParkSysFlag
+ScriptState_SetPalParkSysFlag: ; 0x02066880
 	ldr r3, _02066888 ; =SetScriptFlag
-	ldr r1, _0206688C ; =FLAG_UNK_971
+	ldr r1, _0206688C ; =FLAG_SYS_PAL_PARK
 	bx r3
 	nop
 _02066888: .word SetScriptFlag
-_0206688C: .word FLAG_UNK_971
-	thumb_func_end sub_02066880
+_0206688C: .word FLAG_SYS_PAL_PARK
+	thumb_func_end ScriptState_SetPalParkSysFlag
 
-	thumb_func_start sub_02066890
-sub_02066890: ; 0x02066890
+	thumb_func_start ScriptState_ClearPalParkSysFlag
+ScriptState_ClearPalParkSysFlag: ; 0x02066890
 	ldr r3, _02066898 ; =ClearScriptFlag
-	ldr r1, _0206689C ; =FLAG_UNK_971
+	ldr r1, _0206689C ; =FLAG_SYS_PAL_PARK
 	bx r3
 	nop
 _02066898: .word ClearScriptFlag
-_0206689C: .word FLAG_UNK_971
-	thumb_func_end sub_02066890
+_0206689C: .word FLAG_SYS_PAL_PARK
+	thumb_func_end ScriptState_ClearPalParkSysFlag
 
-	thumb_func_start sub_020668A0
-sub_020668A0: ; 0x020668A0
+	thumb_func_start ScriptState_CheckPalParkSysFlag
+ScriptState_CheckPalParkSysFlag: ; 0x020668A0
 	ldr r3, _020668A8 ; =CheckScriptFlag
-	ldr r1, _020668AC ; =FLAG_UNK_971
+	ldr r1, _020668AC ; =FLAG_SYS_PAL_PARK
 	bx r3
 	nop
 _020668A8: .word CheckScriptFlag
-_020668AC: .word FLAG_UNK_971
-	thumb_func_end sub_020668A0
+_020668AC: .word FLAG_SYS_PAL_PARK
+	thumb_func_end ScriptState_CheckPalParkSysFlag
 
 	thumb_func_start sub_020668B0
 sub_020668B0: ; 0x020668B0
@@ -25925,7 +25926,7 @@ sub_02067A88: ; 0x02067A88
 	strh r1, [r0]
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	bne _02067AE0
 	ldr r0, [r5, #0xc]
@@ -26020,7 +26021,7 @@ sub_02067B88: ; 0x02067B88
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066850
+	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
 	bl Save_UpdateRoamersOnConnection
@@ -26034,7 +26035,7 @@ sub_02067BA4: ; 0x02067BA4
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066850
+	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
 	bl Save_UpdateRoamersOnConnection
@@ -26047,7 +26048,7 @@ sub_02067BC0: ; 0x02067BC0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066850
+	bl ScriptState_ClearSafariSysFlag
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067BC0
@@ -26058,7 +26059,7 @@ sub_02067BD0: ; 0x02067BD0
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	add r4, r0, #0
-	bl ScriptState_ClearHealAfterBattleFlag
+	bl ScriptState_ClearHaveFollowerFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02066AC0
@@ -26526,7 +26527,7 @@ FieldMoveMenuCheck_Cut: ; 0x02067F68
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _02067F7A
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02067F7A:
 	ldr r0, [r1, #0xc]
@@ -26535,14 +26536,15 @@ _02067F7A:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02067F8E
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _02067F8E:
 	ldrh r1, [r4, #0xc]
 	mov r0, #1
 	tst r1, r0
 	beq _02067F98
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
+	; else: PARTY_MENU_RESPONSE_NOT_HERE
 _02067F98:
 	pop {r4, pc}
 	.balign 4, 0
@@ -26613,7 +26615,7 @@ FieldMoveMenuCheck_Fly: ; 0x0206800C
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _0206801E
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _0206801E:
 	ldr r0, [r1, #0xc]
@@ -26622,23 +26624,23 @@ _0206801E:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068032
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _02068032:
 	ldr r0, [r4]
 	bl MapHeader_IsFlyAllowed
 	cmp r0, #0
 	bne _02068040
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068040:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _02068054
-	mov r0, #3
+	mov r0, #PARTY_MENU_RESPONSE_HAVE_FOLLOWER
 	pop {r4, pc}
 _02068054:
 	ldr r0, [r4, #4]
@@ -26647,19 +26649,20 @@ _02068054:
 	bl sub_020666B4
 	cmp r0, #1
 	bne _02068068
-	mov r0, #5
+	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
 	pop {r4, pc}
 _02068068:
+	; static inline
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #1
 	beq _02068088
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _0206808C
 _02068088:
@@ -26670,10 +26673,10 @@ _0206808C:
 _0206808E:
 	cmp r0, #1
 	bne _02068096
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068096:
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_Fly
@@ -26698,7 +26701,7 @@ FieldMoveMenuUse_Fly: ; 0x0206809C
 	str r0, [r4, r1]
 	add r0, r6, #0
 	mov r1, #0
-	bl Radio_new
+	bl TownMap_new
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -26719,7 +26722,7 @@ FieldMoveMenuCheck_Surf: ; 0x020680E0
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _020680F2
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _020680F2:
 	ldr r0, [r1, #0xc]
@@ -26728,7 +26731,7 @@ _020680F2:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068106
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _02068106:
 	ldr r0, [r4, #4]
@@ -26736,23 +26739,23 @@ _02068106:
 	bl sub_0205C700
 	cmp r0, #2
 	bne _02068116
-	mov r0, #4
+	mov r0, #PARTY_MENU_RESPONSE_ALREADY_SURFING
 	pop {r4, pc}
 _02068116:
 	ldrh r1, [r4, #0xc]
 	mov r0, #4
 	tst r0, r1
 	bne _02068122
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068122:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _02068136
-	mov r0, #3
+	mov r0, #PARTY_MENU_RESPONSE_HAVE_FOLLOWER
 	pop {r4, pc}
 _02068136:
 	ldr r0, [r4, #4]
@@ -26761,10 +26764,10 @@ _02068136:
 	bl sub_020666B4
 	cmp r0, #1
 	bne _0206814A
-	mov r0, #5
+	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
 	pop {r4, pc}
 _0206814A:
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_Surf
@@ -26834,7 +26837,7 @@ FieldMoveMenuCheck_Strength: ; 0x020681C0
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _020681D2
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _020681D2:
 	ldr r0, [r1, #0xc]
@@ -26843,23 +26846,23 @@ _020681D2:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _020681E6
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _020681E6:
 	ldr r0, [r4]
 	cmp r0, #0xee
 	bne _020681F0
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _020681F0:
 	ldrh r1, [r4, #0xc]
 	mov r0, #8
 	tst r0, r1
 	beq _020681FC
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 _020681FC:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 	thumb_func_end FieldMoveMenuCheck_Strength
 
@@ -26928,7 +26931,7 @@ FieldMoveMenuCheck_RockSmash: ; 0x02068270
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _02068282
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068282:
 	ldr r0, [r1, #0xc]
@@ -26937,17 +26940,17 @@ _02068282:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068296
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _02068296:
 	ldrh r1, [r4, #0xc]
 	mov r0, #0x10
 	tst r0, r1
 	beq _020682A2
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 _020682A2:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_RockSmash
@@ -27017,14 +27020,14 @@ FieldMoveMenuCheck_Waterfall: ; 0x02068318
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _0206832A
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _0206832A:
 	ldr r0, [r1, #0x40]
 	bl sub_0205C700
 	cmp r0, #2
 	beq _02068338
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068338:
 	ldr r0, [r4, #4]
@@ -27034,17 +27037,17 @@ _02068338:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _0206834E
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _0206834E:
 	ldrh r1, [r4, #0xc]
 	mov r0, #0x20
 	tst r0, r1
 	beq _0206835A
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 _0206835A:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_Waterfall
@@ -27114,7 +27117,7 @@ FieldMoveMenuCheck_RockClimb: ; 0x020683D0
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _020683E2
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _020683E2:
 	ldr r0, [r1, #0xc]
@@ -27123,23 +27126,23 @@ _020683E2:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _020683F6
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _020683F6:
 	ldrh r1, [r4, #0xc]
 	mov r0, #0x40
 	tst r0, r1
 	bne _02068402
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068402:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _02068416
-	mov r0, #3
+	mov r0, #PARTY_MENU_RESPONSE_HAVE_FOLLOWER
 	pop {r4, pc}
 _02068416:
 	ldr r0, [r4, #4]
@@ -27148,10 +27151,10 @@ _02068416:
 	bl sub_020666B4
 	cmp r0, #1
 	bne _0206842A
-	mov r0, #5
+	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
 	pop {r4, pc}
 _0206842A:
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_RockClimb
@@ -27221,23 +27224,23 @@ FieldMoveMenuCheck_Flash: ; 0x020684A0
 	sub r1, r1, #2
 	cmp r1, #1
 	bhi _020684B2
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _020684B2:
 	bl sub_0206BD44
 	cmp r0, #0
 	beq _020684BE
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 _020684BE:
 	ldrh r1, [r4, #0xc]
 	mov r0, #0x80
 	tst r0, r1
 	beq _020684CA
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 _020684CA:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_Flash
@@ -27317,23 +27320,23 @@ FieldMoveMenuCheck_Teleport: ; 0x02068554
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _02068566
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068566:
 	ldr r0, [r4]
 	bl MapHeader_IsOutdoors
 	cmp r0, #0
 	bne _02068574
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068574:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _02068588
-	mov r0, #3
+	mov r0, #PARTY_MENU_RESPONSE_HAVE_FOLLOWER
 	pop {r4, pc}
 _02068588:
 	ldr r0, [r4, #4]
@@ -27342,19 +27345,19 @@ _02068588:
 	bl sub_020666B4
 	cmp r0, #1
 	bne _0206859C
-	mov r0, #5
+	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
 	pop {r4, pc}
 _0206859C:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #1
 	beq _020685BC
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _020685C0
 _020685BC:
@@ -27365,10 +27368,10 @@ _020685C0:
 _020685C2:
 	cmp r0, #1
 	bne _020685CA
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _020685CA:
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_Teleport
@@ -27452,7 +27455,7 @@ FieldMoveMenuCheck_Dig: ; 0x02068664
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _02068676
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _02068676:
 	ldr r0, [r4]
@@ -27464,16 +27467,16 @@ _02068676:
 	cmp r0, #1
 	beq _0206868E
 _0206868A:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _0206868E:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl ScriptState_CheckHealAfterBattleFlag
+	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _020686A2
-	mov r0, #3
+	mov r0, #PARTY_MENU_RESPONSE_HAVE_FOLLOWER
 	pop {r4, pc}
 _020686A2:
 	ldr r0, [r4, #4]
@@ -27482,10 +27485,10 @@ _020686A2:
 	bl sub_020666B4
 	cmp r0, #1
 	bne _020686B6
-	mov r0, #5
+	mov r0, #PARTY_MENU_RESPONSE_NOT_NOW
 	pop {r4, pc}
 _020686B6:
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_Dig
@@ -27568,12 +27571,12 @@ FieldMoveMenuCheck_SweetScent: ; 0x02068750
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _02068760
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r3, pc}
 _02068760:
 	ldr r0, [r1, #0xc]
 	bl SavArray_Flags_get
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _02068772
 	mov r0, #1
@@ -27583,10 +27586,10 @@ _02068772:
 _02068774:
 	cmp r0, #1
 	bne _0206877C
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r3, pc}
 _0206877C:
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r3, pc}
 	thumb_func_end FieldMoveMenuCheck_SweetScent
 
@@ -27635,10 +27638,10 @@ FieldMoveMenuCheck_Chatter: ; 0x020687D0
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _020687DE
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	bx lr
 _020687DE:
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	bx lr
 	.balign 4, 0
 	thumb_func_end FieldMoveMenuCheck_Chatter
@@ -27711,14 +27714,14 @@ FieldMoveMenuCheck_Whirlpool: ; 0x0206885C
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _0206886E
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _0206886E:
 	ldr r0, [r1, #0x40]
 	bl sub_0205C700
 	cmp r0, #2
 	beq _0206887C
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _0206887C:
 	ldr r0, [r4, #4]
@@ -27728,7 +27731,7 @@ _0206887C:
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #0
 	bne _02068892
-	mov r0, #2
+	mov r0, #PARTY_MENU_RESPONSE_NEED_BADGE
 	pop {r4, pc}
 _02068892:
 	ldrh r1, [r4, #0xc]
@@ -27736,10 +27739,10 @@ _02068892:
 	lsl r0, r0, #0xc
 	tst r0, r1
 	beq _020688A0
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	pop {r4, pc}
 _020688A0:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 	thumb_func_end FieldMoveMenuCheck_Whirlpool
 
@@ -27806,7 +27809,7 @@ FieldMoveMenuCheck_Headbutt: ; 0x02068914
 	sub r1, r1, #2
 	cmp r1, #1
 	bhi _02068922
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	bx lr
 _02068922:
 	ldrh r1, [r0, #0xc]
@@ -27814,10 +27817,10 @@ _02068922:
 	lsl r0, r0, #0xc
 	tst r0, r1
 	beq _02068930
-	mov r0, #0
+	mov r0, #PARTY_MENU_RESPONSE_OK
 	bx lr
 _02068930:
-	mov r0, #1
+	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	bx lr
 	thumb_func_end FieldMoveMenuCheck_Headbutt
 

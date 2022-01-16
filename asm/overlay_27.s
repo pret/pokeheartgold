@@ -3710,7 +3710,7 @@ ov27_0225BD50: ; 0x0225BD50
 	pop {r3, r4, r5, pc}
 _0225BD6A:
 	add r0, r5, #0
-	bl sub_02066860
+	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _0225BD78
 	mov r0, #1
@@ -3724,7 +3724,7 @@ _0225BD78:
 	pop {r3, r4, r5, pc}
 _0225BD86:
 	add r0, r5, #0
-	bl sub_020668A0
+	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #0
 	beq _0225BD94
 	mov r0, #3
