@@ -1840,7 +1840,7 @@
 .public ScrCmd_154
 .public ScrCmd_155
 .public ScrCmd_156
-.public ScrCmd_157
+.public ScrCmd_TownMap
 .public ScrCmd_158
 .public ScrCmd_159
 .public ScrCmd_160
@@ -4042,7 +4042,7 @@
 .public ov01_021E6FD4
 .public ov01_021E7114
 .public ov01_021E7198
-.public ov01_021E7418
+.public GetInteractedMetatileScript
 .public ov01_021E7628
 .public ov01_021E774C
 .public ov01_021E7784
@@ -4055,9 +4055,9 @@
 .public ov01_021E7A08
 .public BugContestTimeoutCheck
 .public ov01_021E7A98
-.public ov01_021E7AB8
-.public ov01_021E7AD4
-.public ov01_021E7AF0
+.public PlayerAvatar_GetStandingTileCoords
+.public PlayerAvatar_GetFacingTileCoords
+.public ShiftFieldCoordsByCompassDirection
 .public ov01_021E7B38
 .public ov01_021E7B54
 .public ov01_021E7B70
@@ -28194,7 +28194,7 @@
 .public sub_0203DB74
 .public sub_0203DBF8
 .public sub_0203DC64
-.public sub_0203DC90
+.public GetInteractedBackgroundEventScript
 .public sub_0203DDA4
 .public sub_0203DE04
 .public sub_0203DE74
@@ -28715,7 +28715,7 @@
 .public sub_0205C4C4
 .public sub_0205C4CC
 .public sub_0205C600
-.public sub_0205C654
+.public PlayerAvatar_GetFacingDirection
 .public sub_0205C660
 .public GetPlayerXCoord
 .public GetPlayerYCoord

@@ -157,7 +157,7 @@ extern BOOL ScrCmd_153(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_154(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_155(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_156(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_157(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TownMap(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_158(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_159(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_160(SCRIPTCONTEXT *ctx);
@@ -1012,7 +1012,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_154,
     ScrCmd_155,
     ScrCmd_156,
-    ScrCmd_157,
+    ScrCmd_TownMap,
     ScrCmd_158,
     ScrCmd_159,
     ScrCmd_160,

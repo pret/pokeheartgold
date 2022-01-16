@@ -5620,7 +5620,7 @@ ov02_02248698: ; 0x02248698
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r1, #0
@@ -15435,7 +15435,7 @@ ov02_0224D044: ; 0x0224D044
 	bl GetPlayerYCoord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #3
 	bhi _0224D090
 	add r0, r0, r0
@@ -16222,7 +16222,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	mov r2, #0x20
 	bl GF_ExpHeap_FndInitAllocator
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0xdc
@@ -16803,7 +16803,7 @@ ov02_0224D9C0: ; 0x0224D9C0
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #3
 	bhi _0224DA7C
 	add r0, r0, r0
@@ -16919,7 +16919,7 @@ ov02_0224DAA4: ; 0x0224DAA4
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #3
 	bhi _0224DB62
 	add r0, r0, r0
@@ -18119,7 +18119,7 @@ _0224E3AE:
 	pop {r4, r5, r6, r7, pc}
 _0224E3BE:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerXCoord
@@ -18307,7 +18307,7 @@ _0224E52A:
 	lsr r6, r0, #0x18
 	strb r6, [r4, #0x18]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
@@ -18488,7 +18488,7 @@ ov02_0224E698: ; 0x0224E698
 	sub sp, #0x20
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, [r5, #0x40]
@@ -18582,7 +18582,7 @@ ov02_0224E754: ; 0x0224E754
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
 	str r1, [sp]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
 	bl GetPlayerXCoord

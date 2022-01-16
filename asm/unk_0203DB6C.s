@@ -21,14 +21,14 @@ sub_0203DB74: ; 0x0203DB74
 	bx lr
 	thumb_func_end sub_0203DB74
 
-	thumb_func_start sub_0203DB78
-sub_0203DB78: ; 0x0203DB78
+	thumb_func_start _GetCoordsOfFacingTile
+_GetCoordsOfFacingTile: ; 0x0203DB78
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x40]
 	add r4, r1, #0
 	add r5, r2, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [r6, #0x40]
 	bl GetPlayerXCoord
@@ -72,7 +72,7 @@ _0203DBCE:
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203DB78
+	thumb_func_end _GetCoordsOfFacingTile
 
 	thumb_func_start sub_0203DBD4
 sub_0203DBD4: ; 0x0203DBD4
@@ -103,7 +103,7 @@ sub_0203DBF8: ; 0x0203DBF8
 	add r1, sp, #4
 	add r2, sp, #0
 	add r5, r0, #0
-	bl sub_0203DB78
+	bl _GetCoordsOfFacingTile
 	add r4, r0, #0
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
@@ -179,8 +179,8 @@ _0203DC8C:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0203DC64
 
-	thumb_func_start sub_0203DC90
-sub_0203DC90: ; 0x0203DC90
+	thumb_func_start GetInteractedBackgroundEventScript
+GetInteractedBackgroundEventScript: ; 0x0203DC90
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	str r1, [sp]
@@ -188,7 +188,7 @@ sub_0203DC90: ; 0x0203DC90
 	add r1, sp, #0xc
 	add r2, sp, #8
 	add r6, r0, #0
-	bl sub_0203DB78
+	bl _GetCoordsOfFacingTile
 	ldr r0, [sp, #4]
 	mov r7, #0
 	cmp r0, #0
@@ -209,7 +209,7 @@ _0203DCAE:
 	bne _0203DCDE
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0203DD10
+	bl BgEventIsUncollectedHiddenItem
 	cmp r0, #1
 	bne _0203DCF8
 	mov r0, #0x14
@@ -222,7 +222,7 @@ _0203DCAE:
 _0203DCDE:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl sub_0203DD3C
+	bl BgEventDirectionIsCompatibleWithPlayerFacing
 	cmp r0, #1
 	bne _0203DCF8
 	mov r0, #0x14
@@ -245,10 +245,10 @@ _0203DD04:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0203DD0C: .word 0x0000FFFF
-	thumb_func_end sub_0203DC90
+	thumb_func_end GetInteractedBackgroundEventScript
 
-	thumb_func_start sub_0203DD10
-sub_0203DD10: ; 0x0203DD10
+	thumb_func_start BgEventIsUncollectedHiddenItem
+BgEventIsUncollectedHiddenItem: ; 0x0203DD10
 	push {r4, lr}
 	add r4, r0, #0
 	ldrh r0, [r1, #2]
@@ -272,10 +272,10 @@ _0203DD36:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	pop {r4, pc}
-	thumb_func_end sub_0203DD10
+	thumb_func_end BgEventIsUncollectedHiddenItem
 
-	thumb_func_start sub_0203DD3C
-sub_0203DD3C: ; 0x0203DD3C
+	thumb_func_start BgEventDirectionIsCompatibleWithPlayerFacing
+BgEventDirectionIsCompatibleWithPlayerFacing: ; 0x0203DD3C
 	push {r4, lr}
 	add r4, r1, #0
 	ldrh r1, [r4, #0x10]
@@ -285,7 +285,7 @@ sub_0203DD3C: ; 0x0203DD3C
 	pop {r4, pc}
 _0203DD4A:
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #3
 	bhi _0203DDA0
 	add r0, r0, r0
@@ -338,7 +338,7 @@ _0203DD9C:
 _0203DDA0:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_0203DD3C
+	thumb_func_end BgEventDirectionIsCompatibleWithPlayerFacing
 
 	thumb_func_start sub_0203DDA4
 sub_0203DDA4: ; 0x0203DDA4
@@ -348,7 +348,7 @@ sub_0203DDA4: ; 0x0203DDA4
 	ldr r0, [r5, #0x40]
 	add r6, r1, #0
 	add r4, r2, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #0
 	beq _0203DDBE
 	add sp, #8
@@ -358,7 +358,7 @@ _0203DDBE:
 	add r0, r5, #0
 	add r1, sp, #4
 	add r2, sp, #0
-	bl sub_0203DB78
+	bl _GetCoordsOfFacingTile
 	mov r0, #0
 	cmp r4, #0
 	ble _0203DDF8

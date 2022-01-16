@@ -206,7 +206,7 @@ gScriptCmdTable:
 	.word ScrCmd_154                                    ; 154
 	.word ScrCmd_155                                    ; 155
 	.word ScrCmd_156                                    ; 156
-	.word ScrCmd_157                                    ; 157
+	.word ScrCmd_TownMap                                    ; 157
 	.word ScrCmd_158                                    ; 158
 	.word ScrCmd_159                                    ; 159
 	.word ScrCmd_160                                    ; 160
@@ -4238,7 +4238,7 @@ ScrCmd_FacePlayer: ; 0x0204219C
 	add r0, #0x80
 	ldr r5, [r0]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	bl sub_020611F4
 	add r6, r0, #0
 	add r0, r5, #0
@@ -4457,7 +4457,7 @@ ScrCmd_GetPlayerFacing: ; 0x0204236C
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -5843,8 +5843,8 @@ ScrCmd_156: ; 0x02042E48
 	pop {r3, pc}
 	thumb_func_end ScrCmd_156
 
-	thumb_func_start ScrCmd_157
-ScrCmd_157: ; 0x02042E5C
+	thumb_func_start ScrCmd_TownMap
+ScrCmd_TownMap: ; 0x02042E5C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -5865,7 +5865,7 @@ ScrCmd_157: ; 0x02042E5C
 	pop {r3, r4, r5, pc}
 	nop
 _02042E88: .word ScrNative_WaitApplication_DestroyTaskData
-	thumb_func_end ScrCmd_157
+	thumb_func_end ScrCmd_TownMap
 
 	thumb_func_start ScrCmd_408
 ScrCmd_408: ; 0x02042E8C
@@ -6833,7 +6833,7 @@ ScrCmd_177: ; 0x020435E8
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
@@ -6857,7 +6857,7 @@ ScrCmd_178: ; 0x02043618
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
@@ -6881,7 +6881,7 @@ ScrCmd_179: ; 0x02043648
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
@@ -6965,7 +6965,7 @@ ScrCmd_182: ; 0x020436F4
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x74]
 	add r2, r4, #0
@@ -13769,7 +13769,7 @@ ScrCmd_601: ; 0x02046BDC
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0205CA1C
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
 	bl sub_0205F914

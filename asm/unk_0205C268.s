@@ -362,7 +362,7 @@ _0205C47C:
 	bl GetPlayerYCoord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -574,13 +574,13 @@ _0205C64E:
 	.balign 4, 0
 	thumb_func_end sub_0205C640
 
-	thumb_func_start sub_0205C654
-sub_0205C654: ; 0x0205C654
+	thumb_func_start PlayerAvatar_GetFacingDirection
+PlayerAvatar_GetFacingDirection: ; 0x0205C654
 	push {r3, lr}
 	bl sub_0205C6DC
 	bl sub_0205F2A8
 	pop {r3, pc}
-	thumb_func_end sub_0205C654
+	thumb_func_end PlayerAvatar_GetFacingDirection
 
 	thumb_func_start sub_0205C660
 sub_0205C660: ; 0x0205C660
@@ -2668,7 +2668,7 @@ sub_0205D450: ; 0x0205D450
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _0205D468:
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, r4
 	beq _0205D486
 	add r0, r5, #0
@@ -3125,7 +3125,7 @@ _0205D7D0:
 	pop {r4, r5, r6, pc}
 _0205D7DC:
 	add r0, r5, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, r4
 	beq _0205D80C
 	add r0, r5, #0
@@ -4084,7 +4084,7 @@ sub_0205DF0C: ; 0x0205DF0C
 	cmp r4, #0
 	bne _0205DF3E
 	add r0, r5, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	mov r1, #0
 	bl sub_0206234C
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4230,7 +4230,7 @@ sub_0205E02C: ; 0x0205E02C
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
@@ -19093,7 +19093,7 @@ sub_02064824: ; 0x02064824
 	bl sub_02061200
 	add r6, r0, #0
 	ldr r0, [r5, #0x28]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r6, r0
 	beq _02064898
 	ldr r0, [r5, #0x18]
@@ -19334,7 +19334,7 @@ sub_020649B8: ; 0x020649B8
 	bl sub_02054918
 	strh r0, [r5, #0xc]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #3
 	bhi _02064A4E
 	add r0, r0, r0
@@ -19699,7 +19699,7 @@ _02064CC2:
 	bl sub_02054FDC
 _02064D08:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r4, #0
@@ -21505,7 +21505,7 @@ _02065AEA:
 	beq _02065B0E
 	add r0, r4, #0
 	bl sub_0205CA1C
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -21978,7 +21978,7 @@ _02065E36:
 	strb r0, [r4, #2]
 	strb r0, [r4, #3]
 	add r0, r7, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -22027,7 +22027,7 @@ _02065F00:
 	bl sub_020623D8
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -23290,11 +23290,11 @@ _0206680C: .word FLAG_UNK_966
 	thumb_func_start sub_02066810
 sub_02066810: ; 0x02066810
 	ldr r3, _02066818 ; =CheckScriptFlag
-	ldr r1, _0206681C ; =FLAG_UNK_976
+	ldr r1, _0206681C ; =FLAG_SYS_MET_BILL
 	bx r3
 	nop
 _02066818: .word CheckScriptFlag
-_0206681C: .word FLAG_UNK_976
+_0206681C: .word FLAG_SYS_MET_BILL
 	thumb_func_end sub_02066810
 
 	thumb_func_start sub_02066820
@@ -26418,7 +26418,7 @@ _02067E62:
 	strh r0, [r4, #0xc]
 _02067EAA:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	add r0, r6, #0
 	bl ov01_021F25E8

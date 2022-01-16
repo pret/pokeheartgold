@@ -766,8 +766,8 @@ _0A2E:
 	buffer_players_name 0
 	npc_msg msg_0040_00034
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8006
-	call_if_unset FLAG_UNK_976, _0A78
-	call_if_set FLAG_UNK_976, _0A82
+	call_if_unset FLAG_SYS_MET_BILL, _0A78
+	call_if_set FLAG_SYS_MET_BILL, _0A82
 	menu_item_add 63, 255, 1
 	goto_if_set FLAG_GAME_CLEAR, _0A8C
 	goto_if_unset FLAG_GAME_CLEAR, _0AD1

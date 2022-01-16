@@ -1629,7 +1629,7 @@ _02254B52:
 	str r0, [r4, #0x44]
 	str r0, [r4, #0x48]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #1
 	bne _02254B68
 	mov r0, #1

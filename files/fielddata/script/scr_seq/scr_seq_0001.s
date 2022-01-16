@@ -93,7 +93,7 @@ scr_seq_0001_008:
 	lockall
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_157
+	town_map
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade

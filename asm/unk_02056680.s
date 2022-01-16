@@ -44,7 +44,7 @@ _020566A2:
 _020566C8:
 	ldr r0, [r5, #0x40]
 	ldr r6, [r4, #0x18]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	add r0, r5, #0
@@ -97,7 +97,7 @@ _02056724:
 	bl sub_0205C6DC
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #2
 	bne _02056746
 	add r0, r6, #0
@@ -132,7 +132,7 @@ _02056760:
 	cmp r0, #0
 	beq _02056792
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -497,7 +497,7 @@ sub_02056A54: ; 0x02056A54
 	add r2, sp, #0x1c
 	bl VEC_Subtract
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0x28
@@ -567,7 +567,7 @@ sub_02056AEC: ; 0x02056AEC
 	add r2, sp, #0x1c
 	bl VEC_Subtract
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x28

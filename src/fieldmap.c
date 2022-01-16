@@ -156,7 +156,7 @@ void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
 
 void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, LocalMapObject *a3, void* a4) {
     u16 *sp0 = FieldSysGetAttrAddrInternal(a1, UNK80_10_C_SPECIAL_VAR_800D);
-    a1->unk_28 = sub_0205C654(a0->unk40);
+    a1->unk_28 = PlayerAvatar_GetFacingDirection(a0->unk40);
     a1->mapObjects = a3;
     a1->unk_A = a2;
     a1->unk_34 = a4;

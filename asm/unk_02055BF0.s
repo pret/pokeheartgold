@@ -500,7 +500,7 @@ _02055F78:
 	mov r1, #1
 	bl sub_02069E84
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	add r0, r5, #0
@@ -673,7 +673,7 @@ _020560E6:
 _0205610C:
 	ldr r0, [r5, #0x40]
 	ldr r6, [r4, #0x18]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	add r0, r5, #0
@@ -749,7 +749,7 @@ _020561A0:
 	b _02056218
 _020561A8:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205C6DC
@@ -928,7 +928,7 @@ _020562E0:
 	mov r0, #0
 	str r0, [r7]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	str r0, [r7, #4]
 	ldr r0, [r4, #0x40]
 	mov r1, #0

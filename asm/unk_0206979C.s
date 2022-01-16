@@ -2200,7 +2200,7 @@ FieldSys_TakePhoto: ; 0x0206A798
 	bl GetPlayerYCoord
 	strh r0, [r4, #0x32]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	strh r0, [r4, #0x34]
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
@@ -2289,7 +2289,7 @@ sub_0206A860: ; 0x0206A860
 	add r1, #0x96
 	strh r0, [r1]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r4, #0
 	add r1, #0x98
 	strh r0, [r1]

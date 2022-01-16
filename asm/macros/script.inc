@@ -937,7 +937,7 @@
 	.short 156
 	.endm
 
-	.macro scrcmd_157
+	.macro town_map
 	.short 157
 	.endm
 

@@ -118,7 +118,7 @@ _0203BCAA:
 	cmp r0, #1
 	bne _0203BCCA
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205CFBC
@@ -151,7 +151,7 @@ sub_0203BCDC: ; 0x0203BCDC
 	cmp r0, #1
 	bne _0203BD10
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205CFBC
@@ -184,7 +184,7 @@ sub_0203BD20: ; 0x0203BD20
 	cmp r0, #1
 	bne _0203BD54
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205CFBC

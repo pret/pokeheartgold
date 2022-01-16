@@ -401,7 +401,7 @@ _021E5C4A:
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0xc]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0x10]
 	add r0, r4, #0
@@ -2019,7 +2019,7 @@ _021E694E:
 	bl sub_0205C6CC
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r1, #2
@@ -2327,7 +2327,7 @@ _021E6B94:
 _021E6BB6:
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
-	mov r1, #0x7f
+	mov r1, #MOVE_WATERFALL
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E6BCA
@@ -2367,7 +2367,7 @@ _021E6C02:
 	lsr r0, r0, #0x1f
 	beq _021E6C24
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldrb r1, [r5, #4]
 	cmp r1, r0
 	bne _021E6C24
@@ -2392,7 +2392,7 @@ _021E6C24:
 	cmp r0, #1
 	bne _021E6C50
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x40]
 	bl sub_0205CFBC
@@ -2431,7 +2431,7 @@ _021E6C86:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0203DC90
+	bl GetInteractedBackgroundEventScript
 	add r1, r0, #0
 	ldr r0, _021E6DBC ; =0x0000FFFF
 	cmp r1, r0
@@ -2451,7 +2451,7 @@ _021E6CBC:
 	bl ov01_021E7B54
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov01_021E7418
+	bl GetInteractedMetatileScript
 	add r1, r0, #0
 	ldr r0, _021E6DBC ; =0x0000FFFF
 	cmp r1, r0
@@ -2657,7 +2657,7 @@ _021E6E52:
 	cmp r0, #1
 	bne _021E6E88
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205CFBC
@@ -2763,7 +2763,7 @@ _021E6F2E:
 	cmp r0, #1
 	bne _021E6F5A
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205CFBC
@@ -2855,7 +2855,7 @@ _021E6FF6:
 	cmp r0, #1
 	bne _021E7022
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x40]
 	bl sub_0205CFBC
@@ -2892,7 +2892,7 @@ _021E7054:
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0203DC90
+	bl GetInteractedBackgroundEventScript
 	add r1, r0, #0
 	ldr r0, _021E710C ; =0x0000FFFF
 	cmp r1, r0
@@ -2910,7 +2910,7 @@ _021E7086:
 	bl ov01_021E7B54
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov01_021E7418
+	bl GetInteractedMetatileScript
 	add r1, r0, #0
 	ldr r0, _021E710C ; =0x0000FFFF
 	cmp r1, r0
@@ -2995,7 +2995,7 @@ _021E7132:
 	add r0, r4, #0
 	add r1, sp, #4
 	add r2, sp, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	bl ScriptState_CheckPalParkSysFlag
@@ -3057,7 +3057,7 @@ ov01_021E7198: ; 0x021E7198
 _021E71B0:
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
@@ -3133,7 +3133,7 @@ _021E724E:
 	add r0, r6, #0
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
@@ -3181,7 +3181,7 @@ _021E72B6:
 	add r0, r6, #0
 	add r1, sp, #0x10
 	add r2, sp, #0xc
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r6, #0
@@ -3350,13 +3350,13 @@ _021E73FC:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021E7198
 
-	thumb_func_start ov01_021E7418
-ov01_021E7418: ; 0x021E7418
+	thumb_func_start GetInteractedMetatileScript
+GetInteractedMetatileScript: ; 0x021E7418
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerXCoord
@@ -3382,70 +3382,70 @@ _021E7450:
 	beq _021E7462
 	cmp r6, #0
 	bne _021E7462
-	ldr r0, _021E75E0 ; =0x000007DA
+	ldr r0, _021E75E0 ; =std_pokecenter_pc
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7462:
 	add r0, r4, #0
 	bl sub_0205B84C
 	cmp r0, #0
 	beq _021E7470
-	ldr r0, _021E75E4 ; =0x000009C4
+	ldr r0, _021E75E4 ; =std_picture_books
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7470:
 	add r0, r4, #0
 	bl sub_0205B858
 	cmp r0, #0
 	beq _021E747E
-	ldr r0, _021E75E8 ; =0x000009C5
+	ldr r0, _021E75E8 ; =std_books_for_pkmn
 	pop {r3, r4, r5, r6, r7, pc}
 _021E747E:
 	add r0, r4, #0
 	bl sub_0205B864
 	cmp r0, #0
 	beq _021E748C
-	ldr r0, _021E75EC ; =0x000009C6
+	ldr r0, _021E75EC ; =std_chock_full
 	pop {r3, r4, r5, r6, r7, pc}
 _021E748C:
 	add r0, r4, #0
 	bl sub_0205B870
 	cmp r0, #0
 	beq _021E749A
-	ldr r0, _021E75F0 ; =0x000009C7
+	ldr r0, _021E75F0 ; =std_magazines
 	pop {r3, r4, r5, r6, r7, pc}
 _021E749A:
 	add r0, r4, #0
 	bl sub_0205B87C
 	cmp r0, #0
 	beq _021E74A8
-	ldr r0, _021E75F4 ; =0x000009C8
+	ldr r0, _021E75F4 ; =std_trash_empty
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74A8:
 	add r0, r4, #0
 	bl sub_0205B888
 	cmp r0, #0
 	beq _021E74B6
-	ldr r0, _021E75F8 ; =0x000009C9
+	ldr r0, _021E75F8 ; =std_vibrant_pkmn_goods
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74B6:
 	add r0, r4, #0
 	bl sub_0205B894
 	cmp r0, #0
 	beq _021E74C4
-	ldr r0, _021E75FC ; =0x000009CA
+	ldr r0, _021E75FC ; =std_convenient_items
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74C4:
 	add r0, r4, #0
 	bl sub_0205B8A0
 	cmp r0, #0
 	beq _021E74D2
-	ldr r0, _021E7600 ; =0x000009CB
+	ldr r0, _021E7600 ; =std_pkmn_merchandise
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74D2:
 	add r0, r4, #0
 	bl sub_0205B7EC
 	cmp r0, #0
 	beq _021E74E0
-	ldr r0, _021E7604 ; =0x000009CC
+	ldr r0, _021E7604 ; =std_town_map
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74E0:
 	add r0, r4, #0
@@ -3454,14 +3454,14 @@ _021E74E0:
 	beq _021E74F2
 	cmp r6, #0
 	bne _021E74F2
-	ldr r0, _021E7608 ; =0x00002774
+	ldr r0, _021E7608 ; =std_tv
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74F2:
 	add r0, r4, #0
 	bl sub_0205BAF8
 	cmp r0, #0
 	beq _021E7500
-	ldr r0, _021E760C ; =0x0000271E
+	ldr r0, _021E760C ; =std_field_headbutt
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7500:
 	add r0, r4, #0
@@ -3469,7 +3469,7 @@ _021E7500:
 	bl ov01_021F25E8
 	cmp r0, #0
 	beq _021E7510
-	ldr r0, _021E7610 ; =0x00002713
+	ldr r0, _021E7610 ; =std_field_rock_climb
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7510:
 	ldr r0, [r5, #0x40]
@@ -3492,11 +3492,11 @@ _021E7510:
 	beq _021E7550
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
-	mov r1, #0x39
+	mov r1, #MOVE_SURF
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
 	beq _021E7550
-	ldr r0, _021E7614 ; =0x00002714
+	ldr r0, _021E7614 ; =std_field_surf
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7550:
 	add r0, r5, #0
@@ -3510,21 +3510,21 @@ _021E7550:
 	bl ov02_0224E4CC
 	cmp r0, #0
 	beq _021E75AC
-	ldr r0, _021E7618 ; =0x00002260
+	ldr r0, _021E7618 ; =std_safari_place_object
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7570:
 	add r0, r4, #0
 	bl sub_0205B8DC
 	cmp r0, #0
 	beq _021E757E
-	ldr r0, _021E761C ; =0x00002715
+	ldr r0, _021E761C ; =std_field_waterfall
 	pop {r3, r4, r5, r6, r7, pc}
 _021E757E:
 	add r0, r4, #0
 	bl sub_0205B8E8
 	cmp r0, #0
 	beq _021E758C
-	ldr r0, _021E7620 ; =0x00002720
+	ldr r0, _021E7620 ; =std_field_whirlpool
 	pop {r3, r4, r5, r6, r7, pc}
 _021E758C:
 	add r0, r5, #0
@@ -3538,7 +3538,7 @@ _021E758C:
 	bl ov02_0224E4DC
 	cmp r0, #0
 	beq _021E75AC
-	ldr r0, _021E7618 ; =0x00002260
+	ldr r0, _021E7618 ; =std_safari_place_object
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75AC:
 	ldr r0, [r5, #0xc]
@@ -3555,32 +3555,32 @@ _021E75AC:
 	bl sub_0205BAEC
 	cmp r0, #0
 	beq _021E75D6
-	ldr r0, _021E7624 ; =0x00002261
+	ldr r0, _021E7624 ; =std_safari_remove_object
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75D6:
 	ldr r0, _021E75DC ; =0x0000FFFF
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E75DC: .word 0x0000FFFF
-_021E75E0: .word 0x000007DA
-_021E75E4: .word 0x000009C4
-_021E75E8: .word 0x000009C5
-_021E75EC: .word 0x000009C6
-_021E75F0: .word 0x000009C7
-_021E75F4: .word 0x000009C8
-_021E75F8: .word 0x000009C9
-_021E75FC: .word 0x000009CA
-_021E7600: .word 0x000009CB
-_021E7604: .word 0x000009CC
-_021E7608: .word 0x00002774
-_021E760C: .word 0x0000271E
-_021E7610: .word 0x00002713
-_021E7614: .word 0x00002714
-_021E7618: .word 0x00002260
-_021E761C: .word 0x00002715
-_021E7620: .word 0x00002720
-_021E7624: .word 0x00002261
-	thumb_func_end ov01_021E7418
+_021E75E0: .word std_pokecenter_pc
+_021E75E4: .word std_picture_books
+_021E75E8: .word std_books_for_pkmn
+_021E75EC: .word std_chock_full
+_021E75F0: .word std_magazines
+_021E75F4: .word std_trash_empty
+_021E75F8: .word std_vibrant_pkmn_goods
+_021E75FC: .word std_convenient_items
+_021E7600: .word std_pkmn_merchandise
+_021E7604: .word std_town_map
+_021E7608: .word std_tv
+_021E760C: .word std_field_headbutt
+_021E7610: .word std_field_rock_climb
+_021E7614: .word std_field_surf
+_021E7618: .word std_safari_place_object
+_021E761C: .word std_field_waterfall
+_021E7620: .word std_field_whirlpool
+_021E7624: .word std_safari_remove_object
+	thumb_func_end GetInteractedMetatileScript
 
 	thumb_func_start ov01_021E7628
 ov01_021E7628: ; 0x021E7628
@@ -3598,7 +3598,7 @@ ov01_021E7628: ; 0x021E7628
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7644:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r2, r0, #0
 	ldr r1, [r5, #0x40]
 	add r0, r5, #0
@@ -3765,7 +3765,7 @@ _021E779C:
 	cmp r0, #1
 	bne _021E77E0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #2
 	bne _021E77B4
 	mov r0, #3
@@ -3799,7 +3799,7 @@ _021E77E0:
 	cmp r0, #1
 	bne _021E781C
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #2
 	beq _021E7802
 	cmp r0, #3
@@ -4158,8 +4158,8 @@ ov01_021E7A98: ; 0x021E7A98
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E7A98
 
-	thumb_func_start ov01_021E7AB8
-ov01_021E7AB8: ; 0x021E7AB8
+	thumb_func_start PlayerAvatar_GetStandingTileCoords
+PlayerAvatar_GetStandingTileCoords: ; 0x021E7AB8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
@@ -4172,33 +4172,33 @@ ov01_021E7AB8: ; 0x021E7AB8
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov01_021E7AB8
+	thumb_func_end PlayerAvatar_GetStandingTileCoords
 
-	thumb_func_start ov01_021E7AD4
-ov01_021E7AD4: ; 0x021E7AD4
+	thumb_func_start PlayerAvatar_GetFacingTileCoords
+PlayerAvatar_GetFacingTileCoords: ; 0x021E7AD4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r6, #0
-	bl ov01_021E7AF0
+	bl ShiftFieldCoordsByCompassDirection
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021E7AD4
+	thumb_func_end PlayerAvatar_GetFacingTileCoords
 
-	thumb_func_start ov01_021E7AF0
-ov01_021E7AF0: ; 0x021E7AF0
+	thumb_func_start ShiftFieldCoordsByCompassDirection
+ShiftFieldCoordsByCompassDirection: ; 0x021E7AF0
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r3, #0
 	add r6, r1, #0
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	cmp r6, #3
 	bhi _021E7B36
 	add r0, r6, r6
@@ -4233,7 +4233,7 @@ _021E7B30:
 	str r0, [r4]
 _021E7B36:
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov01_021E7AF0
+	thumb_func_end ShiftFieldCoordsByCompassDirection
 
 	thumb_func_start ov01_021E7B38
 ov01_021E7B38: ; 0x021E7B38
@@ -4242,7 +4242,7 @@ ov01_021E7B38: ; 0x021E7B38
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4258,7 +4258,7 @@ ov01_021E7B54: ; 0x021E7B54
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4274,7 +4274,7 @@ ov01_021E7B70: ; 0x021E7B70
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4347,7 +4347,7 @@ _021E7BFE:
 	bl sub_0203B95C
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, [r4, #0x20]
 	ldr r1, [r1]
 	str r1, [r5]
@@ -4408,7 +4408,7 @@ ov01_021E7C70: ; 0x021E7C70
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AB8
+	bl PlayerAvatar_GetStandingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4426,7 +4426,7 @@ ov01_021E7C70: ; 0x021E7C70
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r3, r0, #0
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
@@ -4438,7 +4438,7 @@ _021E7CBA:
 	add r0, r4, #0
 	add r1, sp, #4
 	add r2, sp, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -4456,7 +4456,7 @@ _021E7CBA:
 	cmp r0, #0
 	bne _021E7CFC
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r3, r0, #0
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
@@ -4759,13 +4759,13 @@ ov01_021E7F38: ; 0x021E7F38
 	bl ov01_021E7FA8
 	cmp r0, #0
 	beq _021E7F46
-	ldr r0, _021E7F4C ; =0x0000271E
+	ldr r0, _021E7F4C ; =std_field_headbutt
 	pop {r3, pc}
 _021E7F46:
 	ldr r0, _021E7F50 ; =0x0000FFFF
 	pop {r3, pc}
 	nop
-_021E7F4C: .word 0x0000271E
+_021E7F4C: .word std_field_headbutt
 _021E7F50: .word 0x0000FFFF
 	thumb_func_end ov01_021E7F38
 
@@ -4800,7 +4800,7 @@ _021E7F7C:
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0203DC90
+	bl GetInteractedBackgroundEventScript
 	ldr r1, _021E7FA4 ; =0x0000FFFF
 	cmp r0, r1
 	beq _021E7F9E
@@ -4820,7 +4820,7 @@ ov01_021E7FA8: ; 0x021E7FA8
 	add r1, sp, #4
 	add r2, sp, #0
 	add r4, r0, #0
-	bl ov01_021E7AD4
+	bl PlayerAvatar_GetFacingTileCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -8688,7 +8688,7 @@ _021E9C7A:
 	mov r0, #1
 	str r0, [r6, #0x10]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #1
 	bne _021E9D88
 	mov r1, #1
@@ -8788,7 +8788,7 @@ _021E9D50:
 	b _021E9ECC
 _021E9D88:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r0, #1
 	bne _021E9DA0
 	ldr r0, [sp, #0x28]
@@ -9106,7 +9106,7 @@ _021EA026:
 	bl sub_0205C6DC
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	cmp r7, #1
@@ -9258,7 +9258,7 @@ _021EA156:
 	bl sub_0205C6DC
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	cmp r0, #1
@@ -25723,7 +25723,7 @@ _021F1BF6:
 	mov r1, #0
 	bl sub_0205C78C
 	add r0, r5, #0
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0205C6DC
@@ -29078,7 +29078,7 @@ ov01_021F35C4: ; 0x021F35C4
 	str r5, [r4]
 	str r7, [r4, #4]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	str r0, [r4, #0x10]
 	cmp r6, #0
 	beq _021F35FA
@@ -31027,7 +31027,7 @@ ov01_021F4404: ; 0x021F4404
 	mvn r1, r1
 	str r1, [r0, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0x10]
 	pop {r4, pc}
@@ -57792,7 +57792,7 @@ _02200964:
 	cmp r4, r0
 	beq _0220098C
 	ldr r0, [sp, #4]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	cmp r4, r0
 	beq _0220099A
 _0220098C:
@@ -66091,7 +66091,7 @@ _0220496C:
 	b _02204A8E
 _02204978:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	mov r1, #0
 	str r1, [r4, #0x14]
 	str r1, [r4, #0x1c]
@@ -68269,7 +68269,7 @@ ov01_022059AC: ; 0x022059AC
 	bl GetPlayerYCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r3, r0, #0
 	ldr r0, [r5, #0x20]
 	add r1, r4, #0

@@ -17,6 +17,7 @@
 #include "constants/maps.h"
 #include "constants/phone_contacts.h"
 #include "constants/spawns.h"
+#include "constants/global.fieldmap.h"
 
 #ifdef PM_ASM
 #define lt    0

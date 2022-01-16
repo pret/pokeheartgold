@@ -1735,7 +1735,7 @@
 #define FLAG_UNK_973                                               0x973
 #define FLAG_UNK_974                                               0x974
 #define FLAG_UNK_975                                               0x975
-#define FLAG_UNK_976                                               0x976
+#define FLAG_SYS_MET_BILL                                               0x976
 #define FLAG_UNK_977                                               0x977
 #define FLAG_UNK_978                                               0x978
 #define FLAG_UNK_979                                               0x979

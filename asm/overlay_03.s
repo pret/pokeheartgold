@@ -9605,7 +9605,7 @@ ScrCmd_720: ; 0x02258A18
 	bl VarGet
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerXCoord

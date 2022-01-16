@@ -1937,7 +1937,7 @@ sub_02053E08: ; 0x02053E08
 	add r7, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	mov r1, #0
 	add r2, r7, #0
 	str r4, [sp]

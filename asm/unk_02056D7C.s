@@ -279,7 +279,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -316,7 +316,7 @@ sub_02056EF4: ; 0x02056EF4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	ldr r1, _02056FCC ; =_021D41C4
 	ldr r2, [r1]
 	lsl r1, r4, #3
@@ -339,7 +339,7 @@ sub_02056FD0: ; 0x02056FD0
 	add r6, r2, #0
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	add r1, sp, #0
 	strb r4, [r1]
 	asr r2, r4, #8
@@ -1530,7 +1530,7 @@ _0205787A:
 	ldrh r1, [r6, #2]
 	sub r7, r0, r1
 	ldr r0, [sp, #0x18]
-	bl sub_0205C654
+	bl PlayerAvatar_GetFacingDirection
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	cmp r0, #0

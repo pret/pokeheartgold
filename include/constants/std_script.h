@@ -16,6 +16,7 @@
 #define std_receive_accessory           2007
 #define std_obtain_item_verbose         2008
 #define std_bag_is_full                 2009
+#define std_pokecenter_pc               2010
 #define std_mart_intro                  2011
 #define std_whited_out_to_mom           2012
 #define std_whited_out_to_pokecenter    2013
@@ -52,6 +53,14 @@
 #define std_fade_end_rival_outro_music  2071
 
 #define _std_bookshelves                2500
+#define std_picture_books               2500
+#define std_books_for_pkmn              2501
+#define std_chock_full                  2502
+#define std_magazines                   2503
+#define std_trash_empty                 2504
+#define std_vibrant_pkmn_goods          2505
+#define std_convenient_items            2506
+#define std_pkmn_merchandise            2507
 #define std_town_map                    2508
 
 #define _std_apricorn_tree              2800
