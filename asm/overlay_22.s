@@ -85,8 +85,8 @@ ScrCmd_118: ; 0x02259934
 	.balign 4, 0
 	thumb_func_end ScrCmd_118
 
-	thumb_func_start ScrCmd_119
-ScrCmd_119: ; 0x02259960
+	thumb_func_start ScrCmd_GetCoinAmount
+ScrCmd_GetCoinAmount: ; 0x02259960
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -105,10 +105,10 @@ ScrCmd_119: ; 0x02259960
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_119
+	thumb_func_end ScrCmd_GetCoinAmount
 
-	thumb_func_start ScrCmd_120
-ScrCmd_120: ; 0x0225998C
+	thumb_func_start ScrCmd_GiveCoins
+ScrCmd_GiveCoins: ; 0x0225998C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -127,10 +127,10 @@ ScrCmd_120: ; 0x0225998C
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_120
+	thumb_func_end ScrCmd_GiveCoins
 
-	thumb_func_start ScrCmd_121
-ScrCmd_121: ; 0x022599B8
+	thumb_func_start ScrCmd_TakeCoins
+ScrCmd_TakeCoins: ; 0x022599B8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -149,7 +149,7 @@ ScrCmd_121: ; 0x022599B8
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_121
+	thumb_func_end ScrCmd_TakeCoins
 
 	thumb_func_start ScrCmd_569
 ScrCmd_569: ; 0x022599E4
@@ -173,8 +173,8 @@ ScrCmd_569: ; 0x022599E4
 	.balign 4, 0
 	thumb_func_end ScrCmd_569
 
-	thumb_func_start ScrCmd_532
-ScrCmd_532: ; 0x02259A10
+	thumb_func_start ScrCmd_CheckCoinsImmediate
+ScrCmd_CheckCoinsImmediate: ; 0x02259A10
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r1, r6, #0
@@ -204,10 +204,10 @@ _02259A48:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_532
+	thumb_func_end ScrCmd_CheckCoinsImmediate
 
-	thumb_func_start ScrCmd_570
-ScrCmd_570: ; 0x02259A50
+	thumb_func_start ScrCmd_CheckCoinsVar
+ScrCmd_CheckCoinsVar: ; 0x02259A50
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -242,7 +242,7 @@ _02259A94:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_570
+	thumb_func_end ScrCmd_CheckCoinsVar
 
 	thumb_func_start ScrCmd_CheckGiveCoins
 ScrCmd_CheckGiveCoins: ; 0x02259A9C

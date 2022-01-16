@@ -36,7 +36,7 @@ _0062:
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _009C
 	script_overlay_cmd 3, 0
-	scrcmd_532 32780, 3
+	check_coins_immediate VAR_SPECIAL_x800C, 3
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _00AB
 	script_overlay_cmd 3, 1
@@ -66,7 +66,7 @@ scr_seq_T07R0401_010:
 	goto_if_eq _00F5
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 0, 1
+	casino_game 0, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -82,7 +82,7 @@ scr_seq_T07R0401_011:
 	goto_if_eq _0130
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 1, 1
+	casino_game 1, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -98,7 +98,7 @@ scr_seq_T07R0401_012:
 	goto_if_eq _016B
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 2, 1
+	casino_game 2, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -114,7 +114,7 @@ scr_seq_T07R0401_013:
 	goto_if_eq _01A6
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 3, 1
+	casino_game 3, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -130,7 +130,7 @@ scr_seq_T07R0401_014:
 	goto_if_eq _01E1
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 4, 1
+	casino_game 4, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -146,7 +146,7 @@ scr_seq_T07R0401_015:
 	goto_if_eq _021C
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 5, 1
+	casino_game 5, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -162,7 +162,7 @@ scr_seq_T07R0401_016:
 	goto_if_eq _0257
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 6, 1
+	casino_game 6, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -178,7 +178,7 @@ scr_seq_T07R0401_017:
 	goto_if_eq _0292
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 7, 1
+	casino_game 7, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -194,7 +194,7 @@ scr_seq_T07R0401_018:
 	goto_if_eq _02CD
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 8, 1
+	casino_game 8, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -210,7 +210,7 @@ scr_seq_T07R0401_019:
 	goto_if_eq _0308
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 9, 1
+	casino_game 9, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -226,7 +226,7 @@ scr_seq_T07R0401_020:
 	goto_if_eq _0343
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 10, 1
+	casino_game 10, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -242,7 +242,7 @@ scr_seq_T07R0401_021:
 	goto_if_eq _037E
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 11, 1
+	casino_game 11, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -260,7 +260,7 @@ scr_seq_T07R0401_022:
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 12, 1
+	casino_game 12, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -276,7 +276,7 @@ scr_seq_T07R0401_023:
 	goto_if_eq _03F9
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 13, 1
+	casino_game 13, 1
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -317,7 +317,7 @@ _043E:
 	goto _0531
 	.byte 0x02, 0x00
 _048B:
-	hasenoughmoneyimmediate 32780, 1000
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 1000
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _052E
 	checkgivecoins VAR_SPECIAL_x800C, 50
@@ -325,7 +325,7 @@ _048B:
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0523
 	submoneyimmediate 1000
-	scrcmd_120 50
+	give_coins 50
 	scrcmd_118 0
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
@@ -334,7 +334,7 @@ _048B:
 	goto _043E
 	.byte 0x02, 0x00
 _04D7:
-	hasenoughmoneyimmediate 32780, 10000
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 10000
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _052E
 	checkgivecoins VAR_SPECIAL_x800C, 500
@@ -342,7 +342,7 @@ _04D7:
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0523
 	submoneyimmediate 10000
-	scrcmd_120 500
+	give_coins 500
 	scrcmd_118 0
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
@@ -380,7 +380,7 @@ scr_seq_T07R0401_005:
 	snop
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _05B9
-	scrcmd_120 18
+	give_coins 18
 	buffer_players_name 0
 	npc_msg msg_0508_T07R0401_00012
 	play_fanfare SEQ_ME_ITEM

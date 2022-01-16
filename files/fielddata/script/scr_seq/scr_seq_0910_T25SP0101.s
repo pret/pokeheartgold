@@ -25,7 +25,7 @@ scr_seq_T25SP0101_000:
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 0, 0
+	casino_game 0, 0
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade
@@ -208,12 +208,12 @@ _0342:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0234
 _038B:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 2000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 2000
+	take_coins 2000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -233,12 +233,12 @@ _03CD:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0234
 _0416:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 4000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 4000
+	take_coins 4000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -258,12 +258,12 @@ _0458:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0234
 _04A1:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 6000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 6000
+	take_coins 6000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -283,12 +283,12 @@ _04E3:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0234
 _052C:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 10000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 10000
+	take_coins 10000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -308,12 +308,12 @@ _056E:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0234
 _05B7:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 10000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 10000
+	take_coins 10000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -333,12 +333,12 @@ _05F9:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0234
 _0642:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 10000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 10000
+	take_coins 10000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -358,12 +358,12 @@ _0684:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _02D0
 _06CD:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 1000
+	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -383,12 +383,12 @@ _070F:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _02D0
 _0758:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 1000
+	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -408,12 +408,12 @@ _079A:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _02D0
 _07E3:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 1000
+	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -433,12 +433,12 @@ _0825:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _02D0
 _086E:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 1000
 	goto_if_lt _0BE6
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	scrcmd_121 1000
+	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
@@ -533,7 +533,7 @@ _0A2E:
 _0A34:
 	compare VAR_TEMP_x4002, 63
 	goto_if_ne _0A58
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 200
 	goto_if_lt _0BF1
 	goto _0AB1
@@ -541,7 +541,7 @@ _0A34:
 _0A58:
 	compare VAR_TEMP_x4002, 23
 	goto_if_ne _0A7C
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 700
 	goto_if_lt _0BF1
 	goto _0AB1
@@ -549,13 +549,13 @@ _0A58:
 _0A7C:
 	compare VAR_TEMP_x4002, 27
 	goto_if_ne _0AA0
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 700
 	goto_if_lt _0BF1
 	goto _0AB1
 
 _0AA0:
-	scrcmd_119 32774
+	get_coin_amount VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 2100
 	goto_if_lt _0BF1
 _0AB1:
@@ -567,23 +567,23 @@ _0AB1:
 	npc_msg msg_0603_T25SP0101_00008
 	compare VAR_TEMP_x4002, 63
 	goto_if_ne _0AEB
-	scrcmd_121 200
+	take_coins 200
 	goto _0B1D
 
 _0AEB:
 	compare VAR_TEMP_x4002, 23
 	goto_if_ne _0B02
-	scrcmd_121 700
+	take_coins 700
 	goto _0B1D
 
 _0B02:
 	compare VAR_TEMP_x4002, 27
 	goto_if_ne _0B19
-	scrcmd_121 700
+	take_coins 700
 	goto _0B1D
 
 _0B19:
-	scrcmd_121 2100
+	take_coins 2100
 _0B1D:
 	scrcmd_118 0
 	get_game_version VAR_TEMP_x4000

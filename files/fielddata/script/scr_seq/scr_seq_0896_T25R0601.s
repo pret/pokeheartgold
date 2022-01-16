@@ -230,19 +230,19 @@ _0361:
 	goto _0276
 
 _036D:
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	return
 
 _0377:
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	return
 
 _0381:
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	return
 
 _038B:
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	return
 
 _0395:

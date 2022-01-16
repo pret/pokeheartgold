@@ -1802,9 +1802,9 @@
 .public ov20_022598C0
 .public ScrCmd_117
 .public ScrCmd_118
-.public ScrCmd_119
-.public ScrCmd_120
-.public ScrCmd_121
+.public ScrCmd_GetCoinAmount
+.public ScrCmd_GiveCoins
+.public ScrCmd_TakeCoins
 .public ScrCmd_122
 .public ScrCmd_123
 .public ScrCmd_124
@@ -2212,7 +2212,7 @@
 .public ScrCmd_PartySelectMon
 .public ScrCmd_530
 .public ScrCmd_BufferBackgroundName
-.public ScrCmd_532
+.public ScrCmd_CheckCoinsImmediate
 .public ScrCmd_CheckGiveCoins
 .public ScrCmd_534
 .public ScrCmd_535
@@ -2250,7 +2250,7 @@
 .public ScrCmd_567
 .public ScrCmd_568
 .public ScrCmd_569
-.public ScrCmd_570
+.public ScrCmd_CheckCoinsVar
 .public ScrCmd_571
 .public ScrCmd_572
 .public ScrCmd_573
@@ -2460,7 +2460,7 @@
 .public ScrCmd_777
 .public ScrCmd_GiveSpikyEarPichu
 .public ScrCmd_RadioMusicIsPlaying
-.public ScrCmd_780
+.public ScrCmd_CasinoGame
 .public ScrCmd_781
 .public ScrCmd_MartSell
 .public ScrCmd_783

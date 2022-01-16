@@ -143,7 +143,7 @@ scr_seq_D37R0102_001:
 	goto _030C
 	.byte 0x02, 0x00
 _01F5:
-	hasenoughmoneyimmediate 32780, 500
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 500
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0324
 	npc_msg msg_0117_D37R0102_00011
@@ -259,7 +259,7 @@ scr_seq_D37R0102_002:
 	goto _0498
 	.byte 0x02, 0x00
 _0375:
-	hasenoughmoneyimmediate 32780, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _04B0
 	npc_msg msg_0117_D37R0102_00018
@@ -455,7 +455,7 @@ _0664:
 _068A:
 	compare VAR_SPECIAL_x8004, 92
 	goto_if_ne _06CD
-	hasenoughmoneyimmediate 32780, 4500
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 4500
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0874
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -467,7 +467,7 @@ _068A:
 _06CD:
 	compare VAR_SPECIAL_x8004, 88
 	goto_if_ne _0710
-	hasenoughmoneyimmediate 32780, 650
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 650
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0874
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -479,7 +479,7 @@ _06CD:
 _0710:
 	compare VAR_SPECIAL_x8004, 89
 	goto_if_ne _0753
-	hasenoughmoneyimmediate 32780, 3500
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 3500
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0874
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -491,7 +491,7 @@ _0710:
 _0753:
 	compare VAR_SPECIAL_x8004, 90
 	goto_if_ne _0796
-	hasenoughmoneyimmediate 32780, 900
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 900
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0874
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -501,7 +501,7 @@ _0753:
 	goto _07C6
 
 _0796:
-	hasenoughmoneyimmediate 32780, 4600
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 4600
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0874
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
@@ -1410,7 +1410,7 @@ _1480:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _1530
-	hasenoughmoneyimmediate 32780, 100
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 100
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _153F
 	submoneyimmediate 100

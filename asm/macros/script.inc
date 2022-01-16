@@ -717,17 +717,17 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_119 arg0
+	.macro get_coin_amount arg0
 	.short 119
 	.short \arg0
 	.endm
 
-	.macro scrcmd_120 arg0
+	.macro give_coins arg0
 	.short 120
 	.short \arg0
 	.endm
 
-	.macro scrcmd_121 arg0
+	.macro take_coins arg0
 	.short 121
 	.short \arg0
 	.endm
@@ -3021,7 +3021,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_532 arg0, arg1
+	.macro check_coins_immediate arg0, arg1
 	.short 532
 	.short \arg0
 	.word \arg1
@@ -3237,7 +3237,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_570 arg0, arg1
+	.macro check_coins_var arg0, arg1
 	.short 570
 	.short \arg0
 	.short \arg1
@@ -4369,7 +4369,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_780 arg0, arg1
+	.macro casino_game arg0, arg1
 	.short 780
 	.byte \arg0
 	.byte \arg1

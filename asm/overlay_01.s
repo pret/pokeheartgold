@@ -61139,8 +61139,8 @@ _02202408:
 _0220242C: .word ov01_022093D0
 	thumb_func_end ov01_02202378
 
-	thumb_func_start ScrCmd_780
-ScrCmd_780: ; 0x02202430
+	thumb_func_start ScrCmd_CasinoGame
+ScrCmd_CasinoGame: ; 0x02202430
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
@@ -61176,7 +61176,7 @@ ScrCmd_780: ; 0x02202430
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0220247C: .word ScrNative_WaitApplication_DestroyTaskData
-	thumb_func_end ScrCmd_780
+	thumb_func_end ScrCmd_CasinoGame
 
 	thumb_func_start ScrCmd_745
 ScrCmd_745: ; 0x02202480

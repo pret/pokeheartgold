@@ -64,15 +64,15 @@ _00DA:
 	goto _011C
 
 _00E6:
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	return
 
 _00F0:
-	hasenoughmoneyimmediate 32780, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
 	return
 
 _00FA:
-	hasenoughmoneyimmediate 32780, 350
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 350
 	return
 
 _0104:

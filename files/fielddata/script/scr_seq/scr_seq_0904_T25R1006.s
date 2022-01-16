@@ -101,7 +101,7 @@ scr_seq_T25R1006_004:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _04A3
 _0156:
-	hasenoughmoneyimmediate 32780, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _04D2
 	submoneyimmediate 300
@@ -550,15 +550,15 @@ _0793:
 	goto _07D5
 
 _079F:
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	return
 
 _07A9:
-	hasenoughmoneyimmediate 32780, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
 	return
 
 _07B3:
-	hasenoughmoneyimmediate 32780, 350
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 350
 	return
 
 _07BD:

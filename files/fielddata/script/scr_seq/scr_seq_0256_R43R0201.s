@@ -24,7 +24,7 @@ _0037:
 	apply_movement obj_R43R0201_rocketm_2, _0128
 	wait_movement
 	npc_msg msg_0403_R43R0201_00000
-	hasenoughmoneyimmediate 32780, 1000
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 1000
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _006C
 	npc_msg msg_0403_R43R0201_00001
@@ -48,7 +48,7 @@ _0095:
 	apply_movement obj_R43R0201_rocketm_2, _0180
 	wait_movement
 	npc_msg msg_0403_R43R0201_00000
-	hasenoughmoneyimmediate 32780, 1000
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 1000
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _00CA
 	npc_msg msg_0403_R43R0201_00001

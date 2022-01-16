@@ -545,7 +545,7 @@ _07D8:
 _07E4:
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _07FF
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	goto _0812
 
 _07FF:
@@ -558,7 +558,7 @@ _0812:
 _0814:
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _082F
-	hasenoughmoneyimmediate 32780, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
 	goto _0842
 
 _082F:
@@ -571,7 +571,7 @@ _0842:
 _0844:
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _085F
-	hasenoughmoneyimmediate 32780, 350
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 350
 	goto _0872
 
 _085F:

@@ -24,7 +24,7 @@ scr_seq_T07SP0101_000:
 	closemsg
 	fade_screen 6, 1, 0, 0x0000
 	wait_fade
-	scrcmd_780 0, 0
+	casino_game 0, 0
 	scrcmd_150
 	fade_screen 6, 1, 1, 0x0000
 	wait_fade

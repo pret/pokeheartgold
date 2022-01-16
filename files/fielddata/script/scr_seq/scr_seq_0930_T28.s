@@ -45,7 +45,7 @@ scr_seq_T28_000:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0101
 _009D:
-	hasenoughmoneyimmediate 32780, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _00EC
 	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7
@@ -126,7 +126,7 @@ _01A3:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0257
 _01DF:
-	hasenoughmoneyimmediate 32780, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0262
 	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7

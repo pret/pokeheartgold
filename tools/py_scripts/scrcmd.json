@@ -696,7 +696,7 @@
     {
       "name": "hasenoughmoneyimmediate",
       "args": [
-        2,
+        "var",
         4
       ]
     },
@@ -734,21 +734,21 @@
       ]
     },
     {
-      "name": "scrcmd_119",
+      "name": "get_coin_amount",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_120",
+      "name": "give_coins",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_121",
+      "name": "take_coins",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3354,9 +3354,9 @@
       ]
     },
     {
-      "name": "scrcmd_532",
+      "name": "check_coins_immediate",
       "args": [
-        2,
+        "var",
         4
       ]
     },
@@ -3605,10 +3605,10 @@
       ]
     },
     {
-      "name": "scrcmd_570",
+      "name": "check_coins_var",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4215,7 +4215,7 @@
       "name": "buffer_type_name",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -4228,8 +4228,8 @@
     {
       "name": "scrcmd_670",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4884,7 +4884,7 @@
       ]
     },
     {
-      "name": "scrcmd_780",
+      "name": "casino_game",
       "args": [
         1,
         1

@@ -168,9 +168,9 @@ gScriptCmdTable:
 	.word ScrCmd_116                                    ; 116
 	.word ScrCmd_117                                    ; 117
 	.word ScrCmd_118                                    ; 118
-	.word ScrCmd_119                                    ; 119
-	.word ScrCmd_120                                    ; 120
-	.word ScrCmd_121                                    ; 121
+	.word ScrCmd_GetCoinAmount                                    ; 119
+	.word ScrCmd_GiveCoins                                    ; 120
+	.word ScrCmd_TakeCoins                                    ; 121
 	.word ScrCmd_122                                    ; 122
 	.word ScrCmd_123                                    ; 123
 	.word ScrCmd_124                                    ; 124
@@ -581,7 +581,7 @@ gScriptCmdTable:
 	.word ScrCmd_PartySelectMon                         ; 529
 	.word ScrCmd_530                                    ; 530
 	.word ScrCmd_BufferBackgroundName                                    ; 531
-	.word ScrCmd_532                                    ; 532
+	.word ScrCmd_CheckCoinsImmediate                                    ; 532
 	.word ScrCmd_CheckGiveCoins                         ; 533
 	.word ScrCmd_534                                    ; 534
 	.word ScrCmd_535                                    ; 535
@@ -619,7 +619,7 @@ gScriptCmdTable:
 	.word ScrCmd_567                                    ; 567
 	.word ScrCmd_568                                    ; 568
 	.word ScrCmd_569                                    ; 569
-	.word ScrCmd_570                                    ; 570
+	.word ScrCmd_CheckCoinsVar                                    ; 570
 	.word ScrCmd_571                                    ; 571
 	.word ScrCmd_572                                    ; 572
 	.word ScrCmd_573                                    ; 573
@@ -829,7 +829,7 @@ gScriptCmdTable:
 	.word ScrCmd_777                                    ; 777
 	.word ScrCmd_GiveSpikyEarPichu                                    ; 778
 	.word ScrCmd_RadioMusicIsPlaying                                    ; 779
-	.word ScrCmd_780                                    ; 780
+	.word ScrCmd_CasinoGame                                    ; 780
 	.word ScrCmd_781                                    ; 781
 	.word ScrCmd_MartSell                                    ; 782
 	.word ScrCmd_783                                    ; 783

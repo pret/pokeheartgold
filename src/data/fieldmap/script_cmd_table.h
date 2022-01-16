@@ -119,9 +119,9 @@ extern BOOL ScrCmd_115(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_116(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_117(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_118(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_119(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_120(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_121(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetCoinAmount(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveCoins(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TakeCoins(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_122(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_123(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_124(SCRIPTCONTEXT *ctx);
@@ -532,7 +532,7 @@ extern BOOL ScrCmd_528(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartySelectMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_530(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferBackgroundName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_532(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckCoinsImmediate(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_534(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_535(SCRIPTCONTEXT *ctx);
@@ -570,7 +570,7 @@ extern BOOL ScrCmd_566(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_567(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_568(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_569(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_570(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckCoinsVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_571(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_572(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_573(SCRIPTCONTEXT *ctx);
@@ -780,7 +780,7 @@ extern BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_777(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_780(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_783(SCRIPTCONTEXT *ctx);
@@ -974,9 +974,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_116,
     ScrCmd_117,
     ScrCmd_118,
-    ScrCmd_119,
-    ScrCmd_120,
-    ScrCmd_121,
+    ScrCmd_GetCoinAmount,
+    ScrCmd_GiveCoins,
+    ScrCmd_TakeCoins,
     ScrCmd_122,
     ScrCmd_123,
     ScrCmd_124,
@@ -1387,7 +1387,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartySelectMon,
     ScrCmd_530,
     ScrCmd_BufferBackgroundName,
-    ScrCmd_532,
+    ScrCmd_CheckCoinsImmediate,
     ScrCmd_CheckGiveCoins,
     ScrCmd_534,
     ScrCmd_535,
@@ -1425,7 +1425,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_567,
     ScrCmd_568,
     ScrCmd_569,
-    ScrCmd_570,
+    ScrCmd_CheckCoinsVar,
     ScrCmd_571,
     ScrCmd_572,
     ScrCmd_573,
@@ -1635,7 +1635,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_777,
     ScrCmd_GiveSpikyEarPichu,
     ScrCmd_RadioMusicIsPlaying,
-    ScrCmd_780,
+    ScrCmd_CasinoGame,
     ScrCmd_781,
     ScrCmd_MartSell,
     ScrCmd_783,

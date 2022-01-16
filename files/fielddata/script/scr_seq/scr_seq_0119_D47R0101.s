@@ -526,7 +526,7 @@ _0736:
 	compare VAR_SPECIAL_x8004, 6
 	goto_if_eq _0853
 _0773:
-	hasenoughmoneyimmediate 32780, 500
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 500
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0876
 	setvar VAR_SPECIAL_x800C, 500
@@ -913,7 +913,7 @@ _0C8F:
 	compare VAR_SPECIAL_x8004, 6
 	goto_if_eq _0DAC
 _0CCC:
-	hasenoughmoneyimmediate 32780, 500
+	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 500
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0DCF
 	setvar VAR_SPECIAL_x800C, 500
