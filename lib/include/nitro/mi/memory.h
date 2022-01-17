@@ -20,6 +20,10 @@ static inline void MI_CpuClear16(void *dest, u32 size) {
     MIi_CpuClear16(0, dest, size);
 }
 
+static inline void MI_CpuFill16(void *dest, u16 data, u32 size) {
+    MIi_CpuClear16(data, dest, size);
+}
+
 static inline void MI_CpuFill32(void *dest, u32 data, u32 size) {
     MIi_CpuClear32(data, dest, size);
 }
@@ -40,8 +44,8 @@ static inline void MI_CpuCopyFast(const void *src, void *dst, u32 size) {
     MIi_CpuCopyFast(src, dst, size);
 }
 
-static inline void MI_CpuFillFast(void *dst, int value, u32 size) {
-    MIi_CpuClearFast(value, dst, size);
+static inline void MI_CpuFillFast(void *dst, int data, u32 size) {
+    MIi_CpuClearFast(data, dst, size);
 }
 
 #endif //NITRO_MI_MEMORY_H

@@ -14,6 +14,7 @@ void CopyToBgTilemapRectText(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHe
 void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
 void FillBgTilemapRectText(BG *bg, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode);
 void FillBgTilemapRectAffine(BG *bg, u8 value, u8 x, u8 y, u8 width, u8 height);
+void ScheduleBgTilemapBufferTransfer(BGCONFIG *bgConfig, u8 layer);
 
 // Make a new BGCONFIG object, which manages the
 // eight background layers (two on each screen).
@@ -1103,4 +1104,79 @@ void FillBgTilemapRectAffine(BG *bg, u8 value, u8 x, u8 y, u8 width, u8 height) 
             buffer[pos] = value;
         }
     }
+}
+
+void BgTilemapRectChangePalette(BGCONFIG *bgConfig, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 palette) {
+    u16 *buffer;
+    u8 screenWidth, screenHeight;
+    u8 i, j;
+    u16 pos;
+    if (bgConfig->bgs[layer].tilemapBuffer == NULL) {
+        return;
+    }
+    buffer = bgConfig->bgs[layer].tilemapBuffer;
+    GetBgScreenDimensions(bgConfig->bgs[layer].size, &screenWidth, &screenHeight);
+    for (i = y; i < y + height; i++) {
+        if (i >= screenHeight) {
+            break;
+        }
+        for (j = x; j < x + width; j++) {
+            if (j >= screenWidth) {
+                break;
+            }
+            pos = GetTileMapIndexFromCoords(j, i, bgConfig->bgs[layer].size, bgConfig->bgs[layer].mode);
+            buffer[pos] = (buffer[pos] & 0xFFF) | (palette << 12);
+        }
+    }
+}
+
+void BgClearTilemapBufferAndCommit(BGCONFIG *bgConfig, u8 layer) {
+    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
+        MI_CpuClear16(bgConfig->bgs[layer].tilemapBuffer, bgConfig->bgs[layer].bufferSize);
+        BgCommitTilemapBufferToVram(bgConfig, layer);
+    }
+}
+
+void BgClearTilemapBufferAndSchedule(BGCONFIG *bgConfig, u8 layer) {
+    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
+        MI_CpuClear16(bgConfig->bgs[layer].tilemapBuffer, bgConfig->bgs[layer].bufferSize);
+        ScheduleBgTilemapBufferTransfer(bgConfig, layer);
+    }
+}
+
+void BgFillTilemapBufferAndCommit(BGCONFIG *bgConfig, u8 layer, u16 value) {
+    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
+        MI_CpuFill16(bgConfig->bgs[layer].tilemapBuffer, value, bgConfig->bgs[layer].bufferSize);
+        BgCommitTilemapBufferToVram(bgConfig, layer);
+    }
+}
+
+void BgFillTilemapBufferAndSchedule(BGCONFIG *bgConfig, u8 layer, u16 value) {
+    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
+        MI_CpuFill16(bgConfig->bgs[layer].tilemapBuffer, value, bgConfig->bgs[layer].bufferSize);
+        ScheduleBgTilemapBufferTransfer(bgConfig, layer);
+    }
+}
+
+void *BgGetCharPtr(u8 layer) {
+    switch (layer) {
+    case GF_BG_LYR_MAIN_0:
+        return G2_GetBG0CharPtr();
+    case GF_BG_LYR_MAIN_1:
+        return G2_GetBG1CharPtr();
+    case GF_BG_LYR_MAIN_2:
+        return G2_GetBG2CharPtr();
+    case GF_BG_LYR_MAIN_3:
+        return G2_GetBG3CharPtr();
+    case GF_BG_LYR_SUB_0:
+        return G2S_GetBG0CharPtr();
+    case GF_BG_LYR_SUB_1:
+        return G2S_GetBG1CharPtr();
+    case GF_BG_LYR_SUB_2:
+        return G2S_GetBG2CharPtr();
+    case GF_BG_LYR_SUB_3:
+        return G2S_GetBG3CharPtr();
+    }
+
+    return NULL;
 }
