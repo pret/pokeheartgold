@@ -9,6 +9,9 @@ void BgCopyOrUncompressTilemapBufferRangeToVram(BGCONFIG *bgConfig, u8 layer, co
 void CopyTilesToVram(u8 layer, const void *data, u32 offset, u32 size);
 void BG_LoadCharPixelData(BGCONFIG *bgConfig, u8 layer, const void *buffer, u32 offset, u32 size);
 void LoadBgVramChar(u8 layer, const void *data, u32 offset, u32 size);
+void CopyToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight);
+void CopyToBgTilemapRectText(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 a10);
+void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 a10);
 
 // Make a new BGCONFIG object, which manages the
 // eight background layers (two on each screen).
@@ -839,5 +842,129 @@ void BG_LoadPlttData(u8 layer, const void *data, u32 size, u32 offset) {
         GX_LoadBGPltt(data, offset, size);
     } else {
         GXS_LoadBGPltt(data, offset, size);
+    }
+}
+
+void BG_LoadBlankPltt(u8 layer, u32 size, u32 offset, HeapID heapId) {
+    void *data;
+
+    data = AllocFromHeapAtEnd(heapId, size);
+    memset(data, 0, size);
+    DC_FlushRange(data, size);
+    if (layer < GF_BG_LYR_MAIN_CNT) {
+        GX_LoadBGPltt(data, offset, size);
+    } else {
+        GXS_LoadBGPltt(data, offset, size);
+    }
+    FreeToHeapExplicit(heapId, data);
+}
+
+void BG_SetMaskColor(u8 layer, u16 value) {
+    BG_LoadPlttData(layer, &value, sizeof(u16), 0);
+}
+
+u16 GetTileMapIndexFromCoords(u8 x, u8 y, u8 size, u8 a3) {
+    u16 ret;
+    switch (size) {
+    case GF_BG_SCR_SIZE_128x128:
+        GF_ASSERT(x < 16);
+        GF_ASSERT(y < 16);
+        ret = y * 16 + x;
+        break;
+    case GF_BG_SCR_SIZE_256x256:
+        GF_ASSERT(x < 32);
+        GF_ASSERT(y < 32);
+        ret = y * 32 + x;
+        break;
+    case GF_BG_SCR_SIZE_256x512:
+        GF_ASSERT(x < 32);
+        GF_ASSERT(y < 64);
+        ret = y * 32 + x;
+        break;
+    case GF_BG_SCR_SIZE_512x256:
+        GF_ASSERT(x < 64);
+        GF_ASSERT(y < 32);
+        ret = ((x >> 5) * 32 + y) * 32 + (x & 0x1F);
+        break;
+    case GF_BG_SCR_SIZE_512x512:
+        GF_ASSERT(x < 64);
+        GF_ASSERT(y < 64);
+        if (a3 == 0) {
+            ret = (x >> 5) + (y >> 5) * 2;
+            ret *= 1024;
+            ret += (y & 0x1F) * 32 + (x & 0x1F);
+        } else {
+            ret = x + 64 * y;
+        }
+        break;
+    case GF_BG_SCR_SIZE_1024x1024:
+        GF_ASSERT(x < 128);
+        GF_ASSERT(y < 128);
+        ret = y * 128 + x;
+        break;
+    }
+    return ret;
+}
+
+u16 GetSrcTileMapIndexFromCoords(u8 dstX, u8 dstY, u8 width, u8 height) {
+    u8 r2 = 0;
+    u16 r3 = 0;
+    s16 r4 = width - 32;
+    s16 r7 = height - 32;
+    if (dstX / 32) {
+        r2 += 1;
+    }
+    if (dstY / 32) {
+        r2 += 2;
+    }
+    switch (r2) {
+    case 0:
+        if (r4 >= 0) {
+            r3 += dstY * 32 + dstX;
+        } else {
+            r3 += dstY * width + dstX;
+        }
+        break;
+    case 1:
+        if (r7 >= 0) {
+            r3 += 1024;
+        } else {
+            r3 += height * 32;
+        }
+        r3 += dstY * r4 + (dstX & 0x1F);
+        break;
+    case 2:
+        r3 += width * 32;
+        if (r4 >= 0) {
+            r3 += (dstY & 0x1F) * 32 + dstX;
+        } else {
+            r3 += (dstY & 0x1F) * width + dstX;
+        }
+        break;
+    case 3:
+        r3 += width * 32 + r7 * 32;
+        r3 += (dstY & 0x1F) * r4 + (dstX & 0x1F);
+        break;
+    }
+    return r3;
+}
+
+void LoadRectToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, const void *buf, u8 destX, u8 destY, u8 width, u8 height) {
+    CopyToBgTilemapRect(bgConfig, layer, destX, destY, width, height, buf, 0, 0, width, height);
+}
+
+void CopyToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight) {
+    if (bgConfig->bgs[layer].mode != GF_BG_TYPE_AFFINE) {
+        CopyToBgTilemapRectText(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 0);
+    } else {
+        CopyBgTilemapRectAffine(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 0);
+    }
+}
+
+void CopyRectToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight) {
+    if (bgConfig->bgs[layer].mode != GF_BG_TYPE_AFFINE) {
+        CopyToBgTilemapRectText(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 1);
+    } else {
+        CopyBgTilemapRectAffine(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 1);
     }
 }

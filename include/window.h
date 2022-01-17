@@ -105,7 +105,7 @@ enum GFBgScreenSize {
     GF_BG_SCR_SIZE_256x512,
     GF_BG_SCR_SIZE_512x256,
     GF_BG_SCR_SIZE_512x512,
-    GF_BG_SCR_SIZE_1024x1024
+    GF_BG_SCR_SIZE_1024x1024,
 };
 
 enum BgPosAdjustOp {
