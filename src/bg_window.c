@@ -12,6 +12,8 @@ void LoadBgVramChar(u8 layer, const void *data, u32 offset, u32 size);
 void CopyToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight);
 void CopyToBgTilemapRectText(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
 void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
+void FillBgTilemapRectText(BG *bg, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode);
+void FillBgTilemapRectAffine(BG *bg, u8 value, u8 x, u8 y, u8 width, u8 height);
 
 // Make a new BGCONFIG object, which manages the
 // eight background layers (two on each screen).
@@ -863,7 +865,7 @@ void BG_SetMaskColor(u8 layer, u16 value) {
     BG_LoadPlttData(layer, &value, sizeof(u16), 0);
 }
 
-u16 GetTileMapIndexFromCoords(u8 x, u8 y, u8 size, u8 a3) {
+u16 GetTileMapIndexFromCoords(u8 x, u8 y, u8 size, u8 mode) {
     u16 ret;
     switch (size) {
     case GF_BG_SCR_SIZE_128x128:
@@ -889,7 +891,7 @@ u16 GetTileMapIndexFromCoords(u8 x, u8 y, u8 size, u8 a3) {
     case GF_BG_SCR_SIZE_512x512:
         GF_ASSERT(x < 64);
         GF_ASSERT(y < 64);
-        if (a3 == 0) {
+        if (mode == GF_BG_TYPE_TEXT) {
             ret = (x >> 5) + (y >> 5) * 2;
             ret *= 1024;
             ret += (y & 0x1F) * 32 + (x & 0x1F);
@@ -1037,6 +1039,68 @@ void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHe
                 }
                 buffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buf[GetSrcTileMapIndexFromCoords(srcX + j, srcY + i, srcWidth, srcHeight)];
             }
+        }
+    }
+}
+
+void FillBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode) {
+    if (bgConfig->bgs[layer].mode != GF_BG_TYPE_AFFINE) {
+        FillBgTilemapRectText(&bgConfig->bgs[layer], value, x, y, width, height, mode);
+    } else {
+        FillBgTilemapRectAffine(&bgConfig->bgs[layer], value, x, y, width, height);
+    }
+}
+
+void FillBgTilemapRectText(BG *bg, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode) {
+    u16 *buffer;
+    u8 screenWidth, screenHeight;
+    u8 i, j;
+    u16 pos;
+    if (bg->tilemapBuffer == NULL) {
+        return;
+    }
+    buffer = bg->tilemapBuffer;
+    GetBgScreenDimensions(bg->size, &screenWidth, &screenHeight);
+    for (i = y; i < y + height; i++) {
+        if (i >= screenHeight) {
+            break;
+        }
+        for (j = x; j < x + width; j++) {
+            if (j >= screenWidth) {
+                break;
+            }
+            pos = GetTileMapIndexFromCoords(j, i, bg->size, bg->mode);
+            if (mode == TILEMAP_FILL_OVWT_PAL) {
+                buffer[pos] = value;
+            } else if (mode == TILEMAP_FILL_KEEP_PAL) {
+                buffer[pos] = (buffer[pos] & 0xF000) + (value & 0xFFF);
+            } else {
+                buffer[pos] = (mode << 12) + (value & 0xFFF);
+            }
+        }
+    }
+}
+
+void FillBgTilemapRectAffine(BG *bg, u8 value, u8 x, u8 y, u8 width, u8 height) {
+    u8 *buffer;
+    u8 screenWidth, screenHeight;
+    u8 i, j;
+    u16 pos;
+    if (bg->tilemapBuffer == NULL) {
+        return;
+    }
+    buffer = bg->tilemapBuffer;
+    GetBgScreenDimensions(bg->size, &screenWidth, &screenHeight);
+    for (i = y; i < y + height; i++) {
+        if (i >= screenHeight) {
+            break;
+        }
+        for (j = x; j < x + width; j++) {
+            if (j >= screenWidth) {
+                break;
+            }
+            pos = GetTileMapIndexFromCoords(j, i, bg->size, bg->mode);
+            buffer[pos] = value;
         }
     }
 }

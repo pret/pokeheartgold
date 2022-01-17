@@ -144,6 +144,10 @@ struct GFBgModeSet {
 #define TILEMAP_COPY_SRC_FLAT       0  // Source dimensions are equal to dest dimensions
 #define TILEMAP_COPY_SRC_RECT       1  // Dest dimensions carve out a window from source
 
+// Passed to FillBgTilemapRect(Text) mode arg. 0-15 = palette selection. 16,17 as defined.
+#define TILEMAP_FILL_KEEP_PAL      16  // Do not replace the selected palette index
+#define TILEMAP_FILL_OVWT_PAL      17  // Fill value includes palette
+
 void BgSetPosTextAndCommit(BGCONFIG *bgConfig, enum GFBgLayer bgId, enum BgPosAdjustOp op, fx32 value);
 
 #endif //POKEHEARTGOLD_WINDOW_H
