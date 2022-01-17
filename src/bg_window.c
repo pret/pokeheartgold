@@ -10,8 +10,8 @@ void CopyTilesToVram(u8 layer, const void *data, u32 offset, u32 size);
 void BG_LoadCharPixelData(BGCONFIG *bgConfig, u8 layer, const void *buffer, u32 offset, u32 size);
 void LoadBgVramChar(u8 layer, const void *data, u32 offset, u32 size);
 void CopyToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight);
-void CopyToBgTilemapRectText(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 a10);
-void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 a10);
+void CopyToBgTilemapRectText(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
+void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
 
 // Make a new BGCONFIG object, which manages the
 // eight background layers (two on each screen).
@@ -955,16 +955,88 @@ void LoadRectToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, const void *buf, u8 d
 
 void CopyToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight) {
     if (bgConfig->bgs[layer].mode != GF_BG_TYPE_AFFINE) {
-        CopyToBgTilemapRectText(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 0);
+        CopyToBgTilemapRectText(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, TILEMAP_COPY_SRC_FLAT);
     } else {
-        CopyBgTilemapRectAffine(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 0);
+        CopyBgTilemapRectAffine(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, TILEMAP_COPY_SRC_FLAT);
     }
 }
 
 void CopyRectToBgTilemapRect(BGCONFIG *bgConfig, u8 layer, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight) {
     if (bgConfig->bgs[layer].mode != GF_BG_TYPE_AFFINE) {
-        CopyToBgTilemapRectText(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 1);
+        CopyToBgTilemapRectText(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, TILEMAP_COPY_SRC_RECT);
     } else {
-        CopyBgTilemapRectAffine(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, 1);
+        CopyBgTilemapRectAffine(&bgConfig->bgs[layer], destX, destY, destWidth, destHeight, buf, srcX, srcY, srcWidth, srcHeight, TILEMAP_COPY_SRC_RECT);
+    }
+}
+
+void CopyToBgTilemapRectText(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode) {
+    u16 *buffer;
+    u8 screenWidth, screenHeight;
+    u8 i, j;
+    if (bg->tilemapBuffer == NULL) {
+        return;
+    }
+    buffer = bg->tilemapBuffer;
+    GetBgScreenDimensions(bg->size, &screenWidth, &screenHeight);
+    if (mode == TILEMAP_COPY_SRC_FLAT) {
+        for (i = 0; i < destHeight; i++) {
+            if (destY + i >= screenHeight || srcY + i >= srcHeight) {
+                break;
+            }
+            for (j = 0; j < destWidth; j++) {
+                if (destX + j >= screenWidth || srcX + j >= srcWidth) {
+                    break;
+                }
+                buffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buf[(srcY + i) * srcWidth + srcX + j];
+            }
+        }
+    } else {
+        for (i = 0; i < destHeight; i++) {
+            if (destY + i >= screenHeight || srcY + i >= srcHeight) {
+                break;
+            }
+            for (j = 0; j < destWidth; j++) {
+                if (destX + j >= screenWidth || srcX + j >= srcWidth) {
+                    break;
+                }
+                buffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buf[GetSrcTileMapIndexFromCoords(srcX + j, srcY + i, srcWidth, srcHeight)];
+            }
+        }
+    }
+}
+
+void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode) {
+    u8 *buffer;
+    u8 screenWidth, screenHeight;
+    u8 i, j;
+    if (bg->tilemapBuffer == NULL) {
+        return;
+    }
+    buffer = bg->tilemapBuffer;
+    GetBgScreenDimensions(bg->size, &screenWidth, &screenHeight);
+    if (mode == TILEMAP_COPY_SRC_FLAT) {
+        for (i = 0; i < destHeight; i++) {
+            if (destY + i >= screenHeight || srcY + i >= srcHeight) {
+                break;
+            }
+            for (j = 0; j < destWidth; j++) {
+                if (destX + j >= screenWidth || srcX + j >= srcWidth) {
+                    break;
+                }
+                buffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buf[(srcY + i) * srcWidth + srcX + j];
+            }
+        }
+    } else {
+        for (i = 0; i < destHeight; i++) {
+            if (destY + i >= screenHeight || srcY + i >= srcHeight) {
+                break;
+            }
+            for (j = 0; j < destWidth; j++) {
+                if (destX + j >= screenWidth || srcX + j >= srcWidth) {
+                    break;
+                }
+                buffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buf[GetSrcTileMapIndexFromCoords(srcX + j, srcY + i, srcWidth, srcHeight)];
+            }
+        }
     }
 }

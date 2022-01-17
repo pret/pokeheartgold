@@ -141,6 +141,9 @@ struct GFBgModeSet {
     GXBG0As _2d3dSwitch;
 };
 
+#define TILEMAP_COPY_SRC_FLAT       0  // Source dimensions are equal to dest dimensions
+#define TILEMAP_COPY_SRC_RECT       1  // Dest dimensions carve out a window from source
+
 void BgSetPosTextAndCommit(BGCONFIG *bgConfig, enum GFBgLayer bgId, enum BgPosAdjustOp op, fx32 value);
 
 #endif //POKEHEARTGOLD_WINDOW_H
