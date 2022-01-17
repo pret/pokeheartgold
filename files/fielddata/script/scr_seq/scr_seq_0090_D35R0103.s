@@ -53,7 +53,7 @@ scr_seq_D35R0103_007:
 	end
 
 _00BF:
-	scrcmd_221 16384, 1
+	scrcmd_221 VAR_TEMP_x4000, 1
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0127
 	compare VAR_TEMP_x400A, 1
@@ -95,14 +95,14 @@ scr_seq_D35R0103_000:
 	scrcmd_604 48
 	npc_msg msg_0113_D35R0103_00000
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	buffer_players_name 0
 	gender_msgbox msg_0113_D35R0103_00001, msg_0113_D35R0103_00002
@@ -346,7 +346,7 @@ _0436:
 	goto_if_eq _0620
 	npc_msg msg_0113_D35R0103_00008
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	move_person obj_D35R0103_wataru, 28, 1, 24, 1
 	move_person obj_D35R0103_tsure_poke_607, 27, 1, 24, 3
@@ -366,7 +366,7 @@ _0436:
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	setflag FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN
 	setflag FLAG_UNK_1E8
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	apply_movement obj_D35R0103_wataru, _06BC
 	apply_movement obj_D35R0103_tsure_poke_607, _06C4
@@ -552,7 +552,7 @@ scr_seq_D35R0103_004:
 	check_battle_won VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _089C
-	scrcmd_221 16384, 0
+	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _07D0
 	setflag FLAG_UNK_0CB
@@ -575,7 +575,7 @@ scr_seq_D35R0103_005:
 	check_battle_won VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _089C
-	scrcmd_221 16384, 0
+	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0834
 	setflag FLAG_UNK_0CC
@@ -598,7 +598,7 @@ scr_seq_D35R0103_006:
 	check_battle_won VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _089C
-	scrcmd_221 16384, 0
+	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0898
 	setflag FLAG_UNK_0CD

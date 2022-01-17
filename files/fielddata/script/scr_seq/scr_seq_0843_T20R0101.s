@@ -209,10 +209,10 @@ scr_seq_T20R0101_012:
 
 _02EE:
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input 0, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	touchscreen_menu_hide
 	bufferpartymonnick 1, 0
@@ -656,10 +656,10 @@ scr_seq_T20R0101_002:
 	closemsg
 	callstd std_fade_end_friend_music
 _0904:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	name_rival VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0904
@@ -1267,14 +1267,14 @@ scr_seq_T20R0101_013:
 	closemsg
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _1103
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	heal_party
 	scrcmd_436
 	scrcmd_150
 	wait_fanfare
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _1103:
 	releaseall

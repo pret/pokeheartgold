@@ -37,10 +37,10 @@
 	scrdef_end
 
 _0076:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D22R0101, 0, 46, 50, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
 
@@ -337,10 +337,10 @@ _045E:
 	closemsg
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _049E
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input 255, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _049E:
 	buffer_bug_contest_mon_nick 5, VAR_SPECIAL_x800C

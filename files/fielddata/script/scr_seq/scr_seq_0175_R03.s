@@ -27,7 +27,7 @@ scr_seq_R03_001:
 
 _0050:
 	scrcmd_518 3
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_x800C
@@ -48,7 +48,7 @@ _00A2:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 _00B2:
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _00BE:
 	play_cry SPECIES_DEOXYS, 0
@@ -70,7 +70,7 @@ scr_seq_R03_002:
 
 _0107:
 	scrcmd_518 2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_x800C
@@ -97,7 +97,7 @@ _0170:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 _0180:
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _018C:
 	play_cry SPECIES_DEOXYS, 0
@@ -119,7 +119,7 @@ scr_seq_R03_003:
 
 _01D5:
 	scrcmd_518 1
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_x800C
@@ -133,7 +133,7 @@ _01D5:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 _0220:
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _022C:
 	play_cry SPECIES_DEOXYS, 0
@@ -155,7 +155,7 @@ scr_seq_R03_004:
 
 _0275:
 	scrcmd_518 0
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_x800C
@@ -169,7 +169,7 @@ _0275:
 	wait 10, VAR_SPECIAL_x800C
 	scrcmd_602 1
 _02C0:
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _02CC:
 	play_cry SPECIES_DEOXYS, 0

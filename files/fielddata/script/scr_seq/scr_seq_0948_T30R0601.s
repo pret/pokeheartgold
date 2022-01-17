@@ -38,12 +38,12 @@ _005D:
 	goto _0068
 
 _0068:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8002
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8002, 255
 	goto_if_eq _014A
@@ -55,12 +55,12 @@ _0068:
 	goto_if_eq _013F
 	npc_msg msg_0635_T30R0601_00006
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_394 32770
 	scrcmd_395 32769
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8001, 255
 	goto_if_eq _005D
@@ -113,12 +113,12 @@ scr_seq_T30R0601_001:
 	npc_msg msg_0635_T30R0601_00010
 	npc_msg msg_0635_T30R0601_00012
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8005
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8005, 255
 	goto_if_eq _022D
@@ -130,12 +130,12 @@ scr_seq_T30R0601_001:
 	goto_if_eq _0222
 	npc_msg msg_0635_T30R0601_00013
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_467 32773
 	scrcmd_469 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _022D
@@ -268,12 +268,12 @@ _0346:
 _0359:
 	npc_msg msg_0635_T30R0601_00030
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8000
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8000, 255
 	goto_if_eq _02A5
@@ -296,12 +296,12 @@ _0359:
 	goto _03EF
 
 _03EF:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_468 32768, 434
 	scrcmd_469 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _02A5
@@ -348,12 +348,12 @@ _0490:
 _04AC:
 	npc_msg msg_0635_T30R0601_00045
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x8000
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8000, 255
 	goto_if_eq _06EE
@@ -406,12 +406,12 @@ _0599:
 
 _05BB:
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_468 32768, 32771
 	scrcmd_469 32780
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _06EE

@@ -47,10 +47,10 @@ _004B:
 _00A0:
 	closemsg
 	setvar VAR_TEMP_x4000, 0
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_TEMP_x4000
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _00C6:
 	npc_msg msg_0586_T25R0401_00003

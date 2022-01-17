@@ -41,10 +41,10 @@ scr_seq_R35R0201_010:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D22R0102, 0, 40, 86, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
@@ -293,10 +293,10 @@ _03C1:
 	scrcmd_604 48
 _03E3:
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D22R0102, 0, 40, 86, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_596 VAR_SPECIAL_x800C
@@ -394,11 +394,11 @@ _0546:
 	wait_movement
 _056D:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 12
 	lockall
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

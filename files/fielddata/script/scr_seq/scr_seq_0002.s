@@ -39,7 +39,7 @@ _005C:
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _0352
 _008A:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	scrcmd_117
@@ -47,7 +47,7 @@ _008A:
 	get_party_selection VAR_SPECIAL_x8001
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8001, 255
 	goto_if_eq _0352
@@ -150,7 +150,7 @@ _0241:
 	getmenuchoice VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _03A4
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	scrcmd_117
@@ -159,7 +159,7 @@ _0241:
 	nop_var_490 VAR_SPECIAL_x8006
 	scrcmd_150
 	scrcmd_116 1, 21, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8006, 4
 	goto_if_eq _03A4

@@ -159,10 +159,10 @@ scr_seq_R22_003:
 	apply_movement obj_partner_poke, _0350
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 0x7FFF
+	fade_screen 6, 6, 0, RGB_WHITE
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x7FFF
+	fade_screen 6, 6, 1, RGB_WHITE
 	wait_fade
 	apply_movement obj_player, _03C4
 	apply_movement obj_R22_var_1, _0320
@@ -175,7 +175,7 @@ scr_seq_R22_003:
 	clearflag FLAG_HIDE_TOHJO_FALLS_GIOVANNI
 	clearflag FLAG_HIDE_TOHJO_FALLS_FRIEND
 	warp MAP_D45R0102, 0, 6, 8, 1
-	fade_screen 6, 15, 1, 0x7FFF
+	fade_screen 6, 15, 1, RGB_WHITE
 	wait_fade
 	releaseall
 	end
@@ -380,11 +380,11 @@ _0523:
 	wait_movement
 _054A:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 71
 	lockall
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

@@ -228,10 +228,10 @@ _0346:
 	goto_if_set FLAG_FOUND_SECOND_FARFETCHD, _1207
 	clearflag FLAG_HIDE_FARFETCHD_1_FOUND
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D36R0101, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00001
@@ -590,10 +590,10 @@ _08DF:
 	goto_if_set FLAG_FOUND_FIRST_FARFETCHD, _1207
 	clearflag FLAG_HIDE_FARFETCHD_1_FOUND
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D36R0101, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00001
@@ -1005,12 +1005,12 @@ scr_seq_D36R0101_002:
 	npc_msg msg_0115_D36R0101_00014
 	closemsg
 _0F0B:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _1093
@@ -1040,12 +1040,12 @@ _0F99:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _10C7
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	choose_move_ui 1, VAR_SPECIAL_x8006, 29
 	get_move_selection 1, VAR_SPECIAL_x8001
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8001, 4
 	goto_if_eq _10AB
@@ -1224,10 +1224,10 @@ _1207:
 	show_person obj_D36R0101_gsfighter
 	clearflag FLAG_HIDE_FARFETCHD_2_FOUND
 	wait 20, VAR_SPECIAL_x8004
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D36R0101, 0, 15, 65, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 5, VAR_SPECIAL_x8004
 	npc_msg msg_0115_D36R0101_00002
@@ -1539,11 +1539,11 @@ _1677:
 	wait_movement
 _169E:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 8
 	lockall
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -1801,10 +1801,10 @@ _1A51:
 	subvar VAR_TEMP_x4009, 1
 	setvar VAR_TEMP_x400A, 0
 	nop_var_490 VAR_TEMP_x4009
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input VAR_TEMP_x4009, VAR_TEMP_x400A
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_TEMP_x400A, 1
 	goto_if_eq _1AC5
@@ -2210,10 +2210,10 @@ _1F48:
 	closemsg
 	callstd std_fade_end_friend_music
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 0x7FFF
+	fade_screen 6, 6, 0, RGB_WHITE
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x7FFF
+	fade_screen 6, 6, 1, RGB_WHITE
 	wait_fade
 	apply_movement obj_player, _2014
 	apply_movement obj_D36R0101_var_1, _208C
@@ -2227,7 +2227,7 @@ _1F48:
 	clearflag FLAG_HIDE_ROUTE_22_FRIEND
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	warp MAP_R22, 0, 954, 280, 1
-	fade_screen 6, 15, 1, 0x7FFF
+	fade_screen 6, 15, 1, RGB_WHITE
 	wait_fade
 	releaseall
 	end

@@ -183,7 +183,7 @@ _024D:
 	apply_movement obj_player, _03BC
 	wait_movement
 	call _00FD
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_579
 	scrcmd_815 0
@@ -193,7 +193,7 @@ _024D:
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0314
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	call _00A7
 	releaseall
@@ -201,7 +201,7 @@ _024D:
 
 _0314:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	call _00A7
 	goto _0343
@@ -461,7 +461,7 @@ scr_seq_T25R1201_016:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _06D1
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	scrcmd_681 32772

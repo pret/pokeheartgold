@@ -106,28 +106,28 @@ _017E:
 	goto_if_ge _01C4
 	compare VAR_UNK_403E, 6
 	goto_if_eq _01EE
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0205, 0, 5, 24, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01C0:
 	releaseall
 	end
 
 _01C4:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0218, 0, 5, 24, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01C0
 
 _01EE:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0216, 0, 5, 24, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01C0
 

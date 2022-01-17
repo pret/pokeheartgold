@@ -110,12 +110,12 @@ scr_seq_D17R0110_006:
 	npc_msg msg_0058_D17R0110_00000
 	closemsg
 	stop_se SEQ_SE_GS_KYOUHUU
-	fade_screen 4, 4, 0, 0x7FFF
+	fade_screen 4, 4, 0, RGB_WHITE
 	wait_fade
 	scrcmd_755
 	scrcmd_757
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 4, 4, 1, 0x7FFF
+	fade_screen 4, 4, 1, RGB_WHITE
 	wait_fade
 	wait_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	apply_movement obj_D17R0110_dancer, _0754
@@ -154,7 +154,7 @@ scr_seq_D17R0110_006:
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	fade_screen 4, 6, 1, 0x7FFF
+	fade_screen 4, 6, 1, RGB_WHITE
 	scrcmd_765
 	wait_fade
 	wait 4, VAR_SPECIAL_x800C
@@ -258,10 +258,10 @@ scr_seq_D17R0110_006:
 	wait 41, VAR_SPECIAL_x800C
 	scrcmd_763
 	wait 8, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_761 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 20, VAR_SPECIAL_x800C
 	scrcmd_758 0
@@ -280,10 +280,10 @@ scr_seq_D17R0110_006:
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait 32, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_761 2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 22, VAR_SPECIAL_x800C
 	apply_movement obj_D17R0110_dancer, _07C4
@@ -312,14 +312,14 @@ scr_seq_D17R0110_006:
 	scrcmd_081 0
 	scrcmd_756
 	setvar VAR_TEMP_x400B, 123
-	fade_screen 6, 1, 0, 0x7FFF
+	fade_screen 6, 1, 0, RGB_WHITE
 	wait_fade
 	scrcmd_773 0
 	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	show_person obj_D17R0110_hou_obj01
 	scrcmd_375 obj_D17R0110_hou_obj01
 	wait 6, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x7FFF
+	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
 	wait 20, VAR_SPECIAL_x800C
 	scrcmd_764

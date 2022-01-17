@@ -50,7 +50,7 @@ _008D:
 _0098:
 	npc_msg msg_0378_R31_00001
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_TEMP_x4000
@@ -72,7 +72,7 @@ _0098:
 	goto_if_eq _0295
 	scrcmd_364 VAR_TEMP_x4000
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
@@ -131,7 +131,7 @@ _01FC:
 
 _0206:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00009
 	waitbutton
@@ -141,7 +141,7 @@ _0206:
 
 _021F:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00015
 	waitbutton
@@ -151,7 +151,7 @@ _021F:
 
 _0238:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00002
 	waitbutton
@@ -161,7 +161,7 @@ _0238:
 
 _0251:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00003
 	waitbutton
@@ -171,7 +171,7 @@ _0251:
 
 _026A:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00004
 	closemsg
@@ -184,7 +184,7 @@ _026A:
 	.byte 0x02, 0x00
 _0295:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0378_R31_00010
 	waitbutton

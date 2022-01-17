@@ -103,7 +103,7 @@ _01A1:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 1
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_160
 	scrcmd_150
@@ -130,7 +130,7 @@ _021B:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 3
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_161
 	scrcmd_150
@@ -161,11 +161,11 @@ _02A6:
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_257 2
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_350
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0738_UNION_00202
 	scrcmd_257 102
@@ -199,7 +199,7 @@ _0353:
 	scrcmd_348 30
 	scrcmd_257 4
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_159
 	scrcmd_150
@@ -221,7 +221,7 @@ _03B3:
 	scrcmd_348 30
 	scrcmd_257 5
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_162
 	scrcmd_150
@@ -249,7 +249,7 @@ _0435:
 	scrcmd_348 30
 	scrcmd_257 6
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_629
 	scrcmd_150
@@ -298,11 +298,11 @@ _04AF:
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_159
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
 	.byte 0x02, 0x00
 _0528:
@@ -330,11 +330,11 @@ _0528:
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_629
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
 	.byte 0x02, 0x00
 _05C3:
@@ -365,11 +365,11 @@ _05DB:
 	non_npc_msg_var VAR_SPECIAL_x800C
 	wait 30, VAR_SPECIAL_x800C
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_162
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
 	.byte 0x02, 0x00
 _0654:
@@ -529,7 +529,7 @@ _0863:
 	scrcmd_257 1
 	closemsg
 	scrcmd_261 5
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_160
 	scrcmd_150
@@ -561,7 +561,7 @@ _08DB:
 	scrcmd_257 3
 	closemsg
 	scrcmd_261 7
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_161
 	scrcmd_150
@@ -599,11 +599,11 @@ _0974:
 	scrcmd_257 2
 	closemsg
 	scrcmd_261 6
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_350
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0738_UNION_00202
 	scrcmd_257 102
@@ -645,7 +645,7 @@ _0A44:
 	scrcmd_257 5
 	closemsg
 	scrcmd_261 2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_162
 	scrcmd_150
@@ -673,7 +673,7 @@ _0AA2:
 	scrcmd_257 6
 	closemsg
 	scrcmd_261 13
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_629
 	scrcmd_150
@@ -698,7 +698,7 @@ _0B11:
 	scrcmd_257 4
 	closemsg
 	scrcmd_261 1
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_159
 	scrcmd_150
@@ -742,7 +742,7 @@ _0BC2:
 	.byte 0x01, 0x00, 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
 _0BDA:
 	scrcmd_265
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	return
 
 scr_seq_UNION_005:

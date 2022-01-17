@@ -153,10 +153,10 @@ scr_seq_D24R0205_006:
 	closemsg
 	fade_out_bgm 0, 30
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x0000
+	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x0000
+	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	apply_movement obj_D24R0205_suit, _02E4
@@ -164,20 +164,20 @@ scr_seq_D24R0205_006:
 	npc_msg msg_0076_D24R0205_00008
 	closemsg
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x0000
+	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x0000
+	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 3
 	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
 	setflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D51R0201, 0, 16, 24, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end
@@ -275,19 +275,19 @@ scr_seq_D24R0205_009:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x0000
+	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x0000
+	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	apply_movement obj_player, _0468
 	wait_movement
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x0000
+	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x0000
+	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
@@ -296,10 +296,10 @@ scr_seq_D24R0205_009:
 	setflag FLAG_UNK_2DD
 	setflag FLAG_UNK_2DB
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D51R0201, 0, 16, 24, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

@@ -165,13 +165,13 @@ _0216:
 	npc_msg msg_0626_T29_00015
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	setflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	hide_person obj_T29_gsleader7
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

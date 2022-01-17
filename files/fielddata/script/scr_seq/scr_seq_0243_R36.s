@@ -216,7 +216,7 @@ _02E2:
 	scrcmd_683 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 4
 	call_if_eq _023F
-	scrcmd_221 16384, 0
+	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0251
 	releaseall

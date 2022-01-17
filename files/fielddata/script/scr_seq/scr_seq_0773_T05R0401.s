@@ -24,12 +24,12 @@ _002E:
 	npc_msg msg_0480_T05R0401_00001
 	scrcmd_049
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _00B3
@@ -75,10 +75,10 @@ _00D9:
 	npc_msg msg_0480_T05R0401_00003
 	closemsg
 	setvar VAR_SPECIAL_x800C, 0
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _011F

@@ -893,7 +893,7 @@ scr_seq_0004_010:
 	scrcmd_436
 	scrcmd_152
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	end
 
@@ -924,11 +924,11 @@ _0EEB:
 	.byte 0x02, 0x00
 _0EF6:
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_252
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0F1C
 	.byte 0x02, 0x00

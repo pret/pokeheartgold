@@ -43,10 +43,10 @@ _0071:
 	apply_movement obj_R10R0202_gsbigman, _0108
 	wait_movement
 	wait_se SEQ_SE_GS_W012
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_R10R0201, 0, 13, 7, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0345_R10R0202_00015
 	apply_movement obj_R10R0202_gsbigman, _0120
@@ -180,12 +180,12 @@ scr_seq_R10R0202_005:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _02CD
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _02CD

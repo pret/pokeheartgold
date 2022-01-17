@@ -1142,11 +1142,11 @@ scr_seq_D35R0102_029:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_PL_BOWABOWA
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
 	warp MAP_D35R0102, 0, 50, 4, 2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

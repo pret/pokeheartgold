@@ -150,10 +150,10 @@ scr_seq_T30GYM0101_002:
 	play_se SEQ_SE_DP_GYURU
 	apply_movement obj_player, _0218
 	wait_movement
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_T30GYM0101, 0, 8, 83, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

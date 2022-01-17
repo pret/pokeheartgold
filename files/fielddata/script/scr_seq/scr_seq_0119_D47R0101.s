@@ -39,10 +39,10 @@ _0062:
 	apply_movement obj_player, _01B4
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D47R0102, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
@@ -557,10 +557,10 @@ _0773:
 	safari_zone_action 0, 0
 	set_dynamic_warp MAP_D47R0101, 1, 5, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D47R0102, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
@@ -944,10 +944,10 @@ _0CCC:
 	safari_zone_action 0, 1
 	set_dynamic_warp MAP_D47R0101, 2, 19, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D47R0102, 0, 79, 100, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
 	scrcmd_606
@@ -1067,11 +1067,11 @@ scr_seq_D47R0101_005:
 	npc_msg msg_0135_D47R0101_00027
 	closemsg
 	clearflag FLAG_UNK_99D
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_716
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto_if_set FLAG_UNK_99D, _0EFC
 	releaseall

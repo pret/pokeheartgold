@@ -346,10 +346,10 @@ _04F0:
 
 _050E:
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _052E:
 	setflag FLAG_UNK_0DC
@@ -435,11 +435,11 @@ _063D:
 	wait_movement
 _0664:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 46
 	lockall
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C

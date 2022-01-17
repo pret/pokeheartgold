@@ -49,7 +49,7 @@ _009E:
 	return
 
 _00A6:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_412 43, 0, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 4
@@ -63,7 +63,7 @@ _00A6:
 	end
 
 _00E9:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_436
 	scrcmd_627 6
@@ -72,10 +72,10 @@ _00E9:
 	end
 
 _010A:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D31R0207, 0, 8, 2, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

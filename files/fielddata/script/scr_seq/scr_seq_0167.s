@@ -184,7 +184,7 @@ _028F:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_309 77
 	call _0766
@@ -193,7 +193,7 @@ _028F:
 	apply_movement obj_player, _0934
 	wait_movement
 	script_overlay_cmd 3, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_602 0
 	scrcmd_603
@@ -862,7 +862,7 @@ _0DD7:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_309 77
 	scrcmd_257 239
@@ -873,7 +873,7 @@ _0DD7:
 	apply_movement obj_player, _0934
 	wait_movement
 	script_overlay_cmd 3, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_602 0
 	scrcmd_603

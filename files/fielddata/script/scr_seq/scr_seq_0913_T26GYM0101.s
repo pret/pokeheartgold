@@ -183,12 +183,12 @@ _0264:
 	goto_if_eq _034B
 	npc_msg msg_0606_T26GYM0101_00009
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
 	get_party_selection VAR_SPECIAL_x800C
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _034B

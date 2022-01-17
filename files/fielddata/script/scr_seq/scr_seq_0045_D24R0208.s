@@ -14,11 +14,11 @@ scr_seq_D24R0208_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_713 3
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto_if_set FLAG_UNK_97A, _0042
 	releaseall
@@ -56,10 +56,10 @@ _00B8:
 	compare VAR_UNK_40EC, 1
 	goto_if_ge _0103
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0205, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setvar VAR_UNK_40E0, 1
 	addvar VAR_UNK_40EC, 1
@@ -69,10 +69,10 @@ _00B8:
 _0103:
 	setflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0205, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setvar VAR_UNK_40E0, 1
 	addvar VAR_UNK_40EC, 1
@@ -105,28 +105,28 @@ _0185:
 	goto_if_ge _01D1
 	compare VAR_UNK_403E, 6
 	goto_if_eq _01FB
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0205, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01CD:
 	releaseall
 	end
 
 _01D1:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0218, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01CD
 
 _01FB:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0216, 0, 5, 24, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01CD
 	.byte 0x00, 0x00, 0x00

@@ -122,10 +122,10 @@ scr_seq_D45R0102_001:
 	apply_movement obj_partner_poke, _03A4
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 0x7FFF
+	fade_screen 6, 6, 0, RGB_WHITE
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x7FFF
+	fade_screen 6, 6, 1, RGB_WHITE
 	wait_fade
 	apply_movement obj_player, _038C
 	wait_movement
@@ -145,7 +145,7 @@ _022A:
 	scrcmd_810
 	clearflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	warp MAP_D36R0101, 0, 16, 57, 1
-	fade_screen 6, 15, 1, 0x7FFF
+	fade_screen 6, 15, 1, RGB_WHITE
 	wait_fade
 	releaseall
 	end
@@ -155,10 +155,10 @@ _0250:
 	closemsg
 	apply_movement obj_D45R0102_sakaki, _0360
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
-	fade_screen 6, 6, 0, 0x7FFF
+	fade_screen 6, 6, 0, RGB_WHITE
 	wait_fade
 	wait 15, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x7FFF
+	fade_screen 6, 6, 1, RGB_WHITE
 	wait_fade
 	wait_movement
 	hide_person obj_D45R0102_sakaki
@@ -171,7 +171,7 @@ _0250:
 	setvar VAR_UNK_40FE, 0
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	warp MAP_D36R0101, 0, 16, 57, 1
-	fade_screen 6, 15, 1, 0x7FFF
+	fade_screen 6, 15, 1, RGB_WHITE
 	wait_fade
 	touchscreen_menu_show
 	releaseall
@@ -185,14 +185,14 @@ _02C0:
 	closemsg
 	gender_msgbox msg_0131_D45R0102_00025, msg_0131_D45R0102_00024
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
 	.byte 0x00, 0x00

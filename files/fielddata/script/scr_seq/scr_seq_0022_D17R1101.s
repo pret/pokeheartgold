@@ -84,13 +84,13 @@ _00FA:
 	npc_msg msg_0059_D17R1101_00002
 	waitbutton
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	setflag FLAG_UNK_2CA
 	hide_person obj_D17R1101_gsleader4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end
@@ -120,12 +120,12 @@ _0159:
 	npc_msg msg_0059_D17R1101_00006
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 20
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0059_D17R1101_00007

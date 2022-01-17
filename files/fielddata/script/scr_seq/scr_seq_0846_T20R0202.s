@@ -19,11 +19,11 @@ scr_seq_T20R0202_000:
 	scrcmd_377 VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _004B
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_376
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

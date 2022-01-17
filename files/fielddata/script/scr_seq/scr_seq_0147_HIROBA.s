@@ -61,7 +61,7 @@ _00DB:
 	play_se SEQ_SE_DP_TELE2
 	apply_movement obj_player, _01EC
 	wait_movement
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	setvar VAR_TEMP_x4003, 1
 	warp VAR_UNK_4056, 0, 5, 2, 1
@@ -72,7 +72,7 @@ _00DB:
 	scrcmd_150
 	setvar VAR_UNK_4137, 1
 	scrcmd_375 obj_player
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

@@ -262,7 +262,7 @@ _03E8:
 	return
 
 _03F3:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_436
 	scrcmd_565 VAR_SPECIAL_x800C
@@ -275,7 +275,7 @@ _041A:
 	scrcmd_152
 _041C:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_307 0, 0, 8, 2, 77
 	call _03E0
@@ -436,10 +436,10 @@ _05D7:
 	wait_movement
 	call _03E8
 	setvar VAR_TEMP_x4003, 0
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_HIROBA, 0, 20, 11, 0
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

@@ -121,11 +121,11 @@ _01A8:
 	wait_movement
 _01CF:
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 31
 	lockall
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
 	get_std_msg_naix 2, VAR_SPECIAL_x800C
@@ -836,11 +836,11 @@ scr_seq_D32_023:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scratch_off_card
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end
@@ -919,10 +919,10 @@ scr_seq_D32_033:
 	apply_movement obj_player, _10B0
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D32R0401, 0, 25, 9, 2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end
@@ -938,10 +938,10 @@ scr_seq_D32_034:
 	apply_movement obj_player, _10F4
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D32R0501, 0, 21, 9, 2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end
@@ -957,10 +957,10 @@ scr_seq_D32_035:
 	apply_movement obj_player, _1138
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D32R0601, 0, 1, 6, 3
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end
@@ -976,10 +976,10 @@ scr_seq_D32_036:
 	apply_movement obj_player, _117C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D32R0301, 0, 1, 7, 3
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

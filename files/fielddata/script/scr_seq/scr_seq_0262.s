@@ -43,11 +43,11 @@ _006A:
 	getmenuchoice VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _00B5
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	scrcmd_717 VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _00B7
@@ -73,11 +73,11 @@ scr_seq_0262_001:
 	getmenuchoice VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0112
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	scrcmd_720 VAR_SPECIAL_x8001
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0427_00007
 	waitbutton
@@ -92,18 +92,18 @@ _011A:
 	safari_zone_action 1, 0
 	compare VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
 	goto_if_ne _0155
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D47R0101, 0, 19, 2, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0179
 
 _0155:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D47R0101, 0, 5, 2, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0179:
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 2

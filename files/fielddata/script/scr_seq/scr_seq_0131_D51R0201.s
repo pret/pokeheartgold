@@ -610,7 +610,7 @@ _08A4:
 	apply_movement obj_player, _0CE4
 _08AC:
 	wait 150, VAR_SPECIAL_x800C
-	fade_screen 6, 30, 1, 0x0000
+	fade_screen 6, 30, 1, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
@@ -688,10 +688,10 @@ _09B6:
 	npc_msg msg_0146_D51R0201_00017
 	closemsg
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x0000
+	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x0000
+	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	apply_movement obj_D51R0201_champion, _0D30
 	wait_movement
@@ -703,10 +703,10 @@ _09B6:
 	closemsg
 _0A4D:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	fade_screen 6, 6, 0, 0x0000
+	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
 	wait 1, VAR_SPECIAL_x800C
-	fade_screen 6, 6, 1, 0x0000
+	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _0AAA
@@ -725,48 +725,48 @@ _0AAA:
 	play_se SEQ_SE_DP_KAIDAN2
 	compare VAR_UNK_403E, 6
 	goto_if_ne _0AE5
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0216, 0, 9, 24, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
 
 _0AE5:
 	compare VAR_UNK_403E, 7
 	goto_if_ne _0B1C
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0218, 0, 9, 24, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
 
 _0B1C:
 	compare VAR_UNK_403E, 8
 	goto_if_ne _0B53
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0218, 0, 9, 24, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
 
 _0B53:
 	compare VAR_UNK_403E, 9
 	goto_if_ne _0B8A
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0218, 0, 9, 24, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
 
 _0B8A:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0205, 0, 9, 24, 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0BAE:
 	releaseall
@@ -776,11 +776,11 @@ _0BB2:
 	get_party_count VAR_SPECIAL_x800C
 	subvar VAR_SPECIAL_x800C, 1
 	setvar VAR_TEMP_x4008, 0
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input VAR_SPECIAL_x800C, VAR_TEMP_x4008
 	scrcmd_819
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
 

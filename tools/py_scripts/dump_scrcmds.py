@@ -456,6 +456,21 @@ class NormalScriptParser(ScriptParserBase):
                 value = int.from_bytes(self.raw[pc:pc + 2], 'little')
                 pc += 2
                 return self.constants['var'].get(value, self.constants[size].get(value, value)), pc
+            case 'rgb':
+                value = int.from_bytes(self.raw[pc:pc + 2], 'little')
+                pc += 2
+                if value == 0:
+                    ret = 'RGB_BLACK'
+                elif value == 0x7FFF:
+                    ret = 'RGB_WHITE'
+                else:
+                    r = value & 0x1F
+                    g = (value >> 5) & 0x1F
+                    b = (value >> 10) & 0x1F
+                    ret = f'RGB({r}, {g}, {b})'
+                    if value & 0x8000:
+                        ret += ' | 0x8000'
+                return ret, pc
             case _:
                 raise ValueError('unknown arg type: ' + size)
     

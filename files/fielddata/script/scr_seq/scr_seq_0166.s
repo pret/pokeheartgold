@@ -439,7 +439,7 @@ _081D:
 	npc_msg msg_0043_00175
 	npc_msg msg_0043_00176
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 _0837:
@@ -450,7 +450,7 @@ _0837:
 
 _084F:
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_TEMP_x4002, 255
 	goto_if_eq _0810

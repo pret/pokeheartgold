@@ -119,11 +119,11 @@ _01EF:
 _021E:
 	npc_msg msg_0204_00006
 	scrcmd_049
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	scrcmd_465 4, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0579

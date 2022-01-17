@@ -64,11 +64,11 @@ scr_seq_T07R0401_010:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00F5
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 0, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _00F5:
 	releaseall
@@ -80,11 +80,11 @@ scr_seq_T07R0401_011:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0130
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 1, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0130:
 	releaseall
@@ -96,11 +96,11 @@ scr_seq_T07R0401_012:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _016B
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 2, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _016B:
 	releaseall
@@ -112,11 +112,11 @@ scr_seq_T07R0401_013:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01A6
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 3, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01A6:
 	releaseall
@@ -128,11 +128,11 @@ scr_seq_T07R0401_014:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01E1
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 4, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01E1:
 	releaseall
@@ -144,11 +144,11 @@ scr_seq_T07R0401_015:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _021C
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 5, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _021C:
 	releaseall
@@ -160,11 +160,11 @@ scr_seq_T07R0401_016:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0257
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 6, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0257:
 	releaseall
@@ -176,11 +176,11 @@ scr_seq_T07R0401_017:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0292
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 7, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0292:
 	releaseall
@@ -192,11 +192,11 @@ scr_seq_T07R0401_018:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _02CD
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 8, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _02CD:
 	releaseall
@@ -208,11 +208,11 @@ scr_seq_T07R0401_019:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0308
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 9, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0308:
 	releaseall
@@ -224,11 +224,11 @@ scr_seq_T07R0401_020:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0343
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 10, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0343:
 	releaseall
@@ -240,11 +240,11 @@ scr_seq_T07R0401_021:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _037E
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 11, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _037E:
 	releaseall
@@ -258,11 +258,11 @@ scr_seq_T07R0401_022:
 	goto_if_eq _03BE
 	npc_msg msg_0508_T07R0401_00020
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 12, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _03BE:
 	releaseall
@@ -274,11 +274,11 @@ scr_seq_T07R0401_023:
 	call _0062
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _03F9
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	casino_game 13, 1
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _03F9:
 	releaseall

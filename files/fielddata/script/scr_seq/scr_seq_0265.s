@@ -222,7 +222,7 @@ _0290:
 	npc_msg msg_0439_00022
 	closemsg
 	scrcmd_114
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 _02CB:
@@ -275,7 +275,7 @@ _0374:
 _038B:
 	scrcmd_150
 	scrcmd_113 20, 2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
 
@@ -425,10 +425,10 @@ _0544:
 
 _0566:
 	scrcmd_361 32770, 32769
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_715
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	submoneyvar VAR_SPECIAL_x8004
 	scrcmd_115

@@ -124,7 +124,7 @@ _0221:
 	end
 
 _0229:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	call _023F
@@ -133,7 +133,7 @@ _0229:
 _023F:
 	scrcmd_631 VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
 	.balign 4, 0

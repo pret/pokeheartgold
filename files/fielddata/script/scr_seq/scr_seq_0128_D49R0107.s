@@ -147,11 +147,11 @@ scr_seq_D49R0107_001:
 	faceplayer
 	npc_msg msg_0143_D49R0107_00007
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_712 3
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

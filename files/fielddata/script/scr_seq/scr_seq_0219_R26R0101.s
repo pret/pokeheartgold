@@ -15,14 +15,14 @@ scr_seq_R26R0101_000:
 	faceplayer
 	npc_msg msg_0366_R26R0101_00000
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	play_fanfare SEQ_ME_ASA
 	wait_fanfare
 	heal_party
 	scrcmd_436
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0366_R26R0101_00001
 	waitbutton

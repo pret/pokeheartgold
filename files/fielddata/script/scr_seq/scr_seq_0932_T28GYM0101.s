@@ -131,12 +131,12 @@ _0198:
 	npc_msg msg_0622_T28GYM0101_00007
 	closemsg
 	setflag FLAG_UNK_189
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 40
 	faceplayer
 	lockall
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
 	npc_msg msg_0622_T28GYM0101_00008

@@ -1,8 +1,10 @@
 #include "window.h"
+#include "math_util.h"
 
 u8 TranslateGFBgModePairToGXScreenSize(enum GFBgScreenSize size, enum GFBgType type);
 void Bg_SetPosText(BG *bg, enum BgPosAdjustOp, fx32 value);
-void BgAffineReset(BGCONFIG *bgConfig, enum GFBgLayer layer);
+void SetBgAffine(BGCONFIG *bgConfig, u8 layer, MtxFx22 *mtx, fx32 centerX, fx32 centerY);
+void BgAffineReset(BGCONFIG *bgConfig, u8 layer);
 
 // Make a new BGCONFIG object, which manages the
 // eight background layers (two on each screen).
@@ -618,4 +620,73 @@ fx32 Bg_GetXpos(const BGCONFIG *bgConfig, u8 layer) {
 
 fx32 Bg_GetYpos(const BGCONFIG *bgConfig, u8 layer) {
     return bgConfig->bgs[layer].vOffset;
+}
+
+void Bg_SetTextDimAndAffineParams(BGCONFIG *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value, MtxFx22 *mtx, fx32 centerX, fx32 centerY) {
+    Bg_SetPosText(&bgConfig->bgs[layer], op, value);
+    SetBgAffine(bgConfig, layer, mtx, centerX, centerY);
+}
+
+void Bg_SetPosText(BG *bg, enum BgPosAdjustOp op, fx32 value) {
+    switch (op) {
+    case BG_POS_OP_SET_X:
+        bg->hOffset = value;
+        break;
+    case BG_POS_OP_ADD_X:
+        bg->hOffset += value;
+        break;
+    case BG_POS_OP_SUB_X:
+        bg->hOffset -= value;
+        break;
+    case BG_POS_OP_SET_Y:
+        bg->vOffset = value;
+        break;
+    case BG_POS_OP_ADD_Y:
+        bg->vOffset += value;
+        break;
+    case BG_POS_OP_SUB_Y:
+        bg->vOffset -= value;
+        break;
+    }
+}
+
+void SetBgAffine(BGCONFIG *bgConfig, u8 layer, MtxFx22 *mtx, fx32 centerX, fx32 centerY) {
+    switch (layer) {
+    case GF_BG_LYR_MAIN_0:
+        break;
+    case GF_BG_LYR_MAIN_1:
+        break;
+    case GF_BG_LYR_MAIN_2:
+        G2_SetBG2Affine(mtx, centerX, centerY, bgConfig->bgs[layer].hOffset, bgConfig->bgs[layer].vOffset);
+        break;
+    case GF_BG_LYR_MAIN_3:
+        G2_SetBG3Affine(mtx, centerX, centerY, bgConfig->bgs[layer].hOffset, bgConfig->bgs[layer].vOffset);
+        break;
+    case GF_BG_LYR_SUB_0:
+        break;
+    case GF_BG_LYR_SUB_1:
+        break;
+    case GF_BG_LYR_SUB_2:
+        G2S_SetBG2Affine(mtx, centerX, centerY, bgConfig->bgs[layer].hOffset, bgConfig->bgs[layer].vOffset);
+        break;
+    case GF_BG_LYR_SUB_3:
+        G2S_SetBG3Affine(mtx, centerX, centerY, bgConfig->bgs[layer].hOffset, bgConfig->bgs[layer].vOffset);
+        break;
+    }
+}
+
+void BgAffineReset(BGCONFIG *bgConfig, u8 layer) {
+    MtxFx22 mtx;
+    MTX22_2DAffine(&mtx, 0, FX32_ONE, FX32_ONE, 0);
+    SetBgAffine(bgConfig, layer, &mtx, 0, 0);
+}
+
+void CopyOrUncompressTilemapData(const void *src, void *dest, u32 size) {
+    if (size == 0) {
+        MI_UncompressLZ8(src, dest);
+    } else if ((((u32)src) % 4) == 0 && (((u32)dest) % 4) == 0 && (((u16)size) % 4) == 0) {
+        MI_CpuCopy32(src, dest, size);
+    } else {
+        MI_CpuCopy16(src, dest, size);
+    }
 }

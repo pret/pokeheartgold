@@ -124,12 +124,12 @@ scr_seq_D40R0107_005:
 	npc_msg msg_0125_D40R0107_00000
 	closemsg
 	stop_se SEQ_SE_GS_N_TAKI
-	fade_screen 4, 4, 0, 0x7FFF
+	fade_screen 4, 4, 0, RGB_WHITE
 	wait_fade
 	scrcmd_755
 	scrcmd_757
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_RU
-	fade_screen 4, 4, 1, 0x7FFF
+	fade_screen 4, 4, 1, RGB_WHITE
 	wait_fade
 	wait_se SEQ_SE_GS_SUZUSYUTUGEN_RU
 	apply_movement obj_D40R0107_dancer_5, _096C
@@ -168,7 +168,7 @@ scr_seq_D40R0107_005:
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	fade_screen 4, 6, 1, 0x7FFF
+	fade_screen 4, 6, 1, RGB_WHITE
 	scrcmd_765
 	wait_fade
 	wait 6, VAR_SPECIAL_x800C
@@ -272,10 +272,10 @@ scr_seq_D40R0107_005:
 	wait 41, VAR_SPECIAL_x800C
 	scrcmd_763
 	wait 16, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_761 1
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	apply_movement obj_D40R0107_dancer_5, _0A00
 	apply_movement obj_D40R0107_dancer_3, _0A24
@@ -308,10 +308,10 @@ scr_seq_D40R0107_005:
 	apply_movement obj_D40R0107_dancer_4, _0B1C
 	apply_movement obj_D40R0107_dancer, _0B24
 	apply_movement obj_D40R0107_dancer_2, _0B34
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_761 2
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait_movement
 	apply_movement obj_D40R0107_dancer_5, _0A48
@@ -399,7 +399,7 @@ scr_seq_D40R0107_005:
 	wait 26, VAR_SPECIAL_x800C
 	scrcmd_756
 	setvar VAR_TEMP_x400B, 123
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	clearflag FLAG_HIDE_WHIRL_ISLAND_LUGIA
 	show_person obj_D40R0107_lug_obj01
@@ -421,7 +421,7 @@ scr_seq_D40R0107_005:
 	move_person obj_D40R0107_dancer_2, 19, 1, 27, 0
 	scrcmd_773 1
 	scrcmd_767
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait 59, VAR_SPECIAL_x800C
 	scrcmd_764

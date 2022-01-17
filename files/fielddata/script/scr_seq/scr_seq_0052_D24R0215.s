@@ -61,10 +61,10 @@ _00D8:
 	wait_movement
 _00DA:
 	play_se SEQ_SE_GS_RAKKA01
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_D24R0207, 0, 11, 7, VAR_SPECIAL_x800C
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
 	end

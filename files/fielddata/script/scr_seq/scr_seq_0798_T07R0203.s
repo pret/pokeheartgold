@@ -133,13 +133,13 @@ scr_seq_T07R0203_000:
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_425 0
 	scrcmd_150
 	setflag FLAG_UNK_143
 	add_special_game_stat 25
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01ED:
 	check_national_dex_complete VAR_SPECIAL_x800C
@@ -150,13 +150,13 @@ _01ED:
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_425 1
 	scrcmd_150
 	setflag FLAG_UNK_144
 	add_special_game_stat 26
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _023A:
 	npc_msg msg_0503_T07R0203_00003

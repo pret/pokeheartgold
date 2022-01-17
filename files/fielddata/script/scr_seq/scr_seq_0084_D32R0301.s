@@ -244,7 +244,7 @@ _03A1:
 	goto _03D4
 	.byte 0x02, 0x00
 _03D4:
-	fade_screen 6, 1, 0, 0x0000
+	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_815 0
 	compare VAR_UNK_4143, 0
@@ -259,7 +259,7 @@ _03D4:
 	compare VAR_UNK_4143, 2
 	call_if_eq _0435
 	scrcmd_150
-	fade_screen 6, 1, 1, 0x0000
+	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_682 1
 	end
