@@ -63,7 +63,7 @@ asm void DC_StoreRange(register void * startAddr, register u32 nBytes) {
     bx lr
 }
 
-asm void DC_FlushRange(register void * startAddr, register u32 nBytes) {
+asm void DC_FlushRange(register const void * startAddr, register u32 nBytes) {
     mov r12, #0
     add r1, r1, r0
     bic r0, r0, #HW_CACHE_LINE_SIZE - 1

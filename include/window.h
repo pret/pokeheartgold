@@ -129,6 +129,11 @@ enum BgPosAdjustOp {
     BG_POS_OP_SUB_CENTERY,
 };
 
+enum {
+    TILE_SIZE_4BPP = 32,
+    TILE_SIZE_8BPP = 64,
+};
+
 struct GFBgModeSet {
     GXDispMode dispMode;
     GXBGMode bgModeMain;

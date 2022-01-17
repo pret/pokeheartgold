@@ -40,4 +40,8 @@ static inline void MI_CpuCopyFast(const void *src, void *dst, u32 size) {
     MIi_CpuCopyFast(src, dst, size);
 }
 
+static inline void MI_CpuFillFast(void *dst, int value, u32 size) {
+    MIi_CpuClearFast(value, dst, size);
+}
+
 #endif //NITRO_MI_MEMORY_H

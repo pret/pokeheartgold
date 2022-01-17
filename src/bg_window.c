@@ -5,6 +5,10 @@ u8 TranslateGFBgModePairToGXScreenSize(enum GFBgScreenSize size, enum GFBgType t
 void Bg_SetPosText(BG *bg, enum BgPosAdjustOp, fx32 value);
 void SetBgAffine(BGCONFIG *bgConfig, u8 layer, MtxFx22 *mtx, fx32 centerX, fx32 centerY);
 void BgAffineReset(BGCONFIG *bgConfig, u8 layer);
+void BgCopyOrUncompressTilemapBufferRangeToVram(BGCONFIG *bgConfig, u8 layer, const void *buffer, u32 bufferSize, u32 baseTile);
+void CopyTilesToVram(u8 layer, const void *data, u32 offset, u32 size);
+void BG_LoadCharPixelData(BGCONFIG *bgConfig, u8 layer, const void *buffer, u32 offset, u32 size);
+void LoadBgVramChar(u8 layer, const void *data, u32 offset, u32 size);
 
 // Make a new BGCONFIG object, which manages the
 // eight background layers (two on each screen).
@@ -688,5 +692,152 @@ void CopyOrUncompressTilemapData(const void *src, void *dest, u32 size) {
         MI_CpuCopy32(src, dest, size);
     } else {
         MI_CpuCopy16(src, dest, size);
+    }
+}
+
+void BgCommitTilemapBufferToVram(BGCONFIG *bgConfig, u8 layer) {
+    BgCopyOrUncompressTilemapBufferRangeToVram(bgConfig, layer, bgConfig->bgs[layer].tilemapBuffer, bgConfig->bgs[layer].bufferSize, bgConfig->bgs[layer].baseTile);
+}
+
+void BgCopyOrUncompressTilemapBufferRangeToVram(BGCONFIG *bgConfig, u8 layer, const void *buffer, u32 bufferSize, u32 baseTile) {
+    void *dest;
+    u32 uncompSize;
+    void *ptr;
+    if (bufferSize == 0) {
+        dest = bgConfig->bgs[layer].tilemapBuffer;
+        if (dest != NULL) {
+            CopyOrUncompressTilemapData(buffer, dest, bufferSize);
+            CopyTilesToVram(layer, dest, bgConfig->bgs[layer].baseTile * 2, bgConfig->bgs[layer].bufferSize);
+        } else {
+            uncompSize = MI_GetUncompressedSize(buffer);
+            ptr = AllocFromHeapAtEnd(bgConfig->heap_id, uncompSize);
+            CopyOrUncompressTilemapData(buffer, ptr, bufferSize);
+            CopyTilesToVram(layer, ptr, baseTile * 2, uncompSize);
+            FreeToHeap(ptr);
+        }
+    } else {
+        CopyTilesToVram(layer, buffer, baseTile * 2, bufferSize);
+    }
+}
+
+void CopyTilesToVram(u8 layer, const void *data, u32 offset, u32 size) {
+    DC_FlushRange(data, size);
+    switch (layer) {
+    case GF_BG_LYR_MAIN_0:
+        GX_LoadBG0Scr(data, offset, size);
+        break;
+    case GF_BG_LYR_MAIN_1:
+        GX_LoadBG1Scr(data, offset, size);
+        break;
+    case GF_BG_LYR_MAIN_2:
+        GX_LoadBG2Scr(data, offset, size);
+        break;
+    case GF_BG_LYR_MAIN_3:
+        GX_LoadBG3Scr(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_0:
+        GXS_LoadBG0Scr(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_1:
+        GXS_LoadBG1Scr(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_2:
+        GXS_LoadBG2Scr(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_3:
+        GXS_LoadBG3Scr(data, offset, size);
+        break;
+    }
+}
+
+void BG_LoadScreenTilemapData(BGCONFIG *bgConfig, u8 layer, const void *data, u32 size) {
+    CopyOrUncompressTilemapData(data, bgConfig->bgs[layer].tilemapBuffer, size);
+}
+
+void BG_LoadCharTilesData(BGCONFIG *bgConfig, u8 layer, const void *data, u32 size, u32 tileStart) {
+    if (bgConfig->bgs[layer].colorMode == GF_BG_CLR_4BPP) {
+        BG_LoadCharPixelData(bgConfig, layer, data, size, tileStart * TILE_SIZE_4BPP);
+    } else {
+        BG_LoadCharPixelData(bgConfig, layer, data, size, tileStart * TILE_SIZE_8BPP);
+    }
+}
+
+void BG_LoadCharPixelData(BGCONFIG *bgConfig, u8 layer, const void *buffer, u32 size, u32 offset) {
+    u32 uncompressedSize;
+    void *uncompressedBuffer;
+    if (size == 0) {
+        uncompressedSize = MI_GetUncompressedSize(buffer);
+        uncompressedBuffer = AllocFromHeapAtEnd(bgConfig->heap_id, uncompressedSize);
+        CopyOrUncompressTilemapData(buffer, uncompressedBuffer, size);
+        LoadBgVramChar(layer, uncompressedBuffer, offset, uncompressedSize);
+        FreeToHeap(uncompressedBuffer);
+    } else {
+        LoadBgVramChar(layer, buffer, offset, size);
+    }
+}
+
+void LoadBgVramChar(u8 layer, const void *data, u32 offset, u32 size) {
+    DC_FlushRange(data, size);
+    switch (layer) {
+    case GF_BG_LYR_MAIN_0:
+        GX_LoadBG0Char(data, offset, size);
+        break;
+    case GF_BG_LYR_MAIN_1:
+        GX_LoadBG1Char(data, offset, size);
+        break;
+    case GF_BG_LYR_MAIN_2:
+        GX_LoadBG2Char(data, offset, size);
+        break;
+    case GF_BG_LYR_MAIN_3:
+        GX_LoadBG3Char(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_0:
+        GXS_LoadBG0Char(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_1:
+        GXS_LoadBG1Char(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_2:
+        GXS_LoadBG2Char(data, offset, size);
+        break;
+    case GF_BG_LYR_SUB_3:
+        GXS_LoadBG3Char(data, offset, size);
+        break;
+    }
+}
+
+void BG_ClearCharDataRange(u8 layer, u32 size, u32 offset, HeapID heapId) {
+    void *buffer;
+    buffer = AllocFromHeapAtEnd(heapId, size);
+    memset(buffer, 0, size);
+    LoadBgVramChar(layer, buffer, offset, size);
+    FreeToHeapExplicit(heapId, buffer);
+}
+
+void BG_FillCharDataRange(BGCONFIG *bgConfig, u32 layer, u8 fillValue, u32 ntiles, u32 offset) {
+    void *buffer;
+    u32 size;
+    u32 value;
+
+    size = ntiles * bgConfig->bgs[layer].tileSize;
+    value = fillValue;
+    buffer = AllocFromHeapAtEnd(bgConfig->heap_id, size);
+    if (bgConfig->bgs[layer].tileSize == TILE_SIZE_4BPP) {
+        value = (value << 12) | (value << 8) | (value << 4) | (value << 0);
+        value |= value << 16;
+    } else {
+        value = (value << 24) | (value << 16) | (value << 8) | (value << 0);
+    }
+    MI_CpuFillFast(buffer, value, size);
+    LoadBgVramChar(layer, buffer, bgConfig->bgs[layer].tileSize * offset, size);
+    FreeToHeap(buffer);
+}
+
+void BG_LoadPlttData(u8 layer, const void *data, u32 size, u32 offset) {
+    DC_FlushRange(data, size);
+    if (layer < GF_BG_LYR_MAIN_CNT) {
+        GX_LoadBGPltt(data, offset, size);
+    } else {
+        GXS_LoadBGPltt(data, offset, size);
     }
 }
