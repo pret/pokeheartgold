@@ -10559,11 +10559,11 @@ ov81_022430E8: ; 0x022430E8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #4
-	bl GetWindowLeft
+	bl SetWindowX
 	add r4, #0x10
 	add r0, r4, #0
 	mov r1, #0x12
-	bl GetWindowLeft
+	bl SetWindowX
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov81_022430E8

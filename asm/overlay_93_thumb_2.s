@@ -189,12 +189,12 @@ _0225FD44:
 	mov r1, #7
 	mov r2, #3
 	add r3, r5, #0
-	bl ScheduleSetBgAffineRotation
+	bl ScheduleSetBgAffineScale
 	ldr r0, [sp, #4]
 	ldr r3, [sp, #8]
 	mov r1, #7
 	mov r2, #6
-	bl ScheduleSetBgAffineRotation
+	bl ScheduleSetBgAffineScale
 	ldr r0, [sp, #4]
 	mov r1, #7
 	mov r2, #0

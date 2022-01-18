@@ -61,7 +61,6 @@ Static main
 	Object game_init.o
 	Object heap.o
 	Object bg_window.o
-	Object bg_window_s.o
 	Object unk_0201F4C4.o
 	Object unk_0201F79C.o
 	Object string_control_code.o

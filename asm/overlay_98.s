@@ -1197,11 +1197,11 @@ ov98_0221EEEC: ; 0x0221EEEC
 	ldr r3, [r0, #4]
 	lsl r0, r1, #4
 	add r0, r3, r0
-	ldr r3, _0221EEF8 ; =GetWindowTop
+	ldr r3, _0221EEF8 ; =SetWindowY
 	add r1, r2, #0
 	bx r3
 	.balign 4, 0
-_0221EEF8: .word GetWindowTop
+_0221EEF8: .word SetWindowY
 	thumb_func_end ov98_0221EEEC
 
 	thumb_func_start ov98_0221EEFC

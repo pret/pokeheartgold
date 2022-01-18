@@ -1890,7 +1890,7 @@ ov44_0222ACE8: ; 0x0222ACE8
 	add r1, r2, r1
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl GetWindowPaletteNum
+	bl SetWindowPaletteNum
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -26883,12 +26883,12 @@
 .public CopyGlyphToWindow
 .public GetWindowBgConfig
 .public GetWindowBaseTile
-.public GetWindowLeft
-.public GetWindowTop
-.public GetWindowPaletteNum
+.public SetWindowX
+.public SetWindowY
+.public SetWindowPaletteNum
 .public BgConfig_HandleScheduledScrollAndTransferOps
 .public ScheduleSetBgPosText
-.public ScheduleSetBgAffineRotation
+.public ScheduleSetBgAffineScale
 .public DoesPixelAtScreenXYMatchPtrVal
 .public sub_0201F51C
 .public sub_0201F53C

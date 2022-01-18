@@ -5028,7 +5028,7 @@ ov49_0225ACA8: ; 0x0225ACA8
 	bl ov49_0225AAC8
 	add r0, r4, #0
 	mov r1, #2
-	bl GetWindowPaletteNum
+	bl SetWindowPaletteNum
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225ACA8

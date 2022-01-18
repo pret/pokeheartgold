@@ -2801,11 +2801,11 @@ _0225DA60:
 	add r0, sp, #0x30
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl GetWindowLeft
+	bl SetWindowX
 	lsl r1, r7, #0x18
 	add r0, sp, #0x30
 	lsr r1, r1, #0x18
-	bl GetWindowTop
+	bl SetWindowY
 	add r0, sp, #0x30
 	ldrh r1, [r0, #0xa]
 	ldr r0, _0225DB04 ; =0xFFFF8000

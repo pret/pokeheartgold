@@ -2424,11 +2424,11 @@ _022282F6:
 	beq _0222837C
 	ldr r0, [sp, #0x2c]
 	mov r1, #3
-	bl GetWindowLeft
+	bl SetWindowX
 	lsl r1, r5, #0x18
 	ldr r0, [sp, #0x2c]
 	lsr r1, r1, #0x18
-	bl GetWindowTop
+	bl SetWindowY
 	ldr r2, [sp, #0x54]
 	ldr r3, [sp, #0x58]
 	lsl r2, r2, #0x10
@@ -29281,7 +29281,7 @@ _022355BA:
 	add r0, r1, #0
 	lsl r1, r6, #0x18
 	lsr r1, r1, #0x18
-	bl GetWindowLeft
+	bl SetWindowX
 _022355CC:
 	mov r0, #0
 	mvn r0, r0
@@ -29290,7 +29290,7 @@ _022355CC:
 	lsl r1, r5, #0x18
 	ldr r0, [r4, #0x10]
 	lsr r1, r1, #0x18
-	bl GetWindowTop
+	bl SetWindowY
 _022355DE:
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0

@@ -2459,7 +2459,7 @@ _02259B44:
 	lsl r7, r0, #4
 	ldr r1, [sp, #4]
 	add r0, r6, r7
-	bl GetWindowPaletteNum
+	bl SetWindowPaletteNum
 	add r0, r6, r7
 	mov r1, #0
 	bl FillWindowPixelBuffer
