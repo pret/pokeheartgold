@@ -1772,7 +1772,7 @@ _0206A438: ; jump table
 _0206A440:
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl GetBgRotation
+	bl GetBgColorMode
 	strh r0, [r4, #0x14]
 	ldr r0, [r4, #0xc]
 	mov r1, #2

@@ -26869,7 +26869,7 @@
 .public BgGetCharPtr
 .public Convert4bppTo8bpp
 .public GetBgHOffset
-.public GetBgRotation
+.public GetBgColorMode
 .public GetBgPriority
 .public AddTextWindowTopLeftCorner
 .public WindowArray_dtor

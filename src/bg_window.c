@@ -1180,3 +1180,292 @@ void *BgGetCharPtr(u8 layer) {
 
     return NULL;
 }
+
+void Convert4bppTo8bppInternal(u8 *src4bpp, u32 size, u8 *dest8bpp, u8 paletteNum) {
+    paletteNum <<= 4;
+    for (u32 i = 0; i < size; i++) {
+        dest8bpp[i * 2 + 0] = (u8)(src4bpp[i] & 0xf);
+        if (dest8bpp[i * 2 + 0] != 0) {
+            dest8bpp[i * 2 + 0] += paletteNum;
+        }
+
+        dest8bpp[i * 2 + 1] = (u8)((src4bpp[i] >> 4) & 0xf);
+        if (dest8bpp[i * 2 + 1] != 0) {
+            dest8bpp[i * 2 + 1] += paletteNum;
+        }
+    }
+}
+
+u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, u32 heap_id) {
+    u8 *ptr = (u8*)AllocFromHeap(heap_id, size * 2);
+
+    Convert4bppTo8bppInternal(src4Bpp, size, ptr, paletteNum);
+
+    return ptr;
+}
+
+void *GetBgTilemapBuffer(BGCONFIG *bgConfig, u8 layer) {
+    return bgConfig->bgs[layer].tilemapBuffer;
+}
+
+fx32 GetBgHOffset(BGCONFIG *bgConfig, u8 layer) {
+    return bgConfig->bgs[layer].hOffset;
+}
+
+fx32 GetBgVOffset(BGCONFIG *bgConfig, u8 layer) {
+    return bgConfig->bgs[layer].vOffset;
+}
+
+u16 GetBgRotation(BGCONFIG *bgConfig, u8 layer) {
+    return bgConfig->bgs[layer].rotation;
+}
+
+u8 GetBgColorMode(BGCONFIG *bgConfig, u8 layer) {
+    return bgConfig->bgs[layer].colorMode;
+}
+
+u16 GetBgPriority(BGCONFIG *bgConfig, u8 layer) {
+    switch (layer) {
+    case GF_BG_LYR_MAIN_0: {
+        GXBg01Control control = G2_GetBG0Control();
+        return (u8)control.priority;
+    }
+    case GF_BG_LYR_MAIN_1: {
+        GXBg01Control control = G2_GetBG1Control();
+        return (u8)control.priority;
+    }
+    case GF_BG_LYR_MAIN_2:
+        switch (bgConfig->bgs[layer].mode) {
+        default:
+        case GF_BG_TYPE_TEXT: {
+            GXBg23ControlText control = G2_GetBG2ControlText();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_AFFINE: {
+            GXBg23ControlAffine control = G2_GetBG2ControlAffine();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_256x16PLTT: {
+            GXBg23Control256x16Pltt control = G2_GetBG2Control256x16Pltt();
+            return (u8)control.priority;
+        }
+        }
+    case GF_BG_LYR_MAIN_3:
+        switch (bgConfig->bgs[layer].mode) {
+        default:
+        case GF_BG_TYPE_TEXT: {
+            GXBg23ControlText control = G2_GetBG3ControlText();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_AFFINE: {
+            GXBg23ControlAffine control = G2_GetBG3ControlAffine();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_256x16PLTT: {
+            GXBg23Control256x16Pltt control = G2_GetBG3Control256x16Pltt();
+            return (u8)control.priority;
+        }
+        }
+    case GF_BG_LYR_SUB_0: {
+        GXBg01Control control = G2S_GetBG0Control();
+        return (u8)control.priority;
+    }
+    case GF_BG_LYR_SUB_1: {
+        GXBg01Control control = G2S_GetBG1Control();
+        return (u8)control.priority;
+    }
+    case GF_BG_LYR_SUB_2:
+        switch (bgConfig->bgs[layer].mode) {
+        default:
+        case GF_BG_TYPE_TEXT: {
+            GXBg23ControlText control = G2S_GetBG2ControlText();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_AFFINE: {
+            GXBg23ControlAffine control = G2S_GetBG2ControlAffine();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_256x16PLTT: {
+            GXBg23Control256x16Pltt control = G2S_GetBG2Control256x16Pltt();
+            return (u8)control.priority;
+        }
+        }
+    case GF_BG_LYR_SUB_3:
+        switch (bgConfig->bgs[layer].mode) {
+        default:
+        case GF_BG_TYPE_TEXT: {
+            GXBg23ControlText control = G2S_GetBG3ControlText();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_AFFINE: {
+            GXBg23ControlAffine control = G2S_GetBG3ControlAffine();
+            return (u8)control.priority;
+        }
+        case GF_BG_TYPE_256x16PLTT: {
+            GXBg23Control256x16Pltt control = G2S_GetBG3Control256x16Pltt();
+            return (u8)control.priority;
+        }
+        }
+    }
+    return 0;
+}
+
+#define GetPixelAddressFromBlit4bpp(ptr, x, y, width) ((u8 *)((ptr) + (((x) >> 1) & 3) + (((x) << 2) & 0x3FE0) + ((((y) << 2) & 0x3FE0) * (width)) + (((u32)(((y) << 2) & 0x1C)))))
+#define GetPixelAddressFromBlit8bpp(ptr, x, y, width) ((u8 *)((ptr) + ((x) & 7) + (((x) << 3) & 0x7FC0) + ((((y) << 3) & 0x7FC0) * (width)) + (((u32)(((y) << 3) & 0x38)))))
+
+#define ConvertPixelsToTiles(x)    (((x) + ((x) & 7)) >> 3)
+
+void BlitBitmapRect4Bit(const BITMAP *src, const BITMAP *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height, u16 colorKey) {
+    int xEnd, yEnd;
+    int multiplierSrcY, multiplierDstY;
+    int loopSrcY, loopDstY;
+    int loopSrcX, loopDstX;
+    int toOrr, toShift;
+    u8 * pixelsSrc, * pixelsDst;
+
+    if (dst->width - dstX < width) {
+        xEnd = dst->width - dstX + srcX;
+    } else {
+        xEnd = width + srcX;
+    }
+    if (dst->height - dstY < height) {
+        yEnd = dst->height - dstY + srcY;
+    } else {
+        yEnd = height + srcY;
+    }
+    multiplierSrcY = ConvertPixelsToTiles(src->width);
+    multiplierDstY = ConvertPixelsToTiles(dst->width);
+
+    if (colorKey == 0xFFFF) {
+        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
+            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+                pixelsSrc = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsDst = GetPixelAddressFromBlit4bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+
+                toOrr = (*pixelsSrc >> ((loopSrcX & 1) * 4)) & 0xF;
+                toShift = (loopDstX & 1) * 4;
+                *pixelsDst = ((toOrr << toShift) | (*pixelsDst & (0xF0 >> toShift)));
+            }
+        }
+    } else {
+        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
+            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+                pixelsSrc = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsDst = GetPixelAddressFromBlit4bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+
+                toOrr = (*pixelsSrc >> ((loopSrcX & 1) * 4)) & 0xF;
+                if (toOrr != colorKey) {
+                    toShift = (loopDstX & 1) * 4;
+                    *pixelsDst = (u8) ((toOrr << toShift) | (*pixelsDst & (0xF0 >> toShift)));
+                }
+            }
+        }
+    }
+}
+
+void BlitBitmapRect8bit(const BITMAP *src, const BITMAP *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height, u16 colorKey) {
+    int xEnd, yEnd;
+    int multiplierSrcY, multiplierDstY;
+    int loopSrcY, loopDstY;
+    int loopSrcX, loopDstX;
+    u8 * pixelsSrc, * pixelsDst;
+
+    if (dst->width - dstX < width) {
+        xEnd = dst->width - dstX + srcX;
+    } else {
+        xEnd = width + srcX;
+    }
+    if (dst->height - dstY < height) {
+        yEnd = dst->height - dstY + srcY;
+    } else {
+        yEnd = height + srcY;
+    }
+    multiplierSrcY = ConvertPixelsToTiles(src->width);
+    multiplierDstY = ConvertPixelsToTiles(dst->width);
+
+    if (colorKey == 0xFFFF) {
+        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
+            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+                pixelsSrc = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsDst = GetPixelAddressFromBlit8bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+
+                *pixelsDst = *pixelsSrc;
+            }
+        }
+    } else {
+        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
+            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+                pixelsSrc = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
+                pixelsDst = GetPixelAddressFromBlit8bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+
+                if (*pixelsSrc != colorKey) {
+                    *pixelsDst = *pixelsSrc;
+                }
+            }
+        }
+    }
+}
+
+void FillBitmapRect4bit(const BITMAP *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue) {
+
+    int j;
+    int i;
+    int xEnd;
+    int yEnd;
+    int blitWidth;
+    u8 *pixels;
+
+    xEnd = x + width;
+    if (xEnd > surface->width) {
+        xEnd = surface->width;
+    }
+
+    yEnd = y + height;
+    if (yEnd > surface->height) {
+        yEnd = surface->height;
+    }
+
+    blitWidth = ConvertPixelsToTiles(surface->width);
+
+    for (i = y; i < yEnd; i++) {
+        for (j = x; j < xEnd; j++) {
+            pixels = GetPixelAddressFromBlit4bpp(surface->pixels, j, i, blitWidth);
+
+            if ((j & 1) != 0) {
+                *pixels &= 0xf;
+                *pixels |= (fillValue << 4);
+            } else {
+                *pixels &= 0xf0;
+                *pixels |= fillValue;
+            }
+        }
+    }
+}
+
+void FillBitmapRect8bit(const BITMAP *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue) {
+    int j;
+    int i;
+    int xEnd;
+    int yEnd;
+    int blitWidth;
+    u8 *pixels;
+
+    xEnd = x + width;
+    if (xEnd > surface->width) {
+        xEnd = surface->width;
+    }
+
+    yEnd = y + height;
+    if (yEnd > surface->height) {
+        yEnd = surface->height;
+    }
+
+    blitWidth = ConvertPixelsToTiles(surface->width);
+
+    for (i = y; i < yEnd; i++) {
+        for (j = x; j < xEnd; j++) {
+            pixels = GetPixelAddressFromBlit8bpp(surface->pixels, j, i, blitWidth);
+            *pixels = fillValue;
+        }
+    }
+}
