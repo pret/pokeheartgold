@@ -1846,7 +1846,7 @@ _021E850C:
 	lsl r0, r0, #2
 	add r0, r7, r0
 	mov r1, #0
-	bl FillWindowPixelBufferFast
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7033,7 +7033,7 @@ _021EADDE:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #0
-	bl FillWindowPixelBufferFast
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	mov r1, #0
 	add r2, r5, #0
 	str r1, [sp]

@@ -3702,7 +3702,7 @@ ov102_021E91C4: ; 0x021E91C4
 	lsl r0, r0, #2
 	add r0, r7, r0
 	mov r1, #0
-	bl FillWindowPixelBufferFast
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	mov r0, #0x81
 	lsl r0, r0, #2
 	add r0, r7, r0
@@ -3785,7 +3785,7 @@ _021E927E:
 	lsl r0, r0, #2
 	add r0, r7, r0
 	mov r1, #0
-	bl FillWindowPixelBufferFast
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	ldr r0, [sp, #0x1c]
 	mov r6, #0
 	lsl r1, r0, #4

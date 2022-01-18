@@ -90,6 +90,7 @@ enum GFBgType {
     GF_BG_TYPE_TEXT = 0,
     GF_BG_TYPE_AFFINE,
     GF_BG_TYPE_256x16PLTT,
+    GF_BG_TYPE_MAX,
 };
 
 enum GFBgCntSet {

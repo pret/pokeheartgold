@@ -3112,7 +3112,7 @@ _021E70C2:
 	ldr r0, _021E71E4 ; =0x000004A4
 	mov r1, #0
 	add r0, r7, r0
-	bl FillWindowPixelBufferFast
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	ldr r0, [r7]
 	bl sub_0201660C
 	mov r1, #0x13

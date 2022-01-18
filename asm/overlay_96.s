@@ -40012,7 +40012,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	add r7, r2, #0
 	str r3, [sp, #0x18]
 	ldr r6, [sp, #0x7c]
-	bl FillWindowPixelBufferFast
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -40414,7 +40414,7 @@ ov96_021F9134: ; 0x021F9134
 	add r7, r2, #0
 	str r3, [sp, #0x18]
 	ldr r6, [sp, #0x7c]
-	bl FillWindowPixelBufferFast
+	bl FillWindowPixelBufferText_AssumeTileSize32
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff

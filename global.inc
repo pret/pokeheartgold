@@ -26878,7 +26878,7 @@
 .public ClearWindowTilemap
 .public CopyWindowPixelsToVram_TextMode
 .public ClearWindowTilemapAndScheduleTransfer
-.public FillWindowPixelBufferFast
+.public FillWindowPixelBufferText_AssumeTileSize32
 .public BlitBitmapRect
 .public CopyGlyphToWindow
 .public GetWindowBgConfig
