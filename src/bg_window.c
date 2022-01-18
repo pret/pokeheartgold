@@ -15,6 +15,7 @@ void CopyBgTilemapRectAffine(BG *bg, u8 destX, u8 destY, u8 destWidth, u8 destHe
 void FillBgTilemapRectText(BG *bg, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode);
 void FillBgTilemapRectAffine(BG *bg, u8 value, u8 x, u8 y, u8 width, u8 height);
 void ScheduleBgTilemapBufferTransfer(BGCONFIG *bgConfig, u8 layer);
+void InitWindow(WINDOW *window);
 
 // Make a new BGCONFIG object, which manages the
 // eight background layers (two on each screen).
@@ -1468,4 +1469,100 @@ void FillBitmapRect8bit(const BITMAP *surface, u16 x, u16 y, u16 width, u16 heig
             *pixels = fillValue;
         }
     }
+}
+
+WINDOW *AllocWindows(HeapID heapId, int num) {
+    WINDOW *ret;
+    u16 i;
+
+    ret = AllocFromHeap(heapId, num * sizeof(WINDOW));
+    for (i = 0; i < num; i++) {
+        InitWindow(&ret[i]);
+    }
+    return ret;
+}
+
+void InitWindow(WINDOW *window) {
+    window->bgConfig = NULL;
+    window->bgId = 0xFF;
+    window->tilemapLeft = 0;
+    window->tilemapTop = 0;
+    window->width = 0;
+    window->height = 0;
+    window->paletteNum = 0;
+    window->baseTile = 0;
+    window->pixelBuffer = NULL;
+    window->colorMode = GF_BG_CLR_4BPP;
+}
+
+BOOL WindowIsInUse(const WINDOW *window) {
+    if (window->bgConfig == NULL || window->bgId == 0xFF || window->pixelBuffer == NULL) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+
+void AddWindowParameterized(BGCONFIG *bgConfig, WINDOW *window, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile) {
+    void *buffer;
+    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
+        buffer = AllocFromHeap(bgConfig->heap_id, width * height * bgConfig->bgs[layer].tileSize);
+        if (buffer != NULL) {
+            window->bgConfig = bgConfig;
+            window->bgId = layer;
+            window->tilemapLeft = x;
+            window->tilemapTop = y;
+            window->width = width;
+            window->height = height;
+            window->paletteNum = paletteNum;
+            window->baseTile = baseTile;
+            window->pixelBuffer = buffer;
+            window->colorMode = (bgConfig->bgs[layer].colorMode == GX_BG_COLORMODE_16) ? GF_BG_CLR_4BPP : GF_BG_CLR_8BPP;
+        }
+    }
+}
+
+void AddTextWindowTopLeftCorner(BGCONFIG *bgConfig, WINDOW *window, u8 width, u8 height, u16 baseTile, u8 paletteNum) {
+    u32 size;
+    void *ptr;
+
+    size = width * height * 32;
+    ptr = AllocFromHeap(bgConfig->heap_id, size);
+    paletteNum |= (paletteNum << 4);
+    memset(ptr, paletteNum, size); // could cause a data protection abort if below is true
+    if (ptr != NULL) {
+        window->bgConfig = bgConfig;
+        window->width = width;
+        window->height = height;
+        window->baseTile = baseTile;
+        window->pixelBuffer = ptr;
+        window->colorMode = GF_BG_CLR_4BPP;
+    }
+}
+
+void AddWindow(BGCONFIG *bgConfig, WINDOW *window, const WINDOWTEMPLATE *template) {
+    AddWindowParameterized(bgConfig, window, template->bgId, template->left, template->top, template->width, template->height, template->palette, template->baseBlock);
+}
+
+void RemoveWindow(WINDOW* window) {
+    FreeToHeap(window->pixelBuffer);
+    window->bgConfig = NULL;
+    window->bgId = 0xFF;
+    window->tilemapLeft = 0;
+    window->tilemapTop = 0;
+    window->width = 0;
+    window->height = 0;
+    window->paletteNum = 0;
+    window->baseTile = 0;
+    window->pixelBuffer = NULL;
+}
+
+void WindowArray_dtor(WINDOW *window, int num) {
+    u16 i;
+    for (i = 0; i < num; i++) {
+        if (window[i].pixelBuffer != NULL) {
+            FreeToHeap(window[i].pixelBuffer);
+        }
+    }
+    FreeToHeap(window);
 }
