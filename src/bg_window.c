@@ -1829,3 +1829,173 @@ void FillWindowPixelRect(WINDOW *window, u8 fillValue, u16 x, u16 y, u16 width, 
         FillBitmapRect8bit(&bmp, x, y, width, height, fillValue);
     }
 }
+
+#define GLYPH_COPY_4BPP(glyphPixels, srcX, srcY, srcWidth, srcHeight, windowPixels, destX, destY, destWidth, table) { \
+    int srcJ, dstJ, srcI, dstI, bits;                                                                                 \
+    u8 toOrr;                                                                                                         \
+    u8 tableFlag;                                                                                                     \
+    u8 tableBit;                                                                                                      \
+    u8 *dest;                                                                                                         \
+    const u8 *src;                                                                                                    \
+    u32 pixelData;                                                                                                    \
+                                                                                                                      \
+    src = glyphPixels + (srcY / 8 * 64) + (srcX / 8 * 32);                                                            \
+    if (srcY == 0) {                                                                                                  \
+        dstI = destY + srcY;                                                                                          \
+        tableBit = table & 0xFF;                                                                                      \
+    } else {                                                                                                          \
+        dstI = destY + srcY;                                                                                          \
+        for (srcI = 0; srcI < 8; srcI++) {                                                                            \
+            if (((table >> srcI) & 1) != 0) {                                                                         \
+                dstI++;                                                                                               \
+            }                                                                                                         \
+        }                                                                                                             \
+        tableBit = table >> 8;                                                                                        \
+    }                                                                                                                 \
+    for (srcI = 0; srcI < srcHeight; srcI++) {                                                                        \
+        pixelData = *(u32 *)src;                                                                                      \
+        tableFlag = (tableBit >> srcI) & 1;                                                                           \
+        for (srcJ = 0, dstJ = destX + srcX; srcJ < srcWidth; srcJ++, dstJ++) {                                        \
+            dest = GetPixelAddressFromBlit4bpp(windowPixels, dstJ, dstI, destWidth);                                  \
+            toOrr = (pixelData >> (srcJ * 4)) & 0xF;                                                                  \
+            if (toOrr != 0) {                                                                                         \
+                bits = (dstJ & 1) * 4;                                                                                \
+                toOrr = (toOrr << bits) | (*dest & (0xF0 >> bits));                                                   \
+                *dest = toOrr;                                                                                        \
+                if (tableFlag) {                                                                                      \
+                    dest = GetPixelAddressFromBlit4bpp(windowPixels, dstJ, dstI + 1, destWidth);                      \
+                    *dest = toOrr;                                                                                    \
+                }                                                                                                     \
+            }                                                                                                         \
+        }                                                                                                             \
+        if (tableFlag) {                                                                                              \
+            dstI += 2;                                                                                                \
+        } else {                                                                                                      \
+            dstI += 1;                                                                                                \
+        }                                                                                                             \
+        src += 4;                                                                                                     \
+    }                                                                                                                 \
+}
+
+#define GLYPH_COPY_8BPP(glyphPixels, srcX, srcY, srcWidth, srcHeight, windowPixels, destX, destY, destWidth, table) { \
+    int srcJ, dstJ, srcI, dstI;                                                                                       \
+    u8 toOrr;                                                                                                         \
+    u8 tableFlag;                                                                                                     \
+    u8 tableBit;                                                                                                      \
+    u8 *dest;                                                                                                         \
+    const u8 *src;                                                                                                    \
+    u8 *pixelData;                                                                                                    \
+                                                                                                                      \
+    src = glyphPixels + (srcY / 8 * 128) + (srcX / 8 * 64);                                                           \
+    if (srcY == 0) {                                                                                                  \
+        dstI = destY + srcY;                                                                                          \
+        tableBit = table & 0xFF;                                                                                      \
+    } else {                                                                                                          \
+        dstI = destY + srcY;                                                                                          \
+        for (srcI = 0; srcI < 8; srcI++) {                                                                            \
+            if (((table >> srcI) & 1) != 0) {                                                                         \
+                dstI++;                                                                                               \
+            }                                                                                                         \
+        }                                                                                                             \
+        tableBit = table >> 8;                                                                                        \
+    }                                                                                                                 \
+    for (srcI = 0; srcI < srcHeight; srcI++) {                                                                        \
+        pixelData = (u8 *)src;                                                                                        \
+        tableFlag = (tableBit >> srcI) & 1;                                                                           \
+        for (srcJ = 0, dstJ = destX + srcX; srcJ < srcWidth; srcJ++, dstJ++) {                                        \
+            dest = GetPixelAddressFromBlit8bpp(windowPixels, dstJ, dstI, destWidth);                                  \
+            toOrr = pixelData[srcJ];                                                                                  \
+            if (toOrr != 0) {                                                                                         \
+                *dest = toOrr;                                                                                        \
+                if (tableFlag) {                                                                                      \
+                    dest = GetPixelAddressFromBlit8bpp(windowPixels, dstJ, dstI + 1, destWidth);                      \
+                    *dest = toOrr;                                                                                    \
+                }                                                                                                     \
+            }                                                                                                         \
+        }                                                                                                             \
+        if (tableFlag) {                                                                                              \
+            dstI += 2;                                                                                                \
+        } else {                                                                                                      \
+            dstI += 1;                                                                                                \
+        }                                                                                                             \
+        src += 8;                                                                                                     \
+    }                                                                                                                 \
+}
+
+void CopyGlyphToWindow(WINDOW *window, u8 *glyphPixels, u16 srcWidth, u16 srcHeight, u16 dstX, u16 dstY, u16 table) {
+    u8 *windowPixels;
+    u16 destWidth, destHeight;
+    int srcRight, srcBottom;
+    u8 glyphSizeParam;
+    
+    windowPixels = (u8 *)window->pixelBuffer;
+    destWidth = (u16)(window->width * 8);
+    destHeight = (u16)(window->height * 8);
+    
+    // Don't overflow the window
+    if (destWidth - dstX < srcWidth) {
+        srcRight = destWidth - dstX;
+    } else {
+        srcRight = srcWidth;
+    }
+    if (destHeight - dstY < srcHeight) {
+        srcBottom = destHeight - dstY;
+    } else {
+        srcBottom = srcHeight;
+    }
+
+    // Get the max glyph dimensions
+    // Default: 1x1
+    glyphSizeParam = 0;
+    if (srcRight > 8) {
+        glyphSizeParam |= 1; // 2 wide
+    }
+    if (srcBottom > 8) {
+        glyphSizeParam |= 2; // 2 high
+    }
+    
+    if (window->colorMode == GF_BG_CLR_4BPP) {
+        switch (glyphSizeParam) {
+        case 0: // 1x1
+            GLYPH_COPY_4BPP(glyphPixels, 0, 0, srcRight, srcBottom, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            return;
+        case 1: // 2x1
+            GLYPH_COPY_4BPP(glyphPixels, 0, 0, 8, srcBottom, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_4BPP(glyphPixels, 8, 0, srcRight - 8, srcBottom, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            return;
+        case 2: // 1x2
+            GLYPH_COPY_4BPP(glyphPixels, 0, 0, srcRight, 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_4BPP(glyphPixels, 0, 8, srcRight, srcBottom - 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            return;
+        case 3: // 2x2
+            GLYPH_COPY_4BPP(glyphPixels, 0, 0, 8, 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_4BPP(glyphPixels, 8, 0, srcRight - 8, 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_4BPP(glyphPixels, 0, 8, 8, srcBottom - 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_4BPP(glyphPixels, 8, 8, srcRight - 8, srcBottom - 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            return;
+        }
+    } else { // 8bpp
+        u8 *convertedSrc;
+        convertedSrc = Convert4bppTo8bpp(glyphPixels, srcWidth * 4 * srcHeight * 8, window->paletteNum, window->bgConfig->heap_id);
+        switch (glyphSizeParam) {
+        case 0: // 1x1
+            GLYPH_COPY_8BPP(convertedSrc, 0, 0, srcRight, srcBottom, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            break;
+        case 1: // 2x1
+            GLYPH_COPY_8BPP(convertedSrc, 0, 0, 8, srcBottom, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_8BPP(convertedSrc, 8, 0, srcRight - 8, srcBottom, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            break;
+        case 2: // 1x2
+            GLYPH_COPY_8BPP(convertedSrc, 0, 0, srcRight, 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_8BPP(convertedSrc, 0, 8, srcRight, srcBottom - 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            break;
+        case 3: // 2x2
+            GLYPH_COPY_8BPP(convertedSrc, 0, 0, 8, 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_8BPP(convertedSrc, 8, 0, srcRight - 8, 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_8BPP(convertedSrc, 0, 8, 8, srcBottom - 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            GLYPH_COPY_8BPP(convertedSrc, 8, 8, srcRight - 8, srcBottom - 8, windowPixels, dstX, dstY, ConvertPixelsToTiles(destWidth), table);
+            break;
+        }
+        FreeToHeap(convertedSrc);
+    }
+}
