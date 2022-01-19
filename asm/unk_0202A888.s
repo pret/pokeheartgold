@@ -4,10 +4,9 @@
 	.rodata
 
 _020F677C:
-	.byte 0x00
-_020F677D:
-	.byte 0x04, 0x04, 0x02
-	.byte 0x06, 0x02, 0x00, 0x00
+	.byte 0x00, 0x04
+	.byte 0x04, 0x02
+	.byte 0x06, 0x02
 
 	.text
 
@@ -290,7 +289,7 @@ sub_0202AA44: ; 0x0202AA44
 	pop {r4, r5, r6, r7}
 	bx lr
 _0202AA52:
-	ldr r3, _0202AA94 ; =_020F677D
+	ldr r3, _0202AA94 ; =_020F677C + 1
 	lsl r1, r1, #1
 	ldrb r3, [r3, r1]
 	mov r2, #0
@@ -327,7 +326,7 @@ _0202AA8E:
 	pop {r4, r5, r6, r7}
 	bx lr
 	.balign 4, 0
-_0202AA94: .word _020F677D
+_0202AA94: .word _020F677C + 1
 _0202AA98: .word _020F677C
 	thumb_func_end sub_0202AA44
 
@@ -337,7 +336,7 @@ sub_0202AA9C: ; 0x0202AA9C
 	cmp r1, #2
 	bhi _0202AAC8
 	lsl r4, r1, #1
-	ldr r1, _0202AACC ; =_020F677D
+	ldr r1, _0202AACC ; =_020F677C + 1
 	mov r2, #0
 	ldrb r1, [r1, r4]
 	cmp r1, #0
@@ -360,7 +359,7 @@ _0202AAC8:
 	pop {r4, r5}
 	bx lr
 	.balign 4, 0
-_0202AACC: .word _020F677D
+_0202AACC: .word _020F677C + 1
 _0202AAD0: .word _020F677C
 	thumb_func_end sub_0202AA9C
 
@@ -376,7 +375,7 @@ sub_0202AAD4: ; 0x0202AAD4
 _0202AAE2:
 	lsl r4, r1, #1
 	ldr r1, _0202AB10 ; =_020F677C
-	ldr r3, _0202AB14 ; =_020F677D
+	ldr r3, _0202AB14 ; =_020F677C + 1
 	ldrb r1, [r1, r4]
 	ldrb r3, [r3, r4]
 	add r3, r1, r3
@@ -402,7 +401,7 @@ _0202AB08:
 	bx lr
 	.balign 4, 0
 _0202AB10: .word _020F677C
-_0202AB14: .word _020F677D
+_0202AB14: .word _020F677C + 1
 	thumb_func_end sub_0202AAD4
 
 	thumb_func_start sub_0202AB18
@@ -417,7 +416,7 @@ sub_0202AB18: ; 0x0202AB18
 	cmp r0, #2
 	bhi _0202ABA2
 	lsl r7, r0, #1
-	ldr r0, _0202ABA8 ; =_020F677D
+	ldr r0, _0202ABA8 ; =_020F677C + 1
 	ldrb r6, [r0, r7]
 	ldr r0, _0202ABAC ; =_020F677C
 	ldrb r0, [r0, r7]
@@ -482,7 +481,7 @@ _0202ABA2:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0202ABA8: .word _020F677D
+_0202ABA8: .word _020F677C + 1
 _0202ABAC: .word _020F677C
 	thumb_func_end sub_0202AB18
 
