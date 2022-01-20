@@ -1,3 +1,5 @@
+#include "msgdata/msg/msg_0287.h"
+#include "mail_message.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -83,18 +85,19 @@ Sav2_Misc_init: ; 0x0202A8BC
 	mov r1, #0xff
 	mov r2, #8
 	bl MI_CpuFill8
+	; REGARDS!\nHello!
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	add r0, r4, r0
-	mov r1, #4
+	mov r1, #MAILMSG_BANK_0295_GMM
 	bl MailMsg_init_withBank
 	ldr r0, _0202A94C ; =0x000002A2
-	mov r1, #0
+	mov r1, #msg_0295_00000
 	strh r1, [r4, r0]
-	ldr r0, _0202A950 ; =0x0000011F
-	mov r1, #0x63
+	ldr r0, _0202A950 ; =0x0000011F ; msg_0287.gmm
+	mov r1, #msg_0287_regards
 	bl GetECWordIndexByPair
-	mov r1, #0xa9
+	mov r1, #0x2A4>>2
 	lsl r1, r1, #2
 	strh r0, [r4, r1]
 	ldr r2, _0202A948 ; =0x0000FFFF

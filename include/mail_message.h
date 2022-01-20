@@ -4,11 +4,19 @@
 #define MAILMSG_BANK_NONE           (0xFFFF)
 #define MAILMSG_FIELDS_MAX          (2)
 
+#define MAILMSG_BANK_0294_GMM        0
+#define MAILMSG_BANK_0296_GMM        1
+#define MAILMSG_BANK_0292_GMM        2
+#define MAILMSG_BANK_0293_GMM        3
+#define MAILMSG_BANK_0295_GMM        4
+
 #include "msgdata/msg/msg_0294.h"
 #include "msgdata/msg/msg_0296.h"
 #include "msgdata/msg/msg_0292.h"
 #include "msgdata/msg/msg_0293.h"
 #include "msgdata/msg/msg_0295.h"
+
+#ifndef PM_ASM
 
 typedef struct MailMessage {
     u16 msg_bank;
@@ -39,5 +47,7 @@ u16 MailMsg_GetMsgBank(const MAIL_MESSAGE *mailMessage);
 u16 MailMsg_GetMsgNo(const MAIL_MESSAGE *mailMessage);
 u32 MailMsg_NumMsgsInBank(u16 msg_bank);
 void MailMsg_SetTrailingFieldsEmpty(MAIL_MESSAGE *mailMessage);
+
+#endif //PM_ASM
 
 #endif //POKEHEARTGOLD_MAIL_MESSAGE_H

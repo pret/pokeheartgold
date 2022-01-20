@@ -36,7 +36,7 @@ void MailMsg_init_withBank(MAIL_MESSAGE *mailMessage, u16 msgBank) {
 
 // I've entered the Union Room
 void MailMsg_init_default(MAIL_MESSAGE *mailMessage) {
-    MailMsg_init_withBank(mailMessage, 4);
+    MailMsg_init_withBank(mailMessage, MAILMSG_BANK_0295_GMM);
     mailMessage->msg_no = msg_0295_00005;
 }
 
