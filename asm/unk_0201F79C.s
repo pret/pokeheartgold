@@ -1,8 +1,8 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.public _021DA51C
-    .public _021DA558
+	.public NNS_G3dGlb
+    .public NNS_G3dGlb
 
 	.text
 
@@ -364,10 +364,10 @@ _0201F9B0:
 	bl sub_0201FAA4
 	add r0, sp, #0x1c
 	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _0201FA2C ; =_021DA558
+	ldr r1, _0201FA2C ; =NNS_G3dGlb + 0xBC
 	add r0, r5, #0
 	bl MI_Copy36B
-	ldr r1, _0201FA30 ; =_021DA51C
+	ldr r1, _0201FA30 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -399,8 +399,8 @@ _0201F9B0:
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0201FA2C: .word _021DA558
-_0201FA30: .word _021DA51C
+_0201FA2C: .word NNS_G3dGlb + 0xBC
+_0201FA30: .word NNS_G3dGlb + 0x80
 	thumb_func_end sub_0201F990
 
 	thumb_func_start sub_0201FA34

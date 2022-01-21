@@ -1150,10 +1150,10 @@ _021E629C:
 	ldrsh r2, [r3, r2]
 	add r0, sp, #0x20
 	bl MTX_RotY33_
-	ldr r1, _021E6348 ; =_021DA558
+	ldr r1, _021E6348 ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #0x20
 	bl MI_Copy36B
-	ldr r1, _021E634C ; =_021DA51C
+	ldr r1, _021E634C ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1193,8 +1193,8 @@ _021E632E:
 _021E633C: .word ov61_021E73EC
 _021E6340: .word FX_SinCosTable_
 _021E6344: .word ov61_021E73E0
-_021E6348: .word _021DA558
-_021E634C: .word _021DA51C
+_021E6348: .word NNS_G3dGlb + 0xBC
+_021E634C: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov61_021E6240
 
 	thumb_func_start ov61_021E6350

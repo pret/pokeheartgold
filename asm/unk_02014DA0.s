@@ -1,7 +1,7 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.public _021DA4E8
+	.public NNS_G3dGlb
 
 	.rodata
 
@@ -970,7 +970,7 @@ sub_020153D8: ; 0x020153D8
 _020153F4:
 	bl NNS_G3dGlbFlushP
 	ldr r0, [r4]
-	ldr r1, _02015410 ; =_021DA4E8
+	ldr r1, _02015410 ; =NNS_G3dGlb + 0x4C
 	bl SPL_Draw
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
@@ -980,7 +980,7 @@ _0201540A:
 	bl NNS_G3dGlbFlushP
 	pop {r4, pc}
 	.balign 4, 0
-_02015410: .word _021DA4E8
+_02015410: .word NNS_G3dGlb + 0x4C
 	thumb_func_end sub_020153D8
 
 	thumb_func_start sub_02015414

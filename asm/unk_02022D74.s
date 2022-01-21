@@ -1,12 +1,12 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.public _021DA4A4
-    .public _021DA4E8
-    .public _021DA51C
-    .public _021DA6DC
-    .public _021DA6E8
-    .public _021DA6F4
+	.public NNS_G3dGlb
+    .public NNS_G3dGlb
+    .public NNS_G3dGlb
+    .public NNS_G3dGlb
+    .public NNS_G3dGlb
+    .public NNS_G3dGlb
     .public _0210F6DC
 
 	.data
@@ -597,7 +597,7 @@ sub_02023154: ; 0x02023154
 	str r0, [r3]
 _0202319E:
 	ldr r0, _020231EC ; =_021D2204
-	ldr r5, _020231F0 ; =_021DA6DC
+	ldr r5, _020231F0 ; =NNS_G3dGlb + 0x240
 	ldr r4, [r0]
 	add r3, r4, #0
 	add r2, r4, #0
@@ -609,24 +609,24 @@ _0202319E:
 	add r2, #0x2c
 	str r0, [r5]
 	add r6, r2, #0
-	ldr r5, _020231F4 ; =_021DA6E8
+	ldr r5, _020231F4 ; =NNS_G3dGlb + 0x24C
 	ldmia r6!, {r0, r1}
 	stmia r5!, {r0, r1}
 	ldr r0, [r6]
 	add r3, #0x20
 	str r0, [r5]
 	add r6, r3, #0
-	ldr r5, _020231F8 ; =_021DA6F4
+	ldr r5, _020231F8 ; =NNS_G3dGlb + 0x258
 	ldmia r6!, {r0, r1}
 	stmia r5!, {r0, r1}
 	ldr r0, [r6]
 	add r1, r2, #0
 	add r2, r3, #0
 	str r0, [r5]
-	ldr r3, _020231FC ; =_021DA4E8
+	ldr r3, _020231FC ; =NNS_G3dGlb + 0x4C
 	add r0, r4, #0
 	bl MTX_LookAt
-	ldr r1, _02023200 ; =_021DA51C
+	ldr r1, _02023200 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xe8
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -636,11 +636,11 @@ _020231E6:
 	pop {r4, r5, r6, pc}
 	nop
 _020231EC: .word _021D2204
-_020231F0: .word _021DA6DC
-_020231F4: .word _021DA6E8
-_020231F8: .word _021DA6F4
-_020231FC: .word _021DA4E8
-_02023200: .word _021DA51C
+_020231F0: .word NNS_G3dGlb + 0x240
+_020231F4: .word NNS_G3dGlb + 0x24C
+_020231F8: .word NNS_G3dGlb + 0x258
+_020231FC: .word NNS_G3dGlb + 0x4C
+_02023200: .word NNS_G3dGlb + 0x80
 	thumb_func_end sub_02023154
 
 	thumb_func_start sub_02023204
@@ -907,14 +907,14 @@ sub_020233D8: ; 0x020233D8
 	mov r0, #1
 	lsl r0, r0, #0xc
 	str r0, [sp, #4]
-	ldr r0, _02023488 ; =_021DA4A4
+	ldr r0, _02023488 ; =NNS_G3dGlb + 0x8
 	str r0, [sp, #8]
 	ldr r0, [r5]
 	ldr r1, [r5, #4]
 	ldr r2, [r5, #8]
 	ldr r3, [r5, #0xc]
 	bl MTX_PerspectiveW
-	ldr r1, _0202348C ; =_021DA51C
+	ldr r1, _0202348C ; =NNS_G3dGlb + 0x80
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	add r5, #0x44
@@ -963,12 +963,12 @@ _02023414:
 	str r0, [sp, #4]
 	lsl r0, r2, #1
 	str r0, [sp, #8]
-	ldr r0, _02023488 ; =_021DA4A4
+	ldr r0, _02023488 ; =NNS_G3dGlb + 0x8
 	neg r2, r3
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	bl MTX_OrthoW
-	ldr r1, _0202348C ; =_021DA51C
+	ldr r1, _0202348C ; =NNS_G3dGlb + 0x80
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	add r5, #0x44
@@ -982,8 +982,8 @@ _02023414:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02023488: .word _021DA4A4
-_0202348C: .word _021DA51C
+_02023488: .word NNS_G3dGlb + 0x8
+_0202348C: .word NNS_G3dGlb + 0x80
 _02023490: .word _0210F6DC
 	thumb_func_end sub_020233D8
 

@@ -15879,10 +15879,10 @@ _02230E8E:
 	str r0, [sp, #0x40]
 	add r0, sp, #0
 	bl MTX_Identity33_
-	ldr r1, _02230F8C ; =_021DA558
+	ldr r1, _02230F8C ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #0
 	bl MI_Copy36B
-	ldr r1, _02230F90 ; =_021DA51C
+	ldr r1, _02230F90 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -15903,8 +15903,8 @@ _02230F84:
 	add sp, #0x44
 	pop {r3, r4, r5, r6, pc}
 	nop
-_02230F8C: .word _021DA558
-_02230F90: .word _021DA51C
+_02230F8C: .word NNS_G3dGlb + 0xBC
+_02230F90: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov45_02230E78
 
 	thumb_func_start ov45_02230F94

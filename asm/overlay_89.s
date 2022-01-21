@@ -2385,10 +2385,10 @@ ov89_02259C0C: ; 0x02259C0C
 	bl NNS_G3dGlbMaterialColorSpecEmi
 	add r0, sp, #0x28
 	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _02259CC8 ; =_021DA558
+	ldr r1, _02259CC8 ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #4
 	bl MI_Copy36B
-	ldr r1, _02259CCC ; =_021DA51C
+	ldr r1, _02259CCC ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -2417,8 +2417,8 @@ ov89_02259C0C: ; 0x02259C0C
 _02259CBC: .word 0xFFFFF000
 _02259CC0: .word 0x0000739C
 _02259CC4: .word 0x00007FFF
-_02259CC8: .word _021DA558
-_02259CCC: .word _021DA51C
+_02259CC8: .word NNS_G3dGlb + 0xBC
+_02259CCC: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov89_02259C0C
 
 	thumb_func_start ov89_02259CD0

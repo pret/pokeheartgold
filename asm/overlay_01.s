@@ -1104,7 +1104,7 @@ ov01_021E6220: ; 0x021E6220
 	adc r1, r3
 	lsl r0, r1, #0x14
 	lsr r2, r2, #0xc
-	ldr r6, _021E6310 ; =_021DA4A4
+	ldr r6, _021E6310 ; =NNS_G3dGlb + 0x8
 	orr r2, r0
 	add r5, sp, #0x48
 	mov r3, #8
@@ -1136,11 +1136,11 @@ _021E6294:
 	orr r1, r0
 	add r0, r2, r1
 	str r0, [sp, #0x40]
-	ldr r1, _021E6310 ; =_021DA4A4
+	ldr r1, _021E6310 ; =NNS_G3dGlb + 0x8
 	add r0, sp, #8
 	mov r2, #0x40
 	bl MIi_CpuCopyFast
-	ldr r1, _021E6314 ; =_021DA51C
+	ldr r1, _021E6314 ; =NNS_G3dGlb + 0x80
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1149,11 +1149,11 @@ _021E6294:
 	ldr r0, [r4, #0x44]
 	bl ov01_021F13EC
 	bl sub_020237B0
-	ldr r1, _021E6310 ; =_021DA4A4
+	ldr r1, _021E6310 ; =NNS_G3dGlb + 0x8
 	add r0, sp, #0x48
 	mov r2, #0x40
 	bl MIi_CpuCopyFast
-	ldr r1, _021E6314 ; =_021DA51C
+	ldr r1, _021E6314 ; =NNS_G3dGlb + 0x80
 	mov r0, #0x50
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1170,8 +1170,8 @@ _021E6294:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E630C: .word FX_SinCosTable_
-_021E6310: .word _021DA4A4
-_021E6314: .word _021DA51C
+_021E6310: .word NNS_G3dGlb + 0x8
+_021E6314: .word NNS_G3dGlb + 0x80
 _021E6318: .word _0210F6DC
 	thumb_func_end ov01_021E6220
 
@@ -12773,7 +12773,7 @@ _021EBA92:
 	str r2, [r1, r0]
 	ldr r1, [r4, #8]
 	add r0, r3, #4
-	ldr r6, _021EBB34 ; =_021DA6F4
+	ldr r6, _021EBB34 ; =NNS_G3dGlb + 0x258
 	add r5, r1, r0
 	ldmia r6!, {r0, r1}
 	stmia r5!, {r0, r1}
@@ -12824,7 +12824,7 @@ _021EBB28:
 	.balign 4, 0
 _021EBB2C: .word 0x0000FFFF
 _021EBB30: .word 0x00000F48
-_021EBB34: .word _021DA6F4
+_021EBB34: .word NNS_G3dGlb + 0x258
 _021EBB38: .word 0x00000F58
 _021EBB3C: .word 0x0400000C
 	thumb_func_end ov01_021EBA44
@@ -13910,7 +13910,7 @@ ov01_021EC304: ; 0x021EC304
 ov01_021EC31C: ; 0x021EC31C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
-	ldr r3, _021EC45C ; =_021DA6F4
+	ldr r3, _021EC45C ; =NNS_G3dGlb + 0x258
 	add r5, r2, #0
 	str r0, [sp, #4]
 	str r1, [sp, #8]
@@ -14063,7 +14063,7 @@ _021EC450:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021EC45C: .word _021DA6F4
+_021EC45C: .word NNS_G3dGlb + 0x258
 _021EC460: .word 0x00000F4C
 _021EC464: .word 0x000BE8D0
 _021EC468: .word 0x000BE811
@@ -24143,10 +24143,10 @@ ov01_021F10C8: ; 0x021F10C8
 	bl NNS_G3dGlbSetBaseTrans
 	add r0, sp, #0x24
 	bl NNS_G3dGlbSetBaseScale
-	ldr r1, _021F1140 ; =_021DA558
+	ldr r1, _021F1140 ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #0
 	bl MI_Copy36B
-	ldr r1, _021F1144 ; =_021DA51C
+	ldr r1, _021F1144 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -24169,8 +24169,8 @@ _021F1136:
 	pop {r4, r5, pc}
 	nop
 _021F113C: .word ov01_022067E0
-_021F1140: .word _021DA558
-_021F1144: .word _021DA51C
+_021F1140: .word NNS_G3dGlb + 0xBC
+_021F1144: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov01_021F10C8
 
 	thumb_func_start ov01_021F1148
@@ -29879,10 +29879,10 @@ ov01_021F3B84: ; 0x021F3B84
 	add r4, r2, #0
 	add r5, r3, #0
 	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _021F3C04 ; =_021DA558
+	ldr r1, _021F3C04 ; =NNS_G3dGlb + 0xBC
 	add r0, r4, #0
 	bl MI_Copy36B
-	ldr r1, _021F3C08 ; =_021DA51C
+	ldr r1, _021F3C08 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -29934,8 +29934,8 @@ _021F3BE8:
 _021F3C00:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F3C04: .word _021DA558
-_021F3C08: .word _021DA51C
+_021F3C04: .word NNS_G3dGlb + 0xBC
+_021F3C08: .word NNS_G3dGlb + 0x80
 	thumb_func_end ov01_021F3B84
 
 	thumb_func_start ov01_021F3C0C

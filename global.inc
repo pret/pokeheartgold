@@ -2795,10 +2795,10 @@
 .public _0210F6DC
 .public _02110A0C
 .public _021D2AF8
-.public _021DA4A4
-.public _021DA51C
-.public _021DA558
-.public _021DA6F4
+.public NNS_G3dGlb
+.public NNS_G3dGlb
+.public NNS_G3dGlb
+.public NNS_G3dGlb
 .public _MonDecryptSegment
 .public _MonEncryptSegment
 .public _Z14__ThrowHandlerP12ThrowContext

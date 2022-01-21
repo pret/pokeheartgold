@@ -4,7 +4,7 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.public _021DA51C
+	.public NNS_G3dGlb
 
 	.text
 
@@ -2813,7 +2813,7 @@ _0206AC36:
 	add r1, r5, #0
 	bl sub_0206B880
 	ldr r1, _0206AEA8 ; =0xBCFC0304
-	ldr r0, _0206AEAC ; =_021DA51C
+	ldr r0, _0206AEAC ; =NNS_G3dGlb + 0x80
 	str r1, [r0, #0x20]
 	add r0, r6, #0
 	bl ScriptEnvironment_GetSav2Ptr
@@ -2879,13 +2879,13 @@ _0206ACD6:
 	add r3, r2, r1
 	cmp r7, #0
 	beq _0206AD36
-	ldr r2, _0206AEB0 ; =_020FF468
+	ldr r2, _0206AEB0 ; =_020FF464 + 4
 	mov r0, #1
 	str r0, [sp]
 	ldrh r0, [r5, #0x34]
 	ldrh r2, [r2, r1]
 	add r0, r0, r2
-	ldr r2, _0206AEB4 ; =_020FF46A
+	ldr r2, _0206AEB4 ; =_020FF464 + 6
 	str r0, [sp, #4]
 	ldrh r0, [r5, #0x36]
 	ldrh r1, [r2, r1]
@@ -3100,9 +3100,9 @@ _0206AEA2:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206AEA8: .word 0xBCFC0304
-_0206AEAC: .word _021DA51C
-_0206AEB0: .word _020FF468
-_0206AEB4: .word _020FF46A
+_0206AEAC: .word NNS_G3dGlb + 0x80
+_0206AEB0: .word _020FF464 + 4
+_0206AEB4: .word _020FF464 + 6
 _0206AEB8: .word ov01_021F7918
 _0206AEBC: .word 0x0000FFFF
 	thumb_func_end sub_0206ABB0
@@ -3727,7 +3727,7 @@ _0206B3AA:
 	add r3, r0, r2
 	cmp r7, #0
 	beq _0206B404
-	ldr r6, _0206B6FC ; =_020FF468
+	ldr r6, _0206B6FC ; =_020FF464 + 4
 	mov r0, #1
 	str r0, [sp]
 	ldrh r0, [r1, #0x34]
@@ -3735,7 +3735,7 @@ _0206B3AA:
 	add r0, r0, r6
 	str r0, [sp, #4]
 	ldrh r0, [r1, #0x36]
-	ldr r1, _0206B700 ; =_020FF46A
+	ldr r1, _0206B700 ; =_020FF464 + 6
 	ldrh r1, [r1, r2]
 	add r0, r0, r1
 	str r0, [sp, #8]
@@ -4137,8 +4137,8 @@ _0206B6EC:
 	strb r0, [r4]
 	b _0206B824
 	nop
-_0206B6FC: .word _020FF468
-_0206B700: .word _020FF46A
+_0206B6FC: .word _020FF464 + 4
+_0206B700: .word _020FF464 + 6
 _0206B704: .word ov01_021F7918
 _0206B708: .word 0x0000FFFF
 _0206B70C: .word 0x0000091F
@@ -8964,11 +8964,13 @@ sub_0206DCC4: ; 0x0206DCC4
 	.rodata
 
 _020FE8A4:
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
+	.word 0x00001000
+	.word 0x00001000
+	.word 0x00001000
 _020FE8B0:
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x10, 0x00, 0x00
+	.word 0x00001000, 0x00000000, 0x00000000
+	.word 0x00000000, 0x00001000, 0x00000000
+	.word 0x00000000, 0x00000000, 0x00001000
 _020FE8D4:
 	.short 0          ; SPECIES_BULBASAUR
 	.short 0          ; SPECIES_IVYSAUR
@@ -10454,16 +10456,15 @@ _020FF088:
 	.short 0x0221
 	.short 0x0222
 	.short 0x0224
-	.short 0x0001
-	.short 0xFFFF
 
-_020FF468:
-	.byte 0x02, 0x00
-_020FF46A:
-	.byte 0x00, 0x00
-_020FF46C:
-	.byte 0x01, 0x00, 0xFF, 0xFF
-	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x03, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0xFE, 0xFF, 0x02, 0x00, 0xFE, 0xFF
+_020FF464:
+	.short 0x0001, 0xFFFF
+	.short 0x0002, 0x0000
+	.short 0x0001, 0xFFFF
+	.short 0xFFFF, 0xFFFF
+	.short 0x0003, 0xFFFF
+	.short 0x0000, 0xFFFE
+	.short 0x0002, 0xFFFE
 _020FF480:
 	.word ov57_022378DC, ov57_02237AF8, ov57_02237B20, SDK_OVERLAY_OVY_57_ID
 _020FF490:

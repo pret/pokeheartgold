@@ -1387,10 +1387,10 @@ ov93_0225D07C: ; 0x0225D07C
 	bl NNS_G3dGlbMaterialColorSpecEmi
 	add r0, sp, #0x28
 	bl NNS_G3dGlbSetBaseTrans
-	ldr r1, _0225D1CC ; =_021DA558
+	ldr r1, _0225D1CC ; =NNS_G3dGlb + 0xBC
 	add r0, sp, #4
 	bl MI_Copy36B
-	ldr r1, _0225D1D0 ; =_021DA51C
+	ldr r1, _0225D1D0 ; =NNS_G3dGlb + 0x80
 	mov r0, #0xa4
 	ldr r2, [r1, #0x7c]
 	bic r2, r0
@@ -1446,8 +1446,8 @@ _0225D1BC: .word 0x00001428
 _0225D1C0: .word 0xFFFFF000
 _0225D1C4: .word 0x0000739C
 _0225D1C8: .word 0x00007FFF
-_0225D1CC: .word _021DA558
-_0225D1D0: .word _021DA51C
+_0225D1CC: .word NNS_G3dGlb + 0xBC
+_0225D1D0: .word NNS_G3dGlb + 0x80
 _0225D1D4: .word 0x000013B0
 	thumb_func_end ov93_0225D07C
 
