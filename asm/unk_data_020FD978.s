@@ -87,10 +87,3 @@ _020FDA10:
 	.word sub_020625F4
 	.word sub_02062514
 	.word sub_02062470
-
-	.data
-
-_0210FACC:
-	.word _020FDA84
-	.word _020FDAC4
-	.word _020FDB04

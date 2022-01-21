@@ -30088,3 +30088,9 @@
 .public sub_0205CA90
 .public sub_0205CAE8
 .public sub_0205CAF4
+.public sub_0206217C
+.public sub_02062428
+.public sub_0206642C
+.public sub_02066438
+.public sub_020623C8
+.public sub_020623D8
