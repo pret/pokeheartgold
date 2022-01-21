@@ -6,6 +6,7 @@
 #include "constants/vars.h"
 #include "constants/items.h"
 #include "constants/std_script.h"
+#include "constants/roamer.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 #include "party_menu.h"
 	.include "asm/macros.inc"
@@ -13,22 +14,22 @@
 
 	.text
 
-	thumb_func_start sub_02067608
-sub_02067608: ; 0x02067608
+	thumb_func_start RoamerLocationUpdateRand
+RoamerLocationUpdateRand: ; 0x02067608
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0202D9F4
+	bl PlayerLocationHistoryGetBack
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
 	bl RoamerLocationSetRandom
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02067608
+	thumb_func_end RoamerLocationUpdateRand
 
-	thumb_func_start Save_UpdateRoamersOnConnection
-Save_UpdateRoamersOnConnection: ; 0x02067620
+	thumb_func_start Save_RandomizeRoamersLocation
+Save_RandomizeRoamersLocation: ; 0x02067620
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r5, #0
@@ -40,7 +41,7 @@ _02067626:
 	beq _0206763A
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02067608
+	bl RoamerLocationUpdateRand
 _0206763A:
 	add r0, r5, #1
 	lsl r0, r0, #0x18
@@ -49,10 +50,10 @@ _0206763A:
 	blo _02067626
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end Save_UpdateRoamersOnConnection
+	thumb_func_end Save_RandomizeRoamersLocation
 
-	thumb_func_start sub_02067648
-sub_02067648: ; 0x02067648
+	thumb_func_start Save_UpdateRoamersLocation
+Save_UpdateRoamersLocation: ; 0x02067648
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	mov r4, #0
@@ -74,15 +75,15 @@ _02067650:
 	bne _0206767A
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02067608
+	bl RoamerLocationUpdateRand
 	b _0206768A
 _0206767A:
 	add r0, r5, #0
-	bl sub_0202D9F4
+	bl PlayerLocationHistoryGetBack
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl RoamerLocationUpdate
+	bl RoamerLocationUpdateEx
 _0206768A:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -91,10 +92,10 @@ _0206768A:
 	blo _02067650
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02067648
+	thumb_func_end Save_UpdateRoamersLocation
 
-	thumb_func_start sub_02067698
-sub_02067698: ; 0x02067698
+	thumb_func_start GetRoamMapByLocationIdx
+GetRoamMapByLocationIdx: ; 0x02067698
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r4, #0x29
@@ -107,10 +108,10 @@ _020676A4:
 	pop {r4, pc}
 	.balign 4, 0
 _020676AC: .word sRoamerLocations
-	thumb_func_end sub_02067698
+	thumb_func_end GetRoamMapByLocationIdx
 
-	thumb_func_start sub_020676B0
-sub_020676B0: ; 0x020676B0
+	thumb_func_start AreAnyRoamersActive
+AreAnyRoamersActive: ; 0x020676B0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r5, #0
@@ -130,22 +131,22 @@ _020676C6:
 	blo _020676B6
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_020676B0
+	thumb_func_end AreAnyRoamersActive
 
-	thumb_func_start sub_020676D4
-sub_020676D4: ; 0x020676D4
+	thumb_func_start UpdatePlayerLocationHistoryIfAnyRoamersActive
+UpdatePlayerLocationHistoryIfAnyRoamersActive: ; 0x020676D4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020676B0
+	bl AreAnyRoamersActive
 	cmp r0, #0
 	beq _020676EA
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0202D9E8
+	bl PlayerLocationHistoryPush
 _020676EA:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_020676D4
+	thumb_func_end UpdatePlayerLocationHistoryIfAnyRoamersActive
 
 	thumb_func_start Save_CreateRoamerByID
 Save_CreateRoamerByID: ; 0x020676EC
@@ -257,7 +258,7 @@ _0206773E:
 	add r0, r7, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl sub_0202D9F4
+	bl PlayerLocationHistoryGetBack
 	add r2, r0, #0
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x10]
@@ -350,8 +351,8 @@ _02067854:
 _02067880: .word sRoamerLocations
 	thumb_func_end RoamerLocationSetRandom
 
-	thumb_func_start RoamerLocationUpdate
-RoamerLocationUpdate: ; 0x02067884
+	thumb_func_start RoamerLocationUpdateEx
+RoamerLocationUpdateEx: ; 0x02067884
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r0, [sp]
@@ -422,7 +423,7 @@ _020678EC:
 	.balign 4, 0
 _0206790C: .word sRoamerAdjacencyTable
 _02067910: .word sRoamerLocations
-	thumb_func_end RoamerLocationUpdate
+	thumb_func_end RoamerLocationUpdateEx
 
 	thumb_func_start ApplyRoamerLocation
 ApplyRoamerLocation: ; 0x02067914
@@ -499,45 +500,45 @@ sRoamerLocations:
 	; maps.
 sRoamerAdjacencyTable:
 ; Johto
-	.short      2,      1,     15, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,      0,      2, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,      1,      3,      7, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,      2,      4,      7, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,      3,      5, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,      4,      6, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,      5,      7, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,      2,      3,      8, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,      7,      9,     11, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,      8,     10,     11, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      1,      9, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      4,      8,      9,     12,     13, 0xFFFF, 0xFFFF
-	.short      2,     11,     13, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,     11,     12,     15, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     13,     15, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,      0,     14, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R30, ROMER_LOC_R46, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R29, ROMER_LOC_R31, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R30, ROMER_LOC_R32, ROMER_LOC_R36, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R31, ROMER_LOC_R33, ROMER_LOC_R36, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R32, ROMER_LOC_R34, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R33, ROMER_LOC_R35, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R34, ROMER_LOC_R36, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R31, ROMER_LOC_R32, ROMER_LOC_R37, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R36, ROMER_LOC_R38, ROMER_LOC_R42, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R37, ROMER_LOC_R39, ROMER_LOC_R42, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 1, ROMER_LOC_R38, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 4, ROMER_LOC_R37, ROMER_LOC_R38, ROMER_LOC_R43, ROMER_LOC_R44, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R42, ROMER_LOC_R44, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R42, ROMER_LOC_R43, ROMER_LOC_R46, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R44, ROMER_LOC_R46, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R29, ROMER_LOC_R45, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
 ; Kanto
-	.short      2,     17,     37, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,     16,     37,     18, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     17,     19, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,     18,     20,     38, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      6,     19,     21,     22,     23,     24,     38
-	.short      3,     22,     23,     26, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      4,     20,     21,     23,     31, 0xFFFF, 0xFFFF
-	.short      5,     20,     21,     22,     25,     27, 0xFFFF
-	.short      4,     19,     20,     25,     38, 0xFFFF, 0xFFFF
-	.short      3,     23,     24,     27, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     21,     27, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      4,     23,     25,     26,     28, 0xFFFF, 0xFFFF
-	.short      2,     27,     29, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     28,     30, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,     29,     33,     34, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     22,     37, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     31,     33, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,     30,     32,     34, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     30,     33, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     34,     36, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     16,     34, 0xFFFF, 0xFFFF, 0xFFFF,      0
-	.short      4,     16,     17,     39,     40, 0xFFFF, 0xFFFF
-	.short      3,     19,     20,     24, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      2,     37,     40, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
-	.short      3,     37,     39,     24, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R02, ROMER_LOC_R22, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R01, ROMER_LOC_R22, ROMER_LOC_R03, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R02, ROMER_LOC_R04, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R03, ROMER_LOC_R05, ROMER_LOC_R24, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 6, ROMER_LOC_R04, ROMER_LOC_R06, ROMER_LOC_R07, ROMER_LOC_R08, ROMER_LOC_R09, ROMER_LOC_R24
+	.short 3, ROMER_LOC_R07, ROMER_LOC_R08, ROMER_LOC_R11, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 4, ROMER_LOC_R05, ROMER_LOC_R06, ROMER_LOC_R08, ROMER_LOC_R16, 0xFFFF, 0xFFFF
+	.short 5, ROMER_LOC_R05, ROMER_LOC_R06, ROMER_LOC_R07, ROMER_LOC_R10, ROMER_LOC_R12, 0xFFFF
+	.short 4, ROMER_LOC_R04, ROMER_LOC_R05, ROMER_LOC_R10, ROMER_LOC_R24, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R08, ROMER_LOC_R09, ROMER_LOC_R12, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R06, ROMER_LOC_R12, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 4, ROMER_LOC_R08, ROMER_LOC_R10, ROMER_LOC_R11, ROMER_LOC_R13, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R12, ROMER_LOC_R14, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R13, ROMER_LOC_R15, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R14, ROMER_LOC_R18, ROMER_LOC_W19, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R07, ROMER_LOC_R22, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R16, ROMER_LOC_R18, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R15, ROMER_LOC_R17, ROMER_LOC_W19, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R15, ROMER_LOC_R18, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_W19, ROMER_LOC_W21, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R01, ROMER_LOC_W19, 0xFFFF, 0xFFFF, 0xFFFF, ROMER_LOC_R29
+	.short 4, ROMER_LOC_R01, ROMER_LOC_R02, ROMER_LOC_R26, ROMER_LOC_R28, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R04, ROMER_LOC_R05, ROMER_LOC_R09, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 2, ROMER_LOC_R22, ROMER_LOC_R28, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF
+	.short 3, ROMER_LOC_R22, ROMER_LOC_R26, ROMER_LOC_R09, 0xFFFF, 0xFFFF, 0xFFFF

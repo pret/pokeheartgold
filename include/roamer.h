@@ -29,7 +29,7 @@ typedef struct ROAMER {
 
 typedef struct ROAMER_SAVE {
     u32 rand[2];
-    u32 unk_8[2];
+    u32 playerLocationHistory[2];
     ROAMER data[ROAMER_MAX];
     u8 unk_60[ROAMER_MAX];
     u8 unk_64;
@@ -44,8 +44,8 @@ void Roamers_SetRand(ROAMER_SAVE *roamer, u32 param);
 u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which);
 void sub_0202D9D0(SAVEDATA *saveData);
 u8 sub_0202D9E0(ROAMER_SAVE *roamerSave);
-void sub_0202D9E8(ROAMER_SAVE *roamerSave, u32 a1);
-u32 sub_0202D9F4(ROAMER_SAVE *roamerSave);
+void PlayerLocationHistoryPush(ROAMER_SAVE *roamerSave, u32 a1);
+u32 PlayerLocationHistoryGetBack(ROAMER_SAVE *roamerSave);
 u8 Roamer_GetLocation(ROAMER_SAVE *roamerSave, int a1);
 void Roamer_SetLocation(ROAMER_SAVE *roamerSave, int a1, u8 a2);
 u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, int a1);

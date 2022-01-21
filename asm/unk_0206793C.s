@@ -223,9 +223,9 @@ sub_02067A88: ; 0x02067A88
 	ldr r1, [r5, #0x20]
 	add r4, r0, #0
 	ldr r1, [r1]
-	bl sub_020676D4
+	bl UpdatePlayerLocationHistoryIfAnyRoamersActive
 	add r0, r4, #0
-	bl sub_02067648
+	bl Save_UpdateRoamersLocation
 _02067AE0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -265,7 +265,7 @@ sub_02067AE4: ; 0x02067AE4
 	bl Save_Roamers_get
 	ldr r1, [r5, #0x20]
 	ldr r1, [r1]
-	bl sub_020676D4
+	bl UpdatePlayerLocationHistoryIfAnyRoamersActive
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
 	bl MapHeader_IsCave
@@ -313,7 +313,7 @@ sub_02067B88: ; 0x02067B88
 	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
-	bl Save_UpdateRoamersOnConnection
+	bl Save_RandomizeRoamersLocation
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067B88
@@ -327,7 +327,7 @@ sub_02067BA4: ; 0x02067BA4
 	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
-	bl Save_UpdateRoamersOnConnection
+	bl Save_RandomizeRoamersLocation
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067BA4
@@ -360,7 +360,7 @@ sub_02067BE8: ; 0x02067BE8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_Roamers_get
-	bl Save_UpdateRoamersOnConnection
+	bl Save_RandomizeRoamersLocation
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067BE8

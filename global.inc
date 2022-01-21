@@ -27452,8 +27452,8 @@
 .public Save_Roamers_get
 .public sub_0202D9D0
 .public sub_0202D9E0
-.public sub_0202D9E8
-.public sub_0202D9F4
+.public PlayerLocationHistoryPush
+.public PlayerLocationHistoryGetBack
 .public Roamer_GetLocation
 .public Roamer_SetLocation
 .public GetRoamerIsActiveByIndex
@@ -29183,8 +29183,8 @@
 .public sub_0206751C
 .public sub_02067584
 .public sub_0206759C
-.public sub_02067608
-.public sub_02067698
+.public RoamerLocationUpdateRand
+.public GetRoamMapByLocationIdx
 .public Save_CreateRoamerByID
 .public SpeciesToRoamerIdx
 .public sub_02067A1C
@@ -29765,8 +29765,8 @@
 .public sub_02090D80
 .public sub_02090D84
 .public sub_02090D7C
-.public Save_UpdateRoamersOnConnection
+.public Save_RandomizeRoamersLocation
 .public sub_020668B0
 .public sub_02066AC0
-.public sub_02067648
-.public sub_020676D4
+.public Save_UpdateRoamersLocation
+.public UpdatePlayerLocationHistoryIfAnyRoamersActive

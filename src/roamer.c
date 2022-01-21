@@ -46,15 +46,15 @@ u8 sub_0202D9E0(ROAMER_SAVE *roamerSave) {
     return roamerSave->unk_64;
 }
 
-void sub_0202D9E8(ROAMER_SAVE *roamerSave, u32 a1) {
-    if (roamerSave->unk_8[0] != a1) {
-        roamerSave->unk_8[1] = roamerSave->unk_8[0];
-        roamerSave->unk_8[0] = a1;
+void PlayerLocationHistoryPush(ROAMER_SAVE *roamerSave, u32 mapsec) {
+    if (roamerSave->playerLocationHistory[0] != mapsec) {
+        roamerSave->playerLocationHistory[1] = roamerSave->playerLocationHistory[0];
+        roamerSave->playerLocationHistory[0] = mapsec;
     }
 }
 
-u32 sub_0202D9F4(ROAMER_SAVE *roamerSave) {
-    return roamerSave->unk_8[1];
+u32 PlayerLocationHistoryGetBack(ROAMER_SAVE *roamerSave) {
+    return roamerSave->playerLocationHistory[1];
 }
 
 u8 Roamer_GetLocation(ROAMER_SAVE *roamerSave, int a1) {

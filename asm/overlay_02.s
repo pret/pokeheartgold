@@ -5200,7 +5200,7 @@ _02248374:
 	add r0, r6, #0
 	add r1, r4, #0
 	bl Roamer_GetLocation
-	bl sub_02067698
+	bl GetRoamMapByLocationIdx
 	add r7, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -12597,12 +12597,12 @@ _0224BA78:
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Roamer_GetLocation
-	bl sub_02067698
+	bl GetRoamMapByLocationIdx
 	cmp r6, r0
 	bne _0224BA9C
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02067608
+	bl RoamerLocationUpdateRand
 _0224BA9C:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
