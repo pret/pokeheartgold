@@ -29765,3 +29765,8 @@
 .public sub_02090D80
 .public sub_02090D84
 .public sub_02090D7C
+.public Save_UpdateRoamersOnConnection
+.public sub_020668B0
+.public sub_02066AC0
+.public sub_02067648
+.public sub_020676D4
