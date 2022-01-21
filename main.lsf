@@ -206,6 +206,11 @@ Static main
 	Object unk_0205BB1C.o
 	Object unk_0205BFF0.o
 	Object unk_0205C268.o
+	Object unk_data_020FCBD8.o
+	Object unk_0205FD20.o
+	Object unk_data_020FD4EC.o
+	Object unk_data_020FD978.o
+	Object unk_02061284.o
 	Object field_roamer.o
 	Object unk_0206793C.o
 	Object unk_02068DE0.o
