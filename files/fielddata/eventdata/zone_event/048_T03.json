@@ -223,7 +223,7 @@
     },
     {
       "id": "obj_T03_tsure_poke_621",
-      "ovid": "SPRITE_TSURE_POKE_621",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_LATIOS",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_PEWTER_CITY_LATIOS",
@@ -241,7 +241,7 @@
     },
     {
       "id": "obj_T03_tsure_poke_620",
-      "ovid": "SPRITE_TSURE_POKE_620",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_LATIAS",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_PEWTER_CITY_LATIAS",

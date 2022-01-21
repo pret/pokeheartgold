@@ -3,7 +3,7 @@
   "objects": [
     {
       "id": "obj_D52R0102_tsure_poke_622",
-      "ovid": "SPRITE_TSURE_POKE_622",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_KYOGRE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_2D1",

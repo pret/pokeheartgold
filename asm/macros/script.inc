@@ -4333,7 +4333,7 @@
 	.short 772
 	.endm
 
-	.macro scrcmd_773 arg0
+	.macro cinematic arg0
 	.short 773
 	.short \arg0
 	.endm
@@ -4553,7 +4553,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_816
+	.macro unown_circle
 	.short 816
 	.endm
 

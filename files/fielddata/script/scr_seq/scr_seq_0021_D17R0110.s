@@ -314,7 +314,7 @@ scr_seq_D17R0110_006:
 	setvar VAR_TEMP_x400B, 123
 	fade_screen 6, 1, 0, RGB_WHITE
 	wait_fade
-	scrcmd_773 0
+	cinematic 0
 	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	show_person obj_D17R0110_hou_obj01
 	scrcmd_375 obj_D17R0110_hou_obj01

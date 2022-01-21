@@ -21,7 +21,7 @@
     },
     {
       "id": "obj_R28R0101_tsure_poke_577",
-      "ovid": "SPRITE_TSURE_POKE_577",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_FEAROW",
       "mvt": 9,
       "type": 0,
       "flag": "FLAG_NOTHING",

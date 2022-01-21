@@ -39,7 +39,7 @@
     },
     {
       "id": "obj_T23R0201_tsure_poke_596",
-      "ovid": "SPRITE_TSURE_POKE_596",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_UNK_1AC",
@@ -57,7 +57,7 @@
     },
     {
       "id": "obj_T23R0201_tsure_poke_596_2",
-      "ovid": "SPRITE_TSURE_POKE_596",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_UNK_1AC",

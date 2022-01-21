@@ -21,7 +21,7 @@
   "objects": [
     {
       "id": "obj_D18R0102_tsure_poke_618",
-      "ovid": "SPRITE_TSURE_POKE_618",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE",
@@ -39,7 +39,7 @@
     },
     {
       "id": "obj_D18R0102_tsure_poke_617",
-      "ovid": "SPRITE_TSURE_POKE_617",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ENTEI",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_B1F_ENTEI",
@@ -57,7 +57,7 @@
     },
     {
       "id": "obj_D18R0102_tsure_poke_616",
-      "ovid": "SPRITE_TSURE_POKE_616",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_RAIKOU",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU",
@@ -237,7 +237,7 @@
     },
     {
       "id": "obj_D18R0102_tsure_poke_618_2",
-      "ovid": "SPRITE_TSURE_POKE_618",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE",

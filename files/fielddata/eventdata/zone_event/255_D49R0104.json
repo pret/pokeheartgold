@@ -165,7 +165,7 @@
     },
     {
       "id": "obj_D49R0104_tsure_poke_575",
-      "ovid": "SPRITE_TSURE_POKE_575",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_RATTATA",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -201,7 +201,7 @@
     },
     {
       "id": "obj_D49R0104_tsure_poke_584",
-      "ovid": "SPRITE_TSURE_POKE_584",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ZUBAT",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

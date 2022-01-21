@@ -87,7 +87,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_607",
-      "ovid": "SPRITE_TSURE_POKE_607",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_DRAGONITE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1E5",
@@ -231,7 +231,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_598",
-      "ovid": "SPRITE_TSURE_POKE_598",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F5",
@@ -249,7 +249,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_598_2",
-      "ovid": "SPRITE_TSURE_POKE_598",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F6",
@@ -267,7 +267,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_598_3",
-      "ovid": "SPRITE_TSURE_POKE_598",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F7",
@@ -285,7 +285,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_598_4",
-      "ovid": "SPRITE_TSURE_POKE_598",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F5",
@@ -303,7 +303,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_598_5",
-      "ovid": "SPRITE_TSURE_POKE_598",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F6",
@@ -321,7 +321,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_598_6",
-      "ovid": "SPRITE_TSURE_POKE_598",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1F7",
@@ -357,7 +357,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_613",
-      "ovid": "SPRITE_TSURE_POKE_613",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1",
@@ -375,7 +375,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_613_2",
-      "ovid": "SPRITE_TSURE_POKE_613",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2",
@@ -393,7 +393,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_613_3",
-      "ovid": "SPRITE_TSURE_POKE_613",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3",

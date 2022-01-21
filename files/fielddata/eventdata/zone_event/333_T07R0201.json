@@ -31,7 +31,7 @@
     },
     {
       "id": "obj_T07R0201_tsure_poke_587",
-      "ovid": "SPRITE_TSURE_POKE_587",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MEOWTH",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -49,7 +49,7 @@
     },
     {
       "id": "obj_T07R0201_tsure_poke_582",
-      "ovid": "SPRITE_TSURE_POKE_582",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_CLEFAIRY",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -67,7 +67,7 @@
     },
     {
       "id": "obj_T07R0201_tsure_poke_579",
-      "ovid": "SPRITE_TSURE_POKE_579",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_NIDORAN_F",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",

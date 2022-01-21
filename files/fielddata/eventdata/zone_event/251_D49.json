@@ -79,7 +79,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_590",
-      "ovid": "SPRITE_TSURE_POKE_590",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_POLIWRATH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_225",
@@ -133,7 +133,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_587",
-      "ovid": "SPRITE_TSURE_POKE_587",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MEOWTH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -169,7 +169,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_589",
-      "ovid": "SPRITE_TSURE_POKE_589",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_PSYDUCK",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -187,7 +187,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_594",
-      "ovid": "SPRITE_TSURE_POKE_594",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_SLOWPOKE",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -205,7 +205,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_585",
-      "ovid": "SPRITE_TSURE_POKE_585",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_ODDISH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -241,7 +241,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_574",
-      "ovid": "SPRITE_TSURE_POKE_574",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_PIDGEY",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -277,7 +277,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_595",
-      "ovid": "SPRITE_TSURE_POKE_595",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_SLOWBRO",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -313,7 +313,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_592",
-      "ovid": "SPRITE_TSURE_POKE_592",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MACHOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -331,7 +331,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_596",
-      "ovid": "SPRITE_TSURE_POKE_596",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",

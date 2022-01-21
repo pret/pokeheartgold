@@ -1221,7 +1221,7 @@ ov78_021E628C: ; 0x021E628C
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	add r2, r0, #0
 	add r0, sp, #0
 	mov r1, #0x8d
@@ -1650,11 +1650,11 @@ _021E669A:
 	mov r4, #1
 	b _021E66C6
 _021E669E:
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	ldr r1, _021E66D0 ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl sub_0206A338
+	bl OverworldModelLookupHasFemaleForme
 	cmp r0, #0
 	beq _021E66B8
 	cmp r7, #1
@@ -1663,7 +1663,7 @@ _021E669E:
 	b _021E66C6
 _021E66B8:
 	add r0, r5, #0
-	bl sub_0206A310
+	bl OverworldModelLookupFormeCount
 	cmp r6, r0
 	ble _021E66C4
 	mov r6, #0

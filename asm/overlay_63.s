@@ -4356,7 +4356,7 @@ _0221E1EE:
 	strb r0, [r5, #0x12]
 _0221E1F2:
 	ldrh r0, [r5, #0xc]
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	add r2, r0, #0
 	add r0, r5, #4
 	mov r1, #0x8d
@@ -4623,11 +4623,11 @@ _0221E416:
 	mov r4, #1
 	b _0221E442
 _0221E41A:
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	ldr r1, _0221E44C ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl sub_0206A338
+	bl OverworldModelLookupHasFemaleForme
 	cmp r0, #0
 	beq _0221E434
 	cmp r7, #1
@@ -4636,7 +4636,7 @@ _0221E41A:
 	b _0221E442
 _0221E434:
 	add r0, r5, #0
-	bl sub_0206A310
+	bl OverworldModelLookupFormeCount
 	cmp r6, r0
 	ble _0221E440
 	mov r6, #0

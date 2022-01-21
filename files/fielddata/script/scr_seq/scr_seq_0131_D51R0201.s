@@ -585,9 +585,9 @@ _082B:
 _0833:
 	fade_out_bgm 0, 30
 	play_se SEQ_SE_GS_TAMASYUTUGEN
-	scrcmd_816
+	unown_circle
 	stop_se SEQ_SE_GS_DOWSING_LOOP
-	scrcmd_773 2
+	cinematic 2
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _086E
 	release obj_D51R0201_champion

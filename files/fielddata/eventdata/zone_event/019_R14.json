@@ -201,7 +201,7 @@
     },
     {
       "id": "obj_R14_tsure_poke_618",
-      "ovid": "SPRITE_TSURE_POKE_618",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_14_SUICUNE",

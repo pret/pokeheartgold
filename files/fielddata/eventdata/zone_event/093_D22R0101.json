@@ -189,7 +189,7 @@
     },
     {
       "id": "obj_D22R0101_tsure_poke_588",
-      "ovid": "SPRITE_TSURE_POKE_588",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_PERSIAN",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_24E",

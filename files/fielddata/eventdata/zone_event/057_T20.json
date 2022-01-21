@@ -99,7 +99,7 @@
     },
     {
       "id": "obj_T20_tsure_poke_611",
-      "ovid": "SPRITE_TSURE_POKE_611",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MARILL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_MARILL",
@@ -207,7 +207,7 @@
     },
     {
       "id": "obj_T20_tsure_poke_611_2",
-      "ovid": "SPRITE_TSURE_POKE_611",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MARILL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_NEW_BARK_FRIEND_2",

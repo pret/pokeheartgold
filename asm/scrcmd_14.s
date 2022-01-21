@@ -467,7 +467,7 @@ sub_0204CF10: ; 0x0204CF10
 	ldr r2, [sp, #0x20]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_02069D70
+	bl FollowingPokemon_GetSpriteID
 	str r0, [sp]
 	mov r0, #0xb
 	str r0, [sp, #4]

@@ -419,7 +419,7 @@ scr_seq_D40R0107_005:
 	move_person obj_D40R0107_dancer_4, 13, 1, 27, 0
 	move_person obj_D40R0107_dancer, 19, 1, 33, 0
 	move_person obj_D40R0107_dancer_2, 19, 1, 27, 0
-	scrcmd_773 1
+	cinematic 1
 	scrcmd_767
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

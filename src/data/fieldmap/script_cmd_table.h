@@ -773,7 +773,7 @@ extern BOOL ScrCmd_769(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_770(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_771(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_772(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_773(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Cinematic(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_774(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_775(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx);
@@ -816,7 +816,7 @@ extern BOOL ScrCmd_812(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_813(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_814(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_815(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_816(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_UnownCircle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_817(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_818(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_819(SCRIPTCONTEXT *ctx);
@@ -1628,7 +1628,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_770,
     ScrCmd_771,
     ScrCmd_772,
-    ScrCmd_773,
+    ScrCmd_Cinematic,
     ScrCmd_774,
     ScrCmd_775,
     ScrCmd_GiveTogepiEgg,
@@ -1671,7 +1671,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_813,
     ScrCmd_814,
     ScrCmd_815,
-    ScrCmd_816,
+    ScrCmd_UnownCircle,
     ScrCmd_817,
     ScrCmd_818,
     ScrCmd_819,

@@ -79,7 +79,7 @@
     },
     {
       "id": "obj_T07_tsure_poke_590",
-      "ovid": "SPRITE_TSURE_POKE_590",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_POLIWRATH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

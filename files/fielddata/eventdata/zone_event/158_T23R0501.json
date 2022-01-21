@@ -57,7 +57,7 @@
     },
     {
       "id": "obj_T23R0501_tsure_poke_594",
-      "ovid": "SPRITE_TSURE_POKE_594",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_SLOWPOKE",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_HIDE_AZALEA_SLOWPOKES",

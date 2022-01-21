@@ -18506,9 +18506,9 @@ _02108EEE:
 	; File boundary
 	.balign 4, 0
 _02108F38:
-	.word ov106_021E6080
-	.word ov106_021E6250
-	.word ov106_021E63A4
+	.word ScriptCinematic_HoOh
+	.word ScriptCinematic_Lugia
+	.word ScriptCinematic_Arceus
 
 	; File boundary
 _02108F44:

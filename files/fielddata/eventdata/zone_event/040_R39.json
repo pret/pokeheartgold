@@ -133,7 +133,7 @@
     },
     {
       "id": "obj_R39_tsure_poke_614",
-      "ovid": "SPRITE_TSURE_POKE_614",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MILTANK",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_226",
@@ -151,7 +151,7 @@
     },
     {
       "id": "obj_R39_tsure_poke_614_2",
-      "ovid": "SPRITE_TSURE_POKE_614",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MILTANK",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_UNK_226",
@@ -169,7 +169,7 @@
     },
     {
       "id": "obj_R39_tsure_poke_614_3",
-      "ovid": "SPRITE_TSURE_POKE_614",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MILTANK",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_226",
@@ -187,7 +187,7 @@
     },
     {
       "id": "obj_R39_tsure_poke_614_4",
-      "ovid": "SPRITE_TSURE_POKE_614",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MILTANK",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_226",

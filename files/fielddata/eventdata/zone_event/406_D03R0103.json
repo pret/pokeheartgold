@@ -281,7 +281,7 @@
     },
     {
       "id": "obj_D03R0103_tsure_poke_608",
-      "ovid": "SPRITE_TSURE_POKE_608",
+      "ovid": "SPRITE_TSURE_POKE_STATIC_MEWTWO",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_UNK_305",

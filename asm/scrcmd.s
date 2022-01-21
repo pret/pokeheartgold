@@ -822,7 +822,7 @@ gScriptCmdTable:
 	.word ScrCmd_770                                    ; 770
 	.word ScrCmd_771                                    ; 771
 	.word ScrCmd_772                                    ; 772
-	.word ScrCmd_773                                    ; 773
+	.word ScrCmd_Cinematic                                    ; 773
 	.word ScrCmd_774                                    ; 774
 	.word ScrCmd_775                                    ; 775
 	.word ScrCmd_GiveTogepiEgg                          ; 776
@@ -865,7 +865,7 @@ gScriptCmdTable:
 	.word ScrCmd_813                                    ; 813
 	.word ScrCmd_814                                    ; 814
 	.word ScrCmd_815                                    ; 815
-	.word ScrCmd_816                                    ; 816
+	.word ScrCmd_UnownCircle                                    ; 816
 	.word ScrCmd_817                                    ; 817
 	.word ScrCmd_818                                    ; 818
 	.word ScrCmd_819                                    ; 819
@@ -14960,8 +14960,8 @@ ScrCmd_723: ; 0x02047518
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_723
 
-	thumb_func_start ScrCmd_773
-ScrCmd_773: ; 0x02047558
+	thumb_func_start ScrCmd_Cinematic
+ScrCmd_Cinematic: ; 0x02047558
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptReadHalfword
@@ -14972,7 +14972,7 @@ ScrCmd_773: ; 0x02047558
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_773
+	thumb_func_end ScrCmd_Cinematic
 
 	thumb_func_start ScrCmd_727
 ScrCmd_727: ; 0x02047570
@@ -16206,8 +16206,8 @@ ScrCmd_814: ; 0x02047E40
 	pop {r3, pc}
 	thumb_func_end ScrCmd_814
 
-	thumb_func_start ScrCmd_816
-ScrCmd_816: ; 0x02047E54
+	thumb_func_start ScrCmd_UnownCircle
+ScrCmd_UnownCircle: ; 0x02047E54
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -16215,7 +16215,7 @@ ScrCmd_816: ; 0x02047E54
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_816
+	thumb_func_end ScrCmd_UnownCircle
 
 	thumb_func_start ScrCmd_817
 ScrCmd_817: ; 0x02047E64

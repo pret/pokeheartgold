@@ -2369,7 +2369,7 @@ ov64_021E6C1C: ; 0x021E6C1C
 	str r1, [sp, #0xc]
 	str r2, [sp, #0x10]
 	add r7, r3, #0
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	add r2, r0, #0
 	add r0, sp, #0x30
 	mov r1, #0x8d
@@ -2616,11 +2616,11 @@ _021E6E42:
 	mov r4, #1
 	b _021E6E6E
 _021E6E46:
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	ldr r1, _021E6E78 ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl sub_0206A338
+	bl OverworldModelLookupHasFemaleForme
 	cmp r0, #0
 	beq _021E6E60
 	cmp r7, #1
@@ -2629,7 +2629,7 @@ _021E6E46:
 	b _021E6E6E
 _021E6E60:
 	add r0, r5, #0
-	bl sub_0206A310
+	bl OverworldModelLookupFormeCount
 	cmp r6, r0
 	ble _021E6E6C
 	mov r6, #0

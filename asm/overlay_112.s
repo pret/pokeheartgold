@@ -22520,11 +22520,11 @@ _021F0E26:
 	mov r4, #1
 	b _021F0E52
 _021F0E2A:
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	ldr r1, _021F0E5C ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl sub_0206A338
+	bl OverworldModelLookupHasFemaleForme
 	cmp r0, #0
 	beq _021F0E44
 	cmp r7, #1
@@ -22533,7 +22533,7 @@ _021F0E2A:
 	b _021F0E52
 _021F0E44:
 	add r0, r5, #0
-	bl sub_0206A310
+	bl OverworldModelLookupFormeCount
 	cmp r6, r0
 	ble _021F0E50
 	mov r6, #0
@@ -24922,7 +24922,7 @@ ov112_021F2098: ; 0x021F2098
 	add r0, r4, #0
 	add r6, r2, #0
 	str r3, [sp, #0x10]
-	bl sub_0206A304
+	bl SpeciesToOverworldModelIndexOffset
 	add r2, r0, #0
 	add r0, sp, #0x30
 	mov r1, #0x8d
