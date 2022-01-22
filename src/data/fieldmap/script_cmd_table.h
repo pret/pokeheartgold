@@ -122,9 +122,9 @@ extern BOOL ScrCmd_118(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetCoinAmount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveCoins(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TakeCoins(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_122(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_123(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_124(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveAthletePoints(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TakeAthletePoints(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckAthletePoints(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TakeItem(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HasSpaceForItem(SCRIPTCONTEXT *ctx);
@@ -358,7 +358,7 @@ extern BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartyCountNotEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountAliveMons(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_358(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PokeathlonPartyCount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_359(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_361(SCRIPTCONTEXT *ctx);
@@ -611,7 +611,7 @@ extern BOOL ScrCmd_607(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_608(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_609(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_610(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_611(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Pokeathlon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_612(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactRandomGiftBerry(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPhoneContactGiftItem(SCRIPTCONTEXT *ctx);
@@ -745,7 +745,7 @@ extern BOOL ScrCmd_741(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_742(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_743(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_744(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_745(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TouchscreenMenuHide(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TouchscreenMenuShow(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetMenuChoice(SCRIPTCONTEXT *ctx);
@@ -977,9 +977,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetCoinAmount,
     ScrCmd_GiveCoins,
     ScrCmd_TakeCoins,
-    ScrCmd_122,
-    ScrCmd_123,
-    ScrCmd_124,
+    ScrCmd_GiveAthletePoints,
+    ScrCmd_TakeAthletePoints,
+    ScrCmd_CheckAthletePoints,
     ScrCmd_GiveItem,
     ScrCmd_TakeItem,
     ScrCmd_HasSpaceForItem,
@@ -1213,7 +1213,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PartymonIsMine,
     ScrCmd_PartyCountNotEgg,
     ScrCmd_CountAliveMons,
-    ScrCmd_358,
+    ScrCmd_PokeathlonPartyCount,
     ScrCmd_359,
     ScrCmd_SubMoneyVar,
     ScrCmd_361,
@@ -1466,7 +1466,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_608,
     ScrCmd_609,
     ScrCmd_610,
-    ScrCmd_611,
+    ScrCmd_Pokeathlon,
     ScrCmd_612,
     ScrCmd_GetPhoneContactRandomGiftBerry,
     ScrCmd_GetPhoneContactGiftItem,
@@ -1600,7 +1600,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_742,
     ScrCmd_743,
     ScrCmd_744,
-    ScrCmd_745,
+    ScrCmd_BufferPokeathlonCourseName,
     ScrCmd_TouchscreenMenuHide,
     ScrCmd_TouchscreenMenuShow,
     ScrCmd_GetMenuChoice,

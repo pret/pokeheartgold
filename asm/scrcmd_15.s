@@ -1184,8 +1184,8 @@ _0204DA5C:
 	.balign 4, 0
 	thumb_func_end ScrCmd_CountAliveMons
 
-	thumb_func_start ScrCmd_358
-ScrCmd_358: ; 0x0204DA68
+	thumb_func_start ScrCmd_PokeathlonPartyCount
+ScrCmd_PokeathlonPartyCount: ; 0x0204DA68
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -1241,7 +1241,7 @@ _0204DAD2:
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_358
+	thumb_func_end ScrCmd_PokeathlonPartyCount
 
 	thumb_func_start ScrCmd_359
 ScrCmd_359: ; 0x0204DAE4

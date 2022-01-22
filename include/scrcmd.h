@@ -136,9 +136,9 @@ BOOL ScrCmd_118(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetCoinAmount(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GiveCoins(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TakeCoins(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_122(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_123(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_124(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_GiveAthletePoints(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_TakeAthletePoints(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_CheckAthletePoints(SCRIPTCONTEXT* ctx);
 
 // scrcmd_items.c
 BOOL ScrCmd_GiveItem(SCRIPTCONTEXT* ctx);
@@ -383,7 +383,7 @@ BOOL ScrCmd_GetPartyMonSpecies(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_PartymonIsMine(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_PartyCountNotEgg(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CountAliveMons(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_358(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_PokeathlonPartyCount(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_359(SCRIPTCONTEXT* ctx);
 
 // scrcmd_money.c
@@ -638,7 +638,7 @@ BOOL ScrCmd_607(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_608(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_609(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_610(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_611(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_Pokeathlon(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_612(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetPhoneContactRandomGiftBerry(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetPhoneContactGiftItem(SCRIPTCONTEXT* ctx);
@@ -772,7 +772,7 @@ BOOL ScrCmd_741(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_742(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_743(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_744(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_745(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TouchscreenMenuHide(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TouchscreenMenuShow(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetMenuChoice(SCRIPTCONTEXT* ctx);

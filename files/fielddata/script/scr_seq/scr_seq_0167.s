@@ -98,7 +98,7 @@ _019C:
 	goto _008C
 	.byte 0x02, 0x00
 _01A7:
-	scrcmd_358 VAR_SPECIAL_x800C
+	pokeathlon_party_count VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 3
 	goto_if_lt _07E6
 	npc_msg msg_0312_00003
@@ -142,7 +142,7 @@ _0281:
 	goto _028F
 	.byte 0x02, 0x00
 _028F:
-	scrcmd_745 3, VAR_SPECIAL_x8000
+	buffer_pokeathlon_course_name 3, VAR_SPECIAL_x8000
 	npc_msg msg_0312_00004
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -357,7 +357,7 @@ _05C4:
 _05CA:
 	buffer_int 2, VAR_TEMP_x4009
 	npc_msg msg_0312_00022
-	scrcmd_122 VAR_TEMP_x4009
+	give_athlete_points VAR_TEMP_x4009
 	buffer_players_name 0
 	buffer_int 2, VAR_TEMP_x4009
 	npc_msg msg_0312_00020
@@ -466,23 +466,23 @@ _0764:
 _0766:
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _0787
-	scrcmd_611 0, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 0, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _0787:
 	compare VAR_TEMP_x400A, 1
 	goto_if_ne _07A8
-	scrcmd_611 0, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 0, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _07A8:
 	compare VAR_TEMP_x400A, 2
 	goto_if_ne _07C9
-	scrcmd_611 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _07C9:
-	scrcmd_611 1, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 1, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 _07D7:
 	return
 
@@ -679,7 +679,7 @@ _0AA6:
 	.byte 0x02
 	.byte 0x00
 _0AB1:
-	scrcmd_358 VAR_SPECIAL_x800C
+	pokeathlon_party_count VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 3
 	goto_if_lt _07E6
 	callstd std_prompt_save
@@ -827,7 +827,7 @@ _0CE3:
 	npc_msg msg_0312_00035
 	wait 30, VAR_SPECIAL_x8004
 	wait_fanfare
-	scrcmd_745 3, VAR_SPECIAL_x8000
+	buffer_pokeathlon_course_name 3, VAR_SPECIAL_x8000
 	scrcmd_451 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0D96
@@ -947,7 +947,7 @@ _0F68:
 	buffer_int 2, VAR_TEMP_x4009
 	npc_msg msg_0312_00034
 _0F76:
-	scrcmd_122 VAR_TEMP_x4009
+	give_athlete_points VAR_TEMP_x4009
 	buffer_players_name 0
 	buffer_int 2, VAR_TEMP_x4009
 	npc_msg msg_0312_00020

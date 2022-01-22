@@ -216,7 +216,7 @@ _0290:
 	party_count_not_egg VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _03FB
-	scrcmd_358 VAR_SPECIAL_x800C
+	pokeathlon_party_count VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_eq _041F
 	npc_msg msg_0439_00022

@@ -752,19 +752,19 @@
       ]
     },
     {
-      "name": "scrcmd_122",
+      "name": "give_athlete_points",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_123",
+      "name": "take_athlete_points",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_124",
+      "name": "check_athlete_points",
       "args": [
         2,
         2
@@ -2176,7 +2176,7 @@
       ]
     },
     {
-      "name": "scrcmd_358",
+      "name": "pokeathlon_party_count",
       "args": [
         "var"
       ]
@@ -3827,7 +3827,7 @@
       ]
     },
     {
-      "name": "scrcmd_611",
+      "name": "pokeathlon",
       "args": [
         1,
         1,
@@ -4696,7 +4696,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_745",
+      "name": "buffer_pokeathlon_course_name",
       "args": [
         1,
         "var"

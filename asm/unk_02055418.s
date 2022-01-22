@@ -185,7 +185,7 @@ sub_02055508: ; 0x02055508
 	bl sub_0209730C
 _0205559E:
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_02031AE4
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get

@@ -732,17 +732,17 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_122 arg0
+	.macro give_athlete_points arg0
 	.short 122
 	.short \arg0
 	.endm
 
-	.macro scrcmd_123 arg0
+	.macro take_athlete_points arg0
 	.short 123
 	.short \arg0
 	.endm
 
-	.macro scrcmd_124 arg0, arg1
+	.macro check_athlete_points arg0, arg1
 	.short 124
 	.short \arg0
 	.short \arg1
@@ -2027,7 +2027,7 @@
 	.short \except
 	.endm
 
-	.macro scrcmd_358 arg0
+	.macro pokeathlon_party_count arg0
 	.short 358
 	.short \arg0
 	.endm
@@ -3437,7 +3437,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_611 arg0, arg1, arg2, arg3, arg4, arg5, arg6
+	.macro pokeathlon arg0, arg1, arg2, arg3, arg4, arg5, arg6
 	.short 611
 	.byte \arg0
 	.byte \arg1
@@ -4197,7 +4197,7 @@
 	.short 744
 	.endm
 
-	.macro scrcmd_745 arg0, arg1
+	.macro buffer_pokeathlon_course_name arg0, arg1
 	.short 745
 	.byte \arg0
 	.short \arg1

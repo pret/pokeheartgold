@@ -5933,7 +5933,7 @@ ov03_02256D34: ; 0x02256D34
 	add r1, #0x40
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -7239,7 +7239,7 @@ ov03_022577F4: ; 0x022577F4
 	mov r1, #0x95
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_02031A6C
+	bl SavePokeathlon_GetAthletePoints
 	pop {r3, pc}
 _02257808:
 	mov r1, #0x92
@@ -8012,7 +8012,7 @@ ov03_02257DF8: ; 0x02257DF8
 	lsl r1, r1, #0x10
 	ldr r0, [r2, r3]
 	lsr r1, r1, #0x10
-	bl sub_02031A54
+	bl SavePokeathlon_SubAthletePoints
 	pop {r4, pc}
 _02257E18:
 	add r1, r3, #0
@@ -9958,7 +9958,7 @@ ov03_02258CFC: ; 0x02258CFC
 	str r0, [r4, #0xc]
 	str r5, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	str r0, [r4, #0x20]
 	bl sub_0203199C
 	str r0, [r4, #0x24]

@@ -274,8 +274,8 @@ ScrCmd_CheckGiveCoins: ; 0x02259A9C
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_CheckGiveCoins
 
-	thumb_func_start ScrCmd_122
-ScrCmd_122: ; 0x02259ADC
+	thumb_func_start ScrCmd_GiveAthletePoints
+ScrCmd_GiveAthletePoints: ; 0x02259ADC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -288,16 +288,16 @@ ScrCmd_122: ; 0x02259ADC
 	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r1, r5, #0
-	bl sub_02031A38
+	bl SavePokeathlon_AddAthletePoints
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_122
+	thumb_func_end ScrCmd_GiveAthletePoints
 
-	thumb_func_start ScrCmd_123
-ScrCmd_123: ; 0x02259B08
+	thumb_func_start ScrCmd_TakeAthletePoints
+ScrCmd_TakeAthletePoints: ; 0x02259B08
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -310,16 +310,16 @@ ScrCmd_123: ; 0x02259B08
 	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r1, r5, #0
-	bl sub_02031A54
+	bl SavePokeathlon_SubAthletePoints
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_123
+	thumb_func_end ScrCmd_TakeAthletePoints
 
-	thumb_func_start ScrCmd_124
-ScrCmd_124: ; 0x02259B34
+	thumb_func_start ScrCmd_CheckAthletePoints
+ScrCmd_CheckAthletePoints: ; 0x02259B34
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -340,8 +340,8 @@ ScrCmd_124: ; 0x02259B34
 	bl VarGet
 	add r5, r0, #0
 	ldr r0, [r6, #0xc]
-	bl sub_02031968
-	bl sub_02031A6C
+	bl Save_Pokeathlon_get
+	bl SavePokeathlon_GetAthletePoints
 	cmp r0, r5
 	bhs _02259B74
 	mov r0, #0
@@ -352,4 +352,4 @@ _02259B76:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_124
+	thumb_func_end ScrCmd_CheckAthletePoints

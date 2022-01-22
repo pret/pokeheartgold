@@ -19385,8 +19385,8 @@ _021EECEE:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_02031968
-	bl sub_02031A6C
+	bl Save_Pokeathlon_get
+	bl SavePokeathlon_GetAthletePoints
 	add r2, r0, #0
 _021EED04:
 	mov r0, #1
@@ -60058,7 +60058,7 @@ ScrCmd_724: ; 0x02201B40
 	add r4, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_0203199C
 	cmp r5, #9
 	bhi _02201B8E
@@ -60154,7 +60154,7 @@ ScrCmd_725: ; 0x02201C08
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319F0
 	cmp r6, #0
 	ldr r1, [r0, #0x70]
@@ -61179,8 +61179,8 @@ ScrCmd_CasinoGame: ; 0x02202430
 _0220247C: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_CasinoGame
 
-	thumb_func_start ScrCmd_745
-ScrCmd_745: ; 0x02202480
+	thumb_func_start ScrCmd_BufferPokeathlonCourseName
+ScrCmd_BufferPokeathlonCourseName: ; 0x02202480
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -61205,7 +61205,7 @@ ScrCmd_745: ; 0x02202480
 	bl BufferPokeathlonCourseName
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_745
+	thumb_func_end ScrCmd_BufferPokeathlonCourseName
 
 	thumb_func_start ScrCmd_811
 ScrCmd_811: ; 0x022024B8

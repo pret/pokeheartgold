@@ -551,7 +551,7 @@ _07E4:
 _07FF:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _0812
-	scrcmd_124 32780, 50
+	check_athlete_points 32780, 50
 _0812:
 	return
 
@@ -564,7 +564,7 @@ _0814:
 _082F:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _0842
-	scrcmd_124 32780, 80
+	check_athlete_points 32780, 80
 _0842:
 	return
 
@@ -577,7 +577,7 @@ _0844:
 _085F:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _0872
-	scrcmd_124 32780, 100
+	check_athlete_points 32780, 100
 _0872:
 	return
 
@@ -590,7 +590,7 @@ _0874:
 _088D:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _089E
-	scrcmd_123 50
+	take_athlete_points 50
 _089E:
 	return
 
@@ -603,7 +603,7 @@ _08A0:
 _08B9:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _08CA
-	scrcmd_123 80
+	take_athlete_points 80
 _08CA:
 	return
 
@@ -616,7 +616,7 @@ _08CC:
 _08E5:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _08F6
-	scrcmd_123 100
+	take_athlete_points 100
 _08F6:
 	return
 

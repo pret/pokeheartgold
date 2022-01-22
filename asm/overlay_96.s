@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ov96_021E5900
-ov96_021E5900: ; 0x021E5900
+	thumb_func_start PokeathlonCourseApplication_OvyInit
+PokeathlonCourseApplication_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0x14
 	mov r2, #0x72
@@ -143,10 +143,10 @@ _021E5A30: .word 0x0000072A
 _021E5A34: .word ov96_0221A984
 _021E5A38: .word 0x000003CA
 _021E5A3C: .word 0x00000614
-	thumb_func_end ov96_021E5900
+	thumb_func_end PokeathlonCourseApplication_OvyInit
 
-	thumb_func_start ov96_021E5A40
-ov96_021E5A40: ; 0x021E5A40
+	thumb_func_start PokeathlonCourseApplication_OvyExec
+PokeathlonCourseApplication_OvyExec: ; 0x021E5A40
 	push {r3, r4, r5, lr}
 	bl OverlayManager_GetData
 	add r5, r0, #0
@@ -310,10 +310,10 @@ _021E5B78: .word 0x00000D2C
 _021E5B7C: .word 0x00000708
 _021E5B80: .word 0x0000EA5F
 _021E5B84: .word 0x00000D28
-	thumb_func_end ov96_021E5A40
+	thumb_func_end PokeathlonCourseApplication_OvyExec
 
-	thumb_func_start ov96_021E5B88
-ov96_021E5B88: ; 0x021E5B88
+	thumb_func_start PokeathlonCourseApplication_OvyExit
+PokeathlonCourseApplication_OvyExit: ; 0x021E5B88
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -341,7 +341,7 @@ _021E5BBC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319F0
 	add r2, r0, #0
 	ldr r0, _021E5C1C ; =0x00000D24
@@ -377,7 +377,7 @@ _021E5C1C: .word 0x00000D24
 _021E5C20: .word 0x0000EA5F
 _021E5C24: .word 0x00000614
 _021E5C28: .word 0x000005DC
-	thumb_func_end ov96_021E5B88
+	thumb_func_end PokeathlonCourseApplication_OvyExit
 
 	thumb_func_start ov96_021E5C2C
 ov96_021E5C2C: ; 0x021E5C2C
@@ -637,13 +637,13 @@ ov96_021E5DC4: ; 0x021E5DC4
 	bx lr
 	thumb_func_end ov96_021E5DC4
 
-	thumb_func_start ov96_021E5DCC
-ov96_021E5DCC: ; 0x021E5DCC
+	thumb_func_start PokeathlonOvy_GetHeapID
+PokeathlonOvy_GetHeapID: ; 0x021E5DCC
 	mov r1, #0xa1
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	bx lr
-	thumb_func_end ov96_021E5DCC
+	thumb_func_end PokeathlonOvy_GetHeapID
 
 	thumb_func_start ov96_021E5DD4
 ov96_021E5DD4: ; 0x021E5DD4
@@ -2397,7 +2397,7 @@ ov96_021E6A00: ; 0x021E6A00
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319F0
 	add r5, r0, #0
 	mov r0, #9
@@ -3698,7 +3698,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_0203199C
 	add r6, r0, #0
 	bl sub_02031B10
@@ -4071,7 +4071,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov96_021E5D6C
@@ -4115,7 +4115,7 @@ _021E7772:
 _021E7784:
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_02031A38
+	bl SavePokeathlon_AddAthletePoints
 	mov r0, #0x7e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -5254,7 +5254,7 @@ ov96_021E8028: ; 0x021E8028
 	ldr r0, [r5, r0]
 	add r6, r1, #0
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r7, r0, #0
 	mov r4, #0
 _021E803E:
@@ -5308,7 +5308,7 @@ ov96_021E8084: ; 0x021E8084
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r7, r0, #0
 	mov r4, #0
 _021E8098:
@@ -5343,7 +5343,7 @@ ov96_021E80C4: ; 0x021E80C4
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319DC
 	ldr r6, _021E8110 ; =ov96_0221A894
 	ldr r7, _021E8114 ; =_0221A7D8
@@ -5738,7 +5738,7 @@ ov96_021E839C: ; 0x021E839C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r6, r0, #0
 	ldr r0, _021E8418 ; =0x00000D2A
 	ldrh r1, [r5, r0]
@@ -5830,7 +5830,7 @@ ov96_021E8448: ; 0x021E8448
 	beq _021E847A
 	cmp r5, #0x64
 	bhi _021E847A
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	mov r0, #0x41
 	lsl r0, r0, #2
@@ -5858,7 +5858,7 @@ ov96_021E8484: ; 0x021E8484
 	sub sp, #0x44
 	str r0, [sp]
 	add r4, r1, #0
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	add r3, r0, #0
 	ldr r2, _021E8608 ; =0x00000136
 	mov r0, #1
@@ -5878,13 +5878,13 @@ ov96_021E8484: ; 0x021E8484
 	add r3, sp, #0x2c
 	bl ov96_021E860C
 	ldr r0, [sp]
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	mov r0, #0xa9
 	bl NARC_ctor
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	mov r0, #0x41
 	lsl r0, r0, #2
@@ -5990,7 +5990,7 @@ _021E8578:
 	ldrb r0, [r7, #0xf]
 	strb r0, [r5, #0x10]
 	ldr r0, [sp]
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	ldrh r0, [r4]
 	bl GetSpeciesName
@@ -8292,7 +8292,7 @@ ov96_021E95F8: ; 0x021E95F8
 	add r4, r1, #0
 	add r6, r2, #0
 	add r5, r3, #0
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	str r0, [sp, #8]
 	ldr r2, _021E9668 ; =0x00000135
 	ldr r3, [sp, #8]
@@ -8344,7 +8344,7 @@ ov96_021E966C: ; 0x021E966C
 	add r4, r1, #0
 	add r5, r2, #0
 	add r6, r3, #0
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	str r0, [sp, #8]
 	ldr r2, _021E96F4 ; =0x00000135
 	ldr r3, [sp, #8]
@@ -13203,7 +13203,7 @@ ov96_021EBA98: ; 0x021EBA98
 	beq _021EBADA
 	b _021EBAE8
 _021EBAAA:
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	mov r1, #0x5a
 	str r1, [sp]
 	mov r1, #1
@@ -13952,7 +13952,7 @@ _021EC07E:
 _021EC0B0:
 	add r0, r6, #0
 	bl ov96_021E5D60
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319A4
 	add r1, r4, #0
 	add r1, #0x9c
@@ -14088,7 +14088,7 @@ ov96_021EC1B0: ; 0x021EC1B0
 	b _021EC20A
 _021EC1D0:
 	add r0, r5, #0
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	mov r1, #0x1e
 	str r1, [sp]
 	mov r1, #1
@@ -17091,7 +17091,7 @@ ov96_021ED954: ; 0x021ED954
 	add r4, r0, #0
 	add r5, r1, #0
 	mov r6, #0x4b
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	mov r0, #0xa9
 	bl NARC_ctor
@@ -18129,7 +18129,7 @@ _021EE0CE:
 	bne _021EE0CE
 	add r0, r2, #0
 	bl ov96_021E5D60
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319F0
 	add r6, r0, #0
 	add r0, sp, #0x20
@@ -19534,7 +19534,7 @@ ov96_021EEB84: ; 0x021EEB84
 	bl ov96_021E5F34
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	add r4, r0, #0
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
@@ -20832,7 +20832,7 @@ ov96_021EF5F4: ; 0x021EF5F4
 	ldr r0, [r0]
 	add r4, r1, #0
 	bl ov96_021E5D60
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_020319DC
 	mov r1, #0x2c
 	mul r1, r4
@@ -32309,7 +32309,7 @@ _021F504A:
 	lsr r0, r0, #4
 	str r0, [sp, #0xd4]
 	ldr r0, [sp, #0x14]
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	str r0, [sp, #0xd8]
 	ldr r3, _021F53CC ; =0x00300010
 	add r0, sp, #0xcc
@@ -57081,7 +57081,7 @@ _02201588:
 	lsr r0, r0, #4
 	str r0, [sp, #0xa0]
 	add r0, r6, #0
-	bl ov96_021E5DCC
+	bl PokeathlonOvy_GetHeapID
 	str r0, [sp, #0xa4]
 	ldr r3, _022018DC ; =0x00300010
 	add r0, sp, #0x98

@@ -61,14 +61,14 @@ _02031960: .word 0x0000FFFF
 _02031964: .word 0x00000484
 	thumb_func_end sub_0203190C
 
-	thumb_func_start sub_02031968
-sub_02031968: ; 0x02031968
+	thumb_func_start Save_Pokeathlon_get
+Save_Pokeathlon_get: ; 0x02031968
 	ldr r3, _02031970 ; =SavArray_get
 	mov r1, #0x25
 	bx r3
 	nop
 _02031970: .word SavArray_get
-	thumb_func_end sub_02031968
+	thumb_func_end Save_Pokeathlon_get
 
 	thumb_func_start sub_02031974
 sub_02031974: ; 0x02031974
@@ -217,14 +217,14 @@ _02031A2A:
 	.balign 4, 0
 	thumb_func_end sub_020319F8
 
-	thumb_func_start sub_02031A38
-sub_02031A38: ; 0x02031A38
+	thumb_func_start SavePokeathlon_AddAthletePoints
+SavePokeathlon_AddAthletePoints: ; 0x02031A38
 	ldr r2, _02031A4C ; =0x00000B74
 	ldr r3, [r0, r2]
 	add r1, r3, r1
 	str r1, [r0, r2]
 	ldr r3, [r0, r2]
-	ldr r1, _02031A50 ; =0x0001869F
+	ldr r1, _02031A50 ; =99999
 	cmp r3, r1
 	ble _02031A4A
 	str r1, [r0, r2]
@@ -232,11 +232,11 @@ _02031A4A:
 	bx lr
 	.balign 4, 0
 _02031A4C: .word 0x00000B74
-_02031A50: .word 0x0001869F
-	thumb_func_end sub_02031A38
+_02031A50: .word 99999
+	thumb_func_end SavePokeathlon_AddAthletePoints
 
-	thumb_func_start sub_02031A54
-sub_02031A54: ; 0x02031A54
+	thumb_func_start SavePokeathlon_SubAthletePoints
+SavePokeathlon_SubAthletePoints: ; 0x02031A54
 	ldr r2, _02031A68 ; =0x00000B74
 	ldr r3, [r0, r2]
 	sub r1, r3, r1
@@ -250,16 +250,16 @@ _02031A66:
 	bx lr
 	.balign 4, 0
 _02031A68: .word 0x00000B74
-	thumb_func_end sub_02031A54
+	thumb_func_end SavePokeathlon_SubAthletePoints
 
-	thumb_func_start sub_02031A6C
-sub_02031A6C: ; 0x02031A6C
+	thumb_func_start SavePokeathlon_GetAthletePoints
+SavePokeathlon_GetAthletePoints: ; 0x02031A6C
 	ldr r1, _02031A74 ; =0x00000B74
 	ldr r0, [r0, r1]
 	bx lr
 	nop
 _02031A74: .word 0x00000B74
-	thumb_func_end sub_02031A6C
+	thumb_func_end SavePokeathlon_GetAthletePoints
 
 	thumb_func_start sub_02031A78
 sub_02031A78: ; 0x02031A78

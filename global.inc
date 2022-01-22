@@ -1805,9 +1805,9 @@
 .public ScrCmd_GetCoinAmount
 .public ScrCmd_GiveCoins
 .public ScrCmd_TakeCoins
-.public ScrCmd_122
-.public ScrCmd_123
-.public ScrCmd_124
+.public ScrCmd_GiveAthletePoints
+.public ScrCmd_TakeAthletePoints
+.public ScrCmd_CheckAthletePoints
 .public ScrCmd_GiveItem
 .public ScrCmd_TakeItem
 .public ScrCmd_HasSpaceForItem
@@ -2041,7 +2041,7 @@
 .public ScrCmd_PartymonIsMine
 .public ScrCmd_PartyCountNotEgg
 .public ScrCmd_CountAliveMons
-.public ScrCmd_358
+.public ScrCmd_PokeathlonPartyCount
 .public ScrCmd_359
 .public ScrCmd_SubMoneyVar
 .public ScrCmd_361
@@ -2291,7 +2291,7 @@
 .public ScrCmd_608
 .public ScrCmd_609
 .public ScrCmd_610
-.public ScrCmd_611
+.public ScrCmd_Pokeathlon
 .public ScrCmd_612
 .public ScrCmd_GetPhoneContactRandomGiftBerry
 .public ScrCmd_GetPhoneContactGiftItem
@@ -2425,7 +2425,7 @@
 .public ScrCmd_742
 .public ScrCmd_743
 .public ScrCmd_744
-.public ScrCmd_745
+.public ScrCmd_BufferPokeathlonCourseName
 .public ScrCmd_TouchscreenMenuHide
 .public ScrCmd_TouchscreenMenuShow
 .public ScrCmd_GetMenuChoice
@@ -24368,9 +24368,9 @@
 .public ov95_021E7410
 .public ov95_021E7450
 .public ov95_021E7514
-.public ov96_021E5900
-.public ov96_021E5A40
-.public ov96_021E5B88
+.public PokeathlonCourseApplication_OvyInit
+.public PokeathlonCourseApplication_OvyExec
+.public PokeathlonCourseApplication_OvyExit
 .public ov96_021E5C2C
 .public ov96_021E5C50
 .public ov96_021E5C80
@@ -24386,7 +24386,7 @@
 .public ov96_021E5D94
 .public ov96_021E5DAC
 .public ov96_021E5DC4
-.public ov96_021E5DCC
+.public PokeathlonOvy_GetHeapID
 .public ov96_021E5DD4
 .public ov96_021E5DE0
 .public ov96_021E5DEC
@@ -27732,7 +27732,7 @@
 .public sub_02031900
 .public sub_02031904
 .public sub_0203190C
-.public sub_02031968
+.public Save_Pokeathlon_get
 .public sub_02031974
 .public sub_02031978
 .public sub_0203197C
@@ -27745,9 +27745,9 @@
 .public sub_020319E4
 .public sub_020319F0
 .public sub_020319F8
-.public sub_02031A38
-.public sub_02031A54
-.public sub_02031A6C
+.public SavePokeathlon_AddAthletePoints
+.public SavePokeathlon_SubAthletePoints
+.public SavePokeathlon_GetAthletePoints
 .public sub_02031A78
 .public sub_02031A98
 .public sub_02031AB8
@@ -28286,7 +28286,7 @@
 .public ScratchOffCards_Create
 .public sub_0203FB94
 .public sub_0203FC14
-.public sub_0203FC58
+.public Fsys_LaunchPokeathlonCourseApplication
 .public sub_0203FC68
 .public sub_0203FC90
 .public sub_0203FCB8

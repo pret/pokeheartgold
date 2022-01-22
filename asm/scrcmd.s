@@ -171,9 +171,9 @@ gScriptCmdTable:
 	.word ScrCmd_GetCoinAmount                                    ; 119
 	.word ScrCmd_GiveCoins                                    ; 120
 	.word ScrCmd_TakeCoins                                    ; 121
-	.word ScrCmd_122                                    ; 122
-	.word ScrCmd_123                                    ; 123
-	.word ScrCmd_124                                    ; 124
+	.word ScrCmd_GiveAthletePoints                                    ; 122
+	.word ScrCmd_TakeAthletePoints                                    ; 123
+	.word ScrCmd_CheckAthletePoints                                    ; 124
 	.word ScrCmd_GiveItem                               ; 125
 	.word ScrCmd_TakeItem                               ; 126
 	.word ScrCmd_HasSpaceForItem                        ; 127
@@ -407,7 +407,7 @@ gScriptCmdTable:
 	.word ScrCmd_PartymonIsMine                         ; 355
 	.word ScrCmd_PartyCountNotEgg                       ; 356
 	.word ScrCmd_CountAliveMons                                    ; 357
-	.word ScrCmd_358                                    ; 358
+	.word ScrCmd_PokeathlonPartyCount                                    ; 358
 	.word ScrCmd_359                                    ; 359
 	.word ScrCmd_SubMoneyVar                            ; 360
 	.word ScrCmd_361                                    ; 361
@@ -660,7 +660,7 @@ gScriptCmdTable:
 	.word ScrCmd_608                                    ; 608
 	.word ScrCmd_609                                    ; 609
 	.word ScrCmd_610                                    ; 610
-	.word ScrCmd_611                                    ; 611
+	.word ScrCmd_Pokeathlon                                    ; 611
 	.word ScrCmd_612                                    ; 612
 	.word ScrCmd_GetPhoneContactRandomGiftBerry         ; 613
 	.word ScrCmd_GetPhoneContactGiftItem                ; 614
@@ -794,7 +794,7 @@ gScriptCmdTable:
 	.word ScrCmd_742                                    ; 742
 	.word ScrCmd_743                                    ; 743
 	.word ScrCmd_744                                    ; 744
-	.word ScrCmd_745                                    ; 745
+	.word ScrCmd_BufferPokeathlonCourseName                                    ; 745
 	.word ScrCmd_TouchscreenMenuHide                    ; 746
 	.word ScrCmd_TouchscreenMenuShow                    ; 747
 	.word ScrCmd_GetMenuChoice                          ; 748
@@ -14092,8 +14092,8 @@ ScrCmd_610: ; 0x02046E80
 	pop {r4, pc}
 	thumb_func_end ScrCmd_610
 
-	thumb_func_start ScrCmd_611
-ScrCmd_611: ; 0x02046E9C
+	thumb_func_start ScrCmd_Pokeathlon
+ScrCmd_Pokeathlon: ; 0x02046E9C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r0, #0
@@ -14159,7 +14159,7 @@ ScrCmd_611: ; 0x02046E9C
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_611
+	thumb_func_end ScrCmd_Pokeathlon
 
 	thumb_func_start ScrCmd_GetFriendSprite
 ScrCmd_GetFriendSprite: ; 0x02046F34

@@ -38,7 +38,7 @@ _020FA224:
 _020FA234:
 	.word ov122_021E82A8, ov122_021E8360, ov122_021E8308, SDK_OVERLAY_OVY_122_ID
 _020FA244:
-	.word ov96_021E5900, ov96_021E5A40, ov96_021E5B88, SDK_OVERLAY_OVY_96_ID
+	.word PokeathlonCourseApplication_OvyInit, PokeathlonCourseApplication_OvyExec, PokeathlonCourseApplication_OvyExit, SDK_OVERLAY_OVY_96_ID
 _020FA254:
 	.word ov52_021E80C0, ov52_021E8248, ov52_021E82AC, SDK_OVERLAY_OVY_52_ID
 _020FA264:
@@ -1641,7 +1641,7 @@ sub_0203EEA0: ; 0x0203EEA0
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	add r6, r0, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	bl sub_02031974
 	str r0, [r4]
 	add r0, r6, #0
@@ -1676,7 +1676,7 @@ sub_0203EEE4: ; 0x0203EEE4
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	add r6, r0, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r7, r0, #0
 	add r0, r6, #0
 	bl Sav2_Pokedex_get
@@ -1721,7 +1721,7 @@ sub_0203EF40: ; 0x0203EF40
 	add r0, r5, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	add r6, r0, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	add r7, r0, #0
 	bl sub_0203197C
 	str r0, [r4]
@@ -1770,7 +1770,7 @@ sub_0203EFA0: ; 0x0203EFA0
 	bl Sav2_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02031968
+	bl Save_Pokeathlon_get
 	str r0, [r4]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3366,8 +3366,8 @@ sub_0203FC14: ; 0x0203FC14
 _0203FC54: .word _020FA1C4
 	thumb_func_end sub_0203FC14
 
-	thumb_func_start sub_0203FC58
-sub_0203FC58: ; 0x0203FC58
+	thumb_func_start Fsys_LaunchPokeathlonCourseApplication
+Fsys_LaunchPokeathlonCourseApplication: ; 0x0203FC58
 	ldr r3, _0203FC60 ; =ScrUnk80_AddOvyMan
 	add r2, r1, #0
 	ldr r1, _0203FC64 ; =_020FA244
@@ -3375,7 +3375,7 @@ sub_0203FC58: ; 0x0203FC58
 	.balign 4, 0
 _0203FC60: .word ScrUnk80_AddOvyMan
 _0203FC64: .word _020FA244
-	thumb_func_end sub_0203FC58
+	thumb_func_end Fsys_LaunchPokeathlonCourseApplication
 
 	thumb_func_start sub_0203FC68
 sub_0203FC68: ; 0x0203FC68
