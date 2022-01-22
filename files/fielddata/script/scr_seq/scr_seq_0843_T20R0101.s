@@ -158,7 +158,7 @@ scr_seq_T20R0101_012:
 	lockall
 	faceplayer
 	goto_if_set FLAG_GOT_STARTER, _0331
-	scrcmd_167
+	choose_starter
 	setflag FLAG_GOT_STARTER
 	scrcmd_605 3, 2
 	scrcmd_602 0

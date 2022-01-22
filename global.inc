@@ -1850,7 +1850,7 @@
 .public ScrCmd_164
 .public ScrCmd_165
 .public ScrCmd_166
-.public ScrCmd_167
+.public ScrCmd_ChooseStarter
 .public ScrCmd_GetTrainerPathToPlayer
 .public ScrCmd_TrainerStepTowardsPlayer
 .public ScrCmd_170
@@ -19302,9 +19302,9 @@
 .public ov60_021EAE10
 .public ov60_021EAE14
 .public ov60_021EAE18
-.public ov61_021E5900
-.public ov61_021E5A38
-.public ov61_021E5F74
+.public ChooseStarterApplication_OvyInit
+.public ChooseStarterApplication_OvyExec
+.public ChooseStarterApplication_OvyExit
 .public ov61_021E6068
 .public ov61_021E60B8
 .public ov61_021E60C8
@@ -28269,7 +28269,7 @@
 .public CreateNamingScreen
 .public sub_0203F7B0
 .public sub_0203F7F4
-.public sub_0203F808
+.public FieldSys_LaunchChooseStarterApplication
 .public sub_0203F818
 .public sub_0203F844
 .public sub_0203F8EC
@@ -29289,9 +29289,9 @@
 .public sub_0206A8C0
 .public sub_0206A8DC
 .public sub_0206B910
-.public sub_0206BD10
-.public sub_0206BD44
-.public sub_0206BD7C
+.public CheckUseEscapeRopeInAlphChamber
+.public CheckUseFlashInAlphChamber
+.public CheckUseWaterStoneInAlphChamber
 .public sub_0206BED8
 .public sub_0206C078
 .public sub_0206C0E8

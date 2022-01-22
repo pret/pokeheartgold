@@ -10401,7 +10401,7 @@ _020960C0:
 	blt _020960C0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r7, #4]
-	bl sub_0203F808
+	bl FieldSys_LaunchChooseStarterApplication
 	bl sub_0203E30C
 	mov r0, #2
 	str r0, [r7]

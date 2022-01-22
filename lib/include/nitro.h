@@ -3,12 +3,12 @@
 
 #include <nitro/types.h>
 
+#include <nitro/mi.h>
 #include <nitro/fx.h>
 #include <nitro/math.h>
 #include <nitro/cp.h>
 #include <nitro/os.h>
 #include <nitro/fs.h>
-#include <nitro/mi.h>
 #include <nitro/std.h>
 #include <nitro/pxi.h>
 #include <nitro/card.h>

@@ -44,7 +44,7 @@ _020FA254:
 _020FA264:
 	.word ov70_02238430, ov70_022385C0, ov70_022386F4, SDK_OVERLAY_OVY_70_ID
 _020FA274:
-	.word ov61_021E5900, ov61_021E5A38, ov61_021E5F74, SDK_OVERLAY_OVY_61_ID
+	.word ChooseStarterApplication_OvyInit, ChooseStarterApplication_OvyExec, ChooseStarterApplication_OvyExit, SDK_OVERLAY_OVY_61_ID
 _020FA284:
 	.word ov18_021E5AA0, ov18_021E5B64, ov18_021E5B80, SDK_OVERLAY_OVY_18_ID
 _020FA294:
@@ -2828,8 +2828,8 @@ sub_0203F7F4: ; 0x0203F7F4
 _0203F804: .word _020FA284
 	thumb_func_end sub_0203F7F4
 
-	thumb_func_start sub_0203F808
-sub_0203F808: ; 0x0203F808
+	thumb_func_start FieldSys_LaunchChooseStarterApplication
+FieldSys_LaunchChooseStarterApplication: ; 0x0203F808
 	ldr r3, _0203F810 ; =ScrUnk80_AddOvyMan
 	add r2, r1, #0
 	ldr r1, _0203F814 ; =_020FA274
@@ -2837,7 +2837,7 @@ sub_0203F808: ; 0x0203F808
 	.balign 4, 0
 _0203F810: .word ScrUnk80_AddOvyMan
 _0203F814: .word _020FA274
-	thumb_func_end sub_0203F808
+	thumb_func_end FieldSys_LaunchChooseStarterApplication
 
 	thumb_func_start sub_0203F818
 sub_0203F818: ; 0x0203F818

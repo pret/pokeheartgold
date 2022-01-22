@@ -4269,9 +4269,9 @@ ItemMenuUseFunc_EvoStone: ; 0x02065258
 	bl sub_0205064C
 	ldrh r1, [r6, #4]
 	add r5, r0, #0
-	cmp r1, #0x54
+	cmp r1, #ITEM_WATER_STONE
 	bne _02065280
-	bl sub_0206BD7C
+	bl CheckUseWaterStoneInAlphChamber
 	cmp r0, #0
 	beq _02065280
 	add r0, r6, #0
@@ -4349,7 +4349,7 @@ ItemMenuUseFunc_EscapeRope: ; 0x02065310
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_0206BD10
+	bl CheckUseEscapeRopeInAlphChamber
 	cmp r0, #0
 	beq _0206532C
 	add r0, r5, #0
@@ -4406,7 +4406,7 @@ _0206537E:
 	pop {r4, pc}
 _0206538A:
 	ldr r0, [r4, #0x14]
-	bl sub_0206BD10
+	bl CheckUseEscapeRopeInAlphChamber
 	cmp r0, #0
 	beq _02065398
 	mov r0, #0

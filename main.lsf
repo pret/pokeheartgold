@@ -222,6 +222,8 @@ Static main
 	Object unk_02069528.o
 	Object unk_02069660.o
 	Object unk_0206979C.o
+	Object unk_0206B910.o
+	Object field_alph_checks.o
 	Object get_egg.o
 	Object unk_0206D494.o
 	Object pokemon.o

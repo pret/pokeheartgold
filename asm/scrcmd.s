@@ -216,7 +216,7 @@ gScriptCmdTable:
 	.word ScrCmd_164                                    ; 164
 	.word ScrCmd_165                                    ; 165
 	.word ScrCmd_166                                    ; 166
-	.word ScrCmd_167                                    ; 167
+	.word ScrCmd_ChooseStarter                                    ; 167
 	.word ScrCmd_GetTrainerPathToPlayer                                    ; 168
 	.word ScrCmd_TrainerStepTowardsPlayer                                    ; 169
 	.word ScrCmd_170                                    ; 170
@@ -6159,8 +6159,8 @@ ScrCmd_166: ; 0x020430A4
 	pop {r4, pc}
 	thumb_func_end ScrCmd_166
 
-	thumb_func_start ScrCmd_167
-ScrCmd_167: ; 0x020430C4
+	thumb_func_start ScrCmd_ChooseStarter
+ScrCmd_ChooseStarter: ; 0x020430C4
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -6168,7 +6168,7 @@ ScrCmd_167: ; 0x020430C4
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_167
+	thumb_func_end ScrCmd_ChooseStarter
 
 	thumb_func_start ScrCmd_333
 ScrCmd_333: ; 0x020430D4

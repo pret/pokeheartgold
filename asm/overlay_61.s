@@ -1,10 +1,15 @@
+; Choose starter application
+
+#include "constants/species.h"
+#include "constants/sndseq.h"
+#include "msgdata/msg/msg_0190.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov61_021E5900
-ov61_021E5900: ; 0x021E5900
+	thumb_func_start ChooseStarterApplication_OvyInit
+ChooseStarterApplication_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	mov r2, #1
@@ -125,10 +130,10 @@ _021E5A28: .word 0x000003A5
 _021E5A2C: .word ov61_021E60B8
 _021E5A30: .word gMain + 0x60
 _021E5A34: .word 0x00000574
-	thumb_func_end ov61_021E5900
+	thumb_func_end ChooseStarterApplication_OvyInit
 
-	thumb_func_start ov61_021E5A38
-ov61_021E5A38: ; 0x021E5A38
+	thumb_func_start ChooseStarterApplication_OvyExec
+ChooseStarterApplication_OvyExec: ; 0x021E5A38
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x40
 	add r5, r1, #0
@@ -161,7 +166,7 @@ _021E5A5A: ; jump table
 	.short _021E5E52 - _021E5A5A - 2 ; case 11
 	.short _021E5E78 - _021E5A5A - 2 ; case 12
 _021E5A74:
-	mov r1, #7
+	mov r1, #msg_0190_00007
 	bl ov61_021E6DFC
 	mov r0, #2
 	add r1, r6, #0
@@ -195,7 +200,7 @@ _021E5AB4:
 	bl sub_020190E8
 	cmp r0, #0
 	beq _021E5B94
-	add r0, r6, #0
+	add r0, r6, #0 ; msg_0190_00000
 	str r0, [sp]
 	ldr r0, _021E5E10 ; =0x0001020F
 	ldr r1, _021E5E14 ; =0x000003A5
@@ -228,7 +233,7 @@ _021E5AFE:
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
 	mov r2, #1
-	add r0, r0, #1
+	add r0, r0, #msg_0190_00001
 	str r0, [sp]
 	ldr r0, _021E5E10 ; =0x0001020F
 	mov r3, #0xbe
@@ -248,7 +253,7 @@ _021E5AFE:
 	ldr r1, _021E5E18 ; =0x000003A6
 	strb r0, [r4, r1]
 	add r0, r4, #0
-	mov r1, #8
+	mov r1, #msg_0190_00008
 	bl ov61_021E6DFC
 	mov r0, #2
 	mov r1, #1
@@ -324,7 +329,7 @@ _021E5BB4:
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]
 	add r0, #8
-	add r1, r1, #4
+	add r1, r1, #msg_0190_00004
 	str r1, [sp]
 	ldr r1, _021E5E10 ; =0x0001020F
 	mov r3, #0xbe
@@ -348,7 +353,7 @@ _021E5BB4:
 	lsr r0, r0, #0x10
 	bl PlayCry
 	add r0, r4, #0
-	mov r1, #7
+	mov r1, #msg_0190_00007
 	bl ov61_021E6DFC
 	mov r0, #2
 	mov r1, #1
@@ -442,7 +447,7 @@ _021E5CB2:
 	mov r1, #0
 	str r1, [r4, r0]
 	add r0, r4, #0
-	mov r1, #7
+	mov r1, #msg_0190_00007
 	bl ov61_021E6DFC
 	mov r0, #2
 	mov r1, #0
@@ -476,7 +481,7 @@ _021E5CF2:
 	lsl r0, r0, #2
 	ldr r1, [r4, r0]
 	add r0, #8
-	add r1, r1, #4
+	add r1, r1, #msg_0190_00004
 	str r1, [sp]
 	ldr r1, _021E5E10 ; =0x0001020F
 	mov r3, #0xbe
@@ -593,7 +598,7 @@ _021E5DBC:
 	bl sub_02019040
 	mov r0, #0xb
 	str r0, [r5]
-	ldr r0, _021E5E48 ; =0x000005F8
+	ldr r0, _021E5E48 ; =SEQ_SE_DP_W025
 	b _021E5E4C
 	nop
 _021E5E0C: .word 0x00000574
@@ -611,7 +616,7 @@ _021E5E38: .word 0x00007FFF
 _021E5E3C: .word 0x0000DCC0
 _021E5E40: .word 0x000011A4
 _021E5E44: .word ov61_021E73A4
-_021E5E48: .word 0x000005F8
+_021E5E48: .word SEQ_SE_DP_W025
 _021E5E4C:
 	bl PlaySE
 	b _021E5E86
@@ -753,10 +758,10 @@ _021E5F64: .word ov61_021E73BC
 _021E5F68: .word 0x00001024
 _021E5F6C: .word 0x00000574
 _021E5F70: .word 0x00000584
-	thumb_func_end ov61_021E5A38
+	thumb_func_end ChooseStarterApplication_OvyExec
 
-	thumb_func_start ov61_021E5F74
-ov61_021E5F74: ; 0x021E5F74
+	thumb_func_start ChooseStarterApplication_OvyExit
+ChooseStarterApplication_OvyExit: ; 0x021E5F74
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -848,7 +853,7 @@ ov61_021E5F74: ; 0x021E5F74
 	.balign 4, 0
 _021E6060: .word 0x00000574
 _021E6064: .word 0x0000043C
-	thumb_func_end ov61_021E5F74
+	thumb_func_end ChooseStarterApplication_OvyExit
 
 	thumb_func_start ov61_021E6068
 ov61_021E6068: ; 0x021E6068
@@ -2492,6 +2497,7 @@ _021E6D74: .word 0x04001050
 
 	thumb_func_start ov61_021E6D78
 ov61_021E6D78: ; 0x021E6D78
+	; int ov61_021E6D78(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgbank, u16 msgno, u32 color, u32 speed, STRING **out)
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	ldr r4, [sp, #0x34]
@@ -2557,6 +2563,7 @@ _021E6DEE:
 
 	thumb_func_start ov61_021E6DFC
 ov61_021E6DFC: ; 0x021E6DFC
+	; void ov61_021E6DFC(StartChoiceApp *app, u16 msgno);
 	push {lr}
 	sub sp, #0x14
 	mov r2, #0
@@ -2572,7 +2579,7 @@ ov61_021E6DFC: ; 0x021E6DFC
 	lsl r0, r0, #4
 	ldr r0, [r3, r0]
 	ldr r1, [r3, #4]
-	mov r3, #0xbe
+	mov r3, #0xbe ; msg_0190.gmm
 	bl ov61_021E6D78
 	ldr r0, [sp, #0x10]
 	bl String_dtor
@@ -2750,7 +2757,7 @@ _021E6F56:
 _021E6F62:
 	cmp r4, #6
 	bne _021E6F6C
-	ldr r0, _021E6F7C ; =0x000005EA
+	ldr r0, _021E6F7C ; =SEQ_SE_DP_BOX01
 	bl PlaySE
 _021E6F6C:
 	add r0, r4, #0
@@ -2759,7 +2766,7 @@ _021E6F6C:
 	nop
 _021E6F74: .word gMain
 _021E6F78: .word gMain + 0x40
-_021E6F7C: .word 0x000005EA
+_021E6F7C: .word SEQ_SE_DP_BOX01
 	thumb_func_end ov61_021E6E40
 
 	thumb_func_start ov61_021E6F80
@@ -3279,8 +3286,9 @@ ov61_021E738C: ; 0x021E738C
 	.byte 0x00, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00
 
 ov61_021E7398: ; 0x021E7398
-	.byte 0x98, 0x00, 0x00, 0x00, 0x9B, 0x00, 0x00, 0x00
-	.byte 0x9E, 0x00, 0x00, 0x00
+	.word SPECIES_CHIKORITA
+	.word SPECIES_CYNDAQUIL
+	.word SPECIES_TOTODILE
 
 ov61_021E73A4: ; 0x021E73A4
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0x00, 0x00

@@ -1516,7 +1516,7 @@ FieldMoveMenuCheck_Flash: ; 0x020684A0
 	mov r0, #PARTY_MENU_RESPONSE_NOT_HERE
 	pop {r4, pc}
 _020684B2:
-	bl sub_0206BD44
+	bl CheckUseFlashInAlphChamber
 	cmp r0, #0
 	beq _020684BE
 	mov r0, #PARTY_MENU_RESPONSE_OK
@@ -1571,7 +1571,7 @@ sub_02068504: ; 0x02068504
 	add r0, r5, #0
 	bl sub_0205064C
 	add r6, r0, #0
-	bl sub_0206BD44
+	bl CheckUseFlashInAlphChamber
 	cmp r0, #0
 	beq _0206852C
 	add r0, r5, #0

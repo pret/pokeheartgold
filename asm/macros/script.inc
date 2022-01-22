@@ -982,7 +982,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_167
+	.macro choose_starter
 	.short 167
 	.endm
 

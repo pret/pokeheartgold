@@ -1,0 +1,16 @@
+#ifndef NNSYS_G3D_CONFIG_H_
+#define NNSYS_G3D_CONFIG_H_
+
+#ifndef NNS_G3D_SIZE_JNT_MAX
+#define NNS_G3D_SIZE_JNT_MAX 64
+#endif
+
+#ifndef NNS_G3D_SIZE_MAT_MAX
+#define NNS_G3D_SIZE_MAT_MAX 64
+#endif
+
+#ifndef NNS_G3D_SIZE_SHP_MAX
+#define NNS_G3D_SIZE_SHP_MAX 64
+#endif
+
+#endif //NNSYS_G3D_CONFIG_H_

@@ -184,7 +184,7 @@ BOOL ScrCmd_HOF_Credits(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_164(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_165(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_166(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_167(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_ChooseStarter(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetTrainerPathToPlayer(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TrainerStepTowardsPlayer(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_170(SCRIPTCONTEXT* ctx);
