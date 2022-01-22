@@ -7,9 +7,9 @@
 #define _EV_scr_seq_D37R0103_003             3
 
 #define obj_D37R0103_gsfighter               0
-#define obj_D37R0103_tsure_poke_593          1
-#define obj_D37R0103_tsure_poke_593_2        2
-#define obj_D37R0103_tsure_poke_593_3        3
+#define obj_D37R0103_tsure_poke_static_machoke     1
+#define obj_D37R0103_tsure_poke_static_machoke_2     2
+#define obj_D37R0103_tsure_poke_static_machoke_3     3
 #define obj_D37R0103_gsfighter_2             4
 #define obj_D37R0103_babyboy1_5              5
 #define obj_D37R0103_babyboy1_5_2            6

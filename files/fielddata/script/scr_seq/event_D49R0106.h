@@ -14,7 +14,7 @@
 #define obj_D49R0106_pcwoman2                0
 #define obj_D49R0106_pcwoman2_2              1
 #define obj_D49R0106_gsbigman                2
-#define obj_D49R0106_tsure_poke_597          3
+#define obj_D49R0106_tsure_poke_static_dodrio     3
 #define obj_D49R0106_signpokegear            4
 #define obj_D49R0106_signball                5
 

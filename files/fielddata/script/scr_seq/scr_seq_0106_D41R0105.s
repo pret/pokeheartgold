@@ -15,7 +15,7 @@ scr_seq_D41R0105_001:
 
 _0017:
 	setflag FLAG_UNK_307
-	hide_person obj_D41R0105_tsure_poke_605
+	hide_person obj_D41R0105_tsure_poke_static_moltres
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 

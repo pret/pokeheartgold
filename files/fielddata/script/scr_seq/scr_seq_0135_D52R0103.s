@@ -17,7 +17,7 @@ scr_seq_D52R0103_002:
 
 _001F:
 	setflag FLAG_UNK_2D2
-	hide_person obj_D52R0103_tsure_poke_624
+	hide_person obj_D52R0103_tsure_poke_static_rayquaza
 	end
 
 scr_seq_D52R0103_003:
@@ -50,12 +50,12 @@ scr_seq_D52R0103_001:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	release obj_D52R0103_tsure_poke_624
-	scrcmd_523 obj_D52R0103_tsure_poke_624, 8, 90, 3, 0
+	release obj_D52R0103_tsure_poke_static_rayquaza
+	scrcmd_523 obj_D52R0103_tsure_poke_static_rayquaza, 8, 90, 3, 0
 	play_cry SPECIES_RAYQUAZA, 0
 	npc_msg msg_0150_D52R0103_00000
 	wait_cry
-	lock obj_D52R0103_tsure_poke_624
+	lock obj_D52R0103_tsure_poke_static_rayquaza
 	closemsg
 	setvar VAR_UNK_40F9, 6
 	releaseall
@@ -70,8 +70,8 @@ scr_seq_D52R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	release obj_D52R0103_tsure_poke_624
-	scrcmd_523 obj_D52R0103_tsure_poke_624, 8, 90, 3, 0
+	release obj_D52R0103_tsure_poke_static_rayquaza
+	scrcmd_523 obj_D52R0103_tsure_poke_static_rayquaza, 8, 90, 3, 0
 	play_cry SPECIES_RAYQUAZA, 0
 	npc_msg msg_0150_D52R0103_00000
 	wait_cry

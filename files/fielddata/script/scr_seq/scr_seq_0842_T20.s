@@ -56,9 +56,9 @@ _00A4:
 	clearflag FLAG_HIDE_NEW_BARK_FRIEND
 	show_person obj_T20_var_1
 	clearflag FLAG_HIDE_NEW_BARK_MARILL
-	show_person obj_T20_tsure_poke_611
+	show_person obj_T20_tsure_poke_static_marill
 	move_person obj_T20_var_1, 686, 0, 396, 2
-	move_person obj_T20_tsure_poke_611, 685, 0, 396, 1
+	move_person obj_T20_tsure_poke_static_marill, 685, 0, 396, 1
 	end
 
 scr_seq_T20_000:
@@ -977,8 +977,8 @@ _0D70:
 scr_seq_T20_003:
 	scrcmd_609
 	lockall
-	release obj_T20_tsure_poke_611
-	apply_movement obj_T20_tsure_poke_611, _0E08
+	release obj_T20_tsure_poke_static_marill
+	apply_movement obj_T20_tsure_poke_static_marill, _0E08
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	clearflag FLAG_HIDE_NEW_BARK_FRIEND
@@ -987,19 +987,19 @@ scr_seq_T20_003:
 	callstd std_play_friend_music
 	apply_movement obj_T20_var_1, _0EA4
 	wait_movement
-	apply_movement obj_T20_tsure_poke_611, _0E38
+	apply_movement obj_T20_tsure_poke_static_marill, _0E38
 	wait_movement
 	apply_movement obj_player, _0E9C
 	apply_movement obj_T20_var_1, _0EB8
 	wait_movement
-	apply_movement obj_T20_tsure_poke_611, _0E60
+	apply_movement obj_T20_tsure_poke_static_marill, _0E60
 	wait_movement
 	apply_movement obj_T20_var_1, _0EC0
-	apply_movement obj_T20_tsure_poke_611, _0E68
+	apply_movement obj_T20_tsure_poke_static_marill, _0E68
 	wait_movement
 	callstd std_fade_end_friend_music
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 2
-	hide_person obj_T20_tsure_poke_611
+	hide_person obj_T20_tsure_poke_static_marill
 	hide_person obj_T20_var_1
 	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_HIDE_NEW_BARK_FRIEND
@@ -1083,7 +1083,7 @@ scr_seq_T20_008:
 	lockall
 	callstd std_play_friend_music
 	apply_movement obj_T20_var_1, _0F84
-	apply_movement obj_T20_tsure_poke_611, _0FBC
+	apply_movement obj_T20_tsure_poke_static_marill, _0FBC
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603
@@ -1099,13 +1099,13 @@ scr_seq_T20_008:
 	gender_msgbox msg_0542_T20_00015, msg_0542_T20_00016
 	closemsg
 	apply_movement obj_T20_var_1, _1000
-	apply_movement obj_T20_tsure_poke_611, _1014
+	apply_movement obj_T20_tsure_poke_static_marill, _1014
 	apply_movement obj_player, _1038
 	wait_movement
 	apply_movement obj_T20_var_1, _1044
-	apply_movement obj_T20_tsure_poke_611, _104C
+	apply_movement obj_T20_tsure_poke_static_marill, _104C
 	wait_movement
-	hide_person obj_T20_tsure_poke_611
+	hide_person obj_T20_tsure_poke_static_marill
 	hide_person obj_T20_var_1
 	setflag FLAG_HIDE_NEW_BARK_MARILL
 	setflag FLAG_HIDE_NEW_BARK_FRIEND
@@ -1664,7 +1664,7 @@ scr_seq_T20_005:
 	npc_msg msg_0542_T20_00033
 	wait_cry
 	closemsg
-	apply_movement obj_T20_tsure_poke_611_2, _16F4
+	apply_movement obj_T20_tsure_poke_static_marill_2, _16F4
 	wait_movement
 	apply_movement obj_T20_var_1_2, _1700
 	wait_movement

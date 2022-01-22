@@ -20,7 +20,7 @@ scr_seq_R10_004:
 
 _002B:
 	setflag FLAG_HIDE_ROUTE_10_ZAPDOS
-	hide_person obj_R10_tsure_poke_604
+	hide_person obj_R10_tsure_poke_static_zapdos
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
@@ -32,7 +32,7 @@ scr_seq_R10_001:
 
 _0052:
 	goto_if_unset FLAG_UNK_14A, _00BF
-	scrcmd_147 36, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00BF
 	scrcmd_522 VAR_TEMP_x4000
@@ -65,7 +65,7 @@ scr_seq_R10_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 36, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0148
 	scrcmd_184 VAR_SPECIAL_x800C

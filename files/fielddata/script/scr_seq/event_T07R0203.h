@@ -22,7 +22,7 @@
 #define obj_T07R0203_gsman3                  3
 #define obj_T07R0203_gsboy1                  4
 #define obj_T07R0203_var_1                   5
-#define obj_T07R0203_tsure_poke_611          6
+#define obj_T07R0203_tsure_poke_static_marill     6
 #define obj_T07R0203_suit                    7
 
 #endif //SCR_SEQ_T07R0203_H_

@@ -34,8 +34,8 @@
 #define obj_D31R0201_pcwoman1                5
 #define obj_D31R0201_idol                    6
 #define obj_D31R0201_gorggeousm              7
-#define obj_D31R0201_tsure_poke_578          8
-#define obj_D31R0201_tsure_poke_578_2        9
+#define obj_D31R0201_tsure_poke_static_pikachu     8
+#define obj_D31R0201_tsure_poke_static_pikachu_2     9
 #define obj_D31R0201_gsboy1                 10
 #define obj_D31R0201_gsassistantm           11
 #define obj_D31R0201_gsboy1_2               12

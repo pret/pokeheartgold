@@ -25,7 +25,7 @@
 #define obj_T03_monstarball                  6
 #define obj_T03_gsmiddleman1                 7
 #define obj_T03_daigo                        8
-#define obj_T03_tsure_poke_621               9
-#define obj_T03_tsure_poke_620              10
+#define obj_T03_tsure_poke_static_latios     9
+#define obj_T03_tsure_poke_static_latias    10
 
 #endif //SCR_SEQ_T03_H_

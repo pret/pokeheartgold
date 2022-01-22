@@ -199,9 +199,9 @@ _0270:
 	apply_movement obj_player, _040C
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
-	release obj_T06_tsure_poke_618
-	scrcmd_523 obj_T06_tsure_poke_618, 2, 90, 2, 0
-	lock obj_T06_tsure_poke_618
+	release obj_T06_tsure_poke_static_suicune
+	scrcmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_T06_tsure_poke_static_suicune
 	wait_cry
 	callstd std_play_eusine_music
 	scrcmd_602 0
@@ -212,7 +212,7 @@ _0270:
 	goto_if_ne _02D5
 	apply_movement obj_player, _0460
 	apply_movement obj_T06_minaki, _0490
-	apply_movement obj_T06_tsure_poke_618, _0414
+	apply_movement obj_T06_tsure_poke_static_suicune, _0414
 	goto _0318
 
 _02D5:
@@ -220,13 +220,13 @@ _02D5:
 	goto_if_ne _0300
 	apply_movement obj_player, _0470
 	apply_movement obj_T06_minaki, _04A0
-	apply_movement obj_T06_tsure_poke_618, _0420
+	apply_movement obj_T06_tsure_poke_static_suicune, _0420
 	goto _0318
 
 _0300:
 	apply_movement obj_player, _0480
 	apply_movement obj_T06_minaki, _04B0
-	apply_movement obj_T06_tsure_poke_618, _042C
+	apply_movement obj_T06_tsure_poke_static_suicune, _042C
 _0318:
 	wait_movement
 	scrcmd_603
@@ -245,7 +245,7 @@ _0318:
 _034D:
 	callstd std_fade_end_eusine_music
 	hide_person obj_T06_minaki
-	hide_person obj_T06_tsure_poke_618
+	hide_person obj_T06_tsure_poke_static_suicune
 	setflag FLAG_HIDE_VERMILION_EUSINE
 	setflag FLAG_HIDE_VERMILION_EUSINE_2
 	setflag FLAG_HIDE_VERMILION_SUICUNE
@@ -258,15 +258,15 @@ _034D:
 
 _037F:
 	apply_movement obj_player, _040C
-	apply_movement obj_T06_tsure_poke_618, _0458
+	apply_movement obj_T06_tsure_poke_static_suicune, _0458
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
-	release obj_T06_tsure_poke_618
-	scrcmd_523 obj_T06_tsure_poke_618, 2, 90, 2, 0
-	lock obj_T06_tsure_poke_618
+	release obj_T06_tsure_poke_static_suicune
+	scrcmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_T06_tsure_poke_static_suicune
 	wait_cry
 	callstd std_play_eusine_music
-	apply_movement obj_T06_tsure_poke_618, _0438
+	apply_movement obj_T06_tsure_poke_static_suicune, _0438
 	apply_movement obj_T06_minaki, _04C0
 	apply_movement obj_player, _04F8
 	wait_movement
@@ -396,9 +396,9 @@ scr_seq_T06_012:
 	apply_movement obj_player, _040C
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
-	release obj_T06_tsure_poke_618
-	scrcmd_523 obj_T06_tsure_poke_618, 2, 90, 2, 0
-	lock obj_T06_tsure_poke_618
+	release obj_T06_tsure_poke_static_suicune
+	scrcmd_523 obj_T06_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_T06_tsure_poke_static_suicune
 	wait_cry
 	callstd std_play_eusine_music
 	scrcmd_602 0
@@ -409,7 +409,7 @@ scr_seq_T06_012:
 	goto_if_ne _057D
 	apply_movement obj_T06_minaki_2, _0654
 	apply_movement obj_player, _0630
-	apply_movement obj_T06_tsure_poke_618, _0414
+	apply_movement obj_T06_tsure_poke_static_suicune, _0414
 	goto _05C0
 
 _057D:
@@ -417,13 +417,13 @@ _057D:
 	goto_if_ne _05A8
 	apply_movement obj_T06_minaki_2, _0668
 	apply_movement obj_player, _063C
-	apply_movement obj_T06_tsure_poke_618, _0420
+	apply_movement obj_T06_tsure_poke_static_suicune, _0420
 	goto _05C0
 
 _05A8:
 	apply_movement obj_T06_minaki_2, _067C
 	apply_movement obj_player, _0648
-	apply_movement obj_T06_tsure_poke_618, _042C
+	apply_movement obj_T06_tsure_poke_static_suicune, _042C
 _05C0:
 	wait_movement
 	scrcmd_603
@@ -442,7 +442,7 @@ _05C0:
 	wait_movement
 	callstd std_fade_end_eusine_music
 	hide_person obj_T06_minaki_2
-	hide_person obj_T06_tsure_poke_618
+	hide_person obj_T06_tsure_poke_static_suicune
 	setflag FLAG_HIDE_VERMILION_EUSINE
 	setflag FLAG_HIDE_VERMILION_EUSINE_2
 	setflag FLAG_HIDE_VERMILION_SUICUNE

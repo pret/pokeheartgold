@@ -184,9 +184,9 @@ _0272:
 	wait_movement
 _027C:
 	play_cry SPECIES_SUICUNE, 0
-	release obj_R14_tsure_poke_618
-	scrcmd_523 obj_R14_tsure_poke_618, 2, 90, 2, 0
-	lock obj_R14_tsure_poke_618
+	release obj_R14_tsure_poke_static_suicune
+	scrcmd_523 obj_R14_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_R14_tsure_poke_static_suicune
 	wait_cry
 	compare VAR_TEMP_x4000, 1358
 	goto_if_ne _02B1
@@ -266,7 +266,7 @@ _03C8:
 _03D0:
 	wait_movement
 _03D2:
-	apply_movement obj_R14_tsure_poke_618, _0488
+	apply_movement obj_R14_tsure_poke_static_suicune, _0488
 	apply_movement obj_player, _055C
 	wait_movement
 	scrcmd_603
@@ -281,7 +281,7 @@ _03D2:
 	waitbutton
 	closemsg
 	callstd std_fade_end_eusine_music
-	hide_person obj_R14_tsure_poke_618
+	hide_person obj_R14_tsure_poke_static_suicune
 	setflag FLAG_HIDE_ROUTE_14_SUICUNE
 	setflag FLAG_HIDE_ROUTE_14_EUSINE
 	clearflag FLAG_HIDE_ROUTE_14_EUSINE_2

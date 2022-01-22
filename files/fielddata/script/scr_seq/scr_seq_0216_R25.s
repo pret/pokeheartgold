@@ -38,7 +38,7 @@ _0050:
 	get_phone_book_rematch PHONE_CONTACT_MISTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0115
-	scrcmd_147 29, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_MISTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00DD
 	scrcmd_522 VAR_TEMP_x4000
@@ -91,7 +91,7 @@ scr_seq_R25_008:
 
 _012E:
 	setflag FLAG_HIDE_ROUTE_25_SUICUNE
-	hide_person obj_R25_tsure_poke_618
+	hide_person obj_R25_tsure_poke_static_suicune
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
@@ -272,7 +272,7 @@ scr_seq_R25_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 29, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_MISTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0456
 	compare VAR_TEMP_x4002, 1
@@ -416,9 +416,9 @@ scr_seq_R25_004:
 	apply_movement obj_player, _0648
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
-	release obj_R25_tsure_poke_618
-	scrcmd_523 obj_R25_tsure_poke_618, 2, 90, 2, 0
-	lock obj_R25_tsure_poke_618
+	release obj_R25_tsure_poke_static_suicune
+	scrcmd_523 obj_R25_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_R25_tsure_poke_static_suicune
 	wait_cry
 	scrcmd_602 0
 	scrcmd_603
@@ -527,9 +527,9 @@ scr_seq_R25_007:
 	lockall
 	faceplayer
 	play_cry SPECIES_SUICUNE, 0
-	release obj_R25_tsure_poke_618
-	scrcmd_523 obj_R25_tsure_poke_618, 2, 90, 2, 0
-	lock obj_R25_tsure_poke_618
+	release obj_R25_tsure_poke_static_suicune
+	scrcmd_523 obj_R25_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_R25_tsure_poke_static_suicune
 	wait_cry
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUICUNE, 40, 0

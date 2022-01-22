@@ -19,7 +19,7 @@
 #define obj_R42_monstarball_3                8
 #define obj_R42_tree                         9
 #define obj_R42_mount_2_2                   10
-#define obj_R42_tsure_poke_618              11
+#define obj_R42_tsure_poke_static_suicune    11
 #define obj_R42_minaki                      12
 
 #endif //SCR_SEQ_R42_H_

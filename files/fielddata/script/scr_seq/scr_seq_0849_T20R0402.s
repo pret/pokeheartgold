@@ -13,7 +13,7 @@
 	scrdef_end
 
 scr_seq_T20R0402_002:
-	goto_if_set FLAG_UNK_2E5, _0025
+	goto_if_set FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND, _0025
 	get_friend_sprite VAR_OBJ_0
 _0025:
 	end

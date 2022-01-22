@@ -21,7 +21,7 @@ scr_seq_T26GYM0101_007:
 	goto_if_ne _015C
 	goto_if_unset FLAG_GAME_CLEAR, _015A
 	clearflag FLAG_HIDE_JASMINE_IN_GYM
-	scrcmd_147 38, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _007A
 	scrcmd_522 VAR_TEMP_x4000
@@ -50,7 +50,7 @@ _009B:
 	end
 
 _009D:
-	scrcmd_147 28, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _015A
 	check_badge 15, VAR_TEMP_x4002
@@ -149,7 +149,7 @@ _0202:
 
 _020C:
 	goto_if_unset FLAG_UNK_0C2, _01CE
-	scrcmd_147 38, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _023B
 	npc_msg msg_0606_T26GYM0101_00006

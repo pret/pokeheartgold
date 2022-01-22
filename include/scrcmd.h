@@ -164,7 +164,7 @@ BOOL ScrCmd_NameRival(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_147(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_CheckRegisteredPhoneNumber(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_148(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_149(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_150(SCRIPTCONTEXT* ctx);

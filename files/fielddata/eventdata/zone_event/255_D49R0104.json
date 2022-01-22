@@ -164,7 +164,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_D49R0104_tsure_poke_575",
+      "id": "obj_D49R0104_tsure_poke_static_rattata",
       "ovid": "SPRITE_TSURE_POKE_STATIC_RATTATA",
       "mvt": 0,
       "type": 0,
@@ -200,7 +200,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_D49R0104_tsure_poke_584",
+      "id": "obj_D49R0104_tsure_poke_static_zubat",
       "ovid": "SPRITE_TSURE_POKE_STATIC_ZUBAT",
       "mvt": 0,
       "type": 0,

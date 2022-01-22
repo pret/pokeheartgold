@@ -8,12 +8,12 @@
 #define _EV_scr_seq_D02R0104_004             4
 #define _EV_scr_seq_D02R0104_005             5
 
-#define obj_D02R0104_tsure_poke_582          0
-#define obj_D02R0104_tsure_poke_582_2        1
-#define obj_D02R0104_tsure_poke_582_3        2
-#define obj_D02R0104_tsure_poke_582_4        3
-#define obj_D02R0104_tsure_poke_582_5        4
-#define obj_D02R0104_tsure_poke_582_6        5
+#define obj_D02R0104_tsure_poke_static_clefairy     0
+#define obj_D02R0104_tsure_poke_static_clefairy_2     1
+#define obj_D02R0104_tsure_poke_static_clefairy_3     2
+#define obj_D02R0104_tsure_poke_static_clefairy_4     3
+#define obj_D02R0104_tsure_poke_static_clefairy_5     4
+#define obj_D02R0104_tsure_poke_static_clefairy_6     5
 #define obj_D02R0104_monstarball             6
 
 #endif //SCR_SEQ_D02R0104_H_

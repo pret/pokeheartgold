@@ -16,7 +16,7 @@ scr_seq_R34R0101_001:
 	scrcmd_603
 	scrcmd_604 55
 	apply_movement obj_R34R0101_var_1, _0140
-	apply_movement obj_R34R0101_tsure_poke_611, _014C
+	apply_movement obj_R34R0101_tsure_poke_static_marill, _014C
 	apply_movement obj_player, _0158
 	wait_movement
 	scrcmd_603
@@ -38,12 +38,12 @@ scr_seq_R34R0101_001:
 	gender_msgbox msg_0385_R34R0101_00004, msg_0385_R34R0101_00014
 	closemsg
 	apply_movement obj_R34R0101_var_1, _016C
-	apply_movement obj_R34R0101_tsure_poke_611, _0184
+	apply_movement obj_R34R0101_tsure_poke_static_marill, _0184
 	wait_movement
 	gender_msgbox msg_0385_R34R0101_00005, msg_0385_R34R0101_00015
 	closemsg
 	apply_movement obj_R34R0101_var_1, _0198
-	apply_movement obj_R34R0101_tsure_poke_611, _01A8
+	apply_movement obj_R34R0101_tsure_poke_static_marill, _01A8
 	wait_movement
 	apply_movement obj_player, _0190
 	wait_movement
@@ -67,17 +67,17 @@ _00CA:
 	gender_msgbox msg_0385_R34R0101_00008, msg_0385_R34R0101_00018
 	closemsg
 	apply_movement obj_R34R0101_var_1, _01C4
-	apply_movement obj_R34R0101_tsure_poke_611, _01CC
+	apply_movement obj_R34R0101_tsure_poke_static_marill, _01CC
 	wait_movement
 	gender_msgbox msg_0385_R34R0101_00009, msg_0385_R34R0101_00019
 	closemsg
 	apply_movement obj_R34R0101_var_1, _01D4
-	apply_movement obj_R34R0101_tsure_poke_611, _01E8
+	apply_movement obj_R34R0101_tsure_poke_static_marill, _01E8
 	apply_movement obj_player, _0204
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_R34R0101_var_1
-	hide_person obj_R34R0101_tsure_poke_611
+	hide_person obj_R34R0101_tsure_poke_static_marill
 	wait_se SEQ_SE_DP_KAIDAN2
 	setvar VAR_UNK_408E, 2
 	setflag FLAG_UNK_22D

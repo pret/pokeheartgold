@@ -14,7 +14,7 @@
 #define obj_T10R0101_pcwoman1                0
 #define obj_T10R0101_gsoldman1               1
 #define obj_T10R0101_gsfighter               2
-#define obj_T10R0101_tsure_poke_591          3
+#define obj_T10R0101_tsure_poke_static_abra     3
 #define obj_T10R0101_shopm1_2                4
 #define obj_T10R0101_gsrivel                 5
 #define obj_T10R0101_pcwoman2                6

@@ -18,7 +18,7 @@
 #define obj_R29_tree                         4
 #define obj_R29_tree_2                       5
 #define obj_R29_var_2                        6
-#define obj_R29_tsure_poke_611               7
+#define obj_R29_tsure_poke_static_marill     7
 #define obj_R29_monstarball                  8
 #define obj_R29_bonguri                      9
 #define obj_R29_gswoman2_2                  10

@@ -42,7 +42,7 @@ _0083:
 	goto_if_ne _00B0
 	setvar VAR_TEMP_x4007, 77
 	move_person obj_D35R0103_wataru, 39, 0, 18, 0
-	move_person obj_D35R0103_tsure_poke_607, 40, 0, 18, 0
+	move_person obj_D35R0103_tsure_poke_static_dragonite, 40, 0, 18, 0
 	end
 
 _00B0:
@@ -59,8 +59,8 @@ _00BF:
 	compare VAR_TEMP_x400A, 1
 	goto_if_ne _00F4
 	setflag FLAG_UNK_96B
-	hide_person obj_D35R0103_tsure_poke_598
-	hide_person obj_D35R0103_tsure_poke_598_4
+	hide_person obj_D35R0103_tsure_poke_static_electrode
+	hide_person obj_D35R0103_tsure_poke_static_electrode_4
 	setflag FLAG_UNK_1F5
 	goto _0127
 
@@ -68,15 +68,15 @@ _00F4:
 	compare VAR_TEMP_x400A, 2
 	goto_if_ne _0117
 	setflag FLAG_UNK_96C
-	hide_person obj_D35R0103_tsure_poke_598_2
-	hide_person obj_D35R0103_tsure_poke_598_5
+	hide_person obj_D35R0103_tsure_poke_static_electrode_2
+	hide_person obj_D35R0103_tsure_poke_static_electrode_5
 	setflag FLAG_UNK_1F6
 	goto _0127
 
 _0117:
 	setflag FLAG_UNK_96D
-	hide_person obj_D35R0103_tsure_poke_598_3
-	hide_person obj_D35R0103_tsure_poke_598_6
+	hide_person obj_D35R0103_tsure_poke_static_electrode_3
+	hide_person obj_D35R0103_tsure_poke_static_electrode_6
 	setflag FLAG_UNK_1F7
 _0127:
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
@@ -108,10 +108,10 @@ scr_seq_D35R0103_000:
 	gender_msgbox msg_0113_D35R0103_00001, msg_0113_D35R0103_00002
 	closemsg
 	apply_movement obj_D35R0103_wataru, _01B8
-	apply_movement obj_D35R0103_tsure_poke_607, _01C0
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _01C0
 	wait_movement
 	hide_person obj_D35R0103_wataru
-	hide_person obj_D35R0103_tsure_poke_607
+	hide_person obj_D35R0103_tsure_poke_static_dragonite
 	setflag FLAG_UNK_1E5
 	releaseall
 	setvar VAR_UNK_40A9, 1
@@ -134,20 +134,20 @@ _01C0:
 scr_seq_D35R0103_013:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0103_tsure_poke_613, _0214
+	apply_movement obj_D35R0103_tsure_poke_static_murkrow, _0214
 	wait_movement
 	npc_msg msg_0113_D35R0103_00024
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement obj_D35R0103_tsure_poke_613, _021C
+	apply_movement obj_D35R0103_tsure_poke_static_murkrow, _021C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 5
-	hide_person obj_D35R0103_tsure_poke_613
+	hide_person obj_D35R0103_tsure_poke_static_murkrow
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	releaseall
@@ -168,17 +168,17 @@ _021C:
 scr_seq_D35R0103_014:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0103_tsure_poke_613_2, _0270
+	apply_movement obj_D35R0103_tsure_poke_static_murkrow_2, _0270
 	wait_movement
 	npc_msg msg_0113_D35R0103_00025
 	closemsg
-	apply_movement obj_D35R0103_tsure_poke_613_2, _0278
+	apply_movement obj_D35R0103_tsure_poke_static_murkrow_2, _0278
 	wait_movement
 	setvar VAR_UNK_40AC, 7
-	hide_person obj_D35R0103_tsure_poke_613_2
+	hide_person obj_D35R0103_tsure_poke_static_murkrow_2
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
-	show_person obj_D35R0103_tsure_poke_613_3
+	show_person obj_D35R0103_tsure_poke_static_murkrow_3
 	releaseall
 	end
 	.byte 0x00
@@ -195,7 +195,7 @@ _0278:
 scr_seq_D35R0103_011:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0103_tsure_poke_613_3, _0308
+	apply_movement obj_D35R0103_tsure_poke_static_murkrow_3, _0308
 	wait_movement
 	npc_msg msg_0113_D35R0103_00026
 	closemsg
@@ -208,15 +208,15 @@ scr_seq_D35R0103_011:
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8001, 24
 	goto_if_ne _02D7
-	apply_movement obj_D35R0103_tsure_poke_613_3, _0324
+	apply_movement obj_D35R0103_tsure_poke_static_murkrow_3, _0324
 	goto _02DF
 
 _02D7:
-	apply_movement obj_D35R0103_tsure_poke_613_3, _0310
+	apply_movement obj_D35R0103_tsure_poke_static_murkrow_3, _0310
 _02DF:
 	wait_movement
 	setvar VAR_UNK_40AC, 8
-	hide_person obj_D35R0103_tsure_poke_613_3
+	hide_person obj_D35R0103_tsure_poke_static_murkrow_3
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
 	setvar VAR_UNK_40A9, 3
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
@@ -322,15 +322,15 @@ _0436:
 	closemsg
 	clearflag FLAG_UNK_1E5
 	show_person obj_D35R0103_wataru
-	show_person obj_D35R0103_tsure_poke_607
+	show_person obj_D35R0103_tsure_poke_static_dragonite
 	move_person obj_D35R0103_wataru, 20, 1, 25, 3
-	move_person obj_D35R0103_tsure_poke_607, 19, 1, 25, 0
+	move_person obj_D35R0103_tsure_poke_static_dragonite, 19, 1, 25, 0
 	apply_movement obj_D35R0103_wataru, _067C
-	apply_movement obj_D35R0103_tsure_poke_607, _0684
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0684
 	wait_movement
 	npc_msg msg_0113_D35R0103_00005
 	closemsg
-	apply_movement obj_D35R0103_tsure_poke_607, _0690
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0690
 	play_cry SPECIES_DRAGONITE, 0
 	wait_cry
 	apply_movement obj_D35R0103_rkanbuw, _0648
@@ -349,7 +349,7 @@ _0436:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	move_person obj_D35R0103_wataru, 28, 1, 24, 1
-	move_person obj_D35R0103_tsure_poke_607, 27, 1, 24, 3
+	move_person obj_D35R0103_tsure_poke_static_dragonite, 27, 1, 24, 3
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -369,7 +369,7 @@ _0436:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	apply_movement obj_D35R0103_wataru, _06BC
-	apply_movement obj_D35R0103_tsure_poke_607, _06C4
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _06C4
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0113_D35R0103_00010, msg_0113_D35R0103_00011
@@ -379,7 +379,7 @@ _0436:
 	scrcmd_604 55
 	apply_movement obj_player, _0738
 	apply_movement obj_D35R0103_wataru, _06D0
-	apply_movement obj_D35R0103_tsure_poke_607, _070C
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _070C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -387,7 +387,7 @@ _0436:
 	play_cry SPECIES_DRAGONITE, 0
 	wait_cry
 	apply_movement obj_D35R0103_wataru, _06FC
-	apply_movement obj_D35R0103_tsure_poke_607, _072C
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _072C
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0113_D35R0103_00012, msg_0113_D35R0103_00013
@@ -397,13 +397,13 @@ _0436:
 	scrcmd_604 55
 	apply_movement obj_player, _0744
 	apply_movement obj_D35R0103_wataru, _0758
-	apply_movement obj_D35R0103_tsure_poke_607, _0760
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0760
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	move_person obj_D35R0103_wataru, 39, 0, 18, 0
-	move_person obj_D35R0103_tsure_poke_607, 40, 0, 18, 0
+	move_person obj_D35R0103_tsure_poke_static_dragonite, 40, 0, 18, 0
 	releaseall
 	setvar VAR_UNK_40AC, 9
 	setvar VAR_UNK_40A9, 4
@@ -639,7 +639,7 @@ _08F0:
 	scrcmd_602 1
 	scrcmd_604 48
 	apply_movement obj_D35R0103_wataru, _0A04
-	apply_movement obj_D35R0103_tsure_poke_607, _0A0C
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0A0C
 	wait_movement
 	npc_msg msg_0113_D35R0103_00015
 	giveitem_no_check ITEM_HM05, 1
@@ -651,10 +651,10 @@ _08F0:
 	gender_msgbox msg_0113_D35R0103_00018, msg_0113_D35R0103_00019
 	closemsg
 	apply_movement obj_D35R0103_wataru, _0A20
-	apply_movement obj_D35R0103_tsure_poke_607, _0A2C
+	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0A2C
 	wait_movement
 	hide_person obj_D35R0103_wataru
-	hide_person obj_D35R0103_tsure_poke_607
+	hide_person obj_D35R0103_tsure_poke_static_dragonite
 	setflag FLAG_UNK_1E5
 	releaseall
 	stop_se SEQ_SE_GS_N_MOTER

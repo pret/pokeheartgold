@@ -23,7 +23,7 @@
 #define obj_T24_gsmiddleman1                 2
 #define obj_T24_gsgirl1                      3
 #define obj_T24_middlewoman1_2_2             4
-#define obj_T24_tsure_poke_618               5
+#define obj_T24_tsure_poke_static_suicune     5
 #define obj_T24_minaki                       6
 #define obj_T24_breakrock                    7
 #define obj_T24_breakrock_2                  8

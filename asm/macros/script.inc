@@ -886,7 +886,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_147 arg0, arg1
+	.macro check_registered_phone_number arg0, arg1
 	.short 147
 	.short \arg0
 	.short \arg1

@@ -16,7 +16,7 @@ scr_seq_D18R0102_002:
 
 _001B:
 	setflag FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE
-	hide_person obj_D18R0102_tsure_poke_618_2
+	hide_person obj_D18R0102_tsure_poke_static_suicune_2
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
@@ -24,39 +24,39 @@ scr_seq_D18R0102_000:
 	scrcmd_609
 	lockall
 	play_cry SPECIES_RAIKOU, 0
-	release obj_D18R0102_tsure_poke_616
-	scrcmd_523 obj_D18R0102_tsure_poke_616, 2, 90, 2, 0
-	lock obj_D18R0102_tsure_poke_616
+	release obj_D18R0102_tsure_poke_static_raikou
+	scrcmd_523 obj_D18R0102_tsure_poke_static_raikou, 2, 90, 2, 0
+	lock obj_D18R0102_tsure_poke_static_raikou
 	wait_cry
 	play_cry SPECIES_ENTEI, 0
-	release obj_D18R0102_tsure_poke_617
-	scrcmd_523 obj_D18R0102_tsure_poke_617, 2, 90, 2, 0
-	lock obj_D18R0102_tsure_poke_617
+	release obj_D18R0102_tsure_poke_static_entei
+	scrcmd_523 obj_D18R0102_tsure_poke_static_entei, 2, 90, 2, 0
+	lock obj_D18R0102_tsure_poke_static_entei
 	wait_cry
 	play_cry SPECIES_SUICUNE, 0
-	release obj_D18R0102_tsure_poke_618
-	scrcmd_523 obj_D18R0102_tsure_poke_618, 2, 90, 2, 0
-	lock obj_D18R0102_tsure_poke_618
+	release obj_D18R0102_tsure_poke_static_suicune
+	scrcmd_523 obj_D18R0102_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_D18R0102_tsure_poke_static_suicune
 	wait_cry
-	apply_movement obj_D18R0102_tsure_poke_616, _0224
+	apply_movement obj_D18R0102_tsure_poke_static_raikou, _0224
 	wait_movement
-	apply_movement obj_D18R0102_tsure_poke_617, _0234
+	apply_movement obj_D18R0102_tsure_poke_static_entei, _0234
 	wait_movement
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 16
 	goto_if_ne _00C8
-	apply_movement obj_D18R0102_tsure_poke_618, _0244
+	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0244
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
-	apply_movement obj_D18R0102_tsure_poke_618, _0254
+	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0254
 	wait_cry
 	goto _00E2
 
 _00C8:
-	apply_movement obj_D18R0102_tsure_poke_618, _0268
+	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0268
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
-	apply_movement obj_D18R0102_tsure_poke_618, _0278
+	apply_movement obj_D18R0102_tsure_poke_static_suicune, _0278
 	wait_cry
 _00E2:
 	wait_movement
@@ -71,9 +71,9 @@ _00E2:
 	setflag FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
 	setflag FLAG_HIDE_BURNED_TOWER_B1F_ENTEI
 	setflag FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE
-	hide_person obj_D18R0102_tsure_poke_616
-	hide_person obj_D18R0102_tsure_poke_617
-	hide_person obj_D18R0102_tsure_poke_618
+	hide_person obj_D18R0102_tsure_poke_static_raikou
+	hide_person obj_D18R0102_tsure_poke_static_entei
+	hide_person obj_D18R0102_tsure_poke_static_suicune
 	create_roamer 0
 	create_roamer 1
 	wait 15, VAR_SPECIAL_x800C

@@ -96,12 +96,12 @@ scr_seq_D36R0101_021:
 
 _016F:
 	move_person obj_D36R0101_gsoldman1, 15, 0, 58, 1
-	move_person obj_D36R0101_tsure_poke_625, 15, 0, 59, 3
+	move_person obj_D36R0101_tsure_poke_static_pichu_spiky, 15, 0, 59, 3
 	return
 
 _0189:
 	move_person obj_D36R0101_var_1, 15, 0, 58, 1
-	move_person obj_D36R0101_tsure_poke_611, 11, 0, 58, 3
+	move_person obj_D36R0101_tsure_poke_static_marill, 11, 0, 58, 3
 	return
 
 scr_seq_D36R0101_001:
@@ -148,13 +148,13 @@ _0245:
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _0272
-	apply_movement obj_D36R0101_tsure_poke_596, _0E18
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0E18
 	goto _0293
 
 _0272:
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_ne _0293
-	apply_movement obj_D36R0101_tsure_poke_596, _0E08
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0E08
 	setvar VAR_UNK_409B, 1
 	setvar VAR_UNK_4099, 1
 _0293:
@@ -179,7 +179,7 @@ _02C9:
 	faceplayer
 	setvar VAR_UNK_4099, 2
 	setvar VAR_UNK_409B, 2
-	apply_movement obj_D36R0101_tsure_poke_596, _0DF8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DF8
 	wait_movement
 	goto_if_set FLAG_UNK_126, _02FD
 	npc_msg msg_0115_D36R0101_00036
@@ -198,7 +198,7 @@ _0301:
 	faceplayer
 	setvar VAR_UNK_4099, 2
 	setvar VAR_UNK_409B, 2
-	apply_movement obj_D36R0101_tsure_poke_596, _0E18
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0E18
 	wait_movement
 	goto_if_set FLAG_UNK_126, _0342
 	npc_msg msg_0115_D36R0101_00036
@@ -215,9 +215,9 @@ _0346:
 	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0115_D36R0101_00003
 	closemsg
-	apply_movement obj_D36R0101_tsure_poke_596, _0E58
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0E58
 	wait_movement
-	hide_person obj_D36R0101_tsure_poke_596
+	hide_person obj_D36R0101_tsure_poke_static_farfetchd
 	npc_msg msg_0115_D36R0101_00037
 	waitbutton
 	closemsg
@@ -247,7 +247,7 @@ _03CA:
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 3
 	goto_if_ne _0403
-	apply_movement obj_D36R0101_tsure_poke_596, _0E08
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0E08
 	setvar VAR_UNK_409B, 1
 	setvar VAR_UNK_4099, 1
 	setvar VAR_TEMP_x4004, 1
@@ -256,7 +256,7 @@ _03CA:
 _0403:
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _0424
-	apply_movement obj_D36R0101_tsure_poke_596, _0E28
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0E28
 	setvar VAR_UNK_4099, 2
 	setvar VAR_UNK_409B, 2
 _0424:
@@ -272,7 +272,7 @@ _042A:
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 3
 	goto_if_ne _0463
-	apply_movement obj_D36R0101_tsure_poke_596, _0DF8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DF8
 	setvar VAR_UNK_4099, 2
 	setvar VAR_UNK_409B, 2
 	goto _0484
@@ -280,7 +280,7 @@ _042A:
 _0463:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_ne _0484
-	apply_movement obj_D36R0101_tsure_poke_596, _0E28
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0E28
 	setvar VAR_UNK_4099, 1
 	setvar VAR_UNK_409B, 2
 _0484:
@@ -330,13 +330,13 @@ _0536:
 	goto _0589
 
 _0549:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DC8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DC8
 	wait_movement
 	releaseall
 	end
 
 _0557:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DC8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DC8
 	wait_movement
 	goto_if_set FLAG_UNK_125, _0577
 	npc_msg msg_0115_D36R0101_00035
@@ -348,13 +348,13 @@ _0577:
 	end
 
 _057B:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DC8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DC8
 	wait_movement
 	releaseall
 	end
 
 _0589:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DE0
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DE0
 	wait_movement
 	releaseall
 	end
@@ -401,25 +401,25 @@ _0643:
 	goto _0680
 
 _0656:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DC8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DC8
 	wait_movement
 	releaseall
 	end
 
 _0664:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DEC
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DEC
 	wait_movement
 	releaseall
 	end
 
 _0672:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DC8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DC8
 	wait_movement
 	releaseall
 	end
 
 _0680:
-	apply_movement obj_D36R0101_tsure_poke_596, _0DE0
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DE0
 	wait_movement
 	releaseall
 	end
@@ -427,7 +427,7 @@ _0680:
 _068E:
 	setvar VAR_UNK_4099, 2
 	setvar VAR_UNK_409B, 2
-	apply_movement obj_D36R0101_tsure_poke_596, _0DE0
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd, _0DE0
 	wait_movement
 	releaseall
 	end
@@ -474,7 +474,7 @@ _074A:
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _078B
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0E38
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0E38
 	wait_movement
 	setvar VAR_UNK_409A, 1
 	setvar VAR_UNK_409C, 1
@@ -485,7 +485,7 @@ _074A:
 _078B:
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_ne _07BA
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0E08
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0E08
 	wait_movement
 	setvar VAR_UNK_409A, 2
 	setvar VAR_UNK_409C, 2
@@ -508,7 +508,7 @@ _07D4:
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_ne _0813
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0E38
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0E38
 	setvar VAR_UNK_409A, 2
 	setvar VAR_UNK_409C, 2
 	setvar VAR_UNK_409D, 2
@@ -518,7 +518,7 @@ _07D4:
 _0813:
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_ne _0840
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DF8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DF8
 	setvar VAR_UNK_409A, 2
 	setvar VAR_UNK_409C, 2
 	setvar VAR_UNK_409D, 2
@@ -548,7 +548,7 @@ _0876:
 	setvar VAR_UNK_409C, 2
 	setvar VAR_UNK_409D, 2
 	setvar VAR_UNK_409E, 2
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0E48
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0E48
 	wait_movement
 	releaseall
 	end
@@ -563,7 +563,7 @@ _08A4:
 	setvar VAR_UNK_409C, 2
 	setvar VAR_UNK_409D, 1
 	setvar VAR_UNK_409E, 2
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0E08
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0E08
 	wait_movement
 	releaseall
 	end
@@ -574,9 +574,9 @@ _08DF:
 	play_cry SPECIES_FARFETCHD, 0
 	npc_msg msg_0115_D36R0101_00003
 	closemsg
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0E60
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0E60
 	wait_movement
-	hide_person obj_D36R0101_tsure_poke_596_2
+	hide_person obj_D36R0101_tsure_poke_static_farfetchd_2
 	npc_msg msg_0115_D36R0101_00037
 	waitbutton
 	closemsg
@@ -614,7 +614,7 @@ _0982:
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 3
 	goto_if_ne _09C7
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DF8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DF8
 	setvar VAR_UNK_409A, 1
 	setvar VAR_UNK_409C, 1
 	setvar VAR_UNK_409D, 2
@@ -624,7 +624,7 @@ _0982:
 _09C7:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_ne _09F4
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0E48
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0E48
 	setvar VAR_UNK_409A, 2
 	setvar VAR_UNK_409C, 2
 	setvar VAR_UNK_409D, 2
@@ -672,13 +672,13 @@ _0A8D:
 	goto _0AE2
 
 _0AA0:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DEC
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DEC
 	wait_movement
 	releaseall
 	end
 
 _0AAE:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DD4
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DD4
 	wait_movement
 	releaseall
 	end
@@ -688,13 +688,13 @@ _0ABC:
 	setvar VAR_UNK_409C, 1
 	setvar VAR_UNK_409D, 2
 	setvar VAR_UNK_409E, 1
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DD4
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DD4
 	wait_movement
 	releaseall
 	end
 
 _0AE2:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DD4
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DD4
 	wait_movement
 	releaseall
 	end
@@ -737,13 +737,13 @@ _0B83:
 	goto _0BD8
 
 _0B96:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DEC
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DEC
 	wait_movement
 	releaseall
 	end
 
 _0BA4:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DEC
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DEC
 	wait_movement
 	releaseall
 	end
@@ -753,13 +753,13 @@ _0BB2:
 	setvar VAR_UNK_409C, 2
 	setvar VAR_UNK_409D, 2
 	setvar VAR_UNK_409E, 1
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DEC
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DEC
 	wait_movement
 	releaseall
 	end
 
 _0BD8:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DD4
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DD4
 	wait_movement
 	releaseall
 	end
@@ -803,27 +803,27 @@ _0C79:
 	goto _0CBC
 
 _0C8C:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DC8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DC8
 	wait_movement
 	releaseall
 	end
 
 _0C9A:
 	setvar VAR_UNK_409D, 2
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DEC
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DEC
 	wait_movement
 	releaseall
 	end
 
 _0CAE:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DC8
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DC8
 	wait_movement
 	releaseall
 	end
 
 _0CBC:
 	setvar VAR_UNK_409D, 2
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DE0
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DE0
 	wait_movement
 	releaseall
 	end
@@ -867,13 +867,13 @@ _0D63:
 
 _0D76:
 	setvar VAR_UNK_409E, 2
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DEC
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DEC
 	wait_movement
 	releaseall
 	end
 
 _0D8A:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DD4
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DD4
 	wait_movement
 	releaseall
 	end
@@ -882,13 +882,13 @@ _0D98:
 	setvar VAR_UNK_409A, 1
 	setvar VAR_UNK_409C, 1
 	setvar VAR_UNK_409E, 2
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DE0
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DE0
 	wait_movement
 	releaseall
 	end
 
 _0DB8:
-	apply_movement obj_D36R0101_tsure_poke_596_2, _0DD4
+	apply_movement obj_D36R0101_tsure_poke_static_farfetchd_2, _0DD4
 	wait_movement
 	releaseall
 	end
@@ -1647,15 +1647,15 @@ _1816:
 	lockall
 	scrcmd_081 0
 	clearflag FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU
-	show_person obj_D36R0101_tsure_poke_625
-	apply_movement obj_D36R0101_tsure_poke_625, _1C44
+	show_person obj_D36R0101_tsure_poke_static_pichu_spiky
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1C44
 	wait_movement
 	play_cry SPECIES_PICHU, 0
 	wait_cry
 	apply_movement obj_player, _1C58
 	wait_movement
 	callstd std_play_pichu_music
-	apply_movement obj_D36R0101_tsure_poke_625, _1C64
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1C64
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -1668,17 +1668,17 @@ _1816:
 	closemsg
 	apply_movement obj_partner_poke, _1CB4
 	wait_movement
-	apply_movement obj_D36R0101_tsure_poke_625, _1CC4
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1CC4
 	wait_movement
 	apply_movement obj_partner_poke, _1CF8
 	wait_movement
-	apply_movement obj_D36R0101_tsure_poke_625, _1D08
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1D08
 	apply_movement obj_partner_poke, _1D2C
 	wait_movement
 	clearflag FLAG_HIDE_ILEX_FOREST_OLD_MAN
 	show_person obj_D36R0101_gsoldman1
 	apply_movement obj_D36R0101_gsoldman1, _1DE0
-	apply_movement obj_D36R0101_tsure_poke_625, _1D48
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1D48
 	apply_movement obj_partner_poke, _1DA4
 	wait_movement
 	apply_movement obj_player, _1E88
@@ -1690,19 +1690,19 @@ _1816:
 	npc_msg msg_0115_D36R0101_00047
 	closemsg
 	apply_movement obj_D36R0101_gsoldman1, _1E00
-	apply_movement obj_D36R0101_tsure_poke_625, _1E10
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1E10
 	apply_movement obj_player, _1ED0
 	wait_movement
 	npc_msg msg_0115_D36R0101_00048
 	closemsg
-	apply_movement obj_D36R0101_tsure_poke_625, _1E20
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1E20
 	apply_movement obj_partner_poke, _1E2C
 	wait_movement
 	npc_msg msg_0115_D36R0101_00049
 	closemsg
 	apply_movement obj_partner_poke, _1E38
 	wait_movement
-	apply_movement obj_D36R0101_tsure_poke_625, _1E40
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1E40
 	wait_movement
 	apply_movement obj_partner_poke, _1E48
 	wait_movement
@@ -1786,7 +1786,7 @@ _1A34:
 	callstd std_fade_end_pichu_music
 _1A51:
 	give_spiky_ear_pichu
-	hide_person obj_D36R0101_tsure_poke_625
+	hide_person obj_D36R0101_tsure_poke_static_pichu_spiky
 	setvar VAR_UNK_412B, 2
 	play_fanfare SEQ_ME_SHINKAOME
 	npc_msg msg_0115_D36R0101_00040
@@ -1845,17 +1845,17 @@ scr_seq_D36R0101_019:
 	get_player_facing VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 3
 	goto_if_ne _1B44
-	apply_movement obj_D36R0101_tsure_poke_625, _1EF0
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1EF0
 	goto _1B67
 
 _1B44:
 	compare VAR_TEMP_x4005, 2
 	goto_if_ne _1B5F
-	apply_movement obj_D36R0101_tsure_poke_625, _1EF8
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1EF8
 	goto _1B67
 
 _1B5F:
-	apply_movement obj_D36R0101_tsure_poke_625, _1F00
+	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1F00
 _1B67:
 	wait_movement
 	play_cry SPECIES_PICHU, 0
@@ -2199,9 +2199,9 @@ _1F48:
 	touchscreen_menu_hide
 	clearflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	show_person obj_D36R0101_var_1
-	show_person obj_D36R0101_tsure_poke_611
+	show_person obj_D36R0101_tsure_poke_static_marill
 	apply_movement obj_D36R0101_var_1, _2054
-	apply_movement obj_D36R0101_tsure_poke_611, _2060
+	apply_movement obj_D36R0101_tsure_poke_static_marill, _2060
 	wait_movement
 	apply_movement obj_player, _200C
 	wait_movement
@@ -2295,7 +2295,7 @@ scr_seq_D36R0101_022:
 	scrcmd_604 48
 	gender_msgbox msg_0115_D36R0101_00061, msg_0115_D36R0101_00060
 	closemsg
-	apply_movement obj_D36R0101_tsure_poke_611, _2170
+	apply_movement obj_D36R0101_tsure_poke_static_marill, _2170
 	wait_movement
 	callstd std_play_friend_music
 	apply_movement obj_D36R0101_var_1, _215C
@@ -2307,19 +2307,19 @@ scr_seq_D36R0101_022:
 	gender_msgbox msg_0115_D36R0101_00065, msg_0115_D36R0101_00064
 	closemsg
 	apply_movement obj_D36R0101_var_1, _219C
-	apply_movement obj_D36R0101_tsure_poke_611, _21A4
+	apply_movement obj_D36R0101_tsure_poke_static_marill, _21A4
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0115_D36R0101_00067, msg_0115_D36R0101_00066
 	closemsg
 	apply_movement obj_D36R0101_var_1, _21AC
-	apply_movement obj_D36R0101_tsure_poke_611, _21C4
+	apply_movement obj_D36R0101_tsure_poke_static_marill, _21C4
 	wait_movement
 	callstd std_fade_end_friend_music
 	touchscreen_menu_show
 	setvar VAR_UNK_40FE, 5
 	hide_person obj_D36R0101_var_1
-	hide_person obj_D36R0101_tsure_poke_611
+	hide_person obj_D36R0101_tsure_poke_static_marill
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	releaseall
 	end

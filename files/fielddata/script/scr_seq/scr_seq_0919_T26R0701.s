@@ -30,7 +30,7 @@ _004A:
 	setflag FLAG_HIDE_CAMERON
 _004E:
 	goto_if_unset FLAG_GAME_CLEAR, _00C3
-	scrcmd_147 38, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _008F
 	scrcmd_522 VAR_TEMP_x4000
@@ -202,7 +202,7 @@ scr_seq_T26R0701_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 38, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _038A
 	compare VAR_TEMP_x4004, 1

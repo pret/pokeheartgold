@@ -35,7 +35,7 @@ scr_seq_D23R0104_008:
 	compare VAR_UNK_4077, 4
 	goto_if_ne _0089
 	move_person obj_D23R0104_kurumi, 18, 1, 12, 3
-	move_person obj_D23R0104_tsure_poke_587, 19, 1, 12, 1
+	move_person obj_D23R0104_tsure_poke_static_meowth, 19, 1, 12, 1
 	move_person obj_D23R0104_gsman2, 20, 1, 12, 1
 _0089:
 	end

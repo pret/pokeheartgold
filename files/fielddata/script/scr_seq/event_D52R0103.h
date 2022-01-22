@@ -6,6 +6,6 @@
 #define _EV_scr_seq_D52R0103_002             2
 #define _EV_scr_seq_D52R0103_003             3
 
-#define obj_D52R0103_tsure_poke_624          0
+#define obj_D52R0103_tsure_poke_static_rayquaza     0
 
 #endif //SCR_SEQ_D52R0103_H_

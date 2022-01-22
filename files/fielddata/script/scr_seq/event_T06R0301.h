@@ -14,7 +14,7 @@
 #define obj_T06R0301_gswoman2                1
 #define obj_T06R0301_gswoman1                2
 #define obj_T06R0301_gsbigman                3
-#define obj_T06R0301_tsure_poke_609          4
+#define obj_T06R0301_tsure_poke_static_bayleef     4
 #define obj_T06R0301_mono_pip                5
 
 #endif //SCR_SEQ_T06R0301_H_

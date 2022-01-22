@@ -222,23 +222,23 @@ scr_seq_D49R0106_003:
 	get_player_facing VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_ne _03E0
-	apply_movement obj_D49R0106_tsure_poke_597, _043C
+	apply_movement obj_D49R0106_tsure_poke_static_dodrio, _043C
 	goto _041E
 
 _03E0:
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_ne _03FB
-	apply_movement obj_D49R0106_tsure_poke_597, _0434
+	apply_movement obj_D49R0106_tsure_poke_static_dodrio, _0434
 	goto _041E
 
 _03FB:
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_ne _0416
-	apply_movement obj_D49R0106_tsure_poke_597, _044C
+	apply_movement obj_D49R0106_tsure_poke_static_dodrio, _044C
 	goto _041E
 
 _0416:
-	apply_movement obj_D49R0106_tsure_poke_597, _0444
+	apply_movement obj_D49R0106_tsure_poke_static_dodrio, _0444
 _041E:
 	wait_movement
 	play_cry SPECIES_DODRIO, 0

@@ -97,26 +97,26 @@ scr_seq_T24_002:
 	apply_movement obj_player, _0310
 	wait_movement
 	play_cry SPECIES_SUICUNE, 0
-	release obj_T24_tsure_poke_618
-	scrcmd_523 obj_T24_tsure_poke_618, 2, 90, 2, 0
-	lock obj_T24_tsure_poke_618
+	release obj_T24_tsure_poke_static_suicune
+	scrcmd_523 obj_T24_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_T24_tsure_poke_static_suicune
 	wait_cry
-	apply_movement obj_T24_tsure_poke_618, _02F4
+	apply_movement obj_T24_tsure_poke_static_suicune, _02F4
 	wait_movement
-	apply_movement obj_T24_tsure_poke_618, _0338
+	apply_movement obj_T24_tsure_poke_static_suicune, _0338
 	apply_movement obj_player, _0320
 	wait_movement
 	wait 30, VAR_SPECIAL_x800C
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement obj_T24_tsure_poke_618, _0300
+	apply_movement obj_T24_tsure_poke_static_suicune, _0300
 	apply_movement obj_player, _0344
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	hide_person obj_T24_tsure_poke_618
+	hide_person obj_T24_tsure_poke_static_suicune
 	setflag FLAG_HIDE_CIANWOOD_SUICUNE
 	addvar VAR_UNK_4076, 1
 	clearflag FLAG_HIDE_CIANWOOD_EUSINE
@@ -176,7 +176,7 @@ _026B:
 	end
 
 _0276:
-	scrcmd_147 32, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_CHUCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _02CD
 	compare VAR_TEMP_x4002, 1

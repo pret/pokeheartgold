@@ -20,9 +20,9 @@
 #define obj_D49R0104_pcwoman2                1
 #define obj_D49R0104_pcwoman2_2              2
 #define obj_D49R0104_gsboy2                  3
-#define obj_D49R0104_tsure_poke_575          4
+#define obj_D49R0104_tsure_poke_static_rattata     4
 #define obj_D49R0104_gsgirl1                 5
-#define obj_D49R0104_tsure_poke_584          6
+#define obj_D49R0104_tsure_poke_static_zubat     6
 #define obj_D49R0104_medal                   7
 #define obj_D49R0104_medal_2                 8
 #define obj_D49R0104_medal_3                 9

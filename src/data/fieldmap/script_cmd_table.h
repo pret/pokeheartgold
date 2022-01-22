@@ -147,7 +147,7 @@ extern BOOL ScrCmd_NameRival(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetFriendSprite(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RegisterPokegearCard(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RegisterGearNumber(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_147(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckRegisteredPhoneNumber(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_148(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_149(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_150(SCRIPTCONTEXT *ctx);
@@ -1002,7 +1002,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetFriendSprite,
     ScrCmd_RegisterPokegearCard,
     ScrCmd_RegisterGearNumber,
-    ScrCmd_147,
+    ScrCmd_CheckRegisteredPhoneNumber,
     ScrCmd_148,
     ScrCmd_149,
     ScrCmd_150,

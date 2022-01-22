@@ -18,7 +18,7 @@ scr_seq_T22GYM0101_000:
 	get_phone_book_rematch PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00A7
-	scrcmd_147 18, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _007E
 	check_badge 12, VAR_TEMP_x4001
@@ -93,8 +93,8 @@ scr_seq_T22GYM0101_001:
 _0126:
 	goto_if_no_item_space ITEM_TM51, 1, _015E
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_073
-	clearflag FLAG_UNK_2E5
+	setflag FLAG_GOT_TM51_FROM_FALKNER
+	clearflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
 	npc_msg msg_0558_T22GYM0101_00004
 	waitbutton
 	closemsg
@@ -108,7 +108,7 @@ _015E:
 	end
 
 _0168:
-	goto_if_unset FLAG_UNK_073, _0126
+	goto_if_unset FLAG_GOT_TM51_FROM_FALKNER, _0126
 	npc_msg msg_0558_T22GYM0101_00005
 	waitbutton
 	closemsg

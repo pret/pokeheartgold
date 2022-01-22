@@ -30,7 +30,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_T07R0201_tsure_poke_587",
+      "id": "obj_T07R0201_tsure_poke_static_meowth",
       "ovid": "SPRITE_TSURE_POKE_STATIC_MEOWTH",
       "mvt": 2,
       "type": 0,
@@ -48,7 +48,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_T07R0201_tsure_poke_582",
+      "id": "obj_T07R0201_tsure_poke_static_clefairy",
       "ovid": "SPRITE_TSURE_POKE_STATIC_CLEFAIRY",
       "mvt": 15,
       "type": 0,
@@ -66,7 +66,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_T07R0201_tsure_poke_579",
+      "id": "obj_T07R0201_tsure_poke_static_nidoran_f",
       "ovid": "SPRITE_TSURE_POKE_STATIC_NIDORAN_F",
       "mvt": 3,
       "type": 0,

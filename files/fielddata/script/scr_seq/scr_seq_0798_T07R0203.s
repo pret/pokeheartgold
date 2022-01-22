@@ -30,7 +30,7 @@ scr_seq_T07R0203_011:
 	compare VAR_UNK_412C, 0
 	goto_if_ne _006B
 	move_person obj_T07R0203_var_1, 12, 0, 6, 2
-	move_person obj_T07R0203_tsure_poke_611, 13, 0, 6, 2
+	move_person obj_T07R0203_tsure_poke_static_marill, 13, 0, 6, 2
 _006B:
 	end
 
@@ -39,13 +39,13 @@ scr_seq_T07R0203_010:
 	lockall
 	callstd std_play_friend_music
 	apply_movement obj_T07R0203_var_1, _012C
-	apply_movement obj_T07R0203_tsure_poke_611, _0138
+	apply_movement obj_T07R0203_tsure_poke_static_marill, _0138
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0503_T07R0203_00012, msg_0503_T07R0203_00013
 	closemsg
 	apply_movement obj_T07R0203_var_1, _0140
-	apply_movement obj_T07R0203_tsure_poke_611, _0148
+	apply_movement obj_T07R0203_tsure_poke_static_marill, _0148
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -58,13 +58,13 @@ scr_seq_T07R0203_010:
 	gender_msgbox msg_0503_T07R0203_00014, msg_0503_T07R0203_00015
 	closemsg
 	apply_movement obj_T07R0203_var_1, _015C
-	apply_movement obj_T07R0203_tsure_poke_611, _016C
+	apply_movement obj_T07R0203_tsure_poke_static_marill, _016C
 	wait_movement
 	scrcmd_307 0, 0, 3, 2, 77
 	scrcmd_310 77
 	scrcmd_308 77
 	apply_movement obj_T07R0203_var_1, _0180
-	apply_movement obj_T07R0203_tsure_poke_611, _018C
+	apply_movement obj_T07R0203_tsure_poke_static_marill, _018C
 	wait_movement
 	scrcmd_311 77
 	scrcmd_308 77
@@ -72,7 +72,7 @@ scr_seq_T07R0203_010:
 	callstd std_fade_end_friend_music
 	setvar VAR_UNK_412C, 1
 	move_person obj_T07R0203_var_1, 29, 0, 29, 2
-	move_person obj_T07R0203_tsure_poke_611, 29, 0, 29, 2
+	move_person obj_T07R0203_tsure_poke_static_marill, 29, 0, 29, 2
 	releaseall
 	end
 	.byte 0x00

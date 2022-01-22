@@ -15,7 +15,7 @@ scr_seq_T03GYM0101_003:
 	get_phone_book_rematch PHONE_CONTACT_BROCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00FB
-	scrcmd_147 33, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BROCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00A4
 	check_badge 15, VAR_TEMP_x4002

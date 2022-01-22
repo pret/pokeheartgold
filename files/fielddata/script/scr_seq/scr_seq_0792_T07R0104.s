@@ -20,7 +20,7 @@ scr_seq_T07R0104_004:
 	end
 
 _002F:
-	scrcmd_147 18, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0082
 	check_badge 12, VAR_TEMP_x4000
@@ -128,7 +128,7 @@ _0189:
 	end
 
 scr_seq_T07R0104_005:
-	scrcmd_147 18, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01CD
 	compare VAR_TEMP_x4004, 1

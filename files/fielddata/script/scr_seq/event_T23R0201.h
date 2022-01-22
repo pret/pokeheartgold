@@ -7,7 +7,7 @@
 
 #define obj_T23R0201_gsfighter               0
 #define obj_T23R0201_gsboy1                  1
-#define obj_T23R0201_tsure_poke_596          2
-#define obj_T23R0201_tsure_poke_596_2        3
+#define obj_T23R0201_tsure_poke_static_farfetchd     2
+#define obj_T23R0201_tsure_poke_static_farfetchd_2     3
 
 #endif //SCR_SEQ_T23R0201_H_

@@ -38,7 +38,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_T04R0301_tsure_poke_584",
+      "id": "obj_T04R0301_tsure_poke_static_zubat",
       "ovid": "SPRITE_TSURE_POKE_STATIC_ZUBAT",
       "mvt": 3,
       "type": 0,
@@ -56,7 +56,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_T04R0301_tsure_poke_601",
+      "id": "obj_T04R0301_tsure_poke_static_kangaskhan",
       "ovid": "SPRITE_TSURE_POKE_STATIC_KANGASKHAN",
       "mvt": 5,
       "type": 0,

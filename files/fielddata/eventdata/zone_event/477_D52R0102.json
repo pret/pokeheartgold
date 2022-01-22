@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D52R0102.h",
   "objects": [
     {
-      "id": "obj_D52R0102_tsure_poke_622",
+      "id": "obj_D52R0102_tsure_poke_static_kyogre",
       "ovid": "SPRITE_TSURE_POKE_STATIC_KYOGRE",
       "mvt": 0,
       "type": 0,

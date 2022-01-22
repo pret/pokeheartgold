@@ -110,7 +110,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_D18R0101_tsure_poke_618",
+      "id": "obj_D18R0101_tsure_poke_static_suicune",
       "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
       "mvt": 15,
       "type": 0,
@@ -128,7 +128,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_D18R0101_tsure_poke_616",
+      "id": "obj_D18R0101_tsure_poke_static_raikou",
       "ovid": "SPRITE_TSURE_POKE_STATIC_RAIKOU",
       "mvt": 15,
       "type": 0,
@@ -146,7 +146,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_D18R0101_tsure_poke_617",
+      "id": "obj_D18R0101_tsure_poke_static_entei",
       "ovid": "SPRITE_TSURE_POKE_STATIC_ENTEI",
       "mvt": 15,
       "type": 0,
@@ -254,7 +254,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_D18R0101_tsure_poke_618_2",
+      "id": "obj_D18R0101_tsure_poke_static_suicune_2",
       "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
       "mvt": 15,
       "type": 0,

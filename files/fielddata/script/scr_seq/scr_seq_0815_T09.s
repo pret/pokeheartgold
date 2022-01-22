@@ -38,7 +38,7 @@ _0038:
 _0077:
 	setflag FLAG_UNK_25A
 _007B:
-	scrcmd_147 30, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00CC
 	check_badge 15, VAR_TEMP_x4002
@@ -270,7 +270,7 @@ scr_seq_T09_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 30, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0429
 	compare VAR_TEMP_x4004, 1

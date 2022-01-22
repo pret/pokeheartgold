@@ -15,7 +15,7 @@ scr_seq_D03R0103_001:
 
 _0017:
 	setflag FLAG_UNK_305
-	hide_person obj_D03R0103_tsure_poke_608
+	hide_person obj_D03R0103_tsure_poke_static_mewtwo
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 

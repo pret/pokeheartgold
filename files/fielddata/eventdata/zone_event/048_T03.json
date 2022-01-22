@@ -222,7 +222,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_T03_tsure_poke_621",
+      "id": "obj_T03_tsure_poke_static_latios",
       "ovid": "SPRITE_TSURE_POKE_STATIC_LATIOS",
       "mvt": 0,
       "type": 0,
@@ -240,7 +240,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_T03_tsure_poke_620",
+      "id": "obj_T03_tsure_poke_static_latias",
       "ovid": "SPRITE_TSURE_POKE_STATIC_LATIAS",
       "mvt": 0,
       "type": 0,

@@ -9,8 +9,8 @@
 
 #define obj_T05R0201_gsman1                  0
 #define obj_T05R0201_gsgirl1                 1
-#define obj_T05R0201_tsure_poke_574          2
-#define obj_T05R0201_tsure_poke_589          3
-#define obj_T05R0201_tsure_poke_581          4
+#define obj_T05R0201_tsure_poke_static_pidgey     2
+#define obj_T05R0201_tsure_poke_static_psyduck     3
+#define obj_T05R0201_tsure_poke_static_nidorino     4
 
 #endif //SCR_SEQ_T05R0201_H_

@@ -16,7 +16,7 @@
 #define obj_D23R0104_rocketw                 2
 #define obj_D23R0104_rkanbum3                3
 #define obj_D23R0104_kurumi                  4
-#define obj_D23R0104_tsure_poke_587          5
+#define obj_D23R0104_tsure_poke_static_meowth     5
 #define obj_D23R0104_gsbigman                6
 #define obj_D23R0104_gsman2                  7
 #define obj_D23R0104_monstarball             8

@@ -19,7 +19,7 @@ _001B:
 	get_phone_book_rematch PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00A5
-	scrcmd_147 37, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0084
 	get_weekday VAR_TEMP_x4000
@@ -59,7 +59,7 @@ scr_seq_D17R1101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 37, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0159
 	compare VAR_TEMP_x4002, 1

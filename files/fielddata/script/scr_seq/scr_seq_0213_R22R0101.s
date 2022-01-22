@@ -32,7 +32,7 @@ scr_seq_R22R0101_007:
 	end
 
 _006B:
-	scrcmd_147 26, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_JANINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00DF
 	check_badge 12, VAR_TEMP_x4002
@@ -376,7 +376,7 @@ scr_seq_R22R0101_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 26, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_JANINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0553
 	compare VAR_TEMP_x4005, 1

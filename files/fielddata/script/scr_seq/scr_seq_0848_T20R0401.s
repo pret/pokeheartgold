@@ -12,7 +12,7 @@ scr_seq_T20R0401_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_2E5, _0035
+	goto_if_set FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND, _0035
 	compare VAR_SCENE_ELMS_LAB, 1
 	goto_if_ge _0044
 	buffer_players_name 0

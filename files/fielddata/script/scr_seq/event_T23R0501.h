@@ -11,6 +11,6 @@
 
 #define obj_T23R0501_gantetsu                0
 #define obj_T23R0501_gsbabygirl1             1
-#define obj_T23R0501_tsure_poke_594          2
+#define obj_T23R0501_tsure_poke_static_slowpoke     2
 
 #endif //SCR_SEQ_T23R0501_H_

@@ -34,7 +34,7 @@ scr_seq_T23GYM0102_016:
 	end
 
 _006C:
-	scrcmd_147 34, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BUGSY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0096
 	get_weekday VAR_TEMP_x4002
@@ -90,7 +90,7 @@ scr_seq_T23GYM0102_001:
 _0136:
 	goto_if_no_item_space ITEM_TM89, 1, _016A
 	callstd std_give_item_verbose
-	setflag FLAG_UNK_07F
+	setflag FLAG_GOT_TM89_FROM_BUGSY
 	npc_msg msg_0567_T23GYM0102_00005
 	waitbutton
 	closemsg
@@ -109,7 +109,7 @@ _0174:
 	end
 
 _017A:
-	goto_if_unset FLAG_UNK_07F, _0136
+	goto_if_unset FLAG_GOT_TM89_FROM_BUGSY, _0136
 	npc_msg msg_0567_T23GYM0102_00006
 	waitbutton
 	closemsg

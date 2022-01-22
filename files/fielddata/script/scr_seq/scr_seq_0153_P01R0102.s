@@ -30,7 +30,7 @@ scr_seq_P01R0102_005:
 	end
 
 _0054:
-	scrcmd_147 35, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_SABRINA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0097
 	check_badge 13, VAR_TEMP_x4000
@@ -203,7 +203,7 @@ scr_seq_P01R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 35, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_SABRINA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0322
 	compare VAR_TEMP_x4004, 1

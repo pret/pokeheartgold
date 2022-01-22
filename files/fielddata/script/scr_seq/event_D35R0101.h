@@ -20,6 +20,6 @@
 #define obj_D35R0101_sunglasses              5
 #define obj_D35R0101_gsoldwoman1             6
 #define obj_D35R0101_wataru                  7
-#define obj_D35R0101_tsure_poke_607          8
+#define obj_D35R0101_tsure_poke_static_dragonite     8
 
 #endif //SCR_SEQ_D35R0101_H_

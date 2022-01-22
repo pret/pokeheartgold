@@ -26,7 +26,7 @@ _001F:
 	end
 
 _003B:
-	scrcmd_147 31, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BLUE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _001F
 	goto _015D

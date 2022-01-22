@@ -21,15 +21,15 @@
 
 #define obj_D47_gsman1                       0
 #define obj_D47_gsgentleman                  1
-#define obj_D47_tsure_poke_583               2
-#define obj_D47_tsure_poke_601               3
+#define obj_D47_tsure_poke_static_jigglypuff     2
+#define obj_D47_tsure_poke_static_kangaskhan     3
 #define obj_D47_middlewoman1_2               4
 #define obj_D47_gsbabyboy1                   5
 #define obj_D47_gsoldman1                    6
 #define obj_D47_gswoman1                     7
 #define obj_D47_gswoman2                     8
-#define obj_D47_tsure_poke_573               9
-#define obj_D47_tsure_poke_594              10
+#define obj_D47_tsure_poke_static_butterfree     9
+#define obj_D47_tsure_poke_static_slowpoke    10
 #define obj_D47_gsbabygirl1                 11
 #define obj_D47_gsmiddleman1                12
 #define obj_D47_workman                     13

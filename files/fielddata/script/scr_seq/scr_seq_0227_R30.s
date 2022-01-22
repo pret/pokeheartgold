@@ -32,9 +32,9 @@ scr_seq_R30_000:
 	lockall
 	npc_msg msg_0375_R30_00000
 	closemsg
-	apply_movement obj_R30_tsure_poke_575, _0088
+	apply_movement obj_R30_tsure_poke_static_rattata, _0088
 	wait_movement
-	apply_movement obj_R30_tsure_poke_574, _0090
+	apply_movement obj_R30_tsure_poke_static_pidgey, _0090
 	wait_movement
 	play_se SEQ_SE_DP_SELECT
 	faceplayer

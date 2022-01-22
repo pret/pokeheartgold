@@ -196,7 +196,7 @@ gScriptCmdTable:
 	.word ScrCmd_GetFriendSprite                        ; 144
 	.word ScrCmd_RegisterPokegearCard                   ; 145
 	.word ScrCmd_RegisterGearNumber                     ; 146
-	.word ScrCmd_147                                    ; 147
+	.word ScrCmd_CheckRegisteredPhoneNumber                                    ; 147
 	.word ScrCmd_148                                    ; 148
 	.word ScrCmd_149                                    ; 149
 	.word ScrCmd_150                                    ; 150
@@ -14267,8 +14267,8 @@ _02046FF8:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_RegisterGearNumber
 
-	thumb_func_start ScrCmd_147
-ScrCmd_147: ; 0x02046FFC
+	thumb_func_start ScrCmd_CheckRegisteredPhoneNumber
+ScrCmd_CheckRegisteredPhoneNumber: ; 0x02046FFC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -14315,7 +14315,7 @@ _0204705A:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_147
+	thumb_func_end ScrCmd_CheckRegisteredPhoneNumber
 
 	thumb_func_start ScrCmd_SetPhoneCall
 ScrCmd_SetPhoneCall: ; 0x02047060

@@ -19,8 +19,8 @@
 #define obj_R30_gsboy3                       3
 #define obj_R30_gsboy2                       4
 #define obj_R30_gsboy2_2                     5
-#define obj_R30_tsure_poke_575               6
-#define obj_R30_tsure_poke_574               7
+#define obj_R30_tsure_poke_static_rattata     6
+#define obj_R30_tsure_poke_static_pidgey     7
 #define obj_R30_gsboy2_3                     8
 #define obj_R30_monstarball                  9
 #define obj_R30_monstarball_2               10

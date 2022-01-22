@@ -9,7 +9,7 @@
 
 #define obj_D27R0107_babyboy1_8              0
 #define obj_D27R0107_gsleader6               1
-#define obj_D27R0107_tsure_poke_610          2
+#define obj_D27R0107_tsure_poke_static_ampharos     2
 #define obj_D27R0107_monstarball             3
 #define obj_D27R0107_stop                    4
 

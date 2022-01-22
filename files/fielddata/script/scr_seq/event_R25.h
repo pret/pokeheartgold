@@ -24,7 +24,7 @@
 #define obj_R25_gsman1                       9
 #define obj_R25_tree                        10
 #define obj_R25_monstarball                 11
-#define obj_R25_tsure_poke_618              12
+#define obj_R25_tsure_poke_static_suicune    12
 #define obj_R25_minaki                      13
 #define obj_R25_minaki_2                    14
 #define obj_R25_gsleader11_2                15

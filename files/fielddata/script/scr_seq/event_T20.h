@@ -23,12 +23,12 @@
 #define obj_T20_gsrivel                      0
 #define obj_T20_gswoman1                     1
 #define obj_T20_gsbigman                     2
-#define obj_T20_tsure_poke_611               3
+#define obj_T20_tsure_poke_static_marill     3
 #define obj_T20_var_1                        4
 #define obj_T20_doctor                       5
 #define obj_T20_gsmiddleman1                 6
 #define obj_T20_gsmama                       7
 #define obj_T20_var_1_2                      8
-#define obj_T20_tsure_poke_611_2             9
+#define obj_T20_tsure_poke_static_marill_2     9
 
 #endif //SCR_SEQ_T20_H_

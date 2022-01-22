@@ -71,12 +71,12 @@ _00E2:
 	compare VAR_UNK_40F6, 1
 	goto_if_eq _0141
 	setflag FLAG_UNK_26E
-	hide_person obj_D02R0104_tsure_poke_582
-	hide_person obj_D02R0104_tsure_poke_582_2
-	hide_person obj_D02R0104_tsure_poke_582_3
-	hide_person obj_D02R0104_tsure_poke_582_4
-	hide_person obj_D02R0104_tsure_poke_582_5
-	hide_person obj_D02R0104_tsure_poke_582_6
+	hide_person obj_D02R0104_tsure_poke_static_clefairy
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_2
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_3
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_4
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_5
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_6
 	setvar VAR_UNK_40F6, 1
 	end
 
@@ -102,71 +102,71 @@ scr_seq_D02R0104_002:
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	apply_movement 241, _0330
-	apply_movement obj_D02R0104_tsure_poke_582, _0344
-	apply_movement obj_D02R0104_tsure_poke_582_2, _0350
-	apply_movement obj_D02R0104_tsure_poke_582_3, _035C
-	apply_movement obj_D02R0104_tsure_poke_582_4, _0368
-	apply_movement obj_D02R0104_tsure_poke_582_5, _0374
-	apply_movement obj_D02R0104_tsure_poke_582_6, _037C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _0344
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0350
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _035C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0368
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0374
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _037C
 	wait_movement
 	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_582, _0384
-	apply_movement obj_D02R0104_tsure_poke_582_2, _0394
-	apply_movement obj_D02R0104_tsure_poke_582_3, _03A4
-	apply_movement obj_D02R0104_tsure_poke_582_4, _03B4
-	apply_movement obj_D02R0104_tsure_poke_582_5, _03C4
-	apply_movement obj_D02R0104_tsure_poke_582_6, _03CC
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _0384
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0394
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _03A4
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _03B4
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _03C4
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _03CC
 	wait_movement
 	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_582, _03D4
-	apply_movement obj_D02R0104_tsure_poke_582_2, _03F0
-	apply_movement obj_D02R0104_tsure_poke_582_3, _040C
-	apply_movement obj_D02R0104_tsure_poke_582_4, _0428
-	apply_movement obj_D02R0104_tsure_poke_582_5, _0444
-	apply_movement obj_D02R0104_tsure_poke_582_6, _0468
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _03D4
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _03F0
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _040C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0428
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0444
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0468
 	wait_movement
 	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_582, _048C
-	apply_movement obj_D02R0104_tsure_poke_582_2, _04A8
-	apply_movement obj_D02R0104_tsure_poke_582_3, _04C4
-	apply_movement obj_D02R0104_tsure_poke_582_4, _04E0
-	apply_movement obj_D02R0104_tsure_poke_582_5, _04FC
-	apply_movement obj_D02R0104_tsure_poke_582_6, _0520
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _048C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _04A8
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _04C4
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _04E0
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _04FC
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0520
 	wait_movement
 	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_582, _0544
-	apply_movement obj_D02R0104_tsure_poke_582_2, _0560
-	apply_movement obj_D02R0104_tsure_poke_582_3, _057C
-	apply_movement obj_D02R0104_tsure_poke_582_4, _0598
-	apply_movement obj_D02R0104_tsure_poke_582_5, _05B4
-	apply_movement obj_D02R0104_tsure_poke_582_6, _05D8
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _0544
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0560
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _057C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0598
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _05B4
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _05D8
 	wait_movement
 	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_582, _05FC
-	apply_movement obj_D02R0104_tsure_poke_582_2, _0614
-	apply_movement obj_D02R0104_tsure_poke_582_3, _0630
-	apply_movement obj_D02R0104_tsure_poke_582_4, _064C
-	apply_movement obj_D02R0104_tsure_poke_582_5, _0668
-	apply_movement obj_D02R0104_tsure_poke_582_6, _068C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _05FC
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _0614
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _0630
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _064C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0668
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _068C
 	wait_movement
 	play_cry SPECIES_CLEFAIRY, 0
-	apply_movement obj_D02R0104_tsure_poke_582, _06B0
-	apply_movement obj_D02R0104_tsure_poke_582_2, _06D4
-	apply_movement obj_D02R0104_tsure_poke_582_3, _06F8
-	apply_movement obj_D02R0104_tsure_poke_582_4, _0720
-	apply_movement obj_D02R0104_tsure_poke_582_5, _0744
-	apply_movement obj_D02R0104_tsure_poke_582_6, _0760
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy, _06B0
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_2, _06D4
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_3, _06F8
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _0720
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_5, _0744
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0760
 	wait_movement
 	show_person obj_D02R0104_monstarball
-	apply_movement obj_D02R0104_tsure_poke_582_4, _077C
-	apply_movement obj_D02R0104_tsure_poke_582_6, _0798
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_4, _077C
+	apply_movement obj_D02R0104_tsure_poke_static_clefairy_6, _0798
 	wait_movement
-	hide_person obj_D02R0104_tsure_poke_582
-	hide_person obj_D02R0104_tsure_poke_582_2
-	hide_person obj_D02R0104_tsure_poke_582_3
-	hide_person obj_D02R0104_tsure_poke_582_4
-	hide_person obj_D02R0104_tsure_poke_582_5
-	hide_person obj_D02R0104_tsure_poke_582_6
+	hide_person obj_D02R0104_tsure_poke_static_clefairy
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_2
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_3
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_4
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_5
+	hide_person obj_D02R0104_tsure_poke_static_clefairy_6
 	setflag FLAG_UNK_26E
 	setvar VAR_UNK_40F6, 1
 	setflag FLAG_UNK_AB5

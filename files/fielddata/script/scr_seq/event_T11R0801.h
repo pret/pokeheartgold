@@ -7,6 +7,6 @@
 
 #define obj_T11R0801_gsmiddleman1            0
 #define obj_T11R0801_middlewoman1_2          1
-#define obj_T11R0801_tsure_poke_615          2
+#define obj_T11R0801_tsure_poke_static_blissey     2
 
 #endif //SCR_SEQ_T11R0801_H_

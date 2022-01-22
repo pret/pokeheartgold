@@ -12,7 +12,7 @@
 #define obj_T03PC0101_pcwoman2_2             2
 #define obj_T03PC0101_pcwoman2_3             3
 #define obj_T03PC0101_gsbabyboy1             4
-#define obj_T03PC0101_tsure_poke_583         5
+#define obj_T03PC0101_tsure_poke_static_jigglypuff     5
 #define obj_T03PC0101_gsmiddleman1           6
 #define obj_T03PC0101_gswoman1               7
 

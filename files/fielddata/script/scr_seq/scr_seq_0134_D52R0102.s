@@ -47,7 +47,7 @@ scr_seq_D52R0102_002:
 
 _008B:
 	setflag FLAG_UNK_2D1
-	hide_person obj_D52R0102_tsure_poke_622
+	hide_person obj_D52R0102_tsure_poke_static_kyogre
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 

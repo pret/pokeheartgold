@@ -133,7 +133,7 @@
 #define FLAG_UNK_070                                                0x70
 #define FLAG_UNK_071                                                0x71
 #define FLAG_UNK_072                                                0x72
-#define FLAG_UNK_073                                                0x73
+#define FLAG_GOT_TM51_FROM_FALKNER                                                0x73
 #define FLAG_UNK_074                                                0x74
 #define FLAG_UNK_075                                                0x75
 #define FLAG_UNK_076                                                0x76
@@ -145,7 +145,7 @@
 #define FLAG_UNK_07C                                                0x7C
 #define FLAG_FOUND_FIRST_FARFETCHD                                  0x7D
 #define FLAG_FOUND_SECOND_FARFETCHD                                 0x7E
-#define FLAG_UNK_07F                                                0x7F
+#define FLAG_GOT_TM89_FROM_BUGSY                                                0x7F
 #define FLAG_UNK_080                                                0x80
 #define FLAG_UNK_081                                                0x81
 #define FLAG_UNK_082                                                0x82
@@ -370,7 +370,7 @@
 #define FLAG_UNK_15D                                               0x15D
 #define FLAG_UNK_15E                                               0x15E
 #define FLAG_BUG_CONTEST_OTHER_POKES_HELD                                               0x15F
-#define FLAG_ELM_RECEIVED_EMAIL                                    0x160
+#define FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE                                    0x160
 #define FLAG_UNK_161                                               0x161
 #define FLAG_UNK_162                                               0x162
 #define FLAG_UNK_163                                               0x163
@@ -763,7 +763,7 @@
 #define FLAG_UNK_2E2                                               0x2E2
 #define FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT                  0x2E3
 #define FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT                 0x2E4
-#define FLAG_UNK_2E5                                               0x2E5
+#define FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND                                               0x2E5
 #define FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT                   0x2E6
 #define FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE            0x2E7
 #define FLAG_HIDE_NEW_BARK_FRIEND_2                                0x2E8

@@ -26,7 +26,7 @@ scr_seq_T04GYM0101_007:
 	goto_if_eq _00E7
 	compare VAR_SCENE_ROUTE_25, 2
 	goto_if_eq _00E7
-	scrcmd_147 29, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_MISTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00AD
 	scrcmd_522 VAR_TEMP_x4000

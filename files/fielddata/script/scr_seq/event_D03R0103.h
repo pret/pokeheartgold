@@ -18,7 +18,7 @@
 #define obj_D03R0103_breakrock_7            11
 #define obj_D03R0103_breakrock_8            12
 #define obj_D03R0103_breakrock_9            13
-#define obj_D03R0103_tsure_poke_608         14
+#define obj_D03R0103_tsure_poke_static_mewtwo    14
 #define obj_D03R0103_breakrock_10           15
 
 #endif //SCR_SEQ_D03R0103_H_

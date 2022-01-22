@@ -29,7 +29,7 @@
 #define obj_D32R0401_gswoman2                2
 #define obj_D32R0401_middlewoman1_2          3
 #define obj_D32R0401_gsbabygirl1             4
-#define obj_D32R0401_tsure_poke_595          5
+#define obj_D32R0401_tsure_poke_static_slowbro     5
 #define obj_D32R0401_gsgirl1                 6
 #define obj_D32R0401_mount_2                 7
 #define obj_D32R0401_gsoldman1               8

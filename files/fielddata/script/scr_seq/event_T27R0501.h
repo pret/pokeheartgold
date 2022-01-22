@@ -22,7 +22,7 @@
 #define obj_T27R0501_gsoldwoman1             0
 #define obj_T27R0501_gsman1                  1
 #define obj_T27R0501_gsgentleman             2
-#define obj_T27R0501_tsure_poke_589          3
+#define obj_T27R0501_tsure_poke_static_psyduck     3
 #define obj_T27R0501_dancer                  4
 #define obj_T27R0501_dancer_2                5
 #define obj_T27R0501_dancer_3                6

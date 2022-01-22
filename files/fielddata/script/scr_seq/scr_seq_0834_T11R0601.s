@@ -25,7 +25,7 @@ _003F:
 	setvar VAR_UNK_411D, 0
 _0045:
 	setflag FLAG_UNK_2F7
-	scrcmd_147 36, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _007E
 	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001

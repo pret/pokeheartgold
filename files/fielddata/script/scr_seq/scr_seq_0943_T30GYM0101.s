@@ -24,7 +24,7 @@ scr_seq_T30GYM0101_001:
 	end
 
 _0044:
-	scrcmd_147 27, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00BD
 	scrcmd_522 VAR_TEMP_x4000

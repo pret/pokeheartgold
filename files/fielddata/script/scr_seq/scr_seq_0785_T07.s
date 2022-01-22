@@ -47,7 +47,7 @@ _007A:
 _0091:
 	setflag FLAG_HIDE_CAMERON
 _0095:
-	scrcmd_147 28, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _015E
 	check_badge 15, VAR_TEMP_x4002
@@ -213,7 +213,7 @@ scr_seq_T07_014:
 	end
 
 scr_seq_T07_016:
-	scrcmd_147 28, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_ERIKA, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _046C
 	compare VAR_TEMP_x4005, 2

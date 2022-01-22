@@ -172,14 +172,14 @@ scr_seq_R42_001:
 	scrcmd_609
 	lockall
 	play_cry SPECIES_SUICUNE, 0
-	release obj_R42_tsure_poke_618
-	scrcmd_523 obj_R42_tsure_poke_618, 2, 90, 2, 0
-	lock obj_R42_tsure_poke_618
+	release obj_R42_tsure_poke_static_suicune
+	scrcmd_523 obj_R42_tsure_poke_static_suicune, 2, 90, 2, 0
+	lock obj_R42_tsure_poke_static_suicune
 	wait_cry
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 56
-	apply_movement obj_R42_tsure_poke_618, _02EC
+	apply_movement obj_R42_tsure_poke_static_suicune, _02EC
 	apply_movement obj_player, _0308
 	wait_movement
 	scrcmd_603
@@ -204,7 +204,7 @@ scr_seq_R42_001:
 	apply_movement obj_R42_minaki, _0340
 	wait_movement
 	callstd std_fade_end_eusine_music
-	hide_person obj_R42_tsure_poke_618
+	hide_person obj_R42_tsure_poke_static_suicune
 	hide_person obj_R42_minaki
 	setflag FLAG_HIDE_ROUTE_42_SUICUNE
 	setflag FLAG_HIDE_ROUTE_42_EUSINE

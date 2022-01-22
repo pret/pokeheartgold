@@ -18,7 +18,7 @@
 
 #define obj_T04_gsman1                       0
 #define obj_T04_gswoman1                     1
-#define obj_T04_tsure_poke_595               2
+#define obj_T04_tsure_poke_static_slowbro     2
 #define obj_T04_gsbigman                     3
 #define obj_T04_gsman2                       4
 #define obj_T04_gsboy1                       5

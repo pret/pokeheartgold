@@ -22,7 +22,7 @@
 #define _EV_scr_seq_T07_018                 18
 
 #define obj_T07_gsbigman                     0
-#define obj_T07_tsure_poke_590               1
+#define obj_T07_tsure_poke_static_poliwrath     1
 #define obj_T07_gsboy1                       2
 #define obj_T07_gswoman2                     3
 #define obj_T07_gsgirl1                      4

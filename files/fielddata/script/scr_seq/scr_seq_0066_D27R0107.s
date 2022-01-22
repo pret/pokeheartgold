@@ -77,14 +77,14 @@ _00B5:
 	wait_movement
 	npc_msg msg_0094_D27R0107_00005
 	closemsg
-	apply_movement obj_D27R0107_tsure_poke_610, _01A0
+	apply_movement obj_D27R0107_tsure_poke_static_ampharos, _01A0
 	wait_movement
 	play_cry SPECIES_AMPHAROS, 0
 	npc_msg msg_0094_D27R0107_00006
 	wait_cry
 	closemsg
 	scrcmd_459
-	apply_movement obj_D27R0107_tsure_poke_610, _01A8
+	apply_movement obj_D27R0107_tsure_poke_static_ampharos, _01A8
 	wait_movement
 	play_cry SPECIES_AMPHAROS, 0
 	wait_cry

@@ -41,7 +41,7 @@ _0062:
 _0079:
 	setflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 _007D:
-	scrcmd_147 27, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00F6
 	scrcmd_522 VAR_TEMP_x4000
@@ -251,7 +251,7 @@ scr_seq_D44R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 27, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _03FC
 	compare VAR_TEMP_x4002, 1

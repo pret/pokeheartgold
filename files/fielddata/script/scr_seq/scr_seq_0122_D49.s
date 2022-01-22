@@ -65,7 +65,7 @@ _00CC:
 scr_seq_D49_000:
 	scrcmd_609
 	lockall
-	release obj_D49_tsure_poke_585
+	release obj_D49_tsure_poke_static_oddish
 	release obj_D49_gsboy2
 	apply_movement obj_D49_thlonowner, _0414
 	wait_movement
@@ -75,53 +75,53 @@ scr_seq_D49_000:
 	compare VAR_TEMP_x4000, 40
 	goto_if_ne _011A
 	apply_movement obj_D49_thlonowner, _043C
-	apply_movement obj_D49_tsure_poke_590, _04A8
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _04A8
 	goto _01D9
 
 _011A:
 	compare VAR_TEMP_x4000, 41
 	goto_if_ne _013D
 	apply_movement obj_D49_thlonowner, _044C
-	apply_movement obj_D49_tsure_poke_590, _04BC
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _04BC
 	goto _01D9
 
 _013D:
 	compare VAR_TEMP_x4000, 42
 	goto_if_ne _0160
 	apply_movement obj_D49_thlonowner, _045C
-	apply_movement obj_D49_tsure_poke_590, _04D0
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _04D0
 	goto _01D9
 
 _0160:
 	compare VAR_TEMP_x4000, 43
 	goto_if_ne _0183
 	apply_movement obj_D49_thlonowner, _0464
-	apply_movement obj_D49_tsure_poke_590, _04DC
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _04DC
 	goto _01D9
 
 _0183:
 	compare VAR_TEMP_x4000, 44
 	goto_if_ne _01A6
 	apply_movement obj_D49_thlonowner, _0474
-	apply_movement obj_D49_tsure_poke_590, _04F0
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _04F0
 	goto _01D9
 
 _01A6:
 	compare VAR_TEMP_x4000, 39
 	goto_if_ne _01C9
 	apply_movement obj_D49_thlonowner, _042C
-	apply_movement obj_D49_tsure_poke_590, _0494
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _0494
 	goto _01D9
 
 _01C9:
 	apply_movement obj_D49_thlonowner, _0484
-	apply_movement obj_D49_tsure_poke_590, _0504
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _0504
 _01D9:
 	wait_movement
 	npc_msg msg_0137_D49_00006
 	closemsg
 	apply_movement obj_D49_thlonowner, _0424
-	apply_movement obj_D49_tsure_poke_590, _0424
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _0424
 	wait_movement
 	scrcmd_184 VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
@@ -141,7 +141,7 @@ _0218:
 	compare VAR_TEMP_x4000, 40
 	goto_if_ne _024F
 	apply_movement obj_D49_thlonowner, _0528
-	apply_movement obj_D49_tsure_poke_590, _05A0
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _05A0
 	apply_movement obj_player, _0658
 	goto _033E
 
@@ -149,7 +149,7 @@ _024F:
 	compare VAR_TEMP_x4000, 41
 	goto_if_ne _027A
 	apply_movement obj_D49_thlonowner, _0538
-	apply_movement obj_D49_tsure_poke_590, _05BC
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _05BC
 	apply_movement obj_player, _066C
 	goto _033E
 
@@ -157,7 +157,7 @@ _027A:
 	compare VAR_TEMP_x4000, 42
 	goto_if_ne _02A5
 	apply_movement obj_D49_thlonowner, _0548
-	apply_movement obj_D49_tsure_poke_590, _05D8
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _05D8
 	apply_movement obj_player, _0680
 	goto _033E
 
@@ -165,7 +165,7 @@ _02A5:
 	compare VAR_TEMP_x4000, 43
 	goto_if_ne _02D0
 	apply_movement obj_D49_thlonowner, _0554
-	apply_movement obj_D49_tsure_poke_590, _05F0
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _05F0
 	apply_movement obj_player, _068C
 	goto _033E
 
@@ -173,7 +173,7 @@ _02D0:
 	compare VAR_TEMP_x4000, 44
 	goto_if_ne _02FB
 	apply_movement obj_D49_thlonowner, _0564
-	apply_movement obj_D49_tsure_poke_590, _060C
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _060C
 	apply_movement obj_player, _06A0
 	goto _033E
 
@@ -181,13 +181,13 @@ _02FB:
 	compare VAR_TEMP_x4000, 39
 	goto_if_ne _0326
 	apply_movement obj_D49_thlonowner, _0518
-	apply_movement obj_D49_tsure_poke_590, _0584
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _0584
 	apply_movement obj_player, _0644
 	goto _033E
 
 _0326:
 	apply_movement obj_D49_thlonowner, _0574
-	apply_movement obj_D49_tsure_poke_590, _0628
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _0628
 	apply_movement obj_player, _06B4
 _033E:
 	wait_movement
@@ -208,24 +208,24 @@ _033E:
 	npc_msg msg_0137_D49_00004
 	closemsg
 	apply_movement obj_D49_thlonowner, _06C8
-	apply_movement obj_D49_tsure_poke_590, _06D0
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _06D0
 	wait_movement
 	scrcmd_307 1, 0, 10, 22, 77
 	scrcmd_310 77
 	scrcmd_308 77
 	apply_movement obj_D49_thlonowner, _06DC
-	apply_movement obj_D49_tsure_poke_590, _06E4
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _06E4
 	wait_movement
 	hide_person obj_D49_thlonowner
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_D49_tsure_poke_590, _041C
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _041C
 	wait_movement
 	play_cry SPECIES_POLIWRATH, 0
 	wait_cry
-	apply_movement obj_D49_tsure_poke_590, _06E4
+	apply_movement obj_D49_tsure_poke_static_poliwrath, _06E4
 	wait_movement
-	hide_person obj_D49_tsure_poke_590
+	hide_person obj_D49_tsure_poke_static_poliwrath
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	scrcmd_311 77

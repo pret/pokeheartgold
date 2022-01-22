@@ -25,7 +25,7 @@ _0033:
 	get_phone_book_rematch PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _011D
-	scrcmd_147 17, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00CC
 	scrcmd_522 VAR_TEMP_x4000
@@ -416,7 +416,7 @@ scr_seq_T25R1006_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 17, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _067A
 	compare VAR_TEMP_x4002, 1

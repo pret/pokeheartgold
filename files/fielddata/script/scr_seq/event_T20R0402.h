@@ -8,6 +8,6 @@
 #define _EV_scr_seq_T20R0402_004             4
 
 #define obj_T20R0402_var_1                   0
-#define obj_T20R0402_tsure_poke_611          1
+#define obj_T20R0402_tsure_poke_static_marill     1
 
 #endif //SCR_SEQ_T20R0402_H_

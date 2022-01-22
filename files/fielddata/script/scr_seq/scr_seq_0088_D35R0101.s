@@ -76,12 +76,12 @@ scr_seq_D35R0101_006:
 	npc_msg msg_0111_D35R0101_00004
 	closemsg
 	play_se SEQ_SE_GS_ZUTUKI
-	apply_movement obj_D35R0101_tsure_poke_607, _02AC
+	apply_movement obj_D35R0101_tsure_poke_static_dragonite, _02AC
 	wait_se SEQ_SE_GS_PRESSHIT
 	apply_movement obj_D35R0101_gsfighter, _021C
 	wait_movement
 	apply_movement obj_D35R0101_wataru, _022C
-	apply_movement obj_D35R0101_tsure_poke_607, _02C0
+	apply_movement obj_D35R0101_tsure_poke_static_dragonite, _02C0
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0111_D35R0101_00005, msg_0111_D35R0101_00006
@@ -91,7 +91,7 @@ scr_seq_D35R0101_006:
 	scrcmd_604 55
 	apply_movement obj_D35R0101_wataru, _0240
 	apply_movement obj_player, _025C
-	apply_movement obj_D35R0101_tsure_poke_607, _02CC
+	apply_movement obj_D35R0101_tsure_poke_static_dragonite, _02CC
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -116,9 +116,9 @@ scr_seq_D35R0101_006:
 	apply_movement obj_D35R0101_wataru, _02A4
 	wait_movement
 	hide_person obj_D35R0101_wataru
-	apply_movement obj_D35R0101_tsure_poke_607, _02DC
+	apply_movement obj_D35R0101_tsure_poke_static_dragonite, _02DC
 	wait_movement
-	hide_person obj_D35R0101_tsure_poke_607
+	hide_person obj_D35R0101_tsure_poke_static_dragonite
 	setflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
 	setvar VAR_UNK_40A8, 2
 	releaseall

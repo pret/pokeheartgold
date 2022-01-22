@@ -275,12 +275,12 @@ _038C:
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _03AB
 	setflag FLAG_HIDE_PEWTER_CITY_LATIOS
-	hide_person obj_T03_tsure_poke_621
+	hide_person obj_T03_tsure_poke_static_latios
 	goto _03B3
 
 _03AB:
 	setflag FLAG_HIDE_PEWTER_CITY_LATIAS
-	hide_person obj_T03_tsure_poke_620
+	hide_person obj_T03_tsure_poke_static_latias
 _03B3:
 	end
 

@@ -21,8 +21,8 @@
 #define obj_D49R0105_gsfighter               2
 #define obj_D49R0105_gsman3                  3
 #define obj_D49R0105_gswoman3                4
-#define obj_D49R0105_tsure_poke_591          5
-#define obj_D49R0105_tsure_poke_606          6
+#define obj_D49R0105_tsure_poke_static_abra     5
+#define obj_D49R0105_tsure_poke_static_dratini     6
 #define obj_D49R0105_signshoes               7
 #define obj_D49R0105_signclothes             8
 #define obj_D49R0105_signflag                9

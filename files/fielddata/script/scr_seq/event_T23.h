@@ -24,10 +24,10 @@
 #define obj_T23_gsoldman1                    2
 #define obj_T23_gswoman1                     3
 #define obj_T23_gsman1                       4
-#define obj_T23_tsure_poke_594               5
-#define obj_T23_tsure_poke_594_2             6
-#define obj_T23_tsure_poke_594_3             7
-#define obj_T23_tsure_poke_594_4             8
+#define obj_T23_tsure_poke_static_slowpoke     5
+#define obj_T23_tsure_poke_static_slowpoke_2     6
+#define obj_T23_tsure_poke_static_slowpoke_3     7
+#define obj_T23_tsure_poke_static_slowpoke_4     8
 #define obj_T23_gsrivel                      9
 #define obj_T23_bonguri                     10
 #define obj_T23_gsmiddleman1                11

@@ -15,7 +15,7 @@
 
 #define obj_D23R0102_gsman1                  0
 #define obj_D23R0102_gswoman2                1
-#define obj_D23R0102_tsure_poke_583          2
+#define obj_D23R0102_tsure_poke_static_jigglypuff     2
 #define obj_D23R0102_policeman               3
 #define obj_D23R0102_rocketm                 4
 #define obj_D23R0102_rocketw                 5

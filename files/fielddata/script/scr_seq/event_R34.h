@@ -27,7 +27,7 @@
 #define obj_R34_policeman_2                  9
 #define obj_R34_gsoldman1                   10
 #define obj_R34_var_1                       11
-#define obj_R34_tsure_poke_611              12
+#define obj_R34_tsure_poke_static_marill    12
 #define obj_R34_gsmiddleman1                13
 #define obj_R34_monstarball_2               14
 #define obj_R34_gsmiddleman1_2              15

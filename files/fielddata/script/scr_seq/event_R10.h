@@ -10,6 +10,6 @@
 #define _EV_scr_seq_R10_006                  6
 
 #define obj_R10_gsleader9                    0
-#define obj_R10_tsure_poke_604               1
+#define obj_R10_tsure_poke_static_zapdos     1
 
 #endif //SCR_SEQ_R10_H_

@@ -160,7 +160,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_R30_tsure_poke_575",
+      "id": "obj_R30_tsure_poke_static_rattata",
       "ovid": "SPRITE_TSURE_POKE_STATIC_RATTATA",
       "mvt": 14,
       "type": 0,
@@ -178,7 +178,7 @@
       "unk1E": 0
     },
     {
-      "id": "obj_R30_tsure_poke_574",
+      "id": "obj_R30_tsure_poke_static_pidgey",
       "ovid": "SPRITE_TSURE_POKE_STATIC_PIDGEY",
       "mvt": 15,
       "type": 0,

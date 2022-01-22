@@ -85,7 +85,7 @@ _0113:
 	end
 
 _0115:
-	scrcmd_147 39, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01A7
 	goto_if_set FLAG_GAME_CLEAR, _0139
@@ -135,7 +135,7 @@ _01C0:
 	hide_person obj_T29_rgyaradosu
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	show_person obj_T29_wataru
-	show_person obj_T29_tsure_poke_607
+	show_person obj_T29_tsure_poke_static_dragonite
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 
@@ -322,7 +322,7 @@ _0466:
 _046C:
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
-	hide_person obj_T29_tsure_poke_607
+	hide_person obj_T29_tsure_poke_static_dragonite
 	releaseall
 	end
 
@@ -346,14 +346,14 @@ _04BB:
 	gender_msgbox msg_0626_T29_00005, msg_0626_T29_00006
 	waitbutton
 	closemsg
-	apply_movement obj_T29_tsure_poke_607, _0538
+	apply_movement obj_T29_tsure_poke_static_dragonite, _0538
 	wait_movement
 	apply_movement obj_T29_wataru, _0544
 	wait_movement
 	scrcmd_775 8, 10
 	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
-	hide_person obj_T29_tsure_poke_607
+	hide_person obj_T29_tsure_poke_static_dragonite
 	clearflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
 	setvar VAR_UNK_40A8, 1
 	releaseall

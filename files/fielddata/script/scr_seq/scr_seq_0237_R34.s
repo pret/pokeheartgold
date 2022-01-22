@@ -115,7 +115,7 @@ scr_seq_R34_003:
 	wait_movement
 	callstd std_play_friend_music
 	apply_movement obj_R34_var_1, _049C
-	apply_movement obj_R34_tsure_poke_611, _04B0
+	apply_movement obj_R34_tsure_poke_static_marill, _04B0
 	wait_movement
 	apply_movement obj_R34_gsoldman1, _0500
 	wait_movement
@@ -128,7 +128,7 @@ scr_seq_R34_003:
 	compare VAR_SPECIAL_x8004, 368
 	goto_if_ne _01D4
 	apply_movement obj_R34_var_1, _04C0
-	apply_movement obj_R34_tsure_poke_611, _04CC
+	apply_movement obj_R34_tsure_poke_static_marill, _04CC
 	apply_movement obj_R34_gsoldman1, _0494
 	goto _0207
 
@@ -136,7 +136,7 @@ _01D4:
 	compare VAR_SPECIAL_x8004, 369
 	goto_if_ne _01FF
 	apply_movement obj_R34_var_1, _04C0
-	apply_movement obj_R34_tsure_poke_611, _04CC
+	apply_movement obj_R34_tsure_poke_static_marill, _04CC
 	apply_movement obj_R34_gsoldman1, _0494
 	goto _0207
 
@@ -212,19 +212,19 @@ _030D:
 	compare VAR_SPECIAL_x8004, 368
 	goto_if_ne _033B
 	apply_movement obj_R34_var_1, _04D4
-	apply_movement obj_R34_tsure_poke_611, _04E8
+	apply_movement obj_R34_tsure_poke_static_marill, _04E8
 	goto _036E
 
 _033B:
 	compare VAR_SPECIAL_x8004, 369
 	goto_if_ne _035E
 	apply_movement obj_R34_var_1, _04D4
-	apply_movement obj_R34_tsure_poke_611, _04E8
+	apply_movement obj_R34_tsure_poke_static_marill, _04E8
 	goto _036E
 
 _035E:
 	apply_movement obj_R34_var_1, _04E0
-	apply_movement obj_R34_tsure_poke_611, _04F0
+	apply_movement obj_R34_tsure_poke_static_marill, _04F0
 _036E:
 	wait_movement
 	buffer_players_name 0
@@ -236,7 +236,7 @@ _036E:
 	compare VAR_SPECIAL_x8004, 368
 	goto_if_ne _03AE
 	apply_movement obj_R34_var_1, _0578
-	apply_movement obj_R34_tsure_poke_611, _0590
+	apply_movement obj_R34_tsure_poke_static_marill, _0590
 	apply_movement obj_player, _05A4
 	goto _03F1
 
@@ -244,13 +244,13 @@ _03AE:
 	compare VAR_SPECIAL_x8004, 369
 	goto_if_ne _03D9
 	apply_movement obj_R34_var_1, _0578
-	apply_movement obj_R34_tsure_poke_611, _0590
+	apply_movement obj_R34_tsure_poke_static_marill, _0590
 	apply_movement obj_player, _05A4
 	goto _03F1
 
 _03D9:
 	apply_movement obj_R34_var_1, _0584
-	apply_movement obj_R34_tsure_poke_611, _0598
+	apply_movement obj_R34_tsure_poke_static_marill, _0598
 	apply_movement obj_player, _05B4
 _03F1:
 	wait_movement
@@ -261,7 +261,7 @@ _03F1:
 	scrcmd_310 77
 	scrcmd_308 77
 	apply_movement obj_R34_var_1, _05C4
-	apply_movement obj_R34_tsure_poke_611, _05D0
+	apply_movement obj_R34_tsure_poke_static_marill, _05D0
 	wait_movement
 	scrcmd_602 0
 	scrcmd_603

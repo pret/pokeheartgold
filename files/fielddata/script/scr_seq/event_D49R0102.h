@@ -20,7 +20,7 @@
 #define _EV_scr_seq_D49R0102_016            16
 
 #define obj_D49R0102_thlonowner              0
-#define obj_D49R0102_tsure_poke_590          1
+#define obj_D49R0102_tsure_poke_static_poliwrath     1
 #define obj_D49R0102_instructor              2
 #define obj_D49R0102_gsman1                  3
 #define obj_D49R0102_gsboy2                  4
@@ -34,9 +34,9 @@
 #define obj_D49R0102_gsboy1                 12
 #define obj_D49R0102_gsmiddleman1           13
 #define obj_D49R0102_gsbabyboy1             14
-#define obj_D49R0102_tsure_poke_575         15
-#define obj_D49R0102_tsure_poke_573         16
-#define obj_D49R0102_tsure_poke_592         17
+#define obj_D49R0102_tsure_poke_static_rattata    15
+#define obj_D49R0102_tsure_poke_static_butterfree    16
+#define obj_D49R0102_tsure_poke_static_machop    17
 #define obj_D49R0102_gsman3                 18
 
 #endif //SCR_SEQ_D49R0102_H_

@@ -19,7 +19,7 @@ _001B:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00B8
 	goto_if_unset FLAG_GAME_CLEAR, _00B2
-	scrcmd_147 39, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00B2
 	scrcmd_522 VAR_TEMP_x4000

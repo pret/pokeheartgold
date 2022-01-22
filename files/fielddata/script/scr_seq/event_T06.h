@@ -20,7 +20,7 @@
 #define obj_T06_gsmiddleman1                 1
 #define obj_T06_gswoman1                     2
 #define obj_T06_gsman1                       3
-#define obj_T06_tsure_poke_592               4
+#define obj_T06_tsure_poke_static_machop     4
 #define obj_T06_breakrock                    5
 #define obj_T06_breakrock_2                  6
 #define obj_T06_breakrock_3                  7
@@ -31,7 +31,7 @@
 #define obj_T06_monstarball                 12
 #define obj_T06_monstarball_2               13
 #define obj_T06_gsmiddleman1_2              14
-#define obj_T06_tsure_poke_618              15
+#define obj_T06_tsure_poke_static_suicune    15
 #define obj_T06_minaki                      16
 #define obj_T06_minaki_2                    17
 #define obj_T06_daigo                       18

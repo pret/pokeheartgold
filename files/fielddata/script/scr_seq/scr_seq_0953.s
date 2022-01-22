@@ -1614,7 +1614,7 @@ _0D99:
 _0D9F:
 	compare VAR_TEMP_x4010, 255
 	goto_if_eq _0DC7
-	scrcmd_147 VAR_TEMP_x4010, VAR_SPECIAL_x800C
+	check_registered_phone_number VAR_TEMP_x4010, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0DC7
 	setvar VAR_SPECIAL_x800C, 1

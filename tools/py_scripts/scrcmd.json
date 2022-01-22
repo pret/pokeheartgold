@@ -931,9 +931,9 @@
       ]
     },
     {
-      "name": "scrcmd_147",
+      "name": "check_registered_phone_number",
       "args": [
-        "var",
+        "phone_contact",
         "var"
       ]
     },

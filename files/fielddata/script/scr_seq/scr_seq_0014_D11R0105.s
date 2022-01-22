@@ -15,7 +15,7 @@ scr_seq_D11R0105_001:
 
 _0017:
 	setflag FLAG_UNK_306
-	hide_person obj_D11R0105_tsure_poke_603
+	hide_person obj_D11R0105_tsure_poke_static_articuno
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
 	end
 

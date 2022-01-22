@@ -17,17 +17,17 @@
 #define obj_D35R0104_rocketm_2               3
 #define obj_D35R0104_rocketw                 4
 #define obj_D35R0104_wataru                  5
-#define obj_D35R0104_tsure_poke_607          6
+#define obj_D35R0104_tsure_poke_static_dragonite     6
 #define obj_D35R0104_gsrivel                 7
 #define obj_D35R0104_rkanbum2                8
-#define obj_D35R0104_tsure_poke_613          9
+#define obj_D35R0104_tsure_poke_static_murkrow     9
 #define obj_D35R0104_babyboy1_9             10
 #define obj_D35R0104_babyboy1_9_2           11
 #define obj_D35R0104_monstarball            12
 #define obj_D35R0104_monstarball_2          13
 #define obj_D35R0104_monstarball_3          14
 #define obj_D35R0104_monstarball_4          15
-#define obj_D35R0104_tsure_poke_613_2       16
+#define obj_D35R0104_tsure_poke_static_murkrow_2    16
 #define obj_D35R0104_monstarball_5          17
 #define obj_D35R0104_sakaki                 18
 

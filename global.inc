@@ -1830,7 +1830,7 @@
 .public ScrCmd_GetFriendSprite
 .public ScrCmd_RegisterPokegearCard
 .public ScrCmd_RegisterGearNumber
-.public ScrCmd_147
+.public ScrCmd_CheckRegisteredPhoneNumber
 .public ScrCmd_148
 .public ScrCmd_149
 .public ScrCmd_150

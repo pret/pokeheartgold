@@ -19,7 +19,7 @@
 #define obj_R14_tree                         8
 #define obj_R14_tree_2                       9
 #define obj_R14_gsmiddleman1_3              10
-#define obj_R14_tsure_poke_618              11
+#define obj_R14_tsure_poke_static_suicune    11
 #define obj_R14_minaki                      12
 #define obj_R14_minaki_2                    13
 #define obj_R14_tree_3                      14

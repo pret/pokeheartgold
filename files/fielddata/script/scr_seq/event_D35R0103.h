@@ -18,7 +18,7 @@
 #define _EV_scr_seq_D35R0103_014            14
 
 #define obj_D35R0103_wataru                  0
-#define obj_D35R0103_tsure_poke_607          1
+#define obj_D35R0103_tsure_poke_static_dragonite     1
 #define obj_D35R0103_rocketm                 2
 #define obj_D35R0103_rocketm_2               3
 #define obj_D35R0103_rocketm_3               4
@@ -26,15 +26,15 @@
 #define obj_D35R0103_babyboy1_9_2            6
 #define obj_D35R0103_rocketm_4               7
 #define obj_D35R0103_rkanbuw                 8
-#define obj_D35R0103_tsure_poke_598          9
-#define obj_D35R0103_tsure_poke_598_2       10
-#define obj_D35R0103_tsure_poke_598_3       11
-#define obj_D35R0103_tsure_poke_598_4       12
-#define obj_D35R0103_tsure_poke_598_5       13
-#define obj_D35R0103_tsure_poke_598_6       14
+#define obj_D35R0103_tsure_poke_static_electrode     9
+#define obj_D35R0103_tsure_poke_static_electrode_2    10
+#define obj_D35R0103_tsure_poke_static_electrode_3    11
+#define obj_D35R0103_tsure_poke_static_electrode_4    12
+#define obj_D35R0103_tsure_poke_static_electrode_5    13
+#define obj_D35R0103_tsure_poke_static_electrode_6    14
 #define obj_D35R0103_monstarball            15
-#define obj_D35R0103_tsure_poke_613         16
-#define obj_D35R0103_tsure_poke_613_2       17
-#define obj_D35R0103_tsure_poke_613_3       18
+#define obj_D35R0103_tsure_poke_static_murkrow    16
+#define obj_D35R0103_tsure_poke_static_murkrow_2    17
+#define obj_D35R0103_tsure_poke_static_murkrow_3    18
 
 #endif //SCR_SEQ_D35R0103_H_

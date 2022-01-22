@@ -25,7 +25,7 @@
 
 scr_seq_T20R0101_010:
 	get_friend_sprite VAR_OBJ_0
-	goto_if_set FLAG_ELM_RECEIVED_EMAIL, _00B8
+	goto_if_set FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE, _00B8
 	compare VAR_SCENE_ELMS_LAB, 0
 	goto_if_ne _0070
 	move_person obj_T20R0101_doctor, 4, 0, 5, 1
@@ -53,7 +53,7 @@ _00B8:
 scr_seq_T20R0101_011:
 	scrcmd_609
 	lockall
-	goto_if_set FLAG_ELM_RECEIVED_EMAIL, _0197
+	goto_if_set FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE, _0197
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 3
 	goto_if_ne _00FA
@@ -96,7 +96,7 @@ _0145:
 	closemsg
 	apply_movement obj_T20R0101_doctor, _0368
 	wait_movement
-	setflag FLAG_ELM_RECEIVED_EMAIL
+	setflag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
 	releaseall
 	end
 
@@ -203,7 +203,7 @@ scr_seq_T20R0101_012:
 	closemsg
 	setvar VAR_SCENE_ELMS_LAB, 1
 	setvar VAR_SCENE_NEW_BARK_TOWN_OW, 1
-	clearflag FLAG_ELM_RECEIVED_EMAIL
+	clearflag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
 	releaseall
 	end
 
@@ -224,7 +224,7 @@ _02EE:
 	return
 
 _0331:
-	goto_if_set FLAG_UNK_073, _035D
+	goto_if_set FLAG_GOT_TM51_FROM_FALKNER, _035D
 	goto_if_set FLAG_MET_PASSERBY_BOY, _0352
 	npc_msg msg_0543_T20R0101_00015
 	waitbutton
@@ -688,7 +688,7 @@ _0904:
 	closemsg
 	apply_movement obj_T20R0101_var_1, _0B18
 	wait_movement
-	setflag FLAG_UNK_2E5
+	setflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
 	play_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_T20R0101_var_1
 	wait_se SEQ_SE_DP_KAIDAN2

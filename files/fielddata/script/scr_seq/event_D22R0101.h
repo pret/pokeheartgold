@@ -37,7 +37,7 @@
 #define obj_D22R0101_gsboy1_2                5
 #define obj_D22R0101_gsdsboy                 6
 #define obj_D22R0101_gswoman1                7
-#define obj_D22R0101_tsure_poke_588          8
+#define obj_D22R0101_tsure_poke_static_persian     8
 #define obj_D22R0101_gswoman2                9
 #define obj_D22R0101_gsboy3                 10
 #define obj_D22R0101_gsboy3_2               11

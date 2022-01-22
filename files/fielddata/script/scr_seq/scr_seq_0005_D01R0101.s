@@ -16,7 +16,7 @@ scr_seq_D01R0101_000:
 	end
 
 _001F:
-	scrcmd_147 33, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BROCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _009E
 	check_badge 15, VAR_TEMP_x4002
@@ -85,7 +85,7 @@ scr_seq_D01R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 33, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BROCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01B6
 	compare VAR_TEMP_x4003, 1

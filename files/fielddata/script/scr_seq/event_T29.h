@@ -31,7 +31,7 @@
 #define obj_T29_gswoman3                     7
 #define obj_T29_wataru                       8
 #define obj_T29_gsman1_2                     9
-#define obj_T29_tsure_poke_607              10
+#define obj_T29_tsure_poke_static_dragonite    10
 #define obj_T29_monstarball                 11
 #define obj_T29_monstarball_2               12
 #define obj_T29_monstarball_3               13

@@ -70,7 +70,7 @@ scr_seq_D49R0104_003:
 	faceplayer
 	npc_msg msg_0140_D49R0104_00004
 	closemsg
-	apply_movement obj_D49R0104_tsure_poke_575, _00F0
+	apply_movement obj_D49R0104_tsure_poke_static_rattata, _00F0
 	wait_movement
 	play_cry SPECIES_RATTATA, 0
 	npc_msg msg_0140_D49R0104_00011

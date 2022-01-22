@@ -19,7 +19,7 @@ scr_seq_T27GYM0101_000:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00AC
 	goto_if_unset FLAG_GAME_CLEAR, _00A6
-	scrcmd_147 37, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0085
 	get_weekday VAR_TEMP_x4000

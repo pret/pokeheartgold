@@ -14,10 +14,10 @@
 #define obj_R39_gsmiddleman1                 1
 #define obj_R39_middlewoman1_2               2
 #define obj_R39_mystery_2                    3
-#define obj_R39_tsure_poke_614               4
-#define obj_R39_tsure_poke_614_2             5
-#define obj_R39_tsure_poke_614_3             6
-#define obj_R39_tsure_poke_614_4             7
+#define obj_R39_tsure_poke_static_miltank     4
+#define obj_R39_tsure_poke_static_miltank_2     5
+#define obj_R39_tsure_poke_static_miltank_3     6
+#define obj_R39_tsure_poke_static_miltank_4     7
 #define obj_R39_gsgentleman                  8
 #define obj_R39_bonguri                      9
 #define obj_R39_monstarball                 10

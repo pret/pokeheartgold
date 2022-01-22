@@ -8,7 +8,7 @@
 
 #define obj_T04R0301_gsoldwoman1             0
 #define obj_T04R0301_gsoldman1               1
-#define obj_T04R0301_tsure_poke_584          2
-#define obj_T04R0301_tsure_poke_601          3
+#define obj_T04R0301_tsure_poke_static_zubat     2
+#define obj_T04R0301_tsure_poke_static_kangaskhan     3
 
 #endif //SCR_SEQ_T04R0301_H_

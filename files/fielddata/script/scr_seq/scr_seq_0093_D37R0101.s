@@ -22,13 +22,13 @@ scr_seq_D37R0101_002:
 	compare VAR_TEMP_x4001, 3
 	goto_if_eq _0228
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
-	show_person obj_D37R0101_tsure_poke_611
+	show_person obj_D37R0101_tsure_poke_static_marill
 	compare VAR_TEMP_x4001, 30
 	goto_if_ne _0050
-	move_person obj_D37R0101_tsure_poke_611, 9, 0, 25, 2
+	move_person obj_D37R0101_tsure_poke_static_marill, 9, 0, 25, 2
 _0050:
 	play_se SEQ_SE_DP_KAIDAN2
-	apply_movement obj_D37R0101_tsure_poke_611, _0174
+	apply_movement obj_D37R0101_tsure_poke_static_marill, _0174
 	wait_movement
 	wait 8, VAR_SPECIAL_x800C
 	play_cry SPECIES_MARILL, 0
@@ -54,14 +54,14 @@ _00AB:
 	scrcmd_729 VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _00EE
-	apply_movement obj_D37R0101_tsure_poke_611, _0218
+	apply_movement obj_D37R0101_tsure_poke_static_marill, _0218
 	apply_movement obj_player, _0218
 	apply_movement obj_partner_poke, _0218
 	wait_movement
 	goto _0100
 
 _00EE:
-	apply_movement obj_D37R0101_tsure_poke_611, _0218
+	apply_movement obj_D37R0101_tsure_poke_static_marill, _0218
 	apply_movement obj_player, _0218
 	wait_movement
 _0100:
@@ -69,7 +69,7 @@ _0100:
 	gender_msgbox msg_0116_D37R0101_00006, msg_0116_D37R0101_00009
 	closemsg
 	apply_movement obj_D37R0101_var_1, _01D0
-	apply_movement obj_D37R0101_tsure_poke_611, _01E0
+	apply_movement obj_D37R0101_tsure_poke_static_marill, _01E0
 	wait_movement
 	gender_msgbox msg_0116_D37R0101_00007, msg_0116_D37R0101_00010
 	giveitem_no_check ITEM_FASHION_CASE, 1
@@ -77,12 +77,12 @@ _0100:
 	gender_msgbox msg_0116_D37R0101_00008, msg_0116_D37R0101_00011
 	closemsg
 	apply_movement obj_D37R0101_var_1, _01F0
-	apply_movement obj_D37R0101_tsure_poke_611, _0204
+	apply_movement obj_D37R0101_tsure_poke_static_marill, _0204
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	hide_person obj_D37R0101_var_1
-	hide_person obj_D37R0101_tsure_poke_611
+	hide_person obj_D37R0101_tsure_poke_static_marill
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_fade_end_friend_music
 	setvar VAR_UNK_40F8, 1
@@ -157,8 +157,8 @@ _0228:
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_var_1
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
-	show_person obj_D37R0101_tsure_poke_611
-	lock obj_D37R0101_tsure_poke_611
+	show_person obj_D37R0101_tsure_poke_static_marill
+	lock obj_D37R0101_tsure_poke_static_marill
 	callstd std_play_friend_music
 	move_person obj_D37R0101_var_1, 25, 0, 9, 0
 	play_se SEQ_SE_DP_KAIDAN2
@@ -172,8 +172,8 @@ _0228:
 	apply_movement obj_player, _0310
 	apply_movement obj_D37R0101_var_1, _0318
 	wait 8, VAR_SPECIAL_x800C
-	move_person obj_D37R0101_tsure_poke_611, 25, 0, 9, 0
-	apply_movement obj_D37R0101_tsure_poke_611, _0320
+	move_person obj_D37R0101_tsure_poke_static_marill, 25, 0, 9, 0
+	apply_movement obj_D37R0101_tsure_poke_static_marill, _0320
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
@@ -186,12 +186,12 @@ _0228:
 	gender_msgbox msg_0116_D37R0101_00008, msg_0116_D37R0101_00011
 	closemsg
 	apply_movement obj_D37R0101_var_1, _0328
-	apply_movement obj_D37R0101_tsure_poke_611, _033C
+	apply_movement obj_D37R0101_tsure_poke_static_marill, _033C
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	hide_person obj_D37R0101_var_1
-	hide_person obj_D37R0101_tsure_poke_611
+	hide_person obj_D37R0101_tsure_poke_static_marill
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_fade_end_friend_music
 	setvar VAR_UNK_40F8, 1

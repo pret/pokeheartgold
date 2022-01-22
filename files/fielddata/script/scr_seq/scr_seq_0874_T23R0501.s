@@ -257,7 +257,7 @@ _0332:
 	end
 
 _0348:
-	scrcmd_147 5, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_KURT, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _02A2
 	goto_if_set FLAG_GAME_CLEAR, _0371

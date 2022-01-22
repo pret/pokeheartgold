@@ -104,7 +104,7 @@ scr_seq_T25R0401_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_147 9, VAR_TEMP_x4001
+	check_registered_phone_number PHONE_CONTACT_BILL, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _019C
 	compare VAR_UNK_410D, 1

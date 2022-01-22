@@ -5,9 +5,9 @@
 #define _EV_scr_seq_D18R0102_001             1
 #define _EV_scr_seq_D18R0102_002             2
 
-#define obj_D18R0102_tsure_poke_618          0
-#define obj_D18R0102_tsure_poke_617          1
-#define obj_D18R0102_tsure_poke_616          2
+#define obj_D18R0102_tsure_poke_static_suicune     0
+#define obj_D18R0102_tsure_poke_static_entei     1
+#define obj_D18R0102_tsure_poke_static_raikou     2
 #define obj_D18R0102_minaki                  3
 #define obj_D18R0102_rock                    4
 #define obj_D18R0102_rock_2                  5
@@ -17,6 +17,6 @@
 #define obj_D18R0102_breakrock_2             9
 #define obj_D18R0102_rock_5                 10
 #define obj_D18R0102_monstarball            11
-#define obj_D18R0102_tsure_poke_618_2       12
+#define obj_D18R0102_tsure_poke_static_suicune_2    12
 
 #endif //SCR_SEQ_D18R0102_H_

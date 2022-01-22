@@ -49,16 +49,16 @@ scr_seq_D35R0104_001:
 	apply_movement obj_D35R0104_wataru, _00F4
 	wait_movement
 	apply_movement obj_D35R0104_wataru, _00FC
-	apply_movement obj_D35R0104_tsure_poke_607, _010C
+	apply_movement obj_D35R0104_tsure_poke_static_dragonite, _010C
 	wait_movement
 	buffer_players_name 0
 	gender_msgbox msg_0114_D35R0104_00000, msg_0114_D35R0104_00001
 	closemsg
 	apply_movement obj_D35R0104_wataru, _0124
-	apply_movement obj_D35R0104_tsure_poke_607, _012C
+	apply_movement obj_D35R0104_tsure_poke_static_dragonite, _012C
 	wait_movement
 	hide_person obj_D35R0104_wataru
-	hide_person obj_D35R0104_tsure_poke_607
+	hide_person obj_D35R0104_tsure_poke_static_dragonite
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_LANCE
 	releaseall
 	setvar VAR_UNK_40AC, 1
@@ -99,21 +99,21 @@ _012C:
 scr_seq_D35R0104_007:
 	scrcmd_609
 	lockall
-	apply_movement obj_D35R0104_tsure_poke_613_2, _018C
+	apply_movement obj_D35R0104_tsure_poke_static_murkrow_2, _018C
 	wait_movement
 	npc_msg msg_0114_D35R0104_00010
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement obj_D35R0104_tsure_poke_613_2, _0194
+	apply_movement obj_D35R0104_tsure_poke_static_murkrow_2, _0194
 	apply_movement obj_player, _01A4
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 6
-	hide_person obj_D35R0104_tsure_poke_613_2
+	hide_person obj_D35R0104_tsure_poke_static_murkrow_2
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
 	releaseall
@@ -277,7 +277,7 @@ _0331:
 	wait_movement
 	hide_person obj_D35R0104_rkanbum2
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
-	apply_movement obj_D35R0104_tsure_poke_613, _04E4
+	apply_movement obj_D35R0104_tsure_poke_static_murkrow, _04E4
 	wait_movement
 	npc_msg msg_0114_D35R0104_00008
 	closemsg
@@ -286,14 +286,14 @@ _0331:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	apply_movement obj_D35R0104_tsure_poke_613, _04F4
+	apply_movement obj_D35R0104_tsure_poke_static_murkrow, _04F4
 	apply_movement obj_player, _042C
 	wait_movement
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
 	setvar VAR_UNK_40AC, 4
-	hide_person obj_D35R0104_tsure_poke_613
+	hide_person obj_D35R0104_tsure_poke_static_murkrow
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
 	releaseall
