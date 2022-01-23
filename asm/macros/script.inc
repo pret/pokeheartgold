@@ -4024,7 +4024,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_713 arg0
+	.macro alph_puzzle arg0
 	.short 713
 	.byte \arg0
 	.endm

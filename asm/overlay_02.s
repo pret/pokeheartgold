@@ -4689,7 +4689,7 @@ _02247FE0:
 _02247FEA:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02066724
+	bl ScriptState_CheckAlphPuzzleFlag
 	cmp r0, #0
 	beq _02247FFA
 	mov r0, #1
@@ -5597,7 +5597,7 @@ _02248668:
 _0224866C:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_02066724
+	bl ScriptState_CheckAlphPuzzleFlag
 	add r1, r5, r4
 	add r4, r4, #1
 	strb r0, [r1, #0x12]

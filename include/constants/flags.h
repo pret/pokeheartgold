@@ -1736,10 +1736,10 @@
 #define FLAG_UNK_974                                               0x974
 #define FLAG_UNK_975                                               0x975
 #define FLAG_SYS_MET_BILL                                               0x976
-#define FLAG_UNK_977                                               0x977
-#define FLAG_UNK_978                                               0x978
-#define FLAG_UNK_979                                               0x979
-#define FLAG_UNK_97A                                               0x97A
+#define FLAG_SYS_ALPH_PUZZLE_KABUTO                                               0x977
+#define FLAG_SYS_ALPH_PUZZLE_AERODACTYL                                               0x978
+#define FLAG_SYS_ALPH_PUZZLE_OMANYTE                                               0x979
+#define FLAG_SYS_ALPH_PUZZLE_HO_OH                                               0x97A
 #define FLAG_UNK_97B                                               0x97B
 #define FLAG_UNK_97C                                               0x97C
 #define FLAG_UNK_97D                                               0x97D

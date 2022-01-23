@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ov110_021E5900
-ov110_021E5900: ; 0x021E5900
+	thumb_func_start ov110_AlphPuzzle_OvyInit
+ov110_AlphPuzzle_OvyInit: ; 0x021E5900
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	ldr r1, [r5]
@@ -57,10 +57,10 @@ _021E596E:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov110_021E5900
+	thumb_func_end ov110_AlphPuzzle_OvyInit
 
-	thumb_func_start ov110_021E5974
-ov110_021E5974: ; 0x021E5974
+	thumb_func_start ov110_AlphPuzzle_OvyExec
+ov110_AlphPuzzle_OvyExec: ; 0x021E5974
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -126,10 +126,10 @@ _021E59E6:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov110_021E5974
+	thumb_func_end ov110_AlphPuzzle_OvyExec
 
-	thumb_func_start ov110_021E59F4
-ov110_021E59F4: ; 0x021E59F4
+	thumb_func_start ov110_AlphPuzzle_OvyExit
+ov110_AlphPuzzle_OvyExit: ; 0x021E59F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -149,7 +149,7 @@ _021E5A0A:
 	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov110_021E59F4
+	thumb_func_end ov110_AlphPuzzle_OvyExit
 
 	thumb_func_start ov110_021E5A24
 ov110_021E5A24: ; 0x021E5A24
@@ -231,7 +231,7 @@ ov110_021E5AAC: ; 0x021E5AAC
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
 	ldrb r1, [r4, #0x19]
-	bl sub_020666D8
+	bl ScriptState_SetAlphPuzzleFlag
 _021E5AD2:
 	pop {r4, pc}
 	thumb_func_end ov110_021E5AAC

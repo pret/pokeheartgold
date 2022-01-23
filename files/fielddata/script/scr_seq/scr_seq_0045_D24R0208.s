@@ -16,11 +16,11 @@ scr_seq_D24R0208_000:
 	faceplayer
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_713 3
+	alph_puzzle 3
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	goto_if_set FLAG_UNK_97A, _0042
+	goto_if_set FLAG_SYS_ALPH_PUZZLE_HO_OH, _0042
 	releaseall
 	end
 

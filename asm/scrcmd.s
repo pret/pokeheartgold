@@ -762,7 +762,7 @@ gScriptCmdTable:
 	.word ScrCmd_710                                    ; 710
 	.word ScrCmd_711                                    ; 711
 	.word ScrCmd_712                                    ; 712
-	.word ScrCmd_713                                    ; 713
+	.word ScrCmd_AlphPuzzle                                    ; 713
 	.word ScrCmd_714                                    ; 714
 	.word ScrCmd_715                                    ; 715
 	.word ScrCmd_716                                    ; 716
@@ -14865,8 +14865,8 @@ _0204748A:
 _02047498: .word ScrNative_WaitApplication_DestroyTaskData
 	thumb_func_end ScrCmd_712
 
-	thumb_func_start ScrCmd_713
-ScrCmd_713: ; 0x0204749C
+	thumb_func_start ScrCmd_AlphPuzzle
+ScrCmd_AlphPuzzle: ; 0x0204749C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -14885,7 +14885,7 @@ _020474BA:
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203EC04
+	bl Fsys_CreateApplication_AlphPuzzle
 	str r0, [r4]
 	ldr r1, _020474D4 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0
@@ -14894,7 +14894,7 @@ _020474BA:
 	pop {r3, r4, r5, pc}
 	nop
 _020474D4: .word ScrNative_WaitApplication_DestroyTaskData
-	thumb_func_end ScrCmd_713
+	thumb_func_end ScrCmd_AlphPuzzle
 
 	thumb_func_start ScrCmd_722
 ScrCmd_722: ; 0x020474D8

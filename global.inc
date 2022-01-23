@@ -2393,7 +2393,7 @@
 .public ScrCmd_710
 .public ScrCmd_711
 .public ScrCmd_712
-.public ScrCmd_713
+.public ScrCmd_AlphPuzzle
 .public ScrCmd_714
 .public ScrCmd_715
 .public ScrCmd_716
@@ -9042,9 +9042,9 @@
 .public ov10_022203A4
 .public ov10_022205BC
 .public ov10_022206B0
-.public ov110_021E5900
-.public ov110_021E5974
-.public ov110_021E59F4
+.public ov110_AlphPuzzle_OvyInit
+.public ov110_AlphPuzzle_OvyExec
+.public ov110_AlphPuzzle_OvyExit
 .public ov110_021E5A24
 .public ov110_021E5A74
 .public ov110_021E5AAC
@@ -28243,7 +28243,7 @@
 .public sub_0203EB08
 .public sub_0203EB64
 .public sub_0203EBA4
-.public sub_0203EC04
+.public Fsys_CreateApplication_AlphPuzzle
 .public sub_0203EC64
 .public sub_0203ECC0
 .public sub_0203ED24
@@ -29092,8 +29092,8 @@
 .public sub_020666A4
 .public sub_020666B4
 .public EventFlagCheck_RematchGroup
-.public sub_020666D8
-.public sub_02066724
+.public ScriptState_SetAlphPuzzleFlag
+.public ScriptState_CheckAlphPuzzleFlag
 .public sub_0206677C
 .public sub_02066794
 .public sub_020667E0

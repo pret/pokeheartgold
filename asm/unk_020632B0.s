@@ -6997,8 +6997,8 @@ _020666D0: .word FLAG_UNK_97B
 _020666D4: .word CheckScriptFlag
 	thumb_func_end EventFlagCheck_RematchGroup
 
-	thumb_func_start sub_020666D8
-sub_020666D8: ; 0x020666D8
+	thumb_func_start ScriptState_SetAlphPuzzleFlag
+ScriptState_SetAlphPuzzleFlag: ; 0x020666D8
 	push {r3, lr}
 	cmp r1, #3
 	bhi _02066710
@@ -7014,31 +7014,31 @@ _020666EA: ; jump table
 	.short _02066702 - _020666EA - 2 ; case 2
 	.short _0206670A - _020666EA - 2 ; case 3
 _020666F2:
-	ldr r1, _02066714 ; =FLAG_UNK_977
+	ldr r1, _02066714 ; =FLAG_SYS_ALPH_PUZZLE_KABUTO
 	bl SetScriptFlag
 	pop {r3, pc}
 _020666FA:
-	ldr r1, _02066718 ; =FLAG_UNK_978
+	ldr r1, _02066718 ; =FLAG_SYS_ALPH_PUZZLE_AERODACTYL
 	bl SetScriptFlag
 	pop {r3, pc}
 _02066702:
-	ldr r1, _0206671C ; =FLAG_UNK_979
+	ldr r1, _0206671C ; =FLAG_SYS_ALPH_PUZZLE_OMANYTE
 	bl SetScriptFlag
 	pop {r3, pc}
 _0206670A:
-	ldr r1, _02066720 ; =FLAG_UNK_97A
+	ldr r1, _02066720 ; =FLAG_SYS_ALPH_PUZZLE_HO_OH
 	bl SetScriptFlag
 _02066710:
 	pop {r3, pc}
 	nop
-_02066714: .word FLAG_UNK_977
-_02066718: .word FLAG_UNK_978
-_0206671C: .word FLAG_UNK_979
-_02066720: .word FLAG_UNK_97A
-	thumb_func_end sub_020666D8
+_02066714: .word FLAG_SYS_ALPH_PUZZLE_KABUTO
+_02066718: .word FLAG_SYS_ALPH_PUZZLE_AERODACTYL
+_0206671C: .word FLAG_SYS_ALPH_PUZZLE_OMANYTE
+_02066720: .word FLAG_SYS_ALPH_PUZZLE_HO_OH
+	thumb_func_end ScriptState_SetAlphPuzzleFlag
 
-	thumb_func_start sub_02066724
-sub_02066724: ; 0x02066724
+	thumb_func_start ScriptState_CheckAlphPuzzleFlag
+ScriptState_CheckAlphPuzzleFlag: ; 0x02066724
 	push {r3, lr}
 	mov r2, #0
 	cmp r1, #3
@@ -7055,33 +7055,33 @@ _02066738: ; jump table
 	.short _02066754 - _02066738 - 2 ; case 2
 	.short _0206675E - _02066738 - 2 ; case 3
 _02066740:
-	ldr r1, _0206676C ; =FLAG_UNK_977
+	ldr r1, _0206676C ; =FLAG_SYS_ALPH_PUZZLE_KABUTO
 	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _0206674A:
-	ldr r1, _02066770 ; =FLAG_UNK_978
+	ldr r1, _02066770 ; =FLAG_SYS_ALPH_PUZZLE_AERODACTYL
 	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _02066754:
-	ldr r1, _02066774 ; =FLAG_UNK_979
+	ldr r1, _02066774 ; =FLAG_SYS_ALPH_PUZZLE_OMANYTE
 	bl CheckScriptFlag
 	add r2, r0, #0
 	b _02066766
 _0206675E:
-	ldr r1, _02066778 ; =FLAG_UNK_97A
+	ldr r1, _02066778 ; =FLAG_SYS_ALPH_PUZZLE_HO_OH
 	bl CheckScriptFlag
 	add r2, r0, #0
 _02066766:
 	add r0, r2, #0
 	pop {r3, pc}
 	nop
-_0206676C: .word FLAG_UNK_977
-_02066770: .word FLAG_UNK_978
-_02066774: .word FLAG_UNK_979
-_02066778: .word FLAG_UNK_97A
-	thumb_func_end sub_02066724
+_0206676C: .word FLAG_SYS_ALPH_PUZZLE_KABUTO
+_02066770: .word FLAG_SYS_ALPH_PUZZLE_AERODACTYL
+_02066774: .word FLAG_SYS_ALPH_PUZZLE_OMANYTE
+_02066778: .word FLAG_SYS_ALPH_PUZZLE_HO_OH
+	thumb_func_end ScriptState_CheckAlphPuzzleFlag
 
 	thumb_func_start sub_0206677C
 sub_0206677C: ; 0x0206677C

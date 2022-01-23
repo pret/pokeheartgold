@@ -222,6 +222,7 @@ Static main
 	Object unk_02069528.o
 	Object unk_02069660.o
 	Object unk_0206979C.o
+	Object field_take_photo.o
 	Object unk_0206B910.o
 	Object field_alph_checks.o
 	Object get_egg.o

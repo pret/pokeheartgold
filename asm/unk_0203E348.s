@@ -82,7 +82,7 @@ _020FA384:
 _020FA394:
 	.word ov113_021E5900, ov113_021E5968, ov113_021E59C8, SDK_OVERLAY_OVY_113_ID
 _020FA3A4:
-	.word ov110_021E5900, ov110_021E5974, ov110_021E59F4, SDK_OVERLAY_OVY_110_ID
+	.word ov110_AlphPuzzle_OvyInit, ov110_AlphPuzzle_OvyExec, ov110_AlphPuzzle_OvyExit, SDK_OVERLAY_OVY_110_ID
 _020FA3B4:
 	.word ov109_021E5900, ov109_021E5968, ov109_021E59F0, SDK_OVERLAY_OVY_109_ID
 _020FA3C4:
@@ -1264,8 +1264,8 @@ sub_0203EBA4: ; 0x0203EBA4
 	.balign 4, 0
 	thumb_func_end sub_0203EBA4
 
-	thumb_func_start sub_0203EBDC
-sub_0203EBDC: ; 0x0203EBDC
+	thumb_func_start Fsys_LaunchApplication_AlphPuzzle
+Fsys_LaunchApplication_AlphPuzzle: ; 0x0203EBDC
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r5, _0203EC00 ; =_020FA3A4
@@ -1284,10 +1284,10 @@ sub_0203EBDC: ; 0x0203EBDC
 	pop {r4, r5, r6, pc}
 	nop
 _0203EC00: .word _020FA3A4
-	thumb_func_end sub_0203EBDC
+	thumb_func_end Fsys_LaunchApplication_AlphPuzzle
 
-	thumb_func_start sub_0203EC04
-sub_0203EC04: ; 0x0203EC04
+	thumb_func_start Fsys_CreateApplication_AlphPuzzle
+Fsys_CreateApplication_AlphPuzzle: ; 0x0203EC04
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1308,11 +1308,11 @@ sub_0203EC04: ; 0x0203EC04
 	add r0, r5, #0
 	add r1, r4, #0
 	strb r6, [r4, #5]
-	bl sub_0203EBDC
+	bl Fsys_LaunchApplication_AlphPuzzle
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0203EC04
+	thumb_func_end Fsys_CreateApplication_AlphPuzzle
 
 	thumb_func_start sub_0203EC3C
 sub_0203EC3C: ; 0x0203EC3C
