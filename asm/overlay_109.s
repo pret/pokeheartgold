@@ -618,7 +618,7 @@ _021E5D6E:
 	ldr r0, [r5, r6]
 	ldr r1, [r1]
 	add r2, r4, #0
-	bl PhotoAlbum_GetPhotoByIndex
+	bl PhotoAlbum_SetPhotoAtIndex
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

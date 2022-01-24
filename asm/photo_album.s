@@ -102,8 +102,8 @@ _0202FAEE:
 	pop {r3, pc}
 	thumb_func_end PhotoAlbum_DeletePhotoByIndex
 
-	thumb_func_start PhotoAlbum_GetPhotoByIndex
-PhotoAlbum_GetPhotoByIndex: ; 0x0202FAF0
+	thumb_func_start PhotoAlbum_SetPhotoAtIndex
+PhotoAlbum_SetPhotoAtIndex: ; 0x0202FAF0
 	push {r4, lr}
 	add r3, r0, #0
 	cmp r2, #0x24
@@ -122,10 +122,10 @@ _0202FAFC:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end PhotoAlbum_GetPhotoByIndex
+	thumb_func_end PhotoAlbum_SetPhotoAtIndex
 
-	thumb_func_start PhotoAlbum_SetPhotoByIndex
-PhotoAlbum_SetPhotoByIndex: ; 0x0202FB14
+	thumb_func_start PhotoAlbum_GetPhotoByIndex
+PhotoAlbum_GetPhotoByIndex: ; 0x0202FB14
 	push {r4, lr}
 	cmp r2, #0x24
 	blo _0202FB24
@@ -143,7 +143,7 @@ _0202FB24:
 	bl MI_CpuCopy8
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end PhotoAlbum_SetPhotoByIndex
+	thumb_func_end PhotoAlbum_GetPhotoByIndex
 
 	thumb_func_start PhotoAlbum_LoadAllInUsePhotos
 PhotoAlbum_LoadAllInUsePhotos: ; 0x0202FB38

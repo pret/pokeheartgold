@@ -1,61 +1,64 @@
+#include "constants/species.h"
+#include "constants/items.h"
+#include "constants/ribbon.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.rodata
 
-_020FC0E8:
-	.word sub_0204BF98, sub_0204BFF0, sub_0204C330, sub_0204C36C
-	.word sub_0204BF98, sub_0204C378, sub_0204C380, sub_0204C36C
-	.word sub_0204C3BC, sub_0204C3E4, sub_0204C420, sub_0204C45C
-	.word sub_0204C48C, sub_0204C490, sub_0204C4A4, sub_0204C4F8
-	.word sub_0204C504, sub_0204C508, sub_0204C50C, sub_0204C544
-	.word sub_0204C550, sub_0204C588, sub_0204C5D8, sub_0204C630
-	.word sub_0204BF98, sub_0204BFB0, sub_0204BFD0, sub_0204C36C
-	.word sub_0204C63C, sub_0204C640, sub_0204C644, sub_0204C648
-	.word sub_0204C654, sub_0204C658, sub_0204C65C, sub_0204C660
-	.word sub_0204C684, sub_0204C688, sub_0204C68C, sub_0204C690
-	.word sub_0204C69C, sub_0204C6A0, sub_0204C6A4, sub_0204C6A8
-	.word sub_0204C66C, sub_0204C670, sub_0204C674, sub_0204C678
-	.word sub_0204BF98, sub_0204BFF0, sub_0204C330, sub_0204C36C
-	.word sub_0204C6B4, sub_0204C6E0, sub_0204C700, sub_0204C738
-	.word sub_0204C778, sub_0204C798, sub_0204C7C8, sub_0204C7F4
+sScriptMysteryGiftActionTable:
+	.word MGCheck_PartySpace, MGGive_Mon, MGMessageSuccess_GiveMon, MGMessageFailure_GiveMon
+	.word MGCheck_PartySpace, MGGive_Egg, MGMessageSuccess_Egg, MGMessageFailure_GiveMon
+	.word MGCheck_Item, MGGive_Item, MGMessageSuccess_Item, MGMessageFailure_Item
+	.word MGCheck_BattleRules, MGGive_BattleRules, MGMessageSuccess_BattleRules, MGMessageFailure_BattleRules
+	.word MGCheck_Decoration, MGGive_Decoration, MGMessageSuccess_Decoration, MGMessageFailure_Decoration
+	.word MGCheck_MonDeco, MGGive_MonDeco, MGMessageSuccess_MonDeco, MGMessageFailure_MonDeco
+	.word MGCheck_PartySpace, MGGive_ManaphyEgg, MGMessageSuccess_ManaphyEgg, MGMessageFailure_GiveMon
+	.word MGCheck_MemberCard, MGGive_MemberCard, MGMessageSuccess_MemberCard, MGMessageFailure_MemberCard
+	.word MGCheck_OaksLetter, MGGive_OaksLetter, MGMessageSuccess_OaksLetter, MGMessageFailure_OaksLetter
+	.word MGCheck_AzureFlute, MGGive_AzureFlute, MGMessageSuccess_AzureFlute, MGMessageFailure_AzureFlute
+	.word MGCheck_PoketchApp, MGGive_PoketchApp, MGMessageSuccess_PoketchApp, MGMessageFailure_PoketchApp
+	.word MGCheck_SecretKey, MGGive_SecretKey, MGMessageSuccess_SecretKey, MGMessageFailure_SecretKey
+	.word MGCheck_PartySpace, MGGive_Mon, MGMessageSuccess_GiveMon, MGMessageFailure_GiveMon
+	.word MGCheck_PokewalkerCourse, MGGive_PokewalkerCourse, MGMesageSuccess_PokewalkerCourse, MGMesageFailure_PokewalkerCourse
+	.word MGCheck_MemorialPhoto, MGGive_MemorialPhoto, MGMessageSuccess_MemorialPhoto, MGMessageFailure_MemorialPhoto
 
 	.text
 
-	thumb_func_start sub_0204BD78
-sub_0204BD78: ; 0x0204BD78
+	thumb_func_start FieldSys_InitGetMysteryGiftGmmState
+FieldSys_InitGetMysteryGiftGmmState: ; 0x0204BD78
 	str r1, [r0]
 	str r2, [r0, #4]
 	str r3, [r0, #8]
 	bx lr
-	thumb_func_end sub_0204BD78
+	thumb_func_end FieldSys_InitGetMysteryGiftGmmState
 
-	thumb_func_start sub_0204BD80
-sub_0204BD80: ; 0x0204BD80
+	thumb_func_start FieldSys_GetTagOfNextMG
+FieldSys_GetTagOfNextMG: ; 0x0204BD80
 	push {r3, lr}
-	bl sub_0202E068
-	bl sub_0202E090
+	bl GetFirstQueuedMysteryGiftIdx
+	bl GetMysteryGiftTagByIdx
 	pop {r3, pc}
-	thumb_func_end sub_0204BD80
+	thumb_func_end FieldSys_GetTagOfNextMG
 
-	thumb_func_start sub_0204BD8C
-sub_0204BD8C: ; 0x0204BD8C
+	thumb_func_start FieldSys_GetDataOfNextMG
+FieldSys_GetDataOfNextMG: ; 0x0204BD8C
 	push {r3, lr}
-	bl sub_0202E068
-	bl sub_0202E0AC
+	bl GetFirstQueuedMysteryGiftIdx
+	bl GetMysteryGiftDataByIdx
 	pop {r3, pc}
-	thumb_func_end sub_0204BD8C
+	thumb_func_end FieldSys_GetDataOfNextMG
 
-	thumb_func_start sub_0204BD98
-sub_0204BD98: ; 0x0204BD98
+	thumb_func_start FieldSys_SetQueuedMGReceived
+FieldSys_SetQueuedMGReceived: ; 0x0204BD98
 	push {r3, lr}
-	bl sub_0202E068
-	bl sub_0202E0C8
+	bl GetFirstQueuedMysteryGiftIdx
+	bl SetMysteryGiftReceivedByIdx
 	pop {r3, pc}
-	thumb_func_end sub_0204BD98
+	thumb_func_end FieldSys_SetQueuedMGReceived
 
-	thumb_func_start ScrCmd_489
-ScrCmd_489: ; 0x0204BDA4
+	thumb_func_start ScrCmd_MysteryGift
+ScrCmd_MysteryGift: ; 0x0204BDA4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r4, r0, #0
@@ -81,6 +84,7 @@ _0204BDC0: ; jump table
 	.short _0204BDE0 - _0204BDC0 - 2 ; case 7
 	.short _0204BDEE - _0204BDC0 - 2 ; case 8
 _0204BDD2:
+	; Begin
 	add r4, #0x80
 	ldr r0, [r4]
 	mov r1, #0x20
@@ -88,6 +92,7 @@ _0204BDD2:
 	bl GetStaticPointerToSaveMysteryGift
 	b _0204BF8C
 _0204BDE0:
+	; End
 	add r4, #0x80
 	ldr r0, [r4]
 	mov r1, #0
@@ -95,6 +100,7 @@ _0204BDE0:
 	bl DeleteStaticPointerToMysteryGift
 	b _0204BF8C
 _0204BDEE:
+	; End.2
 	add r4, #0x80
 	ldr r0, [r4]
 	mov r1, #1
@@ -102,6 +108,7 @@ _0204BDEE:
 	bl DeleteStaticPointerToMysteryGift
 	b _0204BF8C
 _0204BDFC:
+	; Check bool
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r1, r0, #0
@@ -112,7 +119,7 @@ _0204BDFC:
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0204BD80
+	bl FieldSys_GetTagOfNextMG
 	cmp r0, #0
 	beq _0204BE22
 	mov r0, #1
@@ -123,6 +130,7 @@ _0204BE22:
 	strh r0, [r5]
 	b _0204BF8C
 _0204BE28:
+	; Get tag. Unused
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r1, r0, #0
@@ -133,10 +141,11 @@ _0204BE28:
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0204BD80
+	bl FieldSys_GetTagOfNextMG
 	strh r0, [r5]
 	b _0204BF8C
 _0204BE48:
+	; Check can give
 	add r0, r4, #0
 	bl ScriptReadHalfword
 	add r1, r0, #0
@@ -148,14 +157,14 @@ _0204BE48:
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0204BD80
+	bl FieldSys_GetTagOfNextMG
 	sub r0, r0, #1
 	lsl r5, r0, #4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	ldr r7, _0204BF94 ; =_020FC0E8
-	bl sub_0204BD8C
+	ldr r7, _0204BF94 ; =sScriptMysteryGiftActionTable
+	bl FieldSys_GetDataOfNextMG
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
@@ -164,18 +173,19 @@ _0204BE48:
 	strh r0, [r6]
 	b _0204BF8C
 _0204BE84:
+	; Give to player
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0204BD80
+	bl FieldSys_GetTagOfNextMG
 	sub r0, r0, #1
-	ldr r1, _0204BF94 ; =_020FC0E8
+	ldr r1, _0204BF94 ; =sScriptMysteryGiftActionTable
 	lsl r0, r0, #4
 	add r5, r1, r0
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x80
@@ -184,15 +194,16 @@ _0204BE84:
 	blx r2
 	add r4, #0x80
 	ldr r0, [r4]
-	bl sub_0204BD98
+	bl FieldSys_SetQueuedMGReceived
 	b _0204BF8C
 _0204BEB6:
+	; Get GMM
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0204BD80
+	bl FieldSys_GetTagOfNextMG
 	sub r0, r0, #1
-	ldr r1, _0204BF94 ; =_020FC0E8
+	ldr r1, _0204BF94 ; =sScriptMysteryGiftActionTable
 	lsl r0, r0, #4
 	add r5, r1, r0
 	add r0, r4, #0
@@ -220,13 +231,13 @@ _0204BEB6:
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r4, #0x80
 	add r3, r0, #0
 	ldr r1, [r4]
 	ldr r2, [r6]
 	add r0, sp, #0x14
-	bl sub_0204BD78
+	bl FieldSys_InitGetMysteryGiftGmmState
 	ldr r2, [sp]
 	ldr r3, [r5, #8]
 	add r0, sp, #0x14
@@ -234,12 +245,13 @@ _0204BEB6:
 	blx r3
 	b _0204BF8C
 _0204BF22:
+	; Get another gmm
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0204BD80
+	bl FieldSys_GetTagOfNextMG
 	sub r0, r0, #1
-	ldr r1, _0204BF94 ; =_020FC0E8
+	ldr r1, _0204BF94 ; =sScriptMysteryGiftActionTable
 	lsl r0, r0, #4
 	add r5, r1, r0
 	add r0, r4, #0
@@ -267,13 +279,13 @@ _0204BF22:
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r4, #0x80
 	add r3, r0, #0
 	ldr r1, [r4]
 	ldr r2, [r6]
 	add r0, sp, #8
-	bl sub_0204BD78
+	bl FieldSys_InitGetMysteryGiftGmmState
 	ldr r2, [sp, #4]
 	ldr r3, [r5, #0xc]
 	add r0, sp, #8
@@ -284,11 +296,11 @@ _0204BF8C:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0204BF94: .word _020FC0E8
-	thumb_func_end ScrCmd_489
+_0204BF94: .word sScriptMysteryGiftActionTable
+	thumb_func_end ScrCmd_MysteryGift
 
-	thumb_func_start sub_0204BF98
-sub_0204BF98: ; 0x0204BF98
+	thumb_func_start MGCheck_PartySpace
+MGCheck_PartySpace: ; 0x0204BF98
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
@@ -300,10 +312,10 @@ sub_0204BF98: ; 0x0204BF98
 _0204BFAC:
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_0204BF98
+	thumb_func_end MGCheck_PartySpace
 
-	thumb_func_start sub_0204BFB0
-sub_0204BFB0: ; 0x0204BFB0
+	thumb_func_start MGGive_ManaphyEgg
+MGGive_ManaphyEgg: ; 0x0204BFB0
 	push {r3, lr}
 	sub sp, #8
 	add r1, r0, #0
@@ -312,17 +324,17 @@ sub_0204BFB0: ; 0x0204BFB0
 	mov r3, #1
 	str r3, [sp, #4]
 	ldr r1, [r1, #0xc]
-	ldr r2, _0204BFCC ; =0x000001EA
+	ldr r2, _0204BFCC ; =SPECIES_MANAPHY
 	mov r0, #0x20
 	bl GiveEgg
 	add sp, #8
 	pop {r3, pc}
 	.balign 4, 0
-_0204BFCC: .word 0x000001EA
-	thumb_func_end sub_0204BFB0
+_0204BFCC: .word SPECIES_MANAPHY
+	thumb_func_end MGGive_ManaphyEgg
 
-	thumb_func_start sub_0204BFD0
-sub_0204BFD0: ; 0x0204BFD0
+	thumb_func_start MGMessageSuccess_ManaphyEgg
+MGMessageSuccess_ManaphyEgg: ; 0x0204BFD0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0xd1
@@ -337,14 +349,14 @@ sub_0204BFD0: ; 0x0204BFD0
 	mov r1, #0
 	bl BufferPlayersName
 	pop {r4, pc}
-	thumb_func_end sub_0204BFD0
+	thumb_func_end MGMessageSuccess_ManaphyEgg
 
-	thumb_func_start sub_0204BFF0
-sub_0204BFF0: ; 0x0204BFF0
+	thumb_func_start MGGive_Mon
+MGGive_Mon: ; 0x0204BFF0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x3c
 	add r7, r0, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	str r0, [sp, #0x14]
 	ldr r0, [r7, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -513,7 +525,7 @@ _0204C166:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C186
-	mov r0, #0x49
+	mov r0, #RIBBON_RED
 	bl sub_0208E5E0
 	ldrb r1, [r5]
 	strb r1, [r6, r0]
@@ -524,7 +536,7 @@ _0204C186:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C19E
-	mov r0, #0x4a
+	mov r0, #RIBBON_GREEN
 	bl sub_0208E5E0
 	ldrb r1, [r5, #1]
 	strb r1, [r6, r0]
@@ -535,7 +547,7 @@ _0204C19E:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C1B6
-	mov r0, #0x4b
+	mov r0, #RIBBON_BLUE
 	bl sub_0208E5E0
 	ldrb r1, [r5, #2]
 	strb r1, [r6, r0]
@@ -546,7 +558,7 @@ _0204C1B6:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C1CE
-	mov r0, #0x4c
+	mov r0, #RIBBON_FESTIVAL
 	bl sub_0208E5E0
 	ldrb r1, [r5, #3]
 	strb r1, [r6, r0]
@@ -557,7 +569,7 @@ _0204C1CE:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C1E6
-	mov r0, #0x4d
+	mov r0, #RIBBON_CARNIVAL
 	bl sub_0208E5E0
 	ldrb r1, [r5, #4]
 	strb r1, [r6, r0]
@@ -568,7 +580,7 @@ _0204C1E6:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C1FE
-	mov r0, #0x4e
+	mov r0, #RIBBON_CLASSIC
 	bl sub_0208E5E0
 	ldrb r1, [r5, #5]
 	strb r1, [r6, r0]
@@ -579,7 +591,7 @@ _0204C1FE:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C216
-	mov r0, #0x4f
+	mov r0, #RIBBON_PREMIER
 	bl sub_0208E5E0
 	ldrb r1, [r5, #6]
 	strb r1, [r6, r0]
@@ -590,7 +602,7 @@ _0204C216:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C22E
-	mov r0, #0x19
+	mov r0, #RIBBON_HOENN_MARINE
 	bl sub_0208E5E0
 	ldrb r1, [r5, #7]
 	strb r1, [r6, r0]
@@ -601,7 +613,7 @@ _0204C22E:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C246
-	mov r0, #0x1a
+	mov r0, #RIBBON_HOENN_LAND
 	bl sub_0208E5E0
 	ldrb r1, [r5, #8]
 	strb r1, [r6, r0]
@@ -612,7 +624,7 @@ _0204C246:
 	bl GetMonData
 	cmp r0, #0
 	beq _0204C25E
-	mov r0, #0x1b
+	mov r0, #RIBBON_HOENN_SKY
 	bl sub_0208E5E0
 	ldrb r1, [r5, #9]
 	strb r1, [r6, r0]
@@ -667,7 +679,7 @@ _0204C2B6:
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData
-	ldr r1, _0204C32C ; =0x000001ED
+	ldr r1, _0204C32C ; =SPECIES_ARCEUS
 	cmp r0, r1
 	bne _0204C2FE
 	add r0, r4, #0
@@ -704,17 +716,17 @@ _0204C326:
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0204C32C: .word 0x000001ED
-	thumb_func_end sub_0204BFF0
+_0204C32C: .word SPECIES_ARCEUS
+	thumb_func_end MGGive_Mon
 
-	thumb_func_start sub_0204C330
-sub_0204C330: ; 0x0204C330
+	thumb_func_start MGMessageSuccess_GiveMon
+MGMessageSuccess_GiveMon: ; 0x0204C330
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r7, r0, #0
 	mov r0, #0xd1
 	strh r0, [r4]
@@ -734,34 +746,34 @@ sub_0204C330: ; 0x0204C330
 	mov r1, #1
 	bl BufferBoxMonSpeciesNameWithArticle
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0204C330
+	thumb_func_end MGMessageSuccess_GiveMon
 
-	thumb_func_start sub_0204C36C
-sub_0204C36C: ; 0x0204C36C
+	thumb_func_start MGMessageFailure_GiveMon
+MGMessageFailure_GiveMon: ; 0x0204C36C
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #4
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C36C
+	thumb_func_end MGMessageFailure_GiveMon
 
-	thumb_func_start sub_0204C378
-sub_0204C378: ; 0x0204C378
-	ldr r3, _0204C37C ; =sub_0204BFF0
+	thumb_func_start MGGive_Egg
+MGGive_Egg: ; 0x0204C378
+	ldr r3, _0204C37C ; =MGGive_Mon
 	bx r3
 	.balign 4, 0
-_0204C37C: .word sub_0204BFF0
-	thumb_func_end sub_0204C378
+_0204C37C: .word MGGive_Mon
+	thumb_func_end MGGive_Egg
 
-	thumb_func_start sub_0204C380
-sub_0204C380: ; 0x0204C380
+	thumb_func_start MGMessageSuccess_Egg
+MGMessageSuccess_Egg: ; 0x0204C380
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r7, r0, #0
 	mov r0, #0xd1
 	strh r0, [r4]
@@ -781,17 +793,17 @@ sub_0204C380: ; 0x0204C380
 	mov r1, #1
 	bl BufferBoxMonSpeciesName
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0204C380
+	thumb_func_end MGMessageSuccess_Egg
 
-	thumb_func_start sub_0204C3BC
-sub_0204C3BC: ; 0x0204C3BC
+	thumb_func_start MGCheck_Item
+MGCheck_Item: ; 0x0204C3BC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_Bag_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r1, r0, #0
 	ldr r1, [r1]
 	add r0, r4, #0
@@ -802,17 +814,17 @@ sub_0204C3BC: ; 0x0204C3BC
 	bl Bag_HasSpaceForItem
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C3BC
+	thumb_func_end MGCheck_Item
 
-	thumb_func_start sub_0204C3E4
-sub_0204C3E4: ; 0x0204C3E4
+	thumb_func_start MGGive_Item
+MGGive_Item: ; 0x0204C3E4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_Bag_get
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r0, [r0]
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -832,16 +844,16 @@ _0204C410:
 	bl Bag_AddItem
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C3E4
+	thumb_func_end MGGive_Item
 
-	thumb_func_start sub_0204C420
-sub_0204C420: ; 0x0204C420
+	thumb_func_start MGMessageSuccess_Item
+MGMessageSuccess_Item: ; 0x0204C420
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r0, [r0]
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
@@ -862,10 +874,10 @@ sub_0204C420: ; 0x0204C420
 	bl BufferItemName
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C420
+	thumb_func_end MGMessageSuccess_Item
 
-	thumb_func_start sub_0204C45C
-sub_0204C45C: ; 0x0204C45C
+	thumb_func_start MGMessageFailure_Item
+MGMessageFailure_Item: ; 0x0204C45C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
@@ -874,7 +886,7 @@ sub_0204C45C: ; 0x0204C45C
 	add r6, r2, #0
 	bl Sav2_Bag_get
 	ldr r0, [r5]
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r0, [r0]
 	mov r1, #0
 	lsl r0, r0, #0x10
@@ -887,35 +899,35 @@ sub_0204C45C: ; 0x0204C45C
 	bl BufferItemName
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C45C
+	thumb_func_end MGMessageFailure_Item
 
-	thumb_func_start sub_0204C48C
-sub_0204C48C: ; 0x0204C48C
+	thumb_func_start MGCheck_BattleRules
+MGCheck_BattleRules: ; 0x0204C48C
 	mov r0, #1
 	bx lr
-	thumb_func_end sub_0204C48C
+	thumb_func_end MGCheck_BattleRules
 
-	thumb_func_start sub_0204C490
-sub_0204C490: ; 0x0204C490
+	thumb_func_start MGGive_BattleRules
+MGGive_BattleRules: ; 0x0204C490
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
 	bl sub_020291D4
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C490
+	thumb_func_end MGGive_BattleRules
 
-	thumb_func_start sub_0204C4A4
-sub_0204C4A4: ; 0x0204C4A4
+	thumb_func_start MGMessageSuccess_BattleRules
+MGMessageSuccess_BattleRules: ; 0x0204C4A4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r7, r0, #0
 	mov r0, #0xd1
 	strh r0, [r4]
@@ -945,38 +957,38 @@ sub_0204C4A4: ; 0x0204C4A4
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C4A4
+	thumb_func_end MGMessageSuccess_BattleRules
 
-	thumb_func_start sub_0204C4F8
-sub_0204C4F8: ; 0x0204C4F8
+	thumb_func_start MGMessageFailure_BattleRules
+MGMessageFailure_BattleRules: ; 0x0204C4F8
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #6
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C4F8
+	thumb_func_end MGMessageFailure_BattleRules
 
-	thumb_func_start sub_0204C504
-sub_0204C504: ; 0x0204C504
+	thumb_func_start MGCheck_Decoration
+MGCheck_Decoration: ; 0x0204C504
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0204C504
+	thumb_func_end MGCheck_Decoration
 
-	thumb_func_start sub_0204C508
-sub_0204C508: ; 0x0204C508
+	thumb_func_start MGGive_Decoration
+MGGive_Decoration: ; 0x0204C508
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C508
+	thumb_func_end MGGive_Decoration
 
-	thumb_func_start sub_0204C50C
-sub_0204C50C: ; 0x0204C50C
+	thumb_func_start MGMessageSuccess_Decoration
+MGMessageSuccess_Decoration: ; 0x0204C50C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r7, [r0]
 	mov r0, #0xd1
 	strh r0, [r4]
@@ -995,23 +1007,23 @@ sub_0204C50C: ; 0x0204C50C
 	bl BufferDecorationName
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C50C
+	thumb_func_end MGMessageSuccess_Decoration
 
-	thumb_func_start sub_0204C544
-sub_0204C544: ; 0x0204C544
+	thumb_func_start MGMessageFailure_Decoration
+MGMessageFailure_Decoration: ; 0x0204C544
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #0x1f
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C544
+	thumb_func_end MGMessageFailure_Decoration
 
-	thumb_func_start sub_0204C550
-sub_0204C550: ; 0x0204C550
+	thumb_func_start MGCheck_MonDeco
+MGCheck_MonDeco: ; 0x0204C550
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r4, [r0, #4]
 	ldr r0, [r0]
 	cmp r0, #1
@@ -1038,13 +1050,13 @@ _0204C582:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C550
+	thumb_func_end MGCheck_MonDeco
 
-	thumb_func_start sub_0204C588
-sub_0204C588: ; 0x0204C588
+	thumb_func_start MGGive_MonDeco
+MGGive_MonDeco: ; 0x0204C588
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r4, [r0, #4]
 	ldr r0, [r0]
 	cmp r0, #1
@@ -1076,16 +1088,16 @@ _0204C5C6:
 	add r1, r4, #0
 	bl sub_0202BBD8
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0204C588
+	thumb_func_end MGGive_MonDeco
 
-	thumb_func_start sub_0204C5D8
-sub_0204C5D8: ; 0x0204C5D8
+	thumb_func_start MGMessageSuccess_MonDeco
+MGMessageSuccess_MonDeco: ; 0x0204C5D8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r2, [r0, #4]
 	ldr r0, [r0]
 	cmp r0, #1
@@ -1122,163 +1134,163 @@ _0204C614:
 	mov r1, #0
 	bl BufferPlayersName
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0204C5D8
+	thumb_func_end MGMessageSuccess_MonDeco
 
-	thumb_func_start sub_0204C630
-sub_0204C630: ; 0x0204C630
+	thumb_func_start MGMessageFailure_MonDeco
+MGMessageFailure_MonDeco: ; 0x0204C630
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #6
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C630
+	thumb_func_end MGMessageFailure_MonDeco
 
-	thumb_func_start sub_0204C63C
-sub_0204C63C: ; 0x0204C63C
+	thumb_func_start MGCheck_MemberCard
+MGCheck_MemberCard: ; 0x0204C63C
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0204C63C
+	thumb_func_end MGCheck_MemberCard
 
-	thumb_func_start sub_0204C640
-sub_0204C640: ; 0x0204C640
+	thumb_func_start MGGive_MemberCard
+MGGive_MemberCard: ; 0x0204C640
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C640
+	thumb_func_end MGGive_MemberCard
 
-	thumb_func_start sub_0204C644
-sub_0204C644: ; 0x0204C644
+	thumb_func_start MGMessageSuccess_MemberCard
+MGMessageSuccess_MemberCard: ; 0x0204C644
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C644
+	thumb_func_end MGMessageSuccess_MemberCard
 
-	thumb_func_start sub_0204C648
-sub_0204C648: ; 0x0204C648
+	thumb_func_start MGMessageFailure_MemberCard
+MGMessageFailure_MemberCard: ; 0x0204C648
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #0x1f
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C648
+	thumb_func_end MGMessageFailure_MemberCard
 
-	thumb_func_start sub_0204C654
-sub_0204C654: ; 0x0204C654
+	thumb_func_start MGCheck_OaksLetter
+MGCheck_OaksLetter: ; 0x0204C654
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0204C654
+	thumb_func_end MGCheck_OaksLetter
 
-	thumb_func_start sub_0204C658
-sub_0204C658: ; 0x0204C658
+	thumb_func_start MGGive_OaksLetter
+MGGive_OaksLetter: ; 0x0204C658
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C658
+	thumb_func_end MGGive_OaksLetter
 
-	thumb_func_start sub_0204C65C
-sub_0204C65C: ; 0x0204C65C
+	thumb_func_start MGMessageSuccess_OaksLetter
+MGMessageSuccess_OaksLetter: ; 0x0204C65C
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C65C
+	thumb_func_end MGMessageSuccess_OaksLetter
 
-	thumb_func_start sub_0204C660
-sub_0204C660: ; 0x0204C660
+	thumb_func_start MGMessageFailure_OaksLetter
+MGMessageFailure_OaksLetter: ; 0x0204C660
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #0x1f
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C660
+	thumb_func_end MGMessageFailure_OaksLetter
 
-	thumb_func_start sub_0204C66C
-sub_0204C66C: ; 0x0204C66C
+	thumb_func_start MGCheck_SecretKey
+MGCheck_SecretKey: ; 0x0204C66C
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0204C66C
+	thumb_func_end MGCheck_SecretKey
 
-	thumb_func_start sub_0204C670
-sub_0204C670: ; 0x0204C670
+	thumb_func_start MGGive_SecretKey
+MGGive_SecretKey: ; 0x0204C670
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C670
+	thumb_func_end MGGive_SecretKey
 
-	thumb_func_start sub_0204C674
-sub_0204C674: ; 0x0204C674
+	thumb_func_start MGMessageSuccess_SecretKey
+MGMessageSuccess_SecretKey: ; 0x0204C674
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C674
+	thumb_func_end MGMessageSuccess_SecretKey
 
-	thumb_func_start sub_0204C678
-sub_0204C678: ; 0x0204C678
+	thumb_func_start MGMessageFailure_SecretKey
+MGMessageFailure_SecretKey: ; 0x0204C678
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #0x1f
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C678
+	thumb_func_end MGMessageFailure_SecretKey
 
-	thumb_func_start sub_0204C684
-sub_0204C684: ; 0x0204C684
+	thumb_func_start MGCheck_AzureFlute
+MGCheck_AzureFlute: ; 0x0204C684
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0204C684
+	thumb_func_end MGCheck_AzureFlute
 
-	thumb_func_start sub_0204C688
-sub_0204C688: ; 0x0204C688
+	thumb_func_start MGGive_AzureFlute
+MGGive_AzureFlute: ; 0x0204C688
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C688
+	thumb_func_end MGGive_AzureFlute
 
-	thumb_func_start sub_0204C68C
-sub_0204C68C: ; 0x0204C68C
+	thumb_func_start MGMessageSuccess_AzureFlute
+MGMessageSuccess_AzureFlute: ; 0x0204C68C
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C68C
+	thumb_func_end MGMessageSuccess_AzureFlute
 
-	thumb_func_start sub_0204C690
-sub_0204C690: ; 0x0204C690
+	thumb_func_start MGMessageFailure_AzureFlute
+MGMessageFailure_AzureFlute: ; 0x0204C690
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #0x1f
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C690
+	thumb_func_end MGMessageFailure_AzureFlute
 
-	thumb_func_start sub_0204C69C
-sub_0204C69C: ; 0x0204C69C
+	thumb_func_start MGCheck_PoketchApp
+MGCheck_PoketchApp: ; 0x0204C69C
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0204C69C
+	thumb_func_end MGCheck_PoketchApp
 
-	thumb_func_start sub_0204C6A0
-sub_0204C6A0: ; 0x0204C6A0
+	thumb_func_start MGGive_PoketchApp
+MGGive_PoketchApp: ; 0x0204C6A0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C6A0
+	thumb_func_end MGGive_PoketchApp
 
-	thumb_func_start sub_0204C6A4
-sub_0204C6A4: ; 0x0204C6A4
+	thumb_func_start MGMessageSuccess_PoketchApp
+MGMessageSuccess_PoketchApp: ; 0x0204C6A4
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C6A4
+	thumb_func_end MGMessageSuccess_PoketchApp
 
-	thumb_func_start sub_0204C6A8
-sub_0204C6A8: ; 0x0204C6A8
+	thumb_func_start MGMessageFailure_PoketchApp
+MGMessageFailure_PoketchApp: ; 0x0204C6A8
 	mov r0, #0xd1
 	strh r0, [r1]
 	mov r0, #0x1f
 	strh r0, [r2]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0204C6A8
+	thumb_func_end MGMessageFailure_PoketchApp
 
-	thumb_func_start sub_0204C6B4
-sub_0204C6B4: ; 0x0204C6B4
+	thumb_func_start MGCheck_PokewalkerCourse
+MGCheck_PokewalkerCourse: ; 0x0204C6B4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_Pokewalker_get
@@ -1297,17 +1309,17 @@ _0204C6DA:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C6B4
+	thumb_func_end MGCheck_PokewalkerCourse
 
-	thumb_func_start sub_0204C6E0
-sub_0204C6E0: ; 0x0204C6E0
+	thumb_func_start MGGive_PokewalkerCourse
+MGGive_PokewalkerCourse: ; 0x0204C6E0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_Pokewalker_get
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldrb r1, [r0]
 	cmp r1, #0x1b
 	bhs _0204C6FE
@@ -1315,16 +1327,16 @@ sub_0204C6E0: ; 0x0204C6E0
 	bl Pokewalker_UnlockCourse
 _0204C6FE:
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0204C6E0
+	thumb_func_end MGGive_PokewalkerCourse
 
-	thumb_func_start sub_0204C700
-sub_0204C700: ; 0x0204C700
+	thumb_func_start MGMesageSuccess_PokewalkerCourse
+MGMesageSuccess_PokewalkerCourse: ; 0x0204C700
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r7, r0, #0
 	mov r0, #0xd1
 	strh r0, [r4]
@@ -1343,16 +1355,16 @@ sub_0204C700: ; 0x0204C700
 	bl BufferPokewalkerCourseName
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C700
+	thumb_func_end MGMesageSuccess_PokewalkerCourse
 
-	thumb_func_start sub_0204C738
-sub_0204C738: ; 0x0204C738
+	thumb_func_start MGMesageFailure_PokewalkerCourse
+MGMesageFailure_PokewalkerCourse: ; 0x0204C738
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
@@ -1374,10 +1386,10 @@ sub_0204C738: ; 0x0204C738
 	bl BufferPokewalkerCourseName
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C738
+	thumb_func_end MGMesageFailure_PokewalkerCourse
 
-	thumb_func_start sub_0204C778
-sub_0204C778: ; 0x0204C778
+	thumb_func_start MGCheck_MemorialPhoto
+MGCheck_MemorialPhoto: ; 0x0204C778
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
@@ -1392,13 +1404,13 @@ sub_0204C778: ; 0x0204C778
 _0204C794:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_0204C778
+	thumb_func_end MGCheck_MemorialPhoto
 
-	thumb_func_start sub_0204C798
-sub_0204C798: ; 0x0204C798
+	thumb_func_start MGGive_MemorialPhoto
+MGGive_MemorialPhoto: ; 0x0204C798
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptEnvironment_GetSav2Ptr
@@ -1413,18 +1425,18 @@ sub_0204C798: ; 0x0204C798
 _0204C7BE:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl PhotoAlbum_GetPhotoByIndex
+	bl PhotoAlbum_SetPhotoAtIndex
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0204C798
+	thumb_func_end MGGive_MemorialPhoto
 
-	thumb_func_start sub_0204C7C8
-sub_0204C7C8: ; 0x0204C7C8
+	thumb_func_start MGMessageSuccess_MemorialPhoto
+MGMessageSuccess_MemorialPhoto: ; 0x0204C7C8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	mov r0, #0xd1
 	strh r0, [r4]
 	mov r0, #0x12
@@ -1438,16 +1450,16 @@ sub_0204C7C8: ; 0x0204C7C8
 	bl BufferPlayersName
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204C7C8
+	thumb_func_end MGMessageSuccess_MemorialPhoto
 
-	thumb_func_start sub_0204C7F4
-sub_0204C7F4: ; 0x0204C7F4
+	thumb_func_start MGMessageFailure_MemorialPhoto
+MGMessageFailure_MemorialPhoto: ; 0x0204C7F4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
 	add r4, r2, #0
-	bl sub_0204BD8C
+	bl FieldSys_GetDataOfNextMG
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl Sav2_Bag_get
@@ -1475,4 +1487,4 @@ _0204C822:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0204C838: .word 0x000001F5
-	thumb_func_end sub_0204C7F4
+	thumb_func_end MGMessageFailure_MemorialPhoto

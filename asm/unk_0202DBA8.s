@@ -25,8 +25,8 @@ Save_MysteryGift_init: ; 0x0202DBB0
 _0202DBB8: .word SaveSubstruct_UpdateCRC
 	thumb_func_end Save_MysteryGift_init
 
-	thumb_func_start sub_0202DBBC
-sub_0202DBBC: ; 0x0202DBBC
+	thumb_func_start MysteryGiftTagIsValid
+MysteryGiftTagIsValid: ; 0x0202DBBC
 	cmp r0, #0
 	beq _0202DBC8
 	cmp r0, #0x10
@@ -36,10 +36,10 @@ sub_0202DBBC: ; 0x0202DBBC
 _0202DBC8:
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_0202DBBC
+	thumb_func_end MysteryGiftTagIsValid
 
-	thumb_func_start sub_0202DBCC
-sub_0202DBCC: ; 0x0202DBCC
+	thumb_func_start SaveMysteryGift_GetByIdx
+SaveMysteryGift_GetByIdx: ; 0x0202DBCC
 	push {r3, r4, r5, lr}
 	cmp r1, #0
 	blt _0202DBF0
@@ -52,7 +52,7 @@ sub_0202DBCC: ; 0x0202DBCC
 	add r0, r1, r0
 	lsl r5, r0, #2
 	ldrh r0, [r4, r5]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	beq _0202DBF0
 	add r0, r4, r5
@@ -60,10 +60,10 @@ sub_0202DBCC: ; 0x0202DBCC
 _0202DBF0:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0202DBCC
+	thumb_func_end SaveMysteryGift_GetByIdx
 
-	thumb_func_start sub_0202DBF4
-sub_0202DBF4: ; 0x0202DBF4
+	thumb_func_start SaveMysteryGift_CardGetByIdx
+SaveMysteryGift_CardGetByIdx: ; 0x0202DBF4
 	push {r3, r4, r5, lr}
 	cmp r1, #0
 	blt _0202DC1A
@@ -77,7 +77,7 @@ sub_0202DBF4: ; 0x0202DBF4
 	add r5, r1, #0
 	mul r5, r0
 	ldrh r0, [r4, r5]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	beq _0202DC24
 	add r0, r4, r5
@@ -93,7 +93,7 @@ _0202DC24:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0202DC28: .word 0x00001328
-	thumb_func_end sub_0202DBF4
+	thumb_func_end SaveMysteryGift_CardGetByIdx
 
 	thumb_func_start sub_0202DC2C
 sub_0202DC2C: ; 0x0202DC2C
@@ -104,7 +104,7 @@ sub_0202DC2C: ; 0x0202DC2C
 	str r0, [sp]
 	str r2, [sp, #8]
 	str r1, [sp, #0xc]
-	bl sub_0202DE14
+	bl SaveMysteryGift_FindAvailable
 	cmp r0, #0
 	bne _0202DC48
 	add sp, #0x10
@@ -118,7 +118,7 @@ _0202DC48:
 	sub r6, r7, #4
 _0202DC52:
 	ldrh r0, [r5, r6]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	bne _0202DC94
 	lsl r0, r4, #6
@@ -171,7 +171,7 @@ sub_0202DCAC: ; 0x0202DCAC
 	mov r1, #0
 	str r0, [sp]
 	str r1, [sp, #8]
-	bl sub_0202DE3C
+	bl SaveMysteryGift_CardFindAvailable
 	cmp r0, #0
 	bne _0202DCC6
 	add sp, #0xc
@@ -186,7 +186,7 @@ _0202DCC6:
 	cmp r0, #1
 	bne _0202DCE4
 	ldr r0, [sp]
-	bl sub_0202DE14
+	bl SaveMysteryGift_FindAvailable
 	cmp r0, #0
 	bne _0202DCE4
 	add sp, #0xc
@@ -201,7 +201,7 @@ _0202DCE4:
 	lsl r6, r6, #4
 _0202DCF0:
 	ldrh r0, [r5, r6]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	bne _0202DD30
 	mov r2, #0x92
@@ -252,7 +252,7 @@ sub_0202DD48: ; 0x0202DD48
 	ldr r0, _0202DD78 ; =0x00001328
 	add r4, r1, #0
 	ldrh r0, [r5, r0]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #1
 	bne _0202DD5E
 	mov r0, #0
@@ -272,8 +272,8 @@ _0202DD5E:
 _0202DD78: .word 0x00001328
 	thumb_func_end sub_0202DD48
 
-	thumb_func_start sub_0202DD7C
-sub_0202DD7C: ; 0x0202DD7C
+	thumb_func_start SaveMysteryGiftI_SetReceived
+SaveMysteryGiftI_SetReceived: ; 0x0202DD7C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -299,7 +299,7 @@ _0202DD8A:
 	bl SaveSubstruct_UpdateCRC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0202DD7C
+	thumb_func_end SaveMysteryGiftI_SetReceived
 
 	thumb_func_start sub_0202DDB0
 sub_0202DDB0: ; 0x0202DDB0
@@ -355,8 +355,8 @@ _0202DDFA:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0202DDEC
 
-	thumb_func_start sub_0202DE14
-sub_0202DE14: ; 0x0202DE14
+	thumb_func_start SaveMysteryGift_FindAvailable
+SaveMysteryGift_FindAvailable: ; 0x0202DE14
 	push {r3, r4, r5, r6, r7, lr}
 	mov r7, #0x41
 	lsl r7, r7, #2
@@ -365,7 +365,7 @@ sub_0202DE14: ; 0x0202DE14
 	sub r6, r7, #4
 _0202DE20:
 	ldrh r0, [r5, r6]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	bne _0202DE2E
 	mov r0, #1
@@ -378,10 +378,10 @@ _0202DE2E:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202DE14
+	thumb_func_end SaveMysteryGift_FindAvailable
 
-	thumb_func_start sub_0202DE3C
-sub_0202DE3C: ; 0x0202DE3C
+	thumb_func_start SaveMysteryGift_CardFindAvailable
+SaveMysteryGift_CardFindAvailable: ; 0x0202DE3C
 	push {r3, r4, r5, r6, r7, lr}
 	mov r7, #0xd6
 	mov r6, #0x92
@@ -391,7 +391,7 @@ sub_0202DE3C: ; 0x0202DE3C
 	lsl r6, r6, #4
 _0202DE4A:
 	ldrh r0, [r5, r6]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	bne _0202DE58
 	mov r0, #1
@@ -403,10 +403,10 @@ _0202DE58:
 	blt _0202DE4A
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0202DE3C
+	thumb_func_end SaveMysteryGift_CardFindAvailable
 
-	thumb_func_start sub_0202DE64
-sub_0202DE64: ; 0x0202DE64
+	thumb_func_start SaveMysteryGiftI_TagIsValid
+SaveMysteryGiftI_TagIsValid: ; 0x0202DE64
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -421,7 +421,7 @@ _0202DE72:
 	mov r0, #1
 	lsl r0, r0, #8
 	ldrh r0, [r1, r0]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	beq _0202DE8C
 	mov r0, #1
@@ -429,7 +429,7 @@ _0202DE72:
 _0202DE8C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0202DE64
+	thumb_func_end SaveMysteryGiftI_TagIsValid
 
 	thumb_func_start sub_0202DE90
 sub_0202DE90: ; 0x0202DE90
@@ -447,7 +447,7 @@ _0202DE9E:
 	mov r0, #0x92
 	lsl r0, r0, #4
 	ldrh r0, [r1, r0]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	beq _0202DEB8
 	mov r0, #1
@@ -462,7 +462,7 @@ sub_0202DEBC: ; 0x0202DEBC
 	push {r3, lr}
 	ldr r1, _0202DED4 ; =0x00001328
 	ldrh r0, [r0, r1]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	beq _0202DECE
 	mov r0, #1
@@ -507,7 +507,7 @@ _0202DF04:
 	mov r0, #1
 	lsl r0, r0, #8
 	ldrh r0, [r5, r0]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	beq _0202DF20
 	ldrh r0, [r4]
@@ -544,7 +544,7 @@ _0202DF46:
 	mov r0, #1
 	lsl r0, r0, #8
 	ldrh r0, [r4, r0]
-	bl sub_0202DBBC
+	bl MysteryGiftTagIsValid
 	cmp r0, #0
 	beq _0202DF68
 	ldrh r0, [r5]
@@ -554,7 +554,7 @@ _0202DF46:
 	bne _0202DF68
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl sub_0202DD7C
+	bl SaveMysteryGiftI_SetReceived
 	pop {r3, r4, r5, r6, r7, pc}
 _0202DF68:
 	mov r0, #0x41
@@ -708,15 +708,15 @@ _0202E060:
 _0202E064: .word sMysteryGiftData
 	thumb_func_end DeleteStaticPointerToMysteryGift
 
-	thumb_func_start sub_0202E068
-sub_0202E068: ; 0x0202E068
+	thumb_func_start GetFirstQueuedMysteryGiftIdx
+GetFirstQueuedMysteryGiftIdx: ; 0x0202E068
 	push {r3, r4, r5, lr}
 	ldr r4, _0202E08C ; =sMysteryGiftData
 	mov r5, #0
 _0202E06E:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl sub_0202DE64
+	bl SaveMysteryGiftI_TagIsValid
 	cmp r0, #1
 	bne _0202E07E
 	add r0, r5, #0
@@ -730,15 +730,15 @@ _0202E07E:
 	pop {r3, r4, r5, pc}
 	nop
 _0202E08C: .word sMysteryGiftData
-	thumb_func_end sub_0202E068
+	thumb_func_end GetFirstQueuedMysteryGiftIdx
 
-	thumb_func_start sub_0202E090
-sub_0202E090: ; 0x0202E090
+	thumb_func_start GetMysteryGiftTagByIdx
+GetMysteryGiftTagByIdx: ; 0x0202E090
 	push {r3, lr}
 	add r1, r0, #0
 	ldr r0, _0202E0A8 ; =sMysteryGiftData
 	ldr r0, [r0]
-	bl sub_0202DBCC
+	bl SaveMysteryGift_GetByIdx
 	cmp r0, #0
 	beq _0202E0A4
 	ldrh r0, [r0]
@@ -748,15 +748,15 @@ _0202E0A4:
 	pop {r3, pc}
 	.balign 4, 0
 _0202E0A8: .word sMysteryGiftData
-	thumb_func_end sub_0202E090
+	thumb_func_end GetMysteryGiftTagByIdx
 
-	thumb_func_start sub_0202E0AC
-sub_0202E0AC: ; 0x0202E0AC
+	thumb_func_start GetMysteryGiftDataByIdx
+GetMysteryGiftDataByIdx: ; 0x0202E0AC
 	push {r3, lr}
 	add r1, r0, #0
 	ldr r0, _0202E0C4 ; =sMysteryGiftData
 	ldr r0, [r0]
-	bl sub_0202DBCC
+	bl SaveMysteryGift_GetByIdx
 	cmp r0, #0
 	beq _0202E0C0
 	add r0, r0, #4
@@ -766,16 +766,16 @@ _0202E0C0:
 	pop {r3, pc}
 	.balign 4, 0
 _0202E0C4: .word sMysteryGiftData
-	thumb_func_end sub_0202E0AC
+	thumb_func_end GetMysteryGiftDataByIdx
 
-	thumb_func_start sub_0202E0C8
-sub_0202E0C8: ; 0x0202E0C8
+	thumb_func_start SetMysteryGiftReceivedByIdx
+SetMysteryGiftReceivedByIdx: ; 0x0202E0C8
 	add r1, r0, #0
 	ldr r0, _0202E0D4 ; =sMysteryGiftData
-	ldr r3, _0202E0D8 ; =sub_0202DD7C
+	ldr r3, _0202E0D8 ; =SaveMysteryGiftI_SetReceived
 	ldr r0, [r0]
 	bx r3
 	nop
 _0202E0D4: .word sMysteryGiftData
-_0202E0D8: .word sub_0202DD7C
-	thumb_func_end sub_0202E0C8
+_0202E0D8: .word SaveMysteryGiftI_SetReceived
+	thumb_func_end SetMysteryGiftReceivedByIdx

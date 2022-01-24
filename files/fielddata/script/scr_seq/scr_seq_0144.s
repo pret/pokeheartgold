@@ -12,8 +12,8 @@
 	scrdef_end
 
 scr_seq_0144_000:
-	scrcmd_489 0
-	scrcmd_813 VAR_TEMP_x4000
+	mystery_gift 0
+	mom_gift_check VAR_TEMP_x4000
 	nop_var_490 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0035
@@ -23,8 +23,8 @@ scr_seq_0144_000:
 _0035:
 	clearflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
 _0039:
-	scrcmd_489 1, VAR_UNK_4138
-	compare VAR_UNK_4138, 0
+	mystery_gift 1, VAR_MYSTERY_GIFT_CHECK
+	compare VAR_MYSTERY_GIFT_CHECK, 0
 	goto_if_ne _0056
 	setflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 	goto _005A
@@ -32,12 +32,12 @@ _0039:
 _0056:
 	clearflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 _005A:
-	scrcmd_489 7
+	mystery_gift 7
 	end
 
 scr_seq_0144_003:
-	scrcmd_489 0
-	scrcmd_813 VAR_TEMP_x4000
+	mystery_gift 0
+	mom_gift_check VAR_TEMP_x4000
 	nop_var_490 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0083
@@ -47,8 +47,8 @@ scr_seq_0144_003:
 _0083:
 	clearflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
 _0087:
-	scrcmd_489 1, VAR_UNK_4138
-	compare VAR_UNK_4138, 0
+	mystery_gift 1, VAR_MYSTERY_GIFT_CHECK
+	compare VAR_MYSTERY_GIFT_CHECK, 0
 	goto_if_ne _00A4
 	setflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 	goto _00A8
@@ -57,15 +57,15 @@ _00A4:
 	clearflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 _00A8:
 	setvar VAR_UNK_40E5, 2
-	scrcmd_489 7
+	mystery_gift 7
 	end
 
 scr_seq_0144_001:
-	scrcmd_489 0
+	mystery_gift 0
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_489 1, VAR_SPECIAL_x800C
+	mystery_gift 1, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _016D
 	scrcmd_379 VAR_SPECIAL_x800C
@@ -90,20 +90,20 @@ _0115:
 	goto _0121
 
 _0121:
-	scrcmd_489 3, VAR_SPECIAL_x800C
+	mystery_gift 3, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0157
 	play_fanfare SEQ_ME_ITEM
-	scrcmd_489 5, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
+	mystery_gift 5, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	wait_fanfare
 	npc_msg msg_0209_00020
 	waitbutton
-	scrcmd_489 4
+	mystery_gift 4
 	goto _0182
 
 _0157:
-	scrcmd_489 6, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
+	mystery_gift 6, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	msgbox_extern VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
 	waitbutton
 	goto _0178
@@ -116,20 +116,20 @@ _016D:
 _0178:
 	closemsg
 	releaseall
-	scrcmd_489 7
+	mystery_gift 7
 	end
 
 _0182:
 	closemsg
 	releaseall
-	scrcmd_489 8
+	mystery_gift 8
 	end
 
 scr_seq_0144_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_813 VAR_SPECIAL_x800C
+	mom_gift_check VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0232
 	scrcmd_379 VAR_SPECIAL_x800C

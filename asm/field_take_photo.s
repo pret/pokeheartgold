@@ -3,6 +3,7 @@
 #include "constants/sprites.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -61,7 +62,7 @@ _0206A7FE:
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	cmp r0, #0xff
 	beq _0206A858
-	mov r1, #1
+	mov r1, #1 // (a/2/5/4) >> 8
 	add r0, sp, #0x18
 	lsl r1, r1, #8
 	add r2, r6, #0
@@ -329,7 +330,7 @@ sub_0206A9E8: ; 0x0206A9E8
 	ldrb r2, [r4, #0xa]
 	ldr r0, [r0]
 	add r1, #0xc
-	bl PhotoAlbum_SetPhotoByIndex
+	bl PhotoAlbum_GetPhotoByIndex
 	add r0, r4, #0
 	add r0, #0x50
 	ldrh r0, [r0]
@@ -714,13 +715,13 @@ _0206ACD6:
 	add r3, r2, r1
 	cmp r7, #0
 	beq _0206AD36
-	ldr r2, _0206AEB0 ; =_020FF464 + 4
+	ldr r2, _0206AEB0 ; =sPhotoMonCoordOffsets + 4
 	mov r0, #1
 	str r0, [sp]
 	ldrh r0, [r5, #0x34]
 	ldrh r2, [r2, r1]
 	add r0, r0, r2
-	ldr r2, _0206AEB4 ; =_020FF464 + 6
+	ldr r2, _0206AEB4 ; =sPhotoMonCoordOffsets + 6
 	str r0, [sp, #4]
 	ldrh r0, [r5, #0x36]
 	ldrh r1, [r2, r1]
@@ -936,8 +937,8 @@ _0206AEA2:
 	.balign 4, 0
 _0206AEA8: .word 0xBCFC0304
 _0206AEAC: .word NNS_G3dGlb + 0x80
-_0206AEB0: .word _020FF464 + 4
-_0206AEB4: .word _020FF464 + 6
+_0206AEB0: .word sPhotoMonCoordOffsets + 4
+_0206AEB4: .word sPhotoMonCoordOffsets + 6
 _0206AEB8: .word ov01_021F7918
 _0206AEBC: .word 0x0000FFFF
 	thumb_func_end sub_0206ABB0
@@ -1562,7 +1563,7 @@ _0206B3AA:
 	add r3, r0, r2
 	cmp r7, #0
 	beq _0206B404
-	ldr r6, _0206B6FC ; =_020FF464 + 4
+	ldr r6, _0206B6FC ; =sPhotoMonCoordOffsets + 4
 	mov r0, #1
 	str r0, [sp]
 	ldrh r0, [r1, #0x34]
@@ -1570,7 +1571,7 @@ _0206B3AA:
 	add r0, r0, r6
 	str r0, [sp, #4]
 	ldrh r0, [r1, #0x36]
-	ldr r1, _0206B700 ; =_020FF464 + 6
+	ldr r1, _0206B700 ; =sPhotoMonCoordOffsets + 6
 	ldrh r1, [r1, r2]
 	add r0, r0, r1
 	str r0, [sp, #8]
@@ -1871,7 +1872,7 @@ _0206B5F8:
 	strh r0, [r4]
 	b _0206B824
 _0206B626:
-	ldr r0, _0206B70C ; =0x0000091F
+	ldr r0, _0206B70C ; =SEQ_SE_GS_SHUTTER
 	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
@@ -1930,7 +1931,7 @@ _0206B652:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x44
-	bl PhotoAlbum_GetPhotoByIndex
+	bl PhotoAlbum_SetPhotoAtIndex
 	add r0, r4, #0
 	add r0, #0xca
 	ldrb r0, [r0]
@@ -1972,11 +1973,11 @@ _0206B6EC:
 	strb r0, [r4]
 	b _0206B824
 	nop
-_0206B6FC: .word _020FF464 + 4
-_0206B700: .word _020FF464 + 6
+_0206B6FC: .word sPhotoMonCoordOffsets + 4
+_0206B700: .word sPhotoMonCoordOffsets + 6
 _0206B704: .word ov01_021F7918
 _0206B708: .word 0x0000FFFF
-_0206B70C: .word 0x0000091F
+_0206B70C: .word SEQ_SE_GS_SHUTTER
 _0206B710:
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x1c]
@@ -2205,7 +2206,7 @@ sub_0206B8AC: ; 0x0206B8AC
 	mov r0, #1
 	str r0, [sp, #8]
 	mov r1, #2
-	ldr r0, _0206B90C ; =0x00000107
+	ldr r0, _0206B90C ; =0x00000107 ; =(a/2/6/1)
 	add r2, r5, #0
 	add r3, r1, #0
 	str r4, [sp, #0xc]
@@ -2219,12 +2220,12 @@ sub_0206B8AC: ; 0x0206B8AC
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
-_0206B90C: .word 0x00000107
+_0206B90C: .word 0x00000107 ; =(a/2/6/1)
 	thumb_func_end sub_0206B8AC
 
 	.rodata
 
-_020FF464:
+sPhotoMonCoordOffsets:
 	.short 0x0001, 0xFFFF
 	.short 0x0002, 0x0000
 	.short 0x0001, 0xFFFF

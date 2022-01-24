@@ -2772,7 +2772,7 @@
 	.short \distance
 	.endm
 
-	.macro scrcmd_489 arg0, arg1=0, arg2=0
+	.macro mystery_gift arg0, arg1=0, arg2=0
 	.short 489
 	.short \arg0
 	.if \arg0 >= 1 && \arg0 <= 3
@@ -4539,7 +4539,7 @@
 	.short 812
 	.endm
 
-	.macro scrcmd_813 arg0
+	.macro mom_gift_check arg0
 	.short 813
 	.short \arg0
 	.endm

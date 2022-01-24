@@ -489,7 +489,7 @@ extern BOOL ScrCmd_485(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Dummy(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PokeCenAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ElevatorAnim(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_489(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MysteryGift(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NopVar490(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_491(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_492(SCRIPTCONTEXT *ctx);
@@ -813,7 +813,7 @@ extern BOOL ScrCmd_809(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_810(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_811(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_812(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_813(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MomGiftCheck(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_814(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_815(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_UnownCircle(SCRIPTCONTEXT *ctx);
@@ -1344,7 +1344,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_Dummy,
     ScrCmd_PokeCenAnim,
     ScrCmd_ElevatorAnim,
-    ScrCmd_489,
+    ScrCmd_MysteryGift,
     ScrCmd_NopVar490,
     ScrCmd_491,
     ScrCmd_492,
@@ -1668,7 +1668,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_810,
     ScrCmd_811,
     ScrCmd_812,
-    ScrCmd_813,
+    ScrCmd_MomGiftCheck,
     ScrCmd_814,
     ScrCmd_815,
     ScrCmd_UnownCircle,

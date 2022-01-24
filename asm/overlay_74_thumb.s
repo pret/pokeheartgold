@@ -4355,7 +4355,7 @@ _02229310:
 	bl ov74_02228F8C
 	ldr r0, _02229440 ; =0x00003174
 	ldr r0, [r4, r0]
-	bl sub_0202DE14
+	bl SaveMysteryGift_FindAvailable
 	cmp r0, #0
 	bne _0222934C
 	add r0, r4, #0
@@ -14284,19 +14284,19 @@ _0222E254:
 	sub r1, #0xc
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl sub_0202DBF4
+	bl SaveMysteryGift_CardGetByIdx
 	ldr r1, _0222E5B4 ; =0x00002BB4
 	str r0, [r4, r1]
 	sub r1, #0x14
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl sub_0202DBF4
+	bl SaveMysteryGift_CardGetByIdx
 	ldr r1, _0222E5B8 ; =0x00002BB8
 	str r0, [r4, r1]
 	sub r1, #0x18
 	ldr r0, [r4, r1]
 	mov r1, #2
-	bl sub_0202DBF4
+	bl SaveMysteryGift_CardGetByIdx
 	ldr r1, _0222E5BC ; =0x00002BBC
 	mov r2, #1
 	str r0, [r4, r1]
@@ -16959,7 +16959,7 @@ _0222F834:
 	sub r1, #0xc
 	ldr r0, [r4, r1]
 	mov r1, #4
-	bl sub_0202DBF4
+	bl SaveMysteryGift_CardGetByIdx
 	ldr r1, _0222FB60 ; =0x00002BB4
 	str r0, [r4, r1]
 	mov r0, #1
@@ -17627,14 +17627,14 @@ _0222FE0E:
 	cmp r0, #1
 	bne _0222FE2A
 	add r0, r6, #0
-	bl sub_0202DE3C
+	bl SaveMysteryGift_CardFindAvailable
 	cmp r0, #0
 	bne _0222FE2A
 	mov r0, #4
 	pop {r3, r4, r5, r6, r7, pc}
 _0222FE2A:
 	add r0, r6, #0
-	bl sub_0202DE14
+	bl SaveMysteryGift_FindAvailable
 	cmp r0, #0
 	bne _0222FE38
 	mov r0, #3

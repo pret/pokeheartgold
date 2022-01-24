@@ -538,7 +538,7 @@ gScriptCmdTable:
 	.word ScrCmd_Dummy                                  ; 486
 	.word ScrCmd_PokeCenAnim                            ; 487
 	.word ScrCmd_ElevatorAnim                                    ; 488
-	.word ScrCmd_489                                    ; 489
+	.word ScrCmd_MysteryGift                                    ; 489
 	.word ScrCmd_NopVar490                                    ; 490
 	.word ScrCmd_491                                    ; 491
 	.word ScrCmd_492                                    ; 492
@@ -862,7 +862,7 @@ gScriptCmdTable:
 	.word ScrCmd_810                                    ; 810
 	.word ScrCmd_811                                    ; 811
 	.word ScrCmd_812                                    ; 812
-	.word ScrCmd_813                                    ; 813
+	.word ScrCmd_MomGiftCheck                                    ; 813
 	.word ScrCmd_814                                    ; 814
 	.word ScrCmd_815                                    ; 815
 	.word ScrCmd_UnownCircle                                    ; 816

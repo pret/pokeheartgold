@@ -324,7 +324,7 @@
 #define VAR_UNK_4135                 0x4135
 #define VAR_UNK_4136                 0x4136
 #define VAR_UNK_4137                 0x4137
-#define VAR_UNK_4138                 0x4138
+#define VAR_MYSTERY_GIFT_CHECK                 0x4138
 #define VAR_UNK_4139                 0x4139
 #define VAR_UNK_413A                 0x413A
 #define VAR_UNK_413B                 0x413B

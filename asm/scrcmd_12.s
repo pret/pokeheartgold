@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start ScrCmd_813
-ScrCmd_813: ; 0x0204C83C
+	thumb_func_start ScrCmd_MomGiftCheck
+ScrCmd_MomGiftCheck: ; 0x0204C83C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -31,7 +31,7 @@ _0204C86E:
 	strh r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_813
+	thumb_func_end ScrCmd_MomGiftCheck
 
 	thumb_func_start ScrCmd_508
 ScrCmd_508: ; 0x0204C874
