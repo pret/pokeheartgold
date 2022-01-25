@@ -1853,7 +1853,7 @@
 .public ScrCmd_ChooseStarter
 .public ScrCmd_GetTrainerPathToPlayer
 .public ScrCmd_TrainerStepTowardsPlayer
-.public ScrCmd_170
+.public ScrCmd_GetTrainerEyeType
 .public ScrCmd_GetEyeTrainerNum
 .public ScrCmd_172
 .public ScrCmd_NicknameInput
@@ -29135,7 +29135,7 @@
 .public sub_02066A4C
 .public sub_02066A58
 .public sub_02066A64
-.public sub_02066AD0
+.public ScriptState_GetFollowerTrainerNum
 .public SetStarterToScriptState
 .public GetStarterFromScriptState
 .public DPPtLeftover_GetRivalSpecies
@@ -29196,7 +29196,7 @@
 .public sub_02067B88
 .public sub_02067BA4
 .public sub_02067BC0
-.public sub_02067BD0
+.public Fsys_ClearFollowingTrainer
 .public sub_02067BE8
 .public sub_02067BF8
 .public sub_02067C30
@@ -29767,7 +29767,7 @@
 .public sub_02090D7C
 .public Save_RandomizeRoamersLocation
 .public sub_020668B0
-.public sub_02066AC0
+.public ScriptState_SetFollowerTrainerNum
 .public Save_UpdateRoamersLocation
 .public UpdatePlayerLocationHistoryIfAnyRoamersActive
 .public _020FD1F4

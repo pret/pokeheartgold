@@ -2443,7 +2443,7 @@ _02246E8C:
 _02246EA0:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066AD0
+	bl ScriptState_GetFollowerTrainerNum
 	ldr r1, [sp, #0x20]
 	mov r2, #0xb
 	str r0, [r1, #0x20]
@@ -2949,7 +2949,7 @@ _022472BA:
 _022472CE:
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066AD0
+	bl ScriptState_GetFollowerTrainerNum
 	ldr r1, [sp, #0x1c]
 	mov r2, #0xb
 	str r0, [r1, #0x20]

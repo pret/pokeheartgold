@@ -342,8 +342,8 @@ sub_02067BC0: ; 0x02067BC0
 	.balign 4, 0
 	thumb_func_end sub_02067BC0
 
-	thumb_func_start sub_02067BD0
-sub_02067BD0: ; 0x02067BD0
+	thumb_func_start Fsys_ClearFollowingTrainer
+Fsys_ClearFollowingTrainer: ; 0x02067BD0
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
@@ -351,9 +351,9 @@ sub_02067BD0: ; 0x02067BD0
 	bl ScriptState_ClearHaveFollowerFlag
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_02066AC0
+	bl ScriptState_SetFollowerTrainerNum
 	pop {r4, pc}
-	thumb_func_end sub_02067BD0
+	thumb_func_end Fsys_ClearFollowingTrainer
 
 	thumb_func_start sub_02067BE8
 sub_02067BE8: ; 0x02067BE8

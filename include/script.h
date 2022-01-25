@@ -31,8 +31,8 @@ typedef struct UnkSavStruct80_Sub10_SubC_Sub54 {
     int unk0;
     int unk4;
     int unk8;
-    int unkC;
-    int unk10;
+    int trainerNum;
+    int encounterType; // 0: single trainer; 1: double-battle trainer; 2: two trainers
     LocalMapObject *objectEvent;
     int unk18;
 } EngagedTrainer;
@@ -103,14 +103,14 @@ enum ScriptEnvField {
     UNK80_10_C_54_0_00                         = 25,
     UNK80_10_C_54_0_04                         = 26,
     UNK80_10_C_54_0_08                         = 27,
-    UNK80_10_C_54_0_0C                         = 28,
+    SCRIPTENV_EYE_TRAINER_1_NUM                = 28,
     UNK80_10_C_54_0_10                         = 29,
     UNK80_10_C_54_0_14                         = 30,
     UNK80_10_C_54_0_18                         = 31,
     UNK80_10_C_54_1_00                         = 32,
     UNK80_10_C_54_1_04                         = 33,
     UNK80_10_C_54_1_08                         = 34,
-    UNK80_10_C_54_1_0C                         = 35,
+    SCRIPTENV_EYE_TRAINER_2_NUM                = 35,
     UNK80_10_C_54_1_10                         = 36,
     UNK80_10_C_54_1_14                         = 37,
     UNK80_10_C_54_1_18                         = 38,

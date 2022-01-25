@@ -75,7 +75,7 @@
 #define VAR_LOTO_NUMBER_LO           0x403C
 #define VAR_LOTO_NUMBER_HI           0x403D
 #define VAR_UNK_403E                 0x403E
-#define VAR_UNK_403F                 0x403F
+#define VAR_FOLLOWER_TRAINER_NUM                 0x403F
 #define VAR_UNK_4040                 0x4040
 #define VAR_UNK_4041                 0x4041
 #define VAR_UNK_4042                 0x4042

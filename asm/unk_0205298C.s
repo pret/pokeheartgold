@@ -48,7 +48,7 @@ _020529BE:
 	add r1, r5, #0
 	bl sub_0206DB58
 	add r0, r5, #0
-	bl sub_02067BD0
+	bl Fsys_ClearFollowingTrainer
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	bl HealParty

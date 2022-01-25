@@ -1707,7 +1707,7 @@ scr_seq_0953_739:
 	goto_if_ne _0EDD
 	release obj_partner_poke
 _0EDD:
-	scrcmd_170 VAR_SPECIAL_RESULT
+	get_trainer_eye_type VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0F0A
 	compare VAR_SPECIAL_RESULT, 1

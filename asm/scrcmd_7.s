@@ -152,8 +152,8 @@ _02049598:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_TrainerStepTowardsPlayer
 
-	thumb_func_start ScrCmd_170
-ScrCmd_170: ; 0x0204959C
+	thumb_func_start ScrCmd_GetTrainerEyeType
+ScrCmd_GetTrainerEyeType: ; 0x0204959C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -171,7 +171,7 @@ ScrCmd_170: ; 0x0204959C
 	strh r1, [r0]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_170
+	thumb_func_end ScrCmd_GetTrainerEyeType
 
 	thumb_func_start ScrCmd_GetEyeTrainerNum
 ScrCmd_GetEyeTrainerNum: ; 0x020495C4
@@ -288,7 +288,7 @@ ScrCmd_TrainerBattle: ; 0x02049648
 	bne _020496BE
 	ldr r0, [r7, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066AD0
+	bl ScriptState_GetFollowerTrainerNum
 	str r0, [sp, #0x18]
 _020496BE:
 	str r6, [sp]

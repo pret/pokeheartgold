@@ -370,7 +370,7 @@ _0205288C:
 	add r1, sp, #4
 	bl sub_020537A8
 	add r0, r5, #0
-	bl sub_02067BD0
+	bl Fsys_ClearFollowingTrainer
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
 	bl HealParty

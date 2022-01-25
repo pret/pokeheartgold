@@ -71,8 +71,8 @@ void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, 
     r0->unk0 = a2;
     r0->unk4 = a3;
     r0->unk8 = a4;
-    r0->unkC = a5;
-    r0->unk10 = a6;
+    r0->trainerNum = a5;
+    r0->encounterType = a6;
     r0->objectEvent = obj;
 }
 
@@ -271,10 +271,10 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->engagedTrainers[0].unk4;
     case UNK80_10_C_54_0_08:
         return &unk->engagedTrainers[0].unk8;
-    case UNK80_10_C_54_0_0C:
-        return &unk->engagedTrainers[0].unkC;
+    case SCRIPTENV_EYE_TRAINER_1_NUM:
+        return &unk->engagedTrainers[0].trainerNum;
     case UNK80_10_C_54_0_10:
-        return &unk->engagedTrainers[0].unk10;
+        return &unk->engagedTrainers[0].encounterType;
     case UNK80_10_C_54_0_14:
         return &unk->engagedTrainers[0].objectEvent;
     case UNK80_10_C_54_0_18:
@@ -285,10 +285,10 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField fi
         return &unk->engagedTrainers[1].unk4;
     case UNK80_10_C_54_1_08:
         return &unk->engagedTrainers[1].unk8;
-    case UNK80_10_C_54_1_0C:
-        return &unk->engagedTrainers[1].unkC;
+    case SCRIPTENV_EYE_TRAINER_2_NUM:
+        return &unk->engagedTrainers[1].trainerNum;
     case UNK80_10_C_54_1_10:
-        return &unk->engagedTrainers[1].unk10;
+        return &unk->engagedTrainers[1].encounterType;
     case UNK80_10_C_54_1_14:
         return &unk->engagedTrainers[1].objectEvent;
     case UNK80_10_C_54_1_18:

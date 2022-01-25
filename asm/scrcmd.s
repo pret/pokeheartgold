@@ -219,7 +219,7 @@ gScriptCmdTable:
 	.word ScrCmd_ChooseStarter                                    ; 167
 	.word ScrCmd_GetTrainerPathToPlayer                                    ; 168
 	.word ScrCmd_TrainerStepTowardsPlayer                                    ; 169
-	.word ScrCmd_170                                    ; 170
+	.word ScrCmd_GetTrainerEyeType                                    ; 170
 	.word ScrCmd_GetEyeTrainerNum                                    ; 171
 	.word ScrCmd_172                                    ; 172
 	.word ScrCmd_NicknameInput                          ; 173

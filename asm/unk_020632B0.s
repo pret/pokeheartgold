@@ -7611,26 +7611,26 @@ _02066ABA:
 	.balign 4, 0
 	thumb_func_end GetScriptVar
 
-	thumb_func_start sub_02066AC0
-sub_02066AC0: ; 0x02066AC0
+	thumb_func_start ScriptState_SetFollowerTrainerNum
+ScriptState_SetFollowerTrainerNum: ; 0x02066AC0
 	ldr r3, _02066AC8 ; =SetScriptVar
 	add r2, r1, #0
-	ldr r1, _02066ACC ; =VAR_UNK_403F
+	ldr r1, _02066ACC ; =VAR_FOLLOWER_TRAINER_NUM
 	bx r3
 	.balign 4, 0
 _02066AC8: .word SetScriptVar
-_02066ACC: .word VAR_UNK_403F
-	thumb_func_end sub_02066AC0
+_02066ACC: .word VAR_FOLLOWER_TRAINER_NUM
+	thumb_func_end ScriptState_SetFollowerTrainerNum
 
-	thumb_func_start sub_02066AD0
-sub_02066AD0: ; 0x02066AD0
+	thumb_func_start ScriptState_GetFollowerTrainerNum
+ScriptState_GetFollowerTrainerNum: ; 0x02066AD0
 	ldr r3, _02066AD8 ; =GetScriptVar
-	ldr r1, _02066ADC ; =VAR_UNK_403F
+	ldr r1, _02066ADC ; =VAR_FOLLOWER_TRAINER_NUM
 	bx r3
 	nop
 _02066AD8: .word GetScriptVar
-_02066ADC: .word VAR_UNK_403F
-	thumb_func_end sub_02066AD0
+_02066ADC: .word VAR_FOLLOWER_TRAINER_NUM
+	thumb_func_end ScriptState_GetFollowerTrainerNum
 
 	thumb_func_start SetStarterToScriptState
 SetStarterToScriptState: ; 0x02066AE0

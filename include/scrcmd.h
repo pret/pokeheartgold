@@ -187,7 +187,7 @@ BOOL ScrCmd_166(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ChooseStarter(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetTrainerPathToPlayer(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_TrainerStepTowardsPlayer(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_170(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_GetTrainerEyeType(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_GetEyeTrainerNum(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_172(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT* ctx);

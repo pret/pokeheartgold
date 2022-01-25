@@ -170,7 +170,7 @@ extern BOOL ScrCmd_166(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ChooseStarter(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetTrainerPathToPlayer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_TrainerStepTowardsPlayer(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_170(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetTrainerEyeType(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetEyeTrainerNum(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_172(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx);
@@ -1025,7 +1025,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_ChooseStarter,
     ScrCmd_GetTrainerPathToPlayer,
     ScrCmd_TrainerStepTowardsPlayer,
-    ScrCmd_170,
+    ScrCmd_GetTrainerEyeType,
     ScrCmd_GetEyeTrainerNum,
     ScrCmd_172,
     ScrCmd_NicknameInput,

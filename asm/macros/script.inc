@@ -997,7 +997,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_170 arg0
+	.macro get_trainer_eye_type arg0
 	.short 170
 	.short \arg0
 	.endm

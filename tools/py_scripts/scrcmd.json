@@ -1054,7 +1054,7 @@
       ]
     },
     {
-      "name": "scrcmd_170",
+      "name": "get_trainer_eye_type",
       "args": [
         "var"
       ]
