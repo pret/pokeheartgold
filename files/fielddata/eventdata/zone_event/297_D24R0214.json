@@ -50,8 +50,7 @@
       "yrange": 0,
       "x": 4,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0214_monstarball_2",
@@ -68,8 +67,7 @@
       "yrange": 0,
       "x": 8,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0214_monstarball_3",
@@ -86,8 +84,7 @@
       "yrange": 0,
       "x": 4,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0214_monstarball_4",
@@ -104,8 +101,7 @@
       "yrange": 0,
       "x": 8,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

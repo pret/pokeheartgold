@@ -302,7 +302,7 @@ sub_0205C408: ; 0x0205C408
 	bl sub_0205C898
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
@@ -375,7 +375,7 @@ sub_0205C4CC: ; 0x0205C4CC
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0205C6DC
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	add r0, r4, #0
 	bl sub_0205C4C4
 	pop {r4, pc}
@@ -454,43 +454,43 @@ sub_0205C564: ; 0x0205C564
 	add r0, r1, #0
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	add r5, r0, #0
 	bne _0205C584
 	bl GF_AssertFail
 _0205C584:
 	add r0, r5, #0
 	mov r1, #0xff
-	bl sub_0205F248
+	bl MapObject_SetID
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F270
+	bl MapObject_SetFlagID
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #1
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
-	bl sub_0205F318
+	bl MapObject_SetXRange
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
-	bl sub_0205F320
+	bl MapObject_SetYRange
 	mov r1, #9
 	add r0, r5, #0
 	lsl r1, r1, #0xa
@@ -529,7 +529,7 @@ sub_0205C600: ; 0x0205C600
 	mov r7, #1
 _0205C620:
 	ldr r0, [sp]
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r0, #1
 	beq _0205C63A
 	add r0, r5, #0
@@ -588,7 +588,7 @@ sub_0205C670: ; 0x0205C670
 GetPlayerXCoord: ; 0x0205C67C
 	push {r3, lr}
 	bl sub_0205C6DC
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	pop {r3, pc}
 	thumb_func_end GetPlayerXCoord
 
@@ -596,7 +596,7 @@ GetPlayerXCoord: ; 0x0205C67C
 GetPlayerYCoord: ; 0x0205C688
 	push {r3, lr}
 	bl sub_0205C6DC
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	pop {r3, pc}
 	thumb_func_end GetPlayerYCoord
 
@@ -604,7 +604,7 @@ GetPlayerYCoord: ; 0x0205C688
 sub_0205C694: ; 0x0205C694
 	push {r3, lr}
 	bl sub_0205C6DC
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	pop {r3, pc}
 	thumb_func_end sub_0205C694
 
@@ -612,7 +612,7 @@ sub_0205C694: ; 0x0205C694
 sub_0205C6A0: ; 0x0205C6A0
 	push {r3, lr}
 	bl sub_0205C6DC
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	pop {r3, pc}
 	thumb_func_end sub_0205C6A0
 
@@ -622,7 +622,7 @@ sub_0205C6AC: ; 0x0205C6AC
 	add r4, r1, #0
 	bl sub_0205C6DC
 	add r1, r4, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	pop {r4, pc}
 	thumb_func_end sub_0205C6AC
 
@@ -630,7 +630,7 @@ sub_0205C6AC: ; 0x0205C6AC
 sub_0205C6BC: ; 0x0205C6BC
 	push {r3, lr}
 	bl sub_0205C6E0
-	bl sub_0205F964
+	bl MapObject_GetPositionVecPtr
 	pop {r3, pc}
 	thumb_func_end sub_0205C6BC
 
@@ -990,11 +990,11 @@ sub_0205C838: ; 0x0205C838
 	bl sub_0205C6DC
 	add r4, r0, #0
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	add r1, sp, #0
 	str r5, [sp, #4]
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end sub_0205C838

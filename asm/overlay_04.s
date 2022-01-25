@@ -1545,7 +1545,7 @@ _02254A22:
 	ldr r0, [r5, #0x40]
 	bl sub_0205C6DC
 	add r1, sp, #0x68
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r5, #0
 	bl sub_02069F88
 	cmp r0, #0
@@ -1575,7 +1575,7 @@ _02254AA6:
 	add r0, r5, #0
 	bl sub_02069D68
 	add r1, sp, #0x50
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add sp, #0x98
 	pop {r3, r4, r5, r6, r7, pc}
 _02254AE0:
@@ -1584,17 +1584,17 @@ _02254AE0:
 	ldr r1, [r4, #0x28]
 	add r7, r0, #0
 	ldrh r1, [r1]
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0205F928
+	bl MapObject_SetNextHeight
 	ldr r1, [r4, #0x28]
 	mov r2, #0x1b
 	ldrh r1, [r1, #2]
 	ldrsb r2, [r4, r2]
 	add r0, r7, #0
 	add r1, r1, r2
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	add r0, r7, #0
 	bl sub_02060F78
 	add r0, r7, #0
@@ -1609,10 +1609,10 @@ _02254AE0:
 	ldr r1, [r4, #0x28]
 	add r7, r0, #0
 	ldrh r1, [r1]
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	add r0, r7, #0
 	mov r1, #0
-	bl sub_0205F928
+	bl MapObject_SetNextHeight
 	ldr r1, [r4, #0x28]
 	add r0, r7, #0
 	ldrh r3, [r1, #2]
@@ -1621,7 +1621,7 @@ _02254AE0:
 	mov r1, #1
 	sub r1, r1, r2
 	add r1, r3, r1
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	add r0, r7, #0
 	bl sub_02060F78
 _02254B52:
@@ -1860,9 +1860,9 @@ _02254D1E:
 _02254D38:
 	ldr r0, [r5, #0x3c]
 	add r1, r6, #2
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, sp, #8
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [r5, #0x54]
 	mov r1, #0x80
 	str r0, [sp]
@@ -1987,7 +1987,7 @@ ov04_02254E20: ; 0x02254E20
 	add r1, sp, #0
 	ldr r4, [r0, #0x24]
 	ldr r0, [r4, #0x18]
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [r4, #0x10]
 	add r5, #0x9c
 	lsl r1, r1, #2
@@ -2105,7 +2105,7 @@ _02254F1C: .word 0x00000904
 	thumb_func_start ov04_02254F20
 ov04_02254F20: ; 0x02254F20
 	push {r3, lr}
-	bl sub_0205F24C
+	bl MapObject_GetID
 	ldr r2, _02254F40 ; =ov04_02257604
 	mov r3, #0
 _02254F2A:
@@ -3851,10 +3851,10 @@ _02255BA6:
 	ldr r0, [r5, #0x40]
 	bl sub_0205C6DC
 	add r6, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r2, r0, #0
 	lsl r1, r5, #0x10
 	lsl r2, r2, #0x10
@@ -4129,7 +4129,7 @@ _02255DEA:
 	bl sub_0205C6DC
 	add r1, sp, #0x28
 	add r6, r0, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, sp, #0x28
 	add r1, r4, #0
 	add r1, #0x58
@@ -4137,7 +4137,7 @@ _02255DEA:
 	bl VEC_Add
 	add r0, r6, #0
 	add r1, sp, #0x28
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -4184,21 +4184,21 @@ _02255E5E:
 	blo _02255ED6
 	add r0, r6, #0
 	add r1, sp, #0x1c
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r2, [sp, #0x1c]
 	add r0, r6, #0
 	asr r1, r2, #0xf
 	lsr r1, r1, #0x10
 	add r1, r2, r1
 	asr r1, r1, #0x10
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	ldr r2, [sp, #0x24]
 	add r0, r6, #0
 	asr r1, r2, #0xf
 	lsr r1, r1, #0x10
 	add r1, r2, r1
 	asr r1, r1, #0x10
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	add r0, r6, #0
 	bl sub_02060F78
 	add r0, r7, #0
@@ -4273,7 +4273,7 @@ _02255F1C:
 	bl sub_0205C6DC
 	add r1, sp, #4
 	add r5, r0, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, sp, #4
 	add r1, r4, #0
 	add r1, #0x58
@@ -4281,7 +4281,7 @@ _02255F1C:
 	bl VEC_Add
 	add r0, r5, #0
 	add r1, sp, #4
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -4974,27 +4974,27 @@ _022564DE:
 	ldr r0, [r6, #0x3c]
 	bne _02256502
 	mov r1, #3
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #4]
 	ldr r0, [r6, #0x3c]
 	mov r1, #4
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #8]
 	ldr r0, [r6, #0x3c]
 	mov r1, #5
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	b _0225651C
 _02256502:
 	mov r1, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #4]
 	ldr r0, [r6, #0x3c]
 	mov r1, #1
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [r4, #8]
 	ldr r0, [r6, #0x3c]
 	mov r1, #2
-	bl sub_0205EE60
+	bl GetMapObjectByID
 _0225651C:
 	str r0, [r4, #0xc]
 	mov r0, #0
@@ -5612,7 +5612,7 @@ _02256978:
 	ldr r0, [r0, #0x40]
 	bl sub_0205C6DC
 	add r1, sp, #4
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, _02256A44 ; =ov04_0225766C
 	ldr r2, _02256A48 ; =ov04_02257677
 	ldr r0, [r0, r4]
@@ -6150,7 +6150,7 @@ _02256DA2:
 	ldr r0, [r7, #0x40]
 	bl sub_0205C6DC
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]

@@ -19,16 +19,15 @@ typedef struct OBJECT_EVENT {
     u16 type;
     u16 flag;
     u16 scr;
-    u16 dirn;
+    s16 dirn;
     u16 eye;
     u16 unk10;
-    u16 unk12;
-    u16 xrange;
-    u16 yrange;
-    s16 x;
-    s16 y;
-    s16 z;
-    u16 unk1E;
+    u16 tsure_poke_color;
+    s16 xrange;
+    s16 yrange;
+    u16 x;
+    u16 y;
+    s32 z;
 } OBJECT_EVENT;
 
 typedef struct WARP_EVENT {

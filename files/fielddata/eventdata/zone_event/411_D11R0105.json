@@ -26,8 +26,7 @@
       "yrange": 0,
       "x": 29,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0105_monstarball_2",
@@ -44,8 +43,7 @@
       "yrange": 0,
       "x": 42,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0105_tsure_poke_static_articuno",
@@ -62,8 +60,7 @@
       "yrange": 0,
       "x": 27,
       "y": 22,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

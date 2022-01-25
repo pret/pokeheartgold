@@ -26,8 +26,7 @@
       "yrange": 0,
       "x": 75,
       "y": 336,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R48_gsmiddleman1",
@@ -44,8 +43,7 @@
       "yrange": 0,
       "x": 101,
       "y": 343,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R48_gsman1",
@@ -62,8 +60,7 @@
       "yrange": 0,
       "x": 85,
       "y": 313,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R48_gswoman2",
@@ -80,8 +77,7 @@
       "yrange": 0,
       "x": 97,
       "y": 314,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R48_tsure_poke_static_slowpoke",
@@ -98,8 +94,7 @@
       "yrange": 0,
       "x": 98,
       "y": 314,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R48_gsoldman1",
@@ -116,8 +111,7 @@
       "yrange": 0,
       "x": 95,
       "y": 311,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ]
 }

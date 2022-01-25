@@ -42,8 +42,7 @@
       "yrange": 0,
       "x": 16,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D42R0101_monstarball",
@@ -60,8 +59,7 @@
       "yrange": 0,
       "x": 14,
       "y": 49,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D42R0101_monstarball_2",
@@ -78,8 +76,7 @@
       "yrange": 0,
       "x": 42,
       "y": 44,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

@@ -312,8 +312,8 @@ extern BOOL ScrCmd_308(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_309(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_310(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_311(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_312(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_313(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetDayCareState(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_314(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_315(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_316(SCRIPTCONTEXT *ctx);
@@ -340,7 +340,7 @@ extern BOOL ScrCmd_BufferBerryName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferNatureName(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_338(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MovePerson(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_340(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetObjectMovementType(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_341(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_342(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_343(SCRIPTCONTEXT *ctx);
@@ -361,19 +361,19 @@ extern BOOL ScrCmd_CountAliveMons(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PokeathlonPartyCount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_359(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_361(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_362(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_363(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_364(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_365(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_366(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_367(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ResetDayCareEgg(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveDayCareEgg(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_HasEnoughMoneyVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_EggHatchAnim(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_370(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_371(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_372(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_373(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDayCareMonGrowth(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_PutMonInDayCare(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_374(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_375(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_376(SCRIPTCONTEXT *ctx);
@@ -385,10 +385,10 @@ extern BOOL ScrCmd_381(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_382(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_383(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_384(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_385(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferDayCareMonStats(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPlayerFacing(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_387(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_388(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetDayCareCompatibility(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckDayCareEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PlayerHasSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx);
@@ -690,7 +690,7 @@ extern BOOL ScrCmd_686(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_687(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_688(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_690(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_691(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_692(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_693(SCRIPTCONTEXT *ctx);
@@ -715,7 +715,7 @@ extern BOOL ScrCmd_711(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_712(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AlphPuzzle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_714(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_715(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_UpdateDayCareMonObjects(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_716(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_717(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_718(SCRIPTCONTEXT *ctx);
@@ -1167,8 +1167,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_309,
     ScrCmd_310,
     ScrCmd_311,
-    ScrCmd_312,
-    ScrCmd_313,
+    ScrCmd_BufferDayCareMonNicks,
+    ScrCmd_GetDayCareState,
     ScrCmd_314,
     ScrCmd_315,
     ScrCmd_316,
@@ -1195,7 +1195,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferNatureName,
     ScrCmd_338,
     ScrCmd_MovePerson,
-    ScrCmd_340,
+    ScrCmd_SetObjectMovementType,
     ScrCmd_341,
     ScrCmd_342,
     ScrCmd_343,
@@ -1216,19 +1216,19 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PokeathlonPartyCount,
     ScrCmd_359,
     ScrCmd_SubMoneyVar,
-    ScrCmd_361,
+    ScrCmd_RetrieveDayCareMon,
     ScrCmd_362,
     ScrCmd_363,
     ScrCmd_364,
-    ScrCmd_365,
-    ScrCmd_366,
-    ScrCmd_367,
+    ScrCmd_ResetDayCareEgg,
+    ScrCmd_GiveDayCareEgg,
+    ScrCmd_BufferDayCareWithdrawCost,
     ScrCmd_HasEnoughMoneyVar,
     ScrCmd_EggHatchAnim,
     ScrCmd_370,
-    ScrCmd_371,
-    ScrCmd_372,
-    ScrCmd_373,
+    ScrCmd_BufferDayCareMonGrowth,
+    ScrCmd_GetTailDayCareMonSpeciesAndNick,
+    ScrCmd_PutMonInDayCare,
     ScrCmd_374,
     ScrCmd_375,
     ScrCmd_376,
@@ -1240,10 +1240,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_382,
     ScrCmd_383,
     ScrCmd_384,
-    ScrCmd_385,
+    ScrCmd_BufferDayCareMonStats,
     ScrCmd_GetPlayerFacing,
-    ScrCmd_387,
-    ScrCmd_388,
+    ScrCmd_GetDayCareCompatibility,
+    ScrCmd_CheckDayCareEgg,
     ScrCmd_PlayerHasSpecies,
     ScrCmd_SizeRecordCompare,
     ScrCmd_SizeRecordUpdate,
@@ -1545,7 +1545,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_687,
     ScrCmd_688,
     ScrCmd_CommSanitizeParty,
-    ScrCmd_690,
+    ScrCmd_DayCareSanitizeMon,
     ScrCmd_691,
     ScrCmd_692,
     ScrCmd_693,
@@ -1570,7 +1570,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_712,
     ScrCmd_AlphPuzzle,
     ScrCmd_714,
-    ScrCmd_715,
+    ScrCmd_UpdateDayCareMonObjects,
     ScrCmd_716,
     ScrCmd_717,
     ScrCmd_718,

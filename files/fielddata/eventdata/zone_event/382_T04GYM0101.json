@@ -34,8 +34,7 @@
       "yrange": 0,
       "x": 13,
       "y": 21,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_gsswimmerw",
@@ -52,8 +51,7 @@
       "yrange": 0,
       "x": 7,
       "y": 16,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_gsswimmerw_2",
@@ -70,8 +68,7 @@
       "yrange": 0,
       "x": 6,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_gsswimmerw_3",
@@ -88,8 +85,7 @@
       "yrange": 0,
       "x": 14,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_seaman_2",
@@ -106,8 +102,7 @@
       "yrange": 0,
       "x": 19,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_seaman_2_2",
@@ -124,8 +119,7 @@
       "yrange": 0,
       "x": 18,
       "y": 18,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_gsleader11",
@@ -142,8 +136,7 @@
       "yrange": 0,
       "x": 10,
       "y": 1,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_rocketm",
@@ -160,8 +153,7 @@
       "yrange": 0,
       "x": 10,
       "y": 19,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_stop",
@@ -178,8 +170,7 @@
       "yrange": 0,
       "x": 3,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T04GYM0101_stop_2",
@@ -196,8 +187,7 @@
       "yrange": 0,
       "x": 4,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

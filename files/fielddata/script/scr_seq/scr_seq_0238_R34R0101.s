@@ -171,6 +171,6 @@ _0204:
 	step 33, 1
 	step_end
 scr_seq_R34R0101_000:
-	scrcmd_715
+	update_day_care_mon_objects
 	end
 	.balign 4, 0

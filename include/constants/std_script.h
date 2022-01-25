@@ -606,6 +606,9 @@
 #define _std_init                       9600
 #define std_init                        9600
 
+#define _std_following_mon              9700
+#define std_following_mon               9700
+
 #define _std_pokeathlon                 9850
 
 #define _std_dex_evaluation             9950

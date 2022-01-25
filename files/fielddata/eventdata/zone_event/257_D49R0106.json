@@ -66,8 +66,7 @@
       "yrange": 0,
       "x": 7,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0106_pcwoman2_2",
@@ -84,8 +83,7 @@
       "yrange": 0,
       "x": 1,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0106_gsbigman",
@@ -102,8 +100,7 @@
       "yrange": 0,
       "x": 11,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0106_tsure_poke_static_dodrio",
@@ -120,8 +117,7 @@
       "yrange": 0,
       "x": 12,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0106_signpokegear",
@@ -138,8 +134,7 @@
       "yrange": 0,
       "x": 3,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0106_signball",
@@ -156,8 +151,7 @@
       "yrange": 0,
       "x": 10,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

@@ -16,8 +16,7 @@
       "yrange": 0,
       "x": 6,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D44R0103_gsoldman1",
@@ -34,8 +33,7 @@
       "yrange": 0,
       "x": 3,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D44R0103_gsoldman1_2",
@@ -52,8 +50,7 @@
       "yrange": 0,
       "x": 9,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D44R0103_gsleader8",
@@ -70,8 +67,7 @@
       "yrange": 0,
       "x": 1,
       "y": 1,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D44R0103_gsmiddleman1",
@@ -88,8 +84,7 @@
       "yrange": 0,
       "x": 5,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

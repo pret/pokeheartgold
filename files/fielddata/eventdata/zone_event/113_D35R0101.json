@@ -26,8 +26,7 @@
       "yrange": 0,
       "x": 8,
       "y": 3,
-      "z": 0,
-      "unk1E": 1
+      "z": 65536
     },
     {
       "id": "obj_D35R0101_stop",
@@ -44,8 +43,7 @@
       "yrange": 0,
       "x": 7,
       "y": 3,
-      "z": 0,
-      "unk1E": 1
+      "z": 65536
     },
     {
       "id": "obj_D35R0101_stop_2",
@@ -62,8 +60,7 @@
       "yrange": 0,
       "x": 8,
       "y": 4,
-      "z": 0,
-      "unk1E": 1
+      "z": 65536
     },
     {
       "id": "obj_D35R0101_stop_3",
@@ -80,8 +77,7 @@
       "yrange": 0,
       "x": 7,
       "y": 4,
-      "z": 0,
-      "unk1E": 1
+      "z": 65536
     },
     {
       "id": "obj_D35R0101_gsfighter",
@@ -98,8 +94,7 @@
       "yrange": 0,
       "x": 3,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D35R0101_sunglasses",
@@ -116,8 +111,7 @@
       "yrange": 0,
       "x": 6,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D35R0101_gsoldwoman1",
@@ -134,8 +128,7 @@
       "yrange": 0,
       "x": 2,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D35R0101_wataru",
@@ -152,8 +145,7 @@
       "yrange": 0,
       "x": 5,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D35R0101_tsure_poke_static_dragonite",
@@ -170,8 +162,7 @@
       "yrange": 0,
       "x": 6,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

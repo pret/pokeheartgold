@@ -373,19 +373,19 @@ sub_020614F4: ; 0x020614F4
 	sub sp, #8
 	str r0, [sp]
 	add r4, r1, #0
-	bl sub_0205F8E4
+	bl MapObject_GetInitialX
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl sub_0205F8F4
+	bl MapObject_GetInitialY
 	add r5, r0, #0
 	ldr r0, [sp]
-	bl sub_0205F31C
+	bl MapObject_GetXRange
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_0205F324
+	bl MapObject_GetYRange
 	str r0, [sp, #4]
 	ldr r0, [sp]
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r0, #0xd
 	bhi _020615E8
 	add r0, r0, r0
@@ -510,13 +510,13 @@ sub_020615F0: ; 0x020615F0
 	add r1, sp, #0
 	bl sub_020614F4
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_02060F0C
 	add r4, r4, r0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_02060F18
@@ -998,7 +998,7 @@ _02061942:
 	bl sub_0205F2A8
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_0205F284
+	bl MapObject_GetFacing
 	cmp r4, r0
 	bne _02061968
 	mov r0, #0
@@ -1061,7 +1061,7 @@ sub_020619C0: ; 0x020619C0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F284
+	bl MapObject_GetFacing
 	mov r1, #2
 	ldrsh r1, [r4, r1]
 	add r6, r0, #0
@@ -1096,16 +1096,16 @@ sub_020619FC: ; 0x020619FC
 	add r5, r0, #0
 	cmp r1, #0
 	beq _02061A5A
-	bl sub_0205F8E4
+	bl MapObject_GetInitialX
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F8F4
+	bl MapObject_GetInitialY
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	cmp r7, r4
 	bne _02061A5A
 	ldr r1, [sp]
@@ -1435,10 +1435,10 @@ sub_02061C40: ; 0x02061C40
 	ldrb r1, [r4, #3]
 	cmp r1, #0
 	bne _02061C6C
-	bl sub_0205F8E4
+	bl MapObject_GetInitialX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	cmp r5, r0
 	bne _02061C82
 	ldrb r0, [r4, #1]
@@ -1446,10 +1446,10 @@ sub_02061C40: ; 0x02061C40
 	strb r0, [r4, #1]
 	b _02061C82
 _02061C6C:
-	bl sub_0205F8F4
+	bl MapObject_GetInitialY
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	cmp r5, r0
 	bne _02061C82
 	ldrb r0, [r4, #1]
@@ -1460,16 +1460,16 @@ _02061C82:
 	cmp r0, #3
 	bne _02061CB4
 	add r0, r6, #0
-	bl sub_0205F8E4
+	bl MapObject_GetInitialX
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0205F8F4
+	bl MapObject_GetInitialY
 	str r0, [sp]
 	add r0, r6, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	cmp r7, r5
 	bne _02061CB4
 	ldr r1, [sp]
@@ -1750,7 +1750,7 @@ _02061E8C: .word _020FD838
 sub_02061E90: ; 0x02061E90
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205F26C
+	bl MapObject_GetType
 	cmp r0, #1
 	beq _02061EA6
 	cmp r0, #2
@@ -1760,7 +1760,7 @@ sub_02061E90: ; 0x02061E90
 	pop {r3, r4, r5, r6, r7, pc}
 _02061EA6:
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	bl sub_0205CA1C
 	add r6, r0, #0
 	bl sub_0205DE98
@@ -1772,7 +1772,7 @@ _02061EA6:
 _02061EC0:
 	add r0, r5, #0
 	mov r4, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	ldr r1, _02061F58 ; =_020FD800
 _02061ECA:
 	lsl r2, r4, #2
@@ -1809,13 +1809,13 @@ _02061EFE:
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r2, r0, #0
 	ldr r3, [sp]
 	ldr r0, [sp]
@@ -1884,13 +1884,13 @@ _02061F92:
 	mvn r7, r7
 	ldr r0, [sp]
 	add r6, r7, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	str r0, [sp, #8]
 	ldr r0, [sp]
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp, #4]
 	ldr r0, [sp]
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	bl sub_0205CA1C
 	str r0, [sp, #0xc]
 	bl GetPlayerXCoord
@@ -1981,7 +1981,7 @@ _0206204A:
 	thumb_func_start sub_02062050
 sub_02062050: ; 0x02062050
 	push {r3, lr}
-	bl sub_0205F26C
+	bl MapObject_GetType
 	sub r0, r0, #7
 	cmp r0, #1
 	bhi _02062060
@@ -1996,7 +1996,7 @@ _02062060:
 sub_02062064: ; 0x02062064
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0205F26C
+	bl MapObject_GetType
 	cmp r0, #7
 	bne _02062076
 	mov r0, #0

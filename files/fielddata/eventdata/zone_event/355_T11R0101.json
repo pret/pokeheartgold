@@ -34,8 +34,7 @@
       "yrange": 0,
       "x": 7,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader3",
@@ -52,8 +51,7 @@
       "yrange": 0,
       "x": 3,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader13",
@@ -70,8 +68,7 @@
       "yrange": 0,
       "x": 11,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader8",
@@ -88,8 +85,7 @@
       "yrange": 0,
       "x": 5,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader12",
@@ -106,8 +102,7 @@
       "yrange": 0,
       "x": 11,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader11",
@@ -124,8 +119,7 @@
       "yrange": 0,
       "x": 8,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader16",
@@ -142,8 +136,7 @@
       "yrange": 0,
       "x": 12,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader5",
@@ -160,8 +153,7 @@
       "yrange": 0,
       "x": 6,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader14",
@@ -178,8 +170,7 @@
       "yrange": 0,
       "x": 9,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader2",
@@ -196,8 +187,7 @@
       "yrange": 0,
       "x": 4,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader10",
@@ -214,8 +204,7 @@
       "yrange": 0,
       "x": 10,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader1",
@@ -232,8 +221,7 @@
       "yrange": 0,
       "x": 2,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader9",
@@ -250,8 +238,7 @@
       "yrange": 0,
       "x": 10,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader4",
@@ -268,8 +255,7 @@
       "yrange": 0,
       "x": 5,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader6",
@@ -286,8 +272,7 @@
       "yrange": 0,
       "x": 2,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader7",
@@ -304,8 +289,7 @@
       "yrange": 0,
       "x": 3,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T11R0101_gsleader15",
@@ -322,8 +306,7 @@
       "yrange": 0,
       "x": 12,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

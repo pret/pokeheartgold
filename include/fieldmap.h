@@ -70,6 +70,6 @@ void sub_02050530(UnkSavStruct80_Sub10 *a0, BOOL (*a1)(UnkSavStruct80_Sub10 *), 
 UnkSavStruct80 *sub_0205064C(UnkSavStruct80_Sub10 *a0);
 UnkSavStruct80_Sub10_SubC* sub_02050650(UnkSavStruct80_Sub10 *a0);
 void* PlayerAvatar_GetFacingDirection(void *);
-u16 sub_0205F24C(struct LocalMapObject *);
+u16 MapObject_GetID(struct LocalMapObject *);
 
 #endif

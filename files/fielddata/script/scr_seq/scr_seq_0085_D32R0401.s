@@ -265,7 +265,7 @@ _03D1:
 	wait_fade
 	compare VAR_TEMP_x4002, 255
 	goto_if_eq _02F5
-	scrcmd_690 VAR_TEMP_x4002, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_TEMP_x4002, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _07B9
 	compare VAR_UNK_4146, 1
@@ -273,7 +273,7 @@ _03D1:
 	goto _042F
 	.byte 0x02, 0x00
 _0414:
-	scrcmd_690 VAR_TEMP_x4005, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_TEMP_x4005, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _07B9
 	goto _042F

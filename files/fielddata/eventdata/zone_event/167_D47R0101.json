@@ -26,8 +26,7 @@
       "yrange": 0,
       "x": 1,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D47R0101_counterm_2",
@@ -44,8 +43,7 @@
       "yrange": 0,
       "x": 10,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D47R0101_counterm_3",
@@ -62,8 +60,7 @@
       "yrange": 0,
       "x": 4,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D47R0101_counterm_4",
@@ -80,8 +77,7 @@
       "yrange": 0,
       "x": 21,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D47R0101_counterm_5",
@@ -98,8 +94,7 @@
       "yrange": 0,
       "x": 18,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D47R0101_gsgentleman",
@@ -116,8 +111,7 @@
       "yrange": 0,
       "x": 7,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D47R0101_counterm_6",
@@ -134,8 +128,7 @@
       "yrange": 0,
       "x": 22,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

@@ -50,12 +50,12 @@ ov28_0225D520: ; 0x0225D520
 	add r1, sp, #8
 	bl sub_0203DBF8
 	ldr r0, [sp, #8]
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	bl ov01_021F6BD0
 	cmp r0, #1
 	beq _0225D59E
 	ldr r0, [sp, #8]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225D5A6
@@ -2471,7 +2471,7 @@ _0225E828:
 	bl sub_0205CA1C
 	bl sub_0205C6DC
 	add r4, r0, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	sub r0, #0xbc
 	cmp r0, #1
 	bhi _0225E858
@@ -2498,12 +2498,12 @@ _0225E860:
 	add r1, sp, #0
 	bl sub_0203DBF8
 	ldr r0, [sp]
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	bl ov01_021F6BD0
 	cmp r0, #1
 	beq _0225E88E
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021F6BB0
 	cmp r0, #1
 	bne _0225E890

@@ -66,8 +66,7 @@
       "yrange": 0,
       "x": 554,
       "y": 335,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_gsgirl2",
@@ -84,8 +83,7 @@
       "yrange": 0,
       "x": 548,
       "y": 306,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_tree",
@@ -102,8 +100,7 @@
       "yrange": 0,
       "x": 559,
       "y": 295,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_gsboy3",
@@ -120,8 +117,7 @@
       "yrange": 0,
       "x": 550,
       "y": 298,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_gsboy2",
@@ -138,8 +134,7 @@
       "yrange": 0,
       "x": 553,
       "y": 332,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_gsboy2_2",
@@ -156,8 +151,7 @@
       "yrange": 0,
       "x": 552,
       "y": 325,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_tsure_poke_static_rattata",
@@ -174,8 +168,7 @@
       "yrange": 0,
       "x": 552,
       "y": 327,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_tsure_poke_static_pidgey",
@@ -192,8 +185,7 @@
       "yrange": 0,
       "x": 552,
       "y": 326,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_gsboy2_3",
@@ -210,8 +202,7 @@
       "yrange": 0,
       "x": 552,
       "y": 329,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_monstarball",
@@ -228,8 +219,7 @@
       "yrange": 0,
       "x": 554,
       "y": 342,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_monstarball_2",
@@ -246,8 +236,7 @@
       "yrange": 0,
       "x": 564,
       "y": 369,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_bonguri",
@@ -264,8 +253,7 @@
       "yrange": 0,
       "x": 553,
       "y": 355,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_bonguri_2",
@@ -282,8 +270,7 @@
       "yrange": 0,
       "x": 562,
       "y": 293,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_gsmiddleman1",
@@ -300,8 +287,7 @@
       "yrange": 0,
       "x": 555,
       "y": 355,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R30_gsboy3_2",
@@ -318,8 +304,7 @@
       "yrange": 0,
       "x": 557,
       "y": 366,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

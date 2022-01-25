@@ -430,7 +430,7 @@ _0205AF8A:
 _0205AFA6:
 	ldr r0, [sp, #4]
 	add r1, r7, #1
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	bne _0205AFB6
 	bl GF_AssertFail
@@ -497,10 +497,10 @@ _0205B012:
 	bl sub_0205FC94
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205F318
+	bl MapObject_SetXRange
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205F320
+	bl MapObject_SetYRange
 	mov r0, #1
 	strb r0, [r4, #0x15]
 _0205B048:
@@ -640,13 +640,13 @@ sub_0205B13C: ; 0x0205B13C
 	add r0, r4, #0
 	str r2, [sp, #4]
 	str r3, [sp, #8]
-	bl sub_0205F8E4
+	bl MapObject_GetInitialX
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0205F8EC
+	bl MapObject_GetInitialHeight
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl sub_0205F8F4
+	bl MapObject_GetInitialY
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	cmp r7, r0
@@ -771,7 +771,7 @@ sub_0205B240: ; 0x0205B240
 _0205B24C:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, r0, #0
 	bne _0205B25C
 	bl GF_AssertFail
@@ -798,7 +798,7 @@ sub_0205B27C: ; 0x0205B27C
 	add r5, r1, #0
 	mov r1, #0
 	add r7, r0, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, r0, #0
 	bne _0205B290
 	bl GF_AssertFail
@@ -822,7 +822,7 @@ _0205B2AE:
 	bne _0205B318
 	add r0, r7, #0
 	add r1, r6, #1
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, r0, #0
 	bne _0205B2C4
 	bl GF_AssertFail

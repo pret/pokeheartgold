@@ -49,7 +49,7 @@ FieldSys_TakePhoto: ; 0x0206A798
 	add r1, r4, #0
 	add r7, r0, #0
 	add r1, #0xcc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r7, #0
 	bl sub_0205F2A8
 	add r1, r4, #0
@@ -389,7 +389,7 @@ _0206AA6E:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0206AA82
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	add r0, r4, #0
 	add r0, #0x9c
 	str r7, [r0]
@@ -966,7 +966,7 @@ sub_0206AEC0: ; 0x0206AEC0
 	mov r1, #0
 	mov r2, #2
 	add r4, r0, #0
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	lsl r2, r6, #0x18
 	ldr r3, [sp, #0x24]
 	add r0, r4, #0
@@ -992,28 +992,28 @@ sub_0206AF08: ; 0x0206AF08
 	add r1, r3, #0
 	ldr r2, [sp, #0x18]
 	add r3, r4, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	add r4, r0, #0
 	bne _0206AF2A
 	bl GF_AssertFail
 _0206AF2A:
 	ldr r1, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_0205F248
+	bl MapObject_SetID
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F270
-	mov r1, #0
-	add r0, r4, #0
-	mvn r1, r1
-	bl sub_0205F318
+	bl MapObject_SetFlagID
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F320
+	bl MapObject_SetXRange
+	mov r1, #0
+	add r0, r4, #0
+	mvn r1, r1
+	bl MapObject_SetYRange
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
@@ -1069,7 +1069,7 @@ _0206AFB4:
 	ldr r0, [r5, #0x18]
 	cmp r0, #0
 	beq _0206AFBE
-	bl sub_0205E3CC
+	bl MapObject_Remove
 _0206AFBE:
 	add r0, r6, #0
 	add r0, #0xcb
@@ -2069,16 +2069,16 @@ _0206B7A0:
 	add r1, #0xcc
 	bl sub_0205FBC0
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	ldr r1, [sp, #0x10]
 	cmp r1, r5
 	bne _0206B806
@@ -2125,7 +2125,7 @@ sub_0206B82C: ; 0x0206B82C
 	bl sub_0205F35C
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	str r0, [sp]
 	add r0, r4, #0
 	bl sub_0205E420

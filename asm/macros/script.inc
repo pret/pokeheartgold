@@ -1786,11 +1786,11 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_312
+	.macro buffer_day_care_mon_nicks
 	.short 312
 	.endm
 
-	.macro scrcmd_313 arg0
+	.macro get_day_care_state arg0
 	.short 313
 	.short \arg0
 	.endm
@@ -1925,7 +1925,7 @@
 	.short \facing
 	.endm
 
-	.macro scrcmd_340 arg0, arg1
+	.macro set_object_movement_type arg0, arg1
 	.short 340
 	.short \arg0
 	.short \arg1
@@ -2042,7 +2042,7 @@
 	.short \var
 	.endm
 
-	.macro scrcmd_361 arg0, arg1
+	.macro retrieve_day_care_mon arg0, arg1
 	.short 361
 	.short \arg0
 	.short \arg1
@@ -2067,15 +2067,15 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_365
+	.macro reset_day_care_egg
 	.short 365
 	.endm
 
-	.macro scrcmd_366
+	.macro give_day_care_egg
 	.short 366
 	.endm
 
-	.macro scrcmd_367 arg0, arg1
+	.macro buffer_day_care_withdraw_cost arg0, arg1
 	.short 367
 	.short \arg0
 	.short \arg1
@@ -2096,18 +2096,18 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_371 arg0, arg1
+	.macro buffer_day_care_mon_growth arg0, arg1
 	.short 371
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_372 arg0
+	.macro get_tail_day_care_mon_species_and_nick arg0
 	.short 372
 	.short \arg0
 	.endm
 
-	.macro scrcmd_373 arg0
+	.macro put_mon_in_day_care arg0
 	.short 373
 	.short \arg0
 	.endm
@@ -2172,7 +2172,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_385 arg0, arg1, arg2, arg3
+	.macro buffer_day_care_mon_stats arg0, arg1, arg2, arg3
 	.short 385
 	.short \arg0
 	.short \arg1
@@ -2185,12 +2185,12 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_387 arg0
+	.macro get_day_care_compatibility arg0
 	.short 387
 	.short \arg0
 	.endm
 
-	.macro scrcmd_388 arg0
+	.macro check_day_care_egg arg0
 	.short 388
 	.short \arg0
 	.endm
@@ -3903,7 +3903,7 @@
 	.short \var_result
 	.endm
 
-	.macro scrcmd_690 arg0, arg1
+	.macro day_care_sanitize_mon arg0, arg1
 	.short 690
 	.short \arg0
 	.short \arg1
@@ -4034,7 +4034,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_715
+	.macro update_day_care_mon_objects
 	.short 715
 	.endm
 

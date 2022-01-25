@@ -22,14 +22,14 @@
 
 scr_seq_R34_000:
 	get_friend_sprite VAR_OBJ_0
-	scrcmd_388 16384
+	check_day_care_egg VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0057
-	scrcmd_340 10, 16
+	set_object_movement_type obj_R34_gsoldman1, 16
 	goto _005D
 
 _0057:
-	scrcmd_340 10, 15
+	set_object_movement_type obj_R34_gsoldman1, 15
 _005D:
 	goto_if_unset FLAG_UNK_189, _006E
 	clearflag FLAG_UNK_189

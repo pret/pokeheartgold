@@ -50,8 +50,7 @@
       "yrange": 0,
       "x": 6,
       "y": 55,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
@@ -68,8 +67,7 @@
       "yrange": 0,
       "x": 45,
       "y": 38,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_3",
@@ -86,8 +84,7 @@
       "yrange": 0,
       "x": 29,
       "y": 34,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_4",
@@ -104,8 +101,7 @@
       "yrange": 0,
       "x": 16,
       "y": 24,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_5",
@@ -122,8 +118,7 @@
       "yrange": 0,
       "x": 27,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_6",
@@ -140,8 +135,7 @@
       "yrange": 0,
       "x": 45,
       "y": 15,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_EVERYWHERE_gsassistantm",
@@ -158,8 +152,7 @@
       "yrange": 0,
       "x": 19,
       "y": 46,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

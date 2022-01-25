@@ -39,7 +39,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
     { 9900,               NARC_scr_seq_scr_seq_0136_bin, NARC_msg_msg_0040_bin},
     { _std_pokeathlon,               NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin},
     { 9800,               NARC_scr_seq_scr_seq_0166_bin, NARC_msg_msg_0043_bin},
-    { 9700,               NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin},
+    { _std_following_mon,               NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin},
     { _std_init,               NARC_scr_seq_scr_seq_0149_bin, NARC_msg_msg_0040_bin},
     { _std_daycare,               NARC_scr_seq_scr_seq_0265_bin, NARC_msg_msg_0439_bin},
     { _std_group,               NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin},
@@ -161,7 +161,7 @@ void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, Loc
     a1->unk_A = a2;
     a1->unk_34 = a4;
     if (a3 != NULL) {
-        *sp0 = sub_0205F24C(a3);
+        *sp0 = MapObject_GetID(a3);
     }
     if (a2 >= 8000 && a2 <= 8799) {
         GetHiddenItemParams(a1, a2);

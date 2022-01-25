@@ -24884,7 +24884,7 @@ _021F376A:
 	cmp r0, #2
 	bne _021F3786
 	ldr r0, [sp, #4]
-	bl sub_0206D02C
+	bl Sav2_DayCare_CalcCompatibility
 	ldr r1, [sp]
 	add r1, #0x48
 	strh r0, [r1]
@@ -25065,7 +25065,7 @@ _021F38B8:
 	add r0, r0, #1
 	strb r0, [r6]
 	add r0, r7, #0
-	bl sub_0206C0E8
+	bl DayCareMon_CalcLevelGrowth
 	add r1, r5, r4
 	add r1, #0x4b
 	b _021F38EA

@@ -401,7 +401,7 @@ sub_02055708: ; 0x02055708
 	pop {r3, r4, r5, pc}
 _02055714:
 	add r0, r4, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	ldr r1, _0205575C ; =0x00000107
 	cmp r0, r1
 	beq _02055748
@@ -449,7 +449,7 @@ sub_02055760: ; 0x02055760
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202AE68
@@ -466,7 +466,7 @@ sub_02055780: ; 0x02055780
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202AE38
@@ -483,7 +483,7 @@ sub_020557A0: ; 0x020557A0
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202AE40
@@ -500,7 +500,7 @@ FieldSys_ApricornTree_GetApricorn: ; 0x020557C0
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ApricornTrees_GetApricorn

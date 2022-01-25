@@ -74,8 +74,7 @@
       "yrange": 0,
       "x": 434,
       "y": 461,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_rocketm_2",
@@ -92,8 +91,7 @@
       "yrange": 0,
       "x": 405,
       "y": 472,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_gsoldman1",
@@ -110,8 +108,7 @@
       "yrange": 1,
       "x": 419,
       "y": 460,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_gswoman1",
@@ -128,8 +125,7 @@
       "yrange": 2,
       "x": 411,
       "y": 468,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_gsman1",
@@ -146,8 +142,7 @@
       "yrange": 0,
       "x": 397,
       "y": 461,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_tsure_poke_static_slowpoke",
@@ -164,8 +159,7 @@
       "yrange": 0,
       "x": 431,
       "y": 461,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_tsure_poke_static_slowpoke_2",
@@ -182,8 +176,7 @@
       "yrange": 0,
       "x": 414,
       "y": 461,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_tsure_poke_static_slowpoke_3",
@@ -200,8 +193,7 @@
       "yrange": 0,
       "x": 411,
       "y": 472,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_tsure_poke_static_slowpoke_4",
@@ -218,8 +210,7 @@
       "yrange": 0,
       "x": 397,
       "y": 474,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_gsrivel",
@@ -236,8 +227,7 @@
       "yrange": 0,
       "x": 384,
       "y": 448,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_bonguri",
@@ -254,8 +244,7 @@
       "yrange": 0,
       "x": 396,
       "y": 453,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_gsmiddleman1",
@@ -272,8 +261,7 @@
       "yrange": 0,
       "x": 407,
       "y": 464,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_rocketm_3",
@@ -290,8 +278,7 @@
       "yrange": 0,
       "x": 434,
       "y": 463,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23_gsmiddleman1_2",
@@ -308,8 +295,7 @@
       "yrange": 0,
       "x": 433,
       "y": 463,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

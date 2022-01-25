@@ -225,7 +225,7 @@ ov26_02259A24: ; 0x02259A24
 	bl Field_GetNumObjectEvents
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0xc]
@@ -245,18 +245,18 @@ _02259A5A:
 	ldr r0, [sp]
 	add r1, r4, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	beq _02259AC0
 	ldr r1, [sp, #4]
 	cmp r1, #0
 	bne _02259A76
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r0, #0x31
 	beq _02259AC0
 _02259A76:
 	add r0, r5, #0
-	bl sub_0205F26C
+	bl MapObject_GetType
 	cmp r0, #8
 	bhi _02259AC0
 	add r0, r0, r0
@@ -277,7 +277,7 @@ _02259A8C: ; jump table
 	.short _02259A9E - _02259A8C - 2 ; case 8
 _02259A9E:
 	add r0, r5, #0
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	add r6, r0, #0
 	lsl r0, r6, #0x10
 	lsr r0, r0, #0x10

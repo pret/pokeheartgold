@@ -16,8 +16,7 @@
       "yrange": 0,
       "x": 2,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23R0201_gsboy1",
@@ -34,8 +33,7 @@
       "yrange": 0,
       "x": 5,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23R0201_tsure_poke_static_farfetchd",
@@ -52,8 +50,7 @@
       "yrange": 1,
       "x": 8,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23R0201_tsure_poke_static_farfetchd_2",
@@ -70,8 +67,7 @@
       "yrange": 0,
       "x": 9,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

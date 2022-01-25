@@ -42,8 +42,7 @@
       "yrange": 0,
       "x": 5,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_gswoman2",
@@ -60,8 +59,7 @@
       "yrange": 0,
       "x": 24,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_tsure_poke_static_jigglypuff",
@@ -78,8 +76,7 @@
       "yrange": 0,
       "x": 20,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_policeman",
@@ -96,8 +93,7 @@
       "yrange": 0,
       "x": 3,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_rocketm",
@@ -114,8 +110,7 @@
       "yrange": 0,
       "x": 13,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_rocketw",
@@ -132,8 +127,7 @@
       "yrange": 0,
       "x": 14,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_rocketm_2",
@@ -150,8 +144,7 @@
       "yrange": 0,
       "x": 7,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_rocketm_3",
@@ -168,8 +161,7 @@
       "yrange": 0,
       "x": 3,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_gswoman2_2",
@@ -186,8 +178,7 @@
       "yrange": 0,
       "x": 18,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D23R0102_gswoman1",
@@ -204,8 +195,7 @@
       "yrange": 0,
       "x": 24,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

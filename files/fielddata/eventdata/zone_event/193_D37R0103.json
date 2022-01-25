@@ -42,8 +42,7 @@
       "yrange": 0,
       "x": 17,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_tsure_poke_static_machoke",
@@ -60,8 +59,7 @@
       "yrange": 0,
       "x": 19,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_tsure_poke_static_machoke_2",
@@ -78,8 +76,7 @@
       "yrange": 0,
       "x": 5,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_tsure_poke_static_machoke_3",
@@ -96,8 +93,7 @@
       "yrange": 0,
       "x": 5,
       "y": 17,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_gsfighter_2",
@@ -114,8 +110,7 @@
       "yrange": 1,
       "x": 5,
       "y": 16,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_babyboy1_5",
@@ -132,8 +127,7 @@
       "yrange": 0,
       "x": 6,
       "y": 18,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_babyboy1_5_2",
@@ -150,8 +144,7 @@
       "yrange": 0,
       "x": 3,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_babyboy1_5_3",
@@ -168,8 +161,7 @@
       "yrange": 0,
       "x": 19,
       "y": 16,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_babyboy1_9",
@@ -186,8 +178,7 @@
       "yrange": 0,
       "x": 26,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop",
@@ -204,8 +195,7 @@
       "yrange": 0,
       "x": 19,
       "y": 15,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_2",
@@ -222,8 +212,7 @@
       "yrange": 0,
       "x": 20,
       "y": 15,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_3",
@@ -240,8 +229,7 @@
       "yrange": 0,
       "x": 20,
       "y": 16,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_4",
@@ -258,8 +246,7 @@
       "yrange": 0,
       "x": 3,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_5",
@@ -276,8 +263,7 @@
       "yrange": 0,
       "x": 4,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_6",
@@ -294,8 +280,7 @@
       "yrange": 0,
       "x": 4,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_7",
@@ -312,8 +297,7 @@
       "yrange": 0,
       "x": 6,
       "y": 17,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_8",
@@ -330,8 +314,7 @@
       "yrange": 0,
       "x": 7,
       "y": 17,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_stop_9",
@@ -348,8 +331,7 @@
       "yrange": 0,
       "x": 7,
       "y": 18,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_monstarball",
@@ -366,8 +348,7 @@
       "yrange": 0,
       "x": 27,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_monstarball_2",
@@ -384,8 +365,7 @@
       "yrange": 0,
       "x": 12,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_monstarball_3",
@@ -402,8 +382,7 @@
       "yrange": 0,
       "x": 17,
       "y": 23,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D37R0103_monstarball_4",
@@ -420,8 +399,7 @@
       "yrange": 0,
       "x": 24,
       "y": 22,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

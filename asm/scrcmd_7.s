@@ -691,7 +691,7 @@ ScrCmd_224: ; 0x020499D8
 	mov r1, #0xa
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r1, r0, #0
 	add r4, #0x80
 	ldr r0, [r4]
@@ -717,7 +717,7 @@ ScrCmd_225: ; 0x02049A00
 	bl ScriptReadWord
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	ldr r0, [r5, #0xc]

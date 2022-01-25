@@ -16,8 +16,7 @@
       "yrange": 0,
       "x": 13,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0106_sunglasses",
@@ -34,8 +33,7 @@
       "yrange": 0,
       "x": 16,
       "y": 23,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0106_assistantm",
@@ -52,8 +50,7 @@
       "yrange": 0,
       "x": 15,
       "y": 17,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0106_assistantm_2",
@@ -70,8 +67,7 @@
       "yrange": 0,
       "x": 17,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0106_assistantm_3",
@@ -88,8 +84,7 @@
       "yrange": 0,
       "x": 8,
       "y": 17,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0106_gsassistantm",
@@ -106,8 +101,7 @@
       "yrange": 0,
       "x": 20,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0106_gsassistantm_2",
@@ -124,8 +118,7 @@
       "yrange": 0,
       "x": 13,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D11R0106_gsassistantm_3",
@@ -142,8 +135,7 @@
       "yrange": 0,
       "x": 9,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

@@ -34,8 +34,7 @@
       "yrange": 0,
       "x": 6,
       "y": 19,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_gsoldman1",
@@ -52,8 +51,7 @@
       "yrange": 0,
       "x": 9,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_gsfighter",
@@ -70,8 +68,7 @@
       "yrange": 0,
       "x": 15,
       "y": 23,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_tsure_poke_static_abra",
@@ -88,8 +85,7 @@
       "yrange": 0,
       "x": 8,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_shopm1_2",
@@ -106,8 +102,7 @@
       "yrange": 0,
       "x": 16,
       "y": 19,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_gsrivel",
@@ -124,8 +119,7 @@
       "yrange": 0,
       "x": 10,
       "y": 24,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_pcwoman2",
@@ -142,8 +136,7 @@
       "yrange": 0,
       "x": 3,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_pcwoman2_2",
@@ -160,8 +153,7 @@
       "yrange": 0,
       "x": 19,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T10R0101_counterm",
@@ -178,8 +170,7 @@
       "yrange": 0,
       "x": 11,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

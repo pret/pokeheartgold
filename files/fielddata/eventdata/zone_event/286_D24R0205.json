@@ -258,8 +258,7 @@
       "yrange": 1,
       "x": 23,
       "y": 24,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0205_gsbigman",
@@ -276,8 +275,7 @@
       "yrange": 0,
       "x": 4,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0205_gsoldman1",
@@ -294,8 +292,7 @@
       "yrange": 0,
       "x": 15,
       "y": 34,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0205_gsassistantm",
@@ -312,8 +309,7 @@
       "yrange": 0,
       "x": 20,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0205_gsassistantm_2",
@@ -330,8 +326,7 @@
       "yrange": 0,
       "x": 20,
       "y": 39,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0205_gsassistantm_3",
@@ -348,8 +343,7 @@
       "yrange": 0,
       "x": 10,
       "y": 21,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0205_gsassistantm_4",
@@ -366,8 +360,7 @@
       "yrange": 0,
       "x": 10,
       "y": 39,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D24R0205_suit",
@@ -384,8 +377,7 @@
       "yrange": 0,
       "x": 14,
       "y": 24,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

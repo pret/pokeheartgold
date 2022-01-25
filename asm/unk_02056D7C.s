@@ -595,10 +595,10 @@ sub_02057184: ; 0x02057184
 	ldr r0, [r0, #0x30]
 	add r1, r5, r1
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _020571CC
-	bl sub_0205E3CC
+	bl MapObject_Remove
 _020571CC:
 	ldr r0, [sp, #0x14]
 	mov r7, #2
@@ -649,7 +649,7 @@ _0205721E:
 	mov r1, #1
 	lsl r1, r1, #8
 	add r1, r5, r1
-	bl sub_0205F248
+	bl MapObject_SetID
 	ldr r0, _02057248 ; =_021D41C4
 	mov r1, #1
 	ldr r0, [r0]
@@ -2559,10 +2559,10 @@ _02057FB6:
 	ldrsb r1, [r1, r2]
 	str r1, [sp, #4]
 	ldr r1, [sp, #8]
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	ldr r0, [sp, #0xc]
 	add r1, r7, #0
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	str r0, [sp]

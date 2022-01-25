@@ -16,8 +16,7 @@
       "yrange": 0,
       "x": 3,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1",
@@ -34,8 +33,7 @@
       "yrange": 0,
       "x": 3,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_2",
@@ -52,8 +50,7 @@
       "yrange": 0,
       "x": 11,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_3",
@@ -70,8 +67,7 @@
       "yrange": 0,
       "x": 5,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_lady",
@@ -88,8 +84,7 @@
       "yrange": 0,
       "x": 14,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_badman",
@@ -106,8 +101,7 @@
       "yrange": 0,
       "x": 6,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_4",
@@ -124,8 +118,7 @@
       "yrange": 0,
       "x": 13,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_5",
@@ -142,8 +135,7 @@
       "yrange": 0,
       "x": 2,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_girl1",
@@ -160,8 +152,7 @@
       "yrange": 0,
       "x": 10,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_6",
@@ -178,8 +169,7 @@
       "yrange": 0,
       "x": 8,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_7",
@@ -196,8 +186,7 @@
       "yrange": 0,
       "x": 8,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_8",
@@ -214,8 +203,7 @@
       "yrange": 0,
       "x": 4,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_9",
@@ -232,8 +220,7 @@
       "yrange": 0,
       "x": 3,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_10",
@@ -250,8 +237,7 @@
       "yrange": 0,
       "x": 2,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_11",
@@ -268,8 +254,7 @@
       "yrange": 0,
       "x": 3,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_12",
@@ -286,8 +271,7 @@
       "yrange": 0,
       "x": 12,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_13",
@@ -304,8 +288,7 @@
       "yrange": 0,
       "x": 11,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_14",
@@ -322,8 +305,7 @@
       "yrange": 0,
       "x": 10,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_15",
@@ -340,8 +322,7 @@
       "yrange": 0,
       "x": 11,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_16",
@@ -358,8 +339,7 @@
       "yrange": 0,
       "x": 6,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_17",
@@ -376,8 +356,7 @@
       "yrange": 0,
       "x": 5,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_18",
@@ -394,8 +373,7 @@
       "yrange": 0,
       "x": 4,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_19",
@@ -412,8 +390,7 @@
       "yrange": 0,
       "x": 5,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_woman3",
@@ -430,8 +407,7 @@
       "yrange": 0,
       "x": 15,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_cowgirl",
@@ -448,8 +424,7 @@
       "yrange": 0,
       "x": 14,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_gorggeousw",
@@ -466,8 +441,7 @@
       "yrange": 0,
       "x": 13,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_idol",
@@ -484,8 +458,7 @@
       "yrange": 0,
       "x": 14,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy3",
@@ -502,8 +475,7 @@
       "yrange": 0,
       "x": 7,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_explore",
@@ -520,8 +492,7 @@
       "yrange": 0,
       "x": 6,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_fighter",
@@ -538,8 +509,7 @@
       "yrange": 0,
       "x": 5,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_man3",
@@ -556,8 +526,7 @@
       "yrange": 0,
       "x": 6,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_20",
@@ -574,8 +543,7 @@
       "yrange": 0,
       "x": 14,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_21",
@@ -592,8 +560,7 @@
       "yrange": 0,
       "x": 13,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_22",
@@ -610,8 +577,7 @@
       "yrange": 0,
       "x": 12,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_23",
@@ -628,8 +594,7 @@
       "yrange": 0,
       "x": 13,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_24",
@@ -646,8 +611,7 @@
       "yrange": 0,
       "x": 3,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_25",
@@ -664,8 +628,7 @@
       "yrange": 0,
       "x": 2,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_26",
@@ -682,8 +645,7 @@
       "yrange": 0,
       "x": 1,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_27",
@@ -700,8 +662,7 @@
       "yrange": 0,
       "x": 2,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_gorggeousm",
@@ -718,8 +679,7 @@
       "yrange": 0,
       "x": 11,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_girl2",
@@ -736,8 +696,7 @@
       "yrange": 0,
       "x": 10,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_woman2",
@@ -754,8 +713,7 @@
       "yrange": 0,
       "x": 9,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_mystery",
@@ -772,8 +730,7 @@
       "yrange": 0,
       "x": 10,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_28",
@@ -790,8 +747,7 @@
       "yrange": 0,
       "x": 9,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_29",
@@ -808,8 +764,7 @@
       "yrange": 0,
       "x": 8,
       "y": 8,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_30",
@@ -826,8 +781,7 @@
       "yrange": 0,
       "x": 7,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_31",
@@ -844,8 +798,7 @@
       "yrange": 0,
       "x": 8,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_32",
@@ -862,8 +815,7 @@
       "yrange": 0,
       "x": 9,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_33",
@@ -880,8 +832,7 @@
       "yrange": 0,
       "x": 8,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_34",
@@ -898,8 +849,7 @@
       "yrange": 0,
       "x": 7,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_UNION_boy1_35",
@@ -916,8 +866,7 @@
       "yrange": 0,
       "x": 8,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

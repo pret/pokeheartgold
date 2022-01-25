@@ -754,7 +754,7 @@ _0225A5A8:
 	bl sub_0205F330
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	sub r0, #0xbc
 	cmp r0, #1
 	bhi _0225A5DC
@@ -781,12 +781,12 @@ _0225A5E6:
 	add r1, sp, #0
 	bl sub_0203DBF8
 	ldr r0, [sp]
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	bl ov01_021F6BD0
 	cmp r0, #0
 	bne _0225A616
 	ldr r0, [sp]
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	bl ov01_021F6BB0
 	cmp r0, #0
 	beq _0225A618

@@ -143,15 +143,15 @@ _022E:
 	wait_fade
 	compare VAR_TEMP_x4002, 255
 	goto_if_eq _0132
-	scrcmd_690 VAR_TEMP_x4002, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_TEMP_x4002, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _0607
-	scrcmd_690 VAR_TEMP_x4005, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_TEMP_x4005, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _0607
 	compare VAR_UNK_4149, 2
 	goto_if_eq _028F
-	scrcmd_690 VAR_TEMP_x4006, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_TEMP_x4006, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _0607
 _028F:

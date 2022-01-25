@@ -34,8 +34,7 @@
       "yrange": 0,
       "x": 10,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_gsman1",
@@ -52,8 +51,7 @@
       "yrange": 0,
       "x": 4,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_gsgentleman",
@@ -70,8 +68,7 @@
       "yrange": 0,
       "x": 8,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_tsure_poke_static_psyduck",
@@ -88,8 +85,7 @@
       "yrange": 0,
       "x": 9,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_dancer",
@@ -106,8 +102,7 @@
       "yrange": 0,
       "x": 2,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_dancer_2",
@@ -124,8 +119,7 @@
       "yrange": 0,
       "x": 4,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_dancer_3",
@@ -142,8 +136,7 @@
       "yrange": 0,
       "x": 10,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_dancer_4",
@@ -160,8 +153,7 @@
       "yrange": 0,
       "x": 10,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_dancer_5",
@@ -178,8 +170,7 @@
       "yrange": 0,
       "x": 12,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_rocketm",
@@ -196,8 +187,7 @@
       "yrange": 0,
       "x": 7,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_dancer_6",
@@ -214,8 +204,7 @@
       "yrange": 0,
       "x": 7,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_gsbabygirl1",
@@ -232,8 +221,7 @@
       "yrange": 0,
       "x": 3,
       "y": 16,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T27R0501_rocketm_2",
@@ -250,8 +238,7 @@
       "yrange": 0,
       "x": 29,
       "y": 29,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

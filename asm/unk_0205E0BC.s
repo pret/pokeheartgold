@@ -93,7 +93,7 @@ _0205E144:
 	cmp r0, #0
 	bne _0205E162
 	add r0, r4, #0
-	bl sub_0205E3CC
+	bl MapObject_Remove
 _0205E162:
 	mov r0, #0x4b
 	lsl r0, r0, #2
@@ -168,10 +168,10 @@ sub_0205E1D0: ; 0x0205E1D0
 	ldmia r3!, {r0, r1}
 	stmia r2!, {r0, r1}
 	add r0, r6, #0
-	bl sub_0205F9E8
+	bl ObjectEventTemplate_GetID
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205FACC
+	bl ObjectEventTemplate_ScriptIdIsFFFF
 	cmp r0, #0
 	bne _0205E21C
 	add r0, r5, #0
@@ -188,7 +188,7 @@ sub_0205E1D0: ; 0x0205E1D0
 	pop {r3, r4, r5, r6, r7, pc}
 _0205E21C:
 	add r0, r6, #0
-	bl sub_0205FAE8
+	bl ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -237,8 +237,8 @@ _0205E290:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0205E1D0
 
-	thumb_func_start sub_0205E294
-sub_0205E294: ; 0x0205E294
+	thumb_func_start CreateSpecialFieldObject
+CreateSpecialFieldObject: ; 0x0205E294
 	push {r4, lr}
 	sub sp, #0x18
 	ldr r4, [sp, #0x20]
@@ -251,13 +251,13 @@ sub_0205E294: ; 0x0205E294
 	str r4, [sp, #0xc]
 	str r4, [sp, #0x10]
 	str r4, [sp, #0x14]
-	bl sub_0205E2B4
+	bl CreateSpecialFieldObjectEx
 	add sp, #0x18
 	pop {r4, pc}
-	thumb_func_end sub_0205E294
+	thumb_func_end CreateSpecialFieldObject
 
-	thumb_func_start sub_0205E2B4
-sub_0205E2B4: ; 0x0205E2B4
+	thumb_func_start CreateSpecialFieldObjectEx
+CreateSpecialFieldObjectEx: ; 0x0205E2B4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	add r5, r0, #0
@@ -266,59 +266,59 @@ sub_0205E2B4: ; 0x0205E2B4
 	mov r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0205F9E4
+	bl ObjectEventTemplate_SetID
 	ldr r1, [sp, #0x38]
 	add r0, sp, #0
-	bl sub_0205F9EC
+	bl ObjectEventTemplate_SetSprite
 	ldr r1, [sp, #0x3c]
 	add r0, sp, #0
-	bl sub_0205F9F4
+	bl ObjectEventTemplate_SetMovement
 	add r0, sp, #0
 	mov r1, #0
-	bl sub_0205F9FC
+	bl ObjectEventTemplate_SetType
 	add r0, sp, #0
 	mov r1, #0
-	bl sub_0205FA04
+	bl ObjectEventTemplate_SetFlagID
 	add r0, sp, #0
 	mov r1, #0
-	bl sub_0205FA0C
+	bl ObjectEventTemplate_SetScript
 	add r0, sp, #0
 	add r1, r7, #0
-	bl sub_0205FA14
+	bl ObjectEventTemplate_SetFacing
 	ldr r1, [sp, #0x44]
 	add r0, sp, #0
 	mov r2, #0
-	bl sub_0205FA20
+	bl ObjectEventTemplate_SetParam
 	ldr r1, [sp, #0x48]
 	add r0, sp, #0
 	mov r2, #1
-	bl sub_0205FA20
+	bl ObjectEventTemplate_SetParam
 	ldr r1, [sp, #0x4c]
 	add r0, sp, #0
 	mov r2, #2
-	bl sub_0205FA20
+	bl ObjectEventTemplate_SetParam
 	add r0, sp, #0
 	mov r1, #0
-	bl sub_0205FA68
+	bl ObjectEventTemplate_SetXRange
 	add r0, sp, #0
 	mov r1, #0
-	bl sub_0205FA74
+	bl ObjectEventTemplate_SetYRange
 	add r0, sp, #0
 	add r1, r4, #0
-	bl sub_0205FA80
+	bl ObjectEventTemplate_SetXCoord
 	add r0, sp, #0
 	add r1, r6, #0
-	bl sub_0205FA90
+	bl ObjectEventTemplate_SetYCoord
 	add r0, sp, #0
 	mov r1, #0
-	bl sub_0205FA88
+	bl ObjectEventTemplate_SetHeight
 	ldr r2, [sp, #0x40]
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_0205E1D0
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0205E2B4
+	thumb_func_end CreateSpecialFieldObjectEx
 
 	thumb_func_start sub_0205E34C
 sub_0205E34C: ; 0x0205E34C
@@ -333,7 +333,7 @@ sub_0205E34C: ; 0x0205E34C
 	str r0, [sp]
 	cmp r0, #0
 	beq _0205E388
-	bl sub_0205FA08
+	bl ObjectEventTemplate_GetFlagID
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0205F1E4
@@ -356,7 +356,7 @@ _0205E388:
 sub_0205E38C: ; 0x0205E38C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	add r0, r4, #0
 	bl sub_0205EF48
 	mov r1, #1
@@ -386,8 +386,8 @@ _0205E3C0:
 	.balign 4, 0
 	thumb_func_end sub_0205E3AC
 
-	thumb_func_start sub_0205E3CC
-sub_0205E3CC: ; 0x0205E3CC
+	thumb_func_start MapObject_Remove
+MapObject_Remove: ; 0x0205E3CC
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0205F35C
@@ -407,23 +407,23 @@ _0205E3E2:
 	add r0, r4, #0
 	bl sub_0205ED80
 	pop {r4, pc}
-	thumb_func_end sub_0205E3CC
+	thumb_func_end MapObject_Remove
 
-	thumb_func_start sub_0205E400
-sub_0205E400: ; 0x0205E400
+	thumb_func_start DeleteMapObject
+DeleteMapObject: ; 0x0205E400
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205F274
+	bl MapObject_GetFlagID
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	lsl r1, r5, #0x10
 	lsr r1, r1, #0x10
 	bl FlagSet
 	add r0, r4, #0
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0205E400
+	thumb_func_end DeleteMapObject
 
 	thumb_func_start sub_0205E420
 sub_0205E420: ; 0x0205E420
@@ -449,7 +449,7 @@ _0205E444:
 _0205E44E:
 	ldr r1, _0205E480 ; =0x0000FFFF
 	add r0, r4, #0
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	ldr r1, _0205E484 ; =sub_0205FCC4
 	add r0, r4, #0
 	bl sub_0205F468
@@ -493,7 +493,7 @@ _0205E4AC:
 	cmp r0, #0
 	beq _0205E4BE
 	add r0, r5, #0
-	bl sub_0205E3CC
+	bl MapObject_Remove
 _0205E4BE:
 	add r4, r4, #1
 	add r5, r5, r7
@@ -616,7 +616,7 @@ _0205E5A6:
 	cmp r0, #1
 	bne _0205E5E0
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xff
 	bne _0205E5E0
 	add r0, r5, #0
@@ -739,28 +739,28 @@ sub_0205E680: ; 0x0205E680
 	bl sub_0205F23C
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	strb r0, [r4, #8]
 	add r0, r5, #0
 	bl sub_0205F254
 	strh r0, [r4, #0x10]
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	strh r0, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	strb r0, [r4, #9]
 	add r0, r5, #0
-	bl sub_0205F26C
+	bl MapObject_GetType
 	strh r0, [r4, #0x14]
 	add r0, r5, #0
-	bl sub_0205F274
+	bl MapObject_GetFlagID
 	strh r0, [r4, #0x16]
 	add r0, r5, #0
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	strh r0, [r4, #0x18]
 	add r0, r5, #0
-	bl sub_0205F284
+	bl MapObject_GetFacing
 	strb r0, [r4, #0xc]
 	add r0, r5, #0
 	bl sub_0205F2A8
@@ -770,39 +770,39 @@ sub_0205E680: ; 0x0205E680
 	strb r0, [r4, #0xe]
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	strh r0, [r4, #0x1a]
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	strh r0, [r4, #0x1c]
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	strh r0, [r4, #0x1e]
 	add r0, r5, #0
-	bl sub_0205F31C
+	bl MapObject_GetXRange
 	strb r0, [r4, #0xa]
 	add r0, r5, #0
-	bl sub_0205F324
+	bl MapObject_GetYRange
 	strb r0, [r4, #0xb]
 	add r0, r5, #0
-	bl sub_0205F8E4
+	bl MapObject_GetInitialX
 	strh r0, [r4, #0x20]
 	add r0, r5, #0
-	bl sub_0205F8EC
+	bl MapObject_GetInitialHeight
 	strh r0, [r4, #0x22]
 	add r0, r5, #0
-	bl sub_0205F8F4
+	bl MapObject_GetInitialY
 	strh r0, [r4, #0x24]
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	strh r0, [r4, #0x26]
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	strh r0, [r4, #0x28]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	strh r0, [r4, #0x2a]
 	mov r0, #0x26
 	mov r1, #0x2a
@@ -877,29 +877,29 @@ sub_0205E7C4: ; 0x0205E7C4
 	bl sub_0205F238
 	ldrb r1, [r4, #8]
 	add r0, r5, #0
-	bl sub_0205F248
+	bl MapObject_SetID
 	ldrh r1, [r4, #0x10]
 	add r0, r5, #0
 	bl sub_0205F250
 	ldrh r1, [r4, #0x12]
 	add r0, r5, #0
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	ldrb r1, [r4, #9]
 	add r0, r5, #0
-	bl sub_0205F260
+	bl MapObject_SetMovement
 	ldrh r1, [r4, #0x14]
 	add r0, r5, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	ldrh r1, [r4, #0x16]
 	add r0, r5, #0
-	bl sub_0205F270
+	bl MapObject_SetFlagID
 	ldrh r1, [r4, #0x18]
 	add r0, r5, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	mov r1, #0xc
 	ldrsb r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F280
+	bl MapObject_SetFacing
 	mov r1, #0xd
 	ldrsb r1, [r4, r1]
 	add r0, r5, #0
@@ -912,49 +912,49 @@ sub_0205E7C4: ; 0x0205E7C4
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	mov r1, #0x1c
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	mov r1, #0x1e
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	mov r1, #0xa
 	ldrsb r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F318
+	bl MapObject_SetXRange
 	mov r1, #0xb
 	ldrsb r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F320
+	bl MapObject_SetYRange
 	mov r1, #0x20
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F8E8
+	bl MapObject_SetInitialX
 	mov r1, #0x22
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F8F0
+	bl MapObject_SetInitialHeight
 	mov r1, #0x24
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F8F8
+	bl MapObject_SetInitialY
 	mov r1, #0x26
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	mov r1, #0x28
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F928
+	bl MapObject_SetNextHeight
 	mov r1, #0x2a
 	ldrsh r1, [r4, r1]
 	add r0, r5, #0
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	add r1, sp, #0
 	mov r0, #0
 	str r0, [r1]
@@ -963,7 +963,7 @@ sub_0205E7C4: ; 0x0205E7C4
 	ldr r0, [r4, #0x2c]
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r5, #0
 	bl sub_0205F394
 	add r3, r4, #0
@@ -1044,9 +1044,9 @@ sub_0205E954: ; 0x0205E954
 	sub sp, #0xc
 	add r4, r0, #0
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r0, r4, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10
@@ -1054,14 +1054,14 @@ sub_0205E954: ; 0x0205E954
 	add r0, r2, r0
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0205F900
+	bl MapObject_SetCurrentX
 	add r0, r4, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0205F908
+	bl MapObject_SetCurrentHeight
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10
@@ -1069,10 +1069,10 @@ sub_0205E954: ; 0x0205E954
 	add r0, r2, r0
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_0205F910
+	bl MapObject_SetCurrentY
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -1136,7 +1136,7 @@ sub_0205EA08: ; 0x0205EA08
 	add r6, #8
 _0205EA1A:
 	add r0, r4, #0
-	bl sub_0205FACC
+	bl ObjectEventTemplate_ScriptIdIsFFFF
 	cmp r0, #1
 	beq _0205EA30
 	ldrh r1, [r4, #8]
@@ -1221,7 +1221,7 @@ _0205EAB6:
 	cmp r0, #1
 	bne _0205EADA
 	ldr r0, [sp]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r5, r0
 	bne _0205EADA
 	ldr r0, [sp]
@@ -1252,7 +1252,7 @@ sub_0205EAF0: ; 0x0205EAF0
 	bl sub_0205F19C
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r0, #0x30
 	beq _0205EB08
 	cmp r0, #0x32
@@ -1283,74 +1283,74 @@ sub_0205EB2C: ; 0x0205EB2C
 	add r5, r0, #0
 	add r0, r4, #0
 	add r6, r2, #0
-	bl sub_0205F9E8
+	bl ObjectEventTemplate_GetID
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F248
+	bl MapObject_SetID
 	add r0, r4, #0
-	bl sub_0205F9F0
+	bl ObjectEventTemplate_GetSprite
 	add r1, r0, #0
 	add r0, r6, #0
 	bl ResolveObjectGfxId
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	add r0, r4, #0
-	bl sub_0205F9F8
+	bl ObjectEventTemplate_GetMovement
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F260
+	bl MapObject_SetMovement
 	add r0, r4, #0
-	bl sub_0205FA00
+	bl ObjectEventTemplate_GetType
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	add r0, r4, #0
-	bl sub_0205FA08
+	bl ObjectEventTemplate_GetFlagID
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F270
+	bl MapObject_SetFlagID
 	add r0, r4, #0
-	bl sub_0205FA10
+	bl ObjectEventTemplate_GetScript
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	add r0, r4, #0
-	bl sub_0205FA18
+	bl ObjectEventTemplate_GetFacing
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F280
+	bl MapObject_SetFacing
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205FA44
+	bl ObjectEventTemplate_GetParam
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205FA44
+	bl ObjectEventTemplate_GetParam
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0205FA44
+	bl ObjectEventTemplate_GetParam
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	add r0, r4, #0
-	bl sub_0205FA6C
+	bl ObjectEventTemplate_GetXRange
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F318
+	bl MapObject_SetXRange
 	add r0, r4, #0
-	bl sub_0205FA78
+	bl ObjectEventTemplate_GetYRange
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F320
+	bl MapObject_SetYRange
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_0205EBFC
@@ -1365,7 +1365,7 @@ sub_0205EBFC: ; 0x0205EBFC
 	add r6, r1, #0
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205FA84
+	bl ObjectEventTemplate_GetXCoord
 	add r5, r0, #0
 	mov r0, #2
 	lsl r1, r5, #0x10
@@ -1374,15 +1374,15 @@ sub_0205EBFC: ; 0x0205EBFC
 	str r0, [sp]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F8E8
+	bl MapObject_SetInitialX
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F900
+	bl MapObject_SetCurrentX
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	add r0, r6, #0
-	bl sub_0205FA8C
+	bl ObjectEventTemplate_GetHeight
 	asr r1, r0, #3
 	str r0, [sp, #4]
 	asr r0, r1, #0xb
@@ -1391,15 +1391,15 @@ sub_0205EBFC: ; 0x0205EBFC
 	asr r5, r0, #0xc
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F8F0
+	bl MapObject_SetInitialHeight
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F908
+	bl MapObject_SetCurrentHeight
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F928
+	bl MapObject_SetNextHeight
 	add r0, r6, #0
-	bl sub_0205FA94
+	bl ObjectEventTemplate_GetYCoord
 	add r5, r0, #0
 	mov r0, #2
 	lsl r1, r5, #0x10
@@ -1408,16 +1408,16 @@ sub_0205EBFC: ; 0x0205EBFC
 	str r0, [sp, #8]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F8F8
+	bl MapObject_SetInitialY
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F910
+	bl MapObject_SetCurrentY
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1442,12 +1442,12 @@ _0205ECAE:
 	add r1, r4, #0
 	bl sub_0205F354
 	add r0, r5, #0
-	bl sub_0205F284
+	bl MapObject_GetFacing
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_0205F288
 	add r0, r5, #0
-	bl sub_0205F284
+	bl MapObject_GetFacing
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_0205F2B0
@@ -1462,7 +1462,7 @@ _0205ECDC: .word 0x00001801
 sub_0205ECE0: ; 0x0205ECE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	bl sub_0205FB00
 	add r4, r0, #0
 	bl sub_0205FB18
@@ -1486,7 +1486,7 @@ sub_0205ECE0: ; 0x0205ECE0
 sub_0205ED18: ; 0x0205ED18
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	mov r1, #2
 	lsl r1, r1, #0xc
 	cmp r0, r1
@@ -1549,18 +1549,18 @@ sub_0205ED90: ; 0x0205ED90
 	beq _0205EE0A
 _0205ED9E:
 	add r0, r6, #0
-	bl sub_0205F9E8
+	bl ObjectEventTemplate_GetID
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r4, r0
 	bne _0205EE02
 	add r0, r6, #0
-	bl sub_0205FACC
+	bl ObjectEventTemplate_ScriptIdIsFFFF
 	cmp r0, #1
 	bne _0205EDE8
 	add r0, r6, #0
-	bl sub_0205FAE8
+	bl ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0205F7D4
@@ -1620,7 +1620,7 @@ sub_0205EE10: ; 0x0205EE10
 	add r7, sp, #0
 _0205EE2E:
 	ldr r0, [sp]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r5, r0
 	bne _0205EE48
 	ldr r0, [sp]
@@ -1645,8 +1645,8 @@ _0205EE58:
 	.balign 4, 0
 	thumb_func_end sub_0205EE10
 
-	thumb_func_start sub_0205EE60
-sub_0205EE60: ; 0x0205EE60
+	thumb_func_start GetMapObjectByID
+GetMapObjectByID: ; 0x0205EE60
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1673,7 +1673,7 @@ _0205EE82:
 	cmp r0, #0
 	bne _0205EEA6
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r6, r0
 	bne _0205EEA6
 	add r0, r5, #0
@@ -1686,7 +1686,7 @@ _0205EEA6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205EE60
+	thumb_func_end GetMapObjectByID
 
 	thumb_func_start sub_0205EEB4
 sub_0205EEB4: ; 0x0205EEB4
@@ -1707,7 +1707,7 @@ _0205EECC:
 	cmp r0, #1
 	bne _0205EEE6
 	add r0, r5, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r6, r0
 	bne _0205EEE6
 	add r0, r5, #0
@@ -1872,7 +1872,7 @@ _0205EFF6:
 	thumb_func_start sub_0205EFF8
 sub_0205EFF8: ; 0x0205EFF8
 	push {r3, lr}
-	bl sub_0205F27C
+	bl MapObject_GetScript
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	ldr r0, _0205F010 ; =0x0000FFFF
@@ -1905,15 +1905,15 @@ _0205F028:
 	add r1, r6, #0
 	bl sub_0205F250
 	add r0, r4, #0
-	bl sub_0205FA10
+	bl ObjectEventTemplate_GetScript
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	add r0, r4, #0
-	bl sub_0205FA08
+	bl ObjectEventTemplate_GetFlagID
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F270
+	bl MapObject_SetFlagID
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_0205F014
@@ -1925,7 +1925,7 @@ sub_0205F058: ; 0x0205F058
 	add r5, r0, #0
 	add r0, r6, #0
 	add r4, r1, #0
-	bl sub_0205FACC
+	bl ObjectEventTemplate_ScriptIdIsFFFF
 	cmp r0, #1
 	beq _0205F06E
 	bl GF_AssertFail
@@ -1934,15 +1934,15 @@ _0205F06E:
 	mov r1, #1
 	bl sub_0205F7B8
 	add r0, r6, #0
-	bl sub_0205FA10
+	bl ObjectEventTemplate_GetScript
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	add r0, r6, #0
-	bl sub_0205FAE8
+	bl ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F270
+	bl MapObject_SetFlagID
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_0205F250
@@ -1972,7 +1972,7 @@ sub_0205F0A8: ; 0x0205F0A8
 	pop {r4, r5, r6, pc}
 _0205F0BE:
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r6, r0
 	beq _0205F0CC
 	mov r0, #0
@@ -2016,7 +2016,7 @@ sub_0205F0F8: ; 0x0205F0F8
 	pop {r3, r4, r5, r6, r7, pc}
 _0205F110:
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, r4
 	beq _0205F11E
 	mov r0, #0
@@ -2297,17 +2297,17 @@ sub_0205F240: ; 0x0205F240
 	.balign 4, 0
 	thumb_func_end sub_0205F240
 
-	thumb_func_start sub_0205F248
-sub_0205F248: ; 0x0205F248
+	thumb_func_start MapObject_SetID
+MapObject_SetID: ; 0x0205F248
 	str r1, [r0, #8]
 	bx lr
-	thumb_func_end sub_0205F248
+	thumb_func_end MapObject_SetID
 
-	thumb_func_start sub_0205F24C
-sub_0205F24C: ; 0x0205F24C
+	thumb_func_start MapObject_GetID
+MapObject_GetID: ; 0x0205F24C
 	ldr r0, [r0, #8]
 	bx lr
-	thumb_func_end sub_0205F24C
+	thumb_func_end MapObject_GetID
 
 	thumb_func_start sub_0205F250
 sub_0205F250: ; 0x0205F250
@@ -2321,77 +2321,77 @@ sub_0205F254: ; 0x0205F254
 	bx lr
 	thumb_func_end sub_0205F254
 
-	thumb_func_start sub_0205F258
-sub_0205F258: ; 0x0205F258
+	thumb_func_start MapObject_SetGfxID
+MapObject_SetGfxID: ; 0x0205F258
 	str r1, [r0, #0x10]
 	bx lr
-	thumb_func_end sub_0205F258
+	thumb_func_end MapObject_SetGfxID
 
-	thumb_func_start sub_0205F25C
-sub_0205F25C: ; 0x0205F25C
+	thumb_func_start MapObject_GetGfxID
+MapObject_GetGfxID: ; 0x0205F25C
 	ldr r0, [r0, #0x10]
 	bx lr
-	thumb_func_end sub_0205F25C
+	thumb_func_end MapObject_GetGfxID
 
-	thumb_func_start sub_0205F260
-sub_0205F260: ; 0x0205F260
+	thumb_func_start MapObject_SetMovement
+MapObject_SetMovement: ; 0x0205F260
 	str r1, [r0, #0x14]
 	bx lr
-	thumb_func_end sub_0205F260
+	thumb_func_end MapObject_SetMovement
 
-	thumb_func_start sub_0205F264
-sub_0205F264: ; 0x0205F264
+	thumb_func_start MapObject_GetMovement
+MapObject_GetMovement: ; 0x0205F264
 	ldr r0, [r0, #0x14]
 	bx lr
-	thumb_func_end sub_0205F264
+	thumb_func_end MapObject_GetMovement
 
-	thumb_func_start sub_0205F268
-sub_0205F268: ; 0x0205F268
+	thumb_func_start MapObject_SetType
+MapObject_SetType: ; 0x0205F268
 	str r1, [r0, #0x18]
 	bx lr
-	thumb_func_end sub_0205F268
+	thumb_func_end MapObject_SetType
 
-	thumb_func_start sub_0205F26C
-sub_0205F26C: ; 0x0205F26C
+	thumb_func_start MapObject_GetType
+MapObject_GetType: ; 0x0205F26C
 	ldr r0, [r0, #0x18]
 	bx lr
-	thumb_func_end sub_0205F26C
+	thumb_func_end MapObject_GetType
 
-	thumb_func_start sub_0205F270
-sub_0205F270: ; 0x0205F270
+	thumb_func_start MapObject_SetFlagID
+MapObject_SetFlagID: ; 0x0205F270
 	str r1, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205F270
+	thumb_func_end MapObject_SetFlagID
 
-	thumb_func_start sub_0205F274
-sub_0205F274: ; 0x0205F274
+	thumb_func_start MapObject_GetFlagID
+MapObject_GetFlagID: ; 0x0205F274
 	ldr r0, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205F274
+	thumb_func_end MapObject_GetFlagID
 
-	thumb_func_start sub_0205F278
-sub_0205F278: ; 0x0205F278
+	thumb_func_start MapObject_SetScript
+MapObject_SetScript: ; 0x0205F278
 	str r1, [r0, #0x20]
 	bx lr
-	thumb_func_end sub_0205F278
+	thumb_func_end MapObject_SetScript
 
-	thumb_func_start sub_0205F27C
-sub_0205F27C: ; 0x0205F27C
+	thumb_func_start MapObject_GetScript
+MapObject_GetScript: ; 0x0205F27C
 	ldr r0, [r0, #0x20]
 	bx lr
-	thumb_func_end sub_0205F27C
+	thumb_func_end MapObject_GetScript
 
-	thumb_func_start sub_0205F280
-sub_0205F280: ; 0x0205F280
+	thumb_func_start MapObject_SetFacing
+MapObject_SetFacing: ; 0x0205F280
 	str r1, [r0, #0x24]
 	bx lr
-	thumb_func_end sub_0205F280
+	thumb_func_end MapObject_SetFacing
 
-	thumb_func_start sub_0205F284
-sub_0205F284: ; 0x0205F284
+	thumb_func_start MapObject_GetFacing
+MapObject_GetFacing: ; 0x0205F284
 	ldr r0, [r0, #0x24]
 	bx lr
-	thumb_func_end sub_0205F284
+	thumb_func_end MapObject_GetFacing
 
 	thumb_func_start sub_0205F288
 sub_0205F288: ; 0x0205F288
@@ -2455,8 +2455,8 @@ sub_0205F2BC: ; 0x0205F2BC
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0205F2BC
 
-	thumb_func_start sub_0205F2D0
-sub_0205F2D0: ; 0x0205F2D0
+	thumb_func_start MapObject_SetParam
+MapObject_SetParam: ; 0x0205F2D0
 	push {r3, lr}
 	cmp r2, #0
 	beq _0205F2E0
@@ -2478,10 +2478,10 @@ _0205F2EC:
 	bl GF_AssertFail
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205F2D0
+	thumb_func_end MapObject_SetParam
 
-	thumb_func_start sub_0205F2F4
-sub_0205F2F4: ; 0x0205F2F4
+	thumb_func_start MapObject_GetParam
+MapObject_GetParam: ; 0x0205F2F4
 	push {r3, lr}
 	cmp r1, #0
 	beq _0205F304
@@ -2503,31 +2503,31 @@ _0205F310:
 	bl GF_AssertFail
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_0205F2F4
+	thumb_func_end MapObject_GetParam
 
-	thumb_func_start sub_0205F318
-sub_0205F318: ; 0x0205F318
+	thumb_func_start MapObject_SetXRange
+MapObject_SetXRange: ; 0x0205F318
 	str r1, [r0, #0x44]
 	bx lr
-	thumb_func_end sub_0205F318
+	thumb_func_end MapObject_SetXRange
 
-	thumb_func_start sub_0205F31C
-sub_0205F31C: ; 0x0205F31C
+	thumb_func_start MapObject_GetXRange
+MapObject_GetXRange: ; 0x0205F31C
 	ldr r0, [r0, #0x44]
 	bx lr
-	thumb_func_end sub_0205F31C
+	thumb_func_end MapObject_GetXRange
 
-	thumb_func_start sub_0205F320
-sub_0205F320: ; 0x0205F320
+	thumb_func_start MapObject_SetYRange
+MapObject_SetYRange: ; 0x0205F320
 	str r1, [r0, #0x48]
 	bx lr
-	thumb_func_end sub_0205F320
+	thumb_func_end MapObject_SetYRange
 
-	thumb_func_start sub_0205F324
-sub_0205F324: ; 0x0205F324
+	thumb_func_start MapObject_GetYRange
+MapObject_GetYRange: ; 0x0205F324
 	ldr r0, [r0, #0x48]
 	bx lr
-	thumb_func_end sub_0205F324
+	thumb_func_end MapObject_GetYRange
 
 	thumb_func_start sub_0205F328
 sub_0205F328: ; 0x0205F328
@@ -2759,7 +2759,7 @@ sub_0205F444: ; 0x0205F444
 sub_0205F450: ; 0x0205F450
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	bl sub_0205FB00
 	add r1, r0, #0
 	ldr r1, [r1, #0x10]
@@ -2951,13 +2951,13 @@ sub_0205F524: ; 0x0205F524
 	bx lr
 	thumb_func_end sub_0205F524
 
-	thumb_func_start sub_0205F52C
-sub_0205F52C: ; 0x0205F52C
+	thumb_func_start MapObject_GetFieldSysPtr
+MapObject_GetFieldSysPtr: ; 0x0205F52C
 	push {r3, lr}
 	bl sub_0205F364
 	bl sub_0205F1E4
 	pop {r3, pc}
-	thumb_func_end sub_0205F52C
+	thumb_func_end MapObject_GetFieldSysPtr
 
 	thumb_func_start sub_0205F538
 sub_0205F538: ; 0x0205F538
@@ -2977,7 +2977,7 @@ sub_0205F544: ; 0x0205F544
 	bl GF_AssertFail
 _0205F554:
 	add r0, r4, #0
-	bl sub_0205F274
+	bl MapObject_GetFlagID
 	pop {r4, pc}
 	thumb_func_end sub_0205F544
 
@@ -3565,140 +3565,140 @@ _0205F8E0:
 	pop {r3, pc}
 	thumb_func_end sub_0205F8D0
 
-	thumb_func_start sub_0205F8E4
-sub_0205F8E4: ; 0x0205F8E4
+	thumb_func_start MapObject_GetInitialX
+MapObject_GetInitialX: ; 0x0205F8E4
 	ldr r0, [r0, #0x4c]
 	bx lr
-	thumb_func_end sub_0205F8E4
+	thumb_func_end MapObject_GetInitialX
 
-	thumb_func_start sub_0205F8E8
-sub_0205F8E8: ; 0x0205F8E8
+	thumb_func_start MapObject_SetInitialX
+MapObject_SetInitialX: ; 0x0205F8E8
 	str r1, [r0, #0x4c]
 	bx lr
-	thumb_func_end sub_0205F8E8
+	thumb_func_end MapObject_SetInitialX
 
-	thumb_func_start sub_0205F8EC
-sub_0205F8EC: ; 0x0205F8EC
+	thumb_func_start MapObject_GetInitialHeight
+MapObject_GetInitialHeight: ; 0x0205F8EC
 	ldr r0, [r0, #0x50]
 	bx lr
-	thumb_func_end sub_0205F8EC
+	thumb_func_end MapObject_GetInitialHeight
 
-	thumb_func_start sub_0205F8F0
-sub_0205F8F0: ; 0x0205F8F0
+	thumb_func_start MapObject_SetInitialHeight
+MapObject_SetInitialHeight: ; 0x0205F8F0
 	str r1, [r0, #0x50]
 	bx lr
-	thumb_func_end sub_0205F8F0
+	thumb_func_end MapObject_SetInitialHeight
 
-	thumb_func_start sub_0205F8F4
-sub_0205F8F4: ; 0x0205F8F4
+	thumb_func_start MapObject_GetInitialY
+MapObject_GetInitialY: ; 0x0205F8F4
 	ldr r0, [r0, #0x54]
 	bx lr
-	thumb_func_end sub_0205F8F4
+	thumb_func_end MapObject_GetInitialY
 
-	thumb_func_start sub_0205F8F8
-sub_0205F8F8: ; 0x0205F8F8
+	thumb_func_start MapObject_SetInitialY
+MapObject_SetInitialY: ; 0x0205F8F8
 	str r1, [r0, #0x54]
 	bx lr
-	thumb_func_end sub_0205F8F8
+	thumb_func_end MapObject_SetInitialY
 
-	thumb_func_start sub_0205F8FC
-sub_0205F8FC: ; 0x0205F8FC
+	thumb_func_start MapObject_GetCurrentX
+MapObject_GetCurrentX: ; 0x0205F8FC
 	ldr r0, [r0, #0x58]
 	bx lr
-	thumb_func_end sub_0205F8FC
+	thumb_func_end MapObject_GetCurrentX
 
-	thumb_func_start sub_0205F900
-sub_0205F900: ; 0x0205F900
+	thumb_func_start MapObject_SetCurrentX
+MapObject_SetCurrentX: ; 0x0205F900
 	str r1, [r0, #0x58]
 	bx lr
-	thumb_func_end sub_0205F900
+	thumb_func_end MapObject_SetCurrentX
 
-	thumb_func_start sub_0205F904
-sub_0205F904: ; 0x0205F904
+	thumb_func_start MapObject_GetCurrentHeight
+MapObject_GetCurrentHeight: ; 0x0205F904
 	ldr r0, [r0, #0x5c]
 	bx lr
-	thumb_func_end sub_0205F904
+	thumb_func_end MapObject_GetCurrentHeight
 
-	thumb_func_start sub_0205F908
-sub_0205F908: ; 0x0205F908
+	thumb_func_start MapObject_SetCurrentHeight
+MapObject_SetCurrentHeight: ; 0x0205F908
 	str r1, [r0, #0x5c]
 	bx lr
-	thumb_func_end sub_0205F908
+	thumb_func_end MapObject_SetCurrentHeight
 
-	thumb_func_start sub_0205F90C
-sub_0205F90C: ; 0x0205F90C
+	thumb_func_start MapObject_GetCurrentY
+MapObject_GetCurrentY: ; 0x0205F90C
 	ldr r0, [r0, #0x60]
 	bx lr
-	thumb_func_end sub_0205F90C
+	thumb_func_end MapObject_GetCurrentY
 
-	thumb_func_start sub_0205F910
-sub_0205F910: ; 0x0205F910
+	thumb_func_start MapObject_SetCurrentY
+MapObject_SetCurrentY: ; 0x0205F910
 	str r1, [r0, #0x60]
 	bx lr
-	thumb_func_end sub_0205F910
+	thumb_func_end MapObject_SetCurrentY
 
-	thumb_func_start sub_0205F914
-sub_0205F914: ; 0x0205F914
+	thumb_func_start MapObject_GetNextX
+MapObject_GetNextX: ; 0x0205F914
 	ldr r0, [r0, #0x64]
 	bx lr
-	thumb_func_end sub_0205F914
+	thumb_func_end MapObject_GetNextX
 
-	thumb_func_start sub_0205F918
-sub_0205F918: ; 0x0205F918
+	thumb_func_start MapObject_SetNextX
+MapObject_SetNextX: ; 0x0205F918
 	str r1, [r0, #0x64]
 	bx lr
-	thumb_func_end sub_0205F918
+	thumb_func_end MapObject_SetNextX
 
-	thumb_func_start sub_0205F91C
-sub_0205F91C: ; 0x0205F91C
+	thumb_func_start MapObject_AddNextX
+MapObject_AddNextX: ; 0x0205F91C
 	ldr r2, [r0, #0x64]
 	add r1, r2, r1
 	str r1, [r0, #0x64]
 	bx lr
-	thumb_func_end sub_0205F91C
+	thumb_func_end MapObject_AddNextX
 
-	thumb_func_start sub_0205F924
-sub_0205F924: ; 0x0205F924
+	thumb_func_start MapObject_GetNextHeight
+MapObject_GetNextHeight: ; 0x0205F924
 	ldr r0, [r0, #0x68]
 	bx lr
-	thumb_func_end sub_0205F924
+	thumb_func_end MapObject_GetNextHeight
 
-	thumb_func_start sub_0205F928
-sub_0205F928: ; 0x0205F928
+	thumb_func_start MapObject_SetNextHeight
+MapObject_SetNextHeight: ; 0x0205F928
 	str r1, [r0, #0x68]
 	bx lr
-	thumb_func_end sub_0205F928
+	thumb_func_end MapObject_SetNextHeight
 
-	thumb_func_start sub_0205F92C
-sub_0205F92C: ; 0x0205F92C
+	thumb_func_start MapObject_AddNextHeight
+MapObject_AddNextHeight: ; 0x0205F92C
 	ldr r2, [r0, #0x68]
 	add r1, r2, r1
 	str r1, [r0, #0x68]
 	bx lr
-	thumb_func_end sub_0205F92C
+	thumb_func_end MapObject_AddNextHeight
 
-	thumb_func_start sub_0205F934
-sub_0205F934: ; 0x0205F934
+	thumb_func_start MapObject_GetNextY
+MapObject_GetNextY: ; 0x0205F934
 	ldr r0, [r0, #0x6c]
 	bx lr
-	thumb_func_end sub_0205F934
+	thumb_func_end MapObject_GetNextY
 
-	thumb_func_start sub_0205F938
-sub_0205F938: ; 0x0205F938
+	thumb_func_start MapObject_SetNextY
+MapObject_SetNextY: ; 0x0205F938
 	str r1, [r0, #0x6c]
 	bx lr
-	thumb_func_end sub_0205F938
+	thumb_func_end MapObject_SetNextY
 
-	thumb_func_start sub_0205F93C
-sub_0205F93C: ; 0x0205F93C
+	thumb_func_start MapObject_AddNextY
+MapObject_AddNextY: ; 0x0205F93C
 	ldr r2, [r0, #0x6c]
 	add r1, r2, r1
 	str r1, [r0, #0x6c]
 	bx lr
-	thumb_func_end sub_0205F93C
+	thumb_func_end MapObject_AddNextY
 
-	thumb_func_start sub_0205F944
-sub_0205F944: ; 0x0205F944
+	thumb_func_start MapObject_GetPositionVec
+MapObject_GetPositionVec: ; 0x0205F944
 	add r2, r0, #0
 	add r2, #0x70
 	add r3, r1, #0
@@ -3707,10 +3707,10 @@ sub_0205F944: ; 0x0205F944
 	ldr r0, [r2]
 	str r0, [r3]
 	bx lr
-	thumb_func_end sub_0205F944
+	thumb_func_end MapObject_GetPositionVec
 
-	thumb_func_start sub_0205F954
-sub_0205F954: ; 0x0205F954
+	thumb_func_start MapObject_SetPositionVec
+MapObject_SetPositionVec: ; 0x0205F954
 	add r3, r1, #0
 	add r2, r0, #0
 	ldmia r3!, {r0, r1}
@@ -3719,13 +3719,13 @@ sub_0205F954: ; 0x0205F954
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end sub_0205F954
+	thumb_func_end MapObject_SetPositionVec
 
-	thumb_func_start sub_0205F964
-sub_0205F964: ; 0x0205F964
+	thumb_func_start MapObject_GetPositionVecPtr
+MapObject_GetPositionVecPtr: ; 0x0205F964
 	add r0, #0x70
 	bx lr
-	thumb_func_end sub_0205F964
+	thumb_func_end MapObject_GetPositionVecPtr
 
 	thumb_func_start sub_0205F968
 sub_0205F968: ; 0x0205F968
@@ -3824,94 +3824,94 @@ sub_0205F9D0: ; 0x0205F9D0
 	.balign 4, 0
 	thumb_func_end sub_0205F9D0
 
-	thumb_func_start sub_0205F9E4
-sub_0205F9E4: ; 0x0205F9E4
+	thumb_func_start ObjectEventTemplate_SetID
+ObjectEventTemplate_SetID: ; 0x0205F9E4
 	strh r1, [r0]
 	bx lr
-	thumb_func_end sub_0205F9E4
+	thumb_func_end ObjectEventTemplate_SetID
 
-	thumb_func_start sub_0205F9E8
-sub_0205F9E8: ; 0x0205F9E8
+	thumb_func_start ObjectEventTemplate_GetID
+ObjectEventTemplate_GetID: ; 0x0205F9E8
 	ldrh r0, [r0]
 	bx lr
-	thumb_func_end sub_0205F9E8
+	thumb_func_end ObjectEventTemplate_GetID
 
-	thumb_func_start sub_0205F9EC
-sub_0205F9EC: ; 0x0205F9EC
+	thumb_func_start ObjectEventTemplate_SetSprite
+ObjectEventTemplate_SetSprite: ; 0x0205F9EC
 	strh r1, [r0, #2]
 	bx lr
-	thumb_func_end sub_0205F9EC
+	thumb_func_end ObjectEventTemplate_SetSprite
 
-	thumb_func_start sub_0205F9F0
-sub_0205F9F0: ; 0x0205F9F0
+	thumb_func_start ObjectEventTemplate_GetSprite
+ObjectEventTemplate_GetSprite: ; 0x0205F9F0
 	ldrh r0, [r0, #2]
 	bx lr
-	thumb_func_end sub_0205F9F0
+	thumb_func_end ObjectEventTemplate_GetSprite
 
-	thumb_func_start sub_0205F9F4
-sub_0205F9F4: ; 0x0205F9F4
+	thumb_func_start ObjectEventTemplate_SetMovement
+ObjectEventTemplate_SetMovement: ; 0x0205F9F4
 	strh r1, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205F9F4
+	thumb_func_end ObjectEventTemplate_SetMovement
 
-	thumb_func_start sub_0205F9F8
-sub_0205F9F8: ; 0x0205F9F8
+	thumb_func_start ObjectEventTemplate_GetMovement
+ObjectEventTemplate_GetMovement: ; 0x0205F9F8
 	ldrh r0, [r0, #4]
 	bx lr
-	thumb_func_end sub_0205F9F8
+	thumb_func_end ObjectEventTemplate_GetMovement
 
-	thumb_func_start sub_0205F9FC
-sub_0205F9FC: ; 0x0205F9FC
+	thumb_func_start ObjectEventTemplate_SetType
+ObjectEventTemplate_SetType: ; 0x0205F9FC
 	strh r1, [r0, #6]
 	bx lr
-	thumb_func_end sub_0205F9FC
+	thumb_func_end ObjectEventTemplate_SetType
 
-	thumb_func_start sub_0205FA00
-sub_0205FA00: ; 0x0205FA00
+	thumb_func_start ObjectEventTemplate_GetType
+ObjectEventTemplate_GetType: ; 0x0205FA00
 	ldrh r0, [r0, #6]
 	bx lr
-	thumb_func_end sub_0205FA00
+	thumb_func_end ObjectEventTemplate_GetType
 
-	thumb_func_start sub_0205FA04
-sub_0205FA04: ; 0x0205FA04
+	thumb_func_start ObjectEventTemplate_SetFlagID
+ObjectEventTemplate_SetFlagID: ; 0x0205FA04
 	strh r1, [r0, #8]
 	bx lr
-	thumb_func_end sub_0205FA04
+	thumb_func_end ObjectEventTemplate_SetFlagID
 
-	thumb_func_start sub_0205FA08
-sub_0205FA08: ; 0x0205FA08
+	thumb_func_start ObjectEventTemplate_GetFlagID
+ObjectEventTemplate_GetFlagID: ; 0x0205FA08
 	ldrh r0, [r0, #8]
 	bx lr
-	thumb_func_end sub_0205FA08
+	thumb_func_end ObjectEventTemplate_GetFlagID
 
-	thumb_func_start sub_0205FA0C
-sub_0205FA0C: ; 0x0205FA0C
+	thumb_func_start ObjectEventTemplate_SetScript
+ObjectEventTemplate_SetScript: ; 0x0205FA0C
 	strh r1, [r0, #0xa]
 	bx lr
-	thumb_func_end sub_0205FA0C
+	thumb_func_end ObjectEventTemplate_SetScript
 
-	thumb_func_start sub_0205FA10
-sub_0205FA10: ; 0x0205FA10
+	thumb_func_start ObjectEventTemplate_GetScript
+ObjectEventTemplate_GetScript: ; 0x0205FA10
 	ldrh r0, [r0, #0xa]
 	bx lr
-	thumb_func_end sub_0205FA10
+	thumb_func_end ObjectEventTemplate_GetScript
 
-	thumb_func_start sub_0205FA14
-sub_0205FA14: ; 0x0205FA14
+	thumb_func_start ObjectEventTemplate_SetFacing
+ObjectEventTemplate_SetFacing: ; 0x0205FA14
 	strh r1, [r0, #0xc]
 	bx lr
-	thumb_func_end sub_0205FA14
+	thumb_func_end ObjectEventTemplate_SetFacing
 
-	thumb_func_start sub_0205FA18
-sub_0205FA18: ; 0x0205FA18
+	thumb_func_start ObjectEventTemplate_GetFacing
+ObjectEventTemplate_GetFacing: ; 0x0205FA18
 	mov r1, #0xc
 	ldrsh r0, [r0, r1]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205FA18
+	thumb_func_end ObjectEventTemplate_GetFacing
 
-	thumb_func_start sub_0205FA20
-sub_0205FA20: ; 0x0205FA20
+	thumb_func_start ObjectEventTemplate_SetParam
+ObjectEventTemplate_SetParam: ; 0x0205FA20
 	push {r3, lr}
 	cmp r2, #0
 	beq _0205FA30
@@ -3933,10 +3933,10 @@ _0205FA3C:
 	bl GF_AssertFail
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205FA20
+	thumb_func_end ObjectEventTemplate_SetParam
 
-	thumb_func_start sub_0205FA44
-sub_0205FA44: ; 0x0205FA44
+	thumb_func_start ObjectEventTemplate_GetParam
+ObjectEventTemplate_GetParam: ; 0x0205FA44
 	push {r3, lr}
 	cmp r1, #0
 	beq _0205FA54
@@ -3958,71 +3958,71 @@ _0205FA60:
 	bl GF_AssertFail
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_0205FA44
+	thumb_func_end ObjectEventTemplate_GetParam
 
-	thumb_func_start sub_0205FA68
-sub_0205FA68: ; 0x0205FA68
+	thumb_func_start ObjectEventTemplate_SetXRange
+ObjectEventTemplate_SetXRange: ; 0x0205FA68
 	strh r1, [r0, #0x14]
 	bx lr
-	thumb_func_end sub_0205FA68
+	thumb_func_end ObjectEventTemplate_SetXRange
 
-	thumb_func_start sub_0205FA6C
-sub_0205FA6C: ; 0x0205FA6C
+	thumb_func_start ObjectEventTemplate_GetXRange
+ObjectEventTemplate_GetXRange: ; 0x0205FA6C
 	mov r1, #0x14
 	ldrsh r0, [r0, r1]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205FA6C
+	thumb_func_end ObjectEventTemplate_GetXRange
 
-	thumb_func_start sub_0205FA74
-sub_0205FA74: ; 0x0205FA74
+	thumb_func_start ObjectEventTemplate_SetYRange
+ObjectEventTemplate_SetYRange: ; 0x0205FA74
 	strh r1, [r0, #0x16]
 	bx lr
-	thumb_func_end sub_0205FA74
+	thumb_func_end ObjectEventTemplate_SetYRange
 
-	thumb_func_start sub_0205FA78
-sub_0205FA78: ; 0x0205FA78
+	thumb_func_start ObjectEventTemplate_GetYRange
+ObjectEventTemplate_GetYRange: ; 0x0205FA78
 	mov r1, #0x16
 	ldrsh r0, [r0, r1]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205FA78
+	thumb_func_end ObjectEventTemplate_GetYRange
 
-	thumb_func_start sub_0205FA80
-sub_0205FA80: ; 0x0205FA80
+	thumb_func_start ObjectEventTemplate_SetXCoord
+ObjectEventTemplate_SetXCoord: ; 0x0205FA80
 	strh r1, [r0, #0x18]
 	bx lr
-	thumb_func_end sub_0205FA80
+	thumb_func_end ObjectEventTemplate_SetXCoord
 
-	thumb_func_start sub_0205FA84
-sub_0205FA84: ; 0x0205FA84
+	thumb_func_start ObjectEventTemplate_GetXCoord
+ObjectEventTemplate_GetXCoord: ; 0x0205FA84
 	ldrh r0, [r0, #0x18]
 	bx lr
-	thumb_func_end sub_0205FA84
+	thumb_func_end ObjectEventTemplate_GetXCoord
 
-	thumb_func_start sub_0205FA88
-sub_0205FA88: ; 0x0205FA88
+	thumb_func_start ObjectEventTemplate_SetHeight
+ObjectEventTemplate_SetHeight: ; 0x0205FA88
 	str r1, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205FA88
+	thumb_func_end ObjectEventTemplate_SetHeight
 
-	thumb_func_start sub_0205FA8C
-sub_0205FA8C: ; 0x0205FA8C
+	thumb_func_start ObjectEventTemplate_GetHeight
+ObjectEventTemplate_GetHeight: ; 0x0205FA8C
 	ldr r0, [r0, #0x1c]
 	bx lr
-	thumb_func_end sub_0205FA8C
+	thumb_func_end ObjectEventTemplate_GetHeight
 
-	thumb_func_start sub_0205FA90
-sub_0205FA90: ; 0x0205FA90
+	thumb_func_start ObjectEventTemplate_SetYCoord
+ObjectEventTemplate_SetYCoord: ; 0x0205FA90
 	strh r1, [r0, #0x1a]
 	bx lr
-	thumb_func_end sub_0205FA90
+	thumb_func_end ObjectEventTemplate_SetYCoord
 
-	thumb_func_start sub_0205FA94
-sub_0205FA94: ; 0x0205FA94
+	thumb_func_start ObjectEventTemplate_GetYCoord
+ObjectEventTemplate_GetYCoord: ; 0x0205FA94
 	ldrh r0, [r0, #0x1a]
 	bx lr
-	thumb_func_end sub_0205FA94
+	thumb_func_end ObjectEventTemplate_GetYCoord
 
 	thumb_func_start sub_0205FA98
 sub_0205FA98: ; 0x0205FA98
@@ -4034,11 +4034,11 @@ sub_0205FA98: ; 0x0205FA98
 	add r5, r2, #0
 _0205FAA4:
 	add r0, r5, #0
-	bl sub_0205FACC
+	bl ObjectEventTemplate_ScriptIdIsFFFF
 	cmp r0, #0
 	bne _0205FAC0
 	add r0, r5, #0
-	bl sub_0205F9E8
+	bl ObjectEventTemplate_GetID
 	cmp r6, r0
 	bne _0205FAC0
 	ldr r0, [sp]
@@ -4054,10 +4054,10 @@ _0205FAC0:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0205FA98
 
-	thumb_func_start sub_0205FACC
-sub_0205FACC: ; 0x0205FACC
+	thumb_func_start ObjectEventTemplate_ScriptIdIsFFFF
+ObjectEventTemplate_ScriptIdIsFFFF: ; 0x0205FACC
 	push {r3, lr}
-	bl sub_0205FA10
+	bl ObjectEventTemplate_GetScript
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	ldr r0, _0205FAE4 ; =0x0000FFFF
@@ -4070,21 +4070,21 @@ _0205FAE0:
 	pop {r3, pc}
 	.balign 4, 0
 _0205FAE4: .word 0x0000FFFF
-	thumb_func_end sub_0205FACC
+	thumb_func_end ObjectEventTemplate_ScriptIdIsFFFF
 
-	thumb_func_start sub_0205FAE8
-sub_0205FAE8: ; 0x0205FAE8
+	thumb_func_start ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF
+ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF: ; 0x0205FAE8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205FACC
+	bl ObjectEventTemplate_ScriptIdIsFFFF
 	cmp r0, #1
 	beq _0205FAF8
 	bl GF_AssertFail
 _0205FAF8:
 	add r0, r4, #0
-	bl sub_0205FA08
+	bl ObjectEventTemplate_GetFlagID
 	pop {r4, pc}
-	thumb_func_end sub_0205FAE8
+	thumb_func_end ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF
 
 	thumb_func_start sub_0205FB00
 sub_0205FB00: ; 0x0205FB00
@@ -4192,22 +4192,22 @@ _0205FB70:
 	cmp r0, #0
 	beq _0205FB9A
 	add r0, r4, #0
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	cmp r5, r0
 	bne _0205FB9A
 	add r0, r4, #0
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	cmp r6, r0
 	bne _0205FB9A
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _0205FB9A:
 	add r0, r4, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	cmp r5, r0
 	bne _0205FBB2
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	cmp r6, r0
 	bne _0205FBB2
 	add r0, r4, #0
@@ -4234,7 +4234,7 @@ sub_0205FBC0: ; 0x0205FBC0
 	add r1, r2, r1
 	asr r1, r1, #0xc
 	add r5, r0, #0
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	ldr r1, [r4, #4]
 	add r0, r5, #0
 	asr r2, r1, #3
@@ -4242,7 +4242,7 @@ sub_0205FBC0: ; 0x0205FBC0
 	lsr r1, r1, #0x14
 	add r1, r2, r1
 	asr r1, r1, #0xc
-	bl sub_0205F928
+	bl MapObject_SetNextHeight
 	ldr r1, [r4, #8]
 	add r0, r5, #0
 	asr r2, r1, #4
@@ -4250,10 +4250,10 @@ sub_0205FBC0: ; 0x0205FBC0
 	lsr r1, r1, #0x14
 	add r1, r2, r1
 	asr r1, r1, #0xc
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -4283,12 +4283,12 @@ sub_0205FC2C: ; 0x0205FC2C
 	add r2, r3, r2
 	add r5, r0, #0
 	str r2, [sp]
-	bl sub_0205F918
+	bl MapObject_SetNextX
 	lsl r0, r4, #0xf
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F928
+	bl MapObject_SetNextHeight
 	mov r0, #2
 	lsl r1, r6, #0x10
 	lsl r0, r0, #0xe
@@ -4296,10 +4296,10 @@ sub_0205FC2C: ; 0x0205FC2C
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0205F938
+	bl MapObject_SetNextY
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r5, #0
 	bl sub_02060F78
 	ldr r1, [sp, #0x20]
@@ -4326,7 +4326,7 @@ sub_0205FC94: ; 0x0205FC94
 	bl sub_0205F444
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F260
+	bl MapObject_SetMovement
 	add r0, r5, #0
 	bl sub_0205ECE0
 	add r0, r5, #0
@@ -4386,7 +4386,7 @@ sub_0205FCD0: ; 0x0205FCD0
 sub_0205FCD4: ; 0x0205FCD4
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	mov r1, #2
 	lsl r1, r1, #0xc
 	cmp r0, r1

@@ -13,8 +13,8 @@ scr_seq_0265_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_312
-	scrcmd_313 VAR_SPECIAL_x800C
+	buffer_day_care_mon_nicks
+	get_day_care_state VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _0094
 	compare VAR_SPECIAL_x800C, 2
@@ -67,7 +67,7 @@ _0094:
 	goto_if_eq _00F6
 	touchscreen_menu_show
 	clearflag FLAG_UNK_067
-	scrcmd_365
+	reset_day_care_egg
 	compare VAR_UNK_408E, 3
 	goto_if_ne _00EB
 	npc_msg msg_0439_00012
@@ -98,7 +98,7 @@ _0114:
 	npc_msg msg_0439_00005
 	play_fanfare SEQ_ME_TAMAGO_GET
 	wait_fanfare
-	scrcmd_366
+	give_day_care_egg
 	clearflag FLAG_UNK_067
 	compare VAR_UNK_408E, 3
 	goto_if_ne _0146
@@ -115,7 +115,7 @@ _0146:
 	end
 
 _0151:
-	scrcmd_312
+	buffer_day_care_mon_nicks
 	npc_msg msg_0439_00002
 	waitbutton
 	closemsg
@@ -123,9 +123,9 @@ _0151:
 	end
 
 _015E:
-	scrcmd_312
+	buffer_day_care_mon_nicks
 	npc_msg msg_0439_00009
-	scrcmd_387 32780
+	get_day_care_compatibility VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _0196
 	compare VAR_SPECIAL_x800C, 1
@@ -192,7 +192,7 @@ scr_seq_0265_001:
 	lockall
 	faceplayer
 	scrcmd_113 20, 2
-	scrcmd_313 VAR_SPECIAL_x800C
+	get_day_care_state VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 1
 	goto_if_eq _042E
 	compare VAR_SPECIAL_x800C, 2
@@ -226,8 +226,8 @@ _0290:
 	wait_fade
 	setvar VAR_SPECIAL_x800C, 0
 _02CB:
-	scrcmd_551 32780
-	scrcmd_552 32768, 32780
+	scrcmd_551 VAR_SPECIAL_x800C
+	scrcmd_552 VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _02F4
 	choose_move_ui 0, VAR_SPECIAL_x8000, 0
@@ -237,7 +237,7 @@ _02CB:
 _02F4:
 	compare VAR_SPECIAL_x8000, 255
 	goto_if_eq _03C6
-	scrcmd_690 VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _03A1
 	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
@@ -246,11 +246,11 @@ _02F4:
 	count_alive_mons VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_x800C, 0
 	goto_if_eq _040A
-	scrcmd_373 VAR_SPECIAL_x8000
+	put_mon_in_day_care VAR_SPECIAL_x8000
 	call _038B
-	scrcmd_372 VAR_SPECIAL_x8001
+	get_tail_day_care_mon_species_and_nick VAR_SPECIAL_x8001
 	setflag FLAG_UNK_068
-	scrcmd_313 VAR_SPECIAL_x800C
+	get_day_care_state VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_eq _0363
 	goto _0374
@@ -357,7 +357,7 @@ _043B:
 	return
 
 _0440:
-	scrcmd_371 32780, 32768
+	buffer_day_care_mon_growth VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_x800C, 0
 	call_if_ne _043B
 	return
@@ -383,15 +383,15 @@ _0498:
 	get_party_count VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 6
 	goto_if_eq _05DC
-	scrcmd_313 VAR_SPECIAL_x800C
+	get_day_care_state VAR_SPECIAL_x800C
 	setvar VAR_SPECIAL_x8001, 0
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_eq _0520
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8001
-	scrcmd_385 0, 1, 2, 0
+	buffer_day_care_mon_stats 0, 1, 2, 0
 	menu_item_add 136, 255, 0
-	scrcmd_385 0, 1, 2, 1
+	buffer_day_care_mon_stats 0, 1, 2, 1
 	menu_item_add 137, 255, 1
 	menu_item_add 138, 255, 2
 	menu_exec
@@ -402,7 +402,7 @@ _0498:
 	goto _03CE
 
 _0520:
-	scrcmd_367 32772, 32769
+	buffer_day_care_withdraw_cost VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	npc_msg msg_0439_00033
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_x800C
@@ -424,10 +424,10 @@ _0544:
 	end
 
 _0566:
-	scrcmd_361 32770, 32769
+	retrieve_day_care_mon VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_715
+	update_day_care_mon_objects
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	submoneyvar VAR_SPECIAL_x8004
@@ -439,7 +439,7 @@ _0566:
 	buffer_players_name 1
 	npc_msg msg_0439_00035
 	wait_cry
-	scrcmd_313 VAR_SPECIAL_x800C
+	get_day_care_state VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 2
 	goto_if_eq _05BE
 	touchscreen_menu_show

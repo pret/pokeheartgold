@@ -238,15 +238,15 @@ _0383:
 	case 1, _0546
 	case 2, _0553
 	scrcmd_412 53, 0, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 53, 1, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 53, 2, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 43, 0, VAR_SPECIAL_x800C
@@ -264,19 +264,19 @@ _042F:
 	case 1, _0546
 	case 2, _0553
 	scrcmd_412 53, 0, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 53, 1, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 53, 2, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 53, 3, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 43, 0, VAR_SPECIAL_x800C
@@ -748,11 +748,11 @@ _0C7D:
 	case 1, _0546
 	case 2, _0553
 	scrcmd_412 53, 0, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	scrcmd_412 53, 1, VAR_SPECIAL_x800C
-	scrcmd_690 VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
+	day_care_sanitize_mon VAR_SPECIAL_x800C, VAR_SPECIAL_x800C
 	compare VAR_SPECIAL_x800C, 255
 	goto_if_eq _14C8
 	compare VAR_TEMP_x4001, 1

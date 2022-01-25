@@ -42,8 +42,7 @@
       "yrange": 0,
       "x": 9,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D02R0104_tsure_poke_static_clefairy_2",
@@ -60,8 +59,7 @@
       "yrange": 0,
       "x": 12,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D02R0104_tsure_poke_static_clefairy_3",
@@ -78,8 +76,7 @@
       "yrange": 0,
       "x": 9,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D02R0104_tsure_poke_static_clefairy_4",
@@ -96,8 +93,7 @@
       "yrange": 0,
       "x": 6,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D02R0104_tsure_poke_static_clefairy_5",
@@ -114,8 +110,7 @@
       "yrange": 0,
       "x": 14,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D02R0104_tsure_poke_static_clefairy_6",
@@ -132,8 +127,7 @@
       "yrange": 0,
       "x": 4,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D02R0104_monstarball",
@@ -150,8 +144,7 @@
       "yrange": 0,
       "x": 11,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

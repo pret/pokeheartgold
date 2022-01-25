@@ -1,10 +1,11 @@
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ScrCmd_312
-ScrCmd_312: ; 0x0204CB5C
+	thumb_func_start ScrCmd_BufferDayCareMonNicks
+ScrCmd_BufferDayCareMonNicks: ; 0x0204CB5C
 	push {r3, r4, r5, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -15,13 +16,13 @@ ScrCmd_312: ; 0x0204CB5C
 	add r0, r5, #0
 	bl Sav2_DayCare_get
 	ldr r1, [r4]
-	bl sub_0206CE94
+	bl Sav2_DayCare_BufferStoredMonNicks
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_312
+	thumb_func_end ScrCmd_BufferDayCareMonNicks
 
-	thumb_func_start ScrCmd_313
-ScrCmd_313: ; 0x0204CB7C
+	thumb_func_start ScrCmd_GetDayCareState
+ScrCmd_GetDayCareState: ; 0x0204CB7C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -37,29 +38,29 @@ ScrCmd_313: ; 0x0204CB7C
 	add r0, r4, #0
 	mov r1, #7
 	bl SavArray_get
-	bl sub_0206CFD4
+	bl Sav2_DayCare_GetState
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_313
+	thumb_func_end ScrCmd_GetDayCareState
 
-	thumb_func_start ScrCmd_365
-ScrCmd_365: ; 0x0204CBAC
+	thumb_func_start ScrCmd_ResetDayCareEgg
+ScrCmd_ResetDayCareEgg: ; 0x0204CBAC
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #7
 	ldr r0, [r0, #0xc]
 	bl SavArray_get
-	bl sub_0206C708
+	bl Sav2_DayCare_ResetEggStats
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_365
+	thumb_func_end ScrCmd_ResetDayCareEgg
 
-	thumb_func_start ScrCmd_366
-ScrCmd_366: ; 0x0204CBC4
+	thumb_func_start ScrCmd_GiveDayCareEgg
+ScrCmd_GiveDayCareEgg: ; 0x0204CBC4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -81,10 +82,10 @@ ScrCmd_366: ; 0x0204CBC4
 	bl GiveEggToPlayer
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_366
+	thumb_func_end ScrCmd_GiveDayCareEgg
 
-	thumb_func_start ScrCmd_361
-ScrCmd_361: ; 0x0204CBF8
+	thumb_func_start ScrCmd_RetrieveDayCareMon
+ScrCmd_RetrieveDayCareMon: ; 0x0204CBF8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -119,16 +120,16 @@ ScrCmd_361: ; 0x0204CBF8
 	ldr r1, [r7]
 	add r2, r6, #0
 	lsr r3, r3, #0x18
-	bl sub_0206C078
+	bl Sav2_DayCare_RetrieveMon
 	ldr r1, [sp]
 	strh r0, [r1]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_361
+	thumb_func_end ScrCmd_RetrieveDayCareMon
 
-	thumb_func_start ScrCmd_367
-ScrCmd_367: ; 0x0204CC58
+	thumb_func_start ScrCmd_BufferDayCareWithdrawCost
+ScrCmd_BufferDayCareWithdrawCost: ; 0x0204CC58
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -159,15 +160,15 @@ ScrCmd_367: ; 0x0204CC58
 	lsl r1, r4, #0x18
 	ldr r2, [r7]
 	lsr r1, r1, #0x18
-	bl sub_0206C190
+	bl Sav2_DayCare_BufferMonNickAndRetrievalPrice
 	strh r0, [r6]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_367
+	thumb_func_end ScrCmd_BufferDayCareWithdrawCost
 
-	thumb_func_start ScrCmd_371
-ScrCmd_371: ; 0x0204CCAC
+	thumb_func_start ScrCmd_BufferDayCareMonGrowth
+ScrCmd_BufferDayCareMonGrowth: ; 0x0204CCAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -196,15 +197,15 @@ ScrCmd_371: ; 0x0204CCAC
 	bl SavArray_get
 	ldr r2, [r6]
 	add r1, r5, #0
-	bl sub_0206C1A0
+	bl Sav2_DayCare_BufferGrowthAndNick
 	strh r0, [r7]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_371
+	thumb_func_end ScrCmd_BufferDayCareMonGrowth
 
-	thumb_func_start ScrCmd_372
-ScrCmd_372: ; 0x0204CCFC
+	thumb_func_start ScrCmd_GetTailDayCareMonSpeciesAndNick
+ScrCmd_GetTailDayCareMonSpeciesAndNick: ; 0x0204CCFC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r0, #0x80
@@ -223,15 +224,15 @@ ScrCmd_372: ; 0x0204CCFC
 	ldr r0, [r5, #0xc]
 	bl Sav2_DayCare_get
 	ldr r1, [r6]
-	bl sub_0206CF78
+	bl Sav2_DayCare_BufferTailMonNick
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_372
+	thumb_func_end ScrCmd_GetTailDayCareMonSpeciesAndNick
 
-	thumb_func_start ScrCmd_373
-ScrCmd_373: ; 0x0204CD34
+	thumb_func_start ScrCmd_PutMonInDayCare
+ScrCmd_PutMonInDayCare: ; 0x0204CD34
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r1, r6, #0
@@ -255,14 +256,14 @@ ScrCmd_373: ; 0x0204CD34
 	add r0, r4, #0
 	lsr r1, r1, #0x18
 	add r3, r5, #0
-	bl sub_0206BED8
+	bl Sav2_DayCare_PutMonIn
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_373
+	thumb_func_end ScrCmd_PutMonInDayCare
 
-	thumb_func_start ScrCmd_385
-ScrCmd_385: ; 0x0204CD74
+	thumb_func_start ScrCmd_BufferDayCareMonStats
+ScrCmd_BufferDayCareMonStats: ; 0x0204CD74
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -318,14 +319,14 @@ ScrCmd_385: ; 0x0204CD74
 	lsr r1, r1, #0x18
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl sub_0206CEE0
+	bl Sav2_DayCare_BufferMonStats
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_385
+	thumb_func_end ScrCmd_BufferDayCareMonStats
 
-	thumb_func_start ScrCmd_387
-ScrCmd_387: ; 0x0204CE00
+	thumb_func_start ScrCmd_GetDayCareCompatibility
+ScrCmd_GetDayCareCompatibility: ; 0x0204CE00
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -341,15 +342,15 @@ ScrCmd_387: ; 0x0204CE00
 	add r0, r4, #0
 	mov r1, #7
 	bl SavArray_get
-	bl sub_0206D02C
+	bl Sav2_DayCare_CalcCompatibility
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_387
+	thumb_func_end ScrCmd_GetDayCareCompatibility
 
-	thumb_func_start ScrCmd_388
-ScrCmd_388: ; 0x0204CE30
+	thumb_func_start ScrCmd_CheckDayCareEgg
+ScrCmd_CheckDayCareEgg: ; 0x0204CE30
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -370,10 +371,10 @@ ScrCmd_388: ; 0x0204CE30
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_388
+	thumb_func_end ScrCmd_CheckDayCareEgg
 
-	thumb_func_start ScrCmd_715
-ScrCmd_715: ; 0x0204CE60
+	thumb_func_start ScrCmd_UpdateDayCareMonObjects
+ScrCmd_UpdateDayCareMonObjects: ; 0x0204CE60
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r0, #0x80
@@ -389,10 +390,10 @@ _0204CE78:
 	add r1, r5, #0
 	ldr r0, [r6, #0x3c]
 	add r1, #0xfa
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _0204CE8A
-	bl sub_0205E400
+	bl DeleteMapObject
 _0204CE8A:
 	ldr r0, [sp, #0x24]
 	add r1, r5, #0
@@ -441,7 +442,7 @@ _0204CE8A:
 	ldr r2, [sp, #0x1c]
 	ldr r3, [sp, #0x20]
 	lsr r1, r1, #0x18
-	bl sub_0204CF10
+	bl CreateDayCareMonSpriteInternal
 _0204CEFA:
 	ldr r0, [sp, #0x18]
 	add r5, r5, #1
@@ -454,10 +455,10 @@ _0204CEFA:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_715
+	thumb_func_end ScrCmd_UpdateDayCareMonObjects
 
-	thumb_func_start sub_0204CF10
-sub_0204CF10: ; 0x0204CF10
+	thumb_func_start CreateDayCareMonSpriteInternal
+CreateDayCareMonSpriteInternal: ; 0x0204CF10
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r2, #0
@@ -477,7 +478,7 @@ sub_0204CF10: ; 0x0204CF10
 	ldr r2, [sp, #0x2c]
 	ldr r3, [sp, #0x24]
 	add r0, r4, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	add r4, r0, #0
 	bne _0204CF44
 	bl GF_AssertFail
@@ -485,20 +486,20 @@ _0204CF44:
 	add r5, #0xfa
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205F248
+	bl MapObject_SetID
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F270
+	bl MapObject_SetFlagID
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	lsl r2, r7, #0x18
 	ldr r3, [sp, #0x34]
 	add r0, r4, #0
@@ -508,11 +509,11 @@ _0204CF44:
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F318
+	bl MapObject_SetXRange
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F320
+	bl MapObject_SetYRange
 	add r0, r4, #0
 	mov r1, #4
 	bl sub_0205F20C
@@ -528,10 +529,10 @@ _0204CF44:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0204CF10
+	thumb_func_end CreateDayCareMonSpriteInternal
 
-	thumb_func_start ScrCmd_690
-ScrCmd_690: ; 0x0204CFB8
+	thumb_func_start ScrCmd_DayCareSanitizeMon
+ScrCmd_DayCareSanitizeMon: ; 0x0204CFB8
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -597,7 +598,7 @@ _0204D034:
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData
-	ldr r2, _0204D084 ; =0x000001DF SPECIES_ROTOM
+	ldr r2, _0204D084 ; =SPECIES_ROTOM
 	cmp r0, r2
 	beq _0204D06A
 	add r1, r2, #0
@@ -626,5 +627,5 @@ _0204D07E:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0204D084: .word 0x000001DF
-	thumb_func_end ScrCmd_690
+_0204D084: .word SPECIES_ROTOM
+	thumb_func_end ScrCmd_DayCareSanitizeMon

@@ -122,8 +122,7 @@
       "yrange": 0,
       "x": 1,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_pcwoman2_2",
@@ -140,8 +139,7 @@
       "yrange": 0,
       "x": 3,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_gsfighter",
@@ -158,8 +156,7 @@
       "yrange": 0,
       "x": 14,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_gsman3",
@@ -176,8 +173,7 @@
       "yrange": 0,
       "x": 14,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_gswoman3",
@@ -194,8 +190,7 @@
       "yrange": 0,
       "x": 11,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_tsure_poke_static_abra",
@@ -212,8 +207,7 @@
       "yrange": 0,
       "x": 10,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_tsure_poke_static_dratini",
@@ -230,8 +224,7 @@
       "yrange": 0,
       "x": 15,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_signshoes",
@@ -248,8 +241,7 @@
       "yrange": 0,
       "x": 13,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_signclothes",
@@ -266,8 +258,7 @@
       "yrange": 0,
       "x": 9,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0105_signflag",
@@ -284,8 +275,7 @@
       "yrange": 0,
       "x": 6,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

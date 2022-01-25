@@ -21,8 +21,8 @@ Daycare_GetBoxMonI: ; 0x0206BDB0
 	pop {r3, pc}
 	thumb_func_end Daycare_GetBoxMonI
 
-	thumb_func_start sub_0206BDBC
-sub_0206BDBC: ; 0x0206BDBC
+	thumb_func_start Sav2_DayCare_CountMonsInDayCare
+Sav2_DayCare_CountMonsInDayCare: ; 0x0206BDBC
 	push {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	add r6, r0, #0
@@ -50,10 +50,10 @@ _0206BDE4:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206BDBC
+	thumb_func_end Sav2_DayCare_CountMonsInDayCare
 
-	thumb_func_start sub_0206BDF4
-sub_0206BDF4: ; 0x0206BDF4
+	thumb_func_start Sav2_DayCare_GetAvailableSlot
+Sav2_DayCare_GetAvailableSlot: ; 0x0206BDF4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, _0206BE30 ; =_021D4218
@@ -84,10 +84,10 @@ _0206BE1E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0206BE30: .word _021D4218
-	thumb_func_end sub_0206BDF4
+	thumb_func_end Sav2_DayCare_GetAvailableSlot
 
-	thumb_func_start sub_0206BE34
-sub_0206BE34: ; 0x0206BE34
+	thumb_func_start DayCareMon_CopyFromPartySlot
+DayCareMon_CopyFromPartySlot: ; 0x0206BE34
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r5, r2, #0
@@ -154,10 +154,10 @@ _0206BED0:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206BED4: .word 0x000001B9
-	thumb_func_end sub_0206BE34
+	thumb_func_end DayCareMon_CopyFromPartySlot
 
-	thumb_func_start sub_0206BED8
-sub_0206BED8: ; 0x0206BED8
+	thumb_func_start Sav2_DayCare_PutMonIn
+Sav2_DayCare_PutMonIn: ; 0x0206BED8
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r3, #0
 	add r5, r0, #0
@@ -168,7 +168,7 @@ sub_0206BED8: ; 0x0206BED8
 	mov r1, #0x29
 	bl GameStats_Inc
 	add r0, r4, #0
-	bl sub_0206BDF4
+	bl Sav2_DayCare_GetAvailableSlot
 	add r1, r0, #0
 	add r0, r4, #0
 	bl Sav2_DayCare_GetMonX
@@ -176,13 +176,13 @@ sub_0206BED8: ; 0x0206BED8
 	add r0, r5, #0
 	add r1, r6, #0
 	add r3, r7, #0
-	bl sub_0206BE34
+	bl DayCareMon_CopyFromPartySlot
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206BED8
+	thumb_func_end Sav2_DayCare_PutMonIn
 
-	thumb_func_start sub_0206BF0C
-sub_0206BF0C: ; 0x0206BF0C
+	thumb_func_start Sav2_DayCare_Compaction
+Sav2_DayCare_Compaction: ; 0x0206BF0C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	mov r1, #0
@@ -218,7 +218,7 @@ sub_0206BF0C: ; 0x0206BF0C
 _0206BF5C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206BF0C
+	thumb_func_end Sav2_DayCare_Compaction
 
 	thumb_func_start sub_0206BF60
 sub_0206BF60: ; 0x0206BF60
@@ -273,8 +273,8 @@ _0206BFB4:
 _0206BFC0: .word 0x0000FFFF
 	thumb_func_end sub_0206BF60
 
-	thumb_func_start sub_0206BFC4
-sub_0206BFC4: ; 0x0206BFC4
+	thumb_func_start Sav2_DayCare_MoveMonToParty
+Sav2_DayCare_MoveMonToParty: ; 0x0206BFC4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -349,10 +349,10 @@ _0206C056:
 	add r0, r7, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0206BFC4
+	thumb_func_end Sav2_DayCare_MoveMonToParty
 
-	thumb_func_start sub_0206C078
-sub_0206C078: ; 0x0206C078
+	thumb_func_start Sav2_DayCare_RetrieveMon
+Sav2_DayCare_RetrieveMon: ; 0x0206C078
 	push {r4, r5, r6, lr}
 	add r6, r2, #0
 	add r5, r0, #0
@@ -363,17 +363,17 @@ sub_0206C078: ; 0x0206C078
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0206BFC4
+	bl Sav2_DayCare_MoveMonToParty
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r6, #0
-	bl sub_0206BF0C
+	bl Sav2_DayCare_Compaction
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0206C078
+	thumb_func_end Sav2_DayCare_RetrieveMon
 
-	thumb_func_start sub_0206C0A0
-sub_0206C0A0: ; 0x0206C0A0
+	thumb_func_start GetDayCareUpdatedLevel
+GetDayCareUpdatedLevel: ; 0x0206C0A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	mov r0, #0xb
@@ -403,10 +403,10 @@ sub_0206C0A0: ; 0x0206C0A0
 	bl FreeToHeap
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0206C0A0
+	thumb_func_end GetDayCareUpdatedLevel
 
-	thumb_func_start sub_0206C0E8
-sub_0206C0E8: ; 0x0206C0E8
+	thumb_func_start DayCareMon_CalcLevelGrowth
+DayCareMon_CalcLevelGrowth: ; 0x0206C0E8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl DayCareMon_GetBoxMon
@@ -418,15 +418,15 @@ sub_0206C0E8: ; 0x0206C0E8
 	bl DayCareMon_GetSteps
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0206C0A0
+	bl GetDayCareUpdatedLevel
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	sub r0, r0, r4
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0206C0E8
+	thumb_func_end DayCareMon_CalcLevelGrowth
 
-	thumb_func_start sub_0206C110
-sub_0206C110: ; 0x0206C110
+	thumb_func_start DayCareMon_BufferLevelGrowthAndNick
+DayCareMon_BufferLevelGrowthAndNick: ; 0x0206C110
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -434,7 +434,7 @@ sub_0206C110: ; 0x0206C110
 	bl DayCareMon_GetBoxMon
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0206C0E8
+	bl DayCareMon_CalcLevelGrowth
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -453,10 +453,10 @@ sub_0206C110: ; 0x0206C110
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206C110
+	thumb_func_end DayCareMon_BufferLevelGrowthAndNick
 
-	thumb_func_start sub_0206C14C
-sub_0206C14C: ; 0x0206C14C
+	thumb_func_start DayCareMon_BufferNickAndRetrievalPrice
+DayCareMon_BufferNickAndRetrievalPrice: ; 0x0206C14C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -464,7 +464,7 @@ sub_0206C14C: ; 0x0206C14C
 	bl DayCareMon_GetBoxMon
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0206C0E8
+	bl DayCareMon_CalcLevelGrowth
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	add r0, r5, #0
@@ -487,20 +487,20 @@ sub_0206C14C: ; 0x0206C14C
 	add r0, r4, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0206C14C
+	thumb_func_end DayCareMon_BufferNickAndRetrievalPrice
 
-	thumb_func_start sub_0206C190
-sub_0206C190: ; 0x0206C190
+	thumb_func_start Sav2_DayCare_BufferMonNickAndRetrievalPrice
+Sav2_DayCare_BufferMonNickAndRetrievalPrice: ; 0x0206C190
 	push {r4, lr}
 	add r4, r2, #0
 	bl Sav2_DayCare_GetMonX
 	add r1, r4, #0
-	bl sub_0206C14C
+	bl DayCareMon_BufferNickAndRetrievalPrice
 	pop {r4, pc}
-	thumb_func_end sub_0206C190
+	thumb_func_end Sav2_DayCare_BufferMonNickAndRetrievalPrice
 
-	thumb_func_start sub_0206C1A0
-sub_0206C1A0: ; 0x0206C1A0
+	thumb_func_start Sav2_DayCare_BufferGrowthAndNick
+Sav2_DayCare_BufferGrowthAndNick: ; 0x0206C1A0
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
 	bl Sav2_DayCare_GetMonX
@@ -513,12 +513,12 @@ sub_0206C1A0: ; 0x0206C1A0
 	beq _0206C1C4
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0206C110
+	bl DayCareMon_BufferLevelGrowthAndNick
 	pop {r3, r4, r5, pc}
 _0206C1C4:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0206C1A0
+	thumb_func_end Sav2_DayCare_BufferGrowthAndNick
 
 	thumb_func_start Daycare_GetBothBoxMonsPtr
 Daycare_GetBothBoxMonsPtr: ; 0x0206C1C8
@@ -1216,8 +1216,8 @@ _0206C6F8:
 _0206C704: .word 0x0000FFFF
 	thumb_func_end InheritMoves
 
-	thumb_func_start sub_0206C708
-sub_0206C708: ; 0x0206C708
+	thumb_func_start Sav2_DayCare_ResetEggStats
+Sav2_DayCare_ResetEggStats: ; 0x0206C708
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
@@ -1226,7 +1226,7 @@ sub_0206C708: ; 0x0206C708
 	mov r1, #0
 	bl Sav2_DayCare_SetEggCycleCounter
 	pop {r4, pc}
-	thumb_func_end sub_0206C708
+	thumb_func_end Sav2_DayCare_ResetEggStats
 
 	thumb_func_start Daycare_BreedingIncenseCheck
 Daycare_BreedingIncenseCheck: ; 0x0206C71C
@@ -1719,7 +1719,7 @@ _0206CB0C:
 	add r1, r4, #0
 	bl AddMonToParty
 	add r0, r5, #0
-	bl sub_0206C708
+	bl Sav2_DayCare_ResetEggStats
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x14
@@ -1802,8 +1802,8 @@ _0206CBA0:
 	.balign 4, 0
 	thumb_func_end sub_0206CB88
 
-	thumb_func_start sub_0206CBB8
-sub_0206CBB8: ; 0x0206CBB8
+	thumb_func_start ComputeCompatibilityBetweenBoxMons
+ComputeCompatibilityBetweenBoxMons: ; 0x0206CBB8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	add r5, r0, #0
@@ -1945,19 +1945,19 @@ _0206CCBC:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206CBB8
+	thumb_func_end ComputeCompatibilityBetweenBoxMons
 
-	thumb_func_start sub_0206CCC4
-sub_0206CCC4: ; 0x0206CCC4
+	thumb_func_start Sav2_DayCare_CalcCompatibilityInternal
+Sav2_DayCare_CalcCompatibilityInternal: ; 0x0206CCC4
 	push {r3, lr}
 	sub sp, #8
 	add r1, sp, #0
 	bl Daycare_GetBothBoxMonsPtr
 	add r0, sp, #0
-	bl sub_0206CBB8
+	bl ComputeCompatibilityBetweenBoxMons
 	add sp, #8
 	pop {r3, pc}
-	thumb_func_end sub_0206CCC4
+	thumb_func_end Sav2_DayCare_CalcCompatibilityInternal
 
 	thumb_func_start sub_0206CCD8
 sub_0206CCD8: ; 0x0206CCD8
@@ -2041,7 +2041,7 @@ _0206CD50:
 	cmp r0, #0xff
 	bne _0206CDA2
 	ldr r0, [sp]
-	bl sub_0206CCC4
+	bl Sav2_DayCare_CalcCompatibilityInternal
 	add r4, r0, #0
 	bl LCRandom
 	mov r1, #0x64
@@ -2175,8 +2175,8 @@ _0206CE90:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0206CE44
 
-	thumb_func_start sub_0206CE94
-sub_0206CE94: ; 0x0206CE94
+	thumb_func_start Sav2_DayCare_BufferStoredMonNicks
+Sav2_DayCare_BufferStoredMonNicks: ; 0x0206CE94
 	push {r4, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -2211,10 +2211,10 @@ _0206CEDA:
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206CE94
+	thumb_func_end Sav2_DayCare_BufferStoredMonNicks
 
-	thumb_func_start sub_0206CEE0
-sub_0206CEE0: ; 0x0206CEE0
+	thumb_func_start Sav2_DayCare_BufferMonStats
+Sav2_DayCare_BufferMonStats: ; 0x0206CEE0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r4, r1, #0
@@ -2238,7 +2238,7 @@ sub_0206CEE0: ; 0x0206CEE0
 	bl DayCareMon_GetSteps
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0206C0A0
+	bl GetDayCareUpdatedLevel
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	mov r0, #0
@@ -2283,10 +2283,10 @@ _0206CF68:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206CEE0
+	thumb_func_end Sav2_DayCare_BufferMonStats
 
-	thumb_func_start sub_0206CF78
-sub_0206CF78: ; 0x0206CF78
+	thumb_func_start Sav2_DayCare_BufferTailMonNick
+Sav2_DayCare_BufferTailMonNick: ; 0x0206CF78
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -2326,10 +2326,10 @@ _0206CFC4:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206CF78
+	thumb_func_end Sav2_DayCare_BufferTailMonNick
 
-	thumb_func_start sub_0206CFD4
-sub_0206CFD4: ; 0x0206CFD4
+	thumb_func_start Sav2_DayCare_GetState
+Sav2_DayCare_GetState: ; 0x0206CFD4
 	push {r4, lr}
 	add r4, r0, #0
 	bl Sav2_DayCare_HasEgg
@@ -2339,7 +2339,7 @@ sub_0206CFD4: ; 0x0206CFD4
 	pop {r4, pc}
 _0206CFE4:
 	add r0, r4, #0
-	bl sub_0206BDBC
+	bl Sav2_DayCare_CountMonsInDayCare
 	cmp r0, #0
 	beq _0206CFF6
 	add r0, r0, #1
@@ -2350,10 +2350,10 @@ _0206CFF6:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206CFD4
+	thumb_func_end Sav2_DayCare_GetState
 
-	thumb_func_start sub_0206CFFC
-sub_0206CFFC: ; 0x0206CFFC
+	thumb_func_start ConvertDayCareCompatibilityScore
+ConvertDayCareCompatibilityScore: ; 0x0206CFFC
 	cmp r0, #0x14
 	bhi _0206D008
 	bhs _0206D01A
@@ -2385,15 +2385,15 @@ _0206D026:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0206CFFC
+	thumb_func_end ConvertDayCareCompatibilityScore
 
-	thumb_func_start sub_0206D02C
-sub_0206D02C: ; 0x0206D02C
+	thumb_func_start Sav2_DayCare_CalcCompatibility
+Sav2_DayCare_CalcCompatibility: ; 0x0206D02C
 	push {r3, lr}
-	bl sub_0206CCC4
-	bl sub_0206CFFC
+	bl Sav2_DayCare_CalcCompatibilityInternal
+	bl ConvertDayCareCompatibilityScore
 	pop {r3, pc}
-	thumb_func_end sub_0206D02C
+	thumb_func_end Sav2_DayCare_CalcCompatibility
 
 	thumb_func_start sub_0206D038
 sub_0206D038: ; 0x0206D038

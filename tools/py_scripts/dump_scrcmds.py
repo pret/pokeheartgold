@@ -102,7 +102,7 @@ BgEvent = NamedStruct('BgEvent', '<HHLLLL', (
     'z',
     'dir'
 ))
-ObjectEvent = NamedStruct('ObjectEvent', '<16H', (
+ObjectEvent = NamedStruct('ObjectEvent', 'HHHHHHhHHHhhHHl', (
     'id',
     'ovid',
     'mvt',
@@ -118,7 +118,6 @@ ObjectEvent = NamedStruct('ObjectEvent', '<16H', (
     'x',
     'y',
     'z',
-    'unk1E'
 ))
 WarpEvent = NamedStruct('WarpEvent', '<HHHHL', (
     'x',
@@ -360,7 +359,6 @@ class NormalScriptParser(ScriptParserBase):
                     'x': ob.x,
                     'y': ob.y,
                     'z': ob.z,
-                    'unk1E': ob.unk1E
                 } for i, ob in enumerate(obs)
             ]
         if wps:

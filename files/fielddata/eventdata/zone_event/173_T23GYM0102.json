@@ -50,8 +50,7 @@
       "yrange": 0,
       "x": 15,
       "y": 22,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23GYM0102_gsboy3_2",
@@ -68,8 +67,7 @@
       "yrange": 0,
       "x": 7,
       "y": 20,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23GYM0102_gsbabygirl1",
@@ -86,8 +84,7 @@
       "yrange": 0,
       "x": 3,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23GYM0102_gsbabygirl1_2",
@@ -104,8 +101,7 @@
       "yrange": 0,
       "x": 2,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23GYM0102_gsboy3_3",
@@ -122,8 +118,7 @@
       "yrange": 0,
       "x": 15,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T23GYM0102_gsleader2",
@@ -140,8 +135,7 @@
       "yrange": 0,
       "x": 9,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

@@ -975,10 +975,10 @@ _0205636E:
 	cmp r7, #0
 	beq _0205638E
 	ldr r0, [sp]
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	add r4, #0xe4
 	add r2, r0, #0
 	add r0, r6, #0
@@ -999,7 +999,7 @@ _02056396:
 	add r1, r1, #1
 	str r1, [r4]
 	add r1, sp, #4
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [r4, #4]
 	cmp r0, #1
 	bne _020563C8
@@ -1023,7 +1023,7 @@ _020563C8:
 _020563D2:
 	add r0, r6, #0
 	add r1, sp, #4
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r4]
 	cmp r0, #0x10
 	blt _02056418
@@ -1138,7 +1138,7 @@ _020564BE:
 	add r1, r1, #1
 	str r1, [r5]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -1146,7 +1146,7 @@ _020564BE:
 	str r0, [sp, #4]
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r5]
 	cmp r0, #0x10
 	blt _02056524

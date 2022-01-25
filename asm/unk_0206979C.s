@@ -3,6 +3,7 @@
 #include "constants/sprites.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/std_script.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -472,7 +473,7 @@ _02069A4C:
 	lsr r2, r2, #0x10
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
-	bl sub_0206A128
+	bl CreateFollowingSpriteFieldObject
 	add r1, r4, #0
 	add r1, #0xe4
 	str r0, [r1]
@@ -609,7 +610,7 @@ _02069B9C:
 	b _02069CF2
 _02069BDA:
 	mov r1, #0xfd
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [sp, #4]
 	cmp r0, #0
 	bne _02069BF0
@@ -661,7 +662,7 @@ _02069BF0:
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	ldr r0, [r5, #0x40]
 	bl sub_0205C700
 	cmp r0, #0
@@ -734,7 +735,7 @@ _02069CE4:
 	pop {r4, r5, r6, r7, pc}
 _02069CF2:
 	mov r1, #0xfd
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	str r0, [sp, #0xc]
 	cmp r0, #0
 	beq _02069D62
@@ -770,7 +771,7 @@ _02069CF2:
 	bl FollowingPokemon_GetSpriteID
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_0205F258
+	bl MapObject_SetGfxID
 	add r1, r5, #0
 	ldr r0, [sp, #0xc]
 	add r1, #0xe4
@@ -871,7 +872,7 @@ sub_02069DEC: ; 0x02069DEC
 	add r4, r1, #0
 	mov r1, #2
 	add r5, r0, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	mov r1, #1
 	and r1, r0
 	asr r0, r0, #2
@@ -883,7 +884,7 @@ sub_02069DEC: ; 0x02069DEC
 	orr r1, r0
 	add r0, r5, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02069DEC
 
@@ -891,7 +892,7 @@ sub_02069DEC: ; 0x02069DEC
 sub_02069E14: ; 0x02069E14
 	push {r3, lr}
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	asr r1, r0, #1
 	mov r0, #1
 	and r0, r1
@@ -906,7 +907,7 @@ sub_02069E28: ; 0x02069E28
 	add r4, r1, #0
 	mov r1, #2
 	add r5, r0, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	lsl r1, r0, #6
 	lsr r1, r1, #0x10
 	lsl r1, r1, #0x1a
@@ -918,7 +919,7 @@ sub_02069E28: ; 0x02069E28
 	orr r1, r0
 	add r0, r5, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02069E28
 
@@ -933,7 +934,7 @@ sub_02069E50: ; 0x02069E50
 _02069E5E:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	ldr r1, _02069E80 ; =0x000003FF
 	lsl r2, r5, #0xa
 	and r0, r1
@@ -943,7 +944,7 @@ _02069E5E:
 	orr r1, r0
 	add r0, r4, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r3, r4, r5, pc}
 	nop
 _02069E80: .word 0x000003FF
@@ -955,7 +956,7 @@ sub_02069E84: ; 0x02069E84
 	add r4, r1, #0
 	mov r1, #2
 	add r5, r0, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	mov r1, #3
 	and r1, r0
 	asr r0, r0, #3
@@ -967,7 +968,7 @@ sub_02069E84: ; 0x02069E84
 	orr r1, r0
 	add r0, r5, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02069E84
 
@@ -975,7 +976,7 @@ sub_02069E84: ; 0x02069E84
 sub_02069EAC: ; 0x02069EAC
 	push {r3, lr}
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	asr r1, r0, #2
 	mov r0, #1
 	and r0, r1
@@ -988,7 +989,7 @@ sub_02069EAC: ; 0x02069EAC
 sub_02069EC0: ; 0x02069EC0
 	push {r3, lr}
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	asr r1, r0, #8
 	mov r0, #3
 	and r0, r1
@@ -1001,7 +1002,7 @@ sub_02069EC0: ; 0x02069EC0
 sub_02069ED4: ; 0x02069ED4
 	push {r3, lr}
 	mov r1, #2
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	asr r1, r0, #0xa
 	mov r0, #0x3f
 	and r0, r1
@@ -1017,7 +1018,7 @@ sub_02069EE8: ; 0x02069EE8
 	add r5, r0, #0
 	add r6, r2, #0
 	add r1, r3, #0
-	bl sub_0206A080
+	bl FollowingPoke_SetObjectShinyFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -1025,7 +1026,7 @@ sub_02069EE8: ; 0x02069EE8
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02069EE8
 
@@ -1038,10 +1039,10 @@ sub_02069F0C: ; 0x02069F0C
 	add r5, r0, #0
 	add r7, r3, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0206A080
+	bl FollowingPoke_SetObjectShinyFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -1049,7 +1050,7 @@ sub_02069F0C: ; 0x02069F0C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02069F0C
 
@@ -1092,11 +1093,11 @@ sub_02069F64: ; 0x02069F64
 
 	thumb_func_start sub_02069F7C
 sub_02069F7C: ; 0x02069F7C
-	ldr r3, _02069F84 ; =sub_0205F2F4
+	ldr r3, _02069F84 ; =MapObject_GetParam
 	mov r1, #0
 	bx r3
 	nop
-_02069F84: .word sub_0205F2F4
+_02069F84: .word MapObject_GetParam
 	thumb_func_end sub_02069F7C
 
 	thumb_func_start sub_02069F88
@@ -1246,13 +1247,13 @@ sub_0206A06C: ; 0x0206A06C
 	.balign 4, 0
 	thumb_func_end sub_0206A06C
 
-	thumb_func_start sub_0206A080
-sub_0206A080: ; 0x0206A080
+	thumb_func_start FollowingPoke_SetObjectShinyFlag
+FollowingPoke_SetObjectShinyFlag: ; 0x0206A080
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	mov r1, #2
 	add r5, r0, #0
-	bl sub_0205F2F4
+	bl MapObject_GetParam
 	asr r0, r0, #1
 	lsl r1, r0, #1
 	cmp r4, #0
@@ -1262,10 +1263,10 @@ sub_0206A080: ; 0x0206A080
 _0206A098:
 	add r0, r5, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206A080
+	thumb_func_end FollowingPoke_SetObjectShinyFlag
 
 	thumb_func_start sub_0206A0A4
 sub_0206A0A4: ; 0x0206A0A4
@@ -1338,12 +1339,12 @@ _0206A106:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0206A0E0
 
-	thumb_func_start sub_0206A128
-sub_0206A128: ; 0x0206A128
+	thumb_func_start CreateFollowingSpriteFieldObject
+CreateFollowingSpriteFieldObject: ; 0x0206A128
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r2, #0
@@ -1362,27 +1363,27 @@ sub_0206A128: ; 0x0206A128
 	ldr r2, [sp, #0x28]
 	ldr r3, [sp, #0x20]
 	add r0, r4, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	add r4, r0, #0
 	bne _0206A15A
 	bl GF_AssertFail
 _0206A15A:
 	add r0, r4, #0
 	mov r1, #0xfd
-	bl sub_0205F248
+	bl MapObject_SetID
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F268
+	bl MapObject_SetType
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F270
-	ldr r1, _0206A1D0 ; =0x000025E4
+	bl MapObject_SetFlagID
+	ldr r1, _0206A1D0 ; =std_following_mon
 	add r0, r4, #0
-	bl sub_0205F278
+	bl MapObject_SetScript
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #2
-	bl sub_0205F2D0
+	bl MapObject_SetParam
 	lsl r2, r6, #0x18
 	ldr r3, [sp, #0x2c]
 	add r0, r4, #0
@@ -1392,11 +1393,11 @@ _0206A15A:
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F318
+	bl MapObject_SetXRange
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
-	bl sub_0205F320
+	bl MapObject_SetYRange
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
@@ -1415,8 +1416,8 @@ _0206A15A:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0206A1D0: .word 0x000025E4
-	thumb_func_end sub_0206A128
+_0206A1D0: .word std_following_mon
+	thumb_func_end CreateFollowingSpriteFieldObject
 
 	thumb_func_start sub_0206A1D4
 sub_0206A1D4: ; 0x0206A1D4
@@ -2105,7 +2106,7 @@ _0206A6D8:
 	add r1, r1, #1
 	strh r1, [r4, #2]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -2113,7 +2114,7 @@ _0206A6D8:
 	str r0, [sp, #4]
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldrh r0, [r4, #2]
 	cmp r0, #0x10
 	blo _0206A790

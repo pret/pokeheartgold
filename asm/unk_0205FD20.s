@@ -90,14 +90,14 @@ _0205FDA8:
 	pop {r4, pc}
 _0205FDBA:
 	add r0, r4, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r0, #0x32
 	bne _0205FDC8
 	mov r0, #1
 	pop {r4, pc}
 _0205FDC8:
 	add r0, r4, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	cmp r0, #0x30
 	bne _0205FDD6
 	mov r0, #1
@@ -581,7 +581,7 @@ sub_020601BC: ; 0x020601BC
 	sub sp, #0xc
 	add r6, r1, #0
 	add r5, r0, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205B6E8
@@ -601,7 +601,7 @@ _020601E6:
 	bl ov01_021FF070
 _020601EE:
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	bne _02060270
 	add r0, r5, #0
@@ -613,7 +613,7 @@ _020601EE:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r4, #0xfe
 	add r6, r0, #0
 	lsl r0, r4, #0x18
@@ -667,7 +667,7 @@ sub_02060274: ; 0x02060274
 	sub sp, #0xc
 	add r6, r1, #0
 	add r5, r0, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205B6E8
@@ -687,7 +687,7 @@ _0206029E:
 	bl ov01_021FF070
 _020602A6:
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	bne _02060324
 	add r0, r5, #0
@@ -699,7 +699,7 @@ _020602A6:
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r4, #0xfe
 	add r6, r0, #0
 	lsl r0, r4, #0x18
@@ -1165,7 +1165,7 @@ sub_02060698: ; 0x02060698
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205B6F4
@@ -1193,7 +1193,7 @@ sub_020606CC: ; 0x020606CC
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	add r5, r0, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0205B6F4
@@ -1237,13 +1237,13 @@ sub_02060708: ; 0x02060708
 	cmp r0, #1
 	bne _02060738
 	add r0, r5, #0
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F904
+	bl MapObject_GetCurrentHeight
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1263,13 +1263,13 @@ sub_0206073C: ; 0x0206073C
 	cmp r0, #1
 	bne _0206076C
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1289,13 +1289,13 @@ sub_02060770: ; 0x02060770
 	cmp r0, #1
 	bne _020607A0
 	add r0, r5, #0
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F904
+	bl MapObject_GetCurrentHeight
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1315,13 +1315,13 @@ sub_020607A4: ; 0x020607A4
 	cmp r0, #1
 	bne _020607D4
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1351,7 +1351,7 @@ _020607F2:
 	bl sub_0205BA6C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	beq _02060804
 	b _0206096A
@@ -1591,7 +1591,7 @@ sub_020609D4: ; 0x020609D4
 	cmp r0, #0
 	beq _02060AB2
 	add r0, r5, #0
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	bne _02060A96
 	add r0, r5, #0
@@ -1741,7 +1741,7 @@ sub_02060AF4: ; 0x02060AF4
 	orr r4, r0
 _02060B16:
 	add r0, r6, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r1, sp, #0xc
 	str r1, [sp]
 	ldr r1, [sp, #4]
@@ -1809,7 +1809,7 @@ sub_02060B90: ; 0x02060B90
 	add r5, r0, #0
 	add r7, r2, #0
 	add r4, r3, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r0, [sp, #0x28]
 	str r4, [sp]
 	str r0, [sp, #4]
@@ -1828,16 +1828,16 @@ sub_02060BB8: ; 0x02060BB8
 	sub sp, #0xc
 	add r4, r1, #0
 	add r5, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp, #8]
 	add r0, r4, #0
 	bl sub_02060F18
@@ -1885,16 +1885,16 @@ _02060C1C:
 	cmp r0, #0
 	bne _02060C94
 	ldr r0, [sp, #8]
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r5, r0, #0
 	ldr r0, [sp, #8]
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	cmp r5, r4
 	bne _02060C68
 	cmp r0, r7
 	bne _02060C68
 	ldr r0, [sp, #8]
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	sub r0, r0, r6
 	bpl _02060C5E
 	neg r0, r0
@@ -1906,16 +1906,16 @@ _02060C5E:
 	pop {r4, r5, r6, r7, pc}
 _02060C68:
 	ldr r0, [sp, #8]
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	ldr r0, [sp, #8]
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	cmp r5, r4
 	bne _02060C94
 	cmp r0, r7
 	bne _02060C94
 	ldr r0, [sp, #8]
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	sub r0, r0, r6
 	bpl _02060C8A
 	neg r0, r0
@@ -1962,10 +1962,10 @@ _02060CC8:
 	cmp r0, #0
 	beq _02060D84
 	ldr r0, [sp, #4]
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	ldr r1, [sp, #0xc]
 	str r0, [sp, #8]
 	cmp r1, r5
@@ -1973,7 +1973,7 @@ _02060CC8:
 	cmp r0, r6
 	bne _02060D0A
 	ldr r0, [sp, #4]
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	sub r0, r0, r4
 	bpl _02060D00
 	neg r0, r0
@@ -1985,10 +1985,10 @@ _02060D00:
 	pop {r3, r4, r5, r6, r7, pc}
 _02060D0A:
 	ldr r0, [sp, #4]
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	ldr r1, [sp, #0xc]
 	str r0, [sp, #8]
 	cmp r1, r5
@@ -1996,7 +1996,7 @@ _02060D0A:
 	cmp r0, r6
 	bne _02060D3A
 	ldr r0, [sp, #4]
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	sub r0, r0, r4
 	bpl _02060D30
 	neg r0, r0
@@ -2008,7 +2008,7 @@ _02060D30:
 	pop {r3, r4, r5, r6, r7, pc}
 _02060D3A:
 	ldr r0, [sp, #4]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	bne _02060D84
 	ldr r0, [sp, #4]
@@ -2030,7 +2030,7 @@ _02060D3A:
 	cmp r0, r6
 	bne _02060D84
 	ldr r0, [sp, #4]
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	sub r0, r0, r4
 	bpl _02060D7A
 	neg r0, r0
@@ -2056,10 +2056,10 @@ sub_02060D94: ; 0x02060D94
 	add r6, r0, #0
 	add r5, r1, #0
 	add r4, r3, #0
-	bl sub_0205F8E4
+	bl MapObject_GetInitialX
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_0205F31C
+	bl MapObject_GetXRange
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2075,10 +2075,10 @@ _02060DBC:
 	pop {r3, r4, r5, r6, r7, pc}
 _02060DC0:
 	add r0, r6, #0
-	bl sub_0205F8F4
+	bl MapObject_GetInitialY
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0205F324
+	bl MapObject_GetYRange
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2109,7 +2109,7 @@ sub_02060DEC: ; 0x02060DEC
 	cmp r0, #0
 	bne _02060E46
 	add r0, r4, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp]
 	add r0, r4, #0
 	bl sub_0205F504
@@ -2181,7 +2181,7 @@ _02060E84:
 	cmp r0, #0
 	beq _02060EA0
 	add r0, r5, #0
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	sub r0, #0xb2
 	cmp r0, #1
 	bhi _02060EA0
@@ -2284,33 +2284,33 @@ sub_02060F24: ; 0x02060F24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F900
+	bl MapObject_SetCurrentX
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F908
+	bl MapObject_SetCurrentHeight
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F910
+	bl MapObject_SetCurrentY
 	add r0, r4, #0
 	bl sub_02060F0C
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F91C
+	bl MapObject_AddNextX
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F92C
+	bl MapObject_AddNextHeight
 	add r0, r4, #0
 	bl sub_02060F18
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F93C
+	bl MapObject_AddNextY
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02060F24
 
@@ -2318,20 +2318,20 @@ sub_02060F24: ; 0x02060F24
 sub_02060F78: ; 0x02060F78
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0205F900
+	bl MapObject_SetCurrentX
 	add r0, r4, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0205F908
+	bl MapObject_SetCurrentHeight
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0205F910
+	bl MapObject_SetCurrentY
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02060F78
@@ -2341,19 +2341,19 @@ sub_02060FA8: ; 0x02060FA8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp]
 	add r0, r5, #0
 	bl sub_02060F18
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	ldr r2, [sp]
 	add r1, r6, r7
 	add r2, r2, r5
@@ -2367,19 +2367,19 @@ sub_02060FE0: ; 0x02060FE0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp]
 	add r0, r5, #0
 	bl sub_02060F18
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	ldr r2, [sp]
 	add r1, r6, r7
 	add r2, r2, r5
@@ -2398,7 +2398,7 @@ sub_0206101C: ; 0x0206101C
 	add r1, sp, #0
 	add r6, r0, #0
 	add r4, r2, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	cmp r5, #3
 	bhi _02061062
 	add r0, r5, r5
@@ -2434,7 +2434,7 @@ _0206105C:
 _02061062:
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2446,7 +2446,7 @@ sub_02061070: ; 0x02061070
 	sub sp, #0x18
 	add r1, sp, #0xc
 	add r5, r0, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r3, sp, #0xc
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0
@@ -2469,7 +2469,7 @@ _020610A2:
 	bl sub_0205F8B8
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r1, sp, #0
 	add r2, r4, #0
 	bl sub_02061248
@@ -2480,12 +2480,12 @@ _020610A2:
 	add r1, sp, #0xc
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0205F908
+	bl MapObject_SetCurrentHeight
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
 	asr r2, r1, #3
@@ -2493,7 +2493,7 @@ _020610A2:
 	lsr r1, r1, #0x14
 	add r1, r2, r1
 	asr r1, r1, #0xc
-	bl sub_0205F928
+	bl MapObject_SetNextHeight
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
@@ -2523,23 +2523,23 @@ sub_02061108: ; 0x02061108
 	cmp r0, #0
 	bne _0206115A
 	add r0, r5, #0
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r1, r4, #0
 	add r2, r6, #0
 	add r7, r0, #0
 	bl sub_02054918
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
@@ -2627,7 +2627,7 @@ sub_020611C8: ; 0x020611C8
 sub_020611DC: ; 0x020611DC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	sub r0, #0x33
 	cmp r0, #3
 	bhi _020611F0

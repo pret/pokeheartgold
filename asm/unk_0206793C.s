@@ -649,7 +649,7 @@ sub_02067E10: ; 0x02067E10
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _02067E62
-	bl sub_0205F25C
+	bl MapObject_GetGfxID
 	cmp r0, #0x54
 	beq _02067E46
 	cmp r0, #0x55

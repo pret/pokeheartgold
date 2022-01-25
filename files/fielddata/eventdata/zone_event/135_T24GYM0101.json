@@ -42,8 +42,7 @@
       "yrange": 0,
       "x": 13,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T24GYM0101_gsfighter",
@@ -60,8 +59,7 @@
       "yrange": 0,
       "x": 6,
       "y": 9,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T24GYM0101_gsfighter_2",
@@ -78,8 +76,7 @@
       "yrange": 0,
       "x": 18,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T24GYM0101_gsfighter_3",
@@ -96,8 +93,7 @@
       "yrange": 0,
       "x": 7,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T24GYM0101_gsfighter_4",
@@ -114,8 +110,7 @@
       "yrange": 0,
       "x": 15,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

@@ -361,8 +361,8 @@ gScriptCmdTable:
 	.word ScrCmd_309                                    ; 309
 	.word ScrCmd_310                                    ; 310
 	.word ScrCmd_311                                    ; 311
-	.word ScrCmd_312                                    ; 312
-	.word ScrCmd_313                                    ; 313
+	.word ScrCmd_BufferDayCareMonNicks                                    ; 312
+	.word ScrCmd_GetDayCareState                                    ; 313
 	.word ScrCmd_314                                    ; 314
 	.word ScrCmd_315                                    ; 315
 	.word ScrCmd_316                                    ; 316
@@ -389,7 +389,7 @@ gScriptCmdTable:
 	.word ScrCmd_BufferNatureName                                    ; 337
 	.word ScrCmd_338                                    ; 338
 	.word ScrCmd_MovePerson                           ; 339
-	.word ScrCmd_340                                    ; 340
+	.word ScrCmd_SetObjectMovementType                                    ; 340
 	.word ScrCmd_341                                    ; 341
 	.word ScrCmd_342                                    ; 342
 	.word ScrCmd_343                                    ; 343
@@ -410,19 +410,19 @@ gScriptCmdTable:
 	.word ScrCmd_PokeathlonPartyCount                                    ; 358
 	.word ScrCmd_359                                    ; 359
 	.word ScrCmd_SubMoneyVar                            ; 360
-	.word ScrCmd_361                                    ; 361
+	.word ScrCmd_RetrieveDayCareMon                                    ; 361
 	.word ScrCmd_362                                    ; 362
 	.word ScrCmd_363                                    ; 363
 	.word ScrCmd_364                                    ; 364
-	.word ScrCmd_365                                    ; 365
-	.word ScrCmd_366                                    ; 366
-	.word ScrCmd_367                                    ; 367
+	.word ScrCmd_ResetDayCareEgg                                    ; 365
+	.word ScrCmd_GiveDayCareEgg                                    ; 366
+	.word ScrCmd_BufferDayCareWithdrawCost                                    ; 367
 	.word ScrCmd_HasEnoughMoneyVar                      ; 368
 	.word ScrCmd_EggHatchAnim                                    ; 369
 	.word ScrCmd_370                                    ; 370
-	.word ScrCmd_371                                    ; 371
-	.word ScrCmd_372                                    ; 372
-	.word ScrCmd_373                                    ; 373
+	.word ScrCmd_BufferDayCareMonGrowth                                    ; 371
+	.word ScrCmd_GetTailDayCareMonSpeciesAndNick                                    ; 372
+	.word ScrCmd_PutMonInDayCare                                    ; 373
 	.word ScrCmd_374                                    ; 374
 	.word ScrCmd_375                                    ; 375
 	.word ScrCmd_376                                    ; 376
@@ -434,10 +434,10 @@ gScriptCmdTable:
 	.word ScrCmd_382                                    ; 382
 	.word ScrCmd_383                                    ; 383
 	.word ScrCmd_384                                    ; 384
-	.word ScrCmd_385                                    ; 385
+	.word ScrCmd_BufferDayCareMonStats                                    ; 385
 	.word ScrCmd_GetPlayerFacing                                    ; 386
-	.word ScrCmd_387                                    ; 387
-	.word ScrCmd_388                                    ; 388
+	.word ScrCmd_GetDayCareCompatibility                                    ; 387
+	.word ScrCmd_CheckDayCareEgg                                    ; 388
 	.word ScrCmd_PlayerHasSpecies                                    ; 389
 	.word ScrCmd_SizeRecordCompare                                    ; 390
 	.word ScrCmd_SizeRecordUpdate                                    ; 391
@@ -739,7 +739,7 @@ gScriptCmdTable:
 	.word ScrCmd_687                                    ; 687
 	.word ScrCmd_688                                    ; 688
 	.word ScrCmd_CommSanitizeParty                                    ; 689
-	.word ScrCmd_690                                    ; 690
+	.word ScrCmd_DayCareSanitizeMon                                    ; 690
 	.word ScrCmd_691                                    ; 691
 	.word ScrCmd_692                                    ; 692
 	.word ScrCmd_693                                    ; 693
@@ -764,7 +764,7 @@ gScriptCmdTable:
 	.word ScrCmd_712                                    ; 712
 	.word ScrCmd_AlphPuzzle                                    ; 713
 	.word ScrCmd_714                                    ; 714
-	.word ScrCmd_715                                    ; 715
+	.word ScrCmd_UpdateDayCareMonObjects                                    ; 715
 	.word ScrCmd_716                                    ; 716
 	.word ScrCmd_717                                    ; 717
 	.word ScrCmd_718                                    ; 718
@@ -1463,7 +1463,7 @@ ScrCmd_ObjectGoTo: ; 0x02040C44
 	bl ScriptReadWord
 	add r7, r0, #0
 	ldr r0, [r6]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r4, r0
 	bne _02040C78
 	ldr r1, [r5, #8]
@@ -3499,11 +3499,11 @@ _02041BCA:
 	bl AllocFromHeap
 	add r4, r0, #0
 	ldr r0, [sp, #4]
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r0, [sp, #4]
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	lsl r0, r0, #0x10
 	ldr r2, [sp]
 	lsr r0, r0, #0x10
@@ -3594,7 +3594,7 @@ _02041C80:
 	pop {r3, pc}
 _02041C8E:
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02041C70
@@ -3964,7 +3964,7 @@ ScrCmd_098: ; 0x02041F60
 	add r4, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r4, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _02041F80
 	bl sub_0205F6FC
@@ -3988,7 +3988,7 @@ ScrCmd_099: ; 0x02041F8C
 	add r4, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r4, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _02041FAC
 	bl sub_0205F708
@@ -4051,13 +4051,13 @@ ScrCmd_HidePerson: ; 0x02042000
 	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	bne _0204202A
 	bl GF_AssertFail
 	b _0204202E
 _0204202A:
-	bl sub_0205E400
+	bl DeleteMapObject
 _0204202E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -4104,7 +4104,7 @@ ScrCmd_102: ; 0x02042034
 	str r1, [sp, #8]
 	ldr r0, [r0, #0x3c]
 	add r1, r6, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	str r0, [r4]
 	bl sub_02061070
 	ldr r0, [r4]
@@ -4114,7 +4114,7 @@ ScrCmd_102: ; 0x02042034
 	mov r1, #0
 	bl sub_0205F6AC
 	ldr r0, [r4]
-	bl sub_0205F964
+	bl MapObject_GetPositionVecPtr
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r1, [r1]
@@ -4141,14 +4141,14 @@ ScrCmd_103: ; 0x020420CC
 	mov r1, #0xb
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #0xff
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
-	bl sub_0205F964
+	bl GetMapObjectByID
+	bl MapObject_GetPositionVecPtr
 	add r1, r5, #0
 	add r1, #0x80
 	ldr r1, [r1]
@@ -4203,7 +4203,7 @@ ScrCmd_678: ; 0x02042110
 	str r1, [sp, #8]
 	ldr r0, [r0, #0x3c]
 	add r1, r6, #0
-	bl sub_0205E294
+	bl CreateSpecialFieldObject
 	str r0, [r4]
 	bl sub_02061070
 	ldr r0, [r4]
@@ -4225,7 +4225,7 @@ ScrCmd_679: ; 0x02042184
 	mov r1, #0xb
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl sub_0205E3CC
+	bl MapObject_Remove
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -4258,7 +4258,7 @@ _020421C6:
 	add r1, r6, #0
 	bl ov01_021F9408
 	ldr r0, [r4]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	cmp r0, #0xfd
 	bne _020422AC
 	ldr r0, [r4]
@@ -4405,7 +4405,7 @@ ScrCmd_GetPersonCoords: ; 0x020422F8
 	add r7, r0, #0
 	ldr r0, [r5, #0x3c]
 	add r1, r7, #0
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -4425,10 +4425,10 @@ ScrCmd_GetPersonCoords: ; 0x020422F8
 	cmp r5, #0
 	beq _0204235A
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	strh r0, [r6]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	strh r0, [r4]
 	b _02042368
 _0204235A:
@@ -4579,7 +4579,7 @@ ScrCmd_108: ; 0x02042478
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	ldr r2, [r4, #8]
 	add r1, r2, #1
 	str r1, [r4, #8]
@@ -4605,7 +4605,7 @@ ScrCmd_109: ; 0x020424AC
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword
@@ -4644,10 +4644,10 @@ ScrCmd_574: ; 0x020424E8
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _0204252A
-	bl sub_0205F264
+	bl MapObject_GetMovement
 	strh r0, [r4]
 _0204252A:
 	mov r0, #0
@@ -8289,7 +8289,7 @@ ScrCmd_264: ; 0x02044124
 	cmp r4, #0
 	bne _0204417A
 	ldr r0, [r7]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	b _0204417C
@@ -8378,7 +8378,7 @@ ScrCmd_267: ; 0x020441D8
 	bl FieldSysGetAttrAddr
 	add r7, r0, #0
 	ldr r0, [r4]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -8442,7 +8442,7 @@ ScrCmd_268: ; 0x02044270
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -8479,7 +8479,7 @@ ScrCmd_274: ; 0x020442AC
 	bl GetVarPointer
 	add r4, r0, #0
 	ldr r0, [r6]
-	bl sub_0205F24C
+	bl MapObject_GetID
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
@@ -9096,7 +9096,7 @@ ScrCmd_MovePerson: ; 0x0204473C
 	ldr r0, [r5]
 	add r1, r6, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	add r5, r0, #0
@@ -9111,8 +9111,8 @@ ScrCmd_MovePerson: ; 0x0204473C
 	.balign 4, 0
 	thumb_func_end ScrCmd_MovePerson
 
-	thumb_func_start ScrCmd_340
-ScrCmd_340: ; 0x020447CC
+	thumb_func_start ScrCmd_SetObjectMovementType
+ScrCmd_SetObjectMovementType: ; 0x020447CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -9136,7 +9136,7 @@ ScrCmd_340: ; 0x020447CC
 	bl Field_SetObjectEventMovement
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_340
+	thumb_func_end ScrCmd_SetObjectMovementType
 
 	thumb_func_start ScrCmd_341
 ScrCmd_341: ; 0x02044804
@@ -9262,7 +9262,7 @@ ScrCmd_344: ; 0x020448DC
 	ldr r0, [r5]
 	add r1, r6, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	bne _0204491A
 	bl GF_AssertFail
@@ -9716,16 +9716,16 @@ ScrCmd_685: ; 0x02044BE8
 	ldr r0, [r4, #0x40]
 	bl sub_0205C6DC
 	add r4, r0, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	strh r0, [r6]
 	add r0, r4, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	lsr r1, r0, #0x1f
 	add r1, r0, r1
 	asr r0, r1, #1
 	strh r0, [r7]
 	add r0, r4, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9757,7 +9757,7 @@ ScrCmd_374: ; 0x02044C64
 	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, r0, #0
 	bne _02044C8C
 	bl GF_AssertFail
@@ -9783,7 +9783,7 @@ ScrCmd_375: ; 0x02044C98
 	bl VarGet
 	add r1, r0, #0
 	ldr r0, [r5, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r4, r0, #0
 	bne _02044CC0
 	bl GF_AssertFail
@@ -11605,7 +11605,7 @@ ScrCmd_523: ; 0x02045AAC
 	ldr r0, [r0]
 	add r1, r7, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r7, r0, #0
 	bne _02045B2A
 	bl GF_AssertFail
@@ -11654,7 +11654,7 @@ ScrCmd_524: ; 0x02045B40
 	ldr r0, [r0]
 	add r1, r5, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	bne _02045B94
 	bl GF_AssertFail
@@ -12674,7 +12674,7 @@ ScrCmd_583: ; 0x02046360
 	ldr r0, [r5]
 	ldrb r4, [r2]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r5, r0, #0
 	bne _02046390
 	bl GF_AssertFail
@@ -13649,7 +13649,7 @@ ScrCmd_596: ; 0x02046B1C
 	add r5, r0, #0
 	ldr r0, [r4, #0x3c]
 	mov r1, #0xfd
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	bl ov01_022055DC
 	strh r0, [r5]
 	mov r0, #0
@@ -13663,7 +13663,7 @@ ScrCmd_597: ; 0x02046B48
 	ldr r4, [r0]
 	mov r1, #0xfd
 	ldr r0, [r4, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0
@@ -13772,16 +13772,16 @@ ScrCmd_601: ; 0x02046BDC
 	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02060F0C
 	lsl r5, r0, #1
 	ldr r0, [sp, #0xc]
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0xc]
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r7, r0, #0
 	add r0, r4, #0
 	bl sub_02060F18
@@ -13795,7 +13795,7 @@ ScrCmd_601: ; 0x02046BDC
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	add r1, sp, #0x18
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [sp, #4]
@@ -13901,7 +13901,7 @@ ScrCmd_604: ; 0x02046D10
 	ldr r0, [r5]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, r4, #0
 	bl sub_0205FC94
 _02046D3A:
@@ -13954,7 +13954,7 @@ ScrCmd_605: ; 0x02046D5C
 	ldr r0, [r5]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	add r1, r0, #0
 	add r0, r7, #0
 	add r2, r6, #0
@@ -14049,7 +14049,7 @@ ScrCmd_608: ; 0x02046E38
 	ldr r0, [r4]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	bl ov01_02205784
 _02046E58:
 	mov r0, #0
@@ -14069,7 +14069,7 @@ ScrCmd_609: ; 0x02046E5C
 	ldr r0, [r4]
 	mov r1, #0xfd
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	bl sub_020659CC
 _02046E7C:
 	mov r0, #1
@@ -14778,7 +14778,7 @@ ScrCmd_622: ; 0x020473D8
 	ldr r0, [r5]
 	add r1, r6, #0
 	ldr r0, [r0, #0x3c]
-	bl sub_0205EE60
+	bl GetMapObjectByID
 	cmp r0, #0
 	beq _0204740C
 	bl sub_0205F2A8

@@ -16,8 +16,7 @@
       "yrange": 0,
       "x": 38,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_tsure_poke_static_poliwrath",
@@ -34,8 +33,7 @@
       "yrange": 0,
       "x": 39,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_instructor",
@@ -52,8 +50,7 @@
       "yrange": 0,
       "x": 26,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsman1",
@@ -70,8 +67,7 @@
       "yrange": 0,
       "x": 14,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsboy2",
@@ -88,8 +84,7 @@
       "yrange": 0,
       "x": 14,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsbabygirl1",
@@ -106,8 +101,7 @@
       "yrange": 0,
       "x": 22,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsgirl1",
@@ -124,8 +118,7 @@
       "yrange": 0,
       "x": 16,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gswoman2",
@@ -142,8 +135,7 @@
       "yrange": 0,
       "x": 19,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_middlewoman1_2",
@@ -160,8 +152,7 @@
       "yrange": 0,
       "x": 20,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsbabygirl1_2",
@@ -178,8 +169,7 @@
       "yrange": 0,
       "x": 23,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsoldwoman1",
@@ -196,8 +186,7 @@
       "yrange": 0,
       "x": 29,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsoldman1",
@@ -214,8 +203,7 @@
       "yrange": 0,
       "x": 30,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsboy1",
@@ -232,8 +220,7 @@
       "yrange": 0,
       "x": 32,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsmiddleman1",
@@ -250,8 +237,7 @@
       "yrange": 0,
       "x": 10,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsbabyboy1",
@@ -268,8 +254,7 @@
       "yrange": 0,
       "x": 11,
       "y": 12,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_tsure_poke_static_rattata",
@@ -286,8 +271,7 @@
       "yrange": 0,
       "x": 13,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_tsure_poke_static_butterfree",
@@ -304,8 +288,7 @@
       "yrange": 0,
       "x": 17,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_tsure_poke_static_machop",
@@ -322,8 +305,7 @@
       "yrange": 0,
       "x": 19,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D49R0102_gsman3",
@@ -340,8 +322,7 @@
       "yrange": 0,
       "x": 27,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

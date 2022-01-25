@@ -258,7 +258,7 @@ _0205686A:
 	add r1, r1, #1
 	str r1, [r6]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -266,7 +266,7 @@ _0205686A:
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r6]
 	cmp r0, #0x10
 	blt _02056932
@@ -390,7 +390,7 @@ _02056986:
 	add r1, r1, #1
 	str r1, [r6]
 	add r1, sp, #0
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc
@@ -398,7 +398,7 @@ _02056986:
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r1, sp, #0
-	bl sub_0205F954
+	bl MapObject_SetPositionVec
 	ldr r0, [r6]
 	cmp r0, #0x10
 	blt _02056A4E

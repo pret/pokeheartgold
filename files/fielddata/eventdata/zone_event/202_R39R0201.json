@@ -16,8 +16,7 @@
       "yrange": 0,
       "x": 6,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R39R0201_tsure_poke_static_miltank",
@@ -34,8 +33,7 @@
       "yrange": 0,
       "x": 7,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R39R0201_gsbabygirl1_2",
@@ -52,8 +50,7 @@
       "yrange": 0,
       "x": 8,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R39R0201_tsure_poke_static_miltank_2",
@@ -70,8 +67,7 @@
       "yrange": 0,
       "x": 3,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R39R0201_tsure_poke_static_miltank_3",
@@ -88,8 +84,7 @@
       "yrange": 1,
       "x": 2,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R39R0201_tsure_poke_static_miltank_4",
@@ -106,8 +101,7 @@
       "yrange": 0,
       "x": 13,
       "y": 4,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_R39R0201_tsure_poke_static_miltank_5",
@@ -124,8 +118,7 @@
       "yrange": 0,
       "x": 12,
       "y": 3,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

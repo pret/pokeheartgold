@@ -34,8 +34,7 @@
       "yrange": 0,
       "x": 6,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T26GYM0101_gsgirl1",
@@ -52,8 +51,7 @@
       "yrange": 0,
       "x": 9,
       "y": 15,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T26GYM0101_gsgentleman",
@@ -70,8 +68,7 @@
       "yrange": 0,
       "x": 3,
       "y": 23,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T26GYM0101_sunglasses",
@@ -88,8 +85,7 @@
       "yrange": 0,
       "x": 9,
       "y": 25,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

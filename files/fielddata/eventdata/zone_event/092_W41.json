@@ -58,8 +58,7 @@
       "yrange": 0,
       "x": 249,
       "y": 334,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerm_2",
@@ -76,8 +75,7 @@
       "yrange": 0,
       "x": 219,
       "y": 328,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerm_3",
@@ -94,8 +92,7 @@
       "yrange": 0,
       "x": 222,
       "y": 351,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerm_4",
@@ -112,8 +109,7 @@
       "yrange": 0,
       "x": 241,
       "y": 351,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerm_5",
@@ -130,8 +126,7 @@
       "yrange": 3,
       "x": 224,
       "y": 377,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerw",
@@ -148,8 +143,7 @@
       "yrange": 0,
       "x": 250,
       "y": 354,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerw_2",
@@ -166,8 +160,7 @@
       "yrange": 0,
       "x": 207,
       "y": 326,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerw_3",
@@ -184,8 +177,7 @@
       "yrange": 0,
       "x": 208,
       "y": 377,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerw_4",
@@ -202,8 +194,7 @@
       "yrange": 0,
       "x": 226,
       "y": 361,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_W41_gsswimmerw_5",
@@ -220,8 +211,7 @@
       "yrange": 0,
       "x": 219,
       "y": 341,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

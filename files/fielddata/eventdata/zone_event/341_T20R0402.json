@@ -34,8 +34,7 @@
       "yrange": 0,
       "x": 7,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_T20R0402_tsure_poke_static_marill",
@@ -52,8 +51,7 @@
       "yrange": 2,
       "x": 4,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

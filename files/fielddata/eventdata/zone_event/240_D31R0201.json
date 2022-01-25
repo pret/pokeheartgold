@@ -42,8 +42,7 @@
       "yrange": 0,
       "x": 15,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_bfsw1",
@@ -60,8 +59,7 @@
       "yrange": 0,
       "x": 11,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_wifisf",
@@ -78,8 +76,7 @@
       "yrange": 0,
       "x": 19,
       "y": 5,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_pcwoman2",
@@ -96,8 +93,7 @@
       "yrange": 0,
       "x": 16,
       "y": 6,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_gsmiddleman1",
@@ -114,8 +110,7 @@
       "yrange": 2,
       "x": 2,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_pcwoman1",
@@ -132,8 +127,7 @@
       "yrange": 1,
       "x": 13,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_idol",
@@ -150,8 +144,7 @@
       "yrange": 1,
       "x": 6,
       "y": 10,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_gorggeousm",
@@ -168,8 +161,7 @@
       "yrange": 1,
       "x": 25,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_tsure_poke_static_pikachu",
@@ -186,8 +178,7 @@
       "yrange": 1,
       "x": 25,
       "y": 14,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_tsure_poke_static_pikachu_2",
@@ -204,8 +195,7 @@
       "yrange": 1,
       "x": 19,
       "y": 16,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_gsboy1",
@@ -222,8 +212,7 @@
       "yrange": 1,
       "x": 20,
       "y": 16,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_gsassistantm",
@@ -240,8 +229,7 @@
       "yrange": 2,
       "x": 9,
       "y": 13,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_gsboy1_2",
@@ -258,8 +246,7 @@
       "yrange": 0,
       "x": 20,
       "y": 11,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_D31R0201_gsassistantm_2",
@@ -276,8 +263,7 @@
       "yrange": 0,
       "x": 24,
       "y": 7,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

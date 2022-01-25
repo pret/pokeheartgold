@@ -42,8 +42,7 @@
       "yrange": 0,
       "x": 31,
       "y": 40,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     },
     {
       "id": "obj_EVERYWHERE_monstarball_2",
@@ -60,8 +59,7 @@
       "yrange": 0,
       "x": 10,
       "y": 40,
-      "z": 0,
-      "unk1E": 0
+      "z": 0
     }
   ],
   "warps": [

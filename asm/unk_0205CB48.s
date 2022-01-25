@@ -717,7 +717,7 @@ sub_0205D0A8: ; 0x0205D0A8
 	cmp r7, #0
 	beq _0205D10A
 	add r0, r4, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -883,11 +883,11 @@ sub_0205D240: ; 0x0205D240
 	add r5, r1, #0
 	bl sub_0205C6DC
 	add r4, r0, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, sp, #0xc
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	add r4, sp, #0xc
 	add r3, sp, #0
 	ldmia r4!, {r0, r1}
@@ -989,16 +989,16 @@ _0205D2FC:
 	add r2, r7, #0
 	bl sub_0205DA1C
 	add r0, r4, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r5, r0, #0
 	bl sub_02069F88
 	cmp r0, #0
 	beq _0205D33C
 	add r0, r4, #0
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	add r5, #0xe4
 	add r2, r0, #0
 	add r0, r7, #0
@@ -1246,20 +1246,20 @@ _0205D4DE:
 	tst r0, r4
 	bne _0205D536
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	mov r1, #7
 	str r0, [sp, #8]
 	bl sub_02068F68
 	cmp r0, #0
 	beq _0205D52E
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_02060F0C
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp, #0x10]
 	add r0, r7, #0
 	bl sub_02060F18
@@ -1357,13 +1357,13 @@ _0205D5CE:
 	cmp r0, #0
 	bne _0205D60C
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F8FC
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F90C
+	bl MapObject_GetCurrentY
 	add r4, #0xe4
 	add r2, r0, #0
 	add r0, r7, #0
@@ -1985,23 +1985,23 @@ sub_0205DAA8: ; 0x0205DAA8
 	add r5, r1, #0
 	str r2, [sp, #4]
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	bl sub_02060F0C
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0205F924
+	bl MapObject_GetNextHeight
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
 	bl sub_02060F18
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	add r1, sp, #0x1c
-	bl sub_0205F944
+	bl MapObject_GetPositionVec
 	ldr r1, [sp, #0x14]
 	ldr r6, [sp, #0xc]
 	ldr r3, [sp, #0x10]
@@ -2017,7 +2017,7 @@ sub_0205DAA8: ; 0x0205DAA8
 	orr r4, r0
 _0205DAFC:
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	ldr r2, [sp, #0x14]
 	add r1, sp, #0x18
 	str r1, [sp]
@@ -2081,16 +2081,16 @@ sub_0205DB68: ; 0x0205DB68
 	cmp r4, r0
 	beq _0205DBF0
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02060F18
@@ -2151,13 +2151,13 @@ sub_0205DBF4: ; 0x0205DBF4
 	cmp r4, r0
 	beq _0205DC9C
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp]
 	ldr r2, [sp]
 	add r0, r7, #0
@@ -2237,16 +2237,16 @@ sub_0205DCA0: ; 0x0205DCA0
 	cmp r4, r0
 	beq _0205DCF6
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_02060F18
@@ -2284,16 +2284,16 @@ sub_0205DCFC: ; 0x0205DCFC
 	cmp r0, #1
 	bne _0205DD8E
 	add r0, r5, #0
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0205F914
+	bl MapObject_GetNextX
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F934
+	bl MapObject_GetNextY
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl sub_02060F18
@@ -2754,7 +2754,7 @@ sub_0205E02C: ; 0x0205E02C
 sub_0205E048: ; 0x0205E048
 	push {r3, r4, r5, lr}
 	bl sub_0205C6DC
-	bl sub_0205F52C
+	bl MapObject_GetFieldSysPtr
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get

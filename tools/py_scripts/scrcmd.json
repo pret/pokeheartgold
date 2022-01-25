@@ -1909,11 +1909,11 @@
       ]
     },
     {
-      "name": "scrcmd_312",
+      "name": "buffer_day_care_mon_nicks",
       "args": []
     },
     {
-      "name": "scrcmd_313",
+      "name": "get_day_care_state",
       "args": [
         "var"
       ]
@@ -2063,9 +2063,9 @@
       ]
     },
     {
-      "name": "scrcmd_340",
+      "name": "set_object_movement_type",
       "args": [
-        2,
+        "object2",
         2
       ]
     },
@@ -2194,10 +2194,10 @@
       ]
     },
     {
-      "name": "scrcmd_361",
+      "name": "retrieve_day_care_mon",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2223,18 +2223,18 @@
       ]
     },
     {
-      "name": "scrcmd_365",
+      "name": "reset_day_care_egg",
       "args": []
     },
     {
-      "name": "scrcmd_366",
+      "name": "give_day_care_egg",
       "args": []
     },
     {
-      "name": "scrcmd_367",
+      "name": "buffer_day_care_withdraw_cost",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2255,20 +2255,20 @@
       ]
     },
     {
-      "name": "scrcmd_371",
+      "name": "buffer_day_care_mon_growth",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_372",
+      "name": "get_tail_day_care_mon_species_and_nick",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_373",
+      "name": "put_mon_in_day_care",
       "args": [
         "var"
       ]
@@ -2344,7 +2344,7 @@
       ]
     },
     {
-      "name": "scrcmd_385",
+      "name": "buffer_day_care_mon_stats",
       "args": [
         2,
         2,
@@ -2359,15 +2359,15 @@
       ]
     },
     {
-      "name": "scrcmd_387",
+      "name": "get_day_care_compatibility",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_388",
+      "name": "check_day_care_egg",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3478,14 +3478,14 @@
     {
       "name": "scrcmd_551",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_552",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4360,7 +4360,7 @@
       ]
     },
     {
-      "name": "scrcmd_690",
+      "name": "day_care_sanitize_mon",
       "args": [
         "var",
         "var"
@@ -4510,7 +4510,7 @@
       ]
     },
     {
-      "name": "scrcmd_715",
+      "name": "update_day_care_mon_objects",
       "args": []
     },
     {
