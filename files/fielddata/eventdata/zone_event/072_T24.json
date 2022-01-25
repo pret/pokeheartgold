@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t24_super_potion",
+      "scr": "std_hiddenitem_t24_revive",
       "type": 2,
       "x": 170,
       "y": 332,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t24_full_heal",
+      "scr": "std_hiddenitem_t24_stardust",
       "type": 2,
       "x": 189,
       "y": 357,

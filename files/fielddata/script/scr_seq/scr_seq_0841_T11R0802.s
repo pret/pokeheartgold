@@ -38,11 +38,11 @@ scr_seq_T11R0802_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity ITEM_PASS, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_PASS, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0125
-	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00E9
 	goto_if_set FLAG_RESTORED_POWER, _00BD
 	call _014D
@@ -72,7 +72,7 @@ _00BD:
 	end
 
 _00E9:
-	takeitem ITEM_LOST_ITEM, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_LOST_ITEM, 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0541_T11R0802_00006
 	clearflag FLAG_UNK_2FB
 	show_person obj_T11R0802_mono_pip
@@ -100,14 +100,14 @@ _0125:
 	end
 
 _014D:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _016C
 	apply_movement obj_T11R0802_gsgirl1, _02B0
 	goto _018F
 
 _016C:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0187
 	apply_movement obj_T11R0802_gsgirl1, _0274
 	goto _018F
@@ -118,13 +118,13 @@ _018F:
 	wait_movement
 	show_person obj_T11R0802_var_1
 	hide_person obj_T11R0802_gsgirl1
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01B4
 	apply_movement obj_T11R0802_var_1, _0304
 	goto _01D7
 
 _01B4:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01CF
 	apply_movement obj_T11R0802_var_1, _02C8
 	goto _01D7
@@ -136,14 +136,14 @@ _01D7:
 	return
 
 _01DB:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01FA
 	apply_movement obj_T11R0802_var_1, _02B0
 	goto _021D
 
 _01FA:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0215
 	apply_movement obj_T11R0802_var_1, _0274
 	goto _021D
@@ -154,13 +154,13 @@ _021D:
 	wait_movement
 	show_person obj_T11R0802_gsgirl1
 	hide_person obj_T11R0802_var_1
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0242
 	apply_movement obj_T11R0802_gsgirl1, _0304
 	goto _0265
 
 _0242:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _025D
 	apply_movement obj_T11R0802_gsgirl1, _02C8
 	goto _0265
@@ -238,20 +238,20 @@ scr_seq_T11R0802_003:
 	npc_msg msg_0541_T11R0802_00012
 	waitbutton
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0359
 	apply_movement obj_T11R0802_jupetta, _03C8
 	goto _0397
 
 _0359:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0374
 	apply_movement obj_T11R0802_jupetta, _03C0
 	goto _0397
 
 _0374:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _038F
 	apply_movement obj_T11R0802_jupetta, _03D8
 	goto _0397

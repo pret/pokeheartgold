@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D03R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d03r0101_big_pearl",
+      "scr": "std_hiddenitem_d03r0101_hyper_potion",
       "type": 2,
       "x": 4,
       "y": 40,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0101_stardust",
+      "scr": "std_hiddenitem_d03r0101_rare_candy",
       "type": 2,
       "x": 60,
       "y": 44,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0101_pearl",
+      "scr": "std_hiddenitem_d03r0101_revive",
       "type": 2,
       "x": 24,
       "y": 36,

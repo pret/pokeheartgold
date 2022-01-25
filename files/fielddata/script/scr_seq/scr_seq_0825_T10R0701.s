@@ -36,14 +36,14 @@ scr_seq_T10R0701_000:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	party_count_not_egg VAR_SPECIAL_x800C
-	hall_of_fame_anim VAR_SPECIAL_x800C
+	party_count_not_egg VAR_SPECIAL_RESULT
+	hall_of_fame_anim VAR_SPECIAL_RESULT
 	add_special_game_stat 23
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	call _01B4
-	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _009A
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 3
 _009A:
@@ -134,8 +134,8 @@ _01E7:
 	return
 
 _01ED:
-	check_badge 15, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 15, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0204
 	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
 _0204:

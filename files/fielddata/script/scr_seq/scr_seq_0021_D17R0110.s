@@ -60,8 +60,8 @@ scr_seq_D17R0110_000:
 	npc_msg msg_0058_D17R0110_00004
 	wait_cry
 	closemsg
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _00FD
 	setvar VAR_SPECIAL_x8004, 45
 	goto _0103
@@ -124,40 +124,40 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_4, _0778
 	apply_movement obj_D17R0110_dancer_5, _0784
 	wait_movement
-	wait 16, VAR_SPECIAL_x800C
+	wait 16, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _0790
 	apply_movement obj_D17R0110_dancer_2, _0790
 	apply_movement obj_D17R0110_dancer_3, _0790
 	apply_movement obj_D17R0110_dancer_4, _0790
 	apply_movement obj_D17R0110_dancer_5, _0790
 	wait_movement
-	wait 16, VAR_SPECIAL_x800C
+	wait 16, VAR_SPECIAL_RESULT
 	scrcmd_081 0
 	temp_bgm SEQ_GS_E_MAIKO_MAI
-	wait 18, VAR_SPECIAL_x800C
+	wait 18, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _07A0
 	apply_movement obj_D17R0110_dancer_2, _07A0
 	apply_movement obj_D17R0110_dancer_3, _07A0
 	apply_movement obj_D17R0110_dancer_4, _07A0
 	apply_movement obj_D17R0110_dancer_5, _07A0
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	wait 67, VAR_SPECIAL_x800C
+	wait 67, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _07A0
 	apply_movement obj_D17R0110_dancer_2, _07A0
 	apply_movement obj_D17R0110_dancer_3, _07A0
 	apply_movement obj_D17R0110_dancer_4, _07A0
 	apply_movement obj_D17R0110_dancer_5, _07A0
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	fade_screen 4, 6, 1, RGB_WHITE
 	scrcmd_765
 	wait_fade
-	wait 4, VAR_SPECIAL_x800C
+	wait 4, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _0914
 	apply_movement obj_D17R0110_dancer_2, _0904
 	apply_movement obj_D17R0110_dancer_3, _091C
@@ -169,11 +169,11 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_3, _0830
 	apply_movement obj_D17R0110_dancer_4, _080C
 	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	wait 32, VAR_SPECIAL_x800C
+	wait 32, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _0904
 	apply_movement obj_D17R0110_dancer_2, _0904
 	apply_movement obj_D17R0110_dancer_3, _091C
@@ -185,11 +185,11 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_3, _0830
 	apply_movement obj_D17R0110_dancer_4, _080C
 	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	wait 33, VAR_SPECIAL_x800C
+	wait 33, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _0904
 	apply_movement obj_D17R0110_dancer_2, _0904
 	apply_movement obj_D17R0110_dancer_3, _091C
@@ -201,11 +201,11 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_3, _08D8
 	apply_movement obj_D17R0110_dancer_4, _08AC
 	apply_movement obj_D17R0110_dancer_5, _0880
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
-	wait 32, VAR_SPECIAL_x800C
+	wait 32, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _091C
 	apply_movement obj_D17R0110_dancer_2, _091C
 	apply_movement obj_D17R0110_dancer_3, _090C
@@ -217,13 +217,13 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_3, _07E8
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _080C
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 1
 	play_se SEQ_SE_GS_SUZUNOONPA_RU
 	wait_movement
 	scrcmd_766
 	scrcmd_762 0
-	wait 32, VAR_SPECIAL_x800C
+	wait 32, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _091C
 	apply_movement obj_D17R0110_dancer_2, _091C
 	apply_movement obj_D17R0110_dancer_3, _090C
@@ -235,11 +235,11 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_3, _07E8
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _080C
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
-	wait 32, VAR_SPECIAL_x800C
+	wait 32, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _090C
 	apply_movement obj_D17R0110_dancer_2, _091C
 	apply_movement obj_D17R0110_dancer_3, _090C
@@ -251,19 +251,19 @@ scr_seq_D17R0110_006:
 	apply_movement obj_D17R0110_dancer_3, _07E8
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _080C
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
-	wait 41, VAR_SPECIAL_x800C
+	wait 41, VAR_SPECIAL_RESULT
 	scrcmd_763
-	wait 8, VAR_SPECIAL_x800C
+	wait 8, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_761 1
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	wait 20, VAR_SPECIAL_x800C
+	wait 20, VAR_SPECIAL_RESULT
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	release obj_D17R0110_dancer
@@ -276,37 +276,37 @@ scr_seq_D17R0110_006:
 	move_person obj_D17R0110_dancer_3, 12, 1, 12, 1
 	move_person obj_D17R0110_dancer_4, 18, 1, 18, 0
 	move_person obj_D17R0110_dancer_5, 18, 1, 12, 1
-	wait 86, VAR_SPECIAL_x800C
+	wait 86, VAR_SPECIAL_RESULT
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
-	wait 32, VAR_SPECIAL_x800C
+	wait 32, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_761 2
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	wait 22, VAR_SPECIAL_x800C
+	wait 22, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _07C4
 	apply_movement obj_D17R0110_dancer_2, _07C4
 	apply_movement obj_D17R0110_dancer_3, _07E8
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
-	wait 32, VAR_SPECIAL_x800C
-	wait 34, VAR_SPECIAL_x800C
+	wait 32, VAR_SPECIAL_RESULT
+	wait 34, VAR_SPECIAL_RESULT
 	apply_movement obj_D17R0110_dancer, _07C4
 	apply_movement obj_D17R0110_dancer_2, _07C4
 	apply_movement obj_D17R0110_dancer_3, _07E8
 	apply_movement obj_D17R0110_dancer_4, _07C4
 	apply_movement obj_D17R0110_dancer_5, _07E8
-	wait 12, VAR_SPECIAL_x800C
+	wait 12, VAR_SPECIAL_RESULT
 	scrcmd_758 0
 	play_se SEQ_SE_GS_SUZUNOONPA2
 	wait_movement
-	wait 60, VAR_SPECIAL_x800C
+	wait 60, VAR_SPECIAL_RESULT
 	scrcmd_762 1
 	scrcmd_763
 	scrcmd_081 0
@@ -318,10 +318,10 @@ scr_seq_D17R0110_006:
 	clearflag FLAG_HIDE_BELL_TOWER_HO_OH
 	show_person obj_D17R0110_hou_obj01
 	scrcmd_375 obj_D17R0110_hou_obj01
-	wait 6, VAR_SPECIAL_x800C
+	wait 6, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_WHITE
 	wait_fade
-	wait 20, VAR_SPECIAL_x800C
+	wait 20, VAR_SPECIAL_RESULT
 	scrcmd_764
 	scrcmd_081 30
 	apply_movement obj_D17R0110_dancer, _0798

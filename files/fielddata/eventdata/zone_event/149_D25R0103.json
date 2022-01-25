@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D25R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d25r0103_carbos",
+      "scr": "std_hiddenitem_d25r0103_ultra_ball",
       "type": 2,
       "x": 3,
       "y": 81,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d25r0103_ether",
+      "scr": "std_hiddenitem_d25r0103_calcium",
       "type": 2,
       "x": 4,
       "y": 59,

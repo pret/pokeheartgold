@@ -26,8 +26,8 @@ scr_seq_0071_002:
 	scrcmd_609
 	lockall
 	call _0090
-	scrcmd_380 VAR_SPECIAL_x800C, 4
-	switch VAR_SPECIAL_x800C
+	scrcmd_380 VAR_SPECIAL_RESULT, 4
+	switch VAR_SPECIAL_RESULT
 	case 1, _00F2
 	case 2, _010C
 	case 3, _0126

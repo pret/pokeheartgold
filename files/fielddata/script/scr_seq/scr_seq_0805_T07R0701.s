@@ -33,8 +33,8 @@ scr_seq_T07R0701_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0074
 	npc_msg msg_0510_T07R0701_00004
 	closemsg

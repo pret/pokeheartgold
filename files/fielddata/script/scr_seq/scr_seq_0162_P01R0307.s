@@ -128,8 +128,8 @@ scr_seq_P01R0307_003:
 	scrcmd_603
 	scrcmd_604 56
 _0180:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01A7
 	apply_movement obj_player, _0218
 	apply_movement obj_P01R0307_gsbabygirl1, _0238

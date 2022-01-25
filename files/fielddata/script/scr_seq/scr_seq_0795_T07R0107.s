@@ -50,7 +50,7 @@ _00A4:
 	elevator_cur_floor_box 20, 1, VAR_ELEVATOR_LAST_FLOOR, VAR_ELEVATOR_LAST_FLOOR
 	npc_msg msg_0500_T07R0107_00000
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 121, 255, 6
 	menu_item_add 120, 255, 0
 	menu_item_add 119, 255, 1
@@ -60,7 +60,7 @@ _00A4:
 	menu_item_add 126, 255, 7
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 6, _052D
 	case 0, _0467
 	case 1, _03A1
@@ -70,7 +70,7 @@ _00A4:
 	goto _06DE
 
 _014F:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0101, 2, 5, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 0
@@ -112,7 +112,7 @@ _0203:
 	goto _0627
 
 _0215:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0102, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 1
@@ -154,7 +154,7 @@ _02C9:
 	goto _0627
 
 _02DB:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0103, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 2
@@ -196,7 +196,7 @@ _038F:
 	goto _0627
 
 _03A1:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0104, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 3
@@ -238,7 +238,7 @@ _0455:
 	goto _0627
 
 _0467:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0105, 2, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 4
@@ -280,7 +280,7 @@ _051B:
 	goto _0627
 
 _052D:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0106, 1, 19, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 5
@@ -382,7 +382,7 @@ _06BF:
 
 _06C7:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0500_T07R0107_00004
 	waitbutton
 	closemsg
@@ -391,7 +391,7 @@ _06C7:
 
 _06DE:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0500_T07R0107_00001
 	waitbutton
 	closemsg

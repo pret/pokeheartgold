@@ -20,7 +20,7 @@ sub_020910D8: ; 0x020910D8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #6
@@ -62,7 +62,7 @@ _0209111C:
 	b _02091232
 _0209112E:
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r5, [r4, #0xc]
 	bl ScriptEnvironment_GetSav2Ptr
@@ -108,7 +108,7 @@ _02091194:
 	b _02091232
 _0209119A:
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #5
@@ -209,7 +209,7 @@ _02091256:
 	stmia r3!, {r0, r1}
 	ldr r1, _02091274 ; =sub_020910D8
 	add r0, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02091274: .word sub_020910D8
@@ -3421,10 +3421,10 @@ _02092B00: .word _021082E4
 sub_02092B04: ; 0x02092B04
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, _02092B3C ; =0x00000272
 	ldrb r0, [r4, r0]
@@ -3486,10 +3486,10 @@ _02092B6A:
 sub_02092B7C: ; 0x02092B7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_020505C8
@@ -3500,7 +3500,7 @@ sub_02092B7C: ; 0x02092B7C
 	ldr r1, _02092BB0 ; =ov03_02256E2C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_02050510
+	bl NowRunTask
 	ldr r0, _02092BB4 ; =0x00000272
 	mov r1, #0x1a
 	strb r1, [r4, r0]
@@ -3806,7 +3806,7 @@ sub_02092DD8: ; 0x02092DD8
 	pop {r4, pc}
 	thumb_func_end sub_02092DD8
 
-	; r0 = UnkSavStruct80 *
+	; r0 = FieldSystem *
 	thumb_func_start sub_02092DEC
 sub_02092DEC: ; 0x02092DEC
 	mov r1, #0x45
@@ -10015,7 +10015,7 @@ sub_02095DF4: ; 0x02095DF4
 	ldr r0, [sp, #0x24]
 	str r0, [r2, #0x1c]
 	ldr r0, [r5, #0x10]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02095E2C: .word sub_02095E30
@@ -10025,10 +10025,10 @@ _02095E2C: .word sub_02095E30
 sub_02095E30: ; 0x02095E30
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3
@@ -10278,7 +10278,7 @@ LaunchStarterChoiceScene: ; 0x0209600C
 	str r0, [r2]
 	ldr r0, [r4, #0x10]
 	ldr r1, _02096028 ; =CreateStarter
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, pc}
 	.balign 4, 0
 _02096028: .word CreateStarter
@@ -10289,10 +10289,10 @@ CreateStarter: ; 0x0209602C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	ldr r0, [r7]
 	cmp r0, #5
@@ -10492,7 +10492,7 @@ sub_020961D8: ; 0x020961D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r6, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	mov r0, #0x20
 	mov r1, #0x24
@@ -10531,7 +10531,7 @@ sub_020961D8: ; 0x020961D8
 	ldr r1, _02096244 ; =sub_02096260
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02096244: .word sub_02096260
@@ -10553,7 +10553,7 @@ sub_02096248: ; 0x02096248
 	thumb_func_start sub_02096260
 sub_02096260: ; 0x02096260
 	push {r4, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4, #0x18]
 	cmp r1, #4
@@ -13432,7 +13432,7 @@ sub_02097720: ; 0x02097720
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	mov r0, #0xb
 	mov r1, #0xc
 	bl AllocFromHeapAtEnd
@@ -13446,7 +13446,7 @@ sub_02097720: ; 0x02097720
 	add r0, r6, #0
 	add r2, r4, #0
 	str r5, [r4, #4]
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _02097750: .word sub_02097754
@@ -13456,10 +13456,10 @@ _02097750: .word sub_02097754
 sub_02097754: ; 0x02097754
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #3
@@ -13543,7 +13543,7 @@ sub_020977CC: ; 0x020977CC
 	ldr r0, [r5, #0x10]
 	ldr r1, _0209780C ; =sub_020978D0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0209780C: .word sub_020978D0
@@ -13597,7 +13597,7 @@ _0209785A:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02097874 ; =sub_02097878
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02097874: .word sub_02097878
@@ -13607,10 +13607,10 @@ _02097874: .word sub_02097878
 sub_02097878: ; 0x02097878
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_02050654
@@ -13654,10 +13654,10 @@ sub_020978D0: ; 0x020978D0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #5
@@ -13785,7 +13785,7 @@ sub_020979A8: ; 0x020979A8
 	ldr r0, [r5, #0x10]
 	ldr r1, _020979E8 ; =sub_02097AA0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020979E8: .word sub_02097AA0
@@ -13835,7 +13835,7 @@ _02097A36:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02097A44 ; =sub_02097A48
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02097A44: .word sub_02097A48
@@ -13845,10 +13845,10 @@ _02097A44: .word sub_02097A48
 sub_02097A48: ; 0x02097A48
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_02050654
@@ -13892,10 +13892,10 @@ sub_02097AA0: ; 0x02097AA0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #5
@@ -14109,7 +14109,7 @@ _02097C3E:
 	ldr r0, [r5, #0x10]
 	ldr r1, _02097C4C ; =sub_02097C50
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02097C4C: .word sub_02097C50
@@ -14119,10 +14119,10 @@ _02097C4C: .word sub_02097C50
 sub_02097C50: ; 0x02097C50
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4, #0x50]
 	cmp r1, #3
@@ -14183,7 +14183,7 @@ sub_02097CB4: ; 0x02097CB4
 	str r0, [r2, #8]
 	ldr r0, [r4, #0x10]
 	ldr r1, _02097CD4 ; =sub_02097CD8
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02097CD4: .word sub_02097CD8
@@ -14193,10 +14193,10 @@ _02097CD4: .word sub_02097CD8
 sub_02097CD8: ; 0x02097CD8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	ldr r1, [r4]
@@ -14268,7 +14268,7 @@ sub_02097D3C: ; 0x02097D3C
 	ldr r0, [r4, #4]
 	strh r7, [r0, #2]
 	ldr r0, [r5, #0x10]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02097D7C: .word sub_02097D80
@@ -14279,10 +14279,10 @@ sub_02097D80: ; 0x02097D80
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4

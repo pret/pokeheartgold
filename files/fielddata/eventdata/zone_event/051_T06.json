@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t06_max_repel",
+      "scr": "std_hiddenitem_t06_full_heal",
       "type": 2,
       "x": 1324,
       "y": 306,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t06_big_mushroom",
+      "scr": "std_hiddenitem_t06_heart_scale",
       "type": 2,
       "x": 1318,
       "y": 323,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t06_max_elixir",
+      "scr": "std_hiddenitem_t06_pearl",
       "type": 2,
       "x": 1312,
       "y": 336,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t06_nugget",
+      "scr": "std_hiddenitem_t06_pearl_2",
       "type": 2,
       "x": 1313,
       "y": 335,
@@ -66,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t06_calcium",
+      "scr": "std_hiddenitem_t06_big_pearl",
       "type": 2,
       "x": 1315,
       "y": 335,

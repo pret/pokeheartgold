@@ -33,8 +33,8 @@ scr_seq_D40R0104_000:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_117, _010D
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 8
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 8
 	goto_if_eq _0093
 	goto_if_set FLAG_UNK_106, _00C5
 	goto_if_set FLAG_UNK_094, _00B4
@@ -62,8 +62,8 @@ _00B4:
 	end
 
 _00C5:
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 8
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 8
 	goto_if_ne _00EC
 	goto_if_set FLAG_UNK_109, _00F7
 	goto_if_set FLAG_UNK_105, _0102
@@ -96,11 +96,11 @@ _010D:
 	end
 
 scr_seq_D40R0104_002:
-	wait 60, VAR_SPECIAL_x800C
+	wait 60, VAR_SPECIAL_RESULT
 	npc_msg msg_0124_D40R0104_00003
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0142
 	apply_movement obj_D40R0104_bozu, _0168
 	goto _014A
@@ -109,7 +109,7 @@ _0142:
 	apply_movement obj_D40R0104_bozu, _0154
 _014A:
 	wait_movement
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	end
 
 

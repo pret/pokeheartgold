@@ -37,8 +37,8 @@ _0056:
 _006F:
 	compare VAR_UNK_4114, 6
 	goto_if_ne _008D
-	scrcmd_781 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_781 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02AE
 _008D:
 	npc_msg msg_0378_R31_00000
@@ -59,35 +59,35 @@ _0098:
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _021F
-	scrcmd_426 VAR_SPECIAL_x800C, VAR_TEMP_x4000, 0
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_426 VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0238
-	scrcmd_426 VAR_SPECIAL_x800C, VAR_TEMP_x4000, 1
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_426 VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 1
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0251
-	scrcmd_363 7, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_363 7, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _026A
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0295
 	scrcmd_364 VAR_TEMP_x4000
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0149
 	apply_movement obj_player, _02BC
 	goto _0187
 
 _0149:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0164
 	apply_movement obj_player, _02C4
 	goto _0187
 
 _0164:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _017F
 	apply_movement obj_player, _02CC
 	goto _0187
@@ -213,10 +213,10 @@ _02D4:
 	step 35, 1
 	step_end
 scr_seq_R31_002:
-	direction_signpost msg_0378_R31_00013, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0378_R31_00013, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -224,7 +224,7 @@ scr_seq_R31_003:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0378_R31_00014, VAR_SPECIAL_x800C
+	trainer_tips msg_0378_R31_00014, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 

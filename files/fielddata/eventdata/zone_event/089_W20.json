@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w20_guard_spec_",
+      "scr": "std_hiddenitem_w20_stardust",
       "type": 2,
       "x": 1094,
       "y": 498,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w20_tinymushroom",
+      "scr": "std_hiddenitem_w20_deepseatooth",
       "type": 2,
       "x": 1136,
       "y": 503,

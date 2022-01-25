@@ -125,8 +125,8 @@ _0162:
 	end
 
 _016A:
-	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _01B5
 	npc_msg msg_0066_D23R0102_00010
 	closemsg
@@ -159,9 +159,9 @@ _01EA:
 	goto_if_set FLAG_UNK_AA3, _0547
 	npc_msg msg_0066_D23R0102_00014
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0552
 	buffer_players_name 0
 	compare VAR_UNK_4115, 2
@@ -209,7 +209,7 @@ _02B8:
 _02BA:
 	scrcmd_821 32768, 32769
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 0, VAR_SPECIAL_RESULT
 	menu_item_add 32768, 255, 0
 	addvar VAR_SPECIAL_x8000, 1
 	menu_item_add 32768, 255, 1
@@ -221,7 +221,7 @@ _02BA:
 	setflag FLAG_UNK_AA3
 	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
-	compare VAR_SPECIAL_x800C, VAR_SPECIAL_x8001
+	compare VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001
 	goto_if_ne _055D
 	npc_msg msg_0066_D23R0102_00022
 	apply_movement obj_D23R0102_gswoman1, _0630
@@ -286,8 +286,8 @@ _03F5:
 	buffer_int 0, VAR_UNK_413A
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg msg_0066_D23R0102_00035
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0539
 	callstd std_give_item_verbose
 _0450:
@@ -394,8 +394,8 @@ scr_seq_D23R0102_010:
 	faceplayer
 	compare VAR_UNK_4077, 4
 	goto_if_eq _05C0
-	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _05B0
 	npc_msg msg_0066_D23R0102_00033
 	waitbutton

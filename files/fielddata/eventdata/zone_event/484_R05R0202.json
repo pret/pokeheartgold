@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R05R0202.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_r05r0202_ether",
+      "scr": "std_hiddenitem_r05r0202_full_restore",
       "type": 2,
       "x": 5,
       "y": 14,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r05r0202_ultra_ball",
+      "scr": "std_hiddenitem_r05r0202_x_special",
       "type": 2,
       "x": 7,
       "y": 30,

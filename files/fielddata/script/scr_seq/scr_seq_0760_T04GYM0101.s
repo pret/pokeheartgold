@@ -94,10 +94,10 @@ scr_seq_T04GYM0101_004:
 	wait_movement
 	npc_msg msg_0469_T04GYM0101_00003
 	closemsg
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0179
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0159
 	end
 
@@ -198,14 +198,14 @@ scr_seq_T04GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 9, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 9, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0348
 	npc_msg msg_0469_T04GYM0101_00008
 	closemsg
 	trainer_battle TRAINER_LEADER_MISTY_MISTY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _035E
 	give_badge 9
 	addvar VAR_UNK_4135, 1
@@ -266,9 +266,9 @@ scr_seq_T04GYM0101_002:
 	faceplayer
 	compare VAR_UNK_4088, 2
 	goto_if_ne _03AD
-	check_badge 9, VAR_SPECIAL_x800C
+	check_badge 9, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03A4
 	npc_msg msg_0469_T04GYM0101_00006
 	goto _03A7
@@ -288,9 +288,9 @@ scr_seq_T04GYM0101_003:
 	faceplayer
 	compare VAR_UNK_4088, 2
 	goto_if_ne _03F3
-	check_badge 9, VAR_SPECIAL_x800C
+	check_badge 9, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03EA
 	npc_msg msg_0469_T04GYM0101_00006
 	goto _03ED
@@ -312,8 +312,8 @@ scr_seq_T04GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 9, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 9, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0424
 	npc_msg msg_0469_T04GYM0101_00014
 	waitbutton

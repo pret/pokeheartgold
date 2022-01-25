@@ -31,31 +31,31 @@ scr_seq_D11R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _014A
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _015E
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00BE
 	apply_movement obj_player, _0174
 	apply_movement obj_D11R0102_gsmiddleman1, _01AC
 	goto _00E9
 
 _00BE:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _00D9
 	apply_movement obj_player, _018C
 	goto _00E9
@@ -68,8 +68,8 @@ _00E9:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0110
 	apply_movement obj_partner_poke, _01B8
 	wait_movement
@@ -82,24 +82,24 @@ _0110:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _014A:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _015E:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall

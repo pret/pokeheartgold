@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D17R0105.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d17r0105_big_mushroom",
+      "scr": "std_hiddenitem_d17r0105_full_restore",
       "type": 2,
       "x": 24,
       "y": 20,

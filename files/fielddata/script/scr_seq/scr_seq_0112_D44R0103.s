@@ -58,65 +58,65 @@ _00A0:
 	setvar VAR_SPECIAL_x8004, 0
 	npc_msg msg_0130_D44R0103_00001
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
 	menu_item_add 280, 255, 0
 	menu_item_add 281, 255, 1
 	menu_item_add 282, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _00DF:
 	setvar VAR_SPECIAL_x8004, 1
 	npc_msg msg_0130_D44R0103_00002
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
 	menu_item_add 283, 255, 0
 	menu_item_add 284, 255, 0
 	menu_item_add 285, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _011E:
 	setvar VAR_SPECIAL_x8004, 2
 	npc_msg msg_0130_D44R0103_00003
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
 	menu_item_add 286, 255, 1
 	menu_item_add 287, 255, 0
 	menu_item_add 288, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _015D:
 	setvar VAR_SPECIAL_x8004, 3
 	npc_msg msg_0130_D44R0103_00004
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
 	menu_item_add 289, 255, 0
 	menu_item_add 290, 255, 1
 	menu_item_add 291, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0310
 	npc_msg msg_0130_D44R0103_00009
 _019C:
 	setvar VAR_SPECIAL_x8004, 4
 	npc_msg msg_0130_D44R0103_00005
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
 	menu_item_add 292, 255, 1
 	menu_item_add 293, 255, 0
 	menu_item_add 294, 255, 0
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0310
 	buffer_players_name 0
 	npc_msg msg_0130_D44R0103_00006
@@ -168,8 +168,8 @@ _019C:
 	wait_fanfare
 	apply_movement obj_D44R0103_chourou, _0450
 	wait_movement
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _02D3
 	npc_msg msg_0130_D44R0103_00020
 	goto _02D6
@@ -305,8 +305,8 @@ scr_seq_D44R0103_000:
 	goto_if_set FLAG_UNK_0DD, _053D
 	goto_if_set FLAG_UNK_0DC, _052E
 	goto_if_set FLAG_UNK_0DA, _04A6
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _049B
 	npc_msg msg_0130_D44R0103_00020
 	goto _049E
@@ -332,15 +332,15 @@ _04C3:
 	npc_msg msg_0130_D44R0103_00027
 	play_fanfare SEQ_ME_SHINKAOME
 	wait_fanfare
-	give_mon SPECIES_DRATINI, 15, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon SPECIES_DRATINI, 15, 0, 0, 0, VAR_SPECIAL_RESULT
 	goto_if_set FLAG_UNK_0DB, _04F0
 	set_mon_move VAR_SPECIAL_x8005, 0, MOVE_EXTREME_SPEED
 _04F0:
 	npc_msg msg_0130_D44R0103_00032
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _050E
 	goto _052E
 
@@ -348,7 +348,7 @@ _050E:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	nickname_input VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _052E:
@@ -384,37 +384,37 @@ scr_seq_D44R0103_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _069E
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06B2
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _05EF
 	apply_movement obj_player, _06C8
 	apply_movement obj_D44R0103_gsmiddleman1, _0714
 	goto _063D
 
 _05EF:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _060A
 	apply_movement obj_player, _06E0
 	goto _063D
 
 _060A:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _062D
 	apply_movement obj_player, _0700
 	apply_movement obj_D44R0103_gsmiddleman1, _0714
@@ -428,8 +428,8 @@ _063D:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0664
 	apply_movement obj_partner_poke, _0720
 	wait_movement
@@ -442,24 +442,24 @@ _0664:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _069E:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _06B2:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall

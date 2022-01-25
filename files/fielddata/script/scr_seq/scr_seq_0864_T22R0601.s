@@ -20,9 +20,9 @@ scr_seq_T22R0601_001:
 	goto_if_set FLAG_UNK_071, _00BD
 	npc_msg msg_0562_T22R0601_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0041
 	goto _00B2
 
@@ -31,17 +31,17 @@ _0041:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _00B2
 	scrcmd_470 0
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _00A5
 	scrcmd_473 32772
 	scrcmd_474

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D05R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d05r0101_revive",
+      "scr": "std_hiddenitem_d05r0101_x_defense",
       "type": 2,
       "x": 38,
       "y": 31,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d05r0101_antidote",
+      "scr": "std_hiddenitem_d05r0101_x_accuracy",
       "type": 2,
       "x": 16,
       "y": 8,

@@ -379,11 +379,11 @@ _0503:
 _0514:
 	nop_var_490 VAR_TEMP_x4009
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _063E
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _053C
 	end
 
@@ -412,11 +412,11 @@ _056D:
 	get_lead_mon_index VAR_TEMP_x4000
 	compare VAR_UNK_4102, 1
 	goto_if_ne _05B2
-	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0605
-	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
 	.byte 0x16, 0x00, 0x47, 0x00
@@ -424,11 +424,11 @@ _056D:
 _05B2:
 	compare VAR_UNK_4102, 2
 	goto_if_ne _05F3
-	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_698 2, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0605
-	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_698 1, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
 	.byte 0x16, 0x00, 0x06
@@ -592,7 +592,7 @@ _0833:
 	goto_if_eq _086E
 	release obj_D51R0201_champion
 	move_person obj_D51R0201_champion, 16, 1, 28, 0
-	wait 5, VAR_SPECIAL_x800C
+	wait 5, VAR_SPECIAL_RESULT
 	lock obj_D51R0201_champion
 _086E:
 	compare VAR_TEMP_x4009, 483
@@ -609,7 +609,7 @@ _0889:
 _08A4:
 	apply_movement obj_player, _0CE4
 _08AC:
-	wait 150, VAR_SPECIAL_x800C
+	wait 150, VAR_SPECIAL_RESULT
 	fade_screen 6, 30, 1, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
@@ -637,7 +637,7 @@ _090F:
 	apply_movement obj_player, _0D0C
 	wait_movement
 	scrcmd_819
-	wait 2, VAR_SPECIAL_x800C
+	wait 2, VAR_SPECIAL_RESULT
 	npc_msg msg_0146_D51R0201_00025
 	nop_var_490 VAR_TEMP_x4009
 	buffer_players_name 0
@@ -653,27 +653,27 @@ _090F:
 	nop_var_490 VAR_TEMP_x4009
 	compare VAR_TEMP_x4009, 483
 	goto_if_ne _097B
-	give_mon SPECIES_DIALGA, 1, 135, 0, 0, VAR_SPECIAL_x800C
+	give_mon SPECIES_DIALGA, 1, 135, 0, 0, VAR_SPECIAL_RESULT
 	setvar VAR_UNK_4103, 1
 	goto _09B6
 
 _097B:
 	compare VAR_TEMP_x4009, 484
 	goto_if_ne _09A2
-	give_mon SPECIES_PALKIA, 1, 136, 0, 0, VAR_SPECIAL_x800C
+	give_mon SPECIES_PALKIA, 1, 136, 0, 0, VAR_SPECIAL_RESULT
 	setvar VAR_UNK_4103, 2
 	goto _09B6
 
 _09A2:
-	give_mon SPECIES_GIRATINA, 1, 112, 1, 26, VAR_SPECIAL_x800C
+	give_mon SPECIES_GIRATINA, 1, 112, 1, 26, VAR_SPECIAL_RESULT
 	setvar VAR_UNK_4103, 3
 _09B6:
 	touchscreen_menu_hide
 	npc_msg msg_0146_D51R0201_00032
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
 	scrcmd_815 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	call_if_eq _0BB2
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _0A4D
@@ -690,7 +690,7 @@ _09B6:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	apply_movement obj_D51R0201_champion, _0D30
@@ -705,7 +705,7 @@ _0A4D:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
@@ -773,12 +773,12 @@ _0BAE:
 	end
 
 _0BB2:
-	get_party_count VAR_SPECIAL_x800C
-	subvar VAR_SPECIAL_x800C, 1
+	get_party_count VAR_SPECIAL_RESULT
+	subvar VAR_SPECIAL_RESULT, 1
 	setvar VAR_TEMP_x4008, 0
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	nickname_input VAR_SPECIAL_x800C, VAR_TEMP_x4008
+	nickname_input VAR_SPECIAL_RESULT, VAR_TEMP_x4008
 	scrcmd_819
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

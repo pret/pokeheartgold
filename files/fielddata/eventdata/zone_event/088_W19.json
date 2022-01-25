@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_W19.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_w19_max_revive",
+      "scr": "std_hiddenitem_w19_big_pearl",
       "type": 2,
       "x": 1210,
       "y": 505,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w19_revive",
+      "scr": "std_hiddenitem_w19_pearl_2",
       "type": 2,
       "x": 1198,
       "y": 468,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w19_hyper_potion",
+      "scr": "std_hiddenitem_w19_pearl",
       "type": 2,
       "x": 1207,
       "y": 467,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w19_revive_2",
+      "scr": "std_hiddenitem_w19_revive",
       "type": 2,
       "x": 1210,
       "y": 456,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w19_rare_candy",
+      "scr": "std_hiddenitem_w19_max_elixir",
       "type": 2,
       "x": 1209,
       "y": 460,

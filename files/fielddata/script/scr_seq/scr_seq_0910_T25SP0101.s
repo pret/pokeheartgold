@@ -16,8 +16,8 @@ scr_seq_T25SP0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _006A
 	apply_movement obj_T25SP0101_suit, _0080
 	wait_movement
@@ -66,8 +66,8 @@ _00BD:
 	apply_movement obj_T25SP0101_suit, _0080
 _00C5:
 	wait_movement
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00E5
 	npc_msg msg_0603_T25SP0101_00041
 	goto _00E8
@@ -96,8 +96,8 @@ scr_seq_T25SP0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0175
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0154
@@ -129,9 +129,9 @@ _018B:
 	npc_msg msg_0603_T25SP0101_00037
 _018E:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01C5
 	npc_msg msg_0603_T25SP0101_00031
 	setvar VAR_TEMP_x4001, 1
@@ -201,11 +201,11 @@ _0342:
 	goto_if_no_item_space ITEM_TM90, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _038B
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0234
 _038B:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -216,21 +216,21 @@ _038B:
 	take_coins 2000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
 	.byte 0x02, 0x00
 _03CD:
 	goto_if_no_item_space ITEM_TM75, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0416
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0234
 _0416:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -241,21 +241,21 @@ _0416:
 	take_coins 4000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
 	.byte 0x02, 0x00
 _0458:
 	goto_if_no_item_space ITEM_TM44, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04A1
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0234
 _04A1:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -266,21 +266,21 @@ _04A1:
 	take_coins 6000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
 	.byte 0x02, 0x00
 _04E3:
 	goto_if_no_item_space ITEM_TM35, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _052C
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0234
 _052C:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -291,21 +291,21 @@ _052C:
 	take_coins 10000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
 	.byte 0x02, 0x00
 _056E:
 	goto_if_no_item_space ITEM_TM13, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _05B7
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0234
 _05B7:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -316,21 +316,21 @@ _05B7:
 	take_coins 10000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
 	.byte 0x02, 0x00
 _05F9:
 	goto_if_no_item_space ITEM_TM24, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0642
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0234
 _0642:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -341,21 +341,21 @@ _0642:
 	take_coins 10000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
 	.byte 0x02, 0x00
 _0684:
 	goto_if_no_item_space ITEM_SILK_SCARF, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _06CD
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02D0
 _06CD:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -366,21 +366,21 @@ _06CD:
 	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
 	.byte 0x02, 0x00
 _070F:
 	goto_if_no_item_space ITEM_WIDE_LENS, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0758
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02D0
 _0758:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -391,21 +391,21 @@ _0758:
 	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
 	.byte 0x02, 0x00
 _079A:
 	goto_if_no_item_space ITEM_ZOOM_LENS, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _07E3
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02D0
 _07E3:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -416,21 +416,21 @@ _07E3:
 	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
 	.byte 0x02, 0x00
 _0825:
 	goto_if_no_item_space ITEM_METRONOME, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0603_T25SP0101_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _086E
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02D0
 _086E:
 	get_coin_amount VAR_SPECIAL_x8006
@@ -441,10 +441,10 @@ _086E:
 	take_coins 1000
 	scrcmd_118 0
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0603_T25SP0101_00010
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
 	.byte 0x02, 0x00
 scr_seq_T25SP0101_004:
@@ -518,8 +518,8 @@ _09D5:
 _09F3:
 	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg msg_0603_T25SP0101_00007
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0A34
 	closemsg
 	get_game_version VAR_TEMP_x4000
@@ -561,7 +561,7 @@ _0AA0:
 _0AB1:
 	npc_msg msg_0603_T25SP0101_00004
 	play_se SEQ_SE_DP_REGI
-	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon VAR_TEMP_x4002, 15, 0, 0, 0, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	buffer_species_name 1, VAR_TEMP_x4002, 0, 0
 	npc_msg msg_0603_T25SP0101_00008

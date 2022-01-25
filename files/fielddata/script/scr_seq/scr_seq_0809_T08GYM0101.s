@@ -121,20 +121,20 @@ scr_seq_T08GYM0101_003:
 	lockall
 	faceplayer
 	goto_if_defeated TRAINER_LASS_LINDA, _0277
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01AA
 	apply_movement obj_T08GYM0101_gsleader13_4, _0620
 	goto _01E8
 
 _01AA:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01C5
 	apply_movement obj_T08GYM0101_gsleader13_4, _05E4
 	goto _01E8
 
 _01C5:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _01E0
 	apply_movement obj_T08GYM0101_gsleader13_4, _0604
 	goto _01E8
@@ -147,19 +147,19 @@ _01E8:
 	show_person obj_T08GYM0101_gsgirl1
 	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_LINDA_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_4
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0215
 	apply_movement obj_T08GYM0101_gsgirl1, _0698
 	goto _0253
 
 _0215:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0230
 	apply_movement obj_T08GYM0101_gsgirl1, _065C
 	goto _0253
 
 _0230:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _024B
 	apply_movement obj_T08GYM0101_gsgirl1, _0680
 	goto _0253
@@ -171,8 +171,8 @@ _0253:
 	npc_msg msg_0514_T08GYM0101_00007
 	closemsg
 	trainer_battle TRAINER_LASS_LINDA, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0282
 	settrainerflag TRAINER_LASS_LINDA
 _0277:
@@ -194,20 +194,20 @@ scr_seq_T08GYM0101_004:
 	lockall
 	faceplayer
 	goto_if_defeated TRAINER_CAMPER_BARRY, _038F
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02C2
 	apply_movement obj_T08GYM0101_gsleader13_3, _0620
 	goto _0300
 
 _02C2:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _02DD
 	apply_movement obj_T08GYM0101_gsleader13_3, _05E4
 	goto _0300
 
 _02DD:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _02F8
 	apply_movement obj_T08GYM0101_gsleader13_3, _0604
 	goto _0300
@@ -220,19 +220,19 @@ _0300:
 	show_person obj_T08GYM0101_campboy_2
 	setflag FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_3
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _032D
 	apply_movement obj_T08GYM0101_campboy_2, _0698
 	goto _036B
 
 _032D:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0348
 	apply_movement obj_T08GYM0101_campboy_2, _065C
 	goto _036B
 
 _0348:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0363
 	apply_movement obj_T08GYM0101_campboy_2, _0680
 	goto _036B
@@ -244,8 +244,8 @@ _036B:
 	npc_msg msg_0514_T08GYM0101_00009
 	closemsg
 	trainer_battle TRAINER_CAMPER_BARRY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _039A
 	settrainerflag TRAINER_CAMPER_BARRY
 _038F:
@@ -269,20 +269,20 @@ scr_seq_T08GYM0101_005:
 	goto_if_defeated TRAINER_LASS_ALICE, _04AC
 	npc_msg msg_0514_T08GYM0101_00011
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03DF
 	apply_movement obj_T08GYM0101_gsleader13_5, _0620
 	goto _041D
 
 _03DF:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _03FA
 	apply_movement obj_T08GYM0101_gsleader13_5, _05E4
 	goto _041D
 
 _03FA:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0415
 	apply_movement obj_T08GYM0101_gsleader13_5, _0604
 	goto _041D
@@ -295,19 +295,19 @@ _041D:
 	show_person obj_T08GYM0101_gsgirl1_2
 	setflag FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_5
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _044A
 	apply_movement obj_T08GYM0101_gsgirl1_2, _0698
 	goto _0488
 
 _044A:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0465
 	apply_movement obj_T08GYM0101_gsgirl1_2, _065C
 	goto _0488
 
 _0465:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0480
 	apply_movement obj_T08GYM0101_gsgirl1_2, _0680
 	goto _0488
@@ -319,8 +319,8 @@ _0488:
 	npc_msg msg_0514_T08GYM0101_00012
 	closemsg
 	trainer_battle TRAINER_LASS_ALICE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B7
 	settrainerflag TRAINER_LASS_ALICE
 _04AC:
@@ -344,20 +344,20 @@ scr_seq_T08GYM0101_006:
 	goto_if_defeated TRAINER_PICNICKER_CINDY, _05C9
 	npc_msg msg_0514_T08GYM0101_00014
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _04FC
 	apply_movement obj_T08GYM0101_gsleader13_2, _0620
 	goto _053A
 
 _04FC:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0517
 	apply_movement obj_T08GYM0101_gsleader13_2, _05E4
 	goto _053A
 
 _0517:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0532
 	apply_movement obj_T08GYM0101_gsleader13_2, _0604
 	goto _053A
@@ -370,19 +370,19 @@ _053A:
 	show_person obj_T08GYM0101_picnicgirl_2
 	setflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED
 	hide_person obj_T08GYM0101_gsleader13_2
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0567
 	apply_movement obj_T08GYM0101_picnicgirl_2, _0698
 	goto _05A5
 
 _0567:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0582
 	apply_movement obj_T08GYM0101_picnicgirl_2, _065C
 	goto _05A5
 
 _0582:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _059D
 	apply_movement obj_T08GYM0101_picnicgirl_2, _0680
 	goto _05A5
@@ -394,8 +394,8 @@ _05A5:
 	npc_msg msg_0514_T08GYM0101_00015
 	closemsg
 	trainer_battle TRAINER_PICNICKER_CINDY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _05D4
 	settrainerflag TRAINER_PICNICKER_CINDY
 _05C9:
@@ -492,15 +492,15 @@ scr_seq_T08GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 12, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 12, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0778
 	npc_msg msg_0514_T08GYM0101_00000
 	closemsg
 	setvar VAR_TEMP_x400B, 111
 	trainer_battle TRAINER_LEADER_JANINE_JANINE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _078E
 	setvar VAR_TEMP_x400B, 0
 	give_badge 12
@@ -545,8 +545,8 @@ scr_seq_T08GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 12, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 12, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _07C4
 	npc_msg msg_0514_T08GYM0101_00005
 	waitbutton
@@ -565,9 +565,9 @@ scr_seq_T08GYM0101_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 12, VAR_SPECIAL_x800C
+	check_badge 12, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _07F6
 	npc_msg msg_0514_T08GYM0101_00017
 	goto _07F9

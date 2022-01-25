@@ -29,11 +29,11 @@ scr_seq_T27R0201_000:
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00D4
-	check_badge 3, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 3, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0096
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _008B
 	npc_msg msg_0616_T27R0201_00000
 	goto _008E
@@ -47,8 +47,8 @@ _008E:
 	end
 
 _0096:
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _00B0
 	npc_msg msg_0616_T27R0201_00002
 	goto _00B3
@@ -102,8 +102,8 @@ scr_seq_T27R0201_001:
 	faceplayer
 	goto_if_set FLAG_UNK_108, _0162
 	goto_if_set FLAG_UNK_103, _0157
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _014C
 	npc_msg msg_0616_T27R0201_00006
 	goto _014F

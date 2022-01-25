@@ -20,14 +20,14 @@ scr_seq_D18R0101_003:
 	buffer_rivals_name 0
 	npc_msg msg_0060_D18R0101_00000
 	closemsg
-	get_starter_choice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 152
+	get_starter_choice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 152
 	goto_if_ne _004B
 	trainer_battle TRAINER_RIVAL_SILVER_8, 0, 0, 0
 	goto _006E
 
 _004B:
-	compare VAR_SPECIAL_x800C, 155
+	compare VAR_SPECIAL_RESULT, 155
 	goto_if_ne _0066
 	trainer_battle TRAINER_RIVAL_SILVER_11, 0, 0, 0
 	goto _006E
@@ -35,8 +35,8 @@ _004B:
 _0066:
 	trainer_battle TRAINER_RIVAL_SILVER_4, 0, 0, 0
 _006E:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00C7
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0

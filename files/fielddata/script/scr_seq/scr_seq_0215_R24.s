@@ -73,8 +73,8 @@ scr_seq_R24_002:
 	npc_msg msg_0362_R24_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_24, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _014A
 	npc_msg msg_0362_R24_00002
 	closemsg

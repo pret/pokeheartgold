@@ -68,8 +68,8 @@ scr_seq_R36R0201_002:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
-	scrcmd_596 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_596 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _010A
 	scrcmd_606
 	goto _010C
@@ -104,17 +104,17 @@ scr_seq_R36R0201_001:
 	compare VAR_UNK_4118, 1
 	goto_if_ne _0231
 	goto_if_set FLAG_UNK_1C4, _01BA
-	get_player_facing VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_RESULT
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0185
 	apply_movement obj_player, _0238
 	goto _01A8
 
 _0185:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _01A0
 	apply_movement obj_player, _0240
 	goto _01A8
@@ -129,7 +129,7 @@ _01A8:
 	goto _01DC
 
 _01BA:
-	get_player_facing VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_RESULT
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
@@ -146,8 +146,8 @@ _01DC:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
-	scrcmd_596 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_596 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0221
 	scrcmd_606
 	goto _0223

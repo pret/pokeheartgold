@@ -35,8 +35,8 @@ _005C:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0352
 _008A:
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -84,12 +84,12 @@ _0125:
 	nop_var_490 VAR_SPECIAL_x8002
 	nop_var_490 VAR_SPECIAL_x8003
 _013D:
-	move_tutor_choose_move VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	move_tutor_choose_move VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	nop_var_490 VAR_SPECIAL_x8000
 	nop_var_490 VAR_SPECIAL_x8001
 	nop_var_490 VAR_SPECIAL_x8002
 	nop_var_490 VAR_SPECIAL_x8003
-	copyvar VAR_SPECIAL_x8003, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8003, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8003, 65533
 	goto_if_ne _018F
 	addvar VAR_SPECIAL_x8004, 1
@@ -105,8 +105,8 @@ _018F:
 	setvar VAR_SPECIAL_x8004, 7
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0352
 	setvar VAR_SPECIAL_x8004, 0
 	closemsg
@@ -114,8 +114,8 @@ _018F:
 
 _01D0:
 	tutor_move_get_price VAR_SPECIAL_x8003, VAR_SPECIAL_x8005
-	check_battle_points VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_points VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01EF
 	goto _0224
 
@@ -147,8 +147,8 @@ _0241:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03A4
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -169,8 +169,8 @@ _0241:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03A4
 	compare VAR_SPECIAL_x8007, 0
 	goto_if_ne _02EA
@@ -188,7 +188,7 @@ _0300:
 _0303:
 	play_se SEQ_SE_DP_KON
 	wait_se SEQ_SE_DP_KON
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	buffer_party_mon_move_name 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8004, 13
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
@@ -241,9 +241,9 @@ _03A4:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0241
 	setvar VAR_SPECIAL_x8004, 11
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F

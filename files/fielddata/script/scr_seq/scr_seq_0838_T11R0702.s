@@ -85,8 +85,8 @@ scr_seq_T11R0702_005:
 	goto _0107
 	.byte 0x02, 0x00
 _0107:
-	player_has_species VAR_SPECIAL_x800C, SPECIES_ROTOM
-	compare VAR_SPECIAL_x800C, 0
+	player_has_species VAR_SPECIAL_RESULT, SPECIES_ROTOM
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _07D8
 	compare VAR_SPECIAL_x8004, 1
 	call_if_eq _0724
@@ -102,8 +102,8 @@ _0107:
 	compare VAR_SPECIAL_x8003, 1
 	goto_if_ge _01E5
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _073D
 	goto _0189
 	.byte 0x02, 0x00
@@ -119,18 +119,18 @@ _0189:
 	compare VAR_SPECIAL_x8004, 5
 	call_if_eq _071C
 	scrcmd_632 32780, 479
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03B2
 	goto _03C0
 	.byte 0x02, 0x00
 _01E5:
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 15, 255, 0
 	menu_item_add 14, 255, 1
 	menu_item_add 16, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0189
 	case 1, _0231
 	goto _073D
@@ -138,7 +138,7 @@ _01E5:
 	.byte 0x00
 _0231:
 	scrcmd_674 32771, 32780
-	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8003, 2
 	goto_if_ge _0332
 	goto _0252
@@ -167,8 +167,8 @@ _0252:
 _02C1:
 	scrcmd_815 0
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_x800C
-	warp MAP_T11R0702, 0, 32774, 32775, VAR_SPECIAL_x800C
+	get_player_facing VAR_SPECIAL_RESULT
+	warp MAP_T11R0702, 0, 32774, 32775, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	nop_var_490 VAR_TEMP_x400B
@@ -213,13 +213,13 @@ _0332:
 	wait_fade
 	compare VAR_SPECIAL_x8000, 255
 	goto_if_eq _03AC
-	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _041A
-	compare VAR_SPECIAL_x800C, 479
+	compare VAR_SPECIAL_RESULT, 479
 	goto_if_ne _0427
 	scrcmd_676 32768, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _039F
 	goto _0252
 	.byte 0x02, 0x00
@@ -249,10 +249,10 @@ _03C0:
 	wait_fade
 	compare VAR_SPECIAL_x8000, 255
 	goto_if_eq _073D
-	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _041A
-	compare VAR_SPECIAL_x800C, 479
+	compare VAR_SPECIAL_RESULT, 479
 	goto_if_ne _0427
 	goto _0434
 	.byte 0x02, 0x00
@@ -267,24 +267,24 @@ _0427:
 	goto _089C
 	.byte 0x02, 0x00
 _0434:
-	mon_has_move VAR_SPECIAL_x800C, MOVE_OVERHEAT, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_OVERHEAT, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04BE
-	mon_has_move VAR_SPECIAL_x800C, MOVE_BLIZZARD, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_BLIZZARD, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04BE
-	mon_has_move VAR_SPECIAL_x800C, MOVE_HYDRO_PUMP, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_HYDRO_PUMP, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04BE
-	mon_has_move VAR_SPECIAL_x800C, MOVE_AIR_SLASH, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_AIR_SLASH, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04BE
-	mon_has_move VAR_SPECIAL_x800C, MOVE_LEAF_STORM, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_LEAF_STORM, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04BE
-	count_mon_moves VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	copyvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 4
+	count_mon_moves VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	copyvar VAR_SPECIAL_x8002, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _051C
 	goto _04CC
 	.byte 0x02, 0x00
@@ -331,8 +331,8 @@ _0564:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg msg_0538_T11R0702_00000
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0649
 	goto _058A
 	.byte 0x02, 0x00
@@ -348,32 +348,32 @@ _058A:
 	compare VAR_SPECIAL_x8002, 4
 	goto_if_eq _0628
 	scrcmd_398 32780, 32768, 32770
-	buffer_move_name 1, VAR_SPECIAL_x800C
+	buffer_move_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0538_T11R0702_00003
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0649
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	scrcmd_398 32780, 32768, 32770
-	buffer_move_name 1, VAR_SPECIAL_x800C
+	buffer_move_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0538_T11R0702_00004
 	play_se SEQ_SE_DP_KON
 	wait_se SEQ_SE_DP_KON
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	npc_msg msg_0538_T11R0702_00005
-	wait 32, VAR_SPECIAL_x800C
+	wait 32, VAR_SPECIAL_RESULT
 	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg msg_0538_T11R0702_00006
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
-	wait 16, VAR_SPECIAL_x800C
+	wait 16, VAR_SPECIAL_RESULT
 	goto _0671
 	.byte 0x02, 0x00
 _0628:
 	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg msg_0538_T11R0702_00001
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _058A
 	goto _0649
 	.byte 0x02, 0x00
@@ -564,11 +564,11 @@ scr_seq_T11R0702_007:
 	goto_if_eq _088D
 	npc_msg msg_0538_T11R0702_00013
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 14, 255, 0
 	menu_item_add 19, 255, 1
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0231
 	goto _089C
 	.byte 0x02, 0x00

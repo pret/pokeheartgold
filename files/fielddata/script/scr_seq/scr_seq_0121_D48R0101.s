@@ -162,9 +162,9 @@ scr_seq_D48R0101_000:
 _01E7:
 	npc_msg msg_0136_D48R0101_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _020A
 	npc_msg msg_0136_D48R0101_00003
 	waitbutton

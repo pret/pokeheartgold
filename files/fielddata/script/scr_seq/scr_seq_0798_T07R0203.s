@@ -125,8 +125,8 @@ scr_seq_T07R0203_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_johto_dex_complete VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_johto_dex_complete VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0245
 	goto_if_set FLAG_UNK_143, _01ED
 	npc_msg msg_0503_T07R0203_00001
@@ -142,8 +142,8 @@ scr_seq_T07R0203_000:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01ED:
-	check_national_dex_complete VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_national_dex_complete VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0245
 	goto_if_set FLAG_UNK_144, _023A
 	npc_msg msg_0503_T07R0203_00002
@@ -176,8 +176,8 @@ scr_seq_T07R0203_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 15, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 15, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0276
 	npc_msg msg_0503_T07R0203_00007
 	waitbutton
@@ -186,8 +186,8 @@ scr_seq_T07R0203_009:
 	end
 
 _0276:
-	getitemquantity ITEM_GB_SOUNDS, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_GB_SOUNDS, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02A7
 	npc_msg msg_0503_T07R0203_00008
 	giveitem_no_check ITEM_GB_SOUNDS, 1

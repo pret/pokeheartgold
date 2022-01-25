@@ -14,8 +14,8 @@ scr_seq_P01R0303_000:
 	lockall
 	faceplayer
 	goto_if_unset FLAG_UNK_0ED, _0112
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _009D
 	apply_movement obj_P01R0303_seaman_2, _0120
 	wait_movement
@@ -31,8 +31,8 @@ scr_seq_P01R0303_000:
 	npc_msg msg_0261_P01R0303_00005
 	closemsg
 	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _010C
 	npc_msg msg_0261_P01R0303_00006
 	closemsg
@@ -59,8 +59,8 @@ _009D:
 	npc_msg msg_0261_P01R0303_00005
 	closemsg
 	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _010C
 	npc_msg msg_0261_P01R0303_00006
 	closemsg

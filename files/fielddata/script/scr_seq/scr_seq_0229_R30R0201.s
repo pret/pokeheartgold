@@ -87,9 +87,9 @@ _012A:
 	buffer_players_name 0
 	gender_msgbox msg_0377_R30R0201_00016, msg_0377_R30R0201_00017
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0189
 	goto_if_no_item_space ITEM_EXP__SHARE, 1, _0194
 	callstd std_give_item_verbose
@@ -182,8 +182,8 @@ scr_seq_R30R0201_002:
 	apply_movement obj_R30R0201_gsgentleman, _03E4
 	wait_movement
 	buffer_players_name 0
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _02B0
 	setvar VAR_SPECIAL_x8004, 535
 	goto _02B6

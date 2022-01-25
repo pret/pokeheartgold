@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R47.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_r47_rare_candy",
+      "scr": "std_hiddenitem_r47_stardust",
       "type": 2,
       "x": 80,
       "y": 396,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r47_super_potion",
+      "scr": "std_hiddenitem_r47_pearl",
       "type": 2,
       "x": 112,
       "y": 395,

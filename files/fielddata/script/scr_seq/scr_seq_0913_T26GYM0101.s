@@ -109,14 +109,14 @@ scr_seq_T26GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 5, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _020C
 	npc_msg msg_0606_T26GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_JASMINE_JASMINE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0235
 	npc_msg msg_0606_T26GYM0101_00001
 	buffer_players_name 0
@@ -177,22 +177,22 @@ _023B:
 _0264:
 	npc_msg msg_0606_T26GYM0101_00008
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _034B
 	npc_msg msg_0606_T26GYM0101_00009
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _034B
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_TEMP_x4003
 	get_partymon_forme VAR_SPECIAL_x8004, VAR_TEMP_x4004
 	compare VAR_TEMP_x4003, 0
@@ -211,9 +211,9 @@ _030E:
 	bufferpartymonnick 1, VAR_SPECIAL_x8004
 	npc_msg msg_0606_T26GYM0101_00013
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _034B
 	closemsg
 	scrcmd_470 5
@@ -367,8 +367,8 @@ scr_seq_T26GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 5, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _04F4
 	npc_msg msg_0606_T26GYM0101_00020
 	goto _04F7
@@ -389,8 +389,8 @@ scr_seq_T26GYM0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 5, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0536
 	npc_msg msg_0606_T26GYM0101_00022
 	goto _0539
@@ -411,8 +411,8 @@ scr_seq_T26GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 5, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0590
 	compare VAR_UNK_410E, 0
 	goto_if_ne _0585
@@ -438,9 +438,9 @@ scr_seq_T26GYM0101_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 5, VAR_SPECIAL_x800C
+	check_badge 5, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _05C2
 	npc_msg msg_0606_T26GYM0101_00023
 	goto _05C5

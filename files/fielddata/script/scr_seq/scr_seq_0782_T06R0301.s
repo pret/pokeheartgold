@@ -30,9 +30,9 @@ scr_seq_T06R0301_000:
 _0044:
 	npc_msg msg_0488_T06R0301_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _009E
 	npc_msg msg_0488_T06R0301_00001
 	goto_if_no_item_space ITEM_RARE_CANDY, 1, _0093
@@ -66,11 +66,11 @@ scr_seq_T06R0301_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_LOST_ITEM, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0141
-	getitemquantity ITEM_PASS, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_PASS, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0141
 	goto_if_set FLAG_UNK_119, _0116
 	goto_if_set FLAG_RESTORED_POWER, _010B

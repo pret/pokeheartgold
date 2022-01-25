@@ -15,11 +15,11 @@ scr_seq_T26R0601_000:
 	goto_if_set FLAG_UNK_0BD, _008E
 	npc_msg msg_0610_T26R0601_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0040
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0079
 	end
 

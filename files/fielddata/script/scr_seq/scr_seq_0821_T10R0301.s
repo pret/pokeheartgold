@@ -56,8 +56,8 @@ scr_seq_T10R0301_001:
 _009B:
 	trainer_battle TRAINER_ELITE_FOUR_KOGA_KOGA, 0, 0, 0
 _00A3:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00DC
 	setflag FLAG_DEFEATED_KOGA
 	npc_msg msg_0524_T10R0301_00001

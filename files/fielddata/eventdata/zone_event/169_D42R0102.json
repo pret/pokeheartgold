@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D42R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d42r0102_rare_candy",
+      "scr": "std_hiddenitem_d42r0102_poke_ball",
       "type": 2,
       "x": 12,
       "y": 11,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d42r0102_nugget",
+      "scr": "std_hiddenitem_d42r0102_max_ether",
       "type": 2,
       "x": 59,
       "y": 26,

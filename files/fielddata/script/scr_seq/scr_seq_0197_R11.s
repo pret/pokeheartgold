@@ -31,8 +31,8 @@ _0044:
 scr_seq_R11_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	radio_music_is_playing 5, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	radio_music_is_playing 5, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _006A
 	npc_msg msg_0346_R11_00002
 	waitbutton
@@ -48,8 +48,8 @@ _006A:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SNORLAX, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00B4
 	scrcmd_683 VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 4
@@ -69,10 +69,10 @@ _00BA:
 	return
 
 scr_seq_R11_002:
-	direction_signpost msg_0346_R11_00000, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0346_R11_00000, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -80,7 +80,7 @@ scr_seq_R11_003:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0346_R11_00001, VAR_SPECIAL_x800C
+	trainer_tips msg_0346_R11_00001, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

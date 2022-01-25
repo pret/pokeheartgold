@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t22_potion",
+      "scr": "std_hiddenitem_t22_hyper_potion",
       "type": 2,
       "x": 505,
       "y": 254,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t22_full_restore",
+      "scr": "std_hiddenitem_t22_poke_ball",
       "type": 2,
       "x": 481,
       "y": 241,

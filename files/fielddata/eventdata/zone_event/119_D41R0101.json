@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D41R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d41r0101_protein",
+      "scr": "std_hiddenitem_d41r0101_dire_hit",
       "type": 2,
       "x": 45,
       "y": 45,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d41r0101_pearl",
+      "scr": "std_hiddenitem_d41r0101_ultra_ball",
       "type": 2,
       "x": 10,
       "y": 39,

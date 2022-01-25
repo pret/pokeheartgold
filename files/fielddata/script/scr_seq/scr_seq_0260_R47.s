@@ -119,14 +119,14 @@ scr_seq_R47_003:
 	apply_movement obj_R47_leader3, _022C
 	wait_movement
 	npc_msg msg_0407_R47_00003
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01EB
 	apply_movement obj_R47_leader3, _0234
 	goto _020E
 
 _01EB:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0206
 	apply_movement obj_R47_leader3, _023C
 	goto _020E
@@ -167,12 +167,12 @@ scr_seq_R47_004:
 	faceplayer
 	npc_msg msg_0407_R47_00005
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02B5
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02C0
 	npc_msg msg_0407_R47_00006
 	closemsg

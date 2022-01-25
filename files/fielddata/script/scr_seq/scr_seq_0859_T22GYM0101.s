@@ -64,14 +64,14 @@ scr_seq_T22GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0168
 	npc_msg msg_0558_T22GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_FALKNER_FALKNER, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _017E
 	give_badge 0
 	add_special_game_stat 22
@@ -124,8 +124,8 @@ scr_seq_T22GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01AA
 	npc_msg msg_0558_T22GYM0101_00007
 	waitbutton
@@ -148,9 +148,9 @@ scr_seq_T22GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 0, VAR_SPECIAL_x800C
+	check_badge 0, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01EF
 	npc_msg msg_0558_T22GYM0101_00009
 	goto _01F2

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D11R0105.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d11r0105_full_heal",
+      "scr": "std_hiddenitem_d11r0105_zinc",
       "type": 2,
       "x": 27,
       "y": 22,

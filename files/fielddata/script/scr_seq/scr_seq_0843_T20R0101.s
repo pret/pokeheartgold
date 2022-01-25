@@ -163,7 +163,7 @@ scr_seq_T20R0101_012:
 	scrcmd_605 3, 2
 	scrcmd_602 0
 	scrcmd_608
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	scrcmd_602 1
 	get_partymon_species 0, VAR_TEMP_x4001
 	set_starter_choice VAR_TEMP_x4001
@@ -175,9 +175,9 @@ scr_seq_T20R0101_012:
 	touchscreen_menu_hide
 	buffer_mon_species_name 1, 0
 	npc_msg msg_0543_T20R0101_00008
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	call_if_eq _02EE
 	touchscreen_menu_show
 	scrcmd_602 0
@@ -217,9 +217,9 @@ _02EE:
 	touchscreen_menu_hide
 	bufferpartymonnick 1, 0
 	npc_msg msg_0543_T20R0101_00009
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02EE
 	return
 
@@ -276,15 +276,15 @@ scr_seq_T20R0101_000:
 	goto_if_set FLAG_UNK_0F2, _03BA
 	goto_if_set FLAG_GAME_CLEAR, _0526
 _03BA:
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03F5
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 172
 	goto_if_ne _03F5
-	get_partymon_forme VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_partymon_forme VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0CDC
 _03F5:
 	goto_if_set FLAG_UNK_072, _04A1
@@ -415,8 +415,8 @@ _0599:
 	wait_movement
 	npc_msg msg_0543_T20R0101_00046
 	buffer_players_name 0
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _05D9
 	goto_if_unset FLAG_UNK_108, _05CF
 	gender_msgbox msg_0543_T20R0101_00104, msg_0543_T20R0101_00105
@@ -658,19 +658,19 @@ scr_seq_T20R0101_002:
 _0904:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	name_rival VAR_SPECIAL_x800C
+	name_rival VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0904
 	apply_movement obj_T20R0101_policeman, _0A7C
 	wait_movement
 	buffer_rivals_name 1
 	npc_msg msg_0543_T20R0101_00027
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A59
 	closemsg
 	npc_msg msg_0543_T20R0101_00028
@@ -858,8 +858,8 @@ scr_seq_T20R0101_014:
 	gender_msgbox msg_0543_T20R0101_00060, msg_0543_T20R0101_00061
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0BEF
 	callstd std_bag_is_full
 	goto _0BF3
@@ -1170,8 +1170,8 @@ _0FDC:
 	step 13, 1
 	step_end
 _0FE4:
-	scrcmd_382 VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 220
+	scrcmd_382 VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 220
 	goto_if_ge _0FFF
 	goto _03F5
 	.byte 0x02, 0x00
@@ -1262,10 +1262,10 @@ scr_seq_T20R0101_013:
 	goto_if_unset FLAG_GOT_STARTER, _1107
 	npc_msg msg_0543_T20R0101_00092
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1103
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade

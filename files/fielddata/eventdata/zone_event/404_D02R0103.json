@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D02R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d02r0103_d02r0104_rare_candy",
+      "scr": "std_hiddenitem_d02r0103_max_revive",
       "type": 2,
       "x": 36,
       "y": 2,

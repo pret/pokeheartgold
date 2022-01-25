@@ -11,10 +11,10 @@
 scr_seq_T07R0206_000:
 	scrcmd_609
 	lockall
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0058
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _002A
 	end
 
@@ -58,21 +58,21 @@ _00B4:
 	elevator_cur_floor_box 20, 1, VAR_ELEVATOR_LAST_FLOOR, VAR_ELEVATOR_LAST_FLOOR
 	npc_msg msg_0506_T07R0206_00000
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 116, 255, 0
 	menu_item_add 118, 255, 1
 	menu_item_add 125, 255, 2
 	menu_item_add 126, 255, 3
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0120
 	case 1, _019B
 	case 2, _0216
 	goto _0322
 
 _0120:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0201, 2, 5, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 0
@@ -96,7 +96,7 @@ _0189:
 	goto _02BB
 
 _019B:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0203, 0, 5, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 2
@@ -120,7 +120,7 @@ _0204:
 	goto _02BB
 
 _0216:
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	set_dynamic_warp MAP_T07R0204, 1, 5, 3, 1
 	compare VAR_ELEVATOR_LAST_FLOOR, 3
@@ -181,7 +181,7 @@ _02FC:
 
 _0305:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0506_T07R0206_00004
 	waitbutton
 	closemsg
@@ -191,7 +191,7 @@ _0305:
 
 _0322:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 _032E:
 	npc_msg msg_0506_T07R0206_00001
 	waitbutton

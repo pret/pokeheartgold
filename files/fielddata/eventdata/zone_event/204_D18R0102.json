@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D18R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d18r0102_ultra_ball",
+      "scr": "std_hiddenitem_d18r0102_revive",
       "type": 2,
       "x": 15,
       "y": 24,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d18r0102_tinymushroom",
+      "scr": "std_hiddenitem_d18r0102_antidote",
       "type": 2,
       "x": 10,
       "y": 7,

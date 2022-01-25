@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D17R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d17r0103_big_mushroom",
+      "scr": "std_hiddenitem_d17r0103_max_potion",
       "type": 2,
       "x": 16,
       "y": 8,

@@ -2,7 +2,7 @@
 
 #include "constants/items.h"
 
-const struct HiddenItemData _020FA558[] = {
+static const struct HiddenItemData sHiddenItemParam[] = {
     {ITEM_POTION, 1, 0, 0, 0},
     {ITEM_NUGGET, 1, 0, 0, 1},
     {ITEM_NUGGET, 1, 0, 0, 225},
@@ -235,6 +235,4 @@ const struct HiddenItemData _020FA558[] = {
     {ITEM_DEEPSEASCALE, 1, 0, 0, 229},
     {ITEM_PP_MAX, 1, 0, 0, 230},
 };
-#else
-extern const struct HiddenItemData _020FA558[231];
 #endif //_IN_FIELDMAP_C

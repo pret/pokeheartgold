@@ -259,11 +259,11 @@ scr_seq_D44R0102_003:
 	npc_msg msg_0129_D44R0102_00009
 _0379:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _039D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _03E0
 	end
 
@@ -302,12 +302,12 @@ _03F1:
 _03FC:
 	npc_msg msg_0129_D44R0102_00029
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _045D
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0468
 	npc_msg msg_0129_D44R0102_00030
 	closemsg
@@ -416,8 +416,8 @@ _05AC:
 _05C8:
 	multi_battle TRAINER_PARTNER_RIVAL_1, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 _05D1:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _066C
 	buffer_players_name 0
 	gender_msgbox msg_0129_D44R0102_00025, msg_0129_D44R0102_00026
@@ -568,7 +568,7 @@ scr_seq_D44R0102_005:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0129_D44R0102_00006, VAR_SPECIAL_x800C
+	trainer_tips msg_0129_D44R0102_00006, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

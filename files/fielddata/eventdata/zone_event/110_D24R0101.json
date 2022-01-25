@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d24r0101_big_pearl",
+      "scr": "std_hiddenitem_d24r0101_great_ball",
       "type": 2,
       "x": 442,
       "y": 296,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d24r0101_full_restore",
+      "scr": "std_hiddenitem_d24r0101_rare_candy",
       "type": 2,
       "x": 422,
       "y": 263,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d24r0101_calcium",
+      "scr": "std_hiddenitem_d24r0101_tinymushroom",
       "type": 2,
       "x": 424,
       "y": 278,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d24r0101_max_revive",
+      "scr": "std_hiddenitem_d24r0101_big_mushroom",
       "type": 2,
       "x": 418,
       "y": 314,
@@ -66,7 +66,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d24r0101_x_special",
+      "scr": "std_hiddenitem_d24r0101_nugget",
       "type": 2,
       "x": 423,
       "y": 311,

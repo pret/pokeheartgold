@@ -136,15 +136,15 @@ scr_seq_D37R0102_001:
 	scrcmd_113 20, 2
 	npc_msg msg_0117_D37R0102_00010
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F5
 	goto _030C
 	.byte 0x02, 0x00
 _01F5:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 500
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0324
 	npc_msg msg_0117_D37R0102_00011
 	scrcmd_049
@@ -153,15 +153,15 @@ _01F5:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0319
-	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0319
 	scrcmd_113 20, 2
 	submoneyimmediate 500
@@ -180,12 +180,12 @@ _01F5:
 	scrcmd_049
 	setflag FLAG_UNK_AA0
 	call _04C8
-	scrcmd_380 VAR_SPECIAL_x800C, 100
-	compare VAR_SPECIAL_x800C, 40
+	scrcmd_380 VAR_SPECIAL_RESULT, 100
+	compare VAR_SPECIAL_RESULT, 40
 	goto_if_ge _02F6
-	compare VAR_SPECIAL_x800C, 10
+	compare VAR_SPECIAL_RESULT, 10
 	goto_if_ge _02E0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ge _02CA
 _02CA:
 	scrcmd_383 1, 32773
@@ -252,15 +252,15 @@ scr_seq_D37R0102_002:
 	scrcmd_113 20, 2
 	npc_msg msg_0117_D37R0102_00017
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0375
 	goto _0498
 	.byte 0x02, 0x00
 _0375:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	npc_msg msg_0117_D37R0102_00018
 	scrcmd_049
@@ -269,15 +269,15 @@ _0375:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	party_select_ui
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _04A5
-	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04A5
 	scrcmd_113 20, 2
 	submoneyimmediate 300
@@ -295,12 +295,12 @@ _0375:
 	npc_msg msg_0117_D37R0102_00020
 	scrcmd_049
 	setflag FLAG_UNK_AA0
-	scrcmd_380 VAR_SPECIAL_x800C, 100
-	compare VAR_SPECIAL_x800C, 40
+	scrcmd_380 VAR_SPECIAL_RESULT, 100
+	compare VAR_SPECIAL_RESULT, 40
 	goto_if_ge _0444
-	compare VAR_SPECIAL_x800C, 10
+	compare VAR_SPECIAL_RESULT, 10
 	goto_if_ge _0460
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ge _047C
 _0444:
 	call _04C8
@@ -386,7 +386,7 @@ scr_seq_D37R0102_003:
 	setvar VAR_TEMP_x4007, 0
 _0522:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 445, 255, 0
 	menu_item_add 446, 255, 1
 	menu_item_add 447, 255, 2
@@ -394,7 +394,7 @@ _0522:
 	menu_item_add 449, 255, 4
 	menu_item_add 450, 255, 7
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _05AB
 	case 1, _05D0
 	case 2, _05F5
@@ -446,8 +446,8 @@ _0664:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	buffer_int 1, VAR_SPECIAL_x8006
 	npc_msg msg_0117_D37R0102_00002
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _068A
 	closemsg
 	goto _0522
@@ -455,11 +455,11 @@ _0664:
 _068A:
 	compare VAR_SPECIAL_x8004, 92
 	goto_if_ne _06CD
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 4500
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 4500
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _087D
 	submoneyimmediate 4500
 	goto _07C6
@@ -467,11 +467,11 @@ _068A:
 _06CD:
 	compare VAR_SPECIAL_x8004, 88
 	goto_if_ne _0710
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 650
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 650
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _087D
 	submoneyimmediate 650
 	goto _07C6
@@ -479,11 +479,11 @@ _06CD:
 _0710:
 	compare VAR_SPECIAL_x8004, 89
 	goto_if_ne _0753
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 3500
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 3500
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _087D
 	submoneyimmediate 3500
 	goto _07C6
@@ -491,32 +491,32 @@ _0710:
 _0753:
 	compare VAR_SPECIAL_x8004, 90
 	goto_if_ne _0796
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 900
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 900
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _087D
 	submoneyimmediate 900
 	goto _07C6
 
 _0796:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 4600
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 4600
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0874
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _087D
 	submoneyimmediate 4600
 _07C6:
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
 	buffer_item_name 0, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 1, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0117_D37R0102_00003
 	npc_msg msg_0117_D37R0102_00004
-	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8004, 92
 	goto_if_ne _0803
 	setvar VAR_TEMP_x4003, 1
@@ -686,7 +686,7 @@ _0A71:
 	update_avatar_state
 	scrcmd_620 1
 	play_se SEQ_SE_DP_CARD2
-	wait 24, VAR_SPECIAL_x800C
+	wait 24, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_DP_CARD2
 	wait_se SEQ_SE_DP_CARD2
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -838,11 +838,11 @@ _0C1F:
 _0C28:
 	npc_msg msg_0117_D37R0102_00041
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C4F
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0CA0
 	end
 
@@ -852,29 +852,29 @@ _0C4F:
 
 _0C58:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C28
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0DDA
 	end
 
 _0C7C:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0CA0
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0DDA
 	end
 
 _0CA0:
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0CC0
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0CCC
 	end
 
@@ -894,8 +894,8 @@ _0CCC:
 	wait_fade
 	compare VAR_TEMP_x4002, 255
 	goto_if_eq _0DDA
-	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0DE5
 	goto _0D17
 
@@ -967,11 +967,11 @@ _0DE5:
 _0DEE:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_492 0, VAR_SPECIAL_x800C, VAR_SPECIAL_x8004
+	scrcmd_492 0, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0E35
 	scrcmd_256 32772
 	scrcmd_494 0, VAR_SPECIAL_x8004
@@ -1009,9 +1009,9 @@ scr_seq_D37R0102_006:
 	faceplayer
 	npc_msg msg_0117_D37R0102_00029
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0F05
 	npc_msg msg_0117_D37R0102_00034
 	waitbutton
@@ -1020,8 +1020,8 @@ scr_seq_D37R0102_006:
 	end
 
 _0F05:
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0FDA
 	npc_msg msg_0117_D37R0102_00030
 	closemsg
@@ -1039,8 +1039,8 @@ _0F05:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0F79
 	release obj_partner_poke
 	apply_movement obj_partner_poke, _0FF8
@@ -1198,8 +1198,8 @@ scr_seq_D37R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _1189
 	npc_msg msg_0117_D37R0102_00027
 	waitbutton
@@ -1225,7 +1225,7 @@ scr_seq_D37R0102_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 0, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1240,7 +1240,7 @@ scr_seq_D37R0102_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 1, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1255,7 +1255,7 @@ scr_seq_D37R0102_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 2, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1270,7 +1270,7 @@ scr_seq_D37R0102_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 3, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1285,7 +1285,7 @@ scr_seq_D37R0102_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 4, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1300,7 +1300,7 @@ scr_seq_D37R0102_017:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 5, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1315,7 +1315,7 @@ scr_seq_D37R0102_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 6, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1330,7 +1330,7 @@ scr_seq_D37R0102_019:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 7, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1345,7 +1345,7 @@ scr_seq_D37R0102_020:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 8, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1360,7 +1360,7 @@ scr_seq_D37R0102_021:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 9, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1375,7 +1375,7 @@ scr_seq_D37R0102_022:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_255 10, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1398,38 +1398,38 @@ scr_seq_D37R0102_023:
 	lockall
 	faceplayer
 	scrcmd_830 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _1480
 	scrcmd_832 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1521
 _1480:
 	npc_msg msg_0117_D37R0102_00057
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1530
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 100
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 100
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _153F
 	submoneyimmediate 100
 	scrcmd_553 5, 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _154E
 	scrcmd_831 32772
-	scrcmd_404 VAR_SPECIAL_x8004, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_404 VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _155B
 	npc_msg msg_0117_D37R0102_00061
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_receive_accessory
 _14EB:
 	scrcmd_832 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1530
 	scrcmd_553 95, 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1530
 	scrcmd_833 32772
 	npc_msg msg_0117_D37R0102_00062

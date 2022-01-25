@@ -29,34 +29,34 @@ scr_seq_P01R0103_000:
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _0158
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _006C
 	goto _00EF
 	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
 _006C:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0085
 	goto _0142
 	.byte 0x16
 	.byte 0x00, 0x6a, 0x00, 0x00, 0x00
 _0085:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _009E
 	goto _0142
 	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
 _009E:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _00B7
 	goto _00EF
 	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
 _00B7:
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ne _00D0
 	goto _0142
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _00D0:
-	compare VAR_SPECIAL_x800C, 5
+	compare VAR_SPECIAL_RESULT, 5
 	goto_if_ne _00E9
 	goto _0142
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00

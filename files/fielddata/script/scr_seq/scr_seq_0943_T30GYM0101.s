@@ -93,8 +93,8 @@ scr_seq_T30GYM0101_000:
 	npc_msg msg_0631_T30GYM0101_00003
 	closemsg
 	trainer_battle TRAINER_LEADER_CLAIR_CLAIR, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0188
 	settrainerflag TRAINER_ACE_TRAINER_M_PAULO
 	settrainerflag TRAINER_ACE_TRAINER_M_CODY
@@ -302,9 +302,9 @@ scr_seq_T30GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 7, VAR_SPECIAL_x800C
+	check_badge 7, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0407
 	npc_msg msg_0631_T30GYM0101_00010
 	goto _040A

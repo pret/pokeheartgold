@@ -22,15 +22,15 @@ scr_seq_D24R0102_000:
 	lockall
 	faceplayer
 	scrcmd_545 32780
-	compare VAR_SPECIAL_x800C, 28
+	compare VAR_SPECIAL_RESULT, 28
 	goto_if_eq _0093
 	compare VAR_UNK_40EC, 1
 	goto_if_ge _008A
 	goto_if_set FLAG_UNK_10F, _0081
 	npc_msg msg_0073_D24R0102_00000
 	setflag FLAG_UNK_10F
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0077
 	apply_movement obj_D24R0102_suit, _009C
 	goto _007F
@@ -102,10 +102,10 @@ scr_seq_D24R0102_001:
 	compare VAR_UNK_403E, 4
 	goto_if_ge _0277
 	scrcmd_545 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DB
 	scrcmd_770 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0223
 	compare VAR_UNK_40EC, 4
 	goto_if_eq _01F6
@@ -177,7 +177,7 @@ _02B1:
 
 _02C4:
 	scrcmd_545 32780
-	compare VAR_SPECIAL_x800C, 28
+	compare VAR_SPECIAL_RESULT, 28
 	goto_if_eq _0333
 	goto _035D
 
@@ -247,10 +247,10 @@ scr_seq_D24R0102_002:
 	lockall
 	faceplayer
 	scrcmd_770 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03AA
 	scrcmd_545 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03A1
 	npc_msg msg_0073_D24R0102_00019
 	goto _0366
@@ -270,7 +270,7 @@ scr_seq_D24R0102_003:
 	compare VAR_UNK_403E, 7
 	goto_if_ge _03EB
 	scrcmd_770 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03E2
 	npc_msg msg_0073_D24R0102_00021
 	goto _0366

@@ -57,8 +57,8 @@ scr_seq_T10R0501_001:
 _009E:
 	trainer_battle TRAINER_ELITE_FOUR_KAREN_KAREN, 0, 0, 0
 _00A6:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00DF
 	setflag FLAG_DEFEATED_KAREN
 	npc_msg msg_0526_T10R0501_00001

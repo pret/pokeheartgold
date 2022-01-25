@@ -64,15 +64,15 @@ _00DA:
 	goto _011C
 
 _00E6:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
 	return
 
 _00F0:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
 	return
 
 _00FA:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 350
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 350
 	return
 
 _0104:
@@ -94,10 +94,10 @@ _011C:
 	call_if_eq _00F0
 	compare VAR_SPECIAL_x8000, 2
 	call_if_eq _00FA
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F0
-	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F9
 	compare VAR_SPECIAL_x8000, 0
 	call_if_eq _0104
@@ -111,14 +111,14 @@ _011C:
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0499_T07R0106_00004
 	giveitem_no_check VAR_SPECIAL_x8001, 1
-	scrcmd_380 VAR_SPECIAL_x800C, 64
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_380 VAR_SPECIAL_RESULT, 64
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01E7
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0499_T07R0106_00005
-	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F9
 	callstd std_give_item_verbose
 _01E7:

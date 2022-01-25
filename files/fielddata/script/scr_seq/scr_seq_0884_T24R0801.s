@@ -12,8 +12,8 @@ scr_seq_T24R0801_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _002B
 	goto _0031
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
@@ -21,11 +21,11 @@ _002B:
 	goto _0073
 
 _0031:
-	hasitem ITEM_CLEAR_BELL, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_CLEAR_BELL, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _0061
-	hasitem ITEM_RAINBOW_WING, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_RAINBOW_WING, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _006A
 	goto _00B5
 
@@ -38,11 +38,11 @@ _006A:
 	goto _00B8
 
 _0073:
-	hasitem ITEM_TIDAL_BELL, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_TIDAL_BELL, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _00A3
-	hasitem ITEM_SILVER_WING, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_SILVER_WING, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _00AC
 	goto _00B5
 

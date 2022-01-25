@@ -5,7 +5,7 @@
 #include "script.h"
 
 // unk_0203DE74.s
-extern SAVEDATA* ScriptEnvironment_GetSav2Ptr(UnkSavStruct80*);
+extern SAVEDATA* ScriptEnvironment_GetSav2Ptr(FieldSystem*);
 
 // Basic commands
 BOOL ScrCmd_Nop(SCRIPTCONTEXT* ctx);

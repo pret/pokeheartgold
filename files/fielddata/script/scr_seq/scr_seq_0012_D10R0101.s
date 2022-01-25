@@ -21,19 +21,19 @@ scr_seq_D10R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	non_npc_msg msg_0052_D10R0101_00006
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	non_npc_msg msg_0052_D10R0101_00007
 	play_se SEQ_SE_DP_DECIDE
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	non_npc_msg msg_0052_D10R0101_00008
 	play_se SEQ_SE_DP_DECIDE
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	non_npc_msg msg_0052_D10R0101_00009
 	play_se SEQ_SE_DP_DECIDE
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	non_npc_msg msg_0052_D10R0101_00010
 	play_se SEQ_SE_DP_CON_016
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_508 0
 	setvar VAR_UNK_4124, 1
 	closemsg
@@ -61,10 +61,10 @@ scr_seq_D10R0101_003:
 	lockall
 	npc_msg msg_0052_D10R0101_00005
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00D5
 	releaseall
 	end
@@ -80,7 +80,7 @@ scr_seq_D10R0101_004:
 	lockall
 	call _0180
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0110
 	setvar VAR_UNK_4124, 2
 	releaseall
@@ -109,7 +109,7 @@ scr_seq_D10R0101_005:
 	faceplayer
 	call _0180
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0169
 	setvar VAR_UNK_4124, 2
 	releaseall
@@ -129,29 +129,29 @@ _0178:
 _0180:
 	npc_msg msg_0052_D10R0101_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01C9
-	get_player_gender VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_gender VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01B9
 	buffer_players_name 0
 	npc_msg msg_0052_D10R0101_00002
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	return
 
 _01B9:
 	buffer_players_name 0
 	npc_msg msg_0052_D10R0101_00003
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	return
 
 _01C9:
 	npc_msg msg_0052_D10R0101_00001
-	setvar VAR_SPECIAL_x800C, 1
+	setvar VAR_SPECIAL_RESULT, 1
 	return
 
 _01D4:

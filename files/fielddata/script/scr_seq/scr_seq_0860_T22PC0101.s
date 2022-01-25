@@ -24,51 +24,51 @@ scr_seq_T22PC0101_004:
 	faceplayer
 	npc_msg msg_0559_T22PC0101_00012
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _021D
 	scrcmd_815 0
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
-	prompt_easy_chat VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	prompt_easy_chat VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _021F
 	npc_msg msg_0559_T22PC0101_00013
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
 	scrcmd_815 0
-	prompt_easy_chat VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	prompt_easy_chat VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _021F
-	primo_password_check_1 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
-	compare VAR_SPECIAL_x800C, 255
+	primo_password_check_1 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _00DD
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0212
 	goto _022A
 
 _00DD:
-	primo_password_check_2 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
-	compare VAR_SPECIAL_x800C, 255
+	primo_password_check_2 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0212
-	compare VAR_SPECIAL_x800C, 8
+	compare VAR_SPECIAL_RESULT, 8
 	goto_if_eq _011D
-	compare VAR_SPECIAL_x800C, 9
+	compare VAR_SPECIAL_RESULT, 9
 	goto_if_eq _0157
-	compare VAR_SPECIAL_x800C, 10
+	compare VAR_SPECIAL_RESULT, 10
 	goto_if_eq _0191
 _011D:
 	goto_if_set FLAG_UNK_159, _0212
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0207
 	setflag FLAG_UNK_159
 	npc_msg msg_0559_T22PC0101_00018
@@ -79,8 +79,8 @@ _011D:
 
 _0157:
 	goto_if_set FLAG_UNK_15A, _0212
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0207
 	setflag FLAG_UNK_15A
 	npc_msg msg_0559_T22PC0101_00018
@@ -91,8 +91,8 @@ _0157:
 
 _0191:
 	goto_if_set FLAG_UNK_15B, _0212
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0207
 	setflag FLAG_UNK_15B
 	npc_msg msg_0559_T22PC0101_00018
@@ -103,8 +103,8 @@ _0191:
 
 _01CB:
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01EC
 	apply_movement obj_T22PC0101_instructor, _023C
 	goto _01F4
@@ -177,23 +177,23 @@ _028C:
 	npc_msg msg_0559_T22PC0101_00022
 	touchscreen_menu_hide
 	scrcmd_287
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 53, 255, 0
 	menu_item_add 54, 255, 1
 	menu_item_add 55, 255, 2
 	menu_item_add 56, 255, 3
 	menu_item_add 44, 255, 4
 	menu_exec
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	switch VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	switch VAR_SPECIAL_RESULT
 	case 4, _0331
 	case 65534, _0331
 	scrcmd_288 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
 	capitalize 0
 	npc_msg msg_0559_T22PC0101_00023
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0313
 	goto _028C
 

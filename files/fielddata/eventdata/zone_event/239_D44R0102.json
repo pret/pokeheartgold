@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D44R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d44r0102_stardust",
+      "scr": "std_hiddenitem_d44r0102_revive",
       "type": 2,
       "x": 14,
       "y": 12,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d44r0102_stardust_3",
+      "scr": "std_hiddenitem_d44r0102_max_elixir",
       "type": 2,
       "x": 32,
       "y": 49,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d44r0102_stardust_2",
+      "scr": "std_hiddenitem_d44r0102_max_potion",
       "type": 2,
       "x": 8,
       "y": 22,

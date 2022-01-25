@@ -28,8 +28,8 @@ scr_seq_T26R0501_002:
 
 _0050:
 	npc_msg msg_0609_T26R0501_00002
-	hasitem ITEM_SEAL_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_SEAL_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0071
 	npc_msg msg_0609_T26R0501_00005
 	goto _00E3

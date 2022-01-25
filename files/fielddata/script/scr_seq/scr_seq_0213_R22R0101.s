@@ -153,7 +153,7 @@ _01EC:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	wait 16, VAR_SPECIAL_x800C
+	wait 16, VAR_SPECIAL_RESULT
 	compare VAR_TEMP_x4001, 8
 	goto_if_ne _023A
 	apply_movement obj_R22R0101_policeman_3, _02C4
@@ -282,7 +282,7 @@ _037E:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	wait 16, VAR_SPECIAL_x800C
+	wait 16, VAR_SPECIAL_RESULT
 	compare VAR_TEMP_x4001, 8
 	goto_if_ne _03CC
 	apply_movement obj_R22R0101_policeman_2, _0458
@@ -384,11 +384,11 @@ scr_seq_R22R0101_008:
 	npc_msg msg_0361_R22R0101_00007
 _04D0:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04F4
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _0537
 	end
 
@@ -427,12 +427,12 @@ _0548:
 _0553:
 	npc_msg msg_0361_R22R0101_00012
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _05B4
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _05BF
 	npc_msg msg_0361_R22R0101_00013
 	closemsg

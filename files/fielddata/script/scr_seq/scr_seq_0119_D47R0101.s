@@ -27,14 +27,14 @@ scr_seq_D47R0101_006:
 	wait_movement
 	npc_msg msg_0135_D47R0101_00007
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0062
 	safari_zone_action 1, 0
 _0062:
 	touchscreen_menu_show
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00BD
 	apply_movement obj_player, _01B4
 	wait_movement
@@ -158,9 +158,9 @@ scr_seq_D47R0101_008:
 	scrcmd_604 48
 	npc_msg msg_0135_D47R0101_00029
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _025B
 _024A:
 	npc_msg msg_0135_D47R0101_00030
@@ -173,9 +173,9 @@ _024A:
 _025B:
 	npc_msg msg_0135_D47R0101_00031
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _025B
 	goto _024A
 
@@ -334,7 +334,7 @@ _0494:
 
 _049D:
 	scrcmd_791 0, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _04B8
 	npc_msg msg_0135_D47R0101_00033
 	goto _04C3
@@ -348,15 +348,15 @@ _04C3:
 	.byte 0x02, 0x00
 _04CB:
 	scrcmd_791 1, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _057E
 	npc_msg msg_0135_D47R0101_00037
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0515
 	apply_movement obj_D47R0101_gsgentleman, _034C
 	apply_movement obj_player, _03E0
@@ -364,7 +364,7 @@ _04CB:
 	goto _054C
 
 _0515:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _053A
 	apply_movement obj_D47R0101_gsgentleman, _0360
 	apply_movement obj_player, _03F8
@@ -406,11 +406,11 @@ _058F:
 _0599:
 	npc_msg msg_0135_D47R0101_00045
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0683
 _05AF:
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 463, 255, 0
 	menu_item_add 464, 255, 1
 	menu_item_add 465, 255, 2
@@ -419,7 +419,7 @@ _05AF:
 	menu_item_add 468, 255, 5
 	menu_item_add 469, 255, 6
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _064D
 	case 1, _0656
 	case 2, _065F
@@ -473,9 +473,9 @@ _06AE:
 	npc_msg msg_0135_D47R0101_00014
 _06B1:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06E7
 	setvar VAR_SPECIAL_x8004, 30
 	buffer_int 1, VAR_SPECIAL_x8004
@@ -503,42 +503,42 @@ scr_seq_D47R0101_001:
 _0707:
 	compare VAR_UNK_4057, 6
 	goto_if_lt _0728
-	setvar VAR_SPECIAL_x800C, 500
-	buffer_int 1, VAR_SPECIAL_x800C
+	setvar VAR_SPECIAL_RESULT, 500
+	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0135_D47R0101_00001
 	goto _0736
 
 _0728:
-	setvar VAR_SPECIAL_x800C, 500
-	buffer_int 1, VAR_SPECIAL_x800C
+	setvar VAR_SPECIAL_RESULT, 500
+	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0135_D47R0101_00000
 _0736:
 	scrcmd_113 20, 2
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0846
-	count_pc_empty_space VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	count_pc_empty_space VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0773
 	get_party_count VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 6
 	goto_if_eq _0853
 _0773:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 500
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0876
-	setvar VAR_SPECIAL_x800C, 500
-	buffer_int 1, VAR_SPECIAL_x800C
+	setvar VAR_SPECIAL_RESULT, 500
+	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0135_D47R0101_00002
 	play_se SEQ_SE_DP_REGI
 	submoneyimmediate 500
 	scrcmd_115
 	npc_msg msg_0135_D47R0101_00004
 	buffer_players_name 0
-	setvar VAR_SPECIAL_x800C, 30
-	buffer_int 1, VAR_SPECIAL_x800C
+	setvar VAR_SPECIAL_RESULT, 30
+	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0135_D47R0101_00005
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -651,7 +651,7 @@ scr_seq_D47R0101_002:
 	npc_msg msg_0135_D47R0101_00019
 	touchscreen_menu_hide
 _0919:
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 457, 255, 0
 	menu_item_add 458, 255, 1
 	menu_item_add 459, 255, 2
@@ -659,7 +659,7 @@ _0919:
 	menu_item_add 461, 255, 4
 	menu_item_add 462, 255, 5
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _09A2
 	case 1, _09AB
 	case 2, _09B4
@@ -722,42 +722,42 @@ _0A26:
 	npc_msg msg_0135_D47R0101_00066
 _0A29:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0BFC
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 1
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A5D
 	goto _0C16
 	.byte 0x02, 0x00
 _0A5D:
 	touchscreen_menu_hide
 	npc_msg msg_0135_D47R0101_00071
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 14, 255, 0
 	menu_item_add 15, 255, 1
 	menu_item_add 5, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0AAC
 	case 1, _0B2F
 	goto _0BFC
 	.byte 0x02, 0x00
 _0AAC:
 	npc_msg msg_0135_D47R0101_00086
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A5D
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0B05
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0B11
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0B20
 	goto _0BB2
 	.byte 0x02, 0x00
@@ -787,17 +787,17 @@ _0B20:
 
 _0B2F:
 	npc_msg msg_0135_D47R0101_00086
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A5D
 	setvar VAR_SPECIAL_x8004, 39
 	setvar VAR_SPECIAL_x8005, 0
-	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0B88
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0B94
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0BA3
 	goto _0BB2
 	.byte 0x02, 0x00
@@ -836,7 +836,7 @@ _0BB2:
 	npc_msg msg_0135_D47R0101_00082
 	npc_msg msg_0135_D47R0101_00088
 	scrcmd_345
-	scrcmd_254 VAR_SPECIAL_x800C
+	scrcmd_254 VAR_SPECIAL_RESULT
 	scrcmd_346
 	buffer_players_name 0
 	npc_msg msg_0135_D47R0101_00089
@@ -902,30 +902,30 @@ _0C84:
 _0C8F:
 	scrcmd_113 20, 2
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0D9F
-	count_pc_empty_space VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	count_pc_empty_space VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0CCC
 	get_party_count VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 6
 	goto_if_eq _0DAC
 _0CCC:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 500
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0DCF
-	setvar VAR_SPECIAL_x800C, 500
-	buffer_int 1, VAR_SPECIAL_x800C
+	setvar VAR_SPECIAL_RESULT, 500
+	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0135_D47R0101_00055
 	play_se SEQ_SE_DP_REGI
 	submoneyimmediate 500
 	scrcmd_115
 	npc_msg msg_0135_D47R0101_00057
 	buffer_players_name 0
-	setvar VAR_SPECIAL_x800C, 30
-	buffer_int 1, VAR_SPECIAL_x800C
+	setvar VAR_SPECIAL_RESULT, 30
+	buffer_int 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0135_D47R0101_00058
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -1027,9 +1027,9 @@ _0E45:
 	npc_msg msg_0135_D47R0101_00094
 _0E48:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0E68
 	npc_msg msg_0135_D47R0101_00095
 	waitbutton

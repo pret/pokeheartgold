@@ -93,7 +93,7 @@ _011A:
 	compare VAR_SPECIAL_x8000, 0
 	goto_if_ne _01A5
 	scrcmd_738 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _020F
 	apply_movement obj_T23R0501_gantetsu, _02BC
 	wait_movement
@@ -106,7 +106,7 @@ _011A:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_735 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0189
 	npc_msg msg_0571_T23R0501_00006
 	goto _0190
@@ -127,7 +127,7 @@ _01A5:
 	buffer_players_name 0
 	npc_msg msg_0571_T23R0501_00008
 	scrcmd_737 32772
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
 	callstd std_give_item_verbose
 	scrcmd_736
@@ -168,11 +168,11 @@ _022D:
 	npc_msg msg_0571_T23R0501_00015
 _024A:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _026E
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _0289
 	end
 

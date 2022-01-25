@@ -124,7 +124,7 @@ _0220:
 	apply_movement obj_R31R0101_var_1, _03DC
 	apply_movement obj_R31R0101_tsure_poke_static_marill, _0474
 _0230:
-	wait 16, VAR_SPECIAL_x800C
+	wait 16, VAR_SPECIAL_RESULT
 	apply_movement obj_player, _029C
 	compare VAR_TEMP_x4002, 1
 	goto_if_ne _0253

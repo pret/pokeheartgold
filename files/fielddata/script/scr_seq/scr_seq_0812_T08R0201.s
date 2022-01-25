@@ -53,11 +53,11 @@ scr_seq_T08R0201_003:
 	buffer_players_name 0
 	gender_msgbox msg_0516_T08R0201_00000, msg_0516_T08R0201_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00C5
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0190
 	end
 
@@ -79,36 +79,36 @@ _00E0:
 
 _00E9:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 194, 255, 0
 	menu_item_add 195, 255, 1
 	menu_item_add 196, 255, 2
 	menu_item_add 198, 255, 4
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00CE
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00D7
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _00E0
 	goto _0144
 
 _0144:
 	npc_msg msg_0516_T08R0201_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0190
 _015C:
-	setvar VAR_SPECIAL_x800C, 0
-	count_pc_empty_space VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	setvar VAR_SPECIAL_RESULT, 0
+	count_pc_empty_space VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_lt _0274
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	scrcmd_509 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0260
 	goto _01FB
 
@@ -126,17 +126,17 @@ _019B:
 
 _01A8:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 199, 255, 0
 	menu_item_add 200, 255, 1
 	menu_item_add 201, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _015C
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _026B
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0190
 	goto _0190
 
@@ -217,17 +217,17 @@ scr_seq_T08R0201_001:
 	apply_movement obj_player, _03DC
 	apply_movement obj_T08R0201_workman, _03C8
 	wait_movement
-	pal_park_score_get 0, VAR_SPECIAL_x800C
-	buffer_int 0, VAR_SPECIAL_x800C
-	pal_park_score_get 1, VAR_SPECIAL_x800C
-	buffer_int 1, VAR_SPECIAL_x800C
-	pal_park_score_get 2, VAR_SPECIAL_x800C
-	buffer_int 2, VAR_SPECIAL_x800C
-	pal_park_score_get 3, VAR_SPECIAL_x800C
-	buffer_int 3, VAR_SPECIAL_x800C
+	pal_park_score_get 0, VAR_SPECIAL_RESULT
+	buffer_int 0, VAR_SPECIAL_RESULT
+	pal_park_score_get 1, VAR_SPECIAL_RESULT
+	buffer_int 1, VAR_SPECIAL_RESULT
+	pal_park_score_get 2, VAR_SPECIAL_RESULT
+	buffer_int 2, VAR_SPECIAL_RESULT
+	pal_park_score_get 3, VAR_SPECIAL_RESULT
+	buffer_int 3, VAR_SPECIAL_RESULT
 	npc_msg msg_0516_T08R0201_00016
-	pal_park_score_get 3, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, VAR_PAL_PARK_HIGH_SCORE
+	pal_park_score_get 3, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, VAR_PAL_PARK_HIGH_SCORE
 	goto_if_gt _0339
 	npc_msg msg_0516_T08R0201_00018
 	call _0669
@@ -242,15 +242,15 @@ _0339:
 _034E:
 	npc_msg msg_0516_T08R0201_00019
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0391
 	npc_msg msg_0516_T08R0201_00024
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0384
 	goto _034E
 
@@ -306,9 +306,9 @@ scr_seq_T08R0201_004:
 	lockall
 	faceplayer
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0444
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0439
 	goto _042E
 
@@ -358,15 +358,15 @@ scr_seq_T08R0201_009:
 	compare VAR_TEMP_x4009, 1
 	goto_if_eq _0511
 	scrcmd_528 32780
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _051C
-	compare VAR_SPECIAL_x800C, 5
+	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _055D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _059E
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _05D7
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0610
 	goto _0506
 	.byte 0x02, 0x00
@@ -385,58 +385,58 @@ _0511:
 	end
 
 _051C:
-	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 97
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00035
 	goto _0649
 	.byte 0x02, 0x00
 _055D:
-	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 98
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00036
 	goto _0649
 	.byte 0x02, 0x00
 _059E:
-	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 14
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00037
 	goto _0659
 	.byte 0x02, 0x00
 _05D7:
-	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 15
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00038
 	goto _0659
 	.byte 0x02, 0x00
 _0610:
-	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 16
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00039
 	goto _0659
@@ -456,14 +456,14 @@ _0659:
 	end
 
 _0669:
-	pal_park_score_get 3, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3000
+	pal_park_score_get 3, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3000
 	call_if_lt _06A5
-	compare VAR_SPECIAL_x800C, 3300
+	compare VAR_SPECIAL_RESULT, 3300
 	call_if_lt _071B
-	compare VAR_SPECIAL_x800C, 3500
+	compare VAR_SPECIAL_RESULT, 3500
 	call_if_lt _076A
-	compare VAR_SPECIAL_x800C, 10000
+	compare VAR_SPECIAL_RESULT, 10000
 	call_if_lt _07D3
 	return
 
@@ -543,7 +543,7 @@ _082F:
 	hasspaceforitem VAR_SPECIAL_x8006, 1, VAR_SPECIAL_x8007
 	compare VAR_SPECIAL_x8007, 0
 	call_if_ne _084C
-	setvar VAR_SPECIAL_x800C, 10000
+	setvar VAR_SPECIAL_RESULT, 10000
 	return
 
 _084C:

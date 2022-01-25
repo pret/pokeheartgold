@@ -93,11 +93,11 @@ scr_seq_D01R0101_001:
 	npc_msg msg_0047_D01R0101_00001
 _0133:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0157
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _019A
 	end
 
@@ -155,12 +155,12 @@ _020E:
 	goto_if_eq _0357
 	npc_msg msg_0047_D01R0101_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _027C
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0287
 	npc_msg msg_0047_D01R0101_00007
 	closemsg
@@ -204,26 +204,26 @@ _02A8:
 	gender_msgbox msg_0047_D01R0101_00011, msg_0047_D01R0101_00012
 _02AF:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0346
 	npc_msg msg_0047_D01R0101_00013
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0346
 	scrcmd_470 11
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _0339
 	scrcmd_473 32772
 	scrcmd_474

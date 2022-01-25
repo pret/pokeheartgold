@@ -44,8 +44,8 @@ scr_seq_T25R0501_000:
 	end
 
 _0078:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0096
 	npc_msg msg_0587_T25R0501_00005
 	waitbutton
@@ -76,8 +76,8 @@ scr_seq_T25R0501_001:
 	setflag FLAG_UNK_123
 _00D6:
 	wait 50, VAR_SPECIAL_x8004
-	hasitem ITEM_PASS, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_PASS, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _0123
 	npc_msg msg_0587_T25R0501_00002
 	closemsg

@@ -13,8 +13,8 @@ scr_seq_T23GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0030
 	npc_msg msg_0566_T23GYM0101_00000
 	waitbutton
@@ -33,9 +33,9 @@ scr_seq_T23GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 1, VAR_SPECIAL_x800C
+	check_badge 1, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0062
 	npc_msg msg_0566_T23GYM0101_00002
 	goto _0065

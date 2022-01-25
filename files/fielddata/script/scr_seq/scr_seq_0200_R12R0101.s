@@ -12,14 +12,14 @@ scr_seq_R12R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity ITEM_SUPER_ROD, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_SUPER_ROD, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _004C
 	npc_msg msg_0349_R12R0101_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0057
 	npc_msg msg_0349_R12R0101_00001
 	giveitem_no_check ITEM_SUPER_ROD, 1

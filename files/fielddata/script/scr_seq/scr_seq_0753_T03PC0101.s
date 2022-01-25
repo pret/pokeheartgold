@@ -24,25 +24,25 @@ scr_seq_T03PC0101_001:
 	goto_if_set FLAG_UNK_133, _00C9
 	npc_msg msg_0463_T03PC0101_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00BE
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _00BE
 	scrcmd_470 9
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _00B1
 	scrcmd_473 32772
 	scrcmd_474

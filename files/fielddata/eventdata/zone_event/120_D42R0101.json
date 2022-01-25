@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D42R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d42r0101_great_ball",
+      "scr": "std_hiddenitem_d42r0101_max_revive",
       "type": 2,
       "x": 14,
       "y": 9,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d42r0101_parlyz_heal",
+      "scr": "std_hiddenitem_d42r0101_hyper_potion",
       "type": 2,
       "x": 9,
       "y": 52,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d42r0101_big_pearl",
+      "scr": "std_hiddenitem_d42r0101_elixir",
       "type": 2,
       "x": 48,
       "y": 16,

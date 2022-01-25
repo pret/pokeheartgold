@@ -46,8 +46,8 @@ scr_seq_T03_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _00A5
 	goto_if_set FLAG_UNK_094, _0108
 	goto _00B0
@@ -56,8 +56,8 @@ _00A5:
 	goto_if_set FLAG_UNK_093, _0108
 _00B0:
 	npc_msg msg_0460_T03_00002
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _00E6
 	setvar VAR_SPECIAL_x8004, 482
 	setvar VAR_SPECIAL_x8005, 1
@@ -90,30 +90,30 @@ scr_seq_T03_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0218
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _022C
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0184
 	apply_movement obj_player, _0240
 	goto _01B7
 
 _0184:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _01A7
 	apply_movement obj_player, _0260
 	apply_movement obj_T03_gsmiddleman1, _0274
@@ -127,8 +127,8 @@ _01B7:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01DE
 	apply_movement obj_partner_poke, _0280
 	wait_movement
@@ -141,24 +141,24 @@ _01DE:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _0218:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _022C:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -203,10 +203,10 @@ scr_seq_T03_002:
 	end
 
 scr_seq_T03_003:
-	direction_signpost msg_0460_T03_00020, 0, 3, VAR_SPECIAL_x800C
+	direction_signpost msg_0460_T03_00020, 0, 3, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -214,7 +214,7 @@ scr_seq_T03_004:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0460_T03_00021, VAR_SPECIAL_x800C
+	trainer_tips msg_0460_T03_00021, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -222,15 +222,15 @@ scr_seq_T03_005:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0460_T03_00022, VAR_SPECIAL_x800C
+	trainer_tips msg_0460_T03_00022, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_T03_006:
-	direction_signpost msg_0460_T03_00023, 2, 0, VAR_SPECIAL_x800C
+	direction_signpost msg_0460_T03_00023, 2, 0, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -364,8 +364,8 @@ scr_seq_T03_010:
 	scrcmd_546 0, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0649
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _04C8
 	setvar VAR_TEMP_x400A, 381
 	play_cry VAR_TEMP_x400A, 0
@@ -387,14 +387,14 @@ _04D7:
 	goto_if_eq _057B
 	compare VAR_TEMP_x4000, 3
 	goto_if_eq _057B
-	scrcmd_588 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_588 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0526
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _055A
 _0526:
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _0540
 	npc_msg msg_0460_T03_00012
 	goto _0543
@@ -435,8 +435,8 @@ _0585:
 	compare VAR_TEMP_x4000, 4
 	goto_if_eq _05FF
 _05D2:
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _05EC
 	npc_msg msg_0460_T03_00016
 	goto _05EF

@@ -341,8 +341,8 @@ _0436:
 	apply_movement obj_D35R0103_rocketm_4, _06A0
 	wait_movement
 	multi_battle TRAINER_PKMN_TRAINER_LANCE_LANCE, TRAINER_EXECUTIVE_ARIANA_ARIANA_2, TRAINER_TEAM_ROCKET_GRUNT_25, 1
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0620
 	npc_msg msg_0113_D35R0103_00008
 	closemsg
@@ -549,8 +549,8 @@ scr_seq_D35R0103_004:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _089C
 	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
@@ -572,8 +572,8 @@ scr_seq_D35R0103_005:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _089C
 	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1
@@ -595,8 +595,8 @@ scr_seq_D35R0103_006:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ELECTRODE, 23, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _089C
 	scrcmd_221 VAR_TEMP_x4000, 0
 	compare VAR_TEMP_x4000, 1

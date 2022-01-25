@@ -1687,7 +1687,7 @@ sub_0206A388: ; 0x0206A388
 	add r6, r1, #0
 	add r5, r2, #0
 	add r7, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp, #4]
 	mov r0, #4
 	mov r1, #0x38
@@ -1746,7 +1746,7 @@ _0206A3F2:
 	ldr r0, [sp]
 	ldr r1, _0206A40C ; =sub_0206A410
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1758,10 +1758,10 @@ sub_0206A410: ; 0x0206A410
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3

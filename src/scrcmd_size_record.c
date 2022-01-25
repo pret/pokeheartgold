@@ -65,7 +65,7 @@ static u32 GetMonSize(int species, int rand) {
     return r6 * ((u64)sBigMonSizeTable[r4][0] + ((u64)rand - (u64)sBigMonSizeTable[r4][2]) / (u64)sBigMonSizeTable[r4][1]) / 10;
 }
 
-static void FormatSizeRecord(UnkSavStruct80 *fsys, u8 idx0, u8 idx1, u16 species, u16 rand) {
+static void FormatSizeRecord(FieldSystem *fsys, u8 idx0, u8 idx1, u16 species, u16 rand) {
     MSGFMT ** msgFmt;
     u32 score;
     u32 r4;
@@ -85,11 +85,11 @@ BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
     u16 *ret_p;
     u32 cm1;
     u32 cm2;
-    UnkSavStruct80 *fsys;
+    FieldSystem *fsys;
 
-    fsys = ctx->unk80;
-    ret_p = GetVarPointer(ctx->unk80, ScriptReadHalfword(ctx));
-    slot = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
+    fsys = ctx->fsys;
+    ret_p = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
     species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     rand = GetMonSizeHash(pokemon);
@@ -116,26 +116,26 @@ BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx) {
     POKEMON *pokemon;
     u16 slot;
-    UnkSavStruct80 *fsys;
+    FieldSystem *fsys;
 
-    fsys = ctx->unk80;
-    slot = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
+    fsys = ctx->fsys;
+    slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
     ScriptState_SetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata), GetMonSizeHash(pokemon));
     return FALSE;
 }
 
 BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx) {
-    UnkSavStruct80 *fsys;
+    FieldSystem *fsys;
     u16 idx0;
     u16 idx1;
     u16 species;
     vu16 rand;
 
-    fsys = ctx->unk80;
-    idx0 = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
-    idx1 = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
-    species = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
+    fsys = ctx->fsys;
+    idx0 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    idx1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    species = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     rand = ScriptState_GetFishingCompetitionLengthRecord(SavArray_Flags_get(fsys->savedata));
     FormatSizeRecord(fsys, idx0, idx1, species, rand);
     return FALSE;
@@ -143,15 +143,15 @@ BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_BufferMonSize(SCRIPTCONTEXT *ctx) {
     POKEMON *pokemon;
-    UnkSavStruct80 *fsys;
+    FieldSystem *fsys;
     u16 idx0;
     u16 idx1;
     u16 slot;
 
-    fsys = ctx->unk80;
-    idx0 = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
-    idx1 = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
-    slot = VarGet(ctx->unk80, ScriptReadHalfword(ctx));
+    fsys = ctx->fsys;
+    idx0 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    idx1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    slot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     pokemon = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
     FormatSizeRecord(fsys, idx0, idx1, GetMonData(pokemon, MON_DATA_SPECIES, NULL), GetMonSizeHash(pokemon));
     return FALSE;

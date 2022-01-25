@@ -15,8 +15,8 @@ scr_seq_T07SP0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0066
 	apply_movement obj_T07SP0101_suit, _007C
 	wait_movement
@@ -65,8 +65,8 @@ _00B9:
 	apply_movement obj_T07SP0101_suit, _007C
 _00C1:
 	wait_movement
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00E1
 	npc_msg msg_0511_T07SP0101_00013
 	goto _00E4
@@ -98,8 +98,8 @@ scr_seq_T07SP0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0184
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0163
@@ -131,9 +131,9 @@ _019A:
 	npc_msg msg_0511_T07SP0101_00009
 _019D:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01D4
 	npc_msg msg_0511_T07SP0101_00003
 	setvar VAR_TEMP_x4001, 1

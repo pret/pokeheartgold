@@ -18,11 +18,11 @@ scr_seq_T25R0401_000:
 	buffer_players_name 0
 	npc_msg msg_0586_T25R0401_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _004B
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00D3
 	end
 
@@ -31,7 +31,7 @@ _004B:
 	compare VAR_SPECIAL_x8005, 6
 	goto_if_eq _00DE
 	npc_msg msg_0586_T25R0401_00001
-	give_mon SPECIES_EEVEE, 5, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon SPECIES_EEVEE, 5, 0, 0, 0, VAR_SPECIAL_RESULT
 	setflag FLAG_GOT_EEVEE_FROM_BILL
 	buffer_players_name 0
 	npc_msg msg_0586_T25R0401_00002
@@ -39,10 +39,10 @@ _004B:
 	wait_fanfare
 	npc_msg msg_0586_T25R0401_00007
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00A0
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _00C6
 _00A0:
 	closemsg
@@ -118,11 +118,11 @@ scr_seq_T25R0401_002:
 _0152:
 	npc_msg msg_0586_T25R0401_00012
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0179
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0191
 	end
 

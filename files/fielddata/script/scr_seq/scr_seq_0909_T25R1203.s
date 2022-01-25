@@ -82,12 +82,12 @@ scr_seq_T25R1203_011:
 _0113:
 	npc_msg msg_0602_T25R1203_00011
 	touchscreen_menu_hide
-	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 13, 255, 0
 	menu_item_add 14, 255, 1
 	menu_item_add 15, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _016A
 	case 1, _018F
 	goto _0162
@@ -101,8 +101,8 @@ _0164:
 
 _016A:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0164
 	closemsg
 	scrcmd_815 0

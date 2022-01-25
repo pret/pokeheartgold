@@ -22,7 +22,7 @@ sub_0205298C: ; 0x0205298C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_02050654
@@ -158,10 +158,10 @@ sub_02052AA0: ; 0x02052AA0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02050654
@@ -414,7 +414,7 @@ Special_EnterHallOfFame: ; 0x02052CB4
 	sub sp, #0x10
 	str r0, [sp]
 	add r7, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	mov r0, #0x20
 	mov r1, #0x44
@@ -484,7 +484,7 @@ _02052D70:
 	ldr r0, [sp]
 	ldr r1, _02052D80 ; =sub_02052AA0
 	add r2, r5, #0
-	bl sub_02050530
+	bl QueueTask
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

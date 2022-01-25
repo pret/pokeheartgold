@@ -29,10 +29,10 @@ _002C:
 	end
 
 scr_seq_R46_001:
-	direction_signpost msg_0406_R46_00000, 1, 3, VAR_SPECIAL_x800C
+	direction_signpost msg_0406_R46_00000, 1, 3, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -40,7 +40,7 @@ scr_seq_R46_002:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0406_R46_00001, VAR_SPECIAL_x800C
+	trainer_tips msg_0406_R46_00001, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

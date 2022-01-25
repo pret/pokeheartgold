@@ -80,14 +80,14 @@ scr_seq_D11R0106_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 14, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 14, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01B6
 	npc_msg msg_0053_D11R0106_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_BLAINE_BLAINE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
 	give_badge 14
 	addvar VAR_UNK_4135, 1
@@ -144,8 +144,8 @@ scr_seq_D11R0106_002:
 	npc_msg msg_0053_D11R0106_00006
 	closemsg
 	trainer_battle TRAINER_SUPER_NERD_CARY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00008
 	closemsg
@@ -170,13 +170,13 @@ scr_seq_D11R0106_003:
 	npc_msg msg_0053_D11R0106_00009
 	closemsg
 	trainer_battle TRAINER_SUPER_NERD_WALDO, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00011
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _027A
 	apply_movement obj_D11R0106_gsassistantm_2, _043C
 	goto _0282
@@ -204,8 +204,8 @@ scr_seq_D11R0106_004:
 	npc_msg msg_0053_D11R0106_00012
 	closemsg
 	trainer_battle TRAINER_SUPER_NERD_MERLE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00014
 	closemsg
@@ -230,8 +230,8 @@ scr_seq_D11R0106_005:
 	npc_msg msg_0053_D11R0106_00015
 	closemsg
 	trainer_battle TRAINER_SCIENTIST_GS_LOWELL, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00017
 	closemsg
@@ -256,13 +256,13 @@ scr_seq_D11R0106_006:
 	npc_msg msg_0053_D11R0106_00018
 	closemsg
 	trainer_battle TRAINER_SCIENTIST_GS_LINDEN, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00020
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0392
 	apply_movement obj_D11R0106_assistantm_2, _046C
 	goto _039A
@@ -290,13 +290,13 @@ scr_seq_D11R0106_007:
 	npc_msg msg_0053_D11R0106_00021
 	closemsg
 	trainer_battle TRAINER_SCIENTIST_GS_DANIEL, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CC
 	npc_msg msg_0053_D11R0106_00023
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0404
 	apply_movement obj_D11R0106_assistantm_3, _0478
 	goto _040C
@@ -365,8 +365,8 @@ scr_seq_D11R0106_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 14, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 14, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04B6
 	npc_msg msg_0053_D11R0106_00024
 	waitbutton

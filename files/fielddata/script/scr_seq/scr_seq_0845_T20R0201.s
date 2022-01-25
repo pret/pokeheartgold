@@ -21,7 +21,7 @@ scr_seq_T20R0201_000:
 	apply_movement obj_T20R0201_gsmama, _00B0
 	wait_movement
 	callstd std_play_mom_music
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	apply_movement obj_T20R0201_gsmama, _00B8
 	wait_movement
 	buffer_players_name 0
@@ -43,7 +43,7 @@ scr_seq_T20R0201_000:
 	wait_fanfare
 	npc_msg msg_0545_T20R0201_00005
 	closemsg
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	apply_movement obj_T20R0201_gsmama, _00C8
 	wait_movement
 	callstd std_fade_end_mom_music
@@ -80,7 +80,7 @@ scr_seq_T20R0201_006:
 	apply_movement obj_T20R0201_gsmama, _00B0
 	wait_movement
 	callstd std_play_mom_music
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	apply_movement obj_T20R0201_gsmama, _00B8
 	wait_movement
 	buffer_players_name 0
@@ -102,8 +102,8 @@ scr_seq_T20R0201_001:
 	end
 
 _015C:
-	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F2
 	goto _0205
 	.byte 0x02, 0x00
@@ -122,9 +122,9 @@ _0179:
 	npc_msg msg_0545_T20R0201_00009
 	npc_msg msg_0545_T20R0201_00010
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01C6
 	npc_msg msg_0545_T20R0201_00011
 	goto _01C9
@@ -169,9 +169,9 @@ _023A:
 	setflag FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL
 	setvar VAR_SCENE_ROUTE_30_PHONE_CALL, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0266
 	npc_msg msg_0545_T20R0201_00017
 	setflag FLAG_UNK_986
@@ -190,45 +190,45 @@ _0275:
 	npc_msg msg_0545_T20R0201_00020
 	scrcmd_795 1, 1
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 29, 255, 0
 	menu_item_add 30, 255, 1
 	menu_item_add 31, 255, 2
 	menu_item_add 32, 255, 3
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _02DF
 	case 1, _0335
 	case 2, _0398
 	goto _03D1
 	.byte 0x02, 0x00
 _02DF:
-	bank_or_wallet_is_full 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	bank_or_wallet_is_full 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _043A
-	check_bank_balance VAR_SPECIAL_x800C, 1
-	compare VAR_SPECIAL_x800C, 0
+	check_bank_balance VAR_SPECIAL_RESULT, 1
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _041C
-	bank_transaction 1, VAR_SPECIAL_x800C
+	bank_transaction 1, VAR_SPECIAL_RESULT
 	scrcmd_796
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _03E0
 	case 1, _0411
 	releaseall
 	end
 
 _0335:
-	bank_or_wallet_is_full 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	bank_or_wallet_is_full 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _042B
-	hasenoughmoneyvar VAR_SPECIAL_x800C, 1
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyvar VAR_SPECIAL_RESULT, 1
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0389
-	bank_transaction 0, VAR_SPECIAL_x800C
+	bank_transaction 0, VAR_SPECIAL_RESULT
 	scrcmd_796
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _03FA
 	case 1, _0411
 	releaseall
@@ -246,10 +246,10 @@ _0389:
 _0398:
 	npc_msg msg_0545_T20R0201_00025
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	scrcmd_796
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03C2
 	buffer_players_name 0
 	npc_msg msg_0545_T20R0201_00017
@@ -276,7 +276,7 @@ _03D1:
 
 _03E0:
 	closemsg
-	wait 8, VAR_SPECIAL_x800C
+	wait 8, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_GS_OKOZUKAI
 	buffer_players_name 0
 	npc_msg msg_0545_T20R0201_00024
@@ -287,7 +287,7 @@ _03E0:
 
 _03FA:
 	closemsg
-	wait 8, VAR_SPECIAL_x800C
+	wait 8, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_GS_OKOZUKAI
 	npc_msg msg_0545_T20R0201_00023
 	waitbutton

@@ -28,8 +28,8 @@ scr_seq_D03R0103_000:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_MEWTWO, 70, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0077
 	scrcmd_683 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3

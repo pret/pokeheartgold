@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_R17.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_r17_hp_up",
+      "scr": "std_hiddenitem_r17_max_ether",
       "type": 2,
       "x": 1133,
       "y": 355,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r17_hyper_potion",
+      "scr": "std_hiddenitem_r17_max_elixir",
       "type": 2,
       "x": 1129,
       "y": 390,

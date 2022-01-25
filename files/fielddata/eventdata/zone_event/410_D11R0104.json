@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D11R0104.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d11r0104_stardust",
+      "scr": "std_hiddenitem_d11r0104_max_revive",
       "type": 2,
       "x": 38,
       "y": 27,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d11r0104_hyper_potion",
+      "scr": "std_hiddenitem_d11r0104_rare_candy",
       "type": 2,
       "x": 10,
       "y": 9,

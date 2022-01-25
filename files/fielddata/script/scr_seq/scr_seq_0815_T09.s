@@ -228,12 +228,12 @@ _02FC:
 _0304:
 	npc_msg msg_0519_T09_00005
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0365
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0370
 	npc_msg msg_0519_T09_00006
 	closemsg
@@ -278,11 +278,11 @@ scr_seq_T09_004:
 	npc_msg msg_0519_T09_00010
 _03A6:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03CA
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _040D
 	end
 
@@ -321,12 +321,12 @@ _041E:
 _0429:
 	npc_msg msg_0519_T09_00015
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _048A
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0495
 	npc_msg msg_0519_T09_00016
 	closemsg
@@ -363,15 +363,15 @@ scr_seq_T09_001:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0519_T09_00020, VAR_SPECIAL_x800C
+	trainer_tips msg_0519_T09_00020, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_T09_002:
-	direction_signpost msg_0519_T09_00021, 0, 9, VAR_SPECIAL_x800C
+	direction_signpost msg_0519_T09_00021, 0, 9, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

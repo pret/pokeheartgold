@@ -17,8 +17,8 @@ scr_seq_D38R0104_000:
 	npc_msg msg_0121_D38R0104_00000
 	closemsg
 	trainer_battle TRAINER_BLACK_BELT_KIYO, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00CC
 	setflag FLAG_UNK_10D
 _0046:
@@ -34,12 +34,12 @@ _0063:
 	npc_msg msg_0121_D38R0104_00002
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	give_mon SPECIES_TYROGUE, 10, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon SPECIES_TYROGUE, 10, 0, 0, 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0121_D38R0104_00005
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	call_if_eq _00A6
 	touchscreen_menu_show
 _0097:

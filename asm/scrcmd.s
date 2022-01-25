@@ -8906,7 +8906,7 @@ ScrCmd_GetPlayerGender: ; 0x020445F8
 ScrCmd_HealParty: ; 0x02044628
 	push {r3, lr}
 	ldr r0, [r0, #0x74]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
 	bl HealParty

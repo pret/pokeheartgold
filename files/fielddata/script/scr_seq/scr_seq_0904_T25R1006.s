@@ -94,27 +94,27 @@ scr_seq_T25R1006_004:
 	scrcmd_113 20, 2
 	npc_msg msg_0597_T25R1006_00010
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0156
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04A3
 _0156:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04D2
 	submoneyimmediate 300
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0597_T25R1006_00011
-	scrcmd_380 VAR_SPECIAL_x800C, 100
-	compare VAR_SPECIAL_x800C, 40
+	scrcmd_380 VAR_SPECIAL_RESULT, 100
+	compare VAR_SPECIAL_RESULT, 40
 	goto_if_ge _01AD
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ge _02B5
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ge _03AC
 	end
 
@@ -122,20 +122,20 @@ _01AD:
 	play_se SEQ_SE_GS_KUJI_ATARI
 	buffer_int 0, 3
 	npc_msg msg_0597_T25R1006_00012
-	scrcmd_380 VAR_SPECIAL_x800C, 70
-	compare VAR_SPECIAL_x800C, 60
+	scrcmd_380 VAR_SPECIAL_RESULT, 70
+	compare VAR_SPECIAL_RESULT, 60
 	goto_if_ge _021C
-	compare VAR_SPECIAL_x800C, 50
+	compare VAR_SPECIAL_RESULT, 50
 	goto_if_ge _022E
-	compare VAR_SPECIAL_x800C, 40
+	compare VAR_SPECIAL_RESULT, 40
 	goto_if_ge _0240
-	compare VAR_SPECIAL_x800C, 30
+	compare VAR_SPECIAL_RESULT, 30
 	goto_if_ge _0252
-	compare VAR_SPECIAL_x800C, 20
+	compare VAR_SPECIAL_RESULT, 20
 	goto_if_ge _0264
-	compare VAR_SPECIAL_x800C, 10
+	compare VAR_SPECIAL_RESULT, 10
 	goto_if_ge _0276
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ge _0288
 	end
 
@@ -173,8 +173,8 @@ _0288:
 	setvar VAR_SPECIAL_x8004, 149
 	setvar VAR_SPECIAL_x8005, 1
 _0294:
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	callstd std_obtain_item_verbose
 	closemsg
@@ -232,8 +232,8 @@ _037F:
 	setvar VAR_SPECIAL_x8004, 10
 	setvar VAR_SPECIAL_x8005, 1
 _038B:
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	callstd std_obtain_item_verbose
 	closemsg
@@ -291,8 +291,8 @@ _0476:
 	setvar VAR_SPECIAL_x8004, 389
 	setvar VAR_SPECIAL_x8005, 1
 _0482:
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	callstd std_obtain_item_verbose
 	closemsg
@@ -424,11 +424,11 @@ scr_seq_T25R1006_007:
 	npc_msg msg_0597_T25R1006_00025
 _05F7:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _061B
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _065E
 	end
 
@@ -467,12 +467,12 @@ _066F:
 _067A:
 	npc_msg msg_0597_T25R1006_00030
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06DB
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06E6
 	npc_msg msg_0597_T25R1006_00031
 	closemsg
@@ -550,15 +550,15 @@ _0793:
 	goto _07D5
 
 _079F:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
 	return
 
 _07A9:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
 	return
 
 _07B3:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 350
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 350
 	return
 
 _07BD:
@@ -580,10 +580,10 @@ _07D5:
 	call_if_eq _07A9
 	compare VAR_SPECIAL_x8000, 2
 	call_if_eq _07B3
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _08A9
-	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _08B2
 	compare VAR_SPECIAL_x8000, 0
 	call_if_eq _07BD
@@ -597,14 +597,14 @@ _07D5:
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0597_T25R1006_00006
 	giveitem_no_check VAR_SPECIAL_x8001, 1
-	scrcmd_380 VAR_SPECIAL_x800C, 64
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_380 VAR_SPECIAL_RESULT, 64
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _08A0
 	play_se SEQ_SE_DP_JIHANKI
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0597_T25R1006_00007
-	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _08B2
 	callstd std_give_item_verbose
 _08A0:

@@ -849,7 +849,7 @@ _0204FB3A:
 	ldr r0, [sp]
 	ldr r1, _0204FB5C ; =sub_0204FB60
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204FB5C: .word sub_0204FB60
@@ -858,7 +858,7 @@ _0204FB5C: .word sub_0204FB60
 	thumb_func_start sub_0204FB60
 sub_0204FB60: ; 0x0204FB60
 	push {r4, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #0
@@ -931,7 +931,7 @@ sub_0204FBDC: ; 0x0204FBDC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x10
@@ -945,7 +945,7 @@ sub_0204FBDC: ; 0x0204FBDC
 	ldr r0, [r7, #0x10]
 	ldr r1, _0204FC0C ; =sub_0204FC10
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0204FC0C: .word sub_0204FC10
@@ -955,10 +955,10 @@ _0204FC0C: .word sub_0204FC10
 sub_0204FC10: ; 0x0204FC10
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #4
@@ -1526,7 +1526,7 @@ _0205007A:
 	ldr r0, [sp]
 	ldr r1, _0205009C ; =sub_020500A0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0205009C: .word sub_020500A0
@@ -1535,7 +1535,7 @@ _0205009C: .word sub_020500A0
 	thumb_func_start sub_020500A0
 sub_020500A0: ; 0x020500A0
 	push {r4, lr}
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #0
@@ -1608,7 +1608,7 @@ sub_0205011C: ; 0x0205011C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x10
@@ -1622,7 +1622,7 @@ sub_0205011C: ; 0x0205011C
 	ldr r0, [r7, #0x10]
 	ldr r1, _0205014C ; =sub_02050150
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0205014C: .word sub_02050150
@@ -1632,10 +1632,10 @@ _0205014C: .word sub_02050150
 sub_02050150: ; 0x02050150
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #4

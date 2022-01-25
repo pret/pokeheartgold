@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D37R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d37r0103_protein",
+      "scr": "std_hiddenitem_d37r0103_parlyz_heal",
       "type": 2,
       "x": 1,
       "y": 9,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d37r0103_hyper_potion",
+      "scr": "std_hiddenitem_d37r0103_super_potion",
       "type": 2,
       "x": 13,
       "y": 14,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d37r0103_full_restore",
+      "scr": "std_hiddenitem_d37r0103_antidote",
       "type": 2,
       "x": 20,
       "y": 11,

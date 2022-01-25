@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d47_super_potion",
+      "scr": "std_hiddenitem_d47_tinymushroom",
       "type": 2,
       "x": 78,
       "y": 305,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d47_big_mushroom",
+      "scr": "std_hiddenitem_d47_tinymushroom_2",
       "type": 2,
       "x": 86,
       "y": 300,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d47_nugget",
+      "scr": "std_hiddenitem_d47_tinymushroom_3",
       "type": 2,
       "x": 100,
       "y": 299,

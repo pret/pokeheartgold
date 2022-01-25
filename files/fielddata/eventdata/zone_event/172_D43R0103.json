@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D43R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d43r0103_stardust",
+      "scr": "std_hiddenitem_d43r0103_hyper_potion",
       "type": 2,
       "x": 59,
       "y": 40,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d43r0103_rare_candy",
+      "scr": "std_hiddenitem_d43r0103_zinc",
       "type": 2,
       "x": 43,
       "y": 18,

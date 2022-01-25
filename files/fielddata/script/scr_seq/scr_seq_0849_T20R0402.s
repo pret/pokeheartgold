@@ -22,8 +22,8 @@ scr_seq_T20R0402_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _006D
 	buffer_players_name 0
 	goto_if_set FLAG_GOT_STARTER, _005C
@@ -34,7 +34,7 @@ scr_seq_T20R0402_000:
 	end
 
 _005C:
-	buffer_mon_species_name 1, VAR_SPECIAL_x800C
+	buffer_mon_species_name 1, VAR_SPECIAL_RESULT
 	gender_msgbox msg_0549_T20R0402_00002, msg_0549_T20R0402_00003
 	waitbutton
 	closemsg
@@ -45,7 +45,7 @@ _006D:
 	get_lead_mon_index VAR_SPECIAL_x8006
 	scrcmd_825 32774, 32780
 	goto_if_set FLAG_UNK_161, _00B1
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _009E
 _008F:
 	buffer_players_name 0
@@ -65,7 +65,7 @@ _009E:
 	end
 
 _00B1:
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8004, 6
 	goto_if_eq _00E4
 	compare VAR_SPECIAL_x8004, 5
@@ -76,8 +76,8 @@ _00B1:
 
 _00E4:
 	buffer_players_name 0
-	scrcmd_727 VAR_SPECIAL_x800C
-	bufferpartymonnick 1, VAR_SPECIAL_x800C
+	scrcmd_727 VAR_SPECIAL_RESULT
+	bufferpartymonnick 1, VAR_SPECIAL_RESULT
 	gender_msgbox msg_0549_T20R0402_00015, msg_0549_T20R0402_00016
 	closemsg
 	goto _010D

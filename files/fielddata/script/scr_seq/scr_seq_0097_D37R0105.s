@@ -23,8 +23,8 @@ scr_seq_D37R0105_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _005B
 	npc_msg msg_0120_D37R0105_00000
 	setflag FLAG_UNK_1C1

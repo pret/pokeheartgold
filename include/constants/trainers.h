@@ -741,6 +741,8 @@
 #define TRAINER_PARTNER_RIVAL_2 736
 #define TRAINER_PARTNER_RIVAL_3 737
 
+#define LAST_TRAINER_INDEX      740
+
 // Pokemon gender and ability override flags
 #define TRPOKE_GENDER_OVERRIDE_OFF          0
 #define TRPOKE_GENDER_OVERRIDE_MALE         1

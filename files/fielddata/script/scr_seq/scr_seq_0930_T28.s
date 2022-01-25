@@ -40,13 +40,13 @@ scr_seq_T28_000:
 	goto_if_set FLAG_UNK_163, _010C
 	npc_msg msg_0620_T28_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0101
 _009D:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00EC
 	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7
 	callstd std_give_item_verbose
@@ -79,11 +79,11 @@ _0117:
 	goto_if_set FLAG_UNK_163, _0147
 	npc_msg msg_0620_T28_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _009D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0101
 _0147:
 	npc_msg msg_0620_T28_00004
@@ -119,15 +119,15 @@ _01A3:
 	goto_if_set FLAG_UNK_163, _026D
 	npc_msg msg_0620_T28_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01DF
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0257
 _01DF:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 300
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0262
 	goto_if_no_item_space ITEM_RAGECANDYBAR, 1, _00F7
 	callstd std_give_item_verbose
@@ -230,10 +230,10 @@ scr_seq_T28_004:
 	end
 
 scr_seq_T28_006:
-	direction_signpost msg_0620_T28_00017, 0, 19, VAR_SPECIAL_x800C
+	direction_signpost msg_0620_T28_00017, 0, 19, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -241,7 +241,7 @@ scr_seq_T28_007:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0620_T28_00018, VAR_SPECIAL_x800C
+	trainer_tips msg_0620_T28_00018, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -249,7 +249,7 @@ scr_seq_T28_008:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0620_T28_00019, VAR_SPECIAL_x800C
+	trainer_tips msg_0620_T28_00019, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

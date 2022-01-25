@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D39R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d39r0101_nugget",
+      "scr": "std_hiddenitem_d39r0101_max_potion",
       "type": 2,
       "x": 17,
       "y": 18,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d39r0101_x_attack",
+      "scr": "std_hiddenitem_d39r0101_ice_heal",
       "type": 2,
       "x": 48,
       "y": 5,

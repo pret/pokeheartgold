@@ -1545,10 +1545,10 @@ scr_seq_0141_255:
 	wait_se SEQ_SE_DP_SELECT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1830
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _19B8
 	end
 
@@ -1559,12 +1559,12 @@ _182A:
 
 _1830:
 	callstd std_hidden_item_fanfare
-	hide_person VAR_SPECIAL_x800D
-	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hide_person VAR_SPECIAL_LAST_TALKED
+	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	itemistmorhm VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _198D
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _19A5
 	end
 
@@ -1572,8 +1572,8 @@ _1862:
 	wait_fanfare
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	switch VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	switch VAR_SPECIAL_RESULT
 	case 7, _18F5
 	case 0, _18E2
 	case 4, _1941
@@ -1585,50 +1585,50 @@ _1862:
 	end
 
 _18E2:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02, 0x00
 _18F5:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02, 0x00
 _1908:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02, 0x00
 _191B:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02, 0x00
 _192E:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02
 	.byte 0x00
 _1941:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02, 0x00
 _1954:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02, 0x00
 _1967:
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _197A
 	.byte 0x02, 0x00
 _197A:
 	npc_msg msg_0199_00009
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 1
+	setvar VAR_SPECIAL_RESULT, 1
 	goto _182A
 	.byte 0x02, 0x00
 _198D:
@@ -1648,7 +1648,7 @@ _19B8:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0199_00004
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	goto _182A
 	.byte 0x02, 0x00
 	.balign 4, 0

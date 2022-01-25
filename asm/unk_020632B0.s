@@ -1915,8 +1915,8 @@ _020640C0: .word 0x00000106
 _020640C4: .word ov01_02207274
 	thumb_func_end sub_020640A4
 
-	thumb_func_start sub_020640C8
-sub_020640C8: ; 0x020640C8
+	thumb_func_start TryGetSeenByNpcTrainers
+TryGetSeenByNpcTrainers: ; 0x020640C8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x58
 	add r5, r0, #0
@@ -1928,7 +1928,7 @@ sub_020640C8: ; 0x020640C8
 	add r1, r6, #0
 	add r2, r7, #0
 	mov r3, #0
-	bl sub_020641EC
+	bl CheckSeenByNpcTrainers
 	cmp r0, #0
 	bne _020640EC
 	add sp, #0x58
@@ -1938,7 +1938,7 @@ _020640EC:
 	ldr r0, [sp, #0x50]
 	cmp r0, #0
 	bne _02064172
-	ldr r1, _020641E8 ; =0x00000E9B
+	ldr r1, _020641E8 ; =std_trainer_approach
 	ldr r2, [sp, #0x54]
 	add r0, r5, #0
 	bl StartMapSceneScript
@@ -1950,7 +1950,7 @@ _020640EC:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r7, #0
-	bl sub_020641EC
+	bl CheckSeenByNpcTrainers
 	cmp r0, #0
 	bne _02064134
 _02064114:
@@ -1965,7 +1965,7 @@ _02064114:
 	ldr r2, [sp, #0x40]
 	ldr r3, [sp, #0x44]
 	add r0, r5, #0
-	bl sub_0203FEA4
+	bl FieldSys_SetEngagedTrainer
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1982,7 +1982,7 @@ _02064134:
 	ldr r2, [sp, #0x40]
 	ldr r3, [sp, #0x44]
 	add r0, r5, #0
-	bl sub_0203FEA4
+	bl FieldSys_SetEngagedTrainer
 	ldr r0, [sp, #0x30]
 	str r0, [sp]
 	ldr r0, [sp, #0x34]
@@ -1995,7 +1995,7 @@ _02064134:
 	ldr r2, [sp, #0x28]
 	ldr r3, [sp, #0x2c]
 	add r0, r5, #0
-	bl sub_0203FEA4
+	bl FieldSys_SetEngagedTrainer
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2017,8 +2017,8 @@ _02064180:
 	ldr r2, [sp, #0x40]
 	ldr r3, [sp, #0x44]
 	add r0, sp, #0x10
-	bl sub_0206426C
-	ldr r1, _020641E8 ; =0x00000E9B
+	bl GetEngagingTrainerParams
+	ldr r1, _020641E8 ; =std_trainer_approach
 	ldr r2, [sp, #0x54]
 	add r0, r5, #0
 	bl StartMapSceneScript
@@ -2034,7 +2034,7 @@ _02064180:
 	ldr r2, [sp, #0x40]
 	ldr r3, [sp, #0x44]
 	add r0, r5, #0
-	bl sub_0203FEA4
+	bl FieldSys_SetEngagedTrainer
 	ldr r0, [sp, #0x18]
 	str r0, [sp]
 	ldr r0, [sp, #0x1c]
@@ -2046,7 +2046,7 @@ _02064180:
 	ldr r2, [sp, #0x10]
 	ldr r3, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0203FEA4
+	bl FieldSys_SetEngagedTrainer
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2056,11 +2056,11 @@ _020641DE:
 	add sp, #0x58
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020641E8: .word 0x00000E9B
-	thumb_func_end sub_020640C8
+_020641E8: .word std_trainer_approach
+	thumb_func_end TryGetSeenByNpcTrainers
 
-	thumb_func_start sub_020641EC
-sub_020641EC: ; 0x020641EC
+	thumb_func_start CheckSeenByNpcTrainers
+CheckSeenByNpcTrainers: ; 0x020641EC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -2106,7 +2106,7 @@ _02064218:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	ldr r3, [sp, #8]
-	bl sub_0206426C
+	bl GetEngagingTrainerParams
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2123,10 +2123,10 @@ _02064264:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_020641EC
+	thumb_func_end CheckSeenByNpcTrainers
 
-	thumb_func_start sub_0206426C
-sub_0206426C: ; 0x0206426C
+	thumb_func_start GetEngagingTrainerParams
+GetEngagingTrainerParams: ; 0x0206426C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2146,7 +2146,7 @@ sub_0206426C: ; 0x0206426C
 	str r4, [r5, #0x14]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206426C
+	thumb_func_end GetEngagingTrainerParams
 
 	thumb_func_start sub_02064298
 sub_02064298: ; 0x02064298
@@ -3285,10 +3285,10 @@ sub_02064A8C: ; 0x02064A8C
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r2, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_020505C0
@@ -3316,10 +3316,10 @@ _02064ACC: .word sub_02064AD0
 sub_02064AD0: ; 0x02064AD0
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_02050654
@@ -3340,7 +3340,7 @@ _02064AF6:
 	add r0, r7, #0
 	lsr r1, r1, #0x10
 	mov r3, #0
-	bl sub_0203FED4
+	bl QueueScript
 	add r0, r5, #0
 	mov r1, #0x2a
 	bl FieldSysGetAttrAddr
@@ -3380,10 +3380,10 @@ ItemMenuUseFunc_HealingItem: ; 0x02064B54
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r6]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x44
@@ -3459,10 +3459,10 @@ ItemMenuUseFunc_Bicycle: ; 0x02064BFC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020505C0
@@ -3506,7 +3506,7 @@ _02064C54: .word sub_02064C58
 sub_02064C58: ; 0x02064C58
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_02050654
@@ -3718,10 +3718,10 @@ ItemMenuUseFunc_TMHM: ; 0x02064E18
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r6]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x44
@@ -3789,10 +3789,10 @@ ItemMenuUseFunc_Mail: ; 0x02064EB8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r5, #4]
 	bl ItemToMailId
@@ -3831,9 +3831,9 @@ ItemMenuUseFunc_Berry: ; 0x02064F08
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ItemMenuUseFunc_HealingItem
@@ -3851,10 +3851,10 @@ ItemMenuUseFunc_PalPad: ; 0x02064F28
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r5, #0xc]
 	add r0, r5, #0
@@ -3898,10 +3898,10 @@ ItemMenuUseFunc_Honey: ; 0x02064F7C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_020505C0
@@ -3938,10 +3938,10 @@ ItemMenuUseFunc_OldRod: ; 0x02064FD4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020505C0
@@ -3986,10 +3986,10 @@ ItemMenuUseFunc_GoodRod: ; 0x02065030
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020505C0
@@ -4034,10 +4034,10 @@ ItemMenuUseFunc_SuperRod: ; 0x0206508C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020505C0
@@ -4167,10 +4167,10 @@ _02065188: .word sub_0206518C
 sub_0206518C: ; 0x0206518C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldrh r0, [r5, #0x16]
 	cmp r0, #0
@@ -4266,7 +4266,7 @@ ItemMenuUseFunc_EvoStone: ; 0x02065258
 	add r6, r0, #0
 	ldr r0, [r6]
 	add r4, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldrh r1, [r6, #4]
 	add r5, r0, #0
 	cmp r1, #ITEM_WATER_STONE
@@ -4281,7 +4281,7 @@ ItemMenuUseFunc_EvoStone: ; 0x02065258
 	pop {r3, r4, r5, r6, r7, pc}
 _02065280:
 	ldr r0, [r6]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x44
@@ -4359,10 +4359,10 @@ ItemMenuUseFunc_EscapeRope: ; 0x02065310
 	pop {r4, r5, r6, pc}
 _0206532C:
 	ldr r0, [r5]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_020505C0
@@ -4433,13 +4433,13 @@ _020653B0:
 sub_020653B8: ; 0x020653B8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	mov r1, #0xb
 	bl ov02_0224BFD8
 	add r2, r0, #0
 	ldr r1, _020653D4 ; =ov02_0224C020
 	add r0, r4, #0
-	bl sub_02050510
+	bl NowRunTask
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -4451,10 +4451,10 @@ ItemMenuUseFunc_ApricornBox: ; 0x020653D8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #1
@@ -4496,10 +4496,10 @@ ItemMenuUseFunc_BerryPots: ; 0x02065428
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203ECC0
@@ -4539,10 +4539,10 @@ ItemMenuUseFunc_UnownReport: ; 0x02065474
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203EC64
@@ -4582,10 +4582,10 @@ ItemMenuUseFunc_DowsingMchn: ; 0x020654C0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020505C0
@@ -4620,7 +4620,7 @@ _02065504: .word sub_02065508
 sub_02065508: ; 0x02065508
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02050654
@@ -4708,10 +4708,10 @@ ItemMenuUseFunc_Gracidea: ; 0x020655B8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r2, _020655E8 ; =0x000001D2
 	add r0, r5, #0
@@ -4757,10 +4757,10 @@ ItemMenuUseFunc_VSRecorder: ; 0x02065614
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r5, #0xc]
 	add r0, r5, #0
@@ -4996,10 +4996,10 @@ _020657E8: .word sub_0206518C
 sub_020657EC: ; 0x020657EC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, #0x26
 	ldrb r0, [r0]
@@ -8470,10 +8470,10 @@ _0206709A:
 sub_020670B0: ; 0x020670B0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	cmp r1, #4
@@ -8528,7 +8528,7 @@ sub_02067118: ; 0x02067118
 	add r5, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0x18
@@ -8553,7 +8553,7 @@ sub_02067118: ; 0x02067118
 	ldr r0, [sp]
 	str r5, [r4, #0x14]
 	ldr r0, [r0, #0x10]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02067160: .word sub_020670B0
@@ -8607,10 +8607,10 @@ _0206719E:
 sub_020671B0: ; 0x020671B0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	cmp r1, #0
@@ -8651,7 +8651,7 @@ sub_02067200: ; 0x02067200
 	add r5, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0x18
@@ -8667,7 +8667,7 @@ sub_02067200: ; 0x02067200
 	ldr r0, [r0, #0x10]
 	ldr r1, _02067234 ; =sub_020671B0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02067234: .word sub_020671B0
@@ -8677,10 +8677,10 @@ _02067234: .word sub_020671B0
 sub_02067238: ; 0x02067238
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	bl sub_0203769C
 	mov r1, #1
@@ -8732,7 +8732,7 @@ sub_020672A4: ; 0x020672A4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #4
@@ -8746,7 +8746,7 @@ sub_020672A4: ; 0x020672A4
 	ldr r0, [r7, #0x10]
 	ldr r1, _020672D4 ; =sub_02067238
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020672D4: .word sub_02067238

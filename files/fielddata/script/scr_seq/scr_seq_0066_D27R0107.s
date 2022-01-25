@@ -62,11 +62,11 @@ _0062:
 _00B5:
 	npc_msg msg_0094_D27R0107_00002
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _017F
-	takeitem ITEM_SECRETPOTION, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_SECRETPOTION, 1, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	npc_msg msg_0094_D27R0107_00003
 	play_fanfare SEQ_ME_ITEM

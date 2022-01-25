@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D39R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d39r0102_deepseatooth",
+      "scr": "std_hiddenitem_d39r0102_revive",
       "type": 2,
       "x": 15,
       "y": 47,

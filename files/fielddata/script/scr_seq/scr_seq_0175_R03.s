@@ -16,7 +16,7 @@ scr_seq_R03_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -30,12 +30,12 @@ _0050:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_x800C
-	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_x800C
-	scrcmd_184 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_RESULT
+	scrcmd_184 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00B2
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _009E
 	scrcmd_605 0, 1
 	goto _00A2
@@ -45,7 +45,7 @@ _009E:
 _00A2:
 	scrcmd_602 0
 	scrcmd_608
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	scrcmd_602 1
 _00B2:
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -59,7 +59,7 @@ scr_seq_R03_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -73,18 +73,18 @@ _0107:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_x800C
-	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_x800C
-	scrcmd_184 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_RESULT
+	scrcmd_184 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0180
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0155
 	scrcmd_605 0, 1
 	goto _0170
 
 _0155:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _016C
 	scrcmd_605 0, 1
 	goto _0170
@@ -94,7 +94,7 @@ _016C:
 _0170:
 	scrcmd_602 0
 	scrcmd_608
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	scrcmd_602 1
 _0180:
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -108,7 +108,7 @@ scr_seq_R03_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -122,15 +122,15 @@ _01D5:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_x800C
-	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_x800C
-	scrcmd_184 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_RESULT
+	scrcmd_184 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0220
 	scrcmd_605 2, 3
 	scrcmd_602 0
 	scrcmd_608
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	scrcmd_602 1
 _0220:
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -144,7 +144,7 @@ scr_seq_R03_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	scrcmd_517 386, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -158,15 +158,15 @@ _0275:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
-	get_player_facing VAR_SPECIAL_x800C
-	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_x800C
-	scrcmd_184 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	warp MAP_R03, 0, 32774, 32775, VAR_SPECIAL_RESULT
+	scrcmd_184 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02C0
 	scrcmd_605 3, 2
 	scrcmd_602 0
 	scrcmd_608
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	scrcmd_602 1
 _02C0:
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -192,7 +192,7 @@ scr_seq_R03_000:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0326_R03_00000, VAR_SPECIAL_x800C
+	trainer_tips msg_0326_R03_00000, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

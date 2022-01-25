@@ -29,8 +29,8 @@ _002F:
 
 _003A:
 	script_overlay_cmd 0, 0
-	player_has_species VAR_SPECIAL_x800C, SPECIES_MAGIKARP
-	compare VAR_SPECIAL_x800C, 0
+	player_has_species VAR_SPECIAL_RESULT, SPECIES_MAGIKARP
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _005A
 	npc_msg msg_0628_T29R0201_00002
 	goto _0146
@@ -58,8 +58,8 @@ _0095:
 	goto _0146
 
 _00B1:
-	size_record_compare VAR_SPECIAL_x800C, VAR_SPECIAL_x8002
-	compare VAR_SPECIAL_x800C, 0
+	size_record_compare VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00E3
 	buffer_mon_size 0, 1, VAR_SPECIAL_x8002
 	buffer_record_size 2, 3, SPECIES_MAGIKARP
@@ -68,7 +68,7 @@ _00B1:
 	.byte 0x16, 0x00, 0x1e
 	.byte 0x00, 0x00, 0x00
 _00E3:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0101
 	buffer_record_size 0, 1, SPECIES_MAGIKARP
 	npc_msg msg_0628_T29R0201_00006
@@ -79,8 +79,8 @@ _0101:
 	npc_msg msg_0628_T29R0201_00004
 	setvar VAR_SPECIAL_x8004, 38
 	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0137
 	callstd std_bag_is_full
 	goto _0148

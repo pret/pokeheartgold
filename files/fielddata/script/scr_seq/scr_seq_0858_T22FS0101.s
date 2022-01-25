@@ -42,13 +42,13 @@ scr_seq_T22FS0101_002:
 	buffer_players_name 0
 	gender_msgbox msg_0557_T22FS0101_00002, msg_0557_T22FS0101_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00F7
 _007D:
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0106
 	give_togepi_egg
 	setflag FLAG_UNK_070
@@ -58,8 +58,8 @@ _007D:
 	wait_fanfare
 	gender_msgbox msg_0557_T22FS0101_00005, msg_0557_T22FS0101_00006
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _00C5
 	apply_movement obj_T22FS0101_assistantm, _014C
 	goto _00CD
@@ -99,11 +99,11 @@ _0115:
 	buffer_players_name 0
 	gender_msgbox msg_0557_T22FS0101_00009, msg_0557_T22FS0101_00010
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _007D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00F7
 	end
 

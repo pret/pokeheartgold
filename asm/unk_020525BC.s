@@ -134,7 +134,7 @@ _020526B4:
 	ldr r1, _020526D0 ; =sub_020526D4
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _020526C8: .word 0x00007FFF
@@ -146,7 +146,7 @@ _020526D0: .word sub_020526D4
 sub_020526D4: ; 0x020526D4
 	push {r3, r4, lr}
 	sub sp, #0xc
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -331,7 +331,7 @@ sub_02052858: ; 0x02052858
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
 	bl sub_02050654
@@ -436,14 +436,14 @@ _02052928:
 	ldr r1, _02052974 ; =std_whited_out_to_mom
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 	b _02052960
 _02052954:
 	mov r2, #0
 	ldr r1, _02052978 ; =std_whited_out_to_pokecenter
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_0203FED4
+	bl QueueScript
 _02052960:
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -464,11 +464,11 @@ _02052978: .word std_whited_out_to_pokecenter
 
 	thumb_func_start sub_0205297C
 sub_0205297C: ; 0x0205297C
-	ldr r3, _02052984 ; =sub_02050530
+	ldr r3, _02052984 ; =QueueTask
 	ldr r1, _02052988 ; =sub_02052858
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_02052984: .word sub_02050530
+_02052984: .word QueueTask
 _02052988: .word sub_02052858
 	thumb_func_end sub_0205297C

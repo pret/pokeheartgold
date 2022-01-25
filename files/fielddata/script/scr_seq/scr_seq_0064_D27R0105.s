@@ -12,8 +12,8 @@ scr_seq_D27R0105_000:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40A7, 1
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0039
 	apply_movement obj_player, _0070
 	apply_movement obj_partner_poke, _007C

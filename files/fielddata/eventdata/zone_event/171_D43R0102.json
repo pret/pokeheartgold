@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D43R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d43r0102_stardust",
+      "scr": "std_hiddenitem_d43r0102_max_revive",
       "type": 2,
       "x": 15,
       "y": 27,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d43r0102_stardust_2",
+      "scr": "std_hiddenitem_d43r0102_pp_up",
       "type": 2,
       "x": 28,
       "y": 38,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d43r0102_iron",
+      "scr": "std_hiddenitem_d43r0102_ultra_ball",
       "type": 2,
       "x": 57,
       "y": 42,

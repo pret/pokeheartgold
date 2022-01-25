@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t09_w21_revive",
+      "scr": "std_hiddenitem_t09_w21_rare_candy",
       "type": 2,
       "x": 1030,
       "y": 481,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t09_max_ether",
+      "scr": "std_hiddenitem_t09_iron",
       "type": 2,
       "x": 1044,
       "y": 506,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t09_full_restore",
+      "scr": "std_hiddenitem_t09_star_piece",
       "type": 2,
       "x": 1041,
       "y": 493,

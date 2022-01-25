@@ -15,7 +15,6 @@ $(SCRIPT_DEPS):
 
 $(SCRIPT_BINS): %.bin: %.s
 $(SCRIPT_BINS): %.bin: %.s %.d
-	@echo $(MAP_STEM)
 	$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
 	@$(call fixdep,$*.d)
 	@$(SED) -i 's/\.o/.bin/' $*.d
@@ -24,7 +23,6 @@ $(SCRIPT_BINS): %.bin: %.s %.d
 include $(wildcard $(SCRIPT_DEPS))
 else
 $(SCRIPT_BINS): %.bin: %.s
-	@echo $(MAP_STEM)
 	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
 	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
 endif

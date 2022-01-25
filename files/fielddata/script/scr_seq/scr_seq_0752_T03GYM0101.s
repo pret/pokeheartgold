@@ -85,14 +85,14 @@ scr_seq_T03GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 8, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 8, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0195
 	npc_msg msg_0462_T03GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_BROCK_BROCK, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01B8
 	give_badge 8
 	addvar VAR_UNK_4135, 1
@@ -136,8 +136,8 @@ scr_seq_T03GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 8, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 8, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01E4
 	npc_msg msg_0462_T03GYM0101_00006
 	waitbutton
@@ -156,9 +156,9 @@ scr_seq_T03GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 8, VAR_SPECIAL_x800C
+	check_badge 8, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0216
 	npc_msg msg_0462_T03GYM0101_00008
 	goto _0219

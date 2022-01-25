@@ -81,7 +81,7 @@ scr_seq_T27R0501_015:
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	apply_movement 241, _01D4
 	wait_movement
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	apply_movement obj_T27R0501_rocketm, _01F0
 	wait_movement
 	npc_msg msg_0618_T27R0501_00001
@@ -211,8 +211,8 @@ scr_seq_T27R0501_003:
 	closemsg
 	setvar VAR_TEMP_x4009, 222
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_26, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _040C
 	npc_msg msg_0618_T27R0501_00006
 	closemsg
@@ -578,8 +578,8 @@ scr_seq_T27R0501_007:
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_eq _0BD3
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	call_if_ne _07BA
 	goto _0944
 	.byte 0x02, 0x00
@@ -587,19 +587,19 @@ _07BA:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _07DF
 	apply_movement obj_player, _0828
 	goto _080F
 
 _07DF:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _07FA
 	apply_movement obj_player, _083C
 	goto _080F
 
 _07FA:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _080F
 	apply_movement obj_player, _084C
 _080F:
@@ -694,8 +694,8 @@ scr_seq_T27R0501_016:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _092A
 	npc_msg msg_0618_T27R0501_00011
 	goto _092D
@@ -716,10 +716,10 @@ _0944:
 	wait_movement
 	npc_msg msg_0618_T27R0501_00045
 	closemsg
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	trainer_battle TRAINER_KIMONO_GIRL_ZUKI, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_6, _0C0C
 	wait_movement
@@ -730,8 +730,8 @@ _0944:
 	npc_msg msg_0618_T27R0501_00015
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_NAOKO, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer, _0C48
 	wait_movement
@@ -742,8 +742,8 @@ _0944:
 	npc_msg msg_0618_T27R0501_00016
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_MIKI, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_5, _0C84
 	wait_movement
@@ -754,8 +754,8 @@ _0944:
 	npc_msg msg_0618_T27R0501_00017
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_SAYO, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_2, _0CBC
 	wait_movement
@@ -766,16 +766,16 @@ _0944:
 	npc_msg msg_0618_T27R0501_00018
 	closemsg
 	trainer_battle TRAINER_KIMONO_GIRL_KUNI, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0BC9
 	apply_movement obj_T27R0501_dancer_4, _0CF8
 	wait_movement
 	apply_movement obj_T27R0501_dancer_6, _0D08
 	wait_movement
 	npc_msg msg_0618_T27R0501_00020
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _0AA4
 	giveitem_no_check ITEM_CLEAR_BELL, 1
 	setflag FLAG_UNK_103
@@ -795,8 +795,8 @@ _0AB8:
 	wait_movement
 	apply_movement obj_T27R0501_dancer_6, _0BEC
 	wait_movement
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _0B02
 	npc_msg msg_0618_T27R0501_00021
 	goto _0B05
@@ -808,7 +808,7 @@ _0B05:
 	apply_movement obj_T27R0501_dancer_6, _0BE4
 	wait_movement
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 7
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _0B2A
 	npc_msg msg_0618_T27R0501_00023
 	goto _0B2D
@@ -835,7 +835,7 @@ _0B2D:
 	call _0BB0
 	setvar VAR_UNK_410C, 6
 	setvar VAR_UNK_40FA, 1
-	compare VAR_SPECIAL_x800C, 7
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _0BAA
 	clearflag FLAG_HIDE_BELL_TOWER_SUMMIT_KIMONO_GIRLS
 	goto _0BAE

@@ -365,14 +365,14 @@ scr_seq_D37R0104_004:
 	buffer_rivals_name 0
 	npc_msg msg_0119_D37R0104_00000
 	closemsg
-	get_starter_choice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 152
+	get_starter_choice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 152
 	goto_if_ne _067D
 	trainer_battle TRAINER_RIVAL_SILVER_18, 0, 0, 0
 	goto _06A0
 
 _067D:
-	compare VAR_SPECIAL_x800C, 155
+	compare VAR_SPECIAL_RESULT, 155
 	goto_if_ne _0698
 	trainer_battle TRAINER_RIVAL_SILVER_12, 0, 0, 0
 	goto _06A0
@@ -380,8 +380,8 @@ _067D:
 _0698:
 	trainer_battle TRAINER_RIVAL_SILVER_17, 0, 0, 0
 _06A0:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _06D9
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0

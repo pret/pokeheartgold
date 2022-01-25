@@ -49,8 +49,8 @@ scr_seq_R34R0101_001:
 	wait_movement
 	gender_msgbox msg_0385_R34R0101_00006, msg_0385_R34R0101_00016
 	closemsg
-	get_player_gender VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_gender VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00C6
 	register_gear_number PHONE_CONTACT_LYRA
 	goto _00CA

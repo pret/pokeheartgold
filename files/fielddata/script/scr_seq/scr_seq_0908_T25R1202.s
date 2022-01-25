@@ -83,12 +83,12 @@ scr_seq_T25R1202_011:
 _0117:
 	npc_msg msg_0601_T25R1202_00013
 	touchscreen_menu_hide
-	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 15, 255, 0
 	menu_item_add 16, 255, 1
 	menu_item_add 17, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _016E
 	case 1, _0193
 	goto _0166
@@ -102,8 +102,8 @@ _0168:
 
 _016E:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0168
 	closemsg
 	scrcmd_815 0
@@ -124,12 +124,12 @@ scr_seq_T25R1202_012:
 _01B2:
 	npc_msg msg_0601_T25R1202_00011
 	touchscreen_menu_hide
-	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 15, 255, 0
 	menu_item_add 16, 255, 1
 	menu_item_add 17, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0209
 	case 1, _022E
 	goto _0201
@@ -144,8 +144,8 @@ _0203:
 
 _0209:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0203
 	closemsg
 	scrcmd_815 0

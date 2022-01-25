@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D05R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d05r0102_tinymushroom",
+      "scr": "std_hiddenitem_d05r0102_max_potion",
       "type": 2,
       "x": 38,
       "y": 34,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d05r0102_big_mushroom",
+      "scr": "std_hiddenitem_d05r0102_hp_up",
       "type": 2,
       "x": 25,
       "y": 34,

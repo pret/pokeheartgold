@@ -17,16 +17,16 @@
 scr_seq_0262_000:
 	scrcmd_609
 	lockall
-	scrcmd_721 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_721 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _006A
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0049
 	npc_msg msg_0427_00008
 	goto _0062
 
 _0049:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _005F
 	npc_msg msg_0427_00009
 	goto _0062
@@ -40,18 +40,18 @@ _0062:
 _006A:
 	npc_msg msg_0427_00004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00B5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
-	scrcmd_717 VAR_SPECIAL_x800C
+	scrcmd_717 VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _00B7
-	scrcmd_718 0, VAR_SPECIAL_x800C
+	scrcmd_718 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0427_00005
 	waitbutton
 _00B5:
@@ -70,8 +70,8 @@ scr_seq_0262_001:
 	scrcmd_718 0, VAR_SPECIAL_x8000
 	npc_msg msg_0427_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0112
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -149,10 +149,10 @@ scr_seq_0262_006:
 	lockall
 	npc_msg msg_0427_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01FA
 	call _011A
 	releaseall

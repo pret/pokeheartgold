@@ -16,8 +16,8 @@ scr_seq_T01R0201_000:
 	compare VAR_UNK_4122, 7
 	goto_if_eq _003B
 _001F:
-	scrcmd_522 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 15
+	scrcmd_522 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 15
 	goto_if_eq _0056
 	npc_msg msg_0449_T01R0201_00000
 	waitbutton
@@ -35,14 +35,14 @@ _0056:
 	goto_if_set FLAG_UNK_AA8, _0152
 	npc_msg msg_0449_T01R0201_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0147
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0099
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _00A7
 	end
 
@@ -71,7 +71,7 @@ _00F0:
 	play_se SEQ_SE_DP_FW367
 	npc_msg msg_0449_T01R0201_00003
 	wait_se SEQ_SE_DP_FW367
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	scrcmd_383 10, 32772
 	scrcmd_828 32772, 1, 32
 	scrcmd_828 32772, 5, 22
@@ -113,9 +113,9 @@ _015D:
 	npc_msg msg_0449_T01R0201_00008
 _016D:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _019D
 	register_gear_number PHONE_CONTACT_BLUE
 	buffer_players_name 0

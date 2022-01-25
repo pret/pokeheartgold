@@ -93,9 +93,9 @@ _011F:
 _0125:
 	npc_msg msg_0364_R25R0101_00011
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _048D
 	npc_msg msg_0364_R25R0101_00012
 	closemsg
@@ -282,8 +282,8 @@ _0446:
 	setvar VAR_SPECIAL_x8004, 83
 	setvar VAR_SPECIAL_x8005, 1
 _0452:
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _047A
 	callstd std_give_item_verbose
 	addvar VAR_UNK_412D, 1

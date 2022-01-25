@@ -75,8 +75,8 @@ _00AE:
 _00E8:
 	trainer_battle TRAINER_CHAMPION_LANCE, 0, 0, 0
 _00F0:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0290
 	buffer_players_name 0
 	gender_msgbox msg_0527_T10R0601_00002, msg_0527_T10R0601_00003
@@ -92,8 +92,8 @@ _00F0:
 	apply_movement obj_T10R0601_wataru, _02C8
 	apply_movement obj_player, _02E0
 	wait_movement
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01A1
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _017C
@@ -139,8 +139,8 @@ _01A1:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0234
 	apply_movement obj_partner_poke, _03A4
 	wait_movement

@@ -45,8 +45,8 @@ scr_seq_D25R0103_000:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_LAPRAS, 20, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _008F
 	setflag FLAG_UNK_AB8
 	releaseall

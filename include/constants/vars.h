@@ -398,8 +398,8 @@
 #define VAR_SPECIAL_x8009               0x8009
 #define VAR_SPECIAL_x800A               0x800A
 #define VAR_SPECIAL_x800B               0x800B
-#define VAR_SPECIAL_x800C               0x800C
-#define VAR_SPECIAL_x800D               0x800D
+#define VAR_SPECIAL_RESULT              0x800C
+#define VAR_SPECIAL_LAST_TALKED         0x800D
 
 #define VARS_START         VAR_BASE
 #define VARS_END           (VAR_BASE + NUM_VARS - 1)

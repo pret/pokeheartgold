@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D18R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d18r0101_revive",
+      "scr": "std_hiddenitem_d18r0101_ultra_ball",
       "type": 2,
       "x": 8,
       "y": 24,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d18r0101_x_speed",
+      "scr": "std_hiddenitem_d18r0101_ether",
       "type": 2,
       "x": 11,
       "y": 6,

@@ -95,14 +95,14 @@ scr_seq_T10R0101_006:
 	buffer_rivals_name 0
 	npc_msg msg_0522_T10R0101_00003
 	closemsg
-	get_starter_choice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 152
+	get_starter_choice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 152
 	goto_if_ne _016E
 	trainer_battle TRAINER_RIVAL_SILVER_20, 0, 0, 0
 	goto _0191
 
 _016E:
-	compare VAR_SPECIAL_x800C, 155
+	compare VAR_SPECIAL_RESULT, 155
 	goto_if_ne _0189
 	trainer_battle TRAINER_RIVAL_SILVER_21, 0, 0, 0
 	goto _0191
@@ -110,8 +110,8 @@ _016E:
 _0189:
 	trainer_battle TRAINER_RIVAL_SILVER_19, 0, 0, 0
 _0191:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01CE
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
@@ -219,12 +219,12 @@ scr_seq_T10R0101_007:
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 _02CD:
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 8, 255, 0
 	menu_item_add 9, 255, 1
 	menu_item_add 10, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0317
 	case 1, _0456
 	goto _058C
@@ -233,12 +233,12 @@ _0317:
 	compare VAR_UNK_40E6, 0
 	goto_if_eq _037A
 	npc_msg msg_0522_T10R0101_00011
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 12, 255, 0
 	menu_item_add 13, 255, 1
 	menu_item_add 14, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _037A
 	case 1, _03F1
 	goto _0371
@@ -250,14 +250,14 @@ _0371:
 
 _037A:
 	npc_msg msg_0522_T10R0101_00015
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 16, 255, 0
 	menu_item_add 17, 255, 1
 	menu_item_add 18, 255, 2
 	menu_item_add 19, 255, 3
 	menu_item_add 26, 255, 4
 	menu_exec
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _03CF
 	closemsg
 	scrcmd_378 4, 32780
@@ -276,7 +276,7 @@ _03EB:
 
 _03F1:
 	npc_msg msg_0522_T10R0101_00015
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 20, 255, 0
 	menu_item_add 21, 255, 1
 	menu_item_add 22, 255, 2
@@ -285,7 +285,7 @@ _03F1:
 	menu_item_add 25, 255, 5
 	menu_item_add 26, 255, 6
 	menu_exec
-	compare VAR_SPECIAL_x800C, 6
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _03CF
 	closemsg
 	scrcmd_378 3, 32780
@@ -297,26 +297,26 @@ _0456:
 	compare VAR_UNK_40E6, 0
 	goto_if_eq _04B0
 	npc_msg msg_0522_T10R0101_00011
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 12, 255, 0
 	menu_item_add 13, 255, 1
 	menu_item_add 14, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _04B0
 	case 1, _0527
 	goto _02CD
 	.byte 0x02, 0x00
 _04B0:
 	npc_msg msg_0522_T10R0101_00015
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 16, 255, 0
 	menu_item_add 17, 255, 1
 	menu_item_add 18, 255, 2
 	menu_item_add 19, 255, 3
 	menu_item_add 26, 255, 4
 	menu_exec
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0505
 	closemsg
 	scrcmd_378 1, 32780
@@ -336,7 +336,7 @@ _0521:
 
 _0527:
 	npc_msg msg_0522_T10R0101_00015
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 20, 255, 0
 	menu_item_add 21, 255, 1
 	menu_item_add 22, 255, 2
@@ -345,7 +345,7 @@ _0527:
 	menu_item_add 25, 255, 5
 	menu_item_add 26, 255, 6
 	menu_exec
-	compare VAR_SPECIAL_x800C, 6
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0505
 	closemsg
 	scrcmd_378 0, 32780

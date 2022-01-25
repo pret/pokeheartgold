@@ -73,7 +73,7 @@ scr_seq_D24R0218_001:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
@@ -84,7 +84,7 @@ scr_seq_D24R0218_001:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
@@ -195,7 +195,7 @@ scr_seq_D24R0218_003:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
@@ -204,7 +204,7 @@ scr_seq_D24R0218_003:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO

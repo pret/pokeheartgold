@@ -11,10 +11,10 @@
 scr_seq_T07R0207_000:
 	scrcmd_609
 	lockall
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0058
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _002A
 	end
 
@@ -58,9 +58,9 @@ _00A9:
 _00B3:
 	npc_msg msg_0507_T07R0207_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0150
 	npc_msg msg_0507_T07R0207_00003
 	closemsg
@@ -72,9 +72,9 @@ _00B3:
 _00EE:
 	npc_msg msg_0507_T07R0207_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0150
 	npc_msg msg_0507_T07R0207_00004
 	closemsg
@@ -96,7 +96,7 @@ _014D:
 	npc_msg msg_0507_T07R0207_00005
 _0150:
 	setvar VAR_ELEVATOR_LAST_FLOOR, 65535
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0507_T07R0207_00002
 	waitbutton
 	closemsg

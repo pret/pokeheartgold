@@ -35,14 +35,14 @@ scr_seq_D23R0105_002:
 	end
 
 _0075:
-	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _022B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	npc_msg msg_0069_D23R0105_00000
 	closemsg
-	wait 16, VAR_SPECIAL_x800C
+	wait 16, VAR_SPECIAL_RESULT
 	get_player_facing VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _00B8
@@ -122,8 +122,8 @@ _01DA:
 	npc_msg msg_0069_D23R0105_00003
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _021D
 	npc_msg msg_0069_D23R0105_00004
 	setvar VAR_SPECIAL_x8004, 476

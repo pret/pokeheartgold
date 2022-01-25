@@ -253,10 +253,10 @@ _0348:
 	step 15, 1
 	step_end
 scr_seq_R42_002:
-	direction_signpost msg_0399_R42_00000, 1, 1, VAR_SPECIAL_x800C
+	direction_signpost msg_0399_R42_00000, 1, 1, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -264,7 +264,7 @@ scr_seq_R42_003:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0399_R42_00001, VAR_SPECIAL_x800C
+	trainer_tips msg_0399_R42_00001, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -272,15 +272,15 @@ scr_seq_R42_004:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0399_R42_00002, VAR_SPECIAL_x800C
+	trainer_tips msg_0399_R42_00002, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_R42_005:
-	direction_signpost msg_0399_R42_00003, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0399_R42_00003, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

@@ -76,7 +76,7 @@ _00E2:
 	hide_person obj_D18R0102_tsure_poke_static_suicune
 	create_roamer 0
 	create_roamer 1
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	clearflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
 	play_se SEQ_SE_DP_KAIDAN2
 	show_person obj_D18R0102_minaki
@@ -119,7 +119,7 @@ _01CC:
 _01D4:
 	wait_movement
 	play_se SEQ_SE_DP_KAIDAN2
-	wait 2, VAR_SPECIAL_x800C
+	wait 2, VAR_SPECIAL_RESULT
 	hide_person obj_D18R0102_minaki
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
@@ -232,8 +232,8 @@ scr_seq_D18R0102_001:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUICUNE, 40, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _035C
 	scrcmd_683 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3

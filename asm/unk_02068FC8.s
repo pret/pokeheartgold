@@ -596,7 +596,7 @@ sub_02069464: ; 0x02069464
 	ldr r0, [r5, #0x10]
 	ldr r1, _02069494 ; =sub_02069498
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	nop
 _02069490: .word 0x00000684
@@ -607,10 +607,10 @@ _02069494: .word sub_02069498
 sub_02069498: ; 0x02069498
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0xa

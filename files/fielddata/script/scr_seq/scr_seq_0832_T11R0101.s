@@ -181,8 +181,8 @@ scr_seq_T11R0101_004:
 	npc_msg msg_0533_T11R0101_00008
 	closemsg
 	trainer_battle TRAINER_LEADER_WHITNEY_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02C1
 	npc_msg msg_0533_T11R0101_00009
 	waitbutton
@@ -211,8 +211,8 @@ scr_seq_T11R0101_005:
 	npc_msg msg_0533_T11R0101_00030
 	closemsg
 	trainer_battle TRAINER_LEADER_JANINE_JANINE_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0324
 	npc_msg msg_0533_T11R0101_00031
 	waitbutton
@@ -241,8 +241,8 @@ scr_seq_T11R0101_006:
 	npc_msg msg_0533_T11R0101_00018
 	closemsg
 	trainer_battle TRAINER_LEADER_CLAIR_CLAIR_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0387
 	npc_msg msg_0533_T11R0101_00019
 	waitbutton
@@ -271,8 +271,8 @@ scr_seq_T11R0101_007:
 	npc_msg msg_0533_T11R0101_00024
 	closemsg
 	trainer_battle TRAINER_LEADER_ERIKA_ERIKA_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03EA
 	npc_msg msg_0533_T11R0101_00025
 	waitbutton
@@ -301,8 +301,8 @@ scr_seq_T11R0101_008:
 	npc_msg msg_0533_T11R0101_00026
 	closemsg
 	trainer_battle TRAINER_LEADER_MISTY_MISTY_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _044D
 	npc_msg msg_0533_T11R0101_00027
 	waitbutton
@@ -331,8 +331,8 @@ scr_seq_T11R0101_009:
 	npc_msg msg_0533_T11R0101_00032
 	closemsg
 	trainer_battle TRAINER_LEADER_BLAINE_BLAINE_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04B0
 	npc_msg msg_0533_T11R0101_00033
 	waitbutton
@@ -361,8 +361,8 @@ scr_seq_T11R0101_010:
 	npc_msg msg_0533_T11R0101_00034
 	closemsg
 	trainer_battle TRAINER_LEADER_BLUE_BLUE_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0513
 	npc_msg msg_0533_T11R0101_00035
 	waitbutton
@@ -391,8 +391,8 @@ scr_seq_T11R0101_011:
 	npc_msg msg_0533_T11R0101_00010
 	closemsg
 	trainer_battle TRAINER_LEADER_CHUCK_CHUCK_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0576
 	npc_msg msg_0533_T11R0101_00011
 	waitbutton
@@ -421,8 +421,8 @@ scr_seq_T11R0101_012:
 	npc_msg msg_0533_T11R0101_00028
 	closemsg
 	trainer_battle TRAINER_LEADER_BROCK_BROCK_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _05D9
 	npc_msg msg_0533_T11R0101_00029
 	waitbutton
@@ -451,8 +451,8 @@ scr_seq_T11R0101_013:
 	npc_msg msg_0533_T11R0101_00006
 	closemsg
 	trainer_battle TRAINER_LEADER_BUGSY_BUGSY_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _063C
 	npc_msg msg_0533_T11R0101_00007
 	waitbutton
@@ -481,8 +481,8 @@ scr_seq_T11R0101_014:
 	npc_msg msg_0533_T11R0101_00022
 	closemsg
 	trainer_battle TRAINER_LEADER_SABRINA_SABRINA_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _069F
 	npc_msg msg_0533_T11R0101_00023
 	waitbutton
@@ -511,8 +511,8 @@ scr_seq_T11R0101_015:
 	npc_msg msg_0533_T11R0101_00004
 	closemsg
 	trainer_battle TRAINER_LEADER_FALKNER_FALKNER_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0702
 	npc_msg msg_0533_T11R0101_00005
 	waitbutton
@@ -541,8 +541,8 @@ scr_seq_T11R0101_016:
 	npc_msg msg_0533_T11R0101_00020
 	closemsg
 	trainer_battle TRAINER_LEADER_LT_SURGE_LT__SURGE_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0765
 	npc_msg msg_0533_T11R0101_00021
 	waitbutton
@@ -571,8 +571,8 @@ scr_seq_T11R0101_017:
 	npc_msg msg_0533_T11R0101_00014
 	closemsg
 	trainer_battle TRAINER_LEADER_MORTY_MORTY_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _07C8
 	npc_msg msg_0533_T11R0101_00015
 	waitbutton
@@ -601,8 +601,8 @@ scr_seq_T11R0101_018:
 	npc_msg msg_0533_T11R0101_00012
 	closemsg
 	trainer_battle TRAINER_LEADER_JASMINE_JASMINE_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _082B
 	npc_msg msg_0533_T11R0101_00013
 	waitbutton
@@ -631,8 +631,8 @@ scr_seq_T11R0101_019:
 	npc_msg msg_0533_T11R0101_00016
 	closemsg
 	trainer_battle TRAINER_LEADER_PRYCE_PRYCE_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _088E
 	npc_msg msg_0533_T11R0101_00017
 	waitbutton

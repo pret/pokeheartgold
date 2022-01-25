@@ -65,11 +65,11 @@ scr_seq_0144_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	mystery_gift 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	mystery_gift 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _016D
-	scrcmd_379 VAR_SPECIAL_x800C
-	switch VAR_SPECIAL_x800C
+	scrcmd_379 VAR_SPECIAL_RESULT
+	switch VAR_SPECIAL_RESULT
 	case 0, _00FD
 	case 1, _0109
 	goto _0115
@@ -90,8 +90,8 @@ _0115:
 	goto _0121
 
 _0121:
-	mystery_gift 3, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	mystery_gift 3, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0157
 	play_fanfare SEQ_ME_ITEM
 	mystery_gift 5, VAR_SPECIAL_x8005, VAR_SPECIAL_x8006
@@ -129,11 +129,11 @@ scr_seq_0144_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	mom_gift_check VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	mom_gift_check VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0232
-	scrcmd_379 VAR_SPECIAL_x800C
-	switch VAR_SPECIAL_x800C
+	scrcmd_379 VAR_SPECIAL_RESULT
+	switch VAR_SPECIAL_RESULT
 	case 0, _01CF
 	case 1, _01DB
 	goto _01E7
@@ -155,8 +155,8 @@ _01E7:
 
 _01F3:
 	scrcmd_811 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0222
 	callstd std_give_item_verbose
 	scrcmd_812

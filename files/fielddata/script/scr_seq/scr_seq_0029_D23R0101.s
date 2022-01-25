@@ -92,38 +92,38 @@ scr_seq_D23R0101_002:
 	goto_if_set FLAG_GOT_RADIO_CARD, _0243
 	npc_msg msg_0065_D23R0101_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0221
 	npc_msg msg_0065_D23R0101_00004
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00005
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00006
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00007
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _022E
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	npc_msg msg_0065_D23R0101_00008
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _022E
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	touchscreen_menu_show
@@ -147,7 +147,7 @@ scr_seq_D23R0101_002:
 	npc_msg msg_0065_D23R0101_00015
 	closemsg
 	apply_movement obj_D23R0101_gsleader3, _0264
-	wait 24, VAR_SPECIAL_x800C
+	wait 24, VAR_SPECIAL_RESULT
 	apply_movement obj_player, _036C
 	wait_movement
 	hide_person obj_D23R0101_gsleader3
@@ -250,14 +250,14 @@ _030A:
 	end
 
 _0316:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0333
 	setvar VAR_TEMP_x400B, 33
 	goto _0346
 
 _0333:
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0346
 	setvar VAR_TEMP_x400B, 11
 _0346:
@@ -350,7 +350,7 @@ _04A8:
 	goto_if_ne _04BD
 	apply_movement obj_player, _07BC
 _04BD:
-	wait 50, VAR_SPECIAL_x800C
+	wait 50, VAR_SPECIAL_RESULT
 	set_avatar_bits 1
 	update_avatar_state
 	scrcmd_620 0
@@ -382,8 +382,8 @@ _0540:
 	npc_msg msg_0065_D23R0101_00023
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_3, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0655
 	npc_msg msg_0065_D23R0101_00024
 	closemsg
@@ -706,18 +706,18 @@ scr_seq_D23R0101_001:
 	goto_if_set FLAG_UNK_AA5, _09AF
 	npc_msg msg_0065_D23R0101_00028
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _09E5
 	goto _09DA
 
 _09AF:
 	npc_msg msg_0065_D23R0101_00045
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _09E5
 	goto _09DA
 	.byte 0x02, 0x00

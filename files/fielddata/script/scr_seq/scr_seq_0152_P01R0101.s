@@ -43,7 +43,7 @@ scr_seq_P01R0101_002:
 	closemsg
 	apply_movement obj_P01R0101_ookido, _0110
 	wait_movement
-	nat_dex_flag_action 1, VAR_SPECIAL_x800C
+	nat_dex_flag_action 1, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0255_P01R0101_00011
@@ -120,8 +120,8 @@ scr_seq_P01R0101_000:
 	goto_if_ge _01FB
 	npc_msg msg_0255_P01R0101_00001
 	closemsg
-	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_S_S__TICKET, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02F9
 	apply_movement obj_player, _036C
 	wait_movement
@@ -152,35 +152,35 @@ scr_seq_P01R0101_000:
 	end
 
 _01FB:
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0218
 	goto _02EE
 	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
 _0218:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0231
 	goto _029B
 	.byte 0x16, 0x00, 0x6a, 0x00, 0x00
 	.byte 0x00
 _0231:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _024A
 	goto _02EE
 	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
 _024A:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0263
 	goto _02EE
 	.byte 0x16, 0x00, 0x38
 	.byte 0x00, 0x00, 0x00
 _0263:
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ne _027C
 	goto _02EE
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _027C:
-	compare VAR_SPECIAL_x800C, 5
+	compare VAR_SPECIAL_RESULT, 5
 	goto_if_ne _0295
 	goto _029B
 	.byte 0x16

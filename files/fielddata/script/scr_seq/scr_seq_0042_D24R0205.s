@@ -64,7 +64,7 @@ scr_seq_D24R0205_000:
 	play_se SEQ_SE_DP_SUTYA2
 	goto_if_set FLAG_UNK_111, _016F
 	goto_if_set FLAG_GOT_UNOWN_REPORT, _016F
-	wait 5, VAR_SPECIAL_x800C
+	wait 5, VAR_SPECIAL_RESULT
 	apply_movement obj_D24R0205_gsassistantm, _0194
 	apply_movement obj_D24R0205_gsassistantm_2, _0194
 	apply_movement obj_D24R0205_gsassistantm_3, _01B8
@@ -155,7 +155,7 @@ scr_seq_D24R0205_006:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
@@ -166,7 +166,7 @@ scr_seq_D24R0205_006:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
@@ -277,7 +277,7 @@ scr_seq_D24R0205_009:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO
@@ -286,7 +286,7 @@ scr_seq_D24R0205_009:
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_BLACK
 	wait_fade
 	stop_se SEQ_SE_GS_ZENIGAME_JOURO

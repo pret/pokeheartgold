@@ -21,7 +21,7 @@
 
 #define ScriptReadByte(ctx) *(ctx->script_ptr++)
 
-typedef struct UnkSavStruct80 UnkSavStruct80;
+typedef struct FieldSystem FieldSystem;
 typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
 typedef struct LocalMapObject LocalMapObject;
 
@@ -33,19 +33,19 @@ typedef struct UnkSavStruct80_Sub10_SubC_Sub54 {
     int unk8;
     int unkC;
     int unk10;
-    LocalMapObject *unk14;
+    LocalMapObject *objectEvent;
     int unk18;
-} UnkSavStruct80_Sub10_SubC_Sub54;
+} EngagedTrainer;
 
-typedef struct UnkSavStruct80_Sub10_SubC {
+typedef struct ScriptEnvironment {
     u32 check;
-    u8 unk_4;
+    u8 state;
     u8 unk_5;
     u8 numActiveMovement;
     u8 unk_7;
     u8 unk_8;
     u8 numActiveScrCtx;
-    u16 unk_A;
+    u16 script;
     u32 unk_C;
     u32 unk_10;
     u32 unk_14;
@@ -53,18 +53,18 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     u32 unk_1C;
     u32 unk_20;
     u32 unk_24;
-    void* unk_28;
-    LocalMapObject* mapObjects;
+    void* facingDirection;
+    LocalMapObject* lastTalked;
     u32 unk_30;
     void* unk_34;
     SCRIPTCONTEXT* scriptContexts[3];
-    MSGFMT* unk_44;
-    STRING* unk_48;
-    STRING* unk_4C;
+    MSGFMT* msgfmt;
+    STRING* strbuf1;
+    STRING* strbuf2;
     u32 unk_50;
-    UnkSavStruct80_Sub10_SubC_Sub54 unk_54[2];
+    EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
-    void (*scrctx_end_cb)(UnkSavStruct80* fsys);
+    void (*scrctx_end_cb)(FieldSystem* fsys);
     void *unk_AC;
     u32 unk_B0;
     u32 unk_B4;
@@ -72,9 +72,9 @@ typedef struct UnkSavStruct80_Sub10_SubC {
     WINDOW unk_BC;
     WINDOW unk_CC;
     u32 unk_DC;
-} UnkSavStruct80_Sub10_SubC;
+} ScriptEnvironment;
 
-enum Unk80_10_C_Field {
+enum ScriptEnvField {
     UNK80_10_C_10                              =  0,
     UNK80_10_C_14                              =  1,
     UNK80_10_C_24                              =  2,
@@ -83,9 +83,9 @@ enum Unk80_10_C_Field {
     UNK80_10_C_07                              =  5,
     UNK80_10_C_08                              =  6,
     UNK80_10_C_NUM_ACTIVE_SCRCTX               =  7,
-    UNK80_10_C_0A                              =  8,
-    UNK80_10_C_28                              =  9,
-    UNK80_10_C_MAP_OBJECTS                     = 10,
+    UNK80_10_C_SCRIPT                          =  8,
+    UNK80_10_C_FACING_DIRECTION                =  9,
+    UNK80_10_C_LAST_TALKED                     = 10,
     UNK80_10_C_30                              = 11,
     UNK80_10_C_34                              = 12,
     UNK80_10_C_SCRCTX_0                        = 13,
@@ -129,38 +129,42 @@ enum Unk80_10_C_Field {
     UNK80_10_C_SPECIAL_VAR_8009                = 51,
     UNK80_10_C_SPECIAL_VAR_800A                = 52,
     UNK80_10_C_SPECIAL_VAR_800B                = 53,
-    UNK80_10_C_SPECIAL_VAR_800C                = 54,
-    UNK80_10_C_SPECIAL_VAR_800D                = 55,
+    UNK80_10_C_SPECIAL_VAR_RESULT              = 54,
+    UNK80_10_C_SPECIAL_VAR_LAST_TALKED         = 55,
 };
 
-typedef struct UnkSavStruct80_Sub10 {
+typedef struct TaskManager {
     u32 unk0;
     u32 unk4;
     u32 unk8;
-    void *unkC; // maybe a union? sometimes cast to UnkSavStruct80_Sub10_SubC
+    void *unkC; // maybe a union? sometimes cast to ScriptEnvironment
     u32 unk10;
     u32 unk14;
     u32 unk18;
     void *unk1C; // size=4
-} UnkSavStruct80_Sub10;
+} TaskManager;
 
-typedef struct UnkSavStruct80_Sub20 {
-    int unk0;
-} UnkSavStruct80_Sub20;
+typedef struct Location {
+    int mapId;
+    int x;
+    int y;
+    int z;
+    int direction;
+} Location;
 
-struct UnkSavStruct80 {
+struct FieldSystem {
     u8 unk0[0x8];
     void* bg_config;
     SAVEDATA* savedata;
-    UnkSavStruct80_Sub10* unk10;
+    TaskManager* taskman;
     MAP_EVENTS* map_events;
     u8 unk18[0x8];
-    UnkSavStruct80_Sub20* unk20;
+    Location* location;
     u8 unk24[0xC];
     MAPMATRIX* map_matrix;
     u8 unk34[0x8];
     LocalMapObject* unk3C;
-    FIELD_PLAYER_AVATAR *unk40;
+    FIELD_PLAYER_AVATAR *playerAvatar;
     u8 unk44[0x68];
     u32 unkAC;
     u8 unkB0[0x44];
@@ -183,17 +187,17 @@ struct SCRIPTCONTEXT {
     const ScrCmdFunc* cmd_table;
     u32 cmd_count;
     u32 data[4];
-    UnkSavStruct80_Sub10* unk74;
+    TaskManager* taskman;
     MSGDATA* msg_data;
     u8* mapScripts;
-    UnkSavStruct80* unk80;
+    FieldSystem* fsys;
 };
 
 void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count);
 BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr);
 void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr);
 void StopScript(SCRIPTCONTEXT* ctx);
-void sub_0203FD68(SCRIPTCONTEXT* ctx, UnkSavStruct80_Sub10 *unk);
+void sub_0203FD68(SCRIPTCONTEXT* ctx, TaskManager *unk);
 BOOL RunScriptCommand(SCRIPTCONTEXT* ctx);
 BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr);
 const u8* ScriptPop(SCRIPTCONTEXT* ctx);

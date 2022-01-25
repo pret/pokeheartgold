@@ -147,8 +147,8 @@ scr_seq_T25_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_184 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_184 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01DD
 	npc_msg msg_0581_T25_00002
 	waitbutton
@@ -212,22 +212,22 @@ scr_seq_T25_007:
 	lockall
 	npc_msg msg_0581_T25_00013
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0284
 	apply_movement obj_T25_rocketm, _02F8
 	wait_movement
 	goto _02B8
 
 _0284:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _02A1
 	apply_movement obj_T25_rocketm, _0308
 	wait_movement
 	goto _02B8
 
 _02A1:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _02B8
 	apply_movement obj_T25_rocketm, _0300
 	wait_movement
@@ -669,7 +669,7 @@ scr_seq_T25_019:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00036, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00036, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -677,7 +677,7 @@ scr_seq_T25_020:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00037, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00037, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -685,15 +685,15 @@ scr_seq_T25_021:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00038, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00038, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_T25_022:
-	direction_signpost msg_0581_T25_00039, 0, 16, VAR_SPECIAL_x800C
+	direction_signpost msg_0581_T25_00039, 0, 16, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -701,7 +701,7 @@ scr_seq_T25_023:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00040, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00040, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -709,7 +709,7 @@ scr_seq_T25_024:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00041, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00041, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -717,7 +717,7 @@ scr_seq_T25_025:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00042, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00042, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -725,7 +725,7 @@ scr_seq_T25_026:
 	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00043, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00043, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -733,7 +733,7 @@ scr_seq_T25_027:
 	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00044, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00044, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -741,7 +741,7 @@ scr_seq_T25_028:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00045, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00045, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -749,7 +749,7 @@ scr_seq_T25_029:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0581_T25_00046, VAR_SPECIAL_x800C
+	trainer_tips msg_0581_T25_00046, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

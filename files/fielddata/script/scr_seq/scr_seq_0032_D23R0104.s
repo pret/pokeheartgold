@@ -143,8 +143,8 @@ _01C7:
 	npc_msg msg_0068_D23R0104_00013
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_F_GRUNT_4, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0209
 	settrainerflag TRAINER_TEAM_ROCKET_F_GRUNT_4
 	npc_msg msg_0068_D23R0104_00014

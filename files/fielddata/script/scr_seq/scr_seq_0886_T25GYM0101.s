@@ -87,8 +87,8 @@ scr_seq_T25GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 2, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 2, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0202
 	goto_if_set FLAG_UNK_0B7, _01A0
 	compare VAR_UNK_410A, 1
@@ -96,8 +96,8 @@ scr_seq_T25GYM0101_000:
 	npc_msg msg_0582_T25GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_WHITNEY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0218
 	settrainerflag TRAINER_LASS_CARRIE
 	settrainerflag TRAINER_LASS_CATHY
@@ -196,8 +196,8 @@ scr_seq_T25GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 2, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 2, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02AA
 	npc_msg msg_0582_T25GYM0101_00010
 	waitbutton
@@ -216,9 +216,9 @@ scr_seq_T25GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 2, VAR_SPECIAL_x800C
+	check_badge 2, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02DC
 	npc_msg msg_0582_T25GYM0101_00012
 	goto _02DF

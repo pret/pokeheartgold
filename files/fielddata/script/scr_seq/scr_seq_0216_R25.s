@@ -280,11 +280,11 @@ scr_seq_R25_009:
 	npc_msg msg_0363_R25_00001
 _03D3:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03F7
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _043A
 	end
 
@@ -321,20 +321,20 @@ _044B:
 	goto _03D3
 	.byte 0x02, 0x00
 _0456:
-	scrcmd_184 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_184 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04DA
-	scrcmd_733 11, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_733 11, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04DA
 	npc_msg msg_0363_R25_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04E5
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04F0
 	npc_msg msg_0363_R25_00007
 	closemsg
@@ -386,8 +386,8 @@ scr_seq_R25_001:
 	npc_msg msg_0363_R25_00013
 	closemsg
 	trainer_battle TRAINER_ACE_TRAINER_M_KEVIN, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _056D
 _0558:
 	npc_msg msg_0363_R25_00014
@@ -534,8 +534,8 @@ scr_seq_R25_007:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUICUNE, 40, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _07AA
 	scrcmd_683 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3
@@ -607,7 +607,7 @@ scr_seq_R25_002:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0363_R25_00015, VAR_SPECIAL_x800C
+	trainer_tips msg_0363_R25_00015, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

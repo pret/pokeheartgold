@@ -44,8 +44,8 @@ scr_seq_R36_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	goto_if_unset FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL, _0261
-	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _009A
 	apply_movement obj_R36_gsgirl1_2, _053C
 	wait_movement
@@ -53,7 +53,7 @@ _009A:
 	play_se SEQ_SE_GS_KI_UGOKU
 	apply_movement obj_R36_usokky, _038C
 	wait_movement
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00B9
 	releaseall
 	end
@@ -61,11 +61,11 @@ _009A:
 _00B9:
 	npc_msg msg_0390_R36_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00E0
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _025B
 	end
 
@@ -73,14 +73,14 @@ _00E0:
 	buffer_players_name 0
 	npc_msg msg_0390_R36_00001
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0109
 	apply_movement obj_player, _039C
 	goto _012C
 
 _0109:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0124
 	apply_movement obj_player, _03AC
 	goto _012C
@@ -98,8 +98,8 @@ _012C:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUDOWOODO, 20, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0255
 	scrcmd_683 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 3
@@ -107,8 +107,8 @@ _012C:
 	compare VAR_TEMP_x4001, 4
 	call_if_eq _023F
 	setflag FLAG_UNK_0B5
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01BC
 	scrcmd_602 0
 	scrcmd_603
@@ -132,8 +132,8 @@ _01C6:
 	giveitem_no_check ITEM_PECHA_BERRY, 3
 	npc_msg msg_0390_R36_00018
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0225
 	apply_movement obj_R36_gsgirl1_2, _0378
 	wait_movement
@@ -174,11 +174,11 @@ _0261:
 	wait_movement
 	npc_msg msg_0390_R36_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0296
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _025B
 	end
 
@@ -186,14 +186,14 @@ _0296:
 	buffer_players_name 0
 	npc_msg msg_0390_R36_00001
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _02BF
 	apply_movement obj_player, _039C
 	goto _02E2
 
 _02BF:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _02DA
 	apply_movement obj_player, _03AC
 	goto _02E2
@@ -210,8 +210,8 @@ _02E2:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_SUDOWOODO, 20, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0255
 	scrcmd_683 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 4
@@ -269,29 +269,29 @@ scr_seq_R36_001:
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_CARELESS
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_CARELESS
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04E2
 	goto_if_set FLAG_GOT_SHOCK_RIBBON, _04F6
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _0490
 	goto_if_set FLAG_UNK_0B1, _0472
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 4
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0423
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 15
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 15
 	goto _046A
 
 _0423:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 12
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 12
 	goto_if_no_item_space ITEM_HARD_STONE, 1, _0486
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0B1
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 13
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 13
 _046A:
 	waitbutton
 	closemsg
@@ -299,8 +299,8 @@ _046A:
 	end
 
 _0472:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 14
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 14
 	waitbutton
 	closemsg
 	releaseall
@@ -313,18 +313,18 @@ _0486:
 	end
 
 _0490:
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 4
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _04B3
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 15
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 15
 	goto _046A
 
 _04B3:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 40
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 40
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_x800C, 42
+	msgbox_extern VAR_SPECIAL_RESULT, 42
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_CARELESS
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -335,16 +335,16 @@ _04B3:
 	end
 
 _04E2:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 41
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 41
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _04F6:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 43
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 43
 	waitbutton
 	closemsg
 	releaseall
@@ -354,8 +354,8 @@ scr_seq_R36_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0530
 	npc_msg msg_0390_R36_00013
 	goto _0533
@@ -376,8 +376,8 @@ scr_seq_R36_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity ITEM_HM06, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_HM06, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0572
 	npc_msg msg_0390_R36_00003
 	giveitem_no_check ITEM_HM06, 1
@@ -407,10 +407,10 @@ _05B1:
 	end
 
 scr_seq_R36_003:
-	direction_signpost msg_0390_R36_00009, 1, 15, VAR_SPECIAL_x800C
+	direction_signpost msg_0390_R36_00009, 1, 15, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -418,7 +418,7 @@ scr_seq_R36_004:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0390_R36_00010, VAR_SPECIAL_x800C
+	trainer_tips msg_0390_R36_00010, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -426,7 +426,7 @@ scr_seq_R36_005:
 	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0390_R36_00011, VAR_SPECIAL_x800C
+	trainer_tips msg_0390_R36_00011, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -434,7 +434,7 @@ scr_seq_R36_006:
 	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0390_R36_00012, VAR_SPECIAL_x800C
+	trainer_tips msg_0390_R36_00012, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

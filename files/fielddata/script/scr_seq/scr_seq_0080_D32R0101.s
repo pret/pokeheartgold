@@ -59,7 +59,7 @@ scr_seq_D32R0101_001:
 	.byte 0x02, 0x00
 _00A6:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 451, 255, 0
 	menu_item_add 452, 255, 1
 	menu_item_add 453, 255, 2
@@ -67,7 +67,7 @@ _00A6:
 	menu_item_add 455, 255, 4
 	menu_item_add 456, 255, 5
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0138
 	case 1, _0170
 	case 2, _0146
@@ -114,11 +114,11 @@ scr_seq_D32R0101_002:
 	faceplayer
 	npc_msg msg_0103_D32R0101_00017
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01AD
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01B8
 	end
 
@@ -142,11 +142,11 @@ scr_seq_D32R0101_003:
 	faceplayer
 	npc_msg msg_0103_D32R0101_00020
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01FA
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0205
 	end
 
@@ -170,11 +170,11 @@ scr_seq_D32R0101_004:
 	faceplayer
 	npc_msg msg_0103_D32R0101_00023
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0247
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0252
 	end
 
@@ -198,11 +198,11 @@ scr_seq_D32R0101_005:
 	faceplayer
 	npc_msg msg_0103_D32R0101_00026
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0294
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _029F
 	end
 
@@ -226,11 +226,11 @@ scr_seq_D32R0101_006:
 	faceplayer
 	npc_msg msg_0103_D32R0101_00029
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02E1
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02EC
 	end
 

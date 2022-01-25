@@ -89,8 +89,8 @@ scr_seq_D45R0102_001:
 	closemsg
 	setvar VAR_UNK_40FE, 3
 	trainer_battle TRAINER_ROCKET_BOSS_GIOVANNI, 0, 1, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0250
 	setvar VAR_UNK_40FE, 4
 	apply_movement obj_D45R0102_sakaki, _033C
@@ -116,15 +116,15 @@ scr_seq_D45R0102_001:
 	gender_msgbox msg_0131_D45R0102_00016, msg_0131_D45R0102_00015
 	closemsg
 	get_lead_mon_index VAR_TEMP_x4002
-	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 251
+	get_partymon_species VAR_TEMP_x4002, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 251
 	call_if_ne _02C0
 	apply_movement obj_partner_poke, _03A4
 	wait_movement
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	fade_screen 6, 6, 0, RGB_WHITE
 	wait_fade
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_WHITE
 	wait_fade
 	apply_movement obj_player, _038C
@@ -157,7 +157,7 @@ _0250:
 	play_se SEQ_SE_GS_SUZUSYUTUGEN_HO
 	fade_screen 6, 6, 0, RGB_WHITE
 	wait_fade
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	fade_screen 6, 6, 1, RGB_WHITE
 	wait_fade
 	wait_movement

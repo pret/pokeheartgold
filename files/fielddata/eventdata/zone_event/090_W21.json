@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_W21.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_w21_max_revive",
+      "scr": "std_hiddenitem_w21_stardust",
       "type": 2,
       "x": 1044,
       "y": 412,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w21_star_piece",
+      "scr": "std_hiddenitem_w21_stardust_2",
       "type": 2,
       "x": 1037,
       "y": 436,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w21_star_piece_2",
+      "scr": "std_hiddenitem_w21_stardust_3",
       "type": 2,
       "x": 1042,
       "y": 439,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t09_w21_revive",
+      "scr": "std_hiddenitem_t09_w21_rare_candy",
       "type": 2,
       "x": 1033,
       "y": 481,

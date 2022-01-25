@@ -33,14 +33,14 @@ scr_seq_D15R0103_001:
 	wait_movement
 	npc_msg msg_0056_D15R0103_00000
 	closemsg
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
 	apply_movement obj_D15R0103_gsrivel, _00D8
 	wait_movement
 	npc_msg msg_0056_D15R0103_00001
 	closemsg
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	buffer_rivals_name 0
 	npc_msg msg_0056_D15R0103_00002
 	scrcmd_049
@@ -111,8 +111,8 @@ scr_seq_D15R0103_002:
 	npc_msg msg_0056_D15R0103_00003
 	closemsg
 	trainer_battle TRAINER_ELDER_LI, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01A2
 	npc_msg msg_0056_D15R0103_00004
 	giveitem_no_check ITEM_TM70, 1

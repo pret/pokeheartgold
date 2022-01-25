@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_P01R0104.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_p01r0104_stardust",
+      "scr": "std_hiddenitem_p01r0104_iron",
       "type": 2,
       "x": 26,
       "y": 20,

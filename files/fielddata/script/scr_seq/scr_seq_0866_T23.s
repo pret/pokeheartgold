@@ -100,14 +100,14 @@ _018E:
 	buffer_rivals_name 0
 	npc_msg msg_0564_T23_00001
 	closemsg
-	get_starter_choice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 152
+	get_starter_choice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 152
 	goto_if_ne _01B7
 	trainer_battle TRAINER_RIVAL_SILVER_7, 0, 0, 0
 	goto _01DA
 
 _01B7:
-	compare VAR_SPECIAL_x800C, 155
+	compare VAR_SPECIAL_RESULT, 155
 	goto_if_ne _01D2
 	trainer_battle TRAINER_RIVAL_SILVER_10, 0, 0, 0
 	goto _01DA
@@ -115,8 +115,8 @@ _01B7:
 _01D2:
 	trainer_battle TRAINER_RIVAL_SILVER, 0, 0, 0
 _01DA:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0285
 	callstd std_play_rival_outro_music
 	buffer_rivals_name 0
@@ -277,7 +277,7 @@ scr_seq_T23_008:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0564_T23_00012, VAR_SPECIAL_x800C
+	trainer_tips msg_0564_T23_00012, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -285,7 +285,7 @@ scr_seq_T23_009:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0564_T23_00013, VAR_SPECIAL_x800C
+	trainer_tips msg_0564_T23_00013, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -293,15 +293,15 @@ scr_seq_T23_010:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0564_T23_00015, VAR_SPECIAL_x800C
+	trainer_tips msg_0564_T23_00015, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_T23_011:
-	direction_signpost msg_0564_T23_00011, 0, 14, VAR_SPECIAL_x800C
+	direction_signpost msg_0564_T23_00011, 0, 14, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -309,15 +309,15 @@ scr_seq_T23_012:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0564_T23_00014, VAR_SPECIAL_x800C
+	trainer_tips msg_0564_T23_00014, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_T23_013:
-	direction_signpost msg_0564_T23_00000, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0564_T23_00000, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 

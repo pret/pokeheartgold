@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r03_pearl",
+      "scr": "std_hiddenitem_r03_star_piece_2",
       "type": 2,
       "x": 1095,
       "y": 121,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r03_hyper_potion",
+      "scr": "std_hiddenitem_r03_star_piece",
       "type": 2,
       "x": 1100,
       "y": 116,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r03_zinc",
+      "scr": "std_hiddenitem_r03_hyper_potion",
       "type": 2,
       "x": 1160,
       "y": 105,

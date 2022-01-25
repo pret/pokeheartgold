@@ -51,10 +51,10 @@ _009E:
 _00A6:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_412 43, 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 4
+	scrcmd_412 43, 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0200
-	compare VAR_SPECIAL_x800C, 5
+	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0200
 	scrcmd_436
 	scrcmd_627 5

@@ -20,8 +20,8 @@ scr_seq_D51R0301_000:
 	closemsg
 	setflag FLAG_UNK_09E
 _002E:
-	player_has_species VAR_SPECIAL_x800C, SPECIES_ARCEUS
-	compare VAR_SPECIAL_x800C, 1
+	player_has_species VAR_SPECIAL_RESULT, SPECIES_ARCEUS
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _004C
 	npc_msg msg_0147_D51R0301_00002
 	waitbutton
@@ -220,11 +220,11 @@ scr_seq_D51R0301_002:
 	faceplayer
 	npc_msg msg_0147_D51R0301_00010
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02A6
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _030C
 _02A6:
 	npc_msg msg_0147_D51R0301_00011

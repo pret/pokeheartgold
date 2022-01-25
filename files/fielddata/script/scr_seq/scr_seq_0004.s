@@ -41,8 +41,8 @@ scr_seq_0004_014:
 scr_seq_0004_015:
 	scrcmd_609
 	lockall
-	scrcmd_446 VAR_SPECIAL_x800C
-	scrcmd_840 VAR_SPECIAL_x800C, VAR_SPECIAL_x8004
+	scrcmd_446 VAR_SPECIAL_RESULT
+	scrcmd_840 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_ne _0099
@@ -90,8 +90,8 @@ _0141:
 scr_seq_0004_013:
 	scrcmd_609
 	lockall
-	scrcmd_446 VAR_SPECIAL_x800C
-	scrcmd_840 VAR_SPECIAL_x800C, VAR_SPECIAL_x8004
+	scrcmd_446 VAR_SPECIAL_RESULT
+	scrcmd_840 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_ne _0174
@@ -177,11 +177,11 @@ scr_seq_0004_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	party_legal_check VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	party_legal_check VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0F27
-	get_player_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0C10
 	npc_msg msg_0046_00000
 	goto _02DD
@@ -189,13 +189,13 @@ scr_seq_0004_001:
 _02DD:
 	npc_msg msg_0046_00002
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 166, 255, 0
 	menu_item_add 167, 255, 1
 	menu_item_add 11, 255, 2
 	menu_item_add 12, 255, 3
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0364
 	case 1, _03DF
 	case 2, _033F
@@ -223,15 +223,15 @@ _0359:
 
 _0364:
 	npc_msg msg_0046_00001
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 6, 255, 0
 	menu_item_add 7, 255, 1
 	menu_item_add 8, 255, 2
 	menu_item_add 10, 255, 3
 	menu_item_add 13, 255, 4
 	menu_exec
-	copyvar VAR_TEMP_x4003, VAR_SPECIAL_x800C
-	switch VAR_SPECIAL_x800C
+	copyvar VAR_TEMP_x4003, VAR_SPECIAL_RESULT
+	switch VAR_SPECIAL_RESULT
 	case 0, _0415
 	case 1, _0423
 	case 2, _044D
@@ -240,11 +240,11 @@ _0364:
 
 _03DF:
 	npc_msg msg_0046_00003
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 4, 255, 0
 	menu_item_add 5, 255, 1
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0477
 	goto _02DD
 
@@ -254,8 +254,8 @@ _0415:
 	.byte 0x02, 0x00
 _0423:
 	setvar VAR_SPECIAL_x8004, 2
-	party_count_not_egg VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	party_count_not_egg VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0440
 	goto _04AF
 
@@ -269,8 +269,8 @@ _0440:
 
 _044D:
 	setvar VAR_SPECIAL_x8004, 3
-	party_count_not_egg VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	party_count_not_egg VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_lt _046A
 	goto _0905
 
@@ -284,8 +284,8 @@ _046A:
 
 _0477:
 	setvar VAR_SPECIAL_x8004, 4
-	party_count_not_egg VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	party_count_not_egg VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_lt _0494
 	goto _0905
 
@@ -378,7 +378,7 @@ _065F:
 _0682:
 	scrcmd_799 VAR_TEMP_x4000
 	npc_msg msg_0046_00121
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 130, 255, 0
 	menu_item_add 131, 255, 1
 	compare VAR_TEMP_x4000, 11
@@ -387,7 +387,7 @@ _0682:
 _06B6:
 	menu_item_add 22, 255, 3
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0702
 	case 1, _0751
 	compare VAR_TEMP_x4000, 11
@@ -515,8 +515,8 @@ _08F9:
 	.byte 0x02, 0x00
 _0905:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 1
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0924
 	goto _0359
 	.byte 0x02, 0x00
@@ -535,12 +535,12 @@ _0926:
 	call_if_eq _09BE
 	compare VAR_SPECIAL_x8004, 4
 	call_if_eq _09C3
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 14, 255, 0
 	menu_item_add 15, 255, 1
 	menu_item_add 5, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _09C8
 	case 1, _0A41
 	goto _034C
@@ -555,16 +555,16 @@ _09C3:
 
 _09C8:
 	npc_msg msg_0046_00139
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0926
 	closemsg
-	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_226 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A17
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0A23
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0A32
 	goto _0ABA
 	.byte 0x02, 0x00
@@ -593,16 +593,16 @@ _0A32:
 
 _0A41:
 	npc_msg msg_0046_00139
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0926
 	closemsg
-	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_227 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A90
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0A9C
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0AAB
 	goto _0ABA
 	.byte 0x02, 0x00
@@ -639,8 +639,8 @@ _0ABA:
 	scrcmd_600
 	heal_party
 	scrcmd_815 0
-	scrcmd_446 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 300
+	scrcmd_446 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 300
 	goto_if_ne _0B13
 	apply_movement obj_player, _0BE8
 	wait_movement
@@ -673,16 +673,16 @@ _0B35:
 	call _0BCA
 	compare VAR_SPECIAL_x8004, 4
 	goto_if_eq _0BA8
-	scrcmd_451 VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x800C, 7
-	scrcmd_448 4, 0, VAR_SPECIAL_x800C, 11, 0
+	scrcmd_451 VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_RESULT, 7
+	scrcmd_448 4, 0, VAR_SPECIAL_RESULT, 11, 0
 	releaseall
 	end
 
 _0BA8:
-	scrcmd_451 VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x800C, 6
-	scrcmd_448 5, 0, VAR_SPECIAL_x800C, 11, 0
+	scrcmd_451 VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_RESULT, 6
+	scrcmd_448 5, 0, VAR_SPECIAL_RESULT, 11, 0
 	releaseall
 	end
 
@@ -736,20 +736,20 @@ scr_seq_0004_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	party_legal_check VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	party_legal_check VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0F27
-	get_player_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0E3A
 	get_party_count VAR_TEMP_x4009
 	setvar VAR_TEMP_x400A, 0
 _0C4F:
-	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 172
+	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 172
 	goto_if_ne _0C7B
-	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0C7B
 	goto _0E45
 
@@ -765,12 +765,12 @@ _0C94:
 _0C9C:
 	npc_msg msg_0046_00071
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 42, 255, 0
 	menu_item_add 11, 255, 1
 	menu_item_add 45, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0D14
 	case 1, _0CF8
 	case 2, _034C
@@ -778,25 +778,25 @@ _0C9C:
 	.byte 0x02, 0x00
 _0CF8:
 	npc_msg msg_0046_00072
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0D14
 	goto _034C
 	.byte 0x02, 0x00
 _0D14:
 	setvar VAR_SPECIAL_x8004, 9
 	npc_msg msg_0046_00139
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _034C
-	comm_sanitize_party VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 255
+	comm_sanitize_party VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0E34
 	setvar VAR_UNK_4133, 2
 	setflag FLAG_UNK_966
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 1
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0D70
 	setvar VAR_UNK_4133, 0
 	clearflag FLAG_UNK_966
@@ -815,8 +815,8 @@ _0D70:
 	goto _0D99
 	.byte 0x02, 0x00
 _0D99:
-	scrcmd_446 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 300
+	scrcmd_446 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 300
 	goto_if_ne _0DC8
 	setvar VAR_TEMP_x4000, 4
 	setvar VAR_TEMP_x4001, 11
@@ -907,12 +907,12 @@ scr_seq_0004_011:
 	.byte 0x02, 0x00
 _0E9D:
 	npc_msg msg_0046_00117
-	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 42, 0
 	scrcmd_066 43, 1
 	scrcmd_066 11, 2
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0EF6
 	case 1, _0F1C
 	case 2, _0EEB

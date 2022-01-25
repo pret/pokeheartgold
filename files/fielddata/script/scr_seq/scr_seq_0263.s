@@ -28,12 +28,12 @@ _0038:
 _0048:
 	npc_msg msg_0433_00001
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 2, 255, 0
 	menu_item_add 3, 255, 1
 	menu_item_add 4, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0097
 	case 1, _0178
 	goto _016B
@@ -41,11 +41,11 @@ _0048:
 _0097:
 	buffer_int 2, 1
 	npc_msg msg_0433_00007
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _016B
-	check_battle_points 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_points 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _015E
 	scrcmd_556 1
 	scrcmd_118 1
@@ -134,12 +134,12 @@ _01F1:
 	buffer_item_name_plural 0, VAR_TEMP_x4000
 _01F6:
 	buffer_int 1, VAR_TEMP_x4001
-	hasspaceforitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02BD
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0433_00013
-	giveitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_x800C
+	giveitem VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_RESULT
 	wait_fanfare
 	scrcmd_049
 	return
@@ -154,12 +154,12 @@ _023D:
 	buffer_item_name_plural 0, VAR_TEMP_x4002
 _0242:
 	buffer_int 1, VAR_TEMP_x4003
-	hasspaceforitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02BD
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0433_00013
-	giveitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_x800C
+	giveitem VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_SPECIAL_RESULT
 	wait_fanfare
 	scrcmd_049
 	return
@@ -174,12 +174,12 @@ _0289:
 	buffer_item_name_plural 0, VAR_TEMP_x4004
 _028E:
 	buffer_int 1, VAR_TEMP_x4005
-	hasspaceforitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02BD
 	play_fanfare SEQ_ME_ITEM
 	npc_msg msg_0433_00013
-	giveitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_x800C
+	giveitem VAR_TEMP_x4004, VAR_TEMP_x4005, VAR_SPECIAL_RESULT
 	wait_fanfare
 	scrcmd_049
 	return

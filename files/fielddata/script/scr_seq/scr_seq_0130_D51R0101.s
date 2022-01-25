@@ -98,7 +98,7 @@ scr_seq_D51R0101_003:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0145_D51R0101_00007, VAR_SPECIAL_x800C
+	trainer_tips msg_0145_D51R0101_00007, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

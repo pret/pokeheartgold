@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r32_poke_ball",
+      "scr": "std_hiddenitem_r32_heart_scale",
       "type": 2,
       "x": 475,
       "y": 377,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r32_max_ether",
+      "scr": "std_hiddenitem_r32_great_ball",
       "type": 2,
       "x": 460,
       "y": 432,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r32_tinymushroom",
+      "scr": "std_hiddenitem_r32_super_potion",
       "type": 2,
       "x": 459,
       "y": 309,

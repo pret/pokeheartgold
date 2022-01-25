@@ -563,7 +563,7 @@ scr_seq_D02R0104_001:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0051_D02R0104_00001, VAR_SPECIAL_x800C
+	trainer_tips msg_0051_D02R0104_00001, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -579,28 +579,28 @@ _07E9:
 	wait_se SEQ_SE_DP_SELECT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0825
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0866
 	end
 
 _0825:
 	callstd std_hidden_item_fanfare
-	hide_person VAR_SPECIAL_x800D
-	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	hide_person VAR_SPECIAL_LAST_TALKED
+	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg msg_0051_D02R0104_00002
 	wait_fanfare
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	npc_msg msg_0051_D02R0104_00003
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 1
+	setvar VAR_SPECIAL_RESULT, 1
 _0860:
 	closemsg
 	releaseall
@@ -610,7 +610,7 @@ _0866:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0051_D02R0104_00004
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	goto _0860
 	.byte 0x02, 0x00
 scr_seq_D02R0104_004:

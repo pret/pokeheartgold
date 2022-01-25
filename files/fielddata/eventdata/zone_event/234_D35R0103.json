@@ -50,7 +50,7 @@
       "dir": 0
     },
     {
-      "scr": "std_hiddenitem_d35r0103_ether",
+      "scr": "std_hiddenitem_d35r0103_full_heal",
       "type": 2,
       "x": 20,
       "y": 29,
@@ -58,7 +58,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d35r0103_rare_candy",
+      "scr": "std_hiddenitem_d35r0103_x_sp__def",
       "type": 2,
       "x": 48,
       "y": 14,

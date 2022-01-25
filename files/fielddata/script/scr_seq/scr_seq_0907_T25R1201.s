@@ -95,8 +95,8 @@ scr_seq_T25R1201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	party_legal_check VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	party_legal_check VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03C4
 	goto_if_set FLAG_UNK_112, _0354
 	setflag FLAG_UNK_112
@@ -104,12 +104,12 @@ scr_seq_T25R1201_000:
 _014B:
 	touchscreen_menu_hide
 _014D:
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 131, 255, 0
 	menu_item_add 130, 255, 1
 	menu_item_add 132, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0227
 	case 1, _01A4
 	case 2, _0330
@@ -120,12 +120,12 @@ _01A4:
 	goto _01AF
 	.byte 0x02, 0x00
 _01AF:
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 133, 255, 0
 	menu_item_add 134, 255, 1
 	menu_item_add 135, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0206
 	case 1, _0211
 	case 2, _021C
@@ -145,8 +145,8 @@ _021C:
 	goto _014D
 	.byte 0x02, 0x00
 _0227:
-	party_count_not_egg VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	party_count_not_egg VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0240
 	goto _035F
 	.byte 0x02, 0x00
@@ -160,8 +160,8 @@ _0240:
 
 _024D:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0343
 	touchscreen_menu_show
 	heal_party
@@ -187,10 +187,10 @@ _024D:
 	wait_fade
 	scrcmd_579
 	scrcmd_815 0
-	scrcmd_166 VAR_SPECIAL_x800C
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	scrcmd_166 VAR_SPECIAL_RESULT
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	scrcmd_165 32772, 32780
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0314
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -228,14 +228,14 @@ _0354:
 	goto _014B
 	.byte 0x02, 0x00
 _035F:
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0378
 	goto _024D
 	.byte 0x02, 0x00
 _0378:
-	count_pc_empty_space VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	count_pc_empty_space VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0391
 	goto _024D
 	.byte 0x02
@@ -313,12 +313,12 @@ scr_seq_T25R1201_011:
 _047C:
 	npc_msg msg_0600_T25R1201_00031
 	touchscreen_menu_hide
-	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 33, 255, 0
 	menu_item_add 34, 255, 1
 	menu_item_add 35, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _04D3
 	case 1, _04F8
 	goto _04CB
@@ -332,8 +332,8 @@ _04CD:
 
 _04D3:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04CD
 	closemsg
 	scrcmd_815 0
@@ -354,12 +354,12 @@ scr_seq_T25R1201_012:
 _0517:
 	npc_msg msg_0600_T25R1201_00029
 	touchscreen_menu_hide
-	menu_init 21, 11, 0, 1, VAR_SPECIAL_x800C
+	menu_init 21, 11, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 33, 255, 0
 	menu_item_add 34, 255, 1
 	menu_item_add 35, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _056E
 	case 1, _0593
 	goto _0566
@@ -373,8 +373,8 @@ _0568:
 
 _056E:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0568
 	closemsg
 	scrcmd_815 0
@@ -398,21 +398,21 @@ scr_seq_T25R1201_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	party_legal_check VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	party_legal_check VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0622
 	setvar VAR_SPECIAL_x8000, 0
-	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _064D
 	buffer_mon_species_name 0, 0
 	npc_msg msg_0600_T25R1201_00018
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _062D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _063A
 	end
 
@@ -433,11 +433,11 @@ _063A:
 _064D:
 	npc_msg msg_0600_T25R1201_00019
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _062D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0674
 	end
 
@@ -457,9 +457,9 @@ scr_seq_T25R1201_016:
 	faceplayer
 	npc_msg msg_0600_T25R1201_00024
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06D1
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade

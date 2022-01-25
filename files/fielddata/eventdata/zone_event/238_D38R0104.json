@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D38R0104.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d38r0104_full_heal",
+      "scr": "std_hiddenitem_d38r0104_max_revive",
       "type": 2,
       "x": 33,
       "y": 15,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d38r0104_full_heal_2",
+      "scr": "std_hiddenitem_d38r0104_ultra_ball",
       "type": 2,
       "x": 17,
       "y": 73,

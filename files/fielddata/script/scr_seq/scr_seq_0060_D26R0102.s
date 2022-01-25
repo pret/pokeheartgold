@@ -20,9 +20,9 @@ scr_seq_D26R0102_001:
 	faceplayer
 	npc_msg msg_0091_D26R0102_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0047
 	closemsg
 	releaseall
@@ -43,8 +43,8 @@ scr_seq_D26R0102_002:
 	npc_msg msg_0091_D26R0102_00001
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_PROTON_PROTON, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0193
 	npc_msg msg_0091_D26R0102_00002
 	closemsg
@@ -64,8 +64,8 @@ scr_seq_D26R0102_002:
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00F7
 	apply_movement obj_D26R0102_gantetsu, _019C
 	apply_movement obj_player, _01C0

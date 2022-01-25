@@ -152,8 +152,8 @@ _022C:
 	touchscreen_menu_show
 	switch VAR_SPECIAL_x8004
 	case 3, _0346
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _033B
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_ne _0297
@@ -175,18 +175,18 @@ _02B6:
 	play_fanfare SEQ_ME_POKEGET
 	npc_msg msg_0537_T11R0701_00021
 	wait_fanfare
-	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_RESULT
 	touchscreen_menu_hide
 	npc_msg msg_0537_T11R0701_00025
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0351
 	touchscreen_menu_show
 _02F3:
 	npc_msg msg_0537_T11R0701_00022
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0317
 	apply_movement obj_T11R0701_daigo, _03DC
 	goto _031F
@@ -219,13 +219,13 @@ _0346:
 
 _0351:
 	closemsg
-	get_party_count VAR_SPECIAL_x800C
-	subvar VAR_SPECIAL_x800C, 1
+	get_party_count VAR_SPECIAL_RESULT
+	subvar VAR_SPECIAL_RESULT, 1
 	setvar VAR_TEMP_x4000, 0
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_815 0
-	nickname_input VAR_SPECIAL_x800C, VAR_TEMP_x4000
+	nickname_input VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_TEMP_x4000, 1
@@ -282,27 +282,27 @@ _040C:
 	setvar VAR_TEMP_x400A, 77
 _0415:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04EA
 	npc_msg msg_0537_T11R0701_00009
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _04EA
 	scrcmd_470 12
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	scrcmd_382 VAR_TEMP_x4002, VAR_SPECIAL_x8004
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _04F5
 	scrcmd_473 32772
 	scrcmd_474

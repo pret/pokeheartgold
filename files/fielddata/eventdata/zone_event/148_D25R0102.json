@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D25R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d25r0102_x_defense",
+      "scr": "std_hiddenitem_d25r0102_x_speed",
       "type": 2,
       "x": 20,
       "y": 43,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d25r0102_hp_up",
+      "scr": "std_hiddenitem_d25r0102_revive",
       "type": 2,
       "x": 24,
       "y": 15,

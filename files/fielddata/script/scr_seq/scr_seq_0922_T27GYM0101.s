@@ -100,14 +100,14 @@ scr_seq_T27GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 3, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 3, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01D9
 	npc_msg msg_0614_T27GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_MORTY_MORTY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01EF
 	npc_msg msg_0614_T27GYM0101_00001
 	give_badge 3
@@ -188,8 +188,8 @@ scr_seq_T27GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 3, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 3, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _029E
 	npc_msg msg_0614_T27GYM0101_00007
 	waitbutton
@@ -209,9 +209,9 @@ scr_seq_T27GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 3, VAR_SPECIAL_x800C
+	check_badge 3, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02D3
 	npc_msg msg_0614_T27GYM0101_00010
 	goto _02D6

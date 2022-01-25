@@ -24,8 +24,8 @@ scr_seq_T24PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	count_pc_empty_space VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 540
+	count_pc_empty_space VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 540
 	goto_if_ne _0056
 	goto _005C
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
@@ -33,8 +33,8 @@ _0056:
 	goto _00E4
 
 _005C:
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0079
 	goto _007F
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
@@ -47,11 +47,11 @@ _007F:
 	npc_msg msg_0575_T24PC0101_00005
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	give_mon SPECIES_TENTACOOL, 15, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon SPECIES_TENTACOOL, 15, 0, 0, 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0575_T24PC0101_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _00BC
 	touchscreen_menu_show
 	closemsg
@@ -62,7 +62,7 @@ _00BC:
 	scrcmd_815 0
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	nickname_input 1, VAR_SPECIAL_x800C
+	nickname_input 1, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _00E0:
@@ -80,8 +80,8 @@ scr_seq_T24PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 4, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 4, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0115
 	npc_msg msg_0575_T24PC0101_00002
 	waitbutton

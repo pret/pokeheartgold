@@ -4877,15 +4877,15 @@
 
 	.macro goto_if_no_item_space item, quantity, target
 	item_vars \item, \quantity
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if eq, \target
 	.endm
 
 	.macro goto_if_no_item_space_2 item, quantity, target
 	item_vars \item, \quantity
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if ne, \target
 	.endm
 
@@ -4896,7 +4896,7 @@
 
 	.macro takeitem_no_check item, quantity
 	item_vars \item, \quantity
-	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	.endm
 
 	.macro switch var

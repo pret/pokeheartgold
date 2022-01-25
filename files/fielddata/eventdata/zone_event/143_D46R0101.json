@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D46R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d46r0101_rare_candy",
+      "scr": "std_hiddenitem_d46r0101_max_ether",
       "type": 2,
       "x": 11,
       "y": 71,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d46r0101_super_repel",
+      "scr": "std_hiddenitem_d46r0101_full_restore",
       "type": 2,
       "x": 26,
       "y": 41,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d46r0101_hyper_potion",
+      "scr": "std_hiddenitem_d46r0101_big_mushroom",
       "type": 2,
       "x": 12,
       "y": 46,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d46r0101_rare_candy_2",
+      "scr": "std_hiddenitem_d46r0101_big_mushroom_2",
       "type": 2,
       "x": 47,
       "y": 46,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d46r0101_revive",
+      "scr": "std_hiddenitem_d46r0101_tinymushroom",
       "type": 2,
       "x": 49,
       "y": 18,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d46r0101_ultra_ball",
+      "scr": "std_hiddenitem_d46r0101_tinymushroom_2",
       "type": 2,
       "x": 32,
       "y": 57,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d46r0101_pp_up",
+      "scr": "std_hiddenitem_d46r0101_tinymushroom_3",
       "type": 2,
       "x": 50,
       "y": 58,

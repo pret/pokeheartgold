@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D11R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d11r0101_pearl",
+      "scr": "std_hiddenitem_d11r0101_escape_rope",
       "type": 2,
       "x": 56,
       "y": 19,

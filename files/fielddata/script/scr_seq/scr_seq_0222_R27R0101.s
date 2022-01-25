@@ -15,8 +15,8 @@ scr_seq_R27R0101_000:
 	goto_if_set FLAG_UNK_0E9, _006A
 	npc_msg msg_0370_R27R0101_00000
 	get_lead_mon_index VAR_TEMP_x4000
-	scrcmd_382 VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 150
+	scrcmd_382 VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 150
 	goto_if_ge _003E
 	npc_msg msg_0370_R27R0101_00003
 	waitbutton

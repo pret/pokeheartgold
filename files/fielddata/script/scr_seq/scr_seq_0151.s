@@ -76,10 +76,10 @@ scr_seq_0151_004:
 	scrcmd_789 0
 	npc_msg msg_0246_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00F9
 	call _0076
 	releaseall
@@ -122,16 +122,16 @@ _0165:
 
 _016E:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _018E
 	npc_msg msg_0246_00017
 	goto _0260
 	.byte 0x02, 0x00
 _018E:
-	count_pc_empty_space VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	count_pc_empty_space VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01B0
 	get_party_count VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 6
@@ -144,13 +144,13 @@ _01B0:
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_eq _021A
 _01D4:
-	get_lead_mon_index VAR_SPECIAL_x800C
-	bufferpartymonnick 0, VAR_SPECIAL_x800C
+	get_lead_mon_index VAR_SPECIAL_RESULT
+	bufferpartymonnick 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0246_00010
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0200
 	npc_msg msg_0246_00028
 	goto _0260
@@ -192,8 +192,8 @@ _0268:
 	setvar VAR_SPECIAL_x8004, 0
 	setvar VAR_SPECIAL_x8005, 627
 _0274:
-	is_npc_bug_contestant_registered VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	is_npc_bug_contestant_registered VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _028B
 	setflagvar VAR_SPECIAL_x8005
 _028B:
@@ -215,8 +215,8 @@ _02B1:
 _02BC:
 	buffer_players_name 0
 	npc_msg msg_0246_00020
-	hasspaceforitem VAR_BUG_CONTEST_HELD_PRIZE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasspaceforitem VAR_BUG_CONTEST_HELD_PRIZE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _02F3
 	copyvar VAR_SPECIAL_x8004, VAR_BUG_CONTEST_HELD_PRIZE
 	setvar VAR_SPECIAL_x8005, 1
@@ -236,9 +236,9 @@ scr_seq_0151_006:
 	scrcmd_789 0
 	npc_msg msg_0246_00023
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _032B
 	npc_msg msg_0246_00026
 	closemsg
@@ -310,8 +310,8 @@ _03E3:
 	non_npc_msg_var VAR_SPECIAL_x8004
 	copyvar VAR_SPECIAL_x8004, VAR_TEMP_x4001
 	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _042F
 	callstd std_give_item_verbose
 	goto _043B
@@ -332,19 +332,19 @@ _045E:
 	buffer_species_name 1, VAR_TEMP_x4002, 2, 1
 	npc_msg msg_0246_00043
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _049E
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	nickname_input 255, VAR_SPECIAL_x800C
+	nickname_input 255, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _049E:
-	buffer_bug_contest_mon_nick 5, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	buffer_bug_contest_mon_nick 5, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _04B5
 	npc_msg msg_0246_00046
 	closemsg

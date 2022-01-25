@@ -113,9 +113,9 @@ scr_seq_D31R0207_000:
 	buffer_players_name 0
 	npc_msg msg_0099_D31R0207_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01A3
 	npc_msg msg_0099_D31R0207_00000
 	closemsg
@@ -173,9 +173,9 @@ scr_seq_D31R0207_001:
 	buffer_move_name 3, VAR_SPECIAL_x8005
 	npc_msg msg_0099_D31R0207_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02B2
 _02A7:
 	npc_msg msg_0099_D31R0207_00007
@@ -204,9 +204,9 @@ scr_seq_D31R0207_002:
 	buffer_players_name 4
 	npc_msg msg_0099_D31R0207_00015
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _031A
 _030F:
 	npc_msg msg_0099_D31R0207_00016
@@ -235,9 +235,9 @@ scr_seq_D31R0207_003:
 	call _0216
 	npc_msg msg_0099_D31R0207_00003
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0382
 _0377:
 	npc_msg msg_0099_D31R0207_00004
@@ -265,9 +265,9 @@ scr_seq_D31R0207_004:
 	call _0216
 	npc_msg msg_0099_D31R0207_00012
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03E7
 _03DC:
 	npc_msg msg_0099_D31R0207_00013
@@ -295,9 +295,9 @@ scr_seq_D31R0207_005:
 	call _0216
 	npc_msg msg_0099_D31R0207_00009
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _044C
 _0441:
 	npc_msg msg_0099_D31R0207_00010

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D49.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d49_revive",
+      "scr": "std_hiddenitem_d49_pp_up",
       "type": 2,
       "x": 52,
       "y": 16,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d49_pp_up",
+      "scr": "std_hiddenitem_d49_protein",
       "type": 2,
       "x": 20,
       "y": 34,

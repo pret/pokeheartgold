@@ -36,10 +36,10 @@ _0046:
 	clearflag FLAG_UNK_111
 	setflag FLAG_UNK_220
 	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _009A
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00AA
 	end
 
@@ -83,10 +83,10 @@ _0107:
 scr_seq_D24R0206_003:
 	scrcmd_609
 	lockall
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0167
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0177
 	end
 

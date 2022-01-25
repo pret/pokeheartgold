@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D03R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d03r0103_max_potion",
+      "scr": "std_hiddenitem_d03r0103_max_revive",
       "type": 2,
       "x": 14,
       "y": 12,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0103_revive",
+      "scr": "std_hiddenitem_d03r0103_ultra_ball",
       "type": 2,
       "x": 26,
       "y": 19,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0103_carbos",
+      "scr": "std_hiddenitem_d03r0103_nugget",
       "type": 2,
       "x": 39,
       "y": 11,

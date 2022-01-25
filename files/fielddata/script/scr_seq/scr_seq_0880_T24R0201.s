@@ -28,16 +28,16 @@ _003A:
 _0042:
 	npc_msg msg_0576_T24R0201_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0063
 	npc_msg msg_0576_T24R0201_00004
 	goto _003A
 
 _0063:
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_ne _007D
 	npc_msg msg_0576_T24R0201_00003
 	goto _003A
@@ -60,9 +60,9 @@ _00A2:
 _00AD:
 	npc_msg msg_0576_T24R0201_00005
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01AA
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -75,36 +75,36 @@ _00AD:
 	goto _01AA
 
 _00F2:
-	scrcmd_363 6, VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_363 6, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	call_if_ne _019A
-	nop_var_490 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	nop_var_490 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0120
 	npc_msg msg_0576_T24R0201_00008
 	goto _0192
 
 _0120:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0136
 	npc_msg msg_0576_T24R0201_00012
 	goto _0192
 
 _0136:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _014C
 	npc_msg msg_0576_T24R0201_00013
 	goto _0192
 
 _014C:
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ne _0162
 	npc_msg msg_0576_T24R0201_00014
 	goto _0192
 
 _0162:
-	scrcmd_382 VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 149
+	scrcmd_382 VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 149
 	goto_if_le _0181
 	call _019A
 	goto _01B5

@@ -40,24 +40,24 @@ scr_seq_T08_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _014B
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _015F
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _00DA
 	apply_movement obj_player, _0174
 	goto _00EA
@@ -70,8 +70,8 @@ _00EA:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0111
 	apply_movement obj_partner_poke, _01A0
 	wait_movement
@@ -84,24 +84,24 @@ _0111:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _014B:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _015F:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -148,7 +148,7 @@ _01E0:
 	npc_msg msg_0512_T08_00008
 _01E3:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8000, 1
 	goto_if_ne _0202
 	menu_item_add 205, 255, 0
@@ -168,7 +168,7 @@ _0241:
 	menu_item_add 126, 255, 4
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _028D
 	case 1, _0331
 	case 2, _03D5
@@ -183,7 +183,7 @@ _028D:
 	giveitem_no_check ITEM_PERSIM_BERRY, 1
 	giveitem_no_check ITEM_RAZZ_BERRY, 1
 	giveitem_no_check ITEM_POMEG_BERRY, 1
-	takeitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_RED_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _053B
 
 _0331:
@@ -194,7 +194,7 @@ _0331:
 	giveitem_no_check ITEM_BLUK_BERRY, 1
 	giveitem_no_check ITEM_KELPSY_BERRY, 1
 	giveitem_no_check ITEM_CORNN_BERRY, 1
-	takeitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _053B
 
 _03D5:
@@ -205,7 +205,7 @@ _03D5:
 	giveitem_no_check ITEM_PINAP_BERRY, 1
 	giveitem_no_check ITEM_GREPA_BERRY, 1
 	giveitem_no_check ITEM_NOMEL_BERRY, 1
-	takeitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _053B
 
 _0479:
@@ -216,7 +216,7 @@ _0479:
 	giveitem_no_check ITEM_WEPEAR_BERRY, 1
 	giveitem_no_check ITEM_HONDEW_BERRY, 1
 	giveitem_no_check ITEM_DURIN_BERRY, 1
-	takeitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _053B
 
 _051D:
@@ -249,26 +249,26 @@ _0575:
 	goto _051D
 
 _057B:
-	hasitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_RED_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _059C
 	setvar VAR_SPECIAL_x8000, 1
 	setvar VAR_SPECIAL_x8006, 1
 _059C:
-	hasitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _05BD
 	setvar VAR_SPECIAL_x8001, 1
 	setvar VAR_SPECIAL_x8006, 1
 _05BD:
-	hasitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _05DE
 	setvar VAR_SPECIAL_x8002, 1
 	setvar VAR_SPECIAL_x8006, 1
 _05DE:
-	hasitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _05FF
 	setvar VAR_SPECIAL_x8003, 1
 	setvar VAR_SPECIAL_x8006, 1
@@ -276,15 +276,15 @@ _05FF:
 	return
 
 _0601:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0622
 	apply_movement obj_T08_juggrer, _064C
 	wait_movement
 	goto _0649
 
 _0622:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _063F
 	apply_movement obj_T08_juggrer, _0690
 	wait_movement
@@ -366,10 +366,10 @@ scr_seq_T08_002:
 	end
 
 scr_seq_T08_009:
-	direction_signpost msg_0512_T08_00003, 0, 8, VAR_SPECIAL_x800C
+	direction_signpost msg_0512_T08_00003, 0, 8, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -377,7 +377,7 @@ scr_seq_T08_003:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0512_T08_00004, VAR_SPECIAL_x800C
+	trainer_tips msg_0512_T08_00004, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -385,7 +385,7 @@ scr_seq_T08_004:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0512_T08_00005, VAR_SPECIAL_x800C
+	trainer_tips msg_0512_T08_00005, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -393,7 +393,7 @@ scr_seq_T08_005:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0512_T08_00006, VAR_SPECIAL_x800C
+	trainer_tips msg_0512_T08_00006, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

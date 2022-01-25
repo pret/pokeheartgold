@@ -331,10 +331,10 @@ sub_02058D4C: ; 0x02058D4C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	ldr r1, [r4, #0x34]
 	cmp r1, #0x2c
 	bls _02058D66
@@ -1475,11 +1475,11 @@ _02059672:
 
 	thumb_func_start sub_0205969C
 sub_0205969C: ; 0x0205969C
-	ldr r3, _020596A4 ; =sub_02050650
+	ldr r3, _020596A4 ; =TaskManager_GetEnv
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_020596A4: .word sub_02050650
+_020596A4: .word TaskManager_GetEnv
 	thumb_func_end sub_0205969C
 
 	thumb_func_start sub_020596A8
@@ -2131,10 +2131,10 @@ _02059B60:
 sub_02059B64: ; 0x02059B64
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	mov r1, #0
 	ldr r0, [r4, #0x24]

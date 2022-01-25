@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D02R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d02r0101_max_revive",
+      "scr": "std_hiddenitem_d02r0101_revive",
       "type": 2,
       "x": 24,
       "y": 7,

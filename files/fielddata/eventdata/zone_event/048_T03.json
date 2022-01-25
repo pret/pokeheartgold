@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t03_big_pearl",
+      "scr": "std_hiddenitem_t03_pp_up",
       "type": 2,
       "x": 1035,
       "y": 101,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t03_pearl",
+      "scr": "std_hiddenitem_t03_guard_spec_",
       "type": 2,
       "x": 1068,
       "y": 108,
@@ -50,7 +50,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t03_nugget",
+      "scr": "std_hiddenitem_t03_max_revive",
       "type": 2,
       "x": 1038,
       "y": 119,

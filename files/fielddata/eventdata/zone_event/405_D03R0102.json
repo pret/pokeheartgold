@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0102_full_restore",
+      "scr": "std_hiddenitem_d03r0102_pp_up",
       "type": 2,
       "x": 55,
       "y": 40,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0102_rare_candy",
+      "scr": "std_hiddenitem_d03r0102_big_pearl",
       "type": 2,
       "x": 45,
       "y": 39,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0102_max_potion",
+      "scr": "std_hiddenitem_d03r0102_zinc",
       "type": 2,
       "x": 53,
       "y": 30,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0102_elixir",
+      "scr": "std_hiddenitem_d03r0102_full_heal",
       "type": 2,
       "x": 56,
       "y": 24,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d03r0102_big_pearl",
+      "scr": "std_hiddenitem_d03r0102_protein",
       "type": 2,
       "x": 6,
       "y": 18,

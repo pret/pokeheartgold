@@ -224,20 +224,20 @@ class NormalScriptParser(ScriptParserBase):
             (re.compile(
                 r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
                 r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
-                r'\ttakeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
+                r'\ttakeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT\n'
             ), handle_itemspace('takeitem_no_check', 1, 3)),
             (re.compile(
                 r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
                 r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
-                r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
-                r'\tcompare_var_to_value VAR_SPECIAL_x800C, 0\n'
+                r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT\n'
+                r'\tcompare_var_to_value VAR_SPECIAL_RESULT, 0\n'
                 r'\tgoto_if eq, (\w+)\n'
             ), handle_itemspace('goto_if_no_item_space', 1, 3, 4)),
             (re.compile(
                 r'\t(set|copy)var VAR_SPECIAL_x8004, (\w+)\n'
                 r'\t(set|copy)var VAR_SPECIAL_x8005, (\w+)\n'
-                r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C\n'
-                r'\tcomparevartovalue VAR_SPECIAL_x800C, 1\n'
+                r'\thasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT\n'
+                r'\tcomparevartovalue VAR_SPECIAL_RESULT, 1\n'
                 r'\tgoto_if ne, (\w+)\n'
             ), handle_itemspace('goto_if_no_item_space_2', 1, 3, 4)),
             (re.compile(

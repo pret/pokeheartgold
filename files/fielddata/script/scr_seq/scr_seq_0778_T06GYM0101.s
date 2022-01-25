@@ -174,15 +174,15 @@ scr_seq_T06GYM0101_014:
 	goto _023A
 	.byte 0x02, 0x00
 _023A:
-	compare VAR_SPECIAL_x800C, 4
+	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _027D
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _02AA
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _028E
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _02CE
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02E5
 	end
 
@@ -265,14 +265,14 @@ scr_seq_T06GYM0101_023:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 10, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 10, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03C7
 	npc_msg msg_0485_T06GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_LT_SURGE_LT__SURGE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03DD
 	give_badge 10
 	addvar VAR_UNK_4135, 1
@@ -328,8 +328,8 @@ scr_seq_T06GYM0101_024:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 10, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 10, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0409
 	npc_msg msg_0485_T06GYM0101_00006
 	waitbutton
@@ -348,9 +348,9 @@ scr_seq_T06GYM0101_025:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 10, VAR_SPECIAL_x800C
+	check_badge 10, VAR_SPECIAL_RESULT
 	buffer_players_name 0
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _043B
 	npc_msg msg_0485_T06GYM0101_00013
 	goto _043E

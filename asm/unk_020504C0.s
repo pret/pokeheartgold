@@ -3,8 +3,8 @@
 
 	.text
 
-	thumb_func_start sub_020504C0
-sub_020504C0: ; 0x020504C0
+	thumb_func_start Task_new
+Task_new: ; 0x020504C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r0, #0x20
@@ -27,7 +27,7 @@ sub_020504C0: ; 0x020504C0
 	str r0, [r4, #0x1c]
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_020504C0
+	thumb_func_end Task_new
 
 	thumb_func_start sub_020504F0
 sub_020504F0: ; 0x020504F0
@@ -43,13 +43,13 @@ _02050502:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_020504C0
+	bl Task_new
 	str r0, [r5, #0x10]
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020504F0
 
-	thumb_func_start sub_02050510
-sub_02050510: ; 0x02050510
+	thumb_func_start NowRunTask
+NowRunTask: ; 0x02050510
 	push {r4, lr}
 	add r4, r0, #0
 	str r1, [r4, #4]
@@ -67,20 +67,20 @@ _02050524:
 	str r0, [r4, #0x14]
 _0205052E:
 	pop {r4, pc}
-	thumb_func_end sub_02050510
+	thumb_func_end NowRunTask
 
-	thumb_func_start sub_02050530
-sub_02050530: ; 0x02050530
+	thumb_func_start QueueTask
+QueueTask: ; 0x02050530
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_020504C0
+	bl Task_new
 	str r4, [r0]
 	ldr r1, [r4, #0x18]
 	str r0, [r1, #0x10]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02050530
+	thumb_func_end QueueTask
 
 	thumb_func_start sub_02050544
 sub_02050544: ; 0x02050544
@@ -185,10 +185,10 @@ _020505D6:
 sub_020505DC: ; 0x020505DC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -235,23 +235,23 @@ sub_02050624: ; 0x02050624
 	ldr r1, _02050648 ; =sub_020505DC
 	add r0, r6, #0
 	str r4, [r2, #8]
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02050648: .word sub_020505DC
 	thumb_func_end sub_02050624
 
-	thumb_func_start sub_0205064C
-sub_0205064C: ; 0x0205064C
+	thumb_func_start TaskManager_GetSys
+TaskManager_GetSys: ; 0x0205064C
 	ldr r0, [r0, #0x18]
 	bx lr
-	thumb_func_end sub_0205064C
+	thumb_func_end TaskManager_GetSys
 
-	thumb_func_start sub_02050650
-sub_02050650: ; 0x02050650
+	thumb_func_start TaskManager_GetEnv
+TaskManager_GetEnv: ; 0x02050650
 	ldr r0, [r0, #0xc]
 	bx lr
-	thumb_func_end sub_02050650
+	thumb_func_end TaskManager_GetEnv
 
 	thumb_func_start sub_02050654
 sub_02050654: ; 0x02050654

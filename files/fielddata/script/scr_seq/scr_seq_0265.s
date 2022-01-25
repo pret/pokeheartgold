@@ -14,12 +14,12 @@ scr_seq_0265_000:
 	lockall
 	faceplayer
 	buffer_day_care_mon_nicks
-	get_day_care_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_day_care_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0094
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0151
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _015E
 	compare VAR_UNK_408E, 4
 	goto_if_eq _0057
@@ -33,9 +33,9 @@ _0057:
 	buffer_players_name 0
 	gender_msgbox msg_0439_00013, msg_0439_00014
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0082
 	setflag FLAG_UNK_99E
 	npc_msg msg_0439_00015
@@ -57,13 +57,13 @@ _0094:
 	scrcmd_149 5
 	npc_msg msg_0439_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00F6
 	npc_msg msg_0439_00010
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00F6
 	touchscreen_menu_show
 	clearflag FLAG_UNK_067
@@ -84,8 +84,8 @@ _00EB:
 
 _00F6:
 	touchscreen_menu_show
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_ne _0114
 	npc_msg msg_0439_00004
 	waitbutton
@@ -125,12 +125,12 @@ _0151:
 _015E:
 	buffer_day_care_mon_nicks
 	npc_msg msg_0439_00009
-	get_day_care_compatibility VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_day_care_compatibility VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0196
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01BD
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _01E4
 	goto _020B
 	.byte 0x02, 0x00
@@ -192,17 +192,17 @@ scr_seq_0265_001:
 	lockall
 	faceplayer
 	scrcmd_113 20, 2
-	get_day_care_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_day_care_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _042E
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0455
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0620
 	npc_msg msg_0439_00021
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0290
 	touchscreen_menu_show
 	npc_msg msg_0439_00026
@@ -213,45 +213,45 @@ scr_seq_0265_001:
 	end
 
 _0290:
-	party_count_not_egg VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	party_count_not_egg VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03FB
-	pokeathlon_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	pokeathlon_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _041F
 	npc_msg msg_0439_00022
 	closemsg
 	scrcmd_114
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 _02CB:
-	scrcmd_551 VAR_SPECIAL_x800C
-	scrcmd_552 VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_551 VAR_SPECIAL_RESULT
+	scrcmd_552 VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02F4
 	choose_move_ui 0, VAR_SPECIAL_x8000, 0
-	get_move_selection 0, VAR_SPECIAL_x800C
+	get_move_selection 0, VAR_SPECIAL_RESULT
 	goto _02CB
 
 _02F4:
 	compare VAR_SPECIAL_x8000, 255
 	goto_if_eq _03C6
-	day_care_sanitize_mon VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 255
+	day_care_sanitize_mon VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _03A1
-	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03B1
-	count_alive_mons VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 0
+	count_alive_mons VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _040A
 	put_mon_in_day_care VAR_SPECIAL_x8000
 	call _038B
 	get_tail_day_care_mon_species_and_nick VAR_SPECIAL_x8001
 	setflag FLAG_UNK_068
-	get_day_care_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_day_care_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0363
 	goto _0374
 
@@ -310,8 +310,8 @@ _03CE:
 _03DB:
 	npc_msg msg_0439_00024
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0290
 	touchscreen_menu_show
 	goto _03CE
@@ -357,8 +357,8 @@ _043B:
 	return
 
 _0440:
-	buffer_day_care_mon_growth VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 0
+	buffer_day_care_mon_growth VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 0
 	call_if_ne _043B
 	return
 
@@ -368,24 +368,24 @@ _0455:
 	call _0440
 	npc_msg msg_0439_00024
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0290
 	npc_msg msg_0439_00037
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0498
 	touchscreen_menu_show
 	goto _03CE
 
 _0498:
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _05DC
-	get_day_care_state VAR_SPECIAL_x800C
+	get_day_care_state VAR_SPECIAL_RESULT
 	setvar VAR_SPECIAL_x8001, 0
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0520
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x8001
@@ -405,15 +405,15 @@ _0520:
 	buffer_day_care_withdraw_cost VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	npc_msg msg_0439_00033
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0544
 	touchscreen_menu_show
 	goto _03CE
 
 _0544:
-	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_x800C, 1
+	hasenoughmoneyvar VAR_SPECIAL_RESULT, VAR_SPECIAL_x8004
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0566
 	touchscreen_menu_show
 	npc_msg msg_0439_00027
@@ -439,8 +439,8 @@ _0566:
 	buffer_players_name 1
 	npc_msg msg_0439_00035
 	wait_cry
-	get_day_care_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_day_care_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _05BE
 	touchscreen_menu_show
 	goto _03CE
@@ -448,8 +448,8 @@ _0566:
 _05BE:
 	npc_msg msg_0439_00028
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0498
 	touchscreen_menu_show
 	goto _03CE
@@ -474,8 +474,8 @@ _0620:
 	call _0440
 	npc_msg msg_0439_00037
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0498
 	touchscreen_menu_show
 	npc_msg msg_0439_00029

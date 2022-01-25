@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D43R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d43r0101_max_ether",
+      "scr": "std_hiddenitem_d43r0101_full_heal",
       "type": 2,
       "x": 26,
       "y": 35,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d43r0101_hyper_potion",
+      "scr": "std_hiddenitem_d43r0101_max_potion",
       "type": 2,
       "x": 18,
       "y": 33,

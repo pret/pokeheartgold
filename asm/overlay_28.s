@@ -99,7 +99,7 @@ ov28_0225D5EC: ; 0x0225D5EC
 	add r0, r5, #0
 	bl sub_0201F988
 	add r4, r0, #0
-	bl ov28_0225DD3C
+	bl DowsingMchn_FreeHiddenItemLocs
 	add r0, r4, #0
 	bl ov28_0225D8D0
 	add r0, r4, #0
@@ -997,8 +997,8 @@ _0225DD20: .word 0xFFFF7FFF
 _0225DD24: .word 0x0000093D
 	thumb_func_end ov28_0225DC2C
 
-	thumb_func_start ov28_0225DD28
-ov28_0225DD28: ; 0x0225DD28
+	thumb_func_start DowsingMchn_GetHiddenItemLocs
+DowsingMchn_GetHiddenItemLocs: ; 0x0225DD28
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
@@ -1008,10 +1008,10 @@ ov28_0225DD28: ; 0x0225DD28
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	pop {r4, pc}
-	thumb_func_end ov28_0225DD28
+	thumb_func_end DowsingMchn_GetHiddenItemLocs
 
-	thumb_func_start ov28_0225DD3C
-ov28_0225DD3C: ; 0x0225DD3C
+	thumb_func_start DowsingMchn_FreeHiddenItemLocs
+DowsingMchn_FreeHiddenItemLocs: ; 0x0225DD3C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x81
@@ -1026,14 +1026,14 @@ ov28_0225DD3C: ; 0x0225DD3C
 	str r1, [r4, r0]
 _0225DD56:
 	pop {r4, pc}
-	thumb_func_end ov28_0225DD3C
+	thumb_func_end DowsingMchn_FreeHiddenItemLocs
 
 	thumb_func_start ov28_0225DD58
 ov28_0225DD58: ; 0x0225DD58
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl ov28_0225DD28
+	bl DowsingMchn_GetHiddenItemLocs
 	mov r0, #0x83
 	mov r4, #0
 	lsl r0, r0, #2
@@ -1109,7 +1109,7 @@ _0225DDF2:
 	b _0225DD6A
 _0225DDF6:
 	add r0, r5, #0
-	bl ov28_0225DD3C
+	bl DowsingMchn_FreeHiddenItemLocs
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

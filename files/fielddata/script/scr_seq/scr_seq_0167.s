@@ -28,12 +28,12 @@ scr_seq_0167_001:
 	.byte 0x02, 0x00
 _0040:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 271, 255, 0
 	menu_item_add 11, 255, 1
 	menu_item_add 12, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _01A7
 	case 1, _008C
 	goto _07D9
@@ -41,7 +41,7 @@ _0040:
 _008C:
 	npc_msg msg_0312_00011
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _00B4
 	menu_item_add 272, 255, 0
@@ -57,7 +57,7 @@ _00BC:
 	menu_item_add 276, 255, 5
 	menu_item_add 13, 255, 6
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _015A
 	case 1, _0165
 	case 2, _0170
@@ -98,12 +98,12 @@ _019C:
 	goto _008C
 	.byte 0x02, 0x00
 _01A7:
-	pokeathlon_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	pokeathlon_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_lt _07E6
 	npc_msg msg_0312_00003
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 273, 255, 0
 	menu_item_add 274, 255, 1
 	menu_item_add 277, 255, 4
@@ -111,7 +111,7 @@ _01A7:
 	menu_item_add 276, 255, 3
 	menu_item_add 13, 255, 5
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0249
 	case 1, _0257
 	case 2, _0265
@@ -145,8 +145,8 @@ _028F:
 	buffer_pokeathlon_course_name 3, VAR_SPECIAL_x8000
 	npc_msg msg_0312_00004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01A7
 	scrcmd_815 0
 	npc_msg msg_0312_00005
@@ -165,7 +165,7 @@ _028F:
 	scrcmd_604 48
 	call _04DE
 	apply_movement obj_player, _0848
-	wait 40, VAR_SPECIAL_x800C
+	wait 40, VAR_SPECIAL_RESULT
 	set_avatar_bits 4096
 	update_avatar_state
 	wait_movement
@@ -173,7 +173,7 @@ _028F:
 	buffer_players_name 0
 	npc_msg msg_0312_00008
 	wait_fanfare
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	npc_msg msg_0312_00006
 	closemsg
 	scrcmd_602 0
@@ -205,7 +205,7 @@ _028F:
 	scrcmd_604 48
 	scrcmd_307 0, 0, 22, 9, 77
 	call _045C
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _046F
 	call _0505
 	call _0540
@@ -397,32 +397,32 @@ _0630:
 	return
 
 _063E:
-	scrcmd_724 16, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 5000
+	scrcmd_724 16, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 5000
 	goto_if_lt _0655
 	clearflag FLAG_HIDE_POKEATHLON_SHOES_SIGN
 _0655:
 	return
 
 _0657:
-	scrcmd_724 12, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 50
+	scrcmd_724 12, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 50
 	goto_if_lt _066E
 	clearflag FLAG_HIDE_POKEATHLON_CLOTHES_SIGN
 _066E:
 	return
 
 _0670:
-	scrcmd_724 17, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 200
+	scrcmd_724 17, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 200
 	goto_if_lt _0687
 	clearflag FLAG_HIDE_POKEATHLON_FLAG_SIGN
 _0687:
 	return
 
 _0689:
-	scrcmd_724 10, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 100
+	scrcmd_724 10, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 100
 	goto_if_lt _06A0
 	clearflag FLAG_HIDE_POKEATHLON_POKEGEAR_SIGN
 _06A0:
@@ -466,23 +466,23 @@ _0764:
 _0766:
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _0787
-	pokeathlon 0, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 0, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _0787:
 	compare VAR_TEMP_x400A, 1
 	goto_if_ne _07A8
-	pokeathlon 0, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 0, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _07A8:
 	compare VAR_TEMP_x400A, 2
 	goto_if_ne _07C9
-	pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	goto _07D7
 
 _07C9:
-	pokeathlon 1, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 1, 1, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 _07D7:
 	return
 
@@ -615,12 +615,12 @@ scr_seq_0167_002:
 	npc_msg msg_0312_00026
 _095A:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 271, 255, 0
 	menu_item_add 11, 255, 1
 	menu_item_add 12, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0AB1
 	case 1, _09A6
 	goto _07D9
@@ -628,7 +628,7 @@ _095A:
 _09A6:
 	npc_msg msg_0312_00011
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 272, 255, 0
 	menu_item_add 342, 255, 1
 	menu_item_add 343, 255, 2
@@ -638,7 +638,7 @@ _09A6:
 	call_if_unset FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST, _0B93
 	menu_item_add 13, 255, 7
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0A64
 	case 1, _0A6F
 	case 2, _0A7A
@@ -679,12 +679,12 @@ _0AA6:
 	.byte 0x02
 	.byte 0x00
 _0AB1:
-	pokeathlon_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	pokeathlon_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_lt _07E6
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 1
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0AE1
 	goto _07DB
 	.byte 0x02
@@ -693,7 +693,7 @@ _0AE1:
 	setvar VAR_TEMP_x400A, 2
 	npc_msg msg_0312_00003
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 342, 255, 0
 	menu_item_add 343, 255, 1
 	menu_item_add 344, 255, 2
@@ -702,8 +702,8 @@ _0AE1:
 	call_if_unset FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST, _0B93
 	menu_item_add 12, 255, 6
 	menu_exec
-	copyvar VAR_TEMP_x400B, VAR_SPECIAL_x800C
-	switch VAR_SPECIAL_x800C
+	copyvar VAR_TEMP_x400B, VAR_SPECIAL_RESULT
+	switch VAR_SPECIAL_RESULT
 	case 0, _0B9D
 	case 1, _0BAB
 	case 2, _0BB9
@@ -744,37 +744,37 @@ _0BE3:
 _0BF7:
 	touchscreen_menu_hide
 	npc_msg msg_0312_00027
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 14, 255, 0
 	menu_item_add 15, 255, 1
 	menu_item_add 13, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0C48
 	case 1, _0C88
 	goto _0AE1
 	.byte 0x02, 0x00, 0x02, 0x00
 _0C48:
 	npc_msg msg_0312_00028
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0BF7
-	scrcmd_226 40, VAR_TEMP_x400B, 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_226 40, VAR_TEMP_x400B, 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0CC8
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0CD2
 	goto _0CE3
 	.byte 0x02, 0x00
 _0C88:
 	npc_msg msg_0312_00028
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0BF7
-	scrcmd_227 40, VAR_TEMP_x400B, 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_227 40, VAR_TEMP_x400B, 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0CC8
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0CD2
 	goto _0CE3
 	.byte 0x02, 0x00
@@ -818,7 +818,7 @@ _0CE3:
 	scrcmd_604 48
 	apply_movement 2, _0914
 	apply_movement obj_player, _0848
-	wait 40, VAR_SPECIAL_x800C
+	wait 40, VAR_SPECIAL_RESULT
 	set_avatar_bits 4096
 	update_avatar_state
 	wait_movement

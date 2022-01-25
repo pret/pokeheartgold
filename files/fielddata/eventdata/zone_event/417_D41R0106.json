@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D41R0106.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d41r0106_rare_candy",
+      "scr": "std_hiddenitem_d41r0106_max_potion",
       "type": 2,
       "x": 2,
       "y": 19,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d41r0106_zinc",
+      "scr": "std_hiddenitem_d41r0106_iron",
       "type": 2,
       "x": 38,
       "y": 2,

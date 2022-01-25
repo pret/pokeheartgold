@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r34_hyper_potion",
+      "scr": "std_hiddenitem_r34_rare_candy",
       "type": 2,
       "x": 363,
       "y": 436,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r34_elixir",
+      "scr": "std_hiddenitem_r34_super_potion",
       "type": 2,
       "x": 381,
       "y": 417,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r34_t25_hyper_potion",
+      "scr": "std_hiddenitem_r34_t25_super_potion",
       "type": 2,
       "x": 369,
       "y": 380,

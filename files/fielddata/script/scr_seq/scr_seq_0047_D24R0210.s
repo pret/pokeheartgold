@@ -41,28 +41,28 @@ scr_seq_D24R0210_002:
 	lockall
 	setvar VAR_UNK_40CE, 1
 	setflag FLAG_UNK_111
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _009A
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00FF
 	end
 
 _009A:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00B9
 	apply_movement obj_player, _0218
 	goto _00F7
 
 _00B9:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _00D4
 	apply_movement obj_player, _0234
 	goto _00F7
 
 _00D4:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _00EF
 	apply_movement obj_player, _0250
 	goto _00F7
@@ -74,22 +74,22 @@ _00F7:
 	goto _017E
 
 _00FF:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0126
 	apply_movement obj_player, _0218
 	apply_movement obj_partner_poke, _0224
 	goto _017C
 
 _0126:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0149
 	apply_movement obj_player, _0234
 	apply_movement obj_partner_poke, _0240
 	goto _017C
 
 _0149:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _016C
 	apply_movement obj_player, _0250
 	apply_movement obj_partner_poke, _025C
@@ -108,7 +108,7 @@ _017E:
 	goto_if_eq _01EE
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 25, 42, VAR_SPECIAL_x800C
+	warp MAP_D24R0205, 0, 25, 42, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01C0:
@@ -118,7 +118,7 @@ _01C0:
 _01C4:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 25, 42, VAR_SPECIAL_x800C
+	warp MAP_D24R0218, 0, 25, 42, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01C0
@@ -126,7 +126,7 @@ _01C4:
 _01EE:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0216, 0, 25, 42, VAR_SPECIAL_x800C
+	warp MAP_D24R0216, 0, 25, 42, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01C0

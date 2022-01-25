@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D41R0102.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d41r0102_elixir",
+      "scr": "std_hiddenitem_d41r0102_rare_candy",
       "type": 2,
       "x": 28,
       "y": 41,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d41r0102_full_restore",
+      "scr": "std_hiddenitem_d41r0102_max_ether",
       "type": 2,
       "x": 23,
       "y": 12,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d41r0102_dire_hit",
+      "scr": "std_hiddenitem_d41r0102_hyper_potion",
       "type": 2,
       "x": 20,
       "y": 40,

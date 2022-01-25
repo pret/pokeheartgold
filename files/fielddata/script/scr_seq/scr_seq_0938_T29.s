@@ -148,11 +148,11 @@ scr_seq_T29_017:
 	npc_msg msg_0626_T29_00013
 _01F2:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0216
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _0259
 	end
 
@@ -193,29 +193,29 @@ scr_seq_T29_005:
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _039B
 	goto_if_set FLAG_GOT_SHOCK_RIBBON, _03AF
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _0349
 	goto_if_set FLAG_UNK_0D5, _032B
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _02DC
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 11
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 11
 	goto _0323
 
 _02DC:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 8
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 8
 	goto_if_no_item_space ITEM_BLACK_BELT, 1, _033F
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D5
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 9
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 9
 _0323:
 	waitbutton
 	closemsg
@@ -223,8 +223,8 @@ _0323:
 	end
 
 _032B:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 10
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 10
 	waitbutton
 	closemsg
 	releaseall
@@ -237,18 +237,18 @@ _033F:
 	end
 
 _0349:
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _036C
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 11
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 11
 	goto _0323
 
 _036C:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 36
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 36
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_x800C, 38
+	msgbox_extern VAR_SPECIAL_RESULT, 38
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_DOWNCAST
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -259,16 +259,16 @@ _036C:
 	end
 
 _039B:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 37
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 37
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _03AF:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 39
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 39
 	waitbutton
 	closemsg
 	releaseall
@@ -285,8 +285,8 @@ scr_seq_T29_001:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_GYARADOS, 30, 1
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0456
 	scrcmd_683 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3
@@ -335,11 +335,11 @@ scr_seq_T29_003:
 	buffer_players_name 0
 	gender_msgbox msg_0626_T29_00003, msg_0626_T29_00004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04BB
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04FA
 _04BB:
 	buffer_players_name 0
@@ -373,11 +373,11 @@ _0509:
 	faceplayer
 	npc_msg msg_0626_T29_00008
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04BB
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04FA
 	end
 
@@ -413,7 +413,7 @@ scr_seq_T29_006:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0626_T29_00031, VAR_SPECIAL_x800C
+	trainer_tips msg_0626_T29_00031, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -428,7 +428,7 @@ _0597:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0626_T29_00032, VAR_SPECIAL_x800C
+	trainer_tips msg_0626_T29_00032, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	dummy_486
 	dummy_486
@@ -461,16 +461,16 @@ _061B:
 	wait_se SEQ_SE_DP_SELECT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x8008
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8009
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0657
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _06CA
 	end
 
 _0657:
 	callstd std_hidden_item_fanfare
-	hide_person VAR_SPECIAL_x800D
+	hide_person VAR_SPECIAL_LAST_TALKED
 	compare VAR_TEMP_x4001, 1
 	goto_if_ne _0676
 	setflag FLAG_UNK_146
@@ -485,18 +485,18 @@ _0676:
 _068D:
 	setflag FLAG_UNK_148
 _0691:
-	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg msg_0626_T29_00033
 	wait_fanfare
 	buffer_players_name 0
 	buffer_item_name 1, VAR_SPECIAL_x8004
-	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	buffer_pocket_name 2, VAR_SPECIAL_x800C
+	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	npc_msg msg_0626_T29_00034
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 1
+	setvar VAR_SPECIAL_RESULT, 1
 _06C4:
 	closemsg
 	releaseall
@@ -506,7 +506,7 @@ _06CA:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0626_T29_00035
 	waitbutton
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	goto _06C4
 	.byte 0x02, 0x00
 scr_seq_T29_018:
@@ -524,7 +524,7 @@ scr_seq_T29_007:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0626_T29_00030, VAR_SPECIAL_x800C
+	trainer_tips msg_0626_T29_00030, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x09, 0x32, 0x00, 0x35, 0x00, 0x61

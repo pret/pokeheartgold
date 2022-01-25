@@ -15,8 +15,8 @@ scr_seq_D17R0101_000:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_116, _0053
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 8
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 8
 	goto_if_eq _0048
 	goto_if_set FLAG_UNK_108, _005E
 	goto_if_set FLAG_UNK_105, _0069
@@ -83,8 +83,8 @@ _0101:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 7
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _0127
 	npc_msg msg_0057_D17R0101_00000
 	goto _012A
@@ -194,7 +194,7 @@ _028E:
 	end
 
 scr_seq_D17R0101_002:
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _02C2
 	apply_movement obj_D17R0101_bozu, _03D0

@@ -120,8 +120,8 @@ _0185:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_SQUIRTBOTTLE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01D0
 	npc_msg msg_0589_T25R0601_00001
 	goto_if_no_item_space ITEM_SQUIRTBOTTLE, 1, _01DB
@@ -151,14 +151,14 @@ _01E5:
 	npc_msg msg_0589_T25R0601_00008
 	touchscreen_menu_hide
 	scrcmd_113 20, 2
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 213, 470, 0
 	menu_item_add 214, 472, 1
 	menu_item_add 215, 471, 2
 	menu_item_add 216, 473, 3
 	menu_item_add 217, 474, 4
 	menu_exec
-	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_x8000
 	case 0, _033D
 	case 1, _0349
@@ -176,10 +176,10 @@ _0276:
 	call_if_eq _0381
 	compare VAR_SPECIAL_x8000, 3
 	call_if_eq _038B
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0334
-	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _032B
 	compare VAR_SPECIAL_x8000, 0
 	call_if_eq _0395
@@ -191,7 +191,7 @@ _0276:
 	call_if_eq _03AD
 	scrcmd_115
 	play_se SEQ_SE_DP_REGI
-	giveitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_x800C
+	giveitem VAR_SPECIAL_x8001, 1, VAR_SPECIAL_RESULT
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0589_T25R0601_00011
 	npc_msg msg_0589_T25R0601_00009
@@ -230,19 +230,19 @@ _0361:
 	goto _0276
 
 _036D:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
 	return
 
 _0377:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
 	return
 
 _0381:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
 	return
 
 _038B:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 200
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 200
 	return
 
 _0395:
@@ -267,7 +267,7 @@ scr_seq_T25R0601_001:
 	faceplayer
 	goto_if_set FLAG_UNK_15D, _03FD
 	scrcmd_688 32780, 492
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _03F2
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -282,7 +282,7 @@ _03F2:
 
 _03FD:
 	scrcmd_688 32780, 492
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _03F2
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -299,20 +299,20 @@ _0432:
 	wait_movement
 	npc_msg msg_0589_T25R0601_00005
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0460
 	apply_movement obj_T25R0601_gsgirl1, _0134
 	goto _049E
 
 _0460:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _047B
 	apply_movement obj_T25R0601_gsgirl1, _013C
 	goto _049E
 
 _047B:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0496
 	apply_movement obj_T25R0601_gsgirl1, _0144
 	goto _049E

@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_W41.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_w41_tinymushroom",
+      "scr": "std_hiddenitem_w41_max_ether",
       "type": 2,
       "x": 237,
       "y": 370,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w41_tinymushroom_2",
+      "scr": "std_hiddenitem_w41_stardust",
       "type": 2,
       "x": 203,
       "y": 336,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w41_tinymushroom_3",
+      "scr": "std_hiddenitem_w41_stardust_2",
       "type": 2,
       "x": 212,
       "y": 373,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w41_pp_up",
+      "scr": "std_hiddenitem_w41_stardust_4",
       "type": 2,
       "x": 243,
       "y": 336,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_w41_tinymushroom_4",
+      "scr": "std_hiddenitem_w41_stardust_3",
       "type": 2,
       "x": 241,
       "y": 342,

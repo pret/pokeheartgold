@@ -9,7 +9,7 @@
 #include "msgdata/msg.naix"
 
 struct ScriptBankMapping {
-    u16 mapIdLo;
+    u16 scriptIdLo;
     u16 scriptBank;
     u16 msgBank;
 };
@@ -59,57 +59,57 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
 
 #define HEAP_ID_FIELDMAP                  11
 
-void StartMapSceneScript(UnkSavStruct80 *a0, u16 a1, LocalMapObject *a2) {
-    UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
-    sub_0204005C(a0, r4, a1, a2, NULL);
-    sub_020504F0(a0, sub_0203FF44, r4);
+void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastTalked) {
+    ScriptEnvironment *r4 = ScriptEnvironment_new();
+    SetupScriptEngine(fsys, r4, script, lastTalked, NULL);
+    sub_020504F0(fsys, Task_RunScripts, r4);
 }
 
-void sub_0203FEA4(UnkSavStruct80 *a0, LocalMapObject *a1, int a2, int a3, int a4, int a5, int a6, int a7) {
-    UnkSavStruct80_Sub10_SubC *unk = sub_02050650(a0->unk10);
-    UnkSavStruct80_Sub10_SubC_Sub54 *r0 = &unk->unk_54[a7];
+void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int a5, int a6, int idx) {
+    ScriptEnvironment *env = TaskManager_GetEnv(fsys->taskman);
+    EngagedTrainer *r0 = &env->engagedTrainers[idx];
     r0->unk0 = a2;
     r0->unk4 = a3;
     r0->unk8 = a4;
     r0->unkC = a5;
     r0->unk10 = a6;
-    r0->unk14 = a1;
+    r0->objectEvent = obj;
 }
 
-void sub_0203FED4(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2, void *a3) {
-    UnkSavStruct80 *sp8 = sub_0205064C(a0);
-    UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
-    sub_0204005C(sp8, r4, a1, a2, a3);
-    sub_02050530(a0, sub_0203FF44, r4);
+void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastTalked, void *a3) {
+    FieldSystem *sp8 = TaskManager_GetSys(taskman);
+    ScriptEnvironment *r4 = ScriptEnvironment_new();
+    SetupScriptEngine(sp8, r4, script, lastTalked, a3);
+    QueueTask(taskman, Task_RunScripts, r4);
 }
 
-void StartScriptFromMenu(UnkSavStruct80_Sub10 *a0, u16 a1, LocalMapObject *a2) {
-    UnkSavStruct80 *sp8 = sub_0205064C(a0);
-    UnkSavStruct80_Sub10_SubC *r4 = sub_0204001C();
-    sub_0204005C(sp8, r4, a1, a2, NULL);
-    sub_02050510(a0, sub_0203FF44, r4);
+void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastTalked) {
+    FieldSystem *sp8 = TaskManager_GetSys(taskman);
+    ScriptEnvironment *env = ScriptEnvironment_new();
+    SetupScriptEngine(sp8, env, script, lastTalked, NULL);
+    NowRunTask(taskman, Task_RunScripts, env);
 }
 
-BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
+BOOL Task_RunScripts(TaskManager *taskman) {
     int i;
-    UnkSavStruct80 *sp0;
-    UnkSavStruct80_Sub10_SubC *r4;
+    FieldSystem *fsys;
+    ScriptEnvironment *env;
 
-    r4 = sub_02050650(unk);
-    sp0 = sub_0205064C(unk);
+    env = TaskManager_GetEnv(taskman);
+    fsys = TaskManager_GetSys(taskman);
 
-    switch (r4->unk_4) {
+    switch (env->state) {
     case 0:
-        r4->scriptContexts[0] = CreateScriptContext(sp0, r4->unk_A);
-        r4->numActiveScrCtx = 1;
-        r4->unk_44 = ScrStrBufs_new_custom(8, 64, HEAP_ID_FIELDMAP);
-        r4->unk_48 = String_ctor(1024, HEAP_ID_FIELDMAP);
-        r4->unk_4C = String_ctor(1024, HEAP_ID_FIELDMAP);
-        r4->unk_4++;
+        env->scriptContexts[0] = CreateScriptContext(fsys, env->script);
+        env->numActiveScrCtx = 1;
+        env->msgfmt = ScrStrBufs_new_custom(8, 64, HEAP_ID_FIELDMAP);
+        env->strbuf1 = String_ctor(1024, HEAP_ID_FIELDMAP);
+        env->strbuf2 = String_ctor(1024, HEAP_ID_FIELDMAP);
+        env->state++;
         // fallthrough
     case 1:
         for (i = 0; i < 3; i++) {
-            struct SCRIPTCONTEXT *ctx = r4->scriptContexts[i];
+            struct SCRIPTCONTEXT *ctx = env->scriptContexts[i];
             if (ctx == NULL) {
                 continue;
             }
@@ -117,19 +117,19 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
                 continue;
             }
             DestroyScriptContext(ctx);
-            GF_ASSERT(r4->numActiveScrCtx != 0);
-            r4->scriptContexts[i] = NULL;
-            r4->numActiveScrCtx--;
+            GF_ASSERT(env->numActiveScrCtx != 0);
+            env->scriptContexts[i] = NULL;
+            env->numActiveScrCtx--;
         }
-        if (r4->numActiveScrCtx == 0) {
-            void (*callback)(UnkSavStruct80 *a0) = r4->scrctx_end_cb;
-            ScrStrBufs_delete(r4->unk_44);
-            String_dtor(r4->unk_48);
-            String_dtor(r4->unk_4C);
-            r4->check = 0;
-            FreeToHeap(r4);
+        if (env->numActiveScrCtx == 0) {
+            void (*callback)(FieldSystem *a0) = env->scrctx_end_cb;
+            ScrStrBufs_delete(env->msgfmt);
+            String_dtor(env->strbuf1);
+            String_dtor(env->strbuf2);
+            env->check = 0;
+            FreeToHeap(env);
             if (callback != NULL) {
-                (*callback)(sp0);
+                (*callback)(fsys);
                 return FALSE;
             } else {
                 return TRUE;
@@ -140,10 +140,10 @@ BOOL sub_0203FF44(UnkSavStruct80_Sub10 *unk) {
     return FALSE;
 }
 
-UnkSavStruct80_Sub10_SubC *sub_0204001C(void) {
-    UnkSavStruct80_Sub10_SubC *ret = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(UnkSavStruct80_Sub10_SubC));
+ScriptEnvironment *ScriptEnvironment_new(void) {
+    ScriptEnvironment *ret = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(ScriptEnvironment));
     GF_ASSERT(ret != NULL);
-    memset(ret, 0, sizeof(UnkSavStruct80_Sub10_SubC));
+    memset(ret, 0, sizeof(ScriptEnvironment));
     ret->check = Unk80_10_C_MAGIC;
     return ret;
 }
@@ -154,68 +154,68 @@ void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
     FreeToHeap(ctx);
 }
 
-void sub_0204005C(UnkSavStruct80 *a0, UnkSavStruct80_Sub10_SubC *a1, u16 a2, LocalMapObject *a3, void* a4) {
-    u16 *sp0 = FieldSysGetAttrAddrInternal(a1, UNK80_10_C_SPECIAL_VAR_800D);
-    a1->unk_28 = PlayerAvatar_GetFacingDirection(a0->unk40);
-    a1->mapObjects = a3;
-    a1->unk_A = a2;
-    a1->unk_34 = a4;
-    if (a3 != NULL) {
-        *sp0 = MapObject_GetID(a3);
+void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, LocalMapObject *lastTalked, void* a4) {
+    u16 *varLastTalked = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_LAST_TALKED);
+    env->facingDirection = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
+    env->lastTalked = lastTalked;
+    env->script = script;
+    env->unk_34 = a4;
+    if (lastTalked != NULL) {
+        *varLastTalked = MapObject_GetID(lastTalked);
     }
-    if (a2 >= 8000 && a2 <= 8799) {
-        GetHiddenItemParams(a1, a2);
+    if (script >= _std_hidden_item && script <= _std_safari - 1) {
+        GetHiddenItemParams(env, script);
     }
 }
 
-SCRIPTCONTEXT *CreateScriptContext(UnkSavStruct80 *a0, u16 mapId) {
+SCRIPTCONTEXT *CreateScriptContext(FieldSystem *fsys, u16 script) {
     SCRIPTCONTEXT *ctx = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(SCRIPTCONTEXT));
     GF_ASSERT(ctx != NULL);
     InitScriptContext(ctx, gScriptCmdTable, sNumScriptCmds);
-    SetUpScriptContextForMap(a0, ctx, mapId, 0);
+    SetUpScriptContextForMap(fsys, ctx, script, 0);
     return ctx;
 }
 
-void SetUpScriptContextForMap(UnkSavStruct80 *a0, SCRIPTCONTEXT *ctx, u16 mapId, u32 unused_r3) {
+void SetUpScriptContextForMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx, u16 scriptId, u32 unused_r3) {
 #pragma unused(unused_r3)
     u16 r6;
 
-    ctx->unk80 = a0;
-    r6 = LoadScriptsAndMessagesByMapId(a0, ctx, mapId);
+    ctx->fsys = fsys;
+    r6 = LoadScriptsAndMessagesByMapId(fsys, ctx, scriptId);
     SetupBytecodeScript(ctx, ctx->mapScripts);
     ScriptRunByIndex(ctx, r6);
-    sub_0203FD68(ctx, a0->unk10);
+    sub_0203FD68(ctx, fsys->taskman);
 }
 
-u16 LoadScriptsAndMessagesByMapId(UnkSavStruct80 *fsys, SCRIPTCONTEXT *ctx, u16 mapId) {
-    const struct ScriptBankMapping *r6 = sScriptBankMapping;
+u16 LoadScriptsAndMessagesByMapId(FieldSystem *fsys, SCRIPTCONTEXT *ctx, u16 scriptId) {
+    const struct ScriptBankMapping *mapping_p = sScriptBankMapping;
     int i;
     for (i = 0; i < NELEMS(sScriptBankMapping); i++) {
-        if (mapId >= r6[i].mapIdLo) {
-            LoadScriptsAndMessagesParameterized(fsys, ctx, r6[i].scriptBank, r6[i].msgBank);
-            return mapId - r6[i].mapIdLo;
+        if (scriptId >= mapping_p[i].scriptIdLo) {
+            LoadScriptsAndMessagesParameterized(fsys, ctx, mapping_p[i].scriptBank, mapping_p[i].msgBank);
+            return scriptId - mapping_p[i].scriptIdLo;
         }
     }
-    if (mapId >= 1) {
+    if (scriptId >= 1) {
         LoadScriptsAndMessagesForCurrentMap(fsys, ctx);
-        return mapId - 1;
+        return scriptId - 1;
     } else {
         LoadScriptsAndMessagesParameterized(fsys, ctx, NARC_scr_seq_scr_seq_0140_bin, NARC_msg_msg_0184_bin);
         return 0;
     }
 }
 
-void LoadScriptsAndMessagesParameterized(UnkSavStruct80 *fsys, SCRIPTCONTEXT *ctx, int scriptBank, u32 msgBank) {
+void LoadScriptsAndMessagesParameterized(FieldSystem *fsys, SCRIPTCONTEXT *ctx, int scriptBank, u32 msgBank) {
     ctx->mapScripts = AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, scriptBank, HEAP_ID_FIELDMAP);
     ctx->msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELDMAP);
 }
 
-void LoadScriptsAndMessagesForCurrentMap(UnkSavStruct80 *fsys, SCRIPTCONTEXT *ctx) {
-    ctx->mapScripts = LoadScriptsForCurrentMap(fsys->unk20->unk0);
-    ctx->msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fsys->unk20->unk0), HEAP_ID_FIELDMAP);
+void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx) {
+    ctx->mapScripts = LoadScriptsForCurrentMap(fsys->location->mapId);
+    ctx->msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fsys->location->mapId), HEAP_ID_FIELDMAP);
 }
 
-void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_C_Field field) {
+void *FieldSysGetAttrAddrInternal(ScriptEnvironment *unk, enum ScriptEnvField field) {
     switch (field) {
     case UNK80_10_C_10:
         return &unk->unk_10;
@@ -233,12 +233,12 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
         return &unk->unk_8;
     case UNK80_10_C_NUM_ACTIVE_SCRCTX:
         return &unk->numActiveScrCtx;
-    case UNK80_10_C_0A:
-        return &unk->unk_A;
-    case UNK80_10_C_28:
-        return &unk->unk_28;
-    case UNK80_10_C_MAP_OBJECTS:
-        return &unk->mapObjects;
+    case UNK80_10_C_SCRIPT:
+        return &unk->script;
+    case UNK80_10_C_FACING_DIRECTION:
+        return &unk->facingDirection;
+    case UNK80_10_C_LAST_TALKED:
+        return &unk->lastTalked;
     case UNK80_10_C_30:
         return &unk->unk_30;
     case UNK80_10_C_34:
@@ -248,11 +248,11 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
     case UNK80_10_C_SCRCTX_2:
         return &unk->scriptContexts[field - UNK80_10_C_SCRCTX_0];
     case UNK80_10_C_MSGFMT:
-        return &unk->unk_44;
+        return &unk->msgfmt;
     case UNK80_10_C_STRBUF1:
-        return &unk->unk_48;
+        return &unk->strbuf1;
     case UNK80_10_C_STRBUF2:
-        return &unk->unk_4C;
+        return &unk->strbuf2;
     case UNK80_10_C_50:
         return &unk->unk_50;
     case UNK80_10_C_AC:
@@ -266,33 +266,33 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
     case UNK80_10_C_0C:
         return &unk->unk_C;
     case UNK80_10_C_54_0_00:
-        return &unk->unk_54[0].unk0;
+        return &unk->engagedTrainers[0].unk0;
     case UNK80_10_C_54_0_04:
-        return &unk->unk_54[0].unk4;
+        return &unk->engagedTrainers[0].unk4;
     case UNK80_10_C_54_0_08:
-        return &unk->unk_54[0].unk8;
+        return &unk->engagedTrainers[0].unk8;
     case UNK80_10_C_54_0_0C:
-        return &unk->unk_54[0].unkC;
+        return &unk->engagedTrainers[0].unkC;
     case UNK80_10_C_54_0_10:
-        return &unk->unk_54[0].unk10;
+        return &unk->engagedTrainers[0].unk10;
     case UNK80_10_C_54_0_14:
-        return &unk->unk_54[0].unk14;
+        return &unk->engagedTrainers[0].objectEvent;
     case UNK80_10_C_54_0_18:
-        return &unk->unk_54[0].unk18;
+        return &unk->engagedTrainers[0].unk18;
     case UNK80_10_C_54_1_00:
-        return &unk->unk_54[1].unk0;
+        return &unk->engagedTrainers[1].unk0;
     case UNK80_10_C_54_1_04:
-        return &unk->unk_54[1].unk4;
+        return &unk->engagedTrainers[1].unk4;
     case UNK80_10_C_54_1_08:
-        return &unk->unk_54[1].unk8;
+        return &unk->engagedTrainers[1].unk8;
     case UNK80_10_C_54_1_0C:
-        return &unk->unk_54[1].unkC;
+        return &unk->engagedTrainers[1].unkC;
     case UNK80_10_C_54_1_10:
-        return &unk->unk_54[1].unk10;
+        return &unk->engagedTrainers[1].unk10;
     case UNK80_10_C_54_1_14:
-        return &unk->unk_54[1].unk14;
+        return &unk->engagedTrainers[1].objectEvent;
     case UNK80_10_C_54_1_18:
-        return &unk->unk_54[1].unk18;
+        return &unk->engagedTrainers[1].unk18;
     case UNK80_10_C_BC:
         return &unk->unk_BC;
     case UNK80_10_C_CC:
@@ -311,8 +311,8 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
     case UNK80_10_C_SPECIAL_VAR_8009:
     case UNK80_10_C_SPECIAL_VAR_800A:
     case UNK80_10_C_SPECIAL_VAR_800B:
-    case UNK80_10_C_SPECIAL_VAR_800C:
-    case UNK80_10_C_SPECIAL_VAR_800D:
+    case UNK80_10_C_SPECIAL_VAR_RESULT:
+    case UNK80_10_C_SPECIAL_VAR_LAST_TALKED:
         return &unk->specialVars[field - UNK80_10_C_SPECIAL_VAR_8000];
     default:
         GF_ASSERT(0);
@@ -320,15 +320,15 @@ void *FieldSysGetAttrAddrInternal(UnkSavStruct80_Sub10_SubC *unk, enum Unk80_10_
     }
 }
 
-void* FieldSysGetAttrAddr(UnkSavStruct80 *fsys, enum Unk80_10_C_Field field) {
-    UnkSavStruct80_Sub10_SubC *unk = sub_02050650(fsys->unk10);
+void* FieldSysGetAttrAddr(FieldSystem *fsys, enum ScriptEnvField field) {
+    ScriptEnvironment *unk = TaskManager_GetEnv(fsys->taskman);
     GF_ASSERT(unk != NULL);
     GF_ASSERT(unk->check == Unk80_10_C_MAGIC);
     return FieldSysGetAttrAddrInternal(unk, field);
 }
 
-void sub_0204031C(UnkSavStruct80 *fsys) {
-    UnkSavStruct80_Sub10_SubC *unk = sub_02050650(fsys->unk10);
+void sub_0204031C(FieldSystem *fsys) {
+    ScriptEnvironment *unk = TaskManager_GetEnv(fsys->taskman);
     if (sub_0203BC10(fsys) == TRUE) {
         unk->scrctx_end_cb = sub_0203BD64;
     }
@@ -347,7 +347,7 @@ u32 GetCurrentMapMessageBank(u32 mapno) {
     return MapHeader_GetMsgBank(mapno);
 }
 
-u16 *GetVarPointer(UnkSavStruct80 *fsys, u16 varIdx) {
+u16 *GetVarPointer(FieldSystem *fsys, u16 varIdx) {
     SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
     if (varIdx < VAR_BASE) {
         return NULL;
@@ -358,7 +358,7 @@ u16 *GetVarPointer(UnkSavStruct80 *fsys, u16 varIdx) {
     }
 }
 
-u16 VarGet(UnkSavStruct80 *fsys, u16 varIdx) {
+u16 VarGet(FieldSystem *fsys, u16 varIdx) {
     u16 *ptr = GetVarPointer(fsys, varIdx);
     if (ptr != NULL) {
         varIdx = *ptr;
@@ -366,7 +366,7 @@ u16 VarGet(UnkSavStruct80 *fsys, u16 varIdx) {
     return varIdx;
 }
 
-BOOL VarSet(UnkSavStruct80 *fsys, u16 varIdx, u16 value) {
+BOOL VarSet(FieldSystem *fsys, u16 varIdx, u16 value) {
     u16 *ptr = GetVarPointer(fsys, varIdx);
     if (ptr == NULL) {
         return FALSE;
@@ -375,24 +375,24 @@ BOOL VarSet(UnkSavStruct80 *fsys, u16 varIdx, u16 value) {
     return TRUE;
 }
 
-u16 VarGetObjectEventGraphicsId(UnkSavStruct80 *fsys, u16 varobjId) {
+u16 VarGetObjectEventGraphicsId(FieldSystem *fsys, u16 varobjId) {
     GF_ASSERT(varobjId < NUM_OBJ_GFX_VARS);
     return VarGet(fsys, VAR_OBJ_GFX_BASE + varobjId);
 }
 
-BOOL FlagGet(UnkSavStruct80 *fsys, u16 flagId) {
+BOOL FlagGet(FieldSystem *fsys, u16 flagId) {
     return CheckFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
 }
 
-void FlagSet(UnkSavStruct80 *fsys, u16 flagId) {
+void FlagSet(FieldSystem *fsys, u16 flagId) {
     return SetFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
 }
 
-void FlagClear(UnkSavStruct80 *fsys, u16 flagId) {
+void FlagClear(FieldSystem *fsys, u16 flagId) {
     return ClearFlagInArray(SavArray_Flags_get(fsys->savedata), flagId);
 }
 
-void ClearTempFieldEventData(UnkSavStruct80 *fsys) {
+void ClearTempFieldEventData(FieldSystem *fsys) {
     u8 *flags;
     u16 *vars;
 
@@ -403,7 +403,7 @@ void ClearTempFieldEventData(UnkSavStruct80 *fsys) {
     memset(vars, 0, NUM_TEMP_VARS * 2);
 }
 
-void ClearDailyFlags(UnkSavStruct80 *fsys) {
+void ClearDailyFlags(FieldSystem *fsys) {
     u8 *flags;
 
     SCRIPT_STATE *state = SavArray_Flags_get(fsys->savedata);
@@ -411,18 +411,18 @@ void ClearDailyFlags(UnkSavStruct80 *fsys) {
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }
 
-void sub_02040490(UnkSavStruct80 *fsys, u16 a1, u16 a2, u16 a3, u16 a4) {
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000) = a1;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8001) = a2;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8002) = a3;
-    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8003) = a4;
+void FieldMoveArgsSet(FieldSystem *fsys, u16 v8000, u16 v8001, u16 v8002, u16 v8003) {
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8000) = v8000;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8001) = v8001;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8002) = v8002;
+    *(u16 *)FieldSysGetAttrAddr(fsys, UNK80_10_C_SPECIAL_VAR_8003) = v8003;
 }
 
-u16 ScriptNumToTrainerNum(u16 a0) {
-    if (a0 < _std_npc_trainer_2) {
-        return a0 - _std_npc_trainer + FIRST_TRAINER_INDEX;
+u16 ScriptNumToTrainerNum(u16 script) {
+    if (script < _std_npc_trainer_2) {
+        return script - _std_npc_trainer + FIRST_TRAINER_INDEX;
     } else {
-        return a0 - _std_npc_trainer_2 + FIRST_TRAINER_INDEX;
+        return script - _std_npc_trainer_2 + FIRST_TRAINER_INDEX;
     }
 }
 
@@ -449,33 +449,33 @@ void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
     ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
-u16 HiddenItemScriptNoToFlagId(u16 a0) {
-    return a0 - _std_hidden_item + HIDDEN_ITEMS_FLAG_BASE;
+u16 HiddenItemScriptNoToFlagId(u16 script) {
+    return script - _std_hidden_item + HIDDEN_ITEMS_FLAG_BASE;
 }
 
-u16 HiddenItemScriptNoToHiddenItemIdx(u16 a0) {
-    return a0 - _std_hidden_item;
+u16 HiddenItemScriptNoToHiddenItemIdx(u16 script) {
+    return script - _std_hidden_item;
 }
 
-u8 sub_02040578(u16 a0) {
-    const struct HiddenItemData *r4 = _020FA558;
+u8 sub_02040578(u16 script) {
+    const struct HiddenItemData *table = sHiddenItemParam;
     int i;
-    u16 r0 = HiddenItemScriptNoToHiddenItemIdx(a0);
+    u16 hiddenItemIdx = HiddenItemScriptNoToHiddenItemIdx(script);
 
-    for (i = 0; i < NELEMS(_020FA558); i++) {
-        if (r0 == r4[i].index) {
+    for (i = 0; i < NELEMS(sHiddenItemParam); i++) {
+        if (hiddenItemIdx == table[i].index) {
             break;
         }
     }
-    if (i >= NELEMS(_020FA558)) {
+    if (i >= NELEMS(sHiddenItemParam)) {
         GF_ASSERT(0);
         return 0;
     }
 
-    return r4[i].unk3;
+    return table[i].unk3;
 }
 
-BOOL GetHiddenItemParams(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
+BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
     int i;
     u16 idx;
     const struct HiddenItemData *table;
@@ -483,29 +483,29 @@ BOOL GetHiddenItemParams(UnkSavStruct80_Sub10_SubC *a0, u16 a1) {
     u16 *var_8001;
     u16 *var_8002;
 
-    var_8000 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8000);
-    var_8001 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8001);
-    var_8002 = FieldSysGetAttrAddrInternal(a0, UNK80_10_C_SPECIAL_VAR_8002);
-    table = _020FA558;
-    idx = HiddenItemScriptNoToHiddenItemIdx(a1);
+    var_8000 = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_8000);
+    var_8001 = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_8001);
+    var_8002 = FieldSysGetAttrAddrInternal(env, UNK80_10_C_SPECIAL_VAR_8002);
+    table = sHiddenItemParam;
+    idx = HiddenItemScriptNoToHiddenItemIdx(script);
 
-    for (i = 0; i < NELEMS(_020FA558); i++) {
+    for (i = 0; i < NELEMS(sHiddenItemParam); i++) {
         if (idx == table[i].index) {
             break;
         }
     }
-    if (i >= NELEMS(_020FA558)) {
+    if (i >= NELEMS(sHiddenItemParam)) {
         GF_ASSERT(0);
         return FALSE;
     }
 
     *var_8000 = table[i].itemId;
     *var_8001 = table[i].quantity;
-    *var_8002 = HiddenItemScriptNoToFlagId(a1);
+    *var_8002 = HiddenItemScriptNoToFlagId(script);
     return TRUE;
 }
 
-HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID heapId) {
+HiddenItemResponse* AllocAndFetchNearbyHiddenItems(FieldSystem *fsys, HeapID heapId) {
     HiddenItemResponse *ret;
     const BG_EVENT *bgEvents;
     int i;
@@ -535,8 +535,8 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID 
         ret[0].y = -1;
         return ret;
     }
-    x = GetPlayerXCoord(fsys->unk40);
-    y = GetPlayerYCoord(fsys->unk40);
+    x = GetPlayerXCoord(fsys->playerAvatar);
+    y = GetPlayerYCoord(fsys->playerAvatar);
     left = x - 17;
     right = x + 17;
     top = y - 17;
@@ -548,6 +548,7 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID 
         top = 0;
     }
     // UB: Out-of-array access
+    // To fix, subtract 1 from num_bgs in the condition clause
     for (i = 0; i < num_bgs; i++) {
         if (bgEvents[i].type == 2
         && !FlagGet(fsys, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
@@ -569,19 +570,19 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(UnkSavStruct80 *fsys, HeapID 
     return ret;
 }
 
-void RunPokemonCenterScriptsInNewContext(UnkSavStruct80 *fsys) {
-    StartMapLoadScript(fsys, 9600);
+void RunInitScript(FieldSystem *fsys) {
+    StartMapLoadScript(fsys, _std_init);
 }
 
-void StartMapLoadScript(UnkSavStruct80 *fsys, u16 mapno) {
-    SCRIPTCONTEXT *ctx = CreateScriptContext(fsys, mapno);
+void StartMapLoadScript(FieldSystem *fsys, u16 script) {
+    SCRIPTCONTEXT *ctx = CreateScriptContext(fsys, script);
     while (RunScriptCommand(ctx) == TRUE) {}
     DestroyScriptContext(ctx);
 }
 
-BOOL TryStartMapScriptByType(UnkSavStruct80 *fsys, u8 type) {
+BOOL TryStartMapScriptByType(FieldSystem *fsys, u8 type) {
     u8 *header;
-    u16 r1;
+    u16 script;
     if (fsys->unkAC != 0) {
         return FALSE;
     }
@@ -589,17 +590,17 @@ BOOL TryStartMapScriptByType(UnkSavStruct80 *fsys, u8 type) {
     if (header == NULL) {
         return FALSE;
     }
-    r1 = (type == 1) ? GetMapSceneScriptId(fsys, header, type) : GetMapLoadScriptId(header, type);
-    if (r1 == 0xFFFF) {
+    script = (type == 1) ? GetMapSceneScriptId(fsys, header, type) : GetMapLoadScriptId(header, type);
+    if (script == 0xFFFF) {
         return FALSE;
     }
-    (type == 1) ? StartMapSceneScript(fsys, r1, NULL) : StartMapLoadScript(fsys, r1);
+    (type == 1) ? StartMapSceneScript(fsys, script, NULL) : StartMapLoadScript(fsys, script);
     return TRUE;
 }
 
-BOOL sub_020407AC(UnkSavStruct80 *fsys) {
+BOOL MapSceneScriptCheck(FieldSystem *fsys) {
     u8 *header;
-    u16 r1;
+    u16 script;
     if (fsys->unkAC != 0) {
         return FALSE;
     }
@@ -607,50 +608,50 @@ BOOL sub_020407AC(UnkSavStruct80 *fsys) {
     if (header == NULL) {
         return FALSE;
     }
-    r1 = GetMapSceneScriptId(fsys, header, 1);
-    return r1 != 0xFFFF;
+    script = GetMapSceneScriptId(fsys, header, 1);
+    return script != 0xFFFF;
 }
 
-u16 GetMapLoadScriptId(u8 *a0, u8 a1) {
+u16 GetMapLoadScriptId(u8 *header, u8 type) {
     while (1) {
-        if (a0[0] == 0) {
+        if (header[0] == 0) {
             return 0xFFFF;
-        } else if (a0[0] == a1) {
-            return a0[1] + (a0[2] << 8);
+        } else if (header[0] == type) {
+            return header[1] + (header[2] << 8);
         } else {
-            a0 += 5;
+            header += 5;
         }
     }
 }
 
-u16 GetMapSceneScriptId(UnkSavStruct80 *a0, u8 *a1, u8 a2) {
-    u32 r1;
+u16 GetMapSceneScriptId(FieldSystem *fsys, u8 *header, u8 type) {
+    u32 ofs;
     while (1) {
-        if (a1[0] == 0) {
+        if (header[0] == 0) {
             return 0xFFFF;
-        } else if (a1[0] == a2) {
-            r1 = a1[1] + (a1[2] << 8) + (a1[3] << 16) + (a1[4] << 24);
-            a1 += 5;
+        } else if (header[0] == type) {
+            ofs = header[1] + (header[2] << 8) + (header[3] << 16) + (header[4] << 24);
+            header += 5;
             break;
         } else {
-            a1 += 5;
+            header += 5;
         }
     }
-    if (r1 == 0) {
+    if (ofs == 0) {
         return 0xFFFF;
     }
-    a1 += r1;
+    header += ofs;
     while (1) {
         u16 var1;
         u16 var2;
-        var1 = a1[0] + (a1[1] << 8);
+        var1 = header[0] + (header[1] << 8);
         if (var1 == 0) {
             return 0xFFFF;
         }
-        var2 = a1[2] + (a1[3] << 8);
-        if (VarGet(a0, var1) == VarGet(a0, var2)) {
-            return a1[4] + (a1[5] << 8);
+        var2 = header[2] + (header[3] << 8);
+        if (VarGet(fsys, var1) == VarGet(fsys, var2)) {
+            return header[4] + (header[5] << 8);
         }
-        a1 += 6;
+        header += 6;
     }
 }

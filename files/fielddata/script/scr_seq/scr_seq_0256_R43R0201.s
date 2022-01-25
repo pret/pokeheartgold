@@ -14,8 +14,8 @@
 scr_seq_R43R0201_001:
 	scrcmd_081 SEQ_GS_R_7_42
 	play_bgm SEQ_GS_EYE_ROCKET
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0037
 	goto _0095
 	.byte 0x16, 0x00, 0x2f, 0x00, 0x00, 0x00
@@ -24,8 +24,8 @@ _0037:
 	apply_movement obj_R43R0201_rocketm_2, _0128
 	wait_movement
 	npc_msg msg_0403_R43R0201_00000
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 1000
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 1000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _006C
 	npc_msg msg_0403_R43R0201_00001
 	closemsg
@@ -48,8 +48,8 @@ _0095:
 	apply_movement obj_R43R0201_rocketm_2, _0180
 	wait_movement
 	npc_msg msg_0403_R43R0201_00000
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 1000
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 1000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00CA
 	npc_msg msg_0403_R43R0201_00001
 	closemsg

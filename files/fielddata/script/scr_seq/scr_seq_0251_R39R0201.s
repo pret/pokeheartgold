@@ -84,33 +84,33 @@ _00FA:
 	setvar VAR_SPECIAL_x8004, 29
 	setvar VAR_SPECIAL_x8005, 34
 	setvar VAR_SPECIAL_x8006, 39
-	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 99
+	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 99
 	goto_if_eq _020C
-	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 99
+	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 99
 	goto_if_eq _020C
-	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 99
+	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 99
 	goto_if_eq _020C
 	setvar VAR_SPECIAL_x8000, 3
 	setvar VAR_SPECIAL_x8001, 3
 	setvar VAR_SPECIAL_x8002, 3
-	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 96
+	get_seal_quantity VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 96
 	goto_if_le _01C2
-	subvar VAR_SPECIAL_x800C, 96
-	subvar VAR_SPECIAL_x8000, VAR_SPECIAL_x800C
-	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 96
+	subvar VAR_SPECIAL_RESULT, 96
+	subvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	get_seal_quantity VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 96
 	goto_if_le _01C2
-	subvar VAR_SPECIAL_x800C, 96
-	subvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 96
+	subvar VAR_SPECIAL_RESULT, 96
+	subvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	get_seal_quantity VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 96
 	goto_if_le _01C2
-	subvar VAR_SPECIAL_x800C, 96
-	subvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
+	subvar VAR_SPECIAL_RESULT, 96
+	subvar VAR_SPECIAL_x8002, VAR_SPECIAL_RESULT
 _01C2:
 	give_or_take_seal VAR_SPECIAL_x8004, VAR_SPECIAL_x8000
 	give_or_take_seal VAR_SPECIAL_x8005, VAR_SPECIAL_x8001
@@ -164,21 +164,21 @@ _0260:
 	scrcmd_049
 	npc_msg msg_0398_R39R0201_00013
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _028C
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0378
 	end
 
 _028C:
 	setvar VAR_SPECIAL_x8004, 155
 	setvar VAR_SPECIAL_x8005, 1
-	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _036A
-	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	takeitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	npc_msg msg_0398_R39R0201_00014
 	waitbutton

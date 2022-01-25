@@ -40,13 +40,13 @@ _006A:
 _0071:
 	npc_msg msg_0139_D49R0102_00002
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 272, 255, 0
 	menu_item_add 296, 255, 1
 	menu_item_add 297, 255, 2
 	menu_item_add 12, 255, 3
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _03C5
 	case 1, _00D5
 	case 2, _03D0
@@ -55,7 +55,7 @@ _0071:
 _00D5:
 	npc_msg msg_0139_D49R0102_00003
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 308, 255, 0
 	menu_item_add 309, 255, 1
 	menu_item_add 310, 255, 2
@@ -63,7 +63,7 @@ _00D5:
 	menu_item_add 312, 255, 4
 	menu_item_add 13, 255, 5
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 5, _0071
 	npc_msg msg_0139_D49R0102_00004
 	case 0, _0166
@@ -75,7 +75,7 @@ _00D5:
 _0166:
 	setvar VAR_TEMP_x4007, 0
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 298, 255, 0
 	menu_item_add 299, 255, 1
 	menu_item_add 304, 255, 6
@@ -86,7 +86,7 @@ _0166:
 _01A0:
 	setvar VAR_TEMP_x4007, 1
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 301, 255, 3
 	menu_item_add 300, 255, 2
 	menu_item_add 307, 255, 9
@@ -97,7 +97,7 @@ _01A0:
 _01DA:
 	setvar VAR_TEMP_x4007, 2
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 306, 255, 8
 	menu_item_add 307, 255, 9
 	menu_item_add 299, 255, 1
@@ -108,7 +108,7 @@ _01DA:
 _0214:
 	setvar VAR_TEMP_x4007, 3
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 305, 255, 7
 	menu_item_add 304, 255, 6
 	menu_item_add 301, 255, 3
@@ -119,7 +119,7 @@ _0214:
 _024E:
 	setvar VAR_TEMP_x4007, 4
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 303, 255, 5
 	menu_item_add 302, 255, 4
 	menu_item_add 298, 255, 0
@@ -128,7 +128,7 @@ _024E:
 	goto _0288
 	.byte 0x02, 0x00
 _0288:
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0318
 	case 1, _0323
 	case 2, _032E

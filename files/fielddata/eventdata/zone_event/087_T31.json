@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_T31.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_t31_x_sp__def",
+      "scr": "std_hiddenitem_t31_full_restore",
       "type": 2,
       "x": 827,
       "y": 263,

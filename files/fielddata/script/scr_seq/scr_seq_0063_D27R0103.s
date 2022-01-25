@@ -12,7 +12,7 @@
 scr_seq_D27R0103_000:
 	play_se SEQ_SE_GS_RAKKA01
 	apply_movement obj_player, _0038
-	wait 1, VAR_SPECIAL_x800C
+	wait 1, VAR_SPECIAL_RESULT
 	scrcmd_374 obj_player
 	wait_movement
 	scrcmd_561 0, 1, 1, 8

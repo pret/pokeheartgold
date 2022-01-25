@@ -21,8 +21,8 @@ scr_seq_R10R0202_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	hasitem ITEM_MACHINE_PART, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_MACHINE_PART, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _0071
 	goto_if_set FLAG_UNK_120, _005C
 	setflag FLAG_UNK_120
@@ -39,7 +39,7 @@ _005C:
 _0071:
 	npc_msg msg_0345_R10R0202_00014
 	closemsg
-	takeitem ITEM_MACHINE_PART, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_MACHINE_PART, 1, VAR_SPECIAL_RESULT
 	apply_movement obj_R10R0202_gsbigman, _0108
 	wait_movement
 	wait_se SEQ_SE_GS_W012
@@ -175,25 +175,25 @@ scr_seq_R10R0202_005:
 	goto_if_set FLAG_UNK_121, _02D8
 	npc_msg msg_0345_R10R0202_00008
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02CD
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _02CD
 	scrcmd_470 8
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _02C0
 	scrcmd_473 32772
 	scrcmd_474

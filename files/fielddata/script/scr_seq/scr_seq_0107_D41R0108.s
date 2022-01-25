@@ -15,11 +15,11 @@ scr_seq_D41R0108_000:
 	npc_msg msg_0126_D41R0108_00000
 	closemsg
 	trainer_battle TRAINER_PKMN_TRAINER_RED_RED, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0098
 	npc_msg msg_0126_D41R0108_00001
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
@@ -31,7 +31,7 @@ scr_seq_D41R0108_000:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	call _00B2
-	wait 60, VAR_SPECIAL_x800C
+	wait 60, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	hof_credits 1
@@ -57,8 +57,8 @@ _00B2:
 	get_party_count VAR_SPECIAL_x8004
 	setvar VAR_SPECIAL_x8005, 0
 _00BC:
-	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00D5
 	give_ribbon VAR_SPECIAL_x8005, RIBBON_LEGEND
 _00D5:

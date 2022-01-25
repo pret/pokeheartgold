@@ -48,14 +48,14 @@ _007C:
 	buffer_players_name 0
 	npc_msg msg_0128_D43R0103_00000
 	closemsg
-	get_starter_choice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 152
+	get_starter_choice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 152
 	goto_if_ne _00C1
 	trainer_battle TRAINER_RIVAL_SILVER_9, 0, 0, 0
 	goto _00E4
 
 _00C1:
-	compare VAR_SPECIAL_x800C, 155
+	compare VAR_SPECIAL_RESULT, 155
 	goto_if_ne _00DC
 	trainer_battle TRAINER_RIVAL_SILVER_13, 0, 0, 0
 	goto _00E4
@@ -63,8 +63,8 @@ _00C1:
 _00DC:
 	trainer_battle TRAINER_RIVAL_SILVER_5, 0, 0, 0
 _00E4:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _015A
 	callstd std_play_rival_outro_music
 	npc_msg msg_0128_D43R0103_00001
@@ -192,22 +192,22 @@ _0278:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40CA, 1
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _02A9
 	apply_movement obj_player, _0330
 	apply_movement obj_partner_poke, _033C
 	goto _02FF
 
 _02A9:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _02CC
 	apply_movement obj_player, _034C
 	apply_movement obj_partner_poke, _0358
 	goto _02FF
 
 _02CC:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _02EF
 	apply_movement obj_player, _0384
 	apply_movement obj_partner_poke, _0390
@@ -221,7 +221,7 @@ _02FF:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D43R0102, 0, 16384, 16385, VAR_SPECIAL_x800C
+	warp MAP_D43R0102, 0, 16384, 16385, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

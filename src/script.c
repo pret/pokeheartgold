@@ -19,7 +19,7 @@ void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_
         ctx->stack[i] = NULL;
     }
 
-    ctx->unk74 = NULL;
+    ctx->taskman = NULL;
 }
 
 BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr) {
@@ -38,8 +38,8 @@ void StopScript(SCRIPTCONTEXT* ctx) {
     ctx->script_ptr = NULL;
 }
 
-void sub_0203FD68(SCRIPTCONTEXT* ctx, UnkSavStruct80_Sub10 *unk) {
-    ctx->unk74 = unk;
+void sub_0203FD68(SCRIPTCONTEXT* ctx, TaskManager *unk) {
+    ctx->taskman = unk;
 }
 
 BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {

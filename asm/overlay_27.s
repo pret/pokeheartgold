@@ -1152,7 +1152,7 @@ ov27_0225A89C: ; 0x0225A89C
 	cmp r0, #0
 	bne _0225A8E0
 	add r0, r4, #0
-	bl sub_020407AC
+	bl MapSceneScriptCheck
 	cmp r0, #0
 	bne _0225A8E0
 	bl sub_02058AA0

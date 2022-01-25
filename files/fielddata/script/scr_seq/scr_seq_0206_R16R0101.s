@@ -15,16 +15,16 @@ scr_seq_R16R0101_001:
 	faceplayer
 	goto_if_set FLAG_UNK_ABA, _0068
 	scrcmd_540 32780
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _007E
 	npc_msg msg_0355_R16R0101_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0073
 	scrcmd_538 32780, 0
-	compare VAR_SPECIAL_x800C, 65535
+	compare VAR_SPECIAL_RESULT, 65535
 	goto_if_eq _007E
 	setflag FLAG_UNK_ABA
 	npc_msg msg_0355_R16R0101_00002

@@ -50,10 +50,10 @@ _0206D4E0: .word 0x00000905
 sub_0206D4E4: ; 0x0206D4E4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02050654
@@ -914,7 +914,7 @@ sub_0206DB94: ; 0x0206DB94
 	add r0, r6, #0
 	add r2, r4, #0
 	str r5, [r4, #4]
-	bl sub_02050530
+	bl QueueTask
 	pop {r4, r5, r6, pc}
 	nop
 _0206DBBC: .word sub_0206DBC0
@@ -924,10 +924,10 @@ _0206DBBC: .word sub_0206DBC0
 sub_0206DBC0: ; 0x0206DBC0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
 	bl FieldSys_BugContest_get

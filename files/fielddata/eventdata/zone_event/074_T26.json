@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_t26_heart_scale",
+      "scr": "std_hiddenitem_t26_rare_candy",
       "type": 2,
       "x": 309,
       "y": 256,
@@ -42,7 +42,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_r39_t26_ultra_ball",
+      "scr": "std_hiddenitem_r39_t26_full_heal",
       "type": 2,
       "x": 285,
       "y": 231,

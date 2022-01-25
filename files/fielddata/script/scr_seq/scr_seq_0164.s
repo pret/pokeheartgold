@@ -33,12 +33,12 @@ scr_seq_0164_000:
 _005C:
 	npc_msg msg_0267_00002
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 156, 255, 0
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _00A5
 	case 1, _00EE
 	goto _00EE
@@ -46,12 +46,12 @@ _005C:
 _00A5:
 	npc_msg msg_0267_00003
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 158, 255, 0
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _00A5
 	case 1, _00EE
 	goto _00EE
@@ -79,9 +79,9 @@ scr_seq_0164_001:
 	faceplayer
 	npc_msg msg_0267_00005
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _014F
 	goto _0144
 	.byte 0x02, 0x00
@@ -95,12 +95,12 @@ _0144:
 _014F:
 	npc_msg msg_0267_00006
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 156, 255, 0
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0198
 	case 1, _0144
 	goto _0144
@@ -108,12 +108,12 @@ _014F:
 _0198:
 	npc_msg msg_0267_00003
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 158, 255, 0
 	menu_item_add 157, 255, 1
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0198
 	case 1, _0144
 	goto _0144
@@ -123,20 +123,20 @@ scr_seq_0164_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	party_legal_check VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	party_legal_check VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _04EC
-	get_player_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _031B
 	get_party_count VAR_TEMP_x4009
 	setvar VAR_TEMP_x400A, 0
 _0215:
-	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 172
+	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 172
 	goto_if_ne _0241
-	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0241
 	goto _04F8
 
@@ -153,13 +153,13 @@ _0262:
 	npc_msg msg_0267_00007
 _0265:
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 14, 255, 0
 	menu_item_add 15, 255, 1
 	menu_item_add 16, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _02BE
 	case 1, _02B3
 	goto _0326
@@ -169,23 +169,23 @@ _02B3:
 	goto _0265
 	.byte 0x02, 0x00
 _02BE:
-	scrcmd_565 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_565 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02D7
 	goto _0331
 	.byte 0x02, 0x00
 _02D7:
-	scrcmd_564 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_564 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0310
 	goto _02F0
 	.byte 0x02, 0x00
 _02F0:
 	npc_msg msg_0267_00011
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0331
 	goto _0326
 	.byte 0x02, 0x00
@@ -212,8 +212,8 @@ _0326:
 
 _0331:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 1
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0356
 	goto _0326
 	.byte 0x02, 0x00
@@ -222,8 +222,8 @@ _0350:
 	end
 
 _0356:
-	comm_sanitize_party VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 255
+	comm_sanitize_party VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0350
 	npc_msg msg_0267_00010
 	closemsg
@@ -265,8 +265,8 @@ _03F3:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_436
-	scrcmd_565 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_565 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _041A
 	scrcmd_152
 	goto _041C
@@ -367,14 +367,14 @@ scr_seq_0164_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_player_state VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 3
+	get_player_state VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0709
-	scrcmd_691 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_691 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0560
 	scrcmd_446 VAR_UNK_4056
-	copyvar VAR_UNK_4055, VAR_SPECIAL_x800D
+	copyvar VAR_UNK_4055, VAR_SPECIAL_LAST_TALKED
 	npc_msg msg_0267_00018
 	goto _056B
 	.byte 0x02, 0x00
@@ -384,13 +384,13 @@ _0560:
 	.byte 0x02, 0x00
 _056B:
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 23, 255, 0
 	menu_item_add 24, 255, 1
 	menu_item_add 25, 255, 2
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _05D7
 	case 1, _05CC
 	goto _05B9
@@ -411,8 +411,8 @@ _05CC:
 	.byte 0x02, 0x00
 _05D7:
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _05B9
 	npc_msg msg_0267_00020
 	closemsg
@@ -423,16 +423,16 @@ _05D7:
 	wait_movement
 	scrcmd_307 0, 0, 5, 5, 77
 	call _03E0
-	apply_movement VAR_SPECIAL_x800D, _04C8
+	apply_movement VAR_SPECIAL_LAST_TALKED, _04C8
 	apply_movement obj_player, _0480
 	wait_movement
 	call _03E8
-	apply_movement VAR_SPECIAL_x800D, _04D0
+	apply_movement VAR_SPECIAL_LAST_TALKED, _04D0
 	wait_movement
 	scrcmd_307 0, 0, 5, 2, 77
 	call _03E0
 	apply_movement obj_player, _049C
-	apply_movement VAR_SPECIAL_x800D, _04E0
+	apply_movement VAR_SPECIAL_LAST_TALKED, _04E0
 	wait_movement
 	call _03E8
 	setvar VAR_TEMP_x4003, 0

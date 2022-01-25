@@ -175,8 +175,8 @@ _0284:
 _0296:
 	addvar VAR_UNK_4101, 1
 _029C:
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02C3
 	callstd std_obtain_item_verbose
 	setflag FLAG_UNK_ABB
@@ -198,8 +198,8 @@ scr_seq_P01R0302_001:
 	lockall
 	npc_msg msg_0260_P01R0302_00000
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _02FD
 	apply_movement obj_P01R0302_gsbabygirl1, _0340
 	goto _0305

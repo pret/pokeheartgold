@@ -57,7 +57,7 @@ scr_seq_D49R0107_005:
 	closemsg
 	apply_movement obj_D49R0107_thlonowner, _0164
 	wait_movement
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	buffer_players_name 0
 	npc_msg msg_0143_D49R0107_00001
 	closemsg

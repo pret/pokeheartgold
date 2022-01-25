@@ -31,7 +31,7 @@ scr_seq_D02R0103_000:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0050_D02R0103_00000, VAR_SPECIAL_x800C
+	trainer_tips msg_0050_D02R0103_00000, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 

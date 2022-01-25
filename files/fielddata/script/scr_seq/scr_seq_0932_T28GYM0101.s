@@ -63,14 +63,14 @@ scr_seq_T28GYM0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 6, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 6, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0178
 	npc_msg msg_0622_T28GYM0101_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_PRYCE_PRYCE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0172
 	settrainerflag TRAINER_BOARDER_DEANDRE
 	settrainerflag TRAINER_BOARDER_GERARDO
@@ -121,12 +121,12 @@ _018E:
 _0198:
 	npc_msg msg_0622_T28GYM0101_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01F9
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0204
 	npc_msg msg_0622_T28GYM0101_00007
 	closemsg

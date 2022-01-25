@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D11R0103.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d11r0103_full_restore",
+      "scr": "std_hiddenitem_d11r0103_pearl",
       "type": 2,
       "x": 5,
       "y": 7,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d11r0103_revive",
+      "scr": "std_hiddenitem_d11r0103_pearl_2",
       "type": 2,
       "x": 42,
       "y": 18,

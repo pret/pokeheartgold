@@ -30,7 +30,7 @@ _0050:
 	play_se SEQ_SE_DP_KAIDAN2
 	apply_movement obj_D37R0101_tsure_poke_static_marill, _0174
 	wait_movement
-	wait 8, VAR_SPECIAL_x800C
+	wait 8, VAR_SPECIAL_RESULT
 	play_cry SPECIES_MARILL, 0
 	wait_cry
 	scrcmd_602 0
@@ -51,8 +51,8 @@ _00AB:
 	callstd std_play_friend_music
 	apply_movement obj_D37R0101_var_1, _01C4
 	wait_movement
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00EE
 	apply_movement obj_D37R0101_tsure_poke_static_marill, _0218
 	apply_movement obj_player, _0218
@@ -171,7 +171,7 @@ _0228:
 	scrcmd_604 55
 	apply_movement obj_player, _0310
 	apply_movement obj_D37R0101_var_1, _0318
-	wait 8, VAR_SPECIAL_x800C
+	wait 8, VAR_SPECIAL_RESULT
 	move_person obj_D37R0101_tsure_poke_static_marill, 25, 0, 9, 0
 	apply_movement obj_D37R0101_tsure_poke_static_marill, _0320
 	wait_movement
@@ -248,26 +248,26 @@ _0354:
 	return
 
 _03A8:
-	scrcmd_380 VAR_SPECIAL_x800C, 6
+	scrcmd_380 VAR_SPECIAL_RESULT, 6
 	setvar VAR_SPECIAL_x8004, 0
-	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	scrcmd_403 VAR_SPECIAL_x8004, 1
 	return
 
 _03C2:
-	scrcmd_380 VAR_SPECIAL_x800C, 6
+	scrcmd_380 VAR_SPECIAL_RESULT, 6
 	setvar VAR_SPECIAL_x8004, 18
-	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	scrcmd_403 VAR_SPECIAL_x8004, 1
 	return
 
 _03DC:
-	scrcmd_380 VAR_SPECIAL_x800C, 8
-	compare VAR_TEMP_x4001, VAR_SPECIAL_x800C
+	scrcmd_380 VAR_SPECIAL_RESULT, 8
+	compare VAR_TEMP_x4001, VAR_SPECIAL_RESULT
 	goto_if_eq _03DC
-	copyvar VAR_TEMP_x4001, VAR_SPECIAL_x800C
+	copyvar VAR_TEMP_x4001, VAR_SPECIAL_RESULT
 	setvar VAR_SPECIAL_x8004, 1
-	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	scrcmd_406 VAR_SPECIAL_x8004
 	return
 

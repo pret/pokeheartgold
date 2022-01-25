@@ -65,8 +65,8 @@ scr_seq_D23R0103_005:
 	faceplayer
 	compare VAR_UNK_4077, 4
 	goto_if_ne _00E7
-	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00F5
 	npc_msg msg_0067_D23R0103_00003
 	goto _00ED
@@ -117,8 +117,8 @@ scr_seq_D23R0103_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01B4
 	npc_msg msg_0067_D23R0103_00010
 	waitbutton
@@ -133,8 +133,8 @@ scr_seq_D23R0103_007:
 	goto_if_set FLAG_UNK_090, _01E2
 	npc_msg msg_0067_D23R0103_00011
 	closemsg
-	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getitemquantity ITEM_CARD_KEY, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01B4
 	npc_msg msg_0067_D23R0103_00013
 	waitbutton

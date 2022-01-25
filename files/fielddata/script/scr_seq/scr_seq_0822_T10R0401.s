@@ -57,8 +57,8 @@ scr_seq_T10R0401_001:
 _009E:
 	trainer_battle TRAINER_ELITE_FOUR_BRUNO_BRUNO, 0, 0, 0
 _00A6:
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00DF
 	setflag FLAG_DEFEATED_BRUNO
 	npc_msg msg_0525_T10R0401_00001

@@ -68,8 +68,8 @@ scr_seq_R10_002:
 	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0148
-	scrcmd_184 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_184 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0197
 	get_lead_mon_index VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -80,11 +80,11 @@ scr_seq_R10_002:
 	npc_msg msg_0341_R10_00000
 _0114:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0138
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _017B
 	end
 
@@ -132,11 +132,11 @@ scr_seq_R10_000:
 	scrcmd_609
 	lockall
 	goto_if_set FLAG_RESTORED_POWER, _0209
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01D5
-	scrcmd_596 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_596 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01D5
 	scrcmd_600
 _01D5:
@@ -151,11 +151,11 @@ _01D5:
 	end
 
 _0209:
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _022D
-	scrcmd_596 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_596 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _022D
 	scrcmd_600
 _022D:
@@ -178,8 +178,8 @@ scr_seq_R10_003:
 	setflag FLAG_ENGAGING_STATIC_POKEMON
 	wild_battle SPECIES_ZAPDOS, 50, 0
 	clearflag FLAG_ENGAGING_STATIC_POKEMON
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02B3
 	scrcmd_683 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 3
@@ -203,7 +203,7 @@ scr_seq_R10_005:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0341_R10_00008, VAR_SPECIAL_x800C
+	trainer_tips msg_0341_R10_00008, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -211,7 +211,7 @@ scr_seq_R10_006:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0341_R10_00009, VAR_SPECIAL_x800C
+	trainer_tips msg_0341_R10_00009, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

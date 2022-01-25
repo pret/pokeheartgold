@@ -17,7 +17,7 @@ scr_seq_R05_001:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0329_R05_00001, VAR_SPECIAL_x800C
+	trainer_tips msg_0329_R05_00001, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

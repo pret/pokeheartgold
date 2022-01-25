@@ -22,8 +22,8 @@ scr_seq_R05R0202_000:
 	goto_if_set FLAG_UNK_164, _00D8
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _006E
-	hasitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _005F
 	npc_msg msg_0331_R05R0202_00000
 	waitbutton
@@ -39,16 +39,16 @@ _005F:
 _006E:
 	npc_msg msg_0331_R05R0202_00002
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00E3
-	hasspaceforitem ITEM_TM64, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem ITEM_TM64, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00F4
 	buffer_players_name 0
 	npc_msg msg_0331_R05R0202_00003
-	takeitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_RAGECANDYBAR, 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0331_R05R0202_00004
 	closemsg
 	setvar VAR_SPECIAL_x8004, 391

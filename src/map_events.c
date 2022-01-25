@@ -9,17 +9,17 @@ void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
 
 extern void InitMapObjectsFromEventTemplates(LocalMapObject*, int, u32, OBJECT_EVENT*);
 
-void Field_AllocateMapEvents(UnkSavStruct80 *work, HeapID heapId) {
+void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId) {
     GF_ASSERT(work->map_events == NULL);
     work->map_events = AllocFromHeap(heapId, sizeof(MAP_EVENTS));
 }
 
-void Field_FreeMapEvents(UnkSavStruct80 *work) {
+void Field_FreeMapEvents(FieldSystem *work) {
     GF_ASSERT(work->map_events != NULL);
     FreeToHeap(work->map_events);
 }
 
-void Field_InitMapEvents(UnkSavStruct80 *work, u32 mapno) {
+void Field_InitMapEvents(FieldSystem *work, u32 mapno) {
     GF_ASSERT(work->map_events != NULL);
     MapEvents_ReadFromNarc(work->map_events, mapno);
     MapEvents_ComputeRamHeader(work->map_events);
@@ -33,23 +33,23 @@ void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
     ReadWholeNarcMemberByIdPair(events->event_data, NARC_fielddata_eventdata_zone_event, bank);
 }
 
-void Field_InitMapObjectsFromZoneEventData(UnkSavStruct80 *fsys) {
+void Field_InitMapObjectsFromZoneEventData(FieldSystem *fsys) {
     u32 obj_count = fsys->map_events->num_object_events;
     GF_ASSERT(fsys->map_events != NULL);
     if (obj_count != 0) {
-        InitMapObjectsFromEventTemplates(fsys->unk3C, fsys->unk20->unk0, obj_count, fsys->map_events->object_events);
+        InitMapObjectsFromEventTemplates(fsys->unk3C, fsys->location->mapId, obj_count, fsys->map_events->object_events);
     }
 }
 
-BG_EVENT *Field_GetBgEvents(UnkSavStruct80 *fsys) {
+BG_EVENT *Field_GetBgEvents(FieldSystem *fsys) {
     return fsys->map_events->bg_events;
 }
 
-u32 Field_GetNumBgEvents(const UnkSavStruct80 *fsys) {
+u32 Field_GetNumBgEvents(const FieldSystem *fsys) {
     return fsys->map_events->num_bg_events;
 }
 
-const WARP_EVENT *Field_GetWarpEventI(const UnkSavStruct80 *fsys, u32 warpno) {
+const WARP_EVENT *Field_GetWarpEventI(const FieldSystem *fsys, u32 warpno) {
     MAP_EVENTS *events = fsys->map_events;
     if (warpno >= fsys->map_events->num_warp_events) {
         return NULL;
@@ -58,7 +58,7 @@ const WARP_EVENT *Field_GetWarpEventI(const UnkSavStruct80 *fsys, u32 warpno) {
     }
 }
 
-int Field_GetWarpEventAtXYPos(const UnkSavStruct80 *fsys, int x, int y) {
+int Field_GetWarpEventAtXYPos(const FieldSystem *fsys, int x, int y) {
     int i;
 
     for (i = 0; i < fsys->map_events->num_warp_events; i++) {
@@ -70,23 +70,23 @@ int Field_GetWarpEventAtXYPos(const UnkSavStruct80 *fsys, int x, int y) {
     return -1;
 }
 
-u32 Field_GetNumCoordEvents(const UnkSavStruct80 *fsys) {
+u32 Field_GetNumCoordEvents(const FieldSystem *fsys) {
     return fsys->map_events->num_coord_events;
 }
 
-const COORD_EVENT *Field_GetCoordEvents(const UnkSavStruct80 *fsys) {
+const COORD_EVENT *Field_GetCoordEvents(const FieldSystem *fsys) {
     return fsys->map_events->coord_events;
 }
 
-u32 Field_GetNumObjectEvents(const UnkSavStruct80 *fsys) {
+u32 Field_GetNumObjectEvents(const FieldSystem *fsys) {
     return fsys->map_events->num_object_events;
 }
 
-const OBJECT_EVENT *Field_GetObjectEvents(const UnkSavStruct80 *fsys) {
+const OBJECT_EVENT *Field_GetObjectEvents(const FieldSystem *fsys) {
     return fsys->map_events->object_events;
 }
 
-BOOL Field_SetObjectEventXYPos(UnkSavStruct80 *fsys, int id, u16 x, u16 y) {
+BOOL Field_SetObjectEventXYPos(FieldSystem *fsys, int id, u16 x, u16 y) {
     int i;
     OBJECT_EVENT *objs = fsys->map_events->object_events;
     u32 num_objs = fsys->map_events->num_object_events;
@@ -103,7 +103,7 @@ BOOL Field_SetObjectEventXYPos(UnkSavStruct80 *fsys, int id, u16 x, u16 y) {
     return FALSE;
 }
 
-BOOL Field_SetObjectEventFacing(UnkSavStruct80 *fsys, int id, u16 dirn) {
+BOOL Field_SetObjectEventFacing(FieldSystem *fsys, int id, u16 dirn) {
     int i;
     OBJECT_EVENT *objs = fsys->map_events->object_events;
     u32 num_objs = fsys->map_events->num_object_events;
@@ -119,7 +119,7 @@ BOOL Field_SetObjectEventFacing(UnkSavStruct80 *fsys, int id, u16 dirn) {
     return FALSE;
 }
 
-BOOL Field_SetObjectEventMovement(UnkSavStruct80 *fsys, int id, u16 mvt) {
+BOOL Field_SetObjectEventMovement(FieldSystem *fsys, int id, u16 mvt) {
     int i;
     OBJECT_EVENT *objs = fsys->map_events->object_events;
     u32 num_objs = fsys->map_events->num_object_events;
@@ -135,14 +135,14 @@ BOOL Field_SetObjectEventMovement(UnkSavStruct80 *fsys, int id, u16 mvt) {
     return FALSE;
 }
 
-BOOL Field_SetWarpXYPos(UnkSavStruct80 *fsys, int warpno, u16 x, u16 y) {
+BOOL Field_SetWarpXYPos(FieldSystem *fsys, int warpno, u16 x, u16 y) {
     WARP_EVENT *warps = fsys->map_events->warp_events;
     warps[warpno].x = x;
     warps[warpno].y = y;
     return TRUE;
 }
 
-BOOL Field_SetBgEventXYPos(UnkSavStruct80 *fsys, int bgno, u32 x, u32 y) {
+BOOL Field_SetBgEventXYPos(FieldSystem *fsys, int bgno, u32 x, u32 y) {
     BG_EVENT *bgs = Field_GetBgEvents(fsys);
     bgs[bgno].x = x;
     bgs[bgno].y = y;
@@ -196,7 +196,7 @@ void WildEncounters_ReadFromNarc(ENC_DATA *encData, u32 mapno) {
     }
 }
 
-ENC_DATA *MapEvents_GetLoadedEncTable(UnkSavStruct80 *fsys) {
+ENC_DATA *MapEvents_GetLoadedEncTable(FieldSystem *fsys) {
     return &fsys->map_events->wildEncounters;
 }
 
@@ -207,7 +207,7 @@ void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
     ReadWholeNarcMemberByIdPair(events->script_header, NARC_fielddata_script_scr_seq, bank);
 }
 
-u8 *MapEvents_GetScriptHeader(UnkSavStruct80 *fsys) {
+u8 *MapEvents_GetScriptHeader(FieldSystem *fsys) {
     GF_ASSERT(fsys->map_events != NULL);
     return fsys->map_events->script_header;
 }

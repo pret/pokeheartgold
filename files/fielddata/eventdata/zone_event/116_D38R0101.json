@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D38R0101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d38r0101_super_potion",
+      "scr": "std_hiddenitem_d38r0101_hyper_potion",
       "type": 2,
       "x": 27,
       "y": 42,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d38r0101_antidote",
+      "scr": "std_hiddenitem_d38r0101_revive",
       "type": 2,
       "x": 58,
       "y": 46,

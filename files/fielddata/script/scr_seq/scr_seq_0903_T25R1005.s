@@ -82,9 +82,9 @@ scr_seq_T25R1005_003:
 	goto_if_set FLAG_UNK_08D, _0172
 	npc_msg msg_0596_T25R1005_00009
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00F6
 	goto _0167
 
@@ -93,17 +93,17 @@ _00F6:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0167
 	scrcmd_470 1
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_472 32780
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _015A
 	scrcmd_473 32772
 	scrcmd_474
@@ -160,10 +160,10 @@ scr_seq_T25R1005_006:
 	get_lead_mon_index VAR_SPECIAL_x8000
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0596_T25R1005_00000
-	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 149
+	scrcmd_382 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 149
 	goto_if_ge _01E3
-	compare VAR_SPECIAL_x800C, 50
+	compare VAR_SPECIAL_RESULT, 50
 	goto_if_le _01FE
 	npc_msg msg_0596_T25R1005_00003
 	waitbutton

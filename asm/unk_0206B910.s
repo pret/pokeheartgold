@@ -15,7 +15,7 @@ sub_0206B910: ; 0x0206B910
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r5, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	mov r0, #0xb
 	mov r1, #0x14
@@ -58,7 +58,7 @@ _0206B92C:
 	ldr r1, _0206B980 ; =sub_0206B984
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0206B980: .word sub_0206B984
@@ -69,11 +69,11 @@ sub_0206B984: ; 0x0206B984
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r6, [r7, #4]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	ldr r0, [r7, #0x10]
 	cmp r0, #6

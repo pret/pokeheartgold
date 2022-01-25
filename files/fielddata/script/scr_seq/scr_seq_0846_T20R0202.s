@@ -16,8 +16,8 @@ scr_seq_T20R0202_000:
 	buffer_players_name 0
 	npc_msg msg_0546_T20R0202_00000
 	closemsg
-	scrcmd_377 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_377 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _004B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade

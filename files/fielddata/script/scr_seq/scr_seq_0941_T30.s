@@ -74,29 +74,29 @@ scr_seq_T30_006:
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_SNOOZE
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_SNOOZE
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0209
 	goto_if_set FLAG_GOT_SHOCK_RIBBON, _021D
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _01B7
 	goto_if_set FLAG_UNK_0D4, _0199
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _014A
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 23
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 23
 	goto _0191
 
 _014A:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 20
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 20
 	goto_if_no_item_space ITEM_SOFT_SAND, 1, _01AD
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D4
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 21
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 21
 _0191:
 	waitbutton
 	closemsg
@@ -104,8 +104,8 @@ _0191:
 	end
 
 _0199:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 22
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 22
 	waitbutton
 	closemsg
 	releaseall
@@ -118,18 +118,18 @@ _01AD:
 	end
 
 _01B7:
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _01DA
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 23
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 23
 	goto _0191
 
 _01DA:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 48
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 48
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_x800C, 50
+	msgbox_extern VAR_SPECIAL_RESULT, 50
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_SNOOZE
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -140,16 +140,16 @@ _01DA:
 	end
 
 _0209:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 49
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 49
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _021D:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 51
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 51
 	waitbutton
 	closemsg
 	releaseall
@@ -206,31 +206,31 @@ scr_seq_T30_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03C1
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03D5
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0335
 	apply_movement obj_player, _03EC
 	apply_movement obj_T30_gsmiddleman1, _0424
 	goto _0360
 
 _0335:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0350
 	apply_movement obj_player, _0404
 	goto _0360
@@ -243,8 +243,8 @@ _0360:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0387
 	apply_movement obj_partner_poke, _0430
 	wait_movement
@@ -257,24 +257,24 @@ _0387:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _03C1:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _03D5:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -312,10 +312,10 @@ _0430:
 	step 1, 1
 	step_end
 scr_seq_T30_008:
-	direction_signpost msg_0629_T30_00010, 0, 20, VAR_SPECIAL_x800C
+	direction_signpost msg_0629_T30_00010, 0, 20, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -323,7 +323,7 @@ scr_seq_T30_009:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0629_T30_00011, VAR_SPECIAL_x800C
+	trainer_tips msg_0629_T30_00011, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -331,7 +331,7 @@ scr_seq_T30_010:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0629_T30_00012, VAR_SPECIAL_x800C
+	trainer_tips msg_0629_T30_00012, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -339,7 +339,7 @@ scr_seq_T30_011:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0629_T30_00013, VAR_SPECIAL_x800C
+	trainer_tips msg_0629_T30_00013, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -347,7 +347,7 @@ scr_seq_T30_012:
 	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0629_T30_00014, VAR_SPECIAL_x800C
+	trainer_tips msg_0629_T30_00014, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 

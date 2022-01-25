@@ -268,8 +268,8 @@ _0331:
 	npc_msg msg_0114_D35R0104_00006
 	closemsg
 	trainer_battle TRAINER_EXECUTIVE_PETREL_PETREL_2, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0405
 	npc_msg msg_0114_D35R0104_00007
 	closemsg

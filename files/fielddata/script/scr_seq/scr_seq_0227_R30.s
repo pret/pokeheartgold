@@ -185,18 +185,18 @@ scr_seq_R30_004:
 	end
 
 scr_seq_R30_005:
-	direction_signpost msg_0375_R30_00009, 1, 6, VAR_SPECIAL_x800C
+	direction_signpost msg_0375_R30_00009, 1, 6, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_R30_006:
-	direction_signpost msg_0375_R30_00010, 1, 3, VAR_SPECIAL_x800C
+	direction_signpost msg_0375_R30_00010, 1, 3, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -204,7 +204,7 @@ scr_seq_R30_007:
 	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0375_R30_00012, VAR_SPECIAL_x800C
+	trainer_tips msg_0375_R30_00012, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -212,7 +212,7 @@ scr_seq_R30_008:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0375_R30_00011, VAR_SPECIAL_x800C
+	trainer_tips msg_0375_R30_00011, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 

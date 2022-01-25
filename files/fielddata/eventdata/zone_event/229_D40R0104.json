@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D40R0104.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d40r0104_hyper_potion",
+      "scr": "std_hiddenitem_d40r0104_full_restore",
       "type": 2,
       "x": 29,
       "y": 11,

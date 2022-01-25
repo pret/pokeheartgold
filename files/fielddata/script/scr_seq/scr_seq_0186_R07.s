@@ -13,7 +13,7 @@ scr_seq_R07_000:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0336_R07_00000, VAR_SPECIAL_x800C
+	trainer_tips msg_0336_R07_00000, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 

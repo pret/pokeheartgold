@@ -24,8 +24,8 @@ scr_seq_R39R0101_000:
 _002C:
 	setvar VAR_SPECIAL_x8004, 33
 	setvar VAR_SPECIAL_x8005, 0
-	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 999
+	hasitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 999
 	goto_if_ne _0058
 	npc_msg msg_0397_R39R0101_00006
 	waitbutton
@@ -37,20 +37,20 @@ _0058:
 	scrcmd_113 20, 2
 	npc_msg msg_0397_R39R0101_00001
 	touchscreen_menu_hide
-	menu_init 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 12, 255, 1
 	menu_item_add 13, 255, 2
 	menu_item_add 14, 255, 3
 	menu_exec
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0111
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	call_if_eq _011E
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	call_if_eq _012C
-	hasenoughmoneyvar VAR_SPECIAL_x800C, VAR_TEMP_x4001
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4001
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00F7
 	goto_if_no_item_space ITEM_MOOMOO_MILK, VAR_TEMP_x4000, _0104
 	submoneyvar VAR_TEMP_x4001

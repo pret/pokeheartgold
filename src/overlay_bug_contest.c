@@ -32,7 +32,7 @@ u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, POKEMON *pokemon);
 extern u8 Save_GetLeadMonIdxForBugContest(SAVEDATA *saveData);
 extern PC_STORAGE *GetStoragePCPointer(SAVEDATA *saveData);
 
-BUGCONTEST *BugContest_new(UnkSavStruct80 *fsys, u8 weekday) {
+BUGCONTEST *BugContest_new(FieldSystem *fsys, u8 weekday) {
     BUGCONTEST *bugContest;
 
     bugContest = (BUGCONTEST *)AllocFromHeap(HEAP_ID_BUG_CONTEST, sizeof(BUGCONTEST));

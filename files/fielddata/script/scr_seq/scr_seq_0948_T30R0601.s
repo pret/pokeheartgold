@@ -24,11 +24,11 @@ scr_seq_T30R0601_000:
 _0036:
 	npc_msg msg_0635_T30R0601_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _005D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _014A
 	end
 
@@ -50,8 +50,8 @@ _0068:
 	get_partymon_species VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8001, 0
 	goto_if_eq _0134
-	count_mon_moves VAR_SPECIAL_x800C, VAR_SPECIAL_x8002
-	compare VAR_SPECIAL_x800C, 1
+	count_mon_moves VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _013F
 	npc_msg msg_0635_T30R0601_00006
 	closemsg
@@ -67,11 +67,11 @@ _0068:
 	buffer_party_mon_move_name 0, VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	npc_msg msg_0635_T30R0601_00007
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _011D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _005D
 	end
 
@@ -107,8 +107,8 @@ scr_seq_T30R0601_001:
 	lockall
 	faceplayer
 	goto_if_unset FLAG_UNK_15E, _0238
-	hasitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _022D
 	npc_msg msg_0635_T30R0601_00010
 	npc_msg msg_0635_T30R0601_00012
@@ -122,11 +122,11 @@ scr_seq_T30R0601_001:
 	wait_fade
 	compare VAR_SPECIAL_x8005, 255
 	goto_if_eq _022D
-	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0247
 	scrcmd_466 32780, 32773
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0222
 	npc_msg msg_0635_T30R0601_00013
 	closemsg
@@ -137,9 +137,9 @@ scr_seq_T30R0601_001:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _022D
-	takeitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
 	buffer_players_name 3
 	npc_msg msg_0635_T30R0601_00025
 	waitbutton
@@ -184,18 +184,18 @@ scr_seq_T30R0601_002:
 	setflag FLAG_UNK_186
 	npc_msg msg_0635_T30R0601_00026
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02A5
 	goto _02EC
 
 _0287:
 	npc_msg msg_0635_T30R0601_00027
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02A5
 	goto _02EC
 
@@ -246,8 +246,8 @@ _02EC:
 	get_party_count VAR_TEMP_x4000
 _02F0:
 	subvar VAR_TEMP_x4000, 1
-	get_partymon_species VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_partymon_species VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0346
 	scrcmd_497 32772, 32773, 16384
 	compare VAR_SPECIAL_x8004, 16
@@ -257,8 +257,8 @@ _02F0:
 	goto _0346
 
 _0331:
-	mon_has_move VAR_SPECIAL_x800C, MOVE_DRACO_METEOR, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_DRACO_METEOR, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0359
 _0346:
 	compare VAR_TEMP_x4000, 0
@@ -281,13 +281,13 @@ _0359:
 	compare VAR_SPECIAL_x8001, 0
 	goto_if_eq _02C6
 	call _042B
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02BB
-	mon_has_move VAR_SPECIAL_x800C, MOVE_DRACO_METEOR, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_DRACO_METEOR, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02D1
-	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 255
+	scrcmd_382 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_lt _02E1
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0635_T30R0601_00062
@@ -303,7 +303,7 @@ _03EF:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _02A5
 	npc_msg msg_0635_T30R0601_00042
 	waitbutton
@@ -317,11 +317,11 @@ _042B:
 	goto_if_eq _0455
 	compare VAR_SPECIAL_x8005, 16
 	goto_if_eq _0455
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	return
 
 _0455:
-	setvar VAR_SPECIAL_x800C, 1
+	setvar VAR_SPECIAL_RESULT, 1
 	return
 
 scr_seq_T30R0601_003:
@@ -332,16 +332,16 @@ scr_seq_T30R0601_003:
 	setflag FLAG_UNK_187
 	npc_msg msg_0635_T30R0601_00043
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04AC
 	goto _06EE
 
 _0490:
 	npc_msg msg_0635_T30R0601_00044
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04AC
 	goto _06EE
 
@@ -361,14 +361,14 @@ _04AC:
 	compare VAR_SPECIAL_x8001, 0
 	goto_if_eq _0708
 	call _05F4
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _06FB
-	copyvar VAR_SPECIAL_x8002, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8002, VAR_SPECIAL_RESULT
 	call _06B0
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0722
-	scrcmd_382 VAR_SPECIAL_x800C, VAR_SPECIAL_x8000
-	compare VAR_SPECIAL_x800C, 255
+	scrcmd_382 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_lt _0715
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_x8002, 1
@@ -380,8 +380,8 @@ _04AC:
 _0555:
 	npc_msg msg_0635_T30R0601_00052
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06EE
 	setvar VAR_SPECIAL_x8003, 307
 	goto _05BB
@@ -389,8 +389,8 @@ _0555:
 _0577:
 	npc_msg msg_0635_T30R0601_00053
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06EE
 	setvar VAR_SPECIAL_x8003, 308
 	goto _05BB
@@ -398,8 +398,8 @@ _0577:
 _0599:
 	npc_msg msg_0635_T30R0601_00054
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06EE
 	setvar VAR_SPECIAL_x8003, 338
 	goto _05BB
@@ -413,7 +413,7 @@ _05BB:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _06EE
 	touchscreen_menu_show
 	releaseall
@@ -444,19 +444,19 @@ _05F4:
 	goto_if_eq _06A8
 	compare VAR_SPECIAL_x8001, 389
 	goto_if_eq _06A8
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 	return
 
 _0698:
-	setvar VAR_SPECIAL_x800C, 1
+	setvar VAR_SPECIAL_RESULT, 1
 	return
 
 _06A0:
-	setvar VAR_SPECIAL_x800C, 2
+	setvar VAR_SPECIAL_RESULT, 2
 	return
 
 _06A8:
-	setvar VAR_SPECIAL_x800C, 3
+	setvar VAR_SPECIAL_RESULT, 3
 	return
 
 _06B0:
@@ -467,15 +467,15 @@ _06B0:
 	goto _06E4
 
 _06D0:
-	mon_has_move VAR_SPECIAL_x800C, MOVE_BLAST_BURN, VAR_SPECIAL_x8000
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_BLAST_BURN, VAR_SPECIAL_x8000
 	return
 
 _06DA:
-	mon_has_move VAR_SPECIAL_x800C, MOVE_HYDRO_CANNON, VAR_SPECIAL_x8000
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_HYDRO_CANNON, VAR_SPECIAL_x8000
 	return
 
 _06E4:
-	mon_has_move VAR_SPECIAL_x800C, MOVE_FRENZY_PLANT, VAR_SPECIAL_x8000
+	mon_has_move VAR_SPECIAL_RESULT, MOVE_FRENZY_PLANT, VAR_SPECIAL_x8000
 	return
 
 _06EE:

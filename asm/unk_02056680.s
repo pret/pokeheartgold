@@ -12,10 +12,10 @@ _020FC790:
 sub_02056680: ; 0x02056680
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
@@ -71,10 +71,10 @@ _020566F4:
 sub_020566F8: ; 0x020566F8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #3
@@ -164,10 +164,10 @@ _020567AE:
 sub_020567B4: ; 0x020567B4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	bl sub_0205C6DC
@@ -193,7 +193,7 @@ _020567D8:
 	ldr r1, _02056818 ; =ov01_021E9C40
 	add r0, r6, #0
 	add r2, r7, #0
-	bl sub_02050530
+	bl QueueTask
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -215,10 +215,10 @@ sub_0205681C: ; 0x0205681C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #5
@@ -347,10 +347,10 @@ sub_02056938: ; 0x02056938
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #5
@@ -793,7 +793,7 @@ _02056D16:
 	ldr r1, _02056D2C ; =sub_02056D30
 	add r0, r5, #0
 	strh r4, [r2, #2]
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, pc}
 	nop
 _02056D2C: .word sub_02056D30
@@ -803,10 +803,10 @@ _02056D2C: .word sub_02056D30
 sub_02056D30: ; 0x02056D30
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r1, [r4]
 	cmp r1, #0

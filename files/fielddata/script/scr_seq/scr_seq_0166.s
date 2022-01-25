@@ -23,7 +23,7 @@
 scr_seq_0166_000:
 	scrcmd_609
 	lockall
-	setvar VAR_SPECIAL_x800C, 7
+	setvar VAR_SPECIAL_RESULT, 7
 	clearflag FLAG_UNK_966
 	setvar VAR_UNK_4133, 0
 	releaseall
@@ -82,12 +82,12 @@ _00C1:
 _00D7:
 	npc_msg msg_0043_00012
 _00DA:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 8, 0
 	scrcmd_066 9, 1
 	scrcmd_066 10, 2
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _012F
 	case 1, _0137
 	goto _0118
@@ -117,13 +117,13 @@ _014C:
 _0155:
 	npc_msg msg_0043_00005
 _0158:
-	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 96, 0
 	scrcmd_066 97, 1
 	scrcmd_066 98, 2
 	scrcmd_066 99, 3
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _01A7
 	case 1, _01AF
 	case 2, _01BA
@@ -143,14 +143,14 @@ _01BA:
 _01C5:
 	npc_msg msg_0043_00117
 _01C8:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 36, 0
 	scrcmd_066 37, 1
 	scrcmd_066 38, 2
 	scrcmd_066 39, 3
 	scrcmd_066 40, 4
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0228
 	case 1, _0233
 	case 2, _023E
@@ -175,26 +175,26 @@ _0249:
 	.byte 0x02, 0x00
 _0254:
 	npc_msg msg_0043_00219
-	scrcmd_064 18, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_064 18, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 14, 0
 	scrcmd_066 15, 1
 	scrcmd_066 5, 2
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0295
 	case 1, _02E7
 	goto _0118
 	.byte 0x02, 0x00
 _0295:
 	npc_msg msg_0043_00212
-	scrcmd_063 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_063 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0254
 	closemsg
-	scrcmd_226 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_226 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02D7
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _02DF
 	goto _0339
 	.byte 0x02, 0x00
@@ -206,14 +206,14 @@ _02DF:
 	.byte 0x02, 0x00
 _02E7:
 	npc_msg msg_0043_00212
-	scrcmd_063 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_063 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0254
 	closemsg
-	scrcmd_227 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_227 8, VAR_SPECIAL_x8005, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0329
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0331
 	goto _0339
 	.byte 0x02, 0x00
@@ -254,8 +254,8 @@ _03A7:
 	goto _03B4
 	.byte 0x02, 0x00
 _03B4:
-	get_player_gender VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_gender VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03CD
 	goto _03DB
 	.byte 0x02, 0x00
@@ -280,14 +280,14 @@ _03FE:
 	scrcmd_232 4
 	scrcmd_233 4
 	scrcmd_257 239
-	pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_x800C, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
+	pokeathlon 1, 0, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002, VAR_SPECIAL_x8003
 	scrcmd_237
 	scrcmd_048 msg_0043_00078
 	closemsg
 	scrcmd_232 24
 	scrcmd_233 24
 	scrcmd_587
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	scrcmd_235 16386
 	clearflag FLAG_UNK_966
 	setvar VAR_UNK_4133, 0
@@ -331,25 +331,25 @@ scr_seq_0166_011:
 	.byte 0x02, 0x00
 _05AF:
 	npc_msg msg_0043_00112
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 113, 0
 	scrcmd_066 114, 1
 	scrcmd_066 115, 2
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _05FD
 	case 1, _0872
 	case 2, _0A97
 	goto _0A97
 	.byte 0x02, 0x00
 _05FD:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 155, 0
 	scrcmd_066 156, 1
 	scrcmd_066 157, 2
 	scrcmd_066 158, 3
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _064C
 	case 1, _0660
 	case 2, _067A
@@ -394,7 +394,7 @@ _0743:
 
 _0756:
 	npc_msg msg_0043_00160
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 161, 0
 	scrcmd_066 162, 1
 	scrcmd_066 163, 2
@@ -402,7 +402,7 @@ _0756:
 	scrcmd_066 165, 4
 	scrcmd_066 166, 5
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _07CA
 	case 1, _07D8
 	case 2, _07E6
@@ -441,11 +441,11 @@ _081D:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setvar VAR_SPECIAL_x800C, 0
+	setvar VAR_SPECIAL_RESULT, 0
 _0837:
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _084F
-	get_move_selection 0, VAR_SPECIAL_x800C
+	get_move_selection 0, VAR_SPECIAL_RESULT
 	goto _0837
 
 _084F:
@@ -459,14 +459,14 @@ _084F:
 _0872:
 	npc_msg msg_0043_00117
 _0875:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 121, 0
 	scrcmd_066 118, 1
 	scrcmd_066 119, 2
 	scrcmd_066 120, 3
 	scrcmd_066 122, 4
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0A7E
 	case 1, _08D8
 	case 2, _0953
@@ -476,13 +476,13 @@ _0875:
 _08D5:
 	npc_msg msg_0043_00117
 _08D8:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 125, 0
 	scrcmd_066 126, 1
 	scrcmd_066 127, 2
 	scrcmd_066 129, 3
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0927
 	case 1, _0932
 	case 2, _093D
@@ -506,14 +506,14 @@ _0948:
 _0950:
 	npc_msg msg_0043_00117
 _0953:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 135, 0
 	scrcmd_066 136, 1
 	scrcmd_066 137, 2
 	scrcmd_066 138, 3
 	scrcmd_066 139, 4
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _09B3
 	case 1, _09BE
 	case 2, _09C9
@@ -542,14 +542,14 @@ _09DF:
 _09E7:
 	npc_msg msg_0043_00117
 _09EA:
-	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_x800C
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_066 145, 0
 	scrcmd_066 146, 1
 	scrcmd_066 147, 2
 	scrcmd_066 148, 3
 	scrcmd_066 149, 4
 	scrcmd_067
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0A4A
 	case 1, _0A55
 	case 2, _0A60

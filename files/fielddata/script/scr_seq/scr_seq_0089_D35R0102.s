@@ -179,8 +179,8 @@ _02D0:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
@@ -190,8 +190,8 @@ _02D0:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
@@ -209,8 +209,8 @@ _036C:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
@@ -220,8 +220,8 @@ _036C:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _0490
 	wait_movement
@@ -320,8 +320,8 @@ _0503:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
@@ -333,8 +333,8 @@ _0503:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
@@ -352,8 +352,8 @@ _05A9:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
@@ -365,8 +365,8 @@ _05A9:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06C8
 	wait_movement
@@ -470,8 +470,8 @@ _0747:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
@@ -483,8 +483,8 @@ _0747:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
@@ -502,8 +502,8 @@ _07ED:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
@@ -515,8 +515,8 @@ _07ED:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06D4
 	wait_movement
@@ -560,8 +560,8 @@ _08F8:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
@@ -573,8 +573,8 @@ _08F8:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
@@ -592,8 +592,8 @@ _099E:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
@@ -605,8 +605,8 @@ _099E:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06E0
 	wait_movement
@@ -649,8 +649,8 @@ _0AA5:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
@@ -662,8 +662,8 @@ _0AA5:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
@@ -681,8 +681,8 @@ _0B4B:
 	npc_msg msg_0112_D35R0102_00000
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_20, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
@@ -694,8 +694,8 @@ _0B4B:
 	npc_msg msg_0112_D35R0102_00001
 	closemsg
 	trainer_battle TRAINER_TEAM_ROCKET_GRUNT_21, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0C03
 	apply_movement obj_D35R0102_rocketm, _06EC
 	wait_movement
@@ -824,11 +824,11 @@ scr_seq_D35R0102_004:
 	goto_if_set FLAG_UNK_0D6, _0E58
 	npc_msg msg_0112_D35R0102_00005
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0DB7
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0F1E
 _0DB7:
 	play_se SEQ_SE_DP_DENSI01
@@ -870,11 +870,11 @@ _0E4D:
 _0E58:
 	npc_msg msg_0112_D35R0102_00006
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0E7D
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0F1E
 _0E7D:
 	play_se SEQ_SE_DP_DENSI01
@@ -931,8 +931,8 @@ scr_seq_D35R0102_013:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B2, 1
 	releaseall
@@ -944,8 +944,8 @@ scr_seq_D35R0102_014:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B3, 1
 	releaseall
@@ -957,8 +957,8 @@ scr_seq_D35R0102_015:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B4, 1
 	releaseall
@@ -970,8 +970,8 @@ scr_seq_D35R0102_016:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B5, 1
 	releaseall
@@ -983,8 +983,8 @@ scr_seq_D35R0102_017:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B6, 1
 	releaseall
@@ -996,8 +996,8 @@ scr_seq_D35R0102_018:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B7, 1
 	releaseall
@@ -1009,8 +1009,8 @@ scr_seq_D35R0102_019:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B8, 1
 	releaseall
@@ -1022,8 +1022,8 @@ scr_seq_D35R0102_020:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40B9, 1
 	releaseall
@@ -1035,8 +1035,8 @@ scr_seq_D35R0102_021:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40BA, 1
 	releaseall
@@ -1048,8 +1048,8 @@ scr_seq_D35R0102_022:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40BB, 1
 	releaseall
@@ -1061,8 +1061,8 @@ scr_seq_D35R0102_023:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40BC, 1
 	releaseall
@@ -1074,8 +1074,8 @@ scr_seq_D35R0102_024:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40BD, 1
 	releaseall
@@ -1087,8 +1087,8 @@ scr_seq_D35R0102_025:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40BE, 1
 	releaseall
@@ -1100,8 +1100,8 @@ scr_seq_D35R0102_026:
 	scrcmd_708 0
 	play_se SEQ_SE_GS_DENKI_TRAP
 	scrcmd_249 100, 23
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40BF, 1
 	releaseall
@@ -1113,8 +1113,8 @@ scr_seq_D35R0102_027:
 	scrcmd_708 1
 	play_se SEQ_SE_GS_DOKU_TRAP
 	scrcmd_249 109, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40C0, 1
 	releaseall
@@ -1126,8 +1126,8 @@ scr_seq_D35R0102_028:
 	scrcmd_708 2
 	play_se SEQ_SE_GS_IWA_TRAP
 	scrcmd_249 74, 21
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _11FF
 	setvar VAR_UNK_40C1, 1
 	releaseall
@@ -1144,7 +1144,7 @@ scr_seq_D35R0102_029:
 	play_se SEQ_SE_PL_BOWABOWA
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	wait 15, VAR_SPECIAL_x800C
+	wait 15, VAR_SPECIAL_RESULT
 	warp MAP_D35R0102, 0, 50, 4, 2
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

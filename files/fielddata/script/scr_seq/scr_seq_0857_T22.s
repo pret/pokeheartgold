@@ -111,20 +111,20 @@ scr_seq_T22_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0182
 	apply_movement obj_T22_gsbigman, _0388
 	goto _01C0
 
 _0182:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _019D
 	apply_movement obj_T22_gsbigman, _03AC
 	goto _01C0
 
 _019D:
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _01B8
 	apply_movement obj_T22_gsbigman, _03D0
 	goto _01C0
@@ -135,11 +135,11 @@ _01C0:
 	wait_movement
 	npc_msg msg_0556_T22_00001
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01E9
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01F4
 	end
 
@@ -153,20 +153,20 @@ _01E9:
 _01F4:
 	npc_msg msg_0556_T22_00003
 	closemsg
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0218
 	apply_movement obj_T22_gsbigman, _0418
 	goto _0256
 
 _0218:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0233
 	apply_movement obj_T22_gsbigman, _0440
 	goto _0256
 
 _0233:
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _024E
 	apply_movement obj_T22_gsbigman, _0460
 	goto _0256
@@ -175,12 +175,12 @@ _024E:
 	apply_movement obj_T22_gsbigman, _0484
 _0256:
 	wait_movement
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 2
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _028B
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _02B9
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02E7
 	goto _0315
 	.byte 0x02, 0x00
@@ -494,7 +494,7 @@ _06BC:
 	npc_msg msg_0556_T22_00018
 _06BF:
 	touchscreen_menu_hide
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8000, 1
 	goto_if_ne _06DE
 	menu_item_add 205, 255, 0
@@ -514,7 +514,7 @@ _071D:
 	menu_item_add 126, 255, 4
 	menu_exec
 	touchscreen_menu_show
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _0769
 	case 1, _080D
 	case 2, _08B1
@@ -529,7 +529,7 @@ _0769:
 	giveitem_no_check ITEM_CHERI_BERRY, 1
 	giveitem_no_check ITEM_PECHA_BERRY, 1
 	giveitem_no_check ITEM_LEPPA_BERRY, 1
-	takeitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_RED_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _0A17
 
 _080D:
@@ -540,7 +540,7 @@ _080D:
 	giveitem_no_check ITEM_ORAN_BERRY, 1
 	giveitem_no_check ITEM_CHESTO_BERRY, 1
 	giveitem_no_check ITEM_WIKI_BERRY, 1
-	takeitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _0A17
 
 _08B1:
@@ -551,7 +551,7 @@ _08B1:
 	giveitem_no_check ITEM_ASPEAR_BERRY, 1
 	giveitem_no_check ITEM_SITRUS_BERRY, 1
 	giveitem_no_check ITEM_IAPAPA_BERRY, 1
-	takeitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _0A17
 
 _0955:
@@ -562,7 +562,7 @@ _0955:
 	giveitem_no_check ITEM_RAWST_BERRY, 1
 	giveitem_no_check ITEM_LUM_BERRY, 1
 	giveitem_no_check ITEM_AGUAV_BERRY, 1
-	takeitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_RESULT
 	goto _0A17
 
 _09F9:
@@ -595,26 +595,26 @@ _0A51:
 	goto _09F9
 
 _0A57:
-	hasitem ITEM_RED_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_RED_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0A78
 	setvar VAR_SPECIAL_x8000, 1
 	setvar VAR_SPECIAL_x8006, 1
 _0A78:
-	hasitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_BLUE_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0A99
 	setvar VAR_SPECIAL_x8001, 1
 	setvar VAR_SPECIAL_x8006, 1
 _0A99:
-	hasitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_YELLOW_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0ABA
 	setvar VAR_SPECIAL_x8002, 1
 	setvar VAR_SPECIAL_x8006, 1
 _0ABA:
-	hasitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_GREEN_SHARD, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0ADB
 	setvar VAR_SPECIAL_x8003, 1
 	setvar VAR_SPECIAL_x8006, 1
@@ -622,15 +622,15 @@ _0ADB:
 	return
 
 _0ADD:
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0AFE
 	apply_movement obj_T22_juggrer, _0B28
 	wait_movement
 	goto _0B25
 
 _0AFE:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0B1B
 	apply_movement obj_T22_juggrer, _0B6C
 	wait_movement
@@ -710,15 +710,15 @@ scr_seq_T22_007:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0556_T22_00012, VAR_SPECIAL_x800C
+	trainer_tips msg_0556_T22_00012, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_T22_008:
-	direction_signpost msg_0556_T22_00009, 0, 13, VAR_SPECIAL_x800C
+	direction_signpost msg_0556_T22_00009, 0, 13, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -726,7 +726,7 @@ scr_seq_T22_009:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0556_T22_00010, VAR_SPECIAL_x800C
+	trainer_tips msg_0556_T22_00010, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -734,7 +734,7 @@ scr_seq_T22_010:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0556_T22_00011, VAR_SPECIAL_x800C
+	trainer_tips msg_0556_T22_00011, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 

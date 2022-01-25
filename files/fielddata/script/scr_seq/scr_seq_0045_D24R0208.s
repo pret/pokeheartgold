@@ -35,10 +35,10 @@ _0042:
 	clearflag FLAG_UNK_111
 	setflag FLAG_UNK_222
 	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0096
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00A6
 	end
 
@@ -82,10 +82,10 @@ _0103:
 scr_seq_D24R0208_002:
 	scrcmd_609
 	lockall
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0163
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0173
 	end
 
@@ -145,8 +145,8 @@ scr_seq_D24R0208_001:
 	scrcmd_609
 	lockall
 	scrcmd_714 3
-	player_has_species VAR_SPECIAL_x800C, SPECIES_HO_OH
-	compare VAR_SPECIAL_x800C, 1
+	player_has_species VAR_SPECIAL_RESULT, SPECIES_HO_OH
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0264
 	goto _0268
 

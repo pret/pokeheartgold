@@ -113,20 +113,20 @@ _019B:
 	compare VAR_SPECIAL_x8000, 1
 	goto_if_eq _04F7
 	setvar VAR_SPECIAL_x8001, 0
-	hasitem ITEM_OLD_AMBER, 1, VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	hasitem ITEM_HELIX_FOSSIL, 1, VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	hasitem ITEM_DOME_FOSSIL, 1, VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	hasitem ITEM_ROOT_FOSSIL, 1, VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	hasitem ITEM_CLAW_FOSSIL, 1, VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	hasitem ITEM_ARMOR_FOSSIL, 1, VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
-	hasitem ITEM_SKULL_FOSSIL, 1, VAR_SPECIAL_x800C
-	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_x800C
+	hasitem ITEM_OLD_AMBER, 1, VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	hasitem ITEM_HELIX_FOSSIL, 1, VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	hasitem ITEM_DOME_FOSSIL, 1, VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	hasitem ITEM_ROOT_FOSSIL, 1, VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	hasitem ITEM_CLAW_FOSSIL, 1, VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	hasitem ITEM_ARMOR_FOSSIL, 1, VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
+	hasitem ITEM_SKULL_FOSSIL, 1, VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_x8001, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8001, 1
 	goto_if_eq _04F7
 	setvar VAR_SPECIAL_x8004, 0
@@ -156,7 +156,7 @@ _0263:
 	call_if_eq _0467
 	compare VAR_SPECIAL_x8005, 6
 	call_if_eq _0477
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0340
 	compare VAR_SPECIAL_x8004, 0
 	call_if_eq _0487
@@ -211,46 +211,46 @@ _034C:
 	buffer_item_name 0, VAR_SPECIAL_x8002
 	npc_msg msg_0464_T03R0101_00007
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _053F
-	takeitem VAR_SPECIAL_x8002, 1, VAR_SPECIAL_x800C
+	takeitem VAR_SPECIAL_x8002, 1, VAR_SPECIAL_RESULT
 	goto _0530
 
 _0417:
 	setvar VAR_TEMP_x4000, 103
-	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_x800C
+	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_RESULT
 	return
 
 _0427:
 	setvar VAR_TEMP_x4000, 101
-	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_x800C
+	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_RESULT
 	return
 
 _0437:
 	setvar VAR_TEMP_x4000, 102
-	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_x800C
+	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_RESULT
 	return
 
 _0447:
 	setvar VAR_TEMP_x4000, 99
-	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_x800C
+	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_RESULT
 	return
 
 _0457:
 	setvar VAR_TEMP_x4000, 100
-	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_x800C
+	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_RESULT
 	return
 
 _0467:
 	setvar VAR_TEMP_x4000, 104
-	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_x800C
+	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_RESULT
 	return
 
 _0477:
 	setvar VAR_TEMP_x4000, 105
-	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_x800C
+	hasitem VAR_TEMP_x4000, 1, VAR_SPECIAL_RESULT
 	return
 
 _0487:
@@ -314,12 +314,12 @@ _04F7:
 	buffer_item_name 0, VAR_SPECIAL_x8002
 	npc_msg msg_0464_T03R0101_00007
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _053F
 	getfossilpokemon VAR_UNK_407F, VAR_SPECIAL_x8002
-	takeitem VAR_SPECIAL_x8002, 1, VAR_SPECIAL_x800C
+	takeitem VAR_SPECIAL_x8002, 1, VAR_SPECIAL_RESULT
 	goto _0530
 
 _0530:
@@ -335,8 +335,8 @@ _053F:
 _0550:
 	buffer_species_name 0, VAR_UNK_407F, 0, 0
 	npc_msg msg_0464_T03R0101_00004
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_ne _0575
 	npc_msg msg_0464_T03R0101_00005
 	goto _05FC
@@ -347,22 +347,22 @@ _0575:
 	play_fanfare SEQ_ME_POKEGET
 	npc_msg msg_0464_T03R0101_00008
 	wait_fanfare
-	give_mon VAR_UNK_407F, 20, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon VAR_UNK_407F, 20, 0, 0, 0, VAR_SPECIAL_RESULT
 	scrcmd_420 116
 	setvar VAR_UNK_407F, 0
 	npc_msg msg_0464_T03R0101_00009
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0600
 	get_party_count VAR_TEMP_x4000
 	subvar VAR_TEMP_x4000, 1
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _05E8
 	scrcmd_420 50
 _05E8:
@@ -384,31 +384,31 @@ scr_seq_T03R0101_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _070D
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0721
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0681
 	apply_movement obj_player, _0738
 	apply_movement obj_T03R0101_gsmiddleman1, _0770
 	goto _06AC
 
 _0681:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _069C
 	apply_movement obj_player, _0750
 	goto _06AC
@@ -421,8 +421,8 @@ _06AC:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _06D3
 	apply_movement obj_partner_poke, _077C
 	wait_movement
@@ -435,24 +435,24 @@ _06D3:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _070D:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _0721:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -519,11 +519,11 @@ _07C1:
 scr_seq_T03R0101_016:
 	scrcmd_609
 	lockall
-	hasitem ITEM_ENIGMA_STONE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_ENIGMA_STONE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0963
-	scrcmd_546 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_546 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0963
 	apply_movement obj_T03R0101_daigo, _0968
 	wait_movement
@@ -564,10 +564,10 @@ _0870:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	wait 30, VAR_SPECIAL_x800C
+	wait 30, VAR_SPECIAL_RESULT
 	release obj_T03R0101_daigo
 	move_person obj_T03R0101_daigo, 25, 0, 7, 1
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	lock obj_T03R0101_daigo
 	compare VAR_TEMP_x4001, 6
 	goto_if_eq _08F1
@@ -579,14 +579,14 @@ _0870:
 _08F1:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	wait 10, VAR_SPECIAL_x800C
+	wait 10, VAR_SPECIAL_RESULT
 	apply_movement obj_T03R0101_gsassistantm, _09D0
 	wait_movement
 	npc_msg msg_0464_T03R0101_00019
 	closemsg
 	apply_movement obj_T03R0101_gsassistantm, _09D8
 	wait_movement
-	takeitem ITEM_ENIGMA_STONE, 1, VAR_SPECIAL_x800C
+	takeitem ITEM_ENIGMA_STONE, 1, VAR_SPECIAL_RESULT
 	setvar VAR_SPECIAL_x8004, 225
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_obtain_item_verbose

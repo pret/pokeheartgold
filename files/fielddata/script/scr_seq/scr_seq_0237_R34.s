@@ -272,8 +272,8 @@ _03F1:
 	scrcmd_602 1
 	scrcmd_604 48
 	play_se SEQ_SE_DP_KAIDAN2
-	scrcmd_596 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_596 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0455
 	scrcmd_600
 _0455:
@@ -442,37 +442,37 @@ scr_seq_R34_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0727
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _073B
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0678
 	apply_movement obj_player, _0750
 	apply_movement obj_R34_gsmiddleman1_2, _079C
 	goto _06C6
 
 _0678:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0693
 	apply_movement obj_player, _0768
 	goto _06C6
 
 _0693:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _06B6
 	apply_movement obj_player, _0788
 	apply_movement obj_R34_gsmiddleman1_2, _079C
@@ -486,8 +486,8 @@ _06C6:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _06ED
 	apply_movement obj_partner_poke, _07A8
 	wait_movement
@@ -500,24 +500,24 @@ _06ED:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _0727:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _073B:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -582,8 +582,8 @@ _07E1:
 	npc_msg msg_0384_R34_00019
 	closemsg
 	trainer_battle TRAINER_ACE_TRAINER_F_IRENE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0912
 	apply_movement obj_R34_gswoman3, _094C
 	wait_movement
@@ -598,8 +598,8 @@ _07E1:
 	npc_msg msg_0384_R34_00024
 	closemsg
 	trainer_battle TRAINER_ACE_TRAINER_F_JENN, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0912
 	apply_movement obj_R34_gswoman3_2, _0954
 	wait_movement
@@ -625,8 +625,8 @@ _087D:
 	npc_msg msg_0384_R34_00024
 	closemsg
 	trainer_battle TRAINER_ACE_TRAINER_F_JENN, 120, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0912
 	apply_movement obj_R34_gswoman3, _094C
 	wait_movement
@@ -694,8 +694,8 @@ scr_seq_R34_005:
 	closemsg
 	scrcmd_081 0
 	trainer_battle TRAINER_ACE_TRAINER_F_KATE, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0912
 	setvar VAR_UNK_4097, 2
 _09A0:
@@ -773,7 +773,7 @@ scr_seq_R34_009:
 	scrcmd_055 3, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0384_R34_00034, VAR_SPECIAL_x800C
+	trainer_tips msg_0384_R34_00034, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
@@ -781,15 +781,15 @@ scr_seq_R34_010:
 	scrcmd_055 2, 0
 	scrcmd_057 3
 	scrcmd_058
-	trainer_tips msg_0384_R34_00035, VAR_SPECIAL_x800C
+	trainer_tips msg_0384_R34_00035, VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_R34_011:
-	direction_signpost msg_0384_R34_00033, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0384_R34_00033, 1, 4, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

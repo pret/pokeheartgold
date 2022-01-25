@@ -23,9 +23,9 @@ scr_seq_R35R0101_001:
 _0028:
 	npc_msg msg_0388_R35R0101_00014
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _004B
 	npc_msg msg_0388_R35R0101_00015
 	waitbutton
@@ -50,12 +50,12 @@ scr_seq_R35R0101_000:
 	goto_if_ge _0104
 	npc_msg msg_0388_R35R0101_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00EE
-	get_party_count VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 6
+	get_party_count VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _00F9
 	npc_msg msg_0388_R35R0101_00003
 	scrcmd_362 7, 20, 101
@@ -65,8 +65,8 @@ scr_seq_R35R0101_000:
 	play_fanfare SEQ_ME_PT_SPECIAL
 	wait_fanfare
 _00BC:
-	scrcmd_781 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_781 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0178
 	goto_if_set FLAG_UNK_0B5, _00E3
 	npc_msg msg_0388_R35R0101_00006

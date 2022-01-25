@@ -17,9 +17,9 @@
 sub_0206793C: ; 0x0206793C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r0, r4, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r2, r0, #0
 	ldr r1, _02067958 ; =_020FE79C
 	add r0, r4, #0
@@ -35,10 +35,10 @@ sub_0206795C: ; 0x0206795C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	cmp r0, #6
@@ -154,7 +154,7 @@ sub_02067A1C: ; 0x02067A1C
 	ldr r1, _02067A5C ; =sub_0206795C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl sub_02050530
+	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02067A5C: .word sub_0206795C
@@ -402,10 +402,10 @@ sub_02067C30: ; 0x02067C30
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r6, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldrh r0, [r4, #4]
 	cmp r0, #6
@@ -430,7 +430,7 @@ _02067C66:
 	ldr r1, _02067DEC ; =ov01_02205A60
 	add r0, r6, #0
 	mov r2, #0
-	bl sub_02050530
+	bl QueueTask
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
@@ -769,8 +769,8 @@ _02067F24:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_02067E10
 
-	thumb_func_start sub_02067F28
-sub_02067F28: ; 0x02067F28
+	thumb_func_start PartyMenuEnv_create
+PartyMenuEnv_create: ; 0x02067F28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -788,10 +788,10 @@ sub_02067F28: ; 0x02067F28
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02067F48: .word 0x19740205
-	thumb_func_end sub_02067F28
+	thumb_func_end PartyMenuEnv_create
 
-	thumb_func_start sub_02067F4C
-sub_02067F4C: ; 0x02067F4C
+	thumb_func_start PartyMenuEnv_delete
+PartyMenuEnv_delete: ; 0x02067F4C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4]
@@ -805,7 +805,7 @@ _02067F5C:
 	pop {r4, pc}
 	.balign 4, 0
 _02067F64: .word 0x19740205
-	thumb_func_end sub_02067F4C
+	thumb_func_end PartyMenuEnv_delete
 
 	thumb_func_start FieldMoveMenuCheck_Cut
 FieldMoveMenuCheck_Cut: ; 0x02067F68
@@ -845,11 +845,11 @@ FieldMoveMenuUse_Cut: ; 0x02067F9C
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -871,10 +871,10 @@ sub_02067FD0: ; 0x02067FD0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _02068008 ; =std_menu_cut
 	ldr r2, [r4, #4]
@@ -885,9 +885,9 @@ sub_02067FD0: ; 0x02067FD0
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -975,10 +975,10 @@ FieldMoveMenuUse_Fly: ; 0x0206809C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #4
@@ -1067,11 +1067,11 @@ FieldMoveMenuUse_Surf: ; 0x02068150
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -1093,10 +1093,10 @@ sub_02068184: ; 0x02068184
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _020681BC ; =std_menu_surf
 	add r0, r5, #0
@@ -1107,9 +1107,9 @@ sub_02068184: ; 0x02068184
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1161,11 +1161,11 @@ FieldMoveMenuUse_Strength: ; 0x02068200
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -1187,10 +1187,10 @@ sub_02068234: ; 0x02068234
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _0206826C ; =std_menu_strength
 	ldr r2, [r4, #4]
@@ -1201,9 +1201,9 @@ sub_02068234: ; 0x02068234
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1250,11 +1250,11 @@ FieldMoveMenuUse_RockSmash: ; 0x020682A8
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -1276,10 +1276,10 @@ sub_020682DC: ; 0x020682DC
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _02068314 ; =std_menu_rock_smash
 	ldr r2, [r4, #4]
@@ -1290,9 +1290,9 @@ sub_020682DC: ; 0x020682DC
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1347,11 +1347,11 @@ FieldMoveMenuUse_Waterfall: ; 0x02068360
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -1373,10 +1373,10 @@ sub_02068394: ; 0x02068394
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _020683CC ; =std_menu_waterfall
 	add r0, r5, #0
@@ -1387,9 +1387,9 @@ sub_02068394: ; 0x02068394
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1454,11 +1454,11 @@ FieldMoveMenuUse_RockClimb: ; 0x02068430
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -1480,10 +1480,10 @@ sub_02068464: ; 0x02068464
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _0206849C ; =std_menu_rock_climb
 	add r0, r5, #0
@@ -1494,9 +1494,9 @@ sub_02068464: ; 0x02068464
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1540,11 +1540,11 @@ FieldMoveMenuUse_Flash: ; 0x020684D0
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -1566,10 +1566,10 @@ sub_02068504: ; 0x02068504
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	bl CheckUseFlashInAlphChamber
 	cmp r0, #0
@@ -1590,9 +1590,9 @@ _02068536:
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -1670,10 +1670,10 @@ FieldMoveMenuUse_Teleport: ; 0x020685D0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_020505C0
@@ -1707,10 +1707,10 @@ _0206861C: .word sub_02068620
 sub_02068620: ; 0x02068620
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r2, [r4, #4]
 	ldr r1, [r4]
@@ -1728,7 +1728,7 @@ sub_02068620: ; 0x02068620
 	ldr r1, _02068660 ; =ov02_0224C558
 	add r0, r5, #0
 	add r2, r6, #0
-	bl sub_02050510
+	bl NowRunTask
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1787,10 +1787,10 @@ FieldMoveMenuUse_Dig: ; 0x020686BC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_020505C0
@@ -1824,10 +1824,10 @@ _02068708: .word sub_0206870C
 sub_0206870C: ; 0x0206870C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r2, [r4, #4]
 	ldr r1, [r4]
@@ -1845,7 +1845,7 @@ sub_0206870C: ; 0x0206870C
 	ldr r1, _0206874C ; =ov02_0224C3AC
 	add r0, r5, #0
 	add r2, r6, #0
-	bl sub_02050510
+	bl NowRunTask
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1887,10 +1887,10 @@ FieldMoveMenuUse_SweetScent: ; 0x02068780
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	ldrh r1, [r5, #4]
 	add r4, r0, #0
 	ldr r2, [r7, #0xc]
@@ -1941,14 +1941,14 @@ FieldMoveMenuUse_Chatter: ; 0x020687E4
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	add r0, r7, #0
 	bl sub_020505C0
@@ -1970,10 +1970,10 @@ sub_02068820: ; 0x02068820
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _02068858 ; =std_menu_chatter
 	add r0, r5, #0
@@ -1984,9 +1984,9 @@ sub_02068820: ; 0x02068820
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -2041,11 +2041,11 @@ FieldMoveMenuUse_Whirlpool: ; 0x020688A4
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -2067,10 +2067,10 @@ sub_020688D8: ; 0x020688D8
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _02068910 ; =std_menu_whirlpool
 	add r0, r5, #0
@@ -2081,9 +2081,9 @@ sub_020688D8: ; 0x020688D8
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -2119,11 +2119,11 @@ FieldMoveMenuUse_Headbutt: ; 0x02068934
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r6, r1, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_02067F28
+	bl PartyMenuEnv_create
 	add r5, r0, #0
 	ldr r0, [r6, #4]
 	bl sub_020505C0
@@ -2145,10 +2145,10 @@ sub_02068968: ; 0x02068968
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
-	bl sub_02050650
+	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205064C
+	bl TaskManager_GetSys
 	add r6, r0, #0
 	ldr r1, _020689A0 ; =std_menu_headbutt
 	ldr r2, [r4, #4]
@@ -2159,9 +2159,9 @@ sub_02068968: ; 0x02068968
 	ldrh r1, [r4, #0xc]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_02040490
+	bl FieldMoveArgsSet
 	add r0, r4, #0
-	bl sub_02067F4C
+	bl PartyMenuEnv_delete
 	mov r0, #0
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}

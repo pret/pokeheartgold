@@ -16,9 +16,9 @@ scr_seq_T30R0301_000:
 	goto_if_set FLAG_UNK_0D0, _00CA
 	npc_msg msg_0634_T30R0301_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _003B
 	goto _00BF
 
@@ -27,20 +27,20 @@ _003B:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_566
-	get_party_selection VAR_SPECIAL_x800C
+	get_party_selection VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	compare VAR_SPECIAL_x800C, 255
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _00BF
 	scrcmd_470 3
-	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_x800C
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_239 32772, 32774
 	compare VAR_SPECIAL_x8006, 0
 	goto_if_eq _00B2
 	scrcmd_472 32780
-	compare VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
+	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _00B2
 	scrcmd_473 32772
 	scrcmd_474
@@ -78,13 +78,13 @@ scr_seq_T30R0301_001:
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8000
-	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8000, RIBBON_HOENN_EFFORT
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, RIBBON_HOENN_EFFORT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0199
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0634_T30R0301_00005
 	get_ev_total 32780, 32768
-	compare VAR_SPECIAL_x800C, 510
+	compare VAR_SPECIAL_RESULT, 510
 	goto_if_lt _0136
 	npc_msg msg_0634_T30R0301_00006
 	give_ribbon VAR_SPECIAL_x8000, RIBBON_HOENN_EFFORT
@@ -100,25 +100,25 @@ scr_seq_T30R0301_001:
 	end
 
 _0136:
-	compare VAR_SPECIAL_x800C, 506
+	compare VAR_SPECIAL_RESULT, 506
 	goto_if_ne _014C
 	npc_msg msg_0634_T30R0301_00010
 	goto _0191
 
 _014C:
-	compare VAR_SPECIAL_x800C, 507
+	compare VAR_SPECIAL_RESULT, 507
 	goto_if_ne _0162
 	npc_msg msg_0634_T30R0301_00011
 	goto _0191
 
 _0162:
-	compare VAR_SPECIAL_x800C, 508
+	compare VAR_SPECIAL_RESULT, 508
 	goto_if_ne _0178
 	npc_msg msg_0634_T30R0301_00012
 	goto _0191
 
 _0178:
-	compare VAR_SPECIAL_x800C, 509
+	compare VAR_SPECIAL_RESULT, 509
 	goto_if_ne _018E
 	npc_msg msg_0634_T30R0301_00013
 	goto _0191

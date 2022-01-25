@@ -89,15 +89,15 @@ _0118:
 	faceplayer
 	setvar VAR_TEMP_x4001, 2730
 	addvar VAR_TEMP_x4001, VAR_TEMP_x4000
-	checkflagvar VAR_TEMP_x4001, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	checkflagvar VAR_TEMP_x4001, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0186
 	npc_msg msg_0726_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0186
 	script_overlay_cmd 4, 0
 	scrcmd_809 VAR_TEMP_x4000
@@ -105,8 +105,8 @@ _0118:
 	closemsg
 	script_overlay_cmd 4, 1
 	scrcmd_808 VAR_TEMP_x4000
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	call_if_eq _0191
 	setflagvar VAR_TEMP_x4001
 	releaseall

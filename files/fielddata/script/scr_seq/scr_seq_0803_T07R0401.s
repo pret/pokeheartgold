@@ -32,12 +32,12 @@
 	scrdef_end
 
 _0062:
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _009C
 	script_overlay_cmd 3, 0
-	check_coins_immediate VAR_SPECIAL_x800C, 3
-	compare VAR_SPECIAL_x800C, 0
+	check_coins_immediate VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00AB
 	script_overlay_cmd 3, 1
 	setvar VAR_TEMP_x4001, 0
@@ -289,8 +289,8 @@ scr_seq_T07R0401_000:
 	lockall
 	faceplayer
 	npc_msg msg_0508_T07R0401_00000
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0428
 	npc_msg msg_0508_T07R0401_00001
 	waitbutton
@@ -305,24 +305,24 @@ _0428:
 	scrcmd_116 0, 20, 2
 	scrcmd_113 20, 7
 _043E:
-	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_x800C
+	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 127, 255, 0
 	menu_item_add 128, 255, 1
 	menu_item_add 129, 255, 2
 	menu_exec
-	switch VAR_SPECIAL_x800C
+	switch VAR_SPECIAL_RESULT
 	case 0, _048B
 	case 1, _04D7
 	npc_msg msg_0508_T07R0401_00006
 	goto _0531
 	.byte 0x02, 0x00
 _048B:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 1000
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 1000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _052E
-	checkgivecoins VAR_SPECIAL_x800C, 50
+	checkgivecoins VAR_SPECIAL_RESULT, 50
 	snop
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0523
 	submoneyimmediate 1000
 	give_coins 50
@@ -334,12 +334,12 @@ _048B:
 	goto _043E
 	.byte 0x02, 0x00
 _04D7:
-	hasenoughmoneyimmediate VAR_SPECIAL_x800C, 10000
-	compare VAR_SPECIAL_x800C, 0
+	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 10000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _052E
-	checkgivecoins VAR_SPECIAL_x800C, 500
+	checkgivecoins VAR_SPECIAL_RESULT, 500
 	snop
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0523
 	submoneyimmediate 10000
 	give_coins 500
@@ -373,12 +373,12 @@ scr_seq_T07R0401_005:
 	script_overlay_cmd 3, 0
 	goto_if_set FLAG_UNK_17C, _059B
 	npc_msg msg_0508_T07R0401_00011
-	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasitem ITEM_COIN_CASE, 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _05AA
-	checkgivecoins VAR_SPECIAL_x800C, 18
+	checkgivecoins VAR_SPECIAL_RESULT, 18
 	snop
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _05B9
 	give_coins 18
 	buffer_players_name 0

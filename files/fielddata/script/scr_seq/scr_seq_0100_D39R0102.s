@@ -35,22 +35,22 @@ _0062:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_40AB, 1
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0093
 	apply_movement obj_player, _0118
 	apply_movement obj_partner_poke, _0124
 	goto _00E9
 
 _0093:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _00B6
 	apply_movement obj_player, _0134
 	apply_movement obj_partner_poke, _0140
 	goto _00E9
 
 _00B6:
-	compare VAR_SPECIAL_x800C, 2
+	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _00D9
 	apply_movement obj_player, _0150
 	apply_movement obj_partner_poke, _015C
@@ -64,7 +64,7 @@ _00E9:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D39R0103, 0, 16384, 16385, VAR_SPECIAL_x800C
+	warp MAP_D39R0103, 0, 16384, 16385, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

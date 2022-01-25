@@ -58,29 +58,29 @@ scr_seq_R32_005:
 	lockall
 	faceplayer
 	get_lead_mon_index VAR_SPECIAL_x8002
-	mon_has_ribbon VAR_SPECIAL_x800C, VAR_SPECIAL_x8002, RIBBON_RELAX
-	compare VAR_SPECIAL_x800C, 1
+	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_RELAX
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01D4
 	goto_if_set FLAG_GOT_SHOCK_RIBBON, _01E8
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _0182
 	goto_if_set FLAG_UNK_0D9, _0164
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 5
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0115
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 19
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 19
 	goto _015C
 
 _0115:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 16
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 16
 	goto_if_no_item_space ITEM_POISON_BARB, 1, _0178
 	callstd std_give_item_verbose
 	setflag FLAG_UNK_0D9
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 17
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 17
 _015C:
 	waitbutton
 	closemsg
@@ -88,8 +88,8 @@ _015C:
 	end
 
 _0164:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 18
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 18
 	waitbutton
 	closemsg
 	releaseall
@@ -102,18 +102,18 @@ _0178:
 	end
 
 _0182:
-	get_weekday VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 5
+	get_weekday VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _01A5
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 19
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 19
 	goto _015C
 
 _01A5:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 44
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 44
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_x800C, 46
+	msgbox_extern VAR_SPECIAL_RESULT, 46
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_RELAX
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -124,16 +124,16 @@ _01A5:
 	end
 
 _01D4:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 45
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 45
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _01E8:
-	get_std_msg_naix 0, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 47
+	get_std_msg_naix 0, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 47
 	waitbutton
 	closemsg
 	releaseall
@@ -165,8 +165,8 @@ scr_seq_R32_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_badge 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _028C
 	goto_if_unset FLAG_UNK_070, _0297
 	goto_if_unset FLAG_UNK_074, _02A5
@@ -200,8 +200,8 @@ _02C8:
 	npc_msg msg_0380_R32_00005
 	setvar VAR_SPECIAL_x8004, 239
 	setvar VAR_SPECIAL_x8005, 1
-	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _030D
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _0304
@@ -254,8 +254,8 @@ _0391:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	check_badge 0, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_badge 0, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03B9
 	npc_msg msg_0380_R32_00004
 	goto _03BF
@@ -376,9 +376,9 @@ scr_seq_R32_003:
 	faceplayer
 	npc_msg msg_0380_R32_00014
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _052D
 	npc_msg msg_0380_R32_00015
 	goto _0530
@@ -395,37 +395,37 @@ scr_seq_R32_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 0
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 0
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0660
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0674
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 1
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
 	scrcmd_602 0
 	scrcmd_603
 	scrcmd_604 55
-	get_player_facing VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	get_player_facing VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _05B1
 	apply_movement obj_player, _0688
 	apply_movement obj_R32_gsmiddleman1_2, _06D4
 	goto _05FF
 
 _05B1:
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _05CC
 	apply_movement obj_player, _06A0
 	goto _05FF
 
 _05CC:
-	compare VAR_SPECIAL_x800C, 3
+	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _05EF
 	apply_movement obj_player, _06C0
 	apply_movement obj_R32_gsmiddleman1_2, _06D4
@@ -439,8 +439,8 @@ _05FF:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0626
 	apply_movement obj_partner_poke, _06E0
 	wait_movement
@@ -453,24 +453,24 @@ _0626:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	clearflag FLAG_UNK_189
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 2
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 2
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _0660:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 5
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 5
 	waitbutton
 	closemsg
 	releaseall
 	end
 
 _0674:
-	get_std_msg_naix 2, VAR_SPECIAL_x800C
-	msgbox_extern VAR_SPECIAL_x800C, 3
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 3
 	waitbutton
 	closemsg
 	releaseall
@@ -515,26 +515,26 @@ _06E0:
 	step 1, 1
 	step_end
 scr_seq_R32_006:
-	direction_signpost msg_0380_R32_00018, 1, 2, VAR_SPECIAL_x800C
+	direction_signpost msg_0380_R32_00018, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_R32_007:
-	direction_signpost msg_0380_R32_00017, 1, 4, VAR_SPECIAL_x800C
+	direction_signpost msg_0380_R32_00017, 1, 4, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 
 scr_seq_R32_008:
-	direction_signpost msg_0380_R32_00019, 1, 13, VAR_SPECIAL_x800C
+	direction_signpost msg_0380_R32_00019, 1, 13, VAR_SPECIAL_RESULT
 	scrcmd_057 3
 	scrcmd_058
-	scrcmd_060 VAR_SPECIAL_x800C
+	scrcmd_060 VAR_SPECIAL_RESULT
 	callstd std_signpost
 	end
 	.balign 4, 0

@@ -65,10 +65,10 @@ _00F4:
 	wait_se SEQ_SE_DP_SELECT
 	elevator_anim VAR_SPECIAL_x8004, 1
 _00FE:
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0142
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _011E
 	end
 
@@ -121,8 +121,8 @@ _018C:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	scrcmd_729 VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	scrcmd_729 VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01C5
 	apply_movement obj_partner_poke, _0160
 	wait_movement

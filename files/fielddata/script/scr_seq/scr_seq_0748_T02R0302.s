@@ -52,15 +52,15 @@ scr_seq_T02R0302_003:
 	npc_msg msg_0458_T02R0302_00000
 _0091:
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00ED
 	scrcmd_783 1
 	setvar VAR_UNK_412E, 5
 	callstd std_prompt_save
-	copyvar VAR_SPECIAL_x800C, VAR_TEMP_x4000
-	compare VAR_SPECIAL_x800C, 0
+	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00ED
 	touchscreen_menu_show
 	scrcmd_600
@@ -100,9 +100,9 @@ scr_seq_T02R0302_001:
 	lockall
 	npc_msg msg_0458_T02R0302_00004
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0168
 	npc_msg msg_0458_T02R0302_00005
 	closemsg

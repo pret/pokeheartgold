@@ -23,11 +23,11 @@ scr_seq_R32PC0101_001:
 	goto_if_set FLAG_UNK_075, _008C
 	npc_msg msg_0381_R32PC0101_00000
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0058
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00A1
 	end
 
@@ -68,9 +68,9 @@ scr_seq_R32PC0101_002:
 	goto_if_set FLAG_UNK_174, _0121
 	npc_msg msg_0381_R32PC0101_00007
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00E0
 	npc_msg msg_0381_R32PC0101_00008
 	goto _00E3

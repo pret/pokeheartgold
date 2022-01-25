@@ -122,12 +122,12 @@ _01AB:
 _01B2:
 	goto_if_set FLAG_UNK_988, _01F2
 	callstd std_in_person_evaluate_dex
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01EC
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01EC
-	check_national_dex_complete VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_national_dex_complete VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01F0
 _01EC:
 	releaseall
@@ -141,12 +141,12 @@ _01F2:
 	gender_msgbox msg_0451_T01R0301_00004, msg_0451_T01R0301_00005
 	npc_msg msg_0451_T01R0301_00028
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0256
-	photo_album_is_full VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	photo_album_is_full VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0261
 	npc_msg msg_0451_T01R0301_00029
 	closemsg
@@ -282,8 +282,8 @@ _03BD:
 	goto _03DE
 	.byte 0x02, 0x00
 _03DE:
-	get_game_version VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 8
+	get_game_version VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 8
 	goto_if_eq _03FE
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00015, msg_0451_T01R0301_00016
@@ -460,8 +460,8 @@ _066B:
 	npc_msg msg_0451_T01R0301_00045
 	wait_cry
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _096C
 	setvar VAR_SPECIAL_x8004, 1
 	setvar VAR_SPECIAL_x8006, 3
@@ -497,8 +497,8 @@ _0719:
 	npc_msg msg_0451_T01R0301_00044
 	wait_cry
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _096C
 	setvar VAR_SPECIAL_x8004, 7
 	setvar VAR_SPECIAL_x8006, 4
@@ -534,8 +534,8 @@ _07C7:
 	npc_msg msg_0451_T01R0301_00043
 	wait_cry
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	getmenuchoice VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _096C
 	setvar VAR_SPECIAL_x8004, 4
 	setvar VAR_SPECIAL_x8006, 5
@@ -570,13 +570,13 @@ _0852:
 	npc_msg msg_0451_T01R0301_00048
 	play_fanfare SEQ_ME_POKEGET
 	wait_fanfare
-	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_x800C
+	give_mon VAR_SPECIAL_x8004, 5, 0, 0, 0, VAR_SPECIAL_RESULT
 	buffer_species_name 1, VAR_SPECIAL_x8004, 0, 0
 	npc_msg msg_0451_T01R0301_00049
 	touchscreen_menu_hide
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
-	compare VAR_SPECIAL_x800C, 0
+	compare VAR_SPECIAL_RESULT, 0
 	call_if_eq _0929
 	touchscreen_menu_show
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -627,9 +627,9 @@ _0929:
 	touchscreen_menu_hide
 	bufferpartymonnick 1, VAR_SPECIAL_x8005
 	npc_msg msg_0451_T01R0301_00050
-	getmenuchoice VAR_SPECIAL_x800C
+	getmenuchoice VAR_SPECIAL_RESULT
 	closemsg
-	compare VAR_SPECIAL_x800C, 1
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0929
 	return
 

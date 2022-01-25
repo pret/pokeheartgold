@@ -2,7 +2,7 @@
   "header": "fielddata/script/scr_seq/event_D17R1101.h",
   "bgs": [
     {
-      "scr": "std_hiddenitem_d17r1101_revive",
+      "scr": "std_hiddenitem_d17r1101_tinymushroom",
       "type": 2,
       "x": 33,
       "y": 10,
@@ -10,7 +10,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d17r1101_max_potion",
+      "scr": "std_hiddenitem_d17r1101_big_mushroom",
       "type": 2,
       "x": 39,
       "y": 20,
@@ -18,7 +18,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d17r1101_pp_up",
+      "scr": "std_hiddenitem_d17r1101_tinymushroom_2",
       "type": 2,
       "x": 14,
       "y": 7,
@@ -26,7 +26,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d17r1101_max_elixir",
+      "scr": "std_hiddenitem_d17r1101_big_mushroom_2",
       "type": 2,
       "x": 23,
       "y": 7,
@@ -34,7 +34,7 @@
       "dir": 4
     },
     {
-      "scr": "std_hiddenitem_d17r1101_revive_2",
+      "scr": "std_hiddenitem_d17r1101_tinymushroom_3",
       "type": 2,
       "x": 17,
       "y": 7,

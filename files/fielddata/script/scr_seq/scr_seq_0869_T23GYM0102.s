@@ -66,14 +66,14 @@ scr_seq_T23GYM0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	check_badge 1, VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 1
+	check_badge 1, VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _017A
 	npc_msg msg_0567_T23GYM0102_00000
 	closemsg
 	trainer_battle TRAINER_LEADER_BUGSY_BUGSY, 0, 0, 0
-	check_battle_won VAR_SPECIAL_x800C
-	compare VAR_SPECIAL_x800C, 0
+	check_battle_won VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0174
 	npc_msg msg_0567_T23GYM0102_00001
 	buffer_players_name 0
