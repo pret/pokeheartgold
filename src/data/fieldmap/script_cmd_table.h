@@ -818,7 +818,7 @@ extern BOOL ScrCmd_814(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_815(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_UnownCircle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_817(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_818(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MystriStageGymmickInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_819(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_820(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_821(SCRIPTCONTEXT *ctx);
@@ -1673,7 +1673,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_815,
     ScrCmd_UnownCircle,
     ScrCmd_817,
-    ScrCmd_818,
+    ScrCmd_MystriStageGymmickInit,
     ScrCmd_819,
     ScrCmd_820,
     ScrCmd_821,

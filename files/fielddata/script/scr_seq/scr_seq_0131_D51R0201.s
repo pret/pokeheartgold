@@ -29,7 +29,7 @@ scr_seq_D51R0201_002:
 	end
 
 _0065:
-	scrcmd_818
+	mystry_stage_gymmick_init
 	end
 
 scr_seq_D51R0201_007:

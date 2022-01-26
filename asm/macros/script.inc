@@ -4562,7 +4562,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_818
+	.macro mystry_stage_gymmick_init
 	.short 818
 	.endm
 

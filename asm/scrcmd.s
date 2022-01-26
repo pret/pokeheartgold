@@ -868,7 +868,7 @@ gScriptCmdTable:
 	.word ScrCmd_815                                    ; 815
 	.word ScrCmd_UnownCircle                                    ; 816
 	.word ScrCmd_817                                    ; 817
-	.word ScrCmd_818                                    ; 818
+	.word ScrCmd_MystriStageGymmickInit                                    ; 818
 	.word ScrCmd_819                                    ; 819
 	.word ScrCmd_820                                    ; 820
 	.word ScrCmd_821                                    ; 821
@@ -16244,16 +16244,16 @@ ScrCmd_817: ; 0x02047E64
 	.balign 4, 0
 	thumb_func_end ScrCmd_817
 
-	thumb_func_start ScrCmd_818
-ScrCmd_818: ; 0x02047E7C
+	thumb_func_start ScrCmd_MystriStageGymmickInit
+ScrCmd_MystriStageGymmickInit: ; 0x02047E7C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0206DCC4
+	bl Fsys_InitMystriStageGymmick
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_818
+	thumb_func_end ScrCmd_MystriStageGymmickInit
 
 	thumb_func_start ScrCmd_819
 ScrCmd_819: ; 0x02047E8C

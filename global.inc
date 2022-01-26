@@ -2498,7 +2498,7 @@
 .public ScrCmd_815
 .public ScrCmd_UnownCircle
 .public ScrCmd_817
-.public ScrCmd_818
+.public ScrCmd_MystriStageGymmickInit
 .public ScrCmd_819
 .public ScrCmd_820
 .public ScrCmd_821
@@ -29313,7 +29313,7 @@
 .public FieldSys_IncrementBugContestTimer
 .public sub_0206DB58
 .public sub_0206DB94
-.public sub_0206DCC4
+.public Fsys_InitMystriStageGymmick
 .public sub_02070124
 .public sub_02070130
 .public sub_0207013C
@@ -30094,3 +30094,4 @@
 .public sub_02066438
 .public sub_020623C8
 .public sub_020623D8
+.public sub_02064518

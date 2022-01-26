@@ -10,6 +10,7 @@
 #define GYMMICK_BLACKTHORN   6
 #define GYMMICK_FUCHSIA      7
 #define GYMMICK_VIRIDIAN     8
+#define GYMMICK_SINJOH       9
 
 struct Gymmick {
     int kind;

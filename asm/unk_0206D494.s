@@ -1051,8 +1051,8 @@ _0206DCBA:
 _0206DCC0: .word 0x00004021
 	thumb_func_end ScrCmd_807
 
-	thumb_func_start sub_0206DCC4
-sub_0206DCC4: ; 0x0206DCC4
+	thumb_func_start Fsys_InitMystriStageGymmick
+Fsys_InitMystriStageGymmick: ; 0x0206DCC4
 	push {r4, lr}
 	bl ScriptEnvironment_GetSav2Ptr
 	bl Sav2_GetGymmickPtr
@@ -1065,4 +1065,4 @@ sub_0206DCC4: ; 0x0206DCC4
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}
-	thumb_func_end sub_0206DCC4
+	thumb_func_end Fsys_InitMystriStageGymmick
