@@ -329,7 +329,7 @@ _02055E20:
 	cmp r0, #1
 	beq _02055E5E
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r5, r0, #0
 	bl sub_02069F7C
 	ldr r1, [r4, #4]
@@ -486,7 +486,7 @@ _02055F78:
 	add r2, r4, #0
 	bl QueueTask
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_02069F88
@@ -730,12 +730,12 @@ _0205616A:
 	cmp r0, #0
 	beq _020561A0
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_02062198
 	cmp r0, #0
 	beq _02056218
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x37
 	bl sub_0205FC94
 	ldrh r0, [r4, #2]
@@ -752,7 +752,7 @@ _020561A8:
 	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	cmp r6, #2
 	bne _020561C2
 	mov r1, #0xa
@@ -773,7 +773,7 @@ _020561D2:
 	b _02056218
 _020561DA:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	bl sub_02062198
 	cmp r0, #1
@@ -816,7 +816,7 @@ sub_02056220: ; 0x02056220
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _02056244
@@ -853,7 +853,7 @@ sub_02056268: ; 0x02056268
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldrh r0, [r4, #2]
 	cmp r0, #0
 	beq _0205628C
@@ -908,7 +908,7 @@ _020562D8: ; jump table
 	.short _020563FC - _020562D8 - 2 ; case 3
 _020562E0:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp]
 	bl sub_020621C0
 	mov r1, #2
@@ -941,8 +941,8 @@ _020562E0:
 	beq _0205638E
 	add r0, r4, #0
 	mov r7, #1
-	bl sub_02069D68
-	bl sub_0205F2A8
+	bl FollowingPokemon_GetMapObject
+	bl MapObject_GetFacingDirection
 	cmp r0, #3
 	bhi _02056368
 	add r0, r0, r0
@@ -975,10 +975,10 @@ _0205636E:
 	cmp r7, #0
 	beq _0205638E
 	ldr r0, [sp]
-	bl MapObject_GetCurrentX
+	bl MapObject_GetPrevX
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetPrevY
 	add r4, #0xe4
 	add r2, r0, #0
 	add r0, r6, #0
@@ -992,7 +992,7 @@ _0205638E:
 	b _02056418
 _02056396:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r4, [r5, #0x18]
 	add r6, r0, #0
 	ldr r1, [r4]
@@ -1087,7 +1087,7 @@ _0205644A: ; jump table
 	.short _02056508 - _0205644A - 2 ; case 4
 _02056454:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	bl sub_02062108
 	cmp r0, #0
@@ -1101,7 +1101,7 @@ _02056454:
 	b _02056524
 _02056474:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	bl sub_02062108
 	cmp r0, #0
@@ -1131,7 +1131,7 @@ _02056474:
 	b _02056524
 _020564BE:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r5, [r4, #0x18]
 	add r6, r0, #0
 	ldr r1, [r5]
@@ -1208,7 +1208,7 @@ _02056554: ; jump table
 	.short _020565F0 - _02056554 - 2 ; case 3
 _0205655C:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	ldr r0, [r4, #0x40]
 	bl GetPlayerXCoord
@@ -1263,7 +1263,7 @@ _020565CC:
 	add r0, r5, #0
 	bl ov01_021E90D4
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #0
 	bl sub_0205F690
 	mov r0, #1
@@ -1295,7 +1295,7 @@ sub_020565FC: ; 0x020565FC
 	b _02056674
 _0205661A:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerXCoord

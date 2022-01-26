@@ -2469,7 +2469,7 @@ _0225E828:
 	ldr r0, [r5, #0x18]
 	bne _0225E860
 	bl sub_0205CA1C
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	bl MapObject_GetGfxID
 	sub r0, #0xbc

@@ -64,7 +64,7 @@ _00E9:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D39R0103, 0, 16384, 16385, VAR_SPECIAL_RESULT
+	warp MAP_D39R0103, 0, VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

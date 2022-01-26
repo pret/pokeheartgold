@@ -1816,7 +1816,7 @@ _02053D06:
 	cmp r0, #1
 	beq _02053D36
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #1
 	bl ov01_0220329C
 	str r0, [r4, #0x1c]
@@ -1887,7 +1887,7 @@ _02053DAA:
 	cmp r0, #0
 	beq _02053DE6
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r7, r0, #0
 	bl sub_02069F7C
 	ldr r1, [r6]

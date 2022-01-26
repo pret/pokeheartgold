@@ -78,7 +78,7 @@ _0203DBCE:
 sub_0203DBD4: ; 0x0203DBD4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl sub_0205F9D0
 	add r4, r0, #0
 	add r0, r5, #0

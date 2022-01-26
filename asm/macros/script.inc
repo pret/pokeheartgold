@@ -3552,7 +3552,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_632 arg0, arg1
+	.macro count_party_mons_of_species arg0, arg1
 	.short 632
 	.short \arg0
 	.short \arg1
@@ -3801,7 +3801,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_673 arg0, arg1, arg2, arg3, arg4
+	.macro get_owned_rotom_formes arg0, arg1, arg2, arg3, arg4
 	.short 673
 	.short \arg0
 	.short \arg1
@@ -3810,13 +3810,13 @@
 	.short \arg4
 	.endm
 
-	.macro scrcmd_674 arg0, arg1
+	.macro count_transformed_rotoms_in_party arg0, arg1
 	.short 674
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_675 arg0, arg1, arg2, arg3
+	.macro update_rotom_forme arg0, arg1, arg2, arg3
 	.short 675
 	.short \arg0
 	.short \arg1
@@ -3824,7 +3824,7 @@
 	.short \arg3
 	.endm
 
-	.macro scrcmd_676 arg0, arg1
+	.macro get_party_mon_forme arg0, arg1
 	.short 676
 	.short \arg0
 	.short \arg1
@@ -3846,7 +3846,7 @@
 	.short 679
 	.endm
 
-	.macro scrcmd_680 arg0
+	.macro add_special_game_stat_2 arg0
 	.short 680
 	.short \arg0
 	.endm

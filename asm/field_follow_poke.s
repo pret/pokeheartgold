@@ -527,7 +527,7 @@ _02069B08:
 	add r0, r4, #0
 	bl sub_0206A054
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x38
 	bl sub_0205FC94
 	b _02069B58
@@ -542,7 +542,7 @@ _02069B2E:
 	add r0, r4, #0
 	bl sub_0206A054
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x38
 	bl sub_0205FC94
 	b _02069B58
@@ -788,13 +788,13 @@ _02069D62:
 	.balign 4, 0
 	thumb_func_end sub_02069B74
 
-	thumb_func_start sub_02069D68
-sub_02069D68: ; 0x02069D68
+	thumb_func_start FollowingPokemon_GetMapObject
+FollowingPokemon_GetMapObject: ; 0x02069D68
 	add r0, #0xe4
 	ldr r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02069D68
+	thumb_func_end FollowingPokemon_GetMapObject
 
 	thumb_func_start FollowingPokemon_GetSpriteID
 FollowingPokemon_GetSpriteID: ; 0x02069D70
@@ -1401,11 +1401,11 @@ _0206A15A:
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0205F89C
@@ -2100,7 +2100,7 @@ _0206A6C8:
 	b _0206A790
 _0206A6D8:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldrh r1, [r4, #2]
 	add r6, r0, #0
 	add r1, r1, #1
@@ -2137,7 +2137,7 @@ _0206A714:
 	b _0206A790
 _0206A72A:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	bl sub_02062108
 	cmp r0, #0
@@ -2151,7 +2151,7 @@ _0206A72A:
 	b _0206A790
 _0206A74A:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl sub_02062108
 	cmp r0, #0
 	beq _0206A790
@@ -2163,11 +2163,11 @@ _0206A74A:
 	mov r1, #1
 	bl ov01_02205790
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #0x30
 	bl sub_0205FC94
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	mov r1, #1
 	bl sub_02069DC8
 _0206A782:

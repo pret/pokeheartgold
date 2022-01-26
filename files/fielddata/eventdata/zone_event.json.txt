@@ -29,7 +29,7 @@
 	.short {{ object.dirn }}
 	.short {{ object.eye }}
 	.short {{ object.unk10 }}
-	.short {{ object.unk12 }}
+	.short {{ object.tsure_poke_color }}
 	.short {{ object.xrange }}
 	.short {{ object.yrange }}
 	.short {{ object.x }}

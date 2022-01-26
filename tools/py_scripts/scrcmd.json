@@ -1097,8 +1097,8 @@
       "args": [
         "maps",
         2,
-        2,
-        2,
+        "var",
+        "var",
         "var"
       ]
     },
@@ -2435,9 +2435,9 @@
     {
       "name": "scrcmd_398",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -3960,10 +3960,10 @@
       ]
     },
     {
-      "name": "scrcmd_632",
+      "name": "count_party_mons_of_species",
       "args": [
-        2,
-        2
+        "var",
+        "species"
       ]
     },
     {
@@ -4067,8 +4067,8 @@
     {
       "name": "scrcmd_647",
       "args": [
-        2,
-        2
+        "var",
+        "species"
       ]
     },
     {
@@ -4245,36 +4245,36 @@
       ]
     },
     {
-      "name": "scrcmd_673",
+      "name": "get_owned_rotom_formes",
       "args": [
-        2,
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_674",
+      "name": "count_transformed_rotoms_in_party",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_675",
+      "name": "update_rotom_forme",
       "args": [
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_676",
+      "name": "get_party_mon_forme",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4296,7 +4296,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_680",
+      "name": "add_special_game_stat_2",
       "args": [
         2
       ]

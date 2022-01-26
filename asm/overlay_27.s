@@ -749,7 +749,7 @@ _0225A5A8:
 	bne _0225A5E6
 	add r0, r4, #0
 	bl sub_0205CA1C
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	bl sub_0205F330
 	add r6, r0, #0

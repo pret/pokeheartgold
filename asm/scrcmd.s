@@ -1,4 +1,5 @@
 #include "constants/sprites.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -681,7 +682,7 @@ gScriptCmdTable:
 	.word ScrCmd_629                                    ; 629
 	.word ScrCmd_630                                    ; 630
 	.word ScrCmd_631                                    ; 631
-	.word ScrCmd_632                                    ; 632
+	.word ScrCmd_CountPartyMonsOfSpecies                                    ; 632
 	.word ScrCmd_633                                    ; 633
 	.word ScrCmd_634                                    ; 634
 	.word ScrCmd_635                                    ; 635
@@ -722,14 +723,14 @@ gScriptCmdTable:
 	.word ScrCmd_670                                    ; 670
 	.word ScrCmd_671                                    ; 671
 	.word ScrCmd_672                                    ; 672
-	.word ScrCmd_673                                    ; 673
-	.word ScrCmd_674                                    ; 674
-	.word ScrCmd_675                                    ; 675
-	.word ScrCmd_676                                    ; 676
+	.word ScrCmd_GetOwnedRotomFormes                                    ; 673
+	.word ScrCmd_CountTranformedRotomsInParty                                    ; 674
+	.word ScrCmd_UpdateRotomForme                                    ; 675
+	.word ScrCmd_GetPartyMonForme                                    ; 676
 	.word ScrCmd_677                                    ; 677
 	.word ScrCmd_678                                    ; 678
 	.word ScrCmd_679                                    ; 679
-	.word ScrCmd_680                                    ; 680
+	.word ScrCmd_AddSpecialGameStat2                                    ; 680
 	.word ScrCmd_681                                    ; 681
 	.word ScrCmd_682                                    ; 682
 	.word ScrCmd_683                                    ; 683
@@ -907,7 +908,18 @@ gScriptCmdTable_end:
 	.bss
 
 _021D415C:
-	.space 0x10
+	.space 0x1
+
+	.balign 4, 0
+
+_021D4160:
+	.space 0x4
+
+_021D4164:
+	.space 0x4
+
+_021D4168:
+	.space 0x4
 
 	.text
 
@@ -2043,7 +2055,7 @@ _02041086:
 	ldr r0, [r0]
 	mov r1, #0
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _0204109A:
 	mov r3, #0x80
@@ -2053,7 +2065,7 @@ _0204109A:
 	ldr r0, [r0]
 	mov r1, #1
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _020410AE:
 	mov r3, #0x20
@@ -2063,7 +2075,7 @@ _020410AE:
 	ldr r0, [r0]
 	mov r1, #2
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _020410C2:
 	mov r3, #0x10
@@ -2072,7 +2084,7 @@ _020410C2:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	b _020410D8
 _020410D4:
 	mov r0, #0
@@ -2685,7 +2697,7 @@ _02041584:
 	ldr r0, [r0]
 	add r1, r4, #0
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	mov r0, #0
 	strh r0, [r6]
 	add r5, #0x80
@@ -2782,7 +2794,7 @@ _02041640:
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	mov r0, #0
 	strh r0, [r6]
 	add r0, r4, #0
@@ -3499,11 +3511,11 @@ _02041BCA:
 	bl AllocFromHeap
 	add r4, r0, #0
 	ldr r0, [sp, #4]
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r0, [sp, #4]
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	lsl r0, r0, #0x10
 	ldr r2, [sp]
 	lsr r0, r0, #0x10
@@ -3706,7 +3718,7 @@ ScrCmd_LockAll: ; 0x02041D40
 	ldr r0, [r5, #0x3c]
 	bl sub_0205F574
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_02069F88
@@ -3743,7 +3755,7 @@ sub_02041D98: ; 0x02041D98
 	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, _02041E5C ; =_021D415C
 	add r6, r0, #0
 	ldrb r2, [r1]
@@ -3835,7 +3847,7 @@ sub_02041E60: ; 0x02041E60
 	push {r4, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	bl sub_0205F648
 	cmp r0, #0
@@ -3862,7 +3874,7 @@ ScrCmd_581: ; 0x02041E84
 	bl FieldSysGetAttrAddr
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x3c]
 	mov r1, #0x30
@@ -4252,7 +4264,7 @@ ScrCmd_FacePlayer: ; 0x0204219C
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
 _020421C6:
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [r4]
 	add r1, r6, #0
@@ -4349,7 +4361,7 @@ _02042242:
 	mov r1, #1
 	ldr r0, [r4]
 	lsl r1, r1, #0x14
-	bl sub_0205F214
+	bl MapObject_ClearBits
 _020422AC:
 	mov r0, #0
 	add sp, #0xc
@@ -4425,10 +4437,10 @@ ScrCmd_GetPersonCoords: ; 0x020422F8
 	cmp r5, #0
 	beq _0204235A
 	add r0, r5, #0
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	strh r0, [r6]
 	add r0, r5, #0
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	strh r0, [r4]
 	b _02042368
 _0204235A:
@@ -4550,7 +4562,7 @@ _0204244C:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0
 	bl sub_0205F9A0
 	add r5, #0x80
@@ -9714,18 +9726,18 @@ ScrCmd_685: ; 0x02044BE8
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	strh r0, [r6]
 	add r0, r4, #0
-	bl MapObject_GetNextHeight
+	bl MapObject_GetCurrentHeight
 	lsr r1, r0, #0x1f
 	add r1, r0, r1
 	asr r0, r1, #1
 	strh r0, [r7]
 	add r0, r4, #0
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -13104,8 +13116,8 @@ _020466D8:
 _020466DC: .word gMain
 	thumb_func_end ScrCmd_667
 
-	thumb_func_start ScrCmd_673
-ScrCmd_673: ; 0x020466E0
+	thumb_func_start ScrCmd_GetOwnedRotomFormes
+ScrCmd_GetOwnedRotomFormes: ; 0x020466E0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -13200,7 +13212,7 @@ _020467A2:
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_673
+	thumb_func_end ScrCmd_GetOwnedRotomFormes
 
 	thumb_func_start sub_020467A8
 sub_020467A8: ; 0x020467A8
@@ -13223,7 +13235,7 @@ _020467C2:
 	mov r2, #0
 	add r5, r0, #0
 	bl GetMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _020467F8
 	add r0, r5, #0
@@ -13257,7 +13269,7 @@ _02046808:
 	mov r2, #0
 	add r5, r0, #0
 	bl GetBoxMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _02046842
 	add r0, r5, #0
@@ -13292,7 +13304,7 @@ _02046854:
 	mov r2, #0
 	add r4, r0, #0
 	bl GetBoxMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _0204688C
 	add r0, r4, #0
@@ -13330,7 +13342,7 @@ _0204688C:
 	mov r1, #5
 	mov r2, #0
 	bl GetBoxMonData
-	ldr r1, _020468F0 ; =0x000001DF
+	ldr r1, _020468F0 ; =SPECIES_ROTOM
 	cmp r0, r1
 	bne _020468E4
 	add r0, r4, #0
@@ -13353,11 +13365,11 @@ _020468E4:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_020468F0: .word 0x000001DF
+_020468F0: .word SPECIES_ROTOM
 	thumb_func_end sub_020467A8
 
-	thumb_func_start ScrCmd_680
-ScrCmd_680: ; 0x020468F4
+	thumb_func_start ScrCmd_AddSpecialGameStat2
+ScrCmd_AddSpecialGameStat2: ; 0x020468F4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -13371,7 +13383,7 @@ ScrCmd_680: ; 0x020468F4
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_680
+	thumb_func_end ScrCmd_AddSpecialGameStat2
 
 	thumb_func_start ScrCmd_682
 ScrCmd_682: ; 0x02046914
@@ -13683,20 +13695,20 @@ ScrCmd_598: ; 0x02046B64
 	cmp r0, #1
 	bne _02046B88
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r1, r0, #0
 	b _02046BA6
 _02046B88:
 	cmp r0, #2
 	bne _02046B9E
 	add r0, r4, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r0, #0
 	b _02046BA6
 _02046B9E:
@@ -13755,7 +13767,7 @@ ScrCmd_601: ; 0x02046BDC
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl ov01_022055DC
 	cmp r0, #0
 	beq _02046C9C
@@ -13763,7 +13775,7 @@ ScrCmd_601: ; 0x02046BDC
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0205CA1C
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
 	add r0, #0x80
@@ -13772,16 +13784,16 @@ ScrCmd_601: ; 0x02046BDC
 	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02060F0C
 	lsl r5, r0, #1
 	ldr r0, [sp, #0xc]
-	bl MapObject_GetNextHeight
+	bl MapObject_GetCurrentHeight
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0xc]
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	add r0, r4, #0
 	bl sub_02060F18
@@ -13852,13 +13864,13 @@ ScrCmd_602: ; 0x02046CB4
 	beq _02046CDE
 	add r5, #0x80
 	ldr r0, [r5]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_0205F6FC
 	b _02046CEA
 _02046CDE:
 	add r5, #0x80
 	ldr r0, [r5]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_0205F708
 _02046CEA:
 	mov r0, #0
@@ -13915,7 +13927,7 @@ sub_02046D40: ; 0x02046D40
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_02062198
 	cmp r0, #0
 	beq _02046D56
@@ -13948,7 +13960,7 @@ ScrCmd_605: ; 0x02046D5C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r5, #0x80
 	add r7, r0, #0
 	ldr r0, [r5]
@@ -13978,7 +13990,7 @@ ScrCmd_606: ; 0x02046DA8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	bl sub_02069F7C
 	add r1, r5, #0
@@ -14016,7 +14028,7 @@ ScrCmd_607: ; 0x02046DF8
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	bl sub_02069F7C
 	add r1, r4, #0
 	add r1, #0x80
@@ -14781,7 +14793,7 @@ ScrCmd_622: ; 0x020473D8
 	bl GetMapObjectByID
 	cmp r0, #0
 	beq _0204740C
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	b _0204740E
 _0204740C:
 	mov r0, #0

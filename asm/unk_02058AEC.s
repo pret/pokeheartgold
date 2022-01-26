@@ -554,7 +554,7 @@ _02058EF6:
 	b _02059472
 _02058F0E:
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl sub_02062198
 	cmp r0, #0
 	beq _02058FB2

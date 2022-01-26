@@ -16,12 +16,12 @@
 	scrdef_end
 
 scr_seq_T11R0702_006:
-	setflag FLAG_UNK_283
-	setflag FLAG_UNK_284
-	setflag FLAG_UNK_285
-	setflag FLAG_UNK_286
-	setflag FLAG_UNK_287
-	scrcmd_673 16384, 16385, 16386, 16387, 16388
+	setflag FLAG_HIDE_SILPH_ROTOM_HEAT
+	setflag FLAG_HIDE_SILPH_ROTOM_WASH
+	setflag FLAG_HIDE_SILPH_ROTOM_FROST
+	setflag FLAG_HIDE_SILPH_ROTOM_FAN
+	setflag FLAG_HIDE_SILPH_ROTOM_MOW
+	get_owned_rotom_formes VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_TEMP_x4004
 	compare VAR_TEMP_x4000, 0
 	call_if_eq _0085
 	compare VAR_TEMP_x4001, 0
@@ -35,23 +35,23 @@ scr_seq_T11R0702_006:
 	end
 
 _0085:
-	clearflag FLAG_UNK_283
+	clearflag FLAG_HIDE_SILPH_ROTOM_HEAT
 	return
 
 _008B:
-	clearflag FLAG_UNK_284
+	clearflag FLAG_HIDE_SILPH_ROTOM_WASH
 	return
 
 _0091:
-	clearflag FLAG_UNK_285
+	clearflag FLAG_HIDE_SILPH_ROTOM_FROST
 	return
 
 _0097:
-	clearflag FLAG_UNK_286
+	clearflag FLAG_HIDE_SILPH_ROTOM_FAN
 	return
 
 _009D:
-	clearflag FLAG_UNK_287
+	clearflag FLAG_HIDE_SILPH_ROTOM_MOW
 	return
 
 scr_seq_T11R0702_001:
@@ -98,7 +98,7 @@ _0107:
 	call_if_eq _0733
 	compare VAR_SPECIAL_x8004, 5
 	call_if_eq _0738
-	scrcmd_674 32771, 32780
+	count_transformed_rotoms_in_party VAR_SPECIAL_x8003, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8003, 1
 	goto_if_ge _01E5
 	touchscreen_menu_hide
@@ -118,7 +118,7 @@ _0189:
 	call_if_eq _0714
 	compare VAR_SPECIAL_x8004, 5
 	call_if_eq _071C
-	scrcmd_632 32780, 479
+	count_party_mons_of_species VAR_SPECIAL_RESULT, SPECIES_ROTOM
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03B2
 	goto _03C0
@@ -137,7 +137,7 @@ _01E5:
 	.byte 0x02
 	.byte 0x00
 _0231:
-	scrcmd_674 32771, 32780
+	count_transformed_rotoms_in_party VAR_SPECIAL_x8003, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8003, 2
 	goto_if_ge _0332
@@ -146,11 +146,11 @@ _0231:
 _0252:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0538_T11R0702_00011
-	scrcmd_675 32768, 0, 0, 0
+	update_rotom_forme VAR_SPECIAL_x8000, 0, 0, 0
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
-	scrcmd_676 32768, 32772
+	get_party_mon_forme VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 1
 	call_if_eq _0300
 	compare VAR_SPECIAL_x8004, 3
@@ -168,7 +168,7 @@ _02C1:
 	scrcmd_815 0
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	get_player_facing VAR_SPECIAL_RESULT
-	warp MAP_T11R0702, 0, 32774, 32775, VAR_SPECIAL_RESULT
+	warp MAP_T11R0702, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	nop_var_490 VAR_TEMP_x400B
@@ -177,27 +177,27 @@ _02C1:
 	goto _08A4
 	.byte 0x02, 0x00
 _0300:
-	clearflag FLAG_UNK_283
+	clearflag FLAG_HIDE_SILPH_ROTOM_HEAT
 	show_person obj_T11R0702_rotomf
 	return
 
 _030A:
-	clearflag FLAG_UNK_285
+	clearflag FLAG_HIDE_SILPH_ROTOM_FROST
 	show_person obj_T11R0702_rotomi
 	return
 
 _0314:
-	clearflag FLAG_UNK_284
+	clearflag FLAG_HIDE_SILPH_ROTOM_WASH
 	show_person obj_T11R0702_rotomw
 	return
 
 _031E:
-	clearflag FLAG_UNK_286
+	clearflag FLAG_HIDE_SILPH_ROTOM_FAN
 	show_person obj_T11R0702_rotoms
 	return
 
 _0328:
-	clearflag FLAG_UNK_287
+	clearflag FLAG_HIDE_SILPH_ROTOM_MOW
 	show_person obj_T11R0702_rotomg
 	return
 
@@ -218,7 +218,7 @@ _0332:
 	goto_if_eq _041A
 	compare VAR_SPECIAL_RESULT, 479
 	goto_if_ne _0427
-	scrcmd_676 32768, 32780
+	get_party_mon_forme VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _039F
 	goto _0252
@@ -234,7 +234,7 @@ _03AC:
 	end
 
 _03B2:
-	scrcmd_647 32768, 479
+	scrcmd_647 VAR_SPECIAL_x8000, SPECIES_ROTOM
 	goto _0434
 	.byte 0x02, 0x00
 _03C0:
@@ -347,14 +347,14 @@ _058A:
 	wait_fade
 	compare VAR_SPECIAL_x8002, 4
 	goto_if_eq _0628
-	scrcmd_398 32780, 32768, 32770
+	scrcmd_398 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
 	buffer_move_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0538_T11R0702_00003
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0649
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
-	scrcmd_398 32780, 32768, 32770
+	scrcmd_398 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000, VAR_SPECIAL_x8002
 	buffer_move_name 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0538_T11R0702_00004
 	play_se SEQ_SE_DP_KON
@@ -389,7 +389,7 @@ _0649:
 	.byte 0x02
 	.byte 0x00
 _0671:
-	scrcmd_675 32768, 32770, 32769, 32772
+	update_rotom_forme VAR_SPECIAL_x8000, VAR_SPECIAL_x8002, VAR_SPECIAL_x8001, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
@@ -559,7 +559,7 @@ _0835:
 scr_seq_T11R0702_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_674 32771, 32780
+	count_transformed_rotoms_in_party VAR_SPECIAL_x8003, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8003, 0
 	goto_if_eq _088D
 	npc_msg msg_0538_T11R0702_00013

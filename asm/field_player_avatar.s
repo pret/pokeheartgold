@@ -270,7 +270,7 @@ _0205C3F0:
 	ldr r3, [sp, #0xc]
 	add r0, r7, #0
 	str r6, [sp, #4]
-	bl sub_0205C564
+	bl CreatePlayerAvatarMapObject
 	add r0, r7, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -306,11 +306,11 @@ sub_0205C408: ; 0x0205C408
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0205F89C
@@ -326,7 +326,7 @@ sub_0205C408: ; 0x0205C408
 sub_0205C46C: ; 0x0205C46C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	bne _0205C47C
 	bl GF_AssertFail
@@ -374,7 +374,7 @@ _0205C4C8: .word FreeToHeap
 sub_0205C4CC: ; 0x0205C4CC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	bl MapObject_Remove
 	add r0, r4, #0
 	bl sub_0205C4C4
@@ -442,8 +442,8 @@ sub_0205C500: ; 0x0205C500
 	.balign 4, 0
 	thumb_func_end sub_0205C500
 
-	thumb_func_start sub_0205C564
-sub_0205C564: ; 0x0205C564
+	thumb_func_start CreatePlayerAvatarMapObject
+CreatePlayerAvatarMapObject: ; 0x0205C564
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -494,11 +494,11 @@ _0205C584:
 	mov r1, #9
 	add r0, r5, #0
 	lsl r1, r1, #0xa
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r1, #6
 	add r0, r5, #0
 	lsl r1, r1, #6
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_0205F89C
@@ -508,7 +508,7 @@ _0205C584:
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205C564
+	thumb_func_end CreatePlayerAvatarMapObject
 
 	thumb_func_start sub_0205C600
 sub_0205C600: ; 0x0205C600
@@ -561,78 +561,78 @@ _0205C64E:
 	thumb_func_start PlayerAvatar_GetFacingDirection
 PlayerAvatar_GetFacingDirection: ; 0x0205C654
 	push {r3, lr}
-	bl sub_0205C6DC
-	bl sub_0205F2A8
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetFacingDirection
 	pop {r3, pc}
 	thumb_func_end PlayerAvatar_GetFacingDirection
 
-	thumb_func_start sub_0205C660
-sub_0205C660: ; 0x0205C660
+	thumb_func_start PlayerAvatar_SetFacingDirection
+PlayerAvatar_SetFacingDirection: ; 0x0205C660
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r4, #0
-	bl sub_0205F290
+	bl MapObject_SetFacingDirection
 	pop {r4, pc}
-	thumb_func_end sub_0205C660
+	thumb_func_end PlayerAvatar_SetFacingDirection
 
-	thumb_func_start sub_0205C670
-sub_0205C670: ; 0x0205C670
+	thumb_func_start PlayerAvatar_GetNextFacing
+PlayerAvatar_GetNextFacing: ; 0x0205C670
 	push {r3, lr}
-	bl sub_0205C6DC
-	bl sub_0205F2B8
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetNextFacing
 	pop {r3, pc}
-	thumb_func_end sub_0205C670
+	thumb_func_end PlayerAvatar_GetNextFacing
 
 	thumb_func_start GetPlayerXCoord
 GetPlayerXCoord: ; 0x0205C67C
 	push {r3, lr}
-	bl sub_0205C6DC
-	bl MapObject_GetNextX
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetCurrentX
 	pop {r3, pc}
 	thumb_func_end GetPlayerXCoord
 
 	thumb_func_start GetPlayerYCoord
 GetPlayerYCoord: ; 0x0205C688
 	push {r3, lr}
-	bl sub_0205C6DC
-	bl MapObject_GetNextY
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetCurrentY
 	pop {r3, pc}
 	thumb_func_end GetPlayerYCoord
 
-	thumb_func_start sub_0205C694
-sub_0205C694: ; 0x0205C694
+	thumb_func_start GetPlayerLastXCoord
+GetPlayerLastXCoord: ; 0x0205C694
 	push {r3, lr}
-	bl sub_0205C6DC
-	bl MapObject_GetCurrentX
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetPrevX
 	pop {r3, pc}
-	thumb_func_end sub_0205C694
+	thumb_func_end GetPlayerLastXCoord
 
-	thumb_func_start sub_0205C6A0
-sub_0205C6A0: ; 0x0205C6A0
+	thumb_func_start GetPlayerLastYCoord
+GetPlayerLastYCoord: ; 0x0205C6A0
 	push {r3, lr}
-	bl sub_0205C6DC
-	bl MapObject_GetCurrentY
+	bl PlayerAvatar_GetMapObject
+	bl MapObject_GetPrevY
 	pop {r3, pc}
-	thumb_func_end sub_0205C6A0
+	thumb_func_end GetPlayerLastYCoord
 
-	thumb_func_start sub_0205C6AC
-sub_0205C6AC: ; 0x0205C6AC
+	thumb_func_start PlayerAvatar_GetPositionVec
+PlayerAvatar_GetPositionVec: ; 0x0205C6AC
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r4, #0
 	bl MapObject_GetPositionVec
 	pop {r4, pc}
-	thumb_func_end sub_0205C6AC
+	thumb_func_end PlayerAvatar_GetPositionVec
 
-	thumb_func_start sub_0205C6BC
-sub_0205C6BC: ; 0x0205C6BC
+	thumb_func_start PlayerAvatar_GetPositionVecConst
+PlayerAvatar_GetPositionVecConst: ; 0x0205C6BC
 	push {r3, lr}
-	bl sub_0205C6E0
+	bl PlayerAvatar_GetMapObjectConst
 	bl MapObject_GetPositionVecPtr
 	pop {r3, pc}
-	thumb_func_end sub_0205C6BC
+	thumb_func_end PlayerAvatar_GetPositionVecConst
 
 	thumb_func_start sub_0205C6C8
 sub_0205C6C8: ; 0x0205C6C8
@@ -664,17 +664,17 @@ sub_0205C6D8: ; 0x0205C6D8
 	bx lr
 	thumb_func_end sub_0205C6D8
 
-	thumb_func_start sub_0205C6DC
-sub_0205C6DC: ; 0x0205C6DC
+	thumb_func_start PlayerAvatar_GetMapObject
+PlayerAvatar_GetMapObject: ; 0x0205C6DC
 	ldr r0, [r0, #0x30]
 	bx lr
-	thumb_func_end sub_0205C6DC
+	thumb_func_end PlayerAvatar_GetMapObject
 
-	thumb_func_start sub_0205C6E0
-sub_0205C6E0: ; 0x0205C6E0
+	thumb_func_start PlayerAvatar_GetMapObjectConst
+PlayerAvatar_GetMapObjectConst: ; 0x0205C6E0
 	ldr r0, [r0, #0x30]
 	bx lr
-	thumb_func_end sub_0205C6E0
+	thumb_func_end PlayerAvatar_GetMapObjectConst
 
 	thumb_func_start sub_0205C6E4
 sub_0205C6E4: ; 0x0205C6E4
@@ -968,7 +968,7 @@ sub_0205C810: ; 0x0205C810
 	add r4, r1, #0
 	add r6, r2, #0
 	add r5, r0, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_0205FBC0
@@ -987,7 +987,7 @@ sub_0205C838: ; 0x0205C838
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	add r1, sp, #0
 	bl MapObject_GetPositionVec
@@ -1003,7 +1003,7 @@ sub_0205C838: ; 0x0205C838
 sub_0205C858: ; 0x0205C858
 	push {r4, lr}
 	add r4, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	cmp r4, #1
 	bne _0205C86C
 	mov r1, #0
@@ -1019,7 +1019,7 @@ _0205C86C:
 sub_0205C874: ; 0x0205C874
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	cmp r5, #1
 	bne _0205C890

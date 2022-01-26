@@ -178,7 +178,7 @@ ov26_022599D8: ; 0x022599D8
 	add r5, r1, #0
 	beq _02259A20
 	add r0, r5, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	cmp r0, #0
 	bne _022599EE
 	mov r4, #0xe

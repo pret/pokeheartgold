@@ -1839,8 +1839,10 @@ _0204DFDA:
 _0204DFE0: .word 0x00000000
 	thumb_func_end ScrCmd_PlayerHasSpecies
 
-	thumb_func_start ScrCmd_632
-ScrCmd_632: ; 0x0204DFE4
+	thumb_func_start ScrCmd_CountPartyMonsOfSpecies
+ScrCmd_CountPartyMonsOfSpecies: ; 0x0204DFE4
+	; second argument is a species
+	; if this is 0, returns TRUE if exists duplicate pokemon in party
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r4, r0, #0
@@ -1946,7 +1948,7 @@ _0204E0B6:
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ScrCmd_632
+	thumb_func_end ScrCmd_CountPartyMonsOfSpecies
 
 	thumb_func_start ScrCmd_647
 ScrCmd_647: ; 0x0204E0BC

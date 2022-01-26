@@ -1461,7 +1461,7 @@ scr_seq_0003_040:
 	compare VAR_BATTLE_TOWER_PRINT_PROGRESS, 4
 	goto_if_ne _13F6
 	setflag FLAG_GOT_ALL_FOUR_FRONTIER_PRINTS
-	scrcmd_680 31
+	add_special_game_stat_2 31
 	goto _13F6
 	.byte 0x02, 0x00
 _13F6:

@@ -636,7 +636,7 @@ scr_seq_D32R0401_003:
 	goto _02F5
 	.byte 0x02, 0x00
 _0960:
-	scrcmd_680 29
+	add_special_game_stat_2 29
 	return
 
 _0966:

@@ -26,7 +26,7 @@ sub_0206D494: ; 0x0206D494
 	mov r0, #0
 	str r0, [r4, #4]
 	add r0, r7, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	strb r0, [r4, #8]
 	mov r0, #0
 	strb r0, [r4, #9]
@@ -138,19 +138,19 @@ sub_0206D590: ; 0x0206D590
 	bl sub_0205F35C
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
 	bl sub_02060F0C
 	add r7, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetNextHeight
+	bl MapObject_GetCurrentHeight
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_02060F18
@@ -171,7 +171,7 @@ sub_0206D590: ; 0x0206D590
 	pop {r3, r4, r5, r6, r7, pc}
 _0206D5EC:
 	add r0, r4, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	cmp r0, #1
 	beq _0206D604
 	cmp r0, #0
@@ -209,27 +209,27 @@ sub_0206D614: ; 0x0206D614
 _0206D62E:
 	ldr r0, [sp, #4]
 	mov r1, #1
-	bl sub_0205F220
+	bl MapObject_GetBitsMask
 	cmp r0, #0
 	beq _0206D676
 	mov r1, #1
 	ldr r0, [sp, #4]
 	lsl r1, r1, #0x12
-	bl sub_0205F220
+	bl MapObject_GetBitsMask
 	cmp r0, #0
 	bne _0206D676
 	ldr r0, [sp, #4]
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	ldr r0, [sp, #4]
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	cmp r4, r6
 	bne _0206D676
 	ldr r1, [sp]
 	cmp r0, r1
 	bne _0206D676
 	ldr r0, [sp, #4]
-	bl MapObject_GetNextHeight
+	bl MapObject_GetCurrentHeight
 	sub r0, r0, r7
 	bpl _0206D66C
 	neg r0, r0
@@ -269,16 +269,16 @@ _0206D69E:
 	cmp r0, #0
 	beq _0206D7A8
 	ldr r0, [r5]
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	ldrb r0, [r5, #8]
 	bl sub_02060F0C
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl MapObject_GetNextHeight
+	bl MapObject_GetCurrentHeight
 	str r0, [sp]
 	ldr r0, [r5]
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	ldrb r0, [r5, #8]
 	bl sub_02060F18
@@ -488,10 +488,10 @@ sub_0206D850: ; 0x0206D850
 	cmp r0, #1
 	bne _0206D892
 	add r0, r4, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #6
 	lsl r1, r1, #6
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	bl sub_0205CB2C
 	cmp r0, #0

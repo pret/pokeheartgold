@@ -45,13 +45,13 @@ FieldSys_TakePhoto: ; 0x0206A798
 	cmp r0, #0
 	beq _0206A7FE
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r1, r4, #0
 	add r7, r0, #0
 	add r1, #0xcc
 	bl MapObject_GetPositionVec
 	add r0, r7, #0
-	bl sub_0205F2A8
+	bl MapObject_GetFacingDirection
 	add r1, r4, #0
 	add r1, #0xd8
 	strb r0, [r1]
@@ -662,7 +662,7 @@ _0206AC36:
 	ldr r0, [r6, #0x40]
 	bl sub_0206B82C
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x34
 	bl sub_0205F96C
 	mov r0, #2
@@ -671,7 +671,7 @@ _0206AC36:
 	sub r0, r1, r0
 	str r0, [sp, #0x38]
 	ldr r0, [r6, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x34
 	bl sub_0205F97C
 	ldr r0, [r4]
@@ -1017,11 +1017,11 @@ _0206AF2A:
 	mov r1, #9
 	add r0, r4, #0
 	lsl r1, r1, #0xa
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r1, #6
 	add r0, r4, #0
 	lsl r1, r1, #6
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0205F89C
@@ -1038,7 +1038,7 @@ sub_0206AF78: ; 0x0206AF78
 	mov r0, #0
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, sp, #0
 	add r6, sp, #4
 	mov r7, #1
@@ -1522,7 +1522,7 @@ _0206B346:
 	ldr r0, [r5, #0x40]
 	bl sub_0206B82C
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x54
 	bl sub_0205F96C
 	mov r0, #2
@@ -1531,7 +1531,7 @@ _0206B346:
 	sub r0, r1, r0
 	str r0, [sp, #0x58]
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x54
 	bl sub_0205F97C
 	ldr r0, [r4, #0x40]
@@ -2056,10 +2056,10 @@ _0206B7A0:
 	cmp r0, #1
 	beq _0206B814
 	add r0, r5, #0
-	bl sub_02069D68
+	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r2, r4, #0
 	add r2, #0xd8
 	add r1, r4, #0
@@ -2069,16 +2069,16 @@ _0206B7A0:
 	add r1, #0xcc
 	bl sub_0205FBC0
 	add r0, r5, #0
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	str r0, [sp, #0x10]
 	add r0, r5, #0
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetNextX
+	bl MapObject_GetCurrentX
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetNextY
+	bl MapObject_GetCurrentY
 	ldr r1, [sp, #0x10]
 	cmp r1, r5
 	bne _0206B806
@@ -2120,7 +2120,7 @@ sub_0206B82C: ; 0x0206B82C
 	bl sub_0205C898
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	bl sub_0205F35C
 	add r7, r0, #0

@@ -102,7 +102,7 @@ BgEvent = NamedStruct('BgEvent', '<HHLLLL', (
     'z',
     'dir'
 ))
-ObjectEvent = NamedStruct('ObjectEvent', 'HHHHHHhHHHhhHHl', (
+ObjectEvent = NamedStruct('ObjectEvent', '<HHHHHHhHHHhhHHl', (
     'id',
     'ovid',
     'mvt',
@@ -112,7 +112,7 @@ ObjectEvent = NamedStruct('ObjectEvent', 'HHHHHHhHHHhhHHl', (
     'dirn',
     'eye',
     'unk10',
-    'unk12',
+    'tsure_poke_color',
     'xrange',
     'yrange',
     'x',
@@ -136,6 +136,11 @@ CoordEvent = NamedStruct('CoordEvent', '<HHHHHHHH', (
     'val',
     'var',
 ))
+
+assert BgEvent.size == 20, BgEvent.size
+assert ObjectEvent.size == 32, ObjectEvent.size
+assert WarpEvent.size == 12, WarpEvent.size
+assert CoordEvent.size == 16, CoordEvent.size
 
 
 class ScriptParserBase(abc.ABC):
@@ -353,7 +358,7 @@ class NormalScriptParser(ScriptParserBase):
                     'dirn': ob.dirn,
                     'eye': ob.eye,
                     'unk10': ob.unk10,
-                    'unk12': ob.unk12,
+                    'tsure_poke_color': ob.tsure_poke_color,
                     'xrange': ob.xrange,
                     'yrange': ob.yrange,
                     'x': ob.x,

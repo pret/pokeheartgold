@@ -632,7 +632,7 @@ extern BOOL ScrCmd_628(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_629(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_630(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_631(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_632(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountPartyMonsOfSpecies(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_633(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_634(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_635(SCRIPTCONTEXT *ctx);
@@ -673,14 +673,14 @@ extern BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_670(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_671(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_672(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_673(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_674(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_675(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_676(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetOwnedRotomFormes(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPartyMonForme(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_677(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_678(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_679(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_680(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AddSpecialGameStat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_681(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_682(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_683(SCRIPTCONTEXT *ctx);
@@ -1487,7 +1487,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_629,
     ScrCmd_630,
     ScrCmd_631,
-    ScrCmd_632,
+    ScrCmd_CountPartyMonsOfSpecies,
     ScrCmd_633,
     ScrCmd_634,
     ScrCmd_635,
@@ -1528,14 +1528,14 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_670,
     ScrCmd_671,
     ScrCmd_672,
-    ScrCmd_673,
-    ScrCmd_674,
-    ScrCmd_675,
-    ScrCmd_676,
+    ScrCmd_GetOwnedRotomFormes,
+    ScrCmd_CountTranformedRotomsInParty,
+    ScrCmd_UpdateRotomForme,
+    ScrCmd_GetPartyMonForme,
     ScrCmd_677,
     ScrCmd_678,
     ScrCmd_679,
-    ScrCmd_680,
+    ScrCmd_AddSpecialGameStat,
     ScrCmd_681,
     ScrCmd_682,
     ScrCmd_683,

@@ -167,7 +167,9 @@ struct FieldSystem {
     FIELD_PLAYER_AVATAR *playerAvatar;
     u8 unk44[0x68];
     u32 unkAC;
-    u8 unkB0[0x44];
+    u8 unkB0[0x4];
+    s64 unkB4;
+    u8 unkBC[0x38];
     struct UnkFsysSub_114* unk114;
     BUGCONTEST* bugContest;
     u8 unk11C[0xC];

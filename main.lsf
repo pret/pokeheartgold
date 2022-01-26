@@ -205,9 +205,9 @@ Static main
 	Object unk_0205B6E8.o
 	Object unk_0205BB1C.o
 	Object unk_0205BFF0.o
-	Object unk_0205C268.o
+	Object field_player_avatar.o
 	Object unk_0205CB48.o
-	Object unk_0205E0BC.o
+	Object field_map_object.o
 	Object unk_data_020FCBD8.o
 	Object unk_0205FD20.o
 	Object unk_02061284.o
@@ -221,7 +221,7 @@ Static main
 	Object unk_02068FC8.o
 	Object unk_02069528.o
 	Object unk_02069660.o
-	Object unk_0206979C.o
+	Object field_follow_poke.o
 	Object field_take_photo.o
 	Object unk_0206B910.o
 	Object field_alph_checks.o

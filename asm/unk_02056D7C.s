@@ -645,7 +645,7 @@ _0205721E:
 	add r0, r0, r4
 	str r6, [r0, #4]
 	add r0, r6, #0
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	mov r1, #1
 	lsl r1, r1, #8
 	add r1, r5, r1
@@ -2458,7 +2458,7 @@ sub_02057F28: ; 0x02057F28
 	ldr r0, [r0]
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C660
+	bl PlayerAvatar_SetFacingDirection
 	bl sub_0203769C
 	ldr r1, _02057F54 ; =_021D41C4
 	lsl r0, r0, #3
@@ -2543,7 +2543,7 @@ _02057FB6:
 	ldr r0, [r0]
 	add r0, r0, r4
 	ldr r0, [r0, #4]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, _02058020 ; =_021D41C4
 	str r0, [sp, #0xc]
 	ldr r1, [r1]
@@ -2559,10 +2559,10 @@ _02057FB6:
 	ldrsb r1, [r1, r2]
 	str r1, [sp, #4]
 	ldr r1, [sp, #8]
-	bl MapObject_SetNextX
+	bl MapObject_SetCurrentX
 	ldr r0, [sp, #0xc]
 	add r1, r7, #0
-	bl MapObject_SetNextY
+	bl MapObject_SetCurrentY
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	str r0, [sp]

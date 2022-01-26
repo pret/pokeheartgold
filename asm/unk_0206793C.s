@@ -524,7 +524,7 @@ _02067D1E:
 	b _02067DE4
 _02067D2E:
 	ldr r0, [r5, #0x40]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	ldr r1, _02067DF0 ; =_020FE7AC
 	bl EventObjectMovementMan_Create
 	str r0, [r4, #0x18]

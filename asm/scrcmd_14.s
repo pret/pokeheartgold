@@ -516,10 +516,10 @@ _0204CF44:
 	bl MapObject_SetYRange
 	add r0, r4, #0
 	mov r1, #4
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0205F89C

@@ -25,7 +25,7 @@ sub_02062108: ; 0x02062108
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _0206211A
 	mov r0, #0
@@ -33,7 +33,7 @@ sub_02062108: ; 0x02062108
 _0206211A:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _0206212A
 	mov r0, #0
@@ -41,12 +41,12 @@ _0206211A:
 _0206212A:
 	add r0, r4, #0
 	mov r1, #0x10
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #1
 	bne _02062146
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _02062146
 	mov r0, #0
@@ -74,10 +74,10 @@ _0206215A:
 	bl sub_0205F4DC
 	add r0, r5, #0
 	mov r1, #0x10
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	mov r1, #0x20
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0206214C
 
@@ -91,7 +91,7 @@ sub_0206217C: ; 0x0206217C
 	bl sub_0205F4DC
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0206217C
@@ -101,7 +101,7 @@ sub_02062198: ; 0x02062198
 	push {r4, lr}
 	mov r1, #0x10
 	add r4, r0, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _020621AA
 	mov r0, #1
@@ -109,7 +109,7 @@ sub_02062198: ; 0x02062198
 _020621AA:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	beq _020621BA
 	mov r0, #1
@@ -125,7 +125,7 @@ sub_020621C0: ; 0x020621C0
 	push {r4, lr}
 	mov r1, #0x10
 	add r4, r0, #0
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _020621D2
 	mov r0, #1
@@ -133,7 +133,7 @@ sub_020621C0: ; 0x020621C0
 _020621D2:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _020621E2
 	mov r0, #0
@@ -141,7 +141,7 @@ _020621D2:
 _020621E2:
 	add r0, r4, #0
 	mov r1, #0x30
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -152,10 +152,10 @@ sub_020621F0: ; 0x020621F0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x10
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	mov r1, #0xff
 	bl sub_0205F4CC
@@ -496,7 +496,7 @@ sub_02062428: ; 0x02062428
 	bl sub_02062400
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F228
+	bl MapObject_TestBits
 	cmp r0, #0
 	bne _02062440
 	mov r0, #0
@@ -504,7 +504,7 @@ sub_02062428: ; 0x02062428
 _02062440:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #0xff
 	bl sub_0205F4CC
@@ -533,7 +533,7 @@ _0206246C: .word _020FD2D8
 sub_02062470: ; 0x02062470
 	push {r3, lr}
 	mov r1, #0x20
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end sub_02062470
@@ -542,7 +542,7 @@ sub_02062470: ; 0x02062470
 sub_0206247C: ; 0x0206247C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F290
+	bl MapObject_SetFacingDirection
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F328
@@ -610,14 +610,14 @@ sub_020624CC: ; 0x020624CC
 	bl sub_02060F24
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F2BC
+	bl MapObject_SetOrQueueFacing
 	add r1, sp, #8
 	ldrh r1, [r1, #0x10]
 	add r0, r5, #0
 	bl sub_0205F328
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	bl sub_0205F4E4
 	pop {r3, r4, r5, r6, r7, pc}
@@ -648,7 +648,7 @@ sub_02062514: ; 0x02062514
 _02062540:
 	add r0, r5, #0
 	mov r1, #0x28
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -1053,7 +1053,7 @@ sub_020627B0: ; 0x020627B0
 	strh r1, [r0, #2]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0205F290
+	bl MapObject_SetFacingDirection
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_0205F328
@@ -1081,7 +1081,7 @@ sub_020627E4: ; 0x020627E4
 _020627FE:
 	add r0, r4, #0
 	mov r1, #0x20
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F328
@@ -1343,10 +1343,10 @@ _0206298A:
 _02062992:
 	ldr r1, _020629C4 ; =0x00010004
 	add r0, r5, #0
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F2BC
+	bl MapObject_SetOrQueueFacing
 	add r1, sp, #8
 	ldrh r1, [r1, #0x10]
 	add r0, r5, #0
@@ -1395,7 +1395,7 @@ sub_020629CC: ; 0x020629CC
 	bl sub_02060F24
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0205F20C
+	bl MapObject_SetBits
 _02062A0E:
 	ldr r1, [r4]
 	cmp r1, #0
@@ -1454,7 +1454,7 @@ _02062A68:
 	bl sub_0205F97C
 	ldr r1, _02062AB4 ; =0x00020028
 	add r0, r5, #0
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -2092,7 +2092,7 @@ sub_02062EC0: ; 0x02062EC0
 	mov r1, #2
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	bl sub_0205F4E4
 	mov r0, #1
@@ -2106,7 +2106,7 @@ sub_02062ED8: ; 0x02062ED8
 	mov r1, #2
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	bl sub_0205F4E4
 	mov r0, #1
@@ -2119,7 +2119,7 @@ sub_02062EF0: ; 0x02062EF0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x80
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	bl sub_0205F4E4
 	mov r0, #1
@@ -2131,7 +2131,7 @@ sub_02062F04: ; 0x02062F04
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x80
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	bl sub_0205F4E4
 	mov r0, #1
@@ -2144,7 +2144,7 @@ sub_02062F18: ; 0x02062F18
 	mov r1, #1
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r4, #0
 	bl sub_0205F4E4
 	mov r0, #1
@@ -2158,7 +2158,7 @@ sub_02062F30: ; 0x02062F30
 	mov r1, #1
 	add r4, r0, #0
 	lsl r1, r1, #8
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	bl sub_0205F4E4
 	mov r0, #1
@@ -2241,13 +2241,13 @@ sub_02062FAC: ; 0x02062FAC
 	bl sub_02060F24
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F2BC
+	bl MapObject_SetOrQueueFacing
 	add r0, r5, #0
 	add r1, r6, #0
 	bl sub_0205F328
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	bl sub_0205F4E4
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2285,7 +2285,7 @@ sub_02062FEC: ; 0x02062FEC
 _02063026:
 	add r0, r5, #0
 	mov r1, #0x28
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
@@ -2506,7 +2506,7 @@ sub_02063170: ; 0x02063170
 	blt _02063198
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F290
+	bl MapObject_SetFacingDirection
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F328
@@ -2541,11 +2541,11 @@ _020631B6:
 	bl ov01_022000DC
 	ldr r1, _020631EC ; =0x00010004
 	add r0, r4, #0
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14
-	bl sub_0205F214
+	bl MapObject_ClearBits
 	add r0, r4, #0
 	bl sub_0205F4E4
 	mov r0, #0
@@ -2591,7 +2591,7 @@ _02063228:
 	bl sub_0205F97C
 	ldr r1, _02063254 ; =0x00020028
 	add r0, r5, #0
-	bl sub_0205F20C
+	bl MapObject_SetBits
 	add r0, r5, #0
 	bl sub_02066438
 	add r0, r5, #0

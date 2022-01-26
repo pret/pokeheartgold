@@ -665,11 +665,11 @@
 #define FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI                      0x280
 #define FLAG_UNK_281                                               0x281
 #define FLAG_UNK_282                                               0x282
-#define FLAG_UNK_283                                               0x283
-#define FLAG_UNK_284                                               0x284
-#define FLAG_UNK_285                                               0x285
-#define FLAG_UNK_286                                               0x286
-#define FLAG_UNK_287                                               0x287
+#define FLAG_HIDE_SILPH_ROTOM_HEAT                                               0x283
+#define FLAG_HIDE_SILPH_ROTOM_WASH                                               0x284
+#define FLAG_HIDE_SILPH_ROTOM_FROST                                               0x285
+#define FLAG_HIDE_SILPH_ROTOM_FAN                                               0x286
+#define FLAG_HIDE_SILPH_ROTOM_MOW                                               0x287
 #define FLAG_UNK_288                                               0x288
 #define FLAG_UNK_289                                               0x289
 #define FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_LOIS                    0x28A

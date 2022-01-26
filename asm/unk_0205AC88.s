@@ -559,7 +559,7 @@ _0205B0AA:
 _0205B0B6:
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
-	bl sub_0205C6DC
+	bl PlayerAvatar_GetMapObject
 	add r1, r0, #0
 	ldr r2, _0205B0D8 ; =0x000004BC
 	ldr r0, [sp]
@@ -672,7 +672,7 @@ _0205B16C:
 	bl sub_0205FC2C
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F288
+	bl MapObject_ForceSetFacingDirection
 	add r0, r4, #0
 	mov r1, #0x44
 	bl sub_0206214C
@@ -832,7 +832,7 @@ _0205B2C4:
 	bl sub_0205E3AC
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0205F288
+	bl MapObject_ForceSetFacingDirection
 	add r0, r4, #0
 	mov r1, #0x44
 	bl sub_0206214C
