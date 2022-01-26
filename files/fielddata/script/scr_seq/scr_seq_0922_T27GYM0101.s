@@ -14,7 +14,7 @@
 	scrdef_end
 
 scr_seq_T27GYM0101_000:
-	scrcmd_314
+	ecruteak_gym_init
 	get_phone_book_rematch PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00AC

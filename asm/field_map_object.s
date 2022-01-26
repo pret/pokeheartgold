@@ -2859,32 +2859,32 @@ sub_0205F4C0: ; 0x0205F4C0
 	pop {r3, pc}
 	thumb_func_end sub_0205F4C0
 
-	thumb_func_start sub_0205F4CC
-sub_0205F4CC: ; 0x0205F4CC
+	thumb_func_start MapObject_SetMovementCommand
+MapObject_SetMovementCommand: ; 0x0205F4CC
 	add r0, #0xa4
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205F4CC
+	thumb_func_end MapObject_SetMovementCommand
 
-	thumb_func_start sub_0205F4D4
-sub_0205F4D4: ; 0x0205F4D4
+	thumb_func_start MapObject_GetMovementCommand
+MapObject_GetMovementCommand: ; 0x0205F4D4
 	add r0, #0xa4
 	ldr r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205F4D4
+	thumb_func_end MapObject_GetMovementCommand
 
-	thumb_func_start sub_0205F4DC
-sub_0205F4DC: ; 0x0205F4DC
+	thumb_func_start MapObject_SetMovementStep
+MapObject_SetMovementStep: ; 0x0205F4DC
 	add r0, #0xa8
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205F4DC
+	thumb_func_end MapObject_SetMovementStep
 
-	thumb_func_start sub_0205F4E4
-sub_0205F4E4: ; 0x0205F4E4
+	thumb_func_start MapObject_IncMovementStep
+MapObject_IncMovementStep: ; 0x0205F4E4
 	add r1, r0, #0
 	add r1, #0xa8
 	ldr r1, [r1]
@@ -2893,15 +2893,15 @@ sub_0205F4E4: ; 0x0205F4E4
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205F4E4
+	thumb_func_end MapObject_IncMovementStep
 
-	thumb_func_start sub_0205F4F4
-sub_0205F4F4: ; 0x0205F4F4
+	thumb_func_start MapObject_GetMovementStep
+MapObject_GetMovementStep: ; 0x0205F4F4
 	add r0, #0xa8
 	ldr r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205F4F4
+	thumb_func_end MapObject_GetMovementStep
 
 	thumb_func_start sub_0205F4FC
 sub_0205F4FC: ; 0x0205F4FC
@@ -3733,8 +3733,8 @@ sub_0205F968: ; 0x0205F968
 	bx lr
 	thumb_func_end sub_0205F968
 
-	thumb_func_start sub_0205F96C
-sub_0205F96C: ; 0x0205F96C
+	thumb_func_start MapObject_GetFacingVec
+MapObject_GetFacingVec: ; 0x0205F96C
 	add r2, r0, #0
 	add r2, #0x7c
 	add r3, r1, #0
@@ -3743,10 +3743,10 @@ sub_0205F96C: ; 0x0205F96C
 	ldr r0, [r2]
 	str r0, [r3]
 	bx lr
-	thumb_func_end sub_0205F96C
+	thumb_func_end MapObject_GetFacingVec
 
-	thumb_func_start sub_0205F97C
-sub_0205F97C: ; 0x0205F97C
+	thumb_func_start MapObject_SetFacingVec
+MapObject_SetFacingVec: ; 0x0205F97C
 	add r3, r1, #0
 	add r2, r0, #0
 	ldmia r3!, {r0, r1}
@@ -3755,13 +3755,13 @@ sub_0205F97C: ; 0x0205F97C
 	ldr r0, [r3]
 	str r0, [r2]
 	bx lr
-	thumb_func_end sub_0205F97C
+	thumb_func_end MapObject_SetFacingVec
 
-	thumb_func_start sub_0205F98C
-sub_0205F98C: ; 0x0205F98C
+	thumb_func_start MapObject_GetFacingVecPtr
+MapObject_GetFacingVecPtr: ; 0x0205F98C
 	add r0, #0x7c
 	bx lr
-	thumb_func_end sub_0205F98C
+	thumb_func_end MapObject_GetFacingVecPtr
 
 	thumb_func_start sub_0205F990
 sub_0205F990: ; 0x0205F990

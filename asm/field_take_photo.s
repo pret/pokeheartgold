@@ -664,7 +664,7 @@ _0206AC36:
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x34
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x38]
 	lsl r0, r0, #0xc
@@ -673,7 +673,7 @@ _0206AC36:
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x34
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -780,7 +780,7 @@ _0206AD44:
 _0206AD64:
 	add r0, r6, #0
 	add r1, sp, #0x28
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x2c]
 	lsl r0, r0, #0xc
@@ -788,7 +788,7 @@ _0206AD64:
 	str r0, [sp, #0x2c]
 	add r0, r6, #0
 	add r1, sp, #0x28
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add r0, r6, #0
 	bl sub_0205F484
 _0206AD84:
@@ -831,7 +831,7 @@ _0206ADCA:
 	add r0, #0x9c
 	ldr r0, [r0]
 	add r1, sp, #0x1c
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x20]
 	lsl r0, r0, #0xc
@@ -841,7 +841,7 @@ _0206ADCA:
 	add r1, sp, #0x1c
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r0, [r4, #8]
 	add r0, #0x9c
 	ldr r0, [r0]
@@ -899,7 +899,7 @@ _0206AE50:
 	cmp r0, #0
 	beq _0206AE96
 	add r1, sp, #0x10
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x14]
 	lsl r0, r0, #0xc
@@ -909,7 +909,7 @@ _0206AE50:
 	add r1, sp, #0x10
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r0, [r4, #8]
 	add r0, #0xa0
 	ldr r0, [r0]
@@ -1524,7 +1524,7 @@ _0206B346:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x54
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x58]
 	lsl r0, r0, #0xc
@@ -1533,7 +1533,7 @@ _0206B346:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r1, sp, #0x54
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r0, [r4, #0x40]
 	add r0, #0x44
 	ldrh r0, [r0]
@@ -1631,7 +1631,7 @@ _0206B416:
 _0206B440:
 	add r0, r5, #0
 	add r1, sp, #0x48
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x4c]
 	lsl r0, r0, #0xc
@@ -1639,7 +1639,7 @@ _0206B440:
 	str r0, [sp, #0x4c]
 	add r0, r5, #0
 	add r1, sp, #0x48
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add r0, r5, #0
 	bl sub_0205F484
 _0206B460:
@@ -1689,7 +1689,7 @@ _0206B4AE:
 _0206B4B0:
 	ldr r0, [r4, #0x18]
 	add r1, sp, #0x3c
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x40]
 	lsl r0, r0, #0xc
@@ -1697,7 +1697,7 @@ _0206B4B0:
 	str r0, [sp, #0x40]
 	ldr r0, [r4, #0x18]
 	add r1, sp, #0x3c
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r0, [r4, #0x18]
 	bl sub_0205F484
 	mov r0, #0
@@ -1765,7 +1765,7 @@ _0206B52C:
 _0206B54E:
 	add r0, r5, #0
 	add r1, sp, #0x30
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #2
 	ldr r1, [sp, #0x34]
 	lsl r0, r0, #0xc
@@ -1773,7 +1773,7 @@ _0206B54E:
 	str r0, [sp, #0x34]
 	add r0, r5, #0
 	add r1, sp, #0x30
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add r0, r5, #0
 	bl sub_0205F484
 _0206B56E:

@@ -72,7 +72,7 @@ Sav2_Misc_init: ; 0x0202A8BC
 	mov r0, #0x93
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_0202AE8C
+	bl SavGymmick_Clear
 	mov r1, #0x27
 	lsl r1, r1, #4
 	ldr r0, _0202A948 ; =0x0000FFFF
@@ -170,8 +170,8 @@ sub_0202A988: ; 0x0202A988
 	pop {r3, pc}
 	thumb_func_end sub_0202A988
 
-	thumb_func_start sub_0202A998
-sub_0202A998: ; 0x0202A998
+	thumb_func_start Sav2_GetGymmickPtr
+Sav2_GetGymmickPtr: ; 0x0202A998
 	push {r3, lr}
 	mov r1, #9
 	bl SavArray_get
@@ -179,7 +179,7 @@ sub_0202A998: ; 0x0202A998
 	lsl r1, r1, #2
 	add r0, r0, r1
 	pop {r3, pc}
-	thumb_func_end sub_0202A998
+	thumb_func_end Sav2_GetGymmickPtr
 
 	thumb_func_start Sav2_Misc_RivalName_const_get
 Sav2_Misc_RivalName_const_get: ; 0x0202A9A8

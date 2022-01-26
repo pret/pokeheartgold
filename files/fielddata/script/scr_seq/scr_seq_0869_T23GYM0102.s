@@ -25,7 +25,7 @@
 	scrdef_end
 
 scr_seq_T23GYM0102_016:
-	scrcmd_326
+	azalea_gym_init
 	get_phone_book_rematch PHONE_CONTACT_BUGSY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00CD
@@ -120,58 +120,58 @@ scr_seq_T23GYM0102_000:
 	end
 
 scr_seq_T23GYM0102_002:
-	scrcmd_327 0
+	azalea_gym_spinarak 0
 	end
 
 scr_seq_T23GYM0102_003:
-	scrcmd_327 1
+	azalea_gym_spinarak 1
 	end
 
 scr_seq_T23GYM0102_004:
-	scrcmd_327 2
+	azalea_gym_spinarak 2
 	end
 
 scr_seq_T23GYM0102_005:
-	scrcmd_327 3
+	azalea_gym_spinarak 3
 	end
 
 scr_seq_T23GYM0102_006:
-	scrcmd_327 4
+	azalea_gym_spinarak 4
 	end
 
 scr_seq_T23GYM0102_007:
-	scrcmd_327 5
+	azalea_gym_spinarak 5
 	end
 
 scr_seq_T23GYM0102_008:
-	scrcmd_327 6
+	azalea_gym_spinarak 6
 	end
 
 scr_seq_T23GYM0102_009:
-	scrcmd_327 7
+	azalea_gym_spinarak 7
 	end
 
 scr_seq_T23GYM0102_010:
-	scrcmd_327 8
+	azalea_gym_spinarak 8
 	end
 
 scr_seq_T23GYM0102_011:
-	scrcmd_327 9
+	azalea_gym_spinarak 9
 	end
 
 scr_seq_T23GYM0102_012:
-	scrcmd_327 10
+	azalea_gym_spinarak 10
 	end
 
 scr_seq_T23GYM0102_013:
-	scrcmd_327 11
+	azalea_gym_spinarak 11
 	end
 
 scr_seq_T23GYM0102_014:
-	scrcmd_328 0
+	azalea_gym_switch 0
 	end
 
 scr_seq_T23GYM0102_015:
-	scrcmd_328 1
+	azalea_gym_switch 1
 	end
 	.balign 4, 0

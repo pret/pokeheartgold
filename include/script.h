@@ -27,7 +27,7 @@ typedef struct LocalMapObject LocalMapObject;
 
 #define Unk80_10_C_MAGIC         (222271)
 
-typedef struct UnkSavStruct80_Sub10_SubC_Sub54 {
+typedef struct EngagedTrainer {
     int unk0;
     int unk4;
     int unk8;

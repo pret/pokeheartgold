@@ -24,7 +24,7 @@
 	scrdef_end
 
 scr_seq_T24_005:
-	clearflag FLAG_UNK_981
+	clearflag FLAG_SYS_CIANWOOD_WATERFALL_DISABLE
 	setvar VAR_UNK_40EB, 0
 	end
 

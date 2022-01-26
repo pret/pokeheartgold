@@ -14,7 +14,7 @@
 	scrdef_end
 
 scr_seq_T22GYM0101_000:
-	scrcmd_324
+	violet_gym_init
 	get_phone_book_rematch PHONE_CONTACT_FALKNER, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00A7

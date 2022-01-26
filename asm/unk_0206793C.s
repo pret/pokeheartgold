@@ -534,7 +534,7 @@ _02067D2E:
 	b _02067DE4
 _02067D44:
 	ldr r0, [r4, #0x18]
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	beq _02067DE4
 	ldr r0, [r4, #0x18]

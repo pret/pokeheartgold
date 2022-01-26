@@ -177,9 +177,9 @@ extern BOOL ScrCmd_NicknameInput(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_FadeScreen(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_WaitFade(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_Warp(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_177(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_178(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_179(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_RockClimb(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Surf(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Waterfall(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_180(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_181(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_182(SCRIPTCONTEXT *ctx);
@@ -314,24 +314,24 @@ extern BOOL ScrCmd_310(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_311(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferDayCareMonNicks(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetDayCareState(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_314(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_EcruteakGymInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_315(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_316(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_317(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_318(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_319(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_320(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_321(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_322(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_323(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_324(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CianwoodGymInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CianwoodGymTurnWinch(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_VermilionGymInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_VermilionGymLockAction(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_VermilionGymCanCheck(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ResampleVermilionGymCans(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_VioletGymInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_325(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_326(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_327(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_328(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_329(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_330(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_331(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AzaleaGymInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AzaleaGymSpinarak(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_AzaleaGymSwitch(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BlackthornGymInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FuchsiaGymInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_ViridianGymInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetPartyCount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_333(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_334(SCRIPTCONTEXT *ctx);
@@ -685,7 +685,7 @@ extern BOOL ScrCmd_681(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_682(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_683(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_684(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_685(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetPlayerXYZ(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_686(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_687(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_688(SCRIPTCONTEXT *ctx);
@@ -1032,9 +1032,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_FadeScreen,
     ScrCmd_WaitFade,
     ScrCmd_Warp,
-    ScrCmd_177,
-    ScrCmd_178,
-    ScrCmd_179,
+    ScrCmd_RockClimb,
+    ScrCmd_Surf,
+    ScrCmd_Waterfall,
     ScrCmd_180,
     ScrCmd_181,
     ScrCmd_182,
@@ -1169,24 +1169,24 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_311,
     ScrCmd_BufferDayCareMonNicks,
     ScrCmd_GetDayCareState,
-    ScrCmd_314,
+    ScrCmd_EcruteakGymInit,
     ScrCmd_315,
     ScrCmd_316,
     ScrCmd_317,
-    ScrCmd_318,
-    ScrCmd_319,
-    ScrCmd_320,
-    ScrCmd_321,
-    ScrCmd_322,
-    ScrCmd_323,
-    ScrCmd_324,
+    ScrCmd_CianwoodGymInit,
+    ScrCmd_CianwoodGymTurnWinch,
+    ScrCmd_VermilionGymInit,
+    ScrCmd_VermilionGymLockAction,
+    ScrCmd_VermilionGymCanCheck,
+    ScrCmd_ResampleVermilionGymCans,
+    ScrCmd_VioletGymInit,
     ScrCmd_325,
-    ScrCmd_326,
-    ScrCmd_327,
-    ScrCmd_328,
-    ScrCmd_329,
-    ScrCmd_330,
-    ScrCmd_331,
+    ScrCmd_AzaleaGymInit,
+    ScrCmd_AzaleaGymSpinarak,
+    ScrCmd_AzaleaGymSwitch,
+    ScrCmd_BlackthornGymInit,
+    ScrCmd_FuchsiaGymInit,
+    ScrCmd_ViridianGymInit,
     ScrCmd_GetPartyCount,
     ScrCmd_333,
     ScrCmd_334,
@@ -1540,7 +1540,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_682,
     ScrCmd_683,
     ScrCmd_684,
-    ScrCmd_685,
+    ScrCmd_GetPlayerXYZ,
     ScrCmd_686,
     ScrCmd_687,
     ScrCmd_688,

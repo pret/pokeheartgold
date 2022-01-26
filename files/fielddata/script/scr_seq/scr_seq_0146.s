@@ -252,7 +252,7 @@ _03B4:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _03B4
 	releaseall
-	scrcmd_753 32775, 32780, 32774
+	scrcmd_753 VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
 	goto _0CEB
 	.byte 0x02, 0x00
 scr_seq_0146_008:
@@ -311,7 +311,7 @@ _04AB:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _04AB
 	releaseall
-	scrcmd_753 32775, 32780, 32774
+	scrcmd_753 VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
 	goto _0CEB
 	.byte 0x02, 0x00
 _04D0:
@@ -807,7 +807,7 @@ _0B4A:
 	goto _0BAE
 
 _0B67:
-	scrcmd_829 32780
+	scrcmd_829 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0BA0
 	scrcmd_598 1
@@ -831,7 +831,7 @@ _0BB4:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _0BB4
 	releaseall
-	scrcmd_754 32780
+	scrcmd_754 VAR_SPECIAL_RESULT
 	end
 
 scr_seq_0146_018:
@@ -871,7 +871,7 @@ _0C40:
 	goto _0CA4
 
 _0C5D:
-	scrcmd_829 32780
+	scrcmd_829 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0C96
 	scrcmd_598 1
@@ -895,7 +895,7 @@ _0CAA:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _0CAA
 	releaseall
-	scrcmd_754 32780
+	scrcmd_754 VAR_SPECIAL_RESULT
 	end
 
 _0CC5:

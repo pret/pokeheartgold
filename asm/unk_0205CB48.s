@@ -116,7 +116,7 @@ _0205CC04:
 	pop {r4, r5, r6, pc}
 _0205CC10:
 	add r0, r6, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	bl sub_0205DE64
 	cmp r0, #1
 	bne _0205CC46
@@ -198,7 +198,7 @@ sub_0205CC94: ; 0x0205CC94
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r4, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	bl sub_02062390
 	add r1, r0, #0
 	mov r0, #0
@@ -238,7 +238,7 @@ _0205CCF4:
 	bl PlaySE
 _0205CD0A:
 	add r0, r4, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	str r0, [sp]
 	add r0, r6, #0
 	bl sub_0205C700
@@ -287,7 +287,7 @@ sub_0205CD70: ; 0x0205CD70
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	bl sub_02062390
 	str r0, [sp]
 	add r0, r6, #0
@@ -437,7 +437,7 @@ _0205CEA6:
 	pop {r3, r4, r5, r6, r7, pc}
 _0205CEBE:
 	add r0, r7, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	bl sub_0205DE64
 	cmp r0, #1
 	beq _0205CF40
@@ -557,7 +557,7 @@ _0205CF90:
 	pop {r3, r4, r5, pc}
 _0205CFA4:
 	add r0, r4, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	bl sub_0205DE64
 	cmp r0, #1
 	bne _0205CFB6
@@ -2459,7 +2459,7 @@ sub_0205DE38: ; 0x0205DE38
 	pop {r4, pc}
 _0205DE4C:
 	add r0, r4, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	bl sub_0205DE64
 	cmp r0, #1
 	bne _0205DE5E

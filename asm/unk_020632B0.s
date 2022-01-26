@@ -172,7 +172,7 @@ _020633B2:
 	ldr r0, [sp]
 	bl sub_0205F328
 	ldr r0, [sp]
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	ldr r0, [sp]
 	bl sub_0205F684
 	cmp r0, #0
@@ -187,8 +187,8 @@ _0206341C: .word 0x00010004
 _02063420: .word SEQ_SE_DP_DANSA
 	thumb_func_end sub_020632B0
 
-	thumb_func_start sub_02063424
-sub_02063424: ; 0x02063424
+	thumb_func_start MapObjectMovementCmd108_Step1
+MapObjectMovementCmd108_Step1: ; 0x02063424
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -335,7 +335,7 @@ _02063550:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add r0, r5, #0
 	add r1, sp, #8
 	bl sub_0205F9A0
@@ -442,7 +442,7 @@ _02063624:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	add r0, r5, #0
 	bl sub_0205F684
 	cmp r0, #0
@@ -458,10 +458,10 @@ _0206366E:
 	nop
 _0206367C: .word 0x00020008
 _02063680: .word SEQ_SE_DP_SUTYA2
-	thumb_func_end sub_02063424
+	thumb_func_end MapObjectMovementCmd108_Step1
 
-	thumb_func_start sub_02063684
-sub_02063684: ; 0x02063684
+	thumb_func_start MapObjectMovementCmd105_Step0
+MapObjectMovementCmd105_Step0: ; 0x02063684
 	push {lr}
 	sub sp, #0xc
 	mov r2, #1
@@ -477,10 +477,10 @@ sub_02063684: ; 0x02063684
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02063684
+	thumb_func_end MapObjectMovementCmd105_Step0
 
-	thumb_func_start sub_020636A4
-sub_020636A4: ; 0x020636A4
+	thumb_func_start MapObjectMovementCmd105_Step2
+MapObjectMovementCmd105_Step2: ; 0x020636A4
 	push {lr}
 	sub sp, #0xc
 	mov r2, #3
@@ -496,10 +496,10 @@ sub_020636A4: ; 0x020636A4
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_020636A4
+	thumb_func_end MapObjectMovementCmd105_Step2
 
-	thumb_func_start sub_020636C4
-sub_020636C4: ; 0x020636C4
+	thumb_func_start MapObjectMovementCmd105_Step4
+MapObjectMovementCmd105_Step4: ; 0x020636C4
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0
@@ -515,10 +515,10 @@ sub_020636C4: ; 0x020636C4
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_020636C4
+	thumb_func_end MapObjectMovementCmd105_Step4
 
-	thumb_func_start sub_020636E4
-sub_020636E4: ; 0x020636E4
+	thumb_func_start MapObjectMovementCmd105_Step6
+MapObjectMovementCmd105_Step6: ; 0x020636E4
 	push {lr}
 	sub sp, #0xc
 	mov r2, #0
@@ -534,10 +534,10 @@ sub_020636E4: ; 0x020636E4
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_020636E4
+	thumb_func_end MapObjectMovementCmd105_Step6
 
-	thumb_func_start sub_02063704
-sub_02063704: ; 0x02063704
+	thumb_func_start MapObjectMovementCmd105_Step8
+MapObjectMovementCmd105_Step8: ; 0x02063704
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -553,10 +553,10 @@ sub_02063704: ; 0x02063704
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063704
+	thumb_func_end MapObjectMovementCmd105_Step8
 
-	thumb_func_start sub_02063724
-sub_02063724: ; 0x02063724
+	thumb_func_start MapObjectMovementCmd106_Step0
+MapObjectMovementCmd106_Step0: ; 0x02063724
 	push {lr}
 	sub sp, #0xc
 	mov r2, #3
@@ -572,10 +572,10 @@ sub_02063724: ; 0x02063724
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02063724
+	thumb_func_end MapObjectMovementCmd106_Step0
 
-	thumb_func_start sub_02063744
-sub_02063744: ; 0x02063744
+	thumb_func_start MapObjectMovementCmd106_Step2
+MapObjectMovementCmd106_Step2: ; 0x02063744
 	push {lr}
 	sub sp, #0xc
 	mov r1, #1
@@ -591,10 +591,10 @@ sub_02063744: ; 0x02063744
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063744
+	thumb_func_end MapObjectMovementCmd106_Step2
 
-	thumb_func_start sub_02063764
-sub_02063764: ; 0x02063764
+	thumb_func_start MapObjectMovementCmd106_Step4
+MapObjectMovementCmd106_Step4: ; 0x02063764
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -610,10 +610,10 @@ sub_02063764: ; 0x02063764
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063764
+	thumb_func_end MapObjectMovementCmd106_Step4
 
-	thumb_func_start sub_02063784
-sub_02063784: ; 0x02063784
+	thumb_func_start MapObjectMovementCmd106_Step6
+MapObjectMovementCmd106_Step6: ; 0x02063784
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -629,10 +629,10 @@ sub_02063784: ; 0x02063784
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063784
+	thumb_func_end MapObjectMovementCmd106_Step6
 
-	thumb_func_start sub_020637A4
-sub_020637A4: ; 0x020637A4
+	thumb_func_start MapObjectMovementCmd107_Step0
+MapObjectMovementCmd107_Step0: ; 0x020637A4
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -646,10 +646,10 @@ sub_020637A4: ; 0x020637A4
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_020637A4
+	thumb_func_end MapObjectMovementCmd107_Step0
 
-	thumb_func_start sub_020637C0
-sub_020637C0: ; 0x020637C0
+	thumb_func_start MapObjectMovementCmd107_Step2
+MapObjectMovementCmd107_Step2: ; 0x020637C0
 	push {lr}
 	sub sp, #0xc
 	mov r1, #1
@@ -665,10 +665,10 @@ sub_020637C0: ; 0x020637C0
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_020637C0
+	thumb_func_end MapObjectMovementCmd107_Step2
 
-	thumb_func_start sub_020637E0
-sub_020637E0: ; 0x020637E0
+	thumb_func_start MapObjectMovementCmd107_Step4
+MapObjectMovementCmd107_Step4: ; 0x020637E0
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -684,10 +684,10 @@ sub_020637E0: ; 0x020637E0
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_020637E0
+	thumb_func_end MapObjectMovementCmd107_Step4
 
-	thumb_func_start sub_02063800
-sub_02063800: ; 0x02063800
+	thumb_func_start MapObjectMovementCmd107_Step6
+MapObjectMovementCmd107_Step6: ; 0x02063800
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0
@@ -703,10 +703,10 @@ sub_02063800: ; 0x02063800
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02063800
+	thumb_func_end MapObjectMovementCmd107_Step6
 
-	thumb_func_start sub_02063820
-sub_02063820: ; 0x02063820
+	thumb_func_start MapObjectMovementCmd107_Step8
+MapObjectMovementCmd107_Step8: ; 0x02063820
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0
@@ -722,10 +722,10 @@ sub_02063820: ; 0x02063820
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063820
+	thumb_func_end MapObjectMovementCmd107_Step8
 
-	thumb_func_start sub_02063840
-sub_02063840: ; 0x02063840
+	thumb_func_start MapObjectMovementCmd107_Step10
+MapObjectMovementCmd107_Step10: ; 0x02063840
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -739,10 +739,10 @@ sub_02063840: ; 0x02063840
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063840
+	thumb_func_end MapObjectMovementCmd107_Step10
 
-	thumb_func_start sub_0206385C
-sub_0206385C: ; 0x0206385C
+	thumb_func_start MapObjectMovementCmd107_Step12
+MapObjectMovementCmd107_Step12: ; 0x0206385C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #1
@@ -758,10 +758,10 @@ sub_0206385C: ; 0x0206385C
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_0206385C
+	thumb_func_end MapObjectMovementCmd107_Step12
 
-	thumb_func_start sub_0206387C
-sub_0206387C: ; 0x0206387C
+	thumb_func_start MapObjectMovementCmd109_Step12
+MapObjectMovementCmd109_Step12: ; 0x0206387C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #1
@@ -777,10 +777,10 @@ sub_0206387C: ; 0x0206387C
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_0206387C
+	thumb_func_end MapObjectMovementCmd109_Step12
 
-	thumb_func_start sub_0206389C
-sub_0206389C: ; 0x0206389C
+	thumb_func_start MapObjectMovementCmd108_Step0
+MapObjectMovementCmd108_Step0: ; 0x0206389C
 	push {lr}
 	sub sp, #0xc
 	mov r2, #1
@@ -796,10 +796,10 @@ sub_0206389C: ; 0x0206389C
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_0206389C
+	thumb_func_end MapObjectMovementCmd108_Step0
 
-	thumb_func_start sub_020638BC
-sub_020638BC: ; 0x020638BC
+	thumb_func_start MapObjectMovementCmd110_Step0
+MapObjectMovementCmd110_Step0: ; 0x020638BC
 	push {lr}
 	sub sp, #0xc
 	mov r2, #1
@@ -815,10 +815,10 @@ sub_020638BC: ; 0x020638BC
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_020638BC
+	thumb_func_end MapObjectMovementCmd110_Step0
 
-	thumb_func_start sub_020638DC
-sub_020638DC: ; 0x020638DC
+	thumb_func_start MapObjectMovementCmd108_Step2
+MapObjectMovementCmd108_Step2: ; 0x020638DC
 	push {lr}
 	sub sp, #0xc
 	mov r1, #1
@@ -834,10 +834,10 @@ sub_020638DC: ; 0x020638DC
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_020638DC
+	thumb_func_end MapObjectMovementCmd108_Step2
 
-	thumb_func_start sub_020638FC
-sub_020638FC: ; 0x020638FC
+	thumb_func_start MapObjectMovementCmd111_Step0
+MapObjectMovementCmd111_Step0: ; 0x020638FC
 	push {lr}
 	sub sp, #0xc
 	mov r1, #1
@@ -853,10 +853,10 @@ sub_020638FC: ; 0x020638FC
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_020638FC
+	thumb_func_end MapObjectMovementCmd111_Step0
 
-	thumb_func_start sub_0206391C
-sub_0206391C: ; 0x0206391C
+	thumb_func_start MapObjectMovementCmd111_Step2
+MapObjectMovementCmd111_Step2: ; 0x0206391C
 	push {lr}
 	sub sp, #0xc
 	mov r2, #3
@@ -872,10 +872,10 @@ sub_0206391C: ; 0x0206391C
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_0206391C
+	thumb_func_end MapObjectMovementCmd111_Step2
 
-	thumb_func_start sub_0206393C
-sub_0206393C: ; 0x0206393C
+	thumb_func_start MapObjectMovementCmd111_Step4
+MapObjectMovementCmd111_Step4: ; 0x0206393C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -889,10 +889,10 @@ sub_0206393C: ; 0x0206393C
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_0206393C
+	thumb_func_end MapObjectMovementCmd111_Step4
 
-	thumb_func_start sub_02063958
-sub_02063958: ; 0x02063958
+	thumb_func_start MapObjectMovementCmd111_Step6
+MapObjectMovementCmd111_Step6: ; 0x02063958
 	push {lr}
 	sub sp, #0xc
 	mov r1, #1
@@ -908,10 +908,10 @@ sub_02063958: ; 0x02063958
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063958
+	thumb_func_end MapObjectMovementCmd111_Step6
 
-	thumb_func_start sub_02063978
-sub_02063978: ; 0x02063978
+	thumb_func_start MapObjectMovementCmd111_Step10
+MapObjectMovementCmd111_Step10: ; 0x02063978
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -927,10 +927,10 @@ sub_02063978: ; 0x02063978
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02063978
+	thumb_func_end MapObjectMovementCmd111_Step10
 
-	thumb_func_start sub_02063998
-sub_02063998: ; 0x02063998
+	thumb_func_start MapObjectMovementCmd111_Step14
+MapObjectMovementCmd111_Step14: ; 0x02063998
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0
@@ -946,10 +946,10 @@ sub_02063998: ; 0x02063998
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02063998
+	thumb_func_end MapObjectMovementCmd111_Step14
 
-	thumb_func_start sub_020639B8
-sub_020639B8: ; 0x020639B8
+	thumb_func_start MapObjectMovementCmd111_Step16
+MapObjectMovementCmd111_Step16: ; 0x020639B8
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0
@@ -965,10 +965,10 @@ sub_020639B8: ; 0x020639B8
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_020639B8
+	thumb_func_end MapObjectMovementCmd111_Step16
 
-	thumb_func_start sub_020639D8
-sub_020639D8: ; 0x020639D8
+	thumb_func_start MapObjectMovementCmd111_Step18
+MapObjectMovementCmd111_Step18: ; 0x020639D8
 	push {lr}
 	sub sp, #0xc
 	mov r3, #1
@@ -982,10 +982,10 @@ sub_020639D8: ; 0x020639D8
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_020639D8
+	thumb_func_end MapObjectMovementCmd111_Step18
 
-	thumb_func_start sub_020639F4
-sub_020639F4: ; 0x020639F4
+	thumb_func_start MapObjectMovementCmd112_Step0
+MapObjectMovementCmd112_Step0: ; 0x020639F4
 	push {lr}
 	sub sp, #0xc
 	mov r2, #3
@@ -1001,7 +1001,7 @@ sub_020639F4: ; 0x020639F4
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_020639F4
+	thumb_func_end MapObjectMovementCmd112_Step0
 
 	thumb_func_start sub_02063A14
 sub_02063A14: ; 0x02063A14
@@ -3063,8 +3063,8 @@ sub_020648EC: ; 0x020648EC
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	add r1, r0, #0
 	beq _0206490A
 	lsl r2, r1, #2
@@ -3083,8 +3083,8 @@ sub_02064910: ; 0x02064910
 	push {r4, lr}
 	add r4, r0, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #0
 	beq _02064932
 	lsl r1, r0, #2
@@ -3109,8 +3109,8 @@ sub_02064938: ; 0x02064938
 	add r7, r2, #0
 	str r3, [sp, #4]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #0
 	bne _0206495A
 	add sp, #8
@@ -5272,10 +5272,10 @@ sub_020659CC: ; 0x020659CC
 	bl MapObject_ClearBits
 	add r0, r5, #0
 	mov r1, #0xff
-	bl sub_0205F4CC
+	bl MapObject_SetMovementCommand
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F4DC
+	bl MapObject_SetMovementStep
 	mov r1, #0
 	add r0, r4, #0
 	strb r1, [r6]
@@ -5755,7 +5755,7 @@ sub_02065DB4: ; 0x02065DB4
 	bl MapObject_GetFieldSysPtr
 	bl sub_0205CA1C
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	add r1, r0, #0
 	sub r1, #0x58
 	cmp r1, #3
@@ -6421,7 +6421,7 @@ sub_020662C4: ; 0x020662C4
 	add r1, r2, #0
 	str r0, [r3]
 	add r0, r4, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -6519,7 +6519,7 @@ sub_02066370: ; 0x02066370
 	add r1, r2, #0
 	str r0, [r3]
 	add r0, r4, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14
@@ -7459,21 +7459,21 @@ _020669CC: .word FLAG_UNK_96B
 	thumb_func_start sub_020669D0
 sub_020669D0: ; 0x020669D0
 	ldr r3, _020669D8 ; =CheckScriptFlag
-	ldr r1, _020669DC ; =FLAG_UNK_981
+	ldr r1, _020669DC ; =FLAG_SYS_CIANWOOD_WATERFALL_DISABLE
 	bx r3
 	nop
 _020669D8: .word CheckScriptFlag
-_020669DC: .word FLAG_UNK_981
+_020669DC: .word FLAG_SYS_CIANWOOD_WATERFALL_DISABLE
 	thumb_func_end sub_020669D0
 
 	thumb_func_start sub_020669E0
 sub_020669E0: ; 0x020669E0
 	ldr r3, _020669E8 ; =CheckScriptFlag
-	ldr r1, _020669EC ; =FLAG_UNK_9A6
+	ldr r1, _020669EC ; =FLAG_SYS_SOLVED_LT_SURGE_GYM
 	bx r3
 	nop
 _020669E8: .word CheckScriptFlag
-_020669EC: .word FLAG_UNK_9A6
+_020669EC: .word FLAG_SYS_SOLVED_LT_SURGE_GYM
 	thumb_func_end sub_020669E0
 
 	thumb_func_start sub_020669F0
@@ -9178,647 +9178,6 @@ _02067606:
 	thumb_func_end sub_0206759C
 
 	.rodata
-
-	; file boundary
-	.public _020FDB44
-_020FDB44:
-	.word sub_0206311C
-	.word sub_0206313C
-	.word sub_02062470
-
-	.public _020FDB50
-_020FDB50:
-	.word sub_0206312C
-	.word sub_0206313C
-	.word sub_02062470
-
-	.public _020FDB5C
-_020FDB5C:
-	.word sub_0206310C
-	.word sub_0206313C
-	.word sub_02062470
-
-	.public _020FDB68
-_020FDB68:
-	.word sub_020630FC
-	.word sub_0206313C
-	.word sub_02062470
-
-	.public _020FDB74
-_020FDB74:
-	.word sub_02062DBC
-	.word sub_02062D6C
-	.word sub_02062470
-
-	.public _020FDB80
-_020FDB80:
-	.word sub_02062784
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDB8C
-_020FDB8C:
-	.word sub_02062D8C
-	.word sub_02062D6C
-	.word sub_02062470
-
-	.public _020FDB98
-_020FDB98:
-	.word sub_02062758
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDBA4
-_020FDBA4:
-	.word sub_02062CC8
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDBB0
-_020FDBB0:
-	.word sub_020630C4
-	.word sub_020630E4
-	.word sub_02062470
-
-	.public _020FDBBC
-_020FDBBC:
-	.word sub_02062C44
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDBC8
-_020FDBC8:
-	.word sub_020630A4
-	.word sub_020630E4
-	.word sub_02062470
-
-	.public _020FDBD4
-_020FDBD4:
-	.word sub_02062C24
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDBE0
-_020FDBE0:
-	.word sub_020625A4
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDBEC
-_020FDBEC:
-	.word sub_02063154
-	.word sub_02063170
-	.word sub_02062470
-
-	.public _020FDBF8
-_020FDBF8:
-	.word sub_02062F94
-	.word sub_02062F6C
-	.word sub_02062470
-
-	.public _020FDC04
-_020FDC04:
-	.word sub_02062FA0
-	.word sub_02062F6C
-	.word sub_02062470
-
-	.public _020FDC10
-_020FDC10:
-	.word sub_0206319C
-	.word sub_020631F0
-	.word sub_02062470
-
-	.public _020FDC1C
-_020FDC1C:
-	.word sub_02062918
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDC28
-_020FDC28:
-	.word sub_020628F8
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDC34
-_020FDC34:
-	.word sub_020628D8
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDC40
-_020FDC40:
-	.word sub_020628B8
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDC4C
-_020FDC4C:
-	.word sub_02062898
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDC58
-_020FDC58:
-	.word sub_02062878
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDC64
-_020FDC64:
-	.word sub_02062E4C
-	.word sub_02062E78
-	.word sub_02062470
-
-	.public _020FDC70
-_020FDC70:
-	.word sub_02062DE0
-	.word sub_02062E04
-	.word sub_02062470
-
-	.public _020FDC7C
-_020FDC7C:
-	.word sub_02062DD4
-	.word sub_02062D6C
-	.word sub_02062470
-
-	.public _020FDC88
-_020FDC88:
-	.word sub_02062DC8
-	.word sub_02062D6C
-	.word sub_02062470
-
-	.public _020FDC94
-_020FDC94:
-	.word sub_02062704
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDCA0
-_020FDCA0:
-	.word sub_02062DB0
-	.word sub_02062D6C
-	.word sub_02062470
-
-	.public _020FDCAC
-_020FDCAC:
-	.word sub_02062DA4
-	.word sub_02062D6C
-	.word sub_02062470
-
-	.public _020FDCB8
-_020FDCB8:
-	.word sub_02062D98
-	.word sub_02062D6C
-	.word sub_02062470
-
-	.public _020FDCC4
-_020FDCC4:
-	.word sub_0206265C
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDCD0
-_020FDCD0:
-	.word sub_02062D30
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDCDC
-_020FDCDC:
-	.word sub_02062D0C
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDCE8
-_020FDCE8:
-	.word sub_02062CE8
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDCF4
-_020FDCF4:
-	.word sub_020625B8
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDD00
-_020FDD00:
-	.word sub_02062CA4
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD0C
-_020FDD0C:
-	.word sub_02062C84
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD18
-_020FDD18:
-	.word sub_02062C64
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD24
-_020FDD24:
-	.word sub_020630B4
-	.word sub_020630E4
-	.word sub_02062470
-
-	.public _020FDD30
-_020FDD30:
-	.word sub_02062C00
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD3C
-_020FDD3C:
-	.word sub_02062BDC
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD48
-_020FDD48:
-	.word sub_0206304C
-	.word sub_0206308C
-	.word sub_02062470
-
-	.public _020FDD54
-_020FDD54:
-	.word sub_02062B1C
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD60
-_020FDD60:
-	.word sub_02062B3C
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD6C
-_020FDD6C:
-	.word sub_0206305C
-	.word sub_0206308C
-	.word sub_02062470
-
-	.public _020FDD78
-_020FDD78:
-	.word sub_02063258
-	.word sub_02063290
-	.word sub_02062470
-
-	.public _020FDD84
-_020FDD84:
-	.word sub_02062B5C
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD90
-_020FDD90:
-	.word sub_02062AFC
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDD9C
-_020FDD9C:
-	.word sub_02062ADC
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDDA8
-_020FDDA8:
-	.word sub_02062ABC
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDDB4
-_020FDDB4:
-	.word sub_02062948
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDDC0
-_020FDDC0:
-	.word sub_02062938
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDDCC
-_020FDDCC:
-	.word sub_02062928
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDDD8
-_020FDDD8:
-	.word sub_02062B7C
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDDE4
-_020FDDE4:
-	.word sub_02062908
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDDF0
-_020FDDF0:
-	.word sub_0206306C
-	.word sub_0206308C
-	.word sub_02062470
-
-	.public _020FDDFC
-_020FDDFC:
-	.word sub_020628E8
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE08
-_020FDE08:
-	.word sub_02062B9C
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDE14
-_020FDE14:
-	.word sub_020628C8
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE20
-_020FDE20:
-	.word sub_02062BBC
-	.word sub_020629CC
-	.word sub_02062470
-
-	.public _020FDE2C
-_020FDE2C:
-	.word sub_020628A8
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE38
-_020FDE38:
-	.word sub_0206307C
-	.word sub_0206308C
-	.word sub_02062470
-
-	.public _020FDE44
-_020FDE44:
-	.word sub_02062888
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE50
-_020FDE50:
-	.word sub_02063274
-	.word sub_02063290
-	.word sub_02062470
-
-	.public _020FDE5C
-_020FDE5C:
-	.word sub_02062868
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE68
-_020FDE68:
-	.word sub_02062858
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE74
-_020FDE74:
-	.word sub_02062848
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE80
-_020FDE80:
-	.word sub_02062838
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE8C
-_020FDE8C:
-	.word sub_02062828
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDE98
-_020FDE98:
-	.word sub_02062818
-	.word sub_020627E4
-	.word sub_02062470
-
-	.public _020FDEA4
-_020FDEA4:
-	.word sub_02062740
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDEB0
-_020FDEB0:
-	.word sub_0206272C
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDEBC
-_020FDEBC:
-	.word sub_02062718
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDEC8
-_020FDEC8:
-	.word sub_0206257C
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDED4
-_020FDED4:
-	.word sub_020626EC
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDEE0
-_020FDEE0:
-	.word sub_020626D8
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDEEC
-_020FDEEC:
-	.word sub_020626C4
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDEF8
-_020FDEF8:
-	.word sub_020626AC
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF04
-_020FDF04:
-	.word sub_02062698
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF10
-_020FDF10:
-	.word sub_02062684
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF1C
-_020FDF1C:
-	.word sub_02062670
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF28
-_020FDF28:
-	.word sub_020625CC
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF34
-_020FDF34:
-	.word sub_02062648
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF40
-_020FDF40:
-	.word sub_02062634
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF4C
-_020FDF4C:
-	.word sub_02062620
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF58
-_020FDF58:
-	.word sub_02062608
-	.word sub_02062514
-	.word sub_02062470
-
-	.public _020FDF64
-_020FDF64:
-	.word sub_0206389C
-	.word sub_02063424
-	.word sub_020638DC
-	.word sub_02063424
-	.word sub_02062470
-
-	.public _020FDF78
-_020FDF78:
-	.word sub_020638BC
-	.word sub_02063424
-	.word sub_020638DC
-	.word sub_02063424
-	.word sub_02062470
-
-	.public _020FDF8C
-_020FDF8C:
-	.word sub_020639F4
-	.word sub_02063424
-	.word sub_020639F4
-	.word sub_02063424
-	.word sub_020639F4
-	.word sub_02063424
-	.word sub_02062470
-
-	.public _020FDFA8
-_020FDFA8:
-	.word sub_02063724
-	.word sub_02063424
-	.word sub_02063744
-	.word sub_02063424
-	.word sub_02063764
-	.word sub_02063424
-	.word sub_02063784
-	.word sub_02063424
-	.word sub_02062470
-
-	.public _020FDFCC
-_020FDFCC:
-	.word sub_02063684
-	.word sub_02063424
-	.word sub_020636A4
-	.word sub_02063424
-	.word sub_020636C4
-	.word sub_02063424
-	.word sub_020636E4
-	.word sub_02063424
-	.word sub_02063704
-	.word sub_02063424
-	.word sub_02062470
-
-	.public _020FDFF8
-_020FDFF8:
-	.word sub_020637A4
-	.word sub_02063424
-	.word sub_020637C0
-	.word sub_02063424
-	.word sub_020637E0
-	.word sub_02063424
-	.word sub_02063800
-	.word sub_02063424
-	.word sub_02063820
-	.word sub_02063424
-	.word sub_02063840
-	.word sub_02063424
-	.word sub_0206385C
-	.word sub_02063424
-	.word sub_02062470
-
-	.public _020FE034
-_020FE034:
-	.word sub_020637A4
-	.word sub_02063424
-	.word sub_020637C0
-	.word sub_02063424
-	.word sub_020637E0
-	.word sub_02063424
-	.word sub_02063800
-	.word sub_02063424
-	.word sub_02063820
-	.word sub_02063424
-	.word sub_02063840
-	.word sub_02063424
-	.word sub_0206387C
-	.word sub_02063424
-	.word sub_02062470
-
-	.public _020FE070
-_020FE070:
-	.word sub_020638FC
-	.word sub_02063424
-	.word sub_0206391C
-	.word sub_02063424
-	.word sub_0206393C
-	.word sub_02063424
-	.word sub_02063958
-	.word sub_02063424
-	.word sub_02063958
-	.word sub_02063424
-	.word sub_02063978
-	.word sub_02063424
-	.word sub_02063978
-	.word sub_02063424
-	.word sub_02063998
-	.word sub_02063424
-	.word sub_020639B8
-	.word sub_02063424
-	.word sub_020639D8
-	.word sub_02063424
-	.word sub_02062470
 
 	; file boundary
 _020FE0C4:

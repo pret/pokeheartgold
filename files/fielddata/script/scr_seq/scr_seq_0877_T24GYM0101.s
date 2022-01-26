@@ -12,8 +12,8 @@
 	scrdef_end
 
 scr_seq_T24GYM0101_001:
-	scrcmd_318
-	clearflag FLAG_UNK_981
+	cianwood_gym_init
+	clearflag FLAG_SYS_CIANWOOD_WATERFALL_DISABLE
 	end
 
 scr_seq_T24GYM0101_000:
@@ -115,11 +115,11 @@ _0153:
 	buffer_players_name 0
 	npc_msg msg_0574_T24GYM0101_00011
 	closemsg
-	setflag FLAG_UNK_981
+	setflag FLAG_SYS_CIANWOOD_WATERFALL_DISABLE
 	stop_se SEQ_SE_GS_N_TAKI
 	play_se SEQ_SE_DP_SHIP03
 	play_se SEQ_SE_GS_TAKI2
-	scrcmd_319 16384
+	cianwood_gym_turn_winch VAR_TEMP_x4000
 	releaseall
 	end
 

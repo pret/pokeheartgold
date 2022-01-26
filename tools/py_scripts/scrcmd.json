@@ -1919,7 +1919,7 @@
       ]
     },
     {
-      "name": "scrcmd_314",
+      "name": "ecruteak_gym_init",
       "args": []
     },
     {
@@ -1937,39 +1937,39 @@
       ]
     },
     {
-      "name": "scrcmd_318",
+      "name": "cianwood_gym_init",
       "args": []
     },
     {
-      "name": "scrcmd_319",
+      "name": "cianwood_gym_turn_winch",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_320",
+      "name": "vermilion_gym_init",
       "args": []
     },
     {
-      "name": "scrcmd_321",
+      "name": "vermilion_gym_lock_action",
       "args": [
         1,
         1
       ]
     },
     {
-      "name": "scrcmd_322",
+      "name": "vermilion_gym_can_check",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_323",
+      "name": "resample_vermilion_gym_cans",
       "args": []
     },
     {
-      "name": "scrcmd_324",
+      "name": "violet_gym_init",
       "args": []
     },
     {
@@ -1977,31 +1977,31 @@
       "args": []
     },
     {
-      "name": "scrcmd_326",
+      "name": "azalea_gym_init",
       "args": []
     },
     {
-      "name": "scrcmd_327",
+      "name": "azalea_gym_spinarak",
       "args": [
         1
       ]
     },
     {
-      "name": "scrcmd_328",
+      "name": "azalea_gym_switch",
       "args": [
         1
       ]
     },
     {
-      "name": "scrcmd_329",
+      "name": "blackthorn_gym_init",
       "args": []
     },
     {
-      "name": "scrcmd_330",
+      "name": "fuchsia_gym_init",
       "args": []
     },
     {
-      "name": "scrcmd_331",
+      "name": "viridian_gym_init",
       "args": []
     },
     {
@@ -4326,7 +4326,7 @@
       ]
     },
     {
-      "name": "scrcmd_685",
+      "name": "get_player_xyz",
       "args": [
         2,
         2,
@@ -4751,15 +4751,15 @@
     {
       "name": "scrcmd_753",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_754",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -5171,7 +5171,7 @@
     {
       "name": "scrcmd_829",
       "args": [
-        2
+        "var"
       ]
     },
     {

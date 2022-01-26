@@ -35,9 +35,9 @@
 
 scr_seq_T06GYM0101_021:
 	goto_if_set FLAG_UNK_31A, _0079
-	clearflag FLAG_UNK_9A6
+	clearflag FLAG_SYS_SOLVED_LT_SURGE_GYM
 _0079:
-	scrcmd_320
+	vermilion_gym_init
 	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _014A
@@ -113,64 +113,64 @@ _0175:
 	end
 
 scr_seq_T06GYM0101_000:
-	scrcmd_322 0, 32780
+	vermilion_gym_can_check 0, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_001:
-	scrcmd_322 1, 32780
+	vermilion_gym_can_check 1, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02
 	.byte 0x00
 scr_seq_T06GYM0101_002:
-	scrcmd_322 2, 32780
+	vermilion_gym_can_check 2, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_003:
-	scrcmd_322 3, 32780
+	vermilion_gym_can_check 3, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_004:
-	scrcmd_322 4, 32780
+	vermilion_gym_can_check 4, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_005:
-	scrcmd_322 5, 32780
+	vermilion_gym_can_check 5, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_006:
-	scrcmd_322 6, 32780
+	vermilion_gym_can_check 6, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_007:
-	scrcmd_322 7, 32780
+	vermilion_gym_can_check 7, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_008:
-	scrcmd_322 8, 32780
+	vermilion_gym_can_check 8, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_009:
-	scrcmd_322 9, 32780
+	vermilion_gym_can_check 9, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_010:
-	scrcmd_322 10, 32780
+	vermilion_gym_can_check 10, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_011:
-	scrcmd_322 11, 32780
+	vermilion_gym_can_check 11, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_012:
-	scrcmd_322 12, 32780
+	vermilion_gym_can_check 12, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_013:
-	scrcmd_322 13, 32780
+	vermilion_gym_can_check 13, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 scr_seq_T06GYM0101_014:
-	scrcmd_322 14, 32780
+	vermilion_gym_can_check 14, VAR_SPECIAL_RESULT
 	goto _023A
 	.byte 0x02, 0x00
 _023A:
@@ -201,7 +201,7 @@ _028E:
 	npc_msg msg_0485_T06GYM0101_00009
 	waitbutton
 	closemsg
-	scrcmd_321 0, 0
+	vermilion_gym_lock_action 0, 0
 	npc_msg msg_0485_T06GYM0101_00011
 	waitbutton
 	closemsg
@@ -214,8 +214,8 @@ _02AA:
 	npc_msg msg_0485_T06GYM0101_00009
 	waitbutton
 	closemsg
-	scrcmd_321 1, 0
-	setflag FLAG_UNK_9A6
+	vermilion_gym_lock_action 1, 0
+	setflag FLAG_SYS_SOLVED_LT_SURGE_GYM
 	stop_se SEQ_SE_GS_DENGEKIBARIA
 	npc_msg msg_0485_T06GYM0101_00012
 	waitbutton
@@ -229,8 +229,8 @@ _02CE:
 	npc_msg msg_0485_T06GYM0101_00010
 	waitbutton
 	closemsg
-	scrcmd_321 0, 1
-	scrcmd_323
+	vermilion_gym_lock_action 0, 1
+	resample_vermilion_gym_cans
 	releaseall
 	end
 

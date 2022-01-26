@@ -5,6 +5,7 @@
 #include "constants/sprites.h"
 #include "constants/maps.h"
 #include "constants/mmodel.h"
+#include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -630,8 +631,8 @@ _021E5EB4: .word SDK_OVERLAY_OVY_3_ID
 ov01_021E5EB8: ; 0x021E5EB8
 	push {r3, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #0
 	bne _021E5ECE
 	mov r0, #1
@@ -8970,7 +8971,7 @@ _021E9F0C:
 	mov r0, #0
 	str r0, [r5, #4]
 	strb r0, [r5, #1]
-	ldr r0, _021E9F70 ; =0x00000602
+	ldr r0, _021E9F70 ; =SEQ_SE_DP_KAIDAN2
 	bl PlaySE
 	mov r0, #6
 	str r0, [sp]
@@ -9010,7 +9011,7 @@ _021E9F6A:
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021E9F70: .word 0x00000602
+_021E9F70: .word SEQ_SE_DP_KAIDAN2
 _021E9F74: .word 0x00007FFF
 	thumb_func_end ov01_021E9EEC
 
@@ -9034,7 +9035,7 @@ _021E9F98:
 	mov r0, #0
 	str r0, [r4, #4]
 	strb r0, [r4, #1]
-	ldr r0, _021E9FF4 ; =0x00000602
+	ldr r0, _021E9FF4 ; =SEQ_SE_DP_KAIDAN2
 	bl PlaySE
 	mov r1, #0
 	str r1, [sp]
@@ -9075,7 +9076,7 @@ _021E9FEC:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
-_021E9FF4: .word 0x00000602
+_021E9FF4: .word SEQ_SE_DP_KAIDAN2
 	thumb_func_end ov01_021E9F78
 
 	thumb_func_start ov01_021E9FF8
@@ -17598,7 +17599,7 @@ _021EDF2E:
 ov01_021EDF38: ; 0x021EDF38
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021EDF74 ; =0x000005DC
+	ldr r0, _021EDF74 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r4, #0
 	add r0, #0xb8
@@ -17620,7 +17621,7 @@ ov01_021EDF38: ; 0x021EDF38
 	bl ov01_021EDF00
 	pop {r4, pc}
 	nop
-_021EDF74: .word 0x000005DC
+_021EDF74: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov01_021EDF38
 
 	thumb_func_start ov01_021EDF78
@@ -18348,7 +18349,7 @@ _021EE4B8:
 	ldrh r0, [r5, r0]
 	cmp r6, r0
 	beq _021EE4EE
-	ldr r0, _021EE55C ; =0x000005DC
+	ldr r0, _021EE55C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021EE4EE:
 	ldr r0, _021EE560 ; =gMain
@@ -18385,7 +18386,7 @@ _021EE520:
 	lsr r0, r0, #0x1f
 	cmp r0, #1
 	bne _021EE55A
-	ldr r0, _021EE55C ; =0x000005DC
+	ldr r0, _021EE55C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r5, #0
 	add r0, #0xa0
@@ -18396,7 +18397,7 @@ _021EE520:
 	bl ov01_021EE568
 	pop {r4, r5, r6, pc}
 _021EE546:
-	ldr r0, _021EE55C ; =0x000005DC
+	ldr r0, _021EE55C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r5, #0
 	add r0, #0xa0
@@ -18407,7 +18408,7 @@ _021EE546:
 _021EE55A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EE55C: .word 0x000005DC
+_021EE55C: .word SEQ_SE_DP_SELECT
 _021EE560: .word gMain
 _021EE564: .word 0x0000FFFE
 	thumb_func_end ov01_021EE49C
@@ -18416,7 +18417,7 @@ _021EE564: .word 0x0000FFFE
 ov01_021EE568: ; 0x021EE568
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	ldr r0, _021EE5CC ; =0x000005DC
+	ldr r0, _021EE5CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x6f
 	lsl r0, r0, #2
@@ -18459,7 +18460,7 @@ _021EE5BE:
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EE5CC: .word 0x000005DC
+_021EE5CC: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov01_021EE568
 
 	thumb_func_start ov01_021EE5D0
@@ -25690,11 +25691,11 @@ _021F1BAC:
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205C78C
-	ldr r0, _021F1BBC ; =0x00000617
+	ldr r0, _021F1BBC ; =SEQ_SE_DP_JITENSYA
 	bl PlaySE
 	pop {r4, pc}
 	.balign 4, 0
-_021F1BBC: .word 0x00000617
+_021F1BBC: .word SEQ_SE_DP_JITENSYA
 	thumb_func_end ov01_021F1B78
 
 	thumb_func_start ov01_021F1BC0
@@ -26147,7 +26148,7 @@ _021F1F0E:
 	add r1, r0, #0
 	add r0, r6, #0
 	bl sub_0206214C
-	ldr r0, _021F1F88 ; =0x00000626
+	ldr r0, _021F1F88 ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -26189,7 +26190,7 @@ _021F1F82:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F1F88: .word 0x00000626
+_021F1F88: .word SEQ_SE_DP_UG_023
 	thumb_func_end ov01_021F1ECC
 
 	thumb_func_start ov01_021F1F8C
@@ -27217,7 +27218,7 @@ _021F27A2:
 	ldr r0, [r5, #0xc]
 	bl ov02_0224D9A4
 	str r0, [r5, #0x2c]
-	ldr r0, _021F27BC ; =0x00000626
+	ldr r0, _021F27BC ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	ldrh r0, [r5]
 	add r0, r0, #1
@@ -27225,7 +27226,7 @@ _021F27A2:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021F27BC: .word 0x00000626
+_021F27BC: .word SEQ_SE_DP_UG_023
 	thumb_func_end ov01_021F2758
 
 	thumb_func_start ov01_021F27C0
@@ -27509,7 +27510,7 @@ ov01_021F29C0: ; 0x021F29C0
 	bl ov01_021F3068
 	cmp r0, #1
 	bne _021F29DA
-	ldr r0, _021F29E0 ; =0x0000064C
+	ldr r0, _021F29E0 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -27518,7 +27519,7 @@ _021F29DA:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021F29E0: .word 0x0000064C
+_021F29E0: .word SEQ_SE_DP_FW463
 	thumb_func_end ov01_021F29C0
 
 	thumb_func_start ov01_021F29E4
@@ -27757,7 +27758,7 @@ ov01_021F2BA4: ; 0x021F2BA4
 	bl ov01_021F3068
 	cmp r0, #1
 	bne _021F2BBE
-	ldr r0, _021F2BC4 ; =0x0000064C
+	ldr r0, _021F2BC4 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -27766,7 +27767,7 @@ _021F2BBE:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021F2BC4: .word 0x0000064C
+_021F2BC4: .word SEQ_SE_DP_FW463
 	thumb_func_end ov01_021F2BA4
 
 	thumb_func_start ov01_021F2BC8
@@ -28108,7 +28109,7 @@ _021F2E50:
 	ldr r0, [r4, #0x34]
 	bl ov02_0224D67C
 	str r0, [r4, #0x50]
-	ldr r0, _021F2E68 ; =0x0000064C
+	ldr r0, _021F2E68 ; =SEQ_SE_DP_FW463
 	bl PlaySE
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -28116,7 +28117,7 @@ _021F2E50:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021F2E68: .word 0x0000064C
+_021F2E68: .word SEQ_SE_DP_FW463
 	thumb_func_end ov01_021F2E38
 
 	thumb_func_start ov01_021F2E6C
@@ -28532,7 +28533,7 @@ ov01_021F3170: ; 0x021F3170
 	add r4, r0, #0
 	str r5, [r4, #0xc]
 	str r6, [r4, #0x10]
-	ldr r0, _021F3198 ; =0x00000657
+	ldr r0, _021F3198 ; =SEQ_SE_DP_F209
 	str r7, [r4]
 	bl PlaySE
 	ldr r1, _021F319C ; =ov01_021F31CC
@@ -28541,7 +28542,7 @@ ov01_021F3170: ; 0x021F3170
 	bl sub_020504F0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021F3198: .word 0x00000657
+_021F3198: .word SEQ_SE_DP_F209
 _021F319C: .word ov01_021F31CC
 	thumb_func_end ov01_021F3170
 
@@ -28710,7 +28711,7 @@ _021F32BC:
 	bl PlayerAvatar_SetFacingDirection
 	add r0, r4, #0
 	bl ov01_021F336C
-	ldr r0, _021F3344 ; =0x00000657
+	ldr r0, _021F3344 ; =SEQ_SE_DP_F209
 	mov r1, #0
 	bl StopSE
 	mov r0, #1
@@ -28741,7 +28742,7 @@ _021F3314:
 	bl PlayerAvatar_SetFacingDirection
 	add r0, r4, #0
 	bl ov01_021F336C
-	ldr r0, _021F3344 ; =0x00000657
+	ldr r0, _021F3344 ; =SEQ_SE_DP_F209
 	mov r1, #0
 	bl StopSE
 	mov r0, #1
@@ -28750,7 +28751,7 @@ _021F3340:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021F3344: .word 0x00000657
+_021F3344: .word SEQ_SE_DP_F209
 	thumb_func_end ov01_021F31CC
 
 	thumb_func_start ov01_021F3348
@@ -28845,7 +28846,7 @@ ov01_021F33B8: ; 0x021F33B8
 _021F33D8:
 	mov r0, #1
 	str r0, [r5, #8]
-	ldr r0, _021F3480 ; =0x0000064E
+	ldr r0, _021F3480 ; =SEQ_SE_DP_TELE2
 	bl PlaySE
 _021F33E2:
 	ldr r0, [r5, #0xc]
@@ -28918,7 +28919,7 @@ _021F347A:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
-_021F3480: .word 0x0000064E
+_021F3480: .word SEQ_SE_DP_TELE2
 _021F3484: .word 0x9999999A
 _021F3488: .word 0x40C19999
 	thumb_func_end ov01_021F33B8
@@ -28973,7 +28974,7 @@ _021F34B0:
 	bl sub_0205F9A0
 	add r0, r4, #0
 	bl ov01_021F92A0
-	ldr r0, _021F35C0 ; =0x0000064E
+	ldr r0, _021F35C0 ; =SEQ_SE_DP_TELE2
 	bl PlaySE
 	mov r0, #1
 	str r0, [r5, #8]
@@ -29060,7 +29061,7 @@ _021F35B4:
 	.balign 4, 0
 _021F35B8: .word 0x9999999A
 _021F35BC: .word 0x40C19999
-_021F35C0: .word 0x0000064E
+_021F35C0: .word SEQ_SE_DP_TELE2
 	thumb_func_end ov01_021F348C
 
 	thumb_func_start ov01_021F35C4
@@ -37821,7 +37822,7 @@ _021F766C:
 	str r0, [r1, #8]
 	add r0, r5, #0
 	add r1, sp, #0x24
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r5, #0
 	bl MapObject_GetGfxID
 	add r0, r5, #0
@@ -37836,7 +37837,7 @@ _021F766C:
 	ldr r0, [sp, #0x20]
 	str r0, [sp, #0x2c]
 	add r0, r5, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add r0, r5, #0
 	bl ov01_02205564
 	cmp r0, #0
@@ -37881,7 +37882,7 @@ ov01_021F7704: ; 0x021F7704
 	mov r1, #0
 	strb r1, [r0, #0x15]
 	add r0, r4, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #0
 	str r1, [r0, #4]
 	pop {r4, pc}
@@ -37930,7 +37931,7 @@ _021F7760:
 	add r1, r7, #0
 	blx r5
 	add r0, r4, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -38769,7 +38770,7 @@ ov01_021F7DD0: ; 0x021F7DD0
 	bl ov01_021F95A8
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -38865,7 +38866,7 @@ _021F7EA0:
 	add r1, r7, #0
 	blx r5
 	add r0, r4, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -40003,7 +40004,7 @@ _021F876E:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -40190,7 +40191,7 @@ _021F88D4:
 _021F88DA:
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -40274,7 +40275,7 @@ _021F8990:
 	lsl r1, r1, #0xc
 	bl sub_02023F04
 	add r0, r5, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -40445,7 +40446,7 @@ _021F8B00:
 	lsl r1, r1, #0xc
 	bl sub_02023F04
 	add r0, r5, #0
-	bl sub_0205F98C
+	bl MapObject_GetFacingVecPtr
 	mov r1, #2
 	lsl r1, r1, #0xa
 	str r1, [r0, #8]
@@ -40564,7 +40565,7 @@ ov01_021F8BE0: ; 0x021F8BE0
 	lsl r2, r2, #0xa
 	add r2, r3, r2
 	str r2, [sp, #8]
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0xc
 	pop {pc}
 	thumb_func_end ov01_021F8BE0
@@ -40802,7 +40803,7 @@ ov01_021F8D80: ; 0x021F8D80
 	beq _021F8DBA
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #0x14
 	ldrsb r0, [r4, r0]
 	lsl r0, r0, #0xc
@@ -40819,7 +40820,7 @@ _021F8DBA:
 _021F8DC8:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #0
 	str r0, [sp, #8]
 	str r0, [sp, #0x10]
@@ -40896,7 +40897,7 @@ _021F8E56:
 _021F8E64:
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F8D80
@@ -40909,7 +40910,7 @@ ov01_021F8E70: ; 0x021F8E70
 	add r6, r0, #0
 	add r1, sp, #0
 	add r4, r2, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r6, #0
 	bl MapObject_GetGfxID
 	bl ov01_021FA298
@@ -41656,7 +41657,7 @@ ov01_021F93AC: ; 0x021F93AC
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0205F990
@@ -46575,7 +46576,7 @@ _021FB63E:
 	str r0, [r4]
 	mov r0, #0
 	str r0, [r4, #8]
-	ldr r0, _021FB6C0 ; =0x0000060F
+	ldr r0, _021FB6C0 ; =SEQ_SE_DP_DOKU2
 	bl PlaySE
 	pop {r4, pc}
 	nop
@@ -46583,7 +46584,7 @@ _021FB6B0: .word ov01_021FB7DC
 _021FB6B4: .word ov01_021FB6C4
 _021FB6B8: .word ov01_021FB7CC
 _021FB6BC: .word ov01_021FB800
-_021FB6C0: .word 0x0000060F
+_021FB6C0: .word SEQ_SE_DP_DOKU2
 	thumb_func_end ov01_021FB630
 
 	thumb_func_start ov01_021FB6C4
@@ -47949,13 +47950,13 @@ ov01_021FC05C: ; 0x021FC05C
 	mov r0, #4
 	mov r1, #1
 	bl GX_EngineAToggleLayers
-	ldr r0, _021FC0A4 ; =0x00000647
+	ldr r0, _021FC0A4 ; =SEQ_SE_DP_FW230
 	bl PlaySE
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021FC0A0: .word 0x04000050
-_021FC0A4: .word 0x00000647
+_021FC0A4: .word SEQ_SE_DP_FW230
 	thumb_func_end ov01_021FC05C
 
 	thumb_func_start ov01_021FC0A8
@@ -49007,7 +49008,7 @@ ov01_021FC814: ; 0x021FC814
 	str r0, [r4, #0x10]
 	cmp r0, #0xa
 	bne _021FC828
-	ldr r0, _021FC848 ; =0x0000064F
+	ldr r0, _021FC848 ; =SEQ_SE_DP_FW104
 	bl PlaySE
 _021FC828:
 	ldr r0, [r4, #0x10]
@@ -49030,7 +49031,7 @@ _021FC83E:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_021FC848: .word 0x0000064F
+_021FC848: .word SEQ_SE_DP_FW104
 	thumb_func_end ov01_021FC814
 
 	thumb_func_start ov01_021FC84C
@@ -50628,7 +50629,7 @@ _021FD39E:
 	bl MapObject_GetPositionVec
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r1, [sp]
 	ldr r0, [r4, #0xc]
 	ldr r2, [sp, #0xc]
@@ -51755,7 +51756,7 @@ _021FDC06:
 	beq _021FDC78
 	ldr r0, [r5, #0x20]
 	add r1, sp, #0xc
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	beq _021FDC1C
@@ -51821,7 +51822,7 @@ ov01_021FDC7C: ; 0x021FDC7C
 	stmia r2!, {r0, r1}
 	add r0, r6, #0
 	add r1, sp, #0x20
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r0, [sp, #0x20]
 	str r0, [sp, #4]
 	add r0, r6, #0
@@ -55275,7 +55276,7 @@ _021FF67C:
 	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp]
 	add r0, r1, r0
@@ -57121,14 +57122,14 @@ ov01_02200418: ; 0x02200418
 	bl sub_02068D90
 	cmp r0, #1
 	bne _02200474
-	ldr r0, _0220047C ; =0x000005DD
+	ldr r0, _0220047C ; =SEQ_SE_DP_DECIDE
 	bl PlaySE
 _02200474:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
-_0220047C: .word 0x000005DD
+_0220047C: .word SEQ_SE_DP_DECIDE
 	thumb_func_end ov01_02200418
 
 	thumb_func_start ov01_02200480
@@ -57256,7 +57257,7 @@ ov01_02200540: ; 0x02200540
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, sp, #0x14
 	add r1, sp, #8
 	add r2, r0, #0
@@ -57322,14 +57323,14 @@ ov01_0220059C: ; 0x0220059C
 	bl sub_02068D90
 	cmp r0, #1
 	bne _02200608
-	ldr r0, _02200610 ; =0x000005DD
+	ldr r0, _02200610 ; =SEQ_SE_DP_DECIDE
 	bl PlaySE
 _02200608:
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
-_02200610: .word 0x000005DD
+_02200610: .word SEQ_SE_DP_DECIDE
 	thumb_func_end ov01_0220059C
 
 	thumb_func_start ov01_02200614
@@ -57609,7 +57610,7 @@ _0220081A:
 	bl MapObject_GetPositionVec
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	ldr r1, [sp, #0xc]
 	ldr r0, [sp]
 	add r0, r1, r0
@@ -58763,7 +58764,7 @@ _022010E0:
 	ldrh r0, [r5, r0]
 	cmp r6, r0
 	beq _02201112
-	ldr r0, _02201160 ; =0x000005DC
+	ldr r0, _02201160 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _02201112:
 	mov r0, #1
@@ -58781,7 +58782,7 @@ _02201122:
 	lsr r0, r0, #0x1f
 	cmp r0, #1
 	bne _0220115A
-	ldr r0, _02201160 ; =0x000005DC
+	ldr r0, _02201160 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x21
 	lsl r0, r0, #4
@@ -58792,7 +58793,7 @@ _02201122:
 	bl ov01_0220116C
 	pop {r4, r5, r6, pc}
 _02201146:
-	ldr r0, _02201160 ; =0x000005DC
+	ldr r0, _02201160 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x21
 	lsl r0, r0, #4
@@ -58804,7 +58805,7 @@ _0220115A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0220115C: .word 0x000006F4
-_02201160: .word 0x000005DC
+_02201160: .word SEQ_SE_DP_SELECT
 _02201164: .word 0x00000207
 _02201168: .word 0x0000FFFE
 	thumb_func_end ov01_022010CC
@@ -58813,7 +58814,7 @@ _02201168: .word 0x0000FFFE
 ov01_0220116C: ; 0x0220116C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	ldr r0, _022011CC ; =0x000005DC
+	ldr r0, _022011CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x8f
 	lsl r0, r0, #2
@@ -58854,7 +58855,7 @@ _022011BE:
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_022011CC: .word 0x000005DC
+_022011CC: .word SEQ_SE_DP_SELECT
 _022011D0: .word 0x00000207
 	thumb_func_end ov01_0220116C
 
@@ -63968,7 +63969,7 @@ _02203A6E:
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #8
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, sp, #0x14
@@ -64213,7 +64214,7 @@ ov01_02203BB4: ; 0x02203BB4
 	mov r1, #0
 	str r0, [r4, #0x3c]
 	bl sub_02023EA4
-	ldr r0, _02203C9C ; =0x000005DD
+	ldr r0, _02203C9C ; =SEQ_SE_DP_DECIDE
 	bl PlaySE
 	mov r0, #1
 	add sp, #0xc
@@ -64221,7 +64222,7 @@ ov01_02203BB4: ; 0x02203BB4
 	.balign 4, 0
 _02203C94: .word ov01_02209544
 _02203C98: .word ov01_02209548
-_02203C9C: .word 0x000005DD
+_02203C9C: .word SEQ_SE_DP_DECIDE
 	thumb_func_end ov01_02203BB4
 
 	thumb_func_start ov01_02203CA0
@@ -64257,7 +64258,7 @@ _02203CD4:
 	bl MapObject_GetPositionVec
 	add r0, r5, #0
 	add r1, sp, #0x18
-	bl sub_0205F96C
+	bl MapObject_GetFacingVec
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0205F990
@@ -67349,7 +67350,7 @@ ov01_02205300: ; 0x02205300
 	ldr r3, [sp, #8]
 	add r0, r4, #0
 	bl ov01_021FC00C
-	mov r0, #0x91
+	mov r0, #SEQ_SE_GS_TUREARUKI>>4
 	lsl r0, r0, #4
 	bl PlaySE
 	mov r0, #1
@@ -71809,30 +71810,30 @@ ov01_022095F4: ; 0x022095F4
 
 ov01_02209604: ; 0x02209604
 #ifdef HEARTGOLD
-	.short 0x0048, 0x004A, 0x0065
+	.short ITEM_RED_SHARD, ITEM_YELLOW_SHARD, ITEM_HELIX_FOSSIL
 #else
-	.short 0x0049, 0x004B, 0x0066
+	.short ITEM_BLUE_SHARD, ITEM_GREEN_SHARD, ITEM_DOME_FOSSIL
 #endif
-	.short 0x0027
+	.short ITEM_MAX_ETHER
 #ifdef HEARTGOLD
-	.short 0x0049, 0x004B
+	.short ITEM_BLUE_SHARD, ITEM_GREEN_SHARD
 #else
-	.short 0x0048, 0x004A
+	.short ITEM_RED_SHARD, ITEM_YELLOW_SHARD
 #endif
-	.short 0x0067, 0x001D
+	.short ITEM_OLD_AMBER, ITEM_MAX_REVIVE
 
 ov01_02209614: ; 0x02209614
-	.short 0x0027, 0x001C, 0x005D, 0x0048, 0x0049, 0x004B
-	.short 0x004A, 0x005B
+	.short ITEM_MAX_ETHER, ITEM_REVIVE, ITEM_HEART_SCALE, ITEM_RED_SHARD, ITEM_BLUE_SHARD, ITEM_GREEN_SHARD
+	.short ITEM_YELLOW_SHARD, ITEM_STAR_PIECE
 
 ov01_02209624: ; 0x02209624
-	.short 0x0027, 0x0058, 0x0059
+	.short ITEM_MAX_ETHER, ITEM_PEARL, ITEM_BIG_PEARL
 #ifdef HEARTGOLD
-	.short 0x0048, 0x004A, 0x0064, 0x0064
+	.short ITEM_RED_SHARD, ITEM_YELLOW_SHARD, ITEM_CLAW_FOSSIL, ITEM_CLAW_FOSSIL
 #else
-	.short 0x0049, 0x004B, 0x0063, 0x0063
+	.short ITEM_BLUE_SHARD, ITEM_GREEN_SHARD, ITEM_ROOT_FOSSIL, ITEM_ROOT_FOSSIL
 #endif
-	.short 0x006A
+	.short ITEM_RARE_BONE
 
 ov01_02209634: ; 0x02209634
 	.byte 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00

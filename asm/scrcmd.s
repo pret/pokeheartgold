@@ -227,9 +227,9 @@ gScriptCmdTable:
 	.word ScrCmd_FadeScreen                             ; 174
 	.word ScrCmd_WaitFade                               ; 175
 	.word ScrCmd_Warp                                    ; 176
-	.word ScrCmd_177                                    ; 177
-	.word ScrCmd_178                                    ; 178
-	.word ScrCmd_179                                    ; 179
+	.word ScrCmd_RockClimb                                    ; 177
+	.word ScrCmd_Surf                                    ; 178
+	.word ScrCmd_Waterfall                                    ; 179
 	.word ScrCmd_180                                    ; 180
 	.word ScrCmd_181                                    ; 181
 	.word ScrCmd_182                                    ; 182
@@ -364,24 +364,24 @@ gScriptCmdTable:
 	.word ScrCmd_311                                    ; 311
 	.word ScrCmd_BufferDayCareMonNicks                                    ; 312
 	.word ScrCmd_GetDayCareState                                    ; 313
-	.word ScrCmd_314                                    ; 314
+	.word ScrCmd_EcruteakGymInit                                    ; 314
 	.word ScrCmd_315                                    ; 315
 	.word ScrCmd_316                                    ; 316
 	.word ScrCmd_317                                    ; 317
-	.word ScrCmd_318                                    ; 318
-	.word ScrCmd_319                                    ; 319
-	.word ScrCmd_320                                    ; 320
-	.word ScrCmd_321                                    ; 321
-	.word ScrCmd_322                                    ; 322
-	.word ScrCmd_323                                    ; 323
-	.word ScrCmd_324                                    ; 324
+	.word ScrCmd_CianwoodGymInit                                    ; 318
+	.word ScrCmd_CianwoodGymTurnWinch                                    ; 319
+	.word ScrCmd_VermilionGymInit                                    ; 320
+	.word ScrCmd_VermilionGymLockAction                                    ; 321
+	.word ScrCmd_VermilionGymCanCheck                                    ; 322
+	.word ScrCmd_ResampleVermilionGymCans                                    ; 323
+	.word ScrCmd_VioletGymInit                                    ; 324
 	.word ScrCmd_325                                    ; 325
-	.word ScrCmd_326                                    ; 326
-	.word ScrCmd_327                                    ; 327
-	.word ScrCmd_328                                    ; 328
-	.word ScrCmd_329                                    ; 329
-	.word ScrCmd_330                                    ; 330
-	.word ScrCmd_331                                    ; 331
+	.word ScrCmd_AzaleaGymInit                                    ; 326
+	.word ScrCmd_AzaleaGymSpinarak                                    ; 327
+	.word ScrCmd_AzaleaGymSwitch                                    ; 328
+	.word ScrCmd_BlackthornGymInit                                    ; 329
+	.word ScrCmd_FuchsiaGymInit                                    ; 330
+	.word ScrCmd_ViridianGymInit                                    ; 331
 	.word ScrCmd_GetPartyCount                          ; 332
 	.word ScrCmd_333                                    ; 333
 	.word ScrCmd_334                                    ; 334
@@ -735,7 +735,7 @@ gScriptCmdTable:
 	.word ScrCmd_682                                    ; 682
 	.word ScrCmd_683                                    ; 683
 	.word ScrCmd_684                                    ; 684
-	.word ScrCmd_685                                    ; 685
+	.word ScrCmd_GetPlayerXYZ                                    ; 685
 	.word ScrCmd_686                                    ; 686
 	.word ScrCmd_687                                    ; 687
 	.word ScrCmd_688                                    ; 688
@@ -3453,7 +3453,7 @@ _02041B46:
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	ldrb r1, [r0]
 	add r5, #0x80
@@ -3462,7 +3462,7 @@ _02041B46:
 	strb r1, [r0]
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_02041CC4
+	bl _ScheduleObjectEventMovement
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_ApplyMovement
@@ -3573,7 +3573,7 @@ _02041C36:
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	ldrb r1, [r0]
 	add r5, #0x80
@@ -3582,7 +3582,7 @@ _02041C36:
 	strb r1, [r0]
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_02041CC4
+	bl _ScheduleObjectEventMovement
 	mov r0, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3614,20 +3614,20 @@ _02041C8E:
 	thumb_func_start ScrCmd_WaitMovement
 ScrCmd_WaitMovement: ; 0x02041C98
 	push {r3, lr}
-	ldr r1, _02041CA4 ; =sub_02041CA8
+	ldr r1, _02041CA4 ; =_IsAllMovementFinish
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_02041CA4: .word sub_02041CA8
+_02041CA4: .word _IsAllMovementFinish
 	thumb_func_end ScrCmd_WaitMovement
 
-	thumb_func_start sub_02041CA8
-sub_02041CA8: ; 0x02041CA8
+	thumb_func_start _IsAllMovementFinish
+_IsAllMovementFinish: ; 0x02041CA8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3638,10 +3638,10 @@ _02041CBE:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02041CA8
+	thumb_func_end _IsAllMovementFinish
 
-	thumb_func_start sub_02041CC4
-sub_02041CC4: ; 0x02041CC4
+	thumb_func_start _ScheduleObjectEventMovement
+_ScheduleObjectEventMovement: ; 0x02041CC4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -3656,7 +3656,7 @@ sub_02041CC4: ; 0x02041CC4
 _02041CDE:
 	str r5, [r4, #0xc]
 	str r6, [r4, #4]
-	ldr r0, _02041CF4 ; =sub_02041CF8
+	ldr r0, _02041CF4 ; =_RunObjectEventMovement
 	add r1, r4, #0
 	mov r2, #0
 	str r7, [r4, #8]
@@ -3664,19 +3664,19 @@ _02041CDE:
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02041CF4: .word sub_02041CF8
-	thumb_func_end sub_02041CC4
+_02041CF4: .word _RunObjectEventMovement
+	thumb_func_end _ScheduleObjectEventMovement
 
-	thumb_func_start sub_02041CF8
-sub_02041CF8: ; 0x02041CF8
+	thumb_func_start _RunObjectEventMovement
+_RunObjectEventMovement: ; 0x02041CF8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	ldr r0, [r5, #0xc]
-	mov r1, #4
+	mov r1, #4 ; UNK80_10_C_NUM_ACTIVE_MOVEMENT
 	bl FieldSysGetAttrAddr
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #1
 	bne _02041D3C
 	ldr r0, [r5, #4]
@@ -3701,7 +3701,7 @@ _02041D38:
 _02041D3C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02041CF8
+	thumb_func_end _RunObjectEventMovement
 
 	thumb_func_start ScrCmd_LockAll
 ScrCmd_LockAll: ; 0x02041D40
@@ -6830,8 +6830,8 @@ _020435E2:
 	.balign 4, 0
 	thumb_func_end ScrCmd_840
 
-	thumb_func_start ScrCmd_177
-ScrCmd_177: ; 0x020435E8
+	thumb_func_start ScrCmd_RockClimb
+ScrCmd_RockClimb: ; 0x020435E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6852,10 +6852,10 @@ ScrCmd_177: ; 0x020435E8
 	bl ov01_021F2590
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_177
+	thumb_func_end ScrCmd_RockClimb
 
-	thumb_func_start ScrCmd_178
-ScrCmd_178: ; 0x02043618
+	thumb_func_start ScrCmd_Surf
+ScrCmd_Surf: ; 0x02043618
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6876,10 +6876,10 @@ ScrCmd_178: ; 0x02043618
 	bl ov01_021F2068
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_178
+	thumb_func_end ScrCmd_Surf
 
-	thumb_func_start ScrCmd_179
-ScrCmd_179: ; 0x02043648
+	thumb_func_start ScrCmd_Waterfall
+ScrCmd_Waterfall: ; 0x02043648
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -6900,7 +6900,7 @@ ScrCmd_179: ; 0x02043648
 	bl ov01_021F2908
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_179
+	thumb_func_end ScrCmd_Waterfall
 
 	thumb_func_start ScrCmd_180
 ScrCmd_180: ; 0x02043678
@@ -9412,16 +9412,16 @@ ScrCmd_311: ; 0x020449F4
 	.balign 4, 0
 	thumb_func_end ScrCmd_311
 
-	thumb_func_start ScrCmd_314
-ScrCmd_314: ; 0x02044A0C
+	thumb_func_start ScrCmd_EcruteakGymInit
+ScrCmd_EcruteakGymInit: ; 0x02044A0C
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068DE0
+	bl Fsys_InitEcruteakGymSaveData
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_314
+	thumb_func_end ScrCmd_EcruteakGymInit
 
 	thumb_func_start ScrCmd_315
 ScrCmd_315: ; 0x02044A1C
@@ -9430,8 +9430,8 @@ ScrCmd_315: ; 0x02044A1C
 	ldr r4, [r0]
 	add r0, r4, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #1
 	beq _02044A38
 	mov r0, #0
@@ -9451,8 +9451,8 @@ ScrCmd_316: ; 0x02044A44
 	ldr r4, [r0]
 	add r0, r4, #0
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #1
 	beq _02044A60
 	mov r0, #0
@@ -9477,8 +9477,8 @@ ScrCmd_317: ; 0x02044A6C
 	add r0, r4, #0
 	ldrb r5, [r2]
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
-	bl sub_0202AEBC
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_GetType
 	cmp r0, #1
 	beq _02044A92
 	mov r0, #1
@@ -9498,19 +9498,19 @@ _02044A9C:
 	.balign 4, 0
 	thumb_func_end ScrCmd_317
 
-	thumb_func_start ScrCmd_318
-ScrCmd_318: ; 0x02044AA8
+	thumb_func_start ScrCmd_CianwoodGymInit
+ScrCmd_CianwoodGymInit: ; 0x02044AA8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068E08
+	bl Fsys_InitCianwoodGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_318
+	thumb_func_end ScrCmd_CianwoodGymInit
 
-	thumb_func_start ScrCmd_319
-ScrCmd_319: ; 0x02044AB8
+	thumb_func_start ScrCmd_CianwoodGymTurnWinch
+ScrCmd_CianwoodGymTurnWinch: ; 0x02044AB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -9528,21 +9528,21 @@ ScrCmd_319: ; 0x02044AB8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_319
+	thumb_func_end ScrCmd_CianwoodGymTurnWinch
 
-	thumb_func_start ScrCmd_320
-ScrCmd_320: ; 0x02044AE0
+	thumb_func_start ScrCmd_VermilionGymInit
+ScrCmd_VermilionGymInit: ; 0x02044AE0
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068E24
+	bl Fsys_InitVermilionGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_320
+	thumb_func_end ScrCmd_VermilionGymInit
 
-	thumb_func_start ScrCmd_321
-ScrCmd_321: ; 0x02044AF0
+	thumb_func_start ScrCmd_VermilionGymLockAction
+ScrCmd_VermilionGymLockAction: ; 0x02044AF0
 	push {r4, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -9558,10 +9558,10 @@ ScrCmd_321: ; 0x02044AF0
 	bl ov04_0225640C
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end ScrCmd_321
+	thumb_func_end ScrCmd_VermilionGymLockAction
 
-	thumb_func_start ScrCmd_322
-ScrCmd_322: ; 0x02044B10
+	thumb_func_start ScrCmd_VermilionGymCanCheck
+ScrCmd_VermilionGymCanCheck: ; 0x02044B10
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -9583,29 +9583,29 @@ ScrCmd_322: ; 0x02044B10
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_322
+	thumb_func_end ScrCmd_VermilionGymCanCheck
 
-	thumb_func_start ScrCmd_323
-ScrCmd_323: ; 0x02044B40
+	thumb_func_start ScrCmd_ResampleVermilionGymCans
+ScrCmd_ResampleVermilionGymCans: ; 0x02044B40
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068E70
+	bl PlaceVermilionGymSwitches
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_323
+	thumb_func_end ScrCmd_ResampleVermilionGymCans
 
-	thumb_func_start ScrCmd_324
-ScrCmd_324: ; 0x02044B50
+	thumb_func_start ScrCmd_VioletGymInit
+ScrCmd_VioletGymInit: ; 0x02044B50
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068EB0
+	bl Fsys_InitVioletGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_324
+	thumb_func_end ScrCmd_VioletGymInit
 
 	thumb_func_start ScrCmd_325
 ScrCmd_325: ; 0x02044B60
@@ -9618,19 +9618,19 @@ ScrCmd_325: ; 0x02044B60
 	.balign 4, 0
 	thumb_func_end ScrCmd_325
 
-	thumb_func_start ScrCmd_326
-ScrCmd_326: ; 0x02044B70
+	thumb_func_start ScrCmd_AzaleaGymInit
+ScrCmd_AzaleaGymInit: ; 0x02044B70
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068ED0
+	bl Fsys_InitAzaleaGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_326
+	thumb_func_end ScrCmd_AzaleaGymInit
 
-	thumb_func_start ScrCmd_327
-ScrCmd_327: ; 0x02044B80
+	thumb_func_start ScrCmd_AzaleaGymSpinarak
+ScrCmd_AzaleaGymSpinarak: ; 0x02044B80
 	push {r3, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -9640,14 +9640,14 @@ ScrCmd_327: ; 0x02044B80
 	str r1, [r0, #8]
 	ldrb r1, [r2]
 	add r0, r3, #0
-	bl ov04_02254568
+	bl Fsys_BeginAzaleaGymSpinarakRide
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_327
+	thumb_func_end ScrCmd_AzaleaGymSpinarak
 
-	thumb_func_start ScrCmd_328
-ScrCmd_328: ; 0x02044B9C
+	thumb_func_start ScrCmd_AzaleaGymSwitch
+ScrCmd_AzaleaGymSwitch: ; 0x02044B9C
 	push {r3, lr}
 	add r1, r0, #0
 	add r1, #0x80
@@ -9657,47 +9657,47 @@ ScrCmd_328: ; 0x02044B9C
 	str r1, [r0, #8]
 	ldrb r1, [r2]
 	add r0, r3, #0
-	bl ov04_02254404
+	bl Fsys_FlipAzaleaGymSwitch
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_328
+	thumb_func_end ScrCmd_AzaleaGymSwitch
 
-	thumb_func_start ScrCmd_329
-ScrCmd_329: ; 0x02044BB8
+	thumb_func_start ScrCmd_BlackthornGymInit
+ScrCmd_BlackthornGymInit: ; 0x02044BB8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068F00
+	bl Fsys_InitBlackthornGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_329
+	thumb_func_end ScrCmd_BlackthornGymInit
 
-	thumb_func_start ScrCmd_330
-ScrCmd_330: ; 0x02044BC8
+	thumb_func_start ScrCmd_FuchsiaGymInit
+ScrCmd_FuchsiaGymInit: ; 0x02044BC8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068F40
+	bl Fsys_InitFuchsiaGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_330
+	thumb_func_end ScrCmd_FuchsiaGymInit
 
-	thumb_func_start ScrCmd_331
-ScrCmd_331: ; 0x02044BD8
+	thumb_func_start ScrCmd_ViridianGymInit
+ScrCmd_ViridianGymInit: ; 0x02044BD8
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02068F54
+	bl Fsys_InitViridianGym
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_331
+	thumb_func_end ScrCmd_ViridianGymInit
 
-	thumb_func_start ScrCmd_685
-ScrCmd_685: ; 0x02044BE8
+	thumb_func_start ScrCmd_GetPlayerXYZ
+ScrCmd_GetPlayerXYZ: ; 0x02044BE8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -9742,7 +9742,7 @@ ScrCmd_685: ; 0x02044BE8
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_685
+	thumb_func_end ScrCmd_GetPlayerXYZ
 
 	thumb_func_start ScrCmd_EggHatchAnim
 ScrCmd_EggHatchAnim: ; 0x02044C54

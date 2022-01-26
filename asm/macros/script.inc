@@ -1795,7 +1795,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_314
+	.macro ecruteak_gym_init
 	.short 314
 	.endm
 
@@ -1812,36 +1812,36 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_318
+	.macro cianwood_gym_init
 	.short 318
 	.endm
 
-	.macro scrcmd_319 arg0
+	.macro cianwood_gym_turn_winch arg0
 	.short 319
 	.short \arg0
 	.endm
 
-	.macro scrcmd_320
+	.macro vermilion_gym_init
 	.short 320
 	.endm
 
-	.macro scrcmd_321 arg0, arg1
+	.macro vermilion_gym_lock_action arg0, arg1
 	.short 321
 	.byte \arg0
 	.byte \arg1
 	.endm
 
-	.macro scrcmd_322 arg0, arg1
+	.macro vermilion_gym_can_check arg0, arg1
 	.short 322
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_323
+	.macro resample_vermilion_gym_cans
 	.short 323
 	.endm
 
-	.macro scrcmd_324
+	.macro violet_gym_init
 	.short 324
 	.endm
 
@@ -1849,29 +1849,29 @@
 	.short 325
 	.endm
 
-	.macro scrcmd_326
+	.macro azalea_gym_init
 	.short 326
 	.endm
 
-	.macro scrcmd_327 arg0
+	.macro azalea_gym_spinarak arg0
 	.short 327
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_328 arg0
+	.macro azalea_gym_switch arg0
 	.short 328
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_329
+	.macro blackthorn_gym_init
 	.short 329
 	.endm
 
-	.macro scrcmd_330
+	.macro fuchsia_gym_init
 	.short 330
 	.endm
 
-	.macro scrcmd_331
+	.macro viridian_gym_init
 	.short 331
 	.endm
 
@@ -3871,7 +3871,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_685 arg0, arg1, arg2
+	.macro get_player_xyz arg0, arg1, arg2
 	.short 685
 	.short \arg0
 	.short \arg1

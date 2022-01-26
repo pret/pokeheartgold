@@ -13,77 +13,77 @@
 
 	.rodata
 
-_020FD978:
-	.word sub_020624A8
-	.word sub_02062470
+gMovementCmdSteps_001:
+	.word MapObjectMovementCmd001_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD980:
-	.word sub_020624C0
-	.word sub_02062470
+gMovementCmdSteps_003:
+	.word MapObjectMovementCmd003_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD988:
-	.word sub_02062F18
-	.word sub_02062470
+gMovementCmdSteps_073:
+	.word MapObjectMovementCmd073_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD990:
-	.word sub_02062F30
-	.word sub_02062470
+gMovementCmdSteps_074:
+	.word MapObjectMovementCmd074_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD998:
-	.word sub_02062F04
-	.word sub_02062470
+gMovementCmdSteps_072:
+	.word MapObjectMovementCmd072_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9A0:
-	.word sub_02062ED8
-	.word sub_02062470
+gMovementCmdSteps_070:
+	.word MapObjectMovementCmd070_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9A8:
-	.word sub_02062EC0
-	.word sub_02062470
+gMovementCmdSteps_069:
+	.word MapObjectMovementCmd069_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9B0:
-	.word sub_0206249C
-	.word sub_02062470
+gMovementCmdSteps_000:
+	.word MapObjectMovementCmd000_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9B8:
-	.word sub_020624B4
-	.word sub_02062470
+gMovementCmdSteps_002:
+	.word MapObjectMovementCmd002_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9C0:
-	.word sub_02062EF0
-	.word sub_02062470
+gMovementCmdSteps_071:
+	.word MapObjectMovementCmd071_Step0
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9C8:
-	.word sub_020625E0
-	.word sub_02062514
-	.word sub_02062470
+gMovementCmdSteps_010:
+	.word MapObjectMovementCmd010_Step0
+	.word MapObjectMovementCmd090_Step1
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9D4:
-	.word sub_02062770
-	.word sub_02062514
-	.word sub_02062470
+gMovementCmdSteps_089:
+	.word MapObjectMovementCmd089_Step0
+	.word MapObjectMovementCmd090_Step1
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9E0:
-	.word sub_020630D4
-	.word sub_020630E4
-	.word sub_02062470
+gMovementCmdSteps_083:
+	.word MapObjectMovementCmd083_Step0
+	.word MapObjectMovementCmd082_Step1
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9EC:
-	.word sub_02062590
-	.word sub_02062514
-	.word sub_02062470
+gMovementCmdSteps_006:
+	.word MapObjectMovementCmd006_Step0
+	.word MapObjectMovementCmd090_Step1
+	.word MapObjectMovementCmd098_Step2
 
-_020FD9F8:
-	.word sub_02062798
-	.word sub_02062514
-	.word sub_02062470
+gMovementCmdSteps_091:
+	.word MapObjectMovementCmd091_Step0
+	.word MapObjectMovementCmd090_Step1
+	.word MapObjectMovementCmd098_Step2
 
-_020FDA04:
-	.word sub_02062568
-	.word sub_02062514
-	.word sub_02062470
+gMovementCmdSteps_004:
+	.word MapObjectMovementCmd004_Step0
+	.word MapObjectMovementCmd090_Step1
+	.word MapObjectMovementCmd098_Step2
 
-_020FDA10:
-	.word sub_020625F4
-	.word sub_02062514
-	.word sub_02062470
+gMovementCmdSteps_011:
+	.word MapObjectMovementCmd011_Step0
+	.word MapObjectMovementCmd090_Step1
+	.word MapObjectMovementCmd098_Step2

@@ -14,7 +14,7 @@
 	scrdef_end
 
 scr_seq_T30GYM0101_001:
-	scrcmd_329
+	blackthorn_gym_init
 	setvar VAR_UNK_4120, 0
 	get_phone_book_rematch PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0

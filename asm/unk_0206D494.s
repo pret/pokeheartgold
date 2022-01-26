@@ -1055,13 +1055,13 @@ _0206DCC0: .word 0x00004021
 sub_0206DCC4: ; 0x0206DCC4
 	push {r4, lr}
 	bl ScriptEnvironment_GetSav2Ptr
-	bl sub_0202A998
+	bl Sav2_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #9
-	bl sub_0202AE98
+	bl SavGymmick_Init
 	add r0, r4, #0
 	mov r1, #9
-	bl sub_0202AEA8
+	bl SavGymmick_AssertMagic_GetData
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}

@@ -68,10 +68,10 @@ sub_0206214C: ; 0x0206214C
 _0206215A:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205F4CC
+	bl MapObject_SetMovementCommand
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F4DC
+	bl MapObject_SetMovementStep
 	add r0, r5, #0
 	mov r1, #0x10
 	bl MapObject_SetBits
@@ -85,10 +85,10 @@ _0206215A:
 sub_0206217C: ; 0x0206217C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F4CC
+	bl MapObject_SetMovementCommand
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F4DC
+	bl MapObject_SetMovementStep
 	add r0, r4, #0
 	mov r1, #0x20
 	bl MapObject_ClearBits
@@ -158,10 +158,10 @@ sub_020621F0: ; 0x020621F0
 	bl MapObject_SetBits
 	add r0, r4, #0
 	mov r1, #0xff
-	bl sub_0205F4CC
+	bl MapObject_SetMovementCommand
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F4DC
+	bl MapObject_SetMovementStep
 	pop {r4, pc}
 	thumb_func_end sub_020621F0
 
@@ -204,14 +204,14 @@ _02062254:
 _0206225C: .word sub_0206229C
 	thumb_func_end EventObjectMovementMan_Create
 
-	thumb_func_start sub_02062260
-sub_02062260: ; 0x02062260
+	thumb_func_start EventObjectMovementMan_IsFinish
+EventObjectMovementMan_IsFinish: ; 0x02062260
 	push {r3, lr}
 	bl sub_0201F988
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062260
+	thumb_func_end EventObjectMovementMan_IsFinish
 
 	thumb_func_start sub_0206226C
 sub_0206226C: ; 0x0206226C
@@ -472,16 +472,16 @@ sub_02062400: ; 0x02062400
 	add r5, r0, #0
 _02062404:
 	add r0, r5, #0
-	bl sub_0205F4D4
+	bl MapObject_GetMovementCommand
 	add r4, r0, #0
 	cmp r4, #0xff
 	beq _02062424
 	add r0, r5, #0
-	bl sub_0205F4F4
+	bl MapObject_GetMovementStep
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0206245C
+	bl MapObject_RunMovementCommand
 	cmp r0, #0
 	bne _02062404
 _02062424:
@@ -507,36 +507,36 @@ _02062440:
 	bl MapObject_ClearBits
 	add r0, r4, #0
 	mov r1, #0xff
-	bl sub_0205F4CC
+	bl MapObject_SetMovementCommand
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F4DC
+	bl MapObject_SetMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end sub_02062428
 
-	thumb_func_start sub_0206245C
-sub_0206245C: ; 0x0206245C
+	thumb_func_start MapObject_RunMovementCommand
+MapObject_RunMovementCommand: ; 0x0206245C
 	push {r3, lr}
 	lsl r3, r1, #2
-	ldr r1, _0206246C ; =_020FD2D8
+	ldr r1, _0206246C ; =gMovementCmdTable
 	ldr r3, [r1, r3]
 	lsl r1, r2, #2
 	ldr r1, [r3, r1]
 	blx r1
 	pop {r3, pc}
 	.balign 4, 0
-_0206246C: .word _020FD2D8
-	thumb_func_end sub_0206245C
+_0206246C: .word gMovementCmdTable
+	thumb_func_end MapObject_RunMovementCommand
 
-	thumb_func_start sub_02062470
-sub_02062470: ; 0x02062470
+	thumb_func_start MapObjectMovementCmd098_Step2
+MapObjectMovementCmd098_Step2: ; 0x02062470
 	push {r3, lr}
 	mov r1, #0x20
 	bl MapObject_SetBits
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_02062470
+	thumb_func_end MapObjectMovementCmd098_Step2
 
 	thumb_func_start sub_0206247C
 sub_0206247C: ; 0x0206247C
@@ -549,46 +549,46 @@ sub_0206247C: ; 0x0206247C
 	add r0, r4, #0
 	bl sub_02060F78
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0206247C
 
-	thumb_func_start sub_0206249C
-sub_0206249C: ; 0x0206249C
+	thumb_func_start MapObjectMovementCmd000_Step0
+MapObjectMovementCmd000_Step0: ; 0x0206249C
 	push {r3, lr}
 	mov r1, #0
 	bl sub_0206247C
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206249C
+	thumb_func_end MapObjectMovementCmd000_Step0
 
-	thumb_func_start sub_020624A8
-sub_020624A8: ; 0x020624A8
+	thumb_func_start MapObjectMovementCmd001_Step0
+MapObjectMovementCmd001_Step0: ; 0x020624A8
 	push {r3, lr}
 	mov r1, #1
 	bl sub_0206247C
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020624A8
+	thumb_func_end MapObjectMovementCmd001_Step0
 
-	thumb_func_start sub_020624B4
-sub_020624B4: ; 0x020624B4
+	thumb_func_start MapObjectMovementCmd002_Step0
+MapObjectMovementCmd002_Step0: ; 0x020624B4
 	push {r3, lr}
 	mov r1, #2
 	bl sub_0206247C
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020624B4
+	thumb_func_end MapObjectMovementCmd002_Step0
 
-	thumb_func_start sub_020624C0
-sub_020624C0: ; 0x020624C0
+	thumb_func_start MapObjectMovementCmd003_Step0
+MapObjectMovementCmd003_Step0: ; 0x020624C0
 	push {r3, lr}
 	mov r1, #3
 	bl sub_0206247C
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020624C0
+	thumb_func_end MapObjectMovementCmd003_Step0
 
 	thumb_func_start sub_020624CC
 sub_020624CC: ; 0x020624CC
@@ -619,13 +619,13 @@ sub_020624CC: ; 0x020624CC
 	mov r1, #4
 	bl MapObject_SetBits
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_020624CC
 
-	thumb_func_start sub_02062514
-sub_02062514: ; 0x02062514
+	thumb_func_start MapObjectMovementCmd090_Step1
+MapObjectMovementCmd090_Step1: ; 0x02062514
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_0205F3E4
@@ -657,14 +657,14 @@ _02062540:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062514
+	thumb_func_end MapObjectMovementCmd090_Step1
 
-	thumb_func_start sub_02062568
-sub_02062568: ; 0x02062568
+	thumb_func_start MapObjectMovementCmd004_Step0
+MapObjectMovementCmd004_Step0: ; 0x02062568
 	push {r3, lr}
 	mov r2, #1
 	str r2, [sp]
@@ -674,10 +674,10 @@ sub_02062568: ; 0x02062568
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062568
+	thumb_func_end MapObjectMovementCmd004_Step0
 
-	thumb_func_start sub_0206257C
-sub_0206257C: ; 0x0206257C
+	thumb_func_start MapObjectMovementCmd005_Step0
+MapObjectMovementCmd005_Step0: ; 0x0206257C
 	push {r3, lr}
 	mov r1, #1
 	lsl r2, r1, #0xb
@@ -687,10 +687,10 @@ sub_0206257C: ; 0x0206257C
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206257C
+	thumb_func_end MapObjectMovementCmd005_Step0
 
-	thumb_func_start sub_02062590
-sub_02062590: ; 0x02062590
+	thumb_func_start MapObjectMovementCmd006_Step0
+MapObjectMovementCmd006_Step0: ; 0x02062590
 	push {r3, lr}
 	mov r1, #1
 	str r1, [sp]
@@ -700,10 +700,10 @@ sub_02062590: ; 0x02062590
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062590
+	thumb_func_end MapObjectMovementCmd006_Step0
 
-	thumb_func_start sub_020625A4
-sub_020625A4: ; 0x020625A4
+	thumb_func_start MapObjectMovementCmd007_Step0
+MapObjectMovementCmd007_Step0: ; 0x020625A4
 	push {r3, lr}
 	mov r2, #1
 	str r2, [sp]
@@ -713,10 +713,10 @@ sub_020625A4: ; 0x020625A4
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020625A4
+	thumb_func_end MapObjectMovementCmd007_Step0
 
-	thumb_func_start sub_020625B8
-sub_020625B8: ; 0x020625B8
+	thumb_func_start MapObjectMovementCmd008_Step0
+MapObjectMovementCmd008_Step0: ; 0x020625B8
 	push {r3, lr}
 	mov r2, #2
 	str r2, [sp]
@@ -726,10 +726,10 @@ sub_020625B8: ; 0x020625B8
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020625B8
+	thumb_func_end MapObjectMovementCmd008_Step0
 
-	thumb_func_start sub_020625CC
-sub_020625CC: ; 0x020625CC
+	thumb_func_start MapObjectMovementCmd009_Step0
+MapObjectMovementCmd009_Step0: ; 0x020625CC
 	push {r3, lr}
 	mov r1, #2
 	str r1, [sp]
@@ -739,10 +739,10 @@ sub_020625CC: ; 0x020625CC
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020625CC
+	thumb_func_end MapObjectMovementCmd009_Step0
 
-	thumb_func_start sub_020625E0
-sub_020625E0: ; 0x020625E0
+	thumb_func_start MapObjectMovementCmd010_Step0
+MapObjectMovementCmd010_Step0: ; 0x020625E0
 	push {r3, lr}
 	mov r1, #2
 	lsl r2, r1, #0xb
@@ -752,10 +752,10 @@ sub_020625E0: ; 0x020625E0
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020625E0
+	thumb_func_end MapObjectMovementCmd010_Step0
 
-	thumb_func_start sub_020625F4
-sub_020625F4: ; 0x020625F4
+	thumb_func_start MapObjectMovementCmd011_Step0
+MapObjectMovementCmd011_Step0: ; 0x020625F4
 	push {r3, lr}
 	mov r2, #2
 	str r2, [sp]
@@ -765,10 +765,10 @@ sub_020625F4: ; 0x020625F4
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020625F4
+	thumb_func_end MapObjectMovementCmd011_Step0
 
-	thumb_func_start sub_02062608
-sub_02062608: ; 0x02062608
+	thumb_func_start MapObjectMovementCmd012_Step0
+MapObjectMovementCmd012_Step0: ; 0x02062608
 	push {r3, lr}
 	mov r1, #3
 	mov r2, #2
@@ -780,10 +780,10 @@ sub_02062608: ; 0x02062608
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062608
+	thumb_func_end MapObjectMovementCmd012_Step0
 
-	thumb_func_start sub_02062620
-sub_02062620: ; 0x02062620
+	thumb_func_start MapObjectMovementCmd013_Step0
+MapObjectMovementCmd013_Step0: ; 0x02062620
 	push {r3, lr}
 	mov r1, #3
 	str r1, [sp]
@@ -793,10 +793,10 @@ sub_02062620: ; 0x02062620
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062620
+	thumb_func_end MapObjectMovementCmd013_Step0
 
-	thumb_func_start sub_02062634
-sub_02062634: ; 0x02062634
+	thumb_func_start MapObjectMovementCmd014_Step0
+MapObjectMovementCmd014_Step0: ; 0x02062634
 	push {r3, lr}
 	mov r1, #3
 	str r1, [sp]
@@ -806,10 +806,10 @@ sub_02062634: ; 0x02062634
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062634
+	thumb_func_end MapObjectMovementCmd014_Step0
 
-	thumb_func_start sub_02062648
-sub_02062648: ; 0x02062648
+	thumb_func_start MapObjectMovementCmd015_Step0
+MapObjectMovementCmd015_Step0: ; 0x02062648
 	push {r3, lr}
 	mov r2, #2
 	mov r1, #3
@@ -819,10 +819,10 @@ sub_02062648: ; 0x02062648
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062648
+	thumb_func_end MapObjectMovementCmd015_Step0
 
-	thumb_func_start sub_0206265C
-sub_0206265C: ; 0x0206265C
+	thumb_func_start MapObjectMovementCmd016_Step0
+MapObjectMovementCmd016_Step0: ; 0x0206265C
 	push {r3, lr}
 	mov r3, #4
 	mov r1, #0
@@ -832,10 +832,10 @@ sub_0206265C: ; 0x0206265C
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206265C
+	thumb_func_end MapObjectMovementCmd016_Step0
 
-	thumb_func_start sub_02062670
-sub_02062670: ; 0x02062670
+	thumb_func_start MapObjectMovementCmd017_Step0
+MapObjectMovementCmd017_Step0: ; 0x02062670
 	push {r3, lr}
 	mov r1, #1
 	mov r3, #4
@@ -845,10 +845,10 @@ sub_02062670: ; 0x02062670
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062670
+	thumb_func_end MapObjectMovementCmd017_Step0
 
-	thumb_func_start sub_02062684
-sub_02062684: ; 0x02062684
+	thumb_func_start MapObjectMovementCmd018_Step0
+MapObjectMovementCmd018_Step0: ; 0x02062684
 	push {r3, lr}
 	mov r1, #2
 	mov r3, #4
@@ -858,10 +858,10 @@ sub_02062684: ; 0x02062684
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062684
+	thumb_func_end MapObjectMovementCmd018_Step0
 
-	thumb_func_start sub_02062698
-sub_02062698: ; 0x02062698
+	thumb_func_start MapObjectMovementCmd019_Step0
+MapObjectMovementCmd019_Step0: ; 0x02062698
 	push {r3, lr}
 	mov r3, #4
 	mov r1, #3
@@ -871,10 +871,10 @@ sub_02062698: ; 0x02062698
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062698
+	thumb_func_end MapObjectMovementCmd019_Step0
 
-	thumb_func_start sub_020626AC
-sub_020626AC: ; 0x020626AC
+	thumb_func_start MapObjectMovementCmd020_Step0
+MapObjectMovementCmd020_Step0: ; 0x020626AC
 	push {r3, lr}
 	mov r1, #5
 	mov r2, #2
@@ -886,10 +886,10 @@ sub_020626AC: ; 0x020626AC
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020626AC
+	thumb_func_end MapObjectMovementCmd020_Step0
 
-	thumb_func_start sub_020626C4
-sub_020626C4: ; 0x020626C4
+	thumb_func_start MapObjectMovementCmd021_Step0
+MapObjectMovementCmd021_Step0: ; 0x020626C4
 	push {r3, lr}
 	mov r1, #5
 	str r1, [sp]
@@ -899,10 +899,10 @@ sub_020626C4: ; 0x020626C4
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020626C4
+	thumb_func_end MapObjectMovementCmd021_Step0
 
-	thumb_func_start sub_020626D8
-sub_020626D8: ; 0x020626D8
+	thumb_func_start MapObjectMovementCmd022_Step0
+MapObjectMovementCmd022_Step0: ; 0x020626D8
 	push {r3, lr}
 	mov r1, #5
 	str r1, [sp]
@@ -912,10 +912,10 @@ sub_020626D8: ; 0x020626D8
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020626D8
+	thumb_func_end MapObjectMovementCmd022_Step0
 
-	thumb_func_start sub_020626EC
-sub_020626EC: ; 0x020626EC
+	thumb_func_start MapObjectMovementCmd023_Step0
+MapObjectMovementCmd023_Step0: ; 0x020626EC
 	push {r3, lr}
 	mov r1, #5
 	mov r2, #2
@@ -927,10 +927,10 @@ sub_020626EC: ; 0x020626EC
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_020626EC
+	thumb_func_end MapObjectMovementCmd023_Step0
 
-	thumb_func_start sub_02062704
-sub_02062704: ; 0x02062704
+	thumb_func_start MapObjectMovementCmd084_Step0
+MapObjectMovementCmd084_Step0: ; 0x02062704
 	push {r3, lr}
 	mov r2, #1
 	mov r1, #0
@@ -940,10 +940,10 @@ sub_02062704: ; 0x02062704
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062704
+	thumb_func_end MapObjectMovementCmd084_Step0
 
-	thumb_func_start sub_02062718
-sub_02062718: ; 0x02062718
+	thumb_func_start MapObjectMovementCmd085_Step0
+MapObjectMovementCmd085_Step0: ; 0x02062718
 	push {r3, lr}
 	mov r1, #0
 	str r1, [sp]
@@ -953,10 +953,10 @@ sub_02062718: ; 0x02062718
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062718
+	thumb_func_end MapObjectMovementCmd085_Step0
 
-	thumb_func_start sub_0206272C
-sub_0206272C: ; 0x0206272C
+	thumb_func_start MapObjectMovementCmd086_Step0
+MapObjectMovementCmd086_Step0: ; 0x0206272C
 	push {r3, lr}
 	mov r1, #0
 	str r1, [sp]
@@ -966,10 +966,10 @@ sub_0206272C: ; 0x0206272C
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206272C
+	thumb_func_end MapObjectMovementCmd086_Step0
 
-	thumb_func_start sub_02062740
-sub_02062740: ; 0x02062740
+	thumb_func_start MapObjectMovementCmd087_Step0
+MapObjectMovementCmd087_Step0: ; 0x02062740
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #1
@@ -981,10 +981,10 @@ sub_02062740: ; 0x02062740
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062740
+	thumb_func_end MapObjectMovementCmd087_Step0
 
-	thumb_func_start sub_02062758
-sub_02062758: ; 0x02062758
+	thumb_func_start MapObjectMovementCmd088_Step0
+MapObjectMovementCmd088_Step0: ; 0x02062758
 	push {r3, lr}
 	mov r1, #9
 	mov r2, #1
@@ -996,10 +996,10 @@ sub_02062758: ; 0x02062758
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062758
+	thumb_func_end MapObjectMovementCmd088_Step0
 
-	thumb_func_start sub_02062770
-sub_02062770: ; 0x02062770
+	thumb_func_start MapObjectMovementCmd089_Step0
+MapObjectMovementCmd089_Step0: ; 0x02062770
 	push {r3, lr}
 	mov r1, #9
 	str r1, [sp]
@@ -1009,10 +1009,10 @@ sub_02062770: ; 0x02062770
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062770
+	thumb_func_end MapObjectMovementCmd089_Step0
 
-	thumb_func_start sub_02062784
-sub_02062784: ; 0x02062784
+	thumb_func_start MapObjectMovementCmd090_Step0
+MapObjectMovementCmd090_Step0: ; 0x02062784
 	push {r3, lr}
 	mov r1, #9
 	str r1, [sp]
@@ -1022,10 +1022,10 @@ sub_02062784: ; 0x02062784
 	bl sub_020624CC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062784
+	thumb_func_end MapObjectMovementCmd090_Step0
 
-	thumb_func_start sub_02062798
-sub_02062798: ; 0x02062798
+	thumb_func_start MapObjectMovementCmd091_Step0
+MapObjectMovementCmd091_Step0: ; 0x02062798
 	push {r3, lr}
 	mov r1, #9
 	mov r2, #1
@@ -1037,7 +1037,7 @@ sub_02062798: ; 0x02062798
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062798
+	thumb_func_end MapObjectMovementCmd091_Step0
 
 	thumb_func_start sub_020627B0
 sub_020627B0: ; 0x020627B0
@@ -1060,12 +1060,12 @@ sub_020627B0: ; 0x020627B0
 	add r0, r5, #0
 	bl sub_02060F78
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020627B0
 
-	thumb_func_start sub_020627E4
-sub_020627E4: ; 0x020627E4
+	thumb_func_start MapObjectMovementCmd040_Step1
+MapObjectMovementCmd040_Step1: ; 0x020627E4
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0205F3E4
@@ -1086,13 +1086,13 @@ _020627FE:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end sub_020627E4
+	thumb_func_end MapObjectMovementCmd040_Step1
 
-	thumb_func_start sub_02062818
-sub_02062818: ; 0x02062818
+	thumb_func_start MapObjectMovementCmd024_Step0
+MapObjectMovementCmd024_Step0: ; 0x02062818
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #0x20
@@ -1100,10 +1100,10 @@ sub_02062818: ; 0x02062818
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062818
+	thumb_func_end MapObjectMovementCmd024_Step0
 
-	thumb_func_start sub_02062828
-sub_02062828: ; 0x02062828
+	thumb_func_start MapObjectMovementCmd025_Step0
+MapObjectMovementCmd025_Step0: ; 0x02062828
 	push {r3, lr}
 	mov r1, #1
 	mov r2, #0x20
@@ -1111,32 +1111,32 @@ sub_02062828: ; 0x02062828
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062828
+	thumb_func_end MapObjectMovementCmd025_Step0
 
-	thumb_func_start sub_02062838
-sub_02062838: ; 0x02062838
+	thumb_func_start MapObjectMovementCmd026_Step0
+MapObjectMovementCmd026_Step0: ; 0x02062838
 	push {r3, lr}
 	mov r1, #2
-	mov r2, #0x20
-	mov r3, #1
-	bl sub_020627B0
-	mov r0, #1
-	pop {r3, pc}
-	thumb_func_end sub_02062838
-
-	thumb_func_start sub_02062848
-sub_02062848: ; 0x02062848
-	push {r3, lr}
-	mov r1, #3
 	mov r2, #0x20
 	mov r3, #1
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062848
+	thumb_func_end MapObjectMovementCmd026_Step0
 
-	thumb_func_start sub_02062858
-sub_02062858: ; 0x02062858
+	thumb_func_start MapObjectMovementCmd027_Step0
+MapObjectMovementCmd027_Step0: ; 0x02062848
+	push {r3, lr}
+	mov r1, #3
+	mov r2, #0x20
+	mov r3, #1
+	bl sub_020627B0
+	mov r0, #1
+	pop {r3, pc}
+	thumb_func_end MapObjectMovementCmd027_Step0
+
+	thumb_func_start MapObjectMovementCmd028_Step0
+MapObjectMovementCmd028_Step0: ; 0x02062858
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #0x10
@@ -1144,10 +1144,10 @@ sub_02062858: ; 0x02062858
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062858
+	thumb_func_end MapObjectMovementCmd028_Step0
 
-	thumb_func_start sub_02062868
-sub_02062868: ; 0x02062868
+	thumb_func_start MapObjectMovementCmd029_Step0
+MapObjectMovementCmd029_Step0: ; 0x02062868
 	push {r3, lr}
 	mov r1, #1
 	mov r2, #0x10
@@ -1155,10 +1155,10 @@ sub_02062868: ; 0x02062868
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062868
+	thumb_func_end MapObjectMovementCmd029_Step0
 
-	thumb_func_start sub_02062878
-sub_02062878: ; 0x02062878
+	thumb_func_start MapObjectMovementCmd030_Step0
+MapObjectMovementCmd030_Step0: ; 0x02062878
 	push {r3, lr}
 	mov r1, #2
 	mov r2, #0x10
@@ -1166,10 +1166,10 @@ sub_02062878: ; 0x02062878
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062878
+	thumb_func_end MapObjectMovementCmd030_Step0
 
-	thumb_func_start sub_02062888
-sub_02062888: ; 0x02062888
+	thumb_func_start MapObjectMovementCmd031_Step0
+MapObjectMovementCmd031_Step0: ; 0x02062888
 	push {r3, lr}
 	mov r1, #3
 	mov r2, #0x10
@@ -1177,10 +1177,10 @@ sub_02062888: ; 0x02062888
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062888
+	thumb_func_end MapObjectMovementCmd031_Step0
 
-	thumb_func_start sub_02062898
-sub_02062898: ; 0x02062898
+	thumb_func_start MapObjectMovementCmd032_Step0
+MapObjectMovementCmd032_Step0: ; 0x02062898
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #8
@@ -1188,10 +1188,10 @@ sub_02062898: ; 0x02062898
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062898
+	thumb_func_end MapObjectMovementCmd032_Step0
 
-	thumb_func_start sub_020628A8
-sub_020628A8: ; 0x020628A8
+	thumb_func_start MapObjectMovementCmd033_Step0
+MapObjectMovementCmd033_Step0: ; 0x020628A8
 	push {r3, lr}
 	mov r1, #1
 	mov r2, #8
@@ -1199,10 +1199,10 @@ sub_020628A8: ; 0x020628A8
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020628A8
+	thumb_func_end MapObjectMovementCmd033_Step0
 
-	thumb_func_start sub_020628B8
-sub_020628B8: ; 0x020628B8
+	thumb_func_start MapObjectMovementCmd034_Step0
+MapObjectMovementCmd034_Step0: ; 0x020628B8
 	push {r3, lr}
 	mov r1, #2
 	mov r2, #8
@@ -1210,10 +1210,10 @@ sub_020628B8: ; 0x020628B8
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020628B8
+	thumb_func_end MapObjectMovementCmd034_Step0
 
-	thumb_func_start sub_020628C8
-sub_020628C8: ; 0x020628C8
+	thumb_func_start MapObjectMovementCmd035_Step0
+MapObjectMovementCmd035_Step0: ; 0x020628C8
 	push {r3, lr}
 	mov r1, #3
 	mov r2, #8
@@ -1221,10 +1221,10 @@ sub_020628C8: ; 0x020628C8
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020628C8
+	thumb_func_end MapObjectMovementCmd035_Step0
 
-	thumb_func_start sub_020628D8
-sub_020628D8: ; 0x020628D8
+	thumb_func_start MapObjectMovementCmd036_Step0
+MapObjectMovementCmd036_Step0: ; 0x020628D8
 	push {r3, lr}
 	mov r2, #4
 	mov r1, #0
@@ -1232,10 +1232,10 @@ sub_020628D8: ; 0x020628D8
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020628D8
+	thumb_func_end MapObjectMovementCmd036_Step0
 
-	thumb_func_start sub_020628E8
-sub_020628E8: ; 0x020628E8
+	thumb_func_start MapObjectMovementCmd037_Step0
+MapObjectMovementCmd037_Step0: ; 0x020628E8
 	push {r3, lr}
 	mov r2, #4
 	mov r1, #1
@@ -1243,10 +1243,10 @@ sub_020628E8: ; 0x020628E8
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020628E8
+	thumb_func_end MapObjectMovementCmd037_Step0
 
-	thumb_func_start sub_020628F8
-sub_020628F8: ; 0x020628F8
+	thumb_func_start MapObjectMovementCmd038_Step0
+MapObjectMovementCmd038_Step0: ; 0x020628F8
 	push {r3, lr}
 	mov r2, #4
 	mov r1, #2
@@ -1254,10 +1254,10 @@ sub_020628F8: ; 0x020628F8
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020628F8
+	thumb_func_end MapObjectMovementCmd038_Step0
 
-	thumb_func_start sub_02062908
-sub_02062908: ; 0x02062908
+	thumb_func_start MapObjectMovementCmd039_Step0
+MapObjectMovementCmd039_Step0: ; 0x02062908
 	push {r3, lr}
 	mov r2, #4
 	mov r1, #3
@@ -1265,10 +1265,10 @@ sub_02062908: ; 0x02062908
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062908
+	thumb_func_end MapObjectMovementCmd039_Step0
 
-	thumb_func_start sub_02062918
-sub_02062918: ; 0x02062918
+	thumb_func_start MapObjectMovementCmd040_Step0
+MapObjectMovementCmd040_Step0: ; 0x02062918
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #2
@@ -1276,10 +1276,10 @@ sub_02062918: ; 0x02062918
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062918
+	thumb_func_end MapObjectMovementCmd040_Step0
 
-	thumb_func_start sub_02062928
-sub_02062928: ; 0x02062928
+	thumb_func_start MapObjectMovementCmd041_Step0
+MapObjectMovementCmd041_Step0: ; 0x02062928
 	push {r3, lr}
 	mov r1, #1
 	mov r2, #2
@@ -1287,10 +1287,10 @@ sub_02062928: ; 0x02062928
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062928
+	thumb_func_end MapObjectMovementCmd041_Step0
 
-	thumb_func_start sub_02062938
-sub_02062938: ; 0x02062938
+	thumb_func_start MapObjectMovementCmd042_Step0
+MapObjectMovementCmd042_Step0: ; 0x02062938
 	push {r3, lr}
 	mov r1, #2
 	add r2, r1, #0
@@ -1298,10 +1298,10 @@ sub_02062938: ; 0x02062938
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062938
+	thumb_func_end MapObjectMovementCmd042_Step0
 
-	thumb_func_start sub_02062948
-sub_02062948: ; 0x02062948
+	thumb_func_start MapObjectMovementCmd043_Step0
+MapObjectMovementCmd043_Step0: ; 0x02062948
 	push {r3, lr}
 	mov r1, #3
 	mov r2, #2
@@ -1309,7 +1309,7 @@ sub_02062948: ; 0x02062948
 	bl sub_020627B0
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062948
+	thumb_func_end MapObjectMovementCmd043_Step0
 
 	thumb_func_start sub_02062958
 sub_02062958: ; 0x02062958
@@ -1352,7 +1352,7 @@ _02062992:
 	add r0, r5, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	add r0, r5, #0
 	bl sub_0205F684
 	cmp r0, #0
@@ -1366,8 +1366,8 @@ _020629C4: .word 0x00010004
 _020629C8: .word SEQ_SE_DP_DANSA
 	thumb_func_end sub_02062958
 
-	thumb_func_start sub_020629CC
-sub_020629CC: ; 0x020629CC
+	thumb_func_start MapObjectMovementCmd092_Step1
+MapObjectMovementCmd092_Step1: ; 0x020629CC
 	push {r3, r4, r5, lr}
 	sub sp, #0x18
 	add r5, r0, #0
@@ -1433,7 +1433,7 @@ _02062A30:
 	str r1, [sp, #0x14]
 	add r0, r5, #0
 	add r1, sp, #0xc
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	mov r0, #0xd
 	ldrsb r1, [r4, r0]
 	sub r1, r1, #1
@@ -1451,7 +1451,7 @@ _02062A68:
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	add r0, r5, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r1, _02062AB4 ; =0x00020028
 	add r0, r5, #0
 	bl MapObject_SetBits
@@ -1463,7 +1463,7 @@ _02062A68:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	add r0, r5, #0
 	bl sub_0205F684
 	cmp r0, #0
@@ -1478,10 +1478,10 @@ _02062AAA:
 _02062AB0: .word _0210FACC
 _02062AB4: .word 0x00020028
 _02062AB8: .word SEQ_SE_DP_SUTYA2
-	thumb_func_end sub_020629CC
+	thumb_func_end MapObjectMovementCmd092_Step1
 
-	thumb_func_start sub_02062ABC
-sub_02062ABC: ; 0x02062ABC
+	thumb_func_start MapObjectMovementCmd044_Step0
+MapObjectMovementCmd044_Step0: ; 0x02062ABC
 	push {lr}
 	sub sp, #0xc
 	mov r2, #2
@@ -1497,10 +1497,10 @@ sub_02062ABC: ; 0x02062ABC
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062ABC
+	thumb_func_end MapObjectMovementCmd044_Step0
 
-	thumb_func_start sub_02062ADC
-sub_02062ADC: ; 0x02062ADC
+	thumb_func_start MapObjectMovementCmd045_Step0
+MapObjectMovementCmd045_Step0: ; 0x02062ADC
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -1516,10 +1516,10 @@ sub_02062ADC: ; 0x02062ADC
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062ADC
+	thumb_func_end MapObjectMovementCmd045_Step0
 
-	thumb_func_start sub_02062AFC
-sub_02062AFC: ; 0x02062AFC
+	thumb_func_start MapObjectMovementCmd046_Step0
+MapObjectMovementCmd046_Step0: ; 0x02062AFC
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -1535,10 +1535,10 @@ sub_02062AFC: ; 0x02062AFC
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062AFC
+	thumb_func_end MapObjectMovementCmd046_Step0
 
-	thumb_func_start sub_02062B1C
-sub_02062B1C: ; 0x02062B1C
+	thumb_func_start MapObjectMovementCmd047_Step0
+MapObjectMovementCmd047_Step0: ; 0x02062B1C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #2
@@ -1554,10 +1554,10 @@ sub_02062B1C: ; 0x02062B1C
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062B1C
+	thumb_func_end MapObjectMovementCmd047_Step0
 
-	thumb_func_start sub_02062B3C
-sub_02062B3C: ; 0x02062B3C
+	thumb_func_start MapObjectMovementCmd048_Step0
+MapObjectMovementCmd048_Step0: ; 0x02062B3C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1573,10 +1573,10 @@ sub_02062B3C: ; 0x02062B3C
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062B3C
+	thumb_func_end MapObjectMovementCmd048_Step0
 
-	thumb_func_start sub_02062B5C
-sub_02062B5C: ; 0x02062B5C
+	thumb_func_start MapObjectMovementCmd049_Step0
+MapObjectMovementCmd049_Step0: ; 0x02062B5C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1592,10 +1592,10 @@ sub_02062B5C: ; 0x02062B5C
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062B5C
+	thumb_func_end MapObjectMovementCmd049_Step0
 
-	thumb_func_start sub_02062B7C
-sub_02062B7C: ; 0x02062B7C
+	thumb_func_start MapObjectMovementCmd050_Step0
+MapObjectMovementCmd050_Step0: ; 0x02062B7C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1611,10 +1611,10 @@ sub_02062B7C: ; 0x02062B7C
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062B7C
+	thumb_func_end MapObjectMovementCmd050_Step0
 
-	thumb_func_start sub_02062B9C
-sub_02062B9C: ; 0x02062B9C
+	thumb_func_start MapObjectMovementCmd051_Step0
+MapObjectMovementCmd051_Step0: ; 0x02062B9C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1630,10 +1630,10 @@ sub_02062B9C: ; 0x02062B9C
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062B9C
+	thumb_func_end MapObjectMovementCmd051_Step0
 
-	thumb_func_start sub_02062BBC
-sub_02062BBC: ; 0x02062BBC
+	thumb_func_start MapObjectMovementCmd052_Step0
+MapObjectMovementCmd052_Step0: ; 0x02062BBC
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1649,10 +1649,10 @@ sub_02062BBC: ; 0x02062BBC
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062BBC
+	thumb_func_end MapObjectMovementCmd052_Step0
 
-	thumb_func_start sub_02062BDC
-sub_02062BDC: ; 0x02062BDC
+	thumb_func_start MapObjectMovementCmd053_Step0
+MapObjectMovementCmd053_Step0: ; 0x02062BDC
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1670,10 +1670,10 @@ sub_02062BDC: ; 0x02062BDC
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062BDC
+	thumb_func_end MapObjectMovementCmd053_Step0
 
-	thumb_func_start sub_02062C00
-sub_02062C00: ; 0x02062C00
+	thumb_func_start MapObjectMovementCmd054_Step0
+MapObjectMovementCmd054_Step0: ; 0x02062C00
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1691,10 +1691,10 @@ sub_02062C00: ; 0x02062C00
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062C00
+	thumb_func_end MapObjectMovementCmd054_Step0
 
-	thumb_func_start sub_02062C24
-sub_02062C24: ; 0x02062C24
+	thumb_func_start MapObjectMovementCmd055_Step0
+MapObjectMovementCmd055_Step0: ; 0x02062C24
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1710,10 +1710,10 @@ sub_02062C24: ; 0x02062C24
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062C24
+	thumb_func_end MapObjectMovementCmd055_Step0
 
-	thumb_func_start sub_02062C44
-sub_02062C44: ; 0x02062C44
+	thumb_func_start MapObjectMovementCmd056_Step0
+MapObjectMovementCmd056_Step0: ; 0x02062C44
 	push {lr}
 	sub sp, #0xc
 	mov r2, #3
@@ -1729,10 +1729,10 @@ sub_02062C44: ; 0x02062C44
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062C44
+	thumb_func_end MapObjectMovementCmd056_Step0
 
-	thumb_func_start sub_02062C64
-sub_02062C64: ; 0x02062C64
+	thumb_func_start MapObjectMovementCmd057_Step0
+MapObjectMovementCmd057_Step0: ; 0x02062C64
 	push {lr}
 	sub sp, #0xc
 	mov r2, #3
@@ -1748,10 +1748,10 @@ sub_02062C64: ; 0x02062C64
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062C64
+	thumb_func_end MapObjectMovementCmd057_Step0
 
-	thumb_func_start sub_02062C84
-sub_02062C84: ; 0x02062C84
+	thumb_func_start MapObjectMovementCmd058_Step0
+MapObjectMovementCmd058_Step0: ; 0x02062C84
 	push {lr}
 	sub sp, #0xc
 	mov r2, #3
@@ -1767,10 +1767,10 @@ sub_02062C84: ; 0x02062C84
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062C84
+	thumb_func_end MapObjectMovementCmd058_Step0
 
-	thumb_func_start sub_02062CA4
-sub_02062CA4: ; 0x02062CA4
+	thumb_func_start MapObjectMovementCmd059_Step0
+MapObjectMovementCmd059_Step0: ; 0x02062CA4
 	push {lr}
 	sub sp, #0xc
 	mov r1, #3
@@ -1788,10 +1788,10 @@ sub_02062CA4: ; 0x02062CA4
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062CA4
+	thumb_func_end MapObjectMovementCmd059_Step0
 
-	thumb_func_start sub_02062CC8
-sub_02062CC8: ; 0x02062CC8
+	thumb_func_start MapObjectMovementCmd092_Step0
+MapObjectMovementCmd092_Step0: ; 0x02062CC8
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0xa
@@ -1807,10 +1807,10 @@ sub_02062CC8: ; 0x02062CC8
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062CC8
+	thumb_func_end MapObjectMovementCmd092_Step0
 
-	thumb_func_start sub_02062CE8
-sub_02062CE8: ; 0x02062CE8
+	thumb_func_start MapObjectMovementCmd093_Step0
+MapObjectMovementCmd093_Step0: ; 0x02062CE8
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0xa
@@ -1828,10 +1828,10 @@ sub_02062CE8: ; 0x02062CE8
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062CE8
+	thumb_func_end MapObjectMovementCmd093_Step0
 
-	thumb_func_start sub_02062D0C
-sub_02062D0C: ; 0x02062D0C
+	thumb_func_start MapObjectMovementCmd094_Step0
+MapObjectMovementCmd094_Step0: ; 0x02062D0C
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0xb
@@ -1849,10 +1849,10 @@ sub_02062D0C: ; 0x02062D0C
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
-	thumb_func_end sub_02062D0C
+	thumb_func_end MapObjectMovementCmd094_Step0
 
-	thumb_func_start sub_02062D30
-sub_02062D30: ; 0x02062D30
+	thumb_func_start MapObjectMovementCmd095_Step0
+MapObjectMovementCmd095_Step0: ; 0x02062D30
 	push {lr}
 	sub sp, #0xc
 	mov r1, #0xb
@@ -1870,7 +1870,7 @@ sub_02062D30: ; 0x02062D30
 	mov r0, #1
 	add sp, #0xc
 	pop {pc}
-	thumb_func_end sub_02062D30
+	thumb_func_end MapObjectMovementCmd095_Step0
 
 	thumb_func_start sub_02062D54
 sub_02062D54: ; 0x02062D54
@@ -1881,13 +1881,13 @@ sub_02062D54: ; 0x02062D54
 	bl sub_0205F3C0
 	str r4, [r0]
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_02062D54
 
-	thumb_func_start sub_02062D6C
-sub_02062D6C: ; 0x02062D6C
+	thumb_func_start MapObjectMovementCmd064_Step1
+MapObjectMovementCmd064_Step1: ; 0x02062D6C
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0205F3E4
@@ -1900,76 +1900,76 @@ sub_02062D6C: ; 0x02062D6C
 	pop {r4, pc}
 _02062D82:
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end sub_02062D6C
+	thumb_func_end MapObjectMovementCmd064_Step1
 
-	thumb_func_start sub_02062D8C
-sub_02062D8C: ; 0x02062D8C
+	thumb_func_start MapObjectMovementCmd060_Step0
+MapObjectMovementCmd060_Step0: ; 0x02062D8C
 	push {r3, lr}
 	mov r1, #1
 	bl sub_02062D54
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062D8C
+	thumb_func_end MapObjectMovementCmd060_Step0
 
-	thumb_func_start sub_02062D98
-sub_02062D98: ; 0x02062D98
+	thumb_func_start MapObjectMovementCmd061_Step0
+MapObjectMovementCmd061_Step0: ; 0x02062D98
 	push {r3, lr}
 	mov r1, #2
 	bl sub_02062D54
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062D98
+	thumb_func_end MapObjectMovementCmd061_Step0
 
-	thumb_func_start sub_02062DA4
-sub_02062DA4: ; 0x02062DA4
+	thumb_func_start MapObjectMovementCmd062_Step0
+MapObjectMovementCmd062_Step0: ; 0x02062DA4
 	push {r3, lr}
 	mov r1, #4
 	bl sub_02062D54
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062DA4
+	thumb_func_end MapObjectMovementCmd062_Step0
 
-	thumb_func_start sub_02062DB0
-sub_02062DB0: ; 0x02062DB0
+	thumb_func_start MapObjectMovementCmd063_Step0
+MapObjectMovementCmd063_Step0: ; 0x02062DB0
 	push {r3, lr}
 	mov r1, #8
 	bl sub_02062D54
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062DB0
+	thumb_func_end MapObjectMovementCmd063_Step0
 
-	thumb_func_start sub_02062DBC
-sub_02062DBC: ; 0x02062DBC
+	thumb_func_start MapObjectMovementCmd064_Step0
+MapObjectMovementCmd064_Step0: ; 0x02062DBC
 	push {r3, lr}
 	mov r1, #0xf
 	bl sub_02062D54
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062DBC
+	thumb_func_end MapObjectMovementCmd064_Step0
 
-	thumb_func_start sub_02062DC8
-sub_02062DC8: ; 0x02062DC8
+	thumb_func_start MapObjectMovementCmd065_Step0
+MapObjectMovementCmd065_Step0: ; 0x02062DC8
 	push {r3, lr}
 	mov r1, #0x10
 	bl sub_02062D54
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062DC8
+	thumb_func_end MapObjectMovementCmd065_Step0
 
-	thumb_func_start sub_02062DD4
-sub_02062DD4: ; 0x02062DD4
+	thumb_func_start MapObjectMovementCmd066_Step0
+MapObjectMovementCmd066_Step0: ; 0x02062DD4
 	push {r3, lr}
 	mov r1, #0x20
 	bl sub_02062D54
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_02062DD4
+	thumb_func_end MapObjectMovementCmd066_Step0
 
-	thumb_func_start sub_02062DE0
-sub_02062DE0: ; 0x02062DE0
+	thumb_func_start MapObjectMovementCmd067_Step0
+MapObjectMovementCmd067_Step0: ; 0x02062DE0
 	push {r4, lr}
 	mov r1, #8
 	add r4, r0, #0
@@ -1981,14 +1981,14 @@ sub_02062DE0: ; 0x02062DE0
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062DE0
+	thumb_func_end MapObjectMovementCmd067_Step0
 
-	thumb_func_start sub_02062E04
-sub_02062E04: ; 0x02062E04
+	thumb_func_start MapObjectMovementCmd067_Step1
+MapObjectMovementCmd067_Step1: ; 0x02062E04
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -2006,7 +2006,7 @@ sub_02062E04: ; 0x02062E04
 	ldr r0, [r4]
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r1, [r4]
 	asr r0, r1, #0xe
 	lsr r0, r0, #0x11
@@ -2019,14 +2019,14 @@ sub_02062E04: ; 0x02062E04
 	pop {r4, r5, pc}
 _02062E40:
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
-	thumb_func_end sub_02062E04
+	thumb_func_end MapObjectMovementCmd067_Step1
 
-	thumb_func_start sub_02062E4C
-sub_02062E4C: ; 0x02062E4C
+	thumb_func_start MapObjectMovementCmd068_Step0
+MapObjectMovementCmd068_Step0: ; 0x02062E4C
 	push {r4, lr}
 	mov r1, #8
 	add r4, r0, #0
@@ -2040,15 +2040,15 @@ sub_02062E4C: ; 0x02062E4C
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	nop
 _02062E74: .word 0xFFFF0000
-	thumb_func_end sub_02062E4C
+	thumb_func_end MapObjectMovementCmd068_Step0
 
-	thumb_func_start sub_02062E78
-sub_02062E78: ; 0x02062E78
+	thumb_func_start MapObjectMovementCmd068_Step1
+MapObjectMovementCmd068_Step1: ; 0x02062E78
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -2070,7 +2070,7 @@ _02062E92:
 	ldr r0, [r4]
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r0, [r4]
 	cmp r0, #0
 	ble _02062EB2
@@ -2079,92 +2079,92 @@ _02062E92:
 	pop {r4, r5, pc}
 _02062EB2:
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062E78
+	thumb_func_end MapObjectMovementCmd068_Step1
 
-	thumb_func_start sub_02062EC0
-sub_02062EC0: ; 0x02062EC0
+	thumb_func_start MapObjectMovementCmd069_Step0
+MapObjectMovementCmd069_Step0: ; 0x02062EC0
 	push {r4, lr}
 	mov r1, #2
 	add r4, r0, #0
 	lsl r1, r1, #8
 	bl MapObject_SetBits
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062EC0
+	thumb_func_end MapObjectMovementCmd069_Step0
 
-	thumb_func_start sub_02062ED8
-sub_02062ED8: ; 0x02062ED8
+	thumb_func_start MapObjectMovementCmd070_Step0
+MapObjectMovementCmd070_Step0: ; 0x02062ED8
 	push {r4, lr}
 	mov r1, #2
 	add r4, r0, #0
 	lsl r1, r1, #8
 	bl MapObject_ClearBits
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062ED8
+	thumb_func_end MapObjectMovementCmd070_Step0
 
-	thumb_func_start sub_02062EF0
-sub_02062EF0: ; 0x02062EF0
+	thumb_func_start MapObjectMovementCmd071_Step0
+MapObjectMovementCmd071_Step0: ; 0x02062EF0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x80
 	bl MapObject_SetBits
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end sub_02062EF0
+	thumb_func_end MapObjectMovementCmd071_Step0
 
-	thumb_func_start sub_02062F04
-sub_02062F04: ; 0x02062F04
+	thumb_func_start MapObjectMovementCmd072_Step0
+MapObjectMovementCmd072_Step0: ; 0x02062F04
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x80
 	bl MapObject_ClearBits
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end sub_02062F04
+	thumb_func_end MapObjectMovementCmd072_Step0
 
-	thumb_func_start sub_02062F18
-sub_02062F18: ; 0x02062F18
+	thumb_func_start MapObjectMovementCmd073_Step0
+MapObjectMovementCmd073_Step0: ; 0x02062F18
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
 	lsl r1, r1, #8
 	bl MapObject_SetBits
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062F18
+	thumb_func_end MapObjectMovementCmd073_Step0
 
-	thumb_func_start sub_02062F30
-sub_02062F30: ; 0x02062F30
+	thumb_func_start MapObjectMovementCmd074_Step0
+MapObjectMovementCmd074_Step0: ; 0x02062F30
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
 	lsl r1, r1, #8
 	bl MapObject_ClearBits
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062F30
+	thumb_func_end MapObjectMovementCmd074_Step0
 
 	thumb_func_start sub_02062F48
 sub_02062F48: ; 0x02062F48
@@ -2181,12 +2181,12 @@ sub_02062F48: ; 0x02062F48
 	bl ov01_02200540
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02062F48
 
-	thumb_func_start sub_02062F6C
-sub_02062F6C: ; 0x02062F6C
+	thumb_func_start MapObjectMovementCmd075_Step1
+MapObjectMovementCmd075_Step1: ; 0x02062F6C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl sub_0205F3E4
@@ -2198,31 +2198,31 @@ sub_02062F6C: ; 0x02062F6C
 	ldr r0, [r4, #4]
 	bl sub_02068B48
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02062F90:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02062F6C
+	thumb_func_end MapObjectMovementCmd075_Step1
 
-	thumb_func_start sub_02062F94
-sub_02062F94: ; 0x02062F94
+	thumb_func_start MapObjectMovementCmd075_Step0
+MapObjectMovementCmd075_Step0: ; 0x02062F94
 	push {r3, lr}
 	mov r1, #0
 	bl sub_02062F48
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_02062F94
+	thumb_func_end MapObjectMovementCmd075_Step0
 
-	thumb_func_start sub_02062FA0
-sub_02062FA0: ; 0x02062FA0
+	thumb_func_start MapObjectMovementCmd103_Step0
+MapObjectMovementCmd103_Step0: ; 0x02062FA0
 	push {r3, lr}
 	mov r1, #1
 	bl sub_02062F48
 	mov r0, #0
 	pop {r3, pc}
-	thumb_func_end sub_02062FA0
+	thumb_func_end MapObjectMovementCmd103_Step0
 
 	thumb_func_start sub_02062FAC
 sub_02062FAC: ; 0x02062FAC
@@ -2249,7 +2249,7 @@ sub_02062FAC: ; 0x02062FAC
 	mov r1, #4
 	bl MapObject_SetBits
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_02062FAC
@@ -2294,13 +2294,13 @@ _02063026:
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02062FEC
 
-	thumb_func_start sub_0206304C
-sub_0206304C: ; 0x0206304C
+	thumb_func_start MapObjectMovementCmd076_Step0
+MapObjectMovementCmd076_Step0: ; 0x0206304C
 	push {r3, lr}
 	mov r2, #6
 	mov r1, #0
@@ -2308,10 +2308,10 @@ sub_0206304C: ; 0x0206304C
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206304C
+	thumb_func_end MapObjectMovementCmd076_Step0
 
-	thumb_func_start sub_0206305C
-sub_0206305C: ; 0x0206305C
+	thumb_func_start MapObjectMovementCmd077_Step0
+MapObjectMovementCmd077_Step0: ; 0x0206305C
 	push {r3, lr}
 	mov r2, #6
 	mov r1, #1
@@ -2319,10 +2319,10 @@ sub_0206305C: ; 0x0206305C
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206305C
+	thumb_func_end MapObjectMovementCmd077_Step0
 
-	thumb_func_start sub_0206306C
-sub_0206306C: ; 0x0206306C
+	thumb_func_start MapObjectMovementCmd078_Step0
+MapObjectMovementCmd078_Step0: ; 0x0206306C
 	push {r3, lr}
 	mov r2, #6
 	mov r1, #2
@@ -2330,10 +2330,10 @@ sub_0206306C: ; 0x0206306C
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206306C
+	thumb_func_end MapObjectMovementCmd078_Step0
 
-	thumb_func_start sub_0206307C
-sub_0206307C: ; 0x0206307C
+	thumb_func_start MapObjectMovementCmd079_Step0
+MapObjectMovementCmd079_Step0: ; 0x0206307C
 	push {r3, lr}
 	mov r2, #6
 	mov r1, #3
@@ -2341,10 +2341,10 @@ sub_0206307C: ; 0x0206307C
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206307C
+	thumb_func_end MapObjectMovementCmd079_Step0
 
-	thumb_func_start sub_0206308C
-sub_0206308C: ; 0x0206308C
+	thumb_func_start MapObjectMovementCmd076_Step1
+MapObjectMovementCmd076_Step1: ; 0x0206308C
 	push {r3, lr}
 	ldr r1, _020630A0 ; =_020FDA50
 	bl sub_02062FEC
@@ -2357,10 +2357,10 @@ _0206309C:
 	pop {r3, pc}
 	.balign 4, 0
 _020630A0: .word _020FDA50
-	thumb_func_end sub_0206308C
+	thumb_func_end MapObjectMovementCmd076_Step1
 
-	thumb_func_start sub_020630A4
-sub_020630A4: ; 0x020630A4
+	thumb_func_start MapObjectMovementCmd080_Step0
+MapObjectMovementCmd080_Step0: ; 0x020630A4
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #3
@@ -2368,10 +2368,10 @@ sub_020630A4: ; 0x020630A4
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020630A4
+	thumb_func_end MapObjectMovementCmd080_Step0
 
-	thumb_func_start sub_020630B4
-sub_020630B4: ; 0x020630B4
+	thumb_func_start MapObjectMovementCmd081_Step0
+MapObjectMovementCmd081_Step0: ; 0x020630B4
 	push {r3, lr}
 	mov r1, #1
 	mov r2, #3
@@ -2379,10 +2379,10 @@ sub_020630B4: ; 0x020630B4
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020630B4
+	thumb_func_end MapObjectMovementCmd081_Step0
 
-	thumb_func_start sub_020630C4
-sub_020630C4: ; 0x020630C4
+	thumb_func_start MapObjectMovementCmd082_Step0
+MapObjectMovementCmd082_Step0: ; 0x020630C4
 	push {r3, lr}
 	mov r1, #2
 	mov r2, #3
@@ -2390,10 +2390,10 @@ sub_020630C4: ; 0x020630C4
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020630C4
+	thumb_func_end MapObjectMovementCmd082_Step0
 
-	thumb_func_start sub_020630D4
-sub_020630D4: ; 0x020630D4
+	thumb_func_start MapObjectMovementCmd083_Step0
+MapObjectMovementCmd083_Step0: ; 0x020630D4
 	push {r3, lr}
 	mov r1, #3
 	add r2, r1, #0
@@ -2401,10 +2401,10 @@ sub_020630D4: ; 0x020630D4
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020630D4
+	thumb_func_end MapObjectMovementCmd083_Step0
 
-	thumb_func_start sub_020630E4
-sub_020630E4: ; 0x020630E4
+	thumb_func_start MapObjectMovementCmd082_Step1
+MapObjectMovementCmd082_Step1: ; 0x020630E4
 	push {r3, lr}
 	ldr r1, _020630F8 ; =_020FDA1C
 	bl sub_02062FEC
@@ -2417,10 +2417,10 @@ _020630F4:
 	pop {r3, pc}
 	.balign 4, 0
 _020630F8: .word _020FDA1C
-	thumb_func_end sub_020630E4
+	thumb_func_end MapObjectMovementCmd082_Step1
 
-	thumb_func_start sub_020630FC
-sub_020630FC: ; 0x020630FC
+	thumb_func_start MapObjectMovementCmd096_Step0
+MapObjectMovementCmd096_Step0: ; 0x020630FC
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #7
@@ -2428,10 +2428,10 @@ sub_020630FC: ; 0x020630FC
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_020630FC
+	thumb_func_end MapObjectMovementCmd096_Step0
 
-	thumb_func_start sub_0206310C
-sub_0206310C: ; 0x0206310C
+	thumb_func_start MapObjectMovementCmd097_Step0
+MapObjectMovementCmd097_Step0: ; 0x0206310C
 	push {r3, lr}
 	mov r1, #1
 	mov r2, #7
@@ -2439,10 +2439,10 @@ sub_0206310C: ; 0x0206310C
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206310C
+	thumb_func_end MapObjectMovementCmd097_Step0
 
-	thumb_func_start sub_0206311C
-sub_0206311C: ; 0x0206311C
+	thumb_func_start MapObjectMovementCmd098_Step0
+MapObjectMovementCmd098_Step0: ; 0x0206311C
 	push {r3, lr}
 	mov r1, #2
 	mov r2, #7
@@ -2450,10 +2450,10 @@ sub_0206311C: ; 0x0206311C
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206311C
+	thumb_func_end MapObjectMovementCmd098_Step0
 
-	thumb_func_start sub_0206312C
-sub_0206312C: ; 0x0206312C
+	thumb_func_start MapObjectMovementCmd099_Step0
+MapObjectMovementCmd099_Step0: ; 0x0206312C
 	push {r3, lr}
 	mov r1, #3
 	mov r2, #7
@@ -2461,10 +2461,10 @@ sub_0206312C: ; 0x0206312C
 	bl sub_02062FAC
 	mov r0, #1
 	pop {r3, pc}
-	thumb_func_end sub_0206312C
+	thumb_func_end MapObjectMovementCmd099_Step0
 
-	thumb_func_start sub_0206313C
-sub_0206313C: ; 0x0206313C
+	thumb_func_start MapObjectMovementCmd098_Step1
+MapObjectMovementCmd098_Step1: ; 0x0206313C
 	push {r3, lr}
 	ldr r1, _02063150 ; =_020FDA68
 	bl sub_02062FEC
@@ -2477,10 +2477,10 @@ _0206314C:
 	pop {r3, pc}
 	.balign 4, 0
 _02063150: .word _020FDA68
-	thumb_func_end sub_0206313C
+	thumb_func_end MapObjectMovementCmd098_Step1
 
-	thumb_func_start sub_02063154
-sub_02063154: ; 0x02063154
+	thumb_func_start MapObjectMovementCmd100_Step0
+MapObjectMovementCmd100_Step0: ; 0x02063154
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #4
@@ -2489,13 +2489,13 @@ sub_02063154: ; 0x02063154
 	mov r1, #9
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02063154
+	thumb_func_end MapObjectMovementCmd100_Step0
 
-	thumb_func_start sub_02063170
-sub_02063170: ; 0x02063170
+	thumb_func_start MapObjectMovementCmd100_Step1
+MapObjectMovementCmd100_Step1: ; 0x02063170
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0205F3E4
@@ -2511,14 +2511,14 @@ sub_02063170: ; 0x02063170
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 _02063198:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02063170
+	thumb_func_end MapObjectMovementCmd100_Step1
 
-	thumb_func_start sub_0206319C
-sub_0206319C: ; 0x0206319C
+	thumb_func_start MapObjectMovementCmd101_Step0
+MapObjectMovementCmd101_Step0: ; 0x0206319C
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -2536,7 +2536,7 @@ _020631B6:
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	add r0, r4, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	add r0, r4, #0
 	bl ov01_022000DC
 	ldr r1, _020631EC ; =0x00010004
@@ -2547,16 +2547,16 @@ _020631B6:
 	lsl r1, r1, #0x14
 	bl MapObject_ClearBits
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
 _020631EC: .word 0x00010004
-	thumb_func_end sub_0206319C
+	thumb_func_end MapObjectMovementCmd101_Step0
 
-	thumb_func_start sub_020631F0
-sub_020631F0: ; 0x020631F0
+	thumb_func_start MapObjectMovementCmd101_Step1
+MapObjectMovementCmd101_Step1: ; 0x020631F0
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -2574,7 +2574,7 @@ sub_020631F0: ; 0x020631F0
 	ldr r0, [r2, r0]
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r0, [r4]
 	add r0, r0, #2
 	str r0, [r4]
@@ -2588,24 +2588,24 @@ _02063228:
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_0205F97C
+	bl MapObject_SetFacingVec
 	ldr r1, _02063254 ; =0x00020028
 	add r0, r5, #0
 	bl MapObject_SetBits
 	add r0, r5, #0
 	bl sub_02066438
 	add r0, r5, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
 _02063250: .word _0210FACC
 _02063254: .word 0x00020028
-	thumb_func_end sub_020631F0
+	thumb_func_end MapObjectMovementCmd101_Step1
 
-	thumb_func_start sub_02063258
-sub_02063258: ; 0x02063258
+	thumb_func_start MapObjectMovementCmd102_Step0
+MapObjectMovementCmd102_Step0: ; 0x02063258
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #4
@@ -2614,13 +2614,13 @@ sub_02063258: ; 0x02063258
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02063258
+	thumb_func_end MapObjectMovementCmd102_Step0
 
-	thumb_func_start sub_02063274
-sub_02063274: ; 0x02063274
+	thumb_func_start MapObjectMovementCmd104_Step0
+MapObjectMovementCmd104_Step0: ; 0x02063274
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #4
@@ -2629,13 +2629,13 @@ sub_02063274: ; 0x02063274
 	mov r1, #1
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02063274
+	thumb_func_end MapObjectMovementCmd104_Step0
 
-	thumb_func_start sub_02063290
-sub_02063290: ; 0x02063290
+	thumb_func_start MapObjectMovementCmd102_Step1
+MapObjectMovementCmd102_Step1: ; 0x02063290
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0205F3E4
@@ -2648,10 +2648,10 @@ sub_02063290: ; 0x02063290
 	pop {r4, pc}
 _020632A6:
 	add r0, r4, #0
-	bl sub_0205F4E4
+	bl MapObject_IncMovementStep
 	mov r0, #1
 	pop {r4, pc}
-	thumb_func_end sub_02063290
+	thumb_func_end MapObjectMovementCmd102_Step1
 
 	.rodata
 

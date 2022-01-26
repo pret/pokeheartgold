@@ -13395,7 +13395,7 @@ ov02_0224C0B0: ; 0x0224C0B0
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	bne _0224C0C8
 	add sp, #0xc
@@ -13473,7 +13473,7 @@ ov02_0224C14C: ; 0x0224C14C
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #1
 	bne _0224C184
 	ldr r0, [r4, #0x10]
@@ -13647,7 +13647,7 @@ ov02_0224C2A8: ; 0x0224C2A8
 	push {r4, lr}
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #1
 	bne _0224C2C6
 	ldr r0, [r4, #0x10]
@@ -13682,7 +13682,7 @@ ov02_0224C2EC: ; 0x0224C2EC
 	push {r4, lr}
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	bne _0224C2FE
 	mov r0, #0
@@ -13720,7 +13720,7 @@ ov02_0224C338: ; 0x0224C338
 	push {r4, lr}
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	bne _0224C34A
 	mov r0, #0
@@ -14205,7 +14205,7 @@ ov02_0224C6DC: ; 0x0224C6DC
 	add r4, r2, #0
 	ldr r0, [r4, #0x14]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	bne _0224C6F0
 	mov r0, #0
@@ -14267,7 +14267,7 @@ ov02_0224C75C: ; 0x0224C75C
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	bne _0224C774
 	add sp, #0xc
@@ -14327,7 +14327,7 @@ ov02_0224C7D4: ; 0x0224C7D4
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #1
 	bne _0224C80C
 	ldr r0, [r4, #0x10]
@@ -14445,7 +14445,7 @@ ov02_0224C8D0: ; 0x0224C8D0
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	bne _0224C8E4
 	mov r0, #0
@@ -14500,7 +14500,7 @@ ov02_0224C93C: ; 0x0224C93C
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #0
 	bne _0224C954
 	add sp, #0xc
@@ -14561,7 +14561,7 @@ ov02_0224C9B8: ; 0x0224C9B8
 	add r4, r2, #0
 	ldr r0, [r4, #0x10]
 	add r5, r1, #0
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #1
 	bne _0224C9F2
 	ldr r0, [r4, #0x10]
@@ -22953,7 +22953,7 @@ _0225084C:
 	b _022508AA
 _02250874:
 	ldr r0, [r5, #4]
-	bl sub_02062260
+	bl EventObjectMovementMan_IsFinish
 	cmp r0, #1
 	bne _022508AA
 	ldr r0, [r5, #4]

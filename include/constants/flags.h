@@ -1746,7 +1746,7 @@
 #define FLAG_UNK_97E                                               0x97E
 #define FLAG_UNK_97F                                               0x97F
 #define FLAG_UNK_980                                               0x980
-#define FLAG_UNK_981                                               0x981
+#define FLAG_SYS_CIANWOOD_WATERFALL_DISABLE                                               0x981
 #define FLAG_UNK_982                                               0x982
 #define FLAG_UNK_983                                               0x983
 #define FLAG_UNK_984                                               0x984
@@ -1783,7 +1783,7 @@
 #define FLAG_UNK_9A3                                               0x9A3
 #define FLAG_UNK_9A4                                               0x9A4
 #define FLAG_UNK_9A5                                               0x9A5
-#define FLAG_UNK_9A6                                               0x9A6
+#define FLAG_SYS_SOLVED_LT_SURGE_GYM                                               0x9A6
 #define FLAG_UNK_9A7                                               0x9A7
 #define FLAG_UNK_9A8                                               0x9A8
 #define FLAG_UNK_9A9                                               0x9A9

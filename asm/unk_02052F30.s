@@ -200,8 +200,8 @@ _02053088:
 	cmp r6, #0
 	bne _020530A6
 	ldr r0, [r4, #0xc]
-	bl sub_0202A998
-	bl sub_0202AE8C
+	bl Sav2_GetGymmickPtr
+	bl SavGymmick_Clear
 	ldr r0, [r4, #0xc]
 	add r1, r7, #0
 	bl ShouldUseAlternateLakeOfRage

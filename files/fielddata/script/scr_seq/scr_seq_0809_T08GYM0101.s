@@ -17,7 +17,7 @@
 	scrdef_end
 
 scr_seq_T08GYM0101_000:
-	scrcmd_330
+	fuchsia_gym_init
 	get_phone_book_rematch PHONE_CONTACT_JANINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00EF
