@@ -2584,7 +2584,7 @@ ov106_021E6CA8: ; 0x021E6CA8
 _021E6CB4:
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0

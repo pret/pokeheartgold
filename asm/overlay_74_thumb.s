@@ -1,3 +1,6 @@
+#include "msgdata/msg/msg_0247.h"
+#include "msgdata/msg/msg_0442.h"
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 	.public ov60_021EAFE0
@@ -71,7 +74,7 @@ ov74_022270C4: ; 0x022270C4
 	add r5, r0, #0
 	add r4, r1, #0
 	cmp r2, #0
-	ldr r0, _02227158 ; =0x000005DC
+	ldr r0, _02227158 ; =SEQ_SE_DP_SELECT
 	bne _02227106
 	bl PlaySE
 	add r0, r5, #0
@@ -140,7 +143,7 @@ _02227152:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02227158: .word 0x000005DC
+_02227158: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov74_022270C4
 
 	thumb_func_start ov74_0222715C
@@ -662,7 +665,7 @@ _0222752C:
 	add r4, #0x56
 	ldrh r1, [r4]
 	bl ov74_02228548
-	ldr r0, _0222757C ; =0x000005DC
+	ldr r0, _0222757C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -687,7 +690,7 @@ _02227572:
 	.balign 4, 0
 _02227574: .word gMain
 _02227578: .word 0x00000CF3
-_0222757C: .word 0x000005DC
+_0222757C: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov74_022274D4
 
 	thumb_func_start ov74_02227580
@@ -762,7 +765,7 @@ _022275FC:
 	mov r1, #3
 	tst r0, r1
 	beq _02227624
-	ldr r0, _02227638 ; =0x000005DC
+	ldr r0, _02227638 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x19
 	lsl r0, r0, #4
@@ -784,7 +787,7 @@ _0222762A:
 	.balign 4, 0
 _02227630: .word 0x000003F7
 _02227634: .word ov74_0223BBD4
-_02227638: .word 0x000005DC
+_02227638: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov74_02227584
 
 	thumb_func_start ov74_0222763C
@@ -1293,7 +1296,7 @@ _02227A08:
 	str r1, [r4, r0]
 	add r0, #0xc
 	str r6, [r4, r0]
-	ldr r0, _02227AE8 ; =0x000005DC
+	ldr r0, _02227AE8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _02227ABE
 _02227A26:
@@ -1347,7 +1350,7 @@ _02227A4E:
 	str r1, [r4, r0]
 	add r0, #0xc
 	str r5, [r4, r0]
-	ldr r0, _02227AE8 ; =0x000005DC
+	ldr r0, _02227AE8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _02227ABE
 _02227A9E:
@@ -1378,7 +1381,7 @@ _02227AD8: .word ov74_0223BC44
 _02227ADC: .word ov74_0223BC58
 _02227AE0: .word ov74_0223BC6C
 _02227AE4: .word ov74_0223BC80
-_02227AE8: .word 0x000005DC
+_02227AE8: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov74_0222779C
 
 	thumb_func_start ov74_02227AEC
@@ -1838,8 +1841,8 @@ _02227E82:
 	.balign 4, 0
 	thumb_func_end ov74_02227E64
 
-	thumb_func_start ov74_02227E94
-ov74_02227E94: ; 0x02227E94
+	thumb_func_start ov74_MainMenu_PrintContinueButton
+ov74_MainMenu_PrintContinueButton: ; 0x02227E94
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	str r2, [sp, #0x18]
@@ -2033,7 +2036,7 @@ _02228030: .word 0x0007080F
 _02228034: .word ov74_0223BCBC + 8
 _02228038: .word ov74_0223BBC4
 _0222803C: .word ov74_0223BCBC
-	thumb_func_end ov74_02227E94
+	thumb_func_end ov74_MainMenu_PrintContinueButton
 
 	thumb_func_start ov74_02228040
 ov74_02228040: ; 0x02228040
@@ -2860,7 +2863,7 @@ _022286B8:
 	ldr r2, [r2]
 	cmp r2, #0
 	beq _022286AA
-	ldr r0, _022286F4 ; =0x000005DC
+	ldr r0, _022286F4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _022286CE:
 	add r0, r5, #0
@@ -2883,7 +2886,7 @@ _022286F0:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_022286F4: .word 0x000005DC
+_022286F4: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov74_02228698
 
 	thumb_func_start ov74_022286F8
@@ -4902,7 +4905,7 @@ _0222977A:
 	ldr r0, _02229A00 ; =0x000034D8
 	mov r1, #0
 	str r1, [r4, r0]
-	ldr r0, _02229A0C ; =0x000005DC
+	ldr r0, _02229A0C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x16
 	ldr r1, _02229A04 ; =0x00000708
@@ -4960,7 +4963,7 @@ _022297F2:
 	mov r2, #2
 	mov r3, #0x13
 	bl ov74_02235568
-	ldr r0, _02229A0C ; =0x000005DC
+	ldr r0, _02229A0C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _02229A00 ; =0x000034D8
 	mov r1, #0
@@ -5191,7 +5194,7 @@ _022299FC: .word ov74_0223BD5C
 _02229A00: .word 0x000034D8
 _02229A04: .word 0x00000708
 _02229A08: .word 0x00003170
-_02229A0C: .word 0x000005DC
+_02229A0C: .word SEQ_SE_DP_SELECT
 _02229A10: .word gMain
 _02229A14: .word ov74_0223C1F4
 _02229A18:
@@ -5239,7 +5242,7 @@ _02229A4A:
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
 	bl sub_0200F450
-	ldr r0, _02229B60 ; =0x000005DC
+	ldr r0, _02229B60 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _02229B5C ; =0x000034D8
 	mov r1, #0
@@ -5351,7 +5354,7 @@ _02229B52:
 	nop
 _02229B58: .word 0x00003170
 _02229B5C: .word 0x000034D8
-_02229B60: .word 0x000005DC
+_02229B60: .word SEQ_SE_DP_SELECT
 _02229B64: .word gMain
 	thumb_func_end ov74_0222962C
 
@@ -6187,7 +6190,7 @@ _0222A142:
 	bl ov74_0222A0E4
 	cmp r0, #1
 	beq _0222A15E
-	ldr r0, _0222A16C ; =0x0000061A
+	ldr r0, _0222A16C ; =SEQ_SE_DP_SAVE
 	bl PlaySE
 _0222A15E:
 	ldr r0, _0222A170 ; =0x000029E8
@@ -6197,7 +6200,7 @@ _0222A164:
 	pop {r4, pc}
 	nop
 _0222A168: .word 0x000029EC
-_0222A16C: .word 0x0000061A
+_0222A16C: .word SEQ_SE_DP_SAVE
 _0222A170: .word 0x000029E8
 	thumb_func_end ov74_0222A130
 
@@ -7434,7 +7437,7 @@ ov74_0222AB0C: ; 0x0222AB0C
 	beq _0222AB66
 	b _0222AB4A
 _0222AB30:
-	ldr r0, _0222AB68 ; =0x000005DC
+	ldr r0, _0222AB68 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r6, #0
 	beq _0222AB66
@@ -7447,7 +7450,7 @@ _0222AB30:
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 _0222AB4A:
-	ldr r0, _0222AB68 ; =0x000005DC
+	ldr r0, _0222AB68 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r4, #0
 	beq _0222AB66
@@ -7463,7 +7466,7 @@ _0222AB4A:
 _0222AB66:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0222AB68: .word 0x000005DC
+_0222AB68: .word SEQ_SE_DP_SELECT
 _0222AB6C: .word ov74_0223D0A8
 	thumb_func_end ov74_0222AB0C
 
@@ -7614,7 +7617,7 @@ _0222AC8C:
 	ldr r0, [r4]
 	mov r1, #0
 	bl BgClearTilemapBufferAndCommit
-	ldr r0, _0222ACD4 ; =0x000005DC
+	ldr r0, _0222ACD4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r6, #0
 	mov r1, #0xc4
@@ -7631,7 +7634,7 @@ _0222ACC4:
 _0222ACC8: .word 0x000015E0
 _0222ACCC: .word 0x00001658
 _0222ACD0: .word 0x000015DC
-_0222ACD4: .word 0x000005DC
+_0222ACD4: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov74_0222AC1C
 
 	thumb_func_start ov74_0222ACD8
@@ -10182,7 +10185,7 @@ _0222C14A:
 	cmp r5, #0x13
 	bne _0222C1A8
 _0222C164:
-	ldr r0, _0222C2E0 ; =0x0000061A
+	ldr r0, _0222C2E0 ; =SEQ_SE_DP_SAVE
 	bl PlaySE
 	mov r0, #5
 	str r0, [r4]
@@ -10364,7 +10367,7 @@ _0222C2D0:
 	.balign 4, 0
 _0222C2D8: .word 0x00003014
 _0222C2DC: .word 0x000030A0
-_0222C2E0: .word 0x0000061A
+_0222C2E0: .word SEQ_SE_DP_SAVE
 _0222C2E4: .word 0x00003060
 _0222C2E8: .word 0x00001850
 	thumb_func_end ov74_0222C04C
@@ -10701,7 +10704,7 @@ _0222C57E:
 	str r1, [r4, r0]
 	b _0222C5D2
 _0222C5CC:
-	ldr r0, _0222C66C ; =0x00000623
+	ldr r0, _0222C66C ; =SEQ_SE_DP_UG_020
 	bl PlaySE
 _0222C5D2:
 	mov r0, #0x23
@@ -10770,7 +10773,7 @@ _0222C65C: .word 0x000029F4
 _0222C660: .word 0x000030A4
 _0222C664: .word 0x000030A0
 _0222C668: .word ov74_0222C04C
-_0222C66C: .word 0x00000623
+_0222C66C: .word SEQ_SE_DP_UG_020
 _0222C670: .word 0x00000438
 _0222C674:
 	str r0, [r4, r1]
@@ -11128,7 +11131,7 @@ _0222C96A:
 	bl ov74_02229E28
 	bl ov74_02229DF8
 	bl sub_0203A914
-	ldr r0, _0222CA28 ; =0x00000623
+	ldr r0, _0222CA28 ; =SEQ_SE_DP_UG_020
 	bl PlaySE
 	mov r1, #0
 	add r0, r4, #0
@@ -11143,7 +11146,7 @@ _0222C96A:
 	str r0, [r5]
 	b _0222CD3A
 _0222C9AA:
-	ldr r0, _0222CA2C ; =0x000005DC
+	ldr r0, _0222CA2C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r1, r4, #0
 	add r0, r6, #0
@@ -11169,7 +11172,7 @@ _0222C9DA:
 	add r0, r4, #0
 	mov r1, #0
 	bl ov74_02229E28
-	ldr r0, _0222CA2C ; =0x000005DC
+	ldr r0, _0222CA2C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r1, r4, #0
 	add r0, r6, #0
@@ -11191,7 +11194,7 @@ _0222CA04:
 _0222CA0C:
 	b _0222CD3A
 _0222CA0E:
-	ldr r0, _0222CA2C ; =0x000005DC
+	ldr r0, _0222CA2C ; =SEQ_SE_DP_SELECT
 	b _0222CA34
 	nop
 _0222CA14: .word gMain
@@ -11199,8 +11202,8 @@ _0222CA18: .word 0x00000434
 _0222CA1C: .word ov74_0222A494
 _0222CA20: .word 0x000029EC
 _0222CA24: .word 0x0000043C
-_0222CA28: .word 0x00000623
-_0222CA2C: .word 0x000005DC
+_0222CA28: .word SEQ_SE_DP_UG_020
+_0222CA2C: .word SEQ_SE_DP_SELECT
 _0222CA30: .word 0x000015DC
 _0222CA34:
 	bl PlaySE
@@ -11354,7 +11357,7 @@ _0222CB58:
 	add r0, r4, #0
 	mvn r1, r1
 	bl ov74_02229F28
-	ldr r0, _0222CD60 ; =0x00000623
+	ldr r0, _0222CD60 ; =SEQ_SE_DP_UG_020
 	bl PlaySE
 	add r1, r4, #0
 	add r0, r6, #0
@@ -11487,7 +11490,7 @@ _0222CC7E:
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	beq _0222CD3A
-	ldr r0, _0222CD68 ; =0x000005DC
+	ldr r0, _0222CD68 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r4, #0
 	add r0, #0xda
@@ -11589,9 +11592,9 @@ _0222CD46:
 _0222CD54: .word 0x000015DC
 _0222CD58: .word ov74_0222A494
 _0222CD5C: .word 0x0000043C
-_0222CD60: .word 0x00000623
+_0222CD60: .word SEQ_SE_DP_UG_020
 _0222CD64: .word gMain
-_0222CD68: .word 0x000005DC
+_0222CD68: .word SEQ_SE_DP_SELECT
 _0222CD6C: .word 0x000015D8
 _0222CD70: .word 0x00000215
 _0222CD74: .word 0x000029E8
@@ -13520,7 +13523,7 @@ ov74_0222DC60: ; 0x0222DC60
 	beq _0222DCC4
 	b _0222DCA0
 _0222DC86:
-	ldr r0, _0222DCCC ; =0x000005DC
+	ldr r0, _0222DCCC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r6, #0
 	beq _0222DCC4
@@ -13533,7 +13536,7 @@ _0222DC86:
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 _0222DCA0:
-	ldr r0, _0222DCCC ; =0x000005DC
+	ldr r0, _0222DCCC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r4, #0
 	beq _0222DCC4
@@ -13555,7 +13558,7 @@ _0222DCC4:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222DCC8: .word 0x00002BC8
-_0222DCCC: .word 0x000005DC
+_0222DCCC: .word SEQ_SE_DP_SELECT
 _0222DCD0: .word ov74_0223D0BC
 	thumb_func_end ov74_0222DC60
 
@@ -13996,7 +13999,7 @@ ov74_0222E03C: ; 0x0222E03C
 	sub r0, r0, #2
 	cmp r0, #1
 	bhi _0222E056
-	ldr r0, _0222E058 ; =0x0000061A
+	ldr r0, _0222E058 ; =SEQ_SE_DP_SAVE
 	bl PlaySE
 	ldr r0, _0222E05C ; =0x00003D48
 	mov r1, #0
@@ -14004,7 +14007,7 @@ ov74_0222E03C: ; 0x0222E03C
 _0222E056:
 	pop {r4, pc}
 	.balign 4, 0
-_0222E058: .word 0x0000061A
+_0222E058: .word SEQ_SE_DP_SAVE
 _0222E05C: .word 0x00003D48
 	thumb_func_end ov74_0222E03C
 
@@ -14162,7 +14165,7 @@ _0222E170:
 _0222E17A:
 	cmp r4, #1
 	bne _0222E1B2
-	ldr r0, _0222E1E4 ; =0x000005DC
+	ldr r0, _0222E1E4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0xab
 	bl sub_02037AC0
@@ -14187,7 +14190,7 @@ _0222E17A:
 _0222E1B2:
 	cmp r4, #2
 	bne _0222E1C6
-	ldr r0, _0222E1E4 ; =0x000005DC
+	ldr r0, _0222E1E4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r5, #0
 	add r1, r7, #0
@@ -14196,7 +14199,7 @@ _0222E1B2:
 _0222E1C6:
 	cmp r4, #3
 	bne _0222E1D0
-	ldr r0, _0222E1E4 ; =0x000005DC
+	ldr r0, _0222E1E4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _0222E1D0:
 	pop {r3, r4, r5, r6, r7, pc}
@@ -14205,7 +14208,7 @@ _0222E1D4: .word gMain
 _0222E1D8: .word 0x00003D4C
 _0222E1DC: .word 0x00002DC4
 _0222E1E0: .word 0x00002DC8
-_0222E1E4: .word 0x000005DC
+_0222E1E4: .word SEQ_SE_DP_SELECT
 _0222E1E8: .word 0x00002C34
 _0222E1EC: .word 0x00002BD0
 _0222E1F0: .word 0x00003D50
@@ -14398,7 +14401,7 @@ _0222E37A:
 	mov r0, #2
 	tst r0, r1
 	beq _0222E394
-	ldr r0, _0222E5C8 ; =0x000005DC
+	ldr r0, _0222E5C8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0
@@ -14410,7 +14413,7 @@ _0222E394:
 	mov r0, #1
 	tst r0, r1
 	beq _0222E3A4
-	ldr r0, _0222E5C8 ; =0x000005DC
+	ldr r0, _0222E5C8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #4
 	str r0, [r5]
@@ -14422,7 +14425,7 @@ _0222E3A4:
 	bne _0222E3B0
 	b _0222E79C
 _0222E3B0:
-	ldr r0, _0222E5CC ; =0x000005FF
+	ldr r0, _0222E5CC ; =SEQ_SE_DP_CARD2
 	bl PlaySE
 	mov r0, #0xaf
 	lsl r0, r0, #6
@@ -14461,13 +14464,13 @@ _0222E3F0:
 	mov r0, #2
 	tst r0, r1
 	beq _0222E4C2
-	ldr r0, _0222E5C8 ; =0x000005DC
+	ldr r0, _0222E5C8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0xb
 	str r0, [r5]
 	b _0222E79C
 _0222E410:
-	ldr r0, _0222E5CC ; =0x000005FF
+	ldr r0, _0222E5CC ; =SEQ_SE_DP_CARD2
 	bl PlaySE
 	mov r0, #0x10
 	mov r1, #0
@@ -14511,7 +14514,7 @@ _0222E468:
 	mov r0, #3
 	tst r0, r1
 	beq _0222E4C2
-	ldr r0, _0222E5CC ; =0x000005FF
+	ldr r0, _0222E5CC ; =SEQ_SE_DP_CARD2
 	bl PlaySE
 	mov r1, #1
 	add r0, r4, #0
@@ -14653,8 +14656,8 @@ _0222E5B8: .word 0x00002BB8
 _0222E5BC: .word 0x00002BBC
 _0222E5C0: .word 0x000029FC
 _0222E5C4: .word gMain
-_0222E5C8: .word 0x000005DC
-_0222E5CC: .word 0x000005FF
+_0222E5C8: .word SEQ_SE_DP_SELECT
+_0222E5CC: .word SEQ_SE_DP_CARD2
 _0222E5D0: .word 0x00002BD0
 _0222E5D4: .word 0x00002BF0
 _0222E5D8: .word 0x00002BE0
@@ -16426,7 +16429,7 @@ ov74_0222F404: ; 0x0222F404
 	beq _0222F468
 	b _0222F444
 _0222F42A:
-	ldr r0, _0222F470 ; =0x000005DC
+	ldr r0, _0222F470 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r6, #0
 	beq _0222F468
@@ -16439,7 +16442,7 @@ _0222F42A:
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 _0222F444:
-	ldr r0, _0222F470 ; =0x000005DC
+	ldr r0, _0222F470 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r4, #0
 	beq _0222F468
@@ -16461,7 +16464,7 @@ _0222F468:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222F46C: .word 0x00002BBC
-_0222F470: .word 0x000005DC
+_0222F470: .word SEQ_SE_DP_SELECT
 _0222F474: .word ov74_0223D0C0
 	thumb_func_end ov74_0222F404
 
@@ -17031,7 +17034,7 @@ _0222F8FC:
 	mov r0, #2
 	tst r0, r1
 	beq _0222F91A
-	ldr r0, _0222FB6C ; =0x000005DC
+	ldr r0, _0222FB6C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r4, #0
 	mov r1, #0
@@ -17045,7 +17048,7 @@ _0222F91A:
 	bne _0222F922
 	b _0222FB2C
 _0222F922:
-	ldr r0, _0222FB6C ; =0x000005DC
+	ldr r0, _0222FB6C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #4
 	str r0, [r5]
@@ -17079,13 +17082,13 @@ _0222F956:
 	mov r0, #2
 	tst r0, r1
 	beq _0222FA28
-	ldr r0, _0222FB6C ; =0x000005DC
+	ldr r0, _0222FB6C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0xb
 	str r0, [r5]
 	b _0222FB2C
 _0222F976:
-	ldr r0, _0222FB78 ; =0x000005FF
+	ldr r0, _0222FB78 ; =SEQ_SE_DP_CARD2
 	bl PlaySE
 	mov r0, #0x10
 	mov r1, #0
@@ -17129,7 +17132,7 @@ _0222F9CE:
 	mov r0, #3
 	tst r0, r1
 	beq _0222FA28
-	ldr r0, _0222FB78 ; =0x000005FF
+	ldr r0, _0222FB78 ; =SEQ_SE_DP_CARD2
 	bl PlaySE
 	mov r1, #1
 	add r0, r4, #0
@@ -17306,10 +17309,10 @@ _0222FB5C: .word 0x00002BAC
 _0222FB60: .word 0x00002BB4
 _0222FB64: .word 0x000029FC
 _0222FB68: .word gMain
-_0222FB6C: .word 0x000005DC
+_0222FB6C: .word SEQ_SE_DP_SELECT
 _0222FB70: .word 0x00002BC4
 _0222FB74: .word 0x00002BE4
-_0222FB78: .word 0x000005FF
+_0222FB78: .word SEQ_SE_DP_CARD2
 _0222FB7C: .word 0x00002BD4
 _0222FB80: .word 0x00708000
 _0222FB84: .word 0x00002BF8
@@ -24469,7 +24472,7 @@ ov74_0223319C: ; 0x0223319C
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r5, #8]
-	ldr r0, _02233220 ; =0x000005DC
+	ldr r0, _02233220 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _0223321C
 _022331DE:
@@ -24498,7 +24501,7 @@ _022331FC:
 _0223320C:
 	mov r0, #0
 	bl sub_02002B8C
-	ldr r0, _02233220 ; =0x000005DC
+	ldr r0, _02233220 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -24506,7 +24509,7 @@ _0223321C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02233220: .word 0x000005DC
+_02233220: .word SEQ_SE_DP_SELECT
 _02233224: .word 0x00000474
 _02233228: .word gMain + 0x40
 _0223322C: .word gMain
@@ -25058,7 +25061,7 @@ _022336B2:
 	str r1, [r4, r0]
 	add r0, r4, #0
 	bl ov74_02231FF4
-	ldr r0, _022338A8 ; =0x000005DC
+	ldr r0, _022338A8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _02233896
 _022336C2:
@@ -25074,7 +25077,7 @@ _022336C2:
 _022336D4:
 	add r0, r4, #0
 	bl ov74_02231FF4
-	ldr r0, _022338A8 ; =0x000005DC
+	ldr r0, _022338A8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _02233896
 _022336E2:
@@ -25083,7 +25086,7 @@ _022336E2:
 	mov r2, #0x18
 	add r3, r5, #0
 	bl ov74_02232940
-	ldr r0, _022338A8 ; =0x000005DC
+	ldr r0, _022338A8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _02233896
 _022336F6:
@@ -25162,7 +25165,7 @@ _0223377C:
 	bl ov74_02231A1C
 	add r0, r4, #0
 	bl ov74_02232F5C
-	ldr r0, _022338A8 ; =0x000005DC
+	ldr r0, _022338A8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x13
 	str r0, [r5]
@@ -25231,7 +25234,7 @@ _02233818:
 	ldr r0, _022338C0 ; =0x0000E898
 	ldr r0, [r4, r0]
 	bl sub_0200F450
-	ldr r0, _022338C4 ; =0x0000061A
+	ldr r0, _022338C4 ; =SEQ_SE_DP_SAVE
 	bl PlaySE
 	cmp r6, #0xb
 	bne _0223383A
@@ -25272,7 +25275,7 @@ _0223386A:
 	mov r2, #0x18
 	add r3, r5, #0
 	bl ov74_02232940
-	ldr r0, _022338A8 ; =0x000005DC
+	ldr r0, _022338A8 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _02233896
 _0223387E:
@@ -25297,14 +25300,14 @@ _022338A0:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _022338A4: .word 0x0000E884
-_022338A8: .word 0x000005DC
+_022338A8: .word SEQ_SE_DP_SELECT
 _022338AC: .word 0x00000498
 _022338B0: .word 0x0000E888
 _022338B4: .word 0x0000E88C
 _022338B8: .word ov74_0223C968
 _022338BC: .word 0x0000E890
 _022338C0: .word 0x0000E898
-_022338C4: .word 0x0000061A
+_022338C4: .word SEQ_SE_DP_SAVE
 _022338C8: .word 0x0000042C
 _022338CC: .word gMain + 0x40
 _022338D0: .word gMain
@@ -30604,11 +30607,11 @@ ov74_02235FF8: ; 0x02235FF8
 	cmp r2, #1
 	pop {r3, pc}
 _02236002:
-	ldr r0, _0223600C ; =0x000005DC
+	ldr r0, _0223600C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	pop {r3, pc}
 	nop
-_0223600C: .word 0x000005DC
+_0223600C: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov74_02235FF8
 
 	thumb_func_start ov74_02236010
@@ -32976,8 +32979,10 @@ _0223BBC0:
 	.byte 0x00, 0x00, 0x00, 0x00
 
 ov74_0223BBC4: ; 0x0223BBC4
-	.byte 0x0D, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
-	.byte 0x0F, 0x00, 0x00, 0x00
+	.word msg_0442_00013
+	.word msg_0442_00014
+	.word msg_0442_00016
+	.word msg_0442_00015
 
 ov74_0223BBD4: ; 0x0223BBD4
 	.byte 0x05, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00
@@ -33012,7 +33017,7 @@ ov74_0223BC80: ; 0x0223BC80
 	.byte 0x18, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
 
 ov74_0223BCBC: ; 0x0223BCBC
-	.word 0x00000001, 0x0000000A, 0x00000000, ov74_02227E94
+	.word 0x00000001, 0x0000000A, 0x00000000, ov74_MainMenu_PrintContinueButton
 	.word 0x00000002, 0x00000004, 0x00000001, 0
 	.word 0x00000003, 0x00000004, 0x00000009, ov74_02228254
 	.word 0x00000004, 0x00000004, 0x00000002, ov74_022280B4
@@ -33140,39 +33145,30 @@ ov74_0223C270: ; 0x0223C270
 	.word 0x0000000D, ov74_0222A650
 
 ov74_0223C2A0: ; 0x0223C2A0
-	.byte 0x15, 0x00, 0x00, 0x00
-	.word ov74_0222A688
-	.byte 0x0E, 0x00, 0x00, 0x00
-	.word ov74_0222A6C0
+	.word msg_0247_00021, ov74_0222A688
+	.word msg_0247_00014, ov74_0222A6C0
 
 ov74_0223C2B0: ; 0x0223C2B0
-	.byte 0x0F, 0x00, 0x00, 0x00
-	.word ov74_0222A2E0
-	.byte 0x14, 0x00, 0x00, 0x00
-	.word ov74_0222A3CC
-	.byte 0x10, 0x00, 0x00, 0x00
-	.word ov74_0222A35C
-	.byte 0x11, 0x00, 0x00, 0x00
-	.word ov74_0222A5AC
+	.word msg_0247_00015, ov74_0222A2E0
+	.word msg_0247_00020, ov74_0222A3CC
+	.word msg_0247_00016, ov74_0222A35C
+	.word msg_0247_00017, ov74_0222A5AC
 
 ov74_0223C2D0: ; 0x0223C2D0
-	.byte 0x41, 0x00, 0x00, 0x00
-	.word ov74_0222D358
-	.byte 0x42, 0x00, 0x00, 0x00
-	.word ov74_0222D414
+	.word msg_0247_00065, ov74_0222D358
+	.word msg_0247_00066, ov74_0222D414
 
 ov74_0223C2E0: ; 0x0223C2E0
-	.byte 0x41, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x42, 0x00, 0x00, 0x00
-	.word ov74_0222D414
+	.word msg_0247_00065, 16
+	.word msg_0247_00066, ov74_0222D414
 
 ov74_0223C2F0: ; 0x0223C2F0
-	.byte 0x41, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0x42, 0x00, 0x00, 0x00
-	.word ov74_0222D414
-	.byte 0x2B, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x2C, 0x00, 0x00, 0x00
-	.word ov74_0222D2D4
-	.byte 0x2D, 0x00, 0x00, 0x00
-	.word ov74_0222D308
-	.byte 0x2E, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
+	.word msg_0247_00065, 15
+	.word msg_0247_00066, ov74_0222D414
+	.word msg_0247_00043, 6
+	.word msg_0247_00044, ov74_0222D2D4
+	.word msg_0247_00045, ov74_0222D308
+	.word msg_0247_00046, 11
 
 ov74_0223C320: ; 0x0223C320
 	.byte 0x00, 0x00, 0x00, 0x00

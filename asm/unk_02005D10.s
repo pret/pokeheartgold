@@ -206,8 +206,8 @@ _02005E9A:
 	.balign 4, 0
 	thumb_func_end sub_02005E44
 
-	thumb_func_start sub_02005EB4
-sub_02005EB4: ; 0x02005EB4
+	thumb_func_start StopBGM
+StopBGM: ; 0x02005EB4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -230,7 +230,7 @@ _02005EE4:
 	bl sub_02005EEC
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02005EB4
+	thumb_func_end StopBGM
 
 	thumb_func_start sub_02005EEC
 sub_02005EEC: ; 0x02005EEC

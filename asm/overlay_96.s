@@ -13620,7 +13620,7 @@ _021EBDDE:
 	strb r1, [r0]
 	bl sub_02004A90
 	mov r1, #0x10
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021EBFFC ; =0x000006EE
 	bl PlaySE
 	b _021EC188

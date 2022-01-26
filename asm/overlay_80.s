@@ -23725,7 +23725,7 @@ ov80_02235438: ; 0x02235438
 	bl ov80_0222AC58
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov80_02235438

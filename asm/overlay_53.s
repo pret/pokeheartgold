@@ -1,10 +1,12 @@
+#include "constants/sndseq.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
 	.text
 
-	thumb_func_start ov53_021E5900
-ov53_021E5900: ; 0x021E5900
+	thumb_func_start ov53_OakSpeech_OvyInit
+ov53_OakSpeech_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	mov r2, #1
@@ -70,10 +72,10 @@ ov53_021E5900: ; 0x021E5900
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov53_021E5900
+	thumb_func_end ov53_OakSpeech_OvyInit
 
-	thumb_func_start ov53_021E5994
-ov53_021E5994: ; 0x021E5994
+	thumb_func_start ov53_OakSpeech_OvyExec
+ov53_OakSpeech_OvyExec: ; 0x021E5994
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -265,10 +267,10 @@ _021E5B34:
 _021E5B3C: .word 0xFFFFE0FF
 _021E5B40: .word 0x04001000
 _021E5B44: .word ov53_021E5BCC
-	thumb_func_end ov53_021E5994
+	thumb_func_end ov53_OakSpeech_OvyExec
 
-	thumb_func_start ov53_021E5B48
-ov53_021E5B48: ; 0x021E5B48
+	thumb_func_start ov53_OakSpeech_OvyExit
+ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -319,7 +321,7 @@ ov53_021E5B48: ; 0x021E5B48
 	nop
 _021E5BC4: .word SDK_OVERLAY_OVY_36_ID
 _021E5BC8: .word ov36_021E5C14
-	thumb_func_end ov53_021E5B48
+	thumb_func_end ov53_OakSpeech_OvyExit
 
 	thumb_func_start ov53_021E5BCC
 ov53_021E5BCC: ; 0x021E5BCC
@@ -1126,7 +1128,7 @@ _021E6240:
 	and r0, r2
 	cmp r0, #1
 	bne _021E6260
-	ldr r0, _021E6288 ; =0x000005DC
+	ldr r0, _021E6288 ; =SEQ_SE_DP_SELECT
 	add r1, #0x68
 	str r4, [r5, r1]
 	bl PlaySE
@@ -1152,7 +1154,7 @@ _021E6274:
 _021E627C: .word ov53_021E8500
 _021E6280: .word 0x000003E2
 _021E6284: .word gMain
-_021E6288: .word 0x000005DC
+_021E6288: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov53_021E611C
 
 	thumb_func_start ov53_021E628C
@@ -1385,7 +1387,7 @@ _021E644A:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	str r1, [r4, r0]
-	ldr r0, _021E64B0 ; =0x000005DC
+	ldr r0, _021E64B0 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x42
 	mov r1, #4
@@ -1426,7 +1428,7 @@ _021E64A0: .word 0x00010200
 _021E64A4: .word 0x000F0200
 _021E64A8: .word gMain
 _021E64AC: .word gMain + 0x40
-_021E64B0: .word 0x000005DC
+_021E64B0: .word SEQ_SE_DP_SELECT
 	thumb_func_end ov53_021E628C
 
 	thumb_func_start ov53_021E64B4
@@ -2122,7 +2124,7 @@ _021E69E0:
 	mov r1, #2
 	sub r0, r0, #1
 	strb r1, [r5, r0]
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6A22:
@@ -2135,7 +2137,7 @@ _021E6A22:
 	mov r0, #0xc3
 	tst r0, r1
 	beq _021E6B30
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2174,7 +2176,7 @@ _021E6A52:
 	add r3, r4, r3
 	ldr r3, [r6, r3]
 	bl ScheduleSetBgPosText
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6A90:
@@ -2210,7 +2212,7 @@ _021E6A90:
 	mov r1, #5
 	mov r2, #3
 	bl ScheduleSetBgPosText
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6ADA:
@@ -2222,7 +2224,7 @@ _021E6ADA:
 	mov r0, #2
 	add r3, #0xe5
 	strb r0, [r5, r3]
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6B30
 _021E6AF2:
@@ -2253,7 +2255,7 @@ _021E6AF2:
 	mov r1, #5
 	mov r2, #3
 	bl ScheduleSetBgPosText
-	ldr r0, _021E6B94 ; =0x000005DC
+	ldr r0, _021E6B94 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021E6B30:
 	ldr r0, _021E6B84 ; =0x00000166
@@ -2301,7 +2303,7 @@ _021E6B84: .word 0x00000166
 _021E6B88: .word gMain + 0x40
 _021E6B8C: .word 0x00000163
 _021E6B90: .word ov53_021E8604
-_021E6B94: .word 0x000005DC
+_021E6B94: .word SEQ_SE_DP_SELECT
 _021E6B98: .word gMain
 	thumb_func_end ov53_021E6988
 
@@ -2515,7 +2517,7 @@ _021E6CEE:
 	strb r2, [r5, r0]
 	add r0, r5, #0
 	bl ov53_021E6BEC
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0x5f
 	lsl r0, r0, #2
@@ -2532,7 +2534,7 @@ _021E6D38:
 	mov r0, #0x31
 	tst r0, r1
 	beq _021E6DD0
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _021E6DE8 ; =0x00000162
 	mov r1, #1
@@ -2555,7 +2557,7 @@ _021E6D5E:
 	beq _021E6DD0
 	sub r1, r1, #1
 	strb r1, [r5, r0]
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6DD0
 _021E6D84:
@@ -2571,7 +2573,7 @@ _021E6D84:
 	beq _021E6DD0
 	add r1, r2, #1
 	strb r1, [r5, r0]
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E6DD0
 _021E6DA4:
@@ -2588,7 +2590,7 @@ _021E6DA4:
 	strb r2, [r5, r0]
 	add r0, r5, #0
 	bl ov53_021E6BEC
-	ldr r0, _021E6DE4 ; =0x000005DC
+	ldr r0, _021E6DE4 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _021E6DE0 ; =0x00000163
 	mov r4, #1
@@ -2603,7 +2605,7 @@ _021E6DD0:
 _021E6DD8: .word ov53_021E8530
 _021E6DDC: .word gMain + 0x40
 _021E6DE0: .word 0x00000163
-_021E6DE4: .word 0x000005DC
+_021E6DE4: .word SEQ_SE_DP_SELECT
 _021E6DE8: .word 0x00000162
 _021E6DEC: .word gMain
 	thumb_func_end ov53_021E6CE0
@@ -2988,16 +2990,16 @@ _021E70B8:
 	mov r0, #6
 	add r1, r5, #0
 	bl ToggleBgLayer
-	mov r1, #0x3f
+	mov r1, #SEQ_GS_POKEMON_THEME>>4
 	mov r0, #2
 	lsl r1, r1, #4
 	mov r2, #1
 	bl sub_02004EC4
-	mov r0, #0x3f
+	mov r0, #SEQ_GS_POKEMON_THEME>>4
 	lsl r0, r0, #4
 	add r1, r5, #0
-	bl sub_02005EB4
-	ldr r0, _021E7408 ; =0x000003F1
+	bl StopBGM
+	ldr r0, _021E7408 ; =SEQ_GS_STARTING
 	bl PlayBGM
 	mov r0, #7
 	str r0, [r4, #0xc]
@@ -3354,7 +3356,7 @@ _021E7400:
 	str r0, [r4, #0xc]
 	bl _021E7CF8
 	.balign 4, 0
-_021E7408: .word 0x000003F1
+_021E7408: .word SEQ_GS_STARTING
 _021E740C: .word 0x00000162
 _021E7410: .word 0x00000163
 _021E7414:
@@ -3600,10 +3602,10 @@ _021E762A:
 	bl GF_SndGetFadeTimer
 	cmp r0, #0
 	bne _021E76A0
-	ldr r0, _021E7938 ; =0x000003F1
+	ldr r0, _021E7938 ; =SEQ_GS_STARTING
 	add r1, r5, #0
-	bl sub_02005EB4
-	ldr r0, _021E793C ; =0x000003F2
+	bl StopBGM
+	ldr r0, _021E793C ; =SEQ_GS_STARTING2
 	bl PlayBGM
 	add r0, r4, #0
 	mov r1, #1
@@ -3698,7 +3700,7 @@ _021E76DE:
 	mov r2, #0x10
 	mov r3, #0x1d
 	bl sub_0200B484
-	ldr r0, _021E7940 ; =0x00000706
+	ldr r0, _021E7940 ; =SEQ_SE_DP_BOWA2
 	bl PlaySE
 	mov r0, #5
 	add r1, r5, #0
@@ -3761,7 +3763,7 @@ _021E775E:
 	ldr r0, [r0]
 	mov r1, #2
 	bl sub_020248F0
-	mov r0, #0xb7
+	mov r0, #SPECIES_MARILL
 	add r1, r5, #0
 	bl PlayCry
 	mov r0, #0x37
@@ -3966,9 +3968,9 @@ _021E7920:
 	str r0, [r4, #0xc]
 	b _021E7CF8
 	nop
-_021E7938: .word 0x000003F1
-_021E793C: .word 0x000003F2
-_021E7940: .word 0x00000706
+_021E7938: .word SEQ_GS_STARTING
+_021E793C: .word SEQ_GS_STARTING2
+_021E7940: .word SEQ_SE_DP_BOWA2
 _021E7944: .word 0x04000050
 _021E7948: .word 0x00000163
 _021E794C:
@@ -4403,7 +4405,7 @@ _021E7CD8:
 	bl ov53_021E60CC
 	cmp r0, #1
 	bne _021E7CF8
-	ldr r0, _021E7D00 ; =0x00000918
+	ldr r0, _021E7D00 ; =SEQ_SE_GS_HERO_SHUKUSHOU
 	bl PlaySE
 	mov r0, #0x7e
 	str r0, [r4, #0xc]
@@ -4418,7 +4420,7 @@ _021E7CF8:
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
-_021E7D00: .word 0x00000918
+_021E7D00: .word SEQ_SE_GS_HERO_SHUKUSHOU
 	thumb_func_end ov53_021E6F9C
 
 	thumb_func_start ov53_021E7D04
@@ -5303,7 +5305,7 @@ ov53_021E83D4: ; 0x021E83D4
 	sub r0, r4, #1
 	cmp r6, r0
 	beq _021E841E
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	cmp r6, #0
 	beq _021E83F8
@@ -5349,7 +5351,7 @@ _021E841E:
 	strb r0, [r5, #0x1b]
 	add r0, r5, #0
 	bl ov53_021E8390
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E84AA
 _021E844A:
@@ -5368,7 +5370,7 @@ _021E844A:
 	strb r0, [r5, #0x1b]
 	add r0, r5, #0
 	bl ov53_021E8390
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	b _021E84AA
 _021E8472:
@@ -5409,14 +5411,14 @@ _021E84AA:
 	ldr r0, [r5, #0x10]
 	mov r1, #3
 	bl sub_020248F0
-	ldr r0, _021E84CC ; =0x000005DC
+	ldr r0, _021E84CC ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021E84C2:
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
 _021E84C8: .word ov53_021E887C
-_021E84CC: .word 0x000005DC
+_021E84CC: .word SEQ_SE_DP_SELECT
 _021E84D0: .word gMain
 	thumb_func_end ov53_021E83D4
 

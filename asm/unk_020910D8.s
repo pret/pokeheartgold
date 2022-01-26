@@ -1819,7 +1819,7 @@ _02091D40:
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	add r1, r6, #0
-	bl sub_02005EB4
+	bl StopBGM
 	add r0, r6, #0
 	bl sub_02005AF8
 	add r0, r6, #0
@@ -13707,7 +13707,7 @@ _02097938:
 _0209793E:
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	add r0, r5, #0
 	bl sub_0205525C
 	mov r0, #2
@@ -13945,7 +13945,7 @@ _02097B08:
 _02097B0E:
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	add r0, r5, #0
 	bl sub_0205525C
 	mov r0, #2
@@ -14631,7 +14631,7 @@ _02106060:
 
 	.public _02106068
 _02106068:
-	.word ov53_021E5900, ov53_021E5994, ov53_021E5B48, SDK_OVERLAY_OVY_53_ID
+	.word ov53_OakSpeech_OvyInit, ov53_OakSpeech_OvyExec, ov53_OakSpeech_OvyExit, SDK_OVERLAY_OVY_53_ID
 
 _02106078:
 	.word sub_020576C0, sub_02057798, 0

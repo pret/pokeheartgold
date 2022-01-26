@@ -2594,7 +2594,7 @@ _02076AA4:
 	add r0, #0x70
 	strb r1, [r0]
 	ldr r0, _02076C88 ; =0x000003F3
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, [r4, #0x30]
 	bl sub_02077664
 	add r0, r4, #0

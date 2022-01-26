@@ -332,7 +332,7 @@ _021E5BA0:
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -366,7 +366,7 @@ _021E5BD0:
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -400,7 +400,7 @@ _021E5C1C:
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1

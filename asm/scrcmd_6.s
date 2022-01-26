@@ -39,7 +39,7 @@ ScrCmd_081: ; 0x02049144
 	bl ScriptReadHalfword
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_081

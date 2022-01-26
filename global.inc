@@ -14525,7 +14525,7 @@
 .public ov35_02259DB8
 .public ov36_021E5900
 .public ov36_021E5918
-.public ov36_021E592C
+.public ov36_TitleScreen_SwitchToNewGame
 .public ov36_021E5948
 .public ov36_021E5960
 .public ov36_021E5980
@@ -18722,9 +18722,9 @@
 .public ov52_021E9364
 .public ov52_021E9424
 .public ov52_021E9488
-.public ov53_021E5900
-.public ov53_021E5994
-.public ov53_021E5B48
+.public ov53_OakSpeech_OvyInit
+.public ov53_OakSpeech_OvyExec
+.public ov53_OakSpeech_OvyExit
 .public ov53_021E5BCC
 .public ov53_021E5BDC
 .public ov53_021E5DE0
@@ -20902,7 +20902,7 @@
 .public ov74_02227DD4
 .public ov74_02227E10
 .public ov74_02227E64
-.public ov74_02227E94
+.public ov74_MainMenu_PrintContinueButton
 .public ov74_02228040
 .public ov74_022280B4
 .public ov74_02228160
@@ -26234,7 +26234,7 @@
 .public sub_02005D00
 .public sub_02005D10
 .public sub_02005E44
-.public sub_02005EB4
+.public StopBGM
 .public sub_02005F94
 .public sub_02005FA0
 .public sub_02005FD8

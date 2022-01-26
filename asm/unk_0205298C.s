@@ -349,7 +349,7 @@ _02052C20:
 	bne _02052CA8
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	bl sub_0200616C
 	mov r0, #0x20

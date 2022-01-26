@@ -3892,7 +3892,7 @@ sub_0203DAE4: ; 0x0203DAE4
 	bl DestroyHeap
 	ldr r0, _0203DB64 ; =0x000003F3
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	bl sub_02004AD8
 	ldr r1, [r5, #0x20]

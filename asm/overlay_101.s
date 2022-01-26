@@ -27075,7 +27075,7 @@ _021F4790:
 	bl GX_EngineBToggleLayers
 	bl sub_02004A90
 	mov r1, #6
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -27191,7 +27191,7 @@ _021F48B6:
 	bl SetBlendBrightness
 	bl sub_02004A90
 	mov r1, #6
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, [r5, #4]
 	add r0, r0, #1
 	str r0, [r5, #4]
@@ -29007,7 +29007,7 @@ ov101_021F56B4: ; 0x021F56B4
 	bl ov101_021F5048
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 _021F56E6:
 	add r0, r5, #0
 	add r0, #0x26
@@ -30245,7 +30245,7 @@ _021F6006:
 	bl ov101_021F6114
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldrb r1, [r4, #7]
 	add r0, r5, #0
 	bl ov101_021F5EF4
@@ -30355,7 +30355,7 @@ _021F60E0:
 	strb r0, [r5]
 	bl sub_02004A90
 	mov r1, #0x1e
-	bl sub_02005EB4
+	bl StopBGM
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
 	strb r0, [r4, #8]
@@ -30419,7 +30419,7 @@ ov101_021F6148: ; 0x021F6148
 	bl ov101_021F61A4
 	bl sub_02004A90
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F617C ; =SEQ_GS_HUE
 	bl SndRadio_StartSeq
 	mov r0, #0
@@ -30496,7 +30496,7 @@ ov101_021F61D8: ; 0x021F61D8
 	bl ov101_021F6234
 	bl sub_02004A90
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F620C ; =SEQ_GS_RADIO_UNKNOWN
 	bl SndRadio_StartSeq
 	mov r0, #0
@@ -30573,7 +30573,7 @@ ov101_021F6268: ; 0x021F6268
 	bl ov101_021F62F4
 	bl sub_02004A90
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	strb r0, [r4, #4]
 	ldr r0, _021F62A0 ; =SEQ_GS_SENKYO_R
@@ -30677,7 +30677,7 @@ ov101_021F632C: ; 0x021F632C
 	bl ov101_021F6420
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6360 ; =SEQ_GS_RADIO_VARIETY
 	bl SndRadio_StartSeq
 	mov r0, #0
@@ -31060,7 +31060,7 @@ ov101_021F6620: ; 0x021F6620
 	bl ov101_021F6710
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6654 ; =SEQ_GS_RADIO_VARIETY
 	bl SndRadio_StartSeq
 	mov r0, #0
@@ -31305,7 +31305,7 @@ ov101_021F680C: ; 0x021F680C
 	bl ov101_021F6904
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #SEQ_GS_AIKOTOBA>>4
 	lsl r0, r0, #4
 	bl SndRadio_StartSeq
@@ -31509,7 +31509,7 @@ ov101_021F69A8: ; 0x021F69A8
 	bl ov101_021F6AAC
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F69DC ; =SEQ_GS_RADIO_PT
 	bl SndRadio_StartSeq
 	mov r0, #0
@@ -31774,7 +31774,7 @@ ov101_021F6BAC: ; 0x021F6BAC
 	bl ov101_021F6CB0
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6BE0 ; =SEQ_GS_RADIO_TRAINER
 	bl SndRadio_StartSeq
 	mov r0, #0
@@ -31990,7 +31990,7 @@ ov101_021F6D3C: ; 0x021F6D3C
 	bl RadioShow_PokemonTalk_init
 	bl sub_02004A90
 	mov r1, #0
-	bl sub_02005EB4
+	bl StopBGM
 	ldr r0, _021F6D74 ; =SEQ_GS_OHKIDO_RABO
 	bl SndRadio_StartSeq
 	mov r0, #0
@@ -32698,7 +32698,7 @@ ov101_021F72C4: ; 0x021F72C4
 	bl ov101_021F7324
 	bl sub_02004A90
 	mov r1, #1
-	bl sub_02005EB4
+	bl StopBGM
 	mov r0, #0
 	strb r0, [r4, #4]
 	ldr r0, _021F72FC ; =SEQ_GS_KAIDENPA

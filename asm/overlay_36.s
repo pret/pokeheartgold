@@ -31,8 +31,8 @@ ov36_021E5918: ; 0x021E5918
 
 	.public _02106068
 
-	thumb_func_start ov36_021E592C
-ov36_021E592C: ; 0x021E592C
+	thumb_func_start ov36_TitleScreen_SwitchToNewGame
+ov36_TitleScreen_SwitchToNewGame: ; 0x021E592C
 	push {r3, lr}
 	mov r0, #0x4b
 	bl DestroyHeap
@@ -44,7 +44,7 @@ ov36_021E592C: ; 0x021E592C
 	pop {r3, pc}
 	nop
 _021E5944: .word _02106068
-	thumb_func_end ov36_021E592C
+	thumb_func_end ov36_TitleScreen_SwitchToNewGame
 
 	thumb_func_start ov36_021E5948
 ov36_021E5948: ; 0x021E5948
@@ -371,6 +371,6 @@ ov36_021E5C14:
 	.word ov36_021E5948, ov36_021E5960, ov36_021E5980, 0xFFFFFFFF
 	.public ov36_021E5C24
 ov36_021E5C24:
-	.word ov36_021E5900, ov36_021E5918, ov36_021E592C, 0xFFFFFFFF
+	.word ov36_021E5900, ov36_021E5918, ov36_TitleScreen_SwitchToNewGame, 0xFFFFFFFF
 ov36_021E5C34:
 	.byte 0x02, 0x04, 0x07, 0x08, 0x52, 0x00, 0x18, 0x00, 0x03, 0x01, 0x0A, 0xFF, 0x07, 0x00, 0x00, 0x00
