@@ -122,7 +122,7 @@ _020FCCE8:
 	.word 0x0000000F
 
 _020FCCF8:
-	.word 0
+	.word 0x00000000
 	.word 0x00000001
 	.word 0x00000002
 	.word 0x00000003

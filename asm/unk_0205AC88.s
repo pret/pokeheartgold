@@ -452,7 +452,7 @@ _0205AFC8: ; jump table
 	.short _0205B0A6 - _0205AFC8 - 2 ; case 4
 _0205AFD2:
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205B0AA
 	ldrb r0, [r4, #0xc]
@@ -467,7 +467,7 @@ _0205AFD2:
 	b _0205B0AA
 _0205AFF2:
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205B0AA
 	ldrb r0, [r4, #0xc]
@@ -482,7 +482,7 @@ _0205AFF2:
 	b _0205B0AA
 _0205B012:
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0205F6E0
@@ -511,7 +511,7 @@ _0205B048:
 	b _0205B0AA
 _0205B052:
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205B0AA
 	add r0, r6, #0
@@ -529,11 +529,11 @@ _0205B072:
 	b _0205B0AA
 _0205B07A:
 	add r0, r5, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205B0AA
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r0, #4
 	strb r0, [r4, #0xd]
 	mov r0, #0
@@ -675,7 +675,7 @@ _0205B16C:
 	bl MapObject_ForceSetFacingDirection
 	add r0, r4, #0
 	mov r1, #0x44
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F690
@@ -717,7 +717,7 @@ sub_0205B1E4: ; 0x0205B1E4
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x43
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_0205F6E0
@@ -804,7 +804,7 @@ sub_0205B27C: ; 0x0205B27C
 	bl GF_AssertFail
 _0205B290:
 	add r0, r4, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205B336
 	bl sub_02037FCC
@@ -835,7 +835,7 @@ _0205B2C4:
 	bl MapObject_ForceSetFacingDirection
 	add r0, r4, #0
 	mov r1, #0x44
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F690

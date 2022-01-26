@@ -28913,11 +28913,11 @@
 .public sub_020611C8
 .public sub_020611F4
 .public sub_0206121C
-.public sub_02062108
-.public sub_0206214C
-.public sub_02062198
-.public sub_020621C0
-.public sub_020621F0
+.public MapObject_AreBitsSetForMovementScriptInit
+.public MapObject_SetHeldMovement
+.public MapObject_IsHeldMovementActive
+.public MapObject_ClearHeldMovementIfActive
+.public MapObject_ClearHeldMovement
 .public EventObjectMovementMan_Create
 .public EventObjectMovementMan_IsFinish
 .public sub_0206226C
@@ -30088,7 +30088,7 @@
 .public sub_0205CA90
 .public sub_0205CAE8
 .public sub_0205CAF4
-.public sub_0206217C
+.public MapObject_ForceSetHeldMovement
 .public sub_02062428
 .public sub_0206642C
 .public sub_02066438

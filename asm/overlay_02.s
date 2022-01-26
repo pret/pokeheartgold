@@ -17767,11 +17767,11 @@ _0224E120:
 	str r0, [r4]
 _0224E130:
 	ldr r0, [r4, #4]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _0224E21E
 	ldr r0, [r4, #8]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _0224E21E
 	add r0, r6, #0
@@ -17805,23 +17805,23 @@ _0224E156:
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	add r1, r6, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add r0, r6, #0
 	bl ov02_0224E2D4
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0224E21E
 _0224E1AA:
 	ldr r0, [r4, #4]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _0224E21E
 	ldr r0, [r4, #8]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _0224E21E
 	ldr r0, [r4]
@@ -17836,31 +17836,31 @@ _0224E1C6:
 	bl ov02_0224E2A0
 	add r1, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4, #0x14]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl ov02_0224E26C
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0224E21E
 _0224E1F6:
 	ldr r0, [r4, #4]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _0224E21E
 	ldr r0, [r4, #8]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _0224E21E
 	ldr r0, [r4, #4]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldr r0, [r4, #8]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r4, #0
 	mov r5, #1
 	bl FreeToHeap
@@ -22922,7 +22922,7 @@ _0225081E:
 _0225082E:
 	add r0, r6, #0
 	bl FollowingPokemon_GetMapObject
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _022508AA
 	add r6, #0xe4
@@ -26306,7 +26306,7 @@ ov02_02252334: ; 0x02252334
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	bne _0225234A
 	mov r0, #0

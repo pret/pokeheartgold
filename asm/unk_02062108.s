@@ -20,8 +20,8 @@ _0210FACC:
 
 	.text
 
-	thumb_func_start sub_02062108
-sub_02062108: ; 0x02062108
+	thumb_func_start MapObject_AreBitsSetForMovementScriptInit
+MapObject_AreBitsSetForMovementScriptInit: ; 0x02062108
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
@@ -55,10 +55,10 @@ _02062146:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062108
+	thumb_func_end MapObject_AreBitsSetForMovementScriptInit
 
-	thumb_func_start sub_0206214C
-sub_0206214C: ; 0x0206214C
+	thumb_func_start MapObject_SetHeldMovement
+MapObject_SetHeldMovement: ; 0x0206214C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -79,10 +79,10 @@ _0206215A:
 	mov r1, #0x20
 	bl MapObject_ClearBits
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0206214C
+	thumb_func_end MapObject_SetHeldMovement
 
-	thumb_func_start sub_0206217C
-sub_0206217C: ; 0x0206217C
+	thumb_func_start MapObject_ForceSetHeldMovement
+MapObject_ForceSetHeldMovement: ; 0x0206217C
 	push {r4, lr}
 	add r4, r0, #0
 	bl MapObject_SetMovementCommand
@@ -94,10 +94,10 @@ sub_0206217C: ; 0x0206217C
 	bl MapObject_ClearBits
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206217C
+	thumb_func_end MapObject_ForceSetHeldMovement
 
-	thumb_func_start sub_02062198
-sub_02062198: ; 0x02062198
+	thumb_func_start MapObject_IsHeldMovementActive
+MapObject_IsHeldMovementActive: ; 0x02062198
 	push {r4, lr}
 	mov r1, #0x10
 	add r4, r0, #0
@@ -118,10 +118,10 @@ _020621BA:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02062198
+	thumb_func_end MapObject_IsHeldMovementActive
 
-	thumb_func_start sub_020621C0
-sub_020621C0: ; 0x020621C0
+	thumb_func_start MapObject_ClearHeldMovementIfActive
+MapObject_ClearHeldMovementIfActive: ; 0x020621C0
 	push {r4, lr}
 	mov r1, #0x10
 	add r4, r0, #0
@@ -145,10 +145,10 @@ _020621E2:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020621C0
+	thumb_func_end MapObject_ClearHeldMovementIfActive
 
-	thumb_func_start sub_020621F0
-sub_020621F0: ; 0x020621F0
+	thumb_func_start MapObject_ClearHeldMovement
+MapObject_ClearHeldMovement: ; 0x020621F0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0x10
@@ -163,7 +163,7 @@ sub_020621F0: ; 0x020621F0
 	mov r1, #0
 	bl MapObject_SetMovementStep
 	pop {r4, pc}
-	thumb_func_end sub_020621F0
+	thumb_func_end MapObject_ClearHeldMovement
 
 	thumb_func_start EventObjectMovementMan_Create
 EventObjectMovementMan_Create: ; 0x02062214
@@ -189,7 +189,7 @@ _02062230:
 	bl sub_0205F35C
 	bl sub_0205F19C
 	sub r2, r0, #1
-	ldr r0, _0206225C ; =sub_0206229C
+	ldr r0, _0206225C ; =MovementScriptMachine
 	add r1, r4, #0
 	bl sub_0200E320
 	add r7, r0, #0
@@ -201,7 +201,7 @@ _02062254:
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0206225C: .word sub_0206229C
+_0206225C: .word MovementScriptMachine
 	thumb_func_end EventObjectMovementMan_Create
 
 	thumb_func_start EventObjectMovementMan_IsFinish
@@ -220,13 +220,13 @@ sub_0206226C: ; 0x0206226C
 	bl sub_0201F988
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #1
 	beq _02062284
 	bl GF_AssertFail
 _02062284:
 	ldr r0, [r4, #0xc]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r0, #4
 	add r1, r4, #0
 	bl FreeToHeapExplicit
@@ -236,10 +236,10 @@ _02062284:
 	.balign 4, 0
 	thumb_func_end sub_0206226C
 
-	thumb_func_start sub_0206229C
-sub_0206229C: ; 0x0206229C
+	thumb_func_start MovementScriptMachine
+MovementScriptMachine: ; 0x0206229C
 	push {r3, r4, r5, lr}
-	ldr r4, _020622B4 ; =_020FDA38
+	ldr r4, _020622B4 ; =sMovementScriptMachineStateFuncs
 	add r5, r1, #0
 _020622A2:
 	ldr r1, [r5]
@@ -251,25 +251,25 @@ _020622A2:
 	beq _020622A2
 	pop {r3, r4, r5, pc}
 	nop
-_020622B4: .word _020FDA38
-	thumb_func_end sub_0206229C
+_020622B4: .word sMovementScriptMachineStateFuncs
+	thumb_func_end MovementScriptMachine
 
-	thumb_func_start sub_020622B8
-sub_020622B8: ; 0x020622B8
+	thumb_func_start MovementScriptMachineSub_Init
+MovementScriptMachineSub_Init: ; 0x020622B8
 	mov r1, #0
 	str r1, [r0, #8]
 	mov r1, #1
 	str r1, [r0]
 	add r0, r1, #0
 	bx lr
-	thumb_func_end sub_020622B8
+	thumb_func_end MovementScriptMachineSub_Init
 
-	thumb_func_start sub_020622C4
-sub_020622C4: ; 0x020622C4
+	thumb_func_start MovementScriptMachineSub_WaitReady
+MovementScriptMachineSub_WaitReady: ; 0x020622C4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	bne _020622D6
 	mov r0, #0
@@ -280,29 +280,29 @@ _020622D6:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020622C4
+	thumb_func_end MovementScriptMachineSub_WaitReady
 
-	thumb_func_start sub_020622E0
-sub_020622E0: ; 0x020622E0
+	thumb_func_start MovementScriptMachineSub_SetMovementCommand
+MovementScriptMachineSub_SetMovementCommand: ; 0x020622E0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r1, [r4, #0x10]
 	ldr r0, [r4, #0xc]
 	ldrh r1, [r1]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #3
 	str r0, [r4]
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020622E0
+	thumb_func_end MovementScriptMachineSub_SetMovementCommand
 
-	thumb_func_start sub_020622F8
-sub_020622F8: ; 0x020622F8
+	thumb_func_start MovementScriptMachineSub_WaitMovementCommand
+MovementScriptMachineSub_WaitMovementCommand: ; 0x020622F8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	bne _0206230A
 	mov r0, #0
@@ -313,10 +313,10 @@ _0206230A:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020622F8
+	thumb_func_end MovementScriptMachineSub_WaitMovementCommand
 
-	thumb_func_start sub_02062314
-sub_02062314: ; 0x02062314
+	thumb_func_start MovementScriptMachineSub_LoopCheck
+MovementScriptMachineSub_LoopCheck: ; 0x02062314
 	ldr r1, [r0, #8]
 	ldr r3, [r0, #0x10]
 	add r2, r1, #1
@@ -332,7 +332,7 @@ _0206232A:
 	add r1, r3, #4
 	str r1, [r0, #0x10]
 	ldrh r1, [r3, #4]
-	cmp r1, #0xfe
+	cmp r1, #0xfe ; step_end
 	beq _0206233C
 	mov r1, #0
 	str r1, [r0]
@@ -345,13 +345,13 @@ _0206233C:
 	str r1, [r0]
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_02062314
+	thumb_func_end MovementScriptMachineSub_LoopCheck
 
-	thumb_func_start sub_02062348
-sub_02062348: ; 0x02062348
+	thumb_func_start MovementScriptMachineSub_Done
+MovementScriptMachineSub_Done: ; 0x02062348
 	mov r0, #0
 	bx lr
-	thumb_func_end sub_02062348
+	thumb_func_end MovementScriptMachineSub_Done
 
 	thumb_func_start sub_0206234C
 sub_0206234C: ; 0x0206234C
@@ -2661,13 +2661,13 @@ _020FDA1C:
 _020FDA28:
 	.byte 0x08, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
-_020FDA38:
-	.word sub_020622B8
-	.word sub_020622C4
-	.word sub_020622E0
-	.word sub_020622F8
-	.word sub_02062314
-	.word sub_02062348
+sMovementScriptMachineStateFuncs:
+	.word MovementScriptMachineSub_Init
+	.word MovementScriptMachineSub_WaitReady
+	.word MovementScriptMachineSub_SetMovementCommand
+	.word MovementScriptMachineSub_WaitMovementCommand
+	.word MovementScriptMachineSub_LoopCheck
+	.word MovementScriptMachineSub_Done
 _020FDA50:
 	.byte 0x00, 0x20, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00
 	.byte 0x00, 0x30, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00

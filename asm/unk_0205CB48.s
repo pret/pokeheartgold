@@ -102,7 +102,7 @@ sub_0205CBEC: ; 0x0205CBEC
 	add r4, r1, #0
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205CC04
 	mov r0, #1
@@ -425,7 +425,7 @@ sub_0205CE68: ; 0x0205CE68
 	pop {r3, r4, r5, r6, r7, pc}
 _0205CEA6:
 	add r0, r7, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	bne _0205CEF2
 	cmp r6, #0
@@ -462,7 +462,7 @@ _0205CEE8:
 	pop {r3, r4, r5, r6, r7, pc}
 _0205CEF2:
 	add r0, r7, #0
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #1
 	bne _0205CF40
 	cmp r6, #0
@@ -550,7 +550,7 @@ _0205CF90:
 	add r0, r5, #0
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205CFA4
 	mov r0, #1
@@ -590,13 +590,13 @@ sub_0205CFBC: ; 0x0205CFBC
 	add r0, r4, #0
 	bl sub_02060F78
 	add r0, r4, #0
-	bl sub_020621F0
+	bl MapObject_ClearHeldMovement
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0205CFBC
 
@@ -1911,7 +1911,7 @@ sub_0205DA1C: ; 0x0205DA1C
 	bl sub_0205C79C
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0205DA1C
@@ -2452,7 +2452,7 @@ sub_0205DE38: ; 0x0205DE38
 	push {r4, lr}
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #1
 	bne _0205DE4C
 	mov r0, #1
@@ -2682,7 +2682,7 @@ _0205DFBE:
 sub_0205DFC8: ; 0x0205DFC8
 	push {r3, lr}
 	bl PlayerAvatar_GetMapObject
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	pop {r3, pc}
 	thumb_func_end sub_0205DFC8
 

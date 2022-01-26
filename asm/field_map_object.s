@@ -1007,7 +1007,7 @@ sub_0205E8EC: ; 0x0205E8EC
 	add r0, r4, #0
 	bl sub_0205ECE0
 	add r0, r4, #0
-	bl sub_020621F0
+	bl MapObject_ClearHeldMovement
 	add r0, r4, #0
 	bl sub_0205EFB4
 	add r0, r5, #0
@@ -1452,7 +1452,7 @@ _0205ECAE:
 	add r0, r5, #0
 	bl MapObject_SetNextFacing
 	add r0, r5, #0
-	bl sub_020621F0
+	bl MapObject_ClearHeldMovement
 	pop {r3, r4, r5, pc}
 	nop
 _0205ECDC: .word 0x00001801
@@ -4260,7 +4260,7 @@ sub_0205FBC0: ; 0x0205FBC0
 	add r1, r6, #0
 	bl MapObject_ForceSetFacingDirection
 	add r0, r5, #0
-	bl sub_020621F0
+	bl MapObject_ClearHeldMovement
 	add r0, r5, #0
 	mov r1, #4
 	bl MapObject_SetBits
@@ -4312,7 +4312,7 @@ sub_0205FC2C: ; 0x0205FC2C
 	mov r1, #0xa
 	bl MapObject_ClearBits
 	add r0, r5, #0
-	bl sub_020621F0
+	bl MapObject_ClearHeldMovement
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

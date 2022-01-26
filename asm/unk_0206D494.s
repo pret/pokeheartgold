@@ -75,7 +75,7 @@ _0206D510: ; jump table
 _0206D518:
 	ldr r0, [r6, #0x3c]
 	bl sub_0205C600
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _0206D586
 	ldr r0, _0206D58C ; =0x00000906
@@ -98,7 +98,7 @@ _0206D534:
 	b _0206D586
 _0206D54E:
 	ldr r0, [r5]
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _0206D586
 	ldr r0, [r5, #4]
@@ -109,7 +109,7 @@ _0206D54E:
 	str r0, [r4]
 	b _0206D586
 _0206D566:
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _0206D586
 	ldr r0, [r4]
@@ -265,7 +265,7 @@ sub_0206D688: ; 0x0206D688
 	b _0206D7A8
 _0206D69E:
 	ldr r0, [r5]
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _0206D7A8
 	ldr r0, [r5]
@@ -313,7 +313,7 @@ _0206D704:
 	str r4, [r5, #4]
 	ldr r0, [r5]
 	mov r1, #0x48
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #2
 	strb r0, [r5, #9]
 	b _0206D7A8
@@ -322,7 +322,7 @@ _0206D71E:
 	str r0, [r5, #4]
 	ldr r0, [r5]
 	mov r1, #0x48
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #2
 	strb r0, [r5, #9]
 	b _0206D7A8
@@ -340,13 +340,13 @@ _0206D73C:
 _0206D742:
 	ldr r0, [r5]
 	mov r1, #0x47
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	mov r0, #1
 	strb r0, [r5, #9]
 	b _0206D7A8
 _0206D750:
 	ldr r0, [r5]
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _0206D7A8
 	ldrb r0, [r5, #8]
@@ -355,7 +355,7 @@ _0206D750:
 	cmp r1, #0xff
 	beq _0206D76E
 	ldr r0, [r5]
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _0206D778
 _0206D76E:
 	bl GF_AssertFail
@@ -368,7 +368,7 @@ _0206D778:
 	b _0206D7A8
 _0206D77E:
 	ldr r0, [r5]
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _0206D7A8
 	ldr r0, _0206D7B4 ; =0x00000907
@@ -377,11 +377,11 @@ _0206D77E:
 	cmp r0, #0
 	beq _0206D79A
 	mov r1, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 _0206D79A:
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	add sp, #8
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}

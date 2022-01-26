@@ -102,14 +102,14 @@ _02056724:
 	bne _02056746
 	add r0, r6, #0
 	mov r1, #0xa
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _02056758
 _02056746:
 	cmp r0, #3
 	bne _02056754
 	add r0, r6, #0
 	mov r1, #0xb
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _02056758
 _02056754:
 	bl GF_AssertFail
@@ -122,11 +122,11 @@ _02056760:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #1
 	bne _020567AE
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	add r0, r5, #0
 	bl sub_02069F88
 	cmp r0, #0
@@ -291,12 +291,12 @@ _020568BE:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056932
 	add r0, r5, #0
 	mov r1, #0xc
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -304,7 +304,7 @@ _020568BE:
 _020568DE:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056932
 	bl sub_0200FB5C
@@ -423,12 +423,12 @@ _020569DA:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056A4E
 	add r0, r5, #0
 	mov r1, #0xd
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -436,7 +436,7 @@ _020569DA:
 _020569FA:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056A4E
 	bl sub_0200FB5C
@@ -693,7 +693,7 @@ sub_02056BC8: ; 0x02056BC8
 	add r0, sp, #0x18
 	bl sub_02023514
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
@@ -759,7 +759,7 @@ sub_02056C64: ; 0x02056C64
 	add r0, sp, #0x18
 	bl sub_02023514
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8

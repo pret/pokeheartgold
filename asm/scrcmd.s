@@ -3762,7 +3762,7 @@ sub_02041D98: ; 0x02041D98
 	mov r1, #1
 	tst r1, r2
 	beq _02041DD2
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #1
 	bne _02041DD2
 	add r0, r6, #0
@@ -3889,7 +3889,7 @@ ScrCmd_581: ; 0x02041E84
 	strb r2, [r1]
 	bl sub_0205F574
 	ldr r0, [sp, #4]
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	bne _02041ED8
 	ldr r1, _02041F48 ; =_021D415C
@@ -13928,7 +13928,7 @@ sub_02046D40: ; 0x02046D40
 	add r0, #0x80
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _02046D56
 	mov r0, #1

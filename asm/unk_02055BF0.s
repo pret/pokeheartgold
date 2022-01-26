@@ -731,7 +731,7 @@ _0205616A:
 	beq _020561A0
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #0
 	beq _02056218
 	add r0, r5, #0
@@ -756,13 +756,13 @@ _020561A8:
 	cmp r6, #2
 	bne _020561C2
 	mov r1, #0xa
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _020561D2
 _020561C2:
 	cmp r6, #3
 	bne _020561CE
 	mov r1, #0xb
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	b _020561D2
 _020561CE:
 	bl GF_AssertFail
@@ -775,11 +775,11 @@ _020561DA:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062198
+	bl MapObject_IsHeldMovementActive
 	cmp r0, #1
 	bne _02056218
 	add r0, r5, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -910,7 +910,7 @@ _020562E0:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
 	str r0, [sp]
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
@@ -1089,12 +1089,12 @@ _02056454:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056524
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0206214C
+	bl MapObject_SetHeldMovement
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -1103,11 +1103,11 @@ _02056474:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_02062108
+	bl MapObject_AreBitsSetForMovementScriptInit
 	cmp r0, #0
 	beq _02056524
 	add r0, r6, #0
-	bl sub_020621C0
+	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
 	ldr r0, [r5, #0x40]
 	lsl r1, r1, #8

@@ -278,7 +278,7 @@ _02061420:
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0206217C
+	bl MapObject_ForceSetHeldMovement
 	mov r0, #0
 	ldrsh r0, [r4, r0]
 	add r0, r0, #1
@@ -345,7 +345,7 @@ _020614BC:
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0206217C
+	bl MapObject_ForceSetHeldMovement
 	add r0, r5, #0
 	bl sub_0205F630
 	mov r0, #0
@@ -701,7 +701,7 @@ _0206173E:
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0206217C
+	bl MapObject_ForceSetHeldMovement
 	mov r0, #1
 	strb r0, [r4, #2]
 	pop {r3, r4, r5, pc}
@@ -882,7 +882,7 @@ sub_02061874: ; 0x02061874
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0206217C
+	bl MapObject_ForceSetHeldMovement
 	mov r0, #1
 	strb r0, [r4, #2]
 	pop {r3, r4, r5, pc}
@@ -1156,7 +1156,7 @@ _02061A8C:
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_0206217C
+	bl MapObject_ForceSetHeldMovement
 	add r0, r5, #0
 	bl sub_02062050
 	cmp r0, #1
@@ -1531,7 +1531,7 @@ _02061D20:
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r6, #0
-	bl sub_0206217C
+	bl MapObject_ForceSetHeldMovement
 	add r0, r6, #0
 	bl sub_02062050
 	cmp r0, #1
