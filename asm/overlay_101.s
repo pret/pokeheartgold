@@ -28027,7 +28027,7 @@ ov101_021F4F34: ; 0x021F4F34
 	lsr r1, r1, #0x18
 	str r1, [sp, #0x14]
 	ldrh r0, [r0, #2]
-	ldr r6, _021F4FC8 ; =ov101_021FB2C9
+	ldr r6, _021F4FC8 ; =ov101_021FB2C8 + 1
 	ldrb r2, [r2, r3]
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x18
@@ -28057,7 +28057,7 @@ _021F4F7A:
 	lsr r1, r1, #0x18
 	str r1, [sp, #0x14]
 	ldrh r0, [r0, #2]
-	ldr r4, _021F4FC8 ; =ov101_021FB2C9
+	ldr r4, _021F4FC8 ; =ov101_021FB2C8 + 1
 	ldrb r2, [r2, r3]
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x18
@@ -28076,7 +28076,7 @@ _021F4FB6:
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
 _021F4FC4: .word ov101_021FB2C8
-_021F4FC8: .word ov101_021FB2C9
+_021F4FC8: .word ov101_021FB2C8 + 1
 	thumb_func_end ov101_021F4F34
 
 	thumb_func_start ov101_021F4FCC
@@ -34059,10 +34059,10 @@ ov101_021FB2C0:
 	.word ov101_021F87BA
 
 ov101_021FB2C8: ; 0x021FB2C8
-	.byte 0x02
-
-ov101_021FB2C9: ; 0x021FB2C9
-	.byte 0x06, 0x1A, 0x06, 0x02, 0x0E, 0x1A, 0x0E
+	.byte  2,  6
+	.byte 26,  6
+	.byte  2, 14
+	.byte 26, 14
 
 ov101_021FB2D0: ; 0x021FB2D0
 	.word ov101_021F89B4

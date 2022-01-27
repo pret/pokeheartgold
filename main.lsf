@@ -27,6 +27,7 @@ Static main
 	Object overlay_manager.o
 	Object filesystem.o
 	Object gf_gfx_loader.o
+	Object gf_gfx_loader_s.o
 	Object unk_02007FD8.o
 	Object unk_02009D48.o
 	Object unk_0200A090.o

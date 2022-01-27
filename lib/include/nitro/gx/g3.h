@@ -1,0 +1,42 @@
+#ifndef NITRO_GX_G3_H_
+#define NITRO_GX_G3_H_
+
+typedef enum {
+    GX_TEXSIZE_S8 = 0,
+    GX_TEXSIZE_S16 = 1,
+    GX_TEXSIZE_S32 = 2,
+    GX_TEXSIZE_S64 = 3,
+    GX_TEXSIZE_S128 = 4,
+    GX_TEXSIZE_S256 = 5,
+    GX_TEXSIZE_S512 = 6,
+    GX_TEXSIZE_S1024 = 7
+} GXTexSizeS;
+
+typedef enum {
+    GX_TEXSIZE_T8 = 0,
+    GX_TEXSIZE_T16 = 1,
+    GX_TEXSIZE_T32 = 2,
+    GX_TEXSIZE_T64 = 3,
+    GX_TEXSIZE_T128 = 4,
+    GX_TEXSIZE_T256 = 5,
+    GX_TEXSIZE_T512 = 6,
+    GX_TEXSIZE_T1024 = 7
+} GXTexSizeT;
+
+typedef enum {
+    GX_TEXFMT_NONE = 0,
+    GX_TEXFMT_A3I5 = 1,
+    GX_TEXFMT_PLTT4 = 2,
+    GX_TEXFMT_PLTT16 = 3,
+    GX_TEXFMT_PLTT256 = 4,
+    GX_TEXFMT_COMP4x4 = 5,
+    GX_TEXFMT_A5I3 = 6,
+    GX_TEXFMT_DIRECT = 7
+} GXTexFmt;
+
+typedef enum {
+    GX_TEXPLTTCOLOR0_USE = 0,
+    GX_TEXPLTTCOLOR0_TRNS = 1
+} GXTexPlttColor0;
+
+#endif //NITRO_GX_G3_H_
