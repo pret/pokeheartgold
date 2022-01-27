@@ -225,12 +225,12 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202A978
+	bl Sav2_BerryPots_get
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_0202A988
+	bl Sav2_BerryPotRTC_get
 	str r0, [r5, #0x18]
 	ldr r1, [r5, #4]
 	ldrb r0, [r1, #0x14]

@@ -27268,10 +27268,10 @@
 .public Pokedex_Enable
 .public Pokedex_GetSeenFormeByIdx
 .public Pokedex_GetSeenFormeNum
-.public sub_0202A8A8
+.public Sav2_BerryPotRTC_init
 .public Sav2_FieldApricornTrees_get
-.public sub_0202A978
-.public sub_0202A988
+.public Sav2_BerryPots_get
+.public Sav2_BerryPotRTC_get
 .public Sav2_GetGymmickPtr
 .public sub_0202A9C4
 .public sub_0202A9D8

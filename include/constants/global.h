@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_CONSTANTS_GLOBAL_H
 
 #include "constants/rgb.h"
+#include "constants/charcode.h"
 
 #define OT_NAME_LENGTH           7
 #define POKEMON_NAME_LENGTH     10

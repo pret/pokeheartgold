@@ -15,6 +15,11 @@ typedef enum TimeOfDayWildParam {
     TIMEOFDAY_WILD_NITE,
 } TimeOfDayWildParam;
 
+struct GF_RTC_DateTime {
+    RTCDate date;
+    RTCTime time;
+};
+
 BOOL IsNighttime(void);
 void GF_RTC_CopyTime(RTCTime *time);
 void GF_RTC_CopyDate(RTCDate *date);

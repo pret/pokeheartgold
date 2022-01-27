@@ -134,8 +134,8 @@ _021E59E8:
 	bl Sav2_SysInfo_RTC_get
 	bl sub_02028E4C
 	add r0, r4, #0
-	bl sub_0202A988
-	bl sub_0202A8A8
+	bl Sav2_BerryPotRTC_get
+	bl Sav2_BerryPotRTC_init
 	add r0, r5, #0
 	bl Sav2_SysInfo_InitFromSystem
 	add r0, r4, #0
@@ -180,8 +180,8 @@ ov36_021E5A38: ; 0x021E5A38
 	bl Sav2_SysInfo_RTC_get
 	bl Sav2_SysInfo_RTC_init
 	add r0, r6, #0
-	bl sub_0202A988
-	bl sub_0202A8A8
+	bl Sav2_BerryPotRTC_get
+	bl Sav2_BerryPotRTC_init
 	add r0, r6, #0
 	bl sub_0202C854
 	add r4, r0, #0

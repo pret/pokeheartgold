@@ -12,7 +12,7 @@
 #define SAVE_POKEDEX              6
 #define SAVE_DAYCARE              7
 #define SAVE_UNK_8                8
-#define SAVE_UNK_9                9
+#define SAVE_MISC                 9
 #define SAVE_UNK_10              10
 #define SAVE_UNK_11              11
 #define SAVE_DRESSUP_DATA        12

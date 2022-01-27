@@ -46,4 +46,6 @@ struct Gymmick {
     };
 };
 
+void SavGymmick_Clear(struct Gymmick *gymmick);
+
 #endif //POKEHEARTGOLD_GYMMICK_H
