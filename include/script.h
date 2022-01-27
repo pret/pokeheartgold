@@ -146,8 +146,8 @@ typedef struct TaskManager {
 
 typedef struct Location {
     int mapId;
+    int warpId;
     int x;
-    int y;
     int z;
     int direction;
 } Location;

@@ -20,7 +20,7 @@
 	scrdef_end
 
 scr_seq_D32R0101_011:
-	setflag FLAG_UNK_9CB
+	setflag FLAG_SYS_FLYPOINT_UNION_CAVE
 	setvar VAR_UNK_40E5, 2
 	end
 

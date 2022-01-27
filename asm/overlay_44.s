@@ -12,7 +12,7 @@ ov44_02229EE0: ; 0x02229EE0
 	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #0x1b
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov44_02229EE0

@@ -8130,9 +8130,9 @@
 .public ov101_021F5B68
 .public ov101_021F5B94
 .public ov101_021F5C44
-.public ov101_021F5CA0
-.public ov101_021F5CDC
-.public ov101_021F5D40
+.public PrintRadioLine
+.public RadioPrintAdvance
+.public RadioPrintInit
 .public ov101_021F5DE0
 .public ov101_021F5DEC
 .public ov101_021F5E1C
@@ -28174,7 +28174,7 @@
 .public GetSpecialSpawnWarpData
 .public MapHeader_GetSpawnIdForDeathWarp
 .public sub_0203BB50
-.public sub_0203BB70
+.public FlypointFlagAction
 .public sub_0203BBB4
 .public sub_0203BC10
 .public sub_0203BC28
@@ -29116,7 +29116,7 @@
 .public sub_02066900
 .public sub_02066910
 .public sub_02066920
-.public sub_02066930
+.public ScriptState_FlypointFlagAction
 .public sub_02066950
 .public CheckGotStarter
 .public CheckGotPokegear

@@ -967,7 +967,7 @@ sub_0200508C: ; 0x0200508C
 	add r7, r0, #0
 	lsl r0, r7, #0x10
 	lsr r4, r0, #0x10
-	ldr r0, _02005144 ; =0x000004C1
+	ldr r0, _02005144 ; =SEQ_GS_P_START
 	cmp r7, r0
 	ble _020050C2
 	add r0, r4, #0
@@ -980,7 +980,7 @@ _020050C2:
 	cmp r4, r5
 	bne _020050D6
 	bl sub_02004AAC
-	ldr r1, _02005148 ; =0x000003F5
+	ldr r1, _02005148 ; =SEQ_GS_BICYCLE
 	cmp r0, r1
 	bne _02005142
 _020050D6:
@@ -1034,8 +1034,8 @@ _0200513C:
 _02005142:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02005144: .word 0x000004C1
-_02005148: .word 0x000003F5
+_02005144: .word SEQ_GS_P_START
+_02005148: .word SEQ_GS_BICYCLE
 _0200514C: .word _021D05E8
 	thumb_func_end sub_0200508C
 

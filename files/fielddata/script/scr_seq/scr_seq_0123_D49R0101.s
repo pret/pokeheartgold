@@ -32,7 +32,7 @@
 	scrdef_end
 
 scr_seq_D49R0101_023:
-	setflag FLAG_UNK_9D3
+	setflag FLAG_SYS_FLYPOINT_POKEATHLON
 	end
 	.byte 0x22, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 

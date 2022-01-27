@@ -202,8 +202,8 @@ _0203BB5E:
 _0203BB6C: .word sSpawnMaps
 	thumb_func_end sub_0203BB50
 
-	thumb_func_start sub_0203BB70
-sub_0203BB70: ; 0x0203BB70
+	thumb_func_start FlypointFlagAction
+FlypointFlagAction: ; 0x0203BB70
 	push {r3, r4, r5, lr}
 	ldr r2, _0203BBB0 ; =sSpawnMaps
 	mov r4, #0
@@ -226,7 +226,7 @@ _0203BB78:
 	ldrh r2, [r2, r3]
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	pop {r3, r4, r5, pc}
 _0203BBA2:
 	add r4, r4, #1
@@ -237,4 +237,4 @@ _0203BBA2:
 	pop {r3, r4, r5, pc}
 	nop
 _0203BBB0: .word sSpawnMaps
-	thumb_func_end sub_0203BB70
+	thumb_func_end FlypointFlagAction

@@ -233,7 +233,7 @@ sub_020517FC: ; 0x020517FC
 	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #1
 	bne _0205185C
 	mov r0, #0x56

@@ -201,7 +201,7 @@ sub_02067A88: ; 0x02067A88
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]
-	bl sub_0203BB70
+	bl FlypointFlagAction
 	ldr r0, [r5, #0xc]
 	bl Save_Roamers_get
 	mov r1, #0
@@ -249,7 +249,7 @@ sub_02067AE4: ; 0x02067AE4
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]
-	bl sub_0203BB70
+	bl FlypointFlagAction
 	ldr r0, [r5, #0xc]
 	bl Save_Roamers_get
 	mov r1, #0

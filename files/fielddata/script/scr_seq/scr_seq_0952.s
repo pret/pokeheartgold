@@ -20,7 +20,7 @@
 	scrdef_end
 
 scr_seq_0952_000:
-	setflag FLAG_UNK_9CB
+	setflag FLAG_SYS_FLYPOINT_UNION_CAVE
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 653
 _0042:

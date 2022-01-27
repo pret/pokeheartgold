@@ -1,5 +1,6 @@
 #include "constants/species.h"
 #include "constants/sndseq.h"
+#include "constants/items.h"
 #include "constants/phone_contacts.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -453,7 +454,7 @@ _021E799A:
 	ldr r0, [r5, #0x10]
 	mov r2, #0xf
 	ldr r0, [r0, #0x2c]
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	ldr r3, _021E7B4C ; =0x0000013D
 	mov r2, #1
 	ldrb r1, [r5, r3]
@@ -5881,7 +5882,7 @@ _021EA540:
 	ldrb r2, [r6, #4]
 	ldr r0, [r0, #0x2c]
 	mov r1, #2
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021EA582
 	add r0, r5, #0
@@ -6304,7 +6305,7 @@ _021EA828:
 	ldr r0, [r0, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x2c]
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021EA860
 	add r0, r7, #0
@@ -7305,7 +7306,7 @@ _021EB024:
 	ldrb r2, [r4, #4]
 	ldr r0, [r0, #0x2c]
 	mov r1, #2
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	bne _021EB08E
 	ldrb r1, [r4, #0xb]
@@ -12804,7 +12805,7 @@ ov101_021ED980: ; 0x021ED980
 	ldr r0, [r4, #0x10]
 	mov r2, #0xf
 	ldr r0, [r0, #0x2c]
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	ldr r3, _021EDAF4 ; =0x0000013D
 	mov r2, #1
 	ldrb r1, [r4, r3]
@@ -25667,7 +25668,7 @@ ov101_021F3D34: ; 0x021F3D34
 	ldr r0, [r5, #0x28]
 	mov r1, #2
 	mov r2, #0x19
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021F3D62
 	mov r1, #1
@@ -26502,7 +26503,7 @@ _021F4394:
 _021F4398:
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	cmp r0, #0
 	beq _021F43A8
 	mov r0, #0xa4
@@ -29094,12 +29095,12 @@ _021F5756:
 ov101_021F5780: ; 0x021F5780
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021F57B0 ; =ov101_021F89B5
+	ldr r0, _021F57B0 ; =ov101_021F89B4 + 1
 	lsl r1, r1, #3
 	ldrb r0, [r0, r1]
 	mov r2, #0x2a
 	strh r0, [r4, #0x28]
-	ldr r0, _021F57B4 ; =ov101_021F89B6
+	ldr r0, _021F57B4 ; =ov101_021F89B4 + 2
 	ldrb r0, [r0, r1]
 	mov r1, #0x28
 	strh r0, [r4, #0x2a]
@@ -29115,8 +29116,8 @@ ov101_021F5780: ; 0x021F5780
 	bl ov101_021F56B4
 	pop {r4, pc}
 	.balign 4, 0
-_021F57B0: .word ov101_021F89B5
-_021F57B4: .word ov101_021F89B6
+_021F57B0: .word ov101_021F89B4 + 1
+_021F57B4: .word ov101_021F89B4 + 2
 	thumb_func_end ov101_021F5780
 
 	thumb_func_start ov101_021F57B8
@@ -29468,7 +29469,7 @@ ov101_021F5A50: ; 0x021F5A50
 	mov r1, #0xc
 	add r3, r2, #0
 	mul r3, r1
-	ldr r1, _021F5A98 ; =ov101_021F8A0C
+	ldr r1, _021F5A98 ; =ov101_021F8A04 + 8
 	ldr r1, [r1, r3]
 	blx r1
 _021F5A6C:
@@ -29492,7 +29493,7 @@ _021F5A6C:
 	strb r1, [r4]
 	pop {r4, pc}
 	nop
-_021F5A98: .word ov101_021F8A0C
+_021F5A98: .word ov101_021F8A04 + 8
 	thumb_func_end ov101_021F5A50
 
 	thumb_func_start ov101_021F5A9C
@@ -29663,7 +29664,7 @@ _021F5BB6:
 	mov r1, #0xc
 	add r3, r2, #0
 	mul r3, r1
-	ldr r1, _021F5C3C ; =ov101_021F8A08
+	ldr r1, _021F5C3C ; =ov101_021F8A04 + 4
 	ldr r1, [r1, r3]
 	blx r1
 	add r4, #0x5e
@@ -29676,7 +29677,7 @@ _021F5BCE:
 	mov r1, #0xc
 	add r3, r2, #0
 	mul r3, r1
-	ldr r1, _021F5C40 ; =ov101_021F8A0C
+	ldr r1, _021F5C40 ; =ov101_021F8A04 + 8
 	ldr r1, [r1, r3]
 	blx r1
 	add r0, r4, #0
@@ -29725,8 +29726,8 @@ _021F5C14:
 _021F5C38:
 	pop {r4, pc}
 	nop
-_021F5C3C: .word ov101_021F8A08
-_021F5C40: .word ov101_021F8A0C
+_021F5C3C: .word ov101_021F8A04 + 4
+_021F5C40: .word ov101_021F8A04 + 8
 	thumb_func_end ov101_021F5B94
 
 	thumb_func_start ov101_021F5C44
@@ -29772,8 +29773,8 @@ ov101_021F5C44: ; 0x021F5C44
 _021F5C9C: .word 0x00010200
 	thumb_func_end ov101_021F5C44
 
-	thumb_func_start ov101_021F5CA0
-ov101_021F5CA0: ; 0x021F5CA0
+	thumb_func_start PrintRadioLine
+PrintRadioLine: ; 0x021F5CA0
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -29803,10 +29804,10 @@ _021F5CBE:
 	bl AddTextPrinterParameterized2
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov101_021F5CA0
+	thumb_func_end PrintRadioLine
 
-	thumb_func_start ov101_021F5CDC
-ov101_021F5CDC: ; 0x021F5CDC
+	thumb_func_start RadioPrintAdvance
+RadioPrintAdvance: ; 0x021F5CDC
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x66
@@ -29841,7 +29842,7 @@ _021F5CFE:
 	ldr r1, [r4, #0x48]
 	add r0, r4, #0
 	mov r2, #1
-	bl ov101_021F5CA0
+	bl PrintRadioLine
 	ldr r0, [r4, #0xc]
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -29856,10 +29857,10 @@ _021F5CFE:
 _021F5D3C:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ov101_021F5CDC
+	thumb_func_end RadioPrintAdvance
 
-	thumb_func_start ov101_021F5D40
-ov101_021F5D40: ; 0x021F5D40
+	thumb_func_start RadioPrintInit
+RadioPrintInit: ; 0x021F5D40
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, #0x65
@@ -29904,7 +29905,7 @@ ov101_021F5D40: ; 0x021F5D40
 	add r0, r4, #0
 	lsl r2, r2, #0x1f
 	lsr r2, r2, #0x1f
-	bl ov101_021F5CA0
+	bl PrintRadioLine
 	ldr r0, [r4, #0xc]
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -29936,15 +29937,15 @@ _021F5DD6:
 	strb r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov101_021F5D40
+	thumb_func_end RadioPrintInit
 
 	thumb_func_start ov101_021F5DE0
 ov101_021F5DE0: ; 0x021F5DE0
-	ldr r3, _021F5DE8 ; =ov101_021F5D40
+	ldr r3, _021F5DE8 ; =RadioPrintInit
 	mov r2, #0
 	bx r3
 	nop
-_021F5DE8: .word ov101_021F5D40
+_021F5DE8: .word RadioPrintInit
 	thumb_func_end ov101_021F5DE0
 
 	thumb_func_start ov101_021F5DEC
@@ -29996,7 +29997,7 @@ _021F5E36: ; jump table
 	.short _021F5E9E - _021F5E36 - 2 ; case 5
 	.short _021F5EA6 - _021F5E36 - 2 ; case 6
 _021F5E44:
-	bl ov101_021F5CDC
+	bl RadioPrintAdvance
 	cmp r0, #0
 	beq _021F5E66
 	add r0, r4, #0
@@ -30185,7 +30186,7 @@ _021F5F9A: ; jump table
 _021F5FA8:
 	ldr r0, [r5, #4]
 	bl Sav2_Bag_get
-	ldr r1, _021F603C ; =0x000001F6
+	ldr r1, _021F603C ; =ITEM_GB_SOUNDS
 	ldr r3, [r4]
 	mov r2, #1
 	bl Bag_HasItem
@@ -30260,7 +30261,7 @@ _021F6006:
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
-_021F603C: .word 0x000001F6
+_021F603C: .word ITEM_GB_SOUNDS
 	thumb_func_end ov101_021F5F40
 
 	thumb_func_start ov101_021F6040
@@ -30892,7 +30893,7 @@ ov101_021F64D0: ; 0x021F64D0
 _021F64E4:
 	ldrh r1, [r4, #6]
 	mov r2, #1
-	bl ov101_021F5D40
+	bl RadioPrintInit
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
 	strh r0, [r4, #4]
@@ -30955,22 +30956,22 @@ ov101_021F6514: ; 0x021F6514
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x10
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xa]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x12
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xb]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x11
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xc]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xe]
 	ldr r1, _021F660C ; =0x00000964
 	add r0, r7, #0
@@ -31237,7 +31238,7 @@ _021F67A4:
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r5, #0xe]
 	ldr r0, _021F67FC ; =ov101_021F8B3C
 	mov r1, #0
@@ -31662,22 +31663,22 @@ ov101_021F6AAC: ; 0x021F6AAC
 	add r5, r0, #0
 	mov r1, #2
 	mov r2, #0xf
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xb]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0x13
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0x15
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	strb r0, [r4, #0xd]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #5
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	mov r6, #0
 	strb r0, [r4, #0xe]
 	ldr r1, _021F6B78 ; =ov101_021F8B4C
@@ -32305,7 +32306,7 @@ ov101_021F6FCC: ; 0x021F6FCC
 	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #0x19
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0x4b
@@ -33288,6 +33289,8 @@ ov101_021F8760: ; 0x021F8760
 	.byte 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x02, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 
+	; file boundary
+
 ov101_021F87AC: ; 0x021F87AC
 	.byte 0x05, 0x11, 0x00, 0x00
 
@@ -33333,6 +33336,8 @@ ov101_021F889C: ; 0x021F889C
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 
+	; file boundary
+
 ov101_021F8964:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
@@ -33357,13 +33362,7 @@ ov101_021F8998:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov101_021F89B4:
-	.byte 0xFE
-
-ov101_021F89B5: ; 0x021F89B5
-	.byte 0x70
-
-ov101_021F89B6: ; 0x021F89B6
-	.byte 0x4C, 0x04, 0xFE, 0x70, 0x4C, 0x10, 0xFE, 0x98, 0x4C, 0x04
+	.byte 0xFE, 0x70, 0x4C, 0x04, 0xFE, 0x70, 0x4C, 0x10, 0xFE, 0x98, 0x4C, 0x04
 	.byte 0xFE, 0x98, 0x4C, 0x14, 0xFE, 0x60, 0x6C, 0x04, 0xFE, 0x60, 0x6C, 0x10, 0xFE, 0x88, 0x74, 0x04
 	.byte 0xFE, 0x88, 0x74, 0x14, 0xFF, 0x00, 0x00, 0x00
 
@@ -33374,47 +33373,19 @@ ov101_021F89D8:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov101_021F8A04: ; 0x021F8A04
-	.word ov101_021F5F40
-
-ov101_021F8A08: ; 0x021F8A08
-	.word ov101_021F6060
-
-ov101_021F8A0C: ; 0x021F8A0C
-	.word ov101_021F6040
-	.word ov101_021F6D3C
-	.word ov101_021F6D98
-	.word ov101_021F6D78
-	.word ov101_021F6620
-	.word ov101_021F6678
-	.word ov101_021F6658
-	.word ov101_021F632C
-	.word ov101_021F638C
-	.word ov101_021F6364
-	.word ov101_021F680C
-	.word ov101_021F6860
-	.word ov101_021F6840
-	.word ov101_021F6BAC
-	.word ov101_021F6C04
-	.word ov101_021F6BE4
-	.word ov101_021F69A8
-	.word ov101_021F6A00
-	.word ov101_021F69E0
-	.word ov101_021F6148
-	.word ov101_021F61A0
-	.word ov101_021F6180
-	.word ov101_021F61D8
-	.word ov101_021F6230
-	.word ov101_021F6210
-	.word ov101_021F6268
-	.word ov101_021F62C4
-	.word ov101_021F62A4
-	.word ov101_021F72C4
-	.word ov101_021F7320
-	.word ov101_021F7300
-	.word ov101_021F647C
-	.word ov101_021F64D0
-	.word ov101_021F64B0
-
+	.word ov101_021F5F40, ov101_021F6060, ov101_021F6040 ; RADIO_STATION_POKEMON_MUSIC
+	.word ov101_021F6D3C, ov101_021F6D98, ov101_021F6D78 ; RADIO_STATION_POKEMON_TALK
+	.word ov101_021F6620, ov101_021F6678, ov101_021F6658 ; RADIO_STATION_POKEMON_SEARCH_PARTY
+	.word ov101_021F632C, ov101_021F638C, ov101_021F6364 ; RADIO_STATION_SERIAL_RADIO_DRAMA
+	.word ov101_021F680C, ov101_021F6860, ov101_021F6840 ; RADIO_STATION_BUENAS_PASSWORD
+	.word ov101_021F6BAC, ov101_021F6C04, ov101_021F6BE4 ; RADIO_STATION_TRAINER_PROFILES
+	.word ov101_021F69A8, ov101_021F6A00, ov101_021F69E0 ; RADIO_STATION_THAT_TOWN_THESE_PEOPLE
+	.word ov101_021F6148, ov101_021F61A0, ov101_021F6180 ; RADIO_STATION_POKE_FLUTE
+	.word ov101_021F61D8, ov101_021F6230, ov101_021F6210 ; RADIO_STATION_UNOWN
+	.word ov101_021F6268, ov101_021F62C4, ov101_021F62A4 ; RADIO_STATION_TEAM_ROCKET
+	.word ov101_021F72C4, ov101_021F7320, ov101_021F7300 ; RADIO_STATION_MAHOGANY_SIGNAL
+	.word ov101_021F647C, ov101_021F64D0, ov101_021F64B0 ; RADIO_STATION_COMMERCIALS
+	; file boundary
 ov101_021F8A94:
 	.short SEQ_GS_RADIO_MARCH, SEQ_GS_RADIO_KOMORIUTA, SEQ_GS_RADIO_R_101, SEQ_GS_RADIO_R_201
 ov101_021F8A9C:

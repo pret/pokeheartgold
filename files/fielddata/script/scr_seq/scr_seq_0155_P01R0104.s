@@ -17,7 +17,7 @@ scr_seq_P01R0104_003:
 _0021:
 	scrcmd_804 2
 	setflag FLAG_UNK_168
-	setflag FLAG_UNK_9B5
+	setflag FLAG_SYS_FLYPOINT_VERMILION
 	scrcmd_582 54, 1309, 340
 	end
 

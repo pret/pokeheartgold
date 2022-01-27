@@ -30897,7 +30897,7 @@ sub_02087E1C: ; 0x02087E1C
 	bl SavArray_Flags_get
 	mov r1, #2
 	mov r2, #0x1b
-	bl sub_02066930
+	bl ScriptState_FlypointFlagAction
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02087E1C

@@ -578,8 +578,8 @@ _02066928: .word CheckScriptFlag
 _0206692C: .word FLAG_UNK_974
 	thumb_func_end sub_02066920
 
-	thumb_func_start sub_02066930
-sub_02066930: ; 0x02066930
+	thumb_func_start ScriptState_FlypointFlagAction
+ScriptState_FlypointFlagAction: ; 0x02066930
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r0, #0
@@ -588,14 +588,14 @@ sub_02066930: ; 0x02066930
 	blo _02066940
 	bl GF_AssertFail
 _02066940:
-	mov r2, #FLAG_UNK_9B0>>4
+	mov r2, #FLAG_SYS_FLYPOINT_PALLET>>4
 	lsl r2, r2, #4
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, r2
 	bl FlagAction
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02066930
+	thumb_func_end ScriptState_FlypointFlagAction
 
 	thumb_func_start sub_02066950
 sub_02066950: ; 0x02066950
