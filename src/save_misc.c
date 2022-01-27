@@ -148,3 +148,64 @@ u8 sub_0202AAD4(SAVE_MISC_DATA *saveMiscData, int a1) {
     }
     return n;
 }
+
+void sub_0202AB18(SAVE_MISC_DATA *saveMiscData, u8 a1, u8 a2, u8 a3) {
+    int i, len, min, max;
+    if (a1 > NELEMS(_020F677C) - 1) {
+        return;
+    }
+    len = _020F677C[a1][1];
+    min = _020F677C[a1][0];
+    max = min + len - 1;
+    for (i = min; i <= max; i++) {
+        if (saveMiscData->unk_0280[i] == 0xFF) {
+            saveMiscData->unk_0280[i] = a3;
+            return;
+        }
+    }
+    if (a2 == len + 1) {
+        sub_0202AA9C(saveMiscData, a1);
+        saveMiscData->unk_0280[_020F677C[a1][0]] = a3;
+        return;
+    }
+    MI_CpuCopy8(&saveMiscData->unk_0280[_020F677C[a1][0] + 1], &saveMiscData->unk_0280[_020F677C[a1][0]], len - 1);
+    saveMiscData->unk_0280[max] = a3;
+}
+
+void sub_0202ABB0(SAVE_MISC_DATA * saveMiscData, int a1, u8 a2) {
+    saveMiscData->unk_02D8 = a1;
+    saveMiscData->unk_02DC = a2;
+}
+
+void sub_0202ABBC(SAVE_MISC_DATA * saveMiscData, int *a1, u8 *a2) {
+    *a1 = saveMiscData->unk_02D8;
+    *a2 = saveMiscData->unk_02DC;
+}
+
+void sub_0202ABD0(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
+    *a1 = saveMiscData->unk_02A0;
+}
+
+void sub_0202ABEC(SAVE_MISC_DATA *saveMiscData, MAIL_MESSAGE *a1) {
+    saveMiscData->unk_02A0 = *a1;
+}
+
+void sub_0202AC0C(SAVE_MISC_DATA *saveMiscData, u8 *a1) {
+    *a1 = saveMiscData->unk_029B_1;
+}
+
+void sub_0202AC1C(SAVE_MISC_DATA *saveMiscData, u8 a1) {
+    saveMiscData->unk_029B_1 = a1;
+}
+
+void sub_0202AC38(SAVE_MISC_DATA *saveMiscData, int a1, int *a2, int *a3, u8 *a4) {
+    *a2 = saveMiscData->unk_02A8[0][a1 - 1];
+    *a3 = saveMiscData->unk_02A8[1][a1 - 1];
+    *a4 = saveMiscData->unk_02D0[a1 - 1];
+}
+
+void sub_0202AC60(SAVE_MISC_DATA *saveMiscData, int a1, int a2, int a3, u8 a4) {
+    saveMiscData->unk_02A8[0][a1 - 1] = a2;
+    saveMiscData->unk_02A8[1][a1 - 1] = a3;
+    saveMiscData->unk_02D0[a1 - 1] = a4;
+}

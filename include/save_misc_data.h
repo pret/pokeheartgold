@@ -35,11 +35,12 @@ typedef struct SAVE_MISC_DATA {
     u8 unk_029A_0:7;
     u8 unk_029A_7:1;
     u8 unk_029B_0:1;
-    u8 unk_029B_1:5;
+    u8 unk_029B_1:4;
     u8 filer_029C[4];
     MAIL_MESSAGE unk_02A0;
     u32 unk_02A8[2][5];
-    u8 filler_02D0[8];
+    u8 unk_02D0[5];
+    u8 dummy_02D5[3];
     u32 unk_02D8;
     u8 unk_02DC;
     u8 dummy_02DD[3];
