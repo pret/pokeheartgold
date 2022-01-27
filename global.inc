@@ -29223,7 +29223,7 @@
 .public Fsys_InitBlackthornGym
 .public Fsys_InitFuchsiaGym
 .public Fsys_InitViridianGym
-.public sub_02068F68
+.public Fsys_IsSavGymmickTypeEqualTo
 .public sub_02068F84
 .public sub_02068F98
 .public sub_02068FC8

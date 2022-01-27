@@ -3589,7 +3589,7 @@ ov01_021E7628: ; 0x021E7628
 	push {r3, r4, r5, r6, r7, lr}
 	mov r1, #6
 	add r5, r0, #0
-	bl sub_02068F68
+	bl Fsys_IsSavGymmickTypeEqualTo
 	cmp r0, #0
 	beq _021E7644
 	add r0, r5, #0

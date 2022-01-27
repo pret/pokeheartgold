@@ -1249,7 +1249,7 @@ _0205D4DE:
 	bl MapObject_GetFieldSysPtr
 	mov r1, #7
 	str r0, [sp, #8]
-	bl sub_02068F68
+	bl Fsys_IsSavGymmickTypeEqualTo
 	cmp r0, #0
 	beq _0205D52E
 	add r0, r5, #0

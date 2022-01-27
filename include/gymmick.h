@@ -17,8 +17,11 @@ struct Gymmick {
     union {
         u8 raw[0x20];
         struct {
-
-        };
+            u8 candles[4];
+        } ecruteak;
+        struct {
+            BOOL winch;
+        } cianwood;
         struct {
             u8 switches[2];
             u8 gates[2];
@@ -35,6 +38,11 @@ struct Gymmick {
             u16 z[3];
             u8 rot[3];
         } blackthorn;
+        u8 fuchsia; // unused
+        u8 viridian; // unused
+        struct {
+            u32 choice;
+        } sinjoh;
     };
 };
 

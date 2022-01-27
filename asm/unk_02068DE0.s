@@ -231,8 +231,8 @@ Fsys_InitViridianGym: ; 0x02068F54
 	.balign 4, 0
 	thumb_func_end Fsys_InitViridianGym
 
-	thumb_func_start sub_02068F68
-sub_02068F68: ; 0x02068F68
+	thumb_func_start Fsys_IsSavGymmickTypeEqualTo
+Fsys_IsSavGymmickTypeEqualTo: ; 0x02068F68
 	push {r4, lr}
 	add r4, r1, #0
 	bl ScriptEnvironment_GetSav2Ptr
@@ -245,4 +245,4 @@ sub_02068F68: ; 0x02068F68
 _02068F80:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02068F68
+	thumb_func_end Fsys_IsSavGymmickTypeEqualTo
