@@ -3417,7 +3417,7 @@ ov07_0221D5B0: ; 0x0221D5B0
 	ldr r2, [r2]
 	sub r1, #0xa4
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	cmp r4, #1
 	bne _0221D696
 	ldr r0, [r5]

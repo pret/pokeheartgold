@@ -596,7 +596,7 @@ ov52_021E85DC: ; 0x021E85DC
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x40
 	str r0, [sp]
 	mov r0, #0x27
@@ -605,7 +605,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #2
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -634,7 +634,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #3
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -648,7 +648,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #5
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -662,7 +662,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #4
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -676,7 +676,7 @@ ov52_021E85DC: ; 0x021E85DC
 	mov r1, #6
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r6, #0xc]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18

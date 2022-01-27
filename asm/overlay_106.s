@@ -2196,7 +2196,7 @@ ov106_021E69F0: ; 0x021E69F0
 	add r1, r2, #0
 	add r2, sp, #0
 	mov r3, #0x99
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r6, r0, #0
 	ldr r2, _021E6A30 ; =0x00002004
 	add r0, r4, #0
@@ -2407,7 +2407,7 @@ _021E6B64:
 	ldr r2, [r4]
 	ldr r3, [r5, #4]
 	add r1, #0x44
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldr r1, [r5, #4]
 	ldr r2, [r5, #8]
 	add r0, r4, #0
@@ -2423,7 +2423,7 @@ _021E6B64:
 	ldr r1, [r5, #8]
 	ldr r2, [r4]
 	ldr r3, [r5, #4]
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, pc}

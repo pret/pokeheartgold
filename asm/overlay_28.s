@@ -243,7 +243,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	add r0, r4, #0
 	mov r1, #2
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -254,7 +254,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -265,7 +265,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	ldr r2, [r5, #0x10]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #8
@@ -273,7 +273,7 @@ ov28_0225D6FC: ; 0x0225D6FC
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov28_0225D6FC

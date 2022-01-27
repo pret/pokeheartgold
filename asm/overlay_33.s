@@ -420,7 +420,7 @@ ov33_0225D84C: ; 0x0225D84C
 	mov r2, #4
 	add r3, r1, #0
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -431,7 +431,7 @@ ov33_0225D84C: ; 0x0225D84C
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -442,14 +442,14 @@ ov33_0225D84C: ; 0x0225D84C
 	add r0, r4, #0
 	mov r1, #9
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #8
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r2, #0
 	add r3, sp, #0x10
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r2, #6

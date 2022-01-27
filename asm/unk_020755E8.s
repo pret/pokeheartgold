@@ -3228,7 +3228,7 @@ _02076F38:
 	mov r1, #0x10
 	mov r3, #4
 	add r6, r0, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3239,7 +3239,7 @@ _02076F38:
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3250,7 +3250,7 @@ _02076F38:
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3261,7 +3261,7 @@ _02076F38:
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r6, #0
 	bl NARC_dtor
 	mov r0, #5

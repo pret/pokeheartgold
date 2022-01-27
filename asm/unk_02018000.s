@@ -12,7 +12,7 @@ sub_02018030: ; 0x02018030
 	add r1, r2, #0
 	str r4, [sp]
 	add r2, r4, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	add r0, r5, #0
 	bl sub_02018324
@@ -90,7 +90,7 @@ sub_020180BC: ; 0x020180BC
 	ldr r3, [sp, #0x18]
 	add r2, r6, #0
 	str r6, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r2, r0, #0
 	ldr r3, [sp, #0x1c]
 	add r0, r5, #0

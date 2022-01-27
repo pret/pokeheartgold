@@ -2207,7 +2207,7 @@ ov08_0221CF38: ; 0x0221CF38
 	mov r1, #0x16
 	mov r3, #7
 	add r4, r0, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldr r2, [r5]
 	add r0, r4, #0
 	ldr r2, [r2, #0xc]
@@ -14118,7 +14118,7 @@ ov08_022230F4: ; 0x022230F4
 	str r1, [sp, #0xc]
 	ldr r2, [r5, #4]
 	mov r1, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -14129,7 +14129,7 @@ ov08_022230F4: ; 0x022230F4
 	str r0, [sp, #0xc]
 	ldr r2, [r5, #4]
 	add r0, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r2, [r5]
 	add r0, r4, #0
 	ldr r2, [r2, #0xc]

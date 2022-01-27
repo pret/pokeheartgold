@@ -405,7 +405,7 @@ ov19_02259BC0: ; 0x02259BC0
 	str r1, [sp, #4]
 	mov r1, #4
 	add r2, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -416,7 +416,7 @@ ov19_02259BC0: ; 0x02259BC0
 	ldr r2, [r5, #0x18]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -427,14 +427,14 @@ ov19_02259BC0: ; 0x02259BC0
 	ldr r2, [r5, #0x18]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5]
 	mov r1, #5
 	str r0, [sp]
 	add r0, r4, #0
 	mov r2, #0
 	add r3, sp, #0x10
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]

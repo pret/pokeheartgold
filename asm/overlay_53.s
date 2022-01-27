@@ -5001,7 +5001,7 @@ ov53_021E816C: ; 0x021E816C
 	lsl r3, r7, #5
 	str r0, [sp, #0x10]
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5011,7 +5011,7 @@ ov53_021E816C: ; 0x021E816C
 	ldr r2, [r5, #0xc]
 	mov r1, #1
 	add r3, r6, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -5021,7 +5021,7 @@ ov53_021E816C: ; 0x021E816C
 	ldr r2, [r5, #0xc]
 	mov r1, #0xa
 	add r3, r6, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18

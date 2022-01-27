@@ -1065,7 +1065,7 @@ _02258FAE:
 	mov r1, #5
 	add r2, sp, #0x38
 	add r3, r6, #0
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x38]
 	ldr r1, [sp, #0x10]

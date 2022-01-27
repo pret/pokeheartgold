@@ -226,7 +226,7 @@ ov29_0225D6C8: ; 0x0225D6C8
 	add r0, r4, #0
 	mov r1, #9
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -237,14 +237,14 @@ ov29_0225D6C8: ; 0x0225D6C8
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #8
 	add r0, r4, #0
 	mov r2, #4
 	str r1, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov29_0225D6C8

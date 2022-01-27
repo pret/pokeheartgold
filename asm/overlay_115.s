@@ -309,7 +309,7 @@ _0225F260:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x40
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -1617,7 +1617,7 @@ _0225FC0E:
 	ldr r0, [r6, #0x20]
 	mov r2, #0
 	mov r3, #0x40
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #4
 	mov r1, #0
 	bl GX_EngineAToggleLayers

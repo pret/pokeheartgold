@@ -1377,7 +1377,7 @@ ov75_02247450: ; 0x02247450
 	mov r1, #3
 	add r3, r2, #0
 	str r0, [sp, #0x2c]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x74
@@ -1385,7 +1385,7 @@ ov75_02247450: ; 0x02247450
 	ldr r0, [sp, #0x2c]
 	mov r1, #3
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -1437,7 +1437,7 @@ ov75_02247450: ; 0x02247450
 	ldr r2, [sp, #0x30]
 	mov r1, #2
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	mov r0, #6
 	str r1, [sp]
@@ -1450,7 +1450,7 @@ ov75_02247450: ; 0x02247450
 	ldr r2, [sp, #0x30]
 	mov r1, #6
 	mov r3, #1
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1461,7 +1461,7 @@ ov75_02247450: ; 0x02247450
 	ldr r2, [sp, #0x30]
 	mov r1, #0xb
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	mov r0, #6
 	str r1, [sp]
@@ -1474,7 +1474,7 @@ ov75_02247450: ; 0x02247450
 	ldr r2, [sp, #0x30]
 	mov r1, #0xc
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -1491,7 +1491,7 @@ ov75_02247450: ; 0x02247450
 	mov r1, #5
 	add r2, sp, #0x3c
 	mov r3, #0x74
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x3c]
 	ldr r1, [sp, #0x10]
@@ -1639,7 +1639,7 @@ _02247636:
 	add r0, r4, #0
 	mov r1, #0xb
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1650,7 +1650,7 @@ _02247636:
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r3, #0x74
@@ -1659,7 +1659,7 @@ _02247636:
 	mov r1, #0xc
 	mov r2, #0
 	add r3, #0xac
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x40

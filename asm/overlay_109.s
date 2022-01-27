@@ -2414,7 +2414,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	str r1, [sp, #4]
 	mov r1, #4
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5]
@@ -2422,7 +2422,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	str r0, [sp, #4]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2433,7 +2433,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2444,7 +2444,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2455,7 +2455,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2466,7 +2466,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2477,7 +2477,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	ldr r2, [r5, #0x14]
 	add r0, r4, #0
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5]
 	add r3, r5, #0
 	str r0, [sp]
@@ -2485,7 +2485,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	mov r1, #8
 	mov r2, #0
 	add r3, #0xac
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	add r1, r5, #0
 	add r1, #0xb0
 	str r0, [r1]
@@ -2496,7 +2496,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	mov r1, #8
 	mov r2, #0
 	add r3, #0xb4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	add r1, r5, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -2507,7 +2507,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	mov r1, #7
 	mov r2, #0
 	add r3, #0xbc
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	add r1, r5, #0
 	add r1, #0xc0
 	str r0, [r1]

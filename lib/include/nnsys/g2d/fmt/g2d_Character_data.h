@@ -20,6 +20,12 @@ typedef struct NNSG2dCharacterData {
     void* pRawData;
 } NNSG2dCharacterData;
 
+typedef struct NNSG2dPaletteCompressInfo {
+    u16 numPalette;
+    u16 pad16;
+    void* pPlttIdxTbl;
+} NNSG2dPaletteCompressInfo;
+
 typedef struct NNSG2dPaletteData {
     GXTexFmt fmt;
     BOOL bExtendedPlt;

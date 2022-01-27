@@ -2384,14 +2384,14 @@ _021E6BC6:
 	ldr r1, [r1, r5]
 	mov r2, #1
 	add r3, sp, #0x10
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	ldr r1, _021E6CE8 ; =ov76_021E7094
 	str r0, [sp, #8]
 	ldr r0, [r4]
 	ldr r1, [r1, r5]
 	add r2, sp, #0xc
 	mov r3, #0x49
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	str r0, [sp, #4]
 	b _021E6C42
 _021E6BF2:
@@ -2405,14 +2405,14 @@ _021E6BF2:
 	ldr r0, [r4]
 	ldr r1, [r1, r5]
 	mov r2, #1
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	ldr r1, _021E6CE8 ; =ov76_021E7094
 	str r0, [sp, #8]
 	ldr r0, [r4]
 	ldr r1, [r1, r5]
 	add r2, sp, #0xc
 	mov r3, #0x49
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	str r0, [sp, #4]
 	b _021E6C42
 _021E6C1E:
@@ -2423,14 +2423,14 @@ _021E6C1E:
 	ldr r0, [r4]
 	ldr r1, [r1, r5]
 	mov r2, #1
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	ldr r1, _021E6CE8 ; =ov76_021E7094
 	str r0, [sp, #8]
 	ldr r0, [r4]
 	ldr r1, [r1, r5]
 	add r2, sp, #0xc
 	mov r3, #0x49
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	str r0, [sp, #4]
 _021E6C42:
 	ldr r1, [sp, #0x10]
@@ -2472,7 +2472,7 @@ _021E6C42:
 	mul r3, r6
 	mov r2, #1
 	add r3, r7, r3
-	bl sub_02007C60
+	bl GfGfxLoader_GetCellBankFromOpenNarc
 	ldrh r1, [r4, #4]
 	add r3, r4, #0
 	mov r6, #0x34
@@ -2490,7 +2490,7 @@ _021E6C42:
 	mul r6, r5
 	mov r2, #1
 	add r3, r3, r6
-	bl sub_02007C7C
+	bl GfGfxLoader_GetAnimBankFromOpenNarc
 	ldrh r2, [r4, #4]
 	mov r1, #0x34
 	mul r1, r2

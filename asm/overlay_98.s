@@ -652,7 +652,7 @@ ov98_0221EAA8: ; 0x0221EAA8
 	str r2, [sp]
 	ldr r0, [r0, #0x10]
 	mov r2, #0
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov98_0221EAA8

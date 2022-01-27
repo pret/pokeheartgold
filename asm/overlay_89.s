@@ -1184,7 +1184,7 @@ ov89_02259264: ; 0x02259264
 	add r0, r5, #0
 	mov r1, #0x12
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1195,7 +1195,7 @@ ov89_02259264: ; 0x02259264
 	add r0, r5, #0
 	mov r1, #0x11
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1206,7 +1206,7 @@ ov89_02259264: ; 0x02259264
 	add r0, r5, #0
 	mov r1, #0x14
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0
@@ -1241,7 +1241,7 @@ _022592FE:
 	add r0, r5, #0
 	mov r1, #0x16
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1252,7 +1252,7 @@ _022592FE:
 	add r0, r5, #0
 	mov r1, #0x15
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1263,7 +1263,7 @@ _022592FE:
 	add r0, r5, #0
 	mov r1, #0x18
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	mov r1, #6
 	bl GetBgTilemapBuffer
@@ -2134,7 +2134,7 @@ _02259A56:
 	add r1, r4, #3
 	mov r3, #0x7d
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0xc
 	str r0, [sp, #8]
 	bl NNS_G2dGetUnpackedCharacterData
@@ -2157,7 +2157,7 @@ _02259A90:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x7d
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0xc
 	str r0, [sp, #8]
 	bl NNS_G2dGetUnpackedCharacterData
@@ -3993,7 +3993,7 @@ ov89_0225A878: ; 0x0225A878
 	mov r1, #0x1d
 	mov r3, #0x7d
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	cmp r0, #0
 	bne _0225A89C
@@ -4235,7 +4235,7 @@ ov89_0225AA24: ; 0x0225AA24
 	add r0, r5, #0
 	mov r3, #0x7d
 	add r1, r1, #3
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0x20
 	str r0, [sp, #0x18]
 	bl NNS_G2dGetUnpackedCharacterData
@@ -4247,7 +4247,7 @@ _0225AA68:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x7d
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, sp, #0x20
 	str r0, [sp, #0x18]
 	bl NNS_G2dGetUnpackedCharacterData

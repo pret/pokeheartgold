@@ -482,7 +482,7 @@ sub_02091450: ; 0x02091450
 	mov r1, #0
 	add r2, r1, #0
 	str r1, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	pop {r3, pc}
 	thumb_func_end sub_02091450
 
@@ -493,7 +493,7 @@ sub_02091460: ; 0x02091460
 	mov r2, #0
 	mov r1, #1
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	pop {r3, pc}
 	thumb_func_end sub_02091460
 
@@ -507,14 +507,14 @@ sub_02091470: ; 0x02091470
 	add r7, r3, #0
 	str r2, [sp]
 	mov r1, #9
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	mov r2, #0
 	add r0, r6, #0
 	mov r1, #0xa
 	add r3, r7, #0
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02091470
@@ -529,14 +529,14 @@ sub_02091498: ; 0x02091498
 	add r7, r3, #0
 	str r2, [sp]
 	mov r1, #7
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	mov r2, #0
 	add r0, r6, #0
 	mov r1, #8
 	add r3, r7, #0
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02091498
@@ -551,14 +551,14 @@ sub_020914C0: ; 0x020914C0
 	add r7, r3, #0
 	str r2, [sp]
 	mov r1, #5
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	mov r2, #0
 	add r0, r6, #0
 	mov r1, #6
 	add r3, r7, #0
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020914C0
@@ -573,14 +573,14 @@ sub_020914E8: ; 0x020914E8
 	add r7, r3, #0
 	str r2, [sp]
 	mov r1, #3
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r5]
 	mov r2, #0
 	add r0, r6, #0
 	mov r1, #4
 	add r3, r7, #0
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020914E8

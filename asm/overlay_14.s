@@ -26826,7 +26826,7 @@ ov14_021F2DC4: ; 0x021F2DC4
 	mov r2, #0
 	ldr r0, [r5, r0]
 	add r3, r4, #0
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021F2DE4: .word 0x00000454

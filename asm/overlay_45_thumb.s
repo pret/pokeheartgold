@@ -14500,7 +14500,7 @@ _022304E2:
 	str r2, [sp]
 	mov r1, #0x7f
 	str r0, [sp, #0x14]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -14545,7 +14545,7 @@ _02230582:
 	ldr r0, [sp, #0x18]
 	ldr r3, [sp, #0xc]
 	add r2, r7, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, r0, #0
 	ldrh r2, [r5]
 	ldr r0, [r4, #4]
@@ -14587,7 +14587,7 @@ _022305CA:
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x11
 	mov r2, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
 	add r3, r6, #0
@@ -15987,7 +15987,7 @@ ov45_02231018: ; 0x02231018
 	add r2, r7, #0
 	str r0, [sp, #8]
 	ldr r4, [sp, #0x30]
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	add r6, r0, #0
 	ldr r0, [sp, #0x18]
 	mov r1, #6
@@ -16022,7 +16022,7 @@ _02231060:
 	str r0, [sp, #4]
 	ldr r0, [sp, #8]
 	ldr r3, [sp, #0xc]
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	add r5, r0, #0
 	ldr r0, [sp, #0x14]
 	lsr r1, r0, #2

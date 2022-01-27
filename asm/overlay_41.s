@@ -1749,7 +1749,7 @@ _02246B74:
 	add r1, r4, #1
 	mov r2, #0
 	mov r3, #0xe
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [sp, #4]
 	cmp r0, #0
 	bne _02246B92
@@ -1777,7 +1777,7 @@ _02246B92:
 	ldr r0, [r6, r0]
 	add r2, r1, #0
 	mov r3, #0xe
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r4, r0, #0
 	ldr r0, [r7, #0x14]
 	add r1, r4, #0
@@ -1817,7 +1817,7 @@ _02246BFA:
 	add r1, #0xce
 	mov r2, #0
 	mov r3, #0xe
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r2, r6, #0
 	add r1, r0, #0
 	add r2, #0x64
@@ -1840,7 +1840,7 @@ _02246BFA:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #8]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x14]
 	ldr r1, [sp, #0xc]
@@ -1892,7 +1892,7 @@ ov41_02246C90: ; 0x02246C90
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	mov r1, #0xeb
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	str r0, [r4, #0x30]
 	add sp, #4
 	pop {r3, r4, pc}
@@ -12311,7 +12311,7 @@ _0224B972:
 	ldr r3, [sp, #0xc]
 	add r1, r5, #1
 	mov r2, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r7, r0, #0
 	ldr r0, [r4, #0x10]
 	add r1, r7, #0
@@ -12347,7 +12347,7 @@ _0224B9D0:
 	mov r1, #0
 	ldr r3, [sp, #0xc]
 	add r2, r1, #0
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r5, r0, #0
 	ldr r0, [r4, #0x14]
 	add r1, r5, #0
@@ -12614,7 +12614,7 @@ ov41_0224BC04: ; 0x0224BC04
 	mov r1, #0x7e
 	mov r2, #0
 	mov r3, #0x60
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -12627,7 +12627,7 @@ ov41_0224BC04: ; 0x0224BC04
 	ldr r2, [r5, #0x54]
 	mov r1, #0x7d
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #0x1a

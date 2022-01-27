@@ -744,7 +744,7 @@ ov86_021E5ECC: ; 0x021E5ECC
 	mov r1, #0x8c
 	add r3, r6, #0
 	add r4, r0, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x60
 	str r0, [sp]
 	mov r0, #0x79
@@ -753,7 +753,7 @@ ov86_021E5ECC: ; 0x021E5ECC
 	add r0, r4, #0
 	mov r1, #0xc3
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -765,14 +765,14 @@ ov86_021E5ECC: ; 0x021E5ECC
 	add r0, r4, #0
 	mov r1, #0x8b
 	add r3, r6, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x79
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #0x8f
 	mov r2, #1
 	add r3, sp, #0x10
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r1, #0xcd
@@ -810,7 +810,7 @@ ov86_021E5F58: ; 0x021E5F58
 	mov r1, #0x8e
 	add r3, r6, #0
 	add r4, r0, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -822,7 +822,7 @@ ov86_021E5F58: ; 0x021E5F58
 	add r0, r4, #0
 	mov r1, #0x8d
 	add r3, r6, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x79
@@ -831,7 +831,7 @@ ov86_021E5F58: ; 0x021E5F58
 	mov r1, #0xc4
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r0, r4, #0
 	bl NARC_dtor
 	add sp, #0x10

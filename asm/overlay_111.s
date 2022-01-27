@@ -917,7 +917,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -927,7 +927,7 @@ _021E6010:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -938,7 +938,7 @@ _021E6010:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #0
@@ -950,7 +950,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #0
@@ -962,7 +962,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #2
 	lsl r0, r0, #8
 	str r0, [sp]
@@ -972,7 +972,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	mov r2, #4
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -983,7 +983,7 @@ _021E6010:
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -995,7 +995,7 @@ _021E6010:
 	ldr r0, [r4, #0x1c]
 	ldr r2, [r4, #8]
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x10
 	pop {r4, pc}
 	thumb_func_end ov111_021E6000
@@ -1209,7 +1209,7 @@ ov111_021E6268: ; 0x021E6268
 	str r0, [sp]
 	add r0, r7, #0
 	add r3, sp, #0xc
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	ldr r1, [sp, #0xc]
 	mov r2, #1
 	str r0, [sp, #8]

@@ -580,7 +580,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	mov r1, #5
 	add r2, sp, #0x2c
 	mov r3, #0x35
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x2c]
 	mov r2, #0xd7
@@ -1624,7 +1624,7 @@ ov44_0222AB24: ; 0x0222AB24
 	mov r2, #0
 	add r3, #0xf2
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x40
 	str r0, [sp]
 	mov r3, #0x1a
@@ -1633,7 +1633,7 @@ ov44_0222AB24: ; 0x0222AB24
 	mov r2, #4
 	lsl r3, r3, #4
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1643,7 +1643,7 @@ ov44_0222AB24: ; 0x0222AB24
 	add r2, r7, #0
 	mov r3, #1
 	str r4, [sp, #0xc]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1653,7 +1653,7 @@ ov44_0222AB24: ; 0x0222AB24
 	mov r1, #0xd
 	add r2, r7, #0
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	bne _0222AB9C
@@ -1663,7 +1663,7 @@ ov44_0222AB24: ; 0x0222AB24
 	mov r2, #0
 	add r3, #0xc
 	str r4, [sp]
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	str r0, [r5, #8]
 _0222AB9C:
 	ldr r0, [r5]
@@ -1674,7 +1674,7 @@ _0222AB9C:
 	mov r2, #0
 	add r3, r5, #4
 	str r4, [sp]
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5]
 _0222ABB2:
 	add sp, #0x10
@@ -2146,7 +2146,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r5, #0
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x35
@@ -2154,7 +2154,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r5, #0
 	mov r1, #3
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -2174,7 +2174,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r5, #0
 	mov r1, #2
 	add r2, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -2184,7 +2184,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2195,7 +2195,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	mov r1, #0xb
 	add r2, r4, #0
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2206,7 +2206,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	mov r1, #0xc
 	add r2, r4, #0
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -11830,7 +11830,7 @@ ov44_0222FCBC: ; 0x0222FCBC
 	ldr r0, [sp, #0x14]
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0xa0
 	str r0, [sp]
 	ldr r0, [sp, #0x18]
@@ -11839,7 +11839,7 @@ ov44_0222FCBC: ; 0x0222FCBC
 	ldr r0, [sp, #0x14]
 	mov r2, #4
 	mov r3, #0x80
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -11852,7 +11852,7 @@ ov44_0222FCBC: ; 0x0222FCBC
 	ldr r2, [r7, r2]
 	mov r1, #0x10
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x30
 	str r0, [sp]
 	mov r0, #0
@@ -11866,7 +11866,7 @@ ov44_0222FCBC: ; 0x0222FCBC
 	ldr r2, [r7, r2]
 	mov r1, #0x13
 	mov r3, #6
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -11879,7 +11879,7 @@ ov44_0222FCBC: ; 0x0222FCBC
 	ldr r2, [r7, r2]
 	mov r1, #0x12
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [sp, #0x18]
 	ldr r3, _0222FF18 ; =0x00000B24
 	str r0, [sp]
@@ -11887,7 +11887,7 @@ ov44_0222FCBC: ; 0x0222FCBC
 	mov r1, #0x15
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0xb2
 	lsl r1, r1, #4
 	str r0, [r7, r1]
@@ -11907,7 +11907,7 @@ _0222FD7A:
 	add r1, #0x16
 	mov r2, #0
 	add r3, r5, #0
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r1, _0222FF20 ; =0x00000B28
 	str r0, [r4, r1]
 	add r0, r1, #0
@@ -11927,7 +11927,7 @@ _0222FD7A:
 	mov r1, #0x1d
 	mov r2, #0
 	add r3, r7, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0xb6
 	lsl r1, r1, #4
 	str r0, [r7, r1]
@@ -16681,7 +16681,7 @@ ov44_0223233C: ; 0x0223233C
 	mov r1, #0x1f
 	add r3, r2, #0
 	str r5, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -16693,7 +16693,7 @@ ov44_0223233C: ; 0x0223233C
 	mov r1, #0x1e
 	add r2, r6, #0
 	str r5, [sp, #0xc]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -17970,7 +17970,7 @@ _02232CD8:
 	add r0, r2, #0
 	mov r1, #0x20
 	add r2, r4, #4
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	str r0, [r4]
 	mov r0, #0xf
 	strb r0, [r4, #8]
@@ -18825,7 +18825,7 @@ ov44_0223325C: ; 0x0223325C
 	mov r3, #0xa0
 	add r6, r0, #0
 	str r4, [sp, #4]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0
 	mov r0, #6
 	str r1, [sp]
@@ -18837,7 +18837,7 @@ ov44_0223325C: ; 0x0223325C
 	add r0, r6, #0
 	mov r1, #0xd
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0x79
 	lsl r3, r3, #2
 	add r0, r6, #0
@@ -18845,7 +18845,7 @@ ov44_0223325C: ; 0x0223325C
 	mov r2, #0
 	add r3, r5, r3
 	str r4, [sp]
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r2, #0x1e
 	lsl r2, r2, #4
 	str r0, [r5, r2]
@@ -18854,7 +18854,7 @@ ov44_0223325C: ; 0x0223325C
 	mov r1, #0x2d
 	add r2, r5, r2
 	add r3, r4, #0
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	mov r1, #0x7b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -18866,7 +18866,7 @@ ov44_0223325C: ; 0x0223325C
 	ldr r2, [r5]
 	add r0, r6, #0
 	mov r1, #0x2e
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -18875,7 +18875,7 @@ ov44_0223325C: ; 0x0223325C
 	ldr r2, [r5]
 	add r0, r6, #0
 	mov r1, #0x2f
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
 	mov r1, #0
 	bl ov44_02233D08

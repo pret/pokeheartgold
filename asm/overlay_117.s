@@ -506,7 +506,7 @@ ov117_0225F420: ; 0x0225F420
 	ldr r0, [r5, #0x20]
 	mov r2, #0
 	add r3, sp, #0xc
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r2, [sp, #0xc]
 	mov r3, #0
 	str r3, [sp]
@@ -776,7 +776,7 @@ _0225F560:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x40
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x14
 	str r0, [sp]
 	mov r0, #0x10

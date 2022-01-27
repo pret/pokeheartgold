@@ -881,7 +881,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	mov r1, #5
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0xa0
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -889,7 +889,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	add r2, r1, #0
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -899,7 +899,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	ldr r2, [r5]
 	mov r1, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -910,7 +910,7 @@ _0222A598:
 	ldr r2, [r5]
 	mov r1, #7
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -921,7 +921,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	ldr r2, [r5]
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -931,7 +931,7 @@ _0222A598:
 	ldr r0, [r5, #0x58]
 	ldr r2, [r5]
 	mov r1, #0xa
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -942,7 +942,7 @@ _0222A598:
 	ldr r2, [r5]
 	mov r1, #8
 	mov r3, #6
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1352,7 +1352,7 @@ _0222A9AC:
 	ldrb r1, [r4]
 	ldr r0, [r0, #0x58]
 	add r3, r6, #0
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #2
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -2380,7 +2380,7 @@ _0222B160:
 	ldr r0, [r0, #0x58]
 	mov r2, #1
 	add r3, #0x1c
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #0x18]
 	add sp, #0x28
@@ -6272,7 +6272,7 @@ _0222CFB4:
 	mov r1, #0xe
 	mov r2, #1
 	add r3, #0x34
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x30]
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -8003,7 +8003,7 @@ _0222DD62:
 	ldrh r1, [r4]
 	ldr r0, [r7, #0x58]
 	add r3, r5, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5]
 	add r6, r6, #1
 	add r5, #8

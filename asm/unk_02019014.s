@@ -896,7 +896,7 @@ sub_020196B8: ; 0x020196B8
 	add r1, r3, #0
 	ldr r2, [sp, #0x18]
 	add r3, sp, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r2, [sp, #4]
 	add r6, r0, #0
 	add r0, r5, #0

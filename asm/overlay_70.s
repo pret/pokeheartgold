@@ -3406,7 +3406,7 @@ ov70_02239330: ; 0x02239330
 	mov r1, #4
 	add r3, r2, #0
 	add r6, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -3445,7 +3445,7 @@ ov70_02239330: ; 0x02239330
 	add r0, r6, #0
 	mov r1, #0x10
 	add r2, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -3458,7 +3458,7 @@ ov70_02239330: ; 0x02239330
 	add r0, r6, #0
 	mov r1, #0x27
 	add r2, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -3472,7 +3472,7 @@ ov70_02239330: ; 0x02239330
 	mov r1, #0x26
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r5, #0
 	bl ov70_02239C6C
 	ldrh r0, [r5, #0x34]
@@ -4957,7 +4957,7 @@ ov70_02239FA4: ; 0x02239FA4
 	mov r1, #8
 	add r3, r2, #0
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #1
 	lsl r0, r0, #8
 	str r0, [sp]
@@ -4967,7 +4967,7 @@ ov70_02239FA4: ; 0x02239FA4
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -5006,7 +5006,7 @@ ov70_02239FA4: ; 0x02239FA4
 	add r0, r4, #0
 	mov r1, #0x14
 	add r2, r5, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -5019,7 +5019,7 @@ ov70_02239FA4: ; 0x02239FA4
 	add r0, r4, #0
 	mov r1, #0x1c
 	add r2, r5, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0x3d
@@ -8006,7 +8006,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	mov r1, #3
 	add r3, r2, #0
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #1
 	lsl r0, r0, #8
 	str r0, [sp]
@@ -8016,7 +8016,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -8055,7 +8055,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	add r0, r4, #0
 	mov r1, #0xe
 	add r2, r5, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -8068,7 +8068,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	add r0, r4, #0
 	mov r1, #0x1d
 	add r2, r5, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -8082,7 +8082,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	mov r1, #0xf
 	add r2, r5, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #4
 	mov r1, #0x20
 	mov r2, #0x3d
@@ -10806,7 +10806,7 @@ ov70_0223CF74: ; 0x0223CF74
 	mov r1, #2
 	add r3, r2, #0
 	add r4, r0, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #1
 	lsl r0, r0, #8
 	str r0, [sp]
@@ -10816,7 +10816,7 @@ ov70_0223CF74: ; 0x0223CF74
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -10855,7 +10855,7 @@ ov70_0223CF74: ; 0x0223CF74
 	add r0, r4, #0
 	mov r1, #0xd
 	add r2, r5, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -10868,7 +10868,7 @@ ov70_0223CF74: ; 0x0223CF74
 	add r0, r4, #0
 	mov r1, #0x1b
 	add r2, r5, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -10882,7 +10882,7 @@ ov70_0223CF74: ; 0x0223CF74
 	mov r1, #0x26
 	add r2, r5, #0
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r6, #0
 	bl ov70_02239C6C
 	add r0, r6, #0
@@ -14232,7 +14232,7 @@ ov70_0223EA6C: ; 0x0223EA6C
 	mov r1, #0xf
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	add r0, r5, #0
 	bl ov70_02239CF8
 	add r0, r6, #0
@@ -25535,7 +25535,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r1, #3
 	add r3, r2, #0
 	str r0, [sp, #0x2c]
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x3d
@@ -25543,7 +25543,7 @@ ov70_022442B4: ; 0x022442B4
 	ldr r0, [sp, #0x2c]
 	mov r1, #3
 	mov r2, #4
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0x1a
 	mov r0, #0
 	lsl r1, r1, #4
@@ -25586,7 +25586,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r1, #2
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	mov r0, #6
 	str r1, [sp]
@@ -25599,7 +25599,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r1, #6
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -25610,7 +25610,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r1, #0xb
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r1, #0
 	mov r0, #6
 	str r1, [sp]
@@ -25623,7 +25623,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r1, #0xc
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -25641,7 +25641,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r1, #5
 	add r2, sp, #0x38
 	mov r3, #0x3d
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	add r4, r0, #0
 	ldr r0, [sp, #0x38]
 	ldr r2, _022444D0 ; =0x000012D8

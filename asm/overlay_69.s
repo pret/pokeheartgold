@@ -984,7 +984,7 @@ ov69_021E6138: ; 0x021E6138
 	mov r1, #0x12
 	ldr r3, [r3]
 	str r0, [sp, #0x1c]
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x24]
 	mov r1, #6
@@ -1044,7 +1044,7 @@ _021E61C0:
 	ldr r0, [sp, #0x1c]
 	ldr r3, [r3]
 	mov r2, #0
-	bl sub_02007CAC
+	bl GfGfxLoader_LoadFromOpenNarc_GetSizeOut
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x20]
 	mov r5, #1
@@ -1481,7 +1481,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #7
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
@@ -1490,7 +1490,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1502,7 +1502,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	ldr r2, [r4, r2]
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r4, #8]
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
@@ -1589,7 +1589,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #3
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x80
 	str r0, [sp]
 	ldr r0, [r4]
@@ -1598,7 +1598,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #6
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1610,7 +1610,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r5, #0
 	mov r1, #7
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r4]

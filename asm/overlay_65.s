@@ -2344,7 +2344,7 @@ ov65_0221D204: ; 0x0221D204
 	str r2, [sp]
 	ldr r2, [sp, #0x20]
 	ldr r3, [sp, #0x24]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r6, r0, #0
 	beq _0221D256
 	add r1, sp, #4
@@ -2416,7 +2416,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	mov r2, #4
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #0
 	mov r0, #0x12
 	lsl r0, r0, #4
@@ -2426,7 +2426,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -2450,7 +2450,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -2478,7 +2478,7 @@ ov65_0221D280: ; 0x0221D280
 	mov r1, #4
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	mov r1, #0x40
 	mov r2, #0x1a
@@ -2500,7 +2500,7 @@ ov65_0221D280: ; 0x0221D280
 	mov r1, #2
 	add r2, r4, #0
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -2514,7 +2514,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -2528,7 +2528,7 @@ ov65_0221D280: ; 0x0221D280
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #4
 	mov r1, #0x40
 	mov r2, #0x1a

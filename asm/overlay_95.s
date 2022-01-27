@@ -3062,7 +3062,7 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3073,7 +3073,7 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #9
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3084,7 +3084,7 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3095,7 +3095,7 @@ _021E70E2:
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #5
 	mov r1, #0
 	bl ToggleBgLayer

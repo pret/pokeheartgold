@@ -1753,7 +1753,7 @@ ov120_0225FD14: ; 0x0225FD14
 	add r5, r2, #0
 	mov r2, #0
 	str r2, [sp]
-	bl sub_02007C98
+	bl GfGfxLoader_LoadFromOpenNarc
 	add r1, r5, #0
 	add r4, r0, #0
 	bl NNS_G2dGetUnpackedBGCharacterData
@@ -1773,7 +1773,7 @@ ov120_0225FD2C: ; 0x0225FD2C
 	add r1, r2, #0
 	mov r2, #0
 	add r3, sp, #0xc
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r2, [sp, #0xc]
 	mov r3, #0
 	lsl r1, r4, #0x18
@@ -1903,7 +1903,7 @@ _0225FE2C:
 	ldr r0, [r4, #0x20]
 	mov r1, #0xa0
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r2, r5, #0
 	ldr r0, [r4, #0x20]
 	mov r1, #0xa1

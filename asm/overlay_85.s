@@ -7062,7 +7062,7 @@ _021E8D70:
 	mov r1, #1
 	add r2, #0x2c
 	mov r3, #0x66
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	str r0, [r7, #0x28]
 	ldr r0, _021E8DFC ; =0x00004A44
 	mov r1, #0
@@ -7145,7 +7145,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	add r0, r6, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x66
@@ -7201,7 +7201,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	add r0, r6, #0
 	mov r1, #2
 	add r2, r4, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -7214,7 +7214,7 @@ ov85_021E8E6C: ; 0x021E8E6C
 	add r0, r6, #0
 	mov r1, #3
 	add r2, r4, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x24]
 	bl Options_GetFrame
@@ -9795,7 +9795,7 @@ ov85_021EA2C0: ; 0x021EA2C0
 	mov r1, #7
 	add r2, r5, r2
 	mov r3, #0x66
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	mov r3, #0xd2
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -9817,7 +9817,7 @@ ov85_021EA2C0: ; 0x021EA2C0
 	mov r1, #9
 	mov r2, #1
 	add r3, r5, r3
-	bl sub_02007C10
+	bl GfGfxLoader_GetCharDataFromOpenNarc
 	mov r1, #0xce
 	lsl r1, r1, #2
 	str r0, [r5, r1]

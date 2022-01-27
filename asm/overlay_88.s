@@ -454,7 +454,7 @@ _02258B5C:
 	ldr r0, [r5, r0]
 	add r2, r1, #0
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r1, #5
 	mov r0, #0
 	lsl r1, r1, #6
@@ -471,7 +471,7 @@ _02258B5C:
 	ldr r0, [r5, r0]
 	ldr r2, [r5]
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -483,7 +483,7 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #3
 	mov r3, #1
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -495,7 +495,7 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #4
 	mov r3, #2
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #5
@@ -504,7 +504,7 @@ _02258B5C:
 	ldr r0, [r5, r0]
 	mov r2, #4
 	add r3, r1, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -516,7 +516,7 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #2
 	mov r3, #4
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -528,7 +528,7 @@ _02258B5C:
 	ldr r2, [r5]
 	mov r1, #6
 	mov r3, #4
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -670,7 +670,7 @@ ov88_02258D64: ; 0x02258D64
 	mov r1, #5
 	mov r2, #0
 	add r3, r4, #4
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r4]
 	add sp, #4
 	pop {r3, r4, pc}
@@ -1510,7 +1510,7 @@ _02259304:
 	ldr r3, [sp, #0x1c]
 	mov r1, #0
 	add r2, #0x98
-	bl sub_02007C48
+	bl GfGfxLoader_GetPlttDataFromOpenNarc
 	ldr r1, [sp, #0x14]
 	mov r2, #4
 	add r1, #0x94

@@ -356,7 +356,7 @@ ov64_021E5B10: ; 0x021E5B10
 	str r2, [sp, #0xc]
 	ldr r2, [r5, #4]
 	add r4, r0, #0
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -367,7 +367,7 @@ ov64_021E5B10: ; 0x021E5B10
 	ldr r2, [r5, #4]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x3b
@@ -376,7 +376,7 @@ ov64_021E5B10: ; 0x021E5B10
 	add r0, r4, #0
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -388,7 +388,7 @@ ov64_021E5B10: ; 0x021E5B10
 	add r0, r4, #0
 	mov r1, #3
 	mov r3, #5
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -400,7 +400,7 @@ ov64_021E5B10: ; 0x021E5B10
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #5
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x3b
@@ -409,7 +409,7 @@ ov64_021E5B10: ; 0x021E5B10
 	mov r1, #5
 	mov r2, #4
 	mov r3, #0
-	bl sub_02007B8C
+	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r0, r4, #0
 	bl NARC_dtor
 	mov r1, #0x1e

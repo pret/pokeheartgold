@@ -1683,7 +1683,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, #0x38
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x55
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1694,7 +1694,7 @@ ov101_021E8370: ; 0x021E8370
 	mov r1, #0xb
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x56
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1705,7 +1705,7 @@ ov101_021E8370: ; 0x021E8370
 	mov r1, #0xd
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x57
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1717,7 +1717,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, #0x20
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x16
 	lsl r3, r3, #4
 	str r0, [r5, r3]
@@ -1729,7 +1729,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, #0x26
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x59
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -1741,7 +1741,7 @@ ov101_021E8370: ; 0x021E8370
 	add r1, r6, #0
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -13586,7 +13586,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0x45
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x55
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -13597,7 +13597,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0xb
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x56
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -13608,7 +13608,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0xd
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r3, #0x57
 	lsl r3, r3, #2
 	str r0, [r5, r3]
@@ -13619,7 +13619,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	mov r1, #0x43
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -15772,7 +15772,7 @@ ov101_021EF1D8: ; 0x021EF1D8
 	lsr r1, r1, #0x19
 	add r1, #0x16
 	add r3, #0x48
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x44]
 	add r0, r4, #0
 	bl NARC_dtor
@@ -17945,7 +17945,7 @@ ov101_021F0284: ; 0x021F0284
 	mov r2, #0
 	add r1, #0x22
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	ldr r1, _021F036C ; =0x00000508
 	mov r2, #0
 	str r0, [r5, r1]
@@ -27677,7 +27677,7 @@ ov101_021F4BC8: ; 0x021F4BC8
 	add r1, #0x16
 	mov r2, #0
 	add r3, #0x68
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	str r0, [r5, #0x64]
 	add r0, r4, #0
 	bl NARC_dtor

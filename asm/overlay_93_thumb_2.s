@@ -26,7 +26,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	add r2, r7, #0
 	mov r3, #7
 	str r0, [sp, #0x14]
-	bl sub_02007B44
+	bl GfGfxLoader_LoadCharDataFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r1, _0225FC80 ; =ov93_02262CEE
@@ -38,7 +38,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	ldr r0, [sp, #0x14]
 	add r2, r7, #0
 	mov r3, #7
-	bl sub_02007B68
+	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [sp, #0x14]
 	bl NARC_dtor
 	add r0, r4, #0

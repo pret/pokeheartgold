@@ -584,7 +584,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #3
 	mov r2, #0
 	add r3, r5, r3
-	bl sub_02007C2C
+	bl GfGfxLoader_GetScrnDataFromOpenNarc
 	mov r1, #7
 	lsl r1, r1, #6
 	str r0, [r5, r1]
