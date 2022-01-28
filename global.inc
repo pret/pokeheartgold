@@ -30103,3 +30103,6 @@
 .public sub_02095D88
 .public sub_02095DD8
 .public sub_02095DE8
+.public sub_02096C88
+.public sub_02096CF4
+.public sub_02096CC8

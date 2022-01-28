@@ -3,6 +3,7 @@
 #include "constants/maps.h"
 #include "constants/moves.h"
 #include "constants/species.h"
+#include "msgdata/msg/msg_0041.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -177,7 +178,7 @@ _02096346:
 	mov r3, #2
 	bl DrawFrameAndWindow1
 	ldr r0, [sp, #0xc]
-	mov r1, #3
+	mov r1, #msg_0041_00003
 	add r2, r4, #0
 	bl ReadMsgDataIntoString
 	mov r1, #0

@@ -274,7 +274,22 @@ Static main
 	Object unk_020957B0.o
 	Object unk_02095DF4.o
 	Object error_message_reset.o
-	Object unk_02096594.o
+	Object sin_vcount.o
+	Object unk_020965A4.o
+	Object unk_020968B0.o
+	Object unk_02096910.o
+	Object unk_02096C88.o
+	Object unk_02097024.o
+	Object unk_020971F8.o
+	Object unk_02097268.o
+	Object unk_02097720.o
+	Object unk_020977CC.o
+	Object unk_020979A8.o
+	Object unk_02097B78.o
+	Object unk_02097BE0.o
+	Object unk_02097D3C.o
+	Object unk_02097E4C.o
+	Object unk_02097F6C.o
 
 	### Vendor libraries ###
 	Object middleware.o
