@@ -1005,8 +1005,8 @@ ScrCmd_PartySelectMon: ; 0x0204D8C8
 	.balign 4, 0
 	thumb_func_end ScrCmd_PartySelectMon
 
-	thumb_func_start ScrCmd_497
-ScrCmd_497: ; 0x0204D8F0
+	thumb_func_start ScrCmd_GetMonTypes
+ScrCmd_GetMonTypes: ; 0x0204D8F0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -1051,7 +1051,7 @@ ScrCmd_497: ; 0x0204D8F0
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_497
+	thumb_func_end ScrCmd_GetMonTypes
 
 	thumb_func_start ScrCmd_GetPartyCount
 ScrCmd_GetPartyCount: ; 0x0204D95C

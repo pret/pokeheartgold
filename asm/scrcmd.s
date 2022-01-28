@@ -517,9 +517,9 @@ gScriptCmdTable:
 	.word ScrCmd_CreateRoamer                                    ; 464
 	.word ScrCmd_465                                    ; 465
 	.word ScrCmd_466                                    ; 466
-	.word ScrCmd_467                                    ; 467
-	.word ScrCmd_468                                    ; 468
-	.word ScrCmd_469                                    ; 469
+	.word ScrCmd_MoveRelearnerInit                                    ; 467
+	.word ScrCmd_MoveTutorInit                                    ; 468
+	.word ScrCmd_MoveRelearnerGetResult                                    ; 469
 	.word ScrCmd_470                                    ; 470
 	.word ScrCmd_471                                    ; 471
 	.word ScrCmd_472                                    ; 472
@@ -547,7 +547,7 @@ gScriptCmdTable:
 	.word ScrCmd_494                                    ; 494
 	.word ScrCmd_GetGameVersion                                    ; 495
 	.word ScrCmd_496                                    ; 496
-	.word ScrCmd_497                                    ; 497
+	.word ScrCmd_GetMonTypes                                    ; 497
 	.word ScrCmd_PrimoPasswordCheck1                    ; 498
 	.word ScrCmd_PrimoPasswordCheck2                    ; 499
 	.word ScrCmd_500                                    ; 500

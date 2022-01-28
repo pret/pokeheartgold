@@ -259,6 +259,13 @@ Static main
 	Object unk_02091564.o
 	Object unk_020915B0.o
 	Object unk_02091664.o
+	Object field_blackthorn_tutors.o
+	Object unk_02091880.o
+	Object unk_02091CDC.o
+	Object unk_020921A4.o
+	Object save_data_read_error.o
+	Object save_data_write_error.o
+	Object unk_02092B04.o
 
 	### Vendor libraries ###
 	Object middleware.o

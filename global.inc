@@ -2148,9 +2148,9 @@
 .public ScrCmd_CreateRoamer
 .public ScrCmd_465
 .public ScrCmd_466
-.public ScrCmd_467
-.public ScrCmd_468
-.public ScrCmd_469
+.public ScrCmd_MoveRelearnerInit
+.public ScrCmd_MoveTutorInit
+.public ScrCmd_MoveRelearnerGetResult
 .public ScrCmd_470
 .public ScrCmd_471
 .public ScrCmd_472
@@ -2177,7 +2177,7 @@
 .public ScrCmd_494
 .public ScrCmd_GetGameVersion
 .public ScrCmd_496
-.public ScrCmd_497
+.public ScrCmd_GetMonTypes
 .public ScrCmd_PrimoPasswordCheck1
 .public ScrCmd_PrimoPasswordCheck2
 .public ScrCmd_500
@@ -29549,8 +29549,8 @@
 .public sub_020916F8
 .public sub_02091714
 .public sub_02091730
-.public sub_0209174C
-.public sub_02091764
+.public MoveRelearner_new
+.public MoveRelearner_delete
 .public sub_0209186C
 .public sub_02091880
 .public sub_020918C0
@@ -29560,7 +29560,7 @@
 .public sub_02091C74
 .public sub_02091C84
 .public sub_02091CAC
-.public sub_020927D0
+.public ShowGBACartRemovedError
 .public sub_02092B04
 .public sub_02092BB8
 .public sub_02092BD0

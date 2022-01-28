@@ -2657,18 +2657,18 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_467 arg0
+	.macro move_relearner_init arg0
 	.short 467
 	.short \arg0
 	.endm
 
-	.macro scrcmd_468 arg0, arg1
+	.macro move_tutor_init arg0, arg1
 	.short 468
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_469 arg0
+	.macro move_relearner_get_result arg0
 	.short 469
 	.short \arg0
 	.endm
@@ -2825,7 +2825,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_497 arg0, arg1, arg2
+	.macro get_mon_types arg0, arg1, arg2
 	.short 497
 	.short \arg0
 	.short \arg1

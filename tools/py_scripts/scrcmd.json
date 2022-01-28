@@ -2409,13 +2409,13 @@
     {
       "name": "scrcmd_394",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_395",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2428,8 +2428,8 @@
     {
       "name": "scrcmd_397",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2916,27 +2916,27 @@
     {
       "name": "scrcmd_466",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
-      "name": "scrcmd_467",
+      "name": "move_relearner_init",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_468",
+      "name": "move_tutor_init",
       "args": [
-        2,
-        2
+        "var",
+        "move"
       ]
     },
     {
-      "name": "scrcmd_469",
+      "name": "move_relearner_get_result",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3131,11 +3131,11 @@
       ]
     },
     {
-      "name": "scrcmd_497",
+      "name": "get_mon_types",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {

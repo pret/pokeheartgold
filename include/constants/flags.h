@@ -368,7 +368,7 @@
 #define FLAG_UNK_15B                                               0x15B
 #define FLAG_UNK_15C                                               0x15C
 #define FLAG_UNK_15D                                               0x15D
-#define FLAG_UNK_15E                                               0x15E
+#define FLAG_MET_MOVE_MANIAC                                               0x15E
 #define FLAG_BUG_CONTEST_OTHER_POKES_HELD                                               0x15F
 #define FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE                                    0x160
 #define FLAG_UNK_161                                               0x161

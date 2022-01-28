@@ -98,7 +98,7 @@ ov74_022270C4: ; 0x022270C4
 	bl sub_02038D64
 _022270FE:
 	mov r0, #0x4f
-	bl sub_020927D0
+	bl ShowGBACartRemovedError
 	b _02227114
 _02227106:
 	bl PlaySE
@@ -24618,7 +24618,7 @@ _02233312:
 	bl sub_020275A4
 _02233322:
 	mov r0, #0x4c
-	bl sub_020927D0
+	bl ShowGBACartRemovedError
 _02233328:
 	ldr r0, [r4, #0xc]
 	add r0, r0, #1

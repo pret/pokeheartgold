@@ -57,8 +57,8 @@ _0068:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_394 32770
-	scrcmd_395 32769
+	scrcmd_394 VAR_SPECIAL_x8002
+	scrcmd_395 VAR_SPECIAL_x8001
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -76,7 +76,7 @@ _0068:
 	end
 
 _011D:
-	scrcmd_397 32770, 32769
+	scrcmd_397 VAR_SPECIAL_x8002, VAR_SPECIAL_x8001
 	play_fanfare SEQ_ME_WASURE
 	wait_fanfare
 	npc_msg msg_0635_T30R0601_00008
@@ -106,7 +106,7 @@ scr_seq_T30R0601_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_unset FLAG_UNK_15E, _0238
+	goto_if_unset FLAG_MET_MOVE_MANIAC, _0238
 	hasitem ITEM_HEART_SCALE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _022D
@@ -125,15 +125,15 @@ scr_seq_T30R0601_001:
 	get_partymon_species VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0247
-	scrcmd_466 32780, 32773
+	scrcmd_466 VAR_SPECIAL_RESULT, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0222
 	npc_msg msg_0635_T30R0601_00013
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_467 32773
-	scrcmd_469 32780
+	move_relearner_init VAR_SPECIAL_x8005
+	move_relearner_get_result VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -166,7 +166,7 @@ _0238:
 	waitbutton
 	closemsg
 	releaseall
-	setflag FLAG_UNK_15E
+	setflag FLAG_MET_MOVE_MANIAC
 	end
 
 _0247:
@@ -249,7 +249,7 @@ _02F0:
 	get_partymon_species VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0346
-	scrcmd_497 32772, 32773, 16384
+	get_mon_types VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_TEMP_x4000
 	compare VAR_SPECIAL_x8004, 16
 	goto_if_eq _0331
 	compare VAR_SPECIAL_x8005, 16
@@ -298,8 +298,8 @@ _0359:
 _03EF:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_468 32768, 434
-	scrcmd_469 32780
+	move_tutor_init VAR_SPECIAL_x8000, MOVE_DRACO_METEOR
+	move_relearner_get_result VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -312,7 +312,7 @@ _03EF:
 	end
 
 _042B:
-	scrcmd_497 32772, 32773, 32768
+	get_mon_types VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_x8004, 16
 	goto_if_eq _0455
 	compare VAR_SPECIAL_x8005, 16
@@ -408,8 +408,8 @@ _05BB:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_468 32768, 32771
-	scrcmd_469 32780
+	move_tutor_init VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
+	move_relearner_get_result VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

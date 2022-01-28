@@ -467,9 +467,9 @@ extern BOOL ScrCmd_463(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CreateRoamer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_465(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_466(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_467(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_468(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_469(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_470(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_471(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_472(SCRIPTCONTEXT *ctx);
@@ -497,7 +497,7 @@ extern BOOL ScrCmd_PromptEasyChat(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_494(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GetGameVersion(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_496(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_497(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetMonTypes(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PrimoPasswordCheck1(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PrimoPasswordCheck2(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_500(SCRIPTCONTEXT *ctx);
@@ -1322,9 +1322,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CreateRoamer,
     ScrCmd_465,
     ScrCmd_466,
-    ScrCmd_467,
-    ScrCmd_468,
-    ScrCmd_469,
+    ScrCmd_MoveRelearnerInit,
+    ScrCmd_MoveTutorInit,
+    ScrCmd_MoveRelearnerGetResult,
     ScrCmd_470,
     ScrCmd_471,
     ScrCmd_472,
@@ -1352,7 +1352,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_494,
     ScrCmd_GetGameVersion,
     ScrCmd_496,
-    ScrCmd_497,
+    ScrCmd_GetMonTypes,
     ScrCmd_PrimoPasswordCheck1,
     ScrCmd_PrimoPasswordCheck2,
     ScrCmd_500,
