@@ -1,3 +1,4 @@
+#include "constants/pokemon.h"
 #include "constants/species.h"
 #include "constants/maps.h"
 #include "constants/sprites.h"
@@ -1100,8 +1101,8 @@ sub_02069F7C: ; 0x02069F7C
 _02069F84: .word MapObject_GetParam
 	thumb_func_end sub_02069F7C
 
-	thumb_func_start sub_02069F88
-sub_02069F88: ; 0x02069F88
+	thumb_func_start FollowingPokemon_IsActive
+FollowingPokemon_IsActive: ; 0x02069F88
 	push {r3, lr}
 	add r1, r0, #0
 	add r1, #0xfa
@@ -1122,13 +1123,13 @@ _02069FAA:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02069F88
+	thumb_func_end FollowingPokemon_IsActive
 
 	thumb_func_start sub_02069FB0
 sub_02069FB0: ; 0x02069FB0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02069FD0
 	add r4, #0xe4
@@ -1448,7 +1449,7 @@ sub_0206A1F4: ; 0x0206A1F4
 	bl GF_AssertFail
 	pop {r3, r4, r5, pc}
 _0206A206:
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	mov r2, #0
 	bl GetMonData
 	add r1, sp, #0
@@ -1473,7 +1474,7 @@ _0206A230:
 	strb r3, [r1]
 _0206A232:
 	ldr r0, [r5, #8]
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
 	bl SetMonData
 	pop {r3, r4, r5, pc}
@@ -1493,7 +1494,7 @@ sub_0206A240: ; 0x0206A240
 	add sp, #0x10
 	bx r3
 _0206A256:
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0xc
 	bl SetMonData
 	pop {r3}
@@ -1513,7 +1514,7 @@ sub_0206A268: ; 0x0206A268
 	mov r0, #0
 	pop {r3, pc}
 _0206A278:
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	mov r2, #0
 	bl GetMonData
 	lsl r0, r0, #0x18
@@ -1547,7 +1548,7 @@ _0206A2A2:
 	strh r2, [r0, #6]
 	str r1, [r0, #8]
 	add r0, r1, #0
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
 	bl SetMonData
 _0206A2BC:
@@ -1567,7 +1568,7 @@ sub_0206A2C0: ; 0x0206A2C0
 	add sp, #4
 	pop {r3, r4, pc}
 _0206A2D4:
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	mov r2, #0
 	bl GetMonData
 	add r1, sp, #0
@@ -1585,7 +1586,7 @@ _0206A2EE:
 	strb r0, [r1]
 _0206A2F4:
 	ldr r0, [r4, #8]
-	mov r1, #0xbb
+	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
 	bl SetMonData
 	add sp, #4
@@ -2156,7 +2157,7 @@ _0206A74A:
 	cmp r0, #0
 	beq _0206A790
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0206A782
 	add r0, r5, #0

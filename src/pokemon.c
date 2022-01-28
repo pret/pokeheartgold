@@ -878,8 +878,8 @@ static u32 GetBoxMonDataInternal(BOXMON * boxmon, int attr, void * dest) {
     case MON_DATA_SHINY_LEAF_CROWN:
         ret = (blockB->HGSS_shinyLeaves >> (attr - MON_DATA_SHINY_LEAF_A)) & 1;
         break;
-    case MON_DATA_187:
-        ret = blockD->unk_1F;
+    case MON_DATA_MOOD:
+        ret = blockD->mood;
         break;
     }
     return ret;
@@ -1344,8 +1344,8 @@ static void SetBoxMonDataInternal(BOXMON * boxmon, int attr, const void * value)
             blockB->HGSS_shinyLeaves &= (1 << (attr - MON_DATA_SHINY_LEAF_A)) ^ 0x3F;
         }
         break;
-    case MON_DATA_187:
-        blockD->unk_1F = VALUE(u8);
+    case MON_DATA_MOOD:
+        blockD->mood = VALUE(u8);
         break;
     }
 #undef VALUE

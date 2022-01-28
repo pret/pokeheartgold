@@ -1156,7 +1156,7 @@ _02254744: ; jump table
 	.short _02254C44 - _02254744 - 2 ; case 9
 _02254758:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	ldr r0, [r5, #0x40]
 	beq _0225479C
@@ -1203,7 +1203,7 @@ _022547BA:
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _022547FE
 	add r0, r5, #0
@@ -1549,7 +1549,7 @@ _02254A22:
 	add r1, sp, #0x68
 	bl MapObject_SetPositionVec
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _02254AA6
 	b _02254C9E
@@ -1603,7 +1603,7 @@ _02254AE0:
 	mov r1, #0x4a
 	bl MapObject_SetHeldMovement
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02254B52
 	add r0, r5, #0
@@ -1701,7 +1701,7 @@ _02254BD4:
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02254C22
 	add r0, r5, #0
@@ -1748,7 +1748,7 @@ _02254C44:
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02254C88
 	add r0, r5, #0
@@ -2132,10 +2132,10 @@ ov04_02254F44: ; 0x02254F44
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	add r5, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F1BC
+	bl MapObjectMan_GetArray
 	mov r4, #0
 	str r0, [sp]
 	cmp r5, #0
@@ -2144,7 +2144,7 @@ ov04_02254F44: ; 0x02254F44
 	add r7, sp, #0
 _02254F62:
 	ldr r0, [sp]
-	bl sub_0205F624
+	bl MapObject_IsInUse
 	cmp r0, #1
 	bne _02254F7C
 	ldr r0, [sp]
@@ -4949,7 +4949,7 @@ ov04_022564A0: ; 0x022564A0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	str r0, [sp, #0xc]
 	ldr r0, [r0]
 	cmp r0, #6

@@ -56,7 +56,7 @@ sub_0206D4E4: ; 0x0206D4E4
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3
@@ -75,7 +75,7 @@ _0206D510: ; jump table
 _0206D518:
 	ldr r0, [r6, #0x3c]
 	bl sub_0205C600
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _0206D586
 	ldr r0, _0206D58C ; =0x00000906
@@ -98,7 +98,7 @@ _0206D534:
 	b _0206D586
 _0206D54E:
 	ldr r0, [r5]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _0206D586
 	ldr r0, [r5, #4]
@@ -109,7 +109,7 @@ _0206D54E:
 	str r0, [r4]
 	b _0206D586
 _0206D566:
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _0206D586
 	ldr r0, [r4]
@@ -144,7 +144,7 @@ sub_0206D590: ; 0x0206D590
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetCurrentHeight
@@ -153,7 +153,7 @@ sub_0206D590: ; 0x0206D590
 	bl MapObject_GetCurrentY
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r3, r0, #0
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
@@ -201,10 +201,10 @@ sub_0206D614: ; 0x0206D614
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl sub_0205F1BC
+	bl MapObjectMan_GetArray
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	add r5, r0, #0
 _0206D62E:
 	ldr r0, [sp, #4]
@@ -265,14 +265,14 @@ sub_0206D688: ; 0x0206D688
 	b _0206D7A8
 _0206D69E:
 	ldr r0, [r5]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _0206D7A8
 	ldr r0, [r5]
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	ldrb r0, [r5, #8]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5]
 	bl MapObject_GetCurrentHeight
@@ -281,7 +281,7 @@ _0206D69E:
 	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	ldrb r0, [r5, #8]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	str r0, [sp, #4]
 	ldr r3, [sp, #4]
 	ldr r0, [r5]
@@ -346,7 +346,7 @@ _0206D742:
 	b _0206D7A8
 _0206D750:
 	ldr r0, [r5]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _0206D7A8
 	ldrb r0, [r5, #8]
@@ -368,7 +368,7 @@ _0206D778:
 	b _0206D7A8
 _0206D77E:
 	ldr r0, [r5]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _0206D7A8
 	ldr r0, _0206D7B4 ; =0x00000907
@@ -933,7 +933,7 @@ sub_0206DBC0: ; 0x0206DBC0
 	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r6, r0, #0
 	ldr r0, [r6]
 	cmp r0, #0

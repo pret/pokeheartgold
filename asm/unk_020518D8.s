@@ -617,7 +617,7 @@ _02051D76:
 	str r0, [r5, r1]
 _02051D94:
 	add r0, r6, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02051DDA
 	add r0, r6, #0

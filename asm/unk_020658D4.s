@@ -26,7 +26,7 @@ sub_020658D4: ; 0x020658D4
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0205F6AC
@@ -167,7 +167,7 @@ sub_020659CC: ; 0x020659CC
 	bl sub_0205F394
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	add r0, r5, #0
 	bl sub_0205F660
 	add r0, r5, #0
@@ -221,7 +221,7 @@ sub_02065A4C: ; 0x02065A4C
 	bl MapObject_GetFieldSysPtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	add r0, r5, #0
 	bl sub_0205F660
 	mov r0, #1
@@ -292,7 +292,7 @@ _02065AEA:
 	cmp r0, #0
 	beq _02065B0E
 	add r0, r4, #0
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl PlayerAvatar_GetFacingDirection
 	add r1, r0, #0
 	lsl r1, r1, #0x18
@@ -332,7 +332,7 @@ _02065B4C:
 	bl sub_020664D8
 _02065B52:
 	add r0, r5, #0
-	bl sub_0205F630
+	bl MapObject_SingleMovementSetActive
 	mov r1, #3
 	add r0, r1, #0
 	add r0, #0xfd
@@ -354,7 +354,7 @@ sub_02065B70: ; 0x02065B70
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	add r0, r5, #0
 	bl sub_0205F660
 	add r0, r5, #0
@@ -393,7 +393,7 @@ _02065BC8:
 	cmp r0, #1
 	bne _02065BE2
 	add r0, r5, #0
-	bl sub_0205F630
+	bl MapObject_SingleMovementSetActive
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -410,7 +410,7 @@ sub_02065BE8: ; 0x02065BE8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	add r0, r5, #0
 	bl sub_0205F660
 	add r0, r5, #0
@@ -426,7 +426,7 @@ sub_02065BE8: ; 0x02065BE8
 	cmp r0, #1
 	bne _02065C26
 	add r0, r5, #0
-	bl sub_0205F630
+	bl MapObject_SingleMovementSetActive
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -447,7 +447,7 @@ sub_02065C2C: ; 0x02065C2C
 	cmp r0, #1
 	bne _02065C44
 	add r0, r5, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	mov r0, #0
 	strb r0, [r4]
 _02065C44:
@@ -470,7 +470,7 @@ sub_02065C48: ; 0x02065C48
 	cmp r0, #2
 	blo _02065C78
 	add r0, r5, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	mov r0, #0
 	strb r0, [r4]
 	strb r0, [r4, #3]
@@ -498,7 +498,7 @@ sub_02065C90: ; 0x02065C90
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r4, r0, #0
 	bl PlayerAvatar_GetMapObject
 	mov r1, #0x10
@@ -555,7 +555,7 @@ sub_02065CFC: ; 0x02065CFC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	mov r1, #1
 	add r4, r0, #0
 	strb r1, [r5, #1]
@@ -575,7 +575,7 @@ sub_02065D24: ; 0x02065D24
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r6, r0, #0
 	beq _02065D54
 	bl GetPlayerXCoord
@@ -603,7 +603,7 @@ sub_02065D58: ; 0x02065D58
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r4, r0, #0
 	bl GetPlayerXCoord
 	strh r0, [r5, #4]
@@ -619,7 +619,7 @@ sub_02065D78: ; 0x02065D78
 	push {r4, lr}
 	bl MapObject_GetFieldSysPtr
 	add r4, r0, #0
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r4, #0xe8
 	ldr r0, [r4]
 	add r1, r0, #0
@@ -656,7 +656,7 @@ _02065DB2:
 sub_02065DB4: ; 0x02065DB4
 	push {r3, lr}
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	bl MapObject_GetMovementCommand
 	add r1, r0, #0
@@ -697,7 +697,7 @@ sub_02065DF4: ; 0x02065DF4
 	add r5, r0, #0
 	add r4, r1, #0
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -849,7 +849,7 @@ sub_02065F44: ; 0x02065F44
 	sub sp, #8
 	add r5, r0, #0
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r4, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -904,7 +904,7 @@ sub_02065FBC: ; 0x02065FBC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl MapObject_GetFieldSysPtr
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r4, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentX
@@ -942,7 +942,7 @@ sub_02065FFC: ; 0x02065FFC
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	mov r0, #0
 	strb r0, [r4, #1]
 	pop {r3, r4, r5, pc}
@@ -995,7 +995,7 @@ sub_02066064: ; 0x02066064
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	add r0, r5, #0
 	bl sub_0205F660
 	add r0, r5, #0
@@ -1009,7 +1009,7 @@ sub_02066064: ; 0x02066064
 	cmp r0, #1
 	bne _0206609C
 	add r0, r5, #0
-	bl sub_0205F630
+	bl MapObject_SingleMovementSetActive
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -1032,7 +1032,7 @@ sub_020660A0: ; 0x020660A0
 	pop {r3, r4, r5, pc}
 _020660B2:
 	add r0, r5, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	mov r0, #0
 	strb r0, [r4]
 	pop {r3, r4, r5, pc}
@@ -1215,7 +1215,7 @@ sub_020661F0: ; 0x020661F0
 	beq _02066236
 _0206621A:
 	add r0, r5, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #1
 	beq _02066232
 	mov r1, #0x61
@@ -1270,10 +1270,10 @@ _02066282:
 	add r1, r6, #0
 	bl sub_02061200
 	add r5, r0, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r4, r4, r0
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r1, r6, r0
 	ldr r0, [sp, #8]
 	cmp r4, r0
@@ -1310,7 +1310,7 @@ sub_020662C4: ; 0x020662C4
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14
@@ -1449,7 +1449,7 @@ sub_020663B4: ; 0x020663B4
 	bl sub_02066420
 _020663CE:
 	add r0, r5, #0
-	bl sub_0205F63C
+	bl MapObject_SingleMovementSetInactive
 	add r0, r5, #0
 	bl sub_0205F660
 	ldrb r0, [r4]

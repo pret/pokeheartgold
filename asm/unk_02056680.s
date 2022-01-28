@@ -122,13 +122,13 @@ _02056760:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _020567AE
 	add r0, r6, #0
 	bl MapObject_ClearHeldMovementIfActive
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02056792
 	ldr r0, [r5, #0x40]
@@ -311,7 +311,7 @@ _020568DE:
 	cmp r0, #0
 	beq _02056932
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0205691E
 	add r0, r5, #0
@@ -443,7 +443,7 @@ _020569FA:
 	cmp r0, #0
 	beq _02056A4E
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02056A3A
 	add r0, r5, #0
@@ -628,7 +628,7 @@ _02056B70:
 	add r0, sp, #0x1c
 	bl sub_02023514
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02056BC2
 	add r0, r5, #0

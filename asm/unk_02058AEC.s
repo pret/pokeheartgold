@@ -555,7 +555,7 @@ _02058EF6:
 _02058F0E:
 	ldr r0, [r0, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02058FB2
 	mov r0, #0xb

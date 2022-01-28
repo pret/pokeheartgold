@@ -1249,7 +1249,7 @@ _020907D8:
 	beq _0209089E
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl sub_02097EF4
+	bl ApplyItemEffectOnMonMood
 	add r0, r4, #0
 	mov r1, #0x38
 	bl GetItemAttr_PreloadedItemData
@@ -1276,7 +1276,7 @@ _02090820:
 	beq _0209089E
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl sub_02097EF4
+	bl ApplyItemEffectOnMonMood
 	add r0, r4, #0
 	mov r1, #0x39
 	bl GetItemAttr_PreloadedItemData
@@ -1304,7 +1304,7 @@ _0209085E:
 	beq _0209089E
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl sub_02097EF4
+	bl ApplyItemEffectOnMonMood
 	add r0, r4, #0
 	mov r1, #0x3a
 	bl GetItemAttr_PreloadedItemData

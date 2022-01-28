@@ -106,7 +106,7 @@ sub_02097878: ; 0x02097878
 	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0

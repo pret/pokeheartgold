@@ -312,7 +312,7 @@ _02237B10:
 	ldr r1, [sp, #4]
 	bl GetPartyMonByIndex
 	mov r1, #7
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

@@ -3671,7 +3671,7 @@
       ]
     },
     {
-      "name": "scrcmd_581",
+      "name": "lock_last_talked",
       "args": []
     },
     {
@@ -3778,7 +3778,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_601",
+      "name": "follow_poke_face_player",
       "args": []
     },
     {
@@ -4488,7 +4488,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_711",
+      "name": "follow_poke_interact",
       "args": []
     },
     {

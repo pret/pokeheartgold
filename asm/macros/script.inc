@@ -3296,7 +3296,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_581
+	.macro lock_last_talked
 	.short 581
 	.endm
 
@@ -3392,7 +3392,7 @@
 	.short 600
 	.endm
 
-	.macro scrcmd_601
+	.macro follow_poke_face_player
 	.short 601
 	.endm
 
@@ -4015,7 +4015,7 @@
 	.short 710
 	.endm
 
-	.macro scrcmd_711
+	.macro follow_poke_interact
 	.short 711
 	.endm
 

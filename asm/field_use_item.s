@@ -208,7 +208,7 @@ sub_02064AD0: ; 0x02064AD0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r6, r0, #0
 	ldr r0, [r6]
 	cmp r0, #0
@@ -395,7 +395,7 @@ sub_02064C58: ; 0x02064C58
 	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -409,12 +409,12 @@ _02064C7A:
 	b _02064D9E
 _02064C7C:
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02064CBA
 	add r0, r4, #0
 	bl FollowingPokemon_GetMapObject
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _02064C96
 	b _02064D9E
@@ -448,7 +448,7 @@ _02064CC2:
 	bne _02064D3E
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4, #0x40]
 	mov r1, #1
 	bl ov01_021F1AFC
@@ -477,7 +477,7 @@ _02064D08:
 	lsr r1, r1, #0x18
 	bl ov01_02205790
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02064D8C
 	add r0, r4, #0
@@ -503,7 +503,7 @@ _02064D3E:
 _02064D58:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4, #0x40]
 	mov r1, #2
 	bl ov01_021F1AFC
@@ -512,7 +512,7 @@ _02064D58:
 	add r0, r4, #0
 	bl ov01_02205D68
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02064D8C
 	add r0, r4, #0
@@ -526,7 +526,7 @@ _02064D8C:
 	b _02064D9E
 _02064D94:
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02064D9E:
@@ -1076,7 +1076,7 @@ _020651AE:
 	add r0, #0xd2
 	strb r1, [r0]
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r4, #8]
 	add r1, r5, #0
 	mov r2, #3
@@ -1130,7 +1130,7 @@ _02065214:
 	b _0206524E
 _02065232:
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r5, #0
 	bl RemoveWindow
 	ldr r0, [r5, #0x10]
@@ -1509,7 +1509,7 @@ sub_02065508: ; 0x02065508
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1539,7 +1539,7 @@ _02065546:
 	cmp r0, #1
 	bne _0206555A
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0206555A:
@@ -1906,7 +1906,7 @@ _02065812: ; jump table
 	.short _0206589C - _02065812 - 2 ; case 5
 _0206581E:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	mov r0, #0
 	bl ov01_021E636C
 	mov r0, #1
@@ -1958,7 +1958,7 @@ _0206587E:
 	cmp r0, #0
 	beq _020658B4
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	mov r0, #1
 	bl ov01_021E636C
 	mov r0, #5
@@ -1970,7 +1970,7 @@ _0206589C:
 	cmp r0, #0
 	beq _020658B4
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #1

@@ -734,7 +734,7 @@ ov28_0225DA74: ; 0x0225DA74
 	add r2, sp, #0x20
 	bl ov28_0225DA1C
 	ldr r0, [r5, #0x18]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	bne _0225DB22
@@ -2468,7 +2468,7 @@ _0225E828:
 	cmp r0, #0
 	ldr r0, [r5, #0x18]
 	bne _0225E860
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	bl MapObject_GetGfxID
@@ -2639,7 +2639,7 @@ _0225E96C:
 	cmp r0, #1
 	bne _0225E9DA
 	ldr r0, [r5, #0x18]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205CB38
 	add r4, r0, #0

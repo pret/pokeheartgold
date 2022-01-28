@@ -74,7 +74,7 @@ _0205FD94:
 sub_0205FD98: ; 0x0205FD98
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #1
 	bne _0205FDA8
 	mov r0, #1
@@ -1831,7 +1831,7 @@ sub_02060BB8: ; 0x02060BB8
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentHeight
@@ -1840,7 +1840,7 @@ sub_02060BB8: ; 0x02060BB8
 	bl MapObject_GetCurrentY
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	str r4, [sp]
 	add r3, r0, #0
 	ldr r4, [sp, #8]
@@ -1867,7 +1867,7 @@ sub_02060BFC: ; 0x02060BFC
 	bl sub_0205F1AC
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	str r0, [sp, #4]
 _02060C1C:
 	ldr r0, [sp, #8]
@@ -1950,7 +1950,7 @@ sub_02060CA8: ; 0x02060CA8
 	bl sub_0205F1AC
 	str r0, [sp, #4]
 	add r0, r7, #0
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	add r7, r0, #0
 _02060CC8:
 	ldr r0, [sp, #4]
@@ -2259,25 +2259,25 @@ _02060F08:
 	pop {r4, pc}
 	thumb_func_end sub_02060EEC
 
-	thumb_func_start sub_02060F0C
-sub_02060F0C: ; 0x02060F0C
+	thumb_func_start GetDeltaXByFacingDirection
+GetDeltaXByFacingDirection: ; 0x02060F0C
 	lsl r1, r0, #2
 	ldr r0, _02060F14 ; =_020FD4AC
 	ldr r0, [r0, r1]
 	bx lr
 	.balign 4, 0
 _02060F14: .word _020FD4AC
-	thumb_func_end sub_02060F0C
+	thumb_func_end GetDeltaXByFacingDirection
 
-	thumb_func_start sub_02060F18
-sub_02060F18: ; 0x02060F18
+	thumb_func_start GetDeltaYByFacingDirection
+GetDeltaYByFacingDirection: ; 0x02060F18
 	lsl r1, r0, #2
 	ldr r0, _02060F20 ; =_020FD49C
 	ldr r0, [r0, r1]
 	bx lr
 	.balign 4, 0
 _02060F20: .word _020FD49C
-	thumb_func_end sub_02060F18
+	thumb_func_end GetDeltaYByFacingDirection
 
 	thumb_func_start sub_02060F24
 sub_02060F24: ; 0x02060F24
@@ -2299,7 +2299,7 @@ sub_02060F24: ; 0x02060F24
 	add r0, r5, #0
 	bl MapObject_SetPrevY
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_AddCurrentX
@@ -2307,7 +2307,7 @@ sub_02060F24: ; 0x02060F24
 	mov r1, #0
 	bl MapObject_AddCurrentHeight
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_AddCurrentY
@@ -2344,13 +2344,13 @@ sub_02060FA8: ; 0x02060FA8
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetCurrentY
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetFieldSysPtr
@@ -2370,13 +2370,13 @@ sub_02060FE0: ; 0x02060FE0
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetCurrentY
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetFieldSysPtr

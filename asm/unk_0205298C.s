@@ -25,7 +25,7 @@ sub_0205298C: ; 0x0205298C
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -164,7 +164,7 @@ sub_02052AA0: ; 0x02052AA0
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0xb

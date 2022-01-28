@@ -96,8 +96,8 @@ MapObject_ForceSetHeldMovement: ; 0x0206217C
 	.balign 4, 0
 	thumb_func_end MapObject_ForceSetHeldMovement
 
-	thumb_func_start MapObject_IsHeldMovementActive
-MapObject_IsHeldMovementActive: ; 0x02062198
+	thumb_func_start MapObject_IsMovementPaused
+MapObject_IsMovementPaused: ; 0x02062198
 	push {r4, lr}
 	mov r1, #0x10
 	add r4, r0, #0
@@ -118,7 +118,7 @@ _020621BA:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end MapObject_IsHeldMovementActive
+	thumb_func_end MapObject_IsMovementPaused
 
 	thumb_func_start MapObject_ClearHeldMovementIfActive
 MapObject_ClearHeldMovementIfActive: ; 0x020621C0
@@ -220,7 +220,7 @@ sub_0206226C: ; 0x0206226C
 	bl sub_0201F988
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	beq _02062284
 	bl GF_AssertFail
@@ -302,7 +302,7 @@ MovementScriptMachineSub_WaitMovementCommand: ; 0x020622F8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _0206230A
 	mov r0, #0

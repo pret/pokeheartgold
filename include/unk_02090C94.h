@@ -32,6 +32,6 @@ static inline u32 SpeciesGetDexHeight(int species) {
 
 #define LengthConvertToImperial(metric) ((((metric) * 1000) / 254 + 5) / 10)
 
-void sub_02097F0C(POKEMON *pokemon, int a1);
+void ApplyMonMoodModifier(POKEMON *pokemon, int a1);
 
 #endif //POKEHEARTGOLD_UNK_02090C94_H

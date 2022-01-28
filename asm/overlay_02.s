@@ -4763,7 +4763,7 @@ _02248058:
 	pop {r3, r4, r5, pc}
 _02248060:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0224808A
 	ldr r0, [r5, #0xc]
@@ -12095,7 +12095,7 @@ ov02_0224B6B0: ; 0x0224B6B0
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	mov r0, #0x82
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -13302,7 +13302,7 @@ ov02_0224BFD8: ; 0x0224BFD8
 	b _0224C01A
 _0224C006:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0224C016
 	mov r0, #1
@@ -13787,7 +13787,7 @@ ov02_0224C3AC: ; 0x0224C3AC
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #3
@@ -14010,7 +14010,7 @@ ov02_0224C558: ; 0x0224C558
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #3
@@ -17761,7 +17761,7 @@ _0224E114: ; jump table
 _0224E120:
 	add r0, r6, #0
 	bl FollowingPokemon_GetMapObject
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -17776,7 +17776,7 @@ _0224E130:
 	beq _0224E21E
 	add r0, r6, #0
 	bl FollowingPokemon_GetMapObject
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -18128,10 +18128,10 @@ _0224E3BE:
 	bl GetPlayerYCoord
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r6, r4, r0
 	add r0, r7, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldr r1, [sp, #8]
 	add r4, r1, r0
 	cmp r6, #0x20
@@ -18346,12 +18346,12 @@ _0224E584:
 	asr r0, r0, #0xc
 	strb r0, [r4, #0x1a]
 	ldr r0, [sp, #0x10]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	ldr r1, [sp, #0x14]
 	add r0, r1, r0
 	strb r0, [r4, #9]
 	ldr r0, [sp, #0x10]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r0, r7, r0
 	strb r0, [r4, #0xb]
 	mov r0, #1
@@ -18588,13 +18588,13 @@ ov02_0224E754: ; 0x0224E754
 	bl GetPlayerXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r5, r0
 	ldr r0, [r4, #0x40]
 	bl GetPlayerYCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r6, r5, r0
 	ldr r0, [r4, #0xc]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -19613,17 +19613,17 @@ _0224EF78:
 	.balign 4, 0
 	thumb_func_end ov02_0224EF6C
 
-	thumb_func_start ov02_0224EF80
-ov02_0224EF80: ; 0x0224EF80
+	thumb_func_start Fsys_FollowPokeInteract
+Fsys_FollowPokeInteract: ; 0x0224EF80
 	ldr r3, _0224EF8C ; =QueueTask
 	ldr r0, [r0, #0x10]
-	ldr r1, _0224EF90 ; =ov02_02250110
+	ldr r1, _0224EF90 ; =Task_FollowPokeInteract
 	mov r2, #0
 	bx r3
 	nop
 _0224EF8C: .word QueueTask
-_0224EF90: .word ov02_02250110
-	thumb_func_end ov02_0224EF80
+_0224EF90: .word Task_FollowPokeInteract
+	thumb_func_end Fsys_FollowPokeInteract
 
 	thumb_func_start ov02_0224EF94
 ov02_0224EF94: ; 0x0224EF94
@@ -20324,10 +20324,10 @@ ov02_0224F4BC: ; 0x0224F4BC
 	bl GetPlayerYCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F168
+	bl MapObjectMan_GetCount
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F1BC
+	bl MapObjectMan_GetArray
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -20338,7 +20338,7 @@ ov02_0224F4BC: ; 0x0224F4BC
 	add r7, #0xc
 _0224F4FC:
 	ldr r0, [sp, #0x10]
-	bl sub_0205F624
+	bl MapObject_IsInUse
 	cmp r0, #1
 	bne _0224F568
 	ldr r0, [sp, #0x10]
@@ -21032,7 +21032,7 @@ _0224F9A8:
 	beq _0224F9CA
 	add r5, #0xe4
 	ldr r0, [r5]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, _0224FB38 ; =0x00000868
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -21049,7 +21049,7 @@ _0224F9CA:
 	beq _0224F9E8
 	add r5, #0xe4
 	ldr r0, [r5]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, _0224FB3C ; =0x00000869
 	mov r1, #2
 	strb r1, [r4, r0]
@@ -21063,7 +21063,7 @@ _0224F9E8:
 	beq _0224FA06
 	add r5, #0xe4
 	ldr r0, [r5]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r0, _0224FB3C ; =0x00000869
 	mov r1, #6
 	strb r1, [r4, r0]
@@ -21979,14 +21979,14 @@ _02250108: .word 0x00000868
 _0225010C: .word 0x0000087C
 	thumb_func_end ov02_02250004
 
-	thumb_func_start ov02_02250110
-ov02_02250110: ; 0x02250110
+	thumb_func_start Task_FollowPokeInteract
+Task_FollowPokeInteract: ; 0x02250110
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r6, r0, #0
 	ldr r0, [r6]
 	cmp r0, #5
@@ -22028,7 +22028,7 @@ _0225015C:
 	bne _02250178
 	add r4, #0xe4
 	ldr r0, [r4]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02250178:
@@ -22187,7 +22187,7 @@ _02250272:
 	bne _022502BA
 	add r4, #0xe4
 	ldr r0, [r4]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _022502BA:
@@ -22224,7 +22224,7 @@ _022502C4:
 	bne _0225030A
 	add r4, #0xe4
 	ldr r0, [r4]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0225030A:
@@ -22403,7 +22403,7 @@ _02250418:
 	add r4, #0xe4
 	strb r1, [r0]
 	ldr r0, [r4]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0225047E:
@@ -22417,7 +22417,7 @@ _02250490: .word 0x000004A7
 _02250494: .word 0x00000817
 _02250498: .word 0x0000086E
 _0225049C: .word gMain
-	thumb_func_end ov02_02250110
+	thumb_func_end Task_FollowPokeInteract
 
 	thumb_func_start ov02_022504A0
 ov02_022504A0: ; 0x022504A0
@@ -22894,7 +22894,7 @@ ov02_022507E8: ; 0x022507E8
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -22915,7 +22915,7 @@ _0225081E:
 	add r0, r6, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -22927,7 +22927,7 @@ _0225082E:
 	beq _022508AA
 	add r6, #0xe4
 	ldr r0, [r6]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -23013,7 +23013,7 @@ ov02_022508D8: ; 0x022508D8
 	bl TaskManager_GetSys
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -24226,7 +24226,7 @@ ov02_022512AC: ; 0x022512AC
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -24286,7 +24286,7 @@ ov02_02251320: ; 0x02251320
 	bl TaskManager_GetSys
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	str r0, [sp, #4]
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
@@ -24631,7 +24631,7 @@ ov02_022515D0: ; 0x022515D0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r4, #0
 	add r0, #0xe0
@@ -26313,7 +26313,7 @@ ov02_02252334: ; 0x02252334
 	pop {r4, r5, r6, pc}
 _0225234A:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _022523B0
 	add r0, r5, #0
@@ -26385,7 +26385,7 @@ ov02_022523D0: ; 0x022523D0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetSys
@@ -26413,7 +26413,7 @@ _02252400: ; jump table
 _0225240A:
 	add r0, r4, #0
 	bl FollowingPokemon_GetMapObject
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	ldr r0, [r4, #0x10]
 	ldr r1, _0225252C ; =ov01_02205A60
 	mov r2, #0
@@ -26537,7 +26537,7 @@ _0225250A:
 	bl FreeToHeap
 	add r0, r4, #0
 	bl FollowingPokemon_GetMapObject
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -26576,7 +26576,7 @@ ov02_0225255C: ; 0x0225255C
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetSys
@@ -27208,7 +27208,7 @@ ov02_02252A28: ; 0x02252A28
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetSys
@@ -27840,7 +27840,7 @@ ov02_02252F14: ; 0x02252F14
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetSys

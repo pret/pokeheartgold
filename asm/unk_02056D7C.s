@@ -730,7 +730,7 @@ sub_020572AC: ; 0x020572AC
 _020572BC:
 	cmp r0, #0
 	beq _020572CE
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	beq _020572CE
@@ -1868,7 +1868,7 @@ _02057AEE:
 	add r1, r0, r4
 	mov r0, #0x78
 	ldrsb r0, [r1, r0]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	ldr r1, _02057B10 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -1898,7 +1898,7 @@ _02057B26:
 	add r1, r0, r4
 	mov r0, #0x78
 	ldrsb r0, [r1, r0]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldr r1, _02057B48 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2016,7 +2016,7 @@ _02057BFE:
 	add r1, r0, r4
 	mov r0, #0x38
 	ldrsb r0, [r1, r0]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	ldr r1, _02057C20 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2045,7 +2045,7 @@ _02057C36:
 	add r1, r0, r4
 	mov r0, #0x38
 	ldrsb r0, [r1, r0]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldr r1, _02057C58 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2375,12 +2375,12 @@ _02057E98:
 	ldrsb r0, [r6, r0]
 	bl sub_02057EEC
 	str r0, [sp, #4]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	ldrh r1, [r7, r4]
 	add r0, r1, r0
 	strh r0, [r7, r4]
 	ldr r0, [sp, #4]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldrh r1, [r6, #2]
 	add r0, r1, r0
 	strh r0, [r6, #2]

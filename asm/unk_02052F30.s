@@ -637,7 +637,7 @@ sub_02053414: ; 0x02053414
 	bl TaskManager_GetSys
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -703,7 +703,7 @@ sub_0205348C: ; 0x0205348C
 	bl SavArray_Flags_get
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -797,7 +797,7 @@ sub_02053550: ; 0x02053550
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -1384,7 +1384,7 @@ _020539E4: .word sub_020539E8
 sub_020539E8: ; 0x020539E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1425,7 +1425,7 @@ _02053A28: .word sub_02053A2C
 sub_02053A2C: ; 0x02053A2C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetSys
@@ -1659,7 +1659,7 @@ _02053BF4: .word sub_02053BF8
 sub_02053BF8: ; 0x02053BF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -1700,7 +1700,7 @@ _02053C38: .word sub_02053C3C
 sub_02053C3C: ; 0x02053C3C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetSys
@@ -1804,7 +1804,7 @@ _02053D06:
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02053D36
 	add r0, r5, #0
@@ -1883,7 +1883,7 @@ _02053DAA:
 	str r1, [r4, #4]
 	bl ov01_021F35C4
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02053DE6
 	add r0, r5, #0
@@ -1973,7 +1973,7 @@ sub_02053E5C: ; 0x02053E5C
 	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r6, r7, #0
 	ldr r0, [r4]
@@ -2108,7 +2108,7 @@ sub_02053F70: ; 0x02053F70
 	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r6, r7, #0
 	ldr r0, [r4]

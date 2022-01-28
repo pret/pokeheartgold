@@ -459,7 +459,7 @@ _0203BF16: ; jump table
 	.short _0203C130 - _0203BF16 - 2 ; case 20
 _0203BF40:
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	add r0, r4, #0
 	bl ov01_021F6B00
 	cmp r0, #0
@@ -571,7 +571,7 @@ _0203C02A:
 	b _0203C136
 _0203C02C:
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	add r0, r6, #0
 	bl sub_0203C14C
 	add r0, r4, #0
@@ -607,7 +607,7 @@ _0203C06A:
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0203C08A:
@@ -616,7 +616,7 @@ _0203C08A:
 	cmp r0, #0
 	beq _0203C136
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	mov r0, #1
 	bl ov01_021E636C
 	mov r0, #0xd
@@ -646,7 +646,7 @@ _0203C0C6:
 _0203C0D2:
 	bl FreeToHeap
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0203C0E0:
@@ -671,7 +671,7 @@ _0203C0E0:
 	add r0, r5, #0
 	bl FreeToHeap
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0203C11A:

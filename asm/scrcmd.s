@@ -631,7 +631,7 @@ gScriptCmdTable:
 	.word ScrCmd_578                                    ; 578
 	.word ScrCmd_579                                    ; 579
 	.word ScrCmd_BufferSealName                                    ; 580
-	.word ScrCmd_581                                    ; 581
+	.word ScrCmd_LockLastTalked                                    ; 581
 	.word ScrCmd_582                                    ; 582
 	.word ScrCmd_583                                    ; 583
 	.word ScrCmd_PartyLegalCheck                                    ; 584
@@ -651,7 +651,7 @@ gScriptCmdTable:
 	.word ScrCmd_598                                    ; 598
 	.word ScrCmd_599                                    ; 599
 	.word ScrCmd_600                                    ; 600
-	.word ScrCmd_601                                    ; 601
+	.word ScrCmd_FollowPokeFacePlayer                                    ; 601
 	.word ScrCmd_602                                    ; 602
 	.word ScrCmd_603                                    ; 603
 	.word ScrCmd_604                                    ; 604
@@ -761,7 +761,7 @@ gScriptCmdTable:
 	.word ScrCmd_708                                    ; 708
 	.word ScrCmd_709                                    ; 709
 	.word ScrCmd_710                                    ; 710
-	.word ScrCmd_711                                    ; 711
+	.word ScrCmd_FollowPokeInteract                                    ; 711
 	.word ScrCmd_712                                    ; 712
 	.word ScrCmd_AlphPuzzle                                    ; 713
 	.word ScrCmd_714                                    ; 714
@@ -3716,37 +3716,37 @@ ScrCmd_LockAll: ; 0x02041D40
 	cmp r0, #0
 	bne _02041D8A
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02041D90
 	add r0, r4, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	beq _02041D90
 	add r0, r4, #0
-	bl sub_0205F708
-	ldr r1, _02041D94 ; =sub_02041E60
+	bl MapObject_UnpauseMovement
+	ldr r1, _02041D94 ; =_WaitFollowPokePaused
 	add r0, r6, #0
 	bl SetupNativeScript
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02041D8A:
 	add r0, r6, #0
-	bl ScrCmd_581
+	bl ScrCmd_LockLastTalked
 _02041D90:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02041D94: .word sub_02041E60
+_02041D94: .word _WaitFollowPokePaused
 	thumb_func_end ScrCmd_LockAll
 
-	thumb_func_start sub_02041D98
-sub_02041D98: ; 0x02041D98
+	thumb_func_start _WaitMovementPauseBeforeMsg
+_WaitMovementPauseBeforeMsg: ; 0x02041D98
 	push {r4, r5, r6, lr}
 	add r0, #0x80
 	ldr r4, [r0]
@@ -3762,11 +3762,11 @@ sub_02041D98: ; 0x02041D98
 	mov r1, #1
 	tst r1, r2
 	beq _02041DD2
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _02041DD2
 	add r0, r6, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfe
 	ldrb r2, [r1]
@@ -3779,11 +3779,11 @@ _02041DD2:
 	tst r0, r1
 	beq _02041DF6
 	ldr r0, [r5]
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041DF6
 	ldr r0, [r5]
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfb
 	ldrb r2, [r1]
@@ -3799,11 +3799,11 @@ _02041DF6:
 	mov r1, #0x30
 	bl sub_0205EEB4
 	add r4, r0, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041E22
 	add r0, r4, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xfd
 	ldrb r2, [r1]
@@ -3818,11 +3818,11 @@ _02041E22:
 	ldr r0, [r5]
 	bl sub_020660C0
 	add r4, r0, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041E4C
 	add r0, r4, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	ldr r1, _02041E5C ; =_021D415C
 	mov r0, #0xf7
 	ldrb r2, [r1]
@@ -3840,30 +3840,30 @@ _02041E58:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02041E5C: .word _021D415C
-	thumb_func_end sub_02041D98
+	thumb_func_end _WaitMovementPauseBeforeMsg
 
-	thumb_func_start sub_02041E60
-sub_02041E60: ; 0x02041E60
+	thumb_func_start _WaitFollowPokePaused
+_WaitFollowPokePaused: ; 0x02041E60
 	push {r4, lr}
 	add r0, #0x80
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
 	add r4, r0, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041E7E
 	add r0, r4, #0
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	mov r0, #1
 	pop {r4, pc}
 _02041E7E:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02041E60
+	thumb_func_end _WaitFollowPokePaused
 
-	thumb_func_start ScrCmd_581
-ScrCmd_581: ; 0x02041E84
+	thumb_func_start ScrCmd_LockLastTalked
+ScrCmd_LockLastTalked: ; 0x02041E84
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r0, [sp]
@@ -3887,9 +3887,9 @@ ScrCmd_581: ; 0x02041E84
 	ldr r1, _02041F48 ; =_021D415C
 	mov r2, #0
 	strb r2, [r1]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [sp, #4]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _02041ED8
 	ldr r1, _02041F48 ; =_021D415C
@@ -3898,10 +3898,10 @@ ScrCmd_581: ; 0x02041E84
 	orr r0, r2
 	strb r0, [r1]
 	ldr r0, [sp, #4]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041ED8:
 	ldr r0, [r5]
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	beq _02041EF2
 	ldr r1, _02041F48 ; =_021D415C
@@ -3910,16 +3910,16 @@ _02041ED8:
 	orr r0, r2
 	strb r0, [r1]
 	ldr r0, [r5]
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041EF2:
 	cmp r7, #0
 	beq _02041F1A
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02041F1A
 	add r0, r7, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	bne _02041F1A
 	ldr r1, _02041F48 ; =_021D415C
@@ -3928,12 +3928,12 @@ _02041EF2:
 	orr r0, r2
 	strb r0, [r1]
 	add r0, r7, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041F1A:
 	cmp r6, #0
 	beq _02041F38
 	add r0, r6, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #0
 	beq _02041F38
 	ldr r1, _02041F48 ; =_021D415C
@@ -3942,18 +3942,18 @@ _02041F1A:
 	orr r0, r2
 	strb r0, [r1]
 	add r0, r6, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02041F38:
 	ldr r0, [sp]
-	ldr r1, _02041F4C ; =sub_02041D98
+	ldr r1, _02041F4C ; =_WaitMovementPauseBeforeMsg
 	bl SetupNativeScript
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02041F48: .word _021D415C
-_02041F4C: .word sub_02041D98
-	thumb_func_end ScrCmd_581
+_02041F4C: .word _WaitMovementPauseBeforeMsg
+	thumb_func_end ScrCmd_LockLastTalked
 
 	thumb_func_start ScrCmd_ReleaseAll
 ScrCmd_ReleaseAll: ; 0x02041F50
@@ -3961,7 +3961,7 @@ ScrCmd_ReleaseAll: ; 0x02041F50
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ScrCmd_ReleaseAll
@@ -3979,7 +3979,7 @@ ScrCmd_098: ; 0x02041F60
 	bl GetMapObjectByID
 	cmp r0, #0
 	beq _02041F80
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	b _02041F88
 _02041F80:
 	cmp r4, #0xfd
@@ -4003,7 +4003,7 @@ ScrCmd_099: ; 0x02041F8C
 	bl GetMapObjectByID
 	cmp r0, #0
 	beq _02041FAC
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 	b _02041FB4
 _02041FAC:
 	cmp r4, #0xfd
@@ -13751,8 +13751,8 @@ _02046BD6:
 	.balign 4, 0
 	thumb_func_end ScrCmd_600
 
-	thumb_func_start ScrCmd_601
-ScrCmd_601: ; 0x02046BDC
+	thumb_func_start ScrCmd_FollowPokeFacePlayer
+ScrCmd_FollowPokeFacePlayer: ; 0x02046BDC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	str r0, [sp, #4]
@@ -13761,7 +13761,7 @@ ScrCmd_601: ; 0x02046BDC
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046CAC
 	ldr r0, [sp, #4]
@@ -13774,20 +13774,20 @@ ScrCmd_601: ; 0x02046BDC
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	lsl r5, r0, #1
 	ldr r0, [sp, #0xc]
 	bl MapObject_GetCurrentHeight
@@ -13796,7 +13796,7 @@ ScrCmd_601: ; 0x02046BDC
 	bl MapObject_GetCurrentY
 	add r7, r0, #0
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	lsl r4, r0, #1
 	ldr r0, [sp, #4]
 	add r1, r6, r5
@@ -13846,7 +13846,7 @@ _02046CAC:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_601
+	thumb_func_end ScrCmd_FollowPokeFacePlayer
 
 	thumb_func_start ScrCmd_602
 ScrCmd_602: ; 0x02046CB4
@@ -13857,7 +13857,7 @@ ScrCmd_602: ; 0x02046CB4
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046CEA
 	cmp r4, #0
@@ -13865,13 +13865,13 @@ ScrCmd_602: ; 0x02046CB4
 	add r5, #0x80
 	ldr r0, [r5]
 	bl FollowingPokemon_GetMapObject
-	bl sub_0205F6FC
+	bl MapObject_PauseMovement
 	b _02046CEA
 _02046CDE:
 	add r5, #0x80
 	ldr r0, [r5]
 	bl FollowingPokemon_GetMapObject
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02046CEA:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -13884,7 +13884,7 @@ ScrCmd_603: ; 0x02046CF0
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046D08
 	ldr r1, _02046D0C ; =sub_02046D40
@@ -13906,7 +13906,7 @@ ScrCmd_604: ; 0x02046D10
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046D3A
 	add r5, #0x80
@@ -13928,7 +13928,7 @@ sub_02046D40: ; 0x02046D40
 	add r0, #0x80
 	ldr r0, [r0]
 	bl FollowingPokemon_GetMapObject
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02046D56
 	mov r0, #1
@@ -13953,7 +13953,7 @@ ScrCmd_605: ; 0x02046D5C
 	add r0, #0x80
 	ldr r0, [r0]
 	ldrb r4, [r1]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046DA2
 	add r0, r5, #0
@@ -13984,7 +13984,7 @@ ScrCmd_606: ; 0x02046DA8
 	add r5, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046DF4
 	add r0, r5, #0
@@ -14022,7 +14022,7 @@ ScrCmd_607: ; 0x02046DF8
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046E32
 	add r0, r4, #0
@@ -14054,7 +14054,7 @@ ScrCmd_608: ; 0x02046E38
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046E58
 	add r4, #0x80
@@ -14074,7 +14074,7 @@ ScrCmd_609: ; 0x02046E5C
 	add r4, r0, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02046E7C
 	add r4, #0x80
@@ -14803,16 +14803,16 @@ _0204740E:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ScrCmd_622
 
-	thumb_func_start ScrCmd_711
-ScrCmd_711: ; 0x02047414
+	thumb_func_start ScrCmd_FollowPokeInteract
+ScrCmd_FollowPokeInteract: ; 0x02047414
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
-	bl ov02_0224EF80
+	bl Fsys_FollowPokeInteract
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_711
+	thumb_func_end ScrCmd_FollowPokeInteract
 
 	thumb_func_start ScrCmd_712
 ScrCmd_712: ; 0x02047424
@@ -15043,7 +15043,7 @@ ScrCmd_729: ; 0x020475C0
 	add r5, #0x80
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _020475E6
 	mov r0, #1
@@ -15071,7 +15071,7 @@ ScrCmd_730: ; 0x020475F0
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	bne _0204761A
 	mov r0, #1

@@ -581,7 +581,7 @@ extern BOOL ScrCmd_577(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_578(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_579(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferSealName(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_581(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_LockLastTalked(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_582(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_583(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_PartyLegalCheck(SCRIPTCONTEXT *ctx);
@@ -601,7 +601,7 @@ extern BOOL ScrCmd_597(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_598(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_599(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_600(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_601(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FollowPokeFacePlayer(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_602(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_603(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_604(SCRIPTCONTEXT *ctx);
@@ -711,7 +711,7 @@ extern BOOL ScrCmd_707(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_708(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_709(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_710(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_711(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FollowPokeInteract(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_712(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_AlphPuzzle(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_714(SCRIPTCONTEXT *ctx);
@@ -1436,7 +1436,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_578,
     ScrCmd_579,
     ScrCmd_BufferSealName,
-    ScrCmd_581,
+    ScrCmd_LockLastTalked,
     ScrCmd_582,
     ScrCmd_583,
     ScrCmd_PartyLegalCheck,
@@ -1456,7 +1456,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_598,
     ScrCmd_599,
     ScrCmd_600,
-    ScrCmd_601,
+    ScrCmd_FollowPokeFacePlayer,
     ScrCmd_602,
     ScrCmd_603,
     ScrCmd_604,
@@ -1566,7 +1566,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_708,
     ScrCmd_709,
     ScrCmd_710,
-    ScrCmd_711,
+    ScrCmd_FollowPokeInteract,
     ScrCmd_712,
     ScrCmd_AlphPuzzle,
     ScrCmd_714,

@@ -41,7 +41,7 @@ FieldSys_TakePhoto: ; 0x0206A798
 	ldr r0, [r0]
 	strh r0, [r4, #0x36]
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0206A7FE
 	add r0, r5, #0
@@ -2048,7 +2048,7 @@ _0206B794:
 	b _0206B824
 _0206B7A0:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0206B814
 	ldr r0, [r5, #0x40]

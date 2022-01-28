@@ -1209,7 +1209,7 @@ _02063B78:
 	strb r0, [r4]
 _02063B7E:
 	add r0, r5, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #1
 	beq _02063B98
 	ldrb r0, [r4]
@@ -1427,7 +1427,7 @@ _02063D0C:
 	strb r0, [r4]
 _02063D12:
 	add r0, r5, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #1
 	beq _02063D2C
 	ldrb r0, [r4]
@@ -2409,10 +2409,10 @@ _0206447C:
 	bl MapObject_GetCurrentHeight
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r6, r4, r0
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r4, r7, r0
 	ldr r0, [sp, #8]
 	mov r7, #0
@@ -2437,10 +2437,10 @@ _020644B2:
 	pop {r3, r4, r5, r6, r7, pc}
 _020644CC:
 	add r0, r5, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r6, r6, r0
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r4, r4, r0
 	ldr r0, [sp, #0x10]
 	add r7, r7, #1
@@ -2662,11 +2662,11 @@ sub_0206464C: ; 0x0206464C
 	add r5, r0, #0
 	ldr r4, [r5, #0x24]
 	add r0, r4, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #1
 	bne _02064662
 	add r0, r4, #0
-	bl sub_0205F708
+	bl MapObject_UnpauseMovement
 _02064662:
 	mov r0, #1
 	str r0, [r5]
@@ -2679,7 +2679,7 @@ sub_02064668: ; 0x02064668
 	add r4, r0, #0
 	ldr r5, [r4, #0x24]
 	add r0, r5, #0
-	bl sub_0205F648
+	bl MapObject_IsSingleMovementActive
 	cmp r0, #1
 	bne _0206467C
 	mov r0, #0
@@ -2703,7 +2703,7 @@ sub_02064694: ; 0x02064694
 	add r4, r0, #0
 	ldr r0, [r4, #0x28]
 	bl PlayerAvatar_GetMapObject
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _020646AA
 	mov r0, #0
@@ -2773,7 +2773,7 @@ sub_02064714: ; 0x02064714
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _02064726
 	mov r0, #0
@@ -2836,7 +2836,7 @@ sub_02064778: ; 0x02064778
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _0206478A
 	mov r0, #9
@@ -2908,7 +2908,7 @@ sub_020647E8: ; 0x020647E8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _020647FA
 	mov r0, #0
@@ -3007,7 +3007,7 @@ sub_020648A0: ; 0x020648A0
 	ldr r0, [r4, #0x28]
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	bne _020648B8
 	mov r0, #0

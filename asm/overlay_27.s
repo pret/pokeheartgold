@@ -601,7 +601,7 @@ ov27_0225A48C: ; 0x0225A48C
 	cmp r1, #0
 	bne _0225A4B6
 	ldr r0, [r5, #0x10]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205CB38
 	add r4, r0, #0
@@ -622,7 +622,7 @@ ov27_0225A4B8: ; 0x0225A4B8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl sub_0205CB38
 	add r1, r0, #0
 	add r0, r4, #0
@@ -748,7 +748,7 @@ _0225A5A8:
 	cmp r0, #0
 	bne _0225A5E6
 	add r0, r4, #0
-	bl sub_0205CA1C
+	bl FieldSys_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	bl sub_0205F330

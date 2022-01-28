@@ -3315,7 +3315,7 @@ _022394EC:
 	bl MonApplyFriendshipMod
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 	ldr r0, [r4, #0x68]
 	add r5, r5, #1
 	bl GetPartyCount
@@ -3340,7 +3340,7 @@ _02239524:
 	bl MonApplyFriendshipMod
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 	ldr r0, [r4, #0x70]
 	add r5, r5, #1
 	bl GetPartyCount
@@ -7497,7 +7497,7 @@ _0223B4FA:
 	ldr r0, [sp, #0x18]
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_02097EF4
+	bl ApplyItemEffectOnMonMood
 _0223B50C:
 	ldr r0, [sp, #0x14]
 	add sp, #0x24
@@ -29346,7 +29346,7 @@ _02245C88:
 	bl MonApplyFriendshipMod
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 	add r0, r6, #0
 	bl CalcMonStats
 	ldr r1, [r4, #4]
@@ -34401,7 +34401,7 @@ _022485B4:
 	bl MonApplyFriendshipMod
 	add r0, r7, #0
 	mov r1, #6
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 	pop {r3, r4, r5, r6, r7, pc}
 _02248602:
 	add r0, r5, #0
@@ -34414,7 +34414,7 @@ _02248602:
 	bl MonApplyFriendshipMod
 	add r0, r7, #0
 	mov r1, #4
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 	pop {r3, r4, r5, r6, r7, pc}
 _02248620:
 	add r0, r5, #0
@@ -34427,7 +34427,7 @@ _02248620:
 	bl MonApplyFriendshipMod
 	add r0, r7, #0
 	mov r1, #4
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 _0224863C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

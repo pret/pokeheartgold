@@ -164,7 +164,7 @@ _0205536C: .word sub_020552D4
 sub_02055370: ; 0x02055370
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -212,7 +212,7 @@ _020553BC: .word sub_02055370
 sub_020553C0: ; 0x020553C0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetSys

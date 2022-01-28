@@ -106,7 +106,7 @@ typedef struct {
     u8 metGender:1;
     /* 0x1D */ u8 encounterType;
     /* 0x1E */ u8 HGSS_Pokeball;
-    /* 0x1F */ s8 unk_1F;
+    /* 0x1F */ s8 mood;
 } PokemonDataBlockD;
 
 typedef union {

@@ -301,7 +301,7 @@ _02055DF4:
 	str r0, [r4, #0x24]
 	strb r0, [r4, #1]
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055E20
 	add r0, r5, #0
@@ -317,7 +317,7 @@ _02055DF4:
 	b _02055FF2
 _02055E20:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055E5E
 	add r0, r5, #0
@@ -366,7 +366,7 @@ _02055E76:
 	add r2, r4, #0
 	bl QueueTask
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055EB2
 	add r0, r5, #0
@@ -489,7 +489,7 @@ _02055F78:
 	bl FollowingPokemon_GetMapObject
 	add r6, r0, #0
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _02055FC8
 	add r0, r5, #0
@@ -722,7 +722,7 @@ _02056160: ; jump table
 	.short _0205620C - _02056160 - 2 ; case 4
 _0205616A:
 	add r0, r5, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _020561A0
 	add r0, r5, #0
@@ -731,7 +731,7 @@ _0205616A:
 	beq _020561A0
 	add r0, r5, #0
 	bl FollowingPokemon_GetMapObject
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #0
 	beq _02056218
 	add r0, r5, #0
@@ -775,7 +775,7 @@ _020561DA:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _02056218
 	add r0, r5, #0
@@ -936,7 +936,7 @@ _020562E0:
 	ldr r0, [r4, #0x2c]
 	bl ov01_021F6304
 	add r0, r4, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0205638E
 	add r0, r4, #0

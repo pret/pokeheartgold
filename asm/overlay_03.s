@@ -9611,13 +9611,13 @@ ScrCmd_720: ; 0x02258A18
 	bl GetPlayerXCoord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerYCoord
 	str r0, [sp, #0x14]
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r2, r6, r7
 	sub r2, #0x20
 	asr r1, r2, #4

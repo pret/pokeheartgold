@@ -15,7 +15,7 @@ sub_02050660: ; 0x02050660
 	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -139,7 +139,7 @@ sub_02050738: ; 0x02050738
 	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -159,7 +159,7 @@ _02050764: ; jump table
 	.short _0205084C - _02050764 - 2 ; case 5
 _02050770:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r7, #0
@@ -251,7 +251,7 @@ _02050822:
 	b _02050856
 _02050838:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -333,7 +333,7 @@ sub_020508B8: ; 0x020508B8
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #4
@@ -415,7 +415,7 @@ sub_02050960: ; 0x02050960
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0
@@ -482,7 +482,7 @@ sub_020509F0: ; 0x020509F0
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #5
@@ -768,7 +768,7 @@ _02050C3C: ; jump table
 	.short _02050D02 - _02050C3C - 2 ; case 5
 _02050C48:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -848,7 +848,7 @@ _02050CEC:
 	b _02050D12
 _02050D02:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r4, #0
 	bl sub_02050AF4
 	mov r0, #1
@@ -870,7 +870,7 @@ sub_02050D1C: ; 0x02050D1C
 	bl TaskManager_GetEnv
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
@@ -899,7 +899,7 @@ _02050D56: ; jump table
 	.short _02050E9E - _02050D56 - 2 ; case 8
 _02050D68:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r5, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -993,7 +993,7 @@ _02050E26:
 	b _02050EA8
 _02050E34:
 	ldr r0, [r5, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1068,7 +1068,7 @@ sub_02050EB8: ; 0x02050EB8
 	bl FieldSys_BugContest_get
 	str r0, [sp]
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [sp]
 	bl BugContest_GetSportBallsAddr
@@ -1095,7 +1095,7 @@ _02050EF8: ; jump table
 	.short _02050FE6 - _02050EF8 - 2 ; case 7
 _02050F08:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r6, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -1189,7 +1189,7 @@ _02050FC4:
 	b _02051012
 _02050FD2:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1349,7 +1349,7 @@ sub_02051114: ; 0x02051114
 	bl TaskManager_GetEnv
 	add r5, r0, #0
 	add r0, r7, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -1370,7 +1370,7 @@ _02051140: ; jump table
 	.short _020511D2 - _02051140 - 2 ; case 6
 _0205114E:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r0, [r6, #0xc]
 	bl Sav2_GameStats_get
 	mov r1, #8
@@ -1421,7 +1421,7 @@ _020511B0:
 	b _020511F4
 _020511BE:
 	ldr r0, [r6, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r7, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1528,7 +1528,7 @@ sub_0205128C: ; 0x0205128C
 	bl TaskManager_GetSys
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #6
@@ -1549,7 +1549,7 @@ _020512B8: ; jump table
 	.short _02051324 - _020512B8 - 2 ; case 6
 _020512C6:
 	ldr r0, [r7, #0x3c]
-	bl sub_0205F574
+	bl MapObjectMan_PauseAllMovement
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r5, #0
@@ -1586,7 +1586,7 @@ _02051302:
 	b _0205132E
 _02051310:
 	ldr r0, [r7, #0x3c]
-	bl sub_0205F5A4
+	bl MapObjectMan_UnpauseAllMovement
 	add r0, r5, #0
 	bl sub_0205532C
 	ldr r0, [r4]
@@ -1870,7 +1870,7 @@ sub_02051540: ; 0x02051540
 	bl TaskManager_GetEnv
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0

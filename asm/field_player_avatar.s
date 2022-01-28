@@ -1278,11 +1278,11 @@ _0205CA12:
 	.balign 4, 0
 	thumb_func_end sub_0205C99C
 
-	thumb_func_start sub_0205CA1C
-sub_0205CA1C: ; 0x0205CA1C
+	thumb_func_start FieldSys_GetPlayerAvatar
+FieldSys_GetPlayerAvatar: ; 0x0205CA1C
 	ldr r0, [r0, #0x40]
 	bx lr
-	thumb_func_end sub_0205CA1C
+	thumb_func_end FieldSys_GetPlayerAvatar
 
 	thumb_func_start sub_0205CA20
 sub_0205CA20: ; 0x0205CA20

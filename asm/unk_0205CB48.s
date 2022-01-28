@@ -462,7 +462,7 @@ _0205CEE8:
 	pop {r3, r4, r5, r6, r7, pc}
 _0205CEF2:
 	add r0, r7, #0
-	bl MapObject_IsHeldMovementActive
+	bl MapObject_IsMovementPaused
 	cmp r0, #1
 	bne _0205CF40
 	cmp r6, #0
@@ -991,7 +991,7 @@ _0205D2FC:
 	add r0, r4, #0
 	bl MapObject_GetFieldSysPtr
 	add r5, r0, #0
-	bl sub_02069F88
+	bl FollowingPokemon_IsActive
 	cmp r0, #0
 	beq _0205D33C
 	add r0, r4, #0
@@ -1256,13 +1256,13 @@ _0205D4DE:
 	bl MapObject_GetCurrentX
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	str r0, [sp, #0x10]
 	add r0, r7, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	ldr r1, [sp, #0xc]
 	add r2, r0, #0
 	ldr r3, [sp, #0x10]
@@ -1988,7 +1988,7 @@ sub_0205DAA8: ; 0x0205DAA8
 	bl MapObject_GetCurrentX
 	add r7, r0, #0
 	ldr r0, [sp, #4]
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	str r0, [sp, #0x14]
 	add r0, r5, #0
 	bl MapObject_GetCurrentHeight
@@ -1997,7 +1997,7 @@ sub_0205DAA8: ; 0x0205DAA8
 	bl MapObject_GetCurrentY
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	add r1, sp, #0x1c
@@ -2087,13 +2087,13 @@ sub_0205DB68: ; 0x0205DB68
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r2, r0, #0
 	ldr r0, [sp]
 	add r1, r6, r7
@@ -2206,10 +2206,10 @@ _0205DC66:
 	pop {r3, r4, r5, r6, r7, pc}
 _0205DC74:
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r3, r0, #0
 	ldr r2, [sp]
 	add r0, r7, #0
@@ -2243,13 +2243,13 @@ sub_0205DCA0: ; 0x0205DCA0
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r3, r0, #0
 	ldr r2, [sp, #4]
 	ldr r0, [sp]
@@ -2290,13 +2290,13 @@ sub_0205DCFC: ; 0x0205DCFC
 	bl MapObject_GetCurrentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetCurrentY
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r3, r0, #0
 	ldr r2, [sp, #4]
 	ldr r0, [sp]
@@ -2720,14 +2720,14 @@ sub_0205DFFC: ; 0x0205DFFC
 	bl GetPlayerXCoord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02060F0C
+	bl GetDeltaXByFacingDirection
 	add r0, r4, r0
 	str r0, [r6]
 	ldr r0, [sp]
 	bl GetPlayerYCoord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02060F18
+	bl GetDeltaYByFacingDirection
 	add r0, r4, r0
 	str r0, [r7]
 	pop {r3, r4, r5, r6, r7, pc}

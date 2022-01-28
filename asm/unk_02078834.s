@@ -19680,7 +19680,7 @@ _020825B8:
 	bl MonApplyFriendshipMod
 	add r0, r4, #0
 	mov r1, #3
-	bl sub_02097F0C
+	bl ApplyMonMoodModifier
 _020825D0:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}

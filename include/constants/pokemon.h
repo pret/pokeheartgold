@@ -338,7 +338,7 @@
 #define MON_DATA_SHINY_LEAF_D                   184
 #define MON_DATA_SHINY_LEAF_E                   185
 #define MON_DATA_SHINY_LEAF_CROWN               186
-#define MON_DATA_187                            187
+#define MON_DATA_MOOD                            187
 
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1

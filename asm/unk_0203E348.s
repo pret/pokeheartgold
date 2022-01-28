@@ -518,7 +518,7 @@ sub_0203E604: ; 0x0203E604
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #4
@@ -822,7 +822,7 @@ sub_0203E878: ; 0x0203E878
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
-	bl sub_02050654
+	bl TaskManager_GetData
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv

@@ -253,11 +253,11 @@ TaskManager_GetEnv: ; 0x02050650
 	bx lr
 	thumb_func_end TaskManager_GetEnv
 
-	thumb_func_start sub_02050654
-sub_02050654: ; 0x02050654
+	thumb_func_start TaskManager_GetData
+TaskManager_GetData: ; 0x02050654
 	add r0, #8
 	bx lr
-	thumb_func_end sub_02050654
+	thumb_func_end TaskManager_GetData
 
 	thumb_func_start sub_02050658
 sub_02050658: ; 0x02050658
