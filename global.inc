@@ -6091,10 +6091,10 @@
 .public ov02_0224F8FC
 .public ov02_0224FB44
 .public ov02_0224FB54
-.public ov02_0224FB9C
+.public FollowPoke_TryPrintInteractionMessage
 .public ov02_0224FC08
 .public ov02_0224FC74
-.public ov02_0224FC8C
+.public FollowPoke_ExpandInteractionMessage
 .public ov02_0224FCE0
 .public ov02_0224FD9C
 .public ov02_0224FDF8
@@ -6105,7 +6105,7 @@
 .public ov02_0224FFD8
 .public ov02_02250004
 .public Task_FollowPokeInteract
-.public ov02_022504A0
+.public FollowPoke_PlaceholdersSet
 .public ov02_02250504
 .public ov02_02250594
 .public ov02_02250628

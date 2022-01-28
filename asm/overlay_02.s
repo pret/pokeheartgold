@@ -21058,7 +21058,7 @@ _0224F9E8:
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov02_0224FB9C
+	bl FollowPoke_TryPrintInteractionMessage
 	cmp r0, #0
 	beq _0224FA06
 	add r5, #0xe4
@@ -21277,8 +21277,8 @@ _0224FB92:
 _0224FB98: .word 0x00000882
 	thumb_func_end ov02_0224FB54
 
-	thumb_func_start ov02_0224FB9C
-ov02_0224FB9C: ; 0x0224FB9C
+	thumb_func_start FollowPoke_TryPrintInteractionMessage
+FollowPoke_TryPrintInteractionMessage: ; 0x0224FB9C
 	push {r4, r5, r6, lr}
 	add r6, r2, #0
 	add r5, r0, #0
@@ -21300,7 +21300,7 @@ ov02_0224FB9C: ; 0x0224FB9C
 	add r0, r5, #0
 	mov r2, #0xb
 	sub r3, r3, #1
-	bl ov02_0224FC8C
+	bl FollowPoke_ExpandInteractionMessage
 	ldr r0, [r5, #0xc]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
@@ -21328,7 +21328,7 @@ _0224FC00:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0224FC04: .word 0x0000086E
-	thumb_func_end ov02_0224FB9C
+	thumb_func_end FollowPoke_TryPrintInteractionMessage
 
 	thumb_func_start ov02_0224FC08
 ov02_0224FC08: ; 0x0224FC08
@@ -21397,8 +21397,8 @@ _0224FC82:
 _0224FC88: .word 0x0000086D
 	thumb_func_end ov02_0224FC74
 
-	thumb_func_start ov02_0224FC8C
-ov02_0224FC8C: ; 0x0224FC8C
+	thumb_func_start FollowPoke_ExpandInteractionMessage
+FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	push {r3, r4, r5, r6, r7, lr}
 	str r1, [sp]
 	mov r1, #0x1b
@@ -21416,7 +21416,7 @@ ov02_0224FC8C: ; 0x0224FC8C
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov02_022504A0
+	bl FollowPoke_PlaceholdersSet
 	add r0, r5, #0
 	add r1, r7, #0
 	bl NewString_ReadMsgData
@@ -21433,7 +21433,7 @@ ov02_0224FC8C: ; 0x0224FC8C
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov02_0224FC8C
+	thumb_func_end FollowPoke_ExpandInteractionMessage
 
 	thumb_func_start ov02_0224FCE0
 ov02_0224FCE0: ; 0x0224FCE0
@@ -21578,7 +21578,7 @@ ov02_0224FDF8: ; 0x0224FDF8
 	beq _0224FE32
 	cmp r1, #0
 	beq _0224FE32
-	ldr r0, _0224FE38 ; =0x0000094A
+	ldr r0, _0224FE38 ; =SEQ_SE_END
 	cmp r1, r0
 	bls _0224FE2C
 	add r0, r0, #1
@@ -21605,7 +21605,7 @@ _0224FE32:
 	add sp, #8
 	pop {r4, pc}
 	nop
-_0224FE38: .word 0x0000094A
+_0224FE38: .word SEQ_SE_END
 _0224FE3C: .word 0x000001FF
 	thumb_func_end ov02_0224FDF8
 
@@ -22419,8 +22419,8 @@ _02250498: .word 0x0000086E
 _0225049C: .word gMain
 	thumb_func_end Task_FollowPokeInteract
 
-	thumb_func_start ov02_022504A0
-ov02_022504A0: ; 0x022504A0
+	thumb_func_start FollowPoke_PlaceholdersSet
+FollowPoke_PlaceholdersSet: ; 0x022504A0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
@@ -22460,7 +22460,7 @@ ov02_022504A0: ; 0x022504A0
 	mov r1, #4
 	bl BufferItemName
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov02_022504A0
+	thumb_func_end FollowPoke_PlaceholdersSet
 
 	thumb_func_start ov02_02250504
 ov02_02250504: ; 0x02250504
