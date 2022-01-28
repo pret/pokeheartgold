@@ -266,6 +266,15 @@ Static main
 	Object save_data_read_error.o
 	Object save_data_write_error.o
 	Object unk_02092B04.o
+	Object unk_02092BB8.o
+	Object unk_02092BE8.o
+	Object unk_020931C4.o
+	Object unk_020932A4.o
+	Object unk_020932E0.o
+	Object unk_020957B0.o
+	Object unk_02095DF4.o
+	Object error_message_reset.o
+	Object unk_02096594.o
 
 	### Vendor libraries ###
 	Object middleware.o

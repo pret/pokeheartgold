@@ -30096,3 +30096,10 @@
 .public sub_020623D8
 .public sub_02064518
 .public sub_02093134
+.public sub_02095CE0
+.public sub_02095D1C
+.public sub_02095D2C
+.public sub_02095D40
+.public sub_02095D88
+.public sub_02095DD8
+.public sub_02095DE8
