@@ -27,7 +27,7 @@ BANNER_SPEC     := $(buildname)/banner.bsf
 ICON_PNG        := $(buildname)/icon.png
 HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
-.PHONY: main sub libsyscall
+.PHONY: main sub libsyscall sdk sdk9 sdk7
 .PRECIOUS: $(ROM)
 
 MAKEFLAGS += --no-print-directory
@@ -46,6 +46,10 @@ clean: tidy clean-filesystem clean-tools
 
 SBIN_LZ        := $(SBIN)_LZ
 .PHONY: main_lz
+
+sdk9 sdk7: sdk
+main: sdk9
+sub: sdk7
 
 main: $(SBIN) $(ELF)
 main_lz: $(SBIN_LZ)
@@ -79,10 +83,11 @@ $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 # TODO: move to NitroSDK makefile
 FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
 PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
-$(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
 $(FX_CONST_H): $(TOOLSDIR)/gen_fx_consts/fx_const.csv
-	$(MKFXCONST) $(FX_CONST_H)
+	$(MKFXCONST) $@
+sdk: $(FX_CONST_H)
 
+# Convenience targets
 heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
 soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER
 compare-heartgold:  ; @$(MAKE) GAME_VERSION=HEARTGOLD  COMPARE=1

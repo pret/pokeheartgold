@@ -253,6 +253,12 @@ Static main
 	Object use_item_on_mon.o
 	Object unk_02090C94.o
 	Object unk_020910D8.o
+	Object unk_02091278.o
+	Object unk_020912AC.o
+	Object dex_mon_measures.o
+	Object unk_02091564.o
+	Object unk_020915B0.o
+	Object unk_02091664.o
 
 	### Vendor libraries ###
 	Object middleware.o
