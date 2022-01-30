@@ -1784,7 +1784,7 @@ sub_0203162C: ; 0x0203162C
 _02031638:
 	ldrb r4, [r0, #0x18]
 	add r0, r1, #0
-	bl sub_02091688
+	bl LocationGmmDatRegionCountGetByCountryMsgNo
 	cmp r0, r4
 	bhs _02031646
 	mov r4, #0

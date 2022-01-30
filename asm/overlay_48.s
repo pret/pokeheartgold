@@ -349,13 +349,13 @@ _02258AEE:
 	ldr r0, [sp, #0x20]
 	bl FreeToHeap
 	mov r7, #1
-	bl sub_02091664
+	bl LocationGmmDatCountGet
 	str r0, [sp, #0x18]
 	cmp r0, #1
 	ble _02258B72
 _02258B00:
 	add r0, r7, #0
-	bl sub_020916F8
+	bl LocationGmmDatGetEarthPlaceDatId
 	add r1, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -377,7 +377,7 @@ _02258B00:
 	ble _02258B64
 _02258B2E:
 	add r0, r7, #0
-	bl sub_020916DC
+	bl LocationGmmDatGetCountryMsgNo
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp]

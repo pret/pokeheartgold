@@ -373,10 +373,10 @@ _021E5C10:
 	ldr r1, _021E5DB4 ; =0x0000C32C
 	mov r0, #0
 	str r0, [r4, r1]
-	bl sub_02091714
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	add r6, r0, #0
 	mov r0, #0
-	bl sub_02091730
+	bl LocationGmmDatGetDistrictCount
 	ldr r1, _021E5DB8 ; =0x0000031E
 	ldr r2, _021E5DBC ; =ov69_021E7674
 	str r1, [sp]
@@ -408,7 +408,7 @@ _021E5C4C:
 	cmp r6, r0
 	beq _021E5C7A
 	mov r0, #0
-	bl sub_02091714
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	ldrb r6, [r0, r6]
 _021E5C7A:
 	mov r0, #1
@@ -450,15 +450,15 @@ _021E5CB8:
 	str r1, [r4, r0]
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02091668
+	bl LocationGmmDatIndexGetByCountryMsgNo
 	add r6, r0, #0
-	bl sub_020916C0
+	bl LocationGmmDatGetGmmNo
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02091714
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	str r0, [sp, #0x10]
 	add r0, r6, #0
-	bl sub_02091730
+	bl LocationGmmDatGetDistrictCount
 	ldr r1, [sp, #0x10]
 	str r7, [sp]
 	str r1, [sp, #4]
@@ -491,8 +491,8 @@ _021E5CF8:
 	beq _021E5D2C
 	ldr r0, _021E5DB4 ; =0x0000C32C
 	ldr r0, [r4, r0]
-	bl sub_02091668
-	bl sub_02091714
+	bl LocationGmmDatIndexGetByCountryMsgNo
+	bl LocationGmmDatGetDistrictNameMsgIdsPtr
 	ldrb r6, [r0, r6]
 _021E5D2C:
 	mov r0, #1
@@ -1026,7 +1026,7 @@ _021E61AA:
 	ldr r0, [sp, #0x18]
 	bl FreeToHeap
 	mov r7, #1
-	bl sub_02091664
+	bl LocationGmmDatCountGet
 	str r0, [sp, #0x10]
 	cmp r0, #1
 	ble _021E6232
@@ -1034,7 +1034,7 @@ _021E61AA:
 	add r6, #0xc
 _021E61C0:
 	add r0, r7, #0
-	bl sub_020916F8
+	bl LocationGmmDatGetEarthPlaceDatId
 	add r1, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1057,7 +1057,7 @@ _021E61C0:
 	ble _021E6224
 _021E61F0:
 	add r0, r7, #0
-	bl sub_020916DC
+	bl LocationGmmDatGetCountryMsgNo
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -1201,10 +1201,10 @@ _021E62FC: .word 0x0000C2C8
 
 	thumb_func_start ov69_021E6300
 ov69_021E6300: ; 0x021E6300
-	ldr r3, _021E6304 ; =sub_02091668
+	ldr r3, _021E6304 ; =LocationGmmDatIndexGetByCountryMsgNo
 	bx r3
 	.balign 4, 0
-_021E6304: .word sub_02091668
+_021E6304: .word LocationGmmDatIndexGetByCountryMsgNo
 	thumb_func_end ov69_021E6300
 
 	thumb_func_start ov69_021E6308
@@ -3471,7 +3471,7 @@ _021E755C:
 	mov r5, #1
 _021E755E:
 	add r0, r4, #0
-	bl sub_020916C0
+	bl LocationGmmDatGetGmmNo
 	add r2, r0, #0
 	mov r0, #0
 	mov r1, #0x1b
