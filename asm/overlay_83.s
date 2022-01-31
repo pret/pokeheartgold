@@ -2363,7 +2363,7 @@ ov83_0223F1C8: ; 0x0223F1C8
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -11831,7 +11831,7 @@ ov83_02243F9C: ; 0x02243F9C
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1

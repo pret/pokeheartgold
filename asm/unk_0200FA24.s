@@ -756,7 +756,7 @@ _0200FF14:
 	bne _0200FF2E
 	ldr r0, _0200FF54 ; =sub_0200FECC
 	add r1, r5, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #4]
@@ -800,7 +800,7 @@ sub_0200FF5C: ; 0x0200FF5C
 	ldr r0, [r5, #0x14]
 	cmp r0, #0
 	bne _0200FF78
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 _0200FF78:
 	ldr r1, _0200FF84 ; =sub_02010014
 	add r0, r5, r4

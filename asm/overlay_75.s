@@ -786,7 +786,7 @@ ov75_02246F0C: ; 0x02246F0C
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r1, #1
@@ -1099,7 +1099,7 @@ _022471A4:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_020205AC
 	bl sub_02021238
 	mov r0, #0

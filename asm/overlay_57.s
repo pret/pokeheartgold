@@ -438,7 +438,7 @@ ov57_02237CA8: ; 0x02237CA8
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -463,7 +463,7 @@ ov57_02237CDC: ; 0x02237CDC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	pop {r3, pc}
 	thumb_func_end ov57_02237CDC
 

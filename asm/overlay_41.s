@@ -2081,7 +2081,7 @@ ov41_02246DE0: ; 0x02246DE0
 	ldr r0, _02246EF0 ; =ov41_02247478
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r5, #0
 	bl OverlayManager_GetField18
 	add r5, r0, #0
@@ -2545,7 +2545,7 @@ _022471AA:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_02021238
 	cmp r0, #1
 	beq _0224721A
@@ -12397,7 +12397,7 @@ ov41_0224BA10: ; 0x0224BA10
 	ldr r0, _0224BAC4 ; =ov41_0224BBF0
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r4, #0
 	bl OverlayManager_GetField18
 	add r4, r0, #0
@@ -12575,7 +12575,7 @@ ov41_0224BBA4: ; 0x0224BBA4
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0xd

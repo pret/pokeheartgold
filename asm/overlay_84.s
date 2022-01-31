@@ -1085,7 +1085,7 @@ ov84_0223E5C4: ; 0x0223E5C4
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1

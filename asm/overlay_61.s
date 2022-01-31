@@ -57,7 +57,7 @@ _021E5950:
 	ldr r0, _021E5A2C ; =ov61_021E60B8
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl ov61_021E60C8
 	ldr r0, [r4, #4]
 	bl ov61_021E60E8

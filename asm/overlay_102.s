@@ -3546,7 +3546,7 @@ ov102_021E909C: ; 0x021E909C
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	str r5, [r4, #0x18]
 	add r0, r5, #0
 	str r6, [r4, #0x1c]
@@ -6387,13 +6387,13 @@ ov102_021EA71C: ; 0x021EA71C
 	orr r0, r3
 	strh r0, [r1]
 _021EA740:
-	ldr r3, _021EA74C ; =sub_0201A120
+	ldr r3, _021EA74C ; =Main_SetHBlankIntrCB
 	ldr r0, _021EA750 ; =ov102_021EA644
 	add r1, r2, #0
 	bx r3
 	.balign 4, 0
 _021EA748: .word 0x04000048
-_021EA74C: .word sub_0201A120
+_021EA74C: .word Main_SetHBlankIntrCB
 _021EA750: .word ov102_021EA644
 	thumb_func_end ov102_021EA71C
 
@@ -6479,8 +6479,8 @@ _021EA794:
 	bne _021EA800
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
-	bl sub_0201A108
+	bl Main_SetHBlankIntrCB
+	bl HBlankInterruptDisable
 _021EA800:
 	mov r0, #0
 	pop {r4, r5, r6, pc}

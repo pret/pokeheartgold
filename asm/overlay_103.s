@@ -1278,7 +1278,7 @@ ov103_021ED314: ; 0x021ED314
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #0
 	bl sub_02022C9C
 	mov r0, #0

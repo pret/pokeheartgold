@@ -5083,7 +5083,7 @@ _021E8064: .word ov122_021E931C
 	thumb_func_start ov122_021E8068
 ov122_021E8068: ; 0x021E8068
 	push {r3, lr}
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1

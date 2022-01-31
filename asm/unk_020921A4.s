@@ -66,7 +66,7 @@ _02092200:
 	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1

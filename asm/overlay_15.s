@@ -11,7 +11,7 @@ ov15_021F9380: ; 0x021F9380
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r0, #1

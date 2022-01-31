@@ -166,7 +166,7 @@ _0225C680:
 	ldr r0, _0225C944 ; =ov91_0225CB58
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r2, #0
 	str r2, [r4, #0x38]
 	str r2, [r4, #0x3c]
@@ -533,7 +533,7 @@ _0225C97C:
 	str r0, [r4, #0x34]
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_020205AC
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -934,7 +934,7 @@ ov91_0225CC4C: ; 0x0225CC4C
 	add r4, r1, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _0225CC6C

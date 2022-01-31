@@ -11,7 +11,7 @@ ov89_02258800: ; 0x02258800
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r1, #1
@@ -864,7 +864,7 @@ ov89_02258F00: ; 0x02258F00
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_020205AC
 	bl sub_02021238
 	mov r0, #0

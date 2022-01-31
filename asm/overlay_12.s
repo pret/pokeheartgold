@@ -772,7 +772,7 @@ ov12_02237F18: ; 0x02237F18
 	bl MIi_CpuClear16
 	bl ov12_02239644
 	str r0, [r4]
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #4
 	mov r1, #5
 	bl sub_02002CEC
@@ -97826,7 +97826,7 @@ ov12_02266E6C: ; 0x02266E6C
 	bl sub_0200E320
 	ldr r0, _02266F68 ; =ov12_02269774
 	add r1, r4, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	cmp r0, #1
 	beq _02266F32
 	bl GF_AssertFail
@@ -102632,7 +102632,7 @@ _022695DA:
 	strb r2, [r1, r0]
 	ldr r0, [r5, #4]
 	bl sub_0200E390
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r2, _02269660 ; =0x04001000
 	ldr r0, _02269664 ; =0xFFFF1FFF
 	ldr r1, [r2]

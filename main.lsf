@@ -250,6 +250,13 @@ Static main
 	Object item.o
 	Object bag.o
 	Object unk_02078834.o
+	Object unk_02078DD8.o
+	Object unk_02078E30.o
+	Object unk_0207CB7C.o
+	Object unk_0207EB24.o
+	Object unk_0207F42C.o
+	Object unk_02080BB4.o
+	Object unk_02082908.o
 	Object use_item_on_mon.o
 	Object unk_02090C94.o
 	Object unk_020910D8.o

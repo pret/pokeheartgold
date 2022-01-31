@@ -16185,7 +16185,7 @@ _021ED1FC:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -16465,7 +16465,7 @@ ov96_021ED48C: ; 0x021ED48C
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -20087,7 +20087,7 @@ ov96_021EEFAC: ; 0x021EEFAC
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -20155,7 +20155,7 @@ ov96_021EF05C: ; 0x021EF05C
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl sub_0203A914
 	ldr r0, [r4, #8]
 	bl ov96_021EE808
@@ -20345,7 +20345,7 @@ _021EF1EA:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r0, [sp]
 	bl ov96_021E5DAC
 	ldr r0, _021EF234 ; =gMain + 0x60
@@ -20461,7 +20461,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -22242,7 +22242,7 @@ _021F013C:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -23217,7 +23217,7 @@ ov96_021F095C: ; 0x021F095C
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	mov r0, #0x7f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -32274,7 +32274,7 @@ _021F504A:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -32891,7 +32891,7 @@ _021F5598:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r0, _021F5628 ; =gMain + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -37413,7 +37413,7 @@ _021F7964:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -37740,7 +37740,7 @@ ov96_021F7C70: ; 0x021F7C70
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	mov r0, #4
 	bl sub_02002DB4
 	ldr r0, _021F7D04 ; =0x04000050
@@ -40874,7 +40874,7 @@ _021F94DE:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -41909,7 +41909,7 @@ ov96_021F9D58: ; 0x021F9D58
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	ldr r0, _021F9E38 ; =gMain + 0x60
@@ -47221,7 +47221,7 @@ _021FC79C:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -48014,7 +48014,7 @@ ov96_021FCE10: ; 0x021FCE10
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	ldr r0, _021FCED8 ; =gMain + 0x60
@@ -57037,7 +57037,7 @@ _02201588:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -57779,7 +57779,7 @@ _02201BF0:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r0, _02201C84 ; =0x00000598
 	ldr r0, [r4, r0]
 	bl FreeToHeap
@@ -63183,7 +63183,7 @@ _02204820:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -63895,7 +63895,7 @@ ov96_02204E58: ; 0x02204E58
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add r0, r5, #0
 	bl ov96_021E5F8C
 	ldr r0, [r4, #0x18]
@@ -72868,7 +72868,7 @@ _0220947C:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -73254,7 +73254,7 @@ _022097CA:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	ldr r0, _0220981C ; =gMain + 0x60
@@ -83098,7 +83098,7 @@ _0220E41C:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -83371,7 +83371,7 @@ ov96_0220E670: ; 0x0220E670
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	ldr r0, _0220E6D8 ; =gMain + 0x60
@@ -88353,7 +88353,7 @@ _02210CCC:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -89554,7 +89554,7 @@ _0221172E:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r0, _022117C0 ; =0x0000081C
 	ldr r0, [r4, r0]
 	bl FreeToHeap
@@ -98450,7 +98450,7 @@ _02215AF2:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -98727,7 +98727,7 @@ ov96_02215D4C: ; 0x02215D4C
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	ldr r0, _02215DB8 ; =gMain + 0x60

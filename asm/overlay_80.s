@@ -30468,7 +30468,7 @@ ov80_02238648: ; 0x02238648
 	add r1, r0, #0
 	ldrb r5, [r4]
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r1, #1
@@ -30759,7 +30759,7 @@ ov80_0223885C: ; 0x0223885C
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #0x65
 	bl DestroyHeap
 	mov r0, #0

@@ -85,7 +85,7 @@ ov43_02229EE0: ; 0x02229EE0
 	ldr r0, _02229FB0 ; =ov43_0222A148
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -235,7 +235,7 @@ ov43_0222A0AC: ; 0x0222A0AC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r1, #0xa
 	lsl r1, r1, #6
 	add r0, r4, r1
@@ -359,7 +359,7 @@ ov43_0222A154: ; 0x0222A154
 	ldr r0, _0222A1D8 ; =ov43_0222A148
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0222A1D4: .word 0x00000408
@@ -373,7 +373,7 @@ ov43_0222A1DC: ; 0x0222A1DC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r1, #0xa
 	lsl r1, r1, #6
 	add r0, r4, r1

@@ -2594,7 +2594,7 @@ ov95_021E6D70: ; 0x021E6D70
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r2, #1
 	mov r0, #3
 	mov r1, #0x46
@@ -2832,7 +2832,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl sub_0203E354
 	mov r0, #1
 	pop {r3, r4, r5, pc}

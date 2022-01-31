@@ -10,7 +10,7 @@ ov63_0221BE20: ; 0x0221BE20
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #0
 	bl sub_02022C9C
 	mov r0, #0

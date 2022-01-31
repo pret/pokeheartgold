@@ -21,7 +21,7 @@ ov60_021E5900: ; 0x021E5900
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -2290,7 +2290,7 @@ ov60_021E6B68: ; 0x021E6B68
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r0, #4
@@ -2542,7 +2542,7 @@ _021E6D98:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r3, _021E6E00 ; =0x04000050
 	mov r0, #0
 	strh r0, [r3]
@@ -3871,7 +3871,7 @@ _021E7778:
 	str r0, [r4, #8]
 	ldr r0, _021E779C ; =ov60_021E7864
 	add r1, r4, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3976,7 +3976,7 @@ _021E7844:
 _021E7848:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 _021E7850:
 	pop {r4, pc}
 	nop

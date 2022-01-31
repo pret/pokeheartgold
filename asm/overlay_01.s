@@ -61,7 +61,7 @@ _021E5952:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _021E5BA4 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -46329,7 +46329,7 @@ ov01_021FB4F4: ; 0x021FB4F4
 	add r4, r0, #0
 	ldr r0, _021FB510 ; =ov01_021FB594
 	add r1, r4, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	cmp r0, #1
 	beq _021FB508
 	bl GF_AssertFail
@@ -46347,7 +46347,7 @@ ov01_021FB514: ; 0x021FB514
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	cmp r0, #1
 	beq _021FB528
 	bl GF_AssertFail

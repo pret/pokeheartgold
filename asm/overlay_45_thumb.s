@@ -51,7 +51,7 @@ _02229F18:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _02229F6C ; =ov45_02229FE0
 	add r1, r5, #0
 	mov r2, #0
@@ -97,7 +97,7 @@ ov45_02229F94: ; 0x02229F94
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, [r4, #8]
 	bl ov45_0222CD68
 	ldr r0, [r4, #4]

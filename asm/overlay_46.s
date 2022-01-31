@@ -123,7 +123,7 @@ ov46_02258800: ; 0x02258800
 	ldr r0, _02258924 ; =ov46_02258F70
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _02258928 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
@@ -515,7 +515,7 @@ ov46_02258C38: ; 0x02258C38
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r4, #0
 	add r0, #0xd4
 	ldr r0, [r0]
@@ -656,7 +656,7 @@ ov46_02258CB4: ; 0x02258CB4
 	ldr r0, _02258DA0 ; =ov46_02258F70
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _02258DA4 ; =gMain + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
@@ -851,7 +851,7 @@ ov46_02258EFC: ; 0x02258EFC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r4, #0
 	add r0, #0xd4
 	ldr r0, [r0]

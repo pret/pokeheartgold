@@ -3344,7 +3344,7 @@ _0225A0C6:
 	bl sub_02014A78
 	ldr r0, _0225A104 ; =ov90_0225A1B8
 	add r1, r6, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0225A100: .word 0x0000FF01
@@ -3362,7 +3362,7 @@ ov90_0225A108: ; 0x0225A108
 	beq _0225A130
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	mov r0, #0xc1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -6866,7 +6866,7 @@ _0225BB02:
 	strb r1, [r7, r0]
 	ldr r0, _0225BBCC ; =ov90_0225BE08
 	add r1, r7, #0
-	bl sub_0201A120
+	bl Main_SetHBlankIntrCB
 	ldr r0, [r7, #4]
 	mov r1, #2
 	bl sub_02024890
@@ -7071,7 +7071,7 @@ _0225BD34:
 	add r5, r5, #4
 	cmp r4, #2
 	blt _0225BD28
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]

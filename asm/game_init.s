@@ -82,11 +82,11 @@ Main_SetVBlankIntrCB: ; 0x0201A0FC
 _0201A104: .word gMain
 	thumb_func_end Main_SetVBlankIntrCB
 
-	thumb_func_start sub_0201A108
-sub_0201A108: ; 0x0201A108
+	thumb_func_start HBlankInterruptDisable
+HBlankInterruptDisable: ; 0x0201A108
 	push {r3, lr}
 	mov r0, #0
-	bl sub_0201A16C
+	bl HBlankIntrRegsToggle
 	ldr r0, _0201A11C ; =gMain
 	mov r1, #0
 	str r1, [r0, #8]
@@ -94,15 +94,15 @@ sub_0201A108: ; 0x0201A108
 	pop {r3, pc}
 	nop
 _0201A11C: .word gMain
-	thumb_func_end sub_0201A108
+	thumb_func_end HBlankInterruptDisable
 
-	thumb_func_start sub_0201A120
-sub_0201A120: ; 0x0201A120
+	thumb_func_start Main_SetHBlankIntrCB
+Main_SetHBlankIntrCB: ; 0x0201A120
 	push {r3, lr}
 	cmp r0, #0
 	bne _0201A138
 	mov r0, #0
-	bl sub_0201A16C
+	bl HBlankIntrRegsToggle
 	ldr r0, _0201A154 ; =gMain
 	mov r1, #0
 	str r1, [r0, #8]
@@ -117,7 +117,7 @@ _0201A138:
 	str r1, [r2, #0xc]
 	str r0, [r2, #8]
 	mov r0, #1
-	bl sub_0201A16C
+	bl HBlankIntrRegsToggle
 	mov r0, #1
 	pop {r3, pc}
 _0201A14E:
@@ -125,10 +125,10 @@ _0201A14E:
 	pop {r3, pc}
 	nop
 _0201A154: .word gMain
-	thumb_func_end sub_0201A120
+	thumb_func_end Main_SetHBlankIntrCB
 
-	thumb_func_start sub_0201A158
-sub_0201A158: ; 0x0201A158
+	thumb_func_start CallHBlankIntrCallback
+CallHBlankIntrCallback: ; 0x0201A158
 	push {r3, lr}
 	ldr r0, _0201A168 ; =gMain
 	ldr r1, [r0, #8]
@@ -140,10 +140,10 @@ _0201A166:
 	pop {r3, pc}
 	.balign 4, 0
 _0201A168: .word gMain
-	thumb_func_end sub_0201A158
+	thumb_func_end CallHBlankIntrCallback
 
-	thumb_func_start sub_0201A16C
-sub_0201A16C: ; 0x0201A16C
+	thumb_func_start HBlankIntrRegsToggle
+HBlankIntrRegsToggle: ; 0x0201A16C
 	push {r3, lr}
 	ldr r2, _0201A1AC ; =0x04000208
 	ldrh r1, [r2]
@@ -159,7 +159,7 @@ sub_0201A16C: ; 0x0201A16C
 	b _0201A1A0
 _0201A18A:
 	ldr r0, [r2, #8]
-	ldr r1, _0201A1B0 ; =sub_0201A158
+	ldr r1, _0201A1B0 ; =CallHBlankIntrCallback
 	mov r0, #2
 	bl OS_SetIrqFunction
 	mov r0, #2
@@ -174,8 +174,8 @@ _0201A1A0:
 	pop {r3, pc}
 	nop
 _0201A1AC: .word 0x04000208
-_0201A1B0: .word sub_0201A158
-	thumb_func_end sub_0201A16C
+_0201A1B0: .word CallHBlankIntrCallback
+	thumb_func_end HBlankIntrRegsToggle
 
 	thumb_func_start sub_0201A1B4
 sub_0201A1B4: ; 0x0201A1B4

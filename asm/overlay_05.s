@@ -412,7 +412,7 @@ ov05_0221BD28: ; 0x0221BD28
 	strh r0, [r1]
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r1, #1

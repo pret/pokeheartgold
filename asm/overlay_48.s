@@ -114,7 +114,7 @@ ov48_02258800: ; 0x02258800
 	ldr r0, _0225891C ; =ov48_02259090
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -247,7 +247,7 @@ ov48_022589FC: ; 0x022589FC
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	ldr r0, _02258A74 ; =0x0000C40C
 	add r1, r4, #0
 	add r0, r4, r0

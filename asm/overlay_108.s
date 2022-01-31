@@ -469,7 +469,7 @@ _021E5C68:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -546,7 +546,7 @@ _021E5D1C:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r4, #0
 	bl ov108_021E7510
 	add r0, r4, #0
@@ -6276,7 +6276,7 @@ ov108_021E8AD4: ; 0x021E8AD4
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	bl GX_DisableEngineALayers
 	bl GX_DisableEngineBLayers
 	mov r2, #1
@@ -7326,7 +7326,7 @@ _021E9314:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_0201A108
+	bl HBlankInterruptDisable
 	add r0, r4, #0
 	bl ov108_021E9F04
 	add r0, r4, #0
