@@ -325,7 +325,7 @@ ov00_021E7F38: ; 0x021E7F38
 	cmp r4, #1
 	bne _021E7FA8
 	ldr r0, _021E8040 ; =ov00_0221A6A0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 _021E7FA8:
 	ldr r0, _021E8038 ; =ov00_0221A694
 	ldr r1, [r0, #8]
@@ -620,7 +620,7 @@ _021E83AC:
 	add r1, r4, #0x1f
 	ldr r0, _021E84C4 ; =ov00_0221A6A0
 	bic r1, r1, #0x1f
-	bl sub_0209F850
+	bl DWCi_AUTH_UpDateWiFiID
 	cmp r0, #1
 	mov r2, #0
 	beq _021E83F0
@@ -651,7 +651,7 @@ _021E8404:
 	b _021E84AC
 _021E8420:
 	ldr r0, _021E84C4 ; =ov00_0221A6A0
-	bl sub_0209F8A0
+	bl DWCi_AUTH_RemakeWiFiID
 	ldr r0, _021E84B4 ; =ov00_0221A694
 	ldr r2, _021E84CC ; =0x00004E88
 	ldr r1, [r0, #8]
@@ -675,7 +675,7 @@ _021E8444:
 _021E8474:
 	add r0, r4, #0x1f
 	bic r0, r0, #0x1f
-	bl sub_0209F80C
+	bl DWCi_AUTH_MakeWiFiID
 	ldr r0, _021E84C8 ; =ov00_022164B4
 	mov r1, r4
 	mov r2, #0
@@ -1032,7 +1032,7 @@ ov00_021E8984: ; 0x021E8984
 	sub sp, sp, #0x14
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	add r1, sp, #0
 	mov r0, r4
 	bl ov00_021E89AC
@@ -3449,7 +3449,7 @@ _021EAB58:
 	ldr r0, [r5, #0x14]
 	bl ov00_021E9754
 	add r0, sp, #0x30
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	ldr r2, [sp, #0x30]
 	ldr r1, [sp, #0x34]
 	mov r0, #0
@@ -22104,7 +22104,7 @@ ov00_021FA75C: ; 0x021FA75C
 	mov r1, r1, lsl #0x1e
 	orr r1, r2, r1, lsr #26
 	strb r1, [r0, #0xd0c]
-	bl sub_0209E404
+	bl DWCi_BM_GetApInfo
 	ldr r0, _021FA8FC ; =ov00_0221B0AC
 	mov r1, #0x2300
 	ldr r0, [r0]

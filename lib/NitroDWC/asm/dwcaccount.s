@@ -11,13 +11,13 @@ sub_0209FAE4: ; 0x0209FAE4
 	mov r5, #0
 	bl OSi_ReferSymbol
 	mov r0, r6
-	bl sub_0209EFF8
+	bl DWC_BM_Init
 	mov r4, r0
-	bl sub_0209FA94
+	bl DWC_Auth_CheckPseudoWiFiID
 	cmp r0, #0
 	beq _0209FB1C
 	mov r0, r6
-	bl sub_0209F80C
+	bl DWCi_AUTH_MakeWiFiID
 	mov r5, #1
 _0209FB1C:
 	cmp r4, #0
@@ -411,7 +411,7 @@ _0209FF50:
 	add r0, sp, #0x20
 	ldr r5, [sp, #0x1c]
 	mov r4, #0
-	bl sub_0209FA40
+	bl DWC_Auth_GetId
 	ldr r0, [sp, #0x30]
 	cmp r0, #0
 	beq _0209FFA0
@@ -453,7 +453,7 @@ sub_0209FFF8: ; 0x0209FFF8
 	sub sp, sp, #0x14
 	mov r4, r0
 	add r0, sp, #0
-	bl sub_0209FA40
+	bl DWC_Auth_GetId
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	mov r0, r4
@@ -575,7 +575,7 @@ sub_020A0130: ; 0x020A0130
 	moveq r0, #1
 	ldmeqia sp!, {r3, r4, pc}
 	add r0, sp, #0
-	bl sub_0209FA40
+	bl DWC_Auth_GetId
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	addeq sp, sp, #0x14

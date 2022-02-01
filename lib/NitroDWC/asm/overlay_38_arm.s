@@ -5299,7 +5299,7 @@ ov38_02220784: ; 0x02220784
 	mov r1, #0x14
 	bl ov38_02221888
 	add r0, sp, #0x10
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
 	mov r0, #0

@@ -5282,7 +5282,7 @@ _0222B5A0:
 	mov r1, #0x20
 	bl ov13_0224128C
 	str r0, [sp]
-	bl sub_0209EFF8
+	bl DWC_BM_Init
 	add r0, sp, #0
 	bl ov13_022412B0
 	ldmia sp!, {r3, pc}
@@ -7463,7 +7463,7 @@ ov13_0222D088: ; 0x0222D088
 	mov r3, #0xf0
 	bl ov13_02240CC0
 	add r0, sp, #0x54
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	ldr sl, [sp, #0x58]
 	ldr r8, [sp, #0x54]
 	cmp sl, #0
@@ -7827,7 +7827,7 @@ _0222D55C:
 	bl ov13_0223F95C
 	mov r8, r0
 	add r0, sp, #0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	ldr r0, [sp, #4]
 	ldr r1, [sp]
 	cmp r0, #0
@@ -8052,7 +8052,7 @@ _0222D8A0:
 	b _0222D908
 _0222D8AC:
 	add r0, sp, #0
-	bl sub_0209E430
+	bl DWCi_BM_GetWiFiInfo
 	ldr r0, _0222D918 ; =ov13_0224F508
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -14223,7 +14223,7 @@ _02232724:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 _0223274C:
 	add r0, sp, #0
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	movne r0, #1
 	moveq r0, #0
@@ -15802,7 +15802,7 @@ _02233CA4:
 	bl ov13_02239FF0
 	mov r4, r0
 	add r0, r4, #0xf0
-	bl sub_0209E788
+	bl DWCi_BACKUPlConvMaskCidr
 	strb r0, [r4, #0xd0]
 	ldrb r0, [r4, #0xf5]
 	cmp r0, #0
@@ -17363,11 +17363,11 @@ ov13_022351C0: ; 0x022351C0
 	cmp r0, #0
 	bne _0223520C
 	add r0, r4, #0xc8
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	bne _0223520C
 	add r0, r4, #0xcc
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -17376,18 +17376,18 @@ _0223520C:
 	cmp r0, #0
 	bne _02235258
 	add r0, r4, #0xc0
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0xc4
-	bl sub_0209E8A0
+	bl DWC_BACKUPlCheckAddress
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
 	add r0, r4, #0xc0
 	add r1, r4, #0xf0
-	bl sub_0209E824
+	bl DWC_BACKUPlCheckIp
 	cmp r0, #0
 	moveq r0, #0
 	ldmeqia sp!, {r4, pc}
@@ -21080,11 +21080,11 @@ ov13_022380A8: ; 0x022380A8
 	bl ov00_021FAAC8
 	cmp r0, #0
 	ldmeqia sp!, {r4, pc}
-	bl sub_0209EFEC
+	bl DWCi_BACKUPlGetWifi
 	add r1, r4, #0xf0
 	mov r2, #0xe
 	bl MI_CpuCopy8
-	bl sub_0209EFEC
+	bl DWCi_BACKUPlGetWifi
 	add r1, r4, #0x1f0
 	mov r2, #0xe
 	bl MI_CpuCopy8
@@ -23594,7 +23594,7 @@ ov13_02239F98: ; 0x02239F98
 	bl MATHi_CRC16InitTableRev
 	ldr r0, _02239FD4 ; =ov13_0224F5A4
 	ldr r0, [r0]
-	bl sub_0209E628
+	bl DWCi_BACKUPlRead
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _02239FD0: .word 0x000006F8
@@ -24032,7 +24032,7 @@ _0223A4D4:
 	ldrb r0, [r4, #0xd0]
 	ldr r1, [r1]
 	add r1, r1, #0x4f0
-	bl sub_0209E7CC
+	bl DWCi_BACKUPlConvMaskAddr
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _0223A4EC: .word ov13_0224F5A4
@@ -24081,7 +24081,7 @@ _0223A56C:
 	mov r2, #4
 	bl MI_CpuCopy8
 	add r0, r4, #0xf0
-	bl sub_0209E788
+	bl DWCi_BACKUPlConvMaskCidr
 _0223A590:
 	strb r0, [r5, #0xd0]
 	ldrb r0, [r4, #0xf6]
@@ -24306,9 +24306,9 @@ _0223A868:
 	cmp r3, #3
 	blt _0223A868
 	add r0, sp, #0
-	bl sub_0209F630
+	bl DWCi_AUTH_GetNewWiFiInfo
 	add r0, sp, #0
-	bl sub_0209EF2C
+	bl DWCi_BACKUPlConvWifiInfo
 	mov r8, #0
 	ldr r4, _0223A8EC ; =ov13_0224F5A4
 	mov r6, r0
@@ -24428,7 +24428,7 @@ _0223AA10:
 	add r1, sp, #4
 	ldr r0, [r0]
 	str r2, [sp]
-	bl sub_0209E654
+	bl DWCi_BACKUPlWritePage
 	add r0, sp, #0
 	bl ov13_022412B0
 	add sp, sp, #0x14
@@ -29184,7 +29184,7 @@ ov13_0223E80C: ; 0x0223E80C
 	ldr r0, [r0]
 	add r0, r0, #0x24c
 	add r0, r0, #0x400
-	bl sub_0209E628
+	bl DWCi_BACKUPlRead
 	bl OS_GetTick
 	bl ov13_0223A7F4
 	ldr r1, _0223E8F8 ; =ov13_0224F5C8
