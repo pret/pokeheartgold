@@ -572,7 +572,7 @@ ov43_0222A358: ; 0x0222A358
 	bl sub_0202C6F4
 	add r5, r0, #0
 	bl sub_0202C08C
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	str r0, [sp, #0x10]
 	str r1, [sp, #0xc]
 	mov r4, #0
@@ -600,7 +600,7 @@ _0222A378:
 	bl sub_0202C08C
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_0209FD0C
+	bl DWC_CheckFriendKey
 	cmp r0, #0
 	bne _0222A3BA
 	add sp, #0x20
@@ -624,7 +624,7 @@ _0222A3D2:
 	bl sub_0202C23C
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_020A0340
+	bl DWC_CreateFriendKeyToken
 	ldr r2, [sp, #4]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -4568,7 +4568,7 @@ ov43_0222C2B0: ; 0x0222C2B0
 	ldrb r1, [r6, r7]
 	ldr r0, [sp, #0x1c]
 	bl sub_0202C23C
-	bl sub_020A0264
+	bl DWC_GetFriendKey
 	str r1, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x10]
@@ -6167,7 +6167,7 @@ ov43_0222CE48: ; 0x0222CE48
 	ldr r0, [r0, #4]
 	bl sub_0202C6F4
 	bl sub_0202C08C
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	str r1, [sp, #0x1c]
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x1c]

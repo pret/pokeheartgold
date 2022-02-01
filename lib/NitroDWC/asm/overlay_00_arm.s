@@ -9171,7 +9171,7 @@ ov00_021EF6F4: ; 0x021EF6F4
 	str r4, [r0]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl sub_020A007C
+	bl DWCi_Acc_IsAuthentic
 	cmp r0, #0
 	beq _021EF754
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
@@ -9180,20 +9180,20 @@ ov00_021EF6F4: ; 0x021EF6F4
 	add r2, r1, #0x248
 	ldr r1, [r0, #0x24]
 	add r0, r0, #0x10
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	b _021EF808
 _021EF754:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	add r0, r0, #0x3c
-	bl sub_020A0064
+	bl DWCi_Acc_IsValidLoginId
 	cmp r0, #0
 	bne _021EF7BC
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
 	add r0, r0, #4
-	bl sub_0209FFF8
+	bl DWCi_Acc_CheckConsoleUserId
 	cmp r0, #0
 	beq _021EF7A8
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
@@ -9208,7 +9208,7 @@ _021EF7A8:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
 	add r0, r0, #0x3c
-	bl sub_0209FF34
+	bl DWCi_Acc_CreateTempLoginId
 	b _021EF7F0
 _021EF7BC:
 	bl OS_GetTick
@@ -9223,14 +9223,14 @@ _021EF7BC:
 	ldr r3, [r3, #4]
 	adc r1, r4, #0
 	add r0, r3, #0x3c
-	bl sub_0209FBE0
+	bl DWCi_Acc_SetPlayerId
 _021EF7F0:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r2, [r0, #4]
 	ldr r1, [r2, #0xc]
 	add r0, r2, #0x3c
 	add r2, r2, #0x248
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 _021EF808:
 	ldr r0, _021EF8A4 ; =ov00_0221A90C
 	ldr r0, [r0, #4]
@@ -9315,7 +9315,7 @@ ov00_021EF8C0: ; 0x021EF8C0
 	str r2, [r1, #0x24]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
-	bl sub_020A007C
+	bl DWCi_Acc_IsAuthentic
 	cmp r0, #0
 	beq _021EF96C
 	ldr r0, _021EFAB0 ; =ov00_0221A90C
@@ -9441,7 +9441,7 @@ ov00_021EFAC8: ; 0x021EFAC8
 	ldr r1, [r2, #0xc]
 	add r2, sp, #0x32
 	add r0, r0, #4
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	ldr r1, _021EFC60 ; =0x00000705
 	add r2, sp, #0x32
 	mov r0, r5
@@ -9484,7 +9484,7 @@ _021EFBA0:
 	ldr r1, [r2, #0xc]
 	add r2, sp, #0x1d
 	add r0, r0, #4
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	add r1, sp, #0x1d
 	add r0, r4, #0x8e
 	bl strcmp
@@ -9495,13 +9495,13 @@ _021EFBA0:
 	ldr r0, [r0, #4]
 	ldr r1, [r0, #0xc]
 	add r0, r0, #0x3c
-	bl sub_0209FE28
+	bl DWCi_Acc_LoginIdToUserName
 	ldr r0, _021EFC5C ; =ov00_0221A90C
 	ldr r2, [r4, #4]
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #0x1c]
 	add r1, r1, #0x3c
-	bl sub_020A0198
+	bl DWCi_Acc_SetLoginIdToUserData
 	ldr r1, _021EFC5C ; =ov00_0221A90C
 	mov r3, #2
 	ldr r2, [r1, #4]
@@ -10105,7 +10105,7 @@ ov00_021F03BC: ; 0x021F03BC
 	bl ov00_021EF3A4
 	mov r1, #0xc
 	mla r1, r5, r1, r4
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r0, #0
 	mvnne r1, #0
 	cmpne r0, r1
@@ -10368,14 +10368,14 @@ _021F0718:
 	mov r0, #0xc
 	mul r5, r4, r0
 	add r0, r7, r5
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	bne _021F0778
 	ldr r1, [sp, #0x38]
 	add r0, r7, r5
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	add r0, r7, r5
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	ldr r0, _021F090C ; =ov00_0221A918
 	mov r1, #1
 	ldr r0, [r0, #8]
@@ -10450,7 +10450,7 @@ _021F0854:
 	ldr r1, [sl, #8]
 	ldrb r2, [r1, #0x1c]
 	mla r1, r2, r8, r7
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r0, sb
 	bne _021F08E4
 	bl ov00_021EF3A4
@@ -10460,7 +10460,7 @@ _021F0854:
 	add r2, sp, #0x20
 	ldrb r3, [r3, #0x1c]
 	mla r1, r3, r1, r7
-	bl sub_020A0404
+	bl DWC_LoginIdToUserName
 	ldr r0, _021F090C ; =ov00_0221A918
 	mov r1, #0
 	ldr r4, [r0, #8]
@@ -10562,12 +10562,12 @@ _021F09C0:
 	bne _021F0A38
 	mov r0, #0xc
 	mla r0, r6, r0, r7
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	beq _021F0A14
 	mov r0, #0xc
 	mla r0, r4, r0, r7
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	bne _021F0A14
 	mov r0, r7
@@ -10630,23 +10630,23 @@ _021F0AB0:
 	cmp r4, r0
 	bne _021F0B24
 	mov r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #2
 	bne _021F0AEC
 	mov r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #3
 	bne _021F0AEC
 	mov r0, r8
 	mov r1, r4
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 _021F0AEC:
 	mov r0, sb
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #0
 	beq _021F0B04
 	mov r0, r8
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 _021F0B04:
 	mov r0, fp
 	mov r1, r6
@@ -10713,7 +10713,7 @@ _021F0BBC:
 _021F0BC4:
 	bl ov00_021EF3A4
 	mov r1, r5
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	mov r5, r0
 	cmp r5, #0
 	ble _021F0C00
@@ -10808,7 +10808,7 @@ ov00_021F0CBC: ; 0x021F0CBC
 	ldr r0, [r1, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r6
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #0
 	beq _021F0E8C
 	ldr r7, _021F0EF4 ; =ov00_0221A918
@@ -10875,12 +10875,12 @@ _021F0DDC:
 	ldr r1, [r1]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r6
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	ldr r0, _021F0EF4 ; =ov00_0221A918
 	ldr r0, [r0, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r6
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	mov r0, r8
 	bl ov00_021F0550
 	ldr r0, _021F0EF4 ; =ov00_0221A918
@@ -10931,7 +10931,7 @@ _021F0EA4:
 	ldr r1, [r1, #0x18]
 	mov r0, #0xc
 	mla r0, r8, r0, r1
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #0
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _021F0ED0:
@@ -10970,7 +10970,7 @@ ov00_021F0EF8: ; 0x021F0EF8
 _021F0F3C:
 	ldr r0, [r1, #0x18]
 	add r0, r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #1
 	bne _021F0FA4
 	bl ov00_021EF3A4
@@ -10978,7 +10978,7 @@ _021F0F3C:
 	mov r2, fp
 	ldr r1, [r1, #0x18]
 	add r1, r1, r7
-	bl sub_020A0404
+	bl DWC_LoginIdToUserName
 	mov r0, fp
 	add r1, sb, #0x8e
 	bl strcmp
@@ -10991,20 +10991,20 @@ _021F0F3C:
 	ldr r1, [sb, #4]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r7
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	mov r6, #1
 	b _021F105C
 _021F0FA4:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #3
 	beq _021F0FD4
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, r7
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #2
 	bne _021F105C
 _021F0FD4:
@@ -11029,7 +11029,7 @@ _021F0FD4:
 	ldr r1, [r4, #8]
 	ldr r1, [r1, #0x18]
 	add r1, r1, r7
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	cmp r8, r0
 	bne _021F105C
 	add r0, sp, #0xc
@@ -11090,7 +11090,7 @@ ov00_021F10A8: ; 0x021F10A8
 _021F10F0:
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #1
 	bne _021F115C
 	bl ov00_021EF3A4
@@ -11098,7 +11098,7 @@ _021F10F0:
 	mov r2, r5
 	ldr r1, [r1, #0x18]
 	add r1, r1, sb
-	bl sub_020A0404
+	bl DWC_LoginIdToUserName
 	mov r0, r5
 	add r1, sl, #0x8e
 	bl strcmp
@@ -11108,24 +11108,24 @@ _021F10F0:
 	ldr r1, [sl, #4]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	mov r7, fp
 	b _021F11F0
 _021F115C:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #3
 	beq _021F118C
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC54
+	bl DWC_GetFriendDataType
 	cmp r0, #2
 	bne _021F11F0
 _021F118C:
@@ -11133,14 +11133,14 @@ _021F118C:
 	ldr r1, [r4, #8]
 	ldr r1, [r1, #0x18]
 	add r1, r1, sb
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	ldr r1, [sl, #4]
 	cmp r1, r0
 	bne _021F11F0
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC1C
+	bl DWC_IsBuddyFriendData
 	cmp r0, #1
 	moveq r8, #1
 	beq _021F11F0
@@ -11148,11 +11148,11 @@ _021F118C:
 	ldr r1, [sl, #4]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_020A03D0
+	bl DWC_SetGsProfileId
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0x18]
 	add r0, r0, sb
-	bl sub_0209FC9C
+	bl DWCi_SetBuddyFriendData
 	mov r7, #1
 _021F11F0:
 	ldr r0, [r4, #8]
@@ -16540,7 +16540,7 @@ _021F5E04:
 	ldrb r2, [r2, #0x304]
 	mov r0, sl
 	mla r1, r2, r1, r3
-	bl sub_020A028C
+	bl DWC_GetGsProfileId
 	movs r4, r0
 	mvnne r0, #0
 	cmpne r4, r0
@@ -16556,7 +16556,7 @@ _021F5E04:
 	add r1, sb, r1
 	ldrb r1, [r1, #0x304]
 	mla r0, r1, r0, r2
-	bl sub_020A00A4
+	bl DWCi_Acc_IsValidFriendData
 	cmp r0, #0
 	beq _021F5D70
 	mov sb, r5
@@ -25758,7 +25758,7 @@ _021FD794:
 	mul r3, r1, r2
 	add r1, r4, r3
 	add r3, r4, r3
-	bl sub_020A0628
+	bl CRYPTO_RC4FastEncrypt
 	ldr r0, _021FD9B4 ; =ov00_0221B0C0
 	mov r1, #0x70
 	ldr ip, [r0]

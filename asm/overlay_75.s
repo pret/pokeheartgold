@@ -4078,7 +4078,7 @@ _022489CC:
 	bl sub_02028DD8
 	add r4, r0, #0
 	add r0, r7, #0
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	add r3, r0, #0
 	add r2, r1, #0
 	add r0, r4, #0

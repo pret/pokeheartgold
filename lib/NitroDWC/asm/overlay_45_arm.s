@@ -23,11 +23,11 @@ ov45_022310C0: ; 0x022310C0
 	mov r6, r1
 	mov r5, r2
 	mov r4, r3
-	bl sub_020A00BC
+	bl DWC_CheckUserData
 	cmp r0, #0
 	beq _022310FC
 	mov r0, r8
-	bl sub_020A0100
+	bl DWC_CheckHasProfile
 	cmp r0, #0
 	bne _02231108
 _022310FC:

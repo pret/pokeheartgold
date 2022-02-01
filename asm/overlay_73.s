@@ -6769,7 +6769,7 @@ _021E8E96:
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x14]
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	add r3, r0, #0
 	add r2, r1, #0
 	add r0, r4, #0

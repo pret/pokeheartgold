@@ -2607,7 +2607,7 @@ _0222B2CA:
 	bl ov44_0222B0B0
 	ldr r0, [r5]
 	bl sub_0202C08C
-	bl sub_020A0100
+	bl DWC_CheckHasProfile
 	cmp r0, #0
 	bne _0222B32E
 	mov r0, #0
@@ -2642,7 +2642,7 @@ _0222B2CA:
 _0222B32E:
 	ldr r0, [r5]
 	bl sub_0202C08C
-	bl sub_020A0130
+	bl DWC_CheckValidConsole
 	cmp r0, #0
 	bne _0222B34E
 	add r0, r5, #0

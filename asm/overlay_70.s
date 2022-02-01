@@ -26459,7 +26459,7 @@ _02244A28:
 	bl sub_02028DD8
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_020A0310
+	bl DWC_CreateFriendKey
 	add r3, r0, #0
 	add r2, r1, #0
 	add r0, r6, #0
