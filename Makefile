@@ -86,6 +86,7 @@ PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
 $(FX_CONST_H): $(TOOLSDIR)/gen_fx_consts/fx_const.csv
 	$(MKFXCONST) $@
 sdk: $(FX_CONST_H)
+$(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
 
 # Convenience targets
 heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
