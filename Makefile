@@ -48,8 +48,8 @@ SBIN_LZ        := $(SBIN)_LZ
 .PHONY: main_lz
 
 sdk9 sdk7: sdk
-main: sdk9
-sub: sdk7
+main filesystem: | sdk9
+sub: | sdk7
 
 main: $(SBIN) $(ELF)
 main_lz: $(SBIN_LZ)
