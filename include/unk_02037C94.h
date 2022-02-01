@@ -2,5 +2,6 @@
 #define POKEHEARTGOLD_UNK_02037C94_H
 
 BOOL sub_02037D78(void);
+int sub_02039FFC(int a0);
 
 #endif //POKEHEARTGOLD_UNK_02037C94_H

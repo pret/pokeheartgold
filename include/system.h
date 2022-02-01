@@ -35,9 +35,16 @@ struct System {
     u8 unk67;
     u8 softResetDisabled;
     u8 padding_69[3]; // nice
-    s32 unk6C;
+    u8 unk6C;
+    int unk70;
 };
 
 extern struct System gSystem;
+
+void InitSystemForTheGame(void);
+void InitGraphicMemory(void);
+void InitKeypadAndTouchpad(void);
+void sub_0201A4B0(int a0);
+void ReadKeypadAndTouchpad(void);
 
 #endif //POKEHEARTGOLD_SYSTEM_H

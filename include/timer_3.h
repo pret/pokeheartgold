@@ -1,0 +1,6 @@
+#ifndef POKEHEARTGOLD_TIMER_3_H
+#define POKEHEARTGOLD_TIMER_3_H
+
+void Init_Timer3(void);
+
+#endif //POKEHEARTGOLD_TIMER_3_H

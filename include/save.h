@@ -49,10 +49,12 @@
 #ifndef PM_ASM
 typedef struct SaveBlock2 SAVEDATA;
 
+SAVEDATA *SaveBlock2_new(void);
 void *SavArray_get(SAVEDATA *save, int idx);
 const void *SavArray_const_get(const SAVEDATA *save, int idx);
 void SaveSubstruct_UpdateCRC(int idx);
 BOOL SaveSubstruct_AssertCRC(int idx);
+BOOL sub_020274D0(SAVEDATA *save);
 #endif //PM_ASM
 
 #endif //POKEHEARTGOLD_SAVE_H

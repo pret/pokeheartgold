@@ -16,4 +16,8 @@ void OS_ResetSystem(u32 parameter);
 void OS_ResetSystem(void);
 #endif
 
+static inline u32 OS_GetResetParameter(void) {
+    return *(u32 *)HW_RESET_PARAMETER_BUF;
+}
+
 #endif //NITRO_OS_RESET_H

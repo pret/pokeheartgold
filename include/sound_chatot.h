@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_SOUND_CHATOT_H
 #define POKEHEARTGOLD_SOUND_CHATOT_H
 
-typedef struct SOUND_CHATOT SOUND_CHATOT;
+#include "sav_chatot.h"
 
 void ChatotSoundMain(void);
 extern void PlayCryEx(u32, u16, u32, u32, u32, u8);
