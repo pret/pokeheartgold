@@ -269,6 +269,11 @@ Static main
 	Object unk_0208B1AC.o
 	Object unk_0208C3E4.o
 	Object unk_0208DE40.o
+	Object unk_0208E55C.o
+	Object unk_0208E600.o
+	Object unk_0208F658.o
+	Object unk_0208F814.o
+	Object unk_0208FB64.o
 	Object use_item_on_mon.o
 	Object unk_02090C94.o
 	Object unk_020910D8.o
