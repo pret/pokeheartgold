@@ -11128,7 +11128,7 @@ ov45_0223AA80: ; 0x0223AA80
 	str r0, [r6, #4]
 	cmp r5, #0
 	ldmleia sp!, {r4, r5, r6, pc}
-	ldr r4, _0223AAE0 ; =_021E58E0
+	ldr r4, _0223AAE0 ; =_ZSt7nothrow
 _0223AAAC:
 	mov r1, r4
 	mov r0, r5, lsl #3
@@ -11144,7 +11144,7 @@ _0223AAAC:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _0223AADC: .word ov45_02255198
-_0223AAE0: .word _021E58E0
+_0223AAE0: .word _ZSt7nothrow
 	arm_func_end ov45_0223AA80
 
 	arm_func_start ov45_0223AAE4

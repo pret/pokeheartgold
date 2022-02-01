@@ -49,8 +49,8 @@ _021E58C0:
 _021E58C4:
 	.space 0x1C
 
-	.public _021E58E0
-_021E58E0:
+	.public _ZSt7nothrow
+_ZSt7nothrow:
 	.space 0x4
 
 _ZSt13__new_handler:

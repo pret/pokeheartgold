@@ -29757,7 +29757,7 @@
 .public _0210E484
 .public _021D4420
 .public _021E58C0
-.public _021E58E0
+.public _ZSt7nothrow
 .public FS_NotifyArchiveAsyncEnd
 .public NNS_SndArcPlayerStartSeqArc
 .public NNS_SndPlayerSetVolume
