@@ -567,12 +567,12 @@ _0222BC40: .word 0x04001050
 
 	thumb_func_start ov40_0222BC44
 ov40_0222BC44: ; 0x0222BC44
-	ldr r1, _0222BC4C ; =gMain + 0x60
+	ldr r1, _0222BC4C ; =gSystem + 0x60
 	ldr r3, _0222BC50 ; =GX_SwapDisplay
 	strb r0, [r1, #9]
 	bx r3
 	.balign 4, 0
-_0222BC4C: .word gMain + 0x60
+_0222BC4C: .word gSystem + 0x60
 _0222BC50: .word GX_SwapDisplay
 	thumb_func_end ov40_0222BC44
 
@@ -10207,7 +10207,7 @@ _0223087E:
 	mov r1, #0
 	str r1, [r4, r0]
 _02230884:
-	ldr r0, _02230934 ; =gMain + 0x60
+	ldr r0, _02230934 ; =gSystem + 0x60
 	ldrb r0, [r0, #9]
 	cmp r0, #0
 	bne _02230890
@@ -10286,7 +10286,7 @@ _02230912:
 	nop
 _0223092C: .word 0x0000415C
 _02230930: .word 0x00004168
-_02230934: .word gMain + 0x60
+_02230934: .word gSystem + 0x60
 _02230938: .word 0x000006F4
 _0223093C: .word 0x00004164
 _02230940: .word ov40_022307FC

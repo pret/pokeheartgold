@@ -40,7 +40,7 @@ ShowSaveDataReadError: ; 0x0209263C
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
-	ldr r0, _020927A8 ; =gMain + 0x60
+	ldr r0, _020927A8 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -158,7 +158,7 @@ _02092790:
 	nop
 _020927A0: .word 0xFFFFE0FF
 _020927A4: .word 0x04001000
-_020927A8: .word gMain + 0x60
+_020927A8: .word gSystem + 0x60
 _020927AC: .word 0x04000050
 _020927B0: .word 0x04001050
 _020927B4: .word 0xFFFF1FFF
@@ -202,7 +202,7 @@ ShowGBACartRemovedError: ; 0x020927D0
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
-	ldr r0, _0209293C ; =gMain + 0x60
+	ldr r0, _0209293C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -320,7 +320,7 @@ _02092924:
 	nop
 _02092934: .word 0xFFFFE0FF
 _02092938: .word 0x04001000
-_0209293C: .word gMain + 0x60
+_0209293C: .word gSystem + 0x60
 _02092940: .word 0x04000050
 _02092944: .word 0x04001050
 _02092948: .word 0xFFFF1FFF

@@ -189,7 +189,7 @@ _02022D38: .word 0x04001000
 
 	thumb_func_start GX_SwapDisplay
 GX_SwapDisplay: ; 0x02022D3C
-	ldr r0, _02022D5C ; =gMain + 0x60
+	ldr r0, _02022D5C ; =gSystem + 0x60
 	ldr r2, _02022D60 ; =0x04000304
 	ldrb r0, [r0, #9]
 	cmp r0, #0
@@ -206,7 +206,7 @@ _02022D50:
 	strh r0, [r2]
 	bx lr
 	nop
-_02022D5C: .word gMain + 0x60
+_02022D5C: .word gSystem + 0x60
 _02022D60: .word 0x04000304
 _02022D64: .word 0xFFFF7FFF
 	thumb_func_end GX_SwapDisplay

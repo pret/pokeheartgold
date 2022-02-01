@@ -1,4 +1,4 @@
-#include "main.h"
+#include "system.h"
 #include "options.h"
 #include "player_data.h"
 
@@ -30,11 +30,11 @@ void Options_SetButtonModeOnMain(SAVEDATA* savedata, u32 buttonMode) {
 
     switch (buttonMode) {
         case 1:
-            gMain.buttonMode = 3;
+            gSystem.buttonMode = 3;
             break;
         case 0:
         default:
-            gMain.buttonMode = 0;
+            gSystem.buttonMode = 0;
             break;
     }
 }

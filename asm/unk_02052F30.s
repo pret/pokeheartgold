@@ -150,11 +150,11 @@ _02053026:
 	ldr r0, [r0]
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x1c
-	ldr r0, _02053034 ; =gMain + 0x60
+	ldr r0, _02053034 ; =gSystem + 0x60
 	strb r1, [r0, #9]
 	pop {r4, pc}
 	.balign 4, 0
-_02053034: .word gMain + 0x60
+_02053034: .word gSystem + 0x60
 	thumb_func_end sub_02053018
 
 	thumb_func_start sub_02053038

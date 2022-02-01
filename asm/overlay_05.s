@@ -222,7 +222,7 @@ _0221BBA6:
 	ldr r0, [r4, r0]
 	cmp r0, #1
 	bne _0221BBBA
-	ldr r0, _0221BD1C ; =gMain
+	ldr r0, _0221BD1C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -398,7 +398,7 @@ _0221BD0C: .word 0x00000BBC
 _0221BD10: .word 0x00000BAC
 _0221BD14: .word 0x00000B88
 _0221BD18: .word 0x00000BB8
-_0221BD1C: .word gMain
+_0221BD1C: .word gSystem
 _0221BD20: .word 0x00000B98
 _0221BD24: .word ov05_0221EA58
 	thumb_func_end ov05_0221BB30

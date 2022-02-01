@@ -157,7 +157,7 @@ _0205193C:
 	add r0, sp, #0x10
 	add r1, sp, #4
 	bl GF_RTC_CopyDateTime
-	ldr r0, _02051A5C ; =gMain
+	ldr r0, _02051A5C ; =gSystem
 	ldr r6, [sp, #0x14]
 	ldr r5, [r0, #0x2c]
 	ldr r1, [sp, #8]
@@ -213,7 +213,7 @@ _02051A48:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02051A5C: .word gMain
+_02051A5C: .word gSystem
 	thumb_func_end sub_020518D8
 
 	thumb_func_start sub_02051A60

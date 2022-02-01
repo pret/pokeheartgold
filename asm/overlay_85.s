@@ -1755,7 +1755,7 @@ ov85_021E6594: ; 0x021E6594
 	bl ov85_021E7194
 	mov r0, #0xca
 	bl sub_02037AC0
-	ldr r0, _021E65D0 ; =gMain + 0x60
+	ldr r0, _021E65D0 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #0xc]
 	mov r0, #0x2c
@@ -1763,7 +1763,7 @@ ov85_021E6594: ; 0x021E6594
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021E65D0: .word gMain + 0x60
+_021E65D0: .word gSystem + 0x60
 	thumb_func_end ov85_021E6594
 
 	thumb_func_start ov85_021E65D4
@@ -1808,7 +1808,7 @@ ov85_021E6610: ; 0x021E6610
 	bl sub_02039EB4
 	cmp r0, #0
 	beq _021E6638
-	ldr r0, _021E663C ; =gMain + 0x60
+	ldr r0, _021E663C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #0xc]
 	ldr r0, _021E6640 ; =0x00000DC8
@@ -1820,7 +1820,7 @@ _021E6638:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021E663C: .word gMain + 0x60
+_021E663C: .word gSystem + 0x60
 _021E6640: .word 0x00000DC8
 	thumb_func_end ov85_021E6610
 
@@ -6602,7 +6602,7 @@ ov85_021E8A08: ; 0x021E8A08
 	bl sub_02025358
 	cmp r0, #0
 	beq _021E8A1E
-	ldr r0, _021E8AFC ; =gMain
+	ldr r0, _021E8AFC ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 _021E8A1E:
@@ -6714,7 +6714,7 @@ _021E8AF0:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_021E8AFC: .word gMain
+_021E8AFC: .word gSystem
 _021E8B00: .word ov85_021EA9E0
 _021E8B04: .word 0x00010300
 	thumb_func_end ov85_021E8A08
@@ -7718,7 +7718,7 @@ _021E9320:
 ov85_021E9324: ; 0x021E9324
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	ldr r0, _021E9430 ; =gMain
+	ldr r0, _021E9430 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -7838,7 +7838,7 @@ _021E9400:
 _021E942E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E9430: .word gMain
+_021E9430: .word gSystem
 _021E9434: .word 0x000005F2
 _021E9438: .word 0x00004A48
 	thumb_func_end ov85_021E9324
@@ -7961,7 +7961,7 @@ ov85_021E94EC: ; 0x021E94EC
 	ldr r0, [r0, #0x28]
 	cmp r0, #0
 	beq _021E9542
-	ldr r0, _021E9608 ; =gMain
+	ldr r0, _021E9608 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -7978,7 +7978,7 @@ _021E9520:
 	ldr r0, [r0, #0x30]
 	cmp r0, #0
 	beq _021E9542
-	ldr r0, _021E9608 ; =gMain
+	ldr r0, _021E9608 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -8083,7 +8083,7 @@ _021E95FC:
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E9608: .word gMain
+_021E9608: .word gSystem
 _021E960C: .word 0x000005F2
 _021E9610: .word 0x00004A50
 	thumb_func_end ov85_021E94EC
@@ -8226,7 +8226,7 @@ ov85_021E9700: ; 0x021E9700
 	cmp r0, #0
 	beq _021E9736
 _021E971A:
-	ldr r0, _021E97AC ; =gMain
+	ldr r0, _021E97AC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -8294,7 +8294,7 @@ _021E979E:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
-_021E97AC: .word gMain
+_021E97AC: .word gSystem
 _021E97B0: .word 0x000005F2
 _021E97B4: .word 0x00004A52
 	thumb_func_end ov85_021E9700
@@ -8375,7 +8375,7 @@ ov85_021E9834: ; 0x021E9834
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	ldr r0, _021E9860 ; =gMain + 0x60
+	ldr r0, _021E9860 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #0xc]
 	ldr r0, [r5, #0xc]
@@ -8393,7 +8393,7 @@ ov85_021E9834: ; 0x021E9834
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021E9860: .word gMain + 0x60
+_021E9860: .word gSystem + 0x60
 	thumb_func_end ov85_021E9834
 
 	thumb_func_start ov85_021E9864
@@ -8430,7 +8430,7 @@ _021E9876:
 	str r1, [r5, #0x1c]
 	lsl r0, r0, #4
 	str r1, [r5, r0]
-	ldr r0, _021E98C0 ; =gMain + 0x60
+	ldr r0, _021E98C0 ; =gSystem + 0x60
 	strb r1, [r0, #0xc]
 	ldr r0, [r5, #0x10]
 	str r1, [r0, #0x24]
@@ -8439,7 +8439,7 @@ _021E98B6:
 	pop {r3, r4, r5, pc}
 	nop
 _021E98BC: .word 0x00000657
-_021E98C0: .word gMain + 0x60
+_021E98C0: .word gSystem + 0x60
 	thumb_func_end ov85_021E9864
 
 	thumb_func_start ov85_021E98C4
@@ -8552,7 +8552,7 @@ ov85_021E996C: ; 0x021E996C
 	cmp r0, #0
 	beq _021E99A2
 _021E9986:
-	ldr r0, _021E9A14 ; =gMain
+	ldr r0, _021E9A14 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xc3
 	tst r0, r1
@@ -8620,7 +8620,7 @@ _021E9A08:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_021E9A14: .word gMain
+_021E9A14: .word gSystem
 _021E9A18: .word 0x000005F2
 	thumb_func_end ov85_021E996C
 

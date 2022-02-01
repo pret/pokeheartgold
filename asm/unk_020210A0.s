@@ -165,7 +165,7 @@ sub_020211AC: ; 0x020211AC
 	push {r4, lr}
 	ldr r4, _020211D0 ; =_021D2198 + 0x40
 	strh r0, [r4, #0x18]
-	ldr r0, _020211D4 ; =gMain + 0x60
+	ldr r0, _020211D4 ; =gSystem + 0x60
 	strb r1, [r0, #8]
 	ldr r0, _020211D8 ; =_021D2198
 	ldr r1, [sp, #0xc]
@@ -180,7 +180,7 @@ sub_020211AC: ; 0x020211AC
 	pop {r4, pc}
 	nop
 _020211D0: .word _021D2198 + 0x40
-_020211D4: .word gMain + 0x60
+_020211D4: .word gSystem + 0x60
 _020211D8: .word _021D2198
 _020211DC: .word _021D2198 + 0xC
 	thumb_func_end sub_020211AC

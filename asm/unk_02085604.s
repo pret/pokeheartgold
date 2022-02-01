@@ -863,7 +863,7 @@ _02085C2C:
 	ldr r0, [r4, r0]
 	cmp r0, #1
 	bne _02085CBC
-	ldr r0, _02085F04 ; =gMain
+	ldr r0, _02085F04 ; =gSystem
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	beq _02085C80
@@ -903,7 +903,7 @@ _02085CAA:
 	str r1, [r4, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _02085CBC:
-	ldr r0, _02085F04 ; =gMain
+	ldr r0, _02085F04 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -991,7 +991,7 @@ _02085D52:
 	mov r6, #1
 	b _02085F2A
 _02085D56:
-	ldr r1, _02085F04 ; =gMain
+	ldr r1, _02085F04 ; =gSystem
 	ldr r7, [r1, #0x48]
 	mov r1, #1
 	tst r1, r7
@@ -1208,7 +1208,7 @@ _02085EDC:
 	b _02085F22
 	.balign 4, 0
 _02085F00: .word _0210272C
-_02085F04: .word gMain
+_02085F04: .word gSystem
 _02085F08: .word 0x00000246
 _02085F0C: .word 0x000005E5
 _02085F10: .word 0x000005E2

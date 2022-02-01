@@ -1562,7 +1562,7 @@ _0221CA4C: .word 0x0000207B
 ov08_0221CA50: ; 0x0221CA50
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0221CA70 ; =gMain
+	ldr r0, _0221CA70 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -1578,7 +1578,7 @@ _0221CA6C:
 	mov r0, #0x12
 	pop {r4, pc}
 	.balign 4, 0
-_0221CA70: .word gMain
+_0221CA70: .word gSystem
 _0221CA74: .word 0x00002079
 	thumb_func_end ov08_0221CA50
 
@@ -13145,7 +13145,7 @@ _02222956:
 	bne _02222992
 	cmp r7, r0
 	bne _02222992
-	ldr r1, _02222A68 ; =gMain
+	ldr r1, _02222A68 ; =gSystem
 	mov r2, #0x20
 	ldr r1, [r1, #0x4c]
 	tst r2, r1
@@ -13279,7 +13279,7 @@ _02222A60:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02222A64: .word ov08_02225B68
-_02222A68: .word gMain
+_02222A68: .word gSystem
 _02222A6C: .word 0x000005DD
 _02222A70: .word 0x0000114D
 _02222A74: .word 0x0000114B
@@ -13701,7 +13701,7 @@ _02222DBE:
 ov08_02222DC4: ; 0x02222DC4
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _02222DE4 ; =gMain
+	ldr r0, _02222DE4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -13717,7 +13717,7 @@ _02222DE0:
 	mov r0, #0xa
 	pop {r4, pc}
 	.balign 4, 0
-_02222DE4: .word gMain
+_02222DE4: .word gSystem
 _02222DE8: .word 0x0000114B
 	thumb_func_end ov08_02222DC4
 
@@ -17592,7 +17592,7 @@ ov08_02224BFC: ; 0x02224BFC
 	mov r0, #1
 	pop {r3, r4, pc}
 _02224C0C:
-	ldr r1, _02224C40 ; =gMain
+	ldr r1, _02224C40 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #0xf3
 	tst r1, r2
@@ -17617,7 +17617,7 @@ _02224C38:
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
-_02224C40: .word gMain
+_02224C40: .word gSystem
 _02224C44: .word 0x000005DC
 	thumb_func_end ov08_02224BFC
 
@@ -17682,7 +17682,7 @@ ov08_02224C94: ; 0x02224C94
 	mvn r0, r0
 	pop {r4, r5, r6, r7, pc}
 _02224CAA:
-	ldr r0, _02224E20 ; =gMain
+	ldr r0, _02224E20 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -17853,7 +17853,7 @@ _02224DEE:
 	mvn r0, r0
 	pop {r4, r5, r6, r7, pc}
 _02224DF6:
-	ldr r0, _02224E20 ; =gMain
+	ldr r0, _02224E20 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -17876,7 +17876,7 @@ _02224E1A:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02224E20: .word gMain
+_02224E20: .word gSystem
 _02224E24: .word 0x000005DC
 _02224E28: .word 0x000005DD
 	thumb_func_end ov08_02224C94

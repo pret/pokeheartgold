@@ -3443,7 +3443,7 @@ _021E7482:
 	bl GF_AssertFail
 	b _021E74EC
 _021E7488:
-	ldr r0, _021E7510 ; =gMain
+	ldr r0, _021E7510 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -3508,7 +3508,7 @@ _021E7504:
 	.balign 4, 0
 _021E7508: .word ov95_021E7820
 _021E750C: .word 0x000005DC
-_021E7510: .word gMain
+_021E7510: .word gSystem
 	thumb_func_end ov95_021E7450
 
 	thumb_func_start ov95_021E7514

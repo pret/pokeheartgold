@@ -180,7 +180,7 @@ ListMenu_ProcessInput: ; 0x02001338
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r1, r4, #0
-	ldr r6, _02001430 ; =gMain
+	ldr r6, _02001430 ; =gSystem
 	mov r3, #0
 	add r1, #0x33
 	strb r3, [r1]
@@ -311,7 +311,7 @@ _02001428:
 	mvn r0, r0
 	pop {r4, r5, r6, pc}
 	nop
-_02001430: .word gMain
+_02001430: .word gSystem
 	thumb_func_end ListMenu_ProcessInput
 
 	thumb_func_start DestroyListMenu

@@ -18352,7 +18352,7 @@ _021EE4B8:
 	ldr r0, _021EE55C ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 _021EE4EE:
-	ldr r0, _021EE560 ; =gMain
+	ldr r0, _021EE560 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -18409,7 +18409,7 @@ _021EE55A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EE55C: .word SEQ_SE_DP_SELECT
-_021EE560: .word gMain
+_021EE560: .word gSystem
 _021EE564: .word 0x0000FFFE
 	thumb_func_end ov01_021EE49C
 
@@ -49416,7 +49416,7 @@ _021FCAD8:
 
 	thumb_func_start ov01_021FCAE8
 ov01_021FCAE8: ; 0x021FCAE8
-	ldr r0, _021FCAF8 ; =gMain
+	ldr r0, _021FCAF8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r1, r0
@@ -49425,12 +49425,12 @@ ov01_021FCAE8: ; 0x021FCAE8
 _021FCAF4:
 	bx lr
 	nop
-_021FCAF8: .word gMain
+_021FCAF8: .word gSystem
 	thumb_func_end ov01_021FCAE8
 
 	thumb_func_start ov01_021FCAFC
 ov01_021FCAFC: ; 0x021FCAFC
-	ldr r0, _021FCB10 ; =gMain
+	ldr r0, _021FCB10 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -49441,7 +49441,7 @@ _021FCB0A:
 	mov r0, #0
 	bx lr
 	nop
-_021FCB10: .word gMain
+_021FCB10: .word gSystem
 	thumb_func_end ov01_021FCAFC
 
 	thumb_func_start ov01_021FCB14

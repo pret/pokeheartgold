@@ -3404,7 +3404,7 @@ sub_0207A99C: ; 0x0207A99C
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r0, #0
-	ldr r0, _0207AABC ; =gMain
+	ldr r0, _0207AABC ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	mov r3, #4
@@ -3550,7 +3550,7 @@ _0207AAB4:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
-_0207AABC: .word gMain
+_0207AABC: .word gSystem
 _0207AAC0: .word 0x00000C65
 _0207AAC4: .word _021012CC
 _0207AAC8: .word 0x00000654
@@ -4058,7 +4058,7 @@ _0207AE90:
 	mov r0, #5
 	pop {r4, r5, r6, pc}
 _0207AEBE:
-	ldr r0, _0207AFC0 ; =gMain
+	ldr r0, _0207AFC0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -4175,7 +4175,7 @@ _0207AFB0: .word 0x00000948
 _0207AFB4: .word 0x00000C63
 _0207AFB8: .word 0x00000C65
 _0207AFBC: .word 0x04000050
-_0207AFC0: .word gMain
+_0207AFC0: .word gSystem
 	thumb_func_end sub_0207ADB8
 
 	thumb_func_start sub_0207AFC4
@@ -5194,7 +5194,7 @@ _0207B728:
 	mov r0, #5
 	pop {r3, r4, r5, r6, r7, pc}
 _0207B746:
-	ldr r0, _0207B7DC ; =gMain
+	ldr r0, _0207B7DC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -5259,7 +5259,7 @@ _0207B7CC: .word 0x00000654
 _0207B7D0: .word 0x000005DC
 _0207B7D4: .word 0x00000C63
 _0207B7D8: .word 0x00000948
-_0207B7DC: .word gMain
+_0207B7DC: .word gSystem
 	thumb_func_end sub_0207B600
 
 	thumb_func_start sub_0207B7E0
@@ -6109,7 +6109,7 @@ _0207BE34:
 	mov r0, #0x1e
 	pop {r4, r5, r6, pc}
 _0207BE54:
-	ldr r0, _0207BFC0 ; =gMain
+	ldr r0, _0207BFC0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -6272,7 +6272,7 @@ _0207BFB0: .word 0x00000C65
 _0207BFB4: .word 0x00000684
 _0207BFB8: .word 0x00000654
 _0207BFBC: .word 0x00000948
-_0207BFC0: .word gMain
+_0207BFC0: .word gSystem
 _0207BFC4: .word 0x00000678
 _0207BFC8: .word 0x00000C6A
 _0207BFCC: .word 0x000005EC
@@ -6512,7 +6512,7 @@ _0207C176:
 	mov r0, #5
 	pop {r4, r5, r6, pc}
 _0207C1AE:
-	ldr r0, _0207C284 ; =gMain
+	ldr r0, _0207C284 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -6555,7 +6555,7 @@ _0207C200:
 	mov r0, #5
 	pop {r4, r5, r6, pc}
 _0207C204:
-	ldr r0, _0207C284 ; =gMain
+	ldr r0, _0207C284 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -6612,7 +6612,7 @@ _0207C274: .word 0x00000838
 _0207C278: .word 0x000005DC
 _0207C27C: .word 0x000005F2
 _0207C280: .word 0x00000C63
-_0207C284: .word gMain
+_0207C284: .word gSystem
 	thumb_func_end sub_0207C0DC
 
 	thumb_func_start sub_0207C288

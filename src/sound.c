@@ -1,7 +1,7 @@
 #include "sound.h"
 #include "sound_chatot.h"
 #include "options.h"
-#include "main.h"
+#include "system.h"
 #include "constants/sndseq.h"
 
 #define ASM_EXTERN extern
@@ -113,7 +113,7 @@ void DoSoundUpdateFrame(void) {
 
     // debug stuff left in
     NNS_SndUpdateDriverInfo();
-    if (gMain.newKeys & PAD_BUTTON_DEBUG) {
+    if (gSystem.newKeys & PAD_BUTTON_DEBUG) {
         SNDChannelInfo sp24;
         SNDTrackInfo sp8;
         for (i = 0; i < 16; i++) {

@@ -559,12 +559,12 @@ _020925F0:
 _0209260C:
 	cmp r2, #0
 	bne _02092622
-	ldr r0, _02092634 ; =gMain
+	ldr r0, _02092634 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
 	bne _02092622
-	ldr r0, _02092638 ; =gMain + 0x40
+	ldr r0, _02092638 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _02092628
@@ -578,8 +578,8 @@ _02092628:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02092630: .word 0x000001E2
-_02092634: .word gMain
-_02092638: .word gMain + 0x40
+_02092634: .word gSystem
+_02092638: .word gSystem + 0x40
 	thumb_func_end sub_0209256C
 
 	.rodata

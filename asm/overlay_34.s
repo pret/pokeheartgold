@@ -36,7 +36,7 @@ _0225D554: .word 0x000F0200
 ov34_0225D558: ; 0x0225D558
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0225D59C ; =gMain
+	ldr r0, _0225D59C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -63,7 +63,7 @@ _0225D576:
 	bl ov34_0225E630
 	pop {r4, pc}
 	.balign 4, 0
-_0225D59C: .word gMain
+_0225D59C: .word gSystem
 	thumb_func_end ov34_0225D558
 
 	thumb_func_start ov34_0225D5A0
@@ -1262,7 +1262,7 @@ _0225DF36:
 	str r1, [r4, r0]
 	b _0225E006
 _0225DF40:
-	ldr r0, _0225E014 ; =gMain + 0x40
+	ldr r0, _0225E014 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225E006
@@ -1276,7 +1276,7 @@ _0225DF40:
 	str r0, [r4]
 	b _0225E006
 _0225DF5E:
-	ldr r0, _0225E014 ; =gMain + 0x40
+	ldr r0, _0225E014 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _0225E006
@@ -1364,7 +1364,7 @@ _0225E006:
 	nop
 _0225E00C: .word ov34_0225E730
 _0225E010: .word 0x000005E5
-_0225E014: .word gMain + 0x40
+_0225E014: .word gSystem + 0x40
 _0225E018: .word 0x000005FC
 _0225E01C: .word 0x000004BF
 	thumb_func_end ov34_0225DE94
@@ -1472,7 +1472,7 @@ _0225E0E0: .word ov34_0225E6AC
 	thumb_func_start ov34_0225E0E4
 ov34_0225E0E4: ; 0x0225E0E4
 	push {r4, lr}
-	ldr r1, _0225E15C ; =gMain
+	ldr r1, _0225E15C ; =gSystem
 	add r4, r0, #0
 	ldr r3, [r1, #0x44]
 	mov r1, #2
@@ -1482,7 +1482,7 @@ ov34_0225E0E4: ; 0x0225E0E4
 	beq _0225E126
 	mov r1, #0
 	bl ov34_0225E5EC
-	ldr r0, _0225E15C ; =gMain
+	ldr r0, _0225E15C ; =gSystem
 	mov r1, #2
 	ldr r0, [r0, #0x4c]
 	lsl r1, r1, #8
@@ -1508,7 +1508,7 @@ _0225E126:
 	beq _0225E158
 	mov r1, #1
 	bl ov34_0225E5EC
-	ldr r0, _0225E15C ; =gMain
+	ldr r0, _0225E15C ; =gSystem
 	ldr r1, [r0, #0x4c]
 	mov r0, #1
 	lsl r0, r0, #8
@@ -1529,7 +1529,7 @@ _0225E126:
 _0225E158:
 	pop {r4, pc}
 	nop
-_0225E15C: .word gMain
+_0225E15C: .word gSystem
 _0225E160: .word 0x000005E5
 	thumb_func_end ov34_0225E0E4
 
@@ -2093,7 +2093,7 @@ ov34_0225E58C: ; 0x0225E58C
 	mov r1, #0
 	lsl r2, r2, #2
 	strb r1, [r0, r2]
-	ldr r1, _0225E5D0 ; =gMain + 0x40
+	ldr r1, _0225E5D0 ; =gSystem + 0x40
 	ldrh r3, [r1, #0x24]
 	cmp r3, #0
 	beq _0225E5A2
@@ -2127,7 +2127,7 @@ _0225E5C6:
 _0225E5CE:
 	bx lr
 	.balign 4, 0
-_0225E5D0: .word gMain + 0x40
+_0225E5D0: .word gSystem + 0x40
 	thumb_func_end ov34_0225E58C
 
 	thumb_func_start ov34_0225E5D4

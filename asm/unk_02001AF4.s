@@ -129,7 +129,7 @@ sub_02001BE0: ; 0x02001BE0
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r1, #0
-	ldr r2, _02001C8C ; =gMain
+	ldr r2, _02001C8C ; =gSystem
 	strb r1, [r4, #0x1b]
 	ldr r2, [r2, #0x48]
 	mov r5, #1
@@ -216,7 +216,7 @@ _02001C84:
 	add r0, r1, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02001C8C: .word gMain
+_02001C8C: .word gSystem
 _02001C90: .word SEQ_SE_DP_SELECT
 	thumb_func_end sub_02001BE0
 

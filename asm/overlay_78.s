@@ -213,7 +213,7 @@ _021E5ABE:
 	str r0, [r5]
 	b _021E5B14
 _021E5AD0:
-	ldr r0, _021E5B1C ; =gMain
+	ldr r0, _021E5B1C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	and r0, r1
@@ -223,7 +223,7 @@ _021E5AD0:
 	and r0, r1
 	cmp r0, #2
 	beq _021E5AEC
-	ldr r0, _021E5B20 ; =gMain + 0x40
+	ldr r0, _021E5B20 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _021E5B14
@@ -252,8 +252,8 @@ _021E5B14:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
-_021E5B1C: .word gMain
-_021E5B20: .word gMain + 0x40
+_021E5B1C: .word gSystem
+_021E5B20: .word gSystem + 0x40
 	thumb_func_end ov78_021E59EC
 
 	thumb_func_start ov78_021E5B24

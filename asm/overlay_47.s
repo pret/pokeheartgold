@@ -342,7 +342,7 @@ ov47_02258AA0: ; 0x02258AA0
 	add r0, r7, #0
 	bl BgConfig_Alloc
 	str r0, [r5]
-	ldr r0, _02258B80 ; =gMain + 0x60
+	ldr r0, _02258B80 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -431,7 +431,7 @@ _02258ACA:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02258B7C: .word ov47_02259E48
-_02258B80: .word gMain + 0x60
+_02258B80: .word gSystem + 0x60
 _02258B84: .word ov47_02259F18
 _02258B88: .word ov47_02259E68
 	thumb_func_end ov47_02258AA0
@@ -1023,7 +1023,7 @@ _02258FEE:
 	strh r0, [r4, #0x28]
 	b _02259118
 _02259016:
-	ldr r0, _0225911C ; =gMain
+	ldr r0, _0225911C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1147,7 +1147,7 @@ _02259118:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0225911C: .word gMain
+_0225911C: .word gSystem
 _02259120: .word 0x000005DC
 _02259124: .word 0x0000057D
 _02259128: .word 0x000005E4
@@ -1809,7 +1809,7 @@ _022595FE:
 	strh r0, [r4]
 	b _02259948
 _0225961C:
-	ldr r0, _02259950 ; =gMain
+	ldr r0, _02259950 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1902,7 +1902,7 @@ _022596CE:
 	strh r0, [r4]
 	b _02259948
 _022596E0:
-	ldr r0, _02259950 ; =gMain
+	ldr r0, _02259950 ; =gSystem
 	mov r1, #1
 	ldr r0, [r0, #0x48]
 	tst r0, r1
@@ -2062,7 +2062,7 @@ _02259802:
 	strh r0, [r4]
 	b _02259948
 _02259820:
-	ldr r0, _02259950 ; =gMain
+	ldr r0, _02259950 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -2160,7 +2160,7 @@ _022598DC:
 	strh r0, [r4]
 	b _02259948
 _022598EE:
-	ldr r0, _02259950 ; =gMain
+	ldr r0, _02259950 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -2209,7 +2209,7 @@ _02259948:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02259950: .word gMain
+_02259950: .word gSystem
 _02259954: .word 0x00090A00
 _02259958: .word 0x000D0E00
 _0225995C: .word 0x000005D7

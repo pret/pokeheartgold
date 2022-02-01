@@ -1137,7 +1137,7 @@ sub_0203C47C: ; 0x0203C47C
 	bl ov01_021F6B10
 	cmp r0, #1
 	bne _0203C4FC
-	ldr r0, _0203C500 ; =gMain
+	ldr r0, _0203C500 ; =gSystem
 	mov r1, #1
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1185,7 +1185,7 @@ _0203C4FC:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0203C500: .word gMain
+_0203C500: .word gSystem
 _0203C504: .word 0x00000402
 	thumb_func_end sub_0203C47C
 

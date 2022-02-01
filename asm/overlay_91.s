@@ -155,7 +155,7 @@ _0225C650:
 	str r0, [r5]
 	b _0225C9E6
 _0225C674:
-	ldr r0, _0225C940 ; =gMain
+	ldr r0, _0225C940 ; =gSystem
 	ldr r1, [r0, #0x44]
 	mov r0, #1
 	tst r0, r1
@@ -499,7 +499,7 @@ _0225C922:
 	str r0, [r5]
 	b _0225C9E6
 	.balign 4, 0
-_0225C940: .word gMain
+_0225C940: .word gSystem
 _0225C944: .word ov91_0225CB58
 _0225C948: .word 0x0000FFFF
 _0225C94C:
@@ -4975,7 +4975,7 @@ ov91_0225EA54: ; 0x0225EA54
 	thumb_func_start ov91_0225EA7C
 ov91_0225EA7C: ; 0x0225EA7C
 	push {r3, lr}
-	ldr r1, _0225EA94 ; =gMain + 0x40
+	ldr r1, _0225EA94 ; =gSystem + 0x40
 	ldrh r1, [r1, #0x26]
 	cmp r1, #0
 	bne _0225EA8C
@@ -4985,7 +4985,7 @@ _0225EA8C:
 	bl ov91_0225EC7C
 	pop {r3, pc}
 	nop
-_0225EA94: .word gMain + 0x40
+_0225EA94: .word gSystem + 0x40
 	thumb_func_end ov91_0225EA7C
 
 	thumb_func_start ov91_0225EA98
@@ -5311,7 +5311,7 @@ _0225ECDA:
 	add sp, #4
 	pop {r3, r4, pc}
 _0225ED34:
-	ldr r0, _0225ED68 ; =gMain + 0x40
+	ldr r0, _0225ED68 ; =gSystem + 0x40
 	mov r3, sp
 	ldrh r2, [r0, #0x20]
 	add r1, sp, #0
@@ -5334,7 +5334,7 @@ _0225ED56:
 _0225ED5C: .word 0x00008544
 _0225ED60: .word 0x000021A8
 _0225ED64: .word 0x000086EC
-_0225ED68: .word gMain + 0x40
+_0225ED68: .word gSystem + 0x40
 	thumb_func_end ov91_0225EC7C
 
 	thumb_func_start ov91_0225ED6C
@@ -5346,7 +5346,7 @@ ov91_0225ED6C: ; 0x0225ED6C
 	mov r0, #0
 	pop {r3, pc}
 _0225ED78:
-	ldr r1, _0225EDA8 ; =gMain + 0x40
+	ldr r1, _0225EDA8 ; =gSystem + 0x40
 	mov r0, #0x80
 	ldrh r2, [r1, #0x20]
 	ldrh r1, [r1, #0x22]
@@ -5370,7 +5370,7 @@ _0225EDA2:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_0225EDA8: .word gMain + 0x40
+_0225EDA8: .word gSystem + 0x40
 _0225EDAC: .word 0x0000011E
 	thumb_func_end ov91_0225ED6C
 
@@ -9328,14 +9328,14 @@ ov91_02260CC8: ; 0x02260CC8
 	ldr r1, [r0]
 	cmp r1, #0
 	beq _02260CDA
-	ldr r2, _02260CDC ; =gMain + 0x40
+	ldr r2, _02260CDC ; =gSystem + 0x40
 	ldrh r1, [r2, #0x20]
 	ldrh r2, [r2, #0x22]
 	bl ov91_02260CE0
 _02260CDA:
 	pop {r3, pc}
 	.balign 4, 0
-_02260CDC: .word gMain + 0x40
+_02260CDC: .word gSystem + 0x40
 	thumb_func_end ov91_02260CC8
 
 	thumb_func_start ov91_02260CE0

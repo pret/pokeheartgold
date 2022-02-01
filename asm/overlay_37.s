@@ -1729,7 +1729,7 @@ _021E6752:
 	bl sub_0203769C
 	lsl r1, r0, #2
 	ldr r0, [sp]
-	ldr r2, _021E680C ; =gMain + 0x40
+	ldr r2, _021E680C ; =gSystem + 0x40
 	add r1, r0, r1
 	mov r0, #0x76
 	lsl r0, r0, #2
@@ -1787,7 +1787,7 @@ _021E67FC: .word 0x0000438B
 _021E6800: .word 0x00004377
 _021E6804: .word 0x000005E5
 _021E6808: .word ov37_021E7970
-_021E680C: .word gMain + 0x40
+_021E680C: .word gSystem + 0x40
 _021E6810: .word 0x00004378
 _021E6814: .word 0x00004380
 	thumb_func_end ov37_021E65EC

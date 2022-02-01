@@ -3643,7 +3643,7 @@ _0207E7D4:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0207E81E:
-	ldr r0, _0207E938 ; =gMain
+	ldr r0, _0207E938 ; =gSystem
 	mov r2, #0x40
 	ldr r1, [r0, #0x4c]
 	tst r2, r1
@@ -3776,7 +3776,7 @@ _0207E926:
 	nop
 _0207E930: .word _02110180
 _0207E934: .word 0x000005DC
-_0207E938: .word gMain
+_0207E938: .word gSystem
 	thumb_func_end sub_0207E778
 
 	thumb_func_start sub_0207E93C
@@ -3880,7 +3880,7 @@ _0207E9CA:
 	sub r0, r6, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0207EA0E:
-	ldr r2, _0207EB20 ; =gMain
+	ldr r2, _0207EB20 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r2, #0x4c]
 	tst r1, r0
@@ -4009,7 +4009,7 @@ _0207EB10:
 	.balign 4, 0
 _0207EB18: .word _02110168
 _0207EB1C: .word 0x000005DC
-_0207EB20: .word gMain
+_0207EB20: .word gSystem
 	thumb_func_end sub_0207E93C
 
 	.rodata

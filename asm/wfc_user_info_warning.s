@@ -51,7 +51,7 @@ ShowWFCUserInfoWarning: ; 0x0203AC94
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
-	ldr r0, _0203AE78 ; =gMain + 0x60
+	ldr r0, _0203AE78 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -219,7 +219,7 @@ _0203AE12:
 	.balign 4, 0
 _0203AE70: .word 0xFFFFE0FF
 _0203AE74: .word 0x04001000
-_0203AE78: .word gMain + 0x60
+_0203AE78: .word gSystem + 0x60
 _0203AE7C: .word 0x04000050
 _0203AE80: .word 0x04001050
 _0203AE84: .word 0xFFFF1FFF

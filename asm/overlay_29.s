@@ -1039,7 +1039,7 @@ _0225DCEA:
 	bl PlaySE
 	b _0225DE98
 _0225DD42:
-	ldr r0, _0225DEB0 ; =gMain
+	ldr r0, _0225DEB0 ; =gSystem
 	ldr r2, [r0, #0x48]
 	mov r0, #8
 	tst r0, r2
@@ -1208,7 +1208,7 @@ _0225DE98:
 	.balign 4, 0
 _0225DEA8: .word ov29_0225E1AC
 _0225DEAC: .word 0x000005DD
-_0225DEB0: .word gMain
+_0225DEB0: .word gSystem
 _0225DEB4: .word 0x000001FA
 	thumb_func_end ov29_0225DCD0
 

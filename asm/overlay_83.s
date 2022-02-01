@@ -1911,7 +1911,7 @@ _0223EDE2:
 	strb r0, [r4, #8]
 	b _0223EE86
 _0223EE04:
-	ldr r1, _0223EE9C ; =gMain
+	ldr r1, _0223EE9C ; =gSystem
 	ldr r3, [r1, #0x48]
 	mov r1, #0x20
 	add r2, r3, #0
@@ -1941,7 +1941,7 @@ _0223EE26:
 	strb r0, [r4, #8]
 	b _0223EE86
 _0223EE46:
-	ldr r1, _0223EE9C ; =gMain
+	ldr r1, _0223EE9C ; =gSystem
 	ldr r3, [r1, #0x48]
 	mov r1, #0x20
 	add r2, r3, #0
@@ -1978,7 +1978,7 @@ _0223EE8C: .word 0x000005DC
 _0223EE90: .word 0x0000084C
 _0223EE94: .word 0x00000508
 _0223EE98: .word 0x00000868
-_0223EE9C: .word gMain
+_0223EE9C: .word gSystem
 	thumb_func_end ov83_0223E14C
 
 	thumb_func_start ov83_0223EEA0
@@ -11395,7 +11395,7 @@ _02243BFA:
 	strb r0, [r4, #8]
 	b _02243C7A
 _02243C1C:
-	ldr r0, _02243C84 ; =gMain
+	ldr r0, _02243C84 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -11416,7 +11416,7 @@ _02243C1C:
 	strb r0, [r4, #8]
 	b _02243C7A
 _02243C4C:
-	ldr r0, _02243C84 ; =gMain
+	ldr r0, _02243C84 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -11440,7 +11440,7 @@ _02243C7A:
 	pop {r3, r4, r5, pc}
 	nop
 _02243C80: .word 0x000005DC
-_02243C84: .word gMain
+_02243C84: .word gSystem
 	thumb_func_end ov83_022433F8
 
 	thumb_func_start ov83_02243C88
@@ -19387,7 +19387,7 @@ _02247BDE: ; jump table
 _02247BE6:
 	pop {r4, pc}
 _02247BE8:
-	ldr r0, _02247C4C ; =gMain
+	ldr r0, _02247C4C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -19404,7 +19404,7 @@ _02247C04:
 	mov r0, #6
 	pop {r4, pc}
 _02247C08:
-	ldr r0, _02247C4C ; =gMain
+	ldr r0, _02247C4C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x10
 	tst r0, r1
@@ -19442,7 +19442,7 @@ _02247C46:
 	mvn r0, r0
 	pop {r4, pc}
 	.balign 4, 0
-_02247C4C: .word gMain
+_02247C4C: .word gSystem
 _02247C50: .word ov83_0224858C
 _02247C54: .word ov83_022484F4
 	thumb_func_end ov83_02247BC4
@@ -19540,7 +19540,7 @@ _02247CEC: .word sub_02018680
 	thumb_func_start ov83_02247CF0
 ov83_02247CF0: ; 0x02247CF0
 	push {r3, lr}
-	ldr r0, _02247D08 ; =gMain
+	ldr r0, _02247D08 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -19551,7 +19551,7 @@ _02247D00:
 	bl sub_02025358
 	pop {r3, pc}
 	nop
-_02247D08: .word gMain
+_02247D08: .word gSystem
 	thumb_func_end ov83_02247CF0
 
 	.rodata

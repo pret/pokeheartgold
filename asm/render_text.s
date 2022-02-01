@@ -19,7 +19,7 @@ _02111888:
 	thumb_func_start sub_020021A0
 sub_020021A0: ; 0x020021A0
 	push {r3, lr}
-	ldr r1, _02002210 ; =gMain
+	ldr r1, _02002210 ; =gSystem
 	ldr r2, [r1, #0x44]
 	mov r1, #3
 	tst r1, r2
@@ -41,7 +41,7 @@ _020021C2:
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1f
 	beq _0200220A
-	ldr r0, _02002218 ; =gMain + 0x40
+	ldr r0, _02002218 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x26]
 	cmp r0, #0
 	bne _020021D8
@@ -78,16 +78,16 @@ _0200220A:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_02002210: .word gMain
+_02002210: .word gSystem
 _02002214: .word _02111884
-_02002218: .word gMain + 0x40
+_02002218: .word gSystem + 0x40
 _0200221C: .word _02111888
 	thumb_func_end sub_020021A0
 
 	thumb_func_start sub_02002220
 sub_02002220: ; 0x02002220
 	push {r3, lr}
-	ldr r0, _02002288 ; =gMain
+	ldr r0, _02002288 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -105,7 +105,7 @@ _0200223A:
 	lsl r0, r0, #0x1b
 	lsr r0, r0, #0x1f
 	beq _02002282
-	ldr r0, _02002290 ; =gMain + 0x40
+	ldr r0, _02002290 ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	bne _02002250
@@ -142,9 +142,9 @@ _02002282:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_02002288: .word gMain
+_02002288: .word gSystem
 _0200228C: .word _02111884
-_02002290: .word gMain + 0x40
+_02002290: .word gSystem + 0x40
 _02002294: .word _02111888
 	thumb_func_end sub_02002220
 

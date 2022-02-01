@@ -550,7 +550,7 @@ ov93_0225C768: ; 0x0225C768
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
-	ldr r0, _0225CA84 ; =gMain + 0x60
+	ldr r0, _0225CA84 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -609,7 +609,7 @@ _0225CA74: .word ov93_02262A90
 _0225CA78: .word 0x00001468
 _0225CA7C: .word ov93_0225D07C
 _0225CA80: .word 0x0000EA60
-_0225CA84: .word gMain + 0x60
+_0225CA84: .word gSystem + 0x60
 _0225CA88: .word ov93_0225CEA0
 	thumb_func_end ov93_0225C768
 
@@ -4458,7 +4458,7 @@ _0225E8E8:
 	str r2, [r4, r1]
 	b _0225E920
 _0225E900:
-	ldr r2, _0225EA40 ; =gMain + 0x40
+	ldr r2, _0225EA40 ; =gSystem + 0x40
 	add r0, r1, #0
 	ldrh r3, [r2, #0x20]
 	sub r0, #0x38
@@ -4609,7 +4609,7 @@ _0225EA34:
 	.balign 4, 0
 _0225EA38: .word 0x00001758
 _0225EA3C: .word 0x00002FB8
-_0225EA40: .word gMain + 0x40
+_0225EA40: .word gSystem + 0x40
 _0225EA44: .word 0x00002FBC
 _0225EA48: .word 0x0000058E
 _0225EA4C: .word 0x00002FC8

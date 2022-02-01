@@ -233,7 +233,7 @@ _020881B8:
 	thumb_func_start sub_020881C0
 sub_020881C0: ; 0x020881C0
 	push {r4, lr}
-	ldr r2, _02088208 ; =gMain
+	ldr r2, _02088208 ; =gSystem
 	ldr r3, [r2, #0x4c]
 	mov r2, #0x40
 	tst r2, r3
@@ -268,7 +268,7 @@ _02088202:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02088208: .word gMain
+_02088208: .word gSystem
 	thumb_func_end sub_020881C0
 
 	thumb_func_start sub_0208820C

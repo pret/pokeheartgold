@@ -124,7 +124,7 @@ ov46_02258800: ; 0x02258800
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	ldr r0, _02258928 ; =gMain + 0x60
+	ldr r0, _02258928 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -136,7 +136,7 @@ _02258918: .word 0x00000404
 _0225891C: .word 0x0000047D
 _02258920: .word 0x0000030A
 _02258924: .word ov46_02258F70
-_02258928: .word gMain + 0x60
+_02258928: .word gSystem + 0x60
 	thumb_func_end ov46_02258800
 
 	thumb_func_start ov46_0225892C
@@ -366,7 +366,7 @@ _02258ADC:
 	str r0, [r4]
 	b _02258C28
 _02258B0E:
-	ldr r0, _02258C34 ; =gMain
+	ldr r0, _02258C34 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -504,7 +504,7 @@ _02258C28:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02258C30: .word 0x0000FFFF
-_02258C34: .word gMain
+_02258C34: .word gSystem
 	thumb_func_end ov46_0225892C
 
 	thumb_func_start ov46_02258C38
@@ -552,14 +552,14 @@ _02258C68:
 	bl FreeToHeap
 	mov r0, #0x77
 	bl DestroyHeap
-	ldr r0, _02258CB0 ; =gMain + 0x60
+	ldr r0, _02258CB0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02258CB0: .word gMain + 0x60
+_02258CB0: .word gSystem + 0x60
 	thumb_func_end ov46_02258C38
 
 	thumb_func_start ov46_02258CB4
@@ -657,7 +657,7 @@ ov46_02258CB4: ; 0x02258CB4
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	ldr r0, _02258DA4 ; =gMain + 0x60
+	ldr r0, _02258DA4 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -668,7 +668,7 @@ ov46_02258CB4: ; 0x02258CB4
 _02258D98: .word 0x00000404
 _02258D9C: .word 0x0000030A
 _02258DA0: .word ov46_02258F70
-_02258DA4: .word gMain + 0x60
+_02258DA4: .word gSystem + 0x60
 	thumb_func_end ov46_02258CB4
 
 	thumb_func_start ov46_02258DA8
@@ -885,14 +885,14 @@ _02258F2C:
 	bl FreeToHeap
 	mov r0, #0x77
 	bl DestroyHeap
-	ldr r0, _02258F6C ; =gMain + 0x60
+	ldr r0, _02258F6C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02258F6C: .word gMain + 0x60
+_02258F6C: .word gSystem + 0x60
 	thumb_func_end ov46_02258EFC
 
 	thumb_func_start ov46_02258F70

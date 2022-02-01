@@ -461,7 +461,7 @@ _0207591A:
 	bl GF_AssertFail
 	b _020759A0
 _02075920:
-	ldr r0, _020759C8 ; =gMain
+	ldr r0, _020759C8 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -541,7 +541,7 @@ _020759BA:
 	nop
 _020759C0: .word _020FFECC
 _020759C4: .word 0x000005DC
-_020759C8: .word gMain
+_020759C8: .word gSystem
 	thumb_func_end sub_020758D0
 
 	thumb_func_start sub_020759CC
@@ -644,7 +644,7 @@ sub_02075A7C: ; 0x02075A7C
 	add r6, r0, #0
 	add r7, r1, #0
 	ldr r5, [sp, #0x50]
-	ldr r0, _02075CFC ; =gMain + 0x60
+	ldr r0, _02075CFC ; =gSystem + 0x60
 	mov r1, #0
 	str r2, [sp, #0x14]
 	str r3, [sp, #0x18]
@@ -911,7 +911,7 @@ sub_02075A7C: ; 0x02075A7C
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02075CFC: .word gMain + 0x60
+_02075CFC: .word gSystem + 0x60
 _02075D00: .word 0x0000FFFF
 _02075D04: .word sub_02075D08
 	thumb_func_end sub_02075A7C
@@ -1023,13 +1023,13 @@ sub_02075D4C: ; 0x02075D4C
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
 	bl sub_02002B8C
-	ldr r0, _02075E10 ; =gMain + 0x60
+	ldr r0, _02075E10 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	pop {r4, pc}
 	nop
-_02075E10: .word gMain + 0x60
+_02075E10: .word gSystem + 0x60
 	thumb_func_end sub_02075D4C
 
 	thumb_func_start sub_02075E14
@@ -1145,7 +1145,7 @@ _02075EF0:
 	ldrb r0, [r0]
 	cmp r0, #8
 	bne _02075F2A
-	ldr r0, _02076210 ; =gMain
+	ldr r0, _02076210 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1517,7 +1517,7 @@ _020761C2:
 	ldr r0, _0207622C ; =0x000005F9
 	b _02076230
 	nop
-_02076210: .word gMain
+_02076210: .word gSystem
 _02076214: .word 0x00007FFF
 _02076218: .word 0x0000F3FF
 _0207621C: .word 0x00000395

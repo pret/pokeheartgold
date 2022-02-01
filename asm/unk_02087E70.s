@@ -175,7 +175,7 @@ _02087F9E:
 	bl DestroyHeap
 	ldr r0, _02087FCC ; =SDK_OVERLAY_OVY_40_ID
 	bl UnloadOverlayByID
-	ldr r0, _02087FD0 ; =gMain + 0x60
+	ldr r0, _02087FD0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -188,7 +188,7 @@ _02087FC2:
 	nop
 _02087FC8: .word 0x000006F4
 _02087FCC: .word SDK_OVERLAY_OVY_40_ID
-_02087FD0: .word gMain + 0x60
+_02087FD0: .word gSystem + 0x60
 	thumb_func_end sub_02087F2C
 
 	.rodata

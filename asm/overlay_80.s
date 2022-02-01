@@ -7157,7 +7157,7 @@ _0222D2A8: .word ov80_0222D2AC
 	thumb_func_start ov80_0222D2AC
 ov80_0222D2AC: ; 0x0222D2AC
 	push {r3, lr}
-	ldr r0, _0222D2C8 ; =gMain
+	ldr r0, _0222D2C8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -7172,7 +7172,7 @@ _0222D2C4:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_0222D2C8: .word gMain
+_0222D2C8: .word gSystem
 	thumb_func_end ov80_0222D2AC
 
 	thumb_func_start ov80_0222D2CC
@@ -7196,7 +7196,7 @@ _0222D2E8: .word ov80_0222D2EC
 ov80_0222D2EC: ; 0x0222D2EC
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0222D324 ; =gMain
+	ldr r0, _0222D324 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -7225,7 +7225,7 @@ _0222D320:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_0222D324: .word gMain
+_0222D324: .word gSystem
 	thumb_func_end ov80_0222D2EC
 
 	thumb_func_start ov80_0222D328
@@ -9956,7 +9956,7 @@ _0222E7E4:
 	bl sub_02001C94
 	add r4, r0, #0
 _0222E814:
-	ldr r0, _0222E880 ; =gMain
+	ldr r0, _0222E880 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -10013,7 +10013,7 @@ _0222E876:
 _0222E87E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0222E880: .word gMain
+_0222E880: .word gSystem
 _0222E884: .word 0x0000EEDD
 _0222E888: .word 0x0000FFFE
 	thumb_func_end ov80_0222E7C8
@@ -10594,7 +10594,7 @@ _0222ECAC:
 	ldr r0, _0222ED90 ; =0x000005DC
 	bl PlaySE
 _0222ECE2:
-	ldr r0, _0222ED94 ; =gMain
+	ldr r0, _0222ED94 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -10681,7 +10681,7 @@ _0222ED8C:
 	pop {r4, r5, r6, pc}
 	nop
 _0222ED90: .word 0x000005DC
-_0222ED94: .word gMain
+_0222ED94: .word gSystem
 _0222ED98: .word 0x0000EEDD
 _0222ED9C: .word 0x0000FFFE
 	thumb_func_end ov80_0222EC90

@@ -190,7 +190,7 @@ _0205271E:
 	str r0, [r4]
 	b _020527B8
 _0205272E:
-	ldr r0, _020527C8 ; =gMain
+	ldr r0, _020527C8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -198,7 +198,7 @@ _0205272E:
 	mov r0, #2
 	tst r0, r1
 	bne _02052746
-	ldr r0, _020527CC ; =gMain + 0x40
+	ldr r0, _020527CC ; =gSystem + 0x40
 	ldrh r0, [r0, #0x24]
 	cmp r0, #0
 	beq _020527B8
@@ -259,8 +259,8 @@ _020527B8:
 	nop
 _020527C0: .word 0x00007FFF
 _020527C4: .word 0x04000050
-_020527C8: .word gMain
-_020527CC: .word gMain + 0x40
+_020527C8: .word gSystem
+_020527CC: .word gSystem + 0x40
 	thumb_func_end sub_020526D4
 
 	thumb_func_start _print_message

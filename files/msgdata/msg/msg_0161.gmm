@@ -26,11 +26,11 @@
 	</row>
 	<row id="msg_0161_00006" index="6">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Dance: Get a turn as a Main Dancer</language>
+		<language name="English">Dance: Get a turn as a System Dancer</language>
 	</row>
 	<row id="msg_0161_00007" index="7">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Dance: Won’t get a turn as a Main Dancer</language>
+		<language name="English">Dance: Won’t get a turn as a System Dancer</language>
 	</row>
 	<row id="msg_0161_00008" index="8">
 		<attribute name="window_context_name">used</attribute>

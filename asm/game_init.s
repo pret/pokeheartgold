@@ -10,7 +10,7 @@ _020F62A4:
 
 	.bss
 
-gMain: ; 0x021D110C
+gSystem: ; 0x021D110C
 	.space 0x478
 
 	.text
@@ -26,10 +26,10 @@ sub_0201A08C: ; 0x0201A08C
 	str r0, [r3, r1]
 	mov r0, #3
 	bl MI_WaitDma
-	ldr r0, _0201A0BC ; =gMain
+	ldr r0, _0201A0BC ; =gSystem
 	ldr r0, [r0, #0x1c]
 	bl sub_0201F880
-	ldr r0, _0201A0BC ; =gMain
+	ldr r0, _0201A0BC ; =gSystem
 	ldr r1, [r0, #0x30]
 	add r1, r1, #1
 	str r1, [r0, #0x30]
@@ -37,7 +37,7 @@ sub_0201A08C: ; 0x0201A08C
 	nop
 _0201A0B4: .word OS_IRQTable
 _0201A0B8: .word 0x00003FF8
-_0201A0BC: .word gMain
+_0201A0BC: .word gSystem
 	thumb_func_end sub_0201A08C
 
 	thumb_func_start sub_0201A0C0
@@ -74,12 +74,12 @@ _0201A0F8: .word sub_0201A0C0
 
 	thumb_func_start Main_SetVBlankIntrCB
 Main_SetVBlankIntrCB: ; 0x0201A0FC
-	ldr r2, _0201A104 ; =gMain
+	ldr r2, _0201A104 ; =gSystem
 	str r0, [r2]
 	str r1, [r2, #4]
 	bx lr
 	.balign 4, 0
-_0201A104: .word gMain
+_0201A104: .word gSystem
 	thumb_func_end Main_SetVBlankIntrCB
 
 	thumb_func_start HBlankInterruptDisable
@@ -87,13 +87,13 @@ HBlankInterruptDisable: ; 0x0201A108
 	push {r3, lr}
 	mov r0, #0
 	bl HBlankIntrRegsToggle
-	ldr r0, _0201A11C ; =gMain
+	ldr r0, _0201A11C ; =gSystem
 	mov r1, #0
 	str r1, [r0, #8]
 	str r1, [r0, #0xc]
 	pop {r3, pc}
 	nop
-_0201A11C: .word gMain
+_0201A11C: .word gSystem
 	thumb_func_end HBlankInterruptDisable
 
 	thumb_func_start Main_SetHBlankIntrCB
@@ -103,14 +103,14 @@ Main_SetHBlankIntrCB: ; 0x0201A120
 	bne _0201A138
 	mov r0, #0
 	bl HBlankIntrRegsToggle
-	ldr r0, _0201A154 ; =gMain
+	ldr r0, _0201A154 ; =gSystem
 	mov r1, #0
 	str r1, [r0, #8]
 	str r1, [r0, #0xc]
 	mov r0, #1
 	pop {r3, pc}
 _0201A138:
-	ldr r2, _0201A154 ; =gMain
+	ldr r2, _0201A154 ; =gSystem
 	ldr r3, [r2, #8]
 	cmp r3, #0
 	bne _0201A14E
@@ -124,13 +124,13 @@ _0201A14E:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_0201A154: .word gMain
+_0201A154: .word gSystem
 	thumb_func_end Main_SetHBlankIntrCB
 
 	thumb_func_start CallHBlankIntrCallback
 CallHBlankIntrCallback: ; 0x0201A158
 	push {r3, lr}
-	ldr r0, _0201A168 ; =gMain
+	ldr r0, _0201A168 ; =gSystem
 	ldr r1, [r0, #8]
 	cmp r1, #0
 	beq _0201A166
@@ -139,7 +139,7 @@ CallHBlankIntrCallback: ; 0x0201A158
 _0201A166:
 	pop {r3, pc}
 	.balign 4, 0
-_0201A168: .word gMain
+_0201A168: .word gSystem
 	thumb_func_end CallHBlankIntrCallback
 
 	thumb_func_start HBlankIntrRegsToggle
@@ -243,7 +243,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #0xa0
 	bl sub_0201F834
-	ldr r1, _0201A330 ; =gMain
+	ldr r1, _0201A330 ; =gSystem
 	str r0, [r1, #0x18]
 	mov r0, #0x20
 	bl sub_0201F82C
@@ -254,7 +254,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #0x20
 	bl sub_0201F834
-	ldr r1, _0201A330 ; =gMain
+	ldr r1, _0201A330 ; =gSystem
 	str r0, [r1, #0x1c]
 	mov r0, #0x20
 	bl sub_0201F82C
@@ -265,7 +265,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #0x20
 	bl sub_0201F834
-	ldr r1, _0201A330 ; =gMain
+	ldr r1, _0201A330 ; =gSystem
 	str r0, [r1, #0x20]
 	mov r0, #4
 	bl sub_0201F82C
@@ -276,7 +276,7 @@ InitSystemForTheGame: ; 0x0201A200
 	add r1, r0, #0
 	mov r0, #4
 	bl sub_0201F834
-	ldr r1, _0201A330 ; =gMain
+	ldr r1, _0201A330 ; =gSystem
 	str r0, [r1, #0x24]
 	bl GX_DispOff
 	ldr r2, _0201A334 ; =0x04001000
@@ -320,7 +320,7 @@ _0201A2F4:
 	add r0, r5, #0
 	add r1, r4, #0
 	bl FS_TryLoadTable
-	ldr r0, _0201A330 ; =gMain
+	ldr r0, _0201A330 ; =gSystem
 	mov r1, #0
 	str r1, [r0]
 	str r1, [r0, #8]
@@ -328,7 +328,7 @@ _0201A2F4:
 	str r1, [r0, #0x14]
 	str r1, [r0, #0x74]
 	str r1, [r0, #0x2c]
-	ldr r0, _0201A344 ; =gMain + 0x60
+	ldr r0, _0201A344 ; =gSystem + 0x60
 	strb r1, [r0, #9]
 	mov r0, #5
 	mov r1, #9
@@ -342,12 +342,12 @@ _0201A2F4:
 _0201A324: .word 0x04000304
 _0201A328: .word 0xFFFFFDF1
 _0201A32C: .word 0x0000020E
-_0201A330: .word gMain
+_0201A330: .word gSystem
 _0201A334: .word 0x04001000
 _0201A338: .word 0xFFFEFFFF
 _0201A33C: .word sub_0201A08C
 _0201A340: .word 0x04000208
-_0201A344: .word gMain + 0x60
+_0201A344: .word gSystem + 0x60
 	thumb_func_end InitSystemForTheGame
 
 	thumb_func_start InitGraphicMemory
@@ -468,7 +468,7 @@ _0201A42A:
 sub_0201A430: ; 0x0201A430
 	push {r3, r4, r5, r6, r7, lr}
 	mov r6, #0
-	ldr r5, _0201A454 ; =gMain + 0x470
+	ldr r5, _0201A454 ; =gSystem + 0x470
 	mov r4, #0x7f
 	sub r7, r6, #1
 _0201A43A:
@@ -485,14 +485,14 @@ _0201A448:
 	bgt _0201A43A
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0201A454: .word gMain + 0x470
+_0201A454: .word gSystem + 0x470
 	thumb_func_end sub_0201A430
 
 	thumb_func_start InitKeypadAndTouchpad
 InitKeypadAndTouchpad: ; 0x0201A458
 	push {r3, lr}
 	sub sp, #8
-	ldr r0, _0201A4A4 ; =gMain
+	ldr r0, _0201A4A4 ; =gSystem
 	mov r2, #0
 	str r2, [r0, #0x34]
 	str r2, [r0, #0x38]
@@ -506,12 +506,12 @@ InitKeypadAndTouchpad: ; 0x0201A458
 	str r1, [r0, #0x54]
 	mov r1, #8
 	str r1, [r0, #0x58]
-	ldr r0, _0201A4A8 ; =gMain + 0x40
+	ldr r0, _0201A4A8 ; =gSystem + 0x40
 	strh r2, [r0, #0x20]
 	strh r2, [r0, #0x22]
 	strh r2, [r0, #0x24]
 	strh r2, [r0, #0x26]
-	ldr r0, _0201A4AC ; =gMain + 0x60
+	ldr r0, _0201A4AC ; =gSystem + 0x60
 	strb r2, [r0, #8]
 	bl TP_Init
 	bl sub_020210A0
@@ -525,41 +525,41 @@ _0201A49E:
 	add sp, #8
 	pop {r3, pc}
 	nop
-_0201A4A4: .word gMain
-_0201A4A8: .word gMain + 0x40
-_0201A4AC: .word gMain + 0x60
+_0201A4A4: .word gSystem
+_0201A4A8: .word gSystem + 0x40
+_0201A4AC: .word gSystem + 0x60
 	thumb_func_end InitKeypadAndTouchpad
 
 	thumb_func_start sub_0201A4B0
 sub_0201A4B0: ; 0x0201A4B0
-	ldr r1, _0201A4B8 ; =gMain + 0x60
+	ldr r1, _0201A4B8 ; =gSystem + 0x60
 	strb r0, [r1, #0xa]
 	bx lr
 	nop
-_0201A4B8: .word gMain + 0x60
+_0201A4B8: .word gSystem + 0x60
 	thumb_func_end sub_0201A4B0
 
 	thumb_func_start sub_0201A4BC
 sub_0201A4BC: ; 0x0201A4BC
-	ldr r1, _0201A4C8 ; =gMain + 0x60
+	ldr r1, _0201A4C8 ; =gSystem + 0x60
 	ldrb r2, [r1, #0xb]
 	orr r0, r2
 	strb r0, [r1, #0xb]
 	bx lr
 	nop
-_0201A4C8: .word gMain + 0x60
+_0201A4C8: .word gSystem + 0x60
 	thumb_func_end sub_0201A4BC
 
 	thumb_func_start sub_0201A4CC
 sub_0201A4CC: ; 0x0201A4CC
-	ldr r1, _0201A4D8 ; =gMain + 0x60
+	ldr r1, _0201A4D8 ; =gSystem + 0x60
 	mvn r0, r0
 	ldrb r2, [r1, #0xb]
 	and r0, r2
 	strb r0, [r1, #0xb]
 	bx lr
 	.balign 4, 0
-_0201A4D8: .word gMain + 0x60
+_0201A4D8: .word gSystem + 0x60
 	thumb_func_end sub_0201A4CC
 
 	thumb_func_start ReadKeypadAndTouchpad
@@ -573,12 +573,12 @@ ReadKeypadAndTouchpad: ; 0x0201A4DC
 	and r0, r1
 	asr r0, r0, #0xf
 	beq _0201A502
-	ldr r0, _0201A5D4 ; =gMain
+	ldr r0, _0201A5D4 ; =gSystem
 	mov r1, #0
 	str r1, [r0, #0x48]
 	str r1, [r0, #0x44]
 	str r1, [r0, #0x4c]
-	ldr r0, _0201A5D8 ; =gMain + 0x40
+	ldr r0, _0201A5D8 ; =gSystem + 0x40
 	add sp, #0x10
 	strh r1, [r0, #0x24]
 	strh r1, [r0, #0x26]
@@ -592,7 +592,7 @@ _0201A502:
 	eor r1, r0
 	and r0, r1
 	lsl r0, r0, #0x10
-	ldr r1, _0201A5D4 ; =gMain
+	ldr r1, _0201A5D4 ; =gSystem
 	lsr r2, r0, #0x10
 	ldr r0, [r1, #0x5c]
 	orr r0, r2
@@ -617,11 +617,11 @@ _0201A502:
 	str r2, [r1, #0x50]
 	b _0201A548
 _0201A542:
-	ldr r1, _0201A5D4 ; =gMain
+	ldr r1, _0201A5D4 ; =gSystem
 	ldr r2, [r1, #0x58]
 	str r2, [r1, #0x50]
 _0201A548:
-	ldr r1, _0201A5D4 ; =gMain
+	ldr r1, _0201A5D4 ; =gSystem
 	str r0, [r1, #0x38]
 	ldr r2, [r1, #0x3c]
 	str r2, [r1, #0x48]
@@ -629,7 +629,7 @@ _0201A548:
 	ldr r0, [r1, #0x40]
 	str r0, [r1, #0x4c]
 	bl sub_0201A5E8
-	ldr r0, _0201A5E4 ; =gMain + 0x60
+	ldr r0, _0201A5E4 ; =gSystem + 0x60
 	ldrb r0, [r0, #8]
 	cmp r0, #0
 	bne _0201A574
@@ -653,13 +653,13 @@ _0201A57A:
 	cmp r3, #0
 	bne _0201A596
 	ldrh r2, [r1]
-	ldr r0, _0201A5D8 ; =gMain + 0x40
+	ldr r0, _0201A5D8 ; =gSystem + 0x40
 	strh r2, [r0, #0x20]
 	ldrh r1, [r1, #2]
 	strh r1, [r0, #0x22]
 	b _0201A5BA
 _0201A596:
-	ldr r0, _0201A5D8 ; =gMain + 0x40
+	ldr r0, _0201A5D8 ; =gSystem + 0x40
 	ldrh r2, [r0, #0x26]
 	cmp r2, #0
 	beq _0201A5B6
@@ -683,7 +683,7 @@ _0201A5B6:
 _0201A5BA:
 	add r0, sp, #0
 	ldrh r2, [r0, #4]
-	ldr r0, _0201A5D8 ; =gMain + 0x40
+	ldr r0, _0201A5D8 ; =gSystem + 0x40
 	ldrh r1, [r0, #0x26]
 	eor r1, r2
 	and r1, r2
@@ -693,16 +693,16 @@ _0201A5BA:
 	pop {r4, pc}
 	nop
 _0201A5D0: .word 0x027FFFA8
-_0201A5D4: .word gMain
-_0201A5D8: .word gMain + 0x40
+_0201A5D4: .word gSystem
+_0201A5D8: .word gSystem + 0x40
 _0201A5DC: .word 0x04000130
 _0201A5E0: .word 0x00002FFF
-_0201A5E4: .word gMain + 0x60
+_0201A5E4: .word gSystem + 0x60
 	thumb_func_end ReadKeypadAndTouchpad
 
 	thumb_func_start sub_0201A5E8
 sub_0201A5E8: ; 0x0201A5E8
-	ldr r0, _0201A710 ; =gMain
+	ldr r0, _0201A710 ; =gSystem
 	ldr r1, [r0, #0x34]
 	cmp r1, #3
 	bls _0201A5F2
@@ -729,7 +729,7 @@ _0201A606:
 	orr r1, r2
 	str r1, [r0, #0x48]
 _0201A616:
-	ldr r1, _0201A710 ; =gMain
+	ldr r1, _0201A710 ; =gSystem
 	mov r0, #8
 	ldr r2, [r1, #0x44]
 	add r3, r2, #0
@@ -739,7 +739,7 @@ _0201A616:
 	orr r0, r2
 	str r0, [r1, #0x44]
 _0201A628:
-	ldr r1, _0201A710 ; =gMain
+	ldr r1, _0201A710 ; =gSystem
 	mov r0, #8
 	ldr r2, [r1, #0x4c]
 	add r3, r2, #0
@@ -768,7 +768,7 @@ _0201A64E:
 	lsr r0, r0, #1
 	orr r1, r0
 _0201A65C:
-	ldr r2, _0201A710 ; =gMain
+	ldr r2, _0201A710 ; =gSystem
 	ldr r0, _0201A714 ; =0x0000F3FF
 	ldr r3, [r2, #0x48]
 	and r0, r3
@@ -792,7 +792,7 @@ _0201A67A:
 	lsr r1, r1, #1
 	orr r0, r1
 _0201A688:
-	ldr r2, _0201A710 ; =gMain
+	ldr r2, _0201A710 ; =gSystem
 	ldr r1, _0201A714 ; =0x0000F3FF
 	ldr r3, [r2, #0x44]
 	and r1, r3
@@ -816,7 +816,7 @@ _0201A6A6:
 	lsr r1, r1, #1
 	orr r0, r1
 _0201A6B4:
-	ldr r2, _0201A710 ; =gMain
+	ldr r2, _0201A710 ; =gSystem
 	ldr r1, _0201A714 ; =0x0000F3FF
 	ldr r3, [r2, #0x4c]
 	and r1, r3
@@ -833,7 +833,7 @@ _0201A6C2:
 	orr r1, r2
 	str r1, [r0, #0x48]
 _0201A6D2:
-	ldr r1, _0201A710 ; =gMain
+	ldr r1, _0201A710 ; =gSystem
 	mov r0, #2
 	ldr r2, [r1, #0x44]
 	lsl r0, r0, #8
@@ -843,7 +843,7 @@ _0201A6D2:
 	orr r0, r2
 	str r0, [r1, #0x44]
 _0201A6E4:
-	ldr r1, _0201A710 ; =gMain
+	ldr r1, _0201A710 ; =gSystem
 	mov r0, #2
 	ldr r2, [r1, #0x4c]
 	lsl r0, r0, #8
@@ -853,7 +853,7 @@ _0201A6E4:
 	orr r0, r2
 	str r0, [r1, #0x4c]
 _0201A6F6:
-	ldr r1, _0201A710 ; =gMain
+	ldr r1, _0201A710 ; =gSystem
 	ldr r0, _0201A718 ; =0x0000FCFF
 	ldr r2, [r1, #0x48]
 	and r2, r0
@@ -867,49 +867,49 @@ _0201A6F6:
 _0201A70C:
 	bx lr
 	nop
-_0201A710: .word gMain
+_0201A710: .word gSystem
 _0201A714: .word 0x0000F3FF
 _0201A718: .word 0x0000FCFF
 	thumb_func_end sub_0201A5E8
 
 	thumb_func_start SetKeyRepeatTimers
 SetKeyRepeatTimers: ; 0x0201A71C
-	ldr r2, _0201A724 ; =gMain
+	ldr r2, _0201A724 ; =gSystem
 	str r0, [r2, #0x54]
 	str r1, [r2, #0x58]
 	bx lr
 	.balign 4, 0
-_0201A724: .word gMain
+_0201A724: .word gSystem
 	thumb_func_end SetKeyRepeatTimers
 
 	thumb_func_start sub_0201A728
 sub_0201A728: ; 0x0201A728
-	ldr r1, _0201A734 ; =gMain + 0x60
+	ldr r1, _0201A734 ; =gSystem + 0x60
 	ldrb r2, [r1, #0xc]
 	orr r0, r2
 	strb r0, [r1, #0xc]
 	bx lr
 	nop
-_0201A734: .word gMain + 0x60
+_0201A734: .word gSystem + 0x60
 	thumb_func_end sub_0201A728
 
 	thumb_func_start sub_0201A738
 sub_0201A738: ; 0x0201A738
-	ldr r1, _0201A744 ; =gMain + 0x60
+	ldr r1, _0201A744 ; =gSystem + 0x60
 	mvn r0, r0
 	ldrb r2, [r1, #0xc]
 	and r0, r2
 	strb r0, [r1, #0xc]
 	bx lr
 	.balign 4, 0
-_0201A744: .word gMain + 0x60
+_0201A744: .word gSystem + 0x60
 	thumb_func_end sub_0201A738
 
 	thumb_func_start sub_0201A748
 sub_0201A748: ; 0x0201A748
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _0201A76C ; =gMain
+	ldr r0, _0201A76C ; =gSystem
 	ldr r0, [r0, #0x74]
 	cmp r0, #0
 	beq _0201A758
@@ -918,42 +918,42 @@ _0201A758:
 	add r0, r4, #0
 	mov r1, #4
 	bl AllocFromHeapAtEnd
-	ldr r1, _0201A76C ; =gMain
+	ldr r1, _0201A76C ; =gSystem
 	str r0, [r1, #0x74]
 	ldr r1, _0201A770 ; =0x2F93A1BC
 	str r1, [r0]
 	pop {r4, pc}
 	nop
-_0201A76C: .word gMain
+_0201A76C: .word gSystem
 _0201A770: .word 0x2F93A1BC
 	thumb_func_end sub_0201A748
 
 	thumb_func_start sub_0201A774
 sub_0201A774: ; 0x0201A774
 	push {r3, lr}
-	ldr r0, _0201A798 ; =gMain
+	ldr r0, _0201A798 ; =gSystem
 	ldr r0, [r0, #0x74]
 	cmp r0, #0
 	bne _0201A782
 	bl GF_AssertFail
 _0201A782:
-	ldr r0, _0201A798 ; =gMain
+	ldr r0, _0201A798 ; =gSystem
 	mov r2, #0
 	ldr r1, [r0, #0x74]
 	str r2, [r1]
 	ldr r0, [r0, #0x74]
 	bl FreeToHeap
-	ldr r0, _0201A798 ; =gMain
+	ldr r0, _0201A798 ; =gSystem
 	mov r1, #0
 	str r1, [r0, #0x74]
 	pop {r3, pc}
 	.balign 4, 0
-_0201A798: .word gMain
+_0201A798: .word gSystem
 	thumb_func_end sub_0201A774
 
 	thumb_func_start sub_0201A79C
 sub_0201A79C: ; 0x0201A79C
-	ldr r0, _0201A7B4 ; =gMain
+	ldr r0, _0201A7B4 ; =gSystem
 	ldr r0, [r0, #0x74]
 	cmp r0, #0
 	beq _0201A7B0
@@ -967,6 +967,6 @@ _0201A7B0:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0201A7B4: .word gMain
+_0201A7B4: .word gSystem
 _0201A7B8: .word 0x2F93A1BC
 	thumb_func_end sub_0201A79C

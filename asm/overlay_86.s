@@ -348,7 +348,7 @@ _021E5BE0:
 	bl sub_02025320
 	cmp r0, #1
 	beq _021E5BF4
-	ldr r0, _021E5C8C ; =gMain
+	ldr r0, _021E5C8C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -398,7 +398,7 @@ _021E5C46:
 	bl sub_02025320
 	cmp r0, #1
 	beq _021E5C5A
-	ldr r0, _021E5C8C ; =gMain
+	ldr r0, _021E5C8C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -428,7 +428,7 @@ _021E5C82:
 	pop {r4, pc}
 	nop
 _021E5C88: .word _021E7E98
-_021E5C8C: .word gMain
+_021E5C8C: .word gSystem
 _021E5C90: .word 0x000005DD
 	thumb_func_end ov86_021E5BA0
 
@@ -4100,7 +4100,7 @@ _021E79EC: ; jump table
 	.short _021E79FC - _021E79EC - 2 ; case 6
 	.short _021E7A38 - _021E79EC - 2 ; case 7
 _021E79FC:
-	ldr r0, _021E7B44 ; =gMain
+	ldr r0, _021E7B44 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x20
 	tst r0, r1
@@ -4129,7 +4129,7 @@ _021E7A24:
 	bl ov86_021E7CF8
 	b _021E7AB4
 _021E7A38:
-	ldr r0, _021E7B44 ; =gMain
+	ldr r0, _021E7B44 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0x10
 	tst r0, r1
@@ -4259,7 +4259,7 @@ _021E7B36:
 	nop
 _021E7B3C: .word 0x000005DD
 _021E7B40: .word 0x000005DC
-_021E7B44: .word gMain
+_021E7B44: .word gSystem
 _021E7B48: .word 0x0000025D
 _021E7B4C: .word 0x000005F2
 _021E7B50: .word ov86_021E7E9C

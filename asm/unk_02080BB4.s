@@ -1997,7 +1997,7 @@ _02081C76:
 	strb r1, [r4, r0]
 	b _02081EA8
 _02081C90:
-	ldr r0, _02081EB0 ; =gMain
+	ldr r0, _02081EB0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2015,7 +2015,7 @@ _02081CA2:
 	strb r1, [r4, r0]
 	b _02081EA8
 _02081CB6:
-	ldr r0, _02081EB0 ; =gMain
+	ldr r0, _02081EB0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2251,7 +2251,7 @@ _02081EA8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02081EAC: .word 0x00000C67
-_02081EB0: .word gMain
+_02081EB0: .word gSystem
 _02081EB4: .word 0x000005DC
 _02081EB8: .word 0x00000654
 _02081EBC: .word 0x0000FFFE

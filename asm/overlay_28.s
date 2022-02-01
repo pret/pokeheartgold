@@ -2588,14 +2588,14 @@ _0225E914:
 	bl ov28_0225E8B8
 	cmp r0, #0
 	beq _0225E92E
-	ldr r0, _0225E934 ; =gMain
+	ldr r0, _0225E934 ; =gSystem
 	mov r1, #1
 	str r1, [r0, #0x5c]
 _0225E92E:
 	pop {r4, pc}
 	.balign 4, 0
 _0225E930: .word _0225EA7C
-_0225E934: .word gMain
+_0225E934: .word gSystem
 	thumb_func_end ov28_0225E900
 
 	thumb_func_start ov28_0225E938

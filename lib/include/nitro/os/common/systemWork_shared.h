@@ -54,7 +54,7 @@ typedef struct {
     struct OSLockWord lock_CARD;       // 3e0-3e7:   8bytes Game Card - lock buffer
     struct OSLockWord lock_CARTRIDGE;  // 3e8-3ef:   8bytes DS Pak - lock buffer
     struct OSLockWord lock_INIT;       // 3f0-3f7:   8bytes Initialization lock buffer
-    u16     mmem_checker_mainp;        // 3f8-3f9:   2bytes MainMomory Size Checker for Main processor
+    u16     mmem_checker_mainp;        // 3f8-3f9:   2bytes MainMomory Size Checker for System processor
     u16     mmem_checker_subp;         // 3fa-3fb:   2bytes MainMomory Size Checker for Sub processor
     u8      padding4[2];               // 3fc-3fd: (2bytes)
     u16     command_area;              // 3fe-3ff:   2bytes Command Area

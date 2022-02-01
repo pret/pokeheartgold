@@ -1864,7 +1864,7 @@ _021E6A50: .word 0x0000343A
 	thumb_func_start ov51_021E6A54
 ov51_021E6A54: ; 0x021E6A54
 	push {r3, lr}
-	ldr r1, _021E6A9C ; =gMain
+	ldr r1, _021E6A9C ; =gSystem
 	mov r2, #1
 	ldr r1, [r1, #0x48]
 	tst r2, r1
@@ -1901,7 +1901,7 @@ _021E6A98:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021E6A9C: .word gMain
+_021E6A9C: .word gSystem
 _021E6AA0: .word 0x000030F4
 _021E6AA4: .word 0x0000343A
 _021E6AA8: .word 0x000005DC
@@ -1954,7 +1954,7 @@ _021E6B02:
 	bl sub_02025320
 	cmp r0, #0
 	beq _021E6B24
-	ldr r1, _021E6B40 ; =gMain + 0x40
+	ldr r1, _021E6B40 ; =gSystem + 0x40
 	mov r0, #0xd1
 	ldrh r2, [r1, #0x20]
 	lsl r0, r0, #6
@@ -1976,7 +1976,7 @@ _021E6B30: .word 0x0000343A
 _021E6B34: .word ov51_021E7DBC
 _021E6B38: .word 0x000005DC
 _021E6B3C: .word ov51_021E7DC0
-_021E6B40: .word gMain + 0x40
+_021E6B40: .word gSystem + 0x40
 	thumb_func_end ov51_021E6AAC
 
 	thumb_func_start ov51_021E6B44

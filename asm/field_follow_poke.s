@@ -1849,7 +1849,7 @@ _0206A4D0:
 	str r0, [r4]
 	b _0206A5BC
 _0206A4E0:
-	ldr r0, _0206A5C8 ; =gMain
+	ldr r0, _0206A5C8 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1958,7 +1958,7 @@ _0206A5BC:
 	pop {r4, r5, pc}
 	nop
 _0206A5C4: .word 0x04000050
-_0206A5C8: .word gMain
+_0206A5C8: .word gSystem
 _0206A5CC: .word 0x04000052
 	thumb_func_end sub_0206A410
 

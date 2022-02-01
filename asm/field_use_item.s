@@ -1104,7 +1104,7 @@ _020651F4:
 	bl sub_0205B624
 	cmp r0, #1
 	bne _0206524E
-	ldr r1, _02065254 ; =gMain
+	ldr r1, _02065254 ; =gSystem
 	mov r0, #0xf3
 	ldr r2, [r1, #0x48]
 	tst r0, r2
@@ -1143,7 +1143,7 @@ _0206524E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_02065254: .word gMain
+_02065254: .word gSystem
 	thumb_func_end sub_0206518C
 
 	thumb_func_start ItemMenuUseFunc_EvoStone

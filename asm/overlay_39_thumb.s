@@ -419,7 +419,7 @@ ov39_02227364: ; 0x02227364
 	thumb_func_start ov39_0222738C
 ov39_0222738C: ; 0x0222738C
 	push {r3, lr}
-	ldr r1, _022273AC ; =gMain
+	ldr r1, _022273AC ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #1
 	tst r1, r2
@@ -436,7 +436,7 @@ _022273A8:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_022273AC: .word gMain
+_022273AC: .word gSystem
 	thumb_func_end ov39_0222738C
 
 	thumb_func_start ov39_022273B0
@@ -2492,7 +2492,7 @@ ov39_02228140: ; 0x02228140
 	mov r0, #2
 	mov r1, #1
 	bl GX_EngineBToggleLayers
-	ldr r0, _02228300 ; =gMain + 0x60
+	ldr r0, _02228300 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -2547,7 +2547,7 @@ _022282F0: .word 0x04001000
 _022282F4: .word 0xFFFF1FFF
 _022282F8: .word 0x00000307
 _022282FC: .word 0x0000030A
-_02228300: .word gMain + 0x60
+_02228300: .word gSystem + 0x60
 _02228304: .word ov39_02228418
 	thumb_func_end ov39_02228140
 
@@ -2665,14 +2665,14 @@ _02228394:
 	bl OverlayManager_FreeData
 	mov r0, #0x7c
 	bl DestroyHeap
-	ldr r0, _02228414 ; =gMain + 0x60
+	ldr r0, _02228414 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02228414: .word gMain + 0x60
+_02228414: .word gSystem + 0x60
 	thumb_func_end ov39_02228370
 
 	thumb_func_start ov39_02228418
@@ -4053,7 +4053,7 @@ ov39_02228EA4: ; 0x02228EA4
 ov39_02228EC8: ; 0x02228EC8
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _02228F14 ; =gMain
+	ldr r0, _02228F14 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -4089,7 +4089,7 @@ _02228F0E:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02228F14: .word gMain
+_02228F14: .word gSystem
 	thumb_func_end ov39_02228EC8
 
 	thumb_func_start ov39_02228F18

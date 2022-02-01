@@ -1070,7 +1070,7 @@ sub_02036144: ; 0x02036144
 	strb r0, [r3, #1]
 	bl sub_02035F4C
 	ldr r0, _02036214 ; =_021D4140
-	ldr r1, _0203621C ; =gMain
+	ldr r1, _0203621C ; =gSystem
 	ldr r0, [r0, #8]
 	ldr r2, _02036220 ; =0x0000065C
 	ldr r3, [r1, #0x44]
@@ -1144,7 +1144,7 @@ _02036204:
 	nop
 _02036214: .word _021D4140
 _02036218: .word 0x000006B9
-_0203621C: .word gMain
+_0203621C: .word gSystem
 _02036220: .word 0x0000065C
 _02036224: .word 0x00007FFF
 _02036228: .word 0x00000694
@@ -3990,7 +3990,7 @@ sub_0203778C: ; 0x0203778C
 	add r0, sp, #0x10
 	add r1, sp, #4
 	bl GF_RTC_CopyDateTime
-	ldr r0, _02037810 ; =gMain
+	ldr r0, _02037810 ; =gSystem
 	ldr r6, [sp, #0x10]
 	mov r5, #0
 	lsr r7, r6, #0x1c
@@ -4050,7 +4050,7 @@ sub_0203778C: ; 0x0203778C
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02037810: .word gMain
+_02037810: .word gSystem
 _02037814: .word 0x00000000
 _02037818: .word 0x6C078965
 _0203781C: .word 0x5D588B65

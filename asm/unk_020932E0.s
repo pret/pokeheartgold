@@ -122,7 +122,7 @@ _020933AA:
 	bl FreeToHeap
 	mov r0, #4
 	bl sub_02002DB4
-	ldr r0, _02093438 ; =gMain + 0x60
+	ldr r0, _02093438 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -151,7 +151,7 @@ _02093428: .word 0x000046C8
 _0209342C: .word 0x000046CC
 _02093430: .word 0x000046A4
 _02093434: .word 0x000007E4
-_02093438: .word gMain + 0x60
+_02093438: .word gSystem + 0x60
 _0209343C: .word 0x04000050
 	thumb_func_end sub_02093354
 
@@ -399,7 +399,7 @@ sub_02093630: ; 0x02093630
 	ldr r1, [r5, r0]
 	cmp r1, #0
 	bne _02093714
-	ldr r1, _02093878 ; =gMain
+	ldr r1, _02093878 ; =gSystem
 	ldr r4, [r1, #0x48]
 	cmp r4, #0
 	beq _02093714
@@ -677,7 +677,7 @@ _0209386C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02093874: .word 0x000046C0
-_02093878: .word gMain
+_02093878: .word gSystem
 _0209387C: .word 0x000005DD
 _02093880: .word 0x000046B8
 _02093884: .word 0x000005DC
@@ -3325,7 +3325,7 @@ sub_02094D9C: ; 0x02094D9C
 	add r5, r0, #0
 	add r4, r1, #0
 	bl sub_02094DF8
-	ldr r0, _02094DF4 ; =gMain + 0x60
+	ldr r0, _02094DF4 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -3359,7 +3359,7 @@ sub_02094D9C: ; 0x02094D9C
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
-_02094DF4: .word gMain + 0x60
+_02094DF4: .word gSystem + 0x60
 	thumb_func_end sub_02094D9C
 
 	thumb_func_start sub_02094DF8

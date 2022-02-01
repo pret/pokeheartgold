@@ -1936,7 +1936,7 @@ ov92_0225D49C: ; 0x0225D49C
 	bl sub_0200D998
 	ldr r0, [r4, #0x50]
 	bl sub_0200D108
-	ldr r0, _0225D588 ; =gMain + 0x60
+	ldr r0, _0225D588 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -1947,7 +1947,7 @@ ov92_0225D49C: ; 0x0225D49C
 	strh r0, [r2]
 	pop {r4, pc}
 	.balign 4, 0
-_0225D588: .word gMain + 0x60
+_0225D588: .word gSystem + 0x60
 _0225D58C: .word 0x04000060
 _0225D590: .word 0x0000CFF7
 	thumb_func_end ov92_0225D49C
@@ -2161,7 +2161,7 @@ _0225D67A:
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
-	ldr r0, _0225D7C0 ; =gMain + 0x60
+	ldr r0, _0225D7C0 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -2186,7 +2186,7 @@ _0225D7B0: .word ov92_02263890
 _0225D7B4: .word ov92_0226390C
 _0225D7B8: .word ov92_02263934
 _0225D7BC: .word ov92_022639A4
-_0225D7C0: .word gMain + 0x60
+_0225D7C0: .word gSystem + 0x60
 _0225D7C4: .word 0x04000050
 _0225D7C8: .word 0x04001050
 	thumb_func_end ov92_0225D594

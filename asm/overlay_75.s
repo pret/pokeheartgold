@@ -967,7 +967,7 @@ _0224707C:
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineBToggleLayers
-	ldr r0, _02247110 ; =gMain + 0x60
+	ldr r0, _02247110 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -991,7 +991,7 @@ _02247100: .word 0x0000041C
 _02247104: .word 0x00000307
 _02247108: .word 0x0000030A
 _0224710C: .word 0x0000010E
-_02247110: .word gMain + 0x60
+_02247110: .word gSystem + 0x60
 _02247114: .word ov75_02247234
 	thumb_func_end ov75_02246F0C
 
@@ -1113,14 +1113,14 @@ _022471A4:
 	bl OverlayManager_FreeData
 	mov r0, #0x74
 	bl DestroyHeap
-	ldr r0, _02247230 ; =gMain + 0x60
+	ldr r0, _02247230 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02247230: .word gMain + 0x60
+_02247230: .word gSystem + 0x60
 	thumb_func_end ov75_02247180
 
 	thumb_func_start ov75_02247234
@@ -3090,7 +3090,7 @@ _02248168:
 	str r1, [r0]
 	b _022483D8
 _02248220:
-	ldr r1, _022483E4 ; =gMain
+	ldr r1, _022483E4 ; =gSystem
 	add r0, #0xac
 	ldr r2, [r1, #0x4c]
 	ldr r4, [r0]
@@ -3177,7 +3177,7 @@ _022482C6:
 	bl ov75_02248034
 	b _022483D8
 _022482CE:
-	ldr r1, _022483E4 ; =gMain
+	ldr r1, _022483E4 ; =gSystem
 	mov r2, #0x10
 	ldr r1, [r1, #0x48]
 	tst r2, r1
@@ -3306,7 +3306,7 @@ _022483D8:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_022483E4: .word gMain
+_022483E4: .word gSystem
 _022483E8: .word 0x000005DC
 	thumb_func_end ov75_022480B8
 
@@ -5150,7 +5150,7 @@ ov75_022491CC: ; 0x022491CC
 ov75_022491F0: ; 0x022491F0
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _02249218 ; =gMain
+	ldr r0, _02249218 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -5169,7 +5169,7 @@ _02249212:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_02249218: .word gMain
+_02249218: .word gSystem
 	thumb_func_end ov75_022491F0
 
 	thumb_func_start ov75_0224921C

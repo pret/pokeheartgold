@@ -2876,7 +2876,7 @@
 .public ftell
 .public gGameLanguage
 .public gGameVersion
-.public gMain
+.public gSystem
 .public memcmp
 .public memcpy
 .public memmove

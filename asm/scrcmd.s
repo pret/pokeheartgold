@@ -1968,7 +1968,7 @@ _02040FFC: .word sub_02041000
 
 	thumb_func_start sub_02041000
 sub_02041000: ; 0x02041000
-	ldr r0, _02041014 ; =gMain
+	ldr r0, _02041014 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -1979,7 +1979,7 @@ _0204100E:
 	mov r0, #0
 	bx lr
 	nop
-_02041014: .word gMain
+_02041014: .word gSystem
 	thumb_func_end sub_02041000
 
 	thumb_func_start ScrCmd_348
@@ -2004,7 +2004,7 @@ _0204103C: .word sub_02041040
 
 	thumb_func_start sub_02041040
 sub_02041040: ; 0x02041040
-	ldr r1, _02041060 ; =gMain
+	ldr r1, _02041060 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	tst r1, r2
@@ -2022,7 +2022,7 @@ _0204105A:
 	mov r0, #0
 	bx lr
 	nop
-_02041060: .word gMain
+_02041060: .word gSystem
 	thumb_func_end sub_02041040
 
 	thumb_func_start ScrCmd_WaitButton
@@ -2039,7 +2039,7 @@ _02041070: .word sub_02041074
 	thumb_func_start sub_02041074
 sub_02041074: ; 0x02041074
 	push {r3, lr}
-	ldr r1, _020410DC ; =gMain
+	ldr r1, _020410DC ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #3
 	add r3, r2, #0
@@ -2093,7 +2093,7 @@ _020410D8:
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_020410DC: .word gMain
+_020410DC: .word gSystem
 	thumb_func_end sub_02041074
 
 	thumb_func_start ScrCmd_051
@@ -2109,7 +2109,7 @@ _020410EC: .word sub_020410F0
 
 	thumb_func_start sub_020410F0
 sub_020410F0: ; 0x020410F0
-	ldr r0, _0204110C ; =gMain
+	ldr r0, _0204110C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -2126,7 +2126,7 @@ _02041108:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-_0204110C: .word gMain
+_0204110C: .word gSystem
 	thumb_func_end sub_020410F0
 
 	thumb_func_start ScrCmd_OpenMsg
@@ -2662,7 +2662,7 @@ sub_02041520: ; 0x02041520
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0204155A:
-	ldr r0, _020415C0 ; =gMain
+	ldr r0, _020415C0 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -2716,7 +2716,7 @@ _020415B8:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020415BC: .word 0x0000FFFF
-_020415C0: .word gMain
+_020415C0: .word gSystem
 	thumb_func_end sub_02041520
 
 	thumb_func_start ScrCmd_060
@@ -2746,7 +2746,7 @@ sub_020415E0: ; 0x020415E0
 	lsr r1, r1, #0x10
 	bl GetVarPointer
 	add r6, r0, #0
-	ldr r0, _0204166C ; =gMain
+	ldr r0, _0204166C ; =gSystem
 	ldr r1, _02041670 ; =0x0000FFFF
 	ldr r2, [r0, #0x48]
 	mov r0, #3
@@ -2810,7 +2810,7 @@ _02041666:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
-_0204166C: .word gMain
+_0204166C: .word gSystem
 _02041670: .word 0x0000FFFF
 	thumb_func_end sub_020415E0
 
@@ -8688,7 +8688,7 @@ sub_02044434: ; 0x02044434
 	add r0, #0x80
 	ldr r0, [r0]
 	bl sub_0205A39C
-	ldr r1, _0204447C ; =gMain
+	ldr r1, _0204447C ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #2
 	tst r1, r2
@@ -8709,7 +8709,7 @@ _02044478:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0204447C: .word gMain
+_0204447C: .word gSystem
 	thumb_func_end sub_02044434
 
 	thumb_func_start ScrCmd_286
@@ -11788,13 +11788,13 @@ ScrCmd_528: ; 0x02045C64
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl GetVarPointer
-	ldr r1, _02045C80 ; =gMain + 0x60
+	ldr r1, _02045C80 ; =gSystem + 0x60
 	ldrb r1, [r1, #0xa]
 	strh r1, [r0]
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_02045C80: .word gMain + 0x60
+_02045C80: .word gSystem + 0x60
 	thumb_func_end ScrCmd_528
 
 	thumb_func_start ScrCmd_530
@@ -13095,14 +13095,14 @@ ScrCmd_667: ; 0x020466A8
 	bl GetVarPointer
 	mov r1, #0
 	strh r1, [r0]
-	ldr r1, _020466DC ; =gMain
+	ldr r1, _020466DC ; =gSystem
 	ldr r2, [r1, #0x44]
 	mov r1, #1
 	tst r2, r1
 	beq _020466CA
 	strh r1, [r0]
 _020466CA:
-	ldr r1, _020466DC ; =gMain
+	ldr r1, _020466DC ; =gSystem
 	ldr r2, [r1, #0x44]
 	mov r1, #2
 	tst r1, r2
@@ -13113,7 +13113,7 @@ _020466D8:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_020466DC: .word gMain
+_020466DC: .word gSystem
 	thumb_func_end ScrCmd_667
 
 	thumb_func_start ScrCmd_GetOwnedRotomFormes

@@ -1673,7 +1673,7 @@ _02019C26:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #1
 	bne _02019C4C
-	ldr r0, _02019D14 ; =gMain
+	ldr r0, _02019D14 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf3
 	tst r1, r0
@@ -1687,7 +1687,7 @@ _02019C46:
 	sub r0, #0xf4
 	pop {r3, r4, r5, r6, r7, pc}
 _02019C4C:
-	ldr r0, _02019D14 ; =gMain
+	ldr r0, _02019D14 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1770,7 +1770,7 @@ _02019CE0:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _02019CF0:
-	ldr r0, _02019D14 ; =gMain
+	ldr r0, _02019D14 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1791,7 +1791,7 @@ _02019D0E:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02019D14: .word gMain
+_02019D14: .word gSystem
 	thumb_func_end sub_02019BE4
 
 	thumb_func_start sub_02019D18
@@ -1837,7 +1837,7 @@ _02019D5A:
 	ldrb r0, [r5, #0xc]
 	cmp r0, #1
 	bne _02019D80
-	ldr r0, _02019E48 ; =gMain
+	ldr r0, _02019E48 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf3
 	tst r1, r0
@@ -1851,7 +1851,7 @@ _02019D7A:
 	sub r0, #0xf4
 	pop {r3, r4, r5, r6, r7, pc}
 _02019D80:
-	ldr r0, _02019E48 ; =gMain
+	ldr r0, _02019E48 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x4c]
 	tst r1, r0
@@ -1934,7 +1934,7 @@ _02019E14:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _02019E24:
-	ldr r0, _02019E48 ; =gMain
+	ldr r0, _02019E48 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -1955,7 +1955,7 @@ _02019E42:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02019E48: .word gMain
+_02019E48: .word gSystem
 	thumb_func_end sub_02019D18
 
 	thumb_func_start sub_02019E4C

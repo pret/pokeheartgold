@@ -1732,7 +1732,7 @@ ov49_02259410: ; 0x02259410
 	bl ov42_02228188
 	cmp r0, #0
 	bne _022594D2
-	ldr r0, _022594D4 ; =gMain
+	ldr r0, _022594D4 ; =gSystem
 	mov r1, #2
 	ldr r0, [r0, #0x44]
 	add r2, r0, #0
@@ -1813,7 +1813,7 @@ _022594C6:
 _022594D2:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_022594D4: .word gMain
+_022594D4: .word gSystem
 	thumb_func_end ov49_02259410
 
 	thumb_func_start ov49_022594D8
@@ -2976,7 +2976,7 @@ _02259DF2:
 	str r0, [r5]
 	b _02259EE2
 _02259DF8:
-	ldr r0, _02259EF4 ; =gMain
+	ldr r0, _02259EF4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -3096,7 +3096,7 @@ _02259EE2:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_02259EF4: .word gMain
+_02259EF4: .word gSystem
 	thumb_func_end ov49_02259C90
 
 	thumb_func_start ov49_02259EF8
@@ -4219,7 +4219,7 @@ ov49_0225A5EC: ; 0x0225A5EC
 	bl sub_0202055C
 	ldr r0, _0225A7A0 ; =ov49_022697CC
 	bl GX_SetBanks
-	ldr r0, _0225A7A4 ; =gMain + 0x60
+	ldr r0, _0225A7A4 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -4390,7 +4390,7 @@ _0225A742:
 _0225A798: .word 0x04000050
 _0225A79C: .word 0x04001050
 _0225A7A0: .word ov49_022697CC
-_0225A7A4: .word gMain + 0x60
+_0225A7A4: .word gSystem + 0x60
 _0225A7A8: .word ov49_02269724
 _0225A7AC: .word ov49_0226981C
 _0225A7B0: .word ov49_02269734
@@ -14512,7 +14512,7 @@ _0225F244:
 _0225F248:
 	mov r1, #0x10
 _0225F24A:
-	ldr r0, _0225F25C ; =gMain
+	ldr r0, _0225F25C ; =gSystem
 	ldr r0, [r0, #0x44]
 	tst r0, r1
 	beq _0225F256
@@ -14522,7 +14522,7 @@ _0225F256:
 	mov r0, #0
 	bx lr
 	nop
-_0225F25C: .word gMain
+_0225F25C: .word gSystem
 	thumb_func_end ov49_0225F224
 
 	thumb_func_start ov49_0225F260
@@ -15345,7 +15345,7 @@ _0225F902:
 	bl sub_02006184
 	cmp r0, #0
 	bne _0225F9FA
-	ldr r0, _0225FA0C ; =gMain
+	ldr r0, _0225FA0C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #3
 	tst r0, r1
@@ -15452,7 +15452,7 @@ _0225F9FA:
 _0225FA00: .word 0x000005DC
 _0225FA04: .word 0x000005E5
 _0225FA08: .word 0x000005BF
-_0225FA0C: .word gMain
+_0225FA0C: .word gSystem
 _0225FA10: .word ov49_02269B38
 	thumb_func_end ov49_0225F518
 
@@ -16159,7 +16159,7 @@ _02260008:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02260036:
-	ldr r0, _0226021C ; =gMain
+	ldr r0, _0226021C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -16330,7 +16330,7 @@ _0226016A:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _022601C0:
-	ldr r0, _0226021C ; =gMain
+	ldr r0, _0226021C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -16370,7 +16370,7 @@ _0226020A:
 _02260210: .word ov49_02269D20
 _02260214: .word ov49_02269B80
 _02260218: .word ov49_02269B70
-_0226021C: .word gMain
+_0226021C: .word gSystem
 _02260220: .word ov49_02269B60
 _02260224: .word ov49_02269C90
 _02260228: .word ov49_02269C60
@@ -17993,7 +17993,7 @@ _02260F44:
 	bl ov49_0225EF8C
 	b _022611C0
 _02260F52:
-	ldr r0, _022611C8 ; =gMain
+	ldr r0, _022611C8 ; =gSystem
 	mov r1, #2
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -18265,7 +18265,7 @@ _022611C0:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
-_022611C8: .word gMain
+_022611C8: .word gSystem
 _022611CC: .word 0x000005C1
 _022611D0: .word ov49_02269B38
 	thumb_func_end ov49_02260E2C
@@ -20489,7 +20489,7 @@ _02262462:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	bne _022624A8
-	ldr r0, _022624FC ; =gMain
+	ldr r0, _022624FC ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -20554,7 +20554,7 @@ _022624D2:
 	nop
 _022624F4: .word 0x000005DD
 _022624F8: .word 0x0000014A
-_022624FC: .word gMain
+_022624FC: .word gSystem
 _02262500: .word 0x000005DC
 _02262504:
 	ldrb r0, [r6, #1]
@@ -21324,7 +21324,7 @@ _02262B6C:
 	bl ov49_0225EF90
 	b _02262BEC
 _02262BA8:
-	ldr r0, _02262BF4 ; =gMain
+	ldr r0, _02262BF4 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #0xf3
 	tst r0, r1
@@ -21357,7 +21357,7 @@ _02262BEC:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02262BF4: .word gMain
+_02262BF4: .word gSystem
 	thumb_func_end ov49_02262B14
 
 	thumb_func_start ov49_02262BF8
@@ -29583,7 +29583,7 @@ _02266DFC:
 	bl ov49_02258DAC
 	cmp r7, r0
 	bne _02266E5E
-	ldr r0, _02266E74 ; =gMain
+	ldr r0, _02266E74 ; =gSystem
 	mov r1, #0x40
 	ldr r0, [r0, #0x48]
 	mov r4, #4
@@ -29636,7 +29636,7 @@ _02266E64: .word 0x00000A04
 _02266E68: .word 0x00000A2C
 _02266E6C: .word 0x00000956
 _02266E70: .word 0x00000955
-_02266E74: .word gMain
+_02266E74: .word gSystem
 	thumb_func_end ov49_02266D7C
 
 	thumb_func_start ov49_02266E78

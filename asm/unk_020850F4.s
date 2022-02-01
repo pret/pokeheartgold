@@ -547,7 +547,7 @@ _02085526:
 	mov r0, #8
 	mov r1, #0
 	bl GX_EngineBToggleLayers
-	ldr r0, _020855C8 ; =gMain + 0x60
+	ldr r0, _020855C8 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -563,7 +563,7 @@ _02085526:
 _020855BC: .word _02102630
 _020855C0: .word _02102658
 _020855C4: .word _021026AC
-_020855C8: .word gMain + 0x60
+_020855C8: .word gSystem + 0x60
 	thumb_func_end sub_0208545C
 
 	thumb_func_start sub_020855CC

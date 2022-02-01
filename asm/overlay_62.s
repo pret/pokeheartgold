@@ -1724,7 +1724,7 @@ ov62_021E6630: ; 0x021E6630
 	bl ov62_021E6620
 	cmp r0, #0
 	beq _021E6644
-	ldr r0, _021E664C ; =gMain
+	ldr r0, _021E664C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1736,7 +1736,7 @@ _021E6648:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021E664C: .word gMain
+_021E664C: .word gSystem
 	thumb_func_end ov62_021E6630
 
 	.rodata

@@ -1251,7 +1251,7 @@ ov98_0221EF24: ; 0x0221EF24
 	bl sub_02025320
 	cmp r0, #0
 	bne _0221EF52
-	ldr r0, _0221EF60 ; =gMain
+	ldr r0, _0221EF60 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -1264,7 +1264,7 @@ _0221EF54:
 	pop {r3, r4, pc}
 	nop
 _0221EF5C: .word ov98_0221F1E0
-_0221EF60: .word gMain
+_0221EF60: .word gSystem
 	thumb_func_end ov98_0221EF24
 
 	thumb_func_start ov98_0221EF64

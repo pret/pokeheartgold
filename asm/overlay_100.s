@@ -7,7 +7,7 @@
 ov100_021E5900: ; 0x021E5900
 	ldr r1, [r0, #0xc]
 	str r1, [r0, #0x10]
-	ldr r1, _021E591C ; =gMain
+	ldr r1, _021E591C ; =gSystem
 	ldr r2, [r1, #0x48]
 	ldr r1, _021E5920 ; =0x00000CF3
 	tst r1, r2
@@ -20,7 +20,7 @@ _021E5916:
 	mov r0, #0
 	bx lr
 	nop
-_021E591C: .word gMain
+_021E591C: .word gSystem
 _021E5920: .word 0x00000CF3
 	thumb_func_end ov100_021E5900
 
@@ -41,7 +41,7 @@ ov100_021E5924: ; 0x021E5924
 	strh r1, [r0]
 	add r0, sp, #4
 	str r0, [sp]
-	ldr r3, _021E59C4 ; =gMain + 0x40
+	ldr r3, _021E59C4 ; =gSystem + 0x40
 	ldr r0, [r5, #0x74]
 	ldrh r2, [r3, #0x20]
 	ldrh r3, [r3, #0x22]
@@ -110,7 +110,7 @@ _021E59BC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E59C0: .word ov100_021E74C4
-_021E59C4: .word gMain + 0x40
+_021E59C4: .word gSystem + 0x40
 _021E59C8: .word 0x00000942
 	thumb_func_end ov100_021E5924
 
@@ -118,7 +118,7 @@ _021E59C8: .word 0x00000942
 ov100_021E59CC: ; 0x021E59CC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	ldr r0, _021E5A7C ; =gMain
+	ldr r0, _021E5A7C ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #2
 	tst r0, r1
@@ -205,7 +205,7 @@ _021E5A78:
 	sub r0, #0x11
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021E5A7C: .word gMain
+_021E5A7C: .word gSystem
 _021E5A80: .word 0x00000942
 _021E5A84: .word 0x0000093F
 	thumb_func_end ov100_021E59CC

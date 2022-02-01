@@ -1258,7 +1258,7 @@ _0225DEEA:
 _0225DF0A:
 	ldr r0, [r5, #0x18]
 	bl sub_02019F74
-	ldr r1, _0225DF78 ; =gMain
+	ldr r1, _0225DF78 ; =gSystem
 	ldr r2, [r1, #0x4c]
 	mov r1, #0x10
 	tst r1, r2
@@ -1308,7 +1308,7 @@ _0225DF68:
 _0225DF6C: .word _0225E15C
 _0225DF70: .word 0x000005DD
 _0225DF74: .word 0x000002AA
-_0225DF78: .word gMain
+_0225DF78: .word gSystem
 _0225DF7C: .word 0x000005DC
 	thumb_func_end ov32_0225DE34
 

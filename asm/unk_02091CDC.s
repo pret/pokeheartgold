@@ -576,7 +576,7 @@ _02092164:
 _02092180:
 	cmp r2, #0
 	bne _0209218E
-	ldr r0, _020921A0 ; =gMain
+	ldr r0, _020921A0 ; =gSystem
 	ldr r1, [r0, #0x48]
 	mov r0, #1
 	tst r0, r1
@@ -591,7 +591,7 @@ _02092194:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0209219C: .word 0x000001E2
-_020921A0: .word gMain
+_020921A0: .word gSystem
 	thumb_func_end sub_020920E0
 
 	.rodata

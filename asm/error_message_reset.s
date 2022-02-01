@@ -92,7 +92,7 @@ _02096346:
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
-	ldr r0, _0209655C ; =gMain + 0x60
+	ldr r0, _0209655C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GX_SwapDisplay
@@ -257,7 +257,7 @@ _0209654C: .word _02108528
 _02096550: .word sub_02096318
 _02096554: .word 0xFFFFE0FF
 _02096558: .word 0x04001000
-_0209655C: .word gMain + 0x60
+_0209655C: .word gSystem + 0x60
 _02096560: .word 0x04000050
 _02096564: .word 0x04001050
 _02096568: .word 0xFFFF1FFF

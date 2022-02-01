@@ -4021,7 +4021,7 @@ _02039A36:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]
 	bl sub_020275A4
-	ldr r1, _02039AA0 ; =gMain + 0x60
+	ldr r1, _02039AA0 ; =gSystem + 0x60
 	mov r0, #1
 	strb r0, [r1, #8]
 	ldr r1, _02039A9C ; =_021D4150
@@ -4059,7 +4059,7 @@ _02039A98:
 	pop {r3, pc}
 	nop
 _02039A9C: .word _021D4150
-_02039AA0: .word gMain + 0x60
+_02039AA0: .word gSystem + 0x60
 	thumb_func_end sub_02039A00
 
 	thumb_func_start sub_02039AA4

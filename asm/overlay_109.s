@@ -1002,14 +1002,14 @@ ov109_021E6058: ; 0x021E6058
 	ldr r1, [r4, #0xc]
 	cmp r1, #1
 	bne _021E6070
-	ldr r1, _021E61B4 ; =gMain
+	ldr r1, _021E61B4 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #0xf3
 	tst r1, r2
 	beq _021E6070
 	bl ov109_021E75B4
 _021E6070:
-	ldr r0, _021E61B4 ; =gMain
+	ldr r0, _021E61B4 ; =gSystem
 	mov r1, #1
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1177,7 +1177,7 @@ _021E61B0:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-_021E61B4: .word gMain
+_021E61B4: .word gSystem
 _021E61B8: .word 0x000005DC
 	thumb_func_end ov109_021E6058
 
@@ -1467,14 +1467,14 @@ ov109_021E63E8: ; 0x021E63E8
 	ldr r1, [r4, #0xc]
 	cmp r1, #1
 	bne _021E6400
-	ldr r1, _021E6564 ; =gMain
+	ldr r1, _021E6564 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #0xf3
 	tst r1, r2
 	beq _021E6400
 	bl ov109_021E75B4
 _021E6400:
-	ldr r0, _021E6564 ; =gMain
+	ldr r0, _021E6564 ; =gSystem
 	mov r1, #1
 	ldr r0, [r0, #0x48]
 	tst r1, r0
@@ -1658,7 +1658,7 @@ _021E6560:
 	mov r0, #5
 	pop {r4, pc}
 	.balign 4, 0
-_021E6564: .word gMain
+_021E6564: .word gSystem
 _021E6568: .word 0x000005DC
 	thumb_func_end ov109_021E63E8
 
