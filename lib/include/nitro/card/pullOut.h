@@ -1,0 +1,6 @@
+#ifndef NITRO_CARD_PULLOUT_H_
+#define NITRO_CARD_PULLOUT_H_
+
+BOOL CARD_IsPulledOut(void);
+
+#endif //NITRO_CARD_PULLOUT_H_

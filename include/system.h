@@ -34,7 +34,9 @@ struct System {
     u8 unk66;
     u8 unk67;
     u8 softResetDisabled;
-    u8 padding_69[3]; // nice
+    u8 unk69; // nice
+    u8 unk6A;
+    u8 unk6B;
     u8 unk6C;
     int unk70;
 };

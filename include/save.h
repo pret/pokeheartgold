@@ -55,6 +55,8 @@ const void *SavArray_const_get(const SAVEDATA *save, int idx);
 void SaveSubstruct_UpdateCRC(int idx);
 BOOL SaveSubstruct_AssertCRC(int idx);
 BOOL sub_020274D0(SAVEDATA *save);
+SAVEDATA *sub_020272B0(void);
+void sub_020275A4(SAVEDATA *saveData);
 #endif //PM_ASM
 
 #endif //POKEHEARTGOLD_SAVE_H

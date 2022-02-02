@@ -11,7 +11,6 @@ Static main
 	StackSize 0 2048
 	Object pm_version.o
 	Object main.o
-	Object main_s.o
 	Object list_menu.o
 	Object unk_02001AF4.o
 	Object string_util.o
