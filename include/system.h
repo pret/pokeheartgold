@@ -1,10 +1,12 @@
 #ifndef POKEHEARTGOLD_SYSTEM_H
 #define POKEHEARTGOLD_SYSTEM_H
 
+typedef void (*GFIntrCB)(void *);
+
 struct System {
-    void (*vBlankIntr)(void *);
+    GFIntrCB vBlankIntr;
     void * vBlankIntrArg;
-    void (*hBlankIntr)(void *);
+    GFIntrCB hBlankIntr;
     void * hBlankIntrArg;
     s32 unk10;
     s32 unk14;
@@ -13,7 +15,7 @@ struct System {
     void * unk20;
     void * unk24;
     s32 unk28;
-    u32 unk2C;
+    u32 vblankCounter;
     s32 unk30;
     u32 buttonMode;
     u32 heldKeysRaw;
@@ -36,10 +38,11 @@ struct System {
     u8 softResetDisabled;
     u8 unk69; // nice
     u8 unk6A;
-    u8 unk6B;
+    u8 lidClosedPauseDisabled;
     u8 unk6C;
     int unk70;
-};
+    u8 filler_74[0x404];
+}; // size=0x478
 
 extern struct System gSystem;
 

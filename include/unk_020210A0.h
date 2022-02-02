@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_020210A0_H
 #define POKEHEARTGOLD_UNK_020210A0_H
 
-void sub_0202135C(void);
-void sub_02021328(void);
+void GF_TouchpadPauseOnLidClose(void);
+void GF_TouchpadResumeOnLidOpen(void);
 
 #endif //POKEHEARTGOLD_UNK_020210A0_H

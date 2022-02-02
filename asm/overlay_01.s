@@ -9605,7 +9605,7 @@ ov01_021EA3E0: ; 0x021EA3E0
 	str r1, [sp]
 	mov r0, #4
 	add r1, r2, #0
-	bl sub_0201A3A4
+	bl Sys_AllocAndReadFile
 	mov r1, #0
 	str r0, [sp, #0x14]
 	str r1, [sp, #8]

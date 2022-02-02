@@ -1,223 +1,11 @@
 	.include "asm/macros.inc"
 	.include "global.inc"
 
-	.rodata
-
-_020F62A4:
-	.byte 0x00, 0xD2, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x36, 0x02, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xD0, 0x11, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
-
-	.bss
-
-gSystem: ; 0x021D110C
-	.space 0x478
-
 	.text
 
-	thumb_func_start sub_0201A08C
-sub_0201A08C: ; 0x0201A08C
-	push {r3, lr}
-	ldr r3, _0201A0B4 ; =OS_IRQTable
-	ldr r1, _0201A0B8 ; =0x00003FF8
-	mov r0, #1
-	ldr r2, [r3, r1]
-	orr r0, r2
-	str r0, [r3, r1]
-	mov r0, #3
-	bl MI_WaitDma
-	ldr r0, _0201A0BC ; =gSystem
-	ldr r0, [r0, #0x1c]
-	bl sub_0201F880
-	ldr r0, _0201A0BC ; =gSystem
-	ldr r1, [r0, #0x30]
-	add r1, r1, #1
-	str r1, [r0, #0x30]
-	pop {r3, pc}
-	nop
-_0201A0B4: .word OS_IRQTable
-_0201A0B8: .word 0x00003FF8
-_0201A0BC: .word gSystem
-	thumb_func_end sub_0201A08C
-
-	thumb_func_start sub_0201A0C0
-sub_0201A0C0: ; 0x0201A0C0
-	ldr r3, _0201A0D4 ; =OS_IRQTable
-	ldr r1, _0201A0D8 ; =0x00003FF8
-	mov r0, #1
-	ldr r2, [r3, r1]
-	orr r0, r2
-	str r0, [r3, r1]
-	ldr r3, _0201A0DC ; =MI_WaitDma
-	mov r0, #3
-	bx r3
-	nop
-_0201A0D4: .word OS_IRQTable
-_0201A0D8: .word 0x00003FF8
-_0201A0DC: .word MI_WaitDma
-	thumb_func_end sub_0201A0C0
-
-	thumb_func_start sub_0201A0E0
-sub_0201A0E0: ; 0x0201A0E0
-	push {r3, lr}
-	mov r0, #1
-	bl OS_DisableIrqMask
-	ldr r1, _0201A0F8 ; =sub_0201A0C0
-	mov r0, #1
-	bl OS_SetIrqFunction
-	mov r0, #1
-	bl OS_EnableIrqMask
-	pop {r3, pc}
-	.balign 4, 0
-_0201A0F8: .word sub_0201A0C0
-	thumb_func_end sub_0201A0E0
-
-	thumb_func_start Main_SetVBlankIntrCB
-Main_SetVBlankIntrCB: ; 0x0201A0FC
-	ldr r2, _0201A104 ; =gSystem
-	str r0, [r2]
-	str r1, [r2, #4]
-	bx lr
-	.balign 4, 0
-_0201A104: .word gSystem
-	thumb_func_end Main_SetVBlankIntrCB
-
-	thumb_func_start HBlankInterruptDisable
-HBlankInterruptDisable: ; 0x0201A108
-	push {r3, lr}
-	mov r0, #0
-	bl HBlankIntrRegsToggle
-	ldr r0, _0201A11C ; =gSystem
-	mov r1, #0
-	str r1, [r0, #8]
-	str r1, [r0, #0xc]
-	pop {r3, pc}
-	nop
-_0201A11C: .word gSystem
-	thumb_func_end HBlankInterruptDisable
-
-	thumb_func_start Main_SetHBlankIntrCB
-Main_SetHBlankIntrCB: ; 0x0201A120
-	push {r3, lr}
-	cmp r0, #0
-	bne _0201A138
-	mov r0, #0
-	bl HBlankIntrRegsToggle
-	ldr r0, _0201A154 ; =gSystem
-	mov r1, #0
-	str r1, [r0, #8]
-	str r1, [r0, #0xc]
-	mov r0, #1
-	pop {r3, pc}
-_0201A138:
-	ldr r2, _0201A154 ; =gSystem
-	ldr r3, [r2, #8]
-	cmp r3, #0
-	bne _0201A14E
-	str r1, [r2, #0xc]
-	str r0, [r2, #8]
-	mov r0, #1
-	bl HBlankIntrRegsToggle
-	mov r0, #1
-	pop {r3, pc}
-_0201A14E:
-	mov r0, #0
-	pop {r3, pc}
-	nop
-_0201A154: .word gSystem
-	thumb_func_end Main_SetHBlankIntrCB
-
-	thumb_func_start CallHBlankIntrCallback
-CallHBlankIntrCallback: ; 0x0201A158
-	push {r3, lr}
-	ldr r0, _0201A168 ; =gSystem
-	ldr r1, [r0, #8]
-	cmp r1, #0
-	beq _0201A166
-	ldr r0, [r0, #0xc]
-	blx r1
-_0201A166:
-	pop {r3, pc}
-	.balign 4, 0
-_0201A168: .word gSystem
-	thumb_func_end CallHBlankIntrCallback
-
-	thumb_func_start HBlankIntrRegsToggle
-HBlankIntrRegsToggle: ; 0x0201A16C
-	push {r3, lr}
-	ldr r2, _0201A1AC ; =0x04000208
-	ldrh r1, [r2]
-	mov r1, #0
-	strh r1, [r2]
-	cmp r0, #0
-	bne _0201A18A
-	ldr r0, [r2, #8]
-	mov r0, #2
-	bl OS_DisableIrqMask
-	mov r0, #0
-	bl GX_HBlankIntr
-	b _0201A1A0
-_0201A18A:
-	ldr r0, [r2, #8]
-	ldr r1, _0201A1B0 ; =CallHBlankIntrCallback
-	mov r0, #2
-	bl OS_SetIrqFunction
-	mov r0, #2
-	bl OS_EnableIrqMask
-	mov r0, #1
-	bl GX_HBlankIntr
-_0201A1A0:
-	ldr r1, _0201A1AC ; =0x04000208
-	ldrh r0, [r1]
-	mov r0, #1
-	strh r0, [r1]
-	pop {r3, pc}
-	nop
-_0201A1AC: .word 0x04000208
-_0201A1B0: .word CallHBlankIntrCallback
-	thumb_func_end HBlankIntrRegsToggle
-
-	thumb_func_start sub_0201A1B4
-sub_0201A1B4: ; 0x0201A1B4
-	push {r3, lr}
-	sub sp, #0x30
-	add r0, sp, #0x10
-	bl OS_GetLowEntropyData
-	add r0, sp, #0
-	add r1, sp, #0x10
-	mov r2, #0x20
-	bl MATH_CalcMD5
-	mov r3, #0
-	add r1, r3, #0
-	add r2, sp, #0
-_0201A1CE:
-	ldrb r0, [r2]
-	add r1, r1, #1
-	add r2, r2, #1
-	add r3, r3, r0
-	cmp r1, #0x10
-	blo _0201A1CE
-	lsl r0, r3, #0x18
-	lsr r3, r0, #0x18
-	mov r0, #3
-	tst r0, r3
-	beq _0201A1EE
-	mov r0, #3
-_0201A1E6:
-	add r3, r3, #1
-	add r1, r3, #0
-	tst r1, r0
-	bne _0201A1E6
-_0201A1EE:
-	ldr r0, _0201A1FC ; =_020F62A4
-	mov r1, #4
-	mov r2, #0xa1
-	bl InitHeapSystem
-	add sp, #0x30
-	pop {r3, pc}
-	.balign 4, 0
-_0201A1FC: .word _020F62A4
-	thumb_func_end sub_0201A1B4
+	.public sub_0201A08C
+	.public CallHBlankIntrCallback
+	.public sub_0201A1B4
 
 	thumb_func_start InitSystemForTheGame
 InitSystemForTheGame: ; 0x0201A200
@@ -391,8 +179,8 @@ _0201A39C: .word 0x07000400
 _0201A3A0: .word 0x05000400
 	thumb_func_end InitGraphicMemory
 
-	thumb_func_start sub_0201A3A4
-sub_0201A3A4: ; 0x0201A3A4
+	thumb_func_start Sys_AllocAndReadFile
+Sys_AllocAndReadFile: ; 0x0201A3A4
 	push {r4, r5, r6, lr}
 	sub sp, #0x48
 	add r6, r0, #0
@@ -432,7 +220,7 @@ _0201A3F2:
 	add r0, r4, #0
 	add sp, #0x48
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0201A3A4
+	thumb_func_end Sys_AllocAndReadFile
 
 	thumb_func_start sub_0201A3F8
 sub_0201A3F8: ; 0x0201A3F8
@@ -514,7 +302,7 @@ InitKeypadAndTouchpad: ; 0x0201A458
 	ldr r0, _0201A4AC ; =gSystem + 0x60
 	strb r2, [r0, #8]
 	bl TP_Init
-	bl sub_020210A0
+	bl GF_TouchpadInit
 	add r0, sp, #0
 	bl TP_GetUserInfo
 	cmp r0, #1

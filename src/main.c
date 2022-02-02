@@ -108,7 +108,7 @@ void NitroMain(void) {
             sub_0201F880(gSystem.unk24);
             if (!gSystem.unk30) {
                 OS_WaitIrq(TRUE, OS_IE_VBLANK);
-                gSystem.unk2C++;
+                gSystem.vblankCounter++;
             }
         }
         GF_RTC_UpdateOnFrame();
@@ -116,7 +116,7 @@ void NitroMain(void) {
         sub_02026E60();
         sub_0201F880(gSystem.unk24);
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
-        gSystem.unk2C++;
+        gSystem.vblankCounter++;
         gSystem.unk30 = 0;
         sub_0200B594();
         sub_0200FB2C();
@@ -166,7 +166,7 @@ void RegisterMainOverlay(FSOverlayID overlayId, const OVY_MGR_TEMPLATE *template
 void sub_02000F14(void) {
     sub_02036144();
     OS_WaitIrq(TRUE, OS_IE_VBLANK);
-    gSystem.unk2C++;
+    gSystem.vblankCounter++;
     gSystem.unk30 = 0;
     if (gSystem.vBlankIntr != NULL) {
         gSystem.vBlankIntr(gSystem.vBlankIntrArg);
@@ -279,7 +279,7 @@ void InitializeMainRNG(void) {
     RTCTime time;
     u32 seed;
     GF_RTC_CopyDateTime(&date, &time);
-    seed = date.year + date.month * 0x100 * date.day * 0x10000 + time.hour * 0x10000 + (time.minute + time.second) * 0x1000000 + gSystem.unk2C;
+    seed = date.year + date.month * 0x100 * date.day * 0x10000 + time.hour * 0x10000 + (time.minute + time.second) * 0x1000000 + gSystem.vblankCounter;
     SetMTRNGSeed(seed);
     SetLCRNGSeed(seed);
 }
@@ -288,9 +288,9 @@ void HandleDSLidAction(void) {
     PMBackLightSwitch top, bottom;
     PMWakeUpTrigger trigger;
     if (PAD_DetectFold()) {
-        if (!gSystem.unk6B) {
-            sub_0202135C();
-            sub_02005568();
+        if (!gSystem.lidClosedPauseDisabled) {
+            GF_TouchpadPauseOnLidClose();
+            GF_MicPauseOnLidClose();
             if (CTRDG_IsPulledOut() == TRUE) {
                 _02111864 = 1;
             }
@@ -308,10 +308,10 @@ void HandleDSLidAction(void) {
                 }
                 break;
             }
-            sub_02021328();
-            sub_02005584();
+            GF_TouchpadResumeOnLidOpen();
+            GF_MicResumeOnLidOpen();
         } else {
-            sub_0202135C();
+            GF_TouchpadPauseOnLidClose();
             PM_GetBackLight(&top, &bottom);
             if (top == PM_BACKLIGHT_ON) {
                 PM_SetBackLight(PM_LCD_ALL, PM_BACKLIGHT_OFF);
@@ -319,7 +319,7 @@ void HandleDSLidAction(void) {
         }
     } else {
         PM_GetBackLight(&top, &bottom);
-        sub_02021328();
+        GF_TouchpadResumeOnLidOpen();
         if (top == PM_BACKLIGHT_OFF) {
             PM_SetBackLight(PM_LCD_ALL, gBacklightTop);
         }

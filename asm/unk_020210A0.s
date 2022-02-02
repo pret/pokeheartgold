@@ -8,8 +8,8 @@ _021D2198:
 
 	.text
 
-	thumb_func_start sub_020210A0
-sub_020210A0: ; 0x020210A0
+	thumb_func_start GF_TouchpadInit
+GF_TouchpadInit: ; 0x020210A0
 	mov r0, #0
 	ldr r3, _020210B8 ; =_021D2198
 	add r1, r0, #0
@@ -24,7 +24,7 @@ _020210A8:
 	bx lr
 	nop
 _020210B8: .word _021D2198
-	thumb_func_end sub_020210A0
+	thumb_func_end GF_TouchpadInit
 
 	thumb_func_start sub_020210BC
 sub_020210BC: ; 0x020210BC
@@ -84,7 +84,7 @@ _02021112:
 	pop {r4, r5, r6, pc}
 _0202111E:
 	add r0, r4, #0
-	bl sub_02021384
+	bl GF_TouchpadStartAutoSampling
 	cmp r0, #1
 	bne _0202113E
 	mov r0, #0
@@ -141,7 +141,7 @@ _0202117C:
 	mov r0, #0
 	pop {r4, pc}
 _02021188:
-	bl sub_02021384
+	bl GF_TouchpadStartAutoSampling
 	cmp r0, #1
 	bne _020211A4
 	mov r2, #0
@@ -201,8 +201,8 @@ _020211F2:
 	bx lr
 	thumb_func_end sub_020211E0
 
-	thumb_func_start sub_020211F4
-sub_020211F4: ; 0x020211F4
+	thumb_func_start GF_TouchpadStopAutoSampling
+GF_TouchpadStopAutoSampling: ; 0x020211F4
 	push {r4, r5, r6, lr}
 	ldr r0, _02021234 ; =_021D2198 + 0x40
 	mov r5, #0
@@ -238,7 +238,7 @@ _0202122E:
 	pop {r4, r5, r6, pc}
 	nop
 _02021234: .word _021D2198 + 0x40
-	thumb_func_end sub_020211F4
+	thumb_func_end GF_TouchpadStopAutoSampling
 
 	thumb_func_start sub_02021238
 sub_02021238: ; 0x02021238
@@ -259,7 +259,7 @@ sub_02021238: ; 0x02021238
 	mov r0, #1
 	pop {r4, pc}
 _0202125A:
-	bl sub_020211F4
+	bl GF_TouchpadStopAutoSampling
 	add r4, r0, #0
 	cmp r4, #1
 	bne _02021274
@@ -370,8 +370,8 @@ _02021322:
 	.balign 4, 0
 	thumb_func_end sub_020212EC
 
-	thumb_func_start sub_02021328
-sub_02021328: ; 0x02021328
+	thumb_func_start GF_TouchpadResumeOnLidOpen
+GF_TouchpadResumeOnLidOpen: ; 0x02021328
 	push {r3, lr}
 	ldr r0, _02021354 ; =_021D2198 + 0x40
 	ldrh r1, [r0, #0x1a]
@@ -383,7 +383,7 @@ sub_02021328: ; 0x02021328
 	ldr r0, _02021358 ; =_021D2198
 	ldr r0, [r0, #8]
 	lsr r0, r0, #1
-	bl sub_02021384
+	bl GF_TouchpadStartAutoSampling
 	cmp r0, #1
 	beq _0202134A
 	bl GF_AssertFail
@@ -396,10 +396,10 @@ _02021350:
 	nop
 _02021354: .word _021D2198 + 0x40
 _02021358: .word _021D2198
-	thumb_func_end sub_02021328
+	thumb_func_end GF_TouchpadResumeOnLidOpen
 
-	thumb_func_start sub_0202135C
-sub_0202135C: ; 0x0202135C
+	thumb_func_start GF_TouchpadPauseOnLidClose
+GF_TouchpadPauseOnLidClose: ; 0x0202135C
 	push {r3, lr}
 	ldr r0, _02021380 ; =_021D2198 + 0x40
 	ldrh r1, [r0, #0x1a]
@@ -408,7 +408,7 @@ sub_0202135C: ; 0x0202135C
 	ldrh r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0202137E
-	bl sub_020211F4
+	bl GF_TouchpadStopAutoSampling
 	cmp r0, #1
 	beq _02021378
 	bl GF_AssertFail
@@ -420,10 +420,10 @@ _0202137E:
 	pop {r3, pc}
 	.balign 4, 0
 _02021380: .word _021D2198 + 0x40
-	thumb_func_end sub_0202135C
+	thumb_func_end GF_TouchpadPauseOnLidClose
 
-	thumb_func_start sub_02021384
-sub_02021384: ; 0x02021384
+	thumb_func_start GF_TouchpadStartAutoSampling
+GF_TouchpadStartAutoSampling: ; 0x02021384
 	push {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
 	lsl r0, r0, #0x10
@@ -458,7 +458,7 @@ _020213BE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020213C4: .word _021D2198 + 0xC
-	thumb_func_end sub_02021384
+	thumb_func_end GF_TouchpadStartAutoSampling
 
 	thumb_func_start sub_020213C8
 sub_020213C8: ; 0x020213C8

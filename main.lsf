@@ -58,6 +58,7 @@ Static main
 	Object unk_02018380.o
 	Object unk_020183F0.o
 	Object unk_02019014.o
+	Object system.o
 	Object game_init.o
 	Object heap.o
 	Object bg_window.o

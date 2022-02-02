@@ -26200,8 +26200,8 @@
 .public sub_020054F8
 .public sub_02005504
 .public sub_02005518
-.public sub_02005568
-.public sub_02005584
+.public GF_MicPauseOnLidClose
+.public GF_MicResumeOnLidOpen
 .public sub_020055AC
 .public sub_02005600
 .public sub_02005680
@@ -26837,7 +26837,7 @@
 .public sub_0201A0E0
 .public HBlankInterruptDisable
 .public Main_SetHBlankIntrCB
-.public sub_0201A3A4
+.public Sys_AllocAndReadFile
 .public sub_0201A3F8
 .public sub_0201A430
 .public sub_0201A4B0
@@ -26955,14 +26955,14 @@
 .public sub_02020E80
 .public sub_02020EB0
 .public sub_02020F4C
-.public sub_020210A0
+.public GF_TouchpadInit
 .public sub_020210BC
 .public sub_020210D8
 .public sub_02021148
 .public sub_02021238
 .public sub_02021280
-.public sub_02021328
-.public sub_0202135C
+.public GF_TouchpadResumeOnLidOpen
+.public GF_TouchpadPauseOnLidClose
 .public sub_020215A0
 .public sub_020215C0
 .public sub_0202168C

@@ -1592,8 +1592,8 @@ GF_MIC_StopAutoSampling: ; 0x02005550
 _02005564: .word _021D05E8
 	thumb_func_end GF_MIC_StopAutoSampling
 
-	thumb_func_start sub_02005568
-sub_02005568: ; 0x02005568
+	thumb_func_start GF_MicPauseOnLidClose
+GF_MicPauseOnLidClose: ; 0x02005568
 	push {r3, lr}
 	ldr r0, _02005580 ; =_021D05E8
 	ldrb r0, [r0]
@@ -1607,10 +1607,10 @@ _0200557E:
 	pop {r3, pc}
 	.balign 4, 0
 _02005580: .word _021D05E8
-	thumb_func_end sub_02005568
+	thumb_func_end GF_MicPauseOnLidClose
 
-	thumb_func_start sub_02005584
-sub_02005584: ; 0x02005584
+	thumb_func_start GF_MicResumeOnLidOpen
+GF_MicResumeOnLidOpen: ; 0x02005584
 	push {r3, lr}
 	ldr r0, _020055A4 ; =_021D05E8
 	ldrb r0, [r0]
@@ -1627,7 +1627,7 @@ _0200559C:
 	nop
 _020055A4: .word _021D05E8
 _020055A8: .word _021D05F8
-	thumb_func_end sub_02005584
+	thumb_func_end GF_MicResumeOnLidOpen
 
 	thumb_func_start sub_020055AC
 sub_020055AC: ; 0x020055AC

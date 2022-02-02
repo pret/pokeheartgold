@@ -96,5 +96,6 @@ static inline void GX_SetBGCharOffset(GXBGCharOffset offset) {
                            (offset << REG_GX_DISPCNT_BGCHAROFFSET_SHIFT));
 }
 
+s32 GX_HBlankIntr(BOOL enable);
 
 #endif //NITRO_GX_GX_H_

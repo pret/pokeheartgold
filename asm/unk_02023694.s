@@ -2120,7 +2120,7 @@ _020244B8:
 	str r0, [r4, r1]
 	ldr r0, [r5, #8]
 	ldr r1, _02024500 ; =_0210F6E0
-	bl sub_0201A3A4
+	bl Sys_AllocAndReadFile
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r4, r1]

@@ -9,6 +9,10 @@
 #include <nitro/hw/ARM7/io_reg.h>
 #endif
 
+#define REG_OS_IME_IME_SHIFT                               0
+#define REG_OS_IME_IME_SIZE                                1
+#define REG_OS_IME_IME_MASK                                0x0001
+
 #define REG_INTF_OFFSET               (0x180)
 #define REG_INTF_ADDR                 (HW_REG_BASE + REG_INTF_OFFSET)
 #define reg_PXI_INTF                  (*(REGType16v *)REG_INTF_ADDR)
