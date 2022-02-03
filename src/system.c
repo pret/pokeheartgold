@@ -1,13 +1,14 @@
 #include "system.h"
-#include "unk_0201F79C.h"
 #include "unk_02027010.h"
 #include "heap.h"
 #include "math_util.h"
+#include "unk_020210A0.h"
 
 struct System gSystem;
 struct FSCacheEntry gFileCache[128];
 
 void HBlankIntrRegsToggle(BOOL enable);
+void sub_0201A5E8(void);
 
 void sub_0201A08C(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
@@ -132,11 +133,11 @@ void InitSystemForTheGame(void) {
     FS_TryLoadTable(fsTable, table_size);
     gSystem.vBlankIntr = NULL;
     gSystem.hBlankIntr = NULL;
-    gSystem.unk10 = 0;
-    gSystem.unk14 = 0;
-    gSystem.unk74 = 0;
+    gSystem.unk10 = NULL;
+    gSystem.unk14 = NULL;
+    gSystem.unk74 = NULL;
     gSystem.vblankCounter = 0;
-    gSystem.unk69 = 0;
+    gSystem.screensFlipped = 0;
     CARD_SetCacheFlushThreshold(0x500, 0x2400);
     GF_CRC16Init(0);
 }
@@ -195,5 +196,184 @@ void sub_0201A430(void) {
             gFileCache[i].data = NULL;
             gFileCache[i].hash = 0;
         }
+    }
+}
+
+void InitKeypadAndTouchpad(void) {
+    TPCalibrateParam tp_calibrate;
+    gSystem.buttonMode = 0;
+    gSystem.heldKeysRaw = 0;
+    gSystem.newKeysRaw = 0;
+    gSystem.newAndRepeatedKeysRaw = 0;
+    gSystem.heldKeys = 0;
+    gSystem.newKeys = 0;
+    gSystem.newAndRepeatedKeys = 0;
+    gSystem.keyRepeatCounter = 0;
+    gSystem.keyRepeatContinueDelay = 4;
+    gSystem.keyRepeatStartDelay = 8;
+    gSystem.touchX = 0;
+    gSystem.touchY = 0;
+    gSystem.touchNew = 0;
+    gSystem.touchHeld = 0;
+    gSystem.touchpadReadAuto = FALSE;
+    TP_Init();
+    GF_TouchpadInit();
+    if (TP_GetUserInfo(&tp_calibrate) == TRUE) {
+        TP_SetCalibrateParam(&tp_calibrate);
+    }
+}
+
+void sub_0201A4B0(int a0) {
+    gSystem.unk6A = a0;
+}
+
+void sub_0201A4BC(int a0) {
+    gSystem.lidClosedPauseDisabled |= a0;
+}
+
+void sub_0201A4CC(int a0) {
+    gSystem.lidClosedPauseDisabled &= ~a0;
+}
+
+void ReadKeypadAndTouchpad(void) {
+    TPData rawTpData, calibTpData;
+    u32 tpSamplingResult;
+    int raw;
+    if (PAD_DetectFold()) {
+        gSystem.newKeys = 0;
+        gSystem.heldKeys = 0;
+        gSystem.newAndRepeatedKeys = 0;
+        gSystem.touchNew = 0;
+        gSystem.touchHeld = 0;
+        return;
+    }
+    
+    raw = PAD_Read() | gSystem.simulatedInputs;
+    gSystem.simulatedInputs = 0;
+    gSystem.newKeysRaw = raw & (raw ^ gSystem.heldKeysRaw);
+    gSystem.newAndRepeatedKeysRaw = raw & (raw ^ gSystem.heldKeysRaw);
+    if (raw != 0 && gSystem.heldKeysRaw == raw) {
+        gSystem.keyRepeatCounter--;
+        if (gSystem.keyRepeatCounter == 0) {
+            gSystem.newAndRepeatedKeysRaw = raw;
+            gSystem.keyRepeatCounter = gSystem.keyRepeatContinueDelay;
+        }
+    } else {
+        gSystem.keyRepeatCounter = gSystem.keyRepeatStartDelay;
+    }
+    gSystem.heldKeysRaw = raw;
+    gSystem.newKeys = gSystem.newKeysRaw;
+    gSystem.heldKeys = gSystem.heldKeysRaw;
+    gSystem.newAndRepeatedKeys = gSystem.newAndRepeatedKeysRaw;
+    sub_0201A5E8();
+    if (!gSystem.touchpadReadAuto) {
+        while (TP_RequestRawSampling(&rawTpData)) {}
+    } else {
+        TP_GetLatestRawPointInAuto(&rawTpData);
+    }
+    TP_GetCalibratedPoint(&calibTpData, &rawTpData);
+    if (calibTpData.validity == TP_VALIDITY_VALID) {
+        gSystem.touchX = calibTpData.x;
+        gSystem.touchY = calibTpData.y;
+    } else {
+        if (gSystem.touchHeld) {
+            switch (calibTpData.validity) {
+            case TP_VALIDITY_INVALID_X:
+                gSystem.touchY = calibTpData.y;
+                break;
+            case TP_VALIDITY_INVALID_Y:
+                gSystem.touchX = calibTpData.x;
+                break;
+            case TP_VALIDITY_INVALID_XY:
+                break;
+            default:
+                break;
+            }
+        } else {
+            calibTpData.touch = TP_TOUCH_OFF;
+        }
+    }
+    gSystem.touchNew = calibTpData.touch & (calibTpData.touch ^ gSystem.touchHeld);
+    gSystem.touchHeld = calibTpData.touch;
+}
+
+#define BUTTON_COPY(adrs, if_pressed, set_these) { \
+    if (adrs & if_pressed) {                       \
+        adrs |= set_these;                         \
+    }                                              \
+}
+
+#define BUTTON_SWAP(adrs, pat1, pat2) { \
+    int tmp = 0;                        \
+    if (adrs & pat1) {                  \
+        tmp |= pat2;                    \
+    }                                   \
+    if (adrs & pat2) {                  \
+        tmp |= pat1;                    \
+    }                                   \
+    adrs &= ((pat1 | pat2) ^ 0xFFFF);   \
+    adrs |= tmp;                        \
+}
+
+#define BUTTON_HIDE(adrs, pat) { \
+    adrs &= (pat ^ 0xFFFF);      \
+}
+
+void sub_0201A5E8(void) {
+    switch (gSystem.buttonMode) {
+    case BUTTONMODE_NORMAL:
+        break;
+    case BUTTONMODE_STARTEQUALSX:
+        BUTTON_COPY(gSystem.newKeys, PAD_BUTTON_START, PAD_BUTTON_X);
+        BUTTON_COPY(gSystem.heldKeys, PAD_BUTTON_START, PAD_BUTTON_X);
+        BUTTON_COPY(gSystem.newAndRepeatedKeys, PAD_BUTTON_START, PAD_BUTTON_X);
+        break;
+    case BUTTONMODE_SWAPXY:
+        BUTTON_SWAP(gSystem.newKeys, PAD_BUTTON_X, PAD_BUTTON_Y);
+        BUTTON_SWAP(gSystem.heldKeys, PAD_BUTTON_X, PAD_BUTTON_Y);
+        BUTTON_SWAP(gSystem.newAndRepeatedKeys, PAD_BUTTON_X, PAD_BUTTON_Y);
+        break;
+    case BUTTONMODE_LEQUALSA:
+        BUTTON_COPY(gSystem.newKeys, PAD_BUTTON_L, PAD_BUTTON_A);
+        BUTTON_COPY(gSystem.heldKeys, PAD_BUTTON_L, PAD_BUTTON_A);
+        BUTTON_COPY(gSystem.newAndRepeatedKeys, PAD_BUTTON_L, PAD_BUTTON_A);
+        BUTTON_HIDE(gSystem.newKeys, (PAD_BUTTON_L | PAD_BUTTON_R));
+        BUTTON_HIDE(gSystem.heldKeys, (PAD_BUTTON_L | PAD_BUTTON_R));
+        BUTTON_HIDE(gSystem.newAndRepeatedKeys, (PAD_BUTTON_L | PAD_BUTTON_R));
+        break;
+    }
+}
+
+void SetKeyRepeatTimers(int cont, int start) {
+    gSystem.keyRepeatContinueDelay = cont;
+    gSystem.keyRepeatStartDelay = start;
+}
+
+void sub_0201A728(int a0) {
+    gSystem.softResetDisabled |= a0;
+}
+
+void sub_0201A738(int a0) {
+    gSystem.softResetDisabled &= ~a0;
+}
+
+void sub_0201A748(HeapID heapId) {
+    GF_ASSERT(gSystem.unk74 == NULL);
+    gSystem.unk74 = AllocFromHeapAtEnd(heapId, sizeof(u32));
+    *gSystem.unk74 = 0x2F93A1BC;
+}
+
+void sub_0201A774(void) {
+    GF_ASSERT(gSystem.unk74 != NULL);
+    *gSystem.unk74 = 0;
+    FreeToHeap(gSystem.unk74);
+    gSystem.unk74 = NULL;
+}
+
+BOOL sub_0201A79C(void) {
+    if (gSystem.unk74 != NULL && *gSystem.unk74 == 0x2F93A1BC) {
+        return TRUE;
+    } else {
+        return FALSE;
     }
 }

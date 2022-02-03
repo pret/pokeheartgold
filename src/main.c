@@ -95,7 +95,7 @@ void NitroMain(void) {
         HandleDSLidAction();
         ReadKeypadAndTouchpad();
         if ((gSystem.heldKeysRaw & (PAD_BUTTON_START | PAD_BUTTON_SELECT | PAD_BUTTON_L | PAD_BUTTON_R)) == (PAD_BUTTON_START | PAD_BUTTON_SELECT | PAD_BUTTON_L | PAD_BUTTON_R)) {
-            if (!gSystem.unk6C) {
+            if (!gSystem.softResetDisabled) {
                 DoSoftReset(0); // no return
             }
         }
@@ -219,7 +219,7 @@ void sub_02000FD8(u32 a0, int a1) {
     r4 = 0;
     sp4 = sub_0203993C();
     r7 = sub_02039998();
-    gSystem.softResetDisabled = FALSE;
+    gSystem.touchpadReadAuto = FALSE;
     if (a1 == 3) {
         r5 = 3;
     } else {
