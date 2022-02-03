@@ -181,4 +181,6 @@ static inline fx32 FX_Mul32x64cInline(fx32 v32, fx64c v64c) {
 #endif //SDK_CODE_ARM
 #endif //FX_Mul32x64c
 
+void FX_Init(void);
+
 #endif //NITRO_FX_FX_H_

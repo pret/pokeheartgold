@@ -61,6 +61,26 @@ typedef enum {
     (1 << REG_GX_DISPCNT_OBJMAP_SHIFT) | (3 << REG_GX_DISPCNT_EXOBJ_SHIFT)
 } GXOBJVRamModeChar;
 
+typedef enum {
+    GX_POWER_OFF = 0,
+
+    GX_POWER_2D_MAIN = 1 << REG_GX_POWCNT_E2DG_SHIFT,
+    GX_POWER_2D_SUB = 1 << REG_GX_POWCNT_E2DGB_SHIFT,
+
+    GX_POWER_RE = 1 << REG_GX_POWCNT_RE_SHIFT,
+    GX_POWER_GE = 1 << REG_GX_POWCNT_GE_SHIFT,
+
+    GX_POWER_2D = GX_POWER_2D_MAIN | GX_POWER_2D_SUB,
+    GX_POWER_3D = GX_POWER_RE | GX_POWER_GE,
+
+    GX_POWER_ALL = GX_POWER_2D | GX_POWER_3D
+} GXPower;
+
+typedef enum {
+    GX_DISP_SELECT_SUB_MAIN = 0,
+    GX_DISP_SELECT_MAIN_SUB = 1
+} GXDispSelect;
+
 void GX_SetGraphicsMode(GXDispMode dispMode, GXBGMode bgMode, GXBG0As bg0_2d3d);
 void GXS_SetGraphicsMode(GXBGMode bgMode);
 
@@ -96,6 +116,26 @@ static inline void GX_SetBGCharOffset(GXBGCharOffset offset) {
                            (offset << REG_GX_DISPCNT_BGCHAROFFSET_SHIFT));
 }
 
+s32 GX_VBlankIntr(BOOL enable);
 s32 GX_HBlankIntr(BOOL enable);
+void GX_Init(void);
+void GX_DispOff(void);
+void GX_DispOn(void);
+
+static inline void GX_SetPower(GXPower gxbit_power) {
+    reg_GX_POWCNT = (reg_GX_POWCNT & ~GX_POWER_ALL) | gxbit_power;
+}
+
+static inline void GXS_DispOff(void) {
+    reg_GXS_DB_DISPCNT &= ~REG_GXS_DB_DISPCNT_MODE_MASK;
+}
+
+static inline void GXS_DispOn(void) {
+    reg_GXS_DB_DISPCNT |= REG_GXS_DB_DISPCNT_MODE_MASK;
+}
+
+static inline void GX_SetDispSelect(GXDispSelect sel) {
+    reg_GX_POWCNT = (reg_GX_POWCNT & ~REG_GX_POWCNT_DSEL_MASK) | (sel << REG_GX_POWCNT_DSEL_SHIFT);
+}
 
 #endif //NITRO_GX_GX_H_

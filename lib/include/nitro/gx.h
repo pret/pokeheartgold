@@ -6,5 +6,6 @@
 #include <nitro/gx/g2.h>
 #include <nitro/gx/g3.h>
 #include <nitro/gx/gx_load.h>
+#include <nitro/gx/gx_vramcnt.h>
 
 #endif //NITRO_GX_H_

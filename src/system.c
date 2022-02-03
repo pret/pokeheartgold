@@ -1,8 +1,11 @@
 #include "system.h"
 #include "unk_0201F79C.h"
+#include "unk_02027010.h"
 #include "heap.h"
+#include "math_util.h"
 
 struct System gSystem;
+struct FSCacheEntry gFileCache[128];
 
 void HBlankIntrRegsToggle(BOOL enable);
 
@@ -97,4 +100,100 @@ void sub_0201A1B4(void) {
         heap_size_pre++;
     }
     InitHeapSystem(_020F62A4, NELEMS(_020F62A4), 161, heap_size_pre);
+}
+
+void InitSystemForTheGame(void) {
+    u32 table_size;
+    void *fsTable;
+
+    OS_Init();
+    FX_Init();
+    GX_SetPower(GX_POWER_ALL);
+    GX_Init();
+    OS_InitTick();
+    sub_0201A1B4();
+    gSystem.unk18 = sub_0201F834(160, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(160), 4));
+    gSystem.unk1C = sub_0201F834(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(32), 4));
+    gSystem.unk20 = sub_0201F834(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(32), 4));
+    gSystem.unk24 = sub_0201F834(4, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(4), 4));
+    GX_DispOff();
+    GXS_DispOff();
+    GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
+    OS_SetIrqFunction(OS_IE_VBLANK, sub_0201A08C);
+    OS_EnableIrqMask(OS_IE_VBLANK);
+    OS_EnableIrqMask(OS_IE_SPFIFO_RECV);
+    OS_EnableIrq();
+    GX_VBlankIntr(TRUE);
+    FS_Init(1);
+    sub_02027010();
+    table_size = FS_TryLoadTable(NULL, 0);
+    fsTable = OS_AllocFromArenaLo(OS_ARENA_MAIN, table_size, 4);
+    GF_ASSERT(fsTable != NULL);
+    FS_TryLoadTable(fsTable, table_size);
+    gSystem.vBlankIntr = NULL;
+    gSystem.hBlankIntr = NULL;
+    gSystem.unk10 = 0;
+    gSystem.unk14 = 0;
+    gSystem.unk74 = 0;
+    gSystem.vblankCounter = 0;
+    gSystem.unk69 = 0;
+    CARD_SetCacheFlushThreshold(0x500, 0x2400);
+    GF_CRC16Init(0);
+}
+
+void InitGraphicMemory(void) {
+    GX_SetBankForLCDC(GX_VRAM_LCDC_ALL);
+    MI_CpuClearFast((void *)HW_LCDC_VRAM, HW_LCDC_VRAM_SIZE);
+    GX_DisableBankForLCDC();
+    MI_CpuFillFast((void *)HW_OAM, 0xC0, HW_OAM_SIZE);
+    MI_CpuFillFast((void *)HW_DB_OAM, 0xC0, HW_DB_OAM_SIZE);
+    MI_CpuClearFast((void *)HW_PLTT, HW_PLTT_SIZE);
+    MI_CpuClearFast((void *)HW_DB_PLTT, HW_DB_PLTT_SIZE);
+}
+
+void *Sys_AllocAndReadFile(HeapID heapId, const char *path) {
+    FSFile file;
+    void *ret;
+    u32 size;
+
+    FS_InitFile(&file);
+    if (FS_OpenFile(&file, path)) {
+        size = FS_GetLength(&file);
+        ret = AllocFromHeap(heapId, size);
+        if (ret != NULL) {
+            if (FS_ReadFile(&file, ret, size) != size) {
+                FreeToHeapExplicit(heapId, ret);
+                ret = NULL;
+            }
+        }
+        FS_CloseFile(&file);
+    } else {
+        ret = NULL;
+    }
+    return ret;
+}
+
+void sub_0201A3F8(const char * path, void **mem) {
+    FSFile file;
+    u32 size;
+    FS_InitFile(&file);
+    if (FS_OpenFile(&file, path)) {
+        size = FS_GetLength(&file);
+        if (*mem != NULL) {
+            FS_ReadFile(&file, *mem, size);
+        }
+        FS_CloseFile(&file);
+    }
+}
+
+void sub_0201A430(void) {
+    int i;
+
+    for (i = 127; i > -1; i--) {
+        if (gFileCache[i].data != NULL) {
+            FreeToHeap(gFileCache[i].data);
+            gFileCache[i].data = NULL;
+            gFileCache[i].hash = 0;
+        }
+    }
 }

@@ -47,9 +47,8 @@ static inline void OS_SetIrqCheckFlag(OSIrqMask intr) {
     *(vu32 *)HW_INTR_CHECK_BUF |= (u32)intr;
 }
 
-static inline BOOL OS_EnableIrq(void)
-{
-    u16     prep = reg_OS_IME;
+static inline BOOL OS_EnableIrq(void) {
+    u16 prep = reg_OS_IME;
     reg_OS_IME = OS_IME_ENABLE;
     return (BOOL)prep;
 }

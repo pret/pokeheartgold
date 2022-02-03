@@ -3,6 +3,11 @@
 
 typedef void (*GFIntrCB)(void *);
 
+struct FSCacheEntry {
+    void *data;
+    u32 hash;
+};
+
 struct System {
     GFIntrCB vBlankIntr;
     void * vBlankIntrArg;
@@ -41,7 +46,7 @@ struct System {
     u8 lidClosedPauseDisabled;
     u8 unk6C;
     int unk70;
-    u8 filler_74[0x404];
+    int unk74;
 }; // size=0x478
 
 extern struct System gSystem;

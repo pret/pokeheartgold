@@ -1,0 +1,34 @@
+#ifndef NITRO_GX_GX_VRAMCNT_H_
+#define NITRO_GX_GX_VRAMCNT_H_
+
+typedef enum {
+    GX_VRAM_A = OS_VRAM_BANK_ID_A,     // VRAM-A
+    GX_VRAM_B = OS_VRAM_BANK_ID_B,     // VRAM-B
+    GX_VRAM_C = OS_VRAM_BANK_ID_C,     // VRAM-C
+    GX_VRAM_D = OS_VRAM_BANK_ID_D,     // VRAM-D
+    GX_VRAM_E = OS_VRAM_BANK_ID_E,     // VRAM-E
+    GX_VRAM_F = OS_VRAM_BANK_ID_F,     // VRAM-F
+    GX_VRAM_G = OS_VRAM_BANK_ID_G,     // VRAM-G
+    GX_VRAM_H = OS_VRAM_BANK_ID_H,     // VRAM-H
+    GX_VRAM_I = OS_VRAM_BANK_ID_I,     // VRAM-I
+    GX_VRAM_ALL = OS_VRAM_BANK_ID_ALL
+} GXVRam;
+
+typedef enum {
+    GX_VRAM_LCDC_NONE = 0x0000,
+    GX_VRAM_LCDC_A = GX_VRAM_A,
+    GX_VRAM_LCDC_B = GX_VRAM_B,
+    GX_VRAM_LCDC_C = GX_VRAM_C,
+    GX_VRAM_LCDC_D = GX_VRAM_D,
+    GX_VRAM_LCDC_E = GX_VRAM_E,
+    GX_VRAM_LCDC_F = GX_VRAM_F,
+    GX_VRAM_LCDC_G = GX_VRAM_G,
+    GX_VRAM_LCDC_H = GX_VRAM_H,
+    GX_VRAM_LCDC_I = GX_VRAM_I,
+    GX_VRAM_LCDC_ALL = GX_VRAM_ALL
+} GXVRamLCDC;
+
+void GX_SetBankForLCDC(GXVRamLCDC lcdc);
+GXVRamLCDC GX_DisableBankForLCDC(void);
+
+#endif //NITRO_GX_GX_VRAMCNT_H_
