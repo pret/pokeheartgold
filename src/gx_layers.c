@@ -1,8 +1,8 @@
 #include "gx_layers.h"
 #include "system.h"
 
-u32 _021D21FC = 0;
-u32 _021D2200 = 0;
+static u32 sEngineBLayers = 0;
+static u32 sEngineALayers = 0;
 
 void GX_SetBanks(const GF_GXBanksConfig *banks) {
     GX_ResetBankForBG();
@@ -29,50 +29,50 @@ void GX_SetBanks(const GF_GXBanksConfig *banks) {
 }
 
 void GX_DisableEngineALayers(void) {
-    (void)_021D21FC;
-    _021D2200 = 0;
+    (void)sEngineBLayers;
+    sEngineALayers = 0;
 }
 
 void GX_EngineAToggleLayers(u32 layer_mask, GX_LayerToggle enable) {
     if (enable == GX_LAYER_TOGGLE_ON) {
-        if (_021D2200 & layer_mask) {
+        if (sEngineALayers & layer_mask) {
             return;
         }
     } else {
-        if (!(_021D2200 & layer_mask)) {
+        if (!(sEngineALayers & layer_mask)) {
             return;
         }
     }
-    _021D2200 ^= layer_mask;
-    GX_SetVisiblePlane(_021D2200);
+    sEngineALayers ^= layer_mask;
+    GX_SetVisiblePlane(sEngineALayers);
 }
 
 void GX_EngineASetLayers(u32 layers) {
-    _021D2200 = layers;
-    GX_SetVisiblePlane(_021D2200);
+    sEngineALayers = layers;
+    GX_SetVisiblePlane(sEngineALayers);
 }
 
 void GX_DisableEngineBLayers(void) {
-    _021D21FC = 0;
+    sEngineBLayers = 0;
 }
 
 void GX_EngineBToggleLayers(u32 layer_mask, GX_LayerToggle enable) {
     if (enable == GX_LAYER_TOGGLE_ON) {
-        if (_021D21FC & layer_mask) {
+        if (sEngineBLayers & layer_mask) {
             return;
         }
     } else {
-        if (!(_021D21FC & layer_mask)) {
+        if (!(sEngineBLayers & layer_mask)) {
             return;
         }
     }
-    _021D21FC ^= layer_mask;
-    GXS_SetVisiblePlane(_021D21FC);
+    sEngineBLayers ^= layer_mask;
+    GXS_SetVisiblePlane(sEngineBLayers);
 }
 
 void GX_EngineBSetLayers(u32 layers) {
-    _021D21FC = layers;
-    GXS_SetVisiblePlane(_021D21FC);
+    sEngineBLayers = layers;
+    GXS_SetVisiblePlane(sEngineBLayers);
 }
 
 void GX_BothDispOn(void) {
@@ -89,5 +89,5 @@ void GX_SwapDisplay(void) {
 }
 
 u32 GX_EngineAGetLayers(void) {
-    return _021D2200;
+    return sEngineALayers;
 }

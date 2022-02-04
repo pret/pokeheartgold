@@ -46,10 +46,15 @@ typedef struct GXBanksConfig {
     GXVRamTexPltt texpltt;
 } GF_GXBanksConfig;
 
+void GX_SetBanks(const GF_GXBanksConfig *banks);
 void GX_DisableEngineALayers(void);
-void GX_DisableEngineBLayers(void);
-
 void GX_EngineAToggleLayers(u32 layer_mask, GX_LayerToggle enable);
+void GX_EngineASetLayers(u32 layers);
+void GX_DisableEngineBLayers(void);
 void GX_EngineBToggleLayers(u32 layer_mask, GX_LayerToggle enable);
+void GX_EngineBSetLayers(u32 layers);
+void GX_BothDispOn(void);
+void GX_SwapDisplay(void);
+u32 GX_EngineAGetLayers(void);
 
 #endif //POKEHEARTGOLD_GX_LAYERS_H
