@@ -6537,7 +6537,7 @@ _02257258: .word 0x00000283
 ov03_0225725C: ; 0x0225725C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02022D68
+	bl GX_EngineAGetLayers
 	mov r1, #0x9f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6617,7 +6617,7 @@ ov03_022572EC: ; 0x022572EC
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	pop {r4, pc}
 	nop
 _02257328: .word 0x00000279

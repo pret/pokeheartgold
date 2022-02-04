@@ -138,4 +138,12 @@ static inline void GX_SetDispSelect(GXDispSelect sel) {
     reg_GX_POWCNT = (reg_GX_POWCNT & ~REG_GX_POWCNT_DSEL_MASK) | (sel << REG_GX_POWCNT_DSEL_SHIFT);
 }
 
+static inline void GX_SetVisiblePlane(int plane) {
+    reg_GX_DISPCNT = (u32)((reg_GX_DISPCNT & ~REG_GX_DISPCNT_DISPLAY_MASK) | (plane << REG_GX_DISPCNT_DISPLAY_SHIFT));
+}
+
+static inline void GXS_SetVisiblePlane(int plane) {
+    reg_GXS_DB_DISPCNT = (u32)((reg_GXS_DB_DISPCNT & ~REG_GXS_DB_DISPCNT_DISPLAY_MASK) | (plane << REG_GXS_DB_DISPCNT_DISPLAY_SHIFT));
+}
+
 #endif //NITRO_GX_GX_H_

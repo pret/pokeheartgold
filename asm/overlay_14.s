@@ -11393,9 +11393,9 @@ ov14_021EAFAC: ; 0x021EAFAC
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021EB0C8 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -11544,9 +11544,9 @@ ov14_021EB0E4: ; 0x021EB0E4
 	strh r0, [r1]
 	ldr r1, _021EB16C ; =0x04001050
 	strh r0, [r1]
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, [r4, #0x34]
 	bl FreeToHeap
 	mov r0, #0xa

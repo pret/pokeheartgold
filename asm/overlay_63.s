@@ -12,9 +12,9 @@ ov63_0221BE20: ; 0x0221BE20
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r2, _0221BF10 ; =0x04000050
 	mov r1, #0
 	strh r1, [r2]

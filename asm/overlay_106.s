@@ -14,9 +14,9 @@ ov106_021E5900: ; 0x021E5900
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021E5940 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -1965,9 +1965,9 @@ ov106_021E6814: ; 0x021E6814
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021E688C ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]

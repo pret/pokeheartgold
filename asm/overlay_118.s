@@ -121,7 +121,7 @@ _0225F050:
 	add r3, #0xfd
 	bl BgSetPosTextAndCommit
 	mov r0, #0x15
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #1
 	str r0, [r4]
 	b _0225F218

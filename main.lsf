@@ -71,7 +71,7 @@ Static main
 	Object unk_020210A0.o
 	Object unk_020215A0.o
 	Object unk_02022588.o
-	Object GX_layers.o
+	Object gx_layers.o
 	Object unk_02022D74.o
 	Object unk_02023694.o
 	Object unk_02025154.o

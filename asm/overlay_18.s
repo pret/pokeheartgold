@@ -6400,9 +6400,9 @@ ov18_021E8C30: ; 0x021E8C30
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021E8D18 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -6527,9 +6527,9 @@ ov18_021E8D38: ; 0x021E8D38
 	strh r0, [r1]
 	ldr r1, _021E8DA8 ; =0x04001050
 	strh r0, [r1]
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	mov r0, #0
-	bl sub_02022D04
+	bl GX_EngineBSetLayers
 	ldr r0, _021E8DAC ; =0x0000085C
 	ldr r0, [r4, r0]
 	pop {r4, pc}

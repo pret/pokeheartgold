@@ -2089,7 +2089,7 @@ _0225FF2E:
 	mov r1, #0
 	bl SetBgPriority
 	mov r0, #0x15
-	bl sub_02022C9C
+	bl GX_EngineASetLayers
 	add r0, r5, #0
 	add r0, #0x50
 	add r1, r4, #0

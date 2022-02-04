@@ -26992,10 +26992,10 @@
 .public sub_020227AC
 .public sub_020227D4
 .public sub_02022808
-.public sub_02022C9C
+.public GX_EngineASetLayers
 .public GX_EngineBToggleLayers
-.public sub_02022D04
-.public sub_02022D68
+.public GX_EngineBSetLayers
+.public GX_EngineAGetLayers
 .public sub_02023068
 .public sub_020230F8
 .public sub_02023114
