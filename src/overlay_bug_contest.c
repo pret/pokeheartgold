@@ -211,10 +211,10 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
     // state of the Pokemon you used intact.
     pokemon = AllocMonZeroed(bugContest->heapId);
     CopyPokemonToPokemon(GetPartyMonByIndex(bugContest->party_cur, 0), pokemon);
-    sub_02074670(bugContest->party_cur, &sub, 0);
+    Party_GetUnkSubSlot(bugContest->party_cur, &sub, 0);
     Party_copy(bugContest->party_bak, bugContest->party_cur);
-    sub_02074740(bugContest->party_cur, bugContest->lead_mon_idx, pokemon);
-    sub_020746BC(bugContest->party_cur, &sub, bugContest->lead_mon_idx);
+    Party_SafeCopyMonToSlot_ResetUnkSub(bugContest->party_cur, bugContest->lead_mon_idx, pokemon);
+    Party_SetUnkSubSlot(bugContest->party_cur, &sub, bugContest->lead_mon_idx);
     FreeToHeap(pokemon);
     FreeToHeap(bugContest->party_bak);
     bugContest->party_bak = NULL;

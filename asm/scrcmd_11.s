@@ -674,7 +674,7 @@ _0204C2B6:
 	ldr r1, [sp, #0x10]
 	add r0, r4, #0
 	mov r2, #4
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
@@ -706,7 +706,7 @@ _0204C2FE:
 	beq _0204C31C
 	ldr r0, [r7, #0xc]
 	add r1, r4, #0
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 _0204C31C:
 	ldr r0, [sp, #8]
 	cmp r0, #0

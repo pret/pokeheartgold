@@ -362,9 +362,9 @@ extern BOOL ScrCmd_PokeathlonPartyCount(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_359(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_RetrieveDayCareMon(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_362(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_363(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_364(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GiveLoanMon(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_CheckReturnLoanMon(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_TakeMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ResetDayCareEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_GiveDayCareEgg(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferDayCareWithdrawCost(SCRIPTCONTEXT *ctx);
@@ -426,7 +426,7 @@ extern BOOL ScrCmd_422(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckJohtoDexComplete(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CheckNationalDexComplete(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_425(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_426(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_KenyaCheck(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_427(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_428(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CountFossils(SCRIPTCONTEXT *ctx);
@@ -1217,9 +1217,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_359,
     ScrCmd_SubMoneyVar,
     ScrCmd_RetrieveDayCareMon,
-    ScrCmd_362,
-    ScrCmd_363,
-    ScrCmd_364,
+    ScrCmd_GiveLoanMon,
+    ScrCmd_CheckReturnLoanMon,
+    ScrCmd_TakeMon,
     ScrCmd_ResetDayCareEgg,
     ScrCmd_GiveDayCareEgg,
     ScrCmd_BufferDayCareWithdrawCost,
@@ -1281,7 +1281,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CheckJohtoDexComplete,
     ScrCmd_CheckNationalDexComplete,
     ScrCmd_425,
-    ScrCmd_426,
+    ScrCmd_KenyaCheck,
     ScrCmd_427,
     ScrCmd_428,
     ScrCmd_CountFossils,

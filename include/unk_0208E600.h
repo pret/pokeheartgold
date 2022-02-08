@@ -3,6 +3,6 @@
 
 #include "pokemon_types_def.h"
 
-void sub_0208F260(POKEMON *pokemon, PLAYERPROFILE *a1, int strat, int mapsec, HeapID heapId);
+void MonSetTrainerMemo(POKEMON *pokemon, PLAYERPROFILE *a1, int strat, int mapsec, HeapID heapId);
 
 #endif //POKEHEARTGOLD_UNK_0208E600_H

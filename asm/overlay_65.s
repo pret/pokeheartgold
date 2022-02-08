@@ -6806,7 +6806,7 @@ _0221F664:
 	add r0, r4, #0
 	mov r2, #5
 	mov r3, #0
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	add r0, r4, #0
 	bl Pokemon_RemoveCapsule
 	ldr r0, [sp, #0xc]
@@ -6833,7 +6833,7 @@ _0221F664:
 _0221F6BC:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	add r0, r7, #0
 	add r1, r6, #0
 	bl GetPartyMonByIndex
@@ -6848,10 +6848,10 @@ _0221F6BC:
 	bl CopyPokemonToPokemon
 	add r0, r7, #0
 	add r1, r6, #0
-	bl sub_02074708
+	bl Party_ResetUnkSubSlot
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
-	bl sub_02074708
+	bl Party_ResetUnkSubSlot
 	ldr r0, [r5, #0x1c]
 	mov r1, #0x14
 	bl GameStats_Inc

@@ -59,18 +59,18 @@ _0098:
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _021F
-	scrcmd_426 VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 0
+	kenya_check VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 0
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0238
-	scrcmd_426 VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 1
+	kenya_check VAR_SPECIAL_RESULT, VAR_TEMP_x4000, 1
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0251
-	scrcmd_363 7, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	check_return_loan_mon 7, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _026A
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0295
-	scrcmd_364 VAR_TEMP_x4000
+	return_loan_mon VAR_TEMP_x4000
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

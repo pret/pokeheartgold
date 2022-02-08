@@ -902,7 +902,7 @@ _0208B8AC:
 	ldr r0, [r2]
 	ldrb r2, [r2, #0x14]
 	add r1, sp, #0x14
-	bl sub_02074670
+	bl Party_GetUnkSubSlot
 _0208B8E8:
 	add r0, sp, #0xc
 	add r1, r4, #0

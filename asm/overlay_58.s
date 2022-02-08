@@ -183,7 +183,7 @@ _02237A0A:
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
 	add r1, sp, #0xc
-	bl sub_02074670
+	bl Party_GetUnkSubSlot
 	add r0, sp, #0xc
 	ldrh r0, [r0, #0xa]
 	lsl r0, r0, #0x10
@@ -307,7 +307,7 @@ _02237B10:
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
 	add r1, sp, #0xc
-	bl sub_020746BC
+	bl Party_SetUnkSubSlot
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	bl GetPartyMonByIndex

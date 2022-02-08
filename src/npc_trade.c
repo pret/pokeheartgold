@@ -19,10 +19,10 @@ struct _NPC_TRADE_WORK {
     HeapID heapId;
 };
 
-static STRING *ov23_02259C1C(HeapID heapId, s32 msgno);
-static void ov23_02259C40(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
+static STRING *_GetNpcTradeName(HeapID heapId, s32 msgno);
+static void _CreateTradeMon(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
 
-NPC_TRADE_WORK *ov23_022598C0(HeapID heapId, u32 tradeno) {
+NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
     NPC_TRADE_WORK *ret;
     u16 strbuf[128];
 
@@ -37,7 +37,7 @@ NPC_TRADE_WORK *ov23_022598C0(HeapID heapId, u32 tradeno) {
     PlayerProfile_init(ret->profile);
     {
         STRING *name;
-        name = ov23_02259C1C(heapId, tradeno + TRADE_MAX);
+        name = _GetNpcTradeName(heapId, tradeno + TRADE_MAX);
         CopyStringToU16Array(name, strbuf, 128);
         String_dtor(name);
     }
@@ -46,14 +46,14 @@ NPC_TRADE_WORK *ov23_022598C0(HeapID heapId, u32 tradeno) {
     return ret;
 }
 
-void ov23_02259944(NPC_TRADE_WORK *work) {
+void NPCTrade_DeleteWork(NPC_TRADE_WORK *work) {
     FreeToHeap(work->trade_dat);
     FreeToHeap(work->pokemon);
     FreeToHeap(work->profile);
     FreeToHeap(work);
 }
 
-void ov23_02259964(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno) {
+void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno) {
     PARTY *party;
     POKEMON *pokemon;
     NPC_TRADE *trade_dat;
@@ -64,13 +64,13 @@ void ov23_02259964(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno) {
 
     pokemon = AllocMonZeroed(11);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, 11, TRUE);
-    ov23_02259C40(pokemon, trade_dat, level, tradeno, mapno, 7, 11);
-    sub_0202ECC0(fsys->savedata, pokemon);
+    _CreateTradeMon(pokemon, trade_dat, level, tradeno, mapno, 7, 11);
+    UpdatePokedexWithReceivedSpecies(fsys->savedata, pokemon);
     party = SavArray_PlayerParty_get(fsys->savedata);
     AddMonToParty(party, pokemon);
     if (tradeno == 7) {
         givenMon = GetPartyMonByIndex(party, GetPartyCount(party) - 1);
-        name = ov23_02259C1C(11, tradeno + TRADE_MAX);
+        name = _GetNpcTradeName(11, tradeno + TRADE_MAX);
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(pokemon, mailno, trade_dat->gender, name, trade_dat->otId);
         SetMonData(givenMon, MON_DATA_MAIL_STRUCT, mail);
@@ -81,7 +81,7 @@ void ov23_02259964(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno) {
     FreeToHeap(pokemon);
 }
 
-MAIL *ov23_02259A24(void) {
+MAIL *NPCTrade_MakeKenyaMail(void) {
     PARTY *party;
     POKEMON *pokemon;
     NPC_TRADE *trade_dat;
@@ -92,8 +92,8 @@ MAIL *ov23_02259A24(void) {
 
     pokemon = AllocMonZeroed(11);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, 11, TRUE);
-    ov23_02259C40(pokemon, trade_dat, 20, 7, MAP_R35R0101, 7, 11);
-    name = ov23_02259C1C(11, 7 + TRADE_MAX);
+    _CreateTradeMon(pokemon, trade_dat, 20, 7, MAP_R35R0101, 7, 11);
+    name = _GetNpcTradeName(11, 7 + TRADE_MAX);
     mailno = ItemToMailId(trade_dat->heldItem);
     mail = CreateKenyaMail(pokemon, mailno, trade_dat->gender, name, trade_dat->otId);
     String_dtor(name);
@@ -102,7 +102,7 @@ MAIL *ov23_02259A24(void) {
     return mail;
 }
 
-int ov23_02259AA0(FieldSystem *fsys, u8 tradeno, u8 idx) {
+int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx) {
     PARTY *party;
     POKEMON *pokemon, *cur_poke;
     u8 capsule;
@@ -140,29 +140,29 @@ int ov23_02259AA0(FieldSystem *fsys, u8 tradeno, u8 idx) {
     return 0;
 }
 
-int ov23_02259B50(NPC_TRADE_WORK *work) {
+int NPCTradeWork_GetOfferedSpecies(NPC_TRADE_WORK *work) {
     return work->trade_dat->give_species;
 }
 
-int ov23_02259B58(NPC_TRADE_WORK *work) {
+int NPCTradeWork_GetRequestedSpecies(NPC_TRADE_WORK *work) {
     return work->trade_dat->ask_species;
 }
 
-int ov23_02259B60(NPC_TRADE_WORK *work) {
+int NPCTradeWork_GetUnusedFlag(NPC_TRADE_WORK *work) {
     return work->trade_dat->unk_50;
 }
 
-void ov23_02259B68(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot) {
-    sub_02074740(SavArray_PlayerParty_get(fsys->savedata), slot, work->pokemon);
-    sub_0202ECC0(fsys->savedata, work->pokemon);
+void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot) {
+    Party_SafeCopyMonToSlot_ResetUnkSub(SavArray_PlayerParty_get(fsys->savedata), slot, work->pokemon);
+    UpdatePokedexWithReceivedSpecies(fsys->savedata, work->pokemon);
 }
 
-void ov23_02259B88(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, POKEMON *my_mon_buf, POKEMON *trade_mon_buf) {
+void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, POKEMON *my_mon_buf, POKEMON *trade_mon_buf) {
     POKEMON *my_poke;
     u32 time_of_day;
 
     my_poke = GetPartyMonByIndex(SavArray_PlayerParty_get(fsys->savedata), slot);
-    ov23_02259C40(work->pokemon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fsys->location->mapId, 1, work->heapId);
+    _CreateTradeMon(work->pokemon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fsys->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->pokemon, trade_mon_buf);
     anim_work->my_boxmon = Mon_GetBoxMon(my_mon_buf);
@@ -180,7 +180,7 @@ void ov23_02259B88(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM
     }
 }
 
-static STRING *ov23_02259C1C(HeapID heapId, s32 msgno) {
+static STRING *_GetNpcTradeName(HeapID heapId, s32 msgno) {
     STRING *ret;
     MSGDATA *msgData;
 
@@ -190,7 +190,7 @@ static STRING *ov23_02259C1C(HeapID heapId, s32 msgno) {
     return ret;
 }
 
-static void ov23_02259C40(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
+static void _CreateTradeMon(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
     STRING *name;
     u8 nickname_flag;
     u32 mapsec;
@@ -199,7 +199,7 @@ static void ov23_02259C40(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32
     CreateMon(pokemon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
 
     heapId_2 = heapId;
-    name = ov23_02259C1C(heapId_2, tradeno);
+    name = _GetNpcTradeName(heapId_2, tradeno);
     SetMonData(pokemon, MON_DATA_NICKNAME_3, name);
     String_dtor(name);
 
@@ -221,7 +221,7 @@ static void ov23_02259C40(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32
 
     SetMonData(pokemon, MON_DATA_HELD_ITEM, &trade_dat->heldItem);
 
-    name = ov23_02259C1C(heapId_2, TRADE_MAX + tradeno);
+    name = _GetNpcTradeName(heapId_2, TRADE_MAX + tradeno);
     SetMonData(pokemon, MON_DATA_OT_NAME_2, name);
     String_dtor(name);
 
@@ -229,7 +229,7 @@ static void ov23_02259C40(POKEMON *pokemon, NPC_TRADE *trade_dat, u32 level, u32
     SetMonData(pokemon, MON_DATA_GAME_LANGUAGE, &trade_dat->language);
 
     mapsec = MapHeader_GetMapSec(mapno);
-    sub_0208F260(pokemon, NULL, met_level_strat, mapsec, heapId);
+    MonSetTrainerMemo(pokemon, NULL, met_level_strat, mapsec, heapId);
 
     CalcMonLevelAndStats(pokemon);
     GF_ASSERT(!MonIsShiny(pokemon));

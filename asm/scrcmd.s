@@ -412,9 +412,9 @@ gScriptCmdTable:
 	.word ScrCmd_359                                    ; 359
 	.word ScrCmd_SubMoneyVar                            ; 360
 	.word ScrCmd_RetrieveDayCareMon                                    ; 361
-	.word ScrCmd_362                                    ; 362
-	.word ScrCmd_363                                    ; 363
-	.word ScrCmd_364                                    ; 364
+	.word ScrCmd_GiveLoanMon                                    ; 362
+	.word ScrCmd_CheckReturnLoanMon                                    ; 363
+	.word ScrCmd_TakeMon                                    ; 364
 	.word ScrCmd_ResetDayCareEgg                                    ; 365
 	.word ScrCmd_GiveDayCareEgg                                    ; 366
 	.word ScrCmd_BufferDayCareWithdrawCost                                    ; 367
@@ -476,7 +476,7 @@ gScriptCmdTable:
 	.word ScrCmd_CheckJohtoDexComplete                                    ; 423
 	.word ScrCmd_CheckNationalDexComplete                                    ; 424
 	.word ScrCmd_425                                    ; 425
-	.word ScrCmd_426                                    ; 426
+	.word ScrCmd_KenyaCheck                                    ; 426
 	.word ScrCmd_427                                    ; 427
 	.word ScrCmd_428                                    ; 428
 	.word ScrCmd_CountFossils                           ; 429
@@ -10540,7 +10540,7 @@ ScrCmd_LoadNPCTrade: ; 0x0204527C
 	bl HandleLoadOverlay
 	mov r0, #0xb
 	add r1, r5, #0
-	bl ov23_022598C0
+	bl NPCTrade_AllocWork
 	str r0, [r4]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -10565,7 +10565,7 @@ ScrCmd_471: ; 0x020452B0
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov23_02259B50
+	bl NPCTradeWork_GetOfferedSpecies
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -10589,7 +10589,7 @@ ScrCmd_NPCTradeGetReqSpecies: ; 0x020452E0
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov23_02259B58
+	bl NPCTradeWork_GetRequestedSpecies
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -10613,7 +10613,7 @@ ScrCmd_612: ; 0x02045310
 	bl GetVarPointer
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov23_02259B60
+	bl NPCTradeWork_GetUnusedFlag
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -10654,7 +10654,7 @@ ScrCmd_NPCTradeEnd: ; 0x02045374
 	mov r1, #0x15
 	bl FieldSysGetAttrAddr
 	ldr r0, [r0]
-	bl ov23_02259944
+	bl NPCTrade_DeleteWork
 	ldr r0, _02045390 ; =SDK_OVERLAY_OVY_23_ID
 	bl UnloadOverlayByID
 	mov r0, #0
@@ -10663,8 +10663,8 @@ ScrCmd_NPCTradeEnd: ; 0x02045374
 _02045390: .word SDK_OVERLAY_OVY_23_ID
 	thumb_func_end ScrCmd_NPCTradeEnd
 
-	thumb_func_start ScrCmd_362
-ScrCmd_362: ; 0x02045394
+	thumb_func_start ScrCmd_GiveLoanMon
+ScrCmd_GiveLoanMon: ; 0x02045394
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r1, [r5, #8]
@@ -10684,17 +10684,17 @@ ScrCmd_362: ; 0x02045394
 	add r1, r6, #0
 	add r2, r4, #0
 	add r3, r7, #0
-	bl ov23_02259964
+	bl NPCTrade_MakeAndGiveLoanMon
 	ldr r0, _020453CC ; =SDK_OVERLAY_OVY_23_ID
 	bl UnloadOverlayByID
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _020453CC: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_362
+	thumb_func_end ScrCmd_GiveLoanMon
 
-	thumb_func_start ScrCmd_363
-ScrCmd_363: ; 0x020453D0
+	thumb_func_start ScrCmd_CheckReturnLoanMon
+ScrCmd_CheckReturnLoanMon: ; 0x020453D0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -10724,7 +10724,7 @@ ScrCmd_363: ; 0x020453D0
 	ldr r0, [r5]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
-	bl ov23_02259AA0
+	bl NPCTrade_CanGiveUpLoanMon
 	strh r0, [r7]
 	ldr r0, _02045424 ; =SDK_OVERLAY_OVY_23_ID
 	bl UnloadOverlayByID
@@ -10732,7 +10732,7 @@ ScrCmd_363: ; 0x020453D0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02045424: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_363
+	thumb_func_end ScrCmd_CheckReturnLoanMon
 
 	thumb_func_start ScrCmd_475
 ScrCmd_475: ; 0x02045428

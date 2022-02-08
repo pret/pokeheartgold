@@ -34,7 +34,7 @@ BOOL GiveMon(HeapID heapId, SAVEDATA *saveData, int species, int level, int form
         }
         result = AddMonToParty(party, pokemon);
         if (result) {
-            sub_0202ECC0(saveData, pokemon);
+            UpdatePokedexWithReceivedSpecies(saveData, pokemon);
         }
         FreeToHeap(pokemon);
     }

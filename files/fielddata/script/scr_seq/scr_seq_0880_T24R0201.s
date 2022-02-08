@@ -43,7 +43,7 @@ _0063:
 	goto _003A
 
 _007D:
-	scrcmd_362 6, 20, 75
+	give_loan_mon 6, 20, 75
 	npc_msg msg_0576_T24R0201_00001
 	buffer_players_name 0
 	npc_msg msg_0576_T24R0201_00002
@@ -75,7 +75,7 @@ _00AD:
 	goto _01AA
 
 _00F2:
-	scrcmd_363 6, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	check_return_loan_mon 6, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	call_if_ne _019A
 	nop_var_490 VAR_SPECIAL_RESULT
@@ -110,7 +110,7 @@ _0162:
 	goto _01B5
 
 _0181:
-	scrcmd_364 VAR_TEMP_x4000
+	return_loan_mon VAR_TEMP_x4000
 	call _019A
 	npc_msg msg_0576_T24R0201_00007
 	setflag FLAG_UNK_0C1

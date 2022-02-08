@@ -79,7 +79,7 @@ _0209112E:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #6
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	add r0, r5, #0
 	mov r1, #0xb3
 	mov r2, #0
@@ -90,7 +90,7 @@ _0209112E:
 	add r0, r6, #0
 	bl ScriptEnvironment_GetSav2Ptr
 	ldr r1, [r4, #0xc]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	ldr r0, [r4, #4]
 	cmp r0, #1
 	bne _02091194

@@ -1541,8 +1541,8 @@ _0208F25A:
 	.balign 4, 0
 	thumb_func_end sub_0208F070
 
-	thumb_func_start sub_0208F260
-sub_0208F260: ; 0x0208F260
+	thumb_func_start MonSetTrainerMemo
+MonSetTrainerMemo: ; 0x0208F260
 	push {r3, r4, lr}
 	sub sp, #4
 	ldr r4, [sp, #0x10]
@@ -1550,7 +1550,7 @@ sub_0208F260: ; 0x0208F260
 	bl sub_0208F270
 	add sp, #4
 	pop {r3, r4, pc}
-	thumb_func_end sub_0208F260
+	thumb_func_end MonSetTrainerMemo
 
 	thumb_func_start sub_0208F270
 sub_0208F270: ; 0x0208F270

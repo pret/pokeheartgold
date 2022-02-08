@@ -1261,7 +1261,7 @@ _0207FE6A:
 	ldrb r1, [r4, r1]
 	ldrb r2, [r4, r2]
 	ldr r0, [r0]
-	bl sub_020747BC
+	bl Party_SwapSlots
 	ldr r0, _0207FEE0 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r5, r0]

@@ -2048,21 +2048,21 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_362 arg0, arg1, arg2
+	.macro give_loan_mon arg0, arg1, arg2
 	.short 362
 	.byte \arg0
 	.byte \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_363 arg0, arg1, arg2
+	.macro check_return_loan_mon arg0, arg1, arg2
 	.short 363
 	.byte \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_364 arg0
+	.macro return_loan_mon arg0
 	.short 364
 	.short \arg0
 	.endm
@@ -2420,7 +2420,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_426 arg0, arg1, arg2
+	.macro kenya_check arg0, arg1, arg2
 	.short 426
 	.short \arg0
 	.short \arg1

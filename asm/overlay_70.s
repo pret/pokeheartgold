@@ -18375,7 +18375,7 @@ ov70_02240A7C: ; 0x02240A7C
 	ldr r0, [r5]
 	add r1, r4, #0
 	ldr r0, [r0, #0x20]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	mov r0, #0x12
 	str r0, [sp, #0x20]
 	ldr r0, [r5]
@@ -18504,7 +18504,7 @@ ov70_02240B9C: ; 0x02240B9C
 	ldr r0, [r5]
 	add r4, r1, #0
 	ldr r0, [r0, #0x20]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	mov r0, #0x12
 	str r0, [sp, #0x20]
 	ldr r0, [r5]

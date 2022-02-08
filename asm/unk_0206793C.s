@@ -67,11 +67,11 @@ _02067990:
 	ldr r1, [r4]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
-	bl ov23_02259B88
+	bl NPCTrade_CreateTradeAnim
 	ldr r1, [r4]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
-	bl ov23_02259B68
+	bl NPCTrade_ReceiveMonToSlot
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]

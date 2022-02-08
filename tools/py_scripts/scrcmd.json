@@ -2201,7 +2201,7 @@
       ]
     },
     {
-      "name": "scrcmd_362",
+      "name": "give_loan_mon",
       "args": [
         1,
         1,
@@ -2209,7 +2209,7 @@
       ]
     },
     {
-      "name": "scrcmd_363",
+      "name": "check_return_loan_mon",
       "args": [
         1,
         "var",
@@ -2217,7 +2217,7 @@
       ]
     },
     {
-      "name": "scrcmd_364",
+      "name": "return_loan_mon",
       "args": [
         "var"
       ]
@@ -2631,7 +2631,7 @@
       ]
     },
     {
-      "name": "scrcmd_426",
+      "name": "kenya_check",
       "args": [
         "var",
         "var",

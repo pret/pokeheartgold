@@ -456,7 +456,7 @@ _0209613C:
 	ldr r0, [sp, #0x1c]
 	add r1, r4, r5
 	ldr r0, [r0, #0xc]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 _02096172:
 	ldr r0, [sp, #0x10]
 	mov r1, #0

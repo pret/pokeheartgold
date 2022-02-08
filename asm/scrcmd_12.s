@@ -158,7 +158,7 @@ _0204C960:
 	add r0, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	add r1, r0, #0
@@ -173,7 +173,7 @@ _0204C990:
 	ldr r0, [r0]
 	add r1, r4, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	add r5, r5, #1
 	cmp r5, #6
 	blt _0204C960

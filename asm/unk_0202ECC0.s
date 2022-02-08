@@ -6,8 +6,8 @@
 
 	.text
 
-	thumb_func_start sub_0202ECC0
-sub_0202ECC0: ; 0x0202ECC0
+	thumb_func_start UpdatePokedexWithReceivedSpecies
+UpdatePokedexWithReceivedSpecies: ; 0x0202ECC0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r5, r0, #0
@@ -45,4 +45,4 @@ _0202ED12:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0202ED14: .word SPECIES_JIRACHI
-	thumb_func_end sub_0202ECC0
+	thumb_func_end UpdatePokedexWithReceivedSpecies

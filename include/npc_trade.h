@@ -33,15 +33,15 @@ typedef struct NPC_TRADE {
 
 typedef struct _NPC_TRADE_WORK NPC_TRADE_WORK;
 
-NPC_TRADE_WORK *ov23_022598C0(HeapID heapId, u32 tradeno);
-void ov23_02259944(NPC_TRADE_WORK *work);
-void ov23_02259964(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno);
-MAIL *ov23_02259A24(void);
-int ov23_02259AA0(FieldSystem *fsys, u8 tradeno, u8 idx);
-int ov23_02259B50(NPC_TRADE_WORK *work);
-int ov23_02259B58(NPC_TRADE_WORK *work);
-int ov23_02259B60(NPC_TRADE_WORK *work);
-void ov23_02259B68(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot);
-void ov23_02259B88(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, POKEMON *my_mon_buf, POKEMON *trade_mon_buf);
+NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno);
+void NPCTrade_DeleteWork(NPC_TRADE_WORK *work);
+void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno);
+MAIL *NPCTrade_MakeKenyaMail(void);
+int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx);
+int NPCTradeWork_GetOfferedSpecies(NPC_TRADE_WORK *work);
+int NPCTradeWork_GetRequestedSpecies(NPC_TRADE_WORK *work);
+int NPCTradeWork_GetUnusedFlag(NPC_TRADE_WORK *work);
+void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot);
+void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, POKEMON *my_mon_buf, POKEMON *trade_mon_buf);
 
 #endif //POKEHEARTGOLD_NPC_TRADE_H

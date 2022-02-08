@@ -1543,7 +1543,7 @@ _0206C992:
 	ldr r3, [sp, #0x44]
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	add sp, #0x20
 	pop {r4, r5, r6}
 	pop {r3}
@@ -1701,7 +1701,7 @@ GiveEggToPlayer: ; 0x0206CA70
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #3
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	cmp r6, #SPECIES_PICHU
 	bne _0206CB0C
 	add r0, r4, #0

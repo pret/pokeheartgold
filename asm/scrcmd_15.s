@@ -93,8 +93,8 @@ ScrCmd_GiveMon: ; 0x0204D088
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_GiveMon
 
-	thumb_func_start ScrCmd_364
-ScrCmd_364: ; 0x0204D154
+	thumb_func_start ScrCmd_TakeMon
+ScrCmd_TakeMon: ; 0x0204D154
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -113,7 +113,7 @@ ScrCmd_364: ; 0x0204D154
 	bl RemoveMonFromParty
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_364
+	thumb_func_end ScrCmd_TakeMon
 
 	thumb_func_start ScrCmd_GetPartyMonSpecies
 ScrCmd_GetPartyMonSpecies: ; 0x0204D180
@@ -1526,8 +1526,8 @@ ScrCmd_398: ; 0x0204DCD4
 	.balign 4, 0
 	thumb_func_end ScrCmd_398
 
-	thumb_func_start ScrCmd_426
-ScrCmd_426: ; 0x0204DD34
+	thumb_func_start ScrCmd_KenyaCheck
+ScrCmd_KenyaCheck: ; 0x0204DD34
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r1, r5, #0
@@ -1579,7 +1579,7 @@ _0204DDA0:
 	ldr r0, _0204DDE0 ; =SDK_OVERLAY_OVY_23_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	bl ov23_02259A24
+	bl NPCTrade_MakeKenyaMail
 	add r6, r0, #0
 	mov r0, #0xb
 	bl Mail_new
@@ -1602,7 +1602,7 @@ _0204DDA0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204DDE0: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_426
+	thumb_func_end ScrCmd_KenyaCheck
 
 	thumb_func_start ScrCmd_781
 ScrCmd_781: ; 0x0204DDE4
@@ -1629,7 +1629,7 @@ ScrCmd_781: ; 0x0204DDE4
 	add r0, r4, #0
 	mov r1, #2
 	bl HandleLoadOverlay
-	bl ov23_02259A24
+	bl NPCTrade_MakeKenyaMail
 	add r7, r0, #0
 	mov r0, #0xb
 	bl Mail_new

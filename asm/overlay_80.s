@@ -574,7 +574,7 @@ ov80_0222A334: ; 0x0222A334
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0
-	bl sub_0208F260
+	bl MonSetTrainerMemo
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xc1
@@ -3817,12 +3817,12 @@ _0222BA2E:
 	mov r1, #0
 	ldr r0, [r0, #0x28]
 	mov r2, #2
-	bl sub_020747BC
+	bl Party_SwapSlots
 	ldr r0, [sp, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x28]
 	mov r2, #3
-	bl sub_020747BC
+	bl Party_SwapSlots
 _0222BA54:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -4299,12 +4299,12 @@ _0222BDA6:
 	mov r1, #0
 	ldr r0, [r0, #0x70]
 	mov r2, #2
-	bl sub_020747BC
+	bl Party_SwapSlots
 	ldr r0, [sp, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x70]
 	mov r2, #3
-	bl sub_020747BC
+	bl Party_SwapSlots
 _0222BDCC:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -14273,7 +14273,7 @@ ov80_022309F8: ; 0x022309F8
 	ldr r0, [r4, r1]
 	add r1, #8
 	ldrh r1, [r4, r1]
-	bl sub_02074740
+	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	ldr r1, _02230A58 ; =0x000004DE
 	ldrh r0, [r4, r1]
 	lsl r0, r0, #1
@@ -16692,14 +16692,14 @@ ov80_02231D34: ; 0x02231D34
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #0
-	bl sub_02074740
+	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	ldr r0, [r5, #4]
 	mov r1, #1
 	bl GetPartyMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl sub_02074740
+	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	ldrb r0, [r4, #0x10]
 	bl ov80_02237D8C
 	cmp r0, #0
@@ -16710,7 +16710,7 @@ ov80_02231D34: ; 0x02231D34
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #2
-	bl sub_02074740
+	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	b _02231DA8
 _02231D84:
 	ldr r0, [r5, #0xc]
@@ -16719,14 +16719,14 @@ _02231D84:
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #2
-	bl sub_02074740
+	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	bl GetPartyMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #3
-	bl sub_02074740
+	bl Party_SafeCopyMonToSlot_ResetUnkSub
 _02231DA8:
 	ldr r0, [r5, #0x14]
 	bl IsBattleResultWin

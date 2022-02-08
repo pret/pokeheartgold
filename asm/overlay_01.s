@@ -60982,7 +60982,7 @@ _02202276:
 	ldr r0, [sp, #0x18]
 	add r1, r5, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0202ECC0
+	bl UpdatePokedexWithReceivedSpecies
 	mov r0, #0
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}

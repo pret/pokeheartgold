@@ -20590,7 +20590,7 @@ ov02_0224F6AC: ; 0x0224F6AC
 	add r0, r4, #0
 	add r1, sp, #8
 	add r2, r6, #0
-	bl sub_02074670
+	bl Party_GetUnkSubSlot
 	add r0, r4, #0
 	add r1, r6, #0
 	bl GetPartyMonByIndex

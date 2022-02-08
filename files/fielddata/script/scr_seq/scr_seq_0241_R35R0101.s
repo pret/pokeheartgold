@@ -58,7 +58,7 @@ scr_seq_R35R0101_000:
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _00F9
 	npc_msg msg_0388_R35R0101_00003
-	scrcmd_362 7, 20, 101
+	give_loan_mon 7, 20, 101
 	setvar VAR_UNK_4114, 1
 	buffer_players_name 0
 	npc_msg msg_0388_R35R0101_00004
