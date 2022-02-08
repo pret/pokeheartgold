@@ -109,7 +109,7 @@ _0156:
 	play_se SEQ_SE_DP_REGI
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0597_T25R1006_00011
-	scrcmd_380 VAR_SPECIAL_RESULT, 100
+	random VAR_SPECIAL_RESULT, 100
 	compare VAR_SPECIAL_RESULT, 40
 	goto_if_ge _01AD
 	compare VAR_SPECIAL_RESULT, 4
@@ -122,7 +122,7 @@ _01AD:
 	play_se SEQ_SE_GS_KUJI_ATARI
 	buffer_int 0, 3
 	npc_msg msg_0597_T25R1006_00012
-	scrcmd_380 VAR_SPECIAL_RESULT, 70
+	random VAR_SPECIAL_RESULT, 70
 	compare VAR_SPECIAL_RESULT, 60
 	goto_if_ge _021C
 	compare VAR_SPECIAL_RESULT, 50
@@ -597,7 +597,7 @@ _07D5:
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0597_T25R1006_00006
 	giveitem_no_check VAR_SPECIAL_x8001, 1
-	scrcmd_380 VAR_SPECIAL_RESULT, 64
+	random VAR_SPECIAL_RESULT, 64
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _08A0
 	play_se SEQ_SE_DP_JIHANKI

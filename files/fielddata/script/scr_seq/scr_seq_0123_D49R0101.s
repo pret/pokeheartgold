@@ -653,7 +653,7 @@ _098D:
 	buffer_item_name 0, VAR_SPECIAL_x8001
 	npc_msg msg_0138_D49R0101_00087
 	giveitem_no_check VAR_SPECIAL_x8001, 1
-	scrcmd_380 VAR_SPECIAL_RESULT, 64
+	random VAR_SPECIAL_RESULT, 64
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _09E6
 	play_se SEQ_SE_DP_JIHANKI

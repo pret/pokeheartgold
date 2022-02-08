@@ -72,9 +72,9 @@ _00F0:
 	npc_msg msg_0449_T01R0201_00003
 	wait_se SEQ_SE_DP_FW367
 	wait 15, VAR_SPECIAL_RESULT
-	scrcmd_383 10, 32772
-	scrcmd_828 32772, 1, 32
-	scrcmd_828 32772, 5, 22
+	scrcmd_383 10, VAR_SPECIAL_x8004
+	scrcmd_828 VAR_SPECIAL_x8004, 1, 32
+	scrcmd_828 VAR_SPECIAL_x8004, 5, 22
 	compare VAR_UNK_4122, 7
 	goto_if_eq _012D
 	addvar VAR_UNK_4122, 1

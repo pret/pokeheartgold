@@ -971,16 +971,16 @@
     {
       "name": "scrcmd_154",
       "args": [
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_155",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -1600,13 +1600,13 @@
       "name": "scrcmd_255",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_256",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2309,7 +2309,7 @@
       ]
     },
     {
-      "name": "scrcmd_380",
+      "name": "random",
       "args": [
         "var",
         2
@@ -2333,7 +2333,7 @@
       "name": "scrcmd_383",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -3492,7 +3492,7 @@
       "name": "scrcmd_553",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -5163,7 +5163,7 @@
     {
       "name": "scrcmd_828",
       "args": [
-        2,
+        "var",
         1,
         2
       ]
@@ -5177,25 +5177,25 @@
     {
       "name": "scrcmd_830",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_831",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_832",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_833",
       "args": [
-        2
+        "var"
       ]
     },
     {

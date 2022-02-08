@@ -196,7 +196,7 @@ scr_seq_T29_005:
 	mon_has_ribbon VAR_SPECIAL_RESULT, VAR_SPECIAL_x8002, RIBBON_DOWNCAST
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _039B
-	goto_if_set FLAG_GOT_SHOCK_RIBBON, _03AF
+	goto_if_set FLAG_DAILY_GOT_SHOCK_RIBBON, _03AF
 	compare VAR_NUM_MET_WEEKDAY_SIBLINGS, 7
 	goto_if_eq _0349
 	goto_if_set FLAG_UNK_0D5, _032B
@@ -252,7 +252,7 @@ _036C:
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_DOWNCAST
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
-	setflag FLAG_GOT_SHOCK_RIBBON
+	setflag FLAG_DAILY_GOT_SHOCK_RIBBON
 	waitbutton
 	closemsg
 	releaseall

@@ -2063,7 +2063,7 @@
 .public ScrCmd_377
 .public ScrCmd_378
 .public ScrCmd_379
-.public ScrCmd_380
+.public ScrCmd_Random
 .public ScrCmd_381
 .public ScrCmd_382
 .public ScrCmd_383

@@ -53,7 +53,7 @@ scr_seq_D32R0401_020:
 	end
 
 _00B5:
-	scrcmd_380 VAR_TEMP_x4007, 100
+	random VAR_TEMP_x4007, 100
 	call_if_unset FLAG_UNK_234, _00D5
 	compare VAR_TEMP_x4007, 30
 	goto_if_lt _00DF
@@ -80,11 +80,11 @@ _00EC:
 	end
 
 _011D:
-	scrcmd_380 VAR_UNK_4053, 4
+	random VAR_UNK_4053, 4
 	goto _0147
 	.byte 0x02, 0x00
 _012B:
-	scrcmd_380 VAR_UNK_4053, 2
+	random VAR_UNK_4053, 2
 	goto _0147
 	.byte 0x02, 0x00
 _0139:

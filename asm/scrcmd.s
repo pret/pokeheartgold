@@ -430,7 +430,7 @@ gScriptCmdTable:
 	.word ScrCmd_377                                    ; 377
 	.word ScrCmd_378                                    ; 378
 	.word ScrCmd_379                                    ; 379
-	.word ScrCmd_380                                    ; 380
+	.word ScrCmd_Random                                    ; 380
 	.word ScrCmd_381                                    ; 381
 	.word ScrCmd_382                                    ; 382
 	.word ScrCmd_383                                    ; 383
@@ -9903,8 +9903,8 @@ ScrCmd_379: ; 0x02044D68
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_379
 
-	thumb_func_start ScrCmd_380
-ScrCmd_380: ; 0x02044D8C
+	thumb_func_start ScrCmd_Random
+ScrCmd_Random: ; 0x02044D8C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -9927,7 +9927,7 @@ ScrCmd_380: ; 0x02044D8C
 	strh r1, [r4]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_380
+	thumb_func_end ScrCmd_Random
 
 	thumb_func_start ScrCmd_381
 ScrCmd_381: ; 0x02044DC4

@@ -2142,7 +2142,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_380 arg0, arg1
+	.macro random arg0, arg1
 	.short 380
 	.short \arg0
 	.short \arg1

@@ -132,7 +132,7 @@ scr_seq_D37R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_AA0, _0331
+	goto_if_set FLAG_DAILY_GOT_HAIRCUT, _0331
 	scrcmd_113 20, 2
 	npc_msg msg_0117_D37R0102_00010
 	touchscreen_menu_hide
@@ -178,9 +178,9 @@ _01F5:
 	wait_fade
 	npc_msg msg_0117_D37R0102_00013
 	scrcmd_049
-	setflag FLAG_UNK_AA0
+	setflag FLAG_DAILY_GOT_HAIRCUT
 	call _04C8
-	scrcmd_380 VAR_SPECIAL_RESULT, 100
+	random VAR_SPECIAL_RESULT, 100
 	compare VAR_SPECIAL_RESULT, 40
 	goto_if_ge _02F6
 	compare VAR_SPECIAL_RESULT, 10
@@ -188,7 +188,7 @@ _01F5:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ge _02CA
 _02CA:
-	scrcmd_383 1, 32773
+	scrcmd_383 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
 	waitbutton
@@ -197,7 +197,7 @@ _02CA:
 	end
 
 _02E0:
-	scrcmd_383 5, 32773
+	scrcmd_383 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
 	waitbutton
@@ -206,7 +206,7 @@ _02E0:
 	end
 
 _02F6:
-	scrcmd_383 10, 32773
+	scrcmd_383 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
 	waitbutton
@@ -248,7 +248,7 @@ scr_seq_D37R0102_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_AA0, _04BD
+	goto_if_set FLAG_DAILY_GOT_HAIRCUT, _04BD
 	scrcmd_113 20, 2
 	npc_msg msg_0117_D37R0102_00017
 	touchscreen_menu_hide
@@ -294,8 +294,8 @@ _0375:
 	wait_fade
 	npc_msg msg_0117_D37R0102_00020
 	scrcmd_049
-	setflag FLAG_UNK_AA0
-	scrcmd_380 VAR_SPECIAL_RESULT, 100
+	setflag FLAG_DAILY_GOT_HAIRCUT
+	random VAR_SPECIAL_RESULT, 100
 	compare VAR_SPECIAL_RESULT, 40
 	goto_if_ge _0444
 	compare VAR_SPECIAL_RESULT, 10
@@ -304,7 +304,7 @@ _0375:
 	goto_if_ge _047C
 _0444:
 	call _04C8
-	scrcmd_383 1, 32773
+	scrcmd_383 1, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00024
 	waitbutton
@@ -314,7 +314,7 @@ _0444:
 
 _0460:
 	call _04C8
-	scrcmd_383 5, 32773
+	scrcmd_383 5, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00025
 	waitbutton
@@ -324,7 +324,7 @@ _0460:
 
 _047C:
 	call _04D8
-	scrcmd_383 10, 32773
+	scrcmd_383 10, VAR_SPECIAL_x8005
 	bufferpartymonnick 0, VAR_SPECIAL_x8005
 	npc_msg msg_0117_D37R0102_00026
 	waitbutton
@@ -363,13 +363,13 @@ _04BD:
 	end
 
 _04C8:
-	scrcmd_828 32773, 1, 16
-	scrcmd_828 32773, 5, 11
+	scrcmd_828 VAR_SPECIAL_x8005, 1, 16
+	scrcmd_828 VAR_SPECIAL_x8005, 5, 11
 	return
 
 _04D8:
-	scrcmd_828 32773, 1, 24
-	scrcmd_828 32773, 5, 18
+	scrcmd_828 VAR_SPECIAL_x8005, 1, 24
+	scrcmd_828 VAR_SPECIAL_x8005, 5, 18
 	return
 
 scr_seq_D37R0102_003:
@@ -924,7 +924,7 @@ _0D5B:
 	setflag FLAG_UNK_08C
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_154 16386, 32773, 32775
+	scrcmd_154 VAR_TEMP_x4002, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -973,7 +973,7 @@ _0DEE:
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0E35
-	scrcmd_256 32772
+	scrcmd_256 VAR_SPECIAL_x8004
 	scrcmd_494 0, VAR_SPECIAL_x8004
 	npc_msg msg_0117_D37R0102_00046
 	npc_msg msg_0117_D37R0102_00052
@@ -1224,12 +1224,12 @@ _11A4:
 scr_seq_D37R0102_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 0, 32780
+	scrcmd_255 0, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 0, 32780
+	scrcmd_155 0, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1239,12 +1239,12 @@ scr_seq_D37R0102_012:
 scr_seq_D37R0102_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 1, 32780
+	scrcmd_255 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 1, 32780
+	scrcmd_155 1, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1254,12 +1254,12 @@ scr_seq_D37R0102_013:
 scr_seq_D37R0102_014:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 2, 32780
+	scrcmd_255 2, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 2, 32780
+	scrcmd_155 2, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1269,12 +1269,12 @@ scr_seq_D37R0102_014:
 scr_seq_D37R0102_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 3, 32780
+	scrcmd_255 3, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 3, 32780
+	scrcmd_155 3, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1284,12 +1284,12 @@ scr_seq_D37R0102_015:
 scr_seq_D37R0102_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 4, 32780
+	scrcmd_255 4, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 4, 32780
+	scrcmd_155 4, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1299,12 +1299,12 @@ scr_seq_D37R0102_016:
 scr_seq_D37R0102_017:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 5, 32780
+	scrcmd_255 5, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 5, 32780
+	scrcmd_155 5, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1314,12 +1314,12 @@ scr_seq_D37R0102_017:
 scr_seq_D37R0102_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 6, 32780
+	scrcmd_255 6, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 6, 32780
+	scrcmd_155 6, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1329,12 +1329,12 @@ scr_seq_D37R0102_018:
 scr_seq_D37R0102_019:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 7, 32780
+	scrcmd_255 7, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 7, 32780
+	scrcmd_155 7, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1344,12 +1344,12 @@ scr_seq_D37R0102_019:
 scr_seq_D37R0102_020:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 8, 32780
+	scrcmd_255 8, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 8, 32780
+	scrcmd_155 8, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1359,12 +1359,12 @@ scr_seq_D37R0102_020:
 scr_seq_D37R0102_021:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 9, 32780
+	scrcmd_255 9, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 9, 32780
+	scrcmd_155 9, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1374,12 +1374,12 @@ scr_seq_D37R0102_021:
 scr_seq_D37R0102_022:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_255 10, 32780
+	scrcmd_255 10, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _144B
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_155 10, 32780
+	scrcmd_155 10, VAR_SPECIAL_RESULT
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -1397,10 +1397,10 @@ scr_seq_D37R0102_023:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_830 32780
+	scrcmd_830 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _1480
-	scrcmd_832 32780
+	scrcmd_832 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1521
 _1480:
@@ -1414,10 +1414,10 @@ _1480:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _153F
 	submoneyimmediate 100
-	scrcmd_553 5, 32780
+	scrcmd_553 5, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _154E
-	scrcmd_831 32772
+	scrcmd_831 VAR_SPECIAL_x8004
 	scrcmd_404 VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _155B
@@ -1425,13 +1425,13 @@ _1480:
 	setvar VAR_SPECIAL_x8005, 1
 	callstd std_receive_accessory
 _14EB:
-	scrcmd_832 32780
+	scrcmd_832 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1530
-	scrcmd_553 95, 32780
+	scrcmd_553 95, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _1530
-	scrcmd_833 32772
+	scrcmd_833 VAR_SPECIAL_x8004
 	npc_msg msg_0117_D37R0102_00062
 	callstd std_receive_background
 	goto _1530

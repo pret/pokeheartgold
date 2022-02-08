@@ -11,7 +11,7 @@
 scr_seq_HIROBA_000:
 	scrcmd_609
 	lockall
-	scrcmd_380 VAR_SPECIAL_x8000, 5
+	random VAR_SPECIAL_x8000, 5
 	switch VAR_SPECIAL_x8000
 	case 0, _0059
 	case 1, _0073

@@ -2039,7 +2039,7 @@
 #define NUM_DAILY_FLAGS                                              192
 
 
-#define FLAG_UNK_AA0                                               0xAA0
+#define FLAG_DAILY_GOT_HAIRCUT                                               0xAA0
 #define FLAG_UNK_AA1                                               0xAA1
 #define FLAG_UNK_AA2                                               0xAA2
 #define FLAG_UNK_AA3                                               0xAA3
@@ -2049,17 +2049,17 @@
 #define FLAG_DAILY_DID_BUG_CONTEST                                 0xAA7
 #define FLAG_UNK_AA8                                               0xAA8
 #define FLAG_UNK_AA9                                               0xAA9
-#define FLAG_UNK_AAA                                               0xAAA
-#define FLAG_UNK_AAB                                               0xAAB
-#define FLAG_UNK_AAC                                               0xAAC
-#define FLAG_UNK_AAD                                               0xAAD
-#define FLAG_UNK_AAE                                               0xAAE
-#define FLAG_UNK_AAF                                               0xAAF
-#define FLAG_UNK_AB0                                               0xAB0
-#define FLAG_UNK_AB1                                               0xAB1
-#define FLAG_UNK_AB2                                               0xAB2
-#define FLAG_UNK_AB3                                               0xAB3
-#define FLAG_UNK_AB4                                               0xAB4
+#define FLAG_DAILY_TRAINER_HOUSE_0                                 0xAAA
+#define FLAG_DAILY_TRAINER_HOUSE_1                                 0xAAB
+#define FLAG_DAILY_TRAINER_HOUSE_2                                 0xAAC
+#define FLAG_DAILY_TRAINER_HOUSE_3                                 0xAAD
+#define FLAG_DAILY_TRAINER_HOUSE_4                                 0xAAE
+#define FLAG_DAILY_TRAINER_HOUSE_5                                 0xAAF
+#define FLAG_DAILY_TRAINER_HOUSE_6                                 0xAB0
+#define FLAG_DAILY_TRAINER_HOUSE_7                                 0xAB1
+#define FLAG_DAILY_TRAINER_HOUSE_8                                 0xAB2
+#define FLAG_DAILY_TRAINER_HOUSE_9                                 0xAB3
+#define FLAG_DAILY_TRAINER_HOUSE_10                                0xAB4
 #define FLAG_UNK_AB5                                               0xAB5
 #define FLAG_UNK_AB6                                               0xAB6
 #define FLAG_UNK_AB7                                               0xAB7
@@ -2067,7 +2067,7 @@
 #define FLAG_UNK_AB9                                               0xAB9
 #define FLAG_UNK_ABA                                               0xABA
 #define FLAG_UNK_ABB                                               0xABB
-#define FLAG_GOT_SHOCK_RIBBON                                      0xABC
+#define FLAG_DAILY_GOT_SHOCK_RIBBON                                0xABC
 #define FLAG_UNK_ABD                                               0xABD
 #define FLAG_UNK_ABE                                               0xABE
 #define FLAG_UNK_ABF                                               0xABF

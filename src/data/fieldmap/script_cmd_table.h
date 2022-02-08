@@ -380,7 +380,7 @@ extern BOOL ScrCmd_376(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_377(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_378(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_379(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_380(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_Random(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_381(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_382(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_383(SCRIPTCONTEXT *ctx);
@@ -1235,7 +1235,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_377,
     ScrCmd_378,
     ScrCmd_379,
-    ScrCmd_380,
+    ScrCmd_Random,
     ScrCmd_381,
     ScrCmd_382,
     ScrCmd_383,

@@ -468,7 +468,7 @@ _0669:
 	return
 
 _06A5:
-	scrcmd_380 VAR_SPECIAL_x8006, 8
+	random VAR_SPECIAL_x8006, 8
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _0861
 	compare VAR_SPECIAL_x8006, 1
@@ -489,7 +489,7 @@ _06A5:
 	return
 
 _071B:
-	scrcmd_380 VAR_SPECIAL_x8006, 5
+	random VAR_SPECIAL_x8006, 5
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _08A1
 	compare VAR_SPECIAL_x8006, 1
@@ -504,7 +504,7 @@ _071B:
 	return
 
 _076A:
-	scrcmd_380 VAR_SPECIAL_x8006, 7
+	random VAR_SPECIAL_x8006, 7
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _08C9
 	compare VAR_SPECIAL_x8006, 1
@@ -523,7 +523,7 @@ _076A:
 	return
 
 _07D3:
-	scrcmd_380 VAR_SPECIAL_x8006, 6
+	random VAR_SPECIAL_x8006, 6
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _0901
 	compare VAR_SPECIAL_x8006, 1
