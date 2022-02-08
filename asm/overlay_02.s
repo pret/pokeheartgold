@@ -20521,7 +20521,7 @@ ov02_0224F644: ; 0x0224F644
 ov02_0224F64C: ; 0x0224F64C
 	push {r4, lr}
 	add r4, r1, #0
-	bl Field_GetTImeOfDay
+	bl Field_GetTimeOfDay
 	cmp r0, #4
 	bhi _0224F68C
 	add r0, r0, r0
@@ -22265,7 +22265,7 @@ _02250336:
 	add r0, r4, #0
 	mov r2, #3
 	bl ov02_0224FC08
-	ldr r0, _02250490 ; =0x000004A7
+	ldr r0, _02250490 ; =SEQ_ME_ACCE
 	bl PlayFanfare
 	b _02250372
 _02250364:
@@ -22346,7 +22346,7 @@ _022503BA:
 	add r0, r4, #0
 	mov r2, #1
 	bl ov02_0224FC08
-	ldr r0, _02250490 ; =0x000004A7
+	ldr r0, _02250490 ; =SEQ_ME_ACCE
 	bl PlayFanfare
 	b _02250412
 _02250404:
@@ -22413,7 +22413,7 @@ _0225047E:
 _02250484: .word 0x00000869
 _02250488: .word 0x00000812
 _0225048C: .word 0x00000816
-_02250490: .word 0x000004A7
+_02250490: .word SEQ_ME_ACCE
 _02250494: .word 0x00000817
 _02250498: .word 0x0000086E
 _0225049C: .word gSystem

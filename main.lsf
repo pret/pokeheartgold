@@ -669,7 +669,7 @@ Overlay OVY_22
 Overlay OVY_23
 {
     After OVY_3
-    Object overlay_23.o
+    Object npc_trade.o
     ### Size 0x4c0 ###
     ### BSS Size 0x0 ###
     ### SINIT Start 0x2259d7c ###

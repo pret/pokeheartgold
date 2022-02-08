@@ -24,9 +24,9 @@ scr_seq_R10R0202_006:
 	hasitem ITEM_MACHINE_PART, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _0071
-	goto_if_set FLAG_UNK_120, _005C
-	setflag FLAG_UNK_120
-	setvar VAR_UNK_411B, 1
+	goto_if_set FLAG_GOT_POWER_PLANT_MANAGERS_STORY, _005C
+	setflag FLAG_GOT_POWER_PLANT_MANAGERS_STORY
+	setvar VAR_SCENE_ROUTE_10_POWER_PLANT, 1
 _005C:
 	npc_msg msg_0345_R10R0202_00013
 	waitbutton
@@ -105,7 +105,7 @@ scr_seq_R10R0202_007:
 	apply_movement obj_R10R0202_policeman, _01E8
 	wait_movement
 	clearflag FLAG_HIDE_CERULEAN_GYM_ROCKET
-	setvar VAR_UNK_411B, 0
+	setvar VAR_SCENE_ROUTE_10_POWER_PLANT, 0
 	setvar VAR_UNK_411C, 1
 	releaseall
 	end
@@ -154,7 +154,7 @@ scr_seq_R10R0202_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_120, _0226
+	goto_if_set FLAG_GOT_POWER_PLANT_MANAGERS_STORY, _0226
 	npc_msg msg_0345_R10R0202_00000
 	waitbutton
 	closemsg
@@ -172,7 +172,7 @@ scr_seq_R10R0202_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_121, _02D8
+	goto_if_set FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON, _02D8
 	npc_msg msg_0345_R10R0202_00008
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -189,15 +189,15 @@ scr_seq_R10R0202_005:
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _02CD
-	scrcmd_470 8
+	load_npc_trade 8
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_472 32780
+	npc_trade_get_req_species VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _02C0
-	scrcmd_473 32772
-	scrcmd_474
-	setflag FLAG_UNK_121
+	npc_trade_exec VAR_SPECIAL_x8004
+	npc_trade_end
+	setflag FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON
 	npc_msg msg_0345_R10R0202_00009
 	waitbutton
 	closemsg
@@ -205,7 +205,7 @@ scr_seq_R10R0202_005:
 	end
 
 _02C0:
-	scrcmd_474
+	npc_trade_end
 	npc_msg msg_0345_R10R0202_00010
 	waitbutton
 	closemsg

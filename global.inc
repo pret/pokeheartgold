@@ -2151,11 +2151,11 @@
 .public ScrCmd_MoveRelearnerInit
 .public ScrCmd_MoveTutorInit
 .public ScrCmd_MoveRelearnerGetResult
-.public ScrCmd_470
+.public ScrCmd_LoadNPCTrade
 .public ScrCmd_471
-.public ScrCmd_472
-.public ScrCmd_473
-.public ScrCmd_474
+.public ScrCmd_NPCTradeGetReqSpecies
+.public ScrCmd_NPCTradeExec
+.public ScrCmd_NPCTradeEnd
 .public ScrCmd_475
 .public ScrCmd_476
 .public ScrCmd_NatDexFlagAction
@@ -28215,9 +28215,9 @@
 .public sub_0203E340
 .public sub_0203E348
 .public sub_0203E354
-.public sub_0203E368
-.public sub_0203E380
-.public sub_0203E398
+.public LocationData_BackUp
+.public LocationData_Restore
+.public Save_CurrentLocation_BackUp
 .public sub_0203E3C4
 .public sub_0203E3D4
 .public sub_0203E3FC
@@ -28464,7 +28464,7 @@
 .public sub_020553B0
 .public sub_02055408
 .public FieldSys_StartBugContestTimer
-.public Field_GetTImeOfDay
+.public Field_GetTimeOfDay
 .public Field_GetTimeOfDayWildParam
 .public sub_02055600
 .public sub_0205560C

@@ -306,8 +306,8 @@
 #define FLAG_GOT_SAVE_BUTTON                                       0x11D
 #define FLAG_GOT_OPTIONS_BUTTON                                    0x11E
 #define FLAG_GOT_EXPN_CARD                                         0x11F
-#define FLAG_UNK_120                                               0x120
-#define FLAG_UNK_121                                               0x121
+#define FLAG_GOT_POWER_PLANT_MANAGERS_STORY                                               0x120
+#define FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON                                               0x121
 #define FLAG_UNK_122                                               0x122
 #define FLAG_UNK_123                                               0x123
 #define FLAG_UNK_124                                               0x124

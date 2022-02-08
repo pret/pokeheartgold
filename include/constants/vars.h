@@ -295,7 +295,7 @@
 #define VAR_UNK_4118                 0x4118
 #define VAR_UNK_4119                 0x4119
 #define VAR_UNK_411A                 0x411A
-#define VAR_UNK_411B                 0x411B
+#define VAR_SCENE_ROUTE_10_POWER_PLANT                 0x411B
 #define VAR_UNK_411C                 0x411C
 #define VAR_UNK_411D                 0x411D
 #define VAR_UNK_411E                 0x411E

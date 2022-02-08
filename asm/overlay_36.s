@@ -343,22 +343,22 @@ ov36_021E5BC8: ; 0x021E5BC8
 	add r0, r4, #0
 	bl Sav2_InitDynamicRegion
 	add r0, r4, #0
-	bl sub_0203E398
+	bl Save_CurrentLocation_BackUp
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetProfileAddr
-	ldr r1, _021E5BFC ; =0x00000BB8
+	ldr r1, _021E5BFC ; =3000
 	bl PlayerProfile_SetMoney
 	add r0, r4, #0
 	bl SavArray_Flags_get
-	ldr r1, _021E5C00 ; =0x0000DB56
+	ldr r1, _021E5C00 ; =56150
 	bl ScriptState_SetFishingCompetitionLengthRecord
 	add r0, r4, #0
 	bl SavArray_Flags_get
 	bl sub_020665EC
 	pop {r4, pc}
 	.balign 4, 0
-_021E5BFC: .word 0x00000BB8
-_021E5C00: .word 0x0000DB56
+_021E5BFC: .word 3000
+_021E5C00: .word 56150
 	thumb_func_end ov36_021E5BC8
 
 	.rodata

@@ -216,9 +216,9 @@ _030E:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _034B
 	closemsg
-	scrcmd_470 5
-	scrcmd_473 32772
-	scrcmd_474
+	load_npc_trade 5
+	npc_trade_exec VAR_SPECIAL_x8004
+	npc_trade_end
 	setflag FLAG_UNK_166
 	setvar VAR_TEMP_x4000, 55
 	npc_msg msg_0606_T26GYM0101_00011

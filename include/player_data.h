@@ -50,7 +50,7 @@ STRING *PlayerProfile_GetPlayerName_NewString(PLAYERPROFILE *profile, HeapID hea
 void PlayerProfile_SetTrainerID(PLAYERPROFILE *profile, u32 id);
 u32 PlayerProfile_GetTrainerID(PLAYERPROFILE *profile);
 u16 PlayerProfile_GetTrainerID_VisibleHalf(PLAYERPROFILE *profile);
-void PlayerProfile_SetTrainerGender(PLAYERPROFILE *profile, u8 gender);
+void PlayerProfile_SetTrainerGender(PLAYERPROFILE *profile, int gender);
 u8 PlayerProfile_GetTrainerGender(PLAYERPROFILE *profile);
 BOOL PlayerProfile_TestBadgeFlag(PLAYERPROFILE *profile, s32 badgeNo);
 void PlayerProfile_SetBadgeFlag(PLAYERPROFILE *profile, s32 badgeNo);

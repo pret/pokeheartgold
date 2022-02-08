@@ -2940,7 +2940,7 @@
       ]
     },
     {
-      "name": "scrcmd_470",
+      "name": "load_npc_trade",
       "args": [
         1
       ]
@@ -2952,19 +2952,19 @@
       ]
     },
     {
-      "name": "scrcmd_472",
+      "name": "npc_trade_get_req_species",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_473",
+      "name": "npc_trade_exec",
       "args": [
-        2
+        "var"
       ]
     },
     {
-      "name": "scrcmd_474",
+      "name": "npc_trade_end",
       "args": []
     },
     {

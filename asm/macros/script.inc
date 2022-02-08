@@ -2673,7 +2673,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_470 arg0
+	.macro load_npc_trade arg0
 	.short 470
 	.byte \arg0
 	.endm
@@ -2683,17 +2683,17 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_472 arg0
+	.macro npc_trade_get_req_species arg0
 	.short 472
 	.short \arg0
 	.endm
 
-	.macro scrcmd_473 arg0
+	.macro npc_trade_exec arg0
 	.short 473
 	.short \arg0
 	.endm
 
-	.macro scrcmd_474
+	.macro npc_trade_end
 	.short 474
 	.endm
 

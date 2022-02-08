@@ -3,7 +3,6 @@
 
 #include "filesystem.h"
 #include "seal_case.h"
-#include "mail.h"
 
 typedef struct BaseStats {
     /* 0x00 */ u8 hp;
@@ -125,6 +124,37 @@ typedef struct BoxPokemon {
     /* 0x006 */ u16 checksum;  // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
 } BOXMON;
+
+union MailPatternData
+{
+    u16 raw;
+    struct {
+        u16 unk_0_0:12;
+        u16 unk_0_C:4;
+    };
+};
+
+#define MAILMSG_BANK_NONE           (0xFFFF)
+#define MAILMSG_FIELDS_MAX          (2)
+
+typedef struct MailMessage {
+    u16 msg_bank;
+    u16 msg_no;
+    u16 fields[MAILMSG_FIELDS_MAX];
+} MAIL_MESSAGE;
+
+typedef struct Mail
+{
+    u32 author_otId;
+    u8 author_gender;
+    u8 author_language;
+    u8 author_version;
+    u8 mail_type;
+    u16 author_name[OT_NAME_LENGTH + 1];
+    union MailPatternData unk_18[3];
+    u16 unk_1E;
+    MAIL_MESSAGE unk_20[3];
+} MAIL;
 
 typedef struct PartyPokemon {
     /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...

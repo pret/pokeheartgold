@@ -470,11 +470,11 @@ extern BOOL ScrCmd_466(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_470(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_LoadNPCTrade(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_471(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_472(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_473(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_474(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NPCTradeGetReqSpecies(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NPCTradeExec(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_NPCTradeEnd(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_475(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_476(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_NatDexFlagAction(SCRIPTCONTEXT *ctx);
@@ -1325,11 +1325,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MoveRelearnerInit,
     ScrCmd_MoveTutorInit,
     ScrCmd_MoveRelearnerGetResult,
-    ScrCmd_470,
+    ScrCmd_LoadNPCTrade,
     ScrCmd_471,
-    ScrCmd_472,
-    ScrCmd_473,
-    ScrCmd_474,
+    ScrCmd_NPCTradeGetReqSpecies,
+    ScrCmd_NPCTradeExec,
+    ScrCmd_NPCTradeEnd,
     ScrCmd_475,
     ScrCmd_476,
     ScrCmd_NatDexFlagAction,

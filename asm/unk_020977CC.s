@@ -55,7 +55,7 @@ sub_02097810: ; 0x02097810
 	str r7, [r4, #4]
 	add r0, r5, #0
 	strb r6, [r4]
-	bl Field_GetTImeOfDay
+	bl Field_GetTimeOfDay
 	cmp r0, #4
 	bhi _02097852
 	add r0, r0, r0

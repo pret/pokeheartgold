@@ -1,8 +1,7 @@
 #ifndef POKEHEARTGOLD_MAIL_MESSAGE_H
 #define POKEHEARTGOLD_MAIL_MESSAGE_H
 
-#define MAILMSG_BANK_NONE           (0xFFFF)
-#define MAILMSG_FIELDS_MAX          (2)
+#include "pokemon_types_def.h"
 
 #define MAILMSG_BANK_0294_GMM        0
 #define MAILMSG_BANK_0296_GMM        1
@@ -17,12 +16,6 @@
 #include "msgdata/msg/msg_0295.h"
 
 #ifndef PM_ASM
-
-typedef struct MailMessage {
-    u16 msg_bank;
-    u16 msg_no;
-    u16 fields[MAILMSG_FIELDS_MAX];
-} MAIL_MESSAGE;
 
 typedef struct MailMessageTemplate {
     u8 msg_bank;

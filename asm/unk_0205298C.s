@@ -464,9 +464,9 @@ _02052D3A:
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
 	ldr r0, [sp, #0xc]
-	bl sub_0203E368
+	bl LocationData_BackUp
 	ldr r0, [sp, #8]
-	bl sub_0203E380
+	bl LocationData_Restore
 	add r0, r6, #0
 	bl sub_020667E0
 	add r0, r6, #0

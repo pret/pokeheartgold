@@ -520,11 +520,11 @@ gScriptCmdTable:
 	.word ScrCmd_MoveRelearnerInit                                    ; 467
 	.word ScrCmd_MoveTutorInit                                    ; 468
 	.word ScrCmd_MoveRelearnerGetResult                                    ; 469
-	.word ScrCmd_470                                    ; 470
+	.word ScrCmd_LoadNPCTrade                                    ; 470
 	.word ScrCmd_471                                    ; 471
-	.word ScrCmd_472                                    ; 472
-	.word ScrCmd_473                                    ; 473
-	.word ScrCmd_474                                    ; 474
+	.word ScrCmd_NPCTradeGetReqSpecies                                    ; 472
+	.word ScrCmd_NPCTradeExec                                    ; 473
+	.word ScrCmd_NPCTradeEnd                                    ; 474
 	.word ScrCmd_475                                    ; 475
 	.word ScrCmd_476                                    ; 476
 	.word ScrCmd_NatDexFlagAction                                    ; 477
@@ -9897,7 +9897,7 @@ ScrCmd_379: ; 0x02044D68
 	add r4, #0x80
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl Field_GetTImeOfDay
+	bl Field_GetTimeOfDay
 	strh r0, [r5]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -10522,8 +10522,8 @@ ScrCmd_CreateRoamer: ; 0x02045264
 	pop {r3, pc}
 	thumb_func_end ScrCmd_CreateRoamer
 
-	thumb_func_start ScrCmd_470
-ScrCmd_470: ; 0x0204527C
+	thumb_func_start ScrCmd_LoadNPCTrade
+ScrCmd_LoadNPCTrade: ; 0x0204527C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -10546,7 +10546,7 @@ ScrCmd_470: ; 0x0204527C
 	pop {r3, r4, r5, pc}
 	nop
 _020452AC: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_470
+	thumb_func_end ScrCmd_LoadNPCTrade
 
 	thumb_func_start ScrCmd_471
 ScrCmd_471: ; 0x020452B0
@@ -10572,8 +10572,8 @@ ScrCmd_471: ; 0x020452B0
 	.balign 4, 0
 	thumb_func_end ScrCmd_471
 
-	thumb_func_start ScrCmd_472
-ScrCmd_472: ; 0x020452E0
+	thumb_func_start ScrCmd_NPCTradeGetReqSpecies
+ScrCmd_NPCTradeGetReqSpecies: ; 0x020452E0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -10594,7 +10594,7 @@ ScrCmd_472: ; 0x020452E0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_472
+	thumb_func_end ScrCmd_NPCTradeGetReqSpecies
 
 	thumb_func_start ScrCmd_612
 ScrCmd_612: ; 0x02045310
@@ -10620,8 +10620,8 @@ ScrCmd_612: ; 0x02045310
 	.balign 4, 0
 	thumb_func_end ScrCmd_612
 
-	thumb_func_start ScrCmd_473
-ScrCmd_473: ; 0x02045340
+	thumb_func_start ScrCmd_NPCTradeExec
+ScrCmd_NPCTradeExec: ; 0x02045340
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, #0x80
@@ -10644,10 +10644,10 @@ ScrCmd_473: ; 0x02045340
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ScrCmd_473
+	thumb_func_end ScrCmd_NPCTradeExec
 
-	thumb_func_start ScrCmd_474
-ScrCmd_474: ; 0x02045374
+	thumb_func_start ScrCmd_NPCTradeEnd
+ScrCmd_NPCTradeEnd: ; 0x02045374
 	push {r3, lr}
 	add r0, #0x80
 	ldr r0, [r0]
@@ -10661,7 +10661,7 @@ ScrCmd_474: ; 0x02045374
 	pop {r3, pc}
 	.balign 4, 0
 _02045390: .word SDK_OVERLAY_OVY_23_ID
-	thumb_func_end ScrCmd_474
+	thumb_func_end ScrCmd_NPCTradeEnd
 
 	thumb_func_start ScrCmd_362
 ScrCmd_362: ; 0x02045394

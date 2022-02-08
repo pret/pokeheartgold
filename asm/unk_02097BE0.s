@@ -29,7 +29,7 @@ _02097BF6:
 	mov r0, #0
 	str r0, [r4, #0x50]
 	add r0, r5, #0
-	bl Field_GetTImeOfDay
+	bl Field_GetTimeOfDay
 	cmp r0, #4
 	bhi _02097C36
 	add r0, r0, r0

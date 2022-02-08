@@ -44,7 +44,7 @@ scr_seq_R10R0201_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_121, _013F
+	goto_if_set FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON, _013F
 	npc_msg msg_0344_R10R0201_00009
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -61,15 +61,15 @@ scr_seq_R10R0201_006:
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0134
-	scrcmd_470 8
+	load_npc_trade 8
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_472 32780
+	npc_trade_get_req_species VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _0127
-	scrcmd_473 32772
-	scrcmd_474
-	setflag FLAG_UNK_121
+	npc_trade_exec VAR_SPECIAL_x8004
+	npc_trade_end
+	setflag FLAG_TRADE_POWER_PLANT_DUGTRIO_MAGNETON
 	npc_msg msg_0344_R10R0201_00010
 	waitbutton
 	closemsg
@@ -77,7 +77,7 @@ scr_seq_R10R0201_006:
 	end
 
 _0127:
-	scrcmd_474
+	npc_trade_end
 	npc_msg msg_0344_R10R0201_00011
 	waitbutton
 	closemsg

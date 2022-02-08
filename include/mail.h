@@ -4,28 +4,8 @@
 #include "mail_message.h"
 #include "heap.h"
 #include "save.h"
-
-union MailPatternData
-{
-    u16 raw;
-    struct {
-        u16 unk_0_0:12;
-        u16 unk_0_C:4;
-    };
-};
-
-typedef struct Mail
-{
-    u32 author_otId;
-    u8 author_gender;
-    u8 author_language;
-    u8 author_version;
-    u8 mail_type;
-    u16 author_name[OT_NAME_LENGTH + 1];
-    union MailPatternData unk_18[3];
-    u16 unk_1E;
-    MAIL_MESSAGE unk_20[3];
-} MAIL;
+#include "pokemon_types_def.h"
+#include "pm_string.h"
 
 #define MAILBOX_MSG_COUNT       (20)
 
@@ -57,5 +37,6 @@ u32 Mailbox_CountMessages(MAILBOX *mailbox);
 void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest);
 int MailArray_GetFirstEmptySlotIdx(MAIL *msgs, int n);
 u32 MailArray_CountMessages(MAIL *msgs, int n);
+MAIL *CreateKenyaMail(POKEMON *pokemon, u8 mailType, u8 gender, STRING *name, u8 otId);
 
 #endif //POKEHEARTGOLD_MAIL_H

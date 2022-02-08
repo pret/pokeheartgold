@@ -103,7 +103,7 @@ u16 PlayerProfile_GetTrainerID_VisibleHalf(PLAYERPROFILE* profile) {
     return profile->id & 0xFFFF;
 }
 
-void PlayerProfile_SetTrainerGender(PLAYERPROFILE* profile, u8 gender) {
+void PlayerProfile_SetTrainerGender(PLAYERPROFILE* profile, int gender) {
     profile->gender = gender;
 }
 

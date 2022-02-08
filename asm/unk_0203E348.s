@@ -132,8 +132,8 @@ _0210F9BC:
 
 	.text
 
-	thumb_func_start sub_0203E368
-sub_0203E368: ; 0x0203E368
+	thumb_func_start LocationData_BackUp
+LocationData_BackUp: ; 0x0203E368
 	ldr r2, _0203E37C ; =_020FA17C
 	add r3, r0, #0
 	ldmia r2!, {r0, r1}
@@ -145,10 +145,10 @@ sub_0203E368: ; 0x0203E368
 	bx lr
 	nop
 _0203E37C: .word _020FA17C
-	thumb_func_end sub_0203E368
+	thumb_func_end LocationData_BackUp
 
-	thumb_func_start sub_0203E380
-sub_0203E380: ; 0x0203E380
+	thumb_func_start LocationData_Restore
+LocationData_Restore: ; 0x0203E380
 	ldr r2, _0203E394 ; =_020FA190
 	add r3, r0, #0
 	ldmia r2!, {r0, r1}
@@ -160,16 +160,16 @@ sub_0203E380: ; 0x0203E380
 	bx lr
 	nop
 _0203E394: .word _020FA190
-	thumb_func_end sub_0203E380
+	thumb_func_end LocationData_Restore
 
-	thumb_func_start sub_0203E398
-sub_0203E398: ; 0x0203E398
+	thumb_func_start Save_CurrentLocation_BackUp
+Save_CurrentLocation_BackUp: ; 0x0203E398
 	push {r3, lr}
 	bl Save_FlyPoints_get
 	bl FlyPoints_GetPosition
-	bl sub_0203E368
+	bl LocationData_BackUp
 	pop {r3, pc}
-	thumb_func_end sub_0203E398
+	thumb_func_end Save_CurrentLocation_BackUp
 
 	thumb_func_start sub_0203E3A8
 sub_0203E3A8: ; 0x0203E3A8
@@ -2250,7 +2250,7 @@ _0203F354:
 	mov r0, #1
 	str r0, [r4, #0x54]
 	add r0, r5, #0
-	bl Field_GetTImeOfDay
+	bl Field_GetTimeOfDay
 	cmp r0, #4
 	bhi _0203F394
 	add r0, r0, r0

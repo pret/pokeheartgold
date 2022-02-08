@@ -214,15 +214,15 @@ sub_020555B4: ; 0x020555B4
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020555B4
 
-	thumb_func_start Field_GetTImeOfDay
-Field_GetTImeOfDay: ; 0x020555E0
+	thumb_func_start Field_GetTimeOfDay
+Field_GetTimeOfDay: ; 0x020555E0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Sav2_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayByHour
 	pop {r3, pc}
-	thumb_func_end Field_GetTImeOfDay
+	thumb_func_end Field_GetTimeOfDay
 
 	thumb_func_start Field_GetTimeOfDayWildParam
 Field_GetTimeOfDayWildParam: ; 0x020555F0

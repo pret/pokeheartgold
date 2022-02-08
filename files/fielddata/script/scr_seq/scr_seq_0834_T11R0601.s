@@ -147,14 +147,14 @@ scr_seq_T11R0601_007:
 	wait_fade
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _024F
-	scrcmd_470 10
+	load_npc_trade 10
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_472 32780
+	npc_trade_get_req_species VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	goto_if_ne _0242
-	scrcmd_473 32772
-	scrcmd_474
+	npc_trade_exec VAR_SPECIAL_x8004
+	npc_trade_end
 	setflag FLAG_UNK_162
 	npc_msg msg_0535_T11R0601_00016
 	closemsg
@@ -174,7 +174,7 @@ _0234:
 	end
 
 _0242:
-	scrcmd_474
+	npc_trade_end
 	npc_msg msg_0535_T11R0601_00017
 	waitbutton
 	closemsg
