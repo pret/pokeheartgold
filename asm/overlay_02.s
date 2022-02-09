@@ -26451,7 +26451,7 @@ _0225244E:
 	ldrb r3, [r4]
 	ldr r0, [r0]
 	lsl r1, r1, #2
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]

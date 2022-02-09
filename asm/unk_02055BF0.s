@@ -381,11 +381,11 @@ _02055E76:
 	bl ov01_022057D0
 _02055EB2:
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
-	bl sub_0202ED40
+	bl SavFollowPoke_SetMapId
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0]
 	str r0, [r4, #0x20]

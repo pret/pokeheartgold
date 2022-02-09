@@ -4384,7 +4384,7 @@
 	.short 782
 	.endm
 
-	.macro scrcmd_783 arg0
+	.macro set_follow_poke_inhibit_state arg0
 	.short 783
 	.byte \arg0
 	.endm

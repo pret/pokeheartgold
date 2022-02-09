@@ -783,7 +783,7 @@ extern BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_781(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_783(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_SetFollowPokeInhibitState(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_ScriptOverlayCmd(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx);
@@ -1638,7 +1638,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CasinoGame,
     ScrCmd_781,
     ScrCmd_MartSell,
-    ScrCmd_783,
+    ScrCmd_SetFollowPokeInhibitState,
     ScrCmd_ScriptOverlayCmd,
     ScrCmd_BugContestAction,
     ScrCmd_BufferBugContestWinner,

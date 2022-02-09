@@ -37668,7 +37668,7 @@ _021F7522:
 _021F7524:
 	add r0, r5, #0
 	bl sub_0205F35C
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
 	bl SavArray_PlayerParty_get
@@ -37704,7 +37704,7 @@ _021F7524:
 	ldr r3, [sp, #4]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
 	bl MapObject_SetGfxID
@@ -37776,7 +37776,7 @@ _021F761C:
 	ldr r3, [sp, #4]
 	add r1, r7, #0
 	lsr r2, r2, #0x18
-	bl sub_02069F3C
+	bl FollowPokeFsysParamSet
 	add r0, r5, #0
 	mov r1, #1
 	bl MapObject_ForceSetFacingDirection

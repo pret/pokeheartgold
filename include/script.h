@@ -152,6 +152,21 @@ typedef struct Location {
     int direction;
 } Location;
 
+typedef struct FollowMon {
+    LocalMapObject *mapObject;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 species;
+    u8 gender;
+    u8 unk15;
+    u8 active;
+    u8 shiny;
+    u16 forme;
+    u16 dummy;
+    u32 unk1C;
+} FollowMon;
+
 struct FieldSystem {
     u8 unk0[0x8];
     void* bg_config;
@@ -169,7 +184,11 @@ struct FieldSystem {
     u32 unkAC;
     u8 unkB0[0x4];
     s64 unkB4;
-    u8 unkBC[0x38];
+    u8 unkBC[0x28];
+    FollowMon unkE4;
+    u8 unk104[4];
+    void *unk108;
+    u8 filler_10C[8];
     struct UnkFsysSub_114* unk114;
     BUGCONTEST* bugContest;
     u8 unk11C[0xC];

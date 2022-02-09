@@ -810,7 +810,7 @@ BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_781(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_MartSell(SCRIPTCONTEXT* ctx);
-BOOL ScrCmd_783(SCRIPTCONTEXT* ctx);
+BOOL ScrCmd_SetFollowPokeInhibitState(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_ScriptOverlayCmd(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT* ctx);
 BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT* ctx);

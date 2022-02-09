@@ -287,9 +287,9 @@ _02053134:
 	add r0, #0x78
 	strh r1, [r0]
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	mov r1, #0
-	bl sub_0202ED58
+	bl SavFollowPoke_SetInhibitFlagState
 	ldr r0, [r4, #0xc]
 	bl SavArray_Flags_get
 	bl sub_02066A2C

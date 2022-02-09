@@ -833,7 +833,7 @@ gScriptCmdTable:
 	.word ScrCmd_CasinoGame                                    ; 780
 	.word ScrCmd_781                                    ; 781
 	.word ScrCmd_MartSell                                    ; 782
-	.word ScrCmd_783                                    ; 783
+	.word ScrCmd_SetFollowPokeInhibitState                                    ; 783
 	.word ScrCmd_ScriptOverlayCmd                                    ; 784
 	.word ScrCmd_BugContestAction                                    ; 785
 	.word ScrCmd_BufferBugContestWinner                                    ; 786
@@ -15947,8 +15947,8 @@ ScrCmd_769: ; 0x02047C54
 	.balign 4, 0
 	thumb_func_end ScrCmd_769
 
-	thumb_func_start ScrCmd_783
-ScrCmd_783: ; 0x02047C64
+	thumb_func_start ScrCmd_SetFollowPokeInhibitState
+ScrCmd_SetFollowPokeInhibitState: ; 0x02047C64
 	push {r4, lr}
 	ldr r4, [r0, #8]
 	add r1, r4, #1
@@ -15956,12 +15956,12 @@ ScrCmd_783: ; 0x02047C64
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	ldrb r1, [r4]
-	bl sub_0202ED58
+	bl SavFollowPoke_SetInhibitFlagState
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end ScrCmd_783
+	thumb_func_end ScrCmd_SetFollowPokeInhibitState
 
 	; Loads an overlay containing additional script
 	; commands or data

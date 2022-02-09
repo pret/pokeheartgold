@@ -4901,7 +4901,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_783",
+      "name": "set_follow_poke_inhibit_state",
       "args": [
         1
       ]

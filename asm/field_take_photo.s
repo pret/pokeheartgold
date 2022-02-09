@@ -972,7 +972,7 @@ sub_0206AEC0: ; 0x0206AEC0
 	add r0, r4, #0
 	add r1, r5, #0
 	lsr r2, r2, #0x18
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	add r0, r4, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}

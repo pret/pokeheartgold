@@ -505,7 +505,7 @@ _0204CF44:
 	add r0, r4, #0
 	add r1, r6, #0
 	lsr r2, r2, #0x18
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1

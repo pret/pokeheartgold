@@ -207,7 +207,7 @@ _0205E23E:
 	add r4, r0, #0
 	beq _0205E290
 	add r0, r5, #0
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -336,7 +336,7 @@ sub_0205E34C: ; 0x0205E34C
 	bl ObjectEventTemplate_GetFlagID
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	lsl r1, r4, #0x10
 	lsr r1, r1, #0x10
 	bl FlagGet
@@ -1129,7 +1129,7 @@ sub_0205EA08: ; 0x0205EA08
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	add r6, r5, #0
 	ldr r4, [r5, #0x10]
 	add r7, r0, #0
@@ -2198,13 +2198,13 @@ MapObjectMan_SetFieldSysPtr: ; 0x0205F1DC
 	bx lr
 	thumb_func_end MapObjectMan_SetFieldSysPtr
 
-	thumb_func_start sub_0205F1E4
-sub_0205F1E4: ; 0x0205F1E4
+	thumb_func_start MapObjectMan_GetFieldSysPtr
+MapObjectMan_GetFieldSysPtr: ; 0x0205F1E4
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	bx lr
-	thumb_func_end sub_0205F1E4
+	thumb_func_end MapObjectMan_GetFieldSysPtr
 
 	thumb_func_start FldObjSys_SetMModelNarc
 FldObjSys_SetMModelNarc: ; 0x0205F1EC
@@ -2955,7 +2955,7 @@ sub_0205F524: ; 0x0205F524
 MapObject_GetFieldSysPtr: ; 0x0205F52C
 	push {r3, lr}
 	bl sub_0205F364
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	pop {r3, pc}
 	thumb_func_end MapObject_GetFieldSysPtr
 

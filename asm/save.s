@@ -53,7 +53,7 @@ _020F64C4:
 	.word 0x0000001E, 0x00000000, Sav2_EasyChat_sizeof, Sav2_EasyChat_init
 	.word 0x0000001F, 0x00000000, sub_0203170C, sub_02031710
 	.word 0x00000020, 0x00000000, sub_020318C8, sub_020318CC
-	.word 0x00000021, 0x00000000, sub_0202ED18, sub_0202ED1C
+	.word 0x00000021, 0x00000000, Sav2_FollowPoke_sizeof, Sav2_FollowPoke_init
 	.word 0x00000022, 0x00000000, SaveData_GSPlayerMisc_sizeof, SaveData_GSPlayerMisc_init
 	.word 0x00000023, 0x00000000, Save_SafariZone_sizeof, Save_SafariZone_init
 	.word 0x00000024, 0x00000000, Save_PhotoAlbum_sizeof, Save_PhotoAlbum_init

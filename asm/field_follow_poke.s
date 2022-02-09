@@ -20,7 +20,7 @@ sub_020699F8: ; 0x020699F8
 	str r1, [sp, #0x14]
 	str r2, [sp, #0x18]
 	str r3, [sp, #0x1c]
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SavArray_PlayerParty_get
@@ -31,10 +31,10 @@ sub_020699F8: ; 0x020699F8
 	add r0, #0xe4
 	bl sub_0206A06C
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	mov r0, #0
-	bl sub_0202ED48
+	bl SavFollowPoke_SetUnused2bitField
 	cmp r6, #0
 	bne _02069A34
 	b _02069B6C
@@ -107,7 +107,7 @@ _02069A4C:
 	add r0, r4, #0
 	add r1, r6, #0
 	lsr r2, r2, #0x18
-	bl sub_02069F3C
+	bl FollowPokeFsysParamSet
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0
@@ -128,19 +128,19 @@ _02069A4C:
 	bne _02069B08
 _02069AF8:
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	mov r0, #1
-	bl sub_0202ED48
+	bl SavFollowPoke_SetUnused2bitField
 	b _02069B58
 _02069B08:
 	cmp r0, #1
 	bne _02069B2E
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	mov r0, #2
-	bl sub_0202ED48
+	bl SavFollowPoke_SetUnused2bitField
 	add r0, r4, #0
 	bl sub_0206A054
 	add r0, r4, #0
@@ -152,10 +152,10 @@ _02069B2E:
 	cmp r0, #2
 	bne _02069B54
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	mov r0, #2
-	bl sub_0202ED48
+	bl SavFollowPoke_SetUnused2bitField
 	add r0, r4, #0
 	bl sub_0206A054
 	add r0, r4, #0
@@ -167,8 +167,8 @@ _02069B54:
 	bl GF_AssertFail
 _02069B58:
 	ldr r0, [r4, #0xc]
-	bl sub_0202ED34
-	bl sub_0202ED68
+	bl Sav2_FollowPoke_get
+	bl SavFollowPoke_GetInhibitFlagState
 	cmp r0, #0
 	beq _02069B6C
 	add r0, r4, #0
@@ -185,7 +185,7 @@ sub_02069B74: ; 0x02069B74
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r7, r1, #0
-	bl sub_0205F1E4
+	bl MapObjectMan_GetFieldSysPtr
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	bl SavArray_PlayerParty_get
@@ -263,13 +263,13 @@ _02069BF0:
 	add r0, r5, #0
 	lsr r2, r2, #0x18
 	add r3, r6, #0
-	bl sub_02069F3C
+	bl FollowPokeFsysParamSet
 	lsl r2, r7, #0x18
 	ldr r0, [sp, #4]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
 	add r3, r6, #0
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	lsl r1, r7, #0x10
 	ldr r2, [sp, #8]
 	add r0, r4, #0
@@ -288,19 +288,19 @@ _02069BF0:
 	bne _02069C72
 _02069C62:
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	mov r0, #1
-	bl sub_0202ED48
+	bl SavFollowPoke_SetUnused2bitField
 	b _02069CB6
 _02069C72:
 	cmp r0, #1
 	bne _02069C92
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	mov r0, #2
-	bl sub_0202ED48
+	bl SavFollowPoke_SetUnused2bitField
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -311,10 +311,10 @@ _02069C92:
 	cmp r0, #2
 	bne _02069CB2
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED34
+	bl Sav2_FollowPoke_get
 	add r1, r0, #0
 	mov r0, #2
-	bl sub_0202ED48
+	bl SavFollowPoke_SetUnused2bitField
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
@@ -337,8 +337,8 @@ _02069CB6:
 	bl sub_0206A040
 _02069CD0:
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED34
-	bl sub_0202ED68
+	bl Sav2_FollowPoke_get
+	bl SavFollowPoke_GetInhibitFlagState
 	cmp r0, #0
 	beq _02069CE4
 	add r0, r5, #0
@@ -374,13 +374,13 @@ _02069CF2:
 	add r1, r4, #0
 	lsr r2, r2, #0x18
 	add r3, r6, #0
-	bl sub_02069F3C
+	bl FollowPokeFsysParamSet
 	lsl r2, r7, #0x18
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
 	lsr r2, r2, #0x18
 	add r3, r6, #0
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	lsl r1, r7, #0x10
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
@@ -628,8 +628,8 @@ sub_02069ED4: ; 0x02069ED4
 	pop {r3, pc}
 	thumb_func_end sub_02069ED4
 
-	thumb_func_start sub_02069EE8
-sub_02069EE8: ; 0x02069EE8
+	thumb_func_start FollowPokeMapObjectSetParams
+FollowPokeMapObjectSetParams: ; 0x02069EE8
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -639,13 +639,13 @@ sub_02069EE8: ; 0x02069EE8
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0206A0E0
+	bl FollowingPoke_SetObjectFormeParam
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
 	bl MapObject_SetParam
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02069EE8
+	thumb_func_end FollowPokeMapObjectSetParams
 
 	thumb_func_start sub_02069F0C
 sub_02069F0C: ; 0x02069F0C
@@ -663,7 +663,7 @@ sub_02069F0C: ; 0x02069F0C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0206A0E0
+	bl FollowingPoke_SetObjectFormeParam
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
@@ -671,8 +671,8 @@ sub_02069F0C: ; 0x02069F0C
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02069F0C
 
-	thumb_func_start sub_02069F3C
-sub_02069F3C: ; 0x02069F3C
+	thumb_func_start FollowPokeFsysParamSet
+FollowPokeFsysParamSet: ; 0x02069F3C
 	push {r3, r4}
 	add r4, r0, #0
 	add r4, #0xf4
@@ -692,7 +692,7 @@ sub_02069F3C: ; 0x02069F3C
 	bx lr
 	nop
 _02069F60: .word 0xFFFFFFF8
-	thumb_func_end sub_02069F3C
+	thumb_func_end FollowPokeFsysParamSet
 
 	thumb_func_start sub_02069F64
 sub_02069F64: ; 0x02069F64
@@ -768,8 +768,8 @@ sub_02069FD4: ; 0x02069FD4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0202ED34
-	bl sub_0202ED44
+	bl Sav2_FollowPoke_get
+	bl SavFollowPoke_GetMapId
 	add r5, #0xe4
 	add r4, r0, #0
 	ldr r0, [r5]
@@ -923,8 +923,8 @@ _0206A0DA:
 	.balign 4, 0
 	thumb_func_end sub_0206A0A4
 
-	thumb_func_start sub_0206A0E0
-sub_0206A0E0: ; 0x0206A0E0
+	thumb_func_start FollowingPoke_SetObjectFormeParam
+FollowingPoke_SetObjectFormeParam: ; 0x0206A0E0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
 	add r7, r0, #0
@@ -958,7 +958,7 @@ _0206A106:
 	mov r2, #1
 	bl MapObject_SetParam
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0206A0E0
+	thumb_func_end FollowingPoke_SetObjectFormeParam
 
 	thumb_func_start CreateFollowingSpriteFieldObject
 CreateFollowingSpriteFieldObject: ; 0x0206A128
@@ -1006,7 +1006,7 @@ _0206A15A:
 	add r0, r4, #0
 	add r1, r5, #0
 	lsr r2, r2, #0x18
-	bl sub_02069EE8
+	bl FollowPokeMapObjectSetParams
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -1267,8 +1267,6 @@ _0206A34E:
 _0206A358: .word NATIONAL_DEX_COUNT
 _0206A35C: .word _020FECAE
 	thumb_func_end OverworldModelLookupHasFemaleForme
-
-	; File boundary after here
 
 	.rodata
 
