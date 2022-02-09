@@ -228,7 +228,9 @@ Static main
 	Object unk_02068FC8.o
 	Object unk_02069528.o
 	Object unk_02069660.o
+	Object unk_0206979C.o
 	Object field_follow_poke.o
+	Object unk_0206A360.o
 	Object field_take_photo.o
 	Object unk_0206B910.o
 	Object field_alph_checks.o
