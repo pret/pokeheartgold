@@ -91,6 +91,7 @@ ALL_BUILDDIRS             := $(sort $(ALL_BUILDDIRS) $(foreach obj,$(ALL_OBJS),$
 NEF               := $(BUILD_DIR)/$(NEFNAME).nef
 ELF               := $(NEF:%.nef=%.elf)
 LCF               := $(NEF:%.nef=%.lcf)
+RESPONSE          := $(NEF:%.nef=%.response)
 SBIN              := $(NEF:%.nef=%.sbin)
 XMAP              := $(NEF).xMAP
 
@@ -182,9 +183,16 @@ else
 	$(SED) -i '/\} > check\.WORKRAM/a SDK_SUBPRIV_ARENA_LO = SDK_SUBPRIV_ARENA_LO + SDK_AUTOLOAD.EXT_WRAM.SIZE + SDK_AUTOLOAD.EXT_WRAM.BSS_SIZE;' $@
 endif
 
-$(NEF): $(LCF) $(ALL_OBJS)
-	echo $(ALL_OBJS:$(BUILD_DIR)/%=%) >$(BUILD_DIR)/obj.list
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @obj.list
+RESPONSE_TEMPLATE := $(PROJECT_ROOT)/mwldarm.response.template
+
+$(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
+	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE:$(PROJECT_ROOT)=$(PROJECT_ROOT_NT)) $@
+
+# Locate crt0.o
+CRT0_OBJ := lib/asm/crt0.o
+
+$(NEF): $(LCF) $(RESPONSE) $(ALL_OBJS)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
 
 .INTERMEDIATE: $(BUILD_DIR)/obj.list
 

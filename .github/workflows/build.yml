@@ -45,6 +45,7 @@ jobs:
           mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
+          mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
         working-directory: ~
 
       - name: Build HeartGold

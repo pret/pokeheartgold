@@ -167,6 +167,13 @@ typedef struct FollowMon {
     u32 unk1C;
 } FollowMon;
 
+struct FieldSystemUnk108 {
+    u32 unk0;
+    u16 unk4;
+    u16 unk6;
+    u32 unk8;
+};
+
 struct FieldSystem {
     u8 unk0[0x8];
     void* bg_config;
@@ -187,7 +194,7 @@ struct FieldSystem {
     u8 unkBC[0x28];
     FollowMon unkE4;
     u8 unk104[4];
-    void *unk108;
+    struct FieldSystemUnk108 *unk108;
     u8 filler_10C[8];
     struct UnkFsysSub_114* unk114;
     BUGCONTEST* bugContest;
