@@ -30,8 +30,8 @@ sub_0206793C: ; 0x0206793C
 _02067958: .word _020FE79C
 	thumb_func_end sub_0206793C
 
-	thumb_func_start sub_0206795C
-sub_0206795C: ; 0x0206795C
+	thumb_func_start Task_FieldTradeAnim
+Task_FieldTradeAnim: ; 0x0206795C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -125,10 +125,10 @@ _02067A16:
 	mov r0, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0206795C
+	thumb_func_end Task_FieldTradeAnim
 
-	thumb_func_start sub_02067A1C
-sub_02067A1C: ; 0x02067A1C
+	thumb_func_start Field_CreateTask_TradeAnim
+Field_CreateTask_TradeAnim: ; 0x02067A1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r5, r1, #0
@@ -151,14 +151,14 @@ sub_02067A1C: ; 0x02067A1C
 	ldr r0, [sp]
 	bl AllocMonZeroed
 	str r0, [r4, #0x28]
-	ldr r1, _02067A5C ; =sub_0206795C
+	ldr r1, _02067A5C ; =Task_FieldTradeAnim
 	add r0, r7, #0
 	add r2, r4, #0
 	bl QueueTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02067A5C: .word sub_0206795C
-	thumb_func_end sub_02067A1C
+_02067A5C: .word Task_FieldTradeAnim
+	thumb_func_end Field_CreateTask_TradeAnim
 
 	thumb_func_start sub_02067A60
 sub_02067A60: ; 0x02067A60

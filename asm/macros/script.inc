@@ -3949,7 +3949,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_698 arg0, arg1, arg2
+	.macro follower_poke_is_event_trigger arg0, arg1, arg2
 	.short 698
 	.byte \arg0
 	.short \arg1

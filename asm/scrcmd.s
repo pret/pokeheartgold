@@ -748,7 +748,7 @@ gScriptCmdTable:
 	.word ScrCmd_695                                    ; 695
 	.word ScrCmd_696                                    ; 696
 	.word ScrCmd_697                                    ; 697
-	.word ScrCmd_698                                    ; 698
+	.word ScrCmd_FollowerPokeIsEventTrigger                                    ; 698
 	.word ScrCmd_699                                    ; 699
 	.word ScrCmd_700                                    ; 700
 	.word ScrCmd_701                                    ; 701
@@ -10640,7 +10640,7 @@ ScrCmd_NPCTradeExec: ; 0x02045340
 	ldr r0, [r5, #0x74]
 	ldr r1, [r4]
 	mov r3, #0xb
-	bl sub_02067A1C
+	bl Field_CreateTask_TradeAnim
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -13517,8 +13517,8 @@ _02046A18:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ScrCmd_696
 
-	thumb_func_start ScrCmd_698
-ScrCmd_698: ; 0x02046A1C
+	thumb_func_start ScrCmd_FollowerPokeIsEventTrigger
+ScrCmd_FollowerPokeIsEventTrigger: ; 0x02046A1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r2, [r5, #8]
@@ -13614,10 +13614,10 @@ _02046ADC: ; jump table
 	.short _02046AFE - _02046ADC - 2 ; case 2
 	.short _02046B0A - _02046ADC - 2 ; case 3
 _02046AE4:
-	cmp r0, #0xac
+	cmp r0, #SPECIES_PICHU
 	beq _02046AEE
-	sub r0, #0x19
-	cmp r0, #1
+	sub r0, #SPECIES_PIKACHU
+	cmp r0, #SPECIES_RAICHU - SPECIES_PIKACHU
 	bhi _02046B12
 _02046AEE:
 	add r0, r7, #0
@@ -13628,14 +13628,14 @@ _02046AEE:
 	strh r0, [r6]
 	b _02046B12
 _02046AFE:
-	ldr r1, _02046B18 ; =0x000001ED
+	ldr r1, _02046B18 ; =SPECIES_ARCEUS
 	cmp r0, r1
 	bne _02046B12
 	mov r0, #1
 	strh r0, [r6]
 	b _02046B12
 _02046B0A:
-	cmp r0, #0xfb
+	cmp r0, #SPECIES_CELEBI
 	bne _02046B12
 	mov r0, #1
 	strh r0, [r6]
@@ -13643,8 +13643,8 @@ _02046B12:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02046B18: .word 0x000001ED
-	thumb_func_end ScrCmd_698
+_02046B18: .word SPECIES_ARCEUS
+	thumb_func_end ScrCmd_FollowerPokeIsEventTrigger
 
 	thumb_func_start ScrCmd_596
 ScrCmd_596: ; 0x02046B1C

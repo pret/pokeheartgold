@@ -187,13 +187,13 @@ scr_seq_D24R0101_007:
 	scrcmd_609
 	lockall
 	get_lead_mon_index VAR_TEMP_x4005
-	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
+	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 0
 	goto_if_eq _02DA
 	goto _02EE
 
 _02DA:
-	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
+	follower_poke_is_event_trigger 1, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 0
 	goto_if_eq _0530
 _02EE:

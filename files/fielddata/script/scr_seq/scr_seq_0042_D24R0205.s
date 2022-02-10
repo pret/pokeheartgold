@@ -31,7 +31,7 @@ _003D:
 	goto _009D
 
 _0061:
-	scrcmd_698 1, VAR_TEMP_x4005, VAR_TEMP_x4007
+	follower_poke_is_event_trigger 1, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 1
 	call_if_eq _009F
 	nop_var_490 VAR_TEMP_x4005
@@ -39,7 +39,7 @@ _0061:
 	end
 
 _007F:
-	scrcmd_698 2, VAR_TEMP_x4005, VAR_TEMP_x4006
+	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	call_if_eq _009F
 	nop_var_490 VAR_TEMP_x4005

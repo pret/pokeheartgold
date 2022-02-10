@@ -698,7 +698,7 @@ extern BOOL ScrCmd_694(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_695(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_696(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_697(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_698(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_FollowerPokeIsEventTrigger(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_699(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_700(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_701(SCRIPTCONTEXT *ctx);
@@ -1553,7 +1553,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_695,
     ScrCmd_696,
     ScrCmd_697,
-    ScrCmd_698,
+    ScrCmd_FollowerPokeIsEventTrigger,
     ScrCmd_699,
     ScrCmd_700,
     ScrCmd_701,

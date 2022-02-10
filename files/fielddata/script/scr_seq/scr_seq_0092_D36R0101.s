@@ -1616,7 +1616,7 @@ scr_seq_D36R0101_012:
 	compare VAR_UNK_412B, 1
 	goto_if_eq _1803
 	get_lead_mon_index VAR_TEMP_x4000
-	scrcmd_698 0, VAR_TEMP_x4000, VAR_TEMP_x4001
+	follower_poke_is_event_trigger 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _17B7
 	goto _17C1
@@ -1630,7 +1630,7 @@ _17C1:
 	goto_if_ge _1803
 	goto_if_unset FLAG_UNK_0C6, _1803
 	get_lead_mon_index VAR_TEMP_x4006
-	scrcmd_698 3, VAR_TEMP_x4006, VAR_TEMP_x4007
+	follower_poke_is_event_trigger 3, VAR_TEMP_x4006, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _17FD
 	goto _1803

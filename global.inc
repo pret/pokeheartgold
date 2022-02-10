@@ -2378,7 +2378,7 @@
 .public ScrCmd_695
 .public ScrCmd_696
 .public ScrCmd_697
-.public ScrCmd_698
+.public ScrCmd_FollowerPokeIsEventTrigger
 .public ScrCmd_699
 .public ScrCmd_700
 .public ScrCmd_701
@@ -29187,7 +29187,7 @@
 .public GetRoamMapByLocationIdx
 .public Save_CreateRoamerByID
 .public SpeciesToRoamerIdx
-.public sub_02067A1C
+.public Field_CreateTask_TradeAnim
 .public sub_02067A60
 .public sub_02067A78
 .public sub_02067A80

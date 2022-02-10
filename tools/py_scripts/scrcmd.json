@@ -4414,7 +4414,7 @@
       ]
     },
     {
-      "name": "scrcmd_698",
+      "name": "follower_poke_is_event_trigger",
       "args": [
         1,
         "var",
