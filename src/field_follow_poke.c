@@ -5,7 +5,10 @@
 #include "field_map_object.h"
 #include "constants/scrcmd.h"
 
-BOOL sub_02069E14(LocalMapObject *mapObject);
+LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fsys);
+u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender);
+void sub_02069DEC(LocalMapObject *mapObject, int a1);
+u8 sub_02069E14(LocalMapObject *mapObject);
 BOOL sub_02069FF4(int species, u32 mapno);
 void sub_0206A040(LocalMapObject *mapObject, int a1);
 void sub_0206A06C(FollowMon *followMon);
@@ -14,8 +17,9 @@ LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectMan *mapObjectMan, int
 void FollowPokeFsysParamSet(FieldSystem *fsys, int species, u8 forme, BOOL shiny, u8 gender);
 void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, int species, u8 forme, BOOL shiny);
 void sub_0206A288(struct FieldSystemUnk108 *a0, POKEMON *pokemon, u16 species, u32 personality);
-LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fsys);
-u32 FollowingPokemon_GetSpriteID(u32 species, u16 forme, u32 gender);
+int SpeciesToOverworldModelIndexOffset(int species);
+int OverworldModelLookupHasFemaleForme(int species);
+int OverworldModelLookupFormeCount(int species);
 
 LocalMapObject *sub_020699F8(MapObjectMan *mapObjectMan, int x, int y, int direction, u32 mapno) {
     FieldSystem *fsys;
@@ -141,4 +145,61 @@ void sub_02069B74(MapObjectMan *mapObjectMan, u32 mapno) {
             }
         }
     }
+}
+
+LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fsys) {
+    return fsys->unkE4.mapObject;
+}
+
+u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender) {
+    int ret;
+
+    if (species <= 0 || species > NATIONAL_DEX_COUNT) {
+        ret = SPRITE_TSURE_POKE_BULBASAUR;
+    } else {
+        ret = SPRITE_TSURE_POKE_BULBASAUR + SpeciesToOverworldModelIndexOffset(species);
+        if (OverworldModelLookupHasFemaleForme(species)) {
+            if (gender == MON_FEMALE) {
+                ret++;
+            }
+        } else {
+            if (forme > OverworldModelLookupFormeCount(species)) {
+                forme = 0;
+            }
+            ret += forme;
+        }
+        if (ret > SPRITE_TSURE_POKE_ARCEUS_DARK) {
+            ret = SPRITE_TSURE_POKE_BULBASAUR;
+        }
+    }
+    return ret;
+}
+
+void sub_02069DC8(LocalMapObject *mapObject, int a1) {
+    sub_0206A040(mapObject, a1);
+    if (a1) {
+        sub_02069DEC(mapObject, 1);
+    } else {
+        sub_02069DEC(mapObject, 0);
+    }
+}
+
+void sub_02069DEC(LocalMapObject *mapObject, int a1) {
+    int value;
+    u8 flag0;
+    u32 flag1;
+    u32 flag2;
+
+    value = MapObject_GetParam(mapObject, 2);
+    flag0 = value & 1;
+    flag1 = a1;
+    flag2 = value >> 2;
+    value = flag2 << 2;
+    value |= flag1 << 1;
+    value |= flag0 << 0;
+    MapObject_SetParam(mapObject, value, 2);
+}
+
+u8 sub_02069E14(LocalMapObject *mapObject) {
+    return (MapObject_GetParam(mapObject, 2) >> 1) & 1;
 }
