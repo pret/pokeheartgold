@@ -33,7 +33,7 @@ typedef struct ROAMER_SAVE {
     ROAMER data[ROAMER_MAX];
     u8 unk_60[ROAMER_MAX];
     u8 unk_64;
-    u8 unk_65;
+    u8 repelSteps;
     u8 unk_66;
     u8 flutePlayed;
 } ROAMER_SAVE;
@@ -52,8 +52,8 @@ u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, int a1);
 void RoamerMon_init(ROAMER ** roamer_p);
 int GetRoamerData(ROAMER *roamer, int a1);
 void SetRoamerData(ROAMER *roamer, int a1, int val);
-BOOL sub_0202DB08(ROAMER_SAVE *roamerSave);
+BOOL RoamerSave_RepelNotInUse(ROAMER_SAVE *roamerSave);
 void RoamerSave_SetFlute(ROAMER_SAVE *roamerSave, u8 a1);
-u8 sub_0202DB2C(ROAMER_SAVE *roamerSave);
+u8 RoamerSave_GetFlute(ROAMER_SAVE *roamerSave);
 
 #endif //POKEHEARTGOLD_ROAMER_H

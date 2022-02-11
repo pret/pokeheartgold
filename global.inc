@@ -5925,7 +5925,7 @@
 .public ov02_0224B998
 .public ov02_0224BA70
 .public ov02_0224BAA8
-.public ov02_0224BAE4
+.public PlayerStepEvent_RepelCounterDecrement
 .public PokecenterAnimCreate
 .public PokecenterAnimRun
 .public ov02_0224BDE8
@@ -27461,10 +27461,10 @@
 .public Roamers_GetRoamMonStats
 .public GetRoamerData
 .public SetRoamerData
-.public sub_0202DB04
-.public sub_0202DB08
+.public RoamerSave_GetRepelAddr
+.public RoamerSave_RepelNotInUse
 .public RoamerSave_SetFlute
-.public sub_0202DB2C
+.public RoamerSave_GetFlute
 .public sub_0202DB34
 .public sub_0202DB40
 .public sub_0202DB44

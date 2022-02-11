@@ -1,3 +1,6 @@
+#include "constants/sndseq.h"
+#include "constants/items.h"
+#include "msgdata/msg/msg_0010.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -682,7 +685,7 @@ ov15_021F993C: ; 0x021F993C
 	push {r4, lr}
 	add r4, r1, #0
 	bl ov15_021F992C
-	bl sub_0202DB04
+	bl RoamerSave_GetRepelAddr
 	strb r4, [r0]
 	pop {r4, pc}
 	thumb_func_end ov15_021F993C
@@ -4890,7 +4893,7 @@ ov15_021FB9D8: ; 0x021FB9D8
 	mov r1, #1
 	add r2, r5, #0
 	bl BufferItemName
-	cmp r5, #0x44
+	cmp r5, #ITEM_BLACK_FLUTE
 	bne _021FBA20
 	mov r0, #0x2f
 	lsl r0, r0, #4
@@ -4907,7 +4910,7 @@ ov15_021FB9D8: ; 0x021FB9D8
 	strh r1, [r4, r0]
 	b _021FBA7A
 _021FBA20:
-	cmp r5, #0x45
+	cmp r5, #ITEM_WHITE_FLUTE
 	bne _021FBA44
 	mov r0, #0x2f
 	lsl r0, r0, #4
@@ -4924,11 +4927,11 @@ _021FBA20:
 	strh r1, [r4, r0]
 	b _021FBA7A
 _021FBA44:
-	cmp r5, #0x4d
+	cmp r5, #ITEM_MAX_REPEL
 	beq _021FBA50
-	cmp r5, #0x4c
+	cmp r5, #ITEM_SUPER_REPEL
 	beq _021FBA50
-	cmp r5, #0x4f
+	cmp r5, #ITEM_REPEL
 	bne _021FBA5C
 _021FBA50:
 	add r0, r4, #0
@@ -4937,7 +4940,7 @@ _021FBA50:
 	add r5, r0, #0
 	b _021FBA7A
 _021FBA5C:
-	ldr r0, _021FBA94 ; =0x000001F6
+	ldr r0, _021FBA94 ; =ITEM_GB_SOUNDS
 	cmp r5, r0
 	bne _021FBA76
 	add r0, r4, #0
@@ -4965,7 +4968,7 @@ _021FBA7A:
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021FBA94: .word 0x000001F6
+_021FBA94: .word ITEM_GB_SOUNDS
 _021FBA98: .word 0x000005E4
 	thumb_func_end ov15_021FB9D8
 
@@ -4975,7 +4978,7 @@ ov15_021FBA9C: ; 0x021FBA9C
 	add r4, r0, #0
 	add r5, r1, #0
 	bl ov15_021F992C
-	bl sub_0202DB08
+	bl RoamerSave_RepelNotInUse
 	cmp r0, #0
 	bne _021FBAC4
 	mov r0, #0x1a
@@ -4985,7 +4988,7 @@ ov15_021FBA9C: ; 0x021FBA9C
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x3f
+	mov r1, #msg_0010_00063
 	bl NewString_ReadMsgData
 	pop {r3, r4, r5, pc}
 _021FBAC4:
@@ -4998,16 +5001,16 @@ _021FBAC4:
 	add r0, r4, #0
 	lsr r1, r1, #0x18
 	bl ov15_021F993C
-	mov r0, #0x1a
+	mov r0, #0x680>>6
 	mov r1, #1
 	lsl r0, r0, #6
 	strh r1, [r4, r0]
-	sub r0, #0x81
+	sub r0, #0x680-SEQ_SE_DP_CARD2
 	bl PlaySE
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x3e
+	mov r1, #msg_0010_00062
 	bl NewString_ReadMsgData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

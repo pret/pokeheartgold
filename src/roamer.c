@@ -11,7 +11,7 @@ void Save_Roamers_init(ROAMER_SAVE *roamer) {
     roamer->rand[0] = MTRandom();
     roamer->rand[1] = MTRandom();
     roamer->unk_64 = 0;
-    roamer->unk_65 = 0;
+    roamer->repelSteps = 0;
     roamer->unk_66 = 0;
     roamer->flutePlayed = 0;
 }
@@ -137,12 +137,12 @@ void SetRoamerData(ROAMER *roamer, int a1, int val) {
     }
 }
 
-u8 *sub_0202DB04(ROAMER_SAVE *roamerSave) {
-    return &roamerSave->unk_65;
+u8 *RoamerSave_GetRepelAddr(ROAMER_SAVE *roamerSave) {
+    return &roamerSave->repelSteps;
 }
 
-BOOL sub_0202DB08(ROAMER_SAVE *roamerSave) {
-    return roamerSave->unk_65 == 0;
+BOOL RoamerSave_RepelNotInUse(ROAMER_SAVE *roamerSave) {
+    return roamerSave->repelSteps == 0;
 }
 
 void RoamerSave_SetFlute(ROAMER_SAVE *roamerSave, u8 a1) {
@@ -150,6 +150,6 @@ void RoamerSave_SetFlute(ROAMER_SAVE *roamerSave, u8 a1) {
     roamerSave->flutePlayed = a1;
 }
 
-u8 sub_0202DB2C(ROAMER_SAVE *roamerSave) {
+u8 RoamerSave_GetFlute(ROAMER_SAVE *roamerSave) {
     return roamerSave->flutePlayed;
 }

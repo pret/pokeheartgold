@@ -3,6 +3,7 @@
 #include "constants/sndseq.h"
 #include "constants/items.h"
 #include "constants/pokemon.h"
+#include "constants/std_script.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -2252,7 +2253,7 @@ _02246CD6:
 	bl ov02_02248618
 	ldr r0, [r5, #0xc]
 	bl Save_Roamers_get
-	bl sub_0202DB08
+	bl RoamerSave_RepelNotInUse
 	cmp r0, #0
 	bne _02246D26
 	add r0, r6, #0
@@ -3713,7 +3714,7 @@ ApplyFluteEffectToEncounterRate: ; 0x0224782C
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
 	bl Save_Roamers_get
-	bl sub_0202DB2C
+	bl RoamerSave_GetFlute
 	cmp r0, #1
 	bne _02247846
 	ldrb r0, [r4]
@@ -12645,12 +12646,12 @@ _0224BAD4:
 	.balign 4, 0
 	thumb_func_end ov02_0224BAA8
 
-	thumb_func_start ov02_0224BAE4
-ov02_0224BAE4: ; 0x0224BAE4
+	thumb_func_start PlayerStepEvent_RepelCounterDecrement
+PlayerStepEvent_RepelCounterDecrement: ; 0x0224BAE4
 	push {r4, lr}
 	add r4, r1, #0
 	bl Save_Roamers_get
-	bl sub_0202DB04
+	bl RoamerSave_GetRepelAddr
 	ldrb r1, [r0]
 	cmp r1, #0
 	beq _0224BB0E
@@ -12659,7 +12660,7 @@ ov02_0224BAE4: ; 0x0224BAE4
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0224BB0E
-	ldr r1, _0224BB14 ; =0x000007E6
+	ldr r1, _0224BB14 ; =std_repel_wore_off
 	add r0, r4, #0
 	mov r2, #0
 	bl StartMapSceneScript
@@ -12669,8 +12670,8 @@ _0224BB0E:
 	mov r0, #0
 	pop {r4, pc}
 	nop
-_0224BB14: .word 0x000007E6
-	thumb_func_end ov02_0224BAE4
+_0224BB14: .word std_repel_wore_off
+	thumb_func_end PlayerStepEvent_RepelCounterDecrement
 
 	thumb_func_start PokecenterAnimCreate
 PokecenterAnimCreate: ; 0x0224BB18

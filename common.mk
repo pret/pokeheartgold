@@ -186,7 +186,7 @@ endif
 RESPONSE_TEMPLATE := $(PROJECT_ROOT)/mwldarm.response.template
 
 $(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
-	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(RESPONSE_TEMPLATE:$(PROJECT_ROOT)=$(PROJECT_ROOT_NT)) $@
+	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(shell wslpath -w RESPONSE_TEMPLATE:$(PROJECT_ROOT)=$(PROJECT_ROOT_NT)) $@
 
 # Locate crt0.o
 CRT0_OBJ := lib/asm/crt0.o

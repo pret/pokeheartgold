@@ -3916,12 +3916,12 @@ _021E78D4: .word 0x000007E5
 
 	thumb_func_start ov01_021E78D8
 ov01_021E78D8: ; 0x021E78D8
-	ldr r3, _021E78E0 ; =ov02_0224BAE4
+	ldr r3, _021E78E0 ; =PlayerStepEvent_RepelCounterDecrement
 	add r1, r0, #0
 	ldr r0, [r1, #0xc]
 	bx r3
 	.balign 4, 0
-_021E78E0: .word ov02_0224BAE4
+_021E78E0: .word PlayerStepEvent_RepelCounterDecrement
 	thumb_func_end ov01_021E78D8
 
 	thumb_func_start ov01_021E78E4
