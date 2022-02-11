@@ -126,7 +126,7 @@ _0203BCCA:
 	ldr r1, _0203BCD8 ; =sub_0203BEF0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, pc}
 	nop
 _0203BCD8: .word sub_0203BEF0
@@ -159,7 +159,7 @@ _0203BD10:
 	ldr r1, _0203BD1C ; =sub_0203BEF0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0203BD1C: .word sub_0203BEF0
@@ -192,7 +192,7 @@ _0203BD54:
 	ldr r1, _0203BD60 ; =sub_0203BEF0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0203BD60: .word sub_0203BEF0

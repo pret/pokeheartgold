@@ -432,7 +432,7 @@ ov93_0225F44C: ; 0x0225F44C
 	cmp r1, r2
 	ble _0225F4BC
 	ldr r0, _0225F540 ; =0x0000058F
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0225F4BC
 	ldr r0, _0225F540 ; =0x0000058F

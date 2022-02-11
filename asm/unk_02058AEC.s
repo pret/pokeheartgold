@@ -1430,7 +1430,7 @@ _02059640:
 	ldr r1, _0205964C ; =sub_02058D4C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 _0205964A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2389,7 +2389,7 @@ _02059D66:
 	str r0, [r2, #0x28]
 	ldr r0, [sp]
 	ldr r1, _02059DAC ; =sub_02059B64
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	bl sub_0203E2F4
 	pop {r3, r4, r5, r6, r7, pc}
 _02059D9C:

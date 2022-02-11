@@ -102,7 +102,7 @@ _021E59CA:
 	lsl r1, r0, #0xc
 	mov r0, ip
 	str r1, [r0, #0x40]
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	str r0, [r6, #0x1c]
 	add r0, r6, #0
 	bl ov85_021E7D08
@@ -1956,7 +1956,7 @@ ov85_021E670C: ; 0x021E670C
 	add r3, r1, #0
 	bl sub_0200FA24
 	ldr r5, [r4, #0x1c]
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	cmp r5, r0
 	beq _021E673E
 	lsl r1, r5, #0x10

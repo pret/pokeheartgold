@@ -6,6 +6,7 @@
 #include "constants/vars.h"
 #include "constants/items.h"
 #include "constants/std_script.h"
+#include "msgdata/msg/msg_0010.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 #include "party_menu.h"
 	.include "asm/macros.inc"
@@ -373,7 +374,7 @@ ItemFieldUseFunc_Bicycle: ; 0x02064C30
 	ldr r0, [r4]
 	ldr r1, _02064C54 ; =sub_02064C58
 	mov r2, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	ldr r2, [r4]
 	add r0, r2, #0
 	add r0, #0xd2
@@ -860,7 +861,7 @@ ItemFieldUseFunc_OldRod: ; 0x02065010
 	add r2, r0, #0
 	ldr r0, [r4]
 	ldr r1, _0206502C ; =ov01_021FC698
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -908,7 +909,7 @@ ItemFieldUseFunc_GoodRod: ; 0x0206506C
 	add r2, r0, #0
 	ldr r0, [r4]
 	ldr r1, _02065088 ; =ov01_021FC698
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -956,7 +957,7 @@ ItemFieldUseFunc_SuperRod: ; 0x020650C8
 	add r2, r0, #0
 	ldr r0, [r4]
 	ldr r1, _020650E4 ; =ov01_021FC698
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -1042,7 +1043,7 @@ ItemFieldUseFunc_Generic: ; 0x02065150
 	ldr r0, [r5]
 	ldr r1, _02065188 ; =sub_0206518C
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1495,7 +1496,7 @@ ItemFieldUseFunc_DowsingMchn: ; 0x020654F4
 	ldr r0, [r0]
 	ldr r1, _02065504 ; =sub_02065508
 	mov r2, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -1563,26 +1564,26 @@ ItemFieldUseFunc_GbSounds: ; 0x02065560
 	strh r0, [r4, #0x16]
 	bl NewMsgDataFromNarc
 	add r5, r0, #0
-	bl sub_02005C18
+	bl SoundSys_GetGBSoundsState
 	cmp r0, #1
 	bne _02065590
 	add r0, r5, #0
-	mov r1, #0x69
+	mov r1, #msg_0010_00105
 	bl NewString_ReadMsgData
 	b _02065598
 _02065590:
 	add r0, r5, #0
-	mov r1, #0x68
+	mov r1, #msg_0010_00104
 	bl NewString_ReadMsgData
 _02065598:
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	bl DestroyMsgData
-	bl sub_02005C24
+	bl SoundSys_ToggleGBSounds
 	ldr r0, [r6]
 	ldr r1, _020655B4 ; =sub_0206518C
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -1871,7 +1872,7 @@ sub_020657A4: ; 0x020657A4
 	ldr r0, [r5]
 	ldr r1, _020657E8 ; =sub_0206518C
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1988,11 +1989,11 @@ sub_020658B8: ; 0x020658B8
 	strb r2, [r0]
 	ldr r0, [r3]
 	add r2, r3, #0
-	ldr r3, _020658CC ; =sub_020504F0
+	ldr r3, _020658CC ; =FieldSys_CreateTask
 	ldr r1, _020658D0 ; =sub_020657EC
 	bx r3
 	nop
-_020658CC: .word sub_020504F0
+_020658CC: .word FieldSys_CreateTask
 _020658D0: .word sub_020657EC
 	thumb_func_end sub_020658B8
 

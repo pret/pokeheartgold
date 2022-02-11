@@ -3547,7 +3547,7 @@ _02077354: ; jump table
 	.short _02077378 - _02077354 - 2 ; case 4
 	.short _02077380 - _02077354 - 2 ; case 5
 _02077360:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	add r4, r0, #0
 	b _02077388
 _02077368:

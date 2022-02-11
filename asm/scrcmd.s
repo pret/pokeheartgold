@@ -10502,7 +10502,7 @@ ScrCmd_463: ; 0x02045254
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl sub_0202D9D0
+	bl RoamerSave_SetOutbreakActive
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ScrCmd_463

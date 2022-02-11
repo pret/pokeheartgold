@@ -33,7 +33,7 @@ sub_0206D494: ; 0x0206D494
 	ldr r1, _0206D4DC ; =sub_0206D4E4
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	ldr r0, _0206D4E0 ; =0x00000905
 	bl PlaySE
 	mov r0, #1

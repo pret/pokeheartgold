@@ -687,7 +687,7 @@ sub_02053470: ; 0x02053470
 	ldr r1, _02053488 ; =sub_02053414
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r4, pc}
 	.balign 4, 0
 _02053488: .word sub_02053414
@@ -775,13 +775,13 @@ _02053538:
 
 	thumb_func_start sub_0205353C
 sub_0205353C: ; 0x0205353C
-	ldr r3, _02053548 ; =sub_020504F0
+	ldr r3, _02053548 ; =FieldSys_CreateTask
 	mov r2, #0
 	str r2, [r0, #0x70]
 	ldr r1, _0205354C ; =sub_0205348C
 	bx r3
 	nop
-_02053548: .word sub_020504F0
+_02053548: .word FieldSys_CreateTask
 _0205354C: .word sub_0205348C
 	thumb_func_end sub_0205353C
 
@@ -930,7 +930,7 @@ _02053658:
 	str r1, [r4, #0x70]
 	ldr r1, _02053684 ; =sub_02053550
 	add r0, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02053684: .word sub_02053550
@@ -1257,7 +1257,7 @@ sub_020538C0: ; 0x020538C0
 	ldr r1, _02053904 ; =sub_02053950
 	str r0, [r3]
 	add r0, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	add sp, #0x14
 	pop {r4, r5, pc}
 	nop
@@ -1956,7 +1956,7 @@ sub_02053E08: ; 0x02053E08
 	str r0, [r2]
 	add r0, r5, #0
 	add r2, r7, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2089,7 +2089,7 @@ sub_02053F14: ; 0x02053F14
 	ldr r1, _02053F6C ; =sub_02053E5C
 	add r0, r5, #0
 	add r2, r6, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r0, #0
 	add r5, #0x80
 	str r0, [r5]

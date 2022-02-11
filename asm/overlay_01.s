@@ -26098,7 +26098,7 @@ ov01_021F1EA4: ; 0x021F1EA4
 	ldr r1, _021F1EC8 ; =ov01_021F1ECC
 	add r0, r4, #0
 	str r6, [r2, #0xc]
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F1EC8: .word ov01_021F1ECC
@@ -26706,7 +26706,7 @@ _021F23A6:
 	ldr r1, _021F23B4 ; =ov01_021F23B8
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F23B4: .word ov01_021F23B8
@@ -27398,7 +27398,7 @@ ov01_021F28EC: ; 0x021F28EC
 	add r2, r0, #0
 	ldr r1, _021F2904 ; =ov01_021F2944
 	add r0, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r4, pc}
 	nop
 _021F2904: .word ov01_021F2944
@@ -28539,7 +28539,7 @@ ov01_021F3170: ; 0x021F3170
 	ldr r1, _021F319C ; =ov01_021F31CC
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F3198: .word SEQ_SE_DP_F209
@@ -37341,7 +37341,7 @@ ov01_021F729C: ; 0x021F729C
 	ldr r1, _021F72D8 ; =ov01_021F7100
 	add r0, r6, #0
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r4, r5, r6, pc}
 _021F72CA:
 	ldr r1, _021F72D8 ; =ov01_021F7100

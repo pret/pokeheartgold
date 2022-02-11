@@ -1388,7 +1388,7 @@ _021E6364:
 	bne _021E637A
 	ldr r0, _021E639C ; =0x00000868
 	mov r1, #0x1e
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 	b _021E638A
 _021E637A:
 	bhs _021E638A
@@ -1397,7 +1397,7 @@ _021E637A:
 	lsl r1, r1, #8
 	ldr r0, _021E639C ; =0x00000868
 	lsr r1, r1, #8
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 _021E638A:
 	ldr r0, _021E6398 ; =0x00000414
 	ldr r1, [r4, r0]
@@ -2566,7 +2566,7 @@ ov106_021E6C88: ; 0x021E6C88
 	beq _021E6C98
 	bl GF_AssertFail
 _021E6C98:
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	strh r0, [r4, #0x18]
 	mov r0, #1
 	pop {r4, pc}
@@ -2582,7 +2582,7 @@ ov106_021E6CA8: ; 0x021E6CA8
 	beq _021E6CB4
 	bl GF_AssertFail
 _021E6CB4:
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	mov r0, #1

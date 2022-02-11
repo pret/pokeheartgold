@@ -347,7 +347,7 @@ _02052C20:
 	ldr r0, [r5, #0x40]
 	cmp r0, #0
 	bne _02052CA8
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	mov r0, #0

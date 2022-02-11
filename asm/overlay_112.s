@@ -15035,7 +15035,7 @@ ov112_021ED314: ; 0x021ED314
 	cmp r0, #0
 	beq _021ED32A
 	ldr r0, _021ED32C ; =0x00000934
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021ED32A
 	ldr r0, _021ED32C ; =0x00000934

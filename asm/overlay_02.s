@@ -1029,7 +1029,7 @@ _0224635A:
 	b _0224638E
 _02246374:
 	ldr r0, _02246394 ; =0x0000087D
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0224638E
 	add r0, r4, #0
@@ -2048,7 +2048,7 @@ ov02_02246B58: ; 0x02246B58
 	add r7, r3, #0
 	bl Save_Roamers_get
 	str r0, [sp]
-	bl sub_0202D9E0
+	bl RoamerSave_OutbreakActive
 	cmp r0, #0
 	beq _02246B9A
 	ldr r0, [sp]
@@ -2082,7 +2082,7 @@ ov02_02246B9C: ; 0x02246B9C
 	add r6, r2, #0
 	bl Save_Roamers_get
 	add r7, r0, #0
-	bl sub_0202D9E0
+	bl RoamerSave_OutbreakActive
 	cmp r0, #0
 	beq _02246BD4
 	add r0, r7, #0
@@ -2115,7 +2115,7 @@ ov02_02246BD8: ; 0x02246BD8
 	add r4, r3, #0
 	bl Save_Roamers_get
 	str r0, [sp]
-	bl sub_0202D9E0
+	bl RoamerSave_OutbreakActive
 	cmp r0, #0
 	beq _02246C7A
 	ldr r0, [sp]
@@ -13187,7 +13187,7 @@ _0224BF00:
 	b _0224BF48
 _0224BF2C:
 	ldr r0, _0224BF54 ; =0x000005F1
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0224BF48
 	ldrb r0, [r4, #2]

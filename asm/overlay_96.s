@@ -13618,7 +13618,7 @@ _021EBDDE:
 	add r0, #0xb5
 	mov r7, #0x16
 	strb r1, [r0]
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0x10
 	bl StopBGM
 	ldr r0, _021EBFFC ; =0x000006EE
@@ -15567,7 +15567,7 @@ ov96_021ECD24: ; 0x021ECD24
 _021ECD3A:
 	ldr r0, _021ECDC0 ; =0x000008E3
 	str r1, [r6, #0x14]
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021ECD4C
 	ldr r0, _021ECDC0 ; =0x000008E3
@@ -20408,7 +20408,7 @@ ov96_021EF280: ; 0x021EF280
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	add r1, r5, #0
 	add r2, sp, #0
 	bl sub_02005B78
@@ -25135,7 +25135,7 @@ _021F194A:
 	bne _021F199A
 	mov r0, #0x89
 	lsl r0, r0, #4
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021F199A
 	mov r0, #0x89
@@ -59654,7 +59654,7 @@ _02202B70:
 	strh r1, [r6, r0]
 	mov r0, #0x89
 	lsl r0, r0, #4
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _02202BC2
 	mov r0, #0x89
@@ -59894,7 +59894,7 @@ _02202D5A:
 	strh r1, [r6, r0]
 	mov r0, #0x89
 	lsl r0, r0, #4
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _02202E58
 	mov r0, #0x89
@@ -78093,7 +78093,7 @@ _0220BD90:
 _0220BDB4:
 	mov r0, #0x89
 	lsl r0, r0, #4
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0220BE14
 	mov r0, #0x89
@@ -90576,7 +90576,7 @@ _02211FC8:
 	bl ov96_021EB570
 	mov r0, #0x89
 	lsl r0, r0, #4
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _02211FFE
 	mov r0, #0x89
@@ -101177,7 +101177,7 @@ _022170A0:
 	bl sub_0200DC58
 	mov r0, #0x89
 	lsl r0, r0, #4
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _022170CE
 	mov r0, #0x89

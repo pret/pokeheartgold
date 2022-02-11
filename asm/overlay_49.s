@@ -15342,7 +15342,7 @@ _0225F8E2:
 	b _0225F9FA
 _0225F902:
 	ldr r0, _0225FA08 ; =0x000005BF
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0225F9FA
 	ldr r0, _0225FA0C ; =gSystem

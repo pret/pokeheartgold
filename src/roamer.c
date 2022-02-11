@@ -37,12 +37,12 @@ ROAMER_SAVE *Save_Roamers_get(SAVEDATA *saveData) {
     return SavArray_get(saveData, SAVE_ROAMER);
 }
 
-void sub_0202D9D0(SAVEDATA *saveData) {
+void RoamerSave_SetOutbreakActive(SAVEDATA *saveData) {
     ROAMER_SAVE *roamer = Save_Roamers_get(saveData);
     roamer->unk_64 = 1;
 }
 
-u8 sub_0202D9E0(ROAMER_SAVE *roamerSave) {
+u8 RoamerSave_OutbreakActive(ROAMER_SAVE *roamerSave) {
     return roamerSave->unk_64;
 }
 

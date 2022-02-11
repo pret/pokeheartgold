@@ -3868,7 +3868,7 @@ _0223994A:
 	bl ov12_0223BD58
 	add r4, r0, #0
 	ldr r0, _02239988 ; =0x00000704
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _02239984
 	sub r1, r4, #1
@@ -11121,7 +11121,7 @@ _0223CF28: ; jump table
 	.short _0223CF4C - _0223CF28 - 2 ; case 4
 	.short _0223CF54 - _0223CF28 - 2 ; case 5
 _0223CF34:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	add r4, r0, #0
 	b _0223CF5C
 _0223CF3C:

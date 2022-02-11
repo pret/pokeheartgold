@@ -212,7 +212,7 @@ _021E5A94:
 	bl PlayCry
 	mov r0, #1
 	mov r1, #0x30
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 	mov r0, #5
 	str r0, [sp]
 	mov r0, #1

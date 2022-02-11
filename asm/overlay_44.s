@@ -8209,13 +8209,13 @@ ov44_0222E030: ; 0x0222E030
 	bl sub_02004EC4
 	pop {r4, pc}
 _0222E056:
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	add r4, r0, #0
-	bl sub_02004A90
-	bl sub_02005498
+	bl GF_GetCurrentPlayingBGM
+	bl GF_GetVolumeBySeqNo
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 	pop {r4, pc}
 	nop
 _0222E070: .word 0x00000427
@@ -8224,7 +8224,7 @@ _0222E070: .word 0x00000427
 	thumb_func_start ov44_0222E074
 ov44_0222E074: ; 0x0222E074
 	push {r3, lr}
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	ldr r1, _0222E08C ; =0x00000427
 	cmp r0, r1
 	beq _0222E086
@@ -20322,7 +20322,7 @@ ov44_02233F3C: ; 0x02233F3C
 	bl ov44_02233EF8
 	cmp r0, #0
 	beq _02233F4E
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	bl sub_02005448
 _02233F4E:
 	pop {r3, pc}

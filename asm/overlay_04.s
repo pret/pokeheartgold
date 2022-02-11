@@ -1791,7 +1791,7 @@ _02254C9E:
 ov04_02254CA4: ; 0x02254CA4
 	push {r3, lr}
 	ldr r0, _02254CB8 ; =SEQ_SE_DP_KI_GASYAN
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _02254CB4
 	mov r0, #1
@@ -3229,7 +3229,7 @@ _0225574A:
 	ldr r0, [r5]
 	ldr r1, _022557FC ; =ov04_02255AC4
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r1, #1
 	b _022557F2
 _02255762:
@@ -3262,7 +3262,7 @@ _02255762:
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r1, #1
 	b _022557F2
 _022557AA:
@@ -3296,7 +3296,7 @@ _022557AA:
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	mov r1, #1
 _022557F2:
 	add r0, r1, #0

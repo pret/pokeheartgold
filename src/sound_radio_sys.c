@@ -5,8 +5,8 @@ int sRadioSeqNo = 0;
 NNSSndHandle sSndHandle = {NULL};
 
 static void StopMusic(void) {
-    GF_SndStopPlayerBgm();
     GF_SndStopPlayerField();
+    GF_SndStopPlayerBgm();
 }
 
 void SndRadio_Init(NNSSndHeapHandle *heap_p) {

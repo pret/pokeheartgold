@@ -1106,7 +1106,7 @@ _021E61B6:
 	add r1, r5, #0
 	bl ov87_021E74F4
 	ldr r0, _021E63FC ; =0x0000055F
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021E61EA
 	ldr r0, _021E63FC ; =0x0000055F

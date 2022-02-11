@@ -2420,7 +2420,7 @@ _021E6C9E: ; jump table
 	.short _021E6CBE - _021E6C9E - 2 ; case 4
 	.short _021E6CC8 - _021E6C9E - 2 ; case 5
 _021E6CAA:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	pop {r3, pc}
 _021E6CB0:
 	bl IsFanfarePlaying
@@ -2436,7 +2436,7 @@ _021E6CBE:
 	b _021E6CD0
 _021E6CC8:
 	ldr r0, _021E6CD4 ; =0x000005E6
-	bl sub_02006184
+	bl IsSEPlaying
 	pop {r3, pc}
 _021E6CD0:
 	mov r0, #0

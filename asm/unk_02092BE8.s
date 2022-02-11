@@ -546,7 +546,7 @@ sub_02092FB8: ; 0x02092FB8
 	cmp r2, #0
 	bne _02092FFA
 	ldr r0, _0209300C ; =0x00000879
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _02092FE8
 	ldr r0, _0209300C ; =0x00000879

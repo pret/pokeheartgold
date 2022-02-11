@@ -855,7 +855,7 @@ _0225CBEA:
 	add r2, r5, r2
 	bl MTX_MultVec43
 	ldr r0, _0225CC68 ; =0x0000058A
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0225CC3A
 	ldr r0, _0225CC68 ; =0x0000058A
@@ -7031,7 +7031,7 @@ _0225FE3E:
 	cmp r0, #0
 	beq _0225FE66
 	ldr r0, _0225FEB0 ; =0x0000058A
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0225FE54
 	ldr r0, _0225FEB0 ; =0x0000058A

@@ -12,7 +12,7 @@ typedef struct HiddenItemResponse {
 } HiddenItemResponse;
 
 void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastTalked);
-void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int a5, int a6, int idx);
+void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int trainerNum, int encounterType, int idx);
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastTalked, void *a3);
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastTalked);
 BOOL Task_RunScripts(TaskManager *taskman);
@@ -63,10 +63,9 @@ void* FieldSysGetAttrAddr(FieldSystem *fsys, enum ScriptEnvField field);
 BOOL sub_0203BC10(FieldSystem *);
 void sub_0203BD64(FieldSystem *);
 
-TaskManager *Task_new(FieldSystem *a0, u32 a1);
-void sub_020504F0(FieldSystem *a0, BOOL (*a1)(TaskManager *), ScriptEnvironment *a2);
-void NowRunTask(TaskManager *a0, BOOL (*a1)(TaskManager *), ScriptEnvironment *a2);
-void QueueTask(TaskManager *a0, BOOL (*a1)(TaskManager *), ScriptEnvironment *a2);
+void FieldSys_CreateTask(FieldSystem *taskman, BOOL (*taskfunc)(TaskManager *), ScriptEnvironment *env);
+void NowRunTask(TaskManager *taskman, BOOL (*taskfunc)(TaskManager *), ScriptEnvironment *env);
+void QueueTask(TaskManager *taskman, BOOL (*taskfunc)(TaskManager *), ScriptEnvironment *env);
 FieldSystem *TaskManager_GetSys(TaskManager *taskman);
 ScriptEnvironment* TaskManager_GetEnv(TaskManager *taskman);
 void* PlayerAvatar_GetFacingDirection(FIELD_PLAYER_AVATAR *playerAvatar);

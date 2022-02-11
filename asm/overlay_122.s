@@ -550,11 +550,11 @@ _021E5D38:
 	bl ov122_021E84C8
 _021E5D46:
 	ldr r0, _021E5D70 ; =0x00000938
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	beq _021E5D5A
 	ldr r0, _021E5D74 ; =0x00000939
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021E5D6C
 _021E5D5A:
@@ -1064,7 +1064,7 @@ _021E610E:
 	b _021E612E
 _021E6116:
 	ldr r0, _021E6138 ; =0x00000927
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _021E612E
 	bl IsFanfarePlaying
@@ -1270,7 +1270,7 @@ _021E62C0:
 	bl ov122_021E84C8
 	b _021E6346
 _021E62C8:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	cmp r0, #0
 	bne _021E6346
 	add r0, r5, #0
@@ -1489,7 +1489,7 @@ _021E648A:
 	bl ov122_021E84C8
 	b _021E64DC
 _021E649C:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	cmp r0, #0
 	bne _021E64DC
 	add r0, r4, #0

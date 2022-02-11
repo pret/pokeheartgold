@@ -149,7 +149,7 @@ sub_02055C9C: ; 0x02055C9C
 	ldr r0, [sp, #0x20]
 	str r0, [r2, #0x1c]
 	add r0, r7, #0
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02055CD4: .word sub_02055DBC
@@ -259,7 +259,7 @@ _02055DA8:
 	add r0, r7, #0
 	add r2, r6, #0
 	str r4, [r6, #0x1c]
-	bl sub_020504F0
+	bl FieldSys_CreateTask
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

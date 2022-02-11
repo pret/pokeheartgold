@@ -62,31 +62,31 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
 void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastTalked) {
     ScriptEnvironment *r4 = ScriptEnvironment_new();
     SetupScriptEngine(fsys, r4, script, lastTalked, NULL);
-    sub_020504F0(fsys, Task_RunScripts, r4);
+    FieldSys_CreateTask(fsys, Task_RunScripts, r4);
 }
 
-void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int a5, int a6, int idx) {
+void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, int a3, int a4, int trainerNum, int encounterType, int idx) {
     ScriptEnvironment *env = TaskManager_GetEnv(fsys->taskman);
     EngagedTrainer *r0 = &env->engagedTrainers[idx];
     r0->unk0 = a2;
     r0->unk4 = a3;
     r0->unk8 = a4;
-    r0->trainerNum = a5;
-    r0->encounterType = a6;
+    r0->trainerNum = trainerNum;
+    r0->encounterType = encounterType;
     r0->objectEvent = obj;
 }
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastTalked, void *a3) {
-    FieldSystem *sp8 = TaskManager_GetSys(taskman);
-    ScriptEnvironment *r4 = ScriptEnvironment_new();
-    SetupScriptEngine(sp8, r4, script, lastTalked, a3);
-    QueueTask(taskman, Task_RunScripts, r4);
+    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    ScriptEnvironment *env = ScriptEnvironment_new();
+    SetupScriptEngine(fsys, env, script, lastTalked, a3);
+    QueueTask(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastTalked) {
-    FieldSystem *sp8 = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetSys(taskman);
     ScriptEnvironment *env = ScriptEnvironment_new();
-    SetupScriptEngine(sp8, env, script, lastTalked, NULL);
+    SetupScriptEngine(fsys, env, script, lastTalked, NULL);
     NowRunTask(taskman, Task_RunScripts, env);
 }
 

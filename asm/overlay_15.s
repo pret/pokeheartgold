@@ -6,8 +6,8 @@
 
 	.text
 
-	thumb_func_start ov15_021F9380
-ov15_021F9380: ; 0x021F9380
+	thumb_func_start ov15_BagApp_init
+ov15_BagApp_init: ; 0x021F9380
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -51,7 +51,7 @@ ov15_021F9380: ; 0x021F9380
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r4, #0
-	bl ov15_021F98F4
+	bl BagApp_GetSaveStructPtrs
 	mov r0, #6
 	bl BgConfig_Alloc
 	str r0, [r4]
@@ -276,10 +276,10 @@ _021F95F8: .word 0x00000615
 _021F95FC: .word 0x00000644
 _021F9600: .word ov15_021F995C
 _021F9604: .word 0x04000304
-	thumb_func_end ov15_021F9380
+	thumb_func_end ov15_BagApp_init
 
-	thumb_func_start ov15_021F9608
-ov15_021F9608: ; 0x021F9608
+	thumb_func_start ov15_BagApp_exec
+ov15_BagApp_exec: ; 0x021F9608
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -561,10 +561,10 @@ _021F9810:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov15_021F9608
+	thumb_func_end ov15_BagApp_exec
 
-	thumb_func_start ov15_021F982C
-ov15_021F982C: ; 0x021F982C
+	thumb_func_start ov15_BagApp_exit
+ov15_BagApp_exit: ; 0x021F982C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -637,10 +637,10 @@ ov15_021F982C: ; 0x021F982C
 	nop
 _021F98EC: .word 0x0000068C
 _021F98F0: .word 0x000005E4
-	thumb_func_end ov15_021F982C
+	thumb_func_end ov15_BagApp_exit
 
-	thumb_func_start ov15_021F98F4
-ov15_021F98F4: ; 0x021F98F4
+	thumb_func_start BagApp_GetSaveStructPtrs
+BagApp_GetSaveStructPtrs: ; 0x021F98F4
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x8d
@@ -666,10 +666,10 @@ ov15_021F98F4: ; 0x021F98F4
 	lsl r1, r1, #6
 	str r0, [r4, r1]
 	pop {r4, pc}
-	thumb_func_end ov15_021F98F4
+	thumb_func_end BagApp_GetSaveStructPtrs
 
-	thumb_func_start ov15_021F992C
-ov15_021F992C: ; 0x021F992C
+	thumb_func_start BagApp_GetSaveRoamers
+BagApp_GetSaveRoamers: ; 0x021F992C
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
@@ -678,27 +678,27 @@ ov15_021F992C: ; 0x021F992C
 	bx r3
 	.balign 4, 0
 _021F9938: .word Save_Roamers_get
-	thumb_func_end ov15_021F992C
+	thumb_func_end BagApp_GetSaveRoamers
 
-	thumb_func_start ov15_021F993C
-ov15_021F993C: ; 0x021F993C
+	thumb_func_start BagApp_GetRepelStepCountAddr
+BagApp_GetRepelStepCountAddr: ; 0x021F993C
 	push {r4, lr}
 	add r4, r1, #0
-	bl ov15_021F992C
+	bl BagApp_GetSaveRoamers
 	bl RoamerSave_GetRepelAddr
 	strb r4, [r0]
 	pop {r4, pc}
-	thumb_func_end ov15_021F993C
+	thumb_func_end BagApp_GetRepelStepCountAddr
 
-	thumb_func_start ov15_021F994C
-ov15_021F994C: ; 0x021F994C
+	thumb_func_start BagApp_SetFlute
+BagApp_SetFlute: ; 0x021F994C
 	push {r4, lr}
 	add r4, r1, #0
-	bl ov15_021F992C
+	bl BagApp_GetSaveRoamers
 	add r1, r4, #0
 	bl RoamerSave_SetFlute
 	pop {r4, pc}
-	thumb_func_end ov15_021F994C
+	thumb_func_end BagApp_SetFlute
 
 	thumb_func_start ov15_021F995C
 ov15_021F995C: ; 0x021F995C
@@ -2760,7 +2760,7 @@ _021FA8F6:
 	strh r2, [r1]
 	ldr r1, [sp, #0x1c]
 	bl ov15_021FD774
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #0x24
@@ -3565,7 +3565,7 @@ _021FAF3E:
 	beq _021FAFE0
 	b _021FAFAC
 _021FAF46:
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	ldr r0, _021FAFF8 ; =0x00000672
@@ -3959,7 +3959,7 @@ _021FB25A:
 	ldrh r1, [r1]
 	cmp r1, r0
 	bne _021FB27A
-	bl sub_02005C18
+	bl SoundSys_GetGBSoundsState
 	cmp r0, #1
 	bne _021FB27A
 	mov r1, #0xf
@@ -4224,7 +4224,7 @@ _021FB452:
 	bl ov15_021FFECC
 	cmp r6, #4
 	bne _021FB48C
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #1
@@ -4274,7 +4274,7 @@ _021FB4DE:
 	mov r0, #2
 	tst r0, r1
 	beq _021FB4F2
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #1
@@ -4642,7 +4642,7 @@ _021FB7D6:
 	add r0, r4, #0
 	add r1, #0x66
 	ldrh r1, [r1]
-	bl ov15_021FB9D8
+	bl BagApp_TryUseItemInPlace
 	cmp r0, #1
 	bne _021FB7F4
 	ldr r1, _021FB818 ; =ov15_021FBBB0
@@ -4875,8 +4875,8 @@ _021FB9D0: .word gSystem + 0x40
 _021FB9D4: .word 0x00000804
 	thumb_func_end ov15_021FB830
 
-	thumb_func_start ov15_021FB9D8
-ov15_021FB9D8: ; 0x021FB9D8
+	thumb_func_start BagApp_TryUseItemInPlace
+BagApp_TryUseItemInPlace: ; 0x021FB9D8
 	push {r3, r4, r5, lr}
 	mov r2, #0xbd
 	add r4, r0, #0
@@ -4898,12 +4898,12 @@ ov15_021FB9D8: ; 0x021FB9D8
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x41
+	mov r1, #msg_0010_00065
 	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov15_021F994C
+	bl BagApp_SetFlute
 	mov r0, #0x1a
 	mov r1, #0
 	lsl r0, r0, #6
@@ -4915,12 +4915,12 @@ _021FBA20:
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x40
+	mov r1, #msg_0010_00064
 	bl NewString_ReadMsgData
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl ov15_021F994C
+	bl BagApp_SetFlute
 	mov r0, #0x1a
 	mov r1, #0
 	lsl r0, r0, #6
@@ -4936,7 +4936,7 @@ _021FBA44:
 _021FBA50:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov15_021FBA9C
+	bl BagApp_TryUseRepel
 	add r5, r0, #0
 	b _021FBA7A
 _021FBA5C:
@@ -4945,7 +4945,7 @@ _021FBA5C:
 	bne _021FBA76
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov15_021FBAF8
+	bl BagApp_ToggleGBSounds
 	add r5, r0, #0
 	mov r0, #0x1a
 	mov r1, #0
@@ -4970,14 +4970,14 @@ _021FBA7A:
 	.balign 4, 0
 _021FBA94: .word ITEM_GB_SOUNDS
 _021FBA98: .word 0x000005E4
-	thumb_func_end ov15_021FB9D8
+	thumb_func_end BagApp_TryUseItemInPlace
 
-	thumb_func_start ov15_021FBA9C
-ov15_021FBA9C: ; 0x021FBA9C
+	thumb_func_start BagApp_TryUseRepel
+BagApp_TryUseRepel: ; 0x021FBA9C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r5, r1, #0
-	bl ov15_021F992C
+	bl BagApp_GetSaveRoamers
 	bl RoamerSave_RepelNotInUse
 	cmp r0, #0
 	bne _021FBAC4
@@ -5000,7 +5000,7 @@ _021FBAC4:
 	lsl r1, r1, #0x18
 	add r0, r4, #0
 	lsr r1, r1, #0x18
-	bl ov15_021F993C
+	bl BagApp_GetRepelStepCountAddr
 	mov r0, #0x680>>6
 	mov r1, #1
 	lsl r0, r0, #6
@@ -5014,31 +5014,31 @@ _021FBAC4:
 	bl NewString_ReadMsgData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov15_021FBA9C
+	thumb_func_end BagApp_TryUseRepel
 
-	thumb_func_start ov15_021FBAF8
-ov15_021FBAF8: ; 0x021FBAF8
+	thumb_func_start BagApp_ToggleGBSounds
+BagApp_ToggleGBSounds: ; 0x021FBAF8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02005C18
+	bl SoundSys_GetGBSoundsState
 	cmp r0, #1
 	bne _021FBB16
-	bl sub_02005C24
+	bl SoundSys_ToggleGBSounds
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x69
+	mov r1, #msg_0010_00105
 	bl NewString_ReadMsgData
 	pop {r4, pc}
 _021FBB16:
-	bl sub_02005C24
+	bl SoundSys_ToggleGBSounds
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	mov r1, #0x68
+	mov r1, #msg_0010_00104
 	bl NewString_ReadMsgData
 	pop {r4, pc}
-	thumb_func_end ov15_021FBAF8
+	thumb_func_end BagApp_ToggleGBSounds
 
 	thumb_func_start ov15_021FBB28
 ov15_021FBB28: ; 0x021FBB28
@@ -5583,7 +5583,7 @@ _021FBF4C:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FBF66:
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #7
@@ -7016,7 +7016,7 @@ _021FCAF2:
 	strh r2, [r0]
 	add r0, r5, #0
 	bl ov15_021FD774
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	ldr r0, _021FCB60 ; =0x00000644
@@ -7561,7 +7561,7 @@ _021FCF7C:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _021FCF96:
-	mov r0, #0x25
+	mov r0, #SEQ_SE_GS_GEARCANCEL>>6
 	lsl r0, r0, #6
 	bl PlaySE
 	mov r0, #0x14
@@ -11558,24 +11558,24 @@ _021FEFD6: ; jump table
 	.short _021FEFEC - _021FEFD6 - 2 ; case 3
 	.short _021FEFF4 - _021FEFD6 - 2 ; case 4
 _021FEFE0:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	pop {r3, pc}
 _021FEFE6:
 	bl IsFanfarePlaying
 	pop {r3, pc}
 _021FEFEC:
-	ldr r0, _021FF000 ; =0x0000060C
+	ldr r0, _021FF000 ; =SEQ_SE_DP_PC_LOGIN
 	bl PlaySE
 	b _021FEFFC
 _021FEFF4:
-	ldr r0, _021FF000 ; =0x0000060C
-	bl sub_02006184
+	ldr r0, _021FF000 ; =SEQ_SE_DP_PC_LOGIN
+	bl IsSEPlaying
 	pop {r3, pc}
 _021FEFFC:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-_021FF000: .word 0x0000060C
+_021FF000: .word SEQ_SE_DP_PC_LOGIN
 	thumb_func_end ov15_021FEFC4
 
 	thumb_func_start ov15_021FF004
@@ -14399,7 +14399,7 @@ ov15_022008B0: ; 0x022008B0
 
 	.public ov15_022008B8
 ov15_022008B8:
-	.word ov15_021F9380, ov15_021F9608, ov15_021F982C, 0xFFFFFFFF
+	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, 0xFFFFFFFF
 
 ov15_022008C8: ; 0x022008C8
 	.byte 0xA5, 0x28, 0x18, 0x65, 0x40, 0x0C, 0x1E, 0x32
@@ -14654,13 +14654,30 @@ ov15_02201314: ; 0x02201314
 	.word ov15_02200568
 
 ov15_02201328: ; 0x02201328
-	.byte 0x00, 0x04, 0x10, 0x06, 0x10, 0x04, 0x10, 0x06
-	.byte 0x00, 0x09, 0x10, 0x06, 0x10, 0x09, 0x10, 0x06, 0x00, 0x0E, 0x10, 0x06, 0x10, 0x0E, 0x10, 0x06
+	;        x     y     w     h
+	.byte 0x00, 0x04, 0x10, 0x06
+	.byte 0x10, 0x04, 0x10, 0x06
+	.byte 0x00, 0x09, 0x10, 0x06
+	.byte 0x10, 0x09, 0x10, 0x06
+	.byte 0x00, 0x0E, 0x10, 0x06
+	.byte 0x10, 0x0E, 0x10, 0x06
 
 ov15_02201340: ; 0x02201340
-	.byte 0x00, 0x0B, 0x10, 0x09, 0x10, 0x06, 0x10, 0x10, 0x00, 0x0B, 0x20, 0x09, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x10, 0x10, 0x04, 0x10, 0x0B, 0x10, 0x09, 0x00, 0x10, 0x20, 0x04, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x10, 0x10, 0x10, 0x04
+	;        x     y     w     h
+	.byte 0x00, 0x0B, 0x10, 0x09
+	.byte 0x10, 0x06, 0x10, 0x10
+
+	.byte 0x00, 0x0B, 0x20, 0x09
+	.byte 0x00, 0x00, 0x00, 0x00
+
+	.byte 0x00, 0x10, 0x10, 0x04
+	.byte 0x10, 0x0B, 0x10, 0x09
+
+	.byte 0x00, 0x10, 0x20, 0x04
+	.byte 0x00, 0x00, 0x00, 0x00
+
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x10, 0x10, 0x10, 0x04
 
 ov15_02201368: ; 0x02201368
 	.word ov15_021FB680
@@ -14681,19 +14698,23 @@ ov15_02201368: ; 0x02201368
 	.word ov15_021FB680
 
 ov15_022013A8: ; 0x022013A8
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x04, 0x20, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00, 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0A, 0x10, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x02, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00, 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0A, 0x20, 0x0A, 0x00, 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0F, 0x10, 0x05, 0x00, 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x10, 0x0A, 0x10, 0x0A, 0x00, 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x00, 0x0F, 0x20, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00
-	.byte 0x02, 0x00, 0x00, 0x10, 0x0F, 0x10, 0x05, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x04, 0x20, 0x10, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x10, 0x0A, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x10, 0x04, 0x10, 0x10, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x09, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x20, 0x0A, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0F, 0x10, 0x05, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x09, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x10, 0x0A, 0x10, 0x0A, 0x00
+
+	.byte 0x01, 0x00, 0x13, 0x00, 0x0E, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0F, 0x20, 0x05, 0x00
+
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x01, 0x10, 0x13, 0x10, 0x0E, 0x10, 0x01, 0x00, 0x02, 0x00, 0x00, 0x10, 0x0F, 0x10, 0x05, 0x00
 
 ov15_02201468: ; 0x02201468
 	.byte 0x11, 0x12, 0x13, 0x14, 0x10, 0x00, 0x00, 0x00

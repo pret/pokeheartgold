@@ -37,7 +37,7 @@ ScrCmd_PlayBGM: ; 0x02049134
 ScrCmd_081: ; 0x02049144
 	push {r3, lr}
 	bl ScriptReadHalfword
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	mov r0, #0
@@ -220,7 +220,7 @@ sub_02049288: ; 0x02049288
 	ldr r0, [r0, #0x64]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0204929C
 	mov r0, #1
@@ -435,7 +435,7 @@ ScrCmd_544: ; 0x020493E4
 	bl VarGet
 	add r1, r0, #0
 	add r0, r5, #0
-	bl sub_020054AC
+	bl GF_SetVolumeBySeqNo
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -476,7 +476,7 @@ ScrCmd_666: ; 0x02049440
 	ldr r0, [r4]
 	bl GetVarPointer
 	add r4, r0, #0
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	strh r0, [r4]
 	mov r0, #0
 	pop {r4, pc}

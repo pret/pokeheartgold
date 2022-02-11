@@ -288,7 +288,7 @@ sub_02054FDC: ; 0x02054FDC
 	pop {r3, r4, r5, r6, r7, pc}
 _02054FFC:
 	add r0, r5, #0
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	cmp r4, r0
 	bne _0205500C
 	add sp, #0x10
@@ -425,7 +425,7 @@ sub_020550E4: ; 0x020550E4
 	bl sub_02004A54
 	cmp r0, #1
 	beq _0205510C
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0

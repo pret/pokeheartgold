@@ -23658,7 +23658,7 @@ ov80_022353D0: ; 0x022353D0
 	push {r3, lr}
 	add r0, #0x78
 	ldrh r0, [r0]
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _022353E2
 	mov r0, #1
@@ -23723,7 +23723,7 @@ ov80_0223541C: ; 0x0223541C
 ov80_02235438: ; 0x02235438
 	push {r3, lr}
 	bl ov80_0222AC58
-	bl sub_02004A90
+	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
 	mov r0, #0

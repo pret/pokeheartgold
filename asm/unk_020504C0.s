@@ -29,8 +29,8 @@ Task_new: ; 0x020504C0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end Task_new
 
-	thumb_func_start sub_020504F0
-sub_020504F0: ; 0x020504F0
+	thumb_func_start FieldSys_CreateTask
+FieldSys_CreateTask: ; 0x020504F0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
@@ -46,7 +46,7 @@ _02050502:
 	bl Task_new
 	str r0, [r5, #0x10]
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_020504F0
+	thumb_func_end FieldSys_CreateTask
 
 	thumb_func_start NowRunTask
 NowRunTask: ; 0x02050510

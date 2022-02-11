@@ -1156,7 +1156,7 @@ _0221C60C:
 	ldr r0, [r5, #0x14]
 	bl sub_020061EC
 	ldrh r0, [r5, #0x1a]
-	bl sub_02006184
+	bl IsSEPlaying
 	cmp r0, #0
 	bne _0221C61E
 	mov r4, #0
@@ -1765,7 +1765,7 @@ _0221CA16:
 	strb r1, [r5, r0]
 	pop {r3, r4, r5, r6, r7, pc}
 _0221CA26:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	cmp r0, #0
 	beq _0221CA50
 	ldr r0, _0221CBB0 ; =0x0000017D
@@ -7324,7 +7324,7 @@ ov07_0221F39C: ; 0x0221F39C
 	strb r1, [r4, r0]
 	pop {r4, pc}
 _0221F3B8:
-	bl sub_02006198
+	bl GF_IsAnySEPlaying
 	cmp r0, #0
 	beq _0221F3DC
 	ldr r0, _0221F3F0 ; =0x0000017D
