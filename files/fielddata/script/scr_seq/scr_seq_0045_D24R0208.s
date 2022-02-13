@@ -101,9 +101,9 @@ _0173:
 _0185:
 	setvar VAR_UNK_40CE, 1
 	play_se SEQ_SE_GS_RAKKA01
-	compare VAR_UNK_403E, 7
+	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ge _01D1
-	compare VAR_UNK_403E, 6
+	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_eq _01FB
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade

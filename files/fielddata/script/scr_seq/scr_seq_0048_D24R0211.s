@@ -77,7 +77,7 @@ scr_seq_D24R0211_001:
 	npc_msg msg_0079_D24R0211_00006
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
-	addvar VAR_UNK_403E, 1
+	addvar VAR_UNOWN_REPORT_LEVEL, 1
 	waitbutton
 	closemsg
 	releaseall

@@ -871,7 +871,7 @@ gScriptCmdTable:
 	.word ScrCmd_MystriStageGymmickInit                                    ; 818
 	.word ScrCmd_819                                    ; 819
 	.word ScrCmd_820                                    ; 820
-	.word ScrCmd_821                                    ; 821
+	.word ScrCmd_GetBuenasPassword                                    ; 821
 	.word ScrCmd_822                                    ; 822
 	.word ScrCmd_823                                    ; 823
 	.word ScrCmd_824                                    ; 824

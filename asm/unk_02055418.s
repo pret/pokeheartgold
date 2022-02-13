@@ -189,7 +189,7 @@ _0205559E:
 	bl sub_02031AE4
 	ldr r0, [r5, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066E94
+	bl ScriptState_UpdateBuenasPasswordSet
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02055508
 

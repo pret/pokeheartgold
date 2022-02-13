@@ -4575,7 +4575,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_821 arg0, arg1
+	.macro get_buenas_password arg0, arg1
 	.short 821
 	.short \arg0
 	.short \arg1

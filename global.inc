@@ -2501,7 +2501,7 @@
 .public ScrCmd_MystriStageGymmickInit
 .public ScrCmd_819
 .public ScrCmd_820
-.public ScrCmd_821
+.public ScrCmd_GetBuenasPassword
 .public ScrCmd_822
 .public ScrCmd_823
 .public ScrCmd_824
@@ -29169,8 +29169,8 @@
 .public sub_02066E58
 .public sub_02066E74
 .public sub_02066E84
-.public sub_02066E94
-.public sub_02066ECC
+.public ScriptState_UpdateBuenasPasswordSet
+.public ScriptState_GetBuenasPasswordSet
 .public sub_02067118
 .public sub_02067200
 .public sub_020672A4

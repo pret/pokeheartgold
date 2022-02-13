@@ -170,11 +170,11 @@ _02066B6C: .word VAR_MAGIKARP_SIZE_RECORD
 	thumb_func_start sub_02066B70
 sub_02066B70: ; 0x02066B70
 	ldr r3, _02066B78 ; =GetScriptVar
-	ldr r1, _02066B7C ; =VAR_UNK_403E
+	ldr r1, _02066B7C ; =VAR_UNOWN_REPORT_LEVEL
 	bx r3
 	nop
 _02066B78: .word GetScriptVar
-_02066B7C: .word VAR_UNK_403E
+_02066B7C: .word VAR_UNOWN_REPORT_LEVEL
 	thumb_func_end sub_02066B70
 
 	thumb_func_start sub_02066B80
@@ -645,10 +645,10 @@ _02066E8C: .word SetScriptVar
 _02066E90: .word VAR_UNK_4057
 	thumb_func_end sub_02066E84
 
-	thumb_func_start sub_02066E94
-sub_02066E94: ; 0x02066E94
+	thumb_func_start ScriptState_UpdateBuenasPasswordSet
+ScriptState_UpdateBuenasPasswordSet: ; 0x02066E94
 	push {r3, r4, r5, lr}
-	ldr r1, _02066EC8 ; =VAR_UNK_4033
+	ldr r1, _02066EC8 ; =VAR_BUENAS_PASSWORD_SET
 	add r5, r0, #0
 	bl GetScriptVar
 	add r4, r0, #0
@@ -665,23 +665,23 @@ sub_02066E94: ; 0x02066E94
 	lsl r0, r1, #0x10
 	lsr r2, r0, #0x10
 _02066EBE:
-	ldr r1, _02066EC8 ; =VAR_UNK_4033
+	ldr r1, _02066EC8 ; =VAR_BUENAS_PASSWORD_SET
 	add r0, r5, #0
 	bl SetScriptVar
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_02066EC8: .word VAR_UNK_4033
-	thumb_func_end sub_02066E94
+_02066EC8: .word VAR_BUENAS_PASSWORD_SET
+	thumb_func_end ScriptState_UpdateBuenasPasswordSet
 
-	thumb_func_start sub_02066ECC
-sub_02066ECC: ; 0x02066ECC
+	thumb_func_start ScriptState_GetBuenasPasswordSet
+ScriptState_GetBuenasPasswordSet: ; 0x02066ECC
 	ldr r3, _02066ED4 ; =GetScriptVar
-	ldr r1, _02066ED8 ; =VAR_UNK_4033
+	ldr r1, _02066ED8 ; =VAR_BUENAS_PASSWORD_SET
 	bx r3
 	nop
 _02066ED4: .word GetScriptVar
-_02066ED8: .word VAR_UNK_4033
-	thumb_func_end sub_02066ECC
+_02066ED8: .word VAR_BUENAS_PASSWORD_SET
+	thumb_func_end ScriptState_GetBuenasPasswordSet
 
 	.rodata
 

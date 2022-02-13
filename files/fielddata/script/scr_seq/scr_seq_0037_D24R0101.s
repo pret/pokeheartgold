@@ -16,9 +16,9 @@
 	scrdef_end
 
 scr_seq_D24R0101_006:
-	compare VAR_UNK_403E, 7
+	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ge _005E
-	compare VAR_UNK_403E, 6
+	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_eq _0080
 _003C:
 	scrcmd_342 11, 418, 284
@@ -68,9 +68,9 @@ _0104:
 _010E:
 	clearflag FLAG_HIDE_CAMERON
 _0112:
-	compare VAR_UNK_403E, 7
+	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ge _005E
-	compare VAR_UNK_403E, 6
+	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_eq _0080
 	goto _003C
 	.byte 0x02, 0x00
@@ -273,7 +273,7 @@ _03EA:
 	setflag FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT
 	clearflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 	play_se SEQ_SE_DP_KAIDAN2
-	compare VAR_UNK_403E, 6
+	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_ne _0467
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -283,7 +283,7 @@ _03EA:
 	goto _0530
 
 _0467:
-	compare VAR_UNK_403E, 7
+	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ne _049E
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -293,7 +293,7 @@ _0467:
 	goto _0530
 
 _049E:
-	compare VAR_UNK_403E, 8
+	compare VAR_UNOWN_REPORT_LEVEL, 8
 	goto_if_ne _04D5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -303,7 +303,7 @@ _049E:
 	goto _0530
 
 _04D5:
-	compare VAR_UNK_403E, 9
+	compare VAR_UNOWN_REPORT_LEVEL, 9
 	goto_if_ne _050C
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade

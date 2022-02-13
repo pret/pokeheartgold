@@ -133,12 +133,12 @@ _016A:
 	goto_if_no_item_space ITEM_BLUE_CARD, 1, _0539
 	callstd std_give_item_verbose
 	closemsg
-	addvar VAR_UNK_4115, 1
+	addvar VAR_BUENA_ACQUAINTANCE_LEVEL, 1
 	releaseall
 	end
 
 _01B5:
-	compare VAR_UNK_4115, 2
+	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 2
 	goto_if_lt _01CF
 	buffer_players_name 0
 	gender_msgbox msg_0066_D23R0102_00012, msg_0066_D23R0102_00013
@@ -156,7 +156,7 @@ _01D2:
 	end
 
 _01EA:
-	goto_if_set FLAG_UNK_AA3, _0547
+	goto_if_set FLAG_DAILY_BUENAS_PASSWORD, _0547
 	npc_msg msg_0066_D23R0102_00014
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -164,7 +164,7 @@ _01EA:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0552
 	buffer_players_name 0
-	compare VAR_UNK_4115, 2
+	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 2
 	goto_if_lt _0227
 	gender_msgbox msg_0066_D23R0102_00017, msg_0066_D23R0102_00018
 	goto _022B
@@ -207,7 +207,7 @@ _02B0:
 _02B8:
 	wait_movement
 _02BA:
-	scrcmd_821 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
+	get_buenas_password VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 0, VAR_SPECIAL_RESULT
 	menu_item_add VAR_SPECIAL_x8000, 255, 0
@@ -218,7 +218,7 @@ _02BA:
 	menu_exec
 	touchscreen_menu_show
 	setflag FLAG_UNK_102
-	setflag FLAG_UNK_AA3
+	setflag FLAG_DAILY_BUENAS_PASSWORD
 	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
 	compare VAR_SPECIAL_RESULT, VAR_SPECIAL_x8001
@@ -229,13 +229,13 @@ _02BA:
 	apply_movement obj_player, _060C
 	wait_movement
 	play_se SEQ_SE_GS_OKOZUKAI
-	compare VAR_UNK_413A, 30
+	compare VAR_BLUE_CARD_POINTS, 30
 	goto_if_ge _033F
-	addvar VAR_UNK_413A, 1
+	addvar VAR_BLUE_CARD_POINTS, 1
 _033F:
-	compare VAR_UNK_413A, 30
+	compare VAR_BLUE_CARD_POINTS, 30
 	goto_if_lt _0387
-	compare VAR_UNK_4115, 2
+	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 2
 	goto_if_ge _0387
 	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
@@ -251,21 +251,21 @@ _033F:
 	npc_msg msg_0066_D23R0102_00027
 	closemsg
 _0387:
-	compare VAR_UNK_413A, 1
+	compare VAR_BLUE_CARD_POINTS, 1
 	goto_if_eq _0499
-	compare VAR_UNK_413A, 3
+	compare VAR_BLUE_CARD_POINTS, 3
 	goto_if_eq _04AD
-	compare VAR_UNK_413A, 5
+	compare VAR_BLUE_CARD_POINTS, 5
 	goto_if_eq _04C1
-	compare VAR_UNK_413A, 10
+	compare VAR_BLUE_CARD_POINTS, 10
 	goto_if_eq _04D5
-	compare VAR_UNK_413A, 15
+	compare VAR_BLUE_CARD_POINTS, 15
 	goto_if_eq _04E9
-	compare VAR_UNK_413A, 20
+	compare VAR_BLUE_CARD_POINTS, 20
 	goto_if_eq _04FD
-	compare VAR_UNK_413A, 25
+	compare VAR_BLUE_CARD_POINTS, 25
 	goto_if_eq _0511
-	compare VAR_UNK_413A, 30
+	compare VAR_BLUE_CARD_POINTS, 30
 	goto_if_eq _0525
 	goto _0568
 
@@ -283,7 +283,7 @@ _03F5:
 	scrcmd_603
 	scrcmd_602 1
 	scrcmd_604 48
-	buffer_int 0, VAR_UNK_413A
+	buffer_int 0, VAR_BLUE_CARD_POINTS
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg msg_0066_D23R0102_00035
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
@@ -291,7 +291,7 @@ _03F5:
 	goto_if_eq _0539
 	callstd std_give_item_verbose
 _0450:
-	compare VAR_UNK_413A, 30
+	compare VAR_BLUE_CARD_POINTS, 30
 	goto_if_lt _0486
 	npc_msg msg_0066_D23R0102_00036
 	closemsg
@@ -299,11 +299,11 @@ _0450:
 	npc_msg msg_0066_D23R0102_00037
 	wait_fanfare
 	closemsg
-	compare VAR_UNK_4115, 255
+	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 255
 	goto_if_ge _0480
-	addvar VAR_UNK_4115, 1
+	addvar VAR_BUENA_ACQUAINTANCE_LEVEL, 1
 _0480:
-	setvar VAR_UNK_413A, 0
+	setvar VAR_BLUE_CARD_POINTS, 0
 _0486:
 	npc_msg msg_0066_D23R0102_00038
 	closemsg
@@ -404,7 +404,7 @@ scr_seq_D23R0102_010:
 	end
 
 _05B0:
-	buffer_int 0, VAR_UNK_413A
+	buffer_int 0, VAR_BLUE_CARD_POINTS
 	npc_msg msg_0066_D23R0102_00034
 	waitbutton
 	closemsg

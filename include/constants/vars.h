@@ -63,7 +63,7 @@
 #define VAR_PLAYER_STARTER           0x4030
 #define VAR_UNK_4031                 0x4031
 #define VAR_UNK_4032                 0x4032
-#define VAR_UNK_4033                 0x4033
+#define VAR_BUENAS_PASSWORD_SET                 0x4033
 #define VAR_UNK_4034                 0x4034
 #define VAR_MAGIKARP_SIZE_RECORD     0x4035
 #define VAR_UNK_4036                 0x4036
@@ -74,7 +74,7 @@
 #define VAR_UNK_403B                 0x403B
 #define VAR_LOTO_NUMBER_LO           0x403C
 #define VAR_LOTO_NUMBER_HI           0x403D
-#define VAR_UNK_403E                 0x403E
+#define VAR_UNOWN_REPORT_LEVEL                 0x403E
 #define VAR_FOLLOWER_TRAINER_NUM                 0x403F
 #define VAR_UNK_4040                 0x4040
 #define VAR_UNK_4041                 0x4041
@@ -289,7 +289,7 @@
 #define VAR_UNK_4112                 0x4112
 #define VAR_ELEVATOR_LAST_FLOOR                 0x4113
 #define VAR_UNK_4114                 0x4114
-#define VAR_UNK_4115                 0x4115
+#define VAR_BUENA_ACQUAINTANCE_LEVEL                 0x4115
 #define VAR_UNK_4116                 0x4116
 #define VAR_SCENE_POKECENTER_WIFI_BASEMENT                 0x4117
 #define VAR_UNK_4118                 0x4118
@@ -326,7 +326,7 @@
 #define VAR_UNK_4137                 0x4137
 #define VAR_MYSTERY_GIFT_CHECK                 0x4138
 #define VAR_UNK_4139                 0x4139
-#define VAR_UNK_413A                 0x413A
+#define VAR_BLUE_CARD_POINTS                 0x413A
 #define VAR_UNK_413B                 0x413B
 #define VAR_UNK_413C                 0x413C
 #define VAR_UNK_413D                 0x413D

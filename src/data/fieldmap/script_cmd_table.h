@@ -821,7 +821,7 @@ extern BOOL ScrCmd_817(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_MystriStageGymmickInit(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_819(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_820(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_821(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_822(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_823(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_824(SCRIPTCONTEXT *ctx);
@@ -1676,7 +1676,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MystriStageGymmickInit,
     ScrCmd_819,
     ScrCmd_820,
-    ScrCmd_821,
+    ScrCmd_GetBuenasPassword,
     ScrCmd_822,
     ScrCmd_823,
     ScrCmd_824,

@@ -61252,8 +61252,8 @@ ScrCmd_812: ; 0x022024FC
 	pop {r3, pc}
 	thumb_func_end ScrCmd_812
 
-	thumb_func_start ScrCmd_821
-ScrCmd_821: ; 0x02202510
+	thumb_func_start ScrCmd_GetBuenasPassword
+ScrCmd_GetBuenasPassword: ; 0x02202510
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl ScriptReadHalfword
@@ -61275,7 +61275,7 @@ ScrCmd_821: ; 0x02202510
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	bl SavArray_Flags_get
-	bl sub_02066ECC
+	bl ScriptState_GetBuenasPasswordSet
 	mov r1, #0x1e
 	bl _s32_div_f
 	lsl r0, r1, #0x18
@@ -61293,7 +61293,7 @@ ScrCmd_821: ; 0x02202510
 	strh r1, [r6]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScrCmd_821
+	thumb_func_end ScrCmd_GetBuenasPassword
 
 	thumb_func_start ov01_02202570
 ov01_02202570: ; 0x02202570

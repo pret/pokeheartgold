@@ -31459,7 +31459,7 @@ _021F6948:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl SavArray_Flags_get
-	bl sub_02066ECC
+	bl ScriptState_GetBuenasPasswordSet
 	mov r1, #0x1e
 	bl _s32_div_f
 	lsl r0, r1, #0x10

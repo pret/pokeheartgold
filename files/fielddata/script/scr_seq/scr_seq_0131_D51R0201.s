@@ -723,7 +723,7 @@ _0AA6:
 	clearflag FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE
 _0AAA:
 	play_se SEQ_SE_DP_KAIDAN2
-	compare VAR_UNK_403E, 6
+	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_ne _0AE5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -733,7 +733,7 @@ _0AAA:
 	goto _0BAE
 
 _0AE5:
-	compare VAR_UNK_403E, 7
+	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ne _0B1C
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -743,7 +743,7 @@ _0AE5:
 	goto _0BAE
 
 _0B1C:
-	compare VAR_UNK_403E, 8
+	compare VAR_UNOWN_REPORT_LEVEL, 8
 	goto_if_ne _0B53
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -753,7 +753,7 @@ _0B1C:
 	goto _0BAE
 
 _0B53:
-	compare VAR_UNK_403E, 9
+	compare VAR_UNOWN_REPORT_LEVEL, 9
 	goto_if_ne _0B8A
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade

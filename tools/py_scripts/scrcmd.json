@@ -5118,7 +5118,7 @@
       ]
     },
     {
-      "name": "scrcmd_821",
+      "name": "get_buenas_password",
       "args": [
         "var",
         "var"

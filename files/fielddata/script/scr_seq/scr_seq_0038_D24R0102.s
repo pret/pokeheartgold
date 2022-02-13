@@ -95,11 +95,11 @@ scr_seq_D24R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_403E, 8
+	compare VAR_UNOWN_REPORT_LEVEL, 8
 	goto_if_eq _033C
-	compare VAR_UNK_403E, 7
+	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_eq _02C4
-	compare VAR_UNK_403E, 4
+	compare VAR_UNOWN_REPORT_LEVEL, 4
 	goto_if_ge _0277
 	scrcmd_545 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -124,23 +124,23 @@ _01BA:
 	goto _0366
 
 _01C3:
-	compare VAR_UNK_403E, 1
+	compare VAR_UNOWN_REPORT_LEVEL, 1
 	goto_if_eq _035D
 	goto _02FA
 
 _01D6:
-	compare VAR_UNK_403E, 2
+	compare VAR_UNOWN_REPORT_LEVEL, 2
 	goto_if_eq _035D
-	compare VAR_UNK_403E, 1
+	compare VAR_UNOWN_REPORT_LEVEL, 1
 	goto_if_eq _0303
 	goto _02FA
 
 _01F6:
-	compare VAR_UNK_403E, 3
+	compare VAR_UNOWN_REPORT_LEVEL, 3
 	goto_if_eq _035D
-	compare VAR_UNK_403E, 2
+	compare VAR_UNOWN_REPORT_LEVEL, 2
 	goto_if_eq _030C
-	compare VAR_UNK_403E, 1
+	compare VAR_UNOWN_REPORT_LEVEL, 1
 	goto_if_eq _0303
 	goto _02FA
 
@@ -149,29 +149,29 @@ _0223:
 	goto_if_eq _01B1
 	compare VAR_UNK_40EC, 1
 	goto_if_eq _01BA
-	compare VAR_UNK_403E, 4
+	compare VAR_UNOWN_REPORT_LEVEL, 4
 	goto_if_eq _035D
-	compare VAR_UNK_403E, 3
+	compare VAR_UNOWN_REPORT_LEVEL, 3
 	goto_if_eq _0315
-	compare VAR_UNK_403E, 2
+	compare VAR_UNOWN_REPORT_LEVEL, 2
 	goto_if_eq _030C
-	compare VAR_UNK_403E, 1
+	compare VAR_UNOWN_REPORT_LEVEL, 1
 	goto_if_eq _0303
 	goto _02FA
 
 _0277:
-	compare VAR_UNK_403E, 6
+	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_eq _035D
 	compare VAR_UNK_40F1, 4
 	goto_if_eq _02B1
-	compare VAR_UNK_403E, 5
+	compare VAR_UNOWN_REPORT_LEVEL, 5
 	goto_if_eq _035D
 	compare VAR_UNK_40F1, 1
 	goto_if_ge _0321
 	goto _035D
 
 _02B1:
-	compare VAR_UNK_403E, 5
+	compare VAR_UNOWN_REPORT_LEVEL, 5
 	goto_if_eq _032A
 	goto _0321
 
@@ -229,7 +229,7 @@ _0345:
 	npc_msg msg_0073_D24R0102_00016
 	play_fanfare SEQ_ME_LVUP
 	wait_fanfare
-	addvar VAR_UNK_403E, 1
+	addvar VAR_UNOWN_REPORT_LEVEL, 1
 	goto _0366
 
 _035D:
@@ -267,7 +267,7 @@ scr_seq_D24R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_403E, 7
+	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ge _03EB
 	scrcmd_770 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
