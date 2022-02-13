@@ -207,14 +207,14 @@ _02B0:
 _02B8:
 	wait_movement
 _02BA:
-	scrcmd_821 32768, 32769
+	scrcmd_821 VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 32768, 255, 0
+	menu_item_add VAR_SPECIAL_x8000, 255, 0
 	addvar VAR_SPECIAL_x8000, 1
-	menu_item_add 32768, 255, 1
+	menu_item_add VAR_SPECIAL_x8000, 255, 1
 	addvar VAR_SPECIAL_x8000, 1
-	menu_item_add 32768, 255, 2
+	menu_item_add VAR_SPECIAL_x8000, 255, 2
 	menu_exec
 	touchscreen_menu_show
 	setflag FLAG_UNK_102

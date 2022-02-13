@@ -228,7 +228,7 @@ _0331:
 	end
 
 _0339:
-	scrcmd_234 32772, 32773, 32775, 16386
+	scrcmd_234 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007, VAR_TEMP_x4002
 	scrcmd_232 25
 	scrcmd_233 25
 	compare VAR_TEMP_x4003, 0
@@ -288,7 +288,7 @@ _03FE:
 	scrcmd_233 24
 	scrcmd_587
 	wait 10, VAR_SPECIAL_RESULT
-	scrcmd_235 16386
+	scrcmd_235 VAR_TEMP_x4002
 	clearflag FLAG_UNK_966
 	setvar VAR_UNK_4133, 0
 	goto _0443

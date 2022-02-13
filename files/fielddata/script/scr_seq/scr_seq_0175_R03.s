@@ -15,7 +15,7 @@
 scr_seq_R03_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_517 386, 32780
+	scrcmd_517 386, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
@@ -58,7 +58,7 @@ _00BE:
 scr_seq_R03_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_517 386, 32780
+	scrcmd_517 386, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
@@ -107,7 +107,7 @@ _018C:
 scr_seq_R03_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_517 386, 32780
+	scrcmd_517 386, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000
@@ -143,7 +143,7 @@ _022C:
 scr_seq_R03_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	scrcmd_517 386, 32780
+	scrcmd_517 386, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DF
 	get_lead_mon_index VAR_TEMP_x4000

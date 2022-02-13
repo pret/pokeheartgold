@@ -21,7 +21,7 @@ scr_seq_D24R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_545 32780
+	scrcmd_545 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 28
 	goto_if_eq _0093
 	compare VAR_UNK_40EC, 1
@@ -101,10 +101,10 @@ scr_seq_D24R0102_001:
 	goto_if_eq _02C4
 	compare VAR_UNK_403E, 4
 	goto_if_ge _0277
-	scrcmd_545 32780
+	scrcmd_545 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02DB
-	scrcmd_770 32780
+	scrcmd_770 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0223
 	compare VAR_UNK_40EC, 4
@@ -176,7 +176,7 @@ _02B1:
 	goto _0321
 
 _02C4:
-	scrcmd_545 32780
+	scrcmd_545 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 28
 	goto_if_eq _0333
 	goto _035D
@@ -246,10 +246,10 @@ scr_seq_D24R0102_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_770 32780
+	scrcmd_770 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03AA
-	scrcmd_545 32780
+	scrcmd_545 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03A1
 	npc_msg msg_0073_D24R0102_00019
@@ -269,7 +269,7 @@ scr_seq_D24R0102_003:
 	faceplayer
 	compare VAR_UNK_403E, 7
 	goto_if_ge _03EB
-	scrcmd_770 32780
+	scrcmd_770 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03E2
 	npc_msg msg_0073_D24R0102_00021

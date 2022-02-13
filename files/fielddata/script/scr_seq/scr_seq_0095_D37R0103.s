@@ -152,7 +152,7 @@ _0416:
 
 _041C:
 	goto_if_set FLAG_UNK_097, _03C9
-	scrcmd_622 4, 16384
+	scrcmd_622 4, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0440
 	goto _0446
@@ -177,7 +177,7 @@ _0446:
 
 _0483:
 	goto_if_set FLAG_UNK_098, _03C9
-	scrcmd_622 4, 16384
+	scrcmd_622 4, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _04A7
 	goto _04AD

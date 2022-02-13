@@ -333,7 +333,7 @@ _0494:
 	goto _0587
 
 _049D:
-	scrcmd_791 0, 32780
+	scrcmd_791 0, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _04B8
 	npc_msg msg_0135_D47R0101_00033
@@ -347,7 +347,7 @@ _04C3:
 	goto _0587
 	.byte 0x02, 0x00
 _04CB:
-	scrcmd_791 1, 32780
+	scrcmd_791 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _057E
 	npc_msg msg_0135_D47R0101_00037
@@ -831,7 +831,7 @@ _0BB2:
 	scrcmd_822
 	scrcmd_283
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_823 16384
+	scrcmd_823 VAR_TEMP_x4000
 	touchscreen_menu_hide
 	npc_msg msg_0135_D47R0101_00082
 	npc_msg msg_0135_D47R0101_00088
@@ -884,11 +884,11 @@ _0C4C:
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0DF2
-	scrcmd_824 16384
+	scrcmd_824 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0C84
 	setvar VAR_TEMP_x4000, 0
-	scrcmd_823 16384
+	scrcmd_823 VAR_TEMP_x4000
 	npc_msg msg_0135_D47R0101_00054
 	goto _0C8F
 

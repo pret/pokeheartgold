@@ -107,7 +107,7 @@ _015C:
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_lt _0274
 	setvar VAR_SPECIAL_RESULT, 0
-	scrcmd_509 32780
+	scrcmd_509 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0260
 	goto _01FB
@@ -357,7 +357,7 @@ scr_seq_T08R0201_009:
 	faceplayer
 	compare VAR_TEMP_x4009, 1
 	goto_if_eq _0511
-	scrcmd_528 32780
+	scrcmd_528 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _051C
 	compare VAR_SPECIAL_RESULT, 5

@@ -14,7 +14,7 @@
 scr_seq_T25R0601_002:
 	goto_if_set FLAG_UNK_15D, _0058
 	goto_if_unset FLAG_UNK_0B5, _0058
-	scrcmd_688 16384, 492
+	scrcmd_688 VAR_TEMP_x4000, 492
 	compare VAR_TEMP_x4000, 255
 	goto_if_eq _0058
 	get_lead_mon_index VAR_TEMP_x4000
@@ -266,7 +266,7 @@ scr_seq_T25R0601_001:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_15D, _03FD
-	scrcmd_688 32780, 492
+	scrcmd_688 VAR_SPECIAL_RESULT, 492
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _03F2
 	get_lead_mon_index VAR_TEMP_x4000
@@ -281,7 +281,7 @@ _03F2:
 	end
 
 _03FD:
-	scrcmd_688 32780, 492
+	scrcmd_688 VAR_SPECIAL_RESULT, 492
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _03F2
 	get_lead_mon_index VAR_TEMP_x4000

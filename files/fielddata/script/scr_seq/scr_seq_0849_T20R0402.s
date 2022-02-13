@@ -43,7 +43,7 @@ _005C:
 
 _006D:
 	get_lead_mon_index VAR_SPECIAL_x8006
-	scrcmd_825 32774, 32780
+	scrcmd_825 VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
 	goto_if_set FLAG_UNK_161, _00B1
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _009E
@@ -83,7 +83,7 @@ _00E4:
 	goto _010D
 
 _00FC:
-	scrcmd_826 32774
+	scrcmd_826 VAR_SPECIAL_x8006
 	setflag FLAG_UNK_184
 	buffer_players_name 0
 	gender_msgbox msg_0549_T20R0402_00011, msg_0549_T20R0402_00012

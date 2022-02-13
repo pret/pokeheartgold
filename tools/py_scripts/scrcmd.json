@@ -766,7 +766,7 @@
     {
       "name": "check_athlete_points",
       "args": [
-        2,
+        "var",
         2
       ]
     },
@@ -1026,8 +1026,8 @@
     {
       "name": "scrcmd_165",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -1466,16 +1466,16 @@
     {
       "name": "scrcmd_234",
       "args": [
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_235",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1497,8 +1497,8 @@
     {
       "name": "scrcmd_239",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -1628,7 +1628,7 @@
     {
       "name": "scrcmd_260",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1663,19 +1663,19 @@
       "name": "scrcmd_267",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_268",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_269",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -1692,20 +1692,20 @@
     {
       "name": "scrcmd_272",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_273",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_274",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -1784,7 +1784,7 @@
     {
       "name": "scrcmd_289",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2184,7 +2184,7 @@
     {
       "name": "scrcmd_359",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -2299,7 +2299,7 @@
       "name": "scrcmd_378",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -2543,10 +2543,10 @@
     {
       "name": "scrcmd_413",
       "args": [
+        "var",
         2,
-        2,
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -2686,7 +2686,7 @@
     {
       "name": "scrcmd_434",
       "args": [
-        2,
+        "var",
         2
       ]
     },
@@ -3020,8 +3020,8 @@
     {
       "name": "get_ev_total",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -3217,7 +3217,7 @@
     {
       "name": "scrcmd_509",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3262,7 +3262,7 @@
       "name": "scrcmd_517",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -3330,7 +3330,7 @@
     {
       "name": "scrcmd_528",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3394,7 +3394,7 @@
     {
       "name": "scrcmd_538",
       "args": [
-        2,
+        "var",
         2
       ]
     },
@@ -3407,7 +3407,7 @@
     {
       "name": "scrcmd_540",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3443,7 +3443,7 @@
     {
       "name": "scrcmd_545",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3648,7 +3648,7 @@
     {
       "name": "scrcmd_576",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3702,7 +3702,7 @@
     {
       "name": "scrcmd_586",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3736,7 +3736,7 @@
     {
       "name": "scrcmd_592",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -3898,7 +3898,7 @@
       "name": "scrcmd_622",
       "args": [
         2,
-        2
+        "var"
       ]
     },
     {
@@ -3948,7 +3948,7 @@
     {
       "name": "scrcmd_630",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4132,8 +4132,8 @@
     {
       "name": "scrcmd_656",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -4304,7 +4304,7 @@
     {
       "name": "scrcmd_681",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4349,7 +4349,7 @@
     {
       "name": "scrcmd_688",
       "args": [
-        2,
+        "var",
         2
       ]
     },
@@ -4638,7 +4638,7 @@
     {
       "name": "scrcmd_735",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4648,13 +4648,13 @@
     {
       "name": "scrcmd_737",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_738",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4664,17 +4664,17 @@
     {
       "name": "scrcmd_740",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_741",
       "args": [
-        2,
-        2,
-        2,
-        2
+        "var",
+        "var",
+        "var",
+        "var"
       ]
     },
     {
@@ -4688,7 +4688,7 @@
     {
       "name": "scrcmd_743",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4739,9 +4739,9 @@
     {
       "name": "menu_item_add",
       "args": [
+        "var",
         2,
-        2,
-        2
+        "var"
       ]
     },
     {
@@ -4831,7 +4831,7 @@
     {
       "name": "scrcmd_770",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -4958,7 +4958,7 @@
       "name": "scrcmd_791",
       "args": [
         1,
-        2
+        "var"
       ]
     },
     {
@@ -5120,8 +5120,8 @@
     {
       "name": "scrcmd_821",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
@@ -5131,26 +5131,26 @@
     {
       "name": "scrcmd_823",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_824",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_825",
       "args": [
-        2,
-        2
+        "var",
+        "var"
       ]
     },
     {
       "name": "scrcmd_826",
       "args": [
-        2
+        "var"
       ]
     },
     {
@@ -5201,19 +5201,19 @@
     {
       "name": "scrcmd_834",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_835",
       "args": [
-        2
+        "var"
       ]
     },
     {
       "name": "scrcmd_836",
       "args": [
-        2
+        "var"
       ]
     },
     {

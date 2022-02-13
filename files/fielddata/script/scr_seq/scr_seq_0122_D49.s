@@ -776,7 +776,7 @@ scr_seq_D49_019:
 	goto_if_unset FLAG_UNK_997, _095F
 _0A1D:
 	scrcmd_113 21, 1
-	scrcmd_741 16391, 32768, 32769, 32770
+	scrcmd_741 VAR_TEMP_x4007, VAR_SPECIAL_x8000, VAR_SPECIAL_x8001, VAR_SPECIAL_x8002
 	apply_movement obj_D49_shopm1_2, _0BEC
 	wait_movement
 	npc_msg msg_0137_D49_00033
@@ -800,7 +800,7 @@ _0A3A:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_114
-	scrcmd_740 32768, 32771
+	scrcmd_740 VAR_SPECIAL_x8000, VAR_SPECIAL_x8003
 	scrcmd_150
 	scrcmd_113 21, 1
 	fade_screen 6, 1, 1, RGB_BLACK

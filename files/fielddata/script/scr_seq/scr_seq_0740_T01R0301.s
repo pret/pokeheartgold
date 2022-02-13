@@ -214,7 +214,7 @@ _02C0:
 	end
 
 _02CB:
-	scrcmd_836 32773
+	scrcmd_836 VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 1
 	goto_if_eq _040D
 	goto_if_set FLAG_UNK_0BC, _03DE

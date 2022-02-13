@@ -260,7 +260,7 @@ _037A:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _03CF
 	closemsg
-	scrcmd_378 4, 32780
+	scrcmd_378 4, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD
@@ -288,7 +288,7 @@ _03F1:
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _03CF
 	closemsg
-	scrcmd_378 3, 32780
+	scrcmd_378 3, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD
@@ -319,7 +319,7 @@ _04B0:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0505
 	closemsg
-	scrcmd_378 1, 32780
+	scrcmd_378 1, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD
@@ -348,7 +348,7 @@ _0527:
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0505
 	closemsg
-	scrcmd_378 0, 32780
+	scrcmd_378 0, VAR_SPECIAL_RESULT
 	npc_msg msg_0522_T10R0101_00007
 	touchscreen_menu_hide
 	goto _02CD

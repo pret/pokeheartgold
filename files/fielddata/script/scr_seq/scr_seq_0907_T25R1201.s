@@ -189,7 +189,7 @@ _024D:
 	scrcmd_815 0
 	scrcmd_166 VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	scrcmd_165 32772, 32780
+	scrcmd_165 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0314
 	scrcmd_150
@@ -464,7 +464,7 @@ scr_seq_T25R1201_016:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
-	scrcmd_681 32772
+	scrcmd_681 VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_eq _06D1
 	npc_msg msg_0600_T25R1201_00025

@@ -36,7 +36,7 @@ _003B:
 	load_npc_trade 3
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
-	scrcmd_239 32772, 32774
+	scrcmd_239 VAR_SPECIAL_x8004, VAR_SPECIAL_x8006
 	compare VAR_SPECIAL_x8006, 0
 	goto_if_eq _00B2
 	npc_trade_get_req_species VAR_SPECIAL_RESULT
@@ -83,7 +83,7 @@ scr_seq_T30R0301_001:
 	goto_if_eq _0199
 	buffer_mon_species_name 0, VAR_SPECIAL_x8000
 	npc_msg msg_0634_T30R0301_00005
-	get_ev_total 32780, 32768
+	get_ev_total VAR_SPECIAL_RESULT, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_RESULT, 510
 	goto_if_lt _0136
 	npc_msg msg_0634_T30R0301_00006

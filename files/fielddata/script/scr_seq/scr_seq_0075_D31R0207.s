@@ -150,10 +150,10 @@ scr_seq_D31R0207_009:
 	end
 
 _0216:
-	scrcmd_413 16393, 0, 32772, 32773
+	scrcmd_413 VAR_TEMP_x4009, 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name 0, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 1, VAR_SPECIAL_x8005
-	scrcmd_413 16393, 1, 32772, 32773
+	scrcmd_413 VAR_TEMP_x4009, 1, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name 2, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 3, VAR_SPECIAL_x8005
 	return
@@ -165,10 +165,10 @@ scr_seq_D31R0207_001:
 	compare VAR_UNK_4151, 2
 	goto_if_eq _02A7
 	setvar VAR_TEMP_x4009, 0
-	scrcmd_413 16393, 0, 32772, 32773
+	scrcmd_413 VAR_TEMP_x4009, 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name_indef 0, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 1, VAR_SPECIAL_x8005
-	scrcmd_413 16393, 1, 32772, 32773
+	scrcmd_413 VAR_TEMP_x4009, 1, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name_indef 2, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 3, VAR_SPECIAL_x8005
 	npc_msg msg_0099_D31R0207_00006

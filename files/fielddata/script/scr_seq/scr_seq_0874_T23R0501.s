@@ -89,10 +89,10 @@ _011A:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_735 32768
+	scrcmd_735 VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_x8000, 0
 	goto_if_ne _01A5
-	scrcmd_738 32780
+	scrcmd_738 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _020F
 	apply_movement obj_T23R0501_gantetsu, _02BC
@@ -105,7 +105,7 @@ _011A:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	scrcmd_735 32780
+	scrcmd_735 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0189
 	npc_msg msg_0571_T23R0501_00006
@@ -126,7 +126,7 @@ _01A5:
 	goto_if_set FLAG_UNK_AA2, _0204
 	buffer_players_name 0
 	npc_msg msg_0571_T23R0501_00008
-	scrcmd_737 32772
+	scrcmd_737 VAR_SPECIAL_x8004
 	hasspaceforitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8005, VAR_SPECIAL_x8000
 	callstd std_give_item_verbose

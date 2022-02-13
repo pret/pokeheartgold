@@ -14,7 +14,7 @@ scr_seq_R16R0101_001:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_ABA, _0068
-	scrcmd_540 32780
+	scrcmd_540 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _007E
 	npc_msg msg_0355_R16R0101_00001
@@ -23,7 +23,7 @@ scr_seq_R16R0101_001:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0073
-	scrcmd_538 32780, 0
+	scrcmd_538 VAR_SPECIAL_RESULT, 0
 	compare VAR_SPECIAL_RESULT, 65535
 	goto_if_eq _007E
 	setflag FLAG_UNK_ABA

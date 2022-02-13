@@ -174,7 +174,7 @@ _0263:
 	call_if_eq _04B7
 	copyvar VAR_SPECIAL_x8006, VAR_SPECIAL_x8005
 	addvar VAR_SPECIAL_x8006, 159
-	menu_item_add 32774, 255, 32772
+	menu_item_add VAR_SPECIAL_x8006, 255, VAR_SPECIAL_x8004
 	goto _034C
 
 _0340:
@@ -186,7 +186,7 @@ _034C:
 	addvar VAR_SPECIAL_x8005, 1
 	compare VAR_SPECIAL_x8004, VAR_SPECIAL_x8001
 	goto_if_ne _0263
-	menu_item_add 45, 255, 32772
+	menu_item_add 45, 255, VAR_SPECIAL_x8004
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_x8000, 255

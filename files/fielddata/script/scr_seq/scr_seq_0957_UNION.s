@@ -30,7 +30,7 @@ scr_seq_UNION_003:
 	scrcmd_609
 	lockall
 	faceplayer
-	scrcmd_268 32780
+	scrcmd_268 VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0499
@@ -41,12 +41,12 @@ scr_seq_UNION_003:
 	goto_if_eq _05DB
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0528
-	scrcmd_274 32772, 32780
-	scrcmd_268 32780
+	scrcmd_274 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	scrcmd_268 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0499
 	npc_msg msg_0738_UNION_00199
-	scrcmd_269 32780
+	scrcmd_269 VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
 	case 3, _07CC
 	case 2, _0488
@@ -54,14 +54,14 @@ scr_seq_UNION_003:
 	.byte 0x02, 0x00
 _00BC:
 	scrcmd_257 100
-	scrcmd_267 2, 32780
-	scrcmd_592 32780
+	scrcmd_267 2, VAR_SPECIAL_RESULT
+	scrcmd_592 VAR_SPECIAL_RESULT
 	goto _00EC
 	.byte 0x02, 0x00
 _00D2:
 	scrcmd_257 100
 	scrcmd_261 11
-	scrcmd_267 22, 32780
+	scrcmd_267 22, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00EC
 	.byte 0x02, 0x00
@@ -89,16 +89,16 @@ _00EC:
 	.byte 0x02, 0x00
 _0184:
 	scrcmd_271 0, 1
-	scrcmd_267 9, 32780
+	scrcmd_267 9, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01A1
 	non_npc_msg_var VAR_SPECIAL_RESULT
 _01A1:
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _06AE
 	scrcmd_261 5
-	scrcmd_267 1, 32780
+	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_257 1
@@ -116,16 +116,16 @@ _01ED:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0264
 	scrcmd_271 0, 3
-	scrcmd_267 9, 32780
+	scrcmd_267 9, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _021B
 	non_npc_msg_var VAR_SPECIAL_RESULT
 _021B:
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _06F6
 	scrcmd_261 7
-	scrcmd_267 1, 32780
+	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_257 3
@@ -138,25 +138,25 @@ _021B:
 	goto _00D2
 	.byte 0x02, 0x00
 _0264:
-	scrcmd_267 20, 32780
+	scrcmd_267 20, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00D2
 	.byte 0x02, 0x00
 _0276:
-	scrcmd_434 32780, 30
+	scrcmd_434 VAR_SPECIAL_RESULT, 30
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0324
 	scrcmd_271 0, 2
-	scrcmd_267 9, 32780
+	scrcmd_267 9, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02A6
 	non_npc_msg_var VAR_SPECIAL_RESULT
 _02A6:
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _06DE
 	scrcmd_261 6
-	scrcmd_267 1, 32780
+	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_257 2
@@ -170,7 +170,7 @@ _02A6:
 	npc_msg msg_0738_UNION_00202
 	scrcmd_257 102
 	closemsg
-	scrcmd_586 32780
+	scrcmd_586 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0B8B
 	compare VAR_SPECIAL_RESULT, 2
@@ -180,21 +180,21 @@ _02A6:
 	goto _00D2
 	.byte 0x02, 0x00
 _0324:
-	scrcmd_267 19, 32780
+	scrcmd_267 19, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00D2
 	.byte 0x02, 0x00
 _0336:
 	scrcmd_271 0, 4
-	scrcmd_267 9, 32780
+	scrcmd_267 9, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0353
 	non_npc_msg_var VAR_SPECIAL_RESULT
 _0353:
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _06C6
-	scrcmd_267 1, 32780
+	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	scrcmd_348 30
 	scrcmd_257 4
@@ -208,15 +208,15 @@ _0353:
 	.byte 0x02, 0x00
 _0396:
 	scrcmd_271 0, 5
-	scrcmd_267 9, 32780
+	scrcmd_267 9, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03B3
 	non_npc_msg_var VAR_SPECIAL_RESULT
 _03B3:
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _0726
-	scrcmd_267 1, 32780
+	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	scrcmd_348 30
 	scrcmd_257 5
@@ -229,22 +229,22 @@ _03B3:
 	goto _0478
 	.byte 0x02, 0x00
 _03F6:
-	scrcmd_359 32780
+	scrcmd_359 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _074F
-	scrcmd_630 32780
+	scrcmd_630 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0761
 	scrcmd_271 0, 6
-	scrcmd_267 9, 32780
+	scrcmd_267 9, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0435
 	non_npc_msg_var VAR_SPECIAL_RESULT
 _0435:
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _076C
-	scrcmd_267 1, 32780
+	scrcmd_267 1, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	scrcmd_348 30
 	scrcmd_257 6
@@ -271,7 +271,7 @@ _0488:
 
 _0499:
 	scrcmd_262
-	scrcmd_267 0, 32780
+	scrcmd_267 0, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	scrcmd_049
 	closemsg
@@ -281,20 +281,20 @@ _0499:
 
 _04AF:
 	scrcmd_262
-	scrcmd_267 10, 32780
+	scrcmd_267 10, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _05C3
-	scrcmd_274 32772, 32780
+	scrcmd_274 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0488
-	scrcmd_269 32780
+	scrcmd_269 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0488
-	scrcmd_267 13, 32780
+	scrcmd_267 13, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	closemsg
@@ -307,26 +307,26 @@ _04AF:
 	.byte 0x02, 0x00
 _0528:
 	scrcmd_262
-	scrcmd_267 12, 32780
+	scrcmd_267 12, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _066C
-	scrcmd_359 32780
+	scrcmd_359 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0698
 	party_legal_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0682
-	scrcmd_274 32772, 32780
+	scrcmd_274 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0488
-	scrcmd_269 32780
+	scrcmd_269 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0488
-	scrcmd_267 15, 32780
+	scrcmd_267 15, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	closemsg
@@ -338,7 +338,7 @@ _0528:
 	goto _0478
 	.byte 0x02, 0x00
 _05C3:
-	scrcmd_267 16, 32780
+	scrcmd_267 16, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_263
@@ -348,20 +348,20 @@ _05C3:
 
 _05DB:
 	scrcmd_262
-	scrcmd_267 11, 32780
+	scrcmd_267 11, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0654
-	scrcmd_274 32772, 32780
+	scrcmd_274 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_eq _0488
-	scrcmd_269 32780
+	scrcmd_269 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _0488
-	scrcmd_267 14, 32780
+	scrcmd_267 14, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	closemsg
@@ -373,7 +373,7 @@ _05DB:
 	goto _0478
 	.byte 0x02, 0x00
 _0654:
-	scrcmd_267 17, 32780
+	scrcmd_267 17, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	closemsg
@@ -382,7 +382,7 @@ _0654:
 	end
 
 _066C:
-	scrcmd_267 18, 32780
+	scrcmd_267 18, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	closemsg
@@ -390,7 +390,7 @@ _066C:
 	end
 
 _0682:
-	scrcmd_267 26, 32780
+	scrcmd_267 26, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	closemsg
@@ -398,7 +398,7 @@ _0682:
 	end
 
 _0698:
-	scrcmd_267 21, 32780
+	scrcmd_267 21, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	closemsg
@@ -406,25 +406,25 @@ _0698:
 	end
 
 _06AE:
-	scrcmd_267 3, 32780
+	scrcmd_267 3, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
 	.byte 0x02, 0x00
 _06C6:
-	scrcmd_267 4, 32780
+	scrcmd_267 4, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
 	.byte 0x02, 0x00
 _06DE:
-	scrcmd_267 5, 32780
+	scrcmd_267 5, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
 	.byte 0x02, 0x00
 _06F6:
-	scrcmd_267 6, 32780
+	scrcmd_267 6, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
@@ -432,7 +432,7 @@ _06F6:
 	.byte 0x07, 0x00, 0x0c, 0x80, 0x2e, 0x00, 0x0c, 0x80, 0x03, 0x00, 0x1e, 0x00, 0x0c, 0x80, 0x16, 0x00
 	.byte 0x98, 0x00, 0x00, 0x00, 0x02, 0x00
 _0726:
-	scrcmd_267 8, 32780
+	scrcmd_267 8, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
@@ -443,7 +443,7 @@ _073E:
 	goto _0BC2
 	.byte 0x02, 0x00
 _074F:
-	scrcmd_267 21, 32780
+	scrcmd_267 21, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00D2
 	.byte 0x02
@@ -453,13 +453,13 @@ _0761:
 	goto _00D2
 	.byte 0x02, 0x00
 _076C:
-	scrcmd_267 8, 32780
+	scrcmd_267 8, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
 	.byte 0x02, 0x00
 _0784:
-	scrcmd_267 23, 32780
+	scrcmd_267 23, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_257 101
@@ -469,7 +469,7 @@ _0784:
 	end
 
 _07A0:
-	scrcmd_267 24, 32780
+	scrcmd_267 24, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_257 101
@@ -499,7 +499,7 @@ _07E4:
 	npc_msg msg_0738_UNION_00009
 	scrcmd_257 100
 	scrcmd_261 11
-	scrcmd_273 32780
+	scrcmd_273 VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
 	case 1, _0863
 	case 4, _0B11
@@ -520,10 +520,10 @@ _0863:
 	goto_if_eq _08CA
 	scrcmd_271 1, 0
 	closemsg
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _0B80
-	scrcmd_576 32780
+	scrcmd_576 VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	scrcmd_257 1
@@ -553,7 +553,7 @@ _08DB:
 	goto_if_lt _0963
 	scrcmd_271 1, 0
 	closemsg
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00027
@@ -586,12 +586,12 @@ _0974:
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A22
-	scrcmd_434 32780, 30
+	scrcmd_434 VAR_SPECIAL_RESULT, 30
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0A33
 	scrcmd_271 1, 0
 	closemsg
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00022
@@ -608,7 +608,7 @@ _0974:
 	npc_msg msg_0738_UNION_00202
 	scrcmd_257 102
 	closemsg
-	scrcmd_586 32780
+	scrcmd_586 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0B8B
 	compare VAR_SPECIAL_RESULT, 2
@@ -637,7 +637,7 @@ _0A44:
 	goto_if_eq _0A22
 	scrcmd_271 1, 0
 	closemsg
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00031
@@ -662,10 +662,10 @@ _0AA2:
 	goto_if_eq _0A22
 	scrcmd_271 1, 0
 	closemsg
-	scrcmd_359 32780
+	scrcmd_359 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _073E
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00034
@@ -690,7 +690,7 @@ _0B11:
 	goto_if_eq _0B6F
 	scrcmd_271 1, 0
 	closemsg
-	scrcmd_272 32780
+	scrcmd_272 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_eq _0BA0
 	npc_msg msg_0738_UNION_00019
@@ -790,7 +790,7 @@ _0C8C:
 
 _0C91:
 	touchscreen_menu_show
-	scrcmd_260 32780
+	scrcmd_260 VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	touchscreen_menu_hide
 	goto _0C2E

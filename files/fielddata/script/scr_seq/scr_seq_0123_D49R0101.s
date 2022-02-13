@@ -252,7 +252,7 @@ scr_seq_D49R0101_001:
 	lockall
 	faceplayer
 	goto_if_unset FLAG_UNK_114, _03F1
-	scrcmd_834 32780
+	scrcmd_834 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0400
 	npc_msg msg_0138_D49R0101_00049
@@ -306,7 +306,7 @@ scr_seq_D49R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_835 32780
+	scrcmd_835 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 27
 	goto_if_eq _05A9
 	goto_if_unset FLAG_UNK_115, _0529
@@ -328,7 +328,7 @@ _0493:
 	scrcmd_054
 	scrcmd_815 0
 	scrcmd_772
-	scrcmd_835 32773
+	scrcmd_835 VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 6
 	goto_if_eq _0538
 	compare VAR_SPECIAL_x8005, 12
@@ -551,7 +551,7 @@ _07E4:
 _07FF:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _0812
-	check_athlete_points 32780, 50
+	check_athlete_points VAR_SPECIAL_RESULT, 50
 _0812:
 	return
 
@@ -564,7 +564,7 @@ _0814:
 _082F:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _0842
-	check_athlete_points 32780, 80
+	check_athlete_points VAR_SPECIAL_RESULT, 80
 _0842:
 	return
 
@@ -577,7 +577,7 @@ _0844:
 _085F:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _0872
-	check_athlete_points 32780, 100
+	check_athlete_points VAR_SPECIAL_RESULT, 100
 _0872:
 	return
 
@@ -773,7 +773,7 @@ _0B81:
 	wait 4, VAR_SPECIAL_RESULT
 	closemsg
 	play_se SEQ_SE_DP_DECIDE
-	scrcmd_743 16391
+	scrcmd_743 VAR_TEMP_x4007
 	goto _0AF3
 	.byte 0x02, 0x00
 _0BA5:
