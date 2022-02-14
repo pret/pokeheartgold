@@ -2,6 +2,7 @@
 #include "constants/sndseq.h"
 #include "constants/items.h"
 #include "constants/phone_contacts.h"
+#include "constants/flags.h"
 #include "msgdata/msg/msg_0416.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
@@ -30495,7 +30496,7 @@ RadioShow_Unown_setup: ; 0x021F61D8
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6234
+	bl RadioShow_Unown_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
 	bl StopBGM
@@ -30530,8 +30531,8 @@ RadioShow_Unown_print: ; 0x021F6230
 	bx lr
 	thumb_func_end RadioShow_Unown_print
 
-	thumb_func_start ov101_021F6234
-ov101_021F6234: ; 0x021F6234
+	thumb_func_start RadioShow_Unown_init
+RadioShow_Unown_init: ; 0x021F6234
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F6258 ; =0x0000019A
@@ -30548,7 +30549,7 @@ ov101_021F6234: ; 0x021F6234
 	pop {r4, pc}
 	nop
 _021F6258: .word 0x0000019A
-	thumb_func_end ov101_021F6234
+	thumb_func_end RadioShow_Unown_init
 
 	thumb_func_start ov101_021F625C
 ov101_021F625C: ; 0x021F625C
@@ -30572,7 +30573,7 @@ RadioShow_TeamRocket_setup: ; 0x021F6268
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F62F4
+	bl RadioShow_TeamRocket_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
 	bl StopBGM
@@ -30632,8 +30633,8 @@ _021F62EE:
 	.balign 4, 0
 	thumb_func_end RadioShow_TeamRocket_print
 
-	thumb_func_start ov101_021F62F4
-ov101_021F62F4: ; 0x021F62F4
+	thumb_func_start RadioShow_TeamRocket_init
+RadioShow_TeamRocket_init: ; 0x021F62F4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F631C ; =0x000001A2
@@ -30652,7 +30653,7 @@ ov101_021F62F4: ; 0x021F62F4
 	pop {r4, pc}
 	nop
 _021F631C: .word 0x000001A2
-	thumb_func_end ov101_021F62F4
+	thumb_func_end RadioShow_TeamRocket_init
 
 	thumb_func_start ov101_021F6320
 ov101_021F6320: ; 0x021F6320
@@ -30676,7 +30677,7 @@ RadioShow_SerialRadioDrama_setup: ; 0x021F632C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6420
+	bl RadioShow_SerialRadioDrama_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -30788,8 +30789,8 @@ _021F641C:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_SerialRadioDrama_print
 
-	thumb_func_start ov101_021F6420
-ov101_021F6420: ; 0x021F6420
+	thumb_func_start RadioShow_SerialRadioDrama_init
+RadioShow_SerialRadioDrama_init: ; 0x021F6420
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -30824,7 +30825,7 @@ _021F6464:
 	pop {r3, r4, r5, pc}
 	nop
 _021F646C: .word 0x0000019D
-	thumb_func_end ov101_021F6420
+	thumb_func_end RadioShow_SerialRadioDrama_init
 
 	thumb_func_start ov101_021F6470
 ov101_021F6470: ; 0x021F6470
@@ -30856,7 +30857,7 @@ RadioShow_Commercials_setup: ; 0x021F647C
 	strb r1, [r0]
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6514
+	bl RadioShow_Commercials_init
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -30918,8 +30919,8 @@ _021F6510:
 	pop {r4, pc}
 	thumb_func_end RadioShow_Commercials_print
 
-	thumb_func_start ov101_021F6514
-ov101_021F6514: ; 0x021F6514
+	thumb_func_start RadioShow_Commercials_init
+RadioShow_Commercials_init: ; 0x021F6514
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	mov r6, #0
@@ -31035,7 +31036,7 @@ _021F65EE:
 	.balign 4, 0
 _021F660C: .word 0x00000964
 _021F6610: .word ov101_021F8AD0
-	thumb_func_end ov101_021F6514
+	thumb_func_end RadioShow_Commercials_init
 
 	thumb_func_start ov101_021F6614
 ov101_021F6614: ; 0x021F6614
@@ -31059,7 +31060,7 @@ RadioShow_PokemonSearchParty_setup: ; 0x021F6620
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6710
+	bl RadioShow_PokemonSearchParty_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31168,8 +31169,8 @@ _021F670C:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_PokemonSearchParty_print
 
-	thumb_func_start ov101_021F6710
-ov101_021F6710: ; 0x021F6710
+	thumb_func_start RadioShow_PokemonSearchParty_init
+RadioShow_PokemonSearchParty_init: ; 0x021F6710
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	mov r4, #0
@@ -31206,7 +31207,7 @@ ov101_021F6710: ; 0x021F6710
 	mov r0, #1
 	strb r0, [r5, #8]
 	add r0, r7, #0
-	mov r1, #0x7b
+	mov r1, #FLAG_BEAT_AZALEA_ROCKETS
 	bl CheckFlagInArray
 	strb r0, [r5, #9]
 	ldr r0, [sp]
@@ -31214,7 +31215,7 @@ ov101_021F6710: ; 0x021F6710
 	bl PlayerProfile_TestBadgeFlag
 	strb r0, [r5, #0xa]
 	add r0, r7, #0
-	mov r1, #0xc6
+	mov r1, #FLAG_BEAT_RADIO_TOWER_ROCKETS
 	bl CheckFlagInArray
 	strb r0, [r5, #0xb]
 	ldr r0, [sp]
@@ -31280,7 +31281,7 @@ _021F67F2:
 	.balign 4, 0
 _021F67F8: .word 0x000001A3
 _021F67FC: .word ov101_021F8B3C
-	thumb_func_end ov101_021F6710
+	thumb_func_end RadioShow_PokemonSearchParty_init
 
 	thumb_func_start ov101_021F6800
 ov101_021F6800: ; 0x021F6800
@@ -31304,7 +31305,7 @@ RadioShow_BuenasPassword_setup: ; 0x021F680C
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6904
+	bl RadioShow_BuenasPassword_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31417,8 +31418,8 @@ _021F68FC:
 _021F6900: .word 0x00000AB6
 	thumb_func_end RadioShow_BuenasPassword_print
 
-	thumb_func_start ov101_021F6904
-ov101_021F6904: ; 0x021F6904
+	thumb_func_start RadioShow_BuenasPassword_init
+RadioShow_BuenasPassword_init: ; 0x021F6904
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -31438,7 +31439,7 @@ ov101_021F6904: ; 0x021F6904
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	bl Sav2_Bag_get
-	mov r1, #0x76
+	mov r1, #ITEM_BLUE_CARD>>2
 	ldr r3, [r5]
 	lsl r1, r1, #2
 	mov r2, #1
@@ -31484,7 +31485,7 @@ _021F6948:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021F6998: .word 0x0000019B
-	thumb_func_end ov101_021F6904
+	thumb_func_end RadioShow_BuenasPassword_init
 
 	thumb_func_start ov101_021F699C
 ov101_021F699C: ; 0x021F699C
@@ -31508,7 +31509,7 @@ RadioShow_ThatTownThesePeople_setup: ; 0x021F69A8
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6AAC
+	bl RadioShow_ThatTownThesePeople_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31629,8 +31630,8 @@ _021F6AA8:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_ThatTownThesePeople_print
 
-	thumb_func_start ov101_021F6AAC
-ov101_021F6AAC: ; 0x021F6AAC
+	thumb_func_start RadioShow_ThatTownThesePeople_init
+RadioShow_ThatTownThesePeople_init: ; 0x021F6AAC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31724,7 +31725,7 @@ _021F6B44:
 	.balign 4, 0
 _021F6B74: .word 0x0000019F
 _021F6B78: .word ov101_021F8B4C
-	thumb_func_end ov101_021F6AAC
+	thumb_func_end RadioShow_ThatTownThesePeople_init
 
 	thumb_func_start ov101_021F6B7C
 ov101_021F6B7C: ; 0x021F6B7C
@@ -31773,7 +31774,7 @@ RadioShow_TrainerProfiles_setup: ; 0x021F6BAC
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F6CB0
+	bl RadioShow_TrainerProfiles_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #0
 	bl StopBGM
@@ -31894,8 +31895,8 @@ _021F6CAC:
 	pop {r3, r4, r5, pc}
 	thumb_func_end RadioShow_TrainerProfiles_print
 
-	thumb_func_start ov101_021F6CB0
-ov101_021F6CB0: ; 0x021F6CB0
+	thumb_func_start RadioShow_TrainerProfiles_init
+RadioShow_TrainerProfiles_init: ; 0x021F6CB0
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	mov r2, #0x69
@@ -31938,7 +31939,7 @@ _021F6CDC:
 	cmp r4, #3
 	blt _021F6CDC
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov101_021F6CB0
+	thumb_func_end RadioShow_TrainerProfiles_init
 
 	thumb_func_start ov101_021F6D0C
 ov101_021F6D0C: ; 0x021F6D0C
@@ -32697,7 +32698,7 @@ RadioShow_MahoganySignal_setup: ; 0x021F72C4
 	bl MI_CpuFill8
 	add r0, r5, #0
 	str r4, [r5, #0x1c]
-	bl ov101_021F7324
+	bl RadioShow_MahoganySignal_init
 	bl GF_GetCurrentPlayingBGM
 	mov r1, #1
 	bl StopBGM
@@ -32734,8 +32735,8 @@ RadioShow_MahoganySignal_print: ; 0x021F7320
 	bx lr
 	thumb_func_end RadioShow_MahoganySignal_print
 
-	thumb_func_start ov101_021F7324
-ov101_021F7324: ; 0x021F7324
+	thumb_func_start RadioShow_MahoganySignal_init
+RadioShow_MahoganySignal_init: ; 0x021F7324
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r2, _021F7348 ; =0x00000199
@@ -32752,7 +32753,7 @@ ov101_021F7324: ; 0x021F7324
 	pop {r4, pc}
 	nop
 _021F7348: .word 0x00000199
-	thumb_func_end ov101_021F7324
+	thumb_func_end RadioShow_MahoganySignal_init
 
 	thumb_func_start ov101_021F734C
 ov101_021F734C: ; 0x021F734C

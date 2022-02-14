@@ -54,7 +54,7 @@ _00B5:
 _00BF:
 	clearflag FLAG_HIDE_CAMERON
 _00C3:
-	goto_if_set FLAG_UNK_07B, _00D0
+	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _00D0
 	end
 
 _00D0:
@@ -1628,7 +1628,7 @@ _17B7:
 _17C1:
 	compare VAR_UNK_40FE, 4
 	goto_if_ge _1803
-	goto_if_unset FLAG_UNK_0C6, _1803
+	goto_if_unset FLAG_BEAT_RADIO_TOWER_ROCKETS, _1803
 	get_lead_mon_index VAR_TEMP_x4006
 	follower_poke_is_event_trigger 3, VAR_TEMP_x4006, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 0

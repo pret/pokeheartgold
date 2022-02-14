@@ -12,11 +12,11 @@
 	scrdef_end
 
 scr_seq_D23R0105_000:
-	setflag FLAG_UNK_1B7
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 	setvar VAR_UNK_4125, 0
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _002D
-	clearflag FLAG_UNK_1B7
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 _002D:
 	end
 
@@ -29,7 +29,7 @@ scr_seq_D23R0105_003:
 	end
 
 scr_seq_D23R0105_002:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_eq _0075
 	simple_npc_msg msg_0069_D23R0105_00006
 	end

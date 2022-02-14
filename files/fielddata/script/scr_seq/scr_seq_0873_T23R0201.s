@@ -14,7 +14,7 @@ scr_seq_T23R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_07B, _002C
+	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _002C
 	npc_msg msg_0570_T23R0201_00000
 	waitbutton
 	closemsg

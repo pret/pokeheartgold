@@ -73,7 +73,7 @@ _00E4:
 	step 3, 1
 	step_end
 _00F0:
-	setvar VAR_UNK_4077, 2
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
 	setflag FLAG_UNK_0C5
 	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
 	compare VAR_UNK_40F8, 0

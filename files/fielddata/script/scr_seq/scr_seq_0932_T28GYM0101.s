@@ -83,7 +83,7 @@ scr_seq_T28GYM0101_000:
 	add_special_game_stat 22
 	compare VAR_UNK_4134, 3
 	goto_if_ne _012F
-	setvar VAR_UNK_4077, 1
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 1
 _012F:
 	buffer_players_name 0
 	npc_msg msg_0622_T28GYM0101_00002

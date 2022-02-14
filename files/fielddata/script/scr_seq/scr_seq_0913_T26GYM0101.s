@@ -128,7 +128,7 @@ scr_seq_T26GYM0101_000:
 	add_special_game_stat 22
 	compare VAR_UNK_4134, 3
 	goto_if_ne _01CB
-	setvar VAR_UNK_4077, 1
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 1
 _01CB:
 	npc_msg msg_0606_T26GYM0101_00003
 _01CE:

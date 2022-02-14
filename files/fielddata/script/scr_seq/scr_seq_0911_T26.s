@@ -21,7 +21,7 @@
 	scrdef_end
 
 scr_seq_T26_002:
-	setvar VAR_UNK_4077, 2
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
 	setflag FLAG_UNK_0C5
 	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
 	compare VAR_UNK_40F8, 0

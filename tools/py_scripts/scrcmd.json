@@ -4373,7 +4373,7 @@
       ]
     },
     {
-      "name": "scrcmd_692",
+      "name": "buffer_battle_hall_streak",
       "args": [
         1,
         1,
@@ -4384,13 +4384,13 @@
       ]
     },
     {
-      "name": "scrcmd_693",
+      "name": "battle_hall_count_used_species",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_694",
+      "name": "battle_hall_get_total_streak",
       "args": [
         "var"
       ]

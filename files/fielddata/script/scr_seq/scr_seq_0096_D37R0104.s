@@ -15,10 +15,10 @@
 	scrdef_end
 
 scr_seq_D37R0104_006:
-	setflag FLAG_UNK_1B7
-	compare VAR_UNK_4077, 4
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0033
-	clearflag FLAG_UNK_1B7
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 _0033:
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 0

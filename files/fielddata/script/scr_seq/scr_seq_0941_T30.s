@@ -189,7 +189,7 @@ scr_seq_T30_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ne _02B1
 	npc_msg msg_0629_T30_00005
 	goto _02B4

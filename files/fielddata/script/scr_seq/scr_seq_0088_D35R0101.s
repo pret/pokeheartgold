@@ -269,19 +269,19 @@ scr_seq_D35R0101_009:
 	goto _0552
 
 _039D:
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ne _03B3
 	npc_msg msg_0111_D35R0101_00014
 	goto _03E5
 
 _03B3:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _03C9
 	npc_msg msg_0111_D35R0101_00014
 	goto _03E5
 
 _03C9:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _03DF
 	npc_msg msg_0111_D35R0101_00014
 	goto _03E5

@@ -41,7 +41,7 @@
       "ovid": "SPRITE_GSWOMAN6",
       "mvt": 14,
       "type": 0,
-      "flag": "FLAG_UNK_1B8",
+      "flag": "FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR",
       "scr": "_EV_scr_seq_D23R0101_001 + 1",
       "dirn": 0,
       "eye": 0,
@@ -58,7 +58,7 @@
       "ovid": "SPRITE_GSWOMAN6",
       "mvt": 14,
       "type": 0,
-      "flag": "FLAG_UNK_1B8",
+      "flag": "FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR",
       "scr": "_EV_scr_seq_D23R0101_002 + 1",
       "dirn": 0,
       "eye": 0,
@@ -75,7 +75,7 @@
       "ovid": "SPRITE_GSMAN1",
       "mvt": 17,
       "type": 0,
-      "flag": "FLAG_UNK_1B8",
+      "flag": "FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR",
       "scr": "_EV_scr_seq_D23R0101_004 + 1",
       "dirn": 3,
       "eye": 0,
@@ -92,7 +92,7 @@
       "ovid": "SPRITE_GSGIRL2",
       "mvt": 16,
       "type": 0,
-      "flag": "FLAG_UNK_1B8",
+      "flag": "FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR",
       "scr": "_EV_scr_seq_D23R0101_003 + 1",
       "dirn": 2,
       "eye": 0,
@@ -181,7 +181,7 @@
       "h": 1,
       "z": 0,
       "val": 3,
-      "var": "VAR_UNK_4077"
+      "var": "VAR_SCENE_ROCKET_TAKEOVER"
     }
   ]
 }

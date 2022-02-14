@@ -742,9 +742,9 @@ gScriptCmdTable:
 	.word ScrCmd_CommSanitizeParty                                    ; 689
 	.word ScrCmd_DayCareSanitizeMon                                    ; 690
 	.word ScrCmd_691                                    ; 691
-	.word ScrCmd_692                                    ; 692
-	.word ScrCmd_693                                    ; 693
-	.word ScrCmd_694                                    ; 694
+	.word ScrCmd_BufferBattleHallStreak                                    ; 692
+	.word ScrCmd_BattleHallCountUsedSpecies                                    ; 693
+	.word ScrCmd_BattleHallGetTotalStreak                                    ; 694
 	.word ScrCmd_695                                    ; 695
 	.word ScrCmd_696                                    ; 696
 	.word ScrCmd_697                                    ; 697

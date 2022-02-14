@@ -608,7 +608,7 @@ _02066E54: .word VAR_UNK_4052
 	thumb_func_start sub_02066E58
 sub_02066E58: ; 0x02066E58
 	push {r3, lr}
-	ldr r1, _02066E70 ; =VAR_UNK_4077
+	ldr r1, _02066E70 ; =VAR_SCENE_ROCKET_TAKEOVER
 	bl GetScriptVar
 	cmp r0, #2
 	blo _02066E68
@@ -621,7 +621,7 @@ _02066E6C:
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-_02066E70: .word VAR_UNK_4077
+_02066E70: .word VAR_SCENE_ROCKET_TAKEOVER
 	thumb_func_end sub_02066E58
 
 	thumb_func_start sub_02066E74

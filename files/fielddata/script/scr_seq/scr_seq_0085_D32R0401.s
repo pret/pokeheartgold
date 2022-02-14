@@ -30,7 +30,7 @@
 	scrdef_end
 
 scr_seq_D32R0401_021:
-	scrcmd_693 VAR_TEMP_x4000
+	battle_hall_count_used_species VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 11
 	call_if_ge _0090
 	compare VAR_TEMP_x4000, 101
@@ -70,7 +70,7 @@ _00DF:
 
 _00EC:
 	setflag FLAG_UNK_AA1
-	scrcmd_694 VAR_TEMP_x4008
+	battle_hall_get_total_streak VAR_TEMP_x4008
 	compare VAR_TEMP_x4008, 10000
 	goto_if_ge _011D
 	compare VAR_TEMP_x4008, 1000
@@ -712,8 +712,8 @@ scr_seq_D32R0401_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_unset FLAG_UNK_0FE, _0AFF
-	scrcmd_692 1, 2, 3, 4, VAR_UNK_4054, VAR_SPECIAL_RESULT
+	goto_if_unset FLAG_MET_HALL_STREAK_TRACKER_DUDE, _0AFF
+	buffer_battle_hall_streak 1, 2, 3, 4, VAR_UNK_4054, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0AD5
 	compare VAR_SPECIAL_RESULT, 2
@@ -745,7 +745,7 @@ _0AF1:
 	goto _0B0E
 	.byte 0x02, 0x00
 _0AFF:
-	setflag FLAG_UNK_0FE
+	setflag FLAG_MET_HALL_STREAK_TRACKER_DUDE
 	npc_msg msg_0108_D32R0401_00068
 	goto _0B0E
 	.byte 0x02, 0x00
@@ -766,7 +766,7 @@ scr_seq_D32R0401_017:
 	.byte 0x02, 0x00
 _0B37:
 	buffer_players_name 0
-	scrcmd_693 VAR_SPECIAL_x8005
+	battle_hall_count_used_species VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 475
 	goto_if_ge _0BBE
 	compare VAR_SPECIAL_x8005, 351
@@ -842,7 +842,7 @@ scr_seq_D32R0401_018:
 	.byte 0x02, 0x00
 _0C4A:
 	buffer_players_name 0
-	scrcmd_693 VAR_SPECIAL_x8005
+	battle_hall_count_used_species VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 475
 	goto_if_ge _0CD1
 	compare VAR_SPECIAL_x8005, 351

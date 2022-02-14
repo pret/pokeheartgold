@@ -60,8 +60,8 @@ _020FC3AC:
 
 	.text
 
-	thumb_func_start ScrCmd_692
-ScrCmd_692: ; 0x0204F500
+	thumb_func_start ScrCmd_BufferBattleHallStreak
+ScrCmd_BufferBattleHallStreak: ; 0x0204F500
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	str r0, [sp, #8]
@@ -284,10 +284,10 @@ _0204F662:
 	.balign 4, 0
 _0204F6C8: .word 0x000001ED
 _0204F6CC: .word _020FC22C
-	thumb_func_end ScrCmd_692
+	thumb_func_end ScrCmd_BufferBattleHallStreak
 
-	thumb_func_start ScrCmd_693
-ScrCmd_693: ; 0x0204F6D0
+	thumb_func_start ScrCmd_BattleHallCountUsedSpecies
+ScrCmd_BattleHallCountUsedSpecies: ; 0x0204F6D0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -370,10 +370,10 @@ _0204F768:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0204F774: .word 0x000001ED
-	thumb_func_end ScrCmd_693
+	thumb_func_end ScrCmd_BattleHallCountUsedSpecies
 
-	thumb_func_start ScrCmd_694
-ScrCmd_694: ; 0x0204F778
+	thumb_func_start ScrCmd_BattleHallGetTotalStreak
+ScrCmd_BattleHallGetTotalStreak: ; 0x0204F778
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -438,7 +438,7 @@ _0204F7EA:
 	.balign 4, 0
 _0204F7F4: .word 0x000001ED
 _0204F7F8: .word 0x00002710
-	thumb_func_end ScrCmd_694
+	thumb_func_end ScrCmd_BattleHallGetTotalStreak
 
 	thumb_func_start ScrCmd_697
 ScrCmd_697: ; 0x0204F7FC

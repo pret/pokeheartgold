@@ -43,42 +43,42 @@
 scr_seq_T25_018:
 	setflag FLAG_UNK_1B9
 	setflag FLAG_UNK_1BA
-	setflag FLAG_UNK_1B7
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 	setflag FLAG_UNK_1BB
-	setflag FLAG_UNK_1B8
-	compare VAR_UNK_4077, 0
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
+	compare VAR_SCENE_ROCKET_TAKEOVER, 0
 	goto_if_ne _00B5
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 	clearflag FLAG_UNK_1B9
 	goto _011A
 
 _00B5:
-	compare VAR_UNK_4077, 1
+	compare VAR_SCENE_ROCKET_TAKEOVER, 1
 	goto_if_ne _00D4
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 	clearflag FLAG_UNK_1B9
 	clearflag FLAG_UNK_1BA
 	goto _011A
 
 _00D4:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _00F7
 	clearflag FLAG_UNK_1B9
 	clearflag FLAG_UNK_1BA
-	clearflag FLAG_UNK_1B7
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 	clearflag FLAG_UNK_1BB
 	goto _011A
 
 _00F7:
-	compare VAR_UNK_4077, 5
+	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_ne _010E
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 	goto _011A
 
 _010E:
 	clearflag FLAG_UNK_1B9
 	clearflag FLAG_UNK_1BA
-	clearflag FLAG_UNK_1B7
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 _011A:
 	end
 
@@ -108,7 +108,7 @@ scr_seq_T25_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ge _0172
 	npc_msg msg_0581_T25_00004
 	goto _0175
@@ -232,7 +232,7 @@ _02A1:
 	apply_movement obj_T25_rocketm, _0300
 	wait_movement
 _02B8:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _02CE
 	npc_msg msg_0581_T25_00015
 	goto _02D1
@@ -269,7 +269,7 @@ scr_seq_T25_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _032E
 	npc_msg msg_0581_T25_00017
 	goto _0331
@@ -286,7 +286,7 @@ scr_seq_T25_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _0357
 	npc_msg msg_0581_T25_00019
 	goto _035A
@@ -303,7 +303,7 @@ scr_seq_T25_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _0380
 	npc_msg msg_0581_T25_00021
 	goto _0383
@@ -320,7 +320,7 @@ scr_seq_T25_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _03A9
 	npc_msg msg_0581_T25_00023
 	goto _03AC
@@ -337,7 +337,7 @@ scr_seq_T25_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _03D2
 	npc_msg msg_0581_T25_00025
 	goto _03D5
@@ -354,7 +354,7 @@ scr_seq_T25_013:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _03FB
 	npc_msg msg_0581_T25_00030
 	goto _03FE
@@ -401,7 +401,7 @@ scr_seq_T25_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _047F
 	npc_msg msg_0581_T25_00034
 	goto _0482

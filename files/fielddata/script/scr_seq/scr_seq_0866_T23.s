@@ -249,7 +249,7 @@ scr_seq_T23_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_07B, _039C
+	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _039C
 	npc_msg msg_0564_T23_00018
 	goto _039F
 
@@ -265,7 +265,7 @@ scr_seq_T23_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_07B, _03C3
+	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _03C3
 	npc_msg msg_0564_T23_00005
 	goto _039F
 

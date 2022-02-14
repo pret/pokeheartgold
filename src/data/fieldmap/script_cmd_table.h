@@ -692,9 +692,9 @@ extern BOOL ScrCmd_688(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_691(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_692(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_693(SCRIPTCONTEXT *ctx);
-extern BOOL ScrCmd_694(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BufferBattleHallStreak(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BattleHallCountUsedSpecies(SCRIPTCONTEXT *ctx);
+extern BOOL ScrCmd_BattleHallGetTotalStreak(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_695(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_696(SCRIPTCONTEXT *ctx);
 extern BOOL ScrCmd_697(SCRIPTCONTEXT *ctx);
@@ -1547,9 +1547,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CommSanitizeParty,
     ScrCmd_DayCareSanitizeMon,
     ScrCmd_691,
-    ScrCmd_692,
-    ScrCmd_693,
-    ScrCmd_694,
+    ScrCmd_BufferBattleHallStreak,
+    ScrCmd_BattleHallCountUsedSpecies,
+    ScrCmd_BattleHallGetTotalStreak,
     ScrCmd_695,
     ScrCmd_696,
     ScrCmd_697,

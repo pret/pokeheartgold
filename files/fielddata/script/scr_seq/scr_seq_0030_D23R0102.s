@@ -19,26 +19,26 @@
 	scrdef_end
 
 scr_seq_D23R0102_007:
-	setflag FLAG_UNK_1B7
-	setflag FLAG_UNK_1B8
-	compare VAR_UNK_4077, 4
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _004D
-	clearflag FLAG_UNK_1B7
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 	goto _0068
 
 _004D:
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ge _0064
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 	goto _0068
 
 _0064:
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 _0068:
 	end
 
 scr_seq_D23R0102_008:
-	compare VAR_UNK_4077, 5
+	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_ne _0083
 	move_person obj_D23R0102_policeman, 2, 1, 7, 3
 _0083:
@@ -72,7 +72,7 @@ scr_seq_D23R0102_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _00F7
 	npc_msg msg_0066_D23R0102_00002
 	goto _00FA
@@ -93,7 +93,7 @@ scr_seq_D23R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 5
+	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_ne _0133
 	npc_msg msg_0066_D23R0102_00005
 	goto _0136
@@ -110,7 +110,7 @@ scr_seq_D23R0102_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _015C
 	npc_msg msg_0066_D23R0102_00009
 	goto _0162
@@ -392,7 +392,7 @@ scr_seq_D23R0102_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_eq _05C0
 	hasitem ITEM_BLUE_CARD, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1

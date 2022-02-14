@@ -84,7 +84,7 @@ _0107:
 	closemsg
 	clearflag FLAG_UNK_19E
 	clearflag FLAG_HIDE_AZALEA_SLOWPOKES
-	setflag FLAG_UNK_07B
+	setflag FLAG_BEAT_AZALEA_ROCKETS
 	setvar VAR_UNK_4075, 1
 	setvar VAR_UNK_4080, 2
 	setvar VAR_UNK_4099, 1

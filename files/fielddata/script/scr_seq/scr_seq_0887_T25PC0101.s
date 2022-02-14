@@ -20,7 +20,7 @@ scr_seq_T25PC0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _003C
 	npc_msg msg_0583_T25PC0101_00003
 	goto _003F
@@ -37,7 +37,7 @@ scr_seq_T25PC0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _0065
 	npc_msg msg_0583_T25PC0101_00005
 	goto _0068
@@ -54,7 +54,7 @@ scr_seq_T25PC0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _008E
 	npc_msg msg_0583_T25PC0101_00001
 	goto _0091

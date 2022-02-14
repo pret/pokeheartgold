@@ -46,7 +46,7 @@ scr_seq_T24GYM0101_000:
 	setvar VAR_UNK_4116, 1
 	compare VAR_UNK_4134, 3
 	goto_if_ne _00A6
-	setvar VAR_UNK_4077, 1
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 1
 _00A6:
 	npc_msg msg_0574_T24GYM0101_00005
 	goto _00AF

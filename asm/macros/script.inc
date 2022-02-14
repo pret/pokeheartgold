@@ -3914,7 +3914,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_692 arg0, arg1, arg2, arg3, arg4, arg5
+	.macro buffer_battle_hall_streak arg0, arg1, arg2, arg3, arg4, arg5
 	.short 692
 	.byte \arg0
 	.byte \arg1
@@ -3924,12 +3924,12 @@
 	.short \arg5
 	.endm
 
-	.macro scrcmd_693 arg0
+	.macro battle_hall_count_used_species arg0
 	.short 693
 	.short \arg0
 	.endm
 
-	.macro scrcmd_694 arg0
+	.macro battle_hall_get_total_streak arg0
 	.short 694
 	.short \arg0
 	.endm

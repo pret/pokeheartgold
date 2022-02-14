@@ -15,7 +15,7 @@
 	scrdef_end
 
 scr_seq_T23R0501_000:
-	goto_if_set FLAG_UNK_07B, _002F
+	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _002F
 	setflag FLAG_HIDE_AZALEA_SLOWPOKES
 	end
 
@@ -249,7 +249,7 @@ scr_seq_T23R0501_002:
 	end
 
 _0332:
-	goto_if_set FLAG_UNK_07B, _0348
+	goto_if_set FLAG_BEAT_AZALEA_ROCKETS, _0348
 	npc_msg msg_0571_T23R0501_00012
 	waitbutton
 	closemsg
@@ -294,19 +294,19 @@ scr_seq_T23R0501_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ne _03C8
 	npc_msg msg_0571_T23R0501_00024
 	goto _03F7
 
 _03C8:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _03DE
 	npc_msg msg_0571_T23R0501_00024
 	goto _03F7
 
 _03DE:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _03F4
 	npc_msg msg_0571_T23R0501_00024
 	goto _03F7

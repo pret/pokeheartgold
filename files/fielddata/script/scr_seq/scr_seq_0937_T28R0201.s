@@ -17,7 +17,7 @@ scr_seq_T28R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0C6, _003B
+	goto_if_set FLAG_BEAT_RADIO_TOWER_ROCKETS, _003B
 	goto_if_set FLAG_UNK_0C5, _0046
 _003B:
 	npc_msg msg_0625_T28R0201_00001

@@ -37,12 +37,12 @@ scr_seq_D37R0102_008:
 	setflag FLAG_UNK_1B2
 	setflag FLAG_UNK_1B3
 	setflag FLAG_UNK_1B4
-	setflag FLAG_UNK_1B8
-	compare VAR_UNK_4077, 2
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_eq _0144
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_eq _0144
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_eq _0144
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
@@ -83,7 +83,7 @@ _011C:
 _0131:
 	compare VAR_TEMP_x4000, 1
 	call_if_eq _0161
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 	end
 
 _0144:
@@ -691,7 +691,7 @@ _0A71:
 	wait_se SEQ_SE_DP_CARD2
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	setvar VAR_UNK_4077, 3
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 3
 	npc_msg msg_0117_D37R0102_00037
 	waitbutton
 	closemsg

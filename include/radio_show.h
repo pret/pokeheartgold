@@ -29,23 +29,51 @@ struct RadioShowPokemonTalk {
     u8 filler_250[4];
 }; // size: 0x254
 
-struct RadioShowPokemonSearchParty {};
+struct RadioShowPokemonSearchParty {
+    u8 filler_00[6];
+    u16 unk_06;
+    u8 gameProgress[8];
+    u8 availableSegments[13];
+};
 
-struct RadioShowSerialRadioDrama {};
+struct RadioShowSerialRadioDrama {
+    u8 filler_00[6];
+    u16 unk_06;
+};
 
-struct RadioShowBuenasPassword {};
+struct RadioShowBuenasPassword {
+    u8 filler_00[6];
+    u16 unk_06;
+};
 
-struct RadioShowTrainerProfiles {};
+struct RadioShowTrainerProfiles {
+    u8 filler_00[6];
+    u8 unk_06[3];
+};
 
-struct RadioShowThatTownThesePeople {};
+struct RadioShowThatTownThesePeople {
+    u8 filler_00[10];
+    u8 gameProgress[5];
+    u8 availableSegments[20];
+};
 
-struct RadioShowUnown {};
+struct RadioShowUnown {
+    u8 unk_00[4];
+};
 
-struct RadioShowTeamRocket {};
+struct RadioShowTeamRocket {
+    u8 unk_00[8];
+};
 
-struct RadioShowMahoganySignal {};
+struct RadioShowMahoganySignal {
+    u8 unk_00[4];
+};
 
-struct RadioShowCommercials {};
+struct RadioShowCommercials {
+    u8 unk_00[8];
+    u8 gameProgress[8];
+    u8 availableCommercials[36];
+};
 
 union RadioShow {
     struct RadioShowPokemonMusic pokemonMusic;

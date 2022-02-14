@@ -141,7 +141,7 @@
 #define FLAG_UNK_078                                                0x78
 #define FLAG_UNK_079                                                0x79
 #define FLAG_UNK_07A                                                0x7A
-#define FLAG_UNK_07B                                                0x7B
+#define FLAG_BEAT_AZALEA_ROCKETS                                                0x7B
 #define FLAG_UNK_07C                                                0x7C
 #define FLAG_FOUND_FIRST_FARFETCHD                                  0x7D
 #define FLAG_FOUND_SECOND_FARFETCHD                                 0x7E
@@ -216,7 +216,7 @@
 #define FLAG_UNK_0C3                                                0xC3
 #define FLAG_UNK_0C4                                                0xC4
 #define FLAG_UNK_0C5                                                0xC5
-#define FLAG_UNK_0C6                                                0xC6
+#define FLAG_BEAT_RADIO_TOWER_ROCKETS                                                0xC6
 #define FLAG_UNK_0C7                                                0xC7
 #define FLAG_UNK_0C8                                                0xC8
 #define FLAG_GOT_RED_SCALE                                          0xC9
@@ -272,7 +272,7 @@
 #define FLAG_UNK_0FB                                                0xFB
 #define FLAG_UNK_0FC                                                0xFC
 #define FLAG_GOT_ALL_FOUR_FRONTIER_PRINTS                                                0xFD
-#define FLAG_UNK_0FE                                                0xFE
+#define FLAG_MET_HALL_STREAK_TRACKER_DUDE                                                0xFE
 #define FLAG_GOT_SCRATCH_CARD_INFO                                  0xFF
 #define FLAG_UNK_100                                               0x100
 #define FLAG_UNK_101                                               0x101
@@ -461,8 +461,8 @@
 #define FLAG_UNK_1B4                                               0x1B4
 #define FLAG_UNK_1B5                                               0x1B5
 #define FLAG_UNK_1B6                                               0x1B6
-#define FLAG_UNK_1B7                                               0x1B7
-#define FLAG_UNK_1B8                                               0x1B8
+#define FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER                                               0x1B7
+#define FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR                                               0x1B8
 #define FLAG_UNK_1B9                                               0x1B9
 #define FLAG_UNK_1BA                                               0x1BA
 #define FLAG_UNK_1BB                                               0x1BB
@@ -2039,10 +2039,10 @@
 #define NUM_DAILY_FLAGS                                              192
 
 
-#define FLAG_DAILY_GOT_HAIRCUT                                               0xAA0
+#define FLAG_DAILY_GOT_HAIRCUT                                     0xAA0
 #define FLAG_UNK_AA1                                               0xAA1
 #define FLAG_UNK_AA2                                               0xAA2
-#define FLAG_DAILY_BUENAS_PASSWORD                                               0xAA3
+#define FLAG_DAILY_BUENAS_PASSWORD                                 0xAA3
 #define FLAG_UNK_AA4                                               0xAA4
 #define FLAG_UNK_AA5                                               0xAA5
 #define FLAG_UNK_AA6                                               0xAA6

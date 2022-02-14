@@ -275,19 +275,19 @@ scr_seq_D37R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ne _0425
 	npc_msg msg_0116_D37R0101_00002
 	goto _0454
 
 _0425:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _043B
 	npc_msg msg_0116_D37R0101_00002
 	goto _0454
 
 _043B:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _0451
 	npc_msg msg_0116_D37R0101_00001
 	goto _0454
@@ -304,19 +304,19 @@ scr_seq_D37R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ne _047A
 	npc_msg msg_0116_D37R0101_00005
 	goto _04A9
 
 _047A:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0490
 	npc_msg msg_0116_D37R0101_00005
 	goto _04A9
 
 _0490:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _04A6
 	npc_msg msg_0116_D37R0101_00004
 	goto _04A9

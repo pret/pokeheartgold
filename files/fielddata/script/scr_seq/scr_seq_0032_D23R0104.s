@@ -17,22 +17,22 @@
 	scrdef_end
 
 scr_seq_D23R0104_000:
-	setflag FLAG_UNK_1B7
-	setflag FLAG_UNK_1B8
-	compare VAR_UNK_4077, 4
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0045
-	clearflag FLAG_UNK_1B7
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 	goto _0056
 
 _0045:
-	compare VAR_UNK_4077, 5
+	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_ne _0056
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 _0056:
 	end
 
 scr_seq_D23R0104_008:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0089
 	move_person obj_D23R0104_kurumi, 18, 1, 12, 3
 	move_person obj_D23R0104_tsure_poke_static_meowth, 19, 1, 12, 1
@@ -56,7 +56,7 @@ scr_seq_D23R0104_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _00E2
 	npc_msg msg_0068_D23R0104_00001
 	goto _00E8
@@ -112,7 +112,7 @@ scr_seq_D23R0104_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0181
 	npc_msg msg_0068_D23R0104_00010
 	goto _0184

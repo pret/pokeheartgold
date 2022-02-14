@@ -16,17 +16,17 @@
 	scrdef_end
 
 scr_seq_D23R0103_000:
-	setflag FLAG_UNK_1B7
-	setflag FLAG_UNK_1B8
-	compare VAR_UNK_4077, 4
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0041
-	clearflag FLAG_UNK_1B7
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_ARCHER
 	goto _0052
 
 _0041:
-	compare VAR_UNK_4077, 5
+	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_ne _0052
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 _0052:
 	end
 
@@ -42,7 +42,7 @@ scr_seq_D23R0103_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0098
 	npc_msg msg_0067_D23R0103_00001
 	goto _009B
@@ -63,7 +63,7 @@ scr_seq_D23R0103_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _00E7
 	getitemquantity ITEM_BASEMENT_KEY, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0

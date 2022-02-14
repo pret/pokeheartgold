@@ -20,26 +20,26 @@
 
 scr_seq_D23R0101_008:
 	setflag FLAG_UNK_1BC
-	setflag FLAG_UNK_1B8
-	compare VAR_UNK_4077, 2
+	setflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ne _004D
 	clearflag FLAG_UNK_1BC
 	goto _0085
 
 _004D:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0066
 	goto _008B
 	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
 _0066:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _0081
 	clearflag FLAG_UNK_1BC
 	clearflag FLAG_HIDE_RADIO_TOWER_RIVAL
 	goto _0085
 
 _0081:
-	clearflag FLAG_UNK_1B8
+	clearflag FLAG_HIDE_RADIO_TOWER_OBSERVATION_DECK_DIRECTOR
 _0085:
 	setvar VAR_TEMP_x400A, 0
 _008B:
@@ -49,19 +49,19 @@ scr_seq_D23R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 2
+	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_ne _00AB
 	npc_msg msg_0065_D23R0101_00001
 	goto _00DA
 
 _00AB:
-	compare VAR_UNK_4077, 4
+	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _00C1
 	npc_msg msg_0065_D23R0101_00001
 	goto _00DA
 
 _00C1:
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _00D7
 	npc_msg msg_0065_D23R0101_00002
 	goto _00DA
@@ -220,7 +220,7 @@ scr_seq_D23R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 3
+	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_eq _02C2
 	npc_msg msg_0065_D23R0101_00018
 	waitbutton
@@ -438,13 +438,13 @@ _0625:
 	hide_person obj_D23R0101_gsrivel
 	callstd std_fade_end_rival_outro_music
 	releaseall
-	setvar VAR_UNK_4077, 4
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 4
 	setflag FLAG_HIDE_RADIO_TOWER_RIVAL
 	setvar VAR_UNK_409F, 1
 	end
 
 _0655:
-	setvar VAR_UNK_4077, 2
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
 	white_out
 	releaseall
 	end

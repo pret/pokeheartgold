@@ -17,7 +17,7 @@
 	scrdef_end
 
 scr_seq_T28_005:
-	setvar VAR_UNK_4077, 2
+	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
 	setflag FLAG_UNK_0C5
 	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
 	compare VAR_UNK_40F8, 0
@@ -35,7 +35,7 @@ scr_seq_T28_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4077, 5
+	compare VAR_SCENE_ROCKET_TAKEOVER, 5
 	goto_if_eq _0117
 	goto_if_set FLAG_UNK_163, _010C
 	npc_msg msg_0620_T28_00000
