@@ -2061,7 +2061,7 @@
 #define FLAG_DAILY_TRAINER_HOUSE_9                                 0xAB3
 #define FLAG_DAILY_TRAINER_HOUSE_10                                0xAB4
 #define FLAG_UNK_AB5                                               0xAB5
-#define FLAG_UNK_AB6                                               0xAB6
+#define FLAG_DAILY_HEARD_BUENAS_PASSWORD                                               0xAB6
 #define FLAG_UNK_AB7                                               0xAB7
 #define FLAG_UNK_AB8                                               0xAB8
 #define FLAG_UNK_AB9                                               0xAB9

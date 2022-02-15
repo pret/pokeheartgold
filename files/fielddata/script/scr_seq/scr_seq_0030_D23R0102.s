@@ -133,12 +133,12 @@ _016A:
 	goto_if_no_item_space ITEM_BLUE_CARD, 1, _0539
 	callstd std_give_item_verbose
 	closemsg
-	addvar VAR_BUENA_ACQUAINTANCE_LEVEL, 1
+	addvar VAR_NUM_TIMES_GIVEN_BLUE_CARD, 1
 	releaseall
 	end
 
 _01B5:
-	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 2
+	compare VAR_NUM_TIMES_GIVEN_BLUE_CARD, 2
 	goto_if_lt _01CF
 	buffer_players_name 0
 	gender_msgbox msg_0066_D23R0102_00012, msg_0066_D23R0102_00013
@@ -148,7 +148,7 @@ _01CF:
 	npc_msg msg_0066_D23R0102_00011
 _01D2:
 	closemsg
-	goto_if_set FLAG_UNK_AB6, _01EA
+	goto_if_set FLAG_DAILY_HEARD_BUENAS_PASSWORD, _01EA
 	npc_msg msg_0066_D23R0102_00028
 	waitbutton
 	closemsg
@@ -164,7 +164,7 @@ _01EA:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0552
 	buffer_players_name 0
-	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 2
+	compare VAR_NUM_TIMES_GIVEN_BLUE_CARD, 2
 	goto_if_lt _0227
 	gender_msgbox msg_0066_D23R0102_00017, msg_0066_D23R0102_00018
 	goto _022B
@@ -235,7 +235,7 @@ _02BA:
 _033F:
 	compare VAR_BLUE_CARD_POINTS, 30
 	goto_if_lt _0387
-	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 2
+	compare VAR_NUM_TIMES_GIVEN_BLUE_CARD, 2
 	goto_if_ge _0387
 	apply_movement obj_D23R0102_gswoman1, _0628
 	wait_movement
@@ -299,9 +299,9 @@ _0450:
 	npc_msg msg_0066_D23R0102_00037
 	wait_fanfare
 	closemsg
-	compare VAR_BUENA_ACQUAINTANCE_LEVEL, 255
+	compare VAR_NUM_TIMES_GIVEN_BLUE_CARD, 255
 	goto_if_ge _0480
-	addvar VAR_BUENA_ACQUAINTANCE_LEVEL, 1
+	addvar VAR_NUM_TIMES_GIVEN_BLUE_CARD, 1
 _0480:
 	setvar VAR_BLUE_CARD_POINTS, 0
 _0486:

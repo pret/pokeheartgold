@@ -7,6 +7,7 @@
 #include "constants/mmodel.h"
 #include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
+#include "msgdata/msg/msg_0066_D23R0102.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -61285,7 +61286,7 @@ ScrCmd_GetBuenasPassword: ; 0x02202510
 	bl _s32_div_f
 	lsl r1, r0, #1
 	add r0, r0, r1
-	add r0, #0x28
+	add r0, #msg_0066_D23R0102_00040
 	strh r0, [r4]
 	add r0, r5, #0
 	mov r1, #3

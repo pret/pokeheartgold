@@ -4,6 +4,7 @@
 #include "constants/phone_contacts.h"
 #include "constants/flags.h"
 #include "msgdata/msg/msg_0416.h"
+#include "msgdata/msg/msg_0411.h"
 	.include "asm/macros.inc"
 	.include "global.inc"
 
@@ -31372,7 +31373,7 @@ _021F6890:
 	bne _021F68B2
 	ldr r0, [r5, #4]
 	bl SavArray_Flags_get
-	ldr r1, _021F6900 ; =0x00000AB6
+	ldr r1, _021F6900 ; =FLAG_DAILY_HEARD_BUENAS_PASSWORD
 	bl SetFlagInArray
 _021F68B2:
 	ldrh r0, [r4, #4]
@@ -31415,7 +31416,7 @@ _021F68FC:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021F6900: .word 0x00000AB6
+_021F6900: .word FLAG_DAILY_HEARD_BUENAS_PASSWORD
 	thumb_func_end RadioShow_BuenasPassword_print
 
 	thumb_func_start RadioShow_BuenasPassword_init
@@ -31431,11 +31432,11 @@ RadioShow_BuenasPassword_init: ; 0x021F6904
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x24]
 	ldr r2, [r5, #0x4c]
-	mov r1, #0
+	mov r1, #msg_0411_00000
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x24]
 	ldr r2, [r5, #0x50]
-	mov r1, #1
+	mov r1, #msg_0411_00001
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #4]
 	bl Sav2_Bag_get
@@ -31446,16 +31447,16 @@ RadioShow_BuenasPassword_init: ; 0x021F6904
 	bl Bag_HasItem
 	cmp r0, #0
 	beq _021F6946
-	mov r0, #4
+	mov r0, #msg_0411_00004
 	b _021F6948
 _021F6946:
-	mov r0, #5
+	mov r0, #msg_0411_00005
 _021F6948:
 	strh r0, [r4, #6]
 	ldr r3, [r5]
 	mov r0, #0
 	mov r1, #0x1b
-	mov r2, #0x42
+	mov r2, #0x42 ; msg_0066_D23R0102.gmm
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #4]
