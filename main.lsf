@@ -88,6 +88,7 @@ Static main
 	Object asm/unk_02026EB4.o
 	Object asm/unk_02027010.o
 	Object asm/unk_020270C4.o
+	Object src/save_arrays.o
 	Object src/save.o
 	Object asm/save_s.o
 	Object asm/sav_system_info.o

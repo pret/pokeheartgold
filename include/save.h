@@ -8,7 +8,7 @@
 #define SAVE_PARTY                2
 #define SAVE_BAG                  3
 #define SAVE_FLAGS                4
-#define SAVE_UNK_5                5
+#define SAVE_FLYPOINTS            5
 #define SAVE_POKEDEX              6
 #define SAVE_DAYCARE              7
 #define SAVE_UNK_8                8
@@ -36,8 +36,8 @@
 #define SAVE_EASY_CHAT           30
 #define SAVE_UNK_31              31
 #define SAVE_UNK_32              32
-#define SAVE_UNK_33              33
-#define SAVE_UNK_34              34
+#define SAVE_FOLLOW_POKE         33
+#define SAVE_GSPLAYERMISC        34
 #define SAVE_SAFARI_ZONE         35
 #define SAVE_PHOTO_ALBUM         36
 #define SAVE_UNK_37              37
@@ -46,6 +46,9 @@
 #define SAVE_UNK_40              40
 #define SAVE_PCSTORAGE           41
 #define SAVE_BLOCK_NUM           42
+
+#define SAVE_PAGE_MAX            35
+#define SAVE_SECTOR_SIZE     0x1000
 
 #ifndef PM_ASM
 typedef struct SaveBlock2 SAVEDATA;

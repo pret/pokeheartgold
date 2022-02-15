@@ -27309,8 +27309,8 @@
 .public sub_0202B01C
 .public sub_0202B404
 .public sub_0202B4E4
-.public sub_0202B930
-.public sub_0202B98C
+.public Sav2_DressupData_init
+.public Sav2_DressupData_sizeof
 .public sub_0202B994
 .public sub_0202B998
 .public sub_0202B9B8
@@ -27370,9 +27370,9 @@
 .public sub_0202C6F4
 .public sub_0202C6FC
 .public sub_0202C714
-.public sub_0202C730
+.public Sav2_FriendGroup_sizeof
 .public sub_0202C738
-.public sub_0202C75C
+.public Sav2_FriendGroup_init
 .public sub_0202C78C
 .public sub_0202C7B4
 .public sub_0202C7C0
