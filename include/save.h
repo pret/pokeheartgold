@@ -45,6 +45,7 @@
 #define SAVE_POKEWALKER          39
 #define SAVE_UNK_40              40
 #define SAVE_PCSTORAGE           41
+#define SAVE_BLOCK_NUM           42
 
 #ifndef PM_ASM
 typedef struct SaveBlock2 SAVEDATA;
@@ -55,7 +56,7 @@ const void *SavArray_const_get(const SAVEDATA *save, int idx);
 void SaveSubstruct_UpdateCRC(int idx);
 BOOL SaveSubstruct_AssertCRC(int idx);
 BOOL sub_020274D0(SAVEDATA *save);
-SAVEDATA *sub_020272B0(void);
+SAVEDATA *SaveBlock2_get(void);
 void sub_020275A4(SAVEDATA *saveData);
 #endif //PM_ASM
 

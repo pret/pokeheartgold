@@ -27201,7 +27201,7 @@
 .public sub_02027180
 .public sub_02027190
 .public sub_020271A0
-.public sub_020272B0
+.public SaveBlock2_get
 .public sub_020272F4
 .public sub_020273B0
 .public sub_020273F0

@@ -202,7 +202,7 @@ void DoSoftReset(u32 param) {
     sub_0200FBF4(0, RGB_WHITE);
     sub_0200FBF4(1, RGB_WHITE);
     if (sub_02038D90()) {
-        sub_020275A4(sub_020272B0());
+        sub_020275A4(SaveBlock2_get());
     }
     while (1) {
         HandleDSLidAction();
