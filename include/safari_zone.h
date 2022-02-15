@@ -38,20 +38,20 @@ typedef struct SAFARIZONE_AREASET {
     u8 unk2DC[12];
 } SAFARIZONE_AREASET;
 
-typedef struct SAFARIZONE_UNKSUB {
-    s64 seconds_since_epoch;
+typedef struct SAFARIZONE_LINKLEADER {
+    s64 received_timestamp;
     s64 rtc_offset;
-    u8 unk10;
+    u8 linked; // TODO: bool8
     u8 gender;
     u8 language;
     u8 version;
     u32 id;
     u16 name[OT_NAME_LENGTH + 1];
-} SAFARIZONE_UNKSUB;
+} SAFARIZONE_LINKLEADER;
 
 typedef struct SAFARIZONE {
-    SAFARIZONE_AREASET area_sets[2];
-    SAFARIZONE_UNKSUB unk5D0;
+    SAFARIZONE_AREASET area_sets[SAFARI_ZONE_MAX_AREA_SETS];
+    SAFARIZONE_LINKLEADER link_leader;
     u8 unk5F8;
     u8 unk5F9_0:6;
     u8 unk5F9_6:2;
@@ -61,12 +61,12 @@ typedef struct SAFARIZONE {
 u32 Save_SafariZone_sizeof(void);
 SAFARIZONE* Save_SafariZone_get(SAVEDATA* savedata);
 void Save_SafariZone_init(SAFARIZONE* safari_zone);
-void sub_0202F5B8(SAFARIZONE_AREASET* area_set, u32 a1);
-void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSet);
+void SafariZone_ResetAreaSetToDefaultSet(SAFARIZONE_AREASET* area_set, u32 default_set_no);
+void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSetNo);
 u8 sub_0202F620(SAFARIZONE* safari_zone);
-SAFARIZONE_AREASET* sub_0202F630(SAFARIZONE* safari_zone, s32 area_set_no);
-void sub_0202F658(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set);
-void sub_0202F680(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set);
+SAFARIZONE_AREASET* SafariZone_GetAreaSet(SAFARIZONE* safari_zone, s32 area_set_no);
+void SafariZone_CopyAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_dest);
+void SafariZone_SetAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_src);
 void sub_0202F6A0(SAFARIZONE* safari_zone, u8 a1);
 u8 sub_0202F6AC(SAFARIZONE* safari_zone);
 void sub_0202F6B8(SAFARIZONE_AREASET* area_set, s32 a1);
@@ -75,19 +75,19 @@ u8 sub_0202F730(SAFARIZONE* safari_zone, s32 a1);
 void sub_0202F754(SAFARIZONE* safari_zone, u8 a1);
 void sub_0202F784(SAFARIZONE* safari_zone, IGT* igt);
 u32 sub_0202F798(SAFARIZONE* safari_zone, IGT* igt, s32 a2);
-void sub_0202F7D8(SAFARIZONE* safari_zone, PLAYERPROFILE* profile, HeapID heap_id);
-void sub_0202F844(SAFARIZONE* safari_zone, PLAYERPROFILE* profile);
-u8 sub_0202F87C(SAFARIZONE* safari_zone);
-u8 sub_0202F888(SAFARIZONE* safari_zone);
-void sub_0202F890(SAFARIZONE* safari_zone);
-void sub_0202F8D4(SAFARIZONE_AREASET* area_set, u32 first, u32 second);
-void sub_0202F91C(SAFARIZONE_AREASET* area_set, s32 area_idx, u32 area_no);
-void sub_0202F930(SAFARIZONE_AREASET* area_set, s32 area_idx, const SAFARIZONE_OBJECT* object);
-void sub_0202F968(SAFARIZONE_AREASET* area_set, s32 area_idx, s32 object_idx);
-void sub_0202F9CC(SAFARIZONE_AREASET* area_set);
-void sub_0202F9E8(SAFARIZONE_AREA* area, u8 area_no);
-void sub_0202F9FC(SAFARIZONE_OBJECT* object);
-void sub_0202FA08(SAFARIZONE_UNKSUB* a0);
+void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* profile, HeapID heap_id);
+void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* profile);
+u8 SafariZone_GetLinkLeaderGender(SAFARIZONE* safari_zone);
+u8 SafariZone_IsCurrentlyLinked(SAFARIZONE* safari_zone);
+void SafariZone_DeactivateLinkIfExpired(SAFARIZONE* safari_zone);
+void SafariZone_SwapAreasInSet(SAFARIZONE_AREASET* area_set, u32 first, u32 second);
+void SafariZone_InitAreaInSet(SAFARIZONE_AREASET* area_set, s32 area_idx, u32 area_no);
+void SafariZone_AddObjectToArea(SAFARIZONE_AREASET* area_set, s32 area_idx, const SAFARIZONE_OBJECT* object);
+void SafariZone_RemoveObjectFromArea(SAFARIZONE_AREASET* area_set, s32 area_idx, s32 object_idx);
+void SafariZone_InitAreaSet(SAFARIZONE_AREASET* area_set);
+void SafariZone_InitArea(SAFARIZONE_AREA* area, u8 area_no);
+void SafariZone_ClearObject(SAFARIZONE_OBJECT* object);
+void SafariZone_ClearLeader(SAFARIZONE_LINKLEADER* link_leader);
 BOOL sub_0202FA3C(u8 a0, u8* a1, u8 a2);
 
 #endif

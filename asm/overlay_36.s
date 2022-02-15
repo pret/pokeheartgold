@@ -206,7 +206,7 @@ _021E5A94:
 	add r0, r6, #0
 	bl Save_SafariZone_get
 	add r1, r4, #0
-	bl sub_0202F5B8
+	bl SafariZone_ResetAreaSetToDefaultSet
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
 	add r1, r0, #0

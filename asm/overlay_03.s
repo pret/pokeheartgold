@@ -9367,13 +9367,13 @@ ov03_0225884C: ; 0x0225884C
 	ldr r0, [r4, #4]
 	mov r1, #1
 	add r2, r6, #0
-	bl sub_0202F680
+	bl SafariZone_SetAreaSet
 	add r0, r5, #0
 	bl sub_02034818
 	add r1, r0, #0
 	ldr r0, [r4, #4]
 	mov r2, #0xb
-	bl sub_0202F7D8
+	bl SafariZone_SetLinkLeaderFromProfile
 _02258876:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov03_0225884C
@@ -9444,7 +9444,7 @@ ov03_022588D4: ; 0x022588D4
 	beq _0225890A
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0202F630
+	bl SafariZone_GetAreaSet
 	add r1, r0, #0
 	mov r0, #0x16
 	bl sub_020376D4
@@ -9638,7 +9638,7 @@ ScrCmd_720: ; 0x02258A18
 	ldr r0, [r5, #0xc]
 	bl Save_SafariZone_get
 	mov r1, #0
-	bl sub_0202F630
+	bl SafariZone_GetAreaSet
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x2c]
 	bl ov01_021F6320
@@ -9795,7 +9795,7 @@ _02258BC6:
 	lsl r2, r2, #0x18
 	ldr r1, [sp, #0x10]
 	lsr r2, r2, #0x18
-	bl sub_0202F968
+	bl SafariZone_RemoveObjectFromArea
 	mov r0, #0
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}

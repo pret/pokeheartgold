@@ -16317,7 +16317,7 @@ ScrCmd_823: ; 0x02047EC4
 	ldr r0, [r0, #0xc]
 	bl Save_SafariZone_get
 	add r1, r4, #0
-	bl sub_0202F844
+	bl SafariZone_GetLinkLeaderToProfile
 	ldrh r1, [r6]
 	ldr r0, [r7]
 	add r2, r4, #0
@@ -16345,9 +16345,9 @@ ScrCmd_824: ; 0x02047F14
 	bl GetVarPointer
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_0202F890
+	bl SafariZone_DeactivateLinkIfExpired
 	add r0, r5, #0
-	bl sub_0202F888
+	bl SafariZone_IsCurrentlyLinked
 	cmp r0, #0
 	beq _02047F4A
 	mov r0, #1

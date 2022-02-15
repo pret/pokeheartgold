@@ -125,7 +125,7 @@ sub_0209730C: ; 0x0209730C
 	bl Save_SafariZone_get
 	str r0, [sp, #0x28]
 	mov r1, #0
-	bl sub_0202F630
+	bl SafariZone_GetAreaSet
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x28]
 	bl sub_0202F720
