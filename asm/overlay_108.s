@@ -130,7 +130,7 @@ ov108_021E59E4: ; 0x021E59E4
 	str r0, [r5, #0x18]
 	mov r1, #0
 	add r2, #0x1c
-	bl sub_0202F658
+	bl SafariZone_CopyAreaSet
 	ldr r0, [r4]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
@@ -172,7 +172,7 @@ ov108_021E5A48: ; 0x021E5A48
 	ldr r0, [r4, #0x18]
 	mov r1, #0
 	add r2, #0x1c
-	bl sub_0202F680
+	bl SafariZone_SetAreaSet
 	ldr r0, [r4, #0x14]
 	ldr r0, [r0]
 	bl SavArray_Flags_get
@@ -846,7 +846,7 @@ _021E5F50:
 	add r0, r5, #0
 	ldrb r1, [r5, r1]
 	add r0, #0x1c
-	bl sub_0202F91C
+	bl SafariZone_InitAreaInSet
 	b _021E5FA2
 _021E5F88:
 	ldr r0, _021E600C ; =0x000184DF
@@ -1049,7 +1049,7 @@ _021E60EE:
 	ldrb r1, [r5, r1]
 	ldrb r2, [r5, r2]
 	add r0, #0x1c
-	bl sub_0202F8D4
+	bl SafariZone_SwapAreasInSet
 	ldr r0, _021E61E4 ; =0x000184DF
 	mov r3, #0x7a
 	ldrb r2, [r5, r0]
@@ -1492,7 +1492,7 @@ _021E646C:
 	add r0, r4, #0
 	ldrb r1, [r4, r1]
 	add r0, #0x1c
-	bl sub_0202F91C
+	bl SafariZone_InitAreaInSet
 	ldr r0, _021E64BC ; =0x000184DF
 	mov r2, #0x7a
 	ldrb r1, [r4, r0]
@@ -6112,7 +6112,7 @@ ov108_021E8968: ; 0x021E8968
 	str r0, [r5, #0x20]
 	mov r1, #0
 	add r2, #0x24
-	bl sub_0202F658
+	bl SafariZone_CopyAreaSet
 	ldr r0, [r4]
 	bl Sav2_PlayerData_GetOptionsAddr
 	add r6, r0, #0
@@ -6243,7 +6243,7 @@ ov108_021E8A88: ; 0x021E8A88
 	ldr r0, [r4, #0x20]
 	mov r1, #0
 	add r2, #0x24
-	bl sub_0202F680
+	bl SafariZone_SetAreaSet
 	ldr r0, _021E8AD0 ; =0x00000431
 	ldrb r1, [r4, r0]
 	cmp r1, #6
@@ -6535,7 +6535,7 @@ ov108_021E8C64: ; 0x021E8C64
 	add r0, r4, #0
 	ldrb r1, [r1, #0x19]
 	add r0, #0x24
-	bl sub_0202F930
+	bl SafariZone_AddObjectToArea
 	add r0, sp, #0
 	ldrb r1, [r0]
 	ldr r0, [r4, #0x1c]

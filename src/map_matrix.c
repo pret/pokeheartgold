@@ -215,7 +215,7 @@ void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
     }
 
     SAFARIZONE* safari_zone = Save_SafariZone_get(save);
-    SAFARIZONE_AREASET* sz_area_set = sub_0202F630(safari_zone, 3);
+    SAFARIZONE_AREASET* sz_area_set = SafariZone_GetAreaSet(safari_zone, 3);
 
     for (s32 y = 0; y < SAFARI_ZONE_AREA_SET_ROWS; y++) {
         for (s32 x = 0; x < SAFARI_ZONE_AREA_SET_COLS; x++) {

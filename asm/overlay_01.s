@@ -32009,7 +32009,7 @@ _021F4B70:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
-	bl sub_0202F630
+	bl SafariZone_GetAreaSet
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x18]
 	cmp r0, #0
@@ -32024,7 +32024,7 @@ _021F4B70:
 	b _021F4BAC
 _021F4BA6:
 	ldr r0, [sp, #0x14]
-	bl sub_0202F87C
+	bl SafariZone_GetLinkLeaderGender
 _021F4BAC:
 	str r7, [sp]
 	str r0, [sp, #4]
