@@ -4,7 +4,7 @@
 #include <nitro/mi/memory.h>
 #include <nitro/os/ownerInfo.h>
 
-static const u8 sSafariZoneDefaultAreaSets[10][6] = {
+static const u8 sSafariZoneDefaultAreaSets[10][SAFARI_ZONE_MAX_AREAS_PER_SET] = {
     { SAFARI_ZONE_AREA_PLAINS, SAFARI_ZONE_AREA_SWAMP, SAFARI_ZONE_AREA_MEADOW,
       SAFARI_ZONE_AREA_WETLAND, SAFARI_ZONE_AREA_PEAK, SAFARI_ZONE_AREA_FOREST },
     { SAFARI_ZONE_AREA_MEADOW, SAFARI_ZONE_AREA_MARSHLAND, SAFARI_ZONE_AREA_WETLAND,
@@ -40,32 +40,32 @@ void Save_SafariZone_init(SAFARIZONE* safari_zone) {
         MI_CpuFill8(&safari_zone->area_sets[i], 0, sizeof(SAFARIZONE_AREASET));
     }
 
-    sub_0202FA08(&safari_zone->unk5D0);
+    SafariZone_ClearLeader(&safari_zone->link_leader);
 }
 
-void sub_0202F5B8(SAFARIZONE_AREASET* area_set, u32 a1) {
-    u32 default_set_no = a1 % 10;
+void SafariZone_ResetAreaSetToDefaultSet(SAFARIZONE_AREASET* area_set, u32 default_set_no) {
+    u32 default_set_no_mod = default_set_no % NELEMS(sSafariZoneDefaultAreaSets);
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; i++) {
-        sub_0202F9E8(&area_set->areas[i], sSafariZoneDefaultAreaSets[default_set_no][i]);
+        SafariZone_InitArea(&area_set->areas[i], sSafariZoneDefaultAreaSets[default_set_no_mod][i]);
     }
 
     MI_CpuFill8(area_set->unk2DC, 0, sizeof(area_set->unk2DC));
 }
 
-void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSet) {
-    if (areaSet >= SAFARI_ZONE_MAX_AREA_SETS) {
+void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSetNo) {
+    if (areaSetNo >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
-        areaSet = 0;
+        areaSetNo = 0;
     }
 
-    safari_zone->unk5F9_6 = areaSet;
+    safari_zone->unk5F9_6 = areaSetNo;
 }
 
 u8 sub_0202F620(SAFARIZONE* safari_zone) {
     return safari_zone->unk5F9_6;
 }
 
-SAFARIZONE_AREASET* sub_0202F630(SAFARIZONE* safari_zone, s32 area_set_no) {
+SAFARIZONE_AREASET* SafariZone_GetAreaSet(SAFARIZONE* safari_zone, s32 area_set_no) {
     if (area_set_no == 3) {
         area_set_no = safari_zone->unk5F9_6;
     }
@@ -78,23 +78,23 @@ SAFARIZONE_AREASET* sub_0202F630(SAFARIZONE* safari_zone, s32 area_set_no) {
     return &safari_zone->area_sets[area_set_no];
 }
 
-void sub_0202F658(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set) {
+void SafariZone_CopyAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_dest) {
     if (area_set_no >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
-        sub_0202F9CC(area_set);
+        SafariZone_InitAreaSet(area_set_dest);
         return;
     }
 
-    MI_CpuCopy8(&safari_zone->area_sets[area_set_no], area_set, sizeof(SAFARIZONE_AREASET));
+    MI_CpuCopy8(&safari_zone->area_sets[area_set_no], area_set_dest, sizeof(SAFARIZONE_AREASET));
 }
 
-void sub_0202F680(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set) {
+void SafariZone_SetAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_src) {
     if (area_set_no >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
         return;
     }
 
-    MI_CpuCopy8(area_set, &safari_zone->area_sets[area_set_no], sizeof(SAFARIZONE_AREASET));
+    MI_CpuCopy8(area_set_src, &safari_zone->area_sets[area_set_no], sizeof(SAFARIZONE_AREASET));
 }
 
 void sub_0202F6A0(SAFARIZONE* safari_zone, u8 a1) {
@@ -169,68 +169,70 @@ u32 sub_0202F798(SAFARIZONE* safari_zone, IGT* igt, s32 a2) {
     return 0;
 }
 
-void sub_0202F7D8(SAFARIZONE* safari_zone, PLAYERPROFILE* profile, HeapID heap_id) {
-    SAFARIZONE_UNKSUB *unksub = &safari_zone->unk5D0;
-    unksub->id = PlayerProfile_GetTrainerID(profile);
-    unksub->gender = PlayerProfile_GetTrainerGender(profile);
-    unksub->language = PlayerProfile_GetLanguage(profile);
-    unksub->version = PlayerProfile_GetVersion(profile);
+void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* profile, HeapID heap_id) {
+    SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
+    link_leader->id = PlayerProfile_GetTrainerID(profile);
+    link_leader->gender = PlayerProfile_GetTrainerGender(profile);
+    link_leader->language = PlayerProfile_GetLanguage(profile);
+    link_leader->version = PlayerProfile_GetVersion(profile);
 
     STRING* name = String_ctor((OT_NAME_LENGTH + 1) * sizeof(u16), heap_id);
     PlayerName_FlatToString(profile, name);
-    CopyStringToU16Array(name, unksub->name, (OT_NAME_LENGTH + 1) * sizeof(u16));
+    CopyStringToU16Array(name, link_leader->name, (OT_NAME_LENGTH + 1) * sizeof(u16));
     String_dtor(name);
 
-    unksub->unk10 = 1;
+    link_leader->linked = TRUE;
 
-    unksub->seconds_since_epoch = GF_RTC_DateTimeToSec();
-    unksub->rtc_offset = OS_GetOwnerRtcOffset();
+    link_leader->received_timestamp = GF_RTC_DateTimeToSec();
+    link_leader->rtc_offset = OS_GetOwnerRtcOffset();
 }
 
-void sub_0202F844(SAFARIZONE* safari_zone, PLAYERPROFILE* profile) {
-    SAFARIZONE_UNKSUB *unksub = &safari_zone->unk5D0;
-    PlayerProfile_SetTrainerID(profile, unksub->id);
-    PlayerProfile_SetTrainerGender(profile, unksub->gender);
-    PlayerProfile_SetLanguage(profile, unksub->language);
-    PlayerProfile_SetVersion(profile, unksub->version);
-    Sav2_Profile_PlayerName_set(profile, unksub->name);
+void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* profile) {
+    SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
+    PlayerProfile_SetTrainerID(profile, link_leader->id);
+    PlayerProfile_SetTrainerGender(profile, link_leader->gender);
+    PlayerProfile_SetLanguage(profile, link_leader->language);
+    PlayerProfile_SetVersion(profile, link_leader->version);
+    Sav2_Profile_PlayerName_set(profile, link_leader->name);
 }
 
-u8 sub_0202F87C(SAFARIZONE* safari_zone) {
-    return safari_zone->unk5D0.gender;
+u8 SafariZone_GetLinkLeaderGender(SAFARIZONE* safari_zone) {
+    return safari_zone->link_leader.gender;
 }
 
-u8 sub_0202F888(SAFARIZONE* safari_zone) {
-    return safari_zone->unk5D0.unk10;
+u8 SafariZone_IsCurrentlyLinked(SAFARIZONE* safari_zone) {
+    return safari_zone->link_leader.linked;
 }
 
-void sub_0202F890(SAFARIZONE* safari_zone) {
-    SAFARIZONE_UNKSUB *unksub = &safari_zone->unk5D0;
-    if (unksub->unk10 == 0) {
+void SafariZone_DeactivateLinkIfExpired(SAFARIZONE* safari_zone) {
+    SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
+    if (!link_leader->linked) {
         return;
     }
 
-    if ((24 * 60 * 60) < GF_RTC_DateTimeToSec() - unksub->seconds_since_epoch) {
-        unksub->unk10 = 0;
+    if ((24 * 60 * 60) < GF_RTC_DateTimeToSec() - link_leader->received_timestamp) {
+        // It has been 24 hours since the player received the Safari Zone.
+        link_leader->linked = FALSE;
         return;
     }
 
-    if (unksub->rtc_offset != OS_GetOwnerRtcOffset()) {
-        unksub->unk10 = 0;
+    if (link_leader->rtc_offset != OS_GetOwnerRtcOffset()) {
+        // The player changed their system's time since receiving the Safari Zone.
+        link_leader->linked = FALSE;
     }
 }
 
-void sub_0202F8D4(SAFARIZONE_AREASET* area_set, u32 first, u32 second) {
+void SafariZone_SwapAreasInSet(SAFARIZONE_AREASET* area_set, u32 first, u32 second) {
     SAFARIZONE_AREA tmp = area_set->areas[first];
     area_set->areas[first] = area_set->areas[second];
     area_set->areas[second] = tmp;
 }
 
-void sub_0202F91C(SAFARIZONE_AREASET* area_set, s32 area_idx, u32 area_no) {
-    sub_0202F9E8(&area_set->areas[area_idx], area_no);
+void SafariZone_InitAreaInSet(SAFARIZONE_AREASET* area_set, s32 area_idx, u32 area_no) {
+    SafariZone_InitArea(&area_set->areas[area_idx], area_no);
 }
 
-void sub_0202F930(SAFARIZONE_AREASET* area_set, s32 area_idx, const SAFARIZONE_OBJECT* object) {
+void SafariZone_AddObjectToArea(SAFARIZONE_AREASET* area_set, s32 area_idx, const SAFARIZONE_OBJECT* object) {
     if (area_idx >= SAFARI_ZONE_MAX_AREAS_PER_SET) {
         GF_ASSERT(FALSE);
         return;
@@ -245,7 +247,7 @@ void sub_0202F930(SAFARIZONE_AREASET* area_set, s32 area_idx, const SAFARIZONE_O
     area->objects[area->active_object_count++] = *object;
 }
 
-void sub_0202F968(SAFARIZONE_AREASET* area_set, s32 area_idx, s32 object_idx) {
+void SafariZone_RemoveObjectFromArea(SAFARIZONE_AREASET* area_set, s32 area_idx, s32 object_idx) {
     if (area_idx >= SAFARI_ZONE_MAX_AREAS_PER_SET) {
         GF_ASSERT(FALSE);
         return;
@@ -258,39 +260,39 @@ void sub_0202F968(SAFARIZONE_AREASET* area_set, s32 area_idx, s32 object_idx) {
     }
 
     if (object_idx == --area->active_object_count) {
-        sub_0202F9FC(&area->objects[object_idx]);
+        SafariZone_ClearObject(&area->objects[object_idx]);
     } else {
         for (; object_idx < area->active_object_count; object_idx++) {
             area->objects[object_idx] = area->objects[object_idx + 1];
         }
 
-        sub_0202F9FC(&area->objects[area->active_object_count]);
+        SafariZone_ClearObject(&area->objects[area->active_object_count]);
     }
 }
 
-void sub_0202F9CC(SAFARIZONE_AREASET* area_set) {
+void SafariZone_InitAreaSet(SAFARIZONE_AREASET* area_set) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREAS_PER_SET; i++) {
-        sub_0202F9E8(&area_set->areas[i], i);
+        SafariZone_InitArea(&area_set->areas[i], i);
     }
 }
 
-void sub_0202F9E8(SAFARIZONE_AREA* area, u8 area_no) {
+void SafariZone_InitArea(SAFARIZONE_AREA* area, u8 area_no) {
     MI_CpuFill8(area, 0, sizeof(SAFARIZONE_AREA));
     area->area_no = area_no;
 }
 
-void sub_0202F9FC(SAFARIZONE_OBJECT* object) {
+void SafariZone_ClearObject(SAFARIZONE_OBJECT* object) {
     MI_CpuFill8(object, 0, sizeof(SAFARIZONE_OBJECT));
 }
 
-void sub_0202FA08(SAFARIZONE_UNKSUB* a0) {
-    MI_CpuFill8(a0, 0, sizeof(SAFARIZONE_UNKSUB));
+void SafariZone_ClearLeader(SAFARIZONE_LINKLEADER* link_leader) {
+    MI_CpuFill8(link_leader, 0, sizeof(SAFARIZONE_LINKLEADER));
 
-    a0->id = 0;
-    a0->gender = 0;
-    a0->language = gGameLanguage;
-    a0->version = gGameVersion;
-    StringFillEOS(a0->name, OT_NAME_LENGTH + 1);
+    link_leader->id = 0;
+    link_leader->gender = 0;
+    link_leader->language = gGameLanguage;
+    link_leader->version = gGameVersion;
+    StringFillEOS(link_leader->name, OT_NAME_LENGTH + 1);
 }
 
 BOOL sub_0202FA3C(u8 a0, u8* a1, u8 a2) {

@@ -4412,7 +4412,7 @@ ov02_02247DA0: ; 0x02247DA0
 	add r5, r3, #0
 	bl Save_SafariZone_get
 	mov r1, #3
-	bl sub_0202F630
+	bl SafariZone_GetAreaSet
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	bl ov02_0224E340
@@ -18506,7 +18506,7 @@ ov02_0224E698: ; 0x0224E698
 	ldr r0, [r5, #0xc]
 	bl Save_SafariZone_get
 	mov r1, #0
-	bl sub_0202F630
+	bl SafariZone_GetAreaSet
 	add r2, r0, #0
 	add r0, r6, #0
 	sub r0, #0x20
@@ -18621,7 +18621,7 @@ ov02_0224E754: ; 0x0224E754
 	ldr r0, [r4, #0xc]
 	bl Save_SafariZone_get
 	mov r1, #0
-	bl sub_0202F630
+	bl SafariZone_GetAreaSet
 	mov r1, #0x7a
 	mul r1, r5
 	add r0, r0, r1
